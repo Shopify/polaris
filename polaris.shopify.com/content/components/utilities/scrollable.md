@@ -1,6 +1,5 @@
 ---
 title: Scrollable
-description: The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read.
 category: Utilities
 keywords:
   - long form
@@ -22,6 +21,18 @@ examples:
     title: To child component
     description: Use when you need to programmatically scroll a child component into view in the scrollable container.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

@@ -17,6 +17,10 @@ keywords:
 order: 1
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Bug fixes can be as simple as removing a typo, or as complex as refactoring a component to address a performance or accessibility issue. Enhancements usually add to or update the props of an existing component to extend its functionality or presentation. New patterns can be contributed by simply adding a new example to an existing component’s documentation, or by adding new components or utilities. Often component contributions are a mix of these.
 
 Start planning your contribution as early as possible to account for the scope in your timeline. To get help with the strategy for your contribution early on, start a [discussion](https://github.com/Shopify/polaris/discussions/new) with the Polaris community. If you have a smaller question, reach out in #polaris if you work at Shopify, or the [Shopify Partners Slack](http://shopifypartners.slack.com) if you’re an open source contributor. Once you’ve decided on the best way to solve the problem, submit a [feature proposal](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) or [bug report](https://github.com/Shopify/polaris/issues/new?assignees=&labels=%F0%9F%90%9BBug&template=ISSUE.md) issue. Then contribute the change by shipping a pull request.

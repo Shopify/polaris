@@ -1,6 +1,5 @@
 ---
 title: Skeleton page
-description: Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -17,6 +16,18 @@ examples:
     description: Use this component to compose a loading version of a page where the page title and header content are known and stay the same.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Skeleton page component should:
@@ -32,7 +43,7 @@ Show page titles that never change for a page. For example, keep the title “Pr
 
 Secondary actions are always represented with skeleton content. You can change the number of skeleton actions that best represent the number of actions once loaded.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -46,7 +57,7 @@ Use placeholder content that will change when the page fully loads. This will co
 
 ![Image showing placeholder content that will change](/images/components/feedback-indicators/skeleton-page/dont-use-placeholder-content-that-will-change@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 

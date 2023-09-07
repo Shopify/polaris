@@ -9,9 +9,9 @@ variants:
   - 'variants/default.md'
 ---
 
-<div as="Variants"></div>
+<Variants variants={frontmatter.variants} />
 
-<div as="Stack" gap="4">
+<Stack gap="4">
 
 ## Related resources
 
@@ -21,4 +21,4 @@ variants:
 - Learn more about [Layout](https://shopify.dev/apps/design-guidelines/layout) in the app design guidelines.
 - Check out the Polaris [Space](/design/space) guidelines to understand Polaris grid and spacing scale.
 
-</div>
+</Stack>

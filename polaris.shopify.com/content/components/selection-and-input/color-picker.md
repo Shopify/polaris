@@ -1,6 +1,5 @@
 ---
 title: Color picker
-description: The color picker is used to let merchants select a color visually. For example, merchants use the color picker to customize the accent color of the email templates for their shop.
 category: Selection and input
 keywords:
   - ColorPicker
@@ -25,6 +24,18 @@ examples:
     title: With transparent value full width
     description: Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The color picker is used to let merchants select a color visually. For example, merchants use the color picker to customize the accent color of the email templates for their shop.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

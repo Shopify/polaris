@@ -12,23 +12,14 @@ keywords:
 description: Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping  the content become more useful and understandable.
 ---
 
-<!-- inline css styling for html video and images -->
-<style>
-.space-hero {
-  margin: 40px -30px 40px -30px;
-}
+# {frontmatter.title}
 
-.punit-img {
-  display: block;
-  margin: 40px auto 40px auto;
-  width: 75%;
-}
-</style>
+<Lede>{frontmatter.description}</Lede>
 
 ---
 
-<div class="space-hero">
-  <img src="/images/design/space/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit">
+<div style={{margin: "40px -30px 40px -30px"}}>
+  <img src="/images/design/space/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit" />
 </div>
 
 ---
@@ -57,8 +48,12 @@ Use Polaris space tokens in a way that is consistent with the rest of the experi
 
 All measurements used across the experience (space, width, height, etc) must reference Polaris space units to guarantee visual consistency and balance.
 
-<div class="punit-img">
-  <img src="/images/design/space/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit">
+<div style={{
+  display: "block",
+  margin: "40px auto 40px auto",
+  width: "75%",
+}}>
+  <img src="/images/design/space/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit" />
 </div>
 
 ### Space scale
@@ -90,27 +85,27 @@ This is intentional to provide a good range to work with, but you must be delibe
 
 Repeating the same amount of space (left) and using more variation (right).
 
-<br/>
+<br />
 
 ### Column grid
 
 The column grid is meant to give teams agency for page layouts, while still providing low level constraints that ensure consistent pages across the experience. This means teams should feel empowered to experiment with layout, as long as they use the column grid as a grounding element.
 
-<video width="100%" height="auto" controls autoplay muted loop>
-  <source src="/images/design/space/column.mp4" type="video/mp4">
+<video width="100%" height="auto" controls autoPlay muted loop>
+  <source src="/images/design/space/column.mp4" type="video/mp4" />
 </video>
 
-<br/>
+<br />
 
 ### Breakpoints
 
-<video width="100%" height="auto" controls autoplay muted loop>
-  <source src="/images/design/space/breakpoints.mp4" type="video/mp4">
+<video width="100%" height="auto" controls autoPlay muted loop>
+  <source src="/images/design/space/breakpoints.mp4" type="video/mp4" />
 </video>
 
 The grid adapts to the viewport width. The amount of columns will change depending on how much space there is. This is a recommendation for how much should be displayed horizontally. Less columns means less content.
 
-<br/>
+<br />
 
 | Screen size                              | Columns | Margin | Gutter | Navigation |
 | ---------------------------------------- | ------- | ------ | ------ | ---------- |
@@ -133,7 +128,7 @@ When designing, it’s key to consider that people look for patterns, and will a
 
 ![Different types of list items, such as menus, popovers, and dropdowns](/images/design/space/spacing-principles@2x.png)
 
-<br/>
+<br />
 
 People look for patterns instinctively, and they lean of visual cues like:
 
@@ -143,7 +138,7 @@ Grouping things based on physical appearance (shape, color, size, orientation).
 
 ![Index table](/images/design/space/spacing-similarity@2x.png)
 
-<br/>
+<br />
 
 #### Proximity
 
@@ -151,7 +146,7 @@ Grouping things based on distance between objects.
 
 ![Customers and orders page](/images/design/space/spacing-proximity@2x.png)
 
-<br/>
+<br />
 
 #### Continuity
 
@@ -161,7 +156,7 @@ Grouping things based on the way they are arranged.
 
 Shadows inside popovers act as visual cues to indicate additional content when scrolled (left). Cards placed horizontally in a media carousel communicates related topics (right).
 
-<br/>
+<br />
 
 #### Closure
 
@@ -169,17 +164,17 @@ Grouping things that are implicitly enclosed by a larger object.
 
 ![Order details page](/images/design/space/spacing-closure@2x.png)
 
-<br/>
+<br />
 
 #### Common fate
 
 Grouping things based on how they move.
 
-<video width="100%" height="auto" controls autoplay muted loop>
-  <source src="/images/design/space/common-fate.mp4" type="video/mp4">
+<video width="100%" height="auto" controls autoPlay muted loop>
+  <source src="/images/design/space/common-fate.mp4" type="video/mp4" />
 </video>
 
-<br/>
+<br />
 
 #### Common Region
 
@@ -191,7 +186,7 @@ Because people perceive these instinctively, we can use them as tools to create 
 
 ---
 
-<br/>
+<br />
 
 ### Rhythm
 
@@ -200,19 +195,19 @@ Anything can establish rhythm: space, typography, icons, color, shape, and size.
 
 Like in music, different types of rhythm serve a different purpose, in design there’s three worth highlighting:
 
-<br/>
+<br />
 
 ![Example of data table](/images/design/space/spacing-regular-rhythm@2x.png)
 
 **Regular rhythm** is predictable, which makes it a useful way to organize large sets of objects that have the same level of importance.
 
-<br/>
+<br />
 
 ![Location profile page](/images/design/space/spacing-flowing-rhythm@2x.png)
 
 **Flowing rhythm** is organic, and it can bring a high level of scannability to something that would be otherwise a random collection of objects.
 
-<br/>
+<br />
 
 ![Home page with progressive disclosure card](/images/design/space/spacing-progressive-rhythm@2x.png)
 
@@ -222,7 +217,7 @@ Rhythm plays another job in designs, it’s the norm that enables the introducti
 
 ---
 
-<br/>
+<br />
 
 ### Density
 
@@ -235,7 +230,7 @@ Looser space (right) can help attract the user attention and make a layout feel 
 
 ---
 
-<br/>
+<br />
 
 ### Contrast
 
@@ -255,7 +250,7 @@ Home feed overview (left) and location profile analytics (right).
 
 ---
 
-<br/>
+<br />
 
 ### Optical adjustment
 
@@ -263,7 +258,7 @@ Sometimes software will say two objects are aligned, or that they have the same 
 
 That means designers must make optical corrections, using Polaris units until the space feels balanced. Some things to keep an eye out for:
 
-<br/>
+<br />
 
 #### Visual weight ≠ Size
 
@@ -277,7 +272,7 @@ Without optical adjustment, the disclosure icon appears too far from the right e
 
 The square icon seems larger compared to the circle icon without optical adjustment, however, they in fact have the same size and diameter. The shapes look visually closer to each other after decreasing the size of the square.
 
-<br/>
+<br />
 
 #### Colors affect each other
 

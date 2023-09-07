@@ -1,6 +1,5 @@
 ---
 title: Pagination
-description: Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling.
 category: Navigation
 keywords:
   - lists
@@ -30,6 +29,18 @@ examples:
     title: With label
     description: Add a label between navigation buttons to provide more context of the content being viewed by the user.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

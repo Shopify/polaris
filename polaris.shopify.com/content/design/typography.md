@@ -8,6 +8,10 @@ keywords:
 icon: TypeMajor
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ![An illustration of letters constructed from lego blocks](/images/design/typography/text-featured@2x.png)
 
 ## Working with typography
@@ -117,8 +121,11 @@ Large heading styles, `headingLg` - `heading4xl`, are responsive and will change
 
 Small heading styles, `headingXs` - `headingMd`, and body styles will remain the same size regardless of breakpoint unless specified. You can choose to adjust the size of these styles at specific breakpoints when needed. For instance, you may need to increase the size of important body text on smaller screens.
 
-<video width="100%" height="auto" controls autoplay muted loop>
-  <source src="/images/design/typography/text-responsive.mp4" type="video/mp4">
+<video width="100%" height="auto" controls autoPlay muted loop>
+  <source
+    src="/images/design/typography/text-responsive.mp4"
+    type="video/mp4"
+  />
 </video>
 
 ![An image showing how heading styles change based on breakpoint](/images/design/typography/type-responsive-styles@2x.png)
@@ -184,7 +191,7 @@ textarea {
 
 ## Mobile considerations
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -198,4 +205,4 @@ textarea {
 - Keep in mind that all UI elements containing text will be affected
 - Explore additional content height, width, truncation, and line wraps
 
-<!-- end -->
+</DoDont>

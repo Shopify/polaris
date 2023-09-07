@@ -6,7 +6,7 @@ hideFromNav: true
 
 This enables merchants to select a date range.
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -16,7 +16,7 @@ This enables merchants to select a date range.
 2. Displaying two months makes it easier for merchants to select date ranges that span across both.
 3. Selecting a date range may require multiple steps, so merchants prefer to explicitly confirm their selection, unlike the single date picker which closes on selection.
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
@@ -26,15 +26,15 @@ This enables merchants to select a date range.
 **Schedule an event**
 : When a merchant needs to schedule an event that spans multiple days, a date range picker is necessary.
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+<Usage>
 
 ## Using this pattern
 
 This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`Box`](/components/layout-and-structure/box), [`Button`](/components/actions/button), [`InlineGrid`](/components/layout-and-structure/inline-grid), [`DatePicker`](/components/selection-and-input/date-picker), [`InlineStack`](/components/layout-and-structure/inline-stack), [`OptionList`](/components/lists/option-list), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{
   paddingLeft: "2rem",
@@ -47,12 +47,12 @@ This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertica
 </div>
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"Date picking > Date range"}
 function DateRangePicker() {
   const {mdDown, lgUp} = useBreakpoints();
   const shouldShowMultiMonth = lgUp;
@@ -384,13 +384,22 @@ function DateRangePicker() {
 }
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
 
 ### Useful to know
 
-- <span>Pin any relevant, merchant-specific dates to the top of the option list.</span> ![List of date options such as “BFCM (2023)”](/images/patterns/date-picking/date-range-usage-1.png)
-- <span>If a date cannot be selected, indicate it with the [disabled text color token](/tokens/color)</span> ![Single-month calendar with a range of unselectable dates](/images/patterns/date-picking/date-range-usage-2.png)
-- <span>If a merchant enters a nonexistent date, revert to the previously selected date.</span> ![Calendar with date inputs reading an incorrect date](/images/patterns/date-picking/date-range-usage-3.png)
+<SideBySide>
 
-</div>
+- Pin any relevant, merchant-specific dates to the top of the option list.
+
+  ![List of date options such as “BFCM (2023)”](/images/patterns/date-picking/date-range-usage-1.png)
+
+- If a date cannot be selected, indicate it with the [disabled text color token](/tokens/color)
+
+  ![Single-month calendar with a range of unselectable dates](/images/patterns/date-picking/date-range-usage-2.png)
+
+- If a merchant enters a nonexistent date, revert to the previously selected date.
+
+  ![Calendar with date inputs reading an incorrect date](/images/patterns/date-picking/date-range-usage-3.png)
+
+</SideBySide>

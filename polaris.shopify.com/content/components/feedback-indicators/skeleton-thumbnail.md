@@ -1,6 +1,5 @@
 ---
 title: Skeleton thumbnail
-description: Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card.
 category: Feedback indicators
 releasedIn: 3.7.2
 keywords:
@@ -22,6 +21,18 @@ examples:
     title: Extra small
     description: Use this component to represent extra small thumbnails.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

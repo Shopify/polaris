@@ -1,6 +1,5 @@
 ---
 title: Block stack
-description: Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
   - layout
@@ -11,9 +10,7 @@ keywords:
   - equal width
   - right-aligned stack
   - stack layout
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+status: Alpha
 examples:
   - fileName: block-stack-with-gap.tsx
     title: Gap
@@ -28,6 +25,25 @@ examples:
     description: >-
       Control the horizontal alignment of children using the `inlineAlign` prop.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
+
+</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is a work in progress and ready for exploratory usage, with
+  breaking changes expected in minor version updates. Please use with caution.
+  Learn more about our [component
+  lifecycles](/getting-started/components-lifecycle).
+</StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

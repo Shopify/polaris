@@ -1,6 +1,5 @@
 ---
 title: Choice list
-description: A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 category: Selection and input
 keywords:
   - ChoiceList
@@ -36,6 +35,18 @@ examples:
     description: Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Choice lists should:
@@ -54,7 +65,7 @@ List titles should:
 
 - Help merchants understand how the items in the list are grouped together, or should explain what kind of choice merchants are making
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -64,7 +75,7 @@ Pick a shipping method
 
 Pick one
 
-<!-- end -->
+</DoDont>
 
 ### Be concise and scannable
 
@@ -73,7 +84,7 @@ Pick one
 - It the title introduces the list, it should end with a colon
 - Should be written in sentence case
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -83,11 +94,11 @@ Shipping options
 
 Shipping Options
 
-<!-- end -->
+</DoDont>
 
 ### Not use colons
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -103,7 +114,7 @@ If the customer abandons their checkout, send them an email reminder to complete
 - Option a
 - Option b
 
-<!-- end -->
+</DoDont>
 
 ### List choices
 
@@ -113,7 +124,7 @@ Every item in a choice list should:
 - Not use commas or semicolons at the end of each line
 - Be written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -127,7 +138,7 @@ Every item in a choice list should:
 - Yellow;
 - Item Three
 
-<!-- end -->
+</DoDont>
 
 ### Helper text and descriptions
 

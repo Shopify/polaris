@@ -19,6 +19,10 @@ keywords:
   - diverse
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 This includes:
 
 - A beautiful and functional design
@@ -57,7 +61,7 @@ Many accessibility features come free in the components. But, it’s important t
 
 Don’t programmatically move focus to new content without merchant input. Polaris components that use controls to display overlays, such as modals and popovers, manage focus automatically.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -70,7 +74,7 @@ Don’t programmatically move focus to new content without merchant input. Polar
 - Move focus when content updates in the background
 - Move focus when the user is actively working elsewhere on the page
 
-<!-- end -->
+</DoDont>
 
 The only case where focus should be managed without the merchant’s okay is when the merchant needs to be interrupted because they cannot continue their current workflow.
 

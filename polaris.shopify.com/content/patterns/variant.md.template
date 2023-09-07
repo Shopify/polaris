@@ -7,7 +7,7 @@ hideFromNav: true
 <!-- Optional when only 1 variant -->
 {description}
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -15,7 +15,7 @@ hideFromNav: true
 
 {ordered list}
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
@@ -23,9 +23,10 @@ hideFromNav: true
 <!-- **{term}** -->
 <!-- : {definition} -->
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+
+<Usage>
 
 ## Using this pattern
 
@@ -35,7 +36,7 @@ This pattern uses the <!-- [`Box`](/components/box), ... etc --> components.
 <!-- Useful for layout, etc. -->
 <!-- Will not be visible in the copy+paste code snippet. -->
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 <div>____CODE____</div>
 ```
@@ -44,26 +45,34 @@ This pattern uses the <!-- [`Box`](/components/box), ... etc --> components.
 <!-- Useful for getting it to play nice with Playroom.
 <!-- Will be visible in Playroom. Will not be visible in the copy+paste code snippet. -->
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 <div>____CODE____</div>
 ```
 
 <!-- The "id" here is used by the "for" of the above context codeblocks. -->
 <!-- Must have "type":"livePreview" to be rendered as a live preview. -->
+<!-- "title" will show up in the exported Sandbox code. -->
 
-<!-- prettier-ignore -->
-```javascript {"type":"livePreview","id":"example"}
+{/* prettier-ignore */}
+```javascript {"type":"livePreview","id":"example","title":"Some awesome variant"}
 <Page divider>
   <BlockStack gap="16">Coming Soon</BlockStack>
 </Page>
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
 
 ### Useful to know
 
-{A 2 column table with images in the 2nd column}
+<SideBySide>
 
-</div>
+- This text will be in the left hand column.
+
+  ![This image will be in the right hand column](https://placekitten.com/500/400)
+
+- This text will be in the left hand column.
+
+  ![This image will be in the right hand column](https://placekitten.com/500/400)
+
+</SideBySide>

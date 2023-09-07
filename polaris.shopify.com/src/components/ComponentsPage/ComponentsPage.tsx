@@ -11,7 +11,7 @@ import {Grid, GridItem} from '../Grid';
 import Page from '../Page';
 import ComponentThumbnail from '../ComponentThumbnail';
 
-const pages: SiteJSON = siteJson;
+const pages: SiteJSON = siteJson as unknown as SiteJSON;
 
 const components = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),

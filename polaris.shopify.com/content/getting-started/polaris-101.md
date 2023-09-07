@@ -7,6 +7,10 @@ keywords:
 order: 0
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## What’s the Shopify admin?
 
 Merchants set up their store, configure settings, and manage their business using the admin. It includes core aspects of the merchant’s business, including orders, products, and customers.

@@ -1,6 +1,5 @@
 ---
 title: Listbox
-description: A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements.
 category: Lists
 keywords:
   - list
@@ -24,6 +23,18 @@ examples:
     title: With search
     description: Use to help merchants browse, filter, and choose from a list of options.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Anatomy
 
@@ -53,7 +64,7 @@ Listboxes should:
 
 Each item in a `Listbox` should be clear and descriptive.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -63,7 +74,7 @@ Each item in a `Listbox` should be clear and descriptive.
 
 - Source
 
-<!-- end -->
+</DoDont>
 
 ## Patterns that use `Listbox`
 
@@ -86,7 +97,7 @@ The `Listbox` component is based on the [Aria 1.2 Listbox pattern](https://www.w
 
 It is important to not present interactive elements inside of list box options as they can interfere with navigation for assistive technology users.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -96,7 +107,7 @@ It is important to not present interactive elements inside of list box options a
 
 - Use interactive elements inside the list
 
-<!-- end -->
+</DoDont>
 
 ### Keyboard support
 

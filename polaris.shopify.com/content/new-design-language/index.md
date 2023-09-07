@@ -5,8 +5,6 @@ description: |
   To help apps match Shopify's new design language, this version is available in an early beta.
   This beta will automatically update out-of-the-box/mainline Polaris components, with some additional work to update your custom components to seamlessly match Shopify's design.
   The steps below will assist you in making these updates using our tools and tokens.
-  <br/>You can access the beta now or simply wait for the stable release in September
-  <br/>_(be sure to read '[what might break](#what-might-break-before-during-beta)' below)_.
 hideFromNav: true
 noIndex: true
 keywords:
@@ -20,6 +18,12 @@ keywords:
   - How to get the new design language
 order: 0
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+You can access the beta now or simply wait for the stable release in September<br/>_(be sure to read '[what might break](#what-might-break-before-during-beta)' below)_.
 
 ## Timeline
 
@@ -93,7 +97,7 @@ Addon panel (bottom) > `Feature flags` tab and Toggle `polarisSummerEditions2023
 The new design language comes with a web font called [Inter via Google Fonts](https://fonts.google.com/specimen/Inter).
 The beta references this font but doesn't load it. This will come later.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com/" />
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous" />

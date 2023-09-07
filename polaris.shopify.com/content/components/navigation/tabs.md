@@ -1,6 +1,5 @@
 ---
 title: Tabs
-description: Use to alternate among related views within the same context.
 category: Navigation
 keywords:
   - layout
@@ -31,6 +30,18 @@ examples:
     title: With custom disclosure
     description: Use to provide information about the popover contents.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use to alternate among related views within the same context.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

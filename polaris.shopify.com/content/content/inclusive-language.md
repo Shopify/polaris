@@ -31,6 +31,10 @@ keywords:
   - inclusive content
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Clear and precise language creates a better experience for all users. Everyone interacting with Shopify should feel welcome and included.
 
 Start by involving different perspectives in the planning process. Limit assumptions or biases by testing your content with a diverse audience. Recruit research participants from a variety of backgrounds, including historically excluded groups. Be aware of bias, and let those with lived experiences guide the way.
@@ -68,7 +72,7 @@ Don’t label actions or features using “disable” or “disabled.” This ca
 
 Note: Because “disabled” is a valid state for HTML elements, it’s currently considered appropriate when talking about specific element states.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -78,7 +82,7 @@ Note: Because “disabled” is a valid state for HTML elements, it’s currentl
 
 ![Setting toggle for abandoned carts with a status label that says “Off”. Action button is labeled “Turn on”.](/images/content/inclusive-language/setting-toggle-dont@2x.png)
 
-<!-- end -->
+</DoDont>
 
 #### Deaf
 
@@ -99,7 +103,7 @@ Only use this term to reference actual blindness, not as a metaphor.
 
 Avoid using these words to describe something as extreme or unbelievable.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -114,7 +118,7 @@ Avoid using these words to describe something as extreme or unbelievable.
 - crazy
 - nuts
 
-<!-- end -->
+</DoDont>
 
 #### Just, only, easy, etc.
 
@@ -130,7 +134,7 @@ While they are fine in the right context, watch out for these words:
 
 Note: When marketing, it’s okay to use these words to communicate the value of a new product or feature.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -140,9 +144,9 @@ Complete this 3 question survey to get started
 
 Take a second to fill out this easy questionnaire
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -152,7 +156,7 @@ Enter your email address and password
 
 Just put in your email address to get started
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -172,7 +176,7 @@ We want all merchants to feel comfortable participating in commerce. Even if uni
 
 Avoid these terms since they imply that “white is good” and “black is bad.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -184,13 +188,13 @@ Avoid these terms since they imply that “white is good” and “black is bad.
 - Black hat
 - White hat
 
-<!-- end -->
+</DoDont>
 
 #### Blacklist, whitelist
 
 Avoid these terms since they imply that “white is good” and “black is bad.”
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -204,9 +208,9 @@ Avoid these terms since they imply that “white is good” and “black is bad.
 - Whitelist
 - Graylist
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -216,9 +220,9 @@ Learn how to secure a compromised account and reset blocked credentials.
 
 Learn how to secure a compromised account and reset blacklisted credentials.
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -228,13 +232,13 @@ Add no-reply[at]shopify.com to your email provider’s allowlist.
 
 Add no-reply[at]shopify.com to your email provider’s whitelist.
 
-<!-- end -->
+</DoDont>
 
 #### Grandfather in, grandfather clause
 
 Avoid using these phrases, as they come from laws in the U.S. meant to circumvent or disenfranchise Black people’s rights.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -246,13 +250,13 @@ Avoid using these phrases, as they come from laws in the U.S. meant to circumven
 - Grandfather in, grandfathered in
 - Grandfather clause
 
-<!-- end -->
+</DoDont>
 
 #### Master
 
 Avoid using this term, as many associate it with the institution of slavery.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -265,7 +269,7 @@ Avoid using this term, as many associate it with the institution of slavery.
 
 - master
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -281,7 +285,7 @@ Many languages lack ungendered options, like the English “they.” When possib
 
 Always use someone’s preferred gender and pronouns. If you’re not sure, use the pronouns “they/them.” This keeps the content inclusive, simple, and readable.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -291,11 +295,11 @@ Call the customer to confirm their address
 
 Call the customer to confirm his or her address
 
-<!-- end -->
+</DoDont>
 
 If pronouns are necessary or useful to the experience, offer users an inclusive list of options that also allows them to opt out.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -305,11 +309,11 @@ If pronouns are necessary or useful to the experience, offer users an inclusive 
 
 ![Pronouns form field with multiple options including: “Prefer not to respond”, “She/her”, “He/him”, “They/them”,  and “Prefer to specify”.](/images/content/inclusive-language/pronouns-option-list-dont-example@2x.png)
 
-<!-- end -->
+</DoDont>
 
 Don’t use language that associates roles, qualities, or objects with a specific gender.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -323,6 +327,6 @@ Don’t use language that associates roles, qualities, or objects with a specifi
 - manpower
 - mailman
 
-<!-- end -->
+</DoDont>
 
 ---

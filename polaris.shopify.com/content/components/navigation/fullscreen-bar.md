@@ -1,6 +1,5 @@
 ---
 title: Fullscreen bar
-description: The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`.
 category: Navigation
 keywords:
   - topbar
@@ -16,6 +15,18 @@ examples:
     title: No children
     description: Use this default to show ONLY the Back button.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The Fullscreen bar is a header component that should be presented at the top of an app when it is in fullscreen mode. This is designed to ensure a uniform placement for a button to exit that mode. The Fullscreen bar can be customized by adding `children`.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

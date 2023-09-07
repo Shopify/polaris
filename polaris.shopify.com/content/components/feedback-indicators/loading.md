@@ -1,6 +1,5 @@
 ---
 title: Loading
-description: The loading component is used to indicate to merchants that a page is loading or an upload is processing.
 category: Feedback indicators
 keywords:
   - spinner
@@ -12,6 +11,18 @@ examples:
     title: Default
     description: Use to indicate that the page is loading.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The loading component is used to indicate to merchants that a page is loading or an upload is processing.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Required components
 

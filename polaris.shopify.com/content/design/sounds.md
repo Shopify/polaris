@@ -12,6 +12,10 @@ icon: SoundMajor
 
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## Principles
 
 ### Selectively urgent

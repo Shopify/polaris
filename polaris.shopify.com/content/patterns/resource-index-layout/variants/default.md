@@ -2,7 +2,7 @@
 hideFromNav: true
 ---
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -13,34 +13,34 @@ hideFromNav: true
 3. At the top of the index, merchants can use filters, sorting, and multi-select actions that affect the list below.
 4. In the main body of the index, merchants find the individual resource objects that they want to view or manage.
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
 **Overview and manage resources**
 : Resource objects, such as products, orders and customers, are at the heart of merchants’ businesses. While resource types can be very different, they typically share many general activities, such as adding, finding, or taking action. Use the resource index layout pattern when merchants need to organize objects and carry out such activities. An example can be found in Products.
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+<Usage>
 
 ## Using this pattern
 
 This pattern uses the [`Card`](/components/layout-and-structure/card), [`Badge`](/components/feedback-indicators/badge), [`ChoiceList`](/components/selection-and-input/choice-list), [`IndexFilter`](/components/selection-and-input/index-filters), [`IndexTable`](/components/tables/index-table) and [`Page`](/components/layout-and-structure/page) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{ paddingBottom: '2rem', height: '600px' }}>
   {(____CODE____)()}
 </div>
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"Resource index layout"}
 function IndexFiltersDefault() {
   function disambiguateLabel(key, value) {
     switch (key) {
@@ -380,13 +380,22 @@ function IndexFiltersDefault() {
 }
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
 
 ### Useful to know
 
-- <span>Use the resource type as page title.</span> ![“Orders” and “Gift cards” pages](/images/patterns/resource-index-layout/resource-index-usage-1.png)
-- <span>Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.</span> ![“Add product” primary action button on a resource index page](/images/patterns/resource-index-layout/resource-index-usage-2.png)
-- <span>Set the page width to normal if the index doesn’t need full width.</span> ![Index page with margins on either side of the main content](/images/patterns/resource-index-layout/resource-index-usage-3.png)
+<SideBySide>
 
-</div>
+- Use the resource type as page title.
+
+  ![“Orders” and “Gift cards” pages](/images/patterns/resource-index-layout/resource-index-usage-1.png)
+
+- Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.
+
+  ![“Add product” primary action button on a resource index page](/images/patterns/resource-index-layout/resource-index-usage-2.png)
+
+- Set the page width to normal if the index doesn’t need full width.
+
+  ![Index page with margins on either side of the main content](/images/patterns/resource-index-layout/resource-index-usage-3.png)
+
+</SideBySide>

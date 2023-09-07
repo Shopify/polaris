@@ -1,6 +1,5 @@
 ---
 title: Legacy card
-description: This is the legacy version of the Card component which is in the process of being updated to a more flexible and composable API. Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
 category: Deprecated
 keywords:
   - layout
@@ -21,9 +20,7 @@ keywords:
   - callout
   - call out
   - legacy card
-status:
-  value: Deprecated
-  message: This component is no longer supported. The new [Card component](/components/layout-and-structure/card) can be used in combination with the new layout primitives to achieve similar results to LegacyCard. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+status: Deprecated
 examples:
   - fileName: legacy-card-default.tsx
     title: Default
@@ -78,6 +75,25 @@ examples:
     description: Use when you need further control over the spacing of your card sections.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+This is the legacy version of the Card component which is in the process of being updated to a more flexible and composable API. Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
+
+</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is no longer supported. The new [Card
+  component](/components/layout-and-structure/card) can be used in combination
+  with the new layout primitives to achieve similar results to LegacyCard. Learn
+  more about our [component lifecycles](/getting-started/components-lifecycle).
+</StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Cards should:
@@ -102,7 +118,7 @@ Body content should be:
 
 - Actionable: start sentences with imperative verbs when telling merchants what actions are available to them (especially something new). Don’t use permissive language like “you can”.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -112,12 +128,12 @@ Get performance for all your sales channels.
 
 Now you can get performance data for all your sales channels.
 
-<!-- end -->
+</DoDont>
 
 - Structured for merchant success: always put the most critical information first.
 - Clear: use the verb “need” to help merchants understand when they’re required to do something.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -127,7 +143,7 @@ To buy a shipping label, you need to enter the total weight of your shipment, in
 
 To buy a shipping label, you must enter the total weight of your shipment, including packaging.
 
-<!-- end -->
+</DoDont>
 
 ### Call-to-action button
 
@@ -135,7 +151,7 @@ Buttons should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by mislabeling a button.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -147,11 +163,11 @@ Buttons should be:
 - New order
 - Buy
 
-<!-- end -->
+</DoDont>
 
-Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
+Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the \{verb\}+\{noun\} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -163,11 +179,11 @@ Action-led: buttons should always lead with a strong verb that encourages action
 - Try Apple Pay
 - View your settings
 
-<!-- end -->
+</DoDont>
 
 Scannable: Avoid unnecessary words and articles such as the, an, or a.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -177,7 +193,7 @@ Add menu item
 
 Add a menu item
 
-<!-- end -->
+</DoDont>
 
 ### Section titles
 
@@ -209,7 +225,7 @@ The required `title` prop gives the card a level 2 heading (`<h2>`). This helps 
 
 If you use the `subdued` prop on a card or section, make sure that the card or section `title` conveys the reason for using `subdued`. This ensures that merchants with low vision, including those who use screen readers, can identify that the content is inactive or less important.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -233,4 +249,4 @@ If you use the `subdued` prop on a card or section, make sure that the card or s
 </LegacyCard>
 ```
 
-<!-- end -->
+</DoDont>

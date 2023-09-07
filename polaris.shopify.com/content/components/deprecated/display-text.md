@@ -1,6 +1,5 @@
 ---
 title: Display text
-description: Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding.
 category: Deprecated
 keywords:
   - DisplayText
@@ -23,10 +22,24 @@ keywords:
   - visual story telling
   - visual storytelling
   - visual statements
-status:
-  value: Deprecated
-  message: This component is no longer supported. Please use the Text component instead.
+status: Deprecated
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Display styles make a bold visual statement. Use them to create impact when the main goal is visual storytelling. For example, use display text to convince or reassure merchants such as in marketing content or to capture attention during onboarding.
+
+</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is no longer supported. Please use the Text component instead.
+</StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Mapping to the Text component
 

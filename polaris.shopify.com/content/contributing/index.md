@@ -11,6 +11,10 @@ newSection: true
 icon: MobilePlusMajor
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Anyone, regardless of discipline, is encouraged to contribute to Polaris. We welcome everything from copy edits and bug fixes to new components.
 
 ## Should I contribute?
@@ -21,7 +25,7 @@ Minor contributions—like copy edits, bug fixes, and icons—are often worthwhi
 
 Major contributions, like patterns or some components, typically require more evaluation. This flowchart will help you decide whether or not your solution is right for Polaris. If you’re unsure, reach out to the Polaris team directly.
 
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FAJNvON5VAAG5vZAnX6iuVJ%2FShould-I-contribute-to-Polaris%253F%3Fnode-id%3D0%253A1%26t%3DsSVh7oVMUM9KXOnB-1" allowfullscreen></iframe>
+<iframe style={{border: "1px solid rgba(0, 0, 0, 0.1)"}} width="800" height="450" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FAJNvON5VAAG5vZAnX6iuVJ%2FShould-I-contribute-to-Polaris%253F%3Fnode-id%3D0%253A1%26t%3DsSVh7oVMUM9KXOnB-1" allowfullscreen></iframe>
 
 ## Contribution types
 
