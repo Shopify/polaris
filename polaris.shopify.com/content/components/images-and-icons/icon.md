@@ -1,6 +1,5 @@
 ---
 title: Icon
-description: Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
 category: Images and icons
 keywords:
   - iconography
@@ -29,13 +28,25 @@ examples:
     description: When using changing color of an svg and it uses currentColor, the white color is applied.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Accessibility
 
 Using icons can be a great help to merchants who have difficulties with reading, language, attention, and low vision.
 
 If the icon appears without text, then use the `accessibilityLabel` prop to give the icon a text alternative. This adds an `aria-label` that’s conveyed to screen reader users.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -63,7 +74,7 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 <Icon source={CirclePlusMinor} accessibilityLabel="Circle plus icon" />
 ```
 
-<!-- end -->
+</DoDont>
 
 ---
 

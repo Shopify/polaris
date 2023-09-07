@@ -1,6 +1,5 @@
 ---
 title: Button
-description: Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”.
 category: Actions
 keywords:
   - CTA
@@ -75,6 +74,18 @@ examples:
     description: Use when a button has been pressed and the associated action is in progress.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Buttons should:
@@ -140,7 +151,7 @@ To help support merchants who use speech activation software as well as sighted 
 
 When possible, give the button visible text that clearly conveys its purpose without the use of `accessibilityLabel`. When no additional content is needed, duplicating the button text with `accessibilityLabel` isn’t necessary.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -163,7 +174,7 @@ When possible, give the button visible text that clearly conveys its purpose wit
 <Button accessibilityLabel="Edit">Edit</Button>
 ```
 
-<!-- end -->
+</DoDont>
 
 #### External links
 
@@ -175,7 +186,7 @@ When you use the button component to create a link to an external resource:
 
 For more information on making accessible links, see the [link component](https://polaris.shopify.com/components/link).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -199,7 +210,7 @@ For more information on making accessible links, see the [link component](https:
 </Button>
 ```
 
-<!-- end -->
+</DoDont>
 
 ### Keyboard support
 

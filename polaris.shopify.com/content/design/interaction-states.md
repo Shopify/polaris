@@ -15,6 +15,10 @@ keywords:
   - state
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ![A collection of buttons in different states](/images/design/interaction-states/interaction-states-intro@2x.png)
 
 ---

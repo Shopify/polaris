@@ -1,6 +1,5 @@
 ---
 title: Button group
-description: Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
 category: Actions
 keywords:
   - ButtonGroup
@@ -29,6 +28,18 @@ examples:
     title: Pressed with segmented buttons
     description: Pressed buttons can be used in combination to create a toggle for other parts of the user interface.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

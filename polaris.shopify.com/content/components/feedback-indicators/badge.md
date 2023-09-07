@@ -1,6 +1,5 @@
 ---
 title: Badge
-description: Badges are used to inform merchants of the tone of an object or of an action that’s been taken.
 category: Feedback indicators
 keywords:
   - pills
@@ -50,6 +49,18 @@ examples:
     description: Use when the tone and progress accessibilityLabels are not appropriate to a given context.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Badges are used to inform merchants of the tone of an object or of an action that’s been taken.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Badges benefit merchants by:
@@ -90,13 +101,13 @@ The available badges for fulfillment tone are:
 - Unfulfilled
 - Restocked
 
-<!-- dodont -->
+<DoDont>
 
 #### Don’t
 
 Don’t use alternatives to existing badge options. Only create a new badge option if there aren’t any existing options to communicate the tone you need.
 
-<!-- end -->
+</DoDont>
 
 ---
 

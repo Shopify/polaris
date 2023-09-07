@@ -1,6 +1,5 @@
 ---
 title: Avatar
-description: Avatars are used to show a thumbnail representation of an individual or business in the interface.
 category: Images and icons
 keywords:
   - photo
@@ -29,6 +28,18 @@ examples:
     title: Extra small
     description: Use to present an avatar in a condensed layout, such as a data table cell or an action list item.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Avatars are used to show a thumbnail representation of an individual or business in the interface.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

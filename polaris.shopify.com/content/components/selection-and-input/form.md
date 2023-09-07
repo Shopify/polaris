@@ -1,6 +1,5 @@
 ---
 title: Form
-description: A wrapper component that handles the submission of forms.
 category: Selection and input
 keywords:
   - form
@@ -20,6 +19,18 @@ examples:
     title: Without native validation
     description: Use in forms to toggle native form validation.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A wrapper component that handles the submission of forms.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

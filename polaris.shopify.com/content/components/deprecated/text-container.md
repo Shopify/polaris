@@ -1,6 +1,5 @@
 ---
 title: Text container
-description: A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.
 category: Deprecated
 releasedIn: 1.9.0
 keywords:
@@ -11,9 +10,7 @@ keywords:
   - vertical
   - margin
   - padding
-status:
-  value: Deprecated
-  message: The TextContainer is a simple layout component which was made redundant by the VerticalStack component. Use VerticalStack with `gap` values of 2, 4, and 5 to replicate layouts.
+status: Deprecated
 examples:
   - fileName: text-container-default.tsx
     title: Default
@@ -25,6 +22,24 @@ examples:
     title: Loose
     description: Use the loose spacing option to separate concepts that are independent of each other.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.
+
+</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  The TextContainer is a simple layout component which was made redundant by the
+  BlockStack component. Use BlockStack with `gap` values of 2, 4, and 5 to
+  replicate layouts.
+</StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

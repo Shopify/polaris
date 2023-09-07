@@ -1,7 +1,7 @@
 ---
 title: Version 11 Color
 description: Learn about what changes were introduced to color in Polaris v11.
-imageUrl: /images/updates/new-colors-cover.png
+previewImg: /images/updates/new-colors-cover.png
 keywords:
   - color
   - tokens

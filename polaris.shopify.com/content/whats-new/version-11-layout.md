@@ -1,7 +1,7 @@
 ---
 title: Version 11 Layout
 description: Start using the new Polaris layout components.
-imageUrl: /images/design/layout/layout-banner.png
+previewImg: /images/design/layout/layout-banner.png
 keywords:
   - layout
   - bleed

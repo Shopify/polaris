@@ -1,6 +1,5 @@
 ---
 title: Inline error
-description: Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.
 category: Selection and input
 keywords:
   - InlineError
@@ -13,6 +12,18 @@ examples:
     title: Default
     description: Use when the merchant has entered information that is not valid into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Inline errors are brief, in-context messages that tell merchants something went wrong with a single or group of inputs in a form. Use inline errors to help merchants understand why a form input may not be valid and how to fix it.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -41,7 +52,7 @@ Inline error messages should:
 - Be short and concise, no more than a single sentence
 - Use [passive voice](https://polaris.shopify.com/content/grammar-and-mechanics) so merchants don’t feel like they’re being blamed for the error
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -51,7 +62,7 @@ Inline error messages should:
 
 - You didn’t enter a store name.
 
-<!-- end -->
+</DoDont>
 
 ---
 

@@ -6,7 +6,7 @@ hideFromNav: true
 
 This enables merchants to type a specific date or pick it from a calendar.
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -15,7 +15,7 @@ This enables merchants to type a specific date or pick it from a calendar.
 1. The text input gives merchants the option to use the keyboard to enter a date.
 2. A single month calendar allows merchants to select a date while seeing its relationship to other days.
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
@@ -25,25 +25,25 @@ This enables merchants to type a specific date or pick it from a calendar.
 **Input memorable dates to forms**
 : An example of this is entering a birthdate.
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+<Usage>
 
 ## Using this pattern
 
 This pattern uses the [`Card`](/components/layout-and-structure/card), [`DatePicker`](/components/selection-and-input/date-picker), [`Popover`](/components/overlays/popover) and [`TextField`](/components/selection-and-input/text-field) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 {(____CODE____)()}
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"Date picking > Single date"}
 function DatePickerExample() {
   function nodeContainsDescendant(rootNode, descendant) {
     if (rootNode === descendant) {
@@ -132,12 +132,18 @@ function DatePickerExample() {
 }
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
 
 ### Useful to know
 
-- <span>Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.</span> ![Date input labeled “Expiry date”](/images/patterns/date-picking/single-list-usage-1.png)
-- <span>This pattern can be duplicated to allow users to add an end date or time.</span> ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/date-picking/single-list-usage-2.png)
+<SideBySide>
 
-</div>
+- Labels need to simply depict the task at hand. Whether that be a start date, end date, start time etc.
+
+  ![Date input labeled “Expiry date”](/images/patterns/date-picking/single-list-usage-1.png)
+
+- This pattern can be duplicated to allow users to add an end date or time.
+
+  ![“Active dates” section with “start date” and “end date” inputs, toggled on with a “Set end date” checkbox](/images/patterns/date-picking/single-list-usage-2.png)
+
+</SideBySide>

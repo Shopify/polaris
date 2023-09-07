@@ -1,18 +1,20 @@
-import {Status} from '../../types';
+import type {PropsWithChildren} from 'react';
+import {StatusName} from '../../types';
 import {uppercaseFirst} from '../../utils/various';
 import styles from './StatusBanner.module.scss';
-import Markdown from '../Markdown';
 
-interface Props {
-  status: Status;
+interface Props extends PropsWithChildren {
+  status: StatusName;
 }
 
-function StatusBanner({status: {value, message}}: Props) {
+function StatusBanner({status, children}: Props) {
   return (
-    <div className={styles.StatusBanner} data-value={value.toLowerCase()}>
-      <h2>{uppercaseFirst(value)}</h2>
-      <Markdown>{message}</Markdown>
-    </div>
+    status && (
+      <div className={styles.StatusBanner} data-value={status.toLowerCase()}>
+        <h2>{uppercaseFirst(status)}</h2>
+        {children}
+      </div>
+    )
   );
 }
 

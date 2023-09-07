@@ -1,6 +1,5 @@
 ---
 title: Resource list
-description: A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
 category: Lists
 keywords:
   - ResourceList
@@ -68,6 +67,18 @@ examples:
     title: With all of its elements
     description: Use as a broad example that includes most props available to resource list.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 Resource lists can also:
 
@@ -146,7 +157,7 @@ Resource lists should:
 
 - Identify the type of resource, usually with a heading
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -157,11 +168,11 @@ Resource lists should:
 
 - _No heading_
 
-<!-- end -->
+</DoDont>
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -171,7 +182,7 @@ Resource lists should:
 
 - Products
 
-<!-- end -->
+</DoDont>
 
 - Follow the verb + noun formula for bulk actions
 

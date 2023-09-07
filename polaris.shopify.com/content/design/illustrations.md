@@ -11,6 +11,10 @@ icon: IllustrationMajor
 
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 ## Principles
 
 ### Always be useful

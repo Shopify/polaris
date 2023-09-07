@@ -1,6 +1,5 @@
 ---
 title: Account connection
-description: The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store.
 category: Actions
 keywords:
   - AccountConnection
@@ -19,6 +18,18 @@ examples:
     title: Default
     description: Use to let merchants connect or disconnect their store to their third-party accounts, like Facebook.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -44,7 +55,7 @@ The account connection title should be the name of the platform or service that 
 - Mailchimp account
 - Instagram account
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -56,13 +67,13 @@ The account connection title should be the name of the platform or service that 
 - Connect your Account
 - Instagram Account
 
-<!-- end -->
+</DoDont>
 
 ### Terms and conditions
 
 Clearly link to your terms and conditions and let merchants know about any additional costs of your service.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -73,13 +84,13 @@ Clearly link to your terms and conditions and let merchants know about any addit
 
 Learn about terms, conditions, and payment details.
 
-<!-- end -->
+</DoDont>
 
 ### Connect button
 
 Always use the verb Connect in the button of the account connection component. When merchants click or tap “Connect” it should open up your platform or service’s authorization page in a new browser window.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -89,7 +100,7 @@ Connect
 
 Connect to app
 
-<!-- end -->
+</DoDont>
 
 ---
 

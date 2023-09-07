@@ -1,6 +1,5 @@
 ---
 title: Contextual save bar
-description: The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
 category: Selection and input
 keywords:
   - form
@@ -22,6 +21,18 @@ examples:
     description: Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+The contextual save bar tells merchants their options once they have made changes to a form on the page. This component is also shown while creating a new object like a product or customer. Merchants can use this component to save or discard their work.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Required components
 
 The contextual save bar component must be wrapped in the [frame](https://polaris.shopify.com/components/frame) component.
@@ -41,14 +52,14 @@ The contextual save bar component should:
 
 ## Content guidelines
 
-Messages in the contextual save bar component should be informative, clear, and concise. They should follow the {adjective}+{noun} pattern. Don’t use full sentences.
+Messages in the contextual save bar component should be informative, clear, and concise. They should follow the \{adjective}+\{noun} pattern. Don’t use full sentences.
 
 The standard message content is
 
 - “Unsaved changes” when editing existing content
-- “Unsaved {resource name}” when creating a new object
+- “Unsaved \{resource name}” when creating a new object
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -60,11 +71,11 @@ The standard message content is
 - You have unsaved changes
 - Red and white striped shirt not yet saved
 
-<!-- end -->
+</DoDont>
 
 Actions in the contextual save bar component should consist of a strong verb that encourages action. They should not include a noun.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -76,7 +87,7 @@ Actions in the contextual save bar component should consist of a strong verb tha
 - Save changes
 - Discard changes
 
-<!-- end -->
+</DoDont>
 
 ---
 

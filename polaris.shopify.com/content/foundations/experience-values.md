@@ -30,6 +30,10 @@ keywords:
   - polished
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 These values are at the heart of how we build experiences at Shopify. They’re important whether you work at Shopify or you’re developing third-party apps or themes.
 
 ---

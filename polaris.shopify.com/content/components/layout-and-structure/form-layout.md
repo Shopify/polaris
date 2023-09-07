@@ -1,6 +1,5 @@
 ---
 title: Form layout
-description: Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
 category: Layout and structure
 keywords:
   - FormLayout
@@ -39,6 +38,18 @@ examples:
     description: For very short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Forms should:
@@ -63,7 +74,7 @@ A label is a short description of a field. Labels are not help text, and they sh
 - Short and succinct (1–3 words)
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -73,9 +84,9 @@ A label is a short description of a field. Labels are not help text, and they sh
 
 - What is your email address?
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -85,7 +96,7 @@ A label is a short description of a field. Labels are not help text, and they sh
 
 - My phone number is:
 
-<!-- end -->
+</DoDont>
 
 ### Help text
 

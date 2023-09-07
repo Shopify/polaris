@@ -12,20 +12,14 @@ import {PatternExample} from '../../types';
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
 
-const PlayroomButton = ({
-  code,
-  patternName,
-}: {
-  code: string;
-  patternName: string;
-}) => {
+const PlayroomButton = ({code, title}: {code: string; title?: string}) => {
   const [encodedUrl, setEncodedUrl] = useState('');
   useEffect(() => {
     setEncodedUrl(
       createUrl({
         baseUrl: '/sandbox/',
         code: endent`
-          {/* [Polaris Pattern] ${patternName} */}
+          ${title ? `{/* ${title} */}` : ''}
           {/* Generated on ${getISOStringYear()} from ${
           window.location.href
         } */}
@@ -38,7 +32,7 @@ const PlayroomButton = ({
         paramType: 'search',
       }),
     );
-  }, [code, patternName]);
+  }, [code, title]);
 
   return (
     <a
@@ -54,20 +48,26 @@ const PlayroomButton = ({
 
 const PatternsExample = ({
   example,
-  patternName,
-  showCode,
-  onCodeToggle,
+  title,
+  isCodeVisible = false,
+  isActionsVisible = true,
+  defaultHeight = '400px',
+  minHeight = '1rem',
+  onCodeVisibilityToggle,
 }: {
   example: PatternExample;
-  patternName: string;
-  showCode?: boolean;
-  onCodeToggle?: () => void;
+  title?: string;
+  isCodeVisible?: boolean;
+  isActionsVisible?: boolean;
+  defaultHeight?: string;
+  minHeight?: string;
+  onCodeVisibilityToggle?: () => void;
 }) => {
-  const isControlled = typeof showCode === 'undefined';
+  const isControlled = typeof isCodeVisible === 'undefined';
   const [codeActive, toggleCode] = useState(false);
-  const showCodeValue = isControlled ? codeActive : showCode;
+  const showCodeValue = isControlled ? codeActive : isCodeVisible;
   const handleCodeToggle = () => {
-    if (onCodeToggle) onCodeToggle();
+    if (onCodeVisibilityToggle) onCodeVisibilityToggle();
     if (isControlled) {
       toggleCode((codeActive) => !codeActive);
     }
@@ -110,13 +110,17 @@ const PatternsExample = ({
 
   const sandboxCode = example.sandboxContext
     ? formatCodeSnippet(
-        example.sandboxContext.replace(/____CODE____;?/, formattedCode),
+        example.sandboxContext
+          .replace(/\\\#/g, '')
+          .replace(/____CODE____;?/, formattedCode),
       )
     : formattedCode;
 
   const previewCode = example.previewContext
     ? formatCodeSnippet(
-        example.previewContext.replace(/____CODE____;?/, formattedCode),
+        example.previewContext
+          .replace(/\\\#/g, '')
+          .replace(/____CODE____;?/, formattedCode),
       )
     : formattedCode;
 
@@ -130,18 +134,23 @@ const PatternsExample = ({
     <Stack gap="2" className={styles.SpecificityBuster}>
       <ExampleWrapper
         className={styles.ExampleWrapper}
-        renderFrameActions={() => (
-          <Fragment>
-            <PlayroomButton code={sandboxCode} patternName={patternName} />
-            <LinkButton onClick={handleCodeToggle}>
-              {showCodeValue ? 'Hide code' : 'Show code'}
-            </LinkButton>
-          </Fragment>
-        )}
+        renderFrameActions={
+          isActionsVisible
+            ? () => (
+                <Fragment>
+                  <PlayroomButton code={sandboxCode} title={title} />
+                  <LinkButton onClick={handleCodeToggle}>
+                    {showCodeValue ? 'Hide code' : 'Show code'}
+                  </LinkButton>
+                </Fragment>
+              )
+            : undefined
+        }
       >
         <GrowFrame
           id="live-preview-iframe"
-          defaultHeight={'400px'}
+          defaultHeight={defaultHeight}
+          minHeight={minHeight}
           src={previewUrl}
         />
       </ExampleWrapper>

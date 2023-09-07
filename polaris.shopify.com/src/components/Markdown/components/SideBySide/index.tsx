@@ -1,11 +1,9 @@
 import {type PropsWithChildren, type ComponentType} from 'react';
-import {Stack} from '../../Stack';
+import {Box} from '../../../Box';
 import styles from './styles.module.scss';
 
 export const SideBySide: ComponentType<
   PropsWithChildren<{className: string}>
 > = ({children, className}) => (
-  <Stack gap="4" className={[styles.SideBySide, className]}>
-    {children}
-  </Stack>
+  <Box className={[styles.SideBySide, className]}>{children}</Box>
 );

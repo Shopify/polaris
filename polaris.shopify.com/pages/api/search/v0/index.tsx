@@ -8,6 +8,7 @@ import {
   GroupedSearchResults,
   searchResultCategories,
   SearchResultCategory,
+  FoundationsCategory,
   Status,
   SiteJSON,
   PatternFrontMatter,
@@ -17,7 +18,7 @@ import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
 
 import siteJson from '../../../../.cache/site.json';
 
-const pages: SiteJSON = siteJson;
+const pages: SiteJSON = siteJson as unknown as SiteJSON;
 
 const componentSlugs = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
@@ -126,7 +127,7 @@ const getSearchResults = (query?: string) => {
   // Add foundations
   foundationSlugs.forEach((slug) => {
     const {title, icon = '', description = ''} = pages[slug].frontMatter;
-    const category = slug.split('/')[0].toLowerCase();
+    const category = slug.split('/')[0].toLowerCase() as FoundationsCategory;
 
     results.push({
       id: slugify(`foundations ${title}`),

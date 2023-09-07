@@ -1,6 +1,5 @@
 ---
 title: Autocomplete
-description: The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options. It's a convenience wrapper around the `Combobox` and `Listbox` components with minor UI differences.
 category: Selection and input
 keywords:
   - autocomplete
@@ -37,6 +36,18 @@ examples:
     description: Use to help merchants complete a destructive action quickly.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+The autocomplete component is an input field that provides selectable suggestions as a merchant types into it. It allows merchants to quickly search through and select from large collections of options. It's a convenience wrapper around the `Combobox` and `Listbox` components with minor UI differences.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The autocomplete component should:
@@ -72,7 +83,7 @@ The autocomplete list displays below the text field or other control by default 
 
 Autocomplete features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the autocomplete.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -82,7 +93,7 @@ Use autocomplete as progressive enhancement to make the interface easier to use 
 
 Require that merchants make a selection from the autocomplete to complete a task.
 
-<!-- end -->
+</DoDont>
 
 ### Keyboard support
 
