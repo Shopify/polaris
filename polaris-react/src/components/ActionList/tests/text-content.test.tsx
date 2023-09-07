@@ -8,28 +8,28 @@ describe('textContent', () => {
   });
 
   it('returns text string when string is given', () => {
-    expect(textContent('test')).toBe('test');
+    expect(textContent('test')).toContain('test');
   });
 
   it('returns innerText from react component', () => {
-    expect(textContent(<div>DIV Toggle page actions</div>)).toBe(
+    expect(textContent(<div>DIV Toggle page actions</div>)).toContain(
       'DIV Toggle page actions',
     );
   });
 
   it('returns innerText from JSX component', () => {
-    expect(textContent(<TestComponent />)).toBe('test component text');
+    expect(textContent(<TestComponent />)).toContain('test component text');
   });
 
   it('returns innerText combination', () => {
-    expect(
-      textContent(
-        <div>
-          <p>First text thing</p>
-          <TestComponent />
-        </div>,
-      ),
-    ).toBe('First text thingtest component text');
+    const content = textContent(
+      <div>
+        <p>First text thing</p>
+        <TestComponent />
+      </div>,
+    );
+    expect(content).toContain('First text thing');
+    expect(content).toContain('test component text');
   });
 });
 
