@@ -39,6 +39,14 @@ examples:
     description: For very short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Forms should:

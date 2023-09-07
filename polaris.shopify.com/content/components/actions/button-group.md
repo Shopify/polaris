@@ -30,6 +30,14 @@ examples:
     description: Pressed buttons can be used in combination to create a toggle for other parts of the user interface.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Button groups should:

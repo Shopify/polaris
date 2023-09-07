@@ -69,6 +69,14 @@ examples:
     description: Use as a broad example that includes most props available to resource list.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 Resource lists can also:
 
 - Support [customized list items](https://polaris.shopify.com/components/resource-item)

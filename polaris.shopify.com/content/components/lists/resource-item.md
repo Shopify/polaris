@@ -38,6 +38,14 @@ examples:
     description: Use to adjust the vertical alignment of item content.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Required components
 
 The resource item component must be wrapped in the [resource list](https://polaris.shopify.com/components/resource-list) component.

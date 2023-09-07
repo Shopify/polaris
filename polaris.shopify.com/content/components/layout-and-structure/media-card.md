@@ -33,6 +33,14 @@ examples:
     description: Use when vertical screen space is not limited or when the video card is the page’s primary content. For example, in an empty state.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Media cards should:

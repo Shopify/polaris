@@ -31,6 +31,14 @@ examples:
     description: An IndexFilters component with only view management and sorting.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 Merchants use filters to:
 
 - Create different subsets of list items

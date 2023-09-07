@@ -23,6 +23,14 @@ examples:
     description: Use when you need to programmatically scroll a child component into view in the scrollable container.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Scrollable containers should:

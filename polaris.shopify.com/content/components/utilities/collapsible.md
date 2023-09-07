@@ -25,6 +25,14 @@ examples:
     description: Use for a basic “show more” interaction when you need to display more content.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The collapsible component should:

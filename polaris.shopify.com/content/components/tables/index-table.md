@@ -72,6 +72,14 @@ examples:
     description: An index table without checkboxes and bulk actions.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 Index tables can also:
 
 - Support [customized index rows and columns](https://polaris.shopify.com/components/resource-item)

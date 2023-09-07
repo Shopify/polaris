@@ -20,6 +20,14 @@ examples:
     description: Use to let merchants connect or disconnect their store to their third-party accounts, like Facebook.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The account component should:

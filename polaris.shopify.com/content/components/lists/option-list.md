@@ -27,6 +27,14 @@ examples:
     description: Use when a set of selections won’t fit in the available screen space.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The option list component should:

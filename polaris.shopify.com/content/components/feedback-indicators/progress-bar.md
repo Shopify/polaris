@@ -23,6 +23,14 @@ examples:
     description: Use the animated prop when you want to show a static progress bar.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Progress bar components should:

@@ -4,3 +4,11 @@ description: Establish hierarchy and communicate importance through text present
 expanded: true
 order: 6
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />

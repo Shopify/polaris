@@ -50,6 +50,14 @@ examples:
     description: This example shows how to use the shouldResizeIcon prop when using Major icons
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Required components
 
 The navigation component must be passed to the [frame](https://polaris.shopify.com/components/frame) component. The mobile version of the navigation component appears in the [top bar](https://polaris.shopify.com/components/top-bar) component.

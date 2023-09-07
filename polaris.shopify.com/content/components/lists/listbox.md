@@ -25,6 +25,14 @@ examples:
     description: Use to help merchants browse, filter, and choose from a list of options.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Anatomy
 
 ![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/images/components/lists/listbox/listbox-anatomy.png)

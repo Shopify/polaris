@@ -20,6 +20,14 @@ examples:
     description: Use this component to represent small display text such as content headings.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Skeleton display text component should:

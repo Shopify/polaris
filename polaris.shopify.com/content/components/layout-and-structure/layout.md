@@ -40,6 +40,14 @@ examples:
     description: Use for settings pages that need a banner or other content at the top.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The layout component should:

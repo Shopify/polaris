@@ -4,3 +4,11 @@ description: Components are the reusable building blocks for creating Shopify ad
 order: 7
 icon: AppsMajor
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />

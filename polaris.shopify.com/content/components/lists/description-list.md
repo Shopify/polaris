@@ -18,6 +18,14 @@ examples:
     description: Use when you need to present merchants with a list of items or terms alongside descriptions and explanations.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Description lists should:

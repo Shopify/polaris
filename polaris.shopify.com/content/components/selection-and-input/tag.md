@@ -31,6 +31,14 @@ examples:
     description: A removable attribute to an object that allows merchants to navigate to a resource.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Tags should:

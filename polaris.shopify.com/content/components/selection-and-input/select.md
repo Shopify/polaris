@@ -41,6 +41,14 @@ examples:
     description: Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The select component should:

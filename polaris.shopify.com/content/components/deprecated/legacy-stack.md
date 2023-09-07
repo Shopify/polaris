@@ -43,6 +43,10 @@ examples:
     description: Use for aligning buttons or secondary content to the right edge of another element, allowing it to wrap below on small screens.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 <StatusBanner status={frontmatter.status}>
   This component is no longer supported. The new [VerticalStack
   component](/components/layout-and-structure/vertical-stack) can be used in
@@ -50,6 +54,10 @@ examples:
   LegacyStack. Learn more about our [component
   lifecycles](/getting-started/components-lifecycle).
 </StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

@@ -28,6 +28,14 @@ examples:
     description: Use when two values need to be selected from a range of numbers.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Range sliders should:

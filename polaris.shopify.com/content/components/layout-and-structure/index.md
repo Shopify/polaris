@@ -26,6 +26,14 @@ groups:
       Layout compositions are built with layout primitives. Use these components to build common layouts in the admin with the help of sensible defaults.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 #### Related Resources
 
 - Check out the [Space](/design/space) guidelines to understand how to apply the Polaris spacing scale.

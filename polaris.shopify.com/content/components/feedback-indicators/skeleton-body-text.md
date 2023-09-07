@@ -17,6 +17,14 @@ examples:
     description: Use this component to represent a short, single line of text, like a timestamp.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Skeleton body text component should:

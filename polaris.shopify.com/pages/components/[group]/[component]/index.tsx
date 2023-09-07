@@ -48,31 +48,26 @@ const Components = ({
   type,
   editPageLinkPath,
 }: Props) => {
-  const componentExamples = Boolean(examples.length) && (
-    <ComponentExamples examples={examples} />
-  );
-  const propsTable =
-    type && mdx.frontmatter.status !== 'Deprecated' ? (
-      <PropsTable componentName={mdx.frontmatter.title} types={type} />
-    ) : null;
-
   return (
-    <Page
-      title={mdx.frontmatter.title}
-      editPageLinkPath={editPageLinkPath}
-      isContentPage
-    >
+    <Page editPageLinkPath={editPageLinkPath} isContentPage>
       <PageMeta
         title={mdx.frontmatter.title}
         description={mdx.frontmatter.description}
       />
 
-      {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
-      {componentExamples}
-
-      {propsTable}
-
-      <Markdown {...mdx} />
+      <Markdown
+        {...mdx}
+        components={{
+          Examples: () =>
+            Boolean(examples.length) ? (
+              <ComponentExamples examples={examples} />
+            ) : null,
+          Props: ({componentName}) =>
+            type && mdx.frontmatter.status !== 'Deprecated' ? (
+              <PropsTable componentName={componentName} types={type} />
+            ) : null,
+        }}
+      />
     </Page>
   );
 };

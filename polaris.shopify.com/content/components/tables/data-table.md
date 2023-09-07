@@ -45,6 +45,14 @@ examples:
     description: Use as a broad example that includes most props available to data table.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Data tables should:

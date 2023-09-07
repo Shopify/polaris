@@ -21,6 +21,14 @@ examples:
     description: Use in forms to toggle native form validation.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The form component should be used to:

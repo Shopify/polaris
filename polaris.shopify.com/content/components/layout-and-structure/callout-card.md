@@ -34,6 +34,14 @@ examples:
     description: Make all callout cards dismissible so merchants can get rid of cards about features they’re not interested in.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Callout cards should:

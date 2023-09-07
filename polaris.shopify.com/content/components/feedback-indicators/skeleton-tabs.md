@@ -15,6 +15,14 @@ examples:
     title: With a custom count
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Skeleton tabs component should:

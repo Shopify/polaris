@@ -23,6 +23,14 @@ examples:
     description: Use this component to represent extra small thumbnails.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Skeleton thumbnail component should:

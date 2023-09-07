@@ -17,6 +17,14 @@ examples:
     description: Use this default to show ONLY the Back button.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The Fullscreen bar component should:

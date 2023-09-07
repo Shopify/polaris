@@ -49,6 +49,14 @@ examples:
     description: Use to trigger the file dialog from an action somewhere else on the page.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 ### Drop zone

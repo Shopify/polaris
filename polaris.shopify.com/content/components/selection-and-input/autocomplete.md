@@ -37,6 +37,14 @@ examples:
     description: Use to help merchants complete a destructive action quickly.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The autocomplete component should:

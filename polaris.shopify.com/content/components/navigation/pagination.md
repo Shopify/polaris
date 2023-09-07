@@ -31,6 +31,14 @@ examples:
     description: Add a label between navigation buttons to provide more context of the content being viewed by the user.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 On all platforms, pagination should:

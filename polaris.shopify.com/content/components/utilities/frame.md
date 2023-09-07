@@ -25,6 +25,14 @@ examples:
     description: Use to present the frame structure and all of its elements with an offset provided to the theme.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 For the best experience when creating an application frame, use the following components:

@@ -28,6 +28,14 @@ examples:
     description: Use to render an icon inside of thumbnail.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 On web, thumbnails should:

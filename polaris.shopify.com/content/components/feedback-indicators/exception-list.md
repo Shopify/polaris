@@ -13,6 +13,14 @@ examples:
     description: Use icons to add clarity or assist in visualizing the meaning
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The exception list component should:

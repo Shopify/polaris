@@ -20,6 +20,14 @@ examples:
     description: Use in forms to toggle the state of something on or off. Default checkboxes can appear as selected and disabled, or unselected.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Checkboxes should:

@@ -26,6 +26,14 @@ examples:
     description: Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 - Use the alpha slider if you want to allow merchants to be able to select a transparent color

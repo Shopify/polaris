@@ -4,3 +4,11 @@ description: Provide merchants with easy-to-use interfaces for selecting options
 expanded: true
 order: 8
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />

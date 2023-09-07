@@ -27,6 +27,14 @@ examples:
     description: Use to create a custom secondary action.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Page actions should:

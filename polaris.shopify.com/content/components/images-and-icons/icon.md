@@ -29,6 +29,14 @@ examples:
     description: When using changing color of an svg and it uses currentColor, the white color is applied.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Accessibility
 
 Using icons can be a great help to merchants who have difficulties with reading, language, attention, and low vision.

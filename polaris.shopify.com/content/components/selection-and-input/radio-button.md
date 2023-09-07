@@ -20,6 +20,14 @@ examples:
     description: Use radio buttons where merchants must make a single selection.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Radio buttons should:

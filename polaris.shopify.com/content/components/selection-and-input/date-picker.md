@@ -34,6 +34,14 @@ examples:
     description: Dates may be disabed if you do not want them to be selectable
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 <TipBanner title="Tip">
   Check out the [new patterns section](https://polaris.shopify.com/patterns) to
   learn how merchants prefer to select dates in different scenarios!

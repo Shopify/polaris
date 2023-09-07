@@ -16,6 +16,14 @@ examples:
     description: Use to list a related set of keyboard shortcuts.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The keyboard key component should:

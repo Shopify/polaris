@@ -20,6 +20,14 @@ examples:
     description: Use to indicate the video’s play progress in relation to its duration.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Video thumbnails should:

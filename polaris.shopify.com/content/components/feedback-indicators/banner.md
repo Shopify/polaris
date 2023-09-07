@@ -57,6 +57,14 @@ examples:
     description: Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Banners should:

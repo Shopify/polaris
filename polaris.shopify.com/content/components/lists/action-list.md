@@ -36,6 +36,14 @@ examples:
     description: Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Actions lists should:

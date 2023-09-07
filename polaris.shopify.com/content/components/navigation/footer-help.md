@@ -20,6 +20,14 @@ examples:
     description: Use to direct merchants to more information related to the product or feature they’re working on.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Footer help should:

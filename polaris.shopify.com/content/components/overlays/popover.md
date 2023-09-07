@@ -38,6 +38,14 @@ examples:
     description: Use to help merchants browse, filter, and choose from a list of options.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Popovers should:

@@ -4,3 +4,11 @@ description: Access resources and move between sections, pages, or views in a st
 expanded: true
 order: 9
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />

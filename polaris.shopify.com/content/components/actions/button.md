@@ -75,6 +75,14 @@ examples:
     description: Use when a button has been pressed and the associated action is in progress.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Buttons should:

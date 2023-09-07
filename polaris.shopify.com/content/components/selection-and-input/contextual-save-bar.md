@@ -22,6 +22,14 @@ examples:
     description: Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Required components
 
 The contextual save bar component must be wrapped in the [frame](https://polaris.shopify.com/components/frame) component.

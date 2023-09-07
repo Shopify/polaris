@@ -27,6 +27,14 @@ examples:
     title: With query field disabled
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 Merchants use filters to:
 
 - view different subsets of items in a list or table

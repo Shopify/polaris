@@ -32,6 +32,14 @@ examples:
     description: Use to provide information about the popover contents.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Tabs should:

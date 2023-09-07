@@ -31,6 +31,14 @@ examples:
     description: Use to indicate to merchants that the list data is being fetched.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Anatomy
 
 ![A diagram of the Combobox component showing the smaller primitive components it is composed of.](/images/components/selection-and-input/combobox/combobox-anatomy.png)

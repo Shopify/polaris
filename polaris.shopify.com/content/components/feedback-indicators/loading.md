@@ -13,6 +13,14 @@ examples:
     description: Use to indicate that the page is loading.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Required components
 
 The loading component must be wrapped in the [frame](https://polaris.shopify.com/components/frame) component.

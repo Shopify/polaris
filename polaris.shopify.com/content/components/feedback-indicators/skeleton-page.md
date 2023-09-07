@@ -17,6 +17,14 @@ examples:
     description: Use this component to compose a loading version of a page where the page title and header content are known and stay the same.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Skeleton page component should:

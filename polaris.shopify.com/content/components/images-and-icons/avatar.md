@@ -30,6 +30,14 @@ examples:
     description: Use to present an avatar in a condensed layout, such as a data table cell or an action list item.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Avatars should be one of 4 sizes:

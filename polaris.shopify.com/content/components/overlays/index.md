@@ -4,3 +4,11 @@ description: Display contextual elements on top of the main admin interface that
 expanded: true
 order: 10
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />

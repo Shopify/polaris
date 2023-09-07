@@ -4,3 +4,11 @@ description: Choose or enter information using elements like checkboxes, text fi
 expanded: true
 order: 3
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />

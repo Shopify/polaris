@@ -4,3 +4,11 @@ description: Display, organize, and sort data for merchants to analyze and take 
 expanded: true
 order: 7
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />

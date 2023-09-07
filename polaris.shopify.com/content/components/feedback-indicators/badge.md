@@ -50,6 +50,14 @@ examples:
     description: Use when the tone and progress accessibilityLabels are not appropriate to a given context.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Badges benefit merchants by:

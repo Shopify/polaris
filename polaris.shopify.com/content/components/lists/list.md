@@ -21,6 +21,14 @@ examples:
     description: Use when there is limited space for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Lists should:
