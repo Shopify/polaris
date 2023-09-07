@@ -1,6 +1,5 @@
 ---
 title: Combobox
-description: Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values.
 category: Selection and input
 keywords:
   - autocomplete
@@ -30,6 +29,18 @@ examples:
     title: With loading
     description: Use to indicate to merchants that the list data is being fetched.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Anatomy
 
@@ -105,7 +116,7 @@ The `Combobox` popover displays below the text field or other control by default
 
 `Combobox` features can be challenging for merchants with visual, motor, and cognitive disabilities. Even when they’re built using best practices, these features can be difficult to use with some assistive technologies. Merchants should always be able to search, enter data, or perform other activities without relying on the combobox.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -115,7 +126,7 @@ The `Combobox` popover displays below the text field or other control by default
 
 - Require that merchants make a selection from the combobox to complete a task.
 
-<!-- end -->
+</DoDont>
 
 ### Keyboard support
 

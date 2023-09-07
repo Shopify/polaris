@@ -1,6 +1,7 @@
 import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
+import {VFile} from 'vfile';
 import {Text} from '@shopify/polaris';
 import {Grid, GridItem} from '../../../src/components/Grid';
 import Page from '../../../src/components/Page';
@@ -12,6 +13,8 @@ import PageMeta from '../../../src/components/PageMeta';
 import Longform from '../../../src/components/Longform';
 import Markdown from '../../../src/components/Markdown';
 import {Stack} from '../../../src/components/Stack';
+import type {SerializedMdx} from '../../../src/types';
+import {serializeMdx} from '../../../src/components/Markdown/serialize';
 
 interface Group {
   title?: string;
@@ -20,12 +23,12 @@ interface Group {
   tip?: string;
 }
 
-interface FrontMatter {
+type FrontMatter = {
   title?: string;
   description?: string;
   groups?: Group[];
   relatedResources?: string[];
-}
+};
 
 interface Props {
   group?: string;
@@ -34,16 +37,19 @@ interface Props {
   componentDescriptions?: {
     [key: string]: string;
   };
+  description: SerializedMdx;
+  mdx: SerializedMdx<FrontMatter>;
 }
 
 export default function GroupPage({
   group,
   components: componentPaths,
-  frontMatter,
+  description,
+  mdx,
   componentDescriptions,
 }: Props) {
-  const groups = frontMatter?.groups;
-  const relatedResources = frontMatter?.relatedResources;
+  const {frontmatter} = mdx;
+  const groups = frontmatter?.groups;
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
       <Stack gap="4">
@@ -104,43 +110,25 @@ export default function GroupPage({
     </Grid>
   );
 
-  const relatedResourcesMarkup = relatedResources
-    ? relatedResources && (
-        <Stack gap="4">
-          <Text as="h4" variant="headingLg">
-            Related resources
-          </Text>
-          <ul>
-            {relatedResources.map((resource) => (
-              <li
-                key={resource}
-                style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
-              >
-                <Markdown>{resource}</Markdown>
-              </li>
-            ))}
-          </ul>
-        </Stack>
-      )
-    : null;
-
   return (
-    <Page title={frontMatter?.title}>
+    <Page title={frontmatter?.title}>
       <PageMeta
-        title={frontMatter?.title}
-        description={frontMatter?.description}
+        title={frontmatter?.title}
+        description={frontmatter?.description}
       />
       <Stack gap="16">
         <Stack gap="4">
-          {frontMatter?.description && (
+          {description && (
             <Longform firstParagraphIsLede>
-              <Markdown>{frontMatter?.description}</Markdown>
+              <Markdown {...description} />
             </Longform>
           )}
 
           {groupsMarkup || componentsFromPaths}
         </Stack>
-        {relatedResourcesMarkup}
+        <Stack gap="4">
+          <Markdown {...mdx} />
+        </Stack>
       </Stack>
     </Page>
   );
@@ -179,18 +167,26 @@ export async function getStaticProps(context: {params: {group: string}}) {
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
 
   if (fs.existsSync(mdFilePath)) {
-    const componentMarkdown = fs.readFileSync(
-      `content/components/${group}/index.md`,
-      'utf-8',
-    );
+    const mdFilePath = `${process.cwd()}/content/components/${group}/index.md`;
 
-    const {frontMatter, readme} = parseMarkdown(componentMarkdown);
+    const [mdx] = await serializeMdx<FrontMatter>(mdFilePath, {
+      load: (filePath) => fs.readFileSync(filePath, 'utf-8'),
+    });
+    let description = null;
+
+    if (mdx.frontmatter.description) {
+      // Since this markdown didn't come from a real file, we use a VFile
+      // instead
+      [description] = await serializeMdx(
+        new VFile(mdx.frontmatter.description),
+      );
+    }
 
     return {
       props: {
         group,
-        frontMatter,
-        readme,
+        mdx,
+        description,
         editPageLinkPath,
         components,
         componentDescriptions: Object.fromEntries(componentDescriptions),

@@ -1,6 +1,5 @@
 ---
 title: Index table
-description: An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it.
 category: Tables
 keywords:
   - ResourceList
@@ -72,6 +71,18 @@ examples:
     description: An index table without checkboxes and bulk actions.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 Index tables can also:
 
 - Support [customized index rows and columns](https://polaris.shopify.com/components/resource-item)
@@ -141,7 +152,7 @@ Index tables should:
 
 - Identify the type of resource, usually with a heading
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -152,11 +163,11 @@ Index tables should:
 
 - _No heading_
 
-<!-- end -->
+</DoDont>
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -166,7 +177,7 @@ Index tables should:
 
 - Products
 
-<!-- end -->
+</DoDont>
 
 - Follow the verb + noun formula for bulk actions
 

@@ -1,6 +1,5 @@
 ---
 title: Radio button
-description: Use radio buttons to present each item in a list of options where merchants must make a single selection.
 category: Selection and input
 keywords:
   - RadioButton
@@ -19,6 +18,18 @@ examples:
     title: Default
     description: Use radio buttons where merchants must make a single selection.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use radio buttons to present each item in a list of options where merchants must make a single selection.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -46,7 +57,7 @@ Radio button labels should:
 - Be introduced with a colon or a heading
 - Start with a capital letter
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -56,11 +67,11 @@ Radio button labels should:
 
 - option 1
 
-<!-- end -->
+</DoDont>
 
 - Not end in punctuation if it’s a single sentence, word, or a fragment
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -70,7 +81,7 @@ Radio button labels should:
 
 - Red;
 
-<!-- end -->
+</DoDont>
 
 ### Toggle (Android and iOS only)
 

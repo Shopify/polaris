@@ -1,6 +1,5 @@
 ---
 title: Layout
-description: The layout component is used to create the main layout on a page. Layouts sections come in three main configurations. one-column, two-column, and annotated. One and two column layouts can be combined in the same page. Annotated layouts should be used on their own and only on settings pages.
 category: Layout and structure
 keywords:
   - one column
@@ -39,6 +38,18 @@ examples:
     title: Annotated with Banner at the top
     description: Use for settings pages that need a banner or other content at the top.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The layout component is used to create the main layout on a page. Layouts sections come in three main configurations. one-column, two-column, and annotated. One and two column layouts can be combined in the same page. Annotated layouts should be used on their own and only on settings pages.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

@@ -4,7 +4,7 @@ import styles from './ExampleWrapper.module.scss';
 
 type Props = {
   children: React.ReactNode;
-  renderFrameActions: () => React.ReactNode;
+  renderFrameActions?: () => React.ReactNode;
 };
 
 const ExampleWrapper = forwardRef(
@@ -16,9 +16,11 @@ const ExampleWrapper = forwardRef(
       {...props}
     >
       {children}
-      <Box className={[styles.Buttons, 'light-mode']}>
-        {renderFrameActions()}
-      </Box>
+      {renderFrameActions ? (
+        <Box className={[styles.Buttons, 'light-mode']}>
+          {renderFrameActions()}
+        </Box>
+      ) : null}
     </Box>
   ),
 ) as WithAsProp<Props, typeof Box, 'div'>;

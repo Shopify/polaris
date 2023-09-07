@@ -1,6 +1,5 @@
 ---
 title: Select
-description: Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
 category: Selection and input
 keywords:
   - on off
@@ -41,6 +40,18 @@ examples:
     description: Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The select component should:
@@ -63,7 +74,7 @@ Labels should:
 - Be independent sentences. To support [internationalization](https://polaris.shopify.com/foundations/internationalization), they should not act as the first part of a sentence that is finished by the component’s options.
 - Be descriptive, not instructional. If the selection needs more explanation, use help text below the field.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -73,9 +84,9 @@ Labels should:
 
 - What is your email address?
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -85,7 +96,7 @@ Labels should:
 
 - My phone number is:
 
-<!-- end -->
+</DoDont>
 
 ### Select options
 

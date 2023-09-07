@@ -1,6 +1,5 @@
 ---
 title: Sheet
-description: A sheet is a large container that enters from the edge of the screen when triggered by the merchant. It’s used to provide merchants with actions and information contextual to the page. It doesn’t interrupt their flow like a modal.
 category: Deprecated
 keywords:
   - sheet
@@ -10,9 +9,7 @@ keywords:
   - overlay
   - drawer
   - dialog
-status:
-  value: Deprecated
-  message: The sheet component encourages designers to create a new layer on top of the page instead of improving the existing user interface. It also blocks other parts of the UI, forces users to switch context, and adds complexity to otherwise simple interactions.
+status: Deprecated
 examples:
   - fileName: sheet-default.tsx
     title: Default
@@ -21,6 +18,25 @@ examples:
     title: With searchable listbox
     description: Use to help merchants browse, filter, and choose from a list of options.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A sheet is a large container that enters from the edge of the screen when triggered by the merchant. It’s used to provide merchants with actions and information contextual to the page. It doesn’t interrupt their flow like a modal.
+
+</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  The sheet component encourages designers to create a new layer on top of the
+  page instead of improving the existing user interface. It also blocks other
+  parts of the UI, forces users to switch context, and adds complexity to
+  otherwise simple interactions.
+</StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Accessibility
 

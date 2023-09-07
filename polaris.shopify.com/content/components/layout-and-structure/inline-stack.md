@@ -1,6 +1,5 @@
 ---
 title: Inline stack
-description: Use to display children horizontally in a row. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
   - layout
@@ -14,9 +13,7 @@ keywords:
   - vertical centering
   - horizontal row of components
   - stack
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+status: Alpha
 examples:
   - fileName: inline-stack-with-non-wrapping.tsx
     title: Non-wrapping
@@ -35,6 +32,25 @@ examples:
     description: >-
       Control the horizontal alignment of children using the `align` prop.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use to display children horizontally in a row. Based on CSS Flexbox.
+
+</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is a work in progress and ready for exploratory usage, with
+  breaking changes expected in minor version updates. Please use with caution.
+  Learn more about our [component
+  lifecycles](/getting-started/components-lifecycle).
+</StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Related components
 

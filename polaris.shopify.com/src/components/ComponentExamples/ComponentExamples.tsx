@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import type {SerializedMdx} from '../../types';
 import styles from './ComponentExamples.module.scss';
 import CodesandboxButton from '../CodesandboxButton';
 import Code from '../Code';
@@ -16,8 +17,15 @@ export type ComponentExample = {
   title: string;
 };
 
+export type ComponentExampleSerialized = {
+  code: string;
+  description: SerializedMdx | null;
+  fileName: string;
+  title: string;
+};
+
 interface Props {
-  examples: ComponentExample[];
+  examples: ComponentExampleSerialized[];
 }
 
 // https://stackoverflow.com/a/60338028
@@ -102,7 +110,7 @@ const ComponentExamples = ({examples}: Props) => {
 
           return (
             <Tab.Panel key={fileName}>
-              {description ? <Markdown>{description}</Markdown> : null}
+              {description ? <Markdown {...description} /> : null}
               <div className={styles.ExampleFrame}>
                 <iframe
                   src={exampleUrl}

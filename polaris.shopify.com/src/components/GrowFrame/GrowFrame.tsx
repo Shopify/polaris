@@ -1,46 +1,83 @@
 import {forwardRef, ForwardedRef, useRef, useEffect, useState} from 'react';
 import {mergeRefs} from 'react-merge-refs';
+import {nanoid} from 'nanoid';
 
 interface GrowFrameProps extends React.HTMLProps<HTMLIFrameElement> {
-  defaultHeight: string;
+  // A CSS length value to set the default height during initial render (before
+  // the iframe has reported its actual height). Default: 400px
+  defaultHeight?: string;
+  // Prevent an iframe from going too small. Default: 0px
+  minHeight?: string;
   onContentLoad?: () => void;
 }
 
-const FRAME_ID = 'POLARIS_GROWFRAME';
 export const updateGrowFrameHeight = (height: string) => {
-  const payload = {height, id: FRAME_ID};
-  window.parent.postMessage(payload);
+  // No-op when not an iframe, or for cross-origin iframes
+  if (!window.frameElement) {
+    return;
+  }
+
+  window.parent.postMessage({
+    height,
+    id: window.frameElement.getAttribute('data-frame-id'),
+  });
 };
+
 const GrowFrame = forwardRef(
   (
-    {defaultHeight, onContentLoad, ...props}: GrowFrameProps,
+    {
+      defaultHeight = '400px',
+      minHeight = '0px',
+      onContentLoad,
+      ...props
+    }: GrowFrameProps,
     ref: ForwardedRef<HTMLIFrameElement>,
   ) => {
     const growFrameRef = useRef<HTMLIFrameElement | null>(null);
     const [height, setHeight] = useState(defaultHeight);
-    // TODO: we'll need to make this reliable to address network delay.
+
+    // Every frame gets a unique ID to send messages back and forth without
+    // cross-communication when there's multiple iframes on a page
+    const frameId = useRef<string>(nanoid());
+
+    // We need to render a placeholder, attach the grow frame event listener,
+    // THEN render the iframe to ensure we don't miss any incoming events
+    // accidentally.
+    const [showPlaceholder, setShowPlaceholder] = useState(true);
+
     useEffect(() => {
       const messageReceiver = (e: MessageEvent) => {
         if (
           e.source !== growFrameRef?.current?.contentWindow ||
-          !e.data ||
           typeof e.data !== 'object'
         ) {
           return;
         }
         const {id, height} = e.data;
-        if (id === FRAME_ID && typeof height === 'string') {
+        if (id === frameId.current && typeof height === 'string') {
           setHeight(height);
           requestAnimationFrame(() => onContentLoad?.());
         }
       };
       window.addEventListener('message', messageReceiver);
+
+      // Now that we're ready to receive events, we can go ahead and render the
+      // iframe instead
+      setShowPlaceholder(false);
       return () => {
         window.removeEventListener('message', messageReceiver);
       };
     }, [onContentLoad]);
-    return (
-      <iframe ref={mergeRefs([growFrameRef, ref])} {...props} height={height} />
+
+    return showPlaceholder ? (
+      <div style={{height, minHeight}} />
+    ) : (
+      <iframe
+        ref={mergeRefs([growFrameRef, ref])}
+        {...props}
+        data-frame-id={frameId.current}
+        style={{height, minHeight}}
+      />
     );
   },
 );

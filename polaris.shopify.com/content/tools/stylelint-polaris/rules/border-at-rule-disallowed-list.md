@@ -7,6 +7,15 @@ keywords:
   - border rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="border" />
+
 ```diff
 // Do
 + outline: var(--p-border-width-1) solid transparent;
@@ -25,3 +34,5 @@ NOTE: The `focus-ring` at rule does not currently have an equivalent token or co
 // Don't
 - @include focus-ring
 ```
+
+<RulePostamble />

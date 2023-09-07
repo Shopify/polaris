@@ -1,6 +1,5 @@
 ---
 title: Legacy tabs
-description: Use to alternate among related views within the same context.
 category: Deprecated
 keywords:
   - layout
@@ -11,9 +10,7 @@ keywords:
   - fitted tabs
   - segmented controls
   - scrollable
-status:
-  value: Deprecated
-  message: This component is no longer supported. The new [Tabs component](/components/navigation/tabs) can be used as a standalone component, but is used primarily within [IndexFilters](/components/selection-and-input/index-filters) for navigating and creating saved views of filtered IndexTables. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+status: Deprecated
 examples:
   - fileName: legacy-tabs-default.tsx
     title: Default
@@ -28,6 +25,27 @@ examples:
     title: With custom disclosure
     description: Use to provide information about the popover contents
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use to alternate among related views within the same context.
+
+</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is no longer supported. The new [Tabs
+  component](/components/navigation/tabs) can be used as a standalone component,
+  but is used primarily within
+  [IndexFilters](/components/selection-and-input/index-filters) for navigating
+  and creating saved views of filtered IndexTables. Learn more about our
+  [component lifecycles](/getting-started/components-lifecycle).
+</StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

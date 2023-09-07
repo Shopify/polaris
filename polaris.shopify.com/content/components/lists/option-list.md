@@ -1,6 +1,5 @@
 ---
 title: Option list
-description: The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu.
 category: Lists
 keywords:
   - option list
@@ -27,6 +26,18 @@ examples:
     description: Use when a set of selections won’t fit in the available screen space.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+The option list component lets you create a list of grouped items that merchants can pick from. This can include single selection or multiple selection of options. Option list usually appears in a popover, and sometimes in a modal or a sidebar. Option lists are styled differently than [choice lists](https://polaris.shopify.com/components/choice-list) and should not be used within a form, but as a standalone menu.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 The option list component should:
@@ -42,7 +53,7 @@ The option list component should:
 
 Each item in an option list should be clear and descriptive.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -52,7 +63,7 @@ Each item in an option list should be clear and descriptive.
 
 - Source
 
-<!-- end -->
+</DoDont>
 
 ---
 

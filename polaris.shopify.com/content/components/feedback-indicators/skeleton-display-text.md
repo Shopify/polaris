@@ -1,6 +1,5 @@
 ---
 title: Skeleton display text
-description: Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -20,6 +19,18 @@ examples:
     description: Use this component to represent small display text such as content headings.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Skeleton display text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
 ## Best practices
 
 Skeleton display text component should:
@@ -35,7 +46,7 @@ Skeleton display text component should:
 
 Show static display text that that never changes on a page. For example, keep page titles, such as Products on the product list page, but use skeleton loading for page titles that change on the product details page.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -47,9 +58,9 @@ Show actual display text for static content and use skeleton display text for dy
 Use skeleton display text for static content or placeholder content for dynamic content.
 ![Image showing skeleton display text for static content and placeholder text for dynamic content](/images/components/feedback-indicators/skeleton-display-text/dont-use-skeleton-for-static-or-placeholder-content-for-dynamic@2x.png)
 
-<!-- end -->
+</DoDont>
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -57,7 +68,7 @@ Show skeleton display text for dynamic page titles.
 
 ![Image showing skeleton display text for dynamic page title](/images/components/feedback-indicators/skeleton-display-text/do-use-skeleton-for-dynamic-page-titles@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 

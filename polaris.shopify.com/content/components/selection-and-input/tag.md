@@ -1,6 +1,5 @@
 ---
 title: Tag
-description: Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants.
 category: Selection and input
 keywords:
   - indicator
@@ -30,6 +29,18 @@ examples:
     title: Removable with link
     description: A removable attribute to an object that allows merchants to navigate to a resource.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Tags represent a set of interactive, merchant-supplied keywords that help label, organize, and categorize objects. Tags can be added or removed from an object by merchants.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
