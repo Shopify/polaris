@@ -8,6 +8,10 @@ export type {
   MetadataGroup,
 } from './types';
 
+export type {ThemeName} from './themes/types';
+
+export {themeNameDefault} from './themes/constants';
+
 export type {
   BorderTokenGroup,
   BorderTokenName,
