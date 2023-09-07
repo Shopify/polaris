@@ -282,7 +282,12 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   return {props};
 };
 
-const catchAllTemplateExcludeList = ['/icons', '/tokens', '/sandbox'];
+const catchAllTemplateExcludeList = [
+  '/icons',
+  '/tokens',
+  '/sandbox',
+  '/tools/stylelint-polaris/rules',
+];
 
 function fileShouldNotBeRenderedWithCatchAllTemplate(
   filePath: string,
