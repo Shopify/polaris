@@ -15,6 +15,7 @@ export function textContent(
   if (Array.isArray(children)) {
     return children.map(textContent).join('');
   } else if (typeof elem?.type === 'function') {
+    console.log('is function', elem.type());
     return textContent(elem.type());
   }
 
