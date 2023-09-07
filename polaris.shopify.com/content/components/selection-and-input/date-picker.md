@@ -34,6 +34,11 @@ examples:
     description: Dates may be disabed if you do not want them to be selectable
 ---
 
+<TipBanner title="Tip">
+  Check out the [new patterns section](https://polaris.shopify.com/patterns) to
+  learn how merchants prefer to select dates in different scenarios!
+</TipBanner>
+
 ## Best practices
 
 Date pickers should:

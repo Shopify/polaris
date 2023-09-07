@@ -175,13 +175,17 @@ export enum Breakpoints {
   DesktopLarge = 1600,
 }
 
-export type StatusName = string;
+export enum StatusName {
+  New = 'New',
+  Deprecated = 'Deprecated',
+  Alpha = 'Alpha',
+  Beta = 'Beta',
+  Information = 'Information',
+  Legacy = 'Legacy',
+  Warning = 'Warning',
+}
 
-export type Status = {
-  value: StatusName;
-  message?: string;
-  mdx?: SerializedMdx;
-};
+export type Status = StatusName;
 
 export interface QuickGuideRow {
   question: string;

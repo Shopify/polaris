@@ -18,9 +18,7 @@ keywords:
   - stack layout
   - layout
   - legacy stack
-status:
-  value: Deprecated
-  message: This component is no longer supported. The new [VerticalStack component](/components/layout-and-structure/vertical-stack) can be used in combination with the new layout primitives to achieve similar results to LegacyStack. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
+status: Deprecated
 examples:
   - fileName: legacy-stack-default.tsx
     title: Default
@@ -44,6 +42,14 @@ examples:
     title: Where a single item fills the remaining space
     description: Use for aligning buttons or secondary content to the right edge of another element, allowing it to wrap below on small screens.
 ---
+
+<StatusBanner status={frontmatter.status}>
+  This component is no longer supported. The new [VerticalStack
+  component](/components/layout-and-structure/vertical-stack) can be used in
+  combination with the new layout primitives to achieve similar results to
+  LegacyStack. Learn more about our [component
+  lifecycles](/getting-started/components-lifecycle).
+</StatusBanner>
 
 ## Best practices
 

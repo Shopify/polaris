@@ -19,10 +19,12 @@ keywords:
   - decrease
   - input
   - fields
-status:
-  value: Deprecated
-  message: This component is no longer supported. Please use the Text component instead.
+status: Deprecated
 ---
+
+<StatusBanner status={frontmatter.status}>
+  This component is no longer supported. Please use the Text component instead.
+</StatusBanner>
 
 ## Mapping to the Text component
 

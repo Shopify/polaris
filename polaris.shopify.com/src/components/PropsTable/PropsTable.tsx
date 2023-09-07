@@ -218,12 +218,9 @@ function TypeTable({
                         )}
                         {deprecationMessage && (
                           <p className={styles.DeprecationNotice}>
-                            <StatusBadge
-                              status={{
-                                message: 'Deprecated',
-                                value: 'Warning',
-                              }}
-                            />{' '}
+                            <StatusBadge status={StatusName.Warning}>
+                              Deprecated
+                            </StatusBadge>{' '}
                             {endWithPeriod(deprecationMessage)}
                           </p>
                         )}

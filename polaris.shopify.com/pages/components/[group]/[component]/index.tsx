@@ -8,7 +8,6 @@ import type {
   ComponentExample,
   ComponentExampleSerialized,
 } from '../../../../src/components/ComponentExamples';
-import Longform from '../../../../src/components/Longform';
 import {serializeMdx} from '../../../../src/components/Markdown/serialize';
 import Markdown from '../../../../src/components/Markdown';
 import Page from '../../../../src/components/Page';
@@ -22,7 +21,6 @@ import type {
 } from '../../../../src/types';
 import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
-import StatusBanner from '../../../../src/components/StatusBanner';
 
 type FrontMatter = {
   status?: Status;
@@ -33,7 +31,6 @@ type FrontMatter = {
 
 interface Props {
   mdx: SerializedMdx<FrontMatter>;
-  status: Status | null;
   descriptionMdx: SerializedMdx | null;
   examples: ComponentExampleSerialized[];
   type: FilteredTypes;
@@ -50,14 +47,12 @@ const Components = ({
   descriptionMdx,
   type,
   editPageLinkPath,
-  status,
 }: Props) => {
   const componentExamples = Boolean(examples.length) && (
     <ComponentExamples examples={examples} />
   );
-
   const propsTable =
-    type && mdx?.frontmatter?.status?.value !== 'Deprecated' ? (
+    type && mdx.frontmatter.status !== 'Deprecated' ? (
       <PropsTable componentName={mdx.frontmatter.title} types={type} />
     ) : null;
 
@@ -72,17 +67,12 @@ const Components = ({
         description={mdx.frontmatter.description}
       />
 
-      <Longform>
-        {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
-        {status && <StatusBanner status={status} />}
-        {componentExamples}
-      </Longform>
+      {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
+      {componentExamples}
 
       {propsTable}
 
-      <Longform firstParagraphIsLede={false}>
-        <Markdown {...mdx} />
-      </Longform>
+      <Markdown {...mdx} />
     </Page>
   );
 };
@@ -154,26 +144,11 @@ export const getStaticProps: GetStaticProps<
       allType,
       propName,
       `polaris-react/src/components/${componentDirName}/${componentDirName}.tsx`,
-      mdx.frontmatter.status?.value || '',
+      mdx.frontmatter.status || '',
     );
-
-    let status = null;
-
-    if (mdx.frontmatter?.status?.value && mdx.frontmatter.status.message) {
-      // Since this markdown didn't come from a real file, we use a VFile
-      // instead
-      const [message] = await serializeMdx(
-        new VFile(mdx.frontmatter.status.message),
-      );
-      status = {
-        value: mdx.frontmatter.status.value.toLowerCase() as Status['value'],
-        mdx: message,
-      };
-    }
 
     const props: Props = {
       mdx,
-      status,
       examples,
       descriptionMdx,
       type,
