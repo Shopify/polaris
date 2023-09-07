@@ -1,3 +1,4 @@
+import type {PropsWithChildren} from 'react';
 import React from 'react';
 
 import {textContent} from '../utils/text-content';
@@ -31,6 +32,28 @@ describe('textContent', () => {
     expect(content).toContain('First text thing');
     expect(content).toContain('test component text');
   });
+
+  it('returns innerText from JSX component with children', () => {
+    expect(
+      textContent(
+        <TestComponentWithProps>
+          <TestComponentWithProps>
+            test component text from props
+          </TestComponentWithProps>
+          <TestComponentWithProps>
+            test component text from props
+            <TestComponentWithProps>
+              test component text from props
+            </TestComponentWithProps>
+          </TestComponentWithProps>
+          <p>test component text from props</p>
+        </TestComponentWithProps>,
+      ),
+    ).toContain('test component text from props');
+  });
 });
 
 const TestComponent = () => <p>test component text</p>;
+const TestComponentWithProps = ({children}: PropsWithChildren) => (
+  <div>{children}</div>
+);
