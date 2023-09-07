@@ -19,7 +19,7 @@ export type ComponentExample = {
 
 export type ComponentExampleSerialized = {
   code: string;
-  description: SerializedMdx;
+  description?: SerializedMdx | null;
   fileName: string;
   title: string;
 };
@@ -107,10 +107,6 @@ const ComponentExamples = ({examples}: Props) => {
       <Tab.Panels>
         {examples.map(({fileName, description, code}) => {
           const exampleUrl = `/examples/${fileName.replace('.tsx', '')}`;
-
-          if (description) {
-            console.log('ComponentExamples.description', description);
-          }
 
           return (
             <Tab.Panel key={fileName}>

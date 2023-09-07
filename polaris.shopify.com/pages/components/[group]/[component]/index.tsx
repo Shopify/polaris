@@ -101,7 +101,7 @@ export const getStaticProps: GetStaticProps<
       // Since this markdown didn't come from a real file, we use a VFile
       // instead
       [descriptionMdx] = await serializeMdx(
-        new VFile({path: componentSlug, value: mdx.frontmatter.description}),
+        new VFile({path: mdFilePath, value: mdx.frontmatter.description}),
       );
     }
 
@@ -124,9 +124,13 @@ export const getStaticProps: GetStaticProps<
 
           // Since this markdown didn't come from a real file, we use a VFile
           // instead
-          const [description] = await serializeMdx(
-            new VFile({value: example.description, path: componentSlug}),
-          );
+          let description = null;
+
+          if (example.description) {
+            [description] = await serializeMdx(
+              new VFile({value: example.description, path: mdFilePath}),
+            );
+          }
 
           return {...example, description, code};
         },
