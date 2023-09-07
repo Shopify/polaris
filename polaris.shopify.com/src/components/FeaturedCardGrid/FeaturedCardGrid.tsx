@@ -7,7 +7,6 @@ export function FeaturedCardGrid({posts}: {posts: RichCardGridProps[]}) {
   let featured: RichCardGridProps | undefined;
 
   const gridPosts = posts.filter((post) => {
-    console.log(post);
     if (post.featured) {
       featured = post;
     } else {
