@@ -7,21 +7,20 @@ import type {
   ExtractMetaThemeValues,
   ExtractMetaTokenGroupValues,
   MetaThemeShape,
-  MetaThemeVariant,
-  MetaThemeVariantPartialShape,
+  MetaTheme,
+  MetaThemePartialShape,
   MetaTokenGroupShape,
   ThemeName,
 } from './types';
 import {themeNameLightUplift} from './constants';
 import {metaThemeBase} from './base';
 
-export const createMetaThemeVariantPartial =
-  createExact<MetaThemeVariantPartialShape>();
+export const createMetaThemePartial = createExact<MetaThemePartialShape>();
 
-export function createMetaThemeVariant<
-  T extends Exact<MetaThemeVariantPartialShape, T>,
->(metaThemeVariantPartial: T): MetaThemeVariant {
-  return deepmerge(metaThemeBase, metaThemeVariantPartial);
+export function createMetaTheme<T extends Exact<MetaThemePartialShape, T>>(
+  metaThemePartial: T,
+): MetaTheme {
+  return deepmerge(metaThemeBase, metaThemePartial);
 }
 
 export function createThemeClassName(themeName: ThemeName) {

@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import type {MetaThemeShape, MetaTokenGroupShape} from '../src/themes/types';
-import {metaThemeVariantPartials, metaThemeDefault} from '../src/themes';
+import {metaThemePartials, metaThemeDefault} from '../src/themes';
 import {themeNameDefault} from '../src/themes/constants';
 import {createThemeSelector} from '../src/themes/utils';
 import {createVar} from '../src/utilities';
@@ -52,18 +52,16 @@ export async function toStyleSheet() {
     }
   });
 
-  const metaThemeVariantPartialsEntries = Object.entries(
-    metaThemeVariantPartials,
-  ).filter(([themeName]) => themeName !== themeNameDefault) as Entries<
-    Omit<typeof metaThemeVariantPartials, typeof themeNameDefault>
-  >;
+  const metaThemePartialsEntries = Object.entries(metaThemePartials).filter(
+    ([themeName]) => themeName !== themeNameDefault,
+  ) as Entries<Omit<typeof metaThemePartials, typeof themeNameDefault>>;
 
   const styles = [
     `:root{color-scheme:light;${getMetaThemeDecls(metaThemeDefault)}}`,
-    metaThemeVariantPartialsEntries.map(
-      ([themeName, metaThemeVariantPartial]) =>
+    metaThemePartialsEntries.map(
+      ([themeName, metaThemePartial]) =>
         `${createThemeSelector(themeName)}{${getMetaThemeDecls(
-          metaThemeVariantPartial,
+          metaThemePartial,
         )}}`,
     ),
     getKeyframes(metaThemeDefault.motion),
