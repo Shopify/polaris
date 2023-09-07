@@ -1,6 +1,5 @@
 ---
 title: Button
-description: Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”.
 category: Actions
 keywords:
   - CTA
@@ -74,6 +73,18 @@ examples:
     title: Loading state
     description: Use when a button has been pressed and the associated action is in progress.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”. Plain buttons, which look similar to links, are used for less important or less commonly used actions, such as “view shipping settings”.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

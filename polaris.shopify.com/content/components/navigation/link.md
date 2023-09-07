@@ -1,6 +1,5 @@
 ---
 title: Link
-description: Links take users to another place, and usually appear within or directly following a sentence.
 category: Navigation
 keywords:
   - URL
@@ -34,6 +33,18 @@ examples:
     title: External link
     description: Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when a default link might disrupt the merchant’s workflow.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Links take users to another place, and usually appear within or directly following a sentence.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

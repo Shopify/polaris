@@ -1,6 +1,5 @@
 ---
 title: Radio button
-description: Use radio buttons to present each item in a list of options where merchants must make a single selection.
 category: Selection and input
 keywords:
   - RadioButton
@@ -19,6 +18,18 @@ examples:
     title: Default
     description: Use radio buttons where merchants must make a single selection.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use radio buttons to present each item in a list of options where merchants must make a single selection.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

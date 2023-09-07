@@ -1,6 +1,5 @@
 ---
 title: Index table
-description: An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it.
 category: Tables
 keywords:
   - ResourceList
@@ -71,6 +70,18 @@ examples:
     title: Without checkboxes
     description: An index table without checkboxes and bulk actions.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 Index tables can also:
 

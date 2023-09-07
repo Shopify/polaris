@@ -1,6 +1,5 @@
 ---
 title: Card
-description: Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
 category: Layout and structure
 keywords:
   - layout
@@ -42,12 +41,24 @@ examples:
       Use the `padding` property to adjust the spacing of content within a card. The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
+
+</Lede>
+
 <StatusBanner status={frontmatter.status}>
   This component is a work in progress and ready for exploratory usage, with
   breaking changes expected in minor version updates. Please use with caution.
   Learn more about our [component
   lifecycles](/getting-started/components-lifecycle).
 </StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

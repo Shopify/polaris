@@ -1,6 +1,5 @@
 ---
 title: Media card
-description: Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.
 category: Layout and structure
 keywords:
   - MediaCard
@@ -32,6 +31,18 @@ examples:
     title: Portrait video card
     description: Use when vertical screen space is not limited or when the video card is the page’s primary content. For example, in an empty state.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

@@ -1,6 +1,5 @@
 ---
 title: Page
-description: Use to build the outer wrapper of a page, including the page title and associated actions.
 category: Layout and structure
 keywords:
   - page
@@ -60,6 +59,18 @@ examples:
     title: With content after title
     description: Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use to build the outer wrapper of a page, including the page title and associated actions.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 <TipBanner title="Tip">
   Check out the [new patterns section](https://polaris.shopify.com/patterns) to

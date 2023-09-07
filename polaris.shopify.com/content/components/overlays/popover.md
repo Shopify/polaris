@@ -1,6 +1,5 @@
 ---
 title: Popover
-description: Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page.
 category: Overlays
 keywords:
   - interactive
@@ -37,6 +36,18 @@ examples:
     title: With searchable listbox
     description: Use to help merchants browse, filter, and choose from a list of options.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

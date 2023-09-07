@@ -1,6 +1,5 @@
 ---
 title: Box
-description: Box is the most primitive layout component. It’s a way to access Polaris design tokens.
 category: Layout and structure
 keywords:
   - layout
@@ -31,12 +30,24 @@ examples:
       Shadow can be applied using the [Shadow tokens](https://polaris.shopify.com/tokens/shadow).
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Box is the most primitive layout component. It’s a way to access Polaris design tokens.
+
+</Lede>
+
 <StatusBanner status={frontmatter.status}>
   This component is a work in progress and ready for exploratory usage, with
   breaking changes expected in minor version updates. Please use with caution.
   Learn more about our [component
   lifecycles](/getting-started/components-lifecycle).
 </StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Related components
 

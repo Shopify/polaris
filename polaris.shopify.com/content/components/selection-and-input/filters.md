@@ -1,6 +1,5 @@
 ---
 title: Filters
-description: Filters is a composite component that filters the items of a list or table.
 category: Selection and input
 keywords:
   - filters
@@ -26,6 +25,18 @@ examples:
   - fileName: filters-with-query-field-disabled.tsx
     title: With query field disabled
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Filters is a composite component that filters the items of a list or table.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 Merchants use filters to:
 

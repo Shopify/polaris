@@ -1,6 +1,5 @@
 ---
 title: Badge
-description: Badges are used to inform merchants of the tone of an object or of an action that’s been taken.
 category: Feedback indicators
 keywords:
   - pills
@@ -49,6 +48,18 @@ examples:
     title: With toneAndProgressLabelOverride
     description: Use when the tone and progress accessibilityLabels are not appropriate to a given context.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Badges are used to inform merchants of the tone of an object or of an action that’s been taken.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

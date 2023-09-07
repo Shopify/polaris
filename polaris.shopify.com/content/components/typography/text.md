@@ -1,6 +1,5 @@
 ---
 title: Text
-description: Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
 category: Typography
 keywords:
   - titles
@@ -49,6 +48,18 @@ examples:
     description: >-
       Use to define text decoration
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Variant tokens
 

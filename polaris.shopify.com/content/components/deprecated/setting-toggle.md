@@ -1,6 +1,5 @@
 ---
 title: Setting toggle
-description: Use to give merchants control over a feature or option that can be turned on or off.
 category: Deprecated
 keywords:
   - SettingToggle
@@ -25,12 +24,24 @@ examples:
     description: The setting toggle component is deprecated. The "With primitive components" example is the recommended way to build the setting toggle pattern.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Use to give merchants control over a feature or option that can be turned on or off.
+
+</Lede>
+
 <StatusBanner status={frontmatter.status}>
   The SettingToggle is a simple layout component that composes its children with
   a button in a card. This pattern should be built using the primitive layout
   and typography components. See the "With primitive components" example to
   learn how to build setting toggles with primitive components.
 </StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

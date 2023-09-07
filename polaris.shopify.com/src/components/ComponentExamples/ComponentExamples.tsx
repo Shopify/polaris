@@ -19,7 +19,7 @@ export type ComponentExample = {
 
 export type ComponentExampleSerialized = {
   code: string;
-  description?: SerializedMdx | null;
+  description: SerializedMdx | null;
   fileName: string;
   title: string;
 };

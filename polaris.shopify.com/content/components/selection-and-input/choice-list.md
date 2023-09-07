@@ -1,6 +1,5 @@
 ---
 title: Choice list
-description: A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 category: Selection and input
 keywords:
   - ChoiceList
@@ -35,6 +34,18 @@ examples:
     title: With dynamic children content
     description: Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

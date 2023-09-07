@@ -1,6 +1,5 @@
 ---
 title: Select
-description: Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
 category: Selection and input
 keywords:
   - on off
@@ -40,6 +39,18 @@ examples:
     title: With separate validation error
     description: Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

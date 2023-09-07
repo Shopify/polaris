@@ -1,6 +1,5 @@
 ---
 title: Text field
-description: A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
 category: Selection and input
 keywords:
   - TextField
@@ -103,6 +102,18 @@ examples:
     title: With inline suggestion
     description: Use to provide an autocomplete suggestion inline with the input value. See the combobox component's tag multi-select example for full implementation of the inline autocomplete pattern.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

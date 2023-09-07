@@ -1,6 +1,5 @@
 ---
 title: Legacy filters
-description: This is a legacy version of the Filters component, which is a composite component that filters the items of a list or table.
 category: Selection and input
 keywords:
   - filters
@@ -32,6 +31,14 @@ examples:
     title: With query field disabled
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+This is a legacy version of the Filters component, which is a composite component that filters the items of a list or table.
+
+</Lede>
+
 <StatusBanner status={frontmatter.status}>
   This component is no longer supported. The new [Filters
   component](/components/selection-and-input/filters) can be used as a
@@ -39,6 +46,10 @@ examples:
   [IndexFilters](/components/selection-and-input/index-filters) for sorting and
   filtering IndexTables.
 </StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 Merchants use filters to:
 

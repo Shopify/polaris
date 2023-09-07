@@ -1,6 +1,5 @@
 ---
 title: Visually hidden
-description: Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden.
 category: Deprecated
 keywords:
   - VisuallyHidden
@@ -20,9 +19,21 @@ keywords:
 status: Deprecated
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+Use when an element needs to be available to assistive technology (for example, a screen reader) but otherwise hidden.
+
+</Lede>
+
 <StatusBanner status={frontmatter.status}>
   This component is no longer supported. Please use the Text component instead.
 </StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Mapping to the Text component
 

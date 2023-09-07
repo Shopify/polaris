@@ -1,6 +1,5 @@
 ---
 title: List
-description: Lists display a set of related text-only content. Each list item begins with a bullet or a number.
 category: Lists
 keywords:
   - bulleted lists
@@ -20,6 +19,18 @@ examples:
     title: Extra Tight
     description: Use when there is limited space for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Lists display a set of related text-only content. Each list item begins with a bullet or a number.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

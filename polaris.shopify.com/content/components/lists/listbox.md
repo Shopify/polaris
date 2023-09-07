@@ -1,6 +1,5 @@
 ---
 title: Listbox
-description: A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements.
 category: Lists
 keywords:
   - list
@@ -24,6 +23,18 @@ examples:
     title: With search
     description: Use to help merchants browse, filter, and choose from a list of options.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A Listbox is a vertical list of interactive options, with room for icons, descriptions, and other elements.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Anatomy
 

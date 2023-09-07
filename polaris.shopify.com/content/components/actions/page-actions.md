@@ -1,6 +1,5 @@
 ---
 title: Page actions
-description: Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
 category: Actions
 keywords:
   - PageActions
@@ -26,6 +25,18 @@ examples:
     title: With custom secondary action
     description: Use to create a custom secondary action.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

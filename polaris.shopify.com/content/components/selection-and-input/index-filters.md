@@ -1,6 +1,5 @@
 ---
 title: Index filters
-description: Use index filters to allow merchants to filter, search, and sort their index table data and create unique saved views from the results.
 category: Selection and input
 keywords:
   - filters
@@ -30,6 +29,18 @@ examples:
     title: With no search or filters
     description: An IndexFilters component with only view management and sorting.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use index filters to allow merchants to filter, search, and sort their index table data and create unique saved views from the results.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 Merchants use filters to:
 

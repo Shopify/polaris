@@ -1,6 +1,5 @@
 ---
 title: Icon
-description: Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
 category: Images and icons
 keywords:
   - iconography
@@ -28,6 +27,18 @@ examples:
     title: With custom SVG and color
     description: When using changing color of an svg and it uses currentColor, the white color is applied.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Accessibility
 

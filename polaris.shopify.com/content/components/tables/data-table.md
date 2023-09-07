@@ -1,6 +1,5 @@
 ---
 title: Data table
-description: Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data.
 category: Tables
 keywords:
   - DataTable
@@ -44,6 +43,18 @@ examples:
     title: With sticky header enabled
     description: Use as a broad example that includes most props available to data table.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

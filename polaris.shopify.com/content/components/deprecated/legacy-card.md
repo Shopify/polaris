@@ -1,6 +1,5 @@
 ---
 title: Legacy card
-description: This is the legacy version of the Card component which is in the process of being updated to a more flexible and composable API. Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
 category: Deprecated
 keywords:
   - layout
@@ -76,12 +75,24 @@ examples:
     description: Use when you need further control over the spacing of your card sections.
 ---
 
+# {frontmatter.title}
+
+<Lede>
+
+This is the legacy version of the Card component which is in the process of being updated to a more flexible and composable API. Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
+
+</Lede>
+
 <StatusBanner status={frontmatter.status}>
   This component is no longer supported. The new [Card
   component](/components/layout-and-structure/card) can be used in combination
   with the new layout primitives to achieve similar results to LegacyCard. Learn
   more about our [component lifecycles](/getting-started/components-lifecycle).
 </StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

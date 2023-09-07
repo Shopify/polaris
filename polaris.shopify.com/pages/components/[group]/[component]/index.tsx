@@ -26,12 +26,12 @@ type FrontMatter = {
   status?: Status;
   title: string;
   examples: ComponentExample[];
-  description: string;
+  seoDescription?: string;
 };
 
 interface Props {
   mdx: SerializedMdx<FrontMatter>;
-  descriptionMdx: SerializedMdx | null;
+  seoDescription?: string;
   examples: ComponentExampleSerialized[];
   type: FilteredTypes;
   editPageLinkPath: string;
@@ -44,35 +44,27 @@ interface Props {
 const Components = ({
   examples,
   mdx,
-  descriptionMdx,
+  seoDescription,
   type,
   editPageLinkPath,
 }: Props) => {
-  const componentExamples = Boolean(examples.length) && (
-    <ComponentExamples examples={examples} />
-  );
-  const propsTable =
-    type && mdx.frontmatter.status !== 'Deprecated' ? (
-      <PropsTable componentName={mdx.frontmatter.title} types={type} />
-    ) : null;
-
   return (
-    <Page
-      title={mdx.frontmatter.title}
-      editPageLinkPath={editPageLinkPath}
-      isContentPage
-    >
-      <PageMeta
-        title={mdx.frontmatter.title}
-        description={mdx.frontmatter.description}
+    <Page editPageLinkPath={editPageLinkPath} isContentPage>
+      <PageMeta title={mdx.frontmatter.title} description={seoDescription} />
+
+      <Markdown
+        {...mdx}
+        components={{
+          Examples: () =>
+            Boolean(examples.length) ? (
+              <ComponentExamples examples={examples} />
+            ) : null,
+          Props: ({componentName}) =>
+            type && mdx.frontmatter.status !== 'Deprecated' ? (
+              <PropsTable componentName={componentName} types={type} />
+            ) : null,
+        }}
       />
-
-      {descriptionMdx ? <Markdown {...descriptionMdx} /> : null}
-      {componentExamples}
-
-      {propsTable}
-
-      <Markdown {...mdx} />
     </Page>
   );
 };
@@ -93,17 +85,12 @@ export const getStaticProps: GetStaticProps<
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
 
   if (fs.existsSync(mdFilePath)) {
-    const [mdx] = await serializeMdx<FrontMatter>(mdFilePath, {load});
+    const [mdx, data] = await serializeMdx<FrontMatter>(mdFilePath, {load});
 
-    let descriptionMdx: SerializedMdx | null = null;
-
-    if (mdx.frontmatter.description) {
-      // Since this markdown didn't come from a real file, we use a VFile
-      // instead
-      [descriptionMdx] = await serializeMdx(
-        new VFile({path: mdFilePath, value: mdx.frontmatter.description}),
-      );
-    }
+    const seoDescription =
+      typeof mdx.frontmatter.seoDescription === 'string'
+        ? mdx.frontmatter.seoDescription
+        : (data.firstParagraph as string) ?? null;
 
     const examples: Array<ComponentExampleSerialized> = await Promise.all(
       (mdx.frontmatter.examples || []).map(
@@ -122,14 +109,12 @@ export const getStaticProps: GetStaticProps<
               .join('\n');
           }
 
-          // Since this markdown didn't come from a real file, we use a VFile
-          // instead
           let description = null;
 
           if (example.description) {
-            [description] = await serializeMdx(
-              new VFile({value: example.description, path: mdFilePath}),
-            );
+            // Since this markdown didn't come from a real file, we use a VFile
+            // instead
+            [description] = await serializeMdx(new VFile(example.description));
           }
 
           return {...example, description, code};
@@ -154,7 +139,7 @@ export const getStaticProps: GetStaticProps<
     const props: Props = {
       mdx,
       examples,
-      descriptionMdx,
+      seoDescription,
       type,
       editPageLinkPath,
     };

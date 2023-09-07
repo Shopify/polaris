@@ -1,6 +1,5 @@
 ---
 title: Form layout
-description: Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
 category: Layout and structure
 keywords:
   - FormLayout
@@ -38,6 +37,18 @@ examples:
     title: Condensed field group
     description: For very short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
