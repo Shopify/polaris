@@ -15,7 +15,8 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const file = new VFile(endent`
+  const file = new VFile({
+    value: endent`
     <p id="usage" role="heading" aria-level="2">Usage in Media Queries</p>
 
     ### Sass variables
@@ -64,7 +65,9 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     $p-breakpoints-xl-down: '(max-width: 89.9975em)';
     $p-breakpoints-xl-only: '(min-width: 90em)';
     \`\`\`
-  `);
+  `,
+    path: '/tokens/breakpoints',
+  });
 
   const [mdx] = await serializeMdx(file);
   return {props: {mdx}};

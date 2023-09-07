@@ -9,10 +9,12 @@ interface Props extends PropsWithChildren {
 
 function StatusBanner({status, children}: Props) {
   return (
-    <div className={styles.StatusBanner} data-value={status.toLowerCase()}>
-      <h2>{uppercaseFirst(status)}</h2>
-      {children}
-    </div>
+    status && (
+      <div className={styles.StatusBanner} data-value={status.toLowerCase()}>
+        <h2>{uppercaseFirst(status)}</h2>
+        {children}
+      </div>
+    )
   );
 }
 
