@@ -172,7 +172,7 @@ export async function getStaticProps(context: {params: {group: string}}) {
     const [mdx] = await serializeMdx<FrontMatter>(mdFilePath, {
       load: (filePath) => fs.readFileSync(filePath, 'utf-8'),
     });
-    let description;
+    let description = null;
 
     if (mdx.frontmatter.description) {
       // Since this markdown didn't come from a real file, we use a VFile
