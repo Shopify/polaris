@@ -1,5 +1,18 @@
 # Changelog
 
+## 11.16.0
+
+### Minor Changes
+
+- [#10290](https://github.com/Shopify/polaris/pull/10290) [`5939b49cf`](https://github.com/Shopify/polaris/commit/5939b49cf4616d6994cc17095e79ba5600ca7fe4) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - - Added multi-theme support
+  - Added multi-theme build artifacts
+  - Added multi-theme runtime access
+
+### Patch Changes
+
+- Updated dependencies [[`5939b49cf`](https://github.com/Shopify/polaris/commit/5939b49cf4616d6994cc17095e79ba5600ca7fe4)]:
+  - @shopify/polaris-tokens@7.6.0
+
 ## 11.15.0
 
 ### Minor Changes
