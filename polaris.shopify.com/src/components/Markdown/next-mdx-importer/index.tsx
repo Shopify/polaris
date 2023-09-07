@@ -18,11 +18,11 @@ export function MDXRemote<
   TScope extends Record<string, unknown>,
   TFrontmatter extends Record<string, unknown>,
 >({
-  scope = {},
+  scope,
   components,
   ...props
 }: MDXRemoteProps<TScope, TFrontmatter>): JSX.Element {
-  const importsOnScope = scope[scopeKey] as
+  const importsOnScope = scope?.[scopeKey] as
     | ImportsOnScope<TScope, TFrontmatter>
     | undefined;
 
