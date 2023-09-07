@@ -15,7 +15,7 @@ export function textContent(
   if (Array.isArray(children)) {
     return children.map(textContent).join('');
   } else if (typeof elem?.type === 'function') {
-    return textContent(elem.type());
+    return textContent(elem.type(elem.props));
   }
 
   // for a react component that isn't an array, it'll recursively keep going until it gets to a string.
