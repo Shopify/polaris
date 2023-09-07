@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.22.0
+
+### Minor Changes
+
+- [#10263](https://github.com/Shopify/polaris/pull/10263) [`67699cb88`](https://github.com/Shopify/polaris/commit/67699cb88c8a5f85a4623b403fddb444c5104b24) Thanks [@aveline](https://github.com/aveline)! - Added migration for `Button` component
+
 ## 0.21.0
 
 ### Minor Changes
