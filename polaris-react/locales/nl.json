@@ -18,13 +18,13 @@
         "info": "Info",
         "success": "Geslaagd",
         "warning": "Waarschuwing",
-        "attention": "Attentie",
+        "attention": "Let op",
         "new": "Nieuw",
         "critical": "Kritiek",
         "readOnly": "Alleen-lezen",
         "enabled": "Ingeschakeld"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Melding sluiten"
