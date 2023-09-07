@@ -18,7 +18,7 @@ export function MDXRemote<
   TScope extends Record<string, unknown>,
   TFrontmatter extends Record<string, unknown>,
 >({
-  scope,
+  scope = {},
   components,
   ...props
 }: MDXRemoteProps<TScope, TFrontmatter>): JSX.Element {
@@ -47,6 +47,8 @@ export function MDXRemote<
             return null;
           }
 
+          const {[scopeKey]: _, ...parentScopeWithoutImports} = scope ?? {};
+
           return (
             // Support nested imports by calling recursively
             // TODO: How do we prevent infinite loops?
@@ -59,6 +61,7 @@ export function MDXRemote<
               // Merge scope from the serialize call with props passed in the
               // markdown
               scope={{
+                ...parentScopeWithoutImports,
                 ...importedMdx.scope,
                 // Any props passed to the imported component should show up as scope
                 // within that componment, and will override any global scope

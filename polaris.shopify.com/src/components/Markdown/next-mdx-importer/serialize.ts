@@ -287,11 +287,8 @@ export async function serialize<
     ),
   );
 
-  const {[scopeKey]: _, ...parentScopeWithoutImports} = scope ?? {};
-
   result.scope = result.scope ?? {};
   result.scope[scopeKey] = {
-    ...parentScopeWithoutImports,
     ...result.scope[scopeKey],
     ...serializedImports,
   };
