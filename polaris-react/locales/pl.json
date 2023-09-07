@@ -16,15 +16,15 @@
       },
       "TONE_LABELS": {
         "info": "Informacja",
-        "success": "Udało się",
+        "success": "Powodzenie",
         "warning": "Ostrzeżenie",
         "attention": "Uwaga",
-        "new": "Nowy",
-        "critical": "Krytyczny",
+        "new": "Nowe",
+        "critical": "Krytyczne",
         "readOnly": "Tylko do odczytu",
         "enabled": "Włączone"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Odrzuć powiadomienie"
