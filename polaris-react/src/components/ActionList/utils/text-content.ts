@@ -1,9 +1,6 @@
-import type React from 'react';
 import {renderToString} from 'react-dom/server';
 
-export function textContent(
-  obj?: React.ReactElement | string,
-): string | undefined {
+export function textContent(obj?: any): string | undefined {
   if (!obj) {
     return;
   }
