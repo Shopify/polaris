@@ -12,7 +12,6 @@ import {useI18n} from '../../utilities/i18n';
 
 import {SearchField, Item, Section} from './components';
 import type {ItemProps} from './components';
-import {textContent} from './utils/text-content';
 
 export interface ActionListProps {
   /** Collection of actions for list */
@@ -45,6 +44,10 @@ export function ActionList({
     finalSections = sections;
   }
 
+  const isFilterable = finalSections?.some((section) =>
+    section.items.some((item) => typeof item.content === 'string'),
+  );
+
   const hasMultipleSections = finalSections.length > 1;
   const elementRole =
     hasMultipleSections && actionRole === 'menuitem' ? 'menu' : undefined;
@@ -53,10 +56,10 @@ export function ActionList({
 
   const filteredSections = finalSections?.map((section) => ({
     ...section,
-    items: section.items.filter((item) =>
-      textContent(item.content)
-        ?.toLowerCase()
-        .includes(searchText.toLowerCase()),
+    items: section.items.filter(({content}) =>
+      typeof content === 'string'
+        ? content?.toLowerCase().includes(searchText.toLowerCase())
+        : content,
     ),
   }));
 
@@ -133,7 +136,7 @@ export function ActionList({
 
   return (
     <>
-      {showSearch && (
+      {showSearch && isFilterable && (
         <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
           <SearchField
             placeholder={i18n.translate(
