@@ -94,11 +94,6 @@
   --border-radius-round: 1000px;
 }
 
-::view-transition-old(page),
-::view-transition-new(page) {
-  animation: var(--p-motion-keyframes-fade-in);
-}
-
 .light-mode,
 .dark-mode {
   --focus-outline: 0 0 0 2px var(--text-strong);
