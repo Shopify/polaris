@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {textContent} from '../utils/text-content';
+import {textContent} from '../text-content';
 
 describe('textContent', () => {
   it('returns empty string when empty', () => {
@@ -21,6 +21,16 @@ describe('textContent', () => {
     expect(textContent(<TestComponent />)).toBe('test component text');
   });
 
+  it('returns innerText from JSX component with children', () => {
+    expect(
+      textContent(
+        <TestComponentWithProps>
+          test component text from props
+        </TestComponentWithProps>,
+      ),
+    ).toBe('test component text from props');
+  });
+
   it('returns innerText combination', () => {
     expect(
       textContent(
@@ -34,3 +44,4 @@ describe('textContent', () => {
 });
 
 const TestComponent = () => <p>test component text</p>;
+const TestComponentWithProps = (props: any) => <p>{props.children}</p>;
