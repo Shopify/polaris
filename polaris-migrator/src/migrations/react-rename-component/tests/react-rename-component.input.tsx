@@ -16,6 +16,13 @@ export function App() {
         <Card.Section>hello</Card.Section>
         <Card.Subsection>world</Card.Subsection>
       </Card>
+      <CustomCard />
     </>
   );
+}
+
+function CustomCard() {
+  const Card = <div>hello world</div>;
+
+  return <div>{Card}</div>;
 }

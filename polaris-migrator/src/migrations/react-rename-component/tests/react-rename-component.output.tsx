@@ -16,6 +16,13 @@ export function App() {
         <LegacyCard.Section>hello</LegacyCard.Section>
         <LegacyCard.Subsection>world</LegacyCard.Subsection>
       </LegacyCard>
+      <CustomCard />
     </>
   );
+}
+
+function CustomCard() {
+  const Card = <div>hello world</div>;
+
+  return <div>{Card}</div>;
 }

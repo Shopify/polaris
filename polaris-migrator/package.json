@@ -36,6 +36,7 @@
     "generate": "plop"
   },
   "dependencies": {
+    "@babel/core": "^7.22.15",
     "@shopify/polaris-tokens": "^7.5.3",
     "@shopify/stylelint-polaris": "^14.0.0",
     "chalk": "^4.1.0",
@@ -46,6 +47,7 @@
     "postcss": "^8.4.14",
     "postcss-scss": "^4.0.4",
     "postcss-value-parser": "^4.2.0",
+    "recast": "^0.23.4",
     "stylelint": "^14.15.0"
   },
   "devDependencies": {

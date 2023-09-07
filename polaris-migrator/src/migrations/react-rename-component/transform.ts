@@ -1,22 +1,9 @@
-import type {API, FileInfo, Options} from 'jscodeshift';
+import {parse, print} from 'recast';
+import type {FileInfo, Options} from 'jscodeshift';
+import type {PluginObj} from '@babel/core';
+import {transformFromAstSync, types as t} from '@babel/core';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../utilities/constants';
-import {
-  getImportSpecifierName,
-  hasImportDeclaration,
-  hasImportSpecifier,
-  hasImportSpecifiers,
-  insertImportDeclaration,
-  insertImportSpecifier,
-  normalizeImportSourcePaths,
-  removeImportDeclaration,
-  removeImportSpecifier,
-} from '../../utilities/imports';
-import {
-  insertCommentBefore,
-  insertJSXComment,
-  replaceJSXElement,
-} from '../../utilities/jsx';
 
 export interface MigrationOptions extends Options {
   relative: boolean;
@@ -26,164 +13,84 @@ export interface MigrationOptions extends Options {
   renamePropsTo: string;
 }
 
-export default function transformer(
-  fileInfo: FileInfo,
-  {jscodeshift: j}: API,
-  options: MigrationOptions,
-) {
-  const source = j(fileInfo.source);
-
-  if (
-    !options.relative &&
-    !hasImportDeclaration(j, source, '@shopify/polaris')
-  ) {
-    return fileInfo.source;
-  }
-
-  const sourcePaths = normalizeImportSourcePaths(j, source, {
-    relative: options.relative,
-    from: options.renameFrom,
-    to: options.renameTo,
-  });
-
-  if (!sourcePaths) return;
-
-  // If renameFrom component name is not imported, exit
-  if (
-    !hasImportSpecifier(j, source, options.renameFrom, sourcePaths.from) &&
-    !hasImportSpecifier(j, source, options.renamePropsFrom, sourcePaths.from)
-  ) {
-    return fileInfo.source;
-  }
-
-  let hasExistingJsx = false;
-  let hasExistingIdentifier = false;
-
-  // If local renameTo is already used in the file, exit
-  source.findJSXElements(options.renameTo).forEach((element) => {
-    insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
-    hasExistingJsx = true;
-  });
-
-  if (hasExistingJsx) return source.toSource();
-
-  // If renameTo is already used as an identifier, exit
-  source
-    .find(j.Identifier)
-    .filter(
-      (path) =>
-        path.node.name === options.renameTo ||
-        path.node.name === options.renamePropsTo,
-    )
-    .forEach((path) => {
-      if (path.node.type !== 'Identifier') return;
-
-      insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
-      hasExistingIdentifier = true;
-    });
-
-  if (hasExistingIdentifier) return source.toSource();
-
-  const localElementName =
-    getImportSpecifierName(j, source, options.renameFrom, sourcePaths.from) ||
-    options.renameFrom;
-
-  const localElementTypeName = getImportSpecifierName(
-    j,
-    source,
-    options.renamePropsFrom,
-    sourcePaths.from,
+export default function transform(fileInfo: FileInfo) {
+  const transformed = transformFromAstSync(
+    parse(fileInfo.source, {parser: require('recast/parsers/babel')}),
+    fileInfo.source,
+    {
+      cloneInputAst: false,
+      code: false,
+      ast: true,
+      plugins: [plugin],
+    },
   );
 
-  source.find(j.JSXElement).forEach((element) => {
-    // Handle self-closing elements
-    if (
-      element.node.openingElement.selfClosing === true &&
-      element.node.openingElement.name.type === 'JSXIdentifier' &&
-      element.node.openingElement.name.name === localElementName
-    ) {
-      element.node.openingElement.name.name = options.renameTo;
-    }
+  if (!transformed || !transformed.ast) return fileInfo.source;
 
-    // Handle simple elements
-    if (
-      element.node.openingElement.name.type === 'JSXIdentifier' &&
-      element.node.openingElement.name.name === localElementName
-    ) {
-      replaceJSXElement(j, element, options.renameTo);
-      return;
-    }
+  return print(transformed.ast).code;
+}
 
-    // Handle self-closing compound elements
-    if (
-      element.node.openingElement.selfClosing === true &&
-      element.node.openingElement.name.type === 'JSXMemberExpression' &&
-      element.node.openingElement.name.object.type === 'JSXIdentifier' &&
-      element.node.openingElement.name.object.name === localElementName
-    ) {
-      element.node.openingElement.name.object.name = options.renameTo;
-    }
+function plugin(): PluginObj {
+  return {
+    visitor: {
+      ImportDeclaration(path) {
+        if (path.node.source.value !== '@shopify/polaris') return;
 
-    // Handle compound elements
-    if (
-      element.node.openingElement.name.type === 'JSXMemberExpression' &&
-      element.node.openingElement.name.object.type === 'JSXIdentifier' &&
-      element.node.openingElement.name.object.name === localElementName &&
-      element.node.closingElement?.name.type === 'JSXMemberExpression' &&
-      element.node.closingElement?.name.object.type === 'JSXIdentifier' &&
-      element.node.closingElement?.name.object.name === localElementName
-    ) {
-      element.node.openingElement.name.object.name = options.renameTo;
-      element.node.closingElement.name.object.name = options.renameTo;
-    }
-  });
+        const specifiers = path.get('specifiers');
 
-  // Find all references to the renameFrom component and replace them with renameTo
-  source
-    .find(j.Identifier)
-    .filter(
-      (path) =>
-        path.node.name === localElementName ||
-        path.node.name === localElementTypeName,
-    )
-    .forEach((path) => {
-      if (path.node.type !== 'Identifier') return;
+        for (const specifier of specifiers) {
+          if (specifier.isImportDefaultSpecifier()) {
+            specifier.addComment('leading', 'Unable to process file');
+            return;
+          }
+          if (specifier.isImportNamespaceSpecifier()) {
+            specifier.addComment('leading', 'Unable to process file');
+            return;
+          }
+          if (
+            !specifier.isImportSpecifier() ||
+            !t.isIdentifier(specifier.node.imported) ||
+            specifier.node.imported.name !== 'Card'
+          ) {
+            continue;
+          }
 
-      if (
-        path.node.name === localElementName &&
-        path.parent.value.type !== 'MemberExpression'
-      ) {
-        path.node.name = options.renameTo;
-      }
+          const localIdentifier = specifier.get('local');
+          const cardBinding = path.scope.getBinding(localIdentifier.node.name);
 
-      if (path.node.name === localElementTypeName) {
-        path.node.name = options.renamePropsTo;
-      }
-    });
+          if (!cardBinding?.referencePaths.length) continue;
 
-  if (!hasImportSpecifier(j, source, options.renameTo, sourcePaths.to)) {
-    if (options.relative) {
-      insertImportDeclaration(
-        j,
-        source,
-        options.renameTo,
-        sourcePaths.to,
-        sourcePaths.from,
-      );
-    } else {
-      insertImportSpecifier(j, source, options.renameTo, sourcePaths.to);
-    }
-  }
+          let canRemoveCard = true;
+          let canInsertLegacyCard = false;
 
-  // Remove the renameFrom import
-  if (hasImportSpecifier(j, source, options.renameFrom, sourcePaths.from)) {
-    removeImportSpecifier(j, source, options.renameFrom, sourcePaths.from);
-  }
+          cardBinding.referencePaths.forEach((referencePath) => {
+            if (
+              referencePath.isJSXIdentifier() ||
+              referencePath.isIdentifier()
+            ) {
+              canInsertLegacyCard = true;
+              referencePath.node.name = 'LegacyCard';
+              return;
+            }
 
-  // Remove the renamePropsFrom import
-  if (!hasImportSpecifiers(j, source, sourcePaths.from)) {
-    removeImportDeclaration(j, source, sourcePaths.from);
-  }
+            referencePath.addComment('leading', POLARIS_MIGRATOR_COMMENT);
+            canRemoveCard = false;
+          });
 
-  return source.toSource();
+          if (canInsertLegacyCard) {
+            path.node.specifiers.push(
+              t.importSpecifier(
+                t.identifier('LegacyCard'),
+                t.identifier('LegacyCard'),
+              ),
+            );
+          }
+
+          if (canRemoveCard) {
+            specifier.remove();
+          }
+        }
+      },
+    },
+  };
 }
