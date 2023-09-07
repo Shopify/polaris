@@ -221,7 +221,7 @@ function TypeTable({
                             <StatusBadge
                               status={{
                                 message: 'Deprecated',
-                                value: StatusName.Warning,
+                                value: 'Warning',
                               }}
                             />{' '}
                             {endWithPeriod(deprecationMessage)}

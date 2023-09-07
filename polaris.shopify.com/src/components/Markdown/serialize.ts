@@ -1,4 +1,3 @@
-import {type MDXRemoteSerializeResult} from 'next-mdx-remote';
 import {serialize} from 'next-mdx-remote/serialize';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import {VFile, type Data} from 'vfile';
