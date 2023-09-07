@@ -51,8 +51,8 @@ This is the legacy version of the Stack component which is in the process of bei
 </Lede>
 
 <StatusBanner status={frontmatter.status}>
-  This component is no longer supported. The new [VerticalStack
-  component](/components/layout-and-structure/vertical-stack) can be used in
+  This component is no longer supported. The new [BlockStack
+  component](/components/layout-and-structure/block-stack) can be used in
   combination with the new layout primitives to achieve similar results to
   LegacyStack. Learn more about our [component
   lifecycles](/getting-started/components-lifecycle).
