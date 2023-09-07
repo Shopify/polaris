@@ -109,11 +109,13 @@ export const getStaticProps: GetStaticProps<
               .join('\n');
           }
 
-          // Since this markdown didn't come from a real file, we use a VFile
-          // instead
-          const [description] = await serializeMdx(
-            new VFile({value: example.description, path: componentSlug}),
-          );
+          let description = null;
+
+          if (example.description) {
+            // Since this markdown didn't come from a real file, we use a VFile
+            // instead
+            [description] = await serializeMdx(new VFile(example.description));
+          }
 
           return {...example, description, code};
         },
