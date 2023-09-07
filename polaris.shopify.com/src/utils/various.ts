@@ -7,7 +7,7 @@ interface PatternJSON {
   };
 }
 
-const pages: SiteJSON = siteJson;
+const pages: SiteJSON = siteJson as unknown as SiteJSON;
 
 const components = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
