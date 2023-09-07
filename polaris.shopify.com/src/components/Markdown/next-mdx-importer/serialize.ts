@@ -7,41 +7,6 @@ import {serialize as nextMdxSerialize} from 'next-mdx-remote/serialize';
 import {is as isVFile} from 'vfile-is';
 
 import {componentName, filePathProp, scopeKey} from './constants';
-/*
-{
-    "type": "mdxjsEsm",
-    "value": "import Sounds from './sounds.md';",
-    "data": {
-        "estree": {
-            "type": "Program",
-            "start": 1,
-            "end": 34,
-            "body": [
-                {
-                    "type": "ImportDeclaration",
-                    "start": 1,
-                    "end": 34,
-                    "specifiers": [
-                        {
-                            "type": "ImportDefaultSpecifier",
-                            "start": 8,
-                            "end": 14,
-                            "local": {
-                                "type": "Identifier",
-                                "start": 8,
-                                "end": 14,
-                                "name": "Sounds",
-                            },
-                        }
-                    ],
-                }
-            ],
-            "sourceType": "module",
-            "comments": [],
-        }
-    }
-}
-*/
 
 // Because this isn't exported by next-mdx-remote, we have to pull it off the
 // function directly.
@@ -145,44 +110,47 @@ function remarkImportScanner(): Plugin {
     const identifierCache: Record<string, string> = {};
 
     // Find all default imports
-    visit(tree, 'mdxjsEsm', (node: ESNode, index, parent) => {
-      const importEsNode = node.data?.estree?.body?.[0];
-      if (importEsNode?.type !== 'ImportDeclaration') {
-        return SKIP;
+    visit(tree, 'mdxjsEsm', (node: ESNode) => {
+      const body = node.data?.estree?.body ?? [];
+      for (let index = body.length - 1; index >= 0; index--) {
+        const importEsNode = body[index];
+        if (importEsNode?.type !== 'ImportDeclaration') {
+          continue;
+        }
+
+        const identifier = importEsNode.specifiers?.find(
+          ({type}) => type === 'ImportDefaultSpecifier',
+        )?.local?.name;
+
+        // We only care about default imports
+        if (!identifier) {
+          continue;
+        }
+
+        if (identifierCache[identifier]) {
+          throw new Error(
+            `Detected multiple import identifiers of "${identifier}" within "${vfile.path}".`,
+          );
+        }
+
+        if (!vfile.path) {
+          throw new Error(`VFile must have .path set.`);
+        }
+
+        const fromPath = resolveUrl(importEsNode.source?.value, vfile.path);
+
+        if (importMap[fromPath]) {
+          throw new Error(
+            `Detected multiple imports of "${fromPath}" within "${vfile.path}".`,
+          );
+        }
+
+        // Remove the node from the tree
+        body.splice(index, 1);
+
+        importMap[fromPath] = identifier;
+        identifierCache[identifier] = fromPath;
       }
-
-      const identifier = importEsNode.specifiers?.find(
-        ({type}) => type === 'ImportDefaultSpecifier',
-      )?.local?.name;
-
-      // We only care about default imports
-      if (!identifier) {
-        return SKIP;
-      }
-
-      if (identifierCache[identifier]) {
-        throw new Error(
-          `Detected multiple import identifiers of "${identifier}" within "${vfile.path}".`,
-        );
-      }
-
-      if (!vfile.path) {
-        throw new Error(`VFile must have .path set.`);
-      }
-
-      const fromPath = resolveUrl(importEsNode.source?.value, vfile.path);
-
-      if (importMap[fromPath]) {
-        throw new Error(
-          `Detected multiple imports of "${fromPath}" within "${vfile.path}".`,
-        );
-      }
-
-      // Remove the node from the tree
-      parent.children.splice(index, 1);
-
-      importMap[fromPath] = identifier;
-      identifierCache[identifier] = fromPath;
     });
 
     // Find all uses of the previously discovered imports and rewrite them to
@@ -319,8 +287,11 @@ export async function serialize<
     ),
   );
 
+  const {[scopeKey]: _, ...parentScopeWithoutImports} = scope ?? {};
+
   result.scope = result.scope ?? {};
   result.scope[scopeKey] = {
+    ...parentScopeWithoutImports,
     ...result.scope[scopeKey],
     ...serializedImports,
   };
