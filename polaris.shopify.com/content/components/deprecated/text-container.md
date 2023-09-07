@@ -33,7 +33,7 @@ A text container is used to wrap text elements such as paragraphs, headings, and
 
 <StatusBanner status={frontmatter.status}>
   The TextContainer is a simple layout component which was made redundant by the
-  VerticalStack component. Use VerticalStack with `gap` values of 2, 4, and 5 to
+  BlockStack component. Use BlockStack with `gap` values of 2, 4, and 5 to
   replicate layouts.
 </StatusBanner>
 
