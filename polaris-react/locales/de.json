@@ -18,13 +18,13 @@
         "info": "Info",
         "success": "Erfolg",
         "warning": "Warnung",
-        "attention": "Prüfung erforderlich",
+        "attention": "Achtung",
         "new": "Neu",
         "critical": "Kritisch",
         "readOnly": "Schreibgeschützt",
         "enabled": "Aktiviert"
       },
-      "progressAndTone": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Benachrichtigung verwerfen"
