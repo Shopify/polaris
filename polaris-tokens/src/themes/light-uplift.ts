@@ -1,8 +1,8 @@
 import * as colors from '../colors-experimental';
 
-import {createMetaThemeVariant, createMetaThemeVariantPartial} from './utils';
+import {createMetaTheme, createMetaThemePartial} from './utils';
 
-export const metaThemeLightUpliftPartial = createMetaThemeVariantPartial({
+export const metaThemeLightUpliftPartial = createMetaThemePartial({
   motion: {
     'motion-ease-out': {value: 'cubic-bezier(0.19, 0.91, 0.38, 1)'},
   },
@@ -172,6 +172,6 @@ export const metaThemeLightUpliftPartial = createMetaThemeVariantPartial({
   },
 });
 
-export const metaThemeLightUplift = createMetaThemeVariant(
+export const metaThemeLightUplift = createMetaTheme(
   metaThemeLightUpliftPartial,
 );
