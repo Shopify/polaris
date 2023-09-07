@@ -177,11 +177,15 @@ const getRichCards = (pathGlob: string): RichCardGridProps[] => {
   );
 };
 
-type MiddlewareHandler = (end: () => void) => void;
-type Middleware = MiddlewareHandler | [() => boolean, MiddlewareHandler];
+type MiddlewareHandler =
+  | ((end: () => void) => void | Promise<void>)
+  | ((end: () => void) => Promise<void>);
+type Middleware =
+  | MiddlewareHandler
+  | [(() => boolean) | (() => Promise<boolean>), MiddlewareHandler];
 
 // Simple middleware-like processor
-const middleware = (wares: Middleware[]) => {
+const middleware = async (wares: Middleware[]) => {
   let index = -1;
 
   const end = () => {
@@ -193,11 +197,11 @@ const middleware = (wares: Middleware[]) => {
   while (++index < wares.length) {
     const middle = wares[index];
     if (Array.isArray(middle)) {
-      if (middle[0]()) {
-        middle[1](end);
+      if (await middle[0]()) {
+        await middle[1](end);
       }
     } else {
-      middle(end);
+      await middle(end);
     }
   }
 };
@@ -233,7 +237,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 
   const scope: Record<string, any> = {};
 
-  middleware([
+  await middleware([
     // patterns page needs to know the legacy files also
     [
       () =>
