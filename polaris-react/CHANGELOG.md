@@ -1,5 +1,24 @@
 # Changelog
 
+## 11.15.0
+
+### Minor Changes
+
+- [#9701](https://github.com/Shopify/polaris/pull/9701) [`cbf539495`](https://github.com/Shopify/polaris/commit/cbf539495a3d66d67192dde93d9c881b94592f0a) Thanks [@martenbjork](https://github.com/martenbjork)! - Updated the Frame and Topbar components to stay clear of a scrollbar. This reduces the overall jumpiness in the UI when scrollbars appear and disappear when using a Polaris app.
+
+### Patch Changes
+
+- [#10284](https://github.com/Shopify/polaris/pull/10284) [`eba75d20a`](https://github.com/Shopify/polaris/commit/eba75d20a6b839ac068f985c00ccb039a4b50b7d) Thanks [@zakwarsame](https://github.com/zakwarsame)! - - Updated `Filters` query field to initialize with focus based on `mode` state
+
+* [#10282](https://github.com/Shopify/polaris/pull/10282) [`9a2d4f62a`](https://github.com/Shopify/polaris/commit/9a2d4f62ab113bee2b7dec9ca458a59b8024cba4) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed pointer alignment on tooltip
+
+- [#10343](https://github.com/Shopify/polaris/pull/10343) [`12a62b4d7`](https://github.com/Shopify/polaris/commit/12a62b4d74598b486382dcc190b173b8f69d9147) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed UI inconsistencies in the mobile view of the IndexFilters
+
+* [#10276](https://github.com/Shopify/polaris/pull/10276) [`abb50250e`](https://github.com/Shopify/polaris/commit/abb50250ec6af05dc4fef85d887fac37edfe1175) Thanks [@highfieldjames](https://github.com/highfieldjames)! - Updated `TextField` of `type` `number` to focus when a `Spinner` button is clicked
+
+* Updated dependencies [[`47652f7d6`](https://github.com/Shopify/polaris/commit/47652f7d67f98d7bef8ef8485fae803b9f3c1056)]:
+  - @shopify/polaris-icons@7.9.0
+
 ## 11.14.0
 
 ### Minor Changes
