@@ -139,6 +139,11 @@ const nextConfig = {
         destination: '/patterns#legacy',
         permanent: true,
       },
+      {
+        source: '/coming-soon',
+        destination: '/coming-soon/view-transitions',
+        permanent: false,
+      },
       ...actions,
       ...deprecated,
       ...feedbackIndicators,
