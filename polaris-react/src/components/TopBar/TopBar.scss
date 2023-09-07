@@ -11,9 +11,6 @@ $right-column: 1fr;
 
 .TopBar {
   position: relative;
-  display: grid;
-  grid-template-columns: $left-column $search-column $right-column;
-  align-items: center;
   height: $top-bar-height;
   box-shadow: var(--p-shadow-xs);
   background-color: var(--p-color-bg-inverse);
@@ -31,6 +28,15 @@ $right-column: 1fr;
     width: 100%;
     border-bottom: var(--p-border-width-1) solid transparent;
   }
+}
+
+.Container {
+  display: grid;
+  grid-template-columns: $left-column $search-column $right-column;
+  align-items: center;
+  // stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties
+  width: calc(100vw - var(--pc-app-provider-scrollbar-width));
+  // stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list
 }
 
 .LogoDisplayControl {

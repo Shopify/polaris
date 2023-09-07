@@ -145,13 +145,15 @@ export function IndexFilters({
     setTrue: setFiltersFocused,
   } = useToggle(false);
 
-  useOnValueChange(mode, (newMode) => {
+  const handleModeChange = (newMode: IndexFiltersMode) => {
     if (newMode === IndexFiltersMode.Filtering) {
       setFiltersFocused();
     } else {
       setFiltersUnFocused();
     }
-  });
+  };
+
+  useOnValueChange(mode, handleModeChange);
 
   useEventListener('keydown', (event) => {
     if (disableKeyboardShortcuts) return;

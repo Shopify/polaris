@@ -283,7 +283,7 @@ export function Filters({
   };
 
   const queryFieldMarkup = hideQueryField ? null : (
-    <div className={styles.Container}>
+    <div className={classNames(styles.Container, styles.ContainerUplift)}>
       <Box {...containerSpacing}>
         <InlineStack
           align="start"

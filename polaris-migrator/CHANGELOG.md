@@ -1,5 +1,29 @@
 # @shopify/polaris-migrator
 
+## 0.22.1
+
+### Patch Changes
+
+- Updated dependencies [[`5939b49cf`](https://github.com/Shopify/polaris/commit/5939b49cf4616d6994cc17095e79ba5600ca7fe4)]:
+  - @shopify/polaris-tokens@7.6.0
+  - @shopify/stylelint-polaris@14.0.1
+
+## 0.22.0
+
+### Minor Changes
+
+- [#10263](https://github.com/Shopify/polaris/pull/10263) [`67699cb88`](https://github.com/Shopify/polaris/commit/67699cb88c8a5f85a4623b403fddb444c5104b24) Thanks [@aveline](https://github.com/aveline)! - Added migration for `Button` component
+
+## 0.21.0
+
+### Minor Changes
+
+- [#10246](https://github.com/Shopify/polaris/pull/10246) [`1947b4691`](https://github.com/Shopify/polaris/commit/1947b469144f8e0567fb69f06391a3fecbfe5b11) Thanks [@kyledurand](https://github.com/kyledurand)! - Added the ability to migrate prop values
+
+### Patch Changes
+
+- [#10215](https://github.com/Shopify/polaris/pull/10215) [`e4a6d47ab`](https://github.com/Shopify/polaris/commit/e4a6d47abd338b820737fec5acb1a566c38a1913) Thanks [@aveline](https://github.com/aveline)! - Fixed a bug in the rename prop migration
+
 ## 0.20.0
 
 ### Minor Changes
