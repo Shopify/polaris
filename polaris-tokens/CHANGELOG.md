@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.6.0
+
+### Minor Changes
+
+- [#10290](https://github.com/Shopify/polaris/pull/10290) [`5939b49cf`](https://github.com/Shopify/polaris/commit/5939b49cf4616d6994cc17095e79ba5600ca7fe4) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - - Added multi-theme support
+  - Added multi-theme build artifacts
+  - Added multi-theme runtime access
+
 ## 7.5.3
 
 ### Patch Changes
