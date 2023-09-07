@@ -12,6 +12,4 @@ Display contextual elements on top of the main admin interface that provide addi
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />

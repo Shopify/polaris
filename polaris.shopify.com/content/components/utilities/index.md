@@ -12,6 +12,4 @@ Utilities are core tools for managing the structure of the admin and global sett
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />

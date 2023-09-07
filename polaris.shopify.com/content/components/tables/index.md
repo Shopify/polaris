@@ -12,6 +12,4 @@ Display, organize, and sort data for merchants to analyze and take action on.
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />

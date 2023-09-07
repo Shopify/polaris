@@ -12,6 +12,4 @@ Establish hierarchy and communicate importance through text presentation.
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />

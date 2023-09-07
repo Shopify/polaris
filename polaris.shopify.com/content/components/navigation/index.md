@@ -12,6 +12,4 @@ Access resources and move between sections, pages, or views in a structured and 
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />

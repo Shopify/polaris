@@ -12,6 +12,4 @@ Inform merchants about the status of a process, provide feedback on actions and 
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />

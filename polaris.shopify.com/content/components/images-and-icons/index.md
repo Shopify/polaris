@@ -12,6 +12,4 @@ Represent visual content, such as avatars and thumbnails for images or video.
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />

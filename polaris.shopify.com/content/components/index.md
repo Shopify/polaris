@@ -12,6 +12,4 @@ Components are the reusable building blocks for creating Shopify admin experienc
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />

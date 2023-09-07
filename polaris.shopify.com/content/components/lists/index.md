@@ -12,6 +12,4 @@ Provide merchants with easy-to-use interfaces for selecting options, organizing 
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />

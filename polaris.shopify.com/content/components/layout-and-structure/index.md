@@ -32,9 +32,7 @@ Layout is the arrangement of elements on a page. A good layout helps merchants u
 
 </Lede>
 
-<Examples />
 
-<Props componentName={frontmatter.title} />
 
 #### Related Resources
 
