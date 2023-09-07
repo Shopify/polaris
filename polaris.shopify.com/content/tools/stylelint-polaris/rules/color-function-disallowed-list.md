@@ -7,6 +7,15 @@ keywords:
   - color rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="color" />
+
 ```diff
 // Do
 + color: var(--p-color-text-disabled);
@@ -15,3 +24,5 @@ keywords:
 - color: rgb(140, 145, 150);
 - background: color('hover');
 ```
+
+<RulePostamble />

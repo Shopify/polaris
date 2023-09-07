@@ -7,6 +7,15 @@ keywords:
   - layout rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="layout" />
+
 Use hard coded pixel or rem values for `width` and `height` instead of legacy mixins/variables or spacing tokens.
 
 ```diff
@@ -15,3 +24,5 @@ Use hard coded pixel or rem values for `width` and `height` instead of legacy mi
 // Don't
 - height: top-bar-height();
 ```
+
+<RulePostamble />

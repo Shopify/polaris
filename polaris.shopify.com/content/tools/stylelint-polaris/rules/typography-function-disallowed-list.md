@@ -7,6 +7,15 @@ keywords:
   - typography rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="typography" />
+
 ```diff
 // Do
 + <Text variant="headingXs" as="p" />
@@ -15,3 +24,5 @@ keywords:
 // Don't
 - font-size: font-size('caption');
 ```
+
+<RulePostamble />

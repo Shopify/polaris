@@ -7,6 +7,15 @@ keywords:
   - border rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="border" />
+
 ```diff
 // Do
 + border-width: var(--p-border-width-2);
@@ -15,3 +24,5 @@ keywords:
 - border-width: 2px;
 - border-radius: 0.5rem;
 ```
+
+<RulePostamble />

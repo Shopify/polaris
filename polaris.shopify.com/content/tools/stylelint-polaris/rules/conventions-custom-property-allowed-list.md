@@ -8,6 +8,12 @@ keywords:
   - CSS custom properties
 ---
 
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`.
 
 ```diff
@@ -36,3 +42,5 @@ Flags declaration property values using private `--pc-*` tokens.
 // Don't
 - background: var(--pc-button-color-depressed);
 ```
+
+<RulePostamble />

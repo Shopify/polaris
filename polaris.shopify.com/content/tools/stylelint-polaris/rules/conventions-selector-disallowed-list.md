@@ -8,6 +8,12 @@ keywords:
   - selectors
 ---
 
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Avoid overriding the styles of Polaris components in your SCSS. Consider contributing an extension or enhancement to the component's API instead. Overrides of component classnames are liable to break, as Polaris styles are private and may change at any time without notice.
 
 ```diff
@@ -18,3 +24,5 @@ Avoid overriding the styles of Polaris components in your SCSS. Consider contrib
 -   font-family: var(--p-font-family-mono);
 - };
 ```
+
+<RulePostamble />

@@ -7,9 +7,20 @@ keywords:
   - legacy rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="legacy" />
+
 ```diff
 // Do
 + <UnstyledButton />
 // Don't
 - @include unstyled-button;
 ```
+
+<RulePostamble />

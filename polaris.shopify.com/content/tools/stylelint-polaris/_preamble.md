@@ -1,0 +1,1 @@
+Use <StylelintResourceLink category={category} /> instead of custom styles so that {category} <PresentTenseVerb>{category}</PresentTenseVerb> consistent across the Admin. This helps merchants have a coherent user experience and also ensures that {category} <PresentTenseVerb>{category}</PresentTenseVerb> in sync with the design system.

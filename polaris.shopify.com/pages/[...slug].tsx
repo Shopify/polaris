@@ -3,6 +3,7 @@ import type {
   GetStaticProps,
   InferGetStaticPropsType,
 } from 'next';
+import Link from 'next/link';
 import fs from 'fs';
 import globby from 'globby';
 
@@ -35,6 +36,62 @@ interface SortedRichCardGridProps extends RichCardGridProps {
   order: number;
 }
 
+function StylelintResourceLink({category}: {category: string}): JSX.Element {
+  return (
+    {
+      border: (
+        <>
+          Polaris <Link href="/tokens/border">shape tokens</Link>
+        </>
+      ),
+      color: (
+        <>
+          Polaris <Link href="/tokens/color">color tokens</Link>
+        </>
+      ),
+      layout: (
+        <>
+          Polaris <Link href="/components">layout components</Link>
+        </>
+      ),
+      'media queries': (
+        <>
+          Polaris{' '}
+          <Link href="/tokens/breakpoints#sass-variables">
+            breakpoint sass variables
+          </Link>
+        </>
+      ),
+      motion: (
+        <>
+          Polaris <Link href="/tokens/motion">motion tokens</Link>
+        </>
+      ),
+      shadow: (
+        <>
+          Polaris <Link href="/tokens/shadow">depth tokens</Link>
+        </>
+      ),
+      space: (
+        <>
+          Polaris <Link href="/tokens/space">space tokens</Link>
+        </>
+      ),
+      'z-index': (
+        <>
+          Polaris <Link href="/tokens/z-index">z-index tokens</Link>
+        </>
+      ),
+      typography: (
+        <>
+          Polaris <Link href="/components/typography/text">text component</Link>{' '}
+          or <Link href="/tokens/font">font tokens</Link>
+        </>
+      ),
+    }[category] ?? <Link href="/tokens">Polaris tokens</Link>
+  );
+}
+
 const CatchAllTemplate = ({
   mdx,
   seoDescription,
@@ -46,7 +103,15 @@ const CatchAllTemplate = ({
   return (
     <Page editPageLinkPath={editPageLinkPath} isContentPage={isContentPage}>
       <PageMeta title={title} description={seoDescription} noIndex={noIndex} />
-      <Markdown {...mdx} />
+      <Markdown
+        {...mdx}
+        components={{
+          // @ts-expect-error Dunno how to narrow this type any further ¯\_(ツ)_/¯
+          PresentTenseVerb: ({children}: {children: string}) =>
+            `${children.slice(-1) === 's' ? 'are' : 'is'}`,
+          StylelintResourceLink,
+        }}
+      />
     </Page>
   );
 };
@@ -220,7 +285,6 @@ function fileShouldNotBeRenderedWithCatchAllTemplate(
 ): boolean {
   return (
     !filePath.startsWith('/components') &&
-    !filePath.includes('/tools/stylelint-polaris/rules') &&
     // We want to render legacy pages & patterns index page, but not new pattern details pages.
     !filePath.startsWith('/patterns/') &&
     !catchAllTemplateExcludeList.includes(filePath)
