@@ -1,6 +1,7 @@
 import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
+import {VFile} from 'vfile';
 import type {GetStaticPaths, GetStaticProps} from 'next';
 import ComponentExamples from '../../../../src/components/ComponentExamples';
 import type {
@@ -23,12 +24,12 @@ import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
 import StatusBanner from '../../../../src/components/StatusBanner';
 
-interface FrontMatter {
+type FrontMatter = {
   status?: Status;
   title: string;
   examples: ComponentExample[];
   description: string;
-}
+};
 
 interface Props {
   mdx: SerializedMdx<FrontMatter>;
@@ -86,6 +87,10 @@ const Components = ({
   );
 };
 
+function load(filePath: string): string {
+  return fs.readFileSync(filePath, 'utf-8');
+}
+
 export const getStaticProps: GetStaticProps<
   Props,
   {component: string; group: string}
@@ -98,14 +103,16 @@ export const getStaticProps: GetStaticProps<
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
 
   if (fs.existsSync(mdFilePath)) {
-    const componentMarkdown = fs.readFileSync(mdFilePath, 'utf-8');
-
-    const [mdx] = await serializeMdx<FrontMatter>(componentMarkdown);
+    const [mdx] = await serializeMdx<FrontMatter>(mdFilePath, {load});
 
     let descriptionMdx: SerializedMdx | null = null;
 
     if (mdx.frontmatter.description) {
-      [descriptionMdx] = await serializeMdx(mdx.frontmatter.description);
+      // Since this markdown didn't come from a real file, we use a VFile
+      // instead
+      [descriptionMdx] = await serializeMdx(
+        new VFile(mdx.frontmatter.description),
+      );
     }
 
     const examples: Array<ComponentExampleSerialized> = await Promise.all(
@@ -125,7 +132,11 @@ export const getStaticProps: GetStaticProps<
               .join('\n');
           }
 
-          const [description] = await serializeMdx(example.description);
+          // Since this markdown didn't come from a real file, we use a VFile
+          // instead
+          const [description] = await serializeMdx(
+            new VFile(example.description),
+          );
 
           return {...example, description, code};
         },
@@ -149,7 +160,11 @@ export const getStaticProps: GetStaticProps<
     let status = null;
 
     if (mdx.frontmatter?.status?.value && mdx.frontmatter.status.message) {
-      const [message] = await serializeMdx(mdx.frontmatter.status.message);
+      // Since this markdown didn't come from a real file, we use a VFile
+      // instead
+      const [message] = await serializeMdx(
+        new VFile(mdx.frontmatter.status.message),
+      );
       status = {
         value: mdx.frontmatter.status.value.toLowerCase() as Status['value'],
         mdx: message,

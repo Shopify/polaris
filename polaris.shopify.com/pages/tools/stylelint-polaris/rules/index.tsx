@@ -9,12 +9,15 @@ import PageMeta from '../../../../src/components/PageMeta';
 import {uppercaseFirst} from '../../../../src/utils/various';
 import {MarkdownFile} from '../../../../src/types';
 import {parseMarkdown} from '../../../../src/utils/markdown.mjs';
-import {serializeMdx} from '../../../../src/components/Markdown/serialize';
+import {
+  serializeMdx,
+  type SerializedMdxReturn,
+} from '../../../../src/components/Markdown/serialize';
 
 export interface RulesProps {
   title: string;
   description: string;
-  content: string;
+  mdx: SerializedMdxReturn[0];
 }
 
 const FoundationsCategory = ({title, description, mdx}: RulesProps) => {
@@ -34,8 +37,9 @@ const FoundationsCategory = ({title, description, mdx}: RulesProps) => {
 
 export const getStaticProps: GetStaticProps<RulesProps> = async () => {
   const {title, description} = indexPageMetadata();
-  const content = ruleListMarkdown();
-  const [mdx] = await serializeMdx(content);
+  const [mdx] = await serializeMdx(path.resolve(process.cwd(), rulesPath), {
+    load: ruleListMarkdown,
+  });
 
   return {
     props: {
@@ -58,8 +62,8 @@ function indexPageMetadata() {
   return {title, description};
 }
 
-function ruleListMarkdown(): string {
-  const globPath = [path.resolve(process.cwd(), `${rulesPath}/*.md`)];
+function ruleListMarkdown(directory: string): string {
+  const globPath = [`${directory}/*.md`];
   const rulePagePaths = globby
     .sync(globPath)
     .filter((path) => !path.endsWith(`${rulesPath}/index.md`));

@@ -21,14 +21,19 @@ const patternsContentAbsoluteDir = path.resolve(
   `content/patterns`,
 );
 
+function load(filePath: string): string {
+  return fs.readFileSync(filePath, 'utf-8');
+}
+
 async function loadPatternAndVariants(slug: string): Promise<PatternMDX> {
   const markdownFilePath = path.resolve(
     patternsContentAbsoluteDir,
     `${slug}/index.md`,
   );
 
-  const fileContent = fs.readFileSync(markdownFilePath, 'utf-8');
-  const [pattern] = await serializeMdx<PatternFrontMatter>(fileContent);
+  const [pattern] = await serializeMdx<PatternFrontMatter>(markdownFilePath, {
+    load,
+  });
 
   const variants = await Promise.all(
     (pattern.frontmatter.variants || []).map(async (variantPath) => {
@@ -36,11 +41,11 @@ async function loadPatternAndVariants(slug: string): Promise<PatternMDX> {
         patternsContentAbsoluteDir,
         `${slug}/${variantPath}`,
       );
-      const fileContent = fs.readFileSync(variantAbsolutePath, 'utf-8');
       // TODO: Optimize this so we're only sending down the compiled MDX for
       // variants which we're actually viewing
       const [variant] = await serializeMdx<PatternVariantFontMatter>(
-        fileContent,
+        variantAbsolutePath,
+        {load},
       );
       return variant;
     }),

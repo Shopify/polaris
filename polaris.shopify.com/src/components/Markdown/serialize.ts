@@ -1,4 +1,4 @@
-import {serialize} from 'next-mdx-remote/serialize';
+import {serialize, pathToVFile} from './next-mdx-importer/serialize';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import {VFile, type Data} from 'vfile';
 import remarkGfm from 'remark-gfm';
@@ -114,32 +114,42 @@ const passThroughChildren: Handler = (node) => {
   return ('children' in node && node.children) || undefined;
 };
 
+export type SerializedMdxReturn<
+  TFrontmatter extends Record<string, unknown> = Record<string, unknown>,
+  TScope extends Record<string, unknown> = Record<string, unknown>,
+> = [SerializedMdx<TFrontmatter, TScope>, Data];
+
 // NOTE: This function can work on the client side, but it's meant to be used on
 // the server. To reduce client bundle size, this function should only be
 // imported directly in a page level component, and not exported from this
 // folder's index file.
 export const serializeMdx = async <
-  TFrontmatter = Record<string, unknown>,
-  TScope = Record<string, unknown>,
+  TFrontmatter extends Record<string, unknown> = Record<string, unknown>,
+  TScope extends Record<string, unknown> = Record<string, unknown>,
 >(
-  content: string,
+  pathOrVFile: string | VFile,
   {
+    load,
     mdxOptions,
     scope,
   }: {
+    load?: Exclude<Parameters<typeof serialize>[1], undefined>['load'];
     mdxOptions?: Exclude<
       Parameters<typeof serialize>[1],
       undefined
     >['mdxOptions'];
     scope?: Exclude<Parameters<typeof serialize>[1], undefined>['scope'];
   } = {},
-): Promise<[SerializedMdx<TFrontmatter, TScope>, Data]> => {
-  const file = new VFile(content);
+): Promise<SerializedMdxReturn<TFrontmatter, TScope>> => {
+  const file = pathToVFile(pathOrVFile);
 
   const result = await serialize<TScope, TFrontmatter>(file, {
+    load,
     parseFrontmatter: true,
     scope,
     mdxOptions: {
+      // Our markdown is in '.md' files, but we want to parse it as '.mdx'
+      format: 'mdx',
       ...mdxOptions,
       remarkPlugins: [
         [remarkGfm, {tablePipeAlign: true}],
@@ -167,5 +177,6 @@ export const serializeMdx = async <
       remarkRehypeOptions: {handlers: defListHastHandlers},
     },
   });
+
   return [result, file.data];
 };

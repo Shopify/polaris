@@ -7,7 +7,7 @@ import React, {
   type ComponentType,
   type PropsWithChildren,
 } from 'react';
-import {MDXRemote, type MDXRemoteProps} from 'next-mdx-remote';
+import {MDXRemote, type MDXRemoteProps} from './next-mdx-importer';
 import {ClipboardMinor} from '@shopify/polaris-icons';
 import {Grid} from '@shopify/polaris';
 
@@ -139,9 +139,10 @@ export type MarkdownProps<
   TScope extends Record<string, unknown>,
 > = MDXRemoteProps<TScope, TFrontMatter>;
 
-function Markdown<TFrontMatter, TScope extends Record<string, unknown>>(
-  props: MarkdownProps<TFrontMatter, TScope>,
-): JSX.Element {
+function Markdown<
+  TFrontMatter extends Record<string, unknown>,
+  TScope extends Record<string, unknown>,
+>(props: MarkdownProps<TFrontMatter, TScope>): JSX.Element {
   return (
     <MDXRemote
       {...props}
@@ -214,6 +215,7 @@ function Markdown<TFrontMatter, TScope extends Record<string, unknown>>(
             <Box as="table" {...props} className={styles.Table} />
           </Box>
         ),
+        Box,
         SideBySide,
         Grid,
         FeaturedCardGrid,

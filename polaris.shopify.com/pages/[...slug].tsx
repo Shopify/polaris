@@ -15,14 +15,14 @@ import {parseMarkdown} from '../src/utils/markdown.mjs';
 import {MarkdownFile} from '../src/types';
 import type {RichCardGridProps} from '../src/components/RichCardGrid';
 
-interface FrontMatter {
+type FrontMatter = {
   title: string;
   noIndex?: boolean;
   status?: Status;
   update?: string;
   seoDescription?: string;
   order?: number;
-}
+};
 
 interface Props {
   mdx: SerializedMdx<FrontMatter>;
@@ -163,9 +163,8 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     pathIsDirectory = true;
   }
 
+  const mdAbsolutePath = [process.cwd(), mdRelativePath].join('/');
   const editPageLinkPath = `/polaris.shopify.com/${mdRelativePath}`;
-
-  const markdown = fs.readFileSync(mdRelativePath, 'utf-8');
 
   const scope: Record<string, any> = {};
 
@@ -194,7 +193,10 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     ],
   ]);
 
-  const [mdx, data] = await serializeMdx<FrontMatter>(markdown, {scope});
+  const [mdx, data] = await serializeMdx<FrontMatter>(mdAbsolutePath, {
+    scope,
+    load: (filePath) => fs.readFileSync(filePath, 'utf-8'),
+  });
 
   const seoDescription =
     typeof mdx.frontmatter.seoDescription === 'string'
@@ -211,12 +213,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   return {props};
 };
 
-const catchAllTemplateExcludeList = [
-  '/icons',
-  '/tokens',
-  '/sandbox',
-  '/new-design-language',
-];
+const catchAllTemplateExcludeList = ['/icons', '/tokens', '/sandbox'];
 
 function fileShouldNotBeRenderedWithCatchAllTemplate(
   filePath: string,
@@ -233,7 +230,8 @@ function fileShouldNotBeRenderedWithCatchAllTemplate(
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = globby
     // Recursive search for all markdown files (globby requires posix paths)
-    .sync(`${contentDir}/**/*.md`)
+    // Note: files prefixed with an underscore are ignored
+    .sync(`${contentDir}/**/!(_)*.md`)
     .map(extractSlugFromPath)
     .filter(fileShouldNotBeRenderedWithCatchAllTemplate);
 

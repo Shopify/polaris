@@ -1,6 +1,7 @@
 import fs from 'fs';
 import globby from 'globby';
 import path from 'path';
+import {VFile} from 'vfile';
 import {Text} from '@shopify/polaris';
 import {Grid, GridItem} from '../../../src/components/Grid';
 import Page from '../../../src/components/Page';
@@ -22,12 +23,12 @@ interface Group {
   tip?: string;
 }
 
-interface FrontMatter {
+type FrontMatter = {
   title?: string;
   description?: string;
   groups?: Group[];
   relatedResources?: string[];
-}
+};
 
 interface Props {
   group?: string;
@@ -166,16 +167,19 @@ export async function getStaticProps(context: {params: {group: string}}) {
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
 
   if (fs.existsSync(mdFilePath)) {
-    const componentMarkdown = fs.readFileSync(
-      `content/components/${group}/index.md`,
-      'utf-8',
-    );
+    const mdFilePath = `${process.cwd()}/content/components/${group}/index.md`;
 
-    const [mdx] = await serializeMdx<FrontMatter>(componentMarkdown);
+    const [mdx] = await serializeMdx<FrontMatter>(mdFilePath, {
+      load: (filePath) => fs.readFileSync(filePath, 'utf-8'),
+    });
     let description;
 
     if (mdx.frontmatter.description) {
-      [description] = await serializeMdx(mdx.frontmatter.description);
+      // Since this markdown didn't come from a real file, we use a VFile
+      // instead
+      [description] = await serializeMdx(
+        new VFile(mdx.frontmatter.description),
+      );
     }
 
     return {

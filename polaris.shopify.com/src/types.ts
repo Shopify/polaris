@@ -71,7 +71,7 @@ export interface FrontMatter {
   releasedIn?: string | number; // Add this line
 }
 
-export interface PatternFrontMatter extends Omit<FrontMatter, 'description'> {
+export type PatternFrontMatter = Omit<FrontMatter, 'description'> & {
   /* Description is shown on Patterns index page, and as the meta description on detail page */
   description: string;
   /* Lede is the first paragraph on the detail page, above variants */
@@ -81,12 +81,12 @@ export interface PatternFrontMatter extends Omit<FrontMatter, 'description'> {
   draft: boolean;
   githubDiscussionsLink?: string;
   variants?: string[];
-}
+};
 
-export interface PatternVariantFontMatter {
+export type PatternVariantFontMatter = {
   title?: string;
   slug?: string;
-}
+};
 
 export type MarkdownFile = {
   frontMatter: any;
