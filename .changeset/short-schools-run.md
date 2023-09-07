@@ -1,5 +1,4 @@
 ---
-'@shopify/polaris': minor
 '@shopify/polaris-tokens': minor
 ---
 
