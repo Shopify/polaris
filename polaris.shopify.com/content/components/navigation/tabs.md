@@ -1,6 +1,5 @@
 ---
 title: Tabs
-description: Use to alternate among related views within the same context.
 category: Navigation
 keywords:
   - layout
@@ -34,7 +33,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use to alternate among related views within the same context.
+
+</Lede>
 
 <Examples />
 

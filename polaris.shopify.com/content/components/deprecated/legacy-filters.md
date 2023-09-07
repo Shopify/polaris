@@ -1,6 +1,5 @@
 ---
 title: Legacy filters
-description: This is a legacy version of the Filters component, which is a composite component that filters the items of a list or table.
 category: Selection and input
 keywords:
   - filters
@@ -34,7 +33,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+This is a legacy version of the Filters component, which is a composite component that filters the items of a list or table.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is no longer supported. The new [Filters

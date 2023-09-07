@@ -1,13 +1,16 @@
 ---
 title: Components
-description: Components are the reusable building blocks for creating Shopify admin experiences.
 order: 7
 icon: AppsMajor
 ---
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Components are the reusable building blocks for creating Shopify admin experiences.
+
+</Lede>
 
 <Examples />
 

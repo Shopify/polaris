@@ -1,6 +1,5 @@
 ---
 title: Bleed
-description: Applies negative margin to allow content to bleed out into the surrounding layout.
 category: Layout and structure
 keywords:
   - layout
@@ -22,7 +21,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Applies negative margin to allow content to bleed out into the surrounding layout.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is a work in progress and ready for exploratory usage, with

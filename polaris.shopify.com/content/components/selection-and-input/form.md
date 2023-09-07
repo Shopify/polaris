@@ -1,6 +1,5 @@
 ---
 title: Form
-description: A wrapper component that handles the submission of forms.
 category: Selection and input
 keywords:
   - form
@@ -23,7 +22,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+A wrapper component that handles the submission of forms.
+
+</Lede>
 
 <Examples />
 

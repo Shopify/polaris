@@ -1,6 +1,5 @@
 ---
 title: Modal
-description: Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.
 category: Overlays
 keywords:
   - modal
@@ -57,7 +56,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.
+
+</Lede>
 
 <Examples />
 

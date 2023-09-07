@@ -1,6 +1,5 @@
 ---
 title: Progress bar
-description: The progress bar component is used to visually represent the completion of a task or operation. It shows how much of the task has been completed and how much is still left.
 category: Feedback indicators
 releasedIn: 1.8.0
 keywords:
@@ -25,7 +24,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+The progress bar component is used to visually represent the completion of a task or operation. It shows how much of the task has been completed and how much is still left.
+
+</Lede>
 
 <Examples />
 

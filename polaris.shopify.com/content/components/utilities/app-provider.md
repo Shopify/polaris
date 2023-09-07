@@ -1,6 +1,5 @@
 ---
 title: App provider
-description: App provider is a required component that enables sharing global settings throughout the hierarchy of your application.
 category: Utilities
 keywords:
   - app
@@ -29,7 +28,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+App provider is a required component that enables sharing global settings throughout the hierarchy of your application.
+
+</Lede>
 
 <Examples />
 

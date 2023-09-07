@@ -1,6 +1,5 @@
 ---
 title: Text field
-description: A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
 category: Selection and input
 keywords:
   - TextField
@@ -106,7 +105,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
+
+</Lede>
 
 <Examples />
 

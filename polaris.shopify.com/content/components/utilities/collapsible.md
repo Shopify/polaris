@@ -1,6 +1,5 @@
 ---
 title: Collapsible
-description: The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
 category: Utilities
 keywords:
   - hide
@@ -27,7 +26,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
+
+</Lede>
 
 <Examples />
 

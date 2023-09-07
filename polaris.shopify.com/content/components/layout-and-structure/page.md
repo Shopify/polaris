@@ -1,6 +1,5 @@
 ---
 title: Page
-description: Use to build the outer wrapper of a page, including the page title and associated actions.
 category: Layout and structure
 keywords:
   - page
@@ -63,7 +62,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use to build the outer wrapper of a page, including the page title and associated actions.
+
+</Lede>
 
 <Examples />
 

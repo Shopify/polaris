@@ -1,6 +1,5 @@
 ---
 title: Keyboard key
-description: Keyboard key is used to educate merchants about keyboard shortcuts.
 category: Images and icons
 keywords:
   - KeyboardKey
@@ -18,7 +17,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Keyboard key is used to educate merchants about keyboard shortcuts.
+
+</Lede>
 
 <Examples />
 

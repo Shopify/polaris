@@ -1,6 +1,5 @@
 ---
 title: Card
-description: Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
 category: Layout and structure
 keywords:
   - layout
@@ -44,7 +43,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is a work in progress and ready for exploratory usage, with

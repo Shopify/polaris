@@ -1,6 +1,5 @@
 ---
 title: Description list
-description: Description lists are a way to organize and explain related information. They’re particularly useful when you need to list and define terms such as in a glossary.
 category: Lists
 keywords:
   - DescriptionList
@@ -20,7 +19,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Description lists are a way to organize and explain related information. They’re particularly useful when you need to list and define terms such as in a glossary.
+
+</Lede>
 
 <Examples />
 

@@ -1,6 +1,5 @@
 ---
 title: Scrollable
-description: The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read.
 category: Utilities
 keywords:
   - long form
@@ -25,7 +24,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+The scrollable component is a container for long form content, such as terms of service, that allows for scrolling so merchants can expose more text as they read.
+
+</Lede>
 
 <Examples />
 

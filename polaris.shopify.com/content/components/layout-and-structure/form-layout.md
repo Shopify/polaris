@@ -1,6 +1,5 @@
 ---
 title: Form layout
-description: Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
 category: Layout and structure
 keywords:
   - FormLayout
@@ -41,7 +40,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
+
+</Lede>
 
 <Examples />
 

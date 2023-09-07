@@ -1,6 +1,5 @@
 ---
 title: Block stack
-description: Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
   - layout
@@ -29,7 +28,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is a work in progress and ready for exploratory usage, with

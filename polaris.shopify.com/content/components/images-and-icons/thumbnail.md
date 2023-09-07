@@ -1,6 +1,5 @@
 ---
 title: Thumbnail
-description: Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
 category: Images and icons
 keywords:
   - photo
@@ -30,7 +29,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
+
+</Lede>
 
 <Examples />
 

@@ -1,6 +1,5 @@
 ---
 title: Text
-description: Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
 category: Typography
 keywords:
   - titles
@@ -52,7 +51,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
+
+</Lede>
 
 <Examples />
 

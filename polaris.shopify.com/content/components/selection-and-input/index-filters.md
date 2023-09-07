@@ -1,6 +1,5 @@
 ---
 title: Index filters
-description: Use index filters to allow merchants to filter, search, and sort their index table data and create unique saved views from the results.
 category: Selection and input
 keywords:
   - filters
@@ -33,7 +32,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use index filters to allow merchants to filter, search, and sort their index table data and create unique saved views from the results.
+
+</Lede>
 
 <Examples />
 

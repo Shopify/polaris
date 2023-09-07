@@ -1,6 +1,5 @@
 ---
 title: Badge
-description: Badges are used to inform merchants of the tone of an object or of an action that’s been taken.
 category: Feedback indicators
 keywords:
   - pills
@@ -52,7 +51,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Badges are used to inform merchants of the tone of an object or of an action that’s been taken.
+
+</Lede>
 
 <Examples />
 

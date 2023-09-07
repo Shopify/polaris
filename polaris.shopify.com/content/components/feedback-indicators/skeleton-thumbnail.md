@@ -1,6 +1,5 @@
 ---
 title: Skeleton thumbnail
-description: Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card.
 category: Feedback indicators
 releasedIn: 3.7.2
 keywords:
@@ -25,7 +24,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Skeleton thumbnail is used to provide a low fidelity representation of an image before it appears on the page, and improves load times perceived by merchants. Use for thumbnails in or outside of a card.
+
+</Lede>
 
 <Examples />
 

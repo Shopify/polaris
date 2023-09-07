@@ -1,6 +1,5 @@
 ---
 title: Drop zone
-description: The drop zone component lets users upload files by dragging and dropping the files into an area on a page, or activating a button.
 category: Selection and input
 keywords:
   - upload
@@ -51,7 +50,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+The drop zone component lets users upload files by dragging and dropping the files into an area on a page, or activating a button.
+
+</Lede>
 
 <Examples />
 

@@ -1,6 +1,5 @@
 ---
 title: Media card
-description: Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.
 category: Layout and structure
 keywords:
   - MediaCard
@@ -35,7 +34,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Media cards provide a consistent layout to present visual information to merchants. Visual media is used to provide additional context to the written information it's paired with.
+
+</Lede>
 
 <Examples />
 

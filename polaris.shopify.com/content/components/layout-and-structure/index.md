@@ -1,7 +1,5 @@
 ---
 title: Layout and structure
-description: >-
-  Layout is the arrangement of elements on a page. A good layout helps merchants understand and find information to complete their goals. To learn more, visit the [Layout](/design/layout) documentation.
 expanded: true
 order: 2
 groups:
@@ -28,7 +26,11 @@ groups:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Layout is the arrangement of elements on a page. A good layout helps merchants understand and find information to complete their goals. To learn more, visit the [Layout](/design/layout) documentation.
+
+</Lede>
 
 <Examples />
 

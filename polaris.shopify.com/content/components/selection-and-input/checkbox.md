@@ -1,6 +1,5 @@
 ---
 title: Checkbox
-description: Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
 category: Selection and input
 keywords:
   - accept
@@ -22,7 +21,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
+
+</Lede>
 
 <Examples />
 

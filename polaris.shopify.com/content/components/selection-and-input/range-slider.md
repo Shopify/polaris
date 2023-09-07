@@ -1,6 +1,5 @@
 ---
 title: Range slider
-description: A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values).
 category: Selection and input
 keywords:
   - RangeSlider
@@ -30,7 +29,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+A range slider is an input field that merchants can use to select a numeric value within a given range (minimum and maximum values).
+
+</Lede>
 
 <Examples />
 

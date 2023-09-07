@@ -1,6 +1,5 @@
 ---
 title: Subheading
-description: Subheadings are used for the title of any sub-sections in top-level page sections.
 category: Deprecated
 keywords:
   - title bar
@@ -15,7 +14,11 @@ status: Deprecated
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Subheadings are used for the title of any sub-sections in top-level page sections.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is no longer supported. Please use the Text component instead.

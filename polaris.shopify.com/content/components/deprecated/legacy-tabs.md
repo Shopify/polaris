@@ -1,6 +1,5 @@
 ---
 title: Legacy tabs
-description: Use to alternate among related views within the same context.
 category: Deprecated
 keywords:
   - layout
@@ -29,7 +28,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use to alternate among related views within the same context.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is no longer supported. The new [Tabs

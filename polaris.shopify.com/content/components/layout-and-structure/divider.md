@@ -1,6 +1,5 @@
 ---
 title: Divider
-description: Use to separate or group content.
 category: Layout and structure
 keywords:
   - layout
@@ -15,7 +14,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use to separate or group content.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is a work in progress and ready for exploratory usage, with

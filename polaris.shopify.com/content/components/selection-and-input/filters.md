@@ -1,6 +1,5 @@
 ---
 title: Filters
-description: Filters is a composite component that filters the items of a list or table.
 category: Selection and input
 keywords:
   - filters
@@ -29,7 +28,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Filters is a composite component that filters the items of a list or table.
+
+</Lede>
 
 <Examples />
 

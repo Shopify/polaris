@@ -1,6 +1,5 @@
 ---
 title: Choice list
-description: A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
 category: Selection and input
 keywords:
   - ChoiceList
@@ -38,7 +37,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+A choice list lets you create a list of grouped radio buttons or checkboxes. Use this component if you need to group together a related list of interactive choices.
+
+</Lede>
 
 <Examples />
 

@@ -1,6 +1,5 @@
 ---
 title: Page actions
-description: Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
 category: Actions
 keywords:
   - PageActions
@@ -29,7 +28,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Page actions let merchants take key actions at the bottom of specific pages in the interface. This is important because sometimes the primary call to action is hard to access when merchants are at the bottom of a page.
+
+</Lede>
 
 <Examples />
 

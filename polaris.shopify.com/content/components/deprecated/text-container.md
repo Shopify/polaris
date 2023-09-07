@@ -1,6 +1,5 @@
 ---
 title: Text container
-description: A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.
 category: Deprecated
 releasedIn: 1.9.0
 keywords:
@@ -26,7 +25,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+A text container is used to wrap text elements such as paragraphs, headings, and lists to give them vertical spacing.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   The TextContainer is a simple layout component which was made redundant by the

@@ -1,6 +1,5 @@
 ---
 title: Video thumbnail
-description: Video thumbnails are a clickable placeholder image. When clicked, it opens a video player within a modal or full screen.
 category: Images and icons
 keywords:
   - video
@@ -22,7 +21,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Video thumbnails are a clickable placeholder image. When clicked, it opens a video player within a modal or full screen.
+
+</Lede>
 
 <Examples />
 

@@ -1,6 +1,5 @@
 ---
 title: Grid
-description: Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 category: Layout and structure
 keywords:
   - one column
@@ -31,7 +30,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is a work in progress and ready for exploratory usage, with

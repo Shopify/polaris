@@ -1,6 +1,5 @@
 ---
 title: Avatar
-description: Avatars are used to show a thumbnail representation of an individual or business in the interface.
 category: Images and icons
 keywords:
   - photo
@@ -32,7 +31,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Avatars are used to show a thumbnail representation of an individual or business in the interface.
+
+</Lede>
 
 <Examples />
 

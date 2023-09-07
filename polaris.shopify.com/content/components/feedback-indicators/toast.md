@@ -1,6 +1,5 @@
 ---
 title: Toast
-description: The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
 category: Feedback indicators
 keywords:
   - toast
@@ -34,7 +33,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
+
+</Lede>
 
 <Examples />
 

@@ -1,6 +1,5 @@
 ---
 title: Select
-description: Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
 category: Selection and input
 keywords:
   - on off
@@ -43,7 +42,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+
+</Lede>
 
 <Examples />
 

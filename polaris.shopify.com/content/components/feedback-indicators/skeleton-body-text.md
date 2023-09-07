@@ -1,6 +1,5 @@
 ---
 title: Skeleton body text
-description: Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -19,7 +18,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
+
+</Lede>
 
 <Examples />
 

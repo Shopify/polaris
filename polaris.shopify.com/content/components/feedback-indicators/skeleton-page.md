@@ -1,6 +1,5 @@
 ---
 title: Skeleton page
-description: Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -19,7 +18,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Skeleton page is used with other skeleton loading components to provide a low fidelity representation of the user interface (UI) before content appears on the page. It improves load times perceived by merchants.
+
+</Lede>
 
 <Examples />
 

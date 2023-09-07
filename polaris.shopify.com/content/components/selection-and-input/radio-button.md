@@ -1,6 +1,5 @@
 ---
 title: Radio button
-description: Use radio buttons to present each item in a list of options where merchants must make a single selection.
 category: Selection and input
 keywords:
   - RadioButton
@@ -22,7 +21,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use radio buttons to present each item in a list of options where merchants must make a single selection.
+
+</Lede>
 
 <Examples />
 

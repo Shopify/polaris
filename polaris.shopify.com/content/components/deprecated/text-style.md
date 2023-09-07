@@ -1,6 +1,5 @@
 ---
 title: Text style
-description: Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text.
 category: Deprecated
 keywords:
   - TextStyle
@@ -24,7 +23,11 @@ status: Deprecated
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is no longer supported. Please use the Text component instead.

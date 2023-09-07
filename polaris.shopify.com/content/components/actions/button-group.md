@@ -1,6 +1,5 @@
 ---
 title: Button group
-description: Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
 category: Actions
 keywords:
   - ButtonGroup
@@ -32,7 +31,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
+
+</Lede>
 
 <Examples />
 

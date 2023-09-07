@@ -1,6 +1,5 @@
 ---
 title: Setting toggle
-description: Use to give merchants control over a feature or option that can be turned on or off.
 category: Deprecated
 keywords:
   - SettingToggle
@@ -27,7 +26,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Use to give merchants control over a feature or option that can be turned on or off.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   The SettingToggle is a simple layout component that composes its children with

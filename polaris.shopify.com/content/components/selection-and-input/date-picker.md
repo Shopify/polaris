@@ -1,6 +1,5 @@
 ---
 title: Date picker
-description: Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.
 category: Selection and input
 keywords:
   - DatePicker
@@ -36,7 +35,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.
+
+</Lede>
 
 <Examples />
 

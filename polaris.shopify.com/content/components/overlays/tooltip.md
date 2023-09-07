@@ -1,6 +1,5 @@
 ---
 title: Tooltip
-description: Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click.
 category: Overlays
 keywords:
   - info
@@ -28,7 +27,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click.
+
+</Lede>
 
 <Examples />
 

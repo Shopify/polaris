@@ -1,6 +1,5 @@
 ---
 title: Link
-description: Links take users to another place, and usually appear within or directly following a sentence.
 category: Navigation
 keywords:
   - URL
@@ -37,7 +36,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Links take users to another place, and usually appear within or directly following a sentence.
+
+</Lede>
 
 <Examples />
 

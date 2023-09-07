@@ -1,6 +1,5 @@
 ---
 title: List
-description: Lists display a set of related text-only content. Each list item begins with a bullet or a number.
 category: Lists
 keywords:
   - bulleted lists
@@ -23,7 +22,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Lists display a set of related text-only content. Each list item begins with a bullet or a number.
+
+</Lede>
 
 <Examples />
 

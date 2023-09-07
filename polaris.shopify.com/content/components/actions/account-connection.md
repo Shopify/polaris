@@ -1,6 +1,5 @@
 ---
 title: Account connection
-description: The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store.
 category: Actions
 keywords:
   - AccountConnection
@@ -22,7 +21,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+The account connection component is used so merchants can connect or disconnect their store to various accounts. For example, if merchants want to use the Facebook sales channel, they need to connect their Facebook account to their Shopify store.
+
+</Lede>
 
 <Examples />
 

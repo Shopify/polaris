@@ -1,13 +1,16 @@
 ---
 title: Tables
-description: Display, organize, and sort data for merchants to analyze and take action on.
 expanded: true
 order: 7
 ---
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Display, organize, and sort data for merchants to analyze and take action on.
+
+</Lede>
 
 <Examples />
 

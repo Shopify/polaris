@@ -1,6 +1,5 @@
 ---
 title: Box
-description: Box is the most primitive layout component. It’s a way to access Polaris design tokens.
 category: Layout and structure
 keywords:
   - layout
@@ -33,7 +32,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Box is the most primitive layout component. It’s a way to access Polaris design tokens.
+
+</Lede>
 
 <StatusBanner status={frontmatter.status}>
   This component is a work in progress and ready for exploratory usage, with

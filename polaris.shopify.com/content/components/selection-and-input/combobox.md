@@ -1,6 +1,5 @@
 ---
 title: Combobox
-description: Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values.
 category: Selection and input
 keywords:
   - autocomplete
@@ -33,7 +32,11 @@ examples:
 
 # {frontmatter.title}
 
-<Lede>{frontmatter.description}</Lede>
+<Lede>
+
+Combobox is an accessible autocomplete input that enables merchants to filter a list of options and select one or more values.
+
+</Lede>
 
 <Examples />
 
