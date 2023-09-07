@@ -1,5 +1,5 @@
-import type {MetaThemeVariantPartials, MetaThemeVariants} from './types';
-import {createMetaThemeVariant} from './utils';
+import type {MetaThemePartials, MetaThemes} from './types';
+import {createMetaTheme} from './utils';
 import {themeNameDefault} from './constants';
 import {metaThemeLight, metaThemeLightPartial} from './light';
 import {
@@ -7,19 +7,18 @@ import {
   metaThemeLightUpliftPartial,
 } from './light-uplift';
 
-export {createMetaThemeVariant} from './utils';
+export {createMetaTheme} from './utils';
 
-export const metaThemeVariants: MetaThemeVariants = {
+export const metaThemes: MetaThemes = {
   light: metaThemeLight,
   'Polaris-Summer-Editions-2023': metaThemeLightUplift,
 };
 
-export const metaThemeVariantPartials: MetaThemeVariantPartials = {
+export const metaThemePartials: MetaThemePartials = {
   light: metaThemeLightPartial,
   'Polaris-Summer-Editions-2023': metaThemeLightUpliftPartial,
 };
 
-export const metaThemeDefaultPartial =
-  metaThemeVariantPartials[themeNameDefault];
+export const metaThemeDefaultPartial = metaThemePartials[themeNameDefault];
 
-export const metaThemeDefault = createMetaThemeVariant(metaThemeDefaultPartial);
+export const metaThemeDefault = createMetaTheme(metaThemeDefaultPartial);

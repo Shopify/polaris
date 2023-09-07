@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import {metaThemeVariants, metaThemeDefault} from '../src/themes';
+import {metaThemes, metaThemeDefault} from '../src/themes';
 import {extractMetaThemeValues} from '../src/themes/utils';
 
 const outputDir = path.join(__dirname, '../build');
@@ -24,12 +24,10 @@ export async function toValues() {
       createExport([
         'themes',
         Object.fromEntries(
-          Object.entries(metaThemeVariants).map(
-            ([themeName, metaThemeVariant]) => [
-              themeName,
-              extractMetaThemeValues(metaThemeVariant),
-            ],
-          ),
+          Object.entries(metaThemes).map(([themeName, metaTheme]) => [
+            themeName,
+            extractMetaThemeValues(metaTheme),
+          ]),
         ),
       ]),
     ]
