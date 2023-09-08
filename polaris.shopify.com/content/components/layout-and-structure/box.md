@@ -6,7 +6,6 @@ keywords:
   - box
   - responsive
   - tokens
-status: Alpha
 examples:
   - fileName: box-with-color.tsx
     title: Color

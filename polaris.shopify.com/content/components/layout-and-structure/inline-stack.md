@@ -13,7 +13,6 @@ keywords:
   - vertical centering
   - horizontal row of components
   - stack
-status: Alpha
 examples:
   - fileName: inline-stack-with-non-wrapping.tsx
     title: Non-wrapping

@@ -3,7 +3,6 @@ title: Bleed
 category: Layout and structure
 keywords:
   - layout
-status: Alpha
 examples:
   - fileName: bleed-horizontal.tsx
     title: Horizontal

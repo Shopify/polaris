@@ -10,7 +10,6 @@ keywords:
   - equal width
   - right-aligned stack
   - stack layout
-status: Alpha
 examples:
   - fileName: block-stack-with-gap.tsx
     title: Gap

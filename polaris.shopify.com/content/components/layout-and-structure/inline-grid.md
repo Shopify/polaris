@@ -6,7 +6,6 @@ keywords:
   - columns
   - grid
   - responsive
-status: Alpha
 examples:
   - fileName: inline-grid-with-varying-gap.tsx
     title: Gap

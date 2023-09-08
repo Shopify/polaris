@@ -18,9 +18,6 @@ keywords:
   - semibold
   - bold
   - list
-status:
-  value: Alpha
-  message: This component is in development. There could be breaking changes made to it in a non-major release of Polaris. Please use with caution.
 ---
 
 # Text

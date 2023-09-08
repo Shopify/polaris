@@ -21,7 +21,6 @@ keywords:
   - subdued card for secondary content
   - callout
   - call out
-status: Alpha
 examples:
   - fileName: card-default.tsx
     title: Default

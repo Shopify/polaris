@@ -12,7 +12,6 @@ keywords:
   - containers
   - full width containers
   - css grid
-status: Alpha
 examples:
   - fileName: grid-two-column.tsx
     title: Two column

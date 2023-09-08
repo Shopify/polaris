@@ -5,7 +5,6 @@ keywords:
   - layout
   - divider
   - border
-status: Alpha
 examples:
   - fileName: divider-with-border-color.tsx
     title: Color
