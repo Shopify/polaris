@@ -6,6 +6,8 @@ import {useFeatures} from '../../../../../../utilities/features';
 
 import styles from './Title.scss';
 
+export const PAGE_TITLE_IDENTIFIER = 'PolarisPageTitle';
+
 export interface TitleProps {
   /** Page title, in large type */
   title?: string;
@@ -29,7 +31,11 @@ export function Title({
     subtitle && styles.TitleWithSubtitle,
   );
 
-  const titleMarkup = title ? <h1 className={className}>{title}</h1> : null;
+  const titleMarkup = title ? (
+    <h1 className={className} id={PAGE_TITLE_IDENTIFIER}>
+      {title}
+    </h1>
+  ) : null;
 
   const titleMetadataMarkup = titleMetadata ? (
     <div className={styles.TitleMetadata}>{titleMetadata}</div>
