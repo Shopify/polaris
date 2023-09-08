@@ -24,10 +24,13 @@
   h2 {
     margin-top: 0;
     @include heading-3;
+
+    & + p {
+      margin-top: 0;
+    }
   }
 
   p {
     margin-bottom: 0;
-    margin-top: 0;
   }
 }
