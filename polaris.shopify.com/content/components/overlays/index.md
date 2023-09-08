@@ -2,6 +2,7 @@
 title: Overlays
 expanded: true
 order: 10
+previewImg: /images/components/overlays.png
 ---
 
 # {frontmatter.title}
@@ -12,4 +13,4 @@ Display contextual elements on top of the main admin interface that provide addi
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

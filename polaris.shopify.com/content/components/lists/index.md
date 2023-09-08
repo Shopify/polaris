@@ -2,6 +2,7 @@
 title: Lists
 expanded: true
 order: 8
+previewImg: /images/components/lists.png
 ---
 
 # {frontmatter.title}
@@ -12,4 +13,4 @@ Provide merchants with easy-to-use interfaces for selecting options, organizing 
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

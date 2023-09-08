@@ -72,6 +72,7 @@ examples:
   - fileName: button-loading-state.tsx
     title: Loading state
     description: Use when a button has been pressed and the associated action is in progress.
+previewImg: /images/components/actions/button.png
 ---
 
 # {frontmatter.title}

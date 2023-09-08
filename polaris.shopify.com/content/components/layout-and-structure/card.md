@@ -39,6 +39,7 @@ examples:
     title: Rounded corners
     description: >-
       Use the `padding` property to adjust the spacing of content within a card. The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
+previewImg: /images/components/layout-and-structure/card.png
 ---
 
 # {frontmatter.title}

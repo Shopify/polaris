@@ -216,6 +216,7 @@ function Markdown<
           </Box>
         ),
         Box,
+        Stack,
         SideBySide,
         Grid,
         FeaturedCardGrid,

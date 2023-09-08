@@ -28,6 +28,7 @@ examples:
   - fileName: pagination-with-label.tsx
     title: With label
     description: Add a label between navigation buttons to provide more context of the content being viewed by the user.
+previewImg: /images/components/navigation/pagination.png
 ---
 
 # {frontmatter.title}

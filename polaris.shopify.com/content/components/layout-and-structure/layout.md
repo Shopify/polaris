@@ -37,6 +37,7 @@ examples:
   - fileName: layout-annotated-with-banner-at-the-top.tsx
     title: Annotated with Banner at the top
     description: Use for settings pages that need a banner or other content at the top.
+previewImg: /images/components/layout-and-structure/layout.png
 ---
 
 # {frontmatter.title}

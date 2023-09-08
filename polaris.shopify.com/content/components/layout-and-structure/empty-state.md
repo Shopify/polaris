@@ -29,6 +29,7 @@ examples:
     description: Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
   - fileName: empty-state-with-full-width-layout.tsx
     title: With full width layout
+previewImg: /images/components/layout-and-structure/empty-state.png
 ---
 
 # {frontmatter.title}

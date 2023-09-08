@@ -11,6 +11,7 @@ examples:
   - fileName: inline-error-default.tsx
     title: Default
     description: Use when the merchant has entered information that is not valid into multiple fields inside of a form, or needs to be displayed in a non-standard position in the form layout.
+previewImg: /images/components/selection-and-input/inline-error.png
 ---
 
 # {frontmatter.title}

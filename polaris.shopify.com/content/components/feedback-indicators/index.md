@@ -2,6 +2,7 @@
 title: Feedback indicators
 expanded: true
 order: 5
+previewImg: /images/components/feedback-indicators.png
 ---
 
 # {frontmatter.title}
@@ -12,4 +13,4 @@ Inform merchants about the status of a process, provide feedback on actions and 
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

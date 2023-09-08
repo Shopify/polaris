@@ -73,6 +73,7 @@ examples:
   - fileName: legacy-card-with-flushed-sections.tsx
     title: With flushed sections
     description: Use when you need further control over the spacing of your card sections.
+previewImg: /images/components/deprecated/legacy-card.png
 ---
 
 # {frontmatter.title}

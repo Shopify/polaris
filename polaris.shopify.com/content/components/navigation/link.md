@@ -32,6 +32,7 @@ examples:
   - fileName: link-external.tsx
     title: External link
     description: Use for text links that should open in a new browser tab (or window, depending on the merchant’s browser settings). Use this only when a default link might disrupt the merchant’s workflow.
+previewImg: /images/components/navigation/link.png
 ---
 
 # {frontmatter.title}

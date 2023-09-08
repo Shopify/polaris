@@ -22,6 +22,7 @@ examples:
   - fileName: setting-toggle-deprecated.tsx
     title: With deprecated component
     description: The setting toggle component is deprecated. The "With primitive components" example is the recommended way to build the setting toggle pattern.
+previewImg: /images/components/deprecated/setting-toggle.png
 ---
 
 # {frontmatter.title}

@@ -29,6 +29,7 @@ examples:
     title: With query field hidden
   - fileName: legacy-filters-with-query-field-disabled.tsx
     title: With query field disabled
+previewImg: /images/components/deprecated/legacy-filters.png
 ---
 
 # {frontmatter.title}

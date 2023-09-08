@@ -28,6 +28,7 @@ examples:
   - fileName: index-filters-with-no-search-or-filters.tsx
     title: With no search or filters
     description: An IndexFilters component with only view management and sorting.
+previewImg: /images/components/selection-and-input/index-filters.png
 ---
 
 # {frontmatter.title}

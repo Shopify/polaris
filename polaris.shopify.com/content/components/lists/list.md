@@ -18,6 +18,7 @@ examples:
   - fileName: list-extra-tight.tsx
     title: Extra Tight
     description: Use when there is limited space for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
+previewImg: /images/components/lists/list.png
 ---
 
 # {frontmatter.title}

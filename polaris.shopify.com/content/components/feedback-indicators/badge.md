@@ -47,6 +47,7 @@ examples:
   - fileName: badge-with-tone-and-progress-label-override.tsx
     title: With toneAndProgressLabelOverride
     description: Use when the tone and progress accessibilityLabels are not appropriate to a given context.
+previewImg: /images/components/feedback-indicators/badge.png
 ---
 
 # {frontmatter.title}

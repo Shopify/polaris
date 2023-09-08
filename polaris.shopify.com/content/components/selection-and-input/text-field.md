@@ -101,6 +101,7 @@ examples:
   - fileName: text-field-with-inline-suggestion.tsx
     title: With inline suggestion
     description: Use to provide an autocomplete suggestion inline with the input value. See the combobox component's tag multi-select example for full implementation of the inline autocomplete pattern.
+previewImg: /images/components/selection-and-input/text-field.png
 ---
 
 # {frontmatter.title}

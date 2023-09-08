@@ -14,6 +14,7 @@ examples:
   - fileName: skeleton-body-text-single-line-content.tsx
     title: Single line content
     description: Use this component to represent a short, single line of text, like a timestamp.
+previewImg: /images/components/feedback-indicators/skeleton-body-text.png
 ---
 
 # {frontmatter.title}

@@ -24,6 +24,7 @@ examples:
   - fileName: page-actions-with-custom-secondary-action.tsx
     title: With custom secondary action
     description: Use to create a custom secondary action.
+previewImg: /images/components/actions/page-actions.png
 ---
 
 # {frontmatter.title}

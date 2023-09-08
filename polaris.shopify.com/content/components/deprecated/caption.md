@@ -15,6 +15,7 @@ keywords:
   - compact text
   - small text
 status: Deprecated
+previewImg: /images/components/deprecated/caption.png
 ---
 
 # {frontmatter.title}

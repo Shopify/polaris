@@ -19,6 +19,7 @@ examples:
   - fileName: top-bar-default.tsx
     title: Default
     description: Use to provide structure for the top of an application. Style the top bar component using the app provider component with a theme. Providing just the `background` key for the top bar component theme will result in intelligent defaults being set for complementary colors with contrasting text.
+previewImg: /images/components/navigation/top-bar.png
 ---
 
 # {frontmatter.title}
