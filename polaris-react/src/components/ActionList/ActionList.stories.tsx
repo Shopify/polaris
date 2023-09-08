@@ -3,9 +3,11 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
   Avatar,
+  Box,
   Button,
   Icon,
   Popover,
+  TextField,
   Thumbnail,
   VerticalStack,
 } from '@shopify/polaris';
