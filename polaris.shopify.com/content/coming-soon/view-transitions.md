@@ -1,5 +1,5 @@
 ---
-title: Embracing the Future with the View Transitions API
+title: Embracing the future with the View Transitions API
 description: Merchants need tools that are not just powerful, but also intuitive. That's why we're experimenting with new ways to enhance the Shopify admin experience using the View Transitions API.
 keywords:
   - motion
