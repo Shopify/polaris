@@ -26,6 +26,7 @@ examples:
   - fileName: icon-with-custom-svg-and-color.tsx
     title: With custom SVG and color
     description: When using changing color of an svg and it uses currentColor, the white color is applied.
+previewImg: /images/components/images-and-icons/icon.png
 ---
 
 # {frontmatter.title}

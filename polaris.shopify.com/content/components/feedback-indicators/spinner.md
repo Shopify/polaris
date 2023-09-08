@@ -17,6 +17,7 @@ examples:
   - fileName: spinner-with-focus-management.tsx
     title: With focus management
     description: Use to direct the focus state from the control to the spinner, to the content.
+previewImg: /images/components/feedback-indicators/spinner.png
 ---
 
 # {frontmatter.title}

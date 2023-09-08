@@ -3,11 +3,11 @@ import {InfoMinor} from '@shopify/polaris-icons';
 import styles from './TipBanner.module.scss';
 
 interface Props {
-  title: string;
+  title?: string;
   children: React.ReactNode;
 }
 
-function TipBanner({title, children}: Props) {
+function TipBanner({title = 'Tip', children}: Props) {
   return (
     <div className={styles.TipBanner}>
       <BlockStack gap="2">

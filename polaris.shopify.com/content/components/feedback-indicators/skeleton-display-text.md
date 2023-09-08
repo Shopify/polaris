@@ -17,6 +17,7 @@ examples:
   - fileName: skeleton-display-text-small.tsx
     title: Small
     description: Use this component to represent small display text such as content headings.
+previewImg: /images/components/feedback-indicators/skeleton-display-text.png
 ---
 
 # {frontmatter.title}

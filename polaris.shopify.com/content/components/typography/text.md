@@ -47,6 +47,7 @@ examples:
     title: Decoration
     description: >-
       Use to define text decoration
+previewImg: /images/components/typography/text.png
 ---
 
 # {frontmatter.title}

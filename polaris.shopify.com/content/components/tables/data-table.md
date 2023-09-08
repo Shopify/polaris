@@ -42,6 +42,7 @@ examples:
   - fileName: data-table-with-sticky-header-enabled.tsx
     title: With sticky header enabled
     description: Use as a broad example that includes most props available to data table.
+previewImg: /images/components/tables/data-table.png
 ---
 
 # {frontmatter.title}

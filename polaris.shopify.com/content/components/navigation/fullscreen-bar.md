@@ -14,6 +14,7 @@ examples:
   - fileName: fullscreen-bar-no-children.tsx
     title: No children
     description: Use this default to show ONLY the Back button.
+previewImg: /images/components/navigation/fullscreen-bar.png
 ---
 
 # {frontmatter.title}

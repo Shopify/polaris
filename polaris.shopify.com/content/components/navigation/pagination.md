@@ -31,6 +31,7 @@ examples:
   - fileName: pagination-with-table-type.tsx
     title: With table type
     description: Use for pagination at the bottom of tables or lists.
+previewImg: /images/components/navigation/pagination.png
 ---
 
 # {frontmatter.title}

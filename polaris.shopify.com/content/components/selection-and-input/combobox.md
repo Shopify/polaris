@@ -28,6 +28,7 @@ examples:
   - fileName: combobox-with-loading.tsx
     title: With loading
     description: Use to indicate to merchants that the list data is being fetched.
+previewImg: /images/components/selection-and-input/combobox.png
 ---
 
 # {frontmatter.title}
