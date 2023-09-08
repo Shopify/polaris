@@ -48,13 +48,6 @@ Cards are used to group similar concepts and tasks together for merchants to sca
 
 </Lede>
 
-<StatusBanner status={frontmatter.status}>
-  This component is a work in progress and ready for exploratory usage, with
-  breaking changes expected in minor version updates. Please use with caution.
-  Learn more about our [component
-  lifecycles](/getting-started/components-lifecycle).
-</StatusBanner>
-
 <Examples />
 
 <Props componentName={frontmatter.title} />

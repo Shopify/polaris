@@ -37,13 +37,6 @@ Box is the most primitive layout component. It’s a way to access Polaris desig
 
 </Lede>
 
-<StatusBanner status={frontmatter.status}>
-  This component is a work in progress and ready for exploratory usage, with
-  breaking changes expected in minor version updates. Please use with caution.
-  Learn more about our [component
-  lifecycles](/getting-started/components-lifecycle).
-</StatusBanner>
-
 <Examples />
 
 <Props componentName={frontmatter.title} />
