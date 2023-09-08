@@ -17,6 +17,7 @@ examples:
   - fileName: video-thumbnail-with-progress.tsx
     title: With progress
     description: Use to indicate the video’s play progress in relation to its duration.
+previewImg: /images/components/images-and-icons/video-thumbnail.png
 ---
 
 # {frontmatter.title}

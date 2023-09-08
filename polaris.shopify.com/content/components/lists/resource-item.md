@@ -35,6 +35,7 @@ examples:
   - fileName: resource-item-with-vertical-alignment.tsx
     title: With vertical alignment
     description: Use to adjust the vertical alignment of item content.
+previewImg: /images/components/lists/resource-item.png
 ---
 
 # {frontmatter.title}

@@ -17,6 +17,7 @@ keywords:
   - a11y
   - assistive technology
 status: Deprecated
+previewImg: /images/components/deprecated/visually-hidden.png
 ---
 
 # {frontmatter.title}

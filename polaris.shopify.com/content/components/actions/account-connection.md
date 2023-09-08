@@ -17,6 +17,7 @@ examples:
   - fileName: account-connection-default.tsx
     title: Default
     description: Use to let merchants connect or disconnect their store to their third-party accounts, like Facebook.
+previewImg: /images/components/actions/account-connection.png
 ---
 
 # {frontmatter.title}

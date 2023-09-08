@@ -17,6 +17,7 @@ examples:
   - fileName: checkbox-default.tsx
     title: Default
     description: Use in forms to toggle the state of something on or off. Default checkboxes can appear as selected and disabled, or unselected.
+previewImg: /images/components/selection-and-input/checkbox.png
 ---
 
 # {frontmatter.title}

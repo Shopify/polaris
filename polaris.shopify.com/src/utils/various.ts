@@ -9,10 +9,6 @@ interface PatternJSON {
 
 const pages: SiteJSON = siteJson as unknown as SiteJSON;
 
-const components = Object.keys(pages).filter((slug) =>
-  slug.startsWith('components/'),
-);
-
 export const patterns: PatternJSON = Object.keys(pages)
   .filter((slug) => slug.startsWith('patterns/'))
   .sort((a, b) => a.localeCompare(b))
@@ -30,19 +26,6 @@ export const legacyPatterns: PatternJSON = Object.keys(pages)
     memo[key] = pages[key];
     return memo;
   }, {} as PatternJSON);
-
-export const getComponentCategories = (): string[] => {
-  const componentCategories: string[] = [];
-
-  components.forEach((slug) => {
-    const {category = ''} = pages[slug].frontMatter;
-    if (!componentCategories.includes(category)) {
-      componentCategories.push(category);
-    }
-  });
-
-  return componentCategories;
-};
 
 export const slugify = (str: string): string => {
   return (

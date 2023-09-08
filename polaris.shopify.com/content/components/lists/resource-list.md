@@ -66,6 +66,7 @@ examples:
   - fileName: resource-list-with-all-of-its-elements.tsx
     title: With all of its elements
     description: Use as a broad example that includes most props available to resource list.
+previewImg: /images/components/lists/resource-list.png
 ---
 
 # {frontmatter.title}

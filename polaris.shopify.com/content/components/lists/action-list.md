@@ -33,6 +33,7 @@ examples:
   - fileName: action-list-with-a-prefix-and-a-suffix.tsx
     title: With a prefix and a suffix
     description: Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
+previewImg: /images/components/lists/action-list.png
 ---
 
 # {frontmatter.title}

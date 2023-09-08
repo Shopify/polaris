@@ -2,6 +2,7 @@
 title: Navigation
 expanded: true
 order: 9
+previewImg: /images/components/navigation.png
 ---
 
 # {frontmatter.title}
@@ -12,4 +13,4 @@ Access resources and move between sections, pages, or views in a structured and 
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

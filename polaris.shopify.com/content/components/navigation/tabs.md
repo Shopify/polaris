@@ -29,6 +29,7 @@ examples:
   - fileName: tabs-with-custom-disclosure.tsx
     title: With custom disclosure
     description: Use to provide information about the popover contents.
+previewImg: /images/components/navigation/tabs.png
 ---
 
 # {frontmatter.title}

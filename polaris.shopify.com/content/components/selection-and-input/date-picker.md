@@ -31,6 +31,7 @@ examples:
   - fileName: date-picker-with-specific-disabled-dates.tsx
     title: With specific disabled dates
     description: Dates may be disabed if you do not want them to be selectable
+previewImg: /images/components/selection-and-input/date-picker.png
 ---
 
 # {frontmatter.title}

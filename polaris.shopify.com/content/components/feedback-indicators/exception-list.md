@@ -10,6 +10,7 @@ examples:
   - fileName: exception-list-default.tsx
     title: Default
     description: Use icons to add clarity or assist in visualizing the meaning
+previewImg: /images/components/feedback-indicators/exception-list.png
 ---
 
 # {frontmatter.title}

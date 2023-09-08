@@ -2,26 +2,15 @@
 title: Layout and structure
 expanded: true
 order: 2
-groups:
-  - title: Layout primitives
-    components:
-      - Box
-      - Vertical stack
-      - Horizontal stack
-      - Horizontal grid
-      - Bleed
-    description: All layouts and spacing should be handled using layout primitives. This keeps our components simple, flexible and composable.
-    tip: Layout primitives allow you to specify values for different screen sizes. Check out the layout primitives for information on how responsive props apply to each component.
-
-  - title: Layout compositions
-    components:
-      - Card
-      - Callout card
-      - Media card
-      - Empty state
-      - Page
-    description: >-
-      Layout compositions are built with layout primitives. Use these components to build common layouts in the admin with the help of sensible defaults.
+primitives:
+  - Bleed
+  - Block stack
+  - Box
+  - Divider
+  - Grid
+  - Inline stack
+  - Inline grid
+previewImg: /images/components/layout-and-structure.png
 ---
 
 # {frontmatter.title}
@@ -32,7 +21,27 @@ Layout is the arrangement of elements on a page. A good layout helps merchants u
 
 </Lede>
 
+#### Layout primitives
 
+All layouts and spacing should be handled using layout primitives. This keeps our components simple, flexible and composable.
+
+<RichCardGrid
+  cards={posts.filter((post) => frontmatter.primitives.includes(post.title))}
+/>
+
+<TipBanner>
+  Layout primitives allow you to specify values for different screen sizes.
+  Check out the layout primitives for information on how responsive props apply
+  to each component.
+</TipBanner>
+
+#### Layout compositions
+
+Layout compositions are built with layout primitives. Use these components to build common layouts in the admin with the help of sensible defaults.
+
+<RichCardGrid
+  cards={posts.filter((post) => !frontmatter.primitives.includes(post.title))}
+/>
 
 #### Related Resources
 

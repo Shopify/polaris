@@ -14,6 +14,7 @@ examples:
   - fileName: skeleton-page-with-static-content.tsx
     title: With static content
     description: Use this component to compose a loading version of a page where the page title and header content are known and stay the same.
+previewImg: /images/components/feedback-indicators/skeleton-page.png
 ---
 
 # {frontmatter.title}

@@ -27,6 +27,7 @@ examples:
   - fileName: button-group-pressed-with-segmented-buttons.tsx
     title: Pressed with segmented buttons
     description: Pressed buttons can be used in combination to create a toggle for other parts of the user interface.
+previewImg: /images/components/actions/button-group.png
 ---
 
 # {frontmatter.title}

@@ -10,6 +10,7 @@ keywords:
   - subsection titles
   - titles of subsections
 status: Deprecated
+previewImg: /images/components/deprecated/subheading.png
 ---
 
 # {frontmatter.title}

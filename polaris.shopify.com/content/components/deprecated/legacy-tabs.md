@@ -24,6 +24,7 @@ examples:
   - fileName: legacy-tabs-with-custom-disclosure.tsx
     title: With custom disclosure
     description: Use to provide information about the popover contents
+previewImg: /images/components/deprecated/legacy-tabs.png
 ---
 
 # {frontmatter.title}

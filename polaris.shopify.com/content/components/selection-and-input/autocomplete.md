@@ -34,6 +34,7 @@ examples:
   - fileName: autocomplete-with-destructive-action.tsx
     title: With destructive action
     description: Use to help merchants complete a destructive action quickly.
+previewImg: /images/components/selection-and-input/autocomplete.png
 ---
 
 # {frontmatter.title}

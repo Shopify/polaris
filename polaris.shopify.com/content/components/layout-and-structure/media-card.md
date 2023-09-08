@@ -30,6 +30,7 @@ examples:
   - fileName: media-card-portrait-video-card.tsx
     title: Portrait video card
     description: Use when vertical screen space is not limited or when the video card is the page’s primary content. For example, in an empty state.
+previewImg: /images/components/layout-and-structure/media-card.png
 ---
 
 # {frontmatter.title}

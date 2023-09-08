@@ -20,6 +20,7 @@ examples:
   - fileName: scrollable-to-child-component.tsx
     title: To child component
     description: Use when you need to programmatically scroll a child component into view in the scrollable container.
+previewImg: /images/components/utilities/scrollable.png
 ---
 
 # {frontmatter.title}

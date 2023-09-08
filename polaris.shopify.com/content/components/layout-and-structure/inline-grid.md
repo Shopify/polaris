@@ -20,6 +20,7 @@ examples:
     title: Number of columns
     description: >-
       Control the number of columns using the `columns` prop. Column numbers can be responsively set using the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
+previewImg: /images/components/layout-and-structure/inline-grid.png
 ---
 
 # {frontmatter.title}

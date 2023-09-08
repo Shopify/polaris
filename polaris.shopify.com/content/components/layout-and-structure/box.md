@@ -28,6 +28,7 @@ examples:
     title: Shadow
     description: >-
       Shadow can be applied using the [Shadow tokens](https://polaris.shopify.com/tokens/shadow).
+previewImg: /images/components/layout-and-structure/box.png
 ---
 
 # {frontmatter.title}
