@@ -61,6 +61,7 @@ export type FrontMatter = {
   category?: string;
   url?: string;
   description?: string;
+  shortDescription?: string;
   seoDescription?: string;
   examples?: Example[];
   icon?: string;
