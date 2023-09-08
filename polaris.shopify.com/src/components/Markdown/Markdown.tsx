@@ -218,6 +218,7 @@ function Markdown<
         Box,
         SideBySide,
         Grid,
+        Stack,
         FeaturedCardGrid,
         YoutubeVideo,
         DoDont,
