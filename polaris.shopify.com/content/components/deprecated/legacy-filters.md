@@ -1,5 +1,6 @@
 ---
 title: Legacy filters
+shortDescription: Legacy version of the Filters component. Used to filter the items of a list or table.
 category: Selection and input
 keywords:
   - filters

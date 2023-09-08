@@ -1,5 +1,6 @@
 ---
 title: Icon
+shortDescription: Used to visually communicate core parts of the product and available actions, acting as wayfinding tools.
 category: Images and icons
 keywords:
   - iconography

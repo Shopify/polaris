@@ -1,5 +1,6 @@
 ---
 title: Tabs
+shortDescription: Used to alternate among related views within the same context.
 category: Navigation
 keywords:
   - layout

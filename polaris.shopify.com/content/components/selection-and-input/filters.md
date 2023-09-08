@@ -1,5 +1,6 @@
 ---
 title: Filters
+shortDescription: A composite component that filters the items of a list or table.
 category: Selection and input
 keywords:
   - filters

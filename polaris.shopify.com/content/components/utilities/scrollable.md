@@ -1,5 +1,6 @@
 ---
 title: Scrollable
+shortDescription: Used in components with too much content for the available vertical space. Embeds long-form content in components like modals and popovers.
 category: Utilities
 keywords:
   - long form

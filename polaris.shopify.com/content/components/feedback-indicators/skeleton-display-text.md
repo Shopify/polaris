@@ -1,5 +1,6 @@
 ---
 title: Skeleton display text
+shortDescription: Provides a low fidelity representation of content before it appears, improving perceived load times.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:

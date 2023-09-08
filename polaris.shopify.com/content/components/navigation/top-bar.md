@@ -1,5 +1,6 @@
 ---
 title: Top bar
+shortDescription: Appears at the top of the page and is used to brand and navigate major applications areas.
 category: Navigation
 keywords:
   - global chrome

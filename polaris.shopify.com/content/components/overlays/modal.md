@@ -1,5 +1,6 @@
 ---
 title: Modal
+shortDescription: Used to interrupt merchants with urgent information, details, or actions.
 category: Overlays
 keywords:
   - modal

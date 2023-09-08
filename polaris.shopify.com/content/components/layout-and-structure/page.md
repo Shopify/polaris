@@ -1,5 +1,6 @@
 ---
 title: Page
+shortDescription: Used to build the layout of a page in the Shopify admin. A flexible container for composing pages consistently.
 category: Layout and structure
 keywords:
   - page

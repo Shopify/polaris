@@ -1,5 +1,6 @@
 ---
 title: Data table
+shortDescription: Used to organize and display all information from a data set. Aimed to be as simple as possible for merchants.
 category: Tables
 keywords:
   - DataTable

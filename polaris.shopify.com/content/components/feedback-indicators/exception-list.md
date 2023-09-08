@@ -1,5 +1,6 @@
 ---
 title: Exception list
+shortDescription: Helps merchants notice important, standout information that adds extra context to a task.
 category: Feedback indicators
 keywords:
   - exception list

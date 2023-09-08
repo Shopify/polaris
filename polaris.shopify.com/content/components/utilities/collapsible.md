@@ -1,5 +1,6 @@
 ---
 title: Collapsible
+shortDescription: Hides content and allows merchants to expand it. Used to hide optional settings, information, and actions.
 category: Utilities
 keywords:
   - hide

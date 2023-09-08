@@ -1,5 +1,6 @@
 ---
 title: Text style
+shortDescription: Enhances text with additional visual meaning, like using subdued text to de-emphasize it.
 category: Deprecated
 keywords:
   - TextStyle
