@@ -12,4 +12,4 @@ Provide merchants with easy-to-use interfaces for selecting options, organizing 
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

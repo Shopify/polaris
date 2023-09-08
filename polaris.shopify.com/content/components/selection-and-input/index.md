@@ -12,4 +12,4 @@ Choose or enter information using elements like checkboxes, text fields, and mor
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

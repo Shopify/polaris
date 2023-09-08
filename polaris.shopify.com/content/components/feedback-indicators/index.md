@@ -12,4 +12,4 @@ Inform merchants about the status of a process, provide feedback on actions and 
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

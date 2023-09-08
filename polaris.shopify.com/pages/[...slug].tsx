@@ -262,6 +262,18 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
         scope.posts = await getRichCards(`${slugPath}/!(index).md`);
       },
     ],
+    // Component group index pages need their images
+    [
+      () => params.slug.length == 2 && params.slug[0] === 'components',
+      () => {
+        const group = params.slug[1];
+        scope.posts.forEach((post) => {
+          post.previewImg = `/images/components/${group}/${slugify(
+            post.title,
+          )}.png`;
+        });
+      },
+    ],
   ]);
 
   const [mdx, data] = await serializeMdx<FrontMatter>(mdAbsolutePath, {
@@ -290,12 +302,14 @@ const catchAllTemplateExcludeList = [
   '/sandbox',
   '/tools/stylelint-polaris/rules',
 ];
+// We want to render component group index pages, but none of the others.
+const componentButNotGroupRegex = /\/components(\/|\/.+?\/.+?)?$/;
 
 function fileShouldNotBeRenderedWithCatchAllTemplate(
   filePath: string,
 ): boolean {
   return (
-    !filePath.startsWith('/components') &&
+    !componentButNotGroupRegex.test(filePath) &&
     // We want to render legacy pages & patterns index page, but not new pattern details pages.
     !filePath.startsWith('/patterns/') &&
     !catchAllTemplateExcludeList.includes(filePath)

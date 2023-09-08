@@ -12,4 +12,4 @@ Utilities are core tools for managing the structure of the admin and global sett
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

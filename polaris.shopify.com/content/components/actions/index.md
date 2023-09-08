@@ -12,4 +12,4 @@ Perform tasks or take actions within the Shopify admin.
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

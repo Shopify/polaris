@@ -12,4 +12,4 @@ Deprecated components will be removed in future major versions of Polaris. These
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

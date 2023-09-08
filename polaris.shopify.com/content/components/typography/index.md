@@ -12,4 +12,4 @@ Establish hierarchy and communicate importance through text presentation.
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

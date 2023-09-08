@@ -12,4 +12,4 @@ Represent visual content, such as avatars and thumbnails for images or video.
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />
