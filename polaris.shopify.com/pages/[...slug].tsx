@@ -131,7 +131,9 @@ function makeSerializable<T extends Record<string, any> = Record<string, any>>(
 }
 
 // NOTE: globby uses minimatch which only accepts posix paths
-const getRichCards = async (pathGlob: string): Promise<RichCardGridProps[]> => {
+const getRichCards = async (
+  pathGlob: string,
+): Promise<SortedRichCardGridProps[]> => {
   const markdownFiles = globby.sync(pathGlob, {onlyFiles: true});
 
   return (
@@ -254,6 +256,39 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
         end();
       },
     ],
+    // component index page needs to know all of the nested components
+    [
+      () =>
+        pathIsDirectory &&
+        params.slug.length === 1 &&
+        params.slug[0] === 'components',
+      async (end) => {
+        // Get the groups
+        scope.posts = await getRichCards(`${slugPath}/*/index.md`);
+
+        // Get the components for each group
+        scope.posts = await Promise.all(
+          scope.posts.map(async (group: SortedRichCardGridProps) => {
+            const children = await getRichCards(
+              `${contentDir}${group.url}/!(index).md`,
+            );
+
+            // Inject the previewImg
+            children.forEach((component: SortedRichCardGridProps) => {
+              component.previewImg = `/images${component.url}.png`;
+            });
+
+            return {
+              ...group,
+              children,
+            };
+          }),
+        );
+
+        // Don't process any more middlewares
+        end();
+      },
+    ],
     // index pages need to know the files in their folder
     [
       () => pathIsDirectory,
@@ -267,7 +302,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
       () => params.slug.length == 2 && params.slug[0] === 'components',
       () => {
         const group = params.slug[1];
-        scope.posts.forEach((post) => {
+        scope.posts.forEach((post: SortedRichCardGridProps) => {
           post.previewImg = `/images/components/${group}/${slugify(
             post.title,
           )}.png`;
@@ -302,14 +337,16 @@ const catchAllTemplateExcludeList = [
   '/sandbox',
   '/tools/stylelint-polaris/rules',
 ];
-// We want to render component group index pages, but none of the others.
-const componentButNotGroupRegex = /\/components(\/|\/.+?\/.+?)?$/;
+
+// We want to render component index & group pages, but not the individual
+// compoments.
+const componentButNotIndexRegex = /\/components\/.+?\/.+?$/;
 
 function fileShouldNotBeRenderedWithCatchAllTemplate(
   filePath: string,
 ): boolean {
   return (
-    !componentButNotGroupRegex.test(filePath) &&
+    !componentButNotIndexRegex.test(filePath) &&
     // We want to render legacy pages & patterns index page, but not new pattern details pages.
     !filePath.startsWith('/patterns/') &&
     !catchAllTemplateExcludeList.includes(filePath)

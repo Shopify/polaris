@@ -12,4 +12,12 @@ Components are the reusable building blocks for creating Shopify admin experienc
 
 </Lede>
 
+<Stack gap="12">
+{posts.map(group => <Box>
 
+<h2>{group.title}</h2>
+
+<RichCardGrid cards={group.children} />
+
+</Box>)}
+</Stack>
