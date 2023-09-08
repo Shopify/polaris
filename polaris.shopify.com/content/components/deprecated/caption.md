@@ -1,5 +1,6 @@
 ---
 title: Caption
+shortDescription: Caption text is smaller than the recommended size for general reading. Used in graphs, timestamps, or as secondary text.
 category: Deprecated
 keywords:
   - labels

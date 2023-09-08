@@ -1,5 +1,6 @@
 ---
 title: Legacy card
+shortDescription: Legacy version of the Card component. Used to group similar concepts and tasks together for easier scanning and reading.
 category: Deprecated
 keywords:
   - layout

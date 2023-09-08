@@ -1,5 +1,6 @@
 ---
 title: Banner
+shortDescription: Informs merchants about important changes or persistent conditions in a prominent way.
 category: Feedback indicators
 keywords:
   - inform

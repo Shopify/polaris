@@ -1,5 +1,6 @@
 ---
 title: Form layout
+shortDescription: Manages the layout of all forms and fields within it. Used for the layout of new forms and managing the layout of all forms.
 category: Layout and structure
 keywords:
   - FormLayout

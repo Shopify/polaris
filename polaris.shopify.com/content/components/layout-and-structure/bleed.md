@@ -1,5 +1,6 @@
 ---
 title: Bleed
+shortDescription: Applies negative margin to a layout, extending it to the edge of the screen on small screens.
 category: Layout and structure
 keywords:
   - layout

@@ -1,5 +1,6 @@
 ---
 title: Setting toggle
+shortDescription: Used to control a feature or option that can be turned on or off.
 category: Deprecated
 keywords:
   - SettingToggle

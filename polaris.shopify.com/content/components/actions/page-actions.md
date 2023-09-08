@@ -1,5 +1,6 @@
 ---
 title: Page actions
+shortDescription: Allows merchants to take key actions at the bottom of specific pages in the interface.
 category: Actions
 keywords:
   - PageActions

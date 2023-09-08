@@ -1,5 +1,6 @@
 ---
 title: Color picker
+shortDescription: Allows merchants to choose a color visually, or by entering a hex value.
 category: Selection and input
 keywords:
   - ColorPicker

@@ -1,5 +1,6 @@
 ---
 title: Loading
+shortDescription: Used to indicate to merchants that a page is loading or an upload is processing.
 category: Feedback indicators
 keywords:
   - spinner

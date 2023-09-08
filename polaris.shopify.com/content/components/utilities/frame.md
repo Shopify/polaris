@@ -1,5 +1,6 @@
 ---
 title: Frame
+shortDescription: Creates the structure of the Shopify admin. All of the main sections of the admin are nested in the frame.
 category: Utilities
 keywords:
   - navigation

@@ -1,5 +1,6 @@
 ---
 title: Keyboard key
+shortDescription: Used to educate merchants about keyboard shortcuts.
 category: Images and icons
 keywords:
   - KeyboardKey
