@@ -1,5 +1,6 @@
 ---
 title: Spinner
+shortDescription: Used to notify merchants that their action is being processed. Used for content that can’t be represented with skeleton loading components.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:

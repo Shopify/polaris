@@ -1,5 +1,6 @@
 ---
 title: Video thumbnail
+shortDescription: A clickable placeholder image that opens a video player within a modal or full screen when clicked.
 category: Images and icons
 keywords:
   - video

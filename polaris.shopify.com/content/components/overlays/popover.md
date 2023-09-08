@@ -1,5 +1,6 @@
 ---
 title: Popover
+shortDescription: Small overlays that open on demand and close when the merchant interacts with any other part of Shopify. Used to surface secondary information or actions.
 category: Overlays
 keywords:
   - interactive

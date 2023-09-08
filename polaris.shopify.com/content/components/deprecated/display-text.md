@@ -1,5 +1,6 @@
 ---
 title: Display text
+shortDescription: Display styles make a bold visual statement. Used for visual storytelling, marketing content, or capturing attention.
 category: Deprecated
 keywords:
   - DisplayText

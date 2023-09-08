@@ -1,5 +1,6 @@
 ---
 title: Button group
+shortDescription: Displays multiple related actions stacked or in a horizontal row for arrangement and spacing.
 category: Actions
 keywords:
   - ButtonGroup

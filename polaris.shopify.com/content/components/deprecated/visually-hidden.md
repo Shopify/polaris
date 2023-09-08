@@ -1,5 +1,6 @@
 ---
 title: Visually hidden
+shortDescription: Used when an element needs to be available to assistive technology but otherwise hidden.
 category: Deprecated
 keywords:
   - VisuallyHidden

@@ -1,5 +1,6 @@
 ---
 title: Skeleton page
+shortDescription: Used with other skeleton loading components to provide a low fidelity representation of the UI before content appears.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:

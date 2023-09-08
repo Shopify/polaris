@@ -1,5 +1,6 @@
 ---
 title: Button
+shortDescription: Used primarily for actions like 'Add', 'Close', 'Cancel', or 'Save'. Plain buttons are used for less important actions.
 category: Actions
 keywords:
   - CTA

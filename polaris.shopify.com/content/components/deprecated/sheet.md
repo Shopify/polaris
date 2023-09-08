@@ -1,5 +1,6 @@
 ---
 title: Sheet
+shortDescription: A large container providing actions and information contextual to the page without interrupting flow like a modal.
 category: Deprecated
 keywords:
   - sheet

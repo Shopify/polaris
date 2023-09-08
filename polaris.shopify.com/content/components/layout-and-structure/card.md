@@ -1,5 +1,6 @@
 ---
 title: Card
+shortDescription: Used to group similar concepts and tasks together for easier scanning and reading.
 category: Layout and structure
 keywords:
   - layout

@@ -1,5 +1,6 @@
 ---
 title: Progress bar
+shortDescription: Used to visually represent the completion of a task or operation.
 category: Feedback indicators
 releasedIn: 1.8.0
 keywords:

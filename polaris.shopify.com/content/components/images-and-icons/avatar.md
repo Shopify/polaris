@@ -1,5 +1,6 @@
 ---
 title: Avatar
+shortDescription: Used to show a thumbnail representation of an individual or business in the interface.
 category: Images and icons
 keywords:
   - photo

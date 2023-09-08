@@ -1,5 +1,6 @@
 ---
 title: Heading
+shortDescription: Used as the titles of each major section of a page in the interface, like in card components.
 category: Deprecated
 keywords:
   - titles

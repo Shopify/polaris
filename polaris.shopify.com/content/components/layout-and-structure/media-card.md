@@ -1,5 +1,6 @@
 ---
 title: Media card
+shortDescription: Provides a container for introductory or highlight information. Often used in a grid to present related content.
 category: Layout and structure
 keywords:
   - MediaCard

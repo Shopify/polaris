@@ -1,5 +1,6 @@
 ---
 title: Legacy stack
+shortDescription: Legacy version of the Stack component. Used for layout of a horizontal row of components or vertical centering.
 category: Deprecated
 keywords:
   - rows

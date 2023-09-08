@@ -1,5 +1,6 @@
 ---
 title: Subheading
+shortDescription: Used for the title of any sub-sections in top-level page sections.
 category: Deprecated
 keywords:
   - title bar

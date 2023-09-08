@@ -1,5 +1,6 @@
 ---
 title: Toast
+shortDescription: A non-disruptive message that provides quick feedback on the outcome of an action.
 category: Feedback indicators
 keywords:
   - toast

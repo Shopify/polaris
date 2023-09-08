@@ -1,5 +1,6 @@
 ---
 title: Layout and structure
+shortDescription: The arrangement of elements on a page that helps merchants understand and find information to complete their goals.
 expanded: true
 order: 2
 primitives:

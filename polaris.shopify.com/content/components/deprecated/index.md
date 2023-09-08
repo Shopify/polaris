@@ -1,5 +1,6 @@
 ---
 title: Deprecated
+shortDescription: Deprecated components will be removed in future major versions of Polaris. They should be avoided and will show warnings.
 expanded: true
 order: 12
 previewImg: /images/components/deprecated.png
