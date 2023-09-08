@@ -19,7 +19,7 @@ For merchants, the impacts of the View Transitions API will be experienced throu
 
 - **Perceived performance:** View transitions used to animate navigation or state changes in conjunction with prefetching, lazy loading, and caching will make the Shopify admin feel faster and more responsive.
 - **Enhanced accessibility:** Built in features for managing focus and other accessibility concerns during a view transition will make taking action or changing contexts a better experience for all merchants.
-- **Reduced cognitive load:** Page transitions between list and detail views will make clearer connections between the levels of detail in commerce objects like products. Transitioning to and from overlays and their triggers will make moving in and out of context layers within a page smoothe and delightful.
+- **Reduced cognitive load:** Page transitions between list and detail views will make clearer connections between the levels of detail in commerce objects like products.
 
 For admin builders, systemizing the View Transitions API with shared patterns will support:
 
