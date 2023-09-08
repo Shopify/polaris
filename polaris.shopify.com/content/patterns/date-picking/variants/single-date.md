@@ -93,7 +93,7 @@ function DatePickerExample() {
     }
   }, [selectedDate]);
   return (
-    <VerticalStack inlineAlign="center" gap="4">
+    <BlockStack inlineAlign="center" gap="4">
       <Box minWidth="276px" padding={{xs: 2}}>
         <Popover
           active={visible}
@@ -127,7 +127,7 @@ function DatePickerExample() {
           </Card>
         </Popover>
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 ```
