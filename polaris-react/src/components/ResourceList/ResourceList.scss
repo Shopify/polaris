@@ -37,7 +37,12 @@ $item-wrapper-loading-height: 64px;
   // list dynamically when an item is checked, so we have to handle that case
   // here.
   + .BulkActionsWrapper + .ResourceList {
-    @include item-separator;
+    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+
+    #{$se23} & {
+      border-top: none;
+      @include item-separator;
+    }
   }
 }
 

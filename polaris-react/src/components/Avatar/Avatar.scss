@@ -18,7 +18,21 @@
   background: var(--p-color-avatar-background-experimental);
   color: var(--p-color-avatar-color-experimental);
   user-select: none;
-  border-radius: var(--p-border-radius-05);
+
+  #{$se23} & {
+    // stylelint-disable -- se23 overrides
+    --pc-avatar-extra-small-size: 20px;
+    --pc-avatar-small-size: 24px;
+    --pc-avatar-medium-size: 28px;
+    --pc-avatar-large-size: 32px;
+    // stylelint-enable
+    background: var(--p-color-avatar-background-experimental);
+    color: var(--p-color-avatar-color-experimental);
+
+    &.imageHasLoaded {
+      background: transparent;
+    }
+  }
 
   @media (forced-colors: active) {
     border: var(--p-border-width-1) solid transparent;

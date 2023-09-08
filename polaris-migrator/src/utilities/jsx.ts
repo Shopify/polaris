@@ -127,7 +127,8 @@ export function renameProps(
   source: Collection<any>,
   componentName: string,
   props: {[from: string]: string},
-  newValue?: string,
+  fromValue?: string,
+  toValue?: string,
 ) {
   const [component, subcomponent] = componentName.split('.');
 
@@ -141,7 +142,7 @@ export function renameProps(
         element.node.openingElement.name.property.name === subcomponent
       ) {
         element.node.openingElement.attributes?.forEach((node) =>
-          updateNode(node, props, newValue),
+          updateNode(node, props, fromValue, toValue),
         );
       }
     });
@@ -151,7 +152,7 @@ export function renameProps(
   // Handle basic components
   source.findJSXElements(componentName)?.forEach((element) => {
     element.node.openingElement.attributes?.forEach((node) =>
-      updateNode(node, props, newValue),
+      updateNode(node, props, fromValue, toValue),
     );
   });
 
@@ -160,17 +161,19 @@ export function renameProps(
   function updateNode(
     node: any,
     props: {[from: string]: string},
-    newValue?: string,
+    fromValue?: string,
+    toValue?: string,
   ) {
     const isFromProp = (prop: unknown): prop is keyof typeof props =>
       Object.keys(props).includes(prop as string);
 
-    if (node.type !== 'JSXAttribute' && !isFromProp(node.name.name)) {
+    if (!(node.type === 'JSXAttribute' && isFromProp(node.name.name))) {
       return node;
     }
 
     node.name.name = props[node.name.name];
-    node.value = j.stringLiteral(newValue ?? node.value.value);
+    if (fromValue && node.value.value !== fromValue) return node;
+    node.value = j.stringLiteral(toValue ?? node.value.value);
     return node;
   }
 }

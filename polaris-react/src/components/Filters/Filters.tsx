@@ -278,12 +278,14 @@ export function Filters({
   } = {
     paddingInlineStart: '2',
     paddingInlineEnd: '2',
-    paddingBlockStart: '1_5-experimental',
-    paddingBlockEnd: '1_5-experimental',
+    paddingBlockStart: '2',
+    paddingBlockEnd: '2',
   };
 
   const queryFieldMarkup = hideQueryField ? null : (
-    <div className={styles.Container}>
+    <div
+      className={classNames(styles.Container, se23 && styles.ContainerUplift)}
+    >
       <Box {...containerSpacing}>
         <InlineStack
           align="start"
