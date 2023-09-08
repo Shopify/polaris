@@ -6,6 +6,7 @@ import type {Status, FoundationsCategory} from '../../types';
 export interface RichCardGridProps {
   title: string;
   description: string;
+  shortDescription?: string;
   /* url is usually derived from the file path, but can be overwritten here */
   url?: string;
   previewImg?: string;
@@ -26,27 +27,40 @@ function RichCardGrid({
     <Grid>
       {cards
         .filter(({draft}) => !draft)
-        .map(({title, description, url, previewImg, icon, status}, index) => (
-          <GridItem
-            key={index}
-            title={title}
-            description={description ?? ''}
-            url={url ?? ''}
-            renderPreview={() =>
-              previewImg ? (
-                <Preview alt={title} src={previewImg} />
-              ) : (
-                <FoundationsThumbnail
-                  icon={icon!}
-                  category={
-                    category ?? (title.toLowerCase() as FoundationsCategory)
-                  }
-                />
-              )
-            }
-            status={status}
-          />
-        ))}
+        .map(
+          (
+            {
+              title,
+              description,
+              shortDescription,
+              url,
+              previewImg,
+              icon,
+              status,
+            },
+            index,
+          ) => (
+            <GridItem
+              key={index}
+              title={title}
+              description={shortDescription ?? description ?? ''}
+              url={url ?? ''}
+              renderPreview={() =>
+                previewImg ? (
+                  <Preview alt={title} src={previewImg} />
+                ) : (
+                  <FoundationsThumbnail
+                    icon={icon!}
+                    category={
+                      category ?? (title.toLowerCase() as FoundationsCategory)
+                    }
+                  />
+                )
+              }
+              status={status}
+            />
+          ),
+        )}
     </Grid>
   );
 }
