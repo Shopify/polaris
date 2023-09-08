@@ -272,7 +272,7 @@ export type {
 export {OptionList} from './components/OptionList';
 export type {OptionListProps} from './components/OptionList';
 
-export {Page} from './components/Page';
+export {Page, PAGE_TITLE_IDENTIFIER} from './components/Page';
 export type {PageProps} from './components/Page';
 
 export {PageActions} from './components/PageActions';
