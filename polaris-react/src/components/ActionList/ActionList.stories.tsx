@@ -382,3 +382,16 @@ export function WithAPrefixAndASuffix() {
     </div>
   );
 }
+
+export function WithFiltering() {
+  return (
+    <div style={{height: '250px', maxWidth: '350px'}}>
+      <ActionList
+        actionRole="menuitem"
+        items={Array.from({length: 8}).map((_, index) => ({
+          content: `Item #${index + 1}`,
+        }))}
+      />
+    </div>
+  );
+}
