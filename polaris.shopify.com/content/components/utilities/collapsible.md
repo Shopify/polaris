@@ -22,6 +22,7 @@ examples:
   - fileName: collapsible-default.tsx
     title: Default
     description: Use for a basic “show more” interaction when you need to display more content.
+previewImg: /images/components/utilities/collapsible.png
 ---
 
 # {frontmatter.title}

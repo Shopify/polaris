@@ -33,6 +33,7 @@ examples:
   - fileName: choice-list-with-dynamic-children-content.tsx
     title: With dynamic children content
     description: Use when you need merchants to view and/or interact with additional content under a choice. The content is only rendered when the choice is selected. Works for both single-choice and multi-choice list.
+previewImg: /images/components/selection-and-input/choice-list.png
 ---
 
 # {frontmatter.title}

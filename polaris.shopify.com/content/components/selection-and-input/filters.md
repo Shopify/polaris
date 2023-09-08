@@ -24,6 +24,7 @@ examples:
     title: With query field hidden
   - fileName: filters-with-query-field-disabled.tsx
     title: With query field disabled
+previewImg: /images/components/selection-and-input/filters.png
 ---
 
 # {frontmatter.title}

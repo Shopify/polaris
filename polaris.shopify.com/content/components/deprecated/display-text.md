@@ -23,6 +23,7 @@ keywords:
   - visual storytelling
   - visual statements
 status: Deprecated
+previewImg: /images/components/deprecated/display-text.png
 ---
 
 # {frontmatter.title}

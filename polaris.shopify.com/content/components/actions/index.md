@@ -2,6 +2,7 @@
 title: Actions
 expanded: true
 order: 1
+previewImg: /images/components/actions.png
 ---
 
 # {frontmatter.title}

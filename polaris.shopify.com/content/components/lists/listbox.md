@@ -22,6 +22,7 @@ examples:
   - fileName: listbox-with-search.tsx
     title: With search
     description: Use to help merchants browse, filter, and choose from a list of options.
+previewImg: /images/components/lists/listbox.png
 ---
 
 # {frontmatter.title}

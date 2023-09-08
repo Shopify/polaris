@@ -26,6 +26,7 @@ examples:
   - fileName: grid-custom-layout.tsx
     title: Custom layout
     description: Use to create a layout that can be customized at specific breakpoints.
+previewImg: /images/components/layout-and-structure/grid.png
 ---
 
 # {frontmatter.title}

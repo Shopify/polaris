@@ -40,6 +40,7 @@ examples:
   - fileName: legacy-stack-where-a-single-item-fills-the-remaining-space.tsx
     title: Where a single item fills the remaining space
     description: Use for aligning buttons or secondary content to the right edge of another element, allowing it to wrap below on small screens.
+previewImg: /images/components/deprecated/legacy-stack.png
 ---
 
 # {frontmatter.title}

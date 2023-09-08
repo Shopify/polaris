@@ -2,6 +2,7 @@
 title: Navigation
 expanded: true
 order: 9
+previewImg: /images/components/navigation.png
 ---
 
 # {frontmatter.title}

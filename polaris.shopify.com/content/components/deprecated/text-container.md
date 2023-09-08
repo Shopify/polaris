@@ -21,6 +21,7 @@ examples:
   - fileName: text-container-loose.tsx
     title: Loose
     description: Use the loose spacing option to separate concepts that are independent of each other.
+previewImg: /images/components/deprecated/text-container.png
 ---
 
 # {frontmatter.title}

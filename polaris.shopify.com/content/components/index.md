@@ -2,6 +2,7 @@
 title: Components
 order: 7
 icon: AppsMajor
+previewImg: /images/components.png
 ---
 
 # {frontmatter.title}

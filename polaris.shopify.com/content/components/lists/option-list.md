@@ -24,6 +24,7 @@ examples:
   - fileName: option-list-in-a-popover.tsx
     title: In a popover
     description: Use when a set of selections won’t fit in the available screen space.
+previewImg: /images/components/lists/option-list.png
 ---
 
 # {frontmatter.title}

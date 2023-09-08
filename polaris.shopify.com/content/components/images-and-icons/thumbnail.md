@@ -25,6 +25,7 @@ examples:
   - fileName: thumbnail-with-component-source.tsx
     title: With component source
     description: Use to render an icon inside of thumbnail.
+previewImg: /images/components/images-and-icons/thumbnail.png
 ---
 
 # {frontmatter.title}

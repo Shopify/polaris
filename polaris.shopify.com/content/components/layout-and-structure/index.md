@@ -10,6 +10,7 @@ primitives:
   - Grid
   - Inline stack
   - Inline grid
+previewImg: /images/components/layout-and-structure.png
 ---
 
 # {frontmatter.title}

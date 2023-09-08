@@ -2,6 +2,7 @@
 title: Tables
 expanded: true
 order: 7
+previewImg: /images/components/tables.png
 ---
 
 # {frontmatter.title}

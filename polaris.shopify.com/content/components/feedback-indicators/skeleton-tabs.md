@@ -12,6 +12,7 @@ examples:
     title: Default
   - fileName: skeleton-tabs-with-a-custom-count.tsx
     title: With a custom count
+previewImg: /images/components/feedback-indicators/skeleton-tabs.png
 ---
 
 # {frontmatter.title}

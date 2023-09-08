@@ -38,6 +38,7 @@ examples:
   - fileName: select-with-separate-validation-error.tsx
     title: With separate validation error
     description: Use to let merchants know when their select input is invalid in the context of a group of form inputs that the select depends on.
+previewImg: /images/components/selection-and-input/select.png
 ---
 
 # {frontmatter.title}

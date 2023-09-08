@@ -2,6 +2,7 @@
 title: Deprecated
 expanded: true
 order: 12
+previewImg: /images/components/deprecated.png
 ---
 
 # {frontmatter.title}

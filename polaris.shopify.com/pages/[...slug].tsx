@@ -14,7 +14,6 @@ import PageMeta from '../src/components/PageMeta';
 import type {SerializedMdx} from '../src/types';
 import {FrontMatter} from '../src/types';
 import type {RichCardGridProps} from '../src/components/RichCardGrid';
-import {slugify} from '../src/utils/various';
 
 interface Props {
   mdx: SerializedMdx<FrontMatter>;
@@ -268,21 +267,12 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 
         // Get the components for each group
         scope.posts = await Promise.all(
-          scope.posts.map(async (group: SortedRichCardGridProps) => {
-            const children = await getRichCards(
+          scope.posts.map(async (group: SortedRichCardGridProps) => ({
+            ...group,
+            children: await getRichCards(
               `${contentDir}${group.url}/!(index).md`,
-            );
-
-            // Inject the previewImg
-            children.forEach((component: SortedRichCardGridProps) => {
-              component.previewImg = `/images${component.url}.png`;
-            });
-
-            return {
-              ...group,
-              children,
-            };
-          }),
+            ),
+          })),
         );
 
         // Don't process any more middlewares
@@ -295,18 +285,6 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
       async () => {
         // Non-recursive search for .md files except index.md
         scope.posts = await getRichCards(`${slugPath}/!(index).md`);
-      },
-    ],
-    // Component group index pages need their images
-    [
-      () => params.slug.length == 2 && params.slug[0] === 'components',
-      () => {
-        const group = params.slug[1];
-        scope.posts.forEach((post: SortedRichCardGridProps) => {
-          post.previewImg = `/images/components/${group}/${slugify(
-            post.title,
-          )}.png`;
-        });
       },
     ],
   ]);

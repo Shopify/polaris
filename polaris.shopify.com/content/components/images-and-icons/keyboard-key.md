@@ -13,6 +13,7 @@ examples:
   - fileName: keyboard-key-default.tsx
     title: Default
     description: Use to list a related set of keyboard shortcuts.
+previewImg: /images/components/images-and-icons/keyboard-key.png
 ---
 
 # {frontmatter.title}

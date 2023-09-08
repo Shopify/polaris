@@ -2,6 +2,7 @@
 title: Selection and input
 expanded: true
 order: 3
+previewImg: /images/components/selection-and-input.png
 ---
 
 # {frontmatter.title}

@@ -2,6 +2,7 @@
 title: Feedback indicators
 expanded: true
 order: 5
+previewImg: /images/components/feedback-indicators.png
 ---
 
 # {frontmatter.title}

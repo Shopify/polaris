@@ -10,6 +10,7 @@ examples:
   - fileName: loading-default.tsx
     title: Default
     description: Use to indicate that the page is loading.
+previewImg: /images/components/feedback-indicators/loading.png
 ---
 
 # {frontmatter.title}

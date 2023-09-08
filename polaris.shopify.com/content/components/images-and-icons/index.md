@@ -2,6 +2,7 @@
 title: Images and icons
 expanded: true
 order: 4
+previewImg: /images/components/images-and-icons.png
 ---
 
 # {frontmatter.title}

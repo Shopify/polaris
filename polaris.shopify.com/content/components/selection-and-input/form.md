@@ -18,6 +18,7 @@ examples:
   - fileName: form-without-native-validation.tsx
     title: Without native validation
     description: Use in forms to toggle native form validation.
+previewImg: /images/components/selection-and-input/form.png
 ---
 
 # {frontmatter.title}

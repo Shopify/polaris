@@ -2,6 +2,7 @@
 title: Overlays
 expanded: true
 order: 10
+previewImg: /images/components/overlays.png
 ---
 
 # {frontmatter.title}

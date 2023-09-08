@@ -23,6 +23,7 @@ examples:
   - fileName: tooltip-with-suffix.tsx
     title: With suffix
     description: Use when merchants benefit from information supplemental to the tooltip content. For example, to present a keyboard shortcut beside the content of a tooltip that describes an icon button.
+previewImg: /images/components/overlays/tooltip.png
 ---
 
 # {frontmatter.title}

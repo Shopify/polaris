@@ -2,6 +2,7 @@
 title: Typography
 expanded: true
 order: 6
+previewImg: /images/components/typography.png
 ---
 
 # {frontmatter.title}

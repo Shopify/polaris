@@ -2,6 +2,7 @@
 title: Lists
 expanded: true
 order: 8
+previewImg: /images/components/lists.png
 ---
 
 # {frontmatter.title}

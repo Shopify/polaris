@@ -15,6 +15,7 @@ examples:
   - fileName: description-list-default.tsx
     title: Default
     description: Use when you need to present merchants with a list of items or terms alongside descriptions and explanations.
+previewImg: /images/components/lists/description-list.png
 ---
 
 # {frontmatter.title}

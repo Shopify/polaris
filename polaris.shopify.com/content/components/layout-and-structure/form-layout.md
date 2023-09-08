@@ -36,6 +36,7 @@ examples:
   - fileName: form-layout-condensed-field-group.tsx
     title: Condensed field group
     description: For very short inputs, the width of the inputs may be reduced in order to fit more fields in the row.
+previewImg: /images/components/layout-and-structure/form-layout.png
 ---
 
 # {frontmatter.title}
