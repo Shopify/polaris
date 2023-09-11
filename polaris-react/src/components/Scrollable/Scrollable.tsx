@@ -77,7 +77,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       (scrollY: number, options: ScrollToOptions = {}) => {
         const optionsBehavior = options.behavior || 'smooth';
         const behavior = prefersReducedMotion() ? 'auto' : optionsBehavior;
-        // @ts-expect-error TS removed "instant" option but browsers support it
+        // @ts-expect-error: TS removed "instant" option but browsers support it
         scrollArea.current?.scrollTo({top: scrollY, behavior});
       },
       [],
@@ -118,8 +118,6 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
         handleShadowPlacement(isBelowTopOfScroll, !isAtBottomOfScroll);
 
         if (canScroll && isAtBottomOfScroll && onScrolledToBottom) {
-          setTopShadow(isBelowTopOfScroll);
-          setBottomShadow(!isAtBottomOfScroll);
           onScrolledToBottom();
         }
       });
@@ -150,7 +148,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
         currentScrollArea.removeEventListener('scroll', handleScroll);
         globalThis.removeEventListener('resize', handleResize);
       };
-    }, [stickyManager, handleScroll]);
+    }, [scrollArea, stickyManager, handleScroll]);
 
     const finalClassName = classNames(
       className,
