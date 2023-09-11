@@ -83,22 +83,8 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       [],
     );
 
-    const defaultRef = useRef();
+    const defaultRef = useRef(null);
     useImperativeHandle(forwardedRef || defaultRef, () => ({scrollTo}));
-
-    const handleShadowPlacement = (
-      showTopShadow: boolean,
-      showBottomShadow: boolean,
-    ) => {
-      console.log(
-        'PLACING SHADOWS: ',
-        `TOP ${showTopShadow ? 'VISIBLE' : 'HIDDEN'}`,
-        `BOTTOM ${showBottomShadow ? 'VISIBLE' : 'HIDDEN'}`,
-      );
-
-      setTopShadow(showTopShadow);
-      setBottomShadow(showBottomShadow);
-    };
 
     const handleScroll = useCallback(() => {
       const currentScrollArea = scrollArea.current;
@@ -110,12 +96,15 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       requestAnimationFrame(() => {
         const {scrollTop, clientHeight, scrollHeight} = currentScrollArea;
         const canScroll = Boolean(scrollHeight > clientHeight);
-        const isBelowTopOfScroll = Boolean(scrollTop > 0);
-        const isAtBottomOfScroll = Boolean(
-          scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
+        const isBelowTopOfScroll = canScroll && Boolean(scrollTop > 0);
+        const isAtBottomOfScroll =
+          canScroll &&
+          Boolean(scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER);
+        console.log(
+          `CAN SCROLL: ${canScroll}; scrollTop ${scrollTop}, scrollHeight ${scrollHeight}, clientHeight ${clientHeight}`,
         );
-
-        handleShadowPlacement(isBelowTopOfScroll, !isAtBottomOfScroll);
+        setTopShadow(isBelowTopOfScroll);
+        setBottomShadow(!isAtBottomOfScroll);
 
         if (canScroll && isAtBottomOfScroll && onScrolledToBottom) {
           onScrolledToBottom();
@@ -144,11 +133,22 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       currentScrollArea.addEventListener('scroll', handleScroll);
       globalThis.addEventListener('resize', handleResize);
 
+      if (topShadow || bottomShadow) {
+        handleScroll();
+      }
+
       return () => {
         currentScrollArea.removeEventListener('scroll', handleScroll);
         globalThis.removeEventListener('resize', handleResize);
       };
-    }, [scrollArea, stickyManager, handleScroll]);
+    }, [
+      children,
+      topShadow,
+      bottomShadow,
+      scrollArea,
+      stickyManager,
+      handleScroll,
+    ]);
 
     const finalClassName = classNames(
       className,
