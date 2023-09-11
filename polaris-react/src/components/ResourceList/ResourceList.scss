@@ -38,6 +38,7 @@ $item-wrapper-loading-height: 64px;
   // here.
   + .BulkActionsWrapper + .ResourceList {
     @include item-separator;
+    border-top: var(--p-border-width-1) solid var(--p-color-border);
   }
 }
 

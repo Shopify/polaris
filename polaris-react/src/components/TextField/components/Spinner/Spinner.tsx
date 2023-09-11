@@ -23,7 +23,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     function handleMouseDown(onChange: HandleStepFn) {
       return (event: React.MouseEvent) => {
         if (event.button !== 0) return;
-        onMouseDown(onChange);
+        onMouseDown?.(onChange);
       };
     }
 
