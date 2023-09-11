@@ -191,18 +191,22 @@ textarea {
 
 ## Mobile considerations
 
-<DoDont>
+<InlineGrid columns={2} gap='4'>
 
-#### Do
+  <Do>
 
-- Refer to the platform’s native font scales when designing experiences for native apps
-- Refer to the small-screen scale when designing experiences for mobile browsers
-- Use the platform-specific component library
+  - Refer to the platform’s native font scales when designing experiences for native apps
+  - Refer to the small-screen scale when designing experiences for mobile browsers
+  - Use the platform-specific component library
 
-#### Do
+  </Do>
 
-- Use the native font scale
-- Keep in mind that all UI elements containing text will be affected
-- Explore additional content height, width, truncation, and line wraps
+  <Do>
 
-</DoDont>
+  - Use the native font scale
+  - Keep in mind that all UI elements containing text will be affected
+  - Explore additional content height, width, truncation, and line wraps
+
+  </Do>
+
+</InlineGrid>
