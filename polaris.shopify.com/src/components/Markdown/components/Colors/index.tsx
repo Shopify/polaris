@@ -35,5 +35,5 @@ export function Colors() {
     );
   });
 
-  return colorMap;
+  return <>{colorMap}</>;
 }
