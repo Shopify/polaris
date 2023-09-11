@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-[TextField] Allow TextField to disable 1Password integration
+Added support for disabling 1Password integration in `TextField`
