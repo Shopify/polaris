@@ -85,6 +85,21 @@ describe('<TextField />', () => {
     });
   });
 
+  it('adds the data-1p-ignore prop if disable1Password is set', () => {
+    const textField = mountWithApp(
+      <TextField
+        label="TextField"
+        onChange={noop}
+        autoComplete="off"
+        disable1Password
+      />,
+    );
+
+    expect(textField).toContainReactComponent('input', {
+      'data-1p-ignore': true,
+    } as any);
+  });
+
   describe('click events', () => {
     it('bubbles up to the parent element when it occurs in the input', () => {
       const onClick = jest.fn();
