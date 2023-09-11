@@ -4,6 +4,10 @@ import type {ReactElement, PropsWithChildren} from 'react';
 import {Box} from '../../../Box';
 import styles from './styles.module.scss';
 
+interface DoDontProps extends PropsWithChildren {
+  title?: string | null;
+}
+
 /* Must have the following structure:
  * <DoDont>
  *
@@ -64,13 +68,27 @@ export const DoDont = ({children}: PropsWithChildren) => {
     <Fragment>
       {prefix}
       <div className={styles.DoDont}>
-        {dos.length ? (
-          <Box className={[styles.DoDontPart, styles.Do]}>{dos}</Box>
-        ) : null}
-        {donts.length ? (
-          <Box className={[styles.DoDontPart, styles.Dont]}>{donts}</Box>
-        ) : null}
+        {dos.length ? <Do title={null}>{dos}</Do> : null}
+        {donts.length ? <Dont title={null}>{donts}</Dont> : null}
       </div>
     </Fragment>
+  );
+};
+
+export const Do = ({children, title = 'Do'}: DoDontProps) => {
+  return (
+    <Box className={[styles.DoDontPart, styles.Do]}>
+      {title && <h4>{title}</h4>}
+      {children}
+    </Box>
+  );
+};
+
+export const Dont = ({children, title = "Don't"}: DoDontProps) => {
+  return (
+    <Box className={[styles.DoDontPart, styles.Dont]}>
+      {title && <h4>{title}</h4>}
+      {children}
+    </Box>
   );
 };

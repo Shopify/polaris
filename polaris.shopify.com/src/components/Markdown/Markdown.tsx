@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import {MDXRemote, type MDXRemoteProps} from './next-mdx-importer';
 import {ClipboardMinor} from '@shopify/polaris-icons';
-import {Grid} from '@shopify/polaris';
+import {Grid, InlineGrid} from '@shopify/polaris';
 
 import styles from './Markdown.module.scss';
 import Code, {InlineCode} from '../../components/Code';
@@ -20,7 +20,7 @@ import TipBanner from '../../components/TipBanner';
 import {Lede} from '../../components/Lede';
 import {SideBySide} from './components/SideBySide';
 import YoutubeVideo from '../YoutubeVideo';
-import {DoDont} from './components/DoDont';
+import {DoDont, Do, Dont} from './components/DoDont';
 import {Heading} from '../../components/Heading';
 import PatternsExample from '../../components/PatternsExample';
 import RichCardGrid from '../RichCardGrid';
@@ -217,11 +217,14 @@ function Markdown<
         ),
         Box,
         Stack,
+        InlineGrid,
         SideBySide,
         Grid,
         FeaturedCardGrid,
         YoutubeVideo,
         DoDont,
+        Do,
+        Dont,
         StatusBanner,
         TipBanner,
         Lede,
