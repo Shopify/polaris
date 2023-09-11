@@ -1,6 +1,18 @@
-import * as colors from '../../../../../../polaris-tokens/dist/esm/src/colors.mjs';
+import * as colorsObj from '../../../../../../polaris-tokens/dist/esm/src/colors.mjs';
 import {capitalize} from '../../../../utils/various';
 import './Colors.module.scss';
+
+type ColorScale = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+
+type ColorValue = {
+  [index in ColorScale]: string;
+};
+
+interface Colors {
+  [key: string]: ColorValue;
+}
+
+const colors = colorsObj as unknown as Colors;
 
 export function Colors() {
   const colorOrder = [
@@ -15,7 +27,7 @@ export function Colors() {
   ];
 
   const colorMap = colorOrder.map((color) => {
-    const shades: string[] = colors[color] ?? [];
+    const shades: ColorValue = colors[color] ?? [];
     const swatches = Object.entries(shades)
       .sort(([prevShade], [nextShade]) =>
         Number(prevShade) < Number(nextShade) ? 1 : -1,
