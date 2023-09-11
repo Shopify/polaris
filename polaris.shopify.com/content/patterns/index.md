@@ -6,26 +6,31 @@ order: 6
 newSection: true
 status: New
 ---
+<Stack gap="8">
 
-# {frontmatter.title}
+  <div>
 
-<Lede>{frontmatter.description}</Lede>
+    # {frontmatter.title}
 
-<StatusBanner status={frontmatter.status}>
-  The pattern documentation is evolving. [Join the
-  discussion](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation)
-  to make it better.
-</StatusBanner>
+    <Lede>{frontmatter.description}</Lede>
 
-<RichCardGrid cards={posts} />
+    <StatusBanner status={frontmatter.status}>
+      The pattern documentation is evolving. [Join the
+      discussion](https://github.com/Shopify/polaris/discussions/categories/pattern-documentation)
+      to make it better.
+    </StatusBanner>
+    
+  </div>
 
-<span id="legacy" />
 
-## Archived documentation
+  <RichCardGrid cards={posts} />
 
-<Lede>
-  These guidelines are safe to use and will be updated to the new documentation
-  format in the near future.
-</Lede>
+  <span id="legacy" />
 
-<RichCardGrid cards={legacyPatternPosts} />
+  ## Archived documentation
+
+  <Lede>These guidelines are safe to use and will be updated to the new documentation format in the near future.</Lede>
+
+  <RichCardGrid cards={legacyPatternPosts} />
+
+</Stack>

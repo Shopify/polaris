@@ -28,7 +28,7 @@ hideFromNav: true
 
 ## Using this pattern
 
-This pattern uses the [`Card`](/components/layout-and-structure/card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`InlineGrid`](/components/layout-and-structure/inline-grid) and [`Page`](/components/layout-and-structure/page) components.
+This pattern uses the [`Card`](/components/layout-and-structure/card), [`BlockStack`](/components/layout-and-structure/block-stack), [`InlineGrid`](/components/layout-and-structure/inline-grid) and [`Page`](/components/layout-and-structure/page) components.
 
 {/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
@@ -86,28 +86,28 @@ function ResourceDetailsLayout() {
       }}
     >
       <InlineGrid columns={{xs: 1, md: '2fr 1fr'}} gap="4">
-        <VerticalStack gap="4">
+        <BlockStack gap="4">
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <BlockStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="8rem" />
               <Box border="divider" borderRadius="base" minHeight="20rem" />
-            </VerticalStack>
+            </BlockStack>
           </Card>
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <InlineGrid columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
               </InlineGrid>
-            </VerticalStack>
+            </BlockStack>
           </Card>
-        </VerticalStack>
-        <VerticalStack gap={{xs: '4', md: '2'}}>
+        </BlockStack>
+        <BlockStack gap={{xs: '4', md: '2'}}>
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
@@ -118,19 +118,19 @@ function ResourceDetailsLayout() {
               <SkeletonLabel />
               <Divider />
               <SkeletonBodyText />
-            </VerticalStack>
+            </BlockStack>
           </Card>
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <BlockStack gap="4">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="4rem" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel />
               <SkeletonBodyText />
-            </VerticalStack>
+            </BlockStack>
           </Card>
-        </VerticalStack>
+        </BlockStack>
       </InlineGrid>
     </Page>
   );
