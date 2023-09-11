@@ -1,11 +1,7 @@
 {
   "name": "@shopify/polaris",
   "description": "Shopify’s admin product component library",
-<<<<<<< HEAD
-  "version": "11.19.0",
-=======
   "version": "12.0.0-beta.0",
->>>>>>> 3a2b6f6b7 (Version Packages (beta))
   "private": false,
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",

@@ -11,7 +11,6 @@ import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
 import {KeypressListener} from '../KeypressListener';
 import {FilterActionsContext} from '../FilterActionsProvider';
-
 import {TextField} from '../TextField';
 import {Icon} from '../Icon';
 
