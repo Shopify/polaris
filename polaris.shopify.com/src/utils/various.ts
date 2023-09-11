@@ -65,3 +65,7 @@ export const uppercaseFirst = (str: string): string =>
 
 export const deslugify = (str: string): string =>
   uppercaseFirst(str.replace(/-+/g, ' '));
+
+export const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
