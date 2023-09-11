@@ -69,6 +69,7 @@ examples:
   - fileName: index-table-without-checkboxes.tsx
     title: Without checkboxes
     description: An index table without checkboxes and bulk actions.
+previewImg: /images/components/tables/index-table.png
 ---
 
 # {frontmatter.title}

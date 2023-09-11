@@ -27,6 +27,7 @@ examples:
   - fileName: avatar-extra-small.tsx
     title: Extra small
     description: Use to present an avatar in a condensed layout, such as a data table cell or an action list item.
+previewImg: /images/components/images-and-icons/avatar.png
 ---
 
 # {frontmatter.title}

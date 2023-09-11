@@ -54,11 +54,14 @@ export interface Example extends FrontMatter {
   fileName: string;
 }
 
-export interface FrontMatter {
+export type FrontMatter = {
   title: string;
+  draft?: boolean;
+  noIndex?: boolean;
   category?: string;
   url?: string;
   description?: string;
+  seoDescription?: string;
   examples?: Example[];
   icon?: string;
   order?: number;
@@ -69,7 +72,7 @@ export interface FrontMatter {
   previewImg?: string;
   expanded?: boolean;
   releasedIn?: string | number; // Add this line
-}
+};
 
 export type PatternFrontMatter = Omit<FrontMatter, 'description'> & {
   /* Description is shown on Patterns index page, and as the meta description on detail page */
@@ -78,7 +81,6 @@ export type PatternFrontMatter = Omit<FrontMatter, 'description'> & {
   lede: string;
   previewImg?: string;
   order?: number;
-  draft: boolean;
   githubDiscussionsLink?: string;
   variants?: string[];
 };

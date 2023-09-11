@@ -46,6 +46,7 @@ examples:
   - fileName: drop-zone-with-custom-file-dialog-trigger.tsx
     title: With custom file dialog trigger
     description: Use to trigger the file dialog from an action somewhere else on the page.
+previewImg: /images/components/selection-and-input/drop-zone.png
 ---
 
 # {frontmatter.title}

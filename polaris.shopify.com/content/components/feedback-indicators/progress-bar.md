@@ -20,6 +20,7 @@ examples:
   - fileName: progress-bar-non-animated.tsx
     title: Non-animated
     description: Use the animated prop when you want to show a static progress bar.
+previewImg: /images/components/feedback-indicators/progress-bar.png
 ---
 
 # {frontmatter.title}

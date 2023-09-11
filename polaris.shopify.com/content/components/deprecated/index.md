@@ -2,6 +2,7 @@
 title: Deprecated
 expanded: true
 order: 12
+previewImg: /images/components/deprecated.png
 ---
 
 # {frontmatter.title}
@@ -12,4 +13,4 @@ Deprecated components will be removed in future major versions of Polaris. These
 
 </Lede>
 
-
+<RichCardGrid cards={posts} />

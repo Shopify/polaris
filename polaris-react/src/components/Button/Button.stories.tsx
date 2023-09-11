@@ -8,8 +8,9 @@ import {
   BlockStack,
   Text,
   Box,
-  ActionList,
   Popover,
+  ActionList,
+  Divider,
 } from '@shopify/polaris';
 import {
   PlusMinor,

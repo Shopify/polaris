@@ -54,6 +54,7 @@ examples:
   - fileName: banner-in-a-card.tsx
     title: In a card
     description: Banners inside of cards render with less spacing and a pared-back design to fit within a content context.
+previewImg: /images/components/feedback-indicators/banner.png
 ---
 
 # {frontmatter.title}

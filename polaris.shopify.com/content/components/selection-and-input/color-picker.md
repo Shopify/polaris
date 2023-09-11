@@ -23,6 +23,7 @@ examples:
   - fileName: color-picker-with-transparent-value-full-width.tsx
     title: With transparent value full width
     description: Use when attached to a visual builder to allow the designated object to have a transparent background that allows underlying objects to show through.
+previewImg: /images/components/selection-and-input/color-picker.png
 ---
 
 # {frontmatter.title}

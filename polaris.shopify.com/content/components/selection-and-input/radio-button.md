@@ -17,6 +17,7 @@ examples:
   - fileName: radio-button-default.tsx
     title: Default
     description: Use radio buttons where merchants must make a single selection.
+previewImg: /images/components/selection-and-input/radio-button.png
 ---
 
 # {frontmatter.title}

@@ -25,6 +25,7 @@ examples:
   - fileName: range-slider-with-dual-thumb.tsx
     title: With dual thumb
     description: Use when two values need to be selected from a range of numbers.
+previewImg: /images/components/selection-and-input/range-slider.png
 ---
 
 # {frontmatter.title}

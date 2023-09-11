@@ -17,6 +17,7 @@ examples:
   - fileName: sheet-with-searchable-listbox.tsx
     title: With searchable listbox
     description: Use to help merchants browse, filter, and choose from a list of options.
+previewImg: /images/components/deprecated/sheet.png
 ---
 
 # {frontmatter.title}

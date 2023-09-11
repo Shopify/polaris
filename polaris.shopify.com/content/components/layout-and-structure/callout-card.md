@@ -31,6 +31,7 @@ examples:
   - fileName: callout-card-dismissable.tsx
     title: Dismissable
     description: Make all callout cards dismissible so merchants can get rid of cards about features they’re not interested in.
+previewImg: /images/components/layout-and-structure/callout-card.png
 ---
 
 # {frontmatter.title}

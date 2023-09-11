@@ -14,6 +14,7 @@ keywords:
   - heading text
   - heading font
 status: Deprecated
+previewImg: /images/components/deprecated/heading.png
 ---
 
 # {frontmatter.title}

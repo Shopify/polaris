@@ -20,6 +20,7 @@ examples:
   - fileName: skeleton-thumbnail-extra-small.tsx
     title: Extra small
     description: Use this component to represent extra small thumbnails.
+previewImg: /images/components/feedback-indicators/skeleton-thumbnail.png
 ---
 
 # {frontmatter.title}

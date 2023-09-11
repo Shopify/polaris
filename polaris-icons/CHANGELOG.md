@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.9.0
+
+### Minor Changes
+
+- [#9856](https://github.com/Shopify/polaris/pull/9856) [`47652f7d6`](https://github.com/Shopify/polaris/commit/47652f7d67f98d7bef8ef8485fae803b9f3c1056) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updates social media icons, removing them from their containers and adds a one for the Twitch platform.
+
 ## 7.8.1
 
 ### Patch Changes

@@ -24,6 +24,7 @@ examples:
     title: Inline align
     description: >-
       Control the horizontal alignment of children using the `inlineAlign` prop.
+previewImg: /images/components/layout-and-structure/block-stack.png
 ---
 
 # {frontmatter.title}

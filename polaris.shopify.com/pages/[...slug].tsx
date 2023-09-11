@@ -11,19 +11,9 @@ import {serializeMdx} from '../src/components/Markdown/serialize';
 import Markdown from '../src/components/Markdown';
 import Page from '../src/components/Page';
 import PageMeta from '../src/components/PageMeta';
-import type {Status, SerializedMdx} from '../src/types';
-import {parseMarkdown} from '../src/utils/markdown.mjs';
-import {MarkdownFile} from '../src/types';
+import type {SerializedMdx} from '../src/types';
+import {FrontMatter} from '../src/types';
 import type {RichCardGridProps} from '../src/components/RichCardGrid';
-
-type FrontMatter = {
-  title: string;
-  noIndex?: boolean;
-  status?: Status;
-  update?: string;
-  seoDescription?: string;
-  order?: number;
-};
 
 interface Props {
   mdx: SerializedMdx<FrontMatter>;
@@ -127,44 +117,57 @@ const slugExtracter = new RegExp(`^${contentDir}/(.*?)(/index)?\.md$`);
 const extractSlugFromPath = (filePath: string) =>
   filePath.replace(slugExtracter, '/$1');
 
+function makeSerializable<T extends Record<string, any> = Record<string, any>>(
+  obj: T,
+): T {
+  return Object.entries(obj).reduce((memo, [key, value]) => {
+    if (value != null) {
+      // @ts-expect-error SShhuussshhh
+      memo[key] = value;
+    }
+    return memo;
+  }, {} as T);
+}
+
 // NOTE: globby uses minimatch which only accepts posix paths
-const getRichCards = (pathGlob: string): RichCardGridProps[] => {
+const getRichCards = async (
+  pathGlob: string,
+): Promise<SortedRichCardGridProps[]> => {
   const markdownFiles = globby.sync(pathGlob, {onlyFiles: true});
 
   return (
-    markdownFiles
-      .map((markdownFilePath): SortedRichCardGridProps => {
-        // NOTE: `markdownFilePath` will be in posix format from globby (fast-glob internally)
-        const markdown = fs.readFileSync(markdownFilePath, 'utf-8');
-        // TODO: Replace with simpler frontmatter parsing / same frontmatter parser
-        // from next-mdx-remote to keep it consistent
-        const {frontMatter}: MarkdownFile = parseMarkdown(markdown);
-        const {
-          title = null,
-          description = null,
-          // Default to the markdown file path, but allow overrides
-          url = extractSlugFromPath(markdownFilePath),
-          previewImg = null,
-          draft = null,
-          status = null,
-          icon = null,
-          order,
-          featured = null,
-        } = frontMatter;
-        return {
-          title,
-          description,
-          url,
-          previewImg,
-          draft,
-          status,
-          icon,
-          featured,
-          // Ensure pages with a defined order come first. Everything else gets
-          // puntted to the end
-          order: isNaN(parseInt(order)) ? DEFAULT_SORT_ORDER : order,
-        };
-      })
+    (
+      await Promise.all(
+        markdownFiles.map(
+          async (markdownFilePath): Promise<SortedRichCardGridProps> => {
+            // NOTE: `markdownFilePath` will be in posix format from globby (fast-glob internally)
+            const mdAbsolutePath = [process.cwd(), markdownFilePath].join('/');
+            const [{frontmatter}, data] = await serializeMdx<FrontMatter>(
+              mdAbsolutePath,
+              {
+                load: (filePath) => fs.readFileSync(filePath, 'utf-8'),
+              },
+            );
+
+            return makeSerializable({
+              // Set defaults
+              ...{
+                url: extractSlugFromPath(markdownFilePath),
+                description: data.firstParagraph as string,
+              },
+              // Set data from frontmatter, overriding defaults if set
+              ...frontmatter,
+              // Set a default sort order when not set / not a number.
+              // Casting to a string because despite what we write in our types, the
+              // YAML parser could return _absolutely anything_ in this field.
+              ...(isNaN(parseInt(frontmatter.order as unknown as string)) && {
+                order: DEFAULT_SORT_ORDER,
+              }),
+            } as SortedRichCardGridProps);
+          },
+        ),
+      )
+    )
       // Don't show 'draft' posts in prod/staging, but show them everywhere else
       .filter(({draft}) => process.env.NODE_ENV !== 'production' || !draft)
       .sort(
@@ -244,20 +247,44 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
         pathIsDirectory &&
         params.slug.length === 1 &&
         params.slug[0] === 'patterns',
-      (end) => {
-        scope.posts = getRichCards(`${slugPath}/*/index.md`);
-        scope.legacyPatternPosts = getRichCards(
+      async (end) => {
+        scope.posts = await getRichCards(`${slugPath}/*/index.md`);
+        scope.legacyPatternPosts = await getRichCards(
           `${contentDir}/patterns-legacy/!(index).md`,
         );
+        end();
+      },
+    ],
+    // component index page needs to know all of the nested components
+    [
+      () =>
+        pathIsDirectory &&
+        params.slug.length === 1 &&
+        params.slug[0] === 'components',
+      async (end) => {
+        // Get the groups
+        scope.posts = await getRichCards(`${slugPath}/*/index.md`);
+
+        // Get the components for each group
+        scope.posts = await Promise.all(
+          scope.posts.map(async (group: SortedRichCardGridProps) => ({
+            ...group,
+            children: await getRichCards(
+              `${contentDir}${group.url}/!(index).md`,
+            ),
+          })),
+        );
+
+        // Don't process any more middlewares
         end();
       },
     ],
     // index pages need to know the files in their folder
     [
       () => pathIsDirectory,
-      () => {
+      async () => {
         // Non-recursive search for .md files except index.md
-        scope.posts = getRichCards(`${slugPath}/!(index).md`);
+        scope.posts = await getRichCards(`${slugPath}/!(index).md`);
       },
     ],
   ]);
@@ -289,11 +316,15 @@ const catchAllTemplateExcludeList = [
   '/tools/stylelint-polaris/rules',
 ];
 
+// We want to render component index & group pages, but not the individual
+// compoments.
+const componentButNotIndexRegex = /\/components\/.+?\/.+?$/;
+
 function fileShouldNotBeRenderedWithCatchAllTemplate(
   filePath: string,
 ): boolean {
   return (
-    !filePath.startsWith('/components') &&
+    !componentButNotIndexRegex.test(filePath) &&
     // We want to render legacy pages & patterns index page, but not new pattern details pages.
     !filePath.startsWith('/patterns/') &&
     !catchAllTemplateExcludeList.includes(filePath)

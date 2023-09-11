@@ -31,6 +31,7 @@ examples:
     title: Align
     description: >-
       Control the horizontal alignment of children using the `align` prop.
+previewImg: /images/components/layout-and-structure/inline-stack.png
 ---
 
 # {frontmatter.title}

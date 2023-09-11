@@ -403,11 +403,11 @@ export function TextField({
     ],
   );
 
-  const handleButtonRelease = useCallback(() => {
+  const handleSpinnerButtonRelease = useCallback(() => {
     clearTimeout(buttonPressTimer.current);
   }, []);
 
-  const handleButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+  const handleSpinnerButtonPress: SpinnerProps['onMouseDown'] = useCallback(
     (onChange) => {
       const minInterval = 50;
       const decrementBy = 10;
@@ -424,11 +424,11 @@ export function TextField({
 
       buttonPressTimer.current = window.setTimeout(onChangeInterval, interval);
 
-      document.addEventListener('mouseup', handleButtonRelease, {
+      document.addEventListener('mouseup', handleSpinnerButtonRelease, {
         once: true,
       });
     },
-    [handleButtonRelease],
+    [handleSpinnerButtonRelease],
   );
 
   const spinnerMarkup =
@@ -436,8 +436,8 @@ export function TextField({
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
-        onMouseDown={handleButtonPress}
-        onMouseUp={handleButtonRelease}
+        onMouseDown={handleSpinnerButtonPress}
+        onMouseUp={handleSpinnerButtonRelease}
         ref={spinnerRef}
         onBlur={handleOnBlur}
       />
@@ -656,6 +656,7 @@ export function TextField({
     }
 
     setFocus(true);
+    inputRef.current?.focus();
   }
 
   function handleClearButtonPress() {

@@ -28,6 +28,7 @@ examples:
   - fileName: tag-removable-with-link.tsx
     title: Removable with link
     description: A removable attribute to an object that allows merchants to navigate to a resource.
+previewImg: /images/components/selection-and-input/tag.png
 ---
 
 # {frontmatter.title}

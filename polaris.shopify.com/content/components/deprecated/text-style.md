@@ -19,6 +19,7 @@ keywords:
   - input
   - fields
 status: Deprecated
+previewImg: /images/components/deprecated/text-style.png
 ---
 
 # {frontmatter.title}

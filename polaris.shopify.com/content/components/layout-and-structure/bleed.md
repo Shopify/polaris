@@ -17,6 +17,7 @@ examples:
     title: Specific direction
     description: >-
       Negative margins can be added in a specific direction using the [Space tokens](https://polaris.shopify.com/tokens/space).
+previewImg: /images/components/layout-and-structure/bleed.png
 ---
 
 # {frontmatter.title}
