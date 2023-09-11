@@ -120,6 +120,24 @@ describe('<TextField />', () => {
       expect(onClick).toHaveBeenCalled();
     });
 
+    it('focuses the text field when the spinner is clicked', () => {
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+      const textField = mountWithApp(
+        <TextField type="number" label="TextField" autoComplete="off" />,
+      );
+
+      textField
+        .find(Spinner)!
+        .findAll('div', {role: 'button'})[0]!
+        .domNode?.dispatchEvent(event);
+
+      expect(document.activeElement).toBe(textField.find('input')!.domNode);
+    });
+
     it('does not bubble up to the parent element when it occurs in an element other than the input', () => {
       const onClick = jest.fn();
       const children = 'vertical-content-children';
@@ -221,7 +239,7 @@ describe('<TextField />', () => {
       );
 
       expect(textField).toContainReactComponent('input', {
-        id: ':ra:',
+        id: expect.any(String),
       });
     });
 
@@ -330,11 +348,12 @@ describe('<TextField />', () => {
           helpText="Some help"
           onChange={noop}
           autoComplete="off"
+          id="textField"
         />,
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': ':ri:HelpText',
+        'aria-describedby': 'textFieldHelpText',
       });
       expect(textField.find('div')).toContainReactText('Some help');
     });
@@ -369,11 +388,12 @@ describe('<TextField />', () => {
           error="Some error"
           onChange={noop}
           autoComplete="off"
+          id="textField"
         />,
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': ':rk:Error',
+        'aria-describedby': 'textFieldError',
       });
     });
 
@@ -407,11 +427,12 @@ describe('<TextField />', () => {
           helpText="Some help"
           onChange={noop}
           autoComplete="off"
+          id="textField"
         />,
       );
 
       expect(textField).toContainReactComponent('input', {
-        'aria-describedby': ':rm:Error :rm:HelpText',
+        'aria-describedby': 'textFieldError textFieldHelpText',
       });
 
       expect(textField.find('div')).toContainReactText('Some error');

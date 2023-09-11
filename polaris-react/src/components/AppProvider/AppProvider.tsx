@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import type {ThemeName} from '@shopify/polaris-tokens';
+import {themeNameDefault} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
+import {ThemeContext, getTheme} from '../../utilities/use-theme';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -23,6 +26,43 @@ import type {FeaturesConfig} from '../../utilities/features';
 
 import './AppProvider.scss';
 import './global.scss';
+
+const MAX_SCROLLBAR_WIDTH = 20;
+const SCROLLBAR_TEST_ELEMENT_PARENT_SIZE = 30;
+const SCROLLBAR_TEST_ELEMENT_CHILD_SIZE =
+  SCROLLBAR_TEST_ELEMENT_PARENT_SIZE + 10;
+
+function measureScrollbars() {
+  const parentEl = document.createElement('div');
+  parentEl.setAttribute(
+    'style',
+    `position: absolute; opacity: 0; transform: translate3d(-9999px, -9999px, 0); pointer-events: none; width:${SCROLLBAR_TEST_ELEMENT_PARENT_SIZE}px; height:${SCROLLBAR_TEST_ELEMENT_PARENT_SIZE}px;`,
+  );
+
+  const child = document.createElement('div');
+  child.setAttribute(
+    'style',
+    `width:100%; height: ${SCROLLBAR_TEST_ELEMENT_CHILD_SIZE}; overflow:scroll`,
+  );
+  parentEl.appendChild(child);
+  document.body.appendChild(parentEl);
+
+  const scrollbarWidth =
+    SCROLLBAR_TEST_ELEMENT_PARENT_SIZE -
+    (parentEl.firstElementChild?.clientWidth ?? 0);
+
+  const scrollbarWidthWithSafetyHatch = Math.min(
+    scrollbarWidth,
+    MAX_SCROLLBAR_WIDTH,
+  );
+
+  document.documentElement.style.setProperty(
+    '--pc-app-provider-scrollbar-width',
+    `${scrollbarWidthWithSafetyHatch}px`,
+  );
+
+  document.body.removeChild(parentEl);
+}
 
 interface State {
   intl: I18n;
@@ -64,6 +104,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
       this.setBodyStyles();
       this.setRootAttributes();
     }
+    measureScrollbars();
   }
 
   componentDidUpdate({
@@ -107,32 +148,40 @@ export class AppProvider extends Component<AppProviderProps, State> {
     };
   };
 
+  getThemeName = (): ThemeName =>
+    this.getFeatures().polarisSummerEditions2023
+      ? 'Polaris-Summer-Editions-2023'
+      : themeNameDefault;
+
   render() {
     const {children} = this.props;
     const features = this.getFeatures();
+    const themeName = this.getThemeName();
 
     const {intl, link} = this.state;
 
     return (
-      <FeaturesContext.Provider value={features}>
-        <I18nContext.Provider value={intl}>
-          <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-            <StickyManagerContext.Provider value={this.stickyManager}>
-              <LinkContext.Provider value={link}>
-                <MediaQueryProvider>
-                  <PortalsManager>
-                    <FocusManager>
-                      <EphemeralPresenceManager>
-                        {children}
-                      </EphemeralPresenceManager>
-                    </FocusManager>
-                  </PortalsManager>
-                </MediaQueryProvider>
-              </LinkContext.Provider>
-            </StickyManagerContext.Provider>
-          </ScrollLockManagerContext.Provider>
-        </I18nContext.Provider>
-      </FeaturesContext.Provider>
+      <ThemeContext.Provider value={getTheme(themeName)}>
+        <FeaturesContext.Provider value={features}>
+          <I18nContext.Provider value={intl}>
+            <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+              <StickyManagerContext.Provider value={this.stickyManager}>
+                <LinkContext.Provider value={link}>
+                  <MediaQueryProvider>
+                    <PortalsManager>
+                      <FocusManager>
+                        <EphemeralPresenceManager>
+                          {children}
+                        </EphemeralPresenceManager>
+                      </FocusManager>
+                    </PortalsManager>
+                  </MediaQueryProvider>
+                </LinkContext.Provider>
+              </StickyManagerContext.Provider>
+            </ScrollLockManagerContext.Provider>
+          </I18nContext.Provider>
+        </FeaturesContext.Provider>
+      </ThemeContext.Provider>
     );
   }
 }
