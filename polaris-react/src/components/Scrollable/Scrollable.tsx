@@ -77,7 +77,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       (scrollY: number, options: ScrollToOptions = {}) => {
         const optionsBehavior = options.behavior || 'smooth';
         const behavior = prefersReducedMotion() ? 'auto' : optionsBehavior;
-        // @ts-expect-error: TS removed "instant" option but browsers support it
+        // @ts-expect-error TS removed "instant" option but browsers support it
         scrollArea.current?.scrollTo({top: scrollY, behavior});
       },
       [],
@@ -96,10 +96,11 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       requestAnimationFrame(() => {
         const {scrollTop, clientHeight, scrollHeight} = currentScrollArea;
         const canScroll = Boolean(scrollHeight > clientHeight);
-        const isBelowTopOfScroll = canScroll && Boolean(scrollTop > 0);
-        const isAtBottomOfScroll =
-          canScroll &&
-          Boolean(scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER);
+        const isBelowTopOfScroll = Boolean(scrollTop > 0);
+        const isAtBottomOfScroll = Boolean(
+          scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
+        );
+
         console.log(
           `CAN SCROLL: ${canScroll}; scrollTop ${scrollTop}, scrollHeight ${scrollHeight}, clientHeight ${clientHeight}`,
         );
@@ -133,22 +134,11 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       currentScrollArea.addEventListener('scroll', handleScroll);
       globalThis.addEventListener('resize', handleResize);
 
-      if (topShadow || bottomShadow) {
-        handleScroll();
-      }
-
       return () => {
         currentScrollArea.removeEventListener('scroll', handleScroll);
         globalThis.removeEventListener('resize', handleResize);
       };
-    }, [
-      children,
-      topShadow,
-      bottomShadow,
-      scrollArea,
-      stickyManager,
-      handleScroll,
-    ]);
+    }, [stickyManager, handleScroll]);
 
     const finalClassName = classNames(
       className,
@@ -158,6 +148,8 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       shadow && topShadow && styles.hasTopShadow,
       shadow && bottomShadow && styles.hasBottomShadow,
     );
+
+    console.log(finalClassName);
 
     return (
       <ScrollableContext.Provider value={scrollTo}>
