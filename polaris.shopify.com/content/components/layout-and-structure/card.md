@@ -21,7 +21,6 @@ keywords:
   - subdued card for secondary content
   - callout
   - call out
-status: Alpha
 examples:
   - fileName: card-default.tsx
     title: Default
@@ -49,13 +48,6 @@ previewImg: /images/components/layout-and-structure/card.png
 Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
 
 </Lede>
-
-<StatusBanner status={frontmatter.status}>
-  This component is a work in progress and ready for exploratory usage, with
-  breaking changes expected in minor version updates. Please use with caution.
-  Learn more about our [component
-  lifecycles](/getting-started/components-lifecycle).
-</StatusBanner>
 
 <Examples />
 
