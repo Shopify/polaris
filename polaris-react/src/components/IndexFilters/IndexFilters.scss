@@ -92,7 +92,6 @@ $spinner-size: 20px;
     padding: var(--p-space-2);
     height: 3rem;
     border-left: var(--p-border-width-1) solid var(--p-color-border-subdued);
-    gap: var(--p-space-2);
 
     &::before {
       content: '';
