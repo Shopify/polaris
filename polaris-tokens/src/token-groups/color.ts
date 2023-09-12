@@ -217,552 +217,150 @@ export type ColorTokenGroup = {
 export const color: {
   [TokenName in ColorTokenName]: MetadataProperties;
 } = {
-  'color-bg-inverse': {
-    value: colors.gray[900],
-    description: '',
-  },
-  'color-bg-inset-strong': {
-    value: colors.gray[800],
-    description: '',
-  },
-  'color-bg-inverse-hover': {
-    value: colors.gray[800],
-    description: '',
-  },
-  'color-bg-inverse-active': {
-    value: colors.gray[700],
-    description: '',
-  },
-  'color-bg-strong-hover': {
-    value: colors.gray[500],
-    description: '',
-  },
-  'color-bg-strong-active': {
-    value: colors.gray[500],
-    description: '',
-  },
-  'color-bg-strong': {
-    value: colors.gray[400],
-    description: '',
-  },
-  'color-bg-subdued-active': {
-    value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-disabled': {
-    value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-interactive-disabled': {
-    value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-app': {
-    value: colors.gray[200],
-    description: '',
-  },
+  'color-bg-inverse': {value: colorsExperimental.gray[16]()},
+  'color-bg-inset-strong': {value: colorsExperimental.gray[15]()},
+  'color-bg-inverse-hover': {value: colorsExperimental.gray[14]()},
+  'color-bg-inverse-active': {value: colorsExperimental.gray[13]()},
+  'color-bg-strong-hover': {value: colorsExperimental.gray[9]()},
+  'color-bg-strong-active': {value: colorsExperimental.gray[10]()},
+  'color-bg-strong': {value: colorsExperimental.gray[8]()},
+  'color-bg-subdued-active': {value: colorsExperimental.gray[7]()},
+  'color-bg-disabled': {value: colorsExperimental.gray[7]()},
+  'color-bg-interactive-disabled': {value: colorsExperimental.gray[7]()},
+  'color-bg-app': {value: colorsExperimental.gray[6]()},
+  'color-bg-app-hover': {value: colorsExperimental.gray[2]()},
+  'color-bg-app-selected': {value: colorsExperimental.gray[3]()},
+  'color-bg-active': {value: colorsExperimental.gray[4]()},
+  'color-bg-subdued-hover': {value: colorsExperimental.gray[6]()},
+  'color-bg-inset': {value: colorsExperimental.gray[6]()},
+  'color-bg-hover': {value: colorsExperimental.gray[3]()},
+  'color-bg-subdued': {value: colorsExperimental.gray[4]()},
+  'color-bg-input': {value: colorsExperimental.gray[1]()},
+  'color-bg': {value: colorsExperimental.gray[1]()},
+  'color-bg-primary-active': {value: colorsExperimental.gray[16]()},
+  'color-bg-primary-hover': {value: colorsExperimental.gray[16]()},
+  'color-bg-primary': {value: colorsExperimental.gray[15]()},
+  'color-bg-success-strong': {value: colorsExperimental.green[12]},
+  'color-bg-success': {value: colorsExperimental.green[3]},
+  'color-bg-primary-subdued-active': {value: colorsExperimental.gray[6]()},
+  'color-bg-success-subdued': {value: colorsExperimental.green[3]},
+  'color-bg-primary-subdued-hover': {value: colorsExperimental.gray[7]()},
+  'color-bg-success-subdued-hover': {value: colorsExperimental.green[5]},
+  'color-bg-primary-subdued': {value: colorsExperimental.gray[8]()},
+  'color-bg-primary-subdued-selected': {value: colorsExperimental.gray[6]()},
+  'color-bg-critical-strong-active': {value: colorsExperimental.red[14]},
+  'color-bg-critical-strong-hover': {value: colorsExperimental.red[13]},
+  'color-bg-critical-strong': {value: colorsExperimental.red[12]},
+  'color-bg-critical-subdued-active': {value: colorsExperimental.red[6]},
+  'color-bg-critical': {value: colorsExperimental.red[6]},
+  'color-bg-critical-subdued': {value: colorsExperimental.red[4]},
+  'color-bg-critical-subdued-hover': {value: colorsExperimental.red[5]},
+  'color-bg-caution-strong': {value: colorsExperimental.yellow[6]},
+  'color-bg-caution': {value: colorsExperimental.yellow[4]},
+  'color-bg-caution-subdued-active': {value: colorsExperimental.yellow[4]},
+  'color-bg-caution-subdued': {value: colorsExperimental.yellow[2]},
+  'color-bg-caution-subdued-hover': {value: colorsExperimental.yellow[3]},
+  'color-bg-info-strong': {value: colorsExperimental.azure[9]},
+  'color-bg-info-subdued-active': {value: colorsExperimental.azure[6]},
+  'color-bg-info': {value: colorsExperimental.azure[4]},
+  'color-bg-info-subdued': {value: colorsExperimental.azure[3]},
+  'color-bg-info-subdued-hover': {value: colorsExperimental.azure[4]},
+  'color-bg-interactive-active': {value: colorsExperimental.gray[14]()},
+  'color-bg-interactive-hover': {value: colorsExperimental.gray[15]()},
+  'color-bg-interactive': {value: colorsExperimental.gray[16]()},
+  'color-bg-interactive-subdued-active': {value: colorsExperimental.gray[6]()},
+  'color-bg-interactive-subdued-hover': {value: colorsExperimental.gray[7]()},
+  'color-bg-interactive-subdued': {value: colorsExperimental.gray[8]()},
+  'color-bg-interactive-selected': {value: colorsExperimental.gray[6]()},
+  'color-bg-warning': {value: colorsExperimental.orange[7]},
+  'color-bg-magic-strong': {value: colorsExperimental.purple[12]},
+  'color-bg-magic-hover': {value: colorsExperimental.purple[7]},
+  'color-bg-magic-active': {value: colorsExperimental.purple[8]},
+  'color-bg-magic': {value: colorsExperimental.purple[6]},
+  'color-bg-magic-subdued-hover': {value: colorsExperimental.purple[4]},
+  'color-bg-magic-subdued-active': {value: colorsExperimental.purple[6]},
+  'color-bg-magic-subdued': {value: colorsExperimental.purple[3]},
+  'color-border-input-hover': {value: colorsExperimental.gray[13]()},
+  'color-border-inverse': {value: colorsExperimental.gray[13]()},
+  'color-border-strong-hover': {value: colorsExperimental.gray[11]()},
+  'color-border-input': {value: colorsExperimental.gray[12]()},
+  'color-border-hover': {value: colorsExperimental.gray[10]()},
+  'color-border-strong': {value: colorsExperimental.gray[10]()},
+  'color-border': {value: colorsExperimental.gray[8]()},
+  'color-border-disabled': {value: colorsExperimental.gray[7]()},
+  'color-border-subdued': {value: colorsExperimental.gray[7]()},
+  'color-border-interactive-disabled': {value: colorsExperimental.gray[7]()},
+  'color-border-primary': {value: colorsExperimental.gray[8]()},
+  'color-border-success': {value: colorsExperimental.green[5]},
+  'color-border-success-subdued': {value: colorsExperimental.green[5]},
+  'color-border-critical-active': {value: colorsExperimental.red[11]},
+  'color-border-critical-hover': {value: colorsExperimental.red[10]},
+  'color-border-critical': {value: colorsExperimental.red[9]},
+  'color-border-critical-subdued': {value: colorsExperimental.red[9]},
+  'color-border-caution': {value: colorsExperimental.yellow[5]},
+  'color-border-caution-subdued': {value: colorsExperimental.yellow[5]},
+  'color-border-info': {value: colorsExperimental.azure[9]},
+  'color-border-info-subdued': {value: colorsExperimental.azure[9]},
+  'color-border-interactive-active': {value: colorsExperimental.blue[15]},
+  'color-border-interactive-hover': {value: colorsExperimental.blue[14]},
+  'color-border-interactive': {value: colorsExperimental.blue[13]},
+  'color-border-interactive-focus': {value: colorsExperimental.blue[13]},
+  'color-border-interactive-subdued': {value: colorsExperimental.blue[13]},
+  'color-border-magic-strong': {value: colorsExperimental.purple[12]},
+  'color-border-magic': {value: colorsExperimental.purple[10]},
+  'color-icon-hover': {value: colorsExperimental.gray[15]()},
+  'color-icon': {value: colorsExperimental.gray[14]()},
+  'color-icon-subdued': {value: colorsExperimental.gray[12]()},
+  'color-icon-disabled': {value: colorsExperimental.gray[10]()},
+  'color-icon-interactive-disabled': {value: colorsExperimental.gray[10]()},
+  'color-icon-inverse': {value: colorsExperimental.gray[8]()},
+  'color-icon-on-color': {value: colorsExperimental.gray[1]()},
+  'color-icon-primary': {value: colorsExperimental.gray[16]()},
+  'color-icon-success': {value: colorsExperimental.green[12]},
+  'color-icon-critical': {value: colorsExperimental.red[11]},
+  'color-icon-caution': {value: colorsExperimental.yellow[11]},
+  'color-icon-info': {value: colorsExperimental.azure[11]},
+  'color-icon-warning': {value: colorsExperimental.orange[11]},
+  'color-icon-interactive-active': {value: colorsExperimental.blue[15]},
+  'color-icon-interactive-hover': {value: colorsExperimental.blue[14]},
+  'color-icon-interactive': {value: colorsExperimental.blue[13]},
+  'color-icon-interactive-inverse': {value: colorsExperimental.blue[8]},
+  'color-icon-magic': {value: colorsExperimental.purple[13]},
+  'color-text': {value: colorsExperimental.gray[15]()},
+  'color-text-subdued': {value: colorsExperimental.gray[13]()},
+  'color-text-disabled': {value: colorsExperimental.gray[11]()},
+  'color-text-interactive-disabled': {value: colorsExperimental.gray[10]()},
+  'color-text-inverse-subdued': {value: colorsExperimental.gray[10]()},
+  'color-text-inverse': {value: colorsExperimental.gray[8]()},
+  'color-text-on-color': {value: colorsExperimental.gray[1]()},
+  'color-text-success-strong': {value: colorsExperimental.green[15]},
+  'color-text-success': {value: colorsExperimental.green[15]},
+  'color-text-primary': {value: colorsExperimental.gray[14]()},
+  'color-text-primary-hover': {value: colorsExperimental.gray[14]()},
+  'color-text-critical-strong': {value: colorsExperimental.red[14]},
+  'color-text-critical-active': {value: colorsExperimental.red[16]},
+  'color-text-critical': {value: colorsExperimental.red[14]},
+  'color-text-caution-strong': {value: colorsExperimental.yellow[15]},
+  'color-text-caution': {value: colorsExperimental.yellow[15]},
+  'color-text-info-strong': {value: colorsExperimental.azure[16]},
+  'color-text-info': {value: colorsExperimental.azure[14]},
+  'color-text-warning-strong': {value: colorsExperimental.orange[16]},
+  'color-text-interactive-active': {value: colorsExperimental.blue[15]},
+  'color-text-interactive-hover': {value: colorsExperimental.blue[14]},
+  'color-text-interactive': {value: colorsExperimental.blue[13]},
+  'color-text-interactive-inverse': {value: colorsExperimental.blue[8]},
+  'color-text-magic-strong': {value: colorsExperimental.purple[15]},
+  'color-text-magic': {value: colorsExperimental.purple[14]},
   'color-bg-app-active': {
     value: colors.gray[400],
-    description: '',
-  },
-  'color-bg-app-hover': {
-    value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-app-selected': {
-    value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-active': {
-    value: colors.gray[300],
-    description: '',
-  },
-  'color-bg-subdued-hover': {
-    value: colors.gray[200],
-    description: '',
-  },
-  'color-bg-inset': {
-    value: colors.gray[200],
-    description: '',
-  },
-  'color-bg-hover': {
-    value: colors.gray[200],
-    description: '',
-  },
-  'color-bg-subdued': {
-    value: colors.gray[100],
-    description: '',
-  },
-  'color-bg-input': {
-    value: colors.gray[50],
-    description: '',
-  },
-  'color-bg': {
-    value: colors.gray[50],
-    description: '',
-  },
-  'color-bg-primary-active': {
-    value: colors.green[900],
-    description: '',
-  },
-  'color-bg-primary-hover': {
-    value: colors.green[800],
-    description: '',
-  },
-  'color-bg-primary': {
-    value: colors.green[700],
-    description: '',
-  },
-  'color-bg-success-strong': {
-    value: colors.green[600],
-    description: '',
-  },
-  'color-bg-success': {
-    value: colors.green[300],
-    description: '',
-  },
-  'color-bg-primary-subdued-active': {
-    value: colors.green[200],
     description: '',
   },
   'color-bg-success-subdued-active': {
     value: colors.green[200],
     description: '',
   },
-  'color-bg-success-subdued': {
-    value: colors.green[100],
-    description: '',
-  },
-  'color-bg-primary-subdued-hover': {
-    value: colors.green[100],
-    description: '',
-  },
-  'color-bg-success-subdued-hover': {
-    value: colors.green[50],
-    description: '',
-  },
-  'color-bg-primary-subdued': {
-    value: colors.green[50],
-    description: '',
-  },
-  'color-bg-primary-subdued-selected': {
-    value: colors.green[50],
-    description: '',
-  },
-  'color-bg-critical-strong-active': {
-    value: colors.red[800],
-    description: '',
-  },
-  'color-bg-critical-strong-hover': {
-    value: colors.red[700],
-    description: '',
-  },
-  'color-bg-critical-strong': {
-    value: colors.red[600],
-    description: '',
-  },
-  'color-bg-critical-subdued-active': {
-    value: colors.red[200],
-    description: '',
-  },
-  'color-bg-critical': {
-    value: colors.red[200],
-    description: '',
-  },
-  'color-bg-critical-subdued': {
-    value: colors.red[100],
-    description: '',
-  },
-  'color-bg-critical-subdued-hover': {
-    value: colors.red[50],
-    description: '',
-  },
-  'color-bg-caution-strong': {
-    value: colors.yellow[600],
-    description: '',
-  },
-  'color-bg-caution': {
-    value: colors.yellow[300],
-    description: '',
-  },
-  'color-bg-caution-subdued-active': {
-    value: colors.yellow[200],
-    description: '',
-  },
-  'color-bg-caution-subdued': {
-    value: colors.yellow[100],
-    description: '',
-  },
-  'color-bg-caution-subdued-hover': {
-    value: colors.yellow[50],
-    description: '',
-  },
-  'color-bg-info-strong': {
-    value: colors.teal[600],
-    description: '',
-  },
-  'color-bg-info-subdued-active': {
-    value: colors.teal[200],
-    description: '',
-  },
-  'color-bg-info': {
-    value: colors.teal[200],
-    description: '',
-  },
-  'color-bg-info-subdued': {
-    value: colors.teal[100],
-    description: '',
-  },
-  'color-bg-info-subdued-hover': {
-    value: colors.teal[50],
-    description: '',
-  },
-  'color-bg-interactive-active': {
-    value: colors.blue[800],
-    description: '',
-  },
-  'color-bg-interactive-hover': {
-    value: colors.blue[700],
-    description: '',
-  },
-  'color-bg-interactive': {
-    value: colors.blue[600],
-    description: '',
-  },
-  'color-bg-interactive-subdued-active': {
-    value: colors.blue[200],
-    description: '',
-  },
-  'color-bg-interactive-subdued-hover': {
-    value: colors.blue[100],
-    description: '',
-  },
-  'color-bg-interactive-subdued': {
-    value: colors.blue[50],
-    description: '',
-  },
-  'color-bg-interactive-selected': {
-    value: colors.blue[50],
-    description: '',
-  },
-  'color-bg-warning': {
-    value: colors.orange[200],
-    description: '',
-  },
-  'color-bg-magic-strong': {
-    value: colors.purple[500],
-    description: '',
-  },
-  'color-bg-magic-hover': {
-    value: colors.purple[200],
-    description: '',
-  },
-  'color-bg-magic-active': {
-    value: colors.purple[300],
-    description: '',
-  },
-  'color-bg-magic': {
-    value: colors.purple[100],
-    description: '',
-  },
-  'color-bg-magic-subdued-hover': {
-    value: colors.purple[100],
-    description: '',
-  },
-  'color-bg-magic-subdued-active': {
-    value: colors.purple[200],
-    description: '',
-  },
-  'color-bg-magic-subdued': {
-    value: colors.purple[50],
-    description: '',
-  },
-  'color-border-input-hover': {
-    value: colors.gray[800],
-    description: '',
-  },
-  'color-border-inverse': {
-    value: colors.gray[800],
-    description: '',
-  },
-  'color-border-strong-hover': {
-    value: colors.gray[700],
-    description: '',
-  },
-  'color-border-input': {
-    value: colors.gray[600],
-    description: '',
-  },
-  'color-border-hover': {
-    value: colors.gray[600],
-    description: '',
-  },
-  'color-border-strong': {
-    value: colors.gray[600],
-    description: '',
-  },
-  'color-border': {
-    value: colors.gray[500],
-    description: '',
-  },
-  'color-border-disabled': {
-    value: colors.gray[400],
-    description: '',
-  },
-  'color-border-subdued': {
-    value: colors.gray[400],
-    description: '',
-  },
-  'color-border-interactive-disabled': {
-    value: colors.gray[400],
-    description: '',
-  },
-  'color-border-primary': {
-    value: colors.green[700],
-    description: '',
-  },
-  'color-border-success': {
-    value: colors.green[600],
-    description: '',
-  },
-  'color-border-success-subdued': {
-    value: colors.green[400],
-    description: '',
-  },
-  'color-border-critical-active': {
-    value: colors.red[900],
-    description: '',
-  },
-  'color-border-critical-hover': {
-    value: colors.red[800],
-    description: '',
-  },
-  'color-border-critical': {
-    value: colors.red[600],
-    description: '',
-  },
-  'color-border-critical-subdued': {
-    value: colors.red[400],
-    description: '',
-  },
-  'color-border-caution': {
-    value: colors.yellow[600],
-    description: '',
-  },
-  'color-border-caution-subdued': {
-    value: colors.yellow[400],
-    description: '',
-  },
-  'color-border-info': {
-    value: colors.teal[500],
-    description: '',
-  },
-  'color-border-info-subdued': {
-    value: colors.teal[400],
-    description: '',
-  },
-  'color-border-interactive-active': {
-    value: colors.blue[800],
-    description: '',
-  },
-  'color-border-interactive-hover': {
-    value: colors.blue[700],
-    description: '',
-  },
-  'color-border-interactive': {
-    value: colors.blue[500],
-    description: '',
-  },
-  'color-border-interactive-focus': {
-    value: colors.blue[500],
-    description: '',
-  },
-  'color-border-interactive-subdued': {
-    value: colors.blue[200],
-    description: '',
-  },
-  'color-border-magic-strong': {
-    value: colors.purple[500],
-    description: '',
-  },
-  'color-border-magic': {
-    value: colors.purple[400],
-    description: '',
-  },
-  'color-icon-hover': {
-    value: colors.gray[900],
-    description: '',
-  },
-  'color-icon': {
-    value: colors.gray[800],
-    description: '',
-  },
   'color-icon-active': {
     value: colors.gray[900],
-    description: '',
-  },
-  'color-icon-subdued': {
-    value: colors.gray[700],
-    description: '',
-  },
-  'color-icon-disabled': {
-    value: colors.gray[600],
-    description: '',
-  },
-  'color-icon-interactive-disabled': {
-    value: colors.gray[600],
-    description: '',
-  },
-  'color-icon-inverse': {
-    value: colors.gray[400],
-    description: '',
-  },
-  'color-icon-on-color': {
-    value: colors.gray[50],
-    description: '',
-  },
-  'color-icon-primary': {
-    value: colors.green[700],
-    description: '',
-  },
-  'color-icon-success': {
-    value: colors.green[600],
-    description: '',
-  },
-  'color-icon-critical': {
-    value: colors.red[600],
-    description: '',
-  },
-  'color-icon-caution': {
-    value: colors.yellow[700],
-    description: '',
-  },
-  'color-icon-info': {
-    value: colors.teal[600],
-    description: '',
-  },
-  'color-icon-warning': {
-    value: colors.orange[500],
-    description: '',
-  },
-  'color-icon-interactive-active': {
-    value: colors.blue[800],
-    description: '',
-  },
-  'color-icon-interactive-hover': {
-    value: colors.blue[700],
-    description: '',
-  },
-  'color-icon-interactive': {
-    value: colors.blue[600],
-    description: '',
-  },
-  'color-icon-interactive-inverse': {
-    value: colors.blue[400],
-    description: '',
-  },
-  'color-icon-magic': {
-    value: colors.purple[500],
-    description: '',
-  },
-  'color-text': {
-    value: colors.gray[900],
-    description: '',
-  },
-  'color-text-subdued': {
-    value: colors.gray[800],
-    description: '',
-  },
-  'color-text-disabled': {
-    value: colors.gray[700],
-    description: '',
-  },
-  'color-text-interactive-disabled': {
-    value: colors.gray[700],
-    description: '',
-  },
-  'color-text-inverse-subdued': {
-    value: colors.gray[600],
-    description: '',
-  },
-  'color-text-inverse': {
-    value: colors.gray[200],
-    description: '',
-  },
-  'color-text-on-color': {
-    value: colors.gray[50],
-    description: '',
-  },
-  'color-text-success-strong': {
-    value: colors.green[900],
-    description: '',
-  },
-  'color-text-success': {
-    value: colors.green[700],
-    description: '',
-  },
-  'color-text-primary': {
-    value: colors.green[700],
-    description: '',
-  },
-  'color-text-primary-hover': {
-    value: colors.green[800],
-    description: '',
-  },
-  'color-text-critical-strong': {
-    value: colors.red[900],
-    description: '',
-  },
-  'color-text-critical-active': {
-    value: colors.red[800],
-    description: '',
-  },
-  'color-text-critical': {
-    value: colors.red[600],
-    description: '',
-  },
-  'color-text-caution-strong': {
-    value: colors.yellow[900],
-    description: '',
-  },
-  'color-text-caution': {
-    value: colors.yellow[800],
-    description: '',
-  },
-  'color-text-info-strong': {
-    value: colors.teal[900],
-    description: '',
-  },
-  'color-text-info': {
-    value: colors.teal[700],
-    description: '',
-  },
-  'color-text-warning-strong': {
-    value: colors.orange[900],
-    description: '',
-  },
-  'color-text-interactive-active': {
-    value: colors.blue[800],
-    description: '',
-  },
-  'color-text-interactive-hover': {
-    value: colors.blue[700],
-    description: '',
-  },
-  'color-text-interactive': {
-    value: colors.blue[600],
-    description: '',
-  },
-  'color-text-interactive-inverse': {
-    value: colors.blue[400],
-    description: '',
-  },
-  'color-text-magic-strong': {
-    value: colors.purple[800],
-    description: '',
-  },
-  'color-text-magic': {
-    value: colors.purple[600],
     description: '',
   },
   // Experimental tokens
