@@ -800,6 +800,52 @@ describe('<TextField />', () => {
         expect(spy).not.toHaveBeenCalled();
       });
 
+      it('does not call the onChange if the value is incremented and already at max', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="number"
+            value="5"
+            max={5}
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element!
+          .find('div', {
+            role: 'button',
+          })!
+          .trigger('onClick');
+
+        expect(spy).not.toHaveBeenCalled();
+      });
+
+      it('does not call the onChange if the value is decremented and already at min', () => {
+        const spy = jest.fn();
+        const element = mountWithApp(
+          <TextField
+            id="MyTextField"
+            label="TextField"
+            type="number"
+            value="-1"
+            min={-1}
+            onChange={spy}
+            autoComplete="off"
+          />,
+        );
+
+        element
+          .findAll('div', {
+            role: 'button',
+          })[1]!
+          .trigger('onClick');
+
+        expect(spy).not.toHaveBeenCalled();
+      });
+
       it('handles incrementing from no value', () => {
         const spy = jest.fn();
         const element = mountWithApp(
@@ -866,7 +912,8 @@ describe('<TextField />', () => {
             label="TextField"
             type="number"
             min={2}
-            value="2"
+            value="3"
+            step={3}
             onChange={spy}
             autoComplete="off"
           />,
@@ -884,7 +931,7 @@ describe('<TextField />', () => {
             role: 'button',
           })[0]!
           .trigger('onClick');
-        expect(spy).toHaveBeenLastCalledWith('3', 'MyTextField');
+        expect(spy).toHaveBeenLastCalledWith('6', 'MyTextField');
       });
 
       it('respects a max value', () => {
@@ -895,7 +942,8 @@ describe('<TextField />', () => {
             label="TextField"
             type="number"
             max={2}
-            value="2"
+            value="1"
+            step={3}
             onChange={spy}
             autoComplete="off"
           />,
@@ -913,7 +961,7 @@ describe('<TextField />', () => {
             role: 'button',
           })[1]!
           .trigger('onClick');
-        expect(spy).toHaveBeenLastCalledWith('1', 'MyTextField');
+        expect(spy).toHaveBeenLastCalledWith('-2', 'MyTextField');
       });
 
       it('brings an invalid value up to the min', () => {
@@ -1572,7 +1620,8 @@ describe('<TextField />', () => {
             label="TextField"
             type="integer"
             min={2}
-            value="2"
+            value="3"
+            step={3}
             onChange={spy}
             autoComplete="off"
           />,
@@ -1590,7 +1639,7 @@ describe('<TextField />', () => {
             role: 'button',
           })[0]!
           .trigger('onClick');
-        expect(spy).toHaveBeenLastCalledWith('3', 'MyTextField');
+        expect(spy).toHaveBeenLastCalledWith('6', 'MyTextField');
       });
 
       it('respects a max value', () => {
@@ -1601,7 +1650,8 @@ describe('<TextField />', () => {
             label="TextField"
             type="integer"
             max={2}
-            value="2"
+            value="1"
+            step={2}
             onChange={spy}
             autoComplete="off"
           />,
@@ -1619,7 +1669,7 @@ describe('<TextField />', () => {
             role: 'button',
           })[1]!
           .trigger('onClick');
-        expect(spy).toHaveBeenLastCalledWith('1', 'MyTextField');
+        expect(spy).toHaveBeenLastCalledWith('-1', 'MyTextField');
       });
 
       it('brings an invalid value up to the min', () => {

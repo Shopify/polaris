@@ -373,6 +373,9 @@ export function TextField({
         return;
       }
 
+      if (numericValue === normalizedMin && steps < 0) return;
+      if (numericValue === normalizedMax && steps > 0) return;
+
       // Making sure the new value has the same length of decimal places as the
       // step / value has.
       const decimalPlaces =
