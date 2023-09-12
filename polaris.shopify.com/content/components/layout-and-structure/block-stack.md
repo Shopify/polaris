@@ -10,7 +10,6 @@ keywords:
   - equal width
   - right-aligned stack
   - stack layout
-status: Alpha
 examples:
   - fileName: block-stack-with-gap.tsx
     title: Gap
@@ -34,13 +33,6 @@ previewImg: /images/components/layout-and-structure/block-stack.png
 Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
 
 </Lede>
-
-<StatusBanner status={frontmatter.status}>
-  This component is a work in progress and ready for exploratory usage, with
-  breaking changes expected in minor version updates. Please use with caution.
-  Learn more about our [component
-  lifecycles](/getting-started/components-lifecycle).
-</StatusBanner>
 
 <Examples />
 
