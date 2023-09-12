@@ -1,4 +1,4 @@
-import React, {useMemo, useRef, useState} from 'react';
+import React, {useContext, useMemo, useRef, useState} from 'react';
 
 import type {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {Key} from '../../types';
@@ -6,12 +6,13 @@ import {
   wrapFocusNextFocusableMenuItem,
   wrapFocusPreviousFocusableMenuItem,
 } from '../../utilities/focus';
+import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
 import {KeypressListener} from '../KeypressListener';
-import {useI18n} from '../../utilities/i18n';
+import {FilterActionsContext} from '../FilterActionsProvider';
 
-import {SearchField, Item, Section} from './components';
 import type {ItemProps} from './components';
+import {Item, SearchField, Section} from './components';
 
 export interface ActionListProps {
   /** Collection of actions for list */
@@ -20,6 +21,8 @@ export interface ActionListProps {
   sections?: readonly ActionListSection[];
   /** Defines a specific role attribute for each action in the list */
   actionRole?: 'menuitem' | string;
+  /** Allow users to filter items in the list. Will only show if more than 8 items in the list. The item content of every items must be a string for this to work */
+  hasFiltering?: boolean;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
@@ -30,10 +33,11 @@ export function ActionList({
   items,
   sections = [],
   actionRole,
+  hasFiltering,
   onActionAnyItem,
 }: ActionListProps) {
   const i18n = useI18n();
-
+  const filterActions = useContext(FilterActionsContext);
   let finalSections: readonly ActionListSection[] = [];
   const actionListRef = useRef<HTMLDivElement & HTMLUListElement>(null);
   const [searchText, setSeachText] = useState('');
@@ -116,12 +120,6 @@ export function ActionList({
       </>
     ) : null;
 
-  const totalActions =
-    finalSections?.reduce(
-      (acc: number, section) => acc + section.items.length,
-      0,
-    ) || 0;
-
   const totalFilteredActions = useMemo(() => {
     const totalSectionItems =
       filteredSections?.reduce(
@@ -132,11 +130,17 @@ export function ActionList({
     return totalSectionItems;
   }, [filteredSections]);
 
-  const showSearch = totalActions >= 8;
+  const totalActions =
+    finalSections?.reduce(
+      (acc: number, section) => acc + section.items.length,
+      0,
+    ) || 0;
+
+  const hasSearch = totalActions >= 8;
 
   return (
     <>
-      {showSearch && isFilterable && (
+      {(hasFiltering || filterActions) && hasSearch && isFilterable && (
         <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
           <SearchField
             placeholder={i18n.translate(
