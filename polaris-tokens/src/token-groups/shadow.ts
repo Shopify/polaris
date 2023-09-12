@@ -54,12 +54,24 @@ export const shadow: {
   'shadow-none': {
     value: 'none',
   },
-  'shadow-xs': {value: '0px 1px 0px rgba(0, 0, 0, 0.07)'},
-  'shadow-sm': {value: '0px 3px 1px -1px rgba(0, 0, 0, 0.07)'},
-  'shadow-md': {value: '0px 4px 6px -2px rgba(0, 0, 0, 0.2)'},
-  'shadow-lg': {value: '0px 8px 16px -4px rgba(0, 0, 0, 0.22)'},
-  'shadow-xl': {value: '0px 12px 20px -8px rgba(0, 0, 0, 0.24)'},
-  'shadow-2xl': {value: '0px 20px 20px -8px rgba(0, 0, 0, 0.28)'},
+  'shadow-xs': {
+    value: '0px 1px 0px rgba(0, 0, 0, 0.07)',
+  },
+  'shadow-sm': {
+    value: '0px 3px 1px -1px rgba(0, 0, 0, 0.07)',
+  },
+  'shadow-md': {
+    value: '0px 4px 6px -2px rgba(0, 0, 0, 0.2)',
+  },
+  'shadow-lg': {
+    value: '0px 8px 16px -4px rgba(0, 0, 0, 0.22)',
+  },
+  'shadow-xl': {
+    value: '0px 12px 20px -8px rgba(0, 0, 0, 0.24)',
+  },
+  'shadow-2xl': {
+    value: '0px 20px 20px -8px rgba(0, 0, 0, 0.28)',
+  },
   'shadow-bevel-experimental': {
     value:
       '1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, -1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, 0px -1px 0px 0px rgba(0, 0, 0, 0.17) inset, 0px 1px 0px 0px rgba(204, 204, 204, 0.5) inset',
