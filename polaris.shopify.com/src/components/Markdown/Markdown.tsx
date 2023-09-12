@@ -28,6 +28,7 @@ import Tooltip from '../Tooltip';
 import Icon from '../Icon';
 import {FeaturedCardGrid} from '../FeaturedCardGrid';
 import {useCopyToClipboard} from '../../utils/hooks';
+import {Colors} from './components/Colors';
 
 const CodeVisibilityContext = createContext<[boolean, (arg: boolean) => void]>([
   false,
@@ -229,6 +230,7 @@ function Markdown<
         TipBanner,
         Lede,
         RichCardGrid,
+        Colors,
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">
