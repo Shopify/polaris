@@ -24,4 +24,6 @@ export const size = {
   '3200': '128px',
 } as const;
 
-export type Size = keyof typeof size;
+export type Size = typeof size;
+
+export type SizeScale = keyof Size;
