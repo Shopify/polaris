@@ -34,11 +34,11 @@ Color plays a key role in creating the overall hierarchy of a screen. Using the 
 
 ---
 
-## Color pallette
+## Color palette
 
 The Polaris color palette is composed of 8 different colors, each with 10 unique shades. These colors are then used to create semantic tokens that style both Polaris components and custom components within the Shopify admin.
 
-{ /* <!-- colors --> */ }
+<Colors />
 
 ## Tokens
 
