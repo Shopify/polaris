@@ -1,6 +1,6 @@
 @import '../../../../styles/variables.scss';
 
-.colors {
+.Colors {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: var(--p-space-4);
@@ -12,18 +12,16 @@
     grid-template-columns: repeat(10, 1fr);
   }
 
-  .colors-swatch {
+  .ColorsSwatch {
     position: relative;
     overflow: hidden;
     border-radius: var(--p-border-radius-2);
     margin-bottom: var(--p-space-2);
 
     &:before {
-      content: "";
+      content: '';
       display: block;
       padding-bottom: 75%;
     }
   }
 }
-
-

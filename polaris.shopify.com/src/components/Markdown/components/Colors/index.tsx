@@ -1,6 +1,6 @@
 import * as colorsObj from '../../../../../../polaris-tokens/dist/esm/src/colors.mjs';
 import {capitalize} from '../../../../utils/various';
-import './Colors.module.scss';
+import styles from './Colors.module.scss';
 
 type ColorScale = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
@@ -34,7 +34,10 @@ export function Colors() {
       )
       .map(([shade, value]) => (
         <div key={value}>
-          <div className="colors-swatch" style={{backgroundColor: value}}></div>
+          <div
+            className={styles.ColorsSwatch}
+            style={{backgroundColor: value}}
+          ></div>
           <div>{shade}</div>
         </div>
       ));
@@ -42,7 +45,7 @@ export function Colors() {
     return (
       <>
         <h3>{capitalize(color)}</h3>
-        <div className="colors">{swatches}</div>
+        <div className={styles.Colors}>{swatches}</div>
       </>
     );
   });
