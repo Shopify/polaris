@@ -50,6 +50,7 @@ export function Item({
   showVerticalHoverPointer,
   onMouseEnter,
   onMouseLeave,
+  ariaDescribedBy,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -290,6 +291,7 @@ export function Item({
         aria-disabled={disabled}
         aria-label={accessibilityLabel}
         onClick={getClickHandler(onClick)}
+        aria-describedby={ariaDescribedBy}
         {...normalizeAriaAttributes(
           secondaryNavigationId,
           subNavigationItems.length > 0,
