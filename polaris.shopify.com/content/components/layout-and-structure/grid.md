@@ -12,7 +12,6 @@ keywords:
   - containers
   - full width containers
   - css grid
-status: Alpha
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
@@ -36,13 +35,6 @@ previewImg: /images/components/layout-and-structure/grid.png
 Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 
 </Lede>
-
-<StatusBanner status={frontmatter.status}>
-  This component is a work in progress and ready for exploratory usage, with
-  breaking changes expected in minor version updates. Please use with caution.
-  Learn more about our [component
-  lifecycles](/getting-started/components-lifecycle).
-</StatusBanner>
 
 <Examples />
 

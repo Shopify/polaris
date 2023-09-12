@@ -6,7 +6,6 @@ keywords:
   - columns
   - grid
   - responsive
-status: Alpha
 examples:
   - fileName: inline-grid-with-varying-gap.tsx
     title: Gap
@@ -30,13 +29,6 @@ previewImg: /images/components/layout-and-structure/inline-grid.png
 Use to lay out children horizontally with equal gap between columns. Based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 
 </Lede>
-
-<StatusBanner status={frontmatter.status}>
-  This component is a work in progress and ready for exploratory usage, with
-  breaking changes expected in minor version updates. Please use with caution.
-  Learn more about our [component
-  lifecycles](/getting-started/components-lifecycle).
-</StatusBanner>
 
 <Examples />
 
