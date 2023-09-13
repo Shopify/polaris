@@ -194,11 +194,11 @@ export function ExtraSmallInContext() {
           items={[
             {
               content: 'Chet Baker',
-              prefix: <Avatar size="extraSmall" name="Chet Baker" />,
+              prefix: <Avatar size="xs" name="Chet Baker" />,
             },
             {
               content: 'Farrah Fawcett',
-              prefix: <Avatar size="extraSmall" name="Farrah Fawcett" />,
+              prefix: <Avatar size="xs" name="Farrah Fawcett" />,
             },
           ]}
         />
