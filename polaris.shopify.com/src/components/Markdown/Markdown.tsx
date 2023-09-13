@@ -262,7 +262,7 @@ function Markdown<
 }
 
 export const HeadingWithCopyButton = forwardRef(
-  ({id, children, ...props}, ref) => {
+  ({id, children, className, ...props}, ref) => {
     const origin =
       typeof window !== 'undefined'
         ? window.location.origin
@@ -291,7 +291,11 @@ export const HeadingWithCopyButton = forwardRef(
         as="h1"
         id={id}
         {...props}
-        className={[styles.MarkdownHeading, styles[`Heading-${props.as}`]]}
+        className={[
+          styles.MarkdownHeading,
+          styles[`Heading-${props.as}`],
+          className,
+        ]}
         ref={ref}
       >
         {children}
