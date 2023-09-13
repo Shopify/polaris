@@ -11,7 +11,6 @@ import {
   LegacyStack,
   Text,
   TextField,
-  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -44,10 +43,10 @@ export function Default() {
         ]}
       >
         <Modal.Section>
-          <BlockStack gap="4">
+          <p>
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
-          </BlockStack>
+          </p>
         </Modal.Section>
       </Modal>
     </div>
@@ -91,11 +90,11 @@ export function WithPrimaryAction() {
         <Modal.Section>
           <LegacyStack vertical>
             <LegacyStack.Item>
-              <BlockStack gap="4">
+              <p>
                 You can share this discount link with your customers via email
                 or social media. Your discount will be automatically applied at
                 checkout.
-              </BlockStack>
+              </p>
             </LegacyStack.Item>
             <LegacyStack.Item fill>
               <TextField
@@ -333,10 +332,10 @@ export function WithoutATitle() {
         ]}
       >
         <Modal.Section titleHidden>
-          <BlockStack gap="4">
+          <p>
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
-          </BlockStack>
+          </p>
         </Modal.Section>
       </Modal>
     </div>
@@ -366,9 +365,9 @@ export function WithScrollListener() {
       >
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
-            <BlockStack gap="4">
+            <p>
               Item <a href="#Content">#{index}</a>
-            </BlockStack>
+            </p>
           </Modal.Section>
         ))}
       </Modal>
@@ -413,10 +412,10 @@ export function WithActivatorRef() {
         ]}
       >
         <Modal.Section>
-          <BlockStack gap="4">
+          <p>
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
-          </BlockStack>
+          </p>
         </Modal.Section>
       </Modal>
     </div>
@@ -426,13 +425,15 @@ export function WithActivatorRef() {
 export function WithoutAnActivatorProp() {
   const [active, setActive] = useState(true);
 
-  const button = useRef();
+  const button = useRef<HTMLDivElement>(null);
 
   const handleOpen = useCallback(() => setActive(true), []);
 
   const handleClose = useCallback(() => {
     setActive(false);
-    requestAnimationFrame(() => button.current.querySelector('button').focus());
+    requestAnimationFrame(() =>
+      button.current?.querySelector('button')?.focus(),
+    );
   }, []);
 
   return (
@@ -457,10 +458,10 @@ export function WithoutAnActivatorProp() {
         ]}
       >
         <Modal.Section>
-          <BlockStack gap="4">
+          <p>
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
-          </BlockStack>
+          </p>
         </Modal.Section>
       </Modal>
     </div>

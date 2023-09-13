@@ -14,7 +14,6 @@ import {
   TextField,
   Icon,
   AutoSelection,
-  BlockStack,
 } from '@shopify/polaris';
 import {MobileCancelMajor, SearchMinor} from '@shopify/polaris-icons';
 
@@ -480,14 +479,13 @@ export function WithSearchableListbox() {
                 variant="plain"
               />
             </div>
-            <BlockStack gap="4">
-              <Text variant="headingMd" as="h2">
-                Look up customer segmentation membership
-              </Text>
-              <Text tone="subdued" as="span">
-                Look up whether a customer is included in a segment.
-              </Text>
-            </BlockStack>
+
+            <Text variant="headingMd" as="h2">
+              Look up customer segmentation membership
+            </Text>
+            <Text tone="subdued" as="span">
+              Look up whether a customer is included in a segment.
+            </Text>
           </div>
           <div
             style={{

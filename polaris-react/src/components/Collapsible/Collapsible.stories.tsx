@@ -5,7 +5,6 @@ import {
   LegacyCard,
   Collapsible,
   Link,
-  LegacyStack,
   BlockStack,
 } from '@shopify/polaris';
 
@@ -21,7 +20,7 @@ export function Default() {
   return (
     <div style={{height: '200px'}}>
       <LegacyCard sectioned>
-        <LegacyStack vertical>
+        <BlockStack gap="4" inlineAlign="start">
           <Button
             onClick={handleToggle}
             ariaExpanded={open}
@@ -38,16 +37,14 @@ export function Default() {
             }}
             expandOnPrint
           >
-            <BlockStack gap="4">
-              <p>
-                Your mailing list lets you contact customers or visitors who
-                have shown an interest in your store. Reach out to them with
-                exclusive offers or updates about your products.
-              </p>
-              <Link url="#">Test link</Link>
-            </BlockStack>
+            <p>
+              Your mailing list lets you contact customers or visitors who have
+              shown an interest in your store. Reach out to them with exclusive
+              offers or updates about your products.
+            </p>
+            <Link url="#">Test link</Link>
           </Collapsible>
-        </LegacyStack>
+        </BlockStack>
       </LegacyCard>
     </div>
   );
