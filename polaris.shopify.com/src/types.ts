@@ -71,7 +71,8 @@ export type FrontMatter = {
   featured?: boolean;
   previewImg?: string;
   expanded?: boolean;
-  releasedIn?: string | number; // Add this line
+  releasedIn?: string | number;
+  showTOC?: boolean;
 };
 
 export type PatternFrontMatter = Omit<FrontMatter, 'description'> & {
