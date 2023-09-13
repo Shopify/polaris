@@ -238,6 +238,10 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   const mdAbsolutePath = [process.cwd(), mdRelativePath].join('/');
   const editPageLinkPath = `/polaris.shopify.com/${mdRelativePath}`;
 
+  /**
+   * scope is passed to the MDX renderer component. The properties
+   * of scope are available in markdown .md files to use.
+   */
   const scope: Record<string, any> = {};
 
   await middleware([
