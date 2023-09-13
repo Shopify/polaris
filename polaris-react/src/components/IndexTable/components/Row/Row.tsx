@@ -12,6 +12,7 @@ import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import type {Range} from '../../../../utilities/index-provider/types';
 import styles from '../../IndexTable.scss';
 
+type RowType = 'data' | 'subheader';
 type RowStatus = 'success' | 'subdued' | 'critical';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
@@ -30,8 +31,12 @@ export interface RowProps {
   status?: RowStatus;
   /** Whether the row should be disabled */
   disabled?: boolean;
-  /** A tuple array with the first and last index of the range of rows that the subheader describes. All rows in the range are selected when the subheader row is selected. */
-  subHeaderRange?: Range;
+  /** A tuple array with the first and last index of the range of other rows that this row describes. All rows in the range are selected when the selection range row is selected. */
+  selectionRange?: Range;
+  /**
+   * Indicates the relationship or role of the row's contents. A "subheader" row displays the same as the table header.
+   *  @default 'data' */
+  rowType?: RowType;
   /** Label set on the row's checkbox
    * @default "Select {resourceName}"
    */
@@ -50,7 +55,8 @@ export const Row = memo(function Row({
   subdued,
   status,
   disabled,
-  subHeaderRange,
+  selectionRange,
+  rowType = 'data',
   accessibilityLabel,
   onNavigation,
   onClick,
@@ -72,14 +78,14 @@ export const Row = memo(function Row({
 
       if (event.nativeEvent.shiftKey) {
         selectionType = SelectionType.Multi;
-      } else if (subHeaderRange) {
+      } else if (selectionRange) {
         selectionType = SelectionType.Range;
       }
 
-      const selection: string | Range = subHeaderRange ?? id;
+      const selection: string | Range = selectionRange ?? id;
       onSelectionChange(selectionType, !selected, selection, position);
     },
-    [id, onSelectionChange, selected, subHeaderRange, position],
+    [id, onSelectionChange, selected, selectionRange, position],
   );
 
   const contextValue = useMemo(
@@ -109,7 +115,7 @@ export const Row = memo(function Row({
 
   const rowClassName = classNames(
     styles.TableRow,
-    subHeaderRange && styles['TableRow-subheader'],
+    rowType === 'subheader' && styles['TableRow-subheader'],
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
@@ -125,7 +131,7 @@ export const Row = memo(function Row({
 
   if ((!disabled && selectable) || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
-      if (subHeaderRange) return;
+      if (rowType === 'subheader') return;
 
       if (!tableRowRef.current || isNavigating.current) {
         return;

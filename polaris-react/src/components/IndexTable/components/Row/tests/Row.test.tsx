@@ -100,16 +100,75 @@ describe('<Row />', () => {
     );
   });
 
-  it('applies the .TableRow-subheader class to the table row element when a `subHeaderRange` is provided', () => {
-    const row = mountWithTable(
-      <Row id="id" selected subHeaderRange={[0, 2]} position={1}>
-        <td />
-      </Row>,
-    );
+  describe('rowType', () => {
+    describe('when a `rowType` of `subheader` is set', () => {
+      it('applies the .TableRow-subheader class to the table row element', () => {
+        const row = mountWithTable(
+          <Row id="id" selected rowType="subheader" position={1}>
+            <td />
+          </Row>,
+        );
 
-    expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
-      styles['TableRow-subheader'],
-    );
+        expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
+          styles['TableRow-subheader'],
+        );
+      });
+
+      it('calls onSelectionChange with the `selectionRange` when present and the row checkbox cell is clicked', () => {
+        const onSelectionChangeSpy = jest.fn();
+        const range: Range = [0, 1];
+        const row = mountWithTable(
+          <Row {...defaultProps} rowType="subheader" selectionRange={range}>
+            <th>
+              <a href="/">Child without data-primary-link</a>
+            </th>
+          </Row>,
+          {
+            indexTableProps: {
+              itemCount: 50,
+              selectedItemsCount: 0,
+              onSelectionChange: onSelectionChangeSpy,
+            },
+          },
+        );
+
+        row.find('div', {className: 'Wrapper'})!.triggerKeypath('onClick', {
+          stopPropagation: noop,
+          key: ' ',
+          nativeEvent: {},
+        });
+
+        expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
+        expect(onSelectionChangeSpy).toHaveBeenCalledWith(
+          SelectionType.Range,
+          true,
+          range,
+        );
+      });
+
+      it('does not call onSelectionChange with the `selectionRange` when present and the row is clicked', () => {
+        const onSelectionChangeSpy = jest.fn();
+        const range: Range = [0, 1];
+        const row = mountWithTable(
+          <Row {...defaultProps} rowType="subheader" selectionRange={range}>
+            <th>
+              <a href="/">Child without data-primary-link</a>
+            </th>
+          </Row>,
+          {
+            indexTableProps: {
+              itemCount: 50,
+              selectedItemsCount: 0,
+              onSelectionChange: onSelectionChangeSpy,
+            },
+          },
+        );
+
+        triggerOnClick(row, 1, defaultEvent);
+
+        expect(onSelectionChangeSpy).not.toHaveBeenCalled();
+      });
+    });
   });
 
   it('allows the checkbox to be indeterminate', () => {
@@ -345,61 +404,6 @@ describe('<Row />', () => {
     triggerOnClick(row, 1, defaultEvent);
 
     expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
-  });
-
-  it('calls onSelectionChange with the `subHeaderRange` when present and the row checkbox cell is clicked', () => {
-    const onSelectionChangeSpy = jest.fn();
-    const range: Range = [0, 1];
-    const row = mountWithTable(
-      <Row {...defaultProps} subHeaderRange={range}>
-        <th>
-          <a href="/">Child without data-primary-link</a>
-        </th>
-      </Row>,
-      {
-        indexTableProps: {
-          itemCount: 50,
-          selectedItemsCount: 0,
-          onSelectionChange: onSelectionChangeSpy,
-        },
-      },
-    );
-
-    row.find('div', {className: 'Wrapper'})!.triggerKeypath('onClick', {
-      stopPropagation: noop,
-      key: ' ',
-      nativeEvent: {},
-    });
-
-    expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
-    expect(onSelectionChangeSpy).toHaveBeenCalledWith(
-      SelectionType.Range,
-      true,
-      range,
-    );
-  });
-
-  it('does not call onSelectionChange with the `subHeaderRange` when present and the row is clicked', () => {
-    const onSelectionChangeSpy = jest.fn();
-    const range: Range = [0, 1];
-    const row = mountWithTable(
-      <Row {...defaultProps} subHeaderRange={range}>
-        <th>
-          <a href="/">Child without data-primary-link</a>
-        </th>
-      </Row>,
-      {
-        indexTableProps: {
-          itemCount: 50,
-          selectedItemsCount: 0,
-          onSelectionChange: onSelectionChangeSpy,
-        },
-      },
-    );
-
-    triggerOnClick(row, 1, defaultEvent);
-
-    expect(onSelectionChangeSpy).not.toHaveBeenCalled();
   });
 
   it('does not fire onClick handler when row is clicked and no primary link child present and table is not selectable', () => {

@@ -3834,7 +3834,7 @@ export function WithSubHeaders() {
     }
 
     const selectableRows = rows.filter(({disabled}) => !disabled);
-    const childRowRange: IndexTableRowProps['subHeaderRange'] = [
+    const rowRange: IndexTableRowProps['subHeaderRange'] = [
       selectableRows.findIndex((row) => row.id === customers[0].id),
       selectableRows.findIndex(
         (row) => row.id === customers[customers.length - 1].id,
@@ -3846,7 +3846,8 @@ export function WithSubHeaders() {
     return (
       <Fragment key={subheaderId}>
         <IndexTable.Row
-          subHeaderRange={childRowRange}
+          rowType="subheader"
+          selectionRange={rowRange}
           id={`Subheader-${index}`}
           position={position}
           selected={selected}
