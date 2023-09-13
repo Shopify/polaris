@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-[IndexFilters] Fixes layout shift when going beteen default and filtering modes
+Fixed layout shift in `IndexFilters` when switching modes
