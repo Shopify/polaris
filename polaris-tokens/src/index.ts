@@ -62,6 +62,12 @@ export type {
 } from './token-groups/space';
 
 export type {
+  WidthTokenGroup,
+  WidthTokenName,
+  WidthScale,
+} from './token-groups/width';
+
+export type {
   ZIndexTokenGroup,
   ZIndexTokenName,
   ZIndexZScale,
