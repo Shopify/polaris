@@ -69,7 +69,7 @@ To add more pages to your new section, add more markdown `.md` files to the same
 │   │   ├── awesome-new-page.md
 ```
 
-`/content/your-new-section/your-new-page.md` will now correspond to `polaris.shopify.com/your-new-section/awesome-new-page`.
+`/content/your-new-section/awesome-new-page.md` will now correspond to `polaris.shopify.com/your-new-section/awesome-new-page`.
 
 ## MDX components
 
