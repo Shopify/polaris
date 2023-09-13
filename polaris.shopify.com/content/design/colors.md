@@ -16,13 +16,67 @@ keywords:
 
 <Lede>{frontmatter.description}</Lede>
 
-## Using color
+## Overview
 
-![](/images/design/colors/color-usage-123@2x.png)
+<Grid gapY="4">
 
-### 1. Reinforce the purpose of the page
+  <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 12, xl: 12}}>
 
-Always use color that supports the purpose of the content and the overall goal of the page. Color can help communicate things like hierarchy of information, interactive states, and distinct elements, all of which make it easier for merchants to get their work done.
+    <InlineGrid columns={['oneThird', 'twoThirds']} gap="4">
+
+      <Box>
+        ### Color has purpose
+
+        The purpose of using color has to be clear. Color needs to support a message or a status that needs to be easily identifiable by merchants.
+
+      </Box>
+
+    ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+
+    </InlineGrid>
+
+  </Grid.Cell>
+
+  <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 12, xl: 12}}>
+
+    <InlineGrid columns={['oneThird', 'oneThird', 'oneThird']} gap="4">
+      <Box>
+
+        Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
+
+        This deliberate color coding facilitates merchants in identifying which parts of the user interface require focus and distinguishes them from the default features provided by the Shopify admin.
+
+      </Box>
+
+      <Box>
+
+        ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+
+        <Do>
+        Use color to support different states merchants need to be informed about.
+        </Do>
+
+      </Box>
+
+      <Box>
+
+        ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+
+        <Dont>
+        Use color to decorate or to distract merchants from performing tasks.
+        </Dont>
+
+      </Box>
+
+    </InlineGrid>
+
+  </Grid.Cell>
+
+</Grid>
+
+Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
+
+This deliberate color coding facilitates merchants in identifying which parts of the user interface require focus and distinguishes them from the default features provided by the Shopify admin.
 
 ### 2. Design accessible experiences
 
