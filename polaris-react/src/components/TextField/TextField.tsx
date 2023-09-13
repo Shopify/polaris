@@ -173,6 +173,8 @@ interface NonMutuallyExclusiveProps {
   onBlur?(event?: React.FocusEvent): void;
   /** Removes the border around the input. Used in the IndexFilters component. */
   borderless?: boolean;
+  /** Disables the 1password extension on the text field */
+  disable1Password?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -239,6 +241,7 @@ export function TextField({
   onFocus,
   onBlur,
   borderless,
+  disable1Password,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -556,6 +559,7 @@ export function TextField({
     onKeyDown: handleKeyDown,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
+    'data-1p-ignore': disable1Password || undefined,
   });
 
   const inputWithVerticalContentMarkup = verticalContent ? (

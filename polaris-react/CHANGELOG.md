@@ -1,5 +1,20 @@
 # Changelog
 
+## 11.17.0
+
+### Minor Changes
+
+- [#10397](https://github.com/Shopify/polaris/pull/10397) [`624e0b570`](https://github.com/Shopify/polaris/commit/624e0b570ab1ca380e9ead9087e417552aaecd58) Thanks [@mrcthms](https://github.com/mrcthms)! - [FilterPill] Remove FilterPill from Filters bar when Popover closes with an empty filter
+
+### Patch Changes
+
+- [#10389](https://github.com/Shopify/polaris/pull/10389) [`2c1f93c90`](https://github.com/Shopify/polaris/commit/2c1f93c90caf2fb1ad0a4dff67f40bbedea5be69) Thanks [@mattkubej](https://github.com/mattkubej)! - [IndexTable] vertically align sort and tooltip column headers
+
+* [#10385](https://github.com/Shopify/polaris/pull/10385) [`e5f88b8ce`](https://github.com/Shopify/polaris/commit/e5f88b8ce68857e9e35fcf60ee34b6a9e865d78d) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed ActionList SearchField focus bug and minor style issues
+
+* Updated dependencies [[`101abb835`](https://github.com/Shopify/polaris/commit/101abb83599ce67372c411cde396613306dc06de)]:
+  - @shopify/polaris-tokens@7.7.0
+
 ## 11.16.0
 
 ### Minor Changes
