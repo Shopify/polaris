@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-[Filters] Fix bug where applied filters get removed incorrectly
+Fixed `Filters` pinned filter pill not remaining when applied values are cleared
