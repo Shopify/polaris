@@ -2,4 +2,4 @@
 '@shopify/polaris-tokens': minor
 ---
 
-Added public primitive `space` token scales
+Added public primitive `space` token scale
