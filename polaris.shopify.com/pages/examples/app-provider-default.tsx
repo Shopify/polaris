@@ -49,7 +49,7 @@ function AppProviderExample() {
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar size="xl" name={name} />;
+              const media = <Avatar customer size="medium" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
