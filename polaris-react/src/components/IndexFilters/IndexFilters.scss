@@ -5,6 +5,10 @@ $spinner-size: 20px;
 
 .IndexFiltersWrapper {
   width: 100%;
+
+  [class*='Button-Button'] {
+    display: flex;
+  }
 }
 
 @media #{$p-breakpoints-sm-up} {
