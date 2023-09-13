@@ -85,6 +85,6 @@ The `/pages` directory contains the Next.js template files to render pages. Thes
 
 This is a catch-all template that renders the majority of our site's content. The pages that are not rendered by this route are in the `fileShouldNotBeRenderedWithCatchAllTemplate` function.
 
-For pages not rendered by the catch-all template you can follow the normal next.js routing structure to find a page's dedicated renderer.
+For pages not rendered by the catch-all template you can follow the normal Next.js routing structure to find a page's dedicated renderer.
 
 Example: the `polaris.shopify.com/components/layout-and-structure/box` page is rendered by `/pages/components/[group]/[component]/index.tsx`
