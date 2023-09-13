@@ -9,7 +9,6 @@ import {
   Layout,
   Page,
   ResourceList,
-  TextContainer,
   TextField,
   Thumbnail,
 } from '@shopify/polaris';

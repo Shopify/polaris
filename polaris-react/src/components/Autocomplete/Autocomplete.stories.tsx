@@ -2,10 +2,10 @@ import React, {useCallback, useMemo, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Autocomplete,
+  BlockStack,
   Icon,
   LegacyStack,
   Tag,
-  TextContainer,
 } from '@shopify/polaris';
 import {
   CirclePlusMinor,
@@ -72,6 +72,7 @@ export function Default() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
@@ -165,6 +166,7 @@ export function WithMultipleTags() {
       value={inputValue}
       placeholder="Vintage, cotton, summer"
       verticalContent={verticalContentMarkup}
+      autoComplete="off"
     />
   );
 
@@ -553,6 +555,7 @@ export function WithEmptyState() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
@@ -560,7 +563,7 @@ export function WithEmptyState() {
     <>
       <Icon source={SearchMinor} />
       <div style={{textAlign: 'center'}}>
-        <TextContainer>Could not find any results</TextContainer>
+        <BlockStack gap="4">Could not find any results</BlockStack>
       </div>
     </>
   );

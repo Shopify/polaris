@@ -1,4 +1,4 @@
-import {LegacyCard, Image, TextContainer} from '@shopify/polaris';
+import {LegacyCard, Image} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -12,11 +12,11 @@ function LegacyCardExample() {
         />
       </LegacyCard.Section>
       <LegacyCard.Section subdued>
-        <TextContainer>
+        <p>
           You can use sales reports to see information about your customers’
           orders based on criteria such as sales over time, by channel, or by
           staff.
-        </TextContainer>
+        </p>
       </LegacyCard.Section>
     </LegacyCard>
   );

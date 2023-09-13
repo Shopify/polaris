@@ -3,8 +3,8 @@ import {
   Layout,
   LegacyCard,
   SkeletonBodyText,
-  TextContainer,
   SkeletonDisplayText,
+  BlockStack,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -18,25 +18,25 @@ function SkeletonExample() {
             <SkeletonBodyText />
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
         <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={1} />
@@ -44,10 +44,10 @@ function SkeletonExample() {
           </LegacyCard>
           <LegacyCard subdued>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={2} />

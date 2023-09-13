@@ -6,7 +6,7 @@ import {
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
-  TextContainer,
+  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -22,25 +22,25 @@ export function WithDynamicContent() {
             <SkeletonBodyText />
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
         <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={1} />
@@ -48,10 +48,10 @@ export function WithDynamicContent() {
           </LegacyCard>
           <LegacyCard subdued>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={2} />
@@ -110,25 +110,25 @@ export function WithNarrowWidth() {
             <SkeletonBodyText />
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
         <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={1} />
@@ -136,10 +136,10 @@ export function WithNarrowWidth() {
           </LegacyCard>
           <LegacyCard subdued>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={2} />
@@ -160,25 +160,25 @@ export function WithFullWidth() {
             <SkeletonBodyText />
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
         <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={1} />
@@ -186,10 +186,10 @@ export function WithFullWidth() {
           </LegacyCard>
           <LegacyCard subdued>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={2} />
@@ -210,25 +210,25 @@ export function WithBackAction() {
             <SkeletonBodyText />
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
         <Layout.Section variant="oneThird">
           <LegacyCard>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={1} />
@@ -236,10 +236,10 @@ export function WithBackAction() {
           </LegacyCard>
           <LegacyCard subdued>
             <LegacyCard.Section>
-              <TextContainer>
+              <BlockStack gap="4">
                 <SkeletonDisplayText size="small" />
                 <SkeletonBodyText lines={2} />
-              </TextContainer>
+              </BlockStack>
             </LegacyCard.Section>
             <LegacyCard.Section>
               <SkeletonBodyText lines={2} />

@@ -6,7 +6,7 @@ import {
   Collapsible,
   Link,
   LegacyStack,
-  TextContainer,
+  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -38,14 +38,14 @@ export function Default() {
             }}
             expandOnPrint
           >
-            <TextContainer>
+            <BlockStack gap="4">
               <p>
                 Your mailing list lets you contact customers or visitors who
                 have shown an interest in your store. Reach out to them with
                 exclusive offers or updates about your products.
               </p>
               <Link url="#">Test link</Link>
-            </TextContainer>
+            </BlockStack>
           </Collapsible>
         </LegacyStack>
       </LegacyCard>

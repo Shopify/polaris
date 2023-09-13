@@ -1,11 +1,4 @@
-import {
-  LegacyStack,
-  Tag,
-  Listbox,
-  Combobox,
-  Icon,
-  TextContainer,
-} from '@shopify/polaris';
+import {Tag, Listbox, Combobox, Icon, BlockStack} from '@shopify/polaris';
 
 import {SearchMinor} from '@shopify/polaris-icons';
 
@@ -115,9 +108,7 @@ function MultiAutoComboboxExample() {
           <Listbox onSelect={updateSelection}>{optionsMarkup}</Listbox>
         ) : null}
       </Combobox>
-      <TextContainer>
-        <LegacyStack>{tagsMarkup}</LegacyStack>
-      </TextContainer>
+      <BlockStack gap="4">{tagsMarkup}</BlockStack>
     </div>
   );
 }

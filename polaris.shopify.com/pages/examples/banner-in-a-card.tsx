@@ -1,11 +1,11 @@
-import {LegacyCard, TextContainer, Banner, Link} from '@shopify/polaris';
+import {LegacyCard, Banner, Link, BlockStack} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BannerExample() {
   return (
     <LegacyCard title="Online store dashboard" sectioned>
-      <TextContainer>
+      <BlockStack gap="4">
         <Banner onDismiss={() => {}}>
           <p>
             Use your finance report to get detailed information about your
@@ -14,7 +14,7 @@ function BannerExample() {
         </Banner>
 
         <p>View a summary of your online store’s performance.</p>
-      </TextContainer>
+      </BlockStack>
     </LegacyCard>
   );
 }

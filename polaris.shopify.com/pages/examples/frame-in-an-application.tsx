@@ -13,10 +13,10 @@ import {
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
-  TextContainer,
   TextField,
   Toast,
   TopBar,
+  BlockStack,
 } from '@shopify/polaris';
 import {
   ArrowLeftMinor,
@@ -249,10 +249,10 @@ function FrameExample() {
       <Layout>
         <Layout.Section>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
       </Layout>

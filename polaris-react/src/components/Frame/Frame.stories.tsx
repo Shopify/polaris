@@ -15,11 +15,11 @@ import {
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
-  TextContainer,
   TextField,
   Toast,
   TopBar,
   Text,
+  BlockStack,
 } from '@shopify/polaris';
 import {
   ArrowLeftMinor,
@@ -269,10 +269,10 @@ function InAnApplicationComponent() {
       <Layout>
         <Layout.Section>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
       </Layout>
@@ -613,10 +613,10 @@ function WithAnOffsetComponent() {
       <Layout>
         <Layout.Section>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
       </Layout>
@@ -972,10 +972,10 @@ function WithSidebarEnabled() {
       <Layout>
         <Layout.Section>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
       </Layout>

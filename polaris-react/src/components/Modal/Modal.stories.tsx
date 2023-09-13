@@ -10,8 +10,8 @@ import {
   Modal,
   LegacyStack,
   Text,
-  TextContainer,
   TextField,
+  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -44,10 +44,10 @@ export function Default() {
         ]}
       >
         <Modal.Section>
-          <TextContainer>
+          <BlockStack gap="4">
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
-          </TextContainer>
+          </BlockStack>
         </Modal.Section>
       </Modal>
     </div>
@@ -91,11 +91,11 @@ export function WithPrimaryAction() {
         <Modal.Section>
           <LegacyStack vertical>
             <LegacyStack.Item>
-              <TextContainer>
+              <BlockStack gap="4">
                 You can share this discount link with your customers via email
                 or social media. Your discount will be automatically applied at
                 checkout.
-              </TextContainer>
+              </BlockStack>
             </LegacyStack.Item>
             <LegacyStack.Item fill>
               <TextField
@@ -333,10 +333,10 @@ export function WithoutATitle() {
         ]}
       >
         <Modal.Section titleHidden>
-          <TextContainer>
+          <BlockStack gap="4">
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
-          </TextContainer>
+          </BlockStack>
         </Modal.Section>
       </Modal>
     </div>
@@ -366,9 +366,9 @@ export function WithScrollListener() {
       >
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
-            <TextContainer>
+            <BlockStack gap="4">
               Item <a href="#Content">#{index}</a>
-            </TextContainer>
+            </BlockStack>
           </Modal.Section>
         ))}
       </Modal>
@@ -413,10 +413,10 @@ export function WithActivatorRef() {
         ]}
       >
         <Modal.Section>
-          <TextContainer>
+          <BlockStack gap="4">
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
-          </TextContainer>
+          </BlockStack>
         </Modal.Section>
       </Modal>
     </div>
@@ -457,10 +457,10 @@ export function WithoutAnActivatorProp() {
         ]}
       >
         <Modal.Section>
-          <TextContainer>
+          <BlockStack gap="4">
             Use Instagram posts to share your products with millions of people.
             Let shoppers buy from your store without leaving Instagram.
-          </TextContainer>
+          </BlockStack>
         </Modal.Section>
       </Modal>
     </div>

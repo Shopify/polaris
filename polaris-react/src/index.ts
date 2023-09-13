@@ -359,9 +359,6 @@ export type {TagProps} from './components/Tag';
 export {Text} from './components/Text';
 export type {TextProps} from './components/Text';
 
-export {TextContainer} from './components/TextContainer';
-export type {TextContainerProps} from './components/TextContainer';
-
 export {TextField} from './components/TextField';
 export type {TextFieldProps} from './components/TextField';
 

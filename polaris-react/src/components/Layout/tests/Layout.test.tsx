@@ -2,11 +2,10 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Text} from '../../Text';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../../TextContainer';
 import {Section} from '../components';
 import {Layout} from '../Layout';
 import styles from '../Layout.scss';
+import {BlockStack} from '../../BlockStack';
 
 describe('<Layout />', () => {
   it('renders children', () => {
@@ -57,11 +56,9 @@ describe('<Layout />', () => {
         <Layout.AnnotatedSection description={description} />,
       );
 
-      const annotedDescriptionTextContainer =
-        // eslint-disable-next-line import/no-deprecated
-        annotatedSection.find(TextContainer)!;
+      const annotedDescriptionText = annotatedSection.find(BlockStack)!;
 
-      expect(annotedDescriptionTextContainer.find('div')).toContainReactText(
+      expect(annotedDescriptionText.find('div')).toContainReactText(
         description,
       );
     });
@@ -70,13 +67,9 @@ describe('<Layout />', () => {
       const annotatedSection = mountWithApp(
         <Layout.AnnotatedSection description={<MyComponent />} />,
       );
-      const annotedDescriptionTextContainer =
-        // eslint-disable-next-line import/no-deprecated
-        annotatedSection.find(TextContainer)!;
+      const annotedDescriptionText = annotatedSection.find(BlockStack)!;
 
-      expect(annotedDescriptionTextContainer).toContainReactComponent(
-        MyComponent,
-      );
+      expect(annotedDescriptionText).toContainReactComponent(MyComponent);
     });
 
     it('does not render an empty description node', () => {
@@ -86,17 +79,12 @@ describe('<Layout />', () => {
         </Layout.AnnotatedSection>,
       );
 
-      const annotedDescriptionTextContainer =
-        // eslint-disable-next-line import/no-deprecated
-        annotatedSection.find(TextContainer)!;
-      // eslint-disable-next-line import/no-deprecated
-      expect(annotatedSection).toContainReactComponent(TextContainer);
-      expect(annotedDescriptionTextContainer).not.toContainReactComponent(
-        'div',
-        {
-          className: expect.stringContaining(styles.AnnotationDescription),
-        },
-      );
+      const annotedDescriptionText = annotatedSection.find(BlockStack)!;
+
+      expect(annotatedSection).toContainReactComponent(BlockStack);
+      expect(annotedDescriptionText).not.toContainReactComponent('div', {
+        className: expect.stringContaining(styles.AnnotationDescription),
+      });
     });
 
     it('passes through an ID for deeplinking', () => {

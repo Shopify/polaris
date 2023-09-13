@@ -13,7 +13,6 @@ import {
   ResourceList,
   LegacyStack,
   Text,
-  TextContainer,
   BlockStack,
   Box,
 } from '@shopify/polaris';
@@ -332,11 +331,11 @@ export function WithAllElements() {
         </Popover>
       </LegacyCard.Header>
       <LegacyCard.Section>
-        <TextContainer>
+        <BlockStack gap="4">
           You can use sales reports to see information about your customers’
           orders based on criteria such as sales over time, by channel, or by
           staff.
-        </TextContainer>
+        </BlockStack>
       </LegacyCard.Section>
       <LegacyCard.Section title="Total Sales Breakdown">
         <ResourceList
@@ -376,10 +375,10 @@ export function WithAllElements() {
         </List>
       </LegacyCard.Section>
       <LegacyCard.Section title="Note">
-        <TextContainer>
+        <BlockStack gap="4">
           The sales reports are available only if your store is on the Shopify
           plan or higher.
-        </TextContainer>
+        </BlockStack>
       </LegacyCard.Section>
     </LegacyCard>
   );
@@ -395,11 +394,11 @@ export function WithFlushedSections() {
         />
       </LegacyCard.Section>
       <LegacyCard.Section subdued>
-        <TextContainer>
+        <BlockStack gap="4">
           You can use sales reports to see information about your customers’
           orders based on criteria such as sales over time, by channel, or by
           staff.
-        </TextContainer>
+        </BlockStack>
       </LegacyCard.Section>
     </LegacyCard>
   );

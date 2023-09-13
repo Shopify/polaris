@@ -12,7 +12,6 @@ import {
   List,
   Modal,
   Text,
-  TextContainer,
 } from '@shopify/polaris';
 import {DiscountsMajor, DiscountsMinor} from '@shopify/polaris-icons';
 
@@ -138,7 +137,7 @@ export function InAModal() {
         ]}
       >
         <Modal.Section>
-          <TextContainer>
+          <BlockStack gap="4">
             <Banner action={{content: 'Connect account'}} tone="warning">
               <p>
                 Connect your instagram account to your shop before proceeding.
@@ -149,7 +148,7 @@ export function InAModal() {
               people. Let shoppers buy from your store without leaving
               Instagram.
             </p>
-          </TextContainer>
+          </BlockStack>
         </Modal.Section>
       </Modal>
     </div>
@@ -157,9 +156,9 @@ export function InAModal() {
 }
 
 export function WithFocus() {
-  const banner = useRef();
+  const banner = useRef<HTMLElement>(null);
 
-  useEffect(() => banner.current.focus(), []);
+  useEffect(() => banner.current?.focus(), []);
 
   return (
     <Banner
@@ -198,7 +197,7 @@ export function InACard() {
 export function InALegacyCard() {
   return (
     <LegacyCard title="Online store dashboard" sectioned>
-      <TextContainer>
+      <BlockStack gap="4">
         <Banner onDismiss={() => {}}>
           <p>
             Use your finance report to get detailed information about your
@@ -207,7 +206,7 @@ export function InALegacyCard() {
         </Banner>
 
         <p>View a summary of your online store’s performance.</p>
-      </TextContainer>
+      </BlockStack>
     </LegacyCard>
   );
 }

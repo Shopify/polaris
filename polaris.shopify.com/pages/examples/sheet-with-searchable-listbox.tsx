@@ -8,8 +8,8 @@ import {
   Icon,
   Button,
   EmptySearchResult,
-  TextContainer,
   Text,
+  BlockStack,
 } from '@shopify/polaris';
 import {MobileCancelMajor, SearchMinor} from '@shopify/polaris-icons';
 
@@ -329,14 +329,14 @@ function SheetWithSearchableListboxExample() {
                 variant="plain"
               />
             </div>
-            <TextContainer>
+            <BlockStack gap="4">
               <Text variant="headingMd" as="h2">
                 Look up customer segmentation membership
               </Text>
               <Text tone="subdued" as="span">
                 Look up whether a customer is included in a segment.
               </Text>
-            </TextContainer>
+            </BlockStack>
           </div>
           <div
             style={{

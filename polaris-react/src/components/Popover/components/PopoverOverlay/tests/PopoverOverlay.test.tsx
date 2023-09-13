@@ -2,8 +2,6 @@ import React, {useRef} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Key} from '../../../../../types';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../../../../TextContainer';
 import {TextField} from '../../../../TextField';
 import {PositionedOverlay} from '../../../../PositionedOverlay';
 import {PopoverOverlay} from '../PopoverOverlay';
@@ -28,11 +26,7 @@ describe('<PopoverOverlay />', () => {
   const activator = document.createElement('button');
   const activatorContent = document.createTextNode('Activator text');
   activator.appendChild(activatorContent);
-  const children = (
-    <TextContainer>
-      <p>Text</p>
-    </TextContainer>
-  );
+  const children = <p>Text</p>;
 
   it('passes activator to PositionedOverlay when active', () => {
     const popoverOverlay = mountWithApp(
@@ -254,7 +248,7 @@ describe('<PopoverOverlay />', () => {
           onClose={spy}
           preventCloseOnChildOverlayClick
         >
-          <button id="popover 1 button" />
+          <button id="popover 1 button" aria-label="popover 1 button" />
         </PopoverOverlay>
         <Popover
           active
@@ -262,7 +256,7 @@ describe('<PopoverOverlay />', () => {
           activator={<div>Activator</div>}
           onClose={jest.fn()}
         >
-          <button id="popover 2 button" />
+          <button id="popover 2 button" aria-label="popover 2 button" />
         </Popover>
       </div>,
     );
@@ -391,7 +385,7 @@ describe('<PopoverOverlay />', () => {
             onClose={spy}
             preventCloseOnChildOverlayClick
           >
-            <button id="popover 1 button" />
+            <button id="popover 1 button" aria-label="popover 1 button" />
           </PopoverOverlay>
           <Popover
             active
