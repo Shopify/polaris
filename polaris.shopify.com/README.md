@@ -79,7 +79,7 @@ The MDX renderer found in `/src/components/Markdown` passes along the available 
 
 ## `/pages`
 
-The `/pages` directory contains the next.js template files to render pages. These TSX files handle the site routing and consume the markdown found in the `/content` directory. Most of these files use the baked-in next.js page routing system with one exception:
+The `/pages` directory contains the Next.js template files to render pages. These TSX files handle the site routing and consume the markdown found in the `/content` directory. Most of these files use the baked-in Next.js page routing system with one exception:
 
 ### `/pages/[...slug].tsx`
 
