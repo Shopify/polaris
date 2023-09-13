@@ -20,6 +20,7 @@ export type SpaceScale =
   | '1600'
   | '2000'
   | '2400'
+  | '2800'
   | '3200'
   | '05'
   | '1'
@@ -94,6 +95,9 @@ export const space: {
   },
   'space-2400': {
     value: size[2400],
+  },
+  'space-2800': {
+    value: size[2800],
   },
   'space-3200': {
     value: size[3200],
