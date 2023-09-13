@@ -4,8 +4,8 @@ import {
   LegacyCard,
   FormLayout,
   TextField,
-  TextContainer,
   Text,
+  BlockStack,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -16,7 +16,7 @@ function LayoutExample() {
       <Layout>
         <Layout.Section variant="oneThird">
           <div style={{marginTop: 'var(--p-space-5)'}}>
-            <TextContainer>
+            <BlockStack gap="4">
               <Text id="storeDetails" variant="headingMd" as="h2">
                 Store details
               </Text>
@@ -24,7 +24,7 @@ function LayoutExample() {
                 Shopify and your customers will use this information to contact
                 you.
               </Text>
-            </TextContainer>
+            </BlockStack>
           </div>
         </Layout.Section>
         <Layout.Section>

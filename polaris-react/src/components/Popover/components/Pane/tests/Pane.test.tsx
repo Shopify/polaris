@@ -2,8 +2,6 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Scrollable} from '../../../../Scrollable';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../../../../TextContainer';
 import {Pane} from '../Pane';
 import {Section} from '../../Section';
 
@@ -11,9 +9,9 @@ describe('<Pane />', () => {
   describe('fixed', () => {
     it('does not render content in a Scrollable when set to true', () => {
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -27,9 +25,9 @@ describe('<Pane />', () => {
 
     it('renders content in a Scrollable when set to false', () => {
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -43,9 +41,9 @@ describe('<Pane />', () => {
 
     it('renders content in a Scrollable when unset', () => {
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -61,9 +59,9 @@ describe('<Pane />', () => {
   describe('subdued', () => {
     it(`does not append the subdued class if the prop isn't provided`, () => {
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -79,9 +77,9 @@ describe('<Pane />', () => {
 
     it('appends the subdued class if the prop isn provided', () => {
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -99,9 +97,9 @@ describe('<Pane />', () => {
   describe('sectioned', () => {
     it('renders children in a Section when set to true', () => {
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -115,9 +113,9 @@ describe('<Pane />', () => {
 
     it('does not render content in a Section when set to false', () => {
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -131,9 +129,9 @@ describe('<Pane />', () => {
 
     it('does not render content in a Section when unset', () => {
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -150,9 +148,9 @@ describe('<Pane />', () => {
     it('is set on the Scrollable when provided', () => {
       const onScrolledToBottom = jest.fn();
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -176,9 +174,9 @@ describe('<Pane />', () => {
         minHeight: height,
       };
       const Children = () => (
-        <TextContainer>
+        <div>
           <p>Text</p>
-        </TextContainer>
+        </div>
       );
 
       const popoverPane = mountWithApp(
@@ -195,9 +193,9 @@ describe('<Pane />', () => {
 
   describe('captureOverscroll', () => {
     const Children = () => (
-      <TextContainer>
+      <div>
         <p>Text</p>
-      </TextContainer>
+      </div>
     );
 
     describe('when not passed', () => {

@@ -1,4 +1,4 @@
-import {Button, Modal, TextContainer} from '@shopify/polaris';
+import {Button, Modal} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -29,13 +29,10 @@ function ModalWithoutTitleExample() {
         ]}
       >
         <Modal.Section>
-          <TextContainer>
-            <p>
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </p>
-          </TextContainer>
+          <p>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
+          </p>
         </Modal.Section>
       </Modal>
     </div>

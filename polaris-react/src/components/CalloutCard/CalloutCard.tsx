@@ -5,12 +5,11 @@ import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../LegacyCard';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../TextContainer';
 import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
 import {Text} from '../Text';
 import {Image} from '../Image';
+import {BlockStack} from '../BlockStack';
 
 import styles from './CalloutCard.scss';
 
@@ -86,7 +85,7 @@ export function CalloutCard({
                   {title}
                 </Text>
               </div>
-              <TextContainer>{children}</TextContainer>
+              <BlockStack gap="4">{children}</BlockStack>
               <div className={styles.Buttons}>{buttonMarkup}</div>
             </div>
 

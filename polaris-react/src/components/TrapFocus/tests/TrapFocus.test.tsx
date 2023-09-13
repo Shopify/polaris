@@ -5,8 +5,6 @@ import {Button} from '../../Button';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
 import {Focus} from '../../Focus';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../../TextContainer';
 import {TextField} from '../../TextField';
 import {Portal} from '../../Portal';
 import * as focusUtils from '../../../utilities/focus';
@@ -45,13 +43,14 @@ describe('<TrapFocus />', () => {
   it('mounts', () => {
     const trapFocus = mountWithApp(
       <TrapFocus>
-        <TextContainer>Test</TextContainer>
+        <div>Test</div>
       </TrapFocus>,
     );
 
     // Render children
-    // eslint-disable-next-line import/no-deprecated
-    expect(trapFocus).toContainReactComponent(TextContainer);
+    expect(trapFocus).toContainReactComponent('div', {
+      children: 'Test',
+    });
 
     // Renders Focus
     expect(trapFocus).toContainReactComponent(Focus);

@@ -3,10 +3,10 @@ import {
   Popover,
   Button,
   ActionList,
-  TextContainer,
   ResourceList,
-  LegacyStack,
   List,
+  BlockStack,
+  LegacyStack,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -40,11 +40,11 @@ function LegacyCardExample() {
         </Popover>
       </LegacyCard.Header>
       <LegacyCard.Section>
-        <TextContainer>
+        <BlockStack gap="4">
           You can use sales reports to see information about your customers’
           orders based on criteria such as sales over time, by channel, or by
           staff.
-        </TextContainer>
+        </BlockStack>
       </LegacyCard.Section>
       <LegacyCard.Section title="Total Sales Breakdown">
         <ResourceList
@@ -86,10 +86,10 @@ function LegacyCardExample() {
         </List>
       </LegacyCard.Section>
       <LegacyCard.Section title="Note">
-        <TextContainer>
+        <p>
           The sales reports are available only if your store is on the Shopify
           plan or higher.
-        </TextContainer>
+        </p>
       </LegacyCard.Section>
     </LegacyCard>
   );

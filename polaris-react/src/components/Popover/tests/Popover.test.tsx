@@ -7,8 +7,6 @@ import {Popover} from '../Popover';
 import type {PopoverPublicAPI} from '../Popover';
 import {Pane, PopoverCloseSource, PopoverOverlay} from '../components';
 import * as setActivatorAttributes from '../set-activator-attributes';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../../TextContainer';
 
 describe('<Popover />', () => {
   const spy = jest.fn();
@@ -407,11 +405,7 @@ describe('<Popover />', () => {
   describe('captureOverscroll', () => {
     const TestActivator = <button>Activator</button>;
 
-    const Children = () => (
-      <TextContainer>
-        <p>Text</p>
-      </TextContainer>
-    );
+    const Children = () => <p>Text</p>;
 
     const defaultProps = {
       active: true,

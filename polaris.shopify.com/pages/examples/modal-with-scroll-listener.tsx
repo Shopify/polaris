@@ -1,4 +1,4 @@
-import {Button, Modal, TextContainer} from '@shopify/polaris';
+import {Button, Modal} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -22,11 +22,9 @@ function ModalWithScrollListenerExample() {
       >
         {Array.from({length: 50}, (_, index) => (
           <Modal.Section key={index}>
-            <TextContainer>
-              <p>
-                Item <a href="#">#{index}</a>
-              </p>
-            </TextContainer>
+            <p>
+              Item <a href="#">#{index}</a>
+            </p>
           </Modal.Section>
         ))}
       </Modal>

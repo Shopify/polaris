@@ -1,4 +1,4 @@
-import {Button, Modal, TextContainer, Banner} from '@shopify/polaris';
+import {Button, Modal, Banner, BlockStack} from '@shopify/polaris';
 import React, {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -26,7 +26,7 @@ function BannerInModalExample() {
         ]}
       >
         <Modal.Section>
-          <TextContainer>
+          <BlockStack gap="4">
             <Banner action={{content: 'Connect account'}} tone="warning">
               <p>
                 Connect your instagram account to your shop before proceeding.
@@ -37,7 +37,7 @@ function BannerInModalExample() {
               people. Let shoppers buy from your store without leaving
               Instagram.
             </p>
-          </TextContainer>
+          </BlockStack>
         </Modal.Section>
       </Modal>
     </div>

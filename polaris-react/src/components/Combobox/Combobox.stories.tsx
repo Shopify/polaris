@@ -7,8 +7,9 @@ import {
   Listbox,
   LegacyStack,
   Tag,
-  TextContainer,
   Text,
+  BlockStack,
+  AutoSelection,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
@@ -177,11 +178,15 @@ export function WithManualSelection() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >
         {options.length > 0 ? (
-          <Listbox autoSelection="NONE" onSelect={updateSelection}>
+          <Listbox
+            autoSelection={AutoSelection.None}
+            onSelect={updateSelection}
+          >
             {optionsMarkup}
           </Listbox>
         ) : null}
@@ -288,6 +293,7 @@ export function WithMultiSelect() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >
@@ -295,9 +301,9 @@ export function WithMultiSelect() {
           <Listbox onSelect={updateSelection}>{optionsMarkup}</Listbox>
         ) : null}
       </Combobox>
-      <TextContainer>
+      <BlockStack gap="4">
         <LegacyStack>{tagsMarkup}</LegacyStack>
-      </TextContainer>
+      </BlockStack>
     </div>
   );
 }
@@ -400,18 +406,22 @@ export function WithMultiSelectAndManualSelection() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >
         {optionsMarkup ? (
-          <Listbox autoSelection="NONE" onSelect={updateSelection}>
+          <Listbox
+            autoSelection={AutoSelection.None}
+            onSelect={updateSelection}
+          >
             {optionsMarkup}
           </Listbox>
         ) : null}
       </Combobox>
-      <TextContainer>
+      <BlockStack gap="4">
         <LegacyStack>{tagsMarkup}</LegacyStack>
-      </TextContainer>
+      </BlockStack>
     </div>
   );
 }
@@ -550,7 +560,7 @@ export function WithMultiSelectAndVerticalContent() {
   const listboxMarkup =
     optionMarkup || actionMarkup || emptyStateMarkup ? (
       <Listbox
-        autoSelection="FIRST"
+        autoSelection={AutoSelection.First}
         onSelect={updateSelection}
         onActiveOptionChange={handleActiveOptionChange}
       >
@@ -663,7 +673,7 @@ export function WithLoading() {
         justifyContent: 'center',
       }}
     >
-      <Listbox.Loading />
+      <Listbox.Loading accessibilityLabel="loading" />
     </div>
   ) : null;
 
@@ -687,6 +697,7 @@ export function WithLoading() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >

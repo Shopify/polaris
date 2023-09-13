@@ -6,10 +6,7 @@ import {Button} from '../../../../../Button';
 import {Text} from '../../../../../Text';
 import {Link} from '../../../../../Link';
 import {Popover} from '../../../../../Popover';
-// eslint-disable-next-line import/no-deprecated
-import {LegacyStack} from '../../../../../LegacyStack';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../../../../../TextContainer';
+import {BlockStack} from '../../../../../BlockStack';
 
 import styles from './Message.scss';
 
@@ -36,21 +33,21 @@ export function Message({
   return (
     <div className={styles.Section}>
       <Popover.Section>
-        <LegacyStack vertical spacing="tight">
-          <TextContainer>
+        <BlockStack gap="2">
+          <BlockStack gap="4">
             <Text variant="headingMd" as="h2">
               {title}
               {badgeMarkup}
             </Text>
             <p>{description}</p>
-          </TextContainer>
+          </BlockStack>
 
           <Link url={to}>{linkContent}</Link>
 
           <Button variant="plain" onClick={onClick}>
             {actionContent}
           </Button>
-        </LegacyStack>
+        </BlockStack>
       </Popover.Section>
     </div>
   );

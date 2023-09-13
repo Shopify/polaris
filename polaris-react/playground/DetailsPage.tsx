@@ -37,14 +37,13 @@ import {
   // eslint-disable-next-line import/no-deprecated
   LegacyStack,
   Text,
-  // eslint-disable-next-line import/no-deprecated
-  TextContainer,
   TextField,
   Thumbnail,
   Toast,
   TopBar,
   FooterHelp,
   Link,
+  BlockStack,
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
@@ -657,10 +656,10 @@ export function DetailsPage() {
       <Layout>
         <Layout.Section>
           <LegacyCard sectioned>
-            <TextContainer>
+            <BlockStack gap="4">
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
-            </TextContainer>
+            </BlockStack>
           </LegacyCard>
         </Layout.Section>
       </Layout>

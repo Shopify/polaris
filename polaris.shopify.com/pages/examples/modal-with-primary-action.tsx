@@ -1,4 +1,4 @@
-import {Button, Modal, LegacyStack, TextContainer} from '@shopify/polaris';
+import {Button, Modal, LegacyStack} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -24,13 +24,11 @@ function ModalWithPrimaryActionExample() {
         <Modal.Section>
           <LegacyStack vertical>
             <LegacyStack.Item>
-              <TextContainer>
-                <p>
-                  You can share this discount link with your customers via email
-                  or social media. Your discount will be automatically applied
-                  at checkout.
-                </p>
-              </TextContainer>
+              <p>
+                You can share this discount link with your customers via email
+                or social media. Your discount will be automatically applied at
+                checkout.
+              </p>
             </LegacyStack.Item>
           </LegacyStack>
         </Modal.Section>

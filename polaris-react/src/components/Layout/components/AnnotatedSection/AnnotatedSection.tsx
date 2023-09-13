@@ -2,9 +2,8 @@ import React from 'react';
 
 import {Box} from '../../../Box';
 import {Text} from '../../../Text';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../../../TextContainer';
 import styles from '../../Layout.scss';
+import {BlockStack} from '../../../BlockStack';
 
 export interface AnnotatedSectionProps {
   children?: React.ReactNode;
@@ -32,14 +31,14 @@ export function AnnotatedSection({
     <div className={styles.AnnotatedSection}>
       <div className={styles.AnnotationWrapper}>
         <div className={styles.Annotation}>
-          <TextContainer spacing="tight">
+          <BlockStack gap="2">
             <Text id={id} variant="headingMd" as="h2">
               {title}
             </Text>
             {descriptionMarkup && (
               <Box color="text-subdued">{descriptionMarkup}</Box>
             )}
-          </TextContainer>
+          </BlockStack>
         </div>
 
         <div className={styles.AnnotationContent}>{children}</div>
