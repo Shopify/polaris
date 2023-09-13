@@ -33,7 +33,7 @@ export function Message({
   return (
     <div className={styles.Section}>
       <Popover.Section>
-        <BlockStack gap="2">
+        <BlockStack gap="2" inlineAlign="start">
           <BlockStack gap="4">
             <Text variant="headingMd" as="h2">
               {title}
@@ -44,9 +44,11 @@ export function Message({
 
           <Link url={to}>{linkContent}</Link>
 
-          <Button variant="plain" onClick={onClick}>
-            {actionContent}
-          </Button>
+          <div>
+            <Button variant="plain" onClick={onClick}>
+              {actionContent}
+            </Button>
+          </div>
         </BlockStack>
       </Popover.Section>
     </div>
