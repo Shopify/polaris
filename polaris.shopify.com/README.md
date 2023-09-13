@@ -19,7 +19,7 @@ yarn create-component
 
 ## Site Content
 
-Our website combines next.js pages with [MDX](https://mdxjs.com/) markdown files. Here's a guide to understanding the content directory structures and how they translate to pages within the website.
+Our website combines [Next.js](https://nextjs.org/) pages with [MDX](https://mdxjs.com/) markdown files. Here's a guide to understanding the content directory structures and how they translate to pages within the website.
 
 ### `/content`
 
