@@ -53,7 +53,9 @@ All measurements used across the experience (space, width, height, etc) must ref
   margin: "40px auto 40px auto",
   width: "75%",
 }}>
-  <img src="/images/design/space/spacing-polaris-units@2x.png" alt="A visual example of a polaris unit" />
+
+  ![A visual example of a polaris unit](/images/design/space/spacing-polaris-units@2x.png)
+  
 </div>
 
 ### Space scale
