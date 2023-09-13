@@ -5,10 +5,6 @@ $spinner-size: 20px;
 
 .IndexFiltersWrapper {
   width: 100%;
-
-  [class*='Button-Button'] {
-    display: flex;
-  }
 }
 
 @media #{$p-breakpoints-sm-up} {
@@ -139,5 +135,12 @@ $spinner-size: 20px;
 
   svg {
     display: block;
+  }
+}
+
+.ButtonWrap,
+.ActionWrap {
+  button {
+    display: flex;
   }
 }

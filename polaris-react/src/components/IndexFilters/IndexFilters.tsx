@@ -437,7 +437,7 @@ export function IndexFilters({
                   borderlessQueryField
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
-                  <div className={styles.SortWrapper}>
+                  <div className={styles.ButtonWrap}>
                     <HorizontalStack
                       gap={polarisSummerEditions2023 ? '2' : '3'}
                       align="start"
