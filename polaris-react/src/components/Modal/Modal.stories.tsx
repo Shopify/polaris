@@ -13,6 +13,7 @@ import {
   TextContainer,
   TextField,
   Frame,
+  FrameContext,
 } from '@shopify/polaris';
 
 export default {
@@ -591,9 +592,19 @@ export function WithLongContentNoScroll() {
   );
 }
 
+const context = {
+  logo: undefined,
+  showToast: () => {},
+  hideToast: () => {},
+  toastMessages: [],
+  startLoading: () => {},
+  stopLoading: () => {},
+  setContextualSaveBar: () => {},
+  removeContextualSaveBar: () => {},
+};
 export function EmbeddedIframe() {
   return (
-    <Frame>
+    <FrameContext.Provider value={context}>
       <div style={{height: '500px'}}>
         <Modal
           title="Embedded iFrame Modal"
@@ -616,7 +627,7 @@ export function EmbeddedIframe() {
 </main>`}
         />
       </div>
-    </Frame>
+    </FrameContext.Provider>
   );
 }
 
