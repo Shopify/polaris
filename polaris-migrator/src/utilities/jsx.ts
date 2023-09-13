@@ -39,7 +39,7 @@ export function removeJSXAttributes(
   element: ASTPath<JSXElement>,
   attributeName: string,
 ) {
-  const jsxAttributes = element.value.attributes?.filter(
+  const jsxAttributes = element.value.openingElement?.attributes?.filter(
     (attr) => attr.type === 'JSXAttribute' && attr.name.name === attributeName,
   );
 

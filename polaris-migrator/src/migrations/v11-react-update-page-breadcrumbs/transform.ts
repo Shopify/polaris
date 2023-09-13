@@ -1,4 +1,10 @@
-import type {API, FileInfo, Options} from 'jscodeshift';
+import type {
+  API,
+  FileInfo,
+  Options,
+  ArrayExpression,
+  ASTPath,
+} from 'jscodeshift';
 
 import {POLARIS_MIGRATOR_COMMENT} from '../../utilities/constants';
 import {
@@ -69,15 +75,12 @@ export default function transformer(
       return true;
     })
     .find(j.ArrayExpression)
-    .replaceWith((nodePath) => {
+    .replaceWith((nodePath: ASTPath<ArrayExpression>) => {
       const arrayOfBreadcrumbs = nodePath.node.elements;
 
       if (arrayOfBreadcrumbs.length === 0) {
-        removeJSXAttributes(
-          j,
-          nodePath.parentPath.parentPath.parentPath.parentPath,
-          'breadcrumbs',
-        );
+        const element = j(nodePath).closest(j.JSXElement).paths()[0];
+        removeJSXAttributes(j, element, 'breadcrumbs');
         return;
       }
 
