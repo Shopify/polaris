@@ -18,57 +18,47 @@ keywords:
 
 ## Overview
 
-<Grid gapY="4">
+<Grid gap="4">
 
-  <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 12, xl: 12}}>
+  <Grid.Cell columnSpan={{xs: 4, sm: 2, md: 2, lg: 4, xl: 4}}>
 
-    <InlineGrid columns={['oneThird', 'twoThirds']} gap="4">
+    ### Color has purpose
 
-      <Box>
-        ### Color has purpose
-
-        The purpose of using color has to be clear. Color needs to support a message or a status that needs to be easily identifiable by merchants.
-
-      </Box>
-
-    ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
-
-    </InlineGrid>
+    The purpose of using color has to be clear. Color needs to support a message or a status that needs to be easily identifiable by merchants.
 
   </Grid.Cell>
 
-  <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 12, xl: 12}}>
+  <Grid.Cell columnSpan={{xs: 8, sm: 4, md: 4, lg: 8, xl: 8}}>
 
-    <InlineGrid columns={['oneThird', 'oneThird', 'oneThird']} gap="4">
-      <Box>
+    ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
 
-        Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
+  </Grid.Cell>
 
-        This deliberate color coding facilitates merchants in identifying which parts of the user interface require focus and distinguishes them from the default features provided by the Shopify admin.
+  <Grid.Cell columnSpan={{xs: 4, sm: 2, md: 2, lg: 4, xl: 4}}>
 
-      </Box>
+    Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
 
-      <Box>
+    This deliberate color coding facilitates merchants in identifying which parts of the user interface require focus and distinguishes them from the default features provided by the Shopify admin.
 
-        ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+  </Grid.Cell>
 
-        <Do>
-        Use color to support different states merchants need to be informed about.
-        </Do>
+  <Grid.Cell columnSpan={{xs: 4, sm: 2, md: 2, lg: 4, xl: 4}}>
 
-      </Box>
+    ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
 
-      <Box>
+    <Do>
+    Use color to support different states merchants need to be informed about.
+    </Do>
 
-        ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+  </Grid.Cell>
 
-        <Dont>
-        Use color to decorate or to distract merchants from performing tasks.
-        </Dont>
+  <Grid.Cell columnSpan={{xs: 4, sm: 2, md: 2, lg: 4, xl: 4}}>
 
-      </Box>
+    ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
 
-    </InlineGrid>
+    <Dont>
+    Use color to decorate or to distract merchants from performing tasks.
+    </Dont>
 
   </Grid.Cell>
 
