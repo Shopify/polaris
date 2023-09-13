@@ -23,7 +23,7 @@
   --surface-code-block: #2e2e30;
 
   // Based on: https://type-scale.com/?size=17&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
-  --font-size-100: 0.8rem;
+  --font-size-100: 0.75rem;
   --font-size-200: 0.9rem;
   --font-size-300: 0.95rem;
   --font-size-400: 1rem;
@@ -202,6 +202,14 @@ body,
   --surface-information: #dcf5f0;
   --surface-subdued: #f9f9f9;
   --surface-warning: #ffeceb;
+  --fill-success: #29845a;
+  --fill-caution: #ffe600;
+  --fill-critical: #e51c00;
+  --fill-info: #91d0ff;
+  --text-success-onfill: #ffffff;
+  --text-caution-onfill: #332e00;
+  --text-critical-onfill: #ffffff;
+  --text-info-onfill: #002133;
   --primary: #008060;
   --border-color: #e9e9e9;
   --border: 1px solid var(--border-color);
