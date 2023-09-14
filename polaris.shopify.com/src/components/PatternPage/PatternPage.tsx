@@ -104,7 +104,6 @@ export const Variants = ({
 };
 
 const BaseMarkdown = (props: ComponentProps<typeof Markdown>) => {
-  // console.log('IN MARKDOWN', JSON.stringify(patternData, null, 2));
   return (
     <Markdown
       {...props}
@@ -172,9 +171,6 @@ export default function PatternPage({pattern}: Props) {
     // current code toggle setting.
     toggleCode(true);
   }, [pattern.frontmatter]);
-
-  // props.data.variants = {...JSON.parse(props.data.variants)};
-  // console.log('PROPS', JSON.stringify(props, null, 2));
 
   return (
     <>
