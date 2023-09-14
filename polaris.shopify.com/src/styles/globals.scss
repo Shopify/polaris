@@ -92,6 +92,13 @@
   --border-radius-700: 12px;
   --border-radius-800: 14px;
   --border-radius-round: 1000px;
+
+  --border-radius-400-new: var(--p-border-radius-4);
+
+  --card-padding-md: var(--p-space-4);
+  --card-padding-lg: var(--p-space-8);
+
+  --font-body-md: 400 14px/20px Inter;
 }
 
 .light-mode,
@@ -349,4 +356,35 @@ button {
 
 .tip-banner__header h4 {
   margin: 0 !important;
+}
+
+.card {
+  background-color: var(--surface);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--border-radius-400-new);
+  padding: var(--card-padding-md);
+}
+
+.card-loose {
+  background-color: var(--surface);
+  box-shadow: var(--card-shadow);
+  border-radius: var(--border-radius-400-new);
+  padding: var(--card-padding-lg);
+}
+
+.text-extra-padding {
+  padding: var(--card-padding-md);
+}
+
+.directive {
+  font-size: 0;
+  line-height: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  div {
+    padding: var(--card-padding-md);
+    background-color: var(--surface-subdued);
+  }
 }
