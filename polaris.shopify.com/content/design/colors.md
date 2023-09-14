@@ -14,8 +14,6 @@ keywords:
 
 <Lede>{frontmatter.description}</Lede>
 
-## Overview
-
 <Stack gap="8">
 
   <Box className="card">
@@ -26,7 +24,7 @@ keywords:
 
         <Box className="text-extra-padding">
 
-          ### Color has purpose
+          ## Color has purpose
 
           The purpose of using color has to be clear. Color needs to support a message or a status that needs to be easily identifiable by merchants.
 
@@ -91,7 +89,7 @@ keywords:
 
         <Box className="text-extra-padding">
 
-          ### Color has impact
+          ## Color has impact
 
           The Shopify admin interface adopts a black and white color scheme, intentionally creating a neutral backdrop. By employing this monochromatic design, elements that incorporate color gain heightened visual impact and prominence.
 
@@ -157,7 +155,7 @@ keywords:
 
         <Box className="text-extra-padding">
 
-          ### Color is accessible
+          ## Color is accessible
 
           Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify and interact with.
 
