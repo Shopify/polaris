@@ -70,10 +70,10 @@ export type ColorBackgroundAlias =
   | 'bg-warning'
   | ColorBackgroundAliasExperimental
   /**
-   * Conceptual and component specific fills.
+   * Conceptual and component specific backgrounds.
    * TODO: Determine if we should create a separate
    * type alias (e.g. `ColorComponentBackgroundAlias`) and
-   * union it here in `ColorFillAlias`.
+   * union it here in `ColorBackgroundAlias`.
    */
   | 'nav-bg';
 
@@ -108,10 +108,10 @@ export type ColorBorderAlias =
   | 'border-success-subdued'
   | ColorBorderAliasExperimental
   /**
-   * Conceptual and component specific fills.
+   * Conceptual and component specific borders.
    * TODO: Determine if we should create a separate
    * type alias (e.g. `ColorComponentBorderAlias`) and
-   * union it here in `ColorFillAlias`.
+   * union it here in `ColorBorderAlias`.
    */
   | 'input-border'
   | 'input-border-hover'
@@ -209,10 +209,10 @@ export type ColorIconAlias =
   | 'icon-warning'
   | ColorIconAliasExperimental
   /**
-   * Conceptual and component specific fills.
+   * Conceptual and component specific icons.
    * TODO: Determine if we should create a separate
    * type alias (e.g. `ColorComponentIconAlias`) and
-   * union it here in `ColorFillAlias`.
+   * union it here in `ColorIconAlias`.
    */
   | 'radio-button-icon-disabled'
   | 'checkbox-icon-disabled';
@@ -263,10 +263,10 @@ export type ColorSurfaceAlias =
   | 'surface-emphasis-active'
   | 'surface-inverse'
   /**
-   * Conceptual and component specific fills.
+   * Conceptual and component specific surfaces.
    * TODO: Determine if we should create a separate
    * type alias (e.g. `ColorComponentIconAlias`) and
-   * union it here in `ColorFillAlias`.
+   * union it here in `ColorSurfaceAlias`.
    */
   | 'input-surface'
   | 'input-surface-hover'
