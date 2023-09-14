@@ -7,6 +7,7 @@ import {height} from '../token-groups/height';
 import {motion} from '../token-groups/motion';
 import {shadow} from '../token-groups/shadow';
 import {space} from '../token-groups/space';
+import {width} from '../token-groups/width';
 import {zIndex} from '../token-groups/zIndex';
 
 import type {MetaThemeShape} from './types';
@@ -22,5 +23,6 @@ export const metaThemeBase = createMetaThemeBase({
   motion,
   shadow: tokensToRems(shadow),
   space: tokensToRems(space),
+  width: tokensToRems(width),
   zIndex,
 });
