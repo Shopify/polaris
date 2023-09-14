@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.9.0
+
+### Minor Changes
+
+- [#10458](https://github.com/Shopify/polaris/pull/10458) [`5e073c209`](https://github.com/Shopify/polaris/commit/5e073c2095c51154f27740f4c4bc3d00122c0218) Thanks [@lgriffee](https://github.com/lgriffee)! - Added public primitive `height` token scale
+
+* [#10462](https://github.com/Shopify/polaris/pull/10462) [`2bccc2291`](https://github.com/Shopify/polaris/commit/2bccc22918eab571136b925bdf7ce07281658248) Thanks [@lgriffee](https://github.com/lgriffee)! - Added public primitive `line-height` token scale
+
+- [#10474](https://github.com/Shopify/polaris/pull/10474) [`033424546`](https://github.com/Shopify/polaris/commit/03342454611a71a0a57e48cf8a013c1ca27837b3) Thanks [@lgriffee](https://github.com/lgriffee)! - Added public primitive `font-size` token scale
+
+* [#10434](https://github.com/Shopify/polaris/pull/10434) [`66b2599da`](https://github.com/Shopify/polaris/commit/66b2599dabcb4bfb5cb4964c7a9bfce4fc12617b) Thanks [@lgriffee](https://github.com/lgriffee)! - Added public primitive `border-width` token scale
+
+- [#10460](https://github.com/Shopify/polaris/pull/10460) [`c07de6ca4`](https://github.com/Shopify/polaris/commit/c07de6ca4aed19c643b2681d498432fd7414475e) Thanks [@lgriffee](https://github.com/lgriffee)! - Added public primitive `width` token scale
+
 ## 7.8.0
 
 ### Minor Changes
