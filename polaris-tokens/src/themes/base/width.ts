@@ -1,5 +1,5 @@
-import {size} from '../size';
-import type {MetadataProperties} from '../types';
+import {size} from '../../size';
+import type {MetaTokenProperties} from '../types';
 
 export type WidthScale =
   | '0'
@@ -30,7 +30,7 @@ export type WidthTokenGroup = {
 };
 
 export const width: {
-  [TokenName in WidthTokenName]: MetadataProperties;
+  [TokenName in WidthTokenName]: MetaTokenProperties;
 } = {
   'width-0': {
     value: size[0],
