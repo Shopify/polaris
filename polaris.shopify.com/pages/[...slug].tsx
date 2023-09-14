@@ -96,7 +96,7 @@ const CatchAllTemplate = ({
     <Page
       editPageLinkPath={editPageLinkPath}
       isContentPage={isContentPage}
-      showTOC={showTOC}
+      showTOC={showTOC || isContentPage}
     >
       <PageMeta title={title} description={seoDescription} noIndex={noIndex} />
       <Markdown
