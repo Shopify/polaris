@@ -437,21 +437,23 @@ export function IndexFilters({
                   borderlessQueryField
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
-                  <HorizontalStack
-                    gap={polarisSummerEditions2023 ? '2' : '3'}
-                    align="start"
-                    blockAlign="center"
-                  >
-                    <div
-                      style={{
-                        ...defaultStyle,
-                        ...transitionStyles[state],
-                      }}
+                  <div className={styles.ButtonWrap}>
+                    <HorizontalStack
+                      gap={polarisSummerEditions2023 ? '2' : '3'}
+                      align="start"
+                      blockAlign="center"
                     >
-                      {updateButtonsMarkup}
-                    </div>
-                    {sortMarkup}
-                  </HorizontalStack>
+                      <div
+                        style={{
+                          ...defaultStyle,
+                          ...transitionStyles[state],
+                        }}
+                      >
+                        {updateButtonsMarkup}
+                      </div>
+                      {sortMarkup}
+                    </HorizontalStack>
+                  </div>
                 </Filters>
               ) : null}
             </div>
