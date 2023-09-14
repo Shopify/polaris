@@ -1,0 +1,25 @@
+# This workflow opens a PR to merge main into next so that it's kept up to date with each merge into main.
+
+name: Update next branch
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  updateNext:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout next branch
+        uses: actions/checkout@v4
+        with:
+          ref: next
+      - name: Merge main into next branch
+        run: |
+          git checkout -b update-next
+          git fetch origin main:main
+          git merge main
+      - name: Create PR with for review by last commit author
+        run: gh pr create -B next -H update-next --title 'Merge latest main into next' --body 'This PR was opened by a GitHub Action on behalf of ${{ github.event.push.pusher.username }} following their recent push to main in order to keep the `next` branch up to date. ${{ github.event.push.pusher.username }} -- resolve any merge conflicts and ensure that your recent changes to main work as expected.' --reviewer ${{ github.event.push.pusher.username }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
