@@ -84,6 +84,7 @@ const tokenGroupPatterns: TokenGroupPatterns = {
   motion: /animation/,
   shadow: /shadow/,
   space: /margin|padding|gap|top|left|right|bottom/,
+  width: /width|min-width|max-width/,
   zIndex: /z-index/,
 };
 
