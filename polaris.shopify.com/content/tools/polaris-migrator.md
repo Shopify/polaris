@@ -6,11 +6,22 @@ icon: ReplaceMajor
 order: 3
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 [<img src="https://img.shields.io/npm/v/@shopify/polaris-migrator.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style={{width: "95px"}} />](https://www.npmjs.com/package/@shopify/polaris-migrator)
 
 <picture>
-  <source srcset="/images/tools/polaris-migrator/polaris-migrator-demo.png" media="(prefers-reduced-motion: reduce)"></source>
-  <img style={{maxWidth: "100%"}} srcset="/images/tools/polaris-migrator/polaris-migrator-demo.gif" alt="Demo of Polaris migrator" />
+  <source
+    srcSet="/images/tools/polaris-migrator/polaris-migrator-demo.png"
+    media="(prefers-reduced-motion: reduce)"
+  ></source>
+  <img
+    style={{maxWidth: '100%'}}
+    srcSet="/images/tools/polaris-migrator/polaris-migrator-demo.gif"
+    alt="Demo of Polaris migrator"
+  />
 </picture>
 
 ## Usage
