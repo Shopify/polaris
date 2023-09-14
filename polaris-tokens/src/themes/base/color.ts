@@ -1,6 +1,7 @@
-import type {MetadataProperties, Experimental} from '../types';
-import * as colors from '../colors';
-import * as colorsExperimental from '../colors-experimental';
+import type {Experimental} from '../../types';
+import type {MetaTokenProperties} from '../types';
+import * as colors from '../../colors';
+import * as colorsExperimental from '../../colors-experimental';
 
 export type ColorBackgroundAlias =
   | 'bg'
@@ -443,7 +444,7 @@ export type ColorTokenGroup = {
 };
 
 export const color: {
-  [TokenName in ColorTokenName]: MetadataProperties;
+  [TokenName in ColorTokenName]: MetaTokenProperties;
 } = {
   'color-bg-inverse': {
     value: colors.gray[900],
@@ -1025,7 +1026,7 @@ export const color: {
     description: '',
   },
   'color-bg-transparent-subdued-experimental': {
-    value: colorsExperimental.blackAlpha[7],
+    value: colorsExperimental.blackAlpha[6],
     description: '',
   },
   'color-bg-transparent-hover-experimental': {
