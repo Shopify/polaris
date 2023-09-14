@@ -4,6 +4,7 @@ import {Avatar} from '@shopify/polaris';
 export function App() {
   return (
     <>
+      <Avatar customer size="unknown" />
       <Avatar customer size="extraSmall" />
       <Avatar customer size="small" />
       <Avatar customer size="medium" />
