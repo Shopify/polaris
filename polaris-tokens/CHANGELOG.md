@@ -1,5 +1,15 @@
 # Changelog
 
+## 7.8.0
+
+### Minor Changes
+
+- [#10432](https://github.com/Shopify/polaris/pull/10432) [`26ab8ce7d`](https://github.com/Shopify/polaris/commit/26ab8ce7df10609316eccc75b7bed6f8cebc9120) Thanks [@lgriffee](https://github.com/lgriffee)! - Added public primitive `border-radius` token scale
+
+* [#10448](https://github.com/Shopify/polaris/pull/10448) [`7514dd1a3`](https://github.com/Shopify/polaris/commit/7514dd1a36a9988ede48085b80c6e7e214f98968) Thanks [@lgriffee](https://github.com/lgriffee)! - Added public primitive `space` token scale
+
+- [#10418](https://github.com/Shopify/polaris/pull/10418) [`16c61668a`](https://github.com/Shopify/polaris/commit/16c61668ac3916aacaeb759f2052d0a3a7ed762e) Thanks [@lgriffee](https://github.com/lgriffee)! - Add private primitive `size` token scale
+
 ## 7.7.0
 
 ### Minor Changes
