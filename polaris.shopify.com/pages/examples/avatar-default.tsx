@@ -3,7 +3,7 @@ import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function AvatarExample() {
-  return <Avatar customer name="Farrah" />;
+  return <Avatar name="Farrah" />;
 }
 
 export default withPolarisExample(AvatarExample);
