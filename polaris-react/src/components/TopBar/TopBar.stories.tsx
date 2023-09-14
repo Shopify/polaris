@@ -172,7 +172,7 @@ export function WithCustomActivator() {
 
   const customActivator = (
     <>
-      <Avatar size="small" initials="XA" name="Xquenda Andreev" />
+      <Avatar size="sm" initials="XA" name="Xquenda Andreev" />
       <span style={{marginLeft: '0.5rem'}}>
         <Text as="p" alignment="start" fontWeight="medium" truncate>
           Xquenda Andreev
