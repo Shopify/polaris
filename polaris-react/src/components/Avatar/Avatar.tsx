@@ -7,7 +7,7 @@ import {Image} from '../Image';
 
 import styles from './Avatar.scss';
 
-type Size = 'xs' | 'small' | 'medium' | 'large' | 'xl' | '2xl';
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 enum Status {
   Pending = 'PENDING',
@@ -19,11 +19,10 @@ export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'] as const;
 
 const avatarStrokeWidth: {[S in Size]: string} = {
   xs: '3',
-  small: '2.5',
-  medium: '2.5',
-  large: '2.5',
+  sm: '2.5',
+  md: '2.5',
+  lg: '2.5',
   xl: '2',
-  '2xl': '1.5',
 };
 
 /**
@@ -69,7 +68,7 @@ export function Avatar({
   source,
   onError,
   initials,
-  size = 'medium',
+  size = 'md',
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();

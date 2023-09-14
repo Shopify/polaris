@@ -15,14 +15,14 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 - Remove the `customer` prop
 - Replace the `size` prop with the new mapping below
 
-| Before                    | After           |
-| ------------------------- | --------------- |
-| `size="extraSmall"`       | `size="xs"`     |
-| `size="small"`            | `size="small"`  |
-| `size="medium"`           | `size="medium"` |
-| `size="large"`            | `size="large"`  |
-| `size="xl-experimental"`  | `size="xl"`     |
-| `size="2xl-experimental"` | `size="2xl"`    |
+| Before                    | After        |
+| ------------------------- | ------------ |
+| `size="extraSmall"`       | `size="xs"`  |
+| `size="small"`            | `size="sm"`  |
+| `size="medium"`           | `size="md"`  |
+| `size="large"`            | `size="lg"`  |
+| `size="xl-experimental"`  | `size="xl"`  |
+| `size="2xl-experimental"` | `size="2xl"` |
 
 **Badge**
 

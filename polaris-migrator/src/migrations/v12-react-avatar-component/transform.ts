@@ -57,9 +57,9 @@ export default function transformer(
 // Define the mapping of old sizes to new sizes
 const sizeMapping = {
   extraSmall: 'xs',
-  small: 'small',
-  medium: 'medium',
-  large: 'large',
+  small: 'sm',
+  medium: 'md',
+  large: 'lg',
   'xl-experimental': 'xl',
   '2xl-experimental': '2xl',
 };
