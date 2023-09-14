@@ -36,7 +36,7 @@ describe('<Avatar />', () => {
       const src = 'image/path/';
       const avatar = mountWithApp(<Avatar source={src} />);
       expect(avatar).toContainReactComponent('span', {
-        className: 'Avatar sizeMedium',
+        className: 'Avatar sizeMd',
       });
       expect(avatar).toContainReactComponent('span', {
         className: expect.not.stringContaining('styleOne'),
@@ -60,7 +60,7 @@ describe('<Avatar />', () => {
       const src = 'image/path/';
       const avatar = mountWithApp(<Avatar source={src} />);
       expect(avatar).toContainReactComponent('span', {
-        className: 'Avatar sizeMedium',
+        className: 'Avatar sizeMd',
       });
       expect(avatar).toContainReactComponent('span', {
         className: expect.not.stringContaining('styleOne'),
