@@ -299,7 +299,7 @@ export function WithLazyLoadedList() {
     return (
       <ResourceList.Item
         id={name}
-        media={<Avatar size="extraSmall" name={name} initials={initials} />}
+        media={<Avatar size="xs" name={name} initials={initials} />}
         verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
@@ -407,7 +407,7 @@ export function WithScrollableLazyLoadedList() {
     return (
       <ResourceList.Item
         id={name}
-        media={<Avatar size="extraSmall" name={name} initials={initials} />}
+        media={<Avatar size="xs" name={name} initials={initials} />}
         verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
