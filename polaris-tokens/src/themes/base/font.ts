@@ -1,4 +1,3 @@
-import {size} from '../../size';
 import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 
@@ -67,22 +66,22 @@ export const font: {
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
   },
   'font-size-275': {
-    value: size[275],
+    value: '11px',
   },
   'font-size-325': {
-    value: size[325],
+    value: '13px',
   },
   'font-size-350': {
-    value: size[350],
+    value: '14px',
   },
   'font-size-750': {
-    value: size[750],
+    value: '28px',
   },
   'font-size-900': {
-    value: size[900],
+    value: '32px',
   },
   'font-size-1000': {
-    value: size[1000],
+    value: '40px',
   },
   'font-size-70-experimental': {
     value: '11px',
@@ -127,28 +126,28 @@ export const font: {
     value: '700',
   },
   'font-line-height-300': {
-    value: size[300],
+    value: '12px',
   },
   'font-line-height-400': {
-    value: size[400],
+    value: '16px',
   },
   'font-line-height-500': {
-    value: size[500],
+    value: '20px',
   },
   'font-line-height-600': {
-    value: size[600],
+    value: '24px',
   },
   'font-line-height-700': {
-    value: size[700],
+    value: '28px',
   },
   'font-line-height-800': {
-    value: size[800],
+    value: '32px',
   },
   'font-line-height-1000': {
-    value: size[1000],
+    value: '40px',
   },
   'font-line-height-1200': {
-    value: size[1200],
+    value: '48px',
   },
   'font-line-height-075-experimental': {
     value: '12px',

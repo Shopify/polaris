@@ -1,4 +1,3 @@
-import {size} from '../../size';
 import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 
@@ -50,31 +49,31 @@ export const border: {
   [TokenName in BorderTokenName]: MetaTokenProperties;
 } = {
   'border-radius-0': {
-    value: size[0],
+    value: '0px',
   },
   'border-radius-050': {
-    value: size['050'],
+    value: '2px',
   },
   'border-radius-100': {
-    value: size[100],
+    value: '4px',
   },
   'border-radius-150': {
-    value: size[150],
+    value: '6px',
   },
   'border-radius-200': {
-    value: size[200],
+    value: '8px',
   },
   'border-radius-300': {
-    value: size[300],
+    value: '12px',
   },
   'border-radius-400': {
-    value: size[400],
+    value: '16px',
   },
   'border-radius-500': {
-    value: size[500],
+    value: '20px',
   },
   'border-radius-750': {
-    value: size[750],
+    value: '30px',
   },
   'border-radius-full': {
     value: '9999px',
@@ -107,16 +106,16 @@ export const border: {
     value: '6px',
   },
   'border-width-0165': {
-    value: size['0165'],
+    value: '0.66px',
   },
   'border-width-025': {
-    value: size['025'],
+    value: '1px',
   },
   'border-width-050': {
-    value: size['050'],
+    value: '2px',
   },
   'border-width-100': {
-    value: size[100],
+    value: '4px',
   },
   'border-width-1': {
     value: '1px',

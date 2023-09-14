@@ -50,58 +50,58 @@ export const space: {
   [TokenName in SpaceTokenName]: MetaTokenProperties;
 } = {
   'space-0': {
-    value: size[0],
+    value: '0px',
   },
   'space-025': {
-    value: size['025'],
+    value: '1px',
   },
   'space-050': {
-    value: size['050'],
+    value: '2px',
   },
   'space-100': {
-    value: size[100],
+    value: '4px',
   },
   'space-150': {
-    value: size[150],
+    value: '6px',
   },
   'space-200': {
-    value: size[200],
+    value: '8px',
   },
   'space-300': {
-    value: size[300],
+    value: '12px',
   },
   'space-400': {
-    value: size[400],
+    value: '16px',
   },
   'space-500': {
-    value: size[500],
+    value: '20px',
   },
   'space-600': {
-    value: size[600],
+    value: '24px',
   },
   'space-800': {
-    value: size[800],
+    value: '32px',
   },
   'space-1000': {
-    value: size[1000],
+    value: '40px',
   },
   'space-1200': {
-    value: size[1200],
+    value: '48px',
   },
   'space-1600': {
-    value: size[1600],
+    value: '64px',
   },
   'space-2000': {
-    value: size[2000],
+    value: '80px',
   },
   'space-2400': {
-    value: size[2400],
+    value: '96px',
   },
   'space-2800': {
-    value: size[2800],
+    value: '112px',
   },
   'space-3200': {
-    value: size[3200],
+    value: '128px',
   },
   'space-05': {
     value: '2px',

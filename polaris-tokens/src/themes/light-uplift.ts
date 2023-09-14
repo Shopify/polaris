@@ -1,40 +1,27 @@
 import * as colors from '../colors-experimental';
+import {size} from '../size';
 
 import {createMetaTheme, createMetaThemePartial} from './utils';
 
 export const metaThemeLightUpliftPartial = createMetaThemePartial({
-  motion: {
-    'motion-ease-out': {value: 'cubic-bezier(0.19, 0.91, 0.38, 1)'},
-  },
-  font: {
-    'font-family-sans': {
-      value:
-        "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-    },
-    'font-size-500': {value: '30px'},
-    'font-size-600': {value: '36px'},
-  },
-  shadow: {
-    'shadow-inset-lg': {
-      value:
-        'inset -1px 0px 1px rgba(0, 0, 0, 0.2), inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6)',
-    },
-    'shadow-inset-md': {
-      value:
-        'inset -1px 0px 1px rgba(0, 0, 0, 0.12), inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2)',
-    },
-    'shadow-inset-sm': {
-      value:
-        'inset 0px 1px 1px rgba(0, 0, 0, 0.15), inset 0px 1px 2px rgba(255, 255, 255, 0.15)',
-    },
-    'shadow-xs': {value: '0px 1px 0px rgba(0, 0, 0, 0.07)'},
-    'shadow-sm': {value: '0px 3px 1px -1px rgba(0, 0, 0, 0.07)'},
-    'shadow-md': {value: '0px 4px 6px -2px rgba(0, 0, 0, 0.2)'},
-    'shadow-lg': {value: '0px 8px 16px -4px rgba(0, 0, 0, 0.22)'},
-    'shadow-xl': {value: '0px 12px 20px -8px rgba(0, 0, 0, 0.24)'},
-    'shadow-2xl': {value: '0px 20px 20px -8px rgba(0, 0, 0, 0.28)'},
+  border: {
+    // v12.0.0
+    'border-radius-0': {value: size[0]},
+    'border-radius-050': {value: size['050']},
+    'border-radius-100': {value: size[100]},
+    'border-radius-150': {value: size[150]},
+    'border-radius-200': {value: size[200]},
+    'border-radius-300': {value: size[300]},
+    'border-radius-400': {value: size[400]},
+    'border-radius-500': {value: size[500]},
+    'border-radius-750': {value: size[750]},
+    'border-width-0165': {value: size['0165']},
+    'border-width-025': {value: size['025']},
+    'border-width-050': {value: size['050']},
+    'border-width-100': {value: size[100]},
   },
   color: {
+    // v11.0.0
     'color-bg-inverse': {value: colors.gray[16]()},
     'color-bg-inset-strong': {value: colors.gray[15]()},
     'color-bg-inverse-hover': {value: colors.gray[14]()},
@@ -169,6 +156,76 @@ export const metaThemeLightUpliftPartial = createMetaThemePartial({
     'color-text-interactive-inverse': {value: colors.blue[8]},
     'color-text-magic-strong': {value: colors.purple[15]},
     'color-text-magic': {value: colors.purple[14]},
+  },
+  font: {
+    // v12.0.0
+    'font-size-275': {value: size[275]},
+    'font-size-325': {value: size[325]},
+    'font-size-350': {value: size[350]},
+    'font-size-750': {value: size[750]},
+    'font-size-900': {value: size[900]},
+    'font-size-1000': {value: size[1000]},
+    'font-line-height-300': {value: size[300]},
+    'font-line-height-400': {value: size[400]},
+    'font-line-height-500': {value: size[500]},
+    'font-line-height-600': {value: size[600]},
+    'font-line-height-700': {value: size[700]},
+    'font-line-height-800': {value: size[800]},
+    'font-line-height-1000': {value: size[1000]},
+    'font-line-height-1200': {value: size[1200]},
+    // v11.0.0
+    'font-family-sans': {
+      value:
+        "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+    },
+    'font-size-500': {value: '30px'},
+    'font-size-600': {value: '36px'},
+  },
+  motion: {
+    // v11.0.0
+    'motion-ease-out': {value: 'cubic-bezier(0.19, 0.91, 0.38, 1)'},
+  },
+  space: {
+    // v12.0.0
+    'space-0': {value: size[0]},
+    'space-025': {value: size['025']},
+    'space-050': {value: size['050']},
+    'space-100': {value: size[100]},
+    'space-150': {value: size[150]},
+    'space-200': {value: size[200]},
+    'space-300': {value: size[300]},
+    'space-400': {value: size[400]},
+    'space-500': {value: size[500]},
+    'space-600': {value: size[600]},
+    'space-800': {value: size[800]},
+    'space-1000': {value: size[1000]},
+    'space-1200': {value: size[1200]},
+    'space-1600': {value: size[1600]},
+    'space-2000': {value: size[2000]},
+    'space-2400': {value: size[2400]},
+    'space-2800': {value: size[2800]},
+    'space-3200': {value: size[3200]},
+  },
+  shadow: {
+    // v11.0.0
+    'shadow-inset-lg': {
+      value:
+        'inset -1px 0px 1px rgba(0, 0, 0, 0.2), inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6)',
+    },
+    'shadow-inset-md': {
+      value:
+        'inset -1px 0px 1px rgba(0, 0, 0, 0.12), inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2)',
+    },
+    'shadow-inset-sm': {
+      value:
+        'inset 0px 1px 1px rgba(0, 0, 0, 0.15), inset 0px 1px 2px rgba(255, 255, 255, 0.15)',
+    },
+    'shadow-xs': {value: '0px 1px 0px rgba(0, 0, 0, 0.07)'},
+    'shadow-sm': {value: '0px 3px 1px -1px rgba(0, 0, 0, 0.07)'},
+    'shadow-md': {value: '0px 4px 6px -2px rgba(0, 0, 0, 0.2)'},
+    'shadow-lg': {value: '0px 8px 16px -4px rgba(0, 0, 0, 0.22)'},
+    'shadow-xl': {value: '0px 12px 20px -8px rgba(0, 0, 0, 0.24)'},
+    'shadow-2xl': {value: '0px 20px 20px -8px rgba(0, 0, 0, 0.28)'},
   },
 });
 
