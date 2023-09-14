@@ -1,5 +1,6 @@
-import {size} from '../size';
-import type {MetadataProperties, Experimental} from '../types';
+import {size} from '../../size';
+import type {Experimental} from '../../types';
+import type {MetaTokenProperties} from '../types';
 
 type SpaceScaleExperimental = Experimental<'1_5'>;
 
@@ -20,6 +21,7 @@ export type SpaceScale =
   | '1600'
   | '2000'
   | '2400'
+  | '2800'
   | '3200'
   | '05'
   | '1'
@@ -45,7 +47,7 @@ export type SpaceTokenGroup = {
 };
 
 export const space: {
-  [TokenName in SpaceTokenName]: MetadataProperties;
+  [TokenName in SpaceTokenName]: MetaTokenProperties;
 } = {
   'space-0': {
     value: size[0],
@@ -94,6 +96,9 @@ export const space: {
   },
   'space-2400': {
     value: size[2400],
+  },
+  'space-2800': {
+    value: size[2800],
   },
   'space-3200': {
     value: size[3200],
