@@ -797,7 +797,7 @@ export const color: {
     description: '',
   },
   'color-bg-transparent-subdued-experimental': {
-    value: colorsExperimental.blackAlpha[7],
+    value: colorsExperimental.blackAlpha[6],
     description: '',
   },
   'color-bg-transparent-hover-experimental': {
