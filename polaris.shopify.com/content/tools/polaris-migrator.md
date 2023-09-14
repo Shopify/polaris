@@ -6,6 +6,10 @@ icon: ReplaceMajor
 order: 3
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 [<img src="https://img.shields.io/npm/v/@shopify/polaris-migrator.svg?labelColor=f9f9f9&color=dcf5f0" alt="npm version" style={{width: "95px"}} />](https://www.npmjs.com/package/@shopify/polaris-migrator)
 
 <picture>
