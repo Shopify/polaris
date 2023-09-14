@@ -23,7 +23,6 @@
   position: relative;
   flex: 1;
   background: var(--surface-subdued);
-  padding: 0.5rem 1.5rem;
   border-radius: var(--border-radius-400);
   background-color: var(--surface);
 
@@ -67,6 +66,11 @@
 
   button {
     display: none;
+  }
+
+  p {
+    margin: var(--p-space-2) 0 0 0;
+    font: var(--font-body-md);
   }
 }
 
