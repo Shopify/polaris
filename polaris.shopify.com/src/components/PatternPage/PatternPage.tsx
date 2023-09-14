@@ -201,7 +201,12 @@ export default function PatternPage({pattern}: Props) {
               </p>
             ) : null}
           </Stack>
-          <CodeVisibilityProvider showCode={showCode} setShowCode={toggleCode}>
+          <CodeVisibilityProvider
+            showCode={showCode}
+            setShowCode={(...args) => {
+              toggleCode(...args);
+            }}
+          >
             <PatternMarkdown {...pattern} />
           </CodeVisibilityProvider>
         </Stack>

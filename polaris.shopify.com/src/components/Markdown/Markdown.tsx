@@ -30,10 +30,12 @@ import {FeaturedCardGrid} from '../FeaturedCardGrid';
 import {useCopyToClipboard} from '../../utils/hooks';
 import {Colors} from './components/Colors';
 
-const CodeVisibilityContext = createContext<[boolean, (arg: boolean) => void]>([
-  false,
-  () => {},
-]);
+const CodeVisibilityContext = createContext<
+  [
+    boolean | undefined,
+    React.Dispatch<React.SetStateAction<boolean>> | undefined,
+  ]
+>([undefined, undefined]);
 
 const useCodeVisibility = () => useContext(CodeVisibilityContext);
 
@@ -46,16 +48,17 @@ export const CodeVisibilityProvider: ComponentType<
     /**
      * This value will be overwritten by the outer-most context provider
      */
-    setShowCode: (arg: boolean) => void;
+    setShowCode: React.Dispatch<React.SetStateAction<boolean>>;
   }>
 > = ({children, showCode, setShowCode}) => {
   // Attempt to inherit from parent context if it's set
   const [codeVisibleFromContext, setShowCodeFromContext] = useCodeVisibility();
-
   return (
     <CodeVisibilityContext.Provider
       value={[
-        codeVisibleFromContext ?? showCode,
+        typeof codeVisibleFromContext !== 'undefined'
+          ? codeVisibleFromContext
+          : showCode,
         setShowCodeFromContext ?? setShowCode,
       ]}
     >
@@ -84,7 +87,6 @@ const FencedCodeWithVisibilityToggle: ComponentType<
   meta: {title, type, previewContext, sandboxContext, isActionsVisible} = {},
 }) => {
   const [showCode, setShowCode] = useCodeVisibility();
-
   if (type === 'livePreview') {
     return (
       <PatternsExample
@@ -95,7 +97,9 @@ const FencedCodeWithVisibilityToggle: ComponentType<
         }}
         isCodeVisible={showCode}
         isActionsVisible={isActionsVisible}
-        onCodeVisibilityToggle={() => setShowCode(!showCode)}
+        onCodeVisibilityToggle={() => {
+          setShowCode?.(!showCode);
+        }}
         title={title ?? 'Pattern Name'}
       />
     );
