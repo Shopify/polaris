@@ -2,4 +2,4 @@
 '@shopify/polaris-tokens': minor
 ---
 
-Added public primitive and semantic `border-width` token scales
+Added public primitive `border-width` token scales
