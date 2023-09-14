@@ -16,7 +16,10 @@ import {Lede} from '../Lede';
 import {Heading} from '../Heading';
 import Page from '../Page';
 import styles from './PatternPage.module.scss';
-import Markdown, {CodeVisibilityProvider} from '../Markdown';
+import Markdown, {
+  CodeVisibilityProvider,
+  HeadingWithCopyButton,
+} from '../Markdown';
 import {SideBySide} from '../Markdown/components/SideBySide';
 
 export type PatternMDX = SerializedMdx<
@@ -151,6 +154,23 @@ const defaultMdxComponents: React.ComponentProps<
   DefinitionTable: ({children}) => (
     <Box className={styles.DefinitionTable}>{children}</Box>
   ),
+  p: ({children}) => <Box as="p">{children}</Box>,
+  h2: ({children}) => (
+    <HeadingWithCopyButton
+      as="h2"
+      className={[styles.NoMargin, styles['Heading-h2']]}
+    >
+      {children}
+    </HeadingWithCopyButton>
+  ),
+  h3: ({children}) => (
+    <HeadingWithCopyButton
+      as="h3"
+      className={[styles.NoMargin, styles['Heading-h3']]}
+    >
+      {children}
+    </HeadingWithCopyButton>
+  ),
 };
 
 const PatternMarkdown = (props: ComponentProps<typeof Markdown>) => (
@@ -189,7 +209,7 @@ export default function PatternPage({pattern}: Props) {
             <Heading as="h1">
               <Box className={styles.Heading}>{pattern.frontmatter.title}</Box>
             </Heading>
-            <Lede>{pattern.frontmatter.lede}</Lede>
+            <Lede className={styles.NoMargin}>{pattern.frontmatter.lede}</Lede>
             {pattern.frontmatter.githubDiscussionsLink ? (
               <p className={styles.InfoLine}>
                 <Link
