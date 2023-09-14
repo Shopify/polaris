@@ -68,7 +68,14 @@ export type ColorBackgroundAlias =
   | 'bg-success-subdued-active'
   | 'bg-success-subdued-hover'
   | 'bg-warning'
-  | ColorBackgroundAliasExperimental;
+  | ColorBackgroundAliasExperimental
+  /**
+   * Conceptual and component specific fills.
+   * TODO: Determine if we should create a separate
+   * type alias (e.g. `ColorComponentBackgroundAlias`) and
+   * union it here in `ColorFillAlias`.
+   */
+  | 'nav-bg';
 
 export type ColorBorderAlias =
   | 'border'
@@ -99,7 +106,86 @@ export type ColorBorderAlias =
   | 'border-subdued'
   | 'border-success'
   | 'border-success-subdued'
-  | ColorBorderAliasExperimental;
+  | ColorBorderAliasExperimental
+  /**
+   * Conceptual and component specific fills.
+   * TODO: Determine if we should create a separate
+   * type alias (e.g. `ColorComponentBorderAlias`) and
+   * union it here in `ColorFillAlias`.
+   */
+  | 'input-border'
+  | 'input-border-hover'
+  | 'input-border-active';
+
+export type ColorFillAlias =
+  | 'fill'
+  | 'fill-hover'
+  | 'fill-active'
+  | 'fill-selected'
+  | 'fill-disabled'
+  | 'fill-secondary'
+  | 'fill-secondary-hover'
+  | 'fill-secondary-active'
+  | 'fill-tertiary'
+  | 'fill-tertiary-hover'
+  | 'fill-tertiary-active'
+  | 'fill-brand'
+  | 'fill-brand-hover'
+  | 'fill-brand-active'
+  | 'fill-brand-selected'
+  | 'fill-brand-disabled'
+  | 'fill-emphasis'
+  | 'fill-emphasis-hover'
+  | 'fill-emphasis-active'
+  | 'fill-success'
+  | 'fill-success-hover'
+  | 'fill-success-active'
+  | 'fill-success-secondary'
+  | 'fill-critical'
+  | 'fill-critical-hover'
+  | 'fill-critical-active'
+  | 'fill-critical-selected'
+  | 'fill-critical-secondary'
+  | 'fill-caution'
+  | 'fill-caution-hover'
+  | 'fill-caution-active'
+  | 'fill-caution-secondary'
+  | 'fill-info'
+  | 'fill-info-hover'
+  | 'fill-info-active'
+  | 'fill-info-secondary'
+  | 'fill-warning'
+  | 'fill-warning-hover'
+  | 'fill-warning-active'
+  | 'fill-warning-secondary'
+  | 'fill-magic'
+  | 'fill-magic-secondary'
+  | 'fill-magic-secondary-hover'
+  | 'fill-magic-secondary-active'
+  | 'fill-inverse'
+  | 'fill-inverse-hover'
+  | 'fill-inverse-active'
+  | 'fill-transparent'
+  | 'fill-transparent-hover'
+  | 'fill-transparent-active'
+  | 'fill-transparent-selected'
+  | 'fill-transparent-secondary'
+  | 'fill-transparent-secondary-hover'
+  | 'fill-transparent-secondary-active'
+  /**
+   * Conceptual and component specific fills.
+   * TODO: Determine if we should create a separate
+   * type alias (e.g. `ColorComponentFillAlias`) and
+   * union it here in `ColorFillAlias`.
+   */
+  | 'avatar-fill'
+  | 'avatar-one-fill'
+  | 'avatar-two-fill'
+  | 'avatar-three-fill'
+  | 'avatar-four-fill'
+  | 'avatar-five-fill'
+  | 'video-thumbnail-play-button-fill'
+  | 'video-thumbnail-play-button-fill-hover';
 
 export type ColorIconAlias =
   | 'icon'
@@ -121,7 +207,76 @@ export type ColorIconAlias =
   | 'icon-subdued'
   | 'icon-success'
   | 'icon-warning'
-  | ColorIconAliasExperimental;
+  | ColorIconAliasExperimental
+  /**
+   * Conceptual and component specific fills.
+   * TODO: Determine if we should create a separate
+   * type alias (e.g. `ColorComponentIconAlias`) and
+   * union it here in `ColorFillAlias`.
+   */
+  | 'radio-button-icon-disabled'
+  | 'checkbox-icon-disabled';
+
+export type ColorLinkAlias =
+  | 'link'
+  | 'link-hover'
+  | 'link-active'
+  | 'link-inverse';
+
+export type ColorSurfaceAlias =
+  | 'surface'
+  | 'surface-hover'
+  | 'surface-active'
+  | 'surface-selected'
+  | 'surface-disabled'
+  | 'surface-secondary'
+  | 'surface-secondary-hover'
+  | 'surface-secondary-active'
+  | 'surface-secondary-selected'
+  | 'surface-tertiary'
+  | 'surface-tertiary-hover'
+  | 'surface-tertiary-active'
+  | 'surface-brand'
+  | 'surface-brand-hover'
+  | 'surface-brand-active'
+  | 'surface-brand-selected'
+  | 'surface-info'
+  | 'surface-info-hover'
+  | 'surface-info-active'
+  | 'surface-success'
+  | 'surface-success-hover'
+  | 'surface-success-active'
+  | 'surface-caution'
+  | 'surface-caution-hover'
+  | 'surface-caution-active'
+  | 'surface-critical'
+  | 'surface-critical-hover'
+  | 'surface-critical-active'
+  | 'surface-critical'
+  | 'surface-critical-hover'
+  | 'surface-critical-active'
+  | 'surface-magic'
+  | 'surface-magic-hover'
+  | 'surface-magic-active'
+  | 'surface-emphasis'
+  | 'surface-emphasis-hover'
+  | 'surface-emphasis-active'
+  | 'surface-inverse'
+  /**
+   * Conceptual and component specific fills.
+   * TODO: Determine if we should create a separate
+   * type alias (e.g. `ColorComponentIconAlias`) and
+   * union it here in `ColorFillAlias`.
+   */
+  | 'input-surface'
+  | 'input-surface-hover'
+  | 'input-surface-active'
+  | 'nav-surface'
+  | 'nav-surface-hover'
+  | 'nav-surface-active'
+  | 'nav-surface-selected'
+  | 'radio-button-surface-disabled'
+  | 'checkbox-surface-disabled';
 
 export type ColorTextAlias =
   | 'text'
@@ -206,7 +361,10 @@ type ColorAvatarAliasExperimental = Experimental<
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
   | `color-${ColorBorderAlias}`
+  | `color-${ColorFillAlias}`
   | `color-${ColorIconAlias}`
+  | `color-${ColorLinkAlias}`
+  | `color-${ColorSurfaceAlias}`
   | `color-${ColorTextAlias}`
   | `color-${ColorAvatarAliasExperimental}`;
 
