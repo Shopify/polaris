@@ -26,6 +26,10 @@ export type BorderRadiusScale =
 type BorderWidthScaleExperimental = Experimental<'1' | '2'>;
 
 export type BorderWidthScale =
+  | '0165'
+  | '025'
+  | '050'
+  | '100'
   | '1'
   | '2'
   | '3'
@@ -100,6 +104,18 @@ export const border: {
   },
   'border-radius-1_5-experimental': {
     value: '6px',
+  },
+  'border-width-0165': {
+    value: size['0165'],
+  },
+  'border-width-025': {
+    value: size['025'],
+  },
+  'border-width-050': {
+    value: size['050'],
+  },
+  'border-width-100': {
+    value: size[100],
   },
   'border-width-1': {
     value: '1px',
