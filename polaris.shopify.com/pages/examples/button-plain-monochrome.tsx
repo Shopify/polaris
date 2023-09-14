@@ -6,9 +6,7 @@ function ButtonExample() {
   return (
     <div>
       Could not retrieve data.{' '}
-      <Button variant="monochromePlain" >
-        Try again
-      </Button>
+      <Button variant="monochromePlain">Try again</Button>
     </div>
   );
 }

@@ -49,7 +49,7 @@ function ResourceListWithSelectionExample() {
 
   function renderItem(item: typeof items[number]) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar size="md" name={name} />;
 
     return (
       <ResourceItem

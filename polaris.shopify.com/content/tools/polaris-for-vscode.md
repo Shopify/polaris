@@ -11,8 +11,15 @@ order: 1
 <Lede>{frontmatter.description}</Lede>
 
 <picture>
-  <source srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.png" media="(prefers-reduced-motion: reduce)"></source>
-  <img style={{maxWidth: "100%" }} srcset="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.gif" alt="Demo of Polaris for VS Code tokens autocomplete" />
+  <source
+    srcSet="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.png"
+    media="(prefers-reduced-motion: reduce)"
+  ></source>
+  <img
+    style={{maxWidth: '100%'}}
+    srcSet="/images/tools/polaris-for-vscode/polaris-for-vscode-preview.gif"
+    alt="Demo of Polaris for VS Code tokens autocomplete"
+  />
 </picture>
 
 ## Features

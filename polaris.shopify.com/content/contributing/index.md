@@ -9,6 +9,7 @@ keywords:
 order: 10
 newSection: true
 icon: MobilePlusMajor
+showTOC: true
 ---
 
 # {frontmatter.title}

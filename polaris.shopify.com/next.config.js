@@ -363,11 +363,6 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/columns',
-    destination: '/components/layout-and-structure/inline-grid',
-    permanent: false,
-  },
-  {
     source: '/components/divider',
     destination: '/components/layout-and-structure/divider',
     permanent: false,
@@ -397,12 +392,11 @@ const layoutAndStructure = [
     destination: '/components/layout-and-structure/grid',
     permanent: false,
   },
-  // TODO: Re-enable this redirect once the new inline stack component is released
-  // {
-  //   source: '/components/layout-and-structure/horizontal-stack',
-  //   destination: '/components/layout-and-structure/inline-stack',
-  //   permanent: false,
-  // },
+  {
+    source: '/components/layout-and-structure/horizontal-stack',
+    destination: '/components/layout-and-structure/inline-stack',
+    permanent: false,
+  },
   {
     source: '/components/structure/layout',
     destination: '/components/layout-and-structure/layout',
@@ -439,8 +433,8 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/alpha-stack',
-    destination: '/components/layout-and-structure/vertical-stack',
+    source: '/components/layout-and-structure/vertical-stack',
+    destination: '/components/layout-and-structure/block-stack',
     permanent: false,
   },
   {

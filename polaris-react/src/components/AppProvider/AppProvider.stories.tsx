@@ -58,7 +58,7 @@ export function Default(_, context) {
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar customer size="medium" name={name} />;
+              const media = <Avatar size="md" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
@@ -121,7 +121,7 @@ export function WithI18n(_, context) {
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar customer size="medium" name={name} />;
+              const media = <Avatar size="md" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>

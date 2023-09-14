@@ -31,7 +31,7 @@ function ResourceListExample() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location, latestOrderUrl} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar size="md" name={name} />;
           const shortcutActions = latestOrderUrl
             ? [
                 {

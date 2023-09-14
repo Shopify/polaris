@@ -7,6 +7,7 @@ description: |
   The steps below will assist you in making these updates using our tools and tokens.
 hideFromNav: true
 noIndex: true
+showTOC: true
 keywords:
   - new design language
   - uplift

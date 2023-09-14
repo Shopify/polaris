@@ -27,11 +27,11 @@ keywords:
 
 <picture>
   <source
-    srcset="/images/tools/stylelint-polaris/stylelint-demo.png"
+    srcSet="/images/tools/stylelint-polaris/stylelint-demo.png"
     media="(prefers-reduced-motion: reduce)"
   />
   <img
-    srcset="/images/tools/stylelint-polaris/stylelint-demo.gif"
+    srcSet="/images/tools/stylelint-polaris/stylelint-demo.gif"
     alt="Demo of Stylelint Polaris"
     style={{width: '100%'}}
   />
