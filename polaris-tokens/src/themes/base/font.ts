@@ -1,5 +1,6 @@
-import {size} from '../size';
-import type {MetadataProperties, Experimental} from '../types';
+import {size} from '../../size';
+import type {Experimental} from '../../types';
+import type {MetaTokenProperties} from '../types';
 
 type FontFamilyAlias = 'sans' | 'mono';
 
@@ -55,7 +56,7 @@ export type FontTokenGroup = {
 };
 
 export const font: {
-  [TokenName in FontTokenName]: MetadataProperties;
+  [TokenName in FontTokenName]: MetaTokenProperties;
 } = {
   'font-family-sans': {
     value:

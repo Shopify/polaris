@@ -3,7 +3,7 @@ import type {
   breakpoints as metaBreakpointsTokenGroup,
   BreakpointsTokenGroup,
   BreakpointsTokenName,
-} from './token-groups/breakpoints';
+} from './themes/base/breakpoints';
 
 const BASE_FONT_SIZE = 16;
 

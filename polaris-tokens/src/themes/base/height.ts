@@ -1,5 +1,5 @@
-import {size} from '../size';
-import type {MetadataProperties} from '../types';
+import {size} from '../../size';
+import type {MetaTokenProperties} from '../types';
 
 export type HeightScale =
   | '0'
@@ -30,7 +30,7 @@ export type HeightTokenGroup = {
 };
 
 export const height: {
-  [TokenName in HeightTokenName]: MetadataProperties;
+  [TokenName in HeightTokenName]: MetaTokenProperties;
 } = {
   'height-0': {
     value: size[0],
