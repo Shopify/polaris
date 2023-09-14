@@ -1,3 +1,4 @@
+import {size} from '../size';
 import type {MetadataProperties, Experimental} from '../types';
 
 type FontFamilyAlias = 'sans' | 'mono';
@@ -18,6 +19,14 @@ export type FontSizeScale =
 type FontLineHeightScaleExperimental = Experimental<'075'>;
 
 export type FontLineHeightScale =
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '1000'
+  | '1200'
   | '1'
   | '2'
   | '3'
@@ -91,6 +100,30 @@ export const font: {
   },
   'font-weight-bold': {
     value: '700',
+  },
+  'font-line-height-300': {
+    value: size[300],
+  },
+  'font-line-height-400': {
+    value: size[400],
+  },
+  'font-line-height-500': {
+    value: size[500],
+  },
+  'font-line-height-600': {
+    value: size[600],
+  },
+  'font-line-height-700': {
+    value: size[700],
+  },
+  'font-line-height-800': {
+    value: size[800],
+  },
+  'font-line-height-1000': {
+    value: size[1000],
+  },
+  'font-line-height-1200': {
+    value: size[1200],
   },
   'font-line-height-075-experimental': {
     value: '12px',
