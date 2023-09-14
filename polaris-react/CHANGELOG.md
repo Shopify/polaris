@@ -1,5 +1,22 @@
 # Changelog
 
+## 11.18.0
+
+### Minor Changes
+
+- [#10429](https://github.com/Shopify/polaris/pull/10429) [`2e65a7e98`](https://github.com/Shopify/polaris/commit/2e65a7e98dced44f45df02d15cda78093bac3cf3) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed `Filters` pinned filter pill not remaining when applied values are cleared
+
+* [#10394](https://github.com/Shopify/polaris/pull/10394) [`b7f25f07f`](https://github.com/Shopify/polaris/commit/b7f25f07fba272add902d68a8cc15bee43030dff) Thanks [@mrcthms](https://github.com/mrcthms)! - Added support for disabling 1Password integration in `TextField`
+
+- [#10406](https://github.com/Shopify/polaris/pull/10406) [`87f559ca1`](https://github.com/Shopify/polaris/commit/87f559ca1190b28b583913d321c87b60639c1cc4) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the Toast component to support multiple re-renders being announced on screen readers
+
+### Patch Changes
+
+- [#10428](https://github.com/Shopify/polaris/pull/10428) [`d35d55e5b`](https://github.com/Shopify/polaris/commit/d35d55e5b15d64b7140d976dbc35d56d2580852a) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed layout shift in `IndexFilters` when switching modes
+
+- Updated dependencies [[`26ab8ce7d`](https://github.com/Shopify/polaris/commit/26ab8ce7df10609316eccc75b7bed6f8cebc9120), [`7514dd1a3`](https://github.com/Shopify/polaris/commit/7514dd1a36a9988ede48085b80c6e7e214f98968), [`16c61668a`](https://github.com/Shopify/polaris/commit/16c61668ac3916aacaeb759f2052d0a3a7ed762e)]:
+  - @shopify/polaris-tokens@7.8.0
+
 ## 11.17.0
 
 ### Minor Changes
