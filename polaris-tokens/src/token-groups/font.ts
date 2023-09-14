@@ -6,6 +6,12 @@ type FontFamilyAlias = 'sans' | 'mono';
 type FontSizeScaleExperimental = Experimental<'70' | '80'>;
 
 export type FontSizeScale =
+  | '275'
+  | '325'
+  | '350'
+  | '750'
+  | '900'
+  | '1000'
   | '75'
   | '100'
   | '200'
@@ -58,6 +64,24 @@ export const font: {
   'font-family-mono': {
     value:
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
+  },
+  'font-size-275': {
+    value: size[275],
+  },
+  'font-size-325': {
+    value: size[325],
+  },
+  'font-size-350': {
+    value: size[350],
+  },
+  'font-size-750': {
+    value: size[750],
+  },
+  'font-size-900': {
+    value: size[900],
+  },
+  'font-size-1000': {
+    value: size[1000],
   },
   'font-size-70-experimental': {
     value: '11px',
