@@ -1,4 +1,3 @@
-import {size} from '../../size';
 import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 
