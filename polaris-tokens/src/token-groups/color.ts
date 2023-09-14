@@ -225,6 +225,8 @@ export type ColorIconAlias =
   | 'icon-secondary-active'
   | 'icon-brand'
   | 'icon-emphasis'
+  | 'icon-emphasis-hover'
+  | 'icon-emphasis-active'
   /**
    * check on emphasis state icons
    */
@@ -245,6 +247,8 @@ export type ColorLinkAlias =
   | 'link-hover'
   | 'link-active'
   | 'link-inverse';
+
+export type ColorFocusAlias = 'focus-outline';
 
 export type ColorSurfaceAlias =
   | 'surface'
