@@ -33,7 +33,7 @@ export function ActionList({
   items,
   sections = [],
   actionRole,
-  hasFiltering,
+  allowFiltering,
   onActionAnyItem,
 }: ActionListProps) {
   const i18n = useI18n();
@@ -140,7 +140,7 @@ export function ActionList({
 
   return (
     <>
-      {(hasFiltering || filterActions) && hasSearch && isFilterable && (
+      {(allowFiltering || filterActions) && hasSearch && isFilterable && (
         <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
           <SearchField
             placeholder={i18n.translate(

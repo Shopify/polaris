@@ -240,7 +240,7 @@ describe('<ActionList />', () => {
   it('does not render search with 7 or less items', () => {
     const actionList = mountWithApp(
       <ActionList
-        hasFiltering
+        allowFiltering
         items={[
           {content: 'Item 1'},
           {content: 'Item 2'},
@@ -259,7 +259,7 @@ describe('<ActionList />', () => {
   it('renders search with 8 or more items', () => {
     const actionList = mountWithApp(
       <ActionList
-        hasFiltering
+        allowFiltering
         items={[
           {content: 'Item 1'},
           {content: 'Item 2'},
@@ -278,7 +278,7 @@ describe('<ActionList />', () => {
     expect(actionList).toContainReactComponentTimes(SearchField, 1);
   });
 
-  it('does not renders search with 8 and no hasFiltering', () => {
+  it('does not renders search with 8 and no allowFiltering', () => {
     const actionList = mountWithApp(
       <ActionList
         items={[
@@ -303,7 +303,7 @@ describe('<ActionList />', () => {
     const actionList = mountWithApp(
       <ActionList
         items={[{content: 'Item 1'}, {content: 'Item 2'}]}
-        hasFiltering
+        allowFiltering
         sections={[
           {
             title: '',
@@ -332,7 +332,7 @@ describe('<ActionList />', () => {
     const actionList = mountWithApp(
       <ActionList
         items={[{content: 'IteM 1'}, {content: 'Item 2'}]}
-        hasFiltering
+        allowFiltering
         sections={[
           {
             title: 'Section 1',
