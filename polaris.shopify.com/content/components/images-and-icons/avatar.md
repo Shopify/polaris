@@ -44,12 +44,13 @@ Avatars are used to show a thumbnail representation of an individual or business
 
 ## Best practices
 
-Avatars should be one of 4 sizes:
+Avatars should be one of 6 sizes:
 
-- Extra small (24 x 24 px): use in tightly condensed layouts
-- Small (32 × 32 px): use when the medium size is too big for the layout, or when the avatar has less importance
-- Medium (40 × 40 px): use as the default size
-- Large (60 × 60 px): use when an avatar is a focal point, such as on a single customer card
+- Extra small (20 x 20 px): use in tightly condensed layouts
+- Small (24 × 24 px): use when the medium size is too big for the layout, or when the avatar has less importance
+- Medium (28 × 28 px): use as the default size
+- Large (32 × 32 px): use when an avatar is a focal point, such as on a single customer card
+- Extra large (40 × 40 px): use when an avatar is a focal point, such as on a single customer card
 
 ---
 

@@ -72,7 +72,7 @@ export function UserMenu({
       </span>
       <MessageIndicator active={showIndicator}>
         <Avatar
-          size="medium"
+          size="md"
           initials={initials && initials.replace(' ', '')}
           source={avatar}
           name={name}
