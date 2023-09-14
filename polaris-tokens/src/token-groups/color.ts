@@ -805,7 +805,7 @@ export const color: {
     description: '',
   },
   'color-bg-transparent-active-experimental': {
-    value: colorsExperimental.blackAlpha[7],
+    value: colorsExperimental.blackAlpha[6],
     description: '',
   },
   'color-bg-transparent-disabled-experimental': {
