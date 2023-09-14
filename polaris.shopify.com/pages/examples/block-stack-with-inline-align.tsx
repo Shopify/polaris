@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  BlockStack,
-  Page,
-  InlineStack,
-  Text,
-  Divider,
-} from '@shopify/polaris';
+import {BlockStack, Page, InlineStack, Text, Divider} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
