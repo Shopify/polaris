@@ -61,5 +61,6 @@ const sizeMapping = {
   medium: 'md',
   large: 'lg',
   'xl-experimental': 'xl',
-  '2xl-experimental': '2xl',
+  // 2xl-experimental is not supported in the new Avatar component
+  '2xl-experimental': 'xl',
 };
