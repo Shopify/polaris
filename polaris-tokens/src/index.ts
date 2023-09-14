@@ -43,6 +43,12 @@ export type {
 } from './token-groups/font';
 
 export type {
+  HeightTokenGroup,
+  HeightTokenName,
+  HeightScale,
+} from './token-groups/height';
+
+export type {
   MotionTokenGroup,
   MotionTokenName,
   MotionDurationScale,
