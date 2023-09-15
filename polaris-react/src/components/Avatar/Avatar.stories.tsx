@@ -20,18 +20,13 @@ export default {
   component: Avatar,
 } as ComponentMeta<typeof Avatar>;
 
-const sizes: {
-  [S in NonNullable<AvatarProps['size']>]: string;
-} = {
-  '2xl-experimental': 'XXL',
-  'xl-experimental': 'XL',
-  large: 'Large',
-  medium: 'Medium',
-  small: 'Small',
-  extraSmall: 'XS',
-};
-
-const sizeEntries = Object.entries(sizes) as Entries<typeof sizes>;
+const sizes: NonNullable<AvatarProps['size']>[] = [
+  'xl',
+  'lg',
+  'md',
+  'sm',
+  'xs',
+];
 
 type Style = typeof STYLE_CLASSES[number];
 
@@ -73,7 +68,7 @@ export function All() {
               Default
             </Text>
             <InlineStack gap="2" blockAlign="center">
-              {sizeEntries.map(([size]) => (
+              {sizes.map((size) => (
                 <Avatar key={size} size={size} />
               ))}
             </InlineStack>
@@ -83,8 +78,8 @@ export function All() {
               With customer
             </Text>
             <InlineStack gap="2" blockAlign="center">
-              {sizeEntries.map(([size]) => (
-                <Avatar key={size} size={size} customer />
+              {sizes.map((size) => (
+                <Avatar key={size} size={size} />
               ))}
             </InlineStack>
           </BlockStack>
@@ -120,7 +115,7 @@ export function All() {
             </Text>
             <BlockStack gap="2">
               <InlineStack gap="2" blockAlign="center">
-                {sizeEntries.map(([size]) => (
+                {sizes.map((size) => (
                   <Avatar key={size} size={size} initials="WWW" />
                 ))}
               </InlineStack>
@@ -141,7 +136,7 @@ export function IconColorsSizes() {
     <BlockStack gap="2">
       {styleInitialsDefaultEntries.map(([style, initials]) => (
         <InlineStack key={style} gap="2" blockAlign="center">
-          {sizeEntries.map(([size]) => (
+          {sizes.map((size) => (
             <Avatar key={size} name={initials} size={size} />
           ))}
         </InlineStack>
@@ -155,7 +150,7 @@ export function InitialsColorsSizes() {
     <BlockStack gap="2">
       {styleInitialsDefaultEntries.map(([style, initials]) => (
         <InlineStack key={style} gap="2" blockAlign="center">
-          {sizeEntries.map(([size]) => (
+          {sizes.map((size) => (
             <Avatar key={size} initials={initials} size={size} />
           ))}
         </InlineStack>
@@ -169,7 +164,7 @@ export function InitialsLong() {
     <BlockStack gap="2">
       {styleInitialsLongEntries.map(([style, initialsLong]) => (
         <InlineStack key={style} gap="2" blockAlign="center">
-          {sizeEntries.map(([size]) => (
+          {sizes.map((size) => (
             <Avatar key={size} initials={initialsLong} size={size} />
           ))}
         </InlineStack>
@@ -194,13 +189,11 @@ export function ExtraSmallInContext() {
           items={[
             {
               content: 'Chet Baker',
-              prefix: <Avatar customer size="extraSmall" name="Chet Baker" />,
+              prefix: <Avatar size="xs" name="Chet Baker" />,
             },
             {
               content: 'Farrah Fawcett',
-              prefix: (
-                <Avatar customer size="extraSmall" name="Farrah Fawcett" />
-              ),
+              prefix: <Avatar size="xs" name="Farrah Fawcett" />,
             },
           ]}
         />
@@ -212,7 +205,7 @@ export function ExtraSmallInContext() {
 export function Image() {
   return (
     <InlineStack gap="2" blockAlign="center">
-      {sizeEntries.map(([size]) => (
+      {sizes.map((size) => (
         <Avatar
           key={size}
           size={size}
