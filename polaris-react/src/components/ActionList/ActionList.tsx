@@ -27,6 +27,8 @@ export interface ActionListProps {
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
 
+const FILTER_ACTIONS_THRESHOLD = 8;
+
 export type ActionListItemProps = ItemProps;
 
 export function ActionList({
@@ -136,11 +138,11 @@ export function ActionList({
       0,
     ) || 0;
 
-  const hasSearch = totalActions >= 8;
+  const hasManyActions = totalActions >= FILTER_ACTIONS_THRESHOLD;
 
   return (
     <>
-      {(allowFiltering || filterActions) && hasSearch && isFilterable && (
+      {(allowFiltering || filterActions) && hasManyActions && isFilterable && (
         <Box padding="2" paddingBlockEnd={totalFilteredActions > 0 ? '0' : '2'}>
           <SearchField
             placeholder={i18n.translate(
