@@ -38,3 +38,7 @@ Use to lay out children horizontally with equal gap between columns. Based on [C
 
 - For more control over padding and widths, [use the Box component](https://polaris.shopify.com/components/box)
 - To lay out a set of smaller components horizontally, [use the InlineStack component](https://polaris.shopify.com/components/layout-and-structure/inline-stack)
+
+## Related resources
+
+- InlineGrid props are named following the convention of CSS logical properties, such as `alignItems="start"` vs. `alignItems="left"`. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).

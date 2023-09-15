@@ -23,7 +23,7 @@ Layout is the arrangement of elements on a page. A good layout helps merchants u
 
 #### Layout primitives
 
-All layouts and spacing should be handled using layout primitives. This keeps our components simple, flexible and composable.
+All layouts and spacing should be handled using layout primitives. This keeps our components simple, flexible and composable. Our component naming conventions follow web standards for [logical properties and values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
 
 <RichCardGrid
   cards={posts.filter((post) => frontmatter.primitives.includes(post.title))}
