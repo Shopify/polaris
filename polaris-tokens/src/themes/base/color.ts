@@ -2,6 +2,7 @@ import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 import * as colors from '../../colors';
 import * as colorsExperimental from '../../colors-experimental';
+import {createVar as createVarName} from '../../utilities';
 
 export type ColorBackgroundAlias =
   | 'bg'
@@ -445,6 +446,304 @@ export type ColorTokenGroup = {
 export const color: {
   [TokenName in ColorTokenName]: MetaTokenProperties;
 } = {
+  // ------------------------------
+  // Net new tokens
+  // ------------------------------
+  'color-border-inverse-active': {value: colorsExperimental.gray[8]},
+  'color-border-inverse-hover': {value: colorsExperimental.gray[10]},
+  'color-border-warning': {value: colorsExperimental.orange[8]},
+  'color-checkbox-icon-disabled': {value: colorsExperimental.gray[1]},
+  'color-checkbox-surface-disabled': {value: colorsExperimental.blackAlpha[7]},
+  'color-fill-active': {value: colorsExperimental.gray[4]},
+  'color-fill-brand-selected': {value: colorsExperimental.gray[15]},
+  'color-fill-caution-active': {value: colorsExperimental.yellow[9]},
+  'color-fill-caution-hover': {value: colorsExperimental.yellow[8]},
+  'color-fill-critical-selected': {value: colorsExperimental.red[14]},
+  'color-fill-emphasis-active': {value: colorsExperimental.blue[15]},
+  'color-fill-emphasis-hover': {value: colorsExperimental.blue[14]},
+  'color-fill-emphasis': {value: colorsExperimental.blue[13]},
+  'color-fill-hover': {value: colorsExperimental.gray[3]},
+  'color-fill-info-active': {value: colorsExperimental.azure[11]},
+  'color-fill-info-hover': {value: colorsExperimental.azure[10]},
+  'color-fill-secondary-active': {value: colorsExperimental.gray[8]},
+  'color-fill-secondary-hover': {value: colorsExperimental.gray[7]},
+  'color-fill-selected': {value: colorsExperimental.gray[10]},
+  'color-fill-transparent-secondary-active': {
+    value: colorsExperimental.blackAlpha[8],
+  },
+  'color-fill-transparent-secondary-hover': {
+    value: colorsExperimental.blackAlpha[7],
+  },
+  'color-fill-transparent-selected': {value: colorsExperimental.blackAlpha[6]},
+  'color-fill-transparent': {value: colorsExperimental.blackAlpha[1]},
+  'color-fill-warning-active': {value: colorsExperimental.orange[11]},
+  'color-fill-warning-hover': {value: colorsExperimental.orange[10]},
+  'color-fill': {value: colorsExperimental.gray[1]},
+  'color-icon-secondary-active': {value: colorsExperimental.gray[14]},
+  'color-icon-secondary-hover': {value: colorsExperimental.gray[13]},
+  'color-link-active': {value: colorsExperimental.blue[15]},
+  'color-link-hover': {value: colorsExperimental.blue[14]},
+  'color-link': {value: colorsExperimental.blue[13]},
+  'color-nav-bg': {value: colorsExperimental.gray[7]},
+  'color-nav-surface-active': {value: colorsExperimental.gray[3]},
+  'color-nav-surface-hover': {value: colorsExperimental.gray[6]},
+  'color-nav-surface-selected': {value: colorsExperimental.gray[3]},
+  'color-nav-surface': {value: colorsExperimental.blackAlpha[3]},
+  'color-radio-button-icon-disabled': {value: colorsExperimental.gray[1]},
+  'color-radio-button-surface-disabled': {
+    value: colorsExperimental.blackAlpha[7],
+  },
+  'color-surface-emphasis-active': {value: colorsExperimental.blue[5]},
+  'color-surface-emphasis-hover': {value: colorsExperimental.blue[4]},
+  'color-surface-emphasis': {value: colorsExperimental.blue[3]},
+  'color-surface-inverse': {value: colorsExperimental.gray[15]},
+  'color-surface-magic-active': {value: colorsExperimental.purple[6]},
+  'color-surface-secondary-selected': {value: colorsExperimental.gray[7]},
+  'color-surface-tertiary-active': {value: colorsExperimental.gray[8]},
+  'color-surface-tertiary-hover': {value: colorsExperimental.gray[7]},
+  'color-surface-warning-active': {value: colorsExperimental.orange[5]},
+  'color-surface-warning-hover': {value: colorsExperimental.orange[4]},
+  'color-text-brand-on-fill-active': {value: colorsExperimental.gray[10]},
+  'color-text-brand-on-fill-disabled': {value: colorsExperimental.gray[1]},
+  'color-text-brand-on-fill-hover': {value: colorsExperimental.gray[8]},
+  'color-text-brand-on-fill': {value: colorsExperimental.gray[1]},
+  'color-text-caution-active': {value: colorsExperimental.yellow[16]},
+  'color-text-caution-hover': {value: colorsExperimental.yellow[15]},
+  'color-text-caution-on-fill': {value: colorsExperimental.yellow[15]},
+  'color-text-critical-on-fill': {value: colorsExperimental.red[1]},
+  'color-text-emphasis-on-fill-active': {value: colorsExperimental.blue[7]},
+  'color-text-emphasis-on-fill-hover': {value: colorsExperimental.blue[5]},
+  'color-text-emphasis-on-fill': {value: colorsExperimental.blue[1]},
+  'color-text-info-active': {value: colorsExperimental.azure[16]},
+  'color-text-info-hover': {value: colorsExperimental.azure[15]},
+  'color-text-magic-on-fill': {value: colorsExperimental.purple[1]},
+  'color-text-success-active': {value: colorsExperimental.green[16]},
+  'color-text-success-hover': {value: colorsExperimental.green[15]},
+  'color-text-success-on-fill': {value: colorsExperimental.green[1]},
+  'color-text-warning-active': {value: colorsExperimental.orange[16]},
+  'color-text-warning-hover': {value: colorsExperimental.orange[15]},
+  'color-text-warning-on-fill': {value: colorsExperimental.orange[16]},
+  'color-video-thumbnail-play-button-fill-hover': {
+    value: colorsExperimental.blackAlpha[15],
+  },
+  'color-video-thumbnail-play-button-fill': {
+    value: colorsExperimental.blackAlpha[14],
+  },
+  'color-video-thumbnail-play-button-text-on-fill': {
+    value: colorsExperimental.gray[1],
+  },
+  // ------------------------------
+  // Net new tokens (overridden in light-uplift)
+  // ------------------------------
+  'color-surface': {value: createVar('color-bg')},
+  'color-surface-hover': {value: colorsExperimental.gray[4]},
+  'color-surface-active': {value: colorsExperimental.gray[5]},
+  'color-surface-disabled': {value: colorsExperimental.blackAlpha[5]},
+  'color-surface-secondary': {value: createVar('color-bg-subdued')},
+  'color-surface-secondary-hover': {
+    value: createVar('color-bg-subdued-hover'),
+  },
+  'color-surface-secondary-active': {
+    value: createVar('color-bg-subdued-active'),
+  },
+  'color-surface-tertiary': {
+    value: createVar('color-bg-secondary-experimental'),
+  },
+  'color-fill-tertiary': {value: createVar('color-bg-strong')},
+  'color-fill-tertiary-hover': {value: createVar('color-bg-strong-hover')},
+  'color-fill-tertiary-active': {value: createVar('color-bg-strong-active')},
+  'color-input-surface': {value: createVar('color-bg-input')},
+  'color-input-surface-hover': {
+    value: createVar('color-bg-input-hover-experimental'),
+  },
+  'color-input-surface-active': {
+    value: createVar('color-bg-input-active-experimental'),
+  },
+  'color-fill-brand': {value: colorsExperimental.gray[15]},
+  'color-fill-brand-hover': {value: colorsExperimental.gray[16]},
+  'color-fill-brand-active': {value: colorsExperimental.gray[16]},
+  'color-surface-brand': {value: colorsExperimental.gray[8]},
+  'color-surface-brand-hover': {value: colorsExperimental.gray[7]},
+  'color-surface-brand-active': {value: colorsExperimental.gray[6]},
+  'color-surface-brand-selected': {value: colorsExperimental.gray[6]},
+  'color-surface-selected': {value: createVar('color-bg-app-selected')},
+  'color-fill-success': {value: createVar('color-bg-success-strong')},
+  'color-fill-success-hover': {
+    value: createVar('color-bg-success-strong-hover-experimental'),
+  },
+  'color-fill-success-active': {
+    value: createVar('color-bg-success-strong-active-experimental'),
+  },
+  'color-fill-success-secondary': {value: createVar('color-bg-success')},
+  'color-surface-success': {value: createVar('color-bg-success-subdued')},
+  'color-surface-success-hover': {
+    value: createVar('color-bg-success-subdued-hover'),
+  },
+  'color-surface-success-active': {
+    value: createVar('color-bg-success-subdued-active'),
+  },
+  'color-fill-critical': {value: createVar('color-bg-critical-strong')},
+  'color-fill-critical-hover': {
+    value: createVar('color-bg-critical-strong-hover'),
+  },
+  'color-fill-critical-active': {
+    value: createVar('color-bg-critical-strong-active'),
+  },
+  'color-fill-critical-secondary': {value: createVar('color-bg-critical')},
+  'color-surface-critical': {value: createVar('color-bg-critical-subdued')},
+  'color-surface-critical-hover': {
+    value: createVar('color-bg-critical-subdued-hover'),
+  },
+  'color-surface-critical-active': {
+    value: createVar('color-bg-critical-subdued-active'),
+  },
+  'color-fill-caution': {value: createVar('color-bg-caution-strong')},
+  'color-fill-caution-secondary': {value: createVar('color-bg-caution')},
+  'color-surface-caution': {value: createVar('color-bg-caution-subdued')},
+  'color-surface-caution-hover': {
+    value: createVar('color-bg-caution-subdued-hover'),
+  },
+  'color-surface-caution-active': {
+    value: createVar('color-bg-caution-subdued-active'),
+  },
+  'color-fill-info': {value: createVar('color-bg-info-strong')},
+  'color-fill-info-secondary': {value: createVar('color-bg-info')},
+  'color-surface-info': {value: createVar('color-bg-info-subdued')},
+  'color-surface-info-hover': {
+    value: createVar('color-bg-info-subdued-hover'),
+  },
+  'color-surface-info-active': {
+    value: createVar('color-bg-info-subdued-active'),
+  },
+  'color-fill-warning': {
+    value: createVar('color-bg-warning-strong-experimental'),
+  },
+  'color-fill-warning-secondary': {value: createVar('color-bg-warning')},
+  'color-surface-warning': {
+    value: createVar('color-bg-warning-subdued-experimental'),
+  },
+  'color-fill-magic': {value: createVar('color-bg-magic-strong')},
+  'color-fill-magic-secondary': {value: createVar('color-bg-magic')},
+  'color-fill-magic-secondary-hover': {
+    value: createVar('color-bg-magic-hover'),
+  },
+  'color-fill-magic-secondary-active': {
+    value: createVar('color-bg-magic-active'),
+  },
+  'color-surface-magic': {value: colorsExperimental.purple[3]},
+  'color-surface-magic-hover': {
+    value: createVar('color-bg-magic-subdued-hover'),
+  },
+  'color-fill-secondary': {value: createVar('color-bg-inset')},
+  'color-fill-inverse': {value: createVar('color-bg-inset-strong')},
+  'color-fill-inverse-hover': {value: createVar('color-bg-inverse-hover')},
+  'color-fill-inverse-active': {value: createVar('color-bg-inverse-active')},
+  'color-surface-transparent': {
+    value: createVar('color-bg-transparent-experimental'),
+  },
+  'color-fill-transparent-hover': {
+    value: createVar('color-bg-transparent-hover-experimental'),
+  },
+  'color-fill-transparent-active': {
+    value: createVar('color-bg-transparent-active-experimental'),
+  },
+  'color-fill-disabled': {
+    value: createVar('color-bg-transparent-disabled-experimental'),
+  },
+  'color-fill-transparent-secondary': {
+    value: createVar('color-bg-transparent-subdued-experimental'),
+  },
+  'color-fill-brand-disabled': {
+    value: createVar('color-bg-transparent-primary-disabled-experimental'),
+  },
+  'color-backdrop-bg': {value: createVar('color-bg-backdrop-experimental')},
+  'color-avatar-fill': {
+    value: createVar('color-avatar-background-experimental'),
+  },
+  'color-avatar-one-fill': {
+    value: createVar('color-avatar-style-one-background-experimental'),
+  },
+  'color-avatar-two-fill': {
+    value: createVar('color-avatar-style-two-background-experimental'),
+  },
+  'color-avatar-three-fill': {
+    value: createVar('color-avatar-style-three-background-experimental'),
+  },
+  'color-avatar-four-fill': {
+    value: createVar('color-avatar-style-four-background-experimental'),
+  },
+  'color-avatar-five-fill': {
+    value: createVar('color-avatar-style-five-background-experimental'),
+  },
+  'color-text-secondary': {value: createVar('color-text-subdued')},
+  'color-text-emphasis': {value: createVar('color-text-interactive')},
+  'color-text-emphasis-hover': {
+    value: createVar('color-text-interactive-hover'),
+  },
+  'color-text-emphasis-active': {
+    value: createVar('color-text-interactive-active'),
+  },
+  'color-text-brand': {value: createVar('color-text-primary')},
+  'color-text-brand-hover': {value: createVar('color-text-primary-hover')},
+  'color-text-critical-hover': {value: colorsExperimental.red[15]},
+  'color-text-info-on-fill': {value: createVar('color-text-info-strong')},
+  'color-text-warning': {value: colorsExperimental.orange[14]},
+  'color-text-inverse-secondary': {
+    value: createVar('color-text-inverse-subdued'),
+  },
+  'color-link-inverse': {value: colorsExperimental.blue[8]},
+  'color-avatar-text-on-fill': {
+    value: createVar('color-avatar-color-experimental'),
+  },
+  'color-avatar-one-text-on-fill': {
+    value: createVar('color-avatar-style-one-color-experimental'),
+  },
+  'color-avatar-two-text-on-fill': {
+    value: createVar('color-avatar-style-two-color-experimental'),
+  },
+  'color-avatar-three-text-on-fill': {
+    value: createVar('color-avatar-style-three-color-experimental'),
+  },
+  'color-avatar-four-text-on-fill': {
+    value: createVar('color-avatar-style-four-color-experimental'),
+  },
+  'color-avatar-five-text-on-fill': {
+    value: createVar('color-avatar-style-five-color-experimental'),
+  },
+  'color-icon-secondary': {value: createVar('color-icon-subdued')},
+  'color-icon-emphasis': {value: createVar('color-icon-interactive')},
+  'color-icon-emphasis-hover': {
+    value: createVar('color-icon-interactive-hover'),
+  },
+  'color-icon-emphasis-active': {
+    value: createVar('color-icon-interactive-active'),
+  },
+  'color-icon-brand': {value: createVar('color-icon-primary')},
+  'color-border-secondary': {value: createVar('color-border-subdued')},
+  'color-border-tertiary': {value: colorsExperimental.gray[10]},
+  'color-input-border': {value: createVar('color-border-input')},
+  'color-input-border-hover': {value: createVar('color-border-input-hover')},
+  'color-input-border-active': {
+    value: createVar('color-border-input-active-experimental'),
+  },
+  'color-border-emphasis': {value: colorsExperimental.blue[13]},
+  'color-border-emphasis-hover': {
+    value: createVar('color-border-interactive-hover'),
+  },
+  'color-border-emphasis-active': {
+    value: createVar('color-border-interactive-active'),
+  },
+  'color-border-focus': {value: createVar('color-border-interactive-focus')},
+  'color-border-brand': {value: createVar('color-border-primary')},
+  'color-border-critical-secondary': {
+    value: createVar('color-border-critical-strong-experimental'),
+  },
+  'color-border-magic-secondary': {
+    value: createVar('color-border-magic-strong'),
+  },
+  // ------------------------------
+  // Existing tokens
+  // ------------------------------
   'color-bg-inverse': {
     value: colors.gray[900],
     description: '',
@@ -1149,3 +1448,7 @@ export const color: {
     description: '',
   },
 };
+
+function createVar(colorTokenName: ColorTokenName) {
+  return `var(${createVarName(colorTokenName)})`;
+}
