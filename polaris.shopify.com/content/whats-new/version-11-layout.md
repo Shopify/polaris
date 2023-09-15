@@ -34,7 +34,7 @@ Creating new layout components and applying them to the existing Polaris compone
 
 ### Removed components
 
-The original Stack and Card components have been removed and replaced with [LegacyStack](https://polaris.shopify.com/components/layout-and-structure/legacy-stack) and [LegacyCard](https://polaris.shopify.com/components/layout-and-structure/legacy-card). We plan to replace LegacyStack and LegacyCard with the new [Card](https://polaris.shopify.com/components/layout-and-structure/card) and [VerticalStack](https://polaris.shopify.com/components/layout-and-structure/vertical-stack) components in the next major release.
+The original Stack and Card components have been removed and replaced with [LegacyStack](https://polaris.shopify.com/components/layout-and-structure/legacy-stack) and [LegacyCard](https://polaris.shopify.com/components/layout-and-structure/legacy-card). We plan to replace LegacyStack and LegacyCard with the new [Card](https://polaris.shopify.com/components/layout-and-structure/card) and [VerticalStack (renamed to BlockStack in v12)](https://polaris.shopify.com/components/layout-and-structure/block-stack) components in the next major release.
 
 ### Renamed components
 
@@ -46,7 +46,7 @@ The [Text](https://polaris.shopify.com/components/typography/text) component has
 
 ## What’s next?
 
-We are working on aligning layout component APIs across the platform for consistency. Once those are finalized and implemented, we will mark the remaining layout components as beta. Additionally, we will be creating codemod transformations for users to migrate from LegacyCard to Card, LegacyStack to VerticalStack, and TextContainer to VerticalStack.
+We are working on aligning layout component APIs across the platform for consistency. Once those are finalized and implemented, we will mark the remaining layout components as beta. Additionally, we will be creating codemod transformations for users to migrate from LegacyCard to Card, LegacyStack to BlockStack, and TextContainer to BlockStack.
 
 ## Resources
 

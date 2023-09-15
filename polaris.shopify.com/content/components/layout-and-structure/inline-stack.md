@@ -48,8 +48,8 @@ Use to display children horizontally in a row. Based on CSS Flexbox.
 ## Related components
 
 - To create the large-scale structure of pages, [use the InlineGrid component](https://polaris.shopify.com/components/layout-and-structure/inline-grid)
-- To display elements vertically, [use the VerticalStack component](https://polaris.shopify.com/components/vertical-stack)
+- To display elements vertically, [use the BlockStack component](https://polaris.shopify.com/components/layout-and-structure/block-stack)
 
 ## Related resources
 
-- InlineStack props are named following the convention of CSS logical properties, such as 'padding-inline-start' and 'padding-block-start'. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).
+- InlineStack props are named following the convention of CSS logical properties, such as `align="start"` vs. `align="left"` and `blockAlign="end"` vs. `verticalAlign="bottom"`. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).
