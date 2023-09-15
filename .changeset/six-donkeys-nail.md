@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Updates Storybook stories containing Modals to be wrapped in a Frame component
+Updates Storybook stories to be wrapped with an empty FrameContext.Provider
