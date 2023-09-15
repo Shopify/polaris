@@ -51,7 +51,7 @@ export function calculateVerticalPosition(
   const containerRectTop = fixed ? 0 : containerRect.top;
 
   const positionIfAbove =
-    preferredPosition === 'right'
+    preferredPosition === 'right' || preferredPosition === 'left'
       ? {
           height: desiredHeight - verticalMargins,
           top: activatorBottom + containerRectTop - heightIfAbove,
@@ -64,7 +64,7 @@ export function calculateVerticalPosition(
         };
 
   const positionIfBelow =
-    preferredPosition === 'right'
+    preferredPosition === 'right' || preferredPosition === 'left'
       ? {
           height: desiredHeight - verticalMargins,
           top: activatorTop + containerRectTop,
@@ -125,6 +125,9 @@ export function calculateHorizontalPosition(
   //   distanceToRightScroll >= overlayMargins.container;
   // const positionIfRight = activatorRect.right;
   // const positionIfLeft = activatorRect.left;
+  const activatorLeft = activatorRect.left - overlayRect.width;
+  const activatorRight =
+    containerRect.width - (activatorRect.left + activatorRect.width);
 
   if (!preferredPosition) {
     if (preferredAlignment === 'left') {
@@ -135,7 +138,7 @@ export function calculateHorizontalPosition(
     } else if (preferredAlignment === 'right') {
       return Math.min(
         maximum,
-        Math.max(0, activatorRect.right - overlayMargins.horizontal),
+        Math.max(0, activatorRight - overlayMargins.horizontal),
       );
     }
 
@@ -148,7 +151,7 @@ export function calculateHorizontalPosition(
   if (preferredPosition === 'right') {
     return activatorRect.right;
   } else if (preferredPosition === 'left') {
-    return activatorRect.left;
+    return activatorLeft;
   }
 
   return Math.min(
