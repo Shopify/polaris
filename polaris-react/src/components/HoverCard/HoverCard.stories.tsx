@@ -37,7 +37,11 @@ export function Default() {
     setActive(currentHoverCard);
   }, []);
 
-  const activator = <Link url="#">Colm Dillane</Link>;
+  const activator = (
+    <Link removeUnderline url="#">
+      Colm Dillane
+    </Link>
+  );
 
   return (
     <div style={{height: '650px'}}>
@@ -50,7 +54,6 @@ export function Default() {
                 Customer
               </Text>
               <HoverCard
-                fullHeight
                 toggleActive={setActive}
                 active
                 activator={activator}
