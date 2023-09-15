@@ -48,7 +48,7 @@ export function calculateVerticalPosition(
   const positionIfAbove =
     preferredPosition === 'right'
       ? {
-          height: heightIfAbove - verticalMargins,
+          height: desiredHeight - verticalMargins,
           top: activatorBottom + containerRectTop - heightIfAbove,
           positioning: 'above',
         }
@@ -61,7 +61,7 @@ export function calculateVerticalPosition(
   const positionIfBelow =
     preferredPosition === 'right'
       ? {
-          height: heightIfAbove - verticalMargins,
+          height: desiredHeight - verticalMargins,
           top: activatorTop + containerRectTop,
           positioning: 'below',
         }
@@ -122,7 +122,6 @@ export function calculateHorizontalPosition(
       Math.max(0, activatorRect.right - overlayMargins.horizontal),
     );
   } else if (preferredPosition === 'right') {
-    console.log(activatorRect.right);
     return activatorRect.right;
   }
 
