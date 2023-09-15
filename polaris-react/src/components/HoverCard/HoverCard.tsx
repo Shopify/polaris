@@ -1,8 +1,10 @@
-import React, {Children, useRef, useEffect, useState} from 'react';
+import React, {Children, useRef, useId, useEffect, useState} from 'react';
 
 import type {PositionedOverlayProps} from '../PositionedOverlay';
-import {PositionedOverlay} from '../PositionedOverlay';
 import {Portal} from '../Portal';
+
+import styles from './HoverCard.scss';
+import {HoverCardOverlay} from './components/HoverCardOverlay';
 
 export interface HoverCardProps {
   /** The content to display inside the popover */
@@ -50,8 +52,10 @@ export function HoverCard({
   toggleActive,
   ...rest
 }: HoverCardProps) {
-  const overlayRef = useRef<PositionedOverlay>(null);
+  const overlayRef = useRef<HoverCardOverlay>(null);
   const activatorRef = useRef<HTMLElement>(null);
+
+  const id = useId();
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
 
@@ -66,27 +70,28 @@ export function HoverCard({
   const portal =
     activatorNode && active ? (
       <Portal idPrefix="hovercard">
-        <PositionedOverlay
+        <HoverCardOverlay
+          id={id}
           ref={overlayRef}
           activator={activatorNode}
           active={active}
           fixed={fixed}
           zIndexOverride={zIndexOverride}
-          render={() => children}
           {...rest}
-        />
+        >
+          {children}
+        </HoverCardOverlay>
       </Portal>
     ) : null;
 
   return (
     <WrapperComponent
+      className={styles.ActivatorWrapper}
       ref={activatorRef}
       onMouseEnter={() => {
-        console.log('HOVERED');
         toggleActive(true);
       }}
       onMouseLeave={() => {
-        console.log('LEFT');
         toggleActive(false);
       }}
     >
