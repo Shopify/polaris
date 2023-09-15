@@ -2,7 +2,7 @@ import React from 'react';
 import {intersectionObserver} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
-import {IndexFiltersMode} from '../../../types';
+import {IndexFiltersMode} from '../../../../../utilities/index-filters';
 import {useIsSticky} from '..';
 
 interface Props {

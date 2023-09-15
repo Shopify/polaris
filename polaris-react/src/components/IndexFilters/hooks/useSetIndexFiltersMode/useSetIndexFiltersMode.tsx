@@ -1,11 +1,12 @@
-import {useState} from 'react';
-
-import {IndexFiltersMode} from '../../types';
+import {
+  useIndexFiltersManager,
+  IndexFiltersMode,
+} from '../../../../utilities/index-filters';
 
 export function useSetIndexFiltersMode(
   defaultMode: IndexFiltersMode = IndexFiltersMode.Default,
 ) {
-  const [mode, setMode] = useState<IndexFiltersMode>(defaultMode);
+  const {mode, setMode} = useIndexFiltersManager(defaultMode);
 
   return {mode, setMode};
 }

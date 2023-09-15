@@ -7,6 +7,7 @@ import {
   useIndexResourceState,
   IndexTable,
   IndexFilters,
+  IndexFiltersMode,
   RangeSlider,
   TextField,
   Card,
@@ -95,7 +96,11 @@ function Table() {
   );
 }
 
-function BasicExample(props?: Partial<IndexFiltersProps>) {
+function BasicExample(
+  props?: Partial<IndexFiltersProps> & {
+    withFilteringByDefault?: boolean;
+  },
+) {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   const [itemStrings, setItemStrings] = useState([
@@ -184,7 +189,9 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
     {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
   ];
   const [sortSelected, setSortSelected] = useState(['order asc']);
-  const {mode, setMode} = useSetIndexFiltersMode();
+  const {mode, setMode} = useSetIndexFiltersMode(
+    props?.withFilteringByDefault ? IndexFiltersMode.Filtering : undefined,
+  );
   const onHandleCancel = () => {};
 
   const onHandleSave = async () => {
@@ -383,6 +390,10 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
 
 export function Default() {
   return <BasicExample />;
+}
+
+export function WithFilteringByDefault() {
+  return <BasicExample withFilteringByDefault />;
 }
 
 export function WithoutKeyboardShortcuts() {

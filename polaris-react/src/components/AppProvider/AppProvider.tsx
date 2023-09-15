@@ -3,6 +3,7 @@ import type {ThemeName} from '@shopify/polaris-tokens';
 import {themeNameDefault} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
+import {IndexFiltersManager} from '../IndexFiltersManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
@@ -179,7 +180,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
                     <PortalsManager>
                       <FocusManager>
                         <EphemeralPresenceManager>
-                          {children}
+                          <IndexFiltersManager>{children}</IndexFiltersManager>
                         </EphemeralPresenceManager>
                       </FocusManager>
                     </PortalsManager>
