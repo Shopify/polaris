@@ -16,7 +16,7 @@ import {
 import type {PreferredPosition, PreferredAlignment} from './utilities/math';
 import styles from './PositionedOverlay.module.scss';
 
-type Positioning = 'above' | 'below';
+type Positioning = 'above' | 'below' | 'left' | 'right';
 
 interface OverlayDetails {
   left?: number;
@@ -336,6 +336,7 @@ export class PositionedOverlay extends PureComponent<
           containerRect,
           overlayMargins,
           preferredAlignment,
+          preferredPosition,
         );
 
         const chevronOffset =

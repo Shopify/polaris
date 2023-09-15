@@ -1,6 +1,6 @@
 import {Rect} from '../../../utilities/geometry';
 
-export type PreferredPosition = 'above' | 'below' | 'mostSpace';
+export type PreferredPosition = 'above' | 'below' | 'mostSpace' | 'right';
 
 export type PreferredAlignment = 'left' | 'center' | 'right';
 
@@ -45,17 +45,31 @@ export function calculateVerticalPosition(
   const heightIfAbove = Math.min(spaceAbove, desiredHeight);
   const containerRectTop = fixed ? 0 : containerRect.top;
 
-  const positionIfAbove = {
-    height: heightIfAbove - verticalMargins,
-    top: activatorTop + containerRectTop - heightIfAbove,
-    positioning: 'above',
-  };
+  const positionIfAbove =
+    preferredPosition === 'right'
+      ? {
+          height: heightIfAbove - verticalMargins,
+          top: activatorBottom + containerRectTop - heightIfAbove,
+          positioning: 'above',
+        }
+      : {
+          height: heightIfAbove - verticalMargins,
+          top: activatorTop + containerRectTop - heightIfAbove,
+          positioning: 'above',
+        };
 
-  const positionIfBelow = {
-    height: heightIfBelow - verticalMargins,
-    top: activatorBottom + containerRectTop,
-    positioning: 'below',
-  };
+  const positionIfBelow =
+    preferredPosition === 'right'
+      ? {
+          height: heightIfAbove - verticalMargins,
+          top: activatorTop + containerRectTop,
+          positioning: 'below',
+        }
+      : {
+          height: heightIfBelow - verticalMargins,
+          top: activatorBottom + containerRectTop,
+          positioning: 'below',
+        };
 
   if (preferredPosition === 'above') {
     return (enoughSpaceFromTopScroll ||
@@ -90,6 +104,7 @@ export function calculateHorizontalPosition(
   containerRect: Rect,
   overlayMargins: Margins,
   preferredAlignment: PreferredAlignment,
+  preferredPosition?: PreferredPosition,
 ) {
   const maximum = containerRect.width - overlayRect.width;
 
@@ -99,13 +114,16 @@ export function calculateHorizontalPosition(
       Math.max(0, activatorRect.left - overlayMargins.horizontal),
     );
   } else if (preferredAlignment === 'right') {
-    const activatorRight =
-      containerRect.width - (activatorRect.left + activatorRect.width);
+    // const activatorRight
+    // containerRect.width - (activatorRect.left + activatorRect.width);
 
     return Math.min(
       maximum,
-      Math.max(0, activatorRight - overlayMargins.horizontal),
+      Math.max(0, activatorRect.right - overlayMargins.horizontal),
     );
+  } else if (preferredPosition === 'right') {
+    console.log(activatorRect.right);
+    return activatorRect.right;
   }
 
   return Math.min(
