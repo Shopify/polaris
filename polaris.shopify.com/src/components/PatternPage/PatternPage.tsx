@@ -107,7 +107,6 @@ export const Variants = ({
 };
 
 const BaseMarkdown = (props: ComponentProps<typeof Markdown>) => {
-  // console.log('IN MARKDOWN', JSON.stringify(patternData, null, 2));
   return (
     <Markdown
       {...props}
@@ -193,9 +192,6 @@ export default function PatternPage({pattern}: Props) {
     toggleCode(true);
   }, [pattern.frontmatter]);
 
-  // props.data.variants = {...JSON.parse(props.data.variants)};
-  // console.log('PROPS', JSON.stringify(props, null, 2));
-
   return (
     <>
       <PageMeta
@@ -221,7 +217,12 @@ export default function PatternPage({pattern}: Props) {
               </p>
             ) : null}
           </Stack>
-          <CodeVisibilityProvider showCode={showCode} setShowCode={toggleCode}>
+          <CodeVisibilityProvider
+            showCode={showCode}
+            setShowCode={(...args) => {
+              toggleCode(...args);
+            }}
+          >
             <PatternMarkdown {...pattern} />
           </CodeVisibilityProvider>
         </Stack>
