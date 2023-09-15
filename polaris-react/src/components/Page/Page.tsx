@@ -48,7 +48,9 @@ export function Page({
     divider && hasHeaderContent && styles.divider,
   );
 
-  const headerMarkup = hasHeaderContent ? <Header {...rest} /> : null;
+  const headerMarkup = hasHeaderContent ? (
+    <Header filterActions {...rest} />
+  ) : null;
 
   return (
     <div className={pageClassName}>
