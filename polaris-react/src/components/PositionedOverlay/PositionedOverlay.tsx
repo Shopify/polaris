@@ -313,6 +313,7 @@ export class PositionedOverlay extends PureComponent<
           containerRect,
           overlayMargins,
           preferredAlignment,
+          // scrollableContainerRect,
           preferredPosition,
         );
 
