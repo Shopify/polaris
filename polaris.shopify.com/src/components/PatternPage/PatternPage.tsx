@@ -170,6 +170,11 @@ const defaultMdxComponents: React.ComponentProps<
       {children}
     </HeadingWithCopyButton>
   ),
+  dl: ({children}) => (
+    <Box as="dl" className={styles.DefinitionList}>
+      {children}
+    </Box>
+  ),
 };
 
 const PatternMarkdown = (props: ComponentProps<typeof Markdown>) => (
