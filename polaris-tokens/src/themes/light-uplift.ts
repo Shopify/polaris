@@ -187,8 +187,6 @@ export const metaThemeLightUpliftPartial = createMetaThemePartial({
   },
   space: {
     // v12.0.0
-    'space-0': {value: size[0]},
-    'space-025': {value: size['025']},
     'space-050': {value: size['050']},
     'space-100': {value: size[100]},
     'space-150': {value: size[150]},

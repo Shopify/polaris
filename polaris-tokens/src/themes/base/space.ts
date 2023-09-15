@@ -1,3 +1,4 @@
+import {size} from '../../size';
 import type {Experimental} from '../../types';
 import {createVarName} from '../../utilities';
 import type {MetaTokenProperties} from '../types';
@@ -50,10 +51,10 @@ export const space: {
   [TokenName in SpaceTokenName]: MetaTokenProperties;
 } = {
   'space-0': {
-    value: '0px',
+    value: size[0],
   },
   'space-025': {
-    value: '1px',
+    value: size['025'],
   },
   'space-050': {
     value: createVar('space-05'),
