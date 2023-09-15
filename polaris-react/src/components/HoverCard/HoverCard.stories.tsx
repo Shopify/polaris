@@ -40,31 +40,38 @@ export function Default() {
   const activator = <Link url="#">Colm Dillane</Link>;
 
   return (
-    <div style={{height: '250px'}}>
+    <div style={{height: '850px'}}>
       <Card>
-        <VerticalStack gap="3">
-          <Text as="h2" variant="headingSm">
-            Customer
-          </Text>
-          <HoverCard
-            toggleActive={setActive}
-            active={active}
-            activator={activator}
-            activatorWrapper="div"
-            preferredPosition="right"
-          >
-            <Box padding="4">
-              <VerticalStack gap="1">
-                <span>
-                  <Link removeUnderline>Colm Dillane</Link>
-                </span>
-                <Text as="p">1-800-KID-SUPR</Text>
-                <Text as="p">colm@kid.super</Text>
-                <Text as="p">Brooklyn, NY</Text>
-              </VerticalStack>
-            </Box>
-          </HoverCard>
+        <Box minHeight="800px" />
+        <VerticalStack align="center">
+          <Box minHeight="800px">
+            <VerticalStack gap="3">
+              <Text as="h2" variant="headingSm">
+                Customer
+              </Text>
+              <HoverCard
+                fullHeight
+                toggleActive={setActive}
+                active
+                activator={activator}
+                activatorWrapper="div"
+                preferredPosition="right"
+              >
+                <Box padding="4">
+                  <VerticalStack gap="0">
+                    <Text as="span" variant="headingSm">
+                      <Link removeUnderline>Colm Dillane</Link>
+                    </Text>
+                    <Text as="p">+1 800-KID-SUPR</Text>
+                    <Text as="p">colm@kid.super</Text>
+                    <Text as="p">Brooklyn, NY</Text>
+                  </VerticalStack>
+                </Box>
+              </HoverCard>
+            </VerticalStack>
+          </Box>
         </VerticalStack>
+        <Box minHeight="800px" />
       </Card>
     </div>
   );
