@@ -6,6 +6,7 @@ import {
   getResponsiveValue,
   classNames,
   sanitizeCustomProperties,
+  mapResponsivePropValues,
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 import type {Error} from '../../types';
@@ -122,12 +123,13 @@ export function Choice({
       'space',
       bleedInlineEnd || bleed,
     ),
-    ...Object.fromEntries(
-      Object.entries(getResponsiveValue('choice', 'fill', fill)).map(
-        // Map "true" => "100%" and "false" => "auto" for use in
-        // inline/block-size calc()
-        ([key, value]) => [key, value ? '100%' : 'auto'],
-      ),
+
+    ...getResponsiveValue(
+      'choice',
+      'fill',
+      // Map "true" => "100%" and "false" => "auto" for use in
+      // inline/block-size calc()
+      mapResponsivePropValues(fill, (value) => (value ? '100%' : 'auto')),
     ),
   } as React.CSSProperties;
 
