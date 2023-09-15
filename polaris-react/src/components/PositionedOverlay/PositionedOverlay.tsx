@@ -314,7 +314,9 @@ export class PositionedOverlay extends PureComponent<
           overlayMargins,
           preferredAlignment,
           // scrollableContainerRect,
-          preferredPosition,
+          preferredPosition === 'right' || preferredPosition === 'left'
+            ? preferredPosition
+            : undefined,
         );
 
         const chevronOffset =
