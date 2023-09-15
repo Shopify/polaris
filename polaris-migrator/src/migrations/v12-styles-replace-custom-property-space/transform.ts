@@ -8,7 +8,7 @@ export default function transformer(fileInfo: FileInfo, _: API) {
 
 const replacementMaps = {
   '/.+/': {
-    '--p-space-05': '--p-space-05',
+    '--p-space-05': '--p-space-050',
     '--p-space-1': '--p-space-100',
     '--p-space-1_5-experimental': '--p-space-150',
     '--p-space-2': '--p-space-200',
