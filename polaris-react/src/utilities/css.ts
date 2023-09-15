@@ -1,15 +1,16 @@
 import type {BreakpointsAlias} from '@shopify/polaris-tokens';
 import {breakpointsAliases} from '@shopify/polaris-tokens';
+import type {Entries} from 'type-fest';
 
 import {isObject} from './is-object';
 
 type Falsy = boolean | undefined | null | 0;
 
-type ResponsivePropConfig<T = string> = {
+export type ResponsivePropObject<T = string> = {
   [Breakpoint in BreakpointsAlias]?: T;
 };
 
-export type ResponsiveProp<T> = T | ResponsivePropConfig<T>;
+export type ResponsiveProp<T = string> = T | ResponsivePropObject<T>;
 
 export type ResponsiveValue<T = string> = undefined | ResponsiveProp<T>;
 
@@ -105,4 +106,19 @@ export function getResponsiveValue<T = string>(
       responsiveValue,
     ]),
   );
+}
+
+export function mapResponsivePropValues<Input, Output>(
+  responsiveProp: ResponsiveProp<Input> | undefined,
+  fn: (value?: Input) => Output | undefined,
+): ResponsiveProp<Output> | undefined {
+  if (isObject(responsiveProp)) {
+    return Object.fromEntries(
+      (Object.entries(responsiveProp) as Entries<typeof responsiveProp>).map(
+        ([breakpointAlias, value]) => [breakpointAlias, fn(value)],
+      ),
+    );
+  }
+
+  return fn(responsiveProp as Input);
 }
