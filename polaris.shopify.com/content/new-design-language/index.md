@@ -148,7 +148,7 @@ The [`LegacyCard`](https://polaris.shopify.com/components/layout-and-structure/l
 This may result in some visual hierarchy/padding issues depending on how your cards are composed.
 You can resolve this in a number of ways:
 
-- _recommended_ – Use [`Card`](https://polaris.shopify.com/components/layout-and-structure/card) and [`VerticalStack`](https://polaris.shopify.com/components/layout-and-structure/vertical-stack) to compose a new card layout
+- _recommended_ – Use [`Card`](https://polaris.shopify.com/components/layout-and-structure/card) and [`BlockStack`](https://polaris.shopify.com/components/layout-and-structure/block-stack) to compose a new card layout
 - Remove any custom content spacing wrappers and use `<LegacyCard.Section />`, `<LegacyCard.Header />`, or `<LegacyCard.Section flush />` instead.
   Issues involving a lack of top or bottom padding on the card is likely caused by this.
 - Update all custom content padding using `--p-space-5` to use `--p-space-4`.
