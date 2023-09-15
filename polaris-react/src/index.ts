@@ -205,6 +205,9 @@ export type {IndicatorProps} from './components/Indicator';
 export {InlineStack} from './components/InlineStack';
 export type {InlineStackProps} from './components/InlineStack';
 
+export {HoverCard} from './components/HoverCard';
+export type {HoverCardProps} from './components/HoverCard';
+
 export {InlineCode} from './components/InlineCode';
 export type {InlineCodeProps} from './components/InlineCode';
 
