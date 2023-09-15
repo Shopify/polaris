@@ -76,7 +76,8 @@ export type ColorBackgroundAlias =
    * type alias (e.g. `ColorComponentBackgroundAlias`) and
    * union it here in `ColorBackgroundAlias`.
    */
-  | 'nav-bg';
+  | 'nav-bg'
+  | 'backdrop-bg';
 
 export type ColorBorderAlias =
   | 'border'
@@ -89,6 +90,7 @@ export type ColorBorderAlias =
   | 'border-critical-secondary'
   | 'border-disabled'
   | 'border-hover'
+  | 'border-focus'
   | 'border-info'
   | 'border-info-subdued'
   | 'border-input'
@@ -112,9 +114,7 @@ export type ColorBorderAlias =
   | 'border-success'
   | 'border-success-subdued'
   | 'border-secondary'
-  | 'border-secondary-hover'
   | 'border-tertiary'
-  | 'border-tertiary-hover'
   | 'border-brand'
   | 'border-warning'
   | 'border-emphasis'
@@ -249,8 +249,6 @@ export type ColorLinkAlias =
   | 'link-active'
   | 'link-inverse';
 
-export type ColorFocusAlias = 'focus-outline';
-
 export type ColorSurfaceAlias =
   | 'surface'
   | 'surface-hover'
@@ -264,6 +262,7 @@ export type ColorSurfaceAlias =
   | 'surface-tertiary'
   | 'surface-tertiary-hover'
   | 'surface-tertiary-active'
+  | 'surface-transparent'
   | 'surface-brand'
   | 'surface-brand-hover'
   | 'surface-brand-active'
