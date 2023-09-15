@@ -1,6 +1,11 @@
 import {Rect} from '../../../utilities/geometry';
 
-export type PreferredPosition = 'above' | 'below' | 'mostSpace' | 'right';
+export type PreferredPosition =
+  | 'above'
+  | 'below'
+  | 'mostSpace'
+  | 'right'
+  | 'left';
 
 export type PreferredAlignment = 'left' | 'center' | 'right';
 
@@ -104,25 +109,46 @@ export function calculateHorizontalPosition(
   containerRect: Rect,
   overlayMargins: Margins,
   preferredAlignment: PreferredAlignment,
+  // scrollableContainerRect: Rect,
   preferredPosition?: PreferredPosition,
 ) {
   const maximum = containerRect.width - overlayRect.width;
+  // const spaceLeft = scrollableContainerRect.left - activatorRect.left;
+  // const spaceRight = activatorRect.right - scrollableContainerRect.left;
+  // const distanceToLeftScroll =
+  //   activatorRect.left - Math.max(scrollableContainerRect.left, 0);
+  // const distanceToRightScroll =
+  //   activatorRect.right - Math.max(scrollableContainerRect.right, 0);
+  // const enoughSpaceForLeftScroll =
+  //   distanceToLeftScroll >= overlayMargins.container;
+  // const enoughSpaceForRightScroll =
+  //   distanceToRightScroll >= overlayMargins.container;
+  // const positionIfRight = activatorRect.right;
+  // const positionIfLeft = activatorRect.left;
 
-  if (preferredAlignment === 'left') {
+  if (!preferredPosition) {
+    if (preferredAlignment === 'left') {
+      return Math.min(
+        maximum,
+        Math.max(0, activatorRect.left - overlayMargins.horizontal),
+      );
+    } else if (preferredAlignment === 'right') {
+      return Math.min(
+        maximum,
+        Math.max(0, activatorRect.right - overlayMargins.horizontal),
+      );
+    }
+
     return Math.min(
       maximum,
-      Math.max(0, activatorRect.left - overlayMargins.horizontal),
+      Math.max(0, activatorRect.center.x - overlayRect.width / 2),
     );
-  } else if (preferredAlignment === 'right') {
-    // const activatorRight
-    // containerRect.width - (activatorRect.left + activatorRect.width);
+  }
 
-    return Math.min(
-      maximum,
-      Math.max(0, activatorRect.right - overlayMargins.horizontal),
-    );
-  } else if (preferredPosition === 'right') {
+  if (preferredPosition === 'right') {
     return activatorRect.right;
+  } else if (preferredPosition === 'left') {
+    return activatorRect.left;
   }
 
   return Math.min(

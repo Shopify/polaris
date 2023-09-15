@@ -40,11 +40,11 @@ export function Default() {
   const activator = <Link url="#">Colm Dillane</Link>;
 
   return (
-    <div style={{height: '850px'}}>
+    <div style={{height: '650px'}}>
       <Card>
-        <Box minHeight="800px" />
+        <Box minHeight="600px" />
         <VerticalStack align="center">
-          <Box minHeight="800px">
+          <Box minHeight="400px">
             <VerticalStack gap="3">
               <Text as="h2" variant="headingSm">
                 Customer
@@ -63,8 +63,7 @@ export function Default() {
                       <Link removeUnderline>Colm Dillane</Link>
                     </Text>
                     <Text as="p">+1 800-KID-SUPR</Text>
-                    <Text as="p">colm@kid.super</Text>
-                    <Text as="p">Brooklyn, NY</Text>
+                    <Link url="mailto:colm@kid.super">colm@kid.super</Link>
                   </VerticalStack>
                 </Box>
               </HoverCard>
