@@ -4,7 +4,7 @@ import type {
   ShadowAliasOrScale,
 } from '@shopify/polaris-tokens';
 
-import {getResponsiveValue} from '../../utilities/css';
+import {getResponsiveValue, mapResponsivePropValues} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './ShadowBevel.scss';
@@ -46,19 +46,19 @@ export function ShadowBevel(props: ShadowBevelProps) {
         ...getResponsiveValue(
           'shadow-bevel',
           'content',
-          mapResponsiveProp(bevel, (bevel) => (bevel ? '""' : 'none')),
+          mapResponsivePropValues(bevel, (bevel) => (bevel ? '""' : 'none')),
         ),
         ...getResponsiveValue(
           'shadow-bevel',
           'box-shadow',
-          mapResponsiveProp(bevel, (bevel) =>
+          mapResponsivePropValues(bevel, (bevel) =>
             bevel ? `var(--p-shadow-${boxShadow})` : 'none',
           ),
         ),
         ...getResponsiveValue(
           'shadow-bevel',
           'border-radius',
-          mapResponsiveProp(bevel, (bevel) =>
+          mapResponsivePropValues(bevel, (bevel) =>
             bevel
               ? `var(--p-border-radius-${borderRadius})`
               : 'var(--p-border-radius-0)',
@@ -68,21 +68,5 @@ export function ShadowBevel(props: ShadowBevelProps) {
     >
       {children}
     </Component>
-  );
-}
-
-function mapResponsiveProp(
-  responsiveProp: ResponsiveProp<boolean>,
-  callback: (value: boolean) => string,
-): ResponsiveProp<string> {
-  if (typeof responsiveProp === 'boolean') {
-    return callback(responsiveProp);
-  }
-
-  return Object.fromEntries(
-    Object.entries(responsiveProp).map(([breakpointsAlias, value]) => [
-      breakpointsAlias,
-      callback(value),
-    ]),
   );
 }
