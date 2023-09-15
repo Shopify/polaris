@@ -45,19 +45,12 @@ export function createPolarisCSSVar<T extends string | number = string>(
   tokenSubgroup: string,
   tokenValue: T,
 ): PolarisCSSVar {
-  // For backwards compatibility with `Grid` and `Grid.Cell`, accept already
-  // formed var()'s using either polaris or polaris component custom properties.
+  // `Grid`'s `gap` prop used to allow passing fully formed var() functions as
+  // the value. This is no longer supported in v12+.
   if (typeof tokenValue === 'string' && tokenValue.startsWith('var(')) {
-    if (
-      !tokenValue.startsWith(`var(--p-${tokenSubgroup}-`) &&
-      !tokenValue.startsWith(`var(--pc-${tokenSubgroup}-`)
-    ) {
-      throw new Error(
-        `"${tokenValue}" is not from the ${tokenSubgroup} token group.`,
-      );
-    }
-
-    return tokenValue as PolarisCSSVar;
+    throw new Error(
+      `"${tokenValue}" is not from the ${tokenSubgroup} token group.`,
+    );
   }
 
   // NOTE: All our token values today are either strings or numbers, so
