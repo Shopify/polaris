@@ -151,6 +151,11 @@ const defaultMdxComponents: React.ComponentProps<
   DefinitionTable: ({children}) => (
     <Box className={styles.DefinitionTable}>{children}</Box>
   ),
+  dl: ({children}) => (
+    <Box as="dl" className={styles.DefinitionList}>
+      {children}
+    </Box>
+  ),
 };
 
 const PatternMarkdown = (props: ComponentProps<typeof Markdown>) => (
