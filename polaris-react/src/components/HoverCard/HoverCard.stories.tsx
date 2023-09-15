@@ -19,9 +19,10 @@ import {
   EmptySearchResult,
   Text,
   VerticalStack,
+  HorizontalStack,
   Card,
 } from '@shopify/polaris';
-import {SearchMinor} from '@shopify/polaris-icons';
+import {SearchMinor, LocationsMinor, OrdersMinor} from '@shopify/polaris-icons';
 
 import {useFeatures} from '../../utilities/features';
 
@@ -39,41 +40,62 @@ export function Default() {
 
   const activator = (
     <Link removeUnderline url="#">
-      Colm Dillane
+      Saul Goodman
     </Link>
   );
 
   return (
-    <div style={{height: '650px'}}>
+    <div style={{height: '300px', width: '300px'}}>
       <Card>
-        <Box minHeight="600px" />
-        <VerticalStack align="center">
-          <Box minHeight="400px">
-            <VerticalStack gap="3">
-              <Text as="h2" variant="headingSm">
-                Customer
-              </Text>
-              <HoverCard
-                toggleActive={setActive}
-                active
-                activator={activator}
-                activatorWrapper="div"
-                preferredPosition="right"
-              >
-                <Box padding="4">
-                  <VerticalStack gap="0">
-                    <Text as="span" variant="headingSm">
-                      <Link removeUnderline>Colm Dillane</Link>
-                    </Text>
-                    <Text as="p">+1 800-KID-SUPR</Text>
-                    <Link url="mailto:colm@kid.super">colm@kid.super</Link>
+        <VerticalStack gap="3">
+          <Text as="h2" variant="headingSm">
+            Customer
+          </Text>
+          <HoverCard
+            toggleActive={setActive}
+            active={active}
+            activator={activator}
+            activatorWrapper="div"
+            preferredPosition="below"
+            preferredAlignment="left"
+          >
+            <Box padding="4">
+              <VerticalStack gap="4">
+                <VerticalStack gap="0">
+                  <Text as="span" variant="headingSm">
+                    <Link removeUnderline>Saul Goodman</Link>
+                  </Text>
+                  <Text as="span" variant="bodyMd">
+                    <Link url="mailto:help@bettercallsaul.com">
+                      help@bettercallsaul.com
+                    </Link>
+                  </Text>
+                  <Text as="p" variant="bodyMd">
+                    +1 505-842-5662
+                  </Text>
+                </VerticalStack>
+                <Box width="100%">
+                  <VerticalStack gap="1">
+                    <HorizontalStack wrap={false} gap="1" align="start">
+                      <Icon color="subdued" source={LocationsMinor} />
+                      <Text color="subdued" as="p">
+                        Albequerque, NM, USA
+                      </Text>
+                    </HorizontalStack>
+                    <HorizontalStack wrap={false} gap="1" align="start">
+                      <Box>
+                        <Icon color="subdued" source={OrdersMinor} />
+                      </Box>
+                      <Text color="subdued" as="p">
+                        8 Orders
+                      </Text>
+                    </HorizontalStack>
                   </VerticalStack>
                 </Box>
-              </HoverCard>
-            </VerticalStack>
-          </Box>
+              </VerticalStack>
+            </Box>
+          </HoverCard>
         </VerticalStack>
-        <Box minHeight="800px" />
       </Card>
     </div>
   );
