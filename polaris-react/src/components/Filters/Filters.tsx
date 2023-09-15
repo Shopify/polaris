@@ -141,7 +141,6 @@ export function Filters({
   const {mdDown} = useBreakpoints();
   const {polarisSummerEditions2023: se23} = useFeatures();
   const [popoverActive, setPopoverActive] = useState(false);
-  const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>([]);
   const hasMounted = useRef(false);
 
   useEffect(() => {
@@ -158,22 +157,22 @@ export function Filters({
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
 
   const pinnedFiltersFromPropsAndAppliedFilters = filters.filter(
-    ({pinned, key}) =>
-      (Boolean(pinned) || appliedFilterKeys?.includes(key)) &&
-      // Filters that are pinned in local state display at the end of our list
-      !localPinnedFilters.find((filterKey) => filterKey === key),
+    ({pinned, key}) => {
+      const isPinnedOrApplied =
+        Boolean(pinned) || appliedFilterKeys?.includes(key);
+      return isPinnedOrApplied;
+    },
   );
-  const pinnedFiltersFromLocalState = localPinnedFilters
+  const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>(
+    pinnedFiltersFromPropsAndAppliedFilters.map(({key}) => key),
+  );
+
+  const pinnedFilters = localPinnedFilters
     .map((key) => filters.find((filter) => filter.key === key))
     .reduce<FilterInterface[]>(
       (acc, filter) => (filter ? [...acc, filter] : acc),
       [],
     );
-
-  const pinnedFilters = [
-    ...pinnedFiltersFromPropsAndAppliedFilters,
-    ...pinnedFiltersFromLocalState,
-  ];
 
   const onFilterClick =
     ({key, onAction}: FilterInterface) =>
@@ -284,8 +283,8 @@ export function Filters({
     ? {
         paddingInlineStart: '2',
         paddingInlineEnd: '2',
-        paddingBlockStart: '1_5-experimental',
-        paddingBlockEnd: '1_5-experimental',
+        paddingBlockStart: '2',
+        paddingBlockEnd: '2',
       }
     : {
         paddingBlockStart: {
@@ -304,7 +303,9 @@ export function Filters({
       };
 
   const queryFieldMarkup = hideQueryField ? null : (
-    <div className={styles.Container}>
+    <div
+      className={classNames(styles.Container, se23 && styles.ContainerUplift)}
+    >
       <Box {...containerSpacing}>
         <HorizontalStack
           align="start"

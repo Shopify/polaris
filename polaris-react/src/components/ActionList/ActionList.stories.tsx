@@ -3,9 +3,11 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
   Avatar,
+  Box,
   Button,
   Icon,
   Popover,
+  TextField,
   Thumbnail,
   VerticalStack,
 } from '@shopify/polaris';
@@ -378,6 +380,20 @@ export function WithAPrefixAndASuffix() {
             suffix: <Icon source={ChevronRightMinor} />,
           },
         ]}
+      />
+    </div>
+  );
+}
+
+export function WithFiltering() {
+  return (
+    <div style={{height: '250px', maxWidth: '350px'}}>
+      <ActionList
+        actionRole="menuitem"
+        allowFiltering
+        items={Array.from({length: 8}).map((_, index) => ({
+          content: `Item #${index + 1}`,
+        }))}
       />
     </div>
   );

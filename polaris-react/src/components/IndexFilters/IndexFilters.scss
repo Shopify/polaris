@@ -137,3 +137,10 @@ $spinner-size: 20px;
     display: block;
   }
 }
+
+.ButtonWrap,
+.ActionWrap {
+  button {
+    display: flex;
+  }
+}

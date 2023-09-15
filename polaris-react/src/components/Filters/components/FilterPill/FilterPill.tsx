@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {
   CancelSmallMinor,
   CaretDownMinor,
@@ -80,7 +80,7 @@ export function FilterPill({
     });
   }, [elementRef, popoverActive]);
 
-  const togglePopoverActive = () => {
+  const togglePopoverActive = useCallback(() => {
     if (filter) {
       setPopoverActive((popoverActive) => !popoverActive);
     }
@@ -88,7 +88,14 @@ export function FilterPill({
     if (onClick) {
       onClick(filterKey);
     }
-  };
+  }, [filter, filterKey, onClick]);
+
+  const handlePopoverClose = useCallback(() => {
+    togglePopoverActive();
+    if (!selected) {
+      onRemove?.(filterKey);
+    }
+  }, [onRemove, selected, filterKey, togglePopoverActive]);
 
   const handleClear = () => {
     if (onRemove) onRemove(filterKey);
@@ -200,7 +207,7 @@ export function FilterPill({
         active={popoverActive && !disabled}
         activator={activator}
         key={filterKey}
-        onClose={togglePopoverActive}
+        onClose={handlePopoverClose}
         preferredAlignment="left"
         preventCloseOnChildOverlayClick={!closeOnChildOverlayClick}
       >
