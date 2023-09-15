@@ -11,8 +11,18 @@ import {
   RangeSlider,
   TextField,
   Card,
+  Page,
+  Badge,
+  Button,
+  useIndexFiltersManager,
+  Frame,
   IndexFiltersMode,
 } from '@shopify/polaris';
+import {
+  ViewMinor,
+  DeleteMinor,
+  MobileVerticalDotsMajor,
+} from '@shopify/polaris-icons';
 
 import {useSetIndexFiltersMode} from './hooks';
 import type {IndexFiltersProps} from './IndexFilters';
@@ -334,36 +344,38 @@ function BasicExample(
   }
 
   return (
-    <Card padding="0">
-      <IndexFilters
-        {...props}
-        loading={queryValue !== ''}
-        sortOptions={sortOptions}
-        sortSelected={sortSelected}
-        queryValue={queryValue}
-        queryPlaceholder="Searching in all"
-        onQueryChange={handleFiltersQueryChange}
-        onQueryClear={() => setQueryValue('')}
-        onSort={setSortSelected}
-        primaryAction={primaryAction}
-        cancelAction={{
-          onAction: onHandleCancel,
-          disabled: false,
-          loading: false,
-        }}
-        tabs={tabs}
-        selected={selected}
-        onSelect={setSelected}
-        canCreateNewView
-        onCreateNewView={onCreateNewView}
-        filters={filters}
-        appliedFilters={appliedFilters}
-        onClearAll={handleFiltersClearAll}
-        mode={mode}
-        setMode={setMode}
-      />
-      <Table />
-    </Card>
+    <Frame>
+      <Card padding="0">
+        <IndexFilters
+          {...props}
+          loading={queryValue !== ''}
+          sortOptions={sortOptions}
+          sortSelected={sortSelected}
+          queryValue={queryValue}
+          queryPlaceholder="Searching in all"
+          onQueryChange={handleFiltersQueryChange}
+          onQueryClear={() => setQueryValue('')}
+          onSort={setSortSelected}
+          primaryAction={primaryAction}
+          cancelAction={{
+            onAction: onHandleCancel,
+            disabled: false,
+            loading: false,
+          }}
+          tabs={tabs}
+          selected={selected}
+          onSelect={setSelected}
+          canCreateNewView
+          onCreateNewView={onCreateNewView}
+          filters={filters}
+          appliedFilters={appliedFilters}
+          onClearAll={handleFiltersClearAll}
+          mode={mode}
+          setMode={setMode}
+        />
+        <Table />
+      </Card>
+    </Frame>
   );
 
   function disambiguateLabel(key, value) {
@@ -1204,35 +1216,37 @@ export function Disabled() {
   }
 
   return (
-    <Card padding="0">
-      <IndexFilters
-        sortOptions={sortOptions}
-        sortSelected={sortSelected}
-        queryValue={queryValue}
-        queryPlaceholder="Searching in all"
-        onQueryChange={handleFiltersQueryChange}
-        onQueryClear={() => {}}
-        onSort={setSortSelected}
-        primaryAction={primaryAction}
-        cancelAction={{
-          onAction: onHandleCancel,
-          disabled: false,
-          loading: false,
-        }}
-        tabs={tabs}
-        selected={selected}
-        onSelect={setSelected}
-        canCreateNewView
-        onCreateNewView={onCreateNewView}
-        filters={filters}
-        appliedFilters={appliedFilters}
-        onClearAll={handleFiltersClearAll}
-        mode={mode}
-        setMode={setMode}
-        disabled
-      />
-      <Table />
-    </Card>
+    <Frame>
+      <Card padding="0">
+        <IndexFilters
+          sortOptions={sortOptions}
+          sortSelected={sortSelected}
+          queryValue={queryValue}
+          queryPlaceholder="Searching in all"
+          onQueryChange={handleFiltersQueryChange}
+          onQueryClear={() => {}}
+          onSort={setSortSelected}
+          primaryAction={primaryAction}
+          cancelAction={{
+            onAction: onHandleCancel,
+            disabled: false,
+            loading: false,
+          }}
+          tabs={tabs}
+          selected={selected}
+          onSelect={setSelected}
+          canCreateNewView
+          onCreateNewView={onCreateNewView}
+          filters={filters}
+          appliedFilters={appliedFilters}
+          onClearAll={handleFiltersClearAll}
+          mode={mode}
+          setMode={setMode}
+          disabled
+        />
+        <Table />
+      </Card>
+    </Frame>
   );
 
   function disambiguateLabel(key, value) {
@@ -1370,34 +1384,140 @@ export function WithQueryFieldAndFiltersHidden() {
         };
 
   return (
-    <Card padding="0">
-      <IndexFilters
-        sortOptions={sortOptions}
-        sortSelected={sortSelected}
-        queryValue=""
-        queryPlaceholder="Searching in all"
-        onQueryChange={() => {}}
-        onQueryClear={() => {}}
-        onSort={setSortSelected}
-        primaryAction={primaryAction}
-        cancelAction={{
-          onAction: onHandleCancel,
-          disabled: false,
-          loading: false,
-        }}
-        tabs={tabs}
-        selected={selected}
-        onSelect={setSelected}
-        canCreateNewView
-        onCreateNewView={onCreateNewView}
-        filters={[]}
-        onClearAll={() => {}}
-        mode={mode}
-        setMode={setMode}
-        hideQueryField
-        hideFilters
-      />
-      <Table />
-    </Card>
+    <Frame>
+      <Card padding="0">
+        <IndexFilters
+          sortOptions={sortOptions}
+          sortSelected={sortSelected}
+          queryValue=""
+          queryPlaceholder="Searching in all"
+          onQueryChange={() => {}}
+          onQueryClear={() => {}}
+          onSort={setSortSelected}
+          primaryAction={primaryAction}
+          cancelAction={{
+            onAction: onHandleCancel,
+            disabled: false,
+            loading: false,
+          }}
+          tabs={tabs}
+          selected={selected}
+          onSelect={setSelected}
+          canCreateNewView
+          onCreateNewView={onCreateNewView}
+          filters={[]}
+          onClearAll={() => {}}
+          mode={mode}
+          setMode={setMode}
+          hideQueryField
+          hideFilters
+        />
+        <Table />
+      </Card>
+    </Frame>
+  );
+}
+
+export function WrappedInAPage() {
+  return (
+    <Page
+      backAction={{content: 'Products', url: '#'}}
+      title="3/4 inch Leather pet collar"
+      titleMetadata={<Badge status="success">Paid</Badge>}
+      subtitle="Perfect for any pet"
+      compactTitle
+      primaryAction={{content: 'Save'}}
+      secondaryActions={[
+        {
+          content: 'Delete',
+          destructive: true,
+          icon: DeleteMinor,
+          accessibilityLabel: 'Delete action label',
+          onAction: () => console.log('Delete action'),
+        },
+        {
+          content: 'View on your store',
+          icon: ViewMinor,
+          onAction: () => console.log('View on your store action'),
+        },
+      ]}
+      actionGroups={[
+        {
+          title: 'Promote',
+          icon: MobileVerticalDotsMajor,
+          actions: [
+            {
+              content: 'Share on Facebook',
+              accessibilityLabel: 'Individual action label',
+              onAction: () => console.log('Share on Facebook action'),
+            },
+          ],
+        },
+      ]}
+      pagination={{
+        hasPrevious: true,
+        hasNext: true,
+      }}
+    >
+      <BasicExample />
+    </Page>
+  );
+}
+
+export function WrappedInAPageWithCustomActions() {
+  const {mode} = useIndexFiltersManager();
+  const shouldDisableAction = mode !== IndexFiltersMode.Default;
+  return (
+    <Page
+      backAction={{content: 'Products', url: '#'}}
+      title="3/4 inch Leather pet collar"
+      titleMetadata={<Badge status="success">Paid</Badge>}
+      subtitle="Perfect for any pet"
+      compactTitle
+      primaryAction={
+        <Button
+          primary
+          disabled={shouldDisableAction}
+          connectedDisclosure={{
+            disabled: shouldDisableAction,
+            accessibilityLabel: 'Other save actions',
+            actions: [{content: 'Save as new'}],
+          }}
+        >
+          Save
+        </Button>
+      }
+      secondaryActions={
+        <Button
+          disabled={shouldDisableAction}
+          connectedDisclosure={{
+            disabled: shouldDisableAction,
+            accessibilityLabel: 'Other save actions',
+            actions: [{content: 'Rename'}],
+          }}
+        >
+          Update
+        </Button>
+      }
+      actionGroups={[
+        {
+          title: 'Promote',
+          icon: MobileVerticalDotsMajor,
+          actions: [
+            {
+              content: 'Share on Facebook',
+              accessibilityLabel: 'Individual action label',
+              onAction: () => console.log('Share on Facebook action'),
+            },
+          ],
+        },
+      ]}
+      pagination={{
+        hasPrevious: true,
+        hasNext: true,
+      }}
+    >
+      <BasicExample />
+    </Page>
   );
 }
