@@ -34,7 +34,7 @@ Creating new layout components and applying them to the existing Polaris compone
 
 ### Removed components
 
-The original Stack and Card components have been removed and replaced with [LegacyStack](https://polaris.shopify.com/components/layout-and-structure/legacy-stack) and [LegacyCard](https://polaris.shopify.com/components/layout-and-structure/legacy-card). We plan to replace LegacyStack and LegacyCard with the new [Card](https://polaris.shopify.com/components/layout-and-structure/card) and [BlockStack](https://polaris.shopify.com/components/layout-and-structure/block-stack) components in the next major release.
+The original Stack and Card components have been removed and replaced with [LegacyStack](https://polaris.shopify.com/components/layout-and-structure/legacy-stack) and [LegacyCard](https://polaris.shopify.com/components/layout-and-structure/legacy-card). We plan to replace LegacyStack and LegacyCard with the new [Card](https://polaris.shopify.com/components/layout-and-structure/card) and [VerticalStack (renamed to BlockStack in v12)](https://polaris.shopify.com/components/layout-and-structure/block-stack) components in the next major release.
 
 ### Renamed components
 
