@@ -55,52 +55,52 @@ export const space: {
     value: '1px',
   },
   'space-050': {
-    value: '2px',
+    value: createVar('space-05'),
   },
   'space-100': {
-    value: '4px',
+    value: createVar('space-1'),
   },
   'space-150': {
-    value: '6px',
+    value: createVar('space-1_5-experimental'),
   },
   'space-200': {
-    value: '8px',
+    value: createVar('space-2'),
   },
   'space-300': {
-    value: '12px',
+    value: createVar('space-3'),
   },
   'space-400': {
-    value: '16px',
+    value: createVar('space-4'),
   },
   'space-500': {
-    value: '20px',
+    value: createVar('space-5'),
   },
   'space-600': {
-    value: '24px',
+    value: createVar('space-6'),
   },
   'space-800': {
-    value: '32px',
+    value: createVar('space-8'),
   },
   'space-1000': {
-    value: '40px',
+    value: createVar('space-10'),
   },
   'space-1200': {
-    value: '48px',
+    value: createVar('space-12'),
   },
   'space-1600': {
-    value: '64px',
+    value: createVar('space-16'),
   },
   'space-2000': {
-    value: '80px',
+    value: createVar('space-20'),
   },
   'space-2400': {
-    value: '96px',
+    value: createVar('space-24'),
   },
   'space-2800': {
-    value: '112px',
+    value: createVar('space-28'),
   },
   'space-3200': {
-    value: '128px',
+    value: createVar('space-32'),
   },
   'space-05': {
     value: '2px',
@@ -151,3 +151,7 @@ export const space: {
     value: '128px',
   },
 };
+
+function createVar(spaceTokenName: SpaceTokenName) {
+  return `var(--p-${spaceTokenName})`;
+}

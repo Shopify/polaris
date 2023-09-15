@@ -66,22 +66,22 @@ export const font: {
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
   },
   'font-size-275': {
-    value: '11px',
+    value: createVar('font-size-70-experimental'),
   },
   'font-size-325': {
-    value: '13px',
+    value: createVar('font-size-80-experimental'),
   },
   'font-size-350': {
-    value: '14px',
+    value: createVar('font-size-100'),
   },
   'font-size-750': {
-    value: '28px',
+    value: createVar('font-size-500'),
   },
   'font-size-900': {
-    value: '32px',
+    value: createVar('font-size-600'),
   },
   'font-size-1000': {
-    value: '40px',
+    value: createVar('font-size-700'),
   },
   'font-size-70-experimental': {
     value: '11px',
@@ -126,28 +126,28 @@ export const font: {
     value: '700',
   },
   'font-line-height-300': {
-    value: '12px',
+    value: createVar('font-line-height-075-experimental'),
   },
   'font-line-height-400': {
-    value: '16px',
+    value: createVar('font-line-height-1'),
   },
   'font-line-height-500': {
-    value: '20px',
+    value: createVar('font-line-height-2'),
   },
   'font-line-height-600': {
-    value: '24px',
+    value: createVar('font-line-height-3'),
   },
   'font-line-height-700': {
-    value: '28px',
+    value: createVar('font-line-height-4'),
   },
   'font-line-height-800': {
-    value: '32px',
+    value: createVar('font-line-height-5'),
   },
   'font-line-height-1000': {
-    value: '40px',
+    value: createVar('font-line-height-6'),
   },
   'font-line-height-1200': {
-    value: '48px',
+    value: createVar('font-line-height-7'),
   },
   'font-line-height-075-experimental': {
     value: '12px',
@@ -174,3 +174,7 @@ export const font: {
     value: '48px',
   },
 };
+
+function createVar(fontTokenName: FontTokenName) {
+  return `var(--p-${fontTokenName})`;
+}

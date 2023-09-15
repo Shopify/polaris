@@ -49,31 +49,31 @@ export const border: {
   [TokenName in BorderTokenName]: MetaTokenProperties;
 } = {
   'border-radius-0': {
-    value: '0px',
+    value: createVar('border-radius-0-experimental'),
   },
   'border-radius-050': {
-    value: '2px',
+    value: createVar('border-radius-05'),
   },
   'border-radius-100': {
-    value: '4px',
+    value: createVar('border-radius-1'),
   },
   'border-radius-150': {
-    value: '6px',
+    value: createVar('border-radius-1_5-experimental'),
   },
   'border-radius-200': {
-    value: '8px',
+    value: createVar('border-radius-2'),
   },
   'border-radius-300': {
-    value: '12px',
+    value: createVar('border-radius-3'),
   },
   'border-radius-400': {
-    value: '16px',
+    value: createVar('border-radius-4'),
   },
   'border-radius-500': {
-    value: '20px',
+    value: createVar('border-radius-5'),
   },
   'border-radius-750': {
-    value: '30px',
+    value: createVar('border-radius-6'),
   },
   'border-radius-full': {
     value: '9999px',
@@ -106,16 +106,16 @@ export const border: {
     value: '6px',
   },
   'border-width-0165': {
-    value: '0.66px',
+    value: createVar('border-width-1-experimental'),
   },
   'border-width-025': {
-    value: '1px',
+    value: createVar('border-width-1'),
   },
   'border-width-050': {
-    value: '2px',
+    value: createVar('border-width-2'),
   },
   'border-width-100': {
-    value: '4px',
+    value: createVar('border-width-4'),
   },
   'border-width-1': {
     value: '1px',
@@ -139,3 +139,7 @@ export const border: {
     value: '1px',
   },
 };
+
+function createVar(borderTokenName: BorderTokenName) {
+  return `var(--p-${borderTokenName})`;
+}
