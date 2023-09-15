@@ -92,6 +92,10 @@ export function tokensToRems<T extends Exact<MetadataGroup, T>>(tokenGroup: T) {
   ) as T;
 }
 
+export function createVarName(token: string) {
+  return `--p-${token}`;
+}
+
 export function createVar(token: string) {
   return `--p-${token}`;
 }
