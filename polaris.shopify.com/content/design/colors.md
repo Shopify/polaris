@@ -34,7 +34,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+        ![A display of Polaris components like badges, menus and banners with different color roles](/images/design/colors/color-overview-purpose@2x.png)
 
       </Grid.Cell>
 
@@ -53,7 +53,7 @@ keywords:
 
         <Box className="directive">
 
-          ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+          ![A list of badges that display paid, fulfilled, in progress, partially paid and unfulfilled states](/images/design/colors/color-overview-states-do@2x.png)
 
           <Do>
           Use color to support different states merchants need to be informed about.
@@ -66,6 +66,8 @@ keywords:
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
         <Box className="directive">
+
+          ![A card with a pink border and a pink $99 trying to entice the merchant](/images/design/colors/color-overview-decorate-dont@2x.png)
 
           <Dont>
           Use color to decorate or to distract merchants from performing tasks.
@@ -97,7 +99,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+        ![Cards in a grayscale interface with colorful badges that serve as headings](/images/design/colors/color-overview-impact@2x.png)
 
       </Grid.Cell>
 
@@ -117,7 +119,7 @@ keywords:
 
         <Box className="directive">
 
-          ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+          ![A modal with a bright red header and bright red button that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-vivid-do@2x.png)
 
           <Do>
           Use strong, vivid colors to grab attention to things that matter most.
@@ -131,7 +133,7 @@ keywords:
 
         <Box className="directive">
 
-          ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+          ![A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-diminish-dont@2x.png)
 
           <Dont>
           Contradict or diminish messaging by using subdued colors or grayscale.
@@ -155,7 +157,9 @@ keywords:
 
           ## Color is accessible
 
-          Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify and interact with.
+          Polaris offers consistent color palettes for each color role. This means that each color is assigned a specific relationship within the overall palette.
+
+          These color relationships ensure that color contrasts remain consistent across every application of color and ensure proper legibility and understanding when it comes to combining texts with color and interactive shapes with various backgrounds.
 
         </Box>
 
@@ -163,7 +167,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+        ![A dialog box with various elements highlighted where color combinations used for these elements passes AA and AAA accessibility standards for contrast](/images/design/colors/color-overview-accessible@2x.png)
 
       </Grid.Cell>
 
@@ -171,9 +175,7 @@ keywords:
 
         <Box className="text-extra-padding">
 
-          Polaris offers consistent color palettes for each color role. This means that each color is assigned a specific relationship within the overall palette.
-
-          These color relationships ensure that color contrasts remain consistent across every application of color and ensure proper legibility and understanding when it comes to combining texts with color and interactive shapes with various backgrounds.
+          Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify and interact with.
 
         </Box>
 
@@ -183,7 +185,7 @@ keywords:
 
         <Box className="directive">
 
-        ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+        ![An orange badge with an alert icon and text label in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-conjunction-do@2x.png)
 
         <Do>
         Use color in conjunction with other discernible elements to amplify the message.
@@ -197,7 +199,7 @@ keywords:
 
         <Box className="directive">
 
-        ![A rainbow of colors created by small bricks](/images/design/colors/color-intro@2x.png)
+        ![A text label in orange in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-alone-dont@2x.png)
 
         <Dont>
         Use color alone to convey meaning
