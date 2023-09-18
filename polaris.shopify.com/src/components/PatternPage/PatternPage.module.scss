@@ -262,8 +262,3 @@
     }
   }
 }
-// Additional class added to bust specificity in Markdown.module.scss
-.NoMargin.Heading-h2,
-.NoMargin.Heading-h3 {
-  margin: 0px;
-}

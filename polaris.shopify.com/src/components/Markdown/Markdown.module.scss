@@ -143,15 +143,21 @@
 
 /* The various gaps between adjacent elements */
 .Heading-h1 {
-  margin-block: 1.5rem;
+  #{$notMarginConsideredHarmful} {
+    margin-block: 1.5rem;
+  }
 }
 
 .Heading-h2 {
-  margin-block: 3rem 1rem;
+  #{$notMarginConsideredHarmful} {
+    margin-block: 3rem 1rem;
+  }
 }
 
 .Heading-h3 {
-  margin-block: 1.5rem 1rem;
+  #{$notMarginConsideredHarmful} {
+    margin-block: 1.5rem 1rem;
+  }
 }
 
 .Heading-h4,
@@ -160,7 +166,9 @@
 .List,
 .Paragraph,
 .HorizontalRule {
-  margin-block: 1rem;
+  #{$notMarginConsideredHarmful} {
+    margin-block: 1rem;
+  }
 }
 
 .Heading-h1,
@@ -172,7 +180,9 @@
 .Paragraph,
 .List {
   &:first-child {
-    margin-top: 0;
+    #{$notMarginConsideredHarmful} {
+      margin-top: 0;
+    }
   }
 }
 
@@ -180,17 +190,23 @@
 .Heading-h4 {
   + .Paragraph,
   + .List {
-    margin-top: -0.5rem;
+    #{$notMarginConsideredHarmful} {
+      margin-top: -0.5rem;
+    }
   }
 }
 
 .List {
   .List {
-    margin-block: 0;
+    #{$notMarginConsideredHarmful} {
+      margin-block: 0;
+    }
   }
 
   .Paragraph {
-    margin-block: 0;
+    #{$notMarginConsideredHarmful} {
+      margin-block: 0;
+    }
   }
 }
 
