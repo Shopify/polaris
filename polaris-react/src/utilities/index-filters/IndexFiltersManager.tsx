@@ -1,10 +1,8 @@
 import type {ContextType} from 'react';
 import React, {useMemo, useState} from 'react';
 
-import {
-  IndexFiltersContext,
-  IndexFiltersMode,
-} from '../../utilities/index-filters';
+import {IndexFiltersContext} from './context';
+import {IndexFiltersMode} from './types';
 
 export interface IndexFiltersManagerProps {
   children?: React.ReactNode;

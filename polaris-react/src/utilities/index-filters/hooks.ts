@@ -1,11 +1,8 @@
-import {useContext, useEffect} from 'react';
+import {useContext} from 'react';
 
 import {IndexFiltersContext} from './context';
-import {IndexFiltersMode} from './types';
 
-export function useIndexFiltersManager(
-  defaultMode: IndexFiltersMode = IndexFiltersMode.Default,
-) {
+export function useIndexFiltersManager() {
   const indexFiltersManager = useContext(IndexFiltersContext);
 
   if (!indexFiltersManager) {
@@ -15,11 +12,6 @@ export function useIndexFiltersManager(
   }
 
   const {mode, setMode} = indexFiltersManager;
-
-  useEffect(() => {
-    setMode(defaultMode);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [defaultMode]);
 
   return {
     mode,

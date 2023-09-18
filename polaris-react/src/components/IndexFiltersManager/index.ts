@@ -1,1 +1,0 @@
-export {IndexFiltersManager} from './IndexFiltersManager';

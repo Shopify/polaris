@@ -3,7 +3,6 @@ import type {ThemeName} from '@shopify/polaris-tokens';
 import {themeNameDefault} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
-import {IndexFiltersManager} from '../IndexFiltersManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
@@ -13,6 +12,7 @@ import {
   ScrollLockManager,
   ScrollLockManagerContext,
 } from '../../utilities/scroll-lock-manager';
+import {IndexFiltersManager} from '../../utilities/index-filters';
 import {
   StickyManager,
   StickyManagerContext,

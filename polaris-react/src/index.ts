@@ -194,8 +194,6 @@ export type {
   SortButtonChoice,
 } from './components/IndexFilters';
 
-export {IndexFiltersManager} from './components/IndexFiltersManager';
-
 export {IndexTable} from './components/IndexTable';
 export type {IndexTableProps} from './components/IndexTable';
 
@@ -426,6 +424,7 @@ export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {
   useIndexFiltersManager,
   IndexFiltersMode,
+  IndexFiltersManager,
 } from './utilities/index-filters';
 export {
   useRowHovered as useIndexTableRowHovered,
