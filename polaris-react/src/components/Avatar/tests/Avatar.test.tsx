@@ -36,7 +36,7 @@ describe('<Avatar />', () => {
       const src = 'image/path/';
       const avatar = mountWithApp(<Avatar source={src} />);
       expect(avatar).toContainReactComponent('span', {
-        className: 'Avatar sizeMedium',
+        className: 'Avatar sizeMd',
       });
       expect(avatar).toContainReactComponent('span', {
         className: expect.not.stringContaining('styleOne'),
@@ -46,21 +46,21 @@ describe('<Avatar />', () => {
 
   describe('customer', () => {
     it('renders an inline svg', () => {
-      const avatar = mountWithApp(<Avatar customer />);
+      const avatar = mountWithApp(<Avatar />);
       expect(avatar).toContainReactComponentTimes('svg', 1);
     });
 
     it('does not render a customer Avatar if a source is provided', () => {
       const src = 'image/path/';
-      const avatar = mountWithApp(<Avatar customer source={src} />);
+      const avatar = mountWithApp(<Avatar source={src} />);
       expect(avatar).not.toContainReactComponent('svg');
     });
 
     it('does not apply a style class', () => {
       const src = 'image/path/';
-      const avatar = mountWithApp(<Avatar customer source={src} />);
+      const avatar = mountWithApp(<Avatar source={src} />);
       expect(avatar).toContainReactComponent('span', {
-        className: 'Avatar sizeMedium',
+        className: 'Avatar sizeMd',
       });
       expect(avatar).toContainReactComponent('span', {
         className: expect.not.stringContaining('styleOne'),
@@ -71,7 +71,7 @@ describe('<Avatar />', () => {
   describe('Initials', () => {
     it('renders initials if the Image onError prop is triggered and the Intials are provided', () => {
       const avatar = mountWithApp(
-        <Avatar size="large" initials="DL" source="image/path/" />,
+        <Avatar size="lg" initials="DL" source="image/path/" />,
       );
 
       expect(avatar).toContainReactComponent(Image);
@@ -97,12 +97,7 @@ describe('<Avatar />', () => {
     it('gets invoked in the event of an error', () => {
       const spy = jest.fn();
       const avatar = mountWithApp(
-        <Avatar
-          size="large"
-          initials="DL"
-          source="image/path/"
-          onError={spy}
-        />,
+        <Avatar size="lg" initials="DL" source="image/path/" onError={spy} />,
       );
 
       avatar.find(Image)!.trigger('onError');
@@ -114,7 +109,7 @@ describe('<Avatar />', () => {
     it('re-renders the image if a the source prop is changed after an error', () => {
       const workingSrc = 'image/goodPath/';
       const avatar = mountWithApp(
-        <Avatar size="large" initials="DL" source="image/path/" />,
+        <Avatar size="lg" initials="DL" source="image/path/" />,
       );
       avatar.find(Image)!.trigger('onError');
 

@@ -14,7 +14,8 @@ import {useRouter} from 'next/router';
 import StatusBadge from '../StatusBadge';
 
 const NAV_ID = 'nav';
-
+// Nav levels greater than this should be part of <Subnav />
+const MAX_NAV_LEVEL = 1;
 interface Props {
   darkMode: DarkMode;
   children: React.ReactNode;
@@ -215,7 +216,8 @@ function NavItem({
 
             if (!child.slug) return null;
 
-            const isExpandable = child.children && !child.hideChildren;
+            const isExpandable =
+              child.children && !child.hideChildren && level < MAX_NAV_LEVEL;
             const id = (child.slug || key).replace(/\//g, '');
             const navAriaId = `nav-${id}`;
             const segments = asPath.slice(1).split('/');

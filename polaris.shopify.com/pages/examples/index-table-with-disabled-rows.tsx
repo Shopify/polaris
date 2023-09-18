@@ -46,14 +46,23 @@ function IndexTableWithDisabledRowsExample() {
     plural: 'orders',
   };
 
-  const selectableOrders = orders.filter((order) => !order.disabled)
+  const selectableOrders = orders.filter((order) => !order.disabled);
 
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(selectableOrders);
 
   const rowMarkup = orders.map(
     (
-      {id, order, date, customer, total, paymentStatus, fulfillmentStatus, disabled},
+      {
+        id,
+        order,
+        date,
+        customer,
+        total,
+        paymentStatus,
+        fulfillmentStatus,
+        disabled,
+      },
       index,
     ) => (
       <IndexTable.Row
