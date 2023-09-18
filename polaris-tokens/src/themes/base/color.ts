@@ -71,12 +71,7 @@ export type ColorBackgroundAlias =
   | 'bg-success-subdued-hover'
   | 'bg-warning'
   | ColorBackgroundAliasExperimental
-  /**
-   * Conceptual and component specific backgrounds.
-   * TODO: Determine if we should create a separate
-   * type alias (e.g. `ColorComponentBackgroundAlias`) and
-   * union it here in `ColorBackgroundAlias`.
-   */
+  /** Specialty and component backgrounds. */
   | 'nav-bg'
   | 'backdrop-bg';
 
@@ -122,12 +117,7 @@ export type ColorBorderAlias =
   | 'border-emphasis-hover'
   | 'border-emphasis-active'
   | ColorBorderAliasExperimental
-  /**
-   * Conceptual and component specific borders.
-   * TODO: Determine if we should create a separate
-   * type alias (e.g. `ColorComponentBorderAlias`) and
-   * union it here in `ColorBorderAlias`.
-   */
+  /** Specialty and component borders. */
   | 'input-border'
   | 'input-border-hover'
   | 'input-border-active';
@@ -187,12 +177,7 @@ export type ColorFillAlias =
   | 'fill-transparent-secondary'
   | 'fill-transparent-secondary-hover'
   | 'fill-transparent-secondary-active'
-  /**
-   * Conceptual and component specific fills.
-   * TODO: Determine if we should create a separate
-   * type alias (e.g. `ColorComponentFillAlias`) and
-   * union it here in `ColorFillAlias`.
-   */
+  /** Specialty and component fills. */
   | 'avatar-fill'
   | 'avatar-one-fill'
   | 'avatar-two-fill'
@@ -229,18 +214,11 @@ export type ColorIconAlias =
   | 'icon-emphasis'
   | 'icon-emphasis-hover'
   | 'icon-emphasis-active'
-  /**
-   * check on emphasis state icons
-   */
+  | ColorIconAliasExperimental
+  /** Check on emphasis state icons. */
   | 'icon-emphasis-hover'
   | 'icon-emphasis-active'
-  | ColorIconAliasExperimental
-  /**
-   * Conceptual and component specific icons.
-   * TODO: Determine if we should create a separate
-   * type alias (e.g. `ColorComponentIconAlias`) and
-   * union it here in `ColorIconAlias`.
-   */
+  /** Specialty and component icons. */
   | 'radio-button-icon-disabled'
   | 'checkbox-icon-disabled';
 
@@ -290,12 +268,7 @@ export type ColorSurfaceAlias =
   | 'surface-emphasis-hover'
   | 'surface-emphasis-active'
   | 'surface-inverse'
-  /**
-   * Conceptual and component specific surfaces.
-   * TODO: Determine if we should create a separate
-   * type alias (e.g. `ColorComponentIconAlias`) and
-   * union it here in `ColorSurfaceAlias`.
-   */
+  /** Specialty and component surfaces. */
   | 'input-surface'
   | 'input-surface-hover'
   | 'input-surface-active'
@@ -362,20 +335,15 @@ export type ColorTextAlias =
   | 'text-emphasis-on-fill'
   | 'text-emphasis-on-fill-hover'
   | 'text-emphasis-on-fill-active'
-  /**
-   * Conceptual and component specific surfaces.
-   * TODO: Determine if we should create a separate
-   * type alias (e.g. `ColorComponentIconAlias`) and
-   * union it here in `ColorSurfaceAlias`.
-   */
+  | ColorTextAliasExperimental
+  /** Specialty and component surfaces. */
   | 'avatar-text-on-fill'
   | 'avatar-one-text-on-fill'
   | 'avatar-two-text-on-fill'
   | 'avatar-three-text-on-fill'
   | 'avatar-four-text-on-fill'
   | 'avatar-five-text-on-fill'
-  | 'video-thumbnail-play-button-text-on-fill'
-  | ColorTextAliasExperimental;
+  | 'video-thumbnail-play-button-text-on-fill';
 
 type ColorBackgroundAliasExperimental = Experimental<
   | 'bg-backdrop'
