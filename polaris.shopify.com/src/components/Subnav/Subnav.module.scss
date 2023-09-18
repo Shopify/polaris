@@ -1,0 +1,31 @@
+.Items {
+  --text: #000;
+  --border: #000;
+
+  display: inline-flex;
+  gap: var(--p-space-1);
+  border-radius: var(--p-border-radius-3);
+  border: 1px solid var(--border);
+  padding: var(--p-space-1);
+}
+
+.Item {
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-2);
+  padding: var(--p-space-1_5-experimental) var(--p-space-3);
+  border-radius: var(--p-border-radius-2);
+  background-color: var(--surface);
+  color: var(--text);
+  fill: var(--text);
+
+  &:hover {
+    background-color: var(--surface-subdued);
+  }
+}
+
+.Item--active {
+  --surface: #000;
+  --surface-subdued: #000;
+  --text: #fff;
+}
