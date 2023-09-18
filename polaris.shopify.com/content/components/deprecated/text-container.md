@@ -53,4 +53,4 @@ The closer the spacing, the closer the relationship between content topics. The 
 
 ## Related components
 
-- For more layout variations, or if you’re looking to vertically space components other than text, use [VerticalStack](https://polaris.shopify.com/components/layout-and-structure/vertical-stack).
+- For more layout variations, or if you’re looking to vertically space components other than text, use [BlockStack](https://polaris.shopify.com/components/layout-and-structure/block-stack).

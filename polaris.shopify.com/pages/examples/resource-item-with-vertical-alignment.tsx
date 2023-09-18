@@ -31,14 +31,7 @@ function ResourceItemExample() {
               verticalAlignment="center"
               id={id}
               url={url}
-              media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
-              }
+              media={<Avatar size="md" name={name} source={avatarSource} />}
               accessibilityLabel={`View details for ${name}`}
               name={name}
             >
