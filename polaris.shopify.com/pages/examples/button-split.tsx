@@ -7,15 +7,15 @@ function ButtonExample() {
   const [active, setActive] = React.useState(false);
   return (
     <div style={{height: '100px'}}>
-      <ButtonGroup variant="segmented">
-        <Button variant="primary">Save</Button>
+      <ButtonGroup segmented>
+        <Button primary>Save</Button>
         <div style={{width: '3px'}} />
         <Popover
           active={active}
           preferredAlignment="right"
           activator={
             <Button
-              variant="primary"
+              primary
               onClick={() => setActive(true)}
               icon={ChevronDownMinor}
               accessibilityLabel="Other save actions"
@@ -31,7 +31,7 @@ function ButtonExample() {
         </Popover>
       </ButtonGroup>
 
-      <ButtonGroup variant="segmented">
+      <ButtonGroup segmented>
         <Button>Save</Button>
         <Popover
           active={active}

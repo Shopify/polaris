@@ -27,7 +27,9 @@ import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
-import {InlineStack} from '../../../InlineStack';
+import {HorizontalStack} from '../../../HorizontalStack';
+import {useFeatures} from '../../../../utilities/features';
+import {FilterActionsProvider} from '../../../FilterActionsProvider';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
@@ -48,6 +50,8 @@ interface PrimaryAction
 export interface HeaderProps extends TitleProps {
   /** Visually hide the title */
   titleHidden?: boolean;
+  /** Enables filtering action list items */
+  filterActions?: boolean;
   /** Primary page-level action */
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
@@ -58,6 +62,8 @@ export interface HeaderProps extends TitleProps {
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
+  /** @deprecated Additional navigation markup */
+  additionalNavigation?: React.ReactNode;
   // Additional meta data
   additionalMetadata?: React.ReactNode | string;
   /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
@@ -76,6 +82,8 @@ export function Header({
   titleHidden = false,
   primaryAction,
   pagination,
+  filterActions,
+  additionalNavigation,
   backAction,
   secondaryActions = [],
   actionGroups = [],
@@ -83,7 +91,15 @@ export function Header({
   onActionRollup,
 }: HeaderProps) {
   const i18n = useI18n();
+  const {polarisSummerEditions2023} = useFeatures();
   const {isNavigationCollapsed} = useMediaQuery();
+
+  if (additionalNavigation && process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
+    );
+  }
 
   const isSingleRow =
     !primaryAction &&
@@ -94,7 +110,11 @@ export function Header({
 
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
-      <Box maxWidth="100%" paddingInlineEnd="1" printHidden>
+      <Box
+        maxWidth="100%"
+        paddingInlineEnd={polarisSummerEditions2023 ? '1' : '4'}
+        printHidden
+      >
         <Breadcrumbs backAction={backAction} />
       </Box>
     </div>
@@ -108,6 +128,12 @@ export function Header({
         </Box>
       </div>
     ) : null;
+
+  const additionalNavigationMarkup = additionalNavigation ? (
+    <HorizontalStack gap="4" align="end">
+      <Box printHidden>{additionalNavigation}</Box>
+    </HorizontalStack>
+  ) : null;
 
   const pageTitleMarkup = (
     <div className={styles.TitleWrapper}>
@@ -147,7 +173,7 @@ export function Header({
   }
 
   const navigationMarkup =
-    breadcrumbMarkup || paginationMarkup ? (
+    breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
       <Box
         printHidden
         paddingBlockEnd="1"
@@ -155,16 +181,21 @@ export function Header({
           actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
         }
       >
-        <InlineStack gap="4" align="space-between" blockAlign="center">
+        <HorizontalStack gap="4" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
+          {additionalNavigationMarkup}
           {paginationMarkup}
-        </InlineStack>
+        </HorizontalStack>
       </Box>
     ) : null;
 
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <Text tone="subdued" as="span" variant="bodySm">
+      <Text
+        color="subdued"
+        as="span"
+        variant={polarisSummerEditions2023 ? 'bodySm' : undefined}
+      >
         {additionalMetadata}
       </Text>
     </div>
@@ -180,9 +211,10 @@ export function Header({
     title && title.length > LONG_TITLE && styles.longTitle,
   );
 
-  const {slot1, slot2, slot3, slot4, slot5} = determineLayout({
+  const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
     actionMenuMarkup,
     additionalMetadataMarkup,
+    additionalNavigationMarkup,
     breadcrumbMarkup,
     isNavigationCollapsed,
     pageTitleMarkup,
@@ -194,39 +226,44 @@ export function Header({
   return (
     <Box
       position="relative"
-      paddingBlockStart={{xs: '4', md: '6'}}
-      paddingBlockEnd={{xs: '4', md: '6'}}
+      paddingBlockStart={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
+      paddingBlockEnd={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
       paddingInlineStart={{xs: '4', sm: '0'}}
       paddingInlineEnd={{xs: '4', sm: '0'}}
       visuallyHidden={titleHidden}
     >
       <div className={headerClassNames}>
-        <ConditionalRender
-          condition={[slot1, slot2, slot3, slot4].some(notNull)}
-        >
-          <div className={styles.Row}>
-            {slot1}
-            {slot2}
-            <ConditionalRender condition={[slot3, slot4].some(notNull)}>
-              <div className={styles.RightAlign}>
-                <ConditionalWrapper
-                  condition={[slot3, slot4].every(notNull)}
-                  wrapper={(children) => (
-                    <div className={styles.Actions}>{children}</div>
-                  )}
-                >
-                  {slot3}
-                  {slot4}
-                </ConditionalWrapper>
-              </div>
-            </ConditionalRender>
-          </div>
-        </ConditionalRender>
-        <ConditionalRender condition={[slot5].some(notNull)}>
-          <div className={styles.Row}>
-            <InlineStack gap="4">{slot5}</InlineStack>
-          </div>
-        </ConditionalRender>
+        <FilterActionsProvider filterActions={Boolean(filterActions)}>
+          <ConditionalRender
+            condition={[slot1, slot2, slot3, slot4].some(notNull)}
+          >
+            <div className={styles.Row}>
+              {slot1}
+              {slot2}
+              <ConditionalRender condition={[slot3, slot4].some(notNull)}>
+                <div className={styles.RightAlign}>
+                  <ConditionalWrapper
+                    condition={[slot3, slot4].every(notNull)}
+                    wrapper={(children) => (
+                      <div className={styles.Actions}>{children}</div>
+                    )}
+                  >
+                    {slot3}
+                    {slot4}
+                  </ConditionalWrapper>
+                </div>
+              </ConditionalRender>
+            </div>
+          </ConditionalRender>
+          <ConditionalRender condition={[slot5, slot6].some(notNull)}>
+            <div className={styles.Row}>
+              <HorizontalStack gap="4">{slot5}</HorizontalStack>
+              <ConditionalRender condition={slot6 != null}>
+                <div className={styles.RightAlign}>{slot6}</div>
+              </ConditionalRender>
+            </div>
+          </ConditionalRender>
+        </FilterActionsProvider>
       </div>
     </Box>
   );
@@ -246,7 +283,7 @@ function PrimaryActionMarkup({
     const content = buttonFrom(
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
-        variant: primary ? 'primary' : undefined,
+        primary,
       },
     );
 
@@ -295,6 +332,7 @@ function notNull(value: any) {
 function determineLayout({
   actionMenuMarkup,
   additionalMetadataMarkup,
+  additionalNavigationMarkup,
   breadcrumbMarkup,
   isNavigationCollapsed,
   pageTitleMarkup,
@@ -304,6 +342,7 @@ function determineLayout({
 }: {
   actionMenuMarkup: MaybeJSX;
   additionalMetadataMarkup: MaybeJSX;
+  additionalNavigationMarkup: MaybeJSX;
   breadcrumbMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
   pageTitleMarkup: JSX.Element;
@@ -315,7 +354,7 @@ function determineLayout({
   // |----------------------------------------------------|
   // | slot1 | slot2 |                    | slot3 | slot4 |
   // |----------------------------------------------------|
-  // | slot5 |                                            |
+  // | slot5 |                                    | slot6 |
   // |----------------------------------------------------|
   //
   const layouts = {
@@ -326,6 +365,7 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
+        slot6: additionalNavigationMarkup,
       },
       condition:
         isNavigationCollapsed &&
@@ -340,6 +380,7 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
+        slot6: additionalNavigationMarkup,
       },
       condition: isNavigationCollapsed,
     },
@@ -350,6 +391,7 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
+        slot6: additionalNavigationMarkup,
       },
       condition:
         !isNavigationCollapsed &&
@@ -370,6 +412,7 @@ function determineLayout({
         ),
         slot4: paginationMarkup,
         slot5: additionalMetadataMarkup,
+        slot6: additionalNavigationMarkup,
       },
       condition: !isNavigationCollapsed,
     },

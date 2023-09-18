@@ -161,10 +161,6 @@ interface NonMutuallyExclusiveProps {
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
-  /** Visual styling options for the TextField
-   * @default 'inherit'
-   */
-  variant?: 'inherit' | 'borderless';
   /** Callback fired when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback fired when value is changed */
@@ -175,6 +171,10 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
+  /** Removes the border around the input. Used in the IndexFilters component. */
+  borderless?: boolean;
+  /** Disables the 1password extension on the text field */
+  disable1Password?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -235,12 +235,13 @@ export function TextField({
   monospaced,
   selectTextOnFocus,
   suggestion,
-  variant = 'inherit',
   onClearButtonClick,
   onChange,
   onSpinnerChange,
   onFocus,
   onBlur,
+  borderless,
+  disable1Password,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -292,7 +293,7 @@ export function TextField({
     error && styles.error,
     multiline && styles.multiline,
     focus && !disabled && styles.focus,
-    variant !== 'inherit' && styles[variant],
+    borderless && styles.borderless,
   );
 
   const inputType = type === 'currency' ? 'text' : type;
@@ -358,7 +359,7 @@ export function TextField({
         <Text as="span" visuallyHidden>
           {i18n.translate('Polaris.Common.clear')}
         </Text>
-        <Icon source={CircleCancelMinor} tone="base" />
+        <Icon source={CircleCancelMinor} color="base" />
       </button>
     ) : null;
 
@@ -558,6 +559,7 @@ export function TextField({
     onKeyDown: handleKeyDown,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
+    'data-1p-ignore': disable1Password || undefined,
   });
 
   const inputWithVerticalContentMarkup = verticalContent ? (

@@ -263,6 +263,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       logo,
       showToast: this.showToast,
       hideToast: this.hideToast,
+      toastMessages,
       startLoading: this.startLoading,
       stopLoading: this.stopLoading,
       setContextualSaveBar: this.setContextualSaveBar,
