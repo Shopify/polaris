@@ -1,0 +1,885 @@
+:root {
+  --p-breakpoints-xs: 0rem;
+  --p-breakpoints-sm: 30.625rem;
+  --p-breakpoints-md: 48rem;
+  --p-breakpoints-lg: 65rem;
+  --p-breakpoints-xl: 90rem;
+  --p-border-radius-0: 0rem;
+  --p-border-radius-050: 0.125rem;
+  --p-border-radius-100: 0.25rem;
+  --p-border-radius-150: 0.375rem;
+  --p-border-radius-200: 0.5rem;
+  --p-border-radius-300: 0.75rem;
+  --p-border-radius-400: 1rem;
+  --p-border-radius-500: 1.25rem;
+  --p-border-radius-750: 1.875rem;
+  --p-border-radius-full: 624.9375rem;
+  --p-border-radius-0-experimental: 0rem;
+  --p-border-radius-05: 0.125rem;
+  --p-border-radius-1: 0.25rem;
+  --p-border-radius-2: 0.5rem;
+  --p-border-radius-3: 0.75rem;
+  --p-border-radius-4: 1rem;
+  --p-border-radius-5: 1.25rem;
+  --p-border-radius-6: 1.875rem;
+  --p-border-radius-1_5-experimental: 0.375rem;
+  --p-border-width-0165: 0.04125rem;
+  --p-border-width-025: 0.0625rem;
+  --p-border-width-050: 0.125rem;
+  --p-border-width-100: 0.25rem;
+  --p-border-width-1: 0.0625rem;
+  --p-border-width-2: 0.125rem;
+  --p-border-width-3: 0.1875rem;
+  --p-border-width-4: 0.25rem;
+  --p-border-width-5: 0.3125rem;
+  --p-border-width-1-experimental: 0.04125rem;
+  --p-border-width-2-experimental: 0.0625rem;
+  --p-color-border-inverse-active: rgba(227, 227, 227, 1);
+  --p-color-border-inverse-hover: rgba(204, 204, 204, 1);
+  --p-color-border-warning: rgba(255, 200, 121, 1);
+  --p-color-checkbox-icon-disabled: rgba(255, 255, 255, 1);
+  --p-color-checkbox-surface-disabled: rgba(0, 0, 0, 0.08);
+  --p-color-fill-active: rgba(247, 247, 247, 1);
+  --p-color-fill-brand-selected: rgba(48, 48, 48, 1);
+  --p-color-fill-caution-active: rgba(225, 203, 0, 1);
+  --p-color-fill-caution-hover: rgba(234, 211, 0, 1);
+  --p-color-fill-critical-selected: rgba(142, 31, 11, 1);
+  --p-color-fill-emphasis-active: rgba(0, 46, 106, 1);
+  --p-color-fill-emphasis-hover: rgba(0, 66, 153, 1);
+  --p-color-fill-emphasis: rgba(0, 91, 211, 1);
+  --p-color-fill-hover: rgba(250, 250, 250, 1);
+  --p-color-fill-info-active: rgba(0, 148, 213, 1);
+  --p-color-fill-info-hover: rgba(81, 192, 255, 1);
+  --p-color-fill-secondary-active: rgba(227, 227, 227, 1);
+  --p-color-fill-secondary-hover: rgba(235, 235, 235, 1);
+  --p-color-fill-selected: rgba(204, 204, 204, 1);
+  --p-color-fill-transparent-secondary-active: rgba(0, 0, 0, 0.11);
+  --p-color-fill-transparent-secondary-hover: rgba(0, 0, 0, 0.08);
+  --p-color-fill-transparent-selected: rgba(0, 0, 0, 0.06);
+  --p-color-fill-transparent: rgba(0, 0, 0, 0);
+  --p-color-fill-warning-active: rgba(178, 132, 0, 1);
+  --p-color-fill-warning-hover: rgba(229, 165, 0, 1);
+  --p-color-fill: rgba(255, 255, 255, 1);
+  --p-color-icon-secondary-active: rgba(74, 74, 74, 1);
+  --p-color-icon-secondary-hover: rgba(97, 97, 97, 1);
+  --p-color-link-active: rgba(0, 46, 106, 1);
+  --p-color-link-hover: rgba(0, 66, 153, 1);
+  --p-color-link: rgba(0, 91, 211, 1);
+  --p-color-nav-bg: rgba(235, 235, 235, 1);
+  --p-color-nav-surface-active: rgba(250, 250, 250, 1);
+  --p-color-nav-surface-hover: rgba(241, 241, 241, 1);
+  --p-color-nav-surface-selected: rgba(250, 250, 250, 1);
+  --p-color-nav-surface: rgba(0, 0, 0, 0.02);
+  --p-color-radio-button-icon-disabled: rgba(255, 255, 255, 1);
+  --p-color-radio-button-surface-disabled: rgba(0, 0, 0, 0.08);
+  --p-color-surface-emphasis-active: rgba(226, 231, 255, 1);
+  --p-color-surface-emphasis-hover: rgba(234, 237, 255, 1);
+  --p-color-surface-emphasis: rgba(240, 242, 255, 1);
+  --p-color-surface-inverse: rgba(48, 48, 48, 1);
+  --p-color-surface-magic-active: rgba(228, 222, 255, 1);
+  --p-color-surface-secondary-selected: rgba(235, 235, 235, 1);
+  --p-color-surface-tertiary-active: rgba(227, 227, 227, 1);
+  --p-color-surface-tertiary-hover: rgba(235, 235, 235, 1);
+  --p-color-surface-warning-active: rgba(255, 228, 198, 1);
+  --p-color-surface-warning-hover: rgba(255, 235, 213, 1);
+  --p-color-text-brand-on-fill-active: rgba(204, 204, 204, 1);
+  --p-color-text-brand-on-fill-disabled: rgba(255, 255, 255, 1);
+  --p-color-text-brand-on-fill-hover: rgba(227, 227, 227, 1);
+  --p-color-text-brand-on-fill: rgba(255, 255, 255, 1);
+  --p-color-text-caution-active: rgba(31, 28, 0, 1);
+  --p-color-text-caution-hover: rgba(51, 46, 0, 1);
+  --p-color-text-caution-on-fill: rgba(51, 46, 0, 1);
+  --p-color-text-critical-on-fill: rgba(255, 251, 251, 1);
+  --p-color-text-emphasis-on-fill-active: rgba(213, 220, 255, 1);
+  --p-color-text-emphasis-on-fill-hover: rgba(226, 231, 255, 1);
+  --p-color-text-emphasis-on-fill: rgba(252, 253, 255, 1);
+  --p-color-text-info-active: rgba(0, 33, 51, 1);
+  --p-color-text-info-hover: rgba(0, 58, 90, 1);
+  --p-color-text-magic-on-fill: rgba(253, 253, 255, 1);
+  --p-color-text-success-active: rgba(9, 42, 27, 1);
+  --p-color-text-success-hover: rgba(8, 61, 37, 1);
+  --p-color-text-success-on-fill: rgba(248, 255, 251, 1);
+  --p-color-text-warning-active: rgba(37, 26, 0, 1);
+  --p-color-text-warning-hover: rgba(65, 45, 0, 1);
+  --p-color-text-warning-on-fill: rgba(37, 26, 0, 1);
+  --p-color-video-thumbnail-play-button-fill-hover: rgba(0, 0, 0, 0.81);
+  --p-color-video-thumbnail-play-button-fill: rgba(0, 0, 0, 0.71);
+  --p-color-video-thumbnail-play-button-text-on-fill: rgba(255, 255, 255, 1);
+  --p-color-surface: var(--p-color-bg);
+  --p-color-surface-hover: rgba(247, 247, 247, 1);
+  --p-color-surface-active: rgba(243, 243, 243, 1);
+  --p-color-surface-disabled: rgba(0, 0, 0, 0.05);
+  --p-color-surface-secondary: var(--p-color-bg-subdued);
+  --p-color-surface-secondary-hover: var(--p-color-bg-subdued-hover);
+  --p-color-surface-secondary-active: var(--p-color-bg-subdued-active);
+  --p-color-surface-tertiary: var(--p-color-bg-secondary-experimental);
+  --p-color-fill-tertiary: var(--p-color-bg-strong);
+  --p-color-fill-tertiary-hover: var(--p-color-bg-strong-hover);
+  --p-color-fill-tertiary-active: var(--p-color-bg-strong-active);
+  --p-color-input-surface: var(--p-color-bg-input);
+  --p-color-input-surface-hover: var(--p-color-bg-input-hover-experimental);
+  --p-color-input-surface-active: var(--p-color-bg-input-active-experimental);
+  --p-color-fill-brand: rgba(48, 48, 48, 1);
+  --p-color-fill-brand-hover: rgba(26, 26, 26, 1);
+  --p-color-fill-brand-active: rgba(26, 26, 26, 1);
+  --p-color-surface-brand: rgba(227, 227, 227, 1);
+  --p-color-surface-brand-hover: rgba(235, 235, 235, 1);
+  --p-color-surface-brand-active: rgba(241, 241, 241, 1);
+  --p-color-surface-brand-selected: rgba(241, 241, 241, 1);
+  --p-color-surface-selected: var(--p-color-bg-app-selected);
+  --p-color-fill-success: var(--p-color-bg-success-strong);
+  --p-color-fill-success-hover: var(
+    --p-color-bg-success-strong-hover-experimental
+  );
+  --p-color-fill-success-active: var(
+    --p-color-bg-success-strong-active-experimental
+  );
+  --p-color-fill-success-secondary: var(--p-color-bg-success);
+  --p-color-surface-success: var(--p-color-bg-success-subdued);
+  --p-color-surface-success-hover: var(--p-color-bg-success-subdued-hover);
+  --p-color-surface-success-active: var(--p-color-bg-success-subdued-active);
+  --p-color-fill-critical: var(--p-color-bg-critical-strong);
+  --p-color-fill-critical-hover: var(--p-color-bg-critical-strong-hover);
+  --p-color-fill-critical-active: var(--p-color-bg-critical-strong-active);
+  --p-color-fill-critical-secondary: var(--p-color-bg-critical);
+  --p-color-surface-critical: var(--p-color-bg-critical-subdued);
+  --p-color-surface-critical-hover: var(--p-color-bg-critical-subdued-hover);
+  --p-color-surface-critical-active: var(--p-color-bg-critical-subdued-active);
+  --p-color-fill-caution: var(--p-color-bg-caution-strong);
+  --p-color-fill-caution-secondary: var(--p-color-bg-caution);
+  --p-color-surface-caution: var(--p-color-bg-caution-subdued);
+  --p-color-surface-caution-hover: var(--p-color-bg-caution-subdued-hover);
+  --p-color-surface-caution-active: var(--p-color-bg-caution-subdued-active);
+  --p-color-fill-info: var(--p-color-bg-info-strong);
+  --p-color-fill-info-secondary: var(--p-color-bg-info);
+  --p-color-surface-info: var(--p-color-bg-info-subdued);
+  --p-color-surface-info-hover: var(--p-color-bg-info-subdued-hover);
+  --p-color-surface-info-active: var(--p-color-bg-info-subdued-active);
+  --p-color-fill-warning: var(--p-color-bg-warning-strong-experimental);
+  --p-color-fill-warning-secondary: var(--p-color-bg-warning);
+  --p-color-surface-warning: var(--p-color-bg-warning-subdued-experimental);
+  --p-color-fill-magic: var(--p-color-bg-magic-strong);
+  --p-color-fill-magic-secondary: var(--p-color-bg-magic);
+  --p-color-fill-magic-secondary-hover: var(--p-color-bg-magic-hover);
+  --p-color-fill-magic-secondary-active: var(--p-color-bg-magic-active);
+  --p-color-surface-magic: rgba(243, 241, 255, 1);
+  --p-color-surface-magic-hover: var(--p-color-bg-magic-subdued-hover);
+  --p-color-fill-secondary: var(--p-color-bg-inset);
+  --p-color-fill-inverse: var(--p-color-bg-inset-strong);
+  --p-color-fill-inverse-hover: var(--p-color-bg-inverse-hover);
+  --p-color-fill-inverse-active: var(--p-color-bg-inverse-active);
+  --p-color-surface-transparent: var(--p-color-bg-transparent-experimental);
+  --p-color-fill-transparent-hover: var(
+    --p-color-bg-transparent-hover-experimental
+  );
+  --p-color-fill-transparent-active: var(
+    --p-color-bg-transparent-active-experimental
+  );
+  --p-color-fill-disabled: var(--p-color-bg-transparent-disabled-experimental);
+  --p-color-fill-transparent-secondary: var(
+    --p-color-bg-transparent-subdued-experimental
+  );
+  --p-color-fill-brand-disabled: var(
+    --p-color-bg-transparent-primary-disabled-experimental
+  );
+  --p-color-backdrop-bg: var(--p-color-bg-backdrop-experimental);
+  --p-color-avatar-fill: var(--p-color-avatar-background-experimental);
+  --p-color-avatar-one-fill: var(
+    --p-color-avatar-style-one-background-experimental
+  );
+  --p-color-avatar-two-fill: var(
+    --p-color-avatar-style-two-background-experimental
+  );
+  --p-color-avatar-three-fill: var(
+    --p-color-avatar-style-three-background-experimental
+  );
+  --p-color-avatar-four-fill: var(
+    --p-color-avatar-style-four-background-experimental
+  );
+  --p-color-avatar-five-fill: var(
+    --p-color-avatar-style-five-background-experimental
+  );
+  --p-color-text-secondary: var(--p-color-text-subdued);
+  --p-color-text-emphasis: var(--p-color-text-interactive);
+  --p-color-text-emphasis-hover: var(--p-color-text-interactive-hover);
+  --p-color-text-emphasis-active: var(--p-color-text-interactive-active);
+  --p-color-text-brand: var(--p-color-text-primary);
+  --p-color-text-brand-hover: var(--p-color-text-primary-hover);
+  --p-color-text-critical-hover: rgba(95, 21, 7, 1);
+  --p-color-text-info-on-fill: var(--p-color-text-info-strong);
+  --p-color-text-warning: rgba(94, 66, 0, 1);
+  --p-color-text-inverse-secondary: var(--p-color-text-inverse-subdued);
+  --p-color-link-inverse: rgba(197, 208, 255, 1);
+  --p-color-avatar-text-on-fill: var(--p-color-avatar-color-experimental);
+  --p-color-avatar-one-text-on-fill: var(
+    --p-color-avatar-style-one-color-experimental
+  );
+  --p-color-avatar-two-text-on-fill: var(
+    --p-color-avatar-style-two-color-experimental
+  );
+  --p-color-avatar-three-text-on-fill: var(
+    --p-color-avatar-style-three-color-experimental
+  );
+  --p-color-avatar-four-text-on-fill: var(
+    --p-color-avatar-style-four-color-experimental
+  );
+  --p-color-avatar-five-text-on-fill: var(
+    --p-color-avatar-style-five-color-experimental
+  );
+  --p-color-icon-secondary: var(--p-color-icon-subdued);
+  --p-color-icon-emphasis: var(--p-color-icon-interactive);
+  --p-color-icon-emphasis-hover: var(--p-color-icon-interactive-hover);
+  --p-color-icon-emphasis-active: var(--p-color-icon-interactive-active);
+  --p-color-icon-brand: var(--p-color-icon-primary);
+  --p-color-border-secondary: var(--p-color-border-subdued);
+  --p-color-border-tertiary: rgba(204, 204, 204, 1);
+  --p-color-input-border: var(--p-color-border-input);
+  --p-color-input-border-hover: var(--p-color-border-input-hover);
+  --p-color-input-border-active: var(
+    --p-color-border-input-active-experimental
+  );
+  --p-color-border-emphasis: rgba(0, 91, 211, 1);
+  --p-color-border-emphasis-hover: var(--p-color-border-interactive-hover);
+  --p-color-border-emphasis-active: var(--p-color-border-interactive-active);
+  --p-color-border-focus: var(--p-color-border-interactive-focus);
+  --p-color-border-brand: var(--p-color-border-primary);
+  --p-color-border-critical-secondary: var(
+    --p-color-border-critical-strong-experimental
+  );
+  --p-color-border-magic-secondary: var(--p-color-border-magic-strong);
+  --p-color-bg-inverse: rgba(31, 33, 36, 1);
+  --p-color-bg-inset-strong: rgba(97, 106, 117, 1);
+  --p-color-bg-inverse-hover: rgba(97, 106, 117, 1);
+  --p-color-bg-inverse-active: rgba(135, 144, 155, 1);
+  --p-color-bg-strong-hover: rgba(202, 206, 211, 1);
+  --p-color-bg-strong-active: rgba(202, 206, 211, 1);
+  --p-color-bg-strong: rgba(221, 224, 228, 1);
+  --p-color-bg-subdued-active: rgba(235, 236, 239, 1);
+  --p-color-bg-disabled: rgba(235, 236, 239, 1);
+  --p-color-bg-interactive-disabled: rgba(235, 236, 239, 1);
+  --p-color-bg-app: rgba(241, 242, 244, 1);
+  --p-color-bg-app-active: rgba(221, 224, 228, 1);
+  --p-color-bg-app-hover: rgba(235, 236, 239, 1);
+  --p-color-bg-app-selected: rgba(235, 236, 239, 1);
+  --p-color-bg-active: rgba(235, 236, 239, 1);
+  --p-color-bg-subdued-hover: rgba(241, 242, 244, 1);
+  --p-color-bg-inset: rgba(241, 242, 244, 1);
+  --p-color-bg-hover: rgba(241, 242, 244, 1);
+  --p-color-bg-subdued: rgba(249, 250, 251, 1);
+  --p-color-bg-input: rgba(255, 255, 255, 1);
+  --p-color-bg: rgba(255, 255, 255, 1);
+  --p-color-bg-primary-active: rgba(12, 59, 47, 1);
+  --p-color-bg-primary-hover: rgba(18, 84, 67, 1);
+  --p-color-bg-primary: rgba(0, 122, 92, 1);
+  --p-color-bg-success-strong: rgba(22, 166, 121, 1);
+  --p-color-bg-success: rgba(161, 237, 208, 1);
+  --p-color-bg-primary-subdued-active: rgba(192, 242, 221, 1);
+  --p-color-bg-success-subdued-active: rgba(192, 242, 221, 1);
+  --p-color-bg-success-subdued: rgba(224, 248, 238, 1);
+  --p-color-bg-primary-subdued-hover: rgba(224, 248, 238, 1);
+  --p-color-bg-success-subdued-hover: rgba(240, 253, 248, 1);
+  --p-color-bg-primary-subdued: rgba(240, 253, 248, 1);
+  --p-color-bg-primary-subdued-selected: rgba(240, 253, 248, 1);
+  --p-color-bg-critical-strong-active: rgba(115, 24, 7, 1);
+  --p-color-bg-critical-strong-hover: rgba(159, 32, 10, 1);
+  --p-color-bg-critical-strong: rgba(197, 40, 12, 1);
+  --p-color-bg-critical-subdued-active: rgba(251, 197, 188, 1);
+  --p-color-bg-critical: rgba(251, 197, 188, 1);
+  --p-color-bg-critical-subdued: rgba(253, 226, 221, 1);
+  --p-color-bg-critical-subdued-hover: rgba(254, 243, 241, 1);
+  --p-color-bg-caution-strong: rgba(216, 155, 13, 1);
+  --p-color-bg-caution: rgba(248, 217, 144, 1);
+  --p-color-bg-caution-subdued-active: rgba(250, 229, 178, 1);
+  --p-color-bg-caution-subdued: rgba(252, 240, 212, 1);
+  --p-color-bg-caution-subdued-hover: rgba(254, 248, 236, 1);
+  --p-color-bg-info-strong: rgba(42, 172, 187, 1);
+  --p-color-bg-info-subdued-active: rgba(184, 233, 239, 1);
+  --p-color-bg-info: rgba(184, 233, 239, 1);
+  --p-color-bg-info-subdued: rgba(222, 245, 247, 1);
+  --p-color-bg-info-subdued-hover: rgba(238, 250, 251, 1);
+  --p-color-bg-interactive-active: rgba(14, 53, 108, 1);
+  --p-color-bg-interactive-hover: rgba(20, 73, 149, 1);
+  --p-color-bg-interactive: rgba(36, 99, 188, 1);
+  --p-color-bg-interactive-subdued-active: rgba(187, 212, 247, 1);
+  --p-color-bg-interactive-subdued-hover: rgba(232, 240, 253, 1);
+  --p-color-bg-interactive-subdued: rgba(240, 245, 253, 1);
+  --p-color-bg-interactive-selected: rgba(240, 245, 253, 1);
+  --p-color-bg-warning: rgba(250, 201, 168, 1);
+  --p-color-bg-magic-strong: rgba(121, 69, 227, 1);
+  --p-color-bg-magic-hover: rgba(226, 214, 250, 1);
+  --p-color-bg-magic-active: rgba(203, 180, 248, 1);
+  --p-color-bg-magic: rgba(236, 227, 253, 1);
+  --p-color-bg-magic-subdued-hover: rgba(236, 227, 253, 1);
+  --p-color-bg-magic-subdued-active: rgba(226, 214, 250, 1);
+  --p-color-bg-magic-subdued: rgba(242, 237, 253, 1);
+  --p-color-border-input-hover: rgba(97, 106, 117, 1);
+  --p-color-border-inverse: rgba(97, 106, 117, 1);
+  --p-color-border-strong-hover: rgba(135, 144, 155, 1);
+  --p-color-border-input: rgba(171, 177, 186, 1);
+  --p-color-border-hover: rgba(171, 177, 186, 1);
+  --p-color-border-strong: rgba(171, 177, 186, 1);
+  --p-color-border: rgba(202, 206, 211, 1);
+  --p-color-border-disabled: rgba(221, 224, 228, 1);
+  --p-color-border-subdued: rgba(221, 224, 228, 1);
+  --p-color-border-interactive-disabled: rgba(221, 224, 228, 1);
+  --p-color-border-primary: rgba(0, 122, 92, 1);
+  --p-color-border-success: rgba(22, 166, 121, 1);
+  --p-color-border-success-subdued: rgba(80, 220, 169, 1);
+  --p-color-border-critical-active: rgba(67, 14, 4, 1);
+  --p-color-border-critical-hover: rgba(115, 24, 7, 1);
+  --p-color-border-critical: rgba(197, 40, 12, 1);
+  --p-color-border-critical-subdued: rgba(245, 107, 82, 1);
+  --p-color-border-caution: rgba(216, 155, 13, 1);
+  --p-color-border-caution-subdued: rgba(245, 196, 82, 1);
+  --p-color-border-info: rgba(59, 195, 211, 1);
+  --p-color-border-info-subdued: rgba(109, 211, 222, 1);
+  --p-color-border-interactive-active: rgba(14, 53, 108, 1);
+  --p-color-border-interactive-hover: rgba(20, 73, 149, 1);
+  --p-color-border-interactive: rgba(62, 125, 213, 1);
+  --p-color-border-interactive-focus: rgba(62, 125, 213, 1);
+  --p-color-border-interactive-subdued: rgba(187, 212, 247, 1);
+  --p-color-border-magic-strong: rgba(121, 69, 227, 1);
+  --p-color-border-magic: rgba(173, 139, 241, 1);
+  --p-color-icon-hover: rgba(31, 33, 36, 1);
+  --p-color-icon: rgba(97, 106, 117, 1);
+  --p-color-icon-active: rgba(31, 33, 36, 1);
+  --p-color-icon-subdued: rgba(135, 144, 155, 1);
+  --p-color-icon-disabled: rgba(171, 177, 186, 1);
+  --p-color-icon-interactive-disabled: rgba(171, 177, 186, 1);
+  --p-color-icon-inverse: rgba(221, 224, 228, 1);
+  --p-color-icon-on-color: rgba(255, 255, 255, 1);
+  --p-color-icon-primary: rgba(0, 122, 92, 1);
+  --p-color-icon-success: rgba(22, 166, 121, 1);
+  --p-color-icon-critical: rgba(197, 40, 12, 1);
+  --p-color-icon-caution: rgba(183, 126, 11, 1);
+  --p-color-icon-info: rgba(42, 172, 187, 1);
+  --p-color-icon-warning: rgba(242, 117, 34, 1);
+  --p-color-icon-interactive-active: rgba(14, 53, 108, 1);
+  --p-color-icon-interactive-hover: rgba(20, 73, 149, 1);
+  --p-color-icon-interactive: rgba(36, 99, 188, 1);
+  --p-color-icon-interactive-inverse: rgba(102, 153, 225, 1);
+  --p-color-icon-magic: rgba(121, 69, 227, 1);
+  --p-color-text: rgba(31, 33, 36, 1);
+  --p-color-text-subdued: rgba(97, 106, 117, 1);
+  --p-color-text-disabled: rgba(135, 144, 155, 1);
+  --p-color-text-interactive-disabled: rgba(135, 144, 155, 1);
+  --p-color-text-inverse-subdued: rgba(171, 177, 186, 1);
+  --p-color-text-inverse: rgba(241, 242, 244, 1);
+  --p-color-text-on-color: rgba(255, 255, 255, 1);
+  --p-color-text-success-strong: rgba(12, 59, 47, 1);
+  --p-color-text-success: rgba(0, 122, 92, 1);
+  --p-color-text-primary: rgba(0, 122, 92, 1);
+  --p-color-text-primary-hover: rgba(18, 84, 67, 1);
+  --p-color-text-critical-strong: rgba(67, 14, 4, 1);
+  --p-color-text-critical-active: rgba(115, 24, 7, 1);
+  --p-color-text-critical: rgba(197, 40, 12, 1);
+  --p-color-text-caution-strong: rgba(77, 46, 5, 1);
+  --p-color-text-caution: rgba(135, 92, 8, 1);
+  --p-color-text-info-strong: rgba(16, 65, 71, 1);
+  --p-color-text-info: rgba(32, 130, 141, 1);
+  --p-color-text-warning-strong: rgba(77, 36, 5, 1);
+  --p-color-text-interactive-active: rgba(14, 53, 108, 1);
+  --p-color-text-interactive-hover: rgba(20, 73, 149, 1);
+  --p-color-text-interactive: rgba(36, 99, 188, 1);
+  --p-color-text-interactive-inverse: rgba(102, 153, 225, 1);
+  --p-color-text-magic-strong: rgba(49, 13, 120, 1);
+  --p-color-text-magic: rgba(90, 36, 205, 1);
+  --p-color-bg-backdrop-experimental: rgba(0, 0, 0, 0.71);
+  --p-color-bg-primary-disabled-experimental: rgba(212, 212, 212, 1);
+  --p-color-bg-secondary-experimental: rgba(243, 243, 243, 1);
+  --p-color-bg-input-hover-experimental: rgba(250, 250, 250, 1);
+  --p-color-border-input-active-experimental: rgba(26, 26, 26, 1);
+  --p-color-border-critical-strong-experimental: rgba(142, 31, 11, 1);
+  --p-color-bg-input-active-experimental: rgba(247, 247, 247, 1);
+  --p-color-bg-transparent-experimental: rgba(0, 0, 0, 0);
+  --p-color-bg-transparent-subdued-experimental: rgba(0, 0, 0, 0.06);
+  --p-color-bg-transparent-hover-experimental: rgba(0, 0, 0, 0.05);
+  --p-color-bg-transparent-active-experimental: rgba(0, 0, 0, 0.06);
+  --p-color-bg-transparent-disabled-experimental: rgba(0, 0, 0, 0.05);
+  --p-color-bg-transparent-secondary-disabled-experimental: rgba(0, 0, 0, 0.08);
+  --p-color-bg-transparent-primary-disabled-experimental: rgba(0, 0, 0, 0.17);
+  --p-color-bg-transparent-primary-experimental: rgba(0, 0, 0, 0.62);
+  --p-color-bg-success-strong-hover-experimental: rgba(19, 111, 69, 1);
+  --p-color-bg-success-strong-active-experimental: rgba(12, 81, 50, 1);
+  --p-color-bg-warning-subdued-experimental: rgba(255, 241, 227, 1);
+  --p-color-bg-warning-strong-experimental: rgba(255, 184, 0, 1);
+  --p-color-text-warning-experimental: rgba(65, 45, 0, 1);
+  --p-color-text-critical-hover-experimental: rgba(95, 21, 7, 1);
+  --p-color-icon-info-strong-experimental: rgba(0, 82, 124, 1);
+  --p-color-icon-warning-strong-experimental: rgba(124, 88, 0, 1);
+  --p-color-icon-success-strong-experimental: rgba(12, 81, 50, 1);
+  --p-color-icon-critical-strong-experimental: rgba(142, 31, 11, 1);
+  --p-color-icon-critical-strong-hover-experimental: rgba(95, 21, 7, 1);
+  --p-color-icon-critical-strong-active-experimental: rgba(47, 10, 4, 1);
+  --p-color-avatar-background-experimental: rgba(181, 181, 181, 1);
+  --p-color-avatar-color-experimental: rgba(255, 255, 255, 1);
+  --p-color-avatar-style-one-background-experimental: rgba(251, 207, 251, 1);
+  --p-color-avatar-style-one-color-experimental: rgba(121, 26, 121, 1);
+  --p-color-avatar-style-two-background-experimental: rgba(56, 250, 163, 1);
+  --p-color-avatar-style-two-color-experimental: rgba(12, 81, 50, 1);
+  --p-color-avatar-style-three-background-experimental: rgba(146, 237, 222, 1);
+  --p-color-avatar-style-three-color-experimental: rgba(9, 83, 70, 1);
+  --p-color-avatar-style-four-background-experimental: rgba(192, 225, 255, 1);
+  --p-color-avatar-style-four-color-experimental: rgba(0, 82, 124, 1);
+  --p-color-avatar-style-five-background-experimental: rgba(254, 209, 221, 1);
+  --p-color-avatar-style-five-color-experimental: rgba(141, 4, 72, 1);
+  --p-font-family-sans: -apple-system, BlinkMacSystemFont, 'San Francisco',
+    'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --p-font-family-mono: ui-monospace, SFMono-Regular, 'SF Mono', Consolas,
+    'Liberation Mono', Menlo, monospace;
+  --p-font-size-275: 0.6875rem;
+  --p-font-size-325: 0.8125rem;
+  --p-font-size-350: 0.875rem;
+  --p-font-size-750: 1.875rem;
+  --p-font-size-900: 2.25rem;
+  --p-font-size-1000: 2.5rem;
+  --p-font-size-70-experimental: 0.6875rem;
+  --p-font-size-75: 0.75rem;
+  --p-font-size-80-experimental: 0.8125rem;
+  --p-font-size-100: 0.875rem;
+  --p-font-size-200: 1rem;
+  --p-font-size-300: 1.25rem;
+  --p-font-size-400: 1.5rem;
+  --p-font-size-500: 1.75rem;
+  --p-font-size-600: 2rem;
+  --p-font-size-700: 2.5rem;
+  --p-font-weight-regular: 400;
+  --p-font-weight-medium: 500;
+  --p-font-weight-semibold: 600;
+  --p-font-weight-bold: 700;
+  --p-font-line-height-300: 0.75rem;
+  --p-font-line-height-400: 1rem;
+  --p-font-line-height-500: 1.25rem;
+  --p-font-line-height-600: 1.5rem;
+  --p-font-line-height-700: 1.75rem;
+  --p-font-line-height-800: 2rem;
+  --p-font-line-height-1000: 2.5rem;
+  --p-font-line-height-1200: 3rem;
+  --p-font-line-height-075-experimental: 0.75rem;
+  --p-font-line-height-1: 1rem;
+  --p-font-line-height-2: 1.25rem;
+  --p-font-line-height-3: 1.5rem;
+  --p-font-line-height-4: 1.75rem;
+  --p-font-line-height-5: 2rem;
+  --p-font-line-height-6: 2.5rem;
+  --p-font-line-height-7: 3rem;
+  --p-height-0: 0rem;
+  --p-height-025: 0.0625rem;
+  --p-height-050: 0.125rem;
+  --p-height-100: 0.25rem;
+  --p-height-150: 0.375rem;
+  --p-height-200: 0.5rem;
+  --p-height-300: 0.75rem;
+  --p-height-400: 1rem;
+  --p-height-500: 1.25rem;
+  --p-height-600: 1.5rem;
+  --p-height-700: 1.75rem;
+  --p-height-800: 2rem;
+  --p-height-900: 2.25rem;
+  --p-height-1000: 2.5rem;
+  --p-height-1200: 3rem;
+  --p-height-1600: 4rem;
+  --p-height-2000: 5rem;
+  --p-height-2400: 6rem;
+  --p-height-2800: 7rem;
+  --p-height-3200: 8rem;
+  --p-motion-duration-0: 0ms;
+  --p-motion-duration-50: 50ms;
+  --p-motion-duration-100: 100ms;
+  --p-motion-duration-150: 150ms;
+  --p-motion-duration-200: 200ms;
+  --p-motion-duration-250: 250ms;
+  --p-motion-duration-300: 300ms;
+  --p-motion-duration-350: 350ms;
+  --p-motion-duration-400: 400ms;
+  --p-motion-duration-450: 450ms;
+  --p-motion-duration-500: 500ms;
+  --p-motion-duration-5000: 5000ms;
+  --p-motion-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --p-motion-ease-in: cubic-bezier(0.42, 0, 1, 1);
+  --p-motion-ease-out: cubic-bezier(0, 0, 0.58, 1);
+  --p-motion-ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --p-motion-linear: cubic-bezier(0, 0, 1, 1);
+  --p-motion-keyframes-bounce: p-motion-keyframes-bounce;
+  --p-motion-keyframes-fade-in: p-motion-keyframes-fade-in;
+  --p-motion-keyframes-pulse: p-motion-keyframes-pulse;
+  --p-motion-keyframes-spin: p-motion-keyframes-spin;
+  --p-motion-keyframes-appear-above: p-motion-keyframes-appear-above;
+  --p-motion-keyframes-appear-below: p-motion-keyframes-appear-below;
+  --p-shadow-inset-lg: inset 0rem 0rem 0.4375rem 0.125rem rgba(31, 33, 36, 0.18);
+  --p-shadow-inset-md: inset 0rem 0.125rem 0.25rem rgba(31, 33, 36, 0.32);
+  --p-shadow-inset-sm: inset 0rem 0rem 0.1875rem rgba(31, 33, 36, 0.56);
+  --p-shadow-none: none;
+  --p-shadow-xs: 0rem 0rem 0.125rem rgba(31, 33, 36, 0.24);
+  --p-shadow-sm: 0rem 0.0625rem 0.0625rem rgba(31, 33, 36, 0.1);
+  --p-shadow-md: 0rem 0.125rem 0.25rem rgba(31, 33, 36, 0.1),
+    0rem 0.0625rem 0.375rem rgba(31, 33, 36, 0.05);
+  --p-shadow-lg: 0rem 0.25rem 0.75rem rgba(31, 33, 36, 0.2),
+    0rem 0.125rem 0.375rem rgba(31, 33, 36, 0.05);
+  --p-shadow-xl: 0rem 0.25rem 1.125rem -0.125rem rgba(31, 33, 36, 0.08),
+    0rem 0.75rem 1.125rem -0.125rem rgba(31, 33, 36, 0.15);
+  --p-shadow-2xl: 0rem 2rem 2rem rgba(31, 33, 36, 0.15),
+    0rem 2rem 3.5rem -0.125rem rgba(31, 33, 36, 0.16);
+  --p-shadow-bevel-experimental: 0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13)
+      inset,
+    -0.0625rem 0rem 0rem 0rem rgba(0, 0, 0, 0.13) inset,
+    0rem -0.0625rem 0rem 0rem rgba(0, 0, 0, 0.17) inset,
+    0rem 0.0625rem 0rem 0rem rgba(204, 204, 204, 0.5) inset;
+  --p-shadow-card-sm-experimental: 0rem 0.125rem 0rem rgba(0, 0, 0, 0.07),
+    0rem 0.0625rem 0rem rgba(0, 0, 0, 0.07), 0.0625rem 0rem 0rem #e3e3e3,
+    -0.0625rem 0rem 0rem #e3e3e3, 0rem -0.0625rem 0rem #e3e3e3;
+  --p-shadow-card-md-experimental: 0rem 0.1875rem 0.0625rem -0.0625rem rgba(0, 0, 0, 0.07),
+    0rem -0.0625rem 0rem 0rem rgba(0, 0, 0, 0.16),
+    0.0625rem 0rem 0rem 0rem rgba(227, 227, 227, 1),
+    -0.0625rem 0rem 0rem 0rem rgba(227, 227, 227, 1),
+    0rem 0.0625rem 0rem 0rem rgba(227, 227, 227, 1);
+  --p-shadow-card-lg-experimental: 0rem 0.25rem 0.375rem -0.125rem rgba(0, 0, 0, 0.2),
+    inset 0rem -0.0625rem 0rem #d4d4d4, inset -0.0625rem 0rem 0rem #e3e3e3,
+    inset 0.0625rem 0rem 0rem #e3e3e3, inset 0rem 0.0625rem 0rem #e3e3e3;
+  --p-shadow-button-experimental: inset 0rem -0.0625rem 0rem #b5b5b5,
+    inset -0.0625rem 0rem 0rem #e3e3e3, inset 0.0625rem 0rem 0rem #e3e3e3,
+    inset 0rem 0.0625rem 0rem #e3e3e3;
+  --p-shadow-button-hover-experimental: inset 0rem -0.0625rem 0rem #cccccc,
+    inset 0.0625rem 0rem 0rem #ebebeb, inset -0.0625rem 0rem 0rem #ebebeb,
+    inset 0rem 0.0625rem 0rem #ebebeb;
+  --p-shadow-button-disabled-experimental: inset 0rem 0rem 0rem 0.0625rem
+    rgba(227, 227, 227, 1);
+  --p-shadow-button-primary-strong-inset-experimental: 0rem 0.1875rem 0rem 0rem
+    #000 inset;
+  --p-shadow-button-primary-strong-hover-experimental: 0rem 0.0625rem 0rem 0rem
+      rgba(255, 255, 255, 0.24) inset,
+    0.0625rem 0rem 0rem 0rem rgba(255, 255, 255, 0.16) inset,
+    -0.0625rem 0rem 0rem 0rem rgba(255, 255, 255, 0.16) inset,
+    0rem -0.09375rem 0rem 0rem rgba(255, 255, 255, 0.07) inset,
+    0rem 0rem 0rem 0.03125rem #1a1a1a;
+  --p-shadow-button-primary-strong-experimental: 0rem 0.125rem 0rem 0rem
+      rgba(255, 255, 255, 0.2) inset,
+    0.125rem 0rem 0rem 0rem rgba(255, 255, 255, 0.2) inset,
+    -0.125rem 0rem 0rem 0rem rgba(255, 255, 255, 0.2) inset,
+    0rem -0.0625rem 0rem 0.0625rem #000 inset,
+    0rem 0.0625rem 0rem 0rem #000 inset;
+  --p-shadow-button-primary-experimental: 0rem 0.0625rem 0rem 0rem
+      rgba(255, 255, 255, 0.4) inset,
+    0.0625rem 0rem 0rem 0rem rgba(255, 255, 255, 0.2) inset,
+    -0.0625rem 0rem 0rem 0rem rgba(255, 255, 255, 0.2) inset,
+    0rem -0.09375rem 0rem 0rem rgba(0, 0, 0, 0.25) inset;
+  --p-shadow-button-primary-hover-experimental: -0.0625rem 0rem 0rem 0rem
+      rgba(255, 255, 255, 0.2) inset,
+    0.0625rem 0rem 0rem 0rem rgba(255, 255, 255, 0.2) inset,
+    0rem 0.03125rem 0rem 0rem rgba(0, 0, 0, 0.25),
+    0rem -0.09375rem 0rem 0rem rgba(255, 255, 255, 0.07) inset,
+    0rem 0.0625rem 0rem 0rem rgba(255, 255, 255, 0.24) inset;
+  --p-shadow-button-inset-experimental: 0rem 0.125rem 0rem 0rem
+      rgba(0, 0, 0, 0.6) inset,
+    0.0625rem 0rem 0.0625rem 0rem rgba(0, 0, 0, 0.2) inset,
+    -0.0625rem 0rem 0.0625rem 0rem rgba(0, 0, 0, 0.2) inset;
+  --p-shadow-border-inset-experimental: 0rem 0rem 0rem 0.0625rem
+    rgba(0, 0, 0, 0.08) inset;
+  --p-space-0: 0rem;
+  --p-space-025: 0.0625rem;
+  --p-space-050: 0.125rem;
+  --p-space-100: 0.25rem;
+  --p-space-150: 0.375rem;
+  --p-space-200: 0.5rem;
+  --p-space-300: 0.75rem;
+  --p-space-400: 1rem;
+  --p-space-500: 1.25rem;
+  --p-space-600: 1.5rem;
+  --p-space-800: 2rem;
+  --p-space-1000: 2.5rem;
+  --p-space-1200: 3rem;
+  --p-space-1600: 4rem;
+  --p-space-2000: 5rem;
+  --p-space-2400: 6rem;
+  --p-space-2800: 7rem;
+  --p-space-3200: 8rem;
+  --p-space-05: 0.125rem;
+  --p-space-1: 0.25rem;
+  --p-space-1_5-experimental: 0.375rem;
+  --p-space-2: 0.5rem;
+  --p-space-3: 0.75rem;
+  --p-space-4: 1rem;
+  --p-space-5: 1.25rem;
+  --p-space-6: 1.5rem;
+  --p-space-8: 2rem;
+  --p-space-10: 2.5rem;
+  --p-space-12: 3rem;
+  --p-space-16: 4rem;
+  --p-space-20: 5rem;
+  --p-space-24: 6rem;
+  --p-space-28: 7rem;
+  --p-space-32: 8rem;
+  --p-width-0: 0rem;
+  --p-width-025: 0.0625rem;
+  --p-width-050: 0.125rem;
+  --p-width-100: 0.25rem;
+  --p-width-150: 0.375rem;
+  --p-width-200: 0.5rem;
+  --p-width-300: 0.75rem;
+  --p-width-400: 1rem;
+  --p-width-500: 1.25rem;
+  --p-width-600: 1.5rem;
+  --p-width-700: 1.75rem;
+  --p-width-800: 2rem;
+  --p-width-900: 2.25rem;
+  --p-width-1000: 2.5rem;
+  --p-width-1200: 3rem;
+  --p-width-1600: 4rem;
+  --p-width-2000: 5rem;
+  --p-width-2400: 6rem;
+  --p-width-2800: 7rem;
+  --p-width-3200: 8rem;
+  --p-z-index-1: 100;
+  --p-z-index-2: 400;
+  --p-z-index-3: 510;
+  --p-z-index-4: 512;
+  --p-z-index-5: 513;
+  --p-z-index-6: 514;
+  --p-z-index-7: 515;
+  --p-z-index-8: 516;
+  --p-z-index-9: 517;
+  --p-z-index-10: 518;
+  --p-z-index-11: 519;
+  --p-z-index-12: 520;
+  --p-motion-ease-out: cubic-bezier(0.19, 0.91, 0.38, 1);
+  --p-font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont,
+    'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --p-font-size-500: 30px;
+  --p-font-size-600: 36px;
+  --p-shadow-inset-lg: inset -1px 0px 1px rgba(0, 0, 0, 0.2),
+    inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6);
+  --p-shadow-inset-md: inset -1px 0px 1px rgba(0, 0, 0, 0.12),
+    inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2);
+  --p-shadow-inset-sm: inset 0px 1px 1px rgba(0, 0, 0, 0.15),
+    inset 0px 1px 2px rgba(255, 255, 255, 0.15);
+  --p-shadow-xs: 0px 1px 0px rgba(0, 0, 0, 0.07);
+  --p-shadow-sm: 0px 3px 1px -1px rgba(0, 0, 0, 0.07);
+  --p-shadow-md: 0px 4px 6px -2px rgba(0, 0, 0, 0.2);
+  --p-shadow-lg: 0px 8px 16px -4px rgba(0, 0, 0, 0.22);
+  --p-shadow-xl: 0px 12px 20px -8px rgba(0, 0, 0, 0.24);
+  --p-shadow-2xl: 0px 20px 20px -8px rgba(0, 0, 0, 0.28);
+  --p-color-surface: rgba(255, 255, 255, 1);
+  --p-color-surface-secondary: rgba(247, 247, 247, 1);
+  --p-color-surface-secondary-hover: rgba(241, 241, 241, 1);
+  --p-color-surface-secondary-active: rgba(235, 235, 235, 1);
+  --p-color-surface-tertiary: rgba(243, 243, 243, 1);
+  --p-color-fill-tertiary: rgba(227, 227, 227, 1);
+  --p-color-fill-tertiary-hover: rgba(212, 212, 212, 1);
+  --p-color-fill-tertiary-active: rgba(204, 204, 204, 1);
+  --p-color-input-surface: rgba(253, 253, 253, 1);
+  --p-color-input-surface-hover: rgba(250, 250, 250, 1);
+  --p-color-input-surface-active: rgba(247, 247, 247, 1);
+  --p-color-surface-selected: rgba(250, 250, 250, 1);
+  --p-color-fill-success: rgba(41, 132, 90, 1);
+  --p-color-fill-success-hover: rgba(19, 111, 69, 1);
+  --p-color-fill-success-active: rgba(12, 81, 50, 1);
+  --p-color-fill-success-secondary: rgba(205, 254, 225, 1);
+  --p-color-surface-success: rgba(205, 254, 225, 1);
+  --p-color-surface-success-hover: rgba(180, 254, 210, 1);
+  --p-color-surface-success-active: rgba(146, 254, 194, 1);
+  --p-color-fill-critical: rgba(229, 28, 0, 1);
+  --p-color-fill-critical-hover: rgba(181, 38, 11, 1);
+  --p-color-fill-critical-active: rgba(142, 31, 11, 1);
+  --p-color-fill-critical-secondary: rgba(254, 218, 217, 1);
+  --p-color-surface-critical: rgba(254, 233, 232, 1);
+  --p-color-surface-critical-hover: rgba(254, 226, 225, 1);
+  --p-color-surface-critical-active: rgba(254, 218, 217, 1);
+  --p-color-fill-caution: rgba(255, 230, 0, 1);
+  --p-color-fill-caution-secondary: rgba(255, 239, 157, 1);
+  --p-color-surface-caution: rgba(255, 248, 219, 1);
+  --p-color-surface-caution-hover: rgba(255, 244, 191, 1);
+  --p-color-surface-caution-active: rgba(255, 239, 157, 1);
+  --p-color-fill-info: rgba(145, 208, 255, 1);
+  --p-color-fill-info-secondary: rgba(224, 240, 255, 1);
+  --p-color-surface-info: rgba(234, 244, 255, 1);
+  --p-color-surface-info-hover: rgba(224, 240, 255, 1);
+  --p-color-surface-info-active: rgba(202, 230, 255, 1);
+  --p-color-fill-warning: rgba(255, 184, 0, 1);
+  --p-color-fill-warning-secondary: rgba(255, 214, 164, 1);
+  --p-color-surface-warning: rgba(255, 241, 227, 1);
+  --p-color-fill-magic: rgba(128, 81, 255, 1);
+  --p-color-fill-magic-secondary: rgba(228, 222, 255, 1);
+  --p-color-fill-magic-secondary-hover: rgba(223, 217, 255, 1);
+  --p-color-fill-magic-secondary-active: rgba(212, 204, 255, 1);
+  --p-color-surface-magic-hover: rgba(239, 236, 255, 1);
+  --p-color-fill-secondary: rgba(241, 241, 241, 1);
+  --p-color-fill-inverse: rgba(48, 48, 48, 1);
+  --p-color-fill-inverse-hover: rgba(74, 74, 74, 1);
+  --p-color-fill-inverse-active: rgba(97, 97, 97, 1);
+  --p-color-surface-transparent: rgba(0, 0, 0, 0);
+  --p-color-fill-transparent-hover: rgba(0, 0, 0, 0.05);
+  --p-color-fill-transparent-active: rgba(0, 0, 0, 0.06);
+  --p-color-fill-disabled: rgba(0, 0, 0, 0.05);
+  --p-color-fill-transparent-secondary: rgba(0, 0, 0, 0.06);
+  --p-color-fill-brand-disabled: rgba(0, 0, 0, 0.17);
+  --p-color-backdrop-bg: rgba(0, 0, 0, 0.71);
+  --p-color-avatar-fill: rgba(181, 181, 181, 1);
+  --p-color-avatar-one-fill: rgba(251, 207, 251, 1);
+  --p-color-avatar-two-fill: rgba(56, 250, 163, 1);
+  --p-color-avatar-three-fill: rgba(146, 237, 222, 1);
+  --p-color-avatar-four-fill: rgba(192, 225, 255, 1);
+  --p-color-avatar-five-fill: rgba(254, 209, 221, 1);
+  --p-color-text-secondary: rgba(97, 97, 97, 1);
+  --p-color-text-emphasis: rgba(0, 91, 211, 1);
+  --p-color-text-emphasis-hover: rgba(0, 66, 153, 1);
+  --p-color-text-emphasis-active: rgba(0, 46, 106, 1);
+  --p-color-text-brand: rgba(74, 74, 74, 1);
+  --p-color-text-brand-hover: rgba(48, 48, 48, 1);
+  --p-color-text-info-on-fill: rgba(0, 33, 51, 1);
+  --p-color-text-inverse-secondary: rgba(181, 181, 181, 1);
+  --p-color-avatar-text-on-fill: rgba(255, 255, 255, 1);
+  --p-color-avatar-one-text-on-fill: rgba(121, 26, 121, 1);
+  --p-color-avatar-two-text-on-fill: rgba(12, 81, 50, 1);
+  --p-color-avatar-three-text-on-fill: rgba(9, 83, 70, 1);
+  --p-color-avatar-four-text-on-fill: rgba(0, 82, 124, 1);
+  --p-color-avatar-five-text-on-fill: rgba(141, 4, 72, 1);
+  --p-color-icon-secondary: rgba(138, 138, 138, 1);
+  --p-color-icon-emphasis: rgba(0, 91, 211, 1);
+  --p-color-icon-emphasis-hover: rgba(0, 66, 153, 1);
+  --p-color-icon-emphasis-active: rgba(0, 46, 106, 1);
+  --p-color-icon-brand: rgba(26, 26, 26, 1);
+  --p-color-border-secondary: rgba(235, 235, 235, 1);
+  --p-color-input-border: rgba(138, 138, 138, 1);
+  --p-color-input-border-hover: rgba(97, 97, 97, 1);
+  --p-color-input-border-active: rgba(26, 26, 26, 1);
+  --p-color-border-emphasis-hover: rgba(0, 66, 153, 1);
+  --p-color-border-emphasis-active: rgba(0, 46, 106, 1);
+  --p-color-border-focus: rgba(0, 91, 211, 1);
+  --p-color-border-brand: rgba(227, 227, 227, 1);
+  --p-color-border-critical-secondary: rgba(142, 31, 11, 1);
+  --p-color-border-magic-secondary: rgba(128, 81, 255, 1);
+  --p-color-bg-inverse: rgba(26, 26, 26, 1);
+  --p-color-bg-inset-strong: rgba(48, 48, 48, 1);
+  --p-color-bg-inverse-hover: rgba(74, 74, 74, 1);
+  --p-color-bg-inverse-active: rgba(97, 97, 97, 1);
+  --p-color-bg-strong-hover: rgba(212, 212, 212, 1);
+  --p-color-bg-strong-active: rgba(204, 204, 204, 1);
+  --p-color-bg-strong: rgba(227, 227, 227, 1);
+  --p-color-bg-subdued-active: rgba(235, 235, 235, 1);
+  --p-color-bg-disabled: rgba(235, 235, 235, 1);
+  --p-color-bg-interactive-disabled: rgba(235, 235, 235, 1);
+  --p-color-bg-app: rgba(241, 241, 241, 1);
+  --p-color-bg-app-hover: rgba(253, 253, 253, 1);
+  --p-color-bg-app-selected: rgba(250, 250, 250, 1);
+  --p-color-bg-active: rgba(247, 247, 247, 1);
+  --p-color-bg-subdued-hover: rgba(241, 241, 241, 1);
+  --p-color-bg-inset: rgba(241, 241, 241, 1);
+  --p-color-bg-hover: rgba(250, 250, 250, 1);
+  --p-color-bg-subdued: rgba(247, 247, 247, 1);
+  --p-color-bg-input: rgba(255, 255, 255, 1);
+  --p-color-bg: rgba(255, 255, 255, 1);
+  --p-color-bg-primary-active: rgba(26, 26, 26, 1);
+  --p-color-bg-primary-hover: rgba(26, 26, 26, 1);
+  --p-color-bg-primary: rgba(48, 48, 48, 1);
+  --p-color-bg-success-strong: rgba(41, 132, 90, 1);
+  --p-color-bg-success: rgba(205, 254, 225, 1);
+  --p-color-bg-primary-subdued-active: rgba(241, 241, 241, 1);
+  --p-color-bg-success-subdued: rgba(205, 254, 225, 1);
+  --p-color-bg-primary-subdued-hover: rgba(235, 235, 235, 1);
+  --p-color-bg-success-subdued-hover: rgba(146, 254, 194, 1);
+  --p-color-bg-primary-subdued: rgba(227, 227, 227, 1);
+  --p-color-bg-primary-subdued-selected: rgba(241, 241, 241, 1);
+  --p-color-bg-critical-strong-active: rgba(142, 31, 11, 1);
+  --p-color-bg-critical-strong-hover: rgba(181, 38, 11, 1);
+  --p-color-bg-critical-strong: rgba(229, 28, 0, 1);
+  --p-color-bg-critical-subdued-active: rgba(254, 218, 217, 1);
+  --p-color-bg-critical: rgba(254, 218, 217, 1);
+  --p-color-bg-critical-subdued: rgba(254, 233, 232, 1);
+  --p-color-bg-critical-subdued-hover: rgba(254, 226, 225, 1);
+  --p-color-bg-caution-strong: rgba(255, 230, 0, 1);
+  --p-color-bg-caution: rgba(255, 239, 157, 1);
+  --p-color-bg-caution-subdued-active: rgba(255, 239, 157, 1);
+  --p-color-bg-caution-subdued: rgba(255, 248, 219, 1);
+  --p-color-bg-caution-subdued-hover: rgba(255, 244, 191, 1);
+  --p-color-bg-info-strong: rgba(145, 208, 255, 1);
+  --p-color-bg-info-subdued-active: rgba(202, 230, 255, 1);
+  --p-color-bg-info: rgba(224, 240, 255, 1);
+  --p-color-bg-info-subdued: rgba(234, 244, 255, 1);
+  --p-color-bg-info-subdued-hover: rgba(224, 240, 255, 1);
+  --p-color-bg-interactive-active: rgba(74, 74, 74, 1);
+  --p-color-bg-interactive-hover: rgba(48, 48, 48, 1);
+  --p-color-bg-interactive: rgba(26, 26, 26, 1);
+  --p-color-bg-interactive-subdued-active: rgba(241, 241, 241, 1);
+  --p-color-bg-interactive-subdued-hover: rgba(235, 235, 235, 1);
+  --p-color-bg-interactive-subdued: rgba(227, 227, 227, 1);
+  --p-color-bg-interactive-selected: rgba(241, 241, 241, 1);
+  --p-color-bg-warning: rgba(255, 214, 164, 1);
+  --p-color-bg-magic-strong: rgba(128, 81, 255, 1);
+  --p-color-bg-magic-hover: rgba(223, 217, 255, 1);
+  --p-color-bg-magic-active: rgba(212, 204, 255, 1);
+  --p-color-bg-magic: rgba(228, 222, 255, 1);
+  --p-color-bg-magic-subdued-hover: rgba(239, 236, 255, 1);
+  --p-color-bg-magic-subdued-active: rgba(228, 222, 255, 1);
+  --p-color-bg-magic-subdued: rgba(243, 241, 255, 1);
+  --p-color-border-input-hover: rgba(97, 97, 97, 1);
+  --p-color-border-inverse: rgba(97, 97, 97, 1);
+  --p-color-border-strong-hover: rgba(181, 181, 181, 1);
+  --p-color-border-input: rgba(138, 138, 138, 1);
+  --p-color-border-hover: rgba(204, 204, 204, 1);
+  --p-color-border-strong: rgba(204, 204, 204, 1);
+  --p-color-border: rgba(227, 227, 227, 1);
+  --p-color-border-disabled: rgba(235, 235, 235, 1);
+  --p-color-border-subdued: rgba(235, 235, 235, 1);
+  --p-color-border-interactive-disabled: rgba(235, 235, 235, 1);
+  --p-color-border-primary: rgba(227, 227, 227, 1);
+  --p-color-border-success: rgba(146, 254, 194, 1);
+  --p-color-border-success-subdued: rgba(146, 254, 194, 1);
+  --p-color-border-critical-active: rgba(239, 77, 47, 1);
+  --p-color-border-critical-hover: rgba(253, 129, 122, 1);
+  --p-color-border-critical: rgba(253, 176, 172, 1);
+  --p-color-border-critical-subdued: rgba(253, 176, 172, 1);
+  --p-color-border-caution: rgba(255, 235, 120, 1);
+  --p-color-border-caution-subdued: rgba(255, 235, 120, 1);
+  --p-color-border-info: rgba(145, 208, 255, 1);
+  --p-color-border-info-subdued: rgba(145, 208, 255, 1);
+  --p-color-border-interactive-active: rgba(0, 46, 106, 1);
+  --p-color-border-interactive-hover: rgba(0, 66, 153, 1);
+  --p-color-border-interactive: rgba(0, 91, 211, 1);
+  --p-color-border-interactive-focus: rgba(0, 91, 211, 1);
+  --p-color-border-interactive-subdued: rgba(0, 91, 211, 1);
+  --p-color-border-magic-strong: rgba(128, 81, 255, 1);
+  --p-color-border-magic: rgba(170, 149, 255, 1);
+  --p-color-icon-hover: rgba(48, 48, 48, 1);
+  --p-color-icon: rgba(74, 74, 74, 1);
+  --p-color-icon-subdued: rgba(138, 138, 138, 1);
+  --p-color-icon-disabled: rgba(204, 204, 204, 1);
+  --p-color-icon-interactive-disabled: rgba(204, 204, 204, 1);
+  --p-color-icon-inverse: rgba(227, 227, 227, 1);
+  --p-color-icon-on-color: rgba(255, 255, 255, 1);
+  --p-color-icon-primary: rgba(26, 26, 26, 1);
+  --p-color-icon-success: rgba(41, 132, 90, 1);
+  --p-color-icon-critical: rgba(239, 77, 47, 1);
+  --p-color-icon-caution: rgba(153, 138, 0, 1);
+  --p-color-icon-info: rgba(0, 148, 213, 1);
+  --p-color-icon-warning: rgba(178, 132, 0, 1);
+  --p-color-icon-interactive-active: rgba(0, 46, 106, 1);
+  --p-color-icon-interactive-hover: rgba(0, 66, 153, 1);
+  --p-color-icon-interactive: rgba(0, 91, 211, 1);
+  --p-color-icon-interactive-inverse: rgba(197, 208, 255, 1);
+  --p-color-icon-magic: rgba(113, 38, 255, 1);
+  --p-color-text: rgba(48, 48, 48, 1);
+  --p-color-text-subdued: rgba(97, 97, 97, 1);
+  --p-color-text-disabled: rgba(181, 181, 181, 1);
+  --p-color-text-interactive-disabled: rgba(204, 204, 204, 1);
+  --p-color-text-inverse-subdued: rgba(204, 204, 204, 1);
+  --p-color-text-inverse: rgba(227, 227, 227, 1);
+  --p-color-text-on-color: rgba(255, 255, 255, 1);
+  --p-color-text-success-strong: rgba(8, 61, 37, 1);
+  --p-color-text-success: rgba(8, 61, 37, 1);
+  --p-color-text-primary: rgba(74, 74, 74, 1);
+  --p-color-text-primary-hover: rgba(74, 74, 74, 1);
+  --p-color-text-critical-strong: rgba(142, 31, 11, 1);
+  --p-color-text-critical-active: rgba(47, 10, 4, 1);
+  --p-color-text-critical: rgba(142, 31, 11, 1);
+  --p-color-text-caution-strong: rgba(51, 46, 0, 1);
+  --p-color-text-caution: rgba(51, 46, 0, 1);
+  --p-color-text-info-strong: rgba(0, 33, 51, 1);
+  --p-color-text-info: rgba(0, 82, 124, 1);
+  --p-color-text-warning-strong: rgba(37, 26, 0, 1);
+  --p-color-text-interactive-active: rgba(0, 46, 106, 1);
+  --p-color-text-interactive-hover: rgba(0, 66, 153, 1);
+  --p-color-text-interactive: rgba(0, 91, 211, 1);
+  --p-color-text-interactive-inverse: rgba(197, 208, 255, 1);
+  --p-color-text-magic-strong: rgba(59, 0, 147, 1);
+  --p-color-text-magic: rgba(87, 0, 209, 1);
+}

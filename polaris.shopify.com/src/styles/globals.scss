@@ -2,6 +2,8 @@
 @import 'fonts.scss';
 @import 'mixins.scss';
 
+@import './polaris-tokens.scss';
+
 :root {
   --page-max-width: #{$pageMaxWidth};
   --header-height: 60px; // Parsed by JS. Define in px.
@@ -17,6 +19,7 @@
 
   --duration-200: 200ms;
   --ease-in-out: cubic-bezier(0.42, 0, 0.58, 1);
+  --font-family:
   --font-family-mono: 'SF Mono', SFMono-Regular, ui-monospace,
     'DejaVu Sans Mono', Menlo, Consolas, monospace;
 
@@ -31,18 +34,20 @@
   --font-size-600: 1.125rem;
   --font-size-700: 1.266rem;
   --font-size-800: 1.424rem;
-  --font-size-900: 1.602rem;
   --font-size-1000: 1.802rem;
-  --font-size-1100: 2.027rem;
   --font-size-1200: 2.281rem;
   --font-size-1300: 2.566rem;
-  --font-size-1400: 2.887rem;
-  --font-size-1500: 3.247rem;
   --font-size-1600: 3.653rem;
-  --font-size-1700: 4.11rem;
-  --font-size-1800: 4.624rem;
-  --font-size-1900: 5.202rem;
-  --font-size-2000: 5.852rem;
+
+  // we're not using these
+  // --font-size-900: 1.602rem;
+  // --font-size-1100: 2.027rem;
+  // --font-size-1400: 2.887rem;
+  // --font-size-1500: 3.247rem;
+  // --font-size-1700: 4.11rem;
+  // --font-size-1800: 4.624rem;
+  // --font-size-1900: 5.202rem;
+  // --font-size-2000: 5.852rem;
 
   @media screen and (max-width: $breakpointMobile) {
     --font-size-100: 0.85rem;
@@ -192,27 +197,33 @@ body,
 }
 
 .light-mode {
-  --text: #434e4e;
-  --text-strong: #1c1e1e;
-  --text-subdued: #767676;
-  --text-link: #4e52b8;
-  --surface: #fff;
-  --surface-attention: #ffffe1;
+  --text: var(--p-color-text); // #434e4e;
+  --text-strong: var(--text); //#1c1e1e;
+  --text-subdued: var(--p-color-text-subdued); //#767676;
+  --text-link: var(--p-color-text-link); //#4e52b8;
+  --surface: var(--p-color-surface); //#fff;
+  --surface-attention: var(--p-color-surface-warning); ////#ffffe1;
   --surface-code-inline: #f1f1f1;
-  --surface-information: #dcf5f0;
-  --surface-subdued: #f9f9f9;
-  --surface-warning: #ffeceb;
-  --primary: #008060;
-  --border-color: #e9e9e9;
+  --surface-information: var(--p-color-surface-info); //#dcf5f0;
+  --surface-subdued: var(--p-color-surface-secondary); //#f9f9f9;
+  --surface-warning: var(--p-color-surface-critical); ////#ffeceb;
+  --primary: var(--p-color-fill-brand); //#008060;
+  --border-color: var(--p-color-border); //#e9e9e9;
   --border: 1px solid var(--border-color);
-  --card-shadow: 0 0 0 1px rgb(0 0 0 / 5%), 0 2px 2px rgb(0 0 0 / 4%);
-  --card-shadow-hover: 0 4px 7px rgba(0, 0, 0, 0.1),
-    0 0 0 0.5px var(--border-color);
+  --card-shadow: var(
+    --p-shadow-card-sm-experimental
+  ); //0 0 0 1px rgb(0 0 0 / 5%), 0 2px 2px rgb(0 0 0 /) 4%);
+  --card-shadow-hover: var(
+    --p-shadow-card-md-experimental
+  ); // 0 4px 7px rgba(0, 0, 0, 0.1), 0 0 0 0.5px var(--border)-color);
+
+  // design, foundation, components, card etc. background color
   --decorative-1: #dfefd2;
   --decorative-2: #fae8d4;
   --decorative-3: #f8dff1;
   --decorative-4: #dce0f5;
-  --backdrop: rgba(0, 0, 0, 0.5);
+
+  // --backdrop: rgba(0, 0, 0, 0.5);
   --code-keyword: #017b33;
   --code-function: var(--code-keyword);
   --code-string: #6a00df;
@@ -250,7 +261,10 @@ body,
   --decorative-2: #603900;
   --decorative-3: #601249;
   --decorative-4: #342484;
-  --backdrop: rgba(0, 0, 0, 0.5);
+
+  // not in use
+  // --backdrop: rgba(0, 0, 0, 0.5);
+
   --code-keyword: #6dffaa;
   --code-function: var(--code-keyword);
   --code-string: #c087ff;
