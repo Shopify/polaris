@@ -10,13 +10,12 @@ import {Text} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
 import {useBreakpoints} from '../../utilities/breakpoints';
-import {useFeatures} from '../../utilities/features';
 import type {
   ActionListItemDescriptor,
   AppliedFilterInterface,
   FilterInterface,
 } from '../../types';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 import type {BoxProps} from '../Box';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
@@ -139,8 +138,8 @@ export function Filters({
 }: FiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
-  const {polarisSummerEditions2023: se23} = useFeatures();
   const [popoverActive, setPopoverActive] = useState(false);
+  const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>([]);
   const hasMounted = useRef(false);
 
   useEffect(() => {
@@ -157,22 +156,22 @@ export function Filters({
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
 
   const pinnedFiltersFromPropsAndAppliedFilters = filters.filter(
-    ({pinned, key}) => {
-      const isPinnedOrApplied =
-        Boolean(pinned) || appliedFilterKeys?.includes(key);
-      return isPinnedOrApplied;
-    },
+    ({pinned, key}) =>
+      (Boolean(pinned) || appliedFilterKeys?.includes(key)) &&
+      // Filters that are pinned in local state display at the end of our list
+      !localPinnedFilters.find((filterKey) => filterKey === key),
   );
-  const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>(
-    pinnedFiltersFromPropsAndAppliedFilters.map(({key}) => key),
-  );
-
-  const pinnedFilters = localPinnedFilters
+  const pinnedFiltersFromLocalState = localPinnedFilters
     .map((key) => filters.find((filter) => filter.key === key))
     .reduce<FilterInterface[]>(
       (acc, filter) => (filter ? [...acc, filter] : acc),
       [],
     );
+
+  const pinnedFilters = [
+    ...pinnedFiltersFromPropsAndAppliedFilters,
+    ...pinnedFiltersFromLocalState,
+  ];
 
   const onFilterClick =
     ({key, onAction}: FilterInterface) =>
@@ -230,8 +229,7 @@ export function Filters({
 
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
-  const se23LabelVariant = mdDown && se23 ? 'bodyLg' : 'bodySm';
-  const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
+  const labelVariant = mdDown ? 'bodyLg' : 'bodySm';
 
   const addFilterActivator = (
     <div>
@@ -246,7 +244,7 @@ export function Filters({
           disableFilters
         }
       >
-        <Text variant={se23 ? se23LabelVariant : labelVariant} as="span">
+        <Text variant={labelVariant} as="span">
           {i18n.translate('Polaris.Filters.addFilter')}{' '}
         </Text>
         <PlusMinor />
@@ -272,42 +270,22 @@ export function Filters({
     );
   }, [loading, children]);
 
-  const containerSpacing:
-    | {
-        paddingBlockStart: BoxProps['paddingBlockStart'];
-        paddingBlockEnd: BoxProps['paddingBlockEnd'];
-        paddingInlineStart: BoxProps['paddingInlineStart'];
-        paddingInlineEnd: BoxProps['paddingInlineEnd'];
-      }
-    | {padding: BoxProps['padding']} = se23
-    ? {
-        paddingInlineStart: '2',
-        paddingInlineEnd: '2',
-        paddingBlockStart: '2',
-        paddingBlockEnd: '2',
-      }
-    : {
-        paddingBlockStart: {
-          xs: '3',
-          md: '2',
-        },
-        paddingBlockEnd: {
-          xs: '3',
-          md: '2',
-        },
-        paddingInlineStart: '2',
-        paddingInlineEnd: {
-          xs: '4',
-          md: '3',
-        },
-      };
+  const containerSpacing: {
+    paddingBlockStart: BoxProps['paddingBlockStart'];
+    paddingBlockEnd: BoxProps['paddingBlockEnd'];
+    paddingInlineStart: BoxProps['paddingInlineStart'];
+    paddingInlineEnd: BoxProps['paddingInlineEnd'];
+  } = {
+    paddingInlineStart: '2',
+    paddingInlineEnd: '2',
+    paddingBlockStart: '2',
+    paddingBlockEnd: '2',
+  };
 
   const queryFieldMarkup = hideQueryField ? null : (
-    <div
-      className={classNames(styles.Container, se23 && styles.ContainerUplift)}
-    >
+    <div className={classNames(styles.Container, styles.ContainerUplift)}>
       <Box {...containerSpacing}>
-        <HorizontalStack
+        <InlineStack
           align="start"
           blockAlign="center"
           gap={{
@@ -339,7 +317,7 @@ export function Filters({
             />
           </div>
           {additionalContent}
-        </HorizontalStack>
+        </InlineStack>
       </Box>
     </div>
   );
@@ -413,10 +391,9 @@ export function Filters({
       >
         <Button
           size="micro"
-          plain
           onClick={handleClearAllFilters}
           removeUnderline
-          monochrome={se23}
+          variant="monochromePlain"
         >
           {i18n.translate('Polaris.Filters.clearFilters')}
         </Button>
@@ -444,7 +421,7 @@ export function Filters({
         </div>
         {hideQueryField ? (
           <Box paddingInlineEnd="3" paddingBlockStart="2" paddingBlockEnd="2">
-            <HorizontalStack
+            <InlineStack
               align="start"
               blockAlign="center"
               gap={{
@@ -453,7 +430,7 @@ export function Filters({
               }}
             >
               {additionalContent}
-            </HorizontalStack>
+            </InlineStack>
           </Box>
         ) : null}
       </div>

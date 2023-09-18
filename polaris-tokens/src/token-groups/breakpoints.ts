@@ -1,4 +1,4 @@
-import type {MetaTokenProperties} from '../types';
+import type {MetadataProperties} from '../types';
 
 // NOTE: Order is important here: smallest -> largest
 // Exporting as const means it will be typed as a Tuple instead of string[]
@@ -14,7 +14,7 @@ export type BreakpointsTokenGroup = {
 };
 
 export const breakpoints: {
-  [TokenName in BreakpointsTokenName]: MetaTokenProperties;
+  [TokenName in BreakpointsTokenName]: MetadataProperties;
 } = {
   'breakpoints-xs': {
     value: '0px',

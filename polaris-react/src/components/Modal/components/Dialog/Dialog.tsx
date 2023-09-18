@@ -3,13 +3,12 @@ import type {SetStateAction, Dispatch} from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {motion} from '@shopify/polaris-tokens';
 
-import {classNames} from '../../../../utilities/css';
+import {classNames, variationName} from '../../../../utilities/css';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
 import {Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {TrapFocus} from '../../../TrapFocus';
-import {useFrame} from '../../../../utilities/frame';
-import {Text} from '../../../Text';
+import type {ModalSize} from '../../Modal';
 
 import styles from './Dialog.scss';
 
@@ -20,41 +19,31 @@ export interface DialogProps {
   instant?: boolean;
   children?: React.ReactNode;
   limitHeight?: boolean;
-  large?: boolean;
-  small?: boolean;
+  size?: ModalSize;
   onClose(): void;
   onEntered?(): void;
   onExited?(): void;
   in?: boolean;
-  fullScreen?: boolean;
   setClosing?: Dispatch<SetStateAction<boolean>>;
-  hasToasts?: boolean;
 }
 
 export function Dialog({
   instant,
   labelledBy,
   children,
+  limitHeight,
+  size,
   onClose,
   onExited,
   onEntered,
-  large,
-  small,
-  limitHeight,
-  fullScreen,
   setClosing,
-  hasToasts,
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
-  const {toastMessages} = useFrame();
-
   const classes = classNames(
     styles.Modal,
-    small && styles.sizeSmall,
-    large && styles.sizeLarge,
+    size && styles[variationName('size', size)],
     limitHeight && styles.limitHeight,
-    fullScreen && styles.fullScreen,
   );
   const TransitionChild = instant ? Transition : FadeUp;
 
@@ -110,15 +99,6 @@ export function Dialog({
               />
               <KeypressListener keyCode={Key.Escape} handler={handleKeyUp} />
               {children}
-            </div>
-            <div aria-live="assertive">
-              {toastMessages
-                ? toastMessages.map((toastMessage) => (
-                    <Text visuallyHidden as="p" key={toastMessage.id}>
-                      {toastMessage.content}
-                    </Text>
-                  ))
-                : null}
             </div>
           </div>
         </TrapFocus>

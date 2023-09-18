@@ -1,21 +1,16 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {
-  CancelSmallMinor,
-  CaretDownMinor,
-  ChevronDownMinor,
-} from '@shopify/polaris-icons';
+import React, {useState, useEffect, useRef} from 'react';
+import {CancelSmallMinor, ChevronDownMinor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
-import {VerticalStack} from '../../../VerticalStack';
+import {BlockStack} from '../../../BlockStack';
 import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
-import {useFeatures} from '../../../../utilities/features';
 import {classNames} from '../../../../utilities/css';
 import type {FilterInterface} from '../../../../types';
 
@@ -52,7 +47,6 @@ export function FilterPill({
 }: FilterPillProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
-  const {polarisSummerEditions2023} = useFeatures();
 
   const elementRef = useRef<HTMLDivElement>(null);
   const {
@@ -80,7 +74,7 @@ export function FilterPill({
     });
   }, [elementRef, popoverActive]);
 
-  const togglePopoverActive = useCallback(() => {
+  const togglePopoverActive = () => {
     if (filter) {
       setPopoverActive((popoverActive) => !popoverActive);
     }
@@ -88,14 +82,7 @@ export function FilterPill({
     if (onClick) {
       onClick(filterKey);
     }
-  }, [filter, filterKey, onClick]);
-
-  const handlePopoverClose = useCallback(() => {
-    togglePopoverActive();
-    if (!selected) {
-      onRemove?.(filterKey);
-    }
-  }, [onRemove, selected, filterKey, togglePopoverActive]);
+  };
 
   const handleClear = () => {
     if (onRemove) onRemove(filterKey);
@@ -107,7 +94,6 @@ export function FilterPill({
     selected && styles.ActiveFilterButton,
     popoverActive && styles.FocusFilterButton,
     focused && styles.focusedFilterButton,
-    disabled && styles.disabledFilterButton,
   );
 
   const clearButtonClassNames = classNames(
@@ -120,16 +106,11 @@ export function FilterPill({
     styles.ToggleButton,
   );
 
-  const se23LabelVariant =
-    mdDown && polarisSummerEditions2023 ? 'bodyLg' : 'bodySm';
-  const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
+  const labelVariant = mdDown ? 'bodyLg' : 'bodySm';
 
   const wrappedLabel = (
     <div className={styles.Label}>
-      <Text
-        variant={polarisSummerEditions2023 ? se23LabelVariant : labelVariant}
-        as="span"
-      >
+      <Text variant={labelVariant} as="span">
         {label}
       </Text>
     </div>
@@ -137,39 +118,26 @@ export function FilterPill({
 
   const activator = (
     <div className={buttonClasses}>
-      <HorizontalStack gap="0" wrap={false}>
+      <InlineStack gap="0" wrap={false}>
         <UnstyledButton
           onFocus={setFocusedTrue}
           onBlur={setFocusedFalse}
           onClick={togglePopoverActive}
           className={toggleButtonClassNames}
           type="button"
-          disabled={disabled}
         >
-          <HorizontalStack
-            wrap={false}
-            align="center"
-            blockAlign="center"
-            gap="0"
-          >
+          <InlineStack wrap={false} align="center" blockAlign="center" gap="0">
             {selected ? (
               <>{wrappedLabel}</>
             ) : (
               <>
                 {wrappedLabel}
                 <div className={styles.IconWrapper}>
-                  <Icon
-                    source={
-                      polarisSummerEditions2023
-                        ? ChevronDownMinor
-                        : CaretDownMinor
-                    }
-                    color="base"
-                  />
+                  <Icon source={ChevronDownMinor} tone="base" />
                 </div>
               </>
             )}
-          </HorizontalStack>
+          </InlineStack>
         </UnstyledButton>
 
         {selected ? (
@@ -178,20 +146,24 @@ export function FilterPill({
             className={clearButtonClassNames}
             type="button"
             aria-label={i18n.translate('Polaris.FilterPill.clear')}
-            disabled={disabled}
           >
             <div className={styles.IconWrapper}>
-              <Icon source={CancelSmallMinor} color="base" />
+              <Icon source={CancelSmallMinor} tone="base" />
             </div>
           </UnstyledButton>
         ) : null}
-      </HorizontalStack>
+      </InlineStack>
     </div>
   );
 
   const clearButtonMarkup = !hideClearButton && (
     <div className={styles.ClearButtonWrapper}>
-      <Button onClick={handleClear} plain disabled={!selected} textAlign="left">
+      <Button
+        onClick={handleClear}
+        variant="plain"
+        disabled={!selected}
+        textAlign="left"
+      >
         {i18n.translate('Polaris.FilterPill.clear')}
       </Button>
     </div>
@@ -204,19 +176,19 @@ export function FilterPill({
   return (
     <div ref={elementRef}>
       <Popover
-        active={popoverActive && !disabled}
+        active={popoverActive}
         activator={activator}
         key={filterKey}
-        onClose={handlePopoverClose}
+        onClose={togglePopoverActive}
         preferredAlignment="left"
         preventCloseOnChildOverlayClick={!closeOnChildOverlayClick}
       >
         <div className={styles.PopoverWrapper}>
           <Popover.Section>
-            <VerticalStack gap="1">
+            <BlockStack gap="1">
               {filter}
               {clearButtonMarkup}
-            </VerticalStack>
+            </BlockStack>
           </Popover.Section>
         </div>
       </Popover>

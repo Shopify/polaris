@@ -5,55 +5,57 @@ import {
 } from '../scripts/toStyleSheet';
 
 const mockTokenGroup = {
-  'token-name-1': {
+  'design-token-1': {
     value: 'valueA',
   },
-  'token-name-2': {
+  'design-token-2': {
     value: 'valueB',
   },
 };
 
 const mockMotionTokenGroup = {
-  'motion-token-1': {
+  ...mockTokenGroup,
+  'motion-keyframes-token-1': {
     value: 'valueA',
   },
-  'motion-token-2': {
+  'motion-keyframes-token-2': {
     value: 'valueB',
   },
-  'motion-keyframes-token-1': {
-    value: 'valueC',
-  },
-  'motion-keyframes-token-2': {
-    value: 'valueD',
-  },
 };
+
 const mockTheme = {
-  tokenGroupName: mockTokenGroup,
-  motion: mockMotionTokenGroup,
+  border: {},
+  color: {},
+  font: {},
+  motion: {},
+  // Note: We don't need to assign mock values to the remaining static tokens.
+  shadow: mockTokenGroup,
+  space: {},
+  zIndex: {},
 };
 
-const expectedTokenGroupDecls =
-  '--p-token-name-1:valueA;--p-token-name-2:valueB;';
+const expectedThemeDecls =
+  '--p-design-token-1:valueA;--p-design-token-2:valueB;';
 
-const expectedMotionTokenGroupDecls =
-  '--p-motion-token-1:valueA;--p-motion-token-2:valueB;--p-motion-keyframes-token-1:p-motion-keyframes-token-1;--p-motion-keyframes-token-2:p-motion-keyframes-token-2;';
+const expectedKeyframes =
+  '@keyframes p-motion-keyframes-token-1valueA@keyframes p-motion-keyframes-token-2valueB';
 
-const expectedThemeDecls = `${expectedTokenGroupDecls}${expectedMotionTokenGroupDecls}`;
-
-const expectedMotionKeyframes =
-  '@keyframes p-motion-keyframes-token-1valueC@keyframes p-motion-keyframes-token-2valueD';
+const expectedKeyframesCustomProperties =
+  '--p-motion-keyframes-token-1:p-motion-keyframes-token-1;--p-motion-keyframes-token-2:p-motion-keyframes-token-2;';
 
 describe('getMetaTokenGroupDecls', () => {
   it('creates a string of CSS declarations', () => {
     const tokenGroupDecls = getMetaTokenGroupDecls(mockTokenGroup);
 
-    expect(tokenGroupDecls).toBe(expectedTokenGroupDecls);
+    expect(tokenGroupDecls).toBe(expectedThemeDecls);
   });
 
   it('creates a string of CSS declarations and keyframes at-rules from motion tokens', () => {
     const tokenGroupDecls = getMetaTokenGroupDecls(mockMotionTokenGroup);
 
-    expect(tokenGroupDecls).toBe(expectedMotionTokenGroupDecls);
+    expect(tokenGroupDecls).toBe(
+      `${expectedThemeDecls}${expectedKeyframesCustomProperties}`,
+    );
   });
 });
 
@@ -61,7 +63,7 @@ describe('getKeyframes', () => {
   it('creates a string of keyframes at-rules', () => {
     const keyframes = getKeyframes(mockMotionTokenGroup);
 
-    expect(keyframes).toBe(expectedMotionKeyframes);
+    expect(keyframes).toBe(expectedKeyframes);
   });
 });
 

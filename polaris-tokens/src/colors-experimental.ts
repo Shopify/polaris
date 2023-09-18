@@ -17,30 +17,30 @@ type ColorScale =
   | '16';
 
 type Color = {
-  [Scale in ColorScale]: `rgba(${number}, ${number}, ${number}, 1)`;
+  [Scale in ColorScale]: string;
 };
 
-type ColorAlpha = {
-  [Scale in ColorScale]: `rgba(${number}, ${number}, ${number}, ${number})`;
+type ColorWithAlpha = {
+  [Scale in ColorScale]: (alpha?: string) => string;
 };
 
-export const gray: Color = {
-  1: 'rgba(255, 255, 255, 1)',
-  2: 'rgba(253, 253, 253, 1)',
-  3: 'rgba(250, 250, 250, 1)',
-  4: 'rgba(247, 247, 247, 1)',
-  5: 'rgba(243, 243, 243, 1)',
-  6: 'rgba(241, 241, 241, 1)',
-  7: 'rgba(235, 235, 235, 1)',
-  8: 'rgba(227, 227, 227, 1)',
-  9: 'rgba(212, 212, 212, 1)',
-  10: 'rgba(204, 204, 204, 1)',
-  11: 'rgba(181, 181, 181, 1)',
-  12: 'rgba(138, 138, 138, 1)',
-  13: 'rgba(97, 97, 97, 1)',
-  14: 'rgba(74, 74, 74, 1)',
-  15: 'rgba(48, 48, 48, 1)',
-  16: 'rgba(26, 26, 26, 1)',
+export const gray: ColorWithAlpha = {
+  '1': (alpha = '1') => `rgba(255, 255, 255, ${alpha})`,
+  '2': (alpha = '1') => `rgba(253, 253, 253, ${alpha})`,
+  '3': (alpha = '1') => `rgba(250, 250, 250, ${alpha})`,
+  '4': (alpha = '1') => `rgba(247, 247, 247, ${alpha})`,
+  '5': (alpha = '1') => `rgba(243, 243, 243, ${alpha})`,
+  '6': (alpha = '1') => `rgba(241, 241, 241, ${alpha})`,
+  '7': (alpha = '1') => `rgba(235, 235, 235, ${alpha})`,
+  '8': (alpha = '1') => `rgba(227, 227, 227, ${alpha})`,
+  '9': (alpha = '1') => `rgba(212, 212, 212, ${alpha})`,
+  '10': (alpha = '1') => `rgba(204, 204, 204, ${alpha})`,
+  '11': (alpha = '1') => `rgba(181, 181, 181, ${alpha})`,
+  '12': (alpha = '1') => `rgba(138, 138, 138, ${alpha})`,
+  '13': (alpha = '1') => `rgba(97, 97, 97, ${alpha})`,
+  '14': (alpha = '1') => `rgba(74, 74, 74, ${alpha})`,
+  '15': (alpha = '1') => `rgba(48, 48, 48, ${alpha})`,
+  '16': (alpha = '1') => `rgba(26, 26, 26, ${alpha})`,
 };
 
 export const azure: Color = {
@@ -269,23 +269,4 @@ export const yellow: Color = {
   '14': 'rgba(79, 71, 0, 1)',
   '15': 'rgba(51, 46, 0, 1)',
   '16': 'rgba(31, 28, 0, 1)',
-};
-
-export const blackAlpha: ColorAlpha = {
-  1: 'rgba(0, 0, 0, 0)',
-  2: 'rgba(0, 0, 0, 0.01)',
-  3: 'rgba(0, 0, 0, 0.02)',
-  4: 'rgba(0, 0, 0, 0.03)',
-  5: 'rgba(0, 0, 0, 0.05)',
-  6: 'rgba(0, 0, 0, 0.06)',
-  7: 'rgba(0, 0, 0, 0.08)',
-  8: 'rgba(0, 0, 0, 0.11)',
-  9: 'rgba(0, 0, 0, 0.17)',
-  10: 'rgba(0, 0, 0, 0.20)',
-  11: 'rgba(0, 0, 0, 0.29)',
-  12: 'rgba(0, 0, 0, 0.46)',
-  13: 'rgba(0, 0, 0, 0.62)',
-  14: 'rgba(0, 0, 0, 0.71)',
-  15: 'rgba(0, 0, 0, 0.81)',
-  16: 'rgba(0, 0, 0, 0.90)',
 };

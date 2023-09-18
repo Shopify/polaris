@@ -1,48 +1,5 @@
 # Changelog
 
-## 11.19.0
-
-### Minor Changes
-
-- [#10310](https://github.com/Shopify/polaris/pull/10310) [`5f94cae98`](https://github.com/Shopify/polaris/commit/5f94cae98e2a41ca33fae3afce7ad078132609e0) Thanks [@mattkubej](https://github.com/mattkubej)! - Added a `type` prop to `Pagination` to support a table row layout
-
-### Patch Changes
-
-- Updated dependencies [[`5e073c209`](https://github.com/Shopify/polaris/commit/5e073c2095c51154f27740f4c4bc3d00122c0218), [`2bccc2291`](https://github.com/Shopify/polaris/commit/2bccc22918eab571136b925bdf7ce07281658248), [`033424546`](https://github.com/Shopify/polaris/commit/03342454611a71a0a57e48cf8a013c1ca27837b3), [`66b2599da`](https://github.com/Shopify/polaris/commit/66b2599dabcb4bfb5cb4964c7a9bfce4fc12617b), [`c07de6ca4`](https://github.com/Shopify/polaris/commit/c07de6ca4aed19c643b2681d498432fd7414475e)]:
-  - @shopify/polaris-tokens@7.9.0
-
-## 11.18.0
-
-### Minor Changes
-
-- [#10429](https://github.com/Shopify/polaris/pull/10429) [`2e65a7e98`](https://github.com/Shopify/polaris/commit/2e65a7e98dced44f45df02d15cda78093bac3cf3) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed `Filters` pinned filter pill not remaining when applied values are cleared
-
-* [#10394](https://github.com/Shopify/polaris/pull/10394) [`b7f25f07f`](https://github.com/Shopify/polaris/commit/b7f25f07fba272add902d68a8cc15bee43030dff) Thanks [@mrcthms](https://github.com/mrcthms)! - Added support for disabling 1Password integration in `TextField`
-
-- [#10406](https://github.com/Shopify/polaris/pull/10406) [`87f559ca1`](https://github.com/Shopify/polaris/commit/87f559ca1190b28b583913d321c87b60639c1cc4) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the Toast component to support multiple re-renders being announced on screen readers
-
-### Patch Changes
-
-- [#10428](https://github.com/Shopify/polaris/pull/10428) [`d35d55e5b`](https://github.com/Shopify/polaris/commit/d35d55e5b15d64b7140d976dbc35d56d2580852a) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed layout shift in `IndexFilters` when switching modes
-
-- Updated dependencies [[`26ab8ce7d`](https://github.com/Shopify/polaris/commit/26ab8ce7df10609316eccc75b7bed6f8cebc9120), [`7514dd1a3`](https://github.com/Shopify/polaris/commit/7514dd1a36a9988ede48085b80c6e7e214f98968), [`16c61668a`](https://github.com/Shopify/polaris/commit/16c61668ac3916aacaeb759f2052d0a3a7ed762e)]:
-  - @shopify/polaris-tokens@7.8.0
-
-## 11.17.0
-
-### Minor Changes
-
-- [#10397](https://github.com/Shopify/polaris/pull/10397) [`624e0b570`](https://github.com/Shopify/polaris/commit/624e0b570ab1ca380e9ead9087e417552aaecd58) Thanks [@mrcthms](https://github.com/mrcthms)! - [FilterPill] Remove FilterPill from Filters bar when Popover closes with an empty filter
-
-### Patch Changes
-
-- [#10389](https://github.com/Shopify/polaris/pull/10389) [`2c1f93c90`](https://github.com/Shopify/polaris/commit/2c1f93c90caf2fb1ad0a4dff67f40bbedea5be69) Thanks [@mattkubej](https://github.com/mattkubej)! - [IndexTable] vertically align sort and tooltip column headers
-
-* [#10385](https://github.com/Shopify/polaris/pull/10385) [`e5f88b8ce`](https://github.com/Shopify/polaris/commit/e5f88b8ce68857e9e35fcf60ee34b6a9e865d78d) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed ActionList SearchField focus bug and minor style issues
-
-* Updated dependencies [[`101abb835`](https://github.com/Shopify/polaris/commit/101abb83599ce67372c411cde396613306dc06de)]:
-  - @shopify/polaris-tokens@7.7.0
-
 ## 11.16.0
 
 ### Minor Changes
