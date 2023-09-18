@@ -4,10 +4,9 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ButtonExample() {
   return (
-    <div>
-      Could not retrieve data.{' '}
-      <Button variant="monochromePlain">Try again</Button>
-    </div>
+    <Button variant="primary" tone="critical">
+      View shipping settings
+    </Button>
   );
 }
 
