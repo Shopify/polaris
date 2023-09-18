@@ -390,6 +390,7 @@ export function WithFiltering() {
     <div style={{height: '250px', maxWidth: '350px'}}>
       <ActionList
         actionRole="menuitem"
+        allowFiltering
         items={Array.from({length: 8}).map((_, index) => ({
           content: `Item #${index + 1}`,
         }))}

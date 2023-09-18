@@ -29,6 +29,7 @@ import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {useFeatures} from '../../../../utilities/features';
+import {FilterActionsProvider} from '../../../FilterActionsProvider';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
@@ -49,6 +50,8 @@ interface PrimaryAction
 export interface HeaderProps extends TitleProps {
   /** Visually hide the title */
   titleHidden?: boolean;
+  /** Enables filtering action list items */
+  filterActions?: boolean;
   /** Primary page-level action */
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
@@ -79,6 +82,7 @@ export function Header({
   titleHidden = false,
   primaryAction,
   pagination,
+  filterActions,
   additionalNavigation,
   backAction,
   secondaryActions = [],
@@ -229,35 +233,37 @@ export function Header({
       visuallyHidden={titleHidden}
     >
       <div className={headerClassNames}>
-        <ConditionalRender
-          condition={[slot1, slot2, slot3, slot4].some(notNull)}
-        >
-          <div className={styles.Row}>
-            {slot1}
-            {slot2}
-            <ConditionalRender condition={[slot3, slot4].some(notNull)}>
-              <div className={styles.RightAlign}>
-                <ConditionalWrapper
-                  condition={[slot3, slot4].every(notNull)}
-                  wrapper={(children) => (
-                    <div className={styles.Actions}>{children}</div>
-                  )}
-                >
-                  {slot3}
-                  {slot4}
-                </ConditionalWrapper>
-              </div>
-            </ConditionalRender>
-          </div>
-        </ConditionalRender>
-        <ConditionalRender condition={[slot5, slot6].some(notNull)}>
-          <div className={styles.Row}>
-            <HorizontalStack gap="4">{slot5}</HorizontalStack>
-            <ConditionalRender condition={slot6 != null}>
-              <div className={styles.RightAlign}>{slot6}</div>
-            </ConditionalRender>
-          </div>
-        </ConditionalRender>
+        <FilterActionsProvider filterActions={Boolean(filterActions)}>
+          <ConditionalRender
+            condition={[slot1, slot2, slot3, slot4].some(notNull)}
+          >
+            <div className={styles.Row}>
+              {slot1}
+              {slot2}
+              <ConditionalRender condition={[slot3, slot4].some(notNull)}>
+                <div className={styles.RightAlign}>
+                  <ConditionalWrapper
+                    condition={[slot3, slot4].every(notNull)}
+                    wrapper={(children) => (
+                      <div className={styles.Actions}>{children}</div>
+                    )}
+                  >
+                    {slot3}
+                    {slot4}
+                  </ConditionalWrapper>
+                </div>
+              </ConditionalRender>
+            </div>
+          </ConditionalRender>
+          <ConditionalRender condition={[slot5, slot6].some(notNull)}>
+            <div className={styles.Row}>
+              <HorizontalStack gap="4">{slot5}</HorizontalStack>
+              <ConditionalRender condition={slot6 != null}>
+                <div className={styles.RightAlign}>{slot6}</div>
+              </ConditionalRender>
+            </div>
+          </ConditionalRender>
+        </FilterActionsProvider>
       </div>
     </Box>
   );
