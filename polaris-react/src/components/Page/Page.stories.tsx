@@ -15,6 +15,8 @@ import {
   Page,
   PageActions,
   LegacyStack,
+  HorizontalStack,
+  VerticalStack,
 } from '@shopify/polaris';
 
 export default {
@@ -330,6 +332,29 @@ export function WithContentAfterTitle() {
       backAction={{content: 'Products', url: '#'}}
       title="Jar With Lock-Lid"
       titleMetadata={<Badge tone="attention">Verified</Badge>}
+      primaryAction={{content: 'Save', disabled: true}}
+      secondaryActions={[
+        {content: 'Duplicate'},
+        {content: 'View on your store'},
+      ]}
+      pagination={{
+        hasPrevious: true,
+        hasNext: true,
+      }}
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
+    </Page>
+  );
+}
+
+export function WithMetadataAndBadgeAndAction() {
+  return (
+    <Page
+      backAction={{content: 'Products', url: '#'}}
+      title="Jar With Lock-Lid"
+      subtitle="Perfect for any pet"
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
         {content: 'Duplicate'},
