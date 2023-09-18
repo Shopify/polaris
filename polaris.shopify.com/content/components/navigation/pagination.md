@@ -22,13 +22,16 @@ keywords:
 examples:
   - fileName: pagination-default.tsx
     title: Default
-    description: Use for pagination at the bottom of lists.
+    description: Use for pagination of resources.
   - fileName: pagination-with-keyboard-navigation.tsx
     title: With keyboard navigation
     description: Attach standard keyboard shortcuts to important pagination controls.
   - fileName: pagination-with-label.tsx
     title: With label
     description: Add a label between navigation buttons to provide more context of the content being viewed by the user.
+  - fileName: pagination-with-table-type.tsx
+    title: With table type
+    description: Use for pagination at the bottom of tables or lists.
 ---
 
 ## Best practices

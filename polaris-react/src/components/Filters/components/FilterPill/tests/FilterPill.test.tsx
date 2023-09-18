@@ -173,6 +173,28 @@ describe('<Filters />', () => {
       expect(spy).toHaveBeenCalledWith(defaultProps.filterKey);
     });
 
+    it('invokes the onRemove callback when closing the Popover when not selected', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithApp(
+        <FilterPill {...defaultProps} onRemove={spy} />,
+      );
+      const activator = wrapper.find(UnstyledButton);
+      activator?.trigger('onClick');
+      wrapper.find(Popover)?.trigger('onClose');
+      expect(spy).toHaveBeenCalledWith(defaultProps.filterKey);
+    });
+
+    it('does not invoke the onRemove callback when closing the Popover when selected', () => {
+      const spy = jest.fn();
+      const wrapper = mountWithApp(
+        <FilterPill {...defaultProps} onRemove={spy} selected />,
+      );
+      const activator = wrapper.find(UnstyledButton);
+      activator?.trigger('onClick');
+      wrapper.find(Popover)?.trigger('onClose');
+      expect(spy).not.toHaveBeenCalledWith(defaultProps.filterKey);
+    });
+
     it('renders the popover initially open if initialActive is true', () => {
       const wrapper = mountWithApp(
         <FilterPill {...defaultProps} initialActive />,
