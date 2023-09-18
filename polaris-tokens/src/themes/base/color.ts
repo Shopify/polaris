@@ -768,61 +768,61 @@ export const color: {
   },
   // Experimental tokens
   'color-bg-backdrop-experimental': {
-    value: colorsExperimental.gray[16]('0.75'),
+    value: colorsExperimental.blackAlpha[14],
     description: '',
   },
   'color-bg-primary-disabled-experimental': {
-    value: colorsExperimental.gray[9](),
+    value: colorsExperimental.gray[9],
     description: '',
   },
   'color-bg-secondary-experimental': {
-    value: colorsExperimental.gray[5](),
+    value: colorsExperimental.gray[5],
     description: '',
   },
   'color-bg-input-hover-experimental': {
-    value: colorsExperimental.gray[3](),
+    value: colorsExperimental.gray[3],
     description: '',
   },
   'color-border-input-active-experimental': {
-    value: colorsExperimental.gray[16](),
+    value: colorsExperimental.gray[16],
   },
   'color-border-critical-strong-experimental': {
     value: colorsExperimental.red[14],
   },
   'color-bg-input-active-experimental': {
-    value: colorsExperimental.gray[4](),
+    value: colorsExperimental.gray[4],
     description: '',
   },
   'color-bg-transparent-experimental': {
-    value: colorsExperimental.gray[16]('0'),
+    value: colorsExperimental.blackAlpha[1],
     description: '',
   },
   'color-bg-transparent-subdued-experimental': {
-    value: colorsExperimental.gray[16]('0.07'),
+    value: colorsExperimental.blackAlpha[6],
     description: '',
   },
   'color-bg-transparent-hover-experimental': {
-    value: colorsExperimental.gray[16]('0.05'),
+    value: colorsExperimental.blackAlpha[5],
     description: '',
   },
   'color-bg-transparent-active-experimental': {
-    value: colorsExperimental.gray[16]('0.07'),
+    value: colorsExperimental.blackAlpha[6],
     description: '',
   },
   'color-bg-transparent-disabled-experimental': {
-    value: colorsExperimental.gray[16]('0.04'),
+    value: colorsExperimental.blackAlpha[5],
     description: '',
   },
   'color-bg-transparent-secondary-disabled-experimental': {
-    value: colorsExperimental.gray[16]('0.08'),
+    value: colorsExperimental.blackAlpha[7],
     description: '',
   },
   'color-bg-transparent-primary-disabled-experimental': {
-    value: colorsExperimental.gray[16]('0.18'),
+    value: colorsExperimental.blackAlpha[9],
     description: '',
   },
   'color-bg-transparent-primary-experimental': {
-    value: colorsExperimental.gray[16]('0.60'),
+    value: colorsExperimental.blackAlpha[13],
     description: '',
   },
   'color-bg-success-strong-hover-experimental': {
@@ -874,11 +874,11 @@ export const color: {
     description: '',
   },
   'color-avatar-background-experimental': {
-    value: colorsExperimental.gray[11](),
+    value: colorsExperimental.gray[11],
     description: '',
   },
   'color-avatar-color-experimental': {
-    value: colorsExperimental.gray[1](),
+    value: colorsExperimental.gray[1],
     description: '',
   },
   'color-avatar-style-one-background-experimental': {
