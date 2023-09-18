@@ -3,11 +3,13 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
   Avatar,
+  Box,
   Button,
   Icon,
   Popover,
+  TextField,
   Thumbnail,
-  BlockStack,
+  VerticalStack,
 } from '@shopify/polaris';
 import {
   TickSmallMinor,
@@ -27,7 +29,7 @@ export default {
 
 export function All() {
   return (
-    <BlockStack gap="16">
+    <VerticalStack gap="16">
       <InAPopover />
       <WithIconsOrImage />
       <WithAnIconAndASuffix />
@@ -36,7 +38,7 @@ export function All() {
       <WithDestructiveItem />
       <WithHelpText />
       <WithAPrefixAndASuffix />
-    </BlockStack>
+    </VerticalStack>
   );
 }
 
@@ -383,69 +385,16 @@ export function WithAPrefixAndASuffix() {
   );
 }
 
-export function WithSearch() {
-  const [active, setActive] = useState(true);
-
-  const toggleActive = useCallback(() => setActive((active) => !active), []);
-
-  const activator = (
-    <Button onClick={toggleActive} disclosure>
-      More actions
-    </Button>
-  );
-
+export function WithFiltering() {
   return (
-    <div style={{height: '250px'}}>
-      <Popover
-        active={active}
-        activator={activator}
-        autofocusTarget="first-node"
-        onClose={toggleActive}
-      >
-        <ActionList
-          actionRole="menuitem"
-          sections={[
-            {
-              items: [
-                {content: 'Import file', icon: ImportMinor},
-                {content: 'Export file', icon: ExportMinor},
-              ],
-            },
-            {
-              items: [
-                {content: 'Edit', icon: EditMinor},
-                {content: 'Delete', icon: DeleteMinor},
-              ],
-            },
-            {
-              items: [
-                {
-                  content: 'Blog posts',
-                  helpText: 'Manage your blog articles',
-                },
-                {
-                  content: 'Blogs',
-                  helpText: 'Manage blogs published to your Online Store',
-                },
-                {
-                  active: true,
-                  content: 'Active blogs',
-                  helpText: 'This is helpful text',
-                  icon: ImportMinor,
-                  suffix: <Icon source={TickSmallMinor} />,
-                },
-                {
-                  disabled: true,
-                  content: 'Disabled blogs',
-                  helpText: 'This is also helpful text',
-                  icon: ImportMinor,
-                  suffix: <Icon source={TickSmallMinor} />,
-                },
-              ],
-            },
-          ]}
-        />
-      </Popover>
+    <div style={{height: '250px', maxWidth: '350px'}}>
+      <ActionList
+        actionRole="menuitem"
+        allowFiltering
+        items={Array.from({length: 8}).map((_, index) => ({
+          content: `Item #${index + 1}`,
+        }))}
+      />
     </div>
   );
 }

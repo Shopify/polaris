@@ -5,7 +5,7 @@ import {tokenGroupKeys} from './[tokens]';
 const getGithubUrl = (file: string) => {
   const fileName = `${file}.ts`;
   const githubUrl = 'https://github.com/Shopify/polaris/blob';
-  const filePath = `/main/polaris-tokens/src/token-groups/${fileName}`;
+  const filePath = `/main/polaris-tokens/src/themes/base/${fileName}`;
 
   return `${githubUrl}${filePath}`;
 };
