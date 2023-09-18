@@ -11,10 +11,5 @@ export function useIndexFiltersManager() {
     );
   }
 
-  const {mode, setMode} = indexFiltersManager;
-
-  return {
-    mode,
-    setMode,
-  };
+  return indexFiltersManager;
 }
