@@ -24,6 +24,7 @@ import YoutubeVideo from '../YoutubeVideo';
 import {DoDont, Do, Dont} from './components/DoDont';
 import {Heading} from '../../components/Heading';
 import PatternsExample from '../../components/PatternsExample';
+import {Card} from '../../components/Card';
 import RichCardGrid from '../RichCardGrid';
 import Tooltip from '../Tooltip';
 import Icon from '../Icon';
@@ -226,6 +227,7 @@ function Markdown<
         InlineGrid,
         SideBySide,
         Grid,
+        Card,
         FeaturedCardGrid,
         YoutubeVideo,
         DoDont,
