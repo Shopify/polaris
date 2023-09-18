@@ -18,6 +18,7 @@ import {Stack} from '../../components/Stack';
 import StatusBanner from '../../components/StatusBanner';
 import TipBanner from '../../components/TipBanner';
 import {Lede} from '../../components/Lede';
+import Subnav from '../../components/Subnav';
 import {SideBySide} from './components/SideBySide';
 import YoutubeVideo from '../YoutubeVideo';
 import {DoDont, Do, Dont} from './components/DoDont';
@@ -233,6 +234,7 @@ function Markdown<
         StatusBanner,
         TipBanner,
         Lede,
+        Subnav,
         RichCardGrid,
         Colors,
         Tip: ({children}) => (
