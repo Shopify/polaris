@@ -24,4 +24,43 @@
       }
     }
   }
+
+  &.table {
+    button {
+      #{$se23} & {
+        --button-min-height: var(--p-space-6);
+        background-color: var(--p-color-bg-subdued);
+        min-height: var(--button-min-height);
+        min-width: var(--button-min-height);
+        height: var(--button-min-height);
+        width: var(--button-min-height);
+        padding: unset;
+
+        /* stylelint-disable selector-max-combinators, selector-max-compound-selectors, max-nesting-depth -- cleaner until se23 clean up */
+        &:hover {
+          background-color: var(--p-color-bg-strong-hover);
+
+          svg {
+            fill: var(--p-color-icon-hover);
+          }
+        }
+
+        &:active,
+        &:focus {
+          background-color: var(--p-color-bg-strong-active);
+
+          svg {
+            fill: var(--p-color-icon-active);
+          }
+        }
+
+        &:disabled {
+          svg {
+            fill: var(--p-color-icon-disabled);
+          }
+        }
+        /* stylelint-enable */
+      }
+    }
+  }
 }

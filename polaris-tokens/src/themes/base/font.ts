@@ -1,10 +1,18 @@
-import type {MetadataProperties, Experimental} from '../types';
+import type {Experimental} from '../../types';
+import {createVarName} from '../../utilities';
+import type {MetaTokenProperties} from '../types';
 
 type FontFamilyAlias = 'sans' | 'mono';
 
 type FontSizeScaleExperimental = Experimental<'70' | '80'>;
 
 export type FontSizeScale =
+  | '275'
+  | '325'
+  | '350'
+  | '750'
+  | '900'
+  | '1000'
   | '75'
   | '100'
   | '200'
@@ -18,6 +26,14 @@ export type FontSizeScale =
 type FontLineHeightScaleExperimental = Experimental<'075'>;
 
 export type FontLineHeightScale =
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '1000'
+  | '1200'
   | '1'
   | '2'
   | '3'
@@ -40,17 +56,33 @@ export type FontTokenGroup = {
 };
 
 export const font: {
-  [TokenName in FontTokenName]: MetadataProperties;
+  [TokenName in FontTokenName]: MetaTokenProperties;
 } = {
   'font-family-sans': {
     value:
       "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
-    valueExperimental:
-      "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
   },
   'font-family-mono': {
     value:
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
+  },
+  'font-size-275': {
+    value: createVar('font-size-70-experimental'),
+  },
+  'font-size-325': {
+    value: createVar('font-size-80-experimental'),
+  },
+  'font-size-350': {
+    value: createVar('font-size-100'),
+  },
+  'font-size-750': {
+    value: createVar('font-size-500'),
+  },
+  'font-size-900': {
+    value: createVar('font-size-600'),
+  },
+  'font-size-1000': {
+    value: createVar('font-size-700'),
   },
   'font-size-70-experimental': {
     value: '11px',
@@ -75,11 +107,9 @@ export const font: {
   },
   'font-size-500': {
     value: '28px',
-    valueExperimental: '30px',
   },
   'font-size-600': {
     value: '32px',
-    valueExperimental: '36px',
   },
   'font-size-700': {
     value: '40px',
@@ -95,6 +125,30 @@ export const font: {
   },
   'font-weight-bold': {
     value: '700',
+  },
+  'font-line-height-300': {
+    value: createVar('font-line-height-075-experimental'),
+  },
+  'font-line-height-400': {
+    value: createVar('font-line-height-1'),
+  },
+  'font-line-height-500': {
+    value: createVar('font-line-height-2'),
+  },
+  'font-line-height-600': {
+    value: createVar('font-line-height-3'),
+  },
+  'font-line-height-700': {
+    value: createVar('font-line-height-4'),
+  },
+  'font-line-height-800': {
+    value: createVar('font-line-height-5'),
+  },
+  'font-line-height-1000': {
+    value: createVar('font-line-height-6'),
+  },
+  'font-line-height-1200': {
+    value: createVar('font-line-height-7'),
   },
   'font-line-height-075-experimental': {
     value: '12px',
@@ -121,3 +175,7 @@ export const font: {
     value: '48px',
   },
 };
+
+function createVar(fontTokenName: FontTokenName) {
+  return `var(${createVarName(fontTokenName)})`;
+}

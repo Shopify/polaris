@@ -43,22 +43,10 @@
     z-index: var(--pc-button-group-item);
     margin-top: 0;
     margin-left: 0;
-    line-height: normal;
-
-    #{$se23} & {
-      // stylelint-disable-next-line polaris/z-index/declaration-property-value-allowed-list -- se23 temporary styles
-      z-index: unset;
-    }
+    line-height: 1;
 
     &:not(:first-child) {
       margin-left: calc(-1 * var(--p-space-025));
-    }
-
-    // stylelint-disable-next-line -- se23 specific styling
-    + .Item:not(.selected) > button {
-      #{$se23} & {
-        clip-path: inset(0 0 0 var(--p-space-025));
-      }
     }
   }
 

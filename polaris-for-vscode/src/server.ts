@@ -80,9 +80,11 @@ const tokenGroupPatterns: TokenGroupPatterns = {
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
   font: /font|line-height/,
+  height: /height|min-height|max-height/,
   motion: /animation/,
   shadow: /shadow/,
   space: /margin|padding|gap|top|left|right|bottom/,
+  width: /width|min-width|max-width/,
   zIndex: /z-index/,
 };
 
