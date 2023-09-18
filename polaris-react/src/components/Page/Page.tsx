@@ -37,9 +37,7 @@ export function Page({children, fullWidth, narrowWidth, ...rest}: PageProps) {
 
   const contentClassName = classNames(!hasHeaderContent && styles.Content);
 
-  const headerMarkup = hasHeaderContent ? (
-    <Header filterActions {...rest} />
-  ) : null;
+  const headerMarkup = hasHeaderContent ? <Header {...rest} /> : null;
 
   return (
     <div className={pageClassName}>

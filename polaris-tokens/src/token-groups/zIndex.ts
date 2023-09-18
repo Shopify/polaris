@@ -1,4 +1,4 @@
-import type {MetaTokenProperties} from '../types';
+import type {MetadataProperties} from '../types';
 
 export type ZIndexZScale =
   | '1'
@@ -21,7 +21,7 @@ export type ZIndexTokenGroup = {
 };
 
 export const zIndex: {
-  [TokenName in ZIndexTokenName]: MetaTokenProperties;
+  [TokenName in ZIndexTokenName]: MetadataProperties;
 } = {
   'z-index-1': {
     value: '100',

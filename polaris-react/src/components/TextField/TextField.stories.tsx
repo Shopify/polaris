@@ -14,7 +14,7 @@ import {
   TextField,
   Icon,
   Tooltip,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 import {
   DeleteMinor,
@@ -741,7 +741,7 @@ export function All() {
           label="Borderless"
           value="Value"
           onChange={() => {}}
-          borderless
+          variant="borderless"
           autoComplete="off"
         />
       </FormLayout.Group>
@@ -838,7 +838,7 @@ export function WithFormSubmit() {
   const [onHandTotal, setOnHandTotal] = useState(0);
 
   return (
-    <VerticalStack gap="2">
+    <BlockStack gap="2">
       <Form
         onSubmit={(event) => {
           event.preventDefault();
@@ -858,27 +858,15 @@ export function WithFormSubmit() {
             type="number"
             selectTextOnFocus
           />
-          <Button primary submit disabled={isNaN(parseInt(adjustment, 10))}>
+          <Button
+            variant="primary"
+            submit
+            disabled={isNaN(parseInt(adjustment, 10))}
+          >
             Save
           </Button>
         </FormLayout>
       </Form>
-    </VerticalStack>
-  );
-}
-
-export function With1PasswordDisabled() {
-  const [value, setValue] = useState('Jaded Pixel');
-
-  const handleChange = useCallback((newValue) => setValue(newValue), []);
-
-  return (
-    <TextField
-      label="Store name"
-      value={value}
-      onChange={handleChange}
-      autoComplete="off"
-      disable1Password
-    />
+    </BlockStack>
   );
 }

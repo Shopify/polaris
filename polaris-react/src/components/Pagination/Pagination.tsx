@@ -10,9 +10,6 @@ import {KeypressListener} from '../KeypressListener';
 import {Text} from '../Text';
 import {Tooltip} from '../Tooltip';
 import {Box} from '../Box';
-import {useFeatures} from '../../utilities/features';
-import {HorizontalStack} from '../HorizontalStack';
-import {classNames} from '../../utilities/css';
 
 import styles from './Pagination.scss';
 
@@ -48,8 +45,6 @@ export interface PaginationProps {
   onPrevious?(): void;
   /** Text to provide more context in between the arrow buttons */
   label?: React.ReactNode;
-  /** Layout structure of the component */
-  type?: 'page' | 'table';
 }
 
 export function Pagination({
@@ -66,10 +61,8 @@ export function Pagination({
   accessibilityLabel,
   accessibilityLabels,
   label,
-  type = 'page',
 }: PaginationProps) {
   const i18n = useI18n();
-  const {polarisSummerEditions2023} = useFeatures();
 
   const node: React.RefObject<HTMLElement> = createRef();
 
@@ -85,7 +78,6 @@ export function Pagination({
 
   const prev = (
     <Button
-      outline
       icon={ChevronLeftMinor}
       accessibilityLabel={previousLabel}
       url={previousURL}
@@ -109,7 +101,6 @@ export function Pagination({
 
   const next = (
     <Button
-      outline
       icon={ChevronRightMinor}
       accessibilityLabel={nextLabel}
       url={nextURL}
@@ -165,58 +156,17 @@ export function Pagination({
       />
     ));
 
-  if (type === 'table') {
-    const labelMarkup = label ? (
-      <Text as="span" variant="bodySm" fontWeight="medium">
-        {label}
-      </Text>
-    ) : null;
-
-    return (
-      <nav
-        aria-label={navLabel}
-        ref={node}
-        className={classNames(styles.Pagination, styles.table)}
-      >
-        {previousButtonEvents}
-        {nextButtonEvents}
-        <Box
-          background="bg-subdued"
-          paddingBlockStart="1_5-experimental"
-          paddingBlockEnd="1_5-experimental"
-          paddingInlineStart="3"
-          paddingInlineEnd="2"
-        >
-          <HorizontalStack
-            align={labelMarkup ? 'space-between' : 'end'}
-            blockAlign="center"
-          >
-            {labelMarkup}
-            <ButtonGroup segmented>
-              {constructedPrevious}
-              {constructedNext}
-            </ButtonGroup>
-          </HorizontalStack>
-        </Box>
-      </nav>
-    );
-  }
-
   const labelTextMarkup =
     hasNext && hasPrevious ? (
       <span>{label}</span>
     ) : (
-      <Text color="subdued" as="span">
+      <Text tone="subdued" as="span">
         {label}
       </Text>
     );
 
   const labelMarkup = label ? (
-    <Box
-      padding={polarisSummerEditions2023 ? '3' : undefined}
-      paddingBlockStart="0"
-      paddingBlockEnd="0"
-    >
+    <Box padding="3" paddingBlockStart="0" paddingBlockEnd="0">
       <div aria-live="polite">{labelTextMarkup}</div>
     </Box>
   ) : null;
@@ -225,7 +175,7 @@ export function Pagination({
     <nav aria-label={navLabel} ref={node} className={styles.Pagination}>
       {previousButtonEvents}
       {nextButtonEvents}
-      <ButtonGroup segmented={!label || polarisSummerEditions2023}>
+      <ButtonGroup variant="segmented">
         {constructedPrevious}
         {labelMarkup}
         {constructedNext}

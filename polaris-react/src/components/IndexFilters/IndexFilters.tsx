@@ -6,14 +6,13 @@ import {classNames} from '../../utilities/css';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {useToggle} from '../../utilities/use-toggle';
 import {useOnValueChange} from '../../utilities/use-on-value-change';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 import {Spinner} from '../Spinner';
 import {Filters} from '../Filters';
 import type {FiltersProps} from '../Filters';
 import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
 import {useBreakpoints} from '../../utilities/breakpoints';
-import {useFeatures} from '../../utilities/features';
 
 import {useIsSticky} from './hooks';
 import {
@@ -145,7 +144,6 @@ export function IndexFilters({
     setFalse: setFiltersUnFocused,
     setTrue: setFiltersFocused,
   } = useToggle(mode === IndexFiltersMode.Filtering);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const handleModeChange = (newMode: IndexFiltersMode) => {
     if (newMode === IndexFiltersMode.Filtering) {
@@ -338,7 +336,7 @@ export function IndexFilters({
             <div ref={defaultRef}>
               {mode !== IndexFiltersMode.Filtering ? (
                 <Container>
-                  <HorizontalStack
+                  <InlineStack
                     align="start"
                     blockAlign="center"
                     gap={{
@@ -402,7 +400,7 @@ export function IndexFilters({
                         ? updateButtonsMarkup
                         : null}
                     </div>
-                  </HorizontalStack>
+                  </InlineStack>
                 </Container>
               ) : null}
             </div>
@@ -437,23 +435,17 @@ export function IndexFilters({
                   borderlessQueryField
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
-                  <div className={styles.ButtonWrap}>
-                    <HorizontalStack
-                      gap={polarisSummerEditions2023 ? '2' : '3'}
-                      align="start"
-                      blockAlign="center"
+                  <InlineStack gap="2" align="start" blockAlign="center">
+                    <div
+                      style={{
+                        ...defaultStyle,
+                        ...transitionStyles[state],
+                      }}
                     >
-                      <div
-                        style={{
-                          ...defaultStyle,
-                          ...transitionStyles[state],
-                        }}
-                      >
-                        {updateButtonsMarkup}
-                      </div>
-                      {sortMarkup}
-                    </HorizontalStack>
-                  </div>
+                      {updateButtonsMarkup}
+                    </div>
+                    {sortMarkup}
+                  </InlineStack>
                 </Filters>
               ) : null}
             </div>

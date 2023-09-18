@@ -180,31 +180,6 @@ describe('<Filters />', () => {
     expect(wrapper).toContainReactComponent(ActionList);
   });
 
-  it('will not remove a pinned filter when it is removed from the applied filters array', () => {
-    const appliedFilters = [
-      {
-        ...defaultProps.filters[2],
-        label: 'Value is Baz',
-        value: ['Baz'],
-        onRemove: jest.fn(),
-      },
-    ];
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} appliedFilters={appliedFilters} />,
-    );
-
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
-      label: 'Value is Baz',
-      selected: true,
-    });
-    wrapper.setProps({appliedFilters: []});
-
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
-      label: 'Baz',
-      selected: false,
-    });
-  });
-
   it('correctly invokes the onRemove callback when clicking on an applied filter', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;

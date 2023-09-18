@@ -1,11 +1,4 @@
-import {
-  Button,
-  Modal,
-  LegacyStack,
-  DropZone,
-  Checkbox,
-  Frame,
-} from '@shopify/polaris';
+import {Button, Modal, LegacyStack, DropZone, Checkbox} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -21,43 +14,41 @@ function LargeModalExample() {
 
   return (
     <div style={{height: '500px'}}>
-      <Frame>
-        <Modal
-          large
-          activator={activator}
-          open={active}
-          onClose={toggleActive}
-          title="Import customers by CSV"
-          primaryAction={{
-            content: 'Import customers',
+      <Modal
+        size="large"
+        activator={activator}
+        open={active}
+        onClose={toggleActive}
+        title="Import customers by CSV"
+        primaryAction={{
+          content: 'Import customers',
+          onAction: toggleActive,
+        }}
+        secondaryActions={[
+          {
+            content: 'Cancel',
             onAction: toggleActive,
-          }}
-          secondaryActions={[
-            {
-              content: 'Cancel',
-              onAction: toggleActive,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <LegacyStack vertical>
-              <DropZone
-                accept=".csv"
-                errorOverlayText="File type must be .csv"
-                type="file"
-                onDrop={() => {}}
-              >
-                <DropZone.FileUpload />
-              </DropZone>
-              <Checkbox
-                checked={checked}
-                label="Overwrite existing customers that have the same email or phone"
-                onChange={handleCheckbox}
-              />
-            </LegacyStack>
-          </Modal.Section>
-        </Modal>
-      </Frame>
+          },
+        ]}
+      >
+        <Modal.Section>
+          <LegacyStack vertical>
+            <DropZone
+              accept=".csv"
+              errorOverlayText="File type must be .csv"
+              type="file"
+              onDrop={() => {}}
+            >
+              <DropZone.FileUpload />
+            </DropZone>
+            <Checkbox
+              checked={checked}
+              label="Overwrite existing customers that have the same email or phone"
+              onChange={handleCheckbox}
+            />
+          </LegacyStack>
+        </Modal.Section>
+      </Modal>
     </div>
   );
 }

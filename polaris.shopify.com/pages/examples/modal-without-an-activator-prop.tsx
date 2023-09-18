@@ -1,4 +1,4 @@
-import {Button, Frame, Modal, TextContainer} from '@shopify/polaris';
+import {Button, Modal, TextContainer} from '@shopify/polaris';
 import {useState, useCallback, useRef} from 'react';
 
 function ModalExample() {
@@ -17,37 +17,35 @@ function ModalExample() {
 
   return (
     <div style={{height: '500px'}}>
-      <Frame>
-        <div ref={button}>
-          <Button onClick={handleOpen}>Open</Button>
-        </div>
-        <Modal
-          instant
-          open={active}
-          onClose={handleClose}
-          title="Reach more shoppers with Instagram product tags"
-          primaryAction={{
-            content: 'Add Instagram',
+      <div ref={button}>
+        <Button onClick={handleOpen}>Open</Button>
+      </div>
+      <Modal
+        instant
+        open={active}
+        onClose={handleClose}
+        title="Reach more shoppers with Instagram product tags"
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleClose,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
             onAction: handleClose,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: handleClose,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <TextContainer>
-              <p>
-                Use Instagram posts to share your products with millions of
-                people. Let shoppers buy from your store without leaving
-                Instagram.
-              </p>
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
-      </Frame>
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            <p>
+              Use Instagram posts to share your products with millions of
+              people. Let shoppers buy from your store without leaving
+              Instagram.
+            </p>
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
     </div>
   );
 }

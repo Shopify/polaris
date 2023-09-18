@@ -12,8 +12,6 @@ import {
   Text,
   TextContainer,
   TextField,
-  Frame,
-  FrameContext,
 } from '@shopify/polaris';
 
 export default {
@@ -28,34 +26,31 @@ export function Default() {
   const activator = <Button onClick={handleChange}>Open</Button>;
 
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          activator={activator}
-          open={active}
-          onClose={handleChange}
-          title="Reach more shoppers with Instagram product tags"
-          primaryAction={{
-            content: 'Add Instagram',
+    <div style={{height: '500px'}}>
+      <Modal
+        activator={activator}
+        open={active}
+        onClose={handleChange}
+        title="Reach more shoppers with Instagram product tags"
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleChange,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
             onAction: handleChange,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: handleChange,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <TextContainer>
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
-      </div>
-    </Frame>
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
   );
 }
 
@@ -82,47 +77,45 @@ export function WithPrimaryAction() {
   const activator = <Button onClick={toggleModal}>Open</Button>;
 
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          activator={activator}
-          open={active}
-          onClose={toggleModal}
-          title="Get a shareable link"
-          primaryAction={{
-            content: 'Close',
-            onAction: toggleModal,
-          }}
-        >
-          <Modal.Section>
-            <LegacyStack vertical>
-              <LegacyStack.Item>
-                <TextContainer>
-                  You can share this discount link with your customers via email
-                  or social media. Your discount will be automatically applied
-                  at checkout.
-                </TextContainer>
-              </LegacyStack.Item>
-              <LegacyStack.Item fill>
-                <TextField
-                  ref={node}
-                  label="Discount link"
-                  onFocus={handleFocus}
-                  value={discountLink}
-                  onChange={() => {}}
-                  autoComplete="off"
-                  connectedRight={
-                    <Button primary onClick={handleClick}>
-                      Copy link
-                    </Button>
-                  }
-                />
-              </LegacyStack.Item>
-            </LegacyStack>
-          </Modal.Section>
-        </Modal>
-      </div>
-    </Frame>
+    <div style={{height: '500px'}}>
+      <Modal
+        activator={activator}
+        open={active}
+        onClose={toggleModal}
+        title="Get a shareable link"
+        primaryAction={{
+          content: 'Close',
+          onAction: toggleModal,
+        }}
+      >
+        <Modal.Section>
+          <LegacyStack vertical>
+            <LegacyStack.Item>
+              <TextContainer>
+                You can share this discount link with your customers via email
+                or social media. Your discount will be automatically applied at
+                checkout.
+              </TextContainer>
+            </LegacyStack.Item>
+            <LegacyStack.Item fill>
+              <TextField
+                ref={node}
+                label="Discount link"
+                onFocus={handleFocus}
+                value={discountLink}
+                onChange={() => {}}
+                autoComplete="off"
+                connectedRight={
+                  <Button variant="primary" onClick={handleClick}>
+                    Copy link
+                  </Button>
+                }
+              />
+            </LegacyStack.Item>
+          </LegacyStack>
+        </Modal.Section>
+      </Modal>
+    </div>
   );
 }
 
@@ -158,58 +151,56 @@ export function WithPrimaryAndSecondaryActions() {
   const activator = <Button onClick={handleModalChange}>Open</Button>;
 
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          activator={activator}
-          open={active}
-          onClose={handleClose}
-          title="Export customers"
-          primaryAction={{
-            content: 'Export customers',
+    <div style={{height: '500px'}}>
+      <Modal
+        activator={activator}
+        open={active}
+        onClose={handleClose}
+        title="Export customers"
+        primaryAction={{
+          content: 'Export customers',
+          onAction: handleClose,
+        }}
+        secondaryActions={[
+          {
+            content: 'Cancel',
             onAction: handleClose,
-          }}
-          secondaryActions={[
-            {
-              content: 'Cancel',
-              onAction: handleClose,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <LegacyStack vertical>
-              <LegacyStack.Item>
-                <ChoiceList
-                  title="Export"
-                  choices={[
-                    {label: 'Current page', value: currentPage},
-                    {label: 'All customers', value: allCustomers},
-                    {label: 'Selected customers', value: selectedCustomers},
-                  ]}
-                  selected={selectedExport}
-                  onChange={handleSelectedExport}
-                />
-              </LegacyStack.Item>
-              <LegacyStack.Item>
-                <ChoiceList
-                  title="Export as"
-                  choices={[
-                    {
-                      label:
-                        'CSV for Excel, Numbers, or other spreadsheet programs',
-                      value: csvExcel,
-                    },
-                    {label: 'Plain CSV file', value: csvPlain},
-                  ]}
-                  selected={selectedExportAs}
-                  onChange={handleSelectedExportAs}
-                />
-              </LegacyStack.Item>
-            </LegacyStack>
-          </Modal.Section>
-        </Modal>
-      </div>
-    </Frame>
+          },
+        ]}
+      >
+        <Modal.Section>
+          <LegacyStack vertical>
+            <LegacyStack.Item>
+              <ChoiceList
+                title="Export"
+                choices={[
+                  {label: 'Current page', value: currentPage},
+                  {label: 'All customers', value: allCustomers},
+                  {label: 'Selected customers', value: selectedCustomers},
+                ]}
+                selected={selectedExport}
+                onChange={handleSelectedExport}
+              />
+            </LegacyStack.Item>
+            <LegacyStack.Item>
+              <ChoiceList
+                title="Export as"
+                choices={[
+                  {
+                    label:
+                      'CSV for Excel, Numbers, or other spreadsheet programs',
+                    value: csvExcel,
+                  },
+                  {label: 'Plain CSV file', value: csvPlain},
+                ]}
+                selected={selectedExportAs}
+                onChange={handleSelectedExportAs}
+              />
+            </LegacyStack.Item>
+          </LegacyStack>
+        </Modal.Section>
+      </Modal>
+    </div>
   );
 }
 
@@ -224,45 +215,43 @@ export function Large() {
   const activator = <Button onClick={toggleActive}>Open</Button>;
 
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          large
-          activator={activator}
-          open={active}
-          onClose={toggleActive}
-          title="Import customers by CSV"
-          primaryAction={{
-            content: 'Import customers',
+    <div style={{height: '500px'}}>
+      <Modal
+        size="large"
+        activator={activator}
+        open={active}
+        onClose={toggleActive}
+        title="Import customers by CSV"
+        primaryAction={{
+          content: 'Import customers',
+          onAction: toggleActive,
+        }}
+        secondaryActions={[
+          {
+            content: 'Cancel',
             onAction: toggleActive,
-          }}
-          secondaryActions={[
-            {
-              content: 'Cancel',
-              onAction: toggleActive,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <LegacyStack vertical>
-              <DropZone
-                accept=".csv"
-                errorOverlayText="File type must be .csv"
-                type="file"
-                onDrop={() => {}}
-              >
-                <DropZone.FileUpload />
-              </DropZone>
-              <Checkbox
-                checked={checked}
-                label="Overwrite existing customers that have the same email or phone"
-                onChange={handleCheckbox}
-              />
-            </LegacyStack>
-          </Modal.Section>
-        </Modal>
-      </div>
-    </Frame>
+          },
+        ]}
+      >
+        <Modal.Section>
+          <LegacyStack vertical>
+            <DropZone
+              accept=".csv"
+              errorOverlayText="File type must be .csv"
+              type="file"
+              onDrop={() => {}}
+            >
+              <DropZone.FileUpload />
+            </DropZone>
+            <Checkbox
+              checked={checked}
+              label="Overwrite existing customers that have the same email or phone"
+              onChange={handleCheckbox}
+            />
+          </LegacyStack>
+        </Modal.Section>
+      </Modal>
+    </div>
   );
 }
 
@@ -277,45 +266,43 @@ export function Small() {
   const activator = <Button onClick={toggleActive}>Open</Button>;
 
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          small
-          activator={activator}
-          open={active}
-          onClose={toggleActive}
-          title="Import customers by CSV"
-          primaryAction={{
-            content: 'Import customers',
+    <div style={{height: '500px'}}>
+      <Modal
+        size="small"
+        activator={activator}
+        open={active}
+        onClose={toggleActive}
+        title="Import customers by CSV"
+        primaryAction={{
+          content: 'Import customers',
+          onAction: toggleActive,
+        }}
+        secondaryActions={[
+          {
+            content: 'Cancel',
             onAction: toggleActive,
-          }}
-          secondaryActions={[
-            {
-              content: 'Cancel',
-              onAction: toggleActive,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <LegacyStack vertical>
-              <DropZone
-                accept=".csv"
-                errorOverlayText="File type must be .csv"
-                type="file"
-                onDrop={() => {}}
-              >
-                <DropZone.FileUpload />
-              </DropZone>
-              <Checkbox
-                checked={checked}
-                label="Overwrite existing customers that have the same email or phone"
-                onChange={handleCheckbox}
-              />
-            </LegacyStack>
-          </Modal.Section>
-        </Modal>
-      </div>
-    </Frame>
+          },
+        ]}
+      >
+        <Modal.Section>
+          <LegacyStack vertical>
+            <DropZone
+              accept=".csv"
+              errorOverlayText="File type must be .csv"
+              type="file"
+              onDrop={() => {}}
+            >
+              <DropZone.FileUpload />
+            </DropZone>
+            <Checkbox
+              checked={checked}
+              label="Overwrite existing customers that have the same email or phone"
+              onChange={handleCheckbox}
+            />
+          </LegacyStack>
+        </Modal.Section>
+      </Modal>
+    </div>
   );
 }
 
@@ -327,35 +314,32 @@ export function WithoutATitle() {
   const activator = <Button onClick={handleChange}>Open</Button>;
 
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          title="Reach more shoppers with Instagram product tags"
-          titleHidden
-          activator={activator}
-          open={active}
-          onClose={handleChange}
-          primaryAction={{
-            content: 'Add Instagram',
+    <div style={{height: '500px'}}>
+      <Modal
+        title="Reach more shoppers with Instagram product tags"
+        titleHidden
+        activator={activator}
+        open={active}
+        onClose={handleChange}
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleChange,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
             onAction: handleChange,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: handleChange,
-            },
-          ]}
-        >
-          <Modal.Section titleHidden>
-            <TextContainer>
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
-      </div>
-    </Frame>
+          },
+        ]}
+      >
+        <Modal.Section titleHidden>
+          <TextContainer>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
   );
 }
 
@@ -372,25 +356,23 @@ export function WithScrollListener() {
   const activator = <Button onClick={handleChange}>Open</Button>;
 
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          activator={activator}
-          open={active}
-          title="Scrollable content"
-          onClose={handleChange}
-          onScrolledToBottom={handleScrollBottom}
-        >
-          {Array.from({length: 50}, (_, index) => (
-            <Modal.Section key={index}>
-              <TextContainer>
-                Item <a href="#Content">#{index}</a>
-              </TextContainer>
-            </Modal.Section>
-          ))}
-        </Modal>
-      </div>
-    </Frame>
+    <div style={{height: '500px'}}>
+      <Modal
+        activator={activator}
+        open={active}
+        title="Scrollable content"
+        onClose={handleChange}
+        onScrolledToBottom={handleScrollBottom}
+      >
+        {Array.from({length: 50}, (_, index) => (
+          <Modal.Section key={index}>
+            <TextContainer>
+              Item <a href="#Content">#{index}</a>
+            </TextContainer>
+          </Modal.Section>
+        ))}
+      </Modal>
+    </div>
   );
 }
 
@@ -412,35 +394,32 @@ export function WithActivatorRef() {
   );
 
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        {activator}
-        <Modal
-          activator={buttonRef}
-          open={active}
-          onClose={handleClose}
-          title="Reach more shoppers with Instagram product tags"
-          primaryAction={{
-            content: 'Add Instagram',
+    <div style={{height: '500px'}}>
+      {activator}
+      <Modal
+        activator={buttonRef}
+        open={active}
+        onClose={handleClose}
+        title="Reach more shoppers with Instagram product tags"
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleClose,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
             onAction: handleClose,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: handleClose,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <TextContainer>
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
-      </div>
-    </Frame>
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
   );
 }
 
@@ -457,162 +436,144 @@ export function WithoutAnActivatorProp() {
   }, []);
 
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <div ref={button}>
-          <Button onClick={handleOpen}>Open</Button>
-        </div>
-        <Modal
-          instant
-          open={active}
-          onClose={handleClose}
-          title="Reach more shoppers with Instagram product tags"
-          primaryAction={{
-            content: 'Add Instagram',
-            onAction: handleClose,
-          }}
-          secondaryActions={[
-            {
-              content: 'Learn more',
-              onAction: handleClose,
-            },
-          ]}
-        >
-          <Modal.Section>
-            <TextContainer>
-              Use Instagram posts to share your products with millions of
-              people. Let shoppers buy from your store without leaving
-              Instagram.
-            </TextContainer>
-          </Modal.Section>
-        </Modal>
+    <div style={{height: '500px'}}>
+      <div ref={button}>
+        <Button onClick={handleOpen}>Open</Button>
       </div>
-    </Frame>
+      <Modal
+        instant
+        open={active}
+        onClose={handleClose}
+        title="Reach more shoppers with Instagram product tags"
+        primaryAction={{
+          content: 'Add Instagram',
+          onAction: handleClose,
+        }}
+        secondaryActions={[
+          {
+            content: 'Learn more',
+            onAction: handleClose,
+          },
+        ]}
+      >
+        <Modal.Section>
+          <TextContainer>
+            Use Instagram posts to share your products with millions of people.
+            Let shoppers buy from your store without leaving Instagram.
+          </TextContainer>
+        </Modal.Section>
+      </Modal>
+    </div>
   );
 }
 
 export function WithLongContent() {
   return (
-    <Frame>
-      <Modal
-        title="Long form modal"
-        open
-        onClose={() => {}}
-        primaryAction={{content: 'Save'}}
-      >
-        <Modal.Section>
-          <Banner title="Payment details" />
-        </Modal.Section>
-        <Modal.Section>
-          <FormLayout>
-            <FormLayout.Group>
-              <TextField label="Payment method type" autoComplete="off" />
-              <TextField label="Card number" autoComplete="off" />
-            </FormLayout.Group>
+    <Modal
+      title="Long form modal"
+      open
+      onClose={() => {}}
+      primaryAction={{content: 'Save'}}
+    >
+      <Modal.Section>
+        <Banner title="Payment details" />
+      </Modal.Section>
+      <Modal.Section>
+        <FormLayout>
+          <FormLayout.Group>
+            <TextField label="Payment method type" autoComplete="off" />
+            <TextField label="Card number" autoComplete="off" />
+          </FormLayout.Group>
 
-            <FormLayout.Group>
-              <TextField label="Expires" autoComplete="off" />
-              <TextField label="CVV" autoComplete="off" />
-            </FormLayout.Group>
+          <FormLayout.Group>
+            <TextField label="Expires" autoComplete="off" />
+            <TextField label="CVV" autoComplete="off" />
+          </FormLayout.Group>
 
-            <FormLayout.Group>
-              <TextField label="Country/region" autoComplete="off" />
-            </FormLayout.Group>
+          <FormLayout.Group>
+            <TextField label="Country/region" autoComplete="off" />
+          </FormLayout.Group>
 
-            <FormLayout.Group>
-              <TextField label="First name" autoComplete="off" />
-              <TextField label="Last name" autoComplete="off" />
-            </FormLayout.Group>
+          <FormLayout.Group>
+            <TextField label="First name" autoComplete="off" />
+            <TextField label="Last name" autoComplete="off" />
+          </FormLayout.Group>
 
-            <FormLayout.Group>
-              <TextField label="Address" autoComplete="off" />
-              <TextField label="Apartment, suite, etc." autoComplete="off" />
-            </FormLayout.Group>
+          <FormLayout.Group>
+            <TextField label="Address" autoComplete="off" />
+            <TextField label="Apartment, suite, etc." autoComplete="off" />
+          </FormLayout.Group>
 
-            <FormLayout.Group>
-              <TextField label="City" autoComplete="off" />
-              <TextField label="Province" autoComplete="off" />
-              <TextField label="Postal code" autoComplete="off" />
-            </FormLayout.Group>
-          </FormLayout>
-        </Modal.Section>
-      </Modal>
-    </Frame>
+          <FormLayout.Group>
+            <TextField label="City" autoComplete="off" />
+            <TextField label="Province" autoComplete="off" />
+            <TextField label="Postal code" autoComplete="off" />
+          </FormLayout.Group>
+        </FormLayout>
+      </Modal.Section>
+    </Modal>
   );
 }
 
 export function WithLongContentNoScroll() {
   return (
-    <Frame>
+    <Modal
+      title="Long form modal"
+      open
+      onClose={() => {}}
+      noScroll
+      primaryAction={{content: 'Save'}}
+    >
+      <Modal.Section>
+        <Banner title="Payment details" />
+      </Modal.Section>
+      <Modal.Section>
+        <FormLayout>
+          <FormLayout.Group>
+            <TextField label="Payment method type" autoComplete="off" />
+            <TextField label="Card number" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Expires" autoComplete="off" />
+            <TextField label="CVV" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Country/region" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="First name" autoComplete="off" />
+            <TextField label="Last name" autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="Address" autoComplete="off" />
+            <TextField label="Apartment, suite, etc." autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group>
+            <TextField label="City" autoComplete="off" />
+            <TextField label="Province" autoComplete="off" />
+            <TextField label="Postal code" autoComplete="off" />
+          </FormLayout.Group>
+        </FormLayout>
+      </Modal.Section>
+    </Modal>
+  );
+}
+
+export function EmbeddedIframe() {
+  return (
+    <div style={{height: '500px'}}>
       <Modal
-        title="Long form modal"
+        title="Embedded iFrame Modal"
         open
         onClose={() => {}}
         noScroll
         primaryAction={{content: 'Save'}}
-      >
-        <Modal.Section>
-          <Banner title="Payment details" />
-        </Modal.Section>
-        <Modal.Section>
-          <FormLayout>
-            <FormLayout.Group>
-              <TextField label="Payment method type" autoComplete="off" />
-              <TextField label="Card number" autoComplete="off" />
-            </FormLayout.Group>
-
-            <FormLayout.Group>
-              <TextField label="Expires" autoComplete="off" />
-              <TextField label="CVV" autoComplete="off" />
-            </FormLayout.Group>
-
-            <FormLayout.Group>
-              <TextField label="Country/region" autoComplete="off" />
-            </FormLayout.Group>
-
-            <FormLayout.Group>
-              <TextField label="First name" autoComplete="off" />
-              <TextField label="Last name" autoComplete="off" />
-            </FormLayout.Group>
-
-            <FormLayout.Group>
-              <TextField label="Address" autoComplete="off" />
-              <TextField label="Apartment, suite, etc." autoComplete="off" />
-            </FormLayout.Group>
-
-            <FormLayout.Group>
-              <TextField label="City" autoComplete="off" />
-              <TextField label="Province" autoComplete="off" />
-              <TextField label="Postal code" autoComplete="off" />
-            </FormLayout.Group>
-          </FormLayout>
-        </Modal.Section>
-      </Modal>
-    </Frame>
-  );
-}
-
-const context = {
-  logo: undefined,
-  showToast: () => {},
-  hideToast: () => {},
-  toastMessages: [],
-  startLoading: () => {},
-  stopLoading: () => {},
-  setContextualSaveBar: () => {},
-  removeContextualSaveBar: () => {},
-};
-export function EmbeddedIframe() {
-  return (
-    <FrameContext.Provider value={context}>
-      <div style={{height: '500px'}}>
-        <Modal
-          title="Embedded iFrame Modal"
-          open
-          onClose={() => {}}
-          noScroll
-          primaryAction={{content: 'Save'}}
-          src={`data:text/html;charset=utf-8,
+        src={`data:text/html;charset=utf-8,
 <style>
   /* Modified from Josh's Custom CSS Reset https://www.joshwcomeau.com/css/custom-css-reset/ */
   *, *::before, *::after { box-sizing: border-box; }
@@ -625,74 +586,67 @@ export function EmbeddedIframe() {
     Hello.
   </h1>
 </main>`}
-        />
-      </div>
-    </FrameContext.Provider>
+      />
+    </div>
   );
 }
 
 export function SectionedProp() {
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          title="Sectioned modal"
-          open
-          onClose={() => {}}
-          sectioned
-          primaryAction={{content: 'Save'}}
-        >
-          <Text as="h1">First section</Text>
-          <Text as="p">Second section</Text>
-          <Modal.Section>
-            <Text as="p">Nested section</Text>
-          </Modal.Section>
-          <Text as="p">Fourth section</Text>
-        </Modal>
-      </div>
-    </Frame>
+    <div style={{height: '500px'}}>
+      <Modal
+        title="Sectioned modal"
+        open
+        onClose={() => {}}
+        sectioned
+        primaryAction={{content: 'Save'}}
+      >
+        <Text as="h1">First section</Text>
+        <Text as="p">Second section</Text>
+        <Modal.Section>
+          <Text as="p">Nested section</Text>
+        </Modal.Section>
+        <Text as="p">Fourth section</Text>
+      </Modal>
+    </div>
   );
 }
 
 export function Loading() {
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          title="Loading modal"
-          open
-          onClose={() => {}}
-          loading
-          primaryAction={{content: 'Save'}}
-        >
-          <Text as="h1">First section</Text>
-          <Text as="p">Second section</Text>
-          <Text as="p">Third section</Text>
-        </Modal>
-      </div>
-    </Frame>
+    <div style={{height: '500px'}}>
+      <Modal
+        title="Loading modal"
+        open
+        onClose={() => {}}
+        loading
+        primaryAction={{content: 'Save'}}
+      >
+        <Text as="h1">First section</Text>
+        <Text as="p">Second section</Text>
+        <Text as="p">Third section</Text>
+      </Modal>
+    </div>
   );
 }
 
 export function Fullscreen() {
   return (
-    <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          title="Fullscreen modal"
-          open
-          onClose={() => {}}
-          sectioned
-          fullScreen
-          primaryAction={{content: 'Save'}}
-        >
-          <Text as="h1">Fullscreen on small displays</Text>
-          <Text as="p">
-            When <code>(max-width: 47.9975em)</code>, the modal will be made{' '}
-            <code>height: 100%</code>
-          </Text>
-        </Modal>
-      </div>
-    </Frame>
+    <div style={{height: '500px'}}>
+      <Modal
+        title="Fullscreen modal"
+        open
+        onClose={() => {}}
+        sectioned
+        size="fullScreen"
+        primaryAction={{content: 'Save'}}
+      >
+        <Text as="h1">Fullscreen on small displays</Text>
+        <Text as="p">
+          When <code>(max-width: 47.9975em)</code>, the modal will be made{' '}
+          <code>height: 100%</code>
+        </Text>
+      </Modal>
+    </div>
   );
 }
