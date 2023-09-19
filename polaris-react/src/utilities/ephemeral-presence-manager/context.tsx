@@ -1,6 +1,6 @@
 import {createContext} from 'react';
 
-export type EphemeralPresenceKey = 'tooltip';
+export type EphemeralPresenceKey = 'tooltip' | 'hovercard';
 
 export interface EphemeralPresenceManagerContextType {
   presenceList: {
