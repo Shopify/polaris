@@ -164,7 +164,7 @@ export type ColorBackgroundAlias =
   | 'bg-fill-transparent-secondary-hover'
   | 'bg-fill-transparent-secondary-active'
   | ColorBackgroundAliasExperimental
-  /** Specialty and component backgrounds. */
+  /** Specialty and component background colors. */
   | 'nav-bg'
   | 'backdrop-bg'
   | 'input-bg-surface'
@@ -227,7 +227,7 @@ export type ColorBorderAlias =
   | 'border-emphasis-hover'
   | 'border-emphasis-active'
   | ColorBorderAliasExperimental
-  /** Specialty and component borders. */
+  /** Specialty and component border colors. */
   | 'input-border'
   | 'input-border-hover'
   | 'input-border-active';
@@ -260,10 +260,7 @@ export type ColorIconAlias =
   | 'icon-emphasis-hover'
   | 'icon-emphasis-active'
   | ColorIconAliasExperimental
-  /** Check on emphasis state icons. */
-  | 'icon-emphasis-hover'
-  | 'icon-emphasis-active'
-  /** Specialty and component icons. */
+  /** Specialty and component icon colors. */
   | 'radio-button-icon-disabled'
   | 'checkbox-icon-disabled';
 
