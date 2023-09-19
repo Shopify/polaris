@@ -23,7 +23,7 @@
   --surface-code-block: #2e2e30;
 
   // Based on: https://type-scale.com/?size=17&scale=1.125&text=A%20Visual%20Type%20Scale&font=Poppins&fontweight=400&bodyfont=body_font_default&bodyfontweight=400&lineheight=1.75&backgroundcolor=%23ffffff&fontcolor=%23000000&preview=false
-  --font-size-100: 0.75rem;
+  --font-size-100: 0.8rem;
   --font-size-200: 0.9rem;
   --font-size-300: 0.95rem;
   --font-size-400: 1rem;
@@ -356,20 +356,6 @@ button {
 
 .tip-banner__header h4 {
   margin: 0 !important;
-}
-
-.card {
-  background-color: var(--surface);
-  box-shadow: var(--card-shadow);
-  border-radius: var(--border-radius-400-new);
-  padding: var(--card-padding-md);
-}
-
-.card-loose {
-  background-color: var(--surface);
-  box-shadow: var(--card-shadow);
-  border-radius: var(--border-radius-400-new);
-  padding: var(--card-padding-lg);
 }
 
 .text-extra-padding {

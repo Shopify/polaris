@@ -15,10 +15,9 @@ keywords:
 <Lede>{frontmatter.description}</Lede>
 
 <Subnav />
-
 <Stack gap="8">
 
-  <Box className="card">
+<Card>
 
     <Grid gap="4">
 
@@ -81,9 +80,9 @@ keywords:
 
     </Grid>
 
-  </Box>
+  </Card>
 
-  <Box className="card">
+  <Card>
 
     <Grid gap="4">
 
@@ -147,9 +146,9 @@ keywords:
 
     </Grid>
 
-  </Box>
+  </Card>
 
-  <Box className="card">
+  <Card>
 
     <Grid gap="4">
 
@@ -213,6 +212,6 @@ keywords:
 
     </Grid>
 
-  </Box>
+  </Card>
 
 </Stack>
