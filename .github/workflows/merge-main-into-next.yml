@@ -25,6 +25,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Add commit authors as reviewers to PR
-        run: gh pr edit `gh pr list --head=main --base=next --json number --jq '.[].number'` --add-reviewer=`gh pr list --head=main --base=next --json commits --jq='.[].commits.[].authors.[].login' | sort -u  | grep -v '\[bot\]' | sed 's/^.*$/"&"/g' | sed -z '$ s/\n$//' | tr '\n' ','`
+        run: gh pr edit `gh pr list --head=main --base=next --json number --jq '.[].number'` --add-reviewer=${{ github.triggering_actor }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
