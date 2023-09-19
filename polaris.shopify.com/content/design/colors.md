@@ -28,7 +28,7 @@ Always use color that supports the purpose of the content and the overall goal o
 
 The color system is designed to meet WCAG 2.1 contrast ratios. Sufficient contrast makes things easier to find, identify, and interact with for all merchants. However, you should never convey information using color alone. For example, using an icon or a label in addition to using red, yellow, or green when communicating the status of something ensures that the status is visible to merchants who are color blind.
 
-### 3. Create heirarchy
+### 3. Create hierarchy
 
 Color plays a key role in creating the overall hierarchy of a screen. Using the subdued and strong token variants is an easy way to change that hierarchy and draw a merchant's attention to the right place.
 
