@@ -129,7 +129,18 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
               Number(selection[1]) + 1,
             );
 
-            const nextSelectedResources = isSelecting
+            const isIndeterminate = selectedIds.some((id) => {
+              return selectedResources.includes(id);
+            });
+
+            const isChecked = selectedIds.every((id) => {
+              return selectedResources.includes(id);
+            });
+
+            const isSelectingAllInRange =
+              !isChecked && (isSelecting || isIndeterminate);
+
+            const nextSelectedResources = isSelectingAllInRange
               ? [
                   ...new Set([
                     ...currentSelectedResources,
@@ -148,7 +159,7 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     [
       allResourcesSelected,
       resourceFilter,
-      selectedResources.length,
+      selectedResources,
       resources,
       resourceIDResolver,
     ],

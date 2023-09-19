@@ -524,7 +524,7 @@ describe('useIndexResourceState', () => {
         });
       });
 
-      it('selects all resources within range', () => {
+      it('selects all resources within range when none are selected', () => {
         const idOne = '1';
         const idTwo = '2';
         const idThree = '3';
@@ -542,7 +542,26 @@ describe('useIndexResourceState', () => {
         });
       });
 
-      it('deselects all resources within range', () => {
+      it('selects all resources within range when some are selected', () => {
+        const idOne = '1';
+        const idTwo = '2';
+        const idThree = '3';
+        const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
+        const options = {selectedResources: [idOne]};
+        const mockComponent = mountWithApp(
+          <MockComponent resources={resources} options={options} />,
+        );
+
+        mockComponent
+          .find(TypedChild)!
+          .trigger('onClick', SelectionType.Range, true, [0, 2]);
+
+        expect(mockComponent).toContainReactComponent(TypedChild, {
+          selectedResources: [idOne, idTwo, idThree],
+        });
+      });
+
+      it('deselects all resources within range when all are selected', () => {
         const idOne = '1';
         const idTwo = '2';
         const idThree = '3';
