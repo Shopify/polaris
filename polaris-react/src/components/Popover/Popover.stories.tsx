@@ -682,8 +682,8 @@ export function WithSearchableListbox() {
       <span
         style={{
           color: polarisSummerEditions2023
-            ? 'var(--p-color-text-subdued)'
-            : 'var(--p-color-text-interactive)',
+            ? 'var(--p-color-text-secondary)'
+            : 'var(--p-color-text-emphasis)',
         }}
       >
         Show all 111 segments

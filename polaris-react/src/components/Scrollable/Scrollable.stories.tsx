@@ -1181,7 +1181,7 @@ export function WithShadowOverComplexChildren() {
         style={{
           height: '200px',
           maxWidth: '40rem',
-          backgroundColor: 'var(--p-color-bg)',
+          backgroundColor: 'var(--p-color-bg-surface)',
           // Setting red here so the storybook is really obvious that the shadow
           // overlays the content (particularly the banner)
           /* @ts-expect-error TS doesn't understand CSS vars */
