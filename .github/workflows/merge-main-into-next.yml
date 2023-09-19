@@ -21,6 +21,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create PR for review by last commit author
         if: ${{ steps.existing_pr.outputs.pr-num == '' }}
-        run: gh pr create -B next -H main --title 'Merge latest main into next' --body 'This PR was opened by a GitHub Action following a recent push to main in order to keep the `next` branch up to date. Please resolve any merge conflicts and ensure that your recent changes to main work as expected.' --reviewer=${{ github.triggering_actor }}
+        run: gh pr create --base=next --head=main --title 'Merge latest main into next' --body 'This PR was opened by a GitHub Action following a recent push to main in order to keep the `next` branch up to date. Please resolve any merge conflicts and ensure that your recent changes to main work as expected.' --reviewer=${{ github.triggering_actor }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
