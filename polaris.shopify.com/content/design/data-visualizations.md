@@ -6,13 +6,15 @@ keywords:
   - data viz
 ---
 
-This section outlines data visualization practices at Shopify and how to leverage them.
-
----
-
 # {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
+
+---
+
+This section outlines data visualization practices at Shopify and how to leverage them.
+
+---
 
 ## Data visualizations at Shopify
 
