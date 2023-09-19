@@ -28,7 +28,7 @@ This pattern uses the [`VerticalStack`](/components/layout-and-structure/vertica
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
-<div style={{ paddingBottom: '2rem' }}>
+<div style={{ padding: '2rem' }}>
   {(____CODE____)()}
 </div>
 ```

@@ -32,7 +32,7 @@ This pattern uses the [`Card`](/components/layout-and-structure/card), [`Vertica
 
 <!-- prettier-ignore -->
 ```javascript {"type":"previewContext","for":"example"}
-<div style={{ paddingBottom: '2rem' }}>
+<div style={{ padding: '2rem' }}>
   {(____CODE____)()}
 </div>
 ```
