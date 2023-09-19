@@ -22,6 +22,7 @@ import {
   SortButton,
   SearchFilterButton,
   UpdateButtons,
+  EditColumnsButton,
 } from './components';
 import type {
   IndexFiltersPrimaryAction,
@@ -97,6 +98,8 @@ export interface IndexFiltersProps
   closeOnChildOverlayClick?: boolean;
   /** Optional override to the default keyboard shortcuts available */
   disableKeyboardShortcuts?: boolean;
+  /** Shows the edit columns button  */
+  showEditColumns?: boolean;
 }
 
 export function IndexFilters({
@@ -135,6 +138,7 @@ export function IndexFilters({
   hideQueryField,
   closeOnChildOverlayClick,
   disableKeyboardShortcuts,
+  showEditColumns,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -272,6 +276,15 @@ export function IndexFilters({
     disabled,
   ]);
 
+  const editColumnsMarkup = showEditColumns ? (
+    <EditColumnsButton
+      onClick={() => {
+        setMode(IndexFiltersMode.EditingColumns);
+      }}
+      disabled={disabled}
+    />
+  ) : null;
+
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
 
   function handleClickFilterButton() {
@@ -396,6 +409,7 @@ export function IndexFilters({
                             />
                           )}
                           {sortMarkup}
+                          {editColumnsMarkup}
                         </>
                       ) : null}
                       {mode === IndexFiltersMode.EditingColumns

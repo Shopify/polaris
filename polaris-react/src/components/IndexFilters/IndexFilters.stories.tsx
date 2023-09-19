@@ -403,6 +403,10 @@ export function WithFilteringByDefault() {
   return <BasicExample withFilteringByDefault />;
 }
 
+export function WithEditColumsButton() {
+  return <BasicExample showEditColumns />;
+}
+
 export function WithoutKeyboardShortcuts() {
   return <BasicExample disableKeyboardShortcuts />;
 }
@@ -951,6 +955,7 @@ export function Disabled() {
         mode={mode}
         setMode={setMode}
         disabled
+        showEditColumns
       />
       <Table />
     </Card>

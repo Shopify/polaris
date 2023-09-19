@@ -193,6 +193,9 @@
           "za": "Z-A"
         }
       },
+      "EditColumnsButton": {
+        "editColumns": "Edit columns"
+      },
       "UpdateButtons": {
         "cancel": "Cancel",
         "update": "Update",
