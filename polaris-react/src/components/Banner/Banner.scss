@@ -6,7 +6,7 @@
 
   #{$se23} & {
     border: none;
-    background-color: var(--p-color-bg);
+    background-color: var(--p-color-bg-surface);
   }
 
   @if $in-page {
@@ -51,28 +51,27 @@
   }
 
   &.keyFocused {
-    outline: var(--p-border-width-2) solid
-      var(--p-color-border-interactive-focus);
+    outline: var(--p-border-width-2) solid var(--p-color-border-focus);
   }
 
   &.statusSuccess {
     border-color: var(--p-color-border-success-subdued);
-    background-color: var(--p-color-bg-success-subdued);
+    background-color: var(--p-color-bg-surface-success);
   }
 
   &.statusInfo {
     border-color: var(--p-color-border-info-subdued);
-    background-color: var(--p-color-bg-info-subdued);
+    background-color: var(--p-color-bg-surface-info);
   }
 
   &.statusWarning {
     border-color: var(--p-color-border-caution-subdued);
-    background-color: var(--p-color-bg-caution-subdued);
+    background-color: var(--p-color-bg-surface-caution);
   }
 
   &.statusCritical {
     border-color: var(--p-color-border-critical-subdued);
-    background-color: var(--p-color-bg-critical-subdued);
+    background-color: var(--p-color-bg-surface-critical);
   }
 }
 
@@ -90,17 +89,17 @@
 
     &:hover {
       border-color: var(--p-color-border-critical-subdued);
-      background: var(--p-color-bg-critical-subdued-hover);
+      background: var(--p-color-bg-surface-critical-hover);
     }
 
     &:active {
       border-color: var(--p-color-border-critical-subdued);
-      background: var(--p-color-bg-critical-subdued-active);
+      background: var(--p-color-bg-surface-critical-active);
     }
 
     &:focus:not(:active) {
       border-color: var(--p-color-border-critical-subdued);
-      background: var(--p-color-bg-critical-subdued);
+      background: var(--p-color-bg-surface-critical);
     }
   }
 
@@ -109,17 +108,17 @@
 
     &:hover {
       border-color: var(--p-color-border-caution-subdued);
-      background: var(--p-color-bg-caution-subdued-hover);
+      background: var(--p-color-bg-surface-caution-hover);
     }
 
     &:active {
       border-color: var(--p-color-border-caution-subdued);
-      background: var(--p-color-bg-caution-subdued-active);
+      background: var(--p-color-bg-surface-caution-active);
     }
 
     &:focus:not(:active) {
       border-color: var(--p-color-border-caution-subdued);
-      background: var(--p-color-bg-caution-subdued);
+      background: var(--p-color-bg-surface-caution);
     }
   }
 
@@ -128,17 +127,17 @@
 
     &:hover {
       border-color: var(--p-color-border-info-subdued);
-      background: var(--p-color-bg-info-subdued-hover);
+      background: var(--p-color-bg-surface-info-hover);
     }
 
     &:active {
       border-color: var(--p-color-border-info-subdued);
-      background: var(--p-color-bg-info-subdued-active);
+      background: var(--p-color-bg-surface-info-active);
     }
 
     &:focus:not(:active) {
       border-color: var(--p-color-border-info-subdued);
-      background: var(--p-color-bg-info-subdued);
+      background: var(--p-color-bg-surface-info);
     }
   }
 
@@ -147,17 +146,17 @@
 
     &:hover {
       border-color: var(--p-color-border-success-subdued);
-      background: var(--p-color-bg-success-subdued-hover);
+      background: var(--p-color-bg-surface-success-hover);
     }
 
     &:active {
       border-color: var(--p-color-border-success-subdued);
-      background: var(--p-color-bg-success-subdued-active);
+      background: var(--p-color-bg-surface-success-active);
     }
 
     &:focus:not(:active) {
       border-color: var(--p-color-border-success-subdued);
-      background: var(--p-color-bg-success-subdued);
+      background: var(--p-color-bg-surface-success);
     }
   }
   // stylelint-enable selector-max-class, selector-max-specificity

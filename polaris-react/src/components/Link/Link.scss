@@ -9,12 +9,12 @@
   border: 0;
   font-size: inherit;
   font-weight: inherit;
-  color: var(--p-color-text-interactive);
+  color: var(--p-color-text-emphasis);
   text-decoration: underline;
   cursor: pointer;
 
   &:hover {
-    color: var(--p-color-text-interactive-hover);
+    color: var(--p-color-text-emphasis-hover);
     text-decoration: none;
 
     #{$se23} & {
@@ -23,21 +23,19 @@
   }
 
   &:focus:not(:active) {
-    outline: var(--p-color-border-interactive-focus) auto
-      var(--p-border-width-1);
+    outline: var(--p-color-border-focus) auto var(--p-border-width-1);
   }
 
   #{$se23} &:focus,
   #{$se23} &:focus-visible {
-    outline: var(--p-color-border-interactive-focus) auto
-      var(--p-border-width-2);
+    outline: var(--p-color-border-focus) auto var(--p-border-width-2);
     outline-offset: var(--p-space-05);
     border-radius: var(--p-border-radius-1_5-experimental);
   }
 
   &:active {
     position: relative;
-    color: var(--p-color-text-interactive-active);
+    color: var(--p-color-text-emphasis-active);
 
     &::before {
       content: '';

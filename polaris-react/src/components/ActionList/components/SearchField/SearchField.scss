@@ -38,10 +38,10 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
   }
 
   &::placeholder {
-    color: var(--p-color-text-subdued);
+    color: var(--p-color-text-secondary);
 
     #{$se23} & {
-      color: var(--p-color-text-inverse-subdued);
+      color: var(--p-color-text-inverse-secondary);
     }
   }
 }
@@ -54,8 +54,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
     #{$se23} & {
       // stylelint-disable-next-line -- opt for outline instead of focus-ring mixin
       @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-2) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-025);
     }
   }
@@ -64,7 +63,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
     fill: var(--p-color-icon);
 
     #{$se23} & {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
   }
 }
@@ -75,14 +74,13 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
     ~ .Backdrop {
       // stylelint-disable-next-line -- opt for outline instead of focus-ring mixin
       @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-2) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-025);
     }
 
     // stylelint-disable-next-line -- se23
     ~ .Icon svg {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
   }
 }
@@ -105,15 +103,15 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
 
   #{$se23} & {
     padding: 0 $search-icon-width-se23 0 $search-icon-width-se23;
-    color: var(--p-color-text-inverse-subdued);
+    color: var(--p-color-text-inverse-secondary);
     height: $new-input-height-se23;
     border: var(--p-border-width-1-experimental) solid
       var(--p-color-border-inverse);
     border-radius: var(--p-border-radius-2);
 
     &:hover {
-      border-color: var(--p-color-border-input-hover);
-      background-color: var(--p-color-bg-input-hover-experimental);
+      border-color: var(--p-color-input-border-hover);
+      background-color: var(--p-color-input-bg-surface-hover);
     }
 
     &:active,
@@ -126,7 +124,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
     color: var(--p-color-text);
 
     #{$se23} & {
-      color: var(--p-color-text-inverse-subdued);
+      color: var(--p-color-text-inverse-secondary);
     }
   }
 
@@ -156,7 +154,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
     fill: var(--p-color-icon);
 
     #{$se23} & {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
   }
 }
@@ -182,7 +180,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
     fill: var(--p-color-icon);
 
     #{$se23} & {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
   }
 
@@ -226,7 +224,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--p-color-bg-input);
+  background-color: var(--p-color-input-bg-surface);
   border-radius: var(--p-border-radius-1);
   pointer-events: none;
 

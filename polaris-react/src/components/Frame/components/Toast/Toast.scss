@@ -38,7 +38,7 @@ $Backdrop-opacity: 0.88;
 }
 
 .error {
-  background: var(--p-color-bg-critical-strong);
+  background: var(--p-color-bg-fill-critical);
   color: var(--p-color-text-on-color);
 
   .CloseButton {
@@ -71,7 +71,7 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  color: var(--p-color-icon-subdued);
+  color: var(--p-color-icon-secondary);
   cursor: pointer;
   margin-left: var(--p-space-2);
 

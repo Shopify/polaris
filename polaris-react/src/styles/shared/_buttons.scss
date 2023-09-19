@@ -13,7 +13,7 @@
   min-width: 36px;
   margin: 0;
   padding: $vertical-padding var(--p-space-4);
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
   box-shadow: var(--p-shadow-sm);
   border-radius: var(--p-border-radius-1);
   color: var(--p-color-text);
@@ -51,8 +51,7 @@
     #{$se23} & {
       // stylelint-disable-next-line -- se23 temporary styles
       @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-2) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-025);
     }
   }
@@ -65,7 +64,7 @@
   }
 
   &.pressed {
-    background: var(--p-color-bg-inset-strong);
+    background: var(--p-color-bg-fill-inverse);
     box-shadow: var(--p-shadow-inset-md);
     color: var(--p-color-text-on-color);
     border-color: var(--p-color-border-inverse);
@@ -75,17 +74,17 @@
     }
 
     #{$se23} & {
-      background: var(--p-color-bg-strong-active);
+      background: var(--p-color-bg-fill-tertiary-active);
       box-shadow: var(--p-shadow-inset-md);
       color: var(--p-color-text);
 
       &:hover {
-        background: var(--p-color-bg-strong-hover);
+        background: var(--p-color-bg-fill-tertiary-hover);
         box-shadow: var(--p-shadow-inset-md);
       }
 
       &:active {
-        background: var(--p-color-bg-strong-active);
+        background: var(--p-color-bg-fill-tertiary-active);
         box-shadow: var(--p-shadow-inset-md);
       }
     }

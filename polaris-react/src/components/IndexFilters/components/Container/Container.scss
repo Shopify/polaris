@@ -1,10 +1,10 @@
 @import '../../../../styles/common';
 
 .Container {
-  border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border-bottom: var(--p-border-width-1) solid var(--p-color-border-secondary);
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
 
   #{$se23} & {
     border-bottom: var(--p-border-width-1) solid var(--p-color-border);

@@ -107,7 +107,7 @@ $sidebar-breakpoint: 1200px;
   transition: opacity var(--p-motion-duration-100) var(--p-motion-ease);
 
   svg {
-    fill: var(--p-color-bg);
+    fill: var(--p-color-bg-surface);
   }
 
   @media print {
