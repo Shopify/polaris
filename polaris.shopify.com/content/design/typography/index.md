@@ -6,6 +6,7 @@ keywords:
   - font sizes
   - fonts
 icon: TypeMajor
+hideChildren: true
 ---
 
 # {frontmatter.title}
