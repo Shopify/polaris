@@ -1,17 +1,13 @@
 @import '../../styles/common';
 
-$arrow-size: 14px;
-$visible-portion-of-arrow: 5px;
-$content-max-height: 500px;
-$content-max-width: 400px;
 $vertical-motion-offset: -5px;
 
 .HoverCard {
   max-width: calc(100vw - var(--p-space-8));
-  margin: $visible-portion-of-arrow var(--p-space-2) var(--p-space-4);
+  margin: var(--p-space-1) var(--p-space-2) var(--p-space-4);
   box-shadow: var(--p-shadow-xl);
   border-radius: var(--p-border-radius-2);
-  will-change: left, top;
+  will-change: left, right, top;
 
   #{$se23} & {
     @include shadow-bevel(
@@ -44,20 +40,8 @@ $vertical-motion-offset: -5px;
   transform: translateY($vertical-motion-offset);
 }
 
-.fullWidth {
-  margin: $visible-portion-of-arrow auto 0 auto;
-
-  .Content {
-    max-width: none;
-  }
-}
-
 .positionedAbove {
-  margin: var(--p-space-4) var(--p-space-2) $visible-portion-of-arrow;
-
-  &.fullWidth {
-    margin: 0 auto $visible-portion-of-arrow auto;
-  }
+  margin: var(--p-space-4) var(--p-space-2);
 }
 
 .ActivatorWrapper {
@@ -86,19 +70,4 @@ $vertical-motion-offset: -5px;
   display: flex;
   flex-direction: column;
   border-radius: var(--p-border-radius-1);
-  max-width: $content-max-width;
-  max-height: $content-max-height;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.Content-fullHeight {
-  max-height: 100vh;
-}
-
-.Content-fluidContent {
-  max-height: none;
-  max-width: none;
 }
