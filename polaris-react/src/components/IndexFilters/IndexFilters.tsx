@@ -435,17 +435,19 @@ export function IndexFilters({
                   borderlessQueryField
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
-                  <InlineStack gap="2" align="start" blockAlign="center">
-                    <div
-                      style={{
-                        ...defaultStyle,
-                        ...transitionStyles[state],
-                      }}
-                    >
-                      {updateButtonsMarkup}
-                    </div>
-                    {sortMarkup}
-                  </InlineStack>
+                  <div className={styles.ButtonWrap}>
+                    <InlineStack gap="2" align="start" blockAlign="center">
+                      <div
+                        style={{
+                          ...defaultStyle,
+                          ...transitionStyles[state],
+                        }}
+                      >
+                        {updateButtonsMarkup}
+                      </div>
+                      {sortMarkup}
+                    </InlineStack>
+                  </div>
                 </Filters>
               ) : null}
             </div>

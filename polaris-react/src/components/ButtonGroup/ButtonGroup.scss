@@ -35,24 +35,12 @@
 
   .Item {
     position: relative;
-    // stylelint-disable-next-line polaris/z-index/declaration-property-value-allowed-list -- override z-index
-    z-index: unset;
     margin-top: 0;
     margin-left: 0;
     line-height: normal;
 
     &:not(:first-child) {
       margin-left: calc(-1 * var(--p-space-025));
-    }
-
-    // stylelint-disable-next-line -- set clip path
-    + .Item:not(.selected) > button {
-      clip-path: inset(0 0 0 var(--p-space-025));
-
-      // stylelint-disable-next-line -- remove clip path to properly display focus ring
-      &:focus {
-        clip-path: none;
-      }
     }
   }
 
