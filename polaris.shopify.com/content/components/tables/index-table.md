@@ -177,30 +177,32 @@ Index tables should:
 
 ---
 
-## IndexTableRow
+## IndexTable.Row
 
-An `IndexTableRow` is used to render a row representing an item within an `IndexTable`
+An `IndexTable.Row` is used to render a row representing an item within an `IndexTable`
 
-### IndexTableRow properties
+### IndexTable.Row properties
 
-| Prop            | Type                           | Description                                                                                                                                                                                                                                  |
-| --------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| children        | ReactNode                      | Table header or data cells                                                                                                                                                                                                                   |
-| id              | string                         | A unique identifier for the row                                                                                                                                                                                                              |
-| selected?       | boolean &#124; "indeterminate" | A boolean property indicating whether the row or it's related rows are selected                                                                                                                                                              |
-| position        | number                         | The zero-indexed position of the row. Used for Shift key multi-selection.                                                                                                                                                                    |
-| subdued?        | boolean                        | Whether the row should be subdued                                                                                                                                                                                                            |
-| status?         | RowStatus                      | Whether the row should have a status                                                                                                                                                                                                         |
-| disabled?       | boolean                        | Whether the row should be disabled                                                                                                                                                                                                           |
-| subHeaderRange? | [number, number]               | Indicates that the row is a subheader for a range of other rows. Accepts a tuple array with the first and last index of the range of rows that the subheader describes. All rows in the range are toggled when the subheader row is toggled. |
-| onClick?        | () => void                     | Callback fired when the row is clicked. Overrides the default click behaviour.                                                                                                                                                               |
-| onNavigation?   | (id: string) => void           | Callback fired when the row is clicked and contains an anchor element with the `data-primary-link` property set                                                                                                                              |
+| Prop                | Type                                         | Description                                                                                                                                                                                         |
+| ------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| children            | ReactNode                                    | Table header or data cells                                                                                                                                                                          |
+| id                  | string                                       | A unique identifier for the row                                                                                                                                                                     |
+| selected?           | boolean &#124; "indeterminate"               | A boolean property indicating whether the row or it's related rows are selected                                                                                                                     |
+| position            | number                                       | The zero-indexed position of the row. Used for Shift key multi-selection as well as selection of a range of rows when a `selectionRange` is set.                                                    |
+| subdued?            | boolean                                      | Whether the row should be subdued                                                                                                                                                                   |
+| status?             | "success" &#124; "subdued" &#124; "critical" | Whether the row should have a status                                                                                                                                                                |
+| disabled?           | boolean                                      | Whether the row should be disabled                                                                                                                                                                  |
+| selectionRange?     | [number, number]                             | A tuple array with the first and last index of the range of other rows that the row describes. All non-disabled rows in the range are selected when the row with a selection range set is selected. |
+| rowType?            | "data" &#124; "subheader"                    | Indicates the relationship or role of the row's contents. A `rowType` of "subheader" displays the same as the table header. Defaults to "data".                                                     |
+| accessibilityLabel? | string                                       | Label set on the row's checkbox. Defaults to "Select {resourceName}"                                                                                                                                |
+| onClick?            | () => void                                   | Callback fired when the row is clicked. Overrides the default click behaviour.                                                                                                                      |
+| onNavigation?       | (id: string) => void                         | Callback fired when the row is clicked and contains an anchor element with the `data-primary-link` property set                                                                                     |
 
-## IndexTableCell
+## IndexTable.Cell
 
-An `IndexTableCell` is used to render a single cell within an `IndexTableRow`
+An `IndexTable.Cell` is used to render a single cell within an `IndexTable.Row`
 
-### IndexTableCell properties
+### IndexTable.Cell properties
 
 | Prop       | Type                                                                              | Description                                                                                                                                                              |
 | ---------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
