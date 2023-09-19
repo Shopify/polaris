@@ -1,7 +1,7 @@
 ---
-title: Color
+title: Palettes and roles
+order: 1
 description: Color highlights important areas, communicates status, urgency, and directs attention.
-icon: ColorsMajor
 keywords:
   - color role
   - color strategy
@@ -10,9 +10,11 @@ keywords:
   - grayscale
 ---
 
-# {frontmatter.title}
+# Color &rarr; {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
+
+<Subnav />
 
 <Stack gap="8">
 
