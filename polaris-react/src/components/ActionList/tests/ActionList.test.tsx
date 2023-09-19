@@ -262,6 +262,8 @@ describe('<ActionList />', () => {
       <ActionList
         allowFiltering
         items={[
+          {content: 'Item 1'},
+          {content: 'Item 2'},
           {content: 'Item 3'},
           {content: 'Item 4'},
           {content: 'Item 5'},
