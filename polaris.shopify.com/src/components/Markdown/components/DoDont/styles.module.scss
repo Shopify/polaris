@@ -22,32 +22,34 @@
   font-size: var(--font-size-300);
   position: relative;
   flex: 1;
-  background: var(--surface-subdued);
-  padding: 0.5rem 1.5rem;
   border-radius: var(--border-radius-400);
-  background-color: #13b2881c;
+  background-color: var(--surface);
 
   h4:first-child {
-    @include heading-3;
-    margin-top: 1rem;
+    display: inline-block;
+    background-color: var(--fill-success);
+    color: var(--text-success-onfill);
+    padding: var(--p-space-05) var(--p-space-2) var(--p-space-05)
+      var(--p-space-5);
+    border-radius: var(--p-space-2);
+    font-size: var(--font-size-100);
+    font-weight: var(--font-weight-600);
+    line-height: 1rem;
+    position: relative;
   }
 
-  &:after {
+  h4:first-child:after {
     content: '';
     display: block;
     position: absolute;
-    top: -13px;
     left: 0;
-    right: 0;
-    height: 28px;
-    width: 28px;
-    margin: 0 auto;
-    background-color: var(--surface);
+    top: 0;
+    height: 20px;
+    width: 20px;
     background-image: url(/images/icon-do.svg);
     background-repeat: no-repeat;
     background-position: left center;
     background-size: cover;
-    border-radius: var(--border-radius-round);
     z-index: 1;
   }
 
@@ -60,16 +62,20 @@
     font-size: var(--font-size-300);
     color: var(--text);
   }
+
+  p {
+    margin: var(--p-space-2) 0 0 0;
+    font: var(--font-body-md);
+  }
 }
 
 .Dont {
-  background-color: #ea584517;
-
-  &:after {
-    background-image: url(/images/icon-dont.svg);
+  h4:first-child {
+    background-color: var(--fill-critical);
+    color: var(--text-critical-onfill);
   }
 
-  &::before {
-    background: #ea5945;
+  h4:first-child:after {
+    background-image: url(/images/icon-dont.svg);
   }
 }
