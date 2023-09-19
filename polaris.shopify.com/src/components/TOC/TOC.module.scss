@@ -1,25 +1,7 @@
 .TOC {
-  a {
-    color: var(--p-color-text);
-    display: block;
-    white-space: pre;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding: var(--p-space-1) var(--p-space-2);
-
-    &:hover {
-      color: var(--text-strong);
-    }
-
-    &[data-is-current='true'] {
-      background-color: var(--p-color-bg-app-selected);
-      border-radius: var(--p-border-radius-2);
-    }
-  }
-
   &.isNested {
     ul ul {
-      a {
+      .Link {
         padding: var(--p-space-1) var(--p-space-2) var(--p-space-1)
           var(--p-space-4);
       }
@@ -27,8 +9,37 @@
   }
 }
 
-.TOCItem {
+.Header {
+  color: var(--p-color-text);
+  font-size: var(--p-font-size-100);
+  line-height: var(--p-font-line-height-2);
+  font-weight: var(--p-font-weight-semibold);
+}
+
+.Item {
   &:not(:last-child) {
     padding-bottom: var(--p-space-1);
+  }
+}
+
+.Link {
+  color: var(--p-color-text);
+  display: block;
+  font-size: var(--p-font-size-80-experimental);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-2);
+  overflow: hidden;
+  padding: var(--p-space-1) var(--p-space-2);
+  text-overflow: ellipsis;
+  white-space: pre;
+
+  &:hover {
+    color: var(--text-strong);
+  }
+
+  &.active {
+    background-color: var(--p-color-bg-app-selected);
+    border-radius: var(--p-border-radius-2);
+    font-weight: var(--p-font-weight-semibold);
   }
 }
