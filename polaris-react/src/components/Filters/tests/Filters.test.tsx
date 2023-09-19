@@ -205,6 +205,33 @@ describe('<Filters />', () => {
     });
   });
 
+  it('correctly adds the applied filters when updated via props', () => {
+    const appliedFilters = [
+      {
+        ...defaultProps.filters[2],
+        label: 'Value is Baz',
+        value: ['Baz'],
+        onRemove: jest.fn(),
+      },
+    ];
+    const wrapper = mountWithApp(
+      <Filters {...defaultProps} appliedFilters={[]} />,
+    );
+
+    expect(wrapper).not.toContainReactComponent(FilterPill, {
+      selected: true,
+    });
+
+    wrapper.setProps({
+      appliedFilters,
+    });
+
+    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
+      label: 'Value is Baz',
+      selected: true,
+    });
+  });
+
   it('correctly invokes the onRemove callback when clicking on an applied filter', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
