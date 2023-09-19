@@ -9,7 +9,7 @@ import {ButtonGroup} from '../../ButtonGroup';
 import {TextField} from '../../TextField';
 import {Text} from '../../Text';
 import {Tooltip} from '../../Tooltip';
-import {HorizontalStack} from '../../HorizontalStack';
+import {InlineStack} from '../../InlineStack';
 import en from '../../../../locales/en.json';
 
 interface HandlerMap {
@@ -322,7 +322,7 @@ describe('<Pagination />', () => {
         <Pagination hasNext nextURL="/next" previousURL="/prev" type="table" />,
       );
 
-      expect(pagination).toContainReactComponent(HorizontalStack, {
+      expect(pagination).toContainReactComponent(InlineStack, {
         align: 'end',
         blockAlign: 'center',
       });
@@ -340,7 +340,7 @@ describe('<Pagination />', () => {
           />,
         );
 
-        expect(pagination).toContainReactComponent(HorizontalStack, {
+        expect(pagination).toContainReactComponent(InlineStack, {
           align: 'space-between',
           blockAlign: 'center',
         });
