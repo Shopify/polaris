@@ -307,16 +307,18 @@ export class PositionedOverlay extends PureComponent<
           fixed,
           topBarOffset,
         );
+
+        const positionHorizontal =
+          preferredPosition === 'left' || preferredPosition === 'right';
+
         const horizontalPosition = calculateHorizontalPosition(
           activatorRect,
           overlayRect,
           containerRect,
           overlayMargins,
           preferredAlignment,
-          // scrollableContainerRect,
-          preferredPosition === 'right' || preferredPosition === 'left'
-            ? preferredPosition
-            : undefined,
+          scrollableContainerRect,
+          positionHorizontal ? preferredPosition : undefined,
         );
 
         const chevronOffset =
@@ -329,13 +331,17 @@ export class PositionedOverlay extends PureComponent<
             measuring: false,
             activatorRect: getRectForNode(activator),
             left:
-              preferredAlignment !== 'right' ? horizontalPosition : undefined,
+              preferredAlignment !== 'right' || preferredPosition === 'left'
+                ? horizontalPosition
+                : undefined,
             right:
-              preferredAlignment === 'right' ? horizontalPosition : undefined,
+              preferredAlignment === 'right' || preferredPosition === 'right'
+                ? horizontalPosition
+                : undefined,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
             height: verticalPosition.height || 0,
-            width: fullWidth ? overlayRect.width : null,
+            width: fullWidth || positionHorizontal ? overlayRect.width : null,
             positioning: verticalPosition.positioning as Positioning,
             outsideScrollableContainer:
               onScrollOut != null &&
