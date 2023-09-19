@@ -62,6 +62,10 @@ export const className = (...classNames: ClassName[]): string => {
     .join(' ');
 };
 
+export const variationName = (name: string, value: string) => {
+  return `${name}${value.charAt(0).toUpperCase()}${value.slice(1)}`;
+};
+
 export const toPascalCase = (str: string): string =>
   (str.match(/[a-zA-Z0-9]+/g) || [])
     .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
