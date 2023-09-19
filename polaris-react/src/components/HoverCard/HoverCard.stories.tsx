@@ -2,31 +2,18 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {PositionedOverlayProps} from '@shopify/polaris';
 import {
-  ActionList,
   ButtonGroup,
-  Avatar,
   Box,
   Button,
-  LegacyCard,
-  FormLayout,
   HoverCard,
-  ResourceList,
-  Select,
-  Listbox,
-  TextField,
   Icon,
   Link,
-  AutoSelection,
-  Scrollable,
-  EmptySearchResult,
   Text,
   VerticalStack,
   HorizontalStack,
   Card,
 } from '@shopify/polaris';
-import {SearchMinor, LocationsMinor, OrdersMinor} from '@shopify/polaris-icons';
-
-import {useFeatures} from '../../utilities/features';
+import {LocationsMinor, OrdersMinor} from '@shopify/polaris-icons';
 
 export default {
   component: HoverCard,
@@ -36,11 +23,6 @@ export function Default() {
   const [active, setActive] = useState(false);
   const [position, setPosition] =
     useState<PositionedOverlayProps['preferredPosition']>('right');
-
-  const toggleHoverCardActive = useCallback((popover, isClosing) => {
-    const currentHoverCard = isClosing ? null : popover;
-    setActive(currentHoverCard);
-  }, []);
 
   const handleChangePosition =
     (position: PositionedOverlayProps['preferredPosition']) => () => {
@@ -54,7 +36,7 @@ export function Default() {
   );
 
   return (
-    <div style={{height: '600px', width: '600px'}}>
+    <div style={{margin: '0 auto', height: '600px', width: '960px'}}>
       <HorizontalStack align="center" blockAlign="center">
         <VerticalStack gap="5">
           <Box minHeight="200px" />
@@ -63,10 +45,30 @@ export function Default() {
               Use the buttons below to change the hover card position
             </Text>
             <ButtonGroup segmented fullWidth>
-              <Button onClick={handleChangePosition('left')}>Left</Button>
-              <Button onClick={handleChangePosition('right')}>Right</Button>
-              <Button onClick={handleChangePosition('above')}>Above</Button>
-              <Button onClick={handleChangePosition('below')}>Below</Button>
+              <Button
+                pressed={position === 'left'}
+                onClick={handleChangePosition('left')}
+              >
+                Left
+              </Button>
+              <Button
+                pressed={position === 'right'}
+                onClick={handleChangePosition('right')}
+              >
+                Right
+              </Button>
+              <Button
+                pressed={position === 'above'}
+                onClick={handleChangePosition('above')}
+              >
+                Above
+              </Button>
+              <Button
+                pressed={position === 'below'}
+                onClick={handleChangePosition('below')}
+              >
+                Below
+              </Button>
             </ButtonGroup>
           </VerticalStack>
           <Card>
@@ -80,7 +82,6 @@ export function Default() {
                 activator={activator}
                 activatorWrapper="div"
                 preferredPosition={position}
-                // preferredAlignment="left"
               >
                 <Box padding="4">
                   <VerticalStack gap="4">
@@ -94,7 +95,7 @@ export function Default() {
                         </Link>
                       </Text>
                       <Text as="p" variant="bodyMd">
-                        +1 505-842-5662
+                        <Link url="tel:+1505-842-5662">+1 505-842-5662</Link>
                       </Text>
                     </VerticalStack>
                     <Box width="100%">
