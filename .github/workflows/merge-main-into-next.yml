@@ -21,11 +21,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create PR for review by last commit author
         if: ${{ !steps.existing_pr.outputs.pr-num }}
-        run: gh pr create -B next -H main --title 'Merge latest main into next' --body 'This PR was opened by a GitHub Action on behalf of @${{ github.triggering_actor }} following their recent push to main in order to keep the `next` branch up to date. @${{ github.triggering_actor }} -- resolve any merge conflicts and ensure that your recent changes to main work as expected.' --reviewer ${{ github.triggering_actor }}
+        run: gh pr create -B next -H main --title 'Merge latest main into next' --body 'This PR was opened by a GitHub Action following a recent push to main in order to keep the `next` branch up to date. Please resolve any merge conflicts and ensure that your recent changes to main work as expected.'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Add last commit author as reviewer to existing PR
-        if: ${{ steps.existing_pr.outputs.pr-num }}
-        run: gh pr edit ${{ steps.existing_pr.outputs.pr-num }} --add-reviewer ${{ github.triggering_actor }}
+      - name: Add commit authors as reviewers to PR
+        run: gh pr edit `gh pr list --head=main --base=next --json number --jq '.[].number'` --add-reviewer=`gh pr list --head=main --base=next --json commits --jq='.[].commits.[].authors.[].login' | sort -u  | grep -v '\[bot\]' | gsed 's/^.*$/"&"/g' | gsed -z '$ s/\n$//' | tr '\n' ','`
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
