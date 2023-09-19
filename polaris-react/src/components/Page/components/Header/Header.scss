@@ -27,12 +27,12 @@ $action-menu-rollup-computed-width: 40px;
       /* stylelint-disable-next-line selector-max-combinators -- SE23 match button group */
       &:hover {
         box-shadow: none;
-        background-color: var(--p-color-bg-strong-hover);
+        background-color: var(--p-color-bg-fill-tertiary-hover);
       }
 
       /* stylelint-disable-next-line selector-max-combinators -- SE23 match button group */
       &:focus {
-        background-color: var(--p-color-bg-strong-active);
+        background-color: var(--p-color-bg-fill-tertiary-active);
         /* stylelint-disable-next-line declaration-no-important -- SE23 match button group */
         box-shadow: var(--p-shadow-inset-md) !important;
       }

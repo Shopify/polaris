@@ -15,26 +15,25 @@
     }
 
     #{$se23} & {
-      background: var(--p-color-bg-strong);
+      background: var(--p-color-bg-fill-tertiary);
       border-radius: var(--p-border-radius-2);
       border: none;
       box-shadow: none;
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:hover {
-        background: var(--p-color-bg-strong-hover);
+        background: var(--p-color-bg-fill-tertiary-hover);
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:focus:not(:active) {
         /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 button overrides */
         @include no-focus-ring;
-        outline: var(--p-border-width-2) solid
-          var(--p-color-border-interactive-focus);
+        outline: var(--p-border-width-2) solid var(--p-color-border-focus);
         outline-offset: var(--p-space-05);
-        background: var(--p-color-bg-strong-active);
+        background: var(--p-color-bg-fill-tertiary-active);
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:active {
-        background: var(--p-color-bg-strong-active);
+        background: var(--p-color-bg-fill-tertiary-active);
       }
     }
   }

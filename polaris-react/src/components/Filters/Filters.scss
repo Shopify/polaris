@@ -3,10 +3,10 @@
 .Container {
   position: relative;
   z-index: var(--p-z-index-1);
-  border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border-bottom: var(--p-border-width-1) solid var(--p-color-border-secondary);
   border-top-left-radius: var(--p-border-radius-2);
   border-top-right-radius: var(--p-border-radius-2);
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
 }
 
 .ContainerUplift {
@@ -39,12 +39,12 @@
 }
 
 .FiltersWrapper {
-  border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border-bottom: var(--p-border-width-1) solid var(--p-color-border-secondary);
   height: 53px;
   overflow: hidden;
 
   @media #{$p-breakpoints-sm-down} {
-    background: var(--p-color-bg);
+    background: var(--p-color-bg-surface);
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -86,9 +86,9 @@
 }
 
 .AddFilter {
-  background: var(--p-color-bg-subdued);
+  background: var(--p-color-bg-surface-secondary);
   border-radius: var(--p-border-radius-6);
-  border: var(--p-color-border-subdued) dashed var(--p-border-width-1);
+  border: var(--p-color-border-secondary) dashed var(--p-border-width-1);
   padding: 0 var(--p-space-2) 0 var(--p-space-3);
   height: 28px;
   cursor: pointer;
@@ -164,7 +164,7 @@
   }
 
   #{$se23} & {
-    background: var(--p-color-bg-secondary-experimental);
+    background: var(--p-color-bg-surface-tertiary);
     border-radius: var(--p-border-radius-2);
     border: var(--p-color-border) dashed var(--p-border-width-1);
 
@@ -179,10 +179,10 @@
     }
 
     &:active {
-      background: var(--p-color-bg-subdued);
+      background: var(--p-color-bg-surface-secondary);
 
       #{$se23} & {
-        background: var(--p-color-bg-secondary-experimental);
+        background: var(--p-color-bg-surface-tertiary);
       }
     }
 
@@ -209,7 +209,7 @@
     right: 0;
     display: flex;
     padding: var(--p-space-1) var(--p-space-4) var(--p-space-1) 0;
-    background: var(--p-color-bg);
+    background: var(--p-color-bg-surface);
     margin-left: var(--p-space-2);
 
     &::before {
@@ -224,8 +224,8 @@
       background: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0) 0%,
-        var(--p-color-bg) 70%,
-        var(--p-color-bg) 100%
+        var(--p-color-bg-surface) 70%,
+        var(--p-color-bg-surface) 100%
       );
       // stylelint-enable
     }
