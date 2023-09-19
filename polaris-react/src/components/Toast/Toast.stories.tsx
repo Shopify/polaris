@@ -7,6 +7,11 @@ import {
   InlineStack,
   Page,
   Toast,
+  Modal,
+  TextContainer,
+  Popover,
+  ActionList,
+  VerticalStack,
 } from '@shopify/polaris';
 
 export default {
@@ -137,6 +142,78 @@ export function Error() {
         <Page title="Error">
           <Button onClick={toggleActive}>Show Toast</Button>
           {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
+export function InsideModal() {
+  const [toastActive, setToastActive] = useState(false);
+  const [toast2Active, setToast2Active] = useState(false);
+  const [modalActive, setModalActive] = useState(true);
+
+  const handleChange = useCallback(
+    () => setModalActive(!modalActive),
+    [modalActive],
+  );
+
+  const toggleActive = useCallback(
+    () => setToastActive((toastActive) => !toastActive),
+    [],
+  );
+
+  const toggle2Active = useCallback(
+    () => setToast2Active((toastActive) => !toastActive),
+    [],
+  );
+
+  const activator = <Button onClick={handleChange}>Open</Button>;
+
+  const toastMarkup = toastActive ? (
+    <Toast content="Message sent" onDismiss={toggleActive} />
+  ) : null;
+
+  const toast2Markup = toast2Active ? (
+    <Toast content="Another sent" onDismiss={toggle2Active} />
+  ) : null;
+
+  return (
+    <div style={{height: '500px'}}>
+      <Frame>
+        <Page title="Default">
+          {toastMarkup}
+          {toast2Markup}
+          <Modal
+            activator={activator}
+            open={modalActive}
+            onClose={handleChange}
+            title="Reach more shoppers with Instagram product tags"
+            primaryAction={{
+              content: 'Add Instagram',
+              onAction: handleChange,
+            }}
+            secondaryActions={[
+              {
+                content: 'Learn more',
+                onAction: handleChange,
+              },
+            ]}
+          >
+            <Modal.Section>
+              <VerticalStack gap="2">
+                <TextContainer>
+                  Use Instagram posts to share your products with millions of
+                  people. Let shoppers buy from your store without leaving
+                  Instagram.
+                </TextContainer>
+                <HorizontalStack gap="2">
+                  <Button onClick={toggleActive}>Show Toast</Button>
+                  <Button onClick={toggle2Active}>Show Other Toast</Button>
+                </HorizontalStack>
+              </VerticalStack>
+            </Modal.Section>
+          </Modal>
         </Page>
       </Frame>
     </div>

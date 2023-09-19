@@ -3,7 +3,7 @@ import type {
   breakpoints as metaBreakpointsTokenGroup,
   BreakpointsTokenGroup,
   BreakpointsTokenName,
-} from './token-groups/breakpoints';
+} from './themes/base/breakpoints';
 
 const BASE_FONT_SIZE = 16;
 
@@ -90,6 +90,10 @@ export function tokensToRems<T extends Exact<MetadataGroup, T>>(tokenGroup: T) {
     // `Object.fromEntries()` and `Object.entries()`. Thus, we cast the result
     // back to `T` since we are simply converting the `value` from px to rem.
   ) as T;
+}
+
+export function createVarName(token: string) {
+  return `--p-${token}`;
 }
 
 export function createVar(token: string) {

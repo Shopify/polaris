@@ -9,6 +9,8 @@ import {Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {TrapFocus} from '../../../TrapFocus';
 import type {ModalSize} from '../../Modal';
+import {useFrame} from '../../../../utilities/frame';
+import {Text} from '../../../Text';
 
 import styles from './Dialog.scss';
 
@@ -25,6 +27,7 @@ export interface DialogProps {
   onExited?(): void;
   in?: boolean;
   setClosing?: Dispatch<SetStateAction<boolean>>;
+  hasToasts?: boolean;
 }
 
 export function Dialog({
@@ -37,9 +40,12 @@ export function Dialog({
   onExited,
   onEntered,
   setClosing,
+  hasToasts,
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
+  const {toastMessages} = useFrame();
+
   const classes = classNames(
     styles.Modal,
     size && styles[variationName('size', size)],
@@ -99,6 +105,15 @@ export function Dialog({
               />
               <KeypressListener keyCode={Key.Escape} handler={handleKeyUp} />
               {children}
+            </div>
+            <div aria-live="assertive">
+              {toastMessages
+                ? toastMessages.map((toastMessage) => (
+                    <Text visuallyHidden as="p" key={toastMessage.id}>
+                      {toastMessage.content}
+                    </Text>
+                  ))
+                : null}
             </div>
           </div>
         </TrapFocus>
