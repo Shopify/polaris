@@ -210,6 +210,7 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
   const [moneySpent, setMoneySpent] = useState(null);
   const [taggedWith, setTaggedWith] = useState('');
   const [queryValue, setQueryValue] = useState('');
+  const [status, setStatus] = useState(null);
 
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
@@ -227,6 +228,7 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
     (value) => setQueryValue(value),
     [],
   );
+  const handleStatusChange = useCallback((value) => setStatus(value), []);
   const handleAccountStatusRemove = useCallback(
     () => setAccountStatus(null),
     [],
@@ -234,16 +236,19 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
   const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+  const handleStatusRemove = useCallback(() => setStatus(null), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
     handleTaggedWithRemove();
     handleQueryValueRemove();
+    handleStatusRemove();
   }, [
     handleAccountStatusRemove,
     handleMoneySpentRemove,
     handleQueryValueRemove,
     handleTaggedWithRemove,
+    handleStatusRemove,
   ]);
 
   const filters = [
@@ -265,7 +270,7 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
           allowMultiple
         />
       ),
-      shortcut: true,
+      pinned: true,
     },
     {
       key: 'taggedWith',
@@ -279,7 +284,7 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
           labelHidden
         />
       ),
-      shortcut: true,
+      pinned: true,
     },
     {
       key: 'moneySpent',
@@ -297,6 +302,27 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
           onChange={handleMoneySpentChange}
         />
       ),
+    },
+    {
+      key: 'status',
+      label: 'Status',
+      filter: (
+        <ChoiceList
+          title="Status"
+          titleHidden
+          choices={[
+            {label: 'Active', value: 'active'},
+            {label: 'Draft', value: 'draft'},
+            {label: 'Inactive', value: 'inactive'},
+            {label: 'Paused', value: 'paused'},
+            {label: 'Revision', value: 'revision'},
+          ]}
+          selected={status || []}
+          onChange={handleStatusChange}
+          allowMultiple
+        />
+      ),
+      pinned: true,
     },
   ];
 
@@ -561,7 +587,7 @@ export function WithPinnedFilters() {
           allowMultiple
         />
       ),
-      shortcut: true,
+      pinned: true,
     },
     {
       key: 'taggedWith',
@@ -575,7 +601,7 @@ export function WithPinnedFilters() {
           labelHidden
         />
       ),
-      shortcut: true,
+      pinned: true,
     },
     {
       key: 'moneySpent',
@@ -1131,7 +1157,7 @@ export function Disabled() {
           allowMultiple
         />
       ),
-      shortcut: true,
+      pinned: true,
     },
     {
       key: 'taggedWith',
@@ -1145,7 +1171,7 @@ export function Disabled() {
           labelHidden
         />
       ),
-      shortcut: true,
+      pinned: true,
     },
     {
       key: 'moneySpent',
