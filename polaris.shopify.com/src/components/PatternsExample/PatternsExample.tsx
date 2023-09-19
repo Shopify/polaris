@@ -67,8 +67,8 @@ const PatternsExample = ({
   showCode?: boolean;
   onCodeToggle?: () => void;
 }) => {
-  const dialogRef: React.RefObject<HTMLDialogElement> = useRef(null);
-  const maximizeButtonRef: React.RefObject<HTMLSpanElement> = useRef(null);
+  const expandedPreviewRef: React.RefObject<HTMLDialogElement> = useRef(null);
+  const previewRef: React.RefObject<HTMLDivElement> = useRef(null);
 
   const [codeActive, toggleCode] = useState(false);
   const [dialogActive, toggleDialog] = useState(false);
@@ -94,12 +94,12 @@ const PatternsExample = ({
   };
 
   const handleMaximize = async () => {
-    const dialog = dialogRef.current;
-    const maximizeButton = maximizeButtonRef.current;
+    const dialog = expandedPreviewRef.current;
+    const preview = previewRef.current;
 
-    if (maximizeButton) {
+    if (preview) {
       // @ts-ignore
-      maximizeButton.style.viewTransitionName = 'dialog';
+      preview.style.viewTransitionName = 'dialog';
     }
 
     const maximize = viewTransition(() => {
@@ -109,9 +109,9 @@ const PatternsExample = ({
         dialog.showModal();
       }
 
-      if (maximizeButton) {
+      if (preview) {
         // @ts-ignore
-        maximizeButton.style.viewTransitionName = '';
+        preview.style.viewTransitionName = '';
       }
     });
 
@@ -119,8 +119,8 @@ const PatternsExample = ({
   };
 
   const handleMinimize = useCallback(async () => {
-    const dialog = dialogRef.current;
-    const maximizeButton = maximizeButtonRef.current;
+    const dialog = expandedPreviewRef.current;
+    const preview = previewRef.current;
 
     try {
       const minimize = viewTransition(() => {
@@ -129,18 +129,18 @@ const PatternsExample = ({
           toggleDialog(false);
           dialog.close();
 
-          if (maximizeButton) {
+          if (preview) {
             // @ts-ignore
-            maximizeButton.style.viewTransitionName = 'dialog';
+            preview.style.viewTransitionName = 'dialog';
           }
         }
       });
 
       await minimize.finished;
     } finally {
-      if (maximizeButton) {
+      if (preview) {
         // @ts-ignore
-        maximizeButton.style.viewTransitionName = '';
+        preview.style.viewTransitionName = '';
       }
     }
   }, []);
@@ -216,6 +216,7 @@ const PatternsExample = ({
 
   const exampleMarkup = (
     <ExampleWrapper
+      ref={previewRef}
       className={classNames(styles.ExampleWrapper)}
       renderFrameActions={() => (
         <Fragment>
@@ -228,11 +229,6 @@ const PatternsExample = ({
             aria-label="View enlarged example"
             onClick={handleMaximize}
           >
-            {/* Transitioning to and from a child of the button prevents the SVG from animating */}
-            <span
-              ref={maximizeButtonRef}
-              className={styles.AnimatedBackground}
-            />
             <Icon source={MaximizeMinor} />
           </LinkButton>
           <PlayroomButton code={sandboxCode} patternName={patternName} />
@@ -252,7 +248,7 @@ const PatternsExample = ({
 
   const expandedExampleMarkup = (
     <dialog
-      ref={dialogRef}
+      ref={expandedPreviewRef}
       className={classNames(styles.Dialog, dialogActive && styles.open)}
       // onClose={handleMinimize}
     >
