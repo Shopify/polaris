@@ -190,6 +190,24 @@ export enum StatusName {
 
 export type Status = StatusName;
 
+export type Tone =
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'critical'
+  | 'attention'
+  | 'new';
+
+export const StatusToneMapping: {[S in Status]: Tone} = {
+  Alpha: 'info',
+  Beta: 'success',
+  Deprecated: 'critical',
+  Information: 'info',
+  Legacy: 'warning',
+  New: 'new',
+  Warning: 'warning',
+};
+
 export interface QuickGuideRow {
   question: string;
   answer: string;
