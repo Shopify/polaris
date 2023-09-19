@@ -1,7 +1,15 @@
-import React, {Children, useRef, useId, useEffect, useState} from 'react';
+import React, {
+  Children,
+  useRef,
+  useId,
+  useEffect,
+  useState,
+  useCallback,
+} from 'react';
 
 import type {PositionedOverlayProps} from '../PositionedOverlay';
 import {Portal} from '../Portal';
+import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 
 import styles from './HoverCard.scss';
 import {HoverCardOverlay} from './components/HoverCardOverlay';
@@ -22,6 +30,8 @@ export interface HoverCardProps {
    * @default 'span'
    */
   activatorWrapper?: string;
+  /** Delay in milliseconds while hovering over an element before the tooltip is visible */
+  hoverDelay?: number;
   /** Override on the default z-index of 400 */
   zIndexOverride?: number;
   /** Automatically add wrap content in a section */
@@ -37,6 +47,8 @@ export interface HoverCardProps {
   toggleActive(active: boolean): void;
 }
 
+const HOVER_OUT_TIMEOUT = 150;
+
 // TypeScript can't generate types that correctly infer the typing of
 // subcomponents so explicitly state the subcomponents in the type definition.
 // Letting this be implicit works in this project but fails in projects that use
@@ -47,19 +59,79 @@ export function HoverCard({
   activator,
   activatorWrapper = 'span',
   active,
-  fixed,
+  hoverDelay,
   zIndexOverride,
   toggleActive,
   ...rest
 }: HoverCardProps) {
   const overlayRef = useRef<HoverCardOverlay>(null);
   const activatorRef = useRef<HTMLElement>(null);
+  const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
+  const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
+  const mouseEntered = useRef(false);
 
   const id = useId();
+
+  const {presenceList, addPresence, removePresence} =
+    useEphemeralPresenceManager();
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
 
   const WrapperComponent: any = activatorWrapper;
+
+  useEffect(() => {
+    const currentHoverDelayTimeout = hoverDelayTimeout?.current;
+    const currentHoverOutTimeout = hoverOutTimeout?.current;
+
+    return () => {
+      if (currentHoverDelayTimeout) {
+        clearTimeout(currentHoverDelayTimeout);
+      }
+      if (currentHoverOutTimeout) {
+        clearTimeout(currentHoverOutTimeout);
+      }
+    };
+  }, []);
+
+  const handleOpen = useCallback(() => {
+    toggleActive(true);
+    addPresence('hovercard');
+  }, [toggleActive, addPresence]);
+
+  const handleClose = useCallback(() => {
+    toggleActive(false);
+    hoverOutTimeout.current = setTimeout(() => {
+      removePresence('hovercard');
+    }, HOVER_OUT_TIMEOUT);
+    () => toggleActive(false);
+  }, [toggleActive, removePresence]);
+
+  const handleMouseLeave = () => {
+    if (hoverDelayTimeout.current) {
+      clearTimeout(hoverDelayTimeout.current);
+      hoverDelayTimeout.current = null;
+    }
+
+    mouseEntered.current = false;
+    handleClose();
+  };
+
+  const handleMouseEnter = () => {
+    mouseEntered.current = true;
+    if (hoverDelay && !presenceList.tooltip) {
+      hoverDelayTimeout.current = setTimeout(() => {
+        handleOpen();
+      }, hoverDelay);
+    } else {
+      handleOpen();
+    }
+  };
+
+  // https://github.com/facebook/react/issues/10109
+  // Mouseenter event not triggered when cursor moves from disabled button
+  const handleMouseEnterFix = () => {
+    !mouseEntered.current && handleMouseEnter();
+  };
 
   useEffect(() => {
     if (!activatorNode && activatorRef.current) {
@@ -75,7 +147,6 @@ export function HoverCard({
           ref={overlayRef}
           activator={activatorNode}
           active={active}
-          fixed={fixed}
           zIndexOverride={zIndexOverride}
           {...rest}
         >
@@ -88,12 +159,8 @@ export function HoverCard({
     <WrapperComponent
       className={styles.ActivatorWrapper}
       ref={activatorRef}
-      onMouseEnter={() => {
-        toggleActive(true);
-      }}
-      onMouseLeave={() => {
-        toggleActive(false);
-      }}
+      onMouseLeave={handleMouseLeave}
+      onMouseOver={handleMouseEnterFix}
     >
       {Children.only(activator)}
       {portal}
