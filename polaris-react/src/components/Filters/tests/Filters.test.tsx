@@ -40,6 +40,12 @@ describe('<Filters />', () => {
         pinned: false,
         filter: <div>Filter</div>,
       },
+      {
+        key: 'bux',
+        label: 'Bux',
+        pinned: true,
+        filter: <div>Filter</div>,
+      },
     ],
     appliedFilters: [],
     onQueryChange: jest.fn(),
@@ -52,10 +58,24 @@ describe('<Filters />', () => {
     HTMLElement.prototype.scroll = scrollSpy;
     const wrapper = mountWithApp(<Filters {...defaultProps} />);
 
-    expect(wrapper).toContainReactComponentTimes(FilterPill, 1);
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 2);
     expect(wrapper).toContainReactComponent(FilterPill, {
       label: defaultProps.filters[1].label,
     });
+    expect(wrapper).toContainReactComponent(FilterPill, {
+      label: defaultProps.filters[3].label,
+    });
+  });
+
+  it('renders all filters as pinned if there are three or less filters', () => {
+    const scrollSpy = jest.fn();
+    HTMLElement.prototype.scroll = scrollSpy;
+    const threeFilters = defaultProps.filters.slice(0, -1);
+    const wrapper = mountWithApp(
+      <Filters {...defaultProps} filters={threeFilters} />,
+    );
+
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 3);
   });
 
   it('renders the unpinned filters inside a Popover', () => {
@@ -114,7 +134,7 @@ describe('<Filters />', () => {
           content: filters[2].label,
         }),
         expect.objectContaining({
-          content: filters[3].label,
+          content: filters[4].label,
           disabled: true,
         }),
       ],
@@ -136,7 +156,7 @@ describe('<Filters />', () => {
       <Filters {...defaultProps} appliedFilters={appliedFilters} />,
     );
 
-    expect(wrapper).toContainReactComponentTimes(FilterPill, 2);
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 3);
     expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
       label: 'Bux',
       selected: true,
@@ -156,8 +176,8 @@ describe('<Filters />', () => {
       <Filters {...defaultProps} appliedFilters={appliedFilters} />,
     );
 
-    expect(wrapper).toContainReactComponentTimes(FilterPill, 2);
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 3);
+    expect(wrapper.findAll(FilterPill)[2]).toHaveReactProps({
       label: 'Bux',
       initialActive: false,
     });
@@ -289,7 +309,7 @@ describe('<Filters />', () => {
       <Filters {...defaultProps} filters={filters} />,
     );
 
-    expect(wrapper).toContainReactComponentTimes(FilterPill, 2);
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 3);
 
     wrapper.act(() => {
       wrapper
@@ -306,7 +326,7 @@ describe('<Filters />', () => {
       ],
     });
 
-    expect(wrapper.findAll(FilterPill)[1].domNode).toBeNull();
+    expect(wrapper.findAll(FilterPill)[2].domNode).toBeNull();
   });
 
   it('renders filters with sections', () => {

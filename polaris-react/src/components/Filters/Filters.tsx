@@ -144,6 +144,13 @@ export function Filters({
   const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>([]);
   const hasMounted = useRef(false);
 
+  const overriddenPinnedFilters = useMemo(() => {
+    if (filters.length > 3) {
+      return filters;
+    }
+    return filters.map((filter) => ({...filter, pinned: true}));
+  }, [filters]);
+
   useEffect(() => {
     hasMounted.current = true;
   });
@@ -216,7 +223,7 @@ export function Filters({
     onAction: onFilterClick(filter),
   });
 
-  const unpinnedFilters = filters.filter(
+  const unpinnedFilters = overriddenPinnedFilters.filter(
     (filter) => !pinnedFilters.some(({key}) => key === filter.key),
   );
 
@@ -281,7 +288,7 @@ export function Filters({
     onClearAll?.();
   };
 
-  const shouldShowAddButton = filters.some((filter) => !filter.pinned);
+  const shouldShowAddButton = localPinnedFilters.length !== filters.length;
 
   const additionalContent = useMemo(() => {
     return (
@@ -423,27 +430,26 @@ export function Filters({
     </div>
   ) : null;
 
-  const clearAllMarkup =
-    appliedFilters?.length || localPinnedFilters.length ? (
-      <div
-        className={classNames(
-          styles.ClearAll,
-          hasOneOrMorePinnedFilters &&
-            shouldShowAddButton &&
-            styles.MultiplePinnedFilterClearAll,
-        )}
+  const clearAllMarkup = appliedFilters?.length ? (
+    <div
+      className={classNames(
+        styles.ClearAll,
+        hasOneOrMorePinnedFilters &&
+          shouldShowAddButton &&
+          styles.MultiplePinnedFilterClearAll,
+      )}
+    >
+      <Button
+        size="micro"
+        plain
+        onClick={handleClearAllFilters}
+        removeUnderline
+        monochrome={se23}
       >
-        <Button
-          size="micro"
-          plain
-          onClick={handleClearAllFilters}
-          removeUnderline
-          monochrome={se23}
-        >
-          {i18n.translate('Polaris.Filters.clearFilters')}
-        </Button>
-      </div>
-    ) : null;
+        {i18n.translate('Polaris.Filters.clearFilters')}
+      </Button>
+    </div>
+  ) : null;
 
   const filtersMarkup =
     hideFilters || filters.length === 0 ? null : (

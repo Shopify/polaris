@@ -106,23 +106,23 @@ export function WithAResourceList() {
       shortcut: true,
       pinned: true,
     },
-    {
-      key: 'moneySpent',
-      label: 'Money spent',
-      filter: (
-        <RangeSlider
-          label="Money spent is between"
-          labelHidden
-          value={moneySpent || [0, 500]}
-          prefix="$"
-          output
-          min={0}
-          max={2000}
-          step={1}
-          onChange={handleMoneySpentChange}
-        />
-      ),
-    },
+    // {
+    //   key: 'moneySpent',
+    //   label: 'Money spent',
+    //   filter: (
+    //     <RangeSlider
+    //       label="Money spent is between"
+    //       labelHidden
+    //       value={moneySpent || [0, 500]}
+    //       prefix="$"
+    //       output
+    //       min={0}
+    //       max={2000}
+    //       step={1}
+    //       onChange={handleMoneySpentChange}
+    //     />
+    //   ),
+    // },
   ];
 
   const appliedFilters: FiltersProps['appliedFilters'] = [];
