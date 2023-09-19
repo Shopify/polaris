@@ -16,7 +16,7 @@ jobs:
           ref: next
       - name: Check for existing PR
         id: existing_pr
-        run: echo "pr-num=`gh pr list --head=main --base=next --json number --jq '.[].number'`"
+        run: echo "pr-num=`gh pr list --head=main --base=next --json number --jq '.[].number'`" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Create PR for review by last commit author
