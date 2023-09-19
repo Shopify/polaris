@@ -3,7 +3,12 @@ import type {FileInfo, API} from 'jscodeshift';
 import stylesReplaceCustomProperty from '../styles-replace-custom-property/transform';
 
 export default function transformer(fileInfo: FileInfo, _: API) {
-  return stylesReplaceCustomProperty(fileInfo, _, {replacementMaps});
+  return Object.entries(replacementMaps['/.+/']).reduce(
+    (fileInfoSource, [fromToken, toToken]) =>
+      fileInfoSource.replace(new RegExp(`${fromToken}(?!-)`, 'g'), toToken),
+    fileInfo.source,
+  );
+  // return stylesReplaceCustomProperty(fileInfo, _, {replacementMaps});
 }
 
 const replacementMaps = {
