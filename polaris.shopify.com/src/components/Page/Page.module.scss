@@ -21,6 +21,7 @@
 }
 
 .Page {
+  view-transition-name: page;
   --toc-width: 16rem;
   display: flex;
   gap: 2.5rem;
