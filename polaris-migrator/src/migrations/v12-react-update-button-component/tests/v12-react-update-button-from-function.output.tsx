@@ -1,4 +1,3 @@
-import React from 'react';
 import {buttonFrom} from '@shopify/polaris';
 
 const myButtonFrom =
@@ -21,6 +20,15 @@ export function App() {
       primary: true,
     },
   );
+
+  const multipleButtonsMarkup =
+    /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
+    buttonsFrom(
+      {content: 'Edit', onAction: () => {}},
+      {
+        primary: true,
+      },
+    );
 
   return primaryFooterActionMarkup;
 }

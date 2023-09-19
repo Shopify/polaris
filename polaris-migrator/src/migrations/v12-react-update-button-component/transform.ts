@@ -28,7 +28,8 @@ export default function transformer(
       hasImportDeclaration(j, source, '@shopify/polaris') &&
       (hasImportSpecifier(j, source, 'Button', '@shopify/polaris') ||
         hasImportSpecifier(j, source, 'ButtonProps', '@shopify/polaris') ||
-        hasImportSpecifier(j, source, 'buttonFrom', '@shopify/polaris'))
+        hasImportSpecifier(j, source, 'buttonFrom', '@shopify/polaris') ||
+        hasImportSpecifier(j, source, 'buttonsFrom', '@shopify/polaris'))
     )
   ) {
     return fileInfo.source;
@@ -37,6 +38,10 @@ export default function transformer(
   const localFunctionName =
     getImportSpecifierName(j, source, 'buttonFrom', '@shopify/polaris') ||
     'buttonFrom';
+
+  const localFunctionPluralName =
+    getImportSpecifierName(j, source, 'buttonsFrom', '@shopify/polaris') ||
+    'buttonsFrom';
 
   const localElementName =
     getImportSpecifierName(j, source, 'Button', '@shopify/polaris') || 'Button';
@@ -314,7 +319,8 @@ export default function transformer(
       (path) =>
         path.node.name === localElementName ||
         path.node.name === localElementTypeName ||
-        path.node.name === localFunctionName,
+        path.node.name === localFunctionName ||
+        path.node.name === localFunctionPluralName,
     )
     .forEach((path) => {
       if (path.node.type !== 'Identifier') return;

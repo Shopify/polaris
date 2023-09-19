@@ -1,5 +1,4 @@
-import React from 'react';
-import {buttonFrom} from '@shopify/polaris';
+import {buttonFrom, buttonsFrom} from '@shopify/polaris';
 
 const myButtonFrom = buttonFrom;
 
@@ -12,6 +11,13 @@ export function App() {
   );
 
   const myButtonMarkup = myButtonFrom(
+    {content: 'Edit', onAction: () => {}},
+    {
+      primary: true,
+    },
+  );
+
+  const multipleButtonsMarkup = buttonsFrom(
     {content: 'Edit', onAction: () => {}},
     {
       primary: true,
