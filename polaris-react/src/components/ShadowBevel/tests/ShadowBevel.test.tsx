@@ -23,8 +23,7 @@ describe('ShadowBevel', () => {
     expect(shadowBevel).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-shadow-bevel-box-shadow-xs': 'none',
-        '--pc-shadow-bevel-border-radius-xs':
-          'var(--p-border-radius-0-experimental)',
+        '--pc-shadow-bevel-border-radius-xs': 'var(--p-border-radius-0)',
         '--pc-shadow-bevel-content-xs': 'none',
       }),
     });
@@ -38,7 +37,7 @@ describe('ShadowBevel', () => {
     expect(shadowBevel).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-shadow-bevel-box-shadow-xs': 'var(--p-shadow-md)',
-        '--pc-shadow-bevel-border-radius-xs': 'var(--p-border-radius-3)',
+        '--pc-shadow-bevel-border-radius-xs': 'var(--p-border-radius-300)',
         '--pc-shadow-bevel-content-xs': '""',
       }),
     });
@@ -58,11 +57,9 @@ describe('ShadowBevel', () => {
         '--pc-shadow-bevel-box-shadow-xs': 'none',
         '--pc-shadow-bevel-box-shadow-sm': 'var(--p-shadow-md)',
         '--pc-shadow-bevel-box-shadow-lg': 'none',
-        '--pc-shadow-bevel-border-radius-xs':
-          'var(--p-border-radius-0-experimental)',
-        '--pc-shadow-bevel-border-radius-sm': 'var(--p-border-radius-3)',
-        '--pc-shadow-bevel-border-radius-lg':
-          'var(--p-border-radius-0-experimental)',
+        '--pc-shadow-bevel-border-radius-xs': 'var(--p-border-radius-0)',
+        '--pc-shadow-bevel-border-radius-sm': 'var(--p-border-radius-300)',
+        '--pc-shadow-bevel-border-radius-lg': 'var(--p-border-radius-0)',
         '--pc-shadow-bevel-content-xs': 'none',
         '--pc-shadow-bevel-content-sm': '""',
         '--pc-shadow-bevel-content-lg': 'none',

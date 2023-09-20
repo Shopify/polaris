@@ -50,7 +50,8 @@
 }
 
 .focused:not(:disabled) {
-  outline: var(--p-border-width-050) solid var(--p-color-border-interactive-focus);
+  outline: var(--p-border-width-050) solid
+    var(--p-color-border-interactive-focus);
   outline-offset: var(--p-space-025);
 }
 

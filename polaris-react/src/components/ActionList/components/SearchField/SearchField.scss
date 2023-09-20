@@ -107,8 +107,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-3));
     padding: 0 $search-icon-width-se23 0 $search-icon-width-se23;
     color: var(--p-color-text-inverse-subdued);
     height: $new-input-height-se23;
-    border: var(--p-border-width-0165) solid
-      var(--p-color-border-inverse);
+    border: var(--p-border-width-0165) solid var(--p-color-border-inverse);
     border-radius: var(--p-border-radius-200);
 
     &:hover {

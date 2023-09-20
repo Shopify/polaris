@@ -10,7 +10,7 @@ describe('<Divider />', () => {
     expect(divider).toContainReactComponent('hr', {
       style: {
         borderBlockStart:
-          'var(--p-border-width-1) solid var(--p-color-border-subdued)',
+          'var(--p-border-width-025) solid var(--p-color-border-subdued)',
       } as React.CSSProperties,
     });
   });
@@ -20,7 +20,8 @@ describe('<Divider />', () => {
 
     expect(divider).toContainReactComponent('hr', {
       style: expect.objectContaining({
-        borderBlockStart: 'var(--p-border-width-1) solid var(--p-color-border)',
+        borderBlockStart:
+          'var(--p-border-width-025) solid var(--p-color-border)',
       }) as React.CSSProperties,
     });
   });
@@ -31,7 +32,7 @@ describe('<Divider />', () => {
     expect(divider).toContainReactComponent('hr', {
       style: expect.objectContaining({
         borderBlockStart:
-          'var(--p-border-width-2) solid var(--p-color-border-subdued)',
+          'var(--p-border-width-0165) solid var(--p-color-border-subdued)',
       }) as React.CSSProperties,
     });
   });
