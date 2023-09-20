@@ -7,7 +7,7 @@ function TooltipExample() {
     <div style={{padding: '75px 0'}}>
       <Tooltip
         content={
-          <HorizontalStack gap="2">
+          <HorizontalStack gap="200">
             Bold
             <Text as="span" variant="bodyMd" color="subdued">
               ⌘B

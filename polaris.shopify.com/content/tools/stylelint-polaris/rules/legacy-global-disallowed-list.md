@@ -11,7 +11,7 @@ Use [Polaris tokens](https://polaris.shopify.com/tokens) when possible. Otherwis
 
 ```diff
 // Do
-+ left: calc(-1 * var(--p-space-1));
++ left: calc(-1 * var(--p-space-100));
 // Don't
 - left: -1 * $timeline-border-width;
 ```

@@ -11,14 +11,14 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedSpecificDirectionExample() {
   return (
-    <VerticalStack gap="6">
+    <VerticalStack gap="600">
       <Box
         background="bg"
         borderWidth="1"
         borderColor="border-subdued"
-        padding="8"
+        padding="800"
       >
-        <Bleed marginInlineStart="8">
+        <Bleed marginInlineStart="800">
           <Placeholder label="marginInlineStart" />
         </Bleed>
       </Box>
@@ -26,9 +26,9 @@ function BleedSpecificDirectionExample() {
         background="bg"
         borderWidth="1"
         borderColor="border-subdued"
-        padding="8"
+        padding="800"
       >
-        <Bleed marginInlineEnd="8">
+        <Bleed marginInlineEnd="800">
           <Placeholder label="marginInlineEnd" />
         </Bleed>
       </Box>
@@ -36,9 +36,9 @@ function BleedSpecificDirectionExample() {
         background="bg"
         borderWidth="1"
         borderColor="border-subdued"
-        padding="8"
+        padding="800"
       >
-        <Bleed marginBlockStart="8">
+        <Bleed marginBlockStart="800">
           <Placeholder label="marginBlockStart" />
         </Bleed>
       </Box>
@@ -46,9 +46,9 @@ function BleedSpecificDirectionExample() {
         background="bg"
         borderWidth="1"
         borderColor="border-subdued"
-        padding="8"
+        padding="800"
       >
-        <Bleed marginBlockEnd="8">
+        <Bleed marginBlockEnd="800">
           <Placeholder label="marginBlockEnd" />
         </Bleed>
       </Box>
@@ -61,12 +61,12 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
     <div
       style={{
         background: 'var(--p-color-text-info)',
-        padding: '14px var(--p-space-2)',
+        padding: '14px var(--p-space-200)',
         height: height,
         width: width,
       }}
     >
-      <HorizontalStack gap="4" align="center">
+      <HorizontalStack gap="400" align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',

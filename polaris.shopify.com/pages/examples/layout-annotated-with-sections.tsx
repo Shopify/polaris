@@ -15,7 +15,7 @@ function LayoutExample() {
     <Page fullWidth>
       <Layout>
         <Layout.Section oneThird>
-          <div style={{marginTop: 'var(--p-space-5)'}}>
+          <div style={{marginTop: 'var(--p-space-500)'}}>
             <TextContainer>
               <Text id="storeDetails" variant="headingMd" as="h2">
                 Store details

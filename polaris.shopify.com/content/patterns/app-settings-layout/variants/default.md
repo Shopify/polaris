@@ -53,14 +53,14 @@ function AppSettingsLayoutExample() {
         },
       ]}
     >
-      <VerticalStack gap={{xs: '8', sm: '4'}}>
-        <HorizontalGrid columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
+      <VerticalStack gap={{xs: '800', sm: '400'}}>
+        <HorizontalGrid columns={{xs: '1fr', md: '2fr 5fr'}} gap="400">
           <Box
             as="section"
-            paddingInlineStart={{xs: 4, sm: 0}}
-            paddingInlineEnd={{xs: 4, sm: 0}}
+            paddingInlineStart={{xs: 400, sm: 0}}
+            paddingInlineEnd={{xs: 400, sm: 0}}
           >
-            <VerticalStack gap="4">
+            <VerticalStack gap="400">
               <Text as="h3" variant="headingMd">
                 InterJambs
               </Text>
@@ -70,20 +70,20 @@ function AppSettingsLayoutExample() {
             </VerticalStack>
           </Box>
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <VerticalStack gap="400">
               <TextField label="Interjamb style" />
               <TextField label="Interjamb ratio" />
             </VerticalStack>
           </Card>
         </HorizontalGrid>
         {smUp ? <Divider /> : null}
-        <HorizontalGrid columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
+        <HorizontalGrid columns={{xs: '1fr', md: '2fr 5fr'}} gap="400">
           <Box
             as="section"
-            paddingInlineStart={{xs: 4, sm: 0}}
-            paddingInlineEnd={{xs: 4, sm: 0}}
+            paddingInlineStart={{xs: 400, sm: 0}}
+            paddingInlineEnd={{xs: 400, sm: 0}}
           >
-            <VerticalStack gap="4">
+            <VerticalStack gap="400">
               <Text as="h3" variant="headingMd">
                 Dimensions
               </Text>
@@ -93,7 +93,7 @@ function AppSettingsLayoutExample() {
             </VerticalStack>
           </Box>
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <VerticalStack gap="400">
               <TextField label="Horizontal" />
               <TextField label="Interjamb ratio" />
             </VerticalStack>
