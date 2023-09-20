@@ -124,7 +124,7 @@ $loading-panel-height: 53px;
       // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-compound-selectors -- se23 overrides
       .TableCell-first,
       .TableCell-first + .TableCell {
-        background-color: var(--p-color-bg-subdued);
+        background-color: var(--p-color-bg-surface-secondary);
       }
     }
   }
@@ -222,7 +222,7 @@ $loading-panel-height: 53px;
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
-      background-color: var(--p-color-bg-subdued);
+      background-color: var(--p-color-bg-surface-secondary);
 
       #{$se23} & {
         color: var(--p-color-text-secondary);
@@ -238,10 +238,10 @@ $loading-panel-height: 53px;
     .TableCell-first,
     .TableCell-first + .TableCell,
     .TableCell:last-child {
-      color: var(--p-color-text-subdued);
+      color: var(--p-color-text-secondary);
       font-weight: var(--p-font-weight-medium);
       font-size: var(--p-font-size-75);
-      background-color: var(--p-color-bg-subdued);
+      background-color: var(--p-color-bg-surface-secondary);
       border-top: var(--p-border-width-1) solid var(--p-color-border);
       border-bottom: var(--p-border-width-1) solid var(--p-color-border);
     }
@@ -253,7 +253,7 @@ $loading-panel-height: 53px;
       .TableCell-first,
       .TableCell-first + .TableCell,
       .TableCell:last-child {
-        background-color: var(--p-color-bg-subdued);
+        background-color: var(--p-color-bg-surface-secondary);
         border-color: var(--p-color-border);
       }
     }
@@ -275,10 +275,10 @@ $loading-panel-height: 53px;
       .TableCell-first,
       .TableCell-first + .TableCell,
       .TableCell:last-child {
-        background-color: var(--p-color-bg-subdued);
+        background-color: var(--p-color-bg-surface-secondary);
 
         #{$se23} & {
-          background-color: var(--p-color-bg-subdued);
+          background-color: var(--p-color-bg-surface-secondary);
         }
       }
     }
@@ -306,10 +306,10 @@ $loading-panel-height: 53px;
       .TableCell-first,
       .TableCell-first + .TableCell,
       .TableCell:last-child {
-        background-color: var(--p-color-bg-subdued);
+        background-color: var(--p-color-bg-surface-secondary);
 
         #{$se23} & {
-          background-color: var(--p-color-bg-subdued);
+          background-color: var(--p-color-bg-surface-secondary);
         }
       }
     }
@@ -387,7 +387,7 @@ $loading-panel-height: 53px;
       .TableCell-first,
       .TableCell-first + .TableCell,
       .TableCell:last-child {
-        background-color: var(--p-color-bg-subdued);
+        background-color: var(--p-color-bg-surface-secondary);
       }
     }
   }
@@ -924,7 +924,7 @@ $loading-panel-height: 53px;
 
   .statusSubdued {
     .TableCell:last-child {
-      background-color: var(--p-color-bg-subdued);
+      background-color: var(--p-color-bg-surface-secondary);
 
       #{$se23} & {
         color: var(--p-color-text-secondary);
@@ -950,7 +950,7 @@ $loading-panel-height: 53px;
 
   #{$se23} & {
     .TableRow-selected.TableRow-subdued {
-      color: var(--p-color-text-subdued);
+      color: var(--p-color-text-secondary);
     }
 
     .TableRow-hovered {
