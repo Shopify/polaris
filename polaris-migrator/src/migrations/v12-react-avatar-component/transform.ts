@@ -6,7 +6,7 @@ import {
   hasImportSpecifier,
   normalizeImportSourcePaths,
 } from '../../utilities/imports';
-import {removeJSXAttributes, replaceJSXAttributes} from '../../utilities/jsx';
+import {replaceJSXAttributes} from '../../utilities/jsx';
 
 export interface MigrationOptions extends Options {
   relative?: boolean;
@@ -45,8 +45,6 @@ export default function transformer(
 
   // Find all JSX elements with the name 'Avatar'
   source.findJSXElements(localElementName).forEach((element) => {
-    // Remove the 'customer' prop
-    removeJSXAttributes(j, element, 'customer');
     // Replace the 'size' prop value with the new size
     replaceJSXAttributes(j, element, 'size', 'size', sizeMapping);
   });

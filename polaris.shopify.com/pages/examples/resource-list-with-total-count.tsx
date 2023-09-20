@@ -29,7 +29,7 @@ function ResourceListWithTotalItemsCount() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar size="md" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem

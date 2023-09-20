@@ -102,7 +102,9 @@ export function SelectableWithMedia() {
             <ResourceItem
               id={id}
               url={url}
-              media={<Avatar size="md" name={name} source={avatarSource} />}
+              media={
+                <Avatar customer size="md" name={name} source={avatarSource} />
+              }
               accessibilityLabel={`View details for ${name}`}
               name={name}
             >
@@ -142,7 +144,9 @@ export function WithMedia() {
             <ResourceItem
               id={id}
               url={url}
-              media={<Avatar size="md" name={name} source={avatarSource} />}
+              media={
+                <Avatar customer size="md" name={name} source={avatarSource} />
+              }
               accessibilityLabel={`View details for ${name}`}
               name={name}
             >
@@ -183,7 +187,9 @@ export function WithShortcutActions() {
             <ResourceItem
               id={id}
               url={url}
-              media={<Avatar size="md" name={name} source={avatarSource} />}
+              media={
+                <Avatar customer size="md" name={name} source={avatarSource} />
+              }
               shortcutActions={[
                 {content: 'View latest order', url: latestOrderUrl},
               ]}
@@ -230,7 +236,9 @@ export function WithPersistedShortcutActions() {
             <ResourceItem
               id={id}
               url={url}
-              media={<Avatar size="md" name={name} source={avatarSource} />}
+              media={
+                <Avatar customer size="md" name={name} source={avatarSource} />
+              }
               persistActions
               shortcutActions={shortcutActions}
               accessibilityLabel={`View details for ${name}`}
@@ -273,7 +281,9 @@ export function WithVerticalAlignment() {
               verticalAlignment="center"
               id={id}
               url={url}
-              media={<Avatar size="md" name={name} source={avatarSource} />}
+              media={
+                <Avatar customer size="md" name={name} source={avatarSource} />
+              }
               accessibilityLabel={`View details for ${name}`}
               name={name}
             >

@@ -79,7 +79,7 @@ export function All() {
             </Text>
             <InlineStack gap="2" blockAlign="center">
               {sizes.map((size) => (
-                <Avatar key={size} size={size} />
+                <Avatar customer key={size} size={size} />
               ))}
             </InlineStack>
           </BlockStack>
@@ -189,11 +189,11 @@ export function ExtraSmallInContext() {
           items={[
             {
               content: 'Chet Baker',
-              prefix: <Avatar size="xs" name="Chet Baker" />,
+              prefix: <Avatar customer size="xs" name="Chet Baker" />,
             },
             {
               content: 'Farrah Fawcett',
-              prefix: <Avatar size="xs" name="Farrah Fawcett" />,
+              prefix: <Avatar customer size="xs" name="Farrah Fawcett" />,
             },
           ]}
         />
