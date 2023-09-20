@@ -209,6 +209,26 @@ const deprecated = [
     permanent: false,
   },
   {
+    source: '/components/layout-and-structure/legacy-card',
+    destination: '/components/deprecated/legacy-card',
+    permanent: false,
+  },
+  {
+    source: '/components/layout-and-structure/legacy-stack',
+    destination: '/components/deprecated/legacy-stack',
+    permanent: false,
+  },
+  {
+    source: '/components/navigation/legacy-tabs',
+    destination: '/components/deprecated/legacy-tabs',
+    permanent: false,
+  },
+  {
+    source: '/components/selection-and-input/setting-toggle',
+    destination: '/components/deprecated/setting-toggle',
+    permanent: false,
+  },
+  {
     source: '/components/setting-toggle',
     destination: '/components/deprecated/setting-toggle',
     permanent: false,
@@ -363,11 +383,6 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/columns',
-    destination: '/components/layout-and-structure/inline-grid',
-    permanent: false,
-  },
-  {
     source: '/components/divider',
     destination: '/components/layout-and-structure/divider',
     permanent: false,
@@ -397,12 +412,11 @@ const layoutAndStructure = [
     destination: '/components/layout-and-structure/grid',
     permanent: false,
   },
-  // TODO: Re-enable this redirect once the new inline stack component is released
-  // {
-  //   source: '/components/layout-and-structure/horizontal-stack',
-  //   destination: '/components/layout-and-structure/inline-stack',
-  //   permanent: false,
-  // },
+  {
+    source: '/components/layout-and-structure/horizontal-stack',
+    destination: '/components/layout-and-structure/inline-stack',
+    permanent: false,
+  },
   {
     source: '/components/structure/layout',
     destination: '/components/layout-and-structure/layout',
@@ -439,8 +453,8 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
-    source: '/components/layout-and-structure/alpha-stack',
-    destination: '/components/layout-and-structure/vertical-stack',
+    source: '/components/layout-and-structure/vertical-stack',
+    destination: '/components/layout-and-structure/block-stack',
     permanent: false,
   },
   {
@@ -628,11 +642,6 @@ const selectionAndInput = [
   {
     source: '/components/forms/select',
     destination: '/components/selection-and-input/select',
-    permanent: false,
-  },
-  {
-    source: '/components/selection-and-input/setting-toggle',
-    destination: '/components/deprecated/setting-toggle',
     permanent: false,
   },
   {

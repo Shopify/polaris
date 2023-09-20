@@ -103,12 +103,7 @@ export function SelectableWithMedia() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               accessibilityLabel={`View details for ${name}`}
               name={name}
@@ -150,12 +145,7 @@ export function WithMedia() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               accessibilityLabel={`View details for ${name}`}
               name={name}
@@ -198,12 +188,7 @@ export function WithShortcutActions() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               shortcutActions={[
                 {content: 'View latest order', url: latestOrderUrl},
@@ -252,12 +237,7 @@ export function WithPersistedShortcutActions() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               persistActions
               shortcutActions={shortcutActions}
@@ -302,12 +282,7 @@ export function WithVerticalAlignment() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               accessibilityLabel={`View details for ${name}`}
               name={name}

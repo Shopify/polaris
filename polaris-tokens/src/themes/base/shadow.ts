@@ -1,4 +1,5 @@
-import type {MetadataProperties, Experimental} from '../types';
+import type {Experimental} from '../../types';
+import type {MetaTokenProperties} from '../types';
 
 type ShadowAliasExperimental = Experimental<
   | 'bevel'
@@ -37,7 +38,7 @@ export type ShadowTokenGroup = {
 };
 
 export const shadow: {
-  [TokenName in ShadowTokenName]: MetadataProperties;
+  [TokenName in ShadowTokenName]: MetaTokenProperties;
 } = {
   'shadow-inset-lg': {
     value:

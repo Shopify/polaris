@@ -1,4 +1,5 @@
 import {useEffect, useRef, useState} from 'react';
+import {Box, Text} from '@shopify/polaris';
 import {TOCItem} from '../../utils/hooks';
 import {className} from '../../utils/various';
 import styles from './TOC.module.scss';
@@ -102,25 +103,39 @@ function TOC({items}: Props) {
 
   useEffect(() => detectCurrentHeading(), [items]);
 
-  const Link = ({toId, linkText}: {toId: string; linkText: string}) => (
-    <a
-      href={`#${toId}`}
-      data-is-current={toId === idOfCurrentHeading}
-      onClick={(evt) => {
-        scrollIntoView(toId);
-        evt.preventDefault();
-      }}
-    >
-      {linkText}
-    </a>
-  );
+  const Link = ({toId, linkText}: {toId: string; linkText: string}) => {
+    const activeHeading = toId === idOfCurrentHeading;
+    return (
+      <Text
+        as="p"
+        variant="bodyMd"
+        fontWeight={activeHeading ? 'semibold' : 'regular'}
+      >
+        <a
+          href={`#${toId}`}
+          data-is-current={activeHeading}
+          onClick={(evt) => {
+            scrollIntoView(toId);
+            evt.preventDefault();
+          }}
+        >
+          {linkText}
+        </a>
+      </Text>
+    );
+  };
 
   return (
     <div className={className(styles.TOC, isNested && styles.isNested)}>
       <ul>
+        <Box paddingInlineStart="2" paddingInlineEnd="2" paddingBlockEnd="2">
+          <Text as="h2" variant="headingMd">
+            On this page
+          </Text>
+        </Box>
         {items.map(({title, id, children}) => {
           return (
-            <li key={title}>
+            <li key={title} className={styles.TOCItem}>
               <Link toId={id} linkText={title} />
               {children.length > 0 && (
                 <ul>

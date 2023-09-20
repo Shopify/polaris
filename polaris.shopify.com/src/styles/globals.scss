@@ -92,6 +92,13 @@
   --border-radius-700: 12px;
   --border-radius-800: 14px;
   --border-radius-round: 1000px;
+
+  --border-radius-400-new: var(--p-border-radius-4);
+
+  --card-padding-md: var(--p-space-4);
+  --card-padding-lg: var(--p-space-8);
+
+  --font-body-md: 400 14px/20px Inter;
 }
 
 .light-mode,
@@ -202,6 +209,14 @@ body,
   --surface-information: #dcf5f0;
   --surface-subdued: #f9f9f9;
   --surface-warning: #ffeceb;
+  --fill-success: #29845a;
+  --fill-caution: #ffe600;
+  --fill-critical: #e51c00;
+  --fill-info: #91d0ff;
+  --text-success-onfill: #ffffff;
+  --text-caution-onfill: #332e00;
+  --text-critical-onfill: #ffffff;
+  --text-info-onfill: #002133;
   --primary: #008060;
   --border-color: #e9e9e9;
   --border: 1px solid var(--border-color);
@@ -341,4 +356,21 @@ button {
 
 .tip-banner__header h4 {
   margin: 0 !important;
+}
+
+.text-extra-padding {
+  padding: var(--card-padding-md);
+}
+
+.directive {
+  font-size: 0;
+  line-height: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  div {
+    padding: var(--card-padding-md);
+    background-color: var(--surface-subdued);
+  }
 }

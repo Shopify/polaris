@@ -1,4 +1,4 @@
-import type {MetadataProperties} from '../types';
+import type {MetaTokenProperties} from '../types';
 
 export type MotionDurationScale =
   | '0'
@@ -39,7 +39,7 @@ export type MotionTokenGroup = {
 };
 
 export const motion: {
-  [TokenName in MotionTokenName]: MetadataProperties;
+  [TokenName in MotionTokenName]: MetaTokenProperties;
 } = {
   'motion-duration-0': {
     value: '0ms',

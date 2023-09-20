@@ -1,0 +1,26 @@
+# This workflow opens a PR to merge main into next so that it's kept up to date with each merge into main.
+
+name: Update next branch
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+jobs:
+  updateNext:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout next branch
+        uses: actions/checkout@v4
+        with:
+          ref: next
+      - name: Check for existing PR
+        id: existing_pr
+        run: echo "pr-num=`gh pr list --head=main --base=next --json number --jq '.[].number'`" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create PR for review by last commit author
+        if: ${{ steps.existing_pr.outputs.pr-num == '' }}
+        run: gh pr create --base=next --head=main --title 'Merge latest main into next' --body 'This PR was opened by a GitHub Action following a recent push to main in order to keep the `next` branch up to date. Please resolve any merge conflicts and ensure that your recent changes to main work as expected.' --reviewer=${{ github.triggering_actor }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
