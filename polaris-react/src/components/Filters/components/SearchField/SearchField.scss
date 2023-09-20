@@ -16,8 +16,8 @@
   /* stylelint-disable-next-line polaris/typography/polaris/at-rule-disallowed-list -- Matching custom input with TextField */
   @include text-style-input;
   flex: 1;
-  border: var(--p-border-width-1) solid var(--p-color-border-input);
-  border-radius: var(--p-border-radius-1);
+  border: var(--p-border-width-025) solid var(--p-color-border-input);
+  border-radius: var(--p-border-radius-100);
   border-color: var(--p-color-border-input);
   padding-inline: var(--p-space-1_5-experimental);
   width: 100%;
@@ -30,7 +30,7 @@
   &:active,
   &:focus {
     border-color: var(--p-color-border-input-active-experimental);
-    border-width: var(--p-border-width-2-experimental);
+    border-width: var(--p-border-width-025);
     background-color: var(--p-color-bg-input-active-experimental);
   }
 
@@ -50,7 +50,7 @@
 }
 
 .focused:not(:disabled) {
-  outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus);
+  outline: var(--p-border-width-050) solid var(--p-color-border-interactive-focus);
   outline-offset: var(--p-space-025);
 }
 

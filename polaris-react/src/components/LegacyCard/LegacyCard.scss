@@ -3,7 +3,7 @@
 .LegacyCard {
   background-color: var(--p-color-bg);
   box-shadow: var(--p-shadow-md);
-  outline: var(--p-border-width-1) solid transparent;
+  outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
 
   #{$se23} & {
@@ -29,16 +29,16 @@
   }
 
   @media #{$p-breakpoints-sm-up} {
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
 
     .Section:first-child {
-      border-top-left-radius: var(--p-border-radius-2);
-      border-top-right-radius: var(--p-border-radius-2);
+      border-top-left-radius: var(--p-border-radius-200);
+      border-top-right-radius: var(--p-border-radius-200);
     }
 
     .Section:last-child {
-      border-bottom-left-radius: var(--p-border-radius-2);
-      border-bottom-right-radius: var(--p-border-radius-2);
+      border-bottom-left-radius: var(--p-border-radius-200);
+      border-bottom-right-radius: var(--p-border-radius-200);
     }
 
     #{$se23} & {
@@ -50,14 +50,14 @@
 
       // stylelint-disable-next-line -- se23 override
       .Section:first-child {
-        border-top-left-radius: var(--p-border-radius-3);
-        border-top-right-radius: var(--p-border-radius-3);
+        border-top-left-radius: var(--p-border-radius-300);
+        border-top-right-radius: var(--p-border-radius-300);
       }
 
       // stylelint-disable-next-line -- se23 override
       .Section:last-child {
-        border-bottom-left-radius: var(--p-border-radius-3);
-        border-bottom-right-radius: var(--p-border-radius-3);
+        border-bottom-left-radius: var(--p-border-radius-300);
+        border-bottom-right-radius: var(--p-border-radius-300);
       }
     }
   }
@@ -120,7 +120,7 @@
   }
 
   + .Section {
-    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
 
     @media print {
       border-top: 0;
@@ -173,7 +173,7 @@
   }
 
   .Header + & {
-    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
     margin-top: var(--p-space-5);
 
     #{$se23} & {
@@ -217,7 +217,7 @@
   + .Subsection {
     margin-top: var(--p-space-4);
     padding-top: var(--p-space-4);
-    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
 
     @media print {
       border-top: 0;
@@ -258,7 +258,7 @@
   }
 
   .Section-subdued + & {
-    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
     padding: var(--p-space-5);
 
     #{$se23} & {

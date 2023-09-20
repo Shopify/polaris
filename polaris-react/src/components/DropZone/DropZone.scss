@@ -17,11 +17,11 @@ $dropzone-stacking-order: (
   bottom: 0;
   opacity: 1;
   transform: scale(1);
-  border: var(--p-border-width-1) $dropzone-border-style transparent;
+  border: var(--p-border-width-025) $dropzone-border-style transparent;
 }
 
 @mixin set-border-radius {
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
 }
 
 .DropZone {
@@ -36,7 +36,7 @@ $dropzone-stacking-order: (
   #{$se23} & {
     background-color: var(--p-color-bg-input);
   }
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
 
   &::after {
     content: '';
@@ -48,11 +48,11 @@ $dropzone-stacking-order: (
     bottom: 0;
     left: 0;
 
-    border: var(--p-border-width-1) $dropzone-border-style transparent;
-    border-radius: var(--p-border-radius-2);
+    border: var(--p-border-width-025) $dropzone-border-style transparent;
+    border-radius: var(--p-border-radius-200);
     pointer-events: none;
     #{$se23} & {
-      border-width: var(--p-border-width-1-experimental);
+      border-width: var(--p-border-width-0165);
     }
   }
 
@@ -63,7 +63,7 @@ $dropzone-stacking-order: (
   }
 
   &:hover {
-    outline: var(--p-border-width-1) solid transparent;
+    outline: var(--p-border-width-025) solid transparent;
   }
 }
 
@@ -178,7 +178,7 @@ $dropzone-stacking-order: (
   justify-content: center;
   align-items: center;
   padding: var(--p-space-4);
-  border: var(--p-border-width-1) $dropzone-border-style
+  border: var(--p-border-width-025) $dropzone-border-style
     var(--p-color-border-interactive);
   text-align: center;
   color: var(--p-color-text-interactive);
@@ -186,7 +186,7 @@ $dropzone-stacking-order: (
   pointer-events: none;
 
   #{$se23} & {
-    border: var(--p-border-width-2-experimental) solid
+    border: var(--p-border-width-025) solid
       var(--p-color-border-input-active-experimental);
     background-color: var(--p-color-bg-input-active-experimental);
     color: var(--p-color-text);
@@ -205,7 +205,7 @@ $dropzone-stacking-order: (
     border-color: var(--p-color-border-critical-strong-experimental);
     color: var(--p-color-text-critical);
     border-style: $dropzone-border-style;
-    border-width: var(--p-border-width-1-experimental);
+    border-width: var(--p-border-width-0165);
     background-color: var(--p-color-bg-critical-subdued);
   }
 }
