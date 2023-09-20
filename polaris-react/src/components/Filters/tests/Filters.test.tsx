@@ -67,15 +67,26 @@ describe('<Filters />', () => {
     });
   });
 
-  it('renders all filters as pinned if there are three or less filters', () => {
+  it('renders all filters as pinned if there is only one unpinned filter from the props', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
-    const threeFilters = defaultProps.filters.slice(0, -1);
+    const onlyOneUnpinnedFilter = defaultProps.filters.map((filter, index) => {
+      if (index === 0) {
+        return {
+          ...filter,
+          pinned: false,
+        };
+      }
+      return {
+        ...filter,
+        pinned: true,
+      };
+    });
     const wrapper = mountWithApp(
-      <Filters {...defaultProps} filters={threeFilters} />,
+      <Filters {...defaultProps} filters={onlyOneUnpinnedFilter} />,
     );
 
-    expect(wrapper).toContainReactComponentTimes(FilterPill, 3);
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 4);
   });
 
   it('renders the unpinned filters inside a Popover', () => {
@@ -157,7 +168,7 @@ describe('<Filters />', () => {
     );
 
     expect(wrapper).toContainReactComponentTimes(FilterPill, 3);
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
+    expect(wrapper.findAll(FilterPill)[0]).toHaveReactProps({
       label: 'Bux',
       selected: true,
     });
@@ -213,13 +224,13 @@ describe('<Filters />', () => {
       <Filters {...defaultProps} appliedFilters={appliedFilters} />,
     );
 
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
+    expect(wrapper.findAll(FilterPill)[0]).toHaveReactProps({
       label: 'Value is Baz',
       selected: true,
     });
     wrapper.setProps({appliedFilters: []});
 
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
+    expect(wrapper.findAll(FilterPill)[0]).toHaveReactProps({
       label: 'Baz',
       selected: false,
     });
@@ -246,7 +257,7 @@ describe('<Filters />', () => {
       appliedFilters,
     });
 
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
+    expect(wrapper.findAll(FilterPill)[0]).toHaveReactProps({
       label: 'Value is Baz',
       selected: true,
     });
@@ -268,7 +279,7 @@ describe('<Filters />', () => {
     );
 
     wrapper.act(() => {
-      wrapper.findAll(FilterPill)[1].findAll('button')[1].trigger('onClick');
+      wrapper.findAll(FilterPill)[0].findAll('button')[1].trigger('onClick');
     });
 
     expect(appliedFilters[0].onRemove).toHaveBeenCalled();
