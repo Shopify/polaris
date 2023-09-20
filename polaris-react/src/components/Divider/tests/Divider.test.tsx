@@ -27,7 +27,7 @@ describe('<Divider />', () => {
   });
 
   it('renders custom border width when passed in', () => {
-    const divider = mountWithApp(<Divider borderWidth="2" />);
+    const divider = mountWithApp(<Divider borderWidth="050" />);
 
     expect(divider).toContainReactComponent('hr', {
       style: expect.objectContaining({

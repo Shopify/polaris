@@ -148,7 +148,7 @@ export function Section({
       as="li"
       role="presentation"
       borderColor="border-subdued"
-      {...(!isFirst && {borderBlockStartWidth: '1'})}
+      {...(!isFirst && {borderBlockStartWidth: '025'})}
       {...(!section.title && {
         paddingBlockStart: polarisSummerEditions2023 ? '150' : '200',
       })}

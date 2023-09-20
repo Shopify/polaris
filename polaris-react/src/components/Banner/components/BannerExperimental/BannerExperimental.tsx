@@ -139,10 +139,10 @@ export function DefaultBanner({
         <Box
           background={backgroundColor}
           color={textColor}
-          borderRadiusStartStart={smUp ? '3' : undefined}
-          borderRadiusStartEnd={smUp ? '3' : undefined}
-          borderRadiusEndStart={!hasContent && smUp ? '3' : undefined}
-          borderRadiusEndEnd={!hasContent && smUp ? '3' : undefined}
+          borderRadiusStartStart={smUp ? '300' : undefined}
+          borderRadiusStartEnd={smUp ? '300' : undefined}
+          borderRadiusEndStart={!hasContent && smUp ? '300' : undefined}
+          borderRadiusEndEnd={!hasContent && smUp ? '300' : undefined}
           padding="300"
         >
           <HorizontalStack
@@ -198,7 +198,7 @@ export function InlineIconBanner({
   useEventListener('resize', handleResize);
 
   return (
-    <Box width="100%" padding="300" borderRadius="3">
+    <Box width="100%" padding="3" borderRadius="300">
       <HorizontalStack
         align="space-between"
         blockAlign={blockAlign}
@@ -210,7 +210,7 @@ export function InlineIconBanner({
               <div ref={iconNode}>
                 <Box
                   background={backgroundColor}
-                  borderRadius="2"
+                  borderRadius="200"
                   padding="100"
                 >
                   {bannerIcon}
@@ -245,7 +245,7 @@ export function WithinContentContainerBanner({
       width="100%"
       background={backgroundColor}
       padding="200"
-      borderRadius="2"
+      borderRadius="200"
       color={textColor}
     >
       <HorizontalStack
