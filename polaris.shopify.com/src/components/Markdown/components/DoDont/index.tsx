@@ -43,8 +43,7 @@ export const DoDont = ({children}: PropsWithChildren) => {
   while (i < childrenArray.length) {
     target = childrenArray[i].props.children.startsWith('Don') ? donts : dos;
 
-    // Add the heading
-    target.push(childrenArray[i]);
+    // skip the headings in older uses of <DoDont>
     i++;
 
     // Add all the non-headings
