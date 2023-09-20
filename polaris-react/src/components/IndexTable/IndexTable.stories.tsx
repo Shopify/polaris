@@ -1,18 +1,25 @@
-import React, {useCallback, useState} from 'react';
+import React, {Fragment, useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import type {IndexFiltersProps} from '@shopify/polaris';
+import type {
+  IndexFiltersProps,
+  IndexTableProps,
+  IndexTableRowProps,
+} from '@shopify/polaris';
 import {
+  Icon,
+  HorizontalStack,
   Button,
   LegacyCard,
   EmptySearchResult,
   IndexFilters,
   useSetIndexFiltersMode,
-  IndexTable,
   Link,
   TextField,
   Text,
   useIndexResourceState,
 } from '@shopify/polaris';
+
+import {IndexTable} from './IndexTable';
 
 export default {
   component: IndexTable,
@@ -1400,7 +1407,7 @@ export function WithFiltering() {
     (value) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -1435,7 +1442,7 @@ export function WithFiltering() {
       ]
     : [];
 
-  const sortOptions = [
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
     {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
     {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
   ];
@@ -1613,7 +1620,7 @@ export function WithRowStatus() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        status={status}
+        status={status as IndexTableRowProps['status']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1959,7 +1966,7 @@ export function WithClickableButtonColumn() {
         position={index}
       >
         <IndexTable.Cell>
-          <Button
+          <Link
             dataPrimaryLink
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
@@ -1967,7 +1974,7 @@ export function WithClickableButtonColumn() {
             <Text fontWeight="bold" as="span">
               {name}
             </Text>
-          </Button>
+          </Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
         <IndexTable.Cell>
@@ -2171,7 +2178,7 @@ export function WithAllOfItsElements() {
     (value) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -2227,7 +2234,7 @@ export function WithAllOfItsElements() {
       ]
     : [];
 
-  const sortOptions = [
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
     {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
     {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
   ];
@@ -2359,7 +2366,8 @@ export function WithAllOfItsElements() {
 
 export function WithSortableHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
-  const [sortDirection, setSortDirection] = useState('descending');
+  const [sortDirection, setSortDirection] =
+    useState<IndexTableProps['sortDirection']>('descending');
 
   const sortToggleLabels = {
     0: {ascending: 'A-Z', descending: 'Z-A'},
@@ -2544,7 +2552,8 @@ export function WithSortableHeadings() {
 
 export function WithSortableCustomHeadings() {
   const [sortIndex, setSortIndex] = useState(0);
-  const [sortDirection, setSortDirection] = useState('descending');
+  const [sortDirection, setSortDirection] =
+    useState<IndexTableProps['sortDirection']>('descending');
 
   const sortToggleLabels = {
     0: {ascending: 'A-Z', descending: 'Z-A'},
@@ -2849,6 +2858,116 @@ export function WithCustomTooltips() {
   );
 }
 
+export function WithHeadingTooltips() {
+  const customers = [
+    {
+      id: '3410',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location', tooltipContent: 'Strictly within the US'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+            new: true,
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
 export function WithZebraStriping() {
   const customers = [
     {
@@ -3106,7 +3225,7 @@ export function WithZebraStripingAndRowStatus() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        status={status}
+        status={status as IndexTableRowProps['status']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -3408,7 +3527,7 @@ export function SmallScreenWithAllOfItsElements() {
     (value) => setTaggedWith(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
+  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -3464,7 +3583,7 @@ export function SmallScreenWithAllOfItsElements() {
       ]
     : [];
 
-  const sortOptions = [
+  const sortOptions: IndexFiltersProps['sortOptions'] = [
     {label: 'Date', value: 'today asc', directionLabel: 'Ascending'},
     {label: 'Date', value: 'today desc', directionLabel: 'Descending'},
   ];
@@ -3591,109 +3710,208 @@ export function SmallScreenWithAllOfItsElements() {
   }
 }
 
-export function WithHeadingTooltips() {
-  const customers = [
-    {
-      id: '3410',
-      url: '#',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$2,400',
-    },
+export function WithSubHeaders() {
+  const rows = [
     {
       id: '3411',
       url: '#',
-      name: 'Joe Jemison',
-      location: 'Sydney, AU',
-      orders: 20,
-      amountSpent: '$1,400',
-    },
-    {
-      id: '3412',
-      url: '#',
-      name: 'Sam Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$400',
-    },
-    {
-      id: '3413',
-      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$4,300',
+      orders: 11,
+      amountSpent: '$2,400',
+      lastOrderDate: 'May 31, 2023',
     },
     {
-      id: '2563',
+      id: '2562',
       url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
-      amountSpent: '$140',
+      amountSpent: '$975',
+      lastOrderDate: 'May 31, 2023',
+    },
+    {
+      id: '4102',
+      url: '#',
+      name: 'Colm Dillane',
+      location: 'New York, USA',
+      orders: 27,
+      amountSpent: '$2885',
+      lastOrderDate: 'May 31, 2023',
+    },
+    {
+      id: '2564',
+      url: '#',
+      name: 'Al Chemist',
+      location: 'New York, USA',
+      orders: 19,
+      amountSpent: '$1,209',
+      lastOrderDate: 'April 4, 2023',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      url: '#',
+      name: 'Larry June',
+      location: 'San Francisco, USA',
+      orders: 22,
+      amountSpent: '$1,400',
+      lastOrderDate: 'March 19, 2023',
     },
   ];
+
+  const columnHeadings = [
+    {title: 'Name', id: 'column-header--name'},
+    {title: 'Location', id: 'column-header--location'},
+    {
+      alignment: 'end',
+      id: 'column-header--order-count',
+      title: 'Order count',
+    },
+    {
+      alignment: 'end',
+      hidden: false,
+      id: 'column-header--amount-spent',
+      title: 'Amount spent',
+    },
+  ];
+
+  const groupRowsBy = (groupKey: string, resolveId: (groupVal) => string) => {
+    let position = -1;
+    const groups = rows.reduce((groups, customer) => {
+      const groupVal = customer[groupKey];
+      if (!groups[groupVal]) {
+        position += 1;
+
+        groups[groupVal] = {
+          position,
+          customers: [],
+          id: resolveId(groupVal),
+        };
+      }
+
+      groups[groupVal].customers.push({
+        ...customer,
+        position: position + 1,
+      });
+
+      position += 1;
+      return groups;
+    }, {});
+
+    return groups;
+  };
+
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
   };
 
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
-    useIndexResourceState(customers);
+    useIndexResourceState(rows, {resourceFilter: ({disabled}) => !disabled});
 
-  const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        selected={selectedResources.includes(id)}
-        position={index}
-      >
-        <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
-            {name}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {orders}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {amountSpent}
-          </Text>
-        </IndexTable.Cell>
-      </IndexTable.Row>
-    ),
+  const orders = groupRowsBy(
+    'lastOrderDate',
+    (date) => `last-order-date--${date.replace(',', '').split(' ').join('-')}`,
   );
+
+  const rowMarkup = Object.keys(orders).map((orderDate, index) => {
+    const {customers, position, id: subheaderId} = orders[orderDate];
+    let selected: IndexTableRowProps['selected'] = false;
+
+    const someCustomersSelected = customers.some(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    const allCustomersSelected = customers.every(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    if (allCustomersSelected) {
+      selected = true;
+    } else if (someCustomersSelected) {
+      selected = 'indeterminate';
+    }
+
+    const selectableRows = rows.filter(({disabled}) => !disabled);
+    const rowRange: IndexTableRowProps['subHeaderRange'] = [
+      selectableRows.findIndex((row) => row.id === customers[0].id),
+      selectableRows.findIndex(
+        (row) => row.id === customers[customers.length - 1].id,
+      ),
+    ];
+
+    const disabled = customers.every(({disabled}) => disabled);
+
+    return (
+      <Fragment key={subheaderId}>
+        <IndexTable.Row
+          rowType="subheader"
+          selectionRange={rowRange}
+          id={`Subheader-${index}`}
+          position={position}
+          selected={selected}
+          disabled={disabled}
+          accessibilityLabel={`Select all customers whose last order was placed on ${orderDate}`}
+        >
+          <IndexTable.Cell scope="col" as="th" id={subheaderId}>
+            {`Last order placed: ${orderDate}`}
+          </IndexTable.Cell>
+          <IndexTable.Cell as="th" />
+          <IndexTable.Cell as="th" />
+          <IndexTable.Cell as="th" />
+        </IndexTable.Row>
+        {customers.map(
+          (
+            {id, name, location, orders, amountSpent, position, disabled},
+            rowIndex,
+          ) => {
+            return (
+              <IndexTable.Row
+                key={rowIndex}
+                id={id}
+                position={position}
+                selected={selectedResources.includes(id)}
+                disabled={disabled}
+              >
+                <IndexTable.Cell
+                  as="th"
+                  scope="row"
+                  headers={`${columnHeadings[0].id} ${subheaderId}`}
+                >
+                  <Text variant="bodyMd" fontWeight="semibold" as="span">
+                    {name}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>{location}</IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {orders}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {amountSpent}
+                  </Text>
+                </IndexTable.Cell>
+              </IndexTable.Row>
+            );
+          },
+        )}
+      </Fragment>
+    );
+  });
 
   return (
     <LegacyCard>
       <IndexTable
-        resourceName={resourceName}
-        itemCount={customers.length}
+        onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
         }
-        onSelectionChange={handleSelectionChange}
-        headings={[
-          {title: 'Name'},
-          {title: 'Location', tooltipContent: 'Strictly within the US'},
-          {
-            alignment: 'end',
-            id: 'order-count',
-            title: 'Order count',
-            new: true,
-          },
-          {
-            alignment: 'end',
-            id: 'amount-spent',
-            title: 'Amount spent',
-          },
-        ]}
+        resourceName={resourceName}
+        itemCount={rows.length}
+        headings={columnHeadings as IndexTableProps['headings']}
       >
         {rowMarkup}
       </IndexTable>
