@@ -1,5 +1,9 @@
 @import '../../styles/mixins.scss';
 .Card {
+  @include dark-mode {
+    box-shadow: var(--card-shadow);
+  }
+
   @include responsive-props(
     'card',
     'padding-block-start',
