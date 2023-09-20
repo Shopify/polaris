@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Updated the Filters component to automatically render all filters if three or less are provided
+Updated the Filters component to automatically render all filters if only one filter is not pinned by default.
