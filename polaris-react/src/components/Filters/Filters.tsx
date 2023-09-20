@@ -145,7 +145,11 @@ export function Filters({
   const hasMounted = useRef(false);
 
   const overriddenPinnedFilters = useMemo(() => {
-    if (filters.length > 3) {
+    const pinnedFiltersFromProps = filters.filter(({pinned}) =>
+      Boolean(pinned),
+    );
+
+    if (filters.length !== pinnedFiltersFromProps.length + 1) {
       return filters;
     }
     return filters.map((filter) => ({...filter, pinned: true}));
@@ -164,12 +168,13 @@ export function Filters({
   };
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
 
-  const pinnedFiltersFromPropsAndAppliedFilters = filters.filter(
-    ({pinned, key}) =>
-      (Boolean(pinned) || appliedFilterKeys?.includes(key)) &&
-      // Filters that are pinned in local state display at the end of our list
-      !localPinnedFilters.find((filterKey) => filterKey === key),
-  );
+  const pinnedFiltersFromPropsAndAppliedFilters =
+    overriddenPinnedFilters.filter(
+      ({pinned, key}) =>
+        (Boolean(pinned) || appliedFilterKeys?.includes(key)) &&
+        // Filters that are pinned in local state display at the end of our list
+        !localPinnedFilters.find((filterKey) => filterKey === key),
+    );
 
   useEffect(() => {
     const allAppliedFilterKeysInLocalPinnedFilters = appliedFilterKeys?.every(
@@ -192,15 +197,15 @@ export function Filters({
   }, [appliedFilterKeys, localPinnedFilters]);
 
   const pinnedFiltersFromLocalState = localPinnedFilters
-    .map((key) => filters.find((filter) => filter.key === key))
+    .map((key) => overriddenPinnedFilters.find((filter) => filter.key === key))
     .reduce<FilterInterface[]>(
       (acc, filter) => (filter ? [...acc, filter] : acc),
       [],
     );
 
   const pinnedFilters = [
-    ...pinnedFiltersFromPropsAndAppliedFilters,
     ...pinnedFiltersFromLocalState,
+    ...pinnedFiltersFromPropsAndAppliedFilters,
   ];
 
   const onFilterClick =
@@ -288,7 +293,7 @@ export function Filters({
     onClearAll?.();
   };
 
-  const shouldShowAddButton = localPinnedFilters.length !== filters.length;
+  const shouldShowAddButton = pinnedFilters.length !== filters.length;
 
   const additionalContent = useMemo(() => {
     return (

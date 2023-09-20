@@ -415,7 +415,7 @@ export function WithoutKeyboardShortcuts() {
   return <BasicExample disableKeyboardShortcuts />;
 }
 
-export function WithPinnedFilters() {
+export function WithAppliedFilters() {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   const [itemStrings, setItemStrings] = useState([
