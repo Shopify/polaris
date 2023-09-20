@@ -27,21 +27,18 @@ examples:
   - fileName: button-plain.tsx
     title: Plain
     description: Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
-  - fileName: button-plain-monochrome.tsx
-    title: Plain monochrome
-    description: Use for less important or less commonly used actions where matching the current text color is desired. For example in the InlineError component.
-  - fileName: button-plain-destructive.tsx
-    title: Plain destructive
-    description: Use for actions that will delete merchant data or be otherwise difficult to recover from. Since they’re less prominent, use for less important or less commonly used destructive actions. For example, plain buttons are used as actions in cards.
+  - fileName: button-tertiary.tsx
+    title: Tertiary
+    description: Use for tertiary actions. Can be paired with any other button style to create visual variation.
+  - fileName: button-plain-critical.tsx
+    title: Plain critical
+    description: Use for actions that will delete merchant data or be otherwise difficult to recover from. Since they’re less prominent, use for less important or less commonly used critical actions. For example, plain buttons are used as actions in cards.
   - fileName: button-primary.tsx
     title: Primary
     description: Use to highlight the most important actions in any experience. Don’t use more than one primary button in a section or screen to avoid overwhelming merchants.
-  - fileName: button-destructive.tsx
-    title: Destructive
-    description: Use when the action will delete merchant data or be otherwise difficult to recover from. Destructive buttons should trigger a confirmation dialog before the action is completed. Be thoughtful about using destructive buttons because they can feel stressful for merchants.
-  - fileName: button-slim.tsx
-    title: Slim
-    description: Use when a table or list has a set of actions on each item to avoid making items taller than they need to be. Don’t use slim buttons for primary actions.
+  - fileName: button-primary-critical.tsx
+    title: Primary critical
+    description: Use when the action will delete merchant data or be otherwise difficult to recover from. Critical buttons should trigger a confirmation dialog before the action is completed. Be thoughtful about using critical buttons because they can feel stressful for merchants.
   - fileName: button-large.tsx
     title: Large
     description: Use for the main call to action in empty states or for calls to action shown with large illustrations.
