@@ -3,7 +3,7 @@ import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ButtonExample() {
-  return <Button size="slim">Save variant</Button>;
+  return <Button variant="tertiary">View shipping settings</Button>;
 }
 
 export default withPolarisExample(ButtonExample);
