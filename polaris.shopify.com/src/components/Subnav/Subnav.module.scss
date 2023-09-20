@@ -1,11 +1,20 @@
+@import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
 
 .Subnav {
+  --border: #e3e3e3;
+  --icon: #4A4A4A;
+  --surface: #ffffff;
   margin-bottom: 1.5rem;
+
+  @include dark-mode {
+    --border: #373737;
+    --icon: #E7E7E7;
+    --surface: #000000;
+  }
 }
 
 .Items {
-  --border: #e3e3e3;
   display: flex;
   flex-direction: column;
   gap: var(--p-space-1);
@@ -21,7 +30,6 @@
 }
 
 .Item {
-  --surface: rgba(250, 250, 250, 1);
   display: flex;
   align-items: center;
   gap: var(--p-space-2);
@@ -29,14 +37,14 @@
   border-radius: var(--p-border-radius-2);
   background-color: var(--surface);
   color: var(--text);
-  fill: #4a4a4a;
+  fill: var(--icon);
 
-  &:hover {
-    --surface: rgba(241, 241, 241, 1);
+  &:hover,
+  &.Item--active {
+    --surface: #f1f1f1;
+
+    @include dark-mode {
+      --surface: #373737;
+    }
   }
-}
-
-.Item--active {
-  --surface: #f1f1f1;
-  --text: #303030;
 }
