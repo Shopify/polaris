@@ -1,6 +1,5 @@
 ---
 '@shopify/polaris': minor
-'polaris.shopify.com': patch
 ---
 
 Added support for subheaders and selection of a range of `IndexTable.Rows` -- See the [With subheaders](https://polaris.shopify.com/components/tables/index-table) example on polaris.shopify.com for how to properly configure
