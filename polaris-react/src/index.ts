@@ -188,7 +188,7 @@ export type {IconProps} from './components/Icon';
 export {Image} from './components/Image';
 export type {ImageProps} from './components/Image';
 
-export {IndexFilters, useSetIndexFiltersMode} from './components/IndexFilters';
+export {IndexFilters} from './components/IndexFilters';
 export type {
   IndexFiltersProps,
   SortButtonChoice,
@@ -422,7 +422,7 @@ export {useEventListener} from './utilities/use-event-listener';
 export {useTheme} from './utilities/use-theme';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {
-  useIndexFiltersManager,
+  useSetIndexFiltersMode,
   IndexFiltersMode,
   IndexFiltersManager,
 } from './utilities/index-filters';

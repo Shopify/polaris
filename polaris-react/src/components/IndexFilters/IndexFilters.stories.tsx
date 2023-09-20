@@ -13,7 +13,7 @@ import {
   Page,
   Badge,
   Button,
-  useIndexFiltersManager,
+  useSetIndexFiltersMode,
   IndexFiltersMode,
 } from '@shopify/polaris';
 import {
@@ -22,7 +22,6 @@ import {
   MobileVerticalDotsMajor,
 } from '@shopify/polaris-icons';
 
-import {useSetIndexFiltersMode} from './hooks';
 import type {IndexFiltersProps} from './IndexFilters';
 
 export default {
@@ -1171,7 +1170,7 @@ export function WrappedInAPage() {
 }
 
 export function WrappedInAPageWithCustomActions() {
-  const {mode} = useIndexFiltersManager();
+  const {mode} = useSetIndexFiltersMode();
   const shouldDisableAction = mode !== IndexFiltersMode.Default;
   return (
     <Page

@@ -21,9 +21,9 @@ import type {FeaturesConfig} from '../../utilities/features';
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {
   IndexFiltersMode,
-  IndexFiltersContext,
+  IndexFiltersModeContext,
 } from '../../utilities/index-filters';
-import type {IndexFiltersContextType} from '../../utilities/index-filters';
+import type {IndexFiltersModeContextType} from '../../utilities/index-filters';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 type MediaQueryContextType = NonNullable<
@@ -44,7 +44,7 @@ export interface WithPolarisTestProviderOptions {
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
   // Contexts provided by IndexFilters
-  indexFilters?: Partial<IndexFiltersContextType>;
+  indexFilters?: Partial<IndexFiltersModeContextType>;
 }
 
 export interface PolarisTestProviderProps
@@ -57,7 +57,7 @@ const defaultMediaQuery: MediaQueryContextType = {
   isNavigationCollapsed: false,
 };
 
-const defaultIndexFilters: IndexFiltersContextType = {
+const defaultIndexFilters: IndexFiltersModeContextType = {
   mode: IndexFiltersMode.Default,
   setMode: noop,
 };
@@ -104,11 +104,11 @@ export function PolarisTestProvider({
                     <FocusManager>
                       <EphemeralPresenceManager>
                         <FrameContext.Provider value={mergedFrame}>
-                          <IndexFiltersContext.Provider
+                          <IndexFiltersModeContext.Provider
                             value={mergedIndexFilters}
                           >
                             {children}
-                          </IndexFiltersContext.Provider>
+                          </IndexFiltersModeContext.Provider>
                         </FrameContext.Provider>
                       </EphemeralPresenceManager>
                     </FocusManager>

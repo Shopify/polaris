@@ -2,11 +2,11 @@ import {createContext} from 'react';
 
 import type {IndexFiltersMode} from './types';
 
-export interface IndexFiltersContextType {
+export interface IndexFiltersModeContextType {
   mode: IndexFiltersMode;
   setMode: (mode: IndexFiltersMode) => void;
 }
 
-export const IndexFiltersContext = createContext<
-  IndexFiltersContextType | undefined
+export const IndexFiltersModeContext = createContext<
+  IndexFiltersModeContextType | undefined
 >(undefined);

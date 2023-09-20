@@ -3,12 +3,12 @@ import {mountWithApp} from 'tests/utilities';
 
 import {IndexFiltersMode} from '../types';
 import {IndexFiltersManager} from '../IndexFiltersManager';
-import {useIndexFiltersManager} from '../hooks';
+import {useSetIndexFiltersMode} from '../hooks';
 
 describe('<IndexFiltersManager />', () => {
   it('renders children with the context value', () => {
     const ChildComponent = () => {
-      const {mode, setMode} = useIndexFiltersManager();
+      const {mode, setMode} = useSetIndexFiltersMode();
       return (
         <div>
           <span id="mode">{mode}</span>

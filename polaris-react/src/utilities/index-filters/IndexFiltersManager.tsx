@@ -1,14 +1,14 @@
 import type {ContextType} from 'react';
 import React, {useMemo, useState} from 'react';
 
-import {IndexFiltersContext} from './context';
+import {IndexFiltersModeContext} from './context';
 import {IndexFiltersMode} from './types';
 
 export interface IndexFiltersManagerProps {
   children?: React.ReactNode;
 }
 
-type Context = NonNullable<ContextType<typeof IndexFiltersContext>>;
+type Context = NonNullable<ContextType<typeof IndexFiltersModeContext>>;
 
 export function IndexFiltersManager({children}: IndexFiltersManagerProps) {
   const [mode, setMode] = useState<Context['mode']>(IndexFiltersMode.Default);
@@ -22,8 +22,8 @@ export function IndexFiltersManager({children}: IndexFiltersManagerProps) {
   );
 
   return (
-    <IndexFiltersContext.Provider value={value}>
+    <IndexFiltersModeContext.Provider value={value}>
       {children}
-    </IndexFiltersContext.Provider>
+    </IndexFiltersModeContext.Provider>
   );
 }
