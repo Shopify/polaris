@@ -373,7 +373,7 @@ describe('<Tooltip />', () => {
 
     it('renders content with a border radius of 2 when declared', () => {
       const tooltip = mountWithApp(
-        <Tooltip content="Inner content" borderRadius="2">
+        <Tooltip content="Inner content" borderRadius="200">
           <Link>link content</Link>
         </Tooltip>,
       );

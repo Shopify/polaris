@@ -135,7 +135,7 @@ export function SortButton({
         paddingInlineEnd={polarisSummerEditions2023 ? '300' : undefined}
         paddingBlockStart={polarisSummerEditions2023 ? '200' : undefined}
         paddingBlockEnd={polarisSummerEditions2023 ? '200' : undefined}
-        borderBlockEndWidth="1"
+        borderBlockEndWidth="025"
         borderColor="border-subdued"
       >
         <ChoiceList

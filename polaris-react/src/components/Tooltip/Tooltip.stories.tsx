@@ -205,7 +205,7 @@ export function BorderRadius() {
         <Tooltip
           active
           content="This content has a border radius of 2 (radius-2)"
-          borderRadius="2"
+          borderRadius="200"
         >
           <HorizontalStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">

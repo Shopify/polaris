@@ -146,7 +146,7 @@ export function OptionList({
             paddingInlineEnd={polarisSummerEditions2023 ? '150' : '200'}
             borderColor="border-subdued"
             borderBlockStartWidth={
-              !isFirstOption && !polarisSummerEditions2023 ? '1' : undefined
+              !isFirstOption && !polarisSummerEditions2023 ? '025' : undefined
             }
           >
             <Text

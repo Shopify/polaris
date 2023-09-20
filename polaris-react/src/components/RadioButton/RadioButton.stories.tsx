@@ -107,7 +107,7 @@ export function WithBleed() {
       </VerticalStack>
       <VerticalStack gap="200">
         <Text as="h2">Bleed</Text>
-        <Box width="min-content" background="bg" borderRadius="3">
+        <Box width="min-content" background="bg" borderRadius="300">
           <div
             // Flex to shrink the container to the height of the radio (ie;
             // ignore line-height)
