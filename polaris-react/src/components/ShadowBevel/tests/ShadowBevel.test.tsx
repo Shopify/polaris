@@ -6,7 +6,7 @@ import {ShadowBevel} from '..';
 describe('ShadowBevel', () => {
   it('renders children', () => {
     const shadowBevel = mountWithApp(
-      <ShadowBevel boxShadow="md" borderRadius="3">
+      <ShadowBevel boxShadow="md" borderRadius="300">
         <p>hello</p>
         <p>world</p>
       </ShadowBevel>,
@@ -17,7 +17,7 @@ describe('ShadowBevel', () => {
 
   it('disables bevel effect', () => {
     const shadowBevel = mountWithApp(
-      <ShadowBevel boxShadow="md" borderRadius="3" bevel={false} />,
+      <ShadowBevel boxShadow="md" borderRadius="300" bevel={false} />,
     );
 
     expect(shadowBevel).toContainReactComponent('div', {
@@ -31,7 +31,7 @@ describe('ShadowBevel', () => {
 
   it('sets boxShadow and borderRadius props as inline styles', () => {
     const shadowBevel = mountWithApp(
-      <ShadowBevel boxShadow="md" borderRadius="3" />,
+      <ShadowBevel boxShadow="md" borderRadius="300" />,
     );
 
     expect(shadowBevel).toContainReactComponent('div', {
@@ -47,7 +47,7 @@ describe('ShadowBevel', () => {
     const shadowBevel = mountWithApp(
       <ShadowBevel
         boxShadow="md"
-        borderRadius="3"
+        borderRadius="300"
         bevel={{xs: false, sm: true, lg: false}}
       />,
     );
@@ -69,7 +69,7 @@ describe('ShadowBevel', () => {
 
   it('sets as prop to the root element', () => {
     const shadowBevel = mountWithApp(
-      <ShadowBevel as="article" boxShadow="md" borderRadius="3" />,
+      <ShadowBevel as="article" boxShadow="md" borderRadius="300" />,
     );
 
     expect(shadowBevel).toContainReactComponent('article');

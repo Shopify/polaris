@@ -62,7 +62,7 @@ describe('Card', () => {
     );
 
     expect(card).toContainReactComponent(ShadowBevel, {
-      borderRadius: '3',
+      borderRadius: '300',
     });
   });
 
