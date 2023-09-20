@@ -1,3 +1,4 @@
+import {Children, ReactElement} from 'react';
 import {Icon, Bleed} from '@shopify/polaris';
 import {
   CancelSmallMinor,
@@ -25,27 +26,39 @@ type DirectiveProps = React.PropsWithChildren<{
   img?: string;
   alt?: string;
 }>;
-export const DirectiveCard = ({children, status, img, alt}: DirectiveProps) => {
+export const DirectiveCard = ({children, status}: DirectiveProps) => {
+  const childrenArray = Children.toArray(children) as ReactElement[];
+
+  let image: ReactElement | undefined;
+
+  const rest = childrenArray.filter((d) => {
+    if (d.props.src) {
+      image = d;
+    }
+
+    return !d.props.src;
+  });
+
   return (
     <Card>
-      {img ? (
+      {image?.props?.src ? (
         <Stack gap="4">
           <Bleed marginInline="4" marginBlockStart="4">
             <ImageThumbnail
               className={styles.ImageThumbnail}
-              src={img}
-              alt={alt}
+              src={image?.props?.src}
+              alt={image?.props?.alt}
             />
           </Bleed>
           <Stack gap="2">
             <Pill status={status} />
-            {children}
+            {rest}
           </Stack>
         </Stack>
       ) : (
         <Stack gap="2">
           <Pill status={status} />
-          {children}
+          {rest}
         </Stack>
       )}
     </Card>

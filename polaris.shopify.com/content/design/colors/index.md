@@ -53,7 +53,9 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
-        <Do img="/images/design/colors/color-overview-states-do@2x.png" alt="A list of badges that display paid, fulfilled, in progress, partially paid and unfulfilled states">
+        <Do>
+        ![A list of badges that display paid, fulfilled, in progress, partially paid and unfulfilled states](/images/design/colors/color-overview-states-do@2x.png)
+
         Use color to support different states merchants need to be informed about.
         </Do>
 
@@ -61,8 +63,10 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
-        <Dont alt="A card with a pink border and a pink $99 trying to entice the merchant" img="/images/design/colors/color-overview-decorate-dont@2x.png">
-        Use color to decorate or to distract merchants from performing tasks.
+        <Dont>
+          ![A card with a pink border and a pink $99 trying to entice the merchant](/images/design/colors/color-overview-decorate-dont@2x.png)
+
+          Use color to decorate or to distract merchants from performing tasks.
         </Dont>
 
       </Grid.Cell>
@@ -107,8 +111,10 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
-        <Do alt="A modal with a bright red header and bright red button that stops the user from navigating away from a page with unsaved changes" img="/images/design/colors/color-overview-vivid-do@2x.png">
-        Use strong, vivid colors to grab attention to things that matter most.
+        <Do>
+          ![A modal with a bright red header and bright red button that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-vivid-do@2x.png)
+
+          Use strong, vivid colors to grab attention to things that matter most.
         </Do>
 
       </Grid.Cell>
@@ -116,8 +122,10 @@ keywords:
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
 
-        <Dont img="/images/design/colors/color-overview-diminish-dont@2x.png" alt="A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes">
-        Contradict or diminish messaging by using subdued colors or grayscale.
+        <Dont>
+          ![A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-diminish-dont@2x.png)
+
+          Contradict or diminish messaging by using subdued colors or grayscale.
         </Dont>
 
 
@@ -162,15 +170,19 @@ keywords:
       </Grid.Cell>
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
-        <Do alt="An orange badge with an alert icon and text label in a table column that indicates that an item is almost out of stock" img="/images/design/colors/color-overview-conjunction-do@2x.png">
-        Use color in conjunction with other discernible elements to amplify the message.
+        <Do>
+           ![An orange badge with an alert icon and text label in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-conjunction-do@2x.png)
+
+            Use color in conjunction with other discernible elements to amplify the message.
         </Do>
       </Grid.Cell>
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
-        <Dont img="/images/design/colors/color-overview-alone-dont@2x.png" alt="A text label in orange in a table column that indicates that an item is almost out of stock">
-        Use color alone to convey meaning
+        <Dont>
+          ![A text label in orange in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-alone-dont@2x.png)
+
+          Use color alone to convey meaning
         </Dont>
 
       </Grid.Cell>
