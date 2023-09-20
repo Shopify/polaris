@@ -12,7 +12,6 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 `npx @shopify/polaris-migrator v12-react-avatar-component <path>`
 
-- Remove the `customer` prop
 - Replace the `size` prop with the new mapping below
 
 | Before                    | After       |

@@ -39,7 +39,7 @@ export function Default() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar size="md" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -147,7 +147,7 @@ export function WithSelectionAndNoBulkActions() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -228,7 +228,7 @@ export function WithBulkActions() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -305,7 +305,7 @@ export function WithBulkActionsAndManyItems() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -387,7 +387,7 @@ export function WithLoadingState() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -428,7 +428,7 @@ export function WithTotalCount() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar size="md" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -474,7 +474,7 @@ export function WithHeaderContent() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar size="md" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -542,7 +542,7 @@ export function WithSorting() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -596,7 +596,7 @@ export function WithAlternateTool() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -706,7 +706,7 @@ export function WithFiltering() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem id={id} url={url} media={media}>
@@ -819,7 +819,7 @@ export function WithACustomEmptySearchResultState() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem id={id} url={url} media={media}>
@@ -874,7 +874,7 @@ export function WithItemShortcutActions() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location, latestOrderUrl} = item;
-          const media = <Avatar size="md" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
           const shortcutActions = latestOrderUrl
             ? [
                 {
@@ -930,7 +930,7 @@ export function WithPersistentItemShortcutActions() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location, latestOrderUrl} = item;
-          const media = <Avatar size="md" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
           const shortcutActions = latestOrderUrl
             ? [
                 {
@@ -1050,7 +1050,7 @@ export function WithMultiselect() {
 
   function renderItem(item, _, index) {
     const {id, url, name, location} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -1208,7 +1208,7 @@ export function WithAllOfItsElements() {
 
   function renderItem(item) {
     const {id, url, name, location, latestOrderUrl} = item;
-    const media = <Avatar size="md" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
     const shortcutActions = latestOrderUrl
       ? [{content: 'View latest order', url: latestOrderUrl}]
       : null;
