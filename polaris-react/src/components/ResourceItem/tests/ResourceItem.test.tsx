@@ -559,7 +559,7 @@ describe('<ResourceItem />', () => {
     it('includes an <Avatar /> if one is provided', () => {
       const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
-          <ResourceItem id={itemId} url={url} media={<Avatar />} />
+          <ResourceItem id={itemId} url={url} media={<Avatar customer />} />
         </ResourceListContext.Provider>,
       );
       expect(wrapper).toContainReactComponent(Avatar);
