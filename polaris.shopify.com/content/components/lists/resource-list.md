@@ -181,5 +181,5 @@ Resource lists should:
 
 ## Related components
 
-- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/data-table)
+- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/tables/data-table)
 - To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists/list)

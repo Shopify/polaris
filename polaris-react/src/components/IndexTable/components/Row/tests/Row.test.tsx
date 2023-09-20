@@ -6,10 +6,14 @@ import type {DeepPartial} from '@shopify/useful-types';
 import {IndexTable} from '../../../IndexTable';
 import type {IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
+import {SelectionType} from '../../../../../utilities/index-provider';
 import {Row} from '../Row';
 import {Checkbox} from '../../Checkbox';
 import {Button} from '../../../../Button';
 import {Link} from '../../../../Link';
+import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
+import styles from '../../../IndexTable.scss';
+import type {Range} from '../../../../../utilities/index-provider';
 
 const defaultEvent = {
   preventDefault: noop,
@@ -82,6 +86,101 @@ describe('<Row />', () => {
     );
 
     expect(row).toContainReactComponent(RowHoveredContext.Provider);
+  });
+
+  it('applies the styles.TableRow class to the table row element', () => {
+    const row = mountWithTable(
+      <Row id="id" selected position={1}>
+        <td />
+      </Row>,
+    );
+
+    expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
+      styles.TableRow,
+    );
+  });
+
+  describe('rowType', () => {
+    describe('when a `rowType` of `subheader` is set', () => {
+      it('applies the .TableRow-subheader class to the table row element', () => {
+        const row = mountWithTable(
+          <Row id="id" selected rowType="subheader" position={1}>
+            <td />
+          </Row>,
+        );
+
+        expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
+          styles['TableRow-subheader'],
+        );
+      });
+
+      it('calls onSelectionChange with the `selectionRange` when present and the row checkbox cell is clicked', () => {
+        const onSelectionChangeSpy = jest.fn();
+        const range: Range = [0, 1];
+        const row = mountWithTable(
+          <Row {...defaultProps} rowType="subheader" selectionRange={range}>
+            <th>
+              <a href="/">Child without data-primary-link</a>
+            </th>
+          </Row>,
+          {
+            indexTableProps: {
+              itemCount: 50,
+              selectedItemsCount: 0,
+              onSelectionChange: onSelectionChangeSpy,
+            },
+          },
+        );
+
+        row.find('div', {className: 'Wrapper'})!.triggerKeypath('onClick', {
+          stopPropagation: noop,
+          key: ' ',
+          nativeEvent: {},
+        });
+
+        expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
+        expect(onSelectionChangeSpy).toHaveBeenCalledWith(
+          SelectionType.Range,
+          true,
+          range,
+        );
+      });
+
+      it('does not call onSelectionChange with the `selectionRange` when present and the row is clicked', () => {
+        const onSelectionChangeSpy = jest.fn();
+        const range: Range = [0, 1];
+        const row = mountWithTable(
+          <Row {...defaultProps} rowType="subheader" selectionRange={range}>
+            <th>
+              <a href="/">Child without data-primary-link</a>
+            </th>
+          </Row>,
+          {
+            indexTableProps: {
+              itemCount: 50,
+              selectedItemsCount: 0,
+              onSelectionChange: onSelectionChangeSpy,
+            },
+          },
+        );
+
+        triggerOnClick(row, 1, defaultEvent);
+
+        expect(onSelectionChangeSpy).not.toHaveBeenCalled();
+      });
+    });
+  });
+
+  it('allows the checkbox to be indeterminate', () => {
+    const row = mountWithTable(
+      <Row id="id" selected="indeterminate" position={1}>
+        <td />
+      </Row>,
+    );
+
+    expect(row.find(Row)?.find(PolarisCheckbox)?.prop('checked')).toBe(
+      'indeterminate',
+    );
   });
 
   it(`dispatches a mouse event when the row is clicked and selectMode is false`, () => {
