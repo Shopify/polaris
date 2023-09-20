@@ -83,11 +83,11 @@ export function WithBleed() {
   );
 
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="2">
+    <VerticalStack gap="800">
+      <VerticalStack gap="200">
         <Text as="h2">No Bleed</Text>
-        <Card padding="4">
-          <VerticalStack gap="4">
+        <Card padding="400">
+          <VerticalStack gap="400">
             <RadioButton
               label="Accounts are disabled"
               checked={value1 === 'disabled'}
@@ -105,13 +105,13 @@ export function WithBleed() {
           </VerticalStack>
         </Card>
       </VerticalStack>
-      <VerticalStack gap="2">
+      <VerticalStack gap="200">
         <Text as="h2">Bleed</Text>
         <Box width="min-content" background="bg" borderRadius="3">
           <div
             // Flex to shrink the container to the height of the radio (ie;
             // ignore line-height)
-            style={{padding: 'var(--p-space-8)', display: 'flex'}}
+            style={{padding: 'var(--p-space-800)', display: 'flex'}}
           >
             <RadioButton
               label="Accounts are disabled"
@@ -120,11 +120,11 @@ export function WithBleed() {
               id="disabled2"
               name="accounts2"
               onChange={handleChange2}
-              bleed="8"
+              bleed="800"
             />
           </div>
           <Divider />
-          <div style={{padding: 'var(--p-space-8)', display: 'flex'}}>
+          <div style={{padding: 'var(--p-space-800)', display: 'flex'}}>
             <RadioButton
               label="Accounts are optional"
               labelHidden
@@ -132,7 +132,7 @@ export function WithBleed() {
               id="optional2"
               name="accounts2"
               onChange={handleChange2}
-              bleed="8"
+              bleed="800"
             />
           </div>
         </Box>

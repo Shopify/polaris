@@ -179,7 +179,7 @@ export function WithFocus() {
 export function InACard() {
   return (
     <Card roundedAbove="sm">
-      <VerticalStack gap="3">
+      <VerticalStack gap="300">
         <Text as="h2" variant="headingMd">
           Online store dashboard
         </Text>
@@ -215,8 +215,8 @@ export function InALegacyCard() {
 export function WithEndJustifiedContent() {
   return (
     <Banner status="critical">
-      <VerticalStack gap="1">
-        <HorizontalStack gap="4" align="space-between">
+      <VerticalStack gap="100">
+        <HorizontalStack gap="400" align="space-between">
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min
           </Text>
@@ -255,7 +255,7 @@ export function CustomIcon() {
 
 export function All() {
   return (
-    <VerticalStack gap="3">
+    <VerticalStack gap="300">
       <Text as="h2" variant="headingMd">
         With dismiss and actions
       </Text>

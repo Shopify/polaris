@@ -4,7 +4,7 @@ import {SkeletonThumbnail, VerticalStack} from '@shopify/polaris';
 
 export function All() {
   return (
-    <VerticalStack gap="4">
+    <VerticalStack gap="400">
       <ExtraSmall />
       <Small />
       <Medium />

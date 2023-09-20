@@ -8,7 +8,7 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="4">
+    <VerticalStack gap="400">
       <Box maxWidth="290px">
         <Card>
           <Default />

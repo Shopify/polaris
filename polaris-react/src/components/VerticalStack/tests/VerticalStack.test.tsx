@@ -29,7 +29,7 @@ describe('<VerticalStack />', () => {
 
   it('overrides custom properties if they are passed in', () => {
     const verticalStack = mountWithApp(
-      <VerticalStack inlineAlign="center" gap="10">
+      <VerticalStack inlineAlign="center" gap="1000">
         {children}
       </VerticalStack>,
     );
@@ -37,20 +37,20 @@ describe('<VerticalStack />', () => {
     expect(verticalStack).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-vertical-stack-inline-align': 'center',
-        '--pc-vertical-stack-gap-xs': 'var(--p-space-10)',
+        '--pc-vertical-stack-gap-xs': 'var(--p-space-1000)',
       }) as React.CSSProperties,
     });
   });
 
   it('accepts gap based on breakpoints', () => {
     const verticalStack = mountWithApp(
-      <VerticalStack gap={{xs: '2', md: '8'}}>{children}</VerticalStack>,
+      <VerticalStack gap={{xs: '200', md: '800'}}>{children}</VerticalStack>,
     );
 
     expect(verticalStack).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-vertical-stack-gap-md': 'var(--p-space-8)',
-        '--pc-vertical-stack-gap-xs': 'var(--p-space-2)',
+        '--pc-vertical-stack-gap-md': 'var(--p-space-800)',
+        '--pc-vertical-stack-gap-xs': 'var(--p-space-200)',
       }) as React.CSSProperties,
     });
   });

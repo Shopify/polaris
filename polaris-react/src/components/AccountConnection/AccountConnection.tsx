@@ -78,7 +78,7 @@ export function AccountConnection({
   const termsOfServiceMarkup = termsOfService ? (
     <Box
       paddingBlockStart={
-        polarisSummerEditions2023 && breakpoints.mdUp ? '4' : '5'
+        polarisSummerEditions2023 && breakpoints.mdUp ? '400' : '500'
       }
     >
       {termsOfService}
@@ -92,9 +92,9 @@ export function AccountConnection({
   return (
     <Card>
       <SettingAction action={actionElement}>
-        <HorizontalStack gap="4">
+        <HorizontalStack gap="400">
           {avatarMarkup}
-          <VerticalStack gap={polarisSummerEditions2023 ? '1' : '2'}>
+          <VerticalStack gap={polarisSummerEditions2023 ? '100' : '200'}>
             {titleMarkup}
             {detailsMarkup}
           </VerticalStack>

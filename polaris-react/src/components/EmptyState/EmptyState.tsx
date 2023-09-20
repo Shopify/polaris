@@ -80,7 +80,7 @@ export function EmptyState({
     : null;
 
   const footerContentMarkup = footerContent ? (
-    <Box paddingBlockStart="4">
+    <Box paddingBlockStart="400">
       <Text
         as="span"
         color={polarisSummerEditions2023 ? undefined : 'subdued'}
@@ -99,7 +99,7 @@ export function EmptyState({
     : null;
 
   const headingMarkup = heading ? (
-    <Box paddingBlockEnd={polarisSummerEditions2023 ? '1_5-experimental' : '4'}>
+    <Box paddingBlockEnd={polarisSummerEditions2023 ? '150' : '400'}>
       <Text
         variant={polarisSummerEditions2023 ? 'headingMd' : headingSize}
         as="p"
@@ -123,7 +123,7 @@ export function EmptyState({
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <Box paddingBlockEnd={polarisSummerEditions2023 ? '4' : '6'}>
+      <Box paddingBlockEnd={polarisSummerEditions2023 ? '400' : '600'}>
         {headingMarkup}
         {childrenMarkup}
       </Box>
@@ -131,7 +131,7 @@ export function EmptyState({
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
-      <HorizontalStack align="center" gap="2">
+      <HorizontalStack align="center" gap="200">
         {secondaryActionMarkup}
         {primaryActionMarkup}
       </HorizontalStack>
@@ -152,8 +152,8 @@ export function EmptyState({
     <Box
       paddingInlineStart="0"
       paddingInlineEnd="0"
-      paddingBlockStart="5"
-      paddingBlockEnd="16"
+      paddingBlockStart="500"
+      paddingBlockEnd="1600"
     >
       <VerticalStack inlineAlign="center">
         {imageMarkup}

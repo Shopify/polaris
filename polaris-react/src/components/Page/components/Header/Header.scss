@@ -131,7 +131,9 @@ $action-menu-rollup-computed-width: 40px;
     );
     // Because of this line, we need an additional #{$se23} & specificity buster for .noBreadcrumbs below.
     #{$se23} & {
-      margin-left: calc(var(--p-space-500) + var(--p-space-200) + var(--p-space-100));
+      margin-left: calc(
+        var(--p-space-500) + var(--p-space-200) + var(--p-space-100)
+      );
     }
   }
 

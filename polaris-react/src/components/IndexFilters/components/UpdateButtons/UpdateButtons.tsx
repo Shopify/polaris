@@ -123,7 +123,11 @@ export function UpdateButtons({
   }
 
   return (
-    <HorizontalStack align="start" blockAlign="center" gap={se23 ? '1' : '2'}>
+    <HorizontalStack
+      align="start"
+      blockAlign="center"
+      gap={se23 ? '100' : '200'}
+    >
       {cancelButtonMarkup}
       {primaryAction.type === 'save-as' ? (
         <Modal

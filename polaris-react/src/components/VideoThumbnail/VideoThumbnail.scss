@@ -63,7 +63,8 @@ $progress-bar-height: 6px;
 .Timestamp {
   position: absolute;
   bottom: 0;
-  padding: var(--p-space-100) var(--p-space-200) var(--p-space-100) var(--p-space-100);
+  padding: var(--p-space-100) var(--p-space-200) var(--p-space-100)
+    var(--p-space-100);
   margin-bottom: var(--p-space-400);
   margin-left: var(--p-space-400);
   border-radius: var(--p-border-radius-1);

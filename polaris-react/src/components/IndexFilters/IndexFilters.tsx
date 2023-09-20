@@ -343,7 +343,7 @@ export function IndexFilters({
                     blockAlign="center"
                     gap={{
                       xs: '0',
-                      md: '2',
+                      md: '200',
                     }}
                   >
                     <div
@@ -439,7 +439,7 @@ export function IndexFilters({
                 >
                   <div className={styles.ButtonWrap}>
                     <HorizontalStack
-                      gap={polarisSummerEditions2023 ? '2' : '3'}
+                      gap={polarisSummerEditions2023 ? '200' : '300'}
                       align="start"
                       blockAlign="center"
                     >

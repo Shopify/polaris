@@ -30,50 +30,50 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="4">
+    <VerticalStack gap="800">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           With action list
         </Text>
         <WithActionList />
       </VerticalStack>
 
-      <VerticalStack gap="2">
+      <VerticalStack gap="200">
         <Text as="h2" variant="headingXl">
           With content and actions
         </Text>
         <WithContentAndActions />
       </VerticalStack>
 
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           With form components
         </Text>
         <WithFormComponents />
       </VerticalStack>
 
-      <VerticalStack gap="2">
+      <VerticalStack gap="200">
         <Text as="h2" variant="headingXl">
           With lazy loaded list
         </Text>
         <WithLazyLoadedList />
       </VerticalStack>
 
-      <VerticalStack gap="2">
+      <VerticalStack gap="200">
         <Text as="h2" variant="headingXl">
           With scrollable lazy loaded list
         </Text>
         <WithScrollableLazyLoadedList />
       </VerticalStack>
 
-      <VerticalStack gap="2">
+      <VerticalStack gap="200">
         <Text as="h2" variant="headingXl">
           With searchable listbox
         </Text>
         <WithSearchableListbox />
       </VerticalStack>
 
-      <VerticalStack gap="2">
+      <VerticalStack gap="200">
         <Text as="h2" variant="headingXl">
           With loading smaller content
         </Text>
@@ -112,7 +112,7 @@ export function WithActionList() {
 
   return (
     <div style={{height: '250px'}}>
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Popover
           active={activePopover === 'popover1'}
           activator={activator}
@@ -405,7 +405,7 @@ export function WithScrollableLazyLoadedList() {
                 position: 'relative',
                 width: polarisSummerEditions2023 ? '231px' : '310px',
                 height: polarisSummerEditions2023 ? '262px' : '292px',
-                padding: 'var(--p-space-2) 0',
+                padding: 'var(--p-space-200) 0',
                 borderBottomLeftRadius: 'var(--p-border-radius-2)',
                 borderBottomRightRadius: 'var(--p-border-radius-2)',
               }}
@@ -755,7 +755,7 @@ export function WithSearchableListbox() {
                 position: 'relative',
                 width: '310px',
                 height: polarisSummerEditions2023 ? '262px' : '292px',
-                padding: 'var(--p-space-2) 0',
+                padding: 'var(--p-space-200) 0',
                 borderBottomLeftRadius: 'var(--p-border-radius-2)',
                 borderBottomRightRadius: 'var(--p-border-radius-2)',
               }}
@@ -844,12 +844,12 @@ export function WithSubduedPane() {
         onClose={togglePopoverActive}
       >
         <Popover.Pane>
-          <Box padding="4">
+          <Box padding="400">
             <Text as="p">Popover content</Text>
           </Box>
         </Popover.Pane>
         <Popover.Pane subdued>
-          <Box padding="4">
+          <Box padding="400">
             <Text as="p">Subdued popover pane</Text>
           </Box>
         </Popover.Pane>

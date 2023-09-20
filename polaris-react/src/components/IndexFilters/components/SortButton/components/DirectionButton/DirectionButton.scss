@@ -19,7 +19,8 @@
     // stylelint-disable-next-line -- se23 overrides
     @include focus-ring($size: 'wide');
     border-radius: var(--p-border-radius-2);
-    padding: var(--p-space-100) var(--p-space-300) var(--p-space-100) var(--p-space-200);
+    padding: var(--p-space-100) var(--p-space-300) var(--p-space-100)
+      var(--p-space-200);
   }
 
   #{$se23} &:hover {

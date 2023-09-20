@@ -30,10 +30,10 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
     helpTextElement = (
       <Box
         id={helpTextID}
-        paddingBlockStart="2"
-        paddingInlineStart={polarisSummerEditions2023 ? '2' : '5'}
+        paddingBlockStart="200"
+        paddingInlineStart={polarisSummerEditions2023 ? '200' : '500'}
         paddingBlockEnd="0"
-        paddingInlineEnd={polarisSummerEditions2023 ? '2' : '5'}
+        paddingInlineEnd={polarisSummerEditions2023 ? '200' : '500'}
         color="text-subdued"
       >
         {helpText}

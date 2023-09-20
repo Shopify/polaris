@@ -38,12 +38,10 @@
   cursor: pointer;
   padding-block-start: calc(
     var(--pc-choice-bleed-block-start, var(--pc-choice-space-0)) +
-      
       var(--p-space-100)
   );
   padding-block-end: calc(
     var(--pc-choice-bleed-block-end, var(--pc-choice-space-0)) +
-      
       var(--p-space-100)
   );
   padding-inline-start: var(

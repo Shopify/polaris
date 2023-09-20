@@ -23,7 +23,8 @@
   @media #{$p-breakpoints-md-down} {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding: var(--p-space-300) var(--p-space-300) var(--p-space-300) var(--p-space-400);
+    padding: var(--p-space-300) var(--p-space-300) var(--p-space-300)
+      var(--p-space-400);
 
     #{$se23} & {
       padding: var(--p-space-200);

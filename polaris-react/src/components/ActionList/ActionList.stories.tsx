@@ -29,7 +29,7 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="16">
+    <VerticalStack gap="1600">
       <InAPopover />
       <WithIconsOrImage />
       <WithAnIconAndASuffix />

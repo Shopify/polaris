@@ -62,8 +62,7 @@
     top: calc(-1 * var(--p-space-200) + 0.8px);
     // stylelint-disable-next-line -- Custom positioning not expected to align with Polaris tokens
     left: calc(
-      var(--pc-tooltip-chevron-x-pos) - var(--p-space-150) -
-        var(--p-space-400)
+      var(--pc-tooltip-chevron-x-pos) - var(--p-space-150) - var(--p-space-400)
     );
     // stylelint-disable-next-line -- se23 overrides
     z-index: var(--pc-tooltip-tail-z-index);
