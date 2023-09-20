@@ -6,9 +6,7 @@ import type {
   IndexTableRowProps,
 } from '@shopify/polaris';
 import {
-  Icon,
-  HorizontalStack,
-  Button,
+  InlineStack,
   LegacyCard,
   EmptySearchResult,
   IndexFilters,
@@ -17,6 +15,8 @@ import {
   TextField,
   Text,
   useIndexResourceState,
+  Thumbnail,
+  Box,
 } from '@shopify/polaris';
 
 import {IndexTable} from './IndexTable';
@@ -4404,6 +4404,1406 @@ export function WithSubHeadersNonSelectable() {
                 <IndexTable.Cell>
                   <Text as="span" alignment="end" numeric>
                     {amountSpent}
+                  </Text>
+                </IndexTable.Cell>
+              </IndexTable.Row>
+            );
+          },
+        )}
+      </Fragment>
+    );
+  });
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        onSelectionChange={handleSelectionChange}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        resourceName={resourceName}
+        itemCount={rows.length}
+        headings={columnHeadings as IndexTableProps['headings']}
+        selectable={false}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithNestedRows() {
+  const rows = [
+    {
+      id: '3411',
+      quantity: 11,
+      price: '$2,400',
+      size: 'Small Lorem ipsum dolor sit amet',
+      color: 'Orange Lorem ipsum dolor sit amet',
+    },
+    {
+      id: '2562',
+      quantity: 30,
+      price: '$975',
+      size: 'Medium',
+      color: 'Orange',
+    },
+    {
+      id: '4102',
+      quantity: 27,
+      price: '$2885',
+      size: 'Large',
+      color: 'Orange',
+    },
+    {
+      id: '2564',
+      quantity: 19,
+      price: '$1,209',
+      size: 'Small',
+      color: 'Red',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      quantity: 22,
+      price: '$1,400',
+      size: 'Small',
+      color: 'Green',
+    },
+  ];
+
+  const columnHeadings = [
+    {title: 'Name', id: 'column-header--name'},
+    {
+      hidden: false,
+      id: 'column-header--price',
+      title: 'Price',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--quantity',
+      title: 'Available',
+    },
+  ];
+
+  const groupRowsBy = (groupKey: string, resolveId: (groupVal) => string) => {
+    let position = -1;
+    const groups = rows.reduce((groups, product) => {
+      const groupVal = product[groupKey];
+      if (!groups[groupVal]) {
+        position += 1;
+
+        groups[groupVal] = {
+          position,
+          products: [],
+          id: resolveId(groupVal),
+        };
+      }
+      groups[groupVal].products.push({
+        ...product,
+        position: position + 1,
+      });
+
+      position += 1;
+      return groups;
+    }, {});
+
+    return groups;
+  };
+
+  const resourceName = {
+    singular: 'product',
+    plural: 'products',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows, {resourceFilter: ({disabled}) => !disabled});
+
+  const groupedProducts = groupRowsBy(
+    'color',
+    (color) => `color--${color.toLowerCase()}`,
+  );
+
+  const rowMarkup = Object.keys(groupedProducts).map((color, index) => {
+    const {products, position, id: subheaderId} = groupedProducts[color];
+    let selected: IndexTableRowProps['selected'] = false;
+
+    const someProductsSelected = products.some(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    const allProductsSelected = products.every(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    if (allProductsSelected) {
+      selected = true;
+    } else if (someProductsSelected) {
+      selected = 'indeterminate';
+    }
+
+    const selectableRows = rows.filter(({disabled}) => !disabled);
+    const rowRange: IndexTableRowProps['selectionRange'] = [
+      selectableRows.findIndex((row) => row.id === products[0].id),
+      selectableRows.findIndex(
+        (row) => row.id === products[products.length - 1].id,
+      ),
+    ];
+
+    const disabled = products.every(({disabled}) => disabled);
+
+    return (
+      <Fragment key={subheaderId}>
+        <IndexTable.Row
+          rowType="subheader"
+          selectionRange={rowRange}
+          id={`Subheader-${index}`}
+          position={position}
+          selected={selected}
+          disabled={disabled}
+          accessibilityLabel={`Select all products wich has color ${color}`}
+        >
+          <IndexTable.Cell>
+            <Text as="span" fontWeight="semibold">
+              {color}
+            </Text>
+          </IndexTable.Cell>
+          <IndexTable.Cell />
+          <IndexTable.Cell />
+        </IndexTable.Row>
+        {products.map(
+          ({id, size, quantity, price, position, disabled}, rowIndex) => {
+            return (
+              <IndexTable.Row
+                rowType="child"
+                key={rowIndex}
+                id={id}
+                position={position}
+                selected={selectedResources.includes(id)}
+                disabled={disabled}
+              >
+                <IndexTable.Cell>
+                  <Text variant="bodyMd" as="span">
+                    {size}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" numeric>
+                    {price}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {quantity}
+                  </Text>
+                </IndexTable.Cell>
+              </IndexTable.Row>
+            );
+          },
+        )}
+      </Fragment>
+    );
+  });
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        onSelectionChange={handleSelectionChange}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        resourceName={resourceName}
+        itemCount={rows.length}
+        headings={columnHeadings as IndexTableProps['headings']}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithNestedRowsLastColumnSticky() {
+  const rows = [
+    {
+      id: '3411',
+      quantity: 11,
+      price: '$2,400',
+      size: 'Small Lorem ipsum dolor sit amet',
+      color: 'Orange Lorem ipsum dolor sit amet',
+    },
+    {
+      id: '2562',
+      quantity: 30,
+      price: '$975',
+      size: 'Medium',
+      color: 'Orange',
+    },
+    {
+      id: '4102',
+      quantity: 27,
+      price: '$2885',
+      size: 'Large',
+      color: 'Orange',
+    },
+    {
+      id: '2564',
+      quantity: 19,
+      price: '$1,209',
+      size: 'Small',
+      color: 'Red',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      quantity: 22,
+      price: '$1,400',
+      size: 'Small',
+      color: 'Green',
+    },
+  ];
+
+  const columnHeadings = [
+    {title: 'Name', id: 'column-header--size'},
+    {
+      hidden: false,
+      id: 'column-header--price',
+      title: 'Price',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--quantity',
+      title: 'Available',
+    },
+  ];
+
+  const groupRowsBy = (groupKey: string, resolveId: (groupVal) => string) => {
+    let position = -1;
+    const groups = rows.reduce((groups, product) => {
+      const groupVal = product[groupKey];
+      if (!groups[groupVal]) {
+        position += 1;
+
+        groups[groupVal] = {
+          position,
+          products: [],
+          id: resolveId(groupVal),
+        };
+      }
+      groups[groupVal].products.push({
+        ...product,
+        position: position + 1,
+      });
+
+      position += 1;
+      return groups;
+    }, {});
+
+    return groups;
+  };
+
+  const resourceName = {
+    singular: 'product',
+    plural: 'products',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows, {resourceFilter: ({disabled}) => !disabled});
+
+  const groupedProducts = groupRowsBy(
+    'color',
+    (color) => `color--${color.toLowerCase()}`,
+  );
+
+  const rowMarkup = Object.keys(groupedProducts).map((color, index) => {
+    const {products, position, id: subheaderId} = groupedProducts[color];
+    let selected: IndexTableRowProps['selected'] = false;
+
+    const someProductsSelected = products.some(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    const allProductsSelected = products.every(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    if (allProductsSelected) {
+      selected = true;
+    } else if (someProductsSelected) {
+      selected = 'indeterminate';
+    }
+
+    const selectableRows = rows.filter(({disabled}) => !disabled);
+    const rowRange: IndexTableRowProps['selectionRange'] = [
+      selectableRows.findIndex((row) => row.id === products[0].id),
+      selectableRows.findIndex(
+        (row) => row.id === products[products.length - 1].id,
+      ),
+    ];
+
+    const disabled = products.every(({disabled}) => disabled);
+
+    return (
+      <Fragment key={subheaderId}>
+        <IndexTable.Row
+          rowType="subheader"
+          selectionRange={rowRange}
+          id={`Subheader-${index}`}
+          position={position}
+          selected={selected}
+          disabled={disabled}
+          accessibilityLabel={`Select all products wich has color ${color}`}
+        >
+          <IndexTable.Cell id={subheaderId}>
+            <Text as="span" fontWeight="semibold">
+              {color}
+            </Text>
+          </IndexTable.Cell>
+          <IndexTable.Cell />
+          <IndexTable.Cell />
+        </IndexTable.Row>
+        {products.map(
+          ({id, size, quantity, price, position, disabled}, rowIndex) => {
+            return (
+              <IndexTable.Row
+                rowType="child"
+                key={rowIndex}
+                id={id}
+                position={position}
+                selected={selectedResources.includes(id)}
+                disabled={disabled}
+              >
+                <IndexTable.Cell>
+                  <Text variant="bodyMd" as="span">
+                    {size}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" numeric>
+                    {price}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {quantity}
+                  </Text>
+                </IndexTable.Cell>
+              </IndexTable.Row>
+            );
+          },
+        )}
+      </Fragment>
+    );
+  });
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        onSelectionChange={handleSelectionChange}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        resourceName={resourceName}
+        itemCount={rows.length}
+        headings={columnHeadings as IndexTableProps['headings']}
+        lastColumnSticky
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithNestedRowsNonSelectable() {
+  const rows = [
+    {
+      id: '3411',
+      quantity: 11,
+      price: '$2,400',
+      size: 'Small Lorem ipsum dolor sit amet',
+      color: 'Orange Lorem ipsum dolor sit amet',
+    },
+    {
+      id: '2562',
+      quantity: 30,
+      price: '$975',
+      size: 'Medium',
+      color: 'Orange',
+    },
+    {
+      id: '4102',
+      quantity: 27,
+      price: '$2885',
+      size: 'Large',
+      color: 'Orange',
+    },
+    {
+      id: '2564',
+      quantity: 19,
+      price: '$1,209',
+      size: 'Small',
+      color: 'Red',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      quantity: 22,
+      price: '$1,400',
+      size: 'Small',
+      color: 'Green',
+    },
+  ];
+
+  const columnHeadings = [
+    {title: 'Name', id: 'column-header--size'},
+    {
+      hidden: false,
+      id: 'column-header--price',
+      title: 'Price',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--quantity',
+      title: 'Available',
+    },
+  ];
+
+  const groupRowsBy = (groupKey: string, resolveId: (groupVal) => string) => {
+    let position = -1;
+    const groups = rows.reduce((groups, product) => {
+      const groupVal = product[groupKey];
+
+      if (!groups[groupVal]) {
+        position += 1;
+
+        groups[groupVal] = {
+          position,
+          products: [],
+          id: resolveId(groupVal),
+        };
+      }
+
+      groups[groupVal].products.push({
+        ...product,
+        position: position + 1,
+      });
+
+      position += 1;
+      return groups;
+    }, {});
+
+    return groups;
+  };
+
+  const resourceName = {
+    singular: 'product',
+    plural: 'products',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows, {resourceFilter: ({disabled}) => !disabled});
+
+  const groupedProducts = groupRowsBy(
+    'color',
+    (color) => `color--${color.toLowerCase()}`,
+  );
+
+  const rowMarkup = Object.keys(groupedProducts).map((color, index) => {
+    const {products, position, id: subheaderId} = groupedProducts[color];
+    let selected: IndexTableRowProps['selected'] = false;
+
+    const someProductsSelected = products.some(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    const allProductsSelected = products.every(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    if (allProductsSelected) {
+      selected = true;
+    } else if (someProductsSelected) {
+      selected = 'indeterminate';
+    }
+
+    const selectableRows = rows.filter(({disabled}) => !disabled);
+    const rowRange: IndexTableRowProps['selectionRange'] = [
+      selectableRows.findIndex((row) => row.id === products[0].id),
+      selectableRows.findIndex(
+        (row) => row.id === products[products.length - 1].id,
+      ),
+    ];
+
+    const disabled = products.every(({disabled}) => disabled);
+
+    return (
+      <Fragment key={subheaderId}>
+        <IndexTable.Row
+          rowType="subheader"
+          selectionRange={rowRange}
+          id={`Subheader-${index}`}
+          position={position}
+          selected={selected}
+          disabled={disabled}
+          accessibilityLabel={`Select all products wich has color ${color}`}
+        >
+          <IndexTable.Cell id={subheaderId}>
+            <Text as="span" fontWeight="semibold">
+              {color}
+            </Text>
+          </IndexTable.Cell>
+          <IndexTable.Cell />
+          <IndexTable.Cell />
+        </IndexTable.Row>
+        {products.map(
+          ({id, size, quantity, price, position, disabled}, rowIndex) => {
+            return (
+              <IndexTable.Row
+                rowType="child"
+                key={rowIndex}
+                id={id}
+                position={position}
+                selected={selectedResources.includes(id)}
+                disabled={disabled}
+              >
+                <IndexTable.Cell>
+                  <Text variant="bodyMd" as="span">
+                    {size}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" numeric>
+                    {price}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {quantity}
+                  </Text>
+                </IndexTable.Cell>
+              </IndexTable.Row>
+            );
+          },
+        )}
+      </Fragment>
+    );
+  });
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        onSelectionChange={handleSelectionChange}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        resourceName={resourceName}
+        itemCount={rows.length}
+        headings={columnHeadings as IndexTableProps['headings']}
+        selectable={false}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithNestedRowsWithThumbnails() {
+  const rows = [
+    {
+      id: '3411',
+      quantity: 11,
+      price: '$2,400',
+      size: 'Small Lorem ipsum dolor sit amet',
+      color: 'Orange Lorem ipsum dolor sit amet',
+    },
+    {
+      id: '2562',
+      quantity: 30,
+      price: '$975',
+      size: 'Medium',
+      color: 'Orange',
+    },
+    {
+      id: '4102',
+      quantity: 27,
+      price: '$2885',
+      size: 'Large',
+      color: 'Orange',
+    },
+    {
+      id: '2564',
+      quantity: 19,
+      price: '$1,209',
+      size: 'Small',
+      color: 'Red',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      quantity: 22,
+      price: '$1,400',
+      size: 'Small',
+      color: 'Green',
+    },
+  ];
+
+  const columnHeadings = [
+    {title: 'Image', id: 'column-header--image'},
+    {title: 'Name', id: 'column-header--size'},
+    {
+      hidden: false,
+      id: 'column-header--price',
+      title: 'Price',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--quantity',
+      title: 'Available',
+    },
+  ];
+
+  const groupRowsBy = (groupKey: string, resolveId: (groupVal) => string) => {
+    let position = -1;
+    const groups = rows.reduce((groups, product) => {
+      const groupVal = product[groupKey];
+      if (!groups[groupVal]) {
+        position += 1;
+
+        groups[groupVal] = {
+          position,
+          products: [],
+          id: resolveId(groupVal),
+        };
+      }
+      groups[groupVal].products.push({
+        ...product,
+        position: position + 1,
+      });
+
+      position += 1;
+      return groups;
+    }, {});
+
+    return groups;
+  };
+
+  const resourceName = {
+    singular: 'product',
+    plural: 'products',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows, {resourceFilter: ({disabled}) => !disabled});
+
+  const groupedProducts = groupRowsBy(
+    'color',
+    (color) => `color--${color.toLowerCase()}`,
+  );
+
+  const rowMarkup = Object.keys(groupedProducts).map((color, index) => {
+    const {products, position, id: subheaderId} = groupedProducts[color];
+    let selected: IndexTableRowProps['selected'] = false;
+
+    const someProductsSelected = products.some(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    const allProductsSelected = products.every(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    if (allProductsSelected) {
+      selected = true;
+    } else if (someProductsSelected) {
+      selected = 'indeterminate';
+    }
+
+    const selectableRows = rows.filter(({disabled}) => !disabled);
+    const rowRange: IndexTableRowProps['selectionRange'] = [
+      selectableRows.findIndex((row) => row.id === products[0].id),
+      selectableRows.findIndex(
+        (row) => row.id === products[products.length - 1].id,
+      ),
+    ];
+
+    const disabled = products.every(({disabled}) => disabled);
+
+    return (
+      <Fragment key={subheaderId}>
+        <IndexTable.Row
+          rowType="subheader"
+          selectionRange={rowRange}
+          id={`Subheader-${index}`}
+          position={position}
+          selected={selected}
+          disabled={disabled}
+          accessibilityLabel={`Select all products wich has color ${color}`}
+        >
+          <IndexTable.Cell>
+            <Thumbnail
+              source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+              size="medium"
+              alt="Black choker necklace"
+            />
+          </IndexTable.Cell>
+          <IndexTable.Cell id={subheaderId}>
+            <Text as="span" fontWeight="semibold">
+              {color}
+            </Text>
+          </IndexTable.Cell>
+          <IndexTable.Cell />
+          <IndexTable.Cell />
+        </IndexTable.Row>
+        {products.map(
+          ({id, size, quantity, price, position, disabled}, rowIndex) => {
+            return (
+              <IndexTable.Row
+                rowType="child"
+                key={rowIndex}
+                id={id}
+                position={position}
+                selected={selectedResources.includes(id)}
+                disabled={disabled}
+              >
+                <IndexTable.Cell>
+                  <Thumbnail
+                    source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                    size="small"
+                    alt="Black choker necklace"
+                  />
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text variant="bodyMd" as="span">
+                    {size}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" numeric>
+                    {price}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {quantity}
+                  </Text>
+                </IndexTable.Cell>
+              </IndexTable.Row>
+            );
+          },
+        )}
+      </Fragment>
+    );
+  });
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        onSelectionChange={handleSelectionChange}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        resourceName={resourceName}
+        itemCount={rows.length}
+        headings={columnHeadings as IndexTableProps['headings']}
+        selectable
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithNestedRowsWithThumbnailsNonSelectable() {
+  const rows = [
+    {
+      id: '3411',
+      quantity: 11,
+      price: '$2,400',
+      size: 'Small Lorem ipsum dolor sit amet',
+      color: 'Orange Lorem ipsum dolor sit amet',
+    },
+    {
+      id: '2562',
+      quantity: 30,
+      price: '$975',
+      size: 'Medium',
+      color: 'Orange',
+    },
+    {
+      id: '4102',
+      quantity: 27,
+      price: '$2885',
+      size: 'Large',
+      color: 'Orange',
+    },
+    {
+      id: '2564',
+      quantity: 19,
+      price: '$1,209',
+      size: 'Small',
+      color: 'Red',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      quantity: 22,
+      price: '$1,400',
+      size: 'Small',
+      color: 'Green',
+    },
+  ];
+
+  const columnHeadings = [
+    {title: 'Image', id: 'column-header--image'},
+    {title: 'Name', id: 'column-header--size'},
+    {
+      hidden: false,
+      id: 'column-header--price',
+      title: 'Price',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--quantity',
+      title: 'Available',
+    },
+  ];
+
+  const groupRowsBy = (groupKey: string, resolveId: (groupVal) => string) => {
+    let position = -1;
+    const groups = rows.reduce((groups, product) => {
+      const groupVal = product[groupKey];
+      if (!groups[groupVal]) {
+        position += 1;
+
+        groups[groupVal] = {
+          position,
+          products: [],
+          id: resolveId(groupVal),
+        };
+      }
+      groups[groupVal].products.push({
+        ...product,
+        position: position + 1,
+      });
+
+      position += 1;
+      return groups;
+    }, {});
+
+    return groups;
+  };
+
+  const resourceName = {
+    singular: 'product',
+    plural: 'products',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows, {resourceFilter: ({disabled}) => !disabled});
+
+  const groupedProducts = groupRowsBy(
+    'color',
+    (color) => `color--${color.toLowerCase()}`,
+  );
+
+  const rowMarkup = Object.keys(groupedProducts).map((color, index) => {
+    const {products, position, id: subheaderId} = groupedProducts[color];
+    let selected: IndexTableRowProps['selected'] = false;
+
+    const someProductsSelected = products.some(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    const allProductsSelected = products.every(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    if (allProductsSelected) {
+      selected = true;
+    } else if (someProductsSelected) {
+      selected = 'indeterminate';
+    }
+
+    const selectableRows = rows.filter(({disabled}) => !disabled);
+    const rowRange: IndexTableRowProps['selectionRange'] = [
+      selectableRows.findIndex((row) => row.id === products[0].id),
+      selectableRows.findIndex(
+        (row) => row.id === products[products.length - 1].id,
+      ),
+    ];
+
+    const disabled = products.every(({disabled}) => disabled);
+
+    return (
+      <Fragment key={subheaderId}>
+        <IndexTable.Row
+          rowType="subheader"
+          selectionRange={rowRange}
+          id={`Subheader-${index}`}
+          position={position}
+          selected={selected}
+          disabled={disabled}
+          accessibilityLabel={`Select all products wich has color ${color}`}
+        >
+          <IndexTable.Cell>
+            <Thumbnail
+              source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+              size="medium"
+              alt="Black choker necklace"
+            />
+          </IndexTable.Cell>
+          <IndexTable.Cell id={subheaderId}>
+            <Text as="span" fontWeight="semibold">
+              {color}
+            </Text>
+          </IndexTable.Cell>
+          <IndexTable.Cell />
+          <IndexTable.Cell />
+        </IndexTable.Row>
+        {products.map(
+          ({id, size, quantity, price, position, disabled}, rowIndex) => {
+            return (
+              <IndexTable.Row
+                rowType="child"
+                key={rowIndex}
+                id={id}
+                position={position}
+                selected={selectedResources.includes(id)}
+                disabled={disabled}
+              >
+                <IndexTable.Cell>
+                  <Thumbnail
+                    source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                    size="small"
+                    alt="Black choker necklace"
+                  />
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text variant="bodyMd" as="span">
+                    {size}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" numeric>
+                    {price}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {quantity}
+                  </Text>
+                </IndexTable.Cell>
+              </IndexTable.Row>
+            );
+          },
+        )}
+      </Fragment>
+    );
+  });
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        onSelectionChange={handleSelectionChange}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        resourceName={resourceName}
+        itemCount={rows.length}
+        headings={columnHeadings as IndexTableProps['headings']}
+        selectable={false}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithNestedRowsWithThumbnailsOneCellSelectable() {
+  const rows = [
+    {
+      id: '3411',
+      quantity: 11,
+      price: '$2,400',
+      size: 'Small Lorem ipsum dolor sit amet',
+      color: 'Orange Lorem ipsum dolor sit amet',
+    },
+    {
+      id: '2562',
+      quantity: 30,
+      price: '$975',
+      size: 'Medium',
+      color: 'Orange',
+    },
+    {
+      id: '4102',
+      quantity: 27,
+      price: '$2885',
+      size: 'Large',
+      color: 'Orange',
+    },
+    {
+      id: '2564',
+      quantity: 19,
+      price: '$1,209',
+      size: 'Small',
+      color: 'Red',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      quantity: 22,
+      price: '$1,400',
+      size: 'Small',
+      color: 'Green',
+    },
+  ];
+
+  const columnHeadings = [
+    {title: 'Name', id: 'column-header--size'},
+    {
+      hidden: false,
+      id: 'column-header--price',
+      title: 'Price',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--quantity',
+      title: 'Available',
+    },
+  ];
+
+  const groupRowsBy = (groupKey: string, resolveId: (groupVal) => string) => {
+    let position = -1;
+    const groups = rows.reduce((groups, product) => {
+      const groupVal = product[groupKey];
+
+      if (!groups[groupVal]) {
+        position += 1;
+
+        groups[groupVal] = {
+          position,
+          products: [],
+          id: resolveId(groupVal),
+        };
+      }
+
+      groups[groupVal].products.push({
+        ...product,
+        position: position + 1,
+      });
+
+      position += 1;
+      return groups;
+    }, {});
+
+    return groups;
+  };
+
+  const resourceName = {
+    singular: 'product',
+    plural: 'products',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows, {resourceFilter: ({disabled}) => !disabled});
+
+  const groupedProducts = groupRowsBy(
+    'color',
+    (color) => `color--${color.toLowerCase()}`,
+  );
+
+  const rowMarkup = Object.keys(groupedProducts).map((color, index) => {
+    const {products, position, id: subheaderId} = groupedProducts[color];
+    let selected: IndexTableRowProps['selected'] = false;
+
+    const someProductsSelected = products.some(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    const allProductsSelected = products.every(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    if (allProductsSelected) {
+      selected = true;
+    } else if (someProductsSelected) {
+      selected = 'indeterminate';
+    }
+
+    const selectableRows = rows.filter(({disabled}) => !disabled);
+    const rowRange: IndexTableRowProps['selectionRange'] = [
+      selectableRows.findIndex((row) => row.id === products[0].id),
+      selectableRows.findIndex(
+        (row) => row.id === products[products.length - 1].id,
+      ),
+    ];
+
+    const disabled = products.every(({disabled}) => disabled);
+
+    return (
+      <Fragment key={subheaderId}>
+        <IndexTable.Row
+          selectionRange={rowRange}
+          id={`Subheader-${index}`}
+          position={position}
+          selected={selected}
+          disabled={disabled}
+          accessibilityLabel={`Select all products wich has color ${color}`}
+        >
+          <IndexTable.Cell>
+            <InlineStack gap="400" blockAlign="center">
+              <Thumbnail
+                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                size="medium"
+                alt="Black choker necklace"
+              />
+              <Text as="span" fontWeight="semibold">
+                {color}
+              </Text>
+            </InlineStack>
+          </IndexTable.Cell>
+          <IndexTable.Cell />
+          <IndexTable.Cell />
+        </IndexTable.Row>
+        {products.map(
+          ({id, size, quantity, price, position, disabled}, rowIndex) => {
+            return (
+              <IndexTable.Row
+                rowType="child"
+                key={rowIndex}
+                id={id}
+                position={position}
+                selected={selectedResources.includes(id)}
+                disabled={disabled}
+              >
+                <IndexTable.Cell>
+                  <Box paddingInlineStart="150">
+                    <InlineStack gap="400" blockAlign="center">
+                      <Thumbnail
+                        source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                        size="small"
+                        alt="Black choker necklace"
+                      />
+                      <Text variant="bodyMd" as="span">
+                        {size}
+                      </Text>
+                    </InlineStack>
+                  </Box>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" numeric>
+                    {price}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {quantity}
+                  </Text>
+                </IndexTable.Cell>
+              </IndexTable.Row>
+            );
+          },
+        )}
+      </Fragment>
+    );
+  });
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        onSelectionChange={handleSelectionChange}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        resourceName={resourceName}
+        itemCount={rows.length}
+        headings={columnHeadings as IndexTableProps['headings']}
+        selectable
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithNestedRowsWithThumbnailsOneCellNonSelectable() {
+  const rows = [
+    {
+      id: '3411',
+      quantity: 11,
+      price: '$2,400',
+      size: 'Small Lorem ipsum dolor sit amet',
+      color: 'Orange Lorem ipsum dolor sit amet',
+    },
+    {
+      id: '2562',
+      quantity: 30,
+      price: '$975',
+      size: 'Medium',
+      color: 'Orange',
+    },
+    {
+      id: '4102',
+      quantity: 27,
+      price: '$2885',
+      size: 'Large',
+      color: 'Orange',
+    },
+    {
+      id: '2564',
+      quantity: 19,
+      price: '$1,209',
+      size: 'Small',
+      color: 'Red',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      quantity: 22,
+      price: '$1,400',
+      size: 'Small',
+      color: 'Green',
+    },
+  ];
+
+  const columnHeadings = [
+    {title: 'Name', id: 'column-header--size'},
+    {
+      hidden: false,
+      id: 'column-header--price',
+      title: 'Price',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--quantity',
+      title: 'Available',
+    },
+  ];
+
+  const groupRowsBy = (groupKey: string, resolveId: (groupVal) => string) => {
+    let position = -1;
+    const groups = rows.reduce((groups, product) => {
+      const groupVal = product[groupKey];
+      if (!groups[groupVal]) {
+        position += 1;
+
+        groups[groupVal] = {
+          position,
+          products: [],
+          id: resolveId(groupVal),
+        };
+      }
+      groups[groupVal].products.push({
+        ...product,
+        position: position + 1,
+      });
+
+      position += 1;
+      return groups;
+    }, {});
+
+    return groups;
+  };
+
+  const resourceName = {
+    singular: 'product',
+    plural: 'products',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows, {resourceFilter: ({disabled}) => !disabled});
+
+  const groupedProducts = groupRowsBy(
+    'color',
+    (color) => `color--${color.toLowerCase()}`,
+  );
+
+  const rowMarkup = Object.keys(groupedProducts).map((color, index) => {
+    const {products, position, id: subheaderId} = groupedProducts[color];
+    let selected: IndexTableRowProps['selected'] = false;
+
+    const someProductsSelected = products.some(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    const allProductsSelected = products.every(({id}) =>
+      selectedResources.includes(id),
+    );
+
+    if (allProductsSelected) {
+      selected = true;
+    } else if (someProductsSelected) {
+      selected = 'indeterminate';
+    }
+
+    const selectableRows = rows.filter(({disabled}) => !disabled);
+    const rowRange: IndexTableRowProps['selectionRange'] = [
+      selectableRows.findIndex((row) => row.id === products[0].id),
+      selectableRows.findIndex(
+        (row) => row.id === products[products.length - 1].id,
+      ),
+    ];
+
+    const disabled = products.every(({disabled}) => disabled);
+
+    return (
+      <Fragment key={subheaderId}>
+        <IndexTable.Row
+          selectionRange={rowRange}
+          id={`Subheader-${index}`}
+          position={position}
+          selected={selected}
+          disabled={disabled}
+          accessibilityLabel={`Select all products wich has color ${color}`}
+        >
+          <IndexTable.Cell>
+            <InlineStack gap="400" blockAlign="center">
+              <Thumbnail
+                source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                size="medium"
+                alt="Black choker necklace"
+              />
+              <Text as="span" fontWeight="semibold">
+                {color}
+              </Text>
+            </InlineStack>
+          </IndexTable.Cell>
+          <IndexTable.Cell />
+          <IndexTable.Cell />
+        </IndexTable.Row>
+        {products.map(
+          ({id, size, quantity, price, position, disabled}, rowIndex) => {
+            return (
+              <IndexTable.Row
+                rowType="child"
+                key={rowIndex}
+                id={id}
+                position={position}
+                selected={selectedResources.includes(id)}
+                disabled={disabled}
+              >
+                <IndexTable.Cell>
+                  <Box>
+                    <InlineStack gap="400" blockAlign="center">
+                      <Thumbnail
+                        source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+                        size="small"
+                        alt="Black choker necklace"
+                      />
+                      <Text variant="bodyMd" as="span">
+                        {size}
+                      </Text>
+                    </InlineStack>
+                  </Box>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" numeric>
+                    {price}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {quantity}
                   </Text>
                 </IndexTable.Cell>
               </IndexTable.Row>
