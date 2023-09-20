@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+import {useContext, useRef} from 'react';
 
 import {IndexFiltersModeContext} from './context';
 import type {IndexFiltersMode} from './types';
@@ -14,12 +14,14 @@ export function useSetIndexFiltersMode(initialValue?: IndexFiltersMode) {
 
   const {mode, setMode} = indexFiltersMode;
 
-  useEffect(() => {
+  const hasMounted = useRef(false);
+
+  if (!hasMounted.current) {
     if (initialValue) {
       setMode(initialValue);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    hasMounted.current = true;
+  }
 
   return {
     mode,
