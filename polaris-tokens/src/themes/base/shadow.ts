@@ -40,18 +40,6 @@ export type ShadowTokenGroup = {
 export const shadow: {
   [TokenName in ShadowTokenName]: MetaTokenProperties;
 } = {
-  'shadow-inset-lg': {
-    value:
-      'inset -1px 0px 1px rgba(0, 0, 0, 0.2), inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6)',
-  },
-  'shadow-inset-md': {
-    value:
-      'inset -1px 0px 1px rgba(0, 0, 0, 0.12), inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2)',
-  },
-  'shadow-inset-sm': {
-    value:
-      'inset 0px 1px 1px rgba(0, 0, 0, 0.15), inset 0px 1px 2px rgba(255, 255, 255, 0.15)',
-  },
   'shadow-none': {
     value: 'none',
   },
@@ -72,6 +60,18 @@ export const shadow: {
   },
   'shadow-2xl': {
     value: '0px 20px 20px -8px rgba(0, 0, 0, 0.28)',
+  },
+  'shadow-inset-lg': {
+    value:
+      'inset -1px 0px 1px rgba(0, 0, 0, 0.2), inset 1px 0px 1px rgba(0, 0, 0, 0.2), inset 0px 2px 1px rgba(0, 0, 0, 0.6)',
+  },
+  'shadow-inset-md': {
+    value:
+      'inset -1px 0px 1px rgba(0, 0, 0, 0.12), inset 1px 0px 1px rgba(0, 0, 0, 0.12), inset 0px 2px 1px rgba(0, 0, 0, 0.2)',
+  },
+  'shadow-inset-sm': {
+    value:
+      'inset 0px 1px 1px rgba(0, 0, 0, 0.15), inset 0px 1px 2px rgba(255, 255, 255, 0.15)',
   },
   'shadow-bevel-experimental': {
     value:

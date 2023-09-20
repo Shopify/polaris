@@ -5,28 +5,28 @@ import {createMetaTheme, createMetaThemePartial} from './utils';
 export const metaThemeLightHighContrastPartial = createMetaThemePartial({
   color: {
     'color-text': {
-      value: colors.gray[16](),
+      value: colors.gray[16],
     },
     'color-text-subdued': {
-      value: colors.gray[16](),
+      value: colors.gray[16],
     },
     'color-text-primary': {
-      value: colors.gray[16](),
+      value: colors.gray[16],
     },
     'color-icon-subdued': {
-      value: colors.gray[14](),
+      value: colors.gray[14],
     },
     'color-border': {
-      value: colors.gray[12](),
+      value: colors.gray[12],
     },
     'color-border-input': {
-      value: colors.gray[14](),
+      value: colors.gray[14],
     },
     'color-border-subdued': {
-      value: colors.gray[12](),
+      value: colors.gray[12],
     },
     'color-bg-subdued': {
-      value: colors.gray[6](),
+      value: colors.gray[6],
     },
   },
   shadow: {

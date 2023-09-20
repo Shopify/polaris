@@ -1,5 +1,5 @@
+import {size} from '../../size';
 import type {Experimental} from '../../types';
-import {createVarName} from '../../utilities';
 import type {MetaTokenProperties} from '../types';
 
 type FontFamilyAlias = 'sans' | 'mono';
@@ -67,22 +67,22 @@ export const font: {
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
   },
   'font-size-275': {
-    value: createVar('font-size-70-experimental'),
+    value: size[275],
   },
   'font-size-325': {
-    value: createVar('font-size-80-experimental'),
+    value: size[325],
   },
   'font-size-350': {
-    value: createVar('font-size-100'),
+    value: size[350],
   },
   'font-size-750': {
-    value: createVar('font-size-500'),
+    value: size[750],
   },
   'font-size-900': {
-    value: createVar('font-size-600'),
+    value: size[900],
   },
   'font-size-1000': {
-    value: createVar('font-size-700'),
+    value: size[1000],
   },
   'font-size-70-experimental': {
     value: '11px',
@@ -127,28 +127,28 @@ export const font: {
     value: '700',
   },
   'font-line-height-300': {
-    value: createVar('font-line-height-075-experimental'),
+    value: size[300],
   },
   'font-line-height-400': {
-    value: createVar('font-line-height-1'),
+    value: size[400],
   },
   'font-line-height-500': {
-    value: createVar('font-line-height-2'),
+    value: size[500],
   },
   'font-line-height-600': {
-    value: createVar('font-line-height-3'),
+    value: size[600],
   },
   'font-line-height-700': {
-    value: createVar('font-line-height-4'),
+    value: size[700],
   },
   'font-line-height-800': {
-    value: createVar('font-line-height-5'),
+    value: size[800],
   },
   'font-line-height-1000': {
-    value: createVar('font-line-height-6'),
+    value: size[1000],
   },
   'font-line-height-1200': {
-    value: createVar('font-line-height-7'),
+    value: size[1200],
   },
   'font-line-height-075-experimental': {
     value: '12px',
@@ -175,7 +175,3 @@ export const font: {
     value: '48px',
   },
 };
-
-function createVar(fontTokenName: FontTokenName) {
-  return `var(${createVarName(fontTokenName)})`;
-}
