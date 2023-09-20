@@ -1,5 +1,9 @@
 @import '../../styles/mixins.scss';
 .Card {
+  @include dark-mode {
+    box-shadow: var(--card-shadow);
+  }
+
   @include responsive-props(
     'card',
     'padding-block-start',
@@ -22,8 +26,8 @@
   // We want to preserve margin rules for all children
   // Except the last-child, so as not to introduce unecessary space
   // at the bottom of the card
-  > :last-child {
-    margin-bottom: 0;
+  :last-child {
+    margin-block: 0;
   }
 
   box-shadow: 0px 1px 0px 0px rgba(26, 26, 26, 0.07),
