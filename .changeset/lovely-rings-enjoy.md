@@ -3,15 +3,14 @@
 'polaris.shopify.com': patch
 ---
 
-IndexTable subheader support updates:
+Added support for subheaders and selection of a range of `IndexTable.Rows` -- See the [With subheaders](https://polaris.shopify.com/components/tables/index-table) example on polaris.shopify.com for how to properly configure
 - `IndexTable.Row`
-  - Added the `header` prop to apply subheader styles
-  - Added `indeterminate` value to `selected` prop
-  - Added `selectionRange` prop to specify which rows in the range are selected when the row is selected
-  - Added `rowType` prop to indicate the relationship or role of the row's contents (`data` or `subheader`)
+  - Added support for setting the `indeterminate` value on the `selected` prop
+  - Added the `selectionRange` prop to specify a range of other consecutive, related rows selected when the row is selected
+  - Added the `rowType` prop to indicate the relationship or role of the row's contents (defaults to `data`, `subheader` renders the row to look and behave like the table header row)
+Added support for setting accessibility attributes on `IndexTable.Cell`
 - `IndexTable.Cell`
-  - Added the `header` prop to apply subheader styles
-  - Added `as` prop to set as a `th` if it is serving as a subheading
-  - Added `colSpan` prop to specify the number of the columns that the cell element should extend
-  - Added `scope` prop to indicate which cells the `th` element relates
-- See the [With subheaders](https://polaris.shopify.com/components/tables/index-table) example on polaris.shopify.com for how to properly configure.
+  - Added the `as` prop to support rendering the cell as a `th` element if it is serving as a subheading cell
+  - Added support for the `headers` attribute to manually associate all headers when the cell is described by more than its column heading
+  - Added support for the `colSpan` attribute to specify the number of the columns that the cell element should extend to
+  - Added support for the `scope` attribute to indicate whether the `th` is a header for a column, row, or group of columns or rows
