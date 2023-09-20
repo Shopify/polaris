@@ -373,7 +373,7 @@ button {
 
 .components-grid {
   display: grid;
-  gap: var(--p-space-4);
+  gap: var(--p-space-400);
   grid-template-columns: repeat(1, 1fr);
 }
 
@@ -393,23 +393,23 @@ button {
   font-weight: var(--p-font-weight-semibold);
   line-height: var(--p-font-line-height-3);
   margin: 0 !important;
-  margin-bottom: var(--p-space-1) !important;
+  margin-bottom: var(--p-space-100) !important;
   color: #4e52b8;
 }
 
 .tip-banner {
-  padding: var(--p-space-4) var(--p-space-6);
+  padding: var(--p-space-400) var(--p-space-600);
   background: var(--p-color-bg-info-subdued);
   border-radius: var(--p-border-radius-2);
   color: #00565e !important;
-  margin: var(--p-space-6) 0;
-  margin-bottom: var(--p-space-16);
+  margin: var(--p-space-600) 0;
+  margin-bottom: var(--p-space-1600);
 }
 
 .tip-banner__header {
   display: flex;
   align-items: center;
-  gap: var(--p-space-2);
+  gap: var(--p-space-200);
 }
 
 .tip-banner__header h4 {
@@ -419,8 +419,8 @@ button {
 .colors {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: var(--p-space-4);
-  margin-bottom: var(--p-space-8);
+  gap: var(--p-space-400);
+  margin-bottom: var(--p-space-800);
   font-size: var(--font-size-75);
   font-weight: var(--p-font-weight-semibold);
 }
@@ -435,7 +435,7 @@ button {
   position: relative;
   overflow: hidden;
   border-radius: var(--p-border-radius-2);
-  margin-bottom: var(--p-space-2);
+  margin-bottom: var(--p-space-200);
 
   &:before {
     content: '';
