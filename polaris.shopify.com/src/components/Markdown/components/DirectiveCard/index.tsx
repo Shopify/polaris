@@ -23,14 +23,19 @@ export type DirectiveStatus = DirectiveStatusName;
 type DirectiveProps = React.PropsWithChildren<{
   status: DirectiveStatus;
   img?: string;
+  alt?: string;
 }>;
-export const DirectiveCard = ({children, status, img}: DirectiveProps) => {
+export const DirectiveCard = ({children, status, img, alt}: DirectiveProps) => {
   return (
     <Card>
       {img ? (
         <Stack gap="4">
           <Bleed marginInline="4" marginBlockStart="4">
-            <ImageThumbnail className={styles.ImageThumbnail} src={img} />
+            <ImageThumbnail
+              className={styles.ImageThumbnail}
+              src={img}
+              alt={alt}
+            />
           </Bleed>
           <Stack gap="2">
             <Pill status={status} />

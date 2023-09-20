@@ -361,16 +361,3 @@ button {
 .text-extra-padding {
   padding: var(--card-padding-md);
 }
-
-.directive {
-  font-size: 0;
-  line-height: 0;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-
-  div {
-    padding: var(--card-padding-md);
-    background-color: var(--surface-subdued);
-  }
-}

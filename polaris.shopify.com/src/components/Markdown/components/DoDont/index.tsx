@@ -5,6 +5,8 @@ import styles from './styles.module.scss';
 import {DirectiveCard, DirectiveStatusName} from '../DirectiveCard';
 interface DoDontProps extends PropsWithChildren {
   title?: string | null;
+  img?: string;
+  alt?: string;
 }
 
 /* Must have the following structure:
@@ -73,14 +75,18 @@ export const DoDont = ({children}: PropsWithChildren) => {
   );
 };
 
-export const Do = ({children}: DoDontProps) => {
+export const Do = ({children, img, alt}: DoDontProps) => {
   return (
-    <DirectiveCard status={DirectiveStatusName.Do}>{children}</DirectiveCard>
+    <DirectiveCard status={DirectiveStatusName.Do} img={img} alt={alt}>
+      {children}
+    </DirectiveCard>
   );
 };
 
-export const Dont = ({children}: DoDontProps) => {
+export const Dont = ({children, img, alt}: DoDontProps) => {
   return (
-    <DirectiveCard status={DirectiveStatusName.Dont}>{children}</DirectiveCard>
+    <DirectiveCard status={DirectiveStatusName.Dont} img={img} alt={alt}>
+      {children}
+    </DirectiveCard>
   );
 };
