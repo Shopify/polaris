@@ -199,7 +199,10 @@ export type {
 } from './components/IndexFilters';
 
 export {IndexTable} from './components/IndexTable';
-export type {IndexTableProps} from './components/IndexTable';
+export type {
+  IndexTableProps,
+  RowProps as IndexTableRowProps,
+} from './components/IndexTable';
 
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
