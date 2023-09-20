@@ -91,7 +91,7 @@ describe('IndexFilters', () => {
     setMode: jest.fn(),
     canCreateNewView: true,
     onCreateNewView: jest.fn(),
-    showEditColumns: false,
+    showEditColumnsButton: false,
   };
 
   beforeEach(() => {
@@ -432,7 +432,7 @@ describe('IndexFilters', () => {
 
     it('renders EditColumnsButton with the disabled prop', () => {
       const wrapper = mountWithApp(
-        <IndexFilters {...defaultProps} disabled showEditColumns />,
+        <IndexFilters {...defaultProps} disabled showEditColumnsButton />,
       );
 
       expect(wrapper).toContainReactComponent(EditColumnsButton, {
@@ -442,17 +442,17 @@ describe('IndexFilters', () => {
   });
 
   describe('EditColumnsButton', () => {
-    it('renders when showEditColumns is true', () => {
+    it('renders when showEditColumnsButton is true', () => {
       const wrapper = mountWithApp(
-        <IndexFilters {...defaultProps} showEditColumns />,
+        <IndexFilters {...defaultProps} showEditColumnsButton />,
       );
 
       expect(wrapper).toContainReactComponent(EditColumnsButton);
     });
 
-    it('does not renders when showEditColumns is false', () => {
+    it('does not renders when showEditColumnsButton is false', () => {
       const wrapper = mountWithApp(
-        <IndexFilters {...defaultProps} showEditColumns={false} />,
+        <IndexFilters {...defaultProps} showEditColumnsButton={false} />,
       );
 
       expect(wrapper).not.toContainReactComponent(EditColumnsButton);
@@ -462,7 +462,7 @@ describe('IndexFilters', () => {
       'does not renders when IndexFiltersMode is %s',
       (mode: IndexFiltersMode) => {
         const wrapper = mountWithApp(
-          <IndexFilters {...defaultProps} mode={mode} showEditColumns />,
+          <IndexFilters {...defaultProps} mode={mode} showEditColumnsButton />,
         );
 
         expect(wrapper).not.toContainReactComponent(EditColumnsButton);
@@ -472,7 +472,11 @@ describe('IndexFilters', () => {
     it('sets mode to EditingColumns when clicked', () => {
       const setMode = jest.fn();
       const wrapper = mountWithApp(
-        <IndexFilters {...defaultProps} setMode={setMode} showEditColumns />,
+        <IndexFilters
+          {...defaultProps}
+          setMode={setMode}
+          showEditColumnsButton
+        />,
       );
       wrapper.act(() => {
         wrapper.find(EditColumnsButton)!.trigger('onClick');
@@ -487,7 +491,7 @@ describe('IndexFilters', () => {
         <IndexFilters
           {...defaultProps}
           onEditStart={onEditStart}
-          showEditColumns
+          showEditColumnsButton
         />,
       );
       wrapper.act(() => {

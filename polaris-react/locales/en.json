@@ -194,7 +194,8 @@
         }
       },
       "EditColumnsButton": {
-        "editColumns": "Edit columns"
+        "tooltip": "Edit columns",
+        "accessibilityLabel": "Customize table column order and visibility"
       },
       "UpdateButtons": {
         "cancel": "Cancel",

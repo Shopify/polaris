@@ -404,7 +404,7 @@ export function WithFilteringByDefault() {
 }
 
 export function WithEditColumsButton() {
-  return <BasicExample showEditColumns />;
+  return <BasicExample showEditColumnsButton />;
 }
 
 export function WithoutKeyboardShortcuts() {
@@ -955,7 +955,7 @@ export function Disabled() {
         mode={mode}
         setMode={setMode}
         disabled
-        showEditColumns
+        showEditColumnsButton
       />
       <Table />
     </Card>

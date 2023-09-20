@@ -19,7 +19,7 @@ export function EditColumnsButton({onClick, disabled}: EditColumnsButtonProps) {
 
   const tooltipContent = (
     <Text as="span" variant="bodyMd" alignment="center">
-      {i18n.translate('Polaris.IndexFilters.EditColumnsButton.editColumns')}
+      {i18n.translate('Polaris.IndexFilters.EditColumnsButton.tooltip')}
     </Text>
   );
 
@@ -33,7 +33,7 @@ export function EditColumnsButton({onClick, disabled}: EditColumnsButtonProps) {
         onClick={onClick}
         icon={polarisSummerEditions2023 ? Columns3Minor : undefined}
         label={i18n.translate(
-          'Polaris.IndexFilters.EditColumnsButton.editColumns',
+          'Polaris.IndexFilters.EditColumnsButton.accessibilityLabel',
         )}
         disabled={disabled}
       >

@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Add Edit Columns button on `IndexFilters` when showEditColumns flag is true
+Added the `showEditColumnsButton` prop to `IndexFilters`, and `mode` parameter on `IndexFilters`'s `onEditStart`

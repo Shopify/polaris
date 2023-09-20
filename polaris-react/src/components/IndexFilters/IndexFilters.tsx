@@ -103,8 +103,8 @@ export interface IndexFiltersProps
   closeOnChildOverlayClick?: boolean;
   /** Optional override to the default keyboard shortcuts available */
   disableKeyboardShortcuts?: boolean;
-  /** Shows the edit columns button  */
-  showEditColumns?: boolean;
+  /** Whether to display the edit columns button with the other default mode filter actions */
+  showEditColumnsButton?: boolean;
 }
 
 export function IndexFilters({
@@ -143,7 +143,7 @@ export function IndexFilters({
   hideQueryField,
   closeOnChildOverlayClick,
   disableKeyboardShortcuts,
-  showEditColumns,
+  showEditColumnsButton,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -288,7 +288,7 @@ export function IndexFilters({
     beginEdit(IndexFiltersMode.EditingColumns);
   }
 
-  const editColumnsMarkup = showEditColumns ? (
+  const editColumnsMarkup = showEditColumnsButton ? (
     <EditColumnsButton
       onClick={handleClickEditColumnsButon}
       disabled={disabled}
@@ -418,8 +418,8 @@ export function IndexFilters({
                               }}
                             />
                           )}
-                          {sortMarkup}
                           {editColumnsMarkup}
+                          {sortMarkup}
                         </>
                       ) : null}
                       {mode === IndexFiltersMode.EditingColumns
