@@ -29,7 +29,7 @@ examples:
     description: Use for less important or less commonly used actions since they’re less prominent. For example, plain buttons are used as actions in cards.
   - fileName: button-tertiary.tsx
     title: Tertiary
-    description: Use for less important or less commonly used actions where matching the default text color is desired.
+    description: Use for tertiary actions. Can be paired with any other button style to create visual variation.
   - fileName: button-plain-critical.tsx
     title: Plain critical
     description: Use for actions that will delete merchant data or be otherwise difficult to recover from. Since they’re less prominent, use for less important or less commonly used critical actions. For example, plain buttons are used as actions in cards.
