@@ -12,7 +12,6 @@ import type {
   MetaTokenGroupShape,
   ThemeName,
 } from './types';
-import {themeNameLightUplift} from './constants';
 import {metaThemeBase} from './base';
 
 export const createMetaThemePartial = createExact<MetaThemePartialShape>();
@@ -24,9 +23,7 @@ export function createMetaTheme<T extends Exact<MetaThemePartialShape, T>>(
 }
 
 export function createThemeClassName(themeName: ThemeName) {
-  return themeName === themeNameLightUplift
-    ? themeName
-    : `p-theme-${themeName}`;
+  return `p-theme-${themeName}`;
 }
 
 export function createThemeSelector(themeName: ThemeName) {

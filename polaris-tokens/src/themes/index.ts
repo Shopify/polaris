@@ -3,20 +3,20 @@ import {createMetaTheme} from './utils';
 import {themeNameDefault} from './constants';
 import {metaThemeLight, metaThemeLightPartial} from './light';
 import {
-  metaThemeLightUplift,
-  metaThemeLightUpliftPartial,
-} from './light-uplift';
+  metaThemeLightHighContrast,
+  metaThemeLightHighContrastPartial,
+} from './light-high-contrast';
 
 export {createMetaTheme} from './utils';
 
 export const metaThemes: MetaThemes = {
   light: metaThemeLight,
-  'Polaris-Summer-Editions-2023': metaThemeLightUplift,
+  'light-high-contrast-experimental': metaThemeLightHighContrast,
 };
 
 export const metaThemePartials: MetaThemePartials = {
   light: metaThemeLightPartial,
-  'Polaris-Summer-Editions-2023': metaThemeLightUpliftPartial,
+  'light-high-contrast-experimental': metaThemeLightHighContrastPartial,
 };
 
 export const metaThemeDefaultPartial = metaThemePartials[themeNameDefault];
