@@ -2,12 +2,12 @@
 
 .Details {
   max-width: 160px;
-  margin-right: var(--p-space-2);
+  margin-right: var(--p-space-200);
 
   #{$se23} & {
     margin-right: 0;
     /* stylelint-disable-next-line -- se23 */
-    padding: 0 var(--p-space-2) 0 10px;
+    padding: 0 var(--p-space-200) 0 10px;
 
     /* stylelint-disable-next-line selector-max-combinators -- se23 */
     > p {

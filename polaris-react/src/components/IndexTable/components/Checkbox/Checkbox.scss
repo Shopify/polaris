@@ -12,7 +12,7 @@
 
   width: 36px;
   height: 20px;
-  padding-left: var(--p-space-4);
+  padding-left: var(--p-space-400);
 
   #{$se23} & {
     // Don't need an explicit width/height set, just let flexbox do its thing.

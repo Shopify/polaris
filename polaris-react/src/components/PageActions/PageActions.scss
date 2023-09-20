@@ -2,19 +2,19 @@
 
 .PageActions {
   margin: 0 auto;
-  padding: var(--p-space-5);
+  padding: var(--p-space-500);
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   #{$se23} & {
     border-top: 0;
-    padding: var(--p-space-4);
+    padding: var(--p-space-400);
   }
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-5) 0;
+    padding: var(--p-space-500) 0;
 
     #{$se23} & {
-      padding: var(--p-space-4) 0;
+      padding: var(--p-space-400) 0;
     }
   }
 }

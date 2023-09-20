@@ -35,7 +35,7 @@
   #{$se23} & {
     border-color: var(--p-color-bg-primary);
     border-width: 0;
-    box-shadow: inset 0 0 0 var(--p-space-05) var(--p-color-bg-primary);
+    box-shadow: inset 0 0 0 var(--p-space-050) var(--p-color-bg-primary);
   }
 }
 
@@ -68,7 +68,7 @@
       #{$se23} & {
         border-color: var(--p-color-bg-primary);
         background-color: var(--p-color-bg-primary);
-        box-shadow: inset 0 0 0 var(--p-space-8) var(--p-color-bg-primary);
+        box-shadow: inset 0 0 0 var(--p-space-800) var(--p-color-bg-primary);
       }
     }
 
@@ -169,10 +169,10 @@
     transform var(--p-motion-duration-100) var(--p-motion-ease);
 
   #{$se23} & {
-    top: calc(-1 * var(--p-space-05));
-    left: calc(-1 * var(--p-space-05));
-    bottom: calc(-1 * var(--p-space-05));
-    right: calc(-1 * var(--p-space-05));
+    top: calc(-1 * var(--p-space-050));
+    left: calc(-1 * var(--p-space-050));
+    bottom: calc(-1 * var(--p-space-050));
+    right: calc(-1 * var(--p-space-050));
     /* stylelint-disable-next-line  -- se23 override */
     transform: none !important;
 
@@ -184,7 +184,7 @@
       left: 0;
       bottom: 0;
       right: 0;
-      margin: var(--p-space-05);
+      margin: var(--p-space-050);
       transform: none;
       transition: initial;
     }
@@ -228,7 +228,7 @@
   .Backdrop {
     &:active {
       #{$se23} & {
-        box-shadow: inset 0 0 0 var(--p-space-05)
+        box-shadow: inset 0 0 0 var(--p-space-050)
           var(--p-color-bg-critical-strong-active);
       }
     }
@@ -240,7 +240,7 @@
       background-color: var(--p-color-border-critical);
       #{$se23} & {
         // stylelint-disable declaration-no-important -- se23
-        box-shadow: inset 0 0 0 var(--p-space-3)
+        box-shadow: inset 0 0 0 var(--p-space-300)
           var(--p-color-bg-critical-strong-active) !important;
         // stylelint-enable declaration-no-important
       }
@@ -251,7 +251,7 @@
     + .Backdrop {
       background-color: var(--p-color-border-critical);
       #{$se23} & {
-        box-shadow: inset 0 0 0 var(--p-space-05)
+        box-shadow: inset 0 0 0 var(--p-space-050)
           var(--p-color-bg-critical-strong-active);
       }
     }

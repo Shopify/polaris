@@ -5,11 +5,11 @@ $Backdrop-opacity: 0.88;
 .Toast {
   display: inline-flex;
   max-width: 500px;
-  padding: var(--p-space-2) var(--p-space-3);
+  padding: var(--p-space-200) var(--p-space-300);
   border-radius: var(--p-border-radius-1);
   background: var(--p-color-bg-inverse);
   color: var(--p-color-text-on-color);
-  margin-bottom: var(--p-space-5);
+  margin-bottom: var(--p-space-500);
   box-shadow: var(--p-shadow-xl);
 
   #{$se23} & {
@@ -20,7 +20,7 @@ $Backdrop-opacity: 0.88;
   }
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-3);
+    padding: var(--p-space-300);
   }
 
   @media (forced-colors: active) {
@@ -29,11 +29,11 @@ $Backdrop-opacity: 0.88;
 }
 
 .Action {
-  margin-left: var(--p-space-2);
+  margin-left: var(--p-space-200);
   color: var(--p-color-text-on-color);
 
   #{$se23} & {
-    margin-left: var(--p-space-4);
+    margin-left: var(--p-space-400);
   }
 }
 
@@ -51,10 +51,10 @@ $Backdrop-opacity: 0.88;
 }
 
 .LeadingIcon {
-  margin-right: var(--p-space-2);
+  margin-right: var(--p-space-200);
 
   #{$se23} & {
-    margin-right: var(--p-space-1_5-experimental);
+    margin-right: var(--p-space-150);
   }
 
   svg {
@@ -73,7 +73,7 @@ $Backdrop-opacity: 0.88;
   background: transparent;
   color: var(--p-color-icon-subdued);
   cursor: pointer;
-  margin-left: var(--p-space-2);
+  margin-left: var(--p-space-200);
 
   #{$se23} & {
     color: var(--p-color-icon-inverse);
