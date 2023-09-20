@@ -16,10 +16,12 @@
   margin-top: var(--p-space-2);
   margin-left: var(--p-space-2);
   #{$se23} & {
-    // Add extra shadow on right side of pressed button that is otherwise hidden by negative left margin of sibling button
+    // stylelint-disable -- Add extra shadow on right side of pressed button that is otherwise hidden by
+    // negative left margin of sibling button
     [aria-pressed='true'] {
       box-shadow: var(--p-shadow-inset-md), inset -2px 0 1px rgba(0, 0, 0, 0.2);
     }
+    // stylelint-enable
   }
 }
 
