@@ -1,10 +1,28 @@
+@mixin scope-custom-property(
+  $componentName,
+  $componentProp,
+  $responsively: false
+) {
+  @if $responsively {
+    // stylelint-disable -- Polaris component custom properties
+    --pc-#{$componentName}-#{$componentProp}-xs: initial;
+    --pc-#{$componentName}-#{$componentProp}-sm: initial;
+    --pc-#{$componentName}-#{$componentProp}-md: initial;
+    --pc-#{$componentName}-#{$componentProp}-lg: initial;
+    --pc-#{$componentName}-#{$componentProp}-xl: initial;
+  } @else {
+    --pc-#{$componentName}-#{$componentProp}: initial;
+  }
+}
+
+@mixin non-responsive-prop($componentName, $componentProp, $declarationProp) {
+  @include scope-custom-property($componentName, $componentProp);
+
+  #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp});
+}
+
 @mixin responsive-props($componentName, $componentProp, $declarationProp) {
-  // stylelint-disable -- Polaris component custom properties
-  --pc-#{$componentName}-#{$componentProp}-xs: initial;
-  --pc-#{$componentName}-#{$componentProp}-sm: initial;
-  --pc-#{$componentName}-#{$componentProp}-md: initial;
-  --pc-#{$componentName}-#{$componentProp}-lg: initial;
-  --pc-#{$componentName}-#{$componentProp}-xl: initial;
+  @include scope-custom-property($componentName, $componentProp, true);
 
   #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
 

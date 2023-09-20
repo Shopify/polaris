@@ -1,4 +1,4 @@
-import {Button, Modal, LegacyStack, ChoiceList} from '@shopify/polaris';
+import {Button, Modal, LegacyStack, ChoiceList, Frame} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -35,54 +35,56 @@ function ModalWithPrimaryAndSecondaryActionsExample() {
 
   return (
     <div style={{height: '500px'}}>
-      <Modal
-        activator={activator}
-        open={active}
-        onClose={handleClose}
-        title="Export customers"
-        primaryAction={{
-          content: 'Export customers',
-          onAction: handleClose,
-        }}
-        secondaryActions={[
-          {
-            content: 'Cancel',
+      <Frame>
+        <Modal
+          activator={activator}
+          open={active}
+          onClose={handleClose}
+          title="Export customers"
+          primaryAction={{
+            content: 'Export customers',
             onAction: handleClose,
-          },
-        ]}
-      >
-        <Modal.Section>
-          <LegacyStack vertical>
-            <LegacyStack.Item>
-              <ChoiceList
-                title="Export"
-                choices={[
-                  {label: 'Current page', value: CURRENT_PAGE},
-                  {label: 'All customers', value: ALL_CUSTOMERS},
-                  {label: 'Selected customers', value: SELECTED_CUSTOMERS},
-                ]}
-                selected={selectedExport}
-                onChange={handleSelectedExport}
-              />
-            </LegacyStack.Item>
-            <LegacyStack.Item>
-              <ChoiceList
-                title="Export as"
-                choices={[
-                  {
-                    label:
-                      'CSV for Excel, Numbers, or other spreadsheet programs',
-                    value: CSV_EXCEL,
-                  },
-                  {label: 'Plain CSV file', value: CSV_PLAIN},
-                ]}
-                selected={selectedExportAs}
-                onChange={handleSelectedExportAs}
-              />
-            </LegacyStack.Item>
-          </LegacyStack>
-        </Modal.Section>
-      </Modal>
+          }}
+          secondaryActions={[
+            {
+              content: 'Cancel',
+              onAction: handleClose,
+            },
+          ]}
+        >
+          <Modal.Section>
+            <LegacyStack vertical>
+              <LegacyStack.Item>
+                <ChoiceList
+                  title="Export"
+                  choices={[
+                    {label: 'Current page', value: CURRENT_PAGE},
+                    {label: 'All customers', value: ALL_CUSTOMERS},
+                    {label: 'Selected customers', value: SELECTED_CUSTOMERS},
+                  ]}
+                  selected={selectedExport}
+                  onChange={handleSelectedExport}
+                />
+              </LegacyStack.Item>
+              <LegacyStack.Item>
+                <ChoiceList
+                  title="Export as"
+                  choices={[
+                    {
+                      label:
+                        'CSV for Excel, Numbers, or other spreadsheet programs',
+                      value: CSV_EXCEL,
+                    },
+                    {label: 'Plain CSV file', value: CSV_PLAIN},
+                  ]}
+                  selected={selectedExportAs}
+                  onChange={handleSelectedExportAs}
+                />
+              </LegacyStack.Item>
+            </LegacyStack>
+          </Modal.Section>
+        </Modal>
+      </Frame>
     </div>
   );
 }

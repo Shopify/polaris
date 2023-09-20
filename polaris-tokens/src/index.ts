@@ -1,6 +1,6 @@
 export * from './metadata';
 export * from './utilities';
-export {breakpointsAliases} from './token-groups/breakpoints';
+export {breakpointsAliases} from './themes/base/breakpoints';
 export type {
   TokenGroup,
   Tokens,
@@ -17,13 +17,13 @@ export type {
   BorderTokenName,
   BorderRadiusScale,
   BorderWidthScale,
-} from './token-groups/border';
+} from './themes/base/border';
 
 export type {
   BreakpointsTokenGroup,
   BreakpointsTokenName,
   BreakpointsAlias,
-} from './token-groups/breakpoints';
+} from './themes/base/breakpoints';
 
 export type {
   ColorTokenGroup,
@@ -32,7 +32,7 @@ export type {
   ColorBorderAlias,
   ColorIconAlias,
   ColorTextAlias,
-} from './token-groups/color';
+} from './themes/base/color';
 
 export type {
   FontTokenGroup,
@@ -40,29 +40,41 @@ export type {
   FontSizeScale,
   FontLineHeightScale,
   FontWeightAlias,
-} from './token-groups/font';
+} from './themes/base/font';
+
+export type {
+  HeightTokenGroup,
+  HeightTokenName,
+  HeightScale,
+} from './themes/base/height';
 
 export type {
   MotionTokenGroup,
   MotionTokenName,
   MotionDurationScale,
   MotionKeyframesAlias,
-} from './token-groups/motion';
+} from './themes/base/motion';
 
 export type {
   ShadowTokenGroup,
   ShadowTokenName,
   ShadowAlias,
-} from './token-groups/shadow';
+} from './themes/base/shadow';
 
 export type {
   SpaceTokenGroup,
   SpaceTokenName,
   SpaceScale,
-} from './token-groups/space';
+} from './themes/base/space';
+
+export type {
+  WidthTokenGroup,
+  WidthTokenName,
+  WidthScale,
+} from './themes/base/width';
 
 export type {
   ZIndexTokenGroup,
   ZIndexTokenName,
   ZIndexZScale,
-} from './token-groups/zIndex';
+} from './themes/base/zIndex';
