@@ -12,12 +12,23 @@ import sharedStyles from '../../IndexTable.scss';
 
 import styles from './Checkbox.scss';
 
-export const Checkbox = memo(function Checkbox() {
+interface CheckboxProps {
+  accessibilityLabel?: string;
+}
+
+export const Checkbox = memo(function Checkbox({
+  accessibilityLabel,
+}: CheckboxProps) {
   const i18n = useI18n();
   const {resourceName} = useIndexValue();
   const {itemId, selected, disabled, onInteraction} = useContext(RowContext);
 
   const wrapperClassName = classNames(styles.Wrapper);
+  const label = accessibilityLabel
+    ? accessibilityLabel
+    : i18n.translate('Polaris.IndexTable.selectItem', {
+        resourceName: resourceName.singular,
+      });
 
   return (
     <CheckboxWrapper>
@@ -28,10 +39,8 @@ export const Checkbox = memo(function Checkbox() {
           onKeyUp={noop}
         >
           <PolarisCheckbox
-            id={itemId}
-            label={i18n.translate('Polaris.IndexTable.selectItem', {
-              resourceName: resourceName.singular,
-            })}
+            id={`Select-${itemId}`}
+            label={label}
             labelHidden
             checked={selected}
             disabled={disabled}

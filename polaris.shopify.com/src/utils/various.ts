@@ -82,3 +82,20 @@ export const uppercaseFirst = (str: string): string =>
 
 export const deslugify = (str: string): string =>
   uppercaseFirst(str.replace(/-+/g, ' '));
+
+export const viewTransition = (callback: () => void | Promise<unknown>) => {
+  // @ts-ignore is experimental and not typed yet
+  if (document.startViewTransition) {
+    // @ts-ignore exists in Chrome 111+
+    return document.startViewTransition(callback);
+  } else {
+    callback();
+
+    const resolved = Promise.resolve();
+
+    return {
+      ready: resolved,
+      finished: resolved,
+    };
+  }
+};

@@ -41,7 +41,9 @@ describe('<Checkbox />', () => {
     const id = 'id';
     const checkbox = mountWithTable(<Checkbox />, {rowProps: {id}});
 
-    expect(checkbox).toContainReactComponent(PolarisCheckbox, {id});
+    expect(checkbox).toContainReactComponent(PolarisCheckbox, {
+      id: `Select-${id}`,
+    });
   });
 
   it('renders a Checkbox with a label', () => {
@@ -52,6 +54,21 @@ describe('<Checkbox />', () => {
 
     expect(checkbox).toContainReactComponent(PolarisCheckbox, {
       label: `Select ${resourceName.singular}`,
+    });
+  });
+
+  it('renders a Checkbox with a custom label', () => {
+    const resourceName = {singular: 'Singular', plural: 'Plural'};
+    const accessibilityLabel = `Select ${resourceName.singular} who ordered yesterday`;
+    const checkbox = mountWithTable(
+      <Checkbox accessibilityLabel={accessibilityLabel} />,
+      {
+        indexProps: {resourceName},
+      },
+    );
+
+    expect(checkbox).toContainReactComponent(PolarisCheckbox, {
+      label: accessibilityLabel,
     });
   });
 
