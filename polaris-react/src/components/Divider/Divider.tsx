@@ -17,7 +17,7 @@ export interface DividerProps {
 }
 
 export const Divider = ({
-  borderColor = 'border-subdued',
+  borderColor = 'border-secondary',
   borderWidth = '1',
 }: DividerProps) => {
   const borderColorValue =
