@@ -115,6 +115,23 @@ describe('IndexFilters', () => {
     expect(setMode).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
   });
 
+  it('calls onEditStart with IndexFiltersMode.Filtering when clicked', () => {
+    const setMode = jest.fn();
+    const onEditStart = jest.fn();
+    const wrapper = mountWithApp(
+      <IndexFilters
+        {...defaultProps}
+        setMode={setMode}
+        onEditStart={onEditStart}
+      />,
+    );
+    wrapper.act(() => {
+      wrapper.find(SearchFilterButton)!.trigger('onClick');
+    });
+
+    expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
+  });
+
   it('renders non-disabled tabs if the current mode is Default', () => {
     const wrapper = mountWithApp(<IndexFilters {...defaultProps} />);
 
@@ -251,7 +268,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(onEditStart).toHaveBeenCalled();
+      expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
     });
   });
 
@@ -331,7 +348,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(onEditStart).not.toHaveBeenCalled();
+      expect(onEditStart).not.toHaveBeenCalledWith(IndexFiltersMode.Filtering);
     });
 
     it('does not call the cancelAction.onAction method when pressing escape in Filtering mode', () => {
@@ -462,6 +479,22 @@ describe('IndexFilters', () => {
       });
 
       expect(setMode).toHaveBeenCalledWith(IndexFiltersMode.EditingColumns);
+    });
+
+    it('calls onEditStart with IndexFiltersMode.EditingColumns when clicked', () => {
+      const onEditStart = jest.fn();
+      const wrapper = mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          onEditStart={onEditStart}
+          showEditColumns
+        />,
+      );
+      wrapper.act(() => {
+        wrapper.find(EditColumnsButton)!.trigger('onClick');
+      });
+
+      expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.EditingColumns);
     });
   });
 });

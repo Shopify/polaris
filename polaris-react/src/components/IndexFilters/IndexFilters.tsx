@@ -50,6 +50,11 @@ const transitionStyles = {
 
 type ExecutedCallback = (name: string) => Promise<boolean>;
 
+type ActionableIndexFiltersMode = Exclude<
+  IndexFiltersMode,
+  IndexFiltersMode.Default
+>;
+
 export interface IndexFiltersProps
   extends Omit<
       FiltersProps,
@@ -73,7 +78,7 @@ export interface IndexFiltersProps
   /** The cancel action to display */
   cancelAction: IndexFiltersCancelAction;
   /** Optional callback invoked when a merchant begins to edit a view */
-  onEditStart?: () => void;
+  onEditStart?: (mode: ActionableIndexFiltersMode) => void;
   /** The current mode of the IndexFilters component. Used to determine which view to show */
   mode: IndexFiltersMode;
   /** Callback to set the mode of the IndexFilters component */
@@ -236,10 +241,13 @@ export function IndexFilters({
     };
   }, [cancelAction, onExecutedCancelAction]);
 
-  const beginEdit = useCallback(() => {
-    setMode(IndexFiltersMode.Filtering);
-    onEditStart?.();
-  }, [onEditStart, setMode]);
+  const beginEdit = useCallback(
+    (mode: ActionableIndexFiltersMode) => {
+      setMode(mode);
+      onEditStart?.(mode);
+    },
+    [onEditStart, setMode],
+  );
 
   const updateButtonsMarkup = useMemo(
     () => (
@@ -276,11 +284,13 @@ export function IndexFilters({
     disabled,
   ]);
 
+  function handleClickEditColumnsButon() {
+    beginEdit(IndexFiltersMode.EditingColumns);
+  }
+
   const editColumnsMarkup = showEditColumns ? (
     <EditColumnsButton
-      onClick={() => {
-        setMode(IndexFiltersMode.EditingColumns);
-      }}
+      onClick={handleClickEditColumnsButon}
       disabled={disabled}
     />
   ) : null;
@@ -288,7 +298,7 @@ export function IndexFilters({
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
 
   function handleClickFilterButton() {
-    beginEdit();
+    beginEdit(IndexFiltersMode.Filtering);
   }
 
   const searchFilterTooltipLabelId = disableKeyboardShortcuts
@@ -325,7 +335,7 @@ export function IndexFilters({
     if (mode !== IndexFiltersMode.Default) {
       return;
     }
-    beginEdit();
+    beginEdit(IndexFiltersMode.Filtering);
   }
 
   return (
