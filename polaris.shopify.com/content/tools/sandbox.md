@@ -12,7 +12,7 @@ status: Alpha
 
 <Lede>{frontmatter.description}</Lede>
 
-<StatusBanner status={frontmatter.status.value}>
+<StatusBanner status={frontmatter.status}>
   This tool is in development. There could be breaking changes made to it in a
   non-major release of Polaris. Please use with caution.
 </StatusBanner>
