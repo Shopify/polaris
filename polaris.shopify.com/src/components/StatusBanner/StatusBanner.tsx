@@ -1,16 +1,25 @@
 import type {PropsWithChildren} from 'react';
-import {StatusName} from '../../types';
-import {uppercaseFirst} from '../../utils/various';
+import {Status, StatusToneMapping} from '../../types';
+import {
+  uppercaseFirst,
+  className as classNames,
+  variationName,
+} from '../../utils/various';
 import styles from './StatusBanner.module.scss';
 
 interface Props extends PropsWithChildren {
-  status: StatusName;
+  status: Status;
 }
 
 function StatusBanner({status, children}: Props) {
+  const className = classNames(
+    styles.StatusBanner,
+    styles[variationName('tone', StatusToneMapping[status])],
+  );
+
   return (
     status && (
-      <div className={styles.StatusBanner} data-value={status.toLowerCase()}>
+      <div className={className}>
         <h2>{uppercaseFirst(status)}</h2>
         {children}
       </div>
