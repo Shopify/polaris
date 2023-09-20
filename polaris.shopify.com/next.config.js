@@ -209,6 +209,26 @@ const deprecated = [
     permanent: false,
   },
   {
+    source: '/components/layout-and-structure/legacy-card',
+    destination: '/components/deprecated/legacy-card',
+    permanent: false,
+  },
+  {
+    source: '/components/layout-and-structure/legacy-stack',
+    destination: '/components/deprecated/legacy-stack',
+    permanent: false,
+  },
+  {
+    source: '/components/navigation/legacy-tabs',
+    destination: '/components/deprecated/legacy-tabs',
+    permanent: false,
+  },
+  {
+    source: '/components/selection-and-input/setting-toggle',
+    destination: '/components/deprecated/setting-toggle',
+    permanent: false,
+  },
+  {
     source: '/components/setting-toggle',
     destination: '/components/deprecated/setting-toggle',
     permanent: false,
@@ -622,11 +642,6 @@ const selectionAndInput = [
   {
     source: '/components/forms/select',
     destination: '/components/selection-and-input/select',
-    permanent: false,
-  },
-  {
-    source: '/components/selection-and-input/setting-toggle',
-    destination: '/components/deprecated/setting-toggle',
     permanent: false,
   },
   {

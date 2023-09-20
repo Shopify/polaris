@@ -13,6 +13,7 @@ import {Grid, InlineGrid} from '@shopify/polaris';
 
 import styles from './Markdown.module.scss';
 import Code, {InlineCode} from '../../components/Code';
+import {DirectiveCard} from './components/DirectiveCard';
 import {Box, type WithAsProp} from '../../components/Box';
 import {Stack} from '../../components/Stack';
 import StatusBanner from '../../components/StatusBanner';
@@ -228,6 +229,7 @@ function Markdown<
         SideBySide,
         Grid,
         Card,
+        DirectiveCard,
         FeaturedCardGrid,
         YoutubeVideo,
         DoDont,
