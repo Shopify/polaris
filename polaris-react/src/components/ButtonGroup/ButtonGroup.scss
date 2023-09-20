@@ -37,7 +37,7 @@
     position: relative;
     margin-top: 0;
     margin-left: 0;
-    line-height: normal;
+    line-height: 1;
 
     &:not(:first-child) {
       margin-left: calc(-1 * var(--p-space-025));
