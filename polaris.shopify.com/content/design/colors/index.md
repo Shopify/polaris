@@ -2,6 +2,7 @@
 title: Color
 description: Color highlights important areas, communicates status, urgency, and directs attention.
 icon: ColorsMajor
+showTOC: true
 keywords:
   - color role
   - color strategy
