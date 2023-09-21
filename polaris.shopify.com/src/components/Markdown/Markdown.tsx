@@ -92,19 +92,21 @@ const FencedCodeWithVisibilityToggle: ComponentType<
   const [showCode, setShowCode] = useCodeVisibility();
   if (type === 'livePreview') {
     return (
-      <PatternsExample
-        example={{
-          code: (children as string) ?? '',
-          previewContext,
-          sandboxContext,
-        }}
-        isCodeVisible={showCode}
-        isActionsVisible={isActionsVisible}
-        onCodeVisibilityToggle={() => {
-          setShowCode?.(!showCode);
-        }}
-        title={title ?? 'Pattern Name'}
-      />
+      <Box className="margin-considered-harmful">
+        <PatternsExample
+          example={{
+            code: (children as string) ?? '',
+            previewContext,
+            sandboxContext,
+          }}
+          isCodeVisible={showCode}
+          isActionsVisible={isActionsVisible}
+          onCodeVisibilityToggle={() => {
+            setShowCode?.(!showCode);
+          }}
+          title={title ?? 'Pattern Name'}
+        />
+      </Box>
     );
   }
 

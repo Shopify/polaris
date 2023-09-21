@@ -155,18 +155,12 @@ const defaultMdxComponents: React.ComponentProps<
   ),
   p: ({children}) => <Box as="p">{children}</Box>,
   h2: ({children}) => (
-    <HeadingWithCopyButton
-      as="h2"
-      className={[styles.NoMargin, styles['Heading-h2']]}
-    >
+    <HeadingWithCopyButton as="h2" className={[styles['Heading-h2']]}>
       {children}
     </HeadingWithCopyButton>
   ),
   h3: ({children}) => (
-    <HeadingWithCopyButton
-      as="h3"
-      className={[styles.NoMargin, styles['Heading-h3']]}
-    >
+    <HeadingWithCopyButton as="h3" className={styles['Heading-h3']}>
       {children}
     </HeadingWithCopyButton>
   ),
@@ -205,7 +199,7 @@ export default function PatternPage({pattern}: Props) {
       />
 
       <Page isContentPage>
-        <Stack gap="8">
+        <Stack gap="8" className="margin-considered-harmful">
           <Stack gap="4">
             <Heading as="h1">
               <Box className={styles.Heading}>{pattern.frontmatter.title}</Box>

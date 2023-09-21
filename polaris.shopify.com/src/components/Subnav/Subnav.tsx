@@ -8,6 +8,7 @@ import styles from './Subnav.module.scss';
 import {useRouter} from 'next/router';
 import {Icon} from '@shopify/polaris';
 import * as polarisIcons from '@shopify/polaris-icons';
+import icons from '../../icons';
 
 type PolarisIcon = keyof typeof polarisIcons;
 const nav = navJSON.children as NavJSON;
@@ -26,8 +27,10 @@ function Subnav() {
     return 0;
   });
 
+  const injectedPolarisIcons = {...polarisIcons, ...icons};
+
   return (
-    <nav>
+    <nav className={styles.Subnav}>
       <ul className={styles.Items}>
         {sortedNavItems.map(([key, navItem]) => (
           <Link
@@ -39,7 +42,11 @@ function Subnav() {
             href={{pathname: navItem.slug || './'}}
           >
             {navItem.icon ? (
-              <Icon source={polarisIcons[navItem.icon as PolarisIcon]} />
+              <div>
+                <Icon
+                  source={injectedPolarisIcons[navItem.icon as PolarisIcon]}
+                />
+              </div>
             ) : null}
             {navItem.title}
           </Link>
@@ -71,6 +78,7 @@ function getNavItems(path: string): {[key: string]: NavItem} | undefined {
       title: 'Overview',
       slug: parentNavItem?.slug,
       order: 0,
+      icon: 'Polaris',
     },
     ...parentNavItem.children,
   };
