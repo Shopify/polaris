@@ -8,6 +8,7 @@ keywords:
   - color use
   - black and white
   - grayscale
+icon: ColorsMajor
 ---
 
 # Color &rarr; {frontmatter.title}
@@ -15,6 +16,7 @@ keywords:
 <Lede>{frontmatter.description}</Lede>
 
 <Subnav />
+
 <Stack gap="8">
 
 <Card>
@@ -52,29 +54,17 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
-        <Box className="directive">
-
-          ![A list of badges that display paid, fulfilled, in progress, partially paid and unfulfilled states](/images/design/colors/color-overview-states-do@2x.png)
-
-          <Do>
-          Use color to support different states merchants need to be informed about.
-          </Do>
-
-        </Box>
+        <Do img="/images/design/colors/color-overview-states-do@2x.png" alt="A list of badges that display paid, fulfilled, in progress, partially paid and unfulfilled states">
+        Use color to support different states merchants need to be informed about.
+        </Do>
 
       </Grid.Cell>
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
-        <Box className="directive">
-
-          ![A card with a pink border and a pink $99 trying to entice the merchant](/images/design/colors/color-overview-decorate-dont@2x.png)
-
-          <Dont>
-          Use color to decorate or to distract merchants from performing tasks.
-          </Dont>
-
-        </Box>
+        <Dont alt="A card with a pink border and a pink $99 trying to entice the merchant" img="/images/design/colors/color-overview-decorate-dont@2x.png">
+        Use color to decorate or to distract merchants from performing tasks.
+        </Dont>
 
       </Grid.Cell>
 
@@ -118,29 +108,19 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
-        <Box className="directive">
-
-          ![A modal with a bright red header and bright red button that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-vivid-do@2x.png)
-
-          <Do>
-          Use strong, vivid colors to grab attention to things that matter most.
-          </Do>
-
-        </Box>
+        <Do alt="A modal with a bright red header and bright red button that stops the user from navigating away from a page with unsaved changes" img="/images/design/colors/color-overview-vivid-do@2x.png">
+        Use strong, vivid colors to grab attention to things that matter most.
+        </Do>
 
       </Grid.Cell>
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
-        <Box className="directive">
 
-          ![A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-diminish-dont@2x.png)
+        <Dont img="/images/design/colors/color-overview-diminish-dont@2x.png" alt="A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes">
+        Contradict or diminish messaging by using subdued colors or grayscale.
+        </Dont>
 
-          <Dont>
-          Contradict or diminish messaging by using subdued colors or grayscale.
-          </Dont>
-
-        </Box>
 
       </Grid.Cell>
 
@@ -183,30 +163,16 @@ keywords:
       </Grid.Cell>
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
-
-        <Box className="directive">
-
-        ![An orange badge with an alert icon and text label in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-conjunction-do@2x.png)
-
-        <Do>
+        <Do alt="An orange badge with an alert icon and text label in a table column that indicates that an item is almost out of stock" img="/images/design/colors/color-overview-conjunction-do@2x.png">
         Use color in conjunction with other discernible elements to amplify the message.
         </Do>
-
-        </Box>
-
       </Grid.Cell>
 
       <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
 
-        <Box className="directive">
-
-        ![A text label in orange in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-alone-dont@2x.png)
-
-        <Dont>
+        <Dont img="/images/design/colors/color-overview-alone-dont@2x.png" alt="A text label in orange in a table column that indicates that an item is almost out of stock">
         Use color alone to convey meaning
         </Dont>
-
-        </Box>
 
       </Grid.Cell>
 
