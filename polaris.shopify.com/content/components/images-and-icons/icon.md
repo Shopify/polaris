@@ -6,7 +6,6 @@ keywords:
   - visual indicator
   - svg
   - icon background
-  - icon backdrop
   - accessible icons
   - icon alternative text
   - alt text

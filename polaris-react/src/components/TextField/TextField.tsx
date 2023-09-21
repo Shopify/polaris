@@ -175,6 +175,8 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
+  /** Disables the 1password extension on the text field */
+  disable1Password?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -241,6 +243,7 @@ export function TextField({
   onSpinnerChange,
   onFocus,
   onBlur,
+  disable1Password,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -558,6 +561,7 @@ export function TextField({
     onKeyDown: handleKeyDown,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
+    'data-1p-ignore': disable1Password || undefined,
   });
 
   const inputWithVerticalContentMarkup = verticalContent ? (

@@ -161,6 +161,27 @@ export function Filters({
       // Filters that are pinned in local state display at the end of our list
       !localPinnedFilters.find((filterKey) => filterKey === key),
   );
+
+  useEffect(() => {
+    const allAppliedFilterKeysInLocalPinnedFilters = appliedFilterKeys?.every(
+      (value) => localPinnedFilters.includes(value),
+    );
+
+    if (!allAppliedFilterKeysInLocalPinnedFilters) {
+      setLocalPinnedFilters((currentLocalPinnedFilters: string[]): string[] => {
+        const newPinnedFilters =
+          appliedFilterKeys?.filter(
+            (filterKey) =>
+              !currentLocalPinnedFilters.find(
+                (currentFilterKey) => currentFilterKey === filterKey,
+              ),
+          ) || [];
+
+        return [...currentLocalPinnedFilters, ...newPinnedFilters];
+      });
+    }
+  }, [appliedFilterKeys, localPinnedFilters]);
+
   const pinnedFiltersFromLocalState = localPinnedFilters
     .map((key) => filters.find((filter) => filter.key === key))
     .reduce<FilterInterface[]>(

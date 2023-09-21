@@ -34,7 +34,9 @@ function ResourceItemExample() {
             <ResourceItem
               id={id}
               url={url}
-              media={<Avatar size="md" name={name} source={avatarSource} />}
+              media={
+                <Avatar customer size="md" name={name} source={avatarSource} />
+              }
               shortcutActions={shortcutActions}
               accessibilityLabel={`View details for ${name}`}
               name={name}

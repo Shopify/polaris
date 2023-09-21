@@ -334,7 +334,7 @@ export function All() {
                 {
                   value: 'avatar_extra_small',
                   label: 'Avatar extra small',
-                  media: <Avatar name="Hello World" size="sm" />,
+                  media: <Avatar name="Hello World" size="xs" />,
                 },
                 {
                   value: 'avatar_small',

@@ -1,9 +1,8 @@
 import {Fragment, Children} from 'react';
 import type {ReactElement, PropsWithChildren} from 'react';
-
-import {Box} from '../../../Box';
 import styles from './styles.module.scss';
 
+import {DirectiveCard, DirectiveStatusName} from '../DirectiveCard';
 interface DoDontProps extends PropsWithChildren {
   title?: string | null;
 }
@@ -44,8 +43,7 @@ export const DoDont = ({children}: PropsWithChildren) => {
   while (i < childrenArray.length) {
     target = childrenArray[i].props.children.startsWith('Don') ? donts : dos;
 
-    // Add the heading
-    target.push(childrenArray[i]);
+    // skip the headings in older uses of <DoDont>
     i++;
 
     // Add all the non-headings
@@ -75,20 +73,14 @@ export const DoDont = ({children}: PropsWithChildren) => {
   );
 };
 
-export const Do = ({children, title = 'Do'}: DoDontProps) => {
+export const Do = ({children}: DoDontProps) => {
   return (
-    <Box className={[styles.DoDontPart, styles.Do]}>
-      {title && <h4>{title}</h4>}
-      {children}
-    </Box>
+    <DirectiveCard status={DirectiveStatusName.Do}>{children}</DirectiveCard>
   );
 };
 
-export const Dont = ({children, title = "Don't"}: DoDontProps) => {
+export const Dont = ({children}: DoDontProps) => {
   return (
-    <Box className={[styles.DoDontPart, styles.Dont]}>
-      {title && <h4>{title}</h4>}
-      {children}
-    </Box>
+    <DirectiveCard status={DirectiveStatusName.Dont}>{children}</DirectiveCard>
   );
 };

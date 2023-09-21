@@ -1,10 +1,18 @@
-import type {MetadataProperties, Experimental} from '../types';
+import {size} from '../../size';
+import type {Experimental} from '../../types';
+import type {MetaTokenProperties} from '../types';
 
 type FontFamilyAlias = 'sans' | 'mono';
 
 type FontSizeScaleExperimental = Experimental<'70' | '80'>;
 
 export type FontSizeScale =
+  | '275'
+  | '325'
+  | '350'
+  | '750'
+  | '900'
+  | '1000'
   | '75'
   | '100'
   | '200'
@@ -18,6 +26,14 @@ export type FontSizeScale =
 type FontLineHeightScaleExperimental = Experimental<'075'>;
 
 export type FontLineHeightScale =
+  | '300'
+  | '400'
+  | '500'
+  | '600'
+  | '700'
+  | '800'
+  | '1000'
+  | '1200'
   | '1'
   | '2'
   | '3'
@@ -40,15 +56,33 @@ export type FontTokenGroup = {
 };
 
 export const font: {
-  [TokenName in FontTokenName]: MetadataProperties;
+  [TokenName in FontTokenName]: MetaTokenProperties;
 } = {
   'font-family-sans': {
     value:
-      "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+      "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
   },
   'font-family-mono': {
     value:
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
+  },
+  'font-size-275': {
+    value: size[275],
+  },
+  'font-size-325': {
+    value: size[325],
+  },
+  'font-size-350': {
+    value: size[350],
+  },
+  'font-size-750': {
+    value: size[750],
+  },
+  'font-size-900': {
+    value: size[900],
+  },
+  'font-size-1000': {
+    value: size[1000],
   },
   'font-size-70-experimental': {
     value: '11px',
@@ -72,10 +106,10 @@ export const font: {
     value: '24px',
   },
   'font-size-500': {
-    value: '28px',
+    value: '30px',
   },
   'font-size-600': {
-    value: '32px',
+    value: '36px',
   },
   'font-size-700': {
     value: '40px',
@@ -91,6 +125,30 @@ export const font: {
   },
   'font-weight-bold': {
     value: '700',
+  },
+  'font-line-height-300': {
+    value: size[300],
+  },
+  'font-line-height-400': {
+    value: size[400],
+  },
+  'font-line-height-500': {
+    value: size[500],
+  },
+  'font-line-height-600': {
+    value: size[600],
+  },
+  'font-line-height-700': {
+    value: size[700],
+  },
+  'font-line-height-800': {
+    value: size[800],
+  },
+  'font-line-height-1000': {
+    value: size[1000],
+  },
+  'font-line-height-1200': {
+    value: size[1200],
   },
   'font-line-height-075-experimental': {
     value: '12px',

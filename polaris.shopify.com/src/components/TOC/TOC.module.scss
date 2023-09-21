@@ -1,3 +1,5 @@
+@import '../../styles/mixins.scss';
+
 .TOC {
   &.isNested {
     ul ul {
@@ -10,7 +12,7 @@
 }
 
 .Header {
-  color: var(--p-color-text);
+  color: var(--text-strong);
   font-size: var(--p-font-size-100);
   line-height: var(--p-font-line-height-2);
   font-weight: var(--p-font-weight-semibold);
@@ -23,7 +25,7 @@
 }
 
 .Link {
-  color: var(--p-color-text);
+  color: var(--text-strong);
   display: block;
   font-size: var(--p-font-size-80-experimental);
   font-weight: var(--p-font-weight-regular);
@@ -33,12 +35,8 @@
   text-overflow: ellipsis;
   white-space: pre;
 
-  &:hover {
-    color: var(--text-strong);
-  }
-
   &.active {
-    background-color: var(--p-color-bg-app-selected);
+    background-color: var(--surface-active);
     border-radius: var(--p-border-radius-2);
     font-weight: var(--p-font-weight-semibold);
   }

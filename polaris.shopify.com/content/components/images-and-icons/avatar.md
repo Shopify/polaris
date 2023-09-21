@@ -44,7 +44,7 @@ Avatars are used to show a thumbnail representation of an individual or business
 
 ## Best practices
 
-Avatars should be one of 6 sizes:
+Avatars should be one of 5 sizes:
 
 - Extra small (20 x 20 px): use in tightly condensed layouts
 - Small (24 × 24 px): use when the medium size is too big for the layout, or when the avatar has less importance

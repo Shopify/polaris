@@ -10,6 +10,8 @@ import {KeypressListener} from '../KeypressListener';
 import {Text} from '../Text';
 import {Tooltip} from '../Tooltip';
 import {Box} from '../Box';
+import {InlineStack} from '../InlineStack';
+import {classNames} from '../../utilities/css';
 
 import styles from './Pagination.scss';
 
@@ -45,6 +47,8 @@ export interface PaginationProps {
   onPrevious?(): void;
   /** Text to provide more context in between the arrow buttons */
   label?: React.ReactNode;
+  /** Layout structure of the component */
+  type?: 'page' | 'table';
 }
 
 export function Pagination({
@@ -61,6 +65,7 @@ export function Pagination({
   accessibilityLabel,
   accessibilityLabels,
   label,
+  type = 'page',
 }: PaginationProps) {
   const i18n = useI18n();
 
@@ -155,6 +160,43 @@ export function Pagination({
         }
       />
     ));
+
+  if (type === 'table') {
+    const labelMarkup = label ? (
+      <Text as="span" variant="bodySm" fontWeight="medium">
+        {label}
+      </Text>
+    ) : null;
+
+    return (
+      <nav
+        aria-label={navLabel}
+        ref={node}
+        className={classNames(styles.Pagination, styles.table)}
+      >
+        {previousButtonEvents}
+        {nextButtonEvents}
+        <Box
+          background="bg-subdued"
+          paddingBlockStart="1_5-experimental"
+          paddingBlockEnd="1_5-experimental"
+          paddingInlineStart="3"
+          paddingInlineEnd="2"
+        >
+          <InlineStack
+            align={labelMarkup ? 'space-between' : 'end'}
+            blockAlign="center"
+          >
+            {labelMarkup}
+            <ButtonGroup variant="segmented">
+              {constructedPrevious}
+              {constructedNext}
+            </ButtonGroup>
+          </InlineStack>
+        </Box>
+      </nav>
+    );
+  }
 
   const labelTextMarkup =
     hasNext && hasPrevious ? (

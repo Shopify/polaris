@@ -13,6 +13,7 @@ import {Grid, InlineGrid} from '@shopify/polaris';
 
 import styles from './Markdown.module.scss';
 import Code, {InlineCode} from '../../components/Code';
+import {DirectiveCard} from './components/DirectiveCard';
 import {Box, type WithAsProp} from '../../components/Box';
 import {Stack} from '../../components/Stack';
 import StatusBanner from '../../components/StatusBanner';
@@ -91,19 +92,21 @@ const FencedCodeWithVisibilityToggle: ComponentType<
   const [showCode, setShowCode] = useCodeVisibility();
   if (type === 'livePreview') {
     return (
-      <PatternsExample
-        example={{
-          code: (children as string) ?? '',
-          previewContext,
-          sandboxContext,
-        }}
-        isCodeVisible={showCode}
-        isActionsVisible={isActionsVisible}
-        onCodeVisibilityToggle={() => {
-          setShowCode?.(!showCode);
-        }}
-        title={title ?? 'Pattern Name'}
-      />
+      <Box className="margin-considered-harmful">
+        <PatternsExample
+          example={{
+            code: (children as string) ?? '',
+            previewContext,
+            sandboxContext,
+          }}
+          isCodeVisible={showCode}
+          isActionsVisible={isActionsVisible}
+          onCodeVisibilityToggle={() => {
+            setShowCode?.(!showCode);
+          }}
+          title={title ?? 'Pattern Name'}
+        />
+      </Box>
     );
   }
 
@@ -228,6 +231,7 @@ function Markdown<
         SideBySide,
         Grid,
         Card,
+        DirectiveCard,
         FeaturedCardGrid,
         YoutubeVideo,
         DoDont,
