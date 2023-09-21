@@ -111,6 +111,7 @@ export function CreateViewModal({
                       )
                     : undefined
                 }
+                disable1Password
               />
             </div>
           </FormLayout>

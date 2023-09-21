@@ -5,7 +5,7 @@ const path = require('path');
 const nextConfig = {
   // See: https://nextjs.org/docs/advanced-features/output-file-tracing#automatically-copying-traced-files
   output: 'standalone',
-  reactStrictMode: true,
+  reactStrictMode: false,
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -138,6 +138,11 @@ const nextConfig = {
         source: '/patterns-legacy',
         destination: '/patterns#legacy',
         permanent: true,
+      },
+      {
+        source: '/coming-soon',
+        destination: '/coming-soon/view-transitions',
+        permanent: false,
       },
       ...actions,
       ...deprecated,

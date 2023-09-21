@@ -30,5 +30,10 @@
     @media screen and (max-width: $breakpointMobile) {
       min-width: 100%;
     }
+
+    &.maximize {
+      min-width: 100%;
+      min-height: 100%;
+    }
   }
 }

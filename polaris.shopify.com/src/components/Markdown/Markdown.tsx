@@ -155,7 +155,8 @@ function HeadingWithCopyButton({
       ? window.location.origin
       : 'https://polaris.shopify.com';
   const path = typeof window !== 'undefined' ? window.location.pathname : '';
-  const [copy, didJustCopy] = useCopyToClipboard(`${origin}${path}#${id}`);
+  const url = `${origin}${path}#${id}`;
+  const [copy, didJustCopy] = useCopyToClipboard(url);
 
   return (
     <Element id={id} className={styles.MarkdownHeading}>
@@ -164,7 +165,15 @@ function HeadingWithCopyButton({
         ariaLabel="Copy to clipboard"
         renderContent={() => <p>{didJustCopy ? 'Copied' : 'Copy'}</p>}
       >
-        <button className={styles.MarkdownCopyButton} onClick={copy}>
+        <button
+          className={styles.MarkdownCopyButton}
+          onClick={() => {
+            copy();
+            if (typeof window !== 'undefined') {
+              window.history.pushState(id, '', url);
+            }
+          }}
+        >
           <Icon source={ClipboardMinor} width={16} height={16} />
         </button>
       </Tooltip>

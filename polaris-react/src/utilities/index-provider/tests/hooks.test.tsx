@@ -215,7 +215,7 @@ describe('useHandleBulkSelection', () => {
     return <TypedChild onSelectionChange={contextValue} />;
   }
 
-  it('selects ranges', () => {
+  it('selects ranges with shift key selection', () => {
     const onSelectionChangeSpy = jest.fn();
     const mockComponent = mount(
       <MockComponent onSelectionChange={onSelectionChangeSpy} />,
@@ -244,6 +244,23 @@ describe('useHandleBulkSelection', () => {
       SelectionType.Multi,
       true,
       [3, 4],
+    );
+  });
+
+  it('selects ranges with subheader selection', () => {
+    const onSelectionChangeSpy = jest.fn();
+    const mockComponent = mount(
+      <MockComponent onSelectionChange={onSelectionChangeSpy} />,
+    );
+
+    const typedChild = mockComponent.find(TypedChild)!;
+
+    typedChild.trigger('onSelectionChange', SelectionType.Range, true, [1, 3]);
+
+    expect(onSelectionChangeSpy).toHaveBeenLastCalledWith(
+      SelectionType.Range,
+      true,
+      [1, 3],
     );
   });
 });
