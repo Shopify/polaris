@@ -1,4 +1,5 @@
 import type {Experimental} from '../../types';
+import {createVar} from '../../utilities';
 import type {MetaTokenProperties} from '../types';
 
 type ShadowAliasExperimental = Experimental<
@@ -27,6 +28,7 @@ export type ShadowInsetScale = '100' | '200';
 export type ShadowAlias =
   | 'button'
   | 'button-hover'
+  | 'button-inset'
   | 'button-primary'
   | 'button-primary-hover'
   | 'button-primary-inset'
@@ -105,14 +107,17 @@ export const shadow: {
   'shadow-button-hover': {
     value: `inset 0px -1px 0px #CCCCCC, inset 1px 0px 0px #EBEBEB, inset -1px 0px 0px #EBEBEB, inset 0px 1px 0px #EBEBEB`,
   },
+  'shadow-button-inset': {
+    value: createVar('shadow-inset-200'),
+  },
   'shadow-button-primary': {
     value: `0px 2px 0px 0px rgba(255, 255, 255, 0.2) inset, 2px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, -2px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, 0px -1px 0px 1px #000 inset, 0px 1px 0px 0px #000 inset`,
   },
-  'shadow-button-primary-inset': {
-    value: `0px 3px 0px 0px #000 inset`,
-  },
   'shadow-button-primary-hover': {
     value: `0px 1px 0px 0px rgba(255, 255, 255, 0.24) inset, 1px 0px 0px 0px rgba(255, 255, 255, 0.16) inset, -1px 0px 0px 0px rgba(255, 255, 255, 0.16) inset, 0px -1.5px 0px 0px rgba(255, 255, 255, 0.07) inset, 0px 0px 0px 0.5px #1A1A1A`,
+  },
+  'shadow-button-primary-inset': {
+    value: `0px 3px 0px 0px #000 inset`,
   },
   'shadow-button-primary-critical': {
     value: `0px 1px 0px 0px rgba(255, 255, 255, 0.4) inset, 1px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, -1px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, 0px -1.5px 0px 0px rgba(0, 0, 0, 0.25) inset`,
