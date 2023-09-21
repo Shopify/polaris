@@ -16,7 +16,6 @@ import {Icon} from '../Icon';
 
 import {Item, Section} from './components';
 import type {ItemProps} from './components';
-import {Item, SearchField, Section} from './components';
 
 export interface ActionListProps {
   /** Collection of actions for list */
