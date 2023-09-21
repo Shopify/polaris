@@ -148,7 +148,7 @@ export function OptionList({
             }
             borderColor="border-subdued"
             borderBlockStartWidth={
-              !isFirstOption && !polarisSummerEditions2023 ? '1' : undefined
+              !isFirstOption && !polarisSummerEditions2023 ? '025' : undefined
             }
           >
             <Text

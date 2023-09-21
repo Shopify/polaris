@@ -41,8 +41,8 @@ export const Card = ({
   const breakpoints = useBreakpoints();
   const {polarisSummerEditions2023} = useFeatures();
   const defaultBorderRadius: BorderRadiusScale = polarisSummerEditions2023
-    ? '3'
-    : '2';
+    ? '300'
+    : '200';
 
   const isDefaultPadding =
     typeof padding !== 'string' &&
@@ -66,7 +66,7 @@ export const Card = ({
       {polarisSummerEditions2023 ? (
         <ShadowBevel
           boxShadow="xs"
-          borderRadius={hasBorderRadius ? '3' : '0-experimental'}
+          borderRadius={hasBorderRadius ? '300' : '0'}
           zIndex="32"
         >
           <Box
