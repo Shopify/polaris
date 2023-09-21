@@ -32,13 +32,13 @@ $activator-variables: (
   cursor: pointer;
   transition: background-color var(--p-motion-duration-100);
   margin-right: var(--p-space-2);
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
 
   #{$se23} & {
     color: var(--p-color-text-inverse);
     padding: var(--p-space-1_5-experimental);
     background-color: var(--p-color-bg-inset-strong);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
     min-width: auto;
     min-height: menu(min-height);
 
@@ -64,7 +64,7 @@ $activator-variables: (
     #{$se23} & {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
       @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
+      outline: var(--p-border-width-050) solid
         var(--p-color-border-interactive-focus);
       outline-offset: var(--p-space-05);
     }
@@ -129,5 +129,5 @@ $activator-variables: (
 .Section {
   margin-top: var(--p-space-2);
   padding-top: var(--p-space-2);
-  border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
 }

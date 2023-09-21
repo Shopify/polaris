@@ -75,7 +75,7 @@
   height: var(--p-space-8);
   padding: 0 var(--p-space-3);
   border: 0;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   background: var(--p-color-bg);
   color: var(--p-color-text-subdued);
   cursor: pointer;
@@ -125,7 +125,7 @@
     @include focus-ring($size: 'wide');
     color: var(--p-color-text-primary);
     background-color: transparent;
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
     padding: var(--p-space-1_5-experimental) var(--p-space-3);
     height: 2rem;
 
@@ -182,7 +182,7 @@
   #{$se23} & {
     background: var(--p-color-bg-transparent-active-experimental);
     color: var(--p-color-text);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
 
     &[aria-disabled='true'] {
       background: var(--p-color-bg-disabled);
@@ -257,7 +257,7 @@
   text-align: left;
   text-decoration: none;
   cursor: pointer;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   color: inherit;
 
   &::-moz-focus-inner {
@@ -304,7 +304,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   padding: 0 var(--p-space-2) 0 var(--p-space-3);
   margin-top: var(--p-space-025);
   border: none;
@@ -343,7 +343,7 @@
   #{$se23} & {
     background-color: transparent;
     color: var(--p-color-text-primary);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
 
     // stylelint-disable-next-line selector-max-combinators -- Polaris component experimental styles
     svg {

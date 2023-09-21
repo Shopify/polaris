@@ -15,7 +15,7 @@
 #{$se23ShadowBevelOptOut} {
   // stylelint-disable -- Shadow bevel opt out custom properties
   --pc-app-provider-shadow-bevel-content: none;
-  --pc-app-provider-shadow-bevel-border: var(--p-border-width-1) solid
+  --pc-app-provider-shadow-bevel-border: var(--p-border-width-025) solid
     var(--p-color-border);
   // stylelint-enable
 }

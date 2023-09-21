@@ -1108,7 +1108,7 @@ function WithSidebarEnabled({
               background: 'var(--p-color-bg)',
               padding: 'var(--p-space-2)',
               boxShadow: 'var(--p-shadow-md)',
-              borderRadius: 'var(--p-border-radius-3)',
+              borderRadius: 'var(--p-border-radius-300)',
             }}
           >
             This is a sidebar
