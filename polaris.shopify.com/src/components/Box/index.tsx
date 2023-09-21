@@ -29,10 +29,10 @@ type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxProps>;
 export const Box = forwardRef(
   ({as: Tag = 'div', className, padding = '0', ...props}, forwardedRef) => {
     const style = {
-      ...getResponsiveProps('card', 'padding-block-start', 'space', padding),
-      ...getResponsiveProps('card', 'padding-block-end', 'space', padding),
-      ...getResponsiveProps('card', 'padding-inline-start', 'space', padding),
-      ...getResponsiveProps('card', 'padding-inline-end', 'space', padding),
+      ...getResponsiveProps('box', 'padding-block-start', 'space', padding),
+      ...getResponsiveProps('box', 'padding-block-end', 'space', padding),
+      ...getResponsiveProps('box', 'padding-inline-start', 'space', padding),
+      ...getResponsiveProps('box', 'padding-inline-end', 'space', padding),
     };
     return (
       <Tag
