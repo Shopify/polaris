@@ -23,8 +23,6 @@ export enum DirectiveStatusName {
 export type DirectiveStatus = DirectiveStatusName;
 type DirectiveProps = React.PropsWithChildren<{
   status: DirectiveStatus;
-  img?: string;
-  alt?: string;
 }>;
 export const DirectiveCard = ({children, status}: DirectiveProps) => {
   const childrenArray = Children.toArray(children) as ReactElement[];
