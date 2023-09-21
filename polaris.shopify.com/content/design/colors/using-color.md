@@ -1,14 +1,11 @@
 ---
-title: Palettes and roles
-order: 1
+title: Using color
+order: 2
 description: Color highlights important areas, communicates status, urgency, and directs attention.
 keywords:
-  - color role
-  - color strategy
+  - using color
   - color use
-  - black and white
-  - grayscale
-icon: ColorsMajor
+icon: PaintBrushMajor
 ---
 
 # Color &rarr; {frontmatter.title}
