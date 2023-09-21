@@ -92,7 +92,7 @@ $loading-panel-height: 53px;
     background: var(--p-color-bg-info-subdued);
     padding: var(--p-space-2);
     padding-bottom: var(--p-space-1);
-    border-radius: var(--p-border-radius-1);
+    border-radius: var(--p-border-radius-100);
   }
 }
 
@@ -175,7 +175,7 @@ $loading-panel-height: 53px;
 .TableRow {
   background-color: var(--p-color-bg);
   cursor: pointer;
-  border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
 
   #{$se23} & {
     &.TableRow-selected {
@@ -183,7 +183,7 @@ $loading-panel-height: 53px;
     }
 
     &:first-child {
-      border-top: var(--p-border-width-1) solid var(--p-color-border);
+      border-top: var(--p-border-width-025) solid var(--p-color-border);
     }
   }
 
@@ -242,8 +242,8 @@ $loading-panel-height: 53px;
       font-weight: var(--p-font-weight-medium);
       font-size: var(--p-font-size-75);
       background-color: var(--p-color-bg-subdued);
-      border-top: var(--p-border-width-1) solid var(--p-color-border);
-      border-bottom: var(--p-border-width-1) solid var(--p-color-border);
+      border-top: var(--p-border-width-025) solid var(--p-color-border);
+      border-bottom: var(--p-border-width-025) solid var(--p-color-border);
     }
 
     #{$se23} & {
@@ -667,18 +667,18 @@ $loading-panel-height: 53px;
   content: '';
   position: absolute;
   left: 0;
-  bottom: calc(-1 * var(--p-border-width-2));
+  bottom: calc(-1 * var(--p-border-width-050));
   width: 100%;
-  height: var(--p-border-width-2);
-  border-bottom: var(--p-border-width-2) dotted var(--p-color-border-subdued);
+  height: var(--p-border-width-050);
+  border-bottom: var(--p-border-width-050) dotted var(--p-color-border-subdued);
 
   #{$se23} & {
-    border-bottom: var(--p-border-width-2) dotted var(--p-color-border-strong);
+    border-bottom: var(--p-border-width-050) dotted var(--p-color-border-strong);
   }
 }
 
 .TableHeadingTooltipUnderlinePlaceholder {
-  border-bottom: var(--p-border-width-2) dotted transparent;
+  border-bottom: var(--p-border-width-050) dotted transparent;
 }
 
 .TableHeadingSortIcon-visible {
@@ -1124,16 +1124,16 @@ $scroll-bar-size: var(--p-space-2);
   bottom: 0;
   padding: var(--p-space-05);
   background-color: var(--p-color-bg);
-  border-bottom-right-radius: var(--p-border-radius-2);
-  border-bottom-left-radius: var(--p-border-radius-2);
+  border-bottom-right-radius: var(--p-border-radius-200);
+  border-bottom-left-radius: var(--p-border-radius-200);
 
   #{$se23} & {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 
     @media #{$p-breakpoints-sm-up} {
-      border-bottom-right-radius: var(--p-border-radius-2);
-      border-bottom-left-radius: var(--p-border-radius-2);
+      border-bottom-right-radius: var(--p-border-radius-200);
+      border-bottom-left-radius: var(--p-border-radius-200);
       padding: var(--p-space-05) var(--p-space-2);
     }
   }
@@ -1162,7 +1162,7 @@ $scroll-bar-size: var(--p-space-2);
 }
 
 .ScrollBar::-webkit-scrollbar-track {
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   background-color: transparent;
 }
 
@@ -1174,7 +1174,7 @@ $scroll-bar-size: var(--p-space-2);
 }
 
 .ScrollBar::-webkit-scrollbar-thumb {
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   background-color: var(--p-color-border-strong);
   transition: background-color var(--p-motion-duration-100)
     var(--p-motion-ease-out);
@@ -1206,7 +1206,7 @@ $scroll-bar-size: var(--p-space-2);
   transform: translateX(calc(-1 * var(--pc-index-table-translate-offset)));
   transition: transform var(--p-motion-ease) var(--p-motion-duration-200);
   display: flex;
-  border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
   filter: none;
   align-items: center;
 }
