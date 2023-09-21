@@ -26,6 +26,10 @@ import type {PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
+import {
+  IndexFiltersMode,
+  useSetIndexFiltersMode,
+} from '../../../../utilities/index-filters';
 import {Box} from '../../../Box';
 import {HorizontalStack} from '../../../HorizontalStack';
 import {useFeatures} from '../../../../utilities/features';
@@ -93,6 +97,8 @@ export function Header({
   const i18n = useI18n();
   const {polarisSummerEditions2023} = useFeatures();
   const {isNavigationCollapsed} = useMediaQuery();
+  const {mode} = useSetIndexFiltersMode();
+  const disableActions = mode !== IndexFiltersMode.Default;
 
   if (additionalNavigation && process.env.NODE_ENV === 'development') {
     // eslint-disable-next-line no-console
@@ -124,7 +130,11 @@ export function Header({
     pagination && !isNavigationCollapsed ? (
       <div className={styles.PaginationWrapper}>
         <Box printHidden>
-          <Pagination {...pagination} />
+          <Pagination
+            {...pagination}
+            hasPrevious={disableActions ? false : pagination.hasPrevious}
+            hasNext={disableActions ? false : pagination.hasNext}
+          />
         </Box>
       </div>
     ) : null;
@@ -147,7 +157,10 @@ export function Header({
   );
 
   const primaryActionMarkup = primaryAction ? (
-    <PrimaryActionMarkup primaryAction={primaryAction} />
+    <PrimaryActionMarkup
+      primaryAction={primaryAction}
+      disabled={disableActions}
+    />
   ) : null;
 
   let actionMenuMarkup: MaybeJSX = null;
@@ -157,8 +170,14 @@ export function Header({
   ) {
     actionMenuMarkup = (
       <ActionMenu
-        actions={secondaryActions}
-        groups={actionGroups}
+        actions={secondaryActions.map((secondaryAction) => ({
+          ...secondaryAction,
+          disabled: disableActions || secondaryAction.disabled,
+        }))}
+        groups={actionGroups.map((actionGroup) => ({
+          ...actionGroup,
+          disabled: disableActions || actionGroup.disabled,
+        }))}
         rollup={isNavigationCollapsed}
         rollupActionsLabel={
           title
@@ -271,8 +290,10 @@ export function Header({
 
 function PrimaryActionMarkup({
   primaryAction,
+  disabled,
 }: {
   primaryAction: PrimaryAction | React.ReactNode;
+  disabled: boolean;
 }) {
   const {isNavigationCollapsed} = useMediaQuery();
 
@@ -284,6 +305,7 @@ function PrimaryActionMarkup({
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
         primary,
+        disabled: disabled || primaryAction.disabled,
       },
     );
 
