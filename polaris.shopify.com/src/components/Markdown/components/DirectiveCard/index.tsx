@@ -46,6 +46,9 @@ export const DirectiveCard = ({children, status}: DirectiveProps) => {
               className={styles.ImageThumbnail}
               src={image?.props?.src}
               alt={image?.props?.alt}
+              width={656}
+              height={492}
+              style={{width: '100%', height: 'auto'}}
             />
           </Bleed>
           <Stack gap="2">
