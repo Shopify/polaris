@@ -62,7 +62,7 @@ describe('Card', () => {
     );
 
     expect(card).toContainReactComponent(ShadowBevel, {
-      borderRadius: '300',
+      borderRadius: '3',
     });
   });
 
@@ -80,7 +80,7 @@ describe('Card', () => {
 
       expect(card).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-box-border-radius': 'var(--p-border-radius-200)',
+          '--pc-box-border-radius': 'var(--p-border-radius-2)',
         }),
       });
     });

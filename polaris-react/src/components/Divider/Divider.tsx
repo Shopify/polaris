@@ -11,14 +11,14 @@ export interface DividerProps {
   borderColor?: ColorBorderAlias | 'transparent';
   /**
    * Divider border width
-   * @default '025'
+   * @default '1'
    */
   borderWidth?: BorderWidthScale;
 }
 
 export const Divider = ({
   borderColor = 'border-subdued',
-  borderWidth = '025',
+  borderWidth = '1',
 }: DividerProps) => {
   const borderColorValue =
     borderColor === 'transparent'
