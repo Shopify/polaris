@@ -9,20 +9,41 @@ import {
 import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
 import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
+import type {Range} from '../../../../utilities/index-provider/types';
 import styles from '../../IndexTable.scss';
 
+type RowType = 'data' | 'subheader';
 type RowStatus = 'success' | 'subdued' | 'critical';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
 export interface RowProps {
+  /** Table header or data cells */
   children: React.ReactNode;
+  /** A unique identifier for the row */
   id: string;
-  selected?: boolean;
+  /** Whether the row is selected */
+  selected?: boolean | 'indeterminate';
+  /** The zero-indexed position of the row. Used for Shift key multi-selection */
   position: number;
+  /** Whether the row should be subdued */
   subdued?: boolean;
+  /** Whether the row should have a status */
   status?: RowStatus;
+  /** Whether the row should be disabled */
   disabled?: boolean;
+  /** A tuple array with the first and last index of the range of other rows that this row describes. All rows in the range are selected when the selection range row is selected. */
+  selectionRange?: Range;
+  /**
+   * Indicates the relationship or role of the row's contents. A "subheader" row displays the same as the table header.
+   *  @default 'data' */
+  rowType?: RowType;
+  /** Label set on the row's checkbox
+   * @default "Select {resourceName}"
+   */
+  accessibilityLabel?: string;
+  /** Callback fired when the row is clicked and contains a data-primary-link */
   onNavigation?(id: string): void;
+  /** Callback fired when the row is clicked. Overrides the default click behaviour. */
   onClick?(): void;
 }
 
@@ -34,6 +55,9 @@ export const Row = memo(function Row({
   subdued,
   status,
   disabled,
+  selectionRange,
+  rowType = 'data',
+  accessibilityLabel,
   onNavigation,
   onClick,
 }: RowProps) {
@@ -48,15 +72,20 @@ export const Row = memo(function Row({
   const handleInteraction = useCallback(
     (event: React.MouseEvent | React.KeyboardEvent) => {
       event.stopPropagation();
+      let selectionType = SelectionType.Single;
 
       if (('key' in event && event.key !== ' ') || !onSelectionChange) return;
-      const selectionType = event.nativeEvent.shiftKey
-        ? SelectionType.Multi
-        : SelectionType.Single;
 
-      onSelectionChange(selectionType, !selected, id, position);
+      if (event.nativeEvent.shiftKey) {
+        selectionType = SelectionType.Multi;
+      } else if (selectionRange) {
+        selectionType = SelectionType.Range;
+      }
+
+      const selection: string | Range = selectionRange ?? id;
+      onSelectionChange(selectionType, !selected, selection, position);
     },
-    [id, onSelectionChange, position, selected],
+    [id, onSelectionChange, selected, selectionRange, position],
   );
 
   const contextValue = useMemo(
@@ -86,6 +115,7 @@ export const Row = memo(function Row({
 
   const rowClassName = classNames(
     styles.TableRow,
+    rowType === 'subheader' && styles['TableRow-subheader'],
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     subdued && styles['TableRow-subdued'],
@@ -101,6 +131,8 @@ export const Row = memo(function Row({
 
   if ((!disabled && selectable) || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
+      if (rowType === 'subheader') return;
+
       if (!tableRowRef.current || isNavigating.current) {
         return;
       }
@@ -140,14 +172,16 @@ export const Row = memo(function Row({
   }
 
   const RowWrapper = condensed ? 'li' : 'tr';
-
-  const checkboxMarkup = selectable ? <Checkbox /> : null;
+  const checkboxMarkup = selectable ? (
+    <Checkbox accessibilityLabel={accessibilityLabel} />
+  ) : null;
 
   return (
     <RowContext.Provider value={contextValue}>
       <RowHoveredContext.Provider value={hovered}>
         <RowWrapper
           key={id}
+          id={id}
           className={rowClassName}
           onMouseEnter={setHoverIn}
           onMouseLeave={setHoverOut}
