@@ -8,7 +8,7 @@ function BadgeExample() {
       <Badge
         status="success"
         progress="complete"
-        toneAndProgressLabelOverride="Status: Published. Your online store is visible."
+        statusAndProgressLabelOverride="Status: Published. Your online store is visible."
       >
         Published
       </Badge>
