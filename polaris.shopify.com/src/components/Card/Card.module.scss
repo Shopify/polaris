@@ -4,19 +4,6 @@
     box-shadow: var(--card-shadow);
   }
 
-  @include responsive-props(
-    'card',
-    'padding-block-start',
-    'padding-block-start'
-  );
-  @include responsive-props('card', 'padding-block-end', 'padding-block-end');
-  @include responsive-props(
-    'card',
-    'padding-inline-start',
-    'padding-inline-start'
-  );
-  @include responsive-props('card', 'padding-inline-end', 'padding-inline-end');
-
   border-radius: var(--border-radius-700);
   background-color: var(--surface);
   border-radius: var(----p-border-radius-3, 12px);

@@ -1,0 +1,15 @@
+@import '../../styles/mixins.scss';
+.Box {
+  @include responsive-props(
+    'card',
+    'padding-block-start',
+    'padding-block-start'
+  );
+  @include responsive-props('card', 'padding-block-end', 'padding-block-end');
+  @include responsive-props(
+    'card',
+    'padding-inline-start',
+    'padding-inline-start'
+  );
+  @include responsive-props('card', 'padding-inline-end', 'padding-inline-end');
+}
