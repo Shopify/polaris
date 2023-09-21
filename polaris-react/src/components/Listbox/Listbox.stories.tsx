@@ -454,8 +454,8 @@ export function WithSearch() {
             position: 'relative',
             height: polarisSummerEditions2023 ? '262px' : '292px',
             padding: 'var(--p-space-2) 0',
-            borderBottomLeftRadius: 'var(--p-border-radius-200)',
-            borderBottomRightRadius: 'var(--p-border-radius-200)',
+            borderBottomLeftRadius: 'var(--p-border-radius-2)',
+            borderBottomRightRadius: 'var(--p-border-radius-2)',
           }}
           onScrolledToBottom={handleLazyLoadSegments}
         >

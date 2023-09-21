@@ -23,8 +23,8 @@
 
     @media #{$p-breakpoints-md-up} {
       border-top-right-radius: 0;
-      border-top-left-radius: var(--p-border-radius-200);
-      border-bottom-left-radius: var(--p-border-radius-200);
+      border-top-left-radius: var(--p-border-radius-2);
+      border-bottom-left-radius: var(--p-border-radius-2);
     }
 
     &.sizeSmall {
@@ -33,8 +33,8 @@
   }
 
   @media #{$p-breakpoints-sm-up} {
-    border-top-left-radius: var(--p-border-radius-200);
-    border-top-right-radius: var(--p-border-radius-200);
+    border-top-left-radius: var(--p-border-radius-2);
+    border-top-right-radius: var(--p-border-radius-2);
   }
 }
 

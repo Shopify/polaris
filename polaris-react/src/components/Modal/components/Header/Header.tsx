@@ -52,7 +52,7 @@ export function Header({
       paddingBlockEnd="4"
       paddingInlineStart={headerPaddingInline}
       paddingInlineEnd={headerPaddingInline}
-      borderBlockEndWidth="025"
+      borderBlockEndWidth="1"
       borderColor={polarisSummerEditions2023 ? 'border' : 'border-subdued'}
       background={
         polarisSummerEditions2023 ? 'bg-secondary-experimental' : undefined

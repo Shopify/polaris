@@ -1,7 +1,7 @@
 .Tabs {
   display: flex;
   width: 100%;
-  border-bottom: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-bottom: var(--p-border-width-1) solid var(--p-color-border-subdued);
 }
 
 .Tab {
@@ -19,8 +19,8 @@
     left: var(--p-space-3);
     right: var(--p-space-3);
     height: var(--p-border-width-3);
-    border-top-left-radius: var(--p-border-radius-100);
-    border-top-right-radius: var(--p-border-radius-100);
+    border-top-left-radius: var(--p-border-radius-1);
+    border-top-right-radius: var(--p-border-radius-1);
   }
 }
 

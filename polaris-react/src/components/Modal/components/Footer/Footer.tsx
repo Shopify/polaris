@@ -38,7 +38,7 @@ export function Footer({
     <HorizontalStack gap="4" blockAlign="center">
       <Box
         borderColor={polarisSummerEditions2023 ? 'border' : 'border-subdued'}
-        borderBlockStartWidth="025"
+        borderBlockStartWidth="1"
         minHeight={polarisSummerEditions2023 ? undefined : 'var(--p-space-16)'}
         padding="4"
         paddingInlineStart={polarisSummerEditions2023 ? undefined : '5'}

@@ -24,15 +24,15 @@
 
   &:focus:not(:active) {
     outline: var(--p-color-border-interactive-focus) auto
-      var(--p-border-width-025);
+      var(--p-border-width-1);
   }
 
   #{$se23} &:focus,
   #{$se23} &:focus-visible {
     outline: var(--p-color-border-interactive-focus) auto
-      var(--p-border-width-050);
+      var(--p-border-width-2);
     outline-offset: var(--p-space-05);
-    border-radius: var(--p-border-radius-150);
+    border-radius: var(--p-border-radius-1_5-experimental);
   }
 
   &:active {
@@ -50,7 +50,7 @@
       bottom: -2px;
       left: -5px;
       display: block;
-      border-radius: var(--p-border-radius-100);
+      border-radius: var(--p-border-radius-1);
 
       #{$se23} & {
         content: none;
