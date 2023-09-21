@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import type {ThemeName} from '@shopify/polaris-tokens';
-import {themeNameDefault} from '@shopify/polaris-tokens';
+import {
+  createThemeClassName,
+  themeNameDefault,
+  themeNames,
+} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
@@ -19,8 +23,8 @@ import {
 import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
 import {
-  FeaturesContext,
   classNamePolarisSummerEditions2023,
+  FeaturesContext,
 } from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
@@ -70,6 +74,7 @@ interface State {
 }
 
 export interface AppProviderProps {
+  theme?: ThemeName;
   /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
@@ -131,12 +136,16 @@ export class AppProvider extends Component<AppProviderProps, State> {
   };
 
   setRootAttributes = () => {
-    const features = this.getFeatures();
+    const activeThemeName = this.getThemeName();
 
-    document.documentElement.classList.toggle(
-      classNamePolarisSummerEditions2023,
-      features.polarisSummerEditions2023,
-    );
+    themeNames.forEach((themeName) => {
+      document.documentElement.classList.toggle(
+        createThemeClassName(themeName),
+        themeName === activeThemeName,
+      );
+    });
+
+    document.documentElement.classList.add(classNamePolarisSummerEditions2023);
   };
 
   getFeatures = () => {
@@ -148,10 +157,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     };
   };
 
-  getThemeName = (): ThemeName =>
-    this.getFeatures().polarisSummerEditions2023
-      ? 'Polaris-Summer-Editions-2023'
-      : themeNameDefault;
+  getThemeName = (): ThemeName => this.props.theme ?? themeNameDefault;
 
   render() {
     const {children} = this.props;

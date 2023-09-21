@@ -10,7 +10,9 @@ export type {
 
 export type {ThemeName, Theme} from './themes/types';
 
-export {themeNameDefault} from './themes/constants';
+export {themeNameDefault, themeNames} from './themes/constants';
+
+export {createThemeClassName} from './themes/utils';
 
 export type {
   BorderTokenGroup,
