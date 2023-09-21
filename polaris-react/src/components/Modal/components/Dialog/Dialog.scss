@@ -44,7 +44,7 @@ $large-width: 980px;
   box-shadow: var(--p-shadow-2xl);
 
   @media (forced-colors: active) {
-    border: var(--p-border-width-1) solid transparent;
+    border: var(--p-border-width-025) solid transparent;
   }
 
   @media #{$p-breakpoints-md-down} {
@@ -56,9 +56,9 @@ $large-width: 980px;
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
     #{$se23} & {
-      border-radius: var(--p-border-radius-4);
+      border-radius: var(--p-border-radius-400);
     }
   }
 

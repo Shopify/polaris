@@ -18,13 +18,13 @@ export function Default() {
 export function WithBorders() {
   return (
     <VerticalStack gap="4">
-      <Box background="bg" padding="4" borderWidth="1" borderColor="border">
+      <Box background="bg" padding="4" borderWidth="025" borderColor="border">
         <Text as="p">1px solid border</Text>
       </Box>
       <Box
         background="bg"
         padding="4"
-        borderWidth="1"
+        borderWidth="025"
         borderStyle="dashed"
         borderColor="border-subdued"
       >
@@ -33,7 +33,7 @@ export function WithBorders() {
       <Box
         background="bg"
         padding="4"
-        borderWidth="2"
+        borderWidth="050"
         borderColor="border-info"
       >
         <Text as="p">2px solid blue</Text>
@@ -49,7 +49,7 @@ export function WithBorders() {
       <Box
         background="bg"
         padding="4"
-        borderWidth="4"
+        borderWidth="100"
         borderColor="border-caution"
       >
         <Text as="p">4px solid yellow</Text>
@@ -74,7 +74,7 @@ export function WithBorders() {
         background="bg"
         padding="4"
         borderWidth="5"
-        borderBlockStartWidth="1"
+        borderBlockStartWidth="025"
         borderColor="border-critical"
       >
         <Text as="p">border-width: 5px solid red</Text>
@@ -82,7 +82,7 @@ export function WithBorders() {
         <Box
           background="bg"
           padding="4"
-          borderWidth="4"
+          borderWidth="100"
           borderColor="border-caution"
         >
           <Text as="p">border-width: 4px solid yellow</Text>
@@ -107,13 +107,13 @@ export function WithBorders() {
 export function WithOutline() {
   return (
     <VerticalStack gap="4">
-      <Box background="bg" padding="4" outlineWidth="1" outlineColor="border">
+      <Box background="bg" padding="4" outlineWidth="025" outlineColor="border">
         <Icon source={PaintBrushMajor} color="base" />
       </Box>
       <Box
         background="bg"
         padding="4"
-        outlineWidth="1"
+        outlineWidth="025"
         outlineStyle="dashed"
         outlineColor="border-subdued"
       >
@@ -122,7 +122,7 @@ export function WithOutline() {
       <Box
         background="bg"
         padding="4"
-        outlineWidth="2"
+        outlineWidth="050"
         outlineColor="border-info"
       >
         <Icon source={PaintBrushMajor} color="base" />
@@ -138,7 +138,7 @@ export function WithOutline() {
       <Box
         background="bg"
         padding="4"
-        outlineWidth="4"
+        outlineWidth="100"
         outlineColor="border-caution"
       >
         <Icon source={PaintBrushMajor} color="base" />
@@ -157,7 +157,7 @@ export function WithOutline() {
 
 export function WithBorderRadius() {
   return (
-    <Box background="bg" padding="4" borderRadius="2">
+    <Box background="bg" padding="4" borderRadius="200">
       <Icon source={PaintBrushMajor} color="highlight" />
     </Box>
   );
@@ -169,7 +169,7 @@ export function WithResponsivePadding() {
       <Box
         background="bg"
         padding={{xs: '2', sm: '8'}}
-        borderWidth="1"
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} color="base" />
@@ -178,7 +178,7 @@ export function WithResponsivePadding() {
         background="bg"
         padding="2"
         paddingBlockStart={{xs: '4', sm: '10'}}
-        borderWidth="1"
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} color="base" />
@@ -187,7 +187,7 @@ export function WithResponsivePadding() {
         background="bg"
         padding="2"
         paddingBlockEnd={{xs: '4', sm: '10'}}
-        borderWidth="1"
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} color="base" />
@@ -196,7 +196,7 @@ export function WithResponsivePadding() {
         background="bg"
         padding="2"
         paddingInlineStart={{xs: '4', sm: '10'}}
-        borderWidth="1"
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} color="base" />
@@ -204,7 +204,7 @@ export function WithResponsivePadding() {
       <Box
         background="bg"
         paddingInlineEnd={{xs: '4', sm: '10'}}
-        borderWidth="1"
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} color="base" />

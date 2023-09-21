@@ -406,8 +406,8 @@ export function WithScrollableLazyLoadedList() {
                 width: polarisSummerEditions2023 ? '231px' : '310px',
                 height: polarisSummerEditions2023 ? '262px' : '292px',
                 padding: 'var(--p-space-2) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleScrolledToBottom}
             >
@@ -756,8 +756,8 @@ export function WithSearchableListbox() {
                 width: '310px',
                 height: polarisSummerEditions2023 ? '262px' : '292px',
                 padding: 'var(--p-space-2) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >
