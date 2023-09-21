@@ -15,6 +15,7 @@ export {
 export {metaThemes, metaThemeDefault} from './themes';
 
 export type {
+  ExtractMetaThemeValues,
   MetaTheme,
   MetaThemeShape,
   MetaTokenGroupShape,
