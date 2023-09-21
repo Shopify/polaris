@@ -4,7 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../ActionList';
 import {Badge} from '../../Badge';
-import {Item, Section} from '../components';
+import {Item, SearchField, Section} from '../components';
 import {Key} from '../../../types';
 import {KeypressListener} from '../../KeypressListener';
 import {TextField} from '../../TextField';
