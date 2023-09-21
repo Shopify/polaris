@@ -23,15 +23,8 @@ export enum DirectiveStatusName {
 export type DirectiveStatus = DirectiveStatusName;
 type DirectiveProps = React.PropsWithChildren<{
   status: DirectiveStatus;
-  width?: number;
-  height?: number;
 }>;
-export const DirectiveCard = ({
-  children,
-  width = 656,
-  height = 492,
-  status,
-}: DirectiveProps) => {
+export const DirectiveCard = ({children, status}: DirectiveProps) => {
   const childrenArray = Children.toArray(children) as ReactElement[];
 
   let image: ReactElement | undefined;
@@ -53,9 +46,6 @@ export const DirectiveCard = ({
               className={styles.ImageThumbnail}
               src={image?.props?.src}
               alt={image?.props?.alt}
-              width={width}
-              height={height}
-              style={{width: '100%', height: 'auto'}}
             />
           </Bleed>
           <Stack gap="2">
