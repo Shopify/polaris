@@ -1,0 +1,45 @@
+{
+	// Place your polaris.shopify.com workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+	// Placeholders with the same ids are connected.
+	// Example:
+	"3-column with do/dont": {
+		"scope": "md,mdx",
+		"prefix": "3cold",
+		"body": [
+			"<Grid gap='4'>",
+      " {/* ${1: Column 1 title} */}",
+      " <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>",
+
+      "   ## ${2:Column 1 title}",
+
+      "   ${3:Column 1 content}",
+
+      " </Grid.Cell>",
+
+      " {/* Do */}",
+      " <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>",
+
+      "   <Do img='${4:/images/}'>",
+
+      "     ${5:Do content}",
+
+      "   </Do>",
+
+      " </Grid.Cell>",
+
+      " {/* Dont */}",
+      " <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>"
+      "   <Dont img='${6:/images/}'>"
+      "     ${7:Dont content}"
+      "   </Dont>"
+      " </Grid.Cell>"
+      "</Grid>"
+
+		],
+		"description": "Insert three column content with do/dont"
+	}
+}
