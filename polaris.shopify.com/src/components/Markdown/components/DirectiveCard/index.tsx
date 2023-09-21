@@ -30,11 +30,11 @@ export const DirectiveCard = ({children, status}: DirectiveProps) => {
   let image: ReactElement | undefined;
 
   const rest = childrenArray.filter((d) => {
-    if (d.props.src) {
+    if (d?.props?.src) {
       image = d;
     }
 
-    return !d.props.src;
+    return !d?.props?.src;
   });
 
   return (
