@@ -1,5 +1,5 @@
 import type {Experimental} from '../../types';
-import {createVar} from '../../utilities';
+import {createVarName} from '../../utilities';
 import type {MetaTokenProperties} from '../types';
 
 type ShadowAliasExperimental = Experimental<
@@ -227,3 +227,7 @@ export const shadow: {
     value: '0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset',
   },
 };
+
+function createVar(shadowTokenName: ShadowTokenName) {
+  return `var(${createVarName(shadowTokenName)})`;
+}
