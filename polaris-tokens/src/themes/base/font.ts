@@ -1,6 +1,7 @@
 import {size} from '../../size';
 import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
+import {createVar as createVarName} from '../../utilities';
 
 type FontFamilyAlias = 'sans' | 'mono';
 
@@ -176,6 +177,6 @@ export const font: {
   },
 };
 
-function createVar(fontTokenName: FontTokenName) {
+export function createVar(fontTokenName: FontTokenName) {
   return `var(${createVarName(fontTokenName)})`;
 }
