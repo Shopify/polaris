@@ -40,7 +40,7 @@ export function SkeletonPage({
         background="bg-strong"
         minWidth="120px"
         minHeight="28px"
-        borderRadius="100"
+        borderRadius="1"
       />
     </div>
   );
@@ -48,7 +48,7 @@ export function SkeletonPage({
   const primaryActionMarkup = primaryAction ? (
     <Box
       id="SkeletonPage-PrimaryAction"
-      borderRadius="100"
+      borderRadius="1"
       background="bg-strong"
       minHeight="2.25rem"
       minWidth="6.25rem"
@@ -57,7 +57,7 @@ export function SkeletonPage({
 
   const backActionMarkup = backAction ? (
     <Box
-      borderRadius="100"
+      borderRadius="1"
       background="bg-strong"
       minHeight="2.25rem"
       minWidth="2.25rem"

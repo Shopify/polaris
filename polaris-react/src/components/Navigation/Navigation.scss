@@ -18,7 +18,7 @@ $nav-max-width: 360px;
   min-height: 100%;
   background-color: var(--p-color-bg-app);
   -webkit-overflow-scrolling: touch;
-  border-right: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-right: var(--p-border-width-1) solid var(--p-color-border-subdued);
 
   #{$se23} & {
     // stylelint-disable-next-line -- Polaris component custom properties
@@ -137,10 +137,10 @@ $nav-max-width: 360px;
 
 .Item,
 .ItemInnerWrapper {
-  border-radius: var(--p-border-radius-100);
+  border-radius: var(--p-border-radius-1);
 
   #{$se23} & {
-    border-radius: var(--p-border-radius-200);
+    border-radius: var(--p-border-radius-2);
     transition: background-color var(--p-motion-duration-150)
       var(--p-motion-ease-out);
   }
@@ -276,8 +276,8 @@ $nav-max-width: 360px;
 
     #{$se23} & {
       background: var(--p-color-bg-app-selected);
-      border-top-right-radius: var(--p-border-radius-200);
-      border-bottom-right-radius: var(--p-border-radius-200);
+      border-top-right-radius: var(--p-border-radius-2);
+      border-bottom-right-radius: var(--p-border-radius-2);
     }
 
     &::before {
@@ -333,7 +333,7 @@ $nav-max-width: 360px;
 .Item-selected {
   font-weight: var(--p-font-weight-semibold);
   color: var(--p-color-text-primary);
-  outline: var(--p-border-width-025) solid transparent;
+  outline: var(--p-border-width-1) solid transparent;
 
   &::before {
     content: '';
@@ -343,8 +343,8 @@ $nav-max-width: 360px;
     left: calc(-1 * var(--p-space-2));
     width: $active-indicator-width;
     background-color: var(--p-color-bg-primary);
-    border-top-right-radius: var(--p-border-radius-100);
-    border-bottom-right-radius: var(--p-border-radius-100);
+    border-top-right-radius: var(--p-border-radius-1);
+    border-bottom-right-radius: var(--p-border-radius-1);
   }
 
   #{$se23} & {
@@ -463,7 +463,7 @@ $nav-max-width: 360px;
 
   &:not(:first-child) {
     .ItemInnerWrapper {
-      border-top: var(--p-border-width-025) solid var(--p-color-bg-app);
+      border-top: var(--p-border-width-1) solid var(--p-color-bg-app);
 
       #{$se23} & {
         border-top: 0;
@@ -575,8 +575,8 @@ $nav-max-width: 360px;
         background: var(--p-color-bg-subdued-hover);
         padding: 0 var(--p-space-05);
         margin-right: 0;
-        border-top-right-radius: var(--p-border-radius-200);
-        border-bottom-right-radius: var(--p-border-radius-200);
+        border-top-right-radius: var(--p-border-radius-2);
+        border-bottom-right-radius: var(--p-border-radius-2);
         transition: none;
       }
 
@@ -632,17 +632,17 @@ $nav-max-width: 360px;
   align-items: center;
   height: nav(mobile-height);
   padding: var(--p-space-1) calc(var(--p-space-2) + var(--p-space-05));
-  border-radius: var(--p-border-radius-100);
+  border-radius: var(--p-border-radius-1);
 
   #{$se23} & {
     padding: calc(var(--p-space-2) - var(--p-space-05)) var(--p-space-2);
     height: calc(100% - var(--p-space-1));
-    border-radius: var(--p-border-radius-200);
+    border-radius: var(--p-border-radius-2);
 
     &:focus-visible:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
       @include no-focus-ring;
-      outline: var(--p-border-width-050) solid
+      outline: var(--p-border-width-2) solid
         var(--p-color-border-interactive-focus);
     }
   }
@@ -814,7 +814,7 @@ $nav-max-width: 360px;
 
     #{$se23} & {
       color: var(--p-color-text);
-      border-radius: var(--p-border-radius-200);
+      border-radius: var(--p-border-radius-2);
 
       // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-compound-selectors -- necessary to override the specificity of the Text class
       .Text {
@@ -958,7 +958,7 @@ $nav-max-width: 360px;
 }
 
 .Section-withSeparator {
-  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 }
 
 .SectionHeading {
@@ -998,19 +998,19 @@ $nav-max-width: 360px;
     height: nav(mobile-nav-height);
     margin-right: var(--p-space-1);
     padding: var(--p-space-1) var(--p-space-4);
-    border-radius: var(--p-border-radius-100);
+    border-radius: var(--p-border-radius-1);
 
     #{$se23} & {
       padding: calc(var(--p-space-1) - var(--p-space-05));
       height: calc(100% - var(--p-space-1));
-      border-radius: var(--p-border-radius-200);
+      border-radius: var(--p-border-radius-2);
       margin-right: calc(var(--p-space-2) + var(--p-space-05));
 
       // stylelint-disable-next-line selector-max-combinators -- se23
       &:focus-visible:not(:active) {
         /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
         @include no-focus-ring;
-        outline: var(--p-border-width-050) solid
+        outline: var(--p-border-width-2) solid
           var(--p-color-border-interactive-focus);
       }
     }

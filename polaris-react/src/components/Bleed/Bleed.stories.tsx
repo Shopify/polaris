@@ -39,7 +39,7 @@ export function WithVerticalDirection() {
       background="bg"
       padding="4"
       borderColor="border-subdued"
-      borderWidth="025"
+      borderWidth="1"
     >
       <Bleed marginBlock="6">
         <div style={styles} />
@@ -54,7 +54,7 @@ export function WithHorizontalDirection() {
       background="bg"
       padding="4"
       borderColor="border-subdued"
-      borderWidth="025"
+      borderWidth="1"
     >
       <Bleed marginInline="6">
         <div style={styles} />
@@ -71,7 +71,7 @@ export function WithSpecificDirection() {
         background="bg"
         padding="4"
         borderColor="border-subdued"
-        borderWidth="025"
+        borderWidth="1"
       >
         <Bleed marginInline="4" marginBlockStart="6">
           <div style={styles} />
@@ -82,7 +82,7 @@ export function WithSpecificDirection() {
         background="bg"
         padding="4"
         borderColor="border-subdued"
-        borderWidth="025"
+        borderWidth="1"
       >
         <Bleed marginInline="4" marginBlockEnd="6">
           <div style={styles} />
@@ -93,7 +93,7 @@ export function WithSpecificDirection() {
         background="bg"
         padding="4"
         borderColor="border-subdued"
-        borderWidth="025"
+        borderWidth="1"
       >
         <Bleed marginInline="0" marginInlineStart="6">
           <div style={styles} />
@@ -104,7 +104,7 @@ export function WithSpecificDirection() {
         background="bg"
         padding="4"
         borderColor="border-subdued"
-        borderWidth="025"
+        borderWidth="1"
       >
         <Bleed marginInline="0" marginInlineEnd="6">
           <div style={styles} />
@@ -120,7 +120,7 @@ export function WithAllDirection() {
       background="bg"
       padding="4"
       borderColor="border-subdued"
-      borderWidth="025"
+      borderWidth="1"
     >
       <Bleed marginInline="6" marginBlock="6">
         <div style={styles} />
@@ -135,7 +135,7 @@ export function WithResponsiveHorizontalDirection() {
       background="bg"
       padding={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}
       borderColor="border-subdued"
-      borderWidth="025"
+      borderWidth="1"
     >
       <Bleed marginInline={{xs: '1', sm: '2', md: '3', lg: '4', xl: '5'}}>
         <div style={styles} />

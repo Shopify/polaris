@@ -10,8 +10,8 @@
   $offset: if($border-width == 0, 1px, calc(#{$border-width} + 1px));
   $border-radius: if(
     $size == 'wide',
-    var(--p-border-radius-200),
-    var(--p-border-radius-100)
+    var(--p-border-radius-2),
+    var(--p-border-radius-1)
   );
   $negative-offset: calc(-1 * #{$offset});
 
@@ -40,7 +40,7 @@
   } @else if $style == 'focused' {
     &::after {
       box-shadow: 0 0 0 $stroke var(--p-color-border-interactive-focus);
-      outline: var(--p-border-width-025) solid transparent;
+      outline: var(--p-border-width-1) solid transparent;
       @content;
     }
   }
