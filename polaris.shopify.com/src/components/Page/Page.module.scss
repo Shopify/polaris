@@ -68,9 +68,8 @@
   width: var(--toc-width);
   overscroll-behavior: contain;
   overflow: auto;
-  border: 1.5px solid rgba(0, 0, 0, 0.2);
+  border: 1.5px solid var(--border-color);
   border-radius: var(--p-border-radius-3);
-  background-color: rgba(241, 241, 241, 0.2);
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;
