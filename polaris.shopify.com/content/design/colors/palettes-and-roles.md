@@ -19,15 +19,19 @@ keywords:
 
 <Card>
 
-    <Grid gap="4">
+  <Grid gap="4">
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+      <Box className="text-extra-padding">
 
-          ## Color has purpose
+        ## Global palette
 
-          The purpose of using color has to be clear. Color needs to support a message or a status that needs to be easily identifiable by merchants.
+        The Polaris color palette includes 12 colors, each with 16 shades. These colors are assigned different roles in the Shopify admin to convey specific meanings and serve distinct purposes.
+
+        The global palette is built using HSLuv Lightness values. HSLuv is a color space that stands for "Hue, Saturation, Lightness (L), and perceptual uniformity." It is designed to address the limitations of traditional color spaces, such as RGB and HSL, by providing more perceptually uniform and intuitive color representation. It aims to ensure that color transformations, such as lightening or darkening, are visually consistent and predictable to the human eye.
+
+        Considering this, the Polaris color palette maintains uniformity in shades within each hue. Consequently, colors like Red 12 and Blue 12 will have identical contrast ratios when paired with the same color, such as Gray 01. This simplifies the process of styling color roles by easily substituting hues as necessary.
 
         </Box>
 
@@ -39,179 +43,93 @@ keywords:
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box className="text-extra-padding">
-
-        Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
-
-        This deliberate color coding facilitates merchants in identifying which parts of the user interface require focus and distinguishes them from the default features provided by the Shopify admin.
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
-
-        <Box className="directive">
-
-          ![A list of badges that display paid, fulfilled, in progress, partially paid and unfulfilled states](/images/design/colors/color-overview-states-do@2x.png)
-
-          <Do>
-          Use color to support different states merchants need to be informed about.
-          </Do>
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
-
-        <Box className="directive">
-
-          ![A card with a pink border and a pink $99 trying to entice the merchant](/images/design/colors/color-overview-decorate-dont@2x.png)
-
-          <Dont>
-          Use color to decorate or to distract merchants from performing tasks.
-          </Dont>
-
-        </Box>
-
-      </Grid.Cell>
-
     </Grid>
 
   </Card>
 
-  <Card>
+<Card>
 
-    <Grid gap="4">
+  <Grid gap="4">
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+      <Box className="text-extra-padding">
 
-          ## Color has impact
+      ## Color roles
 
-          The Shopify admin interface adopts a black and white color scheme, intentionally creating a neutral backdrop. By employing this monochromatic design, elements that incorporate color gain heightened visual impact and prominence.
+      A color role is composed of a collection of tokens that represent different parts of the UI. Each color role follows the same logic for all tokens, but not all tokens are defined for each color role.
 
-        </Box>
+      Color roles like default will have all tokens defined, because the default color role offers the baseline color for all elements in the Shopify admin. Roles like critical or information will only have a selection of tokens defined, as these roles are usually applied to specific, smaller and more specialized components like badges or banners.
 
-      </Grid.Cell>
+      More information about tokens and their usage can be found under Using color (link).
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
+      </Box>
 
-        ![Cards in a grayscale interface with colorful badges that serve as headings](/images/design/colors/color-overview-impact@2x.png)
+    </Grid.Cell>
 
-      </Grid.Cell>
+    <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+      ![A display of Polaris components like badges, menus and banners with different color roles](/images/design/colors/color-overview-purpose@2x.png)
 
-        <Box className="text-extra-padding">
+    </Grid.Cell>
 
-          The intentional design of the overall interface in black and white enables strategically positioned and carefully selected elements to grab merchants' attention. By utilizing color purposefully, the focus is directed towards crucial information, actions, and visual cues.
+  </Grid>
 
-          Create impact when using color by using appropriate shades to convey the importance of what is being communicated to merchants.
+</Card>
 
-        </Box>
+<Card>
 
-      </Grid.Cell>
+  <Grid gap="4">
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="directive">
+      <Box className="text-extra-padding">
 
-          ![A modal with a bright red header and bright red button that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-vivid-do@2x.png)
+      ### Default
 
-          <Do>
-          Use strong, vivid colors to grab attention to things that matter most.
-          </Do>
+      The default role is used to style the entire Shopify admin and is considered to be the baseline theme for all experiences. This role defines default, secondary and tertiary visual hierarchy for a variety of components and are used when communicating default statuses, neutral messaging and common merchant data.
 
-        </Box>
+      </Box>
 
-      </Grid.Cell>
+    </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        <Box className="directive">
+      ![A display of Polaris components like badges, menus and banners with different color roles](/images/design/colors/color-overview-purpose@2x.png)
 
-          ![A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-diminish-dont@2x.png)
+    </Grid.Cell>
 
-          <Dont>
-          Contradict or diminish messaging by using subdued colors or grayscale.
-          </Dont>
+  </Grid>
 
-        </Box>
+</Card>
 
-      </Grid.Cell>
+<Do
+  img="../images/design/colors/color-overview-diminish-dont@2x.png"
+  alt="A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes"
+>
+  Use color to support different states merchants need to be informed about.
+</Do>
 
-    </Grid>
+<Grid gap="4">
 
-  </Card>
+  <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-  <Card>
+    <Box className="text-extra-padding">
 
-    <Grid gap="4">
+    ### Default
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+    The default role is used to style the entire Shopify admin and is considered to be the baseline theme for all experiences. This role defines default, secondary and tertiary visual hierarchy for a variety of components and are used when communicating default statuses, neutral messaging and common merchant data.
 
-        <Box className="text-extra-padding">
+    </Box>
 
-          ## Color is accessible
+  </Grid.Cell>
 
-          Polaris offers consistent color palettes for each color role. This means that each color is assigned a specific relationship within the overall palette.
+  <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-          These color relationships ensure that color contrasts remain consistent across every application of color and ensure proper legibility and understanding when it comes to combining texts with color and interactive shapes with various backgrounds.
+    ![A display of Polaris components like badges, menus and banners with different color roles](/images/design/colors/color-overview-purpose@2x.png)
 
-        </Box>
+  </Grid.Cell>
 
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
-
-        ![A dialog box with various elements highlighted where color combinations used for these elements passes AA and AAA accessibility standards for contrast](/images/design/colors/color-overview-accessible@2x.png)
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box className="text-extra-padding">
-
-          Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify and interact with.
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
-
-        <Box className="directive">
-
-        ![An orange badge with an alert icon and text label in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-conjunction-do@2x.png)
-
-        <Do>
-        Use color in conjunction with other discernible elements to amplify the message.
-        </Do>
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
-
-        <Box className="directive">
-
-        ![A text label in orange in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-alone-dont@2x.png)
-
-        <Dont>
-        Use color alone to convey meaning
-        </Dont>
-
-        </Box>
-
-      </Grid.Cell>
-
-    </Grid>
-
-  </Card>
+</Grid>
 
 </Stack>
