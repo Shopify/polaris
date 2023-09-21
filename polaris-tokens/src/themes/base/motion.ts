@@ -1,4 +1,4 @@
-import type {MetadataProperties} from '../types';
+import type {MetaTokenProperties} from '../types';
 
 export type MotionDurationScale =
   | '0'
@@ -39,7 +39,7 @@ export type MotionTokenGroup = {
 };
 
 export const motion: {
-  [TokenName in MotionTokenName]: MetadataProperties;
+  [TokenName in MotionTokenName]: MetaTokenProperties;
 } = {
   'motion-duration-0': {
     value: '0ms',
@@ -87,7 +87,7 @@ export const motion: {
     description: 'Starts slowly and finishes at top speed. Use sparingly.',
   },
   'motion-ease-out': {
-    value: 'cubic-bezier(0, 0, 0.58, 1)',
+    value: 'cubic-bezier(0.19, 0.91, 0.38, 1)',
     description: 'Starts at top speed and finishes slowly. Use sparingly.',
   },
   'motion-ease-in-out': {

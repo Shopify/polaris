@@ -1,12 +1,16 @@
 import React, {useRef, useEffect} from 'react';
 
-import {AppProvider} from '../src';
+import {AppProvider, FrameContext} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 import {gridOptions, featureFlagOptions} from './manager';
-import {breakpoints} from '@shopify/polaris-tokens';
 import isChromatic from 'chromatic/isChromatic';
+import {
+  breakpoints,
+  themeNameDefault,
+  themeNames,
+} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -29,12 +33,15 @@ function AppProviderDecorator(Story, context) {
 
   return (
     <AppProvider
+      theme={context.globals.theme}
       features={{
         polarisSummerEditions2023: true,
       }}
       i18n={enTranslations}
     >
-      <Story {...context} />
+      <FrameContext.Provider value={{}}>
+        <Story {...context} />
+      </FrameContext.Provider>
     </AppProvider>
   );
 }
@@ -124,6 +131,16 @@ export const globalTypes = {
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
+    },
+  },
+  theme: {
+    description: 'Global theme for components',
+    defaultValue: themeNameDefault,
+    toolbar: {
+      title: 'Theme',
+      icon: 'circlehollow',
+      items: themeNames,
+      dynamicTitle: true,
     },
   },
   ...featureFlagOptions,

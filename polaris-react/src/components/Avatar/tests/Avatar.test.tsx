@@ -46,19 +46,19 @@ describe('<Avatar />', () => {
 
   describe('customer', () => {
     it('renders an inline svg', () => {
-      const avatar = mountWithApp(<Avatar />);
+      const avatar = mountWithApp(<Avatar customer />);
       expect(avatar).toContainReactComponentTimes('svg', 1);
     });
 
     it('does not render a customer Avatar if a source is provided', () => {
       const src = 'image/path/';
-      const avatar = mountWithApp(<Avatar source={src} />);
+      const avatar = mountWithApp(<Avatar customer source={src} />);
       expect(avatar).not.toContainReactComponent('svg');
     });
 
     it('does not apply a style class', () => {
       const src = 'image/path/';
-      const avatar = mountWithApp(<Avatar source={src} />);
+      const avatar = mountWithApp(<Avatar customer source={src} />);
       expect(avatar).toContainReactComponent('span', {
         className: 'Avatar sizeMd',
       });

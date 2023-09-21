@@ -55,6 +55,8 @@ export interface AvatarProps {
   name?: string;
   /** Initials of person to display */
   initials?: string;
+  /** Whether the avatar is for a customer */
+  customer?: boolean;
   /** URL of the avatar image which falls back to initials if the image fails to load */
   source?: string;
   /** Callback fired when the image fails to load  */
@@ -68,6 +70,7 @@ export function Avatar({
   source,
   onError,
   initials,
+  customer,
   size = 'md',
   accessibilityLabel,
 }: AvatarProps) {
@@ -112,7 +115,9 @@ export function Avatar({
     styles.Avatar,
     size && styles[variationName('size', size)],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
-    !source && styles[variationName('style', styleClass(nameString))],
+    !customer &&
+      !source &&
+      styles[variationName('style', styleClass(nameString))],
   );
 
   const textClassName = classNames(
@@ -158,20 +163,21 @@ export function Avatar({
     </>
   );
 
-  const avatarBody = !initials ? (
-    avatarPath
-  ) : (
-    <text
-      className={textClassName}
-      x="50%"
-      y="50%"
-      dy={verticalOffset}
-      fill="currentColor"
-      textAnchor="middle"
-    >
-      {initials}
-    </text>
-  );
+  const avatarBody =
+    customer || !initials ? (
+      avatarPath
+    ) : (
+      <text
+        className={textClassName}
+        x="50%"
+        y="50%"
+        dy={verticalOffset}
+        fill="currentColor"
+        textAnchor="middle"
+      >
+        {initials}
+      </text>
+    );
 
   const svgMarkup = hasImage ? null : (
     <span className={styles.Initials}>

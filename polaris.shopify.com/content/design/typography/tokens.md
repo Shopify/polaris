@@ -5,6 +5,7 @@ keywords:
   - type styles
   - font sizes
   - fonts
+icon: Hexagon
 ---
 
 # {frontmatter.title}

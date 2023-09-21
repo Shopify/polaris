@@ -57,7 +57,10 @@ export async function toStyleSheet() {
   ) as Entries<Omit<typeof metaThemePartials, typeof themeNameDefault>>;
 
   const styles = [
-    `:root{color-scheme:light;${getMetaThemeDecls(metaThemeDefault)}}`,
+    [
+      `:root,${createThemeSelector(themeNameDefault)}`,
+      `{color-scheme:light;${getMetaThemeDecls(metaThemeDefault)}}`,
+    ].join(''),
     metaThemePartialsEntries.map(
       ([themeName, metaThemePartial]) =>
         `${createThemeSelector(themeName)}{${getMetaThemeDecls(

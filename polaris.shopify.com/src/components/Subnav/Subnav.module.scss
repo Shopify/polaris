@@ -1,12 +1,32 @@
-.Items {
-  --text: #000;
-  --border: #000;
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
 
-  display: inline-flex;
+.Subnav {
+  --border: #e3e3e3;
+  --icon: #4a4a4a;
+  --surface: #ffffff;
+  margin-bottom: 1.5rem;
+
+  @include dark-mode {
+    --border: #373737;
+    --icon: #e7e7e7;
+    --surface: #000000;
+  }
+}
+
+.Items {
+  display: flex;
+  flex-direction: column;
   gap: var(--p-space-1);
   border-radius: var(--p-border-radius-3);
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--border);
   padding: var(--p-space-1);
+
+  @media screen and (min-width: $breakpointTablet) {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 
 .Item {
@@ -17,15 +37,10 @@
   border-radius: var(--p-border-radius-2);
   background-color: var(--surface);
   color: var(--text);
-  fill: var(--text);
+  fill: var(--icon);
 
-  &:hover {
-    background-color: var(--surface-subdued);
+  &:hover,
+  &.Item--active {
+    background-color: var(--surface-active);
   }
-}
-
-.Item--active {
-  --surface: #000;
-  --surface-subdued: #000;
-  --text: #fff;
 }
