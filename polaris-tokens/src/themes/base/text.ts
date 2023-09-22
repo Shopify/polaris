@@ -54,7 +54,7 @@ export const text: {
     value: createVar('font-letter-spacing-denser'),
   },
   'text-heading-2xl-font-line-height': {
-    value: createVar('font-size-1000'),
+    value: createVar('font-line-height-1000'),
   },
   // heading-xl
   'text-heading-xl-font-family': {
@@ -86,7 +86,7 @@ export const text: {
     value: createVar('font-letter-spacing-dense'),
   },
   'text-heading-lg-font-line-height': {
-    value: createVar('font-size-600'),
+    value: createVar('font-line-height-600'),
   },
   // heading-md
   'text-heading-md-font-family': {
@@ -102,7 +102,7 @@ export const text: {
     value: createVar('font-letter-spacing-normal'),
   },
   'text-heading-md-font-line-height': {
-    value: createVar('font-size-500'),
+    value: createVar('font-line-height-500'),
   },
   // heading-sm
   'text-heading-sm-font-family': {
@@ -118,7 +118,7 @@ export const text: {
     value: createVar('font-letter-spacing-normal'),
   },
   'text-heading-sm-font-line-height': {
-    value: createVar('font-size-500'),
+    value: createVar('font-line-height-500'),
   },
   // body-lg
   'text-body-lg-font-family': {
@@ -134,7 +134,7 @@ export const text: {
     value: createVar('font-letter-spacing-normal'),
   },
   'text-body-lg-font-line-height': {
-    value: createVar('font-size-500'),
+    value: createVar('font-line-height-500'),
   },
   // body-md
   'text-body-md-font-family': {
@@ -150,7 +150,7 @@ export const text: {
     value: createVar('font-letter-spacing-normal'),
   },
   'text-body-md-font-line-height': {
-    value: createVar('font-size-500'),
+    value: createVar('font-line-height-500'),
   },
   // body-sm
   'text-body-sm-font-family': {
@@ -166,7 +166,7 @@ export const text: {
     value: createVar('font-letter-spacing-normal'),
   },
   'text-body-sm-font-line-height': {
-    value: createVar('font-size-400'),
+    value: createVar('font-line-height-400'),
   },
   // body-xs
   'text-body-xs-font-family': {
@@ -182,6 +182,6 @@ export const text: {
     value: createVar('font-letter-spacing-normal'),
   },
   'text-body-xs-font-line-height': {
-    value: createVar('font-size-300'),
+    value: createVar('font-line-height-300'),
   },
 };
