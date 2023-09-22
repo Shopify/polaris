@@ -41,7 +41,15 @@ export type SpaceScale =
   | '32'
   | SpaceScaleExperimental;
 
-export type SpaceTokenName = `space-${SpaceScale}`;
+export type SpaceAlias =
+  | 'button-group-gap'
+  | 'card-gap'
+  | 'card-padding'
+  | 'table-cell-padding';
+
+export type SpaceAliasOrScale = SpaceAlias | SpaceScale;
+
+export type SpaceTokenName = `space-${SpaceAliasOrScale}`;
 
 export type SpaceTokenGroup = {
   [TokenName in SpaceTokenName]: string;
@@ -103,6 +111,18 @@ export const space: {
   },
   'space-3200': {
     value: createVar('space-32'),
+  },
+  'space-button-group-gap': {
+    value: createVar('space-200'),
+  },
+  'space-card-gap': {
+    value: createVar('space-400'),
+  },
+  'space-card-padding': {
+    value: createVar('space-400'),
+  },
+  'space-table-cell-padding': {
+    value: createVar('space-150'),
   },
   'space-05': {
     value: '2px',
