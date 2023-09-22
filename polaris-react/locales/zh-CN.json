@@ -389,6 +389,10 @@
           "save": "保存",
           "cancel": "取消"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "编辑列",
+        "accessibilityLabel": "自定义表列顺序和可见性"
       }
     },
     "ActionList": {

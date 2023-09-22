@@ -389,6 +389,10 @@
           "save": "Lưu",
           "cancel": "Hủy"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Sửa cột",
+        "accessibilityLabel": "Tùy chỉnh thứ tự và khả năng hiển thị của cột trong bảng"
       }
     },
     "ActionList": {

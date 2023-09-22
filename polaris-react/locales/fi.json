@@ -389,7 +389,11 @@
           "cancel": "Peruuta"
         }
       },
-      "searchFilterTooltipWithShortcut": "Hae ja suodata (F)"
+      "searchFilterTooltipWithShortcut": "Hae ja suodata (F)",
+      "EditColumnsButton": {
+        "tooltip": "Muokkaa sarakkeita",
+        "accessibilityLabel": "Muokkaa taulukon sarakkeiden järjestystä ja näkyvyyttä"
+      }
     },
     "ActionList": {
       "SearchField": {

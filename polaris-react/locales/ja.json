@@ -389,6 +389,10 @@
           "save": "保存",
           "cancel": "キャンセル"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "列を編集",
+        "accessibilityLabel": "表の列の順序および表示をカスタマイズする"
       }
     },
     "ActionList": {

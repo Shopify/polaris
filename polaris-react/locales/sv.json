@@ -389,6 +389,10 @@
           "save": "Spara",
           "cancel": "Avbryt"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Redigera kolumner",
+        "accessibilityLabel": "Anpassa tabellkolumnernas ordning och synlighet"
       }
     },
     "ActionList": {

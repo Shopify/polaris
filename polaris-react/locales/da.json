@@ -389,6 +389,10 @@
           "save": "Gem",
           "cancel": "Annuller"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Rediger kolonner",
+        "accessibilityLabel": "Tilpas rækkefølgen og synligheden af tabelkolonner"
       }
     },
     "ActionList": {

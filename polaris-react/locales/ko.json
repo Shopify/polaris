@@ -389,6 +389,10 @@
           "save": "저장",
           "cancel": "취소"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "열 편집",
+        "accessibilityLabel": "표의 주문 열 및 표시 방법 사용자 지정"
       }
     },
     "ActionList": {

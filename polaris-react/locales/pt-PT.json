@@ -390,6 +390,10 @@
           "save": "Guardar",
           "cancel": "Cancelar"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Editar colunas",
+        "accessibilityLabel": "Personalizar visibilidade e ordem da coluna da tabela"
       }
     },
     "ActionList": {

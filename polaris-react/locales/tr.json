@@ -389,6 +389,10 @@
           "save": "Kaydet",
           "cancel": "İptal"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Sütunları düzenleyin",
+        "accessibilityLabel": "Tablonun sütun sırasını ve görünürlüğünü özelleştirin"
       }
     },
     "ActionList": {

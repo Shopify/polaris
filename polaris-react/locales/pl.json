@@ -391,6 +391,10 @@
           "save": "Zapisz",
           "cancel": "Anuluj"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Edytuj kolumny",
+        "accessibilityLabel": "Dostosuj kolejność i widoczność kolumn tabeli"
       }
     },
     "ActionList": {

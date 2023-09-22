@@ -389,7 +389,11 @@
           "cancel": "取消"
         }
       },
-      "searchFilterTooltipWithShortcut": "搜尋和篩選 (F)"
+      "searchFilterTooltipWithShortcut": "搜尋和篩選 (F)",
+      "EditColumnsButton": {
+        "tooltip": "編輯欄",
+        "accessibilityLabel": "自訂表格欄順序和能見度"
+      }
     },
     "ActionList": {
       "SearchField": {
