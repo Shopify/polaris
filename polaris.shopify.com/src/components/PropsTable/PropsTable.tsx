@@ -217,10 +217,10 @@ function TypeTable({
                           </p>
                         )}
                         {deprecationMessage && (
-                          <p className={styles.DeprecationNotice}>
+                          <div className={styles.DeprecationNotice}>
                             <StatusBadge status={StatusName.Deprecated} />{' '}
                             {endWithPeriod(deprecationMessage)}
-                          </p>
+                          </div>
                         )}
                       </div>
 
