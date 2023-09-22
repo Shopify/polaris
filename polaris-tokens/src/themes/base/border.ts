@@ -140,3 +140,7 @@ export const border: {
     value: '1px',
   },
 };
+
+function createVar(borderTokenName: BorderTokenName) {
+  return `var(${createVarName(borderTokenName)})`;
+}
