@@ -1,5 +1,5 @@
-import {size} from '../../size';
 import type {Experimental} from '../../types';
+import {createVarName} from '../../utilities';
 import type {MetaTokenProperties} from '../types';
 
 type FontFamilyAlias = 'sans' | 'mono';
@@ -60,29 +60,29 @@ export const font: {
 } = {
   'font-family-sans': {
     value:
-      "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+      "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
   },
   'font-family-mono': {
     value:
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
   },
   'font-size-275': {
-    value: size[275],
+    value: createVar('font-size-70-experimental'),
   },
   'font-size-325': {
-    value: size[325],
+    value: createVar('font-size-80-experimental'),
   },
   'font-size-350': {
-    value: size[350],
+    value: createVar('font-size-100'),
   },
   'font-size-750': {
-    value: size[750],
+    value: createVar('font-size-500'),
   },
   'font-size-900': {
-    value: size[900],
+    value: createVar('font-size-600'),
   },
   'font-size-1000': {
-    value: size[1000],
+    value: createVar('font-size-700'),
   },
   'font-size-70-experimental': {
     value: '11px',
@@ -106,10 +106,10 @@ export const font: {
     value: '24px',
   },
   'font-size-500': {
-    value: '30px',
+    value: '28px',
   },
   'font-size-600': {
-    value: '36px',
+    value: '32px',
   },
   'font-size-700': {
     value: '40px',
@@ -127,28 +127,28 @@ export const font: {
     value: '700',
   },
   'font-line-height-300': {
-    value: size[300],
+    value: createVar('font-line-height-075-experimental'),
   },
   'font-line-height-400': {
-    value: size[400],
+    value: createVar('font-line-height-1'),
   },
   'font-line-height-500': {
-    value: size[500],
+    value: createVar('font-line-height-2'),
   },
   'font-line-height-600': {
-    value: size[600],
+    value: createVar('font-line-height-3'),
   },
   'font-line-height-700': {
-    value: size[700],
+    value: createVar('font-line-height-4'),
   },
   'font-line-height-800': {
-    value: size[800],
+    value: createVar('font-line-height-5'),
   },
   'font-line-height-1000': {
-    value: size[1000],
+    value: createVar('font-line-height-6'),
   },
   'font-line-height-1200': {
-    value: size[1200],
+    value: createVar('font-line-height-7'),
   },
   'font-line-height-075-experimental': {
     value: '12px',
