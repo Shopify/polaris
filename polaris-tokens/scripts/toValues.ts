@@ -18,18 +18,11 @@ export async function toValues() {
   await fs.promises.writeFile(
     path.join(outputDir, 'index.ts'),
     [
+      "import {resolveThemeRefs} from '../src/themes/utils';",
       `export * from '../src/index';`,
       Object.entries(themeDefault).map(createExport),
       createExport(['tokens', themeDefault]),
-      createExport([
-        'themes',
-        Object.fromEntries(
-          Object.entries(metaThemes).map(([themeName, metaTheme]) => [
-            themeName,
-            extractMetaThemeValues(metaTheme),
-          ]),
-        ),
-      ]),
+      createExportThemes(),
     ]
       .flat()
       .join('\n'),
@@ -38,4 +31,17 @@ export async function toValues() {
 
 function createExport(entry: [string | number, any]) {
   return `export const ${entry[0]} = ${JSON.stringify(entry[1])} as const;`;
+}
+
+function createExportThemes() {
+  const themes = Object.entries(metaThemes)
+    .map(([themeName, metaTheme]) => {
+      const theme = extractMetaThemeValues(metaTheme);
+      const themeJSON = JSON.stringify(theme, null, 2);
+
+      return `'${themeName}': resolveThemeRefs(${themeJSON})`;
+    })
+    .join(',\n');
+
+  return `export const themes = {\n${themes}\n} as const;`;
 }
