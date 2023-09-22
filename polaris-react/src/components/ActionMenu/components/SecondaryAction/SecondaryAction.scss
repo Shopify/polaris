@@ -24,7 +24,6 @@
       box-shadow: var(--p-shadow-inset-md) !important;
     }
 
-    // stylelint-disable-next-line selector-max-specificity -- apply focus styles
     &:focus-visible {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- focus styles */
       @include no-focus-ring;

@@ -27,7 +27,6 @@ $action-menu-rollup-computed-width: 40px;
       box-shadow: none !important;
     }
 
-    /* stylelint-disable-next-line selector-max-combinators -- SE23 match button group */
     &:is(:hover, :focus-visible) {
       background-color: var(--p-color-bg-strong-hover);
     }
