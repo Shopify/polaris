@@ -11,6 +11,7 @@ import styles from './Box.module.scss';
 
 export interface BoxProps {
   className?: ClassName;
+  height?: `${number}%`;
   padding?: ResponsiveProp<SpaceScale>;
   paddingInlineStart?: ResponsiveProp<SpaceScale>;
   paddingInlineEnd?: ResponsiveProp<SpaceScale>;
@@ -27,8 +28,12 @@ type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxProps>;
  * built. It renders a `div` element by default, customisable via the `as` prop.
  */
 export const Box = forwardRef(
-  ({as: Tag = 'div', className, padding = '0', ...props}, forwardedRef) => {
+  (
+    {as: Tag = 'div', height, className, padding = '0', ...props},
+    forwardedRef,
+  ) => {
     const style = {
+      height,
       ...getResponsiveProps('box', 'padding-block-start', 'space', padding),
       ...getResponsiveProps('box', 'padding-block-end', 'space', padding),
       ...getResponsiveProps('box', 'padding-inline-start', 'space', padding),

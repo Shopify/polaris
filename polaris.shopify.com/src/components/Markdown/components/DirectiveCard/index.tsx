@@ -38,7 +38,7 @@ export const DirectiveCard = ({children, status}: DirectiveProps) => {
   });
 
   return (
-    <Card>
+    <Card height="100%">
       {image?.props?.src ? (
         <Stack gap="4">
           <Bleed marginInline="4" marginBlockStart="4">
