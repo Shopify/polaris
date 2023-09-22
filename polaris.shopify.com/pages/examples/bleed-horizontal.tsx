@@ -1,20 +1,19 @@
 import React from 'react';
-import {Bleed, Box, Text, HorizontalStack} from '@shopify/polaris';
+
+import {Bleed, Card, Text, HorizontalStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedHorizontalExample() {
   return (
-    <Box
-      background="bg"
-      borderWidth="1"
-      borderColor="border-subdued"
-      padding="800"
-    >
-      <Bleed marginInline="800">
+    <Card>
+      <Text as="h2" variant="bodyMd">
+        Content inside a card
+      </Text>
+      <Bleed marginInline="400">
         <Placeholder label="marginInline" />
       </Bleed>
-    </Box>
+    </Card>
   );
 }
 

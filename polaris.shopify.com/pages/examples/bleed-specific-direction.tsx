@@ -1,8 +1,9 @@
 import React from 'react';
+
 import {
   VerticalStack,
   Bleed,
-  Box,
+  Card,
   Text,
   HorizontalStack,
 } from '@shopify/polaris';
@@ -12,46 +13,26 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BleedSpecificDirectionExample() {
   return (
     <VerticalStack gap="600">
-      <Box
-        background="bg"
-        borderWidth="1"
-        borderColor="border-subdued"
-        padding="800"
-      >
+      <Card>
         <Bleed marginInlineStart="800">
           <Placeholder label="marginInlineStart" />
         </Bleed>
-      </Box>
-      <Box
-        background="bg"
-        borderWidth="1"
-        borderColor="border-subdued"
-        padding="800"
-      >
+      </Card>
+      <Card>
         <Bleed marginInlineEnd="800">
           <Placeholder label="marginInlineEnd" />
         </Bleed>
-      </Box>
-      <Box
-        background="bg"
-        borderWidth="1"
-        borderColor="border-subdued"
-        padding="800"
-      >
+      </Card>
+      <Card>
         <Bleed marginBlockStart="800">
           <Placeholder label="marginBlockStart" />
         </Bleed>
-      </Box>
-      <Box
-        background="bg"
-        borderWidth="1"
-        borderColor="border-subdued"
-        padding="800"
-      >
+      </Card>
+      <Card>
         <Bleed marginBlockEnd="800">
           <Placeholder label="marginBlockEnd" />
         </Bleed>
-      </Box>
+      </Card>
     </VerticalStack>
   );
 }
