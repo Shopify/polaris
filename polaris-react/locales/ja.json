@@ -215,7 +215,6 @@
         "rename": "ビューの名前を変更",
         "duplicate": "ビューを複製",
         "edit": "ビューを編集",
-        "editColumns": "列を編集",
         "delete": "ビューを削除",
         "copy": "{name}のコピー",
         "deleteModal": {

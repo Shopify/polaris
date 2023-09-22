@@ -215,7 +215,6 @@
         "rename": "Görünümü yeniden adlandır",
         "duplicate": "Görünümü çoğalt",
         "edit": "Görünümü düzenle",
-        "editColumns": "Sütunları düzenle",
         "delete": "Görünümü sil",
         "copy": "{name} kopyası",
         "deleteModal": {

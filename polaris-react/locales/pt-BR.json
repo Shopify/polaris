@@ -215,7 +215,6 @@
         "rename": "Renomear visualização",
         "duplicate": "Duplicar visualização",
         "edit": "Editar visualização",
-        "editColumns": "Editar colunas",
         "delete": "Excluir visualização",
         "copy": "Cópia de {name}",
         "deleteModal": {
