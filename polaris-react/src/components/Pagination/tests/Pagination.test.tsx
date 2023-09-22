@@ -295,7 +295,6 @@ describe('<Pagination />', () => {
           label="Hello, world!"
           type="page"
         />,
-        {features: {polarisSummerEditions2023: false}},
       );
 
       expect(pagination).toContainReactComponent(ButtonGroup, {
