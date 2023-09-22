@@ -2,6 +2,7 @@
 title: Color
 description: Color highlights important areas, communicates status, urgency, and directs attention.
 icon: ColorsMajor
+showTOC: true
 keywords:
   - color role
   - color strategy
@@ -22,9 +23,9 @@ keywords:
 
     <Grid gap="4">
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ## Color has purpose
 
@@ -34,15 +35,15 @@ keywords:
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
         ![A display of Polaris components like badges, menus and banners with different color roles](/images/design/colors/color-overview-purpose@2x.png)
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
         Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
 
@@ -51,7 +52,7 @@ keywords:
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
 
         <Do>
         ![A list of badges that display paid, fulfilled, in progress, partially paid and unfulfilled states](/images/design/colors/color-overview-states-do@2x.png)
@@ -61,7 +62,7 @@ keywords:
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
 
         <Dont>
           ![A card with a pink border and a pink $99 trying to entice the merchant](/images/design/colors/color-overview-decorate-dont@2x.png)
@@ -79,9 +80,9 @@ keywords:
 
     <Grid gap="4">
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ## Color has impact
 
@@ -91,15 +92,15 @@ keywords:
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
         ![Cards in a grayscale interface with colorful badges that serve as headings](/images/design/colors/color-overview-impact@2x.png)
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           The intentional design of the overall interface in black and white enables strategically positioned and carefully selected elements to grab merchants' attention. By utilizing color purposefully, the focus is directed towards crucial information, actions, and visual cues.
 
@@ -109,7 +110,7 @@ keywords:
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
 
         <Do>
           ![A modal with a bright red header and bright red button that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-vivid-do@2x.png)
@@ -119,7 +120,7 @@ keywords:
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
 
 
         <Dont>
@@ -139,9 +140,9 @@ keywords:
 
     <Grid gap="4">
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ## Color is accessible
 
@@ -153,15 +154,15 @@ keywords:
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 8, xl: 8}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
         ![A dialog box with various elements highlighted where color combinations used for these elements passes AA and AAA accessibility standards for contrast](/images/design/colors/color-overview-accessible@2x.png)
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify and interact with.
 
@@ -169,7 +170,7 @@ keywords:
 
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
         <Do>
            ![An orange badge with an alert icon and text label in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-conjunction-do@2x.png)
 
@@ -177,7 +178,7 @@ keywords:
         </Do>
       </Grid.Cell>
 
-      <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
 
         <Dont>
           ![A text label in orange in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-alone-dont@2x.png)

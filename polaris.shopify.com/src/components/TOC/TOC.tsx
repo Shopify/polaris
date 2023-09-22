@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
-import {Box, Text} from '@shopify/polaris';
+import {Box} from '../Box';
 import {TOCItem} from '../../utils/hooks';
-import {className} from '../../utils/various';
+import {className as classNames} from '../../utils/various';
 import styles from './TOC.module.scss';
 
 interface Props {
@@ -104,38 +104,38 @@ function TOC({items}: Props) {
   useEffect(() => detectCurrentHeading(), [items]);
 
   const Link = ({toId, linkText}: {toId: string; linkText: string}) => {
-    const activeHeading = toId === idOfCurrentHeading;
+    const activeLink = toId === idOfCurrentHeading;
+    const className = classNames(styles.Link, activeLink && styles.active);
+
     return (
-      <Text
-        as="p"
-        variant="bodyMd"
-        fontWeight={activeHeading ? 'semibold' : 'regular'}
+      <a
+        className={className}
+        href={`#${toId}`}
+        onClick={(evt) => {
+          scrollIntoView(toId);
+          evt.preventDefault();
+        }}
       >
-        <a
-          href={`#${toId}`}
-          data-is-current={activeHeading}
-          onClick={(evt) => {
-            scrollIntoView(toId);
-            evt.preventDefault();
-          }}
-        >
-          {linkText}
-        </a>
-      </Text>
+        {linkText}
+      </a>
     );
   };
 
   return (
-    <div className={className(styles.TOC, isNested && styles.isNested)}>
+    <div className={classNames(styles.TOC, isNested && styles.isNested)}>
       <ul>
-        <Box paddingInlineStart="2" paddingInlineEnd="2" paddingBlockEnd="2">
-          <Text as="h2" variant="headingMd">
-            On this page
-          </Text>
+        <Box
+          style={{
+            paddingInlineStart: 'var(--p-space-2)',
+            paddingInlineEnd: 'var(--p-space-2)',
+            paddingBlockEnd: 'var(--p-space-2)',
+          }}
+        >
+          <h2 className={styles.Header}>On this page</h2>
         </Box>
         {items.map(({title, id, children}) => {
           return (
-            <li key={title} className={styles.TOCItem}>
+            <li key={title} className={styles.Item}>
               <Link toId={id} linkText={title} />
               {children.length > 0 && (
                 <ul>
