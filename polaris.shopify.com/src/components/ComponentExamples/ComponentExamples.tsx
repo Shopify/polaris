@@ -51,7 +51,6 @@ function formatHTML(html: string): string {
 const ComponentExamples = ({examples}: Props) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [htmlCode, setHTMLCode] = useState('');
-
   const [iframeHeight, setIframeHeight] = useState(400);
 
   const handleExampleLoad = () => {

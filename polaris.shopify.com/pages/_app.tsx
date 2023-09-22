@@ -1,7 +1,7 @@
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
 import Script from 'next/script';
-import {useEffect} from 'react';
+import {useEffect, StrictMode} from 'react';
 import {useRouter} from 'next/router';
 import useDarkMode from 'use-dark-mode';
 import '@shopify/polaris/build/esm/styles.css';
@@ -9,6 +9,7 @@ import '@shopify/polaris/build/esm/styles.css';
 import {className} from '../src/utils/various';
 import Frame from '../src/components/Frame';
 import '../src/styles/globals.scss';
+import ViewTransition from '../src/components/ViewTransition';
 
 const PUBLIC_GA_ID = 'UA-49178120-32';
 
@@ -90,30 +91,32 @@ function MyApp({Component, pageProps}: AppProps) {
         </>
       ) : null}
 
-      <>
-        <script dangerouslySetInnerHTML={{__html: noflash}}></script>
+      <script dangerouslySetInnerHTML={{__html: noflash}}></script>
 
-        <Head>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-          <link rel="shortcut icon" href="/images/favicon.png" />
-          <meta property="og:image" content={ogImagePath} />
-        </Head>
+      <Head>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <link rel="shortcut icon" href="/images/favicon.png" />
+        <meta property="og:image" content={ogImagePath} />
+      </Head>
 
-        <div
-          style={{background: isPolarisExample ? '#fafafa' : 'unset'}}
-          className={className(
-            !isPolarisExample && 'styles-for-site-but-not-polaris-examples',
-          )}
-        >
-          {isPolarisExample || isPolarisSandbox ? (
-            <Component {...pageProps} />
-          ) : (
-            <Frame darkMode={darkMode}>
-              <Component {...pageProps} />
-            </Frame>
-          )}
-        </div>
-      </>
+      <div
+        style={{background: isPolarisExample ? '#fafafa' : 'unset'}}
+        className={className(
+          !isPolarisExample && 'styles-for-site-but-not-polaris-examples',
+        )}
+      >
+        {isPolarisExample || isPolarisSandbox ? (
+          <Component {...pageProps} />
+        ) : (
+          <Frame darkMode={darkMode}>
+            <ViewTransition>
+              <StrictMode>
+                <Component {...pageProps} />
+              </StrictMode>
+            </ViewTransition>
+          </Frame>
+        )}
+      </div>
     </>
   );
 }

@@ -3,6 +3,8 @@ import {Box, type WithAsProp} from '../Box';
 import styles from './ExampleWrapper.module.scss';
 
 type Props = {
+  as?: string;
+  className?: string;
   children: React.ReactNode;
   renderFrameActions?: () => React.ReactNode;
 };
