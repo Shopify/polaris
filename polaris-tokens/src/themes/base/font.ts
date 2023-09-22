@@ -43,13 +43,11 @@ export type FontLineHeightScale =
   | '7'
   | FontLineHeightScaleExperimental;
 
+export type FontLetterSpacingAlias = 'densest' | 'denser' | 'dense' | 'normal';
 export type FontWeightAlias = 'regular' | 'medium' | 'semibold' | 'bold';
 
 export type FontTokenName =
-  | `font-family-${FontFamilyAlias}`
-  | `font-size-${FontSizeScale}`
-  | `font-weight-${FontWeightAlias}`
-  | `font-line-height-${FontLineHeightScale}`;
+  | `font-letter-spacing-${FontLetterSpacingAlias}`
 
 export type FontTokenGroup = {
   [TokenName in FontTokenName]: string;
@@ -125,6 +123,18 @@ export const font: {
   },
   'font-weight-bold': {
     value: '700',
+  },
+  'font-letter-spacing-densest': {
+    value: '-0.54px',
+  },
+  'font-letter-spacing-denser': {
+    value: '-0.3px',
+  },
+  'font-letter-spacing-dense': {
+    value: '-0.2px',
+  },
+  'font-letter-spacing-normal': {
+    value: '0px',
   },
   'font-line-height-300': {
     value: createVar('font-line-height-075-experimental'),
