@@ -1,5 +1,19 @@
 # Changelog
 
+## 7.10.0
+
+### Minor Changes
+
+- [#10465](https://github.com/Shopify/polaris/pull/10465) [`fe1aac1b5`](https://github.com/Shopify/polaris/commit/fe1aac1b5a9868c3decda53b94150e0242905d04) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated private primitive `colors`
+
+* [#10477](https://github.com/Shopify/polaris/pull/10477) [`790a001cd`](https://github.com/Shopify/polaris/commit/790a001cd1942a0cd32e90b98339236fe2800afc) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated semantic `color` tokens
+
+- [#10600](https://github.com/Shopify/polaris/pull/10600) [`63cf3ad24`](https://github.com/Shopify/polaris/commit/63cf3ad2405f75589869a6f1aa33c277f559df3c) Thanks [@lgriffee](https://github.com/lgriffee)! - Added public primitive and semantic `shadow` token scales
+
+### Patch Changes
+
+- [#10485](https://github.com/Shopify/polaris/pull/10485) [`120e96eae`](https://github.com/Shopify/polaris/commit/120e96eaeb8ebda3dcf99d3917167e442bd19cdf) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated public primitive `base` and `light-uplift` theme scales
+
 ## 7.9.0
 
 ### Minor Changes
