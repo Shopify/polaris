@@ -31,6 +31,8 @@ import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
 import type {BulkActionsProps} from '../BulkActions';
 import {SelectAllActions} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
+import {Pagination} from '../Pagination';
+import type {PaginationProps} from '../Pagination';
 
 import styles from './ResourceList.scss';
 
@@ -65,6 +67,8 @@ function defaultIdForItem<TItemType extends ResourceListItemData>(
     ? item.id
     : index.toString();
 }
+
+export type ResourceListPaginationProps = Omit<PaginationProps, 'type'>;
 
 export interface ResourceListProps<
   TItemType extends ResourceListItemData = ResourceListItemData,
@@ -121,6 +125,8 @@ export interface ResourceListProps<
   idForItem?(item: TItemType, index: number): string;
   /** Function to resolve the ids of items */
   resolveItemId?(item: TItemType): string;
+  /** Properties to enable pagination at the bottom of the list. */
+  pagination?: ResourceListPaginationProps;
 }
 
 export function ResourceList<TItemType extends ResourceListItemData>({
@@ -148,6 +154,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   renderItem,
   idForItem = defaultIdForItem,
   resolveItemId,
+  pagination,
 }: ResourceListProps<TItemType>) {
   const i18n = useI18n();
   const [selectMode, setSelectMode] = useState(
@@ -737,6 +744,10 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     </ul>
   ) : null;
 
+  const paginationMarkup = pagination ? (
+    <Pagination type="table" {...pagination} />
+  ) : null;
+
   // This is probably a legit error but I don't have the time to refactor this
   // eslint-disable-next-line react/jsx-no-constructed-context-values
   const context = {
@@ -767,6 +778,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         {emptySearchStateMarkup}
         {emptyStateMarkup}
         {loadingWithoutItemsMarkup}
+        {paginationMarkup}
       </div>
       <div ref={bulkActionsIntersectionRef} />
     </ResourceListContext.Provider>
