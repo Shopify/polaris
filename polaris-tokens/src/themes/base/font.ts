@@ -175,3 +175,7 @@ export const font: {
     value: '48px',
   },
 };
+
+function createVar(fontTokenName: FontTokenName) {
+  return `var(${createVarName(fontTokenName)})`;
+}
