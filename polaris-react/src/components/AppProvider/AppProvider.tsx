@@ -148,20 +148,10 @@ export class AppProvider extends Component<AppProviderProps, State> {
     document.documentElement.classList.add(classNamePolarisSummerEditions2023);
   };
 
-  getFeatures = () => {
-    const {features} = this.props;
-
-    return {
-      ...features,
-      polarisSummerEditions2023: features?.polarisSummerEditions2023 ?? true,
-    };
-  };
-
   getThemeName = (): ThemeName => this.props.theme ?? themeNameDefault;
 
   render() {
-    const {children} = this.props;
-    const features = this.getFeatures();
+    const {children, features} = this.props;
     const themeName = this.getThemeName();
 
     const {intl, link} = this.state;

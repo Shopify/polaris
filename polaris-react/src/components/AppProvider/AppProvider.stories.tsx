@@ -34,9 +34,6 @@ export function Default(_, context) {
           },
         },
       }}
-      features={{
-        polarisSummerEditions2023: true,
-      }}
     >
       <Page>
         <LegacyCard>
@@ -97,9 +94,6 @@ export function WithI18n(_, context) {
           },
         },
       }}
-      features={{
-        polarisSummerEditions2023: true,
-      }}
     >
       <Page>
         <LegacyCard>
@@ -155,13 +149,7 @@ export function WithLinkComponent(_, context) {
   };
 
   return (
-    <AppProvider
-      linkComponent={CustomLinkComponent}
-      i18n={{}}
-      features={{
-        polarisSummerEditions2023: true,
-      }}
-    >
+    <AppProvider linkComponent={CustomLinkComponent} i18n={{}}>
       <Page
         backAction={{content: 'Products', url: '#'}}
         title="Jar With Lock-Lid"
