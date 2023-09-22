@@ -134,3 +134,19 @@ export function getResponsiveProps<T = string>(
     ]),
   ) as unknown as ResponsiveVariables<T>;
 }
+export const viewTransition = (callback: () => void | Promise<unknown>) => {
+  // @ts-ignore is experimental and not typed yet
+  if (document.startViewTransition) {
+    // @ts-ignore exists in Chrome 111+
+    return document.startViewTransition(callback);
+  } else {
+    callback();
+
+    const resolved = Promise.resolve();
+
+    return {
+      ready: resolved,
+      finished: resolved,
+    };
+  }
+};

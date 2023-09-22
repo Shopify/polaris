@@ -30,7 +30,7 @@ This pattern uses the [`BlockStack`](/components/layout-and-structure/block-stac
 
 {/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
-<div style={{ paddingBottom: '2rem' }}>
+<div style={{ padding: '2rem' }}>
   {(____CODE____)()}
 </div>
 ```
