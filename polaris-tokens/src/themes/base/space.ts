@@ -1,5 +1,6 @@
 import {size} from '../../size';
 import type {Experimental} from '../../types';
+import {createVarName} from '../../utilities';
 import type {MetaTokenProperties} from '../types';
 
 type SpaceScaleExperimental = Experimental<'1_5'>;
@@ -56,52 +57,52 @@ export const space: {
     value: size['025'],
   },
   'space-050': {
-    value: size['050'],
+    value: createVar('space-05'),
   },
   'space-100': {
-    value: size[100],
+    value: createVar('space-1'),
   },
   'space-150': {
-    value: size[150],
+    value: createVar('space-1_5-experimental'),
   },
   'space-200': {
-    value: size[200],
+    value: createVar('space-2'),
   },
   'space-300': {
-    value: size[300],
+    value: createVar('space-3'),
   },
   'space-400': {
-    value: size[400],
+    value: createVar('space-4'),
   },
   'space-500': {
-    value: size[500],
+    value: createVar('space-5'),
   },
   'space-600': {
-    value: size[600],
+    value: createVar('space-6'),
   },
   'space-800': {
-    value: size[800],
+    value: createVar('space-8'),
   },
   'space-1000': {
-    value: size[1000],
+    value: createVar('space-10'),
   },
   'space-1200': {
-    value: size[1200],
+    value: createVar('space-12'),
   },
   'space-1600': {
-    value: size[1600],
+    value: createVar('space-16'),
   },
   'space-2000': {
-    value: size[2000],
+    value: createVar('space-20'),
   },
   'space-2400': {
-    value: size[2400],
+    value: createVar('space-24'),
   },
   'space-2800': {
-    value: size[2800],
+    value: createVar('space-28'),
   },
   'space-3200': {
-    value: size[3200],
+    value: createVar('space-32'),
   },
   'space-05': {
     value: '2px',
@@ -152,3 +153,7 @@ export const space: {
     value: '128px',
   },
 };
+
+function createVar(spaceTokenName: SpaceTokenName) {
+  return `var(${createVarName(spaceTokenName)})`;
+}

@@ -1,6 +1,6 @@
 import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
-import {size} from '../../size';
+import {createVarName} from '../../utilities';
 
 type BorderRadiusScaleExperimental = Experimental<'0' | '1_5'>;
 
@@ -50,31 +50,31 @@ export const border: {
   [TokenName in BorderTokenName]: MetaTokenProperties;
 } = {
   'border-radius-0': {
-    value: size[0],
+    value: createVar('border-radius-0-experimental'),
   },
   'border-radius-050': {
-    value: size['050'],
+    value: createVar('border-radius-05'),
   },
   'border-radius-100': {
-    value: size[100],
+    value: createVar('border-radius-1'),
   },
   'border-radius-150': {
-    value: size[150],
+    value: createVar('border-radius-1_5-experimental'),
   },
   'border-radius-200': {
-    value: size[200],
+    value: createVar('border-radius-2'),
   },
   'border-radius-300': {
-    value: size[300],
+    value: createVar('border-radius-3'),
   },
   'border-radius-400': {
-    value: size[400],
+    value: createVar('border-radius-4'),
   },
   'border-radius-500': {
-    value: size[500],
+    value: createVar('border-radius-5'),
   },
   'border-radius-750': {
-    value: size[750],
+    value: createVar('border-radius-6'),
   },
   'border-radius-full': {
     value: '9999px',
@@ -107,16 +107,16 @@ export const border: {
     value: '6px',
   },
   'border-width-0165': {
-    value: size['0165'],
+    value: createVar('border-width-1-experimental'),
   },
   'border-width-025': {
-    value: size['025'],
+    value: createVar('border-width-1'),
   },
   'border-width-050': {
-    value: size['050'],
+    value: createVar('border-width-2'),
   },
   'border-width-100': {
-    value: size[100],
+    value: createVar('border-width-4'),
   },
   'border-width-1': {
     value: '1px',
