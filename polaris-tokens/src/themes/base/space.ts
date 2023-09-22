@@ -42,10 +42,8 @@ export type SpaceScale =
   | SpaceScaleExperimental;
 
 export type SpaceAlias =
-  | 'button-group-gap'
-  | 'card-gap'
-  | 'card-padding'
-  | 'table-cell-padding';
+  /** Specialty and component spacing. */
+  'button-group-gap' | 'card-gap' | 'card-padding' | 'table-cell-padding';
 
 export type SpaceAliasOrScale = SpaceAlias | SpaceScale;
 
