@@ -13,7 +13,7 @@ const Preview = ({
   return (
     <Box className={[styles.ThumbnailPreview, className]}>
       {src ? (
-        <Image alt={alt} src={src} fill style={{objectFit: 'contain'}} />
+        <Image alt={alt} src={src} fill style={{objectFit: 'cover'}} />
       ) : null}
     </Box>
   );

@@ -32,13 +32,7 @@ function AppProviderDecorator(Story, context) {
   if (context.args.omitAppProvider) return <Story {...context} />;
 
   return (
-    <AppProvider
-      theme={context.globals.theme}
-      features={{
-        polarisSummerEditions2023: true,
-      }}
-      i18n={enTranslations}
-    >
+    <AppProvider theme={context.globals.theme} i18n={enTranslations}>
       <FrameContext.Provider value={{}}>
         <Story {...context} />
       </FrameContext.Provider>
