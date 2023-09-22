@@ -364,6 +364,15 @@ button {
   }
 }
 
-.text-extra-padding {
-  padding: var(--card-padding-md);
+.colors-swatch {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--p-border-radius-2);
+  margin-bottom: var(--p-space-2);
+
+  &:before {
+    content: '';
+    display: block;
+    padding-bottom: 75%;
+  }
 }
