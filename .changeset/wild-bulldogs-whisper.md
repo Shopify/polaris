@@ -2,4 +2,4 @@
 '@shopify/polaris-tokens': patch
 ---
 
-Resolved token named references in the `theme`
+Resolved token name references in the `theme`
