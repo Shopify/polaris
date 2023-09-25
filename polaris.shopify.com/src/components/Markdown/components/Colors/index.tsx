@@ -33,8 +33,15 @@ export function Colors() {
   ];
 
   let a11ySelectColorOne: boolean = false;
-  let a11yColorOne: object = {id: 'none'};
-  let a11yColorTwo: object = {id: 'none'};
+  interface a11yColor {
+    r: string;
+    g: string;
+    b: string;
+    a: string;
+    id: string;
+  }
+  let a11yColorOne: a11yColor;
+  let a11yColorTwo: a11yColor;
   let a11yRatio: number = 0;
   const selectColor = (colorValue: string, colorName: string) => {
     a11ySelectColorOne = !a11ySelectColorOne;
@@ -53,9 +60,9 @@ export function Colors() {
         id: colorName,
       };
 
-      document.querySelector(
-        '#contrast-ratio-color-one-box',
-      ).style.backgroundColor = colorValue;
+      document.getElementById(
+        'contrast-ratio-color-one-box',
+      )!.style.backgroundColor = colorValue;
     } else {
       a11yColorTwo = {
         r: rgbaArray[0],
@@ -65,45 +72,45 @@ export function Colors() {
         id: colorName,
       };
 
-      document.querySelector(
-        '#contrast-ratio-color-two-box',
-      ).style.backgroundColor = colorValue;
+      document.getElementById(
+        'contrast-ratio-color-two-box',
+      )!.style.backgroundColor = colorValue;
     }
     console.log(a11yColorOne);
     console.log(colorName);
 
     document
-      .querySelector('#' + a11yColorOne.id)
+      .getElementById(a11yColorOne.id)
       ?.classList.add(styles.ColorsSelected);
 
     document
-      .querySelector('#' + a11yColorTwo.id)
+      .getElementById(a11yColorTwo.id)
       ?.classList.add(styles.ColorsSelected);
 
     if (!Number.isNaN(1 / a11yColorRatio(a11yColorOne, a11yColorTwo))) {
       a11yRatio = 1 / a11yColorRatio(a11yColorOne, a11yColorTwo);
-      document.getElementById('contrast-ratio').innerHTML = a11yRatio
+      document.getElementById('contrast-ratio')!.innerHTML = a11yRatio
         .toFixed(2)
         .toString();
 
-      let crInteractive = document.querySelector('#contrast-ratio-interactive');
-      let crText = document.querySelector('#contrast-ratio-text');
+      let crInteractive = document.getElementById('contrast-ratio-interactive');
+      let crText = document.getElementById('contrast-ratio-text');
 
-      crInteractive.classList.remove(styles.ColorsWCAGPass);
-      crInteractive.classList.remove(styles.ColorsWCAGFail);
-      crText.classList.remove(styles.ColorsWCAGPass);
-      crText.classList.remove(styles.ColorsWCAGFail);
+      crInteractive!.classList.remove(styles.ColorsWCAGPass);
+      crInteractive!.classList.remove(styles.ColorsWCAGFail);
+      crText!.classList.remove(styles.ColorsWCAGPass);
+      crText!.classList.remove(styles.ColorsWCAGFail);
 
       a11yRatio > 2.99
-        ? crInteractive.classList.add(styles.ColorsWCAGPass)
-        : crInteractive.classList.add(styles.ColorsWCAGFail);
+        ? crInteractive!.classList.add(styles.ColorsWCAGPass)
+        : crInteractive!.classList.add(styles.ColorsWCAGFail);
       a11yRatio > 4.49
-        ? crText.classList.add(styles.ColorsWCAGPass)
-        : crText.classList.add(styles.ColorsWCAGFail);
+        ? crText!.classList.add(styles.ColorsWCAGPass)
+        : crText!.classList.add(styles.ColorsWCAGFail);
 
-      document.getElementById('contrast-ratio-color-one').innerHTML =
+      document.getElementById('contrast-ratio-color-one')!.innerHTML =
         capitalize(a11yColorOne.id.split(/(\d+)/).join(' '));
-      document.getElementById('contrast-ratio-color-two').innerHTML =
+      document.getElementById('contrast-ratio-color-two')!.innerHTML =
         capitalize(a11yColorTwo.id.split(/(\d+)/).join(' '));
     }
   };
