@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BadgeExample() {
   return (
     <Card>
-      <Badge status="info">Draft</Badge>
+      <Badge tone="info">Draft</Badge>
     </Card>
   );
 }

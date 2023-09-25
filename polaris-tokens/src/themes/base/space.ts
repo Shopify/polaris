@@ -1,5 +1,6 @@
 import {size} from '../../size';
 import type {Experimental} from '../../types';
+import {createVarName} from '../../utilities';
 import type {MetaTokenProperties} from '../types';
 
 type SpaceScaleExperimental = Experimental<'1_5'>;
@@ -170,3 +171,7 @@ export const space: {
     value: '128px',
   },
 };
+
+function createVar(spaceTokenName: SpaceTokenName) {
+  return `var(${createVarName(spaceTokenName)})`;
+}

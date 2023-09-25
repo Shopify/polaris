@@ -6,9 +6,9 @@ function BadgeExample() {
   return (
     <Card>
       <Badge
-        status="success"
+        tone="success"
         progress="complete"
-        statusAndProgressLabelOverride="Status: Published. Your online store is visible."
+        toneAndProgressLabelOverride="Status: Published. Your online store is visible."
       >
         Published
       </Badge>
