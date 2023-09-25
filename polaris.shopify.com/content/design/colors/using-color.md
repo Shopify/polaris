@@ -211,7 +211,7 @@ icon: PaintBrushMajor
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <Dont>
-      ![A badge that uses a fill color as background but with a normal text color for its type, making it hard to read](/images/design/colors/color-using-color-fill-on-fill-dont@2x.png)
+      ![A badge that uses a fill color as background but with a normal text color for its type, making it hard to read](/images/design/colors/color-using-color-fill-onfill-dont@2x.png)
 
       Mix fills with text colors that are not “on-fill”. These combinations might not pass minimum contrast ratio requirements.
 
