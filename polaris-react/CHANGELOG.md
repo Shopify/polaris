@@ -1,5 +1,18 @@
 # Changelog
 
+## 11.20.1
+
+### Patch Changes
+
+- [#10665](https://github.com/Shopify/polaris/pull/10665) [`22dbada34`](https://github.com/Shopify/polaris/commit/22dbada3490b8ed5c5c65c77c532529b411128e2) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `Modal` missing `FrameContext` error
+
+* [#10663](https://github.com/Shopify/polaris/pull/10663) [`f6a965102`](https://github.com/Shopify/polaris/commit/f6a965102f71820375e764e6bdbb431fb9542273) Thanks [@chloerice](https://github.com/chloerice)! - Reverted disabling of `Page` `secondaryActions` when `IndexFilters` is in filter `mode`
+
+- [#10649](https://github.com/Shopify/polaris/pull/10649) [`3bafbea50`](https://github.com/Shopify/polaris/commit/3bafbea5000207c05d2c58dc3553790164ab7844) Thanks [@mattkubej](https://github.com/mattkubej)! - Replace usages of `bg-secondary-experimental` with `bg-subdued` for Tables
+
+- Updated dependencies [[`f26cebe99`](https://github.com/Shopify/polaris/commit/f26cebe99e486730bce2ca1d9add89e24ef9c648), [`2359e5f5a`](https://github.com/Shopify/polaris/commit/2359e5f5a4e6a93f8dd70997c4ae9a1ab732911c)]:
+  - @shopify/polaris-tokens@7.11.0
+
 ## 11.20.0
 
 ### Minor Changes
