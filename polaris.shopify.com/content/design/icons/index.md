@@ -28,12 +28,14 @@ keywords:
 
 {/* Clear card */}
 
+<Stack gap='4'>
+
 <Card>
 
   <Grid gap="4" >
     
     {/* Clear */}
-    <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
     
       ## Clear
 
@@ -42,9 +44,10 @@ keywords:
     </Grid.Cell>
 
     {/* Do */}
-    <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Do img="/images/design/icons/icons-overview-clear-1@2x.png">
+      <Do>
+        ![](/images/design/icons/icons-overview-clear-1@2x.png)
 
         Draw simple objects that are easy to identify.
 
@@ -53,9 +56,11 @@ keywords:
     </Grid.Cell>
 
     {/* Dont */}
-    <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Dont img="/images/design/icons/icons-overview-clear-2@2x.png">
+      <Dont>
+
+        ![](/images/design/icons/icons-overview-clear-2@2x.png)
 
         Draw simple objects that are easy to identify.
 
@@ -71,21 +76,54 @@ keywords:
 
 <Card>
 
-  <Grid gap='4'>
+  <Grid gap='4' col>
    {/* Consistent */}
-   <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
+   <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
      ## Consistent
      Icons follow a cohesive visual style across the user interface. This includes a consistent use of line weights, shapes, dimensions, perspectives, and general style. Design consistency enables users to quickly recognize functionality and navigate the interface more intuitively.
 
    </Grid.Cell>
    {/* Do */}
-   <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 3, lg: 4, xl: 4}}>
-     <Do img='/images/design/icons/icons-overview-consistent-1-@2x.png'>
-       Reuse parts of other icons in the set to maintain visual harmony across all icons.
+   <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 9, lg: 8, xl: 8}}>
 
-     </Do>
+     <Stack gap='4'>
+
+      <Do>
+
+        ![](/images/design/icons/icons-overview-consistent-1@2x.png)
+
+        Reuse parts of other icons in the set to maintain visual harmony across all icons.
+
+      </Do>
+
+      <InlineGrid gap='4' columns='2'>
+
+        <Do>
+
+          ![](/images/design/icons/icons-overview-consistent-3@2x.png)
+
+          Use universally recognized icons.
+
+
+        </Do>
+
+        <Dont>
+
+          ![](/images/design/icons/icons-overview-consistent-3@2x.png)
+
+          Reinvent the way an object is represented.
+
+        </Dont>
+
+
+      </InlineGrid>
+
+     </Stack>
 
    </Grid.Cell>
   </Grid>
 
 </Card>
+
+</Stack>
