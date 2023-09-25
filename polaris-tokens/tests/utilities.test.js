@@ -237,4 +237,24 @@ describe('resolveMetaThemeRefs', () => {
 
     expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
   });
+
+  it('resolves nested token references', () => {
+    const metaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-2': {value: 'var(--p-space-1)'},
+        'space-gap': {value: 'var(--p-space-2)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-2': {value: '1px'},
+        'space-gap': {value: '1px'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
+  });
 });

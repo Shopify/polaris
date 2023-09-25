@@ -79,7 +79,7 @@ export function resolveMetaThemeRefs<T extends MetaThemeShape>(
           ([tokenName, metaTokenProperties]) => {
             let tokenValue = metaTokenProperties.value;
 
-            if (tokenValue.startsWith('var(--p-')) {
+            while (tokenValue.startsWith('var(--p-')) {
               const tokenNameRef = tokenValue.slice(8, -1);
 
               tokenValue = flattenedMetaTheme[tokenNameRef].value;
