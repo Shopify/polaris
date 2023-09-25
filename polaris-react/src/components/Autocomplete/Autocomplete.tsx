@@ -170,9 +170,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   );
 
   const actionBeforeMarkup = actionBefore && <MappedAction {...actionBefore} />;
-  const actionAfterMarkup = actionAfter && (
-    <MappedAction {...actionAfter} plain />
-  );
+  const actionAfterMarkup = actionAfter && <MappedAction {...actionAfter} />;
 
   const emptyStateMarkup = emptyState && options.length < 1 && !loading && (
     <div role="status">{emptyState}</div>

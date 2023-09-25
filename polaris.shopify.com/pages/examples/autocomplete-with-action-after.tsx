@@ -75,6 +75,7 @@ function AutocompleteActionAfterExample() {
         actionAfter={{
           content: 'View all',
           closeOnClick: true,
+          plain: true,
           onAction: () => {
             console.log('actionBefore clicked!');
           },

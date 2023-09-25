@@ -355,6 +355,7 @@ describe('<Autocomplete/>', () => {
         it('renders MappedAction', () => {
           const actionAfter = {
             content: 'View all',
+            plain: true,
           };
           const autocomplete = mountWithApp(
             <Autocomplete {...defaultProps} actionAfter={actionAfter} />,
