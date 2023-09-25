@@ -8,10 +8,16 @@ export interface StackProps {
 }
 
 export const Stack = forwardRef(
-  ({gap = '0', style, className, ...props}, ref) => (
+  ({gap = '0', style, className, as, ...props}, ref) => (
     <Box
+      as={as}
       ref={ref}
-      className={[styles.Stack, className]}
+      className={[
+        styles.Stack,
+        className,
+        // @ts-expect-error The types for `as` don't support `ul`?
+        as === 'ul' ? styles.List : undefined,
+      ]}
       style={{
         // @ts-expect-error The types for `style` don't support css vars for
         // some reason
