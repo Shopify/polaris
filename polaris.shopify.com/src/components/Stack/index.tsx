@@ -15,12 +15,9 @@ export const Stack = forwardRef(
       className={[
         styles.Stack,
         className,
-        // @ts-expect-error The types for `as` don't support `ul`?
         as === 'ul' ? styles.List : undefined,
       ]}
       style={{
-        // @ts-expect-error The types for `style` don't support css vars for
-        // some reason
         '--stack-gap-prop': `var(--p-space-${gap})`,
         ...style,
       }}
