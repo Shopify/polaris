@@ -1,6 +1,5 @@
 import React, {useState, useCallback, useEffect} from 'react';
 
-import type {Experimental} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
@@ -8,12 +7,7 @@ import {Image} from '../Image';
 
 import styles from './Avatar.scss';
 
-type Size =
-  | 'extraSmall'
-  | 'small'
-  | 'medium'
-  | 'large'
-  | Experimental<'xl' | '2xl'>;
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 enum Status {
   Pending = 'PENDING',
@@ -24,12 +18,11 @@ enum Status {
 export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'] as const;
 
 const avatarStrokeWidth: {[S in Size]: string} = {
-  extraSmall: '3',
-  small: '2.5',
-  medium: '2.5',
-  large: '2.5',
-  'xl-experimental': '2',
-  '2xl-experimental': '1.5',
+  xs: '3',
+  sm: '2.5',
+  md: '2.5',
+  lg: '2.5',
+  xl: '2',
 };
 
 /**
@@ -78,7 +71,7 @@ export function Avatar({
   onError,
   initials,
   customer,
-  size = 'medium',
+  size = 'md',
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();

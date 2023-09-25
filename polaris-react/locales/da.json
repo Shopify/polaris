@@ -14,17 +14,17 @@
         "partiallyComplete": "Delvist fuldført",
         "complete": "Fuldført"
       },
-      "STATUS_LABELS": {
-        "info": "Info",
-        "success": "Succes",
+      "TONE_LABELS": {
+        "info": "Oplysninger",
+        "success": "Gennemført",
         "warning": "Advarsel",
         "attention": "Bemærk",
-        "new": "Nyhed",
+        "new": "Nye",
         "critical": "Kritisk",
         "readOnly": "Skrivebeskyttet",
         "enabled": "Aktiveret"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Afvis meddelelse"

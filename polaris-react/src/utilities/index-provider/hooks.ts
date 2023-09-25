@@ -179,6 +179,8 @@ export function useHandleBulkSelection({
         selectionType === SelectionType.All
       ) {
         onSelectionChange(selectionType, toggleType);
+      } else if (selectionType === SelectionType.Range) {
+        onSelectionChange(SelectionType.Range, toggleType, selection);
       }
     },
     [onSelectionChange],

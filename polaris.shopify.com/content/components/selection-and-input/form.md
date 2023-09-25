@@ -1,6 +1,5 @@
 ---
 title: Form
-description: A wrapper component that handles the submission of forms.
 category: Selection and input
 keywords:
   - form
@@ -19,7 +18,20 @@ examples:
   - fileName: form-without-native-validation.tsx
     title: Without native validation
     description: Use in forms to toggle native form validation.
+previewImg: /images/components/selection-and-input/form.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A wrapper component that handles the submission of forms.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

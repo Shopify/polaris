@@ -7,7 +7,6 @@ export type Experimental<T extends string> = `${T}-experimental`;
 export interface MetadataProperties {
   description?: string;
   value: string;
-  valueExperimental?: string;
 }
 
 export interface MetadataGroup {

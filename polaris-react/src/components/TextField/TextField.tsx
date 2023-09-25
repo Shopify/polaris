@@ -175,6 +175,8 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
+  /** Disables the 1password extension on the text field */
+  disable1Password?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -241,6 +243,7 @@ export function TextField({
   onSpinnerChange,
   onFocus,
   onBlur,
+  disable1Password,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -403,11 +406,11 @@ export function TextField({
     ],
   );
 
-  const handleButtonRelease = useCallback(() => {
+  const handleSpinnerButtonRelease = useCallback(() => {
     clearTimeout(buttonPressTimer.current);
   }, []);
 
-  const handleButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+  const handleSpinnerButtonPress: SpinnerProps['onMouseDown'] = useCallback(
     (onChange) => {
       const minInterval = 50;
       const decrementBy = 10;
@@ -424,11 +427,11 @@ export function TextField({
 
       buttonPressTimer.current = window.setTimeout(onChangeInterval, interval);
 
-      document.addEventListener('mouseup', handleButtonRelease, {
+      document.addEventListener('mouseup', handleSpinnerButtonRelease, {
         once: true,
       });
     },
-    [handleButtonRelease],
+    [handleSpinnerButtonRelease],
   );
 
   const spinnerMarkup =
@@ -436,8 +439,8 @@ export function TextField({
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
-        onMouseDown={handleButtonPress}
-        onMouseUp={handleButtonRelease}
+        onMouseDown={handleSpinnerButtonPress}
+        onMouseUp={handleSpinnerButtonRelease}
         ref={spinnerRef}
         onBlur={handleOnBlur}
       />
@@ -558,6 +561,7 @@ export function TextField({
     onKeyDown: handleKeyDown,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
+    'data-1p-ignore': disable1Password || undefined,
   });
 
   const inputWithVerticalContentMarkup = verticalContent ? (
@@ -656,6 +660,7 @@ export function TextField({
     }
 
     setFocus(true);
+    inputRef.current?.focus();
   }
 
   function handleClearButtonPress() {

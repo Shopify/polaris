@@ -133,7 +133,7 @@ export interface LinkAction {
 
 export interface BadgeAction {
   badge?: {
-    status: 'new';
+    tone: 'new';
     content: string;
   };
 }
@@ -193,7 +193,7 @@ export interface ActionListItemDescriptor
   accessibilityLabel?: string;
   /** @deprecated Badge component */
   badge?: {
-    status: 'new';
+    tone: 'new';
     content: string;
   };
   /** Additional hint text to display with item */

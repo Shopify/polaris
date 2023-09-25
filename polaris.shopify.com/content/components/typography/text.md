@@ -1,6 +1,5 @@
 ---
 title: Text
-description: Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
 category: Typography
 keywords:
   - titles
@@ -48,7 +47,20 @@ examples:
     title: Decoration
     description: >-
       Use to define text decoration
+previewImg: /images/components/typography/text.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Variant tokens
 
@@ -131,7 +143,7 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <TextStyle variation="subdued">No supplier listed</TextStyle>
-+ <Text as="span" color="subdued">No supplier listed</Text>
++ <Text as="span" tone="subdued">No supplier listed</Text>
 ```
 
 #### Strong
@@ -145,21 +157,21 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <TextStyle variation="positive">No supplier listed</TextStyle>
-+ <Text as="span" color="success">No supplier listed</Text>
++ <Text as="span" tone="success">No supplier listed</Text>
 ```
 
 #### Negative
 
 ```diff
 - <TextStyle variation="negative">No supplier listed</TextStyle>
-+ <Text as="span" color="critical">No supplier listed</Text>
++ <Text as="span" tone="critical">No supplier listed</Text>
 ```
 
 #### Warning
 
 ```diff
 - <TextStyle variation="warning">No supplier listed</TextStyle>
-+ <Text as="span" color="warning">No supplier listed</Text>
++ <Text as="span" tone="warning">No supplier listed</Text>
 ```
 
 #### Code

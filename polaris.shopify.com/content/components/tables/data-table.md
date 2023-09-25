@@ -1,6 +1,5 @@
 ---
 title: Data table
-description: Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data.
 category: Tables
 keywords:
   - DataTable
@@ -43,7 +42,20 @@ examples:
   - fileName: data-table-with-sticky-header-enabled.tsx
     title: With sticky header enabled
     description: Use as a broad example that includes most props available to data table.
+previewImg: /images/components/tables/data-table.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Data tables are used to organize and display all information from a data set. While a data visualization represents part of data set, a data table lets merchants view details from the entire set. This helps merchants compare and analyze the data.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -79,7 +91,7 @@ Headers should:
 - Include units of measurement symbols so they aren’t repeated throughout the columns
 - Use sentence case (first word capitalized, rest lowercase)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -89,7 +101,7 @@ Temperature °C
 
 Temperature
 
-<!-- end -->
+</DoDont>
 
 Column content should:
 
@@ -117,7 +129,7 @@ Native HTML tables provide a large amount of structural information to screen re
 
 Sortable tables use the `aria-sort` attribute to convey which columns are sortable (and in what direction). They also use `aria-label` on sorting buttons to convey what activating the button will do.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -127,7 +139,7 @@ Use tables for tabular data.
 
 Use tables for layout. For a table-like layout that doesn’t use table HTML elements, use the [resource list component](https://polaris.shopify.com/components/resource-list).
 
-<!-- end -->
+</DoDont>
 
 ### Keyboard support
 

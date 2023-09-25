@@ -13,6 +13,7 @@ import type {FiltersProps} from '../Filters';
 import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
 import {useBreakpoints} from '../../utilities/breakpoints';
+import {IndexFiltersMode} from '../../utilities/index-filters';
 
 import {useIsSticky} from './hooks';
 import {
@@ -26,7 +27,6 @@ import type {
   IndexFiltersCancelAction,
   SortButtonChoice,
 } from './types';
-import {IndexFiltersMode} from './types';
 import styles from './IndexFilters.scss';
 
 const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
@@ -143,15 +143,17 @@ export function IndexFilters({
     value: filtersFocused,
     setFalse: setFiltersUnFocused,
     setTrue: setFiltersFocused,
-  } = useToggle(false);
+  } = useToggle(mode === IndexFiltersMode.Filtering);
 
-  useOnValueChange(mode, (newMode) => {
+  const handleModeChange = (newMode: IndexFiltersMode) => {
     if (newMode === IndexFiltersMode.Filtering) {
       setFiltersFocused();
     } else {
       setFiltersUnFocused();
     }
-  });
+  };
+
+  useOnValueChange(mode, handleModeChange);
 
   useEventListener('keydown', (event) => {
     if (disableKeyboardShortcuts) return;
@@ -433,17 +435,19 @@ export function IndexFilters({
                   borderlessQueryField
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
-                  <InlineStack gap="2" align="start" blockAlign="center">
-                    <div
-                      style={{
-                        ...defaultStyle,
-                        ...transitionStyles[state],
-                      }}
-                    >
-                      {updateButtonsMarkup}
-                    </div>
-                    {sortMarkup}
-                  </InlineStack>
+                  <div className={styles.ButtonWrap}>
+                    <InlineStack gap="2" align="start" blockAlign="center">
+                      <div
+                        style={{
+                          ...defaultStyle,
+                          ...transitionStyles[state],
+                        }}
+                      >
+                        {updateButtonsMarkup}
+                      </div>
+                      {sortMarkup}
+                    </InlineStack>
+                  </div>
                 </Filters>
               ) : null}
             </div>

@@ -1,6 +1,5 @@
 ---
 title: Resource item
-description: Resource items represent specific objects within a collection, such as products or orders. They provide contextual information on the resource type and link to the object’s detail page.
 category: Lists
 keywords:
   - ResourceItem
@@ -36,7 +35,20 @@ examples:
   - fileName: resource-item-with-vertical-alignment.tsx
     title: With vertical alignment
     description: Use to adjust the vertical alignment of item content.
+previewImg: /images/components/lists/resource-item.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Resource items represent specific objects within a collection, such as products or orders. They provide contextual information on the resource type and link to the object’s detail page.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Required components
 

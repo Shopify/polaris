@@ -553,7 +553,7 @@ export function DetailsPage() {
       fullWidth
       backAction={{content: 'Products', url: '/products/31'}}
       title={title}
-      titleMetadata={<Badge status="success">Success badge</Badge>}
+      titleMetadata={<Badge tone="success">Success badge</Badge>}
       primaryAction={{
         content: 'Save this page',
         onAction: () => console.log('save'),

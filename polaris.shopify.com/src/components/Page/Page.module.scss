@@ -21,6 +21,7 @@
 }
 
 .Page {
+  view-transition-name: page;
   --toc-width: 16rem;
   display: flex;
   gap: 2.5rem;
@@ -59,15 +60,17 @@
 }
 
 .TOCWrapper {
+  @include layout-scrollbars();
+
   align-self: flex-start;
   position: sticky;
   top: calc(var(--header-height) + 4.25rem);
-  padding: 0 0 0 1.5rem;
+  padding: var(--p-space-4) var(--p-space-2) var(--p-space-2);
   width: var(--toc-width);
   overscroll-behavior: contain;
   overflow: auto;
-  box-shadow: inset 1px 0 var(--border-color);
-  @include layout-scrollbars();
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--p-border-radius-3);
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;

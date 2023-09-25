@@ -1,6 +1,5 @@
 ---
 title: Date picker
-description: Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.
 category: Selection and input
 keywords:
   - DatePicker
@@ -16,7 +15,6 @@ keywords:
   - date selector
   - date range picker
   - date range selector
-tip: Check out the [new patterns section](https://polaris.shopify.com/patterns) to learn how merchants prefer to select dates in different scenarios!
 examples:
   - fileName: date-picker-default.tsx
     title: Default
@@ -33,7 +31,25 @@ examples:
   - fileName: date-picker-with-specific-disabled-dates.tsx
     title: With specific disabled dates
     description: Dates may be disabed if you do not want them to be selectable
+previewImg: /images/components/selection-and-input/date-picker.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Date pickers let merchants choose dates from a visual calendar that’s consistently applied wherever dates need to be selected across Shopify.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
+<TipBanner title="Tip">
+  Check out the [new patterns section](https://polaris.shopify.com/patterns) to
+  learn how merchants prefer to select dates in different scenarios!
+</TipBanner>
 
 ## Best practices
 

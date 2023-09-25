@@ -9,6 +9,8 @@ keywords:
 order: 2
 ---
 
+# {frontmatter.title}
+
 Any designer that works at Shopify can contribute to the Figma UI Kit. If you find a bug to fix or your team is contributing new patterns or variants to Polaris React components, we want you to feel empowered to contribute.
 
 Components, features, or patterns shouldn’t be added to the Figma UI Kit if they are not part of Polaris React, as our goal is to keep Figma in sync with the code base. Only contributing changes to the Figma UI Kit when there’s a counterpart in Polaris React prevents confusion and keeps tooling in sync across resources.

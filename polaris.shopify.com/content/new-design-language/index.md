@@ -5,10 +5,9 @@ description: |
   To help apps match Shopify's new design language, this version is available in an early beta.
   This beta will automatically update out-of-the-box/mainline Polaris components, with some additional work to update your custom components to seamlessly match Shopify's design.
   The steps below will assist you in making these updates using our tools and tokens.
-  <br/>You can access the beta now or simply wait for the stable release in September
-  <br/>_(be sure to read '[what might break](#what-might-break-before-during-beta)' below)_.
 hideFromNav: true
 noIndex: true
+showTOC: true
 keywords:
   - new design language
   - uplift
@@ -20,6 +19,12 @@ keywords:
   - How to get the new design language
 order: 0
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+You can access the beta now or simply wait for the stable release in September<br/>_(be sure to read '[what might break](#what-might-break-before-during-beta)' below)_.
 
 ## Timeline
 
@@ -93,7 +98,7 @@ Addon panel (bottom) > `Feature flags` tab and Toggle `polarisSummerEditions2023
 The new design language comes with a web font called [Inter via Google Fonts](https://fonts.google.com/specimen/Inter).
 The beta references this font but doesn't load it. This will come later.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com/" />
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous" />
@@ -143,7 +148,7 @@ The [`LegacyCard`](https://polaris.shopify.com/components/layout-and-structure/l
 This may result in some visual hierarchy/padding issues depending on how your cards are composed.
 You can resolve this in a number of ways:
 
-- _recommended_ – Use [`Card`](https://polaris.shopify.com/components/layout-and-structure/card) and [`VerticalStack`](https://polaris.shopify.com/components/layout-and-structure/vertical-stack) to compose a new card layout
+- _recommended_ – Use [`Card`](https://polaris.shopify.com/components/layout-and-structure/card) and [`BlockStack`](https://polaris.shopify.com/components/layout-and-structure/block-stack) to compose a new card layout
 - Remove any custom content spacing wrappers and use `<LegacyCard.Section />`, `<LegacyCard.Header />`, or `<LegacyCard.Section flush />` instead.
   Issues involving a lack of top or bottom padding on the card is likely caused by this.
 - Update all custom content padding using `--p-space-5` to use `--p-space-4`.
@@ -178,13 +183,13 @@ The following component's children cannot be above the bevel's `z-index` elevati
 <Avatar size="xl-experimental" />
 <Avatar size="2xl-experimental" />
 
-<Badge status='info-strong-experimental' />
-<Badge status='success-strong-experimental' />
-<Badge status='warning-strong-experimental' />
-<Badge status='critical-strong-experimental' />
-<Badge status='attention-strong-experimental' />
-<Badge status='read-only-experimental' />
-<Badge status='enabled-experimental' />
+<Badge tone='info-strong-experimental' />
+<Badge tone='success-strong-experimental' />
+<Badge tone='warning-strong-experimental' />
+<Badge tone='critical-strong-experimental' />
+<Badge tone='attention-strong-experimental' />
+<Badge tone='read-only-experimental' />
+<Badge tone='enabled-experimental' />
 <Button primarySuccess />
 // not new variant but the styling is new
 // Lots of card icons were updated to this variant from the non-primary variant

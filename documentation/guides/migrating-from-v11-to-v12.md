@@ -15,6 +15,27 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 ## Quick migration guide
 
+**Avatar**
+
+`npx @shopify/polaris-migrator v12-react-avatar-component <path>`
+
+- Replace the `size` prop with the new mapping below
+
+| Before                    | After       |
+| ------------------------- | ----------- |
+| `size="extraSmall"`       | `size="xs"` |
+| `size="small"`            | `size="sm"` |
+| `size="medium"`           | `size="md"` |
+| `size="large"`            | `size="lg"` |
+| `size="xl-experimental"`  | `size="xl"` |
+| `size="2xl-experimental"` | `size="xl"` |
+
+**Badge**
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="status" --to="tone"`
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`
+
 **Layout.Section**
 
 - One third:
@@ -63,7 +84,9 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 - connectedDisclosure: [See the updated split example](https://polaris.shopify.com/components/actions/button)
 
-// TODO - Boolean prop to tone, variant migration
+- Boolean props to `variant` and `tone`
+
+`npx @shopify/polaris-migrator v12-react-update-button-component <path>`
 
 **ButtonGroup**
 
@@ -120,6 +143,10 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 **DescriptionList**
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="DescriptionList" --from="spacing" --to="gap"`
+
+**AppProvider**
+
+The `AppProvider`'s `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. You should be able to remove the `features` prop completely from your Polaris `AppProvider` since there aren't any feature flags in Polaris for v12.
 
 ## Tokens
 

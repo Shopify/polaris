@@ -34,9 +34,6 @@ export function Default(_, context) {
           },
         },
       }}
-      features={{
-        polarisSummerEditions2023: true,
-      }}
     >
       <Page>
         <LegacyCard>
@@ -58,7 +55,7 @@ export function Default(_, context) {
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar customer size="medium" name={name} />;
+              const media = <Avatar customer size="md" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
@@ -97,9 +94,6 @@ export function WithI18n(_, context) {
           },
         },
       }}
-      features={{
-        polarisSummerEditions2023: true,
-      }}
     >
       <Page>
         <LegacyCard>
@@ -121,7 +115,7 @@ export function WithI18n(_, context) {
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar customer size="medium" name={name} />;
+              const media = <Avatar customer size="md" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
@@ -155,13 +149,7 @@ export function WithLinkComponent(_, context) {
   };
 
   return (
-    <AppProvider
-      linkComponent={CustomLinkComponent}
-      i18n={{}}
-      features={{
-        polarisSummerEditions2023: true,
-      }}
-    >
+    <AppProvider linkComponent={CustomLinkComponent} i18n={{}}>
       <Page
         backAction={{content: 'Products', url: '#'}}
         title="Jar With Lock-Lid"

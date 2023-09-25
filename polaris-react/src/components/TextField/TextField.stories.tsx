@@ -4,14 +4,17 @@ import {
   Button,
   LegacyCard,
   ChoiceList,
+  Form,
   FormLayout,
   InlineError,
   Select,
   LegacyStack,
   Tag,
+  Text,
   TextField,
   Icon,
   Tooltip,
+  BlockStack,
 } from '@shopify/polaris';
 import {
   DeleteMinor,
@@ -827,5 +830,59 @@ export function All() {
         />
       </FormLayout.Group>
     </FormLayout>
+  );
+}
+
+export function WithFormSubmit() {
+  const [adjustment, setAdjustment] = useState('0');
+  const [onHandTotal, setOnHandTotal] = useState(0);
+
+  return (
+    <BlockStack gap="2">
+      <Form
+        onSubmit={(event) => {
+          event.preventDefault();
+          setAdjustment('0');
+          setOnHandTotal(onHandTotal + parseInt(adjustment, 10));
+        }}
+      >
+        <FormLayout>
+          <Text as="h2" variant="headingSm">
+            On hand quantity ({onHandTotal.toString()})
+          </Text>
+          <TextField
+            label="Adjustment"
+            value={adjustment}
+            onChange={(value) => setAdjustment(value)}
+            autoComplete="off"
+            type="number"
+            selectTextOnFocus
+          />
+          <Button
+            variant="primary"
+            submit
+            disabled={isNaN(parseInt(adjustment, 10))}
+          >
+            Save
+          </Button>
+        </FormLayout>
+      </Form>
+    </BlockStack>
+  );
+}
+
+export function With1PasswordDisabled() {
+  const [value, setValue] = useState('Jaded Pixel');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  return (
+    <TextField
+      label="Store name"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      disable1Password
+    />
   );
 }

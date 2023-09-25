@@ -101,3 +101,12 @@
   margin-right: 0.5rem;
   user-select: none;
 }
+
+.InlineCode {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  font-weight: var(--font-weight-500);
+  background: var(--surface-code-inline);
+  border-radius: var(--border-radius-300);
+  padding: 0.15rem 0.25rem;
+}

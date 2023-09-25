@@ -9,6 +9,4 @@ variants:
   - 'variants/default.md'
 ---
 
-<div as="Variants"></div>
-
-<div as="Stack" gap="4">
+<Variants variants={frontmatter.variants} />

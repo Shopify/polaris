@@ -7,6 +7,15 @@ keywords:
   - space rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="space" />
+
 ```diff
 // Do
 + gap: var(--p-space-05);
@@ -15,3 +24,5 @@ keywords:
 - gap: 2px;
 - margin: 12px  0;
 ```
+
+<RulePostamble />

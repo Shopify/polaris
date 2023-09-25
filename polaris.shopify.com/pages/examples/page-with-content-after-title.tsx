@@ -7,7 +7,7 @@ function PageExample() {
     <Page
       backAction={{content: 'Products', url: '#'}}
       title="Jar With Lock-Lid"
-      titleMetadata={<Badge status="attention">Verified</Badge>}
+      titleMetadata={<Badge tone="attention">Verified</Badge>}
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
         {content: 'Duplicate'},

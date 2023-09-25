@@ -5,3 +5,7 @@ order: 0
 hideChildren: true
 icon: EmailNewsletterMajor
 ---
+
+# {frontmatter.title}
+
+<FeaturedCardGrid posts={posts} />

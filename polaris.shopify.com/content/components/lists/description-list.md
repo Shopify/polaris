@@ -1,6 +1,5 @@
 ---
 title: Description list
-description: Description lists are a way to organize and explain related information. They’re particularly useful when you need to list and define terms such as in a glossary.
 category: Lists
 keywords:
   - DescriptionList
@@ -16,7 +15,20 @@ examples:
   - fileName: description-list-default.tsx
     title: Default
     description: Use when you need to present merchants with a list of items or terms alongside descriptions and explanations.
+previewImg: /images/components/lists/description-list.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Description lists are a way to organize and explain related information. They’re particularly useful when you need to list and define terms such as in a glossary.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -37,7 +49,7 @@ Terms should be:
 
 - Written in sentence case (the first word capitalized, the rest lowercase)
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -47,7 +59,7 @@ Terms should be:
 
 - Discount Code
 
-<!-- end -->
+</DoDont>
 
 ### Term description
 
@@ -55,7 +67,7 @@ Terms descriptions should be:
 
 - Directly related to the term they’re describing
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -65,7 +77,7 @@ Terms descriptions should be:
 
 - Discount code: Having a sale on your store is a great way to sell products quickly.
 
-<!-- end -->
+</DoDont>
 
 - Written to describe the merchant benefit or utility
 - No more than one or two short sentences in length
@@ -73,7 +85,7 @@ Terms descriptions should be:
 - Conversational by using articles (the, a, an)
 - Written using plain language
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -83,7 +95,7 @@ Terms descriptions should be:
 
 - Abandoned checkout: Details of products added to checkout but not purchased
 
-<!-- end -->
+</DoDont>
 
 ---
 

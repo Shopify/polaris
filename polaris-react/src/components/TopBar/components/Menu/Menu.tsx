@@ -49,7 +49,7 @@ export function Menu(props: MenuProps) {
   const badgeProps = message &&
     message.badge && {
       content: message.badge.content,
-      status: message.badge.status,
+      tone: message.badge.tone,
     };
 
   const messageMarkup = message && (

@@ -1,6 +1,5 @@
 ---
 title: Block stack
-description: Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
   - layout
@@ -11,9 +10,6 @@ keywords:
   - equal width
   - right-aligned stack
   - stack layout
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: block-stack-with-gap.tsx
     title: Gap
@@ -27,7 +23,20 @@ examples:
     title: Inline align
     description: >-
       Control the horizontal alignment of children using the `inlineAlign` prop.
+previewImg: /images/components/layout-and-structure/block-stack.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use to display children vertically and horizontally with full width by default. Based on CSS Flexbox.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -44,4 +53,4 @@ Stacks should:
 
 ## Related resources
 
-- VerticalStack props are named following the convention of CSS logical properties, such as 'padding-inline-start' and 'padding-block-start'. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).
+- BlockStack props are named following the convention of CSS logical properties, such as `align="start"` vs. `align="top"` and `inlineAlign="end"` vs. `verticalAlign="right"`. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).

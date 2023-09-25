@@ -1,36 +1,32 @@
-import type {Experimental} from '../../types';
-
-export type Status =
+export type Tone =
   | 'info'
   | 'success'
   | 'warning'
   | 'critical'
   | 'attention'
   | 'new'
-  | Experimental<
-      | 'info-strong'
-      | 'success-strong'
-      | 'warning-strong'
-      | 'critical-strong'
-      | 'attention-strong'
-      | 'read-only'
-      | 'enabled'
-    >;
+  | 'info-strong-experimental'
+  | 'success-strong-experimental'
+  | 'warning-strong-experimental'
+  | 'critical-strong-experimental'
+  | 'attention-strong-experimental'
+  | 'read-only-experimental'
+  | 'enabled-experimental';
 
-export enum StatusValue {
+export enum ToneValue {
   Info = 'info',
   Success = 'success',
   Warning = 'warning',
   Critical = 'critical',
   Attention = 'attention',
   New = 'new',
-  InfoStrongExperimental = 'info-strong-experimental',
-  SuccessStrongExperimental = 'success-strong-experimental',
-  WarningStrongExperimental = 'warning-strong-experimental',
-  CriticalStrongExperimental = 'critical-strong-experimental',
-  AttentionStrongExperimental = 'attention-strong-experimental',
-  ReadOnlyExperimental = 'read-only-experimental',
-  EnabledExperimental = 'enabled-experimental',
+  InfoStrong = 'info-strong-experimental',
+  SuccessStrong = 'success-strong-experimental',
+  WarningStrong = 'warning-strong-experimental',
+  CriticalStrong = 'critical-strong-experimental',
+  AttentionStrong = 'attention-strong-experimental',
+  ReadOnly = 'read-only-experimental',
+  Enabled = 'enabled-experimental',
 }
 
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
@@ -41,4 +37,4 @@ export enum ProgressValue {
   Complete = 'complete',
 }
 
-export type Size = 'small' | 'medium' | Experimental<'large'>;
+export type Size = 'small' | 'medium' | 'large';

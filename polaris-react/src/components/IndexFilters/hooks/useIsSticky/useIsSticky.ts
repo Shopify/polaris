@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from 'react';
 import type {RefObject} from 'react';
 
 import {debounce} from '../../../../utilities/debounce';
-import type {IndexFiltersMode} from '../../types';
+import type {IndexFiltersMode} from '../../../../utilities/index-filters';
 
 const DEBOUNCE_PERIOD = 250;
 

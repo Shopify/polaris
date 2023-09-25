@@ -1,6 +1,5 @@
 ---
 title: Resource list
-description: A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
 category: Lists
 keywords:
   - ResourceList
@@ -67,7 +66,20 @@ examples:
   - fileName: resource-list-with-all-of-its-elements.tsx
     title: With all of its elements
     description: Use as a broad example that includes most props available to resource list.
+previewImg: /images/components/lists/resource-list.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 Resource lists can also:
 
@@ -146,7 +158,7 @@ Resource lists should:
 
 - Identify the type of resource, usually with a heading
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -157,11 +169,11 @@ Resource lists should:
 
 - _No heading_
 
-<!-- end -->
+</DoDont>
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -171,7 +183,7 @@ Resource lists should:
 
 - Products
 
-<!-- end -->
+</DoDont>
 
 - Follow the verb + noun formula for bulk actions
 
@@ -181,5 +193,5 @@ Resource lists should:
 
 ## Related components
 
-- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/data-table)
+- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/tables/data-table)
 - To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists/list)

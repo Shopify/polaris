@@ -1,6 +1,5 @@
 ---
 title: Navigation
-description: The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application.
 category: Navigation
 keywords:
   - navigation
@@ -48,7 +47,20 @@ examples:
   - fileName: navigation-using-major-icons.tsx
     title: Using Major icons
     description: This example shows how to use the shouldResizeIcon prop when using Major icons
+previewImg: /images/components/navigation/navigation.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Required components
 
@@ -78,7 +90,7 @@ Navigation should:
 
 - Use sentence case for primary and secondary navigation items
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -88,11 +100,11 @@ Navigation should:
 
 - Online Store
 
-<!-- end -->
+</DoDont>
 
 - Use as few words as possible to describe each item label
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -102,11 +114,11 @@ Navigation should:
 
 - Products in your store
 
-<!-- end -->
+</DoDont>
 
 - Use all caps for section labels
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -116,7 +128,7 @@ Navigation should:
 
 - Sales channels
 
-<!-- end -->
+</DoDont>
 
 ---
 

@@ -1,30 +1,17 @@
 import React from 'react';
 
-interface MyComponentProps {
-  prop?: string;
-  newProp?: string;
-  children?: React.ReactNode;
-}
+declare function MyComponent(props: any): JSX.Element;
+declare function CompoundComponent(props: any): JSX.Element;
+declare function Child(props: any): JSX.Element;
 
-const Child = (props: {prop: string}) => <>{props.prop}</>;
-
-function MyComponent(props: MyComponentProps) {
-  const value = props.newProp ?? props.prop;
-  return <div data-prop={value}>{props.children}</div>;
-}
-
-function SubComponent({...props}: any) {
-  return <div {...props} />;
-}
+MyComponent.CompoundComponent = CompoundComponent;
 
 export function App() {
   return (
     <MyComponent>
-      <MyComponent.SubComponent newProp="new value" />
+      <MyComponent.CompoundComponent newProp="new-value" />
       Hello
       <Child prop="value" />
     </MyComponent>
   );
 }
-
-MyComponent.SubComponent = SubComponent;

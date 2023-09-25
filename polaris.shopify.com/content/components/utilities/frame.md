@@ -1,6 +1,5 @@
 ---
 title: Frame
-description: The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/top-bar), [toast](https://polaris.shopify.com/components/feedback-indicators/toast), and [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) components.
 category: Utilities
 keywords:
   - navigation
@@ -23,7 +22,20 @@ examples:
   - fileName: frame-with-an-offset.tsx
     title: With an offset
     description: Use to present the frame structure and all of its elements with an offset provided to the theme.
+previewImg: /images/components/utilities/frame.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/top-bar), [toast](https://polaris.shopify.com/components/feedback-indicators/toast), and [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) components.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

@@ -1,6 +1,5 @@
 ---
 title: List
-description: Lists display a set of related text-only content. Each list item begins with a bullet or a number.
 category: Lists
 keywords:
   - bulleted lists
@@ -19,7 +18,20 @@ examples:
   - fileName: list-extra-tight.tsx
     title: Extra Tight
     description: Use when there is limited space for a text-only list of related items when an inherent order, priority, or sequence needs to be communicated.
+previewImg: /images/components/lists/list.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Lists display a set of related text-only content. Each list item begins with a bullet or a number.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -40,7 +52,7 @@ Every item in a list should:
 - Start with a capital letter
 - Not use commas or semicolons at the end of each line
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -54,11 +66,11 @@ Every item in a list should:
 - Yellow;
 - Blue.
 
-<!-- end -->
+</DoDont>
 
 - Be written in sentence case
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -72,7 +84,7 @@ Every item in a list should:
 - Item Two
 - Item Three
 
-<!-- end -->
+</DoDont>
 
 ---
 

@@ -1,6 +1,5 @@
 ---
 title: Thumbnail
-description: Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
 category: Images and icons
 keywords:
   - photo
@@ -26,7 +25,20 @@ examples:
   - fileName: thumbnail-with-component-source.tsx
     title: With component source
     description: Use to render an icon inside of thumbnail.
+previewImg: /images/components/images-and-icons/thumbnail.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

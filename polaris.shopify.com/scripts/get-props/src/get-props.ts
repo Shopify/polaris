@@ -1,3 +1,5 @@
+#!/usr/bin/env ts-node
+
 import * as ts from 'typescript';
 import * as fs from 'fs';
 import path from 'path';
@@ -282,7 +284,7 @@ if (isExecutedThroughCommandLine) {
     let filesWithoutTests = files.filter((file) => !file.endsWith('test.tsx'));
     const ast = getProps(filesWithoutTests);
 
-    const cacheDir = path.join(__dirname, '../../../../../.cache');
+    const cacheDir = path.join(__dirname, '../../../.cache');
     if (!fs.existsSync(cacheDir)) {
       fs.mkdirSync(cacheDir, {recursive: true});
     }

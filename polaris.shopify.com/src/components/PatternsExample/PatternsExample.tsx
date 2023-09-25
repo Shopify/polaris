@@ -1,4 +1,4 @@
-import {Fragment, useEffect, useState} from 'react';
+import {Fragment, useRef, useEffect, useState, useCallback} from 'react';
 import {format} from 'prettier/standalone';
 import babel from 'prettier/parser-babel';
 import endent from 'endent';
@@ -9,23 +9,21 @@ import GrowFrame from '../GrowFrame';
 import Code from '../Code';
 import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
 import {PatternExample} from '../../types';
+import {className as classNames} from '../../utils/various';
+import {viewTransition} from '../../utils/various';
+import {MaximizeMinor, MinimizeMinor} from '@shopify/polaris-icons';
+import Icon from '../Icon';
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
 
-const PlayroomButton = ({
-  code,
-  patternName,
-}: {
-  code: string;
-  patternName: string;
-}) => {
+const PlayroomButton = ({code, title}: {code: string; title?: string}) => {
   const [encodedUrl, setEncodedUrl] = useState('');
   useEffect(() => {
     setEncodedUrl(
       createUrl({
         baseUrl: '/sandbox/',
         code: endent`
-          {/* [Polaris Pattern] ${patternName} */}
+          ${title ? `{/* ${title} */}` : ''}
           {/* Generated on ${getISOStringYear()} from ${
           window.location.href
         } */}
@@ -38,7 +36,7 @@ const PlayroomButton = ({
         paramType: 'search',
       }),
     );
-  }, [code, patternName]);
+  }, [code, title]);
 
   return (
     <a
@@ -54,24 +52,114 @@ const PlayroomButton = ({
 
 const PatternsExample = ({
   example,
-  patternName,
-  showCode,
-  onCodeToggle,
+  title,
+  isCodeVisible = false,
+  isActionsVisible = true,
+  defaultHeight = '400px',
+  minHeight = '1rem',
+  onCodeVisibilityToggle,
 }: {
   example: PatternExample;
-  patternName: string;
-  showCode?: boolean;
-  onCodeToggle?: () => void;
+  title?: string;
+  isCodeVisible?: boolean;
+  isActionsVisible?: boolean;
+  defaultHeight?: string;
+  minHeight?: string;
+  onCodeVisibilityToggle?: () => void;
 }) => {
-  const isControlled = typeof showCode === 'undefined';
+  const expandedPreviewRef: React.RefObject<HTMLDialogElement> = useRef(null);
+  const previewRef: React.RefObject<HTMLDivElement> = useRef(null);
+
   const [codeActive, toggleCode] = useState(false);
-  const showCodeValue = isControlled ? codeActive : showCode;
+  const [dialogActive, toggleDialog] = useState(false);
+
+  const isControlled = typeof isCodeVisible === 'undefined';
+  const showCodeValue = isControlled ? codeActive : isCodeVisible;
+
+  const handleScrollLock = (lock: boolean) => {
+    if (lock) {
+      document
+        ?.querySelector('html')
+        ?.setAttribute('style', 'overflow: hidden;');
+    } else {
+      document?.querySelector('html')?.removeAttribute('style');
+    }
+  };
+
   const handleCodeToggle = () => {
-    if (onCodeToggle) onCodeToggle();
+    if (onCodeVisibilityToggle) onCodeVisibilityToggle();
     if (isControlled) {
       toggleCode((codeActive) => !codeActive);
     }
   };
+
+  const handleMaximize = async () => {
+    const dialog = expandedPreviewRef.current;
+    const preview = previewRef.current;
+
+    if (preview) {
+      // @ts-ignore
+      preview.style.viewTransitionName = 'dialog';
+    }
+
+    const maximize = viewTransition(() => {
+      if (dialog) {
+        handleScrollLock(true);
+        toggleDialog(true);
+        dialog.showModal();
+      }
+
+      if (preview) {
+        // @ts-ignore
+        preview.style.viewTransitionName = '';
+      }
+    });
+
+    await maximize.finished;
+  };
+
+  const handleMinimize = useCallback(async () => {
+    const dialog = expandedPreviewRef.current;
+    const preview = previewRef.current;
+
+    try {
+      const minimize = viewTransition(() => {
+        if (dialog) {
+          handleScrollLock(false);
+          toggleDialog(false);
+          dialog.close();
+
+          if (preview) {
+            // @ts-ignore
+            preview.style.viewTransitionName = 'dialog';
+          }
+        }
+      });
+
+      await minimize.finished;
+    } finally {
+      if (preview) {
+        // @ts-ignore
+        preview.style.viewTransitionName = '';
+      }
+    }
+  }, []);
+
+  /* Escape to close with the <dialog> element is supposed to "just work", but it only worked here when the backdrop was the active element. Leaving this for now even though it doesn't work. <dialog> is an anomoly because of the top-layer...  */
+  useEffect(() => {
+    if (dialogActive) {
+      const handleKeyDownEscape = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+          handleMinimize();
+        }
+      };
+
+      window.addEventListener('keyup', handleKeyDownEscape);
+
+      return () => window.removeEventListener('keyup', handleKeyDownEscape);
+    }
+  }, [dialogActive, handleMinimize]);
+
   const formatCodeSnippet = (code: string) => {
     let prettifiedCode;
 
@@ -110,13 +198,17 @@ const PatternsExample = ({
 
   const sandboxCode = example.sandboxContext
     ? formatCodeSnippet(
-        example.sandboxContext.replace(/____CODE____;?/, formattedCode),
+        example.sandboxContext
+          .replace(/\\\#/g, '')
+          .replace(/____CODE____;?/, formattedCode),
       )
     : formattedCode;
 
   const previewCode = example.previewContext
     ? formatCodeSnippet(
-        example.previewContext.replace(/____CODE____;?/, formattedCode),
+        example.previewContext
+          .replace(/\\\#/g, '')
+          .replace(/____CODE____;?/, formattedCode),
       )
     : formattedCode;
 
@@ -126,39 +218,95 @@ const PatternsExample = ({
     paramType: 'search',
   })}`;
 
-  return (
-    <Stack gap="2" className={styles.SpecificityBuster}>
+  const exampleMarkup = (
+    <ExampleWrapper
+      ref={previewRef}
+      className={classNames(styles.ExampleWrapper)}
+      renderFrameActions={
+        isActionsVisible
+          ? () => (
+              <Fragment>
+                <LinkButton
+                  tabIndex={0}
+                  className={classNames(
+                    styles.PositionedLink,
+                    dialogActive && styles.focus,
+                  )}
+                  aria-label="View enlarged example"
+                  onClick={handleMaximize}
+                >
+                  <Icon source={MaximizeMinor} />
+                </LinkButton>
+                <PlayroomButton code={sandboxCode} title={title} />
+                <LinkButton onClick={handleCodeToggle}>
+                  {showCodeValue ? 'Hide code' : 'Show code'}
+                </LinkButton>
+              </Fragment>
+            )
+          : undefined
+      }
+    >
+      <GrowFrame
+        id="live-preview-iframe"
+        defaultHeight={'400px'}
+        src={previewUrl}
+      />
+    </ExampleWrapper>
+  );
+
+  const expandedExampleMarkup = (
+    <dialog
+      ref={expandedPreviewRef}
+      className={classNames(styles.Dialog, dialogActive && styles.open)}
+      // onClose={handleMinimize}
+    >
+      <div className={styles.PreventBackgroundInteractions} />
       <ExampleWrapper
         className={styles.ExampleWrapper}
         renderFrameActions={() => (
           <Fragment>
-            <PlayroomButton code={sandboxCode} patternName={patternName} />
-            <LinkButton onClick={handleCodeToggle}>
-              {showCodeValue ? 'Hide code' : 'Show code'}
+            <LinkButton
+              tabIndex={0}
+              className={styles.PositionedLink}
+              aria-label="Close enlarged example"
+              onClick={handleMinimize}
+            >
+              <Icon source={MinimizeMinor} />
             </LinkButton>
+            <PlayroomButton code={sandboxCode} title={title} />
           </Fragment>
         )}
       >
         <GrowFrame
           id="live-preview-iframe"
-          defaultHeight={'400px'}
+          defaultHeight={defaultHeight}
+          minHeight={minHeight}
           src={previewUrl}
         />
       </ExampleWrapper>
-      {showCodeValue ? (
-        <Code
-          code={[
-            {
-              title: 'React',
-              code: endent`
+    </dialog>
+  );
+
+  return (
+    <>
+      {expandedExampleMarkup}
+      <Stack gap="2" className={styles.SpecificityBuster}>
+        {exampleMarkup}
+        {showCodeValue ? (
+          <Code
+            code={[
+              {
+                title: 'React',
+                code: endent`
                 // This example is for guidance purposes. Copying it will come with caveats.
                 ${formattedCode}
               `,
-            },
-          ]}
-        />
-      ) : null}
-    </Stack>
+              },
+            ]}
+          />
+        ) : null}
+      </Stack>
+    </>
   );
 };
 

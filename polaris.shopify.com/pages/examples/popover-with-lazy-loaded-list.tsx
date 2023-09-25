@@ -82,7 +82,7 @@ function PopoverLazyLoadExample() {
     return (
       <ResourceList.Item
         id={name}
-        media={<Avatar size="medium" name={name} initials={initials} />}
+        media={<Avatar size="md" name={name} initials={initials} />}
         onClick={handleResourceListItemClick}
       >
         {name}

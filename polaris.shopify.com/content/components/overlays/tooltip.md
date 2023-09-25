@@ -1,6 +1,5 @@
 ---
 title: Tooltip
-description: Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click.
 category: Overlays
 keywords:
   - info
@@ -24,7 +23,20 @@ examples:
   - fileName: tooltip-with-suffix.tsx
     title: With suffix
     description: Use when merchants benefit from information supplemental to the tooltip content. For example, to present a keyboard shortcut beside the content of a tooltip that describes an icon button.
+previewImg: /images/components/overlays/tooltip.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Tooltips are floating labels that briefly explain the function of a user interface element. They can be triggered when merchants hover, focus, tap, or click.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -49,7 +61,7 @@ Tooltips should:
 - Be concise and scannable
 - Not be used to communicate error messages or important account information
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -59,7 +71,7 @@ Post reach is the number of people who have seen your post in their News Feed.
 
 To continue using Shopify, this amount must be paid immediately.
 
-<!-- end -->
+</DoDont>
 
 ---
 

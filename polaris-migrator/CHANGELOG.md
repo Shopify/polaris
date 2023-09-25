@@ -1,5 +1,53 @@
 # @shopify/polaris-migrator
 
+## 0.22.4
+
+### Patch Changes
+
+- Updated dependencies [[`5e073c209`](https://github.com/Shopify/polaris/commit/5e073c2095c51154f27740f4c4bc3d00122c0218), [`2bccc2291`](https://github.com/Shopify/polaris/commit/2bccc22918eab571136b925bdf7ce07281658248), [`033424546`](https://github.com/Shopify/polaris/commit/03342454611a71a0a57e48cf8a013c1ca27837b3), [`66b2599da`](https://github.com/Shopify/polaris/commit/66b2599dabcb4bfb5cb4964c7a9bfce4fc12617b), [`c07de6ca4`](https://github.com/Shopify/polaris/commit/c07de6ca4aed19c643b2681d498432fd7414475e)]:
+  - @shopify/polaris-tokens@7.9.0
+  - @shopify/stylelint-polaris@14.0.4
+
+## 0.22.3
+
+### Patch Changes
+
+- Updated dependencies [[`26ab8ce7d`](https://github.com/Shopify/polaris/commit/26ab8ce7df10609316eccc75b7bed6f8cebc9120), [`7514dd1a3`](https://github.com/Shopify/polaris/commit/7514dd1a36a9988ede48085b80c6e7e214f98968), [`16c61668a`](https://github.com/Shopify/polaris/commit/16c61668ac3916aacaeb759f2052d0a3a7ed762e)]:
+  - @shopify/polaris-tokens@7.8.0
+  - @shopify/stylelint-polaris@14.0.3
+
+## 0.22.2
+
+### Patch Changes
+
+- Updated dependencies [[`101abb835`](https://github.com/Shopify/polaris/commit/101abb83599ce67372c411cde396613306dc06de)]:
+  - @shopify/polaris-tokens@7.7.0
+  - @shopify/stylelint-polaris@14.0.2
+
+## 0.22.1
+
+### Patch Changes
+
+- Updated dependencies [[`5939b49cf`](https://github.com/Shopify/polaris/commit/5939b49cf4616d6994cc17095e79ba5600ca7fe4)]:
+  - @shopify/polaris-tokens@7.6.0
+  - @shopify/stylelint-polaris@14.0.1
+
+## 0.22.0
+
+### Minor Changes
+
+- [#10263](https://github.com/Shopify/polaris/pull/10263) [`67699cb88`](https://github.com/Shopify/polaris/commit/67699cb88c8a5f85a4623b403fddb444c5104b24) Thanks [@aveline](https://github.com/aveline)! - Added migration for `Button` component
+
+## 0.21.0
+
+### Minor Changes
+
+- [#10246](https://github.com/Shopify/polaris/pull/10246) [`1947b4691`](https://github.com/Shopify/polaris/commit/1947b469144f8e0567fb69f06391a3fecbfe5b11) Thanks [@kyledurand](https://github.com/kyledurand)! - Added the ability to migrate prop values
+
+### Patch Changes
+
+- [#10215](https://github.com/Shopify/polaris/pull/10215) [`e4a6d47ab`](https://github.com/Shopify/polaris/commit/e4a6d47abd338b820737fec5acb1a566c38a1913) Thanks [@aveline](https://github.com/aveline)! - Fixed a bug in the rename prop migration
+
 ## 0.20.0
 
 ### Minor Changes

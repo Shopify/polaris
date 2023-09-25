@@ -1,6 +1,5 @@
 ---
 title: Skeleton tabs
-description: Skeleton tabs are used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
 category: Feedback indicators
 releasedIn: 9.0
 keywords:
@@ -13,7 +12,20 @@ examples:
     title: Default
   - fileName: skeleton-tabs-with-a-custom-count.tsx
     title: With a custom count
+previewImg: /images/components/feedback-indicators/skeleton-tabs.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Skeleton tabs are used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

@@ -39,13 +39,13 @@ import type {
   Width,
   TooltipOverlayProps,
 } from '../Tooltip';
-import {useFeatures} from '../../utilities/features';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
 
 interface IndexTableHeadingBase {
+  id?: string;
   /**
    * Adjust horizontal alignment of header content.
    * @default 'start'
@@ -66,6 +66,7 @@ interface IndexTableHeadingBase {
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
   title: string;
+  id?: string;
 }
 
 interface IndexTableHeadingTitleNode extends IndexTableHeadingBase {
@@ -158,7 +159,6 @@ function IndexTableBase({
     selectedItemsCount,
     condensed,
   } = useIndexValue();
-  const {polarisSummerEditions2023} = useFeatures();
   const handleSelectionChange = useIndexSelectionChange();
   const i18n = useI18n();
 
@@ -271,17 +271,6 @@ function IndexTableBase({
         if (selectable && tableHeadings.current.length > 1)
           tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
 
-        // update the min width of the checkbox to be the be the un-padded width of the first heading
-        if (
-          selectable &&
-          firstStickyHeaderElement?.current &&
-          !polarisSummerEditions2023
-        ) {
-          const elementStyle = getComputedStyle(tableHeadings.current[0]);
-          const boxWidth = tableHeadings.current[0].offsetWidth;
-          firstStickyHeaderElement.current.style.minWidth = `calc(${boxWidth}px - ${elementStyle.paddingLeft} - ${elementStyle.paddingRight} + 2px)`;
-        }
-
         // update sticky header min-widths
         stickyTableHeadings.current.forEach((heading, index) => {
           let minWidth = 0;
@@ -296,7 +285,7 @@ function IndexTableBase({
           heading.style.minWidth = `${minWidth}px`;
         });
       }),
-    [calculateFirstHeaderOffset, selectable, polarisSummerEditions2023],
+    [calculateFirstHeaderOffset, selectable],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -496,10 +485,8 @@ function IndexTableBase({
     <div
       className={classNames(
         styles.TableHeading,
-        polarisSummerEditions2023 && selectable && styles['TableHeading-first'],
-        polarisSummerEditions2023 &&
-          headings[0].flush &&
-          styles['TableHeading-flush'],
+        selectable && styles['TableHeading-first'],
+        headings[0].flush && styles['TableHeading-flush'],
       )}
       key={getHeadingKey(headings[0])}
       style={stickyColumnHeaderStyle}
@@ -842,6 +829,7 @@ function IndexTableBase({
 
     const headingContent = (
       <th
+        id={heading.id}
         className={headingContentClassName}
         key={getHeadingKey(heading)}
         data-index-table-heading
@@ -921,7 +909,7 @@ function IndexTableBase({
       headingContent = (
         <LegacyStack wrap={false} alignment="center">
           <span>{heading.title}</span>
-          <Badge status="new">
+          <Badge tone="new">
             {i18n.translate('Polaris.IndexTable.onboardingBadgeText')}
           </Badge>
         </LegacyStack>
@@ -1096,9 +1084,7 @@ function IndexTableBase({
     const headingContent = renderHeadingContent(heading, index);
     const stickyHeadingClassName = classNames(
       styles.TableHeading,
-      polarisSummerEditions2023 &&
-        heading.flush &&
-        styles['TableHeading-flush'],
+      heading.flush && styles['TableHeading-flush'],
       headingAlignment === 'center' && styles['TableHeading-align-center'],
       headingAlignment === 'end' && styles['TableHeading-align-end'],
       index === 0 && styles['StickyTableHeading-second'],
@@ -1153,11 +1139,9 @@ const isBreakpointsXS = () => {
 };
 
 function getHeadingKey(heading: IndexTableHeading): string {
-  if ('id' in heading && heading.id) {
+  if (heading.id) {
     return heading.id;
-  }
-
-  if (typeof heading.title === 'string') {
+  } else if (typeof heading.title === 'string') {
     return heading.title;
   }
 

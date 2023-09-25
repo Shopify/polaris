@@ -22,32 +22,32 @@
   border-width: var(--pc-border-width);
 }
 
-.statusInfo {
+.toneInfo {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-info);
 }
 
-.statusSuccess {
+.toneSuccess {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-success);
 }
 
-.statusNew {
+.toneNew {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-text-subdued);
 }
 
-.statusAttention {
+.toneAttention {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-caution);
 }
 
-.statusWarning {
+.toneWarning {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-warning);
 }
 
-.statusCritical {
+.toneCritical {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-pip-color: var(--p-color-icon-critical);
 }

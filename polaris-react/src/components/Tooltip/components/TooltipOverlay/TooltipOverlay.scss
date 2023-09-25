@@ -1,6 +1,10 @@
 @import '../../../../styles/common';
 
 .TooltipOverlay {
+  @include scope-custom-property('tooltip', 'chevron-x-pos');
+  @include scope-custom-property('tooltip', 'border-radius');
+  @include scope-custom-property('tooltip', 'padding');
+
   // stylelint-disable -- Polaris component custom properties
   --pc-tooltip-overlay-offset: var(--p-space-3);
   --pc-tooltip-shadow-bevel-z-index: 1;
@@ -34,7 +38,8 @@
     top: calc(-1 * var(--p-space-2) + 0.8px);
     // stylelint-disable-next-line -- Custom positioning not expected to align with Polaris tokens
     left: calc(
-      var(--pc-tooltip-chevron-x-pos) - var(--p-space-2) - var(--p-space-4)
+      var(--pc-tooltip-chevron-x-pos) - var(--p-space-1_5-experimental) -
+        var(--p-space-4)
     );
     // stylelint-disable-next-line -- set z-index
     z-index: var(--pc-tooltip-tail-z-index);

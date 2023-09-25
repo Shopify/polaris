@@ -1,6 +1,5 @@
 ---
 title: Video thumbnail
-description: Video thumbnails are a clickable placeholder image. When clicked, it opens a video player within a modal or full screen.
 category: Images and icons
 keywords:
   - video
@@ -18,7 +17,20 @@ examples:
   - fileName: video-thumbnail-with-progress.tsx
     title: With progress
     description: Use to indicate the video’s play progress in relation to its duration.
+previewImg: /images/components/images-and-icons/video-thumbnail.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Video thumbnails are a clickable placeholder image. When clicked, it opens a video player within a modal or full screen.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

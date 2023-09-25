@@ -1,6 +1,5 @@
 ---
 title: Inline stack
-description: Use to display children horizontally in a row. Based on CSS Flexbox.
 category: Layout and structure
 keywords:
   - layout
@@ -14,9 +13,6 @@ keywords:
   - vertical centering
   - horizontal row of components
   - stack
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: inline-stack-with-non-wrapping.tsx
     title: Non-wrapping
@@ -34,13 +30,26 @@ examples:
     title: Align
     description: >-
       Control the horizontal alignment of children using the `align` prop.
+previewImg: /images/components/layout-and-structure/inline-stack.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use to display children horizontally in a row. Based on CSS Flexbox.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Related components
 
 - To create the large-scale structure of pages, [use the InlineGrid component](https://polaris.shopify.com/components/layout-and-structure/inline-grid)
-- To display elements vertically, [use the VerticalStack component](https://polaris.shopify.com/components/vertical-stack)
+- To display elements vertically, [use the BlockStack component](https://polaris.shopify.com/components/layout-and-structure/block-stack)
 
 ## Related resources
 
-- InlineStack props are named following the convention of CSS logical properties, such as 'padding-inline-start' and 'padding-block-start'. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).
+- InlineStack props are named following the convention of CSS logical properties, such as `align="start"` vs. `align="left"` and `blockAlign="end"` vs. `verticalAlign="bottom"`. Learn more about [CSS logicial properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties).

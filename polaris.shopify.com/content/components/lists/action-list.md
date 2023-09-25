@@ -1,6 +1,5 @@
 ---
 title: Action list
-description: Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.
 category: Lists
 keywords:
   - ActionList
@@ -34,7 +33,20 @@ examples:
   - fileName: action-list-with-a-prefix-and-a-suffix.tsx
     title: With a prefix and a suffix
     description: Use help text when the normal Verb noun syntax for the actions does not provide sufficient context for the merchant.
+previewImg: /images/components/lists/action-list.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Action lists render a list of actions or selectable options. This component is usually placed inside a [popover container](https://polaris.shopify.com/components/overlays/popover) to create a dropdown menu or to let merchants select from a list of options.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -51,7 +63,7 @@ Actions lists should:
 
 Each item in an action list should be clear and predictable. Merchants should be able to anticipate what will happen when they click on an action item.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -61,11 +73,11 @@ Buy shipping label
 
 Buy
 
-<!-- end -->
+</DoDont>
 
-Each item in an action list should always lead with a strong verb that encourages action. To provide enough context use the {verb}+{noun} format unless the action is clear with a single verb.
+Each item in an action list should always lead with a strong verb that encourages action. To provide enough context use the \{verb\}+\{noun\} format unless the action is clear with a single verb.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -77,11 +89,11 @@ Each item in an action list should always lead with a strong verb that encourage
 - File name changes
 - HTML editing options
 
-<!-- end -->
+</DoDont>
 
 Each item in an action list should be scannable avoiding unnecessary words and articles such as the, an, or a.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -91,7 +103,7 @@ Each item in an action list should be scannable avoiding unnecessary words and a
 
 - Add a menu item
 
-<!-- end -->
+</DoDont>
 
 ---
 
