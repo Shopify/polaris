@@ -23,7 +23,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Box className="text-extra-padding">
+        <Box padding="4">
 
           ## Global palette
 
@@ -53,7 +53,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Box className="text-extra-padding">
+        <Box padding="4">
 
       ## Color roles
 
@@ -90,7 +90,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-  <Grid.Cell columnSpan={{xs: 12, sm: 6, md: 6, lg: 4, xl: 4}}>
+        <Box padding="4">
 
           ### Default
 
@@ -154,7 +154,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Brand
 
@@ -208,7 +208,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Info
 
@@ -273,7 +273,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Success
 
@@ -327,7 +327,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Caution
 
@@ -381,7 +381,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Warning
 
@@ -435,7 +435,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Critical
 
@@ -489,7 +489,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Magic
 
@@ -544,7 +544,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Emphasis
 
@@ -598,7 +598,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Transparent
 
@@ -652,7 +652,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Inverse
 
@@ -701,7 +701,7 @@ keywords:
 
 <Card>
 
-  <Box className="text-extra-padding">
+  <Box padding="4">
 
     ## Specialized roles
 
@@ -719,7 +719,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Input
 
@@ -773,7 +773,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Nav
 

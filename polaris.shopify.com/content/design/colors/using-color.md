@@ -22,7 +22,7 @@ icon: PaintBrushMajor
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Box className="text-extra-padding">
+      <Box padding="4">
 
         ## Color relationships
 
@@ -50,7 +50,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Background
 
@@ -107,7 +107,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Surface
 
@@ -163,7 +163,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Fill
 
@@ -231,7 +231,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Border
 
@@ -295,7 +295,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Text
 
@@ -361,7 +361,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Link
 
@@ -415,7 +415,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ### Icon
 
@@ -468,7 +468,7 @@ icon: PaintBrushMajor
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Box className="text-extra-padding">
+      <Box padding="4">
 
         ## Combining color roles
 
@@ -516,7 +516,7 @@ icon: PaintBrushMajor
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Box className="text-extra-padding">
+      <Box padding="4">
 
         ## Disabled color scheme
 
@@ -562,7 +562,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="4">
 
           ## Using other colors
 
