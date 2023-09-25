@@ -19,3 +19,9 @@ export interface IndexFiltersCancelAction {
   disabled?: boolean;
   loading?: boolean;
 }
+
+export enum IndexFiltersMode {
+  Default = 'DEFAULT',
+  Filtering = 'FILTERING',
+  EditingColumns = 'EDITING_COLUMNS',
+}
