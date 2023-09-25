@@ -6,6 +6,7 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 
 - [Quick migration guide](#quick-migration-guide)
 - [Tokens](#tokens)
+  - [Border](#border)
   - [Color](#color)
   - [Font](#font)
   - [Shadow](#shadow)
@@ -123,6 +124,111 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 ## Tokens
 
 The following tokens have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents. Please review each token section for migrations that can be run to resolve these breaking changes.
+
+### Border
+
+#### Migration
+
+To replace these deprecated `border` custom properties, you can run the [v12-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-border) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+
+```diff
+- border-radius: var(--p-border-radius-1);
++ border-radius: var(--p-border-radius-100);
+```
+
+```diff
+- border-width: var(--p-border-width-1);
++ border-width: var(--p-border-width-025);
+```
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>
+```
+
+#### Post-migration validation
+
+After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:
+
+```
+(?:--p-border-radius-0-experimental|--p-border-radius-05|--p-border-radius-1|--p-border-radius-1_5-experimental|--p-border-radius-2|--p-border-radius-3|--p-border-radius-4|--p-border-radius-5|--p-border-radius-6|--p-border-width-1|--p-border-width-1-experimental|--p-border-width-2|--p-border-width-2-experimental|--p-border-width-3|--p-border-width-4|--p-border-width-5)(?![\w-])
+```
+
+```
+<Tooltip[^>\w](?:[^>]|\n)*?borderRadius
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderRadius
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderRadiusEndStart
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderRadiusEndEnd
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderRadiusStartStart
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderRadiusStartEnd
+```
+
+```
+<ShadowBevel[^>\w](?:[^>]|\n)*?borderRadius
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderWidth
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderBlockStartWidth
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderBlockEndWidth
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderInlineStartWidth
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderInlineEndWidth
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?outlineWidth
+```
+
+```
+<Divider[^>\w](?:[^>]|\n)*?borderWidth
+```
+
+#### Replacement maps
+
+| Deprecated Token                     | Replacement Value       |
+| ------------------------------------ | ----------------------- |
+| `--p-border-radius-0-experimental`   | `--p-border-radius-0`   |
+| `--p-border-radius-05`               | `--p-border-radius-050` |
+| `--p-border-radius-1`                | `--p-border-radius-100` |
+| `--p-border-radius-1_5-experimental` | `--p-border-radius-150` |
+| `--p-border-radius-2`                | `--p-border-radius-200` |
+| `--p-border-radius-3`                | `--p-border-radius-300` |
+| `--p-border-radius-4`                | `--p-border-radius-400` |
+| `--p-border-radius-5`                | `--p-border-radius-500` |
+| `--p-border-radius-6`                | `--p-border-radius-750` |
+| `--p-border-width-1`                 | `--p-border-width-025`  |
+| `--p-border-width-1-experimental`    | `--p-border-width-0165` |
+| `--p-border-width-2`                 | `--p-border-width-050`  |
+| `--p-border-width-2-experimental`    | `--p-border-width-025`  |
+| `--p-border-width-3`                 | `--p-border-width-050`  |
+| `--p-border-width-4`                 | `--p-border-width-100`  |
+| `--p-border-width-5`                 | `--p-border-width-100`  |
 
 ### Color
 
