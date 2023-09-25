@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 :root {
-  --item-min-height: var(--p-space-4);
+  --item-min-height: var(--p-space-400);
   --item-min-width: 50px;
-  --item-vertical-padding: var(--p-space-2);
+  --item-vertical-padding: var(--p-space-200);
 }
 
 .Outer {
@@ -23,10 +23,11 @@
   @media #{$p-breakpoints-md-down} {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding: var(--p-space-3) var(--p-space-3) var(--p-space-3) var(--p-space-4);
+    padding: var(--p-space-300) var(--p-space-300) var(--p-space-300)
+      var(--p-space-400);
 
     #{$se23} & {
-      padding: var(--p-space-2);
+      padding: var(--p-space-200);
     }
   }
 }
@@ -35,7 +36,7 @@
   @media #{$p-breakpoints-md-up} {
     position: relative;
     display: inline-flex;
-    padding-right: var(--p-space-8);
+    padding-right: var(--p-space-800);
   }
 }
 
@@ -54,10 +55,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  gap: var(--p-space-1);
+  gap: var(--p-space-100);
 
   @media #{$p-breakpoints-md-up} {
-    padding: 0 var(--p-space-1);
+    padding: 0 var(--p-space-100);
     flex-wrap: wrap;
     align-items: stretch;
   }
@@ -72,8 +73,8 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: var(--p-space-8);
-  padding: 0 var(--p-space-3);
+  height: var(--p-space-800);
+  padding: 0 var(--p-space-300);
   border: 0;
   border-radius: var(--p-border-radius-1);
   background: var(--p-color-bg);
@@ -126,7 +127,7 @@
     color: var(--p-color-text-primary);
     background-color: transparent;
     border-radius: var(--p-border-radius-2);
-    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    padding: var(--p-space-150) var(--p-space-300);
     height: 2rem;
 
     &[aria-disabled='true'] {
@@ -202,17 +203,17 @@
 }
 
 .Tab-hasActions {
-  padding-right: var(--p-space-2);
+  padding-right: var(--p-space-200);
 
   #{$se23} & {
-    padding-right: var(--p-space-2);
+    padding-right: var(--p-space-200);
   }
 }
 
 .Tab-iconOnly {
-  padding-left: var(--p-space-1);
-  padding-right: var(--p-space-1);
-  width: var(--p-space-8);
+  padding-left: var(--p-space-100);
+  padding-right: var(--p-space-100);
+  width: var(--p-space-800);
 }
 
 .fillSpace {
@@ -242,7 +243,7 @@
 .List {
   list-style: none;
   margin: 0;
-  padding: var(--p-space-2);
+  padding: var(--p-space-200);
 }
 
 .Item {
@@ -253,7 +254,7 @@
   display: block;
   width: 100%;
   min-height: var(--item-min-height);
-  padding: var(--item-vertical-padding) var(--p-space-4);
+  padding: var(--item-vertical-padding) var(--p-space-400);
   text-align: left;
   text-decoration: none;
   cursor: pointer;
@@ -305,7 +306,7 @@
   justify-content: center;
   cursor: pointer;
   border-radius: var(--p-border-radius-1);
-  padding: 0 var(--p-space-2) 0 var(--p-space-3);
+  padding: 0 var(--p-space-200) 0 var(--p-space-300);
   margin-top: var(--p-space-025);
   border: none;
   outline: none;
@@ -380,7 +381,7 @@
 }
 
 .NewTab {
-  padding: 0 var(--p-space-2) 0 var(--p-space-1);
+  padding: 0 var(--p-space-200) 0 var(--p-space-100);
 
   @media #{$p-breakpoints-md-up} {
     position: absolute;

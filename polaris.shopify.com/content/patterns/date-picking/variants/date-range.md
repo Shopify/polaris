@@ -289,8 +289,8 @@ function DateRangePicker() {
           <Box
             maxWidth={mdDown ? '516px' : '212px'}
             width={mdDown ? '100%' : '212px'}
-            padding={{xs: 5, md: 0}}
-            paddingBlockEnd={{xs: 1, md: 0}}
+            padding={{xs: 500, md: 0}}
+            paddingBlockEnd={{xs: 100, md: 0}}
           >
             {mdDown ? (
               <Select
@@ -322,9 +322,9 @@ function DateRangePicker() {
               </Scrollable>
             )}
           </Box>
-          <Box padding={{xs: 5}} maxWidth={mdDown ? '320px' : '516px'}>
-            <VerticalStack gap="4">
-              <HorizontalStack gap="2">
+          <Box padding={{xs: 500}} maxWidth={mdDown ? '320px' : '516px'}>
+            <VerticalStack gap="400">
+              <HorizontalStack gap="200">
                 <div style={{flexGrow: 1}}>
                   <TextField
                     role="combobox"

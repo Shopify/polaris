@@ -130,11 +130,11 @@ export function SortButton({
     >
       <Box
         minWidth="148px"
-        padding={polarisSummerEditions2023 ? undefined : '4'}
-        paddingInlineStart={polarisSummerEditions2023 ? '3' : undefined}
-        paddingInlineEnd={polarisSummerEditions2023 ? '3' : undefined}
-        paddingBlockStart={polarisSummerEditions2023 ? '2' : undefined}
-        paddingBlockEnd={polarisSummerEditions2023 ? '2' : undefined}
+        padding={polarisSummerEditions2023 ? undefined : '400'}
+        paddingInlineStart={polarisSummerEditions2023 ? '300' : undefined}
+        paddingInlineEnd={polarisSummerEditions2023 ? '300' : undefined}
+        paddingBlockStart={polarisSummerEditions2023 ? '200' : undefined}
+        paddingBlockEnd={polarisSummerEditions2023 ? '200' : undefined}
         borderBlockEndWidth="1"
         borderColor="border-subdued"
       >
@@ -146,15 +146,11 @@ export function SortButton({
         />
       </Box>
       <Box
-        padding={polarisSummerEditions2023 ? undefined : '4'}
-        paddingInlineStart={
-          polarisSummerEditions2023 ? '1_5-experimental' : undefined
-        }
-        paddingInlineEnd={
-          polarisSummerEditions2023 ? '1_5-experimental' : undefined
-        }
-        paddingBlockStart={polarisSummerEditions2023 ? '2' : undefined}
-        paddingBlockEnd={polarisSummerEditions2023 ? '2' : undefined}
+        padding={polarisSummerEditions2023 ? undefined : '400'}
+        paddingInlineStart={polarisSummerEditions2023 ? '150' : undefined}
+        paddingInlineEnd={polarisSummerEditions2023 ? '150' : undefined}
+        paddingBlockStart={polarisSummerEditions2023 ? '200' : undefined}
+        paddingBlockEnd={polarisSummerEditions2023 ? '200' : undefined}
       >
         <DirectionButton
           direction="asc"

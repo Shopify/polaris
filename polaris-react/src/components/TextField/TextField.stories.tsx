@@ -838,7 +838,7 @@ export function WithFormSubmit() {
   const [onHandTotal, setOnHandTotal] = useState(0);
 
   return (
-    <VerticalStack gap="2">
+    <VerticalStack gap="200">
       <Form
         onSubmit={(event) => {
           event.preventDefault();

@@ -3,8 +3,8 @@
 .SideBySide {
   & > ul {
     display: grid;
-    column-gap: var(--p-space-4);
-    row-gap: var(--p-space-8);
+    column-gap: var(--p-space-400);
+    row-gap: var(--p-space-800);
 
     --txt-column-width: 35%;
     /*
@@ -34,7 +34,7 @@
 
     @media screen and (max-width: $breakpointMobile) {
       grid-template-columns: 1fr;
-      row-gap: var(--p-space-4);
+      row-gap: var(--p-space-400);
     }
 
     & > li {

@@ -29,7 +29,7 @@
         @include no-focus-ring;
         outline: var(--p-border-width-2) solid
           var(--p-color-border-interactive-focus);
-        outline-offset: var(--p-space-05);
+        outline-offset: var(--p-space-050);
         background: var(--p-color-bg-strong-active);
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */

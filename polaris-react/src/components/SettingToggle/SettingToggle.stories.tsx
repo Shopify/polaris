@@ -78,14 +78,14 @@ export function WithPrimitiveComponents() {
   );
 
   const settingTitle = title ? (
-    <HorizontalStack gap="2" wrap={false}>
-      <HorizontalStack gap="2" align="start" blockAlign="baseline">
+    <HorizontalStack gap="200" wrap={false}>
+      <HorizontalStack gap="200" align="start" blockAlign="baseline">
         <label htmlFor={toggleId}>
           <Text variant="headingMd" as="h6">
             {title}
           </Text>
         </label>
-        <HorizontalStack gap="2" align="center" blockAlign="center">
+        <HorizontalStack gap="200" align="center" blockAlign="center">
           {settingStatusMarkup}
           {helpLink}
         </HorizontalStack>
@@ -108,7 +108,7 @@ export function WithPrimitiveComponents() {
   const headerMarkup = (
     <Box width="100%">
       <HorizontalStack
-        gap="12"
+        gap="1200"
         align="space-between"
         blockAlign="start"
         wrap={false}
@@ -124,7 +124,7 @@ export function WithPrimitiveComponents() {
   );
 
   const descriptionMarkup = (
-    <VerticalStack gap="4">
+    <VerticalStack gap="400">
       <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
         {description}
       </Text>
@@ -138,9 +138,9 @@ export function WithPrimitiveComponents() {
 
   return (
     <Card>
-      <VerticalStack gap={{xs: '4', sm: '5'}}>
+      <VerticalStack gap={{xs: '400', sm: '500'}}>
         <Box width="100%">
-          <VerticalStack gap={{xs: '2', sm: '4'}}>
+          <VerticalStack gap={{xs: '200', sm: '400'}}>
             {headerMarkup}
             {descriptionMarkup}
           </VerticalStack>
@@ -192,14 +192,14 @@ export function WithPrimitiveComponentsAndLongTitle() {
   );
 
   const settingTitle = title ? (
-    <HorizontalStack gap="2" wrap={false}>
-      <HorizontalStack gap="2" align="start" blockAlign="baseline">
+    <HorizontalStack gap="200" wrap={false}>
+      <HorizontalStack gap="200" align="start" blockAlign="baseline">
         <label htmlFor={toggleId}>
           <Text variant="headingMd" as="h6">
             {title}
           </Text>
         </label>
-        <HorizontalStack gap="2" align="center" blockAlign="center">
+        <HorizontalStack gap="200" align="center" blockAlign="center">
           {settingStatusMarkup}
           {helpLink}
         </HorizontalStack>
@@ -222,7 +222,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
   const headerMarkup = (
     <Box width="100%">
       <HorizontalStack
-        gap="12"
+        gap="1200"
         align="space-between"
         blockAlign="start"
         wrap={false}
@@ -238,7 +238,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
   );
 
   const descriptionMarkup = (
-    <VerticalStack gap="4">
+    <VerticalStack gap="400">
       <Text id={descriptionId} variant="bodyMd" as="p" color="subdued">
         {description}
       </Text>
@@ -252,9 +252,9 @@ export function WithPrimitiveComponentsAndLongTitle() {
 
   return (
     <Card>
-      <VerticalStack gap={{xs: '4', sm: '5'}}>
+      <VerticalStack gap={{xs: '400', sm: '500'}}>
         <Box width="100%">
-          <VerticalStack gap={{xs: '2', sm: '4'}}>
+          <VerticalStack gap={{xs: '200', sm: '400'}}>
             {headerMarkup}
             {descriptionMarkup}
           </VerticalStack>

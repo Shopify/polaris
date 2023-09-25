@@ -64,7 +64,7 @@ export function WithHexTextField() {
   const styles = {
     Wrapper: {
       display: 'grid',
-      gap: 'var(--p-space-2)',
+      gap: 'var(--p-space-200)',
       gridTemplateColumns: 'auto 1fr',
       maxWidth: 'fit-content',
     },

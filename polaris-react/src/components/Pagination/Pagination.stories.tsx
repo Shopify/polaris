@@ -62,7 +62,7 @@ export function WithTableType() {
   return (
     <div
       style={{
-        maxWidth: 'calc(700px + (2 * var(--p-space-4)))',
+        maxWidth: 'calc(700px + (2 * var(--p-space-400)))',
         margin: '0 auto',
         border: '1px solid var(--p-color-border)',
       }}

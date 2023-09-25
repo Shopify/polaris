@@ -46,7 +46,7 @@ export default function GroupPage({
   const relatedResources = frontMatter?.relatedResources;
   const groupsMarkup = groups?.map(({title, description, components, tip}) => (
     <>
-      <Stack gap="4">
+      <Stack gap="400">
         <Text as="h4" variant="headingLg">
           {title}
         </Text>
@@ -106,7 +106,7 @@ export default function GroupPage({
 
   const relatedResourcesMarkup = relatedResources
     ? relatedResources && (
-        <Stack gap="4">
+        <Stack gap="400">
           <Text as="h4" variant="headingLg">
             Related resources
           </Text>
@@ -114,7 +114,7 @@ export default function GroupPage({
             {relatedResources.map((resource) => (
               <li
                 key={resource}
-                style={{listStyle: 'initial', marginLeft: 'var(--p-space-4)'}}
+                style={{listStyle: 'initial', marginLeft: 'var(--p-space-400)'}}
               >
                 <Markdown>{resource}</Markdown>
               </li>
@@ -130,8 +130,8 @@ export default function GroupPage({
         title={frontMatter?.title}
         description={frontMatter?.description}
       />
-      <Stack gap="16">
-        <Stack gap="4">
+      <Stack gap="1600">
+        <Stack gap="400">
           {frontMatter?.description && (
             <Longform firstParagraphIsLede>
               <Markdown>{frontMatter?.description}</Markdown>

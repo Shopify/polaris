@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   padding-block: var(--p-space-025);
-  margin-left: var(--p-space-05);
+  margin-left: var(--p-space-050);
 }
 
 .Label {
@@ -19,7 +19,7 @@
   border: var(--p-border-width-1) solid var(--p-color-border-input);
   border-radius: var(--p-border-radius-1);
   border-color: var(--p-color-border-input);
-  padding-inline: var(--p-space-1_5-experimental);
+  padding-inline: var(--p-space-150);
   width: 100%;
 
   &:hover {

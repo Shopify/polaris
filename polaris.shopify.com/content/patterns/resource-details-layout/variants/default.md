@@ -85,10 +85,10 @@ function ResourceDetailsLayout() {
         hasNext: true,
       }}
     >
-      <HorizontalGrid columns={{xs: 1, md: '2fr 1fr'}} gap="4">
-        <VerticalStack gap="4">
+      <HorizontalGrid columns={{xs: 1, md: '2fr 1fr'}} gap="400">
+        <VerticalStack gap="400">
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <VerticalStack gap="400">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="8rem" />
@@ -96,7 +96,7 @@ function ResourceDetailsLayout() {
             </VerticalStack>
           </Card>
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <VerticalStack gap="400">
               <SkeletonDisplayText size="small" />
               <HorizontalGrid columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
@@ -105,13 +105,13 @@ function ResourceDetailsLayout() {
             </VerticalStack>
           </Card>
         </VerticalStack>
-        <VerticalStack gap={{xs: '4', md: '2'}}>
+        <VerticalStack gap={{xs: '400', md: '200'}}>
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <VerticalStack gap="400">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
-                <Bleed marginInline={{xs: 4, sm: 5}}>
+                <Bleed marginInline={{xs: 400, sm: 500}}>
                   <Divider />
                 </Bleed>
               </Box>
@@ -121,7 +121,7 @@ function ResourceDetailsLayout() {
             </VerticalStack>
           </Card>
           <Card roundedAbove="sm">
-            <VerticalStack gap="4">
+            <VerticalStack gap="400">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="4rem" />

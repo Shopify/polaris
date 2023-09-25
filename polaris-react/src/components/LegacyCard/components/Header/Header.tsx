@@ -38,12 +38,12 @@ export function Header({children, title, actions}: LegacyCardHeaderProps) {
       polarisSummerEditions2023 ? (
         <HorizontalStack
           wrap={false}
-          gap="2"
+          gap="200"
           align="space-between"
           blockAlign="center"
         >
           {titleMarkup}
-          <HorizontalStack wrap={false} gap="4" blockAlign="center">
+          <HorizontalStack wrap={false} gap="400" blockAlign="center">
             {actionMarkup}
             {children}
           </HorizontalStack>
