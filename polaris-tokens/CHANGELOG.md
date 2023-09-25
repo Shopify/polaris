@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.11.0
+
+### Minor Changes
+
+- [#10647](https://github.com/Shopify/polaris/pull/10647) [`f26cebe99`](https://github.com/Shopify/polaris/commit/f26cebe99e486730bce2ca1d9add89e24ef9c648) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added composite `text` and `font-letter-spacing` tokens
+
+* [#10643](https://github.com/Shopify/polaris/pull/10643) [`2359e5f5a`](https://github.com/Shopify/polaris/commit/2359e5f5a4e6a93f8dd70997c4ae9a1ab732911c) Thanks [@lgriffee](https://github.com/lgriffee)! - Added semantic `space` token scale
+
 ## 7.10.0
 
 ### Minor Changes
