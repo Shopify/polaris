@@ -1,7 +1,7 @@
 import type {
   BreakpointsAlias,
   ColorBackgroundAlias,
-  BorderRadiusScaleOrAlias,
+  BorderRadiusAliasOrScale,
   SpaceScale,
 } from '@shopify/polaris-tokens';
 import React from 'react';
@@ -38,7 +38,7 @@ export const Card = ({
   roundedAbove,
 }: CardProps) => {
   const breakpoints = useBreakpoints();
-  const defaultBorderRadius: BorderRadiusScaleOrAlias = '3';
+  const defaultBorderRadius: BorderRadiusAliasOrScale = '3';
 
   let hasBorderRadius = !roundedAbove;
 

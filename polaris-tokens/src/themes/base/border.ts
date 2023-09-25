@@ -28,7 +28,7 @@ type BorderWidthScaleExperimental = Experimental<'1' | '2'>;
 
 export type BorderRadiusAlias = 'full';
 
-export type BorderRadiusScaleOrAlias = BorderRadiusScale | BorderRadiusAlias;
+export type BorderRadiusAliasOrScale = BorderRadiusAlias | BorderRadiusScale;
 
 export type BorderWidthScale =
   | '0165'
@@ -43,7 +43,7 @@ export type BorderWidthScale =
   | BorderWidthScaleExperimental;
 
 export type BorderTokenName =
-  | `border-radius-${BorderRadiusScaleOrAlias}`
+  | `border-radius-${BorderRadiusAliasOrScale}`
   | `border-width-${BorderWidthScale}`;
 
 export type BorderTokenGroup = {
