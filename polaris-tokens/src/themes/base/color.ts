@@ -1,4 +1,3 @@
-import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 import * as colors from '../../colors';
 import * as colorsExperimental from '../../colors-experimental';
@@ -162,7 +161,6 @@ export type ColorBackgroundAlias =
   | 'bg-fill-transparent-secondary'
   | 'bg-fill-transparent-secondary-hover'
   | 'bg-fill-transparent-secondary-active'
-  | ColorBackgroundAliasExperimental
   /** Specialty and component background colors. */
   | 'nav-bg'
   | 'backdrop-bg'
@@ -225,7 +223,6 @@ export type ColorBorderAlias =
   | 'border-emphasis'
   | 'border-emphasis-hover'
   | 'border-emphasis-active'
-  | ColorBorderAliasExperimental
   /** Specialty and component border colors. */
   | 'input-border'
   | 'input-border-hover'
@@ -258,7 +255,6 @@ export type ColorIconAlias =
   | 'icon-emphasis'
   | 'icon-emphasis-hover'
   | 'icon-emphasis-active'
-  | ColorIconAliasExperimental
   /** Specialty and component icon colors. */
   | 'radio-button-icon-disabled'
   | 'checkbox-icon-disabled';
@@ -323,7 +319,6 @@ export type ColorTextAlias =
   | 'text-link-hover'
   | 'text-link-active'
   | 'text-link-inverse'
-  | ColorTextAliasExperimental
   /** Specialty and component text colors. */
   | 'avatar-text-on-bg-fill'
   | 'avatar-one-text-on-bg-fill'
@@ -333,64 +328,11 @@ export type ColorTextAlias =
   | 'avatar-five-text-on-bg-fill'
   | 'video-thumbnail-play-button-text-on-bg-fill';
 
-type ColorBackgroundAliasExperimental = Experimental<
-  | 'bg-backdrop'
-  | 'bg-input-active'
-  | 'bg-input-hover'
-  | 'bg-primary-disabled'
-  | 'bg-secondary'
-  | 'bg-success-strong-active'
-  | 'bg-success-strong-hover'
-  | 'bg-transparent'
-  | 'bg-transparent-active'
-  | 'bg-transparent-disabled'
-  | 'bg-transparent-hover'
-  | 'bg-transparent-primary'
-  | 'bg-transparent-primary-disabled'
-  | 'bg-transparent-secondary-disabled'
-  | 'bg-transparent-subdued'
-  | 'bg-warning-strong'
-  | 'bg-warning-subdued'
->;
-
-type ColorTextAliasExperimental = Experimental<
-  'text-warning' | 'text-critical-hover'
->;
-
-type ColorIconAliasExperimental = Experimental<
-  | 'icon-critical-strong-active'
-  | 'icon-critical-strong-hover'
-  | 'icon-critical-strong'
-  | 'icon-info-strong'
-  | 'icon-success-strong'
-  | 'icon-warning-strong'
->;
-
-type ColorBorderAliasExperimental = Experimental<
-  'border-input-active' | 'border-critical-strong'
->;
-
-type ColorAvatarAliasExperimental = Experimental<
-  | 'avatar-background'
-  | 'avatar-color'
-  | 'avatar-style-one-background'
-  | 'avatar-style-one-color'
-  | 'avatar-style-two-background'
-  | 'avatar-style-two-color'
-  | 'avatar-style-three-background'
-  | 'avatar-style-three-color'
-  | 'avatar-style-four-background'
-  | 'avatar-style-four-color'
-  | 'avatar-style-five-background'
-  | 'avatar-style-five-color'
->;
-
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
   | `color-${ColorBorderAlias}`
   | `color-${ColorIconAlias}`
-  | `color-${ColorTextAlias}`
-  | `color-${ColorAvatarAliasExperimental}`;
+  | `color-${ColorTextAlias}`;
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
