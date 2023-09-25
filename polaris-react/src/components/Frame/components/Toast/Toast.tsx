@@ -87,7 +87,7 @@ export function Toast({
   const className = classNames(styles.Toast, error && styles.error);
 
   return (
-    <div className={className} aria-live="assertive">
+    <div className={className}>
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
       <HorizontalStack gap="4" blockAlign="center">
