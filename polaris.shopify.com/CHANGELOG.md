@@ -1,5 +1,17 @@
 # polaris.shopify.com
 
+## 0.57.8
+
+### Patch Changes
+
+- [#10605](https://github.com/Shopify/polaris/pull/10605) [`9748b0838`](https://github.com/Shopify/polaris/commit/9748b08383c4d11f93a0da72a0ef39a726c96e8b) Thanks [@laurkim](https://github.com/laurkim)! - Updated logic for rendering `color` custom property previews in `TokenList`
+
+* [#10573](https://github.com/Shopify/polaris/pull/10573) [`da09e0b8c`](https://github.com/Shopify/polaris/commit/da09e0b8caee9580db973ddce6c10ee7e6ec8523) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated copy url to change browser url
+
+* Updated dependencies [[`fe1aac1b5`](https://github.com/Shopify/polaris/commit/fe1aac1b5a9868c3decda53b94150e0242905d04), [`5acfcec04`](https://github.com/Shopify/polaris/commit/5acfcec047adeb82fc64666528e44f5050edd089), [`790a001cd`](https://github.com/Shopify/polaris/commit/790a001cd1942a0cd32e90b98339236fe2800afc), [`8be227e0c`](https://github.com/Shopify/polaris/commit/8be227e0c4ac6a03566beb8b9717a721c2f20b07), [`63cf3ad24`](https://github.com/Shopify/polaris/commit/63cf3ad2405f75589869a6f1aa33c277f559df3c), [`7be9c243a`](https://github.com/Shopify/polaris/commit/7be9c243a9612ea211ac9ea46898241f742072b2), [`863f15ff2`](https://github.com/Shopify/polaris/commit/863f15ff2e2a8dec499b630b9fd0b9e45409b18b), [`3efbc1b4e`](https://github.com/Shopify/polaris/commit/3efbc1b4ec637f43c4cb97d90830b14e486a1d22), [`d5ff72dec`](https://github.com/Shopify/polaris/commit/d5ff72dec72e612472a0f0e980d497ae2e1bfb2d), [`120e96eae`](https://github.com/Shopify/polaris/commit/120e96eaeb8ebda3dcf99d3917167e442bd19cdf), [`9fed74317`](https://github.com/Shopify/polaris/commit/9fed743175079a3967c6591e1e4765f2881181e9)]:
+  - @shopify/polaris-tokens@7.10.0
+  - @shopify/polaris@11.20.0
+
 ## 0.57.7
 
 ### Patch Changes

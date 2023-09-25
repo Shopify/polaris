@@ -429,10 +429,6 @@ $loading-panel-height: 53px;
     .TableCell-first + .TableCell,
     .TableCell:last-child {
       background: var(--p-color-bg-subdued);
-
-      #{$se23} & {
-        background: var(--p-color-bg-secondary-experimental);
-      }
     }
   }
 
@@ -1044,12 +1040,11 @@ $loading-panel-height: 53px;
 
 .StickyTableHeader-isSticky {
   visibility: visible;
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-subdued);
   box-shadow: var(--p-shadow-md);
 
   #{$se23} & {
     box-shadow: var(--p-shadow-xs);
-    background-color: var(--p-color-bg-secondary-experimental);
   }
 }
 
