@@ -330,6 +330,66 @@ describe('Option', () => {
       expect(onActionSpy).toHaveBeenCalled();
     });
 
+    it('calls onClose when onAction and closeOnClick are truthy', () => {
+      const onActionSpy = jest.fn();
+      const onCloseSpy = jest.fn();
+      const option = mountWithListboxProvider(
+        <MappedActionContext.Provider
+          value={{
+            onAction: onActionSpy,
+            closeOnClick: true,
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+          onClose: onCloseSpy,
+        },
+      );
+
+      option
+        .find('li', {
+          role: 'option',
+        })!
+        .trigger('onClick', {
+          preventDefault: () => {},
+          stopPropagation: () => {},
+        });
+
+      expect(onCloseSpy).toHaveBeenCalled();
+    });
+
+    it('calls onClose when onAction exists and closeOnClick is false', () => {
+      const onActionSpy = jest.fn();
+      const onCloseSpy = jest.fn();
+      const option = mountWithListboxProvider(
+        <MappedActionContext.Provider
+          value={{
+            onAction: onActionSpy,
+            closeOnClick: false,
+          }}
+        >
+          <Option {...defaultProps} />
+        </MappedActionContext.Provider>,
+        {
+          ...defaultContext,
+          onClose: onCloseSpy,
+        },
+      );
+
+      option
+        .find('li', {
+          role: 'option',
+        })!
+        .trigger('onClick', {
+          preventDefault: () => {},
+          stopPropagation: () => {},
+        });
+
+      expect(onCloseSpy).not.toHaveBeenCalled();
+    });
+
     it('does not invoke onOptionSelect during click events', () => {
       const onOptionSelectSpy = jest.fn();
       const option = mountWithListboxProvider(

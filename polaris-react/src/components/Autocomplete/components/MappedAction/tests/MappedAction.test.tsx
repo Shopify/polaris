@@ -55,6 +55,7 @@ describe('MappedAction', () => {
       external: false,
       onAction: () => {},
       destructive: false,
+      closeOnClick: false,
     };
     const mappedAction = mountWithListboxProvider(<MappedAction {...props} />);
 

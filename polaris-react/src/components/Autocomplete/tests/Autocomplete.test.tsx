@@ -10,6 +10,7 @@ import {ComboboxTextFieldContext} from '../../../utilities/combobox';
 import {Autocomplete} from '../Autocomplete';
 import {Combobox} from '../../Combobox';
 import type {ComboboxProps} from '../../Combobox';
+import {Popover} from '../../Popover';
 import {KeypressListener} from '../../KeypressListener';
 import {AutoSelection, Listbox} from '../../Listbox';
 
@@ -264,6 +265,163 @@ describe('<Autocomplete/>', () => {
             autoSelection: AutoSelection.First,
           });
         });
+
+        it('will close the Popover when the action is clicked if closeOnClick is true', () => {
+          const actionBefore = {
+            accessibilityLabel: 'label',
+            helpText: 'help text',
+            image: '',
+            prefix: null,
+            suffix: null,
+            ellipsis: false,
+            active: false,
+            role: 'option',
+            icon: 'icon',
+            disabled: false,
+            destructive: true,
+            badge: {
+              status: 'new' as const,
+              content: 'new',
+            },
+            onAction: jest.fn(),
+            closeOnClick: true,
+          };
+          const autocomplete = mountWithApp(
+            <Autocomplete {...defaultProps} actionBefore={actionBefore} />,
+          );
+
+          triggerFocus(autocomplete.find(Combobox));
+
+          const mappedActionBeforeListItem = autocomplete!
+            .find(MappedAction, {
+              accessibilityLabel: actionBefore.accessibilityLabel,
+            })!
+            .find('li');
+
+          mappedActionBeforeListItem?.trigger('onClick', {
+            preventDefault: () => {},
+            stopPropagation: () => {},
+          });
+
+          expect(autocomplete).toContainReactComponent(Popover, {
+            active: false,
+          });
+        });
+
+        it('will not close the Popover when the action is clicked if closeOnClick is false', () => {
+          const actionBefore = {
+            accessibilityLabel: 'label',
+            helpText: 'help text',
+            image: '',
+            prefix: null,
+            suffix: null,
+            ellipsis: false,
+            active: false,
+            role: 'option',
+            icon: 'icon',
+            disabled: false,
+            destructive: true,
+            badge: {
+              status: 'new' as const,
+              content: 'new',
+            },
+            onAction: jest.fn(),
+            closeOnClick: false,
+          };
+          const autocomplete = mountWithApp(
+            <Autocomplete {...defaultProps} actionBefore={actionBefore} />,
+          );
+
+          triggerFocus(autocomplete.find(Combobox));
+
+          const mappedActionBeforeListItem = autocomplete!
+            .find(MappedAction, {
+              accessibilityLabel: actionBefore.accessibilityLabel,
+            })!
+            .find('li');
+
+          mappedActionBeforeListItem?.trigger('onClick', {
+            preventDefault: () => {},
+            stopPropagation: () => {},
+          });
+
+          expect(autocomplete).toContainReactComponent(Popover, {
+            active: true,
+          });
+        });
+      });
+
+      describe('actionAfter', () => {
+        it('renders MappedAction', () => {
+          const actionAfter = {
+            content: 'View all',
+          };
+          const autocomplete = mountWithApp(
+            <Autocomplete {...defaultProps} actionAfter={actionAfter} />,
+          );
+
+          triggerFocus(autocomplete.find(Combobox));
+
+          expect(autocomplete).toContainReactComponent(MappedAction, {
+            plain: true,
+          });
+        });
+
+        it('will close the Popover when the action is clicked if closeOnClick is true', () => {
+          const actionAfter = {
+            content: 'View all',
+            onAction: jest.fn(),
+            closeOnClick: true,
+          };
+          const autocomplete = mountWithApp(
+            <Autocomplete {...defaultProps} actionAfter={actionAfter} />,
+          );
+
+          triggerFocus(autocomplete.find(Combobox));
+
+          const mappedActionBeforeListItem = autocomplete!
+            .find(MappedAction, {
+              content: actionAfter.content,
+            })!
+            .find('li');
+
+          mappedActionBeforeListItem?.trigger('onClick', {
+            preventDefault: () => {},
+            stopPropagation: () => {},
+          });
+
+          expect(autocomplete).toContainReactComponent(Popover, {
+            active: false,
+          });
+        });
+
+        it('will not close the Popover when the action is clicked if closeOnClick is false', () => {
+          const actionAfter = {
+            content: 'View all',
+            onAction: jest.fn(),
+            closeOnClick: false,
+          };
+          const autocomplete = mountWithApp(
+            <Autocomplete {...defaultProps} actionAfter={actionAfter} />,
+          );
+
+          triggerFocus(autocomplete.find(Combobox));
+
+          const mappedActionBeforeListItem = autocomplete!
+            .find(MappedAction, {
+              content: actionAfter.content,
+            })!
+            .find('li');
+
+          mappedActionBeforeListItem?.trigger('onClick', {
+            preventDefault: () => {},
+            stopPropagation: () => {},
+          });
+
+          expect(autocomplete).toContainReactComponent(Popover, {
+            active: true,
+          });
+        });
       });
 
       describe('loading', () => {
@@ -309,11 +467,24 @@ describe('<Autocomplete/>', () => {
           return null;
         }
 
-        it('does not render if an action exists', () => {
+        it('does not render if an actionBefore exists', () => {
           const autocomplete = mountWithApp(
             <Autocomplete
               {...defaultProps}
               actionBefore={{content: 'action'}}
+            />,
+          );
+
+          triggerFocus(autocomplete.find(Combobox));
+
+          expect(autocomplete).not.toContainReactComponent(EmptyState);
+        });
+
+        it('does not render if an actionAfter exists', () => {
+          const autocomplete = mountWithApp(
+            <Autocomplete
+              {...defaultProps}
+              actionAfter={{content: 'action'}}
             />,
           );
 

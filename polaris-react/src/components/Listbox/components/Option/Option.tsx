@@ -33,9 +33,9 @@ export const Option = memo(function Option({
   accessibilityLabel,
   divider,
 }: OptionProps) {
-  const {onOptionSelect} = useListbox();
+  const {onOptionSelect, onClose} = useListbox();
   const isAction = useContext(ActionContext);
-  const {role, url, external, onAction, destructive} =
+  const {role, url, external, onAction, destructive, closeOnClick} =
     useContext(MappedActionContext);
 
   const listItemRef = useRef<HTMLLIElement>(null);
@@ -47,7 +47,12 @@ export const Option = memo(function Option({
     (event: React.MouseEvent | React.KeyboardEvent) => {
       event.preventDefault();
       event.stopPropagation();
-      onAction && onAction();
+      if (onAction) {
+        if (closeOnClick) {
+          onClose?.();
+        }
+        onAction();
+      }
       if (listItemRef.current && !onAction) {
         onOptionSelect({
           domId,
@@ -57,7 +62,7 @@ export const Option = memo(function Option({
         });
       }
     },
-    [domId, onOptionSelect, value, disabled, onAction],
+    [domId, onOptionSelect, value, disabled, onAction, closeOnClick, onClose],
   );
 
   // prevents lost of focus on Textfield
