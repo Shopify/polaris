@@ -12,7 +12,6 @@ import {Tooltip} from '../../../../Tooltip';
 import type {LinkAction, MenuActionDescriptor} from '../../../../../types';
 import {Header} from '../Header';
 import type {HeaderProps} from '../Header';
-import {IndexFiltersMode} from '../../../../../utilities/index-filters';
 
 describe('<Header />', () => {
   const mockProps: HeaderProps = {
