@@ -1,5 +1,8 @@
 import React from 'react';
-import type {BorderRadiusScale, ShadowAlias} from '@shopify/polaris-tokens';
+import type {
+  BorderRadiusScaleOrAlias,
+  ShadowAlias,
+} from '@shopify/polaris-tokens';
 
 import {getResponsiveValue} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
@@ -12,7 +15,7 @@ export interface ShadowBevelProps {
   /** The box-shadow applied to the root element. */
   boxShadow: ShadowAlias;
   /** The border-radius applied to both the root and pseudo elements. */
-  borderRadius: BorderRadiusScale;
+  borderRadius: BorderRadiusScaleOrAlias;
   /** The z-index applied to the pseudo element. */
   zIndex?: string;
   /**

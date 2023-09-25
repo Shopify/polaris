@@ -18,6 +18,8 @@ export type {
   BorderTokenGroup,
   BorderTokenName,
   BorderRadiusScale,
+  BorderRadiusAlias,
+  BorderRadiusScaleOrAlias,
   BorderWidthScale,
 } from './themes/base/border';
 
