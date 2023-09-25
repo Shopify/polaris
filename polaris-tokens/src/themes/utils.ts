@@ -62,18 +62,20 @@ export function resolveMetaThemeRefs<T extends MetaThemeShape>(
     Object.entries(metaTheme).map(([tokenGroupName, metaTokenGroup]) => [
       tokenGroupName,
       Object.fromEntries(
-        Object.entries(metaTokenGroup).map(([tokenName, tokenProperties]) => {
-          let tokenValue = tokenProperties.value;
+        Object.entries(metaTokenGroup).map(
+          ([tokenName, metaTokenProperties]) => {
+            let tokenValue = metaTokenProperties.value;
 
-          if (tokenValue.startsWith('var(--p-')) {
-            const tokenNameRef = tokenValue.slice(8, -1);
-            const tokenGroupNameRef = tokenNameRef.split('-')[0];
+            if (tokenValue.startsWith('var(--p-')) {
+              const tokenNameRef = tokenValue.slice(8, -1);
+              const tokenGroupNameRef = tokenNameRef.split('-')[0];
 
-            tokenValue = metaTheme[tokenGroupNameRef][tokenNameRef].value;
-          }
+              tokenValue = metaTheme[tokenGroupNameRef][tokenNameRef].value;
+            }
 
-          return [tokenName, {...tokenProperties, value: tokenValue}];
-        }),
+            return [tokenName, {...metaTokenProperties, value: tokenValue}];
+          },
+        ),
       ),
     ]),
   ) as T;
