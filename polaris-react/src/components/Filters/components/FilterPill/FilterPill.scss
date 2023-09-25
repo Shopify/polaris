@@ -112,22 +112,22 @@
 }
 
 .ToggleButton {
-  padding: 0 var(--p-space-2) 0 var(--p-space-3);
+  padding: 0 var(--p-space-200) 0 var(--p-space-300);
   height: 26px;
 
   @media #{$p-breakpoints-md-up} {
-    padding: 0 var(--p-space-1) 0 var(--p-space-2);
+    padding: 0 var(--p-space-100) 0 var(--p-space-200);
     height: 22px;
   }
 
   .Label {
     display: flex;
-    padding-left: var(--p-space-05);
+    padding-left: var(--p-space-050);
   }
 }
 
 .ActiveFilterButton .ToggleButton {
-  padding-right: var(--p-space-05);
+  padding-right: var(--p-space-050);
   @media #{$p-breakpoints-md-up} {
     padding-right: 0;
   }
@@ -136,10 +136,10 @@
 .clearButton {
   // stylelint-disable-next-line -- no way to set focus ring without mixin currently
   @include focus-ring;
-  margin-right: var(--p-space-2);
+  margin-right: var(--p-space-200);
 
   @media #{$p-breakpoints-md-up} {
-    margin-right: var(--p-space-1);
+    margin-right: var(--p-space-100);
   }
 
   &:focus-visible:not(:active) {

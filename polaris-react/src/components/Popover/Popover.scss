@@ -7,8 +7,8 @@ $content-max-width: 400px;
 $vertical-motion-offset: -5px;
 
 .Popover {
-  max-width: calc(100vw - var(--p-space-8));
-  margin: $visible-portion-of-arrow var(--p-space-2) var(--p-space-4);
+  max-width: calc(100vw - var(--p-space-800));
+  margin: $visible-portion-of-arrow var(--p-space-200) var(--p-space-400);
   box-shadow: var(--p-shadow-xl);
   border-radius: var(--p-border-radius-2);
   will-change: left, top;
@@ -53,7 +53,7 @@ $vertical-motion-offset: -5px;
 }
 
 .positionedAbove {
-  margin: var(--p-space-4) var(--p-space-2) $visible-portion-of-arrow;
+  margin: var(--p-space-400) var(--p-space-200) $visible-portion-of-arrow;
 
   &.fullWidth {
     margin: 0 auto $visible-portion-of-arrow auto;
@@ -64,7 +64,7 @@ $vertical-motion-offset: -5px;
   position: relative;
   overflow: hidden;
   background: var(--p-color-bg);
-  border-radius: var(--p-space-2);
+  border-radius: var(--p-space-200);
 
   /* Prevent Scrollable's box shadows overflowing the rounded corners of this
    * element on Safari prior to tech preview version 156.
@@ -72,7 +72,7 @@ $vertical-motion-offset: -5px;
   isolation: isolate;
 
   #{$se23} & {
-    border-radius: var(--p-space-3);
+    border-radius: var(--p-space-300);
   }
 }
 

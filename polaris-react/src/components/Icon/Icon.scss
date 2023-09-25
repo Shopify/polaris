@@ -17,15 +17,15 @@
   position: relative;
   display: flex;
   align-items: center;
-  margin: var(--p-space-1);
+  margin: var(--p-space-100);
 
   &::before {
     content: '';
     position: absolute;
-    top: calc(-1 * var(--p-space-1));
-    bottom: calc(-1 * var(--p-space-1));
-    left: calc(-1 * var(--p-space-1));
-    right: calc(-1 * var(--p-space-1));
+    top: calc(-1 * var(--p-space-100));
+    bottom: calc(-1 * var(--p-space-100));
+    left: calc(-1 * var(--p-space-100));
+    right: calc(-1 * var(--p-space-100));
     border-radius: var(--p-border-radius-full);
   }
 }

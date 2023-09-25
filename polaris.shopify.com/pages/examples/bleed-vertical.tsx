@@ -7,7 +7,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BleedVerticalExample() {
   return (
     <Card>
-      <Bleed marginBlock="8">
+      <Bleed marginBlock="800">
         <Placeholder label="marginBlock" />
       </Bleed>
     </Card>
@@ -19,12 +19,12 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
     <div
       style={{
         background: 'var(--p-color-text-info)',
-        padding: 'var(--p-space-10) var(--p-space-2)',
+        padding: 'var(--p-space-1000) var(--p-space-200)',
         height: height,
         width: width,
       }}
     >
-      <HorizontalStack gap="4" align="center">
+      <HorizontalStack gap="400" align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',

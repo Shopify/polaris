@@ -4,14 +4,14 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
-    <VerticalStack gap="4">
+    <VerticalStack gap="400">
       <Card>
         <Placeholder label="Content inside a card" />
       </Card>
-      <Card padding="4">
+      <Card padding="400">
         <Placeholder label="Content inside a card" />
       </Card>
-      <Card padding="2">
+      <Card padding="200">
         <Placeholder label="Content inside a card" />
       </Card>
       <Card padding="0">

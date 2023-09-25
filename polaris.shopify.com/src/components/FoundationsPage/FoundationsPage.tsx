@@ -44,7 +44,7 @@ function FoundationsPage({
 
           <p>{description}</p>
         </Longform>
-        <Stack gap="8">
+        <Stack gap="800">
           {typedStatus ? <StatusBanner status={typedStatus} /> : null}
 
           <Grid>

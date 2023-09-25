@@ -19,7 +19,7 @@ export default {
 export function Default() {
   return (
     <Card>
-      <VerticalStack gap="5">
+      <VerticalStack gap="500">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
@@ -38,7 +38,7 @@ export function WithBackgroundSubdued() {
         polarisSummerEditions2023 ? 'bg-secondary-experimental' : 'bg-subdued'
       }
     >
-      <VerticalStack gap="5">
+      <VerticalStack gap="500">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
@@ -51,7 +51,7 @@ export function WithBackgroundSubdued() {
 export function WithBorderRadiusRoundedAbove() {
   return (
     <Card roundedAbove="sm">
-      <VerticalStack gap="5">
+      <VerticalStack gap="500">
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
@@ -63,8 +63,8 @@ export function WithBorderRadiusRoundedAbove() {
 
 export function WithResponsivePadding() {
   return (
-    <Card padding={{xs: '5', sm: '6', md: '8'}} roundedAbove="sm">
-      <VerticalStack gap={{xs: '4', sm: '5'}}>
+    <Card padding={{xs: '500', sm: '600', md: '800'}} roundedAbove="sm">
+      <VerticalStack gap={{xs: '400', sm: '500'}}>
         <Text as="h3" variant="headingMd">
           Online store dashboard
         </Text>
@@ -79,11 +79,11 @@ export function WithSubduedSection() {
 
   return (
     <Card roundedAbove="sm">
-      <VerticalStack gap="5">
+      <VerticalStack gap="500">
         <Text as="h3" variant="headingMd">
           Staff accounts
         </Text>
-        <Box paddingBlockEnd="5">
+        <Box paddingBlockEnd="500">
           <List>
             <List.Item>Felix Crafford</List.Item>
             <List.Item>Ezequiel Manno</List.Item>
@@ -91,8 +91,8 @@ export function WithSubduedSection() {
         </Box>
       </VerticalStack>
       <Bleed
-        marginBlockEnd={{xs: '4', sm: '5'}}
-        marginInline={{xs: '4', sm: '5'}}
+        marginBlockEnd={{xs: '400', sm: '500'}}
+        marginInline={{xs: '400', sm: '500'}}
       >
         <Divider />
         <Box
@@ -101,9 +101,9 @@ export function WithSubduedSection() {
               ? 'bg-secondary-experimental'
               : 'bg-subdued'
           }
-          padding={{xs: '4', sm: '5'}}
+          padding={{xs: '400', sm: '500'}}
         >
-          <VerticalStack gap="2">
+          <VerticalStack gap="200">
             <Text variant="headingSm" as="h3">
               Deactivated staff accounts
             </Text>

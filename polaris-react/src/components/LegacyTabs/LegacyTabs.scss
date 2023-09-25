@@ -21,7 +21,7 @@ $item-vertical-padding: $item-min-height * 0.5;
 
   .Title {
     width: 100%;
-    padding: var(--p-space-2) var(--p-space-4);
+    padding: var(--p-space-200) var(--p-space-400);
   }
 }
 
@@ -47,7 +47,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   min-width: 100%; // IE11 fix for overflowing flex items from parent container
   margin-top: var(--p-space-025);
   margin-bottom: calc(-1 * var(--p-space-025));
-  padding: var(--p-space-2) var(--p-space-1);
+  padding: var(--p-space-200) var(--p-space-100);
   outline: none;
   text-align: center;
   white-space: nowrap;
@@ -144,14 +144,14 @@ $item-vertical-padding: $item-min-height * 0.5;
   @include focus-ring;
   border-radius: var(--p-border-radius-1);
   display: block;
-  padding: var(--p-space-2) var(--p-space-4);
+  padding: var(--p-space-200) var(--p-space-400);
   min-width: $item-min-width;
   color: var(--p-color-text-subdued);
 
   &::before {
     content: '';
     position: absolute;
-    bottom: calc(-1 * var(--p-space-2));
+    bottom: calc(-1 * var(--p-space-200));
     left: 0;
     right: 0;
     height: var(--p-border-width-3);
@@ -162,7 +162,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   #{$se23} & {
     color: var(--p-color-text-primary);
     font-weight: var(--p-font-weight-semibold);
-    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    padding: var(--p-space-150) var(--p-space-300);
   }
 }
 
@@ -190,7 +190,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   display: block;
   width: 100%;
   min-height: $item-min-height;
-  padding: $item-vertical-padding var(--p-space-4);
+  padding: $item-vertical-padding var(--p-space-400);
   text-align: left;
   text-decoration: none;
   cursor: pointer;

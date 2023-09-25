@@ -333,8 +333,8 @@ export function Filters({
           align="start"
           blockAlign="center"
           gap={{
-            xs: '4',
-            md: '3',
+            xs: '400',
+            md: '300',
           }}
         >
           <div
@@ -465,13 +465,17 @@ export function Filters({
           </div>
         </div>
         {hideQueryField ? (
-          <Box paddingInlineEnd="3" paddingBlockStart="2" paddingBlockEnd="2">
+          <Box
+            paddingInlineEnd="300"
+            paddingBlockStart="200"
+            paddingBlockEnd="200"
+          >
             <HorizontalStack
               align="start"
               blockAlign="center"
               gap={{
-                xs: '4',
-                md: '3',
+                xs: '400',
+                md: '300',
               }}
             >
               {additionalContent}

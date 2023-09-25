@@ -78,8 +78,8 @@
 
 .Banner {
   // stylelint-disable -- Polaris component custom properties
-  --pc-banner-secondary-action-horizontal-padding: var(--p-space-3);
-  --pc-banner-secondary-action-vertical-padding: var(--p-space-2);
+  --pc-banner-secondary-action-horizontal-padding: var(--p-space-300);
+  --pc-banner-secondary-action-vertical-padding: var(--p-space-200);
   // stylelint-enable
   position: relative;
   display: flex;
@@ -164,27 +164,27 @@
 }
 
 .ContentWrapper {
-  margin-top: calc(-1 * var(--p-space-05));
+  margin-top: calc(-1 * var(--p-space-050));
   flex: 1 1 auto;
 }
 
 .withinContentContainer {
-  padding: var(--p-space-4);
+  padding: var(--p-space-400);
 
   #{$se23} & {
     padding: 0;
   }
 
   .Dismiss {
-    top: var(--p-space-4);
-    right: var(--p-space-3);
+    top: var(--p-space-400);
+    right: var(--p-space-300);
     position: absolute;
   }
 
   @include banner-variants($in-page: false);
 
   + .Banner {
-    margin-top: var(--p-space-2);
+    margin-top: var(--p-space-200);
 
     #{$se23} & {
       box-shadow: none;
@@ -194,7 +194,7 @@
 
 .withinPage {
   border-radius: 0 0 var(--p-border-radius-1) var(--p-border-radius-1);
-  padding: var(--p-space-5);
+  padding: var(--p-space-500);
 
   #{$se23} & {
     padding: 0;
@@ -203,18 +203,18 @@
   @include banner-variants(true);
 
   + .Banner {
-    margin-top: var(--p-space-5);
+    margin-top: var(--p-space-500);
   }
 
   .Dismiss {
-    right: var(--p-space-4);
-    top: var(--p-space-5);
+    right: var(--p-space-400);
+    top: var(--p-space-500);
     position: absolute;
   }
 }
 
 .hasDismiss {
-  padding-right: calc(var(--p-space-8) + var(--p-space-2));
+  padding-right: calc(var(--p-space-800) + var(--p-space-200));
 
   #{$se23} & {
     padding: 0;
@@ -240,7 +240,7 @@
     var(--pc-banner-secondary-action-horizontal-padding);
   // stylelint-enable
   color: var(--p-color-text);
-  padding-left: var(--p-space-2);
+  padding-left: var(--p-space-200);
 
   &:hover > .Text {
     text-decoration: underline;
@@ -298,7 +298,7 @@
 
 .Spinner {
   // stylelint-disable-next-line -- Polaris component custom properties
-  --pc-spinner-size: var(--p-space-5);
+  --pc-spinner-size: var(--p-space-500);
   position: absolute;
   top: 50%;
   left: 50%;

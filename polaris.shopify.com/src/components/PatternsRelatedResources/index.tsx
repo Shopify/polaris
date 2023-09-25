@@ -14,7 +14,7 @@ export default function PatternsRelatedResources({
   children: string;
 }) {
   return (
-    <Stack as="section" gap="4" className={styles.RelatedResources}>
+    <Stack as="section" gap="400" className={styles.RelatedResources}>
       <Heading as="h2" id="related-resources">
         Related resources
       </Heading>

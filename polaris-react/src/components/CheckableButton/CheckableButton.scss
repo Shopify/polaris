@@ -62,10 +62,10 @@
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: var(--p-space-025) 0;
-  margin-left: calc(var(--p-space-5) - var(--p-border-width-2));
+  margin-left: calc(var(--p-space-500) - var(--p-border-width-2));
 
   #{$se23} & {
-    margin-left: calc(var(--p-space-3) + var(--p-space-025));
+    margin-left: calc(var(--p-space-300) + var(--p-space-025));
     // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- se23
     line-height: 18px;
   }

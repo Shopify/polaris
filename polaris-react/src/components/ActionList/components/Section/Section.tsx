@@ -79,16 +79,16 @@ export function Section({
         <Box
           {...(polarisSummerEditions2023
             ? {
-                paddingBlockStart: '3',
-                paddingBlockEnd: '1',
-                paddingInlineStart: '3',
-                paddingInlineEnd: '3',
+                paddingBlockStart: '300',
+                paddingBlockEnd: '100',
+                paddingInlineStart: '300',
+                paddingInlineEnd: '300',
               }
             : {
-                paddingBlockStart: '4',
-                paddingInlineStart: '4',
-                paddingBlockEnd: '2',
-                paddingInlineEnd: '4',
+                paddingBlockStart: '400',
+                paddingInlineStart: '400',
+                paddingBlockEnd: '200',
+                paddingInlineEnd: '400',
               })}
         >
           <Text
@@ -99,7 +99,7 @@ export function Section({
           </Text>
         </Box>
       ) : (
-        <Box padding="2" paddingInlineEnd="1_5-experimental">
+        <Box padding="200" paddingInlineEnd="150">
           {section.title}
         </Box>
       );
@@ -123,14 +123,14 @@ export function Section({
       {titleMarkup}
       <Box
         as={polarisSummerEditions2023 ? 'div' : 'ul'}
-        padding={polarisSummerEditions2023 ? '1_5-experimental' : '2'}
+        padding={polarisSummerEditions2023 ? '150' : '200'}
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         {...(sectionRole && !polarisSummerEditions2023 && {role: sectionRole})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
         {polarisSummerEditions2023 ? (
           <VerticalStack
-            gap="1"
+            gap="100"
             as="ul"
             {...(sectionRole && {role: sectionRole})}
           >
@@ -150,7 +150,7 @@ export function Section({
       borderColor="border-subdued"
       {...(!isFirst && {borderBlockStartWidth: '1'})}
       {...(!section.title && {
-        paddingBlockStart: polarisSummerEditions2023 ? '1_5-experimental' : '2',
+        paddingBlockStart: polarisSummerEditions2023 ? '150' : '200',
       })}
     >
       {sectionMarkup}

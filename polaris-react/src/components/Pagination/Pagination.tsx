@@ -182,10 +182,10 @@ export function Pagination({
         {nextButtonEvents}
         <Box
           background="bg-subdued"
-          paddingBlockStart="1_5-experimental"
-          paddingBlockEnd="1_5-experimental"
-          paddingInlineStart="3"
-          paddingInlineEnd="2"
+          paddingBlockStart="150"
+          paddingBlockEnd="150"
+          paddingInlineStart="300"
+          paddingInlineEnd="200"
         >
           <HorizontalStack
             align={labelMarkup ? 'space-between' : 'end'}
@@ -213,7 +213,7 @@ export function Pagination({
 
   const labelMarkup = label ? (
     <Box
-      padding={polarisSummerEditions2023 ? '3' : undefined}
+      padding={polarisSummerEditions2023 ? '300' : undefined}
       paddingBlockStart="0"
       paddingBlockEnd="0"
     >

@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function HorizontalGridWithVaryingGapExample() {
   return (
     <SpacingBackground>
-      <HorizontalGrid gap="4" columns={3}>
+      <HorizontalGrid gap="400" columns={3}>
         <Placeholder height="320px" />
         <Placeholder height="320px" />
         <Placeholder height="320px" />

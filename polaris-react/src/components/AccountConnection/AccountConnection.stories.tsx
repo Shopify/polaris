@@ -17,19 +17,19 @@ export default {
 export function All() {
   return (
     <>
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
-        <Box paddingBlockEnd="3" />
+        <Box paddingBlockEnd="300" />
       </VerticalStack>
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           With account connected
         </Text>
         <WithAccountConnected />
-        <Box paddingBlockEnd="3" />
+        <Box paddingBlockEnd="300" />
       </VerticalStack>
     </>
   );

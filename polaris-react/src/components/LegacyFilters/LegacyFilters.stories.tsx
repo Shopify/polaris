@@ -344,7 +344,9 @@ export function WithADataTable(_, context) {
   return (
     <div style={{height: '568px'}}>
       <Card padding="0">
-        <Box padding={context.globals.polarisSummerEditions2023 ? '4' : '5'}>
+        <Box
+          padding={context.globals.polarisSummerEditions2023 ? '400' : '500'}
+        >
           <LegacyFilters
             queryValue={queryValue}
             filters={filters}

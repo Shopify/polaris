@@ -12,7 +12,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function VerticalStackWithInlineAlignExample() {
   return (
     <Page>
-      <VerticalStack gap="8">
+      <VerticalStack gap="800">
         <VerticalStack inlineAlign="start">
           <Placeholder height="48px" width="320px" label="Start" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
@@ -45,7 +45,7 @@ const Placeholder = ({
     <div
       style={{
         background: 'var(--p-color-text-info)',
-        padding: '14px var(--p-space-2)',
+        padding: '14px var(--p-space-200)',
         height: height,
         width: width,
         borderBlockEnd: showBorder

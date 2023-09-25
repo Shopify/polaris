@@ -12,7 +12,7 @@
 .MarkdownHeading {
   display: flex;
   align-items: center;
-  gap: var(--p-space-1);
+  gap: var(--p-space-100);
 
   &:hover {
     .MarkdownCopyButton {

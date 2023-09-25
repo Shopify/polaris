@@ -7,7 +7,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function DividerWithBorderColorExample() {
   return (
     <Card>
-      <VerticalStack gap="5">
+      <VerticalStack gap="500">
         <Text as="h1" variant="headingXs">
           Default
         </Text>

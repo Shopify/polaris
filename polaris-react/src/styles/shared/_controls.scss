@@ -3,7 +3,7 @@
 }
 
 @function control-vertical-padding() {
-  @return calc((36px - var(--p-font-line-height-3) - var(--p-space-05)) / 2);
+  @return calc((36px - var(--p-font-line-height-3) - var(--p-space-050)) / 2);
 }
 
 @mixin control-backdrop($style: base) {

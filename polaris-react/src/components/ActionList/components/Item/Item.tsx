@@ -115,7 +115,7 @@ export function Item({
   const contentElement = (
     <HorizontalStack
       blockAlign="center"
-      gap={polarisSummerEditions2023 ? '1_5-experimental' : '4'}
+      gap={polarisSummerEditions2023 ? '150' : '400'}
       wrap={!truncate}
     >
       {prefixMarkup}
