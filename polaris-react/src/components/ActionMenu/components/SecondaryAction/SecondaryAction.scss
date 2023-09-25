@@ -15,18 +15,16 @@
     padding: var(--p-space-1) var(--p-space-3);
     min-height: 28px;
 
-    &:hover {
+    &:is(:hover, :focus) {
       background-color: var(--p-color-bg-strong-hover) !important;
     }
 
-    &:focus,
     &:active {
       background-color: var(--p-color-bg-strong-active) !important;
       box-shadow: var(--p-shadow-inset-md) !important;
     }
 
-    // stylelint-disable-next-line selector-max-specificity -- apply focus styles
-    &:focus:not(:active) {
+    &:focus-visible {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- focus styles */
       @include no-focus-ring;
       outline: var(--p-border-width-2) solid
@@ -59,12 +57,11 @@
       }
 
       // stylelint-disable-next-line selector-max-specificity -- apply hover styles
-      &:hover {
+      &:is(:hover, :focus) {
         background-color: var(--p-color-bg-strong-hover) !important;
       }
 
       // stylelint-disable-next-line selector-max-specificity -- apply focus/active styles
-      &:focus,
       &:active {
         background-color: var(--p-color-bg-strong-active) !important;
       }

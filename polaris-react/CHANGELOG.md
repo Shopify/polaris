@@ -1,5 +1,40 @@
 # Changelog
 
+## 11.20.0
+
+### Minor Changes
+
+- [#10477](https://github.com/Shopify/polaris/pull/10477) [`790a001cd`](https://github.com/Shopify/polaris/commit/790a001cd1942a0cd32e90b98339236fe2800afc) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated semantic `color` tokens
+
+* [#10478](https://github.com/Shopify/polaris/pull/10478) [`8be227e0c`](https://github.com/Shopify/polaris/commit/8be227e0c4ac6a03566beb8b9717a721c2f20b07) Thanks [@MaxCloutier](https://github.com/MaxCloutier)! - Added `allowFiltering` prop on `ActionList`, and `filterActions` prop on Page Header
+
+- [#9445](https://github.com/Shopify/polaris/pull/9445) [`7be9c243a`](https://github.com/Shopify/polaris/commit/7be9c243a9612ea211ac9ea46898241f742072b2) Thanks [@m4thieulavoie](https://github.com/m4thieulavoie)! - Added support for subheaders and selection of a range of `IndexTable.Rows` -- See the [With subheaders](https://polaris.shopify.com/components/tables/index-table) example on polaris.shopify.com for how to properly configure
+  - `IndexTable.Row`
+    - Added support for setting the `indeterminate` value on the `selected` prop
+    - Added the `selectionRange` prop to specify a range of other consecutive, related rows selected when the row is selected
+    - Added the `rowType` prop to indicate the relationship or role of the row's contents (defaults to `data`, `subheader` renders the row to look and behave like the table header row)
+      Added support for setting accessibility attributes on `IndexTable.Cell`
+  - `IndexTable.Cell`
+    - Added the `as` prop to support rendering the cell as a `th` element if it is serving as a subheading cell
+    - Added support for the `headers` attribute to manually associate all headers when the cell is described by more than its column heading
+    - Added support for the `colSpan` attribute to specify the number of the columns that the cell element should extend to
+    - Added support for the `scope` attribute to indicate whether the `th` is a header for a column, row, or group of columns or rows
+
+* [#10490](https://github.com/Shopify/polaris/pull/10490) [`863f15ff2`](https://github.com/Shopify/polaris/commit/863f15ff2e2a8dec499b630b9fd0b9e45409b18b) Thanks [@mrcthms](https://github.com/mrcthms)! - Add new `IndexFiltersManager` for allowing disabling of Page Header actions when in Filtering or EditingColumns mode
+
+- [#10566](https://github.com/Shopify/polaris/pull/10566) [`9fed74317`](https://github.com/Shopify/polaris/commit/9fed743175079a3967c6591e1e4765f2881181e9) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed a bug in `Filters` where changes to the `appliedFilters` prop were not being handled
+
+### Patch Changes
+
+- [#10404](https://github.com/Shopify/polaris/pull/10404) [`5acfcec04`](https://github.com/Shopify/polaris/commit/5acfcec047adeb82fc64666528e44f5050edd089) Thanks [@jesstelford](https://github.com/jesstelford)! - Scoped CSS variables for non-responsive props on `Tooltip`, `RangeSlider`, `ProgressBar`, and `HorizontalStack`.
+
+* [#10582](https://github.com/Shopify/polaris/pull/10582) [`3efbc1b4e`](https://github.com/Shopify/polaris/commit/3efbc1b4ec637f43c4cb97d90830b14e486a1d22) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed the focus states of actions within the Page Header component
+
+- [#10492](https://github.com/Shopify/polaris/pull/10492) [`d5ff72dec`](https://github.com/Shopify/polaris/commit/d5ff72dec72e612472a0f0e980d497ae2e1bfb2d) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated Storybook stories to be wrapped with an empty FrameContext.Provider
+
+- Updated dependencies [[`fe1aac1b5`](https://github.com/Shopify/polaris/commit/fe1aac1b5a9868c3decda53b94150e0242905d04), [`790a001cd`](https://github.com/Shopify/polaris/commit/790a001cd1942a0cd32e90b98339236fe2800afc), [`63cf3ad24`](https://github.com/Shopify/polaris/commit/63cf3ad2405f75589869a6f1aa33c277f559df3c), [`120e96eae`](https://github.com/Shopify/polaris/commit/120e96eaeb8ebda3dcf99d3917167e442bd19cdf)]:
+  - @shopify/polaris-tokens@7.10.0
+
 ## 11.19.0
 
 ### Minor Changes

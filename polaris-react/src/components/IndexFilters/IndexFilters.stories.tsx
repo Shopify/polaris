@@ -10,10 +10,18 @@ import {
   RangeSlider,
   TextField,
   Card,
+  Page,
+  Badge,
+  Button,
+  useSetIndexFiltersMode,
   IndexFiltersMode,
 } from '@shopify/polaris';
+import {
+  ViewMinor,
+  DeleteMinor,
+  MobileVerticalDotsMajor,
+} from '@shopify/polaris-icons';
 
-import {useSetIndexFiltersMode} from './hooks';
 import type {IndexFiltersProps} from './IndexFilters';
 
 export default {
@@ -95,7 +103,11 @@ function Table() {
   );
 }
 
-function BasicExample(props?: Partial<IndexFiltersProps>) {
+function BasicExample(
+  props?: Partial<IndexFiltersProps> & {
+    withFilteringByDefault?: boolean;
+  },
+) {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   const [itemStrings, setItemStrings] = useState([
@@ -184,7 +196,9 @@ function BasicExample(props?: Partial<IndexFiltersProps>) {
     {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
   ];
   const [sortSelected, setSortSelected] = useState(['order asc']);
-  const {mode, setMode} = useSetIndexFiltersMode();
+  const {mode, setMode} = useSetIndexFiltersMode(
+    props?.withFilteringByDefault ? IndexFiltersMode.Filtering : undefined,
+  );
   const onHandleCancel = () => {};
 
   const onHandleSave = async () => {
@@ -385,6 +399,10 @@ export function Default() {
   return <BasicExample />;
 }
 
+export function WithFilteringByDefault() {
+  return <BasicExample withFilteringByDefault />;
+}
+
 export function WithoutKeyboardShortcuts() {
   return <BasicExample disableKeyboardShortcuts />;
 }
@@ -576,292 +594,6 @@ export function WithPinnedFilters() {
         />
       ),
       shortcut: true,
-    },
-    {
-      key: 'moneySpent',
-      label: 'Money spent',
-      filter: (
-        <RangeSlider
-          label="Money spent is between"
-          labelHidden
-          value={moneySpent || [0, 500]}
-          prefix="$"
-          output
-          min={0}
-          max={2000}
-          step={1}
-          onChange={handleMoneySpentChange}
-        />
-      ),
-    },
-  ];
-
-  const appliedFilters: IndexFiltersProps['appliedFilters'] = [];
-  if (!isEmpty(accountStatus)) {
-    const key = 'accountStatus';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
-      onRemove: handleAccountStatusRemove,
-    });
-  }
-  if (!isEmpty(moneySpent)) {
-    const key = 'moneySpent';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
-      onRemove: handleMoneySpentRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
-    });
-  }
-
-  return (
-    <Card padding="0">
-      <IndexFilters
-        sortOptions={sortOptions}
-        sortSelected={sortSelected}
-        queryValue={queryValue}
-        queryPlaceholder="Searching in all"
-        onQueryChange={handleFiltersQueryChange}
-        onQueryClear={() => {}}
-        onSort={setSortSelected}
-        primaryAction={primaryAction}
-        cancelAction={{
-          onAction: onHandleCancel,
-          disabled: false,
-          loading: false,
-        }}
-        tabs={tabs}
-        selected={selected}
-        onSelect={setSelected}
-        canCreateNewView
-        onCreateNewView={onCreateNewView}
-        filters={filters}
-        appliedFilters={appliedFilters}
-        onClearAll={handleFiltersClearAll}
-        mode={mode}
-        setMode={setMode}
-      />
-      <Table />
-    </Card>
-  );
-
-  function disambiguateLabel(key, value) {
-    switch (key) {
-      case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
-      default:
-        return value;
-    }
-  }
-
-  function isEmpty(value) {
-    if (Array.isArray(value)) {
-      return value.length === 0;
-    } else {
-      return value === '' || value == null;
-    }
-  }
-}
-
-export function WithNoPinnedAndPrefilledFilters() {
-  const sleep = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-  const [itemStrings, setItemStrings] = useState([
-    'All',
-    'Unpaid',
-    'Open',
-    'Closed',
-    'Local delivery',
-    'Local pickup',
-  ]);
-  const deleteView = (index: number) => {
-    const newItemStrings = [...itemStrings];
-    newItemStrings.splice(index, 1);
-    setItemStrings(newItemStrings);
-    setSelected(0);
-  };
-
-  const duplicateView = async (name: string) => {
-    setItemStrings([...itemStrings, name]);
-    setSelected(itemStrings.length);
-    await sleep(1);
-    return true;
-  };
-
-  const tabs: TabProps[] = itemStrings.map((item, index) => ({
-    content: item,
-    index,
-    onAction: () => {},
-    id: `${item}-${index}`,
-    isLocked: index === 0,
-    actions:
-      index === 0
-        ? []
-        : [
-            {
-              type: 'rename',
-              onAction: () => {},
-              onPrimaryAction: async (value: string) => {
-                const newItemsStrings = tabs.map((item, idx) => {
-                  if (idx === index) {
-                    return value;
-                  }
-                  return item.content;
-                });
-                await sleep(1);
-                setItemStrings(newItemsStrings);
-                return true;
-              },
-            },
-            {
-              type: 'duplicate',
-              onPrimaryAction: async (name) => {
-                await sleep(1);
-                duplicateView(name);
-                return true;
-              },
-            },
-            {
-              type: 'edit',
-            },
-            {
-              type: 'delete',
-              onPrimaryAction: async (id: string) => {
-                await sleep(1);
-                deleteView(index);
-                return true;
-              },
-            },
-          ],
-  }));
-  const [selected, setSelected] = useState(0);
-  const onCreateNewView = async (value: string) => {
-    await sleep(500);
-    setItemStrings([...itemStrings, value]);
-    setSelected(itemStrings.length);
-    return true;
-  };
-  const sortOptions: IndexFiltersProps['sortOptions'] = [
-    {label: 'Order', value: 'order asc', directionLabel: 'Ascending'},
-    {label: 'Order', value: 'order desc', directionLabel: 'Descending'},
-    {label: 'Customer', value: 'customer asc', directionLabel: 'A-Z'},
-    {label: 'Customer', value: 'customer desc', directionLabel: 'Z-A'},
-    {label: 'Date', value: 'date asc', directionLabel: 'A-Z'},
-    {label: 'Date', value: 'date desc', directionLabel: 'Z-A'},
-    {label: 'Total', value: 'total asc', directionLabel: 'Ascending'},
-    {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
-  ];
-  const [sortSelected, setSortSelected] = useState(['order asc']);
-  const {mode, setMode} = useSetIndexFiltersMode(IndexFiltersMode.Filtering);
-  const onHandleCancel = () => {};
-
-  const onHandleSave = async () => {
-    await sleep(1);
-    return true;
-  };
-
-  const primaryAction: IndexFiltersProps['primaryAction'] =
-    selected === 0
-      ? {
-          type: 'save-as',
-          onAction: onCreateNewView,
-          disabled: false,
-          loading: false,
-        }
-      : {
-          type: 'save',
-          onAction: onHandleSave,
-          disabled: false,
-          loading: false,
-        };
-  const [accountStatus, setAccountStatus] = useState<string[] | null>([
-    'enabled',
-  ]);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('Returning customer');
-  const [queryValue, setQueryValue] = useState('');
-
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
-    [],
-  );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove();
-    handleMoneySpentRemove();
-    handleTaggedWithRemove();
-    handleQueryValueRemove();
-  }, [
-    handleAccountStatusRemove,
-    handleMoneySpentRemove,
-    handleQueryValueRemove,
-    handleTaggedWithRemove,
-  ]);
-
-  const filters = [
-    {
-      key: 'accountStatus',
-      label: 'Account status',
-      filter: (
-        <ChoiceList
-          title="Account status"
-          titleHidden
-          choices={[
-            {label: 'Enabled', value: 'enabled'},
-            {label: 'Not invited', value: 'not invited'},
-            {label: 'Invited', value: 'invited'},
-            {label: 'Declined', value: 'declined'},
-          ]}
-          selected={accountStatus || []}
-          onChange={handleAccountStatusChange}
-          allowMultiple
-        />
-      ),
-      pinned: false,
-    },
-    {
-      key: 'taggedWith',
-      label: 'Tagged with',
-      filter: (
-        <TextField
-          label="Tagged with"
-          value={taggedWith}
-          onChange={handleTaggedWithChange}
-          autoComplete="off"
-          labelHidden
-        />
-      ),
-      pinned: false,
     },
     {
       key: 'moneySpent',
@@ -1388,5 +1120,109 @@ export function WithQueryFieldAndFiltersHidden() {
       />
       <Table />
     </Card>
+  );
+}
+
+export function WrappedInAPage() {
+  return (
+    <Page
+      backAction={{content: 'Products', url: '#'}}
+      title="3/4 inch Leather pet collar"
+      titleMetadata={<Badge status="success">Paid</Badge>}
+      subtitle="Perfect for any pet"
+      compactTitle
+      primaryAction={{content: 'Save'}}
+      secondaryActions={[
+        {
+          content: 'Delete',
+          destructive: true,
+          icon: DeleteMinor,
+          accessibilityLabel: 'Delete action label',
+          onAction: () => console.log('Delete action'),
+        },
+        {
+          content: 'View on your store',
+          icon: ViewMinor,
+          onAction: () => console.log('View on your store action'),
+        },
+      ]}
+      actionGroups={[
+        {
+          title: 'Promote',
+          icon: MobileVerticalDotsMajor,
+          actions: [
+            {
+              content: 'Share on Facebook',
+              accessibilityLabel: 'Individual action label',
+              onAction: () => console.log('Share on Facebook action'),
+            },
+          ],
+        },
+      ]}
+      pagination={{
+        hasPrevious: true,
+        hasNext: true,
+      }}
+    >
+      <BasicExample />
+    </Page>
+  );
+}
+
+export function WrappedInAPageWithCustomActions() {
+  const {mode} = useSetIndexFiltersMode();
+  const shouldDisableAction = mode !== IndexFiltersMode.Default;
+  return (
+    <Page
+      backAction={{content: 'Products', url: '#'}}
+      title="3/4 inch Leather pet collar"
+      titleMetadata={<Badge status="success">Paid</Badge>}
+      subtitle="Perfect for any pet"
+      compactTitle
+      primaryAction={
+        <Button
+          primary
+          disabled={shouldDisableAction}
+          connectedDisclosure={{
+            disabled: shouldDisableAction,
+            accessibilityLabel: 'Other save actions',
+            actions: [{content: 'Save as new'}],
+          }}
+        >
+          Save
+        </Button>
+      }
+      secondaryActions={
+        <Button
+          disabled={shouldDisableAction}
+          connectedDisclosure={{
+            disabled: shouldDisableAction,
+            accessibilityLabel: 'Other save actions',
+            actions: [{content: 'Rename'}],
+          }}
+        >
+          Update
+        </Button>
+      }
+      actionGroups={[
+        {
+          title: 'Promote',
+          icon: MobileVerticalDotsMajor,
+          actions: [
+            {
+              content: 'Share on Facebook',
+              accessibilityLabel: 'Individual action label',
+              onAction: () => console.log('Share on Facebook action'),
+            },
+          ],
+        },
+      ]}
+      pagination={{
+        hasPrevious: true,
+        hasNext: true,
+      }}
+    >
+      <BasicExample />
+    </Page>
   );
 }

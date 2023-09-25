@@ -12,6 +12,7 @@ import {Tooltip} from '../../../../Tooltip';
 import type {LinkAction, MenuActionDescriptor} from '../../../../../types';
 import {Header} from '../Header';
 import type {HeaderProps} from '../Header';
+import {IndexFiltersMode} from '../../../../../utilities/index-filters';
 
 describe('<Header />', () => {
   const mockProps: HeaderProps = {
@@ -114,6 +115,26 @@ describe('<Header />', () => {
       });
     });
 
+    it('renders a disabled button when a non-default IndexFiltersMode is set', () => {
+      const primaryAction: HeaderProps['primaryAction'] = {
+        content: buttonContent,
+      };
+
+      const header = mountWithApp(
+        <Header {...mockProps} primaryAction={primaryAction} />,
+        {
+          indexFilters: {
+            mode: IndexFiltersMode.Filtering,
+          },
+        },
+      );
+
+      expect(header).toContainReactComponent(Button, {
+        disabled: true,
+        children: buttonContent,
+      });
+    });
+
     it('renders a `ReactNode`', () => {
       const PrimaryAction = () => null;
 
@@ -152,6 +173,27 @@ describe('<Header />', () => {
         hasNext: true,
       });
     });
+
+    it('adds false values for hasNext and hasPrevious when a non-default IndexFiltersMode is set', () => {
+      const pagination = {
+        hasNext: true,
+        hasPrevious: true,
+      };
+
+      const header = mountWithApp(
+        <Header {...mockProps} pagination={pagination} />,
+        {
+          indexFilters: {
+            mode: IndexFiltersMode.Filtering,
+          },
+        },
+      );
+
+      expect(header).toContainReactComponent(Pagination, {
+        hasNext: false,
+        hasPrevious: false,
+      });
+    });
   });
 
   describe('actionGroups', () => {
@@ -177,6 +219,24 @@ describe('<Header />', () => {
 
       expect(wrapper).toContainReactComponent(ActionMenu, {
         groups: mockActionGroups,
+      });
+    });
+
+    it('disables actions within the actionGroups when a non-default IndexFiltersMode is set', () => {
+      const wrapper = mountWithApp(
+        <Header {...mockProps} actionGroups={mockActionGroups} />,
+        {
+          indexFilters: {
+            mode: IndexFiltersMode.Filtering,
+          },
+        },
+      );
+
+      expect(wrapper).toContainReactComponent(ActionMenu, {
+        groups: mockActionGroups.map((actionGroup) => ({
+          ...actionGroup,
+          disabled: true,
+        })),
       });
     });
   });

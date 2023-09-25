@@ -3,13 +3,13 @@
 
 .Subnav {
   --border: #e3e3e3;
-  --icon: #4A4A4A;
+  --icon: #4a4a4a;
   --surface: #ffffff;
   margin-bottom: 1.5rem;
 
   @include dark-mode {
     --border: #373737;
-    --icon: #E7E7E7;
+    --icon: #e7e7e7;
     --surface: #000000;
   }
 }
@@ -41,10 +41,6 @@
 
   &:hover,
   &.Item--active {
-    --surface: #f1f1f1;
-
-    @include dark-mode {
-      --surface: #373737;
-    }
+    background-color: var(--surface-active);
   }
 }

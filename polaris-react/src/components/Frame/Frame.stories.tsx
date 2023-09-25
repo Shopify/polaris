@@ -357,7 +357,6 @@ function InAnApplicationComponent() {
             },
           },
         }}
-        features={{polarisSummerEditions2023: true}}
       >
         <Frame
           logo={logo}
@@ -701,7 +700,6 @@ function WithAnOffsetComponent() {
             },
           },
         }}
-        features={{polarisSummerEditions2023: true}}
       >
         <Frame
           logo={logo}
@@ -1060,7 +1058,6 @@ function WithSidebarEnabled() {
             },
           },
         }}
-        features={{polarisSummerEditions2023: true}}
       >
         <Frame
           logo={logo}

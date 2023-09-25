@@ -136,3 +136,7 @@ Polaris v12.0.0 ([full release notes](https://github.com/Shopify/polaris/release
 **DescriptionList**
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="DescriptionList" --from="spacing" --to="gap"`
+
+**AppProvider**
+
+The `AppProvider`'s `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. You should be able to remove the `features` prop completely from your Polaris `AppProvider` since there aren't any feature flags in Polaris for v12.
