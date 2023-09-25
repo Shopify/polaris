@@ -76,7 +76,7 @@ keywords:
 
 <Card>
 
-  <Grid gap='4' col>
+  <Grid gap='4'>
    {/* Consistent */}
    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
@@ -124,6 +124,43 @@ keywords:
    </Grid.Cell>
   </Grid>
 
+</Card>
+
+{/* Universal */}
+
+<Card>
+
+  <Grid gap='4'>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+    ## Universal
+
+    Universally recognized symbols and metaphors ensure icons are easily understood by a broad user base.
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+      <Do>
+        ![](/images/design/icons/icons-overview-universal-1@2x.png)
+
+        Leverage universally recognized symbols and metaphors to create new icons.
+
+      </Do>
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+      <Dont>
+        ![](/images/design/icons/icons-overview-universal-2@2x.png)
+
+        Rely on cultural-specific, niche symbols or outdated metaphors may not be understood by all users.
+
+      </Dont>
+    </Grid.Cell>
+
+  </Grid>
 </Card>
 
 </Stack>
