@@ -1,4 +1,4 @@
-import {Tag, LegacyStack} from '@shopify/polaris';
+import {Tag, LegacyStack, Card} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -21,9 +21,9 @@ function RemovableTagExample() {
   );
 
   const tagMarkup = selectedTags.map((option) => (
-    <Tag key={option} onRemove={removeTag(option)}>
-      {option}
-    </Tag>
+    <Card key={option}>
+      <Tag onRemove={removeTag(option)}>{option}</Tag>
+    </Card>
   ));
 
   return <LegacyStack spacing="tight">{tagMarkup}</LegacyStack>;
