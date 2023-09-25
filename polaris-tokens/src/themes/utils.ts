@@ -54,3 +54,27 @@ export function extractMetaThemeValues<T extends MetaThemeShape>(metaTheme: T) {
     ),
   ) as ExtractMetaThemeValues<T>;
 }
+
+export function resolveMetaThemeRefs<T extends MetaThemeShape>(
+  metaTheme: T,
+): T {
+  return Object.fromEntries(
+    Object.entries(metaTheme).map(([tokenGroupName, metaTokenGroup]) => [
+      tokenGroupName,
+      Object.fromEntries(
+        Object.entries(metaTokenGroup).map(([tokenName, tokenProperties]) => {
+          let tokenValue = tokenProperties.value;
+
+          if (tokenValue.startsWith('var(--p-')) {
+            const tokenNameRef = tokenValue.slice(8, -1);
+            const tokenGroupNameRef = tokenNameRef.split('-')[0];
+
+            tokenValue = metaTheme[tokenGroupNameRef][tokenNameRef].value;
+          }
+
+          return [tokenName, {...tokenProperties, value: tokenValue}];
+        }),
+      ),
+    ]),
+  ) as T;
+}
