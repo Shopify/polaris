@@ -9,18 +9,18 @@ type FontSizeScaleExperimental = Experimental<'70' | '80'>;
 
 export type FontSizeScale =
   | '275'
+  | '300'
   | '325'
   | '350'
+  | '400'
+  | '500'
+  | '600'
   | '750'
   | '900'
   | '1000'
   | '75'
   | '100'
   | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
   | '700'
   | FontSizeScaleExperimental;
 
@@ -70,11 +70,23 @@ export const font: {
   'font-size-275': {
     value: size[275],
   },
+  'font-size-300': {
+    value: size[300],
+  },
   'font-size-325': {
     value: size[325],
   },
   'font-size-350': {
     value: size[350],
+  },
+  'font-size-400': {
+    value: size[400],
+  },
+  'font-size-500': {
+    value: size[500],
+  },
+  'font-size-600': {
+    value: size[600],
   },
   'font-size-750': {
     value: size[750],
@@ -100,29 +112,17 @@ export const font: {
   'font-size-200': {
     value: '16px',
   },
-  'font-size-300': {
-    value: '20px',
-  },
-  'font-size-400': {
-    value: '24px',
-  },
-  'font-size-500': {
-    value: '30px',
-  },
-  'font-size-600': {
-    value: '36px',
-  },
   'font-size-700': {
     value: '40px',
   },
   'font-weight-regular': {
-    value: '400',
+    value: '450',
   },
   'font-weight-medium': {
-    value: '500',
+    value: '550',
   },
   'font-weight-semibold': {
-    value: '600',
+    value: '650',
   },
   'font-weight-bold': {
     value: '700',
