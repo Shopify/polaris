@@ -510,8 +510,8 @@ After migrating use the following RegExp to check for any additional instances o
 To replace these deprecated `space` custom properties, you can run the [v12-styles-replace-custom-property-space](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-space) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
-- padding: var(--p-space-XX);
-+ padding: var(--p-space-XX);
+- padding: var(--p-space-1);
++ padding: var(--p-space-100);
 ```
 
 ```sh
@@ -523,18 +523,185 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
 After migrating use the following RegExp to check for any additional instances of `space` custom properties across all file types:
 
 ```
---p-space-XX|--p-space-XX|...
+(?:--p-space-05|--p-space-1|--p-space-1_5-experimental|--p-space-2|--p-space-3|--p-space-4|--p-space-5|--p-space-6|--p-space-8|--p-space-10|--p-space-12|--p-space-16|--p-space-20|--p-space-24|--p-space-28|--p-space-32)(?![\w-])
 ```
 
 ```
-<COMPONENT_NAME[^>\w](?:[^>]|\n)*?PROP_NAME(?!="XX)
+<Tooltip[^>\w](?:[^>]|\n)*?padding
+```
+
+```
+<HorizontalGrid[^>\w](?:[^>]|\n)*?gap
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?padding
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?paddingBlockStart
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?paddingBlockEnd
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?paddingInlineStart
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?paddingInlineEnd
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?insetBlockStart
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?insetBlockEnd
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?insetInlineStart
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?insetInlineEnd
+```
+
+```
+<VerticalStack[^>\w](?:[^>]|\n)*?gap
+```
+
+```
+<HorizontalStack[^>\w](?:[^>]|\n)*?gap
+```
+
+```
+<Choice[^>\w](?:[^>]|\n)*?bleed
+```
+
+```
+<Choice[^>\w](?:[^>]|\n)*?bleedBlockStart
+```
+
+```
+<Choice[^>\w](?:[^>]|\n)*?bleedBlockEnd
+```
+
+```
+<Choice[^>\w](?:[^>]|\n)*?bleedInlineStart
+```
+
+```
+<Choice[^>\w](?:[^>]|\n)*?bleedInlineEnd
+```
+
+```
+<RadioButton[^>\w](?:[^>]|\n)*?bleed
+```
+
+```
+<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockStart
+```
+
+```
+<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockEnd
+```
+
+```
+<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineStart
+```
+
+```
+<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineEnd
+```
+
+```
+<Checkbox[^>\w](?:[^>]|\n)*?bleed
+```
+
+```
+<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockStart
+```
+
+```
+<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd
+```
+
+```
+<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineStart
+```
+
+```
+<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineEnd
+```
+
+```
+<Stack[^>\w](?:[^>]|\n)*?gap
+```
+
+```
+<Grid[^>\w](?:[^>]|\n)*?gap
+```
+
+```
+<Grid[^>\w](?:[^>]|\n)*?gapX
+```
+
+```
+<Grid[^>\w](?:[^>]|\n)*?gapY
+```
+
+```
+<Card[^>\w](?:[^>]|\n)*?padding
+```
+
+```
+<Bleed[^>\w](?:[^>]|\n)*?marginInline
+```
+
+```
+<Bleed[^>\w](?:[^>]|\n)*?marginBlock
+```
+
+```
+<Bleed[^>\w](?:[^>]|\n)*?marginBlockStart
+```
+
+```
+<Bleed[^>\w](?:[^>]|\n)*?marginBlockEnd
+```
+
+```
+<Bleed[^>\w](?:[^>]|\n)*?marginInlineStart
+```
+
+```
+<Bleed[^>\w](?:[^>]|\n)*?marginInlineEnd
 ```
 
 #### Replacement maps
 
-| Deprecated Token | Replacement Value |
-| ---------------- | ----------------- |
-| `--p-space-XX`   | `--p-space-XX`    |
+| Deprecated Token             | Replacement Value |
+| ---------------------------- | ----------------- |
+| `--p-space-05`               | `--p-space-050`   |
+| `--p-space-1`                | `--p-space-100`   |
+| `--p-space-1_5-experimental` | `--p-space-150`   |
+| `--p-space-2`                | `--p-space-200`   |
+| `--p-space-3`                | `--p-space-300`   |
+| `--p-space-4`                | `--p-space-400`   |
+| `--p-space-5`                | `--p-space-500`   |
+| `--p-space-6`                | `--p-space-600`   |
+| `--p-space-8`                | `--p-space-800`   |
+| `--p-space-10`               | `--p-space-1000`  |
+| `--p-space-12`               | `--p-space-1200`  |
+| `--p-space-16`               | `--p-space-1600`  |
+| `--p-space-20`               | `--p-space-2000`  |
+| `--p-space-24`               | `--p-space-2400`  |
+| `--p-space-28`               | `--p-space-2800`  |
+| `--p-space-32`               | `--p-space-3200`  |
 
 ### Recommended token migration workflow
 
