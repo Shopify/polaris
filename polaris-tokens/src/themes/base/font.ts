@@ -10,18 +10,18 @@ type FontSizeScaleExperimental = Experimental<'70' | '80'>;
 export type FontSizePrefix = 'font-size';
 export type FontSizeScale =
   | '275'
+  | '300'
   | '325'
   | '350'
+  | '400'
+  | '500'
+  | '600'
   | '750'
   | '900'
   | '1000'
   | '75'
   | '100'
   | '200'
-  | '300'
-  | '400'
-  | '500'
-  | '600'
   | '700'
   | FontSizeScaleExperimental;
 
@@ -84,11 +84,23 @@ export const font: {
   'font-size-275': {
     value: createVar('font-size-70-experimental'),
   },
+  'font-size-300': {
+    value: '12px',
+  },
   'font-size-325': {
     value: createVar('font-size-80-experimental'),
   },
   'font-size-350': {
     value: createVar('font-size-100'),
+  },
+  'font-size-400': {
+    value: '16px',
+  },
+  'font-size-500': {
+    value: '20px',
+  },
+  'font-size-600': {
+    value: '24px',
   },
   'font-size-750': {
     value: createVar('font-size-500'),
@@ -114,29 +126,17 @@ export const font: {
   'font-size-200': {
     value: '16px',
   },
-  'font-size-300': {
-    value: '20px',
-  },
-  'font-size-400': {
-    value: '24px',
-  },
-  'font-size-500': {
-    value: '28px',
-  },
-  'font-size-600': {
-    value: '32px',
-  },
   'font-size-700': {
     value: '40px',
   },
   'font-weight-regular': {
-    value: '400',
+    value: '450',
   },
   'font-weight-medium': {
-    value: '500',
+    value: '550',
   },
   'font-weight-semibold': {
-    value: '600',
+    value: '650',
   },
   'font-weight-bold': {
     value: '700',
