@@ -92,27 +92,6 @@ export const border: {
   'border-width-100': {
     value: size[100],
   },
-  'border-width-1': {
-    value: '1px',
-  },
-  'border-width-2': {
-    value: '2px',
-  },
-  'border-width-3': {
-    value: '3px',
-  },
-  'border-width-4': {
-    value: '4px',
-  },
-  'border-width-5': {
-    value: '5px',
-  },
-  'border-width-1-experimental': {
-    value: '0.66px',
-  },
-  'border-width-2-experimental': {
-    value: '1px',
-  },
 };
 
 export function createVar(borderTokenName: BorderTokenName) {
