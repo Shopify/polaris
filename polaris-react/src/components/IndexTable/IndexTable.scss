@@ -335,7 +335,7 @@ $loading-panel-height: 53px;
     .TableCell-first,
     .TableCell-first + .TableCell,
     .TableCell:last-child {
-      background: var(--p-color-bg-secondary-experimental);
+      background: var(--p-color-bg-subdued);
     }
   }
 
@@ -852,7 +852,7 @@ $loading-panel-height: 53px;
 .StickyTableHeader-isSticky {
   visibility: visible;
   box-shadow: var(--p-shadow-xs);
-  background-color: var(--p-color-bg-secondary-experimental);
+  background-color: var(--p-color-bg-subdued);
 }
 
 .IndexTable:hover {
