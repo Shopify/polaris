@@ -11,9 +11,8 @@ export type BorderRadiusScale =
   | '300'
   | '400'
   | '500'
-  | '750';
-
-
+  | '750'
+  | 'full';
 
 export type BorderWidthScale = '0165' | '025' | '050' | '100';
 
