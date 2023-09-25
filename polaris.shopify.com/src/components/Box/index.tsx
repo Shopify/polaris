@@ -16,6 +16,12 @@ export interface BoxProps {
   paddingInlineEnd?: ResponsiveProp<SpaceScale>;
   paddingBlockStart?: ResponsiveProp<SpaceScale>;
   paddingBlockEnd?: ResponsiveProp<SpaceScale>;
+  /** Minimum height of container */
+  minHeight?: string;
+  /** Minimum width of container */
+  minWidth?: string;
+  /** Maximum width of container */
+  maxWidth?: string;
 }
 
 export type OwnProps<T> = Polymorphic.OwnProps<T>;
@@ -27,13 +33,27 @@ type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxProps>;
  * built. It renders a `div` element by default, customisable via the `as` prop.
  */
 export const Box = forwardRef(
-  ({as: Tag = 'div', className, padding = '0', ...props}, forwardedRef) => {
+  (
+    {
+      as: Tag = 'div',
+      className,
+      minHeight,
+      minWidth,
+      maxWidth,
+      padding = '0',
+      ...props
+    },
+    forwardedRef,
+  ) => {
     const style = {
       ...getResponsiveProps('box', 'padding-block-start', 'space', padding),
       ...getResponsiveProps('box', 'padding-block-end', 'space', padding),
       ...getResponsiveProps('box', 'padding-inline-start', 'space', padding),
       ...getResponsiveProps('box', 'padding-inline-end', 'space', padding),
-    };
+      '--pc-box-min-height': minHeight,
+      '--px-box-min-width': minWidth,
+      '--px-box-max-width': maxWidth,
+    } as React.CSSProperties;
     return (
       <Tag
         style={style}
