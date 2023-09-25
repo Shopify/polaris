@@ -17,7 +17,7 @@
     top: 100%;
     max-width: $search-max-width;
     margin: var(--p-space-100) var(--p-space-500) 0;
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
   }
 
   @media #{$p-breakpoints-md-up} {

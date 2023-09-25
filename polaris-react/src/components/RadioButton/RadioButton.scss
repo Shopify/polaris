@@ -17,7 +17,7 @@
     #{$se23} & {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 radio overrides */
       @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
+      outline: var(--p-border-width-050) solid
         var(--p-color-border-interactive-focus);
       outline-offset: var(--p-space-025);
     }
@@ -73,7 +73,7 @@
     .ChoiceLabel:active & {
       #{$se23} & {
         border-color: var(--p-color-bg-primary);
-        border-width: var(--p-border-width-2);
+        border-width: var(--p-border-width-050);
       }
     }
   }
@@ -112,7 +112,7 @@
 
 .Backdrop {
   #{$se23} & {
-    border-width: var(--p-border-width-1-experimental);
+    border-width: var(--p-border-width-0165);
     background-color: var(--p-color-bg-input);
     transition: border-color var(--p-motion-duration-100)
       var(--p-motion-ease-out);
@@ -137,7 +137,7 @@
   display: block;
   width: 100%;
   height: 100%;
-  border: var(--p-border-width-2) solid var(--p-color-border-input);
+  border: var(--p-border-width-050) solid var(--p-color-border-input);
   border-radius: var(--p-border-radius-full);
   background-color: var(--p-color-bg);
   transition: border-color var(--p-motion-duration-100) var(--p-motion-ease);

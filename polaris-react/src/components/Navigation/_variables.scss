@@ -61,7 +61,7 @@ $nav-animation-variables: (
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
       @include no-focus-ring;
       z-index: var(--p-z-index-1);
-      outline: var(--p-border-width-2) solid
+      outline: var(--p-border-width-050) solid
         var(--p-color-border-interactive-focus);
     }
   }
@@ -94,7 +94,7 @@ $nav-animation-variables: (
 
     img {
       #{$se23} & {
-        border-radius: var(--p-border-radius-1);
+        border-radius: var(--p-border-radius-100);
       }
     }
   }

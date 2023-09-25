@@ -54,7 +54,7 @@ $bulk-actions-button-stacking-order: (
   justify-content: flex-start;
   padding: var(--p-space-400);
   background: var(--p-color-bg);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
   box-shadow: var(--p-shadow-md), var(--p-shadow-xl);
   max-width: 100%;
   pointer-events: auto;
@@ -110,7 +110,7 @@ $bulk-actions-button-stacking-order: (
       &:focus-visible:not(:active) {
         /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
         @include no-focus-ring;
-        outline: var(--p-border-width-2) solid
+        outline: var(--p-border-width-050) solid
           var(--p-color-border-interactive-focus);
         outline-offset: var(--p-space-050);
       }

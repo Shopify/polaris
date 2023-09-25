@@ -15,9 +15,9 @@
   padding: $vertical-padding var(--p-space-400);
   background: var(--p-color-bg);
   box-shadow: var(--p-shadow-sm);
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   color: var(--p-color-text);
-  border: var(--p-border-width-1) solid var(--p-color-border-strong);
+  border: var(--p-border-width-025) solid var(--p-color-border-strong);
   line-height: 1;
   text-align: center;
   cursor: pointer;
@@ -29,7 +29,7 @@
     min-height: 28px;
     min-width: 28px;
     padding: var(--p-space-150) var(--p-space-300);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
     border: none;
   }
 
@@ -39,7 +39,7 @@
 
   &:hover {
     background: var(--p-color-bg-hover);
-    outline: var(--p-border-width-1) solid transparent;
+    outline: var(--p-border-width-025) solid transparent;
   }
 
   &:focus-visible {
@@ -51,7 +51,7 @@
     #{$se23} & {
       // stylelint-disable-next-line -- se23 temporary styles
       @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
+      outline: var(--p-border-width-050) solid
         var(--p-color-border-interactive-focus);
       outline-offset: var(--p-space-025);
     }
@@ -92,7 +92,7 @@
   }
 
   @media (-ms-high-contrast: active) {
-    border: var(--p-border-width-1) solid windowText;
+    border: var(--p-border-width-025) solid windowText;
   }
 }
 
@@ -118,7 +118,7 @@
   padding: var(--p-space-050) var(--p-space-100);
   margin: calc(-1 * var(--p-space-050)) calc(-1 * var(--p-space-100));
   background: transparent;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
 }
 
 @mixin unstyled-button() {
