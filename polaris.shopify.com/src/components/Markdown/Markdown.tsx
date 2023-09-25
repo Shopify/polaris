@@ -280,8 +280,8 @@ export const HeadingWithCopyButton = forwardRef(
         ? window.location.origin
         : 'https://polaris.shopify.com';
     const path = typeof window !== 'undefined' ? window.location.pathname : '';
-    const [copy, didJustCopy] = useCopyToClipboard(`${origin}${path}#${id}`);
-
+    const url = `${origin}${path}#${id}`;
+    const [copy, didJustCopy] = useCopyToClipboard(url);
     const copyButton =
       // remark-slug slugifies the header content before next-mdx-remote has a
       // chance to replace the global scope variables with their actual value,
@@ -292,7 +292,15 @@ export const HeadingWithCopyButton = forwardRef(
           ariaLabel="Copy to clipboard"
           renderContent={() => <p>{didJustCopy ? 'Copied' : 'Copy'}</p>}
         >
-          <button className={styles.MarkdownCopyButton} onClick={copy}>
+          <button
+            className={styles.MarkdownCopyButton}
+            onClick={() => {
+              copy();
+              if (typeof window !== 'undefined') {
+                window.history.pushState(id, '', url);
+              }
+            }}
+          >
             <Icon source={ClipboardMinor} width={16} height={16} />
           </button>
         </Tooltip>

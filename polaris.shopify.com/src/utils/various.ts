@@ -62,10 +62,6 @@ export const className = (...classNames: ClassName[]): string => {
     .join(' ');
 };
 
-export const variationName = (name: string, value: string) => {
-  return `${name}${value.charAt(0).toUpperCase()}${value.slice(1)}`;
-};
-
 export const toPascalCase = (str: string): string =>
   (str.match(/[a-zA-Z0-9]+/g) || [])
     .map((w) => `${w.charAt(0).toUpperCase()}${w.slice(1)}`)
@@ -138,3 +134,19 @@ export function getResponsiveProps<T = string>(
     ]),
   ) as unknown as ResponsiveVariables<T>;
 }
+export const viewTransition = (callback: () => void | Promise<unknown>) => {
+  // @ts-ignore is experimental and not typed yet
+  if (document.startViewTransition) {
+    // @ts-ignore exists in Chrome 111+
+    return document.startViewTransition(callback);
+  } else {
+    callback();
+
+    const resolved = Promise.resolve();
+
+    return {
+      ready: resolved,
+      finished: resolved,
+    };
+  }
+};

@@ -12,4 +12,11 @@
     'padding-inline-start'
   );
   @include responsive-props('box', 'padding-inline-end', 'padding-inline-end');
+
+  --pc-box-min-height: initial;
+  --pc-box-min-width: initial;
+  --pc-box-max-width: initial;
+  min-height: var(--pc-box-min-height);
+  min-width: var(--pc-box-min-width);
+  max-width: var(--pc-box-max-width);
 }

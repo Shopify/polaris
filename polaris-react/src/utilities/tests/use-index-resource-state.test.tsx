@@ -496,6 +496,92 @@ describe('useIndexResourceState', () => {
         });
       });
     });
+
+    describe('SelectionType.Range', () => {
+      describe('with a custom resource filter', () => {
+        it('only selects resources that match the filter', () => {
+          const idOne = '1';
+          const idTwo = '2';
+          const idThree = '3';
+          const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
+          const customResoureFilter = (item: typeof resources[0]) => {
+            return item.id !== idOne;
+          };
+          const mockComponent = mountWithApp(
+            <MockComponent
+              resources={resources}
+              options={{resourceFilter: customResoureFilter}}
+            />,
+          );
+
+          mockComponent
+            .find(TypedChild)!
+            .trigger('onClick', SelectionType.Range, true, [0, 2]);
+
+          expect(mockComponent).toContainReactComponent(TypedChild, {
+            selectedResources: [idTwo, idThree],
+          });
+        });
+      });
+
+      it('selects all resources within range when none are selected', () => {
+        const idOne = '1';
+        const idTwo = '2';
+        const idThree = '3';
+        const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
+        const mockComponent = mountWithApp(
+          <MockComponent resources={resources} />,
+        );
+
+        mockComponent
+          .find(TypedChild)!
+          .trigger('onClick', SelectionType.Range, true, [0, 2]);
+
+        expect(mockComponent).toContainReactComponent(TypedChild, {
+          selectedResources: [idOne, idTwo, idThree],
+        });
+      });
+
+      it('selects all resources within range when some are selected', () => {
+        const idOne = '1';
+        const idTwo = '2';
+        const idThree = '3';
+        const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
+        const options = {selectedResources: [idOne]};
+        const mockComponent = mountWithApp(
+          <MockComponent resources={resources} options={options} />,
+        );
+
+        mockComponent
+          .find(TypedChild)!
+          .trigger('onClick', SelectionType.Range, true, [0, 2]);
+
+        expect(mockComponent).toContainReactComponent(TypedChild, {
+          selectedResources: [idOne, idTwo, idThree],
+        });
+      });
+
+      it('deselects all resources within range when all are selected', () => {
+        const idOne = '1';
+        const idTwo = '2';
+        const idThree = '3';
+        const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
+        const mockComponent = mountWithApp(
+          <MockComponent
+            resources={resources}
+            options={{selectedResources: [idOne, idTwo, idThree]}}
+          />,
+        );
+
+        mockComponent
+          .find(TypedChild)!
+          .trigger('onClick', SelectionType.Range, false, [0, 2]);
+
+        expect(mockComponent).toContainReactComponent(TypedChild, {
+          selectedResources: [],
+        });
+      });
+    });
   });
 
   describe('clearSelection', () => {
