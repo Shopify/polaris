@@ -16,7 +16,7 @@
   user-select: none;
   text-decoration: none;
   text-align: left;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   width: auto;
 
   #{$se23} & {
@@ -62,7 +62,7 @@
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: var(--p-space-025) 0;
-  margin-left: calc(var(--p-space-500) - var(--p-border-width-2));
+  margin-left: calc(var(--p-space-500) - var(--p-border-width-050));
 
   #{$se23} & {
     margin-left: calc(var(--p-space-300) + var(--p-space-025));
