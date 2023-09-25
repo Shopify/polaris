@@ -80,7 +80,7 @@ describe('Card', () => {
 
       expect(card).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-box-border-radius': 'var(--p-border-radius-2)',
+          '--pc-box-border-radius': 'var(--p-border-radius-200)',
         }),
       });
     });

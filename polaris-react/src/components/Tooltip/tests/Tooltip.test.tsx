@@ -366,7 +366,7 @@ describe('<Tooltip />', () => {
 
       expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-tooltip-border-radius': 'var(--p-border-radius-2)',
+          '--pc-tooltip-border-radius': 'var(--p-border-radius-200)',
         }) as React.CSSProperties,
       });
     });
@@ -381,7 +381,7 @@ describe('<Tooltip />', () => {
       findWrapperComponent(tooltip)!.trigger('onMouseOver');
       expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-tooltip-border-radius': 'var(--p-border-radius-2)',
+          '--pc-tooltip-border-radius': 'var(--p-border-radius-200)',
         }) as React.CSSProperties,
       });
     });
@@ -525,7 +525,7 @@ describe('<Tooltip />', () => {
 
       expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-tooltip-border-radius': 'var(--p-border-radius-1)',
+          '--pc-tooltip-border-radius': 'var(--p-border-radius-100)',
         }) as React.CSSProperties,
       });
     });
