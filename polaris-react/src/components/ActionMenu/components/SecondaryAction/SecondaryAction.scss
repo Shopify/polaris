@@ -63,17 +63,16 @@
       background-color: var(--p-color-bg-strong) !important;
       border-radius: var(--p-border-radius-200) !important;
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:hover {
+      &:is(:hover, :focus) {
         background-color: var(--p-color-bg-strong-hover) !important;
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:focus,
       &:active {
         background-color: var(--p-color-bg-strong-active) !important;
         box-shadow: var(--p-shadow-inset-md) !important;
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
-      &:focus:not(:active) {
+      &:focus-visible {
         /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
         @include no-focus-ring;
         outline: var(--p-border-width-050) solid
@@ -94,11 +93,10 @@
       button {
         color: var(--p-color-text-critical) !important;
         /* stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 */
-        &:hover {
+        &:is(:hover, :focus) {
           background-color: var(--p-color-bg-strong-hover) !important;
         }
         /* stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 */
-        &:focus,
         &:active {
           background-color: var(--p-color-bg-strong-active) !important;
         }
