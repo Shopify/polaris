@@ -399,8 +399,13 @@ After migrating use the following RegExp to check for any additional instances o
 To replace these deprecated `font` custom properties, you can run the [v12-styles-replace-custom-property-font](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-font) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
-- font-size: var(--p-font-XX);
-+ font-size: var(--p-font-XX);
+- font-size: var(--p-font-size-75);
++ font-size: var(--p-font-size-300);
+```
+
+```diff
+- line-height: var(--p-font-line-height-1);
++ line-height: var(--p-font-line-height-400);
 ```
 
 ```sh
@@ -412,18 +417,31 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path>
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
 ```
---p-font-XX|--p-font-XX|...
-```
-
-```
-<COMPONENT_NAME[^>\w](?:[^>]|\n)*?PROP_NAME(?!="XX)
+(?:--p-font-size-70-experimental|--p-font-size-75|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-200|--p-font-size-300|--p-font-size-400 |--p-font-size-500|--p-font-size-600|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])
 ```
 
 #### Replacement maps
 
-| Deprecated Token | Replacement Value |
-| ---------------- | ----------------- |
-| `--p-font-XX`    | `--p-font-XX`     |
+| Deprecated Token                        | Replacement Value           |
+| --------------------------------------- | --------------------------- |
+| `--p-font-size-70-experimental`         | `--p-font-size-275`         |
+| `--p-font-size-75`                      | `--p-font-size-300`         |
+| `--p-font-size-80-experimental`         | `--p-font-size-325`         |
+| `--p-font-size-100`                     | `--p-font-size-350`         |
+| `--p-font-size-200`                     | `--p-font-size-400`         |
+| `--p-font-size-300`                     | `--p-font-size-500`         |
+| `--p-font-size-400`                     | `--p-font-size-600`         |
+| `--p-font-size-500`                     | `--p-font-size-750`         |
+| `--p-font-size-600`                     | `--p-font-size-900`         |
+| `--p-font-size-700`                     | `--p-font-size-1000`        |
+| `--p-font-line-height-075-experimental` | `--p-font-line-height-300`  |
+| `--p-font-line-height-1`                | `--p-font-line-height-400`  |
+| `--p-font-line-height-2`                | `--p-font-line-height-500`  |
+| `--p-font-line-height-3`                | `--p-font-line-height-600`  |
+| `--p-font-line-height-4`                | `--p-font-line-height-700`  |
+| `--p-font-line-height-5`                | `--p-font-line-height-800`  |
+| `--p-font-line-height-6`                | `--p-font-line-height-1000` |
+| `--p-font-line-height-7`                | `--p-font-line-height-1200` |
 
 ### Shadow
 
