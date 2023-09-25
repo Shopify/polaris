@@ -450,8 +450,8 @@ After migrating use the following RegExp to check for any additional instances o
 To replace these deprecated `shadow` custom properties, you can run the [v12-styles-replace-custom-property-shadow](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-shadow) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
 ```diff
-- box-shadow: var(--p-shadow-XX);
-+ box-shadow: var(--p-shadow-XX);
+- box-shadow: var(--p-shadow-xs);
++ box-shadow: var(--p-shadow-100);
 ```
 
 ```sh
@@ -463,18 +463,45 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
 After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
 
 ```
---p-shadow-XX|--p-shadow-XX|...
+(?:--p-shadow-inset-lg|--p-shadow-inset-md|--p-shadow-inset-sm|--p-shadow-none|--p-shadow-xs|--p-shadow-sm|--p-shadow-md|--p-shadow-lg|--p-shadow-xl|--p-shadow-2xl|--p-shadow-bevel-experimental|--p-shadow-card-sm-experimental|--p-shadow-card-md-experimental|--p-shadow-card-lg-experimental|--p-shadow-button-experimental|--p-shadow-button-hover-experimental|--p-shadow-button-disabled-experimental|--p-shadow-button-primary-strong-experimental|--p-shadow-button-primary-strong-inset-experimental|--p-shadow-button-primary-strong-hover-experimental|--p-shadow-border-inset-experimental|--p-shadow-button-primary-experimental|--p-shadow-button-primary-hover-experimental|--p-shadow-button-inset-experimental)(?![\w-])
 ```
 
 ```
-<COMPONENT_NAME[^>\w](?:[^>]|\n)*?PROP_NAME(?!="XX)
+<Box[^>\w](?:[^>]|\n)*?shadow
+```
+
+```
+<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
 ```
 
 #### Replacement maps
 
-| Deprecated Token | Replacement Value |
-| ---------------- | ----------------- |
-| `--p-shadow-XX`  | `--p-shadow-XX`   |
+| Deprecated Token                                      | Replacement Value                                                                       |
+| ----------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `--p-shadow-inset-lg`                                 | `--p-shadow-inset-200`                                                                  |
+| `--p-shadow-inset-md`                                 | `--p-shadow-inset-200`                                                                  |
+| `--p-shadow-inset-sm`                                 | `--p-shadow-inset-100`                                                                  |
+| `--p-shadow-none`                                     | `--p-shadow-0`                                                                          |
+| `--p-shadow-xs`                                       | `--p-shadow-100`                                                                        |
+| `--p-shadow-sm`                                       | `--p-shadow-200`                                                                        |
+| `--p-shadow-md`                                       | `--p-shadow-300`                                                                        |
+| `--p-shadow-lg`                                       | `--p-shadow-400`                                                                        |
+| `--p-shadow-xl`                                       | `--p-shadow-500`                                                                        |
+| `--p-shadow-2xl`                                      | `--p-shadow-600`                                                                        |
+| `--p-shadow-bevel-experimental`                       | `--p-shadow-bevel-100`                                                                  |
+| `--p-shadow-card-sm-experimental`                     | `--p-shadow-100`                                                                        |
+| `--p-shadow-card-md-experimental`                     | `--p-shadow-200`                                                                        |
+| `--p-shadow-card-lg-experimental`                     | `--p-shadow-300`                                                                        |
+| `--p-shadow-button-experimental`                      | `--p-shadow-button`                                                                     |
+| `--p-shadow-button-hover-experimental`                | `--p-shadow-button-hover`                                                               |
+| `--p-shadow-button-disabled-experimental`             | `inset 0 0 0 1px rgba(227, 227, 227, 1)`                                                |
+| `--p-shadow-button-primary-strong-experimental`       | `--p-shadow-button-primary`                                                             |
+| `--p-shadow-button-primary-strong-inset-experimental` | `--p-shadow-button-primary-inset`                                                       |
+| `--p-shadow-button-primary-strong-hover-experimental` | `--p-shadow-button-primary-hover`                                                       |
+| `--p-shadow-button-primary-experimental`              | `--p-shadow-button-primary-critical`<br>`--p-shadow-button-primary-success`             |
+| `--p-shadow-button-primary-hover-experimental`        | `--p-shadow-button-primary-critical-hover`<br>`--p-shadow-button-primary-success-hover` |
+| `--p-shadow-button-inset-experimental`                | `--p-shadow-button-primary-critical-inset`<br>`--p-shadow-button-primary-success-inset` |
+| `--p-shadow-border-inset-experimental`                | `--p-shadow-border-inset`                                                               |
 
 ### Space
 
