@@ -80,33 +80,6 @@ export const border: {
   'border-radius-full': {
     value: '9999px',
   },
-  'border-radius-0-experimental': {
-    value: '0px',
-  },
-  'border-radius-05': {
-    value: '2px',
-  },
-  'border-radius-1': {
-    value: '4px',
-  },
-  'border-radius-2': {
-    value: '8px',
-  },
-  'border-radius-3': {
-    value: '12px',
-  },
-  'border-radius-4': {
-    value: '16px',
-  },
-  'border-radius-5': {
-    value: '20px',
-  },
-  'border-radius-6': {
-    value: '30px',
-  },
-  'border-radius-1_5-experimental': {
-    value: '6px',
-  },
   'border-width-0165': {
     value: size['0165'],
   },
