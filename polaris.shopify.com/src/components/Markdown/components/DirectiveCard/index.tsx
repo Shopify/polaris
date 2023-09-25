@@ -8,7 +8,7 @@ import {
 } from '@shopify/polaris-icons';
 
 import {Box} from '../../../Box';
-import {Card} from '../../../Card';
+import {Card, CardProps} from '../../../Card';
 import {Stack, Row} from '../../../Stack';
 import ImageThumbnail from '../../../ThumbnailPreview';
 import styles from './styles.module.scss';
@@ -21,10 +21,11 @@ export enum DirectiveStatusName {
 }
 
 export type DirectiveStatus = DirectiveStatusName;
-type DirectiveProps = React.PropsWithChildren<{
+interface DirectiveCardProps extends CardProps {
   status: DirectiveStatus;
-}>;
-export const DirectiveCard = ({children, status}: DirectiveProps) => {
+}
+type DirectiveProps = React.PropsWithChildren<DirectiveCardProps>;
+export const DirectiveCard = ({children, status, ...props}: DirectiveProps) => {
   const childrenArray = Children.toArray(children) as ReactElement[];
 
   let image: ReactElement | undefined;
@@ -38,7 +39,7 @@ export const DirectiveCard = ({children, status}: DirectiveProps) => {
   });
 
   return (
-    <Card>
+    <Card {...props}>
       {image?.props?.src ? (
         <Stack gap="4">
           <Bleed marginInline="4" marginBlockStart="4">

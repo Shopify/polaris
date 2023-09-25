@@ -30,7 +30,7 @@ This pattern uses the [`Card`](/components/layout-and-structure/card), [`Badge`]
 
 {/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
-<div style={{ paddingBottom: '2rem', height: '600px' }}>
+<div style={{ padding: '2rem', height: '600px' }}>
   {(____CODE____)()}
 </div>
 ```

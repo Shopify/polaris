@@ -69,6 +69,9 @@ examples:
   - fileName: index-table-without-checkboxes.tsx
     title: Without checkboxes
     description: An index table without checkboxes and bulk actions.
+  - fileName: index-table-with-subheaders.tsx
+    title: With subheaders
+    description: An index table with multiple table headers. Use to present merchants with resources grouped by a relevant data value to enable faster bulk selection.
 previewImg: /images/components/tables/index-table.png
 ---
 
@@ -98,19 +101,19 @@ Index tables can also:
 Using an index table in a project involves combining the following components and subcomponents:
 
 - IndexTable
-- [IndexTableRow](#index-table-row)
-- [IndexTableCell](#index-table-cell)
+- [IndexTable.Row](#index-table-row)
+- [IndexTable.Cell](#index-table-cell)
 - [Filters](/components/selection-and-input/filters) (optional)
 - [IndexFilters](/components/selection-and-input/index-filters) (optional)
-- Pagination component (optional)
+- [Pagination](/components/navigation/pagination) (optional)
 
-The index table component provides the UI elements for list sorting, filtering, and pagination, but doesn’t provide the logic for these operations. When a sort option is changed, filter added, or second page requested, you’ll need to handle that event (including any network requests) and then update the component with new props.
+The index table component provides the UI elements for list selection, sorting, filtering, and pagination, but doesn’t provide the logic for these operations. When a sort option is changed, filter added, or second page requested, you’ll need to handle that event (including any network requests) and then update the component with new props.
 
 ---
 
 ## Purpose
 
-Shopify is organized around objects that represent merchants businesses, like customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects _resources_, and we call the object’s dedicated page its _details page_.
+Shopify is organized around objects that represent merchants' businesses, like customers, products, and orders. Each individual order, for example, is given a dedicated page that can be linked to. In Shopify, we call these types of objects _resources_, and we call the object’s dedicated page its _details page_.
 
 ### Problem
 
@@ -186,37 +189,71 @@ Index tables should:
 
 ---
 
-## IndexTableRow
+## IndexTable.Row
 
-An `IndexTableRow` is used to render a row representing an item within an `IndexTable`
+An `IndexTable.Row` is used to render a row representing an item within an `IndexTable`
 
-### IndexTableRow properties
+### IndexTable.Row properties
 
-| Prop     | Type       | Description                                                      |
-| -------- | ---------- | ---------------------------------------------------------------- |
-| id       | string     | A unique identifier for the row                                  |
-| selected | boolean    | A boolean property indicating whether the row is selected        |
-| position | number     | The index position of the row                                    |
-| subdued  | boolean    | A boolean property indicating whether the row should be subdued  |
-| status   | RowStatus  | A property indicating whether the row should have a status       |
-| disabled | boolean    | A boolean property indicating whether the row should be disabled |
-| onClick  | () => void | A function which overrides the default click behaviour           |
+| Prop                | Type                                         | Description                                                                                                                                                                                         |
+| ------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| children            | ReactNode                                    | Table header or data cells                                                                                                                                                                          |
+| id                  | string                                       | A unique identifier for the row                                                                                                                                                                     |
+| selected?           | boolean &#124; "indeterminate"               | A boolean property indicating whether the row or it's related rows are selected                                                                                                                     |
+| position            | number                                       | The zero-indexed position of the row. Used for Shift key multi-selection as well as selection of a range of rows when a `selectionRange` is set.                                                    |
+| subdued?            | boolean                                      | Whether the row should be subdued                                                                                                                                                                   |
+| status?             | "success" &#124; "subdued" &#124; "critical" | Whether the row should have a status                                                                                                                                                                |
+| disabled?           | boolean                                      | Whether the row should be disabled                                                                                                                                                                  |
+| selectionRange?     | [number, number]                             | A tuple array with the first and last index of the range of other rows that the row describes. All non-disabled rows in the range are selected when the row with a selection range set is selected. |
+| rowType?            | "data" &#124; "subheader"                    | Indicates the relationship or role of the row's contents. A `rowType` of "subheader" looks and behaves the same as the table header. Defaults to "data".                                            |
+| accessibilityLabel? | string                                       | Label set on the row's checkbox. Defaults to "Select \{resourceName\}"                                                                                                                              |
+| onClick?            | () => void                                   | Callback fired when the row is clicked. Overrides the default click behaviour.                                                                                                                      |
+| onNavigation?       | (id: string) => void                         | Callback fired when the row is clicked and contains an anchor element with the `data-primary-link` property set                                                                                     |
 
-## IndexTableCell
+## IndexTable.Cell
 
-An `IndexTableCell` is used to render a single cell within an `IndexTableRow`
+An `IndexTable.Cell` is used to render a single cell within an `IndexTable.Row`
 
-### IndexTableCell properties
+### IndexTable.Cell properties
 
-| Prop      | Type    | Description                                                                      |
-| --------- | ------- | -------------------------------------------------------------------------------- |
-| flush     | boolean | A boolean property indicating whether the cell should remove the default padding |
-| className | string  | Adds a class to the cell, used for setting widths of a cell                      |
+| Prop       | Type                                                                              | Description                                                                                                                                                              |
+| ---------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| as?        | 'th' &#124; 'td'                                                                  | The table cell element to render. Render the cell as a `th` if it serves as a subheading. Defaults to `td`.                                                              |
+| id?        | string                                                                            | The unique ID to set on the cell element                                                                                                                                 |
+| children?  | ReactNode                                                                         | The cell contents                                                                                                                                                        |
+| className? | string                                                                            | Adds a class to the cell. Use to set a custom cell width.                                                                                                                |
+| flush?     | boolean                                                                           | Whether the cell padding should be removed. Defaults to false.                                                                                                           |
+| colSpan?   | [HTMLTableCellElement['colSpan']](https://www.w3schools.com/tags/att_colspan.asp) | For subheader cells -- The number of the columns that the cell element should extend to within the row.                                                                  |
+| scope?     | [HTMLTableCellElement['scope']](https://www.w3schools.com/tags/att_scope.asp)     | For subheader cells -- Indicates the cells that the `th` element relates to                                                                                              |
+| headers?   | [HTMLTableCellElement['headers']](https://www.w3schools.com/tags/att_headers.asp) | A space-separated list of the `th` cell IDs that describe or apply to it. Use for cells within a row that relate to a subheader cell in addition to their column header. |
 
 ---
 
 ## Related components
 
-- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/resource-list)
-- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/data-table)
+- To create an actionable list of related items that link to details pages, such as a list of customers, use the [resource list component](https://polaris.shopify.com/components/lists/resource-list)
+- To present structured data for comparison and analysis, like when helping merchants to gain insights or review analytics, use the [data table component](https://polaris.shopify.com/components/tables/data-table)
 - To display a simple list of related content, [use the list component](https://polaris.shopify.com/components/lists/list)
+
+---
+
+## Accessibility
+
+### Structure
+
+The `IndexTable` is an actionable, filterable, and sortable table widget that supports row selection with [subheaders](https://www.w3.org/WAI/tutorials/tables/multi-level/). To ensure that the power of this table is accessible to all merchants when implementing `IndexTable.Row` subheaders, set the following props on `IndexTable.Cell` that are appropriate for the enhancement you are implementing.
+
+Merchants can select a group of rows at once by clicking or <kbd>Space</kbd> keypressing a subheader row's checkbox. To indicate that an `IndexTable.Row` serves as a subheader for 1 or more rows below it, set the:
+
+- Zero-indexed table `position` of the first and last `IndexTable.Row` described by the subheader `IndexTable.Row` as a tuple array on its `subHeaderRange` prop
+- Unique `id` on the `IndexTable.Cell` that contains the subheader content
+- Element tag to `"th"` on the `as` prop of the subheader `IndexTable.Cell`
+- Subheader `IndexTable.Cell` `scope` prop to `"colgroup"`
+
+To associate the subheader `IndexTable.Row` with each `IndexTable.Cell` that it describes, set the:
+
+- Unique `id` provided to the subheader `IndexTable.Cell` on the `headers` prop of each related `IndexTable.Cell` (contained by an `IndexTable.Row` that's position is within the `subHeaderRange`) as well as the unique `id` of its corresponding column heading that you provided to the `IndexTable` `headings` prop
+
+### Keyboard support
+
+`IndexTable` also supports multi-selection of a range of rows by keypressing the <kbd>Shift</kbd> key. To select a range, press and hold the <kbd>Shift</kbd> key while you click or keypress the <kbd>Space</kbd> key on a row checkbox and then do the same on another row's checkbox. All selectable rows between the selected checkboxes will also be selected.

@@ -20,7 +20,9 @@ type Gap = {
 export interface GridProps {
   /**
    * Set grid-template-areas
-   * @deprecated Use nested layout components instead
+   * @deprecated To avoid a11y issues, nest layout components in individual grid
+   * cells instead. See:
+   * https://polaris.shopify.com/components/layout-and-structure
    */
   areas?: Areas;
   /* Number of columns */

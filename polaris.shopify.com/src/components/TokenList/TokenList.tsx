@@ -232,7 +232,7 @@ function TokenPreview({name, value}: TokenPreviewProps) {
   };
 
   // Colors
-  if (value.startsWith('rgba')) {
+  if (value.startsWith('rgba') || value.includes('color-')) {
     return (
       <div
         {...previewDivAttributes}

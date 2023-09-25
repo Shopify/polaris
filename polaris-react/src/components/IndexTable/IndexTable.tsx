@@ -45,6 +45,7 @@ import {ScrollContainer, Cell, Row} from './components';
 import styles from './IndexTable.scss';
 
 interface IndexTableHeadingBase {
+  id?: string;
   /**
    * Adjust horizontal alignment of header content.
    * @default 'start'
@@ -65,6 +66,7 @@ interface IndexTableHeadingBase {
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
   title: string;
+  id?: string;
 }
 
 interface IndexTableHeadingTitleNode extends IndexTableHeadingBase {
@@ -827,6 +829,7 @@ function IndexTableBase({
 
     const headingContent = (
       <th
+        id={heading.id}
         className={headingContentClassName}
         key={getHeadingKey(heading)}
         data-index-table-heading
@@ -1136,11 +1139,9 @@ const isBreakpointsXS = () => {
 };
 
 function getHeadingKey(heading: IndexTableHeading): string {
-  if ('id' in heading && heading.id) {
+  if (heading.id) {
     return heading.id;
-  }
-
-  if (typeof heading.title === 'string') {
+  } else if (typeof heading.title === 'string') {
     return heading.title;
   }
 
