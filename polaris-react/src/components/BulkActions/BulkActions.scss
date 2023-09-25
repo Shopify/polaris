@@ -63,7 +63,7 @@ $bulk-actions-button-stacking-order: (
     padding: var(--p-space-300);
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-md),
-      $borderRadius: var(--p-border-radius-3)
+      $borderRadius: var(--p-border-radius-300)
     );
   }
 
