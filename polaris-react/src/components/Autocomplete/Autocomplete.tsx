@@ -1,16 +1,13 @@
 import React, {useMemo, useCallback} from 'react';
 
-import type {
-  ActionListItemDescriptor,
-  OptionDescriptor,
-  SectionDescriptor,
-} from '../../types';
+import type {OptionDescriptor, SectionDescriptor} from '../../types';
 import type {PopoverProps} from '../Popover';
 import {isSection} from '../../utilities/options';
 import {useI18n} from '../../utilities/i18n';
 import {Combobox} from '../Combobox';
 import {Listbox, AutoSelection} from '../Listbox';
 
+import type {MappedActionProps} from './components';
 import {MappedAction, MappedOption} from './components';
 import styles from './Autocomplete.scss';
 
@@ -30,10 +27,9 @@ export interface AutocompleteProps {
   /** Allow more than one option to be selected */
   allowMultiple?: boolean;
   /** An action to render above the list of options */
-  actionBefore?: ActionListItemDescriptor & {
-    /** Specifies that if the label is too long it will wrap instead of being hidden  */
-    wrapOverflow?: boolean;
-  };
+  actionBefore?: MappedActionProps;
+  /** An action to render below the list of options */
+  actionAfter?: MappedActionProps;
   /** Display loading state */
   loading?: boolean;
   /** Indicates if more results will load dynamically */
@@ -62,6 +58,7 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   allowMultiple,
   loading,
   actionBefore,
+  actionAfter,
   willLoadMoreResults,
   emptyState,
   onSelect,
@@ -152,7 +149,10 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
   const updateSelection = useCallback(
     (newSelection: string) => {
       if (actionBefore && newSelection === actionBefore.content) {
-        actionBefore.onAction && actionBefore.onAction();
+        actionBefore?.onAction?.();
+        return;
+      } else if (actionAfter && newSelection === actionAfter.content) {
+        actionAfter?.onAction?.();
         return;
       }
 
@@ -166,10 +166,13 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
         onSelect([newSelection]);
       }
     },
-    [allowMultiple, onSelect, selected, actionBefore],
+    [allowMultiple, onSelect, selected, actionBefore, actionAfter],
   );
 
-  const actionMarkup = actionBefore && <MappedAction {...actionBefore} />;
+  const actionBeforeMarkup = actionBefore && <MappedAction {...actionBefore} />;
+  const actionAfterMarkup = actionAfter && (
+    <MappedAction {...actionAfter} plain />
+  );
 
   const emptyStateMarkup = emptyState && options.length < 1 && !loading && (
     <div role="status">{emptyState}</div>
@@ -185,14 +188,19 @@ export const Autocomplete: React.FunctionComponent<AutocompleteProps> & {
       preferredPosition={preferredPosition}
       willLoadMoreOptions={willLoadMoreResults}
     >
-      {actionMarkup || optionsMarkup || loadingMarkup || emptyStateMarkup ? (
+      {actionBeforeMarkup ||
+      actionAfterMarkup ||
+      optionsMarkup ||
+      loadingMarkup ||
+      emptyStateMarkup ? (
         <Listbox autoSelection={autoSelection} onSelect={updateSelection}>
-          {actionMarkup}
+          {actionBeforeMarkup}
           {optionsMarkup && (!loading || willLoadMoreResults)
             ? optionsMarkup
             : null}
           {loadingMarkup}
           {emptyStateMarkup}
+          {actionAfterMarkup}
         </Listbox>
       ) : null}
     </Combobox>

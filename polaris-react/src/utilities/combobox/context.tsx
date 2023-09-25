@@ -34,6 +34,8 @@ export interface ComboboxListboxType {
   setListboxId?(id: string): void;
   // Callback fired when an option is selected.
   onOptionSelected?(): void;
+  // Callback to close the Listbox.
+  onClose?(): void;
   // Callback fired when keyboard user navigates to the last item. Use to lazy load when listbox option data is paginated.
   onKeyToBottom?(): void;
 }

@@ -4,6 +4,7 @@ import type {NavigableOption} from './types';
 
 export interface ListboxContextType {
   onOptionSelect(option: NavigableOption): void;
+  onClose?(): void;
   setLoading(label?: string): void;
 }
 

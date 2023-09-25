@@ -102,6 +102,7 @@ export function Listbox({
     setActiveOptionId,
     setListboxId,
     onOptionSelected,
+    onClose,
     onKeyToBottom,
   } = useComboboxListbox();
 
@@ -478,9 +479,10 @@ export function Listbox({
   const listboxContext = useMemo(
     () => ({
       onOptionSelect,
+      onClose,
       setLoading,
     }),
-    [onOptionSelect],
+    [onOptionSelect, onClose],
   );
 
   return (

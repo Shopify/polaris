@@ -11,8 +11,10 @@ import {useI18n} from '../../../../utilities/i18n';
 
 import styles from './MappedAction.scss';
 
-interface MappedAction extends ActionListItemDescriptor {
+export interface MappedActionProps extends ActionListItemDescriptor {
   wrapOverflow?: boolean;
+  closeOnClick?: boolean;
+  plain?: boolean;
 }
 
 export function MappedAction({
@@ -32,7 +34,9 @@ export function MappedAction({
   badge,
   helpText,
   wrapOverflow = false,
-}: MappedAction) {
+  closeOnClick,
+  plain,
+}: MappedActionProps) {
   const i18n = useI18n();
 
   let prefixMarkup: React.ReactNode | null = null;
@@ -90,12 +94,14 @@ export function MappedAction({
       external,
       onAction,
       destructive,
+      closeOnClick,
     }),
-    [role, url, external, onAction, destructive],
+    [role, url, external, onAction, destructive, closeOnClick],
   );
 
   const actionClassNames = classNames(
     styles.Action,
+    plain && styles.plain,
     disabled && styles.disabled,
     destructive && styles.destructive,
     active && styles.selected,
