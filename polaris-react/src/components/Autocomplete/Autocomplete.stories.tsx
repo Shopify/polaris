@@ -746,6 +746,7 @@ export function WithAfterAction() {
             console.log('actionAfter clicked');
           },
           closeOnClick: true,
+          plain: true,
         }}
         options={options}
         selected={selectedOptions}
