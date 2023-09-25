@@ -219,4 +219,22 @@ describe('resolveMetaThemeRefs', () => {
 
     expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
   });
+
+  it('resolves token references with multi-dash token group names', () => {
+    const metaTheme = {
+      zIndex: {
+        'z-index-1': {value: '1'},
+        'z-modal': {value: 'var(--p-z-index-1)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      zIndex: {
+        'z-index-1': {value: '1'},
+        'z-modal': {value: '1'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
+  });
 });
