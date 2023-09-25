@@ -1,9 +1,6 @@
-import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 import {size} from '../../size';
 import {createVar as createVarName} from '../../utilities';
-
-type BorderRadiusScaleExperimental = Experimental<'0' | '1_5'>;
 
 export type BorderRadiusScale =
   | '0'
@@ -14,30 +11,11 @@ export type BorderRadiusScale =
   | '300'
   | '400'
   | '500'
-  | '750'
-  | 'full'
-  | '05'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | BorderRadiusScaleExperimental;
+  | '750';
 
-type BorderWidthScaleExperimental = Experimental<'1' | '2'>;
 
-export type BorderWidthScale =
-  | '0165'
-  | '025'
-  | '050'
-  | '100'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | BorderWidthScaleExperimental;
+
+export type BorderWidthScale = '0165' | '025' | '050' | '100';
 
 export type BorderTokenName =
   | `border-radius-${BorderRadiusScale}`
