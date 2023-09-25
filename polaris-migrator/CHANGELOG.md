@@ -1,5 +1,15 @@
 # @shopify/polaris-migrator
 
+## 0.22.5
+
+### Patch Changes
+
+- [#10575](https://github.com/Shopify/polaris/pull/10575) [`ea6b54284`](https://github.com/Shopify/polaris/commit/ea6b542841a7b16037964d7b64d06399741be45c) Thanks [@aveline](https://github.com/aveline)! - Handled `buttonFrom` and `buttonsFrom` functions in `Button` migration
+
+- Updated dependencies [[`fe1aac1b5`](https://github.com/Shopify/polaris/commit/fe1aac1b5a9868c3decda53b94150e0242905d04), [`790a001cd`](https://github.com/Shopify/polaris/commit/790a001cd1942a0cd32e90b98339236fe2800afc), [`63cf3ad24`](https://github.com/Shopify/polaris/commit/63cf3ad2405f75589869a6f1aa33c277f559df3c), [`120e96eae`](https://github.com/Shopify/polaris/commit/120e96eaeb8ebda3dcf99d3917167e442bd19cdf)]:
+  - @shopify/polaris-tokens@7.10.0
+  - @shopify/stylelint-polaris@14.0.5
+
 ## 0.22.4
 
 ### Patch Changes
