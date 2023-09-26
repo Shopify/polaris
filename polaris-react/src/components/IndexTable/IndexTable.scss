@@ -81,7 +81,7 @@ $loading-panel-height: 53px;
     background: var(--p-color-bg-info-subdued);
     padding: var(--p-space-200);
     padding-bottom: var(--p-space-100);
-    border-radius: var(--p-border-radius-1);
+    border-radius: var(--p-border-radius-100);
   }
 }
 
@@ -157,7 +157,7 @@ $loading-panel-height: 53px;
 .TableRow {
   background-color: var(--p-color-bg);
   cursor: pointer;
-  border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
 
   &:first-child {
     border-top: var(--p-border-width-1) solid var(--p-color-border);
@@ -577,14 +577,14 @@ $loading-panel-height: 53px;
   content: '';
   position: absolute;
   left: 0;
-  bottom: calc(-1 * var(--p-border-width-2));
+  bottom: calc(-1 * var(--p-border-width-050));
   width: 100%;
   height: var(--p-border-width-2);
   border-bottom: var(--p-border-width-2) dotted var(--p-color-border-strong);
 }
 
 .TableHeadingTooltipUnderlinePlaceholder {
-  border-bottom: var(--p-border-width-2) dotted transparent;
+  border-bottom: var(--p-border-width-050) dotted transparent;
 }
 
 .TableHeadingSortIcon-visible {
@@ -972,7 +972,7 @@ $scroll-bar-size: var(--p-space-200);
 }
 
 .ScrollBar::-webkit-scrollbar-track {
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   background-color: transparent;
 }
 
@@ -984,7 +984,7 @@ $scroll-bar-size: var(--p-space-200);
 }
 
 .ScrollBar::-webkit-scrollbar-thumb {
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   background-color: var(--p-color-border-strong);
   transition: background-color var(--p-motion-duration-100)
     var(--p-motion-ease-out);
@@ -1016,7 +1016,7 @@ $scroll-bar-size: var(--p-space-200);
   transform: translateX(calc(-1 * var(--pc-index-table-translate-offset)));
   transition: transform var(--p-motion-ease) var(--p-motion-duration-200);
   display: flex;
-  border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
   filter: none;
   align-items: center;
 }

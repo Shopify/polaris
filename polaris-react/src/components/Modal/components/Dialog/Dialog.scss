@@ -45,7 +45,7 @@ $large-width: 980px;
   overflow: hidden;
 
   @media (forced-colors: active) {
-    border: var(--p-border-width-1) solid transparent;
+    border: var(--p-border-width-025) solid transparent;
   }
 
   @media #{$p-breakpoints-md-down} {

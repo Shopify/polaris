@@ -3,7 +3,7 @@
 .LegacyCard {
   background-color: var(--p-color-bg);
   box-shadow: var(--p-shadow-md);
-  outline: var(--p-border-width-1) solid transparent;
+  outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
 
   @include shadow-bevel(
@@ -27,7 +27,7 @@
   }
 
   @media #{$p-breakpoints-sm-up} {
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
 
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-xs),
