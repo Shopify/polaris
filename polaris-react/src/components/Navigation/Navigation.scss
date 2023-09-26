@@ -426,7 +426,7 @@ $nav-max-width: 360px;
 .Badge {
   margin-left: var(--p-space-200);
   display: inline-flex;
-  height: var(--p-font-line-height-2);
+  height: var(--p-font-line-height-500);
   margin-top: calc(var(--p-space-200) + var(--p-space-050));
   margin-right: var(--p-space-400);
 
@@ -485,26 +485,26 @@ $nav-max-width: 360px;
   flex: 1 1 auto;
   font-size: var(--p-font-size-200);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-500);
   margin-top: calc(var(--p-space-200) + var(--p-space-050));
   margin-bottom: calc(var(--p-space-200) + var(--p-space-050));
 
   #{$se23} & {
-    font-size: var(--p-font-size-100);
+    font-size: var(--p-font-size-350);
     margin-top: var(--p-space-200);
     margin-bottom: var(--p-space-200);
   }
 
   @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-100);
-    line-height: var(--p-font-line-height-2);
+    font-size: var(--p-font-size-350);
+    line-height: var(--p-font-line-height-500);
     margin-top: var(--p-space-100);
     margin-bottom: var(--p-space-100);
 
     #{$se23} & {
       margin-top: var(--p-space-100);
       margin-bottom: var(--p-space-100);
-      font-size: var(--p-font-size-80-experimental);
+      font-size: var(--p-font-size-325);
     }
   }
 }
@@ -789,7 +789,7 @@ $nav-max-width: 360px;
     }
 
     @media #{$p-breakpoints-md-up} {
-      font-size: var(--p-font-size-100);
+      font-size: var(--p-font-size-350);
       line-height: 1;
       padding-left: var(--p-space-1000);
     }
@@ -975,8 +975,8 @@ $nav-max-width: 360px;
     margin-bottom: calc(var(--p-space-200) + var(--p-space-050));
 
     @media #{$p-breakpoints-md-down} {
-      font-size: var(--p-font-size-100);
-      line-height: var(--p-font-line-height-2);
+      font-size: var(--p-font-size-350);
+      line-height: var(--p-font-line-height-500);
     }
 
     @media #{$p-breakpoints-md-up} {
