@@ -55,7 +55,7 @@ $bulk-actions-button-stacking-order: (
   padding: var(--p-space-400);
   background: var(--p-color-bg);
   border-radius: var(--p-border-radius-200);
-  box-shadow: var(--p-shadow-md), var(--p-shadow-xl);
+  box-shadow: var(--p-shadow-300), var(--p-shadow-500);
   max-width: 100%;
   pointer-events: auto;
 
@@ -128,7 +128,7 @@ $bulk-actions-button-stacking-order: (
       // stylelint-disable-next-line selector-max-class, selector-max-combinators -- se23
       &:focus-visible,
       &:active {
-        box-shadow: var(--p-shadow-inset-md);
+        box-shadow: var(--p-shadow-inset-200);
       }
     }
   }

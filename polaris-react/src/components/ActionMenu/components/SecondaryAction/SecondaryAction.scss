@@ -69,7 +69,7 @@
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:active {
         background-color: var(--p-color-bg-strong-active) !important;
-        box-shadow: var(--p-shadow-inset-md) !important;
+        box-shadow: var(--p-shadow-inset-200) !important;
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:focus-visible {

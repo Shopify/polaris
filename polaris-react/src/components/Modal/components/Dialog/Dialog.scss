@@ -41,7 +41,7 @@ $large-width: 980px;
   width: 100%;
   max-height: calc(100vh - #{$vertical-spacing});
   background: var(--p-color-bg);
-  box-shadow: var(--p-shadow-2xl);
+  box-shadow: var(--p-shadow-600);
 
   @media (forced-colors: active) {
     border: var(--p-border-width-025) solid transparent;
