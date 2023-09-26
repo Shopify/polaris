@@ -2,4 +2,4 @@
 '@shopify/polaris-tokens': patch
 ---
 
-Resolved token name references in the `theme`
+Updated the `toValues` token utility to resolve token name references in the `theme` to their unit values
