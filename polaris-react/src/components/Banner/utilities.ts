@@ -31,7 +31,7 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
   success: {
     withinPage: {
       background: 'bg-success-strong',
-      text: 'text-on-color',
+      text: 'text-success-on-bg-fill',
       icon: 'text-success-on-bg-fill',
     },
     withinContentContainer: {
