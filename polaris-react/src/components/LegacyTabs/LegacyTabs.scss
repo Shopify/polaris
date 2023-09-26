@@ -21,7 +21,7 @@ $item-vertical-padding: $item-min-height * 0.5;
 
   .Title {
     width: 100%;
-    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    padding: var(--p-space-150) var(--p-space-300);
   }
 }
 
@@ -127,7 +127,7 @@ $item-vertical-padding: $item-min-height * 0.5;
   @include focus-ring;
   border-radius: var(--p-border-radius-1);
   display: block;
-  padding: var(--p-space-1_5-experimental) var(--p-space-3);
+  padding: var(--p-space-150) var(--p-space-300);
   min-width: $item-min-width;
   color: var(--p-color-text-primary);
   font-weight: var(--p-font-weight-semibold);

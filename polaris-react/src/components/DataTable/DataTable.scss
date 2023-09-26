@@ -20,7 +20,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: var(--p-space-4) var(--p-space-3);
+    padding: var(--p-space-400) var(--p-space-300);
 
     @media #{$p-breakpoints-md-up} {
       justify-content: flex-end;
@@ -43,11 +43,11 @@
   }
 
   &:first-of-type {
-    margin-left: var(--p-space-1);
+    margin-left: var(--p-space-100);
   }
 
   &:last-of-type {
-    margin-right: var(--p-space-1);
+    margin-right: var(--p-space-100);
   }
 }
 
@@ -82,25 +82,25 @@
   transition: background-color var(--p-motion-duration-200)
     var(--p-motion-ease-in-out);
 
-  padding: var(--p-space-2) var(--p-space-1_5-experimental);
+  padding: var(--p-space-200) var(--p-space-150);
 
   &:first-child {
-    padding-left: var(--p-space-3);
+    padding-left: var(--p-space-300);
   }
 
   &:last-child {
-    padding-right: var(--p-space-3);
+    padding-right: var(--p-space-300);
   }
 
   .IncreasedTableDensity & {
-    padding: var(--p-space-1_5-experimental);
+    padding: var(--p-space-150);
 
     &:first-child {
-      padding-left: var(--p-space-3);
+      padding-left: var(--p-space-300);
     }
 
     &:last-child {
-      padding-right: var(--p-space-3);
+      padding-right: var(--p-space-300);
     }
   }
 }
@@ -152,8 +152,8 @@
   color: var(--p-color-text);
   border-bottom: var(--p-border-width-1) solid var(--p-color-border);
   border-top: 0;
-  padding-top: var(--p-space-3);
-  padding-bottom: var(--p-space-3);
+  padding-top: var(--p-space-300);
+  padding-bottom: var(--p-space-300);
 
   .IncreasedTableDensity & {
     font-weight: var(--p-font-weight-regular);
@@ -164,22 +164,22 @@
   padding: 0;
 
   &:first-child {
-    padding-left: var(--p-space-2);
+    padding-left: var(--p-space-200);
   }
 
   &:last-child {
-    padding-right: var(--p-space-2);
+    padding-right: var(--p-space-200);
   }
 
   .IncreasedTableDensity & {
     padding: 0;
 
     &:first-child {
-      padding-left: var(--p-space-2);
+      padding-left: var(--p-space-200);
     }
 
     &:last-child {
-      padding-right: var(--p-space-2);
+      padding-right: var(--p-space-200);
     }
   }
 
@@ -322,14 +322,14 @@
 }
 
 .Footer {
-  padding: var(--p-space-2) var(--p-space-3);
+  padding: var(--p-space-200) var(--p-space-300);
   background: var(--p-color-bg-subdued);
   color: var(--p-color-text-subdued);
   text-align: center;
   border-top: var(--p-border-width-1) solid var(--p-color-border);
 
   .IncreasedTableDensity & {
-    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    padding: var(--p-space-150) var(--p-space-300);
   }
 
   .ZebraStripingOnData & {
@@ -377,7 +377,7 @@
     .FixedFirstColumn {
       bottom: 0;
       top: auto;
-      padding-left: var(--p-space-3);
+      padding-left: var(--p-space-300);
     }
   }
 

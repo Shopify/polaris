@@ -19,7 +19,7 @@
 
 .Item-plain {
   &:not(:first-child) {
-    margin-left: var(--p-space-2);
+    margin-left: var(--p-space-200);
   }
 
   &:not(:last-child) {

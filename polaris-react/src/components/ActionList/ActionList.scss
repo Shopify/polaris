@@ -5,7 +5,7 @@ $indented-item-width: calc(100% - #{$indented-item-margin});
 
 .Item {
   // stylelint-disable -- Polaris component custom properties
-  --pc-action-list-item-min-height: var(--p-space-8);
+  --pc-action-list-item-min-height: var(--p-space-800);
   &.default {
     --pc-action-list-image-size: 20px;
   }
@@ -25,7 +25,7 @@ $indented-item-width: calc(100% - #{$indented-item-margin});
   text-align: left;
   text-decoration: none;
   cursor: pointer;
-  padding: var(--p-space-1_5-experimental);
+  padding: var(--p-space-150);
   border-radius: var(--p-border-radius-2);
   border-top: var(--p-border-width-1) solid transparent;
   color: inherit;

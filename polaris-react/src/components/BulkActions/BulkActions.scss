@@ -52,7 +52,7 @@ $bulk-actions-button-stacking-order: (
 .ButtonGroupWrapper {
   width: auto;
   justify-content: flex-start;
-  padding: var(--p-space-3);
+  padding: var(--p-space-300);
   background: var(--p-color-bg);
   border-radius: var(--p-border-radius-2);
   box-shadow: var(--p-shadow-md), var(--p-shadow-xl);
@@ -108,7 +108,7 @@ $bulk-actions-button-stacking-order: (
       @include no-focus-ring;
       outline: var(--p-border-width-2) solid
         var(--p-color-border-interactive-focus);
-      outline-offset: var(--p-space-05);
+      outline-offset: var(--p-space-050);
     }
 
     // stylelint-disable-next-line selector-no-qualifying-type -- Bulk actions button override

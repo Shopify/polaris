@@ -4,9 +4,9 @@
   margin: 0 auto;
 
   border-top: 0;
-  padding: var(--p-space-4);
+  padding: var(--p-space-400);
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-4) 0;
+    padding: var(--p-space-400) 0;
   }
 }

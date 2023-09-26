@@ -143,7 +143,7 @@
 }
 
 .sizeLarge {
-  padding: var(--p-space-1) var(--p-space-2);
+  padding: var(--p-space-100) var(--p-space-200);
 }
 
 .withinFilter {
@@ -151,8 +151,8 @@
 }
 
 .Icon {
-  margin: calc(-1 * var(--p-space-05)) 0 calc(-1 * var(--p-space-05))
-    calc(-1 * var(--p-space-2));
+  margin: calc(-1 * var(--p-space-050)) 0 calc(-1 * var(--p-space-050))
+    calc(-1 * var(--p-space-200));
 
   svg {
     // Corrects conflicting alignment with ancestor elements
@@ -161,7 +161,7 @@
   }
 
   .sizeLarge & {
-    margin: 0 var(--p-space-1) 0 calc(-1 * var(--p-space-05));
+    margin: 0 var(--p-space-100) 0 calc(-1 * var(--p-space-050));
   }
 
   + * {
