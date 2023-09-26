@@ -76,7 +76,7 @@ export function EmptyState({
     : null;
 
   const footerContentMarkup = footerContent ? (
-    <Box paddingBlockStart="4">
+    <Box paddingBlockStart="400">
       <Text as="span" alignment="center" variant="bodySm">
         {footerContent}
       </Text>
@@ -88,7 +88,7 @@ export function EmptyState({
     : null;
 
   const headingMarkup = heading ? (
-    <Box paddingBlockEnd="1_5-experimental">
+    <Box paddingBlockEnd="150">
       <Text variant="headingMd" as="p" alignment="center">
         {heading}
       </Text>
@@ -103,7 +103,7 @@ export function EmptyState({
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <Box paddingBlockEnd="4">
+      <Box paddingBlockEnd="400">
         {headingMarkup}
         {childrenMarkup}
       </Box>
@@ -111,7 +111,7 @@ export function EmptyState({
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
-      <InlineStack align="center" gap="2">
+      <InlineStack align="center" gap="200">
         {secondaryActionMarkup}
         {primaryActionMarkup}
       </InlineStack>

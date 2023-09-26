@@ -98,7 +98,7 @@ export function Header({
 
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
-      <Box maxWidth="100%" paddingInlineEnd="1" printHidden>
+      <Box maxWidth="100%" paddingInlineEnd="100" printHidden>
         <Breadcrumbs backAction={backAction} />
       </Box>
     </div>
@@ -163,7 +163,7 @@ export function Header({
           actionMenuMarkup && isNavigationCollapsed ? '1000' : undefined
         }
       >
-        <InlineStack gap="4" align="space-between" blockAlign="center">
+        <InlineStack gap="400" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
           {paginationMarkup}
         </InlineStack>
@@ -202,10 +202,10 @@ export function Header({
   return (
     <Box
       position="relative"
-      paddingBlockStart={{xs: '4', md: '6'}}
-      paddingBlockEnd={{xs: '4', md: '6'}}
-      paddingInlineStart={{xs: '4', sm: '0'}}
-      paddingInlineEnd={{xs: '4', sm: '0'}}
+      paddingBlockStart={{xs: '400', md: '600'}}
+      paddingBlockEnd={{xs: '400', md: '600'}}
+      paddingInlineStart={{xs: '400', sm: '0'}}
+      paddingInlineEnd={{xs: '400', sm: '0'}}
       visuallyHidden={titleHidden}
     >
       <div className={headerClassNames}>
@@ -233,7 +233,7 @@ export function Header({
           </ConditionalRender>
           <ConditionalRender condition={[slot5].some(notNull)}>
             <div className={styles.Row}>
-              <InlineStack gap="4">{slot5}</InlineStack>
+              <InlineStack gap="400">{slot5}</InlineStack>
             </div>
           </ConditionalRender>
         </FilterActionsProvider>

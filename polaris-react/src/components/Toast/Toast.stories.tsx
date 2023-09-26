@@ -199,13 +199,13 @@ export function InsideModal() {
             ]}
           >
             <Modal.Section>
-              <BlockStack gap="2">
+              <BlockStack gap="200">
                 <TextContainer>
                   Use Instagram posts to share your products with millions of
                   people. Let shoppers buy from your store without leaving
                   Instagram.
                 </TextContainer>
-                <InlineStack gap="2">
+                <InlineStack gap="200">
                   <Button onClick={toggleActive}>Show Toast</Button>
                   <Button onClick={toggle2Active}>Show Other Toast</Button>
                 </InlineStack>

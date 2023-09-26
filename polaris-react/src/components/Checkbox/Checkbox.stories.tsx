@@ -40,7 +40,7 @@ export function DisabledStates() {
   };
 
   return (
-    <InlineStack gap="2">
+    <InlineStack gap="200">
       <Checkbox
         label="Disabled unchecked checkbox"
         disabled
@@ -99,8 +99,8 @@ export function WithBleedAndFill() {
     [],
   );
   return (
-    <BlockStack gap="6">
-      <Card padding="4">
+    <BlockStack gap="600">
+      <Card padding="400">
         <Checkbox
           label="No bleed"
           checked={checked1}
@@ -110,7 +110,7 @@ export function WithBleedAndFill() {
       <Card padding="400">
         <Checkbox
           label="Bleed increase hit size"
-          bleed="4"
+          bleed="400"
           checked={checked2}
           onChange={handleChange2}
         />

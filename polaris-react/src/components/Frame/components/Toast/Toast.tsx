@@ -79,7 +79,7 @@ export function Toast({
     <div className={className} aria-live="assertive">
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
-      <InlineStack gap="4" blockAlign="center">
+      <InlineStack gap="400" blockAlign="center">
         <Text as="span" fontWeight="medium">
           {content}
         </Text>

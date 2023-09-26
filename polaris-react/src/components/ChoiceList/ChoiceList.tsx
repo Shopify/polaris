@@ -140,7 +140,7 @@ export function ChoiceList({
       id={finalName}
     >
       {titleMarkup}
-      <BlockStack as="ul" gap={{xs: '4', md: '0'}}>
+      <BlockStack as="ul" gap={{xs: '400', md: '0'}}>
         {choicesMarkup}
       </BlockStack>
       {errorMarkup}

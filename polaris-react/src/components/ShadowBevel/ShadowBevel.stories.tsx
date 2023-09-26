@@ -30,7 +30,7 @@ export function Default() {
   ];
 
   return (
-    <BlockStack gap="5">
+    <BlockStack gap="500">
       <ShadowBevel boxShadow="md" borderRadius="3">
         <Box background="bg" padding="400">
           Default
@@ -76,7 +76,7 @@ export function Default() {
           boxShadow="md"
           borderRadius="3"
         >
-          <Box background={background} color={color} padding="4">
+          <Box background={background} color={color} padding="400">
             {background}
           </Box>
         </ShadowBevel>
