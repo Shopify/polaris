@@ -4,7 +4,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       <Card>
         <Placeholder label="Content inside a card" />
       </Card>

@@ -61,20 +61,20 @@ Many accessibility features come free in the components. But, it’s important t
 
 Don’t programmatically move focus to new content without merchant input. Polaris components that use controls to display overlays, such as modals and popovers, manage focus automatically.
 
-<InlineGrid columns={2} gap='4'>
+<InlineGrid columns={2} gap='400'>
 
   <Do>
 
-  - When a merchant activates a link that goes elsewhere in the page, move focus to that content
-  - When a merchant must access an overlay, move focus to it
-  - When a merchant submits a form that results in an error, move focus to the error message
+- When a merchant activates a link that goes elsewhere in the page, move focus to that content
+- When a merchant must access an overlay, move focus to it
+- When a merchant submits a form that results in an error, move focus to the error message
 
   </Do>
 
   <Dont>
 
-  - Move focus when content updates in the background
-  - Move focus when the user is actively working elsewhere on the page
+- Move focus when content updates in the background
+- Move focus when the user is actively working elsewhere on the page
 
   </Dont>
 

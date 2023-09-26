@@ -322,9 +322,9 @@ function DateRangePicker() {
               </Scrollable>
             )}
           </Box>
-          <Box padding={{xs: 5}} maxWidth={mdDown ? '320px' : '516px'}>
-            <BlockStack gap="4">
-              <InlineStack gap="2">
+          <Box padding={{xs: 500}} maxWidth={mdDown ? '320px' : '516px'}>
+            <BlockStack gap="400">
+              <InlineStack gap="200">
                 <div style={{flexGrow: 1}}>
                   <TextField
                     role="combobox"

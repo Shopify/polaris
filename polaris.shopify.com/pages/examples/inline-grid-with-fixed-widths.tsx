@@ -30,7 +30,7 @@ const Placeholder = ({
           : 'none',
       }}
     >
-      <InlineStack gap="4" align="center" blockAlign="center">
+      <InlineStack gap="400" align="center" blockAlign="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',

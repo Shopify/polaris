@@ -13,7 +13,7 @@ variants:
 
 <Variants variants={frontmatter.variants} />
 
-<Stack gap="4">
+<Stack gap="400">
 
 ## Related resources
 

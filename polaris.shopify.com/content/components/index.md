@@ -13,7 +13,7 @@ Components are the reusable building blocks for creating Shopify admin experienc
 
 </Lede>
 
-<Stack gap="12">
+<Stack gap="1200">
 {posts.map(group => <Box>
 
 <h2>{group.title}</h2>

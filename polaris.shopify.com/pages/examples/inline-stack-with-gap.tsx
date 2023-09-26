@@ -8,7 +8,7 @@ function InlineWithGapExample() {
     <BlockStack>
       <InlineStack>
         <SpacingBackground width="436px" height="20px" margin>
-          <InlineStack gap="4" wrap={false} blockAlign="center">
+          <InlineStack gap="400" wrap={false} blockAlign="center">
             <Placeholder width="106px" height="36px" />
             <Placeholder width="106px" height="20px" />
             <Placeholder width="106px" height="20px" />
@@ -17,7 +17,7 @@ function InlineWithGapExample() {
         </SpacingBackground>
       </InlineStack>
       <SpacingBackground width="227.98px" height="40px">
-        <InlineStack gap="4" wrap={false} blockAlign="end">
+        <InlineStack gap="400" wrap={false} blockAlign="end">
           <Placeholder width="106px" height="20px" />
           <Placeholder width="106px" height="20px" />
         </InlineStack>

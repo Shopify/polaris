@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BlockStackWithGapExample() {
   return (
     <SpacingBackground>
-      <BlockStack gap="5">
+      <BlockStack gap="500">
         <Placeholder height="48px" />
         <Placeholder height="48px" />
         <Placeholder height="48px" />

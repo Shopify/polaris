@@ -26,7 +26,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
         width: width,
       }}
     >
-      <InlineStack gap="4" align="center">
+      <InlineStack gap="400" align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',
