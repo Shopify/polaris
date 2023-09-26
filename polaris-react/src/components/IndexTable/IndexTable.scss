@@ -204,16 +204,13 @@ $loading-panel-height: 53px;
     }
   }
 
+  // stylelint-disable-next-line -- status row color
   &.statusWarning {
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- added crtical status for suspended products
+    // stylelint-disable-next-line -- status row color
     &,
     .TableCell-first,
     .TableCell-first + .TableCell {
       background-color: var(--p-color-bg-warning-subdued-experimental);
-
-      #{$se23} & {
-        background-color: var(--p-color-bg-warning-subdued-experimental);
-      }
     }
   }
 

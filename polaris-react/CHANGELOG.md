@@ -1,5 +1,18 @@
 # Changelog
 
+## 11.23.0
+
+### Minor Changes
+
+- [#10630](https://github.com/Shopify/polaris/pull/10630) [`3987c0e48`](https://github.com/Shopify/polaris/commit/3987c0e489ec46cfd4d43871603889ea507b5cdc) Thanks [@aveline](https://github.com/aveline)! - Migrated font custom properties
+
+* [#10632](https://github.com/Shopify/polaris/pull/10632) [`4ab148ee6`](https://github.com/Shopify/polaris/commit/4ab148ee669c56e123da1fc51ca6c71ceb26fed9) Thanks [@fabiormoura](https://github.com/fabiormoura)! - Added a `warning` `status` to the `IndexTable.Row`
+
+### Patch Changes
+
+- Updated dependencies [[`f23af6fdd`](https://github.com/Shopify/polaris/commit/f23af6fdd3a52d93700d3aeab43305bcf3989e98)]:
+  - @shopify/polaris-tokens@7.12.1
+
 ## 11.22.0
 
 ### Minor Changes
