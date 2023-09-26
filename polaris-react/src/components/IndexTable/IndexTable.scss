@@ -587,7 +587,7 @@ $loading-panel-height: 53px;
   font-weight: var(--p-font-weight-medium);
   color: var(--p-color-text-subdued);
   font-size: var(--p-font-size-75);
-  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-500);
 
   &:hover,
   &:focus {
@@ -1104,7 +1104,7 @@ $loading-panel-height: 53px;
     padding-left: var(--p-space-300);
     padding-top: var(--p-space-150);
     padding-bottom: var(--p-space-150);
-    line-height: var(--p-font-line-height-2);
+    line-height: var(--p-font-line-height-500);
   }
 }
 

@@ -200,7 +200,7 @@
 
     #{$se23} & {
       font-weight: var(--p-font-weight-regular);
-      font-size: var(--p-font-size-80-experimental);
+      font-size: var(--p-font-size-325);
     }
   }
 }
@@ -325,7 +325,7 @@
 
     #{$se23} & {
       font-weight: var(--p-font-weight-regular);
-      font-size: var(--p-font-size-80-experimental);
+      font-size: var(--p-font-size-325);
       // stylelint-disable polaris/space/declaration-property-unit-disallowed-list -- Using hard coded px values to avoid cutting off the focus ring when overflow:hidden is applied via .Cell-truncate
       margin: 3px;
       padding: 3px;
