@@ -310,8 +310,8 @@ export function Filters({
           align="start"
           blockAlign="center"
           gap={{
-            xs: '4',
-            md: '3',
+            xs: '400',
+            md: '300',
           }}
         >
           <div
@@ -446,8 +446,8 @@ export function Filters({
               align="start"
               blockAlign="center"
               gap={{
-                xs: '4',
-                md: '3',
+                xs: '400',
+                md: '300',
               }}
             >
               {additionalContent}

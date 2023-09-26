@@ -12,30 +12,30 @@ function BoxWithPaddingExample() {
           width: '586px',
         }}
       >
-        <Box padding="4" width="586px">
+        <Box padding="400" width="586px">
           <Placeholder label="padding" childAlign="center" />
         </Box>
       </div>
       <InlineStack gap="4">
         <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
-          <Box paddingInlineStart="4" width="284px">
+          <Box paddingInlineStart="400" width="284px">
             <Placeholder label="paddingInlineStart" childAlign="start" />
           </Box>
         </div>
         <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
-          <Box paddingInlineEnd="4" width="284px">
+          <Box paddingInlineEnd="400" width="284px">
             <Placeholder label="paddingInlineEnd" childAlign="end" />
           </Box>
         </div>
       </InlineStack>
       <InlineStack gap="4">
         <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
-          <Box paddingBlockStart="4" width="284px">
+          <Box paddingBlockStart="400" width="284px">
             <Placeholder label="paddingBlockStart" childAlign="center" />
           </Box>
         </div>
         <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
-          <Box paddingBlockEnd="4" width="284px">
+          <Box paddingBlockEnd="400" width="284px">
             <Placeholder label="paddingBlockEnd" childAlign="center" />
           </Box>
         </div>

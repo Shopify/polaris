@@ -59,8 +59,8 @@ function AppSettingsLayoutExample() {
         <InlineGrid columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
           <Box
             as="section"
-            paddingInlineStart={{xs: 4, sm: 0}}
-            paddingInlineEnd={{xs: 4, sm: 0}}
+            paddingInlineStart={{xs: 400, sm: 0}}
+            paddingInlineEnd={{xs: 400, sm: 0}}
           >
             <BlockStack gap="4">
               <Text as="h3" variant="headingMd">
@@ -82,8 +82,8 @@ function AppSettingsLayoutExample() {
         <InlineGrid columns={{xs: '1fr', md: '2fr 5fr'}} gap="4">
           <Box
             as="section"
-            paddingInlineStart={{xs: 4, sm: 0}}
-            paddingInlineEnd={{xs: 4, sm: 0}}
+            paddingInlineStart={{xs: 400, sm: 0}}
+            paddingInlineEnd={{xs: 400, sm: 0}}
           >
             <BlockStack gap="4">
               <Text as="h3" variant="headingMd">

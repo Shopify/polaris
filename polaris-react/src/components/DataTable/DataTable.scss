@@ -39,7 +39,7 @@
   border-radius: var(--p-border-radius-1);
 
   &:not(:last-of-type) {
-    margin-right: var(--p-space-1);
+    margin-right: var(--p-space-100);
   }
 
   &:first-of-type {
@@ -185,7 +185,7 @@
 
   .IncreasedTableDensity & .Heading-left {
     padding-right: 0;
-    padding-left: var(--p-space-1);
+    padding-left: var(--p-space-100);
   }
 }
 

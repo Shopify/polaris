@@ -111,7 +111,7 @@ export function WithBleed() {
           <div
             // Flex to shrink the container to the height of the radio (ie;
             // ignore line-height)
-            style={{padding: 'var(--p-space-8)', display: 'flex'}}
+            style={{padding: 'var(--p-space-800)', display: 'flex'}}
           >
             <RadioButton
               label="Accounts are disabled"
@@ -120,11 +120,11 @@ export function WithBleed() {
               id="disabled2"
               name="accounts2"
               onChange={handleChange2}
-              bleed="8"
+              bleed="800"
             />
           </div>
           <Divider />
-          <div style={{padding: 'var(--p-space-8)', display: 'flex'}}>
+          <div style={{padding: 'var(--p-space-800)', display: 'flex'}}>
             <RadioButton
               label="Accounts are optional"
               labelHidden
@@ -132,7 +132,7 @@ export function WithBleed() {
               id="optional2"
               name="accounts2"
               onChange={handleChange2}
-              bleed="8"
+              bleed="800"
             />
           </div>
         </Box>

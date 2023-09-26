@@ -41,7 +41,7 @@ export function All() {
 
 export function Default() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <Tooltip active content="This order has shipping labels.">
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
@@ -160,8 +160,8 @@ export function Padding() {
         </Tooltip>
         <Tooltip
           active
-          content="This content has padding of 4 (space-4 / 16px)"
-          padding="4"
+          content="This content has padding of 4 (space-400 / 16px)"
+          padding="400"
         >
           <InlineStack gap="1">
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -227,7 +227,7 @@ export function BorderRadius() {
 
 export function VisibleOnlyWithChildInteraction() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <div style={{width: '200px'}}>
         <ButtonGroup variant="segmented" fullWidth>
           <Tooltip content="Bold" dismissOnMouseOut>
@@ -304,7 +304,7 @@ export function WithHoverDelay() {
 
 export function ActivatorAsDiv() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <Tooltip
         active
         content="This tooltip is rendered as a div"
@@ -461,7 +461,7 @@ export function Alignment() {
 
 export function HasUnderline() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <Tooltip active content="This tooltip has an underline" hasUnderline>
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
@@ -473,7 +473,7 @@ export function HasUnderline() {
 
 export function PersistOnClick() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <Tooltip
         content="This tooltip can be clicked to stay open"
         persistOnClick

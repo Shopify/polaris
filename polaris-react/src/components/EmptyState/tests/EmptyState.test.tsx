@@ -57,7 +57,7 @@ describe('<EmptyState />', () => {
 
       expect(emptyState).toContainReactComponent(InlineStack, {
         align: 'center',
-        gap: '2',
+        gap: '200',
       });
     });
 

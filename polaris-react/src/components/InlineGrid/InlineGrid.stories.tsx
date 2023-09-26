@@ -49,7 +49,7 @@ export function WithMixedPropTypes() {
     <Page fullWidth>
       <InlineGrid
         columns={{xs: 2, sm: '2fr 1fr', md: '2fr 1fr 1fr', lg: 6}}
-        gap={{xs: '2'}}
+        gap={{xs: '200'}}
       >
         <div style={{background: 'aquamarine'}}>one</div>
         <div style={{background: 'aquamarine'}}>two</div>
@@ -79,7 +79,7 @@ export function WithResponsiveGap() {
     <Page fullWidth>
       <InlineGrid
         columns={{xs: 3}}
-        gap={{xs: '025', sm: '4', md: '6', lg: '8', xl: '10'}}
+        gap={{xs: '025', sm: '400', md: '600', lg: '800', xl: '1000'}}
       >
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>Column two</div>

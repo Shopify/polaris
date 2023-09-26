@@ -2,8 +2,8 @@
 
 .Badge {
   // stylelint-disable -- Polaris component custom properties
-  --pc-badge-horizontal-padding: var(--p-space-2);
-  --pc-badge-vertical-padding: var(--p-space-05);
+  --pc-badge-horizontal-padding: var(--p-space-200);
+  --pc-badge-vertical-padding: var(--p-space-050);
   // stylelint-enable
   display: inline-flex;
   align-items: center;
@@ -172,6 +172,6 @@
 .PipContainer {
   display: grid;
   align-items: center;
-  margin-left: calc(-1 * var(--p-space-05));
-  margin-right: var(--p-space-1);
+  margin-left: calc(-1 * var(--p-space-050));
+  margin-right: var(--p-space-100);
 }

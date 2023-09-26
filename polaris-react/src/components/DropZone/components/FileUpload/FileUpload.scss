@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 .FileUpload {
-  padding: var(--p-space-4);
+  padding: var(--p-space-400);
   text-align: center;
   display: flex;
   align-items: center;
@@ -10,11 +10,11 @@
 }
 
 .large {
-  padding: var(--p-space-8);
+  padding: var(--p-space-800);
 }
 
 .small {
-  padding: var(--p-space-3);
+  padding: var(--p-space-300);
 }
 
 .FileUpload img {

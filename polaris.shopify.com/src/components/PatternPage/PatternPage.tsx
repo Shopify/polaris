@@ -138,12 +138,12 @@ const defaultMdxComponents: React.ComponentProps<
   Stack: ({gap, children}) => <Stack gap={gap}>{children}</Stack>,
   Hero: ({children}) => <Box className={styles.Hero}>{children}</Box>,
   HowItHelps: ({children}) => (
-    <Stack gap="4" className={styles.HowItHelps}>
+    <Stack gap="400" className={styles.HowItHelps}>
       {children}
     </Stack>
   ),
   Usage: ({children}) => (
-    <Stack gap="4" className={styles.Usage}>
+    <Stack gap="400" className={styles.Usage}>
       {children}
     </Stack>
   ),

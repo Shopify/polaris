@@ -178,10 +178,10 @@ export function Pagination({
         {nextButtonEvents}
         <Box
           background="bg-subdued"
-          paddingBlockStart="1_5-experimental"
-          paddingBlockEnd="1_5-experimental"
-          paddingInlineStart="3"
-          paddingInlineEnd="2"
+          paddingBlockStart="150"
+          paddingBlockEnd="150"
+          paddingInlineStart="300"
+          paddingInlineEnd="200"
         >
           <InlineStack
             align={labelMarkup ? 'space-between' : 'end'}

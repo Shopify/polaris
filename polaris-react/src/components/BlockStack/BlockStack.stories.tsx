@@ -12,10 +12,10 @@ export function Default() {
       <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         02
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         03
       </Box>
     </BlockStack>
@@ -28,10 +28,10 @@ export function WithGap() {
       <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         02
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         03
       </Box>
     </BlockStack>
@@ -44,10 +44,10 @@ export function WithResponsiveGap() {
       <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         02
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         03
       </Box>
     </BlockStack>
@@ -61,10 +61,10 @@ export function WithAlignStart() {
         <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           02
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           03
         </Box>
       </BlockStack>
@@ -79,10 +79,10 @@ export function WithAlignCenter() {
         <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           02
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           03
         </Box>
       </BlockStack>
@@ -97,10 +97,10 @@ export function WithAlignEnd() {
         <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           02
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           03
         </Box>
       </BlockStack>
@@ -115,10 +115,10 @@ export function WithAlignSpaceAround() {
         <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           02
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           03
         </Box>
       </BlockStack>
@@ -133,10 +133,10 @@ export function WithAlignSpaceBetween() {
         <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           02
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           03
         </Box>
       </BlockStack>
@@ -151,10 +151,10 @@ export function WithAlignSpaceEvenly() {
         <Box background="bg" padding="1">
           01
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           02
         </Box>
-        <Box background="bg" padding="1">
+        <Box background="bg" padding="100">
           03
         </Box>
       </BlockStack>
@@ -168,10 +168,10 @@ export function WithInlineAlignStart() {
       <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         02
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         03
       </Box>
     </BlockStack>
@@ -184,10 +184,10 @@ export function WithInlineAlignCenter() {
       <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         02
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         03
       </Box>
     </BlockStack>
@@ -200,10 +200,10 @@ export function WithInlineAlignEnd() {
       <Box background="bg" padding="1">
         01
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         02
       </Box>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         03
       </Box>
     </BlockStack>

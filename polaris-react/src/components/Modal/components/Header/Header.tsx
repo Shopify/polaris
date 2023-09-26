@@ -39,8 +39,8 @@ export function Header({
 
   return (
     <Box
-      paddingBlockStart="4"
-      paddingBlockEnd="4"
+      paddingBlockStart="400"
+      paddingBlockEnd="400"
       paddingInlineStart={headerPaddingInline}
       paddingInlineEnd={headerPaddingInline}
       borderBlockEndWidth="1"

@@ -73,7 +73,7 @@ export function WithSubduedSection() {
         <Text as="h3" variant="headingMd">
           Staff accounts
         </Text>
-        <Box paddingBlockEnd="5">
+        <Box paddingBlockEnd="500">
           <List>
             <List.Item>Felix Crafford</List.Item>
             <List.Item>Ezequiel Manno</List.Item>
@@ -81,8 +81,8 @@ export function WithSubduedSection() {
         </Box>
       </BlockStack>
       <Bleed
-        marginBlockEnd={{xs: '4', sm: '5'}}
-        marginInline={{xs: '4', sm: '5'}}
+        marginBlockEnd={{xs: '400', sm: '500'}}
+        marginInline={{xs: '400', sm: '500'}}
       >
         <Divider />
         <Box

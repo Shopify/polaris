@@ -289,8 +289,8 @@ function DateRangePicker() {
           <Box
             maxWidth={mdDown ? '516px' : '212px'}
             width={mdDown ? '100%' : '212px'}
-            padding={{xs: 5, md: 0}}
-            paddingBlockEnd={{xs: 1, md: 0}}
+            padding={{xs: 500, md: 0}}
+            paddingBlockEnd={{xs: 100, md: 0}}
           >
             {mdDown ? (
               <Select

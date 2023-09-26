@@ -341,7 +341,7 @@ export function IndexFilters({
                     blockAlign="center"
                     gap={{
                       xs: '0',
-                      md: '2',
+                      md: '200',
                     }}
                   >
                     <div

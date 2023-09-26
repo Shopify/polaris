@@ -107,7 +107,7 @@ export function WithBleedAndFill() {
           onChange={handleChange1}
         />
       </Card>
-      <Card padding="4">
+      <Card padding="400">
         <Checkbox
           label="Bleed increase hit size"
           bleed="4"
@@ -115,21 +115,21 @@ export function WithBleedAndFill() {
           onChange={handleChange2}
         />
       </Card>
-      <Card padding="4">
+      <Card padding="400">
         <div style={{height: '100px'}}>
           <Checkbox
             label="Fill to full width/height + bleed"
-            bleed="4"
+            bleed="400"
             fill
             checked={checked3}
             onChange={handleChange3}
           />
         </div>
       </Card>
-      <Card padding={{xs: '4', lg: '6'}}>
+      <Card padding={{xs: '400', lg: '600'}}>
         <Checkbox
           label="Supports responsive sizes"
-          bleed={{xs: '4', lg: '6'}}
+          bleed={{xs: '400', lg: '600'}}
           checked={checked4}
           onChange={handleChange4}
         />
