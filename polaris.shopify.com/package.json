@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.58.0",
+  "version": "0.58.1",
   "private": true,
   "engines": {
     "node": "^16.17.0 || >=18.12.0"
