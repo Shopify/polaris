@@ -29,9 +29,9 @@
     display: inline-block;
     background-color: var(--fill-success);
     color: var(--text-success-onfill);
-    padding: var(--p-space-05) var(--p-space-2) var(--p-space-05)
-      var(--p-space-5);
-    border-radius: var(--p-space-2);
+    padding: var(--p-space-050) var(--p-space-200) var(--p-space-050)
+      var(--p-space-500);
+    border-radius: var(--p-space-200);
     font-size: var(--font-size-100);
     font-weight: var(--font-weight-600);
     line-height: 1rem;
@@ -64,7 +64,7 @@
   }
 
   p {
-    margin: var(--p-space-2) 0 0 0;
+    margin: var(--p-space-200) 0 0 0;
     font: var(--font-body-md);
   }
 }
