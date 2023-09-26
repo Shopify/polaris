@@ -257,7 +257,6 @@ function PrimaryActionMarkup({
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
         variant: primary ? 'primary' : undefined,
-        disabled: disabled || primaryAction.disabled,
       },
     );
 

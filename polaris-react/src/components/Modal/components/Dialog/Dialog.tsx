@@ -9,7 +9,6 @@ import {Key} from '../../../../types';
 import {KeypressListener} from '../../../KeypressListener';
 import {TrapFocus} from '../../../TrapFocus';
 import type {ModalSize} from '../../Modal';
-import {useFrame} from '../../../../utilities/frame';
 import {Text} from '../../../Text';
 import {FrameContext} from '../../../../utilities/frame';
 
