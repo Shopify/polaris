@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.12.1
+
+### Patch Changes
+
+- [#10671](https://github.com/Shopify/polaris/pull/10671) [`f23af6fdd`](https://github.com/Shopify/polaris/commit/f23af6fdd3a52d93700d3aeab43305bcf3989e98) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated the `toValues` token utility to resolve token name references in the `theme` to their unit values
+
 ## 7.12.0
 
 ### Minor Changes
