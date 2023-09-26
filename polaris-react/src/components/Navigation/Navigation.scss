@@ -628,7 +628,7 @@ $nav-max-width: 360px;
     }
 
     @media #{$p-breakpoints-md-up} {
-      font-size: var(--p-font-size-100);
+      font-size: var(--p-font-size-350);
       line-height: 1;
     }
   }
@@ -795,8 +795,8 @@ $nav-max-width: 360px;
     margin-bottom: calc(var(--p-space-200) + var(--p-space-050));
 
     @media #{$p-breakpoints-md-down} {
-      font-size: var(--p-font-size-100);
-      line-height: var(--p-font-line-height-2);
+      font-size: var(--p-font-size-350);
+      line-height: var(--p-font-line-height-500);
     }
 
     @media #{$p-breakpoints-md-up} {

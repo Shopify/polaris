@@ -6,11 +6,11 @@
   --pc-button-slim-min-height: var(--p-font-line-height-4);
   --pc-button-large-min-height: 32px;
   --pc-button-vertical-padding: calc(
-    (36px - var(--p-font-line-height-2) - var(--p-space-050)) / 2
+    (36px - var(--p-font-line-height-500) - var(--p-space-050)) / 2
   );
   --pc-button-slim-vertical-padding: calc(
     (
-        var(--pc-button-slim-min-height) - var(--p-font-line-height-2) -
+        var(--pc-button-slim-min-height) - var(--p-font-line-height-500) -
           var(--p-space-050)
       ) / 2
   );
@@ -876,7 +876,7 @@
 
     .Content {
       font-size: var(--p-font-size-75);
-      line-height: var(--p-font-line-height-1);
+      line-height: var(--p-font-line-height-400);
     }
   }
 }
@@ -907,7 +907,7 @@
   .Content {
     font-size: var(--p-font-size-80-experimental);
     font-weight: var(--p-font-weight-medium);
-    line-height: var(--p-font-line-height-2);
+    line-height: var(--p-font-line-height-500);
     letter-spacing: initial;
 
     @media #{$p-breakpoints-md-up} {
