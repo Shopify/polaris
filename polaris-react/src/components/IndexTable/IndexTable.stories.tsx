@@ -1696,7 +1696,6 @@ export function WithStickyLastColumn() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
-      status: 'Created',
       channel: 'Point of Sale',
       paymentStatus: 'Refunded',
       fulfillmentStatus: 'Fulfilled',
@@ -1708,10 +1707,50 @@ export function WithStickyLastColumn() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
-      status: 'Created',
       channel: 'Online Store',
       paymentStatus: 'Paid',
       fulfillmentStatus: 'Unfulfilled',
+    },
+    {
+      id: '2562',
+      url: '#',
+      name: 'Helen Troy',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$975',
+      lastOrderDate: 'May 31, 2023',
+      status: 'success',
+    },
+    {
+      id: '4102',
+      url: '#',
+      name: 'Colm Dillane',
+      location: 'New York, USA',
+      orders: 27,
+      amountSpent: '$2885',
+      lastOrderDate: 'May 31, 2023',
+      status: 'critical',
+    },
+    {
+      id: '2564',
+      url: '#',
+      name: 'Al Chemist',
+      location: 'New York, USA',
+      orders: 19,
+      amountSpent: '$1,209',
+      lastOrderDate: 'April 4, 2023',
+      disabled: true,
+      status: 'warning',
+    },
+    {
+      id: '2563',
+      url: '#',
+      name: 'Larry June',
+      location: 'San Francisco, USA',
+      orders: 22,
+      amountSpent: '$1,400',
+      lastOrderDate: 'March 19, 2023',
+      status: 'subdued',
     },
   ];
   const resourceName = {
@@ -1742,6 +1781,7 @@ export function WithStickyLastColumn() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        status={status}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
