@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Use valid react properties for svg avatar
+Updated the `stroke-width` SVG attribute to `strokeWidth` in `Avatar` to fix the React prop name syntax error 
