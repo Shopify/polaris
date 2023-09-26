@@ -6,24 +6,24 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BleedSpecificDirectionExample() {
   return (
-    <BlockStack gap="6">
+    <BlockStack gap="600">
       <Card>
-        <Bleed marginInlineStart="8">
+        <Bleed marginInlineStart="800">
           <Placeholder label="marginInlineStart" />
         </Bleed>
       </Card>
       <Card>
-        <Bleed marginInlineEnd="8">
+        <Bleed marginInlineEnd="800">
           <Placeholder label="marginInlineEnd" />
         </Bleed>
       </Card>
       <Card>
-        <Bleed marginBlockStart="8">
+        <Bleed marginBlockStart="800">
           <Placeholder label="marginBlockStart" />
         </Bleed>
       </Card>
       <Card>
-        <Bleed marginBlockEnd="8">
+        <Bleed marginBlockEnd="800">
           <Placeholder label="marginBlockEnd" />
         </Bleed>
       </Card>
@@ -36,12 +36,12 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
     <div
       style={{
         background: 'var(--p-color-text-info)',
-        padding: '14px var(--p-space-2)',
+        padding: '14px var(--p-space-200)',
         height: height,
         width: width,
       }}
     >
-      <InlineStack gap="4" align="center">
+      <InlineStack gap="400" align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',

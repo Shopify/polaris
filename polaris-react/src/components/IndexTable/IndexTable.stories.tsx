@@ -1204,7 +1204,9 @@ export function WithBulkActionsAndSelectionAcrossPages() {
 
   return (
     <div
-      style={{padding: 'var(--p-space-4) var(--p-space-4) var(--p-space-10)'}}
+      style={{
+        padding: 'var(--p-space-400) var(--p-space-400) var(--p-space-1000)',
+      }}
     >
       <LegacyCard>
         <IndexTable

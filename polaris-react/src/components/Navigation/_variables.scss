@@ -1,6 +1,6 @@
 $nav-variables: (
-  mobile-spacing: calc(var(--p-space-2) + var(--p-space-05)),
-  desktop-spacing: calc(var(--p-space-1) + var(--p-space-05)),
+  mobile-spacing: calc(var(--p-space-200) + var(--p-space-050)),
+  desktop-spacing: calc(var(--p-space-100) + var(--p-space-050)),
   mobile-height: 40px,
   desktop-height: 28px,
   icon-size: 20px,
@@ -29,7 +29,7 @@ $nav-animation-variables: (
   flex-grow: 1;
   align-items: flex-start;
   max-width: 100%;
-  padding: 0 var(--p-space-1) 0 var(--p-space-2);
+  padding: 0 var(--p-space-100) 0 var(--p-space-200);
   margin: 0;
   color: var(--p-color-text);
   text-decoration: none;
@@ -75,16 +75,16 @@ $nav-animation-variables: (
   svg,
   img {
     display: block;
-    height: var(--p-space-5);
-    width: var(--p-space-5);
+    height: var(--p-space-500);
+    width: var(--p-space-500);
   }
 
   .Icon-resized {
     svg,
     img {
-      margin: var(--p-space-05);
-      height: var(--p-space-4);
-      width: var(--p-space-4);
+      margin: var(--p-space-050);
+      height: var(--p-space-400);
+      width: var(--p-space-400);
     }
 
     img {
@@ -109,14 +109,14 @@ $nav-animation-variables: (
   align-self: flex-start;
   width: nav(icon-size);
   height: nav(icon-size);
-  margin-top: var(--p-space-2);
-  margin-right: var(--p-space-2);
-  margin-bottom: var(--p-space-2);
+  margin-top: var(--p-space-200);
+  margin-right: var(--p-space-200);
+  margin-bottom: var(--p-space-200);
 
   @media #{$p-breakpoints-md-up} {
-    margin-top: var(--p-space-1);
-    margin-right: var(--p-space-2);
-    margin-bottom: var(--p-space-1);
+    margin-top: var(--p-space-100);
+    margin-right: var(--p-space-200);
+    margin-bottom: var(--p-space-100);
   }
 
   svg {
@@ -187,14 +187,14 @@ $nav-animation-variables: (
 
 @mixin nav-item-text-attributes {
   flex: 1 1 auto;
-  margin-top: calc(var(--p-space-2) + var(--p-space-05));
-  margin-bottom: calc(var(--p-space-2) + var(--p-space-05));
+  margin-top: calc(var(--p-space-200) + var(--p-space-050));
+  margin-bottom: calc(var(--p-space-200) + var(--p-space-050));
   line-height: var(--p-font-line-height-2);
   font-size: var(--p-font-size-100);
 
   @media #{$p-breakpoints-md-up} {
-    margin-top: var(--p-space-1);
-    margin-bottom: var(--p-space-1);
+    margin-top: var(--p-space-100);
+    margin-bottom: var(--p-space-100);
   }
 
   @media #{$p-breakpoints-md-down} {
@@ -206,12 +206,12 @@ $nav-animation-variables: (
 
 @mixin usermenu-section-attributes {
   position: relative;
-  margin-top: var(--p-space-4);
+  margin-top: var(--p-space-400);
 
   &::before {
     content: '';
     position: absolute;
-    top: calc(-1 * var(--p-space-2));
+    top: calc(-1 * var(--p-space-200));
     left: 0;
     display: block;
     width: 100%;

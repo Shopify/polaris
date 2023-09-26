@@ -28,17 +28,17 @@ $activator-variables: (
   align-items: center;
   min-width: auto;
   min-height: menu(min-height);
-  padding: var(--p-space-1_5-experimental);
+  padding: var(--p-space-150);
   border: 0;
   cursor: pointer;
   transition: background-color var(--p-motion-duration-100);
-  margin-right: var(--p-space-2);
+  margin-right: var(--p-space-200);
   border-radius: var(--p-border-radius-2);
   background-color: var(--p-color-bg-inset-strong);
 
   // stylelint-disable-next-line scss/selector-no-union-class-name -- set user menu padding
   &-userMenu {
-    padding: var(--p-space-05);
+    padding: var(--p-space-050);
   }
 
   &:focus {
@@ -51,7 +51,7 @@ $activator-variables: (
     @include no-focus-ring;
     outline: var(--p-border-width-2) solid
       var(--p-color-border-interactive-focus);
-    outline-offset: var(--p-space-05);
+    outline-offset: var(--p-space-050);
   }
 
   &:hover {
@@ -74,7 +74,7 @@ $activator-variables: (
   }
 
   @media #{$p-breakpoints-md-down} {
-    margin-right: var(--p-space-2);
+    margin-right: var(--p-space-200);
     background-color: var(--p-color-bg-inverse);
 
     &:focus,
@@ -87,7 +87,7 @@ $activator-variables: (
 }
 
 .Section {
-  margin-top: var(--p-space-2);
-  padding-top: var(--p-space-2);
+  margin-top: var(--p-space-200);
+  padding-top: var(--p-space-200);
   border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
 }

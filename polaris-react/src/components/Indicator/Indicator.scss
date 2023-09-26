@@ -1,7 +1,7 @@
 .Indicator {
   // stylelint-disable -- Polaris component custom properties
   --pc-indicator-size: 10px;
-  --pc-indicator-base-position: calc(-1 * var(--p-space-1));
+  --pc-indicator-base-position: calc(-1 * var(--p-space-100));
   // stylelint-enable
 
   &::before,

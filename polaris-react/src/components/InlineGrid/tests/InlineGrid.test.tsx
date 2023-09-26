@@ -6,12 +6,12 @@ import {InlineGrid} from '..';
 describe('InlineGrid', () => {
   it('only renders custom properties that match the properties passed in', () => {
     const inlineGrid = mountWithApp(
-      <InlineGrid gap={{md: '1'}} alignItems="start" />,
+      <InlineGrid gap={{md: '100'}} alignItems="start" />,
     );
 
     expect(inlineGrid).toContainReactComponent('div', {
       style: {
-        '--pc-inline-grid-gap-md': 'var(--p-space-1)',
+        '--pc-inline-grid-gap-md': 'var(--p-space-100)',
         '--pc-inline-grid-align-items': 'start',
       } as React.CSSProperties,
     });

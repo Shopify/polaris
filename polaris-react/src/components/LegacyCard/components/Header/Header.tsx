@@ -30,12 +30,12 @@ export function Header({children, title, actions}: LegacyCardHeaderProps) {
     actionMarkup || children ? (
       <InlineStack
         wrap={false}
-        gap="2"
+        gap="200"
         align="space-between"
         blockAlign="center"
       >
         {titleMarkup}
-        <InlineStack wrap={false} gap="4" blockAlign="center">
+        <InlineStack wrap={false} gap="400" blockAlign="center">
           {actionMarkup}
           {children}
         </InlineStack>

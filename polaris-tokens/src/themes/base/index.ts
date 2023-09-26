@@ -1,6 +1,7 @@
 import {createExact, tokensToRems} from '../../utilities';
 import type {MetaThemeShape} from '../types';
 
+import {border} from './border';
 import {breakpoints} from './breakpoints';
 import {color} from './color';
 import {font} from './font';
@@ -8,21 +9,22 @@ import {height} from './height';
 import {motion} from './motion';
 import {shadow} from './shadow';
 import {space} from './space';
+import {text} from './text';
 import {width} from './width';
 import {zIndex} from './zIndex';
-import {border} from './border';
 
 const createMetaThemeBase = createExact<MetaThemeShape>();
 
 export const metaThemeBase = createMetaThemeBase({
-  breakpoints: tokensToRems(breakpoints),
   border: tokensToRems(border),
+  breakpoints: tokensToRems(breakpoints),
   color,
   font: tokensToRems(font),
   height: tokensToRems(height),
   motion,
   shadow: tokensToRems(shadow),
   space: tokensToRems(space),
+  text,
   width: tokensToRems(width),
   zIndex,
 });

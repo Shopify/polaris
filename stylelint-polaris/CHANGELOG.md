@@ -1,5 +1,23 @@
 # Changelog
 
+## 14.1.0
+
+### Minor Changes
+
+- [#10585](https://github.com/Shopify/polaris/pull/10585) [`45fc3a01f`](https://github.com/Shopify/polaris/commit/45fc3a01f959f6eea2c1bf03b981811a6f13f344) Thanks [@laurkim](https://github.com/laurkim)! - Migrated `space` custom properties from `v11` to `v12`
+
+### Patch Changes
+
+- Updated dependencies [[`45fc3a01f`](https://github.com/Shopify/polaris/commit/45fc3a01f959f6eea2c1bf03b981811a6f13f344)]:
+  - @shopify/polaris-tokens@7.12.0
+
+## 14.0.6
+
+### Patch Changes
+
+- Updated dependencies [[`f26cebe99`](https://github.com/Shopify/polaris/commit/f26cebe99e486730bce2ca1d9add89e24ef9c648), [`2359e5f5a`](https://github.com/Shopify/polaris/commit/2359e5f5a4e6a93f8dd70997c4ae9a1ab732911c)]:
+  - @shopify/polaris-tokens@7.11.0
+
 ## 14.0.5
 
 ### Patch Changes

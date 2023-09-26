@@ -93,8 +93,8 @@ function DatePickerExample() {
     }
   }, [selectedDate]);
   return (
-    <BlockStack inlineAlign="center" gap="4">
-      <Box minWidth="276px" padding={{xs: 2}}>
+    <BlockStack inlineAlign="center" gap="400">
+      <Box minWidth="276px" padding={{xs: 200}}>
         <Popover
           active={visible}
           autofocusTarget="none"
