@@ -1606,6 +1606,15 @@ export function WithRowStatus() {
       amountSpent: '$40',
       status: 'critical',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Volleyball Player',
+      location: 'Delaware, USA',
+      orders: 50,
+      amountSpent: '$80',
+      status: 'warning',
+    },
   ];
   const resourceName = {
     singular: 'customer',
