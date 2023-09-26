@@ -19,7 +19,7 @@
   }
 
   @media print {
-    border: solid var(--p-border-width-1) var(--p-color-border);
+    border: solid var(--p-border-width-025) var(--p-color-border);
   }
 }
 
@@ -147,7 +147,7 @@
 }
 
 .withinFilter {
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
 }
 
 .Icon {

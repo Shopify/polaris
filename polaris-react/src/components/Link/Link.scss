@@ -21,9 +21,9 @@
   &:focus,
   &:focus-visible {
     outline: var(--p-color-border-interactive-focus) auto
-      var(--p-border-width-2);
+      var(--p-border-width-050);
     outline-offset: var(--p-space-050);
-    border-radius: var(--p-border-radius-1_5-experimental);
+    border-radius: var(--p-border-radius-150);
   }
 
   &:active {

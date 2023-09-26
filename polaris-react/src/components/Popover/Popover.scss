@@ -71,7 +71,7 @@ $vertical-motion-offset: -5px;
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   max-width: $content-max-width;
   max-height: $content-max-height;
 
@@ -113,7 +113,7 @@ $vertical-motion-offset: -5px;
 
 .Section {
   + .Section {
-    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
   }
 }
 

@@ -656,7 +656,7 @@
 
     > .Content {
       @media (-ms-high-contrast: active) {
-        outline: var(--p-border-width-2) dotted;
+        outline: var(--p-border-width-050) dotted;
       }
       outline: var(--p-border-width-2) solid
         var(--p-color-border-interactive-focus);
