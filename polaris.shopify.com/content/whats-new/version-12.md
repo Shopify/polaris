@@ -2,7 +2,7 @@
 title: Version 12
 description: |
   Polaris version 12 introduces Shopify's new admin design language. The breaking changes in this release lay the foundation for theming support and unified component APIs for common concepts, like style variants.
-imageUrl:
+imageUrl: /images/updates/uplift-beta@2x.png
 keywords:
   - new design language
   - uplift
