@@ -48,7 +48,7 @@ $vertical-motion-offset: -5px;
 }
 
 .positionedAbove {
-  margin: var(--p-space-4) var(--p-space-2) $visible-portion-of-arrow;
+  margin: var(--p-space-400) var(--p-space-200) $visible-portion-of-arrow;
 
   &.fullWidth {
     margin: 0 auto $visible-portion-of-arrow auto;

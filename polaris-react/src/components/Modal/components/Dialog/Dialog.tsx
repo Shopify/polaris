@@ -1,4 +1,4 @@
-import React, {useRef, useEffect} from 'react';
+import React, {useContext, useRef, useEffect} from 'react';
 import type {SetStateAction, Dispatch} from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {motion} from '@shopify/polaris-tokens';
@@ -11,6 +11,7 @@ import {TrapFocus} from '../../../TrapFocus';
 import type {ModalSize} from '../../Modal';
 import {useFrame} from '../../../../utilities/frame';
 import {Text} from '../../../Text';
+import {FrameContext} from '../../../../utilities/frame';
 
 import styles from './Dialog.scss';
 
@@ -44,7 +45,12 @@ export function Dialog({
   ...props
 }: DialogProps) {
   const containerNode = useRef<HTMLDivElement>(null);
-  const {toastMessages} = useFrame();
+  const frameContext = useContext(FrameContext);
+  let toastMessages;
+
+  if (frameContext) {
+    toastMessages = frameContext.toastMessages;
+  }
 
   const classes = classNames(
     styles.Modal,
@@ -71,6 +77,18 @@ export function Dialog({
     }
     onClose();
   };
+
+  const ariaLiveAnnouncements = (
+    <div aria-live="assertive">
+      {toastMessages
+        ? toastMessages.map((toastMessage) => (
+            <Text visuallyHidden as="p" key={toastMessage.id}>
+              {toastMessage.content}
+            </Text>
+          ))
+        : null}
+    </div>
+  );
 
   return (
     <TransitionChild
@@ -106,15 +124,7 @@ export function Dialog({
               <KeypressListener keyCode={Key.Escape} handler={handleKeyUp} />
               {children}
             </div>
-            <div aria-live="assertive">
-              {toastMessages
-                ? toastMessages.map((toastMessage) => (
-                    <Text visuallyHidden as="p" key={toastMessage.id}>
-                      {toastMessage.content}
-                    </Text>
-                  ))
-                : null}
-            </div>
+            {ariaLiveAnnouncements}
           </div>
         </TrapFocus>
       </div>

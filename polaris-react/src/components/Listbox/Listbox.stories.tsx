@@ -463,7 +463,7 @@ export function WithSearch() {
 export function WithDisabledTextOption() {
   return (
     <LegacyCard>
-      <Box paddingBlockStart="2" paddingBlockEnd="2">
+      <Box paddingBlockStart="200" paddingBlockEnd="200">
         <Listbox accessibilityLabel="Listbox with disabled item example">
           <Listbox.Option value="UniqueValue-1">
             <Listbox.TextOption>Item 1</Listbox.TextOption>

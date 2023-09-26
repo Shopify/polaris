@@ -6,12 +6,12 @@
   --pc-button-slim-min-height: var(--p-font-line-height-4);
   --pc-button-large-min-height: 32px;
   --pc-button-vertical-padding: calc(
-    (36px - var(--p-font-line-height-2) - var(--p-space-05)) / 2
+    (36px - var(--p-font-line-height-2) - var(--p-space-050)) / 2
   );
   --pc-button-slim-vertical-padding: calc(
     (
         var(--pc-button-slim-min-height) - var(--p-font-line-height-2) -
-          var(--p-space-05)
+          var(--p-space-050)
       ) / 2
   );
   --pc-button-large-vertical-padding: var(--p-space-2);
@@ -135,7 +135,7 @@
 .Icon {
   // This compensates for the typical icon used in buttons being
   // inset within its bounding box.
-  margin-left: calc(-1 * (var(--p-space-1)));
+  margin-left: calc(-1 * (var(--p-space-100)));
 
   @media #{$p-breakpoints-md-up} {
     margin-top: calc(-1 * var(--p-space-05));
@@ -840,8 +840,8 @@
   }
 
   &.sizeSlim {
-    padding-left: var(--p-space-1);
-    padding-right: var(--p-space-1);
+    padding-left: var(--p-space-100);
+    padding-right: var(--p-space-100);
   }
 
   .Icon:first-child {
@@ -849,7 +849,7 @@
   }
 
   .Icon:last-child {
-    margin-right: calc(-1 * var(--p-space-1));
+    margin-right: calc(-1 * var(--p-space-100));
   }
 
   .Icon:only-child {

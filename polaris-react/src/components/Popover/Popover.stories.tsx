@@ -818,12 +818,12 @@ export function WithSubduedPane() {
         onClose={togglePopoverActive}
       >
         <Popover.Pane>
-          <Box padding="4">
+          <Box padding="400">
             <Text as="p">Popover content</Text>
           </Box>
         </Popover.Pane>
         <Popover.Pane subdued>
-          <Box padding="4">
+          <Box padding="400">
             <Text as="p">Subdued popover pane</Text>
           </Box>
         </Popover.Pane>

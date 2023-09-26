@@ -132,8 +132,8 @@ export function EmptyState({
     <Box
       paddingInlineStart="0"
       paddingInlineEnd="0"
-      paddingBlockStart="5"
-      paddingBlockEnd="16"
+      paddingBlockStart="500"
+      paddingBlockEnd="1600"
     >
       <BlockStack inlineAlign="center">
         {imageMarkup}

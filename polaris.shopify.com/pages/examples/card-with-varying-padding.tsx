@@ -8,10 +8,10 @@ function CardExample() {
       <Card>
         <Placeholder label="Content inside a card" />
       </Card>
-      <Card padding="4">
+      <Card padding="400">
         <Placeholder label="Content inside a card" />
       </Card>
-      <Card padding="2">
+      <Card padding="200">
         <Placeholder label="Content inside a card" />
       </Card>
       <Card padding="0">

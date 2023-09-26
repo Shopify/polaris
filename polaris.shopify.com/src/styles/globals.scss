@@ -317,7 +317,7 @@ button {
 
 .components-grid {
   display: grid;
-  gap: var(--p-space-4);
+  gap: var(--p-space-400);
   grid-template-columns: repeat(1, 1fr);
 }
 
@@ -357,7 +357,7 @@ button {
 .tip-banner__header {
   display: flex;
   align-items: center;
-  gap: var(--p-space-2);
+  gap: var(--p-space-200);
 }
 
 .tip-banner__header h4 {

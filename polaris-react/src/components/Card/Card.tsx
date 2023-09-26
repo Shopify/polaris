@@ -21,10 +21,10 @@ export interface CardProps {
    */
   background?: ColorBackgroundAlias;
   /** The spacing around the card
-   * @default {xs: '4', sm: '5'}
+   * @default {xs: '400', sm: '500'}
    * @example
-   * padding='4'
-   * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * padding='400'
+   * padding={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   padding?: Spacing;
   /** Border radius value above a set breakpoint */

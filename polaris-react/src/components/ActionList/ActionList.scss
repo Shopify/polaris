@@ -1,6 +1,6 @@
 @import '../../styles/common';
 
-$indented-item-margin: calc(var(--p-space-5) + var(--p-space-05));
+$indented-item-margin: calc(var(--p-space-500) + var(--p-space-050));
 $indented-item-width: calc(100% - #{$indented-item-margin});
 
 .Item {
@@ -120,11 +120,11 @@ $indented-item-width: calc(100% - #{$indented-item-margin});
     &::before {
       content: '';
       position: absolute;
-      top: calc(var(--p-space-3) * -1);
+      top: calc(var(--p-space-300) * -1);
       bottom: 0;
       left: 0;
       border-left: var(--p-border-width-1) solid var(--p-color-border);
-      margin-left: calc(var(--p-space-1_5-experimental) * -1);
+      margin-left: calc(var(--p-space-150) * -1);
     }
   }
 

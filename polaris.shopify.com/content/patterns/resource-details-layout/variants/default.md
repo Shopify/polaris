@@ -111,7 +111,7 @@ function ResourceDetailsLayout() {
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
-                <Bleed marginInline={{xs: 4, sm: 5}}>
+                <Bleed marginInline={{xs: 400, sm: 500}}>
                   <Divider />
                 </Bleed>
               </Box>
