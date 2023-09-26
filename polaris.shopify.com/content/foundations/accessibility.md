@@ -65,16 +65,16 @@ Don’t programmatically move focus to new content without merchant input. Polar
 
   <Do>
 
-- When a merchant activates a link that goes elsewhere in the page, move focus to that content
-- When a merchant must access an overlay, move focus to it
-- When a merchant submits a form that results in an error, move focus to the error message
+  - When a merchant activates a link that goes elsewhere in the page, move focus to that content
+  - When a merchant must access an overlay, move focus to it
+  - When a merchant submits a form that results in an error, move focus to the error message
 
   </Do>
 
   <Dont>
 
-- Move focus when content updates in the background
-- Move focus when the user is actively working elsewhere on the page
+  - Move focus when content updates in the background
+  - Move focus when the user is actively working elsewhere on the page
 
   </Dont>
 
