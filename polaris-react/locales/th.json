@@ -389,6 +389,10 @@
           "save": "บันทึก",
           "cancel": "ยกเลิก"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "แก้ไขคอลัมน์",
+        "accessibilityLabel": "ปรับแต่งลำดับและการแสดงผลคอลัมน์ในตาราง"
       }
     },
     "ActionList": {
