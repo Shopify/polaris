@@ -19,5 +19,5 @@ $resource-list-variables: (
 }
 
 @mixin item-separator {
-  border-top: var(--p-border-width-1) solid var(--p-color-border);
+  border-top: var(--p-border-width-025) solid var(--p-color-border);
 }
