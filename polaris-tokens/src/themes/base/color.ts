@@ -970,7 +970,7 @@ export const color: {
     value: colorsExperimental.green[12],
   },
   'color-icon-critical': {
-    value: colorsExperimental.red[11],
+    value: colorsExperimental.red[12],
   },
   'color-icon-caution': {
     value: colorsExperimental.yellow[11],
