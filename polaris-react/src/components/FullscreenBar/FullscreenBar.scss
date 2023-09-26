@@ -4,11 +4,11 @@
   position: relative;
   display: flex;
   height: $top-bar-height;
-  box-shadow: var(--p-shadow-sm);
+  box-shadow: var(--p-shadow-200);
   background-color: var(--p-color-bg);
 
   #{$se23} & {
-    box-shadow: var(--p-shadow-xs);
+    box-shadow: var(--p-shadow-100);
   }
 }
 

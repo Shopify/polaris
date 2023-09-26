@@ -14,13 +14,13 @@ $right-column: 1fr;
 .TopBar {
   position: relative;
   height: $top-bar-height;
-  box-shadow: var(--p-shadow-sm);
+  box-shadow: var(--p-shadow-200);
   background-color: var(--p-color-bg);
   gap: var(--p-space-100);
 
   #{$se23} & {
     background-color: var(--p-color-bg-inverse);
-    box-shadow: var(--p-shadow-xs);
+    box-shadow: var(--p-shadow-100);
     grid-template-columns: $left-column $search-column-se23 $right-column;
   }
 

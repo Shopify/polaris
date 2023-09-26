@@ -512,10 +512,10 @@
   .StickyHeaderInner-isSticky {
     visibility: visible;
     background-color: var(--p-color-bg);
-    box-shadow: var(--p-shadow-md);
+    box-shadow: var(--p-shadow-300);
 
     #{$se23} & {
-      box-shadow: var(--p-shadow-xs);
+      box-shadow: var(--p-shadow-100);
     }
   }
 }

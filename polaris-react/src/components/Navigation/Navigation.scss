@@ -85,7 +85,7 @@ $nav-max-width: 360px;
     height: $top-bar-height;
     padding: 0 var(--p-space-200) 0 var(--p-space-400);
     background-color: var(--p-color-bg);
-    box-shadow: var(--p-shadow-sm);
+    box-shadow: var(--p-shadow-200);
     margin-bottom: var(--p-space-400);
 
     #{$se23} & {

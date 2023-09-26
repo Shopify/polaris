@@ -10,7 +10,7 @@ $Backdrop-opacity: 0.88;
   background: var(--p-color-bg-inverse);
   color: var(--p-color-text-on-color);
   margin-bottom: var(--p-space-500);
-  box-shadow: var(--p-shadow-xl);
+  box-shadow: var(--p-shadow-500);
 
   #{$se23} & {
     @include shadow-bevel(

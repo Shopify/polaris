@@ -103,10 +103,10 @@ $item-wrapper-loading-height: 64px;
 }
 
 .HeaderWrapper-isSticky {
-  box-shadow: var(--p-shadow-md);
+  box-shadow: var(--p-shadow-300);
 
   #{$se23} & {
-    box-shadow: var(--p-shadow-xs);
+    box-shadow: var(--p-shadow-100);
     border-radius: 0;
   }
 }
