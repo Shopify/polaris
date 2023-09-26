@@ -83,11 +83,11 @@ export function WithBleed() {
   );
 
   return (
-    <BlockStack gap="8">
-      <BlockStack gap="2">
+    <BlockStack gap="800">
+      <BlockStack gap="200">
         <Text as="h2">No Bleed</Text>
-        <Card padding="4">
-          <BlockStack gap="4">
+        <Card padding="400">
+          <BlockStack gap="400">
             <RadioButton
               label="Accounts are disabled"
               checked={value1 === 'disabled'}
@@ -105,7 +105,7 @@ export function WithBleed() {
           </BlockStack>
         </Card>
       </BlockStack>
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2">Bleed</Text>
         <Box width="min-content" background="bg" borderRadius="3">
           <div

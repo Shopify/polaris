@@ -19,14 +19,14 @@ export default {
 export function All() {
   return (
     <>
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With children
         </Text>
         <WithChildren />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           No children
         </Text>

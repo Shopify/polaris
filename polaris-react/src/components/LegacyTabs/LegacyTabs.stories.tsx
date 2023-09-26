@@ -14,36 +14,36 @@ export default {
 
 export function All() {
   return (
-    <BlockStack gap="8">
-      <BlockStack gap="4">
+    <BlockStack gap="800">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
       </BlockStack>
 
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With URL tabs
         </Text>
         <WithUrlTabs />
       </BlockStack>
 
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Fitted
         </Text>
         <Fitted />
       </BlockStack>
 
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With badge content
         </Text>
         <WithBadgeContent />
       </BlockStack>
 
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With custom disclosure
         </Text>

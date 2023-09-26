@@ -66,7 +66,7 @@ export function SkeletonPage({
   ) : null;
 
   return (
-    <BlockStack gap="4" inlineAlign="center">
+    <BlockStack gap="400" inlineAlign="center">
       <Box
         width="100%"
         padding="0"
@@ -90,8 +90,8 @@ export function SkeletonPage({
             paddingInlineEnd={{xs: '400', sm: '0'}}
             width="100%"
           >
-            <InlineStack gap="4" align="space-between" blockAlign="center">
-              <InlineStack gap="4">
+            <InlineStack gap="400" align="space-between" blockAlign="center">
+              <InlineStack gap="400">
                 {backActionMarkup}
                 <Box paddingBlockStart="100" paddingBlockEnd="100">
                   {titleContent}

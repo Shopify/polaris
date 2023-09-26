@@ -375,7 +375,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   ) {
     return (
       <div className={styles.Overlay}>
-        <BlockStack gap="2" inlineAlign="center">
+        <BlockStack gap="200" inlineAlign="center">
           {size === 'small' && <Icon source={icon} tone={color} />}
           {(size === 'medium' || size === 'large') && (
             <Text variant="bodySm" as="p" fontWeight="bold">

@@ -164,7 +164,11 @@ function Markdown<
         h5: (props) => <HeadingWithCopyButton as="h5" {...props} />,
         h6: (props) => <HeadingWithCopyButton as="h6" {...props} />,
         ol: ({children}) => (
-          <Stack as="ol" gap="2" className={[styles.List, styles.OrderedList]}>
+          <Stack
+            as="ol"
+            gap="200"
+            className={[styles.List, styles.OrderedList]}
+          >
             {children}
           </Stack>
         ),
@@ -172,7 +176,7 @@ function Markdown<
           <Stack
             as="ul"
             className={[styles.List, styles.UnorderedList]}
-            gap="2"
+            gap="200"
           >
             {children}
           </Stack>

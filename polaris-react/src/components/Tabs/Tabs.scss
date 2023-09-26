@@ -19,7 +19,7 @@
   @media #{$p-breakpoints-md-down} {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding: var(--p-space-2);
+    padding: var(--p-space-200);
   }
 }
 
@@ -65,7 +65,7 @@
   justify-content: center;
   align-items: center;
   height: 2rem;
-  padding: var(--p-space-1_5-experimental) var(--p-space-3);
+  padding: var(--p-space-150) var(--p-space-300);
   border: 0;
   border-radius: var(--p-border-radius-2);
   background-color: transparent;
@@ -153,7 +153,7 @@
 }
 
 .Tab-hasActions {
-  padding-right: var(--p-space-2);
+  padding-right: var(--p-space-200);
 }
 
 .Tab-iconOnly {
@@ -252,7 +252,7 @@
   justify-content: center;
   cursor: pointer;
   border-radius: var(--p-border-radius-2);
-  padding: 0 var(--p-space-2) 0 var(--p-space-3);
+  padding: 0 var(--p-space-200) 0 var(--p-space-300);
   margin-top: var(--p-space-025);
   border: none;
   outline: none;

@@ -22,7 +22,7 @@ export function Default() {
 
 export function WithAlignStart() {
   return (
-    <InlineStack align="start" blockAlign="center" gap="1">
+    <InlineStack align="start" blockAlign="center" gap="100">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -33,7 +33,7 @@ export function WithAlignStart() {
 
 export function WithAlignCenter() {
   return (
-    <InlineStack align="center" blockAlign="center" gap="1">
+    <InlineStack align="center" blockAlign="center" gap="100">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -44,7 +44,7 @@ export function WithAlignCenter() {
 
 export function WithAlignEnd() {
   return (
-    <InlineStack align="end" blockAlign="center" gap="1">
+    <InlineStack align="end" blockAlign="center" gap="100">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -55,7 +55,7 @@ export function WithAlignEnd() {
 
 export function WithAlignSpaceAround() {
   return (
-    <InlineStack align="space-around" gap="1">
+    <InlineStack align="space-around" gap="100">
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -65,7 +65,7 @@ export function WithAlignSpaceAround() {
 
 export function WithAlignSpaceBetween() {
   return (
-    <InlineStack align="space-between" gap="1">
+    <InlineStack align="space-between" gap="100">
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -75,7 +75,7 @@ export function WithAlignSpaceBetween() {
 
 export function WithAlignSpaceEvenly() {
   return (
-    <InlineStack align="space-evenly" gap="1">
+    <InlineStack align="space-evenly" gap="100">
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -85,7 +85,7 @@ export function WithAlignSpaceEvenly() {
 
 export function WithBlockAlignStart() {
   return (
-    <InlineStack blockAlign="start" gap="1">
+    <InlineStack blockAlign="start" gap="100">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -96,7 +96,7 @@ export function WithBlockAlignStart() {
 
 export function WithBlockAlignCenter() {
   return (
-    <InlineStack blockAlign="center" gap="1">
+    <InlineStack blockAlign="center" gap="100">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -107,7 +107,7 @@ export function WithBlockAlignCenter() {
 
 export function WithBlockAlignEnd() {
   return (
-    <InlineStack blockAlign="end" gap="1">
+    <InlineStack blockAlign="end" gap="100">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -118,7 +118,7 @@ export function WithBlockAlignEnd() {
 
 export function WithBlockAlignBaseline() {
   return (
-    <InlineStack blockAlign="baseline" gap="1">
+    <InlineStack blockAlign="baseline" gap="100">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -129,7 +129,7 @@ export function WithBlockAlignBaseline() {
 
 export function WithBlockAlignStretch() {
   return (
-    <InlineStack blockAlign="stretch" gap="1">
+    <InlineStack blockAlign="stretch" gap="100">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -140,7 +140,7 @@ export function WithBlockAlignStretch() {
 
 export function WithAlignCenterBlockAlignCenter() {
   return (
-    <InlineStack align="center" blockAlign="center" gap="1">
+    <InlineStack align="center" blockAlign="center" gap="100">
       <Thumbnail source={ImageMajor} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
@@ -151,7 +151,7 @@ export function WithAlignCenterBlockAlignCenter() {
 
 export function WithNonWrapping() {
   return (
-    <InlineStack wrap={false} gap="1">
+    <InlineStack wrap={false} gap="100">
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
@@ -162,7 +162,7 @@ export function WithNonWrapping() {
 
 export function WithGap() {
   return (
-    <InlineStack gap="8">
+    <InlineStack gap="800">
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>
@@ -173,7 +173,7 @@ export function WithGap() {
 
 export function WithResponsiveGap() {
   return (
-    <InlineStack gap={{xs: '2', md: '4'}}>
+    <InlineStack gap={{xs: '200', md: '400'}}>
       <Badge>Paid</Badge>
       <Badge>Processing</Badge>
       <Badge>Fulfilled</Badge>

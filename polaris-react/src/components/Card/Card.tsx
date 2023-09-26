@@ -34,7 +34,7 @@ export interface CardProps {
 export const Card = ({
   children,
   background = 'bg',
-  padding = {xs: '4'},
+  padding = {xs: '400'},
   roundedAbove,
 }: CardProps) => {
   const breakpoints = useBreakpoints();

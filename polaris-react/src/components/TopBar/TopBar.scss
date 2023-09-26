@@ -14,7 +14,7 @@ $right-column: 1fr;
   height: $top-bar-height;
   box-shadow: var(--p-shadow-xs);
   background-color: var(--p-color-bg-inverse);
-  gap: var(--p-space-1);
+  gap: var(--p-space-100);
 
   @media #{$p-breakpoints-md-up} {
     gap: var(--p-space-600);
@@ -72,7 +72,7 @@ $right-column: 1fr;
   &:focus-visible {
     outline: var(--p-border-width-2) solid
       var(--p-color-border-interactive-focus);
-    outline-offset: var(--p-space-1_5-experimental);
+    outline-offset: var(--p-space-150);
     border-radius: var(--p-border-radius-2);
   }
 }

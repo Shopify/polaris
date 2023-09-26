@@ -10,8 +10,8 @@ interface Props {
 function TipBanner({title = 'Tip', children}: Props) {
   return (
     <div className={styles.TipBanner}>
-      <BlockStack gap="2">
-        <InlineStack gap="2">
+      <BlockStack gap="200">
+        <InlineStack gap="200">
           <div>
             <Icon source={InfoMinor} tone="info" />
           </div>

@@ -9,7 +9,7 @@ export default {
 export function Default() {
   return (
     <BlockStack>
-      <Box background="bg" padding="1">
+      <Box background="bg" padding="100">
         01
       </Box>
       <Box background="bg" padding="100">
@@ -24,8 +24,8 @@ export function Default() {
 
 export function WithGap() {
   return (
-    <BlockStack gap="8">
-      <Box background="bg" padding="1">
+    <BlockStack gap="800">
+      <Box background="bg" padding="100">
         01
       </Box>
       <Box background="bg" padding="100">
@@ -40,8 +40,8 @@ export function WithGap() {
 
 export function WithResponsiveGap() {
   return (
-    <BlockStack gap={{xs: '4', md: '10'}}>
-      <Box background="bg" padding="1">
+    <BlockStack gap={{xs: '400', md: '1000'}}>
+      <Box background="bg" padding="100">
         01
       </Box>
       <Box background="bg" padding="100">
@@ -57,8 +57,8 @@ export function WithResponsiveGap() {
 export function WithAlignStart() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <BlockStack gap="4" align="start">
-        <Box background="bg" padding="1">
+      <BlockStack gap="400" align="start">
+        <Box background="bg" padding="100">
           01
         </Box>
         <Box background="bg" padding="100">
@@ -75,8 +75,8 @@ export function WithAlignStart() {
 export function WithAlignCenter() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <BlockStack gap="4" align="center">
-        <Box background="bg" padding="1">
+      <BlockStack gap="400" align="center">
+        <Box background="bg" padding="100">
           01
         </Box>
         <Box background="bg" padding="100">
@@ -93,8 +93,8 @@ export function WithAlignCenter() {
 export function WithAlignEnd() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <BlockStack gap="4" align="end">
-        <Box background="bg" padding="1">
+      <BlockStack gap="400" align="end">
+        <Box background="bg" padding="100">
           01
         </Box>
         <Box background="bg" padding="100">
@@ -111,8 +111,8 @@ export function WithAlignEnd() {
 export function WithAlignSpaceAround() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <BlockStack gap="4" align="space-around">
-        <Box background="bg" padding="1">
+      <BlockStack gap="400" align="space-around">
+        <Box background="bg" padding="100">
           01
         </Box>
         <Box background="bg" padding="100">
@@ -129,8 +129,8 @@ export function WithAlignSpaceAround() {
 export function WithAlignSpaceBetween() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <BlockStack gap="4" align="space-between">
-        <Box background="bg" padding="1">
+      <BlockStack gap="400" align="space-between">
+        <Box background="bg" padding="100">
           01
         </Box>
         <Box background="bg" padding="100">
@@ -147,8 +147,8 @@ export function WithAlignSpaceBetween() {
 export function WithAlignSpaceEvenly() {
   return (
     <div style={{display: 'flex', height: '250px'}}>
-      <BlockStack gap="4" align="space-evenly">
-        <Box background="bg" padding="1">
+      <BlockStack gap="400" align="space-evenly">
+        <Box background="bg" padding="100">
           01
         </Box>
         <Box background="bg" padding="100">
@@ -164,8 +164,8 @@ export function WithAlignSpaceEvenly() {
 
 export function WithInlineAlignStart() {
   return (
-    <BlockStack gap="4" inlineAlign="start">
-      <Box background="bg" padding="1">
+    <BlockStack gap="400" inlineAlign="start">
+      <Box background="bg" padding="100">
         01
       </Box>
       <Box background="bg" padding="100">
@@ -180,8 +180,8 @@ export function WithInlineAlignStart() {
 
 export function WithInlineAlignCenter() {
   return (
-    <BlockStack gap="4" inlineAlign="center">
-      <Box background="bg" padding="1">
+    <BlockStack gap="400" inlineAlign="center">
+      <Box background="bg" padding="100">
         01
       </Box>
       <Box background="bg" padding="100">
@@ -196,8 +196,8 @@ export function WithInlineAlignCenter() {
 
 export function WithInlineAlignEnd() {
   return (
-    <BlockStack gap="4" inlineAlign="end">
-      <Box background="bg" padding="1">
+    <BlockStack gap="400" inlineAlign="end">
+      <Box background="bg" padding="100">
         01
       </Box>
       <Box background="bg" padding="100">

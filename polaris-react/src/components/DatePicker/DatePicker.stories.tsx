@@ -11,7 +11,7 @@ export default {
 
 export function All() {
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       <Box maxWidth="290px">
         <Card>
           <Default />

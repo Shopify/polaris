@@ -33,7 +33,7 @@ $spinner-size: 20px;
   height: 44px;
 
   @media #{$p-breakpoints-md-down} {
-    height: var(--p-space-12);
+    height: var(--p-space-1200);
   }
 }
 
@@ -86,11 +86,11 @@ $spinner-size: 20px;
   gap: var(--p-space-200);
   align-items: center;
   justify-content: flex-start;
-  padding: var(--p-space-1_5-experimental) var(--p-space-2);
+  padding: var(--p-space-150) var(--p-space-200);
 
   @media #{$p-breakpoints-md-down} {
     position: relative;
-    padding: var(--p-space-2);
+    padding: var(--p-space-200);
     height: 3rem;
     border-left: var(--p-border-width-1) solid var(--p-color-border-subdued);
 

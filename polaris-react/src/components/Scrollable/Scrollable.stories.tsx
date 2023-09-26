@@ -1170,7 +1170,7 @@ export function UsingInstantScrollToFromRef() {
 
 export function WithShadowOverComplexChildren() {
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       <Text as="p" variant="bodyLg" fontWeight="bold">
         NOTE: Red shadow is for demo/debug purposes only.
         <br />

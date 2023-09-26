@@ -4,8 +4,8 @@
   &.isNested {
     ul ul {
       .Link {
-        padding: var(--p-space-1) var(--p-space-2) var(--p-space-1)
-          var(--p-space-4);
+        padding: var(--p-space-100) var(--p-space-200) var(--p-space-100)
+          var(--p-space-400);
       }
     }
   }
@@ -20,7 +20,7 @@
 
 .Item {
   &:not(:last-child) {
-    padding-bottom: var(--p-space-1);
+    padding-bottom: var(--p-space-100);
   }
 }
 
@@ -31,7 +31,7 @@
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-font-line-height-2);
   overflow: hidden;
-  padding: var(--p-space-1) var(--p-space-2);
+  padding: var(--p-space-100) var(--p-space-200);
   text-overflow: ellipsis;
   white-space: pre;
 

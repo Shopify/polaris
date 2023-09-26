@@ -29,7 +29,7 @@ $nav-animation-variables: (
   flex-grow: 1;
   align-items: flex-start;
   max-width: 100%;
-  padding: 0 var(--p-space-1) 0 var(--p-space-2);
+  padding: 0 var(--p-space-100) 0 var(--p-space-200);
   margin: 0;
   color: var(--p-color-text);
   text-decoration: none;
@@ -109,14 +109,14 @@ $nav-animation-variables: (
   align-self: flex-start;
   width: nav(icon-size);
   height: nav(icon-size);
-  margin-top: var(--p-space-2);
-  margin-right: var(--p-space-2);
-  margin-bottom: var(--p-space-2);
+  margin-top: var(--p-space-200);
+  margin-right: var(--p-space-200);
+  margin-bottom: var(--p-space-200);
 
   @media #{$p-breakpoints-md-up} {
-    margin-top: var(--p-space-1);
-    margin-right: var(--p-space-2);
-    margin-bottom: var(--p-space-1);
+    margin-top: var(--p-space-100);
+    margin-right: var(--p-space-200);
+    margin-bottom: var(--p-space-100);
   }
 
   svg {
