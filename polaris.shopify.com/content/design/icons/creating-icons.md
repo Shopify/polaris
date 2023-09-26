@@ -28,6 +28,7 @@ keywords:
 
 ## Icon layout
 
+<Stack gap='4'>
 <InlineGrid gap="4" columns="2">
   <DirectiveCard status="Tip">
 
@@ -203,3 +204,4 @@ keywords:
 
   </Grid>
 </Card>
+</Stack>
