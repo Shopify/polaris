@@ -213,7 +213,7 @@ export const metaThemeLightUpliftPartial = createMetaThemePartial({
     'color-icon-on-color': {value: colors.gray[1]},
     'color-icon-primary': {value: colors.gray[16]},
     'color-icon-success': {value: colors.green[12]},
-    'color-icon-critical': {value: colors.red[12]},
+    'color-icon-critical': {value: colors.red[11]},
     'color-icon-caution': {value: colors.yellow[11]},
     'color-icon-info': {value: colors.azure[11]},
     'color-icon-warning': {value: colors.orange[11]},
