@@ -28,7 +28,7 @@
 .ChoiceLabel:checked .Backdrop {
   border-color: var(--p-color-bg-primary);
   border-width: 0;
-  box-shadow: inset 0 0 0 var(--p-space-05) var(--p-color-bg-primary);
+  box-shadow: inset 0 0 0 var(--p-space-050) var(--p-color-bg-primary);
 }
 
 // stylelint-disable selector-max-specificity, selector-max-class -- Much easier to read the rules when written like this
@@ -55,7 +55,7 @@
       @include control-backdrop(active);
       border-color: var(--p-color-bg-primary);
       background-color: var(--p-color-bg-primary);
-      box-shadow: inset 0 0 0 var(--p-space-8) var(--p-color-bg-primary);
+      box-shadow: inset 0 0 0 var(--p-space-800) var(--p-color-bg-primary);
     }
 
     ~ .Icon {
@@ -125,17 +125,17 @@
   transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-out),
     transform var(--p-motion-duration-100) var(--p-motion-ease-out);
 
-  top: calc(-1 * var(--p-space-05));
-  left: calc(-1 * var(--p-space-05));
-  bottom: calc(-1 * var(--p-space-05));
-  right: calc(-1 * var(--p-space-05));
+  top: calc(-1 * var(--p-space-050));
+  left: calc(-1 * var(--p-space-050));
+  bottom: calc(-1 * var(--p-space-050));
+  right: calc(-1 * var(--p-space-050));
 
   &.animated {
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    margin: var(--p-space-05);
+    margin: var(--p-space-050);
     transition: initial;
   }
 
@@ -172,7 +172,7 @@
 
   .Backdrop {
     &:active {
-      box-shadow: inset 0 0 0 var(--p-space-05)
+      box-shadow: inset 0 0 0 var(--p-space-050)
         var(--p-color-bg-critical-strong-active);
     }
   }
@@ -181,7 +181,7 @@
   .Input.Input-indeterminate {
     + .Backdrop {
       background-color: var(--p-color-border-critical);
-      box-shadow: inset 0 0 0 var(--p-space-3)
+      box-shadow: inset 0 0 0 var(--p-space-300)
         var(--p-color-bg-critical-strong-active);
     }
   }
@@ -189,7 +189,7 @@
   .Input:active {
     + .Backdrop {
       background-color: var(--p-color-border-critical);
-      box-shadow: inset 0 0 0 var(--p-space-05)
+      box-shadow: inset 0 0 0 var(--p-space-050)
         var(--p-color-bg-critical-strong-active);
     }
   }

@@ -343,7 +343,7 @@ export function WithSearchableListbox() {
   const textFieldMarkup = (
     <div
       style={{
-        padding: 'var(--p-space-4) var(--p-space-2)',
+        padding: 'var(--p-space-400) var(--p-space-200)',
         position: 'sticky',
         zIndex: 'var(--p-z-index-12)',
         width: '100%',
@@ -458,7 +458,7 @@ export function WithSearchableListbox() {
               flexDirection: 'column',
               justifyContent: 'space-between',
               width: '100%',
-              padding: 'var(--p-space-4)',
+              padding: 'var(--p-space-400)',
             }}
           >
             <div
@@ -467,7 +467,7 @@ export function WithSearchableListbox() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 width: '100%',
-                marginBottom: 'var(--p-space-2)',
+                marginBottom: 'var(--p-space-200)',
               }}
             >
               <Text as="h3" variant="headingXs" tone="subdued">
@@ -510,7 +510,7 @@ export function WithSearchableListbox() {
                 position: 'relative',
                 width: '100%',
                 height: '292px',
-                padding: 'var(--p-space-2) 0',
+                padding: 'var(--p-space-200) 0',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >

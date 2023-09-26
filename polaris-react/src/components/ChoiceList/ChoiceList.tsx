@@ -70,7 +70,7 @@ export function ChoiceList({
   const titleMarkup = title ? (
     <Box
       as="legend"
-      paddingBlockEnd={{xs: '5', md: '1'}}
+      paddingBlockEnd={{xs: '500', md: '100'}}
       visuallyHidden={titleHidden}
     >
       {title}
@@ -100,12 +100,12 @@ export function ChoiceList({
       : null;
     const children = renderedChildren ? (
       <div className={styles.ChoiceChildren}>
-        <Box paddingBlockStart={{xs: '4', md: '0'}}>{renderedChildren}</Box>
+        <Box paddingBlockStart={{xs: '400', md: '0'}}>{renderedChildren}</Box>
       </div>
     ) : null;
     return (
       <li key={value}>
-        <Bleed marginBlockEnd={helpText ? {xs: '1', md: '0'} : {xs: '0'}}>
+        <Bleed marginBlockEnd={helpText ? {xs: '100', md: '0'} : {xs: '0'}}>
           <ControlComponent
             name={finalName}
             value={value}
@@ -127,7 +127,7 @@ export function ChoiceList({
   });
 
   const errorMarkup = error && (
-    <Box paddingBlockStart={{xs: '0', md: '1'}} paddingBlockEnd="2">
+    <Box paddingBlockStart={{xs: '0', md: '100'}} paddingBlockEnd="200">
       <InlineError message={error} fieldID={finalName} />
     </Box>
   );
@@ -135,12 +135,12 @@ export function ChoiceList({
   return (
     <BlockStack
       as="fieldset"
-      gap={{xs: '4', md: '0'}}
+      gap={{xs: '400', md: '0'}}
       aria-invalid={error != null}
       id={finalName}
     >
       {titleMarkup}
-      <BlockStack as="ul" gap={{xs: '4', md: '0'}}>
+      <BlockStack as="ul" gap={{xs: '400', md: '0'}}>
         {choicesMarkup}
       </BlockStack>
       {errorMarkup}

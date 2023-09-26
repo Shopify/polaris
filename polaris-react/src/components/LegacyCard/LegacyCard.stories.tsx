@@ -407,7 +407,7 @@ export function WithFlushedSections() {
 
 export function All() {
   return (
-    <BlockStack gap="2">
+    <BlockStack gap="200">
       <LegacyCard title="All headings">
         <LegacyCard.Section title="Section 1 heading">
           Section 1 content
@@ -510,7 +510,7 @@ export function All() {
       <LegacyCard title="Only one header section" />
       <LegacyCard>
         <LegacyCard.Section title="First outside section">
-          <BlockStack gap="2">
+          <BlockStack gap="200">
             <Box>
               <LegacyCard.Section subdued>
                 First nested section
@@ -524,7 +524,7 @@ export function All() {
           </BlockStack>
         </LegacyCard.Section>
         <LegacyCard.Section title="Second outside section">
-          <BlockStack gap="2">
+          <BlockStack gap="200">
             <Box>
               <LegacyCard.Section subdued>
                 First nested section

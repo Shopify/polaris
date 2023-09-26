@@ -31,9 +31,9 @@ export function Default() {
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
     <div style={{padding: '0'}}>
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         {files.map((file, index) => (
-          <InlineStack gap="4" align="center" key={index}>
+          <InlineStack gap="400" align="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -86,9 +86,9 @@ export function WithImageFileUpload() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <InlineStack gap="4" align="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -121,7 +121,7 @@ export function WithImageFileUpload() {
   );
 
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       {errorMessage}
       <DropZone accept="image/*" type="image" onDrop={handleDrop}>
         {uploadedFiles}
@@ -144,7 +144,7 @@ export function WithSingleFileUpload() {
 
   const fileUpload = !file && <DropZone.FileUpload />;
   const uploadedFile = file && (
-    <InlineStack gap="4">
+    <InlineStack gap="400">
       <Thumbnail
         size="small"
         alt={file.name}
@@ -183,9 +183,9 @@ export function WithDropOnPage() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <InlineStack gap="4" align="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -244,9 +244,9 @@ export function AcceptsOnlySVGFiles() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <InlineStack gap="4" align="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -279,7 +279,7 @@ export function AcceptsOnlySVGFiles() {
   );
 
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       {errorMessage}
       <DropZone
         accept="image/svg+xml"
@@ -306,9 +306,9 @@ export function Nested() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <InlineStack gap="4" align="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -343,8 +343,8 @@ export function Nested() {
 
 export function MediumSized() {
   return (
-    <BlockStack gap="4">
-      <BlockStack gap="2">
+    <BlockStack gap="400">
+      <BlockStack gap="200">
         <div>
           <Text as="h2" variant="headingMd">
             Medium sized Drop zone
@@ -356,7 +356,7 @@ export function MediumSized() {
           </DropZone>
         </div>
       </BlockStack>
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <div>
           <Text as="h2" variant="headingMd">
             Medium sized Drop zone with label and hint
@@ -374,8 +374,8 @@ export function MediumSized() {
 
 export function SmallSized() {
   return (
-    <BlockStack gap="4">
-      <BlockStack gap="2">
+    <BlockStack gap="400">
+      <BlockStack gap="200">
         <div>
           <Text as="h2" variant="headingMd">
             Small sized Drop zone
@@ -387,7 +387,7 @@ export function SmallSized() {
           </DropZone>
         </div>
       </BlockStack>
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <div>
           <Text as="h2" variant="headingMd">
             Small sized Drop zone with error
@@ -400,7 +400,7 @@ export function SmallSized() {
           </DropZone>
         </div>
       </BlockStack>
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <div>
           <Text as="h2" variant="headingMd">
             Small sized Drop zone with disabled state
@@ -432,9 +432,9 @@ export function WithCustomFileUploadText() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <InlineStack gap="4" align="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -480,9 +480,9 @@ export function WithCustomFileDialogTrigger() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <InlineStack gap="4" align="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
@@ -539,9 +539,9 @@ export function Error() {
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
     <div style={{padding: '0'}}>
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         {files.map((file, index) => (
-          <InlineStack gap="4" align="center" key={index}>
+          <InlineStack gap="400" align="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
@@ -564,7 +564,7 @@ export function Error() {
   );
 
   return (
-    <BlockStack gap="2">
+    <BlockStack gap="200">
       <div>
         <Text as="h2" variant="headingMd">
           Drop zone with error

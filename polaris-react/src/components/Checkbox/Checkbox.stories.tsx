@@ -40,7 +40,7 @@ export function DisabledStates() {
   };
 
   return (
-    <InlineStack gap="2">
+    <InlineStack gap="200">
       <Checkbox
         label="Disabled unchecked checkbox"
         disabled
@@ -99,37 +99,37 @@ export function WithBleedAndFill() {
     [],
   );
   return (
-    <BlockStack gap="6">
-      <Card padding="4">
+    <BlockStack gap="600">
+      <Card padding="400">
         <Checkbox
           label="No bleed"
           checked={checked1}
           onChange={handleChange1}
         />
       </Card>
-      <Card padding="4">
+      <Card padding="400">
         <Checkbox
           label="Bleed increase hit size"
-          bleed="4"
+          bleed="400"
           checked={checked2}
           onChange={handleChange2}
         />
       </Card>
-      <Card padding="4">
+      <Card padding="400">
         <div style={{height: '100px'}}>
           <Checkbox
             label="Fill to full width/height + bleed"
-            bleed="4"
+            bleed="400"
             fill
             checked={checked3}
             onChange={handleChange3}
           />
         </div>
       </Card>
-      <Card padding={{xs: '4', lg: '6'}}>
+      <Card padding={{xs: '400', lg: '600'}}>
         <Checkbox
           label="Supports responsive sizes"
-          bleed={{xs: '4', lg: '6'}}
+          bleed={{xs: '400', lg: '600'}}
           checked={checked4}
           onChange={handleChange4}
         />

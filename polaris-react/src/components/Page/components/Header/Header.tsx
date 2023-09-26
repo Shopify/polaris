@@ -26,10 +26,6 @@ import type {PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
-import {
-  IndexFiltersMode,
-  useSetIndexFiltersMode,
-} from '../../../../utilities/index-filters';
 import {Box} from '../../../Box';
 import {InlineStack} from '../../../InlineStack';
 import {FilterActionsProvider} from '../../../FilterActionsProvider';
@@ -92,8 +88,6 @@ export function Header({
 }: HeaderProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
-  const {mode} = useSetIndexFiltersMode();
-  const disableActions = mode !== IndexFiltersMode.Default;
 
   const isSingleRow =
     !primaryAction &&
@@ -104,7 +98,7 @@ export function Header({
 
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
-      <Box maxWidth="100%" paddingInlineEnd="1" printHidden>
+      <Box maxWidth="100%" paddingInlineEnd="100" printHidden>
         <Breadcrumbs backAction={backAction} />
       </Box>
     </div>
@@ -116,8 +110,8 @@ export function Header({
         <Box printHidden>
           <Pagination
             {...pagination}
-            hasPrevious={disableActions ? false : pagination.hasPrevious}
-            hasNext={disableActions ? false : pagination.hasNext}
+            hasPrevious={pagination.hasPrevious}
+            hasNext={pagination.hasNext}
           />
         </Box>
       </div>
@@ -135,10 +129,7 @@ export function Header({
   );
 
   const primaryActionMarkup = primaryAction ? (
-    <PrimaryActionMarkup
-      primaryAction={primaryAction}
-      disabled={disableActions}
-    />
+    <PrimaryActionMarkup primaryAction={primaryAction} />
   ) : null;
 
   let actionMenuMarkup: MaybeJSX = null;
@@ -148,14 +139,8 @@ export function Header({
   ) {
     actionMenuMarkup = (
       <ActionMenu
-        actions={secondaryActions.map((secondaryAction) => ({
-          ...secondaryAction,
-          disabled: disableActions || secondaryAction.disabled,
-        }))}
-        groups={actionGroups.map((actionGroup) => ({
-          ...actionGroup,
-          disabled: disableActions || actionGroup.disabled,
-        }))}
+        actions={secondaryActions}
+        groups={actionGroups}
         rollup={isNavigationCollapsed}
         rollupActionsLabel={
           title
@@ -173,12 +158,12 @@ export function Header({
     breadcrumbMarkup || paginationMarkup ? (
       <Box
         printHidden
-        paddingBlockEnd="1"
+        paddingBlockEnd="100"
         paddingInlineEnd={
-          actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
+          actionMenuMarkup && isNavigationCollapsed ? '1000' : undefined
         }
       >
-        <InlineStack gap="4" align="space-between" blockAlign="center">
+        <InlineStack gap="400" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
           {paginationMarkup}
         </InlineStack>
@@ -217,10 +202,10 @@ export function Header({
   return (
     <Box
       position="relative"
-      paddingBlockStart={{xs: '4', md: '6'}}
-      paddingBlockEnd={{xs: '4', md: '6'}}
-      paddingInlineStart={{xs: '4', sm: '0'}}
-      paddingInlineEnd={{xs: '4', sm: '0'}}
+      paddingBlockStart={{xs: '400', md: '600'}}
+      paddingBlockEnd={{xs: '400', md: '600'}}
+      paddingInlineStart={{xs: '400', sm: '0'}}
+      paddingInlineEnd={{xs: '400', sm: '0'}}
       visuallyHidden={titleHidden}
     >
       <div className={headerClassNames}>
@@ -248,7 +233,7 @@ export function Header({
           </ConditionalRender>
           <ConditionalRender condition={[slot5].some(notNull)}>
             <div className={styles.Row}>
-              <InlineStack gap="4">{slot5}</InlineStack>
+              <InlineStack gap="400">{slot5}</InlineStack>
             </div>
           </ConditionalRender>
         </FilterActionsProvider>
@@ -259,10 +244,8 @@ export function Header({
 
 function PrimaryActionMarkup({
   primaryAction,
-  disabled,
 }: {
   primaryAction: PrimaryAction | React.ReactNode;
-  disabled: boolean;
 }) {
   const {isNavigationCollapsed} = useMediaQuery();
 
@@ -274,7 +257,6 @@ function PrimaryActionMarkup({
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
         variant: primary ? 'primary' : undefined,
-        disabled: disabled || primaryAction.disabled,
       },
     );
 

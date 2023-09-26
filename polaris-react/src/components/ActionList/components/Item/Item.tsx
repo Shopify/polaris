@@ -106,7 +106,7 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <InlineStack blockAlign="center" gap="1_5-experimental" wrap={!truncate}>
+    <InlineStack blockAlign="center" gap="150" wrap={!truncate}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
