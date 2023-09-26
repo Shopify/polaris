@@ -22,8 +22,8 @@
 
 html,
 body {
-  font-size: var(--p-font-size-100);
-  line-height: var(--p-font-line-height-2);
+  font-size: var(--p-font-size-350);
+  line-height: var(--p-font-line-height-500);
   font-weight: var(--p-font-weight-regular);
   letter-spacing: initial;
 
@@ -33,7 +33,7 @@ body {
 }
 
 #{$se23} body {
-  font-size: var(--p-font-size-80-experimental);
+  font-size: var(--p-font-size-325);
 }
 
 html,

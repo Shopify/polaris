@@ -2,21 +2,21 @@
 
 .Button {
   // stylelint-disable -- Polaris component custom properties
-  --pc-button-micro-min-height: var(--p-font-line-height-2);
-  --pc-button-slim-min-height: var(--p-font-line-height-4);
+  --pc-button-micro-min-height: var(--p-font-line-height-500);
+  --pc-button-slim-min-height: var(--p-font-line-height-700);
   --pc-button-large-min-height: 44px;
   --pc-button-vertical-padding: calc(
-    (36px - var(--p-font-line-height-2) - var(--p-space-050)) / 2
+    (36px - var(--p-font-line-height-500) - var(--p-space-050)) / 2
   );
   --pc-button-slim-vertical-padding: calc(
     (
-        var(--pc-button-slim-min-height) - var(--p-font-line-height-2) -
+        var(--pc-button-slim-min-height) - var(--p-font-line-height-500) -
           var(--p-space-050)
       ) / 2
   );
   --pc-button-large-vertical-padding: calc(
     (
-        var(--pc-button-large-min-height) - var(--p-font-line-height-2) -
+        var(--pc-button-large-min-height) - var(--p-font-line-height-500) -
           var(--p-space-050)
       ) / 2
   );
@@ -40,7 +40,7 @@
       inset -1px 0px 0px rgba(255, 255, 255, 0.25);
     --pc-button-large-min-height: 32px;
     --pc-button-large-vertical-padding: var(--p-space-200);
-    --pc-button-micro-min-height: var(--p-font-line-height-3);
+    --pc-button-micro-min-height: var(--p-font-line-height-600);
 
     box-shadow: var(--pc-button-shadow);
     transition: background-color 75ms var(--p-motion-ease-out),
@@ -115,20 +115,20 @@
 
 .Content {
   #{$se23} & {
-    font-size: var(--p-font-size-80-experimental);
-    line-height: var(--p-font-line-height-2);
+    font-size: var(--p-font-size-325);
+    line-height: var(--p-font-line-height-500);
     transform: translateY(0);
     // stylelint-disable-next-line polaris/motion/declaration-property-unit-disallowed-list -- se23 temporary styles
     transition: transform 75ms cubic-bezier(0.19, 0.91, 0.38, 1);
 
     @media #{$p-breakpoints-md-up} {
       font-size: var(--p-font-size-75);
-      line-height: var(--p-font-line-height-1);
+      line-height: var(--p-font-line-height-400);
     }
   }
-  font-size: var(--p-font-size-100);
+  font-size: var(--p-font-size-350);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-400);
   letter-spacing: initial;
   position: relative;
   display: flex;
@@ -819,8 +819,8 @@
     @include focus-ring;
 
     #{$se23} & {
-      line-height: var(--p-font-line-height-1);
-      font-size: var(--p-font-size-80-experimental);
+      line-height: var(--p-font-line-height-400);
+      font-size: var(--p-font-size-325);
       // stylelint-disable-next-line -- se23 override
       @include no-focus-ring;
     }
@@ -1017,8 +1017,8 @@
     #{$se23} & {
       margin: 0;
       padding: 0;
-      min-height: var(--p-font-line-height-2);
-      min-width: var(--p-font-line-height-2);
+      min-height: var(--p-font-line-height-500);
+      min-width: var(--p-font-line-height-500);
     }
 
     svg {
@@ -1176,9 +1176,9 @@
   min-height: var(--pc-button-micro-min-height);
 
   .Content {
-    font-size: var(--p-font-size-100);
+    font-size: var(--p-font-size-350);
     font-weight: var(--p-font-weight-semibold);
-    line-height: var(--p-font-line-height-2);
+    line-height: var(--p-font-line-height-500);
   }
 
   #{$se23} & {
@@ -1197,7 +1197,7 @@
 
     .Content {
       font-size: var(--p-font-size-75);
-      line-height: var(--p-font-line-height-1);
+      line-height: var(--p-font-line-height-400);
     }
 
     #{$se23} & {
@@ -1226,7 +1226,7 @@
   .Content {
     font-size: var(--p-font-size-200);
     font-weight: var(--p-font-weight-medium);
-    line-height: var(--p-font-line-height-2);
+    line-height: var(--p-font-line-height-500);
     letter-spacing: initial;
   }
 
@@ -1239,7 +1239,7 @@
 
     // stylelint-disable selector-max-combinators -- se23 temporary styles
     .Content {
-      font-size: var(--p-font-size-80-experimental);
+      font-size: var(--p-font-size-325);
     }
     // stylelint-enable selector-max-combinators -- se23 temporary styles
   }
