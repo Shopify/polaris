@@ -269,8 +269,6 @@ export const metaThemeLightUpliftPartial = createMetaThemePartial({
       value:
         "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
     },
-    'font-size-500': {value: '30px'},
-    'font-size-600': {value: '36px'},
   },
   motion: {
     // v11.0.0
