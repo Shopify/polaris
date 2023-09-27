@@ -8,7 +8,7 @@ export default {
 
 const styles = {
   background: 'var(--p-color-bg-inverse)',
-  borderRadius: 'var(--p-border-radius-05)',
+  borderRadius: 'var(--p-border-radius-050)',
   padding: 'var(--p-space-400)',
   height: 'var(--p-space-1200)',
 };
@@ -39,7 +39,7 @@ export function WithVerticalDirection() {
       background="bg"
       padding="400"
       borderColor="border-subdued"
-      borderWidth="1"
+      borderWidth="025"
     >
       <Bleed marginBlock="600">
         <div style={styles} />
@@ -54,7 +54,7 @@ export function WithHorizontalDirection() {
       background="bg"
       padding="400"
       borderColor="border-subdued"
-      borderWidth="1"
+      borderWidth="025"
     >
       <Bleed marginInline="600">
         <div style={styles} />
@@ -71,7 +71,7 @@ export function WithSpecificDirection() {
         background="bg"
         padding="400"
         borderColor="border-subdued"
-        borderWidth="1"
+        borderWidth="025"
       >
         <Bleed marginInline="400" marginBlockStart="600">
           <div style={styles} />
@@ -82,7 +82,7 @@ export function WithSpecificDirection() {
         background="bg"
         padding="400"
         borderColor="border-subdued"
-        borderWidth="1"
+        borderWidth="025"
       >
         <Bleed marginInline="400" marginBlockEnd="600">
           <div style={styles} />
@@ -93,7 +93,7 @@ export function WithSpecificDirection() {
         background="bg"
         padding="400"
         borderColor="border-subdued"
-        borderWidth="1"
+        borderWidth="025"
       >
         <Bleed marginInline="0" marginInlineStart="600">
           <div style={styles} />
@@ -104,7 +104,7 @@ export function WithSpecificDirection() {
         background="bg"
         padding="400"
         borderColor="border-subdued"
-        borderWidth="1"
+        borderWidth="025"
       >
         <Bleed marginInline="0" marginInlineEnd="600">
           <div style={styles} />
@@ -120,7 +120,7 @@ export function WithAllDirection() {
       background="bg"
       padding="400"
       borderColor="border-subdued"
-      borderWidth="1"
+      borderWidth="025"
     >
       <Bleed marginInline="600" marginBlock="600">
         <div style={styles} />
@@ -135,7 +135,7 @@ export function WithResponsiveHorizontalDirection() {
       background="bg"
       padding={{xs: '100', sm: '200', md: '300', lg: '400', xl: '500'}}
       borderColor="border-subdued"
-      borderWidth="1"
+      borderWidth="025"
     >
       <Bleed
         marginInline={{xs: '100', sm: '200', md: '300', lg: '400', xl: '500'}}

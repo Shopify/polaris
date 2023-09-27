@@ -158,7 +158,7 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     return (
       <div>
         <Box
-          borderBlockEndWidth="1"
+          borderBlockEndWidth="025"
           borderColor="border-subdued"
           paddingInlineStart="200"
           paddingInlineEnd="200"
