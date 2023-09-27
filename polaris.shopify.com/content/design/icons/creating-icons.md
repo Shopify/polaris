@@ -26,131 +26,143 @@ keywords:
 
 <Subnav />
 
-## Icon layout
-
 <Stack gap='4'>
-<InlineGrid gap="4" columns="2">
-  <DirectiveCard status="Tip">
+<Card>
+  ## Icon layout
 
-    ![](/images/design/icons/icons-creating-layout-1@2x.png)
+  <InlineGrid gap="4" columns="2">
+    <DirectiveCard status="Tip">
 
-    The icon container is 20x20 px, but the content of an icon should be
-    confined within the 14 x 14 px.
+      ![](/images/design/icons/icons-creating-layout-1@2x.png)
 
-  </DirectiveCard>
-  <DirectiveCard status="Tip">
+      The icon container is 20x20 px, but the content of an icon should be
+      confined within the 14 x 14 px.
 
-    ![](/images/design/icons/icons-creating-layout-2@2x.png)
+    </DirectiveCard>
+    <DirectiveCard status="Tip">
 
-    Exceptionally, if the icon requires more visual prominence, or more space to
-    read effectively, the content can expand beyond that, however, no part of
-    the icon should exceed 16 x 16 px
+      ![](/images/design/icons/icons-creating-layout-2@2x.png)
 
-  </DirectiveCard>
-</InlineGrid>
+      Exceptionally, if the icon requires more visual prominence, or more space to
+      read effectively, the content can expand beyond that, however, no part of
+      the icon should exceed 16 x 16 px
 
-## Keylines
+    </DirectiveCard>
 
-<InlineGrid gap="4" columns='2'>
-  <DirectiveCard status="Tip">
+  </InlineGrid>
+</Card>
 
-    ![](/images/design/icons/icons-creating-keylines-1@2x.png)
+<Card>
+  ## Keylines
 
-    The overall shape of an icon can vary from a circle to a square, or from a tall rectangle to a wide one. So all icons have the same visual weight, always start with the following keylines.
+  <InlineGrid gap="4" columns='2'>
+    <DirectiveCard status="Tip">
 
-  </DirectiveCard>
-  <DirectiveCard status="Tip">
+      ![](/images/design/icons/icons-creating-keylines-1@2x.png)
 
-    ![](/images/design/icons/icons-creating-keylines-2@2x.png)
+      The overall shape of an icon can vary from a circle to a square, or from a tall rectangle to a wide one. So all icons have the same visual weight, always start with the following keylines.
 
-    The guidelines are a starting point, not a hard constraint. If it makes the concept stronger or keeps the icon optically aligned, it’s ok to deviate.
+    </DirectiveCard>
+    <DirectiveCard status="Tip">
 
-  </DirectiveCard>
-</InlineGrid>
+      ![](/images/design/icons/icons-creating-keylines-2@2x.png)
 
-## General Rules
+      The guidelines are a starting point, not a hard constraint. If it makes the concept stronger or keeps the icon optically aligned, it’s ok to deviate.
 
-<Grid gap='4'>
+    </DirectiveCard>
 
-{' '}
+  </InlineGrid>
 
-<Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
-  <Do>
+</Card>
 
-    ![](/images/design/icons/icons-creating-rules-1@2x.png)
+<Card>
+  ## General Rules
 
-    Icons are two-dimensional, and objects face forward.
-
-  </Do>
-</Grid.Cell>
-<Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
-  <Dont>
-  
-    ![](/images/design/icons/icons-creating-rules-2@2x.png)
-  
-    Icons are two-dimensional, and objects face forward.
-
-  </Dont>
-</Grid.Cell>
-<Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
-  <DirectiveCard status="Caution">
-
-    ![](/images/design/icons/icons-creating-rules-3@2x.png)
-
-    Subtle hints of a third dimension are acceptable when necessary for
-    conceptual clarity.
-
-  </DirectiveCard>
-</Grid.Cell>
-<Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
-  <Do>
-    ![](/images/design/icons/icons-creating-rules-4@2x.png)
-    
-    Center icon in their container.
-  </Do>
-</Grid.Cell>
-<Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
-  <Do>
-    ![](/images/design/icons/icons-creating-rules-5@2x.png)
-
-    Bold and stylized icons.
-
-  </Do>
-</Grid.Cell>
+  <Grid gap='4'>
 
   <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+    <Do>
+
+      ![](/images/design/icons/icons-creating-rules-1@2x.png)
+
+      Icons are two-dimensional, and objects face forward.
+
+    </Do>
+
+  </Grid.Cell>
+  <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
     <Dont>
-
-      ![](/images/design/icons/icons-creating-rules-6@2x.png)
-
-      Use small details and organic shapes.
+    
+      ![](/images/design/icons/icons-creating-rules-2@2x.png)
+    
+      Icons are two-dimensional, and objects face forward.
 
     </Dont>
 
   </Grid.Cell>
   <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+    <DirectiveCard status="Caution">
+
+      ![](/images/design/icons/icons-creating-rules-3@2x.png)
+
+      Subtle hints of a third dimension are acceptable when necessary for
+      conceptual clarity.
+
+    </DirectiveCard>
+
+  </Grid.Cell>
+  <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
     <Do>
+      ![](/images/design/icons/icons-creating-rules-4@2x.png)
+      
+      Center icon in their container.
+    </Do>
+  </Grid.Cell>
+  <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+    <Do>
+      ![](/images/design/icons/icons-creating-rules-5@2x.png)
 
-      ![](/images/design/icons/icons-creating-rules-7@2x.png)
-
-      Use a consistent visual style, stroke weight and only one color.
+      Bold and stylized icons.
 
     </Do>
 
   </Grid.Cell>
 
-  <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
-    <Dont>
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+      <Dont>
 
-      ![](/images/design/icons/icons-creating-rules-8@2x.png)
+        ![](/images/design/icons/icons-creating-rules-6@2x.png)
 
-      Use transparency.
+        Use small details and organic shapes.
 
-    </Dont>
+      </Dont>
 
-  </Grid.Cell>
+    </Grid.Cell>
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+      <Do>
 
-</Grid>
+        ![](/images/design/icons/icons-creating-rules-7@2x.png)
+
+        Use a consistent visual style, stroke weight and only one color.
+
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+      <Dont>
+
+        ![](/images/design/icons/icons-creating-rules-8@2x.png)
+
+        Use transparency.
+
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Card>
 
 {/* Filled vs outlined */}
 
@@ -169,7 +181,7 @@ keywords:
 
     </Grid.Cell>
 
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <Do>
         ![](/images/design/icons/icons-creating-filled-2@2x.png)
@@ -180,7 +192,7 @@ keywords:
 
     </Grid.Cell>
 
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <Do>
         ![](/images/design/icons/icons-creating-filled-3@2x.png)
@@ -203,5 +215,181 @@ keywords:
     </Grid.Cell>
 
   </Grid>
+
+### Designing outlined icons
+
+  <Grid gap='4'>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-outline-1@2x.png)
+
+        Stroke weight is 1.5px
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-outline-2@2x.png)
+
+        Since the stroke has half a pixel, one side of the stroke should always be aligned with the pixel grid.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-outline-3@2x.png)
+
+        Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-outline-4@2x.png)
+
+        Terminals are round, even when a shape cuts out into another.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-outline-5@2x.png)
+
+        Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded, and sharp corners are not allowed, except for intersections and cutouts.
+
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-outline-6@2x.png)
+
+        Filled shapes can be used, only in really small objects, like a dot in an exclamation point.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-outline-7@2x.png)
+
+        The minimum gap between strokes should never be less than 1px.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+  </Grid>
+
+### Designing filled icons
+
+  <Grid gap='4'>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-outline-1@2x.png)
+
+        Filled icons should align closely to their outline pairs. They don’t need to be a pixel perfect match, but they must have a similar visual weight, and the transition from one to the other must feel smooth.
+
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-filled-2@2x.png)
+
+        Filled icons should align closely to their outline pairs. They don’t need to be a pixel perfect match, but the transition from one to the other must feel smooth.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-filled-3@2x.png)
+
+
+        Stroke weight is 1.5 px, but is reduced to 1.25 px when used inside a shape as a cut-out. Shapes must align with the pixel grid.
+
+        Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-filled-4@2x.png)
+
+        Terminals are round.
+
+        Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded, and sharp corners are not allowed, except for intersections and cutouts.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-filled-5@2x.png)
+
+        If it’s impossible to fill the outline icon, a 2px stroke can be used as a filled version.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <DirectiveCard>
+
+        ![](/images/design/icons/icons-creating-filled-6@2x.png)
+
+        The minimum gap between strokes should never be less than 1px.
+
+      </DirectiveCard>
+
+    </Grid.Cell>
+
+  </Grid>
 </Card>
+
 </Stack>
