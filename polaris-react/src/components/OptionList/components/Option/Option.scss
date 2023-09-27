@@ -91,6 +91,7 @@ $control-vertical-adjustment: 2px;
       background-color: transparent;
     }
 
+    // stylelint-disable-next-line selector-max-specificity -- recolor icon on select
     svg {
       fill: var(--p-color-icon-active);
     }
