@@ -9,13 +9,22 @@ icon: TypeMajor
 hideChildren: true
 ---
 
+![An illustration of letters constructed from lego blocks](/images/design/typography/text-featured@2x.png)
+
+---
+
 # {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 
-<Subnav />
+<DirectiveCard status="Caution">
 
-![An illustration of letters constructed from lego blocks](/images/design/typography/text-featured@2x.png)
+This section is currently being reworked to provide better guidance aligned
+with Polaris v12. Stay tuned!
+
+</DirectiveCard>
+
+---
 
 ## Working with typography
 
