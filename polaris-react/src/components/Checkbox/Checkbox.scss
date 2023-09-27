@@ -87,6 +87,7 @@
       }
     }
 
+    // stylelint-disable-next-line selector-max-combinators -- target disabled icon color
     ~ .Icon svg {
       fill: var(--p-color-checkbox-icon-disabled);
     }
