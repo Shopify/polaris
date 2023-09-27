@@ -34,7 +34,7 @@
 }
 
 .text-info-strong.text-info-strong {
-  @include recolor-icon-se23(var(--p-color-text-info-strong));
+  @include recolor-icon-se23(var(--p-color-text-info-on-bg-fill));
 }
 
 .icon-info-strong-experimental.icon-info-strong-experimental {
@@ -42,5 +42,5 @@
 }
 
 .icon-subdued.icon-subdued {
-  @include recolor-icon-se23(var(--p-color-icon-subdued));
+  @include recolor-icon-se23(var(--p-color-icon-secondary));
 }

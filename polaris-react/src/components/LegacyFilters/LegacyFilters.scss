@@ -19,7 +19,7 @@ $list-filters-footer-height: 70px;
   top: 0;
   width: 100%;
   padding: var(--p-space-400) var(--p-space-500);
-  border-bottom: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
   height: $list-filters-header-height;
   box-sizing: border-box;
   display: flex;
@@ -46,7 +46,7 @@ $list-filters-footer-height: 70px;
   bottom: 0;
   width: 100%;
   padding: var(--p-space-400) var(--p-space-500);
-  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
   height: $list-filters-footer-height;
   box-sizing: border-box;
   display: flex;
@@ -65,7 +65,7 @@ $list-filters-footer-height: 70px;
 }
 
 .EmptyFooterState {
-  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
   padding-top: var(--p-space-400);
   width: 100%;
   display: flex;
@@ -133,11 +133,11 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-400);
     width: calc(100% - var(--p-space-800));
     height: var(--p-space-025);
-    background-color: var(--p-color-bg-subdued);
+    background-color: var(--p-color-bg-surface-secondary);
     display: block;
 
     #{$se23} & {
-      background-color: var(--p-color-bg-secondary-experimental);
+      background-color: var(--p-color-bg-surface-tertiary);
     }
   }
 
@@ -158,11 +158,11 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-400);
     width: calc(100% - var(--p-space-800));
     height: var(--p-space-025);
-    background-color: var(--p-color-bg-subdued);
+    background-color: var(--p-color-bg-surface-secondary);
     display: block;
 
     #{$se23} & {
-      background-color: var(--p-color-bg-secondary-experimental);
+      background-color: var(--p-color-bg-surface-tertiary);
     }
   }
 
@@ -185,11 +185,11 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-400);
     width: calc(100% - var(--p-space-800));
     height: var(--p-space-025);
-    background-color: var(--p-color-bg-subdued);
+    background-color: var(--p-color-bg-surface-secondary);
     display: block;
 
     #{$se23} & {
-      background-color: var(--p-color-bg-secondary-experimental);
+      background-color: var(--p-color-bg-surface-tertiary);
     }
   }
 

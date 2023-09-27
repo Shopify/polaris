@@ -49,7 +49,7 @@
     width: 0;
     border-width: var(--p-space-200);
     border-style: solid;
-    border-color: transparent transparent var(--p-color-bg) transparent;
+    border-color: transparent transparent var(--p-color-bg-surface) transparent;
 
     #{$se23} & {
       content: none;
@@ -72,7 +72,8 @@
     &::after {
       top: auto;
       bottom: calc(var(--p-space-400) * -1);
-      border-color: var(--p-color-bg) transparent transparent transparent;
+      border-color: var(--p-color-bg-surface) transparent transparent
+        transparent;
     }
 
     // TailDown
@@ -115,7 +116,7 @@
 
 .Content {
   position: relative;
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-surface);
   color: var(--p-color-text);
   word-break: break-word;
   // stylelint-disable-next-line -- Polaris component custom properties

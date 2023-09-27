@@ -75,7 +75,7 @@
     @include base-button-disabled;
     #{$se23} & {
       box-shadow: none;
-      background: var(--p-color-bg-transparent-disabled-experimental);
+      background: var(--p-color-bg-fill-disabled);
     }
   }
 
@@ -346,7 +346,7 @@
 
     &:active {
       // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
-      --pc-button-text: var(--p-color-text-inverse-subdued);
+      --pc-button-text: var(--p-color-text-inverse-secondary);
       background: var(--pc-button-color-active);
       box-shadow: var(--p-shadow-button-inset-experimental);
       // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
@@ -364,14 +364,14 @@
 
       // stylelint-disable-next-line selector-max-combinators -- se23 temporary styles
       svg {
-        fill: var(--p-color-text-inverse-subdued);
+        fill: var(--p-color-text-inverse-secondary);
       }
     }
 
     &.disabled {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       color: var(--pc-button-text);
-      background: var(--p-color-bg-transparent-primary-disabled-experimental);
+      background: var(--p-color-bg-fill-brand-disabled);
       box-shadow: none;
 
       &::before {
@@ -414,7 +414,7 @@
 
       &:active {
         // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
-        --pc-button-text: var(--p-color-text-inverse-subdued);
+        --pc-button-text: var(--p-color-text-inverse-secondary);
         box-shadow: var(--p-shadow-button-inset-experimental);
 
         // stylelint-disable-next-line -- se23 overrides
@@ -424,18 +424,18 @@
 
         // stylelint-disable-next-line selector-max-combinators, max-nesting-depth -- se23 temporary styles
         svg {
-          fill: var(--p-color-text-inverse-subdued);
+          fill: var(--p-color-text-inverse-secondary);
         }
       }
     }
 
     &.destructive {
       // stylelint-disable -- Polaris component custom properties
-      --pc-button-color: var(--p-color-bg-critical-strong);
+      --pc-button-color: var(--p-color-bg-fill-critical);
       --pc-button-text: var(--p-color-text-on-color);
-      --pc-button-color-hover: var(--p-color-bg-critical-strong-hover);
-      --pc-button-color-active: var(--p-color-bg-critical-strong-active);
-      --pc-button-color-depressed: var(--p-color-bg-critical-strong-active);
+      --pc-button-color-hover: var(--p-color-bg-fill-critical-hover);
+      --pc-button-color-active: var(--p-color-bg-fill-critical-active);
+      --pc-button-color-depressed: var(--p-color-bg-fill-critical-active);
       // stylelint-enable
 
       &:not(.disabled) {
@@ -468,17 +468,11 @@
 
     &.success {
       // stylelint-disable -- Polaris component custom properties
-      --pc-button-color: var(--p-color-bg-success-strong);
+      --pc-button-color: var(--p-color-bg-fill-success);
       --pc-button-text: var(--p-color-text-on-color);
-      --pc-button-color-hover: var(
-        --p-color-bg-success-strong-hover-experimental
-      );
-      --pc-button-color-active: var(
-        --p-color-bg-success-strong-active-experimental
-      );
-      --pc-button-color-depressed: var(
-        --p-color-bg-success-strong-active-experimental
-      );
+      --pc-button-color-hover: var(--p-color-bg-fill-success-hover);
+      --pc-button-color-active: var(--p-color-bg-fill-success-active);
+      --pc-button-color-depressed: var(--p-color-bg-fill-success-active);
       // stylelint-enable
       box-shadow: none;
     }
@@ -495,11 +489,11 @@
 
 .destructive {
   // stylelint-disable -- Polaris component custom properties
-  --pc-button-color: var(--p-color-bg-critical-strong);
+  --pc-button-color: var(--p-color-bg-fill-critical);
   --pc-button-text: var(--p-color-text-on-color);
-  --pc-button-color-hover: var(--p-color-bg-critical-strong-hover);
-  --pc-button-color-active: var(--p-color-bg-critical-strong-active);
-  --pc-button-color-depressed: var(--p-color-bg-critical-strong-active);
+  --pc-button-color-hover: var(--p-color-bg-fill-critical-hover);
+  --pc-button-color-active: var(--p-color-bg-fill-critical-active);
+  --pc-button-color-depressed: var(--p-color-bg-fill-critical-active);
   // stylelint-enable
 
   svg {
@@ -512,7 +506,7 @@
 
   #{$se23} & {
     // stylelint-disable -- Polaris component custom properties
-    --pc-button-color: var(--p-color-bg);
+    --pc-button-color: var(--p-color-bg-surface);
     --pc-button-text: var(--p-color-text-critical);
     --pc-button-color-hover: var(--p-color-bg-hover);
     --pc-button-color-active: var(--p-color-bg-active);
@@ -546,7 +540,7 @@
 .primaryPlain {
   // stylelint-disable -- Polaris component custom properties
   --pc-button-color: var(--p-color-bg-interactive-subdued-active);
-  --pc-button-text: var(--p-color-text-interactive-hover);
+  --pc-button-text: var(--p-color-text-emphasis-hover);
   --pc-button-color-hover: var(--p-color-bg-interactive-subdued-active);
   --pc-button-color-active: var(--p-color-bg-interactive-subdued-active);
   --pc-button-color-depressed: var(--p-surface-selected-depressed);
@@ -558,7 +552,7 @@
   }
 
   &:is(:hover, :focus, :active) {
-    color: var(--p-color-text-interactive-active);
+    color: var(--p-color-text-emphasis-active);
     box-shadow: none;
   }
 
@@ -570,8 +564,8 @@
     // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
     --pc-button-color: transparent;
     --pc-button-text: var(--p-color-text);
-    --pc-button-color-hover: var(--p-color-bg-transparent-hover-experimental);
-    --pc-button-color-active: var(--p-color-bg-transparent-active-experimental);
+    --pc-button-color-hover: var(--p-color-bg-fill-transparent-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-transparent-active);
     // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
     box-shadow: none;
 
@@ -622,10 +616,8 @@
       // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- se23 temporary styles
       --pc-button-color: transparent;
       --pc-button-text: var(--p-color-text-critical);
-      --pc-button-color-hover: var(--p-color-bg-transparent-hover-experimental);
-      --pc-button-color-active: var(
-        --p-color-bg-transparent-active-experimental
-      );
+      --pc-button-color-hover: var(--p-color-bg-fill-transparent-hover);
+      --pc-button-color-active: var(--p-color-bg-fill-transparent-active);
 
       &:hover,
       &:active {
@@ -651,7 +643,7 @@
 
       // stylelint-disable selector-max-combinators, max-nesting-depth, selector-max-class -- se23 temporary styles
       path {
-        fill: var(--p-color-icon-subdued);
+        fill: var(--p-color-icon-secondary);
       }
 
       &:active,
@@ -709,7 +701,7 @@
   }
 
   &.pressed {
-    background: var(--p-color-bg-subdued-active);
+    background: var(--p-color-bg-surface-secondary-active);
     border: var(--p-border-width-025) solid var(--p-color-border);
     box-shadow: none;
     // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
@@ -735,7 +727,7 @@
 
     &:hover {
       border: var(--p-border-width-025) solid var(--p-color-border-critical);
-      background: var(--p-color-bg-critical-subdued);
+      background: var(--p-color-bg-surface-critical);
     }
 
     &:focus-visible {
@@ -746,7 +738,7 @@
 
     &:active {
       border: var(--p-border-width-025) solid var(--p-color-border-critical);
-      background: var(--p-color-bg-critical-subdued);
+      background: var(--p-color-bg-surface-critical);
     }
 
     // stylelint-disable-next-line selector-max-class -- too many classes
@@ -759,7 +751,7 @@
     // stylelint-disable-next-line selector-max-class -- too many classes
     &.pressed {
       border: var(--p-border-width-025) solid var(--p-color-border-critical);
-      background: var(--p-color-bg-critical-subdued);
+      background: var(--p-color-bg-surface-critical);
       color: var(--p-color-text-critical);
     }
   }
@@ -784,7 +776,7 @@
 }
 
 .loading.disabled svg {
-  fill: var(--p-color-icon-subdued);
+  fill: var(--p-color-icon-secondary);
 }
 
 // The way the designs work, we need to do lots of reaching down to
@@ -800,7 +792,7 @@
   background: transparent;
   border: 0;
   box-shadow: none;
-  color: var(--p-color-text-interactive);
+  color: var(--p-color-text-emphasis);
 
   #{$se23} & {
     box-shadow: none;
@@ -810,7 +802,7 @@
   }
 
   svg {
-    fill: var(--p-color-icon-interactive);
+    fill: var(--p-color-icon-emphasis);
   }
 
   > .Content {
@@ -828,7 +820,7 @@
 
   &:hover,
   &:focus:not(.disabled) {
-    color: var(--p-color-text-interactive-hover);
+    color: var(--p-color-text-emphasis-hover);
     background: transparent;
     box-shadow: none;
 
@@ -837,7 +829,7 @@
     }
 
     svg {
-      fill: var(--p-color-icon-interactive-hover);
+      fill: var(--p-color-icon-emphasis-hover);
     }
 
     &:not(.removeUnderline) {
@@ -847,14 +839,14 @@
 
   &.pressed,
   &:active {
-    color: var(--p-color-text-interactive-active);
+    color: var(--p-color-text-emphasis-active);
     background: transparent;
     box-shadow: none;
 
     #{$se23} & {
       background-color: transparent;
       // Specificity bump
-      color: var(--p-color-text-interactive-active);
+      color: var(--p-color-text-emphasis-active);
 
       // stylelint-disable-next-line -- se23 override
       > .Content {
@@ -863,11 +855,11 @@
     }
 
     svg {
-      fill: var(--p-color-icon-interactive-active);
+      fill: var(--p-color-icon-emphasis-active);
 
       #{$se23} & {
         // Specificity bump
-        fill: var(--p-color-icon-interactive-active);
+        fill: var(--p-color-icon-emphasis-active);
       }
     }
 
@@ -893,8 +885,7 @@
         outline: var(--p-border-width-050) dotted;
       }
       #{$se23} & {
-        outline: var(--p-border-width-050) solid
-          var(--p-color-border-interactive-focus);
+        outline: var(--p-border-width-050) solid var(--p-color-border-focus);
         outline-offset: var(--p-space-050);
         border-radius: var(--p-border-radius-150);
       }
@@ -960,7 +951,7 @@
     }
 
     &:hover {
-      color: var(--p-color-bg-critical-strong-hover);
+      color: var(--p-color-bg-fill-critical-hover);
     }
 
     #{$se23} &:hover,
@@ -1025,7 +1016,7 @@
       fill: var(--p-color-icon);
 
       #{$se23} & {
-        fill: var(--p-color-icon-subdued);
+        fill: var(--p-color-icon-secondary);
       }
     }
 
@@ -1067,7 +1058,7 @@
 
   &.destructive.iconOnly {
     svg {
-      fill: var(--p-color-bg-critical-strong);
+      fill: var(--p-color-bg-fill-critical);
 
       #{$se23} & {
         fill: var(--p-color-icon-critical-strong-experimental);
@@ -1075,7 +1066,7 @@
     }
 
     &:hover svg {
-      fill: var(--p-color-bg-critical-strong-hover);
+      fill: var(--p-color-bg-fill-critical-hover);
 
       #{$se23} & {
         fill: var(--p-color-icon-critical-strong-hover-experimental);
@@ -1088,7 +1079,7 @@
 
     &:active svg,
     &.pressed svg {
-      fill: var(--p-color-bg-critical-strong-active);
+      fill: var(--p-color-bg-fill-critical-active);
 
       #{$se23} & {
         fill: var(--p-color-icon-critical-strong-active-experimental);

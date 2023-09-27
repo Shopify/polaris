@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .LegacyCard {
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-surface);
   box-shadow: var(--p-shadow-md);
   outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
@@ -77,7 +77,7 @@
 }
 
 .subdued {
-  background-color: var(--p-color-bg-subdued);
+  background-color: var(--p-color-bg-surface-secondary);
 }
 
 .Section-hideOnPrint,
@@ -120,7 +120,7 @@
   }
 
   + .Section {
-    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
 
     @media print {
       border-top: 0;
@@ -162,7 +162,7 @@
 }
 
 .Section-subdued {
-  background-color: var(--p-color-bg-subdued);
+  background-color: var(--p-color-bg-surface-secondary);
 
   #{$se23} & {
     padding: var(--p-space-300) var(--p-space-400);
@@ -173,7 +173,7 @@
   }
 
   .Header + & {
-    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
     margin-top: var(--p-space-500);
 
     #{$se23} & {
@@ -217,7 +217,7 @@
   + .Subsection {
     margin-top: var(--p-space-400);
     padding-top: var(--p-space-400);
-    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
 
     @media print {
       border-top: 0;
@@ -258,7 +258,7 @@
   }
 
   .Section-subdued + & {
-    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
     padding: var(--p-space-500);
 
     #{$se23} & {

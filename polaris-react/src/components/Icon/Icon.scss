@@ -10,7 +10,7 @@
 }
 
 .applyColor {
-  color: var(--p-color-bg);
+  color: var(--p-color-bg-surface);
 }
 
 .hasBackdrop {
@@ -36,12 +36,12 @@
   }
 
   &::before {
-    background-color: var(--p-color-bg-strong);
+    background-color: var(--p-color-bg-fill-tertiary);
   }
 }
 
 .colorSubdued svg {
-  fill: var(--p-color-icon-subdued);
+  fill: var(--p-color-icon-secondary);
 }
 
 .colorCritical {
@@ -50,12 +50,12 @@
   }
 
   &::before {
-    background-color: var(--p-color-bg-critical);
+    background-color: var(--p-color-bg-fill-critical-secondary);
   }
 }
 
 .colorInteractive svg {
-  fill: var(--p-color-icon-interactive);
+  fill: var(--p-color-icon-emphasis);
 }
 
 .colorWarning {
@@ -64,7 +64,7 @@
   }
 
   &::before {
-    background-color: var(--p-color-bg-warning);
+    background-color: var(--p-color-bg-fill-warning-secondary);
   }
 }
 
@@ -74,7 +74,7 @@
   }
 
   &::before {
-    background-color: var(--p-color-bg-info);
+    background-color: var(--p-color-bg-fill-info-secondary);
   }
 }
 
@@ -84,12 +84,12 @@
   }
 
   &::before {
-    background-color: var(--p-color-bg-success);
+    background-color: var(--p-color-bg-fill-success-secondary);
   }
 }
 
 .colorPrimary svg {
-  fill: var(--p-color-icon-primary);
+  fill: var(--p-color-icon-brand);
 }
 
 .colorMagic svg {

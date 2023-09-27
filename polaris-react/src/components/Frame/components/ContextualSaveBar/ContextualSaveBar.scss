@@ -2,10 +2,10 @@
 
 .ContextualSaveBar {
   /* stylelint-disable -- polaris: Used to apply dark theme to action buttons */
-  --p-color-bg: var(--p-color-bg-inverse);
+  --p-color-bg-surface: var(--p-color-bg-inverse);
   --p-color-text: var(--p-color-text-inverse);
-  --p-color-bg-hover: var(--p-color-bg-inverse-hover);
-  --p-color-bg-subdued-active: var(--p-color-bg-inverse-active);
+  --p-color-bg-hover: var(--p-color-bg-fill-inverse-hover);
+  --p-color-bg-surface-secondary-active: var(--p-color-bg-fill-inverse-active);
   /* stylelint-enable */
   display: flex;
   height: $top-bar-height;
@@ -118,16 +118,16 @@
 
     &[class*='Polaris-Button--disabled'],
     &[class*='Button-disabled'] {
-      --pc-button-text: var(--p-color-text-subdued);
+      --pc-button-text: var(--p-color-text-secondary);
       background: var(--pc-button-color-disabled);
     }
   }
 
   #{$se23} & [class*='Polaris-Button--primaryPlain'],
   #{$se23} & [class*='Button-primaryPlain'] {
-    --pc-button-color: var(--p-color-bg-inset-strong);
-    --pc-button-color-hover: var(--p-color-bg-inverse-hover);
-    --pc-button-color-active: var(--p-color-bg-inverse-active);
+    --pc-button-color: var(--p-color-bg-fill-inverse);
+    --pc-button-color-hover: var(--p-color-bg-fill-inverse-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-inverse-active);
     --pc-button-text: var(--p-color-text-inverse);
 
     &::after {
@@ -145,7 +145,7 @@
 
     &[class*='Polaris-Button--disabled'],
     &[class*='Button-disabled'] {
-      --pc-button-text: var(--p-color-text-subdued);
+      --pc-button-text: var(--p-color-text-secondary);
       background: var(--pc-button-color);
     }
   }

@@ -39,10 +39,10 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-300));
   }
 
   &::placeholder {
-    color: var(--p-color-text-subdued);
+    color: var(--p-color-text-secondary);
 
     #{$se23} & {
-      color: var(--p-color-text-inverse-subdued);
+      color: var(--p-color-text-inverse-secondary);
     }
   }
 }
@@ -63,7 +63,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-300));
     fill: var(--p-color-icon);
 
     #{$se23} & {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
   }
 }
@@ -72,14 +72,13 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-300));
   #{$se23} & {
     // stylelint-disable-next-line -- se23
     ~ .Backdrop {
-      outline: var(--p-border-width-050) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-050);
     }
 
     // stylelint-disable-next-line -- se23
     ~ .Icon svg {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
   }
 }
@@ -118,7 +117,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-300));
 
   #{$se23} & {
     padding: 0 $search-icon-width-se23 0 $search-icon-width-se23;
-    color: var(--p-color-text-inverse-subdued);
+    color: var(--p-color-text-inverse-secondary);
     height: $new-input-height-se23;
     border: var(--p-border-width-0165) solid var(--p-color-border-inverse);
     border-radius: var(--p-border-radius-200);
@@ -137,7 +136,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-300));
     color: var(--p-color-text);
 
     #{$se23} & {
-      color: var(--p-color-text-inverse-subdued);
+      color: var(--p-color-text-inverse-secondary);
     }
   }
 
@@ -167,7 +166,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-300));
     fill: var(--p-color-icon);
 
     #{$se23} & {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
   }
 }
@@ -193,7 +192,7 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-300));
     fill: var(--p-color-icon);
 
     #{$se23} & {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
   }
 
@@ -237,13 +236,13 @@ $search-icon-width-se23: calc(#{$icon-size-se23} + var(--p-space-300));
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--p-color-bg-inset);
+  background-color: var(--p-color-bg-fill-secondary);
   border-radius: var(--p-border-radius-100);
 
   #{$se23} & {
     /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 overrides */
     @include no-focus-ring;
-    background-color: var(--p-color-bg-inset-strong);
+    background-color: var(--p-color-bg-fill-inverse);
     border-radius: var(--p-border-radius-200);
   }
 }
