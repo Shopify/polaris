@@ -43,8 +43,8 @@
   &:checked:not([disabled]) + .Backdrop {
     &,
     .ChoiceLabel:hover & {
-      background-color: var(--p-color-bg-primary);
-      border-color: var(--p-color-border-input-active-experimental);
+      background-color: var(--p-color-bg-fill-brand-selected);
+      border-color: var(--p-color-bg-fill-brand-selected);
     }
   }
 
@@ -65,9 +65,7 @@
     &,
     .ChoiceLabel:hover & {
       cursor: default;
-      background-color: var(
-        --p-color-bg-transparent-secondary-disabled-experimental
-      );
+      background-color: var(--p-color-radio-button-bg-surface-disabled);
       border: none;
 
       &::before {
@@ -79,7 +77,7 @@
   &:disabled:checked + .Backdrop::before {
     &,
     .ChoiceLabel:hover & {
-      background-color: var(--p-color-icon-on-color);
+      background-color: var(--p-color-radio-button-icon-disabled);
     }
   }
 }
