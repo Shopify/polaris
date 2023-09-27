@@ -3,10 +3,10 @@
 .Container {
   position: relative;
   z-index: var(--p-z-index-1);
-  border-bottom: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
   border-top-left-radius: var(--p-border-radius-200);
   border-top-right-radius: var(--p-border-radius-200);
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
 }
 
 .ContainerUplift {
@@ -39,12 +39,12 @@
 }
 
 .FiltersWrapper {
-  border-bottom: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
   height: 53px;
   overflow: hidden;
 
   @media #{$p-breakpoints-sm-down} {
-    background: var(--p-color-bg);
+    background: var(--p-color-bg-surface);
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -189,7 +189,7 @@
     right: 0;
     display: flex;
     padding: var(--p-space-100) var(--p-space-400) var(--p-space-100) 0;
-    background: var(--p-color-bg);
+    background: var(--p-color-bg-surface);
     margin-left: var(--p-space-200);
 
     &::before {
@@ -204,8 +204,8 @@
       background: linear-gradient(
         90deg,
         rgba(255, 255, 255, 0) 0%,
-        var(--p-color-bg) 70%,
-        var(--p-color-bg) 100%
+        var(--p-color-bg-surface) 70%,
+        var(--p-color-bg-surface) 100%
       );
       // stylelint-enable
     }

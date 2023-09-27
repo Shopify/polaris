@@ -115,7 +115,7 @@
   @include focus-ring($border-width: -1px);
 
   .ListItem + & {
-    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
 
     @include item-separator;
   }
