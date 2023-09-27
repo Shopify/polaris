@@ -9,7 +9,7 @@
 }
 
 .Media {
-  padding: 0 var(--p-space-2);
+  padding: 0 var(--p-space-200);
 
   svg {
     fill: var(--p-color-icon);
@@ -18,7 +18,7 @@
 }
 
 .singleSelectionMedia {
-  padding: 0 var(--p-space-2) 0 0;
+  padding: 0 var(--p-space-200) 0 0;
 }
 
 .disabledMedia svg {

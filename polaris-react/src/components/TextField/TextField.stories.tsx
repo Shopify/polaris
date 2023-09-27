@@ -838,7 +838,7 @@ export function WithFormSubmit() {
   const [onHandTotal, setOnHandTotal] = useState(0);
 
   return (
-    <BlockStack gap="2">
+    <BlockStack gap="200">
       <Form
         onSubmit={(event) => {
           event.preventDefault();
@@ -882,7 +882,6 @@ export function With1PasswordDisabled() {
       value={value}
       onChange={handleChange}
       autoComplete="off"
-      disable1Password
     />
   );
 }

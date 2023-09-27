@@ -98,7 +98,7 @@ export const Variants = ({
   return (
     <Container variants={variants}>
       {(variant) => (
-        <Stack gap="8" className={styles.Variant}>
+        <Stack gap="800" className={styles.Variant}>
           <PatternMarkdown {...variant} />
         </Stack>
       )}
@@ -138,12 +138,12 @@ const defaultMdxComponents: React.ComponentProps<
   Stack: ({gap, children}) => <Stack gap={gap}>{children}</Stack>,
   Hero: ({children}) => <Box className={styles.Hero}>{children}</Box>,
   HowItHelps: ({children}) => (
-    <Stack gap="4" className={styles.HowItHelps}>
+    <Stack gap="400" className={styles.HowItHelps}>
       {children}
     </Stack>
   ),
   Usage: ({children}) => (
-    <Stack gap="4" className={styles.Usage}>
+    <Stack gap="400" className={styles.Usage}>
       {children}
     </Stack>
   ),
@@ -199,8 +199,8 @@ export default function PatternPage({pattern}: Props) {
       />
 
       <Page isContentPage>
-        <Stack gap="8" className="margin-considered-harmful">
-          <Stack gap="4">
+        <Stack gap="800" className="margin-considered-harmful">
+          <Stack gap="400">
             <Heading as="h1">
               <Box className={styles.Heading}>{pattern.frontmatter.title}</Box>
             </Heading>

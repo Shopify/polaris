@@ -8,22 +8,22 @@ export default {
 
 export function All() {
   return (
-    <BlockStack gap="8">
-      <BlockStack gap="4">
+    <BlockStack gap="800">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
       </BlockStack>
 
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With progress
         </Text>
         <WithProgress />
       </BlockStack>
 
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Outside media card
         </Text>

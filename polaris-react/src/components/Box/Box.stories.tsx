@@ -17,13 +17,13 @@ export function Default() {
 
 export function WithBorders() {
   return (
-    <BlockStack gap="4">
-      <Box background="bg" padding="4" borderWidth="1" borderColor="border">
+    <BlockStack gap="400">
+      <Box background="bg" padding="400" borderWidth="1" borderColor="border">
         <Text as="p">1px solid border</Text>
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         borderWidth="1"
         borderStyle="dashed"
         borderColor="border-subdued"
@@ -32,7 +32,7 @@ export function WithBorders() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         borderWidth="2"
         borderColor="border-info"
       >
@@ -40,7 +40,7 @@ export function WithBorders() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         borderWidth="3"
         borderColor="border-success"
       >
@@ -48,7 +48,7 @@ export function WithBorders() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         borderWidth="4"
         borderColor="border-caution"
       >
@@ -56,7 +56,7 @@ export function WithBorders() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         borderWidth="5"
         borderColor="border-critical"
       >
@@ -64,7 +64,7 @@ export function WithBorders() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         borderBlockStartWidth="5"
         borderColor="border-critical"
       >
@@ -72,7 +72,7 @@ export function WithBorders() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         borderWidth="5"
         borderBlockStartWidth="1"
         borderColor="border-critical"
@@ -81,7 +81,7 @@ export function WithBorders() {
         <Text as="p">border-block-start: 1px solid red</Text>
         <Box
           background="bg"
-          padding="4"
+          padding="400"
           borderWidth="4"
           borderColor="border-caution"
         >
@@ -94,7 +94,7 @@ export function WithBorders() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         borderWidth="5"
         borderColor="transparent"
       >
@@ -106,13 +106,13 @@ export function WithBorders() {
 
 export function WithOutline() {
   return (
-    <BlockStack gap="4">
-      <Box background="bg" padding="4" outlineWidth="1" outlineColor="border">
+    <BlockStack gap="400">
+      <Box background="bg" padding="400" outlineWidth="1" outlineColor="border">
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         outlineWidth="1"
         outlineStyle="dashed"
         outlineColor="border-subdued"
@@ -121,7 +121,7 @@ export function WithOutline() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         outlineWidth="2"
         outlineColor="border-info"
       >
@@ -129,7 +129,7 @@ export function WithOutline() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         outlineWidth="3"
         outlineColor="border-success"
       >
@@ -137,7 +137,7 @@ export function WithOutline() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         outlineWidth="4"
         outlineColor="border-caution"
       >
@@ -145,7 +145,7 @@ export function WithOutline() {
       </Box>
       <Box
         background="bg"
-        padding="4"
+        padding="400"
         outlineWidth="5"
         outlineColor="border-critical"
       >
@@ -157,7 +157,7 @@ export function WithOutline() {
 
 export function WithBorderRadius() {
   return (
-    <Box background="bg" padding="4" borderRadius="2">
+    <Box background="bg" padding="400" borderRadius="2">
       <Icon source={PaintBrushMajor} tone="info" />
     </Box>
   );
@@ -165,10 +165,10 @@ export function WithBorderRadius() {
 
 export function WithResponsivePadding() {
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       <Box
         background="bg"
-        padding={{xs: '2', sm: '8'}}
+        padding={{xs: '200', sm: '800'}}
         borderWidth="1"
         borderColor="border"
       >
@@ -176,8 +176,8 @@ export function WithResponsivePadding() {
       </Box>
       <Box
         background="bg"
-        padding="2"
-        paddingBlockStart={{xs: '4', sm: '10'}}
+        padding="200"
+        paddingBlockStart={{xs: '400', sm: '1000'}}
         borderWidth="1"
         borderColor="border"
       >
@@ -185,8 +185,8 @@ export function WithResponsivePadding() {
       </Box>
       <Box
         background="bg"
-        padding="2"
-        paddingBlockEnd={{xs: '4', sm: '10'}}
+        padding="200"
+        paddingBlockEnd={{xs: '400', sm: '1000'}}
         borderWidth="1"
         borderColor="border"
       >
@@ -194,8 +194,8 @@ export function WithResponsivePadding() {
       </Box>
       <Box
         background="bg"
-        padding="2"
-        paddingInlineStart={{xs: '4', sm: '10'}}
+        padding="200"
+        paddingInlineStart={{xs: '400', sm: '1000'}}
         borderWidth="1"
         borderColor="border"
       >
@@ -203,7 +203,7 @@ export function WithResponsivePadding() {
       </Box>
       <Box
         background="bg"
-        paddingInlineEnd={{xs: '4', sm: '10'}}
+        paddingInlineEnd={{xs: '400', sm: '1000'}}
         borderWidth="1"
         borderColor="border"
       >

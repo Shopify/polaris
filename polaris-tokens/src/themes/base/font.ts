@@ -3,10 +3,12 @@ import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 import {createVar as createVarName} from '../../utilities';
 
+export type FontFamilyPrefix = 'font-family';
 type FontFamilyAlias = 'sans' | 'mono';
 
 type FontSizeScaleExperimental = Experimental<'70' | '80'>;
 
+export type FontSizePrefix = 'font-size';
 export type FontSizeScale =
   | '275'
   | '325'
@@ -26,6 +28,7 @@ export type FontSizeScale =
 
 type FontLineHeightScaleExperimental = Experimental<'075'>;
 
+export type FontLineHeightPrefix = 'font-line-height';
 export type FontLineHeightScale =
   | '300'
   | '400'
@@ -44,13 +47,25 @@ export type FontLineHeightScale =
   | '7'
   | FontLineHeightScaleExperimental;
 
+export type FontLetterSpacingPrefix = 'font-letter-spacing';
+export type FontLetterSpacingAlias = 'densest' | 'denser' | 'dense' | 'normal';
+
+export type FontWeightPrefix = 'font-weight';
 export type FontWeightAlias = 'regular' | 'medium' | 'semibold' | 'bold';
 
+export type FontPrefix =
+  | FontFamilyPrefix
+  | FontLetterSpacingPrefix
+  | FontLineHeightPrefix
+  | FontSizePrefix
+  | FontWeightPrefix;
+
 export type FontTokenName =
-  | `font-family-${FontFamilyAlias}`
-  | `font-size-${FontSizeScale}`
-  | `font-weight-${FontWeightAlias}`
-  | `font-line-height-${FontLineHeightScale}`;
+  | `${FontFamilyPrefix}-${FontFamilyAlias}`
+  | `${FontLetterSpacingPrefix}-${FontLetterSpacingAlias}`
+  | `${FontLineHeightPrefix}-${FontLineHeightScale}`
+  | `${FontSizePrefix}-${FontSizeScale}`
+  | `${FontWeightPrefix}-${FontWeightAlias}`;
 
 export type FontTokenGroup = {
   [TokenName in FontTokenName]: string;
@@ -126,6 +141,18 @@ export const font: {
   },
   'font-weight-bold': {
     value: '700',
+  },
+  'font-letter-spacing-densest': {
+    value: '-0.54px',
+  },
+  'font-letter-spacing-denser': {
+    value: '-0.3px',
+  },
+  'font-letter-spacing-dense': {
+    value: '-0.2px',
+  },
+  'font-letter-spacing-normal': {
+    value: '0px',
   },
   'font-line-height-300': {
     value: size[300],

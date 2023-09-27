@@ -31,8 +31,8 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
   success: {
     withinPage: {
       background: 'bg-success-strong',
-      text: 'text-on-color',
-      icon: 'icon-on-color',
+      text: 'text-success-on-bg-fill',
+      icon: 'text-success-on-bg-fill',
     },
     withinContentContainer: {
       background: 'bg-success-subdued',
@@ -44,8 +44,8 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
   warning: {
     withinPage: {
       background: 'bg-warning-strong-experimental',
-      text: 'text-warning-strong',
-      icon: 'text-warning-strong',
+      text: 'text-warning-on-bg-fill',
+      icon: 'text-warning-on-bg-fill',
     },
     withinContentContainer: {
       background: 'bg-warning-subdued-experimental',
@@ -57,8 +57,8 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
   critical: {
     withinPage: {
       background: 'bg-critical-strong',
-      text: 'text-on-color',
-      icon: 'icon-on-color',
+      text: 'text-critical-on-bg-fill',
+      icon: 'text-critical-on-bg-fill',
     },
     withinContentContainer: {
       background: 'bg-critical-subdued',
@@ -70,8 +70,8 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
   info: {
     withinPage: {
       background: 'bg-info-strong',
-      text: 'text-info-strong',
-      icon: 'text-info-strong',
+      text: 'text-info-on-bg-fill',
+      icon: 'text-info-on-bg-fill',
     },
     withinContentContainer: {
       background: 'bg-info-subdued',

@@ -17,15 +17,15 @@ icon: ColorsMajor
 
 <Subnav />
 
-<Stack gap="8">
+<Stack gap="800">
 
 <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ## Color has purpose
 
@@ -43,7 +43,7 @@ icon: ColorsMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
         Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
 
@@ -74,11 +74,11 @@ icon: ColorsMajor
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ## Color has impact
 
@@ -96,7 +96,7 @@ icon: ColorsMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           The intentional design of the overall interface in black and white enables strategically positioned and carefully selected elements to grab merchants' attention. By utilizing color purposefully, the focus is directed towards crucial information, actions, and visual cues.
 
@@ -130,11 +130,11 @@ icon: ColorsMajor
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ## Color is accessible
 
@@ -154,7 +154,7 @@ icon: ColorsMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify and interact with.
 

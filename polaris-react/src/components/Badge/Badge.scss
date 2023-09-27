@@ -2,8 +2,8 @@
 
 .Badge {
   // stylelint-disable -- Polaris component custom properties
-  --pc-badge-horizontal-padding: var(--p-space-2);
-  --pc-badge-vertical-padding: var(--p-space-05);
+  --pc-badge-horizontal-padding: var(--p-space-200);
+  --pc-badge-vertical-padding: var(--p-space-050);
   // stylelint-enable
   display: inline-flex;
   align-items: center;
@@ -19,7 +19,7 @@
   }
 
   @media print {
-    border: solid var(--p-border-width-1) var(--p-color-border);
+    border: solid var(--p-border-width-025) var(--p-color-border);
   }
 }
 
@@ -33,11 +33,11 @@
 }
 
 .toneSuccess-strong {
-  color: var(--p-color-text-on-color);
+  color: var(--p-color-text-success-on-bg-fill);
   background-color: var(--p-color-bg-success-strong);
 
   svg {
-    fill: var(--p-color-icon-on-color);
+    fill: var(--p-color-text-success-on-bg-fill);
   }
 }
 
@@ -51,11 +51,11 @@
 }
 
 .toneInfo-strong {
-  color: var(--p-color-text-info-strong);
+  color: var(--p-color-text-info-on-bg-fill);
   background-color: var(--p-color-bg-info-strong);
 
   svg {
-    fill: var(--p-color-text-info-strong);
+    fill: var(--p-color-text-info-on-bg-fill);
   }
 }
 
@@ -69,11 +69,11 @@
 }
 
 .toneAttention-strong {
-  color: var(--p-color-text-caution-strong);
+  color: var(--p-color-text-caution-on-bg-fill);
   background-color: var(--p-color-bg-caution-strong);
 
   svg {
-    fill: var(--p-color-text-caution);
+    fill: var(--p-color-text-caution-on-bg-fill);
   }
 }
 
@@ -87,11 +87,11 @@
 }
 
 .toneWarning-strong {
-  color: var(--p-color-text-warning-experimental);
+  color: var(--p-color-text-warning-on-bg-fill);
   background-color: var(--p-color-bg-warning-strong-experimental);
 
   svg {
-    fill: var(--p-color-text-warning-experimental);
+    fill: var(--p-color-text-warning-on-bg-fill);
   }
 }
 
@@ -100,16 +100,16 @@
   color: var(--p-color-text-critical);
 
   svg {
-    fill: var(--p-color-icon-critical-strong-experimental);
+    fill: var(--p-color-icon-critical);
   }
 }
 
 .toneCritical-strong {
-  color: var(--p-color-text-on-color);
+  color: var(--p-color-text-critical-on-bg-fill);
   background-color: var(--p-color-bg-critical-strong);
 
   svg {
-    fill: var(--p-color-icon-on-color);
+    fill: var(--p-color-text-critical-on-bg-fill);
   }
 }
 
@@ -143,16 +143,16 @@
 }
 
 .sizeLarge {
-  padding: var(--p-space-1) var(--p-space-2);
+  padding: var(--p-space-100) var(--p-space-200);
 }
 
 .withinFilter {
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
 }
 
 .Icon {
-  margin: calc(-1 * var(--p-space-05)) 0 calc(-1 * var(--p-space-05))
-    calc(-1 * var(--p-space-2));
+  margin: calc(-1 * var(--p-space-050)) 0 calc(-1 * var(--p-space-050))
+    calc(-1 * var(--p-space-200));
 
   svg {
     // Corrects conflicting alignment with ancestor elements
@@ -161,7 +161,7 @@
   }
 
   .sizeLarge & {
-    margin: 0 var(--p-space-1) 0 calc(-1 * var(--p-space-05));
+    margin: 0 var(--p-space-100) 0 calc(-1 * var(--p-space-050));
   }
 
   + * {
@@ -172,6 +172,6 @@
 .PipContainer {
   display: grid;
   align-items: center;
-  margin-left: calc(-1 * var(--p-space-05));
-  margin-right: var(--p-space-1);
+  margin-left: calc(-1 * var(--p-space-050));
+  margin-right: var(--p-space-100);
 }

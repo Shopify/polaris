@@ -75,7 +75,7 @@ export function Small() {
 
 export function All() {
   return (
-    <BlockStack gap="2">
+    <BlockStack gap="200">
       <Text as="h2" variant="headingMd">
         Default
       </Text>

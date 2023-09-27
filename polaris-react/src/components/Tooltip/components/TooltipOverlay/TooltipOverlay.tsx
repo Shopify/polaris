@@ -104,7 +104,7 @@ export function TooltipOverlay({
         : undefined,
       '--pc-tooltip-padding':
         padding && padding === 'default'
-          ? 'var(--p-space-1) var(--p-space-2)'
+          ? 'var(--p-space-100) var(--p-space-200)'
           : `var(--p-space-${padding})`,
     } as React.CSSProperties;
 
