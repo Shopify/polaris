@@ -71,6 +71,14 @@
 
 * Updated dependencies [[`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532)]:
   - @shopify/polaris-tokens@7.13.0-beta.0
+## 11.24.0
+
+### Minor Changes
+
+- [#10576](https://github.com/Shopify/polaris/pull/10576) [`30555a9f9`](https://github.com/Shopify/polaris/commit/30555a9f9a275cd44a3ea8b965309c948b9796e8) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Migrated `color` custom properties from Polaris v11 to v12
+
+* [`b3bfdcfc0`](https://github.com/Shopify/polaris/commit/b3bfdcfc03d9dc27f25ce93c6786242b58587e6c) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - - Updated the `TextField` to automatically set password manager disable data attributes when `autoComplete` is set to "off"
+  - Deprecated the `TextField` `disable1Password` prop
 
 ## 11.23.0
 
