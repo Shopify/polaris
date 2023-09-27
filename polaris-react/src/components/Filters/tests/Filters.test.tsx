@@ -2,10 +2,9 @@ import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
-import {ActionList} from '../../ActionList';
 import {Filters} from '../Filters';
 import type {FiltersProps} from '../Filters';
-import {FilterPill} from '../components';
+import {FiltersBar, SearchField} from '../components';
 
 describe('<Filters />', () => {
   let originalScroll: any;
@@ -47,330 +46,38 @@ describe('<Filters />', () => {
     onClearAll: jest.fn(),
   };
 
-  it('renders a list of pinned filters', () => {
+  it('renders the SearchField by default', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
     const wrapper = mountWithApp(<Filters {...defaultProps} />);
-
-    expect(wrapper).toContainReactComponentTimes(FilterPill, 1);
-    expect(wrapper).toContainReactComponent(FilterPill, {
-      label: defaultProps.filters[1].label,
-    });
+    expect(wrapper).toContainReactComponent(SearchField);
   });
 
-  it('renders the unpinned filters inside a Popover', () => {
+  it('does not render the SearchField if hideQueryField is true', () => {
+    const scrollSpy = jest.fn();
+    HTMLElement.prototype.scroll = scrollSpy;
+    const wrapper = mountWithApp(<Filters {...defaultProps} hideQueryField />);
+    expect(wrapper).not.toContainReactComponent(SearchField);
+  });
+
+  it('renders the FiltersBar by default', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
     const wrapper = mountWithApp(<Filters {...defaultProps} />);
-
-    wrapper.act(() => {
-      wrapper
-        .find('button', {
-          'aria-label': 'Add filter',
-        })!
-        .trigger('onClick');
-    });
-
-    expect(wrapper).toContainReactComponent(ActionList, {
-      items: [
-        expect.objectContaining({content: defaultProps.filters[0].label}),
-        expect.objectContaining({content: defaultProps.filters[2].label}),
-      ],
-    });
+    expect(wrapper).toContainReactComponent(FiltersBar);
   });
 
-  it('renders the unpinned disabled filters inside a Popover', () => {
+  it('does not render the FiltersBar if hideFilters is true', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
-    const filters = [
-      ...defaultProps.filters,
-      {
-        key: 'disabled',
-        label: 'Disabled',
-        pinned: false,
-        disabled: true,
-        filter: <div>Filter</div>,
-      },
-    ];
-
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} filters={filters} />,
-    );
-
-    wrapper.act(() => {
-      wrapper
-        .find('button', {
-          'aria-label': 'Add filter',
-        })!
-        .trigger('onClick');
-    });
-
-    expect(wrapper).toContainReactComponent(ActionList, {
-      items: [
-        expect.objectContaining({
-          content: filters[0].label,
-        }),
-        expect.objectContaining({
-          content: filters[2].label,
-        }),
-        expect.objectContaining({
-          content: filters[3].label,
-          disabled: true,
-        }),
-      ],
-    });
+    const wrapper = mountWithApp(<Filters {...defaultProps} hideFilters />);
+    expect(wrapper).not.toContainReactComponent(FiltersBar);
   });
 
-  it('renders an applied filter', () => {
+  it('does not render the FiltersBar if hideFilters is falsy but there are no filters', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
-    const appliedFilters = [
-      {
-        ...defaultProps.filters[2],
-        label: 'Bux',
-        value: ['Bux'],
-        onRemove: jest.fn(),
-      },
-    ];
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} appliedFilters={appliedFilters} />,
-    );
-
-    expect(wrapper).toContainReactComponentTimes(FilterPill, 2);
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
-      label: 'Bux',
-      selected: true,
-    });
-  });
-
-  it('will not open the popover for an applied filter by default', () => {
-    const appliedFilters = [
-      {
-        ...defaultProps.filters[2],
-        label: 'Bux',
-        value: ['Bux'],
-        onRemove: jest.fn(),
-      },
-    ];
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} appliedFilters={appliedFilters} />,
-    );
-
-    expect(wrapper).toContainReactComponentTimes(FilterPill, 2);
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
-      label: 'Bux',
-      initialActive: false,
-    });
-  });
-
-  it('triggers the onAddFilterClick callback when the add filter button is clicked', () => {
-    const callbackFunction = jest.fn();
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} onAddFilterClick={callbackFunction} />,
-    );
-    wrapper.act(() => {
-      wrapper
-        .find('button', {
-          'aria-label': 'Add filter',
-        })!
-        .trigger('onClick');
-    });
-
-    expect(callbackFunction).toHaveBeenCalled();
-    expect(wrapper).toContainReactComponent(ActionList);
-  });
-
-  it('will not remove a pinned filter when it is removed from the applied filters array', () => {
-    const appliedFilters = [
-      {
-        ...defaultProps.filters[2],
-        label: 'Value is Baz',
-        value: ['Baz'],
-        onRemove: jest.fn(),
-      },
-    ];
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} appliedFilters={appliedFilters} />,
-    );
-
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
-      label: 'Value is Baz',
-      selected: true,
-    });
-    wrapper.setProps({appliedFilters: []});
-
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
-      label: 'Baz',
-      selected: false,
-    });
-  });
-
-  it('correctly adds the applied filters when updated via props', () => {
-    const appliedFilters = [
-      {
-        ...defaultProps.filters[2],
-        label: 'Value is Baz',
-        value: ['Baz'],
-        onRemove: jest.fn(),
-      },
-    ];
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} appliedFilters={[]} />,
-    );
-
-    expect(wrapper).not.toContainReactComponent(FilterPill, {
-      selected: true,
-    });
-
-    wrapper.setProps({
-      appliedFilters,
-    });
-
-    expect(wrapper.findAll(FilterPill)[1]).toHaveReactProps({
-      label: 'Value is Baz',
-      selected: true,
-    });
-  });
-
-  it('correctly invokes the onRemove callback when clicking on an applied filter', () => {
-    const scrollSpy = jest.fn();
-    HTMLElement.prototype.scroll = scrollSpy;
-    const appliedFilters = [
-      {
-        ...defaultProps.filters[2],
-        label: 'Bux',
-        value: ['Bux'],
-        onRemove: jest.fn(),
-      },
-    ];
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} appliedFilters={appliedFilters} />,
-    );
-
-    wrapper.act(() => {
-      wrapper.findAll(FilterPill)[1].findAll('button')[1].trigger('onClick');
-    });
-
-    expect(appliedFilters[0].onRemove).toHaveBeenCalled();
-  });
-
-  it('will not render the add badge if all filters are pinned by default', () => {
-    const scrollSpy = jest.fn();
-    HTMLElement.prototype.scroll = scrollSpy;
-    const filters = defaultProps.filters.map((filter) => ({
-      ...filter,
-      pinned: true,
-    }));
-
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} filters={filters} />,
-    );
-
-    expect(wrapper).not.toContainReactComponent('div', {
-      className: 'AddFilterActivator',
-    });
-  });
-
-  it('will not render a disabled filter if pinned', () => {
-    const scrollSpy = jest.fn();
-    HTMLElement.prototype.scroll = scrollSpy;
-    const filters = [
-      ...defaultProps.filters,
-      {
-        key: 'disabled',
-        label: 'Disabled',
-        pinned: true,
-        disabled: true,
-        filter: <div>Filter</div>,
-      },
-    ];
-
-    const wrapper = mountWithApp(
-      <Filters {...defaultProps} filters={filters} />,
-    );
-
-    expect(wrapper).toContainReactComponentTimes(FilterPill, 2);
-
-    wrapper.act(() => {
-      wrapper
-        .find('button', {
-          'aria-label': 'Add filter',
-        })!
-        .trigger('onClick');
-    });
-
-    expect(wrapper).toContainReactComponent(ActionList, {
-      items: [
-        expect.objectContaining({content: defaultProps.filters[0].label}),
-        expect.objectContaining({content: defaultProps.filters[2].label}),
-      ],
-    });
-
-    expect(wrapper.findAll(FilterPill)[1].domNode).toBeNull();
-  });
-
-  it('renders filters with sections', () => {
-    const filtersWithSections = [
-      {
-        key: 'sectionfilter1',
-        label: 'SF1',
-        pinned: false,
-        filter: <div>SF1</div>,
-        section: 'Section One',
-      },
-      {
-        key: 'sectionfilter2',
-        label: 'SF2',
-        pinned: false,
-        filter: <div>SF1</div>,
-        section: 'Section Two',
-      },
-      {
-        key: 'sectionfilter3',
-        label: 'SF3',
-        pinned: false,
-        filter: <div>SF3</div>,
-        section: 'Section One',
-      },
-    ];
-
-    const wrapper = mountWithApp(
-      <Filters
-        {...defaultProps}
-        filters={[...defaultProps.filters, ...filtersWithSections]}
-      />,
-    );
-
-    wrapper.act(() => {
-      wrapper
-        .find('button', {
-          'aria-label': 'Add filter',
-        })!
-        .trigger('onClick');
-    });
-
-    expect(wrapper).toContainReactComponent(ActionList, {
-      sections: [
-        expect.objectContaining({
-          title: 'Section One',
-          items: [
-            expect.objectContaining({
-              content: filtersWithSections[0].label,
-            }),
-            expect.objectContaining({
-              content: filtersWithSections[2].label,
-            }),
-          ],
-        }),
-        expect.objectContaining({
-          title: 'Section Two',
-          items: [
-            expect.objectContaining({
-              content: filtersWithSections[1].label,
-            }),
-          ],
-        }),
-      ],
-    });
+    const wrapper = mountWithApp(<Filters {...defaultProps} filters={[]} />);
+    expect(wrapper).not.toContainReactComponent(FiltersBar);
   });
 });
