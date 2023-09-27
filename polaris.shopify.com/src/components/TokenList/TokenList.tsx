@@ -50,9 +50,9 @@ function TokenList({
             <thead>
               <tr>
                 {columns.preview && <th></th>}
-                {columns.name && <th>Token name</th>}
-                {columns.value && <th>Current value</th>}
-                {columns.figmaUsage && <th>Figma usage</th>}
+                {columns.name && <th>Name</th>}
+                {columns.value && <th>Value</th>}
+                {columns.figmaUsage && <th>Figma</th>}
                 {columns.description && <th>Description</th>}
               </tr>
             </thead>
