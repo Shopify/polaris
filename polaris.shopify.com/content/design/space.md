@@ -12,15 +12,25 @@ keywords:
 description: Space is the distance between objects in your design. It should be used to complement the purpose of a page, by creating hierarchy and helping  the content become more useful and understandable.
 ---
 
+<div style={{margin: '40px -30px 40px -30px'}}>
+  <img
+    src="/images/design/space/spacing-polaris-size-units.svg"
+    alt="A visual example of a polaris unit"
+  />
+</div>
+
+---
+
 # {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 
----
+<DirectiveCard status="Caution">
 
-<div style={{margin: "40px -30px 40px -30px"}}>
-  <img src="/images/design/space/spacing-polaris-size-units.svg" alt="A visual example of a polaris unit" />
-</div>
+This section is currently being reworked to provide better guidance aligned
+with Polaris v12. Stay tuned!
+
+</DirectiveCard>
 
 ---
 
@@ -54,8 +64,8 @@ All measurements used across the experience (space, width, height, etc) must ref
   width: "75%",
 }}>
 
-  ![A visual example of a polaris unit](/images/design/space/spacing-polaris-units@2x.png)
-  
+![A visual example of a polaris unit](/images/design/space/spacing-polaris-units@2x.png)
+
 </div>
 
 ### Space scale
