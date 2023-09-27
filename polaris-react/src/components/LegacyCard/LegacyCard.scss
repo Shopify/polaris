@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .LegacyCard {
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-surface);
   box-shadow: var(--p-shadow-md);
   outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
@@ -59,7 +59,7 @@
 }
 
 .subdued {
-  background-color: var(--p-color-bg-subdued);
+  background-color: var(--p-color-bg-surface-secondary);
 }
 
 .Section-hideOnPrint,

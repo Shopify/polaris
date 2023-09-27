@@ -9,8 +9,8 @@
 @mixin control-backdrop($style: base) {
   @if $style == base {
     position: relative;
-    border: var(--p-border-width-050) solid var(--p-color-border-input);
-    background-color: var(--p-color-bg);
+    border: var(--p-border-width-050) solid var(--p-color-input-border);
+    background-color: var(--p-color-bg-surface);
     border-radius: var(--p-border-radius-100);
 
     &.hover,
@@ -40,7 +40,7 @@
     }
   } @else if $style == error {
     border-color: var(--p-color-border-critical);
-    background-color: var(--p-color-bg-critical);
+    background-color: var(--p-color-bg-fill-critical-secondary);
 
     &.hover,
     &:hover {

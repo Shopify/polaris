@@ -355,7 +355,7 @@
 
       // stylelint-disable-next-line selector-max-specificity -- set svg fill
       svg {
-        fill: var(--p-color-text-inverse-subdued);
+        fill: var(--p-color-text-inverse-secondary);
       }
     }
   }
@@ -464,7 +464,7 @@
   }
 
   &:is(:hover, :focus, :active) {
-    color: var(--p-color-text-interactive-active);
+    color: var(--p-color-text-emphasis-active);
     box-shadow: none;
   }
 
@@ -597,10 +597,10 @@
   background: transparent;
   border: 0;
   box-shadow: none;
-  color: var(--p-color-text-interactive);
+  color: var(--p-color-text-emphasis);
 
   svg {
-    fill: var(--p-color-icon-interactive);
+    fill: var(--p-color-icon-emphasis);
   }
 
   > .Content {
@@ -613,12 +613,12 @@
 
   &:hover,
   &:focus:not(.disabled) {
-    color: var(--p-color-text-interactive-hover);
+    color: var(--p-color-text-emphasis-hover);
     background: transparent;
     box-shadow: none;
 
     svg {
-      fill: var(--p-color-icon-interactive-hover);
+      fill: var(--p-color-icon-emphasis-hover);
     }
 
     &:not(.removeUnderline) {

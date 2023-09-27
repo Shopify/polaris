@@ -1080,7 +1080,7 @@ function WithSidebarEnabled() {
               right: 'var(--p-space-200)',
               width: 'calc(var(--pc-sidebar-width) - var(--p-space-400))',
               height: 'calc(100vh - 3.5rem - var(--p-space-400))',
-              background: 'var(--p-color-bg)',
+              background: 'var(--p-color-bg-surface)',
               padding: 'var(--p-space-200)',
               boxShadow: 'var(--p-shadow-md)',
               borderRadius: 'var(--p-border-radius-3)',

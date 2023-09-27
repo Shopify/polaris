@@ -46,7 +46,7 @@
 
 .tonePrimary {
   // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-color-bg-strong);
+  --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
   --pc-progress-bar-indicator: var(--p-color-bg-primary);
   // stylelint-enable
 }
