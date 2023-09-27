@@ -39,11 +39,11 @@ $control-vertical-adjustment: 2px;
     outline: var(--p-border-width-2) solid
       var(--p-color-border-interactive-focus);
     outline-offset: var(--p-space-025);
-    background-color: var(--p-color-bg-subdued-hover);
+    background-color: var(--p-color-bg-surface-secondary-hover);
   }
 
   &.active {
-    background: var(--p-color-bg-subdued-active);
+    background: var(--p-color-bg-surface-secondary-selected);
   }
 
   &:not(.disabled) {
@@ -75,20 +75,24 @@ $control-vertical-adjustment: 2px;
   @include text-breakword;
 
   &:hover:not(.disabled) {
-    background-color: var(--p-color-bg-subdued-hover);
+    background-color: var(--p-color-bg-surface-secondary-hover);
   }
 
   &:active:not(.disabled) {
-    background: var(--p-color-bg-interactive-selected);
+    background: var(--p-color-bg-surface-secondary-active);
   }
 
   // stylelint-disable-next-line selector-max-specificity -- specificity buster
   &.select,
   &.select:hover:not(.disabled) {
-    background-color: var(--p-color-bg-subdued-active);
+    background-color: var(--p-color-bg-surface-secondary-selected);
     // stylelint-disable-next-line -- no way to select parent Checkbox class without :has()
     &.CheckboxLabel {
       background-color: transparent;
+    }
+
+    svg {
+      fill: var(--p-color-icon-active);
     }
   }
 

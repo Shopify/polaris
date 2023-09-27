@@ -23,7 +23,7 @@
     background-color: var(--p-color-bg-hover);
 
     &:not(.disabled) {
-      background-color: var(--p-color-bg-subdued-hover);
+      background-color: var(--p-color-bg-surface-secondary-hover);
     }
   }
 
@@ -35,13 +35,17 @@
     background-color: var(--p-color-bg-active);
 
     &:not(.disabled) {
-      background-color: var(--p-color-bg-subdued-active);
+      background-color: var(--p-color-bg-surface-secondary-active);
     }
   }
 
   &.selected {
-    background-color: var(--p-color-bg-subdued-active);
+    background-color: var(--p-color-bg-surface-secondary-selected);
     font-weight: var(--p-font-weight-semibold);
+
+    svg {
+      fill: var(--p-color-icon-active);
+    }
   }
 
   &.selected::before {
@@ -72,7 +76,7 @@ li:first-of-type > .TextOption {
 // Focused by click
 [data-focused] .TextOption:not(.disabled) {
   outline: none;
-  background-color: var(--p-color-bg-subdued-active);
+  background-color: var(--p-color-bg-surface-secondary-selected);
   transition: background-color var(--p-motion-duration-400);
 }
 
