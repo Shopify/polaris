@@ -23,7 +23,7 @@ const defaultColumnsConfig: ColumnsConfig = {
   preview: true,
   name: true,
   value: true,
-  figmaUsage: true,
+  figmaUsage: false,
   description: true,
 };
 
