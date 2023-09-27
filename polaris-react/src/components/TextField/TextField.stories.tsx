@@ -878,6 +878,7 @@ export function With1PasswordDisabled() {
       value={value}
       onChange={handleChange}
       autoComplete="off"
+      disable1Password
     />
   );
 }

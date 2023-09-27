@@ -85,15 +85,18 @@ describe('<TextField />', () => {
     });
   });
 
-  it('adds the password manager disabled props if autoComplete="off" is set', () => {
+  it('adds the data-1p-ignore prop if disable1Password is set', () => {
     const textField = mountWithApp(
-      <TextField label="TextField" onChange={noop} autoComplete="off" />,
+      <TextField
+        label="TextField"
+        onChange={noop}
+        autoComplete="off"
+        disable1Password
+      />,
     );
 
     expect(textField).toContainReactComponent('input', {
       'data-1p-ignore': true,
-      'data-lpignore': true,
-      'data-form-type': 'other',
     } as any);
   });
 
