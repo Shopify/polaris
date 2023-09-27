@@ -53,7 +53,7 @@
 }
 
 .ActionTitle {
-  color: var(--p-color-text-interactive);
+  color: var(--p-color-text-emphasis);
   text-decoration: none;
 
   &:not(.ActionTitle-disabled) {
@@ -61,7 +61,7 @@
 
     &:hover,
     &:active {
-      color: var(--p-color-text-interactive-active);
+      color: var(--p-color-text-emphasis-active);
       text-decoration: underline;
     }
   }

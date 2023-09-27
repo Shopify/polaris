@@ -61,7 +61,7 @@ $spinner-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
 
   &::before {
     content: '';
@@ -75,7 +75,7 @@ $spinner-size: 20px;
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0),
-      var(--p-color-bg)
+      var(--p-color-bg-surface)
     );
     // stylelint-enable
   }
@@ -106,7 +106,7 @@ $spinner-size: 20px;
       background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0),
-        var(--p-color-bg)
+        var(--p-color-bg-surface)
       );
       // stylelint-enable
     }
