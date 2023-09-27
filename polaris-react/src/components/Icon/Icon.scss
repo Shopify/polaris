@@ -49,8 +49,48 @@
   fill: var(--p-color-icon-primary);
 }
 
+.toneSecondary svg {
+  fill: var(--p-color-icon-secondary);
+}
+
+.toneEmphasis svg {
+  fill: var(--p-color-icon-emphasis);
+}
+
 .toneMagic svg {
   fill: var(--p-color-icon-magic);
+}
+
+.toneBrand svg {
+  fill: var(--p-color-icon-brand);
+}
+
+.toneTextCaution svg {
+  fill: var(--p-color-text-caution);
+}
+
+.toneTextWarning svg {
+  fill: var(--p-color-text-warning);
+}
+
+.toneTextCritical svg {
+  fill: var(--p-color-text-critical);
+}
+
+.toneTextInfo svg {
+  fill: var(--p-color-text-info);
+}
+
+.toneTextSuccess svg {
+  fill: var(--p-color-text-success);
+}
+
+.toneTextMagic svg {
+  fill: var(--p-color-text-magic);
+}
+
+.toneTextBrand svg {
+  fill: var(--p-color-text-brand);
 }
 
 .Svg,
