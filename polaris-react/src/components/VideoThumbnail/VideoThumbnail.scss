@@ -57,7 +57,7 @@ $progress-bar-height: 6px;
 }
 
 .PlayIcon {
-  fill: var(--p-color-icon-on-color);
+  fill: var(--p-color-video-thumbnail-play-button-text-on-bg-fill);
 }
 
 .Timestamp {
@@ -68,7 +68,7 @@ $progress-bar-height: 6px;
   margin-bottom: var(--p-space-400);
   margin-left: var(--p-space-400);
   border-radius: var(--p-border-radius-2);
-  color: var(--p-color-text-on-color);
+  color: var(--p-color-video-thumbnail-play-button-text-on-bg-fill);
   background-color: var(--p-color-video-thumbnail-play-button-bg-fill);
   text-align: center;
   transition: background-color var(--p-motion-duration-200)
