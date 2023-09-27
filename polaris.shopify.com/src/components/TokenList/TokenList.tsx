@@ -10,6 +10,7 @@ import Link from 'next/link';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
 import {ClipboardMinor} from '@shopify/polaris-icons';
 import SearchResultHighlight from '../SearchResultHighlight';
+import {toPxs} from '@shopify/polaris-tokens';
 
 interface ColumnsConfig {
   preview: boolean;
@@ -206,7 +207,7 @@ function TokenListItem({
               </span>
             </td>
           )}
-          {columns.value && <td className={styles.Value}>{value}</td>}
+          {columns.value && <td className={styles.Value}>{toPxs(value)}</td>}
           {columns.figmaUsage && (
             <td className={styles.FigmaUsage}>{figmaUsage || '—'}</td>
           )}
