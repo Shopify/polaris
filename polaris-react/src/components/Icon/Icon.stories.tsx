@@ -27,10 +27,6 @@ export function Colored() {
       </Text>
       <Icon source={CirclePlusMinor} tone="primary" />
       <Text as="p" variant="bodyMd" alignment="center">
-        Secondary tone
-      </Text>
-      <Icon source={CirclePlusMinor} tone="secondary" />
-      <Text as="p" variant="bodyMd" alignment="center">
         Info tone
       </Text>
       <Icon source={CirclePlusMinor} tone="info" />
@@ -59,6 +55,10 @@ export function Colored() {
       </Text>
       <Icon source={CirclePlusMinor} tone="magic" />
       <Text as="p" variant="bodyMd" alignment="center">
+        Text Primary tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="textPrimary" />
+      <Text as="p" variant="bodyMd" alignment="center">
         Text Caution tone
       </Text>
       <Icon source={CirclePlusMinor} tone="textCaution" />
@@ -82,10 +82,6 @@ export function Colored() {
         Text Magic tone
       </Text>
       <Icon source={CirclePlusMinor} tone="textMagic" />
-      <Text as="p" variant="bodyMd" alignment="center">
-        Text Brand tone
-      </Text>
-      <Icon source={CirclePlusMinor} tone="textBrand" />
     </BlockStack>
   );
 }
