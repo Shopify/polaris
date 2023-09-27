@@ -90,7 +90,7 @@ function getFigmaUsageForToken(
   const REM = 16;
 
   if (value.startsWith('rgba')) {
-    usage = figmaColorNames[name] ? `Use ${figmaColorNames[name]}` : '-';
+    usage = figmaColorNames[name] ? `Use ${figmaColorNames[name]}` : '—';
   } else if (name.startsWith('shadow')) {
     usage = 'Use shadow styles from UI kit';
   } else if (name.includes('breakpoint')) {
