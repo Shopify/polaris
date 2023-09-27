@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Icon} from '@shopify/polaris';
+import {Icon, Text, BlockStack} from '@shopify/polaris';
 import {CirclePlusMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -13,17 +13,84 @@ export function Default() {
 
 export function Colored() {
   return (
-    <div>
+    <BlockStack gap="2">
+      <Text as="p" variant="bodyMd" alignment="center">
+        Base tone
+      </Text>
       <Icon source={CirclePlusMinor} tone="base" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Subdued tone
+      </Text>
       <Icon source={CirclePlusMinor} tone="subdued" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Primary tone
+      </Text>
       <Icon source={CirclePlusMinor} tone="primary" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Secondary tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="secondary" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Info tone
+      </Text>
       <Icon source={CirclePlusMinor} tone="info" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Success tone
+      </Text>
       <Icon source={CirclePlusMinor} tone="success" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Caution tone
+      </Text>
       <Icon source={CirclePlusMinor} tone="caution" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Warning tone
+      </Text>
       <Icon source={CirclePlusMinor} tone="warning" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Critical tone
+      </Text>
       <Icon source={CirclePlusMinor} tone="critical" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Emphasis tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="emphasis" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Magic tone
+      </Text>
       <Icon source={CirclePlusMinor} tone="magic" />
-    </div>
+      <Text as="p" variant="bodyMd" alignment="center">
+        Brand tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="brand" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Text Caution tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="textCaution" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Text Warning tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="textWarning" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Text Critical tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="textCritical" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Text Info tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="textInfo" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Text Success tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="textSuccess" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Text Magic tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="textMagic" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Text Brand tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="textBrand" />
+    </BlockStack>
   );
 }
 
