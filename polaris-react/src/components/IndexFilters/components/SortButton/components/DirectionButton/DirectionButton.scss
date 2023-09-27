@@ -3,7 +3,7 @@
 .DirectionButton {
   // stylelint-disable-next-line -- This mixin cannot be replaced with a single token
   @include focus-ring($size: 'wide');
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
   padding: var(--p-space-100) var(--p-space-300) var(--p-space-100)
     var(--p-space-200);
   font-size: var(--p-font-size-100);

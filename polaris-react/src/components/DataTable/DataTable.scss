@@ -10,7 +10,7 @@
   overflow: hidden;
 
   @media #{$p-breakpoints-sm-up} {
-    border-radius: var(--p-border-radius-3);
+    border-radius: var(--p-border-radius-300);
   }
 }
 
@@ -36,7 +36,7 @@
   height: 6px;
   width: 6px;
   background: var(--p-color-icon-subdued);
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
 
   &:not(:last-of-type) {
     margin-right: var(--p-space-100);
@@ -127,7 +127,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  border-right: var(--p-border-width-1) solid var(--p-color-border);
+  border-right: var(--p-border-width-025) solid var(--p-color-border);
 }
 
 .Cell-firstColumn {
@@ -150,7 +150,7 @@
 .Cell-header {
   font-weight: var(--p-font-weight-regular);
   color: var(--p-color-text);
-  border-bottom: var(--p-border-width-1) solid var(--p-color-border);
+  border-bottom: var(--p-border-width-025) solid var(--p-color-border);
   border-top: 0;
   padding-top: var(--p-space-300);
   padding-bottom: var(--p-space-300);
@@ -304,7 +304,7 @@
 .Cell-total {
   font-weight: var(--p-font-weight-semibold);
   background: var(--p-color-bg-subdued);
-  border-bottom: var(--p-border-width-1) solid var(--p-color-border);
+  border-bottom: var(--p-border-width-025) solid var(--p-color-border);
 
   .ZebraStripingOnData.ShowTotals & {
     background: var(--p-color-bg-surface-secondary);
@@ -317,7 +317,7 @@
 }
 
 .Cell-total-footer {
-  border-top: var(--p-border-width-1) solid var(--p-color-border);
+  border-top: var(--p-border-width-025) solid var(--p-color-border);
   border-bottom: none;
 }
 
@@ -326,7 +326,7 @@
   background: var(--p-color-bg-subdued);
   color: var(--p-color-text-subdued);
   text-align: center;
-  border-top: var(--p-border-width-1) solid var(--p-color-border);
+  border-top: var(--p-border-width-025) solid var(--p-color-border);
 
   .IncreasedTableDensity & {
     padding: var(--p-space-150) var(--p-space-300);

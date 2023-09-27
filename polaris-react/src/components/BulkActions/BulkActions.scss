@@ -106,7 +106,7 @@ $bulk-actions-button-stacking-order: (
     &:focus-visible:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- override focus ring */
       @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
+      outline: var(--p-border-width-050) solid
         var(--p-color-border-interactive-focus);
       outline-offset: var(--p-space-050);
     }

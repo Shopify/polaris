@@ -56,7 +56,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-300));
 .Input:focus-visible:not(:active) {
   // stylelint-disable-next-line selector-max-specificity -- set Backdrop outline styles
   ~ .Backdrop {
-    outline: var(--p-border-width-2) solid
+    outline: var(--p-border-width-050) solid
       var(--p-color-border-interactive-focus);
     outline-offset: var(--p-space-050);
   }
@@ -87,9 +87,8 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-300));
   height: $new-input-height;
   width: 100%;
   padding: 0 $search-icon-width 0 $search-icon-width;
-  border: var(--p-border-width-1-experimental) solid
-    var(--p-color-border-inverse);
-  border-radius: var(--p-border-radius-2);
+  border: var(--p-border-width-0165) solid var(--p-color-border-inverse);
+  border-radius: var(--p-border-radius-200);
   background-color: transparent;
   outline: none;
   color: var(--p-color-text-inverse-subdued);
@@ -103,7 +102,7 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-300));
 
   &:active,
   &:focus {
-    box-shadow: inset 0 0 0 var(--p-border-width-1)
+    box-shadow: inset 0 0 0 var(--p-border-width-025)
       var(--p-color-border-inverse-active);
   }
 
@@ -187,5 +186,5 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-300));
   bottom: 0;
   left: 0;
   background-color: var(--p-color-bg-surface-inverse);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
 }

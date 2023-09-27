@@ -9,7 +9,7 @@
   // stylelint-enable
   display: flex;
   background-color: var(--p-color-bg-strong);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
 
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;
