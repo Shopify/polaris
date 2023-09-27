@@ -66,7 +66,7 @@ $spinner-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
 
   &::before {
     content: '';
@@ -80,7 +80,7 @@ $spinner-size: 20px;
     background: linear-gradient(
       to right,
       rgba(255, 255, 255, 0),
-      var(--p-color-bg)
+      var(--p-color-bg-surface)
     );
     // stylelint-enable
   }
@@ -96,7 +96,7 @@ $spinner-size: 20px;
   @media #{$p-breakpoints-md-down} {
     position: relative;
     padding: var(--p-space-300) var(--p-space-400);
-    border-left: var(--p-border-width-025) solid var(--p-color-border-subdued);
+    border-left: var(--p-border-width-025) solid var(--p-color-border-secondary);
     gap: var(--p-space-200);
 
     &::before {
@@ -111,7 +111,7 @@ $spinner-size: 20px;
       background: linear-gradient(
         to right,
         rgba(255, 255, 255, 0),
-        var(--p-color-bg)
+        var(--p-color-bg-surface)
       );
       // stylelint-enable
     }

@@ -38,7 +38,7 @@
 
     #{$se23} & {
       &:not(.disabled) {
-        background-color: var(--p-color-bg-subdued-hover);
+        background-color: var(--p-color-bg-surface-secondary-hover);
       }
     }
   }
@@ -52,7 +52,7 @@
 
     #{$se23} & {
       &:not(.disabled) {
-        background-color: var(--p-color-bg-subdued-active);
+        background-color: var(--p-color-bg-surface-secondary-active);
       }
     }
   }
@@ -61,7 +61,7 @@
     background-color: var(--p-color-bg-interactive-selected);
 
     #{$se23} & {
-      background-color: var(--p-color-bg-subdued-active);
+      background-color: var(--p-color-bg-surface-secondary-active);
       font-weight: var(--p-font-weight-semibold);
     }
   }
@@ -98,7 +98,7 @@ li:first-of-type > .TextOption {
   transition: background-color var(--p-motion-duration-400);
 
   #{$se23} & {
-    background-color: var(--p-color-bg-subdued-active);
+    background-color: var(--p-color-bg-surface-secondary-active);
   }
 }
 

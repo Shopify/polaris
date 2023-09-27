@@ -77,8 +77,8 @@
   padding: 0 var(--p-space-300);
   border: 0;
   border-radius: var(--p-border-radius-100);
-  background: var(--p-color-bg);
-  color: var(--p-color-text-subdued);
+  background: var(--p-color-bg-surface);
+  color: var(--p-color-text-secondary);
   cursor: pointer;
   text-decoration: none;
   width: 100%;
@@ -124,7 +124,7 @@
   #{$se23} & {
     // stylelint-disable-next-line -- no way to set focus ring without mixin currently
     @include focus-ring($size: 'wide');
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
     background-color: transparent;
     border-radius: var(--p-border-radius-200);
     padding: var(--p-space-150) var(--p-space-300);
@@ -135,20 +135,20 @@
     }
 
     &:not([aria-disabled='true']):hover {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
-      color: var(--p-color-text-primary);
+      background-color: var(--p-color-bg-fill-transparent-hover);
+      color: var(--p-color-text-brand);
     }
 
     &:not([aria-disabled='true']):focus-visible {
       background-color: transparent;
-      color: var(--p-color-text-primary);
+      color: var(--p-color-text-brand);
       // stylelint-disable-next-line -- sshhh
       @include focus-ring($size: 'wide', $style: 'focused');
     }
 
     &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-secondary-experimental);
-      color: var(--p-color-text-primary);
+      background-color: var(--p-color-bg-surface-tertiary);
+      color: var(--p-color-text-brand);
       z-index: var(--p-z-index-1);
     }
 
@@ -162,7 +162,7 @@
 
 .Tab-active {
   background: var(--p-color-bg-primary-subdued-hover);
-  color: var(--p-color-text-primary);
+  color: var(--p-color-text-brand);
 
   &[aria-disabled='true'] {
     background: var(--p-color-bg-disabled);
@@ -172,16 +172,16 @@
   &:not([aria-disabled='true']):hover,
   &:not([aria-disabled='true']):focus {
     background-color: var(--p-color-bg-primary-subdued-hover);
-    color: var(--p-color-text-primary-hover);
+    color: var(--p-color-text-brand-hover);
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-success-subdued-active);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-surface-success-active);
+    color: var(--p-color-text-brand);
   }
 
   #{$se23} & {
-    background: var(--p-color-bg-transparent-active-experimental);
+    background: var(--p-color-bg-fill-transparent-active);
     color: var(--p-color-text);
     border-radius: var(--p-border-radius-200);
 
@@ -192,12 +192,12 @@
 
     &:not([aria-disabled='true']):hover,
     &:not([aria-disabled='true']):focus {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
-      color: var(--p-color-text-primary);
+      background-color: var(--p-color-bg-fill-transparent-hover);
+      color: var(--p-color-text-brand);
     }
 
     &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-transparent-active-experimental);
+      background-color: var(--p-color-bg-fill-transparent-active);
     }
   }
 }
@@ -300,7 +300,7 @@
   @include unstyled-button;
   height: 100%;
   background-color: transparent;
-  color: var(--p-color-text-subdued);
+  color: var(--p-color-text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,7 +343,7 @@
 
   #{$se23} & {
     background-color: transparent;
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
     border-radius: var(--p-border-radius-200);
 
     // stylelint-disable-next-line selector-max-combinators -- Polaris component experimental styles
@@ -357,17 +357,17 @@
     }
 
     &:not([aria-disabled='true']):hover {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
-      color: var(--p-color-text-primary);
+      background-color: var(--p-color-bg-fill-transparent-hover);
+      color: var(--p-color-text-brand);
     }
 
     &:not([aria-disabled='true']):focus {
       background-color: transparent;
-      color: var(--p-color-text-primary);
+      color: var(--p-color-text-brand);
     }
 
     &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-secondary-experimental);
+      background-color: var(--p-color-bg-surface-tertiary);
     }
   }
 }

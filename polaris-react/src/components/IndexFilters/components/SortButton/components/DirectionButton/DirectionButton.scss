@@ -24,7 +24,7 @@
   }
 
   #{$se23} &:hover {
-    background-color: var(--p-color-bg-transparent-hover-experimental);
+    background-color: var(--p-color-bg-fill-transparent-hover);
   }
 
   + .DirectionButton {
@@ -46,11 +46,11 @@
 
 .DirectionButton-active {
   background: var(--p-color-bg-interactive-selected);
-  color: var(--p-color-text-interactive);
+  color: var(--p-color-text-emphasis);
 
   #{$se23} & {
     color: var(--p-color-text);
-    background: var(--p-color-bg-transparent-active-experimental);
+    background: var(--p-color-bg-fill-transparent-active);
   }
 }
 

@@ -15,7 +15,7 @@ $right-column: 1fr;
   position: relative;
   height: $top-bar-height;
   box-shadow: var(--p-shadow-sm);
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-surface);
   gap: var(--p-space-100);
 
   #{$se23} & {
@@ -83,8 +83,7 @@ $right-column: 1fr;
 
   #{$se23} & {
     &:focus-visible {
-      outline: var(--p-border-width-050) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-150);
       border-radius: var(--p-border-radius-200);
     }
@@ -128,7 +127,7 @@ $right-column: 1fr;
     background-color: var(--p-color-bg-hover);
 
     #{$se23} & {
-      background-color: var(--p-color-bg-inverse-hover);
+      background-color: var(--p-color-bg-fill-inverse-hover);
     }
   }
   // This increases hit point size.

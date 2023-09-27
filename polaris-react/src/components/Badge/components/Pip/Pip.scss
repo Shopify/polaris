@@ -24,7 +24,7 @@
     // stylelint-disable-next-line -- se23 1.25px border width
     border-width: var(--pc-border-width);
     // stylelint-disable-next-line -- se23 override
-    --pc-pip-color: var(--p-color-text-subdued);
+    --pc-pip-color: var(--p-color-text-secondary);
   }
 }
 
@@ -54,7 +54,7 @@
 
   #{$se23} & {
     // stylelint-disable-next-line -- se23
-    --pc-pip-color: var(--p-color-text-subdued);
+    --pc-pip-color: var(--p-color-text-secondary);
   }
 }
 

@@ -1,9 +1,9 @@
 @import '../../../../styles/common';
 
 .FilterButton {
-  background: var(--p-color-bg-subdued);
+  background: var(--p-color-bg-surface-secondary);
   border-radius: var(--p-border-radius-750);
-  border: var(--p-color-border-subdued) dashed var(--p-border-width-025);
+  border: var(--p-color-border-secondary) dashed var(--p-border-width-025);
   cursor: pointer;
   color: var(--p-color-text);
 
@@ -34,7 +34,7 @@
   }
 
   &.ActiveFilterButton {
-    background: var(--p-color-bg);
+    background: var(--p-color-bg-surface);
     border-style: solid;
   }
 
@@ -43,7 +43,7 @@
   }
 
   #{$se23} & {
-    background: var(--p-color-bg-secondary-experimental);
+    background: var(--p-color-bg-surface-tertiary);
     border-radius: var(--p-border-radius-200);
     border: var(--p-color-border) dashed var(--p-border-width-025);
 
@@ -58,10 +58,10 @@
     }
 
     &:active {
-      background: var(--p-color-bg-subdued);
+      background: var(--p-color-bg-surface-secondary);
 
       #{$se23} & {
-        background: var(--p-color-bg-secondary-experimental);
+        background: var(--p-color-bg-surface-tertiary);
       }
     }
 
@@ -73,14 +73,14 @@
     }
 
     &.ActiveFilterButton {
-      background: var(--p-color-bg);
+      background: var(--p-color-bg-surface);
       border-style: solid;
 
       &:active {
-        background: var(--p-color-bg-subdued);
+        background: var(--p-color-bg-surface-secondary);
 
         #{$se23} & {
-          background: var(--p-color-bg-secondary-experimental);
+          background: var(--p-color-bg-surface-tertiary);
         }
       }
     }
