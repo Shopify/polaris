@@ -309,8 +309,8 @@ function TokenPreview({name, value}: TokenPreviewProps) {
     );
   }
 
-  // Spacing
-  else if (name.includes('space')) {
+  // Spacing and Width
+  else if (name.includes('space') || name.includes('width')) {
     return (
       <div
         {...previewDivAttributes}
@@ -343,6 +343,53 @@ function TokenPreview({name, value}: TokenPreviewProps) {
             background: 'var(--text)',
           }}
         ></div>
+      </div>
+    );
+  }
+
+  // Height
+  else if (name.includes('height') && !name.includes('line-height')) {
+    return (
+      <div
+        {...previewDivAttributes}
+        style={{
+          display: 'flex',
+          alignItems: 'flex-start',
+        }}
+      >
+        <div
+          {...previewDivAttributes}
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <div
+            style={{
+              aspectRatio: '1/1',
+              borderRadius: 100,
+              minHeight: '10px',
+              background: 'var(--text)',
+            }}
+          ></div>
+          <div
+            style={{
+              minWidth: '30px',
+              height: value,
+              background: 'var(--text)',
+              opacity: 0.15,
+            }}
+          ></div>
+          <div
+            style={{
+              aspectRatio: '1/1',
+              borderRadius: 100,
+              minHeight: '10px',
+              background: 'var(--text)',
+            }}
+          ></div>
+        </div>
       </div>
     );
   }
@@ -409,6 +456,22 @@ function TokenPreview({name, value}: TokenPreviewProps) {
         Hello
         <br />
         World
+      </div>
+    );
+  }
+
+  // Letter spacing
+  else if (name.includes('letter-spacing')) {
+    return (
+      <div
+        {...previewDivAttributes}
+        style={{
+          display: 'flex',
+          letterSpacing: value,
+          background: 'transparent',
+        }}
+      >
+        Entrepreneurs
       </div>
     );
   }
