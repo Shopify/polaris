@@ -430,37 +430,37 @@ describe('<Row />', () => {
     );
   });
 
-  it('has an undefined status by default', () => {
+  it('has an undefined tone by default', () => {
     const row = mountWithTable(
       <Row {...defaultProps}>
         <td />
       </Row>,
     );
 
-    expect(row).toHaveReactProps({status: undefined});
+    expect(row).toHaveReactProps({tone: undefined});
   });
 
-  it('applies success status styles when status prop is set to "success"', () => {
+  it('applies success tone styles when tone prop is set to "success"', () => {
     const row = mountWithTable(
-      <Row {...defaultProps} status="success">
+      <Row {...defaultProps} tone="success">
         <td />
       </Row>,
     );
 
     expect(row).toContainReactComponent('tr', {
-      className: 'TableRow statusSuccess',
+      className: 'TableRow toneSuccess',
     });
   });
 
-  it('applies subdued status styles when status prop is set to "subdued"', () => {
+  it('applies subdued tone styles when tone prop is set to "subdued"', () => {
     const row = mountWithTable(
-      <Row {...defaultProps} status="subdued">
+      <Row {...defaultProps} tone="subdued">
         <td />
       </Row>,
     );
 
     expect(row).toContainReactComponent('tr', {
-      className: 'TableRow statusSubdued',
+      className: 'TableRow toneSubdued',
     });
   });
 

@@ -25,17 +25,7 @@ export interface RowProps {
   selected?: boolean | 'indeterminate';
   /** The zero-indexed position of the row. Used for Shift key multi-selection */
   position: number;
-  /**
-   *  @deprecated The subdued prop has been deprecated. Use the `tone` prop instead.
-   * Whether the row should be subdued */
-  subdued?: boolean;
-  /**
-   * @deprecated The status prop has been deprecated. Use the `tone` prop instead.
-   * Whether the row should have a status */
-  status?: RowStatus;
-  /**
-
-   * Whether the row should visually indicate its status with color */
+  /** Whether the row should visually indicate its status with color */
   tone?: RowStatus;
   /** Whether the row should be disabled */
   disabled?: boolean;
@@ -60,8 +50,6 @@ export const Row = memo(function Row({
   selected,
   id,
   position,
-  subdued,
-  status,
   tone,
   disabled,
   selectionRange,
@@ -127,12 +115,9 @@ export const Row = memo(function Row({
     rowType === 'subheader' && styles['TableRow-subheader'],
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
-    subdued && styles['TableRow-subdued'],
     hovered && !condensed && styles['TableRow-hovered'],
     disabled && styles['TableRow-disabled'],
-    status && styles[variationName('status', status)],
-    tone && styles[variationName('status', tone)],
-
+    tone && styles[variationName('tone', tone)],
     !selectable &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],
