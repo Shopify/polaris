@@ -1046,8 +1046,8 @@ $fixed-element-stacking-order: (
   );
   $border-radius: if(
     $size == 'wide',
-    var(--p-border-radius-2),
-    var(--p-border-radius-1)
+    var(--p-border-radius-200),
+    var(--p-border-radius-100)
   );
   $negative-offset: calc(-1 * #{$offset});
 
@@ -1330,7 +1330,7 @@ $nav-min-window: em(layout-width(page-with-nav));
   padding: $vertical-padding spacing();
   background: var(--p-surface);
   box-shadow: var(--p-shadow-button);
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   color: var(--p-text);
   border: 1px solid var(--p-border-neutral-subdued);
   border-top-color: var(--p-border-subdued);
@@ -1562,7 +1562,7 @@ $nav-min-window: em(layout-width(page-with-nav));
     position: relative;
     border: var(--p-control-border-width) solid var(--p-border);
     background-color: var(--p-surface);
-    border-radius: var(--p-border-radius-1);
+    border-radius: var(--p-border-radius-100);
 
     &::before {
       content: '';
@@ -1571,7 +1571,7 @@ $nav-min-window: em(layout-width(page-with-nav));
       right: calc(-1 * var(--p-control-border-width));
       bottom: calc(-1 * var(--p-control-border-width));
       left: calc(-1 * var(--p-control-border-width));
-      border-radius: var(--p-border-radius-1);
+      border-radius: var(--p-border-radius-100);
       background-color: var(--p-interactive);
       opacity: 0;
       transform: scale(0.25);
@@ -2133,8 +2133,8 @@ $thumbnail-sizes: (
   height: 100%;
   display: block;
   width: border-width(thicker);
-  border-top-right-radius: var(--p-border-radius-1);
-  border-bottom-right-radius: var(--p-border-radius-1);
+  border-top-right-radius: var(--p-border-radius-100);
+  border-bottom-right-radius: var(--p-border-radius-100);
 }
 
 //
