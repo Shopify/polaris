@@ -62,7 +62,7 @@
 }
 
 .headingXs {
-  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-300);
   line-height: var(--p-font-line-height-400);
   font-weight: var(--p-font-weight-semibold);
 
@@ -82,7 +82,7 @@
 }
 
 .headingMd {
-  font-size: var(--p-font-size-200);
+  font-size: var(--p-font-size-400);
   line-height: var(--p-font-line-height-600);
   font-weight: var(--p-font-weight-semibold);
 
@@ -93,24 +93,24 @@
 }
 
 .headingLg {
-  font-size: var(--p-font-size-200);
+  font-size: var(--p-font-size-400);
   line-height: var(--p-font-line-height-500);
   font-weight: var(--p-font-weight-semibold);
 
   #{$se23} & {
-    font-size: var(--p-font-size-300);
+    font-size: var(--p-font-size-500);
     line-height: var(--p-font-line-height-600);
     font-weight: var(--p-font-weight-bold);
   }
 
   @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-300);
+    font-size: var(--p-font-size-500);
     line-height: var(--p-font-line-height-600);
   }
 }
 
 .headingXl {
-  font-size: var(--p-font-size-300);
+  font-size: var(--p-font-size-500);
   line-height: var(--p-font-line-height-600);
   font-weight: var(--p-font-weight-semibold);
 
@@ -119,7 +119,7 @@
   }
 
   @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-400);
+    font-size: var(--p-font-size-600);
     line-height: var(--p-font-line-height-700);
 
     #{$se23} & {
@@ -129,46 +129,46 @@
 }
 
 .heading2xl {
-  font-size: var(--p-font-size-300);
+  font-size: var(--p-font-size-500);
   line-height: var(--p-font-line-height-600);
   font-weight: var(--p-font-weight-semibold);
 
   #{$se23} & {
-    font-size: var(--p-font-size-400);
+    font-size: var(--p-font-size-600);
     line-height: var(--p-font-line-height-800);
     font-weight: var(--p-font-weight-bold);
   }
 
   @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-500);
+    font-size: var(--p-font-size-750);
     line-height: var(--p-font-line-height-800);
 
     #{$se23} & {
       // Specificity bump
-      font-size: var(--p-font-size-500);
+      font-size: var(--p-font-size-750);
       line-height: var(--p-font-line-height-1000);
     }
   }
 }
 
 @mixin se23-heading3xl {
-  font-size: var(--p-font-size-500);
+  font-size: var(--p-font-size-750);
   line-height: var(--p-font-line-height-1000);
   font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-600);
+    font-size: var(--p-font-size-900);
     line-height: var(--p-font-line-height-1200);
   }
 }
 
 .heading3xl {
-  font-size: var(--p-font-size-400);
+  font-size: var(--p-font-size-600);
   line-height: var(--p-font-line-height-700);
   font-weight: var(--p-font-weight-semibold);
 
   @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-600);
+    font-size: var(--p-font-size-900);
     line-height: var(--p-font-line-height-1000);
   }
 
@@ -178,7 +178,7 @@
 }
 
 .heading4xl {
-  font-size: var(--p-font-size-600);
+  font-size: var(--p-font-size-900);
   line-height: var(--p-font-line-height-1000);
   font-weight: var(--p-font-weight-bold);
 
@@ -193,7 +193,7 @@
 }
 
 .bodySm {
-  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-300);
   line-height: var(--p-font-line-height-400);
 }
 
@@ -207,7 +207,7 @@
 }
 
 .bodyLg {
-  font-size: var(--p-font-size-200);
+  font-size: var(--p-font-size-400);
   line-height: var(--p-font-line-height-500);
 
   #{$se23} & {
