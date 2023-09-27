@@ -1,8 +1,7 @@
 ---
 title: Version 12
-description: |
-  Polaris version 12 introduces Shopify's new admin design language. The breaking changes in this release lay the foundation for theming support and unified component APIs for common concepts, like style variants.
-imageUrl: /images/updates/uplift-beta@2x.png
+description: Polaris version 12 introduces Shopify's new admin design language. The breaking changes in this release lay the foundation for theming support and unified component APIs for common concepts, like style variants.
+previewImg: /images/updates/uplift-beta@2x.png
 keywords:
   - new design language
   - uplift
@@ -16,20 +15,13 @@ keywords:
 order: 0
 ---
 
-** Below is just left over from /new-design-language, 🔥 away whatever you don't need! **
+# {frontmatter.title}
 
-## Design philosophy
+<Lede>{frontmatter.description}</Lede>
 
-- Hierarchy primarily through typography reduces cognitive load and makes the important content easier to find
-- Using black and white reduces noise and ensures color is used for signifiers and affordances instead of as decoration instead of decoration
-- Increased density enables a fuller picture of the task at hand
-- Visual dimension clearly distinguishes layers of importance and interactive elements
-- Delightful, tactile interactivity makes taking action feel powerful and gratifying
+![Illustration of hand drawing a star](/images/updates/uplift-beta@2x.png)
 
-Read more about the design philosophy in the blog post [Uplifting Shopify Polaris](https://ux.shopify.com/uplifting-shopify-polaris-7c54fc6564d9).
-
-To see the new design language component by component, check out our [Storybook](https://storybook.polaris.shopify.com/). To turn the new design language on in Storybook go to:
-Addon panel (bottom) > `Feature flags` tab and Toggle `polarisSummerEditions2023`
+---
 
 ## Common UI updates and fixes to consider after upgrading to the Polaris beta
 
