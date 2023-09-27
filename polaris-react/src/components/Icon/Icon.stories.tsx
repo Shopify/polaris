@@ -59,10 +59,6 @@ export function Colored() {
       </Text>
       <Icon source={CirclePlusMinor} tone="magic" />
       <Text as="p" variant="bodyMd" alignment="center">
-        Brand tone
-      </Text>
-      <Icon source={CirclePlusMinor} tone="brand" />
-      <Text as="p" variant="bodyMd" alignment="center">
         Text Caution tone
       </Text>
       <Icon source={CirclePlusMinor} tone="textCaution" />
