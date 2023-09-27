@@ -1,82 +1,22 @@
 ---
-title: Beta access to Shopify's new design language
+title: Version 12
 description: |
-  Polaris is developing version 12 for release in September.
-  To help apps match Shopify's new design language, this version is available in an early beta.
-  This beta will automatically update out-of-the-box/mainline Polaris components, with some additional work to update your custom components to seamlessly match Shopify's design.
-  The steps below will assist you in making these updates using our tools and tokens.
-hideFromNav: true
-noIndex: true
-showTOC: true
+  Polaris version 12 introduces Shopify's new admin design language. The breaking changes in this release lay the foundation for theming support and unified component APIs for common concepts, like style variants.
+imageUrl: /images/updates/uplift-beta@2x.png
 keywords:
   - new design language
   - uplift
-  - beta
-  - beta version
-  - beta release
+  - v12
+  - version 12
+  - redesign
+  - admin design language
   - new design
   - black button
-  - How to get the new design language
+  - How to migrate to the new design language
 order: 0
 ---
 
-# {frontmatter.title}
-
-<Lede>{frontmatter.description}</Lede>
-
-You can access the beta now or simply wait for the stable release in September<br/>_(be sure to read '[what might break](#what-might-break-before-during-beta)' below)_.
-
-## Timeline
-
-The Polaris beta releases will continue until the stable public version 12, scheduled for the end of September.
-We may publish updates to the beta at key development milestones for your development and testing environments.
-Refer to the table below for the timeline of each milestone:
-
-| Milestone                                                         | Version                                     | Date             |
-| ----------------------------------------------------------------- | ------------------------------------------- | ---------------- |
-| Initial beta release, update to early adopters who want to opt in | `12.0.0-beta.0`                             | July 26          |
-| Incremental beta releases                                         | `12.0.0-beta.1`<br/>`12.0.0-beta.2`<br/>etc | July – September |
-| Polaris release with stable API, robust documentation and tooling | `12.0.0`                                    | End of September |
-
-## What might break during beta
-
-We are **actively developing** this release and will continue to make breaking changes to the beta release until September.
-Our main areas of focus, listed below, will undergo **significant changes**.
-To ensure the best possible version 12, Polaris may also make breaking changes to other areas not yet listed.
-
-Areas we are actively working on:
-
-- Overall tokens system sense-check
-- Shadow and bevel tokens
-- Border color mappings
-- Component props, deduplication, alignment, sense check
-- The new web font integration
-- Typography hierarchy mappings
-- Documentation
-- Migration tooling
-
-## Still want to dive in early?
-
-We're excited about the new design language and understand if you want to quickly see how your app will look (particularly if you're applying to be a Built for Shopify app).
-Be aware that this is a beta and introduces changes that may break your app implementations, particularly custom styling.
-You will need to review your app's UI and manually patch fixes.
-
-To prepare for Polaris version 12 make sure you're on the latest version 11.
-It's quick to update from v10 to v11 with our [migrator tool](https://polaris.shopify.com/tools/polaris-migrator) and [migration guide](https://github.com/Shopify/polaris/blob/main/documentation/guides/migrating-from-v10-to-v11.md).
-
-To install the v12 beta version run the following command:
-
-```sh
-npm install @shopify/polaris@beta
-```
-
-Or, if you prefer yarn, use the following command instead:
-
-```sh
-yarn add @shopify/polaris@beta
-```
-
-To assist you, we have prepared a collection of tips, documentation, and our own experience to help you on this early journey.
+** Below is just left over from /new-design-language, 🔥 away whatever you don't need! **
 
 ## Design philosophy
 
