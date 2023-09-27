@@ -229,6 +229,11 @@ function Markdown<
             <Box as="table" {...props} className={styles.Table} />
           </Box>
         ),
+        Table: (props) => (
+          <Box className={styles.TableWrapper}>
+            <Box as="table" {...props} className={styles.Table} />
+          </Box>
+        ),
         Box,
         Stack,
         InlineGrid,
