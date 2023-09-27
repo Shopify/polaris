@@ -21,10 +21,8 @@ const replacementMaps = {
     '--p-border-width-1-experimental': '--p-border-width-0165',
     '--p-border-width-2': '--p-border-width-050',
     '--p-border-width-2-experimental': '--p-border-width-025',
-    // The following migration needs to be run on the next branch with the v12 launch
-    // '--p-border-width-3': '--p-border-width-050',
+    '--p-border-width-3': '--p-border-width-050',
     '--p-border-width-4': '--p-border-width-100',
-    // The following migration needs to be run on the next branch with the v12 launch
-    // '--p-border-width-5': '--p-border-width-100',
+    '--p-border-width-5': '--p-border-width-100',
   },
 };
