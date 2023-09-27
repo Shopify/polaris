@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.13.0-beta.0
+
+### Minor Changes
+
+- [#10382](https://github.com/Shopify/polaris/pull/10382) [`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `ThemeVariant` to `Theme` and exposed `Theme` type
+
 ## 7.12.1
 
 ### Patch Changes
