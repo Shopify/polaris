@@ -18,7 +18,7 @@
 }
 
 .toneSubdued svg {
-  fill: var(--p-color-icon-subdued);
+  fill: var(--p-color-icon-secondary);
 }
 
 .toneCaution svg {
@@ -47,10 +47,6 @@
 
 .tonePrimary svg {
   fill: var(--p-color-icon-brand);
-}
-
-.toneSecondary svg {
-  fill: var(--p-color-icon-secondary);
 }
 
 .toneEmphasis svg {
