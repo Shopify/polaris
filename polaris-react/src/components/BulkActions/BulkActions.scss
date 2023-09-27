@@ -53,7 +53,7 @@ $bulk-actions-button-stacking-order: (
   width: auto;
   justify-content: flex-start;
   padding: var(--p-space-400);
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
   border-radius: var(--p-border-radius-200);
   box-shadow: var(--p-shadow-md), var(--p-shadow-xl);
   max-width: 100%;
@@ -94,29 +94,28 @@ $bulk-actions-button-stacking-order: (
     display: flex;
 
     #{$se23} & {
-      background-color: var(--p-color-bg-strong);
+      background-color: var(--p-color-bg-fill-tertiary);
       box-shadow: none;
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:hover {
-        background-color: var(--p-color-bg-strong-hover);
+        background-color: var(--p-color-bg-fill-tertiary-hover);
         box-shadow: none;
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:focus-visible,
       &:active {
-        background-color: var(--p-color-bg-strong-active);
+        background-color: var(--p-color-bg-fill-tertiary-active);
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:focus-visible:not(:active) {
         /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
         @include no-focus-ring;
-        outline: var(--p-border-width-050) solid
-          var(--p-color-border-interactive-focus);
+        outline: var(--p-border-width-050) solid var(--p-color-border-focus);
         outline-offset: var(--p-space-050);
       }
       // stylelint-disable-next-line selector-max-combinators -- se23
       &[aria-disabled='true'] {
-        background-color: var(--p-color-bg-transparent-disabled-experimental);
+        background-color: var(--p-color-bg-fill-disabled);
       }
     }
   }

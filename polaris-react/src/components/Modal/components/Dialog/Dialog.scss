@@ -40,7 +40,7 @@ $large-width: 980px;
   flex-direction: column;
   width: 100%;
   max-height: calc(100vh - #{$vertical-spacing});
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
   box-shadow: var(--p-shadow-2xl);
 
   @media (forced-colors: active) {

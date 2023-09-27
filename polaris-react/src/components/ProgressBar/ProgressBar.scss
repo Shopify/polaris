@@ -39,44 +39,44 @@
 
 .colorHighlight {
   // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-color-bg-strong);
+  --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
   --pc-progress-bar-indicator: var(--p-color-border-info);
   // stylelint-enable
 
   #{$se23} & {
     // stylelint-disable-next-line -- Polaris component custom properties, se23 temporary styles
-    --pc-progress-bar-indicator: var(--p-color-bg-info-strong);
+    --pc-progress-bar-indicator: var(--p-color-bg-fill-info);
   }
 }
 
 .colorPrimary {
   // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-color-bg-strong);
+  --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
   --pc-progress-bar-indicator: var(--p-color-bg-primary);
   // stylelint-enable
 }
 
 .colorSuccess {
   // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-color-bg-strong);
+  --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
   --pc-progress-bar-indicator: var(--p-color-border-success);
   // stylelint-enable
 
   #{$se23} & {
     // stylelint-disable-next-line -- Polaris component custom properties, se23 temporary styles
-    --pc-progress-bar-indicator: var(--p-color-bg-success-strong);
+    --pc-progress-bar-indicator: var(--p-color-bg-fill-success);
   }
 }
 
 .colorCritical {
   // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-color-bg-strong);
-  --pc-progress-bar-indicator: var(--p-color-bg-critical);
+  --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
+  --pc-progress-bar-indicator: var(--p-color-bg-fill-critical-secondary);
   // stylelint-enable
 
   #{$se23} & {
     // stylelint-disable-next-line -- Polaris component custom properties, se23 temporary styles
-    --pc-progress-bar-indicator: var(--p-color-bg-critical-strong);
+    --pc-progress-bar-indicator: var(--p-color-bg-fill-critical);
   }
 }
 

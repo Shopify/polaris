@@ -18,12 +18,12 @@ $nav-max-width: 360px;
   min-height: 100%;
   background-color: var(--p-color-bg-app);
   -webkit-overflow-scrolling: touch;
-  border-right: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-right: var(--p-border-width-025) solid var(--p-color-border-secondary);
 
   #{$se23} & {
     // stylelint-disable-next-line -- Polaris component custom properties
     --pc-navigation-letter-spacing-medium: -0.005rem;
-    background-color: var(--p-color-bg-subdued-active);
+    background-color: var(--p-color-bg-surface-secondary-active);
     border-right: 0;
   }
 
@@ -84,7 +84,7 @@ $nav-max-width: 360px;
     align-items: center;
     height: $top-bar-height;
     padding: 0 var(--p-space-200) 0 var(--p-space-400);
-    background-color: var(--p-color-bg);
+    background-color: var(--p-color-bg-surface);
     box-shadow: var(--p-shadow-sm);
     margin-bottom: var(--p-space-400);
 
@@ -159,7 +159,7 @@ $nav-max-width: 360px;
     padding: 0 var(--p-space-300);
 
     --secondary-actions-on-hover-background-color: var(
-      --p-color-bg-subdued-hover
+      --p-color-bg-surface-secondary-hover
     );
   }
 }
@@ -179,7 +179,7 @@ $nav-max-width: 360px;
       var(--p-motion-ease-out);
 
     &:is(:hover, :focus-visible) {
-      background: var(--p-color-bg-subdued-hover);
+      background: var(--p-color-bg-surface-secondary-hover);
     }
 
     // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
@@ -194,7 +194,7 @@ $nav-max-width: 360px;
               background: linear-gradient(
                 to right,
                 rgba(0, 0, 0, 0),
-                var(--p-color-bg-subdued-hover) var(--p-space-800)
+                var(--p-color-bg-surface-secondary-hover) var(--p-space-800)
               );
             }
           }
@@ -202,7 +202,7 @@ $nav-max-width: 360px;
 
         &:is(:active) {
           .SecondaryActions {
-            background: var(--p-color-bg-app-selected);
+            background: var(--p-color-bg-surface-selected);
           }
         }
       }
@@ -210,7 +210,7 @@ $nav-max-width: 360px;
     }
 
     &:active {
-      background-color: var(--p-color-bg-app-selected);
+      background-color: var(--p-color-bg-surface-selected);
 
       // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
       &.ItemInnerWrapper-display-actions-on-hover {
@@ -221,7 +221,7 @@ $nav-max-width: 360px;
               background: linear-gradient(
                 to right,
                 rgba(0, 0, 0, 0),
-                var(--p-color-bg-app-selected) var(--p-space-800)
+                var(--p-color-bg-surface-selected) var(--p-space-800)
               );
             }
           }
@@ -233,7 +233,7 @@ $nav-max-width: 360px;
 }
 
 .ItemInnerWrapper-selected {
-  background-color: var(--p-color-bg-app-selected);
+  background-color: var(--p-color-bg-surface-selected);
 
   #{$se23} & {
     // stylelint-disable-next-line selector-max-combinators -- Needed for precision on text
@@ -244,20 +244,20 @@ $nav-max-width: 360px;
     }
 
     &:is(:hover, :focus-visible, :focus-within) {
-      background: var(--p-color-bg-app-selected);
+      background: var(--p-color-bg-surface-selected);
 
       // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
       &.ItemInnerWrapper-display-actions-on-hover {
         @media #{$p-breakpoints-md-up} {
           .SecondaryActions {
-            background: var(--p-color-bg-app-selected);
+            background: var(--p-color-bg-surface-selected);
 
             &::before {
               // stylelint-disable-next-line -- required for fade effect
               background: linear-gradient(
                 to right,
                 rgba(0, 0, 0, 0),
-                var(--p-color-bg-app-selected) var(--p-space-800)
+                var(--p-color-bg-surface-selected) var(--p-space-800)
               );
             }
           }
@@ -267,15 +267,15 @@ $nav-max-width: 360px;
     }
 
     &:active {
-      background: var(--p-color-bg-app-selected);
+      background: var(--p-color-bg-surface-selected);
     }
   }
 
   .SecondaryActions {
-    background: var(--p-color-bg-app-selected);
+    background: var(--p-color-bg-surface-selected);
 
     #{$se23} & {
-      background: var(--p-color-bg-app-selected);
+      background: var(--p-color-bg-surface-selected);
       border-top-right-radius: var(--p-border-radius-200);
       border-bottom-right-radius: var(--p-border-radius-200);
     }
@@ -285,7 +285,7 @@ $nav-max-width: 360px;
       background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0),
-        var(--p-color-bg-app-selected) var(--p-space-800)
+        var(--p-color-bg-surface-selected) var(--p-space-800)
       );
 
       #{$se23} & {
@@ -293,7 +293,7 @@ $nav-max-width: 360px;
         background: linear-gradient(
           to right,
           rgba(0, 0, 0, 0),
-          var(--p-color-bg-app-selected) var(--p-space-800)
+          var(--p-color-bg-surface-selected) var(--p-space-800)
         );
       }
     }
@@ -305,7 +305,7 @@ $nav-max-width: 360px;
     background-color: transparent;
 
     &:active {
-      background: var(--p-color-bg-app-selected);
+      background: var(--p-color-bg-surface-selected);
     }
 
     // stylelint-disable selector-max-class, max-nesting-depth, selector-max-combinators -- se23
@@ -332,7 +332,7 @@ $nav-max-width: 360px;
 
 .Item-selected {
   font-weight: var(--p-font-weight-semibold);
-  color: var(--p-color-text-primary);
+  color: var(--p-color-text-brand);
   outline: var(--p-border-width-025) solid transparent;
 
   &::before {
@@ -366,7 +366,7 @@ $nav-max-width: 360px;
   &:hover,
   &:focus-visible {
     background-color: var(--p-color-bg-app-hover);
-    color: var(--p-color-text-primary-hover);
+    color: var(--p-color-text-brand-hover);
   }
 
   :focus-visible {
@@ -378,7 +378,7 @@ $nav-max-width: 360px;
   &:active:hover {
     // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
     @include no-focus-ring;
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
     background-color: var(--p-color-bg-app-active);
   }
 
@@ -572,7 +572,7 @@ $nav-max-width: 360px;
 
       #{$se23} & {
         z-index: var(--p-z-index-2);
-        background: var(--p-color-bg-subdued-hover);
+        background: var(--p-color-bg-surface-secondary-hover);
         padding: 0 var(--p-space-050);
         margin-right: 0;
         border-top-right-radius: var(--p-border-radius-200);
@@ -600,7 +600,7 @@ $nav-max-width: 360px;
           background: linear-gradient(
             to right,
             rgba(0, 0, 0, 0),
-            var(--p-color-bg-subdued-hover) var(--p-space-800)
+            var(--p-color-bg-surface-secondary-hover) var(--p-space-800)
           );
         }
       }
@@ -618,7 +618,7 @@ $nav-max-width: 360px;
       #{$se23} & {
         // stylelint-disable-next-line -- se23
         .SecondaryActions {
-          background-color: var(--p-color-bg-app-selected);
+          background-color: var(--p-color-bg-surface-selected);
         }
       }
     }
@@ -642,8 +642,7 @@ $nav-max-width: 360px;
     &:focus-visible:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
       @include no-focus-ring;
-      outline: var(--p-border-width-050) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
     }
   }
 
@@ -669,7 +668,7 @@ $nav-max-width: 360px;
     }
 
     #{$se23} & {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
+      background-color: var(--p-color-bg-fill-transparent-hover);
     }
 
     @media (-ms-high-contrast: active) {
@@ -721,7 +720,7 @@ $nav-max-width: 360px;
     // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
     font-size: 15px;
     line-height: nav(item-line-height);
-    color: var(--p-color-text-subdued);
+    color: var(--p-color-text-secondary);
     padding-left: calc(var(--p-space-800) + var(--p-space-300));
 
     #{$se23} & {
@@ -731,8 +730,8 @@ $nav-max-width: 360px;
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
       &:is(:hover, :focus-visible, :focus-within) {
-        background: var(--p-color-bg-subdued-active);
-        color: var(--p-color-text-primary);
+        background: var(--p-color-bg-surface-secondary-active);
+        color: var(--p-color-text-brand);
       }
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
@@ -752,11 +751,11 @@ $nav-max-width: 360px;
     }
 
     &:hover {
-      color: var(--p-color-text-subdued);
+      color: var(--p-color-text-secondary);
 
       #{$se23} & {
         color: var(--p-color-text);
-        background: var(--p-color-bg-subdued-hover);
+        background: var(--p-color-bg-surface-secondary-hover);
 
         // stylelint-disable-next-line selector-max-class, max-nesting-depth, selector-max-combinators, selector-max-compound-selectors -- Needed for precision styling on text
         .Text {
@@ -780,12 +779,12 @@ $nav-max-width: 360px;
       @include no-focus-ring;
 
       #{$se23} & {
-        background-color: var(--p-color-bg-app-selected);
+        background-color: var(--p-color-bg-surface-selected);
       }
     }
 
     &:active {
-      color: var(--p-color-text-primary);
+      color: var(--p-color-text-brand);
     }
 
     @media #{$p-breakpoints-md-up} {
@@ -808,7 +807,7 @@ $nav-max-width: 360px;
   }
 
   .Item-selected {
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
     // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
     @include focus-ring;
 
@@ -824,8 +823,8 @@ $nav-max-width: 360px;
 
       // stylelint-disable-next-line selector-max-combinators -- will no longer be an issue after removing se23
       &:is(:hover, :focus-visible, :focus-within) {
-        background: var(--p-color-bg-app-selected);
-        color: var(--p-color-text-primary);
+        background: var(--p-color-bg-surface-selected);
+        color: var(--p-color-text-brand);
       }
 
       // stylelint-disable-next-line selector-max-combinators -- se23
@@ -833,21 +832,21 @@ $nav-max-width: 360px;
       &:active:hover {
         // stylelint-disable-next-line -- se23
         @include no-focus-ring;
-        background: var(--p-color-bg-app-selected);
-        color: var(--p-color-text-primary);
+        background: var(--p-color-bg-surface-selected);
+        color: var(--p-color-text-brand);
       }
     }
 
     &:hover {
-      color: var(--p-color-text-primary-hover);
+      color: var(--p-color-text-brand-hover);
     }
 
     &:focus-visible {
-      color: var(--p-color-text-primary);
+      color: var(--p-color-text-brand);
     }
 
     &:active {
-      color: var(--p-color-text-primary);
+      color: var(--p-color-text-brand);
       // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
       @include no-focus-ring;
     }
@@ -958,7 +957,7 @@ $nav-max-width: 360px;
 }
 
 .Section-withSeparator {
-  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
 }
 
 .SectionHeading {
@@ -1010,8 +1009,7 @@ $nav-max-width: 360px;
       &:focus-visible:not(:active) {
         /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
         @include no-focus-ring;
-        outline: var(--p-border-width-050) solid
-          var(--p-color-border-interactive-focus);
+        outline: var(--p-border-width-050) solid var(--p-color-border-focus);
       }
     }
 
@@ -1040,7 +1038,7 @@ $nav-max-width: 360px;
       background: var(--p-color-bg-app-hover);
 
       #{$se23} & {
-        background: var(--p-color-bg-transparent-hover-experimental);
+        background: var(--p-color-bg-fill-transparent-hover);
       }
 
       // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
@@ -1058,7 +1056,7 @@ $nav-max-width: 360px;
           filter: var(--p-filter-icon-on-interactive);
 
           #{$se23} & {
-            filter: var(--p-color-icon-primary);
+            filter: var(--p-color-icon-brand);
           }
         }
         // stylelint-enable
@@ -1104,13 +1102,13 @@ $nav-max-width: 360px;
 .RollupToggle {
   font-weight: var(--p-font-weight-regular);
   color: var(--p-color-text);
-  color: var(--p-color-text-subdued);
+  color: var(--p-color-text-secondary);
 
   &:hover {
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
 
     svg {
-      fill: var(--p-color-icon-primary);
+      fill: var(--p-color-icon-brand);
     }
 
     img {
@@ -1118,7 +1116,7 @@ $nav-max-width: 360px;
       filter: var(--p-filter-icon-action-primary);
 
       #{$se23} & {
-        filter: var(--p-color-icon-primary);
+        filter: var(--p-color-icon-brand);
       }
     }
   }

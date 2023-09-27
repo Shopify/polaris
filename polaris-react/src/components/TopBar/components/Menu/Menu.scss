@@ -37,7 +37,7 @@ $activator-variables: (
   #{$se23} & {
     color: var(--p-color-text-inverse);
     padding: var(--p-space-150);
-    background-color: var(--p-color-bg-inset-strong);
+    background-color: var(--p-color-bg-fill-inverse);
     border-radius: var(--p-border-radius-200);
     min-width: auto;
     min-height: menu(min-height);
@@ -53,7 +53,7 @@ $activator-variables: (
     outline: none;
 
     #{$se23} & {
-      background-color: var(--p-color-bg-inverse-hover);
+      background-color: var(--p-color-bg-fill-inverse-hover);
     }
   }
 
@@ -64,8 +64,7 @@ $activator-variables: (
     #{$se23} & {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- se23 */
       @include no-focus-ring;
-      outline: var(--p-border-width-050) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-050);
     }
   }
@@ -79,7 +78,7 @@ $activator-variables: (
     // stylelint-enable
 
     #{$se23} & {
-      background-color: var(--p-color-bg-inverse-hover);
+      background-color: var(--p-color-bg-fill-inverse-hover);
     }
   }
 
@@ -99,9 +98,9 @@ $activator-variables: (
     }
 
     #{$se23} & {
-      background-color: var(--p-color-bg-inverse-active);
+      background-color: var(--p-color-bg-fill-inverse-active);
 
-      // stylelint-disable -- se23 text needs to be lighter to pass a11y on --p-color-bg-inverse-active
+      // stylelint-disable -- se23 text needs to be lighter to pass a11y on --p-color-bg-fill-inverse-active
       p {
         color: var(--p-color-text-inverse);
       }
@@ -129,5 +128,5 @@ $activator-variables: (
 .Section {
   margin-top: var(--p-space-200);
   padding-top: var(--p-space-200);
-  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
 }
