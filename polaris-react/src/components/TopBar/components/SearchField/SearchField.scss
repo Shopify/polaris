@@ -98,12 +98,13 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-300));
     color var(--p-motion-duration-200) var(--p-motion-ease);
 
   &:hover {
-    border-color: var(--p-color-border-hover);
+    border-color: var(--p-color-border-inverse-hover);
   }
 
   &:active,
   &:focus {
-    box-shadow: inset 0 0 0 var(--p-border-width-1) var(--p-color-border);
+    box-shadow: inset 0 0 0 var(--p-border-width-1)
+      var(--p-color-border-inverse-active);
   }
 
   &::placeholder {
@@ -185,6 +186,6 @@ $search-icon-width: calc(#{$icon-size} + var(--p-space-300));
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: var(--p-color-bg-inset-strong);
+  background-color: var(--p-color-bg-surface-inverse);
   border-radius: var(--p-border-radius-2);
 }
