@@ -37,12 +37,12 @@
 
   &:hover {
     background-color: var(--surface-active);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
   }
 
   &.active {
     background-color: var(--surface-active);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
     font-weight: var(--p-font-weight-semibold);
   }
 }
