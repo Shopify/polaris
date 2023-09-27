@@ -1,27 +1,15 @@
-import React, {useState, useRef, useEffect, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import type {ReactNode} from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
 
-import {useI18n} from '../../utilities/i18n';
-import {Popover} from '../Popover';
-import {ActionList} from '../ActionList';
-import {Text} from '../Text';
-import {UnstyledButton} from '../UnstyledButton';
 import {classNames} from '../../utilities/css';
-import {useBreakpoints} from '../../utilities/breakpoints';
-import type {
-  ActionListItemDescriptor,
-  AppliedFilterInterface,
-  FilterInterface,
-} from '../../types';
+import type {AppliedFilterInterface, FilterInterface} from '../../types';
 import {InlineStack} from '../InlineStack';
 import type {BoxProps} from '../Box';
 import {Box} from '../Box';
 import {Spinner} from '../Spinner';
-import {Button} from '../Button';
 
-import {FilterPill, SearchField} from './components';
+import {FiltersBar, SearchField} from './components';
 import styles from './Filters.scss';
 
 const TRANSITION_DURATION = 'var(--p-motion-duration-150)';
@@ -136,149 +124,7 @@ export function Filters({
   onAddFilterClick,
   closeOnChildOverlayClick,
 }: FiltersProps) {
-  const i18n = useI18n();
-  const {mdDown} = useBreakpoints();
-  const [popoverActive, setPopoverActive] = useState(false);
-  const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>([]);
-  const hasMounted = useRef(false);
-
-  useEffect(() => {
-    hasMounted.current = true;
-  });
-
-  const togglePopoverActive = () =>
-    setPopoverActive((popoverActive) => !popoverActive);
-
-  const handleAddFilterClick = () => {
-    onAddFilterClick?.();
-    togglePopoverActive();
-  };
-  const appliedFilterKeys = appliedFilters?.map(({key}) => key);
-
-  const pinnedFiltersFromPropsAndAppliedFilters = filters.filter(
-    ({pinned, key}) =>
-      (Boolean(pinned) || appliedFilterKeys?.includes(key)) &&
-      // Filters that are pinned in local state display at the end of our list
-      !localPinnedFilters.find((filterKey) => filterKey === key),
-  );
-
-  useEffect(() => {
-    const allAppliedFilterKeysInLocalPinnedFilters =
-      !appliedFilterKeys ||
-      appliedFilterKeys.every((value) => localPinnedFilters.includes(value));
-
-    if (!allAppliedFilterKeysInLocalPinnedFilters) {
-      setLocalPinnedFilters((currentLocalPinnedFilters: string[]): string[] => {
-        const newPinnedFilters =
-          appliedFilterKeys?.filter(
-            (filterKey) =>
-              !currentLocalPinnedFilters.find(
-                (currentFilterKey) => currentFilterKey === filterKey,
-              ),
-          ) || [];
-
-        return [...currentLocalPinnedFilters, ...newPinnedFilters];
-      });
-    }
-  }, [appliedFilterKeys, localPinnedFilters]);
-
-  const pinnedFiltersFromLocalState = localPinnedFilters
-    .map((key) => filters.find((filter) => filter.key === key))
-    .reduce<FilterInterface[]>(
-      (acc, filter) => (filter ? [...acc, filter] : acc),
-      [],
-    );
-
-  const pinnedFilters = [
-    ...pinnedFiltersFromPropsAndAppliedFilters,
-    ...pinnedFiltersFromLocalState,
-  ];
-
-  const onFilterClick =
-    ({key, onAction}: FilterInterface) =>
-    () => {
-      // PopoverOverlay will cause a rerender of the component and nuke the
-      // popoverActive state, so we set this as a microtask
-      setTimeout(() => {
-        setLocalPinnedFilters((currentLocalPinnedFilters) => [
-          ...new Set([...currentLocalPinnedFilters, key]),
-        ]);
-        onAction?.();
-        togglePopoverActive();
-      }, 0);
-    };
-
-  const filterToActionItem = (filter: FilterInterface) => ({
-    ...filter,
-    content: filter.label,
-    onAction: onFilterClick(filter),
-  });
-
-  const unpinnedFilters = filters.filter(
-    (filter) => !pinnedFilters.some(({key}) => key === filter.key),
-  );
-
-  const unsectionedFilters = unpinnedFilters
-    .filter((filter) => !filter.section)
-    .map(filterToActionItem);
-
-  const sectionedFilters = unpinnedFilters
-    .filter((filter) => filter.section)
-    .reduce(
-      (acc, filter) => {
-        const filterActionItem = filterToActionItem(filter);
-        const sectionIndex = acc.findIndex(
-          (section) => section.title === filter.section,
-        );
-
-        if (sectionIndex === -1) {
-          acc.push({
-            title: filter.section!,
-            items: [filterActionItem],
-          });
-        } else {
-          acc[sectionIndex].items.push(filterActionItem);
-        }
-
-        return acc;
-      },
-      [] as {
-        title: string;
-        items: ActionListItemDescriptor[];
-      }[],
-    );
-
-  const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
-
-  const labelVariant = mdDown ? 'bodyLg' : 'bodySm';
-
-  const addFilterActivator = (
-    <div>
-      <UnstyledButton
-        type="button"
-        className={styles.AddFilter}
-        onClick={handleAddFilterClick}
-        aria-label={i18n.translate('Polaris.Filters.addFilter')}
-        disabled={
-          disabled ||
-          (unsectionedFilters.length === 0 && sectionedFilters.length === 0) ||
-          disableFilters
-        }
-      >
-        <Text variant={labelVariant} as="span">
-          {i18n.translate('Polaris.Filters.addFilter')}{' '}
-        </Text>
-        <PlusMinor />
-      </UnstyledButton>
-    </div>
-  );
-
-  const handleClearAllFilters = () => {
-    setLocalPinnedFilters([]);
-    onClearAll?.();
-  };
-
-  const shouldShowAddButton = filters.some((filter) => !filter.pinned);
+  const {polarisSummerEditions2023: se23} = useFeatures();
 
   const additionalContent = useMemo(() => {
     return (
@@ -351,114 +197,20 @@ export function Filters({
         }
       : undefined;
 
-  const pinnedFiltersMarkup = pinnedFilters.map(
-    ({key: filterKey, ...pinnedFilter}) => {
-      const appliedFilter = appliedFilters?.find(({key}) => key === filterKey);
-      const handleFilterPillRemove = () => {
-        setLocalPinnedFilters((currentLocalPinnedFilters) =>
-          currentLocalPinnedFilters.filter((key) => key !== filterKey),
-        );
-        appliedFilter?.onRemove(filterKey);
-      };
-
-      return (
-        <FilterPill
-          key={filterKey}
-          {...pinnedFilter}
-          initialActive={
-            hasMounted.current && !pinnedFilter.pinned && !appliedFilter
-          }
-          label={appliedFilter?.label || pinnedFilter.label}
-          filterKey={filterKey}
-          selected={appliedFilterKeys?.includes(filterKey)}
-          onRemove={handleFilterPillRemove}
-          disabled={pinnedFilter.disabled || disableFilters}
-          closeOnChildOverlayClick={closeOnChildOverlayClick}
-        />
-      );
-    },
-  );
-
-  const addButton = shouldShowAddButton ? (
-    <div
-      className={classNames(
-        styles.AddFilterActivator,
-        hasOneOrMorePinnedFilters && styles.AddFilterActivatorMultiple,
-      )}
-    >
-      <Popover
-        active={popoverActive && !disabled}
-        activator={addFilterActivator}
-        onClose={togglePopoverActive}
-      >
-        <ActionList
-          actionRole="menuitem"
-          items={unsectionedFilters}
-          sections={sectionedFilters}
-        />
-      </Popover>
-    </div>
-  ) : null;
-
-  const clearAllMarkup =
-    appliedFilters?.length || localPinnedFilters.length ? (
-      <div
-        className={classNames(
-          styles.ClearAll,
-          hasOneOrMorePinnedFilters &&
-            shouldShowAddButton &&
-            styles.MultiplePinnedFilterClearAll,
-        )}
-      >
-        <Button
-          size="micro"
-          onClick={handleClearAllFilters}
-          removeUnderline
-          variant="monochromePlain"
-        >
-          {i18n.translate('Polaris.Filters.clearFilters')}
-        </Button>
-      </div>
-    ) : null;
-
   const filtersMarkup =
     hideFilters || filters.length === 0 ? null : (
-      <div
-        className={classNames(
-          styles.FiltersWrapper,
-          shouldShowAddButton &&
-            hasOneOrMorePinnedFilters &&
-            styles.FiltersWrapperWithAddButton,
-        )}
-        aria-live="polite"
-        style={mountedStateStyles}
-      >
-        <div className={classNames(styles.FiltersInner)}>
-          <div className={classNames(styles.FiltersStickyArea)}>
-            {pinnedFiltersMarkup}
-            {addButton}
-            {clearAllMarkup}
-          </div>
-        </div>
-        {hideQueryField ? (
-          <Box
-            paddingInlineEnd="300"
-            paddingBlockStart="200"
-            paddingBlockEnd="200"
-          >
-            <InlineStack
-              align="start"
-              blockAlign="center"
-              gap={{
-                xs: '400',
-                md: '300',
-              }}
-            >
-              {additionalContent}
-            </InlineStack>
-          </Box>
-        ) : null}
-      </div>
+      <FiltersBar
+        filters={filters}
+        appliedFilters={appliedFilters}
+        onClearAll={onClearAll}
+        disabled={disabled}
+        hideQueryField={hideQueryField}
+        disableFilters={disableFilters}
+        onAddFilterClick={onAddFilterClick}
+        closeOnChildOverlayClick={closeOnChildOverlayClick}
+        mountedStateStyles={mountedStateStyles}
+        additionalContent={additionalContent}
+      />
     );
 
   return (
