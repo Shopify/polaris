@@ -198,7 +198,7 @@ $nav-max-width: 360px;
 }
 
 .ItemInnerWrapper-selected {
-  background-color: var(--p-color-bg-app-selected);
+  background-color: var(--p-color-bg-surface-selected);
 
   .Text {
     color: var(--p-color-text);
@@ -243,7 +243,7 @@ $nav-max-width: 360px;
       background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0),
-        var(--p-color-bg-app-selected) var(--p-space-800)
+        var(--p-color-bg-surface-selected) var(--p-space-800)
       );
     }
   }
@@ -624,7 +624,7 @@ $nav-max-width: 360px;
     }
 
     &:active {
-      color: var(--p-color-text-primary);
+      color: var(--p-color-text-brand);
     }
 
     @media #{$p-breakpoints-md-up} {
@@ -667,11 +667,11 @@ $nav-max-width: 360px;
     }
 
     &:hover {
-      color: var(--p-color-text-primary-hover);
+      color: var(--p-color-text-brand-hover);
     }
 
     &:focus-visible {
-      color: var(--p-color-text-primary);
+      color: var(--p-color-text-brand);
     }
 
     &:active {
@@ -777,7 +777,7 @@ $nav-max-width: 360px;
 }
 
 .Section-withSeparator {
-  border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
 }
 
 .SectionHeading {
@@ -904,13 +904,13 @@ $nav-max-width: 360px;
 .RollupToggle {
   font-weight: var(--p-font-weight-regular);
   color: var(--p-color-text);
-  color: var(--p-color-text-subdued);
+  color: var(--p-color-text-secondary);
 
   &:hover {
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
 
     svg {
-      fill: var(--p-color-icon-primary);
+      fill: var(--p-color-icon-brand);
     }
 
     img {
