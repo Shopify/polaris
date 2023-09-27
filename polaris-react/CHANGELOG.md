@@ -1,5 +1,77 @@
 # Changelog
 
+## 12.0.0-beta.1
+
+### Major Changes
+
+- [#10122](https://github.com/Shopify/polaris/pull/10122) [`43b42aefed`](https://github.com/Shopify/polaris/commit/43b42aefedcfcfa1375c182ac541fd58822ecd01) Thanks [@aveline](https://github.com/aveline)! - Removed `shape` prop on `Avatar` component
+
+* [#10270](https://github.com/Shopify/polaris/pull/10270) [`b9bcaef41`](https://github.com/Shopify/polaris/commit/b9bcaef414eb841241655f49d93f38cf51bd3f78) Thanks [@kyledurand](https://github.com/kyledurand)! - Changed `spacing` prop to `gap` on `List` and `DescriptionList`
+
+- [#9997](https://github.com/Shopify/polaris/pull/9997) [`b59fc9e27`](https://github.com/Shopify/polaris/commit/b59fc9e272963fcc35f98b02f3c658b51a5ec4a5) Thanks [@yurm04](https://github.com/yurm04)! - [ButtonGroup] Removed `segmented` boolean prop and replaced with `variant`. Replaced `spacing` prop with `gap`
+
+* [#10100](https://github.com/Shopify/polaris/pull/10100) [`4c7b2d4858`](https://github.com/Shopify/polaris/commit/4c7b2d48585782abb7d20e5f01809102141037e5) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated `borderRadius` props to match web spec
+
+- [#10051](https://github.com/Shopify/polaris/pull/10051) [`69edd97ceb`](https://github.com/Shopify/polaris/commit/69edd97cebdd3de3769dadb9ab41e465ca071739) Thanks [@aveline](https://github.com/aveline)! - Renamed `color` prop to `tone` for `ProgressBar` component
+
+* [#10182](https://github.com/Shopify/polaris/pull/10182) [`e814c0ee1a`](https://github.com/Shopify/polaris/commit/e814c0ee1aec24a30048d1aefb47b38fd45d0692) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed connectedDislosure prop on button
+
+- [#10283](https://github.com/Shopify/polaris/pull/10283) [`42ee9f407`](https://github.com/Shopify/polaris/commit/42ee9f407d9f75ab444bd1c45669bc91e8bbe3ca) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Renamed `size` prop values for the Avatar component. See the following table for the new prop mappings.
+
+  | Before                    | After       |
+  | ------------------------- | ----------- |
+  | `size="extraSmall"`       | `size="xs"` |
+  | `size="small"`            | `size="sm"` |
+  | `size="medium"`           | `size="md"` |
+  | `size="large"`            | `size="lg"` |
+  | `size="xl-experimental"`  | `size="xl"` |
+  | `size="2xl-experimental"` | `size="xl"` |
+
+* [#10232](https://github.com/Shopify/polaris/pull/10232) [`eb2c2035c`](https://github.com/Shopify/polaris/commit/eb2c2035cabd6ccbd0fd773f98701633eff618a7) Thanks [@laurkim](https://github.com/laurkim)! - Removed `divider` prop from `Page` component
+
+- [#10271](https://github.com/Shopify/polaris/pull/10271) [`1125087b5`](https://github.com/Shopify/polaris/commit/1125087b5987df30e5b1d6962cf32c01fc2f2bf8) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed deprecated additionalNavigation prop on Page Header
+
+* [#10164](https://github.com/Shopify/polaris/pull/10164) [`af9f264b9a`](https://github.com/Shopify/polaris/commit/af9f264b9a15a91901e42f6ff2e8e8490e755e03) Thanks [@aveline](https://github.com/aveline)! - Renamed `destructive` prop to `tone` for `Button` component
+
+- [#10261](https://github.com/Shopify/polaris/pull/10261) [`abeef7ad0`](https://github.com/Shopify/polaris/commit/abeef7ad0563878da797fdbcc1ee1262d4fe4c7e) Thanks [@kyledurand](https://github.com/kyledurand)! - Replaced `small`, `large`, and `fullScreen` props with `size` prop
+
+* [#10206](https://github.com/Shopify/polaris/pull/10206) [`dad09bde9`](https://github.com/Shopify/polaris/commit/dad09bde960bcb8a00a5ed5916201dbb1974bf7f) Thanks [@kyledurand](https://github.com/kyledurand)! - Changed `status` prop on `Banner` to `tone`
+
+- [#10220](https://github.com/Shopify/polaris/pull/10220) [`2b0cdb2fbf`](https://github.com/Shopify/polaris/commit/2b0cdb2fbff2d3f6c8e9b31526799085617301db) Thanks [@kyledurand](https://github.com/kyledurand)! - Changed `color` prop on `Icon` to `tone`
+
+* [#10036](https://github.com/Shopify/polaris/pull/10036) [`359614cf83`](https://github.com/Shopify/polaris/commit/359614cf835973ae742082ff6fdc17ff37c27fc6) Thanks [@kyledurand](https://github.com/kyledurand)! - Replaced `borderless` prop with `variant` on TextField
+
+  Migration: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="TextField" --from="borderless" --to="variant" --newValue="borderless"`
+
+- [#10635](https://github.com/Shopify/polaris/pull/10635) [`340e36e7d`](https://github.com/Shopify/polaris/commit/340e36e7dfe4bcfdafce1c169c896242832dec3f) Thanks [@laurkim](https://github.com/laurkim)! - Removed `polarisSummerEditions2023` feature flag from AppProvider context
+
+* [#10090](https://github.com/Shopify/polaris/pull/10090) [`4caed28a77`](https://github.com/Shopify/polaris/commit/4caed28a77c7c5b4cf78dc8071631e7054173740) Thanks [@aveline](https://github.com/aveline)! - Consolidated boolean `Button` props into `variant` prop
+
+- [#10041](https://github.com/Shopify/polaris/pull/10041) [`8f927f7622`](https://github.com/Shopify/polaris/commit/8f927f7622d15554c1ec3c02cdb1b381be636655) Thanks [@kyledurand](https://github.com/kyledurand)! - Replaced boolean props: `secondary`, `fullWidth`, `oneHalf`, `oneThird` on Layout.Section with `variant`
+
+* [#10266](https://github.com/Shopify/polaris/pull/10266) [`22a51eae2`](https://github.com/Shopify/polaris/commit/22a51eae2bf375cecf6442ba2759ccf9d73b0bf6) Thanks [@kyledurand](https://github.com/kyledurand)! - Renamed `color` prop on Text to `tone`
+
+- [#9993](https://github.com/Shopify/polaris/pull/9993) [`66f5c8df3e`](https://github.com/Shopify/polaris/commit/66f5c8df3e068c5cdc60a559e615f9375dbe537d) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - Removed Summer Editions experimental styles and code for the following components: `AppProvider`, `Avatar`, `AccountConnection`, `ActionList`, `ActionMenu`, `Autocomplete`, `Badge`, `Banner`, `Breadcrumbs`, `BulkActions`, `Button`, `ButtonGroup`, `CalloutCard`, `Card`, `CheckableButton`, `Checkbox`, `Choice`, `Connected`, `DataTable`, `DatePicker`, `DropZone`, `EmptyState`, `Filters`, `FormLayout`, `Frame`, `FullscreenBar`, `IndexFilters`, `IndexTable`, `InlineError`, `KeyboardKey`, `Labelled`, `Layout`, `LegacyCard`, `LegacyFilters`, `LegacyTabs`, `Link`, `List`, `Listbox`, `MediaCard`, `Modal`, `Navigation`, `OptionList`, `Page`, `PageActions`, `Pagination`, `Popover`, `ProgressBar`, `RadioButton`, `ResourceItem`, `ResourceList`, `Select`, `SettingAction`, `ShadowBevel`, `SkeletonPage`, `SkeletonThumbnail`, `Spinner`, `Tabs`, `Tag`, `Text`, `TextField`, `Thumbnail`, `TooltipOverlay`, `TopBar`, and `VideoThumbnail`
+
+* [#10232](https://github.com/Shopify/polaris/pull/10232) [`eb2c2035c`](https://github.com/Shopify/polaris/commit/eb2c2035cabd6ccbd0fd773f98701633eff618a7) Thanks [@laurkim](https://github.com/laurkim)! - Removed `optionRole` prop from `OptionList` component
+
+### Minor Changes
+
+- [#10238](https://github.com/Shopify/polaris/pull/10238) [`b17d23d69`](https://github.com/Shopify/polaris/commit/b17d23d69d6a77326fb6e43019691384ddf8663f) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Add a search field to filter ActionList that have more than 10 items
+
+### Patch Changes
+
+- [#10228](https://github.com/Shopify/polaris/pull/10228) [`e18ca907e`](https://github.com/Shopify/polaris/commit/e18ca907ec059916550b22b84ff76c4ae84d0e0c) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - `Filters` Remove unused disabled states in `FilterPill`
+
+* [#10268](https://github.com/Shopify/polaris/pull/10268) [`dbe3d9ece`](https://github.com/Shopify/polaris/commit/dbe3d9ecee181d0e03d0efe0ce4f0b0012fd95c3) Thanks [@laurkim](https://github.com/laurkim)! - Fixed broken focus ring styles on `ResourceItem` component
+
+- [#10238](https://github.com/Shopify/polaris/pull/10238) [`b17d23d69`](https://github.com/Shopify/polaris/commit/b17d23d69d6a77326fb6e43019691384ddf8663f) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Ensure Avatar has no background color if an source prop is passed in to allow for transparent images
+
+* [#10230](https://github.com/Shopify/polaris/pull/10230) [`a573e55d0`](https://github.com/Shopify/polaris/commit/a573e55d0492f28547ea1d964aa6c0cfb76488b5) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - `IndexFilter` remove custom `FilterButton` in favor of directly invoking the Polaris `Button` component.
+
+* Updated dependencies [[`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532)]:
+  - @shopify/polaris-tokens@7.13.0-beta.0
+
 ## 11.23.0
 
 ### Minor Changes
