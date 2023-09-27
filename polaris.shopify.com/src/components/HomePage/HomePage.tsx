@@ -65,10 +65,10 @@ function HomePage({}: Props) {
           <div className={className(styles.Promo, styles.News, 'dark-mode')}>
             <div className={styles.Text}>
               <h3>
-                <span>New</span> Version 10 typography
+                <span>New</span> Version 12
               </h3>
-              <p>Learn about what changes are coming to Polaris typography.</p>
-              <Link href="/whats-new/version-10-typography">Read post</Link>
+              <p>Learn how to upgrade to Polaris&apos; new design language.</p>
+              <Link href="/whats-new/version-12">Read post</Link>
             </div>
             <div className={styles.Image}>
               <Image
