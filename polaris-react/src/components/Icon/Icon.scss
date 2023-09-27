@@ -46,7 +46,7 @@
 }
 
 .tonePrimary svg {
-  fill: var(--p-color-icon-primary);
+  fill: var(--p-color-icon-brand);
 }
 
 .toneSecondary svg {
@@ -59,10 +59,6 @@
 
 .toneMagic svg {
   fill: var(--p-color-icon-magic);
-}
-
-.toneBrand svg {
-  fill: var(--p-color-icon-brand);
 }
 
 .toneTextCaution svg {
@@ -81,16 +77,16 @@
   fill: var(--p-color-text-info);
 }
 
+.toneTextPrimary svg {
+  fill: var(--p-color-text-brand);
+}
+
 .toneTextSuccess svg {
   fill: var(--p-color-text-success);
 }
 
 .toneTextMagic svg {
   fill: var(--p-color-text-magic);
-}
-
-.toneTextBrand svg {
-  fill: var(--p-color-text-brand);
 }
 
 .Svg,

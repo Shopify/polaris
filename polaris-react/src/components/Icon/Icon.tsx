@@ -19,7 +19,6 @@ type Tone =
   | 'secondary'
   | 'emphasis'
   | 'magic'
-  | 'brand'
   | 'textCaution'
   | 'textWarning'
   | 'textCritical'
