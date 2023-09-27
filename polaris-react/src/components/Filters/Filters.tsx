@@ -165,9 +165,9 @@ export function Filters({
   );
 
   useEffect(() => {
-    const allAppliedFilterKeysInLocalPinnedFilters =
-      !appliedFilterKeys ||
-      appliedFilterKeys.every((value) => localPinnedFilters.includes(value));
+    const allAppliedFilterKeysInLocalPinnedFilters = appliedFilterKeys?.every(
+      (value) => localPinnedFilters.includes(value),
+    );
 
     if (!allAppliedFilterKeysInLocalPinnedFilters) {
       setLocalPinnedFilters((currentLocalPinnedFilters: string[]): string[] => {
