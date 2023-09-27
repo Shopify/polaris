@@ -173,6 +173,11 @@ interface NonMutuallyExclusiveProps {
   onBlur?(event?: React.FocusEvent): void;
   /** Removes the border around the input. Used in the IndexFilters component. */
   borderless?: boolean;
+  /**
+   * @deprecated Turning off 1Password and LastPass password manager autofill is done automatically when `autocomplete` is set to `off`.
+   * Disables the 1password extension on the text field.
+   */
+  disable1Password?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -239,6 +244,7 @@ export function TextField({
   onFocus,
   onBlur,
   borderless,
+  disable1Password,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -557,7 +563,7 @@ export function TextField({
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
     // 1Password disable data attribute
-    'data-1p-ignore': autoComplete === 'off' || undefined,
+    'data-1p-ignore': autoComplete === 'off' || disable1Password || undefined,
     // LastPass disable data attribute
     'data-lpignore': autoComplete === 'off' || undefined,
     // Dashlane disable data attribute
