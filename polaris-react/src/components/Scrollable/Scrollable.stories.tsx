@@ -1170,7 +1170,7 @@ export function UsingInstantScrollToFromRef() {
 
 export function WithShadowOverComplexChildren() {
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       <Text as="p" variant="bodyLg" fontWeight="bold">
         NOTE: Red shadow is for demo/debug purposes only.
         <br />
@@ -1188,7 +1188,7 @@ export function WithShadowOverComplexChildren() {
           '--pc-scrollable-shadow-color': 'rgba(255, 0, 0, 0.85)',
         }}
       >
-        <Box padding="4">
+        <Box padding="400">
           <Banner title="Payment details">
             <p>Last updated on: September 6, 2022</p>
 

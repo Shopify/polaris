@@ -43,21 +43,21 @@ export const DirectiveCard = ({children, status, ...props}: DirectiveProps) => {
   return (
     <Card {...props}>
       {image?.props?.src ? (
-        <Stack gap="4">
-          <Bleed marginInline="4" marginBlockStart="4">
+        <Stack gap="400">
+          <Bleed marginInline="400" marginBlockStart="400">
             <ImageThumbnail
               className={styles.ImageThumbnail}
               src={image?.props?.src}
               alt={image?.props?.alt}
             />
           </Bleed>
-          <Stack gap="2">
+          <Stack gap="200">
             {statusMarkup}
             {rest}
           </Stack>
         </Stack>
       ) : (
-        <Stack gap="2">
+        <Stack gap="200">
           {statusMarkup}
           {rest}
         </Stack>

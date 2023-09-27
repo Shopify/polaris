@@ -9,6 +9,7 @@ import {
   getUnit,
   getMediaConditions,
 } from '../src/utilities';
+import {resolveMetaThemeRefs} from '../src/themes/utils';
 
 const mockTokenGroup = {
   'design-token-1': {
@@ -175,5 +176,85 @@ describe('getMediaConditions', () => {
         only: '(min-width: 2em)',
       },
     });
+  });
+});
+
+describe('resolveMetaThemeRefs', () => {
+  it('resolves token references inside the current token group', () => {
+    const metaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-gap': {value: 'var(--p-space-1)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-gap': {value: '1px'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
+  });
+
+  it('resolves token references outside the current token group', () => {
+    const metaTheme = {
+      font: {
+        'font-size-1': {value: '1px'},
+      },
+      text: {
+        'text-body-md-font-size': {value: 'var(--p-font-size-1)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      font: {
+        'font-size-1': {value: '1px'},
+      },
+      text: {
+        'text-body-md-font-size': {value: '1px'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
+  });
+
+  it('resolves token references with multi-dash token group names', () => {
+    const metaTheme = {
+      zIndex: {
+        'z-index-1': {value: '1'},
+        'z-modal': {value: 'var(--p-z-index-1)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      zIndex: {
+        'z-index-1': {value: '1'},
+        'z-modal': {value: '1'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
+  });
+
+  it('resolves nested token references', () => {
+    const metaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-2': {value: 'var(--p-space-1)'},
+        'space-gap': {value: 'var(--p-space-2)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-2': {value: '1px'},
+        'space-gap': {value: '1px'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
   });
 });

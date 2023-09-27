@@ -18,7 +18,7 @@ import RulePostamble from '../_postamble.md';
 
 ```diff
 // Do
-+ padding: var(--p-space-1);
++ padding: var(--p-space-100);
 // Don't
 - padding: rem(4px);
 ```

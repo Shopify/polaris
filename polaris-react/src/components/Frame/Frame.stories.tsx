@@ -1076,12 +1076,12 @@ function WithSidebarEnabled() {
           <div
             style={{
               position: 'fixed',
-              bottom: 'var(--p-space-2)',
-              right: 'var(--p-space-2)',
-              width: 'calc(var(--pc-sidebar-width) - var(--p-space-4))',
-              height: 'calc(100vh - 3.5rem - var(--p-space-4))',
+              bottom: 'var(--p-space-200)',
+              right: 'var(--p-space-200)',
+              width: 'calc(var(--pc-sidebar-width) - var(--p-space-400))',
+              height: 'calc(100vh - 3.5rem - var(--p-space-400))',
               background: 'var(--p-color-bg)',
-              padding: 'var(--p-space-2)',
+              padding: 'var(--p-space-200)',
               boxShadow: 'var(--p-shadow-md)',
               borderRadius: 'var(--p-border-radius-3)',
             }}

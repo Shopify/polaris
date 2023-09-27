@@ -194,7 +194,7 @@ textarea {
 
 ## Mobile considerations
 
-<InlineGrid columns={2} gap='4'>
+<InlineGrid columns={2} gap='400'>
 
   <Do>
 

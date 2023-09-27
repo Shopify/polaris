@@ -8,11 +8,11 @@
 
 .Item {
   position: relative;
-  padding-left: var(--p-space-6);
+  padding-left: var(--p-space-600);
   color: var(--p-color-text-subdued);
 
   + .Item {
-    margin-top: var(--p-space-1);
+    margin-top: var(--p-space-100);
   }
 }
 
@@ -23,9 +23,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: var(--p-space-5);
-  height: var(--p-space-5);
-  margin-right: var(--p-space-1);
+  min-width: var(--p-space-500);
+  height: var(--p-space-500);
+  margin-right: var(--p-space-100);
 
   svg {
     fill: var(--p-color-icon-subdued);
@@ -60,7 +60,7 @@
 .Title {
   + .Description::before {
     content: '–';
-    margin: 0 var(--p-space-1);
+    margin: 0 var(--p-space-100);
   }
 
   .statusWarning &,

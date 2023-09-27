@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BlockStackWithInlineAlignExample() {
   return (
     <Page>
-      <BlockStack gap="8">
+      <BlockStack gap="800">
         <BlockStack inlineAlign="start">
           <Placeholder height="48px" width="320px" label="Start" showBorder />
           <Placeholder height="48px" width="320px" showBorder />
@@ -39,7 +39,7 @@ const Placeholder = ({
     <div
       style={{
         background: 'var(--p-color-text-info)',
-        padding: '14px var(--p-space-2)',
+        padding: '14px var(--p-space-200)',
         height: height,
         width: width,
         borderBlockEnd: showBorder
