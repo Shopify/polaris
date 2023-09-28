@@ -25,7 +25,7 @@ order: 0
 
 ## Upgrade to v12
 
-Follow our [migration guide](/migrating-from-v11-to-v12) to upgrade Polaris from v11 to v12.
+Follow our [migration guide](/version-guides/migrating-from-v11-to-v12) to upgrade Polaris from v11 to v12.
 
 ## What's changing
 
@@ -49,7 +49,7 @@ Read more about Polaris' [design principles](/design) to start designing in the 
 
 The version 12 updates aim to create an intentional set of tokens that clearly communicates intent so that builders have exactly what they need to apply the new design language on their surfaces. To do this, v12 introduces primitive and semantic token layers.
 
-For more information on how to migrate from v11 tokens, check out the [migration guide](/migrating-from-v11-to-v12#token-migrations).
+For more information on how to migrate from v11 tokens, check out the [migration guide](/version-guides/migrating-from-v11-to-v12#token-migrations).
 
 #### Primitive tokens
 
@@ -70,7 +70,7 @@ Semantic tokens are references to base values that are used in specific contexts
 
 The version 12 breaking component changes aim to simplify inconsistent and complicated component APIs.
 
-Note: the below examples are for illustrative purposes only. For a comprehensive list on all component changes and how to migrate from v11's component APIs, check out the [migration guide](/migrating-from-v11-to-v12#component-migrations).
+Note: the below examples are for illustrative purposes only. For a comprehensive list on all component changes and how to migrate from v11's component APIs, check out the [migration guide](/version-guides/migrating-from-v11-to-v12#component-migrations).
 
 #### Logical properties rename
 
@@ -214,6 +214,8 @@ Renaming space control props to `gap` creates a consistent API across components
 
 ## Resources
 
-- [v11 to v12 migration guide](/migrating-from-v11-to-v12)
+- [v11 to v12 migration guide](/version-guides/migrating-from-v11-to-v12)
 - [Add the new web font](/version-guides/migrating-from-v11-to-v12#a-new-web-font)
 - [Design principles](/design)
+- [Uplifted components](/components)
+- [Updated token lists](/tokens)
