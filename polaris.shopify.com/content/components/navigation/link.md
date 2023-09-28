@@ -80,9 +80,9 @@ Edge cases: External icons should not be used to indicate a new tab or window is
 
 #### Do
 
-Use as a standalone, identifying icon only
+Instead of using an external icon, consider using an icon with more meaning to strenghten your message
 
-![Shopify admin search search results with an example of the external link icon being used as a decorative element](/images/components/navigation/link/external-link-icon-decorative@2x.png)
+![Shopify admin search search results with an example of an icon being used as a decorative element](/images/components/navigation/link/external-link-icon-decorative@2x.png)
 
 #### Don’t
 

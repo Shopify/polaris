@@ -15,6 +15,13 @@ icon: IllustrationMajor
 
 <Lede>{frontmatter.description}</Lede>
 
+<DirectiveCard status="Caution">
+
+This section is currently being reworked to provide better guidance aligned
+with Polaris v12. Stay tuned!
+
+</DirectiveCard>
+
 ## Principles
 
 ### Always be useful

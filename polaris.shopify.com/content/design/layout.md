@@ -18,11 +18,20 @@ keywords:
 description: Polaris layout components let you quickly build custom layouts without writing CSS code.
 ---
 
+![](/images/design/layout/layout-banner.png)
+
+---
+
 # {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 
-![](/images/design/layout/layout-banner.png)
+<DirectiveCard status="Caution">
+
+This section is currently being reworked to provide better guidance aligned
+with Polaris v12. Stay tuned!
+
+</DirectiveCard>
 
 ## What are layout components?
 
@@ -51,29 +60,54 @@ Layout components are intended to solve about 80% of layout use cases. But they 
     **Layout components are single purpose, composable, and flexible.** Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. <br /> <br /> Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.
   </Grid.Cell>
 
-  <Grid.Cell columnSpan={{xs: 6, lg: 7}}>
-    ![Card, InlineGrid, Divider, and InlineStack components assembled together to create admin UI element](/images/design/layout/single-purpose-composible-flexible@2x.png)
-  </Grid.Cell>
+{' '}
 
-  <Grid.Cell columnSpan={{xs: 6, lg: 5}}>
-    **Layout components are single purpose, composable, and flexible.** Single-purpose components allow us to separate concerns and predict behavior when the design system changes. A known tradeoff can be extra elements in the markup. <br /> <br /> Combine these components to build any layout. Their flexibility means different combinations can achieve the same visual result.
-  </Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 7}}>
+  ![Card, InlineGrid, Divider, and InlineStack components assembled together to
+  create admin UI
+  element](/images/design/layout/single-purpose-composible-flexible@2x.png)
+</Grid.Cell>
 
-  <Grid.Cell columnSpan={{xs: 6, lg: 7}}>
-    ![Card, InlineGrid, Divider, and InlineStack components assembled together to create admin UI element](/images/design/layout/single-purpose-composible-flexible@2x.png)
-  </Grid.Cell>
+{' '}
 
-  <Grid.Cell columnSpan={{xs: 6, lg: 5}}>
-    **Layout components shouldn’t affect anything outside of their borders.** They should only impact components rendered inside of them. The exception is the [Bleed](/components/layout-and-structure/bleed) component.
-  </Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 5}}>
+  **Layout components are single purpose, composable, and flexible.**
+  Single-purpose components allow us to separate concerns and predict behavior
+  when the design system changes. A known tradeoff can be extra elements in the
+  markup. <br /> <br /> Combine these components to build any layout. Their
+  flexibility means different combinations can achieve the same visual result.
+</Grid.Cell>
 
-  <Grid.Cell columnSpan={{xs: 6, lg: 7}}>
-    ![Admin card with whitespace between each UI element](/images/design/layout/outside-borders@2x.png)
-  </Grid.Cell>
+{' '}
 
-  <Grid.Cell columnSpan={{xs: 6, lg: 5}}>
-    **Layout component behaviors rely on Polaris tokens.** Behaviors like spacing, color, and breakpoints are configured via component prop APIs. Each prop expects a specific value that maps to a [Polaris design token](/tokens/color).
-  </Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 7}}>
+  ![Card, InlineGrid, Divider, and InlineStack components assembled together to
+  create admin UI
+  element](/images/design/layout/single-purpose-composible-flexible@2x.png)
+</Grid.Cell>
+
+{' '}
+
+<Grid.Cell columnSpan={{xs: 6, lg: 5}}>
+  **Layout components shouldn’t affect anything outside of their borders.** They
+  should only impact components rendered inside of them. The exception is the
+  [Bleed](/components/layout-and-structure/bleed) component.
+</Grid.Cell>
+
+{' '}
+
+<Grid.Cell columnSpan={{xs: 6, lg: 7}}>
+  ![Admin card with whitespace between each UI
+  element](/images/design/layout/outside-borders@2x.png)
+</Grid.Cell>
+
+{' '}
+
+<Grid.Cell columnSpan={{xs: 6, lg: 5}}>
+  **Layout component behaviors rely on Polaris tokens.** Behaviors like spacing,
+  color, and breakpoints are configured via component prop APIs. Each prop
+  expects a specific value that maps to a [Polaris design token](/tokens/color).
+</Grid.Cell>
 
   <Grid.Cell columnSpan={{xs: 6, lg: 7}}>
     ![Admin UI element with color and spacing design tokens called out](/images/design/layout/tokens@2x.png)
@@ -89,8 +123,9 @@ To ensure designs are responsive, reference the breakpoints and examples in the 
 <video width="100%" height="auto" controls autoPlay muted loop>
   <source src="/images/design/space/breakpoints.mp4" type="video/mp4" />
 
-  Browser window resizing with the overlayed column grid dynamically adjusting
-  to the size
+Browser window resizing with the overlayed column grid dynamically adjusting
+to the size
+
 </video>
 
 ## Layout component examples
