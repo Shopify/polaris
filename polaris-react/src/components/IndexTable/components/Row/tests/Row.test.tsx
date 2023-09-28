@@ -440,6 +440,18 @@ describe('<Row />', () => {
     expect(row).toHaveReactProps({tone: undefined});
   });
 
+  it('applies subdued tone styles when tone prop is set to "subdued"', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps} tone="subdued">
+        <td />
+      </Row>,
+    );
+
+    expect(row).toContainReactComponent('tr', {
+      className: 'TableRow toneSubdued',
+    });
+  });
+
   it('applies success tone styles when tone prop is set to "success"', () => {
     const row = mountWithTable(
       <Row {...defaultProps} tone="success">
@@ -452,15 +464,27 @@ describe('<Row />', () => {
     });
   });
 
-  it('applies subdued tone styles when tone prop is set to "subdued"', () => {
+  it('applies warning tone styles when tone prop is set to "success"', () => {
     const row = mountWithTable(
-      <Row {...defaultProps} tone="subdued">
+      <Row {...defaultProps} tone="warning">
         <td />
       </Row>,
     );
 
     expect(row).toContainReactComponent('tr', {
-      className: 'TableRow toneSubdued',
+      className: 'TableRow toneWarning',
+    });
+  });
+
+  it('applies critical tone styles when tone prop is set to "success"', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps} tone="critical">
+        <td />
+      </Row>,
+    );
+
+    expect(row).toContainReactComponent('tr', {
+      className: 'TableRow toneCritical',
     });
   });
 
