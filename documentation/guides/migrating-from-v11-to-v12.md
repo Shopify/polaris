@@ -176,9 +176,14 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>
 
 After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:
 
+<details>
+  <summary>Check RegExp for hardcoded <code>border</code> custom properties across all file types</summary>
+
 ```
 (?:--p-border-radius-0-experimental|--p-border-radius-05|--p-border-radius-1|--p-border-radius-1_5-experimental|--p-border-radius-2|--p-border-radius-3|--p-border-radius-4|--p-border-radius-5|--p-border-radius-6|--p-border-width-1|--p-border-width-1-experimental|--p-border-width-2|--p-border-width-2-experimental|--p-border-width-3|--p-border-width-4|--p-border-width-5)(?![\w-])
 ```
+
+</details>
 
 <details>
   <summary>Check RegExp for outdated <code>&lt;Tooltip borderRadius="..." /&gt;</code> props</summary>
@@ -189,61 +194,122 @@ After migrating use the following RegExp to check for any additional instances o
 
 </details>
 
-```
-<Tooltip[^>\w](?:[^>]|\n)*?borderRadius
-```
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderRadius="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?borderRadius
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderRadiusEndStart="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?borderRadiusEndStart
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderRadiusEndEnd="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?borderRadiusEndEnd
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderRadiusStartStart="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?borderRadiusStartStart
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderRadiusStartEnd="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?borderRadiusStartEnd
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;ShadowBevel borderRadius="..." /&gt;</code> props</summary>
+
 ```
 <ShadowBevel[^>\w](?:[^>]|\n)*?borderRadius
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderWidth="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?borderWidth
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderBlockStartWidth="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?borderBlockStartWidth
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderBlockEndWidth="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?borderBlockEndWidth
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderInlineStartWidth="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?borderInlineStartWidth
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderInlineEndWidth="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?borderInlineEndWidth
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box outlineWidth="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?outlineWidth
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Divider borderWidth="..." /&gt;</code> props</summary>
+
 ```
 <Divider[^>\w](?:[^>]|\n)*?borderWidth
 ```
+
+</details>
 
 #### Replacement maps
 
