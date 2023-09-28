@@ -215,7 +215,6 @@
         "rename": "重新命名檢視畫面",
         "duplicate": "複製檢視畫面",
         "edit": "編輯檢視畫面",
-        "editColumns": "編輯欄",
         "delete": "刪除檢視畫面",
         "copy": "{name}的副本",
         "deleteModal": {
@@ -390,7 +389,11 @@
           "cancel": "取消"
         }
       },
-      "searchFilterTooltipWithShortcut": "搜尋和篩選 (F)"
+      "searchFilterTooltipWithShortcut": "搜尋和篩選 (F)",
+      "EditColumnsButton": {
+        "tooltip": "編輯欄",
+        "accessibilityLabel": "自訂表格欄順序和能見度"
+      }
     },
     "ActionList": {
       "SearchField": {
