@@ -123,7 +123,7 @@ Heading styles are used to create various levels of hierarchy on the page. These
 
 ![An image showing how heading styles are applied](/images/design/typography/text-heading-example-01@2x.png)
 
-`headingXs` - `headingLg` styles are most commonly used for card, section, or page titles.
+`headingSm` - `headingLg` styles are most commonly used for card, section, or page titles.
 
 ![An image showing how large heading styles are applied](/images/design/typography/text-heading-example-02@2x.png)
 
@@ -131,7 +131,7 @@ Heading styles are used to create various levels of hierarchy on the page. These
 
 Large heading styles, `headingLg` - `heading4xl`, are responsive and will change size at different breakpoints.
 
-Small heading styles, `headingXs` - `headingMd`, and body styles will remain the same size regardless of breakpoint unless specified. You can choose to adjust the size of these styles at specific breakpoints when needed. For instance, you may need to increase the size of important body text on smaller screens.
+Small heading styles, `headingSm` - `headingMd`, and body styles will remain the same size regardless of breakpoint unless specified. You can choose to adjust the size of these styles at specific breakpoints when needed. For instance, you may need to increase the size of important body text on smaller screens.
 
 <video width="100%" height="auto" controls autoPlay muted loop>
   <source

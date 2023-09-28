@@ -75,7 +75,6 @@ Each variant uses a predetermined combination of the [font tokens](/tokens/font)
 | `headingLg`  | `--p-font-size-300` | 20       | 1.25      | `--p-line-height-3`    | `--p-font-weight-semibold` | Yes       |
 | `headingMd`  | `--p-font-size-200` | 16       | 1         | `--p-line-height-3`    | `--p-font-weight-semibold` | No        |
 | `headingSm`  | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-semibold` | No        |
-| `headingXs`  | `--p-font-size-75`  | 12       | 0.75      | `--p-line-height-1`    | `--p-font-weight-semibold` | No        |
 | `bodyLg`     | `--p-font-size-200` | 16       | 1         | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
 | `bodyMd`     | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
 | `bodySm`     | `--p-font-size-75`  | 12       | 0.75      | `--p-line-height-1`    | `--p-font-weight-regular`  | No        |
@@ -127,7 +126,7 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <Subheading>Accounts</Subheading>
-+ <Text variant="headingXs" as="h3">Accounts</Text>
++ <Text variant="headingSm" as="h3">Accounts</Text>
 ```
 
 ### Caption

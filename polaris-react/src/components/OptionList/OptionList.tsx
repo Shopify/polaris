@@ -130,7 +130,7 @@ export function OptionList({
             paddingInlineEnd="150"
             borderColor="border-subdued"
           >
-            <Text as={titleLevel} variant="headingXs">
+            <Text as={titleLevel} variant="headingSm">
               {title}
             </Text>
           </Box>

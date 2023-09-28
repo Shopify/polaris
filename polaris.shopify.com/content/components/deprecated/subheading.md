@@ -33,7 +33,7 @@ Subheadings are used for the title of any sub-sections in top-level page section
 
 ```diff
 - <Subheading>Accounts</Subheading>
-+ <Text variant="headingXs" as="h3">Accounts</Text>
++ <Text variant="headingSm" as="h3">Accounts</Text>
 ```
 
 ---

@@ -29,9 +29,6 @@ export const Variants = () => (
     <Text as="h6" variant="headingSm">
       Text with HeadingSm variant
     </Text>
-    <Text as="h6" variant="headingXs">
-      Text with HeadingXs variant
-    </Text>
     <Text as="p" variant="bodyLg">
       Text with BodyLg variant
     </Text>

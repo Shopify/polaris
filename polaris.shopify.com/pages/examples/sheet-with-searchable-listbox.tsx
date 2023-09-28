@@ -319,7 +319,7 @@ function SheetWithSearchableListboxExample() {
                 marginBottom: 'var(--p-space-200)',
               }}
             >
-              <Text variant="headingXs" as="h3" tone="subdued">
+              <Text variant="headingSm" as="h3" tone="subdued">
                 Action
               </Text>
               <Button

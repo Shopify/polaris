@@ -10,7 +10,7 @@ function LegacyCardExample() {
         title={
           <LegacyStack>
             <Icon source={ProductsMajor} />
-            <Text variant="headingXs" as="h3">
+            <Text variant="headingSm" as="h3">
               New Products
             </Text>
           </LegacyStack>
