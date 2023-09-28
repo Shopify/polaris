@@ -107,7 +107,8 @@ export const shadow: {
       '0 1px 0 0 #EBEBEB inset, -1px 0 0 0 #EBEBEB inset, 1px 0 0 0 #EBEBEB inset, 0 -1px 0 0 #CCC inset',
   },
   'shadow-button-inset': {
-    value: 'inset 0 0 0 1px rgba(227, 227, 227, 1)',
+    value:
+      '0 2px 1px 0 rgba(26, 26, 26, 0.20) inset, 1px 0 1px 0 rgba(26, 26, 26, 0.12) inset, -1px 0 1px 0 rgba(26, 26, 26, 0.12) inset',
   },
   'shadow-button-primary': {
     value:
