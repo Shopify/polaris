@@ -215,6 +215,7 @@
         "rename": "Nimeä näkymä uudelleen",
         "duplicate": "Kopioi näkymä",
         "edit": "Muokkaa näkymää",
+        "editColumns": "Muokkaa sarakkeita",
         "delete": "Poista näkymä",
         "copy": "Kopio tiedostosta {name}",
         "deleteModal": {
@@ -389,11 +390,7 @@
           "cancel": "Peruuta"
         }
       },
-      "searchFilterTooltipWithShortcut": "Hae ja suodata (F)",
-      "EditColumnsButton": {
-        "tooltip": "Muokkaa sarakkeita",
-        "accessibilityLabel": "Muokkaa taulukon sarakkeiden järjestystä ja näkyvyyttä"
-      }
+      "searchFilterTooltipWithShortcut": "Hae ja suodata (F)"
     },
     "ActionList": {
       "SearchField": {
