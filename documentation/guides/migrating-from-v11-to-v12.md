@@ -684,165 +684,360 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
 
 After migrating use the following RegExp to check for any additional instances of `space` custom properties across all file types:
 
+<details>
+  <summary>Check RegExp for hardcoded <code>space</code> custom properties across all file types</summary>
+
 ```
-(?:--p-space-05|--p-space-1|--p-space-1_5-experimental|--p-space-2|--p-space-3|--p-space-4|--p-space-5|--p-space-6|--p-space-8|--p-space-10|--p-space-12|--p-space-16|--p-space-20|--p-space-24|--p-space-28|--p-space-32)(?![\w-])
+(?:--p-space-05|--p-space-1|--p-space-1_5-experimental|--p-space-2|--p-space-3|--p-space-4|--p-space-5|--p-space-6|--p-space-8|--p-space-10|--p-space-12|--p-space-16 |--p-space-20 |--p-space-24|--p-space-28 |--p-space-32)(?![\w-])
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Tooltip padding="..." /&gt;</code> props</summary>
 
 ```
 <Tooltip[^>\w](?:[^>]|\n)*?padding
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;HorizontalGrid gap="..." /&gt;</code> props</summary>
+
 ```
 <HorizontalGrid[^>\w](?:[^>]|\n)*?gap
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box padding="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?padding
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box paddingBlockStart="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?paddingBlockStart
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box paddingBlockEnd="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?paddingBlockEnd
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box  paddingInlineStart="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?paddingInlineStart
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box  paddingInlineEnd="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?paddingInlineEnd
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box  insetBlockStart="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?insetBlockStart
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box  insetBlockEnd="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?insetBlockEnd
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box  insetInlineStart="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?insetInlineStart
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box  insetInlineEnd="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?insetInlineEnd
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;VerticalStack  gap="..." /&gt;</code> props</summary>
+
 ```
 <VerticalStack[^>\w](?:[^>]|\n)*?gap
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;HorizontalStack  gap="..." /&gt;</code> props</summary>
 
 ```
 <HorizontalStack[^>\w](?:[^>]|\n)*?gap
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Choice  bleed="..." /&gt;</code> props</summary>
+
 ```
 <Choice[^>\w](?:[^>]|\n)*?bleed
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Choice  bleedBlockStart="..." /&gt;</code> props</summary>
 
 ```
 <Choice[^>\w](?:[^>]|\n)*?bleedBlockStart
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Choice  bleedBlockEnd="..." /&gt;</code> props</summary>
+
 ```
 <Choice[^>\w](?:[^>]|\n)*?bleedBlockEnd
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Choice  bleedInlineStart="..." /&gt;</code> props</summary>
 
 ```
 <Choice[^>\w](?:[^>]|\n)*?bleedInlineStart
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Choice  bleedInlineEnd="..." /&gt;</code> props</summary>
+
 ```
 <Choice[^>\w](?:[^>]|\n)*?bleedInlineEnd
 ```
+
+</details>
 
 ```
 <RadioButton[^>\w](?:[^>]|\n)*?bleed
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;RadioButton bleedBlockStart="..." /&gt;</code> props</summary>
+
 ```
 <RadioButton[^>\w](?:[^>]|\n)*?bleedBlockStart
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;RadioButton bleedBlockEnd="..." /&gt;</code> props</summary>
 
 ```
 <RadioButton[^>\w](?:[^>]|\n)*?bleedBlockEnd
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;RadioButton bleedInlineStart="..." /&gt;</code> props</summary>
+
 ```
 <RadioButton[^>\w](?:[^>]|\n)*?bleedInlineStart
 ```
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;RadioButton bleedInlineEnd="..." /&gt;</code> props</summary>
 
 ```
 <RadioButton[^>\w](?:[^>]|\n)*?bleedInlineEnd
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Checkbox bleed="..." /&gt;</code> props</summary>
+
 ```
 <Checkbox[^>\w](?:[^>]|\n)*?bleed
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Checkbox XX="..." /&gt;</code> props</summary>
 
 ```
 <Checkbox[^>\w](?:[^>]|\n)*?bleedBlockStart
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Checkbox XX="..." /&gt;</code> props</summary>
+
 ```
 <Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Checkbox XX="..." /&gt;</code> props</summary>
 
 ```
 <Checkbox[^>\w](?:[^>]|\n)*?bleedInlineStart
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Checkbox XX="..." /&gt;</code> props</summary>
+
 ```
 <Checkbox[^>\w](?:[^>]|\n)*?bleedInlineEnd
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Stack gap="..." /&gt;</code> props</summary>
 
 ```
 <Stack[^>\w](?:[^>]|\n)*?gap
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Grid gap="..." /&gt;</code> props</summary>
+
 ```
 <Grid[^>\w](?:[^>]|\n)*?gap
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Grid gapX="..." /&gt;</code> props</summary>
 
 ```
 <Grid[^>\w](?:[^>]|\n)*?gapX
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Grid gapY="..." /&gt;</code> props</summary>
+
 ```
 <Grid[^>\w](?:[^>]|\n)*?gapY
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Card padding="..." /&gt;</code> props</summary>
 
 ```
 <Card[^>\w](?:[^>]|\n)*?padding
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Bleed marginInline="..." /&gt;</code> props</summary>
+
 ```
 <Bleed[^>\w](?:[^>]|\n)*?marginInline
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Bleed marginBlock="..." /&gt;</code> props</summary>
 
 ```
 <Bleed[^>\w](?:[^>]|\n)*?marginBlock
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Bleed marginBlockStart="..." /&gt;</code> props</summary>
+
 ```
 <Bleed[^>\w](?:[^>]|\n)*?marginBlockStart
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Bleed marginBlockEnd="..." /&gt;</code> props</summary>
 
 ```
 <Bleed[^>\w](?:[^>]|\n)*?marginBlockEnd
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Bleed marginInlineStart="..." /&gt;</code> props</summary>
+
 ```
 <Bleed[^>\w](?:[^>]|\n)*?marginInlineStart
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Bleed marginInlineEnd="..." /&gt;</code> props</summary>
+
 ```
 <Bleed[^>\w](?:[^>]|\n)*?marginInlineEnd
 ```
+
+</details>
 
 #### Replacement maps
 
