@@ -1,7 +1,8 @@
 import {metaThemeDefault} from './themes';
 import type {Exact, MetadataBase} from './types';
+import {resolveMetaThemeRefs} from './themes/utils';
 
-export const metadata = metaThemeDefault;
+export const metadata = resolveMetaThemeRefs(metaThemeDefault);
 
 export type Metadata = typeof metadata;
 

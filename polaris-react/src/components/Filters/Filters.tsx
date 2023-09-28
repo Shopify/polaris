@@ -163,9 +163,9 @@ export function Filters({
   );
 
   useEffect(() => {
-    const allAppliedFilterKeysInLocalPinnedFilters = appliedFilterKeys?.every(
-      (value) => localPinnedFilters.includes(value),
-    );
+    const allAppliedFilterKeysInLocalPinnedFilters =
+      !appliedFilterKeys ||
+      appliedFilterKeys.every((value) => localPinnedFilters.includes(value));
 
     if (!allAppliedFilterKeysInLocalPinnedFilters) {
       setLocalPinnedFilters((currentLocalPinnedFilters: string[]): string[] => {
@@ -297,10 +297,10 @@ export function Filters({
     paddingInlineStart: BoxProps['paddingInlineStart'];
     paddingInlineEnd: BoxProps['paddingInlineEnd'];
   } = {
-    paddingInlineStart: '2',
-    paddingInlineEnd: '2',
-    paddingBlockStart: '2',
-    paddingBlockEnd: '2',
+    paddingInlineStart: '200',
+    paddingInlineEnd: '200',
+    paddingBlockStart: '200',
+    paddingBlockEnd: '200',
   };
 
   const queryFieldMarkup = hideQueryField ? null : (
@@ -310,8 +310,8 @@ export function Filters({
           align="start"
           blockAlign="center"
           gap={{
-            xs: '4',
-            md: '3',
+            xs: '400',
+            md: '300',
           }}
         >
           <div
@@ -441,13 +441,17 @@ export function Filters({
           </div>
         </div>
         {hideQueryField ? (
-          <Box paddingInlineEnd="3" paddingBlockStart="2" paddingBlockEnd="2">
+          <Box
+            paddingInlineEnd="300"
+            paddingBlockStart="200"
+            paddingBlockEnd="200"
+          >
             <InlineStack
               align="start"
               blockAlign="center"
               gap={{
-                xs: '4',
-                md: '3',
+                xs: '400',
+                md: '300',
               }}
             >
               {additionalContent}

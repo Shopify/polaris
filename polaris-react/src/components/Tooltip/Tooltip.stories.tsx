@@ -21,7 +21,7 @@ export default {
 
 export function All() {
   return (
-    <BlockStack gap="16">
+    <BlockStack gap="1600">
       <Default />
       <PreferredPosition />
       <Width />
@@ -41,7 +41,7 @@ export function All() {
 
 export function Default() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <Tooltip active content="This order has shipping labels.">
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
@@ -53,14 +53,14 @@ export function Default() {
 
 export function PreferredPosition() {
   return (
-    <Box paddingBlockStart="24">
-      <InlineStack gap="8">
+    <Box paddingBlockStart="2400">
+      <InlineStack gap="800">
         <Tooltip
           active
           content="This content is positioned above the activator"
           preferredPosition="above"
         >
-          <InlineStack gap="1">
+          <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip positioned
             </Text>{' '}
@@ -78,7 +78,7 @@ export function PreferredPosition() {
           content="This content is positioned above the activator"
           preferredPosition="below"
         >
-          <InlineStack gap="1">
+          <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip positioned
             </Text>{' '}
@@ -98,13 +98,13 @@ export function PreferredPosition() {
 
 export function Width() {
   return (
-    <Box paddingBlockStart="24">
-      <InlineStack gap="8">
+    <Box paddingBlockStart="2400">
+      <InlineStack gap="800">
         <Tooltip
           active
           content="This content has the default width and will break into a new line at 200px width"
         >
-          <InlineStack gap="1">
+          <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -122,7 +122,7 @@ export function Width() {
           content="This content has the wide width and will break into a new line at 275px width"
           width="wide"
         >
-          <InlineStack gap="1">
+          <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -142,10 +142,10 @@ export function Width() {
 
 export function Padding() {
   return (
-    <Box paddingBlockStart="24">
-      <InlineStack gap="8">
+    <Box paddingBlockStart="2400">
+      <InlineStack gap="800">
         <Tooltip active content="This content has default padding">
-          <InlineStack gap="1">
+          <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -160,10 +160,10 @@ export function Padding() {
         </Tooltip>
         <Tooltip
           active
-          content="This content has padding of 4 (space-4 / 16px)"
-          padding="4"
+          content="This content has padding of 4 (space-400 / 16px)"
+          padding="400"
         >
-          <InlineStack gap="1">
+          <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -183,13 +183,13 @@ export function Padding() {
 
 export function BorderRadius() {
   return (
-    <Box paddingBlockStart="24">
-      <InlineStack gap="8">
+    <Box paddingBlockStart="2400">
+      <InlineStack gap="800">
         <Tooltip
           active
-          content="This content has the default (radius-1) border radius"
+          content="This content has the default (radius-100) border radius"
         >
-          <InlineStack gap="1">
+          <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -204,10 +204,10 @@ export function BorderRadius() {
         </Tooltip>
         <Tooltip
           active
-          content="This content has a border radius of 2 (radius-2)"
-          borderRadius="2"
+          content="This content has a border radius of 200 (radius-200)"
+          borderRadius="200"
         >
-          <InlineStack gap="1">
+          <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
               Tooltip with
             </Text>{' '}
@@ -227,7 +227,7 @@ export function BorderRadius() {
 
 export function VisibleOnlyWithChildInteraction() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <div style={{width: '200px'}}>
         <ButtonGroup variant="segmented" fullWidth>
           <Tooltip content="Bold" dismissOnMouseOut>
@@ -256,8 +256,8 @@ export function VisibleOnlyWithChildInteraction() {
 
 export function WithHoverDelay() {
   return (
-    <BlockStack gap="4">
-      <BlockStack gap="2">
+    <BlockStack gap="400">
+      <BlockStack gap="200">
         <Text variant="headingMd" fontWeight="bold" as="h1">
           TEXT EXAMPLE
         </Text>
@@ -280,7 +280,7 @@ export function WithHoverDelay() {
         </InlineStack>
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text variant="headingMd" fontWeight="bold" as="h1">
           BUTTON EXAMPLE
         </Text>
@@ -304,7 +304,7 @@ export function WithHoverDelay() {
 
 export function ActivatorAsDiv() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <Tooltip
         active
         content="This tooltip is rendered as a div"
@@ -320,12 +320,12 @@ export function ActivatorAsDiv() {
 
 export function WithSuffix() {
   return (
-    <Box padding="16" background="bg">
+    <Box padding="1600" background="bg">
       <InlineStack>
         <ButtonGroup variant="segmented" fullWidth>
           <Tooltip
             content={
-              <InlineStack gap="2">
+              <InlineStack gap="200">
                 Bold
                 <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘B
@@ -338,7 +338,7 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <InlineStack gap="2">
+              <InlineStack gap="200">
                 Italic
                 <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘I
@@ -350,7 +350,7 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <InlineStack gap="2">
+              <InlineStack gap="200">
                 Underline
                 <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘U
@@ -362,7 +362,7 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <InlineStack gap="2">
+              <InlineStack gap="200">
                 Strikethrough
                 <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘S
@@ -374,7 +374,7 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <InlineStack gap="2">
+              <InlineStack gap="200">
                 Bold
                 <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘B
@@ -387,7 +387,7 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <InlineStack gap="2">
+              <InlineStack gap="200">
                 Italic
                 <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘I
@@ -400,7 +400,7 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <InlineStack gap="2">
+              <InlineStack gap="200">
                 Underline
                 <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘U
@@ -413,7 +413,7 @@ export function WithSuffix() {
           </Tooltip>
           <Tooltip
             content={
-              <InlineStack gap="2">
+              <InlineStack gap="200">
                 Strikethrough
                 <Text as="span" variant="bodyMd" tone="subdued">
                   ⌘S
@@ -432,7 +432,7 @@ export function WithSuffix() {
 
 export function Alignment() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <InlineStack>
         <ButtonGroup variant="segmented" fullWidth>
           <Tooltip content="Content is longer than the activator">
@@ -461,7 +461,7 @@ export function Alignment() {
 
 export function HasUnderline() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <Tooltip active content="This tooltip has an underline" hasUnderline>
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
@@ -473,7 +473,7 @@ export function HasUnderline() {
 
 export function PersistOnClick() {
   return (
-    <Box paddingBlockStart="24">
+    <Box paddingBlockStart="2400">
       <Tooltip
         content="This tooltip can be clicked to stay open"
         persistOnClick
@@ -492,8 +492,8 @@ export function ActiveStates() {
     useState<TooltipProps['active']>(true);
 
   return (
-    <Box paddingBlockStart="24">
-      <InlineStack gap="24">
+    <Box paddingBlockStart="2400">
+      <InlineStack gap="2400">
         <Tooltip content="This tooltip should never render" active={false}>
           <Text variant="bodyLg" fontWeight="bold" as="span">
             Active false

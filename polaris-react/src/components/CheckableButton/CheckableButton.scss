@@ -5,17 +5,17 @@
   color: var(--p-color-text);
   font-size: var(--p-font-size-75);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-400);
   letter-spacing: initial;
   display: flex;
   align-items: center;
-  gap: calc(var(--p-space-3) + var(--p-space-025));
+  gap: calc(var(--p-space-300) + var(--p-space-025));
   margin: 0;
   cursor: pointer;
   user-select: none;
   text-decoration: none;
   text-align: left;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   width: auto;
 
   // Checkable Button has no opinion on its own height, it simply fills its

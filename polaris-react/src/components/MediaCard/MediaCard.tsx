@@ -152,8 +152,8 @@ export function MediaCard({
 
   const popoverOrDismissMarkup =
     popoverActionsMarkup || dismissButtonMarkup ? (
-      <Box position="absolute" insetInlineEnd="5" zIndex="var(--p-z-index-2)">
-        <InlineStack gap="1" wrap={false}>
+      <Box position="absolute" insetInlineEnd="500" zIndex="var(--p-z-index-2)">
+        <InlineStack gap="100" wrap={false}>
           {popoverActionsMarkup}
           {dismissButtonMarkup}
         </InlineStack>
@@ -165,9 +165,9 @@ export function MediaCard({
       <div className={mediaCardClassName}>
         <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
-          <Box padding="5">
-            <BlockStack gap="2">
-              <InlineStack wrap={false} align="space-between" gap="2">
+          <Box padding="500">
+            <BlockStack gap="200">
+              <InlineStack wrap={false} align="space-between" gap="200">
                 {headerMarkup}
                 {popoverOrDismissMarkup}
               </InlineStack>

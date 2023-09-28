@@ -135,7 +135,7 @@
     background: var(--p-color-bg-inset);
   }
   ol {
-    --counter-offset: calc(24px + var(--p-space-2));
+    --counter-offset: calc(24px + var(--p-space-200));
     list-style: none;
     counter-reset: item;
     li {

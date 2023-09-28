@@ -14,14 +14,16 @@ $skeleton-display-text-max-width: 120px;
 
 .DisplayText {
   // stylelint-disable -- Polaris component custom properties
-  --pc-skeleton-display-text-height: var(--p-font-line-height-2);
-  --pc-skeleton-display-text-height-not-condensed: var(--p-font-line-height-2);
+  --pc-skeleton-display-text-height: var(--p-font-line-height-500);
+  --pc-skeleton-display-text-height-not-condensed: var(
+    --p-font-line-height-500
+  );
   // stylelint-enable
   max-width: $skeleton-display-text-max-width;
 
   display: flex;
-  background-color: var(--p-color-bg-strong);
-  border-radius: var(--p-border-radius-1);
+  background-color: var(--p-color-bg-fill-tertiary);
+  border-radius: var(--p-border-radius-100);
 
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;
@@ -30,24 +32,30 @@ $skeleton-display-text-max-width: 120px;
 
 .sizeSmall {
   // stylelint-disable -- Polaris component custom properties
-  --pc-skeleton-display-text-height: var(--p-font-line-height-3);
-  --pc-skeleton-display-text-height-not-condensed: var(--p-font-line-height-4);
+  --pc-skeleton-display-text-height: var(--p-font-line-height-600);
+  --pc-skeleton-display-text-height-not-condensed: var(
+    --p-font-line-height-700
+  );
   // stylelint-enable
   @include skeleton-display-text-height;
 }
 
 .sizeMedium {
   // stylelint-disable -- Polaris component custom properties
-  --pc-skeleton-display-text-height: var(--p-font-line-height-4);
-  --pc-skeleton-display-text-height-not-condensed: var(--p-font-line-height-5);
+  --pc-skeleton-display-text-height: var(--p-font-line-height-700);
+  --pc-skeleton-display-text-height-not-condensed: var(
+    --p-font-line-height-800
+  );
   // stylelint-enable
   @include skeleton-display-text-height;
 }
 
 .sizeLarge {
   // stylelint-disable -- Polaris component custom properties
-  --pc-skeleton-display-text-height: var(--p-font-line-height-4);
-  --pc-skeleton-display-text-height-not-condensed: var(--p-font-line-height-5);
+  --pc-skeleton-display-text-height: var(--p-font-line-height-700);
+  --pc-skeleton-display-text-height-not-condensed: var(
+    --p-font-line-height-800
+  );
   // stylelint-enable
   @include skeleton-display-text-height;
 }

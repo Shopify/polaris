@@ -6,19 +6,19 @@ import styles from './Divider.scss';
 export interface DividerProps {
   /**
    * Divider border color
-   * @default 'border-subdued'
+   * @default 'border-secondary'
    */
   borderColor?: ColorBorderAlias | 'transparent';
   /**
    * Divider border width
-   * @default '1'
+   * @default '025'
    */
   borderWidth?: BorderWidthScale;
 }
 
 export const Divider = ({
-  borderColor = 'border-subdued',
-  borderWidth = '1',
+  borderColor = 'border-secondary',
+  borderWidth = '025',
 }: DividerProps) => {
   const borderColorValue =
     borderColor === 'transparent'

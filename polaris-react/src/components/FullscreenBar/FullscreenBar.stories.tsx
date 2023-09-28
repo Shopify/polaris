@@ -19,14 +19,14 @@ export default {
 export function All() {
   return (
     <>
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With children
         </Text>
         <WithChildren />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           No children
         </Text>
@@ -53,8 +53,8 @@ export function WithChildren() {
   const titleMarkup = (
     <div
       style={{
-        marginLeft: 'var(--p-space-2)',
-        marginRight: 'var(--p-space-4)',
+        marginLeft: 'var(--p-space-200)',
+        marginRight: 'var(--p-space-400)',
         flexGrow: 1,
       }}
     >

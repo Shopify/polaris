@@ -61,7 +61,7 @@ export function ShadowBevel(props: ShadowBevelProps) {
           mapResponsiveProp(bevel, (bevel) =>
             bevel
               ? `var(--p-border-radius-${borderRadius})`
-              : 'var(--p-border-radius-0-experimental)',
+              : 'var(--p-border-radius-0)',
           ),
         ),
       }}

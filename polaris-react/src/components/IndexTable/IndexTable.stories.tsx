@@ -1204,7 +1204,9 @@ export function WithBulkActionsAndSelectionAcrossPages() {
 
   return (
     <div
-      style={{padding: 'var(--p-space-4) var(--p-space-4) var(--p-space-10)'}}
+      style={{
+        padding: 'var(--p-space-400) var(--p-space-400) var(--p-space-1000)',
+      }}
     >
       <LegacyCard>
         <IndexTable
@@ -1603,6 +1605,15 @@ export function WithRowStatus() {
       orders: 40,
       amountSpent: '$40',
       status: 'critical',
+    },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Volleyball Player',
+      location: 'Delaware, USA',
+      orders: 50,
+      amountSpent: '$80',
+      status: 'warning',
     },
   ];
   const resourceName = {

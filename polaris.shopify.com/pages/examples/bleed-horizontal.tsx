@@ -9,7 +9,7 @@ function BleedHorizontalExample() {
       <Text as="h2" variant="bodyMd">
         Content inside a card
       </Text>
-      <Bleed marginInline="4">
+      <Bleed marginInline="400">
         <Placeholder label="marginInline" />
       </Bleed>
     </Card>
@@ -21,12 +21,12 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
     <div
       style={{
         background: 'var(--p-color-text-info)',
-        padding: '14px var(--p-space-2)',
+        padding: '14px var(--p-space-200)',
         height: height,
         width: width,
       }}
     >
-      <InlineStack gap="4" align="center">
+      <InlineStack gap="400" align="center">
         <div
           style={{
             color: 'var(--p-color-text-on-color)',

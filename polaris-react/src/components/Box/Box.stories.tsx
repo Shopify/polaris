@@ -17,14 +17,14 @@ export function Default() {
 
 export function WithBorders() {
   return (
-    <BlockStack gap="4">
-      <Box background="bg" padding="4" borderWidth="1" borderColor="border">
+    <BlockStack gap="400">
+      <Box background="bg" padding="400" borderWidth="025" borderColor="border">
         <Text as="p">1px solid border</Text>
       </Box>
       <Box
         background="bg"
-        padding="4"
-        borderWidth="1"
+        padding="400"
+        borderWidth="025"
         borderStyle="dashed"
         borderColor="border-subdued"
       >
@@ -32,57 +32,41 @@ export function WithBorders() {
       </Box>
       <Box
         background="bg"
-        padding="4"
-        borderWidth="2"
+        padding="400"
+        borderWidth="050"
         borderColor="border-info"
       >
         <Text as="p">2px solid blue</Text>
       </Box>
       <Box
         background="bg"
-        padding="4"
-        borderWidth="3"
-        borderColor="border-success"
-      >
-        <Text as="p">3px solid green</Text>
-      </Box>
-      <Box
-        background="bg"
-        padding="4"
-        borderWidth="4"
+        padding="400"
+        borderWidth="100"
         borderColor="border-caution"
       >
         <Text as="p">4px solid yellow</Text>
       </Box>
       <Box
         background="bg"
-        padding="4"
-        borderWidth="5"
+        padding="400"
+        borderBlockStartWidth="100"
         borderColor="border-critical"
       >
-        <Text as="p">5px solid red</Text>
+        <Text as="p">border-block-start: 4px solid red</Text>
       </Box>
       <Box
         background="bg"
-        padding="4"
-        borderBlockStartWidth="5"
+        padding="400"
+        borderWidth="100"
+        borderBlockStartWidth="025"
         borderColor="border-critical"
       >
-        <Text as="p">border-block-start: 5px solid red</Text>
-      </Box>
-      <Box
-        background="bg"
-        padding="4"
-        borderWidth="5"
-        borderBlockStartWidth="1"
-        borderColor="border-critical"
-      >
-        <Text as="p">border-width: 5px solid red</Text>
+        <Text as="p">border-width: 4px solid red</Text>
         <Text as="p">border-block-start: 1px solid red</Text>
         <Box
           background="bg"
-          padding="4"
-          borderWidth="4"
+          padding="400"
+          borderWidth="100"
           borderColor="border-caution"
         >
           <Text as="p">border-width: 4px solid yellow</Text>
@@ -94,11 +78,11 @@ export function WithBorders() {
       </Box>
       <Box
         background="bg"
-        padding="4"
-        borderWidth="5"
+        padding="400"
+        borderWidth="100"
         borderColor="transparent"
       >
-        <Text as="p">5px solid transparent</Text>
+        <Text as="p">4px solid transparent</Text>
       </Box>
     </BlockStack>
   );
@@ -106,14 +90,19 @@ export function WithBorders() {
 
 export function WithOutline() {
   return (
-    <BlockStack gap="4">
-      <Box background="bg" padding="4" outlineWidth="1" outlineColor="border">
+    <BlockStack gap="400">
+      <Box
+        background="bg"
+        padding="400"
+        outlineWidth="025"
+        outlineColor="border"
+      >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
-        padding="4"
-        outlineWidth="1"
+        padding="400"
+        outlineWidth="025"
         outlineStyle="dashed"
         outlineColor="border-subdued"
       >
@@ -121,33 +110,17 @@ export function WithOutline() {
       </Box>
       <Box
         background="bg"
-        padding="4"
-        outlineWidth="2"
+        padding="400"
+        outlineWidth="050"
         outlineColor="border-info"
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
-        padding="4"
-        outlineWidth="3"
-        outlineColor="border-success"
-      >
-        <Icon source={PaintBrushMajor} tone="base" />
-      </Box>
-      <Box
-        background="bg"
-        padding="4"
-        outlineWidth="4"
+        padding="400"
+        outlineWidth="100"
         outlineColor="border-caution"
-      >
-        <Icon source={PaintBrushMajor} tone="base" />
-      </Box>
-      <Box
-        background="bg"
-        padding="4"
-        outlineWidth="5"
-        outlineColor="border-critical"
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
@@ -157,7 +130,7 @@ export function WithOutline() {
 
 export function WithBorderRadius() {
   return (
-    <Box background="bg" padding="4" borderRadius="2">
+    <Box background="bg" padding="400" borderRadius="200">
       <Icon source={PaintBrushMajor} tone="info" />
     </Box>
   );
@@ -165,46 +138,46 @@ export function WithBorderRadius() {
 
 export function WithResponsivePadding() {
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       <Box
         background="bg"
-        padding={{xs: '2', sm: '8'}}
-        borderWidth="1"
+        padding={{xs: '200', sm: '800'}}
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
-        padding="2"
-        paddingBlockStart={{xs: '4', sm: '10'}}
-        borderWidth="1"
+        padding="200"
+        paddingBlockStart={{xs: '400', sm: '1000'}}
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
-        padding="2"
-        paddingBlockEnd={{xs: '4', sm: '10'}}
-        borderWidth="1"
+        padding="200"
+        paddingBlockEnd={{xs: '400', sm: '1000'}}
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
-        padding="2"
-        paddingInlineStart={{xs: '4', sm: '10'}}
-        borderWidth="1"
+        padding="200"
+        paddingInlineStart={{xs: '400', sm: '1000'}}
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
         background="bg"
-        paddingInlineEnd={{xs: '4', sm: '10'}}
-        borderWidth="1"
+        paddingInlineEnd={{xs: '400', sm: '1000'}}
+        borderWidth="025"
         borderColor="border"
       >
         <Icon source={PaintBrushMajor} tone="base" />

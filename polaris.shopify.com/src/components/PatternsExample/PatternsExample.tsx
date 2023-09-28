@@ -290,7 +290,7 @@ const PatternsExample = ({
   return (
     <>
       {expandedExampleMarkup}
-      <Stack gap="2" className={styles.SpecificityBuster}>
+      <Stack gap="200" className={styles.SpecificityBuster}>
         {exampleMarkup}
         {showCodeValue ? (
           <Code

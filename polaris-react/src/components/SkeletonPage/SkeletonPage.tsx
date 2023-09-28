@@ -40,7 +40,7 @@ export function SkeletonPage({
         background="bg-strong"
         minWidth="120px"
         minHeight="28px"
-        borderRadius="1"
+        borderRadius="100"
       />
     </div>
   );
@@ -48,7 +48,7 @@ export function SkeletonPage({
   const primaryActionMarkup = primaryAction ? (
     <Box
       id="SkeletonPage-PrimaryAction"
-      borderRadius="1"
+      borderRadius="100"
       background="bg-strong"
       minHeight="2.25rem"
       minWidth="6.25rem"
@@ -57,7 +57,7 @@ export function SkeletonPage({
 
   const backActionMarkup = backAction ? (
     <Box
-      borderRadius="1"
+      borderRadius="100"
       background="bg-strong"
       minHeight="2.25rem"
       minWidth="2.25rem"
@@ -66,12 +66,12 @@ export function SkeletonPage({
   ) : null;
 
   return (
-    <BlockStack gap="4" inlineAlign="center">
+    <BlockStack gap="400" inlineAlign="center">
       <Box
         width="100%"
         padding="0"
-        paddingInlineStart={{sm: '6'}}
-        paddingInlineEnd={{sm: '6'}}
+        paddingInlineStart={{sm: '600'}}
+        paddingInlineEnd={{sm: '600'}}
         maxWidth="var(--pc-skeleton-page-max-width)"
         aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
         role="status"
@@ -84,23 +84,23 @@ export function SkeletonPage({
       >
         <BlockStack>
           <Box
-            paddingBlockStart={{xs: '4', md: '5'}}
-            paddingBlockEnd={{xs: '4', md: '5'}}
-            paddingInlineStart={{xs: '4', sm: '0'}}
-            paddingInlineEnd={{xs: '4', sm: '0'}}
+            paddingBlockStart={{xs: '400', md: '500'}}
+            paddingBlockEnd={{xs: '400', md: '500'}}
+            paddingInlineStart={{xs: '400', sm: '0'}}
+            paddingInlineEnd={{xs: '400', sm: '0'}}
             width="100%"
           >
-            <InlineStack gap="4" align="space-between" blockAlign="center">
-              <InlineStack gap="4">
+            <InlineStack gap="400" align="space-between" blockAlign="center">
+              <InlineStack gap="400">
                 {backActionMarkup}
-                <Box paddingBlockStart="1" paddingBlockEnd="1">
+                <Box paddingBlockStart="100" paddingBlockEnd="100">
                   {titleContent}
                 </Box>
               </InlineStack>
               {primaryActionMarkup}
             </InlineStack>
           </Box>
-          <Box paddingBlockEnd="2" width="100%">
+          <Box paddingBlockEnd="200" width="100%">
             {children}
           </Box>
         </BlockStack>

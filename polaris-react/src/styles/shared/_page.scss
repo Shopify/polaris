@@ -7,6 +7,6 @@ $page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
   max-width: $page-max-width;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: 0 var(--p-space-6);
+    padding: 0 var(--p-space-600);
   }
 }

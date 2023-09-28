@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function InlineWithAlignExample() {
   return (
     <Page narrowWidth>
-      <BlockStack gap="16">
+      <BlockStack gap="1600">
         <InlineStack align="start">
           <Placeholder width="106px" label="Start" />
           <Placeholder width="106px" height="20px" showBorder />

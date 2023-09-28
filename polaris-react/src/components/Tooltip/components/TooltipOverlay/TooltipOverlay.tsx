@@ -17,7 +17,7 @@ const tailUpPaths = (
     />
     <path
       d="M17.442 10.171h-16v-2l6.87-6.612a2 2 0 0 1 2.83.055l6.3 6.557v2Z"
-      fill="var(--p-color-bg)"
+      fill="var(--p-color-bg-surface)"
     />
   </>
 );
@@ -30,7 +30,7 @@ const tailDownPaths = (
     />
     <path
       d="M1.387 0h16v2l-6.87 6.612a2 2 0 0 1-2.83-.055L1.387 2V0Z"
-      fill="var(--p-color-bg)"
+      fill="var(--p-color-bg-surface)"
     />
   </>
 );
@@ -104,7 +104,7 @@ export function TooltipOverlay({
         : undefined,
       '--pc-tooltip-padding':
         padding && padding === 'default'
-          ? 'var(--p-space-1) var(--p-space-2)'
+          ? 'var(--p-space-100) var(--p-space-200)'
           : `var(--p-space-${padding})`,
     } as React.CSSProperties;
 

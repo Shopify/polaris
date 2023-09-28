@@ -20,47 +20,47 @@ describe('Box', () => {
   });
 
   it('only renders the custom property that matches the property passed in', () => {
-    const box = mountWithApp(<Box paddingInlineStart="2">{children}</Box>);
+    const box = mountWithApp(<Box paddingInlineStart="200">{children}</Box>);
 
     expect(box).toContainReactComponent('div', {
       style: {
-        '--pc-box-padding-inline-start-xs': 'var(--p-space-2)',
+        '--pc-box-padding-inline-start-xs': 'var(--p-space-200)',
       } as React.CSSProperties,
     });
   });
 
   it('renders custom properties combined with any overrides if they are passed in', () => {
     const box = mountWithApp(
-      <Box padding="1" paddingInlineStart="2">
+      <Box padding="100" paddingInlineStart="200">
         {children}
       </Box>,
     );
 
     expect(box).toContainReactComponent('div', {
       style: {
-        '--pc-box-padding-block-end-xs': 'var(--p-space-1)',
-        '--pc-box-padding-block-start-xs': 'var(--p-space-1)',
-        '--pc-box-padding-inline-end-xs': 'var(--p-space-1)',
-        '--pc-box-padding-inline-start-xs': 'var(--p-space-2)',
+        '--pc-box-padding-block-end-xs': 'var(--p-space-100)',
+        '--pc-box-padding-block-start-xs': 'var(--p-space-100)',
+        '--pc-box-padding-inline-end-xs': 'var(--p-space-100)',
+        '--pc-box-padding-inline-start-xs': 'var(--p-space-200)',
       } as React.CSSProperties,
     });
   });
 
   it('accepts padding based on breakpoints', () => {
     const box = mountWithApp(
-      <Box padding={{xs: '2', md: '8'}}>{children}</Box>,
+      <Box padding={{xs: '200', md: '800'}}>{children}</Box>,
     );
 
     expect(box).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-box-padding-block-end-md': 'var(--p-space-8)',
-        '--pc-box-padding-block-end-xs': 'var(--p-space-2)',
-        '--pc-box-padding-block-start-md': 'var(--p-space-8)',
-        '--pc-box-padding-block-start-xs': 'var(--p-space-2)',
-        '--pc-box-padding-inline-end-md': 'var(--p-space-8)',
-        '--pc-box-padding-inline-end-xs': 'var(--p-space-2)',
-        '--pc-box-padding-inline-start-md': 'var(--p-space-8)',
-        '--pc-box-padding-inline-start-xs': 'var(--p-space-2)',
+        '--pc-box-padding-block-end-md': 'var(--p-space-800)',
+        '--pc-box-padding-block-end-xs': 'var(--p-space-200)',
+        '--pc-box-padding-block-start-md': 'var(--p-space-800)',
+        '--pc-box-padding-block-start-xs': 'var(--p-space-200)',
+        '--pc-box-padding-inline-end-md': 'var(--p-space-800)',
+        '--pc-box-padding-inline-end-xs': 'var(--p-space-200)',
+        '--pc-box-padding-inline-start-md': 'var(--p-space-800)',
+        '--pc-box-padding-inline-start-xs': 'var(--p-space-200)',
       }) as React.CSSProperties,
     });
   });
