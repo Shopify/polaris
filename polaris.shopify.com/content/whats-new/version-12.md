@@ -43,7 +43,7 @@ The new design language was crafted with guiding principles in mind, ultimately 
 - **Tactility**: Interfaces incorporate a sense of realness.
 - **Commonality**: Objects with similar appearance share a common behavior.
 
-Read more about Polaris' [design principles](/design) to start designing in the new language.
+Read more about Polaris' [design principles](/design/design-principles) to start designing in the new language.
 
 ### Token refinement
 
@@ -216,6 +216,6 @@ Renaming space control props to `gap` creates a consistent API across components
 
 - [v11 to v12 migration guide](/version-guides/migrating-from-v11-to-v12)
 - [Add the new web font](/version-guides/migrating-from-v11-to-v12#a-new-web-font)
-- [Design principles](/design)
+- [Design principles](/design/design-principles)
 - [Uplifted components](/components)
 - [Updated token lists](/tokens)
