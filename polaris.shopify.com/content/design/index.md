@@ -63,7 +63,12 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![Navigation opening/closing animation](/images/design/design-principles-pro-feel-interactions@2x.png)
+        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
+          <source src="/images/design/design-principles-pro-feel-interactions.mp4" type="video/mp4" />
+
+        Subnavigation in the navigation menu in the Shopify admin being opened and closed
+
+        </video>
 
       </Grid.Cell>
 
@@ -195,7 +200,12 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![A series of buttons in every state, default, hovered and clicked](/images/design/design-principles-tactility-realness@2x.png)
+        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
+          <source src="/images/design/design-principles-tactility-realness.mp4" type="video/mp4" />
+
+          A series of buttons in every state, default, hovered and clicked
+
+        </video>
 
       </Grid.Cell>
 
@@ -211,7 +221,12 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![Animation of a checkbox being ticked](/images/design/design-principles-tactility-animation@2x.png)
+        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
+          <source src="/images/design/design-principles-tactility-animation.mp4" type="video/mp4" />
+
+          Animation of a checkbox being ticked in an index page
+
+        </video>
 
       </Grid.Cell>
 
