@@ -180,6 +180,15 @@ After migrating use the following RegExp to check for any additional instances o
 (?:--p-border-radius-0-experimental|--p-border-radius-05|--p-border-radius-1|--p-border-radius-1_5-experimental|--p-border-radius-2|--p-border-radius-3|--p-border-radius-4|--p-border-radius-5|--p-border-radius-6|--p-border-width-1|--p-border-width-1-experimental|--p-border-width-2|--p-border-width-2-experimental|--p-border-width-3|--p-border-width-4|--p-border-width-5)(?![\w-])
 ```
 
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Tooltip borderRadius="..." /&gt;</code> props</summary>
+
+```
+<Tooltip[^>\w](?:[^>]|\n)*?borderRadius
+```
+
+</details>
+
 ```
 <Tooltip[^>\w](?:[^>]|\n)*?borderRadius
 ```
