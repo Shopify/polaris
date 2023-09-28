@@ -1,5 +1,5 @@
 ---
-title: Design Principles
+title: Design principles
 description: Design principles serve as guiding notions that shape the design of the Shopify admin, with Polaris providing support in implementing these principles effectively.
 order: 1
 icon: PaintBrushMajor
