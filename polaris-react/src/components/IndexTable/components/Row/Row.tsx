@@ -25,7 +25,7 @@ export interface RowProps {
   selected?: boolean | 'indeterminate';
   /** The zero-indexed position of the row. Used for Shift key multi-selection */
   position: number;
-  /** Whether the row should visually indicate its status with color */
+  /** Whether the row should visually indicate its status with a background color */
   tone?: RowStatus;
   /** Whether the row should be disabled */
   disabled?: boolean;
