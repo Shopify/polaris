@@ -89,6 +89,11 @@
   .Button:not(.plain) & {
     width: 100%;
   }
+
+  // stylelint-disable-next-line selector-max-class -- override primary button font weight
+  .Button.primary & {
+    font-weight: var(--p-font-weight-semibold);
+  }
 }
 
 .textAlignLeft {
