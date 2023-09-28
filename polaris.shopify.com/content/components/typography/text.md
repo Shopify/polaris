@@ -68,7 +68,6 @@ Each variant uses a predetermined combination of the [font tokens](/tokens/font)
 
 | Variant      | Font size token     | px value | rem value | Font line height token | Font weight token          | Reponsive |
 | ------------ | ------------------- | -------- | --------- | ---------------------- | -------------------------- | --------- |
-| `heading4Xl` | `--p-font-size-700` | 40       | 2.5       | `--p-line-height-7`    | `--p-font-weight-bold`     | Yes       |
 | `heading3Xl` | `--p-font-size-600` | 32       | 2         | `--p-line-height-6`    | `--p-font-weight-semibold` | Yes       |
 | `heading2Xl` | `--p-font-size-500` | 28       | 1.75      | `--p-line-height-5`    | `--p-font-weight-semibold` | Yes       |
 | `headingXl`  | `--p-font-size-400` | 24       | 1.5       | `--p-line-height-4`    | `--p-font-weight-semibold` | Yes       |
@@ -112,7 +111,7 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <DisplayText size="extraLarge">Sales this year</DisplayText>
-+ <Text variant="heading4xl" as="p">Sales this year</Text>
++ <Text variant="heading3xl" as="p">Sales this year</Text>
 ```
 
 ### Heading
