@@ -16,7 +16,6 @@ import {
   ScrollLockManager,
   ScrollLockManagerContext,
 } from '../../utilities/scroll-lock-manager';
-import {IndexFiltersManager} from '../../utilities/index-filters';
 import {
   StickyManager,
   StickyManagerContext,
@@ -168,7 +167,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
                     <PortalsManager>
                       <FocusManager>
                         <EphemeralPresenceManager>
-                          <IndexFiltersManager>{children}</IndexFiltersManager>
+                          {children}
                         </EphemeralPresenceManager>
                       </FocusManager>
                     </PortalsManager>
