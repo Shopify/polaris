@@ -351,37 +351,77 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path>
 
 After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
 
+<details>
+  <summary>Check RegExp for hardcoded <code>color</code> custom properties across all file types</summary>
+
 ```
 (?:--p-color-avatar-background-experimental|--p-color-avatar-color-experimental|--p-color-avatar-style-five-background-experimental|--p-color-avatar-style-five-color-experimental|--p-color-avatar-style-four-background-experimental|--p-color-avatar-style-four-color-experimental|--p-color-avatar-style-one-background-experimental|--p-color-avatar-style-one-color-experimental|--p-color-avatar-style-three-background-experimental|--p-color-avatar-style-three-color-experimental|--p-color-avatar-style-two-background-experimental|--p-color-avatar-style-two-color-experimental|--p-color-bg|--p-color-bg-active|--p-color-bg-app-selected|--p-color-bg-backdrop-experimental|--p-color-bg-caution|--p-color-bg-caution-strong|--p-color-bg-caution-subdued|--p-color-bg-caution-subdued-active|--p-color-bg-caution-subdued-hover|--p-color-bg-critical|--p-color-bg-critical-strong|--p-color-bg-critical-strong-active|--p-color-bg-critical-strong-hover|--p-color-bg-critical-subdued|--p-color-bg-critical-subdued-active|--p-color-bg-critical-subdued-hover|--p-color-bg-disabled|--p-color-bg-hover|--p-color-bg-info|--p-color-bg-info-strong|--p-color-bg-info-subdued|--p-color-bg-info-subdued-active|--p-color-bg-info-subdued-hover|--p-color-bg-input|--p-color-bg-input-active-experimental|--p-color-bg-input-hover-experimental|--p-color-bg-inset|--p-color-bg-inset-strong|--p-color-bg-inverse-active|--p-color-bg-inverse-hover|--p-color-bg-magic|--p-color-bg-magic-active|--p-color-bg-magic-hover|--p-color-bg-magic-strong|--p-color-bg-magic-subdued|--p-color-bg-magic-subdued-hover|--p-color-bg-primary|--p-color-bg-primary-active|--p-color-bg-primary-hover|--p-color-bg-primary-subdued|--p-color-bg-primary-subdued-active|--p-color-bg-primary-subdued-hover|--p-color-bg-primary-subdued-selected|--p-color-bg-secondary-experimental|--p-color-bg-strong|--p-color-bg-strong-active|--p-color-bg-strong-hover|--p-color-bg-subdued|--p-color-bg-subdued-active|--p-color-bg-subdued-hover|--p-color-bg-success|--p-color-bg-success-strong|--p-color-bg-success-strong-active-experimental|--p-color-bg-success-strong-hover-experimental|--p-color-bg-success-subdued|--p-color-bg-success-subdued-active|--p-color-bg-success-subdued-hover|--p-color-bg-transparent-active-experimental|--p-color-bg-transparent-disabled-experimental|--p-color-bg-transparent-experimental|--p-color-bg-transparent-hover-experimental|--p-color-bg-transparent-primary-disabled-experimental|--p-color-bg-transparent-subdued-experimental|--p-color-bg-warning|--p-color-bg-warning-strong-experimental|--p-color-bg-warning-subdued-experimental|--p-color-border-critical-strong-experimental|--p-color-border-input|--p-color-border-input-active-experimental|--p-color-border-input-hover|--p-color-border-interactive|--p-color-border-interactive-active|--p-color-border-interactive-focus|--p-color-border-interactive-hover|--p-color-border-magic-strong|--p-color-border-primary|--p-color-border-strong|--p-color-border-subdued|--p-color-icon-interactive|--p-color-icon-interactive-active|--p-color-icon-interactive-hover|--p-color-icon-primary|--p-color-icon-subdued|--p-color-text-critical-hover-experimental|--p-color-text-info-strong|--p-color-text-interactive|--p-color-text-interactive-active|--p-color-text-interactive-hover|--p-color-text-interactive-inverse|--p-color-text-inverse-subdued|--p-color-text-primary|--p-color-text-primary-hover|--p-color-text-subdued|--p-color-text-warning-experimental)(?![\w-])
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box background="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?background
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Card background="..." /&gt;</code> props</summary>
+
 ```
 <Card[^>\w](?:[^>]|\n)*?background
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box borderColor="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?borderColor
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box outlineColor="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?outlineColor
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Divider borderColor="..." /&gt;</code> props</summary>
 
 ```
 <Divider[^>\w](?:[^>]|\n)*?borderColor
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Banner textColor="..." /&gt;</code> props</summary>
+
 ```
 <Banner[^>\w](?:[^>]|\n)*?textColor
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box color="..." /&gt;</code> props</summary>
+
 ```
 <Box[^>\w](?:[^>]|\n)*?color
 ```
+
+</details>
 
 #### Replacement maps
 
