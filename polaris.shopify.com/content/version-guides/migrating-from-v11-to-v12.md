@@ -519,6 +519,14 @@ To replace these deprecated `shadow` custom properties, you can run the [v12-sty
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
 ```
 
+The following tokens need to be manually migrated because their values are context dependent.
+
+| Deprecated CSS Custom Property                 | Replacement Value                                                                        |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `--p-shadow-button-primary-experimental`       | `--p-shadow-button-primary-critical`<br/>`--p-shadow-button-primary-success`             |
+| `--p-shadow-button-primary-hover-experimental` | `--p-shadow-button-primary-critical-hover`<br/>`--p-shadow-button-primary-success-hover` |
+| `--p-shadow-button-inset-experimental`         | `--p-shadow-button-primary-critical-inset`<br/>`--p-shadow-button-primary-success-inset` |
+
 #### Post-migration validation
 
 After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
