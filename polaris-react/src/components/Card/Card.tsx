@@ -38,7 +38,7 @@ export const Card = ({
   roundedAbove,
 }: CardProps) => {
   const breakpoints = useBreakpoints();
-  const defaultBorderRadius: BorderRadiusScale = '3';
+  const defaultBorderRadius: BorderRadiusScale = '300';
 
   let hasBorderRadius = !roundedAbove;
 
@@ -50,7 +50,7 @@ export const Card = ({
     <WithinContentContext.Provider value>
       <ShadowBevel
         boxShadow="xs"
-        borderRadius={hasBorderRadius ? defaultBorderRadius : '0-experimental'}
+        borderRadius={hasBorderRadius ? defaultBorderRadius : '0'}
         zIndex="32"
       >
         <Box

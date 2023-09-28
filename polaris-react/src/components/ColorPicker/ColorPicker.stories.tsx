@@ -74,8 +74,8 @@ export function WithHexTextField() {
     Tile: {
       minHeight: 'calc(100% - 0.125rem)',
       aspectRatio: '1 / 1',
-      borderRadius: 'var(--p-border-radius-1)',
-      border: 'var(--p-border-width-1) solid var(--p-color-border-secondary)',
+      borderRadius: 'var(--p-border-radius-100)',
+      border: 'var(--p-border-width-025) solid var(--p-color-border-secondary)',
       backgroundColor: hsbToHex(color),
     },
     TextField: {

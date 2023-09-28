@@ -11,7 +11,7 @@
     background-color: var(--p-color-bg-strong) !important;
     box-shadow: none !important;
     border: none;
-    border-radius: var(--p-border-radius-2) !important;
+    border-radius: var(--p-border-radius-200) !important;
     padding: var(--p-space-100) var(--p-space-300);
     min-height: 28px;
 
@@ -27,7 +27,7 @@
     &:focus-visible {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- focus styles */
       @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
+      outline: var(--p-border-width-050) solid
         var(--p-color-border-interactive-focus);
       outline-offset: var(--p-space-050);
     }

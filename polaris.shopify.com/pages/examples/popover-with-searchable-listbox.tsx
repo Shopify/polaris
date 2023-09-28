@@ -306,8 +306,8 @@ function PopoverWithSearchableListboxExample() {
                 width: '310px',
                 height: '292px',
                 padding: 'var(--p-space-200) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >

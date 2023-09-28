@@ -67,7 +67,7 @@
   height: 2rem;
   padding: var(--p-space-150) var(--p-space-300);
   border: 0;
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
   background-color: transparent;
   color: var(--p-color-text-primary);
   cursor: pointer;
@@ -132,7 +132,7 @@
 
 .Tab-active {
   background: var(--p-color-bg-transparent-active-experimental);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
   color: var(--p-color-text);
 
   &[aria-disabled='true'] {
@@ -251,7 +251,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
   padding: 0 var(--p-space-200) 0 var(--p-space-300);
   margin-top: var(--p-space-025);
   border: none;

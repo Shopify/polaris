@@ -2,8 +2,8 @@
 
 .FilterButton {
   background: var(--p-color-bg);
-  border-radius: var(--p-border-radius-2);
-  border: var(--p-color-border) dashed var(--p-border-width-1);
+  border-radius: var(--p-border-radius-200);
+  border: var(--p-color-border) dashed var(--p-border-width-025);
   cursor: pointer;
   color: var(--p-color-text);
 
@@ -50,7 +50,7 @@
   }
 
   &::after {
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
   }
 }
 

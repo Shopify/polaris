@@ -87,8 +87,8 @@
 
 .AddFilter {
   background: var(--p-color-bg);
-  border-radius: var(--p-border-radius-2);
-  border: var(--p-color-border) dashed var(--p-border-width-1);
+  border-radius: var(--p-border-radius-200);
+  border: var(--p-color-border) dashed var(--p-border-width-025);
   padding: 0 var(--p-space-200) 0 var(--p-space-300);
   height: 28px;
   cursor: pointer;
@@ -127,7 +127,7 @@
   }
 
   &:focus {
-    outline-offset: var(--p-border-width-2);
+    outline-offset: var(--p-border-width-050);
   }
 
   &:active {
@@ -152,7 +152,7 @@
   }
 
   &::after {
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
   }
 
   span {

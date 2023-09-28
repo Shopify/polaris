@@ -658,10 +658,10 @@
       @media (-ms-high-contrast: active) {
         outline: var(--p-border-width-050) dotted;
       }
-      outline: var(--p-border-width-2) solid
+      outline: var(--p-border-width-050) solid
         var(--p-color-border-interactive-focus);
       outline-offset: var(--p-space-050);
-      border-radius: var(--p-border-radius-1_5-experimental);
+      border-radius: var(--p-border-radius-150);
     }
   }
 
@@ -858,7 +858,7 @@
 }
 
 .sizeMicro {
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
   padding: var(--p-space-100) var(--p-space-200);
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
   min-height: var(--pc-button-micro-min-height);
@@ -985,21 +985,21 @@
   > :first-child .Button::before,
   > :first-child .Button::after {
     border-radius: 0;
-    border-top-left-radius: var(--p-border-radius-2);
-    border-bottom-left-radius: var(--p-border-radius-2);
+    border-top-left-radius: var(--p-border-radius-200);
+    border-bottom-left-radius: var(--p-border-radius-200);
   }
 
   > :last-child .Button,
   > :last-child .Button::before,
   > :last-child .Button::after {
     border-radius: 0;
-    border-top-right-radius: var(--p-border-radius-2);
-    border-bottom-right-radius: var(--p-border-radius-2);
+    border-top-right-radius: var(--p-border-radius-200);
+    border-bottom-right-radius: var(--p-border-radius-200);
   }
 
   > :last-child:first-child .Button,
   > :last-child:first-child .Button::after {
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
   }
 }
 
