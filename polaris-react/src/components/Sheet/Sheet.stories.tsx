@@ -470,7 +470,7 @@ export function WithSearchableListbox() {
                 marginBottom: 'var(--p-space-200)',
               }}
             >
-              <Text as="h3" variant="headingXs" tone="subdued">
+              <Text as="h3" variant="headingSm" tone="subdued">
                 Action
               </Text>
               <Button

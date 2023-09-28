@@ -28,7 +28,7 @@ describe('Header', () => {
     expect(header).toContainReactComponent(Box);
     expect(header.find(Box)).toContainReactComponent(Text, {
       as: 'span',
-      variant: 'headingXs',
+      variant: 'headingSm',
       tone: 'subdued',
     });
   });

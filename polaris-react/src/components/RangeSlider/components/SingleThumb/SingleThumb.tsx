@@ -66,7 +66,7 @@ export function SingleThumb(props: SingleThumbProps) {
   const outputMarkup = !disabled && output && (
     <output htmlFor={id} className={styles.Output}>
       <div className={styles.OutputBubble}>
-        <Text as="span" variant="headingXs" alignment="center">
+        <Text as="span" variant="headingSm" alignment="center">
           {clampedValue}
         </Text>
       </div>
