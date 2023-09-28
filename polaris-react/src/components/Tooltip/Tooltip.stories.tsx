@@ -187,7 +187,7 @@ export function BorderRadius() {
       <InlineStack gap="800">
         <Tooltip
           active
-          content="This content has the default (radius-1) border radius"
+          content="This content has the default (radius-100) border radius"
         >
           <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">
@@ -204,8 +204,8 @@ export function BorderRadius() {
         </Tooltip>
         <Tooltip
           active
-          content="This content has a border radius of 2 (radius-2)"
-          borderRadius="2"
+          content="This content has a border radius of 200 (radius-200)"
+          borderRadius="200"
         >
           <InlineStack gap="100">
             <Text variant="bodyLg" fontWeight="medium" as="span">

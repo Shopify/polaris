@@ -19,7 +19,7 @@ $action-menu-rollup-computed-width: 40px;
   a,
   button {
     background-color: transparent;
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
     box-shadow: none;
 
     &:is(:hover, :focus, :focus-visible) {

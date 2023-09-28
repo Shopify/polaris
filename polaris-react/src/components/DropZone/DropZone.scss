@@ -33,7 +33,7 @@ $dropzone-stacking-order: (
   display: flex;
   justify-content: center;
   background-color: var(--p-color-bg-input);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
 
   &::after {
     content: '';
@@ -45,9 +45,8 @@ $dropzone-stacking-order: (
     bottom: 0;
     left: 0;
 
-    border: var(--p-border-width-1-experimental) $dropzone-border-style
-      transparent;
-    border-radius: var(--p-border-radius-2);
+    border: var(--p-border-width-0165) $dropzone-border-style transparent;
+    border-radius: var(--p-border-radius-200);
     pointer-events: none;
   }
 
@@ -67,7 +66,7 @@ $dropzone-stacking-order: (
 
   &:not(.isDisabled) {
     &::after {
-      border-width: var(--p-border-width-1-experimental);
+      border-width: var(--p-border-width-0165);
       border-color: var(--p-color-border-input);
     }
 
@@ -138,7 +137,7 @@ $dropzone-stacking-order: (
   justify-content: center;
   align-items: center;
   padding: var(--p-space-400);
-  border: var(--p-border-width-2-experimental) solid
+  border: var(--p-border-width-025) solid
     var(--p-color-border-input-active-experimental);
   text-align: center;
   color: var(--p-color-text);
@@ -154,7 +153,7 @@ $dropzone-stacking-order: (
   border-color: var(--p-color-border-critical-strong-experimental);
   color: var(--p-color-text-critical);
   border-style: $dropzone-border-style;
-  border-width: var(--p-border-width-1-experimental);
+  border-width: var(--p-border-width-0165);
   background-color: var(--p-color-bg-critical-subdued);
 }
 

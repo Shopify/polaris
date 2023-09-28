@@ -43,7 +43,7 @@
   // stylelint-disable-next-line -- using pre-existing private pc token
   margin: calc(-1 * var(--pc-mapped-actions-item-vertical-padding))
     calc(-1 * var(--p-space-300));
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
 
   &:hover {
     background-color: var(--p-color-bg-hover);

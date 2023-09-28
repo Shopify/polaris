@@ -160,7 +160,7 @@ $loading-panel-height: 53px;
   border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
 
   &:first-child {
-    border-top: var(--p-border-width-1) solid var(--p-color-border);
+    border-top: var(--p-border-width-025) solid var(--p-color-border);
   }
 
   &.TableRow-unclickable {
@@ -248,8 +248,8 @@ $loading-panel-height: 53px;
       font-weight: var(--p-font-weight-medium);
       font-size: var(--p-font-size-75);
       background-color: var(--p-color-bg-subdued);
-      border-top: var(--p-border-width-1) solid var(--p-color-border);
-      border-bottom: var(--p-border-width-1) solid var(--p-color-border);
+      border-top: var(--p-border-width-025) solid var(--p-color-border);
+      border-bottom: var(--p-border-width-025) solid var(--p-color-border);
       border-color: var(--p-color-border);
     }
   }
@@ -618,8 +618,8 @@ $loading-panel-height: 53px;
   left: 0;
   bottom: calc(-1 * var(--p-border-width-050));
   width: 100%;
-  height: var(--p-border-width-2);
-  border-bottom: var(--p-border-width-2) dotted var(--p-color-border-strong);
+  height: var(--p-border-width-050);
+  border-bottom: var(--p-border-width-050) dotted var(--p-color-border-strong);
 }
 
 .TableHeadingTooltipUnderlinePlaceholder {
@@ -1008,8 +1008,8 @@ $scroll-bar-size: var(--p-space-200);
   background-color: var(--p-color-bg);
 
   @media #{$p-breakpoints-sm-up} {
-    border-bottom-right-radius: var(--p-border-radius-2);
-    border-bottom-left-radius: var(--p-border-radius-2);
+    border-bottom-right-radius: var(--p-border-radius-200);
+    border-bottom-left-radius: var(--p-border-radius-200);
     padding: var(--p-space-050) var(--p-space-200);
   }
 }

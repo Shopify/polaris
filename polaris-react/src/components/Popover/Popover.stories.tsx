@@ -390,8 +390,8 @@ export function WithScrollableLazyLoadedList() {
                 width: '231px',
                 height: '262px',
                 padding: 'var(--p-space-200) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleScrolledToBottom}
             >
@@ -730,8 +730,8 @@ export function WithSearchableListbox() {
                 width: '310px',
                 height: '262px',
                 padding: 'var(--p-space-200) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >
