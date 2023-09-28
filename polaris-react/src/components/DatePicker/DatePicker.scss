@@ -61,8 +61,8 @@
   cursor: pointer;
 
   &:hover {
-    background: var(--p-color-bg-primary-hover);
-    color: var(--p-color-text-on-color);
+    background: var(--p-color-bg-fill-brand-hover);
+    color: var(--p-color-text-brand-on-bg-fill);
     outline: var(--p-border-width-025) solid transparent;
   }
 
@@ -97,8 +97,8 @@
 }
 
 .Day-selected {
-  background: var(--p-color-bg-primary);
-  color: var(--p-color-text-on-color);
+  background: var(--p-color-bg-fill-brand-selected);
+  color: var(--p-color-text-brand-on-bg-fill);
 
   @media (-ms-high-contrast: active) {
     -ms-high-contrast-adjust: none;
