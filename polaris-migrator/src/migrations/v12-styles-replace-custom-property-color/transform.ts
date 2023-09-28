@@ -33,6 +33,7 @@ const replacementMap = {
   // '--p-color-bg-primary-subdued-hover': '--p-color-bg-surface-brand-hover',
   // '--p-color-bg-primary-subdued-active': '--p-color-bg-surface-brand-active',
   // '--p-color-bg-primary-subdued-selected': '--p-color-bg-surface-brand-selected',
+  '--p-color-bg-app-active': '--p-color-bg-surface-active',
   '--p-color-bg-app-selected': '--p-color-bg-surface-selected',
   '--p-color-bg-success-strong': '--p-color-bg-fill-success',
   '--p-color-bg-success-strong-hover-experimental':
