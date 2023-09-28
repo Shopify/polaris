@@ -45,7 +45,7 @@
 
   .Backdrop {
     border-color: var(--p-color-border-disabled);
-    background-color: var(--p-color-bg-transparent-disabled-experimental);
+    background-color: var(--p-color-bg-surface-disabled);
 
     &::before {
       background-color: var(--p-color-bg-input);
