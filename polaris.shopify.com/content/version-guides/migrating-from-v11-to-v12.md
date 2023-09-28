@@ -171,7 +171,7 @@ All icons still maintain the 20x20 viewbox.
 
 ### Dividers
 
-We removed dividers across Polaris components, most noticeably in [`Page`](/components/layout-and-structure/page) and [`LegacyCard`](/components/layout-and-structure/legacy-card).
+We removed dividers across Polaris components, most noticeably in [`Page`](/components/layout-and-structure/page) and [`LegacyCard`](/components/deprecated/legacy-card).
 We now recommend using spacing to create a visual hierarchy.
 If you must use a divider, use the [`Divider`](/components/layout-and-structure/divider) component to add them back in where needed.
 
@@ -189,12 +189,12 @@ To get a buttons matching the height of input fields, use the large size by usin
 
 #### Heading size
 
-The [`LegacyCard`](/components/layout-and-structure/legacy-card) now also enforces that `h1` and `h2` content is `headingSm` (`--p-font-size-80-experimental`).
-If you want to use custom heading sizes, please refactor [`LegacyCard`](/components/layout-and-structure/legacy-card) to [`Card`](/components/layout-and-structure/card).
+The [`LegacyCard`](/components/deprecated/legacy-card) now also enforces that `h1` and `h2` content is `headingSm` (`--p-font-size-80-experimental`).
+If you want to use custom heading sizes, please refactor [`LegacyCard`](/components/deprecated/legacy-card) to [`Card`](/components/layout-and-structure/card).
 
 #### Spacing and visual hierarchy
 
-The [`LegacyCard`](/components/layout-and-structure/legacy-card) now has much tighter spacing and does not have dividers between sections and subsections.
+The [`LegacyCard`](/components/deprecated/legacy-card) now has much tighter spacing and does not have dividers between sections and subsections.
 This may result in some visual hierarchy/padding issues depending on how your cards are composed.
 You can resolve this in a number of ways:
 
