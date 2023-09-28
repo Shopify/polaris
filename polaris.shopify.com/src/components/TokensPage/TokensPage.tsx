@@ -13,9 +13,12 @@ interface Props {
     | 'breakpoints'
     | 'color'
     | 'font'
+    | 'height'
     | 'motion'
     | 'shadow'
     | 'space'
+    | 'text'
+    | 'width'
     | 'zIndex';
 }
 
@@ -28,6 +31,14 @@ export type NavItem = {
 
 const navItems: NavItem[] = [
   {
+    title: 'Border',
+    url: `/tokens/border`,
+  },
+  {
+    title: 'Breakpoints',
+    url: `/tokens/breakpoints`,
+  },
+  {
     title: 'Color',
     url: `/tokens/color`,
   },
@@ -36,24 +47,28 @@ const navItems: NavItem[] = [
     url: `/tokens/font`,
   },
   {
-    title: 'Border',
-    url: `/tokens/border`,
-  },
-  {
-    title: 'Space',
-    url: `/tokens/space`,
-  },
-  {
-    title: 'Shadow',
-    url: `/tokens/shadow`,
+    title: 'Height',
+    url: `/tokens/height`,
   },
   {
     title: 'Motion',
     url: `/tokens/motion`,
   },
   {
-    title: 'Breakpoints',
-    url: `/tokens/breakpoints`,
+    title: 'Shadow',
+    url: `/tokens/shadow`,
+  },
+  {
+    title: 'Space',
+    url: `/tokens/space`,
+  },
+  {
+    title: 'Text',
+    url: `/tokens/text`,
+  },
+  {
+    title: 'Width',
+    url: `/tokens/width`,
   },
   {
     title: 'Z-Index',
@@ -65,17 +80,13 @@ function tokensToFilteredArray(
   filter: string,
   tokenGroup: MetadataGroup,
 ): TokenPropertiesWithName[] {
-  return (
-    Object.entries(tokenGroup)
-      // se23: Temporarily filter out experimental tokens
-      .filter(([name]) => !name.includes('experimental'))
-      .filter(([name]) => {
-        return name.toLowerCase().includes(filter.toLowerCase());
-      })
-      .map(([name, value]) => {
-        return {name, ...value};
-      })
-  );
+  return Object.entries(tokenGroup)
+    .filter(([name]) => {
+      return name.toLowerCase().includes(filter.toLowerCase());
+    })
+    .map(([name, value]) => {
+      return {name, ...value};
+    });
 }
 
 function TokensPage({tokenGroup}: Props) {
@@ -87,9 +98,12 @@ function TokensPage({tokenGroup}: Props) {
     breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
     color: tokensToFilteredArray(filter, allTokens.color),
     font: tokensToFilteredArray(filter, allTokens.font),
+    height: tokensToFilteredArray(filter, allTokens.height),
     motion: tokensToFilteredArray(filter, allTokens.motion),
     shadow: tokensToFilteredArray(filter, allTokens.shadow),
     space: tokensToFilteredArray(filter, allTokens.space),
+    text: tokensToFilteredArray(filter, allTokens.text),
+    width: tokensToFilteredArray(filter, allTokens.width),
     zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
   };
 

@@ -37,6 +37,13 @@ export function toPx(value = '') {
   }
 }
 
+export function toPxs(value: string) {
+  return value.replace(
+    new RegExp(`${DIGIT_REGEX.source}(${UNIT_EM}|${UNIT_REM})`, 'g'),
+    (emOrRem: string) => toPx(emOrRem) ?? emOrRem,
+  );
+}
+
 export function toEm(value = '', fontSize = BASE_FONT_SIZE) {
   const unit = getUnit(value);
 
