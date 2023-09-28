@@ -180,7 +180,7 @@ function PopoverWithSearchableListboxExample() {
   const activator = (
     <div
       style={{
-        fontSize: 'var(--p-font-size-300)',
+        fontSize: 'var(--p-font-size-500)',
         color: 'var(--p-color-text)',
         borderBottom: '1px dashed var(--p-color-border)',
       }}

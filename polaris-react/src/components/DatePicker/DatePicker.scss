@@ -55,7 +55,7 @@
   border: none;
   border-radius: var(--p-border-radius-200);
   outline: none;
-  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-300);
   text-align: center;
   color: var(--p-color-text);
   cursor: pointer;
@@ -147,7 +147,7 @@
 .Weekday {
   padding: var(--p-space-200);
   background: transparent;
-  font-size: var(--p-font-size-75);
+  font-size: var(--p-font-size-300);
   font-weight: var(--p-font-weight-regular);
   color: var(--p-color-text-secondary);
   text-align: center;
@@ -170,8 +170,8 @@
   flex: 1 1 auto;
   padding-bottom: var(--p-space-100);
   text-align: center;
-  font-size: var(--p-font-size-80-experimental);
-  line-height: var(--p-font-line-height-2);
+  font-size: var(--p-font-size-325);
+  line-height: var(--p-font-line-height-500);
   font-weight: var(--p-font-weight-medium);
 }
 
