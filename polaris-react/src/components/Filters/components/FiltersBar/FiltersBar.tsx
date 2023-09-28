@@ -20,8 +20,7 @@ import {HorizontalStack} from '../../../HorizontalStack';
 import {Box} from '../../../Box';
 import {Button} from '../../../Button';
 import {FilterPill} from '../FilterPill';
-
-import styles from './FiltersBar.scss';
+import styles from '../../Filters.scss';
 
 export interface FiltersBarProps {
   /** Currently entered text in the query field */
