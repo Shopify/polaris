@@ -59,6 +59,20 @@ ReactDOM.render(
 );
 ```
 
+4. Load the web font [Inter](https://fonts.google.com/specimen/Inter).
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com/" />
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com/"
+  crossorigin="anonymous"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+/>
+```
+
 ## Using the CSS components
 
 If React doesn’t make sense for your application, you can use a CSS-only version of our components. This includes all the styles you need for every component in the library, but you’ll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
