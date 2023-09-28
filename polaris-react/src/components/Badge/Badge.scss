@@ -134,11 +134,27 @@
   }
 }
 
-.toneEnabled {
+.toneSuccess-subdued {
   color: var(--p-color-text);
 
   svg {
     fill: var(--p-color-icon-success);
+  }
+}
+
+.toneWarning-subdued {
+  color: var(--p-color-text);
+
+  svg {
+    fill: var(--p-color-icon-warning);
+  }
+}
+
+.toneCritical-subdued {
+  color: var(--p-color-text);
+
+  svg {
+    fill: var(--p-color-icon-critical);
   }
 }
 
