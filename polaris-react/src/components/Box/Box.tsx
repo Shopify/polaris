@@ -4,7 +4,7 @@ import type {
   ColorBackgroundAlias,
   ColorBorderAlias,
   BorderWidthScale,
-  BorderRadiusScale,
+  BorderRadiusAliasOrScale,
   ShadowAlias,
   SpaceScale,
 } from '@shopify/polaris-tokens';
@@ -39,15 +39,15 @@ export interface BoxProps extends React.AriaAttributes {
   /** Border style */
   borderStyle?: LineStyles;
   /** Border radius */
-  borderRadius?: BorderRadiusScale;
+  borderRadius?: BorderRadiusAliasOrScale;
   /** Vertical end horizontal start border radius */
-  borderEndStartRadius?: BorderRadiusScale;
+  borderEndStartRadius?: BorderRadiusAliasOrScale;
   /** Vertical end horizontal end border radius */
-  borderEndEndRadius?: BorderRadiusScale;
+  borderEndEndRadius?: BorderRadiusAliasOrScale;
   /** Vertical start horizontal start border radius */
-  borderStartStartRadius?: BorderRadiusScale;
+  borderStartStartRadius?: BorderRadiusAliasOrScale;
   /** Vertical start horizontal end border radius */
-  borderStartEndRadius?: BorderRadiusScale;
+  borderStartEndRadius?: BorderRadiusAliasOrScale;
   /** Border width */
   borderWidth?: BorderWidthScale;
   /** Vertical start border width */
