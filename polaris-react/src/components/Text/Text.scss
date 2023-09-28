@@ -62,7 +62,7 @@
 }
 
 .headingXs {
-  font-weight: var(--p-text-heading-xs-font-weight);
+  font-weight: var(--p-font-weight-semibold);
   @include _headingSm;
 }
 
