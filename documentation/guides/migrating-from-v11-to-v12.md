@@ -876,6 +876,9 @@ After migrating use the following RegExp to check for any additional instances o
 
 </details>
 
+<details>
+  <summary>Check RegExp for outdated <code>&lt;RadioButton  bleed="..." /&gt;</code> props</summary>
+
 ```
 <RadioButton[^>\w](?:[^>]|\n)*?bleed
 ```
