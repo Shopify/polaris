@@ -105,18 +105,18 @@
   font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-500);
+    font-size: var(--p-font-size-750);
     line-height: var(--p-font-line-height-1000);
   }
 }
 
 @mixin _heading3xl {
-  font-size: var(--p-font-size-500);
+  font-size: var(--p-font-size-750);
   line-height: var(--p-font-line-height-1000);
   font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-600);
+    font-size: var(--p-font-size-900);
     line-height: var(--p-font-line-height-1200);
   }
 }
