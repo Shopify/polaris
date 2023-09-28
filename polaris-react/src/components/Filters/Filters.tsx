@@ -169,7 +169,7 @@ export function Filters({
       (value) => localPinnedFilters.includes(value),
     );
 
-    if (!allAppliedFilterKeysInLocalPinnedFilters) {
+    if (allAppliedFilterKeysInLocalPinnedFilters === false) {
       setLocalPinnedFilters((currentLocalPinnedFilters: string[]): string[] => {
         const newPinnedFilters =
           appliedFilterKeys?.filter(
