@@ -81,7 +81,7 @@ order: 1
 
 ### Button
 
-- connectedDisclosure: [See the updated split example](https://polaris.shopify.com/components/actions/button)
+- connectedDisclosure: [See the updated split example](/components/actions/button)
 
 - Boolean props to `variant` and `tone`
 
@@ -171,14 +171,14 @@ All icons still maintain the 20x20 viewbox.
 
 ### Dividers
 
-We removed dividers across Polaris components, most noticeably in [`Page`](https://polaris.shopify.com/components/layout-and-structure/page) and [`LegacyCard`](https://polaris.shopify.com/components/layout-and-structure/legacy-card).
+We removed dividers across Polaris components, most noticeably in [`Page`](/components/layout-and-structure/page) and [`LegacyCard`](/components/layout-and-structure/legacy-card).
 We now recommend using spacing to create a visual hierarchy.
-If you must use a divider, use the [`Divider`](https://polaris.shopify.com/components/layout-and-structure/divider) component to add them back in where needed.
+If you must use a divider, use the [`Divider`](/components/layout-and-structure/divider) component to add them back in where needed.
 
 ### Buttons beside inputs
 
-Default buttons have decreased in height and no longer match the height of some inputs, namely [`TextField`](https://polaris.shopify.com/components/selection-and-input/text-field) and [`Select`](https://polaris.shopify.com/components/selection-and-input/select).
-To get a buttons matching the height of input fields, use the large size by using the `large` size variant of [`Button`](https://polaris.shopify.com/components/actions/button).
+Default buttons have decreased in height and no longer match the height of some inputs, namely [`TextField`](/components/selection-and-input/text-field) and [`Select`](/components/selection-and-input/select).
+To get a buttons matching the height of input fields, use the large size by using the `large` size variant of [`Button`](/components/actions/button).
 
 ```diff
 - <TextField connectedRight={<Button icon={DeleteMajor} />} />
@@ -189,31 +189,31 @@ To get a buttons matching the height of input fields, use the large size by usin
 
 #### Heading size
 
-The [`LegacyCard`](https://polaris.shopify.com/components/layout-and-structure/legacy-card) now also enforces that `h1` and `h2` content is `headingSm` (`--p-font-size-80-experimental`).
-If you want to use custom heading sizes, please refactor [`LegacyCard`](https://polaris.shopify.com/components/layout-and-structure/legacy-card) to [`Card`](https://polaris.shopify.com/components/layout-and-structure/card).
+The [`LegacyCard`](/components/layout-and-structure/legacy-card) now also enforces that `h1` and `h2` content is `headingSm` (`--p-font-size-80-experimental`).
+If you want to use custom heading sizes, please refactor [`LegacyCard`](/components/layout-and-structure/legacy-card) to [`Card`](/components/layout-and-structure/card).
 
 #### Spacing and visual hierarchy
 
-The [`LegacyCard`](https://polaris.shopify.com/components/layout-and-structure/legacy-card) now has much tighter spacing and does not have dividers between sections and subsections.
+The [`LegacyCard`](/components/layout-and-structure/legacy-card) now has much tighter spacing and does not have dividers between sections and subsections.
 This may result in some visual hierarchy/padding issues depending on how your cards are composed.
 You can resolve this in a number of ways:
 
-- _recommended_ – Use [`Card`](https://polaris.shopify.com/components/layout-and-structure/card) and [`BlockStack`](https://polaris.shopify.com/components/layout-and-structure/block-stack) to compose a new card layout
+- _recommended_ – Use [`Card`](/components/layout-and-structure/card) and [`BlockStack`](/components/layout-and-structure/block-stack) to compose a new card layout
 - Remove any custom content spacing wrappers and use `<LegacyCard.Section />`, `<LegacyCard.Header />`, or `<LegacyCard.Section flush />` instead.
   Issues involving a lack of top or bottom padding on the card is likely caused by this.
 - Update all custom content padding using `--p-space-500` to use `--p-space-400`.
-  This includes content wrapped in a [`LegacyStack`](https://polaris.shopify.com/components/layout-and-structure/legacy-stack)
+  This includes content wrapped in a [`LegacyStack`](/components/layout-and-structure/legacy-stack)
   ```diff
   - spacing='loose'
   + spacing={undefined}
   ```
-  or for [`InlineStack`](https://polaris.shopify.com/components/layout-and-structure/inline-stack)
+  or for [`InlineStack`](/components/layout-and-structure/inline-stack)
   ```diff
   - gap='5'
   + gap='4'
   ```
-- Add back dividers using [`Divider`](https://polaris.shopify.com/components/layout-and-structure/divider) where needed
-- As a last resort, you can add space with [`Box`](https://polaris.shopify.com/components/layout-and-structure/box) or remove space with [`Bleed`](https://polaris.shopify.com/components/layout-and-structure/bleed).
+- Add back dividers using [`Divider`](/components/layout-and-structure/divider) where needed
+- As a last resort, you can add space with [`Box`](/components/layout-and-structure/box) or remove space with [`Bleed`](/components/layout-and-structure/bleed).
 
 ### Z-Index
 
@@ -230,5 +230,5 @@ The following component's children cannot be above the bevel's `z-index` elevati
 ### Custom elements
 
 Custom elements that were styled to look like the previous Polaris design language will need to be updated.
-Take the opportunity to put custom styles and components on mainline Polaris using our [components](https://polaris.shopify.com/components) and [tokens](https://polaris.shopify.com/tokens/color).
+Take the opportunity to put custom styles and components on mainline Polaris using our [components](/components) and [tokens](/tokens/color).
 See a list of new tokens and the mapping our current tokens to our new once below.

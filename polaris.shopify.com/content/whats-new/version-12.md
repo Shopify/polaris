@@ -25,13 +25,13 @@ order: 0
 
 ## Upgrade to v12
 
-Follow our [migration guide](https://polaris.shopify.com/migrating-from-v11-to-v12) to upgrade Polaris from v11 to v12.
+Follow our [migration guide](/migrating-from-v11-to-v12) to upgrade Polaris from v11 to v12.
 
 ## What's changing
 
 ### The design language
 
-Polaris version 12 introduces a new design language for Shopify's admin. This includes a style uplift for all of our [components](https://polaris.shopify.com/components), updates to our token values, and a [new web font, Inter](https://polaris.shopify.com/version-guides/migrating-from-v11-to-v12#a-new-web-font).
+Polaris version 12 introduces a new design language for Shopify's admin. This includes a style uplift for all of our [components](/components), updates to our token values, and a [new web font, Inter](/version-guides/migrating-from-v11-to-v12#a-new-web-font).
 
 #### Design principles
 
@@ -43,13 +43,13 @@ The new design language was crafted with guiding principles in mind, ultimately 
 - **Tactility**: Interfaces incorporate a sense of realness.
 - **Commonality**: Objects with similar appearance share a common behavior.
 
-Read more about Polaris' [design principles](https://polaris.shopify.com/design) to start designing in the new language.
+Read more about Polaris' [design principles](/design) to start designing in the new language.
 
 ### Token refinement
 
 The version 12 updates aim to create an intentional set of tokens that clearly communicates intent so that builders have exactly what they need to apply the new design language on their surfaces. To do this, v12 introduces primitive and semantic token layers.
 
-For more information on how to migrate from v11 tokens, check out the [migration guide](https://polaris.shopify.com/migrating-from-v11-to-v12#token-migrations).
+For more information on how to migrate from v11 tokens, check out the [migration guide](/migrating-from-v11-to-v12#token-migrations).
 
 #### Primitive tokens
 
@@ -61,18 +61,18 @@ Semantic tokens are references to base values that are used in specific contexts
 
 #### Updated token resources
 
-| Token guidance                                                                    | Full token list                                                |
-| --------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| [Color token guidance](https://polaris.shopify.com/design/colors/tokens)          | [Color token list](https://polaris.shopify.com/tokens/color)   |
-| [Typography token guidance](https://polaris.shopify.com/design/typography/tokens) | [Font token list](https://polaris.shopify.com/tokens/font)     |
-| [Depth token guidance](https://polaris.shopify.com/design/depth/tokens)           | [Shadow token list](https://polaris.shopify.com/tokens/shadow) |
-| [Space token guidance](https://polaris.shopify.com/design/layout/tokens)          | [Space token list](https://polaris.shopify.com/tokens/space)   |
+| Token guidance                                         | Full token list                     |
+| ------------------------------------------------------ | ----------------------------------- |
+| [Color token guidance](/design/colors/tokens)          | [Color token list](/tokens/color)   |
+| [Typography token guidance](/design/typography/tokens) | [Font token list](/tokens/font)     |
+| [Depth token guidance](/design/depth/tokens)           | [Shadow token list](/tokens/shadow) |
+| [Space token guidance](/design/layout/tokens)          | [Space token list](/tokens/space)   |
 
 ### Component API simplification
 
 The version 12 breaking component changes aim to simplify inconsistent and complicated component APIs.
 
-Note: the below examples are for illustrative purposes only. For a comprehensive list on all component changes and how to migrate from v11's component APIs, check out the [migration guide](https://polaris.shopify.com/migrating-from-v11-to-v12#component-migrations).
+Note: the below examples are for illustrative purposes only. For a comprehensive list on all component changes and how to migrate from v11's component APIs, check out the [migration guide](/migrating-from-v11-to-v12#component-migrations).
 
 #### Logical properties rename
 
@@ -216,6 +216,6 @@ Renaming space control props to `gap` creates a consistent API across components
 
 ## Resources
 
-- [v11 to v12 migration guide](https://polaris.shopify.com/migrating-from-v11-to-v12)
-- [Add the new web font](https://polaris.shopify.com/version-guides/migrating-from-v11-to-v12#a-new-web-font)
-- [Design principles](https://polaris.shopify.com/design)
+- [v11 to v12 migration guide](/migrating-from-v11-to-v12)
+- [Add the new web font](/version-guides/migrating-from-v11-to-v12#a-new-web-font)
+- [Design principles](/design)
