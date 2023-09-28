@@ -2,4 +2,4 @@
 '@shopify/polaris': major
 ---
 
-- Removed the `IndexTable.Row` `subdued` `status` prop. Use `tone` instead.
+- Removed the `subdued` and `status` props from `IndexTable.Row`. Use `tone` instead.
