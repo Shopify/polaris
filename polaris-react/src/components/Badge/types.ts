@@ -8,13 +8,15 @@ export type Status =
   | 'attention'
   | 'new'
   | Experimental<
+      | 'success-subdued'
+      | 'warning-subdued'
+      | 'critical-subdued'
       | 'info-strong'
       | 'success-strong'
       | 'warning-strong'
       | 'critical-strong'
       | 'attention-strong'
       | 'read-only'
-      | 'enabled'
     >;
 
 export enum StatusValue {
@@ -24,13 +26,15 @@ export enum StatusValue {
   Critical = 'critical',
   Attention = 'attention',
   New = 'new',
+  SuccessSubduedExperimental = 'success-subdued-experimental',
+  WarningSubduedExperimental = 'warning-subdued-experimental',
+  CriticalSubduedExperimental = 'critical-subdued-experimental',
   InfoStrongExperimental = 'info-strong-experimental',
   SuccessStrongExperimental = 'success-strong-experimental',
   WarningStrongExperimental = 'warning-strong-experimental',
   CriticalStrongExperimental = 'critical-strong-experimental',
   AttentionStrongExperimental = 'attention-strong-experimental',
   ReadOnlyExperimental = 'read-only-experimental',
-  EnabledExperimental = 'enabled-experimental',
 }
 
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';

@@ -38,14 +38,17 @@ export function getDefaultAccessibilityLabel(
       break;
     case StatusValue.Success:
     case StatusValue.SuccessStrongExperimental:
+    case StatusValue.SuccessSubduedExperimental:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.success');
       break;
     case StatusValue.Warning:
     case StatusValue.WarningStrongExperimental:
+    case StatusValue.WarningSubduedExperimental:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.warning');
       break;
     case StatusValue.Critical:
     case StatusValue.CriticalStrongExperimental:
+    case StatusValue.CriticalSubduedExperimental:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.critical');
       break;
     case StatusValue.Attention:
@@ -57,9 +60,6 @@ export function getDefaultAccessibilityLabel(
       break;
     case StatusValue.ReadOnlyExperimental:
       statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.readOnly');
-      break;
-    case StatusValue.EnabledExperimental:
-      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.enabled');
       break;
   }
 
