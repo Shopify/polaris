@@ -38,7 +38,7 @@ $item-wrapper-loading-height: 64px;
   // here.
   + .BulkActionsWrapper + .ResourceList {
     @include item-separator;
-    border-top: var(--p-border-width-1) solid var(--p-color-border);
+    border-top: var(--p-border-width-025) solid var(--p-color-border);
   }
 }
 
@@ -63,7 +63,7 @@ $item-wrapper-loading-height: 64px;
   display: flex;
   width: 100%;
   background-color: var(--p-color-bg);
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
   // This container conditionally includes a Select component for sorting
   // It's 32px above md-up and 36px below
   // This hardcoded min-height is to ensure the Select has uniform padding when it's 36px high

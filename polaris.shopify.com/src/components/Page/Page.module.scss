@@ -70,7 +70,7 @@
   overscroll-behavior: contain;
   overflow: auto;
   border: 1.5px solid var(--border-color);
-  border-radius: var(--p-border-radius-3);
+  border-radius: var(--p-border-radius-300);
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;

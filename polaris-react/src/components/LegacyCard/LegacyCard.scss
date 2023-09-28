@@ -8,7 +8,7 @@
 
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-xs),
-    $borderRadius: var(--p-border-radius-0-experimental),
+    $borderRadius: var(--p-border-radius-0),
     $zIndex: 101
   );
 
@@ -31,18 +31,18 @@
 
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-xs),
-      $borderRadius: var(--p-border-radius-3),
+      $borderRadius: var(--p-border-radius-300),
       $zIndex: 101
     );
 
     .Section:first-child {
-      border-top-left-radius: var(--p-border-radius-3);
-      border-top-right-radius: var(--p-border-radius-3);
+      border-top-left-radius: var(--p-border-radius-300);
+      border-top-right-radius: var(--p-border-radius-300);
     }
 
     .Section:last-child {
-      border-bottom-left-radius: var(--p-border-radius-3);
-      border-bottom-right-radius: var(--p-border-radius-3);
+      border-bottom-left-radius: var(--p-border-radius-300);
+      border-bottom-right-radius: var(--p-border-radius-300);
     }
   }
 
@@ -51,7 +51,7 @@
 
     @include shadow-bevel(
       $boxShadow: none,
-      $borderRadius: var(--p-border-radius-0-experimental),
+      $borderRadius: var(--p-border-radius-0),
       $border: none,
       $content: none
     );

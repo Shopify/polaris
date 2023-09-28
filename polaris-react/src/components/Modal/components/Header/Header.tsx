@@ -43,7 +43,7 @@ export function Header({
       paddingBlockEnd="400"
       paddingInlineStart={headerPaddingInline}
       paddingInlineEnd={headerPaddingInline}
-      borderBlockEndWidth="1"
+      borderBlockEndWidth="025"
       borderColor="border"
       background="bg-secondary-experimental"
     >

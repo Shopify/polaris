@@ -70,10 +70,10 @@ $right-column: 1fr;
   display: block;
 
   &:focus-visible {
-    outline: var(--p-border-width-2) solid
+    outline: var(--p-border-width-050) solid
       var(--p-color-border-interactive-focus);
     outline-offset: var(--p-space-150);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
   }
 }
 
@@ -97,7 +97,7 @@ $right-column: 1fr;
   margin-left: calc(var(--p-space-200) + var(--p-space-050));
   margin-right: var(--p-space-200);
   padding: var(--p-space-200);
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   fill: var(--p-color-icon-inverse);
   transition: var(--p-motion-duration-150) fill var(--p-motion-ease)
     var(--p-motion-duration-50);
