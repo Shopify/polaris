@@ -1,5 +1,5 @@
 import type {MetaTokenProperties} from '../types';
-import * as colors from '../../colors-experimental';
+import * as colors from '../../colors';
 
 export type ColorBackgroundAlias =
   | 'bg'

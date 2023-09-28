@@ -1,4 +1,4 @@
-import * as colors from '../colors-experimental';
+import * as colors from '../colors';
 import {size} from '../size';
 
 import {createMetaTheme, createMetaThemePartial} from './utils';
