@@ -61,12 +61,10 @@ Semantic tokens are references to base values that are used in specific contexts
 
 #### Updated token resources
 
-| Token guidance                                         | Full token list                     |
-| ------------------------------------------------------ | ----------------------------------- |
-| [Color token guidance](/design/colors/tokens)          | [Color token list](/tokens/color)   |
-| [Typography token guidance](/design/typography/tokens) | [Font token list](/tokens/font)     |
-| [Depth token guidance](/design/depth/tokens)           | [Shadow token list](/tokens/shadow) |
-| [Space token guidance](/design/layout/tokens)          | [Space token list](/tokens/space)   |
+- [Color token list](/tokens/color)
+- [Font token list](/tokens/font)
+- [Shadow token list](/tokens/shadow)
+- [Space token list](/tokens/space)
 
 ### Component API simplification
 
