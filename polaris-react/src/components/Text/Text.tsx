@@ -20,14 +20,12 @@ type Element =
   | 'legend';
 
 type Variant =
-  | 'headingXs'
   | 'headingSm'
   | 'headingMd'
   | 'headingLg'
   | 'headingXl'
   | 'heading2xl'
   | 'heading3xl'
-  | 'heading4xl'
   | 'bodySm'
   | 'bodyMd'
   | 'bodyLg';

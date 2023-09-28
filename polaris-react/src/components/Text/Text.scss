@@ -61,11 +61,6 @@
   line-height: var(--p-text-heading-sm-font-line-height);
 }
 
-.headingXs {
-  font-weight: var(--p-font-weight-semibold);
-  @include _headingSm;
-}
-
 .headingSm {
   font-weight: var(--p-text-heading-sm-font-weight);
   @include _headingSm;
@@ -122,10 +117,6 @@
 }
 
 .heading3xl {
-  @include _heading3xl;
-}
-
-.heading4xl {
   @include _heading3xl;
 }
 
