@@ -42,6 +42,9 @@ examples:
   - fileName: data-table-with-sticky-header-enabled.tsx
     title: With sticky header enabled
     description: Use as a broad example that includes most props available to data table.
+  - fileName: data-table-with-pagination.tsx
+    title: With pagination
+    description: Use when the table contains many rows and they need paginating.
 previewImg: /images/components/tables/data-table.png
 ---
 

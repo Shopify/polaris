@@ -66,6 +66,9 @@ examples:
   - fileName: resource-list-with-all-of-its-elements.tsx
     title: With all of its elements
     description: Use as a broad example that includes most props available to resource list.
+  - fileName: resource-list-with-pagination.tsx
+    title: With pagination
+    description: Use when the list contains many rows and they need paginating.
 previewImg: /images/components/lists/resource-list.png
 ---
 
