@@ -558,9 +558,14 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path>
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
+<details>
+  <summary>Check RegExp for hardcoded <code>font</code> custom properties across all file types</summary>
+
 ```
 (?:--p-font-size-70-experimental|--p-font-size-75|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-200|--p-font-size-300|--p-font-size-400 |--p-font-size-500|--p-font-size-600|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])
 ```
+
+</details>
 
 #### Replacement maps
 
