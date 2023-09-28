@@ -703,11 +703,19 @@ After migrating use the following RegExp to check for any additional instances o
 </details>
 
 <details>
-  <summary>Check RegExp for outdated <code>&lt;HorizontalGrid gap="..." /&gt;</code> props</summary>
+  <summary>Check RegExp for outdated <code>&lt;HorizontalGrid/InlineGrid gap="..." /&gt;</code> props</summary>
 
 ```
 <HorizontalGrid[^>\w](?:[^>]|\n)*?gap
 ```
+
+```
+<InlineGrid[^>\w](?:[^>]|\n)*?gap
+```
+
+[!NOTE]
+
+> The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalGrid` if you have then use `InlineGrid`.
 
 </details>
 
@@ -793,20 +801,36 @@ After migrating use the following RegExp to check for any additional instances o
 </details>
 
 <details>
-  <summary>Check RegExp for outdated <code>&lt;VerticalStack  gap="..." /&gt;</code> props</summary>
+  <summary>Check RegExp for outdated <code>&lt;VerticalStack/BlockStack  gap="..." /&gt;</code> props</summary>
 
 ```
 <VerticalStack[^>\w](?:[^>]|\n)*?gap
 ```
 
+```
+<BlockStack[^>\w](?:[^>]|\n)*?gap
+```
+
+[!NOTE]
+
+> The RegExp you use here will depend on if you've run component migrations. If you have not then use `VerticalStack` if you have then use `BlockStack`.
+
 </details>
 
 <details>
-  <summary>Check RegExp for outdated <code>&lt;HorizontalStack  gap="..." /&gt;</code> props</summary>
+  <summary>Check RegExp for outdated <code>&lt;HorizontalStack/InlineStack  gap="..." /&gt;</code> props</summary>
 
 ```
 <HorizontalStack[^>\w](?:[^>]|\n)*?gap
 ```
+
+```
+<InlineStack[^>\w](?:[^>]|\n)*?gap
+```
+
+[!NOTE]
+
+> The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalStack` if you have then use `InlineStack`.
 
 </details>
 
