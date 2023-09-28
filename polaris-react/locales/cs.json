@@ -391,7 +391,11 @@
           "cancel": "Zrušit"
         }
       },
-      "searchFilterTooltipWithShortcut": "Hledejte a filtrujte (F)"
+      "searchFilterTooltipWithShortcut": "Hledejte a filtrujte (F)",
+      "EditColumnsButton": {
+        "tooltip": "Upravit sloupce",
+        "accessibilityLabel": "Přizpůsobit pořadí a viditelnost sloupců tabulky"
+      }
     },
     "ActionList": {
       "SearchField": {

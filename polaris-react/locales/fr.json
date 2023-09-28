@@ -390,6 +390,10 @@
           "save": "Enregistrer",
           "cancel": "Annuler"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Modifier les colonnes",
+        "accessibilityLabel": "Personnaliser l’ordre et la visibilité des colonnes du tableau"
       }
     },
     "ActionList": {

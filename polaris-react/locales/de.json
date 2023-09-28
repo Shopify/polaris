@@ -389,6 +389,10 @@
           "save": "Speichern",
           "cancel": "Abbrechen"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Spalten bearbeiten",
+        "accessibilityLabel": "Reihenfolge und Sichtbarkeit der Tabellenspalten anpassen"
       }
     },
     "ActionList": {
