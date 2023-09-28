@@ -1,12 +1,18 @@
 .font {
   font-size: var(--p-font-size-70-experimental);
+  // Migrated in step4
   font-size: var(--p-font-size-75);
   font-size: var(--p-font-size-80-experimental);
   font-size: var(--p-font-size-100);
+  // Migrated in step4
   font-size: var(--p-font-size-200);
+  // Migrated in step3
   font-size: var(--p-font-size-300);
+  // Migrated in step3
   font-size: var(--p-font-size-400);
+  // Migrated in step2
   font-size: var(--p-font-size-500);
+  // Migrated in step2
   font-size: var(--p-font-size-600);
   font-size: var(--p-font-size-700);
   line-height: var(--p-font-line-height-075-experimental);
