@@ -1667,7 +1667,7 @@ export function WithRowStatus() {
         onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
-          {title: 'Status'},
+          {title: 'Tone'},
           {title: 'Location'},
           {
             alignment: 'end',
@@ -1781,7 +1781,7 @@ export function WithStickyLastColumn() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        tone={status}
+        tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -3885,7 +3885,7 @@ export function WithSubHeaders() {
     }
 
     const selectableRows = rows.filter(({disabled}) => !disabled);
-    const rowRange: IndexTableRowProps['subHeaderRange'] = [
+    const rowRange: IndexTableRowProps['selectionRange'] = [
       selectableRows.findIndex((row) => row.id === customers[0].id),
       selectableRows.findIndex(
         (row) => row.id === customers[customers.length - 1].id,

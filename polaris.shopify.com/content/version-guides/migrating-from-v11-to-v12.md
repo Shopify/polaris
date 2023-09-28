@@ -31,9 +31,23 @@ order: 1
 
 ### Badge
 
+- Replace `status` with `tone`
+
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="status" --to="tone"`
 
+- Replace `statusAndProgressLabelOverride` with `toneAndProgressLabelOverride`
+
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`
+
+**IndexTable.Row**
+
+- Replace `status` with `tone`
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="status" --to="tone"`
+
+- Replace `subdued` with `tone`
+
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"`
 
 ### Layout.Section
 
