@@ -57,8 +57,8 @@
 }
 
 @mixin _headingSm {
-  font-size: var(--p-font-size-80-experimental);
-  line-height: var(--p-font-line-height-2);
+  font-size: var(--p-font-size-325);
+  line-height: var(--p-font-line-height-500);
 }
 
 .headingXs {
@@ -72,14 +72,14 @@
 }
 
 .headingMd {
-  font-size: var(--p-font-size-100);
-  line-height: var(--p-font-line-height-2);
+  font-size: var(--p-font-size-350);
+  line-height: var(--p-font-line-height-500);
   font-weight: var(--p-font-weight-semibold);
 }
 
 .headingLg {
   font-size: var(--p-font-size-300);
-  line-height: var(--p-font-line-height-3);
+  line-height: var(--p-font-line-height-600);
   font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
@@ -90,23 +90,23 @@
 
 .headingXl {
   font-size: var(--p-font-size-300);
-  line-height: var(--p-font-line-height-3);
+  line-height: var(--p-font-line-height-600);
   font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-400);
-    line-height: var(--p-font-line-height-5);
+    line-height: var(--p-font-line-height-800);
   }
 }
 
 .heading2xl {
   font-size: var(--p-font-size-400);
-  line-height: var(--p-font-line-height-5);
+  line-height: var(--p-font-line-height-800);
   font-weight: var(--p-font-weight-bold);
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-500);
-    line-height: var(--p-font-line-height-6);
+    line-height: var(--p-font-line-height-1000);
   }
 }
 
@@ -135,13 +135,13 @@
 }
 
 .bodyMd {
-  font-size: var(--p-font-size-80-experimental);
-  line-height: var(--p-font-line-height-2);
+  font-size: var(--p-font-size-325);
+  line-height: var(--p-font-line-height-500);
 }
 
 .bodyLg {
-  font-size: var(--p-font-size-100);
-  line-height: var(--p-font-line-height-2);
+  font-size: var(--p-font-size-350);
+  line-height: var(--p-font-line-height-500);
 }
 
 // font-weight must be below variant styles so

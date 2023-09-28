@@ -13,8 +13,8 @@
 
 .Header {
   color: var(--text-strong);
-  font-size: var(--p-font-size-100);
-  line-height: var(--p-font-line-height-2);
+  font-size: var(--p-font-size-350);
+  line-height: var(--p-font-line-height-500);
   font-weight: var(--p-font-weight-semibold);
 }
 
@@ -27,9 +27,9 @@
 .Link {
   color: var(--text-strong);
   display: block;
-  font-size: var(--p-font-size-80-experimental);
+  font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-regular);
-  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-500);
   overflow: hidden;
   padding: var(--p-space-100) var(--p-space-200);
   text-overflow: ellipsis;

@@ -2,8 +2,8 @@
 
 .Button {
   // stylelint-disable -- Button custom properties
-  --pc-button-micro-min-height: var(--p-font-line-height-3);
-  --pc-button-slim-min-height: var(--p-font-line-height-4);
+  --pc-button-micro-min-height: var(--p-font-line-height-600);
+  --pc-button-slim-min-height: var(--p-font-line-height-700);
   --pc-button-large-min-height: 32px;
   --pc-button-vertical-padding: calc(
     (36px - var(--p-font-line-height-500) - var(--p-space-050)) / 2
@@ -67,9 +67,9 @@
 }
 
 .Content {
-  font-size: var(--p-font-size-80-experimental);
+  font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-500);
   letter-spacing: initial;
   position: relative;
   display: flex;
@@ -83,7 +83,7 @@
 
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-75);
-    line-height: var(--p-font-line-height-1);
+    line-height: var(--p-font-line-height-400);
   }
 
   .Button:not(.plain) & {
@@ -606,9 +606,9 @@
   > .Content {
     // stylelint-disable-next-line -- remove focus-ring mixing
     @include no-focus-ring;
-    font-size: var(--p-font-size-80-experimental);
+    font-size: var(--p-font-size-325);
     font-weight: var(--p-font-weight-regular);
-    line-height: var(--p-font-line-height-1);
+    line-height: var(--p-font-line-height-400);
   }
 
   &:hover,
@@ -736,7 +736,7 @@
       calc(var(--p-space-300) * -1);
 
     > .Content {
-      font-size: var(--p-font-size-80-experimental);
+      font-size: var(--p-font-size-325);
     }
   }
 
@@ -755,8 +755,8 @@
   &.iconOnly {
     margin: 0;
     padding: 0;
-    min-height: var(--p-font-line-height-2);
-    min-width: var(--p-font-line-height-2);
+    min-height: var(--p-font-line-height-500);
+    min-width: var(--p-font-line-height-500);
 
     svg {
       fill: var(--p-color-icon-subdued);
@@ -864,9 +864,9 @@
   min-height: var(--pc-button-micro-min-height);
 
   .Content {
-    font-size: var(--p-font-size-80-experimental);
+    font-size: var(--p-font-size-325);
     font-weight: var(--p-font-weight-medium);
-    line-height: var(--p-font-line-height-2);
+    line-height: var(--p-font-line-height-500);
   }
 
   @media #{$p-breakpoints-md-up} {
@@ -905,13 +905,13 @@
   // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
 
   .Content {
-    font-size: var(--p-font-size-80-experimental);
+    font-size: var(--p-font-size-325);
     font-weight: var(--p-font-weight-medium);
     line-height: var(--p-font-line-height-500);
     letter-spacing: initial;
 
     @media #{$p-breakpoints-md-up} {
-      line-height: var(--p-font-line-height-1);
+      line-height: var(--p-font-line-height-400);
     }
   }
 }

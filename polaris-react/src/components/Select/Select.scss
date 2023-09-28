@@ -72,11 +72,11 @@
     var(--p-space-300);
 
   font-size: var(--p-font-size-200);
-  line-height: var(--p-font-line-height-3);
+  line-height: var(--p-font-line-height-600);
 
   @media #{$p-breakpoints-md-up} {
-    line-height: var(--p-font-line-height-2);
-    font-size: var(--p-font-size-80-experimental);
+    line-height: var(--p-font-line-height-500);
+    font-size: var(--p-font-size-325);
   }
 
   @media #{$p-breakpoints-md-down} {

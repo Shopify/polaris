@@ -65,7 +65,7 @@ $nav-animation-variables: (
   @media #{$p-breakpoints-md-up} {
     font-size: var(--p-font-size-200);
     font-weight: var(--p-font-weight-medium);
-    line-height: var(--p-font-line-height-5);
+    line-height: var(--p-font-line-height-800);
   }
 
   &::-moz-focus-inner {
