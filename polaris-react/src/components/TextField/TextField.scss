@@ -108,24 +108,25 @@ $spinner-icon-size: 12px;
   }
 }
 
-.readOnly {
+// stylelint-disable -- specificity bump for readOnly styles to override
+.readOnly.readOnly {
   > .Input {
     color: var(--p-color-text-subdued);
   }
 
   > .Backdrop {
-    background-color: var(--p-color-bg-transparent-disabled-experimental);
+    background-color: var(--p-color-bg-surface-disabled);
     border-color: transparent;
   }
 
   &.focus {
-    // stylelint-disable-next-line selector-max-class -- set Backdrop styles
     > .Backdrop {
-      background-color: var(--p-color-bg-transparent-disabled-experimental);
+      background-color: var(--p-color-bg-surface-disabled);
       border-color: transparent;
     }
   }
 }
+// stylelint-enable
 
 .disabled {
   color: var(--p-color-text-disabled);
@@ -133,7 +134,7 @@ $spinner-icon-size: 12px;
 
   > .Backdrop {
     border: none;
-    background-color: var(--p-color-bg-transparent-disabled-experimental);
+    background-color: var(--p-color-bg-surface-disabled);
   }
 
   svg {
