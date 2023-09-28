@@ -8,12 +8,7 @@ import {Filters} from '../../Filters';
 import {IndexFilters} from '..';
 import {IndexFiltersMode} from '../../../utilities/index-filters';
 import type {IndexFiltersProps} from '../IndexFilters';
-import {
-  SearchFilterButton,
-  SortButton,
-  UpdateButtons,
-  EditColumnsButton,
-} from '../components';
+import {SearchFilterButton, SortButton, UpdateButtons} from '../components';
 
 describe('IndexFilters', () => {
   const defaultProps: IndexFiltersProps = {
@@ -91,7 +86,6 @@ describe('IndexFilters', () => {
     setMode: jest.fn(),
     canCreateNewView: true,
     onCreateNewView: jest.fn(),
-    showEditColumnsButton: false,
   };
 
   beforeEach(() => {
@@ -113,23 +107,6 @@ describe('IndexFilters', () => {
     });
 
     expect(setMode).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
-  });
-
-  it('calls onEditStart with IndexFiltersMode.Filtering when clicked', () => {
-    const setMode = jest.fn();
-    const onEditStart = jest.fn();
-    const wrapper = mountWithApp(
-      <IndexFilters
-        {...defaultProps}
-        setMode={setMode}
-        onEditStart={onEditStart}
-      />,
-    );
-    wrapper.act(() => {
-      wrapper.find(SearchFilterButton)!.trigger('onClick');
-    });
-
-    expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
   });
 
   it('renders non-disabled tabs if the current mode is Default', () => {
@@ -237,17 +214,6 @@ describe('IndexFilters', () => {
       expect(wrapper).not.toContainReactComponent(SortButton);
       expect(wrapper).not.toContainReactComponent(SearchFilterButton);
     });
-
-    it('does not render the EditColumnsButton', () => {
-      const wrapper = mountWithApp(
-        <IndexFilters
-          {...defaultProps}
-          mode={IndexFiltersMode.EditingColumns}
-        />,
-      );
-
-      expect(wrapper).not.toContainReactComponent(EditColumnsButton);
-    });
   });
 
   describe('pressing f', () => {
@@ -268,7 +234,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
+      expect(onEditStart).toHaveBeenCalled();
     });
   });
 
@@ -348,7 +314,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(onEditStart).not.toHaveBeenCalledWith(IndexFiltersMode.Filtering);
+      expect(onEditStart).not.toHaveBeenCalled();
     });
 
     it('does not call the cancelAction.onAction method when pressing escape in Filtering mode', () => {
@@ -428,77 +394,6 @@ describe('IndexFilters', () => {
       expect(wrapper).toContainReactComponent(UpdateButtons, {
         disabled: true,
       });
-    });
-
-    it('renders EditColumnsButton with the disabled prop', () => {
-      const wrapper = mountWithApp(
-        <IndexFilters {...defaultProps} disabled showEditColumnsButton />,
-      );
-
-      expect(wrapper).toContainReactComponent(EditColumnsButton, {
-        disabled: true,
-      });
-    });
-  });
-
-  describe('EditColumnsButton', () => {
-    it('renders when showEditColumnsButton is true', () => {
-      const wrapper = mountWithApp(
-        <IndexFilters {...defaultProps} showEditColumnsButton />,
-      );
-
-      expect(wrapper).toContainReactComponent(EditColumnsButton);
-    });
-
-    it('does not renders when showEditColumnsButton is false', () => {
-      const wrapper = mountWithApp(
-        <IndexFilters {...defaultProps} showEditColumnsButton={false} />,
-      );
-
-      expect(wrapper).not.toContainReactComponent(EditColumnsButton);
-    });
-
-    it.each([IndexFiltersMode.EditingColumns, IndexFiltersMode.Filtering])(
-      'does not renders when IndexFiltersMode is %s',
-      (mode: IndexFiltersMode) => {
-        const wrapper = mountWithApp(
-          <IndexFilters {...defaultProps} mode={mode} showEditColumnsButton />,
-        );
-
-        expect(wrapper).not.toContainReactComponent(EditColumnsButton);
-      },
-    );
-
-    it('sets mode to EditingColumns when clicked', () => {
-      const setMode = jest.fn();
-      const wrapper = mountWithApp(
-        <IndexFilters
-          {...defaultProps}
-          setMode={setMode}
-          showEditColumnsButton
-        />,
-      );
-      wrapper.act(() => {
-        wrapper.find(EditColumnsButton)!.trigger('onClick');
-      });
-
-      expect(setMode).toHaveBeenCalledWith(IndexFiltersMode.EditingColumns);
-    });
-
-    it('calls onEditStart with IndexFiltersMode.EditingColumns when clicked', () => {
-      const onEditStart = jest.fn();
-      const wrapper = mountWithApp(
-        <IndexFilters
-          {...defaultProps}
-          onEditStart={onEditStart}
-          showEditColumnsButton
-        />,
-      );
-      wrapper.act(() => {
-        wrapper.find(EditColumnsButton)!.trigger('onClick');
-      });
-
-      expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.EditingColumns);
     });
   });
 });

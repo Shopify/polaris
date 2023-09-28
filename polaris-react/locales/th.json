@@ -215,6 +215,7 @@
         "rename": "เปลี่ยนชื่อมุมมอง",
         "duplicate": "ทำซ้ำมุมมอง",
         "edit": "แก้ไขมุมมอง",
+        "editColumns": "แก้ไขคอลัมน์",
         "delete": "ลบมุมมอง",
         "copy": "สำเนาของ {name}",
         "deleteModal": {
@@ -389,10 +390,6 @@
           "save": "บันทึก",
           "cancel": "ยกเลิก"
         }
-      },
-      "EditColumnsButton": {
-        "tooltip": "แก้ไขคอลัมน์",
-        "accessibilityLabel": "ปรับแต่งลำดับและการแสดงผลคอลัมน์ในตาราง"
       }
     },
     "ActionList": {
