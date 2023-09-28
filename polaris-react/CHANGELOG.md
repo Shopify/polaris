@@ -1,5 +1,15 @@
 # Changelog
 
+## 11.25.0
+
+### Minor Changes
+
+- [#10724](https://github.com/Shopify/polaris/pull/10724) [`7e53d7860`](https://github.com/Shopify/polaris/commit/7e53d7860eb4641ec34c2f6af826213792501f1b) Thanks [@chloerice](https://github.com/chloerice)! - Deprecated `IndexTable` `status` and `subdued` props in favor of new `tone` prop
+
+### Patch Changes
+
+- [#10736](https://github.com/Shopify/polaris/pull/10736) [`49e47880a`](https://github.com/Shopify/polaris/commit/49e47880aa160084eb57699b016f9a0eb97f10c9) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fixed issue with setting local pinned filters in `Filters` when no `appliedFilters` were provided.
+
 ## 11.24.0
 
 ### Minor Changes
