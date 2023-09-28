@@ -1,4 +1,3 @@
-import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 import * as colors from '../../colors';
 import * as colorsExperimental from '../../colors-experimental';
@@ -162,7 +161,6 @@ export type ColorBackgroundAlias =
   | 'bg-fill-transparent-secondary'
   | 'bg-fill-transparent-secondary-hover'
   | 'bg-fill-transparent-secondary-active'
-  | ColorBackgroundAliasExperimental
   /** Specialty and component background colors. */
   | 'nav-bg'
   | 'backdrop-bg'
@@ -225,7 +223,6 @@ export type ColorBorderAlias =
   | 'border-emphasis'
   | 'border-emphasis-hover'
   | 'border-emphasis-active'
-  | ColorBorderAliasExperimental
   /** Specialty and component border colors. */
   | 'input-border'
   | 'input-border-hover'
@@ -258,7 +255,6 @@ export type ColorIconAlias =
   | 'icon-emphasis'
   | 'icon-emphasis-hover'
   | 'icon-emphasis-active'
-  | ColorIconAliasExperimental
   /** Specialty and component icon colors. */
   | 'radio-button-icon-disabled'
   | 'checkbox-icon-disabled';
@@ -323,7 +319,6 @@ export type ColorTextAlias =
   | 'text-link-hover'
   | 'text-link-active'
   | 'text-link-inverse'
-  | ColorTextAliasExperimental
   /** Specialty and component text colors. */
   | 'avatar-text-on-bg-fill'
   | 'avatar-one-text-on-bg-fill'
@@ -333,64 +328,11 @@ export type ColorTextAlias =
   | 'avatar-five-text-on-bg-fill'
   | 'video-thumbnail-play-button-text-on-bg-fill';
 
-type ColorBackgroundAliasExperimental = Experimental<
-  | 'bg-backdrop'
-  | 'bg-input-active'
-  | 'bg-input-hover'
-  | 'bg-primary-disabled'
-  | 'bg-secondary'
-  | 'bg-success-strong-active'
-  | 'bg-success-strong-hover'
-  | 'bg-transparent'
-  | 'bg-transparent-active'
-  | 'bg-transparent-disabled'
-  | 'bg-transparent-hover'
-  | 'bg-transparent-primary'
-  | 'bg-transparent-primary-disabled'
-  | 'bg-transparent-secondary-disabled'
-  | 'bg-transparent-subdued'
-  | 'bg-warning-strong'
-  | 'bg-warning-subdued'
->;
-
-type ColorTextAliasExperimental = Experimental<
-  'text-warning' | 'text-critical-hover'
->;
-
-type ColorIconAliasExperimental = Experimental<
-  | 'icon-critical-strong-active'
-  | 'icon-critical-strong-hover'
-  | 'icon-critical-strong'
-  | 'icon-info-strong'
-  | 'icon-success-strong'
-  | 'icon-warning-strong'
->;
-
-type ColorBorderAliasExperimental = Experimental<
-  'border-input-active' | 'border-critical-strong'
->;
-
-type ColorAvatarAliasExperimental = Experimental<
-  | 'avatar-background'
-  | 'avatar-color'
-  | 'avatar-style-one-background'
-  | 'avatar-style-one-color'
-  | 'avatar-style-two-background'
-  | 'avatar-style-two-color'
-  | 'avatar-style-three-background'
-  | 'avatar-style-three-color'
-  | 'avatar-style-four-background'
-  | 'avatar-style-four-color'
-  | 'avatar-style-five-background'
-  | 'avatar-style-five-color'
->;
-
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
   | `color-${ColorBorderAlias}`
   | `color-${ColorIconAlias}`
-  | `color-${ColorTextAlias}`
-  | `color-${ColorAvatarAliasExperimental}`;
+  | `color-${ColorTextAlias}`;
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
@@ -1345,161 +1287,6 @@ export const color: {
   },
   'color-icon-active': {
     value: colors.gray[900],
-    description: '',
-  },
-  // Experimental tokens
-  'color-bg-backdrop-experimental': {
-    value: colorsExperimental.blackAlpha[14],
-    description: '',
-  },
-  'color-bg-primary-disabled-experimental': {
-    value: colorsExperimental.gray[9],
-    description: '',
-  },
-  'color-bg-secondary-experimental': {
-    value: colorsExperimental.gray[5],
-    description: '',
-  },
-  'color-bg-input-hover-experimental': {
-    value: colorsExperimental.gray[3],
-    description: '',
-  },
-  'color-border-input-active-experimental': {
-    value: colorsExperimental.gray[16],
-  },
-  'color-border-critical-strong-experimental': {
-    value: colorsExperimental.red[14],
-  },
-  'color-bg-input-active-experimental': {
-    value: colorsExperimental.gray[4],
-    description: '',
-  },
-  'color-bg-transparent-experimental': {
-    value: colorsExperimental.blackAlpha[1],
-    description: '',
-  },
-  'color-bg-transparent-subdued-experimental': {
-    value: colorsExperimental.blackAlpha[6],
-    description: '',
-  },
-  'color-bg-transparent-hover-experimental': {
-    value: colorsExperimental.blackAlpha[5],
-    description: '',
-  },
-  'color-bg-transparent-active-experimental': {
-    value: colorsExperimental.blackAlpha[6],
-    description: '',
-  },
-  'color-bg-transparent-disabled-experimental': {
-    value: colorsExperimental.blackAlpha[5],
-    description: '',
-  },
-  'color-bg-transparent-secondary-disabled-experimental': {
-    value: colorsExperimental.blackAlpha[7],
-    description: '',
-  },
-  'color-bg-transparent-primary-disabled-experimental': {
-    value: colorsExperimental.blackAlpha[9],
-    description: '',
-  },
-  'color-bg-transparent-primary-experimental': {
-    value: colorsExperimental.blackAlpha[13],
-    description: '',
-  },
-  'color-bg-success-strong-hover-experimental': {
-    value: colorsExperimental.green[13],
-    description: '',
-  },
-  'color-bg-success-strong-active-experimental': {
-    value: colorsExperimental.green[14],
-    description: '',
-  },
-  'color-bg-warning-subdued-experimental': {
-    value: colorsExperimental.orange[3],
-    description: '',
-  },
-  'color-bg-warning-strong-experimental': {
-    value: colorsExperimental.orange[9],
-    description: '',
-  },
-  'color-text-warning-experimental': {
-    value: colorsExperimental.orange[15],
-    description: '',
-  },
-  'color-text-critical-hover-experimental': {
-    value: colorsExperimental.red[15],
-    description: '',
-  },
-  'color-icon-info-strong-experimental': {
-    value: colorsExperimental.azure[14],
-    description: '',
-  },
-  'color-icon-warning-strong-experimental': {
-    value: colorsExperimental.orange[13],
-    description: '',
-  },
-  'color-icon-success-strong-experimental': {
-    value: colorsExperimental.green[14],
-    description: '',
-  },
-  'color-icon-critical-strong-experimental': {
-    value: colorsExperimental.red[14],
-    description: '',
-  },
-  'color-icon-critical-strong-hover-experimental': {
-    value: colorsExperimental.red[15],
-    description: '',
-  },
-  'color-icon-critical-strong-active-experimental': {
-    value: colorsExperimental.red[16],
-    description: '',
-  },
-  'color-avatar-background-experimental': {
-    value: colorsExperimental.gray[11],
-    description: '',
-  },
-  'color-avatar-color-experimental': {
-    value: colorsExperimental.gray[1],
-    description: '',
-  },
-  'color-avatar-style-one-background-experimental': {
-    value: colorsExperimental.magenta[7],
-    description: '',
-  },
-  'color-avatar-style-one-color-experimental': {
-    value: colorsExperimental.magenta[14],
-    description: '',
-  },
-  'color-avatar-style-two-background-experimental': {
-    value: colorsExperimental.green[7],
-    description: '',
-  },
-  'color-avatar-style-two-color-experimental': {
-    value: colorsExperimental.green[14],
-    description: '',
-  },
-  'color-avatar-style-three-background-experimental': {
-    value: colorsExperimental.cyan[7],
-    description: '',
-  },
-  'color-avatar-style-three-color-experimental': {
-    value: colorsExperimental.cyan[14],
-    description: '',
-  },
-  'color-avatar-style-four-background-experimental': {
-    value: colorsExperimental.azure[7],
-    description: '',
-  },
-  'color-avatar-style-four-color-experimental': {
-    value: colorsExperimental.azure[14],
-    description: '',
-  },
-  'color-avatar-style-five-background-experimental': {
-    value: colorsExperimental.rose[7],
-    description: '',
-  },
-  'color-avatar-style-five-color-experimental': {
-    value: colorsExperimental.rose[14],
     description: '',
   },
 };
