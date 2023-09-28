@@ -705,6 +705,9 @@ After migrating use the following RegExp to check for any additional instances o
 <details>
   <summary>Check RegExp for outdated <code>&lt;HorizontalGrid/InlineGrid gap="..." /&gt;</code> props</summary>
 
+> [!NOTE]
+> The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalGrid` if you have then use `InlineGrid`.
+
 ```
 <HorizontalGrid[^>\w](?:[^>]|\n)*?gap
 ```
@@ -712,9 +715,6 @@ After migrating use the following RegExp to check for any additional instances o
 ```
 <InlineGrid[^>\w](?:[^>]|\n)*?gap
 ```
-
-> [!NOTE]
-> The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalGrid` if you have then use `InlineGrid`.
 
 </details>
 
@@ -802,6 +802,9 @@ After migrating use the following RegExp to check for any additional instances o
 <details>
   <summary>Check RegExp for outdated <code>&lt;VerticalStack/BlockStack  gap="..." /&gt;</code> props</summary>
 
+> [!NOTE]
+> The RegExp you use here will depend on if you've run component migrations. If you have not then use `VerticalStack` if you have then use `BlockStack`.
+
 ```
 <VerticalStack[^>\w](?:[^>]|\n)*?gap
 ```
@@ -810,13 +813,13 @@ After migrating use the following RegExp to check for any additional instances o
 <BlockStack[^>\w](?:[^>]|\n)*?gap
 ```
 
-> [!NOTE]
-> The RegExp you use here will depend on if you've run component migrations. If you have not then use `VerticalStack` if you have then use `BlockStack`.
-
 </details>
 
 <details>
   <summary>Check RegExp for outdated <code>&lt;HorizontalStack/InlineStack  gap="..." /&gt;</code> props</summary>
+
+> [!NOTE]
+> The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalStack` if you have then use `InlineStack`.
 
 ```
 <HorizontalStack[^>\w](?:[^>]|\n)*?gap
@@ -825,9 +828,6 @@ After migrating use the following RegExp to check for any additional instances o
 ```
 <InlineStack[^>\w](?:[^>]|\n)*?gap
 ```
-
-> [!NOTE]
-> The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalStack` if you have then use `InlineStack`.
 
 </details>
 
