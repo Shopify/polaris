@@ -12,18 +12,17 @@ jobs:
     permissions:
       issues: write
     steps:
-
-    - name: Check labels
-      id: check_labels
-      uses: actions/github-script@v5
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |
-          const labels = context.payload.issue.labels.map(label => label.name);
-          const hasBugLabel = labels.includes('Bug');
-          const hasUntriagedLabel = labels.includes('untriaged');
-          core.setOutput('hasBugLabel', hasBugLabel);
-          core.setOutput('hasUntriagedLabel', hasUntriagedLabel);
+      - name: Check labels
+        id: check_labels
+        uses: actions/github-script@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const labels = context.payload.issue.labels.map(label => label.name);
+            const hasBugLabel = labels.includes('Bug');
+            const hasUntriagedLabel = labels.includes('untriaged');
+            core.setOutput('hasBugLabel', hasBugLabel);
+            core.setOutput('hasUntriagedLabel', hasUntriagedLabel);
 
       - name: Label issues
         uses: andymckay/labeler@1.0.2

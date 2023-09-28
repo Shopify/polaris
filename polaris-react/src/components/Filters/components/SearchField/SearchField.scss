@@ -4,7 +4,7 @@
   position: relative;
   display: flex;
   padding-block: var(--p-space-025);
-  margin-left: var(--p-space-05);
+  margin-left: var(--p-space-050);
 }
 
 .Label {
@@ -16,26 +16,26 @@
   /* stylelint-disable-next-line polaris/typography/polaris/at-rule-disallowed-list -- Matching custom input with TextField */
   @include text-style-input;
   flex: 1;
-  border: var(--p-border-width-1) solid var(--p-color-border-input);
-  border-radius: var(--p-border-radius-1);
-  border-color: var(--p-color-border-input);
-  padding-inline: var(--p-space-1_5-experimental);
+  border: var(--p-border-width-025) solid var(--p-color-input-border);
+  border-radius: var(--p-border-radius-100);
+  border-color: var(--p-color-input-border);
+  padding-inline: var(--p-space-150);
   width: 100%;
 
   &:hover {
-    border-color: var(--p-color-border-input-hover);
-    background-color: var(--p-color-bg-input-hover-experimental);
+    border-color: var(--p-color-input-border-hover);
+    background-color: var(--p-color-input-bg-surface-hover);
   }
 
   &:active,
   &:focus {
-    border-color: var(--p-color-border-input-active-experimental);
-    border-width: var(--p-border-width-2-experimental);
-    background-color: var(--p-color-bg-input-active-experimental);
+    border-color: var(--p-color-input-border-active);
+    border-width: var(--p-border-width-025);
+    background-color: var(--p-color-input-bg-surface-active);
   }
 
   &:disabled {
-    background-color: var(--p-color-bg-transparent-disabled-experimental);
+    background-color: var(--p-color-bg-fill-disabled);
   }
 }
 
@@ -50,7 +50,7 @@
 }
 
 .focused:not(:disabled) {
-  outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus);
+  outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   outline-offset: var(--p-space-025);
 }
 

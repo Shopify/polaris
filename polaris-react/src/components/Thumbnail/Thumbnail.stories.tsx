@@ -9,8 +9,8 @@ export default {
 
 export function All() {
   return (
-    <BlockStack gap="4">
-      <InlineStack gap="4" blockAlign="center">
+    <BlockStack gap="400">
+      <InlineStack gap="400" blockAlign="center">
         <ExtraSmall />
         <Small />
         <Default />

@@ -50,14 +50,14 @@ export function WithPrimitiveComponents() {
   );
 
   const settingTitle = title ? (
-    <InlineStack gap="2" wrap={false}>
-      <InlineStack gap="2" align="start" blockAlign="baseline">
+    <InlineStack gap="200" wrap={false}>
+      <InlineStack gap="200" align="start" blockAlign="baseline">
         <label htmlFor={toggleId}>
           <Text variant="headingMd" as="h6">
             {title}
           </Text>
         </label>
-        <InlineStack gap="2" align="center" blockAlign="center">
+        <InlineStack gap="200" align="center" blockAlign="center">
           {settingStatusMarkup}
           {helpLink}
         </InlineStack>
@@ -80,7 +80,7 @@ export function WithPrimitiveComponents() {
   const headerMarkup = (
     <Box width="100%">
       <InlineStack
-        gap="12"
+        gap="1200"
         align="space-between"
         blockAlign="start"
         wrap={false}
@@ -96,7 +96,7 @@ export function WithPrimitiveComponents() {
   );
 
   const descriptionMarkup = (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       <Text id={descriptionId} variant="bodyMd" as="p" tone="subdued">
         {description}
       </Text>
@@ -110,9 +110,9 @@ export function WithPrimitiveComponents() {
 
   return (
     <Card>
-      <BlockStack gap={{xs: '4', sm: '5'}}>
+      <BlockStack gap={{xs: '400', sm: '500'}}>
         <Box width="100%">
-          <BlockStack gap={{xs: '2', sm: '4'}}>
+          <BlockStack gap={{xs: '200', sm: '400'}}>
             {headerMarkup}
             {descriptionMarkup}
           </BlockStack>

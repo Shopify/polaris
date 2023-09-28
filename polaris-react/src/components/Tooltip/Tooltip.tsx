@@ -12,8 +12,8 @@ import type {TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';
-export type Padding = 'default' | Extract<SpaceScale, '4'>;
-export type BorderRadius = Extract<BorderRadiusScale, '1' | '2'>;
+export type Padding = 'default' | Extract<SpaceScale, '400'>;
+export type BorderRadius = Extract<BorderRadiusScale, '100' | '200'>;
 
 export interface TooltipProps {
   /** The element that will activate to tooltip */
@@ -50,7 +50,7 @@ export interface TooltipProps {
   padding?: Padding;
   /**
    * Border radius of the tooltip
-   * @default '1'
+   * @default '200'
    */
   borderRadius?: BorderRadius;
   /** Override on the default z-index of 400 */
@@ -85,7 +85,7 @@ export function Tooltip({
   onOpen,
   onClose,
 }: TooltipProps) {
-  const borderRadius = borderRadiusProp || '2';
+  const borderRadius = borderRadiusProp || '200';
 
   const WrapperComponent: any = activatorWrapper;
   const {

@@ -150,15 +150,15 @@ export function Avatar({
         fill="none"
         d="M25.5 13.5C25.5 16.5376 23.0376 19 20 19C16.9624 19 14.5 16.5376 14.5 13.5C14.5 10.4624 16.9624 8 20 8C23.0376 8 25.5 10.4624 25.5 13.5Z"
         stroke="currentColor"
-        stroke-width={avatarStrokeWidth[size]}
+        strokeWidth={avatarStrokeWidth[size]}
       />
       <path
         fill="none"
         d="M10.3433 29.682L9.47 31.254C9.03481 32.0373 9.60125 33 10.4974 33H29.5026C30.3988 33 30.9652 32.0373 30.53 31.254L29.6567 29.682C27.7084 26.175 24.0119 24 20 24C15.9882 24 12.2916 26.175 10.3433 29.682Z"
         stroke="currentColor"
-        stroke-width={avatarStrokeWidth[size]}
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth={avatarStrokeWidth[size]}
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </>
   );

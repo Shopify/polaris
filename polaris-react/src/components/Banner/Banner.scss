@@ -10,34 +10,33 @@
   }
 
   &.keyFocused {
-    outline: var(--p-border-width-2) solid
-      var(--p-color-border-interactive-focus);
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   }
 }
 
 .withinContentContainer {
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
 
   + .Banner {
-    margin-top: var(--p-space-2);
+    margin-top: var(--p-space-200);
   }
 }
 
 .withinPage {
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-sm),
-    $borderRadius: var(--p-border-radius-0-experimental)
+    $borderRadius: var(--p-border-radius-0)
   );
 
   @media #{$p-breakpoints-sm-up} {
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-sm),
-      $borderRadius: var(--p-border-radius-3)
+      $borderRadius: var(--p-border-radius-300)
     );
   }
 
   + .Banner {
-    margin-top: var(--p-space-4);
+    margin-top: var(--p-space-400);
   }
 }
 
@@ -51,28 +50,32 @@
   }
 }
 
-.icon-on-color.icon-on-color.icon-on-color {
-  @include recolor-icon(var(--p-color-icon-on-color));
+.text-success-on-bg-fill.text-success-on-bg-fill.text-success-on-bg-fill {
+  @include recolor-icon(var(--p-color-text-success-on-bg-fill));
 }
 
 .icon-success-strong-experimental.icon-success-strong-experimental.icon-success-strong-experimental {
   @include recolor-icon(var(--p-color-icon-success-strong-experimental));
 }
 
-.text-warning-strong.text-warning-strong.text-warning-strong {
-  @include recolor-icon(var(--p-color-text-warning-strong));
+.text-warning-on-bg-fill.text-warning-on-bg-fill.text-warning-on-bg-fill {
+  @include recolor-icon(var(--p-color-text-warning-on-bg-fill));
 }
 
 .icon-warning-strong-experimental.icon-warning-strong-experimental.icon-warning-strong-experimental {
   @include recolor-icon(var(--p-color-icon-warning-strong-experimental));
 }
 
+.text-critical-on-bg-fill.text-critical-on-bg-fill.text-critical-on-bg-fill {
+  @include recolor-icon(var(--p-color-text-critical-on-bg-fill));
+}
+
 .icon-critical-strong-experimental.icon-critical-strong-experimental.icon-critical-strong-experimental {
   @include recolor-icon(var(--p-color-icon-critical-strong-experimental));
 }
 
-.text-info-strong.text-info-strong.text-info-strong {
-  @include recolor-icon(var(--p-color-text-info-strong));
+.text-info-on-bg-fill.text-info-on-bg-fill.text-info-on-bg-fill {
+  @include recolor-icon(var(--p-color-text-info-on-bg-fill));
 }
 
 .icon-info-strong-experimental.icon-info-strong-experimental.icon-info-strong-experimental {

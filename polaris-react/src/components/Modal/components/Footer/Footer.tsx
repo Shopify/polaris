@@ -25,21 +25,21 @@ export function Footer({
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
   const actions =
     primaryActionButton || secondaryActionButtons ? (
-      <InlineStack gap="2">
+      <InlineStack gap="200">
         {secondaryActionButtons}
         {primaryActionButton}
       </InlineStack>
     ) : null;
 
   return (
-    <InlineStack gap="4" blockAlign="center">
+    <InlineStack gap="400" blockAlign="center">
       <Box
         borderColor="border"
-        borderBlockStartWidth="1"
-        padding="4"
+        borderBlockStartWidth="025"
+        padding="400"
         width="100%"
       >
-        <InlineStack gap="4" blockAlign="center" align="space-between">
+        <InlineStack gap="400" blockAlign="center" align="space-between">
           <Box>{children}</Box>
           {actions}
         </InlineStack>

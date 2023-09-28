@@ -175,7 +175,10 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
-  /** Disables the 1password extension on the text field */
+  /**
+   * @deprecated Turning off 1Password and LastPass password manager autofill is done automatically when `autocomplete` is set to `off`.
+   * Disables the 1password extension on the text field.
+   */
   disable1Password?: boolean;
 }
 
@@ -561,7 +564,12 @@ export function TextField({
     onKeyDown: handleKeyDown,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
-    'data-1p-ignore': disable1Password || undefined,
+    // 1Password disable data attribute
+    'data-1p-ignore': autoComplete === 'off' || disable1Password || undefined,
+    // LastPass disable data attribute
+    'data-lpignore': autoComplete === 'off' || undefined,
+    // Dashlane disable data attribute
+    'data-form-type': autoComplete === 'off' ? 'other' : undefined,
   });
 
   const inputWithVerticalContentMarkup = verticalContent ? (

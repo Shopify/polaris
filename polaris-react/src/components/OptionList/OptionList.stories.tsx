@@ -203,7 +203,7 @@ export function WithDisabledOption() {
 
 export function All() {
   return (
-    <BlockStack gap="2">
+    <BlockStack gap="200">
       <Card padding="0">
         <OptionList
           title="Default"

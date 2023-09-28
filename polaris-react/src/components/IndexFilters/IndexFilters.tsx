@@ -341,7 +341,7 @@ export function IndexFilters({
                     blockAlign="center"
                     gap={{
                       xs: '0',
-                      md: '2',
+                      md: '200',
                     }}
                   >
                     <div
@@ -436,7 +436,7 @@ export function IndexFilters({
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
                 >
                   <div className={styles.ButtonWrap}>
-                    <InlineStack gap="2" align="start" blockAlign="center">
+                    <InlineStack gap="200" align="start" blockAlign="center">
                       <div
                         style={{
                           ...defaultStyle,

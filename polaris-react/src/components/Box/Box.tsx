@@ -74,32 +74,32 @@ export interface BoxProps extends React.AriaAttributes {
   overflowY?: Overflow;
   /** Spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * padding='4'
-   * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * padding='400'
+   * padding={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   padding?: Spacing;
   /** Vertical start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * paddingBlockStart='4'
-   * paddingBlockStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * paddingBlockStart='400'
+   * paddingBlockStart={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   paddingBlockStart?: Spacing;
   /** Vertical end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * paddingBlockEnd='4'
-   * paddingBlockEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * paddingBlockEnd='400'
+   * paddingBlockEnd={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   paddingBlockEnd?: Spacing;
   /** Horizontal start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * paddingInlineStart='4'
-   * paddingInlineStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * paddingInlineStart='400'
+   * paddingInlineStart={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   paddingInlineStart?: Spacing;
   /** Horizontal end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * paddingInlineEnd='4'
-   * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * paddingInlineEnd='400'
+   * paddingInlineEnd={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   paddingInlineEnd?: Spacing;
   /** Aria role */

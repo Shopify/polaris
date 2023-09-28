@@ -72,7 +72,9 @@ export function AccountConnection({
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
-    <Box paddingBlockStart={breakpoints.mdUp ? '4' : '5'}>{termsOfService}</Box>
+    <Box paddingBlockStart={breakpoints.mdUp ? '400' : '500'}>
+      {termsOfService}
+    </Box>
   ) : null;
 
   const actionElement = action
@@ -82,9 +84,9 @@ export function AccountConnection({
   return (
     <Card>
       <SettingAction action={actionElement}>
-        <InlineStack gap="4">
+        <InlineStack gap="400">
           {avatarMarkup}
-          <BlockStack gap="1">
+          <BlockStack gap="100">
             {titleMarkup}
             {detailsMarkup}
           </BlockStack>
