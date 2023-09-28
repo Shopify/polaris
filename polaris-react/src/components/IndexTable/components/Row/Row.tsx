@@ -13,7 +13,7 @@ import type {Range} from '../../../../utilities/index-provider/types';
 import styles from '../../IndexTable.scss';
 
 type RowType = 'data' | 'subheader';
-type RowStatus = 'success' | 'subdued' | 'critical' | 'warning';
+type RowStatus = 'subdued' | 'success' | 'warning' | 'critical';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
 export interface RowProps {
