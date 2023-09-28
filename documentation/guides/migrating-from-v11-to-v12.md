@@ -609,17 +609,32 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
 
 After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
 
+<details>
+  <summary>Check RegExp for hardcoded <code>shadow</code> custom properties across all file types</summary>
+
 ```
 (?:--p-shadow-inset-lg|--p-shadow-inset-md|--p-shadow-inset-sm|--p-shadow-none|--p-shadow-xs|--p-shadow-sm|--p-shadow-md|--p-shadow-lg|--p-shadow-xl|--p-shadow-2xl|--p-shadow-bevel-experimental|--p-shadow-card-sm-experimental|--p-shadow-card-md-experimental|--p-shadow-card-lg-experimental|--p-shadow-button-experimental|--p-shadow-button-hover-experimental|--p-shadow-button-disabled-experimental|--p-shadow-button-primary-strong-experimental|--p-shadow-button-primary-strong-inset-experimental|--p-shadow-button-primary-strong-hover-experimental|--p-shadow-border-inset-experimental|--p-shadow-button-primary-experimental|--p-shadow-button-primary-hover-experimental|--p-shadow-button-inset-experimental)(?![\w-])
 ```
+
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;Box shadow="..." /&gt;</code> props</summary>
 
 ```
 <Box[^>\w](?:[^>]|\n)*?shadow
 ```
 
+</details>
+
+<details>
+  <summary>Check RegExp for outdated <code>&lt;ShadowBevel boxShadow="..." /&gt;</code> props</summary>
+
 ```
 <ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
 ```
+
+</details>
 
 #### Replacement maps
 
