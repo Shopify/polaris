@@ -182,14 +182,15 @@ The following component's children cannot be above the bevel's `z-index` elevati
 ```jsx
 <Avatar size="xl-experimental" />
 <Avatar size="2xl-experimental" />
-
+<Badge tone='success-subdued-experimental' />
+<Badge tone='warning-subdued-experimental' />
+<Badge tone='critical-subdued-experimental' />
 <Badge tone='info-strong-experimental' />
 <Badge tone='success-strong-experimental' />
 <Badge tone='warning-strong-experimental' />
 <Badge tone='critical-strong-experimental' />
 <Badge tone='attention-strong-experimental' />
 <Badge tone='read-only-experimental' />
-<Badge tone='enabled-experimental' />
 <Button primarySuccess />
 // not new variant but the styling is new
 // Lots of card icons were updated to this variant from the non-primary variant

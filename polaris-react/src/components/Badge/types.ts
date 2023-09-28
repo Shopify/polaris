@@ -11,7 +11,9 @@ export type Tone =
   | 'critical-strong-experimental'
   | 'attention-strong-experimental'
   | 'read-only-experimental'
-  | 'enabled-experimental';
+  | 'success-subdued-experimental'
+  | 'warning-subdued-experimental'
+  | 'critical-subdued-experimental';
 
 export enum ToneValue {
   Info = 'info',
@@ -26,7 +28,9 @@ export enum ToneValue {
   CriticalStrong = 'critical-strong-experimental',
   AttentionStrong = 'attention-strong-experimental',
   ReadOnly = 'read-only-experimental',
-  Enabled = 'enabled-experimental',
+  SuccessSubdued = 'success-subdued-experimental',
+  WarningSubdued = 'warning-subdued-experimental',
+  CriticalSubdued = 'critical-subdued-experimental',
 }
 
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
