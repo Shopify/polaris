@@ -8,7 +8,7 @@ $Backdrop-opacity: 0.88;
   padding: var(--p-space-200) var(--p-space-300);
   border-radius: var(--p-border-radius-100);
   background: var(--p-color-bg-inverse);
-  color: var(--p-color-text-on-color);
+  color: var(--p-color-text-inverse);
   margin-bottom: var(--p-space-500);
   box-shadow: var(--p-shadow-xl);
 
@@ -33,10 +33,10 @@ $Backdrop-opacity: 0.88;
 
 .error {
   background: var(--p-color-bg-fill-critical);
-  color: var(--p-color-text-on-color);
+  color: var(--p-color-text-critical-on-bg-fill);
 
   .CloseButton {
-    color: var(--p-color-icon-on-color);
+    color: var(--p-color-text-critical-on-bg-fill);
   }
 }
 
