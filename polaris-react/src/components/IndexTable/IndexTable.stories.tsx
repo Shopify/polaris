@@ -706,7 +706,7 @@ export function WithSubduedRows() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        subdued={index === 1 || index === 2}
+        tone={index === 1 || index === 2 ? 'subdued' : undefined}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
