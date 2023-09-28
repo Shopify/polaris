@@ -434,8 +434,7 @@ To replace these deprecated `font` custom properties, you can run the [v12-style
 + line-height: var(--p-font-line-height-400);
 ```
 
-> [!Important]
-> The font migration needs to be run in 4 sequential steps due to overlapping `font-size` token names. After each migration step, run the associated post-migration validation regex and handle any manual migrations.
+**⚠️ Important**: The font migration needs to be run in 4 sequential steps due to overlapping `font-size` token names. After each migration step, run the associated post-migration validation regex and handle any manual migrations.
 
 ```sh
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=1
@@ -457,25 +456,25 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --s
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
-[STEP 1] Check RegExp for hardcoded <code>font</code> custom properties across all file types
+**[STEP 1]** Check RegExp for hardcoded `font` custom properties across all file types
 
 ```
 (?:--p-font-size-70-experimental|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])
 ```
 
-[STEP 2] Check RegExp for hardcoded <code>font</code> custom properties across all file types
+**[STEP 2]** Check RegExp for hardcoded `font` custom properties across all file types
 
 ```
 (?:--p-font-size-500|--p-font-size-600)(?![\w-])
 ```
 
-[STEP 3] Check RegExp for hardcoded <code>font</code> custom properties across all file types
+**[STEP 3]** Check RegExp for hardcoded `font` custom properties across all file types
 
 ```
 (?:--p-font-size-300|--p-font-size-400)(?![\w-])
 ```
 
-[STEP 4] Check RegExp for hardcoded <code>font</code> custom properties across all file types
+**[STEP 4]** Check RegExp for hardcoded `font` custom properties across all file types
 
 ```
 (?:--p-font-size-75|--p-font-size-200)(?![\w-])
@@ -599,7 +598,7 @@ After migrating use the following RegExp to check for any additional instances o
 <Tooltip[^>\w](?:[^>]|\n)*?padding
 ```
 
-The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalGrid` if you have then use `InlineGrid`.
+**⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalGrid` if you have then use `InlineGrid`.
 
 ```
 <HorizontalGrid[^>\w](?:[^>]|\n)*?gap
@@ -645,7 +644,7 @@ The RegExp you use here will depend on if you've run component migrations. If yo
 <Box[^>\w](?:[^>]|\n)*?insetInlineEnd
 ```
 
-The RegExp you use here will depend on if you've run component migrations. If you have not then use `VerticalStack` if you have then use `BlockStack`.
+**⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `VerticalStack` if you have then use `BlockStack`.
 
 ```
 <VerticalStack[^>\w](?:[^>]|\n)*?gap
@@ -655,7 +654,7 @@ The RegExp you use here will depend on if you've run component migrations. If yo
 <BlockStack[^>\w](?:[^>]|\n)*?gap
 ```
 
-The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalStack` if you have then use `InlineStack`.
+**⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalStack` if you have then use `InlineStack`.
 
 ```
 <HorizontalStack[^>\w](?:[^>]|\n)*?gap
