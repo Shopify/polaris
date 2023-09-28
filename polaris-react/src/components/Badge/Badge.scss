@@ -218,7 +218,7 @@
   }
 }
 
-@mixin statusEnabled {
+@mixin statusSuccess-subdued {
   color: var(--p-color-text);
 
   svg {
@@ -226,11 +226,43 @@
   }
 }
 
-.statusEnabled-experimental {
-  @include statusEnabled;
+.statusSuccess-subdued-experimental {
+  @include statusSuccess-subdued;
 
   #{$se23} & {
-    @include statusEnabled;
+    @include statusSuccess-subdued;
+  }
+}
+
+@mixin statusCritical-subdued {
+  color: var(--p-color-text);
+
+  svg {
+    fill: var(--p-color-icon-critical);
+  }
+}
+
+.statusCritical-subdued-experimental {
+  @include statusCritical-subdued;
+
+  #{$se23} & {
+    @include statusCritical-subdued;
+  }
+}
+
+@mixin statusWarning-subdued {
+  color: var(--p-color-text);
+
+  svg {
+    fill: var(--p-color-icon-warning);
+  }
+}
+
+.statusWarning-subdued-experimental {
+  @include statusWarning-subdued;
+
+  #{$se23} & {
+    @include statusWarning-subdued;
   }
 }
 
