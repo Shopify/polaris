@@ -418,6 +418,24 @@ After migrating use the following RegExp to check for any additional instances o
 | `--p-color-border-critical-strong-experimental`          | `--p-color-border-critical-secondary`      |
 | `--p-color-border-magic-strong`                          | `--p-color-border-magic-secondary`         |
 
+#### `on-color` tokens
+
+`on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the bg color the element is sitting on. This gives us greater control over the visual design of the admin.
+
+The table below shows which `on-bg-fill` colors to use against their respective `bg-fill` colors. Use the mappings below as a general guide to updating `text-on-color` and `icon-on-color` tokens.
+
+| Background color   | Text + Icon color                                      |
+| ------------------ | ------------------------------------------------------ |
+| `bg-fill-info`     | `text-info-on-bg-fill`                                 |
+| `bg-fill-success`  | `text-success-on-bg-fill`                              |
+| `bg-fill-caution`  | `text-caution-on-bg-fill`                              |
+| `bg-fill-warning`  | `text-warning-on-bg-fill`                              |
+| `bg-fill-critical` | `text-critical-on-bg-fill`                             |
+| `bg-fill-magic`    | `text-magic-on-bg-fill`                                |
+| `bg-fill-emphasis` | `text-emphasis-on-bg-fill`                             |
+| `bg-fill-inverse`  | `text-inverse` `text-inverse-secondary` `icon-inverse` |
+| `bg-inverse`       | `text-inverse` `text-inverse-secondary` `icon-inverse` |
+
 ### Font
 
 #### Migration
