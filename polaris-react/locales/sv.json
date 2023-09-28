@@ -215,6 +215,7 @@
         "rename": "Döp om vy",
         "duplicate": "Duplicera vy",
         "edit": "Redigera vy",
+        "editColumns": "Redigera kolumner",
         "delete": "Radera vy",
         "copy": "Kopia av {name}",
         "deleteModal": {
@@ -389,10 +390,6 @@
           "save": "Spara",
           "cancel": "Avbryt"
         }
-      },
-      "EditColumnsButton": {
-        "tooltip": "Redigera kolumner",
-        "accessibilityLabel": "Anpassa tabellkolumnernas ordning och synlighet"
       }
     },
     "ActionList": {
