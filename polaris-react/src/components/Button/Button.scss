@@ -40,7 +40,7 @@
   &:active {
     // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
     --pc-button-shadow: var(--p-shadow-inset-md);
-    background: var(--p-color-bg-active);
+    background: var(--p-color-bg-fill-active);
 
     .Content {
       transform: translateY(1px);
@@ -242,7 +242,7 @@
 .primary {
   // stylelint-disable -- Button custom properties
   --pc-button-color: var(--p-color-bg-primary);
-  --pc-button-text: var(--p-color-text-on-color);
+  --pc-button-text: var(--p-color-text-brand-on-bg-fill);
   --pc-button-color-hover: var(--p-color-bg-primary-hover);
   --pc-button-color-active: var(--p-color-bg-primary-active);
   --pc-button-color-depressed: var(--p-color-bg-primary-active);
@@ -274,20 +274,20 @@
 
   &:hover {
     // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Button custom property
-    --pc-button-text: var(--p-color-text-inverse);
+    --pc-button-text: var(--p-color-text-brand-on-bg-fill-hover);
 
     &::before {
       box-shadow: var(--p-shadow-button-primary-strong-experimental);
     }
 
     svg {
-      fill: var(--p-color-text-inverse);
+      fill: var(--p-color-text-brand-on-bg-fill-hover);
     }
   }
 
   &:active {
     // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- Button custom properties
-    --pc-button-text: var(--p-color-text-inverse-subdued);
+    --pc-button-text: var(--p-color-text-brand-on-bg-fill-active);
     background: var(--pc-button-color-active);
     box-shadow: var(--p-shadow-button-inset-experimental);
     // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
@@ -305,13 +305,12 @@
     }
 
     svg {
-      fill: var(--p-color-text-inverse-subdued);
+      fill: var(--p-color-text-brand-on-bg-fill-active);
     }
   }
 
   &.disabled {
-    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
-    color: var(--pc-button-text);
+    color: var(--p-color-text-brand-on-bg-fill-disabled);
     background: var(--p-color-bg-transparent-primary-disabled-experimental);
     box-shadow: none;
 
@@ -335,7 +334,7 @@
 
     &:hover {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Button custom property
-      --pc-button-text: var(--p-color-text-inverse);
+      --pc-button-text: var(--p-color-text-brand-on-bg-fill-hover);
 
       // stylelint-disable-next-line selector-max-specificity -- set box shadow
       &::before {
@@ -344,13 +343,13 @@
 
       // stylelint-disable-next-line selector-max-specificity -- set svg fill
       svg {
-        fill: var(--p-color-text-inverse);
+        fill: var(--p-color-text-brand-on-bg-fill-hover);
       }
     }
 
     &:active {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Button custom property
-      --pc-button-text: var(--p-color-text-inverse-subdued);
+      --pc-button-text: var(--p-color-text-brand-on-bg-fill-active);
       box-shadow: var(--p-shadow-button-inset-experimental);
 
       // stylelint-disable-next-line -- set opacity
@@ -360,7 +359,7 @@
 
       // stylelint-disable-next-line selector-max-specificity -- set svg fill
       svg {
-        fill: var(--p-color-text-inverse-secondary);
+        fill: var(--p-color-text-brand-on-bg-fill-active);
       }
     }
   }
@@ -368,7 +367,7 @@
   &.critical {
     // stylelint-disable -- Button custom properties
     --pc-button-color: var(--p-color-bg-critical-strong);
-    --pc-button-text: var(--p-color-text-on-color);
+    --pc-button-text: var(--p-color-text-critical-on-bg-fill);
     --pc-button-color-hover: var(--p-color-bg-critical-strong-hover);
     --pc-button-color-active: var(--p-color-bg-critical-strong-active);
     --pc-button-color-depressed: var(--p-color-bg-critical-strong-active);
@@ -379,7 +378,7 @@
     }
 
     svg {
-      fill: var(--p-color-icon-on-color);
+      fill: var(--p-color-text-critical-on-bg-fill);
     }
 
     &:active {
@@ -395,8 +394,7 @@
 
       // stylelint-disable-next-line selector-max-specificity, selector-max-class -- set svg fill
       svg {
-        // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
-        fill: var(--pc-button-text);
+        fill: var(--p-color-text-brand-on-bg-fill-disabled);
       }
     }
   }
@@ -404,7 +402,7 @@
   &.success {
     // stylelint-disable -- Button custom properties
     --pc-button-color: var(--p-color-bg-success-strong);
-    --pc-button-text: var(--p-color-text-on-color);
+    --pc-button-text: var(--p-color-text-success-on-bg-fill);
     --pc-button-color-hover: var(
       --p-color-bg-success-strong-hover-experimental
     );
@@ -419,17 +417,17 @@
   }
 
   svg {
-    fill: var(--p-color-icon-on-color);
+    fill: var(--p-color-text-success-on-bg-fill);
   }
 }
 
 .critical {
   // stylelint-disable -- Button custom properties
-  --pc-button-color: var(--p-color-bg);
+  --pc-button-color: var(--p-color-bg-fill);
   --pc-button-text: var(--p-color-text-critical);
-  --pc-button-color-hover: var(--p-color-bg-hover);
-  --pc-button-color-active: var(--p-color-bg-active);
-  --pc-button-color-depressed: var(--p-color-bg-active);
+  --pc-button-color-hover: var(--p-color-bg-fill-hover);
+  --pc-button-color-active: var(--p-color-bg-fill-active);
+  --pc-button-color-depressed: var(--p-color-bg-fill-active);
   // stylelint-enable
 
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
@@ -477,6 +475,11 @@
     // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Button custom property
     --pc-button-text: var(--p-color-text-disabled);
     background: transparent;
+    color: var(--p-color-text-disabled);
+
+    svg {
+      fill: var(--p-color-icon-disabled);
+    }
   }
 
   &:active {
@@ -633,7 +636,7 @@
 
   &.pressed,
   &:active {
-    color: var(--p-color-text-interactive-active);
+    color: var(--p-color-text-brand-on-bg-fill-active);
     background-color: transparent;
     box-shadow: none;
 
@@ -642,7 +645,7 @@
     }
 
     svg {
-      fill: var(--p-color-icon-interactive-active);
+      fill: var(--p-color-text-brand-on-bg-fill-active);
     }
 
     @media (-ms-high-contrast: active) {
