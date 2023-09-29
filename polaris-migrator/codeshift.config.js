@@ -7,6 +7,9 @@ module.exports = {
     'react-rename-component': resolve('react-rename-component'),
     'react-rename-component-prop': resolve('react-rename-component-prop'),
     'scss-remove-unused-at-use': resolve('scss-remove-unused-at-use'),
+    'scss-replace-media-query-interpolation': resolve(
+      'scss-replace-media-query-interpolation',
+    ),
     'styles-insert-stylelint-disable': resolve(
       'styles-insert-stylelint-disable',
     ),
