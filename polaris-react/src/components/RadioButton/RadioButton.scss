@@ -30,7 +30,7 @@
       border-color: var(--p-color-border-interactive);
 
       &::before {
-        background-color: var(--p-color-icon-on-color);
+        background-color: var(--p-color-text-brand-on-bg-fill);
         transition: opacity var(--p-motion-duration-150)
             var(--p-motion-ease-out),
           transform var(--p-motion-duration-150) var(--p-motion-ease-out);
