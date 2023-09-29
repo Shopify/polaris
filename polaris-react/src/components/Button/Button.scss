@@ -229,12 +229,12 @@
   }
 
   &.disabled {
-    color: var(--p-color-text-brand-on-bg-fill-disabled);
+    color: var(--p-color-text-disabled);
     box-shadow: none;
     border-color: transparent;
 
     svg {
-      fill: var(--p-color-text-brand-on-bg-fill-disabled);
+      fill: var(--p-color-icon-disabled);
     }
   }
 }
@@ -475,6 +475,11 @@
     // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Button custom property
     --pc-button-text: var(--p-color-text-disabled);
     background: transparent;
+    color: var(--p-color-text-disabled);
+
+    svg {
+      fill: var(--p-color-icon-disabled);
+    }
   }
 
   &:active {
