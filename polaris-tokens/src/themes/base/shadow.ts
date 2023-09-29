@@ -111,7 +111,7 @@ export const shadow: {
   },
   'shadow-button-primary': {
     value:
-      '0 1px 0 0 rgba(255, 255, 255, 0.24) inset, 1px 0 0 0 rgba(255, 255, 255, 0.20) inset, -1px 0 0 0 rgba(255, 255, 255, 0.20) inset, 0 -1px 0 0 #000 inset, 0 -1px 0 1px #1A1A1A',
+      '0px 2px 0px 0px rgba(255, 255, 255, 0.2) inset, 2px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, -2px 0px 0px 0px rgba(255, 255, 255, 0.2) inset, 0px -1px 0px 1px #000 inset, 0px 1px 0px 0px #000 inset',
   },
   'shadow-button-primary-hover': {
     value:
