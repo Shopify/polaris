@@ -147,6 +147,10 @@ order: 1
 
 The `AppProvider`'s `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. You should be able to remove the `features` prop completely from your Polaris `AppProvider` since there aren't any feature flags in Polaris for v12.
 
+### Text
+
+The `Text` component no longer supports `headingXs` and `heading4xl` as options for the `variant` prop. You will need to manually update usage of `<Text variant="headingXs">` to `<Text variant="headingSm">` instead. Similarly, usage of `<Text variant="heading4xl">` need to be manually updated to `<Text variant="heading3xl">`.
+
 ## Token migrations
 
 The following tokens have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents. Please review each token section for migrations that can be run to resolve these breaking changes.
