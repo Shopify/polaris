@@ -1829,7 +1829,7 @@ export function WithStickyLastColumn() {
             id: 'amount-spent',
             title: 'Amount spent',
           },
-          {title: 'Status'},
+          {title: 'Tone'},
           {title: 'Channel'},
           {title: 'Payment status'},
           {title: 'Fulfillment status'},
@@ -3337,7 +3337,6 @@ export function WithZebraStripingAndStickyLastColumn() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
-      status: 'Created',
       channel: 'Point of Sale',
       paymentStatus: 'Refunded',
       fulfillmentStatus: 'Fulfilled',
@@ -3349,12 +3348,49 @@ export function WithZebraStripingAndStickyLastColumn() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
-      status: 'Created',
       channel: 'Online Store',
       paymentStatus: 'Paid',
       fulfillmentStatus: 'Unfulfilled',
     },
+    {
+      id: '2562',
+      url: '#',
+      name: 'Helen Troy',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$975',
+      lastOrderDate: 'May 31, 2023',
+    },
+    {
+      id: '4102',
+      url: '#',
+      name: 'Colm Dillane',
+      location: 'New York, USA',
+      orders: 27,
+      amountSpent: '$2885',
+      lastOrderDate: 'May 31, 2023',
+    },
+    {
+      id: '2564',
+      url: '#',
+      name: 'Al Chemist',
+      location: 'New York, USA',
+      orders: 19,
+      amountSpent: '$1,209',
+      lastOrderDate: 'April 4, 2023',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      url: '#',
+      name: 'Larry June',
+      location: 'San Francisco, USA',
+      orders: 22,
+      amountSpent: '$1,400',
+      lastOrderDate: 'March 19, 2023',
+    },
   ];
+
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
@@ -3371,7 +3407,6 @@ export function WithZebraStripingAndStickyLastColumn() {
         location,
         orders,
         amountSpent,
-        status,
         channel,
         paymentStatus,
         fulfillmentStatus,
@@ -3400,7 +3435,6 @@ export function WithZebraStripingAndStickyLastColumn() {
             {amountSpent}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{status}</IndexTable.Cell>
         <IndexTable.Cell>{channel}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
@@ -3430,7 +3464,6 @@ export function WithZebraStripingAndStickyLastColumn() {
             id: 'amount-spent',
             title: 'Amount spent',
           },
-          {title: 'Status'},
           {title: 'Channel'},
           {title: 'Payment status'},
           {title: 'Fulfillment status'},
