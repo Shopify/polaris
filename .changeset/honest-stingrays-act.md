@@ -2,4 +2,4 @@
 '@shopify/polaris': major
 ---
 
-Removed connectedDislosure prop on button
+Removed `connectedDisclosure` prop from `Button`

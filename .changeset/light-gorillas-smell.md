@@ -2,4 +2,4 @@
 '@shopify/polaris': major
 ---
 
-Removed deprecated additionalNavigation prop on Page Header
+Removed deprecated `additionalNavigation` prop on Page Header
