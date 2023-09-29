@@ -28,7 +28,7 @@ NOTE: The `focus-ring` at rule does not currently have an equivalent token or co
 ```diff
 // Do
 + &:focus {
-  + outline: var(--p-border-width-050) solid var(--p-color-border-interactive-focus);
+  + outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   + outline-offset: var(--p-space-050);
 + }
 // Don't

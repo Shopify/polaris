@@ -38,7 +38,7 @@ Flags declaration property values using private `--pc-*` tokens.
 
 ```diff
 // Do
-+ background: var(--p-color-bg-inset-strong);
++ background: var(--p-color-bg-fill-inverse);
 // Don't
 - background: var(--pc-button-color-depressed);
 ```

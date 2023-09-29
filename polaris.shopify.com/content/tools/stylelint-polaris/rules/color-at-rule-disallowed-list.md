@@ -19,7 +19,7 @@ import RulePostamble from '../_postamble.md';
 ```diff
 // Do
 + svg {
-+   fill: var(--p-color-icon-subdued);
++   fill: var(--p-color-icon-secondary);
 +}
 
 // Don't
