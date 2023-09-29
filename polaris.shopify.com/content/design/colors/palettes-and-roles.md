@@ -8,6 +8,7 @@ keywords:
   - color use
   - black and white
   - grayscale
+icon: ColorsMajor
 ---
 
 # Color &rarr; {frontmatter.title}
@@ -15,11 +16,12 @@ keywords:
 <Lede>{frontmatter.description}</Lede>
 
 <Subnav />
+
 <Stack gap="8">
 
 <Card>
 
-  <Grid gap="4">
+    <Grid gap="4">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
@@ -47,46 +49,41 @@ keywords:
 
   </Card>
 
-<Card>
+  <Card>
 
-  <Grid gap="4">
+    <Grid gap="4">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
         <Box padding="4">
 
-      ## Color roles
+          ## Color roles
 
-      A color role is composed of a collection of tokens that represent different parts of the UI. Each color role follows the same logic for all tokens, but not all tokens are defined for each color role.
+          A color role is composed of a collection of tokens that represent different parts of the UI. Each color role follows the same logic for all tokens, but not all tokens are defined for each color role.
 
-      Color roles like default will have all tokens defined, because the default color role offers the baseline color for all elements in the Shopify admin. Roles like critical or information will only have a selection of tokens defined, as these roles are usually applied to specific, smaller and more specialized components like badges or banners.
+          Color roles like default will have all tokens defined, because the default color role offers the baseline color for all elements in the Shopify admin. Roles like critical or information will only have a selection of tokens defined, as these roles are usually applied to specific, smaller and more specialized components like badges or banners.
 
-      More information about tokens and their usage can be found under Using color.
+          More information about tokens and their usage can be found under Using color.
 
-      Color roles like default will have all tokens defined, because the default color role offers the baseline color for all elements in the Shopify admin. Roles like critical or information will only have a selection of tokens defined, as these roles are usually applied to specific, smaller and more specialized components like badges or banners.
+        </Box>
 
-      More information about tokens and their usage can be found under Using color (link).
+      </Grid.Cell>
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
         ![Color role schemas](/images/design/colors/color-palettes-roles-roles@2x.png)
 
-      ![A display of Polaris components like badges, menus and banners with different color roles](/images/design/colors/color-overview-purpose@2x.png)
+      </Grid.Cell>
 
-    </Grid.Cell>
+    </Grid>
 
-  </Grid>
+  </Card>
 
 <Stack gap="4">
 
   <Card>
 
-<Do
-  img="../images/design/colors/color-overview-diminish-dont@2x.png"
-  alt="A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes"
->
-  Use color to support different states merchants need to be informed about.
-</Do>
+    <Grid gap="4">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
@@ -96,9 +93,9 @@ keywords:
 
           The default role is used to style the entire Shopify admin and is considered to be the baseline theme for all experiences. This role defines default, secondary and tertiary visual hierarchy for a variety of components and are used when communicating default statuses, neutral messaging and common merchant data.
 
-    </Box>
+        </Box>
 
-  </Grid.Cell>
+      </Grid.Cell>
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
