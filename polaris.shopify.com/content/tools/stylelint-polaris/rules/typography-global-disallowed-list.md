@@ -18,7 +18,7 @@ import RulePostamble from '../_postamble.md';
 
 ```diff
 // Do
-+ font-size: var(--p-font-size-200);
++ font-size: var(--p-font-size-400);
 // Don't
 - font-size: $base-font-size;
 ```

@@ -18,7 +18,7 @@ import RulePostamble from '../_postamble.md';
 
 ```diff
 // Do
-+ outline: var(--p-border-width-1) solid transparent;
++ outline: var(--p-border-width-025) solid transparent;
 // Don't
 - @include high-contrast-outline()
 ```
@@ -28,7 +28,7 @@ NOTE: The `focus-ring` at rule does not currently have an equivalent token or co
 ```diff
 // Do
 + &:focus {
-  + outline: var(--p-border-width-2) solid var(--p-color-border-interactive-focus);
+  + outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   + outline-offset: var(--p-space-050);
 + }
 // Don't
