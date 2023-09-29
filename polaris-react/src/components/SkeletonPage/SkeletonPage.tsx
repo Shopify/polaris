@@ -37,7 +37,7 @@ export function SkeletonPage({
   ) : (
     <div className={styles.SkeletonTitle}>
       <Box
-        background="bg-strong"
+        background="bg-fill-tertiary"
         minWidth="120px"
         minHeight="28px"
         borderRadius="100"
@@ -49,7 +49,7 @@ export function SkeletonPage({
     <Box
       id="SkeletonPage-PrimaryAction"
       borderRadius="100"
-      background="bg-strong"
+      background="bg-fill-tertiary"
       minHeight="2.25rem"
       minWidth="6.25rem"
     />
@@ -58,7 +58,7 @@ export function SkeletonPage({
   const backActionMarkup = backAction ? (
     <Box
       borderRadius="100"
-      background="bg-strong"
+      background="bg-fill-tertiary"
       minHeight="2.25rem"
       minWidth="2.25rem"
       maxWidth="2.25rem"

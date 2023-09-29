@@ -128,7 +128,7 @@ export function SortButton({
         paddingBlockStart="200"
         paddingBlockEnd="200"
         borderBlockEndWidth="025"
-        borderColor="border-subdued"
+        borderColor="border-secondary"
       >
         <ChoiceList
           title={i18n.translate('Polaris.IndexFilters.SortButton.title')}
