@@ -1,4 +1,3 @@
-export * from './metadata';
 export * from './utilities';
 export {breakpointsAliases} from './themes/base/breakpoints';
 export type {
