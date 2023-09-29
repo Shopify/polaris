@@ -19,11 +19,6 @@ import type {LinkLikeComponent} from '../../utilities/link';
 import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
-import {
-  IndexFiltersMode,
-  IndexFiltersModeContext,
-} from '../../utilities/index-filters';
-import type {IndexFiltersModeContextType} from '../../utilities/index-filters';
 
 type FrameContextType = NonNullable<React.ContextType<typeof FrameContext>>;
 type MediaQueryContextType = NonNullable<
@@ -43,8 +38,6 @@ export interface WithPolarisTestProviderOptions {
   features?: FeaturesConfig;
   // Contexts provided by Frame
   frame?: Partial<FrameContextType>;
-  // Contexts provided by IndexFilters
-  indexFilters?: Partial<IndexFiltersModeContextType>;
 }
 
 export interface PolarisTestProviderProps
@@ -57,11 +50,6 @@ const defaultMediaQuery: MediaQueryContextType = {
   isNavigationCollapsed: false,
 };
 
-const defaultIndexFilters: IndexFiltersModeContextType = {
-  mode: IndexFiltersMode.Default,
-  setMode: noop,
-};
-
 export function PolarisTestProvider({
   strict,
   children,
@@ -70,7 +58,6 @@ export function PolarisTestProvider({
   mediaQuery,
   features,
   frame,
-  indexFilters,
 }: PolarisTestProviderProps) {
   const Wrapper = strict ? StrictMode : Fragment;
   const intl = useMemo(() => new I18n(i18n || {}), [i18n]);
@@ -81,8 +68,6 @@ export function PolarisTestProvider({
   const mergedFrame = createFrameContext(frame);
 
   const mergedMediaQuery = merge(defaultMediaQuery, mediaQuery);
-
-  const mergedIndexFilters = merge(defaultIndexFilters, indexFilters);
 
   return (
     <Wrapper>
@@ -96,11 +81,7 @@ export function PolarisTestProvider({
                     <FocusManager>
                       <EphemeralPresenceManager>
                         <FrameContext.Provider value={mergedFrame}>
-                          <IndexFiltersModeContext.Provider
-                            value={mergedIndexFilters}
-                          >
-                            {children}
-                          </IndexFiltersModeContext.Provider>
+                          {children}
                         </FrameContext.Provider>
                       </EphemeralPresenceManager>
                     </FocusManager>
