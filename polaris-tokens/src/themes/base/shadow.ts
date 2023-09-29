@@ -87,7 +87,7 @@ export const shadow: {
   },
   'shadow-bevel-100': {
     value:
-      '0 1px 0 0 rgba(208, 208, 208, 0.40) inset, 1px 0 0 0 #E3E3E3 inset, -1px 0 0 0 #E3E3E3 inset, 0 -1px 0 0 #D4D4D4 inset',
+      '1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, -1px 0px 0px 0px rgba(0, 0, 0, 0.13) inset, 0px -1px 0px 0px rgba(0, 0, 0, 0.17) inset, 0px 1px 0px 0px rgba(204, 204, 204, 0.5) inset',
   },
   'shadow-inset-100': {
     value:
