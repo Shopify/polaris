@@ -1,7 +1,6 @@
 import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 import {size} from '../../size';
-import {createVar as createVarName} from '../../utils';
 
 type BorderRadiusScaleExperimental = Experimental<'0' | '1_5'>;
 
@@ -144,7 +143,3 @@ export const border: {
     value: '1px',
   },
 };
-
-export function createVar(borderTokenName: BorderTokenName) {
-  return `var(${createVarName(borderTokenName)})`;
-}

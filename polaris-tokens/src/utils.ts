@@ -4,7 +4,7 @@ import type {
   BreakpointsTokenGroup,
   BreakpointsTokenName,
 } from './themes/base/breakpoints';
-import type {Theme} from './themes/types';
+import type {Theme, TokenName} from './themes/types';
 
 const BASE_FONT_SIZE = 16;
 
@@ -100,12 +100,12 @@ export function tokensToRems<T extends Exact<MetadataGroup, T>>(tokenGroup: T) {
   ) as T;
 }
 
-export function createVarName(token: string) {
-  return `--p-${token}`;
+export function createVarName(tokenName: TokenName) {
+  return `--p-${tokenName}`;
 }
 
-export function createVar(token: string) {
-  return `--p-${token}`;
+export function createVar(tokenName: TokenName) {
+  return `var(${createVarName(tokenName)})`;
 }
 
 /**
@@ -126,7 +126,9 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
  */
 export function getThemeVarNames(theme: Theme) {
   return Object.values(theme).flatMap((tokenGroup) =>
-    Object.keys(tokenGroup).map((token) => createVar(token)),
+    Object.keys(tokenGroup).map((tokenName) =>
+      createVarName(tokenName as TokenName),
+    ),
   );
 }
 

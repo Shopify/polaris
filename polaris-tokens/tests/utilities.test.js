@@ -1,5 +1,6 @@
 import {
   createVar,
+  createVarName,
   getThemeVarNames,
   getKeyframeNames,
   tokensToRems,
@@ -42,9 +43,18 @@ const mockTokens = {
 };
 
 describe('createVar', () => {
-  it('converts the token into a polaris css variable name', () => {
+  it('converts the token into a polaris css variable', () => {
     const token = 'foo';
     const result = createVar(token);
+
+    expect(result).toBe(`var(--p-${token})`);
+  });
+});
+
+describe('createVarName', () => {
+  it('converts the token into a polaris css variable name', () => {
+    const token = 'foo';
+    const result = createVarName(token);
 
     expect(result).toBe(`--p-${token}`);
   });
