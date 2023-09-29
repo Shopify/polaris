@@ -18,8 +18,8 @@ import RulePostamble from '../_postamble.md';
 
 ```diff
 // Do
-+ border-width: var(--p-border-width-2);
-+ border-radius: var(--p-border-radius-2);
++ border-width: var(--p-border-width-050);
++ border-radius: var(--p-border-radius-200);
 // Don't
 - border-width: 2px;
 - border-radius: 0.5rem;

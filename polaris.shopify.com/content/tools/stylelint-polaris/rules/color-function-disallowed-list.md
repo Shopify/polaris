@@ -19,7 +19,7 @@ import RulePostamble from '../_postamble.md';
 ```diff
 // Do
 + color: var(--p-color-text-disabled);
-+ background: var(--p-color-bg-inverse-hover);
++ background: var(--p-color-bg-fill-inverse-hover);
 // Don't
 - color: rgb(140, 145, 150);
 - background: color('hover');
