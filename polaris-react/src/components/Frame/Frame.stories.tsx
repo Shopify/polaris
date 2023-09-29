@@ -1082,7 +1082,7 @@ function WithSidebarEnabled() {
               height: 'calc(100vh - 3.5rem - var(--p-space-400))',
               background: 'var(--p-color-bg-surface)',
               padding: 'var(--p-space-200)',
-              boxShadow: 'var(--p-shadow-md)',
+              boxShadow: 'var(--p-shadow-300)',
               borderRadius: 'var(--p-border-radius-300)',
             }}
           >
