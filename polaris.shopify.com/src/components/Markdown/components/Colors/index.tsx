@@ -1,8 +1,10 @@
+import {useEffect, useState} from 'react';
 import {Grid} from '@shopify/polaris';
-import * as colorsObj from '../../../../../../polaris-tokens/dist/esm/src/colors-experimental.mjs';
 import {capitalize} from '../../../../utils/various';
 import {Card} from '../../../Card';
 import styles from './Colors.module.scss';
+
+const palette = require('@shopify/polaris-tokens/json/experimental-palette');
 
 type ColorScale = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
@@ -14,144 +16,90 @@ interface Colors {
   [key: string]: ColorValue;
 }
 
-const colors = colorsObj as unknown as Colors;
+const colors = palette as unknown as Colors;
+
+const COLOR_ORDER = [
+  'red',
+  'orange',
+  'yellow',
+  'lime',
+  'green',
+  'cyan',
+  'teal',
+  'azure',
+  'blue',
+  'purple',
+  'magenta',
+  'rose',
+];
 
 export function Colors() {
-  const colorOrder = [
-    'red',
-    'orange',
-    'yellow',
-    'lime',
-    'green',
-    'cyan',
-    'teal',
-    'azure',
-    'blue',
-    'purple',
-    'magenta',
-    'rose',
-  ];
+  const [selectOne, setSelectOne] = useState(true);
+  const [a11yRatio, setA11yRatio] = useState<number | undefined>(undefined);
+  const [colorOne, setColorOne] = useState({
+    r: '',
+    g: '',
+    b: '',
+    a: '',
+    id: '',
+  });
+  const [colorTwo, setColorTwo] = useState({
+    r: '',
+    g: '',
+    b: '',
+    a: '',
+    id: '',
+  });
 
-  let a11ySelectColorOne: boolean = false;
-  interface a11yColor {
-    r: string;
-    g: string;
-    b: string;
-    a: string;
-    id: string;
-  }
-  let a11yColorOne: a11yColor;
-  let a11yColorTwo: a11yColor;
-  let a11yRatio: number = 0;
+  useEffect(() => {
+    if (!colorOne.id || !colorTwo.id) return;
+    setA11yRatio(1 / a11yColorRatio(colorOne, colorTwo));
+  }, [colorOne, colorTwo]);
+
   const selectColor = (colorValue: string, colorName: string) => {
-    a11ySelectColorOne = !a11ySelectColorOne;
-    let rgbaArray = colorValue.replace(/[^\d,]+/g, '').split(',');
+    const rgbaArray = colorValue.replace(/[^\d,]+/g, '').split(',');
 
-    document.querySelectorAll('.' + styles.ColorsSwatch).forEach((element) => {
-      element.classList.remove(styles.ColorsSelected);
-    });
-
-    if (a11ySelectColorOne) {
-      a11yColorOne = {
+    if (selectOne === true) {
+      setColorOne({
         r: rgbaArray[0],
         g: rgbaArray[1],
         b: rgbaArray[2],
         a: rgbaArray[3],
         id: colorName,
-      };
-
-      document.getElementById(
-        'contrast-ratio-color-one-box',
-      )!.style.backgroundColor = colorValue;
+      });
     } else {
-      a11yColorTwo = {
+      setColorTwo({
         r: rgbaArray[0],
         g: rgbaArray[1],
         b: rgbaArray[2],
         a: rgbaArray[3],
         id: colorName,
-      };
-
-      document.getElementById(
-        'contrast-ratio-color-two-box',
-      )!.style.backgroundColor = colorValue;
+      });
     }
-    console.log(a11yColorOne);
-    console.log(colorName);
 
-    document
-      .getElementById(a11yColorOne.id)
-      ?.classList.add(styles.ColorsSelected);
-
-    document
-      .getElementById(a11yColorTwo.id)
-      ?.classList.add(styles.ColorsSelected);
-
-    if (!Number.isNaN(1 / a11yColorRatio(a11yColorOne, a11yColorTwo))) {
-      a11yRatio = 1 / a11yColorRatio(a11yColorOne, a11yColorTwo);
-      document.getElementById('contrast-ratio')!.innerHTML = a11yRatio
-        .toFixed(2)
-        .toString();
-
-      let crInteractive = document.getElementById('contrast-ratio-interactive');
-      let crText = document.getElementById('contrast-ratio-text');
-
-      crInteractive!.classList.remove(styles.ColorsWCAGPass);
-      crInteractive!.classList.remove(styles.ColorsWCAGFail);
-      crText!.classList.remove(styles.ColorsWCAGPass);
-      crText!.classList.remove(styles.ColorsWCAGFail);
-
-      a11yRatio > 2.99
-        ? crInteractive!.classList.add(styles.ColorsWCAGPass)
-        : crInteractive!.classList.add(styles.ColorsWCAGFail);
-      a11yRatio > 4.49
-        ? crText!.classList.add(styles.ColorsWCAGPass)
-        : crText!.classList.add(styles.ColorsWCAGFail);
-
-      document.getElementById('contrast-ratio-color-one')!.innerHTML =
-        capitalize(a11yColorOne.id.split(/(\d+)/).join(' '));
-      document.getElementById('contrast-ratio-color-two')!.innerHTML =
-        capitalize(a11yColorTwo.id.split(/(\d+)/).join(' '));
-    }
+    setSelectOne((selectOne) => !selectOne);
   };
 
-  const a11yLuminance = (r: number, g: number, b: number) => {
-    var a = [r, g, b].map(function (v) {
-      v /= 255;
-      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-    });
-    return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
-  };
-
-  const a11yColorRatio = (colorOne: any, colorTwo: any) => {
-    const colorOneL = a11yLuminance(colorOne.r, colorOne.g, colorOne.b);
-    const colorTwoL = a11yLuminance(colorTwo.r, colorTwo.g, colorTwo.b);
-
-    const ratio =
-      colorOneL > colorTwoL
-        ? (colorTwoL + 0.05) / (colorOneL + 0.05)
-        : (colorOneL + 0.05) / (colorTwoL + 0.05);
-
-    return ratio;
-  };
-
-  const colorMap = colorOrder.map((color) => {
+  const colorMap = COLOR_ORDER.map((color) => {
     const shades: ColorValue = colors[color] ?? [];
     const swatches = Object.entries(shades).map(([shade, value]) => (
-      <div key={value}>
-        <div
-          id={color + shade}
-          className={styles.ColorsSwatch}
-          style={{backgroundColor: value}}
-          onClick={() => selectColor(value, color + shade)}
-        ></div>
-      </div>
+      <div
+        key={value}
+        className={[
+          styles.ColorsSwatch,
+          colorOne.id === color + shade || colorTwo.id === color + shade
+            ? styles.ColorsSelected
+            : undefined,
+        ].join(' ')}
+        style={{backgroundColor: value}}
+        onClick={() => selectColor(value, color + shade)}
+      />
     ));
 
     return (
-      <>
-        <div className={styles.Colors}>{swatches}</div>
-      </>
+      <div key={color} className={styles.Colors}>
+        {swatches}
+      </div>
     );
   });
 
@@ -164,25 +112,56 @@ export function Colors() {
             <Grid.Cell columnSpan={{xs: 3, sm: 3, md: 3, lg: 4, xl: 4}}>
               <h3>Colors</h3>
               <div className={styles.ColorBox}>
-                <div id="contrast-ratio-color-one-box"></div>
-                <span id="contrast-ratio-color-one">Pick two colors</span>
+                <div
+                  style={{
+                    background: `rgb(${colorOne.r} ${colorOne.g} ${colorOne.b})`,
+                  }}
+                />
+                <span>
+                  {colorOne.id
+                    ? capitalize(colorOne.id.split(/(\d+)/).join(' '))
+                    : 'Pick two colors'}
+                </span>
               </div>
               <div className={styles.ColorBox}>
-                <div id="contrast-ratio-color-two-box"></div>
-                <span id="contrast-ratio-color-two">Pick two colors</span>
+                <div
+                  style={{
+                    background: `rgb(${colorTwo.r} ${colorTwo.g} ${colorTwo.b})`,
+                  }}
+                />
+                <span>
+                  {colorTwo.id
+                    ? capitalize(colorTwo.id.split(/(\d+)/).join(' '))
+                    : 'Pick two colors'}
+                </span>
               </div>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 3, sm: 3, md: 3, lg: 8, xl: 8}}>
               <h3>Contrast ratio</h3>
-              <span id="contrast-ratio">—</span>
+              {a11yRatio ? a11yRatio.toFixed(2).toString() : '—'}
               <br />
-              <div id="contrast-ratio-text" className={styles.ColorsWCAG}>
+              <div
+                className={[
+                  styles.ColorsWCAG,
+                  a11yRatio
+                    ? a11yRatio > 4.49
+                      ? styles.ColorsWCAGPass
+                      : styles.ColorsWCAGFail
+                    : undefined,
+                ].join(' ')}
+              >
                 AA Text
               </div>
               <br />
               <div
-                id="contrast-ratio-interactive"
-                className={styles.ColorsWCAG}
+                className={[
+                  styles.ColorsWCAG,
+                  a11yRatio
+                    ? a11yRatio > 2.99
+                      ? styles.ColorsWCAGPass
+                      : styles.ColorsWCAGFail
+                    : undefined,
+                ].join(' ')}
               >
                 AA Interactive
               </div>
@@ -192,4 +171,24 @@ export function Colors() {
       </div>
     </>
   );
+}
+
+function a11yLuminance(r: number, g: number, b: number) {
+  const a = [r, g, b].map(function (v) {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
+}
+
+function a11yColorRatio(colorOne: any, colorTwo: any) {
+  const colorOneL = a11yLuminance(colorOne.r, colorOne.g, colorOne.b);
+  const colorTwoL = a11yLuminance(colorTwo.r, colorTwo.g, colorTwo.b);
+
+  const ratio =
+    colorOneL > colorTwoL
+      ? (colorTwoL + 0.05) / (colorOneL + 0.05)
+      : (colorOneL + 0.05) / (colorTwoL + 0.05);
+
+  return ratio;
 }
