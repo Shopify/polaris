@@ -214,7 +214,6 @@
         "rename": "Đổi tên chế độ xem",
         "duplicate": "Sao chép chế độ xem",
         "edit": "Chỉnh sửa chế độ xem",
-        "editColumns": "Sửa cột",
         "delete": "Xóa chế độ xem",
         "copy": "Bản sao của {name}",
         "deleteModal": {
@@ -389,6 +388,10 @@
           "save": "Lưu",
           "cancel": "Hủy"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Sửa cột",
+        "accessibilityLabel": "Tùy chỉnh thứ tự và khả năng hiển thị của cột trong bảng"
       }
     },
     "ActionList": {

@@ -21,6 +21,7 @@ import {
   SortButton,
   SearchFilterButton,
   UpdateButtons,
+  EditColumnsButton,
 } from './components';
 import type {
   IndexFiltersPrimaryAction,
@@ -48,6 +49,11 @@ const transitionStyles = {
 
 type ExecutedCallback = (name: string) => Promise<boolean>;
 
+type ActionableIndexFiltersMode = Exclude<
+  IndexFiltersMode,
+  IndexFiltersMode.Default
+>;
+
 export interface IndexFiltersProps
   extends Omit<
       FiltersProps,
@@ -71,7 +77,7 @@ export interface IndexFiltersProps
   /** The cancel action to display */
   cancelAction: IndexFiltersCancelAction;
   /** Optional callback invoked when a merchant begins to edit a view */
-  onEditStart?: () => void;
+  onEditStart?: (mode: ActionableIndexFiltersMode) => void;
   /** The current mode of the IndexFilters component. Used to determine which view to show */
   mode: IndexFiltersMode;
   /** Callback to set the mode of the IndexFilters component */
@@ -96,6 +102,8 @@ export interface IndexFiltersProps
   closeOnChildOverlayClick?: boolean;
   /** Optional override to the default keyboard shortcuts available */
   disableKeyboardShortcuts?: boolean;
+  /** Whether to display the edit columns button with the other default mode filter actions */
+  showEditColumnsButton?: boolean;
 }
 
 export function IndexFilters({
@@ -134,6 +142,7 @@ export function IndexFilters({
   hideQueryField,
   closeOnChildOverlayClick,
   disableKeyboardShortcuts,
+  showEditColumnsButton,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -230,10 +239,13 @@ export function IndexFilters({
     };
   }, [cancelAction, onExecutedCancelAction]);
 
-  const beginEdit = useCallback(() => {
-    setMode(IndexFiltersMode.Filtering);
-    onEditStart?.();
-  }, [onEditStart, setMode]);
+  const beginEdit = useCallback(
+    (mode: ActionableIndexFiltersMode) => {
+      setMode(mode);
+      onEditStart?.(mode);
+    },
+    [onEditStart, setMode],
+  );
 
   const updateButtonsMarkup = useMemo(
     () => (
@@ -270,10 +282,21 @@ export function IndexFilters({
     disabled,
   ]);
 
+  function handleClickEditColumnsButon() {
+    beginEdit(IndexFiltersMode.EditingColumns);
+  }
+
+  const editColumnsMarkup = showEditColumnsButton ? (
+    <EditColumnsButton
+      onClick={handleClickEditColumnsButon}
+      disabled={disabled}
+    />
+  ) : null;
+
   const isActionLoading = primaryAction?.loading || cancelAction?.loading;
 
   function handleClickFilterButton() {
-    beginEdit();
+    beginEdit(IndexFiltersMode.Filtering);
   }
 
   const searchFilterTooltipLabelId = disableKeyboardShortcuts
@@ -310,7 +333,7 @@ export function IndexFilters({
     if (mode !== IndexFiltersMode.Default) {
       return;
     }
-    beginEdit();
+    beginEdit(IndexFiltersMode.Filtering);
   }
 
   return (
@@ -393,6 +416,7 @@ export function IndexFilters({
                               }}
                             />
                           )}
+                          {editColumnsMarkup}
                           {sortMarkup}
                         </>
                       ) : null}
