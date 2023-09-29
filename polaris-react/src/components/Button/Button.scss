@@ -289,7 +289,7 @@
     // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- Button custom properties
     --pc-button-text: var(--p-color-text-inverse-subdued);
     background: var(--pc-button-color-active);
-    box-shadow: var(--p-shadow-button-inset-experimental);
+    box-shadow: var(--p-shadow-button-primary-success-inset);
     // stylelint-enable polaris/conventions/polaris/custom-property-allowed-list
 
     // stylelint-enable-next-line length-zero-no-unit
@@ -328,19 +328,12 @@
       top: 0.5px;
       bottom: 0.5px;
       border-radius: inherit;
-      // adjust shine for critical and success buttons
-      box-shadow: var(--p-shadow-button-primary-experimental);
       background: none;
     }
 
     &:hover {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Button custom property
       --pc-button-text: var(--p-color-text-inverse);
-
-      // stylelint-disable-next-line selector-max-specificity -- set box shadow
-      &::before {
-        box-shadow: var(--p-shadow-button-primary-experimental);
-      }
 
       // stylelint-disable-next-line selector-max-specificity -- set svg fill
       svg {
@@ -351,7 +344,6 @@
     &:active {
       // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Button custom property
       --pc-button-text: var(--p-color-text-inverse-subdued);
-      box-shadow: var(--p-shadow-button-inset-experimental);
 
       // stylelint-disable-next-line -- set opacity
       &::before {
@@ -373,6 +365,8 @@
     --pc-button-color-active: var(--p-color-bg-critical-strong-active);
     --pc-button-color-depressed: var(--p-color-bg-critical-strong-active);
     // stylelint-enable
+    // adjust shine for critical and success buttons
+    box-shadow: var(--p-shadow-button-primary-critical);
 
     &:not(.disabled) {
       box-shadow: none;
@@ -383,7 +377,14 @@
     }
 
     &:active {
-      box-shadow: var(--p-shadow-button-inset-experimental);
+      box-shadow: var(--p-shadow-button-primary-critical-inset);
+    }
+
+    &:hover {
+      // stylelint-disable-next-line selector-max-specificity -- set box shadow
+      &::before {
+        box-shadow: var(--p-shadow-button-primary-critical-hover);
+      }
     }
 
     // stylelint-disable-next-line selector-max-class -- set disabled styles
@@ -416,6 +417,19 @@
     );
     // stylelint-enable
     box-shadow: none;
+    // adjust shine for critical and success buttons
+    box-shadow: var(--p-shadow-button-primary-success);
+
+    &:hover {
+      // stylelint-disable-next-line selector-max-specificity -- set box shadow
+      &::before {
+        box-shadow: var(--p-shadow-button-primary-success-hover);
+      }
+    }
+
+    &:active {
+      box-shadow: var(--p-shadow-button-primary-success-inset);
+    }
   }
 
   svg {
