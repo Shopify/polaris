@@ -2,4 +2,5 @@
 '@shopify/polaris': major
 ---
 
-[ButtonGroup] Removed `segmented` boolean prop and replaced with `variant`. Replaced `spacing` prop with `gap`
+Replaced `segmented` prop with `variant` in `ButtonGroup`.
+Replaced `spacing` prop with `gap` in `ButtonGroup`.

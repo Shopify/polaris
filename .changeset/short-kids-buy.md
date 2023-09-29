@@ -2,4 +2,4 @@
 '@shopify/polaris': major
 ---
 
-Removed `polarisSummerEditions2023` feature flag from AppProvider context
+Removed `polarisSummerEditions2023` feature flag from `AppProvider` context
