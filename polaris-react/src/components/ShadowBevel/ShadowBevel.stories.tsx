@@ -31,20 +31,20 @@ export function Default() {
 
   return (
     <BlockStack gap="500">
-      <ShadowBevel boxShadow="md" borderRadius="300">
+      <ShadowBevel boxShadow="300" borderRadius="300">
         <Box background="bg" padding="400">
           Default
         </Box>
       </ShadowBevel>
 
-      <ShadowBevel boxShadow="md" borderRadius="300" bevel={false}>
+      <ShadowBevel boxShadow="300" borderRadius="300" bevel={false}>
         <Box background="bg" padding="400">
           With <InlineCode>bevel: false</InlineCode>
         </Box>
       </ShadowBevel>
 
       <ShadowBevel
-        boxShadow="md"
+        boxShadow="300"
         borderRadius="300"
         bevel={{xs: false, sm: true}}
       >
@@ -54,7 +54,7 @@ export function Default() {
       </ShadowBevel>
 
       <ShadowBevel
-        boxShadow="md"
+        boxShadow="300"
         borderRadius="300"
         bevel={{xs: false, sm: true, lg: false}}
       >
@@ -64,7 +64,7 @@ export function Default() {
         </Box>
       </ShadowBevel>
 
-      <ShadowBevel as="article" boxShadow="md" borderRadius="300">
+      <ShadowBevel as="article" boxShadow="300" borderRadius="300">
         <Box background="bg" padding="400">
           With <InlineCode>as: article</InlineCode>
         </Box>
@@ -73,7 +73,7 @@ export function Default() {
       {colors.map(({background, color}) => (
         <ShadowBevel
           key={`${background}-${color}`}
-          boxShadow="md"
+          boxShadow="300"
           borderRadius="300"
         >
           <Box background={background} color={color} padding="400">
