@@ -85,21 +85,6 @@ describe('<TextField />', () => {
     });
   });
 
-  it('adds the 1Password disable prop if disable1Password is set', () => {
-    const textField = mountWithApp(
-      <TextField
-        label="TextField"
-        onChange={noop}
-        autoComplete="off"
-        disable1Password
-      />,
-    );
-
-    expect(textField).toContainReactComponent('input', {
-      'data-1p-ignore': true,
-    } as any);
-  });
-
   it('adds the password manager disabled props if autoComplete="off" is set', () => {
     const textField = mountWithApp(
       <TextField label="TextField" onChange={noop} autoComplete="off" />,
