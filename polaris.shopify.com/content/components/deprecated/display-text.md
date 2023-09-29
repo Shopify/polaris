@@ -69,7 +69,7 @@ Display styles make a bold visual statement. Use them to create impact when the 
 
 ```diff
 - <DisplayText size="extraLarge">Sales this year</DisplayText>
-+ <Text variant="heading4xl" as="p">Sales this year</Text>
++ <Text variant="heading3xl" as="p">Sales this year</Text>
 ```
 
 ---

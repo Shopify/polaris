@@ -305,7 +305,7 @@ export const Tab = forwardRef(
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
-        <InlineStack gap="2" align="center" blockAlign="center" wrap={false}>
+        <InlineStack gap="200" align="center" blockAlign="center" wrap={false}>
           <Text
             as="span"
             variant={mdDown ? 'bodyLg' : 'bodySm'}

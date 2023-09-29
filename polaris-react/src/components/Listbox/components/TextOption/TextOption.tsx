@@ -37,7 +37,7 @@ export const TextOption = memo(function TextOption({
 
   const optionMarkup = selected ? (
     <Box width="100%">
-      <InlineStack wrap={false} align="space-between" gap="2">
+      <InlineStack wrap={false} align="space-between" gap="200">
         {children}
         <InlineStack align="end">
           <Icon source={TickMinor} />

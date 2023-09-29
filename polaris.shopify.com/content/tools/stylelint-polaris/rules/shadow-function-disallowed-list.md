@@ -18,7 +18,7 @@ import RulePostamble from '../_postamble.md';
 
 ```diff
 // Do
-+ box-shadow: var(--p-shadow-md);
++ box-shadow: var(--p-shadow-300);
 // Don't
 - filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
 ```

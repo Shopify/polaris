@@ -60,61 +60,61 @@ const styleInitialsLongEntries = Object.entries(styleInitialsLong) as Entries<
 
 export function All() {
   return (
-    <BlockStack gap="4">
-      <Box paddingBlockEnd="2">
-        <BlockStack gap="3">
-          <BlockStack gap="2">
-            <Text as="h2" variant="headingXs">
+    <BlockStack gap="400">
+      <Box paddingBlockEnd="200">
+        <BlockStack gap="300">
+          <BlockStack gap="200">
+            <Text as="h2" variant="headingSm">
               Default
             </Text>
-            <InlineStack gap="2" blockAlign="center">
+            <InlineStack gap="200" blockAlign="center">
               {sizes.map((size) => (
                 <Avatar key={size} size={size} />
               ))}
             </InlineStack>
           </BlockStack>
-          <BlockStack gap="2">
-            <Text as="h2" variant="headingXs">
+          <BlockStack gap="200">
+            <Text as="h2" variant="headingSm">
               With customer
             </Text>
-            <InlineStack gap="2" blockAlign="center">
+            <InlineStack gap="200" blockAlign="center">
               {sizes.map((size) => (
                 <Avatar customer key={size} size={size} />
               ))}
             </InlineStack>
           </BlockStack>
-          <BlockStack gap="2">
-            <Text as="h2" variant="headingXs">
+          <BlockStack gap="200">
+            <Text as="h2" variant="headingSm">
               With image
             </Text>
-            <InlineStack gap="2" blockAlign="center">
+            <InlineStack gap="200" blockAlign="center">
               <Image />
             </InlineStack>
           </BlockStack>
-          <BlockStack gap="2">
-            <Text as="h2" variant="headingXs">
+          <BlockStack gap="200">
+            <Text as="h2" variant="headingSm">
               With icon (all styles)
             </Text>
             <IconColorsSizes />
           </BlockStack>
-          <BlockStack gap="2">
-            <Text as="h2" variant="headingXs">
+          <BlockStack gap="200">
+            <Text as="h2" variant="headingSm">
               With default initials (all styles)
             </Text>
             <InitialsColorsSizes />
           </BlockStack>
-          <BlockStack gap="2">
-            <Text as="h2" variant="headingXs">
+          <BlockStack gap="200">
+            <Text as="h2" variant="headingSm">
               With long initials (all styles)
             </Text>
             <InitialsLong />
           </BlockStack>
-          <BlockStack gap="2">
-            <Text as="h2" variant="headingXs">
+          <BlockStack gap="200">
+            <Text as="h2" variant="headingSm">
               With long and wide initials
             </Text>
-            <BlockStack gap="2">
-              <InlineStack gap="2" blockAlign="center">
+            <BlockStack gap="200">
+              <InlineStack gap="200" blockAlign="center">
                 {sizes.map((size) => (
                   <Avatar key={size} size={size} initials="WWW" />
                 ))}
@@ -133,9 +133,9 @@ export function Default() {
 
 export function IconColorsSizes() {
   return (
-    <BlockStack gap="2">
+    <BlockStack gap="200">
       {styleInitialsDefaultEntries.map(([style, initials]) => (
-        <InlineStack key={style} gap="2" blockAlign="center">
+        <InlineStack key={style} gap="200" blockAlign="center">
           {sizes.map((size) => (
             <Avatar key={size} name={initials} size={size} />
           ))}
@@ -147,9 +147,9 @@ export function IconColorsSizes() {
 
 export function InitialsColorsSizes() {
   return (
-    <BlockStack gap="2">
+    <BlockStack gap="200">
       {styleInitialsDefaultEntries.map(([style, initials]) => (
-        <InlineStack key={style} gap="2" blockAlign="center">
+        <InlineStack key={style} gap="200" blockAlign="center">
           {sizes.map((size) => (
             <Avatar key={size} initials={initials} size={size} />
           ))}
@@ -161,9 +161,9 @@ export function InitialsColorsSizes() {
 
 export function InitialsLong() {
   return (
-    <BlockStack gap="2">
+    <BlockStack gap="200">
       {styleInitialsLongEntries.map(([style, initialsLong]) => (
-        <InlineStack key={style} gap="2" blockAlign="center">
+        <InlineStack key={style} gap="200" blockAlign="center">
           {sizes.map((size) => (
             <Avatar key={size} initials={initialsLong} size={size} />
           ))}
@@ -204,7 +204,7 @@ export function ExtraSmallInContext() {
 
 export function Image() {
   return (
-    <InlineStack gap="2" blockAlign="center">
+    <InlineStack gap="200" blockAlign="center">
       {sizes.map((size) => (
         <Avatar
           key={size}

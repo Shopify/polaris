@@ -190,7 +190,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
           }}
         >
           <div className={styles.OutputBubble}>
-            <Text as="span" variant="headingXs" alignment="center">
+            <Text as="span" variant="headingSm" alignment="center">
               {value[0]}
             </Text>
           </div>
@@ -208,7 +208,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
           }}
         >
           <div className={styles.OutputBubble}>
-            <Text as="span" variant="headingXs" alignment="center">
+            <Text as="span" variant="headingSm" alignment="center">
               {value[1]}
             </Text>
           </div>

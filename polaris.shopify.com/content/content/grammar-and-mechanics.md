@@ -880,9 +880,11 @@ Always use apostrophes, not vertical (straight) quotes.
 {/* prettier-ignore */}
 - <span
     style={{
-      fontSize: '5rem',
+      fontSize: '2rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
+      display: 'inline-block',
+      height: 0,
     }}
   >’</span>
   <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>]</kbd>
@@ -892,9 +894,11 @@ Always use apostrophes, not vertical (straight) quotes.
 {/* prettier-ignore */}
 - <span
     style={{
-      fontSize: '5rem',
+      fontSize: '2rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
+      display: 'inline-block',
+      height: 0,
     }}
   >'</span>
 
@@ -1020,7 +1024,7 @@ Always use the ellipsis character, not three periods.
 {/* prettier-ignore */}
 <code
   style={{
-    fontSize: '5rem',
+    fontSize: '2rem',
     lineHeight: 0,
     backgroundColor: 'transparent',
   }}
@@ -1032,7 +1036,7 @@ Always use the ellipsis character, not three periods.
 {/* prettier-ignore */}
 <code
   style={{
-    fontSize: '5rem',
+    fontSize: '2rem',
     lineHeight: 0,
     backgroundColor: 'transparent',
   }}
@@ -1280,36 +1284,44 @@ Always use smart (curly) quotes, not vertical (straight) quotes.
 {/* prettier-ignore */}
 - <span
     style={{
-      fontSize: '5rem',
+      fontSize: '2rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
+      display: 'inline-block',
+      height: 0,
     }}
   >‘</span>
   <kbd>option</kbd> + <kbd>]</kbd>
 {/* prettier-ignore */}
 - <span
     style={{
-      fontSize: '5rem',
+      fontSize: '2rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
+      display: 'inline-block',
+      height: 0,
     }}
   >’</span>
   <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>]</kbd>
 {/* prettier-ignore */}
 - <span
     style={{
-      fontSize: '5rem',
+      fontSize: '2rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
+      display: 'inline-block',
+      height: 0,
     }}
   >“</span>
   <kbd>option</kbd> + <kbd>[</kbd>
 {/* prettier-ignore */}
 - <span
     style={{
-      fontSize: '5rem',
+      fontSize: '2rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
+      display: 'inline-block',
+      height: 0,
     }}
   >”</span>
   <kbd>option</kbd> + <kbd>shift</kbd> + <kbd>[</kbd>
@@ -1319,17 +1331,21 @@ Always use smart (curly) quotes, not vertical (straight) quotes.
 {/* prettier-ignore */}
 - <span
     style={{
-      fontSize: '5rem',
+      fontSize: '2rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
+      display: 'inline-block',
+      height: 0,
     }}
   >"</span>
   or
   <span
     style={{
-      fontSize: '5rem',
+      fontSize: '2rem',
       lineHeight: 0,
       verticalAlign: 'bottom',
+      display: 'inline-block',
+      height: 0,
     }}
   >'</span>
 

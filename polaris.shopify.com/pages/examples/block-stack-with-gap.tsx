@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function BlockStackWithGapExample() {
   return (
     <SpacingBackground>
-      <BlockStack gap="5">
+      <BlockStack gap="500">
         <Placeholder height="48px" />
         <Placeholder height="48px" />
         <Placeholder height="48px" />
@@ -33,7 +33,7 @@ const Placeholder = ({height = 'auto'}) => {
     <div
       style={{
         background: 'var(--p-color-text-info)',
-        padding: '14px var(--p-space-2)',
+        padding: '14px var(--p-space-200)',
         height: height,
       }}
     />

@@ -26,7 +26,7 @@ export interface BoxProps {
 
 export type OwnProps<T> = Polymorphic.OwnProps<T>;
 
-type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxProps>;
+type PolymorphicBox = Polymorphic.ForwardRefComponent<any, BoxProps>;
 
 /**
  * Box is the most abstract component on top of which other components are
@@ -41,15 +41,39 @@ export const Box = forwardRef(
       minWidth,
       maxWidth,
       padding = '0',
+      paddingBlockStart,
+      paddingBlockEnd,
+      paddingInlineStart,
+      paddingInlineEnd,
       ...props
     },
     forwardedRef,
   ) => {
     const style = {
-      ...getResponsiveProps('box', 'padding-block-start', 'space', padding),
-      ...getResponsiveProps('box', 'padding-block-end', 'space', padding),
-      ...getResponsiveProps('box', 'padding-inline-start', 'space', padding),
-      ...getResponsiveProps('box', 'padding-inline-end', 'space', padding),
+      ...getResponsiveProps(
+        'box',
+        'padding-block-start',
+        'space',
+        paddingBlockStart || padding,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-block-end',
+        'space',
+        paddingBlockEnd || padding,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-start',
+        'space',
+        paddingInlineStart || padding,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-end',
+        'space',
+        paddingInlineEnd || padding,
+      ),
       '--pc-box-min-height': minHeight,
       '--px-box-min-width': minWidth,
       '--px-box-max-width': maxWidth,

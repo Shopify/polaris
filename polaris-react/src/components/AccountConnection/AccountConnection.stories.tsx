@@ -9,19 +9,19 @@ export default {
 export function All() {
   return (
     <>
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
-        <Box paddingBlockEnd="3" />
+        <Box paddingBlockEnd="300" />
       </BlockStack>
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With account connected
         </Text>
         <WithAccountConnected />
-        <Box paddingBlockEnd="3" />
+        <Box paddingBlockEnd="300" />
       </BlockStack>
     </>
   );

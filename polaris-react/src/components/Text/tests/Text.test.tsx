@@ -9,7 +9,7 @@ describe('<Text />', () => {
 
   it('renders its children', () => {
     const headingText = mountWithApp(
-      <Text as="h1" variant="heading4xl">
+      <Text as="h1" variant="heading3xl">
         {text}
       </Text>,
     );

@@ -126,9 +126,9 @@ function TOC({items}: Props) {
       <ul>
         <Box
           style={{
-            paddingInlineStart: 'var(--p-space-2)',
-            paddingInlineEnd: 'var(--p-space-2)',
-            paddingBlockEnd: 'var(--p-space-2)',
+            paddingInlineStart: 'var(--p-space-200)',
+            paddingInlineEnd: 'var(--p-space-200)',
+            paddingBlockEnd: 'var(--p-space-200)',
           }}
         >
           <h2 className={styles.Header}>On this page</h2>

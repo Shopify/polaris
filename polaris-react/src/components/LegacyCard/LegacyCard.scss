@@ -1,48 +1,48 @@
 @import '../../styles/common';
 
 .LegacyCard {
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-surface);
   box-shadow: var(--p-shadow-md);
-  outline: var(--p-border-width-1) solid transparent;
+  outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
 
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-xs),
-    $borderRadius: var(--p-border-radius-0-experimental),
+    $borderRadius: var(--p-border-radius-0),
     $zIndex: 101
   );
 
   // Override custom heading font sizes
   h2,
   h3 {
-    font-size: var(--p-font-size-80-experimental);
+    font-size: var(--p-font-size-325);
   }
 
   + .LegacyCard {
-    margin-top: var(--p-space-4);
+    margin-top: var(--p-space-400);
 
     @media print {
-      margin-top: calc(-1 * var(--p-space-2));
+      margin-top: calc(-1 * var(--p-space-200));
     }
   }
 
   @media #{$p-breakpoints-sm-up} {
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
 
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-xs),
-      $borderRadius: var(--p-border-radius-3),
+      $borderRadius: var(--p-border-radius-300),
       $zIndex: 101
     );
 
     .Section:first-child {
-      border-top-left-radius: var(--p-border-radius-3);
-      border-top-right-radius: var(--p-border-radius-3);
+      border-top-left-radius: var(--p-border-radius-300);
+      border-top-right-radius: var(--p-border-radius-300);
     }
 
     .Section:last-child {
-      border-bottom-left-radius: var(--p-border-radius-3);
-      border-bottom-right-radius: var(--p-border-radius-3);
+      border-bottom-left-radius: var(--p-border-radius-300);
+      border-bottom-right-radius: var(--p-border-radius-300);
     }
   }
 
@@ -51,7 +51,7 @@
 
     @include shadow-bevel(
       $boxShadow: none,
-      $borderRadius: var(--p-border-radius-0-experimental),
+      $borderRadius: var(--p-border-radius-0),
       $border: none,
       $content: none
     );
@@ -59,7 +59,7 @@
 }
 
 .subdued {
-  background-color: var(--p-color-bg-subdued);
+  background-color: var(--p-color-bg-surface-secondary);
 }
 
 .Section-hideOnPrint,
@@ -71,22 +71,22 @@
 }
 
 .Header {
-  padding: var(--p-space-4) var(--p-space-4) 0;
+  padding: var(--p-space-400) var(--p-space-400) 0;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-2) var(--p-space-4) 0;
+    padding: var(--p-space-200) var(--p-space-400) 0;
   }
 
   @media print and #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-2) var(--p-space-4) 0;
+    padding: var(--p-space-200) var(--p-space-400) 0;
   }
 }
 
 .Section {
-  padding: var(--p-space-2) var(--p-space-4);
+  padding: var(--p-space-200) var(--p-space-400);
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-2) var(--p-space-4);
+    padding: var(--p-space-200) var(--p-space-400);
   }
 
   + .Section {
@@ -98,16 +98,16 @@
   }
 
   @media print {
-    padding-top: var(--p-space-1);
-    padding-bottom: var(--p-space-1);
+    padding-top: var(--p-space-100);
+    padding-bottom: var(--p-space-100);
   }
 }
 
 .Section-fullWidth {
-  padding: var(--p-space-4) 0;
+  padding: var(--p-space-400) 0;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-4) 0;
+    padding: var(--p-space-400) 0;
   }
 }
 
@@ -121,7 +121,7 @@
 
 .Section-subdued {
   background-color: var(--p-color-bg-subdued);
-  padding: var(--p-space-3) var(--p-space-4);
+  padding: var(--p-space-300) var(--p-space-400);
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;
@@ -134,24 +134,24 @@
 }
 
 .Section-subdued:last-child {
-  padding: var(--p-space-4);
+  padding: var(--p-space-400);
 
   @media print {
-    padding-top: var(--p-space-2);
-    padding-bottom: var(--p-space-2);
+    padding-top: var(--p-space-200);
+    padding-bottom: var(--p-space-200);
   }
 }
 
 .SectionHeader {
-  padding-bottom: var(--p-space-2);
+  padding-bottom: var(--p-space-200);
 
   .Section-fullWidth & {
-    padding-left: var(--p-space-4);
-    padding-right: var(--p-space-4);
+    padding-left: var(--p-space-400);
+    padding-right: var(--p-space-400);
 
     @media #{$p-breakpoints-sm-up} {
-      padding-left: var(--p-space-4);
-      padding-right: var(--p-space-4);
+      padding-left: var(--p-space-400);
+      padding-right: var(--p-space-400);
     }
   }
 }
@@ -160,7 +160,7 @@
   + .Subsection {
     border-top: 0;
     margin-top: 0;
-    padding-top: var(--p-space-2);
+    padding-top: var(--p-space-200);
 
     @media print {
       border-top: 0;
@@ -168,8 +168,8 @@
   }
 
   @media print {
-    padding-top: var(--p-space-1);
-    padding-bottom: var(--p-space-1);
+    padding-top: var(--p-space-100);
+    padding-bottom: var(--p-space-100);
   }
 }
 
@@ -177,10 +177,10 @@
   display: flex;
   justify-content: flex-end;
 
-  padding: 0 var(--p-space-4) var(--p-space-4);
+  padding: 0 var(--p-space-400) var(--p-space-400);
 
   @media #{$p-breakpoints-sm-up} {
-    padding: 0 var(--p-space-4) var(--p-space-4);
+    padding: 0 var(--p-space-400) var(--p-space-400);
   }
 
   &.LeftJustified {
@@ -188,15 +188,15 @@
   }
 
   .Section-subdued + & {
-    padding: var(--p-space-4);
+    padding: var(--p-space-400);
     border-top: 0;
   }
 }
 
 .FirstSectionPadding {
-  padding-top: var(--p-space-4);
+  padding-top: var(--p-space-400);
 }
 
 .LastSectionPadding {
-  padding-bottom: var(--p-space-4);
+  padding-bottom: var(--p-space-400);
 }

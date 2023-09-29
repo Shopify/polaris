@@ -11,7 +11,7 @@ export interface CardProps extends BoxProps {
 export function Card({
   children,
   className,
-  padding = {xs: '4'},
+  padding = {xs: '400'},
   ...props
 }: React.PropsWithChildren<CardProps>) {
   return (

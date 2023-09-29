@@ -4,11 +4,11 @@
   max-width: 160px;
   margin-right: 0;
   // stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- set padding
-  padding: 0 var(--p-space-2) 0 10px;
+  padding: 0 var(--p-space-200) 0 10px;
 
   > p {
-    font-size: var(--p-font-size-75);
-    line-height: var(--p-font-line-height-1);
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-400);
   }
 
   @media #{$p-breakpoints-md-down} {
@@ -18,6 +18,6 @@
 
 .Message > p {
   color: var(--p-color-text-inverse-subdued);
-  font-size: var(--p-font-size-70-experimental);
-  line-height: var(--p-font-line-height-075-experimental);
+  font-size: var(--p-font-size-275);
+  line-height: var(--p-font-line-height-300);
 }

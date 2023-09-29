@@ -23,7 +23,7 @@
   }
 
   @media (forced-colors: active) {
-    border: var(--p-border-width-1) solid transparent;
+    border: var(--p-border-width-025) solid transparent;
   }
 
   &::after {
@@ -35,11 +35,11 @@
 }
 
 .Text {
-  font-size: var(--p-font-size-200);
+  font-size: var(--p-font-size-400);
   font-weight: var(--p-font-weight-regular);
 
   &.long {
-    font-size: var(--p-font-size-75);
+    font-size: var(--p-font-size-300);
   }
 }
 

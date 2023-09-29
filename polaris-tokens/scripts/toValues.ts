@@ -2,7 +2,10 @@ import fs from 'fs';
 import path from 'path';
 
 import {metaThemes, metaThemeDefault} from '../src/themes';
-import {extractMetaThemeValues} from '../src/themes/utils';
+import {
+  extractMetaThemeValues,
+  resolveMetaThemeRefs,
+} from '../src/themes/utils';
 
 const outputDir = path.join(__dirname, '../build');
 
@@ -13,7 +16,9 @@ export async function toValues() {
     }
   });
 
-  const themeDefault = extractMetaThemeValues(metaThemeDefault);
+  const themeDefault = extractMetaThemeValues(
+    resolveMetaThemeRefs(metaThemeDefault),
+  );
 
   await fs.promises.writeFile(
     path.join(outputDir, 'index.ts'),
@@ -26,7 +31,7 @@ export async function toValues() {
         Object.fromEntries(
           Object.entries(metaThemes).map(([themeName, metaTheme]) => [
             themeName,
-            extractMetaThemeValues(metaTheme),
+            extractMetaThemeValues(resolveMetaThemeRefs(metaTheme)),
           ]),
         ),
       ]),

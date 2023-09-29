@@ -118,7 +118,7 @@ export function UpdateButtons({
   }
 
   return (
-    <InlineStack align="start" blockAlign="center" gap="1">
+    <InlineStack align="start" blockAlign="center" gap="100">
       {cancelButtonMarkup}
       {primaryAction.type === 'save-as' ? (
         <Modal

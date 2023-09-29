@@ -4,8 +4,8 @@
   &.isNested {
     ul ul {
       .Link {
-        padding: var(--p-space-1) var(--p-space-2) var(--p-space-1)
-          var(--p-space-4);
+        padding: var(--p-space-100) var(--p-space-200) var(--p-space-100)
+          var(--p-space-400);
       }
     }
   }
@@ -13,36 +13,36 @@
 
 .Header {
   color: var(--text-strong);
-  font-size: var(--p-font-size-100);
-  line-height: var(--p-font-line-height-2);
+  font-size: var(--p-font-size-350);
+  line-height: var(--p-font-line-height-500);
   font-weight: var(--p-font-weight-semibold);
 }
 
 .Item {
   &:not(:last-child) {
-    padding-bottom: var(--p-space-1);
+    padding-bottom: var(--p-space-100);
   }
 }
 
 .Link {
   color: var(--text-strong);
   display: block;
-  font-size: var(--p-font-size-80-experimental);
+  font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-regular);
-  line-height: var(--p-font-line-height-2);
+  line-height: var(--p-font-line-height-500);
   overflow: hidden;
-  padding: var(--p-space-1) var(--p-space-2);
+  padding: var(--p-space-100) var(--p-space-200);
   text-overflow: ellipsis;
   white-space: pre;
 
   &:hover {
     background-color: var(--surface-active);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
   }
 
   &.active {
     background-color: var(--surface-active);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
     font-weight: var(--p-font-weight-semibold);
   }
 }

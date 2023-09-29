@@ -192,7 +192,7 @@ function SheetWithSearchableListboxExample() {
   const textFieldMarkup = (
     <div
       style={{
-        padding: 'var(--p-space-4) var(--p-space-2)',
+        padding: 'var(--p-space-400) var(--p-space-200)',
         position: 'sticky',
         zIndex: 'var(--p-z-index-12)',
         width: '100%',
@@ -307,7 +307,7 @@ function SheetWithSearchableListboxExample() {
               flexDirection: 'column',
               justifyContent: 'space-between',
               width: '100%',
-              padding: 'var(--p-space-4)',
+              padding: 'var(--p-space-400)',
             }}
           >
             <div
@@ -316,10 +316,10 @@ function SheetWithSearchableListboxExample() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 width: '100%',
-                marginBottom: 'var(--p-space-2)',
+                marginBottom: 'var(--p-space-200)',
               }}
             >
-              <Text variant="headingXs" as="h3" tone="subdued">
+              <Text variant="headingSm" as="h3" tone="subdued">
                 Action
               </Text>
               <Button
@@ -359,7 +359,7 @@ function SheetWithSearchableListboxExample() {
                 position: 'relative',
                 width: '100%',
                 height: '292px',
-                padding: 'var(--p-space-2) 0',
+                padding: 'var(--p-space-200) 0',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >

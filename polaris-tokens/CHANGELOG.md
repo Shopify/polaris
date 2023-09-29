@@ -1,5 +1,31 @@
 # Changelog
 
+## 7.13.0-beta.0
+
+### Minor Changes
+
+- [#10382](https://github.com/Shopify/polaris/pull/10382) [`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `ThemeVariant` to `Theme` and exposed `Theme` type
+
+## 7.12.1
+
+### Patch Changes
+
+- [#10671](https://github.com/Shopify/polaris/pull/10671) [`f23af6fdd`](https://github.com/Shopify/polaris/commit/f23af6fdd3a52d93700d3aeab43305bcf3989e98) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated the `toValues` token utility to resolve token name references in the `theme` to their unit values
+
+## 7.12.0
+
+### Minor Changes
+
+- [#10585](https://github.com/Shopify/polaris/pull/10585) [`45fc3a01f`](https://github.com/Shopify/polaris/commit/45fc3a01f959f6eea2c1bf03b981811a6f13f344) Thanks [@laurkim](https://github.com/laurkim)! - Migrated `space` custom properties from `v11` to `v12`
+
+## 7.11.0
+
+### Minor Changes
+
+- [#10647](https://github.com/Shopify/polaris/pull/10647) [`f26cebe99`](https://github.com/Shopify/polaris/commit/f26cebe99e486730bce2ca1d9add89e24ef9c648) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added composite `text` and `font-letter-spacing` tokens
+
+* [#10643](https://github.com/Shopify/polaris/pull/10643) [`2359e5f5a`](https://github.com/Shopify/polaris/commit/2359e5f5a4e6a93f8dd70997c4ae9a1ab732911c) Thanks [@lgriffee](https://github.com/lgriffee)! - Added semantic `space` token scale
+
 ## 7.10.0
 
 ### Minor Changes

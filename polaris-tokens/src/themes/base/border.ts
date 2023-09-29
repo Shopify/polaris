@@ -11,13 +11,16 @@ export type BorderRadiusScale =
   | '300'
   | '400'
   | '500'
-  | '750'
-  | 'full';
+  | '750';
+
+export type BorderRadiusAlias = 'full';
+
+export type BorderRadiusAliasOrScale = BorderRadiusAlias | BorderRadiusScale;
 
 export type BorderWidthScale = '0165' | '025' | '050' | '100';
 
 export type BorderTokenName =
-  | `border-radius-${BorderRadiusScale}`
+  | `border-radius-${BorderRadiusAliasOrScale}`
   | `border-width-${BorderWidthScale}`;
 
 export type BorderTokenGroup = {
