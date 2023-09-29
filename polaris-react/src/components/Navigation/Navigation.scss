@@ -198,7 +198,7 @@ $nav-max-width: 360px;
 }
 
 .ItemInnerWrapper-selected {
-  background-color: var(--p-color-bg-surface-selected);
+  background-color: var(--p-color-nav-bg-surface-selected);
 
   .Text {
     color: var(--p-color-text);
@@ -243,7 +243,7 @@ $nav-max-width: 360px;
       background: linear-gradient(
         to right,
         rgba(0, 0, 0, 0),
-        var(--p-color-bg-surface-selected) var(--p-space-800)
+        var(--p-color-nav-bg-surface-selected) var(--p-space-800)
       );
     }
   }
