@@ -153,6 +153,7 @@ const replacementMap1 = {
   '--p-color-icon-primary': '--p-color-icon-brand',
   '--p-color-icon-subdued': '--p-color-icon-secondary',
   '--p-color-icon-success-strong-experimental': '--p-color-text-success',
+  '--p-color-icon-warning-strong-experimental': '--p-color-text-warning',
   '--p-color-text-caution-strong': '--p-color-text-caution',
   '--p-color-text-critical-hover-experimental': '--p-color-text-critical-hover',
   '--p-color-text-critical-strong': '--p-color-text-critical',
