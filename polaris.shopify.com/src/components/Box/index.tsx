@@ -26,7 +26,7 @@ export interface BoxProps {
 
 export type OwnProps<T> = Polymorphic.OwnProps<T>;
 
-type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxProps>;
+type PolymorphicBox = Polymorphic.ForwardRefComponent<any, BoxProps>;
 
 /**
  * Box is the most abstract component on top of which other components are
