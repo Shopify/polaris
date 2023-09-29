@@ -14,7 +14,6 @@
       "import": "./dist/esm/build/index.mjs",
       "require": "./dist/cjs/build/index.js"
     },
-    "./json/*": "./dist/json/*",
     "./css/*": "./dist/css/*",
     "./scss/*": "./dist/scss/*"
   },
