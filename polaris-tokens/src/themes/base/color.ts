@@ -3,68 +3,7 @@ import * as colors from '../../colors';
 
 export type ColorBackgroundAlias =
   | 'bg'
-  | 'bg-active'
-  | 'bg-app'
-  | 'bg-app-hover'
-  | 'bg-app-selected'
-  | 'bg-caution'
-  | 'bg-caution-strong'
-  | 'bg-caution-subdued'
-  | 'bg-caution-subdued-active'
-  | 'bg-caution-subdued-hover'
-  | 'bg-critical'
-  | 'bg-critical-strong'
-  | 'bg-critical-strong-active'
-  | 'bg-critical-strong-hover'
-  | 'bg-critical-subdued'
-  | 'bg-critical-subdued-active'
-  | 'bg-critical-subdued-hover'
-  | 'bg-disabled'
-  | 'bg-hover'
-  | 'bg-info'
-  | 'bg-info-strong'
-  | 'bg-info-subdued'
-  | 'bg-info-subdued-active'
-  | 'bg-info-subdued-hover'
-  | 'bg-input'
-  | 'bg-inset'
-  | 'bg-inset-strong'
-  | 'bg-interactive'
-  | 'bg-interactive-active'
-  | 'bg-interactive-disabled'
-  | 'bg-interactive-hover'
-  | 'bg-interactive-selected'
-  | 'bg-interactive-subdued'
-  | 'bg-interactive-subdued-active'
-  | 'bg-interactive-subdued-hover'
   | 'bg-inverse'
-  | 'bg-inverse-active'
-  | 'bg-inverse-hover'
-  | 'bg-magic'
-  | 'bg-magic-hover'
-  | 'bg-magic-active'
-  | 'bg-magic-strong'
-  | 'bg-magic-subdued'
-  | 'bg-magic-subdued-hover'
-  | 'bg-magic-subdued-active'
-  | 'bg-primary'
-  | 'bg-primary-active'
-  | 'bg-primary-hover'
-  | 'bg-primary-subdued'
-  | 'bg-primary-subdued-active'
-  | 'bg-primary-subdued-hover'
-  | 'bg-primary-subdued-selected'
-  | 'bg-strong'
-  | 'bg-strong-active'
-  | 'bg-strong-hover'
-  | 'bg-subdued'
-  | 'bg-subdued-active'
-  | 'bg-subdued-hover'
-  | 'bg-success'
-  | 'bg-success-strong'
-  | 'bg-success-subdued'
-  | 'bg-success-subdued-hover'
-  | 'bg-warning'
   | 'bg-surface'
   | 'bg-surface-hover'
   | 'bg-surface-active'
@@ -182,37 +121,18 @@ export type ColorBackgroundAlias =
 export type ColorBorderAlias =
   | 'border'
   | 'border-caution'
-  | 'border-caution-subdued'
   | 'border-critical'
-  | 'border-critical-active'
-  | 'border-critical-hover'
-  | 'border-critical-subdued'
   | 'border-critical-secondary'
   | 'border-disabled'
   | 'border-hover'
   | 'border-focus'
   | 'border-info'
-  | 'border-info-subdued'
-  | 'border-input'
-  | 'border-input-hover'
-  | 'border-interactive'
-  | 'border-interactive-active'
-  | 'border-interactive-disabled'
-  | 'border-interactive-focus'
-  | 'border-interactive-hover'
-  | 'border-interactive-subdued'
   | 'border-inverse'
   | 'border-inverse-hover'
   | 'border-inverse-active'
   | 'border-magic'
-  | 'border-magic-strong'
   | 'border-magic-secondary'
-  | 'border-primary'
-  | 'border-strong'
-  | 'border-strong-hover'
-  | 'border-subdued'
   | 'border-success'
-  | 'border-success-subdued'
   | 'border-secondary'
   | 'border-tertiary'
   | 'border-brand'
@@ -233,16 +153,8 @@ export type ColorIconAlias =
   | 'icon-disabled'
   | 'icon-hover'
   | 'icon-info'
-  | 'icon-interactive'
-  | 'icon-interactive-active'
-  | 'icon-interactive-disabled'
-  | 'icon-interactive-hover'
-  | 'icon-interactive-inverse'
   | 'icon-inverse'
   | 'icon-magic'
-  | 'icon-on-color'
-  | 'icon-primary'
-  | 'icon-subdued'
   | 'icon-success'
   | 'icon-warning'
   | 'icon-secondary'
@@ -262,39 +174,23 @@ export type ColorTextAlias =
   | 'text-caution-hover'
   | 'text-caution-active'
   | 'text-caution-on-bg-fill'
-  | 'text-caution-strong'
   | 'text-critical'
   | 'text-critical-hover'
   | 'text-critical-active'
   | 'text-critical-on-bg-fill'
-  | 'text-critical-strong'
   | 'text-disabled'
   | 'text-info'
   | 'text-info-hover'
   | 'text-info-active'
   | 'text-info-on-bg-fill'
-  | 'text-info-strong'
-  | 'text-interactive'
-  | 'text-interactive-active'
-  | 'text-interactive-disabled'
-  | 'text-interactive-hover'
-  | 'text-interactive-inverse'
   | 'text-inverse'
   | 'text-inverse-secondary'
-  | 'text-inverse-subdued'
   | 'text-magic'
   | 'text-magic-on-bg-fill'
-  | 'text-magic-strong'
-  | 'text-on-color'
-  | 'text-primary'
-  | 'text-primary-hover'
-  | 'text-subdued'
   | 'text-success'
   | 'text-success-hover'
   | 'text-success-active'
   | 'text-success-on-bg-fill'
-  | 'text-success-strong'
-  | 'text-warning-strong'
   | 'text-warning'
   | 'text-warning-hover'
   | 'text-warning-active'
@@ -611,208 +507,13 @@ export const color: {
   'color-bg-inverse': {
     value: colors.gray[16],
   },
-  'color-bg-inset-strong': {
-    value: colors.gray[15],
-  },
-  'color-bg-inverse-hover': {
-    value: colors.gray[14],
-  },
-  'color-bg-inverse-active': {
-    value: colors.gray[13],
-  },
-  'color-bg-strong-hover': {
-    value: colors.gray[9],
-  },
-  'color-bg-strong-active': {
-    value: colors.gray[10],
-  },
-  'color-bg-strong': {
-    value: colors.gray[8],
-  },
-  'color-bg-subdued-active': {
-    value: colors.gray[7],
-  },
-  'color-bg-disabled': {
-    value: colors.gray[7],
-  },
-  'color-bg-interactive-disabled': {
-    value: colors.gray[7],
-  },
-  'color-bg-app': {
-    value: colors.gray[6],
-  },
-  'color-bg-app-hover': {
-    value: colors.gray[2],
-  },
-  'color-bg-app-selected': {
-    value: colors.gray[3],
-  },
-  'color-bg-active': {
-    value: colors.gray[4],
-  },
-  'color-bg-subdued-hover': {
-    value: colors.gray[6],
-  },
-  'color-bg-inset': {
-    value: colors.gray[6],
-  },
-  'color-bg-hover': {
-    value: colors.gray[3],
-  },
-  'color-bg-subdued': {
-    value: colors.gray[4],
-  },
-  'color-bg-input': {
-    value: colors.gray[1],
-  },
   'color-bg': {
     value: colors.gray[1],
-  },
-  'color-bg-primary-active': {
-    value: colors.gray[16],
-  },
-  'color-bg-primary-hover': {
-    value: colors.gray[16],
-  },
-  'color-bg-primary': {
-    value: colors.gray[15],
-  },
-  'color-bg-success-strong': {
-    value: colors.green[12],
-  },
-  'color-bg-success': {
-    value: colors.green[3],
-  },
-  'color-bg-primary-subdued-active': {
-    value: colors.gray[6],
-  },
-  'color-bg-success-subdued': {
-    value: colors.green[3],
-  },
-  'color-bg-primary-subdued-hover': {
-    value: colors.gray[7],
-  },
-  'color-bg-success-subdued-hover': {
-    value: colors.green[5],
-  },
-  'color-bg-primary-subdued': {
-    value: colors.gray[8],
-  },
-  'color-bg-primary-subdued-selected': {
-    value: colors.gray[6],
-  },
-  'color-bg-critical-strong-active': {
-    value: colors.red[14],
-  },
-  'color-bg-critical-strong-hover': {
-    value: colors.red[13],
-  },
-  'color-bg-critical-strong': {
-    value: colors.red[12],
-  },
-  'color-bg-critical-subdued-active': {
-    value: colors.red[6],
-  },
-  'color-bg-critical': {
-    value: colors.red[6],
-  },
-  'color-bg-critical-subdued': {
-    value: colors.red[4],
-  },
-  'color-bg-critical-subdued-hover': {
-    value: colors.red[5],
-  },
-  'color-bg-caution-strong': {
-    value: colors.yellow[6],
-  },
-  'color-bg-caution': {
-    value: colors.yellow[4],
-  },
-  'color-bg-caution-subdued-active': {
-    value: colors.yellow[4],
-  },
-  'color-bg-caution-subdued': {
-    value: colors.yellow[2],
-  },
-  'color-bg-caution-subdued-hover': {
-    value: colors.yellow[3],
-  },
-  'color-bg-info-strong': {
-    value: colors.azure[9],
-  },
-  'color-bg-info-subdued-active': {
-    value: colors.azure[6],
-  },
-  'color-bg-info': {
-    value: colors.azure[4],
-  },
-  'color-bg-info-subdued': {
-    value: colors.azure[3],
-  },
-  'color-bg-info-subdued-hover': {
-    value: colors.azure[4],
-  },
-  'color-bg-interactive-active': {
-    value: colors.gray[14],
-  },
-  'color-bg-interactive-hover': {
-    value: colors.gray[15],
-  },
-  'color-bg-interactive': {
-    value: colors.gray[16],
-  },
-  'color-bg-interactive-subdued-active': {
-    value: colors.gray[6],
-  },
-  'color-bg-interactive-subdued-hover': {
-    value: colors.gray[7],
-  },
-  'color-bg-interactive-subdued': {
-    value: colors.gray[8],
-  },
-  'color-bg-interactive-selected': {
-    value: colors.gray[6],
-  },
-  'color-bg-warning': {
-    value: colors.orange[7],
-  },
-  'color-bg-magic-strong': {
-    value: colors.purple[12],
-  },
-  'color-bg-magic-hover': {
-    value: colors.purple[7],
-  },
-  'color-bg-magic-active': {
-    value: colors.purple[8],
-  },
-  'color-bg-magic': {
-    value: colors.purple[6],
-  },
-  'color-bg-magic-subdued-hover': {
-    value: colors.purple[4],
-  },
-  'color-bg-magic-subdued-active': {
-    value: colors.purple[6],
-  },
-  'color-bg-magic-subdued': {
-    value: colors.purple[3],
-  },
-  'color-border-input-hover': {
-    value: colors.gray[13],
   },
   'color-border-inverse': {
     value: colors.gray[13],
   },
-  'color-border-strong-hover': {
-    value: colors.gray[11],
-  },
-  'color-border-input': {
-    value: colors.gray[12],
-  },
   'color-border-hover': {
-    value: colors.gray[10],
-  },
-  'color-border-strong': {
     value: colors.gray[10],
   },
   'color-border': {
@@ -821,62 +522,17 @@ export const color: {
   'color-border-disabled': {
     value: colors.gray[7],
   },
-  'color-border-subdued': {
-    value: colors.gray[7],
-  },
-  'color-border-interactive-disabled': {
-    value: colors.gray[7],
-  },
-  'color-border-primary': {
-    value: colors.gray[8],
-  },
   'color-border-success': {
     value: colors.green[5],
   },
-  'color-border-success-subdued': {
-    value: colors.green[5],
-  },
-  'color-border-critical-active': {
-    value: colors.red[11],
-  },
-  'color-border-critical-hover': {
-    value: colors.red[10],
-  },
   'color-border-critical': {
-    value: colors.red[9],
-  },
-  'color-border-critical-subdued': {
-    value: colors.red[9],
+    value: colors.red[8],
   },
   'color-border-caution': {
     value: colors.yellow[5],
   },
-  'color-border-caution-subdued': {
-    value: colors.yellow[5],
-  },
   'color-border-info': {
-    value: colors.azure[9],
-  },
-  'color-border-info-subdued': {
-    value: colors.azure[9],
-  },
-  'color-border-interactive-active': {
-    value: colors.blue[15],
-  },
-  'color-border-interactive-hover': {
-    value: colors.blue[14],
-  },
-  'color-border-interactive': {
-    value: colors.blue[13],
-  },
-  'color-border-interactive-focus': {
-    value: colors.blue[13],
-  },
-  'color-border-interactive-subdued': {
-    value: colors.blue[13],
-  },
-  'color-border-magic-strong': {
-    value: colors.purple[12],
+    value: colors.azure[8],
   },
   'color-border-magic': {
     value: colors.purple[10],
@@ -887,23 +543,11 @@ export const color: {
   'color-icon': {
     value: colors.gray[14],
   },
-  'color-icon-subdued': {
-    value: colors.gray[12],
-  },
   'color-icon-disabled': {
-    value: colors.gray[10],
-  },
-  'color-icon-interactive-disabled': {
     value: colors.gray[10],
   },
   'color-icon-inverse': {
     value: colors.gray[8],
-  },
-  'color-icon-on-color': {
-    value: colors.gray[1],
-  },
-  'color-icon-primary': {
-    value: colors.gray[16],
   },
   'color-icon-success': {
     value: colors.green[12],
@@ -920,56 +564,20 @@ export const color: {
   'color-icon-warning': {
     value: colors.orange[11],
   },
-  'color-icon-interactive-active': {
-    value: colors.blue[15],
-  },
-  'color-icon-interactive-hover': {
-    value: colors.blue[14],
-  },
-  'color-icon-interactive': {
-    value: colors.blue[13],
-  },
-  'color-icon-interactive-inverse': {
-    value: colors.blue[8],
-  },
   'color-icon-magic': {
     value: colors.purple[13],
   },
   'color-text': {
     value: colors.gray[15],
   },
-  'color-text-subdued': {
-    value: colors.gray[13],
-  },
   'color-text-disabled': {
     value: colors.gray[11],
-  },
-  'color-text-interactive-disabled': {
-    value: colors.gray[10],
-  },
-  'color-text-inverse-subdued': {
-    value: colors.gray[10],
   },
   'color-text-inverse': {
     value: colors.gray[8],
   },
-  'color-text-on-color': {
-    value: colors.gray[1],
-  },
-  'color-text-success-strong': {
-    value: colors.green[15],
-  },
   'color-text-success': {
-    value: colors.green[15],
-  },
-  'color-text-primary': {
-    value: colors.gray[14],
-  },
-  'color-text-primary-hover': {
-    value: colors.gray[14],
-  },
-  'color-text-critical-strong': {
-    value: colors.red[14],
+    value: colors.green[14],
   },
   'color-text-critical-active': {
     value: colors.red[16],
@@ -977,35 +585,11 @@ export const color: {
   'color-text-critical': {
     value: colors.red[14],
   },
-  'color-text-caution-strong': {
-    value: colors.yellow[15],
-  },
   'color-text-caution': {
-    value: colors.yellow[15],
-  },
-  'color-text-info-strong': {
-    value: colors.azure[16],
+    value: colors.yellow[14],
   },
   'color-text-info': {
     value: colors.azure[14],
-  },
-  'color-text-warning-strong': {
-    value: colors.orange[16],
-  },
-  'color-text-interactive-active': {
-    value: colors.blue[15],
-  },
-  'color-text-interactive-hover': {
-    value: colors.blue[14],
-  },
-  'color-text-interactive': {
-    value: colors.blue[13],
-  },
-  'color-text-interactive-inverse': {
-    value: colors.blue[8],
-  },
-  'color-text-magic-strong': {
-    value: colors.purple[15],
   },
   'color-text-magic': {
     value: colors.purple[14],
