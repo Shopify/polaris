@@ -14,7 +14,7 @@
 
     &:active {
       /* stylelint-disable-next-line declaration-no-important -- override box shadow */
-      box-shadow: var(--p-shadow-inset-md) !important;
+      box-shadow: var(--p-shadow-inset-200) !important;
     }
 
     &:active,

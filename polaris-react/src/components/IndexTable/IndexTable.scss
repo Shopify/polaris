@@ -72,7 +72,7 @@ $loading-panel-height: 53px;
   align-items: center;
   background: var(--p-color-bg-surface);
   padding: var(--p-space-200) var(--p-space-400);
-  box-shadow: var(--p-shadow-md);
+  box-shadow: var(--p-shadow-300);
 
   .LoadingPanelRow {
     display: flex;
@@ -946,7 +946,7 @@ $loading-panel-height: 53px;
 
 .StickyTableHeader-isSticky {
   visibility: visible;
-  box-shadow: var(--p-shadow-xs);
+  box-shadow: var(--p-shadow-100);
   background-color: var(--p-color-bg-subdued);
 }
 

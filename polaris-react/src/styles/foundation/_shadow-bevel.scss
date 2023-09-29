@@ -25,7 +25,7 @@
     bottom: 0;
     // stylelint-disable-next-line -- Not expected to use Polaris custom properties
     z-index: $zIndex;
-    box-shadow: var(--p-shadow-bevel-experimental);
+    box-shadow: var(--p-shadow-bevel-100);
     border-radius: $borderRadius;
     pointer-events: none;
     mix-blend-mode: luminosity;
