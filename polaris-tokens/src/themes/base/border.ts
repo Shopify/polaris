@@ -1,7 +1,7 @@
 import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 import {size} from '../../size';
-import {createVar as createVarName} from '../../utilities';
+import {createVar as createVarName} from '../../utils';
 
 type BorderRadiusScaleExperimental = Experimental<'0' | '1_5'>;
 

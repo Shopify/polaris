@@ -1,6 +1,6 @@
 import {size} from '../../size';
 import type {Experimental} from '../../types';
-import {createVarName} from '../../utilities';
+import {createVarName} from '../../utils';
 import type {MetaTokenProperties} from '../types';
 
 type SpaceScaleExperimental = Experimental<'1_5'>;

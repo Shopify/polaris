@@ -8,7 +8,7 @@ import {
   toRem,
   getUnit,
   getMediaConditions,
-} from '../src/utilities';
+} from '../src/utils';
 import {resolveMetaThemeRefs} from '../src/themes/utils';
 
 const mockTokenGroup = {

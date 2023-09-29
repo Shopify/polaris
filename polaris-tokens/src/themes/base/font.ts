@@ -1,7 +1,7 @@
 import {size} from '../../size';
 import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
-import {createVar as createVarName} from '../../utilities';
+import {createVar as createVarName} from '../../utils';
 
 export type FontFamilyPrefix = 'font-family';
 type FontFamilyAlias = 'sans' | 'mono';

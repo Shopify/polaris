@@ -1,7 +1,7 @@
 import deepmerge from 'deepmerge';
 
 import type {Entry, Exact} from '../types';
-import {createExact} from '../utilities';
+import {createExact} from '../utils';
 
 import type {
   ExtractMetaThemeValues,

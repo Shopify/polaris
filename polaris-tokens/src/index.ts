@@ -9,7 +9,7 @@ export {
   toPx,
   toPxs,
   toRem,
-} from './utilities';
+} from './utils';
 
 export {metaThemes} from './themes';
 

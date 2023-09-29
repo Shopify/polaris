@@ -5,7 +5,7 @@ import type {MetaThemeShape, MetaTokenGroupShape} from '../src/themes/types';
 import {metaThemePartials, metaThemeDefault} from '../src/themes';
 import {themeNameDefault} from '../src/themes/constants';
 import {createThemeSelector} from '../src/themes/utils';
-import {createVar} from '../src/utilities';
+import {createVar} from '../src/utils';
 import type {Entries} from '../src/types';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');

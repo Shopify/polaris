@@ -1,4 +1,4 @@
-import {createExact, tokensToRems} from '../../utilities';
+import {createExact, tokensToRems} from '../../utils';
 import type {MetaThemeShape} from '../types';
 
 import {border} from './border';
