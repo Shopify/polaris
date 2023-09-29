@@ -1,5 +1,3 @@
-import type {Metadata} from './metadata';
-
 export type Entry<T> = [keyof T, T[keyof T]];
 export type Entries<T> = Entry<T>[];
 export type Experimental<T extends string> = `${T}-experimental`;
@@ -19,10 +17,6 @@ export interface MetadataBase {
 
 export type TokenGroup<T extends MetadataGroup = MetadataGroup> = {
   [K in keyof T]: T[K]['value'];
-};
-
-export type Tokens = {
-  [TokenGroupName in keyof Metadata]: TokenGroup<Metadata[TokenGroupName]>;
 };
 
 // The following utility types are copied directly from `type-fest`:

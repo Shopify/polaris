@@ -1,9 +1,10 @@
-import type {Entry, Exact, MetadataGroup, Tokens, TokenGroup} from './types';
+import type {Entry, Exact, MetadataGroup, TokenGroup} from './types';
 import type {
   breakpoints as metaBreakpointsTokenGroup,
   BreakpointsTokenGroup,
   BreakpointsTokenName,
 } from './themes/base/breakpoints';
+import type {Theme} from './themes/types';
 
 const BASE_FONT_SIZE = 16;
 
@@ -123,12 +124,10 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
  *
  * Result: ['--p-color-bg-app', '--p-color-text', etc...]
  */
-export function getCustomPropertyNames(tokens: Tokens) {
-  return Object.entries(tokens)
-    .map(([_, tokenGroup]: [string, TokenGroup]) =>
-      Object.keys(tokenGroup).map((token) => createVar(token)),
-    )
-    .flat();
+export function getCustomPropertyNames(theme: Theme) {
+  return Object.values(theme).flatMap((tokenGroup) =>
+    Object.keys(tokenGroup).map((token) => createVar(token)),
+  );
 }
 
 export function removeMetadata<T extends Exact<MetadataGroup, T>>(

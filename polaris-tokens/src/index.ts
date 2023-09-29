@@ -1,11 +1,6 @@
 export * from './utilities';
 export {breakpointsAliases} from './themes/base/breakpoints';
-export type {
-  TokenGroup,
-  Tokens,
-  MetadataProperties,
-  MetadataGroup,
-} from './types';
+export type {TokenGroup, MetadataProperties, MetadataGroup} from './types';
 
 export {metaThemes} from './themes';
 
