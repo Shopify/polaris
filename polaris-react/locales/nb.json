@@ -215,7 +215,6 @@
         "rename": "Gi visning nytt navn",
         "duplicate": "Dupliser visning",
         "edit": "Rediger visning",
-        "editColumns": "Rediger kolonner",
         "delete": "Slett visning",
         "copy": "Kopi av {name}",
         "deleteModal": {
@@ -390,6 +389,10 @@
           "save": "Lagre",
           "cancel": "Avbryt"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Endre kolonner",
+        "accessibilityLabel": "Tilpass kolonnerekkefølge og -synlighet i tabellen"
       }
     },
     "ActionList": {

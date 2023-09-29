@@ -215,7 +215,6 @@
         "rename": "Renomear visualização",
         "duplicate": "Duplicar visualização",
         "edit": "Editar visualização",
-        "editColumns": "Editar colunas",
         "delete": "Excluir visualização",
         "copy": "Cópia de {name}",
         "deleteModal": {
@@ -391,6 +390,10 @@
           "save": "Salvar",
           "cancel": "Cancelar"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Editar colunas",
+        "accessibilityLabel": "Personalizar a ordem e a visibilidade das colunas da tabela"
       }
     },
     "ActionList": {

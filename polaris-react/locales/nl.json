@@ -215,7 +215,6 @@
         "rename": "Naam van weergave wijzigen",
         "duplicate": "Weergave dupliceren",
         "edit": "Weergave bewerken",
-        "editColumns": "Kolommen bewerken",
         "delete": "Weergave verwijderen",
         "copy": "Kopie van {name}",
         "deleteModal": {
@@ -390,6 +389,10 @@
           "save": "Opslaan",
           "cancel": "Annuleren"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Kolommen bewerken",
+        "accessibilityLabel": "Kolomvolgorde en zichtbaarheid van tabel aanpassen"
       }
     },
     "ActionList": {

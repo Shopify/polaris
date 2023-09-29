@@ -215,7 +215,6 @@
         "rename": "Zmień nazwę widoku",
         "duplicate": "Duplikuj widok",
         "edit": "Edytuj widok",
-        "editColumns": "Edytuj kolumny",
         "delete": "Usuń widok",
         "copy": "Kopia {name}",
         "deleteModal": {
@@ -392,6 +391,10 @@
           "save": "Zapisz",
           "cancel": "Anuluj"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Edytuj kolumny",
+        "accessibilityLabel": "Dostosuj kolejność i widoczność kolumn tabeli"
       }
     },
     "ActionList": {
