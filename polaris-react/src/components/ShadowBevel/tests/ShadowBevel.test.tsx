@@ -6,7 +6,7 @@ import {ShadowBevel} from '..';
 describe('ShadowBevel', () => {
   it('renders children', () => {
     const shadowBevel = mountWithApp(
-      <ShadowBevel boxShadow="md" borderRadius="300">
+      <ShadowBevel boxShadow="300" borderRadius="300">
         <p>hello</p>
         <p>world</p>
       </ShadowBevel>,
@@ -17,7 +17,7 @@ describe('ShadowBevel', () => {
 
   it('disables bevel effect', () => {
     const shadowBevel = mountWithApp(
-      <ShadowBevel boxShadow="md" borderRadius="300" bevel={false} />,
+      <ShadowBevel boxShadow="300" borderRadius="300" bevel={false} />,
     );
 
     expect(shadowBevel).toContainReactComponent('div', {
@@ -31,12 +31,12 @@ describe('ShadowBevel', () => {
 
   it('sets boxShadow and borderRadius props as inline styles', () => {
     const shadowBevel = mountWithApp(
-      <ShadowBevel boxShadow="md" borderRadius="300" />,
+      <ShadowBevel boxShadow="300" borderRadius="300" />,
     );
 
     expect(shadowBevel).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--pc-shadow-bevel-box-shadow-xs': 'var(--p-shadow-md)',
+        '--pc-shadow-bevel-box-shadow-xs': 'var(--p-shadow-300)',
         '--pc-shadow-bevel-border-radius-xs': 'var(--p-border-radius-300)',
         '--pc-shadow-bevel-content-xs': '""',
       }),
@@ -46,7 +46,7 @@ describe('ShadowBevel', () => {
   it('sets boxShadow and borderRadius props as responsive inline styles', () => {
     const shadowBevel = mountWithApp(
       <ShadowBevel
-        boxShadow="md"
+        boxShadow="300"
         borderRadius="300"
         bevel={{xs: false, sm: true, lg: false}}
       />,
@@ -55,7 +55,7 @@ describe('ShadowBevel', () => {
     expect(shadowBevel).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-shadow-bevel-box-shadow-xs': 'none',
-        '--pc-shadow-bevel-box-shadow-sm': 'var(--p-shadow-md)',
+        '--pc-shadow-bevel-box-shadow-sm': 'var(--p-shadow-300)',
         '--pc-shadow-bevel-box-shadow-lg': 'none',
         '--pc-shadow-bevel-border-radius-xs': 'var(--p-border-radius-0)',
         '--pc-shadow-bevel-border-radius-sm': 'var(--p-border-radius-300)',
@@ -69,7 +69,7 @@ describe('ShadowBevel', () => {
 
   it('sets as prop to the root element', () => {
     const shadowBevel = mountWithApp(
-      <ShadowBevel as="article" boxShadow="md" borderRadius="300" />,
+      <ShadowBevel as="article" boxShadow="300" borderRadius="300" />,
     );
 
     expect(shadowBevel).toContainReactComponent('article');
