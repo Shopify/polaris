@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import {metaThemes, metaThemeDefault} from '../src/themes';
+import {metaThemes} from '../src/themes';
 import {
   extractMetaThemeValues,
   resolveMetaThemeRefs,
@@ -15,10 +15,6 @@ export async function toValues() {
       throw error;
     }
   });
-
-  const themeDefault = extractMetaThemeValues(
-    resolveMetaThemeRefs(metaThemeDefault),
-  );
 
   await fs.promises.writeFile(
     path.join(outputDir, 'index.ts'),
