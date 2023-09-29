@@ -131,7 +131,7 @@
 }
 
 .Tab-active {
-  background: var(--p-color-bg-transparent-active-experimental);
+  background: var(--p-color-bg-fill-transparent-selected);
   border-radius: var(--p-border-radius-200);
   color: var(--p-color-text);
 
@@ -147,7 +147,7 @@
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-transparent-active-experimental);
+    background-color: var(--p-color-bg-fill-transparent-selected);
     color: var(--p-color-text-primary);
   }
 }
