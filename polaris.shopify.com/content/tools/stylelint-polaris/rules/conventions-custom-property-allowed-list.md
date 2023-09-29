@@ -29,7 +29,7 @@ Flags declaration property values using `--p-*` that are not valid Polaris token
 
 ```diff
 // Do
-+ font-size: var(--p-font-size-200);
++ font-size: var(--p-font-size-400);
 // Don't
 - font-size: var(--p-fontsize-200);
 ```
