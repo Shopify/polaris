@@ -12,6 +12,7 @@ import {
   ScrollLockManager,
   ScrollLockManagerContext,
 } from '../../utilities/scroll-lock-manager';
+// eslint-disable-next-line import/no-deprecated
 import {IndexFiltersManager} from '../../utilities/index-filters';
 import {
   StickyManager,

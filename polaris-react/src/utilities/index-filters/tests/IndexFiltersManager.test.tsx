@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {IndexFiltersMode} from '../types';
+// eslint-disable-next-line import/no-deprecated
 import {IndexFiltersManager} from '../IndexFiltersManager';
 import {useSetIndexFiltersMode} from '../hooks';
 
