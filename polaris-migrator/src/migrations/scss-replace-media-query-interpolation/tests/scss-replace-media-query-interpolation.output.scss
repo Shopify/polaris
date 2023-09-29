@@ -1,0 +1,27 @@
+.Selector {
+  max-width: 100px;
+
+  @media (env(--p-breakpoints-md-down)) {
+    max-width: 200px;
+  }
+
+  @media only screen and (env(--p-breakpoints-md-only)) {
+    max-width: 300px;
+  }
+
+  @media (env(--p-breakpoints-md-up)) and (env(--p-breakpoints-lg-down)) {
+    max-width: 400px;
+  }
+
+  @container app-card (env(--p-breakpoints-sm-down)) {
+    max-width: 500px;
+  }
+
+  @media (env(--p-breakpoints-md-up)) and #{legacy-polaris-v8.breakpoints-down(variables.$home-scroll-greeting-sidebar-hidden)} {
+    max-width: 600px;
+  }
+
+  @media #{legacy-polaris-v8.breakpoints-down(variables.$home-scroll-greeting-sidebar-hidden)} and (env(--p-breakpoints-md-up)) {
+    max-width: 700px;
+  }
+}
