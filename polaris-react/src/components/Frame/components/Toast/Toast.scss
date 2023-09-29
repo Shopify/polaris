@@ -28,7 +28,7 @@ $Backdrop-opacity: 0.88;
 
 .Action {
   margin-left: var(--p-space-400);
-  color: var(--p-color-text-on-color);
+  color: var(--p-color-text-inverse);
 }
 
 .error {
@@ -71,6 +71,6 @@ $Backdrop-opacity: 0.88;
 
   &:focus,
   &:hover {
-    color: var(--p-color-text-on-color);
+    color: var(--p-color-text-inverse);
   }
 }
