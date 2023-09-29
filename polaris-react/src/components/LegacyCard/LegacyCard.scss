@@ -7,7 +7,7 @@
   overflow: clip;
 
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-xs),
+    $boxShadow: var(--p-shadow-100),
     $borderRadius: var(--p-border-radius-0),
     $zIndex: 101
   );
@@ -30,7 +30,7 @@
     border-radius: var(--p-border-radius-200);
 
     @include shadow-bevel(
-      $boxShadow: var(--p-shadow-xs),
+      $boxShadow: var(--p-shadow-100),
       $borderRadius: var(--p-border-radius-300),
       $zIndex: 101
     );

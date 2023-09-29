@@ -23,7 +23,7 @@
   transition: none;
 
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-md),
+    $boxShadow: var(--p-shadow-300),
     $borderRadius: var(--pc-tooltip-border-radius),
     $zIndex: var(--pc-tooltip-shadow-bevel-z-index)
   );
