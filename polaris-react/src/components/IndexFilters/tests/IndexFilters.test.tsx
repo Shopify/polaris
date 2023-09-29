@@ -5,8 +5,7 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Tabs} from '../../Tabs';
 import {Filters} from '../../Filters';
-import {IndexFilters} from '..';
-import {IndexFiltersMode} from '../../../utilities/index-filters';
+import {IndexFilters, IndexFiltersMode} from '..';
 import type {IndexFiltersProps} from '../IndexFilters';
 import {SearchFilterButton, SortButton, UpdateButtons} from '../components';
 

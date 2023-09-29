@@ -55,12 +55,12 @@ $bulk-actions-button-stacking-order: (
   padding: var(--p-space-300);
   background: var(--p-color-bg);
   border-radius: var(--p-border-radius-200);
-  box-shadow: var(--p-shadow-md), var(--p-shadow-xl);
+  box-shadow: var(--p-shadow-300), var(--p-shadow-500);
   max-width: 100%;
   pointer-events: auto;
 
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-md),
+    $boxShadow: var(--p-shadow-300),
     $borderRadius: var(--p-border-radius-300)
   );
 
@@ -123,7 +123,7 @@ $bulk-actions-button-stacking-order: (
     // stylelint-disable-next-line -- Bulk actions button override
     &:focus-visible,
     &:active {
-      box-shadow: var(--p-shadow-inset-md);
+      box-shadow: var(--p-shadow-inset-200);
     }
   }
 }

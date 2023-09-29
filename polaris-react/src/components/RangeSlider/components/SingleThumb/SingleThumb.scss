@@ -277,7 +277,7 @@ $range-output-translate-x: calc(
 .OutputBubble {
   position: relative;
   display: flex;
-  box-shadow: var(--p-shadow-xl);
+  box-shadow: var(--p-shadow-500);
   padding: 0 var(--p-space-200);
   min-width: $range-output-size;
   height: $range-output-size;

@@ -13,7 +13,6 @@ import type {FiltersProps} from '../Filters';
 import {Tabs} from '../Tabs';
 import type {TabsProps} from '../Tabs';
 import {useBreakpoints} from '../../utilities/breakpoints';
-import {IndexFiltersMode} from '../../utilities/index-filters';
 
 import {useIsSticky} from './hooks';
 import {
@@ -27,6 +26,7 @@ import type {
   IndexFiltersCancelAction,
   SortButtonChoice,
 } from './types';
+import {IndexFiltersMode} from './types';
 import styles from './IndexFilters.scss';
 
 const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];

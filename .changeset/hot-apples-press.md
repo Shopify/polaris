@@ -2,7 +2,7 @@
 '@shopify/polaris': major
 ---
 
-Renamed `size` prop values for the Avatar component. See the following table for the new prop mappings.
+Renamed `size` prop values for the `Avatar` component. See the following table for the new prop mappings.
 
 | Before                    | After       |
 | ------------------------- | ----------- |

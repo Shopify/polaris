@@ -49,7 +49,7 @@ export const Card = ({
   return (
     <WithinContentContext.Provider value>
       <ShadowBevel
-        boxShadow="xs"
+        boxShadow="100"
         borderRadius={hasBorderRadius ? defaultBorderRadius : '0'}
         zIndex="32"
       >
