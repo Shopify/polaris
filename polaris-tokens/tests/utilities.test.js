@@ -1,6 +1,6 @@
 import {
   createVar,
-  getCustomPropertyNames,
+  getThemeVarNames,
   getKeyframeNames,
   tokensToRems,
   toPx,
@@ -50,9 +50,9 @@ describe('createVar', () => {
   });
 });
 
-describe('getCustomPropertyNames', () => {
+describe('getThemeVarNames', () => {
   it('extracts the token names', () => {
-    expect(getCustomPropertyNames(mockTokens)).toStrictEqual([
+    expect(getThemeVarNames(mockTokens)).toStrictEqual([
       '--p-design-token-1',
       '--p-design-token-2',
     ]);

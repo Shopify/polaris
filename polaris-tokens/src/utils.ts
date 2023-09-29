@@ -124,7 +124,7 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
  *
  * Result: ['--p-color-bg-app', '--p-color-text', etc...]
  */
-export function getCustomPropertyNames(theme: Theme) {
+export function getThemeVarNames(theme: Theme) {
   return Object.values(theme).flatMap((tokenGroup) =>
     Object.keys(tokenGroup).map((token) => createVar(token)),
   );

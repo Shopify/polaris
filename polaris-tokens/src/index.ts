@@ -4,7 +4,7 @@ export type {TokenGroup, MetadataProperties, MetadataGroup} from './types';
 export {
   createVar,
   createVarName,
-  getCustomPropertyNames,
+  getThemeVarNames,
   getMediaConditions,
   toPx,
   toPxs,
