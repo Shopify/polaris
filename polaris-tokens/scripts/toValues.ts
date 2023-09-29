@@ -24,7 +24,6 @@ export async function toValues() {
     path.join(outputDir, 'index.ts'),
     [
       `export * from '../src/index';`,
-      Object.entries(themeDefault).map(createExport),
       createExport([
         'themes',
         Object.fromEntries(
