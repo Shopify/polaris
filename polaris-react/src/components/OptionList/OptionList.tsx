@@ -128,7 +128,7 @@ export function OptionList({
             paddingInlineStart="150"
             paddingBlockEnd="100"
             paddingInlineEnd="150"
-            borderColor="border-subdued"
+            borderColor="border-secondary"
           >
             <Text as={titleLevel} variant="headingXs">
               {title}
