@@ -18,7 +18,7 @@ import RulePostamble from '../_postamble.md';
 
 ```diff
 // Do
-+ border-radius: var(--p-border-radius-1);
++ border-radius: var(--p-border-radius-100);
 // Don't
 - border-radius: border-radius();
 ```
