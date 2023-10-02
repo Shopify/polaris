@@ -11,6 +11,8 @@ import type {
   MetaThemePartialShape,
   MetaTokenGroupShape,
   ThemeName,
+  TokenName,
+  Theme,
 } from './types';
 import {metaThemeBase} from './base';
 
@@ -89,3 +91,20 @@ export function resolveMetaThemeRefs<T extends MetaThemeShape>(
     ]),
   ) as T;
 }
+
+export function createIsTokenName(theme: Theme | MetaTheme) {
+  const tokenNames = new Set(
+    Object.values(theme).flatMap((tokenGroup) =>
+      Object.keys(tokenGroup),
+    ) as TokenName[],
+  );
+
+  return (tokenName: unknown): tokenName is TokenName =>
+    tokenNames.has(tokenName as TokenName);
+}
+
+/**
+ * Important: Do not export from Polaris tokens. This utility is exposed
+ * in the `toValues` build step to ensure the `metaTheme` isn't in client bundles.
+ */
+export const isTokenName = createIsTokenName(metaThemeBase);

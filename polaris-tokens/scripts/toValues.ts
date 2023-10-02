@@ -19,6 +19,8 @@ export async function toValues() {
   await fs.promises.writeFile(
     path.join(outputDir, 'index.ts'),
     [
+      `import {themeNameDefault} from '../src/index';`,
+      `import {createIsTokenName} from '../src/themes/utils';`,
       `export * from '../src/index';`,
       createExport([
         'themes',
@@ -29,6 +31,7 @@ export async function toValues() {
           ]),
         ),
       ]),
+      `export const isTokenName = createIsTokenName(themes[themeNameDefault]);`,
     ]
       .flat()
       .join('\n'),

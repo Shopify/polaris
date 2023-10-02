@@ -127,7 +127,7 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
 export function getThemeVarNames(theme: Theme) {
   return Object.values(theme).flatMap((tokenGroup) =>
     Object.keys(tokenGroup).map((tokenName) =>
-      createVarName(tokenName as TokenName),
+      createVarName(tokenName as keyof typeof tokenGroup),
     ),
   );
 }
