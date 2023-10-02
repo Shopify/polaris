@@ -12,20 +12,20 @@ export default {
 export function Default() {
   const colors: BoxProps[] = [
     {
-      background: 'bg-success-strong',
-      color: 'text-on-color',
+      background: 'bg-fill-success',
+      color: 'text-success-on-bg-fill',
     },
     {
-      background: 'bg-info-strong',
-      color: 'text-info-strong',
+      background: 'bg-fill-info',
+      color: 'text-info-on-bg-fill',
     },
     {
-      background: 'bg-warning-strong-experimental',
-      color: 'text-warning-strong',
+      background: 'bg-fill-warning',
+      color: 'text-warning-on-bg-fill',
     },
     {
-      background: 'bg-critical-strong',
-      color: 'text-on-color',
+      background: 'bg-fill-critical',
+      color: 'text-critical-on-bg-fill',
     },
   ];
 

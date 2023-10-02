@@ -33,7 +33,7 @@ const Placeholder = ({
       <InlineStack gap="400" align="center" blockAlign="center">
         <div
           style={{
-            color: 'var(--p-color-text-on-color)',
+            color: 'var(--p-color-text-info-on-bg-fill)',
             width: width ?? undefined,
           }}
         >

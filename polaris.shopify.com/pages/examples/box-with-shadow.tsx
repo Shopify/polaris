@@ -22,7 +22,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
     >
       <div
         style={{
-          color: 'var(--p-color-text-on-color)',
+          color: 'var(--p-color-text-info-on-bg-fill)',
         }}
       >
         <Text as="p" variant="bodyMd">
