@@ -10,6 +10,7 @@ export interface IndexFiltersManagerProps {
 
 type Context = NonNullable<ContextType<typeof IndexFiltersModeContext>>;
 
+/** @deprecated No longer needed, will be removing in v12 */
 export function IndexFiltersManager({children}: IndexFiltersManagerProps) {
   const [mode, setMode] = useState<Context['mode']>(IndexFiltersMode.Default);
 
