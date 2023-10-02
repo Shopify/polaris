@@ -840,6 +840,30 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
   npx stylelint <path>
   ```
 
+### Token utility updates
+
+#### Renames
+
+- `getCustomPropertyNames` renamed to `getThemeVarNames`
+
+#### Type deprecations
+
+- `Tokens` type is now deprecated, use the `Theme` type instead
+
+#### Utility deprecations
+
+If you are using these utilities, feel free to copy them from v11 into your own codebase.
+
+- `createExact`
+- `getKeyframeNames`
+- `getUnit`
+- `isKeyOf`
+- `rem`
+- `removeMetadata`
+- `toEm`
+- `tokensToRems`
+- `toJSON`
+
 ## Manual updates and fixes
 
 ### A new web font
