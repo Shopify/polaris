@@ -456,47 +456,51 @@ To replace these deprecated `font` custom properties, you can run the [v12-style
 + line-height: var(--p-font-line-height-400);
 ```
 
-**⚠️ Important**: The font migration needs to be run in 4 sequential steps due to overlapping `font-size` token names. After each migration step, run the associated post-migration validation regex and handle any manual migrations.
+**⚠️ Important**: The font migration needs to be run in 4 sequential steps due to overlapping `font-size` token names.
+
+#### Step 1
 
 ```sh
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=1
 ```
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=2
-```
-
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=3
-```
-
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=4
-```
-
-#### Post-migration validation
-
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
-
-**[STEP 1]** Check RegExp for hardcoded `font` custom properties across all file types
 
 ```
 (?:--p-font-size-70-experimental|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])
 ```
 
-**[STEP 2]** Check RegExp for hardcoded `font` custom properties across all file types
+#### Step 2
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=2
+```
+
+After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
 ```
 (?:--p-font-size-500|--p-font-size-600)(?![\w-])
 ```
 
-**[STEP 3]** Check RegExp for hardcoded `font` custom properties across all file types
+#### Step 3
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=3
+```
+
+After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
 ```
 (?:--p-font-size-300|--p-font-size-400)(?![\w-])
 ```
 
-**[STEP 4]** Check RegExp for hardcoded `font` custom properties across all file types
+#### Step 4
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=4
+```
+
+After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
 ```
 (?:--p-font-size-75|--p-font-size-200)(?![\w-])
