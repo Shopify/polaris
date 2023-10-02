@@ -77,7 +77,7 @@
   line-height: var(--p-font-line-height-600);
   font-weight: var(--p-font-weight-bold);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     font-size: var(--p-text-heading-lg-font-size);
     line-height: var(--p-text-heading-lg-font-line-height);
   }
@@ -88,7 +88,7 @@
   line-height: var(--p-font-line-height-600);
   font-weight: var(--p-font-weight-bold);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     font-size: var(--p-text-heading-xl-font-size);
     line-height: var(--p-text-heading-xl-font-line-height);
   }
@@ -99,7 +99,7 @@
   line-height: var(--p-font-line-height-800);
   font-weight: var(--p-font-weight-bold);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     font-size: var(--p-text-heading-2xl-font-size);
     line-height: var(--p-text-heading-2xl-font-line-height);
   }
@@ -110,7 +110,7 @@
   line-height: var(--p-font-line-height-1000);
   font-weight: var(--p-font-weight-bold);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     font-size: var(--p-text-heading-3xl-font-size);
     line-height: var(--p-text-heading-3xl-font-line-height);
   }
