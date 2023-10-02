@@ -1,10 +1,8 @@
 import React from 'react';
 import {Columns3Minor} from '@shopify/polaris-icons';
 
-import {useFeatures} from '../../../../utilities/features';
-import {Icon} from '../../../Icon';
 import {useI18n} from '../../../../utilities/i18n';
-import {FilterButton} from '../FilterButton';
+import {Button} from '../../../Button';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
 
@@ -15,7 +13,6 @@ export interface EditColumnsButtonProps {
 
 export function EditColumnsButton({onClick, disabled}: EditColumnsButtonProps) {
   const i18n = useI18n();
-  const {polarisSummerEditions2023} = useFeatures();
 
   const tooltipContent = (
     <Text as="span" variant="bodyMd" alignment="center">
@@ -29,18 +26,15 @@ export function EditColumnsButton({onClick, disabled}: EditColumnsButtonProps) {
       preferredPosition="above"
       hoverDelay={400}
     >
-      <FilterButton
+      <Button
+        size="slim"
         onClick={onClick}
-        icon={polarisSummerEditions2023 ? Columns3Minor : undefined}
-        label={i18n.translate(
+        disabled={disabled}
+        icon={Columns3Minor}
+        accessibilityLabel={i18n.translate(
           'Polaris.IndexFilters.EditColumnsButton.accessibilityLabel',
         )}
-        disabled={disabled}
-      >
-        {!polarisSummerEditions2023 ? (
-          <Icon source={Columns3Minor} color="base" />
-        ) : null}
-      </FilterButton>
+      />
     </Tooltip>
   );
 }
