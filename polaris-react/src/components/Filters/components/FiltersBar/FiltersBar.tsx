@@ -11,13 +11,12 @@ import {Text} from '../../../Text';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {classNames} from '../../../../utilities/css';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
-import {useFeatures} from '../../../../utilities/features';
 import type {
   ActionListItemDescriptor,
   AppliedFilterInterface,
   FilterInterface,
 } from '../../../../types';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Box} from '../../../Box';
 import {Button} from '../../../Button';
 import {FilterPill} from '../FilterPill';
@@ -36,7 +35,6 @@ export interface FiltersBarProps {
   appliedFilters?: AppliedFilterInterface[];
   /** Callback when the reset all button is pressed. */
   onClearAll: () => void;
-
   /** Disable all filters. */
   disabled?: boolean;
   /** Hide the query field. */
@@ -66,7 +64,6 @@ export function FiltersBar({
 }: FiltersBarProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
-  const {polarisSummerEditions2023: se23} = useFeatures();
   const [popoverActive, setPopoverActive] = useState(false);
   const hasMounted = useRef(false);
   useEffect(() => {
@@ -162,7 +159,6 @@ export function FiltersBar({
 
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
-  const se23LabelVariant = mdDown && se23 ? 'bodyLg' : 'bodySm';
   const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
 
   const addFilterActivator = (
@@ -178,7 +174,7 @@ export function FiltersBar({
           disableFilters
         }
       >
-        <Text variant={se23 ? se23LabelVariant : labelVariant} as="span">
+        <Text variant={labelVariant} as="span">
           {i18n.translate('Polaris.Filters.addFilter')}{' '}
         </Text>
         <PlusMinor />
@@ -253,10 +249,9 @@ export function FiltersBar({
       >
         <Button
           size="micro"
-          plain
           onClick={handleClearAllFilters}
           removeUnderline
-          monochrome={se23}
+          variant="monochromePlain"
         >
           {i18n.translate('Polaris.Filters.clearFilters')}
         </Button>
@@ -287,7 +282,7 @@ export function FiltersBar({
           paddingBlockStart="200"
           paddingBlockEnd="200"
         >
-          <HorizontalStack
+          <InlineStack
             align="start"
             blockAlign="center"
             gap={{
@@ -296,7 +291,7 @@ export function FiltersBar({
             }}
           >
             {additionalContent}
-          </HorizontalStack>
+          </InlineStack>
         </Box>
       ) : null}
     </div>
