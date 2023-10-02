@@ -985,6 +985,7 @@ export function WithAsyncData() {
   const sleep = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms));
   const [loadData, setLoadData] = useState(false);
+  const [addAsyncFilter, setAddAsyncFilter] = useState(false);
   const [itemStrings, setItemStrings] = useState([
     'All',
     'Unpaid',
@@ -1071,7 +1072,7 @@ export function WithAsyncData() {
     {label: 'Total', value: 'total desc', directionLabel: 'Descending'},
   ];
   const [sortSelected, setSortSelected] = useState(['order asc']);
-  const {mode, setMode} = useSetIndexFiltersMode();
+  const {mode, setMode} = useSetIndexFiltersMode(IndexFiltersMode.Filtering);
   const onHandleCancel = () => {};
 
   const onHandleSave = async () => {
@@ -1098,6 +1099,10 @@ export function WithAsyncData() {
   ]);
   const [moneySpent, setMoneySpent] = useState(null);
   const [taggedWith, setTaggedWith] = useState('Returning customer');
+  const [deliveryMethod, setDeliveryMethod] = useState<string[] | null>([
+    'local_pick_up',
+    'local_delivery',
+  ]);
   const [queryValue, setQueryValue] = useState('');
 
   const handleAccountStatusChange = useCallback(
@@ -1112,6 +1117,10 @@ export function WithAsyncData() {
     (value) => setTaggedWith(value),
     [],
   );
+  const handleDeliveryMethodChange = useCallback(
+    (value) => setDeliveryMethod(value),
+    [],
+  );
   const handleFiltersQueryChange = useCallback(
     (value) => setQueryValue(value),
     [],
@@ -1122,17 +1131,23 @@ export function WithAsyncData() {
   );
   const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
   const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const handleDeliveryMethodRemove = useCallback(
+    () => setDeliveryMethod(null),
+    [],
+  );
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
     handleTaggedWithRemove();
+    handleDeliveryMethodRemove();
     handleQueryValueRemove();
   }, [
     handleAccountStatusRemove,
     handleMoneySpentRemove,
     handleQueryValueRemove,
     handleTaggedWithRemove,
+    handleDeliveryMethodRemove,
   ]);
 
   const filters = [
@@ -1189,6 +1204,28 @@ export function WithAsyncData() {
     },
   ];
 
+  if (addAsyncFilter) {
+    filters.push({
+      key: 'delivery_method',
+      label: 'Delivery method',
+      filter: (
+        <ChoiceList
+          title="Delivery method"
+          titleHidden
+          choices={[
+            {label: 'Local pick up', value: 'local_pick_up'},
+            {label: 'Local delivery', value: 'local_delivery'},
+            {label: 'National delivery', value: 'national_delivery'},
+            {label: 'International delivery', value: 'international_delivery'},
+          ]}
+          selected={deliveryMethod || []}
+          onChange={handleDeliveryMethodChange}
+          allowMultiple
+        />
+      ),
+    });
+  }
+
   const appliedFilters: IndexFiltersProps['appliedFilters'] = [];
   if (!isEmpty(accountStatus)) {
     const key = 'accountStatus';
@@ -1214,6 +1251,16 @@ export function WithAsyncData() {
       onRemove: handleTaggedWithRemove,
     });
   }
+  if (!isEmpty(deliveryMethod)) {
+    const key = 'delivery_method';
+    appliedFilters.push({
+      key,
+      label: disambiguateLabel(key, deliveryMethod),
+      onRemove: handleDeliveryMethodRemove,
+    });
+  }
+
+  console.log({addAsyncFilter, filters});
 
   return (
     <Card padding="0">
@@ -1247,6 +1294,9 @@ export function WithAsyncData() {
         <Button size="micro" primary onClick={() => setLoadData(true)}>
           Load filter data
         </Button>
+        <Button size="micro" primary onClick={() => setAddAsyncFilter(true)}>
+          Add async filter
+        </Button>
       </div>
     </Card>
   );
@@ -1259,6 +1309,8 @@ export function WithAsyncData() {
         return `Tagged with ${value}`;
       case 'accountStatus':
         return value.map((val) => `Customer ${val}`).join(', ');
+      case 'delivery_method':
+        return `Delivery method: ${value.join(', ')}`;
       default:
         return value;
     }
