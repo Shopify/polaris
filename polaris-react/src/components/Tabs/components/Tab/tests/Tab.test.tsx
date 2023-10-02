@@ -26,11 +26,6 @@ describe('Tab', () => {
         onPrimaryAction: jest.fn(),
       },
       {
-        type: 'edit-columns',
-        onAction: jest.fn(),
-        onPrimaryAction: jest.fn(),
-      },
-      {
         type: 'duplicate',
         onAction: jest.fn(),
         onPrimaryAction: jest.fn(),
@@ -161,11 +156,6 @@ describe('Tab', () => {
               onAction: expect.any(Function),
             },
             {
-              content: 'Edit columns',
-              icon: expect.any(Function),
-              onAction: expect.any(Function),
-            },
-            {
               content: 'Duplicate view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
@@ -208,12 +198,6 @@ describe('Tab', () => {
               disabled: true,
             },
             {
-              content: 'Edit columns',
-              icon: expect.any(Function),
-              onAction: expect.any(Function),
-              disabled: true,
-            },
-            {
               content: 'Duplicate view',
               icon: expect.any(Function),
               onAction: expect.any(Function),
@@ -233,7 +217,6 @@ describe('Tab', () => {
       it.each([
         ['rename', 'Rename view'],
         ['edit', 'Edit view'],
-        ['edit-columns', 'Edit columns'],
         ['duplicate', 'Duplicate view'],
         ['delete', 'Delete view'],
       ])(

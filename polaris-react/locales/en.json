@@ -192,6 +192,10 @@
           "za": "Z-A"
         }
       },
+      "EditColumnsButton": {
+        "tooltip": "Edit columns",
+        "accessibilityLabel": "Customize table column order and visibility"
+      },
       "UpdateButtons": {
         "cancel": "Cancel",
         "update": "Update",
@@ -291,7 +295,6 @@
         "rename": "Rename view",
         "duplicate": "Duplicate view",
         "edit": "Edit view",
-        "editColumns": "Edit columns",
         "delete": "Delete view",
         "copy": "Copy of {name}",
         "deleteModal": {
