@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-`Filters` Remove unused disabled states in `FilterPill`
+Removed unused disabled states in `FilterPill`

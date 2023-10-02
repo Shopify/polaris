@@ -24,7 +24,7 @@
 .ExampleWrapper {
   position: relative;
   box-shadow: none;
-  border: 1px solid var(--p-color-border-subdued);
+  border: 1px solid var(--p-color-border-secondary);
   border-radius: 8px;
 
   @media screen and (max-width: $breakpointMobile) {

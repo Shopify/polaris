@@ -4,7 +4,7 @@
   text-align: right;
   // stylelint-disable-next-line selector-no-qualifying-type -- override `.iconOnly` negative margins
   button[type='button'] {
-    background: var(--p-color-bg-strong);
+    background: var(--p-color-bg-fill-tertiary);
     border-radius: var(--p-border-radius-200);
     border: none;
     box-shadow: none;
@@ -12,22 +12,21 @@
 
     // stylelint-disable-next-line selector-max-specificity -- apply active styles
     &:active {
-      background: var(--p-color-bg-strong-active);
+      background: var(--p-color-bg-fill-tertiary-active);
     }
 
     // stylelint-disable-next-line selector-max-specificity -- apply focus styles
     &:focus:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- button overrides */
       @include no-focus-ring;
-      outline: var(--p-border-width-050) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-050);
-      background: var(--p-color-bg-strong-active);
+      background: var(--p-color-bg-fill-tertiary-active);
     }
 
     // stylelint-disable-next-line selector-max-specificity -- apply hover styles
     &:hover {
-      background: var(--p-color-bg-strong-hover);
+      background: var(--p-color-bg-fill-tertiary-hover);
     }
   }
 }

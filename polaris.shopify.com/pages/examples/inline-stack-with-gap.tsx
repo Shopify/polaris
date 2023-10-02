@@ -41,7 +41,7 @@ const SpacingBackground = ({
     <div
       style={{
         display: 'flex',
-        background: 'var(--p-color-bg-success-subdued)',
+        background: 'var(--p-color-bg-surface-success)',
         width: width,
         height: height,
         marginBlockEnd: margin ? '8px' : 'none',

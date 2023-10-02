@@ -68,6 +68,7 @@ export type {
   ShadowTokenGroup,
   ShadowTokenName,
   ShadowAlias,
+  ShadowAliasOrScale,
 } from './themes/base/shadow';
 
 export type {

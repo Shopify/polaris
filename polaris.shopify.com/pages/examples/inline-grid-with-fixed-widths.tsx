@@ -26,14 +26,14 @@ const Placeholder = ({
         height: height ?? undefined,
         width: width ?? undefined,
         borderInlineStart: showBorder
-          ? '1px dashed var(--p-color-bg-success-subdued)'
+          ? '1px dashed var(--p-color-bg-surface-success)'
           : 'none',
       }}
     >
       <InlineStack gap="400" align="center" blockAlign="center">
         <div
           style={{
-            color: 'var(--p-color-text-on-color)',
+            color: 'var(--p-color-text-info-on-bg-fill)',
             width: width ?? undefined,
           }}
         >

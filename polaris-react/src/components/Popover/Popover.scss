@@ -11,7 +11,7 @@ $vertical-motion-offset: -5px;
   margin: $visible-portion-of-arrow var(--p-space-200) var(--p-space-400);
   will-change: left, top;
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-md),
+    $boxShadow: var(--p-shadow-300),
     $borderRadius: var(--p-border-radius-300),
     $zIndex: 2
   );
@@ -58,7 +58,7 @@ $vertical-motion-offset: -5px;
 .ContentContainer {
   position: relative;
   overflow: hidden;
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
   border-radius: var(--p-space-300);
 
   /* Prevent Scrollable's box shadows overflowing the rounded corners of this

@@ -33,7 +33,7 @@ export interface CardProps {
 
 export const Card = ({
   children,
-  background = 'bg',
+  background = 'bg-surface',
   padding = {xs: '400'},
   roundedAbove,
 }: CardProps) => {
@@ -49,7 +49,7 @@ export const Card = ({
   return (
     <WithinContentContext.Provider value>
       <ShadowBevel
-        boxShadow="xs"
+        boxShadow="100"
         borderRadius={hasBorderRadius ? defaultBorderRadius : '0'}
         zIndex="32"
       >

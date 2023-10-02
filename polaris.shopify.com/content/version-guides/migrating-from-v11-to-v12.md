@@ -129,11 +129,11 @@ order: 1
 
 ### Modal
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="small" --to="size" --newValue="small"`
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="small" --to="size" --toValue="small"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="large" --to="size" --newValue="large"`
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="large" --to="size" --toValue="large"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="fullScreen" --to="size" --newValue="fullScreen"`
+`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"`
 
 ### List
 
@@ -146,6 +146,10 @@ order: 1
 ### AppProvider
 
 The `AppProvider`'s `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. You should be able to remove the `features` prop completely from your Polaris `AppProvider` since there aren't any feature flags in Polaris for v12.
+
+### Text
+
+The `Text` component no longer supports `headingXs` and `heading4xl` as options for the `variant` prop. You will need to manually update usage of `<Text variant="headingXs">` to `<Text variant="headingSm">` instead. Similarly, usage of `<Text variant="heading4xl">` need to be manually updated to `<Text variant="heading3xl">`.
 
 ## Token migrations
 

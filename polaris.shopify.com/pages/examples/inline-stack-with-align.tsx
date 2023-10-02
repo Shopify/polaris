@@ -56,17 +56,17 @@ const Placeholder = ({
         height: height,
         width: width,
         borderInlineStart: showBorder
-          ? '1px dashed var(--p-color-bg-success-subdued)'
+          ? '1px dashed var(--p-color-bg-surface-success)'
           : 'none',
         borderBlockStart: showBorderTop
-          ? '1px dashed var(--p-color-bg-success-subdued)'
+          ? '1px dashed var(--p-color-bg-surface-success)'
           : 'none',
       }}
     >
       <InlineStack align="center">
         <div
           style={{
-            color: 'var(--p-color-text-on-color)',
+            color: 'var(--p-color-text-info-on-bg-fill)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="medium">
