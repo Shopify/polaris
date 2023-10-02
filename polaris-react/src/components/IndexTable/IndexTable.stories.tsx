@@ -1631,7 +1631,7 @@ export function WithRowStatus() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        tone={status as IndexTableRowProps['status']}
+        tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -3276,7 +3276,7 @@ export function WithZebraStripingAndRowStatus() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        tone={status as IndexTableRowProps['status']}
+        tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">

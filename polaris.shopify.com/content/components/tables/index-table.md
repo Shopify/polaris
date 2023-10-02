@@ -244,14 +244,14 @@ The `IndexTable` is an actionable, filterable, and sortable table widget that su
 
 Merchants can select a group of rows at once by clicking or <kbd>Space</kbd> keypressing a subheader row's checkbox. To indicate that an `IndexTable.Row` serves as a subheader for 1 or more rows below it, set the:
 
-- Zero-indexed table `position` of the first and last `IndexTable.Row` described by the subheader `IndexTable.Row` as a tuple array on its `subHeaderRange` prop
+- Zero-indexed table `position` of the first and last `IndexTable.Row` described by the subheader `IndexTable.Row` as a tuple array on its `selectionRange` prop
 - Unique `id` on the `IndexTable.Cell` that contains the subheader content
 - Element tag to `"th"` on the `as` prop of the subheader `IndexTable.Cell`
 - Subheader `IndexTable.Cell` `scope` prop to `"colgroup"`
 
 To associate the subheader `IndexTable.Row` with each `IndexTable.Cell` that it describes, set the:
 
-- Unique `id` provided to the subheader `IndexTable.Cell` on the `headers` prop of each related `IndexTable.Cell` (contained by an `IndexTable.Row` that's position is within the `subHeaderRange`) as well as the unique `id` of its corresponding column heading that you provided to the `IndexTable` `headings` prop
+- Unique `id` provided to the subheader `IndexTable.Cell` on the `headers` prop of each related `IndexTable.Cell` (contained by an `IndexTable.Row` that's position is within the `selectionRange`) as well as the unique `id` of its corresponding column heading that you provided to the `IndexTable` `headings` prop
 
 ### Keyboard support
 
