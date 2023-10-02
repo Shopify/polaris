@@ -1,5 +1,4 @@
 export {breakpointsAliases} from './themes/base/breakpoints';
-export type {TokenGroup, MetadataProperties, MetadataGroup} from './types';
 
 export {
   createVar,
@@ -13,7 +12,13 @@ export {
 
 export {metaThemes} from './themes';
 
-export type {ThemeName, Theme} from './themes/types';
+export type {
+  MetaThemeShape,
+  MetaTokenGroupShape,
+  MetaTokenProperties,
+  Theme,
+  ThemeName,
+} from './themes/types';
 
 export {themeNameDefault, themeNames} from './themes/constants';
 

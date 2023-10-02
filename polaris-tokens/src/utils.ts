@@ -1,4 +1,4 @@
-import type {Entry, Exact, MetadataGroup, TokenGroup} from './types';
+import type {Entry, Exact} from './types';
 import type {
   breakpoints as metaBreakpointsTokenGroup,
   BreakpointsTokenGroup,
@@ -121,7 +121,7 @@ export function createVar(tokenName: TokenName) {
  *
  * Result: ['p-keyframes-fade-in', 'p-keyframes-spin', etc...]
  */
-export function getKeyframeNames(motionTokenGroup: TokenGroup) {
+export function getKeyframeNames(motionTokenGroup: MetaTokenGroupShape) {
   return Object.keys(motionTokenGroup)
     .map((token) => (token.startsWith('keyframes') ? `p-${token}` : null))
     .filter(Boolean);
@@ -140,18 +140,6 @@ export function getTokenNames(theme: Theme | MetaTheme): TokenName[] {
  */
 export function getThemeVarNames(theme: Theme) {
   return getTokenNames(theme).map(createVarName);
-}
-
-export function removeMetadata<T extends Exact<MetadataGroup, T>>(
-  tokenGroup: T,
-) {
-  return Object.fromEntries(
-    Object.entries(tokenGroup).map((entry): Entry<TokenGroup> => {
-      const [tokenName, {value}] = entry as Entry<MetadataGroup>;
-
-      return [tokenName, value];
-    }),
-  ) as TokenGroup<T>;
 }
 
 export type MetaBreakpointsTokenGroup = typeof metaBreakpointsTokenGroup;

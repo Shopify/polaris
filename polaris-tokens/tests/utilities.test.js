@@ -162,7 +162,6 @@ describe('toRem', () => {
 
 describe('getMediaConditions', () => {
   it('transforms breakpoints tokens into directional media conditions', () => {
-    /** @type {TokenGroup} */
     const breakpoints = {
       breakpoint1: '16px',
       breakpoint2: '32px',
