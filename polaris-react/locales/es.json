@@ -214,7 +214,6 @@
         "rename": "Cambiar nombre de vista",
         "duplicate": "Duplicar vista",
         "edit": "Editar vista",
-        "editColumns": "Editar columnas",
         "delete": "Eliminar vista",
         "copy": "Copia de {name}",
         "deleteModal": {
@@ -390,6 +389,10 @@
           "save": "Guardar",
           "cancel": "Cancelar"
         }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Editar columnas",
+        "accessibilityLabel": "Personalizar el orden y la visibilidad de las columnas de la tabla"
       }
     },
     "ActionList": {
