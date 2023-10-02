@@ -508,7 +508,7 @@ export const color: {
     value: colors.gray[16],
   },
   'color-bg': {
-    value: colors.gray[1],
+    value: colors.gray[6],
   },
   'color-border-inverse': {
     value: colors.gray[13],
