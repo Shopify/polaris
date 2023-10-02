@@ -4,6 +4,7 @@ import {PlusMinor} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
 
 import {useI18n} from '../../../../utilities/i18n';
+import {useOnValueChange} from '../../../../utilities/use-on-value-change';
 import {Popover} from '../../../Popover';
 import {ActionList} from '../../../ActionList';
 import {Text} from '../../../Text';
@@ -91,6 +92,12 @@ export function FiltersBar({
   const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>(
     pinnedFiltersFromPropsAndAppliedFilters.map(({key}) => key),
   );
+
+  useOnValueChange(filters.length, () => {
+    setLocalPinnedFilters(
+      pinnedFiltersFromPropsAndAppliedFilters.map(({key}) => key),
+    );
+  });
 
   const pinnedFilters = localPinnedFilters
     .map((key) => filters.find((filter) => filter.key === key))
