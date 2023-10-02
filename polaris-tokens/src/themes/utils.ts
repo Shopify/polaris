@@ -1,7 +1,7 @@
 import deepmerge from 'deepmerge';
 
 import type {Entry, Exact} from '../types';
-import {createExact, getTokenNames} from '../utils';
+import {getTokenNames, tokenGroupToRems, tokenGroupNamesToRems} from '../utils';
 
 import type {
   ExtractMetaThemeValues,
@@ -16,7 +16,35 @@ import type {
 } from './types';
 import {metaThemeBase} from './base';
 
-export const createMetaThemePartial = createExact<MetaThemePartialShape>();
+/**
+ * Mimics the behavior of an identity function:
+ * - Validates the input matches the `MetaThemeShape` type exactly
+ * - Converts all `px` values to `rem`
+ * - Infers all members
+ *
+ * @example
+ * ```
+ * const example = createMetaThemePartial({
+ *   color: {
+ *     bg: {value: '#fff'},
+ *   },
+ * })
+ * ```
+ *
+ * Where `typeof example` is inferred as `{ color: { bg: { value: string } } }`
+ */
+export function createMetaThemePartial<
+  T extends Exact<MetaThemePartialShape, T>,
+>(metaThemePartial: T) {
+  return Object.fromEntries(
+    Object.entries(metaThemePartial).map(([tokenGroupName, tokenGroup]) => [
+      tokenGroupName,
+      tokenGroup && tokenGroupNamesToRems.includes(tokenGroupName)
+        ? tokenGroupToRems(tokenGroup)
+        : tokenGroup,
+    ]),
+  ) as T;
+}
 
 export function createMetaTheme<T extends Exact<MetaThemePartialShape, T>>(
   metaThemePartial: T,
