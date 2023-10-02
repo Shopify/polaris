@@ -4,7 +4,7 @@
   /* stylelint-disable -- polaris: Used to apply dark theme to action buttons */
   --p-color-bg-surface: var(--p-color-bg-inverse);
   --p-color-text: var(--p-color-text-inverse);
-  --p-color-bg-hover: var(--p-color-bg-fill-inverse-hover);
+  --p-color-bg-surface-hover: var(--p-color-bg-fill-inverse-hover);
   --p-color-bg-surface-secondary-active: var(--p-color-bg-fill-inverse-active);
   /* stylelint-enable */
   display: flex;
@@ -124,9 +124,9 @@
 
   & [class*='Polaris-Button--tertiary'],
   & [class*='Button-tertiary'] {
-    --pc-button-color: var(--p-color-bg-inset-strong);
-    --pc-button-color-hover: var(--p-color-bg-inverse-hover);
-    --pc-button-color-active: var(--p-color-bg-inverse-active);
+    --pc-button-color: var(--p-color-bg-fill-inverse);
+    --pc-button-color-hover: var(--p-color-bg-fill-inverse-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-inverse-active);
     --pc-button-text: var(--p-color-text-inverse);
 
     &::after {

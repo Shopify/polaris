@@ -41,7 +41,7 @@ Importing all of the css variables. CSS variables are prefixed with `--p` to sig
 import '@shopify/polaris-tokens/css/styles.css';
 
 div {
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
 }
 ```
 

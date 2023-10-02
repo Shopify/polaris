@@ -131,7 +131,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   setBodyStyles = () => {
-    document.body.style.backgroundColor = 'var(--p-color-bg-app)';
+    document.body.style.backgroundColor = 'var(--p-color-bg)';
     document.body.style.color = 'var(--p-color-text)';
   };
 

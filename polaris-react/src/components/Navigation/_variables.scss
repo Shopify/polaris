@@ -50,8 +50,7 @@ $nav-animation-variables: (
     /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- override focus ring */
     @include no-focus-ring;
     z-index: var(--p-z-index-1);
-    outline: var(--p-border-width-050) solid
-      var(--p-color-border-interactive-focus);
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   }
 
   &:active,
