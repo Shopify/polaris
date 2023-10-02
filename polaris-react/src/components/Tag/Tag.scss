@@ -10,7 +10,7 @@ $button-size: 20px;
   min-height: $height;
   padding: 0;
   padding-inline: calc(var(--p-space-100) + var(--p-space-050));
-  background-color: var(--p-color-bg-strong);
+  background-color: var(--p-color-bg-fill-tertiary);
   border-radius: var(--p-border-radius-200);
   color: var(--p-color-text);
 
@@ -29,7 +29,7 @@ $button-size: 20px;
     @include unstyled-button;
     cursor: pointer;
     padding: 0 calc(var(--p-space-100) + var(--p-space-050));
-    background-color: var(--p-color-bg-strong);
+    background-color: var(--p-color-bg-fill-tertiary);
     outline: var(--p-border-width-025) solid transparent;
     font-size: var(--p-font-size-325);
     line-height: var(--p-font-line-height-400);
@@ -48,7 +48,7 @@ $button-size: 20px;
     }
 
     &:active {
-      background: var(--p-color-bg-strong-active);
+      background: var(--p-color-bg-fill-tertiary-active);
     }
 
     &:disabled {
@@ -56,7 +56,7 @@ $button-size: 20px;
       cursor: default;
       pointer-events: none;
       color: var(--p-color-text-disabled);
-      border: var(--p-border-width-025) solid var(--p-color-border-strong);
+      border: var(--p-border-width-025) solid var(--p-color-border-tertiary);
     }
 
     @media #{$p-breakpoints-sm-up} {
@@ -69,11 +69,11 @@ $button-size: 20px;
     padding-inline: calc(var(--p-space-100) + var(--p-space-050));
 
     &:hover {
-      background: var(--p-color-bg-strong-hover);
+      background: var(--p-color-bg-fill-tertiary-hover);
     }
 
     &:active {
-      background: var(--p-color-bg-strong-active);
+      background: var(--p-color-bg-fill-tertiary-active);
     }
   }
 
@@ -113,14 +113,14 @@ $button-size: 20px;
   margin-left: var(--p-space-050);
   // stylelint-disable-next-line polaris/border/declaration-property-unit-disallowed-list -- override border-radius
   border-radius: 7px;
-  color: var(--p-color-icon-subdued);
+  color: var(--p-color-icon-secondary);
 
   svg {
     fill: currentColor;
   }
 
   &:hover {
-    background: var(--p-color-bg-strong-hover);
+    background: var(--p-color-bg-fill-tertiary-hover);
     color: var(--p-color-icon-active);
     outline: var(--p-border-width-025) solid transparent;
   }
@@ -129,7 +129,7 @@ $button-size: 20px;
   @include focus-ring($size: 'wide');
 
   &:focus-visible {
-    background: var(--p-color-bg-strong-hover);
+    background: var(--p-color-bg-fill-tertiary-hover);
     color: var(--p-color-icon-active);
   }
 
@@ -197,15 +197,15 @@ $button-size: 20px;
   }
 
   &:active {
-    background: var(--p-color-bg-strong-active);
+    background: var(--p-color-bg-fill-tertiary-active);
   }
 }
 
 .linkable.removable:hover {
-  background: var(--p-color-bg-strong-hover);
+  background: var(--p-color-bg-fill-tertiary-hover);
 
   // stylelint-disable-next-line selector-max-class, selector-max-specificity -- override Button background color
   .Button {
-    background: var(--p-color-bg-strong-active);
+    background: var(--p-color-bg-fill-tertiary-active);
   }
 }

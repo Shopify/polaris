@@ -320,7 +320,7 @@ export function ActivatorAsDiv() {
 
 export function WithSuffix() {
   return (
-    <Box padding="1600" background="bg">
+    <Box padding="1600" background="bg-surface">
       <InlineStack>
         <ButtonGroup variant="segmented" fullWidth>
           <Tooltip

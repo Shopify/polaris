@@ -12,33 +12,33 @@ export default {
 export function Default() {
   const colors: BoxProps[] = [
     {
-      background: 'bg-success-strong',
-      color: 'text-on-color',
+      background: 'bg-fill-success',
+      color: 'text-success-on-bg-fill',
     },
     {
-      background: 'bg-info-strong',
-      color: 'text-info-strong',
+      background: 'bg-fill-info',
+      color: 'text-info-on-bg-fill',
     },
     {
-      background: 'bg-warning-strong-experimental',
-      color: 'text-warning-strong',
+      background: 'bg-fill-warning',
+      color: 'text-warning-on-bg-fill',
     },
     {
-      background: 'bg-critical-strong',
-      color: 'text-on-color',
+      background: 'bg-fill-critical',
+      color: 'text-critical-on-bg-fill',
     },
   ];
 
   return (
     <BlockStack gap="500">
       <ShadowBevel boxShadow="300" borderRadius="300">
-        <Box background="bg" padding="400">
+        <Box background="bg-surface" padding="400">
           Default
         </Box>
       </ShadowBevel>
 
       <ShadowBevel boxShadow="300" borderRadius="300" bevel={false}>
-        <Box background="bg" padding="400">
+        <Box background="bg-surface" padding="400">
           With <InlineCode>bevel: false</InlineCode>
         </Box>
       </ShadowBevel>
@@ -48,7 +48,7 @@ export function Default() {
         borderRadius="300"
         bevel={{xs: false, sm: true}}
       >
-        <Box background="bg" padding="400">
+        <Box background="bg-surface" padding="400">
           With <InlineCode>bevel: {'{xs: false, sm: true}'}</InlineCode>
         </Box>
       </ShadowBevel>
@@ -58,14 +58,14 @@ export function Default() {
         borderRadius="300"
         bevel={{xs: false, sm: true, lg: false}}
       >
-        <Box background="bg" padding="400">
+        <Box background="bg-surface" padding="400">
           With{' '}
           <InlineCode>bevel: {'{xs: false, sm: true, lg: false}'}</InlineCode>
         </Box>
       </ShadowBevel>
 
       <ShadowBevel as="article" boxShadow="300" borderRadius="300">
-        <Box background="bg" padding="400">
+        <Box background="bg-surface" padding="400">
           With <InlineCode>as: article</InlineCode>
         </Box>
       </ShadowBevel>

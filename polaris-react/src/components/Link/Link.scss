@@ -20,8 +20,7 @@
 
   &:focus,
   &:focus-visible {
-    outline: var(--p-color-border-interactive-focus) auto
-      var(--p-border-width-050);
+    outline: var(--p-color-border-focus) auto var(--p-border-width-050);
     outline-offset: var(--p-space-050);
     border-radius: var(--p-border-radius-150);
   }
@@ -32,7 +31,7 @@
   }
 
   @media print {
-    text-decoration-color: var(--p-color-border-strong);
+    text-decoration-color: var(--p-color-border-tertiary);
   }
 }
 
