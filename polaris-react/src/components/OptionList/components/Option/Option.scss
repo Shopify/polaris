@@ -36,8 +36,7 @@ $control-vertical-adjustment: 2px;
 
   // stylelint-disable-next-line selector-max-specificity -- required for focus-visible support
   &.focused:focus-visible:not(:active) {
-    outline: var(--p-border-width-050) solid
-      var(--p-color-border-interactive-focus);
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
     outline-offset: var(--p-space-025);
     background-color: var(--p-color-bg-surface-secondary-hover);
   }
@@ -151,7 +150,7 @@ $control-vertical-adjustment: 2px;
   margin-left: var(--p-space-200);
 
   svg {
-    fill: var(--p-color-icon-primary);
+    fill: var(--p-color-icon-brand);
   }
 }
 

@@ -49,7 +49,7 @@ const Placeholder = ({
         height: height,
         width: width,
         borderBlockEnd: showBorder
-          ? '1px dashed var(--p-color-bg-success-subdued)'
+          ? '1px dashed var(--p-color-bg-surface-success)'
           : 'none',
       }}
     >

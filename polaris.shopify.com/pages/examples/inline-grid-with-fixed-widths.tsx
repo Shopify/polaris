@@ -26,7 +26,7 @@ const Placeholder = ({
         height: height ?? undefined,
         width: width ?? undefined,
         borderInlineStart: showBorder
-          ? '1px dashed var(--p-color-bg-success-subdued)'
+          ? '1px dashed var(--p-color-bg-surface-success)'
           : 'none',
       }}
     >

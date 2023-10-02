@@ -657,7 +657,7 @@ export function WithSearchableListbox() {
     <Listbox.Action value={actionValue}>
       <span
         style={{
-          color: 'var(--p-color-text-subdued)',
+          color: 'var(--p-color-text-secondary)',
         }}
       >
         Show all 111 segments

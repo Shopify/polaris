@@ -11,8 +11,7 @@
   @include visually-hidden;
 
   &:focus-visible + .Backdrop {
-    outline: var(--p-border-width-050) solid
-      var(--p-color-border-interactive-focus);
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
     outline-offset: var(--p-space-025);
 
     &::after {
@@ -27,7 +26,7 @@
     // have to ensure the specificity of these rules are maintained when hovered
     // and not hovered.
     .ChoiceLabel:hover & {
-      border-color: var(--p-color-border-interactive);
+      border-color: var(--p-color-border-emphasis);
 
       &::before {
         background-color: var(--p-color-text-brand-on-bg-fill);
@@ -51,12 +50,12 @@
   + .Backdrop {
     .ChoiceLabel:hover & {
       cursor: pointer;
-      border-color: var(--p-color-border-input-hover);
-      background: var(--p-color-bg-input-hover-experimental);
+      border-color: var(--p-color-input-border-hover);
+      background: var(--p-color-input-bg-surface-hover);
     }
 
     .ChoiceLabel:active & {
-      border-color: var(--p-color-bg-primary);
+      border-color: var(--p-color-bg-fill-brand);
       border-width: var(--p-border-width-050);
     }
   }
@@ -99,9 +98,9 @@
   display: block;
   width: 100%;
   height: 100%;
-  border: var(--p-border-width-0165) solid var(--p-color-border-input);
+  border: var(--p-border-width-0165) solid var(--p-color-input-border);
   border-radius: var(--p-border-radius-full);
-  background-color: var(--p-color-bg-input);
+  background-color: var(--p-color-input-bg-surface);
   transition: border-color var(--p-motion-duration-100) var(--p-motion-ease-out);
 
   &::before {

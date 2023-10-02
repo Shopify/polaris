@@ -19,7 +19,7 @@
       border-color: var(--p-color-border-hover);
     }
   } @else if $style == active {
-    border-color: var(--p-color-border-interactive);
+    border-color: var(--p-color-border-emphasis);
 
     &::before {
       opacity: 1;
@@ -32,7 +32,7 @@
     border-color: var(--p-color-border-disabled);
 
     &::before {
-      background-color: var(--p-color-bg-disabled);
+      background-color: var(--p-color-bg-surface-disabled);
     }
 
     &:hover {

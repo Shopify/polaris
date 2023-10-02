@@ -241,11 +241,11 @@
 
 .primary {
   // stylelint-disable -- Button custom properties
-  --pc-button-color: var(--p-color-bg-primary);
+  --pc-button-color: var(--p-color-bg-fill-brand);
   --pc-button-text: var(--p-color-text-brand-on-bg-fill);
-  --pc-button-color-hover: var(--p-color-bg-primary-hover);
-  --pc-button-color-active: var(--p-color-bg-primary-active);
-  --pc-button-color-depressed: var(--p-color-bg-primary-active);
+  --pc-button-color-hover: var(--p-color-bg-fill-brand-hover);
+  --pc-button-color-active: var(--p-color-bg-fill-brand-active);
+  --pc-button-color-depressed: var(--p-color-bg-fill-brand-active);
   // stylelint-enable
 
   &::before {
@@ -311,7 +311,7 @@
 
   &.disabled {
     color: var(--p-color-text-brand-on-bg-fill-disabled);
-    background: var(--p-color-bg-transparent-primary-disabled-experimental);
+    background: var(--p-color-bg-fill-brand-disabled);
     box-shadow: none;
 
     &::before {
@@ -358,11 +358,11 @@
 
   &.critical {
     // stylelint-disable -- Button custom properties
-    --pc-button-color: var(--p-color-bg-critical-strong);
+    --pc-button-color: var(--p-color-bg-fill-critical);
     --pc-button-text: var(--p-color-text-critical-on-bg-fill);
-    --pc-button-color-hover: var(--p-color-bg-critical-strong-hover);
-    --pc-button-color-active: var(--p-color-bg-critical-strong-active);
-    --pc-button-color-depressed: var(--p-color-bg-critical-strong-active);
+    --pc-button-color-hover: var(--p-color-bg-fill-critical-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-critical-active);
+    --pc-button-color-depressed: var(--p-color-bg-fill-critical-active);
     // stylelint-enable
 
     &::before {
@@ -405,17 +405,11 @@
 
   &.success {
     // stylelint-disable -- Button custom properties
-    --pc-button-color: var(--p-color-bg-success-strong);
+    --pc-button-color: var(--p-color-bg-fill-success);
     --pc-button-text: var(--p-color-text-success-on-bg-fill);
-    --pc-button-color-hover: var(
-      --p-color-bg-success-strong-hover-experimental
-    );
-    --pc-button-color-active: var(
-      --p-color-bg-success-strong-active-experimental
-    );
-    --pc-button-color-depressed: var(
-      --p-color-bg-success-strong-active-experimental
-    );
+    --pc-button-color-hover: var(--p-color-bg-fill-success-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-success-active);
+    --pc-button-color-depressed: var(--p-color-bg-fill-success-active);
     // stylelint-enable
     box-shadow: none;
 
@@ -475,8 +469,8 @@
   // stylelint-disable -- Button custom properties
   --pc-button-color: transparent;
   --pc-button-text: var(--p-color-text);
-  --pc-button-color-hover: var(--p-color-bg-transparent-hover-experimental);
-  --pc-button-color-active: var(--p-color-bg-transparent-active-experimental);
+  --pc-button-color-hover: var(--p-color-bg-fill-transparent-hover);
+  --pc-button-color-active: var(--p-color-bg-fill-transparent-active);
   --pc-button-color-depressed: var(--p-surface-selected-depressed);
   // stylelint-enable
   box-shadow: none;
@@ -536,8 +530,8 @@
     // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- Button custom properties
     --pc-button-color: transparent;
     --pc-button-text: var(--p-color-text-critical);
-    --pc-button-color-hover: var(--p-color-bg-transparent-hover-experimental);
-    --pc-button-color-active: var(--p-color-bg-transparent-active-experimental);
+    --pc-button-color-hover: var(--p-color-bg-fill-transparent-hover);
+    --pc-button-color-active: var(--p-color-bg-fill-transparent-active);
 
     &:hover,
     &:active {
@@ -561,7 +555,7 @@
     margin: calc(-1 * var(--p-space-100));
 
     path {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
 
     &:active,
@@ -686,8 +680,7 @@
       @media (-ms-high-contrast: active) {
         outline: var(--p-border-width-050) dotted;
       }
-      outline: var(--p-border-width-050) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-050);
       border-radius: var(--p-border-radius-150);
     }
@@ -728,12 +721,12 @@
     box-shadow: none;
 
     svg {
-      fill: var(--p-color-icon-critical-strong-experimental);
+      fill: var(--p-color-text-critical);
     }
 
     &:hover,
     &:focus:not(:active):not(.pressed):not(.disabled) {
-      color: var(--p-color-text-critical-hover-experimental);
+      color: var(--p-color-text-critical-hover);
 
       svg {
         fill: var(--p-color-icon-critical-strong-hover-experimental);
@@ -745,7 +738,7 @@
       color: var(--p-color-text-critical-active);
 
       svg {
-        fill: var(--p-color-icon-critical-strong-active-experimental);
+        fill: var(--p-color-text-critical-active);
       }
     }
 
@@ -787,7 +780,7 @@
     min-width: var(--p-font-line-height-500);
 
     svg {
-      fill: var(--p-color-icon-subdued);
+      fill: var(--p-color-icon-secondary);
     }
 
     &:hover svg {
@@ -810,7 +803,7 @@
 
   &.critical.iconOnly {
     svg {
-      fill: var(--p-color-icon-critical-strong-experimental);
+      fill: var(--p-color-text-critical);
     }
 
     &:hover svg {
@@ -818,12 +811,12 @@
     }
 
     &:focus:not(:active):not(.pressed):not(.disabled) svg {
-      fill: var(--p-color-icon-critical-strong-experimental);
+      fill: var(--p-color-text-critical);
     }
 
     &:active svg,
     &.pressed svg {
-      fill: var(--p-color-icon-critical-strong-active-experimental);
+      fill: var(--p-color-text-critical-active);
     }
 
     &.disabled svg {

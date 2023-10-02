@@ -69,7 +69,7 @@
   border: 0;
   border-radius: var(--p-border-radius-200);
   background-color: transparent;
-  color: var(--p-color-text-primary);
+  color: var(--p-color-text-brand);
   cursor: pointer;
   text-decoration: none;
   width: 100%;
@@ -90,18 +90,18 @@
   }
 
   &:not([aria-disabled='true']):hover {
-    background-color: var(--p-color-bg-transparent-hover-experimental);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
   }
 
   &:not([aria-disabled='true']):focus {
-    background-color: var(--p-color-bg-hover);
+    background-color: var(--p-color-bg-surface-hover);
     color: var(--p-color-text);
   }
 
   &:not([aria-disabled='true']):focus-visible {
     background-color: transparent;
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
     // stylelint-disable-next-line -- set focus ring using mixin
     @include focus-ring($size: 'wide', $style: 'focused');
   }
@@ -114,8 +114,8 @@
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-secondary-experimental);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-surface-tertiary);
+    color: var(--p-color-text-brand);
     z-index: var(--p-z-index-1);
   }
 
@@ -136,19 +136,19 @@
   color: var(--p-color-text);
 
   &[aria-disabled='true'] {
-    background: var(--p-color-bg-disabled);
+    background: var(--p-color-bg-surface-disabled);
     color: var(--p-color-text-disabled);
   }
 
   &:not([aria-disabled='true']):hover,
   &:not([aria-disabled='true']):focus {
-    background-color: var(--p-color-bg-transparent-hover-experimental);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
   }
 
   &:not([aria-disabled='true']):active {
     background-color: var(--p-color-bg-fill-transparent-selected);
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
   }
 }
 
@@ -212,12 +212,12 @@
   }
 
   &:hover {
-    background-color: var(--p-color-bg-hover);
+    background-color: var(--p-color-bg-surface-hover);
     color: var(--p-color-text);
   }
 
   &:active {
-    background-color: var(--p-color-bg-active);
+    background-color: var(--p-color-bg-surface-active);
     color: var(--p-color-text);
   }
 
@@ -246,7 +246,7 @@
   @include unstyled-button;
   height: 100%;
   background-color: transparent;
-  color: var(--p-color-text-primary);
+  color: var(--p-color-text-brand);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -267,13 +267,13 @@
   }
 
   &:not([aria-disabled='true']):hover {
-    background-color: var(--p-color-bg-transparent-hover-experimental);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
   }
 
   &:not([aria-disabled='true']):focus {
     background-color: transparent;
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
   }
 
   &:not([aria-disabled='true']):focus-visible {
@@ -283,14 +283,14 @@
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-secondary-experimental);
+    background-color: var(--p-color-bg-surface-tertiary);
     z-index: var(--p-z-index-1);
   }
 
   &[aria-disabled='true'] {
     cursor: default;
     color: var(--p-color-text-disabled);
-    background: var(--p-color-bg-disabled);
+    background: var(--p-color-bg-surface-disabled);
 
     path {
       fill: var(--p-color-icon-disabled);
