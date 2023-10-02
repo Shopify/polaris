@@ -10,9 +10,10 @@ export {
   toRem,
 } from './utils';
 
-export {metaThemes} from './themes';
+export {metaThemes, metaThemeDefault} from './themes';
 
 export type {
+  MetaTheme,
   MetaThemeShape,
   MetaTokenGroupShape,
   MetaTokenProperties,
