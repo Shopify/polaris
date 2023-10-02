@@ -124,8 +124,6 @@ export function Filters({
   onAddFilterClick,
   closeOnChildOverlayClick,
 }: FiltersProps) {
-  const {polarisSummerEditions2023: se23} = useFeatures();
-
   const additionalContent = useMemo(() => {
     return (
       <>

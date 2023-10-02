@@ -1260,8 +1260,6 @@ export function WithAsyncData() {
     });
   }
 
-  console.log({addAsyncFilter, filters});
-
   return (
     <Card padding="0">
       <IndexFilters
@@ -1291,10 +1289,18 @@ export function WithAsyncData() {
       />
       <Table />
       <div style={{padding: '1rem'}}>
-        <Button size="micro" primary onClick={() => setLoadData(true)}>
+        <Button
+          size="micro"
+          variant="primary"
+          onClick={() => setLoadData(true)}
+        >
           Load filter data
         </Button>
-        <Button size="micro" primary onClick={() => setAddAsyncFilter(true)}>
+        <Button
+          size="micro"
+          variant="primary"
+          onClick={() => setAddAsyncFilter(true)}
+        >
           Add async filter
         </Button>
       </div>
