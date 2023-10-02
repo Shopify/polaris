@@ -38,7 +38,7 @@ export function WithVerticalDirection() {
     <Box
       background="bg-surface"
       padding="400"
-      borderColor="border-subdued"
+      borderColor="border-secondary"
       borderWidth="025"
     >
       <Bleed marginBlock="600">
@@ -53,7 +53,7 @@ export function WithHorizontalDirection() {
     <Box
       background="bg-surface"
       padding="400"
-      borderColor="border-subdued"
+      borderColor="border-secondary"
       borderWidth="025"
     >
       <Bleed marginInline="600">
@@ -70,7 +70,7 @@ export function WithSpecificDirection() {
       <Box
         background="bg-surface"
         padding="400"
-        borderColor="border-subdued"
+        borderColor="border-secondary"
         borderWidth="025"
       >
         <Bleed marginInline="400" marginBlockStart="600">
@@ -81,7 +81,7 @@ export function WithSpecificDirection() {
       <Box
         background="bg-surface"
         padding="400"
-        borderColor="border-subdued"
+        borderColor="border-secondary"
         borderWidth="025"
       >
         <Bleed marginInline="400" marginBlockEnd="600">
@@ -92,7 +92,7 @@ export function WithSpecificDirection() {
       <Box
         background="bg-surface"
         padding="400"
-        borderColor="border-subdued"
+        borderColor="border-secondary"
         borderWidth="025"
       >
         <Bleed marginInline="0" marginInlineStart="600">
@@ -103,7 +103,7 @@ export function WithSpecificDirection() {
       <Box
         background="bg-surface"
         padding="400"
-        borderColor="border-subdued"
+        borderColor="border-secondary"
         borderWidth="025"
       >
         <Bleed marginInline="0" marginInlineEnd="600">
@@ -119,7 +119,7 @@ export function WithAllDirection() {
     <Box
       background="bg-surface"
       padding="400"
-      borderColor="border-subdued"
+      borderColor="border-secondary"
       borderWidth="025"
     >
       <Bleed marginInline="600" marginBlock="600">
@@ -134,7 +134,7 @@ export function WithResponsiveHorizontalDirection() {
     <Box
       background="bg-surface"
       padding={{xs: '100', sm: '200', md: '300', lg: '400', xl: '500'}}
-      borderColor="border-subdued"
+      borderColor="border-secondary"
       borderWidth="025"
     >
       <Bleed

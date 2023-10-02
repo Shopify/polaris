@@ -152,7 +152,7 @@ export function BannerLayout({
         icon={
           <span
             className={
-              styles[isInlineIconBanner ? 'icon-subdued' : bannerColors.icon]
+              styles[isInlineIconBanner ? 'icon-secondary' : bannerColors.icon]
             }
           >
             <Icon source={CancelMinor} />
