@@ -385,7 +385,7 @@ export const color: {
     value: colors.blackAlpha[5],
   },
   'color-bg-fill-transparent-active': {
-    value: colors.blackAlpha[6],
+    value: colors.blackAlpha[7],
   },
   'color-bg-fill-disabled': {
     value: colors.blackAlpha[5],
@@ -565,7 +565,7 @@ export const color: {
     value: colors.orange[11],
   },
   'color-icon-magic': {
-    value: colors.purple[13],
+    value: colors.purple[12],
   },
   'color-text': {
     value: colors.gray[15],
