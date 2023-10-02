@@ -4,7 +4,7 @@ import type {
   BreakpointsTokenGroup,
   BreakpointsTokenName,
 } from './themes/base/breakpoints';
-import type {Theme, TokenName} from './themes/types';
+import type {MetaTheme, Theme, TokenName} from './themes/types';
 
 const BASE_FONT_SIZE = 16;
 
@@ -119,17 +119,19 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
     .filter(Boolean);
 }
 
+export function getTokenNames(theme: Theme | MetaTheme): TokenName[] {
+  return Object.values(theme).flatMap((tokenGroup) =>
+    Object.keys(tokenGroup),
+  ) as TokenName[];
+}
+
 /**
  * Allowed Polaris token custom properties.
  *
  * Result: ['--p-color-bg', '--p-color-text', etc...]
  */
 export function getThemeVarNames(theme: Theme) {
-  return Object.values(theme).flatMap((tokenGroup) =>
-    Object.keys(tokenGroup).map((tokenName) =>
-      createVarName(tokenName as keyof typeof tokenGroup),
-    ),
-  );
+  return getTokenNames(theme).map(createVarName);
 }
 
 export function removeMetadata<T extends Exact<MetadataGroup, T>>(

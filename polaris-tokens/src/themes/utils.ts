@@ -1,7 +1,7 @@
 import deepmerge from 'deepmerge';
 
 import type {Entry, Exact} from '../types';
-import {createExact} from '../utils';
+import {createExact, getTokenNames} from '../utils';
 
 import type {
   ExtractMetaThemeValues,
@@ -93,11 +93,7 @@ export function resolveMetaThemeRefs<T extends MetaThemeShape>(
 }
 
 export function createIsTokenName(theme: Theme | MetaTheme) {
-  const tokenNames = new Set(
-    Object.values(theme).flatMap((tokenGroup) =>
-      Object.keys(tokenGroup),
-    ) as TokenName[],
-  );
+  const tokenNames = new Set(getTokenNames(theme));
 
   return (tokenName: unknown): tokenName is TokenName =>
     tokenNames.has(tokenName as TokenName);
