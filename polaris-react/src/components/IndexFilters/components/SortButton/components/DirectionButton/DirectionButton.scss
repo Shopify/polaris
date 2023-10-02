@@ -17,7 +17,7 @@
   text-align: left;
 
   &:hover {
-    background-color: var(--p-color-bg-transparent-hover-experimental);
+    background-color: var(--p-color-bg-fill-transparent-hover);
   }
 
   + .DirectionButton {
@@ -34,7 +34,7 @@
 
 .DirectionButton-active {
   color: var(--p-color-text);
-  background: var(--p-color-bg-transparent-active-experimental);
+  background: var(--p-color-bg-fill-transparent-active);
 }
 
 .Label {

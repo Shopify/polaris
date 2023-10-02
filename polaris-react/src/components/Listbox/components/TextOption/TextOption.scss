@@ -20,7 +20,7 @@
   }
 
   &:hover {
-    background-color: var(--p-color-bg-hover);
+    background-color: var(--p-color-bg-surface-hover);
 
     &:not(.disabled) {
       background-color: var(--p-color-bg-surface-secondary-hover);
@@ -32,7 +32,7 @@
   }
 
   &:active {
-    background-color: var(--p-color-bg-active);
+    background-color: var(--p-color-bg-surface-active);
 
     &:not(.disabled) {
       background-color: var(--p-color-bg-surface-secondary-active);

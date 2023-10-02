@@ -59,7 +59,7 @@ Each color token follows the same naming convention. The purpose and intent of a
 
 **Naming formula:** `--p-color-element-role-variant-state`
 
-**Example:** `--p-color-bg-critical-subdued-hover`
+**Example:** `--p-color-bg-surface-critical-hover`
 
 | Name space | Description                                                                                         | Examples                                                       |
 | ---------- | --------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |

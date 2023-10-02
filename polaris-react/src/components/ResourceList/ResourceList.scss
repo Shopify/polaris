@@ -62,7 +62,7 @@ $item-wrapper-loading-height: 64px;
   position: relative;
   display: flex;
   width: 100%;
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-surface);
   border-radius: var(--p-border-radius-200);
   // This container conditionally includes a Select component for sorting
   // It's 32px above md-up and 36px below

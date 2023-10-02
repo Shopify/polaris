@@ -46,7 +46,7 @@
   border-radius: var(--p-border-radius-200);
 
   &:hover {
-    background-color: var(--p-color-bg-hover);
+    background-color: var(--p-color-bg-surface-hover);
     text-decoration: none;
 
     @media (-ms-high-contrast: active) {
@@ -63,7 +63,7 @@
   }
 
   &:active {
-    background-color: var(--p-color-bg-active);
+    background-color: var(--p-color-bg-surface-active);
 
     svg {
       fill: var(--p-color-icon-emphasis);

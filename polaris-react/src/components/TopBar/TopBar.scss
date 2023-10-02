@@ -70,8 +70,7 @@ $right-column: 1fr;
   display: block;
 
   &:focus-visible {
-    outline: var(--p-border-width-050) solid
-      var(--p-color-border-interactive-focus);
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
     outline-offset: var(--p-space-150);
     border-radius: var(--p-border-radius-200);
   }
@@ -103,11 +102,11 @@ $right-column: 1fr;
     var(--p-motion-duration-50);
 
   &.focused:active {
-    background-color: var(--p-color-bg-inverse-hover);
+    background-color: var(--p-color-bg-fill-inverse-hover);
   }
 
   &:hover {
-    background-color: var(--p-color-bg-inverse-hover);
+    background-color: var(--p-color-bg-fill-inverse-hover);
   }
 
   // This increases hit point size.
