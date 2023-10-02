@@ -70,6 +70,7 @@
   },
   "devDependencies": {
     "@changesets/get-release-plan": "^3.0.13",
+    "@csstools/postcss-global-data": "2.1.0",
     "@shopify/jest-dom-mocks": "^3.0.5",
     "@shopify/postcss-plugin": "^5.0.1",
     "@shopify/react-testing": "^4.1.0",
@@ -89,6 +90,7 @@
     "js-yaml": "^4.1.0",
     "node-sass": "^7.0.1",
     "postcss": "^8.3.1",
+    "postcss-custom-media": "^10.0.1",
     "postcss-loader": "^4.2.0",
     "postcss-modules": "^4.2.2",
     "postcss-pxtorem": "^5.1.1",
