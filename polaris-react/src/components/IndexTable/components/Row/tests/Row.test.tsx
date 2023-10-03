@@ -464,7 +464,7 @@ describe('<Row />', () => {
     });
   });
 
-  it('applies warning tone styles when tone prop is set to "success"', () => {
+  it('applies warning tone styles when tone prop is set to "warning"', () => {
     const row = mountWithTable(
       <Row {...defaultProps} tone="warning">
         <td />
