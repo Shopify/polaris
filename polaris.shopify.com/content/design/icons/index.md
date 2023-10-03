@@ -62,7 +62,7 @@ keywords:
 
         ![](/images/design/icons/icons-overview-clear-2@2x.png)
 
-        Draw simple objects that are easy to identify.
+        Embellish the icon with unnecessary details.
 
       </Dont>
 

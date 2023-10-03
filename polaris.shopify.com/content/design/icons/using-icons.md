@@ -1,6 +1,7 @@
 ---
 title: Using Icons
 description: Icons enhance an experience by providing intuitive and efficient navigation, conveying information concisely, and making it more visually appealing.
+icon: PaintBrushMajor
 keywords:
   - shopify icons
   - icon sets
@@ -107,7 +108,7 @@ keywords:
           <Do>
             ![](/images/design/icons/icons-using-5@2x.png)
 
-            Use icons consistently once a meaning is assigned to them.
+            Use icons to identify common objects, to improve the overall clarity of the interface.
 
           </Do>
         </Grid.Cell>
@@ -116,7 +117,7 @@ keywords:
           <Dont>
             ![](/images/design/icons/icons-using-6@2x.png)
 
-            Use icons consistently once a meaning is assigned to them.
+            Overuse icons. Redundant icons lead to visual clutter and increased cognitive load.
 
           </Dont>
         </Grid.Cell>
@@ -146,7 +147,7 @@ keywords:
       <Do>
         ![](/images/design/icons/icons-using-7@2x.png)
 
-        Use icons to replace text for common actions with universally understood icons.
+        Align icons vertically with accompanying typography.
 
       </Do>
 
@@ -157,7 +158,7 @@ keywords:
       <Dont>
         ![](/images/design/icons/icons-using-8@2x.png)
 
-        Use ambiguous icons without a text label, as that can lead to confusion and misinterpretation.
+        Resize icons. Resizing them will distort the relationship that was established with typography.
 
       </Dont>
 
