@@ -28,144 +28,80 @@ keywords:
 <Subnav />
 
 <Stack gap='4'>
-## Some titlee
-<Grid gap='4'>
-  <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-    Icons serve a critical role in streamlining content and facilitating navigation. They represent actions or information visually, aiding in quick comprehension and efficient interaction.
+Icons serve a critical role in streamlining content and facilitating navigation. They represent actions or information visually, aiding in quick comprehension and efficient interaction.
 
-  </Grid.Cell>
+![Shopify’s admin main navigation, where each item has it’s own icon.](/images/design/icons/icons-using-1@2x.png)
 
-  <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+### Replacing standard actions
 
-    ![Shopify’s admin main navigation, where each item has it’s own icon.](/images/design/icons/icons-using-1@2x.png)
+Common actions like edit, delete, and search have established icons that are universally understood. Leveraging pre-existing knowledge will improve clarity and help reduce clutter, since these icons require no text label.
 
-  </Grid.Cell>
+<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
 
-</Grid>
+  <Do>
+    ![A card with customer information, with a pencil icon representing the edit action, and a clipboard icon representing the copy to clipboard action. ](/images/design/icons/icons-using-2@2x.png)
 
-<Card>
-   
-  <Grid gap='4'>
+    Use icons to replace text for common actions with universally understood icons.
 
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+  </Do>
 
-      ### Replacing standard actions
+  <Dont>
+    ![ A series of abstract icon buttons with no labels.](/images/design/icons/icons-using-2@2x.png)
 
-      Common actions like edit, delete, and search have established icons that are universally understood. Leveraging pre-existing knowledge will improve clarity and help reduce clutter, since these icons require no text label.
+    Use ambiguous icons without a text label, as that can lead to confusion and misinterpretation.
 
-    </Grid.Cell>
+  </Dont>
 
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+</InlineGrid>
 
-      <Do>
-        ![A card with customer information, with a pencil icon representing the edit action, and a clipboard icon representing the copy to clipboard action. ](/images/design/icons/icons-using-2@2x.png)
+### Indicate common objects
 
-        Use icons to replace text for common actions with universally understood icons.
+Consistently pairing specific icons with objects enables users to quickly recognize them, which promotes a more efficient and intuitive interaction with the interface.
 
-      </Do>
+<InlineGrid gap="4" columns={{xs: '1', md: '3'}}>
 
-    </Grid.Cell>
+  <Do>
+    ![An inbox icon representing orders in the navigation menu, in the search results and in an information card.](/images/design/icons/icons-using-4@2x.png)
 
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+    Use icons consistently once a meaning is assigned to them.
 
-      <Dont>
-        ![ A series of abstract icon buttons with no labels.](/images/design/icons/icons-using-2@2x.png)
+  </Do>
 
-        Use ambiguous icons without a text label, as that can lead to confusion and misinterpretation.
+  <Do>
+    ![An inbox icon next to a number, representing an order number.](/images/design/icons/icons-using-5@2x.png)
 
-      </Dont>
+    Use icons to identify common objects, to improve the overall clarity of the interface.
 
-    </Grid.Cell>
+  </Do>
+  <Dont>
+    ![A series of inbox icons in a table with all the orders.](/images/design/icons/icons-using-6@2x.png)
 
-  </Grid>
+    Overuse icons. Redundant icons lead to visual clutter and increased cognitive load.
 
-</Card>
+  </Dont>
 
-<Card>
-   
-  <Grid gap='4'>
+</InlineGrid>
 
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+### Size
 
-      ### Indicate common objects
+Icon size and weight was specifically crafted to pair with typography.
 
-      Consistently pairing specific icons with objects enables users to quickly recognize them, which promotes a more efficient and intuitive interaction with the interface.
+<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
 
-    </Grid.Cell>
+  <Do>
+    ![An icon next to text, highlighting the vertical alignment between the two elements.](/images/design/icons/icons-using-7@2x.png)
 
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+    Align icons vertically with accompanying typography.
 
-      <Grid gap='4'>
-        <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
-           <Do>
-              ![An inbox icon representing orders in the navigation menu, in the search results and in an information card.](/images/design/icons/icons-using-4@2x.png)
+  </Do>
 
-              Use icons consistently once a meaning is assigned to them.
+  <Dont>
+    ![Three oversized icons next to text.](/images/design/icons/icons-using-8@2x.png)
 
-            </Do>
-        </Grid.Cell>
-        <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
-          <Do>
-            ![An inbox icon next to a number, representing an order number.](/images/design/icons/icons-using-5@2x.png)
+    Resize icons. Resizing them will distort the relationship that was established with typography.
 
-            Use icons to identify common objects, to improve the overall clarity of the interface.
+  </Dont>
+</InlineGrid>
 
-          </Do>
-        </Grid.Cell>
-
-        <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 12, xl: 12}}>
-          <Dont>
-            ![A series of inbox icons in a table with all the orders.](/images/design/icons/icons-using-6@2x.png)
-
-            Overuse icons. Redundant icons lead to visual clutter and increased cognitive load.
-
-          </Dont>
-        </Grid.Cell>
-
-      </Grid>
-
-    </Grid.Cell>
-
-  </Grid>
-
-</Card>
-
-<Card>
-   
-  <Grid gap='4'>
-
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-      ### Size
-
-      Icon size and weight was specifically crafted to pair with typography.
-
-    </Grid.Cell>
-
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-      <Do>
-        ![An icon next to text, highlighting the vertical alignment between the two elements.](/images/design/icons/icons-using-7@2x.png)
-
-        Align icons vertically with accompanying typography.
-
-      </Do>
-
-    </Grid.Cell>
-
-    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-      <Dont>
-        ![Three oversized icons next to text.](/images/design/icons/icons-using-8@2x.png)
-
-        Resize icons. Resizing them will distort the relationship that was established with typography.
-
-      </Dont>
-
-    </Grid.Cell>
-
-  </Grid>
-
-</Card>
 </Stack>
