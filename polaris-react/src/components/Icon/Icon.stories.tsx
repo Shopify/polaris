@@ -13,7 +13,7 @@ export function Default() {
 
 export function Colored() {
   return (
-    <BlockStack gap="2">
+    <BlockStack gap="200">
       <Text as="p" variant="bodyMd" alignment="center">
         Base tone
       </Text>

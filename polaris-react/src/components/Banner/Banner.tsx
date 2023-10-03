@@ -199,10 +199,10 @@ export function DefaultBanner({
         <Box
           background={backgroundColor}
           color={textColor}
-          borderStartStartRadius={smUp ? '3' : undefined}
-          borderStartEndRadius={smUp ? '3' : undefined}
-          borderEndStartRadius={!hasContent && smUp ? '3' : undefined}
-          borderEndEndRadius={!hasContent && smUp ? '3' : undefined}
+          borderStartStartRadius={smUp ? '300' : undefined}
+          borderStartEndRadius={smUp ? '300' : undefined}
+          borderEndStartRadius={!hasContent && smUp ? '300' : undefined}
+          borderEndEndRadius={!hasContent && smUp ? '300' : undefined}
           padding="300"
         >
           <InlineStack
