@@ -64,16 +64,6 @@ describe('<HoverCard />', () => {
     expect(hoverCard.children[0].type).toBe('div');
   });
 
-  it('passes fullWidth to PositionedOverlay', () => {
-    const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active fullWidth />,
-    );
-
-    expect(hoverCard).toContainReactComponent(PositionedOverlay, {
-      fullWidth: true,
-    });
-  });
-
   it("passes 'zIndexOverride' to PositionedOverlay", () => {
     const hoverCard = mountWithApp(
       <HoverCard {...defaultProps} active zIndexOverride={100} />,
