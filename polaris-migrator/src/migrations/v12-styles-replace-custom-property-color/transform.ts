@@ -149,6 +149,7 @@ const replacementMap1 = {
   '--p-color-icon-critical-strong-active-experimental':
     '--p-color-text-critical-active',
   '--p-color-icon-critical-strong-experimental': '--p-color-text-critical',
+  '--p-color-icon-critical-strong-hover-experimental': '--p-color-text-critical-hover',
   '--p-color-icon-info-strong-experimental': '--p-color-text-info',
   '--p-color-icon-interactive-active': '--p-color-icon-emphasis-active',
   '--p-color-icon-interactive-disabled': '--p-color-icon-disabled',
