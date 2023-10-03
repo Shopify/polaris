@@ -476,7 +476,7 @@ describe('<Row />', () => {
     });
   });
 
-  it('applies critical tone styles when tone prop is set to "success"', () => {
+  it('applies critical tone styles when tone prop is set to "critical"', () => {
     const row = mountWithTable(
       <Row {...defaultProps} tone="critical">
         <td />
