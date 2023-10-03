@@ -1,0 +1,9 @@
+.SectionHeader {
+  padding-left: var(--p-space-200);
+
+  $se23: env(--polaris-se-23);
+
+  $(se23) & {
+    padding-left: 0;
+  }
+}

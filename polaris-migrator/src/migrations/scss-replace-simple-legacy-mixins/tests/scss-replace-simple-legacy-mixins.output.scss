@@ -1,0 +1,9 @@
+.EmptyStateButton {
+  composes: unstyled-button from 'legacy-polaris-v8.css';
+  width: 100%;
+
+  &:disabled {
+    composes: base-button-disabled from 'legacy-polaris-v8.css';
+    cursor: default;
+  }
+}

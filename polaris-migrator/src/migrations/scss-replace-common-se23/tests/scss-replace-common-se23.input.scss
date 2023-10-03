@@ -1,0 +1,9 @@
+@use 'global-styles/common';
+
+.SectionHeader {
+  padding-left: var(--p-space-200);
+
+  #{common.$se23} & {
+    padding-left: 0;
+  }
+}
