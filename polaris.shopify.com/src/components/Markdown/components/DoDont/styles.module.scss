@@ -2,14 +2,15 @@
 @import '../../../../styles/fonts.scss';
 
 .DoDont {
-  margin: 2rem 0 2rem;
+  #{$notMarginConsideredHarmful} & {
+    margin: 2rem 0 2rem;
+    & + & {
+      margin-top: -1rem;
+    }
+  }
   gap: 1rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  & + & {
-    margin-top: -1rem;
-  }
+  grid-template-columns: [do] 1fr [dont] 1fr;
 
   @media screen and (max-width: $breakpointMobile) {
     display: flex;
@@ -18,64 +19,10 @@
   }
 }
 
-.DoDontPart {
-  font-size: var(--font-size-300);
-  position: relative;
-  flex: 1;
-  border-radius: var(--border-radius-400);
-  background-color: var(--surface);
-
-  h4:first-child {
-    display: inline-block;
-    background-color: var(--fill-success);
-    color: var(--text-success-onfill);
-    padding: var(--p-space-050) var(--p-space-200) var(--p-space-050)
-      var(--p-space-500);
-    border-radius: var(--p-space-200);
-    font-size: var(--font-size-100);
-    font-weight: var(--font-weight-600);
-    line-height: 1rem;
-    position: relative;
-  }
-
-  h4:first-child:after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 20px;
-    width: 20px;
-    background-image: url(/images/icon-do.svg);
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: cover;
-    z-index: 1;
-  }
-
-  img {
-    width: auto;
-    max-width: 100%;
-  }
-
-  h3 {
-    font-size: var(--font-size-300);
-    color: var(--text);
-  }
-
-  p {
-    margin: var(--p-space-200) 0 0 0;
-    font: var(--font-body-md);
-  }
+.Do {
+  grid-column: do;
 }
 
 .Dont {
-  h4:first-child {
-    background-color: var(--fill-critical);
-    color: var(--text-critical-onfill);
-  }
-
-  h4:first-child:after {
-    background-image: url(/images/icon-dont.svg);
-  }
+  grid-column: dont;
 }

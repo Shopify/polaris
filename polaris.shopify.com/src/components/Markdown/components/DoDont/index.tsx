@@ -1,10 +1,10 @@
 import {Fragment, Children} from 'react';
 import type {ReactElement, PropsWithChildren} from 'react';
 import styles from './styles.module.scss';
-
+import {Box} from '../../../Box';
 import {DirectiveCard, DirectiveStatusName} from '../DirectiveCard';
 interface DoDontProps extends PropsWithChildren {
-  title?: string | null;
+  className?: string;
 }
 
 /* Must have the following structure:
@@ -20,7 +20,7 @@ interface DoDontProps extends PropsWithChildren {
  *
  * </DoDont>
  */
-export const DoDont = ({children}: PropsWithChildren) => {
+export const DoDont = ({children, className}: DoDontProps) => {
   const childrenArray = Children.toArray(children) as ReactElement[];
   const prefix = [];
   let i = 0;
@@ -65,17 +65,21 @@ export const DoDont = ({children}: PropsWithChildren) => {
   return (
     <Fragment>
       {prefix}
-      <div className={styles.DoDont}>
-        {dos.length ? <Do title={null}>{dos}</Do> : null}
-        {donts.length ? <Dont title={null}>{donts}</Dont> : null}
-      </div>
+      <Box className={[styles.DoDont, className]}>
+        {dos.length ? <Do>{dos}</Do> : null}
+        {donts.length ? <Dont>{donts}</Dont> : null}
+      </Box>
     </Fragment>
   );
 };
 
 export const Do = ({children}: DoDontProps) => {
   return (
-    <DirectiveCard minHeight="100%" status={DirectiveStatusName.Do}>
+    <DirectiveCard
+      className={styles.Do}
+      minHeight="100%"
+      status={DirectiveStatusName.Do}
+    >
       {children}
     </DirectiveCard>
   );
@@ -83,7 +87,11 @@ export const Do = ({children}: DoDontProps) => {
 
 export const Dont = ({children}: DoDontProps) => {
   return (
-    <DirectiveCard minHeight="100%" status={DirectiveStatusName.Dont}>
+    <DirectiveCard
+      className={styles.Dont}
+      minHeight="100%"
+      status={DirectiveStatusName.Dont}
+    >
       {children}
     </DirectiveCard>
   );
