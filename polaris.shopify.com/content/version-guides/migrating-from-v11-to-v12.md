@@ -743,6 +743,8 @@ Only replace instances flagged by the RegExp below if they are values listed in 
 <ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
 ```
 
+Replacement maps for Step 1:
+
 | Deprecated Token                                      | Replacement Value                        |
 | ----------------------------------------------------- | ---------------------------------------- |
 | `--p-shadow-inset-lg`                                 | `--p-shadow-inset-200`                   |
