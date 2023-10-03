@@ -1,5 +1,42 @@
 # Changelog
 
+## 12.0.0-beta.2
+
+### Major Changes
+
+- [#10705](https://github.com/Shopify/polaris/pull/10705) [`c7c2312f7`](https://github.com/Shopify/polaris/commit/c7c2312f731b624ff6a50beda7b00c9b971091d2) Thanks [@chloerice](https://github.com/chloerice)! - - Removed the `subdued` and `status` props from `IndexTable.Row`. Use `tone` instead.
+
+* [#10778](https://github.com/Shopify/polaris/pull/10778) [`b126f64e6`](https://github.com/Shopify/polaris/commit/b126f64e6380064ea828837ea0903b5ee4c2f6c4) Thanks [@laurkim](https://github.com/laurkim)! - Migrated `shadow` custom properties from v11 to v12
+
+- [#10762](https://github.com/Shopify/polaris/pull/10762) [`1ef71164c`](https://github.com/Shopify/polaris/commit/1ef71164c2ad77f05fb7608c6e86bd79308602fa) Thanks [@laurkim](https://github.com/laurkim)! - Migrated `font` custom properties from v11 to v12
+
+* [#10741](https://github.com/Shopify/polaris/pull/10741) [`2c2bb0e09`](https://github.com/Shopify/polaris/commit/2c2bb0e092cbb41a2844e24006ff2460b189cc01) Thanks [@laurkim](https://github.com/laurkim)! - - Migrated `border` custom properties from v11 to v12
+  - Removed backwards compatibility for v11 border tokens on `Tooltip` component `BorderRadius` type
+  - Updated JSDoc prop type descriptions to include updated `border` custom properties on `Divider` and `Tooltip` components
+
+- [#10744](https://github.com/Shopify/polaris/pull/10744) [`a4f5e7df3`](https://github.com/Shopify/polaris/commit/a4f5e7df3f71fdcbb9f27a34c6e8302bd762ff53) Thanks [@mrcthms](https://github.com/mrcthms)! - Removed deprecated `disable1Password` prop from `TextField`.
+
+* [#10727](https://github.com/Shopify/polaris/pull/10727) [`179b481d7`](https://github.com/Shopify/polaris/commit/179b481d745c9e69880bd31cca409071ddf1845d) Thanks [@laurkim](https://github.com/laurkim)! - Migrated `space` custom properties from v11 to v12
+  Removed backwards compatibility for v11 border tokens on `Tooltip` component `Padding` type
+  Updated JSDoc prop type descriptions to include updated `padding` custom properties on `Box` component
+
+- [#10669](https://github.com/Shopify/polaris/pull/10669) [`794d1f5e4`](https://github.com/Shopify/polaris/commit/794d1f5e4b79a2721594979d31972cd7534d6174) Thanks [@lgriffee](https://github.com/lgriffee)! - Added `border-radius` semantic layer
+
+* [#10745](https://github.com/Shopify/polaris/pull/10745) [`a4205eee1`](https://github.com/Shopify/polaris/commit/a4205eee13ca9a4658f58a2c643ddcbb49956893) Thanks [@mrcthms](https://github.com/mrcthms)! - [IndexFilters] Remove IndexFiltersManager in AppProvider
+
+- [#10773](https://github.com/Shopify/polaris/pull/10773) [`f6bc29ade`](https://github.com/Shopify/polaris/commit/f6bc29ade47b11f4bd21aa4b6b604b6ae7391044) Thanks [@laurkim](https://github.com/laurkim)! - Removed support for `headingXs` and `heading4xl` variants and replaced usage with `headingSm` and `heading3xl`
+
+### Minor Changes
+
+- [#10722](https://github.com/Shopify/polaris/pull/10722) [`14a94967d`](https://github.com/Shopify/polaris/commit/14a94967da24697830780a4978def80f98823f8c) Thanks [@laurkim](https://github.com/laurkim)! - Added support for `emphasis` and `text` tones on `Icon` and migrated `primary` and `subdued` tone color tokens
+
+* [#10788](https://github.com/Shopify/polaris/pull/10788) [`82f10e830`](https://github.com/Shopify/polaris/commit/82f10e8307bcc7a839e4733b4c03c957ff2fbd88) Thanks [@mrcthms](https://github.com/mrcthms)! - Deprecated the IndexFiltersManager component
+
+### Patch Changes
+
+- Updated dependencies [[`2a467249f`](https://github.com/Shopify/polaris/commit/2a467249f3a198dc252eba53df9fecc7bf6572dd), [`2cdc59f88`](https://github.com/Shopify/polaris/commit/2cdc59f8823a6529ebb6150c316934633f86b28c), [`794d1f5e4`](https://github.com/Shopify/polaris/commit/794d1f5e4b79a2721594979d31972cd7534d6174), [`08aaf11ec`](https://github.com/Shopify/polaris/commit/08aaf11ec59680155476a20036a672795c2bad47)]:
+  - @shopify/polaris-tokens@8.0.0-beta.1
+
 ## 12.0.0-beta.1
 
 ### Major Changes
@@ -71,6 +108,7 @@
 
 * Updated dependencies [[`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532)]:
   - @shopify/polaris-tokens@7.13.0-beta.0
+
 ## 11.25.0
 
 ### Minor Changes
