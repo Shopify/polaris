@@ -24,7 +24,7 @@ import {POLARIS_MIGRATOR_COMMENT} from './constants';
 
 const defaultNamespace = '';
 
-const polarisCustomPropertyRegEx = new RegExp(
+const themeVarNamesRegExp = new RegExp(
   getThemeVarNames(themeDefault).join('|'),
 );
 
@@ -325,7 +325,7 @@ export function isTransformableDuration(
 export function isPolarisVar(node: Node): boolean {
   return (
     isSassFunction('var', node) &&
-    polarisCustomPropertyRegEx.test(node.nodes?.[0]?.value ?? '')
+    themeVarNamesRegExp.test(node.nodes?.[0]?.value ?? '')
   );
 }
 
