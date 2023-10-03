@@ -19,3 +19,9 @@ export function useTheme() {
 
   return theme;
 }
+
+export function UseTheme(props: {children(theme: Theme): JSX.Element}) {
+  const theme = useTheme();
+
+  return props.children(theme);
+}

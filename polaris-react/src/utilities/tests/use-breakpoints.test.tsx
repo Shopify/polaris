@@ -1,13 +1,13 @@
 import React from 'react';
 import {mount} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
-import {breakpoints, getMediaConditions} from '@shopify/polaris-tokens';
+import {themeDefault, getMediaConditions} from '@shopify/polaris-tokens';
 import type {BreakpointsTokenName} from '@shopify/polaris-tokens';
 
 import {useBreakpoints, getBreakpointsQueryEntries} from '../breakpoints';
 import type {BreakpointsDirectionAlias} from '../breakpoints';
 
-const mediaConditions = getMediaConditions(breakpoints);
+const mediaConditions = getMediaConditions(themeDefault.breakpoints);
 
 describe('useBreakpoints', () => {
   beforeEach(() => {
@@ -124,7 +124,7 @@ function setMediaWidth(breakpointsTokenName: BreakpointsTokenName) {
 describe('getBreakpointsQueryEntries', () => {
   it('converts breakpoints tokens into entries with direction/alias names', () => {
     const directionAliases: BreakpointsDirectionAlias[] =
-      getBreakpointsQueryEntries(breakpoints).map(
+      getBreakpointsQueryEntries(themeDefault.breakpoints).map(
         ([directionAlias]) => directionAlias,
       );
 

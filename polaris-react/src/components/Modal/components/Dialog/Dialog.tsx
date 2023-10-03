@@ -1,7 +1,6 @@
 import React, {useContext, useRef, useEffect} from 'react';
 import type {SetStateAction, Dispatch} from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
-import {motion} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../../../utilities/css';
 import {focusFirstFocusableNode} from '../../../../utilities/focus';
@@ -11,6 +10,7 @@ import {TrapFocus} from '../../../TrapFocus';
 import type {ModalSize} from '../../Modal';
 import {Text} from '../../../Text';
 import {FrameContext} from '../../../../utilities/frame';
+import {useTheme} from '../../../../utilities/use-theme';
 
 import styles from './Dialog.scss';
 
@@ -43,6 +43,7 @@ export function Dialog({
   hasToasts,
   ...props
 }: DialogProps) {
+  const theme = useTheme();
   const containerNode = useRef<HTMLDivElement>(null);
   const frameContext = useContext(FrameContext);
   let toastMessages;
@@ -95,7 +96,7 @@ export function Dialog({
       nodeRef={containerNode}
       mountOnEnter
       unmountOnExit
-      timeout={parseInt(motion['motion-duration-200'], 10)}
+      timeout={parseInt(theme.motion['motion-duration-200'], 10)}
       onEntered={onEntered}
       onExited={onExited}
     >

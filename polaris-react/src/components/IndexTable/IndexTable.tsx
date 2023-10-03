@@ -1,7 +1,7 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
-import {tokens, toPx, motion} from '@shopify/polaris-tokens';
+import {themeDefault, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
@@ -39,6 +39,7 @@ import type {
   Width,
   TooltipOverlayProps,
 } from '../Tooltip';
+import {useTheme} from '../../utilities/use-theme';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
@@ -146,6 +147,8 @@ function IndexTableBase({
   hasZebraStriping,
   ...restProps
 }: IndexTableBaseProps) {
+  const theme = useTheme();
+
   const {
     loading,
     bulkSelectState,
@@ -546,7 +549,7 @@ function IndexTableBase({
     <CSSTransition
       in={loading}
       classNames={loadingTransitionClassNames}
-      timeout={parseInt(motion['motion-duration-100'], 10)}
+      timeout={parseInt(theme.motion['motion-duration-100'], 10)}
       nodeRef={loadingElement}
       appear
       unmountOnExit
@@ -1135,7 +1138,7 @@ const isBreakpointsXS = () => {
   return typeof window === 'undefined'
     ? false
     : window.innerWidth <
-        parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
+        parseFloat(toPx(themeDefault.breakpoints['breakpoints-sm']) ?? '');
 };
 
 function getHeadingKey(heading: IndexTableHeading): string {
