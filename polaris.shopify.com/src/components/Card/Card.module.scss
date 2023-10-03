@@ -26,4 +26,9 @@
     1px 0px 0px 0px color(display-p3 0.8902 0.8902 0.8902) inset,
     -1px 0px 0px 0px color(display-p3 0.8902 0.8902 0.8902) inset,
     0px -1px 0px 0px color(display-p3 0.8314 0.8314 0.8314) inset;
+
+  .Card {
+    box-shadow: none;
+    background-color: var(--surface-subdued);
+  }
 }
