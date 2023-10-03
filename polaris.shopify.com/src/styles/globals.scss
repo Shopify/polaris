@@ -93,7 +93,7 @@
   --border-radius-800: 14px;
   --border-radius-round: 1000px;
 
-  --border-radius-400-new: var(--p-border-radius-4);
+  --border-radius-400-new: var(--p-border-radius-400);
 
   --card-padding-md: var(--p-space-400);
   --card-padding-lg: var(--p-space-800);
@@ -335,7 +335,7 @@ button {
 
 .components-grid__title {
   font-weight: var(--p-font-weight-semibold);
-  line-height: var(--p-font-line-height-3);
+  line-height: var(--p-font-line-height-600);
   #{$notMarginConsideredHarmful} {
     margin: 0 !important;
     margin-bottom: var(--p-space-100) !important;
@@ -344,8 +344,8 @@ button {
 }
 
 .tip-banner {
-  background: var(--p-color-bg-info-subdued);
-  border-radius: var(--p-border-radius-2);
+  background: var(--p-color-bg-surface-info);
+  border-radius: var(--p-border-radius-200);
   color: #00565e !important;
   #{$notMarginConsideredHarmful} {
     padding: var(--p-space-400) var(--p-space-600);

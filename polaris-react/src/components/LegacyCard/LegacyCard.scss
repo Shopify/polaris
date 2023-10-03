@@ -1,21 +1,21 @@
 @import '../../styles/common';
 
 .LegacyCard {
-  background-color: var(--p-color-bg);
-  box-shadow: var(--p-shadow-md);
+  background-color: var(--p-color-bg-surface);
+  box-shadow: var(--p-shadow-300);
   outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
 
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-xs),
-    $borderRadius: var(--p-border-radius-0-experimental),
+    $boxShadow: var(--p-shadow-100),
+    $borderRadius: var(--p-border-radius-0),
     $zIndex: 101
   );
 
   // Override custom heading font sizes
   h2,
   h3 {
-    font-size: var(--p-font-size-80-experimental);
+    font-size: var(--p-font-size-325);
   }
 
   + .LegacyCard {
@@ -30,19 +30,19 @@
     border-radius: var(--p-border-radius-200);
 
     @include shadow-bevel(
-      $boxShadow: var(--p-shadow-xs),
-      $borderRadius: var(--p-border-radius-3),
+      $boxShadow: var(--p-shadow-100),
+      $borderRadius: var(--p-border-radius-300),
       $zIndex: 101
     );
 
     .Section:first-child {
-      border-top-left-radius: var(--p-border-radius-3);
-      border-top-right-radius: var(--p-border-radius-3);
+      border-top-left-radius: var(--p-border-radius-300);
+      border-top-right-radius: var(--p-border-radius-300);
     }
 
     .Section:last-child {
-      border-bottom-left-radius: var(--p-border-radius-3);
-      border-bottom-right-radius: var(--p-border-radius-3);
+      border-bottom-left-radius: var(--p-border-radius-300);
+      border-bottom-right-radius: var(--p-border-radius-300);
     }
   }
 
@@ -51,7 +51,7 @@
 
     @include shadow-bevel(
       $boxShadow: none,
-      $borderRadius: var(--p-border-radius-0-experimental),
+      $borderRadius: var(--p-border-radius-0),
       $border: none,
       $content: none
     );
@@ -59,7 +59,7 @@
 }
 
 .subdued {
-  background-color: var(--p-color-bg-subdued);
+  background-color: var(--p-color-bg-surface-secondary);
 }
 
 .Section-hideOnPrint,
@@ -120,7 +120,7 @@
 }
 
 .Section-subdued {
-  background-color: var(--p-color-bg-subdued);
+  background-color: var(--p-color-bg-surface-secondary);
   padding: var(--p-space-300) var(--p-space-400);
 
   @media (-ms-high-contrast: active) {

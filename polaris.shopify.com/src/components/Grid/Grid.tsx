@@ -42,7 +42,6 @@ export const Grid = forwardRef(
       as={as}
       ref={ref}
       style={{
-        // @ts-expect-error The types for `style` don't support css vars
         '--props-grid-gap':
           typeof gap !== 'undefined' ? `var(--p-space-${gap})` : undefined,
         '--props-grid-gap-x':

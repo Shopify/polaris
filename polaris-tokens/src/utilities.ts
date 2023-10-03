@@ -37,6 +37,13 @@ export function toPx(value = '') {
   }
 }
 
+export function toPxs(value: string) {
+  return value.replace(
+    new RegExp(`${DIGIT_REGEX.source}(${UNIT_EM}|${UNIT_REM})`, 'g'),
+    (emOrRem: string) => toPx(emOrRem) ?? emOrRem,
+  );
+}
+
 export function toEm(value = '', fontSize = BASE_FONT_SIZE) {
   const unit = getUnit(value);
 
@@ -114,7 +121,7 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
 /**
  * Allowed Polaris token custom properties.
  *
- * Result: ['--p-color-bg-app', '--p-color-text', etc...]
+ * Result: ['--p-color-bg', '--p-color-text', etc...]
  */
 export function getCustomPropertyNames(tokens: Tokens) {
   return Object.entries(tokens)

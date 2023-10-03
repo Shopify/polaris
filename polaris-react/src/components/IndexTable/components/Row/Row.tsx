@@ -25,10 +25,18 @@ export interface RowProps {
   selected?: boolean | 'indeterminate';
   /** The zero-indexed position of the row. Used for Shift key multi-selection */
   position: number;
-  /** Whether the row should be subdued */
+  /**
+   *  @deprecated The subdued prop has been deprecated. Use the `tone` prop instead.
+   * Whether the row should be subdued */
   subdued?: boolean;
-  /** Whether the row should have a status */
+  /**
+   * @deprecated The status prop has been deprecated. Use the `tone` prop instead.
+   * Whether the row should have a status */
   status?: RowStatus;
+  /**
+
+   * Whether the row should visually indicate its status with color */
+  tone?: RowStatus;
   /** Whether the row should be disabled */
   disabled?: boolean;
   /** A tuple array with the first and last index of the range of other rows that this row describes. All rows in the range are selected when the selection range row is selected. */
@@ -54,6 +62,7 @@ export const Row = memo(function Row({
   position,
   subdued,
   status,
+  tone,
   disabled,
   selectionRange,
   rowType = 'data',
@@ -122,6 +131,8 @@ export const Row = memo(function Row({
     hovered && !condensed && styles['TableRow-hovered'],
     disabled && styles['TableRow-disabled'],
     status && styles[variationName('status', status)],
+    tone && styles[variationName('status', tone)],
+
     !selectable &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],

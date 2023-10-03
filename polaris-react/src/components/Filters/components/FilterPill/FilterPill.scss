@@ -1,9 +1,9 @@
 @import '../../../../styles/common';
 
 .FilterButton {
-  background: var(--p-color-bg);
-  border-radius: var(--p-border-radius-2);
-  border: var(--p-color-border) dashed var(--p-border-width-1);
+  background: var(--p-color-bg-surface);
+  border-radius: var(--p-border-radius-200);
+  border: var(--p-color-border) dashed var(--p-border-width-025);
   cursor: pointer;
   color: var(--p-color-text);
 
@@ -18,7 +18,7 @@
   &:hover,
   &:focus,
   &:active {
-    background: var(--p-color-bg-hover);
+    background: var(--p-color-bg-surface-hover);
     border-color: var(--p-color-border);
 
     path {
@@ -37,20 +37,20 @@
   }
 
   &:active {
-    background: var(--p-color-bg-subdued);
+    background: var(--p-color-bg-surface-secondary);
   }
 
   &.ActiveFilterButton {
-    background: var(--p-color-bg);
+    background: var(--p-color-bg-surface);
     border-style: solid;
 
     &:active {
-      background: var(--p-color-bg-subdued);
+      background: var(--p-color-bg-surface-secondary);
     }
   }
 
   &::after {
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
   }
 }
 

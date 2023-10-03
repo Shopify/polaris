@@ -64,7 +64,7 @@ export function All() {
       <Box paddingBlockEnd="200">
         <BlockStack gap="300">
           <BlockStack gap="200">
-            <Text as="h2" variant="headingXs">
+            <Text as="h2" variant="headingSm">
               Default
             </Text>
             <InlineStack gap="200" blockAlign="center">
@@ -74,7 +74,7 @@ export function All() {
             </InlineStack>
           </BlockStack>
           <BlockStack gap="200">
-            <Text as="h2" variant="headingXs">
+            <Text as="h2" variant="headingSm">
               With customer
             </Text>
             <InlineStack gap="200" blockAlign="center">
@@ -84,7 +84,7 @@ export function All() {
             </InlineStack>
           </BlockStack>
           <BlockStack gap="200">
-            <Text as="h2" variant="headingXs">
+            <Text as="h2" variant="headingSm">
               With image
             </Text>
             <InlineStack gap="200" blockAlign="center">
@@ -92,25 +92,25 @@ export function All() {
             </InlineStack>
           </BlockStack>
           <BlockStack gap="200">
-            <Text as="h2" variant="headingXs">
+            <Text as="h2" variant="headingSm">
               With icon (all styles)
             </Text>
             <IconColorsSizes />
           </BlockStack>
           <BlockStack gap="200">
-            <Text as="h2" variant="headingXs">
+            <Text as="h2" variant="headingSm">
               With default initials (all styles)
             </Text>
             <InitialsColorsSizes />
           </BlockStack>
           <BlockStack gap="200">
-            <Text as="h2" variant="headingXs">
+            <Text as="h2" variant="headingSm">
               With long initials (all styles)
             </Text>
             <InitialsLong />
           </BlockStack>
           <BlockStack gap="200">
-            <Text as="h2" variant="headingXs">
+            <Text as="h2" variant="headingSm">
               With long and wide initials
             </Text>
             <BlockStack gap="200">

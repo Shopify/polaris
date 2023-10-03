@@ -1,10 +1,10 @@
 @import '../../../../styles/common';
 
 .Container {
-  border-bottom: var(--p-border-width-1) solid var(--p-color-border);
-  border-top-left-radius: var(--p-border-radius-2);
-  border-top-right-radius: var(--p-border-radius-2);
-  background: var(--p-color-bg);
+  border-bottom: var(--p-border-width-025) solid var(--p-color-border);
+  border-top-left-radius: var(--p-border-radius-200);
+  border-top-right-radius: var(--p-border-radius-200);
+  background: var(--p-color-bg-surface);
 }
 
 @media #{$p-breakpoints-sm-down} {

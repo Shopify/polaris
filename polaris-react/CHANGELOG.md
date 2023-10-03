@@ -71,6 +71,24 @@
 
 * Updated dependencies [[`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532)]:
   - @shopify/polaris-tokens@7.13.0-beta.0
+## 11.25.0
+
+### Minor Changes
+
+- [#10724](https://github.com/Shopify/polaris/pull/10724) [`7e53d7860`](https://github.com/Shopify/polaris/commit/7e53d7860eb4641ec34c2f6af826213792501f1b) Thanks [@chloerice](https://github.com/chloerice)! - Deprecated `IndexTable` `status` and `subdued` props in favor of new `tone` prop
+
+### Patch Changes
+
+- [#10736](https://github.com/Shopify/polaris/pull/10736) [`49e47880a`](https://github.com/Shopify/polaris/commit/49e47880aa160084eb57699b016f9a0eb97f10c9) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Fixed issue with setting local pinned filters in `Filters` when no `appliedFilters` were provided.
+
+## 11.24.0
+
+### Minor Changes
+
+- [#10576](https://github.com/Shopify/polaris/pull/10576) [`30555a9f9`](https://github.com/Shopify/polaris/commit/30555a9f9a275cd44a3ea8b965309c948b9796e8) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Migrated `color` custom properties from Polaris v11 to v12
+
+* [`b3bfdcfc0`](https://github.com/Shopify/polaris/commit/b3bfdcfc03d9dc27f25ce93c6786242b58587e6c) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - - Updated the `TextField` to automatically set password manager disable data attributes when `autoComplete` is set to "off"
+  - Deprecated the `TextField` `disable1Password` prop
 
 ## 11.23.0
 

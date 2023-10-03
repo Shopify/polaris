@@ -54,18 +54,6 @@ If placed next to an item in a [resource list](https://polaris.shopify.com/compo
 
 - Make the entire list item clickable because the exception list itself isn’t clickable
 
-<DoDont>
-
-#### Do
-
-- ![Exception list being used inside a resource list item](/images/components/feedback-indicators/exception-list/do-exception-list@2x.png)
-
-#### Don’t
-
-- ![Exception list being used in place of a banner](/images/components/feedback-indicators/exception-list/dont-exception-list@2x.png)
-
-</DoDont>
-
 ---
 
 ## Related components

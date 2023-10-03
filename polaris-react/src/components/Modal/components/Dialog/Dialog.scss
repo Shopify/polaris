@@ -40,8 +40,8 @@ $large-width: 980px;
   flex-direction: column;
   width: 100%;
   max-height: calc(100vh - #{$vertical-spacing});
-  background: var(--p-color-bg);
-  box-shadow: var(--p-shadow-2xl);
+  background: var(--p-color-bg-surface);
+  box-shadow: var(--p-shadow-600);
   overflow: hidden;
 
   @media (forced-colors: active) {
@@ -57,7 +57,7 @@ $large-width: 980px;
     position: relative;
     max-width: $small-width;
     margin: 0 auto;
-    border-radius: var(--p-border-radius-4);
+    border-radius: var(--p-border-radius-400);
   }
 
   &.limitHeight {

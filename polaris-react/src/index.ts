@@ -183,7 +183,11 @@ export type {IconProps} from './components/Icon';
 export {Image} from './components/Image';
 export type {ImageProps} from './components/Image';
 
-export {IndexFilters} from './components/IndexFilters';
+export {
+  IndexFilters,
+  useSetIndexFiltersMode,
+  IndexFiltersMode,
+} from './components/IndexFilters';
 export type {
   IndexFiltersProps,
   SortButtonChoice,
@@ -419,11 +423,6 @@ export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from '.
 export {useEventListener} from './utilities/use-event-listener';
 export {useTheme} from './utilities/use-theme';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
-export {
-  useSetIndexFiltersMode,
-  IndexFiltersMode,
-  IndexFiltersManager,
-} from './utilities/index-filters';
 export {
   useRowHovered as useIndexTableRowHovered,
   useRowSelected as useIndexTableRowSelected,

@@ -16,7 +16,7 @@ $relative-size: $primary-basis / $secondary-basis;
 
   @media print {
     body & {
-      font-size: var(--p-font-size-75);
+      font-size: var(--p-font-size-300);
       line-height: var(--p-font-line-height-400);
     }
 
@@ -62,7 +62,7 @@ $relative-size: $primary-basis / $secondary-basis;
   margin-left: var(--p-space-400);
 
   + .AnnotatedSection {
-    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
     padding-top: var(--p-space-400);
   }
 }

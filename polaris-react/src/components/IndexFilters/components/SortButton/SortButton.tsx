@@ -127,7 +127,7 @@ export function SortButton({
         paddingInlineEnd="300"
         paddingBlockStart="200"
         paddingBlockEnd="200"
-        borderBlockEndWidth="1"
+        borderBlockEndWidth="025"
         borderColor="border-subdued"
       >
         <ChoiceList
