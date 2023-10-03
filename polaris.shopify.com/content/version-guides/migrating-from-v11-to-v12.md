@@ -271,7 +271,7 @@ To replace these deprecated `color` custom properties, you can run the [v12-styl
 + color: var(--p-color-bg-surface);
 ```
 
-**⚠️ Important**: The color migration needs to be run in 2 sequential steps due to overlapping `color` token names.
+**⚠️ Important**: The color migration needs to be run in 4 sequential steps due to overlapping `color` token names and context dependent manual migrations.
 
 #### Step 1
 
@@ -279,19 +279,13 @@ To replace these deprecated `color` custom properties, you can run the [v12-styl
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=1
 ```
 
-#### Step 2
-
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=2
-```
-
-#### Post-migration validation
-
 After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
 
 ```
 (?:--p-color-avatar-bg-fill|--p-color-avatar-text-on-bg-fill|--p-color-avatar-five-bg-fill| --p-color-avatar-five-text-on-bg-fill|--p-color-avatar-four-bg-fill|--p-color-avatar-four-text-on-bg-fill|--p-color-avatar-one-bg-fill|--p-color-avatar-one-text-on-bg-fill|--p-color-avatar-three-bg-fill|--p-color-avatar-three-text-on-bg-fill|--p-color-avatar-two-bg-fill|--p-color-avatar-two-text-on-bg-fill|--p-color-bg-surface-active|--p-color-bg-surface-active|--p-color-bg-surface-selected|--p-color-backdrop-bg|--p-color-bg-fill-caution|--p-color-bg-surface-caution-active|--p-color-bg-surface-caution-hover|--p-color-bg-surface-caution|--p-color-bg-fill-caution-secondary|--p-color-bg-fill-critical-active|--p-color-bg-fill-critical-hover|--p-color-bg-fill-critical|--p-color-bg-surface-critical-active|--p-color-bg-surface-critical-hover|--p-color-bg-surface-critical|--p-color-bg-fill-critical-secondary|--p-color-bg-surface-disabled|--p-color-bg-surface-hover|--p-color-bg-fill-info|--p-color-bg-surface-info-active|--p-color-bg-surface-info-hover|--p-color-bg-surface-info|--p-color-bg-fill-info-secondary|--p-color-input-bg-surface-active|--p-color-input-bg-surface-hover|--p-color-input-bg-surface|--p-color-bg-fill-inverse|--p-color-bg-fill-secondary|--p-color-bg-fill-inverse-active|--p-color-bg-fill-inverse-hover|--p-color-bg-fill-magic-secondary-active|--p-color-bg-fill-magic-secondary-hover|--p-color-bg-fill-magic|--p-color-bg-surface-magic-hover|--p-color-bg-surface-magic|--p-color-bg-fill-magic-secondary|--p-color-bg-fill-brand-active|--p-color-bg-fill-brand-disabled|--p-color-bg-fill-brand-hover|--p-color-bg-surface-brand-active|--p-color-bg-surface-brand-hover|--p-color-bg-surface-brand-selected|--p-color-bg-surface-brand|--p-color-bg-fill-brand|--p-color-bg-surface-tertiary|--p-color-bg-fill-tertiary-active|--p-color-bg-fill-tertiary-hover|--p-color-bg-fill-tertiary|--p-color-bg-surface-secondary-active|--p-color-bg-surface-secondary-hover|--p-color-bg-surface-secondary|--p-color-bg-fill-success-active|--p-color-bg-fill-success-hover|--p-color-bg-fill-success|--p-color-bg-surface-success-active|--p-color-bg-surface-success-hover|--p-color-bg-surface-success|--p-color-bg-fill-success-secondary|--p-color-bg-fill-transparent-active|--p-color-bg-fill-disabled|--p-color-bg-surface-transparent|--p-color-bg-fill-transparent-hover|--p-color-bg-fill-brand-disabled|--p-color-bg-fill-transparent-secondary|--p-color-bg-fill-warning|--p-color-bg-surface-warning|--p-color-bg-fill-warning-secondary|--p-color-bg-surface|--p-color-border-caution|--p-color-border-critical|--p-color-border-critical|--p-color-border-critical-secondary|--p-color-border-critical|--p-color-border-info|--p-color-input-border-active|--p-color-input-border-hover|--p-color-input-border|--p-color-border-emphasis-active|--p-color-border-disabled|--p-color-border-focus|--p-color-border-emphasis-hover|--p-color-border-emphasis|--p-color-border-magic-secondary|--p-color-border-brand|--p-color-border-tertiary|--p-color-border-secondary|--p-color-border-success|--p-color-text-critical-active|--p-color-text-critical|--p-color-text-info|--p-color-icon-emphasis-active|--p-color-icon-disabled|--p-color-icon-emphasis-hover|--p-color-icon-emphasis|--p-color-icon-brand|--p-color-icon-secondary|--p-color-text-success|--p-color-text-warning|--p-color-text-caution|--p-color-text-critical-hover|--p-color-text-critical|--p-color-text-info-on-bg-fill|--p-color-text-emphasis-active|--p-color-text-disabled|--p-color-text-emphasis-hover|--p-color-text-link-inverse|--p-color-text-emphasis|--p-color-text-inverse-secondary|--p-color-text-magic|--p-color-text-brand-hover|--p-color-text-brand|--p-color-text-secondary|--p-color-text-success|--p-color-text-warning)(?![\w-])
 ```
+
+Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
 
 ```
 <Box[^>\w](?:[^>]|\n)*?background
@@ -321,7 +315,7 @@ After migrating use the following RegExp to check for any additional instances o
 <Box[^>\w](?:[^>]|\n)*?color
 ```
 
-#### Replacement maps
+Replacement maps for Step 1:
 
 | Deprecated Token                                         | Replacement Value                          |
 | -------------------------------------------------------- | ------------------------------------------ |
@@ -452,34 +446,157 @@ After migrating use the following RegExp to check for any additional instances o
 | `--p-color-text-success-strong`                          | `--p-color-text-success`                   |
 | `--p-color-text-warning-experimental`                    | `--p-color-text-warning`                   |
 
-#### Manual replacement maps
+#### Step 2
 
-The following color tokens are no longer supported in v12.0.0 and will need to be manually migrated to their hardcoded value.
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=2
+```
 
-| Deprecated Token                                           | Replacement Value        |
-| ---------------------------------------------------------- | ------------------------ |
-| `--p-color-bg-transparent-primary-experimental`            | `rgba(0, 0, 0, 0.62)`    |
-| `--p-color-bg-transparent-secondary-disabled-experimental` | `rgba(0, 0, 0, 0.08)`    |
-| `--p-color-icon-on-color`                                  | `rgba(255, 255, 255, 1)` |
-| `--p-color-text-on-color`                                  | `rgba(255, 255, 255, 1)` |
+After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
 
-#### `on-color` tokens
+```
+(?:--p-color-bg-app)(?![\w-])
+```
 
-`on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the bg color the element is sitting on. This gives us greater control over the visual design of the admin.
+Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
 
-The table below shows which `on-bg-fill` colors to use against their respective `bg-fill` colors. Use the mappings below as a general guide to updating `text-on-color` and `icon-on-color` tokens.
+```
+<Box[^>\w](?:[^>]|\n)*?background
+```
 
-| Background color   | Text + Icon color                                      |
-| ------------------ | ------------------------------------------------------ |
-| `bg-fill-info`     | `text-info-on-bg-fill`                                 |
-| `bg-fill-success`  | `text-success-on-bg-fill`                              |
-| `bg-fill-caution`  | `text-caution-on-bg-fill`                              |
-| `bg-fill-warning`  | `text-warning-on-bg-fill`                              |
-| `bg-fill-critical` | `text-critical-on-bg-fill`                             |
-| `bg-fill-magic`    | `text-magic-on-bg-fill`                                |
-| `bg-fill-emphasis` | `text-emphasis-on-bg-fill`                             |
-| `bg-fill-inverse`  | `text-inverse` `text-inverse-secondary` `icon-inverse` |
-| `bg-inverse`       | `text-inverse` `text-inverse-secondary` `icon-inverse` |
+```
+<Card[^>\w](?:[^>]|\n)*?background
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderColor
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?outlineColor
+```
+
+```
+<Divider[^>\w](?:[^>]|\n)*?borderColor
+```
+
+```
+<Banner[^>\w](?:[^>]|\n)*?textColor
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?color
+```
+
+Replacement maps for Step 2:
+
+| Deprecated Token   | Replacement Value |
+| ------------------ | ----------------- |
+| `--p-color-bg-app` | `--p-color-bg`    |
+
+#### Step 3
+
+Manually migrate the following tokens to their hardcoded values:
+
+| Deprecated Token                                           | Replacement Value     |
+| ---------------------------------------------------------- | --------------------- |
+| `--p-color-bg-transparent-primary-experimental`            | `rgba(0, 0, 0, 0.62)` |
+| `--p-color-bg-transparent-secondary-disabled-experimental` | `rgba(0, 0, 0, 0.08)` |
+
+After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
+
+```
+(?:--p-color-bg-transparent-primary-experimental|--p-color-bg-transparent-secondary-disabled-experimental)(?![\w-])
+```
+
+Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
+
+```
+<Box[^>\w](?:[^>]|\n)*?background
+```
+
+```
+<Card[^>\w](?:[^>]|\n)*?background
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderColor
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?outlineColor
+```
+
+```
+<Divider[^>\w](?:[^>]|\n)*?borderColor
+```
+
+```
+<Banner[^>\w](?:[^>]|\n)*?textColor
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?color
+```
+
+#### Step 4
+
+`on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the bg color the element is sitting on. This gives us greater control over the visual design of the admin. If you want to unblock your migration quickly you can manually hardcode the values using the following replacement map:
+
+| Deprecated Token          | Replacement Value        |
+| ------------------------- | ------------------------ |
+| `--p-color-icon-on-color` | `rgba(255, 255, 255, 1)` |
+| `--p-color-text-on-color` | `rgba(255, 255, 255, 1)` |
+
+Otherwise, the table below shows which `on-bg-fill` colors to use against their respective `bg-fill` colors. Use the mappings below as a general guide to manually update `text-on-color` and `icon-on-color` tokens based on background color context:
+
+| Background color of parent container | Text + Icon color on top of parent container                                                 |
+| ------------------------------------ | -------------------------------------------------------------------------------------------- |
+| `--p-color-bg-fill-info`             | `--p-color-text-info-on-bg-fill`                                                             |
+| `--p-color-bg-fill-success`          | `--p-color-text-success-on-bg-fill`                                                          |
+| `--p-color-bg-fill-caution`          | `--p-color-text-caution-on-bg-fill`                                                          |
+| `--p-color-bg-fill-warning`          | `--p-color-text-warning-on-bg-fill`                                                          |
+| `--p-color-bg-fill-critical`         | `--p-color-text-critical-on-bg-fill`                                                         |
+| `--p-color-bg-fill-magic`            | `--p-color-text-magic-on-bg-fill`                                                            |
+| `--p-color-bg-fill-emphasis`         | `--p-color-text-emphasis-on-bg-fill`                                                         |
+| `--p-color-bg-fill-inverse`          | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
+| `--p-color-bg-inverse`               | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
+
+After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
+
+```
+(?:--p-color-icon-on-color|--p-color-text-on-color)(?![\w-])
+```
+
+Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
+
+```
+<Box[^>\w](?:[^>]|\n)*?background
+```
+
+```
+<Card[^>\w](?:[^>]|\n)*?background
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?borderColor
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?outlineColor
+```
+
+```
+<Divider[^>\w](?:[^>]|\n)*?borderColor
+```
+
+```
+<Banner[^>\w](?:[^>]|\n)*?textColor
+```
+
+```
+<Box[^>\w](?:[^>]|\n)*?color
+```
 
 ### Font
 
@@ -511,6 +628,23 @@ After migrating use the following RegExp to check for any additional instances o
 (?:--p-font-size-70-experimental|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])
 ```
 
+Replacement maps for Step 1:
+
+| Deprecated Token                        | Replacement Value           |
+| --------------------------------------- | --------------------------- |
+| `--p-font-size-70-experimental`         | `--p-font-size-275`         |
+| `--p-font-size-80-experimental`         | `--p-font-size-325`         |
+| `--p-font-size-100`                     | `--p-font-size-350`         |
+| `--p-font-size-700`                     | `--p-font-size-1000`        |
+| `--p-font-line-height-075-experimental` | `--p-font-line-height-300`  |
+| `--p-font-line-height-1`                | `--p-font-line-height-400`  |
+| `--p-font-line-height-2`                | `--p-font-line-height-500`  |
+| `--p-font-line-height-3`                | `--p-font-line-height-600`  |
+| `--p-font-line-height-4`                | `--p-font-line-height-700`  |
+| `--p-font-line-height-5`                | `--p-font-line-height-800`  |
+| `--p-font-line-height-6`                | `--p-font-line-height-1000` |
+| `--p-font-line-height-7`                | `--p-font-line-height-1200` |
+
 #### Step 2
 
 ```sh
@@ -522,6 +656,13 @@ After migrating use the following RegExp to check for any additional instances o
 ```
 (?:--p-font-size-500|--p-font-size-600)(?![\w-])
 ```
+
+Replacement maps for Step 2:
+
+| Deprecated Token    | Replacement Value   |
+| ------------------- | ------------------- |
+| `--p-font-size-500` | `--p-font-size-750` |
+| `--p-font-size-600` | `--p-font-size-900` |
 
 #### Step 3
 
@@ -535,6 +676,13 @@ After migrating use the following RegExp to check for any additional instances o
 (?:--p-font-size-300|--p-font-size-400)(?![\w-])
 ```
 
+Replacement maps for Step 3:
+
+| Deprecated Token    | Replacement Value   |
+| ------------------- | ------------------- |
+| `--p-font-size-300` | `--p-font-size-500` |
+| `--p-font-size-400` | `--p-font-size-600` |
+
 #### Step 4
 
 ```sh
@@ -547,28 +695,12 @@ After migrating use the following RegExp to check for any additional instances o
 (?:--p-font-size-75|--p-font-size-200)(?![\w-])
 ```
 
-#### Replacement maps
+Replacement maps for Step 4:
 
-| Deprecated Token                        | Replacement Value           |
-| --------------------------------------- | --------------------------- |
-| `--p-font-size-70-experimental`         | `--p-font-size-275`         |
-| `--p-font-size-75`                      | `--p-font-size-300`         |
-| `--p-font-size-80-experimental`         | `--p-font-size-325`         |
-| `--p-font-size-100`                     | `--p-font-size-350`         |
-| `--p-font-size-200`                     | `--p-font-size-400`         |
-| `--p-font-size-300`                     | `--p-font-size-500`         |
-| `--p-font-size-400`                     | `--p-font-size-600`         |
-| `--p-font-size-500`                     | `--p-font-size-750`         |
-| `--p-font-size-600`                     | `--p-font-size-900`         |
-| `--p-font-size-700`                     | `--p-font-size-1000`        |
-| `--p-font-line-height-075-experimental` | `--p-font-line-height-300`  |
-| `--p-font-line-height-1`                | `--p-font-line-height-400`  |
-| `--p-font-line-height-2`                | `--p-font-line-height-500`  |
-| `--p-font-line-height-3`                | `--p-font-line-height-600`  |
-| `--p-font-line-height-4`                | `--p-font-line-height-700`  |
-| `--p-font-line-height-5`                | `--p-font-line-height-800`  |
-| `--p-font-line-height-6`                | `--p-font-line-height-1000` |
-| `--p-font-line-height-7`                | `--p-font-line-height-1200` |
+| Deprecated Token    | Replacement Value   |
+| ------------------- | ------------------- |
+| `--p-font-size-75`  | `--p-font-size-300` |
+| `--p-font-size-200` | `--p-font-size-400` |
 
 ### Shadow
 
@@ -581,25 +713,21 @@ To replace these deprecated `shadow` custom properties, you can run the [v12-sty
 + box-shadow: var(--p-shadow-100);
 ```
 
+**⚠️ Important**: The shadow migration needs to be run in 2 sequential steps due to context dependent manual migrations.
+
+#### Step 1
+
 ```sh
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
 ```
 
-The following tokens need to be manually migrated because their values are context dependent.
-
-| Deprecated CSS Custom Property                 | Replacement Value                                                                        |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `--p-shadow-button-primary-experimental`       | `--p-shadow-button-primary-critical`<br/>`--p-shadow-button-primary-success`             |
-| `--p-shadow-button-primary-hover-experimental` | `--p-shadow-button-primary-critical-hover`<br/>`--p-shadow-button-primary-success-hover` |
-| `--p-shadow-button-inset-experimental`         | `--p-shadow-button-primary-critical-inset`<br/>`--p-shadow-button-primary-success-inset` |
-
-#### Post-migration validation
-
 After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
 
 ```
-(?:--p-shadow-inset-lg|--p-shadow-inset-md|--p-shadow-inset-sm|--p-shadow-none|--p-shadow-xs|--p-shadow-sm|--p-shadow-md|--p-shadow-lg|--p-shadow-xl|--p-shadow-2xl|--p-shadow-bevel-experimental|--p-shadow-card-sm-experimental|--p-shadow-card-md-experimental|--p-shadow-card-lg-experimental|--p-shadow-button-experimental|--p-shadow-button-hover-experimental|--p-shadow-button-disabled-experimental|--p-shadow-button-primary-strong-experimental|--p-shadow-button-primary-strong-inset-experimental|--p-shadow-button-primary-strong-hover-experimental|--p-shadow-border-inset-experimental|--p-shadow-button-primary-experimental|--p-shadow-button-primary-hover-experimental|--p-shadow-button-inset-experimental)(?![\w-])
+(?:--p-shadow-inset-lg|--p-shadow-inset-md|--p-shadow-inset-sm|--p-shadow-none|--p-shadow-xs|--p-shadow-sm|--p-shadow-md|--p-shadow-lg|--p-shadow-xl|--p-shadow-2xl|--p-shadow-bevel-experimental|--p-shadow-card-sm-experimental|--p-shadow-card-md-experimental|--p-shadow-card-lg-experimental|--p-shadow-button-experimental|--p-shadow-button-hover-experimental|--p-shadow-button-disabled-experimental|--p-shadow-button-primary-strong-experimental|--p-shadow-button-primary-strong-inset-experimental|--p-shadow-button-primary-strong-hover-experimental|--p-shadow-border-inset-experimental)(?![\w-])
 ```
+
+Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
 
 ```
 <Box[^>\w](?:[^>]|\n)*?shadow
@@ -609,34 +737,55 @@ After migrating use the following RegExp to check for any additional instances o
 <ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
 ```
 
-#### Replacement maps
+| Deprecated Token                                      | Replacement Value                        |
+| ----------------------------------------------------- | ---------------------------------------- |
+| `--p-shadow-inset-lg`                                 | `--p-shadow-inset-200`                   |
+| `--p-shadow-inset-md`                                 | `--p-shadow-inset-200`                   |
+| `--p-shadow-inset-sm`                                 | `--p-shadow-inset-100`                   |
+| `--p-shadow-none`                                     | `--p-shadow-0`                           |
+| `--p-shadow-xs`                                       | `--p-shadow-100`                         |
+| `--p-shadow-sm`                                       | `--p-shadow-200`                         |
+| `--p-shadow-md`                                       | `--p-shadow-300`                         |
+| `--p-shadow-lg`                                       | `--p-shadow-400`                         |
+| `--p-shadow-xl`                                       | `--p-shadow-500`                         |
+| `--p-shadow-2xl`                                      | `--p-shadow-600`                         |
+| `--p-shadow-bevel-experimental`                       | `--p-shadow-bevel-100`                   |
+| `--p-shadow-card-sm-experimental`                     | `--p-shadow-100`                         |
+| `--p-shadow-card-md-experimental`                     | `--p-shadow-200`                         |
+| `--p-shadow-card-lg-experimental`                     | `--p-shadow-300`                         |
+| `--p-shadow-button-experimental`                      | `--p-shadow-button`                      |
+| `--p-shadow-button-hover-experimental`                | `--p-shadow-button-hover`                |
+| `--p-shadow-button-disabled-experimental`             | `inset 0 0 0 1px rgba(227, 227, 227, 1)` |
+| `--p-shadow-button-primary-strong-experimental`       | `--p-shadow-button-primary`              |
+| `--p-shadow-button-primary-strong-inset-experimental` | `--p-shadow-button-primary-inset`        |
+| `--p-shadow-button-primary-strong-hover-experimental` | `--p-shadow-button-primary-hover`        |
+| `--p-shadow-border-inset-experimental`                | `--p-shadow-border-inset`                |
 
-| Deprecated Token                                      | Replacement Value                                                                        |
-| ----------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `--p-shadow-inset-lg`                                 | `--p-shadow-inset-200`                                                                   |
-| `--p-shadow-inset-md`                                 | `--p-shadow-inset-200`                                                                   |
-| `--p-shadow-inset-sm`                                 | `--p-shadow-inset-100`                                                                   |
-| `--p-shadow-none`                                     | `--p-shadow-0`                                                                           |
-| `--p-shadow-xs`                                       | `--p-shadow-100`                                                                         |
-| `--p-shadow-sm`                                       | `--p-shadow-200`                                                                         |
-| `--p-shadow-md`                                       | `--p-shadow-300`                                                                         |
-| `--p-shadow-lg`                                       | `--p-shadow-400`                                                                         |
-| `--p-shadow-xl`                                       | `--p-shadow-500`                                                                         |
-| `--p-shadow-2xl`                                      | `--p-shadow-600`                                                                         |
-| `--p-shadow-bevel-experimental`                       | `--p-shadow-bevel-100`                                                                   |
-| `--p-shadow-card-sm-experimental`                     | `--p-shadow-100`                                                                         |
-| `--p-shadow-card-md-experimental`                     | `--p-shadow-200`                                                                         |
-| `--p-shadow-card-lg-experimental`                     | `--p-shadow-300`                                                                         |
-| `--p-shadow-button-experimental`                      | `--p-shadow-button`                                                                      |
-| `--p-shadow-button-hover-experimental`                | `--p-shadow-button-hover`                                                                |
-| `--p-shadow-button-disabled-experimental`             | `inset 0 0 0 1px rgba(227, 227, 227, 1)`                                                 |
-| `--p-shadow-button-primary-strong-experimental`       | `--p-shadow-button-primary`                                                              |
-| `--p-shadow-button-primary-strong-inset-experimental` | `--p-shadow-button-primary-inset`                                                        |
-| `--p-shadow-button-primary-strong-hover-experimental` | `--p-shadow-button-primary-hover`                                                        |
-| `--p-shadow-button-primary-experimental`              | `--p-shadow-button-primary-critical`<br/>`--p-shadow-button-primary-success`             |
-| `--p-shadow-button-primary-hover-experimental`        | `--p-shadow-button-primary-critical-hover`<br/>`--p-shadow-button-primary-success-hover` |
-| `--p-shadow-button-inset-experimental`                | `--p-shadow-button-primary-critical-inset`<br/>`--p-shadow-button-primary-success-inset` |
-| `--p-shadow-border-inset-experimental`                | `--p-shadow-border-inset`                                                                |
+#### Step 2
+
+The following tokens need to be manually migrated because their values are context dependent:
+
+| Deprecated Token                               | Replacement Value                                                                        |
+| ---------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `--p-shadow-button-primary-experimental`       | `--p-shadow-button-primary-critical`<br/>`--p-shadow-button-primary-success`             |
+| `--p-shadow-button-primary-hover-experimental` | `--p-shadow-button-primary-critical-hover`<br/>`--p-shadow-button-primary-success-hover` |
+| `--p-shadow-button-inset-experimental`         | `--p-shadow-button-primary-critical-inset`<br/>`--p-shadow-button-primary-success-inset` |
+
+After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
+
+```
+(?:--p-shadow-button-primary-experimental|--p-shadow-button-primary-hover-experimental|--p-shadow-button-inset-experimental)(?![\w-])
+```
+
+Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
+
+```
+<Box[^>\w](?:[^>]|\n)*?shadow
+```
+
+```
+<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
+```
 
 ### Space
 
