@@ -1,5 +1,5 @@
 import styles from './TokensPage.module.scss';
-import {MetadataGroup, metadata as allTokens} from '@shopify/polaris-tokens';
+import {MetaTokenGroupShape, metaThemeDefault} from '@shopify/polaris-tokens';
 import {Status, TokenPropertiesWithName} from '../../types';
 import TokenList from '../TokenList';
 import Link from 'next/link';
@@ -78,7 +78,7 @@ const navItems: NavItem[] = [
 
 function tokensToFilteredArray(
   filter: string,
-  tokenGroup: MetadataGroup,
+  tokenGroup: MetaTokenGroupShape,
 ): TokenPropertiesWithName[] {
   return Object.entries(tokenGroup)
     .filter(([name]) => {
@@ -94,17 +94,17 @@ function TokensPage({tokenGroup}: Props) {
   const router = useRouter();
 
   const tokens = {
-    border: tokensToFilteredArray(filter, allTokens.border),
-    breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
-    color: tokensToFilteredArray(filter, allTokens.color),
-    font: tokensToFilteredArray(filter, allTokens.font),
-    height: tokensToFilteredArray(filter, allTokens.height),
-    motion: tokensToFilteredArray(filter, allTokens.motion),
-    shadow: tokensToFilteredArray(filter, allTokens.shadow),
-    space: tokensToFilteredArray(filter, allTokens.space),
-    text: tokensToFilteredArray(filter, allTokens.text),
-    width: tokensToFilteredArray(filter, allTokens.width),
-    zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
+    border: tokensToFilteredArray(filter, metaThemeDefault.border),
+    breakpoints: tokensToFilteredArray(filter, metaThemeDefault.breakpoints),
+    color: tokensToFilteredArray(filter, metaThemeDefault.color),
+    font: tokensToFilteredArray(filter, metaThemeDefault.font),
+    height: tokensToFilteredArray(filter, metaThemeDefault.height),
+    motion: tokensToFilteredArray(filter, metaThemeDefault.motion),
+    shadow: tokensToFilteredArray(filter, metaThemeDefault.shadow),
+    space: tokensToFilteredArray(filter, metaThemeDefault.space),
+    text: tokensToFilteredArray(filter, metaThemeDefault.text),
+    width: tokensToFilteredArray(filter, metaThemeDefault.width),
+    zIndex: tokensToFilteredArray(filter, metaThemeDefault.zIndex),
   };
 
   const keyframeStyles = tokens['motion']

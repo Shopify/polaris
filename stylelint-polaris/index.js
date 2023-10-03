@@ -1,7 +1,7 @@
 const {
-  getCustomPropertyNames,
   createVar,
-  tokens,
+  getThemeVarNames,
+  themeDefault,
 } = require('@shopify/polaris-tokens');
 
 const disallowedUnits = [
@@ -117,7 +117,7 @@ const stylelintPolarisCoverageOptions = {
         '/.+/': [
           // Note: Order is important
           // This pattern allows use of `--p-*` custom properties that are valid Polaris tokens
-          ...getCustomPropertyNames(tokens),
+          ...getThemeVarNames(themeDefault),
           // This pattern flags unknown `--p-*` custom properties or usage of deprecated `--pc-*` custom properties private to polaris-react
           /--(?!(p|pc)-).+/,
         ],
@@ -405,8 +405,8 @@ const stylelintPolarisCoverageOptions = {
     {
       'declaration-property-value-allowed-list': [
         {
-          'z-index': Object.keys(tokens.zIndex).map(
-            (token) => `var(${createVar(token)})`,
+          'z-index': Object.keys(themeDefault.zIndex).map((tokenName) =>
+            createVar(tokenName),
           ),
         },
       ],

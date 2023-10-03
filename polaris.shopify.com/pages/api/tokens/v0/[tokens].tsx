@@ -1,9 +1,15 @@
-import {createVar, tokens, TokenGroup} from '@shopify/polaris-tokens';
+import type {Theme} from '@shopify/polaris-tokens';
+import {
+  createVarName,
+  isTokenName,
+  themeDefault,
+} from '@shopify/polaris-tokens';
 import type {NextApiRequest, NextApiResponse} from 'next';
 
-type TokenGroupKey = keyof typeof tokens;
+type TokenGroupName = keyof Theme;
+type TokenGroup = Theme[TokenGroupName];
 
-export const tokenGroupKeys = Object.keys(tokens) as TokenGroupKey[];
+export const tokenGroupNames = Object.keys(themeDefault) as TokenGroupName[];
 
 const formats = ['json', 'css'] as const;
 
@@ -13,22 +19,28 @@ function isFormat(format: unknown): format is Format {
   return formats.includes(format as Format);
 }
 
-function isTokenGroupKey(key: unknown): key is TokenGroupKey {
-  return tokenGroupKeys.includes(key as TokenGroupKey);
+function isTokenGroupName(key: unknown): key is TokenGroupName {
+  return tokenGroupNames.includes(key as TokenGroupName);
 }
 
 /**
  * Format the token data into: css or json
  */
-const formatTokenGroup = (tokenGroup: TokenGroup, format: Format) => {
+const formatTokenGroup = (tokenGroup: Partial<TokenGroup>, format: Format) => {
   const tokenValues = Object.fromEntries(
     Object.entries(tokenGroup).map(([token, value]) => [token, value]),
   );
 
   if (format === 'css') {
     return Object.keys(tokenValues)
-      .reduce<string[]>((result, token) => {
-        const cssVariable = `${createVar(token)}: ${tokenValues[token]};`;
+      .reduce<string[]>((result, tokenName) => {
+        if (!isTokenName(tokenName)) {
+          throw new Error(`Invalid token name: ${tokenName}`);
+        }
+
+        const cssVariable = `${createVarName(tokenName)}: ${
+          tokenValues[tokenName]
+        };`;
 
         result.push(cssVariable);
 
@@ -45,19 +57,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (typeof formatParam === 'string') {
     const tokenGroupParam = req.query.tokens || '';
-    let tokenData: TokenGroup = {};
+    let tokenData: Partial<TokenGroup> = {};
 
     // Determine which list(s) we are querying for based on the token param
     if (tokenGroupParam === 'all') {
-      tokenGroupKeys.forEach((group) => {
-        const tokenGroup = tokens[group];
+      tokenGroupNames.forEach((tokenGroupName) => {
+        const tokenGroup = themeDefault[tokenGroupName];
 
         tokenData = {...tokenData, ...tokenGroup};
       });
     }
 
-    if (isTokenGroupKey(tokenGroupParam)) {
-      const tokenGroup: TokenGroup = tokens[tokenGroupParam];
+    if (isTokenGroupName(tokenGroupParam)) {
+      const tokenGroup: TokenGroup = themeDefault[tokenGroupParam];
 
       tokenData = {...tokenData, ...tokenGroup};
     }

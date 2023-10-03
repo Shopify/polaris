@@ -1,5 +1,5 @@
 import {size} from '../../size';
-import {createVarName} from '../../utilities';
+import {createVarName} from '../../utils';
 import type {MetaTokenProperties} from '../types';
 
 export type SpaceScale =

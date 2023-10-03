@@ -1,5 +1,5 @@
 import React, {PureComponent, Children, createRef} from 'react';
-import {motion} from '@shopify/polaris-tokens';
+import {themeDefault} from '@shopify/polaris-tokens';
 
 import {findFirstKeyboardFocusableNode} from '../../../../utilities/focus';
 import {classNames} from '../../../../utilities/css';
@@ -106,7 +106,9 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, parseInt(motion['motion-duration-100'], 10));
+          // Important: This will not update when the active theme changes.
+          // Update this to `useTheme` once converted to a function component.
+        }, parseInt(themeDefault.motion['motion-duration-100'], 10));
       });
     }
 

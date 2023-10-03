@@ -1,5 +1,4 @@
 import React, {useRef, useState} from 'react';
-import {zIndex} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -14,6 +13,7 @@ import {InlineStack} from '../../../InlineStack';
 import {Box} from '../../../Box';
 import {Tooltip} from '../../../Tooltip';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
+import {useTheme} from '../../../../utilities/use-theme';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -155,6 +155,7 @@ export function Item({
 }
 
 export const TruncateText = ({children}: {children: string}) => {
+  const theme = useTheme();
   const textRef = useRef<HTMLSpanElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
   useIsomorphicLayoutEffect(() => {
@@ -174,7 +175,7 @@ export const TruncateText = ({children}: {children: string}) => {
 
   return isOverflowing ? (
     <Tooltip
-      zIndexOverride={Number(zIndex['z-index-11'])}
+      zIndexOverride={Number(theme.zIndex['z-index-11'])}
       preferredPosition="above"
       hoverDelay={1000}
       content={children}
