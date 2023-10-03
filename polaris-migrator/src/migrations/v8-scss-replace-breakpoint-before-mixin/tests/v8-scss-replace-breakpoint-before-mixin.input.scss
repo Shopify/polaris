@@ -1,0 +1,29 @@
+.Foo {
+  @include legacy-polaris-v8.breakpoint-before(360px) {
+    display: flex;
+  }
+
+  @include legacy-polaris-v8.breakpoint-before($single-column-breakpoint) {
+    display: flex;
+  }
+
+  @include legacy-polaris-v8.breakpoint-before(
+    $single-column-breakpoint
+  ) {
+    display: flex;
+  }
+
+  @include legacy-polaris-v8.breakpoint-before(variables.$full-content-width) {
+    display: flex;
+  }
+
+  @include legacy-polaris-v8.breakpoint-before(variables.resource-list(breakpoint-small)) {
+    display: flex;
+  }
+
+  @include legacy-polaris-v8.breakpoint-before(variables.$home-condensed + 1) {
+    display: flex;
+  }
+}
+
+
