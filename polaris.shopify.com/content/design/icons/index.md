@@ -1,6 +1,7 @@
 ---
 title: Icons
 description: Icons enhance an experience by providing intuitive and efficient navigation, conveying information concisely, and making it more visually appealing.
+showTOC: true
 keywords:
   - shopify icons
   - icon sets

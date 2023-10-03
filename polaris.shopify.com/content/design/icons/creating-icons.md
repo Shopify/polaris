@@ -229,7 +229,6 @@ keywords:
 ### Designing outlined icons
 
   <Grid gap='4'>
-
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <DirectiveCard>
@@ -241,7 +240,6 @@ keywords:
       </DirectiveCard>
 
     </Grid.Cell>
-
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <DirectiveCard>
@@ -249,11 +247,9 @@ keywords:
         ![](/images/design/icons/icons-creating-outline-2@2x.png)
 
         Since the stroke has half a pixel, one side of the stroke should always be aligned with the pixel grid.
-
       </DirectiveCard>
 
     </Grid.Cell>
-
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <DirectiveCard>
@@ -265,7 +261,6 @@ keywords:
       </DirectiveCard>
 
     </Grid.Cell>
-
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <DirectiveCard>
@@ -277,7 +272,6 @@ keywords:
       </DirectiveCard>
 
     </Grid.Cell>
-
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <DirectiveCard>
@@ -290,7 +284,6 @@ keywords:
       </DirectiveCard>
 
     </Grid.Cell>
-
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <DirectiveCard>
@@ -302,7 +295,6 @@ keywords:
       </DirectiveCard>
 
     </Grid.Cell>
-
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <DirectiveCard>
