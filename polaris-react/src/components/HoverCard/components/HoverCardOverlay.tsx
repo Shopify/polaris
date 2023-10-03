@@ -24,20 +24,13 @@ enum TransitionStatus {
 
 export interface HoverCardOverlayProps {
   children?: React.ReactNode;
-  fullWidth?: boolean;
-  fullHeight?: boolean;
-  fluidContent?: boolean;
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   active: boolean;
   id: string;
   zIndexOverride?: number;
   activator: HTMLElement;
-  preferInputActivator?: PositionedOverlayProps['preferInputActivator'];
-  sectioned?: boolean;
-  fixed?: boolean;
-  hideOnPrint?: boolean;
-  captureOverscroll?: boolean;
+  snapToParent?: boolean;
 }
 
 interface State {
@@ -107,11 +100,8 @@ export class HoverCardOverlay extends PureComponent<
     const {
       active,
       activator,
-      fullWidth,
       preferredPosition = 'below',
       preferredAlignment = 'center',
-      preferInputActivator = true,
-      fixed,
       zIndexOverride,
     } = this.props;
     const {transitionStatus} = this.state;
@@ -130,14 +120,11 @@ export class HoverCardOverlay extends PureComponent<
     return (
       <PositionedOverlay
         ref={this.overlayRef}
-        fullWidth={fullWidth}
         active={active}
         activator={activator}
-        preferInputActivator={preferInputActivator}
         preferredPosition={preferredPosition}
         preferredAlignment={preferredAlignment}
         render={this.renderHoverCard.bind(this)}
-        fixed={fixed}
         classNames={className}
         zIndexOverride={zIndexOverride}
       />
@@ -158,29 +145,24 @@ export class HoverCardOverlay extends PureComponent<
   }) => {
     const {measuring, desiredHeight, positioning} = overlayDetails;
 
-    const {id, children, fullWidth, fullHeight, fluidContent} = this.props;
+    const {id, children, snapToParent} = this.props;
 
     const className = classNames(
       styles.HoverCard,
+      snapToParent && styles.snapToParent,
       positioning === 'above' && styles.positionedAbove,
-      fullWidth && styles.fullWidth,
+
       measuring && styles.measuring,
     );
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
 
-    const contentClassNames = classNames(
-      styles.Content,
-      fullHeight && styles['Content-fullHeight'],
-      fluidContent && styles['Content-fluidContent'],
-    );
-
     return (
       <div className={className} {...overlay.props}>
-        <div className={styles.ContentContainer}>
+        <div className={styles.Content}>
           <div
             id={id}
-            className={contentClassNames}
+            className={styles.Content}
             style={contentStyles}
             ref={this.contentNode}
           >
