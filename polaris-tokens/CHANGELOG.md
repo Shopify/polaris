@@ -1,10 +1,16 @@
 # Changelog
 
+## 7.13.0-beta.1
+
+- [#10674](https://github.com/Shopify/polaris/pull/10674) [`a2aefd060`](https://github.com/Shopify/polaris/commit/a2aefd0608b854b376c1f8de8bd33195074dc7e3) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed legacy v11 `border`, `font`, `space`, `shadow` tokens
+
+- [#10779](https://github.com/Shopify/polaris/pull/10779) [`2ce6c375d`](https://github.com/Shopify/polaris/commit/2ce6c375d9a180609c087764d963bb20868e03bf) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed legacy v11 `color` tokens
+
 ## 7.13.0-beta.0
 
 ### Minor Changes
 
-- [#10382](https://github.com/Shopify/polaris/pull/10382) [`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532) Thanks [@laurkim](https://github.com/laurkim)! - Renamed `ThemeVariant` to `Theme` and exposed `Theme` type
+- [#10382](https://github.com/Shopify/polaris/pull/10382) [`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Renamed `ThemeVariant` to `Theme` and exposed `Theme` type
 
 ## 7.12.1
 
