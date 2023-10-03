@@ -31,6 +31,7 @@ export async function toValues() {
           ]),
         ),
       ]),
+      `export const themeDefault = themes[themeNameDefault];`,
       `export const isTokenName = createIsTokenName(themes[themeNameDefault]);`,
     ]
       .flat()
