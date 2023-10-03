@@ -661,7 +661,7 @@ export const color: {
     value: colors.blackAlpha[7],
   },
   'color-bg-fill-transparent-selected': {
-    value: colors.blackAlpha[6],
+    value: colors.blackAlpha[7],
   },
   'color-bg-fill-transparent': {
     value: colors.blackAlpha[1],
