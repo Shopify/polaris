@@ -18,7 +18,6 @@ import type {BannerTone} from './Banner';
 interface BannerColorAliases {
   background: ColorBackgroundAlias;
   text: ColorTextAlias;
-  icon: ColorIconAlias | ColorTextAlias;
 }
 
 interface BannerAttributes {
@@ -30,53 +29,45 @@ interface BannerAttributes {
 export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
   success: {
     withinPage: {
-      background: 'bg-success-strong',
+      background: 'bg-fill-success',
       text: 'text-success-on-bg-fill',
-      icon: 'text-success-on-bg-fill',
     },
     withinContentContainer: {
-      background: 'bg-success-subdued',
+      background: 'bg-surface-success',
       text: 'text-success',
-      icon: 'icon-success-strong-experimental',
     },
     icon: TickMinor,
   },
   warning: {
     withinPage: {
-      background: 'bg-warning-strong-experimental',
+      background: 'bg-fill-warning',
       text: 'text-warning-on-bg-fill',
-      icon: 'text-warning-on-bg-fill',
     },
     withinContentContainer: {
-      background: 'bg-warning-subdued-experimental',
-      text: 'text-warning-experimental',
-      icon: 'icon-warning-strong-experimental',
+      background: 'bg-surface-warning',
+      text: 'text-warning',
     },
     icon: RiskMinor,
   },
   critical: {
     withinPage: {
-      background: 'bg-critical-strong',
+      background: 'bg-fill-critical',
       text: 'text-critical-on-bg-fill',
-      icon: 'text-critical-on-bg-fill',
     },
     withinContentContainer: {
-      background: 'bg-critical-subdued',
-      text: 'text-critical-strong',
-      icon: 'icon-critical-strong-experimental',
+      background: 'bg-surface-critical',
+      text: 'text-critical',
     },
     icon: DiamondAlertMinor,
   },
   info: {
     withinPage: {
-      background: 'bg-info-strong',
+      background: 'bg-fill-info',
       text: 'text-info-on-bg-fill',
-      icon: 'text-info-on-bg-fill',
     },
     withinContentContainer: {
-      background: 'bg-info-subdued',
+      background: 'bg-surface-info',
       text: 'text-info',
-      icon: 'icon-info-strong-experimental',
     },
     icon: InfoMinor,
   },
