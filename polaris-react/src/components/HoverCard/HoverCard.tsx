@@ -10,6 +10,7 @@ import React, {
 import type {PositionedOverlayProps} from '../PositionedOverlay';
 import {Portal} from '../Portal';
 import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
+import {classNames} from '../../utilities/css';
 
 import styles from './HoverCard.scss';
 import {HoverCardOverlay} from './components/HoverCardOverlay';
@@ -30,20 +31,15 @@ export interface HoverCardProps {
    * @default 'span'
    */
   activatorWrapper?: string;
+  /** Style activatorWrapper to fill parent dimensions and remove overlay margin
+   * @default false
+   */
+  snapToParent?: boolean;
   /** Delay in milliseconds while hovering over an element before the tooltip is visible */
   hoverDelay?: number;
   /** Override on the default z-index of 400 */
   zIndexOverride?: number;
-  /** Automatically add wrap content in a section */
-  sectioned?: boolean;
-  /** Allow popover to stretch to the full width of its activator */
-  fullWidth?: boolean;
-  /** Allow popover to stretch to fit content vertically */
-  fullHeight?: boolean;
-  /** Allow popover content to determine the overlay width and height */
-  fluidContent?: boolean;
-  /** Remains in a fixed position */
-  fixed?: boolean;
+  /** Callback fired when mouse enters or leaves activator */
   toggleActive(active: boolean): void;
 }
 
@@ -56,9 +52,10 @@ const HOVER_OUT_TIMEOUT = 150;
 
 export function HoverCard({
   children,
+  active,
   activator,
   activatorWrapper = 'span',
-  active,
+  snapToParent = false,
   hoverDelay,
   zIndexOverride,
   toggleActive,
@@ -145,8 +142,9 @@ export function HoverCard({
         <HoverCardOverlay
           id={id}
           ref={overlayRef}
-          activator={activatorNode}
           active={active}
+          activator={activatorNode}
+          snapToParent={snapToParent}
           zIndexOverride={zIndexOverride}
           {...rest}
         >
@@ -155,9 +153,14 @@ export function HoverCard({
       </Portal>
     ) : null;
 
+  const activatorWrapperClassname = classNames(
+    styles.ActivatorWrapper,
+    snapToParent && styles.snapToParent,
+  );
+
   return (
     <WrapperComponent
-      className={styles.ActivatorWrapper}
+      className={activatorWrapperClassname}
       ref={activatorRef}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseEnterFix}
