@@ -1,5 +1,7 @@
 export {breakpointsAliases} from './themes/base/breakpoints';
 
+export type {BreakpointsAliasDirection} from './utils';
+
 export {
   createVar,
   createVarName,
