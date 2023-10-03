@@ -75,7 +75,7 @@ npm install @shopify/polaris@beta.0
 Or, if you prefer yarn, use the following command instead:
 
 ```sh
-yarn add @shopify/polaris@beta.1
+yarn add @shopify/polaris@beta.0
 ```
 
 To install the v12 beta version that **requires migrations** run the following command:
