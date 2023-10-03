@@ -31,18 +31,18 @@
       background: url(/images/icon-do.svg) black no-repeat;
       background-position: center;
       display: block;
-      width: var(--p-space-5);
-      height: var(--p-space-5);
-      top: var(--p-space-5);
-      border-radius: var(--p-border-radius-2);
+      width: var(--p-space-500);
+      height: var(--p-space-500);
+      top: var(--p-space-500);
+      border-radius: var(--p-border-radius-200);
     }
   }
 }
 
 .ColorsContainer {
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
   overflow: hidden;
-  margin-bottom: var(--p-space-2);
+  margin-bottom: var(--p-space-200);
 }
 
 .ColorsContrastContainer {
@@ -57,14 +57,14 @@
 
   .ColorBox {
     display: flex;
-    gap: var(--p-space-2);
-    margin-top: var(--p-space-2);
+    gap: var(--p-space-200);
+    margin-top: var(--p-space-200);
     align-items: center;
 
     div {
-      height: var(--p-space-8);
-      width: var(--p-space-8);
-      border-radius: var(--p-border-radius-2);
+      height: var(--p-space-800);
+      width: var(--p-space-800);
+      border-radius: var(--p-border-radius-200);
       border: 1px solid rgba(0, 0, 0, 0.2);
       display: inline-block;
     }
@@ -79,8 +79,8 @@
 .ColorsWCAG {
   display: inline-block;
   background-color: var(--surface);
-  padding: var(--p-space-05) var(--p-space-2) var(--p-space-05) var(--p-space-5);
-  border-radius: var(--p-space-2);
+  padding: var(--p-space-050) var(--p-space-200) var(--p-space-050) var(--p-space-500);
+  border-radius: var(--p-space-200);
   font-size: var(--font-size-100);
   font-weight: var(--font-weight-600);
   line-height: 1rem;

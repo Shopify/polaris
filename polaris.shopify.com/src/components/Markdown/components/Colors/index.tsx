@@ -4,8 +4,7 @@ import {capitalize} from '../../../../utils/various';
 import {Card} from '../../../Card';
 import styles from './Colors.module.scss';
 
-// @ts-ignore
-import * as palette from '@shopify/polaris-tokens/colors';
+import palette from '../../../../../.cache/colors.json';
 
 type ColorScale =
   | '1'
