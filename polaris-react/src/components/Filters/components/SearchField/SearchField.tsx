@@ -1,6 +1,8 @@
 import React, {useEffect, useRef, useId} from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
+import {InlineStack} from '../../../InlineStack';
+import {Spinner} from '../../../Spinner';
 import {Text} from '../../../Text';
 import {classNames} from '../../../../utilities/css';
 import {Icon} from '../../../Icon';
@@ -19,6 +21,8 @@ export interface SearchFieldProps {
   placeholder?: string;
   disabled?: boolean;
   borderlessQueryField?: boolean;
+  /** Show a loading spinner to the right of the input */
+  loading?: boolean;
 }
 
 export function SearchField({
@@ -31,6 +35,7 @@ export function SearchField({
   placeholder,
   disabled,
   borderlessQueryField,
+  loading,
 }: SearchFieldProps) {
   const i18n = useI18n();
   const id = useId();
@@ -72,21 +77,32 @@ export function SearchField({
         placeholder={placeholder}
         disabled={disabled}
       />
-      {value !== '' && (
-        <UnstyledButton
-          className={classNames(
-            styles.ClearButton,
-            focused && styles['ClearButton-focused'],
-          )}
-          onClick={() => handleClear()}
-          disabled={disabled}
-        >
-          <Text as="span" visuallyHidden>
-            {i18n.translate('Polaris.Common.clear')}
-          </Text>
-          <Icon source={CircleCancelMinor} tone="subdued" />
-        </UnstyledButton>
-      )}
+      {loading || value !== '' ? (
+        <div className={styles.Suffix}>
+          <InlineStack gap="200">
+            {loading ? (
+              <div className={styles.Spinner}>
+                <Spinner size="small" />
+              </div>
+            ) : null}
+            {value !== '' ? (
+              <UnstyledButton
+                className={classNames(
+                  styles.ClearButton,
+                  focused && styles['ClearButton-focused'],
+                )}
+                onClick={() => handleClear()}
+                disabled={disabled}
+              >
+                <Text as="span" visuallyHidden>
+                  {i18n.translate('Polaris.Common.clear')}
+                </Text>
+                <Icon source={CircleCancelMinor} tone="subdued" />
+              </UnstyledButton>
+            ) : null}
+          </InlineStack>
+        </div>
+      ) : null}
     </div>
   );
 }
