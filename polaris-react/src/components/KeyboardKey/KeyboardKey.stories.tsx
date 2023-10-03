@@ -75,7 +75,7 @@ export function Small() {
 
 export function All() {
   return (
-    <VerticalStack gap="2">
+    <VerticalStack gap="200">
       <Text as="h2" variant="headingMd">
         Default
       </Text>

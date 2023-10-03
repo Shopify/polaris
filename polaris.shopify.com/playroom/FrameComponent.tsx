@@ -1,8 +1,43 @@
 import React, {useEffect, useState} from 'react';
-import {AppProvider} from '@shopify/polaris';
+import {AppProvider, FrameContext} from '@shopify/polaris';
 import '@shopify/polaris/build/esm/styles.css';
 import enTranslations from '@shopify/polaris/locales/en.json';
 import {updateGrowFrameHeight} from '../src/components/GrowFrame';
+
+const mockFrameContext = {
+  toastMessages: [],
+  showToast: () => {
+    console.info(
+      '[Polaris] Frame#showToast() is not available in Sandbox mode.',
+    );
+  },
+  hideToast: () => {
+    console.info(
+      '[Polaris] Frame#hideToast() is not available in Sandbox mode.',
+    );
+  },
+  setContextualSaveBar: () => {
+    console.info(
+      '[Polaris] Frame#setContextualSaveBar() is not available in Sandbox mode.',
+    );
+  },
+  removeContextualSaveBar: () => {
+    console.info(
+      '[Polaris] Frame#removeContextualSaveBar() is not available in Sandbox mode.',
+    );
+  },
+  startLoading: () => {
+    console.info(
+      '[Polaris] Frame#startLoading() is not available in Sandbox mode.',
+    );
+  },
+  stopLoading: () => {
+    console.info(
+      '[Polaris] Frame#stopLoading() is not available in Sandbox mode.',
+    );
+  },
+};
+
 export default function FrameComponent({
   theme = enTranslations,
   children,
@@ -29,7 +64,9 @@ export default function FrameComponent({
   }, []);
   return (
     <AppProvider i18n={theme || enTranslations} features={features}>
-      <div id="polaris-sandbox-wrapper">{children}</div>
+      <FrameContext.Provider value={mockFrameContext}>
+        <div id="polaris-sandbox-wrapper">{children}</div>
+      </FrameContext.Provider>
     </AppProvider>
   );
 }

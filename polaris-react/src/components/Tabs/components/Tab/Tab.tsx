@@ -313,7 +313,7 @@ export const Tab = forwardRef(
         onKeyDown={handleKeyDown}
       >
         <HorizontalStack
-          gap="2"
+          gap="200"
           align="center"
           blockAlign="center"
           wrap={false}

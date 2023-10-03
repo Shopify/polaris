@@ -1,17 +1,17 @@
 @import '../../styles/common';
 
 @mixin banner-variants($in-page) {
-  border: var(--p-border-width-1) solid var(--p-color-border-strong);
+  border: var(--p-border-width-025) solid var(--p-color-border-strong);
   background-color: var(--p-color-bg-app);
 
   #{$se23} & {
     border: none;
-    background-color: var(--p-color-bg);
+    background-color: var(--p-color-bg-surface);
   }
 
   @if $in-page {
     border-radius: 0;
-    border-width: var(--p-border-width-1) 0;
+    border-width: var(--p-border-width-025) 0;
 
     #{$se23} & {
       @include shadow-bevel(
@@ -24,13 +24,13 @@
     }
 
     @media #{$p-breakpoints-sm-up} {
-      border-width: var(--p-border-width-1);
-      border-radius: var(--p-border-radius-2);
+      border-width: var(--p-border-width-025);
+      border-radius: var(--p-border-radius-200);
 
       #{$se23} & {
         @include shadow-bevel(
           $boxShadow: var(--p-shadow-sm),
-          $borderRadius: var(--p-border-radius-3),
+          $borderRadius: var(--p-border-radius-300),
           // The following arguments explicitly ignore the shadow-bevel opt out
           $border: none,
           $content: ''
@@ -38,11 +38,11 @@
       }
     }
   } @else {
-    border-radius: var(--p-border-radius-1);
+    border-radius: var(--p-border-radius-100);
 
     #{$se23} & {
       box-shadow: none;
-      border-radius: var(--p-border-radius-2);
+      border-radius: var(--p-border-radius-200);
     }
   }
 
@@ -51,35 +51,34 @@
   }
 
   &.keyFocused {
-    outline: var(--p-border-width-2) solid
-      var(--p-color-border-interactive-focus);
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   }
 
   &.statusSuccess {
     border-color: var(--p-color-border-success-subdued);
-    background-color: var(--p-color-bg-success-subdued);
+    background-color: var(--p-color-bg-surface-success);
   }
 
   &.statusInfo {
     border-color: var(--p-color-border-info-subdued);
-    background-color: var(--p-color-bg-info-subdued);
+    background-color: var(--p-color-bg-surface-info);
   }
 
   &.statusWarning {
     border-color: var(--p-color-border-caution-subdued);
-    background-color: var(--p-color-bg-caution-subdued);
+    background-color: var(--p-color-bg-surface-caution);
   }
 
   &.statusCritical {
     border-color: var(--p-color-border-critical-subdued);
-    background-color: var(--p-color-bg-critical-subdued);
+    background-color: var(--p-color-bg-surface-critical);
   }
 }
 
 .Banner {
   // stylelint-disable -- Polaris component custom properties
-  --pc-banner-secondary-action-horizontal-padding: var(--p-space-3);
-  --pc-banner-secondary-action-vertical-padding: var(--p-space-2);
+  --pc-banner-secondary-action-horizontal-padding: var(--p-space-300);
+  --pc-banner-secondary-action-vertical-padding: var(--p-space-200);
   // stylelint-enable
   position: relative;
   display: flex;
@@ -90,17 +89,17 @@
 
     &:hover {
       border-color: var(--p-color-border-critical-subdued);
-      background: var(--p-color-bg-critical-subdued-hover);
+      background: var(--p-color-bg-surface-critical-hover);
     }
 
     &:active {
       border-color: var(--p-color-border-critical-subdued);
-      background: var(--p-color-bg-critical-subdued-active);
+      background: var(--p-color-bg-surface-critical-active);
     }
 
     &:focus:not(:active) {
       border-color: var(--p-color-border-critical-subdued);
-      background: var(--p-color-bg-critical-subdued);
+      background: var(--p-color-bg-surface-critical);
     }
   }
 
@@ -109,17 +108,17 @@
 
     &:hover {
       border-color: var(--p-color-border-caution-subdued);
-      background: var(--p-color-bg-caution-subdued-hover);
+      background: var(--p-color-bg-surface-caution-hover);
     }
 
     &:active {
       border-color: var(--p-color-border-caution-subdued);
-      background: var(--p-color-bg-caution-subdued-active);
+      background: var(--p-color-bg-surface-caution-active);
     }
 
     &:focus:not(:active) {
       border-color: var(--p-color-border-caution-subdued);
-      background: var(--p-color-bg-caution-subdued);
+      background: var(--p-color-bg-surface-caution);
     }
   }
 
@@ -128,17 +127,17 @@
 
     &:hover {
       border-color: var(--p-color-border-info-subdued);
-      background: var(--p-color-bg-info-subdued-hover);
+      background: var(--p-color-bg-surface-info-hover);
     }
 
     &:active {
       border-color: var(--p-color-border-info-subdued);
-      background: var(--p-color-bg-info-subdued-active);
+      background: var(--p-color-bg-surface-info-active);
     }
 
     &:focus:not(:active) {
       border-color: var(--p-color-border-info-subdued);
-      background: var(--p-color-bg-info-subdued);
+      background: var(--p-color-bg-surface-info);
     }
   }
 
@@ -147,44 +146,44 @@
 
     &:hover {
       border-color: var(--p-color-border-success-subdued);
-      background: var(--p-color-bg-success-subdued-hover);
+      background: var(--p-color-bg-surface-success-hover);
     }
 
     &:active {
       border-color: var(--p-color-border-success-subdued);
-      background: var(--p-color-bg-success-subdued-active);
+      background: var(--p-color-bg-surface-success-active);
     }
 
     &:focus:not(:active) {
       border-color: var(--p-color-border-success-subdued);
-      background: var(--p-color-bg-success-subdued);
+      background: var(--p-color-bg-surface-success);
     }
   }
   // stylelint-enable selector-max-class, selector-max-specificity
 }
 
 .ContentWrapper {
-  margin-top: calc(-1 * var(--p-space-05));
+  margin-top: calc(-1 * var(--p-space-050));
   flex: 1 1 auto;
 }
 
 .withinContentContainer {
-  padding: var(--p-space-4);
+  padding: var(--p-space-400);
 
   #{$se23} & {
     padding: 0;
   }
 
   .Dismiss {
-    top: var(--p-space-4);
-    right: var(--p-space-3);
+    top: var(--p-space-400);
+    right: var(--p-space-300);
     position: absolute;
   }
 
   @include banner-variants($in-page: false);
 
   + .Banner {
-    margin-top: var(--p-space-2);
+    margin-top: var(--p-space-200);
 
     #{$se23} & {
       box-shadow: none;
@@ -193,8 +192,8 @@
 }
 
 .withinPage {
-  border-radius: 0 0 var(--p-border-radius-1) var(--p-border-radius-1);
-  padding: var(--p-space-5);
+  border-radius: 0 0 var(--p-border-radius-100) var(--p-border-radius-100);
+  padding: var(--p-space-500);
 
   #{$se23} & {
     padding: 0;
@@ -203,18 +202,18 @@
   @include banner-variants(true);
 
   + .Banner {
-    margin-top: var(--p-space-5);
+    margin-top: var(--p-space-500);
   }
 
   .Dismiss {
-    right: var(--p-space-4);
-    top: var(--p-space-5);
+    right: var(--p-space-400);
+    top: var(--p-space-500);
     position: absolute;
   }
 }
 
 .hasDismiss {
-  padding-right: calc(var(--p-space-8) + var(--p-space-2));
+  padding-right: calc(var(--p-space-800) + var(--p-space-200));
 
   #{$se23} & {
     padding: 0;
@@ -240,7 +239,7 @@
     var(--pc-banner-secondary-action-horizontal-padding);
   // stylelint-enable
   color: var(--p-color-text);
-  padding-left: var(--p-space-2);
+  padding-left: var(--p-space-200);
 
   &:hover > .Text {
     text-decoration: underline;
@@ -259,7 +258,7 @@
     text-decoration: underline;
 
     @media (-ms-high-contrast: active) {
-      outline: var(--p-border-width-2) dotted;
+      outline: var(--p-border-width-050) dotted;
     }
   }
 
@@ -278,9 +277,9 @@
   @include button-base;
   // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
   @include focus-ring($border-width: 2px);
-  font-size: var(--p-font-size-100);
+  font-size: var(--p-font-size-350);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-400);
   letter-spacing: initial;
   color: var(--p-color-text);
 
@@ -298,7 +297,7 @@
 
 .Spinner {
   // stylelint-disable-next-line -- Polaris component custom properties
-  --pc-spinner-size: var(--p-space-5);
+  --pc-spinner-size: var(--p-space-500);
   position: absolute;
   top: 50%;
   left: 50%;

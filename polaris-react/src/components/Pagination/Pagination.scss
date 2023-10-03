@@ -7,10 +7,10 @@
       border: none !important;
       box-shadow: none !important;
       /* stylelint-enable */
-      background-color: var(--p-color-bg-strong);
+      background-color: var(--p-color-bg-fill-tertiary);
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:hover {
-        background-color: var(--p-color-bg-strong-hover);
+        background-color: var(--p-color-bg-fill-tertiary-hover);
       }
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:active {
@@ -20,7 +20,7 @@
       /* stylelint-disable-next-line selector-max-combinators -- se23 */
       &:active,
       &:focus {
-        background-color: var(--p-color-bg-strong-active);
+        background-color: var(--p-color-bg-fill-tertiary-active);
       }
     }
   }
@@ -28,8 +28,8 @@
   &.table {
     button {
       #{$se23} & {
-        --button-min-height: var(--p-space-6);
-        background-color: var(--p-color-bg-subdued);
+        --button-min-height: var(--p-space-600);
+        background-color: var(--p-color-bg-surface-secondary);
         min-height: var(--button-min-height);
         min-width: var(--button-min-height);
         height: var(--button-min-height);
@@ -38,7 +38,7 @@
 
         /* stylelint-disable selector-max-combinators, selector-max-compound-selectors, max-nesting-depth -- cleaner until se23 clean up */
         &:hover {
-          background-color: var(--p-color-bg-strong-hover);
+          background-color: var(--p-color-bg-fill-tertiary-hover);
 
           svg {
             fill: var(--p-color-icon-hover);
@@ -47,7 +47,7 @@
 
         &:active,
         &:focus {
-          background-color: var(--p-color-bg-strong-active);
+          background-color: var(--p-color-bg-fill-tertiary-active);
 
           svg {
             fill: var(--p-color-icon-active);

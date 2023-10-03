@@ -34,7 +34,7 @@ describe('<HorizontalStack />', () => {
 
   it('overrides custom properties if they are passed in', () => {
     const horizontalStack = mountWithApp(
-      <HorizontalStack align="center" blockAlign="start" gap="10">
+      <HorizontalStack align="center" blockAlign="start" gap="1000">
         {renderChildren()}
       </HorizontalStack>,
     );
@@ -44,14 +44,14 @@ describe('<HorizontalStack />', () => {
         '--pc-horizontal-stack-align': 'center',
         '--pc-horizontal-stack-block-align': 'start',
         '--pc-horizontal-stack-wrap': 'wrap',
-        '--pc-horizontal-stack-gap-xs': 'var(--p-space-10)',
+        '--pc-horizontal-stack-gap-xs': 'var(--p-space-1000)',
       }) as React.CSSProperties,
     });
   });
 
   it('accepts gap based on breakpoints', () => {
     const horizontalStack = mountWithApp(
-      <HorizontalStack gap={{xs: '2', md: '8'}}>
+      <HorizontalStack gap={{xs: '200', md: '800'}}>
         {renderChildren()}
       </HorizontalStack>,
     );
@@ -59,8 +59,8 @@ describe('<HorizontalStack />', () => {
     expect(horizontalStack).toContainReactComponent('div', {
       style: expect.objectContaining({
         '--pc-horizontal-stack-wrap': 'wrap',
-        '--pc-horizontal-stack-gap-xs': 'var(--p-space-2)',
-        '--pc-horizontal-stack-gap-md': 'var(--p-space-8)',
+        '--pc-horizontal-stack-gap-xs': 'var(--p-space-200)',
+        '--pc-horizontal-stack-gap-md': 'var(--p-space-800)',
       }) as React.CSSProperties,
     });
   });

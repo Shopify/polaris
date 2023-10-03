@@ -11,17 +11,17 @@ $relative-size: $primary-basis / $secondary-basis;
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-start;
-  margin-top: calc(-1 * var(--p-space-4));
-  margin-left: calc(-1 * var(--p-space-5));
+  margin-top: calc(-1 * var(--p-space-400));
+  margin-left: calc(-1 * var(--p-space-500));
 
   #{$se23} & {
-    margin-left: calc(-1 * var(--p-space-4));
+    margin-left: calc(-1 * var(--p-space-400));
   }
 
   @media print {
     body & {
       font-size: var(--p-font-size-75);
-      line-height: var(--p-font-line-height-1);
+      line-height: var(--p-font-line-height-400);
     }
 
     a,
@@ -66,24 +66,26 @@ $relative-size: $primary-basis / $secondary-basis;
 
 .Section,
 .AnnotatedSection {
-  max-width: calc(100% - var(--p-space-5));
-  margin-top: var(--p-space-4);
-  margin-left: var(--p-space-5);
+  max-width: calc(100% - var(--p-space-500));
+  margin-top: var(--p-space-400);
+  margin-left: var(--p-space-500);
 
   #{$se23} & {
-    max-width: calc(100% - var(--p-space-4));
-    margin-left: var(--p-space-4);
+    max-width: calc(100% - var(--p-space-400));
+    margin-left: var(--p-space-400);
   }
 
   + .AnnotatedSection {
     #{$se23} & {
-      border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
-      padding-top: var(--p-space-4);
+      border-top: var(--p-border-width-025) solid
+        var(--p-color-border-secondary);
+      padding-top: var(--p-space-400);
     }
 
     @media #{$p-breakpoints-sm-up} {
-      padding-top: var(--p-space-4);
-      border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+      padding-top: var(--p-space-400);
+      border-top: var(--p-border-width-025) solid
+        var(--p-color-border-secondary);
     }
   }
 }
@@ -91,11 +93,11 @@ $relative-size: $primary-basis / $secondary-basis;
 .AnnotationWrapper {
   display: flex;
   flex-wrap: wrap;
-  margin-top: calc(-1 * var(--p-space-4));
-  margin-left: calc(-1 * var(--p-space-5));
+  margin-top: calc(-1 * var(--p-space-400));
+  margin-left: calc(-1 * var(--p-space-500));
 
   #{$se23} & {
-    margin-left: calc(-1 * var(--p-space-4));
+    margin-left: calc(-1 * var(--p-space-400));
   }
 }
 
@@ -105,10 +107,10 @@ $relative-size: $primary-basis / $secondary-basis;
 
 .Annotation {
   flex: 1 1 $secondary-basis;
-  padding: var(--p-space-4) var(--p-space-5) 0;
+  padding: var(--p-space-400) var(--p-space-500) 0;
 
   #{$se23} & {
-    padding: var(--p-space-4) var(--p-space-4) 0;
+    padding: var(--p-space-400) var(--p-space-400) 0;
 
     @media #{$p-breakpoints-md-down} {
       padding-left: 0;
@@ -116,14 +118,14 @@ $relative-size: $primary-basis / $secondary-basis;
   }
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-4) 0 0;
+    padding: var(--p-space-400) 0 0;
   }
 
   @media #{$p-breakpoints-md-up} {
-    padding: var(--p-space-5) var(--p-space-5) var(--p-space-5) 0;
+    padding: var(--p-space-500) var(--p-space-500) var(--p-space-500) 0;
 
     #{$se23} & {
-      padding: var(--p-space-4) var(--p-space-4) var(--p-space-4) 0;
+      padding: var(--p-space-400) var(--p-space-400) var(--p-space-400) 0;
     }
   }
 }
@@ -131,12 +133,12 @@ $relative-size: $primary-basis / $secondary-basis;
 .Annotation,
 .AnnotationContent {
   min-width: 0;
-  max-width: calc(100% - var(--p-space-5));
-  margin-top: var(--p-space-4);
-  margin-left: var(--p-space-5);
+  max-width: calc(100% - var(--p-space-500));
+  margin-top: var(--p-space-400);
+  margin-left: var(--p-space-500);
 
   #{$se23} & {
-    max-width: calc(100% - var(--p-space-4));
-    margin-left: var(--p-space-4);
+    max-width: calc(100% - var(--p-space-400));
+    margin-left: var(--p-space-400);
   }
 }

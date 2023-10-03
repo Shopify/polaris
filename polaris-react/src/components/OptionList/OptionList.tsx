@@ -127,10 +127,12 @@ export function OptionList({
   const optionsMarkup = optionsExist
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
         const isFirstOption = sectionIndex === 0;
-        const sectionPaddingBlockStart = polarisSummerEditions2023 ? '3' : '4';
+        const sectionPaddingBlockStart = polarisSummerEditions2023
+          ? '300'
+          : '400';
         const firstOptionBlockStartPadding = polarisSummerEditions2023
-          ? '05'
-          : '2';
+          ? '050'
+          : '200';
         const titleLevel = isFirstOption ? 'h2' : 'h3';
         const titleMarkup = title ? (
           <Box
@@ -139,13 +141,9 @@ export function OptionList({
                 ? firstOptionBlockStartPadding
                 : sectionPaddingBlockStart
             }
-            paddingInlineStart={
-              polarisSummerEditions2023 ? '1_5-experimental' : '2'
-            }
-            paddingBlockEnd={polarisSummerEditions2023 ? '1' : '2'}
-            paddingInlineEnd={
-              polarisSummerEditions2023 ? '1_5-experimental' : '2'
-            }
+            paddingInlineStart={polarisSummerEditions2023 ? '150' : '200'}
+            paddingBlockEnd={polarisSummerEditions2023 ? '100' : '200'}
+            paddingInlineEnd={polarisSummerEditions2023 ? '150' : '200'}
             borderColor="border-subdued"
             borderBlockStartWidth={
               !isFirstOption && !polarisSummerEditions2023 ? '1' : undefined
@@ -187,7 +185,7 @@ export function OptionList({
         const option = (
           <Bleed
             marginBlockStart={
-              title || polarisSummerEditions2023 ? undefined : '05'
+              title || polarisSummerEditions2023 ? undefined : '050'
             }
           >
             <Box
@@ -205,15 +203,15 @@ export function OptionList({
           ? // eslint-disable-next-line no-nested-ternary
             polarisSummerEditions2023
             ? title
-              ? '1'
+              ? '100'
               : '0'
             : undefined
           : // eslint-disable-next-line no-nested-ternary
           polarisSummerEditions2023
           ? title
-            ? '05'
+            ? '050'
             : '0'
-          : '2';
+          : '200';
 
         return (
           <Box
@@ -241,7 +239,7 @@ export function OptionList({
     <Box
       as="ul"
       role={role as BoxProps['role']}
-      padding={polarisSummerEditions2023 ? '1_5-experimental' : '2'}
+      padding={polarisSummerEditions2023 ? '150' : '200'}
     >
       {optionsMarkup}
     </Box>

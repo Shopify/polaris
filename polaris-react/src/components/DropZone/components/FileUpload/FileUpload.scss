@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 .FileUpload {
-  padding: var(--p-space-4);
+  padding: var(--p-space-400);
   text-align: center;
   display: flex;
   align-items: center;
@@ -10,11 +10,11 @@
 }
 
 .large {
-  padding: var(--p-space-8);
+  padding: var(--p-space-800);
 }
 
 .small {
-  padding: var(--p-space-3);
+  padding: var(--p-space-300);
 }
 
 .FileUpload img {
@@ -27,11 +27,11 @@
   display: inline-flex;
   flex: 0 0 auto;
   border: none;
-  border-radius: var(--p-border-radius-1);
-  padding: var(--p-space-1) var(--p-space-2);
+  border-radius: var(--p-border-radius-100);
+  padding: var(--p-space-100) var(--p-space-200);
   margin: 0;
   text-decoration: none;
-  color: var(--p-color-text-interactive);
+  color: var(--p-color-text-emphasis);
   background: var(--p-color-bg-interactive-subdued);
   font-size: var(--p-font-size-75);
   font-weight: var(--p-font-weight-semibold);
@@ -41,7 +41,7 @@
   appearance: none;
 
   &:hover {
-    color: var(--p-color-text-interactive-active);
+    color: var(--p-color-text-emphasis-active);
   }
 
   &.disabled {
@@ -52,7 +52,7 @@
       // additional specificity
       // stylelint-disable-next-line selector-max-class -- se23
       &.disabled {
-        background-color: var(--p-color-bg-transparent-disabled-experimental);
+        background-color: var(--p-color-bg-fill-disabled);
       }
     }
 
@@ -64,15 +64,15 @@
 
   #{$se23} & {
     color: var(--p-color-text);
-    background-color: var(--p-color-bg-input);
-    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    background-color: var(--p-color-input-bg-surface);
+    padding: var(--p-space-150) var(--p-space-300);
     box-shadow: var(--p-shadow-button-experimental);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
   }
 }
 
 .ActionTitle {
-  color: var(--p-color-text-interactive);
+  color: var(--p-color-text-emphasis);
   text-decoration: none;
 
   &:not(.ActionTitle-disabled) {
@@ -80,7 +80,7 @@
 
     &:hover,
     &:active {
-      color: var(--p-color-text-interactive-active);
+      color: var(--p-color-text-emphasis-active);
       text-decoration: underline;
     }
   }

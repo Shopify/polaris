@@ -14,36 +14,36 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="4">
+    <VerticalStack gap="800">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
       </VerticalStack>
 
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           With URL tabs
         </Text>
         <WithUrlTabs />
       </VerticalStack>
 
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           Fitted
         </Text>
         <Fitted />
       </VerticalStack>
 
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           With badge content
         </Text>
         <WithBadgeContent />
       </VerticalStack>
 
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           With custom disclosure
         </Text>

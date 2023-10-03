@@ -155,8 +155,8 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       : children;
 
     const body = loading ? (
-      <Box padding="4">
-        <HorizontalStack gap="4" align="center" blockAlign="center">
+      <Box padding="400">
+        <HorizontalStack gap="400" align="center" blockAlign="center">
           <Spinner />
         </HorizontalStack>
       </Box>

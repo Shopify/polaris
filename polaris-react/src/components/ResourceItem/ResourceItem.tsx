@@ -170,15 +170,15 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     let handleMarkup: React.ReactNode = null;
 
     const itemPaddingInline: React.ComponentProps<typeof Box>['padding'] =
-      polarisSummerEditions2023 ? '3' : {xs: '4', sm: '5'};
-    const itemPaddingBlock: React.ComponentProps<typeof Box>['padding'] = '3';
+      polarisSummerEditions2023 ? '300' : {xs: '400', sm: '500'};
+    const itemPaddingBlock: React.ComponentProps<typeof Box>['padding'] = '300';
 
     const gapBetweenCheckboxAndMedia: React.ComponentProps<
       typeof HorizontalStack
-    >['gap'] = polarisSummerEditions2023 ? '3' : '4';
+    >['gap'] = polarisSummerEditions2023 ? '300' : '400';
     const gapBetweenOwnedAndChildren: React.ComponentProps<
       typeof HorizontalGrid
-    >['gap'] = polarisSummerEditions2023 ? '3' : '5';
+    >['gap'] = polarisSummerEditions2023 ? '300' : '500';
 
     if (selectable) {
       const checkboxAccessibilityLabel =
@@ -290,7 +290,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       } else if (breakpoints?.lgUp) {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
-            <Box position="absolute" insetBlockStart="4" insetInlineEnd="5">
+            <Box position="absolute" insetBlockStart="400" insetInlineEnd="500">
               <ButtonGroup segmented>
                 {buttonsFrom(shortcutActions, {size: 'slim'})}
               </ButtonGroup>

@@ -6,12 +6,12 @@ import {HorizontalGrid} from '..';
 describe('HorizontalGrid', () => {
   it('only renders custom properties that match the properties passed in', () => {
     const horizontalGrid = mountWithApp(
-      <HorizontalGrid gap={{md: '1'}} alignItems="start" />,
+      <HorizontalGrid gap={{md: '100'}} alignItems="start" />,
     );
 
     expect(horizontalGrid).toContainReactComponent('div', {
       style: {
-        '--pc-horizontal-grid-gap-md': 'var(--p-space-1)',
+        '--pc-horizontal-grid-gap-md': 'var(--p-space-100)',
         '--pc-horizontal-grid-align-items': 'start',
       } as React.CSSProperties,
     });

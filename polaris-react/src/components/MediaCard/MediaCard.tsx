@@ -165,11 +165,11 @@ export function MediaCard({
     popoverActionsMarkup || dismissButtonMarkup ? (
       <Box
         position="absolute"
-        insetBlockStart={polarisSummerEditions2023 ? undefined : '4'}
-        insetInlineEnd="5"
+        insetBlockStart={polarisSummerEditions2023 ? undefined : '400'}
+        insetInlineEnd="500"
         zIndex="var(--p-z-index-2)"
       >
-        <HorizontalStack gap="1" wrap={!polarisSummerEditions2023}>
+        <HorizontalStack gap="100" wrap={!polarisSummerEditions2023}>
           {popoverActionsMarkup}
           {dismissButtonMarkup}
         </HorizontalStack>
@@ -182,9 +182,9 @@ export function MediaCard({
         <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
           {polarisSummerEditions2023 ? (
-            <Box padding="5">
-              <VerticalStack gap="2">
-                <HorizontalStack wrap={false} align="space-between" gap="2">
+            <Box padding="500">
+              <VerticalStack gap="200">
+                <HorizontalStack wrap={false} align="space-between" gap="200">
                   {headerMarkup}
                   {popoverOrDismissMarkup}
                 </HorizontalStack>

@@ -64,7 +64,7 @@ export function WithHexTextField() {
   const styles = {
     Wrapper: {
       display: 'grid',
-      gap: 'var(--p-space-2)',
+      gap: 'var(--p-space-200)',
       gridTemplateColumns: 'auto 1fr',
       maxWidth: 'fit-content',
     },
@@ -75,7 +75,7 @@ export function WithHexTextField() {
       minHeight: 'calc(100% - 0.125rem)',
       aspectRatio: '1 / 1',
       borderRadius: 'var(--p-border-radius-1)',
-      border: 'var(--p-border-width-1) solid var(--p-color-border-subdued)',
+      border: 'var(--p-border-width-1) solid var(--p-color-border-secondary)',
       backgroundColor: hsbToHex(color),
     },
     TextField: {

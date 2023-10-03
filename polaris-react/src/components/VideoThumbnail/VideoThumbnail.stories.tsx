@@ -8,22 +8,22 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="8">
-      <VerticalStack gap="4">
+    <VerticalStack gap="800">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
       </VerticalStack>
 
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           With progress
         </Text>
         <WithProgress />
       </VerticalStack>
 
-      <VerticalStack gap="4">
+      <VerticalStack gap="400">
         <Text as="h2" variant="headingXl">
           Outside media card
         </Text>

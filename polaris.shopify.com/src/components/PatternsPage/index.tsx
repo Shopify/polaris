@@ -17,7 +17,7 @@ export const PatternsPage = ({title, description}: FoundationsProps) => (
     <PageMeta title={title} description={description} />
 
     <Page>
-      <Stack gap={'8'}>
+      <Stack gap={'800'}>
         <div>
           <Longform>
             <Heading as="h1" className={styles.Header}>

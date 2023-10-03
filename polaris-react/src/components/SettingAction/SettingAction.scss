@@ -6,16 +6,16 @@ $feature-width: 350px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: calc(-1 * var(--p-space-4));
-  margin-left: calc(-1 * var(--p-space-4));
+  margin-top: calc(-1 * var(--p-space-400));
+  margin-left: calc(-1 * var(--p-space-400));
 }
 
 .Setting,
 .Action {
   flex: 0 0 auto;
-  margin-top: var(--p-space-4);
-  margin-left: var(--p-space-4);
-  max-width: calc(100% - var(--p-space-4));
+  margin-top: var(--p-space-400);
+  margin-left: var(--p-space-400);
+  max-width: calc(100% - var(--p-space-400));
   min-width: 0;
 }
 
@@ -26,7 +26,7 @@ $feature-width: 350px;
 .Action {
   #{$se23} & {
     @media #{$p-breakpoints-md-up} {
-      margin-top: var(--p-space-6);
+      margin-top: var(--p-space-600);
     }
   }
 }

@@ -141,6 +141,7 @@ export function Filters({
   const {mdDown} = useBreakpoints();
   const {polarisSummerEditions2023: se23} = useFeatures();
   const [popoverActive, setPopoverActive] = useState(false);
+  const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>([]);
   const hasMounted = useRef(false);
 
   useEffect(() => {
@@ -157,22 +158,43 @@ export function Filters({
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
 
   const pinnedFiltersFromPropsAndAppliedFilters = filters.filter(
-    ({pinned, key}) => {
-      const isPinnedOrApplied =
-        Boolean(pinned) || appliedFilterKeys?.includes(key);
-      return isPinnedOrApplied;
-    },
-  );
-  const [localPinnedFilters, setLocalPinnedFilters] = useState<string[]>(
-    pinnedFiltersFromPropsAndAppliedFilters.map(({key}) => key),
+    ({pinned, key}) =>
+      (Boolean(pinned) || appliedFilterKeys?.includes(key)) &&
+      // Filters that are pinned in local state display at the end of our list
+      !localPinnedFilters.find((filterKey) => filterKey === key),
   );
 
-  const pinnedFilters = localPinnedFilters
+  useEffect(() => {
+    const allAppliedFilterKeysInLocalPinnedFilters =
+      !appliedFilterKeys ||
+      appliedFilterKeys.every((value) => localPinnedFilters.includes(value));
+
+    if (!allAppliedFilterKeysInLocalPinnedFilters) {
+      setLocalPinnedFilters((currentLocalPinnedFilters: string[]): string[] => {
+        const newPinnedFilters =
+          appliedFilterKeys?.filter(
+            (filterKey) =>
+              !currentLocalPinnedFilters.find(
+                (currentFilterKey) => currentFilterKey === filterKey,
+              ),
+          ) || [];
+
+        return [...currentLocalPinnedFilters, ...newPinnedFilters];
+      });
+    }
+  }, [appliedFilterKeys, localPinnedFilters]);
+
+  const pinnedFiltersFromLocalState = localPinnedFilters
     .map((key) => filters.find((filter) => filter.key === key))
     .reduce<FilterInterface[]>(
       (acc, filter) => (filter ? [...acc, filter] : acc),
       [],
     );
+
+  const pinnedFilters = [
+    ...pinnedFiltersFromPropsAndAppliedFilters,
+    ...pinnedFiltersFromLocalState,
+  ];
 
   const onFilterClick =
     ({key, onAction}: FilterInterface) =>
@@ -311,8 +333,8 @@ export function Filters({
           align="start"
           blockAlign="center"
           gap={{
-            xs: '4',
-            md: '3',
+            xs: '400',
+            md: '300',
           }}
         >
           <div
@@ -443,13 +465,17 @@ export function Filters({
           </div>
         </div>
         {hideQueryField ? (
-          <Box paddingInlineEnd="3" paddingBlockStart="2" paddingBlockEnd="2">
+          <Box
+            paddingInlineEnd="300"
+            paddingBlockStart="200"
+            paddingBlockEnd="200"
+          >
             <HorizontalStack
               align="start"
               blockAlign="center"
               gap={{
-                xs: '4',
-                md: '3',
+                xs: '400',
+                md: '300',
               }}
             >
               {additionalContent}

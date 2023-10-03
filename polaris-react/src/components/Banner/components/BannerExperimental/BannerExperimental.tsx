@@ -143,15 +143,15 @@ export function DefaultBanner({
           borderRadiusStartEnd={smUp ? '3' : undefined}
           borderRadiusEndStart={!hasContent && smUp ? '3' : undefined}
           borderRadiusEndEnd={!hasContent && smUp ? '3' : undefined}
-          padding="3"
+          padding="300"
         >
           <HorizontalStack
             align="space-between"
             blockAlign="center"
-            gap="2"
+            gap="200"
             wrap={false}
           >
-            <HorizontalStack gap="1" wrap={false}>
+            <HorizontalStack gap="100" wrap={false}>
               {bannerIcon}
               {bannerTitle}
             </HorizontalStack>
@@ -159,8 +159,8 @@ export function DefaultBanner({
           </HorizontalStack>
         </Box>
         {hasContent && (
-          <Box padding={{xs: '3', md: '4'}} paddingBlockStart="3">
-            <VerticalStack gap="2">
+          <Box padding={{xs: '300', md: '400'}} paddingBlockStart="300">
+            <VerticalStack gap="200">
               <div>{children}</div>
               {actionButtons}
             </VerticalStack>
@@ -198,23 +198,27 @@ export function InlineIconBanner({
   useEventListener('resize', handleResize);
 
   return (
-    <Box width="100%" padding="3" borderRadius="3">
+    <Box width="100%" padding="300" borderRadius="3">
       <HorizontalStack
         align="space-between"
         blockAlign={blockAlign}
         wrap={false}
       >
         <Box width="100%">
-          <HorizontalStack gap="2" wrap={false} blockAlign={blockAlign}>
+          <HorizontalStack gap="200" wrap={false} blockAlign={blockAlign}>
             {bannerIcon ? (
               <div ref={iconNode}>
-                <Box background={backgroundColor} borderRadius="2" padding="1">
+                <Box
+                  background={backgroundColor}
+                  borderRadius="2"
+                  padding="100"
+                >
                   {bannerIcon}
                 </Box>
               </div>
             ) : null}
             <Box ref={contentNode} width="100%">
-              <VerticalStack gap="2">
+              <VerticalStack gap="200">
                 <div>{children}</div>
                 {actionButtons}
               </VerticalStack>
@@ -240,7 +244,7 @@ export function WithinContentContainerBanner({
     <Box
       width="100%"
       background={backgroundColor}
-      padding="2"
+      padding="200"
       borderRadius="2"
       color={textColor}
     >
@@ -248,13 +252,13 @@ export function WithinContentContainerBanner({
         align="space-between"
         blockAlign="start"
         wrap={false}
-        gap="2"
+        gap="200"
       >
-        <HorizontalStack gap="1_5-experimental" wrap={false}>
+        <HorizontalStack gap="150" wrap={false}>
           {bannerIcon}
           <Box width="100%">
-            <VerticalStack gap="2">
-              <VerticalStack gap="05">
+            <VerticalStack gap="200">
+              <VerticalStack gap="050">
                 {bannerTitle}
                 <div>{children}</div>
               </VerticalStack>

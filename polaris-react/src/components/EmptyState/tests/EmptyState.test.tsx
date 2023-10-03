@@ -50,14 +50,14 @@ describe('<EmptyState />', () => {
       });
     });
 
-    it('adds center align and spacing-2 to HorizontalStack', () => {
+    it('adds center align and spacing-200 to HorizontalStack', () => {
       const emptyState = mountWithApp(
         <EmptyState image={imgSrc} action={{content: 'Add transfer'}} />,
       );
 
       expect(emptyState).toContainReactComponent(HorizontalStack, {
         align: 'center',
-        gap: '2',
+        gap: '200',
       });
     });
 

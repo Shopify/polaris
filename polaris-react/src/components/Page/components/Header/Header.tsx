@@ -112,7 +112,7 @@ export function Header({
     <div className={styles.BreadcrumbWrapper}>
       <Box
         maxWidth="100%"
-        paddingInlineEnd={polarisSummerEditions2023 ? '1' : '4'}
+        paddingInlineEnd={polarisSummerEditions2023 ? '100' : '400'}
         printHidden
       >
         <Breadcrumbs backAction={backAction} />
@@ -124,13 +124,17 @@ export function Header({
     pagination && !isNavigationCollapsed ? (
       <div className={styles.PaginationWrapper}>
         <Box printHidden>
-          <Pagination {...pagination} />
+          <Pagination
+            {...pagination}
+            hasPrevious={pagination.hasPrevious}
+            hasNext={pagination.hasNext}
+          />
         </Box>
       </div>
     ) : null;
 
   const additionalNavigationMarkup = additionalNavigation ? (
-    <HorizontalStack gap="4" align="end">
+    <HorizontalStack gap="400" align="end">
       <Box printHidden>{additionalNavigation}</Box>
     </HorizontalStack>
   ) : null;
@@ -176,12 +180,12 @@ export function Header({
     breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
       <Box
         printHidden
-        paddingBlockEnd="1"
+        paddingBlockEnd="100"
         paddingInlineEnd={
-          actionMenuMarkup && isNavigationCollapsed ? '10' : undefined
+          actionMenuMarkup && isNavigationCollapsed ? '1000' : undefined
         }
       >
-        <HorizontalStack gap="4" align="space-between" blockAlign="center">
+        <HorizontalStack gap="400" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
           {additionalNavigationMarkup}
           {paginationMarkup}
@@ -226,10 +230,16 @@ export function Header({
   return (
     <Box
       position="relative"
-      paddingBlockStart={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
-      paddingBlockEnd={{xs: '4', md: polarisSummerEditions2023 ? '6' : '5'}}
-      paddingInlineStart={{xs: '4', sm: '0'}}
-      paddingInlineEnd={{xs: '4', sm: '0'}}
+      paddingBlockStart={{
+        xs: '400',
+        md: polarisSummerEditions2023 ? '600' : '500',
+      }}
+      paddingBlockEnd={{
+        xs: '400',
+        md: polarisSummerEditions2023 ? '600' : '500',
+      }}
+      paddingInlineStart={{xs: '400', sm: '0'}}
+      paddingInlineEnd={{xs: '400', sm: '0'}}
       visuallyHidden={titleHidden}
     >
       <div className={headerClassNames}>
@@ -257,7 +267,7 @@ export function Header({
           </ConditionalRender>
           <ConditionalRender condition={[slot5, slot6].some(notNull)}>
             <div className={styles.Row}>
-              <HorizontalStack gap="4">{slot5}</HorizontalStack>
+              <HorizontalStack gap="400">{slot5}</HorizontalStack>
               <ConditionalRender condition={slot6 != null}>
                 <div className={styles.RightAlign}>{slot6}</div>
               </ConditionalRender>

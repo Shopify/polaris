@@ -175,7 +175,7 @@ const Variants = (props: {patternData: Props['data']}) => {
   return (
     <Container patternData={props.patternData}>
       {(variant) => (
-        <Stack gap="8" className={styles.Variant}>
+        <Stack gap="800" className={styles.Variant}>
           <PatternMarkdown
             patternData={props.patternData}
             patternName={`${props.patternData.title}${
@@ -233,7 +233,7 @@ const BaseMarkdown = ({
         </Heading>
       ),
       ol: ({children}) => (
-        <Stack as="ol" gap="2" className={[styles.List, styles.OrderedList]}>
+        <Stack as="ol" gap="200" className={[styles.List, styles.OrderedList]}>
           {children}
         </Stack>
       ),
@@ -305,12 +305,12 @@ const defaultMdxComponents: MDXComponents = {
   Stack: ({gap, children}) => <Stack gap={gap}>{children}</Stack>,
   Hero: ({children}) => <Box className={styles.Hero}>{children}</Box>,
   HowItHelps: ({children}) => (
-    <Stack gap="4" className={styles.HowItHelps}>
+    <Stack gap="400" className={styles.HowItHelps}>
       {children}
     </Stack>
   ),
   Usage: ({children}) => (
-    <Stack gap="4" className={styles.Usage}>
+    <Stack gap="400" className={styles.Usage}>
       {children}
     </Stack>
   ),
@@ -356,8 +356,8 @@ export default function PatternPage(props: Props) {
       <PageMeta title={props.data.title} description={props.data.description} />
 
       <Page isContentPage>
-        <Stack gap="8">
-          <Stack gap="4">
+        <Stack gap="800">
+          <Stack gap="400">
             <Heading as="h1">
               <Box className={styles.Heading}>{props.data.title}</Box>
             </Heading>

@@ -133,7 +133,7 @@ export function Select({
   }
 
   const inlineLabelMarkup = labelInline && (
-    <Box paddingInlineEnd="1">
+    <Box paddingInlineEnd="100">
       <Text as="span" color="subdued" truncate>
         {label}
       </Text>

@@ -225,7 +225,7 @@ export function All() {
   );
 
   return (
-    <VerticalStack gap="5">
+    <VerticalStack gap="500">
       <MediaCardExample title="Default medium" />
       <MediaCardExample title="Default small" size="small" />
       <MediaCardExample title="Portrait medium" portrait />

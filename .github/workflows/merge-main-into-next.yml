@@ -14,12 +14,13 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: next
-      - name: Merge main into next branch
-        run: |
-          git checkout -b update-next
-          git fetch origin main:main
-          git merge main
-      - name: Create PR with for review by last commit author
-        run: gh pr create -B next -H update-next --title 'Merge latest main into next' --body 'This PR was opened by a GitHub Action on behalf of ${{ github.event.push.pusher.username }} following their recent push to main in order to keep the `next` branch up to date. ${{ github.event.push.pusher.username }} -- resolve any merge conflicts and ensure that your recent changes to main work as expected.' --reviewer ${{ github.event.push.pusher.username }}
+      - name: Check for existing PR
+        id: existing_pr
+        run: echo "pr-num=`gh pr list --head=main --base=next --json number --jq '.[].number'`" >> "$GITHUB_OUTPUT"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create PR for review by last commit author
+        if: ${{ steps.existing_pr.outputs.pr-num == '' }}
+        run: gh pr create --base=next --head=main --title 'Merge latest main into next' --body 'This PR was opened by a GitHub Action following a recent push to main in order to keep the `next` branch up to date. Please resolve any merge conflicts and ensure that your recent changes to main work as expected.' --reviewer=${{ github.triggering_actor }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

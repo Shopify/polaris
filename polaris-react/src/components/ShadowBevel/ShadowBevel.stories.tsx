@@ -34,15 +34,15 @@ export function Default() {
   ];
 
   return (
-    <VerticalStack gap="5">
+    <VerticalStack gap="500">
       <ShadowBevel boxShadow="md" borderRadius="3">
-        <Box background="bg" padding="4">
+        <Box background="bg" padding="400">
           Default
         </Box>
       </ShadowBevel>
 
       <ShadowBevel boxShadow="md" borderRadius="3" bevel={false}>
-        <Box background="bg" padding="4">
+        <Box background="bg" padding="400">
           With <InlineCode>bevel: false</InlineCode>
         </Box>
       </ShadowBevel>
@@ -52,7 +52,7 @@ export function Default() {
         borderRadius="3"
         bevel={{xs: false, sm: true}}
       >
-        <Box background="bg" padding="4">
+        <Box background="bg" padding="400">
           With <InlineCode>bevel: {'{xs: false, sm: true}'}</InlineCode>
         </Box>
       </ShadowBevel>
@@ -62,14 +62,14 @@ export function Default() {
         borderRadius="3"
         bevel={{xs: false, sm: true, lg: false}}
       >
-        <Box background="bg" padding="4">
+        <Box background="bg" padding="400">
           With{' '}
           <InlineCode>bevel: {'{xs: false, sm: true, lg: false}'}</InlineCode>
         </Box>
       </ShadowBevel>
 
       <ShadowBevel as="article" boxShadow="md" borderRadius="3">
-        <Box background="bg" padding="4">
+        <Box background="bg" padding="400">
           With <InlineCode>as: article</InlineCode>
         </Box>
       </ShadowBevel>
@@ -81,7 +81,7 @@ export function Default() {
             boxShadow="md"
             borderRadius="3"
           >
-            <Box background={background} color={color} padding="4">
+            <Box background={background} color={color} padding="400">
               {background}
             </Box>
           </ShadowBevel>

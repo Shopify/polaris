@@ -325,14 +325,14 @@ describe('<Tooltip />', () => {
 
       expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-tooltip-padding': 'var(--p-space-1) var(--p-space-2)',
+          '--pc-tooltip-padding': 'var(--p-space-100) var(--p-space-200)',
         }) as React.CSSProperties,
       });
     });
 
     it('renders content with a padding of 4 when declared', () => {
       const tooltip = mountWithApp(
-        <Tooltip content="Inner content" padding="4">
+        <Tooltip content="Inner content" padding="400">
           <Link>link content</Link>
         </Tooltip>,
       );
@@ -341,13 +341,13 @@ describe('<Tooltip />', () => {
 
       expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-tooltip-padding': 'var(--p-space-1) var(--p-space-2)',
+          '--pc-tooltip-padding': 'var(--p-space-100) var(--p-space-200)',
         }) as React.CSSProperties,
       });
 
       expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-tooltip-padding': 'var(--p-space-4)',
+          '--pc-tooltip-padding': 'var(--p-space-400)',
         }) as React.CSSProperties,
       });
     });

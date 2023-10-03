@@ -8,7 +8,7 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="5">
+    <VerticalStack gap="500">
       <Default />
       <InsideOfACard />
       <Fitted />

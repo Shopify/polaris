@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 $navigation-elements-height: 36px;
-$title-height: var(--p-font-line-height-5);
+$title-height: var(--p-font-line-height-800);
 $stacking-order: (
   title: 10,
   breadcrumbs: 20,
@@ -34,16 +34,16 @@ body {
 }
 
 .Content {
-  padding: var(--p-space-2) 0;
+  padding: var(--p-space-200) 0;
 
   @media #{$p-breakpoints-md-up} {
-    padding-top: var(--p-space-5);
+    padding-top: var(--p-space-500);
   }
 }
 
 .divider {
-  border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
-  padding-top: var(--p-space-8);
+  border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
+  padding-top: var(--p-space-800);
 
   #{$se23} & {
     border-top: 0;

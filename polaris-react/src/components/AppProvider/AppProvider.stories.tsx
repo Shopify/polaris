@@ -180,7 +180,7 @@ export const WithSummerEditionsFeature = {
     const CheckFeature = () => {
       return (
         <Card>
-          <VerticalStack gap="4">
+          <VerticalStack gap="400">
             <Text
               as="h2"
               variant={polarisSummerEditions2023 ? 'headingXl' : 'bodyMd'}

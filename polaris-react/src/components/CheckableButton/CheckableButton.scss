@@ -5,7 +5,7 @@
   color: var(--p-color-text);
   font-size: var(--p-font-size-75);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-400);
   letter-spacing: initial;
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@
   user-select: none;
   text-decoration: none;
   text-align: left;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   width: auto;
 
   #{$se23} & {
@@ -62,10 +62,10 @@
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: var(--p-space-025) 0;
-  margin-left: calc(var(--p-space-5) - var(--p-border-width-2));
+  margin-left: calc(var(--p-space-500) - var(--p-border-width-050));
 
   #{$se23} & {
-    margin-left: calc(var(--p-space-3) + var(--p-space-025));
+    margin-left: calc(var(--p-space-300) + var(--p-space-025));
     // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- se23
     line-height: 18px;
   }

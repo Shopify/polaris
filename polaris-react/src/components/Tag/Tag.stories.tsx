@@ -9,7 +9,7 @@ export default {
 
 export function Default() {
   return (
-    <HorizontalStack gap="1">
+    <HorizontalStack gap="100">
       <Tag>Wholesale</Tag>
       <Tag disabled>Disabled</Tag>
       <Tag url="#">With URL</Tag>
@@ -50,7 +50,7 @@ export function Removable() {
 
 export function Clickable() {
   return (
-    <HorizontalStack gap="1">
+    <HorizontalStack gap="100">
       <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
       <Tag onClick={() => console.log('Clicked')} disabled>
         Wholesale (clickable disabled)

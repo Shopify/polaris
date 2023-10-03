@@ -37,7 +37,7 @@ export function WithBackdrop() {
   }) => (
     <Box
       background={boxBackground}
-      padding="1"
+      padding="100"
       width="28px"
       borderRadius="full"
     >
@@ -45,7 +45,7 @@ export function WithBackdrop() {
     </Box>
   );
   return (
-    <VerticalStack gap="1">
+    <VerticalStack gap="100">
       <BackdropIcon iconColor="base" boxBackground="bg-strong" />
       <BackdropIcon iconColor="highlight" boxBackground="bg-info" />
       <BackdropIcon iconColor="success" boxBackground="bg-success" />

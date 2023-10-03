@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 :root {
-  --item-min-height: var(--p-space-4);
+  --item-min-height: var(--p-space-400);
   --item-min-width: 50px;
-  --item-vertical-padding: var(--p-space-2);
+  --item-vertical-padding: var(--p-space-200);
 }
 
 .Outer {
@@ -23,10 +23,11 @@
   @media #{$p-breakpoints-md-down} {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding: var(--p-space-3) var(--p-space-3) var(--p-space-3) var(--p-space-4);
+    padding: var(--p-space-300) var(--p-space-300) var(--p-space-300)
+      var(--p-space-400);
 
     #{$se23} & {
-      padding: var(--p-space-2);
+      padding: var(--p-space-200);
     }
   }
 }
@@ -35,7 +36,7 @@
   @media #{$p-breakpoints-md-up} {
     position: relative;
     display: inline-flex;
-    padding-right: var(--p-space-8);
+    padding-right: var(--p-space-800);
   }
 }
 
@@ -54,10 +55,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  gap: var(--p-space-1);
+  gap: var(--p-space-100);
 
   @media #{$p-breakpoints-md-up} {
-    padding: 0 var(--p-space-1);
+    padding: 0 var(--p-space-100);
     flex-wrap: wrap;
     align-items: stretch;
   }
@@ -72,12 +73,12 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: var(--p-space-8);
-  padding: 0 var(--p-space-3);
+  height: var(--p-space-800);
+  padding: 0 var(--p-space-300);
   border: 0;
-  border-radius: var(--p-border-radius-1);
-  background: var(--p-color-bg);
-  color: var(--p-color-text-subdued);
+  border-radius: var(--p-border-radius-100);
+  background: var(--p-color-bg-surface);
+  color: var(--p-color-text-secondary);
   cursor: pointer;
   text-decoration: none;
   width: 100%;
@@ -123,10 +124,10 @@
   #{$se23} & {
     // stylelint-disable-next-line -- no way to set focus ring without mixin currently
     @include focus-ring($size: 'wide');
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
     background-color: transparent;
-    border-radius: var(--p-border-radius-2);
-    padding: var(--p-space-1_5-experimental) var(--p-space-3);
+    border-radius: var(--p-border-radius-200);
+    padding: var(--p-space-150) var(--p-space-300);
     height: 2rem;
 
     &[aria-disabled='true'] {
@@ -134,26 +135,26 @@
     }
 
     &:not([aria-disabled='true']):hover {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
-      color: var(--p-color-text-primary);
+      background-color: var(--p-color-bg-fill-transparent-hover);
+      color: var(--p-color-text-brand);
     }
 
     &:not([aria-disabled='true']):focus-visible {
       background-color: transparent;
-      color: var(--p-color-text-primary);
+      color: var(--p-color-text-brand);
       // stylelint-disable-next-line -- sshhh
       @include focus-ring($size: 'wide', $style: 'focused');
     }
 
     &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-secondary-experimental);
-      color: var(--p-color-text-primary);
+      background-color: var(--p-color-bg-surface-tertiary);
+      color: var(--p-color-text-brand);
       z-index: var(--p-z-index-1);
     }
 
     @media #{$p-breakpoints-md-up} {
       font-size: var(--p-font-size-75);
-      line-height: var(--p-font-line-height-1);
+      line-height: var(--p-font-line-height-400);
       height: 1.75rem;
     }
   }
@@ -161,7 +162,7 @@
 
 .Tab-active {
   background: var(--p-color-bg-primary-subdued-hover);
-  color: var(--p-color-text-primary);
+  color: var(--p-color-text-brand);
 
   &[aria-disabled='true'] {
     background: var(--p-color-bg-disabled);
@@ -171,18 +172,18 @@
   &:not([aria-disabled='true']):hover,
   &:not([aria-disabled='true']):focus {
     background-color: var(--p-color-bg-primary-subdued-hover);
-    color: var(--p-color-text-primary-hover);
+    color: var(--p-color-text-brand-hover);
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-success-subdued-active);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-surface-success-active);
+    color: var(--p-color-text-brand);
   }
 
   #{$se23} & {
-    background: var(--p-color-bg-transparent-active-experimental);
+    background: var(--p-color-bg-fill-transparent-active);
     color: var(--p-color-text);
-    border-radius: var(--p-border-radius-2);
+    border-radius: var(--p-border-radius-200);
 
     &[aria-disabled='true'] {
       background: var(--p-color-bg-disabled);
@@ -191,28 +192,28 @@
 
     &:not([aria-disabled='true']):hover,
     &:not([aria-disabled='true']):focus {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
-      color: var(--p-color-text-primary);
+      background-color: var(--p-color-bg-fill-transparent-hover);
+      color: var(--p-color-text-brand);
     }
 
     &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-transparent-active-experimental);
+      background-color: var(--p-color-bg-fill-transparent-active);
     }
   }
 }
 
 .Tab-hasActions {
-  padding-right: var(--p-space-2);
+  padding-right: var(--p-space-200);
 
   #{$se23} & {
-    padding-right: var(--p-space-2);
+    padding-right: var(--p-space-200);
   }
 }
 
 .Tab-iconOnly {
-  padding-left: var(--p-space-1);
-  padding-right: var(--p-space-1);
-  width: var(--p-space-8);
+  padding-left: var(--p-space-100);
+  padding-right: var(--p-space-100);
+  width: var(--p-space-800);
 }
 
 .fillSpace {
@@ -242,7 +243,7 @@
 .List {
   list-style: none;
   margin: 0;
-  padding: var(--p-space-2);
+  padding: var(--p-space-200);
 }
 
 .Item {
@@ -253,11 +254,11 @@
   display: block;
   width: 100%;
   min-height: var(--item-min-height);
-  padding: var(--item-vertical-padding) var(--p-space-4);
+  padding: var(--item-vertical-padding) var(--p-space-400);
   text-align: left;
   text-decoration: none;
   cursor: pointer;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   color: inherit;
 
   &::-moz-focus-inner {
@@ -299,13 +300,13 @@
   @include unstyled-button;
   height: 100%;
   background-color: transparent;
-  color: var(--p-color-text-subdued);
+  color: var(--p-color-text-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: var(--p-border-radius-1);
-  padding: 0 var(--p-space-2) 0 var(--p-space-3);
+  border-radius: var(--p-border-radius-100);
+  padding: 0 var(--p-space-200) 0 var(--p-space-300);
   margin-top: var(--p-space-025);
   border: none;
   outline: none;
@@ -342,8 +343,8 @@
 
   #{$se23} & {
     background-color: transparent;
-    color: var(--p-color-text-primary);
-    border-radius: var(--p-border-radius-2);
+    color: var(--p-color-text-brand);
+    border-radius: var(--p-border-radius-200);
 
     // stylelint-disable-next-line selector-max-combinators -- Polaris component experimental styles
     svg {
@@ -356,17 +357,17 @@
     }
 
     &:not([aria-disabled='true']):hover {
-      background-color: var(--p-color-bg-transparent-hover-experimental);
-      color: var(--p-color-text-primary);
+      background-color: var(--p-color-bg-fill-transparent-hover);
+      color: var(--p-color-text-brand);
     }
 
     &:not([aria-disabled='true']):focus {
       background-color: transparent;
-      color: var(--p-color-text-primary);
+      color: var(--p-color-text-brand);
     }
 
     &:not([aria-disabled='true']):active {
-      background-color: var(--p-color-bg-secondary-experimental);
+      background-color: var(--p-color-bg-surface-tertiary);
     }
   }
 }
@@ -380,7 +381,7 @@
 }
 
 .NewTab {
-  padding: 0 var(--p-space-2) 0 var(--p-space-1);
+  padding: 0 var(--p-space-200) 0 var(--p-space-100);
 
   @media #{$p-breakpoints-md-up} {
     position: absolute;

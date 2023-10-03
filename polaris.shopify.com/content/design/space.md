@@ -63,25 +63,26 @@ All measurements used across the experience (space, width, height, etc) must ref
 
 ### Space scale
 
-| Value        | Space         | px value | rem value |
-| ------------ | ------------- | -------- | --------- |
-| 0            | --p-space-0   | 0        | 0         |
-| 0.25         | --p-space-025 | 1        | 0.0625    |
-| 0.5          | --p-space-05  | 2        | 0.125     |
-| **1 (base)** | --p-space-1   | 4        | 0.25      |
-| 2            | --p-space-2   | 8        | 0.5       |
-| 3            | --p-space-3   | 12       | 0.75      |
-| 4            | --p-space-4   | 16       | 1         |
-| 5            | --p-space-5   | 20       | 1.25      |
-| 6            | --p-space-6   | 24       | 1.5       |
-| 8            | --p-space-8   | 32       | 2         |
-| 10           | --p-space-10  | 40       | 2.5       |
-| 12           | --p-space-12  | 48       | 3         |
-| 16           | --p-space-16  | 64       | 4         |
-| 20           | --p-space-20  | 80       | 5         |
-| 24           | --p-space-24  | 96       | 6         |
-| 28           | --p-space-28  | 112      | 7         |
-| 32           | --p-space-32  | 128      | 8         |
+| Value          | Space          | px value | rem value |
+| -------------- | -------------- | -------- | --------- |
+| 0              | --p-space-0    | 0        | 0         |
+| 025            | --p-space-025  | 1        | 0.0625    |
+| 050            | --p-space-050  | 2        | 0.125     |
+| **100 (base)** | --p-space-100  | 4        | 0.25      |
+| 150            | --p-space-150  | 6        | 0.375     |
+| 200            | --p-space-200  | 8        | 0.5       |
+| 300            | --p-space-300  | 12       | 0.75      |
+| 400            | --p-space-400  | 16       | 1         |
+| 500            | --p-space-500  | 20       | 1.25      |
+| 600            | --p-space-600  | 24       | 1.5       |
+| 800            | --p-space-800  | 32       | 2         |
+| 1000           | --p-space-1000 | 40       | 2.5       |
+| 1200           | --p-space-1200 | 48       | 3         |
+| 1600           | --p-space-1600 | 64       | 4         |
+| 2000           | --p-space-2000 | 80       | 5         |
+| 2400           | --p-space-2400 | 96       | 6         |
+| 2800           | --p-space-2800 | 112      | 7         |
+| 3200           | --p-space-3200 | 128      | 8         |
 
 Polaris units are more dense at a small scale, and less so as dimensions increase.
 This is intentional to provide a good range to work with, but you must be deliberate in the units you decide to pair. We encourage designing with rhythm and contrast to achieve clear visual hierarchy. This often means skipping at least one unit in the scale when you’re pairing different spaces.

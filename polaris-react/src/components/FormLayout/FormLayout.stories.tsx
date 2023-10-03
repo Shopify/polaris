@@ -56,7 +56,7 @@ export function CondensedFieldGroup() {
 
 export function All() {
   return (
-    <VerticalStack gap="5">
+    <VerticalStack gap="500">
       <Card>
         <FormLayout>
           <FormLayout.Group

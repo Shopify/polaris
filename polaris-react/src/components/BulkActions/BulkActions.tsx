@@ -300,7 +300,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const groupContent =
       promotedActionsMarkup || actionsPopover ? (
-        <HorizontalStack gap="3">
+        <HorizontalStack gap="300">
           {promotedActionsMarkup}
           {actionsPopover}
         </HorizontalStack>
