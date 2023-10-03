@@ -30,7 +30,7 @@ export const metaThemeLightHighContrastPartial = createMetaThemePartial({
     },
   },
   shadow: {
-    'shadow-bevel-experimental': {
+    'shadow-bevel-100': {
       value:
         '0px 1px 0px 0px rgba(26, 26, 26, 0.07), 0px 1px 0px 0px rgba(208, 208, 208, 0.40) inset, 1px 0px 0px 0px #CCC inset, -1px 0px 0px 0px #CCC inset, 0px -1px 0px 0px #999 inset',
     },
