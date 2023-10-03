@@ -99,14 +99,14 @@
 }
 
 .selected {
-  background-color: var(--p-color-bg-interactive-selected);
+  background-color: var(--p-color-bg-surface-brand-selected);
 
   &:hover {
-    background-color: var(--p-color-bg-interactive-subdued-hover);
+    background-color: var(--p-color-bg-surface-brand-hover);
   }
 
   &:active {
-    background-color: var(--p-color-bg-interactive-subdued-active);
+    background-color: var(--p-color-bg-surface-brand-active);
   }
 }
 

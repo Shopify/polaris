@@ -37,7 +37,7 @@ export function AnnotatedSection({
               {title}
             </Text>
             {descriptionMarkup && (
-              <Box color="text-subdued">{descriptionMarkup}</Box>
+              <Box color="text-secondary">{descriptionMarkup}</Box>
             )}
           </TextContainer>
         </div>

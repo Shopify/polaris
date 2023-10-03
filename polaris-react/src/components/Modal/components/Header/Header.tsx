@@ -45,7 +45,7 @@ export function Header({
       paddingInlineEnd={headerPaddingInline}
       borderBlockEndWidth="025"
       borderColor="border"
-      background="bg-secondary-experimental"
+      background="bg-surface-tertiary"
     >
       <InlineGrid columns={{xs: '1fr auto'}} gap="400">
         <InlineStack gap="400" blockAlign="center">

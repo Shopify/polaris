@@ -23,7 +23,7 @@ import RulePostamble from '../_postamble.md';
 +}
 
 // Don't
-- @include recolor-icon(--p-text-subdued);
+- @include recolor-icon(--p-text-secondary);
 ```
 
 <RulePostamble />

@@ -32,7 +32,7 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
         paddingInlineStart="200"
         paddingBlockEnd="0"
         paddingInlineEnd="200"
-        color="text-subdued"
+        color="text-secondary"
       >
         {helpText}
       </Box>
