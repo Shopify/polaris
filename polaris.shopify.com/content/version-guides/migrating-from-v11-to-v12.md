@@ -448,6 +448,17 @@ After migrating use the following RegExp to check for any additional instances o
 | `--p-color-border-critical-subdued`                      | `--p-color-border-critical`                |
 | `--p-color-border-magic-strong`                          | `--p-color-border-magic-secondary`         |
 
+#### Manual replacement maps
+
+The following color tokens are no longer supported in v12.0.0 and will need to be manually migrated to their hardcoded value.
+
+| Deprecated Token                                           | Replacement Value        |
+| ---------------------------------------------------------- | ------------------------ |
+| `--p-color-bg-transparent-primary-experimental`            | `rgba(0, 0, 0, 0.62)`    |
+| `--p-color-bg-transparent-secondary-disabled-experimental` | `rgba(0, 0, 0, 0.08)`    |
+| `--p-color-icon-on-color`                                  | `rgba(255, 255, 255, 1)` |
+| `--p-color-text-on-color`                                  | `rgba(255, 255, 255, 1)` |
+
 #### `on-color` tokens
 
 `on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the bg color the element is sitting on. This gives us greater control over the visual design of the admin.
