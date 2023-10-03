@@ -116,6 +116,9 @@ Renaming color control props to `tone` creates a consistent API across component
 + <Button tone="critical" />
 - <Button destructive plain />
 + <Button variant="plain" tone="critical" />
+
+- <IndexTable.Row status="success" />
++ <IndexTable.Row tone="success" />
 ```
 
 #### Consolidate boolean props to `variant`
