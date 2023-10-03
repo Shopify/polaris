@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useId} from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {Text} from '../../../Text';
+import {Spinner} from '../../../Spinner';
 import {classNames} from '../../../../utilities/css';
 import {Icon} from '../../../Icon';
 import {useI18n} from '../../../../utilities/i18n';
@@ -10,6 +11,7 @@ import {UnstyledButton} from '../../../UnstyledButton';
 import styles from './SearchField.scss';
 
 export interface SearchFieldProps {
+  loading?: boolean;
   onChange: (value: string) => void;
   onFocus?: () => void;
   onBlur?: () => void;
@@ -26,6 +28,7 @@ export function SearchField({
   onClear,
   onFocus,
   onBlur,
+  loading = false,
   focused,
   value,
   placeholder,
@@ -51,6 +54,29 @@ export function SearchField({
     }
   }
 
+  const clearButtonMarkup =
+    value !== '' && !loading ? (
+      <UnstyledButton
+        className={classNames(
+          styles.ClearButton,
+          focused && styles['ClearButton-focused'],
+        )}
+        onClick={() => handleClear()}
+        disabled={disabled}
+      >
+        <Text as="span" visuallyHidden>
+          {i18n.translate('Polaris.Common.clear')}
+        </Text>
+        <Icon source={CircleCancelMinor} tone="subdued" />
+      </UnstyledButton>
+    ) : null;
+
+  const loadingMarkup = loading ? (
+    <div className={styles.Spinner}>
+      <Spinner size="small" />
+    </div>
+  ) : null;
+
   return (
     <div className={styles.SearchField}>
       <label className={styles.Label} htmlFor={id}>
@@ -72,21 +98,8 @@ export function SearchField({
         placeholder={placeholder}
         disabled={disabled}
       />
-      {value !== '' && (
-        <UnstyledButton
-          className={classNames(
-            styles.ClearButton,
-            focused && styles['ClearButton-focused'],
-          )}
-          onClick={() => handleClear()}
-          disabled={disabled}
-        >
-          <Text as="span" visuallyHidden>
-            {i18n.translate('Polaris.Common.clear')}
-          </Text>
-          <Icon source={CircleCancelMinor} tone="subdued" />
-        </UnstyledButton>
-      )}
+      {loadingMarkup}
+      {clearButtonMarkup}
     </div>
   );
 }

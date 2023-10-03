@@ -21,6 +21,9 @@ import {
   DeleteMinor,
   MobileVerticalDotsMajor,
 } from '@shopify/polaris-icons';
+import {load} from 'js-yaml';
+
+import {debounce} from '../../utilities/debounce';
 
 import type {IndexFiltersProps} from './IndexFilters';
 
@@ -108,8 +111,7 @@ function BasicExample(
     withFilteringByDefault?: boolean;
   },
 ) {
-  const sleep = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
+  const [loading, setLoading] = useState(false);
   const [itemStrings, setItemStrings] = useState([
     'All',
     'Unpaid',
@@ -118,6 +120,17 @@ function BasicExample(
     'Local delivery',
     'Local pickup',
   ]);
+
+  const sleep = async (ms: number, load?: boolean) => {
+    return new Promise((resolve) => {
+      const timeout = setTimeout(() => {
+        resolve(true);
+      }, ms);
+
+      return clearTimeout(timeout);
+    });
+  };
+
   const deleteView = (index: number) => {
     const newItemStrings = [...itemStrings];
     newItemStrings.splice(index, 1);
@@ -237,10 +250,29 @@ function BasicExample(
     (value) => setTaggedWith(value),
     [],
   );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
+  const handleFiltersQueryChange = debounce(
+    useCallback(
+      (value) => {
+        setQueryValue(value);
+
+        if (!loading) {
+          setLoading(true);
+        }
+
+        const timeout = setTimeout(() => {
+          if (value === '') {
+            setLoading(false);
+            return;
+          }
+
+          setLoading(false);
+        }, 650);
+      },
+      [loading],
+    ),
+    50,
   );
+
   const handleAccountStatusRemove = useCallback(
     () => setAccountStatus(null),
     [],
@@ -340,11 +372,13 @@ function BasicExample(
     });
   }
 
+  console.log(loading);
+
   return (
     <Card padding="0">
       <IndexFilters
         {...props}
-        loading={queryValue !== ''}
+        loading={loading}
         sortOptions={sortOptions}
         sortSelected={sortSelected}
         queryValue={queryValue}

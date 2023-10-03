@@ -155,6 +155,7 @@ $loading-panel-height: 53px;
 }
 
 .TableRow {
+  height: 100%;
   background-color: var(--p-color-bg-surface);
   cursor: pointer;
   border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);

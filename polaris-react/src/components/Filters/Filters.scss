@@ -29,15 +29,6 @@
   flex: 1;
 }
 
-.Spinner {
-  width: var(--p-space-500);
-  transform: translateX(var(--p-space-100));
-
-  svg {
-    display: block;
-  }
-}
-
 .FiltersWrapper {
   border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
   height: 53px;

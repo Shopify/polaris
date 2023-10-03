@@ -280,17 +280,6 @@ export function Filters({
 
   const shouldShowAddButton = filters.some((filter) => !filter.pinned);
 
-  const additionalContent = useMemo(() => {
-    return (
-      <>
-        <div className={styles.Spinner}>
-          {loading ? <Spinner size="small" /> : null}
-        </div>
-        {children}
-      </>
-    );
-  }, [loading, children]);
-
   const containerSpacing: {
     paddingBlockStart: BoxProps['paddingBlockStart'];
     paddingBlockEnd: BoxProps['paddingBlockEnd'];
@@ -333,11 +322,11 @@ export function Filters({
               value={queryValue}
               placeholder={queryPlaceholder}
               focused={focused}
+              loading={loading}
               disabled={disabled || disableQueryField}
               borderlessQueryField={borderlessQueryField}
             />
           </div>
-          {additionalContent}
         </InlineStack>
       </Box>
     </div>
@@ -454,7 +443,7 @@ export function Filters({
                 md: '300',
               }}
             >
-              {additionalContent}
+              {loading && <Spinner size="small" />}
             </InlineStack>
           </Box>
         ) : null}
