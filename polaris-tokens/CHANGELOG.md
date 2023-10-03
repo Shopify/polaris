@@ -10,15 +10,13 @@
 
 - [#10673](https://github.com/Shopify/polaris/pull/10673) [`08aaf11ec`](https://github.com/Shopify/polaris/commit/08aaf11ec59680155476a20036a672795c2bad47) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated `font-size` and `font-weight` token values
 
+* [#10674](https://github.com/Shopify/polaris/pull/10674) [`a2aefd060`](https://github.com/Shopify/polaris/commit/a2aefd0608b854b376c1f8de8bd33195074dc7e3) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed legacy v11 `border`, `font`, `space`, `shadow` tokens
+
+- [#10779](https://github.com/Shopify/polaris/pull/10779) [`2ce6c375d`](https://github.com/Shopify/polaris/commit/2ce6c375d9a180609c087764d963bb20868e03bf) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed legacy v11 `color` tokens
+
 ### Minor Changes
 
 - [#10669](https://github.com/Shopify/polaris/pull/10669) [`794d1f5e4`](https://github.com/Shopify/polaris/commit/794d1f5e4b79a2721594979d31972cd7534d6174) Thanks [@lgriffee](https://github.com/lgriffee)! - Added `border-radius` semantic layer
-
-## 7.13.0-beta.1
-
-- [#10674](https://github.com/Shopify/polaris/pull/10674) [`a2aefd060`](https://github.com/Shopify/polaris/commit/a2aefd0608b854b376c1f8de8bd33195074dc7e3) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed legacy v11 `border`, `font`, `space`, `shadow` tokens
-
-- [#10779](https://github.com/Shopify/polaris/pull/10779) [`2ce6c375d`](https://github.com/Shopify/polaris/commit/2ce6c375d9a180609c087764d963bb20868e03bf) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed legacy v11 `color` tokens
 
 ## 7.13.0-beta.0
 
