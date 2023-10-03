@@ -1,9 +1,16 @@
-import type {Entry, Exact, MetadataGroup, Tokens, TokenGroup} from './types';
+import type {Entry, Exact} from './types';
 import type {
   breakpoints as metaBreakpointsTokenGroup,
   BreakpointsTokenGroup,
   BreakpointsTokenName,
 } from './themes/base/breakpoints';
+import type {
+  MetaTheme,
+  MetaThemeShape,
+  MetaTokenGroupShape,
+  Theme,
+  TokenName,
+} from './themes/types';
 
 const BASE_FONT_SIZE = 16;
 
@@ -87,24 +94,26 @@ export function rem(value: string) {
   );
 }
 
-export function tokensToRems<T extends Exact<MetadataGroup, T>>(tokenGroup: T) {
+export function tokenGroupToRems<T extends MetaTokenGroupShape>(
+  metaTokenGroup: T,
+) {
   return Object.fromEntries(
-    Object.entries(tokenGroup).map(([token, properties]) => [
-      token,
-      {...properties, value: rem(properties.value)},
+    Object.entries(metaTokenGroup).map(([tokenName, tokenProperties]) => [
+      tokenName,
+      {...tokenProperties, value: rem(tokenProperties.value)},
     ]),
-    // We loose the `tokenGroup` inference after transforming the object with
+    // We loose the `metaTokenGroup` inference after transforming the object with
     // `Object.fromEntries()` and `Object.entries()`. Thus, we cast the result
     // back to `T` since we are simply converting the `value` from px to rem.
   ) as T;
 }
 
-export function createVarName(token: string) {
-  return `--p-${token}`;
+export function createVarName(tokenName: TokenName) {
+  return `--p-${tokenName}`;
 }
 
-export function createVar(token: string) {
-  return `--p-${token}`;
+export function createVar(tokenName: TokenName) {
+  return `var(${createVarName(tokenName)})`;
 }
 
 /**
@@ -112,10 +121,16 @@ export function createVar(token: string) {
  *
  * Result: ['p-keyframes-fade-in', 'p-keyframes-spin', etc...]
  */
-export function getKeyframeNames(motionTokenGroup: TokenGroup) {
+export function getKeyframeNames(motionTokenGroup: MetaTokenGroupShape) {
   return Object.keys(motionTokenGroup)
     .map((token) => (token.startsWith('keyframes') ? `p-${token}` : null))
     .filter(Boolean);
+}
+
+export function getTokenNames(theme: Theme | MetaTheme): TokenName[] {
+  return Object.values(theme).flatMap((tokenGroup) =>
+    Object.keys(tokenGroup),
+  ) as TokenName[];
 }
 
 /**
@@ -123,24 +138,8 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
  *
  * Result: ['--p-color-bg', '--p-color-text', etc...]
  */
-export function getCustomPropertyNames(tokens: Tokens) {
-  return Object.entries(tokens)
-    .map(([_, tokenGroup]: [string, TokenGroup]) =>
-      Object.keys(tokenGroup).map((token) => createVar(token)),
-    )
-    .flat();
-}
-
-export function removeMetadata<T extends Exact<MetadataGroup, T>>(
-  tokenGroup: T,
-) {
-  return Object.fromEntries(
-    Object.entries(tokenGroup).map((entry): Entry<TokenGroup> => {
-      const [tokenName, {value}] = entry as Entry<MetadataGroup>;
-
-      return [tokenName, value];
-    }),
-  ) as TokenGroup<T>;
+export function getThemeVarNames(theme: Theme) {
+  return getTokenNames(theme).map(createVarName);
 }
 
 export type MetaBreakpointsTokenGroup = typeof metaBreakpointsTokenGroup;
@@ -224,26 +223,43 @@ export function isKeyOf<T extends {[key: string]: any}>(
   return Object.keys(obj).includes(key as string);
 }
 
+export const tokenGroupNamesToRems = [
+  'border',
+  'breakpoints',
+  'font',
+  'height',
+  'shadow',
+  'space',
+  'text',
+  'width',
+];
+
 /**
- * Identity function creator that returns the provided input,
- * but additionally validates the input matches the type exactly
- * and infers all members.
- *
- * TODO: Replace all instances with `satisfies` when we upgrade
- * to TypeScript >=4.9
+ * Mimics the behavior of an identity function:
+ * - Validates the input matches the `MetaThemeShape` type exactly
+ * - Converts all `px` values to `rem`
+ * - Infers all members
  *
  * @example
  * ```
- * type ExampleShape = { [key: string]: string }
- * const createExample = createExact<ExampleShape>()
- *
- * const example = createExample({
- *  foo: 'bar',
+ * const example = createMetaThemeBase({
+ *   color: {
+ *     bg: {value: '#fff'},
+ *   },
  * })
  * ```
  *
- * Where `typeof example` is inferred as `{ foo: string }`
+ * Where `typeof example` is inferred as `{ color: { bg: { value: string } } }`
  */
-export function createExact<T extends object>() {
-  return <U extends Exact<T, U>>(obj: U) => obj;
+export function createMetaThemeBase<T extends Exact<MetaThemeShape, T>>(
+  metaTheme: T,
+): T {
+  return Object.fromEntries(
+    Object.entries(metaTheme).map(([tokenGroupName, tokenGroup]) => [
+      tokenGroupName,
+      tokenGroupNamesToRems.includes(tokenGroupName)
+        ? tokenGroupToRems(tokenGroup)
+        : tokenGroup,
+    ]),
+  ) as T;
 }

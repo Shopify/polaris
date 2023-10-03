@@ -8,6 +8,12 @@ export type ThemeName = typeof themeNames[number];
 export type ThemeBase = ExtractMetaThemeValues<MetaThemeBase>;
 export type Theme = ExtractMetaThemeValues<MetaTheme>;
 
+export type TokenName = {
+  [TokenGroupName in keyof Theme]: {
+    [TokenName in keyof Theme[TokenGroupName]]: TokenName;
+  }[keyof Theme[TokenGroupName]];
+}[keyof Theme];
+
 export interface MetaTokenProperties {
   value: string;
   description?: string;

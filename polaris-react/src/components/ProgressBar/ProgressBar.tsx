@@ -1,9 +1,9 @@
 import React, {useRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
-import {motion} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
+import {useTheme} from '../../utilities/use-theme';
 
 import styles from './ProgressBar.scss';
 
@@ -44,6 +44,7 @@ export function ProgressBar({
   animated: hasAppearAnimation = true,
   ariaLabelledBy,
 }: ProgressBarProps) {
+  const theme = useTheme();
   const i18n = useI18n();
   const indicatorRef = useRef<HTMLDivElement>(null);
 
@@ -63,8 +64,8 @@ export function ProgressBar({
   const parsedProgress = parseProgress(progress, warningMessage);
 
   const progressBarDuration = hasAppearAnimation
-    ? motion['motion-duration-500']
-    : motion['motion-duration-0'];
+    ? theme.motion['motion-duration-500']
+    : theme.motion['motion-duration-0'];
 
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (

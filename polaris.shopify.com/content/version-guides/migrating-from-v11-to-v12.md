@@ -895,6 +895,54 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
   npx stylelint <path>
   ```
 
+### `@shopify/polaris-tokens` updates
+
+#### Renames
+
+- `getCustomPropertyNames` renamed to `getThemeVarNames`
+- `createVar` renamed to `createVarName`
+
+#### Deprecations
+
+##### Deprecated Utilities
+
+If you are using these utilities, feel free to copy them from v11 into your own codebase.
+
+- `createExact`
+- `getKeyframeNames`
+- `getUnit`
+- `isKeyOf`
+- `rem`
+- `removeMetadata`
+- `toEm`
+- `tokensToRems`
+
+##### Deprecated Types
+
+- `Tokens` type is now deprecated, use the `Theme` type instead
+
+##### Deprecated all JSON exports
+
+- `@shopify/polaris-tokens/json/border.json`
+- `@shopify/polaris-tokens/json/breakpoints.json`
+- `@shopify/polaris-tokens/json/color.json`
+- `@shopify/polaris-tokens/json/font.json`
+- `@shopify/polaris-tokens/json/height.json`
+- `@shopify/polaris-tokens/json/motion.json`
+- `@shopify/polaris-tokens/json/shadow.json`
+- `@shopify/polaris-tokens/json/space.json`
+- `@shopify/polaris-tokens/json/text.json`
+- `@shopify/polaris-tokens/json/width.json`
+- `@shopify/polaris-tokens/json/zIndex.json`
+
+If you are using these exports, update the implementation to import `themes` and `JSON.stringify` the theme you need.
+
+```diff
+- const color = require('@shopify/polaris-tokens/json/color.json');
++ const {themes} = require('@shopify/polaris-tokens');
++ const color = JSON.stringify(themes.light.color);
+```
+
 ## Manual updates and fixes
 
 ### A new web font

@@ -7,7 +7,7 @@ import React, {
   Children,
 } from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
-import {tokens, toPx} from '@shopify/polaris-tokens';
+import {themeDefault, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -54,7 +54,7 @@ const isBreakpointsXS = () => {
   return typeof window === 'undefined'
     ? false
     : window.innerWidth <
-        parseFloat(toPx(tokens.breakpoints['breakpoints-sm']) ?? '');
+        parseFloat(toPx(themeDefault.breakpoints['breakpoints-sm']) ?? '');
 };
 
 function defaultIdForItem<TItemType extends ResourceListItemData>(
