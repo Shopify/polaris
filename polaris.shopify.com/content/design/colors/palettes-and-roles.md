@@ -17,15 +17,15 @@ icon: ColorsMajor
 
 <Subnav />
 
-<Stack gap="8">
+<Stack gap="800">
 
 <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ## Global palette
 
@@ -51,11 +51,11 @@ icon: ColorsMajor
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ## Color roles
 
@@ -79,15 +79,15 @@ icon: ColorsMajor
 
   </Card>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Default
 
@@ -107,7 +107,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -143,15 +143,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Brand
 
@@ -171,7 +171,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -197,15 +197,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Info
 
@@ -226,7 +226,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -262,15 +262,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Success
 
@@ -290,7 +290,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -316,15 +316,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Caution
 
@@ -344,7 +344,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -370,15 +370,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Warning
 
@@ -398,7 +398,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -424,15 +424,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Critical
 
@@ -452,7 +452,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -478,15 +478,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Magic
 
@@ -506,7 +506,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -533,15 +533,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Emphasis
 
@@ -561,7 +561,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -587,15 +587,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Transparent
 
@@ -615,7 +615,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -641,15 +641,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Inverse
 
@@ -670,7 +670,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -698,7 +698,7 @@ icon: ColorsMajor
 
 <Card>
 
-  <Box padding="4">
+  <Box padding="400">
 
     ## Specialized roles
 
@@ -708,15 +708,15 @@ icon: ColorsMajor
 
 </Card>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Input
 
@@ -736,7 +736,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -762,15 +762,15 @@ icon: ColorsMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Nav
 
@@ -790,7 +790,7 @@ icon: ColorsMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 

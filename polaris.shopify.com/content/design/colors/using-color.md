@@ -14,15 +14,15 @@ icon: PaintBrushMajor
 
 <Subnav />
 
-<Stack gap="8">
+<Stack gap="800">
 
 <Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Box padding="4">
+      <Box padding="400">
 
         ## Color relationships
 
@@ -42,15 +42,15 @@ icon: PaintBrushMajor
 
 </Card>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Background
 
@@ -72,7 +72,7 @@ icon: PaintBrushMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -99,15 +99,15 @@ icon: PaintBrushMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Surface
 
@@ -129,7 +129,7 @@ icon: PaintBrushMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -155,15 +155,15 @@ icon: PaintBrushMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Fill
 
@@ -185,7 +185,7 @@ icon: PaintBrushMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -223,15 +223,15 @@ icon: PaintBrushMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Border
 
@@ -251,7 +251,7 @@ icon: PaintBrushMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -287,15 +287,15 @@ icon: PaintBrushMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Text
 
@@ -317,7 +317,7 @@ icon: PaintBrushMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -353,15 +353,15 @@ icon: PaintBrushMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Link
 
@@ -381,7 +381,7 @@ icon: PaintBrushMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -407,15 +407,15 @@ icon: PaintBrushMajor
 
 </Stack>
 
-<Stack gap="4">
+<Stack gap="400">
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ### Icon
 
@@ -435,7 +435,7 @@ icon: PaintBrushMajor
 
   </Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
@@ -464,11 +464,11 @@ icon: PaintBrushMajor
 
 <Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Box padding="4">
+      <Box padding="400">
 
         ## Combining color roles
 
@@ -512,11 +512,11 @@ icon: PaintBrushMajor
 
 <Card>
 
-  <Grid gap="4">
+  <Grid gap="400">
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-      <Box padding="4">
+      <Box padding="400">
 
         ## Disabled color scheme
 
@@ -558,11 +558,11 @@ icon: PaintBrushMajor
 
 <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box padding="4">
+        <Box padding="400">
 
           ## Using other colors
 

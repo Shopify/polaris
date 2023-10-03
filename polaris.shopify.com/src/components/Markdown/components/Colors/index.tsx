@@ -4,9 +4,26 @@ import {capitalize} from '../../../../utils/various';
 import {Card} from '../../../Card';
 import styles from './Colors.module.scss';
 
-const palette = require('@shopify/polaris-tokens/json/experimental-palette');
+// @ts-ignore
+import * as palette from '@shopify/polaris-tokens/colors';
 
-type ColorScale = 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+type ColorScale =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | '14'
+  | '15'
+  | '16';
 
 type ColorValue = {
   [index in ColorScale]: string;
