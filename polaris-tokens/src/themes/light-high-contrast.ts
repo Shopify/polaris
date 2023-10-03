@@ -1,4 +1,4 @@
-import * as colors from '../colors-experimental';
+import * as colors from '../colors';
 
 import {createMetaTheme, createMetaThemePartial} from './utils';
 
@@ -7,25 +7,25 @@ export const metaThemeLightHighContrastPartial = createMetaThemePartial({
     'color-text': {
       value: colors.gray[16],
     },
-    'color-text-subdued': {
+    'color-text-secondary': {
       value: colors.gray[16],
     },
-    'color-text-primary': {
+    'color-text-brand': {
       value: colors.gray[16],
     },
-    'color-icon-subdued': {
+    'color-icon-secondary': {
       value: colors.gray[14],
     },
     'color-border': {
       value: colors.gray[12],
     },
-    'color-border-input': {
+    'color-input-border': {
       value: colors.gray[14],
     },
-    'color-border-subdued': {
+    'color-border-secondary': {
       value: colors.gray[12],
     },
-    'color-bg-subdued': {
+    'color-bg-surface-secondary': {
       value: colors.gray[6],
     },
   },

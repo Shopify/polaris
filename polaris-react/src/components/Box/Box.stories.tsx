@@ -31,7 +31,7 @@ export function WithBorders() {
         padding="400"
         borderWidth="025"
         borderStyle="dashed"
-        borderColor="border-subdued"
+        borderColor="border-secondary"
       >
         <Text as="p">1px dashed border</Text>
       </Box>
@@ -109,7 +109,7 @@ export function WithOutline() {
         padding="400"
         outlineWidth="025"
         outlineStyle="dashed"
-        outlineColor="border-subdued"
+        outlineColor="border-secondary"
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>

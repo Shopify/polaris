@@ -54,7 +54,7 @@
   @include recolor-icon(var(--p-color-text-success-on-bg-fill));
 }
 
-.icon-success-strong-experimental.icon-success-strong-experimental.icon-success-strong-experimental {
+.text-success.text-success.text-success {
   @include recolor-icon(var(--p-color-text-success));
 }
 
@@ -62,7 +62,7 @@
   @include recolor-icon(var(--p-color-text-warning-on-bg-fill));
 }
 
-.icon-warning-strong-experimental.icon-warning-strong-experimental.icon-warning-strong-experimental {
+.text-warning.text-warning.text-warning {
   @include recolor-icon(var(--p-color-text-warning));
 }
 
@@ -70,7 +70,7 @@
   @include recolor-icon(var(--p-color-text-critical-on-bg-fill));
 }
 
-.icon-critical-strong-experimental.icon-critical-strong-experimental.icon-critical-strong-experimental {
+.text-critical.text-critical.text-critical {
   @include recolor-icon(var(--p-color-text-critical));
 }
 
@@ -78,11 +78,11 @@
   @include recolor-icon(var(--p-color-text-info-on-bg-fill));
 }
 
-.icon-info-strong-experimental.icon-info-strong-experimental.icon-info-strong-experimental {
+.text-info.text-info.text-info {
   @include recolor-icon(var(--p-color-text-info));
 }
 
-.icon-subdued.icon-subdued.icon-subdued {
+.icon-secondary.icon-secondary.icon-secondary {
   @include recolor-icon(var(--p-color-icon-secondary));
 }
 // stylelint-enable
