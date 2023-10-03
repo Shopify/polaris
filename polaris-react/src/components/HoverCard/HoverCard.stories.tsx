@@ -226,74 +226,77 @@ export function InTable() {
     [activeHoverCard],
   );
 
-  const renderCustomerLink = (
-    orderId: string,
-    customer: {
-      name: string;
-      phone: string;
-      email: string;
-      location: string;
-      orders: number;
-    },
-  ) => {
-    const {orderId: currentOrderId, type} = activeHoverCard;
-    const {name, phone, email, location, orders} = customer;
+  const renderCustomerLink = useCallback(
+    (
+      orderId: string,
+      customer: {
+        name: string;
+        phone: string;
+        email: string;
+        location: string;
+        orders: number;
+      },
+    ) => {
+      const {orderId: currentOrderId, type} = activeHoverCard;
+      const {name, phone, email, location, orders} = customer;
 
-    const linkMarkup = (
-      <Box as="div" minHeight="100%" padding="150">
-        <Link removeUnderline url="#">
-          {name}
-        </Link>
-      </Box>
-    );
-
-    return (
-      <HoverCard
-        snapToParent
-        toggleActive={toggleHoverCard(orderId, 'customer')}
-        active={type === 'customer' && currentOrderId === orderId}
-        activator={linkMarkup}
-        activatorWrapper="div"
-        preferredPosition="right"
-      >
-        <Box padding="4">
-          <BlockStack gap="4">
-            <BlockStack gap="0">
-              <Text as="span" variant="headingSm">
-                <Link removeUnderline>{name}</Link>
-              </Text>
-              <Text as="span" variant="bodyMd">
-                <Link url={`mailto:${email}`}>{email}</Link>
-              </Text>
-              <Text as="p" variant="bodyMd">
-                <Link url={`tel:${phone}`}>{phone}</Link>
-              </Text>
-            </BlockStack>
-            <Box width="100%">
-              <BlockStack gap="1">
-                <InlineStack wrap={false} gap="1" align="start">
-                  <Box>
-                    <Icon tone="subdued" source={LocationsMinor} />
-                  </Box>
-                  <Text tone="subdued" as="p">
-                    {location}
-                  </Text>
-                </InlineStack>
-                <InlineStack wrap={false} gap="1" align="start">
-                  <Box>
-                    <Icon tone="subdued" source={OrdersMinor} />
-                  </Box>
-                  <Text tone="subdued" as="p">
-                    {`${orders} Orders`}
-                  </Text>
-                </InlineStack>
-              </BlockStack>
-            </Box>
-          </BlockStack>
+      const linkMarkup = (
+        <Box as="div" minHeight="100%" padding="150">
+          <Link removeUnderline url="#">
+            {name}
+          </Link>
         </Box>
-      </HoverCard>
-    );
-  };
+      );
+
+      return (
+        <HoverCard
+          snapToParent
+          toggleActive={toggleHoverCard(orderId, 'customer')}
+          active={type === 'customer' && currentOrderId === orderId}
+          activator={linkMarkup}
+          activatorWrapper="div"
+          preferredPosition="right"
+        >
+          <Box padding="4">
+            <BlockStack gap="4">
+              <BlockStack gap="0">
+                <Text as="span" variant="headingSm">
+                  <Link removeUnderline>{name}</Link>
+                </Text>
+                <Text as="span" variant="bodyMd">
+                  <Link url={`mailto:${email}`}>{email}</Link>
+                </Text>
+                <Text as="p" variant="bodyMd">
+                  <Link url={`tel:${phone}`}>{phone}</Link>
+                </Text>
+              </BlockStack>
+              <Box width="100%">
+                <BlockStack gap="1">
+                  <InlineStack wrap={false} gap="1" align="start">
+                    <Box>
+                      <Icon tone="subdued" source={LocationsMinor} />
+                    </Box>
+                    <Text tone="subdued" as="p">
+                      {location}
+                    </Text>
+                  </InlineStack>
+                  <InlineStack wrap={false} gap="1" align="start">
+                    <Box>
+                      <Icon tone="subdued" source={OrdersMinor} />
+                    </Box>
+                    <Text tone="subdued" as="p">
+                      {`${orders} Orders`}
+                    </Text>
+                  </InlineStack>
+                </BlockStack>
+              </Box>
+            </BlockStack>
+          </Box>
+        </HoverCard>
+      );
+    },
+    [activeHoverCard, toggleHoverCard],
+  );
 
   const rowMarkup = orders.map(
     (
