@@ -87,7 +87,7 @@ npm install @shopify/polaris@12.0.0-beta.2
 Or, if you prefer yarn, use the following command instead:
 
 ```sh
-yarn add @shopify/polaris@beta.2
+yarn add @shopify/polaris@12.0.0-beta.2
 ```
 
 The migration guidance for upgrading from Polaris version 11 to version 12 is not yet available on our website. However, you can refer to the migration guide available in our codebase for detailed instructions if you are using the `12.0.0-beta.2` release. You can access the migration guide [here](https://github.com/Shopify/polaris/blob/next/polaris.shopify.com/content/version-guides/migrating-from-v11-to-v12.md). It provides step-by-step guidance to help you smoothly transition your codebase for the `12.0.0-beta.2` release.
