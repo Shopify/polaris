@@ -1,0 +1,12 @@
+.Foo {
+  @include legacy-polaris-v8.breakpoint-before(360px, false) {
+    display: flex;
+  }
+
+  @include legacy-polaris-v8.breakpoint-before(
+    variables.$home-sidebar-visible,
+    false
+  ) {
+    display: flex;
+  }
+}
