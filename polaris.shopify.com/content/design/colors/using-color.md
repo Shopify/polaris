@@ -1,0 +1,591 @@
+---
+title: Using color
+order: 2
+description: Color highlights important areas, communicates status, urgency, and directs attention.
+keywords:
+  - using color
+  - color use
+icon: PaintBrushMajor
+---
+
+# Color &rarr; {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Subnav />
+
+<Stack gap="800">
+
+<Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+      <Box padding="400">
+
+        ## Color relationships
+
+        While color roles define the value of each concept of UI it styles, color relationships between each one of these concepts define how color is used in the Shopify admin.
+
+      </Box>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+      ![Different parts of color used in admin identified by their usage](/images/design/colors/color-using-color-relationships@2x.png)
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Card>
+
+<Stack gap="400">
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ### Background
+
+          Background colors are used as the baseline of all UI in the admin. The admin itself has a background, and some components can also have a background if they are not built within a container.
+
+          Background colors can only have other elements of any other color except for other background colors above them. Multiple background colors can exist in the same viewport only if they exist side by side.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![The admin background color](/images/design/colors/color-using-color-background@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Do>
+      ![Background colors of the admin and of the sidenav](/images/design/colors/color-using-color-background-do@2x.png)
+
+      Background color is always used in every admin interface.
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Dont>
+      ![Background color applied to a card](/images/design/colors/color-using-color-background-dont@2x.png)
+
+      Use background color on surfaces or on individual elements.
+
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Stack>
+
+<Stack gap="400">
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ### Surface
+
+          Surface colors are the most versatile in the color system. Surface is the background color for elements with the highest level of prominence, like a card or a banner. Many elements can sit on top of a surface to create complex components and patterns.
+
+          Surface colors also come with various hierarchical levels and can be used to increase or decrease emphasis on specific areas of the UI.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![Various surfaces in the admin](/images/design/colors/color-using-color-surface@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Do>
+      ![A collection of elements using surface colors, like cards and tables](/images/design/colors/color-using-color-surface-do@2x.png)
+
+      Use surface colors for all containers, like cards, tables, banners, modals, and so on.
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Dont>
+      ![A card split in two distinct sections, with the second one using another surface color](/images/design/colors/color-using-color-surface-dont@2x.png)
+
+      Mix multiple color role surfaces in the same component. Avoid jarring color combinations when nesting components.
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Stack>
+
+<Stack gap="400">
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ### Fill
+
+          Fill is the background color for an element with a smaller surface area like a button or a badge. Fills are usually the most vibrant color in an interface. They sit on backgrounds and surfaces and sometimes sit on top of other fills.
+
+          Fills also come with their explicit text and icon colors, called `on-fill`.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![Diagram showing fill colors](/images/design/colors/color-using-color-fill@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Do>
+      ![A card with an info badge using fill colors that offers an incentive](/images/design/colors/color-using-color-fill-do@2x.png)
+
+      Use fills on smaller surface areas and on elements that pull a merchant’s attention.
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Dont>
+      ![A card using only fill colors instead of normal surface and text colors](/images/design/colors/color-using-color-fill-dont@2x.png)
+
+      Use fills on large components or as backgrounds for entire interfaces.
+
+      </Dont>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Dont>
+      ![A badge that uses a fill color as background but with a normal text color for its type, making it hard to read](/images/design/colors/color-using-color-fill-onfill-dont@2x.png)
+
+      Mix fills with text colors that are not “on-fill”. These combinations might not pass minimum contrast ratio requirements.
+
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Stack>
+
+<Stack gap="400">
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ### Border
+
+          Borders are used primarily in data tables to enhance visual structure and organization or large amounts of information. They visually separate and contain elements, and can be used to either delineate rows or define the space of an encapsulated table.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![Diagram of an inset table](/images/design/colors/color-using-color-border@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Do>
+      ![An index table](/images/design/colors/color-using-color-border-do@2x.png)
+
+      Use borders for tables and containers that look like tables to make data easier to read.
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Do>
+      ![A table inset within a card surrounded with other content](/images/design/colors/color-using-color-border-inset-do@2x.png)
+
+      Use borders when a data table is contained within a card.
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Dont>
+      ![A card with separate sections delimited with horizontal divider lines](/images/design/colors/color-using-color-border-dont@2x.png)
+
+      Use borders to delineate information. Check out grouping elements for guidance.
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Stack>
+
+<Stack gap="400">
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ### Text
+
+          Text color can be used on any text element and any icon element that accompanies text. Text colors are designed to be fully accessible in terms of contrast on their corresponding backgrounds and surfaces and should only be used in tandem with them, but can generally be used on any other background or surface if contrast is sufficient.
+
+          Text color that exists on a fill has its own `on-fill` color. This relationship is strict and `on-fill` text can only be used on its corresponding `fill` color.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![Various typefaces in the admin](/images/design/colors/color-using-color-text@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Do>
+      ![A type composition with a headline, followed by a slightly lighter subtitle and even slightly lighter text](/images/design/colors/color-using-color-text-do@2x.png)
+
+      Use text color to create visual hierarchy by using default, secondary or tertiary role colors when available.
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Dont>
+      ![A card with a surface background, but with text using an on-fill color](/images/design/colors/color-using-color-text-dont@2x.png)
+
+      Use text `on-fill` colors on anything else but its corresponding `fill` color. These combinations might not pass minimum contrast ratio requirements.
+      </Dont>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Dont>
+      ![A piece of text that says “error”, styled with the critical fill color](/images/design/colors/color-using-color-text-other-dont@2x.png)
+
+      Use any other color except for text colors for any text that is part of the UI.
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Stack>
+
+<Stack gap="400">
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ### Link
+
+          Link color is used exclusively for text links that appear in lines and paragraphs of text. Link color follows the same logic as Text color: it can only be used with its corresponding background or surface colors in the same color role, but can generally be used on any other background or surface if contrast is sufficient.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![A text with a link in a different color](/images/design/colors/color-using-color-link@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Do>
+      ![A link within a paragraph of text](/images/design/colors/color-using-color-link-do@2x.png)
+
+      Use link color for text links and text links that include icons.
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Dont>
+      ![An “Add favorite product” button with a link color](/images/design/colors/color-using-color-link-dont@2x.png)
+
+      Use link color to style text buttons. Use the appropriate color role and component instead.
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Stack>
+
+<Stack gap="400">
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ### Icon
+
+          Icon colors are used exclusively for standalone icons. These colors are tailored to meet color contrast ratios for interactive elements that do not include text. Icon colors should only be used on their corresponding background and surface colors, but can generally be used on any other background or surface if contrast is sufficient.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![A series of action icons in a table](/images/design/colors/color-using-color-icon@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Do>
+      ![Various buttons that use only icons in a text editor](/images/design/colors/color-using-color-icon-do@2x.png)
+
+      Use icon colors to style an icon that is standalone.
+
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
+
+      <Dont>
+      ![A “unfulfilled” badge with text label, all styled with the icon color](/images/design/colors/color-using-color-icon-dont@2x.png)
+
+      Use icon colors to style text, as the color contrast might not be enough. Instead, style the entire icon and text composition using the text color.
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Stack>
+
+<Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+      <Box padding="400">
+
+        ## Combining color roles
+
+        Elements with different color roles can coexist alongside each other, enhancing merchants' comprehension of complex patterns when appropriately utilized in component combinations.
+
+        In some cases, the superposition of elements with different color roles is necessary, like using a critical icon button on a default card. These combinations may require additional testing to check for proper color contrast.
+
+      </Box>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+      ![Various parts of the admin with interesting color combinations](/images/design/colors/color-using-color-combining@2x.png)
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
+
+      <Do>
+      ![Detail shot of different badges used in an order card](/images/design/colors/color-using-color-combining-do@2x.png)
+
+      Meaningful combinations of color roles can enhance a merchant’s experience.
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
+
+      <Dont>
+        ![Tabs in an index table with different badges of different colors being used in each tab label](/images/design/colors/color-using-color-combining-dont@2x.png)
+
+        Avoid creating color role combinations that look too jarring or that create visual competition between elements.
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Card>
+
+<Card>
+
+  <Grid gap="400">
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+      <Box padding="400">
+
+        ## Disabled color scheme
+
+        Some elements may require a disabled state. The color scheme for disabled elements is intentionally consistent throughout the admin interface, generally avoiding the use of distinct colors for each color role.
+
+      </Box>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+      ![A collection of components in disabled states](/images/design/colors/color-using-color-disabled@2x.png)
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
+
+      <Do>
+      ![Detail shot of disabled elements in a form](/images/design/colors/color-using-color-disabled-do@2x.png)
+
+      Use the disabled color scheme for disabled elements.
+      </Do>
+
+    </Grid.Cell>
+
+    <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
+
+      <Dont>
+        ![Semi-transparent elements in a form that blend in](/images/design/colors/color-using-color-disabled-dont@2x.png)
+
+        Use opacity or any other means to communicate disabled states.
+      </Dont>
+
+    </Grid.Cell>
+
+  </Grid>
+
+</Card>
+
+<Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ## Using other colors
+
+          The creation of new color roles is tied to the Shopify admin. Some colors available in the color palette are not yet tied to a color role. Usage of these colors is strictly reserved for illustration work.
+
+          More information about what color roles are available and their respective purposes can be found in color roles.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        <Do>
+        ![Other colors that are not attached to a color role used in an illustration](/images/design/colors/color-using-color-other-colors@2x.png)
+
+        In the case of illustrations, any color of the color palette can be used. Diagrams, however, need to respect color role usage if they represent an abstracted view of the admin.
+        </Do>
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+</Stack>
