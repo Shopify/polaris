@@ -1,11 +1,12 @@
 ---
 title: Beta access to Shopify's new design language
 description: |
-  Polaris is developing version 12 for release in September.
+  Polaris is developing version 12 for release early October.
   To help apps match Shopify's new design language, this version is available in an early beta.
   This beta will automatically update out-of-the-box/mainline Polaris components, with some additional work to update your custom components to seamlessly match Shopify's design.
   The steps below will assist you in making these updates using our tools and tokens.
-  <br/>You can access the beta now or simply wait for the stable release in September
+  <br/>You can access the beta now or simply wait for the stable release in
+  early October
   <br/>_(be sure to read '[what might break](#what-might-break-before-during-beta)' below)_.
 hideFromNav: true
 noIndex: true
@@ -23,19 +24,25 @@ order: 0
 
 ## Timeline
 
-The Polaris beta releases will continue until the stable public version 12, scheduled for the end of September.
+The Polaris beta releases will continue until the stable public version 12, scheduled for early October <sup>[\*](#footnote-1)</sup>.
 We may publish updates to the beta at key development milestones for your development and testing environments.
 Refer to the table below for the timeline of each milestone:
 
-| Milestone                                                         | Version                                     | Date             |
-| ----------------------------------------------------------------- | ------------------------------------------- | ---------------- |
-| Initial beta release, update to early adopters who want to opt in | `12.0.0-beta.0`                             | July 26          |
-| Incremental beta releases                                         | `12.0.0-beta.1`<br/>`12.0.0-beta.2`<br/>etc | July – September |
-| Polaris release with stable API, robust documentation and tooling | `12.0.0`                                    | End of September |
+| Milestone                                                         | Version                                     | Date                                      |
+| ----------------------------------------------------------------- | ------------------------------------------- | ----------------------------------------- |
+| Initial beta release, update to early adopters who want to opt in | `12.0.0-beta.0`                             | July 26                                   |
+| Incremental beta releases                                         | `12.0.0-beta.1`<br/>`12.0.0-beta.2`<br/>etc | July – September                          |
+| Polaris release with stable API, robust documentation and tooling | `12.0.0`                                    | Early October<sup>[\*](#footnote-1)</sup> |
+
+<sup id="footnote-1" style="font-size:var(--p-font-size-275); line-height:
+var(--p-font-line-height-300)">\* An earlier version of this document listed the
+release milestone as "September". We have revised this to "Early October"
+which provides us with more time to ensure stability and a clean upgrade path
+via [migrations](/tools/polaris-migrator#v12).</sup>
 
 ## What might break during beta
 
-We are **actively developing** this release and will continue to make breaking changes to the beta release until September.
+We are **actively developing** this release and will continue to make breaking changes to the beta release until October.
 Our main areas of focus, listed below, will undergo **significant changes**.
 To ensure the best possible version 12, Polaris may also make breaking changes to other areas not yet listed.
 
