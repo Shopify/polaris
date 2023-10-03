@@ -102,7 +102,7 @@ keywords:
 
         <Do>
 
-          ![](/images/design/icons/icons-overview-consistent-3@2x.png)
+          ![](/images/design/icons/icons-overview-consistent-2@2x.png)
 
           Use universally recognized icons.
 
