@@ -76,7 +76,8 @@ const replacementMap1 = {
   '--p-color-bg-inset': '--p-color-bg-fill-secondary',
   '--p-color-bg-interactive': '--p-color-bg-fill-brand',
   '--p-color-bg-interactive-selected': '--p-color-bg-surface-brand-selected',
-  '--p-color-bg-interactive-subdued-active': '--p-color-bg-surface-brand-active',
+  '--p-color-bg-interactive-subdued-active':
+    '--p-color-bg-surface-brand-active',
   '--p-color-bg-interactive-subdued-hover': '--p-color-bg-surface-brand-hover',
   '--p-color-bg-inverse-active': '--p-color-bg-fill-inverse-active',
   '--p-color-bg-inverse-hover': '--p-color-bg-fill-inverse-hover',
@@ -150,7 +151,8 @@ const replacementMap1 = {
   '--p-color-icon-critical-strong-active-experimental':
     '--p-color-text-critical-active',
   '--p-color-icon-critical-strong-experimental': '--p-color-text-critical',
-  '--p-color-icon-critical-strong-hover-experimental': '--p-color-text-critical-hover',
+  '--p-color-icon-critical-strong-hover-experimental':
+    '--p-color-text-critical-hover',
   '--p-color-icon-info-strong-experimental': '--p-color-text-info',
   '--p-color-icon-interactive-active': '--p-color-icon-emphasis-active',
   '--p-color-icon-interactive-disabled': '--p-color-icon-disabled',
