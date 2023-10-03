@@ -81,78 +81,82 @@ keywords:
 
 ## General Rules
 
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
-  <Do>
+<Stack gap='4'>
+  <InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+    <Do>
 
-    ![An archive box and a building represented in two dimensions. ](/images/design/icons/icons-creating-rules-1@2x.png)
+      ![An archive box and a building represented in two dimensions. ](/images/design/icons/icons-creating-rules-1@2x.png)
 
-    Icons are two-dimensional, and objects face forward.
+      Icons are two-dimensional, and objects face forward.
 
-  </Do>
-
-  <Dont>
-  
-    ![An archive box and a building represented with a perspective. ](/images/design/icons/icons-creating-rules-2@2x.png)
-  
-    Use perspective and 3D objects
-
-  </Dont>
-</InlineGrid>
-
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
-  <DirectiveCard status="Caution">
-
-    ![A package and a globe represented with slight hints of a third dimension.](/images/design/icons/icons-creating-rules-3@2x.png)
-
-    Subtle hints of a third dimension are acceptable when necessary for
-    conceptual clarity.
-
-  </DirectiveCard>
-
-  <Do>
-    ![A presentation board icon centered in a 20 pixel square.](/images/design/icons/icons-creating-rules-4@2x.png)
-    
-    Center icon in their container.
-  </Do>
-</InlineGrid>
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
-
-  <Do>
-    ![Three simple icons made with simple geometric shapes representing a smile, a scroll and a page](/images/design/icons/icons-creating-rules-5@2x.png)
-
-    Bold and stylized icons.
-
-  </Do>
+    </Do>
 
     <Dont>
 
-      ![Three icons made with organic shapes and small details representing a pin, a bell and a christmas tree.](/images/design/icons/icons-creating-rules-6@2x.png)
+      ![An archive box and a building represented with a perspective. ](/images/design/icons/icons-creating-rules-2@2x.png)
 
-      Use small details and organic shapes.
+      Use perspective and 3D objects
 
     </Dont>
 
-</InlineGrid>
+  </InlineGrid>
 
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+  <InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+    <DirectiveCard status="Caution">
 
-  <Do>
+      ![A package and a globe represented with slight hints of a third dimension.](/images/design/icons/icons-creating-rules-3@2x.png)
 
-    ![A shopping cart with solid speed lines behind. ](/images/design/icons/icons-creating-rules-7@2x.png)
+      Subtle hints of a third dimension are acceptable when necessary for
+      conceptual clarity.
 
-    Use a consistent visual style, stroke weight and only one color.
+    </DirectiveCard>
 
-  </Do>
+    <Do>
+      ![A presentation board icon centered in a 20 pixel square.](/images/design/icons/icons-creating-rules-4@2x.png)
 
-  <Dont>
+      Center icon in their container.
+    </Do>
 
-    ![A shopping cart with semi-transparent speed lines behind.](/images/design/icons/icons-creating-rules-8@2x.png)
+  </InlineGrid>
+  <InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
 
-    Use transparency.
+    <Do>
+      ![Three simple icons made with simple geometric shapes representing a smile, a scroll and a page](/images/design/icons/icons-creating-rules-5@2x.png)
 
-  </Dont>
+      Bold and stylized icons.
 
-</InlineGrid>
+    </Do>
+
+      <Dont>
+
+        ![Three icons made with organic shapes and small details representing a pin, a bell and a christmas tree.](/images/design/icons/icons-creating-rules-6@2x.png)
+
+        Use small details and organic shapes.
+
+      </Dont>
+
+  </InlineGrid>
+
+  <InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+
+    <Do>
+
+      ![A shopping cart with solid speed lines behind. ](/images/design/icons/icons-creating-rules-7@2x.png)
+
+      Use a consistent visual style, stroke weight and only one color.
+
+    </Do>
+
+    <Dont>
+
+      ![A shopping cart with semi-transparent speed lines behind.](/images/design/icons/icons-creating-rules-8@2x.png)
+
+      Use transparency.
+
+    </Dont>
+
+  </InlineGrid>
+</Stack>
 
 {/* Filled vs outlined */}
 
@@ -160,163 +164,170 @@ keywords:
 
 Outline icons are the default. Filled icons are reserved to navigation only.
 
-![Shopify’s admin interface with search open, showing a few results that use different icons like a person, a tag, or an inbox, to differentiate the types of results.](/images/design/icons/icons-creating-filled-vs-outline-1@2x.png)
+<Stack gap='4'>
+  ![Shopify’s admin interface with search open, showing a few results that use different icons like a person, a tag, or an inbox, to differentiate the types of results.](/images/design/icons/icons-creating-filled-vs-outline-1@2x.png)
 
-<InlineGrid gap="4" columns={{xs: '1', md: '3'}}>
+  <InlineGrid gap="4" columns={{xs: '1', md: '3'}}>
 
-  <Do>
-    ![A settings navigation menu with icons differentiating each item in the menu. All icons are filled expect for the one selected that is outlined.](/images/design/icons/icons-creating-filled-vs-outline-2@2x.png)
+    <Do>
+      ![A settings navigation menu with icons differentiating each item in the menu. All icons are filled expect for the one selected that is outlined.](/images/design/icons/icons-creating-filled-vs-outline-2@2x.png)
 
-    Use filled icons as navigation.
+      Use filled icons as navigation.
 
-  </Do>
+    </Do>
 
-  <Do>
-    ![A filled icons with a pin.](/images/design/icons/icons-creating-filled-vs-outline-3@2x.png)
+    <Do>
+      ![A filled icons with a pin.](/images/design/icons/icons-creating-filled-vs-outline-3@2x.png)
 
-    Use filled icons for semi-permanent selected states, like pinning an app.
+      Use filled icons for semi-permanent selected states, like pinning an app.
 
-  </Do>
+    </Do>
 
-  <Dont>
-    ![A filled icon within a blue badge.](/images/design/icons/icons-creating-filled-vs-outline-4@2x.png)
+    <Dont>
+      ![A filled icon within a blue badge.](/images/design/icons/icons-creating-filled-vs-outline-4@2x.png)
 
-    Use filled icons to create emphasis.
+      Use filled icons to create emphasis.
 
-  </Dont>
-</InlineGrid>
+    </Dont>
+
+  </InlineGrid>
+</Stack>
 
 ### Designing outlined icons
 
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+<Stack gap='4'>
 
-  <DirectiveCard>
+  <InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
 
-    ![An inbox icon where the outline stroke is highlighted.](/images/design/icons/icons-creating-outline-1@2x.png)
+    <DirectiveCard>
 
-    Stroke weight is 1.5px
+      ![An inbox icon where the outline stroke is highlighted.](/images/design/icons/icons-creating-outline-1@2x.png)
 
-  </DirectiveCard>
+      Stroke weight is 1.5px
 
-  <DirectiveCard>
+    </DirectiveCard>
 
-    ![An inbox icon where the alignment with the pixel grid is highlighted. ](/images/design/icons/icons-creating-outline-2@2x.png)
+    <DirectiveCard>
 
-    Since the stroke has half a pixel, one side of the stroke should always be aligned with the pixel grid.
+      ![An inbox icon where the alignment with the pixel grid is highlighted. ](/images/design/icons/icons-creating-outline-2@2x.png)
 
-  </DirectiveCard>
+      Since the stroke has half a pixel, one side of the stroke should always be aligned with the pixel grid.
 
-</InlineGrid>
+    </DirectiveCard>
 
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+  </InlineGrid>
 
-  <DirectiveCard>
+  <InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
 
-    ![A clock icon highlighting the alignment with 0.25 pixels increments.](/images/design/icons/icons-creating-outline-3@2x.png)
+    <DirectiveCard>
 
-    Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
+      ![A clock icon highlighting the alignment with 0.25 pixels increments.](/images/design/icons/icons-creating-outline-3@2x.png)
 
-  </DirectiveCard>
+      Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
 
-  <DirectiveCard>
+    </DirectiveCard>
 
-    ![A Shopping card icons with the stroke terminals highlighted.](/images/design/icons/icons-creating-outline-4@2x.png)
+    <DirectiveCard>
 
-    Terminals are round, even when a shape cuts out into another.
+      ![A Shopping card icons with the stroke terminals highlighted.](/images/design/icons/icons-creating-outline-4@2x.png)
 
-  </DirectiveCard>
+      Terminals are round, even when a shape cuts out into another.
 
-</InlineGrid>
-<InlineGrid gap="4" columns={{xs: '1', md: '3'}}>
+    </DirectiveCard>
 
-  <DirectiveCard>
+  </InlineGrid>
+  <InlineGrid gap="4" columns={{xs: '1', md: '3'}}>
 
-    ![A calendar, an inbox and a shop icon with the corner radius highlighted. 3 pixels for the calendar, 2 pixels for the inbox and 1 pixel for the inbox.](/images/design/icons/icons-creating-outline-5@2x.png)
+    <DirectiveCard>
 
-    Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded, and sharp corners are not allowed, except for intersections and cutouts.
+      ![A calendar, an inbox and a shop icon with the corner radius highlighted. 3 pixels for the calendar, 2 pixels for the inbox and 1 pixel for the inbox.](/images/design/icons/icons-creating-outline-5@2x.png)
 
-  </DirectiveCard>
+      Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded, and sharp corners are not allowed, except for intersections and cutouts.
 
-  <DirectiveCard>
+    </DirectiveCard>
 
-    ![Six outline icons with small filled object highlighted, like a credit card that is made out of outlines and an icon that is filled.](/images/design/icons/icons-creating-outline-6@2x.png)
+    <DirectiveCard>
 
-    Filled shapes can be used, only in really small objects, like a dot in an exclamation point.
+      ![Six outline icons with small filled object highlighted, like a credit card that is made out of outlines and an icon that is filled.](/images/design/icons/icons-creating-outline-6@2x.png)
 
-  </DirectiveCard>
+      Filled shapes can be used, only in really small objects, like a dot in an exclamation point.
 
-  <DirectiveCard>
+    </DirectiveCard>
 
-    ![An icons with a hand pressing a button, where the gaps between the button and the hand. ](/images/design/icons/icons-creating-outline-7@2x.png)
+    <DirectiveCard>
 
-    The minimum gap between strokes should never be less than 1px.
+      ![An icons with a hand pressing a button, where the gaps between the button and the hand. ](/images/design/icons/icons-creating-outline-7@2x.png)
 
-  </DirectiveCard>
-</InlineGrid>
+      The minimum gap between strokes should never be less than 1px.
+
+    </DirectiveCard>
+
+  </InlineGrid>
 
 ### Designing filled icons
 
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+  <InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
 
-  <DirectiveCard>
+    <DirectiveCard>
 
-    ![A filled icon overlapping an outlined icon.](/images/design/icons/icons-creating-filled-1@2x.png)
+      ![A filled icon overlapping an outlined icon.](/images/design/icons/icons-creating-filled-1@2x.png)
 
-    Filled icons should align closely to their outline pairs. They don’t need to be a pixel perfect match, but they must have a similar visual weight, and the transition from one to the other must feel smooth.
+      Filled icons should align closely to their outline pairs. They don’t need to be a pixel perfect match, but they must have a similar visual weight, and the transition from one to the other must feel smooth.
 
-  </DirectiveCard>
+    </DirectiveCard>
 
-  <DirectiveCard>
+    <DirectiveCard>
 
-    ![A tag, a person and a flower icons made of simple shapes.](/images/design/icons/icons-creating-filled-2@2x.png)
+      ![A tag, a person and a flower icons made of simple shapes.](/images/design/icons/icons-creating-filled-2@2x.png)
 
-    Icons are made out of contiguous shapes. Ideally one, but it’s possible to go up to three, when required for clarity.
+      Icons are made out of contiguous shapes. Ideally one, but it’s possible to go up to three, when required for clarity.
 
-  </DirectiveCard>
+    </DirectiveCard>
 
-</InlineGrid>
+  </InlineGrid>
 
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+  <InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
 
-  <DirectiveCard>
+    <DirectiveCard>
 
-    ![Two icons with the stroke weight being highlighted.](/images/design/icons/icons-creating-filled-3@2x.png)
+      ![Two icons with the stroke weight being highlighted.](/images/design/icons/icons-creating-filled-3@2x.png)
 
 
-    Stroke weight is 1.5 px, but is reduced to 1.25 px when used inside a shape as a cut-out. Shapes must align with the pixel grid.
+      Stroke weight is 1.5 px, but is reduced to 1.25 px when used inside a shape as a cut-out. Shapes must align with the pixel grid.
 
-    Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
+      Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
 
-  </DirectiveCard>
+    </DirectiveCard>
 
-  <DirectiveCard>
+    <DirectiveCard>
 
-    ![A shopping cart icon with the stroke terminals being highlighted, and a wallet icon with cutouts and intersection angles highlighted.](/images/design/icons/icons-creating-filled-4@2x.png)
+      ![A shopping cart icon with the stroke terminals being highlighted, and a wallet icon with cutouts and intersection angles highlighted.](/images/design/icons/icons-creating-filled-4@2x.png)
 
-    Terminals are round.
+      Terminals are round.
 
-    Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded, and sharp corners are not allowed, except for intersections and cutouts.
+      Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded, and sharp corners are not allowed, except for intersections and cutouts.
 
-  </DirectiveCard>
+    </DirectiveCard>
 
-</InlineGrid>
+  </InlineGrid>
 
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+  <InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
 
-  <DirectiveCard>
+    <DirectiveCard>
 
-    ![Two arrow icons with the stroke being highlighted.](/images/design/icons/icons-creating-filled-5@2x.png)
+      ![Two arrow icons with the stroke being highlighted.](/images/design/icons/icons-creating-filled-5@2x.png)
 
-    If it’s impossible to fill the outline icon, a 2px stroke can be used as a filled version.
+      If it’s impossible to fill the outline icon, a 2px stroke can be used as a filled version.
 
-  </DirectiveCard>
+    </DirectiveCard>
 
-  <DirectiveCard>
+    <DirectiveCard>
 
-    ![An icon with a person and a key, where the gap between the two elements is highlighted.](/images/design/icons/icons-creating-filled-6@2x.png)
+      ![An icon with a person and a key, where the gap between the two elements is highlighted.](/images/design/icons/icons-creating-filled-6@2x.png)
 
-    The minimum gap between strokes should never be less than 1px.
+      The minimum gap between strokes should never be less than 1px.
 
-  </DirectiveCard>
+    </DirectiveCard>
 
-</InlineGrid>
+  </InlineGrid>
+</Stack>
