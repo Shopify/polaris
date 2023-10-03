@@ -28,6 +28,7 @@ keywords:
 <Subnav />
 
 <Stack gap='4'>
+## Some titlee
 <Grid gap='4'>
   <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
@@ -37,7 +38,7 @@ keywords:
 
   <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-    ![](/images/design/icons/icons-using-1@2x.png)
+    ![Shopify’s admin main navigation, where each item has it’s own icon.](/images/design/icons/icons-using-1@2x.png)
 
   </Grid.Cell>
 
@@ -58,7 +59,7 @@ keywords:
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
       <Do>
-        ![](/images/design/icons/icons-using-2@2x.png)
+        ![A card with customer information, with a pencil icon representing the edit action, and a clipboard icon representing the copy to clipboard action. ](/images/design/icons/icons-using-2@2x.png)
 
         Use icons to replace text for common actions with universally understood icons.
 
@@ -69,7 +70,7 @@ keywords:
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
       <Dont>
-        ![](/images/design/icons/icons-using-2@2x.png)
+        ![ A series of abstract icon buttons with no labels.](/images/design/icons/icons-using-2@2x.png)
 
         Use ambiguous icons without a text label, as that can lead to confusion and misinterpretation.
 
@@ -98,7 +99,7 @@ keywords:
       <Grid gap='4'>
         <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
            <Do>
-              ![](/images/design/icons/icons-using-4@2x.png)
+              ![An inbox icon representing orders in the navigation menu, in the search results and in an information card.](/images/design/icons/icons-using-4@2x.png)
 
               Use icons consistently once a meaning is assigned to them.
 
@@ -106,7 +107,7 @@ keywords:
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
           <Do>
-            ![](/images/design/icons/icons-using-5@2x.png)
+            ![An inbox icon next to a number, representing an order number.](/images/design/icons/icons-using-5@2x.png)
 
             Use icons to identify common objects, to improve the overall clarity of the interface.
 
@@ -115,7 +116,7 @@ keywords:
 
         <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 12, xl: 12}}>
           <Dont>
-            ![](/images/design/icons/icons-using-6@2x.png)
+            ![A series of inbox icons in a table with all the orders.](/images/design/icons/icons-using-6@2x.png)
 
             Overuse icons. Redundant icons lead to visual clutter and increased cognitive load.
 
@@ -145,7 +146,7 @@ keywords:
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
       <Do>
-        ![](/images/design/icons/icons-using-7@2x.png)
+        ![An icon next to text, highlighting the vertical alignment between the two elements.](/images/design/icons/icons-using-7@2x.png)
 
         Align icons vertically with accompanying typography.
 
@@ -156,7 +157,7 @@ keywords:
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
       <Dont>
-        ![](/images/design/icons/icons-using-8@2x.png)
+        ![Three oversized icons next to text.](/images/design/icons/icons-using-8@2x.png)
 
         Resize icons. Resizing them will distort the relationship that was established with typography.
 
