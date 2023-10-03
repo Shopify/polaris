@@ -1,11 +1,8 @@
 import {size} from '../../size';
-import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 
 export type FontFamilyPrefix = 'font-family';
 type FontFamilyAlias = 'sans' | 'mono';
-
-type FontSizeScaleExperimental = Experimental<'70' | '80'>;
 
 export type FontSizePrefix = 'font-size';
 export type FontSizeScale =
@@ -18,14 +15,7 @@ export type FontSizeScale =
   | '600'
   | '750'
   | '900'
-  | '1000'
-  | '75'
-  | '100'
-  | '200'
-  | '700'
-  | FontSizeScaleExperimental;
-
-type FontLineHeightScaleExperimental = Experimental<'075'>;
+  | '1000';
 
 export type FontLineHeightPrefix = 'font-line-height';
 export type FontLineHeightScale =
@@ -36,15 +26,7 @@ export type FontLineHeightScale =
   | '700'
   | '800'
   | '1000'
-  | '1200'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | '7'
-  | FontLineHeightScaleExperimental;
+  | '1200';
 
 export type FontLetterSpacingPrefix = 'font-letter-spacing';
 export type FontLetterSpacingAlias = 'densest' | 'denser' | 'dense' | 'normal';
@@ -111,24 +93,6 @@ export const font: {
   'font-size-1000': {
     value: size[1000],
   },
-  'font-size-70-experimental': {
-    value: '11px',
-  },
-  'font-size-75': {
-    value: '12px',
-  },
-  'font-size-80-experimental': {
-    value: '13px',
-  },
-  'font-size-100': {
-    value: '14px',
-  },
-  'font-size-200': {
-    value: '16px',
-  },
-  'font-size-700': {
-    value: '40px',
-  },
   'font-weight-regular': {
     value: '450',
   },
@@ -176,29 +140,5 @@ export const font: {
   },
   'font-line-height-1200': {
     value: size[1200],
-  },
-  'font-line-height-075-experimental': {
-    value: '12px',
-  },
-  'font-line-height-1': {
-    value: '16px',
-  },
-  'font-line-height-2': {
-    value: '20px',
-  },
-  'font-line-height-3': {
-    value: '24px',
-  },
-  'font-line-height-4': {
-    value: '28px',
-  },
-  'font-line-height-5': {
-    value: '32px',
-  },
-  'font-line-height-6': {
-    value: '40px',
-  },
-  'font-line-height-7': {
-    value: '48px',
   },
 };

@@ -139,7 +139,7 @@ export class StickyManager {
         parseInt(
           // Important: This will not update when the active theme changes.
           // Update this to `useTheme` once converted to a function component.
-          themeDefault.space['space-5'],
+          themeDefault.space['space-500'],
           10,
         )
       : this.getOffset(stickyNode);
