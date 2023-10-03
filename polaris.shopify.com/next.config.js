@@ -144,6 +144,7 @@ const nextConfig = {
         destination: '/coming-soon/view-transitions',
         permanent: false,
       },
+      ...whatsNew,
       ...actions,
       ...deprecated,
       ...feedbackIndicators,
@@ -163,6 +164,14 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+
+const whatsNew = [
+  {
+    source: '/new-design-language',
+    destination: '/whats-new/version-12',
+    permanent: false,
+  },
+];
 
 const actions = [
   {

@@ -139,7 +139,7 @@ export function All() {
               Size: {sizeLabel}
             </Text>
             <BlockStack gap="200">
-              <Text as="h2" variant="headingXs">
+              <Text as="h2" variant="headingSm">
                 Tone only
               </Text>
               <InlineStack gap="200">
@@ -155,7 +155,7 @@ export function All() {
               </InlineStack>
             </BlockStack>
             <BlockStack gap="200">
-              <Text as="h2" variant="headingXs">
+              <Text as="h2" variant="headingSm">
                 Tone with progress
               </Text>
               {progressEntries.map(([progress]) => (
@@ -176,7 +176,7 @@ export function All() {
             {/* Remove `size` condition when micro icons are available */}
             {size === 'large' && (
               <BlockStack gap="200">
-                <Text as="h2" variant="headingXs">
+                <Text as="h2" variant="headingSm">
                   Tone with icon
                 </Text>
                 <InlineStack gap="200">
@@ -195,7 +195,7 @@ export function All() {
             )}
             {/* TODO: Re-enable the following examples when designs are available (post se23) */}
             {/* <BlockStack gap="200">
-              <Text as="h2" variant="headingXs">
+              <Text as="h2" variant="headingSm">
                 Tone with icon only
               </Text>
               <InlineStack gap="200">

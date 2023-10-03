@@ -390,8 +390,8 @@ export function WithScrollableLazyLoadedList() {
                 width: '231px',
                 height: '262px',
                 padding: 'var(--p-space-200) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleScrolledToBottom}
             >
@@ -600,7 +600,7 @@ export function WithSearchableListbox() {
   const activator = (
     <div
       style={{
-        fontSize: 'var(--p-font-size-300)',
+        fontSize: 'var(--p-font-size-500)',
         color: 'var(--p-color-text)',
         borderBottom: '1px dashed var(--p-color-border)',
       }}
@@ -657,7 +657,7 @@ export function WithSearchableListbox() {
     <Listbox.Action value={actionValue}>
       <span
         style={{
-          color: 'var(--p-color-text-subdued)',
+          color: 'var(--p-color-text-secondary)',
         }}
       >
         Show all 111 segments
@@ -730,8 +730,8 @@ export function WithSearchableListbox() {
                 width: '310px',
                 height: '262px',
                 padding: 'var(--p-space-200) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >

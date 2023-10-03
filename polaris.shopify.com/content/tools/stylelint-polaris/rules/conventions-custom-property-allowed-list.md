@@ -29,7 +29,7 @@ Flags declaration property values using `--p-*` that are not valid Polaris token
 
 ```diff
 // Do
-+ font-size: var(--p-font-size-200);
++ font-size: var(--p-font-size-400);
 // Don't
 - font-size: var(--p-fontsize-200);
 ```
@@ -38,7 +38,7 @@ Flags declaration property values using private `--pc-*` tokens.
 
 ```diff
 // Do
-+ background: var(--p-color-bg-inset-strong);
++ background: var(--p-color-bg-fill-inverse);
 // Don't
 - background: var(--pc-button-color-depressed);
 ```

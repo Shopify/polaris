@@ -433,7 +433,7 @@ export const color: {
     value: colorsExperimental.gray[4],
   },
   'color-bg-surface-selected': {
-    value: colorsExperimental.gray[3],
+    value: colorsExperimental.gray[6],
   },
   'color-bg-fill-success': {
     value: colorsExperimental.green[12],
@@ -727,7 +727,7 @@ export const color: {
     value: colorsExperimental.gray[1],
   },
   'color-bg': {
-    value: colorsExperimental.gray[1],
+    value: colorsExperimental.gray[6],
   },
   'color-bg-primary-active': {
     value: colorsExperimental.gray[16],

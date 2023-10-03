@@ -8,9 +8,6 @@ export default {
 
 export const Variants = () => (
   <LegacyStack vertical>
-    <Text as="h1" variant="heading4xl">
-      Text with Heading4xl variant
-    </Text>
     <Text as="h2" variant="heading3xl">
       Text with Heading3xl variant
     </Text>
@@ -28,9 +25,6 @@ export const Variants = () => (
     </Text>
     <Text as="h6" variant="headingSm">
       Text with HeadingSm variant
-    </Text>
-    <Text as="h6" variant="headingXs">
-      Text with HeadingXs variant
     </Text>
     <Text as="p" variant="bodyLg">
       Text with BodyLg variant

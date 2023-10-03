@@ -53,15 +53,15 @@ $bulk-actions-button-stacking-order: (
   width: auto;
   justify-content: flex-start;
   padding: var(--p-space-300);
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
   border-radius: var(--p-border-radius-200);
-  box-shadow: var(--p-shadow-md), var(--p-shadow-xl);
+  box-shadow: var(--p-shadow-300), var(--p-shadow-500);
   max-width: 100%;
   pointer-events: auto;
 
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-md),
-    $borderRadius: var(--p-border-radius-3)
+    $boxShadow: var(--p-shadow-300),
+    $borderRadius: var(--p-border-radius-300)
   );
 
   @media #{$p-breakpoints-sm-down} {
@@ -89,31 +89,30 @@ $bulk-actions-button-stacking-order: (
 
   button {
     display: flex;
-    background-color: var(--p-color-bg-strong);
+    background-color: var(--p-color-bg-fill-tertiary);
     box-shadow: none;
 
     &:hover {
-      background-color: var(--p-color-bg-strong-hover);
+      background-color: var(--p-color-bg-fill-tertiary-hover);
       box-shadow: none;
     }
 
     &:focus-visible,
     &:active {
-      background-color: var(--p-color-bg-strong-active);
+      background-color: var(--p-color-bg-fill-tertiary-active);
     }
 
     // stylelint-disable-next-line selector-max-specificity -- Bulk actions button override
     &:focus-visible:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- override focus ring */
       @include no-focus-ring;
-      outline: var(--p-border-width-2) solid
-        var(--p-color-border-interactive-focus);
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-050);
     }
 
     // stylelint-disable-next-line selector-no-qualifying-type -- Bulk actions button override
     &[aria-disabled='true'] {
-      background-color: var(--p-color-bg-transparent-disabled-experimental);
+      background-color: var(--p-color-bg-fill-disabled);
     }
   }
 
@@ -123,7 +122,7 @@ $bulk-actions-button-stacking-order: (
     // stylelint-disable-next-line -- Bulk actions button override
     &:focus-visible,
     &:active {
-      box-shadow: var(--p-shadow-inset-md);
+      box-shadow: var(--p-shadow-inset-200);
     }
   }
 }

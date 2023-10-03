@@ -9,7 +9,7 @@
   top: $top-bar-height;
   left: 0;
   right: 0;
-  box-shadow: var(--p-shadow-2xl);
+  box-shadow: var(--p-shadow-600);
   overflow: hidden;
 
   @media #{$p-breakpoints-sm-up} {
@@ -26,7 +26,7 @@
 }
 
 .SearchContent {
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-surface);
 }
 
 .visible {

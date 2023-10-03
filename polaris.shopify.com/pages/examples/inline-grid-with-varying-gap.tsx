@@ -25,7 +25,7 @@ const SpacingBackground = ({
   return (
     <div
       style={{
-        background: 'var(--p-color-bg-success-subdued)',
+        background: 'var(--p-color-bg-surface-success)',
         width,
         height: 'auto',
       }}

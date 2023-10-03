@@ -20,7 +20,7 @@ import RulePostamble from '../_postamble.md';
 // Do
 + <Text variant="headingXs" as="p" />
 // Do
-+ font-size: var(--p-font-size-75);
++ font-size: var(--p-font-size-300);
 // Don't
 - font-size: font-size('caption');
 ```

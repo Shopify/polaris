@@ -347,7 +347,7 @@ export function WithSearchableListbox() {
         position: 'sticky',
         zIndex: 'var(--p-z-index-12)',
         width: '100%',
-        background: 'var(--p-color-bg)',
+        background: 'var(--p-color-bg-surface)',
       }}
     >
       <StopPropagation>
@@ -390,7 +390,7 @@ export function WithSearchableListbox() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-color-text-interactive)'}}>
+      <span style={{color: 'var(--p-color-text-emphasis)'}}>
         Show all 111 segments
       </span>
     </Listbox.Action>
@@ -470,7 +470,7 @@ export function WithSearchableListbox() {
                 marginBottom: 'var(--p-space-200)',
               }}
             >
-              <Text as="h3" variant="headingXs" tone="subdued">
+              <Text as="h3" variant="headingSm" tone="subdued">
                 Action
               </Text>
               <Button

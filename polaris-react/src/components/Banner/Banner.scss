@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .Banner {
-  background-color: var(--p-color-bg);
+  background-color: var(--p-color-bg-surface);
   position: relative;
   display: flex;
 
@@ -10,13 +10,12 @@
   }
 
   &.keyFocused {
-    outline: var(--p-border-width-050) solid
-      var(--p-color-border-interactive-focus);
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   }
 }
 
 .withinContentContainer {
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
 
   + .Banner {
     margin-top: var(--p-space-200);
@@ -25,14 +24,14 @@
 
 .withinPage {
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-sm),
-    $borderRadius: var(--p-border-radius-0-experimental)
+    $boxShadow: var(--p-shadow-200),
+    $borderRadius: var(--p-border-radius-0)
   );
 
   @media #{$p-breakpoints-sm-up} {
     @include shadow-bevel(
-      $boxShadow: var(--p-shadow-sm),
-      $borderRadius: var(--p-border-radius-3)
+      $boxShadow: var(--p-shadow-200),
+      $borderRadius: var(--p-border-radius-300)
     );
   }
 
@@ -56,7 +55,7 @@
 }
 
 .icon-success-strong-experimental.icon-success-strong-experimental.icon-success-strong-experimental {
-  @include recolor-icon(var(--p-color-icon-success-strong-experimental));
+  @include recolor-icon(var(--p-color-text-success));
 }
 
 .text-warning-on-bg-fill.text-warning-on-bg-fill.text-warning-on-bg-fill {
@@ -64,7 +63,7 @@
 }
 
 .icon-warning-strong-experimental.icon-warning-strong-experimental.icon-warning-strong-experimental {
-  @include recolor-icon(var(--p-color-icon-warning-strong-experimental));
+  @include recolor-icon(var(--p-color-text-warning));
 }
 
 .text-critical-on-bg-fill.text-critical-on-bg-fill.text-critical-on-bg-fill {
@@ -72,7 +71,7 @@
 }
 
 .icon-critical-strong-experimental.icon-critical-strong-experimental.icon-critical-strong-experimental {
-  @include recolor-icon(var(--p-color-icon-critical-strong-experimental));
+  @include recolor-icon(var(--p-color-text-critical));
 }
 
 .text-info-on-bg-fill.text-info-on-bg-fill.text-info-on-bg-fill {
@@ -80,10 +79,10 @@
 }
 
 .icon-info-strong-experimental.icon-info-strong-experimental.icon-info-strong-experimental {
-  @include recolor-icon(var(--p-color-icon-info-strong-experimental));
+  @include recolor-icon(var(--p-color-text-info));
 }
 
 .icon-subdued.icon-subdued.icon-subdued {
-  @include recolor-icon(var(--p-color-icon-subdued));
+  @include recolor-icon(var(--p-color-icon-secondary));
 }
 // stylelint-enable

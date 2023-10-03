@@ -11,8 +11,8 @@ $vertical-motion-offset: -5px;
   margin: $visible-portion-of-arrow var(--p-space-200) var(--p-space-400);
   will-change: left, top;
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-md),
-    $borderRadius: var(--p-border-radius-3),
+    $boxShadow: var(--p-shadow-300),
+    $borderRadius: var(--p-border-radius-300),
     $zIndex: 2
   );
 }
@@ -58,7 +58,7 @@ $vertical-motion-offset: -5px;
 .ContentContainer {
   position: relative;
   overflow: hidden;
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
   border-radius: var(--p-space-300);
 
   /* Prevent Scrollable's box shadows overflowing the rounded corners of this
@@ -104,7 +104,7 @@ $vertical-motion-offset: -5px;
 }
 
 .Pane-subdued {
-  background-color: var(--p-color-bg-subdued);
+  background-color: var(--p-color-bg-surface-secondary);
 }
 
 .Pane-captureOverscroll {
@@ -113,7 +113,7 @@ $vertical-motion-offset: -5px;
 
 .Section {
   + .Section {
-    border-top: var(--p-border-width-025) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
   }
 }
 

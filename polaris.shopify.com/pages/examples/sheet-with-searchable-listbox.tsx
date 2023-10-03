@@ -196,7 +196,7 @@ function SheetWithSearchableListboxExample() {
         position: 'sticky',
         zIndex: 'var(--p-z-index-12)',
         width: '100%',
-        background: 'var(--p-color-bg)',
+        background: 'var(--p-color-bg-surface)',
       }}
     >
       <StopPropagation>
@@ -239,7 +239,7 @@ function SheetWithSearchableListboxExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-color-text-interactive)'}}>
+      <span style={{color: 'var(--p-color-text-emphasis)'}}>
         Show all 111 segments
       </span>
     </Listbox.Action>
@@ -319,7 +319,7 @@ function SheetWithSearchableListboxExample() {
                 marginBottom: 'var(--p-space-200)',
               }}
             >
-              <Text variant="headingXs" as="h3" tone="subdued">
+              <Text variant="headingSm" as="h3" tone="subdued">
                 Action
               </Text>
               <Button

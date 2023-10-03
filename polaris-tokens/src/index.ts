@@ -18,6 +18,8 @@ export type {
   BorderTokenGroup,
   BorderTokenName,
   BorderRadiusScale,
+  BorderRadiusAlias,
+  BorderRadiusAliasOrScale,
   BorderWidthScale,
 } from './themes/base/border';
 
@@ -61,6 +63,7 @@ export type {
   ShadowTokenGroup,
   ShadowTokenName,
   ShadowAlias,
+  ShadowAliasOrScale,
 } from './themes/base/shadow';
 
 export type {

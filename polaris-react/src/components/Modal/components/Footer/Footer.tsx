@@ -35,7 +35,7 @@ export function Footer({
     <InlineStack gap="400" blockAlign="center">
       <Box
         borderColor="border"
-        borderBlockStartWidth="1"
+        borderBlockStartWidth="025"
         padding="400"
         width="100%"
       >

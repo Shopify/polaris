@@ -385,7 +385,7 @@ export function WithSearch() {
     <Listbox.Action value={actionValue}>
       <span
         style={{
-          color: 'var(--p-color-text-subdued)',
+          color: 'var(--p-color-text-secondary)',
         }}
       >
         Show all 111 segments
@@ -448,8 +448,8 @@ export function WithSearch() {
             position: 'relative',
             height: '262px',
             padding: 'var(--p-space-200) 0',
-            borderBottomLeftRadius: 'var(--p-border-radius-2)',
-            borderBottomRightRadius: 'var(--p-border-radius-2)',
+            borderBottomLeftRadius: 'var(--p-border-radius-200)',
+            borderBottomRightRadius: 'var(--p-border-radius-200)',
           }}
           onScrolledToBottom={handleLazyLoadSegments}
         >

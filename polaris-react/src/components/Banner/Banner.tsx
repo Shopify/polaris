@@ -258,7 +258,7 @@ export function InlineIconBanner({
   useEventListener('resize', handleResize);
 
   return (
-    <Box width="100%" padding="300" borderRadius="3">
+    <Box width="100%" padding="300" borderRadius="300">
       <InlineStack align="space-between" blockAlign={blockAlign} wrap={false}>
         <Box width="100%">
           <InlineStack gap="200" wrap={false} blockAlign={blockAlign}>
@@ -266,7 +266,7 @@ export function InlineIconBanner({
               <div ref={iconNode}>
                 <Box
                   background={backgroundColor}
-                  borderRadius="2"
+                  borderRadius="200"
                   padding="100"
                 >
                   {bannerIcon}
@@ -301,7 +301,7 @@ export function WithinContentContainerBanner({
       width="100%"
       background={backgroundColor}
       padding="200"
-      borderRadius="2"
+      borderRadius="200"
       color={textColor}
     >
       <InlineStack
