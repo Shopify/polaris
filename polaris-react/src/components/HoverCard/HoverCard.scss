@@ -3,18 +3,20 @@
 $vertical-motion-offset: -5px;
 
 .HoverCard {
+  background: var(--p-color-bg-surface);
   max-width: calc(100vw - var(--p-space-8));
   margin: var(--p-space-1) var(--p-space-2) var(--p-space-4);
   box-shadow: var(--p-shadow-xl);
   border-radius: var(--p-border-radius-2);
   will-change: left, right, top;
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-md),
+    $borderRadius: var(--p-border-radius-3),
+    $zIndex: 2
+  );
 
-  #{$se23} & {
-    @include shadow-bevel(
-      $boxShadow: var(--p-shadow-md),
-      $borderRadius: var(--p-border-radius-3),
-      $zIndex: 2
-    );
+  &.snapToParent {
+    margin: 0;
   }
 }
 
@@ -47,6 +49,10 @@ $vertical-motion-offset: -5px;
 .ActivatorWrapper {
   display: block;
   width: fit-content;
+
+  &.snapToParent {
+    width: 100%;
+  }
 }
 
 .ContentContainer {
