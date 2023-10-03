@@ -69,7 +69,7 @@ It's quick to update from v10 to v11 with our [migrator tool](https://polaris.sh
 To install the v12 beta version that **does not require migrations** run the following command:
 
 ```sh
-npm install @shopify/polaris@beta.0
+npm install @shopify/polaris@12.0.0-beta.0
 ```
 
 Or, if you prefer yarn, use the following command instead:
