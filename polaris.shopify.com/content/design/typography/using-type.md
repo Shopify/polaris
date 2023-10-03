@@ -152,7 +152,7 @@ Text that is underlined can serve two purposes: link to other pages, or offer ad
   </DirectiveCard>
 </InlineGrid>
 
-### List
+### Lists
 
 List elements are introduced with bullets, or more preferably, with icons that are related to the content that they introduce.
 
@@ -172,3 +172,70 @@ List elements are introduced with bullets, or more preferably, with icons that a
 
   </Do>
 </InlineGrid>
+
+### Tabular numbers
+
+Tabular numbers are a feature that equalizes the widths of all numbers in type to make lists of numbers align with each other vertically.
+The Shopify admin uses tabular numbers everywhere currency or money amounts are presented.
+
+<Stack gap='2'>
+  <InlineGrid gap='2' columns={{xs: '1', md: '2'}}>
+    <Do>
+
+      ![An index table showing the inventory of multiple items in several rows]()
+
+      Use tabular for numbers that repeat in tables to increase their scannability
+
+    </Do>
+
+    <Do>
+      ![Larger currency number in a customer detail page]()
+
+      Use tabular numbers for all currency amounts, this makes them easily discernible and visually constant everywhere in the admin.
+
+    </Do>
+
+  </InlineGrid>
+  <InlineGrid gap='2' columns={{xs: '1', md: '2'}}>
+    <DirectiveCard status='Caution'>
+
+      ![A card that shows the total number of orders and total spend of a customer]()
+
+      For larger numbers, like in the case of the plans page or any promotional or incentive visual where numbers are larger than the rest of the content, you can forgo tabular numbers.
+
+    </DirectiveCard>
+
+    <Dont>
+      ![An index table showing the value of several orders in a row, but the numbers are monospaced]()
+
+      Don’t use mono in lieu of tabular numbers to achieve a tabular number look.
+
+    </Dont>
+
+  </InlineGrid>
+</Stack>
+
+## Icons and symbols
+
+In Polaris, type and icons are part of the same family. When used with type, icons inherit the color of the copy they are tied to.
+
+![A collection of components using icons and symbols close together, in the same shape or containers]()
+
+Icons and symbols align with type when used outside of a component, and use the same text color as the accompanying text.
+
+<InlineGrid gap='2' columns={{xs: '1', md: '2'}}>
+    <Do>
+      ![A badge using a micro icon]()
+
+      Use micro icons for small body text, like in smaller badges. Use regular icons everywhere else.
+
+    </Do>
+    <DirectiveCard status='Caution'>
+
+      ![A spot icon presenting an empty state for the search feature]()
+
+      Spot icons are not used in-line with type, nor are they considered to be part of typography.
+
+    </DirectiveCard>
+
+  </InlineGrid>
