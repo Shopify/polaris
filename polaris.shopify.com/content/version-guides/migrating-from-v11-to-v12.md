@@ -39,7 +39,7 @@ order: 1
 
 `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`
 
-**IndexTable.Row**
+### IndexTable.Row
 
 - Replace `status` with `tone`
 
