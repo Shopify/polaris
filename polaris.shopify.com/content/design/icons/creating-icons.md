@@ -1,23 +1,33 @@
 ---
 title: Creating Icons
 description: Icons enhance an experience by providing intuitive and efficient navigation, conveying information concisely, and making it more visually appealing.
+icon: EditMinor
 keywords:
-  - shopify icons
-  - icon sets
-  - icon designs
-  - icon guidelines
-  - icon standards
+  - icons
+  - icon design
+  - user interface design
+  - visual navigation
+  - consistent icon style
+  - universally recognized symbols
+  - icon creation
+  - icon layout
+  - 2d icons
+  - icon stroke weight
+  - filled icons
+  - outlined icons
+  - icon navigation
   - iconography
-  - visual helpers
-  - minor icons
-  - major icons
-  - inline icons
-  - in-line icons
-  - main navigation icons
-  - main nav icons
-  - icons in nav
-  - icons in main nav
-  - icon colors
+  - icon visual weight
+  - icon design guidelines
+  - icon use in interface
+  - icon and typography
+  - icon size and weight
+  - icon clarity
+  - icon meaning
+  - icon aesthetics
+  - icon functionality
+  - icon grid alignment
+  - icon visual harmony.
 ---
 
 # {frontmatter.title}
@@ -31,7 +41,7 @@ keywords:
   ## Icon layout
 
   <InlineGrid gap="4" columns="2">
-    <DirectiveCard status="Tip">
+    <DirectiveCard>
 
       ![](/images/design/icons/icons-creating-layout-1@2x.png)
 
@@ -39,7 +49,7 @@ keywords:
       confined within the 14 x 14 px.
 
     </DirectiveCard>
-    <DirectiveCard status="Tip">
+    <DirectiveCard>
 
       ![](/images/design/icons/icons-creating-layout-2@2x.png)
 
@@ -56,14 +66,14 @@ keywords:
   ## Keylines
 
   <InlineGrid gap="4" columns='2'>
-    <DirectiveCard status="Tip">
+    <DirectiveCard>
 
       ![](/images/design/icons/icons-creating-keylines-1@2x.png)
 
       The overall shape of an icon can vary from a circle to a square, or from a tall rectangle to a wide one. So all icons have the same visual weight, always start with the following keylines.
 
     </DirectiveCard>
-    <DirectiveCard status="Tip">
+    <DirectiveCard>
 
       ![](/images/design/icons/icons-creating-keylines-2@2x.png)
 
@@ -95,7 +105,7 @@ keywords:
     
       ![](/images/design/icons/icons-creating-rules-2@2x.png)
     
-      Icons are two-dimensional, and objects face forward.
+      Use perspective and 3D objects
 
     </Dont>
 
@@ -177,14 +187,14 @@ keywords:
     </Grid.Cell>
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 8, lg: 8, xl: 8}}>
 
-      ![](/images/design/icons/icons-creating-filled-1@2x.png)
+      ![](/images/design/icons/icons-creating-filled-vs-outline-1@2x.png)
 
     </Grid.Cell>
 
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <Do>
-        ![](/images/design/icons/icons-creating-filled-2@2x.png)
+        ![](/images/design/icons/icons-creating-filled-vs-outline-2@2x.png)
 
         Use filled icons as navigation.
 
@@ -195,7 +205,7 @@ keywords:
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 6, xl: 6}}>
 
       <Do>
-        ![](/images/design/icons/icons-creating-filled-3@2x.png)
+        ![](/images/design/icons/icons-creating-filled-vs-outline-3@2x.png)
 
         Use filled icons for semi-permanent selected states, like pinning an app.
 
@@ -206,7 +216,7 @@ keywords:
     <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 6, xl: 6}}>
 
       <Dont>
-        ![](/images/design/icons/icons-creating-filled-4@2x.png)
+        ![](/images/design/icons/icons-creating-filled-vs-outline-4@2x.png)
 
         Use filled icons to create emphasis.
 
@@ -315,7 +325,7 @@ keywords:
 
       <DirectiveCard>
 
-        ![](/images/design/icons/icons-creating-outline-1@2x.png)
+        ![](/images/design/icons/icons-creating-filled-1@2x.png)
 
         Filled icons should align closely to their outline pairs. They don’t need to be a pixel perfect match, but they must have a similar visual weight, and the transition from one to the other must feel smooth.
 
@@ -330,7 +340,7 @@ keywords:
 
         ![](/images/design/icons/icons-creating-filled-2@2x.png)
 
-        Filled icons should align closely to their outline pairs. They don’t need to be a pixel perfect match, but the transition from one to the other must feel smooth.
+        Icons are made out of contiguous shapes. Ideally one, but it’s possible to go up to three, when required for clarity.
 
       </DirectiveCard>
 
