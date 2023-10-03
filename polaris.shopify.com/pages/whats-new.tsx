@@ -55,7 +55,7 @@ export const getStaticProps: GetStaticProps<
   posts.unshift({
     title: 'Shopify Polaris v12 beta',
     description:
-      'You can access the beta now or simply wait for the stable release in September.',
+      'You can access the beta now or simply wait for the stable release in early October.',
     slug: '/new-design-language',
     imageUrl: '/images/updates/uplift-beta@2x.png',
   });
