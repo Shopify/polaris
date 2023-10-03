@@ -46,6 +46,7 @@ const replacementMap1 = {
     '--p-color-avatar-two-text-on-bg-fill',
   '--p-color-bg-active': '--p-color-bg-surface-active',
   '--p-color-bg-app-active': '--p-color-bg-surface-active',
+  '--p-color-bg-app-hover': '--p-color-bg-surface-hover',
   '--p-color-bg-app-selected': '--p-color-bg-surface-selected',
   '--p-color-bg-backdrop-experimental': '--p-color-backdrop-bg',
   '--p-color-bg-caution-strong': '--p-color-bg-fill-caution',
