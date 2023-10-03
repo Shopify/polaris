@@ -154,13 +154,13 @@ const defaultMdxComponents: React.ComponentProps<
     <Box className={styles.DefinitionTable}>{children}</Box>
   ),
   p: ({children}) => <Box as="p">{children}</Box>,
-  h2: ({children}) => (
-    <HeadingWithCopyButton as="h2" className={[styles['Heading-h2']]}>
+  h2: ({children, id}) => (
+    <HeadingWithCopyButton id={id} as="h2" className={[styles['Heading-h2']]}>
       {children}
     </HeadingWithCopyButton>
   ),
-  h3: ({children}) => (
-    <HeadingWithCopyButton as="h3" className={styles['Heading-h3']}>
+  h3: ({children, id}) => (
+    <HeadingWithCopyButton id={id} as="h3" className={styles['Heading-h3']}>
       {children}
     </HeadingWithCopyButton>
   ),
