@@ -235,7 +235,7 @@ function PopoverWithSearchableListboxExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-color-text-interactive)'}}>
+      <span style={{color: 'var(--p-color-text-emphasis)'}}>
         Show all 111 segments
       </span>
     </Listbox.Action>

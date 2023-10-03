@@ -89,7 +89,7 @@ $progress-bar-height: 6px;
   width: 100%;
   transform-origin: left;
   transform: scaleX(0);
-  background-color: var(--p-color-bg-primary);
+  background-color: var(--p-color-bg-fill-brand);
   transition: transform var(--p-motion-duration-500) var(--p-motion-ease);
 }
 

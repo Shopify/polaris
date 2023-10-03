@@ -121,7 +121,7 @@ export function getKeyframeNames(motionTokenGroup: TokenGroup) {
 /**
  * Allowed Polaris token custom properties.
  *
- * Result: ['--p-color-bg-app', '--p-color-text', etc...]
+ * Result: ['--p-color-bg', '--p-color-text', etc...]
  */
 export function getCustomPropertyNames(tokens: Tokens) {
   return Object.entries(tokens)

@@ -8,7 +8,7 @@ function BoxWithPaddingExample() {
     <BlockStack gap="400">
       <div
         style={{
-          backgroundColor: 'var(--p-color-bg-info-strong)',
+          backgroundColor: 'var(--p-color-bg-fill-info)',
           width: '586px',
         }}
       >
@@ -17,24 +17,24 @@ function BoxWithPaddingExample() {
         </Box>
       </div>
       <InlineStack gap="400">
-        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-fill-info)'}}>
           <Box paddingInlineStart="400" width="284px">
             <Placeholder label="paddingInlineStart" childAlign="start" />
           </Box>
         </div>
-        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-fill-info)'}}>
           <Box paddingInlineEnd="400" width="284px">
             <Placeholder label="paddingInlineEnd" childAlign="end" />
           </Box>
         </div>
       </InlineStack>
       <InlineStack gap="400">
-        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-fill-info)'}}>
           <Box paddingBlockStart="400" width="284px">
             <Placeholder label="paddingBlockStart" childAlign="center" />
           </Box>
         </div>
-        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-fill-info)'}}>
           <Box paddingBlockEnd="400" width="284px">
             <Placeholder label="paddingBlockEnd" childAlign="center" />
           </Box>
@@ -66,7 +66,7 @@ const Placeholder = ({
       <InlineStack gap="400" align={childAlign}>
         <div
           style={{
-            color: 'var(--p-color-text-on-color)',
+            color: 'var(--p-color-text-info-on-bg-fill)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="medium">

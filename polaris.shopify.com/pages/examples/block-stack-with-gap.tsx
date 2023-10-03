@@ -19,7 +19,7 @@ const SpacingBackground = ({children}: {children: React.ReactNode}) => {
   return (
     <div
       style={{
-        background: 'var(--p-color-bg-success-subdued)',
+        background: 'var(--p-color-bg-surface-success)',
         height: 'auto',
       }}
     >

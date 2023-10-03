@@ -36,7 +36,7 @@ export function Default() {
 export function WithVerticalDirection() {
   return (
     <Box
-      background="bg"
+      background="bg-surface"
       padding="400"
       borderColor="border-subdued"
       borderWidth="025"
@@ -51,7 +51,7 @@ export function WithVerticalDirection() {
 export function WithHorizontalDirection() {
   return (
     <Box
-      background="bg"
+      background="bg-surface"
       padding="400"
       borderColor="border-subdued"
       borderWidth="025"
@@ -68,7 +68,7 @@ export function WithSpecificDirection() {
     <LegacyStack vertical>
       <p>Block Start</p>
       <Box
-        background="bg"
+        background="bg-surface"
         padding="400"
         borderColor="border-subdued"
         borderWidth="025"
@@ -79,7 +79,7 @@ export function WithSpecificDirection() {
       </Box>
       <p>Block End</p>
       <Box
-        background="bg"
+        background="bg-surface"
         padding="400"
         borderColor="border-subdued"
         borderWidth="025"
@@ -90,7 +90,7 @@ export function WithSpecificDirection() {
       </Box>
       <p>Inline Start</p>
       <Box
-        background="bg"
+        background="bg-surface"
         padding="400"
         borderColor="border-subdued"
         borderWidth="025"
@@ -101,7 +101,7 @@ export function WithSpecificDirection() {
       </Box>
       <p>Inline End</p>
       <Box
-        background="bg"
+        background="bg-surface"
         padding="400"
         borderColor="border-subdued"
         borderWidth="025"
@@ -117,7 +117,7 @@ export function WithSpecificDirection() {
 export function WithAllDirection() {
   return (
     <Box
-      background="bg"
+      background="bg-surface"
       padding="400"
       borderColor="border-subdued"
       borderWidth="025"
@@ -132,7 +132,7 @@ export function WithAllDirection() {
 export function WithResponsiveHorizontalDirection() {
   return (
     <Box
-      background="bg"
+      background="bg-surface"
       padding={{xs: '100', sm: '200', md: '300', lg: '400', xl: '500'}}
       borderColor="border-subdued"
       borderWidth="025"

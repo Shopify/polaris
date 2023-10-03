@@ -58,7 +58,7 @@ $vertical-motion-offset: -5px;
 .ContentContainer {
   position: relative;
   overflow: hidden;
-  background: var(--p-color-bg);
+  background: var(--p-color-bg-surface);
   border-radius: var(--p-space-300);
 
   /* Prevent Scrollable's box shadows overflowing the rounded corners of this

@@ -11,7 +11,7 @@ $sidebar-breakpoint: 1200px;
   min-height: 100vh;
   min-height: 100svh; // For mobile browsers, fill the screen taking into account dynamic browser chrome
   display: flex;
-  background-color: var(--p-color-bg-app);
+  background-color: var(--p-color-bg);
 
   @media print {
     background-color: transparent;
