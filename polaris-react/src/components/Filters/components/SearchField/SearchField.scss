@@ -42,7 +42,7 @@
 .Spinner {
   position: absolute;
   top: var(--p-space-100);
-  right: var(--p-space-300);
+  right: var(--p-space-1000);
   width: var(--p-space-500);
   transform: translateX(var(--p-space-100));
   transition: transform var(--p-motion-duration-150) var(--p-motion-ease-in-out);

@@ -55,7 +55,7 @@ export function SearchField({
   }
 
   const clearButtonMarkup =
-    value !== '' && !loading ? (
+    value !== '' ? (
       <UnstyledButton
         className={classNames(
           styles.ClearButton,

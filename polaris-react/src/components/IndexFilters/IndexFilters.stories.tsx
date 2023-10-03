@@ -266,7 +266,7 @@ function BasicExample(
           }
 
           setLoading(false);
-        }, 650);
+        }, 1000);
       },
       [loading],
     ),
