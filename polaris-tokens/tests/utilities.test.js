@@ -3,7 +3,7 @@ import {
   createVarName,
   getThemeVarNames,
   getKeyframeNames,
-  tokensToRems,
+  tokenGroupToRems,
   toPx,
   toEm,
   toRem,
@@ -78,7 +78,7 @@ describe('getKeyframeNames', () => {
   });
 });
 
-describe('tokensToRems', () => {
+describe('tokenGroupToRems', () => {
   it("converts a token group's value from px to rems", () => {
     const tokenGroup = {
       foo: {value: '12px'},
@@ -86,7 +86,7 @@ describe('tokensToRems', () => {
       baz: {value: '16px 32px'},
     };
 
-    const result = tokensToRems(tokenGroup);
+    const result = tokenGroupToRems(tokenGroup);
 
     expect(result.foo.value).toBe('0.75rem');
     expect(result.bar.value).toBe('1rem');

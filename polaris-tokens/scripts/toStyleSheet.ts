@@ -1,7 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {MetaThemeShape, MetaTokenGroupShape} from '../src/themes/types';
+import type {
+  MetaThemeShape,
+  MetaTokenGroupShape,
+  TokenName,
+} from '../src/themes/types';
 import {metaThemePartials, metaThemeDefault} from '../src/themes';
 import {themeNameDefault} from '../src/themes/constants';
 import {createThemeSelector, isTokenName} from '../src/themes/utils';
@@ -23,10 +27,11 @@ export function getMetaThemeDecls(metaTheme: MetaThemeShape) {
 /** Creates CSS declarations from a token group. */
 export function getMetaTokenGroupDecls(metaTokenGroup: MetaTokenGroupShape) {
   return Object.entries(metaTokenGroup)
-    .map(([tokenName, {value}]) => {
-      if (!isTokenName(tokenName)) {
-        throw new Error(`Invalid token name: ${tokenName}`);
-      }
+    .map((entry) => {
+      const [tokenName, {value}] = entry as [
+        TokenName,
+        MetaTokenGroupShape[string],
+      ];
 
       return tokenName.startsWith('motion-keyframes')
         ? `${createVarName(tokenName)}:p-${tokenName};`
