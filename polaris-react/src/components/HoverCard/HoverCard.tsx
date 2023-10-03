@@ -11,6 +11,7 @@ import type {PositionedOverlayProps} from '../PositionedOverlay';
 import {Portal} from '../Portal';
 import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {classNames} from '../../utilities/css';
+import {useToggle} from '../../utilities/use-toggle';
 
 import styles from './HoverCard.scss';
 import {HoverCardOverlay} from './components/HoverCardOverlay';
@@ -35,7 +36,7 @@ export interface HoverCardProps {
    * @default false
    */
   snapToParent?: boolean;
-  /** Delay in milliseconds while hovering over an element before the tooltip is visible */
+  /** Delay in milliseconds while hovering over an element before the hovercard is visible */
   hoverDelay?: number;
   /** Override on the default z-index of 400 */
   zIndexOverride?: number;
@@ -52,7 +53,7 @@ const HOVER_OUT_TIMEOUT = 150;
 
 export function HoverCard({
   children,
-  active,
+  active: originalActive,
   activator,
   activatorWrapper = 'span',
   snapToParent = false,
@@ -73,6 +74,12 @@ export function HoverCard({
     useEphemeralPresenceManager();
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
+
+  const {
+    value: active,
+    setTrue: setActiveTrue,
+    setFalse: handleBlur,
+  } = useToggle(Boolean(originalActive));
 
   const WrapperComponent: any = activatorWrapper;
 
@@ -100,7 +107,6 @@ export function HoverCard({
     hoverOutTimeout.current = setTimeout(() => {
       removePresence('hovercard');
     }, HOVER_OUT_TIMEOUT);
-    () => toggleActive(false);
   }, [toggleActive, removePresence]);
 
   const handleMouseLeave = () => {
@@ -111,11 +117,12 @@ export function HoverCard({
 
     mouseEntered.current = false;
     handleClose();
+    handleBlur();
   };
 
   const handleMouseEnter = () => {
     mouseEntered.current = true;
-    if (hoverDelay && !presenceList.tooltip) {
+    if (hoverDelay && !presenceList.hovercard) {
       hoverDelayTimeout.current = setTimeout(() => {
         handleOpen();
       }, hoverDelay);
@@ -135,6 +142,8 @@ export function HoverCard({
       setActivatorNode(activatorRef.current);
     }
   }, [activatorNode]);
+
+  console.log(presenceList);
 
   const portal =
     activatorNode && active ? (
