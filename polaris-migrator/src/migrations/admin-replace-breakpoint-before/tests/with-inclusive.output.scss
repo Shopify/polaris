@@ -1,0 +1,9 @@
+.Foo {
+  @media (width < #{legacy-polaris-v8.em(360px)}) {
+    display: flex;
+  }
+
+  @media (width < #{legacy-polaris-v8.em(variables.$home-sidebar-visible)}) {
+    display: flex;
+  }
+}

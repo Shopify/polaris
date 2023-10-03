@@ -1,0 +1,25 @@
+.Foo {
+  @media (max-width: #{legacy-polaris-v8.em(360px)}) {
+    display: flex;
+  }
+
+  @media (max-width: #{legacy-polaris-v8.em($single-column-breakpoint)}) {
+    display: flex;
+  }
+
+  @media (max-width: #{legacy-polaris-v8.em($single-column-breakpoint)}) {
+    display: flex;
+  }
+
+  @media (max-width: #{legacy-polaris-v8.em(variables.$full-content-width)}) {
+    display: flex;
+  }
+
+  @media (max-width: #{legacy-polaris-v8.em(variables.resource-list(breakpoint-small))}) {
+    display: flex;
+  }
+
+  @media (max-width: #{legacy-polaris-v8.em(variables.$home-condensed + 1)}) {
+    display: flex;
+  }
+}
