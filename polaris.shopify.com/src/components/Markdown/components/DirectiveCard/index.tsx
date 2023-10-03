@@ -22,7 +22,7 @@ export enum DirectiveStatusName {
 
 export type DirectiveStatus = DirectiveStatusName;
 interface DirectiveCardProps extends CardProps {
-  status: DirectiveStatus;
+  status?: DirectiveStatus;
 }
 type DirectiveProps = React.PropsWithChildren<DirectiveCardProps>;
 export const DirectiveCard = ({children, status, ...props}: DirectiveProps) => {
@@ -38,6 +38,8 @@ export const DirectiveCard = ({children, status, ...props}: DirectiveProps) => {
     return !d?.props?.src;
   });
 
+  const statusMarkup = status ? <Pill status={status} /> : null;
+
   return (
     <Card {...props}>
       {image?.props?.src ? (
@@ -50,13 +52,13 @@ export const DirectiveCard = ({children, status, ...props}: DirectiveProps) => {
             />
           </Bleed>
           <Stack gap="200">
-            <Pill status={status} />
+            {statusMarkup}
             {rest}
           </Stack>
         </Stack>
       ) : (
         <Stack gap="200">
-          <Pill status={status} />
+          {statusMarkup}
           {rest}
         </Stack>
       )}
