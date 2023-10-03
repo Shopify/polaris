@@ -1074,6 +1074,7 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 If you are using these utilities, feel free to copy them from v11 into your own codebase.
 
 - `createExact`
+- `createMetadata`
 - `getKeyframeNames`
 - `getUnit`
 - `isKeyOf`
@@ -1084,7 +1085,10 @@ If you are using these utilities, feel free to copy them from v11 into your own 
 
 ##### Deprecated Types
 
-- `Tokens` type is now deprecated, use the `Theme` type instead
+- `BreakpointsAliasDirectionMediaConditions`
+- `BreakpointsMediaConditions`
+- `MetaBreakpointsTokenGroup`
+- `Tokens` (replaced by `Theme`)
 
 ##### Deprecated all JSON exports
 
