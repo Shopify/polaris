@@ -47,7 +47,7 @@ function ResourceDetailsLayout() {
   const SkeletonLabel = (props) => {
     return (
       <Box
-        background="bg-strong"
+        background="bg-fill-tertiary"
         minHeight="1rem"
         maxWidth="5rem"
         borderRadius="base"

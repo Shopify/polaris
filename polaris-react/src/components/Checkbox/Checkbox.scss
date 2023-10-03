@@ -75,9 +75,8 @@
       // We set the border-color to transparent here
       // in order for the background color to bleed all the way to the edge of the element.
       border-color: transparent;
-      background-color: var(
-        --p-color-bg-transparent-secondary-disabled-experimental
-      );
+      // stylelint-disable-next-line polaris/color/function-disallowed-list -- set background color
+      background-color: rgba(0, 0, 0, 0.08);
       box-shadow: none;
 
       &::before {

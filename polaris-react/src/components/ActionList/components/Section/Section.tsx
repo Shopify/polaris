@@ -119,7 +119,7 @@ export function Section({
     <Box
       as="li"
       role="presentation"
-      borderColor="border-subdued"
+      borderColor="border-secondary"
       {...(!isFirst && {borderBlockStartWidth: '025'})}
       {...(!section.title && {
         paddingBlockStart: '150',

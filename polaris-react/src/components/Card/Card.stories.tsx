@@ -29,7 +29,7 @@ export function Default() {
 
 export function WithBackgroundSubdued() {
   return (
-    <Card background="bg-secondary-experimental">
+    <Card background="bg-surface-tertiary">
       <BlockStack gap="500">
         <Text as="h3" variant="headingMd">
           Online store dashboard
@@ -85,10 +85,7 @@ export function WithSubduedSection() {
         marginInline={{xs: '400', sm: '500'}}
       >
         <Divider />
-        <Box
-          background="bg-secondary-experimental"
-          padding={{xs: '400', sm: '500'}}
-        >
+        <Box background="bg-surface-tertiary" padding={{xs: '400', sm: '500'}}>
           <BlockStack gap="200">
             <Text variant="headingSm" as="h3">
               Deactivated staff accounts

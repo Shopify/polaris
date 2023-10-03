@@ -177,7 +177,7 @@ export function Pagination({
         {previousButtonEvents}
         {nextButtonEvents}
         <Box
-          background="bg-subdued"
+          background="bg-surface-secondary"
           paddingBlockStart="150"
           paddingBlockEnd="150"
           paddingInlineStart="300"

@@ -600,7 +600,7 @@
 }
 
 .loading.disabled svg {
-  fill: var(--p-color-bg-interactive);
+  fill: var(--p-color-bg-fill-brand);
 }
 
 .primary.disabled svg {
@@ -729,7 +729,7 @@
       color: var(--p-color-text-critical-hover);
 
       svg {
-        fill: var(--p-color-icon-critical-strong-hover-experimental);
+        fill: var(--p-color-text-critical-hover);
       }
     }
 
@@ -807,7 +807,7 @@
     }
 
     &:hover svg {
-      fill: var(--p-color-icon-critical-strong-hover-experimental);
+      fill: var(--p-color-text-critical-hover);
     }
 
     &:focus:not(:active):not(.pressed):not(.disabled) svg {
