@@ -397,6 +397,11 @@ const layoutAndStructure = [
     permanent: false,
   },
   {
+    source: '/components/layout-and-structure/horizontal-grid',
+    destination: '/components/layout-and-structure/inline-grid',
+    permanent: false,
+  },
+  {
     source: '/components/divider',
     destination: '/components/layout-and-structure/divider',
     permanent: false,
@@ -473,7 +478,7 @@ const layoutAndStructure = [
   },
   {
     source: '/components/stack',
-    destination: '/components/layout-and-structure/vertical-stack',
+    destination: '/components/layout-and-structure/block-stack',
     permanent: false,
   },
 ];
