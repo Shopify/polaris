@@ -8,6 +8,8 @@ keywords:
   - color use
   - black and white
   - grayscale
+hideChildren: true
+showTOC: true
 ---
 
 # {frontmatter.title}

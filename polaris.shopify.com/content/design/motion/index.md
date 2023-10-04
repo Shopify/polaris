@@ -1,0 +1,56 @@
+---
+title: Motion
+description: Motion brings dynamism to an interface, offers visual feedback and aids merchants understanding the outcomes of their actions.
+keywords:
+  - animation
+  - motion
+  - movement
+  - interaction
+  - transition
+hideChildren: true
+---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Subnav />
+
+## Purposeful
+
+Motion has a clear purpose. It helps merchants understand the interface and the results of their actions, instead of being used as decoration or entertainment.
+
+<InlineGrid gap='400' columns={{xs: '1', md: '2'}}>
+
+  <Do>
+  
+    <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
+      <source src="/images/design/motion/overview/01-purposeful-do.mp4" type="video/mp4" />
+      Transition between two menu items, featuring a quick subtle transition that animates elements that were already in view.
+    </video>
+
+    Use motion to enhance merchant understanding and provide context.
+
+  </Do>
+
+  <Dont>
+
+    <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
+      <source src="/images/design/motion/overview/01-purposeful-dont.mp4" type="video/mp4" />
+      Transition between two menu items, featuring a elaborate transition that animates all elements that change on the page.
+    </video>
+
+    Allow motion to complicate the interface or hinder merchant comprehension.
+
+  </Dont>
+  
+</InlineGrid>
+
+## Responsive
+
+Motion should be a reaction to merchant interactions, providing immediate visual feedback and making the interface feel alive and responsive.
+
+## Snappy
+
+Motion should feel quick and subtle.
+A snappy animation starts rapidly, and slows down towards the end, making the transition feel quick while still providing a cue as to where things are coming from, making the motion feel more natural.
