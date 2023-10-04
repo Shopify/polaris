@@ -21,7 +21,6 @@ Motion can be used to provide feedback, helping merchants understand the results
   <Do>
     <video
       width="100%"
-      style={{borderRadius: '8px'}}
       height="auto"
       controls
       autoPlay
@@ -29,13 +28,12 @@ Motion can be used to provide feedback, helping merchants understand the results
       loop
     >
       <source
-        src="/images/design/motion/using/01-transition-do.mp4"
+        src="/images/design/motion/using/01-feedback-do.mp4"
         type="video/mp4"
       />
-      Search card interface quickly animating into place.
+      Table with animation of orders being selected, featuring a quick transition with a subtle checkmark animation.
     </video>
-    Use transitions to guide merchants’ attention and provide continuity. Ensuring
-    transitions preserve the state and context of the interface.
+    Use motion to indicate the result of an action. So merchants understand their action has been acknowledged and processed.
   </Do>
 
 <Grid
@@ -46,7 +44,7 @@ Motion can be used to provide feedback, helping merchants understand the results
     <Dont>
       <video
         width="100%"
-        style={{borderRadius: '8px'}}
+        
         height="auto"
         controls
         autoPlay
@@ -54,19 +52,19 @@ Motion can be used to provide feedback, helping merchants understand the results
         loop
       >
         <source
-          src="/images/design/motion/using/01-transition-dont-1.mp4"
+          src="/images/design/motion/using/01-feedback-dont1.mp4"
           type="video/mp4"
         />
-        Search card interface quickly animating into place.
+        Table with animation of orders being selected, featuring the entire entire row animating vertically.
       </video>
-      Use abrupt transitions that can disorient merchants.
+      Use motion that doesn't correspond to the action taken. Inconsistent feedback will lead to misunderstandings.
     </Dont>
   </Grid.Cell>
   <Grid.Cell area="b">
     <Dont>
       <video
         width="100%"
-        style={{borderRadius: '8px'}}
+        
         height="auto"
         controls
         autoPlay
@@ -74,14 +72,12 @@ Motion can be used to provide feedback, helping merchants understand the results
         loop
       >
         <source
-          src="/images/design/motion/using/01-transition-dont-2.mp4"
+          src="/images/design/motion/using/01-feedback-dont2.mp4"
           type="video/mp4"
         />
-        Search card interface quickly animating into place.
+         Table with animation of orders being selected, featuring the background filling in from left to right.
       </video>
-      Animate all elements on a page simultaneously. Overwhelming motion can disorient
-      users and break continuity. Animating a single element often can be enough
-      to provide sufficient context and maintain a sense of continuity.
+      Use overly elaborate or lengthy animations for simple feedback.
     </Dont>
   </Grid.Cell>
 </Grid>
@@ -95,7 +91,7 @@ Motion can guide merchant attention during navigation, helping to maintain conte
   <Do>
     <video
       width="100%"
-      style={{borderRadius: '8px'}}
+      
       height="auto"
       controls
       autoPlay
@@ -103,13 +99,12 @@ Motion can guide merchant attention during navigation, helping to maintain conte
       loop
     >
       <source
-        src="/images/design/motion/using/01-transition-do.mp4"
+        src="/images/design/motion/using/02-navigation-do.mp4"
         type="video/mp4"
       />
-      Search card interface quickly animating into place.
+       A transition between two pages with a nest relationship, where elements are animated in a single horizontal motion, right to left when going deeper, left to right when going back.
     </video>
-    Use transitions to guide merchants’ attention and provide continuity. Ensuring
-    transitions preserve the state and context of the interface.
+    Use motion to subtly guide attention during navigation. So merchants understand where to focus and what action to take next.
   </Do>
 
 <Grid
@@ -120,7 +115,7 @@ Motion can guide merchant attention during navigation, helping to maintain conte
     <Dont>
       <video
         width="100%"
-        style={{borderRadius: '8px'}}
+        
         height="auto"
         controls
         autoPlay
@@ -128,19 +123,19 @@ Motion can guide merchant attention during navigation, helping to maintain conte
         loop
       >
         <source
-          src="/images/design/motion/using/01-transition-dont-1.mp4"
+          src="/images/design/motion/using/02-navigation-dont1.mp4"
           type="video/mp4"
         />
-        Search card interface quickly animating into place.
+         A transition between two pages with a nest relationship, where each element is animated with a slight delay to the previous.
       </video>
-      Use abrupt transitions that can disorient merchants.
+      Use motion that distracts from the navigation process. Excessive or irrelevant motion can confuse merchants and detract from the main content or action.
     </Dont>
   </Grid.Cell>
   <Grid.Cell area="b">
     <Dont>
       <video
         width="100%"
-        style={{borderRadius: '8px'}}
+        
         height="auto"
         controls
         autoPlay
@@ -148,14 +143,12 @@ Motion can guide merchant attention during navigation, helping to maintain conte
         loop
       >
         <source
-          src="/images/design/motion/using/01-transition-dont-2.mp4"
+          src="/images/design/motion/using/02-navigation-dont2.mp4"
           type="video/mp4"
         />
-        Search card interface quickly animating into place.
+        A transition between two pages with a nest relationship, where the header is animated separately from the main content, both with a vertical motion.
       </video>
-      Animate all elements on a page simultaneously. Overwhelming motion can disorient
-      users and break continuity. Animating a single element often can be enough
-      to provide sufficient context and maintain a sense of continuity.
+      Use motion that could potentially mislead merchant's navigation path. The direction and behavior of the motion should align with the navigation flow.
     </Dont>
   </Grid.Cell>
 </Grid>
@@ -169,7 +162,7 @@ Motion can be used to indicate loading states, keeping merchants informed and en
   <Do>
     <video
       width="100%"
-      style={{borderRadius: '8px'}}
+      
       height="auto"
       controls
       autoPlay
@@ -177,13 +170,12 @@ Motion can be used to indicate loading states, keeping merchants informed and en
       loop
     >
       <source
-        src="/images/design/motion/using/01-transition-do.mp4"
+        src="/images/design/motion/using/03-loading-do.mp4"
         type="video/mp4"
       />
-      Search card interface quickly animating into place.
+      An outlined three quarters of a circle spinning.
     </video>
-    Use transitions to guide merchants’ attention and provide continuity. Ensuring
-    transitions preserve the state and context of the interface.
+    Use loading animations that give a sense of progress or activity. A clear visual cue that the system is processing helps to manage merchant expectations, and helps to reduce perceived wait times.
   </Do>
 
 <Grid
@@ -192,29 +184,16 @@ Motion can be used to indicate loading states, keeping merchants informed and en
 >
   <Grid.Cell area="a">
     <Dont>
-      <video
-        width="100%"
-        style={{borderRadius: '8px'}}
-        height="auto"
-        controls
-        autoPlay
-        muted
-        loop
-      >
-        <source
-          src="/images/design/motion/using/01-transition-dont-1.mp4"
-          type="video/mp4"
-        />
-        Search card interface quickly animating into place.
-      </video>
-      Use abrupt transitions that can disorient merchants.
+      ![An icon representing an hourglass.](/images/design/motion/using/03-loading-dont1@2x.png)
+      
+      Use static loading indicators, as they make the system seem unresponsive or slow.
     </Dont>
   </Grid.Cell>
   <Grid.Cell area="b">
     <Dont>
       <video
         width="100%"
-        style={{borderRadius: '8px'}}
+        
         height="auto"
         controls
         autoPlay
@@ -222,14 +201,12 @@ Motion can be used to indicate loading states, keeping merchants informed and en
         loop
       >
         <source
-          src="/images/design/motion/using/01-transition-dont-2.mp4"
+          src="/images/design/motion/using/03-loading-dont2.mp4"
           type="video/mp4"
         />
-        Search card interface quickly animating into place.
+        An loop animation with an hourglass filling up and spinning.
       </video>
-      Animate all elements on a page simultaneously. Overwhelming motion can disorient
-      users and break continuity. Animating a single element often can be enough
-      to provide sufficient context and maintain a sense of continuity.
+      Use overly complex or distracting loading animations. The animation should be subtle and not detract from the rest of the interface.
     </Dont>
   </Grid.Cell>
 </Grid>

@@ -30,7 +30,7 @@
   }
 }
 
-.ImageThumbnail {
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
+.MediaThumbnail {
+  border-radius: var(--p-border-radius-200) var(--p-border-radius-200) 0 0;
+  overflow: hidden;
 }

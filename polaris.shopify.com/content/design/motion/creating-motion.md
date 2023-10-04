@@ -21,7 +21,6 @@ Transitions should be smooth and fluid, guiding merchants’ attention and maint
   <Do>
     <video
       width="100%"
-      style={{borderRadius: '8px'}}
       height="auto"
       controls
       autoPlay
@@ -46,7 +45,6 @@ Transitions should be smooth and fluid, guiding merchants’ attention and maint
     <Dont>
       <video
         width="100%"
-        style={{borderRadius: '8px'}}
         height="auto"
         controls
         autoPlay
@@ -66,7 +64,6 @@ Transitions should be smooth and fluid, guiding merchants’ attention and maint
     <Dont>
       <video
         width="100%"
-        style={{borderRadius: '8px'}}
         height="auto"
         controls
         autoPlay
@@ -97,7 +94,6 @@ Animations should be simple and purposeful, used to enhance understanding or pro
 
   <video
     width="100%"
-    style={{borderRadius: '8px'}}
     height="auto"
     controls
     autoPlay
@@ -116,7 +112,6 @@ Animations should be simple and purposeful, used to enhance understanding or pro
   #### Dont
   <video
     width="100%"
-    style={{borderRadius: '8px'}}
     height="auto"
     controls
     autoPlay
@@ -142,7 +137,6 @@ Timing is crucial in motion design. Motion is fast enough to not cause delay, bu
 
   <video
     width="100%"
-    style={{borderRadius: '8px'}}
     height="auto"
     controls
     autoPlay
@@ -160,7 +154,6 @@ Use appropriate timing for your animations and transitions. Matching the timing 
   #### Dont
   <video
     width="100%"
-    style={{borderRadius: '8px'}}
     height="auto"
     controls
     autoPlay
