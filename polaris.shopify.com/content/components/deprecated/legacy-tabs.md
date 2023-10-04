@@ -1,5 +1,6 @@
 ---
 title: Legacy tabs
+shortDescription: Used to alternate among related views within the same context.
 category: Deprecated
 keywords:
   - layout

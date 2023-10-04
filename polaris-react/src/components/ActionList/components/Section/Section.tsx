@@ -70,17 +70,17 @@ export function Section({
     titleMarkup =
       typeof section.title === 'string' ? (
         <Box
-          paddingBlockStart="3"
-          paddingBlockEnd="1"
-          paddingInlineStart="3"
-          paddingInlineEnd="3"
+          paddingBlockStart="300"
+          paddingBlockEnd="100"
+          paddingInlineStart="300"
+          paddingInlineEnd="300"
         >
           <Text as="p" variant="headingSm">
             {section.title}
           </Text>
         </Box>
       ) : (
-        <Box padding="2" paddingInlineEnd="1_5-experimental">
+        <Box padding="200" paddingInlineEnd="150">
           {section.title}
         </Box>
       );
@@ -104,11 +104,11 @@ export function Section({
       {titleMarkup}
       <Box
         as="div"
-        padding="1_5-experimental"
+        padding="150"
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        <BlockStack gap="1" as="ul" {...(sectionRole && {role: sectionRole})}>
+        <BlockStack gap="100" as="ul" {...(sectionRole && {role: sectionRole})}>
           {actionMarkup}
         </BlockStack>
       </Box>
@@ -119,10 +119,10 @@ export function Section({
     <Box
       as="li"
       role="presentation"
-      borderColor="border-subdued"
-      {...(!isFirst && {borderBlockStartWidth: '1'})}
+      borderColor="border-secondary"
+      {...(!isFirst && {borderBlockStartWidth: '025'})}
       {...(!section.title && {
-        paddingBlockStart: '1_5-experimental',
+        paddingBlockStart: '150',
       })}
     >
       {sectionMarkup}

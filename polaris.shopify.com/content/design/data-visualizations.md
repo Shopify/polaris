@@ -10,6 +10,13 @@ keywords:
 
 <Lede>{frontmatter.description}</Lede>
 
+<DirectiveCard status="Caution">
+
+This section is currently being reworked to provide better guidance aligned
+with Polaris v12. Stay tuned!
+
+</DirectiveCard>
+
 ---
 
 This section outlines data visualization practices at Shopify and how to leverage them.

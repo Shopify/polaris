@@ -1170,7 +1170,7 @@ export function UsingInstantScrollToFromRef() {
 
 export function WithShadowOverComplexChildren() {
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       <Text as="p" variant="bodyLg" fontWeight="bold">
         NOTE: Red shadow is for demo/debug purposes only.
         <br />
@@ -1181,14 +1181,14 @@ export function WithShadowOverComplexChildren() {
         style={{
           height: '200px',
           maxWidth: '40rem',
-          backgroundColor: 'var(--p-color-bg)',
+          backgroundColor: 'var(--p-color-bg-surface)',
           // Setting red here so the storybook is really obvious that the shadow
           // overlays the content (particularly the banner)
           /* @ts-expect-error TS doesn't understand CSS vars */
           '--pc-scrollable-shadow-color': 'rgba(255, 0, 0, 0.85)',
         }}
       >
-        <Box padding="4">
+        <Box padding="400">
           <Banner title="Payment details">
             <p>Last updated on: September 6, 2022</p>
 

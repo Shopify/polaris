@@ -1,14 +1,16 @@
 import {
   createVar,
-  getCustomPropertyNames,
+  createVarName,
+  getThemeVarNames,
   getKeyframeNames,
-  tokensToRems,
+  tokenGroupToRems,
   toPx,
   toEm,
   toRem,
   getUnit,
   getMediaConditions,
-} from '../src/utilities';
+} from '../src/utils';
+import {resolveMetaThemeRefs} from '../src/themes/utils';
 
 const mockTokenGroup = {
   'design-token-1': {
@@ -41,17 +43,26 @@ const mockTokens = {
 };
 
 describe('createVar', () => {
-  it('converts the token into a polaris css variable name', () => {
+  it('converts the token into a polaris css variable', () => {
     const token = 'foo';
     const result = createVar(token);
+
+    expect(result).toBe(`var(--p-${token})`);
+  });
+});
+
+describe('createVarName', () => {
+  it('converts the token into a polaris css variable name', () => {
+    const token = 'foo';
+    const result = createVarName(token);
 
     expect(result).toBe(`--p-${token}`);
   });
 });
 
-describe('getCustomPropertyNames', () => {
+describe('getThemeVarNames', () => {
   it('extracts the token names', () => {
-    expect(getCustomPropertyNames(mockTokens)).toStrictEqual([
+    expect(getThemeVarNames(mockTokens)).toStrictEqual([
       '--p-design-token-1',
       '--p-design-token-2',
     ]);
@@ -67,7 +78,7 @@ describe('getKeyframeNames', () => {
   });
 });
 
-describe('tokensToRems', () => {
+describe('tokenGroupToRems', () => {
   it("converts a token group's value from px to rems", () => {
     const tokenGroup = {
       foo: {value: '12px'},
@@ -75,7 +86,7 @@ describe('tokensToRems', () => {
       baz: {value: '16px 32px'},
     };
 
-    const result = tokensToRems(tokenGroup);
+    const result = tokenGroupToRems(tokenGroup);
 
     expect(result.foo.value).toBe('0.75rem');
     expect(result.bar.value).toBe('1rem');
@@ -151,7 +162,6 @@ describe('toRem', () => {
 
 describe('getMediaConditions', () => {
   it('transforms breakpoints tokens into directional media conditions', () => {
-    /** @type {TokenGroup} */
     const breakpoints = {
       breakpoint1: '16px',
       breakpoint2: '32px',
@@ -175,5 +185,85 @@ describe('getMediaConditions', () => {
         only: '(min-width: 2em)',
       },
     });
+  });
+});
+
+describe('resolveMetaThemeRefs', () => {
+  it('resolves token references inside the current token group', () => {
+    const metaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-gap': {value: 'var(--p-space-1)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-gap': {value: '1px'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
+  });
+
+  it('resolves token references outside the current token group', () => {
+    const metaTheme = {
+      font: {
+        'font-size-1': {value: '1px'},
+      },
+      text: {
+        'text-body-md-font-size': {value: 'var(--p-font-size-1)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      font: {
+        'font-size-1': {value: '1px'},
+      },
+      text: {
+        'text-body-md-font-size': {value: '1px'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
+  });
+
+  it('resolves token references with multi-dash token group names', () => {
+    const metaTheme = {
+      zIndex: {
+        'z-index-1': {value: '1'},
+        'z-modal': {value: 'var(--p-z-index-1)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      zIndex: {
+        'z-index-1': {value: '1'},
+        'z-modal': {value: '1'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
+  });
+
+  it('resolves nested token references', () => {
+    const metaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-2': {value: 'var(--p-space-1)'},
+        'space-gap': {value: 'var(--p-space-2)'},
+      },
+    };
+
+    const expectedMetaTheme = {
+      space: {
+        'space-1': {value: '1px'},
+        'space-2': {value: '1px'},
+        'space-gap': {value: '1px'},
+      },
+    };
+
+    expect(resolveMetaThemeRefs(metaTheme)).toStrictEqual(expectedMetaTheme);
   });
 });

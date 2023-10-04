@@ -1,5 +1,6 @@
 ---
 title: Skeleton thumbnail
+shortDescription: Provides a low fidelity representation of an image before it appears, improving perceived load times.
 category: Feedback indicators
 releasedIn: 3.7.2
 keywords:

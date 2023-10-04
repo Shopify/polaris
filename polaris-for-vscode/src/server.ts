@@ -1,5 +1,9 @@
-import {createVar, metadata} from '@shopify/polaris-tokens';
-import type {MetadataGroup} from '@shopify/polaris-tokens';
+import type {MetaTheme, MetaTokenGroupShape} from '@shopify/polaris-tokens';
+import {
+  createVarName,
+  metaThemeDefault,
+  isTokenName,
+} from '@shopify/polaris-tokens';
 import {
   createConnection,
   TextDocuments,
@@ -19,16 +23,16 @@ const excludedTokenGroupNames = [] as const;
 
 type ExcludedTokenGroupName = typeof excludedTokenGroupNames[number];
 
-type TokenGroupName = Exclude<keyof typeof metadata, ExcludedTokenGroupName>;
+type TokenGroupName = Exclude<keyof MetaTheme, ExcludedTokenGroupName>;
 
 const tokenGroups = Object.fromEntries(
-  Object.entries(metadata).filter(
+  Object.entries(metaThemeDefault).filter(
     ([tokenGroupName]) =>
       !excludedTokenGroupNames.includes(
         tokenGroupName as ExcludedTokenGroupName,
       ),
   ),
-) as unknown as Omit<typeof metadata, ExcludedTokenGroupName>;
+) as unknown as Omit<MetaTheme, ExcludedTokenGroupName>;
 
 type TokenGroupCompletionItems = {
   [T in TokenGroupName]: CompletionItem[];
@@ -39,19 +43,25 @@ type TokenGroupCompletionItems = {
  */
 const tokenGroupCompletionItems = Object.fromEntries(
   Object.entries(tokenGroups).map(
-    ([tokenGroupName, tokenGroup]: [string, MetadataGroup]) => {
+    ([tokenGroupName, tokenGroup]: [string, MetaTokenGroupShape]) => {
       const completionItems: CompletionItem[] = Object.entries(tokenGroup).map(
-        ([tokenName, tokenProperties]): CompletionItem => ({
-          label: createVar(tokenName),
-          insertText: `${createVar(tokenName)}`,
-          detail: tokenProperties.value,
-          documentation: tokenProperties.description,
-          filterText: createVar(tokenName),
-          kind:
-            tokenGroupName === 'color'
-              ? CompletionItemKind.Color
-              : CompletionItemKind.Variable,
-        }),
+        ([tokenName, tokenProperties]): CompletionItem => {
+          if (!isTokenName(tokenName)) {
+            throw new Error(`Invalid token name: ${tokenName}`);
+          }
+
+          return {
+            label: createVarName(tokenName),
+            insertText: `${createVarName(tokenName)}`,
+            detail: tokenProperties.value,
+            documentation: tokenProperties.description,
+            filterText: createVarName(tokenName),
+            kind:
+              tokenGroupName === 'color'
+                ? CompletionItemKind.Color
+                : CompletionItemKind.Variable,
+          };
+        },
       );
 
       return [tokenGroupName, completionItems];
@@ -79,7 +89,8 @@ const tokenGroupPatterns: TokenGroupPatterns = {
   breakpoints: /width/,
   color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
-  font: /font|line-height/,
+  text: /font|letter-spacing|line-height/,
+  font: /font|letter-spacing|line-height/,
   height: /height|min-height|max-height/,
   motion: /animation/,
   shadow: /shadow/,

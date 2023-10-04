@@ -98,7 +98,7 @@ export const Variants = ({
   return (
     <Container variants={variants}>
       {(variant) => (
-        <Stack gap="8" className={styles.Variant}>
+        <Stack gap="800" className={styles.Variant}>
           <PatternMarkdown {...variant} />
         </Stack>
       )}
@@ -138,12 +138,12 @@ const defaultMdxComponents: React.ComponentProps<
   Stack: ({gap, children}) => <Stack gap={gap}>{children}</Stack>,
   Hero: ({children}) => <Box className={styles.Hero}>{children}</Box>,
   HowItHelps: ({children}) => (
-    <Stack gap="4" className={styles.HowItHelps}>
+    <Stack gap="400" className={styles.HowItHelps}>
       {children}
     </Stack>
   ),
   Usage: ({children}) => (
-    <Stack gap="4" className={styles.Usage}>
+    <Stack gap="400" className={styles.Usage}>
       {children}
     </Stack>
   ),
@@ -154,13 +154,13 @@ const defaultMdxComponents: React.ComponentProps<
     <Box className={styles.DefinitionTable}>{children}</Box>
   ),
   p: ({children}) => <Box as="p">{children}</Box>,
-  h2: ({children}) => (
-    <HeadingWithCopyButton as="h2" className={[styles['Heading-h2']]}>
+  h2: ({children, id}) => (
+    <HeadingWithCopyButton id={id} as="h2" className={[styles['Heading-h2']]}>
       {children}
     </HeadingWithCopyButton>
   ),
-  h3: ({children}) => (
-    <HeadingWithCopyButton as="h3" className={styles['Heading-h3']}>
+  h3: ({children, id}) => (
+    <HeadingWithCopyButton id={id} as="h3" className={styles['Heading-h3']}>
       {children}
     </HeadingWithCopyButton>
   ),
@@ -199,8 +199,8 @@ export default function PatternPage({pattern}: Props) {
       />
 
       <Page isContentPage>
-        <Stack gap="8" className="margin-considered-harmful">
-          <Stack gap="4">
+        <Stack gap="800" className="margin-considered-harmful">
+          <Stack gap="400">
             <Heading as="h1">
               <Box className={styles.Heading}>{pattern.frontmatter.title}</Box>
             </Heading>

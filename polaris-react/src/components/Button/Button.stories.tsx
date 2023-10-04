@@ -27,11 +27,11 @@ export default {
 export function All() {
   return (
     <div>
-      <BlockStack gap="8">
-        <BlockStack gap="4">
+      <BlockStack gap="800">
+        <BlockStack gap="400">
           <Text as="h2">default</Text>
-          <Box padding="4">
-            <InlineStack gap="5" blockAlign="end">
+          <Box padding="400">
+            <InlineStack gap="500" blockAlign="end">
               <Button>Label</Button>
               <Button disabled>Label</Button>
               <Button icon={PlusMinor}>Label</Button>
@@ -63,7 +63,7 @@ export function All() {
             </InlineStack>
           </Box>
           <Card>
-            <InlineStack gap="5" blockAlign="end">
+            <InlineStack gap="500" blockAlign="end">
               <Button>Label</Button>
               <Button disabled>Label</Button>
               <Button icon={PlusMinor}>Label</Button>
@@ -85,10 +85,10 @@ export function All() {
             </InlineStack>
           </Card>
         </BlockStack>
-        <BlockStack gap="4">
+        <BlockStack gap="400">
           <Text as="h2">destructive</Text>
-          <Box padding="4">
-            <InlineStack gap="5" blockAlign="end">
+          <Box padding="400">
+            <InlineStack gap="500" blockAlign="end">
               <Button tone="critical">Label</Button>
               <Button tone="critical" disabled>
                 Label
@@ -130,7 +130,7 @@ export function All() {
             </InlineStack>
           </Box>
           <Card>
-            <InlineStack gap="5" blockAlign="end">
+            <InlineStack gap="500" blockAlign="end">
               <Button tone="critical">Label</Button>
               <Button tone="critical" disabled>
                 Label
@@ -160,14 +160,14 @@ export function All() {
             </InlineStack>
           </Card>
         </BlockStack>
-        <BlockStack gap="2">
+        <BlockStack gap="200">
           <Text as="h2">primary</Text>
           <Primary />
         </BlockStack>
 
-        <BlockStack gap="2">
+        <BlockStack gap="200">
           <Text as="h2">primary destructive</Text>
-          <InlineStack gap="5" blockAlign="end">
+          <InlineStack gap="500" blockAlign="end">
             <Button variant="primary" tone="critical">
               Label
             </Button>
@@ -198,9 +198,9 @@ export function All() {
           </InlineStack>
         </BlockStack>
 
-        <BlockStack gap="2">
+        <BlockStack gap="200">
           <Text as="h2">primary sucess</Text>
-          <InlineStack gap="5" blockAlign="end">
+          <InlineStack gap="500" blockAlign="end">
             <Button variant="primary" tone="success">
               Label
             </Button>
@@ -231,24 +231,24 @@ export function All() {
           </InlineStack>
         </BlockStack>
 
-        <BlockStack gap="2">
+        <BlockStack gap="200">
           <Text as="h2">plain</Text>
           <Plain />
         </BlockStack>
 
-        <BlockStack gap="2">
+        <BlockStack gap="200">
           <Text as="h2">plain destructive</Text>
           <PlainDestructive />
         </BlockStack>
 
-        <BlockStack gap="2">
+        <BlockStack gap="200">
           <Text as="h2">tertiary</Text>
           <Tertiary />
         </BlockStack>
 
-        <BlockStack gap="2">
+        <BlockStack gap="200">
           <Text as="h2">tertiary destructive</Text>
-          <InlineStack gap="5" blockAlign="end">
+          <InlineStack gap="500" blockAlign="end">
             <Button variant="tertiary" tone="critical">
               Label
             </Button>
@@ -289,8 +289,8 @@ export function Default() {
 
 export function Plain() {
   return (
-    <Box padding="4">
-      <InlineStack gap="5" blockAlign="end">
+    <Box padding="400">
+      <InlineStack gap="500" blockAlign="end">
         <Button variant="plain">Label</Button>
         <Button variant="plain" disabled>
           Label
@@ -327,9 +327,9 @@ export function Plain() {
 
 export function Tertiary() {
   return (
-    <BlockStack gap="4">
-      <Box padding="4">
-        <InlineStack gap="5" blockAlign="end">
+    <BlockStack gap="400">
+      <Box padding="400">
+        <InlineStack gap="500" blockAlign="end">
           <Button variant="tertiary">Label</Button>
           <Button variant="tertiary" disabled>
             Label
@@ -346,7 +346,7 @@ export function Tertiary() {
         </InlineStack>
       </Box>
       <Card>
-        <InlineStack gap="5" blockAlign="end">
+        <InlineStack gap="500" blockAlign="end">
           <Button variant="tertiary">Label</Button>
           <Button variant="tertiary" disabled>
             Label
@@ -363,7 +363,7 @@ export function Tertiary() {
         </InlineStack>
       </Card>
       <Card>
-        <InlineStack gap="5" blockAlign="end">
+        <InlineStack gap="500" blockAlign="end">
           <Button
             variant="tertiary"
             icon={CancelSmallMinor}
@@ -385,7 +385,7 @@ export function Tertiary() {
 
 export function PlainDestructive() {
   return (
-    <InlineStack gap="5" blockAlign="end">
+    <InlineStack gap="500" blockAlign="end">
       <Button variant="plain" tone="critical">
         Label
       </Button>
@@ -425,9 +425,9 @@ export function PlainDestructive() {
 
 export function Primary() {
   return (
-    <BlockStack gap="4">
-      <Box padding="4">
-        <InlineStack gap="5" blockAlign="end">
+    <BlockStack gap="400">
+      <Box padding="400">
+        <InlineStack gap="500" blockAlign="end">
           <Button variant="primary">Label</Button>
           <Button variant="primary" disabled>
             Label
@@ -457,7 +457,7 @@ export function Primary() {
         </InlineStack>
       </Box>
       <Card>
-        <InlineStack gap="5" blockAlign="end">
+        <InlineStack gap="500" blockAlign="end">
           <Button variant="primary">Label</Button>
           <Button variant="primary" disabled>
             Label
@@ -496,7 +496,7 @@ export function Destructive() {
 
 export function Micro() {
   return (
-    <InlineStack gap="5">
+    <InlineStack gap="500">
       <Button size="micro">Label</Button>
       <Button variant="primary" size="micro">
         Label
@@ -514,7 +514,7 @@ export function Micro() {
 
 export function Slim() {
   return (
-    <InlineStack gap="5">
+    <InlineStack gap="500">
       <Button size="slim">Label</Button>
       <Button variant="primary" size="slim">
         Label
@@ -532,15 +532,15 @@ export function Slim() {
 
 export function Large() {
   return (
-    <BlockStack gap="4">
-      <InlineStack gap="5" blockAlign="end">
+    <BlockStack gap="400">
+      <InlineStack gap="500" blockAlign="end">
         <Button size="large">Create store</Button>
         <Button size="large" accessibilityLabel="Edit" icon={EditMajor} />
         <Button size="large" icon={PlusMinor} variant="primary">
           Create store
         </Button>
       </InlineStack>
-      <InlineStack gap="5" blockAlign="end">
+      <InlineStack gap="500" blockAlign="end">
         <Button size="large" fullWidth>
           Create store
         </Button>
@@ -712,7 +712,7 @@ export function DisabledState() {
 
 export function LoadingState() {
   return (
-    <InlineStack gap="5">
+    <InlineStack gap="500">
       <Button loading>Save product</Button>
       <Button variant="primary" loading>
         Save product

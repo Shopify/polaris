@@ -27,10 +27,10 @@ export function Section({
     <div className={className}>
       <Box
         as="section"
-        padding={flush ? '0' : '4'}
+        padding={flush ? '0' : '400'}
         {...(titleHidden && {paddingInlineEnd: '0'})}
         {...(subdued && {
-          background: 'bg-secondary-experimental',
+          background: 'bg-surface-tertiary',
         })}
       >
         {children}

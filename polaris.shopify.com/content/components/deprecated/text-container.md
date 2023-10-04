@@ -1,5 +1,6 @@
 ---
 title: Text container
+shortDescription: Used to wrap text elements like paragraphs, headings, and lists for vertical spacing.
 category: Deprecated
 releasedIn: 1.9.0
 keywords:

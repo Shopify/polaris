@@ -706,7 +706,7 @@ export function WithSubduedRows() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        subdued={index === 1 || index === 2}
+        tone={index === 1 || index === 2 ? 'subdued' : undefined}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1204,7 +1204,9 @@ export function WithBulkActionsAndSelectionAcrossPages() {
 
   return (
     <div
-      style={{padding: 'var(--p-space-4) var(--p-space-4) var(--p-space-10)'}}
+      style={{
+        padding: 'var(--p-space-400) var(--p-space-400) var(--p-space-1000)',
+      }}
     >
       <LegacyCard>
         <IndexTable
@@ -1604,6 +1606,15 @@ export function WithRowStatus() {
       amountSpent: '$40',
       status: 'critical',
     },
+    {
+      id: '3414',
+      url: '#',
+      name: 'Volleyball Player',
+      location: 'Delaware, USA',
+      orders: 50,
+      amountSpent: '$80',
+      status: 'warning',
+    },
   ];
   const resourceName = {
     singular: 'customer',
@@ -1620,7 +1631,7 @@ export function WithRowStatus() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        status={status as IndexTableRowProps['status']}
+        tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1656,7 +1667,7 @@ export function WithRowStatus() {
         onSelectionChange={handleSelectionChange}
         headings={[
           {title: 'Name'},
-          {title: 'Status'},
+          {title: 'Tone'},
           {title: 'Location'},
           {
             alignment: 'end',
@@ -1685,7 +1696,6 @@ export function WithStickyLastColumn() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
-      status: 'Created',
       channel: 'Point of Sale',
       paymentStatus: 'Refunded',
       fulfillmentStatus: 'Fulfilled',
@@ -1697,10 +1707,50 @@ export function WithStickyLastColumn() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
-      status: 'Created',
       channel: 'Online Store',
       paymentStatus: 'Paid',
       fulfillmentStatus: 'Unfulfilled',
+    },
+    {
+      id: '2562',
+      url: '#',
+      name: 'Helen Troy',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$975',
+      lastOrderDate: 'May 31, 2023',
+      status: 'success',
+    },
+    {
+      id: '4102',
+      url: '#',
+      name: 'Colm Dillane',
+      location: 'New York, USA',
+      orders: 27,
+      amountSpent: '$2885',
+      lastOrderDate: 'May 31, 2023',
+      status: 'critical',
+    },
+    {
+      id: '2564',
+      url: '#',
+      name: 'Al Chemist',
+      location: 'New York, USA',
+      orders: 19,
+      amountSpent: '$1,209',
+      lastOrderDate: 'April 4, 2023',
+      disabled: true,
+      status: 'warning',
+    },
+    {
+      id: '2563',
+      url: '#',
+      name: 'Larry June',
+      location: 'San Francisco, USA',
+      orders: 22,
+      amountSpent: '$1,400',
+      lastOrderDate: 'March 19, 2023',
+      status: 'subdued',
     },
   ];
   const resourceName = {
@@ -1731,6 +1781,7 @@ export function WithStickyLastColumn() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+        tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -1778,7 +1829,7 @@ export function WithStickyLastColumn() {
             id: 'amount-spent',
             title: 'Amount spent',
           },
-          {title: 'Status'},
+          {title: 'Tone'},
           {title: 'Channel'},
           {title: 'Payment status'},
           {title: 'Fulfillment status'},
@@ -3225,7 +3276,7 @@ export function WithZebraStripingAndRowStatus() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
-        status={status as IndexTableRowProps['status']}
+        tone={status as IndexTableRowProps['tone']}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -3286,7 +3337,6 @@ export function WithZebraStripingAndStickyLastColumn() {
       location: 'Decatur, USA',
       orders: 20,
       amountSpent: '$2,400',
-      status: 'Created',
       channel: 'Point of Sale',
       paymentStatus: 'Refunded',
       fulfillmentStatus: 'Fulfilled',
@@ -3298,12 +3348,49 @@ export function WithZebraStripingAndStickyLastColumn() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
-      status: 'Created',
       channel: 'Online Store',
       paymentStatus: 'Paid',
       fulfillmentStatus: 'Unfulfilled',
     },
+    {
+      id: '2562',
+      url: '#',
+      name: 'Helen Troy',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$975',
+      lastOrderDate: 'May 31, 2023',
+    },
+    {
+      id: '4102',
+      url: '#',
+      name: 'Colm Dillane',
+      location: 'New York, USA',
+      orders: 27,
+      amountSpent: '$2885',
+      lastOrderDate: 'May 31, 2023',
+    },
+    {
+      id: '2564',
+      url: '#',
+      name: 'Al Chemist',
+      location: 'New York, USA',
+      orders: 19,
+      amountSpent: '$1,209',
+      lastOrderDate: 'April 4, 2023',
+      disabled: true,
+    },
+    {
+      id: '2563',
+      url: '#',
+      name: 'Larry June',
+      location: 'San Francisco, USA',
+      orders: 22,
+      amountSpent: '$1,400',
+      lastOrderDate: 'March 19, 2023',
+    },
   ];
+
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
@@ -3320,7 +3407,6 @@ export function WithZebraStripingAndStickyLastColumn() {
         location,
         orders,
         amountSpent,
-        status,
         channel,
         paymentStatus,
         fulfillmentStatus,
@@ -3349,7 +3435,6 @@ export function WithZebraStripingAndStickyLastColumn() {
             {amountSpent}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{status}</IndexTable.Cell>
         <IndexTable.Cell>{channel}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
@@ -3379,7 +3464,6 @@ export function WithZebraStripingAndStickyLastColumn() {
             id: 'amount-spent',
             title: 'Amount spent',
           },
-          {title: 'Status'},
           {title: 'Channel'},
           {title: 'Payment status'},
           {title: 'Fulfillment status'},
@@ -3834,7 +3918,7 @@ export function WithSubHeaders() {
     }
 
     const selectableRows = rows.filter(({disabled}) => !disabled);
-    const rowRange: IndexTableRowProps['subHeaderRange'] = [
+    const rowRange: IndexTableRowProps['selectionRange'] = [
       selectableRows.findIndex((row) => row.id === customers[0].id),
       selectableRows.findIndex(
         (row) => row.id === customers[customers.length - 1].id,

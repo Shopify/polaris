@@ -1,5 +1,6 @@
 ---
 title: Modal
+shortDescription: Used to interrupt merchants with urgent information, details, or actions.
 category: Overlays
 keywords:
   - modal
@@ -258,6 +259,7 @@ Body content should be:
 - Modals use ARIA `role=”dialog”` to convey to screen reader users that they work like native dialog windows.
 - If you set the `title` prop to give the modal component a heading, then the `title` is used to label the dialog element with `aria-labelledby`. This helps to convey the purpose of the modal to screen reader users when it displays.
 - After a modal is closed, in order to return focus to the button that launched it, pass the button to the modal as an `activator`.
+- To ensure that [Toast](https://polaris.shopify.com/components/feedback-indicators/toast)s are read out by a screen reader when a Modal is open, apps should be wrapped in a [Frame](https://polaris.shopify.com/components/utilities/frame) component.
 
 ### Keyboard support
 

@@ -1,5 +1,6 @@
 ---
 title: Toast
+shortDescription: A non-disruptive message that provides quick feedback on the outcome of an action.
 category: Feedback indicators
 keywords:
   - toast
@@ -144,13 +145,15 @@ Action should:
 
 ## Accessibility
 
-The content of the toast component is implemented as an ARIA live region using `aria-live="polite"`. When the toast appears, screen readers should announce the toast text after any other more pressing announcements.
+The content of the toast component is implemented as an ARIA live region using `aria-live="assertive"`. When the toast appears, screen readers will interrupt any announcement a screen reader is currently making.
 
 Avoid using toast for critical information that merchants need to act on immediately. Toast might be difficult for merchants with low vision or low dexterity to access because it:
 
 - Disappears automatically
 - Can’t be easily accessed with the keyboard
 - Might appear outside the proximity of the merchant’s current focus
+
+To ensure that Toasts are read out by a screen reader when a Modal is open, apps should be wrapped in a [Frame](https://polaris.shopify.com/components/utilities/frame) component.
 
 ### Toast with action
 

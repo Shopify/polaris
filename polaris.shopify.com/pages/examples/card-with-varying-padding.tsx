@@ -4,14 +4,14 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function CardExample() {
   return (
-    <BlockStack gap="4">
+    <BlockStack gap="400">
       <Card>
         <Placeholder label="Content inside a card" />
       </Card>
-      <Card padding="4">
+      <Card padding="400">
         <Placeholder label="Content inside a card" />
       </Card>
-      <Card padding="2">
+      <Card padding="200">
         <Placeholder label="Content inside a card" />
       </Card>
       <Card padding="0">
@@ -32,7 +32,7 @@ const Placeholder = ({label = '', height = 'auto', width = 'auto'}) => {
     >
       <div
         style={{
-          color: 'var(--p-color-text-on-color)',
+          color: 'var(--p-color-text-info-on-bg-fill)',
         }}
       >
         <Text as="h2" variant="bodyMd">

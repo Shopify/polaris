@@ -52,52 +52,52 @@ const nextConfig = {
       {
         source: '/components/get-started',
         destination: '/components',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/foundations/foundations/:slug',
         destination: '/foundations/:slug',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/foundations/content/:slug',
         destination: '/content/:slug',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/foundations/design/:slug',
         destination: '/design/:slug',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/foundations/patterns/:slug',
         destination: '/patterns/:slug',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/foundations/patterns/layout',
         destination: '/foundations/patterns/page-layouts',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/foundations/foundations/designing-apps',
         destination: 'https://shopify.dev/apps/design-guidelines',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/foundations/content/app-release-notes',
         destination: 'https://shopify.dev/apps/design-guidelines',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/tokens/all-tokens',
         destination: '/tokens/color',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/tokens',
         destination: '/tokens/color',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/legal/license',
@@ -144,6 +144,7 @@ const nextConfig = {
         destination: '/coming-soon/view-transitions',
         permanent: false,
       },
+      ...whatsNew,
       ...actions,
       ...deprecated,
       ...feedbackIndicators,
@@ -164,26 +165,34 @@ const nextConfig = {
 
 module.exports = nextConfig;
 
+const whatsNew = [
+  {
+    source: '/new-design-language',
+    destination: '/whats-new/version-12',
+    permanent: true,
+  },
+];
+
 const actions = [
   {
     source: '/components/account-connection',
     destination: '/components/actions/account-connection',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/button-group',
     destination: '/components/actions/button-group',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/button',
     destination: '/components/actions/button',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/page-actions',
     destination: '/components/actions/page-actions',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -191,77 +200,77 @@ const deprecated = [
   {
     source: '/components/caption',
     destination: '/components/deprecated/caption',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/card',
     destination: '/components/deprecated/card',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/display-text',
     destination: '/components/deprecated/display-text',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/heading',
     destination: '/components/deprecated/heading',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/selection-and-input/legacy-filters',
     destination: '/components/deprecated/legacy-filters',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/layout-and-structure/legacy-card',
     destination: '/components/deprecated/legacy-card',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/layout-and-structure/legacy-stack',
     destination: '/components/deprecated/legacy-stack',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/navigation/legacy-tabs',
     destination: '/components/deprecated/legacy-tabs',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/selection-and-input/setting-toggle',
     destination: '/components/deprecated/setting-toggle',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/setting-toggle',
     destination: '/components/deprecated/setting-toggle',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/sheet',
     destination: '/components/deprecated/sheet',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/subheading',
     destination: '/components/deprecated/subheading',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/text-container',
     destination: '/components/deprecated/text-container',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/text-style',
     destination: '/components/deprecated/text-style',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/visually-hidden',
     destination: '/components/deprecated/visually-hidden',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -269,62 +278,62 @@ const feedbackIndicators = [
   {
     source: '/components/badge',
     destination: '/components/feedback-indicators/badge',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/banner',
     destination: '/components/feedback-indicators/banner',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/exception-list',
     destination: '/components/feedback-indicators/exception-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/loading',
     destination: '/components/feedback-indicators/loading',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/progress-bar',
     destination: '/components/feedback-indicators/progress-bar',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/skeleton-body-text',
     destination: '/components/feedback-indicators/skeleton-body-text',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/skeleton-display-text',
     destination: '/components/feedback-indicators/skeleton-display-text',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/skeleton-page',
     destination: '/components/feedback-indicators/skeleton-page',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/skeleton-tabs',
     destination: '/components/feedback-indicators/skeleton-tabs',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/skeleton-thumbnail',
     destination: '/components/feedback-indicators/skeleton-thumbnail',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/spinner',
     destination: '/components/feedback-indicators/spinner',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/toast',
     destination: '/components/feedback-indicators/toast',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -332,27 +341,27 @@ const imagesAndIcons = [
   {
     source: '/components/avatar',
     destination: '/components/images-and-icons/avatar',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/icon',
     destination: '/components/images-and-icons/icon',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/keyboard-key',
     destination: '/components/images-and-icons/keyboard-key',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/thumbnail',
     destination: '/components/images-and-icons/thumbnail',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/video-thumbnail',
     destination: '/components/images-and-icons/video-thumbnail',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -360,112 +369,117 @@ const layoutAndStructure = [
   {
     source: '/components/alpha-card',
     destination: '/components/layout-and-structure/card',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/card',
     destination: '/components/layout-and-structure/card',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/bleed',
     destination: '/components/layout-and-structure/bleed',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/box',
     destination: '/components/layout-and-structure/box',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/callout-card',
     destination: '/components/layout-and-structure/callout-card',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/layout-and-structure/columns',
     destination: '/components/layout-and-structure/inline-grid',
-    permanent: false,
+    permanent: true,
+  },
+  {
+    source: '/components/layout-and-structure/horizontal-grid',
+    destination: '/components/layout-and-structure/inline-grid',
+    permanent: true,
   },
   {
     source: '/components/divider',
     destination: '/components/layout-and-structure/divider',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/structure/empty-state',
     destination: '/components/layout-and-structure/empty-state',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/empty-state',
     destination: '/components/layout-and-structure/empty-state',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/form-layout',
     destination: '/components/layout-and-structure/form-layout',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/forms/form-layout',
     destination: '/components/layout-and-structure/form-layout',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/grid',
     destination: '/components/layout-and-structure/grid',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/layout-and-structure/horizontal-stack',
     destination: '/components/layout-and-structure/inline-stack',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/structure/layout',
     destination: '/components/layout-and-structure/layout',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/layout',
     destination: '/components/layout-and-structure/layout',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/legacy-card',
     destination: '/components/layout-and-structure/legacy-card',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/legacy-stack',
     destination: '/components/layout-and-structure/legacy-stack',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/media-card',
     destination: '/components/layout-and-structure/media-card',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/structure/page',
     destination: '/components/layout-and-structure/page',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/page',
     destination: '/components/layout-and-structure/page',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/layout-and-structure/vertical-stack',
     destination: '/components/layout-and-structure/block-stack',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/stack',
-    destination: '/components/layout-and-structure/vertical-stack',
-    permanent: false,
+    destination: '/components/layout-and-structure/block-stack',
+    permanent: true,
   },
 ];
 
@@ -473,37 +487,37 @@ const lists = [
   {
     source: '/components/action-list',
     destination: '/components/lists/action-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/description-list',
     destination: '/components/lists/description-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/list',
     destination: '/components/lists/list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/listbox',
     destination: '/components/lists/listbox',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/option-list',
     destination: '/components/lists/option-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/resource-item',
     destination: '/components/lists/resource-item',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/resource-list',
     destination: '/components/lists/resource-list',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -511,37 +525,37 @@ const navigation = [
   {
     source: '/components/footer-help',
     destination: '/components/navigation/footer-help',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/fullscreen-bar',
     destination: '/components/navigation/fullscreen-bar',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/link',
     destination: '/components/navigation/link',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/navigation',
     destination: '/components/navigation/navigation',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/pagination',
     destination: '/components/navigation/pagination',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/tabs',
     destination: '/components/navigation/tabs',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/top-bar',
     destination: '/components/navigation/top-bar',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -549,17 +563,17 @@ const overlays = [
   {
     source: '/components/modal',
     destination: '/components/overlays/modal',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/popover',
     destination: '/components/overlays/popover',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/tooltip',
     destination: '/components/overlays/tooltip',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -567,102 +581,102 @@ const selectionAndInput = [
   {
     source: '/components/autocomplete',
     destination: '/components/selection-and-input/autocomplete',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/checkbox',
     destination: '/components/selection-and-input/checkbox',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/choice-list',
     destination: '/components/selection-and-input/choice-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/forms/choice-list',
     destination: '/components/selection-and-input/choice-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/color-picker',
     destination: '/components/selection-and-input/color-picker',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/combobox',
     destination: '/components/selection-and-input/combobox',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/contextual-save-bar',
     destination: '/components/selection-and-input/contextual-save-bar',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/date-picker',
     destination: '/components/selection-and-input/date-picker',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/drop-zone',
     destination: '/components/selection-and-input/drop-zone',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/filters',
     destination: '/components/selection-and-input/filters',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/form',
     destination: '/components/selection-and-input/form',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/forms/form',
     destination: '/components/selection-and-input/form',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/inline-error',
     destination: '/components/selection-and-input/inline-error',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/radio-button',
     destination: '/components/selection-and-input/radio-button',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/range-slider',
     destination: '/components/selection-and-input/range-slider',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/select',
     destination: '/components/selection-and-input/select',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/forms/select',
     destination: '/components/selection-and-input/select',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/tag',
     destination: '/components/selection-and-input/tag',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/text-field',
     destination: '/components/selection-and-input/text-field',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/forms/text-field',
     destination: '/components/selection-and-input/text-field',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -670,124 +684,124 @@ const stylelintPolaris = [
   {
     source: '/tools/stylelint-polaris/rules/colors-at-rule-disallowed-list',
     destination: '/tools/stylelint-polaris/rules/color-at-rule-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/colors-color-named',
     destination: '/tools/stylelint-polaris/rules/color-color-named',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/colors-color-no-hex',
     destination: '/tools/stylelint-polaris/rules/color-color-no-hex',
-    permanent: false,
+    permanent: true,
   },
   {
     source:
       '/tools/stylelint-polaris/rules/colors-custom-property-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/color-custom-property-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source:
       '/tools/stylelint-polaris/rules/colors-declaration-property-value-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/color-declaration-property-value-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/colors-function-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/color-function-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/colors-global-disallowed-list',
     destination: '/tools/stylelint-polaris/rules/color-global-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source:
       '/tools/stylelint-polaris/rules/depth-custom-property-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/shadow-custom-property-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source:
       '/tools/stylelint-polaris/rules/depth-declaration-property-unit-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/shadow-declaration-property-unit-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/depth-function-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/shadow-function-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/depth-global-disallowed-list',
     destination: '/tools/stylelint-polaris/rules/shadow-global-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/depth-property-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/shadow-property-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/shape-at-rule-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/border-at-rule-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source:
       '/tools/stylelint-polaris/rules/shape-custom-property-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/border-custom-property-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source:
       '/tools/stylelint-polaris/rules/shape-declaration-property-unit-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/border-declaration-property-unit-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/shape-function-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/border-function-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source:
       '/tools/stylelint-polaris/rules/spacing-custom-property-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/space-custom-property-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source:
       '/tools/stylelint-polaris/rules/spacing-declaration-property-unit-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/space-declaration-property-unit-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/spacing-function-disallowed-list',
     destination:
       '/tools/stylelint-polaris/rules/space-function-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tools/stylelint-polaris/rules/spacing-global-disallowed-list',
     destination: '/tools/stylelint-polaris/rules/space-global-disallowed-list',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -795,17 +809,17 @@ const tables = [
   {
     source: '/components/table',
     destination: '/components/tables/table',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/index-table',
     destination: '/components/tables/index-table',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/lists-and-tables/index-table',
     destination: '/components/tables/index-table',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -813,22 +827,22 @@ const tokens = [
   {
     source: '/tokens/colors',
     destination: '/tokens/color',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tokens/shape',
     destination: '/tokens/border',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tokens/spacing',
     destination: '/tokens/space',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/tokens/depth',
     destination: '/tokens/shadow',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -836,12 +850,12 @@ const typography = [
   {
     source: '/components/titles-and-text/text-style',
     destination: '/components/typography/text',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/text',
     destination: '/components/typography/text',
-    permanent: false,
+    permanent: true,
   },
 ];
 
@@ -849,21 +863,21 @@ const utilities = [
   {
     source: '/components/app-provider',
     destination: '/components/utilities/app-provider',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/collapsible',
     destination: '/components/utilities/collapsible',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/frame',
     destination: '/components/utilities/frame',
-    permanent: false,
+    permanent: true,
   },
   {
     source: '/components/scrollable',
     destination: '/components/utilities/scrollable',
-    permanent: false,
+    permanent: true,
   },
 ];

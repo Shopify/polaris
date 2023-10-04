@@ -184,10 +184,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                 labelHidden
                 checked={selected}
                 disabled={loading}
-                bleedInlineStart="3"
-                bleedInlineEnd="3"
-                bleedBlockStart="3"
-                bleedBlockEnd="3"
+                bleedInlineStart="300"
+                bleedInlineEnd="300"
+                bleedBlockStart="300"
+                bleedBlockEnd="300"
                 fill
                 labelClassName={styles.CheckboxLabel}
               />
@@ -200,7 +200,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     if (media || selectable) {
       ownedMarkup = (
         <InlineStack
-          gap="3"
+          gap="300"
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
           }
@@ -272,7 +272,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       } else if (breakpoints?.lgUp) {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
-            <Box position="absolute" insetBlockStart="4" insetInlineEnd="5">
+            <Box position="absolute" insetBlockStart="400" insetInlineEnd="500">
               <ButtonGroup variant="segmented">
                 {buttonsFrom(shortcutActions, {size: 'slim'})}
               </ButtonGroup>
@@ -286,16 +286,16 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       <Box
         id={this.props.id}
         position="relative"
-        paddingInlineStart="3"
-        paddingInlineEnd="3"
-        paddingBlockStart="3"
-        paddingBlockEnd="3"
+        paddingInlineStart="300"
+        paddingInlineEnd="300"
+        paddingBlockStart="300"
+        paddingBlockEnd="300"
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
         <InlineGrid columns={{xs: '1fr auto'}}>
           <InlineGrid
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
-            gap="3"
+            gap="300"
           >
             {ownedMarkup}
             <InlineStack blockAlign={getAlignment(verticalAlignment)}>

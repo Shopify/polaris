@@ -158,10 +158,10 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     return (
       <div>
         <Box
-          borderBlockEndWidth="1"
-          borderColor="border-subdued"
-          paddingInlineStart="2"
-          paddingInlineEnd="2"
+          borderBlockEndWidth="025"
+          borderColor="border-secondary"
+          paddingInlineStart="200"
+          paddingInlineEnd="200"
         >
           <TabMeasurer
             tabToFocus={tabToFocus}

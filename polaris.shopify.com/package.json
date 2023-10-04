@@ -1,14 +1,14 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.57.7",
+  "version": "0.58.4",
   "private": true,
   "engines": {
     "node": "^16.17.0 || >=18.12.0"
   },
   "scripts": {
-    "build": "yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
+    "build": "yarn gen-colors && yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
     "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
-    "dev": "yarn get-props && run-p dev:*",
+    "dev": "yarn gen-colors && yarn get-props && run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",
     "dev:playroom": "rm -rf ./public/playroom && playroom start",
     "dev:watch-md": "node scripts/watch-md.mjs",
@@ -20,15 +20,16 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "./scripts/get-props/src/get-props.ts",
-    "gen-assets": "yarn get-props && node scripts/gen-assets.mjs"
+    "gen-assets": "yarn get-props && node scripts/gen-assets.mjs",
+    "gen-colors": "ts-node ./scripts/gen-colors.ts"
   },
   "dependencies": {
     "@floating-ui/react-dom-interactions": "^0.10.1",
     "@headlessui/react": "^1.6.5",
     "@radix-ui/react-polymorphic": "^0.0.14",
-    "@shopify/polaris": "^12.0.0-beta.0",
+    "@shopify/polaris": "^12.0.0-beta.2",
     "@shopify/polaris-icons": "^7.9.0",
-    "@shopify/polaris-tokens": "^7.9.0",
+    "@shopify/polaris-tokens": "^8.0.0-beta.1",
     "@types/react-syntax-highlighter": "^15.5.6",
     "base-64": "^1.0.0",
     "codesandbox": "^2.2.3",
@@ -52,7 +53,6 @@
     "remark-definition-list": "^1.2.0",
     "remark-gfm": "^3.0.1",
     "remark-slug": "^7.0.1",
-    "react-syntax-highlighter": "^15.5.0",
     "remark-unwrap-images": "^3.0.1",
     "sharp": "^0.31.2",
     "terminate": "^2.6.1",

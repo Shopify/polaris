@@ -27,7 +27,7 @@ export default {
 
 export function All() {
   return (
-    <BlockStack gap="16">
+    <BlockStack gap="1600">
       <InAPopover />
       <WithIconsOrImage />
       <WithAnIconAndASuffix />

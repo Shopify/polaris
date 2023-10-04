@@ -1,5 +1,6 @@
 ---
 title: Card
+shortDescription: Used to group similar concepts and tasks together for easier scanning and reading.
 category: Layout and structure
 keywords:
   - layout
@@ -25,7 +26,7 @@ examples:
   - fileName: card-default.tsx
     title: Default
     description: >-
-      By default, cards have an 8px border radius and uses `--p-color-bg` as the background and `--p-shadow-md` as the shadow. There is padding of `space-5` (20px) around children and `space-4` (16px) for small screens.
+      By default, cards have an 8px border radius and uses `--p-color-bg-surface` as the background and `--p-shadow-300` as the shadow. There is padding of `space-5` (20px) around children and `space-4` (16px) for small screens.
   - fileName: card-with-subdued-background.tsx
     title: With subdued background
     description: >-

@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 :root {
-  --item-min-height: var(--p-space-4);
+  --item-min-height: var(--p-space-400);
   --item-min-width: 50px;
-  --item-vertical-padding: var(--p-space-2);
+  --item-vertical-padding: var(--p-space-200);
 }
 
 .Outer {
@@ -19,7 +19,7 @@
   @media #{$p-breakpoints-md-down} {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    padding: var(--p-space-2);
+    padding: var(--p-space-200);
   }
 }
 
@@ -27,7 +27,7 @@
   @media #{$p-breakpoints-md-up} {
     position: relative;
     display: inline-flex;
-    padding-right: var(--p-space-8);
+    padding-right: var(--p-space-800);
   }
 }
 
@@ -46,10 +46,10 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  gap: var(--p-space-1);
+  gap: var(--p-space-100);
 
   @media #{$p-breakpoints-md-up} {
-    padding: 0 var(--p-space-1);
+    padding: 0 var(--p-space-100);
     flex-wrap: wrap;
     align-items: stretch;
   }
@@ -65,11 +65,11 @@
   justify-content: center;
   align-items: center;
   height: 2rem;
-  padding: var(--p-space-1_5-experimental) var(--p-space-3);
+  padding: var(--p-space-150) var(--p-space-300);
   border: 0;
-  border-radius: var(--p-border-radius-2);
+  border-radius: var(--p-border-radius-200);
   background-color: transparent;
-  color: var(--p-color-text-primary);
+  color: var(--p-color-text-brand);
   cursor: pointer;
   text-decoration: none;
   width: 100%;
@@ -90,18 +90,18 @@
   }
 
   &:not([aria-disabled='true']):hover {
-    background-color: var(--p-color-bg-transparent-hover-experimental);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
   }
 
   &:not([aria-disabled='true']):focus {
-    background-color: var(--p-color-bg-hover);
+    background-color: var(--p-color-bg-surface-hover);
     color: var(--p-color-text);
   }
 
   &:not([aria-disabled='true']):focus-visible {
     background-color: transparent;
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
     // stylelint-disable-next-line -- set focus ring using mixin
     @include focus-ring($size: 'wide', $style: 'focused');
   }
@@ -114,8 +114,8 @@
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-secondary-experimental);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-surface-tertiary);
+    color: var(--p-color-text-brand);
     z-index: var(--p-z-index-1);
   }
 
@@ -124,42 +124,42 @@
   }
 
   @media #{$p-breakpoints-md-up} {
-    font-size: var(--p-font-size-75);
-    line-height: var(--p-font-line-height-1);
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-400);
     height: 1.75rem;
   }
 }
 
 .Tab-active {
-  background: var(--p-color-bg-transparent-active-experimental);
-  border-radius: var(--p-border-radius-2);
+  background: var(--p-color-bg-fill-transparent-selected);
+  border-radius: var(--p-border-radius-200);
   color: var(--p-color-text);
 
   &[aria-disabled='true'] {
-    background: var(--p-color-bg-disabled);
+    background: var(--p-color-bg-surface-disabled);
     color: var(--p-color-text-disabled);
   }
 
   &:not([aria-disabled='true']):hover,
   &:not([aria-disabled='true']):focus {
-    background-color: var(--p-color-bg-transparent-hover-experimental);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-transparent-active-experimental);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-fill-transparent-selected);
+    color: var(--p-color-text-brand);
   }
 }
 
 .Tab-hasActions {
-  padding-right: var(--p-space-2);
+  padding-right: var(--p-space-200);
 }
 
 .Tab-iconOnly {
-  padding-left: var(--p-space-1);
-  padding-right: var(--p-space-1);
-  width: var(--p-space-8);
+  padding-left: var(--p-space-100);
+  padding-right: var(--p-space-100);
+  width: var(--p-space-800);
 }
 
 .fillSpace {
@@ -189,7 +189,7 @@
 .List {
   list-style: none;
   margin: 0;
-  padding: var(--p-space-2);
+  padding: var(--p-space-200);
 }
 
 .Item {
@@ -200,11 +200,11 @@
   display: block;
   width: 100%;
   min-height: var(--item-min-height);
-  padding: var(--item-vertical-padding) var(--p-space-4);
+  padding: var(--item-vertical-padding) var(--p-space-400);
   text-align: left;
   text-decoration: none;
   cursor: pointer;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   color: inherit;
 
   &::-moz-focus-inner {
@@ -212,12 +212,12 @@
   }
 
   &:hover {
-    background-color: var(--p-color-bg-hover);
+    background-color: var(--p-color-bg-surface-hover);
     color: var(--p-color-text);
   }
 
   &:active {
-    background-color: var(--p-color-bg-active);
+    background-color: var(--p-color-bg-surface-active);
     color: var(--p-color-text);
   }
 
@@ -246,13 +246,13 @@
   @include unstyled-button;
   height: 100%;
   background-color: transparent;
-  color: var(--p-color-text-primary);
+  color: var(--p-color-text-brand);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  border-radius: var(--p-border-radius-2);
-  padding: 0 var(--p-space-2) 0 var(--p-space-3);
+  border-radius: var(--p-border-radius-200);
+  padding: 0 var(--p-space-200) 0 var(--p-space-300);
   margin-top: var(--p-space-025);
   border: none;
   outline: none;
@@ -267,13 +267,13 @@
   }
 
   &:not([aria-disabled='true']):hover {
-    background-color: var(--p-color-bg-transparent-hover-experimental);
-    color: var(--p-color-text-primary);
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
   }
 
   &:not([aria-disabled='true']):focus {
     background-color: transparent;
-    color: var(--p-color-text-primary);
+    color: var(--p-color-text-brand);
   }
 
   &:not([aria-disabled='true']):focus-visible {
@@ -283,14 +283,14 @@
   }
 
   &:not([aria-disabled='true']):active {
-    background-color: var(--p-color-bg-secondary-experimental);
+    background-color: var(--p-color-bg-surface-tertiary);
     z-index: var(--p-z-index-1);
   }
 
   &[aria-disabled='true'] {
     cursor: default;
     color: var(--p-color-text-disabled);
-    background: var(--p-color-bg-disabled);
+    background: var(--p-color-bg-surface-disabled);
 
     path {
       fill: var(--p-color-icon-disabled);
@@ -307,7 +307,7 @@
 }
 
 .NewTab {
-  padding: 0 var(--p-space-2) 0 var(--p-space-1);
+  padding: 0 var(--p-space-200) 0 var(--p-space-100);
 
   @media #{$p-breakpoints-md-up} {
     position: absolute;

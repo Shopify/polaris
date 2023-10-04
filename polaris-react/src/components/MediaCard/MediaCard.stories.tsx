@@ -225,7 +225,7 @@ export function All() {
   );
 
   return (
-    <BlockStack gap="5">
+    <BlockStack gap="500">
       <MediaCardExample title="Default medium" />
       <MediaCardExample title="Default small" size="small" />
       <MediaCardExample title="Portrait medium" portrait />

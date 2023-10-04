@@ -123,12 +123,12 @@ export function SortButton({
     >
       <Box
         minWidth="148px"
-        paddingInlineStart="3"
-        paddingInlineEnd="3"
-        paddingBlockStart="2"
-        paddingBlockEnd="2"
-        borderBlockEndWidth="1"
-        borderColor="border-subdued"
+        paddingInlineStart="300"
+        paddingInlineEnd="300"
+        paddingBlockStart="200"
+        paddingBlockEnd="200"
+        borderBlockEndWidth="025"
+        borderColor="border-secondary"
       >
         <ChoiceList
           title={i18n.translate('Polaris.IndexFilters.SortButton.title')}
@@ -138,10 +138,10 @@ export function SortButton({
         />
       </Box>
       <Box
-        paddingInlineStart="1_5-experimental"
-        paddingInlineEnd="1_5-experimental"
-        paddingBlockStart="2"
-        paddingBlockEnd="2"
+        paddingInlineStart="150"
+        paddingInlineEnd="150"
+        paddingBlockStart="200"
+        paddingBlockEnd="200"
       >
         <DirectionButton
           direction="asc"

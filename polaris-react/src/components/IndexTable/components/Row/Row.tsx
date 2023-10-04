@@ -13,7 +13,7 @@ import type {Range} from '../../../../utilities/index-provider/types';
 import styles from '../../IndexTable.scss';
 
 type RowType = 'data' | 'subheader';
-type RowStatus = 'success' | 'subdued' | 'critical';
+type RowStatus = 'subdued' | 'success' | 'warning' | 'critical';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
 export interface RowProps {
@@ -25,10 +25,8 @@ export interface RowProps {
   selected?: boolean | 'indeterminate';
   /** The zero-indexed position of the row. Used for Shift key multi-selection */
   position: number;
-  /** Whether the row should be subdued */
-  subdued?: boolean;
-  /** Whether the row should have a status */
-  status?: RowStatus;
+  /** Whether the row should visually indicate its status with a background color */
+  tone?: RowStatus;
   /** Whether the row should be disabled */
   disabled?: boolean;
   /** A tuple array with the first and last index of the range of other rows that this row describes. All rows in the range are selected when the selection range row is selected. */
@@ -52,8 +50,7 @@ export const Row = memo(function Row({
   selected,
   id,
   position,
-  subdued,
-  status,
+  tone,
   disabled,
   selectionRange,
   rowType = 'data',
@@ -118,10 +115,9 @@ export const Row = memo(function Row({
     rowType === 'subheader' && styles['TableRow-subheader'],
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
-    subdued && styles['TableRow-subdued'],
     hovered && !condensed && styles['TableRow-hovered'],
     disabled && styles['TableRow-disabled'],
-    status && styles[variationName('status', status)],
+    tone && styles[variationName('tone', tone)],
     !selectable &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],

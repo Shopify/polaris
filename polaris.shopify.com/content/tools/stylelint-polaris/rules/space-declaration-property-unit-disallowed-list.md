@@ -18,8 +18,8 @@ import RulePostamble from '../_postamble.md';
 
 ```diff
 // Do
-+ gap: var(--p-space-05);
-+ margin: var(--p-space-3) 0;
++ gap: var(--p-space-050);
++ margin: var(--p-space-300) 0;
 // Don't
 - gap: 2px;
 - margin: 12px  0;

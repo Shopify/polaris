@@ -1,5 +1,6 @@
 ---
 title: Description list
+shortDescription: Used to present pairs of related information, like terms and definitions, or names and values, in a list format.
 category: Lists
 keywords:
   - DescriptionList

@@ -3,9 +3,10 @@
 .DirectionButton {
   // stylelint-disable-next-line -- This mixin cannot be replaced with a single token
   @include focus-ring($size: 'wide');
-  border-radius: var(--p-border-radius-2);
-  padding: var(--p-space-1) var(--p-space-3) var(--p-space-1) var(--p-space-2);
-  font-size: var(--p-font-size-100);
+  border-radius: var(--p-border-radius-200);
+  padding: var(--p-space-100) var(--p-space-300) var(--p-space-100)
+    var(--p-space-200);
+  font-size: var(--p-font-size-350);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -16,11 +17,11 @@
   text-align: left;
 
   &:hover {
-    background-color: var(--p-color-bg-transparent-hover-experimental);
+    background-color: var(--p-color-bg-fill-transparent-hover);
   }
 
   + .DirectionButton {
-    margin-top: var(--p-space-1);
+    margin-top: var(--p-space-100);
   }
 
   &:focus-visible {
@@ -33,14 +34,14 @@
 
 .DirectionButton-active {
   color: var(--p-color-text);
-  background: var(--p-color-bg-transparent-active-experimental);
+  background: var(--p-color-bg-fill-transparent-active);
 }
 
 .Label {
   flex: 1;
   color: var(--p-color-text);
-  margin-left: var(--p-space-05);
-  font-size: var(--p-font-size-75);
+  margin-left: var(--p-space-050);
+  font-size: var(--p-font-size-300);
   font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-1);
+  line-height: var(--p-font-line-height-400);
 }

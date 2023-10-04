@@ -23,7 +23,7 @@
   cursor: pointer;
 
   &:hover {
-    background-color: var(--p-color-bg-subdued-hover);
+    background-color: var(--p-color-bg-surface-secondary-hover);
 
     .Actions {
       // stylelint-disable-next-line selector-max-combinators -- show actions on hover
@@ -34,7 +34,7 @@
   }
 
   &:active {
-    background-color: var(--p-color-bg-active);
+    background-color: var(--p-color-bg-surface-active);
   }
 }
 
@@ -99,14 +99,14 @@
 }
 
 .selected {
-  background-color: var(--p-color-bg-interactive-selected);
+  background-color: var(--p-color-bg-surface-brand-selected);
 
   &:hover {
-    background-color: var(--p-color-bg-interactive-subdued-hover);
+    background-color: var(--p-color-bg-surface-brand-hover);
   }
 
   &:active {
-    background-color: var(--p-color-bg-interactive-subdued-active);
+    background-color: var(--p-color-bg-surface-brand-active);
   }
 }
 
@@ -115,7 +115,7 @@
   @include focus-ring($border-width: -1px);
 
   .ListItem + & {
-    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
 
     @include item-separator;
   }
@@ -123,44 +123,43 @@
   &.focused {
     // stylelint-disable-next-line -- remove focus-ring mixin to use outline styles
     @include no-focus-ring;
-    outline: var(--p-border-width-2) solid
-      var(--p-color-border-interactive-focus);
-    outline-offset: calc(-1 * var(--p-space-05));
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+    outline-offset: calc(-1 * var(--p-space-050));
     // stylelint-disable-next-line -- custom property
     z-index: var(--pc-resource-item-clickable-stacking-order);
-    border-radius: var(--p-border-radius-0-experimental);
+    border-radius: var(--p-border-radius-0);
 
     @media #{$p-breakpoints-sm-up} {
-      border-radius: var(--p-border-radius-3);
+      border-radius: var(--p-border-radius-300);
 
       &:first-of-type {
-        border-bottom-left-radius: var(--p-border-radius-0-experimental);
-        border-bottom-right-radius: var(--p-border-radius-0-experimental);
+        border-bottom-left-radius: var(--p-border-radius-0);
+        border-bottom-right-radius: var(--p-border-radius-0);
       }
 
       &:last-of-type {
-        border-top-left-radius: var(--p-border-radius-0-experimental);
-        border-top-right-radius: var(--p-border-radius-0-experimental);
+        border-top-left-radius: var(--p-border-radius-0);
+        border-top-right-radius: var(--p-border-radius-0);
       }
     }
 
     &:only-child {
-      border-radius: var(--p-border-radius-0-experimental);
+      border-radius: var(--p-border-radius-0);
 
       @media #{$p-breakpoints-sm-up} {
-        border-radius: var(--p-border-radius-3);
+        border-radius: var(--p-border-radius-300);
       }
     }
 
     // stylelint-disable-next-line selector-max-class -- set border radius for selectable items
     &.selectable {
-      border-radius: var(--p-border-radius-0-experimental);
+      border-radius: var(--p-border-radius-0);
 
       @media #{$p-breakpoints-sm-up} {
         // stylelint-disable-next-line -- set border radius for last selectable item to match ResourceList border radius
         &:last-child {
-          border-bottom-left-radius: var(--p-border-radius-3);
-          border-bottom-right-radius: var(--p-border-radius-3);
+          border-bottom-left-radius: var(--p-border-radius-300);
+          border-bottom-right-radius: var(--p-border-radius-300);
         }
 
         // stylelint-disable-next-line -- set border radius for last selectable item to match BulkActions border radius
@@ -169,8 +168,8 @@
           &:last-child {
             // stylelint-disable-next-line -- set border radius for last selectable item to match BulkActions border radius
             &.selected {
-              border-bottom-left-radius: var(--p-border-radius-0-experimental);
-              border-bottom-right-radius: var(--p-border-radius-0-experimental);
+              border-bottom-left-radius: var(--p-border-radius-0);
+              border-bottom-right-radius: var(--p-border-radius-0);
             }
           }
         }

@@ -49,7 +49,7 @@ export function WithMixedPropTypes() {
     <Page fullWidth>
       <InlineGrid
         columns={{xs: 2, sm: '2fr 1fr', md: '2fr 1fr 1fr', lg: 6}}
-        gap={{xs: '2'}}
+        gap={{xs: '200'}}
       >
         <div style={{background: 'aquamarine'}}>one</div>
         <div style={{background: 'aquamarine'}}>two</div>
@@ -65,7 +65,7 @@ export function WithMixedPropTypes() {
 export function WithGap() {
   return (
     <Page fullWidth>
-      <InlineGrid columns={{xs: 3}} gap="5">
+      <InlineGrid columns={{xs: 3}} gap="500">
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>Column two</div>
         <div style={{background: 'aquamarine'}}>Column three</div>
@@ -79,7 +79,7 @@ export function WithResponsiveGap() {
     <Page fullWidth>
       <InlineGrid
         columns={{xs: 3}}
-        gap={{xs: '025', sm: '4', md: '6', lg: '8', xl: '10'}}
+        gap={{xs: '025', sm: '400', md: '600', lg: '800', xl: '1000'}}
       >
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>Column two</div>
@@ -92,7 +92,7 @@ export function WithResponsiveGap() {
 export function WithFreeAndFixedWidths() {
   return (
     <Page fullWidth>
-      <InlineGrid columns={{xs: '1fr auto auto'}} gap={{xs: '05'}}>
+      <InlineGrid columns={{xs: '1fr auto auto'}} gap={{xs: '050'}}>
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>
           <Button icon={ChevronLeftMinor} accessibilityLabel="Previous" />
@@ -108,7 +108,7 @@ export function WithFreeAndFixedWidths() {
 export function WithResponsiveInlineGrid() {
   return (
     <Page fullWidth>
-      <InlineGrid columns={{xs: 1, sm: 3}} gap="4">
+      <InlineGrid columns={{xs: 1, sm: 3}} gap="400">
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>Column two</div>
         <div style={{background: 'aquamarine'}}>Column three</div>
@@ -120,7 +120,7 @@ export function WithResponsiveInlineGrid() {
 export function WithResponsiveColumnAlisases() {
   return (
     <Page fullWidth>
-      <InlineGrid columns={['oneThird', 'twoThirds']} gap="4">
+      <InlineGrid columns={['oneThird', 'twoThirds']} gap="400">
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>Column two</div>
       </InlineGrid>

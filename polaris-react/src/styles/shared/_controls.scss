@@ -3,15 +3,15 @@
 }
 
 @function control-vertical-padding() {
-  @return calc((36px - var(--p-font-line-height-3) - var(--p-space-05)) / 2);
+  @return calc((36px - var(--p-font-line-height-600) - var(--p-space-050)) / 2);
 }
 
 @mixin control-backdrop($style: base) {
   @if $style == base {
     position: relative;
-    border: var(--p-border-width-2) solid var(--p-color-border-input);
-    background-color: var(--p-color-bg);
-    border-radius: var(--p-border-radius-1);
+    border: var(--p-border-width-050) solid var(--p-color-input-border);
+    background-color: var(--p-color-bg-surface);
+    border-radius: var(--p-border-radius-100);
 
     &.hover,
     &:hover {
@@ -19,20 +19,20 @@
       border-color: var(--p-color-border-hover);
     }
   } @else if $style == active {
-    border-color: var(--p-color-border-interactive);
+    border-color: var(--p-color-border-emphasis);
 
     &::before {
       opacity: 1;
       transform: scale(1);
       @media (-ms-high-contrast: active) {
-        border: var(--p-border-width-2) solid windowText;
+        border: var(--p-border-width-050) solid windowText;
       }
     }
   } @else if $style == disabled {
     border-color: var(--p-color-border-disabled);
 
     &::before {
-      background-color: var(--p-color-bg-disabled);
+      background-color: var(--p-color-bg-surface-disabled);
     }
 
     &:hover {
@@ -40,7 +40,7 @@
     }
   } @else if $style == error {
     border-color: var(--p-color-border-critical);
-    background-color: var(--p-color-bg-critical);
+    background-color: var(--p-color-bg-fill-critical-secondary);
 
     &.hover,
     &:hover {

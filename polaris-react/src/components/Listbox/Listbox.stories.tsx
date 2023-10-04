@@ -22,54 +22,54 @@ export default {
 
 export function All() {
   return (
-    <BlockStack gap="8">
-      <BlockStack gap="4">
+    <BlockStack gap="800">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
-        <Box paddingBlockEnd="3" />
+        <Box paddingBlockEnd="300" />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With loading
         </Text>
         <WithLoading />
-        <Box paddingBlockEnd="3" />
+        <Box paddingBlockEnd="300" />
       </BlockStack>
 
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With action
         </Text>
         <WithAction />
-        <Box paddingBlockEnd="3" />
+        <Box paddingBlockEnd="300" />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With custom element
         </Text>
         <WithCustomOptions />
-        <Box paddingBlockEnd="3" />
+        <Box paddingBlockEnd="300" />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With search
         </Text>
         <WithSearch />
-        <Box paddingBlockEnd="3" />
+        <Box paddingBlockEnd="300" />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With disabled text option
         </Text>
         <WithDisabledTextOption />
       </BlockStack>
-      <Box paddingBlockEnd="3" />
+      <Box paddingBlockEnd="300" />
     </BlockStack>
   );
 }
@@ -165,7 +165,7 @@ export function WithCustomOptions() {
           <Listbox.Option key={id} value={value} selected={selected}>
             <Listbox.TextOption selected={selected}>
               <Box width="100%">
-                <InlineStack gap="2" align="space-between">
+                <InlineStack gap="200" align="space-between">
                   {label}
                   <Text as="span" tone="subdued">
                     {`${subscribers} subscribers`}
@@ -385,7 +385,7 @@ export function WithSearch() {
     <Listbox.Action value={actionValue}>
       <span
         style={{
-          color: 'var(--p-color-text-subdued)',
+          color: 'var(--p-color-text-secondary)',
         }}
       >
         Show all 111 segments
@@ -447,9 +447,9 @@ export function WithSearch() {
           style={{
             position: 'relative',
             height: '262px',
-            padding: 'var(--p-space-2) 0',
-            borderBottomLeftRadius: 'var(--p-border-radius-2)',
-            borderBottomRightRadius: 'var(--p-border-radius-2)',
+            padding: 'var(--p-space-200) 0',
+            borderBottomLeftRadius: 'var(--p-border-radius-200)',
+            borderBottomRightRadius: 'var(--p-border-radius-200)',
           }}
           onScrolledToBottom={handleLazyLoadSegments}
         >
@@ -463,7 +463,7 @@ export function WithSearch() {
 export function WithDisabledTextOption() {
   return (
     <LegacyCard>
-      <Box paddingBlockStart="2" paddingBlockEnd="2">
+      <Box paddingBlockStart="200" paddingBlockEnd="200">
         <Listbox accessibilityLabel="Listbox with disabled item example">
           <Listbox.Option value="UniqueValue-1">
             <Listbox.TextOption>Item 1</Listbox.TextOption>

@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {getMediaConditions, breakpoints} from '@shopify/polaris-tokens';
+import {getMediaConditions, themeDefault} from '@shopify/polaris-tokens';
 import type {
   BreakpointsAlias,
   BreakpointsAliasDirection,
@@ -56,7 +56,9 @@ type BreakpointsMatches = {
   [DirectionAlias in BreakpointsDirectionAlias]: boolean;
 };
 
-const breakpointsQueryEntries = getBreakpointsQueryEntries(breakpoints);
+const breakpointsQueryEntries = getBreakpointsQueryEntries(
+  themeDefault.breakpoints,
+);
 
 function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
   if (!isServer) {

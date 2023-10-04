@@ -1,5 +1,6 @@
 ---
 title: Skeleton body text
+shortDescription: Provides a low fidelity representation of content before it appears, improving perceived load times.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -50,11 +51,13 @@ Show static content that never changes on a page and use skeleton loading for dy
 #### Do
 
 Use skeleton body text for dynamic content.
+
 ![Image showing skeleton body text for dynamic content](/images/components/feedback-indicators/skeleton-body-text/do-use-skeleton-body-for-dynamic-content@2x.png)
 
 #### Don’t
 
 Use skeleton body text for static content or use placeholder content for dynamic content.
+
 ![Image showing skeleton body text for static content](/images/components/feedback-indicators/skeleton-body-text/dont-use-skeleton-body-for-static-or-placeholder-for-dynamic-text@2x.png)
 
 </DoDont>

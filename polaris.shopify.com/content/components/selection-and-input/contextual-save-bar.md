@@ -1,5 +1,6 @@
 ---
 title: Contextual save bar
+shortDescription: Informs merchants of their options once they have made changes to a form on the page or while creating a new object.
 category: Selection and input
 keywords:
   - form

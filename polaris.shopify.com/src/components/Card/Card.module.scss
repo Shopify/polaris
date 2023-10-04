@@ -6,8 +6,8 @@
 
   border-radius: var(--border-radius-700);
   background-color: var(--surface);
-  border-radius: var(----p-border-radius-3, 12px);
-  border-radius: var(----p-border-radius-3, 12px);
+  border-radius: var(--p-border-radius-300, 12px);
+  border-radius: var(--p-border-radius-300, 12px);
 
   // As this will be used with Markdown elements and components
   // We want to preserve margin rules for all children
@@ -26,4 +26,9 @@
     1px 0px 0px 0px color(display-p3 0.8902 0.8902 0.8902) inset,
     -1px 0px 0px 0px color(display-p3 0.8902 0.8902 0.8902) inset,
     0px -1px 0px 0px color(display-p3 0.8314 0.8314 0.8314) inset;
+
+  .Card {
+    box-shadow: none;
+    background-color: var(--surface-subdued);
+  }
 }

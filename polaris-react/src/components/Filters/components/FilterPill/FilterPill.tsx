@@ -192,7 +192,7 @@ export function FilterPill({
       >
         <div className={styles.PopoverWrapper}>
           <Popover.Section>
-            <BlockStack gap="1">
+            <BlockStack gap="100">
               {filter}
               {clearButtonMarkup}
             </BlockStack>

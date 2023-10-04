@@ -1,5 +1,63 @@
 # Changelog
 
+## 8.0.0-beta.1
+
+### Major Changes
+
+- [#10760](https://github.com/Shopify/polaris/pull/10760) [`2a467249f`](https://github.com/Shopify/polaris/commit/2a467249f3a198dc252eba53df9fecc7bf6572dd) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated `shadow` token values
+
+* [#10801](https://github.com/Shopify/polaris/pull/10801) [`2cdc59f88`](https://github.com/Shopify/polaris/commit/2cdc59f8823a6529ebb6150c316934633f86b28c) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Deprecated a collection of types, utils, and JSON exports
+
+- [#10673](https://github.com/Shopify/polaris/pull/10673) [`08aaf11ec`](https://github.com/Shopify/polaris/commit/08aaf11ec59680155476a20036a672795c2bad47) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated `font-size` and `font-weight` token values
+
+* [#10674](https://github.com/Shopify/polaris/pull/10674) [`a2aefd060`](https://github.com/Shopify/polaris/commit/a2aefd0608b854b376c1f8de8bd33195074dc7e3) Thanks [@lgriffee](https://github.com/lgriffee)! - Removed legacy v11 `border`, `font`, `space`, `shadow` tokens
+
+- [#10779](https://github.com/Shopify/polaris/pull/10779) [`2ce6c375d`](https://github.com/Shopify/polaris/commit/2ce6c375d9a180609c087764d963bb20868e03bf) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Removed legacy v11 `color` tokens
+
+### Minor Changes
+
+- [#10669](https://github.com/Shopify/polaris/pull/10669) [`794d1f5e4`](https://github.com/Shopify/polaris/commit/794d1f5e4b79a2721594979d31972cd7534d6174) Thanks [@lgriffee](https://github.com/lgriffee)! - Added `border-radius` semantic layer
+
+## 7.13.0-beta.0
+
+### Minor Changes
+
+- [#10382](https://github.com/Shopify/polaris/pull/10382) [`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Renamed `ThemeVariant` to `Theme` and exposed `Theme` type
+
+## 7.12.1
+
+### Patch Changes
+
+- [#10671](https://github.com/Shopify/polaris/pull/10671) [`f23af6fdd`](https://github.com/Shopify/polaris/commit/f23af6fdd3a52d93700d3aeab43305bcf3989e98) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated the `toValues` token utility to resolve token name references in the `theme` to their unit values
+
+## 7.12.0
+
+### Minor Changes
+
+- [#10585](https://github.com/Shopify/polaris/pull/10585) [`45fc3a01f`](https://github.com/Shopify/polaris/commit/45fc3a01f959f6eea2c1bf03b981811a6f13f344) Thanks [@laurkim](https://github.com/laurkim)! - Migrated `space` custom properties from `v11` to `v12`
+
+## 7.11.0
+
+### Minor Changes
+
+- [#10647](https://github.com/Shopify/polaris/pull/10647) [`f26cebe99`](https://github.com/Shopify/polaris/commit/f26cebe99e486730bce2ca1d9add89e24ef9c648) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added composite `text` and `font-letter-spacing` tokens
+
+* [#10643](https://github.com/Shopify/polaris/pull/10643) [`2359e5f5a`](https://github.com/Shopify/polaris/commit/2359e5f5a4e6a93f8dd70997c4ae9a1ab732911c) Thanks [@lgriffee](https://github.com/lgriffee)! - Added semantic `space` token scale
+
+## 7.10.0
+
+### Minor Changes
+
+- [#10465](https://github.com/Shopify/polaris/pull/10465) [`fe1aac1b5`](https://github.com/Shopify/polaris/commit/fe1aac1b5a9868c3decda53b94150e0242905d04) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated private primitive `colors`
+
+* [#10477](https://github.com/Shopify/polaris/pull/10477) [`790a001cd`](https://github.com/Shopify/polaris/commit/790a001cd1942a0cd32e90b98339236fe2800afc) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated semantic `color` tokens
+
+- [#10600](https://github.com/Shopify/polaris/pull/10600) [`63cf3ad24`](https://github.com/Shopify/polaris/commit/63cf3ad2405f75589869a6f1aa33c277f559df3c) Thanks [@lgriffee](https://github.com/lgriffee)! - Added public primitive and semantic `shadow` token scales
+
+### Patch Changes
+
+- [#10485](https://github.com/Shopify/polaris/pull/10485) [`120e96eae`](https://github.com/Shopify/polaris/commit/120e96eaeb8ebda3dcf99d3917167e442bd19cdf) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated public primitive `base` and `light-uplift` theme scales
+
 ## 7.9.0
 
 ### Minor Changes

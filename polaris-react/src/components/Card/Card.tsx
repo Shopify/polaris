@@ -1,7 +1,7 @@
 import type {
   BreakpointsAlias,
   ColorBackgroundAlias,
-  BorderRadiusScale,
+  BorderRadiusAliasOrScale,
   SpaceScale,
 } from '@shopify/polaris-tokens';
 import React from 'react';
@@ -17,14 +17,14 @@ type Spacing = ResponsiveProp<SpaceScale>;
 export interface CardProps {
   children?: React.ReactNode;
   /** Background color
-   * @default 'bg'
+   * @default 'bg-surface'
    */
   background?: ColorBackgroundAlias;
   /** The spacing around the card
-   * @default {xs: '4', sm: '5'}
+   * @default {xs: '400', sm: '500'}
    * @example
-   * padding='4'
-   * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * padding='400'
+   * padding={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   padding?: Spacing;
   /** Border radius value above a set breakpoint */
@@ -33,12 +33,12 @@ export interface CardProps {
 
 export const Card = ({
   children,
-  background = 'bg',
-  padding = {xs: '4'},
+  background = 'bg-surface',
+  padding = {xs: '400'},
   roundedAbove,
 }: CardProps) => {
   const breakpoints = useBreakpoints();
-  const defaultBorderRadius: BorderRadiusScale = '3';
+  const defaultBorderRadius: BorderRadiusAliasOrScale = '300';
 
   let hasBorderRadius = !roundedAbove;
 
@@ -49,8 +49,8 @@ export const Card = ({
   return (
     <WithinContentContext.Provider value>
       <ShadowBevel
-        boxShadow="xs"
-        borderRadius={hasBorderRadius ? defaultBorderRadius : '0-experimental'}
+        boxShadow="100"
+        borderRadius={hasBorderRadius ? defaultBorderRadius : '0'}
         zIndex="32"
       >
         <Box

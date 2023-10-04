@@ -15,12 +15,12 @@ export function Header({children}: HeaderProps) {
   const content =
     typeof children === 'string' ? (
       <Box
-        paddingBlockStart="2"
-        paddingInlineStart="4"
-        paddingBlockEnd="2"
-        paddingInlineEnd="4"
+        paddingBlockStart="200"
+        paddingInlineStart="400"
+        paddingBlockEnd="200"
+        paddingInlineEnd="400"
       >
-        <Text as="span" variant="headingXs" tone="subdued">
+        <Text as="span" variant="headingSm" tone="subdued">
           {children}
         </Text>
       </Box>

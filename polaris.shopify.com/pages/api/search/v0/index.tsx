@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import Fuse from 'fuse.js';
-import {metadata, MetadataProperties} from '@shopify/polaris-tokens';
+import {metaThemeDefault, MetaTokenProperties} from '@shopify/polaris-tokens';
 import iconMetadata from '@shopify/polaris-icons/metadata';
 
 import {
@@ -75,7 +75,7 @@ const getSearchResults = (query?: string) => {
     });
   });
 
-  const {color, border, font, motion, shadow, space, zIndex} = metadata;
+  const {color, border, font, motion, shadow, space, zIndex} = metaThemeDefault;
   const tokenGroups = {
     color,
     border,
@@ -88,7 +88,7 @@ const getSearchResults = (query?: string) => {
 
   Object.entries(tokenGroups).forEach(([groupSlug, tokenGroup]) => {
     Object.entries(tokenGroup).forEach(
-      ([tokenName, tokenProperties]: [string, MetadataProperties]) => {
+      ([tokenName, tokenProperties]: [string, MetaTokenProperties]) => {
         results.push({
           id: slugify(`tokens ${tokenName}`),
           category: 'tokens',

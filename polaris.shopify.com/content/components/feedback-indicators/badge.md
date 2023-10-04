@@ -1,5 +1,6 @@
 ---
 title: Badge
+shortDescription: Used to inform merchants of the tone of an object or an action taken.
 category: Feedback indicators
 keywords:
   - pills

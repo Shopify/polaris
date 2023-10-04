@@ -6,7 +6,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function InlineGridWithVaryingGapExample() {
   return (
     <SpacingBackground>
-      <InlineGrid gap="4" columns={3}>
+      <InlineGrid gap="400" columns={3}>
         <Placeholder height="320px" />
         <Placeholder height="320px" />
         <Placeholder height="320px" />
@@ -25,7 +25,7 @@ const SpacingBackground = ({
   return (
     <div
       style={{
-        background: 'var(--p-color-bg-success-subdued)',
+        background: 'var(--p-color-bg-surface-success)',
         width,
         height: 'auto',
       }}

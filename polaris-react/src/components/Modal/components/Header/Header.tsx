@@ -21,8 +21,8 @@ export function Header({
   titleHidden,
   onClose,
 }: HeaderProps) {
-  const headerPaddingInline = '4';
-  const headerPaddingBlock = '4';
+  const headerPaddingInline = '400';
+  const headerPaddingBlock = '400';
 
   if (titleHidden || !children) {
     return (
@@ -39,16 +39,16 @@ export function Header({
 
   return (
     <Box
-      paddingBlockStart="4"
-      paddingBlockEnd="4"
+      paddingBlockStart="400"
+      paddingBlockEnd="400"
       paddingInlineStart={headerPaddingInline}
       paddingInlineEnd={headerPaddingInline}
-      borderBlockEndWidth="1"
+      borderBlockEndWidth="025"
       borderColor="border"
-      background="bg-secondary-experimental"
+      background="bg-surface-tertiary"
     >
-      <InlineGrid columns={{xs: '1fr auto'}} gap="4">
-        <InlineStack gap="4" blockAlign="center">
+      <InlineGrid columns={{xs: '1fr auto'}} gap="400">
+        <InlineStack gap="400" blockAlign="center">
           <Text id={id} as="h2" variant="headingMd" breakWord>
             {children}
           </Text>

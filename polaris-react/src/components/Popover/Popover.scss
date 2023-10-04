@@ -7,12 +7,12 @@ $content-max-width: 400px;
 $vertical-motion-offset: -5px;
 
 .Popover {
-  max-width: calc(100vw - var(--p-space-8));
-  margin: $visible-portion-of-arrow var(--p-space-2) var(--p-space-4);
+  max-width: calc(100vw - var(--p-space-800));
+  margin: $visible-portion-of-arrow var(--p-space-200) var(--p-space-400);
   will-change: left, top;
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-md),
-    $borderRadius: var(--p-border-radius-3),
+    $boxShadow: var(--p-shadow-300),
+    $borderRadius: var(--p-border-radius-300),
     $zIndex: 2
   );
 }
@@ -48,7 +48,7 @@ $vertical-motion-offset: -5px;
 }
 
 .positionedAbove {
-  margin: var(--p-space-4) var(--p-space-2) $visible-portion-of-arrow;
+  margin: var(--p-space-400) var(--p-space-200) $visible-portion-of-arrow;
 
   &.fullWidth {
     margin: 0 auto $visible-portion-of-arrow auto;
@@ -58,8 +58,8 @@ $vertical-motion-offset: -5px;
 .ContentContainer {
   position: relative;
   overflow: hidden;
-  background: var(--p-color-bg);
-  border-radius: var(--p-space-3);
+  background: var(--p-color-bg-surface);
+  border-radius: var(--p-space-300);
 
   /* Prevent Scrollable's box shadows overflowing the rounded corners of this
    * element on Safari prior to tech preview version 156.
@@ -71,7 +71,7 @@ $vertical-motion-offset: -5px;
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   max-width: $content-max-width;
   max-height: $content-max-height;
 
@@ -104,7 +104,7 @@ $vertical-motion-offset: -5px;
 }
 
 .Pane-subdued {
-  background-color: var(--p-color-bg-subdued);
+  background-color: var(--p-color-bg-surface-secondary);
 }
 
 .Pane-captureOverscroll {
@@ -113,7 +113,7 @@ $vertical-motion-offset: -5px;
 
 .Section {
   + .Section {
-    border-top: var(--p-border-width-1) solid var(--p-color-border-subdued);
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
   }
 }
 

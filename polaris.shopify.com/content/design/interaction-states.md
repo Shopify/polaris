@@ -15,13 +15,20 @@ keywords:
   - state
 ---
 
+![A collection of buttons in different states](/images/design/interaction-states/interaction-states-intro@2x.png)
+
+---
+
 # {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 
-![A collection of buttons in different states](/images/design/interaction-states/interaction-states-intro@2x.png)
+<DirectiveCard status="Caution">
 
----
+This section is currently being reworked to provide better guidance aligned
+with Polaris v12. Stay tuned!
+
+</DirectiveCard>
 
 ## Principles
 

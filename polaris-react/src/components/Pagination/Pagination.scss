@@ -6,27 +6,27 @@
     border: none !important;
     /* stylelint-disable-next-line declaration-no-important -- override box-shadow */
     box-shadow: none !important;
-    background-color: var(--p-color-bg-strong);
+    background-color: var(--p-color-bg-fill-tertiary);
 
     &:hover {
-      background-color: var(--p-color-bg-strong-hover);
+      background-color: var(--p-color-bg-fill-tertiary-hover);
     }
 
     &:active {
       /* stylelint-disable-next-line declaration-no-important -- override box shadow */
-      box-shadow: var(--p-shadow-inset-md) !important;
+      box-shadow: var(--p-shadow-inset-200) !important;
     }
 
     &:active,
     &:focus {
-      background-color: var(--p-color-bg-strong-active);
+      background-color: var(--p-color-bg-fill-tertiary-active);
     }
   }
 
   &.table {
     button {
-      --button-min-height: var(--p-space-6);
-      background-color: var(--p-color-bg-subdued);
+      --button-min-height: var(--p-space-600);
+      background-color: var(--p-color-bg-surface-secondary);
       min-height: var(--button-min-height);
       min-width: var(--button-min-height);
       height: var(--button-min-height);
@@ -35,7 +35,7 @@
 
       /* stylelint-disable -- override pagination buttons in tables  */
       &:hover {
-        background-color: var(--p-color-bg-strong-hover);
+        background-color: var(--p-color-bg-fill-tertiary-hover);
 
         svg {
           fill: var(--p-color-icon-hover);
@@ -44,7 +44,7 @@
 
       &:active,
       &:focus {
-        background-color: var(--p-color-bg-strong-active);
+        background-color: var(--p-color-bg-fill-tertiary-active);
 
         svg {
           fill: var(--p-color-icon-active);

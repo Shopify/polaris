@@ -124,13 +124,13 @@ export function OptionList({
         const titleLevel = isFirstOption ? 'h2' : 'h3';
         const titleMarkup = title ? (
           <Box
-            paddingBlockStart={isFirstOption ? '05' : '3'}
-            paddingInlineStart="1_5-experimental"
-            paddingBlockEnd="1"
-            paddingInlineEnd="1_5-experimental"
-            borderColor="border-subdued"
+            paddingBlockStart={isFirstOption ? '050' : '300'}
+            paddingInlineStart="150"
+            paddingBlockEnd="100"
+            paddingInlineEnd="150"
+            borderColor="border-secondary"
           >
-            <Text as={titleLevel} variant="headingXs">
+            <Text as={titleLevel} variant="headingSm">
               {title}
             </Text>
           </Box>
@@ -172,10 +172,10 @@ export function OptionList({
         // eslint-disable-next-line no-nested-ternary
         const blockStartPadding = isFirstOption
           ? title
-            ? '1'
+            ? '100'
             : '0'
           : title
-          ? '05'
+          ? '050'
           : '0';
 
         return (
@@ -194,7 +194,7 @@ export function OptionList({
     : null;
 
   return (
-    <Box as="ul" role={role as BoxProps['role']} padding="1_5-experimental">
+    <Box as="ul" role={role as BoxProps['role']} padding="150">
       {optionsMarkup}
     </Box>
   );

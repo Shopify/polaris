@@ -28,50 +28,50 @@ export default {
 
 export function All() {
   return (
-    <BlockStack gap="8">
-      <BlockStack gap="4">
+    <BlockStack gap="800">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With action list
         </Text>
         <WithActionList />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With content and actions
         </Text>
         <WithContentAndActions />
       </BlockStack>
 
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With form components
         </Text>
         <WithFormComponents />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With lazy loaded list
         </Text>
         <WithLazyLoadedList />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With scrollable lazy loaded list
         </Text>
         <WithScrollableLazyLoadedList />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With searchable listbox
         </Text>
         <WithSearchableListbox />
       </BlockStack>
 
-      <BlockStack gap="2">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With loading smaller content
         </Text>
@@ -110,7 +110,7 @@ export function WithActionList() {
 
   return (
     <div style={{height: '250px'}}>
-      <BlockStack gap="4">
+      <BlockStack gap="400">
         <Popover
           active={activePopover === 'popover1'}
           activator={activator}
@@ -389,9 +389,9 @@ export function WithScrollableLazyLoadedList() {
                 position: 'relative',
                 width: '231px',
                 height: '262px',
-                padding: 'var(--p-space-2) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                padding: 'var(--p-space-200) 0',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleScrolledToBottom}
             >
@@ -600,7 +600,7 @@ export function WithSearchableListbox() {
   const activator = (
     <div
       style={{
-        fontSize: 'var(--p-font-size-300)',
+        fontSize: 'var(--p-font-size-500)',
         color: 'var(--p-color-text)',
         borderBottom: '1px dashed var(--p-color-border)',
       }}
@@ -657,7 +657,7 @@ export function WithSearchableListbox() {
     <Listbox.Action value={actionValue}>
       <span
         style={{
-          color: 'var(--p-color-text-subdued)',
+          color: 'var(--p-color-text-secondary)',
         }}
       >
         Show all 111 segments
@@ -729,9 +729,9 @@ export function WithSearchableListbox() {
                 position: 'relative',
                 width: '310px',
                 height: '262px',
-                padding: 'var(--p-space-2) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                padding: 'var(--p-space-200) 0',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >
@@ -818,12 +818,12 @@ export function WithSubduedPane() {
         onClose={togglePopoverActive}
       >
         <Popover.Pane>
-          <Box padding="4">
+          <Box padding="400">
             <Text as="p">Popover content</Text>
           </Box>
         </Popover.Pane>
         <Popover.Pane subdued>
-          <Box padding="4">
+          <Box padding="400">
             <Text as="p">Subdued popover pane</Text>
           </Box>
         </Popover.Pane>

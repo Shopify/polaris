@@ -1,5 +1,6 @@
 ---
 title: Layout
+shortDescription: A structural component used to group other components. Creates consistent spacing and helps layout stack and scale responsively.
 category: Layout and structure
 keywords:
   - one column

@@ -3,7 +3,7 @@
 @import '../../styles/variables.scss';
 
 .Image {
-  border-radius: var(--border-radius-200);
+  border-radius: var(--p-border-radius-200);
   width: 100%;
   height: auto;
 }
@@ -220,7 +220,7 @@
 .MarkdownHeading {
   display: flex;
   align-items: center;
-  gap: var(--p-space-1);
+  gap: var(--p-space-100);
 
   &:hover {
     .MarkdownCopyButton {

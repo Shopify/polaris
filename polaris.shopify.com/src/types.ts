@@ -1,4 +1,4 @@
-import type {MetadataProperties} from '@shopify/polaris-tokens';
+import type {MetaTokenProperties} from '@shopify/polaris-tokens';
 import type {Icon} from '@shopify/polaris-icons/metadata';
 import type {MDXRemoteSerializeResult} from 'next-mdx-remote';
 
@@ -61,6 +61,7 @@ export type FrontMatter = {
   category?: string;
   url?: string;
   description?: string;
+  shortDescription?: string;
   seoDescription?: string;
   examples?: Example[];
   icon?: string;
@@ -96,7 +97,7 @@ export type MarkdownFile = {
   readme: string;
 };
 
-export interface TokenPropertiesWithName extends MetadataProperties {
+export interface TokenPropertiesWithName extends MetaTokenProperties {
   name: string;
 }
 

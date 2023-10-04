@@ -1,9 +1,5 @@
-import type {Experimental} from '../../types';
 import type {MetaTokenProperties} from '../types';
 import {size} from '../../size';
-import {createVar as createVarName} from '../../utilities';
-
-type BorderRadiusScaleExperimental = Experimental<'0' | '1_5'>;
 
 export type BorderRadiusScale =
   | '0'
@@ -14,33 +10,16 @@ export type BorderRadiusScale =
   | '300'
   | '400'
   | '500'
-  | '750'
-  | 'full'
-  | '05'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | BorderRadiusScaleExperimental;
+  | '750';
 
-type BorderWidthScaleExperimental = Experimental<'1' | '2'>;
+export type BorderRadiusAlias = 'full';
 
-export type BorderWidthScale =
-  | '0165'
-  | '025'
-  | '050'
-  | '100'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | BorderWidthScaleExperimental;
+export type BorderRadiusAliasOrScale = BorderRadiusAlias | BorderRadiusScale;
+
+export type BorderWidthScale = '0165' | '025' | '050' | '100';
 
 export type BorderTokenName =
-  | `border-radius-${BorderRadiusScale}`
+  | `border-radius-${BorderRadiusAliasOrScale}`
   | `border-width-${BorderWidthScale}`;
 
 export type BorderTokenGroup = {
@@ -80,33 +59,6 @@ export const border: {
   'border-radius-full': {
     value: '9999px',
   },
-  'border-radius-0-experimental': {
-    value: '0px',
-  },
-  'border-radius-05': {
-    value: '2px',
-  },
-  'border-radius-1': {
-    value: '4px',
-  },
-  'border-radius-2': {
-    value: '8px',
-  },
-  'border-radius-3': {
-    value: '12px',
-  },
-  'border-radius-4': {
-    value: '16px',
-  },
-  'border-radius-5': {
-    value: '20px',
-  },
-  'border-radius-6': {
-    value: '30px',
-  },
-  'border-radius-1_5-experimental': {
-    value: '6px',
-  },
   'border-width-0165': {
     value: size['0165'],
   },
@@ -119,29 +71,4 @@ export const border: {
   'border-width-100': {
     value: size[100],
   },
-  'border-width-1': {
-    value: '1px',
-  },
-  'border-width-2': {
-    value: '2px',
-  },
-  'border-width-3': {
-    value: '3px',
-  },
-  'border-width-4': {
-    value: '4px',
-  },
-  'border-width-5': {
-    value: '5px',
-  },
-  'border-width-1-experimental': {
-    value: '0.66px',
-  },
-  'border-width-2-experimental': {
-    value: '1px',
-  },
 };
-
-export function createVar(borderTokenName: BorderTokenName) {
-  return `var(${createVarName(borderTokenName)})`;
-}
