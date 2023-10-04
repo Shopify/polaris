@@ -75,11 +75,9 @@ export function HoverCard({
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
 
-  const {
-    value: active,
-    setTrue: setActiveTrue,
-    setFalse: handleBlur,
-  } = useToggle(Boolean(originalActive));
+  const {value: active, setFalse: handleBlur} = useToggle(
+    Boolean(originalActive),
+  );
 
   const WrapperComponent: any = activatorWrapper;
 
