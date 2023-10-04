@@ -1,6 +1,7 @@
 import React from 'react';
+// @ts-expect-error
+import {MyComponent} from '@shopify/polaris';
 
-declare function MyComponent(props: any): JSX.Element;
 declare const mySpreadProps: {[key: string]: any};
 declare const myProp: boolean;
 

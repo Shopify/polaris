@@ -1,17 +1,18 @@
 import React from 'react';
+// @ts-expect-error
+import {MyComponent as MyPolarisComponent} from '@shopify/polaris';
 
-declare function MyComponent(props: any): JSX.Element;
 declare function CompoundComponent(props: any): JSX.Element;
 declare function Child(props: any): JSX.Element;
 
-MyComponent.CompoundComponent = CompoundComponent;
+MyPolarisComponent.CompoundComponent = CompoundComponent;
 
 export function App() {
   return (
-    <MyComponent>
-      <MyComponent.CompoundComponent prop="value" />
+    <MyPolarisComponent>
+      <MyPolarisComponent.CompoundComponent prop="value" />
       Hello
       <Child prop="value" />
-    </MyComponent>
+    </MyPolarisComponent>
   );
 }
