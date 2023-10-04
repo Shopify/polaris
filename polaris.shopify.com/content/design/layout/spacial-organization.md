@@ -1,0 +1,256 @@
+---
+title: Spacial Organization
+order: 1
+icon: BuyButtonButtonLayoutMajor
+keywords:
+  - layout
+  - layout components
+  - structure
+  - position
+  - stack
+  - columns
+  - bleed
+  - card
+  - box
+  - inline
+  - divider
+  - responsive
+  - spacing
+description: Layout determines the placement, positioning, and organization of various components within the UI, such as buttons, menus, content sections, and other visual elements.
+---
+
+# Layout &rarr; {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Subnav />
+
+<Stack gap="800">
+    <Card>
+        <Grid gap="400" >
+            <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+
+                ## Building layouts
+
+                The Shopify admin is built by using a combination of components like cards, popovers, modals, tables and so on. These components define the elevation of different surfaces in the admin and how they can interact with each other.
+
+            </Grid.Cell>
+
+            <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+
+                ![A card, a popover and a modal](/images/design/layout/layout-spatial-01-building@2x.png)
+
+            </Grid.Cell>
+        </Grid>
+    </Card>
+    <Card>
+        <Grid gap="400">
+            <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+
+                ## Surfaces
+
+                Surfaces in the admin contain other elements, like badges and text. Cards, popovers, modals and other such components are surfaces that are used to build the admin.
+
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+
+                ![A diagram showing a container, a surface, an inset surface, a divided container, an inset table and the admin’s background](/images/design/layout/layout-spatial-02-surfaces@2x.png)
+
+            </Grid.Cell>
+        </Grid>
+    </Card>
+    <Card>
+        <Grid gap="400">
+            <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+
+                ### Dividing surfaces
+
+                Surfaces can be divided in different ways to offer flexibility when laying out components in the admin.
+
+                Nested surfaces can be grouped together within another surface to achieve visual separation between different parts of a component.
+
+                Divider lines are reserved for data and index tables.
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+
+                ![A card with nested surfaces, and another card that contains a table with horizontal dividers](/images/design/layout/layout-spatial-03-dividing-surfaces@2x.png)
+
+            </Grid.Cell>
+
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Do>
+                    ![A card with nested surfaces grouped together](/images/design/layout/layout-spatial-04-dividing-surfaces-nested-do@2x.png)
+
+                    Group nested surfaces together to create visual separation.
+                </Do>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Dont>
+                    ![A card with horizontal dividers that separates sections of a card](/images/design/layout/layout-spatial-05-dividing-surfaces-lines-dont@2x.png)
+
+                    Don’t use horizontal lines to divide a surface that isn’t a data or index table.
+                </Dont>
+            </Grid.Cell>
+
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Do>
+                    ![An index table with horizontal dividers](/images/design/layout/layout-spatial-06-dividing-surfaces-lines-do@2x.png)
+
+                    Use horizontal lines to divide a card that acts like a data or index table.
+                </Do>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <DirectiveCard status="Caution">
+                    ![A data table built with nested surfaces](/images/design/layout/layout-spatial-07-dividing-surfaces-nested-table-caution@2x.png)
+
+                    Building data or index tables with nested surfaces can make them feel inefficient.
+                </DirectiveCard>
+            </Grid.Cell>
+
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Do>
+                    ![A card with nested surfaces grouped in a 2x2 grid](/images/design/layout/layout-spatial-08-dividing-surfaces-grid-do@2x.png)
+
+                    Prioritize a grid or list pattern when dividing surfaces.
+                </Do>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <DirectiveCard status="Caution">
+                    ![A card with surfaces in a masonry pattern](/images/design/layout/layout-spatial-09-dividing-surfaces-symmetry-caution@2x.png)
+
+                    Avoid breaking symmetry when grouping surfaces together.
+                </DirectiveCard>
+            </Grid.Cell>
+        </Grid>
+    </Card>
+    <Card>
+        <Grid gap="400" >
+            <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+
+                ### Nesting
+
+                Nesting surfaces and other elements is crucial to the pro feel of the Shopify admin. Careful consideration should be taken when using elements of varying border radiuses in order to create the feeling that the interface is purpose-built.
+
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+                <Do>
+
+                    ![Nested surfaces in a card that have a smaller border radius than the card, achieving a clean, nested look](/images/design/layout/layout-spatial-10-nesting@2x.png)
+
+                    Reduce the border radius of inset surfaces in order to create a nested look.
+                </Do>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Dont>
+                    ![A surface that has a equal or larger corner radius than its parent](/images/design/layout/layout-spatial-11-nesting-same-radius-dont@2x.png)
+
+                    Make all nested elements have the same, or larger border radius than their parent.
+                </Dont>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Dont>
+                    ![A badge that had its corner radius modified to nest within a card](/images/design/layout/layout-spatial-12-nesting-change-radius-dont@2x.png)
+
+                    Change the border radius of elements like buttons or badges when nesting them.
+                </Dont>
+            </Grid.Cell>
+        </Grid>
+    </Card>
+
+    <Card>
+        <Grid gap="400">
+            <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+
+                ### Nesting tables
+
+                Tables and lists that exist within another container follow slightly different spacing guidelines. Horizontal padding is adjusted to give more space for data, and to avoid having too much empty space overall.
+
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+                <Do>
+                    ![A nested table](/images/design/layout/layout-spatial-13-nesting-tables@2x.png)
+
+                    Adjust padding in nested tables to optimize the use of space.
+                </Do>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Do>
+                    ![A card that has a table and buttons](/images/design/layout/layout-spatial-14-nesting-tables-do@2x.png)
+
+                    Nest tables in cards or other containers when there’s other content in that card.
+                </Do>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Dont>
+                    ![A card that only contains a nested table](/images/design/layout/layout-spatial-15-nesting-tables-dont@2x.png)
+
+                    Avoid nesting a table in a card if it’s the only content of that card.
+                </Dont>
+            </Grid.Cell>
+        </Grid>
+    </Card>
+
+    <Card>
+        <Grid gap="400">
+            <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+
+                ## Shaped elements
+
+                Shaped elements contain other design elements within a container that has a certain shape. These elements can live on surfaces or on backgrounds and are often smaller and serve a single purpose, like badges.
+
+                Shaped elements often do not have an elevation and their shapes are considered to either be target zones if they’re interactive, or serve as a visual indicator to make them easier to scan.
+
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+                ![A collection of buttons and badges](/images/design/layout/layout-spatial-16-shaped-elements@2x.png)
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Do>
+                    ![A button with adjusted padding so its prefix icon looks like it’s positioned correctly](/images/design/layout/layout-spatial-17-shaped-elements-spacing-do@2x.png)
+
+                    Pay attention to spacing when creating smaller elements, this includes using different sizes per side to achieve visual balance.
+                </Do>
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6}}>
+                <Do>
+                    ![A slightly larger button next to an input field](/images/design/layout/layout-spatial-18-shaped-elements-adjust-size-do@2x.png)
+
+                    Adjust the size of shaped elements so they work well with their siblings, like in the case of a button next to an input field.
+                </Do>
+            </Grid.Cell>
+        </Grid>
+    </Card>
+
+     <Card>
+        <Grid gap="400">
+            <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+
+                ### Buttons
+
+                Buttons are shaped elements, as their contents can vary their sizing to adjust for visual balance. Sizing of buttons depends on context. Standalone or grouped, buttons have a default size that is widely used in the admin. Because buttons often pull the most attention to a primary action, their size has been adjusted so as to not overwhelm the visual balance of the admin.
+
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+                ![A card with a button group in its footer](/images/design/layout/layout-spatial-19-shaped-elements-buttons@2x.png)
+            </Grid.Cell>
+        </Grid>
+    </Card>
+
+    <Card>
+        <Grid gap="400">
+            <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+
+                ## Breaking alignment
+
+                Breaking alignment or spacing may be required in some rare instances. Depending on the layout of the page, alignments may be mathematically inconsistent, but will be visually aligned. Make sure to use imaginary keylines to create neatly aligned containers in the UI if spacing is inconsistent within each container.
+
+            </Grid.Cell>
+            <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+                ![A timeline component following a regular card, with visible keylines denoting alignment differences](/images/design/layout/layout-spatial-20-breaking-alignment@2x.png)
+
+                If required, different alignment should be applied to separate containers, and never within the same container.
+            </Grid.Cell>
+        </Grid>
+    </Card>
+
+</Stack>
