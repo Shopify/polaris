@@ -10,6 +10,7 @@ body {
   font-size: var(--p-font-size-325);
   line-height: var(--p-font-line-height-500);
   font-weight: var(--p-font-weight-regular);
+  font-feature-settings: 'calt' 0;
   letter-spacing: initial;
   color: var(--p-color-text);
 }
