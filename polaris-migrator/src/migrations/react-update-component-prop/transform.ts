@@ -1,9 +1,22 @@
-import type {API, FileInfo, JSXAttribute, Options} from 'jscodeshift';
+import type {
+  API,
+  FileInfo,
+  JSXAttribute,
+  JSXOpeningElement,
+  Options,
+} from 'jscodeshift';
 
 import {insertJSXComment} from '../../utilities/jsx';
 import {POLARIS_MIGRATOR_COMMENT} from '../../utilities/constants';
+import {
+  getImportSpecifierName,
+  hasImportDeclaration,
+  hasImportSpecifier,
+  normalizeImportSourcePaths,
+} from '../../utilities/imports';
 
 export interface MigrationOptions extends Options {
+  relative?: boolean;
   componentName: string;
   fromProp: string;
   toProp?: string;
@@ -31,9 +44,43 @@ export default function transformer(
   }
 
   const source = j(file.source);
+
+  if (
+    !options.relative &&
+    !hasImportDeclaration(j, source, '@shopify/polaris')
+  ) {
+    return;
+  }
+
   const componentNames = componentName.split('.');
+  const targetComponentName = componentNames[0];
+
+  const sourcePaths = normalizeImportSourcePaths(j, source, {
+    relative: options.relative,
+    from: targetComponentName,
+    to: targetComponentName,
+  });
+
+  if (!sourcePaths) return;
+
+  if (!hasImportSpecifier(j, source, targetComponentName, sourcePaths.from)) {
+    return;
+  }
+
+  const localElementName =
+    getImportSpecifierName(j, source, targetComponentName, sourcePaths.from) ||
+    targetComponentName;
+
+  componentNames[0] = localElementName;
 
   source.find(j.JSXElement).forEach((element) => {
+    if (
+      element.node.openingElement.name.type === 'JSXIdentifier' &&
+      element.node.openingElement.name.name !== localElementName
+    ) {
+      return;
+    }
+
     const nameChain = getNameChain(element.node.openingElement.name);
 
     if (
@@ -103,7 +150,7 @@ export default function transformer(
   return source.toSource();
 }
 
-function getNameChain(name: any): string[] {
+function getNameChain(name: JSXOpeningElement['name']): string[] {
   if (name.type === 'JSXIdentifier') {
     return [name.name];
   }
