@@ -18,10 +18,6 @@ keywords:
 description: Layout determines the placement, positioning, and organization of various components within the UI, such as buttons, menus, content sections, and other visual elements.
 ---
 
-![](/images/design/layout/layout-banner.png)
-
----
-
 # {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
@@ -30,7 +26,7 @@ description: Layout determines the placement, positioning, and organization of v
 
 ## Overview
 
-<Stack gap="400">
+<Stack gap="800">
 <Card>
 <Grid gap="400" >
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
