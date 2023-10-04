@@ -2,6 +2,7 @@
 title: Layout
 icon: TemplateMajor
 order: 5
+showTOC: true
 keywords:
   - layout
   - layout components
