@@ -27,7 +27,7 @@ keywords:
 
 <Subnav />
 
-<Stack gap='4'>
+<Stack gap='400'>
 
 Icons serve a critical role in streamlining content and facilitating navigation. They represent actions or information visually, aiding in quick comprehension and efficient interaction.
 
@@ -37,7 +37,7 @@ Icons serve a critical role in streamlining content and facilitating navigation.
 
 Common actions like edit, delete, and search have established icons that are universally understood. Leveraging pre-existing knowledge will improve clarity and help reduce clutter, since these icons require no text label.
 
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+<InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
 
   <Do>
     ![A card with customer information, with a pencil icon representing the edit action, and a clipboard icon representing the copy to clipboard action. ](/images/design/icons/icons-using-2@2x.png)
@@ -59,7 +59,7 @@ Common actions like edit, delete, and search have established icons that are uni
 
 Consistently pairing specific icons with objects enables users to quickly recognize them, which promotes a more efficient and intuitive interaction with the interface.
 
-<InlineGrid gap="4" columns={{xs: '1', md: '3'}}>
+<InlineGrid gap="400" columns={{xs: '1', md: '3'}}>
 
   <Do>
     ![An inbox icon representing orders in the navigation menu, in the search results and in an information card.](/images/design/icons/icons-using-4@2x.png)
@@ -87,7 +87,7 @@ Consistently pairing specific icons with objects enables users to quickly recogn
 
 Icon size and weight was specifically crafted to pair with typography.
 
-<InlineGrid gap="4" columns={{xs: '1', md: '2'}}>
+<InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
 
   <Do>
     ![An icon next to text, highlighting the vertical alignment between the two elements.](/images/design/icons/icons-using-7@2x.png)
