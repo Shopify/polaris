@@ -32,6 +32,7 @@ import Icon from '../Icon';
 import {FeaturedCardGrid} from '../FeaturedCardGrid';
 import {useCopyToClipboard} from '../../utils/hooks';
 import {Colors} from './components/Colors';
+import {CollapsibleDetails} from '../../components/CollapsibleDetails';
 
 const CodeVisibilityContext = createContext<
   [
@@ -247,6 +248,7 @@ function Markdown<
         Subnav,
         RichCardGrid,
         Colors,
+        CollapsibleDetails,
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">
