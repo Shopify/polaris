@@ -1,7 +1,7 @@
 ---
 title: Tokens
 order: 3
-icon: Columns3Minor
+icon: Hexagon
 keywords:
   - layout
   - layout components
