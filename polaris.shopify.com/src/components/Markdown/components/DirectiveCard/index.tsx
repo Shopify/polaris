@@ -29,39 +29,33 @@ export const DirectiveCard = ({children, status, ...props}: DirectiveProps) => {
   const childrenArray = Children.toArray(children) as ReactElement[];
 
   let image: ReactElement | undefined;
+  let video: ReactElement | undefined;
 
   const rest = childrenArray.filter((d) => {
-    if (d?.props?.src) {
+    const isImage = d?.props?.src;
+    const isVideo = d?.type === 'video';
+
+    if (isImage) {
       image = d;
     }
 
-    return !d?.props?.src;
-  });
+    if (isVideo) {
+      video = d;
+    }
 
-  const statusMarkup = status ? <Pill status={status} /> : null;
+    return !isImage && !isVideo;
+  });
 
   return (
     <Card {...props}>
-      {image?.props?.src ? (
-        <Stack gap="400">
-          <Bleed marginInline="400" marginBlockStart="400">
-            <ImageThumbnail
-              className={styles.ImageThumbnail}
-              src={image?.props?.src}
-              alt={image?.props?.alt}
-            />
-          </Bleed>
-          <Stack gap="200">
-            {statusMarkup}
-            {rest}
-          </Stack>
-        </Stack>
-      ) : (
+      <Stack gap={Boolean(image || video) ? '400' : '0'}>
+        {image ? <MediaThumbnail media={image} type="image" /> : null}
+        {video ? <MediaThumbnail media={video} type="video" /> : null}
         <Stack gap="200">
-          {statusMarkup}
+          {status ? <Pill status={status} /> : null}
           {rest}
         </Stack>
-      )}
+      </Stack>
     </Card>
   );
 };
@@ -80,5 +74,27 @@ export const Pill = ({status}: {status: DirectiveStatus}) => {
         {status}
       </Row>
     </Box>
+  );
+};
+
+const MediaThumbnail = ({
+  media,
+  type = 'image',
+}: {
+  media: ReactElement;
+  type: 'image' | 'video';
+}) => {
+  return (
+    <Bleed marginInline="400" marginBlockStart="400">
+      {type === 'image' ? (
+        <ImageThumbnail
+          className={styles.MediaThumbnail}
+          src={media?.props?.src}
+          alt={media?.props?.alt}
+        />
+      ) : (
+        <div className={styles.MediaThumbnail}>{media}</div>
+      )}
+    </Bleed>
   );
 };
