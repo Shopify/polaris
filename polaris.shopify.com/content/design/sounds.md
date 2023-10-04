@@ -1,6 +1,7 @@
 ---
 title: Sounds
 description: We use sound to communicate information and to enhance how merchants experience the Shopify admin. Sound patterns make interactions easier and more predictable.
+order: 11
 keywords:
   - audio
   - sonic

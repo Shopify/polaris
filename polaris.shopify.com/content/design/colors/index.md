@@ -2,6 +2,7 @@
 title: Color
 description: Color highlights important areas, communicates status, urgency, and directs attention.
 icon: ColorsMajor
+order: 2
 keywords:
   - color role
   - color strategy
@@ -10,6 +11,7 @@ keywords:
   - grayscale
 hideChildren: true
 showTOC: true
+status: New
 ---
 
 # {frontmatter.title}
