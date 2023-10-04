@@ -1,6 +1,8 @@
 import type {ASTPath, Collection, JSXAttribute, JSXElement} from 'jscodeshift';
 import type core from 'jscodeshift';
 
+import {POLARIS_MIGRATOR_COMMENT} from './constants';
+
 export function getJSXAttributes(
   j: core.JSCodeshift,
   element: ASTPath<any>,
@@ -191,8 +193,12 @@ export function insertJSXComment(
   const lineBreak = j.jsxText('\n');
 
   if (position === 'before') {
-    element.insertBefore(jsxComment);
-    element.insertBefore(lineBreak);
+    if (element.parentPath.value.type === 'ReturnStatement') {
+      insertCommentBefore(j, element, comment);
+    } else {
+      element.insertBefore(jsxComment);
+      element.insertBefore(lineBreak);
+    }
   }
 
   if (position === 'after') {
