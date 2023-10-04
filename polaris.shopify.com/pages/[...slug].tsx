@@ -260,7 +260,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
       async (end) => {
         scope.posts = await getRichCards(`${slugPath}/*/index.md`);
         scope.legacyPatternPosts = await getRichCards(
-          `${contentDir}/patterns-legacy/!(index).md`,
+          `${contentDir}/patterns-legacy/!(index|_*).md`,
         );
         end();
       },
@@ -280,7 +280,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
           scope.posts.map(async (group: SortedRichCardGridProps) => ({
             ...group,
             children: await getRichCards(
-              `${contentDir}${group.url}/!(index).md`,
+              `${contentDir}${group.url}/!(index|_*).md`,
             ),
           })),
         );
@@ -294,7 +294,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
       () => pathIsDirectory,
       async () => {
         // Non-recursive search for .md files except index.md
-        scope.posts = await getRichCards(`${slugPath}/!(index).md`);
+        scope.posts = await getRichCards(`${slugPath}/!(index|_*).md`);
       },
     ],
   ]);
