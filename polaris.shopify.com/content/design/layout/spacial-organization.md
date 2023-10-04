@@ -16,7 +16,7 @@ keywords:
   - divider
   - responsive
   - spacing
-description: Layout determines the placement, positioning, and organization of various components within the UI, such as buttons, menus, content sections, and other visual elements.
+description: Components, elements and surfaces are organized to create compositions that make the best use of space.
 ---
 
 # Layout &rarr; {frontmatter.title}
