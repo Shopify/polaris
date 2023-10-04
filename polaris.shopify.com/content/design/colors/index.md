@@ -79,7 +79,7 @@ showTOC: true
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
@@ -139,7 +139,7 @@ showTOC: true
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
