@@ -3,6 +3,7 @@ title: Migrating from v11 to v12
 description: Polaris v12.0.0 prop replacement, removal of components, renamed components, and token changes.
 navTitle: v12
 icon: ColorsMajor
+collapsibleTOC: true
 order: 1
 ---
 
@@ -191,67 +192,99 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>
 
 #### Post-migration validation
 
-After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:
-
-```
-(?:--p-border-radius-0-experimental|--p-border-radius-05|--p-border-radius-1|--p-border-radius-1_5-experimental|--p-border-radius-2|--p-border-radius-3|--p-border-radius-4|--p-border-radius-5|--p-border-radius-6|--p-border-width-1|--p-border-width-1-experimental|--p-border-width-2|--p-border-width-2-experimental|--p-border-width-3|--p-border-width-4|--p-border-width-5)(?![\w-])
-```
-
-```
-<Tooltip[^>\w](?:[^>]|\n)*?borderRadius
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadius
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadiusEndStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadiusEndEnd
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadiusStartStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadiusStartEnd
-```
-
-```
-<ShadowBevel[^>\w](?:[^>]|\n)*?borderRadius
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderBlockStartWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderBlockEndWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderInlineStartWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderInlineEndWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineWidth
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderWidth
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded border custom properties across all file types',
+      code: `(?:--p-border-radius-0-experimental|--p-border-radius-05|--p-border-radius-1|--p-border-radius-1_5-experimental|--p-border-radius-2|--p-border-radius-3|--p-border-radius-4|--p-border-radius-5|--p-border-radius-6|--p-border-width-1|--p-border-width-1-experimental|--p-border-width-2|--p-border-width-2-experimental|--p-border-width-3|--p-border-width-4|--p-border-width-5)(?![\w-])`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Tooltip borderRadius props',
+      code: `<Tooltip[^>\w](?:[^>]|\n)*?borderRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderRadius props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderRadiusEndStart props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderRadiusEndStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderRadiusEndEnd props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderRadiusEndEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderRadiusStartStart props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderRadiusStartStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderRadiusStartEnd props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderRadiusStartEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderWidth props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderBlockStartWidth props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderBlockStartWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderBlockEndWidth props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderBlockEndWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderInlineStartWidth props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderInlineStartWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderInlineEndWidth props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderInlineEndWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box outlineWidth props',
+      code: `<Box[^>\w](?:[^>]|\n)*?outlineWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated ShadowBevel borderRadius props',
+      code: `<ShadowBevel[^>\w](?:[^>]|\n)*?borderRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Divider borderWidth props',
+      code: `<Divider[^>\w](?:[^>]|\n)*?borderWidth`,
+    }}
+  />
+</CollapsibleDetails>
 
 #### Replacement maps
 
@@ -293,41 +326,61 @@ To replace these deprecated `color` custom properties, you can run the [v12-styl
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=1
 ```
 
-After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
-
-```
-(?:--p-color-avatar-background-experimental|--p-color-avatar-color-experimental|--p-color-avatar-style-five-background-experimental|--p-color-avatar-style-five-color-experimental|--p-color-avatar-style-four-background-experimental|--p-color-avatar-style-four-color-experimental|--p-color-avatar-style-one-background-experimental|--p-color-avatar-style-one-color-experimental|--p-color-avatar-style-three-background-experimental|--p-color-avatar-style-three-color-experimental|--p-color-avatar-style-two-background-experimental|--p-color-avatar-style-two-color-experimental|--p-color-bg|--p-color-bg-active|--p-color-bg-app-active|--p-color-bg-app-hover|--p-color-bg-app-selected|--p-color-bg-backdrop-experimental|--p-color-bg-caution|--p-color-bg-caution-strong|--p-color-bg-caution-subdued|--p-color-bg-caution-subdued-active|--p-color-bg-caution-subdued-hover|--p-color-bg-critical|--p-color-bg-critical-strong|--p-color-bg-critical-strong-active|--p-color-bg-critical-strong-hover|--p-color-bg-critical-subdued|--p-color-bg-critical-subdued-active|--p-color-bg-critical-subdued-hover|--p-color-bg-disabled|--p-color-bg-hover|--p-color-bg-info|--p-color-bg-info-strong|--p-color-bg-info-subdued|--p-color-bg-info-subdued-active|--p-color-bg-info-subdued-hover|--p-color-bg-input|--p-color-bg-input-active-experimental|--p-color-bg-input-hover-experimental|--p-color-bg-inset|--p-color-bg-inset-strong|--p-color-bg-interactive|--p-color-bg-interactive-selected|--p-color-bg-interactive-subdued-active|--p-color-bg-interactive-subdued-hover|--p-color-bg-inverse-active|--p-color-bg-inverse-hover|--p-color-bg-magic|--p-color-bg-magic-active|--p-color-bg-magic-hover|--p-color-bg-magic-strong|--p-color-bg-magic-subdued|--p-color-bg-magic-subdued-hover|--p-color-bg-primary|--p-color-bg-primary-active|--p-color-bg-primary-disabled-experimental|--p-color-bg-primary-hover|--p-color-bg-primary-subdued|--p-color-bg-primary-subdued-active|--p-color-bg-primary-subdued-hover|--p-color-bg-primary-subdued-selected|--p-color-bg-secondary-experimental|--p-color-bg-strong|--p-color-bg-strong-active|--p-color-bg-strong-hover|--p-color-bg-subdued|--p-color-bg-subdued-active|--p-color-bg-subdued-hover|--p-color-bg-success|--p-color-bg-success-strong|--p-color-bg-success-strong-active-experimental|--p-color-bg-success-strong-hover-experimental|--p-color-bg-success-subdued|--p-color-bg-success-subdued-active|--p-color-bg-success-subdued-hover|--p-color-bg-transparent-active-experimental|--p-color-bg-transparent-disabled-experimental|--p-color-bg-transparent-experimental|--p-color-bg-transparent-hover-experimental|--p-color-bg-transparent-primary-disabled-experimental|--p-color-bg-transparent-subdued-experimental|--p-color-bg-warning|--p-color-bg-warning-strong-experimental|--p-color-bg-warning-subdued-experimental|--p-color-border-critical-strong-experimental|--p-color-border-input|--p-color-border-input-active-experimental|--p-color-border-input-hover|--p-color-border-interactive|--p-color-border-interactive-active|--p-color-border-interactive-disabled|--p-color-border-caution-subdued|--p-color-border-critical-active|--p-color-border-critical-hover|--p-color-border-critical-subdued|--p-color-border-info-subdued|--p-color-border-interactive-focus|--p-color-border-interactive-hover|--p-color-border-magic-strong|--p-color-border-primary|--p-color-border-strong|--p-color-border-subdued|--p-color-border-success-subdued|--p-color-icon-interactive|--p-color-icon-interactive-active|--p-color-icon-interactive-hover|--p-color-icon-info-strong-experimental|--p-color-icon-interactive-disabled|--p-color-icon-primary|--p-color-icon-subdued|--p-color-icon-critical-strong-experimental|--p-color-icon-critical-strong-active-experimental|--p-color-icon-critical-strong-hover-experimental|--p-color-icon-success-strong-experimental|--p-color-icon-warning-strong-experimental|--p-color-text-critical-hover-experimental|--p-color-text-info-strong|--p-color-text-interactive|--p-color-text-interactive-active|--p-color-text-interactive-disabled|--p-color-text-interactive-hover|--p-color-text-interactive-inverse|--p-color-text-inverse-subdued|--p-color-text-primary|--p-color-text-primary-hover|--p-color-text-caution-strong|--p-color-text-critical-strong|--p-color-text-magic-strong|--p-color-text-success-strong|--p-color-text-subdued|--p-color-text-warning-experimental)(?![\w-])
-```
-
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
-
-```
-<Box[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineColor
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Banner[^>\w](?:[^>]|\n)*?textColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?color
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded color custom properties across all file types',
+      code: `(?:--p-color-avatar-background-experimental|--p-color-avatar-color-experimental|--p-color-avatar-style-five-background-experimental|--p-color-avatar-style-five-color-experimental|--p-color-avatar-style-four-background-experimental|--p-color-avatar-style-four-color-experimental|--p-color-avatar-style-one-background-experimental|--p-color-avatar-style-one-color-experimental|--p-color-avatar-style-three-background-experimental|--p-color-avatar-style-three-color-experimental|--p-color-avatar-style-two-background-experimental|--p-color-avatar-style-two-color-experimental|--p-color-bg|--p-color-bg-active|--p-color-bg-app-active|--p-color-bg-app-hover|--p-color-bg-app-selected|--p-color-bg-backdrop-experimental|--p-color-bg-caution|--p-color-bg-caution-strong|--p-color-bg-caution-subdued|--p-color-bg-caution-subdued-active|--p-color-bg-caution-subdued-hover|--p-color-bg-critical|--p-color-bg-critical-strong|--p-color-bg-critical-strong-active|--p-color-bg-critical-strong-hover|--p-color-bg-critical-subdued|--p-color-bg-critical-subdued-active|--p-color-bg-critical-subdued-hover|--p-color-bg-disabled|--p-color-bg-hover|--p-color-bg-info|--p-color-bg-info-strong|--p-color-bg-info-subdued|--p-color-bg-info-subdued-active|--p-color-bg-info-subdued-hover|--p-color-bg-input|--p-color-bg-input-active-experimental|--p-color-bg-input-hover-experimental|--p-color-bg-inset|--p-color-bg-inset-strong|--p-color-bg-interactive|--p-color-bg-interactive-selected|--p-color-bg-interactive-subdued-active|--p-color-bg-interactive-subdued-hover|--p-color-bg-inverse-active|--p-color-bg-inverse-hover|--p-color-bg-magic|--p-color-bg-magic-active|--p-color-bg-magic-hover|--p-color-bg-magic-strong|--p-color-bg-magic-subdued|--p-color-bg-magic-subdued-hover|--p-color-bg-primary|--p-color-bg-primary-active|--p-color-bg-primary-disabled-experimental|--p-color-bg-primary-hover|--p-color-bg-primary-subdued|--p-color-bg-primary-subdued-active|--p-color-bg-primary-subdued-hover|--p-color-bg-primary-subdued-selected|--p-color-bg-secondary-experimental|--p-color-bg-strong|--p-color-bg-strong-active|--p-color-bg-strong-hover|--p-color-bg-subdued|--p-color-bg-subdued-active|--p-color-bg-subdued-hover|--p-color-bg-success|--p-color-bg-success-strong|--p-color-bg-success-strong-active-experimental|--p-color-bg-success-strong-hover-experimental|--p-color-bg-success-subdued|--p-color-bg-success-subdued-active|--p-color-bg-success-subdued-hover|--p-color-bg-transparent-active-experimental|--p-color-bg-transparent-disabled-experimental|--p-color-bg-transparent-experimental|--p-color-bg-transparent-hover-experimental|--p-color-bg-transparent-primary-disabled-experimental|--p-color-bg-transparent-subdued-experimental|--p-color-bg-warning|--p-color-bg-warning-strong-experimental|--p-color-bg-warning-subdued-experimental|--p-color-border-critical-strong-experimental|--p-color-border-input|--p-color-border-input-active-experimental|--p-color-border-input-hover|--p-color-border-interactive|--p-color-border-interactive-active|--p-color-border-interactive-disabled|--p-color-border-caution-subdued|--p-color-border-critical-active|--p-color-border-critical-hover|--p-color-border-critical-subdued|--p-color-border-info-subdued|--p-color-border-interactive-focus|--p-color-border-interactive-hover|--p-color-border-magic-strong|--p-color-border-primary|--p-color-border-strong|--p-color-border-subdued|--p-color-border-success-subdued|--p-color-icon-interactive|--p-color-icon-interactive-active|--p-color-icon-interactive-hover|--p-color-icon-info-strong-experimental|--p-color-icon-interactive-disabled|--p-color-icon-primary|--p-color-icon-subdued|--p-color-icon-critical-strong-experimental|--p-color-icon-critical-strong-active-experimental|--p-color-icon-critical-strong-hover-experimental|--p-color-icon-success-strong-experimental|--p-color-icon-warning-strong-experimental|--p-color-text-critical-hover-experimental|--p-color-text-info-strong|--p-color-text-interactive|--p-color-text-interactive-active|--p-color-text-interactive-disabled|--p-color-text-interactive-hover|--p-color-text-interactive-inverse|--p-color-text-inverse-subdued|--p-color-text-primary|--p-color-text-primary-hover|--p-color-text-caution-strong|--p-color-text-critical-strong|--p-color-text-magic-strong|--p-color-text-success-strong|--p-color-text-subdued|--p-color-text-warning-experimental)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box background props',
+      code: `<Box[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Card background props',
+      code: `<Card[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderColor props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box outlineColor props',
+      code: `<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Divider borderColor props',
+      code: `<Divider[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Banner textColor props',
+      code: `<Banner[^>\w](?:[^>]|\n)*?textColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box color props',
+      code: `<Box[^>\w](?:[^>]|\n)*?color`,
+    }}
+  />
+</CollapsibleDetails>
 
 Replacement maps for Step 1:
 
@@ -472,41 +525,66 @@ Replacement maps for Step 1:
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=2
 ```
 
-After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
-
-```
-(?:--p-color-bg-app)(?![\w-])
-```
-
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
-
-```
-<Box[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineColor
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Banner[^>\w](?:[^>]|\n)*?textColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?color
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:">
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box outlineColor props',
+      code: `<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated --p-color-bg-app token',
+      code: `(?:--p-color-bg-app)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box background props',
+      code: `<Box[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Card background props',
+      code: `<Card[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderColor props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box outlineColor props',
+      code: `<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Divider borderColor props',
+      code: `<Divider[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Banner textColor props',
+      code: `<Banner[^>\w](?:[^>]|\n)*?textColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box color props',
+      code: `<Box[^>\w](?:[^>]|\n)*?color`,
+    }}
+  />
+</CollapsibleDetails>
 
 Replacement maps for Step 2:
 
@@ -523,41 +601,61 @@ Manually migrate the following tokens to their hardcoded values:
 | `--p-color-bg-transparent-primary-experimental`            | `rgba(0, 0, 0, 0.62)` |
 | `--p-color-bg-transparent-secondary-disabled-experimental` | `rgba(0, 0, 0, 0.08)` |
 
-After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
-
-```
-(?:--p-color-bg-transparent-primary-experimental|--p-color-bg-transparent-secondary-disabled-experimental)(?![\w-])
-```
-
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
-
-```
-<Box[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineColor
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Banner[^>\w](?:[^>]|\n)*?textColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?color
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded color custom properties across all file types',
+      code: `(?:--p-color-bg-transparent-primary-experimental|--p-color-bg-transparent-secondary-disabled-experimental)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box background props',
+      code: `<Box[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Card background props',
+      code: `<Card[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderColor props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box outlineColor props',
+      code: `<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Divider borderColor props',
+      code: `<Divider[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Banner textColor props',
+      code: `<Banner[^>\w](?:[^>]|\n)*?textColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box color props',
+      code: `<Box[^>\w](?:[^>]|\n)*?color`,
+    }}
+  />
+</CollapsibleDetails>
 
 #### Step 4
 
@@ -582,41 +680,61 @@ Otherwise, the table below shows which `on-bg-fill` colors to use against their 
 | `--p-color-bg-fill-inverse`          | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
 | `--p-color-bg-inverse`               | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
 
-After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
-
-```
-(?:--p-color-icon-on-color|--p-color-text-on-color)(?![\w-])
-```
-
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
-
-```
-<Box[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineColor
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Banner[^>\w](?:[^>]|\n)*?textColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?color
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded color custom properties across all file types',
+      code: `(?:--p-color-icon-on-color|--p-color-text-on-color)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box background props',
+      code: `<Box[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Card background props',
+      code: `<Card[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box borderColor props',
+      code: `<Box[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box outlineColor props',
+      code: `<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Divider borderColor props',
+      code: `<Divider[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Banner textColor props',
+      code: `<Banner[^>\w](?:[^>]|\n)*?textColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box color props',
+      code: `<Box[^>\w](?:[^>]|\n)*?color`,
+    }}
+  />
+</CollapsibleDetails>
 
 ### Font
 
@@ -642,11 +760,15 @@ To replace these deprecated `font` custom properties, you can run the [v12-style
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=1
 ```
 
-After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
-
-```
-(?:--p-font-size-70-experimental|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: `(?:--p-font-size-70-experimental|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
 
 Replacement maps for Step 1:
 
@@ -671,11 +793,15 @@ Replacement maps for Step 1:
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=2
 ```
 
-After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
-
-```
-(?:--p-font-size-500|--p-font-size-600)(?![\w-])
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: `(?:--p-font-size-500|--p-font-size-600)(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
 
 Replacement maps for Step 2:
 
@@ -690,11 +816,15 @@ Replacement maps for Step 2:
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=3
 ```
 
-After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
-
-```
-(?:--p-font-size-300|--p-font-size-400)(?![\w-])
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: `(?:--p-font-size-300|--p-font-size-400)(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
 
 Replacement maps for Step 3:
 
@@ -709,11 +839,15 @@ Replacement maps for Step 3:
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=4
 ```
 
-After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
-
-```
-(?:--p-font-size-75|--p-font-size-200)(?![\w-])
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: `(?:--p-font-size-75|--p-font-size-200)(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
 
 Replacement maps for Step 4:
 
@@ -741,21 +875,31 @@ To replace these deprecated `shadow` custom properties, you can run the [v12-sty
 npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
 ```
 
-After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
-
-```
-(?:--p-shadow-inset-lg|--p-shadow-inset-md|--p-shadow-inset-sm|--p-shadow-none|--p-shadow-xs|--p-shadow-sm|--p-shadow-md|--p-shadow-lg|--p-shadow-xl|--p-shadow-2xl|--p-shadow-bevel-experimental|--p-shadow-card-sm-experimental|--p-shadow-card-md-experimental|--p-shadow-card-lg-experimental|--p-shadow-button-experimental|--p-shadow-button-hover-experimental|--p-shadow-button-disabled-experimental|--p-shadow-button-primary-strong-experimental|--p-shadow-button-primary-strong-inset-experimental|--p-shadow-button-primary-strong-hover-experimental|--p-shadow-border-inset-experimental)(?![\w-])
-```
-
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
-
-```
-<Box[^>\w](?:[^>]|\n)*?shadow
-```
-
-```
-<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: `(?:--p-shadow-inset-lg|--p-shadow-inset-md|--p-shadow-inset-sm|--p-shadow-none|--p-shadow-xs|--p-shadow-sm|--p-shadow-md|--p-shadow-lg|--p-shadow-xl|--p-shadow-2xl|--p-shadow-bevel-experimental|--p-shadow-card-sm-experimental|--p-shadow-card-md-experimental|--p-shadow-card-lg-experimental|--p-shadow-button-experimental|--p-shadow-button-hover-experimental|--p-shadow-button-disabled-experimental|--p-shadow-button-primary-strong-experimental|--p-shadow-button-primary-strong-inset-experimental|--p-shadow-button-primary-strong-hover-experimental|--p-shadow-border-inset-experimental)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box shadow props',
+      code: `<Box[^>\w](?:[^>]|\n)*?shadow`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated ShadowBevel boxShadow props',
+      code: `<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
+    }}
+  />
+</CollapsibleDetails>
 
 Replacement maps for Step 1:
 
@@ -793,21 +937,31 @@ The following tokens need to be manually migrated because their values are conte
 | `--p-shadow-button-primary-hover-experimental` | `--p-shadow-button-primary-critical-hover`<br/>`--p-shadow-button-primary-success-hover` |
 | `--p-shadow-button-inset-experimental`         | `--p-shadow-button-primary-critical-inset`<br/>`--p-shadow-button-primary-success-inset` |
 
-After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
-
-```
-(?:--p-shadow-button-primary-experimental|--p-shadow-button-primary-hover-experimental|--p-shadow-button-inset-experimental)(?![\w-])
-```
-
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
-
-```
-<Box[^>\w](?:[^>]|\n)*?shadow
-```
-
-```
-<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: `(?:--p-shadow-button-primary-experimental|--p-shadow-button-primary-hover-experimental|--p-shadow-button-inset-experimental)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box shadow props',
+      code: `<Box[^>\w](?:[^>]|\n)*?shadow`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated ShadowBevel boxShadow props',
+      code: `<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
+    }}
+  />
+</CollapsibleDetails>
 
 ### Space
 
@@ -826,185 +980,288 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
 
 #### Post-migration validation
 
-After migrating use the following RegExp to check for any additional instances of `space` custom properties across all file types:
-
-```
-(?:--p-space-05|--p-space-1|--p-space-1_5-experimental|--p-space-2|--p-space-3|--p-space-4|--p-space-5|--p-space-6|--p-space-8|--p-space-10|--p-space-12|--p-space-16 |--p-space-20 |--p-space-24|--p-space-28 |--p-space-32)(?![\w-])
-```
-
-```
-<Tooltip[^>\w](?:[^>]|\n)*?padding
-```
-
-**⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalGrid` if you have then use `InlineGrid`.
-
-```
-<HorizontalGrid[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<InlineGrid[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?padding
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?paddingBlockStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?paddingBlockEnd
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?paddingInlineStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?paddingInlineEnd
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?insetBlockStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?insetBlockEnd
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?insetInlineStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?insetInlineEnd
-```
-
-**⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `VerticalStack` if you have then use `BlockStack`.
-
-```
-<VerticalStack[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<BlockStack[^>\w](?:[^>]|\n)*?gap
-```
-
-**⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalStack` if you have then use `InlineStack`.
-
-```
-<HorizontalStack[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<InlineStack[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleed
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleedBlockStart
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleedBlockEnd
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleedInlineStart
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleedInlineEnd
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleed
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockStart
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockEnd
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineStart
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineEnd
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleed
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockStart
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineStart
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineEnd
-```
-
-```
-<Stack[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<Grid[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<Grid[^>\w](?:[^>]|\n)*?gapX
-```
-
-```
-<Grid[^>\w](?:[^>]|\n)*?gapY
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?padding
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginInline
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginBlock
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginBlockStart
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginBlockEnd
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginInlineStart
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginInlineEnd
-```
+<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `space` custom properties across all file types:">
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: `(?:--p-space-05|--p-space-1|--p-space-1_5-experimental|--p-space-2|--p-space-3|--p-space-4|--p-space-5|--p-space-6|--p-space-8|--p-space-10|--p-space-12|--p-space-16 |--p-space-20 |--p-space-24|--p-space-28 |--p-space-32)(?![\w-])`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Tooltip padding props',
+      code: `<Tooltip[^>\w](?:[^>]|\n)*?padding`,
+    }}
+  />
+  <p>
+    **⚠️ Important**: The RegExp you use here will depend on if you've run
+    component migrations. If you have not then use `HorizontalGrid` if you have
+    then use `InlineGrid`.
+  </p>
+  <Code
+    code={{
+      title: 'Check RegExp for outdated HorizontalGrid gap props',
+      code: `<HorizontalGrid[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated InlineGrid gap props',
+      code: `<InlineGrid[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box padding props',
+      code: `<Box[^>\w](?:[^>]|\n)*?padding`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box paddingBlockStart props',
+      code: `<Box[^>\w](?:[^>]|\n)*?paddingBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box paddingBlockEnd props',
+      code: `<Box[^>\w](?:[^>]|\n)*?paddingBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box paddingInlineStart props',
+      code: `<Box[^>\w](?:[^>]|\n)*?paddingInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box paddingInlineEnd props',
+      code: `<Box[^>\w](?:[^>]|\n)*?paddingInlineEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box insetBlockStart props',
+      code: `<Box[^>\w](?:[^>]|\n)*?insetBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box insetBlockEnd props',
+      code: `<Box[^>\w](?:[^>]|\n)*?insetBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box insetInlineStart props',
+      code: `<Box[^>\w](?:[^>]|\n)*?insetInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Box insetInlineEnd props',
+      code: `<Box[^>\w](?:[^>]|\n)*?insetInlineEnd`,
+    }}
+  />
+  <p>
+    **⚠️ Important**: The RegExp you use here will depend on if you've run
+    component migrations. If you have not then use `VerticalStack` if you have
+    then use `BlockStack`.
+  </p>
+  <Code
+    code={{
+      title: 'Check RegExp for outdated VerticalStack gap props',
+      code: `<VerticalStack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated BlockStack gap props',
+      code: `<BlockStack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <p>
+    **⚠️ Important**: The RegExp you use here will depend on if you've run
+    component migrations. If you have not then use `HorizontalStack` if you have
+    then use `InlineStack`.
+  </p>
+  <Code
+    code={{
+      title: 'Check RegExp for outdated HorizontalStack gap props',
+      code: `<HorizontalStack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated InlineStack gap props',
+      code: `<InlineStack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Choice bleed props',
+      code: `<Choice[^>\w](?:[^>]|\n)*?bleed`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Choice bleedBlockStart props',
+      code: `<Choice[^>\w](?:[^>]|\n)*?bleedBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Choice bleedBlockEnd props',
+      code: `<Choice[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Choice bleedInlineStart props',
+      code: `<Choice[^>\w](?:[^>]|\n)*?bleedInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Choice bleedInlineEnd props',
+      code: `<Choice[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated RadioButton bleed props',
+      code: `<RadioButton[^>\w](?:[^>]|\n)*?bleed`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated RadioButton bleedBlockStart props',
+      code: `<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated RadioButton bleedBlockEnd props',
+      code: `<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated RadioButton bleedInlineStart props',
+      code: `<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated RadioButton bleedInlineEnd props',
+      code: `<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Checkbox bleed props',
+      code: `<Checkbox[^>\w](?:[^>]|\n)*?bleed`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Checkbox bleedBlockStart props',
+      code: `<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Checkbox bleedBlockEnd props',
+      code: `<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Checkbox bleedBlockEnd props',
+      code: `<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Checkbox bleedInlineStart props',
+      code: `<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Checkbox bleedInlineEnd props',
+      code: `<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Stack gap props',
+      code: `<Stack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Grid gap props',
+      code: `<Grid[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Grid gapX props',
+      code: `<Grid[^>\w](?:[^>]|\n)*?gapX`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Grid gapY props',
+      code: `<Grid[^>\w](?:[^>]|\n)*?gapY`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Card padding props',
+      code: `<Card[^>\w](?:[^>]|\n)*?padding`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Bleed marginInline props',
+      code: `<Bleed[^>\w](?:[^>]|\n)*?marginInline`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Bleed marginBlock props',
+      code: `<Bleed[^>\w](?:[^>]|\n)*?marginBlock`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Bleed marginBlockStart props',
+      code: `<Bleed[^>\w](?:[^>]|\n)*?marginBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Bleed marginBlockEnd props',
+      code: `<Bleed[^>\w](?:[^>]|\n)*?marginBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Bleed marginInlineStart props',
+      code: `<Bleed[^>\w](?:[^>]|\n)*?marginInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated Bleed marginInlineEnd props',
+      code: `<Bleed[^>\w](?:[^>]|\n)*?marginInlineEnd`,
+    }}
+  />
+</CollapsibleDetails>
 
 #### Replacement maps
 
