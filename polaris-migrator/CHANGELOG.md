@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.24.0
+
+### Minor Changes
+
+- [#10874](https://github.com/Shopify/polaris/pull/10874) [`471c3d5af`](https://github.com/Shopify/polaris/commit/471c3d5afe9cd894fdf25c22aef5a7b374dc7531) Thanks [@lgriffee](https://github.com/lgriffee)! - Ported `v12-react-avatar-component` migration from [Avatar] Remove customer prop and experimental values [#10283](https://github.com/Shopify/polaris/pull/10283) to main branch
+
 ## 0.23.0
 
 ### Minor Changes
