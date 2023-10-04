@@ -44,6 +44,7 @@ const fixtures = [
       fromProp: 'booleanProp',
       toProp: 'variant',
       toValue: 'boolean-prop-value',
+      isFromPropBoolean: true,
     },
   },
   {
@@ -57,12 +58,22 @@ const fixtures = [
     },
   },
   {
-    name: 'comment-on-spread',
+    name: 'with-comments-boolean-prop',
     options: {
       componentName: 'MyComponent',
       fromProp: 'booleanProp',
-      toProp: 'variant',
-      toValue: 'boolean-prop-value',
+      toProp: 'newProp',
+      toValue: 'new-value',
+      isFromPropBoolean: true,
+    },
+  },
+  {
+    name: 'with-comments-string-prop',
+    options: {
+      componentName: 'MyComponent',
+      fromProp: 'prop',
+      toProp: 'newProp',
+      toValue: 'new-value',
     },
   },
 ];

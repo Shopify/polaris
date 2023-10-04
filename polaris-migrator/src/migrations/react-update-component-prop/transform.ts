@@ -9,6 +9,7 @@ export interface MigrationOptions extends Options {
   toProp?: string;
   fromValue?: string;
   toValue?: string;
+  isFromPropBoolean?: boolean;
 }
 
 export default function transformer(
@@ -16,7 +17,14 @@ export default function transformer(
   {jscodeshift: j}: API,
   options: MigrationOptions,
 ) {
-  const {componentName, fromProp, toProp, fromValue, toValue} = options;
+  const {
+    componentName,
+    fromProp,
+    toProp,
+    fromValue,
+    toValue,
+    isFromPropBoolean = false,
+  } = options;
 
   if (!componentName || !fromProp) {
     throw new Error('Missing required options: componentName, fromProp');
@@ -43,6 +51,20 @@ export default function transformer(
       }
 
       const jsxAttributes = allAttributes as JSXAttribute[];
+
+      const fromPropAttribute = jsxAttributes.find(
+        (attribute) => attribute.name.name === fromProp,
+      );
+
+      if (
+        fromPropAttribute &&
+        (isFromPropBoolean
+          ? fromPropAttribute.value !== null
+          : fromPropAttribute.value?.type !== 'StringLiteral')
+      ) {
+        insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
+        return;
+      }
 
       jsxAttributes.forEach((jsxAttribute) => {
         if (
