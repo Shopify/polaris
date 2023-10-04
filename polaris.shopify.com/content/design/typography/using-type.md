@@ -34,7 +34,7 @@ Vertical alignment is used on type where line height and padding on an element a
 
 ![Type being vertically aligned in a button, index table, etc. ](/images/design/typography/typography-using-type-02-vertical@2x.png)
 
-<InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <Do>
 
     ![A badge where the type and icon are different sizes, but are centered vertically to achieve symmetry](/images/design/typography/typography-using-type-03-vertical-do@2x.png)
@@ -49,7 +49,7 @@ Vertical alignment is used on type where line height and padding on an element a
     Top aligning elements that are presented in-line, but have varying bounding box sizes, can create a feeling of a broken UI.
 
   </DirectiveCard>
-</InlineGrid>
+</TwoColumns>
 
 ## Hierarchy
 
@@ -65,7 +65,7 @@ Headings introduce new sections, and subsections in the admin. They initiate the
 
 <Stack gap='400'>
 
-<InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <Do>
 
     ![A card containing a data table that is introduced by a small heading](/images/design/typography/typography-using-type-06-headings-do@2x.png)
@@ -80,9 +80,9 @@ Headings introduce new sections, and subsections in the admin. They initiate the
     Use proper heading sizes. Headings should be equal or larger in size than the following text, unless they are used as a lede or kicker.
 
   </Do>
-</InlineGrid>
+</TwoColumns>
 
-<InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <Do>
 
     ![The title, description and media part of a product detail page, which does not have a heading](/images/design/typography/typography-using-type-08-headings-evident-do@2x.png)
@@ -97,7 +97,7 @@ Headings introduce new sections, and subsections in the admin. They initiate the
     Headings do not vary in weight.
 
   </Dont>
-</InlineGrid>
+</TwoColumns>
 </Stack>
 
 ### Body
@@ -110,7 +110,7 @@ Body is often the same size as its leading heading, but will rarely be the same 
 
 Body can vary in weight a lot, and can even mimic the style of headings for a streamlined look.
 
-<InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <Do>
 
     ![A card with two different body sizes using two different colors to differentiate between the two](/images/design/typography/typography-using-type-11-body-do@2x.png)
@@ -125,7 +125,7 @@ Body can vary in weight a lot, and can even mimic the style of headings for a st
     Using the same body size everywhere can make it hard for merchants to identify key elements in components.
 
   </DirectiveCard>
-</InlineGrid>
+</TwoColumns>
 
 ## Formatting
 
@@ -137,7 +137,7 @@ Formatting modifies the appearance of type to enhance its readability, emphasize
 
 Text that is underlined can serve two purposes: link to other pages, or offer additional contextual information through a tooltip or a popover.
 
-<InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <DirectiveCard>
 
     ![Visual of a link in a footer of a page](/images/design/typography/typography-using-type-14-formatting-underline-link@2x.png)
@@ -152,13 +152,13 @@ Text that is underlined can serve two purposes: link to other pages, or offer ad
     Definition indicators have a dotted underline and only react on hover or touch without sending merchants to another section in the admin.
 
   </DirectiveCard>
-</InlineGrid>
+</TwoColumns>
 
 ### Lists
 
 List elements are introduced with bullets, or more preferably, with icons that are related to the content that they introduce.
 
-<InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <Do>
 
     ![A list of features offered by a Shopify Plan](/images/design/typography/typography-using-type-16-formatting-list-features@2x.png)
@@ -173,7 +173,7 @@ List elements are introduced with bullets, or more preferably, with icons that a
     Use lists for task completion interfaces.
 
   </Do>
-</InlineGrid>
+</TwoColumns>
 
 ### Tabular numbers
 
@@ -183,7 +183,7 @@ The Shopify admin uses tabular numbers everywhere currency or money amounts are 
 ![Two columns made from multiple rows of numbers, one of which is non-tabular and misaligned vertically, and the other one using tabular numbers, which are neatly aligned with each other](/images/design/typography/typography-using-type-18-formatting-tabular@2x.png)
 
 <Stack gap='200'>
-  <InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
+  <TwoColumns>
     <Do>
 
       ![An index table showing the inventory of multiple items in several rows](/images/design/typography/typography-using-type-19-formatting-tabular-do@2x.png)
@@ -199,8 +199,8 @@ The Shopify admin uses tabular numbers everywhere currency or money amounts are 
 
     </Do>
 
-  </InlineGrid>
-  <InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
+  </TwoColumns>
+  <TwoColumns>
     <DirectiveCard status='Caution'>
 
       ![A card that shows the total number of orders and total spend of a customer](/images/design/typography/typography-using-type-21-formatting-tabular-decoration-caution@2x.png)
@@ -216,7 +216,7 @@ The Shopify admin uses tabular numbers everywhere currency or money amounts are 
 
     </Dont>
 
-  </InlineGrid>
+  </TwoColumns>
 </Stack>
 
 ## Icons and symbols
@@ -227,7 +227,7 @@ In Polaris, type and icons are part of the same family. When used with type, ico
 
 Icons and symbols align with type when used outside of a component, and use the same text color as the accompanying text.
 
-<InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
+<TwoColumns>
     <Do>
       ![A badge using a micro icon](/images/design/typography/typography-using-type-24-icons-micro-do@2x.png)
 
@@ -242,4 +242,4 @@ Icons and symbols align with type when used outside of a component, and use the 
 
     </DirectiveCard>
 
-  </InlineGrid>
+  </TwoColumns>
