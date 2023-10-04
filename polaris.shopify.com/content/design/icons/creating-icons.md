@@ -38,7 +38,7 @@ keywords:
 
 ## Icon layout
 
-<InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <DirectiveCard>
 
     ![A 20 pixels square grid with an icon in a 14 pixels square.](/images/design/icons/icons-creating-layout-1@2x.png)
@@ -57,11 +57,11 @@ keywords:
 
   </DirectiveCard>
 
-</InlineGrid>
+</TwoColumns>
 
 ## Keylines
 
-<InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <DirectiveCard>
 
     ![Four icons that fit inside the following grids: 13x13 pixels square, 14x14 pixels circle, 14x12 pixels rectangles, horizontal and vertical.](/images/design/icons/icons-creating-keylines-1@2x.png)
@@ -77,12 +77,12 @@ keywords:
 
   </DirectiveCard>
 
-</InlineGrid>
+</TwoColumns>
 
 ## General Rules
 
 <Stack gap='400'>
-  <InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+  <TwoColumns>
     <Do>
 
       ![An archive box and a building represented in two dimensions. ](/images/design/icons/icons-creating-rules-1@2x.png)
@@ -99,9 +99,9 @@ keywords:
 
     </Dont>
 
-  </InlineGrid>
+  </TwoColumns>
 
-  <InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+  <TwoColumns>
     <DirectiveCard status="Caution">
 
       ![A package and a globe represented with slight hints of a third dimension.](/images/design/icons/icons-creating-rules-3@2x.png)
@@ -117,8 +117,8 @@ keywords:
       Center icon in their container.
     </Do>
 
-  </InlineGrid>
-  <InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+  </TwoColumns>
+  <TwoColumns>
 
     <Do>
       ![Three simple icons made with simple geometric shapes representing a smile, a scroll and a page](/images/design/icons/icons-creating-rules-5@2x.png)
@@ -135,9 +135,9 @@ keywords:
 
       </Dont>
 
-  </InlineGrid>
+  </TwoColumns>
 
-  <InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+  <TwoColumns>
 
     <Do>
 
@@ -155,7 +155,7 @@ keywords:
 
     </Dont>
 
-  </InlineGrid>
+  </TwoColumns>
 </Stack>
 
 {/* Filled vs outlined */}
@@ -167,7 +167,7 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 <Stack gap='400'>
   ![Shopify’s admin interface with search open, showing a few results that use different icons like a person, a tag, or an inbox, to differentiate the types of results.](/images/design/icons/icons-creating-filled-vs-outline-1@2x.png)
 
-  <InlineGrid gap="400" columns={{xs: '1', md: '3'}}>
+  <ThreeColumns>
 
     <Do>
       ![A settings navigation menu with icons differentiating each item in the menu. All icons are filled expect for the one selected that is outlined.](/images/design/icons/icons-creating-filled-vs-outline-2@2x.png)
@@ -190,14 +190,14 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
     </Dont>
 
-  </InlineGrid>
+  </ThreeColumns>
 </Stack>
 
 ### Designing outlined icons
 
 <Stack gap='400'>
 
-  <InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+  <TwoColumns>
 
     <DirectiveCard>
 
@@ -215,9 +215,9 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
     </DirectiveCard>
 
-  </InlineGrid>
+  </TwoColumns>
 
-  <InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+  <TwoColumns>
 
     <DirectiveCard>
 
@@ -235,8 +235,8 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
     </DirectiveCard>
 
-  </InlineGrid>
-  <InlineGrid gap="400" columns={{xs: '1', md: '3'}}>
+  </TwoColumns>
+  <ThreeColumns>
 
     <DirectiveCard>
 
@@ -262,11 +262,11 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
     </DirectiveCard>
 
-  </InlineGrid>
+  </ThreeColumns>
 
 ### Designing filled icons
 
-  <InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+  <TwoColumns>
 
     <DirectiveCard>
 
@@ -284,9 +284,9 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
     </DirectiveCard>
 
-  </InlineGrid>
+  </TwoColumns>
 
-  <InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+  <TwoColumns>
 
     <DirectiveCard>
 
@@ -309,9 +309,9 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
     </DirectiveCard>
 
-  </InlineGrid>
+  </TwoColumns>
 
-  <InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+  <TwoColumns>
 
     <DirectiveCard>
 
@@ -329,5 +329,5 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
     </DirectiveCard>
 
-  </InlineGrid>
+  </TwoColumns>
 </Stack>
