@@ -10,7 +10,7 @@
   }
   gap: 1rem;
   display: grid;
-  grid-template-columns: [do] 1fr [dont] 1fr;
+  grid-template-columns: 1fr 1fr;
 
   @media screen and (max-width: $breakpointMobile) {
     display: flex;
@@ -19,10 +19,3 @@
   }
 }
 
-.Do {
-  grid-column: do;
-}
-
-.Dont {
-  grid-column: dont;
-}
