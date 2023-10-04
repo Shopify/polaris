@@ -1,5 +1,5 @@
 ---
-title: Spacial Organization
+title: Spacial organization
 order: 1
 icon: BuyButtonButtonLayoutMajor
 keywords:
