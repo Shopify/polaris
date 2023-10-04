@@ -33,6 +33,7 @@ import {FeaturedCardGrid} from '../FeaturedCardGrid';
 import {useCopyToClipboard} from '../../utils/hooks';
 import {Colors} from './components/Colors';
 import {TwoColumns} from './components/TwoColumns';
+import {ThreeColumns} from './components/ThreeColumns';
 
 const CodeVisibilityContext = createContext<
   [
@@ -236,6 +237,7 @@ function Markdown<
         SideBySide,
         Grid,
         TwoColumns,
+        ThreeColumns,
         Card,
         DirectiveCard,
         FeaturedCardGrid,
