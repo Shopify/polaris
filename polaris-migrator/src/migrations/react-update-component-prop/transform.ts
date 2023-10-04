@@ -6,7 +6,7 @@ import type {
   Options,
 } from 'jscodeshift';
 
-import {insertJSXComment} from '../../utilities/jsx';
+import {insertCommentBefore, insertJSXComment} from '../../utilities/jsx';
 import {POLARIS_MIGRATOR_COMMENT} from '../../utilities/constants';
 import {
   getImportSpecifierName,
@@ -146,6 +146,22 @@ export default function transformer(
       });
     }
   });
+
+  source
+    .find(j.Identifier)
+    .filter((path) => path.node.name === localElementName)
+    .forEach((path) => {
+      if (path.node.type !== 'Identifier') return;
+
+      if (
+        path.parent.value.type === 'ImportSpecifier' ||
+        path.parent.value.type === 'MemberExpression'
+      ) {
+        return;
+      }
+
+      insertCommentBefore(j, path, POLARIS_MIGRATOR_COMMENT);
+    });
 
   return source.toSource();
 }
