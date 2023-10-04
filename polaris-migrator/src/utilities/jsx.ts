@@ -1,8 +1,6 @@
 import type {ASTPath, Collection, JSXAttribute, JSXElement} from 'jscodeshift';
 import type core from 'jscodeshift';
 
-import {POLARIS_MIGRATOR_COMMENT} from './constants';
-
 export function getJSXAttributes(
   j: core.JSCodeshift,
   element: ASTPath<any>,
