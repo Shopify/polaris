@@ -18,8 +18,8 @@ export default function transformer(
 ) {
   const {componentName, fromProp, toProp, fromValue, toValue} = options;
 
-  if (!componentName) {
-    throw new Error('Missing required option componentName');
+  if (!componentName || !fromProp) {
+    throw new Error('Missing required options: componentName, fromProp');
   }
 
   const source = j(file.source);
