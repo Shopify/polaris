@@ -4,7 +4,6 @@ description: Preferred solutions to common merchant goals in the admin.
 icon: BehaviorMajor
 order: 6
 newSection: true
-status: New
 ---
 
 <Stack gap="800">
@@ -24,20 +23,24 @@ status: New
   </div>
 
 {' '}
+
 <RichCardGrid cards={posts} />
 
 {' '}
+
 <span id="legacy" />
 
 ## Archived documentation
 
 {' '}
+
 <Lede>
   These guidelines are safe to use and will be updated to the new documentation
   format in the near future.
 </Lede>
 
 {' '}
+
 <RichCardGrid cards={legacyPatternPosts} />
 
 </Stack>

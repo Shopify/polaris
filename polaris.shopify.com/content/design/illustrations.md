@@ -1,6 +1,7 @@
 ---
 title: Illustrations
 description: The Shopify admin uses a precise illustration style to help merchants quickly and clearly understand how things work across every experience.
+order: 9
 keywords:
   - drawings
   - pictures

@@ -3,6 +3,7 @@ title: Pro design language
 description: Efficiency, intuition, and style combined to empower merchants with data-rich views, action-driven interfaces, and dynamic interactions.
 order: 1
 icon: PaintBrushMajor
+status: New
 ---
 
 # {frontmatter.title}
