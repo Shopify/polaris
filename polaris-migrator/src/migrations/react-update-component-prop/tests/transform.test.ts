@@ -52,8 +52,8 @@ const fixtures = [
       componentName: 'MyComponent',
       fromProp: 'prop',
       toProp: 'variant',
-      fromValue: 'targetted-value',
-      toValue: 'new-targetted-value',
+      fromValue: 'targeted-value',
+      toValue: 'new-targeted-value',
     },
   },
   {

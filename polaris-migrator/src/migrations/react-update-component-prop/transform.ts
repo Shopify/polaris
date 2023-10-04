@@ -1,4 +1,4 @@
-import type {API, FileInfo, Options} from 'jscodeshift';
+import type {API, FileInfo, JSXAttribute, Options} from 'jscodeshift';
 
 import {insertJSXComment} from '../../utilities/jsx';
 import {POLARIS_MIGRATOR_COMMENT} from '../../utilities/constants';
@@ -35,36 +35,45 @@ export default function transformer(
       const allAttributes = element.node.openingElement.attributes ?? [];
 
       if (
+        // Early exit on spread operators
         allAttributes.some((attribute) => attribute.type !== 'JSXAttribute')
       ) {
         insertJSXComment(j, element, POLARIS_MIGRATOR_COMMENT);
         return;
       }
 
-      allAttributes.forEach((attribute) => {
+      const jsxAttributes = allAttributes as JSXAttribute[];
+
+      jsxAttributes.forEach((jsxAttribute) => {
         if (
           !(
-            attribute.type === 'JSXAttribute' &&
-            attribute.name.name === fromProp
+            jsxAttribute.type === 'JSXAttribute' &&
+            jsxAttribute.name.name === fromProp
           )
         ) {
-          return attribute;
+          return jsxAttribute;
         }
 
-        // Current attribute matches target fromProp
-
-        if (toProp) {
-          attribute.name.name = toProp;
-        }
+        // Current jsxAttribute matches target fromProp
 
         const attributeValueValue =
-          attribute.value?.type === 'StringLiteral'
-            ? attribute.value.value
+          jsxAttribute.value?.type === 'StringLiteral'
+            ? jsxAttribute.value.value
             : null;
 
-        if (fromValue && fromValue !== attributeValueValue) return attribute;
+        if (
+          toProp &&
+          toProp !== fromProp &&
+          (!fromValue || fromValue === attributeValueValue)
+        ) {
+          jsxAttribute.name.name = toProp;
+        }
 
-        attribute.value = toValue ? j.stringLiteral(toValue) : attribute.value;
+        if (fromValue && fromValue !== attributeValueValue) return jsxAttribute;
+
+        jsxAttribute.value = toValue
+          ? j.stringLiteral(toValue)
+          : jsxAttribute.value;
       });
     }
   });
