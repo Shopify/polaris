@@ -46,5 +46,4 @@ Layout compositions are built with layout primitives. Use these components to bu
 
 #### Related Resources
 
-- Check out the [Space](/design/space) guidelines to understand how to apply the Polaris spacing scale.
 - Read the [Layout](/design/layout) guidelines for information on layout behaviors, as well as examples.
