@@ -1,8 +1,9 @@
 ---
-title: Design principles
-description: Design principles serve as guiding notions that shape the design of the Shopify admin, with Polaris providing support in implementing these principles effectively.
+title: Pro design language
+description: Efficiency, intuition, and style combined to empower merchants with data-rich views, action-driven interfaces, and dynamic interactions.
 order: 1
 icon: PaintBrushMajor
+status: New
 ---
 
 # {frontmatter.title}
@@ -19,11 +20,13 @@ icon: PaintBrushMajor
 
         <Box padding="400">
 
-          ## Pro feel
+          ## What is pro?
 
-          **Interactions are highly functional, responsive, and effective.**
+          "Pro" in Shopify's context refers to a design language that prioritizes efficiency and intuitive interactions, catering to the daily tasks merchants perform everyday.
 
-          The Shopify admin is a piece of software, not a website. Interfaces are easy to understand and navigate, and common actions are offered in their simplest form and are easy to access and consistently positioned.
+          It involves using space efficiently to allow merchants to view more data at once. It's about avoiding being verbose and making the interface action-driven with intuitive icons for swift navigation.
+
+          It also means combining motion, color, and depth to create a responsive and dynamic interface, with clear affordances that enable intuitive interaction without confusion about interactivity.
 
         </Box>
 
@@ -31,7 +34,50 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![Common actions like edit/delete/manage are shown](/images/design/design-principles-pro-feel-software@2x.png)
+        ![Common actions like edit/delete/manage are shown](/images/design/pro/pro-design-language-01-what-is-pro@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ## Assign meaning
+
+          **Visual language is clear for merchants.**
+
+          When using color, strong meaning is associated. Red means danger, green means go. Color roles are heightened in the interface and add a layer of detail that merchants can quickly understand and master.
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![Badges of different color roles, like caution, critical and info in the order index page](/images/design/pro/pro-design-language-02-assign-meaning-color@2x.png)
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          Leveraging established symbols to identify key functionality helps merchants understand the admin at first glance. Using clear icons that are widely recognized creates a clear and predictable experience.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![Import, Export, Edit, Print, and other icons that are established](/images/design/pro/pro-design-language-03-assign-meaning-icons@2x.png)
 
       </Grid.Cell>
 
@@ -47,7 +93,100 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![Badges in an index page, card with primary button](/images/design/design-principles-pro-feel-roles@2x.png)
+        ![Badges in an index page, card with primary button](/images/design/pro/pro-design-language-04-assign-meaning-roles@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ## Increase density
+
+          **Space is optimized while maintaining high usability.**
+
+          Density in the interface adapts to the task: high density is used in data-rich environments, while low density is employed in focused, detailed areas.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![Product index page table showing a high density layout](/images/design/pro/pro-design-language-05-increase-density-adapt@2x.png)
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          Information is structured in a clear visual hierarchy, emphasizing important details through variants like size, weight, and color.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![Order detail page example, with a page title, a card with title and badge](/images/design/pro/pro-design-language-06-increase-density-structure@2x.png)
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          Space is used to create groups of related information. Color adds or removes emphasis to make the interface easier to scan and enables efficient decision making.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        ![Installed apps card with sub-surfaces for each installed app](/images/design/pro/pro-design-language-07-increase-density-group@2x.png)
+
+      </Grid.Cell>
+
+    </Grid>
+
+  </Card>
+
+  <Card>
+
+    <Grid gap="400">
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+
+        <Box padding="400">
+
+          ## Craft juicy interactions
+
+          **Interfaces incorporate a sense of realness.**
+
+          Primary interaction points provide a dramatic visual response to interaction. Variables like position and lighting change to mimic how physical buttons react when pressed. A hover transition is smooth and unobtrusive, whilst feedback from a click feels more dramatic and visceral.
+
+        </Box>
+
+      </Grid.Cell>
+
+      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
+          <source src="/images/design/pro/pro-design-language-08-juicy-realness.mp4" type="video/mp4" />
+
+          A series of buttons in every state, default, hovered and clicked
+
+        </video>
 
       </Grid.Cell>
 
@@ -64,146 +203,9 @@ icon: PaintBrushMajor
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
         <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
-          <source src="/images/design/design-principles-pro-feel-interactions.mp4" type="video/mp4" />
+          <source src="/images/design/pro/pro-design-language-09-juicy-quick.mp4" type="video/mp4" />
 
-        Subnavigation in the navigation menu in the Shopify admin being opened and closed
-
-        </video>
-
-      </Grid.Cell>
-
-    </Grid>
-
-  </Card>
-
-  <Card>
-
-    <Grid gap="400">
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box padding="400">
-
-          ## Meaningful
-
-          **Visual language is clear for merchants.**
-
-          When using color, strong meaning is associated. Red means danger, green means go. Color roles are heightened in the interface and add a layer of detail that merchants can quickly understand and master.
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
-
-        ![Badges of different color roles, like caution, critical and info in the order index page](/images/design/design-principles-meaningful-using-color@2x.png)
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box padding="400">
-
-          Leveraging established symbols to identify key functionality helps merchants understand the admin at first glance. Using clear icons that are widely recognized creates a clear and predictable experience.
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
-
-        ![Import, Export, Edit, Print, and other icons that are established](/images/design/design-principles-meaningful-established-symbols@2x.png)
-
-      </Grid.Cell>
-
-    </Grid>
-
-  </Card>
-
-  <Card>
-
-    <Grid gap="400">
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box padding="400">
-
-          ## High density
-
-          **Space is optimized while maintaining high usability.**
-
-          Density in the interface adapts to the task: high density is used in data-rich environments, while low density is employed in focused, detailed areas.
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
-
-        ![Product index page table showing a high density layout](/images/design/design-principles-high-density-task@2x.png)
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box padding="400">
-
-          Information is structured in a clear visual hierarchy, emphasizing important details through variants like size, weight, and color.
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
-
-        ![Order detail page example, with a page title, a card with title and badge](/images/design/design-principles-high-density-hierarchy@2x.png)
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box padding="400">
-
-          Space is used to create groups of related information. Color adds or removes emphasis to make the interface easier to scan and enables efficient decision making.
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
-
-        ![Installed apps card with sub-surfaces for each installed app](/images/design/design-principles-high-density-groups@2x.png)
-
-      </Grid.Cell>
-
-    </Grid>
-
-  </Card>
-
-  <Card>
-
-    <Grid gap="400">
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box padding="400">
-
-          ## Tactility
-
-          **Interfaces incorporate a sense of realness.**
-
-          Primary interaction points provide a dramatic visual response to interaction. Variables like position and lighting change to mimic how physical buttons react when pressed. A hover transition is smooth and unobtrusive, whilst feedback from a click feels more dramatic and visceral.
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
-
-        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
-          <source src="/images/design/design-principles-tactility-realness.mp4" type="video/mp4" />
-
-          A series of buttons in every state, default, hovered and clicked
+          Navigation opening/closing animation
 
         </video>
 
@@ -222,7 +224,7 @@ icon: PaintBrushMajor
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
         <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
-          <source src="/images/design/design-principles-tactility-animation.mp4" type="video/mp4" />
+          <source src="/images/design/pro/pro-design-language-10-juicy-animation.mp4" type="video/mp4" />
 
           Animation of a checkbox being ticked in an index page
 
@@ -242,7 +244,7 @@ icon: PaintBrushMajor
 
         <Box padding="400">
 
-          ## Commonality
+          ## Make it predictable
 
           **Objects with similar appearance share a common behavior.**
 
@@ -254,7 +256,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![Contextual menu indicators that all open the same way and look the same](/images/design/design-principles-commonality-behavior@2x.png)
+        ![Contextual menu indicators that all open the same way and look the same](/images/design/pro/pro-design-language-11-predictable-behavior@2x.png)
 
       </Grid.Cell>
 
@@ -270,7 +272,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![Different components using the order icon consistently](/images/design/design-principles-commonality-signifiers@2x.png)
+        ![Different components using the order icon consistently](/images/design/pro/pro-design-language-12-predictable-signifiers@2x.png)
 
       </Grid.Cell>
 

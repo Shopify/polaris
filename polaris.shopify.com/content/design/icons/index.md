@@ -3,6 +3,7 @@ title: Icons
 description: Icons enhance an experience by providing intuitive and efficient navigation, conveying information concisely, and making it more visually appealing.
 hideChildren: true
 showTOC: true
+order: 4
 keywords:
   - shopify icons
   - icon sets
@@ -20,6 +21,7 @@ keywords:
   - icons in nav
   - icons in main nav
   - icon colors
+status: New
 ---
 
 # {frontmatter.title}
