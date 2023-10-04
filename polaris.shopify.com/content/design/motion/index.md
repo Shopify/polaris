@@ -1,6 +1,7 @@
 ---
 title: Motion
 description: Motion brings dynamism to an interface, offers visual feedback and aids merchants understanding the outcomes of their actions.
+order: 6
 keywords:
   - animation
   - motion
@@ -8,6 +9,7 @@ keywords:
   - interaction
   - transition
 hideChildren: true
+status: New
 ---
 
 # {frontmatter.title}

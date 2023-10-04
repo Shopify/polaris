@@ -1,6 +1,7 @@
 ---
 title: Layout
 icon: TemplateMajor
+order: 5
 keywords:
   - layout
   - layout components
@@ -16,6 +17,8 @@ keywords:
   - responsive
   - spacing
 description: Layout determines the placement, positioning, and organization of various components within the UI, such as buttons, menus, content sections, and other visual elements.
+hideChildren: true
+status: New
 ---
 
 # {frontmatter.title}

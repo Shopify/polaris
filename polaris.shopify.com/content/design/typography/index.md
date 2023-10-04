@@ -2,12 +2,14 @@
 title: Typography
 description: Typography is the art of arranging type in ways that provides innate hierarchy to UI.
 showTOC: true
+order: 7
 keywords:
   - type styles
   - font sizes
   - fonts
 icon: TypeMajor
 hideChildren: true
+status: New
 ---
 
 # {frontmatter.title}

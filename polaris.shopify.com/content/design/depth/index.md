@@ -1,6 +1,7 @@
 ---
 title: Depth
 description: Depth introduces a sense of realism, helps establish visual hierarchy, and creates focus.
+order: 3
 keywords:
   - depth
   - visual hierarchy
@@ -8,6 +9,7 @@ keywords:
 icon: TypeMajor
 showTOC: true
 hideChildren: true
+status: New
 ---
 
 # {frontmatter.title}
@@ -18,8 +20,8 @@ hideChildren: true
 <Stack gap="800">
 <Card height="100%">
     <Grid gap="400" areas={{
-      xs: ['a a a a a a', 'b b b b b b'], 
-      lg: ['a a a a b b b b b b b b'] 
+      xs: ['a a a a a a', 'b b b b b b'],
+      lg: ['a a a a b b b b b b b b']
     }}>
 
       <Grid.Cell area="a">
@@ -116,8 +118,8 @@ hideChildren: true
   </Card>
 <Card>
     <Grid gap="400" areas={{
-      xs: ['a a a a a a',  'b b b b b b'], 
-      lg: ['a a a a b b b b b b b b'] 
+      xs: ['a a a a a a',  'b b b b b b'],
+      lg: ['a a a a b b b b b b b b']
     }}>
 
       <Grid.Cell area="a">
