@@ -7,6 +7,7 @@ keywords:
   - focus
 icon: TypeMajor
 showTOC: true
+hideChildren: true
 ---
 
 # {frontmatter.title}
