@@ -1,5 +1,11 @@
 # Changelog
 
+## 11.26.0
+
+### Minor Changes
+
+- [#10788](https://github.com/Shopify/polaris/pull/10788) [`82f10e830`](https://github.com/Shopify/polaris/commit/82f10e8307bcc7a839e4733b4c03c957ff2fbd88) Thanks [@mrcthms](https://github.com/mrcthms)! - Deprecated the IndexFiltersManager component
+
 ## 11.25.0
 
 ### Minor Changes
