@@ -65,6 +65,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/design/space',
+        destination: '/design/layout',
+        permanent: true,
+      },
+      {
         source: '/foundations/design/:slug',
         destination: '/design/:slug',
         permanent: true,
