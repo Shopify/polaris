@@ -37,7 +37,7 @@ Icons serve a critical role in streamlining content and facilitating navigation.
 
 Common actions like edit, delete, and search have established icons that are universally understood. Leveraging pre-existing knowledge will improve clarity and help reduce clutter, since these icons require no text label.
 
-<InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+<TwoColumns>
 
   <Do>
     ![A card with customer information, with a pencil icon representing the edit action, and a clipboard icon representing the copy to clipboard action. ](/images/design/icons/icons-using-2@2x.png)
@@ -53,13 +53,13 @@ Common actions like edit, delete, and search have established icons that are uni
 
   </Dont>
 
-</InlineGrid>
+</TwoColumns>
 
 ### Indicate common objects
 
 Consistently pairing specific icons with objects enables users to quickly recognize them, which promotes a more efficient and intuitive interaction with the interface.
 
-<InlineGrid gap="400" columns={{xs: '1', md: '3'}}>
+<ThreeColumns>
 
   <Do>
     ![An inbox icon representing orders in the navigation menu, in the search results and in an information card.](/images/design/icons/icons-using-4@2x.png)
@@ -81,13 +81,13 @@ Consistently pairing specific icons with objects enables users to quickly recogn
 
   </Dont>
 
-</InlineGrid>
+</ThreeColumns>
 
 ### Size
 
 Icon size and weight was specifically crafted to pair with typography.
 
-<InlineGrid gap="400" columns={{xs: '1', md: '2'}}>
+<TwoColumns>
 
   <Do>
     ![An icon next to text, highlighting the vertical alignment between the two elements.](/images/design/icons/icons-using-7@2x.png)
@@ -102,6 +102,6 @@ Icon size and weight was specifically crafted to pair with typography.
     Resize icons. Resizing them will distort the relationship that was established with typography.
 
   </Dont>
-</InlineGrid>
+</TwoColumns>
 
 </Stack>
