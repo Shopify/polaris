@@ -53,7 +53,7 @@ keywords:
 
     Exceptionally, if the icon requires more visual prominence, or more space to
     read effectively, the content can expand beyond that, however, no part of
-    the icon should exceed 16 x 16 px
+    the icon should exceed 16 x 16 px.
 
   </DirectiveCard>
 
@@ -66,14 +66,14 @@ keywords:
 
     ![Four icons that fit inside the following grids: 13x13 pixels square, 14x14 pixels circle, 14x12 pixels rectangles, horizontal and vertical.](/images/design/icons/icons-creating-keylines-1@2x.png)
 
-    The overall shape of an icon can vary from a circle to a square, or from a tall rectangle to a wide one. So all icons have the same visual weight, always start with the following keylines.
+    The overall shape of an icon can vary from a circle to a square, or from a tall rectangle to a wide one. Always start with the following keylines, so that all icons have the same visual weight.
 
   </DirectiveCard>
   <DirectiveCard>
 
     ![Four icons that stick our slightly from the the following grids: 13x13 pixels square, 14x14 pixels circle, 14x12 pixels rectangles, horizontal and vertical.](/images/design/icons/icons-creating-keylines-2@2x.png)
 
-    The guidelines are a starting point, not a hard constraint. If it makes the concept stronger or keeps the icon optically aligned, it’s ok to deviate.
+    These guidelines are a starting point, not a hard constraint. If it makes the concept stronger or keeps the icon optically aligned, it’s ok to deviate.
 
   </DirectiveCard>
 
@@ -87,7 +87,7 @@ keywords:
 
       ![An archive box and a building represented in two dimensions. ](/images/design/icons/icons-creating-rules-1@2x.png)
 
-      Icons are two-dimensional, and objects face forward.
+      Ensure that icons are two-dimensional, and objects face forward.
 
     </Do>
 
@@ -114,7 +114,7 @@ keywords:
     <Do>
       ![A presentation board icon centered in a 20 pixel square.](/images/design/icons/icons-creating-rules-4@2x.png)
 
-      Center icon in their container.
+      Center icons in their container.
     </Do>
 
   </InlineGrid>
@@ -123,7 +123,7 @@ keywords:
     <Do>
       ![Three simple icons made with simple geometric shapes representing a smile, a scroll and a page](/images/design/icons/icons-creating-rules-5@2x.png)
 
-      Bold and stylized icons.
+      Bold and stylize icons.
 
     </Do>
 
@@ -162,7 +162,7 @@ keywords:
 
 ## Filled vs Outlined
 
-Outline icons are the default. Filled icons are reserved to navigation only.
+Outlined icons are the default. Filled icons are reserved for navigation only.
 
 <Stack gap='400'>
   ![Shopify’s admin interface with search open, showing a few results that use different icons like a person, a tag, or an inbox, to differentiate the types of results.](/images/design/icons/icons-creating-filled-vs-outline-1@2x.png)
@@ -242,7 +242,7 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
       ![A calendar, an inbox and a shop icon with the corner radius highlighted. 3 pixels for the calendar, 2 pixels for the inbox and 1 pixel for the inbox.](/images/design/icons/icons-creating-outline-5@2x.png)
 
-      Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded, and sharp corners are not allowed, except for intersections and cutouts.
+      Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
 
     </DirectiveCard>
 
@@ -280,7 +280,7 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
       ![A tag, a person and a flower icons made of simple shapes.](/images/design/icons/icons-creating-filled-2@2x.png)
 
-      Icons are made out of contiguous shapes. Ideally one, but it’s possible to go up to three, when required for clarity.
+      Icons are made out of contiguous shapes. Ideally one, but it’s possible to go up to three when required for clarity.
 
     </DirectiveCard>
 
@@ -305,7 +305,7 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
       Terminals are round.
 
-      Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded, and sharp corners are not allowed, except for intersections and cutouts.
+      Corner radius can go from 1 px to 3 px, depending on the object roundness.Joins must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
 
     </DirectiveCard>
 
@@ -317,7 +317,7 @@ Outline icons are the default. Filled icons are reserved to navigation only.
 
       ![Two arrow icons with the stroke being highlighted.](/images/design/icons/icons-creating-filled-5@2x.png)
 
-      If it’s impossible to fill the outline icon, a 2px stroke can be used as a filled version.
+      If it’s not possible to fill the outline icon, a 2px stroke can be used as a filled version.
 
     </DirectiveCard>
 
