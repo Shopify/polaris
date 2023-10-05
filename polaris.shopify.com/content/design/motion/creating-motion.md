@@ -93,8 +93,6 @@ Animations should be simple and purposeful, used to enhance understanding or pro
 
 #### Do
 
-{' '}
-
 <video width="100%" height="auto" controls autoPlay muted loop>
   <source
     src="/images/design/motion/creating/02-animation-do.mp4"
@@ -131,8 +129,6 @@ Timing is crucial in motion design. Motion is fast enough to not cause delay, bu
 <DoDont>
 
 #### Do
-
-{' '}
 
 <video width="100%" height="auto" controls autoPlay muted loop>
   <source
