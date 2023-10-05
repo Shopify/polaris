@@ -24,11 +24,8 @@ description: Apply consistent and harmonious space within and between ui element
 <Lede>{frontmatter.description}</Lede>
 
 <Subnav />
-
-<Stack gap="800">
-
 ## Overview
-
+<Stack gap="800">
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
@@ -91,8 +88,11 @@ description: Apply consistent and harmonious space within and between ui element
         </Grid>
     </Card>
 
+</Stack>
+
     ## How to apply them
 
+<Stack gap="800">
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
