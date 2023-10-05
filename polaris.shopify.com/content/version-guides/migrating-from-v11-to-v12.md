@@ -96,6 +96,8 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 - **💡 Migration example**: A simple diff showing how the migration should be modifying your code
 - ```
 
+  ```
+
 </CollapsibleDetails>
 
 ## Component migrations
@@ -685,18 +687,18 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 
 <CollapsibleDetails summary="➡️ Prop consolidation mappings">
 
-| Old variant                         | New variant                                                                                                            |
-| ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `plain=true`                        | `variant="plain"`                                                                                                      |
-| `primary=true`                      | `variant="primary"`                                                                                                    |
-| `primary=true` + `plain=true`       | `variant="tertiary"`                                                                                                   |
+| Old variant                         | New variant                                                                                                                 |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `plain=true`                        | `variant="plain"`                                                                                                           |
+| `primary=true`                      | `variant="primary"`                                                                                                         |
+| `primary=true` + `plain=true`       | `variant="tertiary"`                                                                                                        |
 | `monochrome=true` + `plain=true`    | `variant="monochromePlain"` \* <br/>This will be deprecated in a future release, please use a different variant if possible |
-| `destructive=true`                  | `variant="primary"` + `tone="critical"`                                                                                |
-| `primarySuccess=true`               | `variant="primary"` + `tone="success"`                                                                                 |
-| `destructive=true` + `outline=true` | `tone="critical"`                                                                                                      |
-| `destructive=true` + `plain=true`   | `variant="plain"` + `tone="critical"`                                                                                  |
-| `monochrome=true`                   |                                                                                                                        |
-| `outline=true`                      |                                                                                                                        |
+| `destructive=true`                  | `variant="primary"` + `tone="critical"`                                                                                     |
+| `primarySuccess=true`               | `variant="primary"` + `tone="success"`                                                                                      |
+| `destructive=true` + `outline=true` | `tone="critical"`                                                                                                           |
+| `destructive=true` + `plain=true`   | `variant="plain"` + `tone="critical"`                                                                                       |
+| `monochrome=true`                   |                                                                                                                             |
+| `outline=true`                      |                                                                                                                             |
 
 </CollapsibleDetails>
 
@@ -2549,7 +2551,7 @@ To update a button's height to match the new height of input fields, use the lar
 
 #### Heading size
 
-The [`LegacyCard`](/components/deprecated/legacy-card) now also enforces that `h1` and `h2` content is `headingSm` (`--p-font-size-80-experimental`).
+The [`LegacyCard`](/components/deprecated/legacy-card) now enforces that `h1` and `h2` content uses the `Text` `headingSm` variant (`--p-font-size-325`).
 If you want to use custom heading sizes, please refactor [`LegacyCard`](/components/deprecated/legacy-card) to [`Card`](/components/layout-and-structure/card).
 
 #### Spacing and visual hierarchy
