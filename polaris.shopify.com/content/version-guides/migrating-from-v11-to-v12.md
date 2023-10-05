@@ -286,7 +286,7 @@ To replace these deprecated `border` custom properties, you can run the [v12-sty
 ```
 
 ```bash
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-border "/**/*.{jsx,tsx}"
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-border "/**.*.{scss,css}"
 ```
 
 #### Post-migration validation
@@ -390,7 +390,7 @@ To replace these deprecated `color` custom properties, you can run the [v12-styl
 #### Step 1
 
 ```bash
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "/**/*.{jsx,tsx}" --step=1
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "/**.*.{scss,css}" --step=1
 ```
 
 After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
@@ -569,7 +569,7 @@ Replacement maps for Step 1:
 #### Step 2
 
 ```bash
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "/**/*.{jsx,tsx}" --step=2
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "/**.*.{scss,css}" --step=2
 ```
 
 After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
@@ -739,7 +739,7 @@ To replace these deprecated `font` custom properties, you can run the [v12-style
 #### Step 1
 
 ```bash
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**/*.{jsx,tsx}" --step=1
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**.*.{scss,css}" --step=1
 ```
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
@@ -768,7 +768,7 @@ Replacement maps for Step 1:
 #### Step 2
 
 ```bash
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**/*.{jsx,tsx}" --step=2
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**.*.{scss,css}" --step=2
 ```
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
@@ -787,7 +787,7 @@ Replacement maps for Step 2:
 #### Step 3
 
 ```bash
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**/*.{jsx,tsx}" --step=3
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**.*.{scss,css}" --step=3
 ```
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
@@ -806,7 +806,7 @@ Replacement maps for Step 3:
 #### Step 4
 
 ```bash
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**/*.{jsx,tsx}" --step=4
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**.*.{scss,css}" --step=4
 ```
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
@@ -838,7 +838,7 @@ To replace these deprecated `shadow` custom properties, you can run the [v12-sty
 #### Step 1
 
 ```bash
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow "/**/*.{jsx,tsx}"
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow "/**.*.{scss,css}"
 ```
 
 After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
@@ -921,7 +921,7 @@ To replace these deprecated `space` custom properties, you can run the [v12-styl
 ```
 
 ```bash
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-space "/**/*.{jsx,tsx}"
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-space "/**.*.{scss,css}"
 ```
 
 #### Post-migration validation
