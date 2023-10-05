@@ -176,6 +176,7 @@ function TOC({items, collapsibleTOC = false}: Props) {
                       className={styles.Toggle}
                       onClick={(evt) => {
                         evt.preventDefault();
+                        evt.stopPropagation();
                         manuallyToggleSection(id, !isExpanded);
                       }}
                       aria-label="Toggle section"
