@@ -180,33 +180,31 @@ html {
     .prefix {
       font-weight: 900;
     }
-    .language-regex {
-      .quantifier {
-        color: var(--code-quantifier);
-      }
-      .escape,
-      .special-escape {
-        color: var(--code-escape);
-      }
-      .charclass,
-      .charset-punctuation,
-      .punctuation {
-        color: var(--code-charset-punctuation);
-      }
-      .anchor {
-        color: var(--code-anchor);
-      }
-      .group {
-        color: var(--code-group);
-      }
-      .backreference,
-      .alternation {
-        color: var(--code-alternation);
-      }
-      .regex-delimiter,
-      .regex-flags {
-        color: var(--p-text);
-      }
+
+    .quantifier {
+      color: var(--code-quantifier);
+    }
+    .escape,
+    .special-escape {
+      color: var(--code-escape);
+    }
+    .char-class,
+    .charset-punctuation {
+      color: var(--code-charset-punctuation);
+    }
+    .anchor {
+      color: var(--code-anchor);
+    }
+    .group {
+      color: var(--code-group);
+    }
+    .backreference,
+    .alternation {
+      color: var(--code-alternation);
+    }
+    .regex-delimiter,
+    .regex-flags {
+      color: var(--p-text);
     }
   }
 }
