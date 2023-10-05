@@ -8,6 +8,7 @@ keywords:
   - fonts
 icon: TextAlignmentLeftMajor
 hideChildren: true
+order: 1
 ---
 
 # {frontmatter.title}

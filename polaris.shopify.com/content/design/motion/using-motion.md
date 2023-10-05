@@ -5,6 +5,7 @@ keywords:
   - motion
   - animation
   - design
+icon: PlayMinor
 ---
 
 # {frontmatter.title}
@@ -44,7 +45,7 @@ Motion can be used to provide feedback, helping merchants understand the results
     <Dont>
       <video
         width="100%"
-        
+
         height="auto"
         controls
         autoPlay
@@ -59,12 +60,13 @@ Motion can be used to provide feedback, helping merchants understand the results
       </video>
       Use motion that doesn't correspond to the action taken. Inconsistent feedback will lead to misunderstandings.
     </Dont>
+
   </Grid.Cell>
   <Grid.Cell area="b">
     <Dont>
       <video
         width="100%"
-        
+
         height="auto"
         controls
         autoPlay
@@ -79,6 +81,7 @@ Motion can be used to provide feedback, helping merchants understand the results
       </video>
       Use overly elaborate or lengthy animations for simple feedback.
     </Dont>
+
   </Grid.Cell>
 </Grid>
 </Stack>
@@ -91,7 +94,7 @@ Motion can guide merchant attention during navigation, helping to maintain conte
   <Do>
     <video
       width="100%"
-      
+
       height="auto"
       controls
       autoPlay
@@ -105,6 +108,7 @@ Motion can guide merchant attention during navigation, helping to maintain conte
        A transition between two pages with a nest relationship, where elements are animated in a single horizontal motion, right to left when going deeper, left to right when going back.
     </video>
     Use motion to subtly guide attention during navigation. So merchants understand where to focus and what action to take next.
+
   </Do>
 
 <Grid
@@ -115,7 +119,7 @@ Motion can guide merchant attention during navigation, helping to maintain conte
     <Dont>
       <video
         width="100%"
-        
+
         height="auto"
         controls
         autoPlay
@@ -130,12 +134,13 @@ Motion can guide merchant attention during navigation, helping to maintain conte
       </video>
       Use motion that distracts from the navigation process. Excessive or irrelevant motion can confuse merchants and detract from the main content or action.
     </Dont>
+
   </Grid.Cell>
   <Grid.Cell area="b">
     <Dont>
       <video
         width="100%"
-        
+
         height="auto"
         controls
         autoPlay
@@ -150,6 +155,7 @@ Motion can guide merchant attention during navigation, helping to maintain conte
       </video>
       Use motion that could potentially mislead merchant's navigation path. The direction and behavior of the motion should align with the navigation flow.
     </Dont>
+
   </Grid.Cell>
 </Grid>
 </Stack>
@@ -162,7 +168,7 @@ Motion can be used to indicate loading states, keeping merchants informed and en
   <Do>
     <video
       width="100%"
-      
+
       height="auto"
       controls
       autoPlay
@@ -176,6 +182,7 @@ Motion can be used to indicate loading states, keeping merchants informed and en
       An outlined three quarters of a circle spinning.
     </video>
     Use loading animations that give a sense of progress or activity. A clear visual cue that the system is processing helps to manage merchant expectations, and helps to reduce perceived wait times.
+
   </Do>
 
 <Grid
@@ -185,15 +192,16 @@ Motion can be used to indicate loading states, keeping merchants informed and en
   <Grid.Cell area="a">
     <Dont>
       ![An icon representing an hourglass.](/images/design/motion/using/03-loading-dont1@2x.png)
-      
+
       Use static loading indicators, as they make the system seem unresponsive or slow.
     </Dont>
+
   </Grid.Cell>
   <Grid.Cell area="b">
     <Dont>
       <video
         width="100%"
-        
+
         height="auto"
         controls
         autoPlay
@@ -208,6 +216,7 @@ Motion can be used to indicate loading states, keeping merchants informed and en
       </video>
       Use overly complex or distracting loading animations. The animation should be subtle and not detract from the rest of the interface.
     </Dont>
+
   </Grid.Cell>
 </Grid>
 </Stack>

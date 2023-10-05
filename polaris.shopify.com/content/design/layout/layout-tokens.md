@@ -27,15 +27,15 @@ description: Apply consistent and harmonious space within and between ui element
 
 <Stack gap="800">
 
-## Overview
-
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
-                ### Using space tokens
+                ## Using space tokens
 
                 Space tokens should be used whenever you need to apply space around or between elements within. You should apply space tokens to all space related css properties such as padding, margin and gap. They should not be used for non-space declarations such as height, width, outline-offset, etc. Always use the proper token group when using Polaris tokens. If a token doesn’t seem to fit your need feel free to reach out in the #polaris channel or create an issue in Github.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -48,12 +48,14 @@ description: Apply consistent and harmonious space within and between ui element
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Primitive tokens
 
                 Primitive tokens refer to generic tokens that can be applied to provide spacing around or between components. They give access to the full scale of values offered by Polaris for managing space within the interface.
 
                 Each is simply named by declaring the token group and then the percentage multiplier of our base value of 4px. Therefore, space-100 is equal to 4px while space-400 equals 16px.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -66,12 +68,14 @@ description: Apply consistent and harmonious space within and between ui element
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Semantic tokens
 
                 Similar to color tokens, semantic space tokens provide spacing for specific and defined contexts within the admin. These tokens should only be used for that explicit purpose. When no semantic token seems to fit your need, use a primitive token instead.
 
                 Semantic tokens explicitly declare what css selector they should be applied to. For example, space-card-padding should only be used to set the padding within the Card component.
+            </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
                 ![Visual: example use of card-padding token](/images/design/layout/tokens/layout-tokens-semantic@2x.png)
@@ -91,15 +95,18 @@ description: Apply consistent and harmonious space within and between ui element
         </Grid>
     </Card>
 
-    ## How to apply them
+
 
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
+                ## How to apply tokens
 
                 ### Figma
 
                 Semantic and primitive space tokens can be accessed via the auto layout padding and gap inputs in the right panel.
+            </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
                 ![Visual: Dropdown of variables in Figma](/images/design/layout/tokens/layout-tokens-figma@2x.png)
@@ -110,10 +117,12 @@ description: Apply consistent and harmonious space within and between ui element
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Polaris React
 
                 Space tokens can be applied in two main ways in Polaris Reach. First, all of the layout components such as Box have access to the tokens via their prop api. Second, when writing your own css you can use the token directly via the css variables that come with the Polaris token package.
+            </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
                 ![Visual: Dropdown of variables in Figma](/images/design/layout/tokens/layout-tokens-polaris-react@2x.png)

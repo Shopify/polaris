@@ -8,6 +8,7 @@ keywords:
   - fonts
 icon: TypeMajor
 hideChildren: true
+order: 2
 ---
 
 # {frontmatter.title}
@@ -39,7 +40,7 @@ Vertical alignment is used on type where line height and padding on an element a
 
     ![A badge where the type and icon are different sizes, but are centered vertically to achieve symmetry](/images/design/typography/typography-using-type-03-vertical-do@2x.png)
 
-    Consider aligning centering type vertically when bounding boxes differ from one element to another.
+    Consider aligning type vertically when bounding boxes differ from one element to another.
 
   </Do>
 
