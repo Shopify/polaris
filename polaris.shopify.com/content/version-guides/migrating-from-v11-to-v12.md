@@ -11,9 +11,7 @@ order: 1
 
 <Lede>{frontmatter.description}</Lede>
 
-## Getting started
-
-Upgrading to Polaris v12 from v11 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExpes. For each breaking change detailed below, migration scripts are scaffolded for you to paste into your terminal. Be sure to update the `<path>` placeholder in the commands to your own app's relevant path, e.g., `{app,packages}/**/*.{css,scss}`. You can reference the [recommended token migration workflow](#recommended-token-migration-workflow) or [glossary](#glossary) sections for additional migration support.
+Upgrading to Polaris v12 from v11 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExpes. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
 
 Not on v11 yet either? Check out our other [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) to get up to date.
 
@@ -26,6 +24,73 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
 />
 
 [v12.0.0 release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
+
+## Migration workflow
+
+When running token and component migrations, we recommend the following workflow:
+
+### 1️⃣ Automated migrations using Polaris Migrator
+
+Follow the migration guide sections below where we have the [@shopify/polaris-migrator](/tools/polaris-migrator) commands scaffolded for you to paste into your terminal. Be sure to update the `<path>` placeholder in the commands to your own app's relevant path, e.g., `{app,packages}/**/*.{css,scss}`. The file extensions can be adjusted depending on what migrations you are running. For example, component migrations can be run on `*.{ts,tsx}` files while token migrations can be run on `*.{css,scss}` files.
+
+```sh
+# Example migration
+npx @shopify/polaris-migrator ...
+# Stash files with "polaris-migrator:" comments
+git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Stage all migrated files without "polaris-migrator:" comments
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+#  Commit automatic migration
+git commit -m "Migrate X custom properties from Polaris v11 to v12"
+```
+
+The polaris migrator could insert comments or skip instances that are unsafe to automatically migrate. You will resolve those issues in the next manual migration step.
+
+### 2️⃣ Manual migrations using migrator comments and RegExp code search
+
+Now, you need to validate the automatic migration and manually update any outstanding issues. The migration guide sections may have additional resources to help you resolve the migrations manually, such as `💡 Migration example`s, `➡️ Replacement mappings` tables, and descriptions of what the automated migrations are doing.
+
+#### Resolve `polaris-migrator:` comments
+
+Unstash the polaris migrator comments if you stashed any in step 1.
+
+```sh
+git stash pop
+```
+
+Go through each of the changed files and search for `polaris-migrator:` comments. Migrate the instance the comment refers to, then delete the comment.
+
+#### Validate with RegExp
+
+Next, search for each of the token RegExpes which are found under the `✅ Post-migration RegExp validation` toggle in the guide. Update any outstanding migrations. If you're unsure on how to search in a code editor using RegExp, check out the [glossary](#glossary).
+
+```sh
+# Stage all manually migrated files
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+# Optional: run stylelint if using stylelint-polaris and running migrations on stylesheets
+npx stylelint <path>
+#  Commit manual migrations
+git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
+```
+
+### Glossary
+
+<CollapsibleDetails summary="Descriptions and resources for some terms in this guide">
+
+- **`<path>`**: [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) path for the `polaris-migrator` to run codemods on. e.g.: `{app,packages}/**/*.{css,scss}`
+- **[@shopify/polaris-migrator](/tools/polaris-migrator)**: CLI codemod tool to do the bulk of migrations for you
+- **Automatic migration or codemod**: A transformation that run on your codebase programmatically. They are used to make mass updates to code automatically without having to go through every file
+- **[Regexp](https://en.wikipedia.org/wiki/Regular_expression)**: Short for regular expression, a sequence of characters used to match text. If you use a code editor like VSCode, you can follow a tutorial like [this one](https://itnext.io/vscode-find-and-replace-regex-super-powers-c7f8be0fa80f) to learn how to search your code using RegExp
+- **✅ Post-migration RegExp validation**: After you run an automated migration using the `polaris-migrator`, the migrator may quick exit or miss edge cases. You can use the RegExp search snippets to find and manually migrate the stragglers
+- **➡️ Token replacement mappings (or other mapping tables)**: These tables show you at a glance what our migrators are finding and replacing. They are useful to cross reference when dealing with edge cases and manual migrations
+- **🔔 Stepped migration**: These are migrations that have to be done in order because they have overlapping mappings. We will break out the migrations into steps for you
+- **💡 Migration example**: A simple diff showing how the migration should be modifying your code.
+
+</CollapsibleDetails>
 
 ## Component migrations
 
@@ -796,7 +861,7 @@ The following tokens have either been renamed or removed. You will need to repla
 
 ### Border
 
-To replace deprecated `border` custom properties, you can run the [v12-styles-replace-custom-property-border](/tools/polaris-migrator#v12-styles-replace-custom-property-border) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+To replace deprecated `border` custom properties, you can run the [v12-styles-replace-custom-property-border](/tools/polaris-migrator#v12-styles-replace-custom-property-border) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
 <CollapsibleDetails summary="💡 Migration example">
 
@@ -943,7 +1008,7 @@ To replace deprecated `border` custom properties, you can run the [v12-styles-re
 
 ### Color
 
-To replace deprecated `color` custom properties, you can run the [v12-styles-replace-custom-property-color](/tools/polaris-migrator#v12-styles-replace-custom-property-color) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+To replace deprecated `color` custom properties, you can run the [v12-styles-replace-custom-property-color](/tools/polaris-migrator#v12-styles-replace-custom-property-color) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
 <CollapsibleDetails summary="💡 Migration example">
 
@@ -1402,7 +1467,7 @@ If you want to unblock your migration quickly you can manually hardcode the valu
 
 ### Font
 
-To replace deprecated `font` custom properties, you can run the [v12-styles-replace-custom-property-font](/tools/polaris-migrator#v12-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+To replace deprecated `font` custom properties, you can run the [v12-styles-replace-custom-property-font](/tools/polaris-migrator#v12-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
 <CollapsibleDetails summary="💡 Migration example">
 
@@ -1556,7 +1621,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
 
 ### Shadow
 
-To replace deprecated `shadow` custom properties, you can run the [v12-styles-replace-custom-property-shadow](/tools/polaris-migrator#v12-styles-replace-custom-property-shadow) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+To replace deprecated `shadow` custom properties, you can run the [v12-styles-replace-custom-property-shadow](/tools/polaris-migrator#v12-styles-replace-custom-property-shadow) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
 <CollapsibleDetails summary="💡 Migration example">
 
@@ -1675,7 +1740,7 @@ The following tokens need to be manually migrated because their values are conte
 
 ### Space
 
-To replace deprecated `space` custom properties, you can run the [v12-styles-replace-custom-property-space](/tools/polaris-migrator#v12-styles-replace-custom-property-space) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+To replace deprecated `space` custom properties, you can run the [v12-styles-replace-custom-property-space](/tools/polaris-migrator#v12-styles-replace-custom-property-space) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
 <CollapsibleDetails summary="💡 Migration example">
 
@@ -2002,42 +2067,6 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
 
 </CollapsibleDetails>
 
-### Recommended token migration workflow
-
-When running token migrations we suggest the following workflow:
-
-#### 1️⃣ Automated migrations using Polaris Migrator
-
-```sh
-# Example migration
-npx @shopify/polaris-migrator ...
-# Stage all migrated files
-git add .
-# Format staged files only
-git diff --staged --name-only | xargs npx prettier --write
-# Commit automated migrations
-git commit -m "Migrate X custom properties from Polaris v11 to v12"
-```
-
-#### 2️⃣ Manual migrations using RegExp code search
-
-Search for each of the token RegExpes (under the `✅ Post-migration RegExp validation` toggle) and update any outstanding migrations. You can use the mapping tables (under the `➡️ Token replacement mappings` toggle) to cross reference the deprecated and new token names.
-
-```sh
-# Stage all manually migrated files
-git add .
-# Format staged files only
-git diff --staged --name-only | xargs npx prettier --write
-# Commit manual migrations
-git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
-```
-
-Optionally if you use `stylelint-polaris`, you can check for errors after all custom property migrations are finished.
-
-```sh
-npx stylelint <path>
-```
-
 ## Manual updates and fixes
 
 ### A new web font
@@ -2173,14 +2202,3 @@ If you are using these exports, update the implementation to import `themes` and
 + const {themes} = require('@shopify/polaris-tokens');
 + const color = JSON.stringify(themes.light.color);
 ```
-
-## Glossary
-
-- **`<path>`**: glob path for the `polaris-migrator` to run codemods on. e.g.: `{app,packages}/**/*.{css,scss}`
-- **[@shopify/polaris-migrator](/tools/polaris-migrator)**: CLI codemod tool to do the bulk of migrations for you
-- **Automatic migration or codemod**: A transformation that run on your codebase programmatically. They are used to make mass updates to code automatically without having to go through every file
-- **[Regexp](https://en.wikipedia.org/wiki/Regular_expression)**: Short for regular expression, a sequence of characters used to match text. If you use a code editor like VSCode, you can follow a tutorial like [this one](https://itnext.io/vscode-find-and-replace-regex-super-powers-c7f8be0fa80f) to learn how to search your code using RegExp
-- **✅ Post-migration RegExp validation**: After you run an automated migration using the `polaris-migrator`, the migrator may quick exit or miss edge cases. You can use the RegExp search snippets find and manually migrate the stragglers
-- **➡️ Token replacement mappings (or other mapping tables)**: These tables show you at a glance what our migrators are finding and replacing. They are useful to cross reference when dealing with edge cases and manual migrations
-- **🔔 Stepped migration**: These are migrations that have to be done in order because they have overlapping mappings. We will break out the migrations into steps for you
-- **💡 Migration example**: A diff showing a simple example of how the migration should be modifying your code.
