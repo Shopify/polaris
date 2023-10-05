@@ -11,15 +11,21 @@ order: 1
 
 <Lede>{frontmatter.description}</Lede>
 
-[Full release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
-
 ## Component migrations
 
 ### Avatar
 
-`npx @shopify/polaris-migrator v12-react-avatar-component <path>`
+#### Rename sizes
 
-- Replace the `size` prop with the new mapping below
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-react-avatar-component <path>`,
+  }}
+/>
+
+<CollapsibleDetails summary="➡️ Prop replacement mappings for the Avatar size prop">
 
 | Before                    | After       |
 | ------------------------- | ----------- |
@@ -30,95 +36,271 @@ order: 1
 | `size="xl-experimental"`  | `size="xl"` |
 | `size="2xl-experimental"` | `size="xl"` |
 
+</CollapsibleDetails>
+
 ### Badge
 
-- Replace `status` with `tone`
+#### Replace `status` prop with `tone`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="status" --to="tone"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="status" --to="tone"`,
+  }}
+/>
 
-- Replace `statusAndProgressLabelOverride` with `toneAndProgressLabelOverride`
+#### Replace `statusAndProgressLabelOverride` prop with `toneAndProgressLabelOverride`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`,
+  }}
+/>
 
 ### IndexTable.Row
 
-- Replace `status` with `tone`
+#### Replace `status` prop with `tone`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="status" --to="tone"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="status" --to="tone"`,
+  }}
+/>
 
-- Replace `subdued` with `tone`
+#### Replace `subdued` prop with `tone`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"`,
+  }}
+/>
 
 ### Layout.Section
 
-- One third:
+#### Replace `oneThird` prop with `variant="oneThird"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"`,
+  }}
+/>
 
-- One half:
+#### Replace `oneHalf` prop with `variant="oneHalf"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"`,
+  }}
+/>
 
-- Full width:
+#### Replace `fullWidth` prop with `variant="fullWidth"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="fullWidth" --to="variant" --toValue="fullWidth"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="fullWidth" --to="variant" --toValue="fullWidth"`,
+  }}
+/>
 
-- Secondary, becomes oneThird:
+#### Replace `secondary` prop with `variant="oneThird"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"`,
+  }}
+/>
 
 ### TextField
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"`
+#### Replace `borderless` prop with `variant="borderless"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"`,
+  }}
+/>
 
 ### Box
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"`
+#### Replace `borderRadius${cornerPosition}` prop with `border${cornerPosition}Radius`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"`
+This border radius property rename aligns with [CSS border radius constituent properties](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius#constituent_properties) to be consistent with other Polaris component APIs as well as wider web conventions.
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"`,
+  }}
+/>
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"`,
+  }}
+/>
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"`,
+  }}
+/>
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"`,
+  }}
+/>
 
 ### HorizontalStack
 
-`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"`
+#### Rename `HorizontalStack` component to `InlineStack`
+
+Directional components now use `Inline` and `Block` which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This is to be consistent with other Polaris component APIs as well as wider web conventions.
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"`,
+  }}
+/>
 
 ### VerticalStack
 
-`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"`
+#### Rename `VerticalStack` component to `BlockStack`
+
+Directional components now use `Inline` and `Block` which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This is to be consistent with other Polaris component APIs as well as wider web conventions.
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"`,
+  }}
+/>
 
 ### HorizontalGrid
 
-`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"`
+#### Rename `HorizontalGrid` component to `InlineGrid`
+
+Directional components now use `Inline` and `Block` which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This is to be consistent with other Polaris component APIs as well as wider web conventions.
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"`,
+  }}
+/>
 
 ### Button
 
+#### Deprecate `connectedDisclosure` and consolidate boolean props to `variant` and `tone`
+
 - connectedDisclosure: [See the updated split example](/components/actions/button)
 
-- Boolean props to `variant` and `tone`
-
-`npx @shopify/polaris-migrator v12-react-update-button-component <path>`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-react-update-button-component <path>`,
+  }}
+/>
 
 ### ButtonGroup
 
-- Spacing
+#### Replace `spacing` prop with `gap`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="spacing" --to="gap"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="spacing" --to="gap"`,
+  }}
+/>
 
-- Segmented
+#### Replace `segmented` prop to `variant="segmented"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"`,
+  }}
+/>
 
 ### Banner
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Banner" --from="status" --to="tone"`
+#### Replace `status` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Banner" --from="status" --to="tone"`,
+  }}
+/>
 
 ### Icon
 
-- Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
+**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
+
+#### Step 1: Replace `color` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="color" --to="tone"`,
+  }}
+/>
+
+#### Step 2: Replace `warning` tone with `caution`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`,
+  }}
+/>
+
+#### Step 3: Replace `highlight` tone with `info`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="highlight" --toValue="info"`,
+  }}
+/>
+
+#### Remove `backdrop` prop
+
+Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
 
 ```tsx
 <Box background={boxBackground} padding="1" width="28px" borderRadius="full">
@@ -126,21 +308,29 @@ order: 1
 </Box>
 ```
 
-- Color
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="color" --to="tone"`
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="highlight" --toValue="info"`
-
 ### Text
 
-- Color
+**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="color" --to="tone"`
+#### Step 1: Replace `color` prop with `tone`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="color" --to="tone"`,
+  }}
+/>
+
+#### Step 2: Replace `warning` tone with `caution`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`,
+  }}
+/>
 
 ### Modal
 
@@ -152,11 +342,27 @@ order: 1
 
 ### List
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="List" --from="spacing" --to="gap"`
+#### Replace `spacing` prop with `gap`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="List" --from="spacing" --to="gap"`,
+  }}
+/>
 
 ### DescriptionList
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="DescriptionList" --from="spacing" --to="gap"`
+#### Replace `spacing` prop with `gap`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="DescriptionList" --from="spacing" --to="gap"`,
+  }}
+/>
 
 ### AppProvider
 
@@ -190,7 +396,7 @@ To replace deprecated `border` custom properties, you can run the [v12-styles-re
 
 <Code
   code={{
-    title: 'Polaris Migrator codemod',
+    title: 'polaris-migrator codemod',
     className: 'language-bash',
     code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>`,
   }}
@@ -1064,7 +1270,7 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
 
 <Code
   code={{
-    title: 'Polaris Migrator codemod',
+    title: 'polaris-migrator codemod',
     className: 'language-bash',
     code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>`,
   }}
