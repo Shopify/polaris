@@ -23,6 +23,8 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
   }}
 />
 
+[What's new in this version](/whats-new/version-12)
+
 [v12.0.0 release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
 
 ## Migration workflow

@@ -68,15 +68,13 @@ Semantic tokens are references to base values that are used in specific contexts
 
 ### Component API simplification
 
-The version 12 breaking component changes aim to simplify inconsistent and complicated component APIs.
+The version 12 breaking component changes aim to simplify inconsistent and complicated component APIs. For a comprehensive list on all component changes and how to migrate from v11's component APIs, check out the [migration guide](/version-guides/migrating-from-v11-to-v12#component-migrations).
 
-For a comprehensive list on all component changes and how to migrate from v11's component APIs, check out the [migration guide](/version-guides/migrating-from-v11-to-v12#component-migrations).
-
-At a high level the API changes aimed to simplify, consolidate, and align by:
+**At a high level the API changes aimed to simplify, consolidate, and align by:**
 
 - Renaming directional components to use `Inline` and `Block` which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values)
 - Renaming border radius properties to align with [CSS border radius constituent properties](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius#constituent_properties)
-- Renaming various color control props to `tone` and space control props to `gap` to create a more consistent API across components
+- Renaming various color control props to `tone` and space control props to `gap`. This creates more consistent APIs across components
 - Consolidating boolean props to a single `variant` prop on various components to make logical combinations more intentional
 
 ## Resources
