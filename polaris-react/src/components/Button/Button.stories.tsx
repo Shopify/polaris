@@ -633,57 +633,34 @@ export function SelectDisclosure() {
 
 export function Split() {
   const [active, setActive] = React.useState(false);
+
+  const toggleActive = () => {
+    setActive((active) => !active);
+  };
+
   return (
-    <div style={{height: '100px'}}>
-      <ButtonGroup variant="segmented">
-        <Button variant="primary">Save</Button>
-
-        <div style={{width: '3px'}} />
-
-        <Popover
-          active={active}
-          preferredAlignment="right"
-          activator={
-            <Button
-              variant="primary"
-              onClick={() => setActive(true)}
-              icon={ChevronDownMinor}
-              accessibilityLabel="Other save actions"
-            />
-          }
-          autofocusTarget="first-node"
-          onClose={() => setActive(false)}
-        >
-          <ActionList
-            actionRole="menuitem"
-            items={[{content: 'Save as draft'}]}
+    <ButtonGroup variant="segmented">
+      <Button variant="primary">Save</Button>
+      <Popover
+        active={active}
+        preferredAlignment="right"
+        activator={
+          <Button
+            variant="primary"
+            onClick={toggleActive}
+            icon={ChevronDownMinor}
+            accessibilityLabel="Other save actions"
           />
-        </Popover>
-      </ButtonGroup>
-
-      <ButtonGroup variant="segmented">
-        <Button>Save</Button>
-
-        <Popover
-          active={active}
-          preferredAlignment="right"
-          activator={
-            <Button
-              onClick={() => setActive(true)}
-              icon={ChevronDownMinor}
-              accessibilityLabel="Other save actions"
-            />
-          }
-          autofocusTarget="first-node"
-          onClose={() => setActive(false)}
-        >
-          <ActionList
-            actionRole="menuitem"
-            items={[{content: 'Save as draft'}]}
-          />
-        </Popover>
-      </ButtonGroup>
-    </div>
+        }
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
+        <ActionList
+          actionRole="menuitem"
+          items={[{content: 'Save as draft'}]}
+        />
+      </Popover>
+    </ButtonGroup>
   );
 }
 
