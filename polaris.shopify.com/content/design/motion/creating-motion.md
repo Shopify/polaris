@@ -8,7 +8,7 @@ keywords:
 icon: TransactionMajor
 ---
 
-# {frontmatter.title}
+# Motion &rarr; {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 

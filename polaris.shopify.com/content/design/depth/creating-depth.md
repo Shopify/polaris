@@ -9,7 +9,7 @@ keywords:
   - bevel use
 ---
 
-# {frontmatter.title}
+# Depth &rarr; {frontmatter.title}
 
 <Subnav />
 

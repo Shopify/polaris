@@ -11,7 +11,7 @@ hideChildren: true
 order: 3
 ---
 
-# {frontmatter.title}
+# Typography &rarr; {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 
