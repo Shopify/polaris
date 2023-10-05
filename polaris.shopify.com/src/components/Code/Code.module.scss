@@ -7,6 +7,10 @@
   background: var(--surface);
   color: var(--text-strong);
   border: var(--border);
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }
 
 .TopBar {
