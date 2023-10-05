@@ -1,5 +1,25 @@
 # @shopify/polaris-migrator
 
+## 0.24.0
+
+### Minor Changes
+
+- [#10874](https://github.com/Shopify/polaris/pull/10874) [`471c3d5af`](https://github.com/Shopify/polaris/commit/471c3d5afe9cd894fdf25c22aef5a7b374dc7531) Thanks [@lgriffee](https://github.com/lgriffee)! - Ported `v12-react-avatar-component` migration from [Avatar] Remove customer prop and experimental values [#10283](https://github.com/Shopify/polaris/pull/10283) to main branch
+
+## 0.23.0
+
+### Minor Changes
+
+- [#10579](https://github.com/Shopify/polaris/pull/10579) [`b5a3622ca`](https://github.com/Shopify/polaris/commit/b5a3622caa2c7601cc14435eae3daab80f015d18) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Created migration to replace deprecated `color` custom properties in Polaris v12.0.0
+
+* [#10304](https://github.com/Shopify/polaris/pull/10304) [`eb93b7f1c`](https://github.com/Shopify/polaris/commit/eb93b7f1ccfd3a3778860b50de95465147207fab) Thanks [@lgriffee](https://github.com/lgriffee)! - Created migration to replace deprecated `font` custom properties in polaris-react v12.0.0
+
+- [#10506](https://github.com/Shopify/polaris/pull/10506) [`d901a07a3`](https://github.com/Shopify/polaris/commit/d901a07a3a146378663e728478b120033b0ebf3c) Thanks [@lgriffee](https://github.com/lgriffee)! - Created migration to replace deprecated `border` custom properties in polaris-react v12.0.0
+
+* [#10305](https://github.com/Shopify/polaris/pull/10305) [`1b36b9256`](https://github.com/Shopify/polaris/commit/1b36b92561710882a48d79eb48c231dc0626925e) Thanks [@lgriffee](https://github.com/lgriffee)! - Created migration to replace deprecated `space` custom properties in polaris-react v12.0.0
+
+- [#10306](https://github.com/Shopify/polaris/pull/10306) [`dbae87e58`](https://github.com/Shopify/polaris/commit/dbae87e5844811ea4e6c8dd83e71c19b41444b18) Thanks [@lgriffee](https://github.com/lgriffee)! - Created migration to replace deprecated `shadow` custom properties in polaris-react v12.0.0
+
 ## 0.22.8
 
 ### Patch Changes
