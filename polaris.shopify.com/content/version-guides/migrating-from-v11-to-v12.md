@@ -892,7 +892,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 <Code
   code={{
     title: `Check RegExp for outdated <Icon color="warning" /> prop`,
-    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color?="warning"`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color="warning"`,
   }}
 />
 
@@ -2404,85 +2404,79 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Checkbox bleedBlockEnd props',
-      code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
-    }}
-  />
-  <Code
-    code={{
-      title: 'Check RegExp for outdated Checkbox bleedInlineStart props',
+      title: `Check RegExp for outdated <Checkbox bleedInlineStart="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Checkbox bleedInlineEnd props',
+      title: `Check RegExp for outdated <Checkbox bleedInlineEnd="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Stack gap props',
+      title: `Check RegExp for outdated <Stack gap="..." /> prop`,
       code: String.raw`<Stack[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Grid gap props',
+      title: `Check RegExp for outdated <Grid gap="..." /> prop`,
       code: String.raw`<Grid[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Grid gapX props',
+      title: `Check RegExp for outdated <Grid gapX="..." /> prop`,
       code: String.raw`<Grid[^>\w](?:[^>]|\n)*?gapX`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Grid gapY props',
+      title: `Check RegExp for outdated <Grid gapY="..." /> prop`,
       code: String.raw`<Grid[^>\w](?:[^>]|\n)*?gapY`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Card padding props',
+      title: `Check RegExp for outdated <Card padding="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?padding`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Bleed marginInline props',
+      title: `Check RegExp for outdated <Bleed marginInline="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginInline`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Bleed marginBlock props',
+      title: `Check RegExp for outdated <Bleed marginBlock="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginBlock`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Bleed marginBlockStart props',
+      title: `Check RegExp for outdated <Bleed marginBlockStart="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginBlockStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Bleed marginBlockEnd props',
+      title: `Check RegExp for outdated <Bleed marginBlockEnd="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginBlockEnd`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Bleed marginInlineStart props',
+      title: `Check RegExp for outdated <Bleed marginInlineStart="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginInlineStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Bleed marginInlineEnd props',
+      title: `Check RegExp for outdated <Bleed marginInlineEnd="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginInlineEnd`,
     }}
   />
