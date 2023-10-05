@@ -1281,7 +1281,7 @@ The `AppProvider` `features` prop no longer accepts the keys `polarisSummerEditi
 
 <Code
   code={{
-    title: `Check RegExp for outdated <AppProvider features /> prop`,
+    title: `Check RegExp for outdated <AppProvider features={...} /> prop`,
     code: String.raw`<AppProvider[^>\w](?:[^>]|\n)*?features`,
   }}
 />
@@ -1776,7 +1776,7 @@ Manually migrate the following tokens to their hardcoded values:
   />
   <p>
     Only replace instances flagged by the RegExp below if they are values listed
-    in the replacement map for this step (see table below):
+    in the replacement map for this step (see table above):
   </p>
   <Code
     code={{
@@ -1824,7 +1824,7 @@ Manually migrate the following tokens to their hardcoded values:
 
 #### Color migration step 4
 
-`on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the bg color the element is sitting on. This gives us greater control over the visual design of the admin.
+`on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the background color the element is sitting on. This gives us greater control over the visual design of the admin.
 
 If you want to unblock your migration quickly you can manually hardcode the values using the following replacement map:
 
@@ -1845,7 +1845,7 @@ If you want to unblock your migration quickly you can manually hardcode the valu
   />
   <p>
     Only replace instances flagged by the RegExp below if they are values listed
-    in the replacement map for this step (see table below):
+    in the replacement map for this step (see table above):
   </p>
   <Code
     code={{
@@ -2514,7 +2514,7 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
 ### A new web font
 
 The new design language comes with a web font called [Inter via Google Fonts](https://fonts.google.com/specimen/Inter).
-Polaris references this font but doesn't load it. Apps will need to load the font, otherwise it will fallback to the user's system font.
+Polaris references this font but does not load it. Your app will need to load the font, otherwise it will fallback to the user's system font.
 
 {/* prettier-ignore */}
 ```html
