@@ -12,28 +12,45 @@ order: 1
 
 [Full release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
 
-## Migration workflow
+The bulk of migrations are automated using the `@shopify/polaris-migrator` CLI tool. The edge cases are handled with find and replace in your code editor using provided RegExps. For each breaking change detailed below, migration scripts are scaffolded for you to paste into your terminal. Be sure to tailor the wildcard path in the commands to your app's needs if you need to isolate migrations to certain directories, e.g., `{app,packages}/src/**/*.{jsx,tsx,js,ts}`.
 
-The bulk of migrations are automated using the `@shopify/polaris-migrator` CLI tool. The edge cases are handled with find and replace in your code editor using provided RegExps. For each breaking change detailed below, migration scripts are scaffolded for you to paste into your terminal. Be sure to update the wildcard path in the commands to tailor to your app's needs if you need to isolate migrations to certain directories, e.g., `{app,packages}/**/*.{css,scss}`.
+## Component migrations
 
-Several components with props that accept token aliases as values, like `gap`, have been renamed. The RegExps provided account for both migrated and unmigrated component names, but the component migrations should be run before the token migrations ideally. When running each of the token migrations, we suggest the following workflow:
+### Recommended workflow
 
-### Handle automated migrations
+Several components with props that accept token aliases as values, like `gap`, have been renamed. The RegExps provided account for both migrated and unmigrated component names, but ideally the component migrations should be run before the token migrations.
+
+When running each component migration, we suggest the following workflow:
+
+Handle automated migrations
 
 ```bash
 # Example migration
 npx @shopify/polaris-migrator ...
-# Stage all migrated files
+# Stash files with "polaris-migrator:" comments -- these denote edge cases that couldn't be migrated automatically.
+git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Stage all migrated files without "polaris-migrator:" comments
 git add .
 # Format staged files only
 git diff --staged --name-only | xargs npx prettier --write
-# Commit automated migrations
-git commit -m "Migrate X custom properties from Polaris v11 to v12"
+# Example commit of automated migration
+git commit -m "[Polaris v12] Migrate <component-name> to <new-component-name>"
 ```
 
-### Handle manual migrations
+Handle manual migrations
 
-Search for codebase using the RegExps provided and handle manual migrations using the token map tables.
+```bash
+# Bring back the files with "polaris-migrator:" comments
+git stash pop
+```
+
+These common edge cases should be manually migrated using find and replace in your code editor:
+
+- Find and replace renamed component names that may be referenced in other files in your codebase
+- Search for "polaris-migrator:" comments in your editor and handle their migration manually
+- Search for unsafe Polaris classname style overrides in your editor and handle their migration manually (e.g. `Polaris-HorizontalStack`)
+
+Once migrated, format and commit.
 
 ```bash
 # Stage all manually migrated files
@@ -41,23 +58,15 @@ git add .
 # Format staged files only
 git diff --staged --name-only | xargs npx prettier --write
 # Commit manual migrations
-git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
+git commit -m "[Polaris v12] Migrate <component-name> to <new-component-name>"
 ```
-
-If you use `@shopify/stylelint-polaris`, you can choose to format and or lint for errors after all token migrations have been completed.
-
-```bash
-npx stylelint "/**/*.{scss,css}"
-```
-
-## Component migrations
 
 ### Avatar
 
 The `Avatar` `size` prop values have been aligned with the breakpoint shorthand abbreviations. Replace the `size` prop values with the new mapping using the `v12-react-avatar-component` migration:
 
 ```bash
-npx @shopify/polaris-migrator v12-react-avatar-component "/**/*.{jsx,tsx}"
+npx @shopify/polaris-migrator v12-react-avatar-component "src/**/*.{jsx,tsx,js,ts}"
 ```
 
 | Before                    | After       |
@@ -74,11 +83,11 @@ npx @shopify/polaris-migrator v12-react-avatar-component "/**/*.{jsx,tsx}"
 The `Badge` `status` and `statusAndProgressLabelOverride` props were replaced with the `tone` and `toneAndProgressLabelOverride` props. Replace the `status` and `statusAndProgressLabelOverride` props using the generic `react-rename-component-prop` migration:
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Badge" --from="status" --to="tone"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Badge" --from="status" --to="tone"
 ```
 
 ```bash
-@shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"
 ```
 
 ### IndexTable.Row
@@ -86,11 +95,11 @@ npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --co
 The `IndexTable.Row` `status` and `subdued` props were replaced with the `tone` prop. Replace the `status` and `subdued` props using the generic `react-rename-component-prop` migration:
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="IndexTable.Row" --from="status" --to="tone"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="IndexTable.Row" --from="status" --to="tone"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"
 ```
 
 ### Layout.Section
@@ -98,19 +107,19 @@ npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --co
 The `Layout.Section` `secondary` prop was removed and the `oneThird`, `oneHalf`, and `fullWidth` props were combined into the `variant` prop. Replace the `oneThird`, `oneHalf`, and `fullWidth` props and migrate the `secondary` prop to the `oneThird` `variant` using the generic `react-rename-component-prop` migration:
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Layout.Section" --from="fullWidth" --to="variant" --toValue="fullWidth"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Layout.Section" --from="fullWidth" --to="variant" --toValue="fullWidth"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"
 ```
 
 ### TextField
@@ -118,7 +127,7 @@ npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --co
 The `TextField` `borderless` prop was replaced with the `variant` prop. Replace the `borderless` prop using the generic `react-rename-component-prop` migration:
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"
 ```
 
 ### Box
@@ -126,19 +135,19 @@ npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --co
 The `Box` border radius prop names were updated to align with their coresponding CSS property. Replace the `borderRadiusEndStart`, `borderRadiusEndEnd`, `borderRadiusStartStart`, and `borderRadiusStartEnd` props using the generic `react-rename-component-prop` migration:
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"
 ```
 
 ### HorizontalStack
@@ -146,7 +155,7 @@ npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --co
 The `HorizontalStack` component was renamed back to `InlineStack` to align with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). Rename `HorizontalStack` using the generic `react-rename-component` migration:
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component "/**/*.{jsx,tsx}" --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"
+npx @shopify/polaris-migrator react-rename-component "src/**/*.{jsx,tsx,js,ts}" --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"
 ```
 
 ### VerticalStack
@@ -154,7 +163,7 @@ npx @shopify/polaris-migrator react-rename-component "/**/*.{jsx,tsx}" --renameF
 The `VerticalStack` component was renamed to `BlockStack` to align with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). Rename `VerticalStack` using the generic `react-rename-component` migration:
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component "/**/*.{jsx,tsx}" --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"
+npx @shopify/polaris-migrator react-rename-component "src/**/*.{jsx,tsx,js,ts}" --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"
 ```
 
 ### HorizontalGrid
@@ -162,7 +171,7 @@ npx @shopify/polaris-migrator react-rename-component "/**/*.{jsx,tsx}" --renameF
 The `HorizontalGrid` component was renamed back to `InlineGrid` to align with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). Rename `HorizontalGrid` using the generic `react-rename-component` migration:
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component "/**/*.{jsx,tsx}" --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"
+npx @shopify/polaris-migrator react-rename-component "src/**/*.{jsx,tsx,js,ts}" --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"
 ```
 
 ### Button
@@ -172,7 +181,7 @@ The `connectedDisclosure` prop was removed because `ButtomGroup` now supports no
 Boolean `Button` props were removed or replaced with the `variant` and `tone` props. Use the `v12-react-update-button-component` migration to remove `monochrome` and `outline` and replace `plain`, `primary`, `primarySuccess`, and `destructive` props:
 
 ```bash
-npx @shopify/polaris-migrator v12-react-update-button-component "/**/*.{jsx,tsx}"
+npx @shopify/polaris-migrator v12-react-update-button-component "src/**/*.{jsx,tsx,js,ts}"
 ```
 
 ### ButtonGroup
@@ -180,19 +189,19 @@ npx @shopify/polaris-migrator v12-react-update-button-component "/**/*.{jsx,tsx}
 Spacing
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="ButtonGroup" --from="spacing" --to="gap"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="ButtonGroup" --from="spacing" --to="gap"
 ```
 
 Segmented
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"
 ```
 
 ### Banner
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Banner" --from="status" --to="tone"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Banner" --from="status" --to="tone"
 ```
 
 ### Icon
@@ -208,15 +217,15 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 Color
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Icon" --from="color" --to="tone"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Icon" --from="color" --to="tone"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Icon" --from="tone" --to="tone" --fromValue="highlight" --toValue="info"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Icon" --from="tone" --to="tone" --fromValue="highlight" --toValue="info"
 ```
 
 ### Text
@@ -224,37 +233,37 @@ npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --co
 Color
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Text" --from="color" --to="tone"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Text" --from="color" --to="tone"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Text" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Text" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"
 ```
 
 ### Modal
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Modal" --from="small" --to="size" --toValue="small"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Modal" --from="small" --to="size" --toValue="small"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Modal" --from="large" --to="size" --toValue="large"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Modal" --from="large" --to="size" --toValue="large"
 ```
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"
 ```
 
 ### List
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="List" --from="spacing" --to="gap"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="List" --from="spacing" --to="gap"
 ```
 
 ### DescriptionList
 
 ```bash
-npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="DescriptionList" --from="spacing" --to="gap"
+npx @shopify/polaris-migrator react-rename-component-prop "src/**/*.{jsx,tsx,js,ts}" --componentName="DescriptionList" --from="spacing" --to="gap"
 ```
 
 ### AppProvider
@@ -267,7 +276,45 @@ The `Text` component no longer supports `headingXs` and `heading4xl` as options 
 
 ## Token migrations
 
-The following tokens have either been renamed or removed. You will need to replace any instances of them with their new name or value equivalents. Please review each token section for migrations that can be run to resolve these breaking changes.
+Many of the breaking changes to component props in the `@shopify/polaris` v12 release coincide with the `@shopify/polaris-tokens` v8 release. Polaris design tokens were completely overhauled, rescaled, and restructured into a cohesive theme architecture to support the migration to the new pro design language. To make their intended usage clear, the CSS custom properties of several token groups were removed or renamed to a more precise, semantic naming convention.
+
+The following token migrations must be completed in addition to the component migrations in order to update to v12 of `@shopify/polaris`. CSS custom property replacement maps are provided along with the steps to use the `@shopify/polaris-migrator` and RegExp to migrate any instances with breaking changes to their new name or value equivalents.
+
+### Recommended workflow
+
+When running each token migrations, we suggest the following workflow:
+
+#### Handle automated migrations
+
+```bash
+# Example migration
+npx @shopify/polaris-migrator ...
+# Stage all migrated files
+git add .
+# Format staged files only**
+git diff --staged --name-only | xargs npx prettier --write
+# Commit automated migrations
+git commit -m "[Polaris v12] Migrate <token-group> CSS custom properties from Polaris v11 to v12"
+```
+
+#### Handle manual migrations
+
+Search for codebase using the RegExps provided and handle manual migrations using the token map tables.
+
+```bash
+# Stage all manually migrated files
+git add .
+# Format staged files only**
+git diff --staged --name-only | xargs npx prettier --write
+# Commit manual migrations
+git commit -m "[Polaris v12] Manually migrate <token-group> CSS custom properties from Polaris v11 to v12"
+```
+
+\*\* If you use `@shopify/stylelint-polaris`, you can choose to format and or lint for errors after all token migrations have been completed.
+
+```bash
+npx stylelint "/**/*.{scss,css}"
+```
 
 ### Border
 
