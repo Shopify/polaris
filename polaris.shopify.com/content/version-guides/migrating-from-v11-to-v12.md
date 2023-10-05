@@ -1343,85 +1343,85 @@ To replace deprecated `border` custom properties, you can run the [v12-styles-re
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Tooltip borderRadius props',
+      title: `Check RegExp for outdated <Tooltip borderRadius="..." /> prop`,
       code: String.raw`<Tooltip[^>\w](?:[^>]|\n)*?borderRadius`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderRadius props',
+      title: `Check RegExp for outdated <Box borderRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadius`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderEndStartRadius props',
+      title: `Check RegExp for outdated <Box borderEndStartRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderEndStartRadius`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderEndEndRadius props',
+      title: `Check RegExp for outdated <Box borderEndEndRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderEndEndRadius`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderStartStartRadius props',
+      title: `Check RegExp for outdated <Box borderStartStartRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderStartStartRadius`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderStartEndRadius props',
+      title: `Check RegExp for outdated <Box borderStartEndRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderStartEndRadius`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderWidth props',
+      title: `Check RegExp for outdated <Box borderWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderWidth`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderBlockStartWidth props',
+      title: `Check RegExp for outdated <Box borderBlockStartWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderBlockStartWidth`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderBlockEndWidth props',
+      title: `Check RegExp for outdated <Box borderBlockEndWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderBlockEndWidth`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderInlineStartWidth props',
+      title: `Check RegExp for outdated <Box borderInlineStartWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderInlineStartWidth`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderInlineEndWidth props',
+      title: `Check RegExp for outdated <Box borderInlineEndWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderInlineEndWidth`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box outlineWidth props',
+      title: `Check RegExp for outdated <Box outlineWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineWidth`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated ShadowBevel borderRadius props',
+      title: `Check RegExp for outdated <ShadowBevel borderRadius="..." /> prop`,
       code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?borderRadius`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Divider borderWidth props',
+      title: `Check RegExp for outdated <Divider borderWidth="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderWidth`,
     }}
   />
@@ -1493,43 +1493,43 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated Box background props',
+      title: `Check RegExp for outdated <Box background="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Card background props',
+      title: `Check RegExp for outdated <Card background="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderColor props',
+      title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box outlineColor props',
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Divider borderColor props',
+      title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Banner textColor props',
+      title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
       code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box color props',
+      title: `Check RegExp for outdated <Box color="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
     }}
   />
@@ -1691,7 +1691,7 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated Box outlineColor props',
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
   />
@@ -1707,43 +1707,43 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated Box background props',
+      title: `Check RegExp for outdated <Box background="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Card background props',
+      title: `Check RegExp for outdated <Card background="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderColor props',
+      title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box outlineColor props',
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Divider borderColor props',
+      title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Banner textColor props',
+      title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
       code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box color props',
+      title: `Check RegExp for outdated <Box color="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
     }}
   />
@@ -1782,43 +1782,43 @@ Manually migrate the following tokens to their hardcoded values:
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated Box background props',
+      title: `Check RegExp for outdated <Box background="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Card background props',
+      title: `Check RegExp for outdated <Card background="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderColor props',
+      title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box outlineColor props',
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Divider borderColor props',
+      title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Banner textColor props',
+      title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
       code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box color props',
+      title: `Check RegExp for outdated <Box color="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
     }}
   />
@@ -1851,43 +1851,43 @@ If you want to unblock your migration quickly you can manually hardcode the valu
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated Box background props',
+      title: `Check RegExp for outdated <Box background="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Card background props',
+      title: `Check RegExp for outdated <Card background="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box borderColor props',
+      title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box outlineColor props',
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Divider borderColor props',
+      title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Banner textColor props',
+      title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
       code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box color props',
+      title: `Check RegExp for outdated <Box color="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
     }}
   />
@@ -2104,13 +2104,13 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated Box shadow props',
+      title: `Check RegExp for outdated <Box shadow="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?shadow`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated ShadowBevel boxShadow props',
+      title: `Check RegExp for outdated <ShadowBevel boxShadow="..." /> prop`,
       code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
     }}
   />
@@ -2170,13 +2170,13 @@ The following tokens need to be manually migrated because their values are conte
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated Box shadow props',
+      title: `Check RegExp for outdated <Box shadow="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?shadow`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated ShadowBevel boxShadow props',
+      title: `Check RegExp for outdated <ShadowBevel boxShadow="..." /> prop`,
       code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
     }}
   />
@@ -2215,7 +2215,7 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Tooltip padding props',
+      title: `Check RegExp for outdated <Tooltip padding="..." /> prop`,
       code: String.raw`<Tooltip[^>\w](?:[^>]|\n)*?padding`,
     }}
   />
@@ -2226,67 +2226,67 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated HorizontalGrid gap props',
+      title: `Check RegExp for outdated <HorizontalGrid gap="..." /> prop`,
       code: String.raw`<HorizontalGrid[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated InlineGrid gap props',
+      title: `Check RegExp for outdated <InlineGrid gap="..." /> prop`,
       code: String.raw`<InlineGrid[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box padding props',
+      title: `Check RegExp for outdated <Box padding="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?padding`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box paddingBlockStart props',
+      title: `Check RegExp for outdated <Box paddingBlockStart="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingBlockStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box paddingBlockEnd props',
+      title: `Check RegExp for outdated <Box paddingBlockEnd="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingBlockEnd`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box paddingInlineStart props',
+      title: `Check RegExp for outdated <Box paddingInlineStart="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingInlineStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box paddingInlineEnd props',
+      title: `Check RegExp for outdated <Box paddingInlineEnd="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingInlineEnd`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box insetBlockStart props',
+      title: `Check RegExp for outdated <Box insetBlockStart="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetBlockStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box insetBlockEnd props',
+      title: `Check RegExp for outdated <Box insetBlockEnd="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetBlockEnd`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box insetInlineStart props',
+      title: `Check RegExp for outdated <Box insetInlineStart="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetInlineStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Box insetInlineEnd props',
+      title: `Check RegExp for outdated <Box insetInlineEnd="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetInlineEnd`,
     }}
   />
@@ -2297,13 +2297,13 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated VerticalStack gap props',
+      title: `Check RegExp for outdated <VerticalStack gap="..." /> prop`,
       code: String.raw`<VerticalStack[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated BlockStack gap props',
+      title: `Check RegExp for outdated <BlockStack gap="..." /> prop`,
       code: String.raw`<BlockStack[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
@@ -2314,91 +2314,91 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
-      title: 'Check RegExp for outdated HorizontalStack gap props',
+      title: `Check RegExp for outdated <HorizontalStack gap="..." /> prop`,
       code: String.raw`<HorizontalStack[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated InlineStack gap props',
+      title: `Check RegExp for outdated <InlineStack gap="..." /> prop`,
       code: String.raw`<InlineStack[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Choice bleed props',
+      title: `Check RegExp for outdated <Choice bleed="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleed`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Choice bleedBlockStart props',
+      title: `Check RegExp for outdated <Choice bleedBlockStart="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedBlockStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Choice bleedBlockEnd props',
+      title: `Check RegExp for outdated <Choice bleedBlockEnd="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Choice bleedInlineStart props',
+      title: `Check RegExp for outdated <Choice bleedInlineStart="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedInlineStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Choice bleedInlineEnd props',
+      title: `Check RegExp for outdated <Choice bleedInlineEnd="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated RadioButton bleed props',
+      title: `Check RegExp for outdated <RadioButton bleed="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleed`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated RadioButton bleedBlockStart props',
+      title: `Check RegExp for outdated <RadioButton bleedBlockStart="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated RadioButton bleedBlockEnd props',
+      title: `Check RegExp for outdated <RadioButton bleedBlockEnd="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated RadioButton bleedInlineStart props',
+      title: `Check RegExp for outdated <RadioButton bleedInlineStart="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated RadioButton bleedInlineEnd props',
+      title: `Check RegExp for outdated <RadioButton bleedInlineEnd="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Checkbox bleed props',
+      title: `Check RegExp for outdated <Checkbox bleed="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleed`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Checkbox bleedBlockStart props',
+      title: `Check RegExp for outdated <Checkbox bleedBlockStart="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockStart`,
     }}
   />
   <Code
     code={{
-      title: 'Check RegExp for outdated Checkbox bleedBlockEnd props',
+      title: `Check RegExp for outdated <Checkbox bleedBlockEnd="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
     }}
   />
