@@ -18,11 +18,11 @@ import {
 export interface MigrationOptions extends Options {
   relative?: boolean;
   componentName: string;
+  fromPropType?: 'string' | 'boolean';
   fromProp: string;
   toProp?: string;
   fromValue?: string;
   toValue?: string;
-  isFromPropBoolean?: boolean;
 }
 
 export default function transformer(
@@ -32,11 +32,11 @@ export default function transformer(
 ) {
   const {
     componentName,
+    fromPropType = 'string',
     fromProp,
     toProp,
     fromValue,
     toValue,
-    isFromPropBoolean = false,
   } = options;
 
   if (!componentName || !fromProp) {
@@ -105,7 +105,7 @@ export default function transformer(
 
       if (
         fromPropAttribute &&
-        (isFromPropBoolean
+        (fromPropType === 'boolean'
           ? fromPropAttribute.value !== null
           : fromPropAttribute.value?.type !== 'StringLiteral')
       ) {

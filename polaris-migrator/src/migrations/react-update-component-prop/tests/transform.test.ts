@@ -41,10 +41,10 @@ const fixtures = [
     name: 'with-boolean',
     options: {
       componentName: 'MyComponent',
+      fromPropType: 'boolean',
       fromProp: 'booleanProp',
       toProp: 'variant',
       toValue: 'boolean-prop-value',
-      isFromPropBoolean: true,
     },
   },
   {
@@ -61,10 +61,10 @@ const fixtures = [
     name: 'with-comments-boolean-prop',
     options: {
       componentName: 'MyComponent',
+      fromPropType: 'boolean',
       fromProp: 'booleanProp',
       toProp: 'newProp',
       toValue: 'new-value',
-      isFromPropBoolean: true,
     },
   },
   {
