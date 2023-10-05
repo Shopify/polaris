@@ -42,7 +42,7 @@ status: New
             #### Do
             ![A dropdown menu with a shadow that separates the menu from the background.](/images/design/depth/overview/depth-overview-1@2x.png)
 
-            Use depth tactically, to differentiate between primary and secondary elements.
+            Use depth tactically, and to differentiate between primary and secondary elements.
 
             #### Dont
             ![A dropdown menu with a shadow that separates the menu from the background, with an bevel on the item selected.](/images/design/depth/overview/depth-overview-2@2x.png)
@@ -52,7 +52,7 @@ status: New
           <Dont height="100%">
             ![A table with product with a bevel effect.](/images/design/depth/overview/depth-overview-3@2x.png)
 
-            Use unnecessary depth to an element. The depth of an element should always be related to its importance or interactivity.
+            Add unnecessary depth to an element. The depth of an element should always be related to its importance or interactivity.
           </Dont>
           <Dont height="100%">
             ![A dropdown menu that sticks out of the main container](/images/design/depth/overview/depth-overview-4@2x.png)
@@ -79,7 +79,7 @@ status: New
 
           ## Interactivity
 
-          Depth indicates interactivity. Interactive elements like buttons or cards get more depth to signal to merchants that they can interact with such components.
+          Depth indicates interactivity. Interactive elements, like buttons or cards, get more depth to signal to merchants that they can interact with such components.
 
         </Box>
 
@@ -128,7 +128,7 @@ status: New
 
           ## Focus
 
-          Depth helps to guide the merchants' focus. By giving more depth to an element, you can guide the merchants' attention towards it.
+          Depth helps to guide the merchant's focus. By giving more depth to an element, you can guide the merchant's attention towards it.
 
         </Box>
 
@@ -139,7 +139,7 @@ status: New
           <Do>
             ![A modal window overlapping the interface of a customer details page, with a semi-transparent background that separates the modal from the remaining interface.](/images/design/depth/overview/depth-overview-9@2x.png)
 
-            Use depth to highlight action and large pieces of information that overlay on top of other information. To ensure merchants see these first.
+            Use depth to highlight action and large pieces of information that overlay on top of other information, to ensure merchants see these first.
           </Do>
           <Dont>
             ![A modal window overlapping the interface of a customer details page.](/images/design/depth/overview/depth-overview-10@2x.png)
