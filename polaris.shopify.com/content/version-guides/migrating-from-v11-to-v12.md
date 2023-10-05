@@ -13,7 +13,7 @@ order: 1
 
 ## Getting started
 
-Upgrading to Polaris v12 from v11 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExpes. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
+Upgrading to Polaris v12 from v11 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExp searches. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
 
 Not on v11 yet either? Check out our other [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) to get up to date.
 
@@ -21,7 +21,7 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
   code={{
     title: 'Upgrade to v12',
     className: 'language-bash',
-    code: `npm install @shopify/polaris@12.0.0\n# oryarn add @shopify/polaris@12.0.0`,
+    code: `npm install @shopify/polaris@12.0.0\n# or\nyarn add @shopify/polaris@12.0.0`,
   }}
 />
 
@@ -51,11 +51,11 @@ git diff --staged --name-only | xargs npx prettier --write
 git commit -m "Migrate X custom properties from Polaris v11 to v12"
 ```
 
-The polaris migrator could insert comments or skip instances that are unsafe to automatically migrate. You will resolve those issues in the next manual migration step.
+The polaris migrator could insert comments or skip instances that are unsafe to automatically migrate. You will need to resolve those issues in the next manual migration step.
 
 ### 2️⃣ Manual migrations using migrator comments and RegExp code search
 
-Now, you need to validate the automatic migration and manually update any outstanding issues. The migration guide sections may have additional resources to help you resolve the migrations manually, such as `💡 Migration example`s, `➡️ Replacement mappings` tables, and descriptions of what the automated migrations are doing.
+Now, you need to validate the automatic migration and manually update any outstanding issues. The migration guide sections may have additional resources to help you resolve the migrations manually, such as `💡 Migration example`, `➡️ Replacement mappings` tables, and descriptions of what the automated migrations are doing.
 
 #### Resolve `polaris-migrator:` comments
 
@@ -69,7 +69,7 @@ Go through each of the changed files and search for `polaris-migrator:` comments
 
 #### Validate with RegExp
 
-Next, search for each of the token RegExpes which are found under the `✅ Post-migration RegExp validation` toggle in the guide. Update any outstanding migrations until there are no more results for the RegExp search. If you're unsure on how to search in a code editor using RegExp, check out the [glossary](#glossary).
+Next, search for each of the token RegExp searches which are found under the `✅ Post-migration RegExp validation` toggle in the guide. Update any outstanding migrations until there are no more results for the RegExp search. If you're unsure on how to search in a code editor using RegExp, check out the [glossary](#glossary).
 
 ```bash
 # Stage all manually migrated files

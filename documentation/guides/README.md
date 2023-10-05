@@ -1,3 +1,3 @@
 # Guides
 
-Migration guides "v11 to v12" and onwards are hosted on our documentation site at https://polaris.shopify.com/version-guides.
+Migration guides for upgrading from v11 to v12 and onwards are hosted on our documentation site at https://polaris.shopify.com/version-guides.
