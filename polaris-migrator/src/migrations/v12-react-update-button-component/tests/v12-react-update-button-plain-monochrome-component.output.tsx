@@ -9,6 +9,10 @@ export function App() {
       <Button variant="monochromePlain">Edit</Button>
       <Button variant="monochromePlain">Edit</Button>
       {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
+      <Button monochrome plain primary>
+        Edit
+      </Button>
+      {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
       <Button plain monochrome={isPolarisUplift}>
         Edit
       </Button>
