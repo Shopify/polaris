@@ -172,9 +172,9 @@ The following tokens have either been renamed or removed. You will need to repla
 
 ### Border
 
-#### Migration
+To replace deprecated `border` custom properties, you can run the [v12-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-border) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-To replace these deprecated `border` custom properties, you can run the [v12-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-border) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="👀 Migration example">
 
 ```diff
 - border-radius: var(--p-border-radius-1);
@@ -186,13 +186,21 @@ To replace these deprecated `border` custom properties, you can run the [v12-sty
 + border-width: var(--p-border-width-025);
 ```
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>
-```
+</CollapsibleDetails>
 
-#### Post-migration validation
+<Code
+  code={{
+    title: 'Polaris Migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>`,
+  }}
+/>
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:">
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+  <p>
+    After migrating, use the following RegExp to check for any additional
+    instances of `border` custom properties across all file types:
+  </p>
   <Code
     code={{
       title:
@@ -286,7 +294,7 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>
   />
 </CollapsibleDetails>
 
-#### Replacement maps
+<CollapsibleDetails summary="➡️ Token replacement mappings">
 
 | Deprecated Token                     | Replacement Value       |
 | ------------------------------------ | ----------------------- |
@@ -307,26 +315,38 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>
 | `--p-border-width-4`                 | `--p-border-width-100`  |
 | `--p-border-width-5`                 | `--p-border-width-100`  |
 
+</CollapsibleDetails>
+
 ### Color
 
-#### Migration
+To replace deprecated `color` custom properties, you can run the [v12-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-color) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-To replace these deprecated `color` custom properties, you can run the [v12-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-color) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="👀 Migration example">
 
 ```diff
 - color: var(--p-color-bg);
 + color: var(--p-color-bg-surface);
 ```
 
-**⚠️ Important**: The color migration needs to be run in 4 sequential steps due to overlapping `color` token names and context dependent manual migrations.
+</CollapsibleDetails>
 
-#### Step 1
+**🔔 Stepped migration**: The color migration needs to be run in **4** sequential steps due to overlapping `color` token names and context dependent manual migrations.
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=1
-```
+#### Color migration step 1
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:">
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 1',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=1`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 1">
+  <p>
+    After migrating, use the following RegExp to check for any additional
+    instances of `color` custom properties across all file types:
+  </p>
   <Code
     code={{
       title:
@@ -382,7 +402,7 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --
   />
 </CollapsibleDetails>
 
-Replacement maps for Step 1:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 1">
 
 | Deprecated Token                                         | Replacement Value                          |
 | -------------------------------------------------------- | ------------------------------------------ |
@@ -519,13 +539,23 @@ Replacement maps for Step 1:
 | `--p-color-border-critical-subdued`                      | `--p-color-border-critical`                |
 | `--p-color-border-magic-strong`                          | `--p-color-border-magic-secondary`         |
 
-#### Step 2
+</CollapsibleDetails>
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=2
-```
+#### Color migration step 2
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:">
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 2',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=2`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 2">
+  <p>
+    After migrating, use the following RegExp to check for any additional
+    instances of `color` custom properties across all file types:
+  </p>
   <Code
     code={{
       title: 'Check RegExp for outdated Box outlineColor props',
@@ -586,13 +616,15 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --
   />
 </CollapsibleDetails>
 
-Replacement maps for Step 2:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 2">
 
 | Deprecated Token   | Replacement Value |
 | ------------------ | ----------------- |
 | `--p-color-bg-app` | `--p-color-bg`    |
 
-#### Step 3
+</CollapsibleDetails>
+
+#### Color migration step 3
 
 Manually migrate the following tokens to their hardcoded values:
 
@@ -601,7 +633,9 @@ Manually migrate the following tokens to their hardcoded values:
 | `--p-color-bg-transparent-primary-experimental`            | `rgba(0, 0, 0, 0.62)` |
 | `--p-color-bg-transparent-secondary-disabled-experimental` | `rgba(0, 0, 0, 0.08)` |
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:">
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 3">
+  After migrating, use the following RegExp to check for any additional
+  instances of `color` custom properties across all file types:
   <Code
     code={{
       title:
@@ -657,30 +691,20 @@ Manually migrate the following tokens to their hardcoded values:
   />
 </CollapsibleDetails>
 
-#### Step 4
+#### Color migration step 4
 
-`on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the bg color the element is sitting on. This gives us greater control over the visual design of the admin. If you want to unblock your migration quickly you can manually hardcode the values using the following replacement map:
+`on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the bg color the element is sitting on. This gives us greater control over the visual design of the admin.
+
+If you want to unblock your migration quickly you can manually hardcode the values using the following replacement map:
 
 | Deprecated Token          | Replacement Value        |
 | ------------------------- | ------------------------ |
 | `--p-color-icon-on-color` | `rgba(255, 255, 255, 1)` |
 | `--p-color-text-on-color` | `rgba(255, 255, 255, 1)` |
 
-Otherwise, the table below shows which `on-bg-fill` colors to use against their respective `bg-fill` colors. Use the mappings below as a general guide to manually update `text-on-color` and `icon-on-color` tokens based on background color context:
-
-| Background color of parent container | Text + Icon color on top of parent container                                                 |
-| ------------------------------------ | -------------------------------------------------------------------------------------------- |
-| `--p-color-bg-fill-info`             | `--p-color-text-info-on-bg-fill`                                                             |
-| `--p-color-bg-fill-success`          | `--p-color-text-success-on-bg-fill`                                                          |
-| `--p-color-bg-fill-caution`          | `--p-color-text-caution-on-bg-fill`                                                          |
-| `--p-color-bg-fill-warning`          | `--p-color-text-warning-on-bg-fill`                                                          |
-| `--p-color-bg-fill-critical`         | `--p-color-text-critical-on-bg-fill`                                                         |
-| `--p-color-bg-fill-magic`            | `--p-color-text-magic-on-bg-fill`                                                            |
-| `--p-color-bg-fill-emphasis`         | `--p-color-text-emphasis-on-bg-fill`                                                         |
-| `--p-color-bg-fill-inverse`          | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
-| `--p-color-bg-inverse`               | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
-
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:">
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 4">
+  After migrating, use the following RegExp to check for any additional
+  instances of `color` custom properties across all file types:
   <Code
     code={{
       title:
@@ -736,11 +760,27 @@ Otherwise, the table below shows which `on-bg-fill` colors to use against their 
   />
 </CollapsibleDetails>
 
+<CollapsibleDetails summary="If you want to update your code to use the correct token instead of hardcoding, you can use the table below as a general guide to manually update `text-on-color` and `icon-on-color` tokens based on background color context:">
+
+| Background color of parent container | Text + Icon color on top of parent container                                                 |
+| ------------------------------------ | -------------------------------------------------------------------------------------------- |
+| `--p-color-bg-fill-info`             | `--p-color-text-info-on-bg-fill`                                                             |
+| `--p-color-bg-fill-success`          | `--p-color-text-success-on-bg-fill`                                                          |
+| `--p-color-bg-fill-caution`          | `--p-color-text-caution-on-bg-fill`                                                          |
+| `--p-color-bg-fill-warning`          | `--p-color-text-warning-on-bg-fill`                                                          |
+| `--p-color-bg-fill-critical`         | `--p-color-text-critical-on-bg-fill`                                                         |
+| `--p-color-bg-fill-magic`            | `--p-color-text-magic-on-bg-fill`                                                            |
+| `--p-color-bg-fill-emphasis`         | `--p-color-text-emphasis-on-bg-fill`                                                         |
+| `--p-color-bg-fill-inverse`          | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
+| `--p-color-bg-inverse`               | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
+
+</CollapsibleDetails>
+
 ### Font
 
-#### Migration
+To replace deprecated `font` custom properties, you can run the [v12-styles-replace-custom-property-font](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-To replace these deprecated `font` custom properties, you can run the [v12-styles-replace-custom-property-font](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-font) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="👀 Migration example">
 
 ```diff
 - font-size: var(--p-font-size-75);
@@ -752,15 +792,23 @@ To replace these deprecated `font` custom properties, you can run the [v12-style
 + line-height: var(--p-font-line-height-400);
 ```
 
-**⚠️ Important**: The font migration needs to be run in 4 sequential steps due to overlapping `font-size` token names.
+</CollapsibleDetails>
 
-#### Step 1
+**🔔 Stepped migration**: The font migration needs to be run in **4** sequential steps due to overlapping `font-size` token names.
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=1
-```
+#### Font migration step 1
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:">
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 1',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=1`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 1">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
   <Code
     code={{
       title:
@@ -770,7 +818,7 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --s
   />
 </CollapsibleDetails>
 
-Replacement maps for Step 1:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 1">
 
 | Deprecated Token                        | Replacement Value           |
 | --------------------------------------- | --------------------------- |
@@ -787,13 +835,21 @@ Replacement maps for Step 1:
 | `--p-font-line-height-6`                | `--p-font-line-height-1000` |
 | `--p-font-line-height-7`                | `--p-font-line-height-1200` |
 
-#### Step 2
+</CollapsibleDetails>
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=2
-```
+#### Font migration step 2
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:">
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 2',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=2`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 2">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
   <Code
     code={{
       title:
@@ -803,20 +859,28 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --s
   />
 </CollapsibleDetails>
 
-Replacement maps for Step 2:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 2">
 
 | Deprecated Token    | Replacement Value   |
 | ------------------- | ------------------- |
 | `--p-font-size-500` | `--p-font-size-750` |
 | `--p-font-size-600` | `--p-font-size-900` |
 
-#### Step 3
+</CollapsibleDetails>
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=3
-```
+#### Font migration step 3
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:">
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 3',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=3`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 3">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
   <Code
     code={{
       title:
@@ -826,20 +890,28 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --s
   />
 </CollapsibleDetails>
 
-Replacement maps for Step 3:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 3">
 
 | Deprecated Token    | Replacement Value   |
 | ------------------- | ------------------- |
 | `--p-font-size-300` | `--p-font-size-500` |
 | `--p-font-size-400` | `--p-font-size-600` |
 
-#### Step 4
+</CollapsibleDetails>
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=4
-```
+#### Font migration step 4
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:">
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 4',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=4`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 4">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
   <Code
     code={{
       title:
@@ -849,33 +921,43 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --s
   />
 </CollapsibleDetails>
 
-Replacement maps for Step 4:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 4">
 
 | Deprecated Token    | Replacement Value   |
 | ------------------- | ------------------- |
 | `--p-font-size-75`  | `--p-font-size-300` |
 | `--p-font-size-200` | `--p-font-size-400` |
 
+</CollapsibleDetails>
+
 ### Shadow
 
-#### Migration
+To replace deprecated `shadow` custom properties, you can run the [v12-styles-replace-custom-property-shadow](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-shadow) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-To replace these deprecated `shadow` custom properties, you can run the [v12-styles-replace-custom-property-shadow](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-shadow) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="👀 Migration example">
 
 ```diff
 - box-shadow: var(--p-shadow-xs);
 + box-shadow: var(--p-shadow-100);
 ```
 
-**⚠️ Important**: The shadow migration needs to be run in 2 sequential steps due to context dependent manual migrations.
+</CollapsibleDetails>
 
-#### Step 1
+**🔔 Stepped migration**: The font migration needs to be run in **2** sequential steps due to context dependent manual migrations.
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
-```
+#### Shadow migration step 1
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:">
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 1',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 1">
+  After migrating, use the following RegExp to check for any additional
+  instances of `shadow` custom properties across all file types:
   <Code
     code={{
       title:
@@ -901,7 +983,7 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
   />
 </CollapsibleDetails>
 
-Replacement maps for Step 1:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 1">
 
 | Deprecated Token                                      | Replacement Value                        |
 | ----------------------------------------------------- | ---------------------------------------- |
@@ -927,7 +1009,9 @@ Replacement maps for Step 1:
 | `--p-shadow-button-primary-strong-hover-experimental` | `--p-shadow-button-primary-hover`        |
 | `--p-shadow-border-inset-experimental`                | `--p-shadow-border-inset`                |
 
-#### Step 2
+</CollapsibleDetails>
+
+#### Shadow migration step 2
 
 The following tokens need to be manually migrated because their values are context dependent:
 
@@ -937,7 +1021,9 @@ The following tokens need to be manually migrated because their values are conte
 | `--p-shadow-button-primary-hover-experimental` | `--p-shadow-button-primary-critical-hover`<br/>`--p-shadow-button-primary-success-hover` |
 | `--p-shadow-button-inset-experimental`         | `--p-shadow-button-primary-critical-inset`<br/>`--p-shadow-button-primary-success-inset` |
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:">
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+  After migrating, use the following RegExp to check for any additional
+  instances of `shadow` custom properties across all file types:
   <Code
     code={{
       title:
@@ -965,22 +1051,28 @@ The following tokens need to be manually migrated because their values are conte
 
 ### Space
 
-#### Migration
+To replace deprecated `space` custom properties, you can run the [v12-styles-replace-custom-property-space](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-space) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-To replace these deprecated `space` custom properties, you can run the [v12-styles-replace-custom-property-space](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-space) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="👀 Migration example">
 
 ```diff
 - padding: var(--p-space-1);
 + padding: var(--p-space-100);
 ```
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
-```
+</CollapsibleDetails>
 
-#### Post-migration validation
+<Code
+  code={{
+    title: 'Polaris Migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>`,
+  }}
+/>
 
-<CollapsibleDetails summary="After migrating use the following RegExp to check for any additional instances of `space` custom properties across all file types:">
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+  After migrating, use the following RegExp to check for any additional
+  instances of `space` custom properties across all file types:
   <Code
     code={{
       title:
@@ -1263,7 +1355,7 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
   />
 </CollapsibleDetails>
 
-#### Replacement maps
+<CollapsibleDetails summary="➡️ Token replacement mappings">
 
 | Deprecated Token             | Replacement Value |
 | ---------------------------- | ----------------- |
@@ -1284,24 +1376,28 @@ npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
 | `--p-space-28`               | `--p-space-2800`  |
 | `--p-space-32`               | `--p-space-3200`  |
 
+</CollapsibleDetails>
+
 ### Recommended token migration workflow
 
 When running token migrations we suggest the following workflow:
 
-- Handle automated migrations
-  ```sh
-  # Example migration
-  npx @shopify/polaris-migrator ...
-  # Stage all migrated files
-  git add .
-  # Format staged files only
-  git diff --staged --name-only | xargs npx prettier --write
-  # Commit automated migrations
-  git commit -m "Migrate X custom properties from Polaris v11 to v12"
-  ```
-- Handle manual migrations
-  - Search for token RegExps and handle manual migrations
-    <br />
+#### 1️⃣ Automated migrations using Polaris Migrator
+
+```sh
+# Example migration
+npx @shopify/polaris-migrator ...
+# Stage all migrated files
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+# Commit automated migrations
+git commit -m "Migrate X custom properties from Polaris v11 to v12"
+```
+
+#### 2️⃣ Manual migrations using RegExp code search
+
+Search for each of the token RegExpes (under the `✅ Post-migration RegExp validation` toggle) and update any outstanding migrations. You can use the mapping tables (under the `➡️ Token replacement mappings` toggle) to cross reference the deprecated and new token names.
 
 ```sh
 # Stage all manually migrated files
@@ -1312,61 +1408,10 @@ git diff --staged --name-only | xargs npx prettier --write
 git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 ```
 
-- Optionally if you use `stylelint-polaris`, you can check for errors after all custom property migrations are finished
-  ```sh
-  npx stylelint <path>
-  ```
+Optionally if you use `stylelint-polaris`, you can check for errors after all custom property migrations are finished.
 
-### `@shopify/polaris-tokens` updates
-
-#### Renames
-
-- `getCustomPropertyNames` renamed to `getThemeVarNames`
-- `createVar` renamed to `createVarName`
-
-#### Deprecations
-
-##### Deprecated Utilities
-
-If you are using these utilities, feel free to copy them from v11 into your own codebase.
-
-- `createExact`
-- `createMetadata`
-- `getKeyframeNames`
-- `getUnit`
-- `isKeyOf`
-- `rem`
-- `removeMetadata`
-- `toEm`
-- `tokensToRems`
-
-##### Deprecated Types
-
-- `BreakpointsAliasDirectionMediaConditions`
-- `BreakpointsMediaConditions`
-- `MetaBreakpointsTokenGroup`
-- `Tokens` (replaced by `Theme`)
-
-##### Deprecated all JSON exports
-
-- `@shopify/polaris-tokens/json/border.json`
-- `@shopify/polaris-tokens/json/breakpoints.json`
-- `@shopify/polaris-tokens/json/color.json`
-- `@shopify/polaris-tokens/json/font.json`
-- `@shopify/polaris-tokens/json/height.json`
-- `@shopify/polaris-tokens/json/motion.json`
-- `@shopify/polaris-tokens/json/shadow.json`
-- `@shopify/polaris-tokens/json/space.json`
-- `@shopify/polaris-tokens/json/text.json`
-- `@shopify/polaris-tokens/json/width.json`
-- `@shopify/polaris-tokens/json/zIndex.json`
-
-If you are using these exports, update the implementation to import `themes` and `JSON.stringify` the theme you need.
-
-```diff
-- const color = require('@shopify/polaris-tokens/json/color.json');
-+ const {themes} = require('@shopify/polaris-tokens');
-+ const color = JSON.stringify(themes.light.color);
+```sh
+npx stylelint <path>
 ```
 
 ## Manual updates and fixes
@@ -1452,3 +1497,55 @@ The following component's children cannot be above the bevel's `z-index` elevati
 Custom elements that were styled to look like the previous Polaris design language will need to be updated.
 Take the opportunity to put custom styles and components on mainline Polaris using our [components](/components) and [tokens](/tokens/color).
 See a list of new tokens and the mapping our current tokens to our new once below.
+
+### `@shopify/polaris-tokens` updates
+
+#### Renames
+
+- `getCustomPropertyNames` renamed to `getThemeVarNames`
+- `createVar` renamed to `createVarName`
+
+#### Deprecations
+
+##### Deprecated Utilities
+
+If you are using these utilities, feel free to copy them from v11 into your own codebase.
+
+- `createExact`
+- `createMetadata`
+- `getKeyframeNames`
+- `getUnit`
+- `isKeyOf`
+- `rem`
+- `removeMetadata`
+- `toEm`
+- `tokensToRems`
+
+##### Deprecated Types
+
+- `BreakpointsAliasDirectionMediaConditions`
+- `BreakpointsMediaConditions`
+- `MetaBreakpointsTokenGroup`
+- `Tokens` (replaced by `Theme`)
+
+##### Deprecated all JSON exports
+
+- `@shopify/polaris-tokens/json/border.json`
+- `@shopify/polaris-tokens/json/breakpoints.json`
+- `@shopify/polaris-tokens/json/color.json`
+- `@shopify/polaris-tokens/json/font.json`
+- `@shopify/polaris-tokens/json/height.json`
+- `@shopify/polaris-tokens/json/motion.json`
+- `@shopify/polaris-tokens/json/shadow.json`
+- `@shopify/polaris-tokens/json/space.json`
+- `@shopify/polaris-tokens/json/text.json`
+- `@shopify/polaris-tokens/json/width.json`
+- `@shopify/polaris-tokens/json/zIndex.json`
+
+If you are using these exports, update the implementation to import `themes` and `JSON.stringify` the theme you need.
+
+```diff
+- const color = require('@shopify/polaris-tokens/json/color.json');
++ const {themes} = require('@shopify/polaris-tokens');
++ const color = JSON.stringify(themes.light.color);
+```

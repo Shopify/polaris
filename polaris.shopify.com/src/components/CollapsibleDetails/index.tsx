@@ -19,12 +19,12 @@ export function CollapsibleDetails({
   return (
     <div>
       <motion.summary
-        style={{display: 'flex', margin: '0.5rem 0'}}
+        style={{display: 'flex', margin: '0.5rem 0', cursor: 'pointer'}}
         onClick={toggleOpen}
         initial={false}
       >
         <motion.span
-          style={{display: 'flex'}}
+          style={{display: 'flex', maxHeight: '20px'}}
           initial={{rotate: -90}}
           animate={{rotate: isOpen ? 0 : -90}}
           exit={{rotate: -90}}
