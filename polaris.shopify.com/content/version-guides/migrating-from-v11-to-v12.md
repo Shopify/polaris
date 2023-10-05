@@ -899,7 +899,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 <Code
   code={{
     title: `Check RegExp for outdated <Icon color="warning" /> prop`,
-    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?tone?="warning"`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?tone="warning"`,
   }}
 />
 
@@ -930,14 +930,14 @@ The [updated split example](/components/actions/button) can also be referenced a
 <Code
   code={{
     title: `Check RegExp for outdated <Icon color="highlight" /> prop`,
-    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color?="highlight"`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color="highlight"`,
   }}
 />
 
 <Code
   code={{
     title: `Check RegExp for outdated <Icon color="highlight" /> prop`,
-    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?tone?="highlight"`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?tone="highlight"`,
   }}
 />
 
@@ -1036,14 +1036,14 @@ or
 <Code
   code={{
     title: `Check RegExp for outdated <Text color="warning" /> prop`,
-    code: String.raw`<Text[^>\w](?:[^>]|\n)*?color?="warning"`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?color="warning"`,
   }}
 />
 
 <Code
   code={{
     title: `Check RegExp for outdated <Text color="warning" /> prop`,
-    code: String.raw`<Text[^>\w](?:[^>]|\n)*?tone?="warning"`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?tone="warning"`,
   }}
 />
 
@@ -1074,7 +1074,7 @@ or
 <Code
   code={{
     title: `Check RegExp for outdated <Text variant="headingXs" /> prop`,
-    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant?="headingXs"`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="headingXs"`,
   }}
 />
 
@@ -1104,7 +1104,7 @@ or
 <Code
   code={{
     title: `Check RegExp for outdated <Text variant="heading4xl" /> prop`,
-    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant?="heading4xl"`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="heading4xl"`,
   }}
 />
 
