@@ -32,7 +32,7 @@ status: New
 
           ## Color has purpose
 
-          The purpose of using color has to be clear. Color needs to support a message or a status that needs to be easily identifiable by merchants.
+          The purpose of using color has to be clear. Color needs to support a message or status that needs to be easily identifiable by merchants.
 
         </Box>
 
@@ -167,7 +167,7 @@ status: New
 
         <Box className="text-extra-padding">
 
-          Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify and interact with.
+          Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify, and interact with.
 
         </Box>
 
