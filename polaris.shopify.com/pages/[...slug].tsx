@@ -21,6 +21,7 @@ interface Props {
   editPageLinkPath: string;
   isContentPage: boolean;
   showTOC?: boolean;
+  collapsibleTOC?: boolean;
 }
 
 interface SortedRichCardGridProps extends RichCardGridProps {
@@ -89,6 +90,7 @@ const CatchAllTemplate = ({
   editPageLinkPath,
   isContentPage,
   showTOC,
+  collapsibleTOC,
 }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const {title, noIndex = false} = mdx.frontmatter;
 
@@ -97,6 +99,7 @@ const CatchAllTemplate = ({
       editPageLinkPath={editPageLinkPath}
       isContentPage={isContentPage}
       showTOC={showTOC || isContentPage}
+      collapsibleTOC={collapsibleTOC}
     >
       <PageMeta title={title} description={seoDescription} noIndex={noIndex} />
       <Markdown
@@ -315,6 +318,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
     editPageLinkPath,
     isContentPage: !pathIsDirectory,
     showTOC: mdx.frontmatter.showTOC || false,
+    collapsibleTOC: mdx.frontmatter.collapsibleTOC || false,
   };
 
   return {props};

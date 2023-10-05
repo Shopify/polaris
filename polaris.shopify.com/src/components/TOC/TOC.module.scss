@@ -25,15 +25,20 @@
 }
 
 .Link {
-  color: var(--text-strong);
-  display: block;
-  font-size: var(--p-font-size-325);
-  font-weight: var(--p-font-weight-regular);
-  line-height: var(--p-font-line-height-500);
-  overflow: hidden;
   padding: var(--p-space-100) var(--p-space-200);
-  text-overflow: ellipsis;
-  white-space: pre;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    color: var(--text-strong);
+    font-size: var(--p-font-size-325);
+    font-weight: var(--p-font-weight-regular);
+    line-height: var(--p-font-line-height-500);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+  }
 
   &:hover {
     background-color: var(--surface-active);
@@ -43,6 +48,37 @@
   &.active {
     background-color: var(--surface-active);
     border-radius: var(--p-border-radius-200);
-    font-weight: var(--p-font-weight-semibold);
+
+    span {
+      font-weight: var(--p-font-weight-semibold);
+    }
+  }
+}
+
+.TOCItemMaxWidth {
+  max-width: calc(var(--toc-width) * 0.75);
+}
+
+.Toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background-color: transparent;
+  background-image: url(/images/PlusMinor.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 12px 12px;
+  opacity: 0.66;
+
+  &:hover {
+    opacity: 1;
+    background-color: var(--surface-subdued);
+  }
+
+  &[aria-expanded='true'] {
+    background-image: url(/images/MinusMinor.svg);
   }
 }

@@ -3,6 +3,7 @@ title: Migrating from v11 to v12
 description: Polaris v12.0.0 prop replacement, removal of components, renamed components, and token changes.
 navTitle: v12
 icon: ColorsMajor
+collapsibleTOC: true
 order: 1
 ---
 
@@ -10,15 +11,121 @@ order: 1
 
 <Lede>{frontmatter.description}</Lede>
 
-[Full release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
+## Getting started
+
+Upgrading to Polaris v12 from v11 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExp searches. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
+
+Not on v11 yet either? Check out our other [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) to get up to date.
+
+<Code
+  code={{
+    title: 'Upgrade to v12',
+    className: 'language-bash',
+    code: `npm install @shopify/polaris@12.0.0\n# or\nyarn add @shopify/polaris@12.0.0`,
+  }}
+/>
+
+> Note: If you've installed `polaris-icons`, [`stylelint-polaris`](https://polaris.shopify.com/tools/stylelint-polaris#version-matchups), or `polaris-tokens` independently, you will also need to upgrade those to the versions we released along with v12.0.0.
+
+- [What's new in this version](/whats-new/version-12)
+- [v12.0.0 release notes](https://github.com/Shopify/polaris/releases/tag/@shopify/polaris@12.0.0)
+
+## Migration workflow
+
+When running token and component migrations, we recommend the following workflow:
+
+### 1️⃣ Automated migrations using Polaris Migrator
+
+Follow the migration guide sections below where we have the [@shopify/polaris-migrator](/tools/polaris-migrator) commands scaffolded for you to paste into your terminal. Be sure to update the `<path>` placeholder in the commands to your own app's relevant path, e.g., `{app,packages}/**/*.{css,scss}`. The file extensions can be adjusted depending on what migrations you are running. For example, component migrations can be run on `*.{ts,tsx}` files while token migrations can be run on `*.{css,scss}` files.
+
+```bash
+# Example migration
+npx @shopify/polaris-migrator ...
+# Stash files with "polaris-migrator:" comments
+git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Stage all migrated files without "polaris-migrator:" comments
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+#  Commit automatic migration
+git commit -m "Migrate X custom properties from Polaris v11 to v12"
+```
+
+The polaris migrator could insert comments or skip instances that are unsafe to automatically migrate. You will need to resolve those issues in the next manual migration step.
+
+### 2️⃣ Manual migrations using migrator comments and RegExp code search
+
+Now, you need to validate the automatic migration and manually update any outstanding issues. The migration guide sections may have additional resources to help you resolve the migrations manually, such as `💡 Migration example`, `➡️ Replacement mappings` tables, and descriptions of what the automated migrations are doing.
+
+#### Resolve `polaris-migrator:` comments
+
+Unstash the polaris migrator comments if you stashed any in step 1.
+
+```bash
+git stash pop
+```
+
+Go through each of the changed files and search for `polaris-migrator:` comments. Migrate the instance the comment refers to, then delete the comment.
+
+#### Validate with RegExp
+
+Next, search for each of the token RegExp searches which are found under the `✅ Post-migration RegExp validation` toggle in the guide. Update any outstanding migrations until there are no more results for the RegExp search. If you're unsure on how to search in a code editor using RegExp, check out the [glossary](#glossary).
+
+```bash
+# Stage all manually migrated files
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+# Optional: run stylelint if using stylelint-polaris and running migrations on stylesheets
+npx stylelint <path>
+#  Commit manual migrations
+git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
+```
+
+### Glossary
+
+<CollapsibleDetails summary="Descriptions and resources for some terms in this guide">
+
+- **`<path>`**: [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) path for the `polaris-migrator` to run codemods on. e.g.: `{app,packages}/**/*.{css,scss}`
+- **[@shopify/polaris-migrator](/tools/polaris-migrator)**: CLI codemod tool to do the bulk of migrations for you
+- **Automatic migration or codemod**: A transformation that runs on your codebase programmatically. These are used to execute a bulk of the necessary migrations on your codebase to reduce the amount of manual migrations needed
+- **[RegExp](https://en.wikipedia.org/wiki/Regular_expression)**: Short for regular expression, a sequence of characters used to match text. If you use a code editor like VSCode, you can follow a tutorial like [this one](https://itnext.io/vscode-find-and-replace-regex-super-powers-c7f8be0fa80f) to learn how to search your code using RegExp
+- **✅ Post-migration RegExp validation**: After you run an automated migration using the `polaris-migrator`, the migrator may quick exit or miss edge cases. You can use the RegExp search snippets to find and manually migrate the stragglers
+- **➡️ Token replacement mappings (or other mapping tables)**: These tables show you at a glance what our migrators are finding and replacing. They are useful to cross reference when dealing with edge cases and manual migrations
+- **🔔 Stepped migration**: These are migrations that must be run in a specific order due to overlapping replacement values. These migrations have been broken out into steps that can be targeted using the `--step` flag when running the migration
+- **💡 Migration example**: A simple diff showing how the migration should be modifying your code
+- ```
+
+  ```
+
+</CollapsibleDetails>
 
 ## Component migrations
 
 ### Avatar
 
-`npx @shopify/polaris-migrator v12-react-avatar-component <path>`
+#### Rename `size` prop values
 
-- Replace the `size` prop with the new mapping below
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-react-avatar-component <path>`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Avatar size="..." /> prop`,
+    code: String.raw`<Avatar[^>\w](?:[^>]|\n)*?size`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="➡️ Prop replacement mappings for the Avatar size prop">
 
 | Before                    | After       |
 | ------------------------- | ----------- |
@@ -29,95 +136,848 @@ order: 1
 | `size="xl-experimental"`  | `size="xl"` |
 | `size="2xl-experimental"` | `size="xl"` |
 
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Avatar size="extraSmall" />
+- <Avatar size="small" />
+- <Avatar size="medium" />
+- <Avatar size="large" />
+- <Avatar size="xl-experimental" />
+- <Avatar size="2xl-experimental" />
++ <Avatar size="xs" />
++ <Avatar size="sm" />
++ <Avatar size="md" />
++ <Avatar size="lg" />
++ <Avatar size="xl" />
++ <Avatar size="xl" />
+```
+
+</CollapsibleDetails>
+
 ### Badge
 
-- Replace `status` with `tone`
+#### Replace `status` prop with `tone`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="status" --to="tone"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="status" --to="tone"`,
+  }}
+/>
 
-- Replace `statusAndProgressLabelOverride` with `toneAndProgressLabelOverride`
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`
+<Code
+  code={{
+    title: `Check RegExp for outdated <Badge status="..." /> prop`,
+    code: String.raw`<Badge[^>\w](?:[^>]|\n)*?status`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Badge status="success" />
++ <Badge tone="success" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `statusAndProgressLabelOverride` prop with `toneAndProgressLabelOverride`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Badge statusAndProgressLabelOverride="..." /> prop`,
+    code: String.raw`<Badge[^>\w](?:[^>]|\n)*?statusAndProgressLabelOverride`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Badge statusAndProgressLabelOverride="My string" />
++ <Badge toneAndProgressLabelOverride="My string" />
+```
+
+</CollapsibleDetails>
 
 ### IndexTable.Row
 
-- Replace `status` with `tone`
+**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="status" --to="tone"`
+#### Step 1: Replace `status` prop with `tone`
 
-- Replace `subdued` with `tone`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="status" --to="tone"`,
+  }}
+/>
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"`
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <IndexTable.Row status="..." /> prop`,
+    code: String.raw`<IndexTable\.Row[^>\w](?:[^>]|\n)*?status`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <IndexTable.Row status="success" />
++ <IndexTable.Row tone="success" />
+```
+
+</CollapsibleDetails>
+
+#### Step 2: Replace `subdued` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <IndexTable.Row subdued="..." /> prop`,
+    code: String.raw`<IndexTable\.Row[^>\w](?:[^>]|\n)*?subdued`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <IndexTable.Row subdued />
++ <IndexTable.Row tone="subdued" />
+```
+
+</CollapsibleDetails>
 
 ### Layout.Section
 
-- One third:
+#### Replace `oneThird` prop with `variant="oneThird"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"`,
+  }}
+/>
 
-- One half:
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"`
+<Code
+  code={{
+    title: `Check RegExp for outdated <Layout.Section oneThird /> prop`,
+    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneThird`,
+  }}
+/>
 
-- Full width:
+</CollapsibleDetails>
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="fullWidth" --to="variant" --toValue="fullWidth"`
+<CollapsibleDetails summary="💡 Migration example">
 
-- Secondary, becomes oneThird:
+```diff
+- <Layout.Section oneThird>
++ <Layout.Section variant="oneThird">
+```
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"`
+</CollapsibleDetails>
+
+#### Replace `oneHalf` prop with `variant="oneHalf"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Layout.Section oneHalf /> prop`,
+    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneHalf`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section oneHalf>
++ <Layout.Section variant="oneHalf">
+```
+
+</CollapsibleDetails>
+
+#### Replace `fullWidth` prop with `variant="fullWidth"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="fullWidth" --to="variant" --toValue="fullWidth"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Layout.Section fullWidth /> prop`,
+    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?fullWidth`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section fullWidth>
++ <Layout.Section variant="fullWidth">
+```
+
+</CollapsibleDetails>
+
+#### Replace `secondary` prop with `variant="oneThird"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Layout.Section secondary /> prop`,
+    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?secondary`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section secondary>
++ <Layout.Section variant="oneThird">
+```
+
+</CollapsibleDetails>
 
 ### TextField
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"`
+#### Replace `borderless` prop with `variant="borderless"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <TextField borderless /> prop`,
+    code: String.raw`<TextField[^>\w](?:[^>]|\n)*?borderless`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <TextField borderless />
++ <TextField variant="borderless" />
+```
+
+</CollapsibleDetails>
 
 ### Box
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"`
+#### Replace `borderRadius${cornerPosition}` prop with `border${cornerPosition}Radius`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"`
+This border radius property rename aligns with [CSS border radius constituent properties](https://developer.mozilla.org/en-US/docs/Web/CSS/border-radius#constituent_properties) to be consistent with other Polaris component APIs as well as wider web conventions.
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"`,
+  }}
+/>
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"`,
+  }}
+/>
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"`,
+  }}
+/>
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Box borderRadiusEndStart="..." /> prop`,
+    code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusEndStart`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Box borderRadiusEndEnd="..." /> prop`,
+    code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusEndEnd`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Box borderRadiusStartStart="..." /> prop`,
+    code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusStartStart`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Box borderRadiusStartEnd="..." /> prop`,
+    code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusStartEnd`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Box borderRadiusEndStart="2" borderRadiusEndEnd="2" borderRadiusStartStart="2" borderRadiusStartEnd="2" />
++ <Box borderEndStartRadius="2" borderEndEndRadius="2" borderStartStartRadius="2" borderStartEndRadius="2" />
+```
+
+</CollapsibleDetails>
 
 ### HorizontalStack
 
-`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"`
+#### Rename `HorizontalStack` component to `InlineStack`
+
+Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <HorizontalStack /> component`,
+    code: String.raw`HorizontalStack`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <HorizontalStack />
++ <InlineStack />
+```
+
+</CollapsibleDetails>
 
 ### VerticalStack
 
-`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"`
+#### Rename `VerticalStack` component to `BlockStack`
+
+Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <VerticalStack /> component`,
+    code: String.raw`VerticalStack`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <VerticalStack />
++ <BlockStack />
+```
+
+</CollapsibleDetails>
 
 ### HorizontalGrid
 
-`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"`
+#### Rename `HorizontalGrid` component to `InlineGrid`
+
+Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <HorizontalGrid /> component`,
+    code: String.raw`HorizontalGrid`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <HorizontalGrid />
++ <InlineGrid />
+```
+
+</CollapsibleDetails>
 
 ### Button
 
-- connectedDisclosure: [See the updated split example](/components/actions/button)
+#### Consolidate boolean props to `variant` and `tone`
 
-- Boolean props to `variant` and `tone`
+The `Button` component has been updated to replace deprecated `connectedDisclosure`, `outline`, `destructive`, `primary`, `primarySuccess`, `plain`, and `monochrome` props with a new `variant` prop that supports multiple variation options.
 
-`npx @shopify/polaris-migrator v12-react-update-button-component <path>`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-react-update-button-component <path>`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Button connectedDisclosure /> prop`,
+    code: String.raw`<Button[^>\w](?:[^>]|\n)*?connectedDisclosure`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Button destructive /> prop`,
+    code: String.raw`<Button[^>\w](?:[^>]|\n)*?destructive`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Button outline /> prop`,
+    code: String.raw`<Button[^>\w](?:[^>]|\n)*?outline`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Button monochrome /> prop`,
+    code: String.raw`<Button[^>\w](?:[^>]|\n)*?monochrome`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Button plain /> prop`,
+    code: String.raw`<Button[^>\w](?:[^>]|\n)*?plain`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Button primary /> prop`,
+    code: String.raw`<Button[^>\w](?:[^>]|\n)*?primary`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Button primarySuccess /> prop`,
+    code: String.raw`<Button[^>\w](?:[^>]|\n)*?primarySuccess`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="➡️ Prop consolidation mappings">
+
+| Old variant                         | New variant                                                                                                                 |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `plain=true`                        | `variant="plain"`                                                                                                           |
+| `primary=true`                      | `variant="primary"`                                                                                                         |
+| `primary=true` + `plain=true`       | `variant="tertiary"`                                                                                                        |
+| `monochrome=true` + `plain=true`    | `variant="monochromePlain"` \* <br/>This will be deprecated in a future release, please use a different variant if possible |
+| `destructive=true`                  | `variant="primary"` + `tone="critical"`                                                                                     |
+| `primarySuccess=true`               | `variant="primary"` + `tone="success"`                                                                                      |
+| `destructive=true` + `outline=true` | `tone="critical"`                                                                                                           |
+| `destructive=true` + `plain=true`   | `variant="plain"` + `tone="critical"`                                                                                       |
+| `monochrome=true`                   |                                                                                                                             |
+| `outline=true`                      |                                                                                                                             |
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Button plain />
++ <Button variant="plain" />
+- <Button primary />
++ <Button variant="primary" />
+- <Button primary plain />
++ <Button variant="tertiary" />
+- <Button monochrome plain />
++ <Button variant="monochromePlain" />
+- <Button destructive />
++ <Button variant="primary" tone="critical" />
+- <Button primarySuccess />
++ <Button variant="primary" tone="success" />
+- <Button destructive plain />
++ <Button variant="plain" tone="critical" />
+- <Button destructive />
++ <Button variant="primary" tone="critical" />
+- <Button primarySuccess />
++ <Button variant="primary" tone="success" />
+- <Button destructive outline />
++ <Button tone="critical" />
+- <Button destructive plain />
++ <Button variant="plain" tone="critical" />
+- <Button monochrome />
++ <Button />
+- <Button outline />
++ <Button />
+```
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 How to manually update `connectedDisclosure` example">
+
+The [updated split example](/components/actions/button) can also be referenced as an example for this manual migration.
+
+```diff
+- <Button connectedDisclosure />
++ <ButtonGroup variant="segmented">
++   <Button />
++   <Button icon={ChevronDownMinor} />
++ </ButtonGroup>
+```
+
+</CollapsibleDetails>
 
 ### ButtonGroup
 
-- Spacing
+#### Replace `spacing` prop with `gap`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="spacing" --to="gap"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="spacing" --to="gap"`,
+  }}
+/>
 
-- Segmented
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"`
+<Code
+  code={{
+    title: `Check RegExp for outdated <ButtonGroup spacing="..." /> prop`,
+    code: String.raw`<ButtonGroup[^>\w](?:[^>]|\n)*?spacing`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <ButtonGroup spacing="tight" />
++ <ButtonGroup gap="tight" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `segmented` prop to `variant="segmented"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <ButtonGroup segmented /> prop`,
+    code: String.raw`<ButtonGroup[^>\w](?:[^>]|\n)*?segmented`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <ButtonGroup segmented />
++ <ButtonGroup variant="segmented" />
+```
+
+</CollapsibleDetails>
 
 ### Banner
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Banner" --from="status" --to="tone"`
+#### Replace `status` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Banner" --from="status" --to="tone"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Banner status="..." /> prop`,
+    code: String.raw`<Banner[^>\w](?:[^>]|\n)*?status`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Banner status="success" />
++ <Banner tone="success" />
+```
+
+</CollapsibleDetails>
 
 ### Icon
 
-- Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
+**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
+
+#### Step 1: Replace `color` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="color" --to="tone"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Icon color="..." /> prop`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon color="success" />
++ <Icon tone="success" />
+```
+
+</CollapsibleDetails>
+
+#### Step 2: Replace `warning` tone with `caution`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Icon color="warning" /> prop`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color="warning"`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Icon color="warning" /> prop`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?tone="warning"`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon color="warning" />
+- <Icon tone="warning" />
++ <Icon tone="caution" />
+```
+
+</CollapsibleDetails>
+
+#### Step 3: Replace `highlight` tone with `info`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="highlight" --toValue="info"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Icon color="highlight" /> prop`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color="highlight"`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Icon color="highlight" /> prop`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?tone="highlight"`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon color="highlight" />
+- <Icon tone="highlight" />
++ <Icon tone="info" />
+```
+
+</CollapsibleDetails>
+
+#### Remove `backdrop` prop
+
+Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Icon backdrop /> prop`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?backdrop`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon backdrop />
++ <Box padding="1" width="28px" borderRadius="full">
++   <Icon />
++ </Box>
+```
+
+or
 
 ```tsx
 <Box background={boxBackground} padding="1" width="28px" borderRadius="full">
@@ -125,45 +985,319 @@ order: 1
 </Box>
 ```
 
-- Color
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="color" --to="tone"`
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="highlight" --toValue="info"`
+</CollapsibleDetails>
 
 ### Text
 
-- Color
+**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="color" --to="tone"`
+#### Step 1: Replace `color` prop with `tone`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="color" --to="tone"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Text color="..." /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?color`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text color="success" />
++ <Text tone="success" />
+```
+
+</CollapsibleDetails>
+
+#### Step 2: Replace `warning` tone with `caution`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Text color="warning" /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?color="warning"`,
+  }}
+/>
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Text color="warning" /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?tone="warning"`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text color="warning" />
+- <Text tone="warning" />
++ <Text tone="caution" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `headingXs` prop with `headingSm`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="variant" --to="variant" --fromValue="headingXs" --toValue="headingSm"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Text variant="headingXs" /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="headingXs"`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text variant="headingXs">
++ <Text variant="headingSm">
+```
+
+</CollapsibleDetails>
+
+#### Replace `heading4xl` with `heading3xl`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="variant" --to="variant" --fromValue="heading4xl" --toValue="heading3xl"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Text variant="heading4xl" /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="heading4xl"`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text variant="heading4xl">
++ <Text variant="heading3xl">
+```
+
+</CollapsibleDetails>
 
 ### Modal
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="small" --to="size" --toValue="small"`
+#### Replace `small` prop with `variant="small"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="large" --to="size" --toValue="large"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="small" --to="size" --toValue="small"`,
+  }}
+/>
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"`
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Modal small /> prop`,
+    code: String.raw`<Modal[^>\w](?:[^>]|\n)*?small`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Modal small />
++ <Modal size="small" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `large` prop with `variant="large"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="large" --to="size" --toValue="large"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Modal large /> prop`,
+    code: String.raw`<Modal[^>\w](?:[^>]|\n)*?large`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Modal large />
++ <Modal size="large" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `fullScreen` prop with `variant="fullScreen"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Modal fullScreen /> prop`,
+    code: String.raw`<Modal[^>\w](?:[^>]|\n)*?fullScreen`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Modal fullScreen />
++ <Modal size="fullScreen" />
+```
+
+</CollapsibleDetails>
 
 ### List
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="List" --from="spacing" --to="gap"`
+#### Replace `spacing` prop with `gap`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="List" --from="spacing" --to="gap"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <List spacing="..." /> prop`,
+    code: String.raw`<List[^>\w](?:[^>]|\n)*?spacing`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <List spacing="loose" />
++ <List gap="loose" />
+```
+
+</CollapsibleDetails>
 
 ### DescriptionList
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="DescriptionList" --from="spacing" --to="gap"`
+#### Replace `spacing` prop with `gap`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="DescriptionList" --from="spacing" --to="gap"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <DescriptionList spacing="..." /> prop`,
+    code: String.raw`<DescriptionList[^>\w](?:[^>]|\n)*?spacing`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <DescriptionList spacing="loose" />
++ <DescriptionList gap="loose" />
+```
+
+</CollapsibleDetails>
 
 ### AppProvider
 
-The `AppProvider`'s `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. You should be able to remove the `features` prop completely from your Polaris `AppProvider` since there aren't any feature flags in Polaris for v12.
+The `AppProvider` `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. If these were the only features passed into your `AppProvider`, you can safely remove the `features` prop completely from your Polaris `AppProvider`. If that is not the case, you will need to remove the features specifically related to `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut` from being passed into the `features` prop.
 
-### Text
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
 
-The `Text` component no longer supports `headingXs` and `heading4xl` as options for the `variant` prop. You will need to manually update usage of `<Text variant="headingXs">` to `<Text variant="headingSm">` instead. Similarly, usage of `<Text variant="heading4xl">` need to be manually updated to `<Text variant="heading3xl">`.
+<Code
+  code={{
+    title: `Check RegExp for outdated <AppProvider features={...} /> prop`,
+    code: String.raw`<AppProvider[^>\w](?:[^>]|\n)*?features`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <AppProvider features={{polarisSummerEditions2023: true, polarisSummerEditions2023ShadowBevelOptOut: false}} i18n={[]} />
++ <AppProvider i18n={[]} />
+```
+
+</CollapsibleDetails>
 
 ## Token migrations
 
@@ -171,9 +1305,9 @@ The following tokens have either been renamed or removed. You will need to repla
 
 ### Border
 
-#### Migration
+To replace deprecated `border` custom properties, you can run the [v12-styles-replace-custom-property-border](/tools/polaris-migrator#v12-styles-replace-custom-property-border) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
-To replace these deprecated `border` custom properties, you can run the [v12-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-border) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - border-radius: var(--p-border-radius-1);
@@ -185,75 +1319,115 @@ To replace these deprecated `border` custom properties, you can run the [v12-sty
 + border-width: var(--p-border-width-025);
 ```
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>
-```
+</CollapsibleDetails>
 
-#### Post-migration validation
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>`,
+  }}
+/>
 
-After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+  <p>
+    After migrating, use the following RegExp to check for any additional
+    instances of `border` custom properties across all file types:
+  </p>
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded border custom properties across all file types',
+      code: String.raw`(?:--p-border-radius-0-experimental|--p-border-radius-05|--p-border-radius-1|--p-border-radius-1_5-experimental|--p-border-radius-2|--p-border-radius-3|--p-border-radius-4|--p-border-radius-5|--p-border-radius-6|--p-border-width-1|--p-border-width-1-experimental|--p-border-width-2|--p-border-width-2-experimental|--p-border-width-3|--p-border-width-4|--p-border-width-5)(?![\w-])`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Tooltip borderRadius="..." /> prop`,
+      code: String.raw`<Tooltip[^>\w](?:[^>]|\n)*?borderRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderRadius="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderEndStartRadius="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderEndStartRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderEndEndRadius="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderEndEndRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderStartStartRadius="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderStartStartRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderStartEndRadius="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderStartEndRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderWidth="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderBlockStartWidth="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderBlockStartWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderBlockEndWidth="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderBlockEndWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderInlineStartWidth="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderInlineStartWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderInlineEndWidth="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderInlineEndWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box outlineWidth="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineWidth`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <ShadowBevel borderRadius="..." /> prop`,
+      code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?borderRadius`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Divider borderWidth="..." /> prop`,
+      code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderWidth`,
+    }}
+  />
+</CollapsibleDetails>
 
-```
-(?:--p-border-radius-0-experimental|--p-border-radius-05|--p-border-radius-1|--p-border-radius-1_5-experimental|--p-border-radius-2|--p-border-radius-3|--p-border-radius-4|--p-border-radius-5|--p-border-radius-6|--p-border-width-1|--p-border-width-1-experimental|--p-border-width-2|--p-border-width-2-experimental|--p-border-width-3|--p-border-width-4|--p-border-width-5)(?![\w-])
-```
-
-```
-<Tooltip[^>\w](?:[^>]|\n)*?borderRadius
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadius
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadiusEndStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadiusEndEnd
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadiusStartStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderRadiusStartEnd
-```
-
-```
-<ShadowBevel[^>\w](?:[^>]|\n)*?borderRadius
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderBlockStartWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderBlockEndWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderInlineStartWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderInlineEndWidth
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineWidth
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderWidth
-```
-
-#### Replacement maps
+<CollapsibleDetails summary="➡️ Token replacement mappings">
 
 | Deprecated Token                     | Replacement Value       |
 | ------------------------------------ | ----------------------- |
@@ -274,62 +1448,94 @@ After migrating use the following RegExp to check for any additional instances o
 | `--p-border-width-4`                 | `--p-border-width-100`  |
 | `--p-border-width-5`                 | `--p-border-width-100`  |
 
+</CollapsibleDetails>
+
 ### Color
 
-#### Migration
+To replace deprecated `color` custom properties, you can run the [v12-styles-replace-custom-property-color](/tools/polaris-migrator#v12-styles-replace-custom-property-color) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
-To replace these deprecated `color` custom properties, you can run the [v12-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-color) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - color: var(--p-color-bg);
 + color: var(--p-color-bg-surface);
 ```
 
-**⚠️ Important**: The color migration needs to be run in 4 sequential steps due to overlapping `color` token names and context dependent manual migrations.
+</CollapsibleDetails>
 
-#### Step 1
+**🔔 Stepped migration**: The color migration needs to be run in **4** sequential steps due to overlapping `color` token names and context dependent manual migrations.
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=1
-```
+#### Color migration step 1
 
-After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 1',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=1`,
+  }}
+/>
 
-```
-(?:--p-color-avatar-background-experimental|--p-color-avatar-color-experimental|--p-color-avatar-style-five-background-experimental|--p-color-avatar-style-five-color-experimental|--p-color-avatar-style-four-background-experimental|--p-color-avatar-style-four-color-experimental|--p-color-avatar-style-one-background-experimental|--p-color-avatar-style-one-color-experimental|--p-color-avatar-style-three-background-experimental|--p-color-avatar-style-three-color-experimental|--p-color-avatar-style-two-background-experimental|--p-color-avatar-style-two-color-experimental|--p-color-bg|--p-color-bg-active|--p-color-bg-app-active|--p-color-bg-app-hover|--p-color-bg-app-selected|--p-color-bg-backdrop-experimental|--p-color-bg-caution|--p-color-bg-caution-strong|--p-color-bg-caution-subdued|--p-color-bg-caution-subdued-active|--p-color-bg-caution-subdued-hover|--p-color-bg-critical|--p-color-bg-critical-strong|--p-color-bg-critical-strong-active|--p-color-bg-critical-strong-hover|--p-color-bg-critical-subdued|--p-color-bg-critical-subdued-active|--p-color-bg-critical-subdued-hover|--p-color-bg-disabled|--p-color-bg-hover|--p-color-bg-info|--p-color-bg-info-strong|--p-color-bg-info-subdued|--p-color-bg-info-subdued-active|--p-color-bg-info-subdued-hover|--p-color-bg-input|--p-color-bg-input-active-experimental|--p-color-bg-input-hover-experimental|--p-color-bg-inset|--p-color-bg-inset-strong|--p-color-bg-interactive|--p-color-bg-interactive-selected|--p-color-bg-interactive-subdued-active|--p-color-bg-interactive-subdued-hover|--p-color-bg-inverse-active|--p-color-bg-inverse-hover|--p-color-bg-magic|--p-color-bg-magic-active|--p-color-bg-magic-hover|--p-color-bg-magic-strong|--p-color-bg-magic-subdued|--p-color-bg-magic-subdued-hover|--p-color-bg-primary|--p-color-bg-primary-active|--p-color-bg-primary-disabled-experimental|--p-color-bg-primary-hover|--p-color-bg-primary-subdued|--p-color-bg-primary-subdued-active|--p-color-bg-primary-subdued-hover|--p-color-bg-primary-subdued-selected|--p-color-bg-secondary-experimental|--p-color-bg-strong|--p-color-bg-strong-active|--p-color-bg-strong-hover|--p-color-bg-subdued|--p-color-bg-subdued-active|--p-color-bg-subdued-hover|--p-color-bg-success|--p-color-bg-success-strong|--p-color-bg-success-strong-active-experimental|--p-color-bg-success-strong-hover-experimental|--p-color-bg-success-subdued|--p-color-bg-success-subdued-active|--p-color-bg-success-subdued-hover|--p-color-bg-transparent-active-experimental|--p-color-bg-transparent-disabled-experimental|--p-color-bg-transparent-experimental|--p-color-bg-transparent-hover-experimental|--p-color-bg-transparent-primary-disabled-experimental|--p-color-bg-transparent-subdued-experimental|--p-color-bg-warning|--p-color-bg-warning-strong-experimental|--p-color-bg-warning-subdued-experimental|--p-color-border-critical-strong-experimental|--p-color-border-input|--p-color-border-input-active-experimental|--p-color-border-input-hover|--p-color-border-interactive|--p-color-border-interactive-active|--p-color-border-interactive-disabled|--p-color-border-caution-subdued|--p-color-border-critical-active|--p-color-border-critical-hover|--p-color-border-critical-subdued|--p-color-border-info-subdued|--p-color-border-interactive-focus|--p-color-border-interactive-hover|--p-color-border-magic-strong|--p-color-border-primary|--p-color-border-strong|--p-color-border-subdued|--p-color-border-success-subdued|--p-color-icon-interactive|--p-color-icon-interactive-active|--p-color-icon-interactive-hover|--p-color-icon-info-strong-experimental|--p-color-icon-interactive-disabled|--p-color-icon-primary|--p-color-icon-subdued|--p-color-icon-critical-strong-experimental|--p-color-icon-critical-strong-active-experimental|--p-color-icon-critical-strong-hover-experimental|--p-color-icon-success-strong-experimental|--p-color-icon-warning-strong-experimental|--p-color-text-critical-hover-experimental|--p-color-text-info-strong|--p-color-text-interactive|--p-color-text-interactive-active|--p-color-text-interactive-disabled|--p-color-text-interactive-hover|--p-color-text-interactive-inverse|--p-color-text-inverse-subdued|--p-color-text-primary|--p-color-text-primary-hover|--p-color-text-caution-strong|--p-color-text-critical-strong|--p-color-text-magic-strong|--p-color-text-success-strong|--p-color-text-subdued|--p-color-text-warning-experimental)(?![\w-])
-```
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 1">
+  <p>
+    After migrating, use the following RegExp to check for any additional
+    instances of `color` custom properties across all file types:
+  </p>
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded color custom properties across all file types',
+      code: String.raw`(?:--p-color-avatar-background-experimental|--p-color-avatar-color-experimental|--p-color-avatar-style-five-background-experimental|--p-color-avatar-style-five-color-experimental|--p-color-avatar-style-four-background-experimental|--p-color-avatar-style-four-color-experimental|--p-color-avatar-style-one-background-experimental|--p-color-avatar-style-one-color-experimental|--p-color-avatar-style-three-background-experimental|--p-color-avatar-style-three-color-experimental|--p-color-avatar-style-two-background-experimental|--p-color-avatar-style-two-color-experimental|--p-color-bg|--p-color-bg-active|--p-color-bg-app-active|--p-color-bg-app-hover|--p-color-bg-app-selected|--p-color-bg-backdrop-experimental|--p-color-bg-caution|--p-color-bg-caution-strong|--p-color-bg-caution-subdued|--p-color-bg-caution-subdued-active|--p-color-bg-caution-subdued-hover|--p-color-bg-critical|--p-color-bg-critical-strong|--p-color-bg-critical-strong-active|--p-color-bg-critical-strong-hover|--p-color-bg-critical-subdued|--p-color-bg-critical-subdued-active|--p-color-bg-critical-subdued-hover|--p-color-bg-disabled|--p-color-bg-hover|--p-color-bg-info|--p-color-bg-info-strong|--p-color-bg-info-subdued|--p-color-bg-info-subdued-active|--p-color-bg-info-subdued-hover|--p-color-bg-input|--p-color-bg-input-active-experimental|--p-color-bg-input-hover-experimental|--p-color-bg-inset|--p-color-bg-inset-strong|--p-color-bg-interactive|--p-color-bg-interactive-selected|--p-color-bg-interactive-subdued-active|--p-color-bg-interactive-subdued-hover|--p-color-bg-inverse-active|--p-color-bg-inverse-hover|--p-color-bg-magic|--p-color-bg-magic-active|--p-color-bg-magic-hover|--p-color-bg-magic-strong|--p-color-bg-magic-subdued|--p-color-bg-magic-subdued-hover|--p-color-bg-primary|--p-color-bg-primary-active|--p-color-bg-primary-disabled-experimental|--p-color-bg-primary-hover|--p-color-bg-primary-subdued|--p-color-bg-primary-subdued-active|--p-color-bg-primary-subdued-hover|--p-color-bg-primary-subdued-selected|--p-color-bg-secondary-experimental|--p-color-bg-strong|--p-color-bg-strong-active|--p-color-bg-strong-hover|--p-color-bg-subdued|--p-color-bg-subdued-active|--p-color-bg-subdued-hover|--p-color-bg-success|--p-color-bg-success-strong|--p-color-bg-success-strong-active-experimental|--p-color-bg-success-strong-hover-experimental|--p-color-bg-success-subdued|--p-color-bg-success-subdued-active|--p-color-bg-success-subdued-hover|--p-color-bg-transparent-active-experimental|--p-color-bg-transparent-disabled-experimental|--p-color-bg-transparent-experimental|--p-color-bg-transparent-hover-experimental|--p-color-bg-transparent-primary-disabled-experimental|--p-color-bg-transparent-subdued-experimental|--p-color-bg-warning|--p-color-bg-warning-strong-experimental|--p-color-bg-warning-subdued-experimental|--p-color-border-critical-strong-experimental|--p-color-border-input|--p-color-border-input-active-experimental|--p-color-border-input-hover|--p-color-border-interactive|--p-color-border-interactive-active|--p-color-border-interactive-disabled|--p-color-border-caution-subdued|--p-color-border-critical-active|--p-color-border-critical-hover|--p-color-border-critical-subdued|--p-color-border-info-subdued|--p-color-border-interactive-focus|--p-color-border-interactive-hover|--p-color-border-magic-strong|--p-color-border-primary|--p-color-border-strong|--p-color-border-subdued|--p-color-border-success-subdued|--p-color-icon-interactive|--p-color-icon-interactive-active|--p-color-icon-interactive-hover|--p-color-icon-info-strong-experimental|--p-color-icon-interactive-disabled|--p-color-icon-primary|--p-color-icon-subdued|--p-color-icon-critical-strong-experimental|--p-color-icon-critical-strong-active-experimental|--p-color-icon-critical-strong-hover-experimental|--p-color-icon-success-strong-experimental|--p-color-icon-warning-strong-experimental|--p-color-text-critical-hover-experimental|--p-color-text-info-strong|--p-color-text-interactive|--p-color-text-interactive-active|--p-color-text-interactive-disabled|--p-color-text-interactive-hover|--p-color-text-interactive-inverse|--p-color-text-inverse-subdued|--p-color-text-primary|--p-color-text-primary-hover|--p-color-text-caution-strong|--p-color-text-critical-strong|--p-color-text-magic-strong|--p-color-text-success-strong|--p-color-text-subdued|--p-color-text-warning-experimental)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box background="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Card background="..." /> prop`,
+      code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
+      code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
+      code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box color="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
+    }}
+  />
+</CollapsibleDetails>
 
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
-
-```
-<Box[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineColor
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Banner[^>\w](?:[^>]|\n)*?textColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?color
-```
-
-Replacement maps for Step 1:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 1">
 
 | Deprecated Token                                         | Replacement Value                          |
 | -------------------------------------------------------- | ------------------------------------------ |
@@ -466,55 +1672,92 @@ Replacement maps for Step 1:
 | `--p-color-border-critical-subdued`                      | `--p-color-border-critical`                |
 | `--p-color-border-magic-strong`                          | `--p-color-border-magic-secondary`         |
 
-#### Step 2
+</CollapsibleDetails>
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=2
-```
+#### Color migration step 2
 
-After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 2',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=2`,
+  }}
+/>
 
-```
-(?:--p-color-bg-app)(?![\w-])
-```
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 2">
+  <p>
+    After migrating, use the following RegExp to check for any additional
+    instances of `color` custom properties across all file types:
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: 'Check RegExp for outdated --p-color-bg-app token',
+      code: String.raw`(?:--p-color-bg-app)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box background="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Card background="..." /> prop`,
+      code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
+      code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
+      code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box color="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
+    }}
+  />
+</CollapsibleDetails>
 
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
-
-```
-<Box[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineColor
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Banner[^>\w](?:[^>]|\n)*?textColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?color
-```
-
-Replacement maps for Step 2:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 2">
 
 | Deprecated Token   | Replacement Value |
 | ------------------ | ----------------- |
 | `--p-color-bg-app` | `--p-color-bg`    |
 
-#### Step 3
+</CollapsibleDetails>
+
+#### Color migration step 3
 
 Manually migrate the following tokens to their hardcoded values:
 
@@ -523,52 +1766,134 @@ Manually migrate the following tokens to their hardcoded values:
 | `--p-color-bg-transparent-primary-experimental`            | `rgba(0, 0, 0, 0.62)` |
 | `--p-color-bg-transparent-secondary-disabled-experimental` | `rgba(0, 0, 0, 0.08)` |
 
-After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 3">
+  After migrating, use the following RegExp to check for any additional
+  instances of `color` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded color custom properties across all file types',
+      code: String.raw`(?:--p-color-bg-transparent-primary-experimental|--p-color-bg-transparent-secondary-disabled-experimental)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table above):
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box background="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Card background="..." /> prop`,
+      code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
+      code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
+      code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box color="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
+    }}
+  />
+</CollapsibleDetails>
 
-```
-(?:--p-color-bg-transparent-primary-experimental|--p-color-bg-transparent-secondary-disabled-experimental)(?![\w-])
-```
+#### Color migration step 4
 
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
+`on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the background color the element is sitting on. This gives us greater control over the visual design of the admin.
 
-```
-<Box[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineColor
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Banner[^>\w](?:[^>]|\n)*?textColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?color
-```
-
-#### Step 4
-
-`on-color` is being replaced by `on-bg-fill` tokens. These tokens will no longer be the same value but tailored to the bg color the element is sitting on. This gives us greater control over the visual design of the admin. If you want to unblock your migration quickly you can manually hardcode the values using the following replacement map:
+If you want to unblock your migration quickly you can manually hardcode the values using the following replacement map:
 
 | Deprecated Token          | Replacement Value        |
 | ------------------------- | ------------------------ |
 | `--p-color-icon-on-color` | `rgba(255, 255, 255, 1)` |
 | `--p-color-text-on-color` | `rgba(255, 255, 255, 1)` |
 
-Otherwise, the table below shows which `on-bg-fill` colors to use against their respective `bg-fill` colors. Use the mappings below as a general guide to manually update `text-on-color` and `icon-on-color` tokens based on background color context:
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 4">
+  After migrating, use the following RegExp to check for any additional
+  instances of `color` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded color custom properties across all file types',
+      code: String.raw`(?:--p-color-icon-on-color|--p-color-text-on-color)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table above):
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box background="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Card background="..." /> prop`,
+      code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
+      code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
+      code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box color="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
+    }}
+  />
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="If you want to update your code to use the correct token instead of hardcoding, you can use the table below as a general guide to manually update `text-on-color` and `icon-on-color` tokens based on background color context:">
 
 | Background color of parent container | Text + Icon color on top of parent container                                                 |
 | ------------------------------------ | -------------------------------------------------------------------------------------------- |
@@ -582,47 +1907,13 @@ Otherwise, the table below shows which `on-bg-fill` colors to use against their 
 | `--p-color-bg-fill-inverse`          | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
 | `--p-color-bg-inverse`               | `--p-color-text-inverse`<br/>`--p-color-text-inverse-secondary`<br/>`--p-color-icon-inverse` |
 
-After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
-
-```
-(?:--p-color-icon-on-color|--p-color-text-on-color)(?![\w-])
-```
-
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
-
-```
-<Box[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?background
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?outlineColor
-```
-
-```
-<Divider[^>\w](?:[^>]|\n)*?borderColor
-```
-
-```
-<Banner[^>\w](?:[^>]|\n)*?textColor
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?color
-```
+</CollapsibleDetails>
 
 ### Font
 
-#### Migration
+To replace deprecated `font` custom properties, you can run the [v12-styles-replace-custom-property-font](/tools/polaris-migrator#v12-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
-To replace these deprecated `font` custom properties, you can run the [v12-styles-replace-custom-property-font](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-font) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - font-size: var(--p-font-size-75);
@@ -634,21 +1925,33 @@ To replace these deprecated `font` custom properties, you can run the [v12-style
 + line-height: var(--p-font-line-height-400);
 ```
 
-**⚠️ Important**: The font migration needs to be run in 4 sequential steps due to overlapping `font-size` token names.
+</CollapsibleDetails>
 
-#### Step 1
+**🔔 Stepped migration**: The font migration needs to be run in **4** sequential steps due to overlapping `font-size` token names.
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=1
-```
+#### Font migration step 1
 
-After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 1',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=1`,
+  }}
+/>
 
-```
-(?:--p-font-size-70-experimental|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])
-```
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 1">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: String.raw`(?:--p-font-size-70-experimental|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
 
-Replacement maps for Step 1:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 1">
 
 | Deprecated Token                        | Replacement Value           |
 | --------------------------------------- | --------------------------- |
@@ -665,99 +1968,155 @@ Replacement maps for Step 1:
 | `--p-font-line-height-6`                | `--p-font-line-height-1000` |
 | `--p-font-line-height-7`                | `--p-font-line-height-1200` |
 
-#### Step 2
+</CollapsibleDetails>
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=2
-```
+#### Font migration step 2
 
-After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 2',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=2`,
+  }}
+/>
 
-```
-(?:--p-font-size-500|--p-font-size-600)(?![\w-])
-```
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 2">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: String.raw`(?:--p-font-size-500|--p-font-size-600)(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
 
-Replacement maps for Step 2:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 2">
 
 | Deprecated Token    | Replacement Value   |
 | ------------------- | ------------------- |
 | `--p-font-size-500` | `--p-font-size-750` |
 | `--p-font-size-600` | `--p-font-size-900` |
 
-#### Step 3
+</CollapsibleDetails>
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=3
-```
+#### Font migration step 3
 
-After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 3',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=3`,
+  }}
+/>
 
-```
-(?:--p-font-size-300|--p-font-size-400)(?![\w-])
-```
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 3">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: String.raw`(?:--p-font-size-300|--p-font-size-400)(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
 
-Replacement maps for Step 3:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 3">
 
 | Deprecated Token    | Replacement Value   |
 | ------------------- | ------------------- |
 | `--p-font-size-300` | `--p-font-size-500` |
 | `--p-font-size-400` | `--p-font-size-600` |
 
-#### Step 4
+</CollapsibleDetails>
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=4
-```
+#### Font migration step 4
 
-After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 4',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=4`,
+  }}
+/>
 
-```
-(?:--p-font-size-75|--p-font-size-200)(?![\w-])
-```
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 4">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: String.raw`(?:--p-font-size-75|--p-font-size-200)(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
 
-Replacement maps for Step 4:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 4">
 
 | Deprecated Token    | Replacement Value   |
 | ------------------- | ------------------- |
 | `--p-font-size-75`  | `--p-font-size-300` |
 | `--p-font-size-200` | `--p-font-size-400` |
 
+</CollapsibleDetails>
+
 ### Shadow
 
-#### Migration
+To replace deprecated `shadow` custom properties, you can run the [v12-styles-replace-custom-property-shadow](/tools/polaris-migrator#v12-styles-replace-custom-property-shadow) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
-To replace these deprecated `shadow` custom properties, you can run the [v12-styles-replace-custom-property-shadow](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-shadow) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - box-shadow: var(--p-shadow-xs);
 + box-shadow: var(--p-shadow-100);
 ```
 
-**⚠️ Important**: The shadow migration needs to be run in 2 sequential steps due to context dependent manual migrations.
+</CollapsibleDetails>
 
-#### Step 1
+**🔔 Stepped migration**: The font migration needs to be run in **2** sequential steps due to context dependent manual migrations.
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
-```
+#### Shadow migration step 1
 
-After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
+<Code
+  code={{
+    title: 'Polaris Migrator codemod for step 1',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>`,
+  }}
+/>
 
-```
-(?:--p-shadow-inset-lg|--p-shadow-inset-md|--p-shadow-inset-sm|--p-shadow-none|--p-shadow-xs|--p-shadow-sm|--p-shadow-md|--p-shadow-lg|--p-shadow-xl|--p-shadow-2xl|--p-shadow-bevel-experimental|--p-shadow-card-sm-experimental|--p-shadow-card-md-experimental|--p-shadow-card-lg-experimental|--p-shadow-button-experimental|--p-shadow-button-hover-experimental|--p-shadow-button-disabled-experimental|--p-shadow-button-primary-strong-experimental|--p-shadow-button-primary-strong-inset-experimental|--p-shadow-button-primary-strong-hover-experimental|--p-shadow-border-inset-experimental)(?![\w-])
-```
+<CollapsibleDetails summary="✅ Post-migration RegExp validation for step 1">
+  After migrating, use the following RegExp to check for any additional
+  instances of `shadow` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: String.raw`(?:--p-shadow-inset-lg|--p-shadow-inset-md|--p-shadow-inset-sm|--p-shadow-none|--p-shadow-xs|--p-shadow-sm|--p-shadow-md|--p-shadow-lg|--p-shadow-xl|--p-shadow-2xl|--p-shadow-bevel-experimental|--p-shadow-card-sm-experimental|--p-shadow-card-md-experimental|--p-shadow-card-lg-experimental|--p-shadow-button-experimental|--p-shadow-button-hover-experimental|--p-shadow-button-disabled-experimental|--p-shadow-button-primary-strong-experimental|--p-shadow-button-primary-strong-inset-experimental|--p-shadow-button-primary-strong-hover-experimental|--p-shadow-border-inset-experimental)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box shadow="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?shadow`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <ShadowBevel boxShadow="..." /> prop`,
+      code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
+    }}
+  />
+</CollapsibleDetails>
 
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
-
-```
-<Box[^>\w](?:[^>]|\n)*?shadow
-```
-
-```
-<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
-```
-
-Replacement maps for Step 1:
+<CollapsibleDetails summary="➡️ Token replacement mappings for step 1">
 
 | Deprecated Token                                      | Replacement Value                        |
 | ----------------------------------------------------- | ---------------------------------------- |
@@ -783,7 +2142,9 @@ Replacement maps for Step 1:
 | `--p-shadow-button-primary-strong-hover-experimental` | `--p-shadow-button-primary-hover`        |
 | `--p-shadow-border-inset-experimental`                | `--p-shadow-border-inset`                |
 
-#### Step 2
+</CollapsibleDetails>
+
+#### Shadow migration step 2
 
 The following tokens need to be manually migrated because their values are context dependent:
 
@@ -793,220 +2154,335 @@ The following tokens need to be manually migrated because their values are conte
 | `--p-shadow-button-primary-hover-experimental` | `--p-shadow-button-primary-critical-hover`<br/>`--p-shadow-button-primary-success-hover` |
 | `--p-shadow-button-inset-experimental`         | `--p-shadow-button-primary-critical-inset`<br/>`--p-shadow-button-primary-success-inset` |
 
-After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
-
-```
-(?:--p-shadow-button-primary-experimental|--p-shadow-button-primary-hover-experimental|--p-shadow-button-inset-experimental)(?![\w-])
-```
-
-Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
-
-```
-<Box[^>\w](?:[^>]|\n)*?shadow
-```
-
-```
-<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
-```
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+  After migrating, use the following RegExp to check for any additional
+  instances of `shadow` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: String.raw`(?:--p-shadow-button-primary-experimental|--p-shadow-button-primary-hover-experimental|--p-shadow-button-inset-experimental)(?![\w-])`,
+    }}
+  />
+  <p>
+    Only replace instances flagged by the RegExp below if they are values listed
+    in the replacement map for this step (see table below):
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box shadow="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?shadow`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <ShadowBevel boxShadow="..." /> prop`,
+      code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
+    }}
+  />
+</CollapsibleDetails>
 
 ### Space
 
-#### Migration
+To replace deprecated `space` custom properties, you can run the [v12-styles-replace-custom-property-space](/tools/polaris-migrator#v12-styles-replace-custom-property-space) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
-To replace these deprecated `space` custom properties, you can run the [v12-styles-replace-custom-property-space](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-space) migration. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - padding: var(--p-space-1);
 + padding: var(--p-space-100);
 ```
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
-```
+</CollapsibleDetails>
 
-#### Post-migration validation
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>`,
+  }}
+/>
 
-After migrating use the following RegExp to check for any additional instances of `space` custom properties across all file types:
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+  After migrating, use the following RegExp to check for any additional
+  instances of `space` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: String.raw`(?:--p-space-05|--p-space-1|--p-space-1_5-experimental|--p-space-2|--p-space-3|--p-space-4|--p-space-5|--p-space-6|--p-space-8|--p-space-10|--p-space-12|--p-space-16 |--p-space-20 |--p-space-24|--p-space-28 |--p-space-32)(?![\w-])`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Tooltip padding="..." /> prop`,
+      code: String.raw`<Tooltip[^>\w](?:[^>]|\n)*?padding`,
+    }}
+  />
+  <p>
+    **⚠️ Important**: The RegExp you use here will depend on if you've run
+    component migrations. If you have not then use `HorizontalGrid` if you have
+    then use `InlineGrid`.
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <HorizontalGrid gap="..." /> prop`,
+      code: String.raw`<HorizontalGrid[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <InlineGrid gap="..." /> prop`,
+      code: String.raw`<InlineGrid[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box padding="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?padding`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box paddingBlockStart="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box paddingBlockEnd="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box paddingInlineStart="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box paddingInlineEnd="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingInlineEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box insetBlockStart="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box insetBlockEnd="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box insetInlineStart="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Box insetInlineEnd="..." /> prop`,
+      code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetInlineEnd`,
+    }}
+  />
+  <p>
+    **⚠️ Important**: The RegExp you use here will depend on if you've run
+    component migrations. If you have not then use `VerticalStack` if you have
+    then use `BlockStack`.
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <VerticalStack gap="..." /> prop`,
+      code: String.raw`<VerticalStack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <BlockStack gap="..." /> prop`,
+      code: String.raw`<BlockStack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <p>
+    **⚠️ Important**: The RegExp you use here will depend on if you've run
+    component migrations. If you have not then use `HorizontalStack` if you have
+    then use `InlineStack`.
+  </p>
+  <Code
+    code={{
+      title: `Check RegExp for outdated <HorizontalStack gap="..." /> prop`,
+      code: String.raw`<HorizontalStack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <InlineStack gap="..." /> prop`,
+      code: String.raw`<InlineStack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Choice bleed="..." /> prop`,
+      code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleed`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Choice bleedBlockStart="..." /> prop`,
+      code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Choice bleedBlockEnd="..." /> prop`,
+      code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Choice bleedInlineStart="..." /> prop`,
+      code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Choice bleedInlineEnd="..." /> prop`,
+      code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <RadioButton bleed="..." /> prop`,
+      code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleed`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <RadioButton bleedBlockStart="..." /> prop`,
+      code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <RadioButton bleedBlockEnd="..." /> prop`,
+      code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <RadioButton bleedInlineStart="..." /> prop`,
+      code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <RadioButton bleedInlineEnd="..." /> prop`,
+      code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Checkbox bleed="..." /> prop`,
+      code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleed`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Checkbox bleedBlockStart="..." /> prop`,
+      code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Checkbox bleedBlockEnd="..." /> prop`,
+      code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Checkbox bleedInlineStart="..." /> prop`,
+      code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Checkbox bleedInlineEnd="..." /> prop`,
+      code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Stack gap="..." /> prop`,
+      code: String.raw`<Stack[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Grid gap="..." /> prop`,
+      code: String.raw`<Grid[^>\w](?:[^>]|\n)*?gap`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Grid gapX="..." /> prop`,
+      code: String.raw`<Grid[^>\w](?:[^>]|\n)*?gapX`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Grid gapY="..." /> prop`,
+      code: String.raw`<Grid[^>\w](?:[^>]|\n)*?gapY`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Card padding="..." /> prop`,
+      code: String.raw`<Card[^>\w](?:[^>]|\n)*?padding`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Bleed marginInline="..." /> prop`,
+      code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginInline`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Bleed marginBlock="..." /> prop`,
+      code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginBlock`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Bleed marginBlockStart="..." /> prop`,
+      code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginBlockStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Bleed marginBlockEnd="..." /> prop`,
+      code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginBlockEnd`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Bleed marginInlineStart="..." /> prop`,
+      code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginInlineStart`,
+    }}
+  />
+  <Code
+    code={{
+      title: `Check RegExp for outdated <Bleed marginInlineEnd="..." /> prop`,
+      code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginInlineEnd`,
+    }}
+  />
+</CollapsibleDetails>
 
-```
-(?:--p-space-05|--p-space-1|--p-space-1_5-experimental|--p-space-2|--p-space-3|--p-space-4|--p-space-5|--p-space-6|--p-space-8|--p-space-10|--p-space-12|--p-space-16 |--p-space-20 |--p-space-24|--p-space-28 |--p-space-32)(?![\w-])
-```
-
-```
-<Tooltip[^>\w](?:[^>]|\n)*?padding
-```
-
-**⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalGrid` if you have then use `InlineGrid`.
-
-```
-<HorizontalGrid[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<InlineGrid[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?padding
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?paddingBlockStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?paddingBlockEnd
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?paddingInlineStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?paddingInlineEnd
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?insetBlockStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?insetBlockEnd
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?insetInlineStart
-```
-
-```
-<Box[^>\w](?:[^>]|\n)*?insetInlineEnd
-```
-
-**⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `VerticalStack` if you have then use `BlockStack`.
-
-```
-<VerticalStack[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<BlockStack[^>\w](?:[^>]|\n)*?gap
-```
-
-**⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalStack` if you have then use `InlineStack`.
-
-```
-<HorizontalStack[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<InlineStack[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleed
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleedBlockStart
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleedBlockEnd
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleedInlineStart
-```
-
-```
-<Choice[^>\w](?:[^>]|\n)*?bleedInlineEnd
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleed
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockStart
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockEnd
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineStart
-```
-
-```
-<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineEnd
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleed
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockStart
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineStart
-```
-
-```
-<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineEnd
-```
-
-```
-<Stack[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<Grid[^>\w](?:[^>]|\n)*?gap
-```
-
-```
-<Grid[^>\w](?:[^>]|\n)*?gapX
-```
-
-```
-<Grid[^>\w](?:[^>]|\n)*?gapY
-```
-
-```
-<Card[^>\w](?:[^>]|\n)*?padding
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginInline
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginBlock
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginBlockStart
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginBlockEnd
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginInlineStart
-```
-
-```
-<Bleed[^>\w](?:[^>]|\n)*?marginInlineEnd
-```
-
-#### Replacement maps
+<CollapsibleDetails summary="➡️ Token replacement mappings">
 
 | Deprecated Token             | Replacement Value |
 | ---------------------------- | ----------------- |
@@ -1027,38 +2503,90 @@ After migrating use the following RegExp to check for any additional instances o
 | `--p-space-28`               | `--p-space-2800`  |
 | `--p-space-32`               | `--p-space-3200`  |
 
-### Recommended token migration workflow
+</CollapsibleDetails>
 
-When running token migrations we suggest the following workflow:
+## Manual updates and fixes
 
-- Handle automated migrations
-  ```sh
-  # Example migration
-  npx @shopify/polaris-migrator ...
-  # Stage all migrated files
-  git add .
-  # Format staged files only
-  git diff --staged --name-only | xargs npx prettier --write
-  # Commit automated migrations
-  git commit -m "Migrate X custom properties from Polaris v11 to v12"
-  ```
-- Handle manual migrations
-  - Search for token RegExps and handle manual migrations
-    <br />
+### A new web font
 
-```sh
-# Stage all manually migrated files
-git add .
-# Format staged files only
-git diff --staged --name-only | xargs npx prettier --write
-# Commit manual migrations
-git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
+The new design language comes with a web font called [Inter via Google Fonts](https://fonts.google.com/specimen/Inter).
+Polaris references this font but does not load it. Your app will need to load the font, otherwise it will fallback to the user's system font.
+
+{/* prettier-ignore */}
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com/" />
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@450;550;650;700&display=swap" />
 ```
 
-- Optionally if you use `stylelint-polaris`, you can check for errors after all custom property migrations are finished
-  ```sh
-  npx stylelint <path>
+### Icons
+
+Major and minor icon sizes are now identical.
+You may need to update custom icons in your app as they may look much larger than Polaris icons now.
+All icons still maintain the 20x20 viewbox.
+
+### Dividers
+
+We removed dividers across Polaris components, most noticeably in [`Page`](/components/layout-and-structure/page) and [`LegacyCard`](/components/deprecated/legacy-card).
+We now recommend using spacing to create a visual hierarchy.
+If you must use a divider, use the [`Divider`](/components/layout-and-structure/divider) component to add them back in where needed.
+
+### Buttons beside inputs
+
+Default buttons have decreased in height and no longer match the height of some inputs, namely [`TextField`](/components/selection-and-input/text-field) and [`Select`](/components/selection-and-input/select).
+To update a button's height to match the new height of input fields, use the large size by using the `large` size variant of [`Button`](/components/actions/button).
+
+```diff
+- <TextField connectedRight={<Button icon={DeleteMajor} />} />
++ <TextField connectedRight={<Button icon={DeleteMajor} size="large" />} />
+```
+
+### LegacyCard
+
+#### Heading size
+
+The [`LegacyCard`](/components/deprecated/legacy-card) now enforces that `h1` and `h2` content uses the `Text` `headingSm` variant (`--p-font-size-325`).
+If you want to use custom heading sizes, please refactor [`LegacyCard`](/components/deprecated/legacy-card) to [`Card`](/components/layout-and-structure/card).
+
+#### Spacing and visual hierarchy
+
+The [`LegacyCard`](/components/deprecated/legacy-card) now has much tighter spacing and does not have dividers between sections and subsections.
+This may result in some visual hierarchy/padding issues depending on how your cards are composed.
+You can resolve this in a number of ways:
+
+- _recommended_ – Use [`Card`](/components/layout-and-structure/card) and [`BlockStack`](/components/layout-and-structure/block-stack) to compose a new card layout
+- Remove any custom content spacing wrappers and use `<LegacyCard.Section />`, `<LegacyCard.Header />`, or `<LegacyCard.Section flush />` instead.
+  Issues involving a lack of top or bottom padding on the card is likely caused by this.
+- Update all custom content padding using `--p-space-500` to use `--p-space-400`.
+  This includes content wrapped in a [`LegacyStack`](/components/deprecated/legacy-stack) component.
+  ```diff
+  - spacing='loose'
+  + spacing={undefined}
   ```
+  or for [`InlineStack`](/components/layout-and-structure/inline-stack)
+  ```diff
+  - gap='5'
+  + gap='4'
+  ```
+- Add back dividers using [`Divider`](/components/layout-and-structure/divider) where needed
+- As a last resort, you can add space with [`Box`](/components/layout-and-structure/box) or remove space with [`Bleed`](/components/layout-and-structure/bleed).
+
+### Z-Index
+
+The new design language introduces a shadow bevel in numerous components.
+The following component's children cannot be above the bevel's `z-index` elevation:
+
+| Component      | Bevel z-index<br/>_(children cannot be above this)_ |
+| -------------- | --------------------------------------------------- |
+| Card           | 32                                                  |
+| LegacyCard     | 101                                                 |
+| Popover        | 2                                                   |
+| TooltipOverlay | 1                                                   |
+
+### Custom elements
+
+Custom elements that were styled to look like the previous Polaris design language will need to be updated.
+Take the opportunity to put custom styles and components on mainline Polaris using our [components](/components) and [tokens](/tokens/color).
 
 ### `@shopify/polaris-tokens` updates
 
@@ -1111,87 +2639,3 @@ If you are using these exports, update the implementation to import `themes` and
 + const {themes} = require('@shopify/polaris-tokens');
 + const color = JSON.stringify(themes.light.color);
 ```
-
-## Manual updates and fixes
-
-### A new web font
-
-The new design language comes with a web font called [Inter via Google Fonts](https://fonts.google.com/specimen/Inter).
-Polaris references this font but doesn't load it. Apps will need to load the font, otherwise it will fallback to to the user's system font.
-
-{/* prettier-ignore */}
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com/" />
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@450;550;650;700&display=swap" />
-```
-
-### Icons
-
-Major and minor icon sizes are now identical.
-You may need to update custom icons in your app as they may look much larger than Polaris icons now.
-All icons still maintain the 20x20 viewbox.
-
-### Dividers
-
-We removed dividers across Polaris components, most noticeably in [`Page`](/components/layout-and-structure/page) and [`LegacyCard`](/components/deprecated/legacy-card).
-We now recommend using spacing to create a visual hierarchy.
-If you must use a divider, use the [`Divider`](/components/layout-and-structure/divider) component to add them back in where needed.
-
-### Buttons beside inputs
-
-Default buttons have decreased in height and no longer match the height of some inputs, namely [`TextField`](/components/selection-and-input/text-field) and [`Select`](/components/selection-and-input/select).
-To get a buttons matching the height of input fields, use the large size by using the `large` size variant of [`Button`](/components/actions/button).
-
-```diff
-- <TextField connectedRight={<Button icon={DeleteMajor} />} />
-+ <TextField connectedRight={<Button icon={DeleteMajor} size="large" />} />
-```
-
-### LegacyCard
-
-#### Heading size
-
-The [`LegacyCard`](/components/deprecated/legacy-card) now also enforces that `h1` and `h2` content is `headingSm` (`--p-font-size-80-experimental`).
-If you want to use custom heading sizes, please refactor [`LegacyCard`](/components/deprecated/legacy-card) to [`Card`](/components/layout-and-structure/card).
-
-#### Spacing and visual hierarchy
-
-The [`LegacyCard`](/components/deprecated/legacy-card) now has much tighter spacing and does not have dividers between sections and subsections.
-This may result in some visual hierarchy/padding issues depending on how your cards are composed.
-You can resolve this in a number of ways:
-
-- _recommended_ – Use [`Card`](/components/layout-and-structure/card) and [`BlockStack`](/components/layout-and-structure/block-stack) to compose a new card layout
-- Remove any custom content spacing wrappers and use `<LegacyCard.Section />`, `<LegacyCard.Header />`, or `<LegacyCard.Section flush />` instead.
-  Issues involving a lack of top or bottom padding on the card is likely caused by this.
-- Update all custom content padding using `--p-space-500` to use `--p-space-400`.
-  This includes content wrapped in a [`LegacyStack`](/components/deprecated/legacy-stack)
-  ```diff
-  - spacing='loose'
-  + spacing={undefined}
-  ```
-  or for [`InlineStack`](/components/layout-and-structure/inline-stack)
-  ```diff
-  - gap='5'
-  + gap='4'
-  ```
-- Add back dividers using [`Divider`](/components/layout-and-structure/divider) where needed
-- As a last resort, you can add space with [`Box`](/components/layout-and-structure/box) or remove space with [`Bleed`](/components/layout-and-structure/bleed).
-
-### Z-Index
-
-The new design language introduces a shadow bevel in numerous components.
-The following component's children cannot be above the bevel's `z-index` elevation:
-
-| Component      | Bevel z-index<br/>_(children cannot be above this)_ |
-| -------------- | --------------------------------------------------- |
-| Card           | 32                                                  |
-| LegacyCard     | 101                                                 |
-| Popover        | 2                                                   |
-| TooltipOverlay | 1                                                   |
-
-### Custom elements
-
-Custom elements that were styled to look like the previous Polaris design language will need to be updated.
-Take the opportunity to put custom styles and components on mainline Polaris using our [components](/components) and [tokens](/tokens/color).
-See a list of new tokens and the mapping our current tokens to our new once below.
