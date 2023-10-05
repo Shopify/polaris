@@ -1,6 +1,6 @@
 ---
 title: Migrating from v11 to v12
-description: Polaris v12.0.0 prop replacement, removal of components, renamed components, and token changes.
+description: Upgrading to Polaris v12 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed.
 navTitle: v12
 icon: ColorsMajor
 order: 1
@@ -12,13 +12,53 @@ order: 1
 
 [Full release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
 
+### Migration workflow
+
+The bulk of migrations are automated using the `@shopify/polaris-migrator` CLI tool. The edge cases are handled with find and replace in your code editor using provided RegExps. For each breaking change detailed below, migration scripts are scaffolded for you to paste into your terminal. Be sure to update the wildcard path in the commands to tailor to your app's needs if you need to isolate migrations to certain directories, e.g., `{app,packages}/**/*.{css,scss}`.
+
+Several components with props that accept token aliases as values, like `gap`, have been renamed. The RegExps provided account for both migrated and unmigrated component names, but the component migrations should be run before the token migrations ideally. When running each of the token migrations, we suggest the following workflow:
+
+#### Handle automated migrations
+
+```bash
+# Example migration
+npx @shopify/polaris-migrator ...
+# Stage all migrated files
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+# Commit automated migrations
+git commit -m "Migrate X custom properties from Polaris v11 to v12"
+```
+
+#### Handle manual migrations
+
+Search for codebase using the RegExps provided and handle manual migrations using the token map tables.
+
+```bash
+# Stage all manually migrated files
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+# Commit manual migrations
+git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
+```
+
+If you use `@shopify/stylelint-polaris`, you can choose to format and or lint for errors after all token migrations have been completed.
+
+```bash
+npx stylelint "/**/*.{scss,css}"
+```
+
 ## Component migrations
 
 ### Avatar
 
-`npx @shopify/polaris-migrator v12-react-avatar-component <path>`
+The `Avatar` `size` prop values have been aligned with the breakpoint shorthand abbreviations. Replace the `size` prop with the new mapping using the `v12-react-avatar-component` migration:
 
-- Replace the `size` prop with the new mapping below
+```bash
+npx @shopify/polaris-migrator v12-react-avatar-component "/**/*.{jsx,tsx}"
+```
 
 | Before                    | After       |
 | ------------------------- | ----------- |
@@ -31,93 +71,133 @@ order: 1
 
 ### Badge
 
-- Replace `status` with `tone`
+The `Badge` `status` and `statusAndProgressLabelOverride` props were replaced with the `tone` and `toneAndProgressLabelOverride` props. Replace the `status` and `statusAndProgressLabelOverride` props using the generic `react-rename-component-prop` migration:
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="status" --to="tone"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Badge" --from="status" --to="tone"
+```
 
-- Replace `statusAndProgressLabelOverride` with `toneAndProgressLabelOverride`
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`
+```bash
+@shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"
+```
 
 ### IndexTable.Row
 
-- Replace `status` with `tone`
+The `IndexTable.Row` `status` and `subdued` props were replaced with the `tone` and `toneAndProgressLabelOverride` props. Replace the `status` and `subdued` props using the generic `react-rename-component-prop` migration:
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="status" --to="tone"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="IndexTable.Row" --from="status" --to="tone"
+```
 
-- Replace `subdued` with `tone`
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"
+```
 
 ### Layout.Section
 
-- One third:
+The `Layout.Section` `secondary` prop was removed. The `oneThird`, `oneHalf`, and `fullWidth` props were combined into the `variant` prop. Replace the `oneThird`, `oneHalf`, and `fullWidth` and migeate `secondary` to `oneThird` using the generic `react-rename-component-prop` migration:
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"
+```
 
-- One half:
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"
+```
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Layout.Section" --from="fullWidth" --to="variant" --toValue="fullWidth"
+```
 
-- Full width:
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="fullWidth" --to="variant" --toValue="fullWidth"`
-
-- Secondary, becomes oneThird:
-
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"
+```
 
 ### TextField
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"`
+The `TextField` `borderless` prop was replaced with the `variant` prop. Replace the `borderless` prop using the generic `react-rename-component-prop` migration:
+
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"
+```
 
 ### Box
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"`
+The `Box` border radius prop names were updated to align with their coresponding CSS property. Replace the `borderRadiusEndStart`, `borderRadiusEndEnd`, `borderRadiusStartStart`, and `borderRadiusStartEnd` props using the generic `react-rename-component-prop` migration:
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"
+```
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"
+```
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"
+```
+
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"
+```
 
 ### HorizontalStack
 
-`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"`
+The `HorizontalStack` component was renamed back to `InlineStack` to align with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). Rename `HorizontalStack` using the generic `react-rename-component` migration:
+
+```bash
+npx @shopify/polaris-migrator react-rename-component "/**/*.{jsx,tsx}" --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"
+```
 
 ### VerticalStack
 
-`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"`
+The `VerticalStack` component was renamed to `BlockStack` to align with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). Rename `VerticalStack` using the generic `react-rename-component` migration:
+
+```bash
+npx @shopify/polaris-migrator react-rename-component "/**/*.{jsx,tsx}" --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"
+```
 
 ### HorizontalGrid
 
-`npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"`
+The `HorizontalGrid` component was renamed back to `InlineGrid` to align with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). Rename `HorizontalGrid` using the generic `react-rename-component` migration:
+
+```bash
+npx @shopify/polaris-migrator react-rename-component "/**/*.{jsx,tsx}" --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"
+```
 
 ### Button
 
-- connectedDisclosure: [See the updated split example](/components/actions/button)
+The `connectedDisclosure` prop was removed because `ButtomGroup` now supports non-`Button` children. Use the `segented` `variant` `ButtonGroup` to compose the main `Button` and with the `Popover` disclosure `Button` instead. For code reference, see the updated [split example](/components/actions/button) in the `Button` documentation.
 
-- Boolean props to `variant` and `tone`
+Boolean `Button` props were removed or replaced with the `variant` and `tone` props. Use the `v12-react-update-button-component` migration to remove `monochrome` and `outline` and replace `plain`, `primary`, `primarySuccess`, and `destructive` props:
 
-`npx @shopify/polaris-migrator v12-react-update-button-component <path>`
+```bash
+npx @shopify/polaris-migrator v12-react-update-button-component "/**/*.{jsx,tsx}"
+```
 
 ### ButtonGroup
 
-- Spacing
+Spacing
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="spacing" --to="gap"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="ButtonGroup" --from="spacing" --to="gap"
+```
 
-- Segmented
+Segmented
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"
+```
 
 ### Banner
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Banner" --from="status" --to="tone"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Banner" --from="status" --to="tone"
+```
 
 ### Icon
 
-- Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
+Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
 
 ```tsx
 <Box background={boxBackground} padding="1" width="28px" borderRadius="full">
@@ -125,37 +205,57 @@ order: 1
 </Box>
 ```
 
-- Color
+Color
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="color" --to="tone"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Icon" --from="color" --to="tone"
+```
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"
+```
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="highlight" --toValue="info"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Icon" --from="tone" --to="tone" --fromValue="highlight" --toValue="info"
+```
 
 ### Text
 
-- Color
+Color
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="color" --to="tone"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Text" --from="color" --to="tone"
+```
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Text" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"
+```
 
 ### Modal
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="small" --to="size" --toValue="small"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Modal" --from="small" --to="size" --toValue="small"
+```
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="large" --to="size" --toValue="large"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Modal" --from="large" --to="size" --toValue="large"
+```
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"
+```
 
 ### List
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="List" --from="spacing" --to="gap"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="List" --from="spacing" --to="gap"
+```
 
 ### DescriptionList
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="DescriptionList" --from="spacing" --to="gap"`
+```bash
+npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="DescriptionList" --from="spacing" --to="gap"
+```
 
 ### AppProvider
 
@@ -185,71 +285,71 @@ To replace these deprecated `border` custom properties, you can run the [v12-sty
 + border-width: var(--p-border-width-025);
 ```
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>
+```bash
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-border "/**/*.{jsx,tsx}"
 ```
 
 #### Post-migration validation
 
 After migrating use the following RegExp to check for any additional instances of `border` custom properties across all file types:
 
-```
+```regex
 (?:--p-border-radius-0-experimental|--p-border-radius-05|--p-border-radius-1|--p-border-radius-1_5-experimental|--p-border-radius-2|--p-border-radius-3|--p-border-radius-4|--p-border-radius-5|--p-border-radius-6|--p-border-width-1|--p-border-width-1-experimental|--p-border-width-2|--p-border-width-2-experimental|--p-border-width-3|--p-border-width-4|--p-border-width-5)(?![\w-])
 ```
 
-```
+```regex
 <Tooltip[^>\w](?:[^>]|\n)*?borderRadius
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderRadius
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderRadiusEndStart
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderRadiusEndEnd
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderRadiusStartStart
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderRadiusStartEnd
 ```
 
-```
+```regex
 <ShadowBevel[^>\w](?:[^>]|\n)*?borderRadius
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderWidth
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderBlockStartWidth
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderBlockEndWidth
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderInlineStartWidth
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderInlineEndWidth
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?outlineWidth
 ```
 
-```
+```regex
 <Divider[^>\w](?:[^>]|\n)*?borderWidth
 ```
 
@@ -289,43 +389,43 @@ To replace these deprecated `color` custom properties, you can run the [v12-styl
 
 #### Step 1
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=1
+```bash
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "/**/*.{jsx,tsx}" --step=1
 ```
 
 After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
 
-```
+```regex
 (?:--p-color-avatar-background-experimental|--p-color-avatar-color-experimental|--p-color-avatar-style-five-background-experimental|--p-color-avatar-style-five-color-experimental|--p-color-avatar-style-four-background-experimental|--p-color-avatar-style-four-color-experimental|--p-color-avatar-style-one-background-experimental|--p-color-avatar-style-one-color-experimental|--p-color-avatar-style-three-background-experimental|--p-color-avatar-style-three-color-experimental|--p-color-avatar-style-two-background-experimental|--p-color-avatar-style-two-color-experimental|--p-color-bg|--p-color-bg-active|--p-color-bg-app-active|--p-color-bg-app-hover|--p-color-bg-app-selected|--p-color-bg-backdrop-experimental|--p-color-bg-caution|--p-color-bg-caution-strong|--p-color-bg-caution-subdued|--p-color-bg-caution-subdued-active|--p-color-bg-caution-subdued-hover|--p-color-bg-critical|--p-color-bg-critical-strong|--p-color-bg-critical-strong-active|--p-color-bg-critical-strong-hover|--p-color-bg-critical-subdued|--p-color-bg-critical-subdued-active|--p-color-bg-critical-subdued-hover|--p-color-bg-disabled|--p-color-bg-hover|--p-color-bg-info|--p-color-bg-info-strong|--p-color-bg-info-subdued|--p-color-bg-info-subdued-active|--p-color-bg-info-subdued-hover|--p-color-bg-input|--p-color-bg-input-active-experimental|--p-color-bg-input-hover-experimental|--p-color-bg-inset|--p-color-bg-inset-strong|--p-color-bg-interactive|--p-color-bg-interactive-selected|--p-color-bg-interactive-subdued-active|--p-color-bg-interactive-subdued-hover|--p-color-bg-inverse-active|--p-color-bg-inverse-hover|--p-color-bg-magic|--p-color-bg-magic-active|--p-color-bg-magic-hover|--p-color-bg-magic-strong|--p-color-bg-magic-subdued|--p-color-bg-magic-subdued-hover|--p-color-bg-primary|--p-color-bg-primary-active|--p-color-bg-primary-disabled-experimental|--p-color-bg-primary-hover|--p-color-bg-primary-subdued|--p-color-bg-primary-subdued-active|--p-color-bg-primary-subdued-hover|--p-color-bg-primary-subdued-selected|--p-color-bg-secondary-experimental|--p-color-bg-strong|--p-color-bg-strong-active|--p-color-bg-strong-hover|--p-color-bg-subdued|--p-color-bg-subdued-active|--p-color-bg-subdued-hover|--p-color-bg-success|--p-color-bg-success-strong|--p-color-bg-success-strong-active-experimental|--p-color-bg-success-strong-hover-experimental|--p-color-bg-success-subdued|--p-color-bg-success-subdued-active|--p-color-bg-success-subdued-hover|--p-color-bg-transparent-active-experimental|--p-color-bg-transparent-disabled-experimental|--p-color-bg-transparent-experimental|--p-color-bg-transparent-hover-experimental|--p-color-bg-transparent-primary-disabled-experimental|--p-color-bg-transparent-subdued-experimental|--p-color-bg-warning|--p-color-bg-warning-strong-experimental|--p-color-bg-warning-subdued-experimental|--p-color-border-critical-strong-experimental|--p-color-border-input|--p-color-border-input-active-experimental|--p-color-border-input-hover|--p-color-border-interactive|--p-color-border-interactive-active|--p-color-border-interactive-disabled|--p-color-border-caution-subdued|--p-color-border-critical-active|--p-color-border-critical-hover|--p-color-border-critical-subdued|--p-color-border-info-subdued|--p-color-border-interactive-focus|--p-color-border-interactive-hover|--p-color-border-magic-strong|--p-color-border-primary|--p-color-border-strong|--p-color-border-subdued|--p-color-border-success-subdued|--p-color-icon-interactive|--p-color-icon-interactive-active|--p-color-icon-interactive-hover|--p-color-icon-info-strong-experimental|--p-color-icon-interactive-disabled|--p-color-icon-primary|--p-color-icon-subdued|--p-color-icon-critical-strong-experimental|--p-color-icon-critical-strong-active-experimental|--p-color-icon-critical-strong-hover-experimental|--p-color-icon-success-strong-experimental|--p-color-icon-warning-strong-experimental|--p-color-text-critical-hover-experimental|--p-color-text-info-strong|--p-color-text-interactive|--p-color-text-interactive-active|--p-color-text-interactive-disabled|--p-color-text-interactive-hover|--p-color-text-interactive-inverse|--p-color-text-inverse-subdued|--p-color-text-primary|--p-color-text-primary-hover|--p-color-text-caution-strong|--p-color-text-critical-strong|--p-color-text-magic-strong|--p-color-text-success-strong|--p-color-text-subdued|--p-color-text-warning-experimental)(?![\w-])
 ```
 
 Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?background
 ```
 
-```
+```regex
 <Card[^>\w](?:[^>]|\n)*?background
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderColor
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?outlineColor
 ```
 
-```
+```regex
 <Divider[^>\w](?:[^>]|\n)*?borderColor
 ```
 
-```
+```regex
 <Banner[^>\w](?:[^>]|\n)*?textColor
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?color
 ```
 
@@ -468,43 +568,43 @@ Replacement maps for Step 1:
 
 #### Step 2
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path> --step=2
+```bash
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "/**/*.{jsx,tsx}" --step=2
 ```
 
 After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
 
-```
+```regex
 (?:--p-color-bg-app)(?![\w-])
 ```
 
 Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?background
 ```
 
-```
+```regex
 <Card[^>\w](?:[^>]|\n)*?background
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderColor
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?outlineColor
 ```
 
-```
+```regex
 <Divider[^>\w](?:[^>]|\n)*?borderColor
 ```
 
-```
+```regex
 <Banner[^>\w](?:[^>]|\n)*?textColor
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?color
 ```
 
@@ -525,37 +625,37 @@ Manually migrate the following tokens to their hardcoded values:
 
 After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
 
-```
+```regex
 (?:--p-color-bg-transparent-primary-experimental|--p-color-bg-transparent-secondary-disabled-experimental)(?![\w-])
 ```
 
 Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?background
 ```
 
-```
+```regex
 <Card[^>\w](?:[^>]|\n)*?background
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderColor
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?outlineColor
 ```
 
-```
+```regex
 <Divider[^>\w](?:[^>]|\n)*?borderColor
 ```
 
-```
+```regex
 <Banner[^>\w](?:[^>]|\n)*?textColor
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?color
 ```
 
@@ -584,37 +684,37 @@ Otherwise, the table below shows which `on-bg-fill` colors to use against their 
 
 After migrating use the following RegExp to check for any additional instances of `color` custom properties across all file types:
 
-```
+```regex
 (?:--p-color-icon-on-color|--p-color-text-on-color)(?![\w-])
 ```
 
 Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?background
 ```
 
-```
+```regex
 <Card[^>\w](?:[^>]|\n)*?background
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?borderColor
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?outlineColor
 ```
 
-```
+```regex
 <Divider[^>\w](?:[^>]|\n)*?borderColor
 ```
 
-```
+```regex
 <Banner[^>\w](?:[^>]|\n)*?textColor
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?color
 ```
 
@@ -638,13 +738,13 @@ To replace these deprecated `font` custom properties, you can run the [v12-style
 
 #### Step 1
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=1
+```bash
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**/*.{jsx,tsx}" --step=1
 ```
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
-```
+```regex
 (?:--p-font-size-70-experimental|--p-font-size-80-experimental|--p-font-size-100|--p-font-size-700|--p-font-line-height-075-experimental|--p-font-line-height-1|--p-font-line-height-2|--p-font-line-height-3|--p-font-line-height-4|--p-font-line-height-5|--p-font-line-height-6|--p-font-line-height-7)(?![\w-])
 ```
 
@@ -667,13 +767,13 @@ Replacement maps for Step 1:
 
 #### Step 2
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=2
+```bash
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**/*.{jsx,tsx}" --step=2
 ```
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
-```
+```regex
 (?:--p-font-size-500|--p-font-size-600)(?![\w-])
 ```
 
@@ -686,13 +786,13 @@ Replacement maps for Step 2:
 
 #### Step 3
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=3
+```bash
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**/*.{jsx,tsx}" --step=3
 ```
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
-```
+```regex
 (?:--p-font-size-300|--p-font-size-400)(?![\w-])
 ```
 
@@ -705,13 +805,13 @@ Replacement maps for Step 3:
 
 #### Step 4
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path> --step=4
+```bash
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "/**/*.{jsx,tsx}" --step=4
 ```
 
 After migrating use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
-```
+```regex
 (?:--p-font-size-75|--p-font-size-200)(?![\w-])
 ```
 
@@ -737,23 +837,23 @@ To replace these deprecated `shadow` custom properties, you can run the [v12-sty
 
 #### Step 1
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
+```bash
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow "/**/*.{jsx,tsx}"
 ```
 
 After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
 
-```
+```regex
 (?:--p-shadow-inset-lg|--p-shadow-inset-md|--p-shadow-inset-sm|--p-shadow-none|--p-shadow-xs|--p-shadow-sm|--p-shadow-md|--p-shadow-lg|--p-shadow-xl|--p-shadow-2xl|--p-shadow-bevel-experimental|--p-shadow-card-sm-experimental|--p-shadow-card-md-experimental|--p-shadow-card-lg-experimental|--p-shadow-button-experimental|--p-shadow-button-hover-experimental|--p-shadow-button-disabled-experimental|--p-shadow-button-primary-strong-experimental|--p-shadow-button-primary-strong-inset-experimental|--p-shadow-button-primary-strong-hover-experimental|--p-shadow-border-inset-experimental)(?![\w-])
 ```
 
 Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see below):
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?shadow
 ```
 
-```
+```regex
 <ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
 ```
 
@@ -795,17 +895,17 @@ The following tokens need to be manually migrated because their values are conte
 
 After migrating use the following RegExp to check for any additional instances of `shadow` custom properties across all file types:
 
-```
+```regex
 (?:--p-shadow-button-primary-experimental|--p-shadow-button-primary-hover-experimental|--p-shadow-button-inset-experimental)(?![\w-])
 ```
 
 Only replace instances flagged by the RegExp below if they are values listed in the replacement map for this step (see above):
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?shadow
 ```
 
-```
+```regex
 <ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow
 ```
 
@@ -820,189 +920,189 @@ To replace these deprecated `space` custom properties, you can run the [v12-styl
 + padding: var(--p-space-100);
 ```
 
-```sh
-npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
+```bash
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-space "/**/*.{jsx,tsx}"
 ```
 
 #### Post-migration validation
 
 After migrating use the following RegExp to check for any additional instances of `space` custom properties across all file types:
 
-```
+```regex
 (?:--p-space-05|--p-space-1|--p-space-1_5-experimental|--p-space-2|--p-space-3|--p-space-4|--p-space-5|--p-space-6|--p-space-8|--p-space-10|--p-space-12|--p-space-16 |--p-space-20 |--p-space-24|--p-space-28 |--p-space-32)(?![\w-])
 ```
 
-```
+```regex
 <Tooltip[^>\w](?:[^>]|\n)*?padding
 ```
 
 **⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalGrid` if you have then use `InlineGrid`.
 
-```
+```regex
 <HorizontalGrid[^>\w](?:[^>]|\n)*?gap
 ```
 
-```
+```regex
 <InlineGrid[^>\w](?:[^>]|\n)*?gap
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?padding
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?paddingBlockStart
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?paddingBlockEnd
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?paddingInlineStart
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?paddingInlineEnd
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?insetBlockStart
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?insetBlockEnd
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?insetInlineStart
 ```
 
-```
+```regex
 <Box[^>\w](?:[^>]|\n)*?insetInlineEnd
 ```
 
 **⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `VerticalStack` if you have then use `BlockStack`.
 
-```
+```regex
 <VerticalStack[^>\w](?:[^>]|\n)*?gap
 ```
 
-```
+```regex
 <BlockStack[^>\w](?:[^>]|\n)*?gap
 ```
 
 **⚠️ Important**: The RegExp you use here will depend on if you've run component migrations. If you have not then use `HorizontalStack` if you have then use `InlineStack`.
 
-```
+```regex
 <HorizontalStack[^>\w](?:[^>]|\n)*?gap
 ```
 
-```
+```regex
 <InlineStack[^>\w](?:[^>]|\n)*?gap
 ```
 
-```
+```regex
 <Choice[^>\w](?:[^>]|\n)*?bleed
 ```
 
-```
+```regex
 <Choice[^>\w](?:[^>]|\n)*?bleedBlockStart
 ```
 
-```
+```regex
 <Choice[^>\w](?:[^>]|\n)*?bleedBlockEnd
 ```
 
-```
+```regex
 <Choice[^>\w](?:[^>]|\n)*?bleedInlineStart
 ```
 
-```
+```regex
 <Choice[^>\w](?:[^>]|\n)*?bleedInlineEnd
 ```
 
-```
+```regex
 <RadioButton[^>\w](?:[^>]|\n)*?bleed
 ```
 
-```
+```regex
 <RadioButton[^>\w](?:[^>]|\n)*?bleedBlockStart
 ```
 
-```
+```regex
 <RadioButton[^>\w](?:[^>]|\n)*?bleedBlockEnd
 ```
 
-```
+```regex
 <RadioButton[^>\w](?:[^>]|\n)*?bleedInlineStart
 ```
 
-```
+```regex
 <RadioButton[^>\w](?:[^>]|\n)*?bleedInlineEnd
 ```
 
-```
+```regex
 <Checkbox[^>\w](?:[^>]|\n)*?bleed
 ```
 
-```
+```regex
 <Checkbox[^>\w](?:[^>]|\n)*?bleedBlockStart
 ```
 
-```
+```regex
 <Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd
 ```
 
-```
+```regex
 <Checkbox[^>\w](?:[^>]|\n)*?bleedInlineStart
 ```
 
-```
+```regex
 <Checkbox[^>\w](?:[^>]|\n)*?bleedInlineEnd
 ```
 
-```
+```regex
 <Stack[^>\w](?:[^>]|\n)*?gap
 ```
 
-```
+```regex
 <Grid[^>\w](?:[^>]|\n)*?gap
 ```
 
-```
+```regex
 <Grid[^>\w](?:[^>]|\n)*?gapX
 ```
 
-```
+```regex
 <Grid[^>\w](?:[^>]|\n)*?gapY
 ```
 
-```
+```regex
 <Card[^>\w](?:[^>]|\n)*?padding
 ```
 
-```
+```regex
 <Bleed[^>\w](?:[^>]|\n)*?marginInline
 ```
 
-```
+```regex
 <Bleed[^>\w](?:[^>]|\n)*?marginBlock
 ```
 
-```
+```regex
 <Bleed[^>\w](?:[^>]|\n)*?marginBlockStart
 ```
 
-```
+```regex
 <Bleed[^>\w](?:[^>]|\n)*?marginBlockEnd
 ```
 
-```
+```regex
 <Bleed[^>\w](?:[^>]|\n)*?marginInlineStart
 ```
 
-```
+```regex
 <Bleed[^>\w](?:[^>]|\n)*?marginInlineEnd
 ```
 
@@ -1027,45 +1127,12 @@ After migrating use the following RegExp to check for any additional instances o
 | `--p-space-28`               | `--p-space-2800`  |
 | `--p-space-32`               | `--p-space-3200`  |
 
-### Recommended token migration workflow
-
-When running token migrations we suggest the following workflow:
-
-- Handle automated migrations
-  ```sh
-  # Example migration
-  npx @shopify/polaris-migrator ...
-  # Stage all migrated files
-  git add .
-  # Format staged files only
-  git diff --staged --name-only | xargs npx prettier --write
-  # Commit automated migrations
-  git commit -m "Migrate X custom properties from Polaris v11 to v12"
-  ```
-- Handle manual migrations
-  - Search for token RegExps and handle manual migrations
-    <br />
-
-```sh
-# Stage all manually migrated files
-git add .
-# Format staged files only
-git diff --staged --name-only | xargs npx prettier --write
-# Commit manual migrations
-git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
-```
-
-- Optionally if you use `stylelint-polaris`, you can check for errors after all custom property migrations are finished
-  ```sh
-  npx stylelint <path>
-  ```
-
 ### `@shopify/polaris-tokens` updates
 
 #### Renames
 
-- `getCustomPropertyNames` renamed to `getThemeVarNames`
-- `createVar` renamed to `createVarName`
+- `getCustomPropertyNames` was renamed to `getThemeVarNames`
+- `createVar` was renamed to `createVarName`
 
 #### Deprecations
 
