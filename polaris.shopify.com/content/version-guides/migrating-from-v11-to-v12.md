@@ -2564,7 +2564,7 @@ You can resolve this in a number of ways:
 - Remove any custom content spacing wrappers and use `<LegacyCard.Section />`, `<LegacyCard.Header />`, or `<LegacyCard.Section flush />` instead.
   Issues involving a lack of top or bottom padding on the card is likely caused by this.
 - Update all custom content padding using `--p-space-500` to use `--p-space-400`.
-  This includes content wrapped in a [`LegacyStack`](/components/deprecated/legacy-stack)
+  This includes content wrapped in a [`LegacyStack`](/components/deprecated/legacy-stack) component.
   ```diff
   - spacing='loose'
   + spacing={undefined}
