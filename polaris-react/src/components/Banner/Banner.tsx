@@ -23,7 +23,6 @@ import type {IconProps} from '../Icon';
 import {BannerContext} from '../../utilities/banner-context';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {classNames} from '../../utilities/css';
-import {useBreakpoints} from '../../utilities/breakpoints';
 import {useI18n} from '../../utilities/i18n';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {BlockStack} from '../BlockStack';
@@ -190,7 +189,6 @@ export function DefaultBanner({
   dismissButton,
   children,
 }: PropsWithChildren<BannerLayoutProps>) {
-  const {smUp} = useBreakpoints();
   const hasContent = children || actionButtons;
 
   return (
@@ -199,10 +197,10 @@ export function DefaultBanner({
         <Box
           background={backgroundColor}
           color={textColor}
-          borderStartStartRadius={smUp ? '300' : undefined}
-          borderStartEndRadius={smUp ? '300' : undefined}
-          borderEndStartRadius={!hasContent && smUp ? '300' : undefined}
-          borderEndEndRadius={!hasContent && smUp ? '300' : undefined}
+          borderStartStartRadius={{sm: '300'}}
+          borderStartEndRadius={{sm: '300'}}
+          borderEndStartRadius={!hasContent ? {sm: '300'} : undefined}
+          borderEndEndRadius={!hasContent ? {sm: '300'} : undefined}
           padding="300"
         >
           <InlineStack
