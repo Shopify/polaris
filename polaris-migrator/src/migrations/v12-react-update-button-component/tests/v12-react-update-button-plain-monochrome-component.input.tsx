@@ -12,6 +12,9 @@ export function App() {
       <Button monochrome plain>
         Edit
       </Button>
+      <Button monochrome plain primary>
+        Edit
+      </Button>
       <Button plain monochrome={isPolarisUplift}>
         Edit
       </Button>
