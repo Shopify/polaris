@@ -1,10 +1,4 @@
-import {
-  ActionList,
-  Button,
-  ButtonGroup,
-  Popover,
-  BlockStack,
-} from '@shopify/polaris';
+import {ActionList, Button, ButtonGroup, Popover} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 import {ChevronDownMinor} from '@shopify/polaris-icons';

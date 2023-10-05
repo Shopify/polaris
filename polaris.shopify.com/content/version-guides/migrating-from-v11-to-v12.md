@@ -1,6 +1,6 @@
 ---
 title: Migrating from v11 to v12
-description: Upgrading to Polaris v12 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed.
+description: Upgrading to Polaris v12.0.0 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed.
 navTitle: v12
 icon: ColorsMajor
 order: 1
@@ -12,13 +12,13 @@ order: 1
 
 [Full release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
 
-### Migration workflow
+## Migration workflow
 
 The bulk of migrations are automated using the `@shopify/polaris-migrator` CLI tool. The edge cases are handled with find and replace in your code editor using provided RegExps. For each breaking change detailed below, migration scripts are scaffolded for you to paste into your terminal. Be sure to update the wildcard path in the commands to tailor to your app's needs if you need to isolate migrations to certain directories, e.g., `{app,packages}/**/*.{css,scss}`.
 
 Several components with props that accept token aliases as values, like `gap`, have been renamed. The RegExps provided account for both migrated and unmigrated component names, but the component migrations should be run before the token migrations ideally. When running each of the token migrations, we suggest the following workflow:
 
-#### Handle automated migrations
+### Handle automated migrations
 
 ```bash
 # Example migration
@@ -31,7 +31,7 @@ git diff --staged --name-only | xargs npx prettier --write
 git commit -m "Migrate X custom properties from Polaris v11 to v12"
 ```
 
-#### Handle manual migrations
+### Handle manual migrations
 
 Search for codebase using the RegExps provided and handle manual migrations using the token map tables.
 
@@ -54,7 +54,7 @@ npx stylelint "/**/*.{scss,css}"
 
 ### Avatar
 
-The `Avatar` `size` prop values have been aligned with the breakpoint shorthand abbreviations. Replace the `size` prop with the new mapping using the `v12-react-avatar-component` migration:
+The `Avatar` `size` prop values have been aligned with the breakpoint shorthand abbreviations. Replace the `size` prop values with the new mapping using the `v12-react-avatar-component` migration:
 
 ```bash
 npx @shopify/polaris-migrator v12-react-avatar-component "/**/*.{jsx,tsx}"
@@ -83,7 +83,7 @@ npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --co
 
 ### IndexTable.Row
 
-The `IndexTable.Row` `status` and `subdued` props were replaced with the `tone` and `toneAndProgressLabelOverride` props. Replace the `status` and `subdued` props using the generic `react-rename-component-prop` migration:
+The `IndexTable.Row` `status` and `subdued` props were replaced with the `tone` prop. Replace the `status` and `subdued` props using the generic `react-rename-component-prop` migration:
 
 ```bash
 npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="IndexTable.Row" --from="status" --to="tone"
@@ -95,7 +95,7 @@ npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --co
 
 ### Layout.Section
 
-The `Layout.Section` `secondary` prop was removed. The `oneThird`, `oneHalf`, and `fullWidth` props were combined into the `variant` prop. Replace the `oneThird`, `oneHalf`, and `fullWidth` and migeate `secondary` to `oneThird` using the generic `react-rename-component-prop` migration:
+The `Layout.Section` `secondary` prop was removed and the `oneThird`, `oneHalf`, and `fullWidth` props were combined into the `variant` prop. Replace the `oneThird`, `oneHalf`, and `fullWidth` props and migrate the `secondary` prop to the `oneThird` `variant` using the generic `react-rename-component-prop` migration:
 
 ```bash
 npx @shopify/polaris-migrator react-rename-component-prop "/**/*.{jsx,tsx}" --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"
@@ -167,7 +167,7 @@ npx @shopify/polaris-migrator react-rename-component "/**/*.{jsx,tsx}" --renameF
 
 ### Button
 
-The `connectedDisclosure` prop was removed because `ButtomGroup` now supports non-`Button` children. Use the `segented` `variant` `ButtonGroup` to compose the main `Button` and with the `Popover` disclosure `Button` instead. For code reference, see the updated [split example](/components/actions/button) in the `Button` documentation.
+The `connectedDisclosure` prop was removed because `ButtomGroup` now supports non-`Button` children. Use the `segmented` `variant` `ButtonGroup` to compose the main `Button` with the `Popover` disclosure `Button` instead. For code reference, see the updated [split example](/components/actions/button) in the `Button` documentation.
 
 Boolean `Button` props were removed or replaced with the `variant` and `tone` props. Use the `v12-react-update-button-component` migration to remove `monochrome` and `outline` and replace `plain`, `primary`, `primarySuccess`, and `destructive` props:
 
