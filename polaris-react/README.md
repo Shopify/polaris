@@ -69,7 +69,7 @@ ReactDOM.render(
   crossorigin="anonymous"
 />
 <link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;600;650;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;450;500;550;600;650;700&display=swap"
 />
 ```
 
