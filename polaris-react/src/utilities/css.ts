@@ -11,6 +11,8 @@ export type ResponsivePropObject<T = string> = {
 };
 
 export type ResponsiveProp<T = string> = T | ResponsivePropObject<T>;
+export type UnwrapResponsiveProp<C extends ResponsiveProp<any>> =
+  C extends ResponsiveProp<infer T> ? T : unknown;
 
 export type PolarisCSSCustomPropertyName = `${`--p-` | `--pc-`}${string}`;
 export type PolarisCSSVar = `var(${PolarisCSSCustomPropertyName})`;
@@ -19,9 +21,11 @@ type ResponsiveCSSCustomProperties = {
   [Breakpoint in `${string}-${BreakpointsAlias}`]?: PolarisCSSVar;
 };
 
-type ResponsiveValues<T> = {
+export type ResponsiveValues<T> = {
   [Breakpoint in `${string}-${BreakpointsAlias}`]?: T;
 };
+export type UnwrapResponsiveValues<C extends ResponsiveValues<any>> =
+  C extends ResponsiveValues<infer T> ? T : unknown;
 
 export function classNames(...classes: (string | Falsy)[]) {
   return classes.filter(Boolean).join(' ');
@@ -170,17 +174,57 @@ export function getResponsiveValue<T extends string | number = string>(
   };
 }
 
-export function mapResponsivePropValues<Input, Output>(
-  responsiveProp: ResponsiveProp<Input> | undefined,
-  fn: (value?: Input) => Output | undefined,
-): ResponsiveProp<Output> | undefined {
+/*
+export function mapResponsivePropValues<Input, Output = Input>(
+  responsiveProp: Input | undefined,
+  fn: (
+    value?: Input extends ResponsiveValues<infer V>
+      ? V
+      : Input extends ResponsiveProp<infer P>
+      ? P
+      : unknown,
+  ) => Output | undefined,
+): Output extends ResponsiveValues<any>
+  ? ResponsiveValues<Output>
+  : Output extends ResponsiveProp<any>
+  ? ResponsiveProp<Output>
+  : unknown | undefined {
+  */
+
+export function mapResponsivePropValues<
+  Input extends ResponsiveValues<any>,
+  Output = unknown,
+>(
+  responsiveProp: Input,
+  fn: (value?: UnwrapResponsiveValues<Input>) => Output | undefined,
+): ResponsiveValues<Output> | undefined;
+export function mapResponsivePropValues<
+  Input extends ResponsiveProp<any>,
+  Output = unknown,
+>(
+  responsiveProp: Input,
+  fn: (value?: UnwrapResponsiveProp<Input>) => Output | undefined,
+): ResponsiveProp<Output> | undefined;
+export function mapResponsivePropValues<_, Output>(
+  responsiveProp: unknown,
+  fn: (value?: unknown) => Output | undefined,
+): unknown | undefined {
   if (isObject(responsiveProp)) {
     return Object.fromEntries(
       (Object.entries(responsiveProp) as Entries<typeof responsiveProp>).map(
         ([breakpointAlias, value]) => [breakpointAlias, fn(value)],
       ),
     );
+  } else {
+    /*
+    return fn(
+      responsiveProp as Input extends ResponsiveValues<infer V>
+        ? V
+        : Input extends ResponsiveProp<infer P>
+        ? P
+        : unknown,
+    );
+      */
+    return fn(responsiveProp);
   }
-
-  return fn(responsiveProp as Input);
 }

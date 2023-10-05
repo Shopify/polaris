@@ -314,7 +314,7 @@ describe('<Modal>', () => {
 
       expect(modal.find(Header)).toContainReactComponent('div', {
         style: expect.objectContaining({
-          position: 'absolute',
+          '--pc-box-position-xs': 'absolute',
         }) as React.CSSProperties,
       });
       expect(modal.find(Header)).not.toContainReactComponent(Text, {
