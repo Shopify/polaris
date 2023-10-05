@@ -439,7 +439,7 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
 
 #### Consolidate boolean props to `variant` and `tone`
 
-Button has also deprecated the `connectedDisclosure`, `outline`, `destructive`, `primarySuccess`, `removeUnderline`, and `monochrome` props
+Button has consolidated and deprecated the `connectedDisclosure`, `outline`, `destructive`, `primarySuccess`, `removeUnderline`, and `monochrome` props.
 
 <Code
   code={{
@@ -2072,7 +2072,7 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
 ### A new web font
 
 The new design language comes with a web font called [Inter via Google Fonts](https://fonts.google.com/specimen/Inter).
-Polaris references this font but doesn't load it. Apps will need to load the font, otherwise it will fallback to to the user's system font.
+Polaris references this font but doesn't load it. Apps will need to load the font, otherwise it will fallback to the user's system font.
 
 {/* prettier-ignore */}
 ```html
@@ -2096,7 +2096,7 @@ If you must use a divider, use the [`Divider`](/components/layout-and-structure/
 ### Buttons beside inputs
 
 Default buttons have decreased in height and no longer match the height of some inputs, namely [`TextField`](/components/selection-and-input/text-field) and [`Select`](/components/selection-and-input/select).
-To get a buttons matching the height of input fields, use the large size by using the `large` size variant of [`Button`](/components/actions/button).
+To update a button's height to match the new height of input fields, use the large size by using the `large` size variant of [`Button`](/components/actions/button).
 
 ```diff
 - <TextField connectedRight={<Button icon={DeleteMajor} />} />
@@ -2149,7 +2149,6 @@ The following component's children cannot be above the bevel's `z-index` elevati
 
 Custom elements that were styled to look like the previous Polaris design language will need to be updated.
 Take the opportunity to put custom styles and components on mainline Polaris using our [components](/components) and [tokens](/tokens/color).
-See a list of new tokens and the mapping our current tokens to our new once below.
 
 ### `@shopify/polaris-tokens` updates
 
