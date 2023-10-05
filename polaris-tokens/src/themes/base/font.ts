@@ -97,7 +97,7 @@ export const font: {
     value: '450',
   },
   'font-weight-medium': {
-    value: '550',
+    value: '500',
   },
   'font-weight-semibold': {
     value: '650',
