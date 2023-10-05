@@ -137,6 +137,8 @@ html {
 
   code,
   pre {
+    .token {
+    }
     .keyword {
       color: var(--code-keyword);
     }
@@ -177,6 +179,34 @@ html {
     }
     .prefix {
       font-weight: 900;
+    }
+    .language-regex {
+      .quantifier {
+        color: var(--code-quantifier);
+      }
+      .escape,
+      .special-escape {
+        color: var(--code-escape);
+      }
+      .charclass,
+      .charset-punctuation,
+      .punctuation {
+        color: var(--code-charset-punctuation);
+      }
+      .anchor {
+        color: var(--code-anchor);
+      }
+      .group {
+        color: var(--code-group);
+      }
+      .backreference,
+      .alternation {
+        color: var(--code-alternation);
+      }
+      .regex-delimiter,
+      .regex-flags {
+        color: var(--p-text);
+      }
     }
   }
 }
@@ -243,6 +273,12 @@ body,
   --code-deleted: var(--code-boolean);
   --code-inserted-highlight: #e5ffef;
   --code-deleted-highlight: #fff3f8;
+  --code-quantifier: #5588ff;
+  --code-escape: #cc00cc;
+  --code-charset-punctuation: #dd7700;
+  --code-anchor: #884400;
+  --code-group: #ccaa00;
+  --code-alternation: #00aa00;
 }
 
 .dark-mode {
@@ -282,6 +318,12 @@ body,
   --code-deleted: #ffb7d1;
   --code-inserted-highlight: var(--surface-information);
   --code-deleted-highlight: var(--surface-warning);
+  --code-quantifier: #5588ff;
+  --code-escape: #cc00cc;
+  --code-charset-punctuation: #dd7700;
+  --code-anchor: #884400;
+  --code-group: #ccaa00;
+  --code-alternation: #00aa00;
 }
 
 video {
