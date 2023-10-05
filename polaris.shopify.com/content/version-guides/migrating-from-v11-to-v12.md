@@ -477,28 +477,28 @@ This border radius property rename aligns with [CSS border radius constituent pr
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Box borderRadiusEndStart /> prop`,
+    title: `Check RegExp for outdated <Box borderRadiusEndStart="..." /> prop`,
     code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusEndStart`,
   }}
 />
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Box borderRadiusEndEnd /> prop`,
+    title: `Check RegExp for outdated <Box borderRadiusEndEnd="..." /> prop`,
     code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusEndEnd`,
   }}
 />
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Box borderRadiusStartStart /> prop`,
+    title: `Check RegExp for outdated <Box borderRadiusStartStart="..." /> prop`,
     code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusStartStart`,
   }}
 />
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Box borderRadiusStartEnd /> prop`,
+    title: `Check RegExp for outdated <Box borderRadiusStartEnd="..." /> prop`,
     code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusStartEnd`,
   }}
 />
@@ -735,7 +735,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 
 <CollapsibleDetails summary="💡 How to manually update `connectedDisclosure` example">
 
-Also [see the updated split example](/components/actions/button)
+The [updated split example](/components/actions/button) can also be referenced as an example for this manual migration.
 
 ```diff
 - <Button connectedDisclosure />
@@ -763,7 +763,7 @@ Also [see the updated split example](/components/actions/button)
 
 <Code
   code={{
-    title: `Check RegExp for outdated <ButtonGroup spacing /> prop`,
+    title: `Check RegExp for outdated <ButtonGroup spacing="..." /> prop`,
     code: String.raw`<ButtonGroup[^>\w](?:[^>]|\n)*?spacing`,
   }}
 />
@@ -825,7 +825,7 @@ Also [see the updated split example](/components/actions/button)
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Banner status /> prop`,
+    title: `Check RegExp for outdated <Banner status="..." /> prop`,
     code: String.raw`<Banner[^>\w](?:[^>]|\n)*?status`,
   }}
 />
@@ -1225,7 +1225,7 @@ or
 
 <Code
   code={{
-    title: `Check RegExp for outdated <List spacing /> prop`,
+    title: `Check RegExp for outdated <List spacing="..." /> prop`,
     code: String.raw`<List[^>\w](?:[^>]|\n)*?spacing`,
   }}
 />
@@ -1257,7 +1257,7 @@ or
 
 <Code
   code={{
-    title: `Check RegExp for outdated <DescriptionList spacing /> prop`,
+    title: `Check RegExp for outdated <DescriptionList spacing="..." /> prop`,
     code: String.raw`<DescriptionList[^>\w](?:[^>]|\n)*?spacing`,
   }}
 />
@@ -1275,7 +1275,7 @@ or
 
 ### AppProvider
 
-The `AppProvider`'s `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. You should be able to remove the `features` prop completely from your Polaris `AppProvider` since there aren't any feature flags in Polaris for v12.
+The `AppProvider` `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. If these were the only features passed into your `AppProvider`, you can safely remove the `features` prop completely from your Polaris `AppProvider`. If that is not the case, you will need to remove the features specifically related to `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut` from being passed into the `features` prop.
 
 <CollapsibleDetails summary="✅ Post-migration RegExp validation">
 
