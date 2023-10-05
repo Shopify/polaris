@@ -1,5 +1,5 @@
 ---
-title: Typography tokens
+title: Tokens
 description: Typography is the art of arranging type in ways that provides innate hierarchy to UI.
 showTOC: true
 keywords:
@@ -8,9 +8,10 @@ keywords:
   - fonts
 icon: Hexagon
 hideChildren: true
+order: 3
 ---
 
-# {frontmatter.title}
+# Typography &rarr; {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 
