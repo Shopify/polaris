@@ -32,7 +32,7 @@ description: The admin is high density by default, but the level of density can 
 
                 ## High density
 
-                Information-rich interfaces like index pages or data tables require high-density layouts for efficiency. By presenting information in a denser format, merchants can quickly access and compare data, enhancing the effectiveness of the Shopify admin.
+                Information-rich interfaces, like index pages or data tables, require high-density layouts for efficiency. By presenting information in a denser format, merchants can quickly access and compare data, enhancing the effectiveness of the Shopify admin.
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
                 <Do>
@@ -88,7 +88,7 @@ description: The admin is high density by default, but the level of density can 
 
                 ### Action components use high density
 
-                Smaller components, like option lists or popovers, are built with high density in mind. Because their main purpose is to offer a set of actions to the merchant, they need to feel small and efficient. Effectively designed action components give the feeling of a pro tool in the Shopify admin and increase efficiency when using different features.
+                Smaller components, like option lists or popovers, are built with high density in mind. Because their main purpose is to offer a set of actions to the merchant, they need to feel small and efficient. Effectively designed action components give the feeling of a pro-tool in the Shopify admin and increase efficiency when using different features.
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
                 <Do>
@@ -103,7 +103,7 @@ description: The admin is high density by default, but the level of density can 
                 <Dont>
                     ![A list of collections to choose from, with one section using images and the other using a list](/images/design/layout/layout-density-06-high-density-sudden-change-dont@2x.png)
 
-                    Suddenly change density in an action component, always offer the most condensed option possible instead.
+                    Suddenly change density in an action component. Always offer the most condensed option possible instead.
                 </Dont>
             </Grid.Cell>
         </Grid>
@@ -135,7 +135,7 @@ description: The admin is high density by default, but the level of density can 
                 <Dont>
                     ![A product variant detail page with a vertical division between options and media](/images/design/layout/layout-density-08-low-density-grid-dont@2x.png)
 
-                    Use grid or vertical dividers to create low density layouts, these can be confusing and hard to understand in a focused editing UI.
+                    Use grid or vertical dividers to create low density layouts. These can be confusing and hard to understand in a focused editing UI.
                 </Dont>
             </Grid.Cell>
         </Grid>
