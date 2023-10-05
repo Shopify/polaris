@@ -56,7 +56,7 @@ In code applications, the system mono font is used consistently. Use the mono fo
 
 ## Typescale
 
-Polaris offers two typescale: heading and body. These typescales are used to create visual pairings in the UI and all line heights are aligned with the 4px grid.
+Polaris offers two typescales: heading and body. These typescales are used to create visual pairings in the UI and all line heights are aligned with the 4px grid.
 
 The typescale in the admin is tailored for UI usage as the primary focus. Designed with software in mind first and foremost, it’s optimized for use in high density layouts with intricate details and complex features.
 
