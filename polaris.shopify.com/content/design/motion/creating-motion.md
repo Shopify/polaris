@@ -5,9 +5,10 @@ keywords:
   - motion
   - animation
   - design
+icon: TransactionMajor
 ---
 
-# {frontmatter.title}
+# Motion &rarr; {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 
@@ -92,24 +93,18 @@ Animations should be simple and purposeful, used to enhance understanding or pro
 
 #### Do
 
-  <video
-    width="100%"
-    height="auto"
-    controls
-    autoPlay
-    muted
-    loop
-  >
-    <source
-      src="/images/design/motion/creating/02-animation-do.mp4"
-      type="video/mp4"
-    />
-    Checkbox animation mimicking the real world.
-  </video>
-  Use simple, meaningful animations that are consistent with the overall style
-  and tone of the interface. 
-  
-  #### Dont
+<video width="100%" height="auto" controls autoPlay muted loop>
+  <source
+    src="/images/design/motion/creating/02-animation-do.mp4"
+    type="video/mp4"
+  />
+  Checkbox animation mimicking the real world.
+</video>
+Use simple, meaningful animations that are consistent with the overall style and
+tone of the interface.
+
+#### Dont
+
   <video
     width="100%"
     height="auto"
@@ -135,23 +130,18 @@ Timing is crucial in motion design. Motion is fast enough to not cause delay, bu
 
 #### Do
 
-  <video
-    width="100%"
-    height="auto"
-    controls
-    autoPlay
-    muted
-    loop
-  >
-    <source
-      src="/images/design/motion/creating/03-timing-do.mp4"
-      type="video/mp4"
-    />
-    Tooltip moving to place with a quick animation.
-  </video>
-Use appropriate timing for your animations and transitions. Matching the timing of the motion to merchant expectations.
-  
-  #### Dont
+<video width="100%" height="auto" controls autoPlay muted loop>
+  <source
+    src="/images/design/motion/creating/03-timing-do.mp4"
+    type="video/mp4"
+  />
+  Tooltip moving to place with a quick animation.
+</video>
+Use appropriate timing for your animations and transitions. Matching the timing of
+the motion to merchant expectations.
+
+#### Dont
+
   <video
     width="100%"
     height="auto"

@@ -29,10 +29,12 @@ description: Components, elements and surfaces are organized to create compositi
     <Card>
         <Grid gap="400" >
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ## Building layouts
 
                 The Shopify admin is built by using a combination of components like cards, popovers, modals, tables and so on. These components define the elevation of different surfaces in the admin and how they can interact with each other.
+            </Box>
 
             </Grid.Cell>
 
@@ -46,10 +48,12 @@ description: Components, elements and surfaces are organized to create compositi
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ## Surfaces
 
                 Surfaces in the admin contain other elements, like badges and text. Cards, popovers, modals and other such components are surfaces that are used to build the admin.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -62,6 +66,7 @@ description: Components, elements and surfaces are organized to create compositi
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Dividing surfaces
 
@@ -70,6 +75,7 @@ description: Components, elements and surfaces are organized to create compositi
                 Nested surfaces can be grouped together within another surface to achieve visual separation between different parts of a component.
 
                 Divider lines are reserved for data and index tables.
+            </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
 
@@ -126,10 +132,12 @@ description: Components, elements and surfaces are organized to create compositi
     <Card>
         <Grid gap="400" >
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Nesting
 
                 Nesting surfaces and other elements is crucial to the pro feel of the Shopify admin. Careful consideration should be taken when using elements of varying border radiuses in order to create the feeling that the interface is purpose-built.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -160,10 +168,12 @@ description: Components, elements and surfaces are organized to create compositi
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Nesting tables
 
                 Tables and lists that exist within another container follow slightly different spacing guidelines. Horizontal padding is adjusted to give more space for data, and to avoid having too much empty space overall.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -193,12 +203,14 @@ description: Components, elements and surfaces are organized to create compositi
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ## Shaped elements
 
                 Shaped elements contain other design elements within a container that has a certain shape. These elements can live on surfaces or on backgrounds and are often smaller and serve a single purpose, like badges.
 
                 Shaped elements often do not have an elevation and their shapes are considered to either be target zones if they’re interactive, or serve as a visual indicator to make them easier to scan.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -224,10 +236,12 @@ description: Components, elements and surfaces are organized to create compositi
      <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Buttons
 
                 Buttons are shaped elements, as their contents can vary their sizing to adjust for visual balance. Sizing of buttons depends on context. Standalone or grouped, buttons have a default size that is widely used in the admin. Because buttons often pull the most attention to a primary action, their size has been adjusted so as to not overwhelm the visual balance of the admin.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -239,10 +253,12 @@ description: Components, elements and surfaces are organized to create compositi
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ## Breaking alignment
 
                 Breaking alignment or spacing may be required in some rare instances. Depending on the layout of the page, alignments may be mathematically inconsistent, but will be visually aligned. Make sure to use imaginary keylines to create neatly aligned containers in the UI if spacing is inconsistent within each container.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>

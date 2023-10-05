@@ -1,6 +1,6 @@
 ---
 title: Creating Depth
-icon: ColorsMajor
+icon: VariantMajor
 showTOC: true
 keywords:
   - depth
@@ -9,7 +9,7 @@ keywords:
   - bevel use
 ---
 
-# {frontmatter.title}
+# Depth &rarr; {frontmatter.title}
 
 <Subnav />
 
@@ -37,10 +37,10 @@ keywords:
 
   </Card>
   <Card>
-    <Grid gap="400" 
+    <Grid gap="400"
       areas={{
-        xs: ['a a a a a a ', 'b b b b b b'], 
-        lg: ['a a a a b b b b b b b b'] 
+        xs: ['a a a a a a ', 'b b b b b b'],
+        lg: ['a a a a b b b b b b b b']
       }}
     >
     <Grid.Cell area="a">
@@ -86,10 +86,10 @@ keywords:
   </Card>
 
   <Card>
-    <Grid gap="400" 
+    <Grid gap="400"
       areas={{
-        xs: ['a a a a a a ', 'b b b b b b', 'c c c c c c'], 
-        lg: ['a a a a b b b b c c c c'] 
+        xs: ['a a a a a a ', 'b b b b b b', 'c c c c c c'],
+        lg: ['a a a a b b b b c c c c']
       }}
     >
       <Grid.Cell area="a">
@@ -123,8 +123,8 @@ keywords:
   </Card>
   <Card>
     <Grid gap="400" areas={{
-        xs: ['a a a a a a ', 'b b b b b b'], 
-        lg: ['a a a a b b b b b b b b'] 
+        xs: ['a a a a a a ', 'b b b b b b'],
+        lg: ['a a a a b b b b b b b b']
     }}>
       <Grid.Cell area="a">
 
