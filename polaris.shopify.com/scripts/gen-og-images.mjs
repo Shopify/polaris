@@ -81,7 +81,7 @@ const generateHTML = async (url, slug) => {
 
   const html = `
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@650');
 
   * {
     margin: 0;
@@ -102,7 +102,7 @@ const generateHTML = async (url, slug) => {
 
   h1 {
     font-size: 80px;
-    font-weight: 500;
+    font-weight: 650;
     letter-spacing: -0.01rem;
     max-width: 520px;
   }
