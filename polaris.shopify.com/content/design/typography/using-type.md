@@ -87,14 +87,14 @@ Headings introduce new sections, and subsections in the admin. They initiate the
 
     ![The title, description and media part of a product detail page, which does not have a heading](/images/design/typography/typography-using-type-08-headings-evident-do@2x.png)
 
-    Optimize the usage of headings, as they might not be necessary if the content they are introducing is self-evident.
+    Optimize the usage of headings. They might not be necessary if the content they are introducing is self-evident.
 
   </Do>
 
   <Dont>
     ![A page introduced with a heading in a normal font weight](/images/design/typography/typography-using-type-09-headings-dont@2x.png)
 
-    Headings do not vary in weight.
+    Use a consistent weight in your headings.
 
   </Dont>
 </InlineGrid>
@@ -129,13 +129,13 @@ Body can vary in weight a lot, and can even mimic the style of headings for a st
 
 ## Formatting
 
-Formatting modifies the appearance of type to enhance its readability, emphasize certain elements, or convey specific meanings.
+Formatting modifies the appearance of type to enhance its readability, emphasize certain elements, or to convey specific meanings.
 
 ![Text editor formatting toolbar](/images/design/typography/typography-using-type-13-formatting@2x.png)
 
 ### Underline
 
-Text that is underlined can serve two purposes: link to other pages, or offer additional contextual information through a tooltip or a popover.
+Text that is underlined can serve two purposes: linking to other pages, or offering additional contextual information through a tooltip or a popover.
 
 <InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
   <DirectiveCard>
@@ -156,14 +156,14 @@ Text that is underlined can serve two purposes: link to other pages, or offer ad
 
 ### Lists
 
-List elements are introduced with bullets, or more preferably, with icons that are related to the content that they introduce.
+List elements are introduced with bullets, or more preferably, with icons that are related to the content they introduce.
 
 <InlineGrid gap='200' columns={{xs: '1', md: '2'}}>
   <Do>
 
     ![A list of features offered by a Shopify Plan](/images/design/typography/typography-using-type-16-formatting-list-features@2x.png)
 
-    Use lists to share short, easily identifiable and relevant bits of information, like specific features.
+    Use lists to share short, easily identifiable, and relevant bits of information, like specific features.
 
   </Do>
 
@@ -177,8 +177,8 @@ List elements are introduced with bullets, or more preferably, with icons that a
 
 ### Tabular numbers
 
-Tabular numbers are a feature that equalizes the widths of all numbers in type to make lists of numbers align with each other vertically.
-The Shopify admin uses tabular numbers everywhere currency or money amounts are presented.
+Tabular numbers are a feature that equalizes the widths of all numbers in type to make sure lists of numbers align with each other vertically.
+The Shopify admin uses tabular numbers every time currency or money amounts are presented.
 
 ![Two columns made from multiple rows of numbers, one of which is non-tabular and misaligned vertically, and the other one using tabular numbers, which are neatly aligned with each other](/images/design/typography/typography-using-type-18-formatting-tabular@2x.png)
 
@@ -188,14 +188,14 @@ The Shopify admin uses tabular numbers everywhere currency or money amounts are 
 
       ![An index table showing the inventory of multiple items in several rows](/images/design/typography/typography-using-type-19-formatting-tabular-do@2x.png)
 
-      Use tabular for numbers that repeat in tables to increase their scannability
+      Use tabular for numbers that repeat in tables to increase their scannability.
 
     </Do>
 
     <Do>
       ![Larger currency number in a customer detail page](/images/design/typography/typography-using-type-20-formatting-tabular-currency-do@2x.png)
 
-      Use tabular numbers for all currency amounts, this makes them easily discernible and visually constant everywhere in the admin.
+      Use tabular numbers for all currency amounts. This makes them easily discernible and visually constant everywhere in the admin.
 
     </Do>
 
@@ -205,7 +205,7 @@ The Shopify admin uses tabular numbers everywhere currency or money amounts are 
 
       ![A card that shows the total number of orders and total spend of a customer](/images/design/typography/typography-using-type-21-formatting-tabular-decoration-caution@2x.png)
 
-      For larger numbers, like in the case of the plans page or any promotional or incentive visual where numbers are larger than the rest of the content, you can forgo tabular numbers.
+      For larger numbers, like in the case of the plans page, or any promotional or incentive visual where numbers are larger than the rest of the content, you can forgo tabular numbers.
 
     </DirectiveCard>
 
