@@ -25,7 +25,7 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
   }}
 />
 
-> Note: If you've installed `polaris-icon`, [`stylelint-polaris`](https://polaris.shopify.com/tools/stylelint-polaris#version-matchups), or `polaris-tokens` independently, you will also need to upgrade those to the versions we released along with v12.0.0.
+> Note: If you've installed `polaris-icons`, [`stylelint-polaris`](https://polaris.shopify.com/tools/stylelint-polaris#version-matchups), or `polaris-tokens` independently, you will also need to upgrade those to the versions we released along with v12.0.0.
 
 - [What's new in this version](/whats-new/version-12)
 - [v12.0.0 release notes](https://github.com/Shopify/polaris/releases/tag/@shopify/polaris@12.0.0)
@@ -88,12 +88,13 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 
 - **`<path>`**: [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) path for the `polaris-migrator` to run codemods on. e.g.: `{app,packages}/**/*.{css,scss}`
 - **[@shopify/polaris-migrator](/tools/polaris-migrator)**: CLI codemod tool to do the bulk of migrations for you
-- **Automatic migration or codemod**: A transformation that run on your codebase programmatically. They are used to make mass updates to code automatically without having to go through every file
+- **Automatic migration or codemod**: A transformation that runs on your codebase programmatically. These are used to execute a bulk of the necessary migrations on your codebase to reduce the amount of manual migrations needed
 - **[RegExp](https://en.wikipedia.org/wiki/Regular_expression)**: Short for regular expression, a sequence of characters used to match text. If you use a code editor like VSCode, you can follow a tutorial like [this one](https://itnext.io/vscode-find-and-replace-regex-super-powers-c7f8be0fa80f) to learn how to search your code using RegExp
 - **✅ Post-migration RegExp validation**: After you run an automated migration using the `polaris-migrator`, the migrator may quick exit or miss edge cases. You can use the RegExp search snippets to find and manually migrate the stragglers
 - **➡️ Token replacement mappings (or other mapping tables)**: These tables show you at a glance what our migrators are finding and replacing. They are useful to cross reference when dealing with edge cases and manual migrations
-- **🔔 Stepped migration**: These are migrations that have to be done in order because they have overlapping mappings. We will break out the migrations into steps for you
-- **💡 Migration example**: A simple diff showing how the migration should be modifying your code.
+- **🔔 Stepped migration**: These are migrations that must be run in a specific order due to overlapping replacement values. These migrations have been broken out into steps that can be targeted using the `--step` flag when running the migration
+- **💡 Migration example**: A simple diff showing how the migration should be modifying your code
+- ```
 
 </CollapsibleDetails>
 
@@ -296,7 +297,7 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Layout.Section oneThird/> prop`,
+    title: `Check RegExp for outdated <Layout.Section oneThird /> prop`,
     code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneThird`,
   }}
 />
@@ -326,7 +327,7 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Layout.Section oneHalf/> prop`,
+    title: `Check RegExp for outdated <Layout.Section oneHalf /> prop`,
     code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneHalf`,
   }}
 />
@@ -356,7 +357,7 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Layout.Section fullWidth/> prop`,
+    title: `Check RegExp for outdated <Layout.Section fullWidth /> prop`,
     code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?fullWidth`,
   }}
 />
@@ -386,7 +387,7 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Layout.Section secondary/> prop`,
+    title: `Check RegExp for outdated <Layout.Section secondary /> prop`,
     code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?secondary`,
   }}
 />
@@ -517,7 +518,7 @@ This border radius property rename aligns with [CSS border radius constituent pr
 
 #### Rename `HorizontalStack` component to `InlineStack`
 
-Directional components now use `Inline` and `Block` which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This is to be consistent with other Polaris component APIs as well as wider web conventions.
+Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
 
 <Code
   code={{
@@ -551,7 +552,7 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
 
 #### Rename `VerticalStack` component to `BlockStack`
 
-Directional components now use `Inline` and `Block` which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This is to be consistent with other Polaris component APIs as well as wider web conventions.
+Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
 
 <Code
   code={{
@@ -585,7 +586,7 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
 
 #### Rename `HorizontalGrid` component to `InlineGrid`
 
-Directional components now use `Inline` and `Block` which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This is to be consistent with other Polaris component APIs as well as wider web conventions.
+Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
 
 <Code
   code={{
@@ -619,7 +620,7 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
 
 #### Consolidate boolean props to `variant` and `tone`
 
-Button has consolidated and deprecated the `connectedDisclosure`, `outline`, `destructive`, `primarySuccess`, `removeUnderline`, and `monochrome` props.
+The `Button` component has been updated to replace deprecated `connectedDisclosure`, `outline`, `destructive`, `primary`, `primarySuccess`, `plain`, and `monochrome` props with a new `variant` prop that supports multiple variation options.
 
 <Code
   code={{
@@ -689,7 +690,7 @@ Button has consolidated and deprecated the `connectedDisclosure`, `outline`, `de
 | `plain=true`                        | `variant="plain"`                                                                                                      |
 | `primary=true`                      | `variant="primary"`                                                                                                    |
 | `primary=true` + `plain=true`       | `variant="tertiary"`                                                                                                   |
-| `monochrome=true` + `plain=true`    | `variant="monochromePlain"` \* This will be deprecated in a future release, please use a different variant if possible |
+| `monochrome=true` + `plain=true`    | `variant="monochromePlain"` \* <br/>This will be deprecated in a future release, please use a different variant if possible |
 | `destructive=true`                  | `variant="primary"` + `tone="critical"`                                                                                |
 | `primarySuccess=true`               | `variant="primary"` + `tone="success"`                                                                                 |
 | `destructive=true` + `outline=true` | `tone="critical"`                                                                                                      |
