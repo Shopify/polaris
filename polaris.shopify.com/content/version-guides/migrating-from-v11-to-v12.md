@@ -11,6 +11,8 @@ order: 1
 
 <Lede>{frontmatter.description}</Lede>
 
+## Getting started
+
 Upgrading to Polaris v12 from v11 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExpes. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
 
 Not on v11 yet either? Check out our other [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) to get up to date.
@@ -19,13 +21,14 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
   code={{
     title: 'Upgrade to v12',
     className: 'language-bash',
-    code: `npm install @shopify/polaris@12.0.0`,
+    code: `npm install @shopify/polaris@12.0.0\n# or\nyarn add @shopify/polaris@12.0.0`,
   }}
 />
 
-[What's new in this version](/whats-new/version-12)
+> Note: If you've installed `polaris-icon`, [`stylelint-polaris`](https://polaris.shopify.com/tools/stylelint-polaris#version-matchups), or `polaris-tokens` independently, you will also need to upgrade those to the versions we released along with v12.0.0.
 
-[v12.0.0 release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
+- [What's new in this version](/whats-new/version-12)
+- [v12.0.0 release notes](https://github.com/Shopify/polaris/releases/tag/@shopify/polaris@12.0.0)
 
 ## Migration workflow
 
@@ -35,7 +38,7 @@ When running token and component migrations, we recommend the following workflow
 
 Follow the migration guide sections below where we have the [@shopify/polaris-migrator](/tools/polaris-migrator) commands scaffolded for you to paste into your terminal. Be sure to update the `<path>` placeholder in the commands to your own app's relevant path, e.g., `{app,packages}/**/*.{css,scss}`. The file extensions can be adjusted depending on what migrations you are running. For example, component migrations can be run on `*.{ts,tsx}` files while token migrations can be run on `*.{css,scss}` files.
 
-```sh
+```bash
 # Example migration
 npx @shopify/polaris-migrator ...
 # Stash files with "polaris-migrator:" comments
@@ -58,7 +61,7 @@ Now, you need to validate the automatic migration and manually update any outsta
 
 Unstash the polaris migrator comments if you stashed any in step 1.
 
-```sh
+```bash
 git stash pop
 ```
 
@@ -68,7 +71,7 @@ Go through each of the changed files and search for `polaris-migrator:` comments
 
 Next, search for each of the token RegExpes which are found under the `✅ Post-migration RegExp validation` toggle in the guide. Update any outstanding migrations. If you're unsure on how to search in a code editor using RegExp, check out the [glossary](#glossary).
 
-```sh
+```bash
 # Stage all manually migrated files
 git add .
 # Format staged files only
@@ -86,7 +89,7 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 - **`<path>`**: [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) path for the `polaris-migrator` to run codemods on. e.g.: `{app,packages}/**/*.{css,scss}`
 - **[@shopify/polaris-migrator](/tools/polaris-migrator)**: CLI codemod tool to do the bulk of migrations for you
 - **Automatic migration or codemod**: A transformation that run on your codebase programmatically. They are used to make mass updates to code automatically without having to go through every file
-- **[Regexp](https://en.wikipedia.org/wiki/Regular_expression)**: Short for regular expression, a sequence of characters used to match text. If you use a code editor like VSCode, you can follow a tutorial like [this one](https://itnext.io/vscode-find-and-replace-regex-super-powers-c7f8be0fa80f) to learn how to search your code using RegExp
+- **[RegExp](https://en.wikipedia.org/wiki/Regular_expression)**: Short for regular expression, a sequence of characters used to match text. If you use a code editor like VSCode, you can follow a tutorial like [this one](https://itnext.io/vscode-find-and-replace-regex-super-powers-c7f8be0fa80f) to learn how to search your code using RegExp
 - **✅ Post-migration RegExp validation**: After you run an automated migration using the `polaris-migrator`, the migrator may quick exit or miss edge cases. You can use the RegExp search snippets to find and manually migrate the stragglers
 - **➡️ Token replacement mappings (or other mapping tables)**: These tables show you at a glance what our migrators are finding and replacing. They are useful to cross reference when dealing with edge cases and manual migrations
 - **🔔 Stepped migration**: These are migrations that have to be done in order because they have overlapping mappings. We will break out the migrations into steps for you
