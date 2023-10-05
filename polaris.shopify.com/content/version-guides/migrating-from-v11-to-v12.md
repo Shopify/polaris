@@ -38,6 +38,25 @@ order: 1
 
 </CollapsibleDetails>
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Avatar size="extraSmall" />
+- <Avatar size="small" />
+- <Avatar size="medium" />
+- <Avatar size="large" />
+- <Avatar size="xl-experimental" />
+- <Avatar size="2xl-experimental" />
++ <Avatar size="xs" />
++ <Avatar size="sm" />
++ <Avatar size="md" />
++ <Avatar size="lg" />
++ <Avatar size="xl" />
++ <Avatar size="xl" />
+```
+
+</CollapsibleDetails>
+
 ### Badge
 
 #### Replace `status` prop with `tone`
@@ -50,6 +69,15 @@ order: 1
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Badge status="success" />
++ <Badge tone="success" />
+```
+
+</CollapsibleDetails>
+
 #### Replace `statusAndProgressLabelOverride` prop with `toneAndProgressLabelOverride`
 
 <Code
@@ -60,9 +88,20 @@ order: 1
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Badge statusAndProgressLabelOverride="My string" />
++ <Badge toneAndProgressLabelOverride="My string" />
+```
+
+</CollapsibleDetails>
+
 ### IndexTable.Row
 
-#### Replace `status` prop with `tone`
+**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
+
+#### Step 1: Replace `status` prop with `tone`
 
 <Code
   code={{
@@ -72,7 +111,16 @@ order: 1
   }}
 />
 
-#### Replace `subdued` prop with `tone`
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <IndexTable.Row status="success" />
++ <IndexTable.Row tone="success" />
+```
+
+</CollapsibleDetails>
+
+#### Step 2: Replace `subdued` prop with `tone`
 
 <Code
   code={{
@@ -81,6 +129,15 @@ order: 1
     code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"`,
   }}
 />
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <IndexTable.Row subdued />
++ <IndexTable.Row tone="subdued" />
+```
+
+</CollapsibleDetails>
 
 ### Layout.Section
 
@@ -94,6 +151,15 @@ order: 1
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section oneThird>
++ <Layout.Section variant="oneThird">
+```
+
+</CollapsibleDetails>
+
 #### Replace `oneHalf` prop with `variant="oneHalf"`
 
 <Code
@@ -103,6 +169,15 @@ order: 1
     code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"`,
   }}
 />
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section oneHalf>
++ <Layout.Section variant="oneHalf">
+```
+
+</CollapsibleDetails>
 
 #### Replace `fullWidth` prop with `variant="fullWidth"`
 
@@ -114,6 +189,15 @@ order: 1
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section fullWidth>
++ <Layout.Section variant="fullWidth">
+```
+
+</CollapsibleDetails>
+
 #### Replace `secondary` prop with `variant="oneThird"`
 
 <Code
@@ -123,6 +207,15 @@ order: 1
     code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"`,
   }}
 />
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section secondary>
++ <Layout.Section variant="oneThird">
+```
+
+</CollapsibleDetails>
 
 ### TextField
 
@@ -135,6 +228,15 @@ order: 1
     code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"`,
   }}
 />
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <TextField borderless />
++ <TextField variant="borderless" />
+```
+
+</CollapsibleDetails>
 
 ### Box
 
@@ -174,6 +276,15 @@ This border radius property rename aligns with [CSS border radius constituent pr
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Box borderRadiusEndStart="2" borderRadiusEndEnd="2" borderRadiusStartStart="2" borderRadiusStartEnd="2" />
++ <Box borderEndStartRadius="2" borderEndEndRadius="2" borderStartStartRadius="2" borderStartEndRadius="2" />
+```
+
+</CollapsibleDetails>
+
 ### HorizontalStack
 
 #### Rename `HorizontalStack` component to `InlineStack`
@@ -187,6 +298,15 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
     code: `npx @shopify/polaris-migrator react-rename-component <path> --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"`,
   }}
 />
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <HorizontalStack />
++ <InlineStack />
+```
+
+</CollapsibleDetails>
 
 ### VerticalStack
 
@@ -202,6 +322,15 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <VerticalStack />
++ <BlockStack />
+```
+
+</CollapsibleDetails>
+
 ### HorizontalGrid
 
 #### Rename `HorizontalGrid` component to `InlineGrid`
@@ -216,11 +345,20 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <HorizontalGrid />
++ <InlineGrid />
+```
+
+</CollapsibleDetails>
+
 ### Button
 
-#### Deprecate `connectedDisclosure` and consolidate boolean props to `variant` and `tone`
+#### Consolidate boolean props to `variant` and `tone`
 
-- connectedDisclosure: [See the updated split example](/components/actions/button)
+Button has also deprecated the `connectedDisclosure`, `outline`, `destructive`, `primarySuccess`, `removeUnderline`, and `monochrome` props
 
 <Code
   code={{
@@ -229,6 +367,70 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
     code: `npx @shopify/polaris-migrator v12-react-update-button-component <path>`,
   }}
 />
+
+<CollapsibleDetails summary="➡️ Prop consolidation mappings">
+
+| Old variant                         | New variant                             |
+| ----------------------------------- | --------------------------------------- |
+| `plain=true`                        | `variant="plain"`                       |
+| `primary=true`                      | `variant="primary"`                     |
+| `primary=true` + `plain=true`       | `variant="tertiary"`                    |
+| `monochrome=true` + `plain=true`    | `variant="monochromePlain"`             |
+| `destructive=true`                  | `variant="primary"` + `tone="critical"` |
+| `primarySuccess=true`               | `variant="primary"` + `tone="success"`  |
+| `destructive=true` + `outline=true` | `tone="critical"`                       |
+| `destructive=true` + `plain=true`   | `variant="plain"` + `tone="critical"`   |
+| `monochrome=true`                   |                                         |
+| `outline=true`                      |                                         |
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Button plain />
++ <Button variant="plain" />
+- <Button primary />
++ <Button variant="primary" />
+- <Button primary plain />
++ <Button variant="tertiary" />
+- <Button monochrome plain />
++ <Button variant="monochromePlain" />
+- <Button destructive />
++ <Button variant="primary" tone="critical" />
+- <Button primarySuccess />
++ <Button variant="primary" tone="success" />
+- <Button destructive plain />
++ <Button variant="plain" tone="critical" />
+- <Button destructive />
++ <Button variant="primary" tone="critical" />
+- <Button primarySuccess />
++ <Button variant="primary" tone="success" />
+- <Button destructive outline />
++ <Button tone="critical" />
+- <Button destructive plain />
++ <Button variant="plain" tone="critical" />
+- <Button monochrome />
++ <Button />
+- <Button outline />
++ <Button />
+```
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 How to manually update `connectedDisclosure` example">
+
+Also [see the updated split example](/components/actions/button)
+
+```diff
+- <Button connectedDisclosure />
++ <ButtonGroup variant="segmented">
++   <Button />
++   <Button icon={ChevronDownMinor} />
++ </ButtonGroup>
+```
+
+</CollapsibleDetails>
 
 ### ButtonGroup
 
@@ -242,6 +444,15 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <ButtonGroup spacing="tight" />
++ <ButtonGroup gap="tight" />
+```
+
+</CollapsibleDetails>
+
 #### Replace `segmented` prop to `variant="segmented"`
 
 <Code
@@ -251,6 +462,15 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
     code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"`,
   }}
 />
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <ButtonGroup segmented />
++ <ButtonGroup variant="segmented" />
+```
+
+</CollapsibleDetails>
 
 ### Banner
 
@@ -263,6 +483,15 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
     code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Banner" --from="status" --to="tone"`,
   }}
 />
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Banner status="success" />
++ <Banner tone="success" />
+```
+
+</CollapsibleDetails>
 
 ### Icon
 
@@ -278,6 +507,15 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon color="success" />
++ <Icon tone="success" />
+```
+
+</CollapsibleDetails>
+
 #### Step 2: Replace `warning` tone with `caution`
 
 <Code
@@ -287,6 +525,16 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
     code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`,
   }}
 />
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon color="warning" />
+- <Icon tone="warning" />
++ <Icon tone="caution" />
+```
+
+</CollapsibleDetails>
 
 #### Step 3: Replace `highlight` tone with `info`
 
@@ -298,15 +546,38 @@ Directional components now use `Inline` and `Block` which are defined by [CSS lo
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon color="highlight" />
+- <Icon tone="highlight" />
++ <Icon tone="info" />
+```
+
+</CollapsibleDetails>
+
 #### Remove `backdrop` prop
 
 Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon backdrop />
++ <Box padding="1" width="28px" borderRadius="full">
++   <Icon />
++ </Box>
+```
+
+or
 
 ```tsx
 <Box background={boxBackground} padding="1" width="28px" borderRadius="full">
   <Icon source={CirclePlusMinor} color={iconColor} />
 </Box>
 ```
+
+</CollapsibleDetails>
 
 ### Text
 
@@ -322,6 +593,15 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text color="success" />
++ <Text tone="success" />
+```
+
+</CollapsibleDetails>
+
 #### Step 2: Replace `warning` tone with `caution`
 
 <Code
@@ -332,13 +612,112 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text color="warning" />
+- <Text tone="warning" />
++ <Text tone="caution" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `headingXs` prop with `headingSm`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="variant" --to="variant" --fromValue="headingXs" --toValue="headingSm"`,
+  }}
+/>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text variant="headingXs">
++ <Text variant="headingSm">
+```
+
+</CollapsibleDetails>
+
+#### Replace `heading4xl` with `heading3xl`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Text" --from="variant" --to="variant" --fromValue="heading4xl" --toValue="heading3xl"`,
+  }}
+/>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text variant="heading4xl">
++ <Text variant="heading3xl">
+```
+
+</CollapsibleDetails>
+
 ### Modal
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="small" --to="size" --toValue="small"`
+#### Replace `small` prop with `variant="small"`
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="large" --to="size" --toValue="large"`
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="small" --to="size" --toValue="small"`,
+  }}
+/>
 
-`npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"`
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Modal small />
++ <Modal size="small" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `large` prop with `variant="large"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="large" --to="size" --toValue="large"`,
+  }}
+/>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Modal large />
++ <Modal size="large" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `fullScreen` prop with `variant="fullScreen"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: `npx @shopify/polaris-migrator react-rename-component-prop <path> --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"`,
+  }}
+/>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Modal fullScreen />
++ <Modal size="fullScreen" />
+```
+
+</CollapsibleDetails>
 
 ### List
 
@@ -352,6 +731,15 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <List spacing="loose" />
++ <List gap="loose" />
+```
+
+</CollapsibleDetails>
+
 ### DescriptionList
 
 #### Replace `spacing` prop with `gap`
@@ -364,13 +752,27 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
   }}
 />
 
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <DescriptionList spacing="loose" />
++ <DescriptionList gap="loose" />
+```
+
+</CollapsibleDetails>
+
 ### AppProvider
 
 The `AppProvider`'s `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. You should be able to remove the `features` prop completely from your Polaris `AppProvider` since there aren't any feature flags in Polaris for v12.
 
-### Text
+<CollapsibleDetails summary="💡 Migration example">
 
-The `Text` component no longer supports `headingXs` and `heading4xl` as options for the `variant` prop. You will need to manually update usage of `<Text variant="headingXs">` to `<Text variant="headingSm">` instead. Similarly, usage of `<Text variant="heading4xl">` need to be manually updated to `<Text variant="heading3xl">`.
+```diff
+- <AppProvider features={{polarisSummerEditions2023: true, polarisSummerEditions2023ShadowBevelOptOut: false}} i18n={[]} />
++ <AppProvider i18n={[]} />
+```
+
+</CollapsibleDetails>
 
 ## Token migrations
 
@@ -380,7 +782,7 @@ The following tokens have either been renamed or removed. You will need to repla
 
 To replace deprecated `border` custom properties, you can run the [v12-styles-replace-custom-property-border](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-border) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-<CollapsibleDetails summary="👀 Migration example">
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - border-radius: var(--p-border-radius-1);
@@ -527,7 +929,7 @@ To replace deprecated `border` custom properties, you can run the [v12-styles-re
 
 To replace deprecated `color` custom properties, you can run the [v12-styles-replace-custom-property-color](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-color) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-<CollapsibleDetails summary="👀 Migration example">
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - color: var(--p-color-bg);
@@ -986,7 +1388,7 @@ If you want to unblock your migration quickly you can manually hardcode the valu
 
 To replace deprecated `font` custom properties, you can run the [v12-styles-replace-custom-property-font](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-<CollapsibleDetails summary="👀 Migration example">
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - font-size: var(--p-font-size-75);
@@ -1140,7 +1542,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
 
 To replace deprecated `shadow` custom properties, you can run the [v12-styles-replace-custom-property-shadow](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-shadow) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-<CollapsibleDetails summary="👀 Migration example">
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - box-shadow: var(--p-shadow-xs);
@@ -1259,7 +1661,7 @@ The following tokens need to be manually migrated because their values are conte
 
 To replace deprecated `space` custom properties, you can run the [v12-styles-replace-custom-property-space](https://polaris.shopify.com/tools/polaris-migrator#v12-styles-replace-custom-property-space) migration then validate with RegExp. Please reference the [recommended token migration workflow](#recommended-token-migration-workflow) section below for additional migration support.
 
-<CollapsibleDetails summary="👀 Migration example">
+<CollapsibleDetails summary="💡 Migration example">
 
 ```diff
 - padding: var(--p-space-1);
