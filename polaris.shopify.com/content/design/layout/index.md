@@ -44,7 +44,7 @@ Space plays a vital role in establishing connections between items. The principl
     ![An order card with an inset table followed by an apps card with a grid pattern made of different surfaces](/images/design/layout/layout-overview-01-space@2x.png)
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
-Grouping similar items together helps merchants understand which elements are related and make faster decisions.
+Grouping similar items together helps merchants understand which elements are related and helps them make faster decisions.
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
     <Do>
@@ -73,7 +73,7 @@ Grouping similar items together helps merchants understand which elements are re
 
 In the Shopify admin, larger, heavier, and contrasting elements attract attention and create visual rhythm.
 
-Smaller, lighter, and subtler elements are work-oriented and provide detailed information.
+Smaller, lighter, and more subtle elements are work-oriented and provide detailed information.
 
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -111,7 +111,7 @@ Smaller, lighter, and subtler elements are work-oriented and provide detailed in
 
 ## Software, not website
 
-Since the admin is more like software than a website, elements need to be sized appropriately based on their job.
+Since the admin is more like software, rather than a website, elements need to be sized appropriately based on their job.
 
 </Grid.Cell>
 
