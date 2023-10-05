@@ -94,9 +94,6 @@ git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
 - **➡️ Token replacement mappings (or other mapping tables)**: These tables show you at a glance what our migrators are finding and replacing. They are useful to cross reference when dealing with edge cases and manual migrations
 - **🔔 Stepped migration**: These are migrations that must be run in a specific order due to overlapping replacement values. These migrations have been broken out into steps that can be targeted using the `--step` flag when running the migration
 - **💡 Migration example**: A simple diff showing how the migration should be modifying your code
-- ```
-
-  ```
 
 </CollapsibleDetails>
 
