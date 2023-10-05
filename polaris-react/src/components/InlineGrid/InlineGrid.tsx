@@ -20,8 +20,8 @@ export interface InlineGridProps extends React.AriaAttributes {
   children?: React.ReactNode;
   /** The number of columns to display. Accepts either a single value or an object of values for different screen sizes.
    * @example
-   * columns={600}
-   * columns={{xs: 100, sm: 100, md: 300, lg: 600, xl: 600}}
+   * columns={6}
+   * columns={{xs: 1, sm: 2, md: 3, lg: 4, xl: 6}}
    */
   columns?: Columns;
   /** The spacing between children. Accepts a spacing token or an object of spacing tokens for different screen sizes.

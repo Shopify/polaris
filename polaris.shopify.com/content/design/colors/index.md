@@ -2,12 +2,16 @@
 title: Color
 description: Color highlights important areas, communicates status, urgency, and directs attention.
 icon: ColorsMajor
+order: 2
 keywords:
   - color role
   - color strategy
   - color use
   - black and white
   - grayscale
+hideChildren: true
+showTOC: true
+status: New
 ---
 
 # {frontmatter.title}
@@ -24,7 +28,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="400">
 
           ## Color has purpose
 
@@ -42,7 +46,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="400">
 
         Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
 
@@ -77,11 +81,11 @@ keywords:
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="400">
 
           ## Color has impact
 
@@ -99,7 +103,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="400">
 
           The intentional design of the overall interface in black and white enables strategically positioned and carefully selected elements to grab merchants' attention. By utilizing color purposefully, the focus is directed towards crucial information, actions, and visual cues.
 
@@ -137,11 +141,11 @@ keywords:
 
   <Card>
 
-    <Grid gap="4">
+    <Grid gap="400">
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="400">
 
           ## Color is accessible
 
@@ -161,7 +165,7 @@ keywords:
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
 
-        <Box className="text-extra-padding">
+        <Box padding="400">
 
           Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify and interact with.
 

@@ -1,7 +1,9 @@
 ---
 title: Icons
 description: Icons enhance an experience by providing intuitive and efficient navigation, conveying information concisely, and making it more visually appealing.
+hideChildren: true
 showTOC: true
+order: 4
 keywords:
   - shopify icons
   - icon sets
@@ -19,6 +21,7 @@ keywords:
   - icons in nav
   - icons in main nav
   - icon colors
+status: New
 ---
 
 # {frontmatter.title}
@@ -31,7 +34,7 @@ keywords:
 
 Icons are simple and effectively convey their intended meaning. Avoid unnecessary complexity that makes the icon difficult to recognize. The goal is to communicate quickly and clearly.
 
-<InlineGrid gap='4' columns={{xs: '1', md: '2'}}>
+<InlineGrid gap='400' columns={{xs: '1', md: '2'}}>
 
   <Do>
     ![Two icons made with basic geometric shapes representing an house and a flower.](/images/design/icons/icons-overview-clear-1@2x.png)
@@ -54,7 +57,7 @@ Icons are simple and effectively convey their intended meaning. Avoid unnecessar
 
 
 
-      <InlineGrid gap='4' columns={{xs: '1', lg: '3'}}>
+      <InlineGrid gap='400' columns={{xs: '1', lg: '3'}}>
 
         <Do>
 
@@ -89,7 +92,7 @@ Icons are simple and effectively convey their intended meaning. Avoid unnecessar
 
 Universally recognized symbols and metaphors ensure icons are easily understood by a broad user base.
 
-<InlineGrid gap='4' columns={{xs: '1', md: '2'}}>
+<InlineGrid gap='400' columns={{xs: '1', md: '2'}}>
   <Do>
     ![Left: an icon composed with a shopping cart and an x sign. Right: an icon composed with a person and a plus sign.](/images/design/icons/icons-overview-universal-1@2x.png)
 

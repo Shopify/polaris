@@ -8,9 +8,10 @@ keywords:
   - fonts
 icon: TextAlignmentLeftMajor
 hideChildren: true
+order: 1
 ---
 
-# {frontmatter.title}
+# Typography &rarr; {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 
@@ -30,7 +31,7 @@ In code applications, the system mono font is used consistently. Use the mono fo
 
 ![A showcase of a monospace font, in code blocks and editable text fields in the admin](/images/design/typography/typography-font-02-mono@2x.png)
 
-<InlineGrid gap='2' columns={{xs: '1', lg: '3'}}>
+<InlineGrid gap='200' columns={{xs: '1', lg: '3'}}>
   <Do>
 
     ![An editable code block in the admin with mono as its font](/images/design/typography/typography-font-03-mono-do@2x.png)

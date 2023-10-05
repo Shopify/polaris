@@ -2516,7 +2516,7 @@ Polaris references this font but does not load it. Your app will need to load th
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com/" />
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@450;550;650;700&display=swap" />
 ```
 
 ### Icons
