@@ -28,7 +28,7 @@ Good type positioning also establishes visual prominence and emphasizes key info
 
 ![A series of cards in the admin, each introduced by a bold heading and medium weight body typography](/images/design/typography/typography-overview-01-hierarchy@2x.png)
 
-<InlineGrid gap='400' columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <Do>
 
 ![A card with different levels of type presented in different weights, sizes and positions ](/images/design/typography/typography-overview-02-hierarchy-do@2x.png)
@@ -43,7 +43,7 @@ Use a combination of weight, size, color and positioning to define hierarchy.
     Rely only on color to define hierarchy.
 
   </Dont>
-</InlineGrid>
+</TwoColumns>
 
 </Stack>
 
@@ -55,7 +55,7 @@ Polaris assigns meaning to type based on its usage. Mono is used for code, tabul
 
 ![A variety of cards, one showing a list of prices neatly aligned, another one showing monospace type for code, and another one showing type and icon pairings](/images/design/typography/typography-overview-04-purpose@2x.png)
 
-<InlineGrid gap='400' columns={{xs: '1', md: '2'}}>
+<TwoColumns>
   <Do>
 
     ![Different currency amounts in the Shopify admin, all using tabular numbers](/images/design/typography/typography-overview-05-purpose-do@2x.png)
@@ -70,6 +70,6 @@ Polaris assigns meaning to type based on its usage. Mono is used for code, tabul
     Repurpose or reinterpret known patterns in typography, especially when it comes to interactions.
 
   </Do>
-</InlineGrid>
+</TwoColumns>
 
 </Stack>
