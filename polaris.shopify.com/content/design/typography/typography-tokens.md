@@ -43,7 +43,7 @@ By aligning semantic text tokens with the respective font scales, a composite so
 
 ## Token structure
 
-These semantically routed, composite building blocks include properties such as font size, line height, font weight, letter spacing, and font family, allow for a comprehensive and customizable typographic experience
+These semantically-routed composite building blocks include properties such as font size, line height, font weight, letter spacing, and font family, and allow for a comprehensive and customizable typographic experience.
 
 ![structure of a semantic token, composed of system, concept, variant, and property values]()
 
