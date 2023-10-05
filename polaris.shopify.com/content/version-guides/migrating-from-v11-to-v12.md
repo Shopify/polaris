@@ -25,7 +25,7 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
   }}
 />
 
-[Full release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
+[v12.0.0 release notes](https://github.com/Shopify/polaris/releases/tag/v12.0.0)
 
 ## Component migrations
 
@@ -40,19 +40,6 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
     code: `npx @shopify/polaris-migrator v12-react-avatar-component <path>`,
   }}
 />
-
-<CollapsibleDetails summary="➡️ Prop replacement mappings for the Avatar size prop">
-
-| Before                    | After       |
-| ------------------------- | ----------- |
-| `size="extraSmall"`       | `size="xs"` |
-| `size="small"`            | `size="sm"` |
-| `size="medium"`           | `size="md"` |
-| `size="large"`            | `size="lg"` |
-| `size="xl-experimental"`  | `size="xl"` |
-| `size="2xl-experimental"` | `size="xl"` |
-
-</CollapsibleDetails>
 
 <CollapsibleDetails summary="💡 Migration example">
 
@@ -70,6 +57,19 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
 + <Avatar size="xl" />
 + <Avatar size="xl" />
 ```
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="➡️ Prop replacement mappings for the Avatar size prop">
+
+| Before                    | After       |
+| ------------------------- | ----------- |
+| `size="extraSmall"`       | `size="xs"` |
+| `size="small"`            | `size="sm"` |
+| `size="medium"`           | `size="md"` |
+| `size="large"`            | `size="lg"` |
+| `size="xl-experimental"`  | `size="xl"` |
+| `size="2xl-experimental"` | `size="xl"` |
 
 </CollapsibleDetails>
 
