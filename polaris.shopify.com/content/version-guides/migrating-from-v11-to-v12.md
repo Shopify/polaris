@@ -762,10 +762,12 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 The [updated split example](/components/actions/button) can also be referenced as an example for this manual migration.
 
 ```diff
-- <Button connectedDisclosure />
+- <Button connectedDisclosure={<Popover activator={<Button icon={ChevronDownMinor} />} />}>
+-   Save
+- </Button>
 + <ButtonGroup variant="segmented">
-+   <Button />
-+   <Button icon={ChevronDownMinor} />
++   <Button>Save</Button>
++   <Popover activator={<Button icon={ChevronDownMinor} />}/>
 + </ButtonGroup>
 ```
 
