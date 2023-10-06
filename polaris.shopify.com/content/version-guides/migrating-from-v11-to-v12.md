@@ -47,8 +47,10 @@ git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
 git add .
 # Format staged files only
 git diff --staged --name-only | xargs npx prettier --write
+# Stage formatted files
+git add .
 #  Commit automatic migration
-git commit -m "Migrate X custom properties from Polaris v11 to v12"
+git commit -m "[Automated] Migrate X from Polaris v11 to v12"
 ```
 
 The polaris migrator could insert comments or skip instances that are unsafe to automatically migrate. You will need to resolve those issues in the next manual migration step.
@@ -77,9 +79,9 @@ git add .
 # Format staged files only
 git diff --staged --name-only | xargs npx prettier --write
 # Optional: run stylelint if using stylelint-polaris and running migrations on stylesheets
-npx stylelint <path>
+npx stylelint "./**/*..{css,scss}"
 #  Commit manual migrations
-git commit -m "Manually migrate X custom properties from Polaris v11 to v12"
+git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 ```
 
 ### Glossary
