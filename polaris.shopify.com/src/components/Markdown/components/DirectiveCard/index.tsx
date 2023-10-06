@@ -91,6 +91,7 @@ const MediaThumbnail = ({
           className={styles.MediaThumbnail}
           src={media?.props?.src}
           alt={media?.props?.alt}
+          aspectRatio="4:3"
         />
       ) : (
         <div className={styles.MediaThumbnail}>{media}</div>
