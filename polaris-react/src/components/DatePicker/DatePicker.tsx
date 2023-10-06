@@ -26,7 +26,7 @@ export interface DatePickerProps {
   /** ID for the element */
   id?: string;
   /** The selected date or range of dates */
-  selected?: Date | Range;
+  selected?: Date | Date[] | Range;
   /** The month to show, from 0 to 11. 0 is January, 1 is February ... 11 is December */
   month: number;
   /** The year to show */
@@ -69,6 +69,12 @@ export function DatePicker({
   onMonthChange,
   onChange = noop,
 }: DatePickerProps) {
+  const multiSelect = Array.isArray(selected);
+  if (multiSelect && allowRange)
+    throw new Error(
+      'You cannot enable range selection and multi selection at the same time',
+    );
+
   const i18n = useI18n();
   const [hoverDate, setHoverDate] = useState<Date | undefined>(undefined);
   const [focusDate, setFocusDate] = useState<Date | undefined>(undefined);
@@ -76,6 +82,8 @@ export function DatePicker({
   useEffect(() => {
     setFocusDate(undefined);
   }, [selected]);
+
+  const selectedRange = useMemo(() => deriveRanges(selected), [selected]);
 
   const handleFocus = useCallback((date: Date) => {
     setFocusDate(date);
@@ -93,9 +101,9 @@ export function DatePicker({
   );
 
   const handleDateSelection = useCallback(
-    (range: Range) => {
+    (ranges: Range[]) => {
+      const range = ranges[ranges.length - 1];
       const {end} = range;
-
       setHoverDate(end);
       setFocusDate(new Date(end));
       onChange(range);
@@ -122,8 +130,11 @@ export function DatePicker({
     (event: React.KeyboardEvent<HTMLElement>) => {
       const {key} = event;
 
-      const range = deriveRange(selected);
-      const focusedDate = focusDate || (range && range.start);
+      const lastRange =
+        selectedRange && selectedRange.length > 0
+          ? selectedRange[selectedRange.length - 1]
+          : undefined;
+      const focusedDate = focusDate || (lastRange && lastRange.start);
 
       if (focusedDate == null) {
         return;
@@ -192,7 +203,7 @@ export function DatePicker({
       disableDatesBefore,
       disableSpecificDates,
       focusDate,
-      selected,
+      selectedRange,
       setFocusDateAndHandleMonthChange,
     ],
   );
@@ -216,8 +227,6 @@ export function DatePicker({
     : i18n.translate(`Polaris.DatePicker.months.${monthName(showNextMonth)}`);
   const nextYear = multiMonth ? showNextToNextYear : showNextYear;
 
-  const monthIsSelected = useMemo(() => deriveRange(selected), [selected]);
-
   const firstDatePickerAccessibilityLabelPrefix = allowRange
     ? i18n.translate(`Polaris.DatePicker.start`)
     : dayAccessibilityLabelPrefix;
@@ -236,7 +245,7 @@ export function DatePicker({
       focusedDate={focusDate}
       month={showNextMonth}
       year={showNextYear}
-      selected={monthIsSelected}
+      selected={selectedRange}
       hoverDate={hoverDate}
       onChange={handleDateSelection}
       onHover={handleHover}
@@ -293,7 +302,7 @@ export function DatePicker({
           focusedDate={focusDate}
           month={month}
           year={year}
-          selected={deriveRange(selected)}
+          selected={selectedRange}
           hoverDate={hoverDate}
           onChange={handleDateSelection}
           onHover={handleHover}
@@ -326,6 +335,21 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
   }
 }
 
+function deriveRanges(selected?: Date | Date[] | Range) {
+  if (!selected) return undefined;
+
+  if (Array.isArray(selected)) {
+    return selected.reduce<Range[]>(function (acc, curr) {
+      const derived = deriveRange(curr);
+
+      if (derived) acc.push(derived);
+
+      return acc;
+    }, []);
+  } else {
+    return [deriveRange(selected)!];
+  }
+}
 function deriveRange(selected?: Date | Range) {
   return selected instanceof Date ? {start: selected, end: selected} : selected;
 }

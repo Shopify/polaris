@@ -2,6 +2,8 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Box, Card, DatePicker, VerticalStack} from '@shopify/polaris';
 
+import {isSameDay} from '../../utilities/dates';
+
 export default {
   component: DatePicker,
 } as ComponentMeta<typeof DatePicker>;
@@ -32,6 +34,11 @@ export function All() {
       <Box maxWidth="290px">
         <Card>
           <WithSpecificDisabledDates />
+        </Card>
+      </Box>
+      <Box maxWidth="290px">
+        <Card>
+          <MultiSelectDates />
         </Card>
       </Box>
     </VerticalStack>
@@ -165,6 +172,43 @@ export function WithSpecificDisabledDates() {
       disableDatesBefore={new Date('Sat Feb 03 2018 00:00:00 GMT-0500 (EST)')}
       disableDatesAfter={new Date('Sun Feb 25 2018 00:00:00 GMT-0500 (EST)')}
       disableSpecificDates={disableSpecificDates}
+    />
+  );
+}
+
+export function MultiSelectDates() {
+  const [{month, year}, setDate] = useState({month: 1, year: 2018});
+  const [selectedDates, setSelectedDates] = useState<Date[]>([
+    new Date('Mon Feb 05 2018 00:00:00 GMT-0500 (EST)'),
+    new Date('Wed Feb 07 2018 00:00:00 GMT-0500 (EST)'),
+  ]);
+
+  const handleMonthChange = useCallback(
+    (month, year) => setDate({month, year}),
+    [],
+  );
+
+  const handleChange = useCallback(({start}: Range) => {
+    setSelectedDates(([...newActive]) => {
+      const i = newActive.findIndex((activeDay) => isSameDay(activeDay, start));
+
+      if (i > -1) {
+        newActive.splice(i, 1);
+      } else {
+        newActive.push(start);
+      }
+
+      return newActive;
+    });
+  }, []);
+
+  return (
+    <DatePicker
+      month={month}
+      year={year}
+      onMonthChange={handleMonthChange}
+      onChange={handleChange}
+      selected={selectedDates}
     />
   );
 }
