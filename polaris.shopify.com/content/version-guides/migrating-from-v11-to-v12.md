@@ -21,11 +21,22 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
   code={{
     title: 'Upgrade to v12',
     className: 'language-bash',
-    code: `npm install @shopify/polaris@12.0.0\n# or\nyarn add @shopify/polaris@12.0.0`,
+    code: `npm install @shopify/polaris@12\n# or\nyarn add @shopify/polaris@12`,
   }}
 />
 
-> Note: If you've installed `polaris-icons`, [`stylelint-polaris`](https://polaris.shopify.com/tools/stylelint-polaris#version-matchups), or `polaris-tokens` independently, you will also need to upgrade those to the versions we released along with v12.0.0.
+<CollapsibleDetails summary="Note: If you've installed other Polaris packages independently, you will also need to upgrade those to the versions we released along with v12.">
+
+| Package                      | Version          |
+| ---------------------------- | ---------------- |
+| `@shopify/polaris`           | `12`             |
+| `@shopify/polaris-tokens`    | `8`              |
+| `@shopify/stylelint-polaris` | `15`             |
+| `@shopify/polaris-icons`     | at least `7.9.0` |
+
+</CollapsibleDetails>
+
+<br />
 
 - [What's new in this version](/whats-new/version-12)
 - [v12.0.0 release notes](https://github.com/Shopify/polaris/releases/tag/@shopify/polaris@12.0.0)
@@ -169,6 +180,8 @@ git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 />
 
 <CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
@@ -971,18 +984,10 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 <CollapsibleDetails summary="💡 Migration example">
 
 ```diff
-- <Icon backdrop />
-+ <Box padding="1" width="28px" borderRadius="full">
-+   <Icon />
+- <Icon source={CirclePlusMinor} color={iconColor} backdrop />
++ <Box background={boxBackground} padding="100" width="28px" borderRadius="full">
++  <Icon source={CirclePlusMinor} color={iconColor} />
 + </Box>
-```
-
-or
-
-```tsx
-<Box background={boxBackground} padding="1" width="28px" borderRadius="full">
-  <Icon source={CirclePlusMinor} color={iconColor} />
-</Box>
 ```
 
 </CollapsibleDetails>
@@ -1271,6 +1276,34 @@ or
 ```diff
 - <DescriptionList spacing="loose" />
 + <DescriptionList gap="loose" />
+```
+
+</CollapsibleDetails>
+
+### Page
+
+#### Remove `divider` prop
+
+Page dividers are no longer a pattern in the new Polaris design language. If you must use a divider, use the [`Divider`](/components/layout-and-structure/divider) component to add them back in where needed.
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    title: `Check RegExp for outdated <Page divider /> prop`,
+    code: String.raw`<Page[^>\w](?:[^>]|\n)*?divider`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon source={CirclePlusMinor} color={iconColor} backdrop />
++ <Box background={boxBackground} padding="100" width="28px" borderRadius="full">
++  <Icon source={CirclePlusMinor} color={iconColor} />
++ </Box>
 ```
 
 </CollapsibleDetails>
@@ -2505,6 +2538,72 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
 
 </CollapsibleDetails>
 
+### `@shopify/polaris-tokens` updates
+
+#### Renames
+
+- `getCustomPropertyNames` renamed to `getThemeVarNames`
+- `createVar` renamed to `createVarName`
+
+#### Deprecations
+
+##### Deprecated Utilities
+
+If you are using these utilities, feel free to copy them from v11 into your own codebase.
+
+- `createExact`
+- `createMetadata`
+- `getKeyframeNames`
+- `getUnit`
+- `isKeyOf`
+- `rem`
+- `removeMetadata`
+- `toEm`
+- `tokensToRems`
+
+##### Deprecated Types
+
+- `BreakpointsAliasDirectionMediaConditions`
+- `BreakpointsMediaConditions`
+- `MetaBreakpointsTokenGroup`
+- `Tokens` (replaced by `Theme`)
+
+##### Deprecated all JSON exports
+
+- `@shopify/polaris-tokens/json/border.json`
+- `@shopify/polaris-tokens/json/breakpoints.json`
+- `@shopify/polaris-tokens/json/color.json`
+- `@shopify/polaris-tokens/json/font.json`
+- `@shopify/polaris-tokens/json/height.json`
+- `@shopify/polaris-tokens/json/motion.json`
+- `@shopify/polaris-tokens/json/shadow.json`
+- `@shopify/polaris-tokens/json/space.json`
+- `@shopify/polaris-tokens/json/text.json`
+- `@shopify/polaris-tokens/json/width.json`
+- `@shopify/polaris-tokens/json/zIndex.json`
+
+If you are using these exports, update the implementation to import `themes` and `JSON.stringify` the theme you need.
+
+```diff
+- const color = require('@shopify/polaris-tokens/json/color.json');
++ const {themes} = require('@shopify/polaris-tokens');
++ const color = JSON.stringify(themes.light.color);
+```
+
+##### `tokens` object
+
+Instead of importing `tokens` directly you should use the `useTheme` hook when you have to access token values. If you must access the tokens directly, you can import `tokens` -> `defaultTheme` from `@shopify/polaris-tokens`.
+
+```diff
+- import {tokens} from '@shopify/polaris-tokens';
++ import {useTheme} from '@shopify/polaris';
+
++ const theme = useTheme();
+
+- tokens.space['1'];
++ theme.space['100'];
+```
+
 ## Manual updates and fixes
 
 ### A new web font
@@ -2587,55 +2686,3 @@ The following component's children cannot be above the bevel's `z-index` elevati
 
 Custom elements that were styled to look like the previous Polaris design language will need to be updated.
 Take the opportunity to put custom styles and components on mainline Polaris using our [components](/components) and [tokens](/tokens/color).
-
-### `@shopify/polaris-tokens` updates
-
-#### Renames
-
-- `getCustomPropertyNames` renamed to `getThemeVarNames`
-- `createVar` renamed to `createVarName`
-
-#### Deprecations
-
-##### Deprecated Utilities
-
-If you are using these utilities, feel free to copy them from v11 into your own codebase.
-
-- `createExact`
-- `createMetadata`
-- `getKeyframeNames`
-- `getUnit`
-- `isKeyOf`
-- `rem`
-- `removeMetadata`
-- `toEm`
-- `tokensToRems`
-
-##### Deprecated Types
-
-- `BreakpointsAliasDirectionMediaConditions`
-- `BreakpointsMediaConditions`
-- `MetaBreakpointsTokenGroup`
-- `Tokens` (replaced by `Theme`)
-
-##### Deprecated all JSON exports
-
-- `@shopify/polaris-tokens/json/border.json`
-- `@shopify/polaris-tokens/json/breakpoints.json`
-- `@shopify/polaris-tokens/json/color.json`
-- `@shopify/polaris-tokens/json/font.json`
-- `@shopify/polaris-tokens/json/height.json`
-- `@shopify/polaris-tokens/json/motion.json`
-- `@shopify/polaris-tokens/json/shadow.json`
-- `@shopify/polaris-tokens/json/space.json`
-- `@shopify/polaris-tokens/json/text.json`
-- `@shopify/polaris-tokens/json/width.json`
-- `@shopify/polaris-tokens/json/zIndex.json`
-
-If you are using these exports, update the implementation to import `themes` and `JSON.stringify` the theme you need.
-
-```diff
-- const color = require('@shopify/polaris-tokens/json/color.json');
-+ const {themes} = require('@shopify/polaris-tokens');
-+ const color = JSON.stringify(themes.light.color);
-```
