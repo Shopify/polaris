@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.25.0
+
+### Minor Changes
+
+- [#10878](https://github.com/Shopify/polaris/pull/10878) [`f185fb99d`](https://github.com/Shopify/polaris/commit/f185fb99dacdb7c6db1f3fdb91f28042d4662da5) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added generic `react-update-component-prop` migration
+
 ## 0.24.0
 
 ### Minor Changes
