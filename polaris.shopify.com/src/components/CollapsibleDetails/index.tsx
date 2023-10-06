@@ -17,7 +17,7 @@ export function CollapsibleDetails({
   };
 
   return (
-    <div>
+    <details>
       <motion.summary
         style={{display: 'flex', margin: '0.5rem 0', cursor: 'pointer'}}
         onClick={toggleOpen}
@@ -46,6 +46,6 @@ export function CollapsibleDetails({
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </details>
   );
 }
