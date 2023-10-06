@@ -21,7 +21,7 @@ keywords:
   - icon colors
 ---
 
-# {frontmatter.title}
+# Icons &rarr; {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 

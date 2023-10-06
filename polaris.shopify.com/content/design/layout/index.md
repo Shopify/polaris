@@ -28,23 +28,24 @@ status: New
 
 <Subnav />
 
-## Overview
-
 <Stack gap="800">
 <Card>
 <Grid gap="400" >
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
-
-### Space defines proximity
+<Box padding="400">
+## Space defines proximity
 
 Space plays a vital role in establishing connections between items. The principle of proximity states that the closer objects are, the stronger their perceived relationship.
 
+</Box>
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
     ![An order card with an inset table followed by an apps card with a grid pattern made of different surfaces](/images/design/layout/layout-overview-01-space@2x.png)
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+<Box padding="400">
 Grouping similar items together helps merchants understand which elements are related and helps them make faster decisions.
+</Box>
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
     <Do>
@@ -68,13 +69,14 @@ Grouping similar items together helps merchants understand which elements are re
 <Card>
 <Grid gap="400">
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
-
+<Box padding="400">
 ## Emphasis creates hierarchy
 
 In the Shopify admin, larger, heavier, and contrasting elements attract attention and create visual rhythm.
 
 Smaller, lighter, and more subtle elements are work-oriented and provide detailed information.
 
+</Box>
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
 
@@ -82,9 +84,9 @@ Smaller, lighter, and more subtle elements are work-oriented and provide detaile
 
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
-
+<Box padding="400">
     Use size, weight, and contrast to establish hierarchy in the admin. Divider lines are used to delimit rows of information in data and index tables, and rarely for dividing information elsewhere.
-
+</Box>
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
     <Do>
@@ -108,11 +110,12 @@ Smaller, lighter, and more subtle elements are work-oriented and provide detaile
 <Card>
 <Grid gap="400">
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
-
+<Box padding="400">
 ## Software, not website
 
 Since the admin is more like software, rather than a website, elements need to be sized appropriately based on their job.
 
+</Box>
 </Grid.Cell>
 
 <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -122,7 +125,9 @@ Since the admin is more like software, rather than a website, elements need to b
 </Grid.Cell>
 
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+<Box padding="400">
     Compact elements add detail, and larger elements command more attention. Surfaces adapt to these components and offer an optimized view of the admin.
+</Box>
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
     <Do>

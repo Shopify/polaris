@@ -1,6 +1,6 @@
 ---
 title: Creating Depth
-icon: ColorsMajor
+icon: VariantMajor
 showTOC: true
 keywords:
   - depth
@@ -9,7 +9,7 @@ keywords:
   - bevel use
 ---
 
-# {frontmatter.title}
+# Depth &rarr; {frontmatter.title}
 
 <Subnav />
 

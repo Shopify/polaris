@@ -29,10 +29,14 @@ description: The admin is high density by default, but the level of density can 
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ## High density
 
-                Information-rich interfaces, like index pages or data tables, require high-density layouts for efficiency. By presenting information in a denser format, merchants can quickly access and compare data, enhancing the effectiveness of the Shopify admin.
+Information-rich interfaces, like index pages or data tables, require high-density layouts for efficiency. By presenting information in a denser format, merchants can quickly access and compare data, enhancing the effectiveness of the Shopify admin.
+
+</Box>
+
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
                 <Do>
@@ -42,8 +46,9 @@ description: The admin is high density by default, but the level of density can 
                 </Do>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
-
+            <Box padding="400">
                 Another way to create visual zones in high density layouts is to use different surface colors. Secondary colors can be used to create visual hierarchy within a high density component to increase visual hierarchy and to guide merchants to the data that matters most.
+            </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
                 <Do>
@@ -58,10 +63,12 @@ description: The admin is high density by default, but the level of density can 
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Grid and vertical divisions
 
                 Dividing surfaces vertically and in a grid pattern also offers a way to increase density. This type of visual pattern is better suited for selections or data visualization and should be used accordingly. These divisions are made by using different surface background colors instead of using line dividers.
+            </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
                 <Do>
@@ -85,10 +92,12 @@ description: The admin is high density by default, but the level of density can 
      <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Action components use high density
 
-                Smaller components, like option lists or popovers, are built with high density in mind. Because their main purpose is to offer a set of actions to the merchant, they need to feel small and efficient. Effectively designed action components give the feeling of a pro-tool in the Shopify admin and increase efficiency when using different features.
+                Smaller components, like option lists or popovers, are built with high density in mind. Because their main purpose is to offer a set of actions to the merchant, they need to feel small and efficient. Effectively designed action components give the feeling of a pro tool in the Shopify admin and increase efficiency when using different features.
+            </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
                 <Do>
@@ -112,6 +121,7 @@ description: The admin is high density by default, but the level of density can 
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ## Low density
 
@@ -120,6 +130,7 @@ description: The admin is high density by default, but the level of density can 
                 Because low density interfaces offer more space, there is more for the merchant to analyze before taking action. Low density interfaces can also contain high density components, like a complex text editor within a card that serves to edit a product title and description.
 
                 Top-to-bottom visual rhythm is often used to create a linear and predictable layout that is easy for merchants to understand.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -144,10 +155,12 @@ description: The admin is high density by default, but the level of density can 
     <Card>
         <Grid gap="400">
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+            <Box padding="400">
 
                 ### Switching contexts
 
                 Cards are the best way to switch context in low density layouts. Each card can be specialized in a set of features that requires the merchant to recenter their focus.
+            </Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>

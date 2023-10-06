@@ -30,7 +30,7 @@ keywords:
   - icon visual harmony.
 ---
 
-# {frontmatter.title}
+# Icons &rarr; {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
 

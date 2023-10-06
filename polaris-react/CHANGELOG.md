@@ -108,6 +108,11 @@
 
 * Updated dependencies [[`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532)]:
   - @shopify/polaris-tokens@7.13.0-beta.0
+## 11.26.0
+
+### Minor Changes
+
+- [#10788](https://github.com/Shopify/polaris/pull/10788) [`82f10e830`](https://github.com/Shopify/polaris/commit/82f10e8307bcc7a839e4733b4c03c957ff2fbd88) Thanks [@mrcthms](https://github.com/mrcthms)! - Deprecated the IndexFiltersManager component
 
 ## 11.25.0
 
