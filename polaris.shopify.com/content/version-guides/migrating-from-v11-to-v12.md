@@ -691,6 +691,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 | `plain=true`                        | `variant="plain"`                                                                                                           |
 | `primary=true`                      | `variant="primary"`                                                                                                         |
 | `primary=true` + `plain=true`       | `variant="tertiary"`                                                                                                        |
+| `primary=true` + `destructive=true` | `variant="primary"` + `tone="critical"`                                                                                     |
 | `monochrome=true` + `plain=true`    | `variant="monochromePlain"` \* <br/>This will be deprecated in a future release, please use a different variant if possible |
 | `destructive=true`                  | `variant="primary"` + `tone="critical"`                                                                                     |
 | `primarySuccess=true`               | `variant="primary"` + `tone="success"`                                                                                      |
