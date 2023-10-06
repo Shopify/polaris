@@ -1,0 +1,59 @@
+@use 'true' as *;
+@import '../../common';
+
+@include describe('@include responsive-props()') {
+  @include it('Outputs the correct media query expressions') {
+    @include assert {
+      @include output {
+        @include responsive-props('box', 'padding', 'padding-top');
+      }
+
+      // stylelint-disable -- This is the generated output, it's not meant to be
+      // formatted
+      @include expect {
+        --pc-box-padding-xs: initial;
+        --pc-box-padding-sm: initial;
+        --pc-box-padding-md: initial;
+        --pc-box-padding-lg: initial;
+        --pc-box-padding-xl: initial;
+
+        padding-top: var(--pc-box-padding-xs, initial);
+
+        @media (min-width: 30.625em) {
+          padding-top: var(
+            --pc-box-padding-sm,
+            var(--pc-box-padding-xs, initial)
+          );
+        }
+        @media (min-width: 48em) {
+          padding-top: var(
+            --pc-box-padding-md,
+            var(--pc-box-padding-sm, var(--pc-box-padding-xs, initial))
+          );
+        }
+        @media (min-width: 65em) {
+          padding-top: var(
+            --pc-box-padding-lg,
+            var(
+              --pc-box-padding-md,
+              var(--pc-box-padding-sm, var(--pc-box-padding-xs, initial))
+            )
+          );
+        }
+        @media (min-width: 90em) {
+          padding-top: var(
+            --pc-box-padding-xl,
+            var(
+              --pc-box-padding-lg,
+              var(
+                --pc-box-padding-md,
+                var(--pc-box-padding-sm, var(--pc-box-padding-xs, initial))
+              )
+            )
+          );
+        }
+      }
+      // stylelint-enable
+    }
+  }
+}
