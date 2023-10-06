@@ -77,9 +77,7 @@ Transitions should be smooth and fluid, guiding merchants’ attention and maint
         />
         Search card interface quickly animating into place.
       </video>
-      Animate all elements on a page simultaneously. Overwhelming motion can disorient
-      users and break continuity. Animating a single element often can be enough
-      to provide sufficient context and maintain a sense of continuity.
+      Animate all elements on a page simultaneously. Overwhelming motion can disorient users and break continuity. Animating a single element is often enough to provide sufficient context and maintain a sense of continuity.
     </Dont>
   </Grid.Cell>
 </Grid>
@@ -100,7 +98,7 @@ Animations should be simple and purposeful, used to enhance understanding or pro
   />
   Checkbox animation mimicking the real world.
 </video>
-Use simple, meaningful animations that are consistent with the overall style and
+Use simple, meaningful, animations that are consistent with the overall style and
 tone of the interface.
 
 #### Dont
