@@ -1,6 +1,6 @@
 import React from 'react';
-
-declare function MyComponent(props: any): JSX.Element;
+// @ts-expect-error
+import {MyComponent} from '@shopify/polaris';
 
 export function App() {
   return (
