@@ -1,11 +1,11 @@
 import React from 'react';
-
-declare function MyComponent(props: any): JSX.Element;
+// @ts-expect-error
+import {MyComponent} from '@shopify/polaris';
 
 export function App() {
   return (
     <>
-      <MyComponent foo="bar" variant="non-targeted-value">
+      <MyComponent foo="bar" prop="non-targeted-value">
         Hello world
       </MyComponent>
       <MyComponent foo="bar" variant="new-targeted-value">

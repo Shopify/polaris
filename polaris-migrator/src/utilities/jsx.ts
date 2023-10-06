@@ -199,8 +199,12 @@ export function insertJSXComment(
   const lineBreak = j.jsxText('\n');
 
   if (position === 'before') {
-    element.insertBefore(jsxComment);
-    element.insertBefore(lineBreak);
+    if (element.parentPath.value.type === 'ReturnStatement') {
+      insertCommentBefore(j, element, comment);
+    } else {
+      element.insertBefore(jsxComment);
+      element.insertBefore(lineBreak);
+    }
   }
 
   if (position === 'after') {
