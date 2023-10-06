@@ -58,15 +58,8 @@ type BreakpointsMatches = {
 
 const breakpointsQueryEntries = getBreakpointsQueryEntries(breakpoints);
 
-function getMatches(
-  defaults?: UseBreakpointsOptions['defaults'],
-  /**
-   * Used to force defaults on initial client side render so they match SSR
-   * values and hence avoid a Hydration error.
-   */
-  forceDefaults?: boolean,
-) {
-  if (!isServer && !forceDefaults) {
+function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
+  if (!isServer) {
     return Object.fromEntries(
       breakpointsQueryEntries.map(([directionAlias, query]) => [
         directionAlias,
@@ -122,13 +115,7 @@ export interface UseBreakpointsOptions {
  * breakpoints //=> All values will be `true` during SSR
  */
 export function useBreakpoints(options?: UseBreakpointsOptions) {
-  // On SSR, and initial CSR, we force usage of the defaults to avoid a
-  // hydration mismatch error.
-  // Later, in the effect, we will call this again on the client side without
-  // any defaults to trigger a more accurate client side evaluation.
-  const [breakpoints, setBreakpoints] = useState(
-    getMatches(options?.defaults, true),
-  );
+  const [breakpoints, setBreakpoints] = useState(getMatches(options?.defaults));
 
   useIsomorphicLayoutEffect(() => {
     const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
@@ -144,10 +131,6 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
         mql.addEventListener('change', handler);
       }
     });
-
-    // Trigger the breakpoint recalculation at least once client-side to ensure
-    // we don't have stale default values from SSR.
-    handler();
 
     return () => {
       mediaQueryLists.forEach((mql) => {
