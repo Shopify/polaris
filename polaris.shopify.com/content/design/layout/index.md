@@ -44,7 +44,7 @@ Space plays a vital role in establishing connections between items. The principl
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
 <Box padding="400">
-Grouping similar items together helps merchants understand which elements are related and make faster decisions.
+Grouping similar items together helps merchants understand which elements are related and helps them make faster decisions.
 </Box>
 </Grid.Cell>
 <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
@@ -74,7 +74,7 @@ Grouping similar items together helps merchants understand which elements are re
 
 In the Shopify admin, larger, heavier, and contrasting elements attract attention and create visual rhythm.
 
-Smaller, lighter, and subtler elements are work-oriented and provide detailed information.
+Smaller, lighter, and more subtle elements are work-oriented and provide detailed information.
 
 </Box>
 </Grid.Cell>
@@ -113,7 +113,7 @@ Smaller, lighter, and subtler elements are work-oriented and provide detailed in
 <Box padding="400">
 ## Software, not website
 
-Since the admin is more like software than a website, elements need to be sized appropriately based on their job.
+Since the admin is more like software, rather than a website, elements need to be sized appropriately based on their job.
 
 </Box>
 </Grid.Cell>

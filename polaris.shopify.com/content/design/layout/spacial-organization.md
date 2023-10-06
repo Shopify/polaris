@@ -136,7 +136,7 @@ description: Components, elements and surfaces are organized to create compositi
 
                 ### Nesting
 
-                Nesting surfaces and other elements is crucial to the pro feel of the Shopify admin. Careful consideration should be taken when using elements of varying border radiuses in order to create the feeling that the interface is purpose-built.
+                Nesting surfaces and other elements is crucial to the pro-feel of the Shopify admin. Careful consideration should be taken when using elements of varying border radiuses in order to create the feeling that the interface is purpose-built.
             </Box>
 
             </Grid.Cell>
@@ -152,7 +152,7 @@ description: Components, elements and surfaces are organized to create compositi
                 <Dont>
                     ![A surface that has a equal or larger corner radius than its parent](/images/design/layout/layout-spatial-11-nesting-same-radius-dont@2x.png)
 
-                    Make all nested elements have the same, or larger border radius than their parent.
+                    Make all nested elements have the same, or larger, border radius than their parent.
                 </Dont>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6}}>
@@ -220,7 +220,7 @@ description: Components, elements and surfaces are organized to create compositi
                 <Do>
                     ![A button with adjusted padding so its prefix icon looks like it’s positioned correctly](/images/design/layout/layout-spatial-17-shaped-elements-spacing-do@2x.png)
 
-                    Pay attention to spacing when creating smaller elements, this includes using different sizes per side to achieve visual balance.
+                    Pay attention to spacing when creating smaller elements. This includes using different sizes per side to achieve visual balance.
                 </Do>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6}}>
@@ -240,8 +240,11 @@ description: Components, elements and surfaces are organized to create compositi
 
                 ### Buttons
 
-                Buttons are shaped elements, as their contents can vary their sizing to adjust for visual balance. Sizing of buttons depends on context. Standalone or grouped, buttons have a default size that is widely used in the admin. Because buttons often pull the most attention to a primary action, their size has been adjusted so as to not overwhelm the visual balance of the admin.
-            </Box>
+                Buttons are shaped elements, as their contents can vary their sizing to adjust for visual balance. Sizing of buttons depends on context.
+
+                Standalone or grouped, buttons have a default size that is widely used in the admin. Because buttons often pull the most attention to a primary action, their size has been adjusted so as to not overwhelm the visual balance of the admin.
+
+</Box>
 
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>

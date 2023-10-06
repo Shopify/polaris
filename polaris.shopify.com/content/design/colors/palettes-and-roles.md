@@ -61,7 +61,7 @@ icon: ColorsMajor
 
           A color role is composed of a collection of tokens that represent different parts of the UI. Each color role follows the same logic for all tokens, but not all tokens are defined for each color role.
 
-          Color roles like default will have all tokens defined, because the default color role offers the baseline color for all elements in the Shopify admin. Roles like critical or information will only have a selection of tokens defined, as these roles are usually applied to specific, smaller and more specialized components like badges or banners.
+          Color roles like `default` will have all tokens defined, because the default color role offers the baseline color for all elements in the Shopify admin. Roles like `critical` or `information` will only have a selection of tokens defined, as these roles are usually applied to specific, smaller and more specialized components like badges or banners.
 
           More information about tokens and their usage can be found under Using color.
 
@@ -382,7 +382,7 @@ icon: ColorsMajor
 
           ### Warning
 
-          Warning is used to tell merchants that something will need their attention. Warning is also used to convey statuses that are in-progress, pending, or that could require merchant intervention. Warning is the strongest, non-blocking color role in the admin.
+          Warning is used to tell merchants that something needs their attention. Warning is also used to convey statuses that are in-progress, pending, or that could require merchant intervention. Warning is the strongest, non-blocking color role in the admin.
 
         </Box>
 

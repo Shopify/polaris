@@ -258,7 +258,7 @@ icon: PaintBrushMajor
       <Do>
       ![An index table](/images/design/colors/color-using-color-border-do@2x.png)
 
-      Use borders for tables and containers that look like tables to make data easier to read.
+      Use borders for tables, and containers that look like tables, to make data easier to read.
       </Do>
 
     </Grid.Cell>
@@ -299,7 +299,7 @@ icon: PaintBrushMajor
 
           ### Text
 
-          Text color can be used on any text element and any icon element that accompanies text. Text colors are designed to be fully accessible in terms of contrast on their corresponding backgrounds and surfaces and should only be used in tandem with them, but can generally be used on any other background or surface if contrast is sufficient.
+          Text color can be used on any text element and any icon element that accompanies text. Text colors are designed to be fully accessible, in terms of contrast on their corresponding backgrounds and surfaces, and should only be used in tandem with them, but can generally be used on any other background or surface if contrast is sufficient.
 
           Text color that exists on a fill has its own `on-fill` color. This relationship is strict and `on-fill` text can only be used on its corresponding `fill` color.
 
@@ -324,7 +324,7 @@ icon: PaintBrushMajor
       <Do>
       ![A type composition with a headline, followed by a slightly lighter subtitle and even slightly lighter text](/images/design/colors/color-using-color-text-do@2x.png)
 
-      Use text color to create visual hierarchy by using default, secondary or tertiary role colors when available.
+      Use text color to create visual hierarchy by using default, secondary, or tertiary role colors when available.
       </Do>
 
     </Grid.Cell>

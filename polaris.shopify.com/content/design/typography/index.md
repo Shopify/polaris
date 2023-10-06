@@ -49,7 +49,7 @@ Use a combination of weight, size, color and positioning to define hierarchy.
 
 ## Typography defines purpose
 
-Polaris assigns meaning to type based on its usage. Mono is used for code, tabular number stylesets are employed for numbers and currency amounts, and typescales are designed with UI design in mind.
+Polaris assigns meaning to type based on its usage. Mono is used for code; tabular number stylesets are employed for numbers and currency amounts; and typescales are designed with UI design in mind.
 
 <Stack gap='400'>
 
