@@ -1,5 +1,13 @@
 # Changelog
 
+## 12.0.0-beta.3
+
+### Patch Changes
+
+- [#10918](https://github.com/Shopify/polaris/pull/10918) [`aaf61fe6a`](https://github.com/Shopify/polaris/commit/aaf61fe6a9bf48e284285c3320edf213d95b2263) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Executing `useBreakpoints` isormophically no longer triggers a Hydration mismatch error or rendering bugs.
+
+* [#10871](https://github.com/Shopify/polaris/pull/10871) [`77744cbf0`](https://github.com/Shopify/polaris/commit/77744cbf0f6e44f99425bd395ef2c7fb5e7b917b) Thanks [@chloerice](https://github.com/chloerice)! - Disabled `calt` font ligatures to prevent unwanted stylizing of letters into symbols
+
 ## 12.0.0-beta.2
 
 ### Major Changes
@@ -108,6 +116,7 @@
 
 * Updated dependencies [[`86d4040c0`](https://github.com/Shopify/polaris/commit/86d4040c052a0dba0cb6f0d6e0f6fb8faf14c532)]:
   - @shopify/polaris-tokens@7.13.0-beta.0
+
 ## 11.26.0
 
 ### Minor Changes
