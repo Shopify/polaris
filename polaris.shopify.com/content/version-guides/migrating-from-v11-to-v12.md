@@ -762,7 +762,11 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 The [updated split example](/components/actions/button) can also be referenced as an example for this manual migration.
 
 ```diff
-- <Button connectedDisclosure={<Popover activator={<Button icon={ChevronDownMinor} />} />}>
+- <Button
+-   connectedDisclosure={
+-     <Popover activator={<Button icon={ChevronDownMinor} />} />
+-   }
+- >
 -   Save
 - </Button>
 + <ButtonGroup variant="segmented">
@@ -1765,6 +1769,7 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   />
   <Code
     code={{
+      className: 'language-regex',
       title: 'Check RegExp for outdated --p-color-bg-app token',
       code: String.raw`(?:--p-color-bg-app)(?![\w-])`,
     }}
@@ -2196,7 +2201,7 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
   />
   <p>
     Only replace instances flagged by the RegExp below if they are values listed
-    in the replacement map for this step (see table below):
+    in the replacement map for this step (see table above):
   </p>
   <Code
     code={{
