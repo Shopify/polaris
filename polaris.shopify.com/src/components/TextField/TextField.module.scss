@@ -1,0 +1,39 @@
+.TextField {
+  position: relative;
+
+  .Icon {
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+    font-size: var(--font-size-300);
+    padding: var(--p-space-200) var(--p-space-500);
+    width: 100%;
+    background: transparent;
+    border-radius: var(--p-border-radius-200);
+    border: 1px solid var(--border-color);
+
+    &:focus-within {
+      border-color: transparent;
+    }
+
+    &.round {
+      border-radius: var(--border-radius-round);
+    }
+
+    &[type='search'] {
+      padding: var(--p-space-300) var(--p-space-400) var(--p-space-300)
+        var(--p-space-1200);
+
+      ::-webkit-search-cancel-button {
+        cursor: pointer;
+      }
+    }
+  }
+}

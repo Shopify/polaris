@@ -33,6 +33,7 @@ import {FeaturedCardGrid} from '../FeaturedCardGrid';
 import {useCopyToClipboard} from '../../utils/hooks';
 import {Colors} from './components/Colors';
 import {CollapsibleDetails} from '../../components/CollapsibleDetails';
+import MigrationPathCombobox from '../../components/MigrationPathCombobox';
 
 const CodeVisibilityContext = createContext<
   [
@@ -250,6 +251,7 @@ function Markdown<
         Colors,
         CollapsibleDetails,
         Code,
+        MigrationPathCombobox,
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">
