@@ -22,11 +22,11 @@ status: New
 
           ## What is pro?
 
-          "Pro" in Shopify's context refers to a design language that prioritizes efficiency and intuitive interactions, catering to the daily tasks merchants perform everyday.
+          "Pro", in Shopify's context, refers to a design language that prioritizes efficiency and intuitive interactions, catering to the daily tasks merchants perform everyday.
 
           It involves using space efficiently to allow merchants to view more data at once. It's about avoiding being verbose and making the interface action-driven with intuitive icons for swift navigation.
 
-          It also means combining motion, color, and depth to create a responsive and dynamic interface, with clear affordances that enable intuitive interaction without confusion about interactivity.
+          It also means combining motion, color, and depth to create a responsive and dynamic interface, with clear affordances, that enable intuitive interaction without confusion about interactivity.
 
         </Box>
 
@@ -54,7 +54,7 @@ status: New
 
           **Visual language is clear for merchants.**
 
-          When using color, strong meaning is associated. Red means danger, green means go. Color roles are heightened in the interface and add a layer of detail that merchants can quickly understand and master.
+          Strong meaning is associated when using color. Red means danger, green means go. Color roles are heightened in the interface and add a layer of detail that merchants can quickly understand and master.
         </Box>
 
       </Grid.Cell>
@@ -194,7 +194,7 @@ status: New
 
         <Box padding="400">
 
-          Interactions are quick and user actions provide instant feedback that feels almost life-like. Transitions are seamless and help create an intuitive navigation experience.
+          Interactions are quick and user-actions provide instant feedback that feels almost life-like. Transitions are seamless and help create an intuitive navigation experience.
 
         </Box>
 
@@ -248,7 +248,7 @@ status: New
 
           **Objects with similar appearance share a common behavior.**
 
-          Elements that are similar visually behave consistently throughout the interface. Consistency in behavior reduces confusion and cognitive load for merchants.
+          Elements that are visually similar behave consistently throughout the interface. Consistency in behavior reduces confusion and cognitive load for merchants.
 
         </Box>
 

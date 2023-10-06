@@ -53,7 +53,7 @@ Icons are simple and effectively convey their intended meaning. Avoid unnecessar
 </InlineGrid>
 
      ## Consistent
-     Icons follow a cohesive visual style across the user interface. This includes a consistent use of line weights, shapes, dimensions, perspectives, and general style. Design consistency enables users to quickly recognize functionality and navigate the interface more intuitively.
+     Icons follow a cohesive visual style across the user interface. This includes a consistent use of line weights, shapes, dimensions, perspectives, and general style. Consistency in designs enables users to quickly recognize functionality and navigate the interface more intuitively.
 
 
 

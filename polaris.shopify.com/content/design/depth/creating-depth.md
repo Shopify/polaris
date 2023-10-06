@@ -107,7 +107,7 @@ keywords:
         <DirectiveCard status="Tip">
           ![Two buttons, where the one being pressed is darked than the other.](/images/design/depth/creating/depth-creating-6@2x.png)
 
-          Decrease the brightness of an element, when it’s being pushed down in the Z index. When a button is pressed, it goes down.
+          Decrease the brightness of an element when it’s being pushed down in the Z index. When a button is pressed, it goes down.
         </DirectiveCard>
       </Grid.Cell>
 
@@ -115,7 +115,7 @@ keywords:
         <DirectiveCard status="Tip">
           ![A menu where the item selected featured a light background. ](/images/design/depth/creating/depth-creating-7@2x.png)
 
-          Increase the brightness of an element, when it’s being pushed up in the Z index. When a page is active, it goes up.
+          Increase the brightness of an element when it’s being pushed up in the Z index. When a page is active, it goes up.
         </DirectiveCard>
       </Grid.Cell>
     </Grid>
@@ -159,7 +159,7 @@ keywords:
             #### Do
             ![A card with tasks, where the task in view features a gray background.](/images/design/depth/creating/depth-creating-10@2x.png)
 
-            Keep most elements on the same layer to establish a visual baseline, and allow for purposeful use of layering when necessary to denote importance or interactivity.
+            Keep most elements on the same layer to establish a visual baseline, and allow for purposeful use of layering, when necessary, to denote importance or interactivity.
 
             #### Dont
             ![A card with tasks, where the task in view features a drop shadow and a bevel effect.](/images/design/depth/creating/depth-creating-11@2x.png)
@@ -212,12 +212,12 @@ keywords:
           <Do>
             ![The bottom of the search results card, featuring a grey background that contains secondary information.](/images/design/depth/creating/depth-creating-14@2x.png)
 
-            Use a gray background to deemphasize contained information. This will divert merchants’ attention towards more important information, as the muted background visually recedes, pushing the contained content into the background.
+            Use a gray background to de-emphasize contained information. This will divert merchants’ attention towards more important information, as the muted background visually recedes, pushing the contained content into the background.
           </Do>
           <Do>
             ![A table with products, featuring an outline container and outline dividers between rows.](/images/design/depth/creating/depth-creating-15@2x.png)
 
-            Use outlines to contain a group of information that needs to be emphasized. This will make that container stand out from the rest of the interface, drawing merchant’s attention to the grouped elements.
+            Use outlines to contain a group of information that needs to be emphasized. This will make the container stand out from the rest of the interface, drawing merchant’s attention to the grouped elements.
             The outlined container creates an illusion of depth, suggesting that the contained content is elevated above the primary interface layer.
           </Do>
           <Grid areas={{ xs: ['a a a a a a', 'b b b b b b'], lg: ['a a a a a a b b b b b b'] }}>
