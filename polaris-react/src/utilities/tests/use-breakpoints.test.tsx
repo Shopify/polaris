@@ -18,138 +18,89 @@ describe('useBreakpoints', () => {
     matchMedia.restore();
   });
 
-  it('initial render uses defaults', () => {
-    setMediaWidth('breakpoints-xs');
-    let breakpoints;
-    let renders = 0;
-    mount(<MockComponent />);
-
-    function MockComponent() {
-      renders++;
-      breakpoints = useBreakpoints({
-        defaults: {
-          mdDown: true,
-          mdOnly: true,
-          mdUp: true,
-        },
-      });
-
-      expect(breakpoints).toMatchObject(
-        renders === 1
-          ? {
-              xsDown: false,
-              xsOnly: false,
-              xsUp: false,
-              mdDown: true,
-              mdOnly: true,
-              mdUp: true,
-            }
-          : {
-              xsDown: true,
-              xsOnly: true,
-              xsUp: true,
-              mdDown: false,
-              mdOnly: false,
-              mdUp: false,
-            },
-      );
-
-      return null;
-    }
-
-    expect(breakpoints).toMatchObject({
-      xsDown: true,
-      xsOnly: true,
-      xsUp: true,
-      mdDown: false,
-      mdOnly: false,
-      mdUp: false,
-    });
-  });
-
   it('breakpoints-xs', () => {
     setMediaWidth('breakpoints-xs');
-    let breakpoints;
     mount(<MockComponent />);
 
     function MockComponent() {
-      breakpoints = useBreakpoints();
+      const breakpoints = useBreakpoints();
+
+      expect(breakpoints).toMatchObject({
+        xsDown: true,
+        xsOnly: true,
+        xsUp: true,
+      });
+
       return null;
     }
-
-    expect(breakpoints).toMatchObject({
-      xsDown: true,
-      xsOnly: true,
-      xsUp: true,
-    });
   });
 
   it('breakpoints-sm', () => {
     setMediaWidth('breakpoints-sm');
-    let breakpoints;
     mount(<MockComponent />);
 
     function MockComponent() {
-      breakpoints = useBreakpoints();
+      const breakpoints = useBreakpoints();
+
+      expect(breakpoints).toMatchObject({
+        smDown: true,
+        smOnly: true,
+        smUp: true,
+      });
+
       return null;
     }
-
-    expect(breakpoints).toMatchObject({
-      smDown: true,
-      smOnly: true,
-      smUp: true,
-    });
   });
 
   it('breakpoints-md', () => {
     setMediaWidth('breakpoints-md');
-    let breakpoints;
     mount(<MockComponent />);
 
     function MockComponent() {
-      breakpoints = useBreakpoints();
+      const breakpoints = useBreakpoints();
+
+      expect(breakpoints).toMatchObject({
+        mdDown: true,
+        mdOnly: true,
+        mdUp: true,
+      });
+
       return null;
     }
-
-    expect(breakpoints).toMatchObject({
-      mdDown: true,
-      mdOnly: true,
-      mdUp: true,
-    });
   });
 
   it('breakpoints-lg', () => {
     setMediaWidth('breakpoints-lg');
-    let breakpoints;
     mount(<MockComponent />);
 
     function MockComponent() {
-      breakpoints = useBreakpoints();
+      const breakpoints = useBreakpoints();
+
+      expect(breakpoints).toMatchObject({
+        lgDown: true,
+        lgOnly: true,
+        lgUp: true,
+      });
+
       return null;
     }
-
-    expect(breakpoints).toMatchObject({
-      lgDown: true,
-      lgOnly: true,
-      lgUp: true,
-    });
   });
 
   it('breakpoints-xl', () => {
     setMediaWidth('breakpoints-xl');
-    let breakpoints;
     mount(<MockComponent />);
 
     function MockComponent() {
-      breakpoints = useBreakpoints();
+      const breakpoints = useBreakpoints();
+
+      expect(breakpoints).toMatchObject({
+        xlDown: true,
+        xlOnly: true,
+        xlUp: true,
+      });
+
       return null;
     }
-
-    expect(breakpoints).toMatchObject({
-      xlDown: true,
-      xlOnly: true,
-      xlUp: true,
-    });
   });
 });
 
