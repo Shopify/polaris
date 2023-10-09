@@ -3,8 +3,7 @@ import styles from './Heading.module.scss';
 import {Box, type WithAsProp} from '../Box';
 
 export interface HeadingProps {
-  as?: 'h1' | 'h2' | 'h3' | 'h4';
-  className?: string;
+  as?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 }
 
 export const Heading = forwardRef(({as = 'h1', className, ...props}, ref) => (

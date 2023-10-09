@@ -7,6 +7,15 @@ keywords:
   - legacy rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="legacy" />
+
 Use [Polaris tokens](https://polaris.shopify.com/tokens) when possible. Otherwise use hard coded pixel or rem values instead of legacy mixins/variables.
 
 ```diff
@@ -16,4 +25,4 @@ Use [Polaris tokens](https://polaris.shopify.com/tokens) when possible. Otherwis
 - left: -1 * $timeline-border-width;
 ```
 
-#
+<RulePostamble />

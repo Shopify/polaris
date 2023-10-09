@@ -1,6 +1,6 @@
 ---
 title: Collapsible
-description: The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
+shortDescription: Hides content and allows merchants to expand it. Used to hide optional settings, information, and actions.
 category: Utilities
 keywords:
   - hide
@@ -23,7 +23,20 @@ examples:
   - fileName: collapsible-default.tsx
     title: Default
     description: Use for a basic “show more” interaction when you need to display more content.
+previewImg: /images/components/utilities/collapsible.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The collapsible component is used to put long sections of information under a block that merchants can expand or collapse.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

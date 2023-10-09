@@ -14,7 +14,7 @@
         "partiallyComplete": "Kısmen tamamlandı",
         "complete": "Tamamlandı"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Bilgi",
         "success": "Başarılı",
         "warning": "Uyarı",
@@ -24,14 +24,13 @@
         "readOnly": "Salt okunur",
         "enabled": "Etkinleştirildi"
       },
-      "progressAndStatus": "{statusLabel} - {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Bildirimi kapat"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Yükleniyor",
-      "connectedDisclosureAccessibilityLabel": "İlgili işlemler"
+      "spinnerAccessibilityLabel": "Yükleniyor"
     },
     "Common": {
       "checkbox": "onay kutusu",

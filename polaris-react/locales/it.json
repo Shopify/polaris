@@ -14,24 +14,23 @@
         "partiallyComplete": "Parzialmente completo",
         "complete": "Completo"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Info",
-        "success": "Avvenuto",
+        "success": "Operazione riuscita",
         "warning": "Avvertimento",
         "attention": "Attenzione",
-        "new": "Novità",
+        "new": "Nuovo",
         "critical": "Critico",
         "readOnly": "Sola lettura",
         "enabled": "Abilitato"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Elimina notifica"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Caricamento in corso",
-      "connectedDisclosureAccessibilityLabel": "Azioni correlate"
+      "spinnerAccessibilityLabel": "Caricamento in corso"
     },
     "Common": {
       "checkbox": "casella di spunta",

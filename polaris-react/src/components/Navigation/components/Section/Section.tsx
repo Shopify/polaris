@@ -103,7 +103,7 @@ export function Section({
 
   const sectionHeadingMarkup = title && (
     <li className={styles.SectionHeading}>
-      <Text as="span" variant="bodySm" fontWeight="medium" color="subdued">
+      <Text as="span" variant="bodySm" fontWeight="medium" tone="subdued">
         {title}
       </Text>
       {actionMarkup}

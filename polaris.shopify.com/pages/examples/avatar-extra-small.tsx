@@ -18,13 +18,11 @@ function ExtraSmallAvatarExample() {
           items={[
             {
               content: 'Chet Baker',
-              prefix: <Avatar customer size="extraSmall" name="Chet Baker" />,
+              prefix: <Avatar customer size="xs" name="Chet Baker" />,
             },
             {
               content: 'Farrah Fawcett',
-              prefix: (
-                <Avatar customer size="extraSmall" name="Farrah Fawcett" />
-              ),
+              prefix: <Avatar customer size="xs" name="Farrah Fawcett" />,
             },
           ]}
         />

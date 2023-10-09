@@ -14,24 +14,23 @@
         "partiallyComplete": "一部完了済み",
         "complete": "完了"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "情報",
-        "success": "成功しました",
+        "success": "成功",
         "warning": "警告",
-        "attention": "宛先",
+        "attention": "注意",
         "new": "新規",
-        "critical": "クリティカル",
+        "critical": "重大",
         "readOnly": "読み取り専用",
         "enabled": "有効"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "通知を閉じる"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "読み込み中",
-      "connectedDisclosureAccessibilityLabel": "関連したアクション"
+      "spinnerAccessibilityLabel": "読み込み中"
     },
     "Common": {
       "checkbox": "チェックボックス",

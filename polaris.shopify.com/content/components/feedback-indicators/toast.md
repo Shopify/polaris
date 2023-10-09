@@ -1,6 +1,6 @@
 ---
 title: Toast
-description: The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
+shortDescription: A non-disruptive message that provides quick feedback on the outcome of an action.
 category: Feedback indicators
 keywords:
   - toast
@@ -30,7 +30,20 @@ examples:
   - fileName: toast-error.tsx
     title: Error
     description: Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/patterns/error-messages).
+previewImg: /images/components/feedback-indicators/toast.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Required components
 
@@ -66,7 +79,7 @@ Toast messages should be:
 - Short and affirmative
 - Written in the pattern of: noun + verb
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -86,7 +99,7 @@ Toast messages should be:
 - Your Order was Archived Today
 - Discount: Saved successfully
 
-<!-- end -->
+</DoDont>
 
 ### Toast with action
 
@@ -101,7 +114,7 @@ Action should:
 - Not have actions, like [Cancel], for dismissing toast. The [X] to dismiss is already included in the component.
 - Be used with a duration of at least 10,000 milliseconds for accessibility.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -119,7 +132,7 @@ Action should:
 - Continue to collection
 - Dismiss
 
-<!-- end -->
+</DoDont>
 
 ---
 

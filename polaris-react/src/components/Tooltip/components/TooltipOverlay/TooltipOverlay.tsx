@@ -6,7 +6,6 @@ import {PositionedOverlay} from '../../../PositionedOverlay';
 import type {PositionedOverlayProps} from '../../../PositionedOverlay';
 import {useI18n} from '../../../../utilities/i18n';
 import type {Width, Padding, BorderRadius} from '../../Tooltip';
-import {useFeatures} from '../../../../utilities/features';
 
 import styles from './TooltipOverlay.scss';
 
@@ -66,7 +65,6 @@ export function TooltipOverlay({
   zIndexOverride,
   instant,
 }: TooltipOverlayProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const i18n = useI18n();
   const markup = active ? (
     <PositionedOverlay
@@ -112,11 +110,9 @@ export function TooltipOverlay({
 
     return (
       <div style={style} className={containerClassName} {...layer.props}>
-        {polarisSummerEditions2023 && (
-          <svg className={styles.Tail} width="19" height="11" fill="none">
-            {positioning === 'above' ? tailDownPaths : tailUpPaths}
-          </svg>
-        )}
+        <svg className={styles.Tail} width="19" height="11" fill="none">
+          {positioning === 'above' ? tailDownPaths : tailUpPaths}
+        </svg>
         <div
           id={id}
           role="tooltip"

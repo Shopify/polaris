@@ -1,24 +1,16 @@
 @import '../../../../styles/common';
 
 .Container {
-  border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
+  border-bottom: var(--p-border-width-025) solid var(--p-color-border);
   border-top-left-radius: var(--p-border-radius-200);
   border-top-right-radius: var(--p-border-radius-200);
   background: var(--p-color-bg-surface);
-
-  #{$se23} & {
-    border-bottom: var(--p-border-width-025) solid var(--p-color-border);
-  }
 }
 
 @media #{$p-breakpoints-sm-down} {
   .Container {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    height: 57px;
-
-    #{$se23} & {
-      height: unset;
-    }
+    height: unset;
   }
 }

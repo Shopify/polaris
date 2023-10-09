@@ -4,14 +4,12 @@ import {
   Button,
   ButtonGroup,
   Frame,
-  HorizontalStack,
+  InlineStack,
   Page,
   Toast,
   Modal,
+  BlockStack,
   TextContainer,
-  Popover,
-  ActionList,
-  VerticalStack,
 } from '@shopify/polaris';
 
 export default {
@@ -65,7 +63,7 @@ export function MultipleMessages() {
     <div style={{height: '250px'}}>
       <Frame>
         <Page title="Multiple Messages">
-          <ButtonGroup segmented>
+          <ButtonGroup variant="segmented">
             <Button onClick={toggleActiveOne}>Show toast 1</Button>
             <Button onClick={toggleActiveTwo}>Show toast 2</Button>
           </ButtonGroup>
@@ -201,17 +199,17 @@ export function InsideModal() {
             ]}
           >
             <Modal.Section>
-              <VerticalStack gap="200">
+              <BlockStack gap="200">
                 <TextContainer>
                   Use Instagram posts to share your products with millions of
                   people. Let shoppers buy from your store without leaving
                   Instagram.
                 </TextContainer>
-                <HorizontalStack gap="200">
+                <InlineStack gap="200">
                   <Button onClick={toggleActive}>Show Toast</Button>
                   <Button onClick={toggle2Active}>Show Other Toast</Button>
-                </HorizontalStack>
-              </VerticalStack>
+                </InlineStack>
+              </BlockStack>
             </Modal.Section>
           </Modal>
         </Page>

@@ -1,19 +1,14 @@
 import React, {useEffect} from 'react';
-import {
-  AlertMinor,
-  CancelSmallMinor,
-  DiamondAlertMinor,
-} from '@shopify/polaris-icons';
+import {AlertMinor, CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
-import {useFeatures} from '../../../../utilities/features';
 
 import styles from './Toast.scss';
 
@@ -59,14 +54,11 @@ export function Toast({
     </button>
   );
 
-  const {polarisSummerEditions2023} = useFeatures();
-
   const actionMarkup = action ? (
     <div className={styles.Action}>
       <Button
-        plain
-        monochrome
-        removeUnderline={polarisSummerEditions2023}
+        variant="monochromePlain"
+        removeUnderline
         size="slim"
         onClick={action.onAction}
       >
@@ -77,10 +69,7 @@ export function Toast({
 
   const leadingIconMarkup = error ? (
     <div className={styles.LeadingIcon}>
-      <Icon
-        source={polarisSummerEditions2023 ? AlertMinor : DiamondAlertMinor}
-        color="base"
-      />
+      <Icon source={AlertMinor} tone="base" />
     </div>
   ) : null;
 
@@ -90,11 +79,11 @@ export function Toast({
     <div className={className} aria-live="assertive">
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
-      <HorizontalStack gap="400" blockAlign="center">
+      <InlineStack gap="400" blockAlign="center">
         <Text as="span" fontWeight="medium">
           {content}
         </Text>
-      </HorizontalStack>
+      </InlineStack>
       {actionMarkup}
       {dismissMarkup}
     </div>

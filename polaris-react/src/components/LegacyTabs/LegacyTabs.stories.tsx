@@ -5,7 +5,7 @@ import {
   LegacyCard,
   LegacyTabs,
   Text,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -14,42 +14,42 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="800">
-      <VerticalStack gap="400">
+    <BlockStack gap="800">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="400">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With URL tabs
         </Text>
         <WithUrlTabs />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="400">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Fitted
         </Text>
         <Fitted />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="400">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With badge content
         </Text>
         <WithBadgeContent />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="400">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With custom disclosure
         </Text>
         <WithCustomDisclosure />
-      </VerticalStack>
-    </VerticalStack>
+      </BlockStack>
+    </BlockStack>
   );
 }
 
@@ -190,7 +190,7 @@ export function WithBadgeContent() {
       id: 'all-customers-fitted-4',
       content: (
         <span>
-          All <Badge status="new">10+</Badge>
+          All <Badge tone="new">10+</Badge>
         </span>
       ),
       accessibilityLabel: 'All customers',
@@ -200,7 +200,7 @@ export function WithBadgeContent() {
       id: 'accepts-marketing-fitted-4',
       content: (
         <span>
-          Accepts marketing <Badge status="new">4</Badge>
+          Accepts marketing <Badge tone="new">4</Badge>
         </span>
       ),
       panelID: 'accepts-marketing-fitted-content-4',

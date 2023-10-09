@@ -1,0 +1,46 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.Subnav {
+  --border: #e3e3e3;
+  --icon: #4a4a4a;
+  --surface: #ffffff;
+  margin-bottom: 1.5rem;
+
+  @include dark-mode {
+    --border: #373737;
+    --icon: #e7e7e7;
+    --surface: #000000;
+  }
+}
+
+.Items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-space-100);
+  border-radius: var(--p-border-radius-300);
+  border: 1.5px solid var(--border);
+  padding: var(--p-space-100);
+
+  @media screen and (min-width: $breakpointTablet) {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+.Item {
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-200);
+  padding: var(--p-space-150) var(--p-space-300);
+  border-radius: var(--p-border-radius-200);
+  background-color: var(--surface);
+  color: var(--text);
+  fill: var(--icon);
+
+  &:hover,
+  &.Item--active {
+    background-color: var(--surface-active);
+  }
+}

@@ -37,6 +37,10 @@ keywords:
   - blind
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Alt text is a text replacement for an image. Generally, it is represented by the alt HTML element attribute `alt="alt text"`.
 
 Often used by people who are blind or have low vision, screen readers announce alt text to explain images. Alt text will also display when images fail to download (for example, there’s an unstable or low-bandwidth network connection).
@@ -56,7 +60,7 @@ Use alt text when the image conveys valuable information, such as the ability to
 
 All `<img>` tags need an alt text attribute, even if it’s empty. For example, set an empty alt text attribute using `<img alt="" />`.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -78,7 +82,7 @@ All `<img>` tags need an alt text attribute, even if it’s empty. For example, 
 <Icon accessibilityLabel="IMG_1206.heic" />
 ```
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -188,7 +192,7 @@ Not only do we strive to make interactions with our products pleasant, but we wa
 Here’s a
 [standard list of language attributes](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) that you can use in your document.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -204,7 +208,7 @@ Here’s a
 <html></html>
 ```
 
-<!-- end -->
+</DoDont>
 
 ---
 
@@ -221,7 +225,7 @@ When accounting for SEO in your alt text:
 - Avoid reducing the relevance or clarity of the alt text just to insert a keyword.
 - Never include unassociated lists of key words in the alt text. Instead, place those in your [meta description](https://help.shopify.com/en/manual/promoting-marketing/seo/adding-keywords#edit-the-title-and-meta-description-for-a-page).
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -237,7 +241,7 @@ When accounting for SEO in your alt text:
 <Thumbnail alt="Cool shoes for a night out or hot date" />
 ```
 
-<!-- end -->
+</DoDont>
 
 ## Resources
 

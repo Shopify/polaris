@@ -1,6 +1,6 @@
 ---
 title: Page
-description: Use to build the outer wrapper of a page, including the page title and associated actions.
+shortDescription: Used to build the layout of a page in the Shopify admin. A flexible container for composing pages consistently.
 category: Layout and structure
 keywords:
   - page
@@ -19,7 +19,6 @@ keywords:
   - outer wrapper
   - page actions
   - page layouts
-tip: Check out the [new patterns section](https://polaris.shopify.com/patterns) to learn how merchants prefer to select dates in different scenarios!
 examples:
   - fileName: page-default.tsx
     title: Default
@@ -60,10 +59,25 @@ examples:
   - fileName: page-with-content-after-title.tsx
     title: With content after title
     description: Title metadata appears immediately after the page’s title. Use it to communicate brief, important and non-interactive status information about an entire page.
-  - fileName: page-with-divider.tsx
-    title: With divider
-    description: Use when the page needs visual separation between the page header and the content.
+previewImg: /images/components/layout-and-structure/page.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use to build the outer wrapper of a page, including the page title and associated actions.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
+
+<TipBanner title="Tip">
+  Check out the [new patterns section](https://polaris.shopify.com/patterns) to
+  learn how merchants prefer to select dates in different scenarios!
+</TipBanner>
 
 ## Best practices
 
@@ -104,9 +118,9 @@ Page header action labels should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a page action. Never deceive merchants by mislabeling an action.
 
-- Action-led: they should always lead with a strong verb that encourages action. To provide enough context to merchants, use the {verb}+{noun} format.
+- Action-led: they should always lead with a strong verb that encourages action. To provide enough context to merchants, use the \{verb\}+\{noun\} format.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -118,13 +132,13 @@ Page header action labels should be:
 - Create
 - Postmates deliveries
 
-<!-- end -->
+</DoDont>
 
-- Short: for secondary actions, when the noun represents the same object as the page itself, a verb alone may be used. If there is ambiguity (such as with the verb “Cancel”), always use the {verb}+{noun} format.
+- Short: for secondary actions, when the noun represents the same object as the page itself, a verb alone may be used. If there is ambiguity (such as with the verb “Cancel”), always use the \{verb\}+\{noun\} format.
 
   In the context of the orders list page:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -136,11 +150,11 @@ Page header action labels should be:
 - Import orders
 - Export orders
 
-<!-- end -->
+</DoDont>
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -150,7 +164,7 @@ Add menu item
 
 Add a menu item
 
-<!-- end -->
+</DoDont>
 
 ---
 

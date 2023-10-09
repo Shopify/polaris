@@ -1,5 +1,14 @@
-import {MetadataProperties} from '@shopify/polaris-tokens';
-import {Icon} from '@shopify/polaris-icons/metadata';
+import type {MetaTokenProperties} from '@shopify/polaris-tokens';
+import type {Icon} from '@shopify/polaris-icons/metadata';
+import type {MDXRemoteSerializeResult} from 'next-mdx-remote';
+
+type DefaultScope = Record<string, unknown>;
+type DefaultFrontmatter = Record<string, unknown>;
+
+export type SerializedMdx<
+  TFrontmatter = DefaultFrontmatter,
+  TScope = DefaultScope,
+> = MDXRemoteSerializeResult<TScope, TFrontmatter>;
 
 export type PatternExample = {
   code: string;
@@ -45,47 +54,64 @@ export interface Example extends FrontMatter {
   fileName: string;
 }
 
-export interface FrontMatter {
+export type FrontMatter = {
   title: string;
+  draft?: boolean;
+  noIndex?: boolean;
   category?: string;
   url?: string;
   description?: string;
+  shortDescription?: string;
+  seoDescription?: string;
   examples?: Example[];
   icon?: string;
   order?: number;
   keywords?: (string | number)[];
-  status?: {
-    value: string;
-    message: string;
-  };
+  status?: Status;
   hideFromNav?: boolean;
-}
+  featured?: boolean;
+  previewImg?: string;
+  expanded?: boolean;
+  releasedIn?: string | number;
+  showTOC?: boolean;
+  collapsibleTOC?: boolean;
+};
 
-export interface PatternFrontMatter extends Omit<FrontMatter, 'description'> {
+export type PatternFrontMatter = Omit<FrontMatter, 'description'> & {
   /* Description is shown on Patterns index page, and as the meta description on detail page */
   description: string;
   /* Lede is the first paragraph on the detail page, above variants */
   lede: string;
   previewImg?: string;
   order?: number;
-  draft: boolean;
   githubDiscussionsLink?: string;
   variants?: string[];
-}
+};
 
-export interface PatternVariantFontMatter {
+export type PatternVariantFontMatter = {
   title?: string;
   slug?: string;
-}
+};
 
 export type MarkdownFile = {
   frontMatter: any;
   readme: string;
 };
 
-export interface TokenPropertiesWithName extends MetadataProperties {
+export interface TokenPropertiesWithName extends MetaTokenProperties {
   name: string;
 }
+
+// TODO: Why does this differ from searchResultCategoris below?
+export const foundationsCategories = [
+  'foundations',
+  'design',
+  'content',
+  'patterns',
+  'tools',
+] as const;
+
+export type FoundationsCategory = typeof foundationsCategories[number];
 
 export const searchResultCategories = [
   'foundations',
@@ -118,7 +144,7 @@ export interface SearchResult {
       title: string;
       description: string;
       icon: string;
-      category: string;
+      category: FoundationsCategory;
     };
     tokens: {
       category: string;
@@ -164,10 +190,7 @@ export enum StatusName {
   Warning = 'Warning',
 }
 
-export type Status = {
-  value: StatusName;
-  message: string;
-};
+export type Status = StatusName;
 
 export interface QuickGuideRow {
   question: string;
@@ -221,4 +244,5 @@ export interface NavItem {
   children?: NavJSON;
   expanded?: boolean;
   hideFromNav?: boolean;
+  featured?: boolean;
 }

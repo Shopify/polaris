@@ -14,7 +14,6 @@ import {useRouter} from 'next/router';
 import StatusBadge from '../StatusBadge';
 
 const NAV_ID = 'nav';
-
 interface Props {
   darkMode: DarkMode;
   children: React.ReactNode;

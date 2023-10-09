@@ -2,7 +2,7 @@
 hideFromNav: true
 ---
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -12,7 +12,7 @@ hideFromNav: true
 2. The main content is split in two columns, primary content to the left and secondary content to the right. The primary content occupies two thirds of the page to give more space to what’s most important most of the time.
 3. Content is placed in cards, and similar content is grouped in the same card. This helps merchant find and focus on specific subtasks.
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
@@ -22,32 +22,32 @@ hideFromNav: true
 **Create resource objects**
 : Using the resource detail layout when merchants create new resources teaches them both what a resource page looks like and how edit one later.
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+<Usage>
 
 ## Using this pattern
 
-This pattern uses the [`Card`](/components/layout-and-structure/card), [`VerticalStack`](/components/layout-and-structure/vertical-stack), [`HorizontalGrid`](/components/layout-and-structure/horizontal-grid) and [`Page`](/components/layout-and-structure/page) components.
+This pattern uses the [`Card`](/components/layout-and-structure/card), [`BlockStack`](/components/layout-and-structure/block-stack), [`InlineGrid`](/components/layout-and-structure/inline-grid) and [`Page`](/components/layout-and-structure/page) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{ padding: '2rem' }}>
   {(____CODE____)()}
 </div>
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"Resource details layout"}
 function ResourceDetailsLayout() {
   const SkeletonLabel = (props) => {
     return (
       <Box
-        background="bg-strong"
+        background="bg-fill-tertiary"
         minHeight="1rem"
         maxWidth="5rem"
         borderRadius="base"
@@ -85,29 +85,29 @@ function ResourceDetailsLayout() {
         hasNext: true,
       }}
     >
-      <HorizontalGrid columns={{xs: 1, md: '2fr 1fr'}} gap="400">
-        <VerticalStack gap="400">
+      <InlineGrid columns={{xs: 1, md: '2fr 1fr'}} gap="400">
+        <BlockStack gap="400">
           <Card roundedAbove="sm">
-            <VerticalStack gap="400">
+            <BlockStack gap="400">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="8rem" />
               <Box border="divider" borderRadius="base" minHeight="20rem" />
-            </VerticalStack>
+            </BlockStack>
           </Card>
           <Card roundedAbove="sm">
-            <VerticalStack gap="400">
+            <BlockStack gap="400">
               <SkeletonDisplayText size="small" />
-              <HorizontalGrid columns={{xs: 1, md: 2}}>
+              <InlineGrid columns={{xs: 1, md: 2}}>
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
                 <Box border="divider" borderRadius="base" minHeight="10rem" />
-              </HorizontalGrid>
-            </VerticalStack>
+              </InlineGrid>
+            </BlockStack>
           </Card>
-        </VerticalStack>
-        <VerticalStack gap={{xs: '400', md: '200'}}>
+        </BlockStack>
+        <BlockStack gap={{xs: '400', md: '200'}}>
           <Card roundedAbove="sm">
-            <VerticalStack gap="400">
+            <BlockStack gap="400">
               <SkeletonDisplayText size="small" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <Box>
@@ -118,35 +118,53 @@ function ResourceDetailsLayout() {
               <SkeletonLabel />
               <Divider />
               <SkeletonBodyText />
-            </VerticalStack>
+            </BlockStack>
           </Card>
           <Card roundedAbove="sm">
-            <VerticalStack gap="400">
+            <BlockStack gap="400">
               <SkeletonLabel />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel maxWidth="4rem" />
               <Box border="divider" borderRadius="base" minHeight="2rem" />
               <SkeletonLabel />
               <SkeletonBodyText />
-            </VerticalStack>
+            </BlockStack>
           </Card>
-        </VerticalStack>
-      </HorizontalGrid>
+        </BlockStack>
+      </InlineGrid>
     </Page>
   );
 }
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
 
 ### Useful to know
 
-- <span>Always use the default width. Full width tends to waste space and make the page harder to parse.</span> ![Details page with margins on either side of the main content](/images/patterns/resource-details-layout/resource-detail-usage-1.png)
-- <span>Group similar content in the same card.</span> ![Diagram showing multiple cards compared to a single card that groups the same content](/images/patterns/resource-details-layout/resource-detail-usage-2.png)
-- <span>Put information that defines the resource object in the primary column.</span> ![Product detail example](/images/patterns/resource-details-layout/resource-detail-usage-3.png)
-- <span>Put supporting information such as status, metadata, and summaries in the secondary column.</span> ![Product details page with the secondary column outlined](/images/patterns/resource-details-layout/resource-detail-usage-4.png)
-- <span>Arrange content in order of importance.</span> ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-details-layout/resource-detail-usage-5.png)
-- <span>Place unique page actions at the top of the actions list and typical object actions at the bottom.</span> ![Popover with unique page actions placed at the top, and typical object actions placed at the bottom](/images/patterns/resource-details-layout/resource-detail-usage-6.png)
+<SideBySide>
 
-</div>
+- Always use the default width. Full width tends to waste space and make the page harder to parse.
+
+  ![Details page with margins on either side of the main content](/images/patterns/resource-details-layout/resource-detail-usage-1.png)
+
+- Group similar content in the same card.
+
+  ![Diagram showing multiple cards compared to a single card that groups the same content](/images/patterns/resource-details-layout/resource-detail-usage-2.png)
+
+- Put information that defines the resource object in the primary column.
+
+  ![Product detail example](/images/patterns/resource-details-layout/resource-detail-usage-3.png)
+
+- Put supporting information such as status, metadata, and summaries in the secondary column.
+
+  ![Product details page with the secondary column outlined](/images/patterns/resource-details-layout/resource-detail-usage-4.png)
+
+- Arrange content in order of importance.
+
+  ![Product details page with “Very important section” card placed above “Somewhat important section” card](/images/patterns/resource-details-layout/resource-detail-usage-5.png)
+
+- Place unique page actions at the top of the actions list and typical object actions at the bottom.
+
+  ![Popover with unique page actions placed at the top, and typical object actions placed at the bottom](/images/patterns/resource-details-layout/resource-detail-usage-6.png)
+
+</SideBySide>

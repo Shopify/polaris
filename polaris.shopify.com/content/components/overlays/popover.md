@@ -1,6 +1,6 @@
 ---
 title: Popover
-description: Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page.
+shortDescription: Small overlays that open on demand and close when the merchant interacts with any other part of Shopify. Used to surface secondary information or actions.
 category: Overlays
 keywords:
   - interactive
@@ -36,7 +36,20 @@ examples:
   - fileName: popover-with-searchable-listbox.tsx
     title: With searchable listbox
     description: Use to help merchants browse, filter, and choose from a list of options.
+previewImg: /images/components/overlays/popover.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Popovers are small overlays that open on demand. They let merchants access additional content and actions without cluttering the page.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -57,7 +70,7 @@ If a popover contains actions, they should:
 
 - Be clear and predictable: merchants should be able to anticipate what will happen when they click on an action item. Never deceive merchants by mislabeling an action.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -69,11 +82,11 @@ If a popover contains actions, they should:
 - New order
 - Buy
 
-<!-- end -->
+</DoDont>
 
-- Be action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
+- Be action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the \{verb\}+\{noun\} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -87,11 +100,11 @@ If a popover contains actions, they should:
 - File name changes
 - Duplicate this order so that you can make edits, updates, or changes
 
-<!-- end -->
+</DoDont>
 
 - Be scannable, especially when the popover contains a list of actions or options. Avoid unnecessary words and articles such as “the”, “an”, or “a”.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -101,13 +114,13 @@ If a popover contains actions, they should:
 
 - Add a menu item
 
-<!-- end -->
+</DoDont>
 
 If the popover includes a series of navigational links, each item should:
 
 - Be concise but still give merchants enough information so they can easily find and accurately navigate to the path they want.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -120,7 +133,7 @@ If the popover includes a series of navigational links, each item should:
 
 - Sales channel
 
-<!-- end -->
+</DoDont>
 
 ---
 

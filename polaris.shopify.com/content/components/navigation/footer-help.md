@@ -1,6 +1,5 @@
 ---
 title: Footer help
-description: Footer help is used to refer merchants to more information related to the product or feature they’re using.
 category: Navigation
 keywords:
   - FooterHelp
@@ -18,7 +17,20 @@ examples:
   - fileName: footer-help-default.tsx
     title: Default
     description: Use to direct merchants to more information related to the product or feature they’re working on.
+previewImg: /images/components/navigation/footer-help.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Footer help is used to refer merchants to more information related to the product or feature they’re using.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -40,7 +52,7 @@ It’s recommended to link your footer help component to [help documentation](ht
 
 By default, footer help should link to information in the Shopify Help Center and should follow this content pattern:
 
-- Learn more about {X}
+- Learn more about \{X\}
 
 Links should be:
 
@@ -50,7 +62,7 @@ Links should not be:
 
 Marked as external: Do not set the `external` prop on the `Link` component to force open a new tab.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -62,7 +74,7 @@ Marked as external: Do not set the `external` prop on the `Link` component to fo
 - Go to [docs] to learn about zones.
 - Find out about [themes].
 
-<!-- end -->
+</DoDont>
 
 ---
 

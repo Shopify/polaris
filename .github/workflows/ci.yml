@@ -43,9 +43,9 @@ jobs:
             **/.turbo
             node_modules/.cache/turbo
             polaris.shopify.com/.next/cache
-          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v2-${{ github.sha }}
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v3-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-node${{ matrix.node-version }}-test-v2-
+            ${{ runner.os }}-node${{ matrix.node-version }}-test-v3-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile

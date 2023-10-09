@@ -16,7 +16,7 @@ function LegacyCardExample() {
         <Popover
           active
           activator={
-            <Button disclosure plain>
+            <Button disclosure variant="plain">
               Add account
             </Button>
           }

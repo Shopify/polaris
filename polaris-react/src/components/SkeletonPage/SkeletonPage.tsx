@@ -2,8 +2,8 @@ import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
-import {VerticalStack} from '../VerticalStack';
-import {HorizontalStack} from '../HorizontalStack';
+import {BlockStack} from '../BlockStack';
+import {InlineStack} from '../InlineStack';
 
 import styles from './SkeletonPage.scss';
 
@@ -37,10 +37,10 @@ export function SkeletonPage({
   ) : (
     <div className={styles.SkeletonTitle}>
       <Box
-        background="bg-strong"
+        background="bg-fill-tertiary"
         minWidth="120px"
         minHeight="28px"
-        borderRadius="1"
+        borderRadius="100"
       />
     </div>
   );
@@ -48,8 +48,8 @@ export function SkeletonPage({
   const primaryActionMarkup = primaryAction ? (
     <Box
       id="SkeletonPage-PrimaryAction"
-      borderRadius="1"
-      background="bg-strong"
+      borderRadius="100"
+      background="bg-fill-tertiary"
       minHeight="2.25rem"
       minWidth="6.25rem"
     />
@@ -57,8 +57,8 @@ export function SkeletonPage({
 
   const backActionMarkup = backAction ? (
     <Box
-      borderRadius="1"
-      background="bg-strong"
+      borderRadius="100"
+      background="bg-fill-tertiary"
       minHeight="2.25rem"
       minWidth="2.25rem"
       maxWidth="2.25rem"
@@ -66,7 +66,7 @@ export function SkeletonPage({
   ) : null;
 
   return (
-    <VerticalStack gap="400" inlineAlign="center">
+    <BlockStack gap="400" inlineAlign="center">
       <Box
         width="100%"
         padding="0"
@@ -82,7 +82,7 @@ export function SkeletonPage({
           maxWidth: 'none',
         })}
       >
-        <VerticalStack>
+        <BlockStack>
           <Box
             paddingBlockStart={{xs: '400', md: '500'}}
             paddingBlockEnd={{xs: '400', md: '500'}}
@@ -90,25 +90,21 @@ export function SkeletonPage({
             paddingInlineEnd={{xs: '400', sm: '0'}}
             width="100%"
           >
-            <HorizontalStack
-              gap="400"
-              align="space-between"
-              blockAlign="center"
-            >
-              <HorizontalStack gap="400">
+            <InlineStack gap="400" align="space-between" blockAlign="center">
+              <InlineStack gap="400">
                 {backActionMarkup}
                 <Box paddingBlockStart="100" paddingBlockEnd="100">
                   {titleContent}
                 </Box>
-              </HorizontalStack>
+              </InlineStack>
               {primaryActionMarkup}
-            </HorizontalStack>
+            </InlineStack>
           </Box>
           <Box paddingBlockEnd="200" width="100%">
             {children}
           </Box>
-        </VerticalStack>
+        </BlockStack>
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }

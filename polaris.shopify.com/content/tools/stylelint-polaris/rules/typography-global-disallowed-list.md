@@ -7,9 +7,20 @@ keywords:
   - typography rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="typography" />
+
 ```diff
 // Do
-+ font-size: var(--p-font-size-200);
++ font-size: var(--p-font-size-400);
 // Don't
 - font-size: $base-font-size;
 ```
+
+<RulePostamble />

@@ -85,21 +85,6 @@ describe('<TextField />', () => {
     });
   });
 
-  it('adds the 1Password disable prop if disable1Password is set', () => {
-    const textField = mountWithApp(
-      <TextField
-        label="TextField"
-        onChange={noop}
-        autoComplete="off"
-        disable1Password
-      />,
-    );
-
-    expect(textField).toContainReactComponent('input', {
-      'data-1p-ignore': true,
-    } as any);
-  });
-
   it('adds the password manager disabled props if autoComplete="off" is set', () => {
     const textField = mountWithApp(
       <TextField label="TextField" onChange={noop} autoComplete="off" />,
@@ -2323,6 +2308,36 @@ describe('<TextField />', () => {
       };
 
       expect(currentSelection).toStrictEqual(expectedSelection);
+    });
+  });
+
+  it('adds a borderless className when borderless prop is passed', () => {
+    const textField = mountWithApp(
+      <TextField
+        label="TextField"
+        onChange={noop}
+        autoComplete="off"
+        variant="borderless"
+      />,
+    );
+
+    expect(textField).toContainReactComponent('div', {
+      className: expect.stringContaining(styles.borderless),
+    });
+  });
+
+  it('adds a borderless className when variant=`borderless` prop is passed', () => {
+    const textField = mountWithApp(
+      <TextField
+        label="TextField"
+        onChange={noop}
+        autoComplete="off"
+        variant="borderless"
+      />,
+    );
+
+    expect(textField).toContainReactComponent('div', {
+      className: expect.stringContaining(styles.borderless),
     });
   });
 });

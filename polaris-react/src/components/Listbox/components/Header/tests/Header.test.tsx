@@ -28,8 +28,8 @@ describe('Header', () => {
     expect(header).toContainReactComponent(Box);
     expect(header.find(Box)).toContainReactComponent(Text, {
       as: 'span',
-      variant: 'headingXs',
-      color: 'subdued',
+      variant: 'headingSm',
+      tone: 'subdued',
     });
   });
 

@@ -1,32 +1,92 @@
 import {forwardRef} from 'react';
-import {className as classNames} from '../../utils/various';
+import {
+  className as classNames,
+  getResponsiveProps,
+  ResponsiveProp,
+} from '../../utils/various';
 import type {ClassName} from '../../utils/various';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
+import {SpaceScale} from '@shopify/polaris-tokens';
+import styles from './Box.module.scss';
 
 export interface BoxProps {
   className?: ClassName;
+  padding?: ResponsiveProp<SpaceScale>;
+  paddingInlineStart?: ResponsiveProp<SpaceScale>;
+  paddingInlineEnd?: ResponsiveProp<SpaceScale>;
+  paddingBlockStart?: ResponsiveProp<SpaceScale>;
+  paddingBlockEnd?: ResponsiveProp<SpaceScale>;
+  /** Minimum height of container */
+  minHeight?: string;
+  /** Minimum width of container */
+  minWidth?: string;
+  /** Maximum width of container */
+  maxWidth?: string;
 }
 
 export type OwnProps<T> = Polymorphic.OwnProps<T>;
 
-type PolymorphicBox = Polymorphic.ForwardRefComponent<'div', BoxProps>;
+type PolymorphicBox = Polymorphic.ForwardRefComponent<any, BoxProps>;
 
 /**
  * Box is the most abstract component on top of which other components are
  * built. It renders a `div` element by default, customisable via the `as` prop.
  */
 export const Box = forwardRef(
-  ({as: Tag = 'div', className, ...props}, forwardedRef) => (
-    <Tag
-      {...(className
-        ? {
-            className: classNames(className),
-          }
-        : null)}
-      {...props}
-      ref={forwardedRef}
-    />
-  ),
+  (
+    {
+      as: Tag = 'div',
+      className,
+      minHeight,
+      minWidth,
+      maxWidth,
+      padding = '0',
+      paddingBlockStart,
+      paddingBlockEnd,
+      paddingInlineStart,
+      paddingInlineEnd,
+      ...props
+    },
+    forwardedRef,
+  ) => {
+    const style = {
+      ...getResponsiveProps(
+        'box',
+        'padding-block-start',
+        'space',
+        paddingBlockStart || padding,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-block-end',
+        'space',
+        paddingBlockEnd || padding,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-start',
+        'space',
+        paddingInlineStart || padding,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-end',
+        'space',
+        paddingInlineEnd || padding,
+      ),
+      '--pc-box-min-height': minHeight,
+      '--px-box-min-width': minWidth,
+      '--px-box-max-width': maxWidth,
+    } as React.CSSProperties;
+    return (
+      <Tag
+        style={style}
+        className={classNames(styles.Box, className)}
+        {...props}
+        ref={forwardedRef}
+      />
+    );
+  },
 ) as PolymorphicBox;
 
 Box.displayName = 'Box';

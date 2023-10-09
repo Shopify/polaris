@@ -359,21 +359,20 @@ describe('<Tooltip />', () => {
         <Tooltip content="Inner content">
           <Link>link content</Link>
         </Tooltip>,
-        {features: {polarisSummerEditions2023: true}},
       );
 
       findWrapperComponent(tooltip)!.trigger('onMouseOver');
 
       expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-tooltip-border-radius': 'var(--p-border-radius-2)',
+          '--pc-tooltip-border-radius': 'var(--p-border-radius-200)',
         }) as React.CSSProperties,
       });
     });
 
-    it('renders content with a border radius of 2 when declared', () => {
+    it('renders content with a border radius of 200 when declared', () => {
       const tooltip = mountWithApp(
-        <Tooltip content="Inner content" borderRadius="2">
+        <Tooltip content="Inner content" borderRadius="200">
           <Link>link content</Link>
         </Tooltip>,
       );
@@ -381,7 +380,7 @@ describe('<Tooltip />', () => {
       findWrapperComponent(tooltip)!.trigger('onMouseOver');
       expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
         style: expect.objectContaining({
-          '--pc-tooltip-border-radius': 'var(--p-border-radius-2)',
+          '--pc-tooltip-border-radius': 'var(--p-border-radius-200)',
         }) as React.CSSProperties,
       });
     });
@@ -507,26 +506,6 @@ describe('<Tooltip />', () => {
       findWrapperComponent(tooltip)!.trigger('onMouseOver');
       expect(tooltip).toContainReactComponent(TooltipOverlay, {
         instant: true,
-      });
-    });
-  });
-
-  // se23 - default border radius 1 replaced with 2
-  describe('polarisSummerEditions2023 false', () => {
-    it('renders content with the default border radius', () => {
-      const tooltip = mountWithApp(
-        <Tooltip content="Inner content">
-          <Link>link content</Link>
-        </Tooltip>,
-        {features: {polarisSummerEditions2023: false}},
-      );
-
-      findWrapperComponent(tooltip)!.trigger('onMouseOver');
-
-      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
-        style: expect.objectContaining({
-          '--pc-tooltip-border-radius': 'var(--p-border-radius-1)',
-        }) as React.CSSProperties,
       });
     });
   });

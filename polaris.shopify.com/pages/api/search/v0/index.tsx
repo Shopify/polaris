@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import Fuse from 'fuse.js';
-import {metadata, MetadataProperties} from '@shopify/polaris-tokens';
+import {metaThemeDefault, MetaTokenProperties} from '@shopify/polaris-tokens';
 import iconMetadata from '@shopify/polaris-icons/metadata';
 
 import {
@@ -8,6 +8,7 @@ import {
   GroupedSearchResults,
   searchResultCategories,
   SearchResultCategory,
+  FoundationsCategory,
   Status,
   SiteJSON,
   PatternFrontMatter,
@@ -17,7 +18,7 @@ import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
 
 import siteJson from '../../../../.cache/site.json';
 
-const pages: SiteJSON = siteJson;
+const pages: SiteJSON = siteJson as unknown as SiteJSON;
 
 const componentSlugs = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
@@ -74,7 +75,7 @@ const getSearchResults = (query?: string) => {
     });
   });
 
-  const {color, border, font, motion, shadow, space, zIndex} = metadata;
+  const {color, border, font, motion, shadow, space, zIndex} = metaThemeDefault;
   const tokenGroups = {
     color,
     border,
@@ -87,7 +88,7 @@ const getSearchResults = (query?: string) => {
 
   Object.entries(tokenGroups).forEach(([groupSlug, tokenGroup]) => {
     Object.entries(tokenGroup).forEach(
-      ([tokenName, tokenProperties]: [string, MetadataProperties]) => {
+      ([tokenName, tokenProperties]: [string, MetaTokenProperties]) => {
         results.push({
           id: slugify(`tokens ${tokenName}`),
           category: 'tokens',
@@ -126,7 +127,7 @@ const getSearchResults = (query?: string) => {
   // Add foundations
   foundationSlugs.forEach((slug) => {
     const {title, icon = '', description = ''} = pages[slug].frontMatter;
-    const category = slug.split('/')[0].toLowerCase();
+    const category = slug.split('/')[0].toLowerCase() as FoundationsCategory;
 
     results.push({
       id: slugify(`foundations ${title}`),

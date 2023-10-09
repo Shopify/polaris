@@ -1,4 +1,5 @@
 import React, {useContext, useMemo, useRef, useState} from 'react';
+import {SearchMinor} from '@shopify/polaris-icons';
 
 import type {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {Key} from '../../types';
@@ -10,9 +11,11 @@ import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
 import {KeypressListener} from '../KeypressListener';
 import {FilterActionsContext} from '../FilterActionsProvider';
+import {TextField} from '../TextField';
+import {Icon} from '../Icon';
 
+import {Item, Section} from './components';
 import type {ItemProps} from './components';
-import {Item, SearchField, Section} from './components';
 
 export interface ActionListProps {
   /** Collection of actions for list */
@@ -147,12 +150,18 @@ export function ActionList({
           padding="200"
           paddingBlockEnd={totalFilteredActions > 0 ? '0' : '200'}
         >
-          <SearchField
+          <TextField
+            clearButton
+            labelHidden
+            label={i18n.translate('Polaris.ActionList.SearchField.placeholder')}
             placeholder={i18n.translate(
               'Polaris.ActionList.SearchField.placeholder',
             )}
+            autoComplete="off"
             value={searchText}
             onChange={(value) => setSeachText(value)}
+            prefix={<Icon source={SearchMinor} />}
+            onClearButtonClick={() => setSeachText('')}
           />
         </Box>
       )}

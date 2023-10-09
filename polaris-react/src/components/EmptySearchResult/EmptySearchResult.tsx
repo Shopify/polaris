@@ -3,6 +3,7 @@ import React from 'react';
 import {useI18n} from '../../utilities/i18n';
 import {Text} from '../Text';
 import {Image} from '../Image';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 
 import {emptySearch} from './illustrations';
@@ -33,7 +34,7 @@ export function EmptySearchResult({
       <Text variant="headingLg" as="p">
         {title}
       </Text>
-      <Text color="subdued" as="span">
+      <Text tone="subdued" as="span">
         {descriptionMarkup}
       </Text>
     </LegacyStack>

@@ -27,7 +27,7 @@ function BannerInModalExample() {
       >
         <Modal.Section>
           <TextContainer>
-            <Banner action={{content: 'Connect account'}} status="warning">
+            <Banner action={{content: 'Connect account'}} tone="warning">
               <p>
                 Connect your instagram account to your shop before proceeding.
               </p>

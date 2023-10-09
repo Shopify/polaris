@@ -54,7 +54,7 @@ export function BulkActionButton({
       size="slim"
       icon={
         isActivatorForMoreActionsPopover ? (
-          <Icon source={HorizontalDotsMinor} color="base" />
+          <Icon source={HorizontalDotsMinor} tone="base" />
         ) : undefined
       }
     >

@@ -9,6 +9,10 @@ keywords:
 order: 4
 ---
 
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
 Shopify teams create documentation for polaris.shopify.com, but open source contributors are welcome to make copy edits as well as update or add examples to [component documentation](/contributing/components).
 
 To write effectively as a Shopify employee, use a cross-discipline lens. Make sure your content meets both UX and development needs. Before starting, check out our [style guide to the style guide](https://docs.google.com/document/d/1zVDsHIWhoir2svRjdtSdRbD_ruTz3K1nAJcQLGPVQwM/edit#heading=h.ni67tdntu9cr).

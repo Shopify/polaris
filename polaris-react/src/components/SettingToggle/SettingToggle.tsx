@@ -3,6 +3,7 @@ import React, {useId} from 'react';
 import type {ComplexAction} from '../../types';
 import {SettingAction} from '../SettingAction';
 import {buttonFrom} from '../Button';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../LegacyCard';
 
 export interface SettingToggleProps {

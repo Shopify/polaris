@@ -76,8 +76,7 @@ function FiltersDisabledExample() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   disabled
-                  primary
-                  plain
+                  variant="tertiary"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -102,7 +101,7 @@ function FiltersDisabledExample() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item

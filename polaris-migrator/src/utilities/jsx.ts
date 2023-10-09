@@ -39,7 +39,7 @@ export function removeJSXAttributes(
   element: ASTPath<JSXElement>,
   attributeName: string,
 ) {
-  const jsxAttributes = element.value.attributes?.filter(
+  const jsxAttributes = element.value.openingElement?.attributes?.filter(
     (attr) => attr.type === 'JSXAttribute' && attr.name.name === attributeName,
   );
 
@@ -97,10 +97,18 @@ export function replaceJSXAttributes(
     j(attribute)
       .find(j.StringLiteral)
       .forEach((literal) => {
-        literal.node.value =
-          typeof newAttributeValue === 'string'
-            ? newAttributeValue
-            : newAttributeValue[literal.node.value];
+        const isStringLiteral = typeof newAttributeValue === 'string';
+
+        if (isStringLiteral) {
+          literal.node.value = newAttributeValue;
+          return;
+        }
+
+        const value = literal.node.value as string;
+
+        if (value in newAttributeValue) {
+          literal.node.value = newAttributeValue[literal.node.value];
+        }
       });
   });
 }

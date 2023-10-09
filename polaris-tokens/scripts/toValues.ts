@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import {metaThemes, metaThemeDefault} from '../src/themes';
+import {metaThemes} from '../src/themes';
 import {
   extractMetaThemeValues,
   resolveMetaThemeRefs,
@@ -16,16 +16,12 @@ export async function toValues() {
     }
   });
 
-  const themeDefault = extractMetaThemeValues(
-    resolveMetaThemeRefs(metaThemeDefault),
-  );
-
   await fs.promises.writeFile(
     path.join(outputDir, 'index.ts'),
     [
+      `import {themeNameDefault} from '../src/index';`,
+      `import {createIsTokenName} from '../src/themes/utils';`,
       `export * from '../src/index';`,
-      Object.entries(themeDefault).map(createExport),
-      createExport(['tokens', themeDefault]),
       createExport([
         'themes',
         Object.fromEntries(
@@ -35,6 +31,8 @@ export async function toValues() {
           ]),
         ),
       ]),
+      `export const themeDefault = themes[themeNameDefault];`,
+      `export const isTokenName = createIsTokenName(themes[themeNameDefault]);`,
     ]
       .flat()
       .join('\n'),

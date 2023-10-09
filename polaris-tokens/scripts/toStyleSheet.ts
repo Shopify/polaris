@@ -1,11 +1,15 @@
 import fs from 'fs';
 import path from 'path';
 
-import type {MetaThemeShape, MetaTokenGroupShape} from '../src/themes/types';
+import type {
+  MetaThemeShape,
+  MetaTokenGroupShape,
+  TokenName,
+} from '../src/themes/types';
 import {metaThemePartials, metaThemeDefault} from '../src/themes';
 import {themeNameDefault} from '../src/themes/constants';
-import {createThemeSelector} from '../src/themes/utils';
-import {createVar} from '../src/utilities';
+import {createThemeSelector, isTokenName} from '../src/themes/utils';
+import {createVarName} from '../src/utils';
 import type {Entries} from '../src/types';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
@@ -23,11 +27,16 @@ export function getMetaThemeDecls(metaTheme: MetaThemeShape) {
 /** Creates CSS declarations from a token group. */
 export function getMetaTokenGroupDecls(metaTokenGroup: MetaTokenGroupShape) {
   return Object.entries(metaTokenGroup)
-    .map(([tokenName, {value}]) =>
-      tokenName.startsWith('motion-keyframes')
-        ? `${createVar(tokenName)}:p-${tokenName};`
-        : `${createVar(tokenName)}:${value};`,
-    )
+    .map((entry) => {
+      const [tokenName, {value}] = entry as [
+        TokenName,
+        MetaTokenGroupShape[string],
+      ];
+
+      return tokenName.startsWith('motion-keyframes')
+        ? `${createVarName(tokenName)}:p-${tokenName};`
+        : `${createVarName(tokenName)}:${value};`;
+    })
     .join('');
 }
 
@@ -57,7 +66,10 @@ export async function toStyleSheet() {
   ) as Entries<Omit<typeof metaThemePartials, typeof themeNameDefault>>;
 
   const styles = [
-    `:root{color-scheme:light;${getMetaThemeDecls(metaThemeDefault)}}`,
+    [
+      `:root,${createThemeSelector(themeNameDefault)}`,
+      `{color-scheme:light;${getMetaThemeDecls(metaThemeDefault)}}`,
+    ].join(''),
     metaThemePartialsEntries.map(
       ([themeName, metaThemePartial]) =>
         `${createThemeSelector(themeName)}{${getMetaThemeDecls(

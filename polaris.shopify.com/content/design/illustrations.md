@@ -1,6 +1,7 @@
 ---
 title: Illustrations
 description: The Shopify admin uses a precise illustration style to help merchants quickly and clearly understand how things work across every experience.
+order: 9
 keywords:
   - drawings
   - pictures
@@ -10,6 +11,17 @@ icon: IllustrationMajor
 ![The illustration of a chair, in simples straight lines, followed by a version with curves and some color, followed by a final version with filled shapes and shadows.](/images/design/illustrations/illustrations-intro@2x.png)
 
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<DirectiveCard status="Caution">
+
+This section is currently being reworked to provide better guidance aligned
+with Polaris v12. Stay tuned!
+
+</DirectiveCard>
 
 ## Principles
 

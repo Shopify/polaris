@@ -12,8 +12,8 @@ describe('<Badge />', () => {
     expect(badge.text()).toBe('Badge test');
   });
 
-  it('accepts a status prop and renders a visually hidden label', () => {
-    const badge = mountWithApp(<Badge status="success" />);
+  it('accepts a tone prop and renders a visually hidden label', () => {
+    const badge = mountWithApp(<Badge tone="success" />);
     expect(badge).toContainReactComponent(Text, {visuallyHidden: true});
   });
 
@@ -22,9 +22,9 @@ describe('<Badge />', () => {
     expect(badge).toContainReactComponent(Text, {visuallyHidden: true});
   });
 
-  it('renders progress and status labels in the same element', () => {
+  it('renders progress and tone labels in the same element', () => {
     const badge = mountWithApp(
-      <Badge progress="incomplete" status="attention" />,
+      <Badge progress="incomplete" tone="attention" />,
     );
 
     expect(badge).toContainReactComponentTimes(Text, 1, {
@@ -34,22 +34,18 @@ describe('<Badge />', () => {
   });
 
   it('does not add pip styles when progress is not provided', () => {
-    const badge = mountWithApp(<Badge status="attention" />, {
-      features: {polarisSummerEditions2023: true},
-    });
+    const badge = mountWithApp(<Badge tone="attention" />);
     expect(badge).not.toContainReactComponent(Icon);
   });
 
   it('renders with pip styles when progress is provided', () => {
-    const badge = mountWithApp(<Badge progress="incomplete" />, {
-      features: {polarisSummerEditions2023: true},
-    });
+    const badge = mountWithApp(<Badge progress="incomplete" />);
 
     expect(badge).toContainReactComponent(Icon);
   });
 
   it('does not render an icon when icon is not provided', () => {
-    const badge = mountWithApp(<Badge status="attention" />);
+    const badge = mountWithApp(<Badge tone="attention" />);
 
     expect(badge).not.toContainReactComponent(Icon);
   });
@@ -77,13 +73,13 @@ describe('<Badge />', () => {
     });
   });
 
-  it('renders with a custom accessibilityLabel when a `statusAndProgressLabelOverride` is provided', () => {
+  it('renders with a custom accessibilityLabel when a `toneAndProgressLabelOverride` is provided', () => {
     const mockAccessibilityLabel = 'mock accessibilityLabel';
     const badge = mountWithApp(
       <Badge
-        status="attention"
+        tone="attention"
         progress="incomplete"
-        statusAndProgressLabelOverride={mockAccessibilityLabel}
+        toneAndProgressLabelOverride={mockAccessibilityLabel}
       />,
     );
 
@@ -93,13 +89,13 @@ describe('<Badge />', () => {
     });
   });
 
-  it('does not render progress or status accessibility labels when a `statusAndProgressLabelOverride` is provided', () => {
+  it('does not render progress or tone accessibility labels when a `toneAndProgressLabelOverride` is provided', () => {
     const mockAccessibilityLabel = 'mock accessibilityLabel';
     const badge = mountWithApp(
       <Badge
-        status="attention"
+        tone="attention"
         progress="incomplete"
-        statusAndProgressLabelOverride={mockAccessibilityLabel}
+        toneAndProgressLabelOverride={mockAccessibilityLabel}
       />,
     );
 
@@ -109,10 +105,8 @@ describe('<Badge />', () => {
     });
   });
 
-  it('renders default accessibility label when `statusAndProgressLabelOverride` is not provided', () => {
-    let badge = mountWithApp(
-      <Badge status="attention" progress="incomplete" />,
-    );
+  it('renders default accessibility label when `toneAndProgressLabelOverride` is not provided', () => {
+    let badge = mountWithApp(<Badge tone="attention" progress="incomplete" />);
 
     expect(badge).toContainReactComponent(Text, {
       children: 'Attention Incomplete',
@@ -126,7 +120,7 @@ describe('<Badge />', () => {
       visuallyHidden: true,
     });
 
-    badge = mountWithApp(<Badge status="attention" />);
+    badge = mountWithApp(<Badge tone="attention" />);
 
     expect(badge).toContainReactComponent(Text, {
       children: 'Attention',
@@ -140,9 +134,9 @@ describe('<Badge />', () => {
 });
 
 describe('<Badge.Pip />', () => {
-  it('renders default accessibility label when `statusAndProgressLabelOverride` is not provided', () => {
+  it('renders default accessibility label when `toneAndProgressLabelOverride` is not provided', () => {
     let badge = mountWithApp(
-      <Badge.Pip status="attention" progress="incomplete" />,
+      <Badge.Pip tone="attention" progress="incomplete" />,
     );
 
     expect(badge).toContainReactComponent(Text, {
@@ -157,7 +151,7 @@ describe('<Badge.Pip />', () => {
       visuallyHidden: true,
     });
 
-    badge = mountWithApp(<Badge.Pip status="attention" />);
+    badge = mountWithApp(<Badge.Pip tone="attention" />);
 
     expect(badge).toContainReactComponent(Text, {
       children: 'Attention Complete',
@@ -169,29 +163,6 @@ describe('<Badge.Pip />', () => {
     expect(badge).toContainReactComponent(Text, {
       children: 'Complete',
       visuallyHidden: true,
-    });
-  });
-
-  // se23 -- css pip replaced with icon pip
-  describe('polarisSummerEditions2023 false', () => {
-    it('does not add pip styles when progress is not provided', () => {
-      const badge = mountWithApp(<Badge status="attention" />, {
-        features: {polarisSummerEditions2023: false},
-      });
-
-      expect(badge).not.toContainReactComponent('span', {
-        className: 'Pip',
-      });
-    });
-
-    it('renders with pip styles when progress is provided', () => {
-      const badge = mountWithApp(<Badge progress="incomplete" />, {
-        features: {polarisSummerEditions2023: false},
-      });
-
-      expect(badge).toContainReactComponent('span', {
-        className: 'Pip progressIncomplete',
-      });
     });
   });
 });

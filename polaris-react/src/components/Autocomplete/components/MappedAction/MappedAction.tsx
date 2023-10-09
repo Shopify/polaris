@@ -59,7 +59,7 @@ export function MappedAction({
 
   const badgeMarkup = badge && (
     <span className={styles.Suffix}>
-      <Badge status={badge.status}>{badge.content}</Badge>
+      <Badge tone={badge.tone}>{badge.content}</Badge>
     </span>
   );
 
@@ -76,7 +76,7 @@ export function MappedAction({
     <div className={styles.Text}>
       <div className={contentOverflowStyle}>{contentText}</div>
       {helpText ? (
-        <Text color="subdued" as="span">
+        <Text tone="subdued" as="span">
           {helpText}
         </Text>
       ) : null}

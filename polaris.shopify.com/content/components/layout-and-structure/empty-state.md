@@ -1,6 +1,5 @@
 ---
 title: Empty state
-description: Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface.
 category: Layout and structure
 keywords:
   - EmptyState
@@ -30,7 +29,20 @@ examples:
     description: Use to provide additional but non-critical context for a new product or feature. Can also be used to include a subdued call to action for secondary or tertiary actions.
   - fileName: empty-state-with-full-width-layout.tsx
     title: With full width layout
+previewImg: /images/components/layout-and-structure/empty-state.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Empty states are used when a list, table, or chart has no items or data to show. This is an opportunity to provide explanation or guidance to help merchants progress. The empty state component is intended for use when a full page in the admin is empty, and not for individual elements or areas in the interface.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -55,7 +67,7 @@ Empty state titles should:
 
 - Be action-oriented: encourage merchants to take the step required to activate the product or feature
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -65,7 +77,7 @@ Empty state titles should:
 
 - Orders and invoices
 
-<!-- end -->
+</DoDont>
 
 - Follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings)
 
@@ -83,7 +95,7 @@ They should be:
 
 - Clear and predictable: merchants should be able to anticipate what will happen when they click a button. Never deceive merchants by using misleading titles.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -95,11 +107,11 @@ They should be:
 - New order
 - Buy
 
-<!-- end -->
+</DoDont>
 
-- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the {verb}+{noun} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
+- Action-led: buttons should always lead with a strong verb that encourages action. To provide enough context to merchants use the \{verb\}+\{noun\} format on buttons except in the case of common actions like Save, Close, Cancel, or OK.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -111,11 +123,11 @@ They should be:
 - Try Apple Pay
 - View your settings
 
-<!-- end -->
+</DoDont>
 
 - Scannable: avoid unnecessary words and articles such as the, an, or a.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -125,7 +137,7 @@ They should be:
 
 - Add a menu item
 
-<!-- end -->
+</DoDont>
 
 ### Secondary action
 

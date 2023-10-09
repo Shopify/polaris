@@ -4,7 +4,7 @@ import {
   RadioButton,
   LegacyStack,
   Card,
-  VerticalStack,
+  BlockStack,
   Text,
   Box,
   Divider,
@@ -83,11 +83,11 @@ export function WithBleed() {
   );
 
   return (
-    <VerticalStack gap="800">
-      <VerticalStack gap="200">
+    <BlockStack gap="800">
+      <BlockStack gap="200">
         <Text as="h2">No Bleed</Text>
         <Card padding="400">
-          <VerticalStack gap="400">
+          <BlockStack gap="400">
             <RadioButton
               label="Accounts are disabled"
               checked={value1 === 'disabled'}
@@ -102,12 +102,12 @@ export function WithBleed() {
               checked={value1 === 'optional'}
               onChange={handleChange1}
             />
-          </VerticalStack>
+          </BlockStack>
         </Card>
-      </VerticalStack>
-      <VerticalStack gap="200">
+      </BlockStack>
+      <BlockStack gap="200">
         <Text as="h2">Bleed</Text>
-        <Box width="min-content" background="bg" borderRadius="3">
+        <Box width="min-content" background="bg-surface" borderRadius="300">
           <div
             // Flex to shrink the container to the height of the radio (ie;
             // ignore line-height)
@@ -136,7 +136,7 @@ export function WithBleed() {
             />
           </div>
         </Box>
-      </VerticalStack>
-    </VerticalStack>
+      </BlockStack>
+    </BlockStack>
   );
 }

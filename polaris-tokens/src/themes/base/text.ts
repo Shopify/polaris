@@ -1,7 +1,7 @@
 import type {MetaTokenProperties} from '../types';
+import {createVar} from '../../utils';
 
 import type {FontPrefix} from './font';
-import {createVar} from './font';
 
 export type TextVariant =
   | 'heading-3xl'

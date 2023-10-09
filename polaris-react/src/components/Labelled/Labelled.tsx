@@ -7,7 +7,6 @@ import {Label, labelID} from '../Label';
 import type {LabelProps} from '../Label';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './Labelled.scss';
 
@@ -49,16 +48,16 @@ export function Labelled({
   readOnly,
   ...rest
 }: LabelledProps) {
-  const {polarisSummerEditions2023} = useFeatures();
-
   const className = classNames(
     labelHidden && styles.hidden,
     disabled && styles.disabled,
-    polarisSummerEditions2023 && readOnly && styles.readOnly,
+    readOnly && styles.readOnly,
   );
 
   const actionMarkup = action ? (
-    <div className={styles.Action}>{buttonFrom(action, {plain: true})}</div>
+    <div className={styles.Action}>
+      {buttonFrom(action, {variant: 'plain'})}
+    </div>
   ) : null;
 
   const helpTextMarkup = helpText ? (
@@ -67,7 +66,7 @@ export function Labelled({
       id={helpTextID(id)}
       aria-disabled={disabled}
     >
-      <Text as="span" color="subdued" breakWord>
+      <Text as="span" tone="subdued" breakWord>
         {helpText}
       </Text>
     </div>

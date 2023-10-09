@@ -13,87 +13,76 @@
   color: var(--p-color-bg-surface);
 }
 
-.hasBackdrop {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin: var(--p-space-100);
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: calc(-1 * var(--p-space-100));
-    bottom: calc(-1 * var(--p-space-100));
-    left: calc(-1 * var(--p-space-100));
-    right: calc(-1 * var(--p-space-100));
-    border-radius: var(--p-border-radius-full);
-  }
+.toneBase svg {
+  fill: var(--p-color-icon);
 }
 
-.colorBase {
-  svg {
-    fill: var(--p-color-icon);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-fill-tertiary);
-  }
-}
-
-.colorSubdued svg {
+.toneSubdued svg {
   fill: var(--p-color-icon-secondary);
 }
 
-.colorCritical {
-  svg {
-    fill: var(--p-color-icon-critical);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-fill-critical-secondary);
-  }
+.toneCaution svg {
+  fill: var(--p-color-icon-caution);
 }
 
-.colorInteractive svg {
+.toneWarning svg {
+  fill: var(--p-color-icon-warning);
+}
+
+.toneCritical svg {
+  fill: var(--p-color-icon-critical);
+}
+
+.toneInteractive svg {
   fill: var(--p-color-icon-emphasis);
 }
 
-.colorWarning {
-  svg {
-    fill: var(--p-color-icon-caution);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-fill-warning-secondary);
-  }
+.toneInfo svg {
+  fill: var(--p-color-icon-info);
 }
 
-.colorHighlight {
-  svg {
-    fill: var(--p-color-icon-info);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-fill-info-secondary);
-  }
+.toneSuccess svg {
+  fill: var(--p-color-icon-success);
 }
 
-.colorSuccess {
-  svg {
-    fill: var(--p-color-icon-success);
-  }
-
-  &::before {
-    background-color: var(--p-color-bg-fill-success-secondary);
-  }
-}
-
-.colorPrimary svg {
+.tonePrimary svg {
   fill: var(--p-color-icon-brand);
 }
 
-.colorMagic svg {
+.toneEmphasis svg {
+  fill: var(--p-color-icon-emphasis);
+}
+
+.toneMagic svg {
   fill: var(--p-color-icon-magic);
+}
+
+.toneTextCaution svg {
+  fill: var(--p-color-text-caution);
+}
+
+.toneTextWarning svg {
+  fill: var(--p-color-text-warning);
+}
+
+.toneTextCritical svg {
+  fill: var(--p-color-text-critical);
+}
+
+.toneTextInfo svg {
+  fill: var(--p-color-text-info);
+}
+
+.toneTextPrimary svg {
+  fill: var(--p-color-text-brand);
+}
+
+.toneTextSuccess svg {
+  fill: var(--p-color-text-success);
+}
+
+.toneTextMagic svg {
+  fill: var(--p-color-text-magic);
 }
 
 .Svg,

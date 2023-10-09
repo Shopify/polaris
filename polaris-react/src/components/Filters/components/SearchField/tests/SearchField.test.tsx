@@ -19,11 +19,7 @@ describe('SearchField', () => {
   it('will call onChange when changed', () => {
     const props = {...defaultProps};
     const spy = jest.fn();
-    const wrapper = mountWithApp(<SearchField {...props} onChange={spy} />, {
-      features: {
-        polarisSummerEditions2023: true,
-      },
-    });
+    const wrapper = mountWithApp(<SearchField {...props} onChange={spy} />, {});
 
     wrapper.act(() => {
       wrapper.find('input')!.trigger('onChange');
@@ -34,11 +30,7 @@ describe('SearchField', () => {
 
   it('will call onChange correctly when clear button clicked', () => {
     const props = {...defaultProps};
-    const wrapper = mountWithApp(<SearchField {...props} />, {
-      features: {
-        polarisSummerEditions2023: true,
-      },
-    });
+    const wrapper = mountWithApp(<SearchField {...props} />, {});
 
     wrapper.act(() => {
       wrapper.findAll(UnstyledButton)[0]?.trigger('onClick');

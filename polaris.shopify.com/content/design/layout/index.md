@@ -1,0 +1,151 @@
+---
+title: Layout
+icon: TemplateMajor
+order: 5
+showTOC: true
+keywords:
+  - layout
+  - layout components
+  - structure
+  - position
+  - stack
+  - columns
+  - bleed
+  - card
+  - box
+  - inline
+  - divider
+  - responsive
+  - spacing
+description: Layout determines the placement, positioning, and organization of various components within the UI, such as buttons, menus, content sections, and other visual elements.
+hideChildren: true
+status: New
+---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Subnav />
+
+<Stack gap="800">
+<Card>
+<Grid gap="400" >
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+<Box padding="400">
+## Space defines proximity
+
+Space plays a vital role in establishing connections between items. The principle of proximity states that the closer objects are, the stronger their perceived relationship.
+
+</Box>
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+    ![An order card with an inset table followed by an apps card with a grid pattern made of different surfaces](/images/design/layout/layout-overview-01-space@2x.png)
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+<Box padding="400">
+Grouping similar items together helps merchants understand which elements are related and helps them make faster decisions.
+</Box>
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+    <Do>
+        ![A card with a product title, product description and product status](/images/design/layout/layout-overview-02-space-do@2x.png)
+
+        Group similar data points or tasks in the same card.
+    </Do>
+
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+    <Do>
+        ![Elemes within a card that have reduced border radius, creating a nesting effect](/images/design/layout/layout-overview-03-space-nesting-do@2x.png)
+
+        Nest inset shapes and surfaces.
+    </Do>
+
+</Grid.Cell>
+</Grid>
+</Card>
+
+<Card>
+<Grid gap="400">
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+<Box padding="400">
+## Emphasis creates hierarchy
+
+In the Shopify admin, larger, heavier, and contrasting elements attract attention and create visual rhythm.
+
+Smaller, lighter, and more subtle elements are work-oriented and provide detailed information.
+
+</Box>
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+
+    ![A grid pattern showing different marketing statistics, separated in cards that have a title and a larger stat numbe](/images/design/layout/layout-overview-04-emphasis@2x.png)
+
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+<Box padding="400">
+    Use size, weight, and contrast to establish hierarchy in the admin. Divider lines are used to delimit rows of information in data and index tables, and rarely for dividing information elsewhere.
+</Box>
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+    <Do>
+        ![A customer card using different surface colors and font sizes to delineate information](/images/design/layout/layout-overview-05-emphasis-do@2x.png)
+
+        Use weight and contrast to introduce sections of the UI.
+    </Do>
+
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+    <Dont>
+        ![A customer card using horizontal lines to deliane information](/images/design/layout/layout-overview-06-emphasis-dont@2x.png)
+
+        Use divider lines to create visual hierarchy or separation outside of indexes of tables.
+    </Dont>
+
+</Grid.Cell>
+</Grid>
+</Card>
+
+<Card>
+<Grid gap="400">
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+<Box padding="400">
+## Software, not website
+
+Since the admin is more like software, rather than a website, elements need to be sized appropriately based on their job.
+
+</Box>
+</Grid.Cell>
+
+<Grid.Cell columnSpan={{xs: 6, lg: 8}}>
+
+    ![Different cards showing button placement, popover contextual menus and high-density cards containing a lot of information](/images/design/layout/layout-overview-07-adapt@2x.png)
+
+</Grid.Cell>
+
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+<Box padding="400">
+    Compact elements add detail, and larger elements command more attention. Surfaces adapt to these components and offer an optimized view of the admin.
+</Box>
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+    <Do>
+        ![A tag component with small tags and a small “add tag” button](/images/design/layout/layout-overview-08-adapt-do@2x.png)
+
+        Create compact components for specialized, minute tasks.
+    </Do>
+
+</Grid.Cell>
+<Grid.Cell columnSpan={{xs: 6, lg: 4}}>
+    <Dont>
+        ![A tag component with large tags presented as a list, each taking the entire space of a row, with a large “add tag” button in the upper right corner](/images/design/layout/layout-overview-09-adapt-dont@2x.png)
+
+        Contradict the importance of a task with its size in the admin.
+    </Dont>
+
+</Grid.Cell>
+
+</Grid>
+</Card>
+</Stack>

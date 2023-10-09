@@ -18,11 +18,9 @@ import {
   Scrollable,
   EmptySearchResult,
   Text,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
-
-import {useFeatures} from '../../utilities/features';
 
 export default {
   component: Popover,
@@ -30,56 +28,56 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="800">
-      <VerticalStack gap="400">
+    <BlockStack gap="800">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With action list
         </Text>
         <WithActionList />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With content and actions
         </Text>
         <WithContentAndActions />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="400">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With form components
         </Text>
         <WithFormComponents />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With lazy loaded list
         </Text>
         <WithLazyLoadedList />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With scrollable lazy loaded list
         </Text>
         <WithScrollableLazyLoadedList />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With searchable listbox
         </Text>
         <WithSearchableListbox />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With loading smaller content
         </Text>
         <WithLoadingSmallerContent />
-      </VerticalStack>
-    </VerticalStack>
+      </BlockStack>
+    </BlockStack>
   );
 }
 
@@ -112,7 +110,7 @@ export function WithActionList() {
 
   return (
     <div style={{height: '250px'}}>
-      <VerticalStack gap="400">
+      <BlockStack gap="400">
         <Popover
           active={activePopover === 'popover1'}
           activator={activator}
@@ -135,7 +133,7 @@ export function WithActionList() {
             items={[{content: 'Import file'}, {content: 'Export file'}]}
           />
         </Popover>
-      </VerticalStack>
+      </BlockStack>
     </div>
   );
 }
@@ -148,14 +146,10 @@ export function WithContentAndActions() {
     [],
   );
 
-  const {polarisSummerEditions2023} = useFeatures();
-
-  const textMarkup = polarisSummerEditions2023 ? (
+  const textMarkup = (
     <Text as="h2" variant="headingSm">
       Available sales channels
     </Text>
-  ) : (
-    <p>Available sales channels</p>
   );
 
   const activator = (
@@ -272,8 +266,6 @@ export function WithLazyLoadedList() {
 
   const handleResourceListItemClick = useCallback(() => {}, []);
 
-  const {polarisSummerEditions2023} = useFeatures();
-
   const activator = (
     <Button onClick={togglePopoverActive} disclosure>
       View staff
@@ -307,13 +299,7 @@ export function WithLazyLoadedList() {
     return (
       <ResourceList.Item
         id={name}
-        media={
-          <Avatar
-            size={polarisSummerEditions2023 ? 'extraSmall' : 'medium'}
-            name={name}
-            initials={initials}
-          />
-        }
+        media={<Avatar size="xs" name={name} initials={initials} />}
         verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
@@ -375,8 +361,6 @@ export function WithScrollableLazyLoadedList() {
 
   const handleResourceListItemClick = useCallback(() => {}, []);
 
-  const {polarisSummerEditions2023} = useFeatures();
-
   const activator = (
     <Button onClick={togglePopoverActive} disclosure>
       View staff
@@ -403,11 +387,11 @@ export function WithScrollableLazyLoadedList() {
               shadow
               style={{
                 position: 'relative',
-                width: polarisSummerEditions2023 ? '231px' : '310px',
-                height: polarisSummerEditions2023 ? '262px' : '292px',
+                width: '231px',
+                height: '262px',
                 padding: 'var(--p-space-200) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleScrolledToBottom}
             >
@@ -423,13 +407,7 @@ export function WithScrollableLazyLoadedList() {
     return (
       <ResourceList.Item
         id={name}
-        media={
-          <Avatar
-            size={polarisSummerEditions2023 ? 'extraSmall' : 'medium'}
-            name={name}
-            initials={initials}
-          />
-        }
+        media={<Avatar size="xs" name={name} initials={initials} />}
         verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
@@ -616,15 +594,13 @@ export function WithSearchableListbox() {
     }
   };
 
-  const {polarisSummerEditions2023} = useFeatures();
-
   const listboxId = 'SearchableListboxInPopover';
 
   /* Your app's feature/context specific activator here */
   const activator = (
     <div
       style={{
-        fontSize: 'var(--p-font-size-300)',
+        fontSize: 'var(--p-font-size-500)',
         color: 'var(--p-color-text)',
         borderBottom: '1px dashed var(--p-color-border)',
       }}
@@ -681,9 +657,7 @@ export function WithSearchableListbox() {
     <Listbox.Action value={actionValue}>
       <span
         style={{
-          color: polarisSummerEditions2023
-            ? 'var(--p-color-text-secondary)'
-            : 'var(--p-color-text-emphasis)',
+          color: 'var(--p-color-text-secondary)',
         }}
       >
         Show all 111 segments
@@ -754,10 +728,10 @@ export function WithSearchableListbox() {
               style={{
                 position: 'relative',
                 width: '310px',
-                height: polarisSummerEditions2023 ? '262px' : '292px',
+                height: '262px',
                 padding: 'var(--p-space-200) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >

@@ -20,13 +20,8 @@
 
   &.right {
     .CenterContainer * {
-      border-top-right-radius: var(--p-border-radius-100);
-      border-bottom-right-radius: var(--p-border-radius-100);
-
-      #{$se23} & {
-        border-top-right-radius: var(--p-border-radius-200);
-        border-bottom-right-radius: var(--p-border-radius-200);
-      }
+      border-top-right-radius: var(--p-border-radius-200);
+      border-bottom-right-radius: var(--p-border-radius-200);
     }
   }
 }
@@ -80,71 +75,43 @@
   }
 
   .Item:first-of-type > div > button {
-    border-top-left-radius: var(--p-border-radius-100);
-    border-bottom-left-radius: var(--p-border-radius-100);
-
-    #{$se23} & {
-      border-top-left-radius: var(--p-border-radius-200);
-      border-bottom-left-radius: var(--p-border-radius-200);
-    }
+    border-top-left-radius: var(--p-border-radius-200);
+    border-bottom-left-radius: var(--p-border-radius-200);
   }
 
   .Item:last-of-type > div > button {
-    #{$se23} & {
-      border-top-right-radius: var(--p-border-radius-200);
-      border-bottom-right-radius: var(--p-border-radius-200);
-    }
+    border-top-right-radius: var(--p-border-radius-200);
+    border-bottom-right-radius: var(--p-border-radius-200);
   }
 }
 
 .RightContainer.queryFieldHidden {
   .Item:first-of-type > div > button {
-    border-top-left-radius: var(--p-border-radius-100);
-    border-bottom-left-radius: var(--p-border-radius-100);
-
-    #{$se23} & {
-      border-top-left-radius: var(--p-border-radius-200);
-      border-bottom-left-radius: var(--p-border-radius-200);
-    }
+    border-top-left-radius: var(--p-border-radius-200);
+    border-bottom-left-radius: var(--p-border-radius-200);
   }
 }
 
 .RightContainerWithoutMoreFilters {
   .Item:last-child > div > button {
-    border-top-right-radius: var(--p-border-radius-100);
-    border-bottom-right-radius: var(--p-border-radius-100);
-
-    #{$se23} & {
-      border-top-right-radius: var(--p-border-radius-200);
-      border-bottom-right-radius: var(--p-border-radius-200);
-    }
+    border-top-right-radius: var(--p-border-radius-200);
+    border-bottom-right-radius: var(--p-border-radius-200);
   }
 }
 
 .MoreFiltersButtonContainer {
-  #{$se23} & {
-    padding-left: var(--p-space-200);
-  }
+  padding-left: var(--p-space-200);
 
   .Item > div > button {
     white-space: nowrap;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-
-    #{$se23} & {
-      border-top-left-radius: var(--p-border-radius-200);
-      border-bottom-left-radius: var(--p-border-radius-200);
-    }
+    border-top-left-radius: var(--p-border-radius-200);
+    border-bottom-left-radius: var(--p-border-radius-200);
   }
 }
 
 .MoreFiltersButtonContainer.onlyButtonVisible {
   .Item > div > button {
-    border-radius: var(--p-border-radius-100);
-
-    #{$se23} & {
-      border-radius: var(--p-border-radius-200);
-    }
+    border-radius: var(--p-border-radius-200);
   }
 }
 

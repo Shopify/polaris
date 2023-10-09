@@ -1,14 +1,15 @@
 import {
   createVar,
-  getCustomPropertyNames,
+  createVarName,
+  getThemeVarNames,
   getKeyframeNames,
-  tokensToRems,
+  tokenGroupToRems,
   toPx,
   toEm,
   toRem,
   getUnit,
   getMediaConditions,
-} from '../src/utilities';
+} from '../src/utils';
 import {resolveMetaThemeRefs} from '../src/themes/utils';
 
 const mockTokenGroup = {
@@ -42,17 +43,26 @@ const mockTokens = {
 };
 
 describe('createVar', () => {
-  it('converts the token into a polaris css variable name', () => {
+  it('converts the token into a polaris css variable', () => {
     const token = 'foo';
     const result = createVar(token);
+
+    expect(result).toBe(`var(--p-${token})`);
+  });
+});
+
+describe('createVarName', () => {
+  it('converts the token into a polaris css variable name', () => {
+    const token = 'foo';
+    const result = createVarName(token);
 
     expect(result).toBe(`--p-${token}`);
   });
 });
 
-describe('getCustomPropertyNames', () => {
+describe('getThemeVarNames', () => {
   it('extracts the token names', () => {
-    expect(getCustomPropertyNames(mockTokens)).toStrictEqual([
+    expect(getThemeVarNames(mockTokens)).toStrictEqual([
       '--p-design-token-1',
       '--p-design-token-2',
     ]);
@@ -68,7 +78,7 @@ describe('getKeyframeNames', () => {
   });
 });
 
-describe('tokensToRems', () => {
+describe('tokenGroupToRems', () => {
   it("converts a token group's value from px to rems", () => {
     const tokenGroup = {
       foo: {value: '12px'},
@@ -76,7 +86,7 @@ describe('tokensToRems', () => {
       baz: {value: '16px 32px'},
     };
 
-    const result = tokensToRems(tokenGroup);
+    const result = tokenGroupToRems(tokenGroup);
 
     expect(result.foo.value).toBe('0.75rem');
     expect(result.bar.value).toBe('1rem');
@@ -152,7 +162,6 @@ describe('toRem', () => {
 
 describe('getMediaConditions', () => {
   it('transforms breakpoints tokens into directional media conditions', () => {
-    /** @type {TokenGroup} */
     const breakpoints = {
       breakpoint1: '16px',
       breakpoint2: '32px',

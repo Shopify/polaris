@@ -1,14 +1,12 @@
 import React from 'react';
-import type {Args, ComponentMeta} from '@storybook/react';
+import type {ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
   LegacyCard,
-  Card,
   Page,
   ResourceList,
   Text,
-  VerticalStack,
 } from '@shopify/polaris';
 
 export default {
@@ -36,9 +34,6 @@ export function Default(_, context) {
           },
         },
       }}
-      features={{
-        polarisSummerEditions2023: context.globals.polarisSummerEditions2023,
-      }}
     >
       <Page>
         <LegacyCard>
@@ -60,7 +55,7 @@ export function Default(_, context) {
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar customer size="medium" name={name} />;
+              const media = <Avatar customer size="md" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
@@ -99,9 +94,6 @@ export function WithI18n(_, context) {
           },
         },
       }}
-      features={{
-        polarisSummerEditions2023: context.globals.polarisSummerEditions2023,
-      }}
     >
       <Page>
         <LegacyCard>
@@ -123,7 +115,7 @@ export function WithI18n(_, context) {
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar customer size="medium" name={name} />;
+              const media = <Avatar customer size="md" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
@@ -157,13 +149,7 @@ export function WithLinkComponent(_, context) {
   };
 
   return (
-    <AppProvider
-      linkComponent={CustomLinkComponent}
-      i18n={{}}
-      features={{
-        polarisSummerEditions2023: context.globals.polarisSummerEditions2023,
-      }}
-    >
+    <AppProvider linkComponent={CustomLinkComponent} i18n={{}}>
       <Page
         backAction={{content: 'Products', url: '#'}}
         title="Jar With Lock-Lid"
@@ -174,30 +160,3 @@ export function WithLinkComponent(_, context) {
     </AppProvider>
   );
 }
-
-export const WithSummerEditionsFeature = {
-  render: (_args: Args, {globals: {polarisSummerEditions2023}}) => {
-    const CheckFeature = () => {
-      return (
-        <Card>
-          <VerticalStack gap="400">
-            <Text
-              as="h2"
-              variant={polarisSummerEditions2023 ? 'headingXl' : 'bodyMd'}
-              color={polarisSummerEditions2023 ? 'critical' : undefined}
-            >
-              {`Polaris Summer Editions flag is turned ${
-                polarisSummerEditions2023 ? 'ON' : 'OFF'
-              }`}
-            </Text>
-          </VerticalStack>
-        </Card>
-      );
-    };
-    return (
-      <AppProvider features={{polarisSummerEditions2023}} i18n={{}}>
-        <CheckFeature />
-      </AppProvider>
-    );
-  },
-};

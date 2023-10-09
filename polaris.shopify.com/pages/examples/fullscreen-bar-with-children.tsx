@@ -27,7 +27,7 @@ function FullscreenBarExample() {
           paddingRight: '1rem',
         }}
       >
-        <Badge status="info">Draft</Badge>
+        <Badge tone="info">Draft</Badge>
         <div style={{marginLeft: '1rem', flexGrow: 1}}>
           <Text variant="headingLg" as="p">
             Page title
@@ -35,7 +35,7 @@ function FullscreenBarExample() {
         </div>
         <ButtonGroup>
           <Button onClick={() => {}}>Secondary Action</Button>
-          <Button primary onClick={() => {}}>
+          <Button variant="primary" onClick={() => {}}>
             Primary Action
           </Button>
         </ButtonGroup>

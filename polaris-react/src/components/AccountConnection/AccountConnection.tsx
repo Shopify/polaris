@@ -6,10 +6,9 @@ import {buttonFrom} from '../Button';
 import {SettingAction} from '../SettingAction';
 import {Card} from '../Card';
 import {Box} from '../Box';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 import {Text} from '../Text';
-import {VerticalStack} from '../VerticalStack';
-import {useFeatures} from '../../utilities/features';
+import {BlockStack} from '../BlockStack';
 import {useBreakpoints} from '../../utilities/breakpoints';
 
 export interface AccountConnectionProps {
@@ -38,7 +37,6 @@ export function AccountConnection({
   details,
   termsOfService,
 }: AccountConnectionProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const breakpoints = useBreakpoints();
 
   const initials = accountName
@@ -61,44 +59,38 @@ export function AccountConnection({
 
   const titleContent = title ? title : accountName;
 
-  const titleMarkup = polarisSummerEditions2023 ? (
+  const titleMarkup = (
     <Text as="h2" variant="headingSm">
       {titleContent}
     </Text>
-  ) : (
-    titleContent
   );
 
   const detailsMarkup = details ? (
-    <Text as="span" color="subdued">
+    <Text as="span" tone="subdued">
       {details}
     </Text>
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
-    <Box
-      paddingBlockStart={
-        polarisSummerEditions2023 && breakpoints.mdUp ? '400' : '500'
-      }
-    >
+    <Box paddingBlockStart={breakpoints.mdUp ? '400' : '500'}>
       {termsOfService}
     </Box>
   ) : null;
 
   const actionElement = action
-    ? buttonFrom(action, {primary: !connected})
+    ? buttonFrom(action, {variant: connected ? undefined : 'primary'})
     : null;
 
   return (
     <Card>
       <SettingAction action={actionElement}>
-        <HorizontalStack gap="400">
+        <InlineStack gap="400">
           {avatarMarkup}
-          <VerticalStack gap={polarisSummerEditions2023 ? '100' : '200'}>
+          <BlockStack gap="100">
             {titleMarkup}
             {detailsMarkup}
-          </VerticalStack>
-        </HorizontalStack>
+          </BlockStack>
+        </InlineStack>
       </SettingAction>
       {termsOfServiceMarkup}
     </Card>

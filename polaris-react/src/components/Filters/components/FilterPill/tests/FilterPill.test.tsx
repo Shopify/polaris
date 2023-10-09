@@ -1,7 +1,7 @@
 import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
-import {CaretDownMinor, ChevronDownMinor} from '@shopify/polaris-icons';
+import {ChevronDownMinor} from '@shopify/polaris-icons';
 
 import {FilterPill} from '../FilterPill';
 import type {FilterPillProps} from '../FilterPill';
@@ -53,9 +53,7 @@ describe('<Filters />', () => {
 
     it('renders with bodyLg variant when on a small screen', () => {
       mockUseBreakpoints(true);
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {});
       expect(wrapper).toContainReactComponent(Text, {
         variant: 'bodyLg',
         children: defaultProps.label,
@@ -85,18 +83,17 @@ describe('<Filters />', () => {
     });
 
     it('when not selected, renders a chevron icon', () => {
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {});
       expect(wrapper.findAll(UnstyledButton)[0]).toContainReactComponent(Icon, {
         source: ChevronDownMinor,
       });
     });
 
     it('when selected, does not render a chevron icon', () => {
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} selected />, {
-        features: {polarisSummerEditions2023: true},
-      });
+      const wrapper = mountWithApp(
+        <FilterPill {...defaultProps} selected />,
+        {},
+      );
       expect(wrapper.findAll(UnstyledButton)[0]).not.toContainReactComponent(
         Icon,
         {
@@ -220,42 +217,6 @@ describe('<Filters />', () => {
       expect(scrollSpy).toHaveBeenCalledWith({
         left: 0,
       });
-    });
-  });
-
-  // se23 - small screen bodyMd text replaced with bodyLg
-  // CaretDownMinor replaced with ChevronDownMinor
-  describe('polarisSummerEditions2023 false', () => {
-    it('renders with bodyMd variant when on a small screen', () => {
-      mockUseBreakpoints(true);
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {
-        features: {polarisSummerEditions2023: false},
-      });
-      expect(wrapper).toContainReactComponent(Text, {
-        variant: 'bodyMd',
-        children: defaultProps.label,
-      });
-    });
-
-    it('when not selected, renders a caret icon', () => {
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {
-        features: {polarisSummerEditions2023: false},
-      });
-      expect(wrapper.findAll(UnstyledButton)[0]).toContainReactComponent(Icon, {
-        source: CaretDownMinor,
-      });
-    });
-
-    it('when selected, does not render a caret icon', () => {
-      const wrapper = mountWithApp(<FilterPill {...defaultProps} selected />, {
-        features: {polarisSummerEditions2023: false},
-      });
-      expect(wrapper.findAll(UnstyledButton)[0]).not.toContainReactComponent(
-        Icon,
-        {
-          source: CaretDownMinor,
-        },
-      );
     });
   });
 });

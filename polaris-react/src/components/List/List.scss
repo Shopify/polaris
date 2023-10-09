@@ -24,14 +24,6 @@
 
 .spacingLoose {
   .Item {
-    margin-bottom: var(--p-space-200);
-
-    #{$se23} & {
-      margin-bottom: var(--p-space-100);
-    }
+    margin-bottom: var(--p-space-100);
   }
-}
-
-.Item:last-child {
-  margin-bottom: 0;
 }

@@ -1,0 +1,36 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/fonts.scss';
+.Pill {
+  display: flex;
+  font-size: var(--font-size-100);
+  letter-spacing: 0;
+  width: fit-content;
+  font-weight: var(--font-weight-600);
+  border-radius: var(--border-radius-500);
+  padding-right: var(--p-space-200);
+  color: #fff;
+  fill: #fff;
+  text-align: center;
+
+  &[data-value="don't"] {
+    background: var(--background-bg-critical-strong, #fa0000);
+  }
+  &[data-value='do'] {
+    background: var(--background-bg-success-strong, #008656);
+  }
+  &[data-value='caution'] {
+    color: var(--text-text-caution, #342e00);
+    fill: var(--text-text-caution, #342e00);
+    background: var(--background-bg-caution-strong, #ffe400);
+  }
+  &[data-value='tip'] {
+    color: var(--text-text-info-strong, #002235);
+    fill: var(--text-text-info-strong, #002235);
+    background: var(--background-bg-info-strong, #7dd2ff);
+  }
+}
+
+.MediaThumbnail {
+  border-radius: var(--p-border-radius-200) var(--p-border-radius-200) 0 0;
+  overflow: hidden;
+}

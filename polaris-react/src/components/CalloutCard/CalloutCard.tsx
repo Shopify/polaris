@@ -3,6 +3,7 @@ import {CancelSmallMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../LegacyCard';
 // eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../TextContainer';
@@ -10,7 +11,6 @@ import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
 import {Text} from '../Text';
 import {Image} from '../Image';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './CalloutCard.scss';
 
@@ -37,12 +37,10 @@ export function CalloutCard({
   secondaryAction,
   onDismiss,
 }: CalloutCardProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const primaryActionMarkup = buttonFrom(primaryAction);
   const secondaryActionMarkup = secondaryAction
     ? buttonFrom(secondaryAction, {
-        plain: true,
-        primary: polarisSummerEditions2023,
+        variant: 'tertiary',
       })
     : null;
 
@@ -58,7 +56,7 @@ export function CalloutCard({
   const dismissButton = onDismiss ? (
     <div className={styles.Dismiss}>
       <Button
-        plain
+        variant="plain"
         icon={CancelSmallMinor}
         onClick={onDismiss}
         accessibilityLabel="Dismiss card"

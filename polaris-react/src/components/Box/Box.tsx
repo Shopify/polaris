@@ -4,8 +4,8 @@ import type {
   ColorBackgroundAlias,
   ColorBorderAlias,
   BorderWidthScale,
-  BorderRadiusScale,
-  ShadowAlias,
+  BorderRadiusAliasOrScale,
+  ShadowAliasOrScale,
   SpaceScale,
 } from '@shopify/polaris-tokens';
 
@@ -39,15 +39,15 @@ export interface BoxProps extends React.AriaAttributes {
   /** Border style */
   borderStyle?: LineStyles;
   /** Border radius */
-  borderRadius?: BorderRadiusScale;
+  borderRadius?: BorderRadiusAliasOrScale;
   /** Vertical end horizontal start border radius */
-  borderRadiusEndStart?: BorderRadiusScale;
+  borderEndStartRadius?: BorderRadiusAliasOrScale;
   /** Vertical end horizontal end border radius */
-  borderRadiusEndEnd?: BorderRadiusScale;
+  borderEndEndRadius?: BorderRadiusAliasOrScale;
   /** Vertical start horizontal start border radius */
-  borderRadiusStartStart?: BorderRadiusScale;
+  borderStartStartRadius?: BorderRadiusAliasOrScale;
   /** Vertical start horizontal end border radius */
-  borderRadiusStartEnd?: BorderRadiusScale;
+  borderStartEndRadius?: BorderRadiusAliasOrScale;
   /** Border width */
   borderWidth?: BorderWidthScale;
   /** Vertical start border width */
@@ -74,32 +74,32 @@ export interface BoxProps extends React.AriaAttributes {
   overflowY?: Overflow;
   /** Spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * padding='4'
-   * padding={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * padding='400'
+   * padding={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   padding?: Spacing;
   /** Vertical start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * paddingBlockStart='4'
-   * paddingBlockStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * paddingBlockStart='400'
+   * paddingBlockStart={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   paddingBlockStart?: Spacing;
   /** Vertical end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * paddingBlockEnd='4'
-   * paddingBlockEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * paddingBlockEnd='400'
+   * paddingBlockEnd={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   paddingBlockEnd?: Spacing;
   /** Horizontal start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * paddingInlineStart='4'
-   * paddingInlineStart={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * paddingInlineStart='400'
+   * paddingInlineStart={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   paddingInlineStart?: Spacing;
   /** Horizontal end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
-   * paddingInlineEnd='4'
-   * paddingInlineEnd={{xs: '2', sm: '3', md: '4', lg: '5', xl: '6'}}
+   * paddingInlineEnd='400'
+   * paddingInlineEnd={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   paddingInlineEnd?: Spacing;
   /** Aria role */
@@ -108,7 +108,7 @@ export interface BoxProps extends React.AriaAttributes {
     'status' | 'presentation' | 'menu' | 'listbox' | 'combobox'
   >;
   /** Shadow on box */
-  shadow?: ShadowAlias;
+  shadow?: ShadowAliasOrScale;
   /** Set tab order */
   tabIndex?: Extract<React.AllHTMLAttributes<HTMLElement>['tabIndex'], number>;
   /** Width of container */
@@ -153,10 +153,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       borderInlineStartWidth,
       borderInlineEndWidth,
       borderRadius,
-      borderRadiusEndStart,
-      borderRadiusEndEnd,
-      borderRadiusStartStart,
-      borderRadiusStartEnd,
+      borderEndStartRadius,
+      borderEndEndRadius,
+      borderStartStartRadius,
+      borderStartEndRadius,
       children,
       color,
       id,
@@ -224,17 +224,17 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-border-radius': borderRadius
         ? `var(--p-border-radius-${borderRadius})`
         : undefined,
-      '--pc-box-border-radius-end-start': borderRadiusEndStart
-        ? `var(--p-border-radius-${borderRadiusEndStart})`
+      '--pc-box-border-end-start-radius': borderEndStartRadius
+        ? `var(--p-border-radius-${borderEndStartRadius})`
         : undefined,
-      '--pc-box-border-radius-end-end': borderRadiusEndEnd
-        ? `var(--p-border-radius-${borderRadiusEndEnd})`
+      '--pc-box-border-end-end-radius': borderEndEndRadius
+        ? `var(--p-border-radius-${borderEndEndRadius})`
         : undefined,
-      '--pc-box-border-radius-start-start': borderRadiusStartStart
-        ? `var(--p-border-radius-${borderRadiusStartStart})`
+      '--pc-box-border-start-start-radius': borderStartStartRadius
+        ? `var(--p-border-radius-${borderStartStartRadius})`
         : undefined,
-      '--pc-box-border-radius-start-end': borderRadiusStartEnd
-        ? `var(--p-border-radius-${borderRadiusStartEnd})`
+      '--pc-box-border-start-end-radius': borderStartEndRadius
+        ? `var(--p-border-radius-${borderStartEndRadius})`
         : undefined,
       '--pc-box-border-width': borderWidth
         ? `var(--p-border-width-${borderWidth})`

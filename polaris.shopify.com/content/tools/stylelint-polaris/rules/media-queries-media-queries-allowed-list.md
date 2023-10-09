@@ -7,9 +7,20 @@ keywords:
   - media queries rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="media" />
+
 ```diff
 // Do
 + @include @media #{$p-breakpoints-sm-up} {}
 // Don't
 - @include @media #{$my-var} {}
 ```
+
+<RulePostamble />

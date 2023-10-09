@@ -1,23 +1,22 @@
 import React, {useEffect, useState, useRef, useCallback, useId} from 'react';
-import type {BorderRadiusScale, SpaceScale} from '@shopify/polaris-tokens';
+import type {
+  BorderRadiusAliasOrScale,
+  SpaceScale,
+} from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
 import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 
 import {TooltipOverlay} from './components';
 import type {TooltipOverlayProps} from './components';
 import styles from './Tooltip.scss';
 
 export type Width = 'default' | 'wide';
-export type Padding = 'default' | Extract<SpaceScale, '4' | '400'>;
-export type BorderRadius = Extract<
-  BorderRadiusScale,
-  '1' | '2' | '100' | '200'
->;
+export type Padding = 'default' | Extract<SpaceScale, '400'>;
+export type BorderRadius = Extract<BorderRadiusAliasOrScale, '100' | '200'>;
 
 export interface TooltipProps {
   /** The element that will activate to tooltip */
@@ -54,7 +53,7 @@ export interface TooltipProps {
   padding?: Padding;
   /**
    * Border radius of the tooltip
-   * @default '1'
+   * @default '200'
    */
   borderRadius?: BorderRadius;
   /** Override on the default z-index of 400 */
@@ -89,9 +88,7 @@ export function Tooltip({
   onOpen,
   onClose,
 }: TooltipProps) {
-  const {polarisSummerEditions2023} = useFeatures();
-  const borderRadius =
-    borderRadiusProp || (polarisSummerEditions2023 ? '2' : '1');
+  const borderRadius = borderRadiusProp || '200';
 
   const WrapperComponent: any = activatorWrapper;
   const {

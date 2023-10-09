@@ -1,6 +1,6 @@
 ---
 title: Button group
-description: Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
+shortDescription: Displays multiple related actions stacked or in a horizontal row for arrangement and spacing.
 category: Actions
 keywords:
   - ButtonGroup
@@ -25,13 +25,23 @@ examples:
   - fileName: button-group-with-segmented-buttons.tsx
     title: With segmented buttons
     description: Use to emphasize several buttons as a thematically-related set among other controls.
-  - fileName: button-group-outline-with-segmented-buttons.tsx
-    title: Outline with segmented buttons
-    description: Use to emphasize several buttons as a thematically-related set against shaded or colorful backgrounds.
   - fileName: button-group-pressed-with-segmented-buttons.tsx
     title: Pressed with segmented buttons
     description: Pressed buttons can be used in combination to create a toggle for other parts of the user interface.
+previewImg: /images/components/actions/button-group.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

@@ -1,26 +1,26 @@
-import {VerticalStack, Icon, HorizontalStack, Text} from '@shopify/polaris';
+import {BlockStack, Icon, InlineStack, Text} from '@shopify/polaris';
 import {InfoMinor} from '@shopify/polaris-icons';
 import styles from './TipBanner.module.scss';
 
 interface Props {
-  title: string;
+  title?: string;
   children: React.ReactNode;
 }
 
-function TipBanner({title, children}: Props) {
+function TipBanner({title = 'Tip', children}: Props) {
   return (
     <div className={styles.TipBanner}>
-      <VerticalStack gap="200">
-        <HorizontalStack gap="200">
+      <BlockStack gap="200">
+        <InlineStack gap="200">
           <div>
-            <Icon source={InfoMinor} color="highlight" />
+            <Icon source={InfoMinor} tone="info" />
           </div>
           <Text as="h4" variant="headingMd">
             {title}
           </Text>
-        </HorizontalStack>
+        </InlineStack>
         {children}
-      </VerticalStack>
+      </BlockStack>
     </div>
   );
 }

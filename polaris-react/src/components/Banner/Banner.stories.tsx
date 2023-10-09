@@ -2,12 +2,12 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  VerticalStack,
+  BlockStack,
   Banner,
   Button,
   Card,
   LegacyCard,
-  HorizontalStack,
+  InlineStack,
   Link,
   List,
   Modal,
@@ -43,7 +43,7 @@ export function WithFooterCallToAction() {
   return (
     <Banner
       title="Some of your product variants are missing weights"
-      status="warning"
+      tone="warning"
       action={{content: 'Edit variant weights', url: ''}}
       secondaryAction={{content: 'Learn more', url: ''}}
       onDismiss={() => {}}
@@ -62,7 +62,7 @@ export function Informational() {
       title="USPS has updated their rates"
       action={{content: 'Update rates', url: ''}}
       secondaryAction={{content: 'Learn more'}}
-      status="info"
+      tone="info"
       onDismiss={() => {}}
     >
       <p>Make sure you know how these changes affect your store.</p>
@@ -74,7 +74,7 @@ export function Success() {
   return (
     <Banner
       title="Your shipping label is ready to print."
-      status="success"
+      tone="success"
       action={{content: 'Print label'}}
       onDismiss={() => {}}
     />
@@ -86,7 +86,7 @@ export function Warning() {
     <Banner
       title="Before you can purchase a shipping label, this change needs to be made:"
       action={{content: 'Edit address'}}
-      status="warning"
+      tone="warning"
     >
       <List>
         <List.Item>
@@ -103,7 +103,7 @@ export function Critical() {
     <Banner
       title="High risk of fraud detected"
       action={{content: 'Review risk analysis'}}
-      status="critical"
+      tone="critical"
     >
       <p>
         Before fulfilling this order or capturing payment, please{' '}
@@ -139,7 +139,7 @@ export function InAModal() {
       >
         <Modal.Section>
           <TextContainer>
-            <Banner action={{content: 'Connect account'}} status="warning">
+            <Banner action={{content: 'Connect account'}} tone="warning">
               <p>
                 Connect your instagram account to your shop before proceeding.
               </p>
@@ -165,7 +165,7 @@ export function WithFocus() {
     <Banner
       title="High risk of fraud detected"
       onDismiss={() => {}}
-      status="critical"
+      tone="critical"
       ref={banner}
     >
       <p>
@@ -179,7 +179,7 @@ export function WithFocus() {
 export function InACard() {
   return (
     <Card roundedAbove="sm">
-      <VerticalStack gap="300">
+      <BlockStack gap="300">
         <Text as="h2" variant="headingMd">
           Online store dashboard
         </Text>
@@ -190,7 +190,7 @@ export function InACard() {
           </Text>
         </Banner>
         <Text as="p">View a summary of your online store’s performance.</Text>
-      </VerticalStack>
+      </BlockStack>
     </Card>
   );
 }
@@ -214,18 +214,18 @@ export function InALegacyCard() {
 
 export function WithEndJustifiedContent() {
   return (
-    <Banner status="critical">
-      <VerticalStack gap="100">
-        <HorizontalStack gap="400" align="space-between">
+    <Banner tone="critical">
+      <BlockStack gap="100">
+        <InlineStack gap="400" align="space-between">
           <Text variant="headingMd" fontWeight="semibold" as="h3">
             Deployment failed in 5min
           </Text>
           <Link external url="https://example.com">
             Logs
           </Link>
-        </HorizontalStack>
+        </InlineStack>
         <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
-      </VerticalStack>
+      </BlockStack>
     </Banner>
   );
 }
@@ -233,7 +233,7 @@ export function WithEndJustifiedContent() {
 export function HideIcon() {
   return (
     <LegacyCard title="Edit customer" sectioned>
-      <Banner status="warning" hideIcon>
+      <Banner tone="warning" hideIcon>
         <Text as="p" fontWeight="semibold">
           Changing the phone number for this customer will unsubscribe them from
           SMS marketing text messages until they provide consent.
@@ -246,7 +246,7 @@ export function HideIcon() {
 export function CustomIcon() {
   return (
     <Banner
-      status="info"
+      tone="info"
       icon={DiscountsMajor}
       title="Choose a plan and your discount will be applied at checkout."
     />
@@ -255,7 +255,7 @@ export function CustomIcon() {
 
 export function All() {
   return (
-    <VerticalStack gap="300">
+    <BlockStack gap="300">
       <Text as="h2" variant="headingMd">
         With dismiss and actions
       </Text>
@@ -394,13 +394,13 @@ export function All() {
           }
         />
       </LegacyCard>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
 function AllBanners(props) {
   return (
-    <VerticalStack>
+    <BlockStack>
       <Banner
         title="Default"
         children={<Text as="p">Default status</Text>}
@@ -408,28 +408,28 @@ function AllBanners(props) {
       />
       <Banner
         title="Info"
-        status="info"
+        tone="info"
         children={<Text as="p">Info status</Text>}
         {...props}
       />
       <Banner
         title="Success"
-        status="success"
+        tone="success"
         children={<Text as="p">Success status</Text>}
         {...props}
       />
       <Banner
         title="Warning"
-        status="warning"
+        tone="warning"
         children={<Text as="p">Warning status</Text>}
         {...props}
       />
       <Banner
         title="Critical"
-        status="critical"
+        tone="critical"
         children={<Text as="p">Critical status</Text>}
         {...props}
       />
-    </VerticalStack>
+    </BlockStack>
   );
 }

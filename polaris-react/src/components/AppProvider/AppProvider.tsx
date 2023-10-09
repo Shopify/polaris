@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import type {ThemeName} from '@shopify/polaris-tokens';
-import {themeNameDefault} from '@shopify/polaris-tokens';
+import {
+  createThemeClassName,
+  themeNameDefault,
+  themeNames,
+} from '@shopify/polaris-tokens';
 
 import {EphemeralPresenceManager} from '../EphemeralPresenceManager';
 import {MediaQueryProvider} from '../MediaQueryProvider';
@@ -12,8 +16,6 @@ import {
   ScrollLockManager,
   ScrollLockManagerContext,
 } from '../../utilities/scroll-lock-manager';
-// eslint-disable-next-line import/no-deprecated
-import {IndexFiltersManager} from '../../utilities/index-filters';
 import {
   StickyManager,
   StickyManagerContext,
@@ -21,9 +23,8 @@ import {
 import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
 import {
-  FeaturesContext,
   classNamePolarisSummerEditions2023,
-  classNamePolarisSummerEditions2023ShadowBevelOptOut,
+  FeaturesContext,
 } from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
@@ -73,6 +74,7 @@ interface State {
 }
 
 export interface AppProviderProps {
+  theme?: ThemeName;
   /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
@@ -129,43 +131,27 @@ export class AppProvider extends Component<AppProviderProps, State> {
   }
 
   setBodyStyles = () => {
-    document.body.style.backgroundColor = 'var(--p-color-bg-app)';
+    document.body.style.backgroundColor = 'var(--p-color-bg)';
     document.body.style.color = 'var(--p-color-text)';
   };
 
   setRootAttributes = () => {
-    const features = this.getFeatures();
+    const activeThemeName = this.getThemeName();
 
-    document.documentElement.classList.toggle(
-      classNamePolarisSummerEditions2023,
-      features.polarisSummerEditions2023,
-    );
+    themeNames.forEach((themeName) => {
+      document.documentElement.classList.toggle(
+        createThemeClassName(themeName),
+        themeName === activeThemeName,
+      );
+    });
 
-    document.documentElement.classList.toggle(
-      classNamePolarisSummerEditions2023ShadowBevelOptOut,
-      features.polarisSummerEditions2023ShadowBevelOptOut,
-    );
+    document.documentElement.classList.add(classNamePolarisSummerEditions2023);
   };
 
-  getFeatures = () => {
-    const {features} = this.props;
-
-    return {
-      ...features,
-      polarisSummerEditions2023: features?.polarisSummerEditions2023 ?? false,
-      polarisSummerEditions2023ShadowBevelOptOut:
-        features?.polarisSummerEditions2023ShadowBevelOptOut ?? false,
-    };
-  };
-
-  getThemeName = (): ThemeName =>
-    this.getFeatures().polarisSummerEditions2023
-      ? 'Polaris-Summer-Editions-2023'
-      : themeNameDefault;
+  getThemeName = (): ThemeName => this.props.theme ?? themeNameDefault;
 
   render() {
-    const {children} = this.props;
-    const features = this.getFeatures();
+    const {children, features} = this.props;
     const themeName = this.getThemeName();
 
     const {intl, link} = this.state;
@@ -181,7 +167,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
                     <PortalsManager>
                       <FocusManager>
                         <EphemeralPresenceManager>
-                          <IndexFiltersManager>{children}</IndexFiltersManager>
+                          {children}
                         </EphemeralPresenceManager>
                       </FocusManager>
                     </PortalsManager>

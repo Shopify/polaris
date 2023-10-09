@@ -5,6 +5,7 @@ import path from 'path';
 import {writeFile, readFile, mkdir, rm} from 'fs/promises';
 import pMap from 'p-map';
 import ora from 'ora';
+import * as polarisIcons from '@shopify/polaris-icons';
 
 const sitemapPath = path.join(process.cwd(), 'public/sitemap.xml');
 const imgDir = path.join(process.cwd(), 'public/og-images');
@@ -67,7 +68,7 @@ const generateHTML = async (url, slug) => {
     }
     const markdownContent = await readFile(mdFilePath, 'utf-8');
     const {data} = matter(markdownContent);
-    if (data.icon) {
+    if (data.icon && data.icon in polarisIcons) {
       const iconFilePath = path.join(
         process.cwd(),
         `../polaris-icons/dist/svg/${data.icon}.svg`,
@@ -80,7 +81,7 @@ const generateHTML = async (url, slug) => {
 
   const html = `
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@650');
 
   * {
     margin: 0;
@@ -101,7 +102,7 @@ const generateHTML = async (url, slug) => {
 
   h1 {
     font-size: 80px;
-    font-weight: 500;
+    font-weight: 650;
     letter-spacing: -0.01rem;
     max-width: 520px;
   }

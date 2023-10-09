@@ -1,15 +1,11 @@
 ---
 title: Box
-description: Box is the most primitive layout component. It’s a way to access Polaris design tokens.
 category: Layout and structure
 keywords:
   - layout
   - box
   - responsive
   - tokens
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: box-with-color.tsx
     title: Color
@@ -31,7 +27,20 @@ examples:
     title: Shadow
     description: >-
       Shadow can be applied using the [Shadow tokens](https://polaris.shopify.com/tokens/shadow).
+previewImg: /images/components/layout-and-structure/box.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Box is the most primitive layout component. It’s a way to access Polaris design tokens.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Related components
 

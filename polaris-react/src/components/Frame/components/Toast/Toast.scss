@@ -8,16 +8,14 @@ $Backdrop-opacity: 0.88;
   padding: var(--p-space-200) var(--p-space-300);
   border-radius: var(--p-border-radius-100);
   background: var(--p-color-bg-inverse);
-  color: var(--p-color-text-on-color);
+  color: var(--p-color-text-inverse);
   margin-bottom: var(--p-space-500);
-  box-shadow: var(--p-shadow-xl);
+  box-shadow: var(--p-shadow-500);
 
-  #{$se23} & {
-    @include shadow-bevel(
-      $boxShadow: var(--p-shadow-lg),
-      $borderRadius: var(--p-border-radius-200)
-    );
-  }
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-400),
+    $borderRadius: var(--p-border-radius-200)
+  );
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-300);
@@ -29,33 +27,21 @@ $Backdrop-opacity: 0.88;
 }
 
 .Action {
-  margin-left: var(--p-space-200);
-  color: var(--p-color-text-on-color);
-
-  #{$se23} & {
-    margin-left: var(--p-space-400);
-  }
+  margin-left: var(--p-space-400);
+  color: var(--p-color-text-inverse);
 }
 
 .error {
   background: var(--p-color-bg-fill-critical);
-  color: var(--p-color-text-on-color);
+  color: var(--p-color-text-critical-on-bg-fill);
 
   .CloseButton {
-    color: var(--p-color-icon-on-color);
-
-    #{$se23} & {
-      color: var(--p-color-icon-on-color);
-    }
+    color: var(--p-color-text-critical-on-bg-fill);
   }
 }
 
 .LeadingIcon {
-  margin-right: var(--p-space-200);
-
-  #{$se23} & {
-    margin-right: var(--p-space-150);
-  }
+  margin-right: var(--p-space-150);
 
   svg {
     fill: currentColor;
@@ -71,13 +57,9 @@ $Backdrop-opacity: 0.88;
   border: none;
   appearance: none;
   background: transparent;
-  color: var(--p-color-icon-secondary);
+  color: var(--p-color-icon-inverse);
   cursor: pointer;
   margin-left: var(--p-space-200);
-
-  #{$se23} & {
-    color: var(--p-color-icon-inverse);
-  }
 
   svg {
     fill: currentColor;
@@ -89,6 +71,6 @@ $Backdrop-opacity: 0.88;
 
   &:focus,
   &:hover {
-    color: var(--p-color-text-on-color);
+    color: var(--p-color-text-inverse);
   }
 }

@@ -1,55 +1,84 @@
+@import '../../styles/mixins.scss';
+
 .TOC {
-  font-size: var(--font-size-300);
-
-  > ul > li:not(:first-child) {
-    padding-top: 0.25rem;
-  }
-
-  a {
-    color: inherit;
-    display: block;
-    white-space: pre;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      height: 1rem;
-      width: 3px;
-      background: var(--text);
-      border-radius: 0 2px 2px 0;
-      opacity: 0;
-    }
-
-    &:hover {
-      color: var(--text-strong);
-
-      &::before {
-        opacity: 0.2;
-      }
-    }
-
-    &[data-is-current='true'] {
-      color: var(--text-strong);
-      font-weight: var(--font-weight-500);
-
-      &::before {
-        opacity: 1;
-      }
-    }
-  }
-
   &.isNested {
     ul ul {
-      padding-top: 0.25rem;
-      font-size: var(--font-size-200);
-
-      a {
-        padding: 0.1rem 0 0.1rem 0.66rem;
+      .Link {
+        padding: var(--p-space-100) var(--p-space-200) var(--p-space-100)
+          var(--p-space-400);
       }
     }
+  }
+}
+
+.Header {
+  color: var(--text-strong);
+  font-size: var(--p-font-size-350);
+  line-height: var(--p-font-line-height-500);
+  font-weight: var(--p-font-weight-semibold);
+}
+
+.Item {
+  &:not(:last-child) {
+    padding-bottom: var(--p-space-100);
+  }
+}
+
+.Link {
+  padding: var(--p-space-100) var(--p-space-200);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  span {
+    color: var(--text-strong);
+    font-size: var(--p-font-size-325);
+    font-weight: var(--p-font-weight-regular);
+    line-height: var(--p-font-line-height-500);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+  }
+
+  &:hover {
+    background-color: var(--surface-active);
+    border-radius: var(--p-border-radius-200);
+  }
+
+  &.active {
+    background-color: var(--surface-active);
+    border-radius: var(--p-border-radius-200);
+
+    span {
+      font-weight: var(--p-font-weight-semibold);
+    }
+  }
+}
+
+.TOCItemMaxWidth {
+  max-width: calc(var(--toc-width) * 0.75);
+}
+
+.Toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  background-color: transparent;
+  background-image: url(/images/PlusMinor.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 12px 12px;
+  opacity: 0.66;
+
+  &:hover {
+    opacity: 1;
+    background-color: var(--surface-subdued);
+  }
+
+  &[aria-expanded='true'] {
+    background-image: url(/images/MinusMinor.svg);
   }
 }

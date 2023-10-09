@@ -1,6 +1,6 @@
 ---
 title: Card
-description: Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
+shortDescription: Used to group similar concepts and tasks together for easier scanning and reading.
 category: Layout and structure
 keywords:
   - layout
@@ -22,14 +22,11 @@ keywords:
   - subdued card for secondary content
   - callout
   - call out
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: card-default.tsx
     title: Default
     description: >-
-      By default, cards have an 8px border radius and uses `--p-color-bg` as the background and `--p-shadow-md` as the shadow. There is padding of `space-5` (20px) around children and `space-4` (16px) for small screens.
+      By default, cards have an 8px border radius and uses `--p-color-bg-surface` as the background and `--p-shadow-300` as the shadow. There is padding of `space-5` (20px) around children and `space-4` (16px) for small screens.
   - fileName: card-with-subdued-background.tsx
     title: With subdued background
     description: >-
@@ -42,7 +39,20 @@ examples:
     title: Rounded corners
     description: >-
       Use the `padding` property to adjust the spacing of content within a card. The `padding` prop supports responsive spacing with the [Breakpoints tokens](https://polaris.shopify.com/tokens/breakpoints).
+previewImg: /images/components/layout-and-structure/card.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Cards are used to group similar concepts and tasks together for merchants to scan, read, and get things done. It displays content in a familiar and recognizable style.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

@@ -1,21 +1,38 @@
-export * from './metadata';
-export * from './utilities';
 export {breakpointsAliases} from './themes/base/breakpoints';
+
+export type {BreakpointsAliasDirection} from './utils';
+
+export {
+  createVar,
+  createVarName,
+  getThemeVarNames,
+  getMediaConditions,
+  toPx,
+  toPxs,
+  toRem,
+} from './utils';
+
+export {metaThemes, metaThemeDefault} from './themes';
+
 export type {
-  TokenGroup,
-  Tokens,
-  MetadataProperties,
-  MetadataGroup,
-} from './types';
+  MetaTheme,
+  MetaThemeShape,
+  MetaTokenGroupShape,
+  MetaTokenProperties,
+  Theme,
+  ThemeName,
+} from './themes/types';
 
-export type {ThemeName, Theme} from './themes/types';
+export {themeNameDefault, themeNames} from './themes/constants';
 
-export {themeNameDefault} from './themes/constants';
+export {createThemeClassName} from './themes/utils';
 
 export type {
   BorderTokenGroup,
   BorderTokenName,
   BorderRadiusScale,
+  BorderRadiusAlias,
+  BorderRadiusAliasOrScale,
   BorderWidthScale,
 } from './themes/base/border';
 
@@ -59,6 +76,7 @@ export type {
   ShadowTokenGroup,
   ShadowTokenName,
   ShadowAlias,
+  ShadowAliasOrScale,
 } from './themes/base/shadow';
 
 export type {

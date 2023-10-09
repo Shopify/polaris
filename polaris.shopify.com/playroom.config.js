@@ -4,7 +4,7 @@
 // Workaround: restart the next dev server after each change to the playroom config and associated files.
 
 const path = require('path');
-const {breakpoints, toPx} = require('@shopify/polaris-tokens');
+const {themeDefault, toPx} = require('@shopify/polaris-tokens');
 const {playroom} = require('./constants');
 
 // Note: We insert a 320 breakpoint to ensure we capture a representation of the
@@ -13,7 +13,7 @@ const {playroom} = require('./constants');
 // phone size you'll encounter)
 const breakpointsConfig = [
   320,
-  ...Object.values(breakpoints)
+  ...Object.values(themeDefault.breakpoints)
     .map((value) => +toPx(value).replace('px', ''))
     .filter((val) => val > 0),
 ];

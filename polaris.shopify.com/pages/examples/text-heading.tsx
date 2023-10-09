@@ -5,9 +5,6 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function TextExample() {
   return (
     <LegacyStack vertical>
-      <Text variant="heading4xl" as="h1">
-        Online store dashboard
-      </Text>
       <Text variant="heading3xl" as="h2">
         Online store dashboard
       </Text>
@@ -24,9 +21,6 @@ function TextExample() {
         Online store dashboard
       </Text>
       <Text variant="headingSm" as="h6">
-        Online store dashboard
-      </Text>
-      <Text variant="headingXs" as="h6">
         Online store dashboard
       </Text>
     </LegacyStack>

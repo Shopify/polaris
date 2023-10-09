@@ -77,7 +77,7 @@ describe('<Labelled />', () => {
         <Labelled id="MyLabelled" label="Label" action={action} />,
       );
 
-      expect(label).toContainReactComponent(Button, {plain: true});
+      expect(label).toContainReactComponent(Button, {variant: 'plain'});
     });
 
     it('does not render any block-level elements in the label element', () => {

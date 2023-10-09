@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Button, ButtonGroup, Icon} from '@shopify/polaris';
+import {Button, ButtonGroup, Icon, BlockStack} from '@shopify/polaris';
 import {DeleteMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -11,7 +11,7 @@ export function Default() {
   return (
     <ButtonGroup>
       <Button>Cancel</Button>
-      <Button primary>Save</Button>
+      <Button variant="primary">Save</Button>
     </ButtonGroup>
   );
 }
@@ -28,7 +28,7 @@ export function WithSegmentedButtons() {
   );
   return (
     <div>
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         <Button size="slim">Bold</Button>
         <Button size="slim" pressed>
           Italic
@@ -41,7 +41,7 @@ export function WithSegmentedButtons() {
         />
       </ButtonGroup>
       <br />
-      <ButtonGroup segmented>
+      <ButtonGroup variant="segmented">
         <Button
           pressed={activeButtonIndex === 0}
           onClick={() => handleButtonClick(0)}
@@ -97,11 +97,33 @@ export function WithSegmentedButtons() {
 
 export function OutlineWithSegmentedButtons() {
   return (
-    <ButtonGroup segmented>
-      <Button outline>Bold</Button>
-      <Button outline>Italic</Button>
-      <Button outline>Underline</Button>
+    <ButtonGroup variant="segmented">
+      <Button>Bold</Button>
+      <Button>Italic</Button>
+      <Button>Underline</Button>
     </ButtonGroup>
+  );
+}
+
+export function WithAllGaps() {
+  return (
+    <BlockStack gap="400">
+      <ButtonGroup gap="extraTight" connectedTop>
+        <Button>Bold</Button>
+        <Button>Italic</Button>
+        <Button>Underline</Button>
+      </ButtonGroup>
+      <ButtonGroup gap="tight">
+        <Button>Bold</Button>
+        <Button>Italic</Button>
+        <Button>Underline</Button>
+      </ButtonGroup>
+      <ButtonGroup gap="loose">
+        <Button>Bold</Button>
+        <Button>Italic</Button>
+        <Button>Underline</Button>
+      </ButtonGroup>
+    </BlockStack>
   );
 }
 
@@ -122,7 +144,7 @@ export function NoWrapButtons() {
           <Button>Fourth</Button>
           <Button>Third</Button>
           <Button>Second</Button>
-          <Button primary>First</Button>
+          <Button variant="primary">First</Button>
         </ButtonGroup>
       </div>
       <br />
@@ -140,7 +162,7 @@ export function NoWrapButtons() {
           <Button>Fourth</Button>
           <Button>Third</Button>
           <Button>Second</Button>
-          <Button primary>First</Button>
+          <Button variant="primary">First</Button>
         </ButtonGroup>
       </div>
     </>

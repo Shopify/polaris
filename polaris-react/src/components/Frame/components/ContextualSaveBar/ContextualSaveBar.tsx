@@ -3,6 +3,7 @@ import {CircleAlertMajor} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
 import {Icon} from '../../../Icon';
@@ -12,7 +13,6 @@ import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
-import {useFeatures} from '../../../../utilities/features';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.scss';
@@ -33,7 +33,6 @@ export function ContextualSaveBar({
     toggle: toggleDiscardConfirmationModal,
     setFalse: closeDiscardConfirmationModal,
   } = useToggle(false);
-  const {polarisSummerEditions2023} = useFeatures();
 
   const handleDiscardAction = useCallback(() => {
     if (discardAction && discardAction.onAction) {
@@ -66,9 +65,8 @@ export function ContextualSaveBar({
 
   const discardActionMarkup = discardAction && (
     <Button
-      plain={polarisSummerEditions2023}
-      primary={polarisSummerEditions2023}
-      size={polarisSummerEditions2023 ? 'large' : undefined}
+      variant="tertiary"
+      size="large"
       url={discardAction.url}
       onClick={discardActionHandler}
       loading={discardAction.loading}
@@ -86,9 +84,9 @@ export function ContextualSaveBar({
 
   const saveActionMarkup = saveAction && (
     <Button
-      primary={!polarisSummerEditions2023}
-      primarySuccess={polarisSummerEditions2023}
-      size={polarisSummerEditions2023 ? 'large' : undefined}
+      variant="primary"
+      tone="success"
+      size="large"
       url={saveAction.url}
       onClick={saveAction.onAction}
       loading={saveAction.loading}
@@ -127,22 +125,14 @@ export function ContextualSaveBar({
         {contextControlMarkup}
         {logoMarkup}
         <div className={contentsClassName}>
-          {polarisSummerEditions2023 ? (
-            <div className={styles.MessageContainer}>
-              <Icon source={CircleAlertMajor} />
-              {message && (
-                <Text as="h2" variant="headingMd" color="text-inverse" truncate>
-                  {message}
-                </Text>
-              )}
-            </div>
-          ) : (
-            message && (
-              <Text as="h2" variant="headingMd" color="text-inverse" truncate>
+          <div className={styles.MessageContainer}>
+            <Icon source={CircleAlertMajor} />
+            {message && (
+              <Text as="h2" variant="headingMd" tone="text-inverse" truncate>
                 {message}
               </Text>
-            )
-          )}
+            )}
+          </div>
           <div className={styles.ActionContainer}>
             <LegacyStack spacing="tight" wrap={false}>
               {secondaryMenu}

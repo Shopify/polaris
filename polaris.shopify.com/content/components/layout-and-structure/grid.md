@@ -1,6 +1,5 @@
 ---
 title: Grid
-description: Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
 category: Layout and structure
 keywords:
   - one column
@@ -13,9 +12,6 @@ keywords:
   - containers
   - full width containers
   - css grid
-status:
-  value: Alpha
-  message: This component is a work in progress and ready for exploratory usage, with breaking changes expected in minor version updates. Please use with caution. Learn more about our [component lifecycles](/getting-started/components-lifecycle).
 examples:
   - fileName: grid-two-column.tsx
     title: Two column
@@ -29,7 +25,20 @@ examples:
   - fileName: grid-custom-layout.tsx
     title: Custom layout
     description: Use to create a layout that can be customized at specific breakpoints.
+previewImg: /images/components/layout-and-structure/grid.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Create complex layouts based on [CSS Grid](https://developer.mozilla.org/en-US/docs/Web/CSS/grid).
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Related components
 

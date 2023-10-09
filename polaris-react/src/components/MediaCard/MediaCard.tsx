@@ -5,17 +5,16 @@ import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import type {ActionListItemDescriptor, ComplexAction} from '../../types';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../LegacyCard';
 import {Button, buttonFrom} from '../Button';
 import {Text} from '../Text';
 import {Popover} from '../Popover';
 import {ActionList} from '../ActionList';
 import {ButtonGroup} from '../ButtonGroup';
-import {LegacyStack} from '../LegacyStack';
 import {Box} from '../Box';
-import {HorizontalStack} from '../HorizontalStack';
-import {useFeatures} from '../../utilities/features';
-import {VerticalStack} from '../VerticalStack';
+import {InlineStack} from '../InlineStack';
+import {BlockStack} from '../BlockStack';
 
 import styles from './MediaCard.scss';
 
@@ -59,22 +58,18 @@ export function MediaCard({
 }: MediaCardProps) {
   const i18n = useI18n();
   const {value: popoverActive, toggle: togglePopoverActive} = useToggle(false);
-  const {polarisSummerEditions2023} = useFeatures();
 
   let headerMarkup = null;
   if (title) {
     const headerContent =
       typeof title === 'string' ? (
-        <Text
-          variant={polarisSummerEditions2023 ? 'headingSm' : 'headingMd'}
-          as="h2"
-        >
+        <Text variant="headingSm" as="h2">
           {title}
         </Text>
       ) : (
         title
       );
-    headerMarkup = <div className={styles.Heading}>{headerContent}</div>;
+    headerMarkup = <div>{headerContent}</div>;
   }
 
   const dismissButtonMarkup = onDismiss ? (
@@ -82,23 +77,21 @@ export function MediaCard({
       icon={CancelMinor}
       onClick={onDismiss}
       size="slim"
-      plain
       accessibilityLabel={i18n.translate('Polaris.MediaCard.dismissButton')}
-      primary={polarisSummerEditions2023}
+      variant="tertiary"
     />
   ) : null;
 
   const popoverActivator = (
-    <HorizontalStack blockAlign="center">
+    <InlineStack blockAlign="center">
       <Button
         icon={HorizontalDotsMinor}
         onClick={togglePopoverActive}
         size="slim"
-        plain
         accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}
-        primary={polarisSummerEditions2023}
+        variant="tertiary"
       />
-    </HorizontalStack>
+    </InlineStack>
   );
 
   const popoverActionsMarkup =
@@ -118,15 +111,11 @@ export function MediaCard({
     ) : null;
 
   const primaryActionMarkup = primaryAction ? (
-    <div className={styles.PrimaryAction}>{buttonFrom(primaryAction)}</div>
+    <div>{buttonFrom(primaryAction)}</div>
   ) : null;
 
   const secondaryActionMarkup = secondaryAction ? (
-    <div className={styles.SecondaryAction}>
-      {polarisSummerEditions2023
-        ? buttonFrom(secondaryAction)
-        : buttonFrom(secondaryAction, {plain: true})}
-    </div>
+    <div>{buttonFrom(secondaryAction)}</div>
   ) : null;
 
   const actionClassName = classNames(
@@ -163,16 +152,11 @@ export function MediaCard({
 
   const popoverOrDismissMarkup =
     popoverActionsMarkup || dismissButtonMarkup ? (
-      <Box
-        position="absolute"
-        insetBlockStart={polarisSummerEditions2023 ? undefined : '400'}
-        insetInlineEnd="500"
-        zIndex="var(--p-z-index-2)"
-      >
-        <HorizontalStack gap="100" wrap={!polarisSummerEditions2023}>
+      <Box position="absolute" insetInlineEnd="500" zIndex="var(--p-z-index-2)">
+        <InlineStack gap="100" wrap={false}>
           {popoverActionsMarkup}
           {dismissButtonMarkup}
-        </HorizontalStack>
+        </InlineStack>
       </Box>
     ) : null;
 
@@ -181,27 +165,16 @@ export function MediaCard({
       <div className={mediaCardClassName}>
         <div className={mediaContainerClassName}>{children}</div>
         <div className={infoContainerClassName}>
-          {polarisSummerEditions2023 ? (
-            <Box padding="500">
-              <VerticalStack gap="200">
-                <HorizontalStack wrap={false} align="space-between" gap="200">
-                  {headerMarkup}
-                  {popoverOrDismissMarkup}
-                </HorizontalStack>
-                <p className={styles.Description}>{description}</p>
-                {actionMarkup}
-              </VerticalStack>
-            </Box>
-          ) : (
-            <LegacyCard.Section>
-              {popoverOrDismissMarkup}
-              <LegacyStack vertical spacing="tight">
+          <Box padding="500">
+            <BlockStack gap="200">
+              <InlineStack wrap={false} align="space-between" gap="200">
                 {headerMarkup}
-                <p className={styles.Description}>{description}</p>
-                {actionMarkup}
-              </LegacyStack>
-            </LegacyCard.Section>
-          )}
+                {popoverOrDismissMarkup}
+              </InlineStack>
+              <p className={styles.Description}>{description}</p>
+              {actionMarkup}
+            </BlockStack>
+          </Box>
         </div>
       </div>
     </LegacyCard>
