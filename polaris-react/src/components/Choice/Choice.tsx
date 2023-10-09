@@ -129,7 +129,10 @@ export function Choice({
       'fill',
       // Map "true" => "100%" and "false" => "auto" for use in
       // inline/block-size calc()
-      mapResponsivePropValues(fill, (value) => (value ? '100%' : 'auto')),
+      mapResponsivePropValues(fill, (value) => {
+        if (value === undefined) return undefined;
+        return value ? '100%' : 'auto';
+      }),
     ),
   } as React.CSSProperties;
 
