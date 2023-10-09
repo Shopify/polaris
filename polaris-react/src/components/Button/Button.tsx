@@ -129,7 +129,6 @@ export function Button({
     styles.Button,
     variant === 'primary' && styles.primary,
     variant === 'plain' && styles.plain,
-    variant === 'tertiary' && styles.primary,
     variant === 'tertiary' && styles.tertiary,
     variant === 'monochromePlain' && styles.monochrome,
     variant === 'monochromePlain' && styles.plain,
