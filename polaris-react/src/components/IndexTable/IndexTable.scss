@@ -342,7 +342,7 @@ $loading-panel-height: 53px;
       }
 
       // stylelint-disable max-nesting-depth -- se23 status hover styles
-      &.statusCritical {
+      &.statusCritical:not(.TableRow-selected) {
         &,
         .TableCell-first,
         .TableCell-first + .TableCell {
@@ -350,7 +350,7 @@ $loading-panel-height: 53px;
         }
       }
 
-      &.statusWarning {
+      &.statusWarning:not(.TableRow-selected) {
         &,
         .TableCell-first,
         .TableCell-first + .TableCell {
@@ -358,7 +358,7 @@ $loading-panel-height: 53px;
         }
       }
 
-      &.statusSubdued {
+      &.statusSubdued:not(.TableRow-selected) {
         &,
         .TableCell-first,
         .TableCell-first + .TableCell {
@@ -366,7 +366,7 @@ $loading-panel-height: 53px;
         }
       }
 
-      &.statusSuccess {
+      &.statusSuccess:not(.TableRow-selected) {
         &,
         .TableCell-first,
         .TableCell-first + .TableCell {
