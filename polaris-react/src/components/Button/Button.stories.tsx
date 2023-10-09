@@ -706,6 +706,11 @@ export function DisabledState() {
       <Button variant="plain" tone="critical" disabled>
         Buy shipping label
       </Button>
+      <span style={{color: '#bf0711'}}>
+        <Button variant="monochromePlain" disabled>
+          Buy shipping label
+        </Button>
+      </span>
     </ButtonGroup>
   );
 }

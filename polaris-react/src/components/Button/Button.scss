@@ -956,8 +956,7 @@
     }
 
     &.disabled {
-      color: currentColor;
-      opacity: 0.4;
+      color: var(--p-color-text-disabled);
 
       svg {
         fill: currentColor;
