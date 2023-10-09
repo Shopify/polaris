@@ -2,6 +2,7 @@
 title: Interaction states
 description: Interaction states communicate the status of an element in the interface, establish confidence once an action is taken, and suggest the ability (or inability) to interact with the element.
 icon: BuyButtonMajor
+order: 10
 keywords:
   - visual patterns
   - color strategy
@@ -18,6 +19,17 @@ keywords:
 ![A collection of buttons in different states](/images/design/interaction-states/interaction-states-intro@2x.png)
 
 ---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<DirectiveCard status="Caution">
+
+This section is currently being reworked to provide better guidance aligned
+with Polaris v12. Stay tuned!
+
+</DirectiveCard>
 
 ## Principles
 

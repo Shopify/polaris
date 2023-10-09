@@ -1,14 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  AccountConnection,
-  Box,
-  Link,
-  Text,
-  VerticalStack,
-} from '@shopify/polaris';
-
-import {useFeatures} from '../../utilities/features';
+import {AccountConnection, Box, Link, Text, BlockStack} from '@shopify/polaris';
 
 export default {
   component: AccountConnection,
@@ -17,20 +9,20 @@ export default {
 export function All() {
   return (
     <>
-      <VerticalStack gap="400">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
         <Box paddingBlockEnd="300" />
-      </VerticalStack>
-      <VerticalStack gap="400">
+      </BlockStack>
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With account connected
         </Text>
         <WithAccountConnected />
         <Box paddingBlockEnd="300" />
-      </VerticalStack>
+      </BlockStack>
     </>
   );
 }
@@ -43,18 +35,12 @@ export function Default() {
     setConnected((connected) => !connected);
   }, []);
 
-  const {polarisSummerEditions2023} = useFeatures();
-
   const buttonText = connected ? 'Disconnect' : 'Connect';
   const details = connected ? 'Account connected' : 'No account connected';
-  const connectText = polarisSummerEditions2023 ? (
-    'Connect'
-  ) : (
-    <strong>Connect</strong>
-  );
+
   const terms = connected ? null : (
     <p>
-      By clicking {connectText}, you agree to accept Sample App’s{' '}
+      By clicking Connect, you agree to accept Sample App’s{' '}
       <Link url="Example App">terms and conditions</Link>. You’ll pay a
       commission rate of 15% on sales made through Sample App.
     </p>

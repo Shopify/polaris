@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Checkbox, HorizontalStack, VerticalStack, Card} from '@shopify/polaris';
+import {Checkbox, InlineStack, BlockStack, Card} from '@shopify/polaris';
 
 export default {
   component: Checkbox,
@@ -40,7 +40,7 @@ export function DisabledStates() {
   };
 
   return (
-    <HorizontalStack gap="200">
+    <InlineStack gap="200">
       <Checkbox
         label="Disabled unchecked checkbox"
         disabled
@@ -58,7 +58,7 @@ export function DisabledStates() {
         disabled
         onChange={handleChange}
       />
-    </HorizontalStack>
+    </InlineStack>
   );
 }
 
@@ -99,7 +99,7 @@ export function WithBleedAndFill() {
     [],
   );
   return (
-    <VerticalStack gap="600">
+    <BlockStack gap="600">
       <Card padding="400">
         <Checkbox
           label="No bleed"
@@ -110,7 +110,7 @@ export function WithBleedAndFill() {
       <Card padding="400">
         <Checkbox
           label="Bleed increase hit size"
-          bleed="4"
+          bleed="400"
           checked={checked2}
           onChange={handleChange2}
         />
@@ -134,6 +134,6 @@ export function WithBleedAndFill() {
           onChange={handleChange4}
         />
       </Card>
-    </VerticalStack>
+    </BlockStack>
   );
 }

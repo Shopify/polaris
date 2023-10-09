@@ -1,31 +1,21 @@
-import type {Experimental} from '../../types';
-import {createVarName} from '../../utilities';
+import {size} from '../../size';
 import type {MetaTokenProperties} from '../types';
 
 export type FontFamilyPrefix = 'font-family';
 type FontFamilyAlias = 'sans' | 'mono';
 
-type FontSizeScaleExperimental = Experimental<'70' | '80'>;
-
 export type FontSizePrefix = 'font-size';
 export type FontSizeScale =
   | '275'
+  | '300'
   | '325'
   | '350'
-  | '750'
-  | '900'
-  | '1000'
-  | '75'
-  | '100'
-  | '200'
-  | '300'
   | '400'
   | '500'
   | '600'
-  | '700'
-  | FontSizeScaleExperimental;
-
-type FontLineHeightScaleExperimental = Experimental<'075'>;
+  | '750'
+  | '900'
+  | '1000';
 
 export type FontLineHeightPrefix = 'font-line-height';
 export type FontLineHeightScale =
@@ -36,15 +26,7 @@ export type FontLineHeightScale =
   | '700'
   | '800'
   | '1000'
-  | '1200'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | '7'
-  | FontLineHeightScaleExperimental;
+  | '1200';
 
 export type FontLetterSpacingPrefix = 'font-letter-spacing';
 export type FontLetterSpacingAlias = 'densest' | 'denser' | 'dense' | 'normal';
@@ -75,68 +57,50 @@ export const font: {
 } = {
   'font-family-sans': {
     value:
-      "-apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
+      "'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif",
   },
   'font-family-mono': {
     value:
       "ui-monospace, SFMono-Regular, 'SF Mono', Consolas, 'Liberation Mono', Menlo, monospace",
   },
   'font-size-275': {
-    value: createVar('font-size-70-experimental'),
-  },
-  'font-size-325': {
-    value: createVar('font-size-80-experimental'),
-  },
-  'font-size-350': {
-    value: createVar('font-size-100'),
-  },
-  'font-size-750': {
-    value: createVar('font-size-500'),
-  },
-  'font-size-900': {
-    value: createVar('font-size-600'),
-  },
-  'font-size-1000': {
-    value: createVar('font-size-700'),
-  },
-  'font-size-70-experimental': {
-    value: '11px',
-  },
-  'font-size-75': {
-    value: '12px',
-  },
-  'font-size-80-experimental': {
-    value: '13px',
-  },
-  'font-size-100': {
-    value: '14px',
-  },
-  'font-size-200': {
-    value: '16px',
+    value: size[275],
   },
   'font-size-300': {
-    value: '20px',
+    value: size[300],
+  },
+  'font-size-325': {
+    value: size[325],
+  },
+  'font-size-350': {
+    value: size[350],
   },
   'font-size-400': {
-    value: '24px',
+    value: size[400],
   },
   'font-size-500': {
-    value: '28px',
+    value: size[500],
   },
   'font-size-600': {
-    value: '32px',
+    value: size[600],
   },
-  'font-size-700': {
-    value: '40px',
+  'font-size-750': {
+    value: size[750],
+  },
+  'font-size-900': {
+    value: size[900],
+  },
+  'font-size-1000': {
+    value: size[1000],
   },
   'font-weight-regular': {
-    value: '400',
+    value: '450',
   },
   'font-weight-medium': {
-    value: '500',
+    value: '550',
   },
   'font-weight-semibold': {
-    value: '600',
+    value: '650',
   },
   'font-weight-bold': {
     value: '700',
@@ -154,55 +118,27 @@ export const font: {
     value: '0px',
   },
   'font-line-height-300': {
-    value: createVar('font-line-height-075-experimental'),
+    value: size[300],
   },
   'font-line-height-400': {
-    value: createVar('font-line-height-1'),
+    value: size[400],
   },
   'font-line-height-500': {
-    value: createVar('font-line-height-2'),
+    value: size[500],
   },
   'font-line-height-600': {
-    value: createVar('font-line-height-3'),
+    value: size[600],
   },
   'font-line-height-700': {
-    value: createVar('font-line-height-4'),
+    value: size[700],
   },
   'font-line-height-800': {
-    value: createVar('font-line-height-5'),
+    value: size[800],
   },
   'font-line-height-1000': {
-    value: createVar('font-line-height-6'),
+    value: size[1000],
   },
   'font-line-height-1200': {
-    value: createVar('font-line-height-7'),
-  },
-  'font-line-height-075-experimental': {
-    value: '12px',
-  },
-  'font-line-height-1': {
-    value: '16px',
-  },
-  'font-line-height-2': {
-    value: '20px',
-  },
-  'font-line-height-3': {
-    value: '24px',
-  },
-  'font-line-height-4': {
-    value: '28px',
-  },
-  'font-line-height-5': {
-    value: '32px',
-  },
-  'font-line-height-6': {
-    value: '40px',
-  },
-  'font-line-height-7': {
-    value: '48px',
+    value: size[1200],
   },
 };
-
-export function createVar(fontTokenName: FontTokenName) {
-  return `var(${createVarName(fontTokenName)})`;
-}

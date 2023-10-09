@@ -1,6 +1,5 @@
 ---
 title: Checkbox
-description: Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
 category: Selection and input
 keywords:
   - accept
@@ -18,7 +17,20 @@ examples:
   - fileName: checkbox-default.tsx
     title: Default
     description: Use in forms to toggle the state of something on or off. Default checkboxes can appear as selected and disabled, or unselected.
+previewImg: /images/components/selection-and-input/checkbox.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -40,7 +52,7 @@ Lists that use checkboxes should:
 
 - Start with a capital letter
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -54,11 +66,11 @@ Lists that use checkboxes should:
 - option 2
 - option 3
 
-<!-- end -->
+</DoDont>
 
 - Not use commas or semicolons at the end of each line
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -72,11 +84,11 @@ Lists that use checkboxes should:
 - Yellow;
 - Blue.
 
-<!-- end -->
+</DoDont>
 
 - In the rare case where the checkbox is asking merchants to agree to terms or service, use the first person
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -86,7 +98,7 @@ I agree to the Terms of Service.
 
 You agree to the Terms of Service
 
-<!-- end -->
+</DoDont>
 
 ---
 

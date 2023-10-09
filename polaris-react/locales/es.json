@@ -14,24 +14,23 @@
         "partiallyComplete": "Parcialmente completado",
         "complete": "Completado"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Información",
-        "success": "Correcto",
+        "success": "Logrado",
         "warning": "Advertencia",
         "attention": "Atención",
-        "new": "Nuevo",
+        "new": "Nueva",
         "critical": "Crítico",
         "readOnly": "Solo lectura",
         "enabled": "Activado"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Descartar notificación"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Cargando",
-      "connectedDisclosureAccessibilityLabel": "Acciones relacionadas"
+      "spinnerAccessibilityLabel": "Cargando"
     },
     "Common": {
       "checkbox": "casilla de verificación",

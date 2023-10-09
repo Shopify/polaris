@@ -2,22 +2,20 @@
 
 .LegacyCard {
   background-color: var(--p-color-bg-surface);
-  box-shadow: var(--p-shadow-md);
+  box-shadow: var(--p-shadow-300);
   outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
 
-  #{$se23} & {
-    @include shadow-bevel(
-      $boxShadow: var(--p-shadow-xs),
-      $borderRadius: var(--p-border-radius-0-experimental),
-      $zIndex: 101
-    );
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-100),
+    $borderRadius: var(--p-border-radius-0),
+    $zIndex: 101
+  );
 
-    // stylelint-disable-next-line -- se23 override custom heading font sizes
-    h2,
-    h3 {
-      font-size: var(--p-font-size-325);
-    }
+  // Override custom heading font sizes
+  h2,
+  h3 {
+    font-size: var(--p-font-size-325);
   }
 
   + .LegacyCard {
@@ -31,48 +29,32 @@
   @media #{$p-breakpoints-sm-up} {
     border-radius: var(--p-border-radius-200);
 
+    @include shadow-bevel(
+      $boxShadow: var(--p-shadow-100),
+      $borderRadius: var(--p-border-radius-300),
+      $zIndex: 101
+    );
+
     .Section:first-child {
-      border-top-left-radius: var(--p-border-radius-200);
-      border-top-right-radius: var(--p-border-radius-200);
+      border-top-left-radius: var(--p-border-radius-300);
+      border-top-right-radius: var(--p-border-radius-300);
     }
 
     .Section:last-child {
-      border-bottom-left-radius: var(--p-border-radius-200);
-      border-bottom-right-radius: var(--p-border-radius-200);
-    }
-
-    #{$se23} & {
-      @include shadow-bevel(
-        $boxShadow: var(--p-shadow-xs),
-        $borderRadius: var(--p-border-radius-300),
-        $zIndex: 101
-      );
-
-      // stylelint-disable-next-line -- se23 override
-      .Section:first-child {
-        border-top-left-radius: var(--p-border-radius-300);
-        border-top-right-radius: var(--p-border-radius-300);
-      }
-
-      // stylelint-disable-next-line -- se23 override
-      .Section:last-child {
-        border-bottom-left-radius: var(--p-border-radius-300);
-        border-bottom-right-radius: var(--p-border-radius-300);
-      }
+      border-bottom-left-radius: var(--p-border-radius-300);
+      border-bottom-right-radius: var(--p-border-radius-300);
     }
   }
 
   @media print {
     box-shadow: none;
 
-    #{$se23} & {
-      @include shadow-bevel(
-        $boxShadow: none,
-        $borderRadius: var(--p-border-radius-0-experimental),
-        $border: none,
-        $content: none
-      );
-    }
+    @include shadow-bevel(
+      $boxShadow: none,
+      $borderRadius: var(--p-border-radius-0),
+      $border: none,
+      $content: none
+    );
   }
 }
 
@@ -92,11 +74,7 @@
   padding: var(--p-space-400) var(--p-space-400) 0;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-500) var(--p-space-500) 0;
-
-    #{$se23} & {
-      padding: var(--p-space-200) var(--p-space-400) 0;
-    }
+    padding: var(--p-space-200) var(--p-space-400) 0;
   }
 
   @media print and #{$p-breakpoints-sm-up} {
@@ -105,28 +83,16 @@
 }
 
 .Section {
-  padding: var(--p-space-400);
+  padding: var(--p-space-200) var(--p-space-400);
 
-  #{$se23} & {
+  @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-200) var(--p-space-400);
   }
 
-  @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-500);
-
-    #{$se23} & {
-      padding: var(--p-space-200) var(--p-space-400);
-    }
-  }
-
   + .Section {
-    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
+    border-top: 0;
 
     @media print {
-      border-top: 0;
-    }
-
-    #{$se23} & {
       border-top: 0;
     }
   }
@@ -141,11 +107,7 @@
   padding: var(--p-space-400) 0;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: var(--p-space-500) 0;
-
-    #{$se23} & {
-      padding: var(--p-space-400) 0;
-    }
+    padding: var(--p-space-400) 0;
   }
 }
 
@@ -155,42 +117,28 @@
   @media #{$p-breakpoints-sm-up} {
     padding: 0;
   }
-
-  #{$se23} & {
-    padding: 0;
-  }
 }
 
 .Section-subdued {
   background-color: var(--p-color-bg-surface-secondary);
-
-  #{$se23} & {
-    padding: var(--p-space-300) var(--p-space-400);
-  }
+  padding: var(--p-space-300) var(--p-space-400);
 
   @media (-ms-high-contrast: active) {
     background-color: transparent;
   }
 
   .Header + & {
-    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
-    margin-top: var(--p-space-500);
-
-    #{$se23} & {
-      border-top: 0;
-      margin-top: 0;
-    }
+    border-top: 0;
+    margin-top: 0;
   }
 }
 
 .Section-subdued:last-child {
-  #{$se23} & {
-    padding: var(--p-space-400);
+  padding: var(--p-space-400);
 
-    @media print {
-      padding-top: var(--p-space-200);
-      padding-bottom: var(--p-space-200);
-    }
+  @media print {
+    padding-top: var(--p-space-200);
+    padding-bottom: var(--p-space-200);
   }
 }
 
@@ -202,31 +150,20 @@
     padding-right: var(--p-space-400);
 
     @media #{$p-breakpoints-sm-up} {
-      padding-left: var(--p-space-500);
-      padding-right: var(--p-space-500);
-
-      #{$se23} & {
-        padding-left: var(--p-space-400);
-        padding-right: var(--p-space-400);
-      }
+      padding-left: var(--p-space-400);
+      padding-right: var(--p-space-400);
     }
   }
 }
 
 .Subsection {
   + .Subsection {
-    margin-top: var(--p-space-400);
-    padding-top: var(--p-space-400);
-    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
+    border-top: 0;
+    margin-top: 0;
+    padding-top: var(--p-space-200);
 
     @media print {
       border-top: 0;
-    }
-
-    #{$se23} & {
-      border-top: 0;
-      margin-top: 0;
-      padding-top: var(--p-space-200);
     }
   }
 
@@ -239,18 +176,11 @@
 .Footer {
   display: flex;
   justify-content: flex-end;
-  padding: var(--p-space-200) var(--p-space-400) var(--p-space-400);
 
-  #{$se23} & {
-    padding: 0 var(--p-space-400) var(--p-space-400);
-  }
+  padding: 0 var(--p-space-400) var(--p-space-400);
 
   @media #{$p-breakpoints-sm-up} {
-    padding: 0 var(--p-space-500) var(--p-space-500);
-
-    #{$se23} & {
-      padding: 0 var(--p-space-400) var(--p-space-400);
-    }
+    padding: 0 var(--p-space-400) var(--p-space-400);
   }
 
   &.LeftJustified {
@@ -258,24 +188,15 @@
   }
 
   .Section-subdued + & {
-    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
-    padding: var(--p-space-500);
-
-    #{$se23} & {
-      padding: var(--p-space-400);
-      border-top: 0;
-    }
+    padding: var(--p-space-400);
+    border-top: 0;
   }
 }
 
 .FirstSectionPadding {
-  #{$se23} & {
-    padding-top: var(--p-space-400);
-  }
+  padding-top: var(--p-space-400);
 }
 
 .LastSectionPadding {
-  #{$se23} & {
-    padding-bottom: var(--p-space-400);
-  }
+  padding-bottom: var(--p-space-400);
 }

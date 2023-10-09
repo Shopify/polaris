@@ -1,6 +1,5 @@
 ---
 title: App provider
-description: App provider is a required component that enables sharing global settings throughout the hierarchy of your application.
 category: Utilities
 keywords:
   - app
@@ -25,7 +24,20 @@ examples:
   - fileName: app-provider-with-link-component.tsx
     title: With linkComponent
     description: With a `linkComponent`, the app provider component will override the links used in other components. For example you may want to use the `Link` component provided by `react-router` throughout your application instead of the default `a` tag.
+previewImg: /images/components/utilities/app-provider.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+App provider is a required component that enables sharing global settings throughout the hierarchy of your application.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

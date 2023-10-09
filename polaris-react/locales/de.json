@@ -14,24 +14,23 @@
         "partiallyComplete": "Teilweise abgeschlossen",
         "complete": "Abgeschlossen"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Info",
         "success": "Erfolg",
         "warning": "Warnung",
-        "attention": "Prüfung erforderlich",
+        "attention": "Achtung",
         "new": "Neu",
         "critical": "Kritisch",
         "readOnly": "Schreibgeschützt",
         "enabled": "Aktiviert"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Benachrichtigung verwerfen"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Wird geladen",
-      "connectedDisclosureAccessibilityLabel": "Ähnliche Aktionen"
+      "spinnerAccessibilityLabel": "Wird geladen"
     },
     "Common": {
       "checkbox": "Kontrollkästchen",

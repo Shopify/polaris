@@ -12,7 +12,7 @@ import {
   ResourceList,
   TextField,
   Text,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -184,7 +184,7 @@ export function WithAResourceList() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item
@@ -476,8 +476,7 @@ export function WithChildrenContent() {
                 <Button
                   onClick={() => console.log('New filter saved')}
                   size="micro"
-                  primary
-                  plain
+                  variant="tertiary"
                 >
                   Save
                 </Button>
@@ -501,7 +500,7 @@ export function WithChildrenContent() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item
@@ -607,8 +606,7 @@ export function Disabled() {
                 <Button
                   disabled
                   size="micro"
-                  primary
-                  plain
+                  variant="tertiary"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -633,7 +631,7 @@ export function Disabled() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item
@@ -758,8 +756,7 @@ export function SomeDisabled() {
                 <Button
                   disabled
                   size="micro"
-                  primary
-                  plain
+                  variant="tertiary"
                   onClick={() => console.log('New filter saved')}
                 >
                   Save
@@ -784,7 +781,7 @@ export function SomeDisabled() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item
@@ -963,8 +960,7 @@ export function WithQueryFieldHidden() {
               <Button
                 onClick={() => console.log('New filter saved')}
                 size="micro"
-                primary
-                plain
+                variant="tertiary"
               >
                 Save
               </Button>
@@ -987,7 +983,7 @@ export function WithQueryFieldHidden() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item
@@ -1185,7 +1181,7 @@ export function WithQueryFieldDisabled() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item
@@ -1409,7 +1405,7 @@ export function WithAdditionalFilterSections() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item

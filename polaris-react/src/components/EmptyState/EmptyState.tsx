@@ -1,15 +1,13 @@
-import React, {useContext} from 'react';
+import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {WithinContentContext} from '../../utilities/within-content-context';
 import type {ComplexAction} from '../../types';
 import {Box} from '../Box';
 import {buttonFrom} from '../Button';
 import {Image} from '../Image';
 import {Text} from '../Text';
-import {VerticalStack} from '../VerticalStack';
-import {HorizontalStack} from '../HorizontalStack';
-import {useFeatures} from '../../utilities/features';
+import {BlockStack} from '../BlockStack';
+import {InlineStack} from '../InlineStack';
 
 import styles from './EmptyState.scss';
 
@@ -48,8 +46,6 @@ export function EmptyState({
   secondaryAction,
   footerContent,
 }: EmptyStateProps) {
-  const {polarisSummerEditions2023} = useFeatures();
-  const withinContentContainer = useContext(WithinContentContext);
   const imageContainedClass = classNames(
     imageContained && styles.imageContained,
   );
@@ -81,49 +77,33 @@ export function EmptyState({
 
   const footerContentMarkup = footerContent ? (
     <Box paddingBlockStart="400">
-      <Text
-        as="span"
-        color={polarisSummerEditions2023 ? undefined : 'subdued'}
-        alignment="center"
-        variant={polarisSummerEditions2023 ? 'bodySm' : 'bodyMd'}
-      >
+      <Text as="span" alignment="center" variant="bodySm">
         {footerContent}
       </Text>
     </Box>
   ) : null;
 
-  const headingSize = withinContentContainer ? 'headingLg' : 'headingXl';
-
   const primaryActionMarkup = action
-    ? buttonFrom(action, {primary: true, size: 'medium'})
+    ? buttonFrom(action, {variant: 'primary', size: 'medium'})
     : null;
 
   const headingMarkup = heading ? (
-    <Box paddingBlockEnd={polarisSummerEditions2023 ? '150' : '400'}>
-      <Text
-        variant={polarisSummerEditions2023 ? 'headingMd' : headingSize}
-        as="p"
-        alignment="center"
-      >
+    <Box paddingBlockEnd="150">
+      <Text variant="headingMd" as="p" alignment="center">
         {heading}
       </Text>
     </Box>
   ) : null;
 
   const childrenMarkup = children ? (
-    <Text
-      as="span"
-      color={polarisSummerEditions2023 ? undefined : 'subdued'}
-      alignment="center"
-      variant={polarisSummerEditions2023 ? 'bodySm' : 'bodyMd'}
-    >
+    <Text as="span" alignment="center" variant="bodySm">
       {children}
     </Text>
   ) : null;
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <Box paddingBlockEnd={polarisSummerEditions2023 ? '400' : '600'}>
+      <Box paddingBlockEnd="400">
         {headingMarkup}
         {childrenMarkup}
       </Box>
@@ -131,20 +111,20 @@ export function EmptyState({
 
   const actionsMarkup =
     primaryActionMarkup || secondaryActionMarkup ? (
-      <HorizontalStack align="center" gap="200">
+      <InlineStack align="center" gap="200">
         {secondaryActionMarkup}
         {primaryActionMarkup}
-      </HorizontalStack>
+      </InlineStack>
     ) : null;
 
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
       <Box maxWidth={fullWidth ? '100%' : '400px'}>
-        <VerticalStack inlineAlign="center">
+        <BlockStack inlineAlign="center">
           {textContentMarkup}
           {actionsMarkup}
           {footerContentMarkup}
-        </VerticalStack>
+        </BlockStack>
       </Box>
     ) : null;
 
@@ -155,10 +135,10 @@ export function EmptyState({
       paddingBlockStart="500"
       paddingBlockEnd="1600"
     >
-      <VerticalStack inlineAlign="center">
+      <BlockStack inlineAlign="center">
         {imageMarkup}
         {detailsMarkup}
-      </VerticalStack>
+      </BlockStack>
     </Box>
   );
 }

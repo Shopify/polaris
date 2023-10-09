@@ -1,16 +1,11 @@
 import React, {PureComponent} from 'react';
-import {
-  HorizontalDotsMinor,
-  CaretDownMinor,
-  ChevronDownMinor,
-} from '@shopify/polaris-icons';
+import {HorizontalDotsMinor, ChevronDownMinor} from '@shopify/polaris-icons';
 
 import {Box} from '../Box';
 import {Icon} from '../Icon';
 import {Popover} from '../Popover';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {UseFeatures} from '../../utilities/features';
 
 import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
@@ -135,19 +130,10 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     const disclosureButtonContent = hasCustomDisclosure ? (
       <>
         {disclosureText}
-        <UseFeatures>
-          {({polarisSummerEditions2023}) => (
-            <Icon
-              source={
-                polarisSummerEditions2023 ? ChevronDownMinor : CaretDownMinor
-              }
-              color="subdued"
-            />
-          )}
-        </UseFeatures>
+        <Icon source={ChevronDownMinor} tone="subdued" />
       </>
     ) : (
-      <Icon source={HorizontalDotsMinor} color="subdued" />
+      <Icon source={HorizontalDotsMinor} tone="subdued" />
     );
 
     const disclosureButton = (
@@ -172,8 +158,8 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     return (
       <div>
         <Box
-          borderBlockEndWidth="1"
-          borderColor="border-subdued"
+          borderBlockEndWidth="025"
+          borderColor="border-secondary"
           paddingInlineStart="200"
           paddingInlineEnd="200"
         >
@@ -400,7 +386,7 @@ function handleKeyDown(event: React.KeyboardEvent<HTMLElement>) {
     event.stopPropagation();
   }
 }
-
+/** @deprecated Use the Tabs component instead */
 export function LegacyTabs(props: LegacyTabsProps) {
   const i18n = useI18n();
 

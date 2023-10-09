@@ -1,9 +1,11 @@
 import React from 'react';
-import type {BorderRadiusScale, ShadowAlias} from '@shopify/polaris-tokens';
+import type {
+  BorderRadiusAliasOrScale,
+  ShadowAliasOrScale,
+} from '@shopify/polaris-tokens';
 
 import {getResponsiveValue} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
-import {useFeatures} from '../../utilities/features';
 
 import styles from './ShadowBevel.scss';
 
@@ -11,9 +13,9 @@ export interface ShadowBevelProps {
   as?: React.ElementType;
   children?: React.ReactNode;
   /** The box-shadow applied to the root element. */
-  boxShadow: ShadowAlias;
+  boxShadow: ShadowAliasOrScale;
   /** The border-radius applied to both the root and pseudo elements. */
-  borderRadius: BorderRadiusScale;
+  borderRadius: BorderRadiusAliasOrScale;
   /** The z-index applied to the pseudo element. */
   zIndex?: string;
   /**
@@ -34,8 +36,6 @@ export function ShadowBevel(props: ShadowBevelProps) {
     zIndex = '0',
   } = props;
 
-  const {polarisSummerEditions2023ShadowBevelOptOut} = useFeatures();
-
   const Component = as;
 
   return (
@@ -46,13 +46,7 @@ export function ShadowBevel(props: ShadowBevelProps) {
         ...getResponsiveValue(
           'shadow-bevel',
           'content',
-          mapResponsiveProp(bevel, (bevel) => {
-            if (polarisSummerEditions2023ShadowBevelOptOut) {
-              return 'none';
-            }
-
-            return bevel ? '""' : 'none';
-          }),
+          mapResponsiveProp(bevel, (bevel) => (bevel ? '""' : 'none')),
         ),
         ...getResponsiveValue(
           'shadow-bevel',
@@ -67,7 +61,7 @@ export function ShadowBevel(props: ShadowBevelProps) {
           mapResponsiveProp(bevel, (bevel) =>
             bevel
               ? `var(--p-border-radius-${borderRadius})`
-              : 'var(--p-border-radius-0-experimental)',
+              : 'var(--p-border-radius-0)',
           ),
         ),
       }}

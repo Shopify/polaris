@@ -24,10 +24,10 @@ import {Badge} from '../Badge';
 import {Focus} from '../Focus';
 // eslint-disable-next-line import/no-deprecated
 import {Sheet} from '../Sheet';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 import {Key} from '../../types';
 import {KeypressListener} from '../KeypressListener';
-import {UseFeatures} from '../../utilities/features';
 
 import {ConnectedFilterControl, TagsWrapper} from './components';
 import type {ConnectedFilterControlProps} from './components';
@@ -168,7 +168,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
       const appliedFilterContent = this.getAppliedFilterContent(filter.key);
       const appliedFilterBadgeMarkup = appliedFilterContent ? (
         <div className={styles.AppliedFilterBadgeContainer}>
-          <Badge status="new">{appliedFilterContent}</Badge>
+          <Badge tone="new">{appliedFilterContent}</Badge>
         </div>
       ) : null;
 
@@ -190,7 +190,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
               <h3 className={styles.FilterTriggerTitle}>
                 <Text
                   as="span"
-                  color={
+                  tone={
                     this.props.disabled || filter.disabled
                       ? 'subdued'
                       : undefined
@@ -200,7 +200,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
                 </Text>
               </h3>
               <span className={styles.FilterTriggerIcon}>
-                <Icon source={icon} color="base" />
+                <Icon source={icon} tone="base" />
               </span>
             </div>
             {appliedFilterBadgeMarkup}
@@ -232,19 +232,11 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
         : i18n.translate('Polaris.Filters.moreFilters');
 
     const rightActionMarkup = filters.length ? (
-      <UseFeatures>
-        {({polarisSummerEditions2023}) => (
-          <div ref={this.moreFiltersButtonContainer}>
-            <Button
-              onClick={this.toggleFilters}
-              disabled={disabled}
-              size={polarisSummerEditions2023 ? 'large' : 'medium'}
-            >
-              {moreFiltersLabel}
-            </Button>
-          </div>
-        )}
-      </UseFeatures>
+      <div ref={this.moreFiltersButtonContainer}>
+        <Button onClick={this.toggleFilters} disabled={disabled} size="large">
+          {moreFiltersLabel}
+        </Button>
+      </div>
     ) : null;
 
     const filterResourceName = resourceName || {
@@ -308,7 +300,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
         </Text>
         <Button
           icon={CancelSmallMinor}
-          plain
+          variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
@@ -319,14 +311,14 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
       <div className={filtersContainerHeaderClassname}>
         <Button
           icon={CancelSmallMinor}
-          plain
+          variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
         />
         <Text variant="headingLg" as="h3">
           {moreFiltersLabel}
         </Text>
-        <Button onClick={this.closeFilters} primary>
+        <Button onClick={this.closeFilters} variant="primary">
           {i18n.translate('Polaris.Filters.done')}
         </Button>
       </div>
@@ -345,7 +337,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
           {i18n.translate('Polaris.Filters.clearAllFilters')}
         </Button>
         <div ref={this.moreFiltersDoneButtonContainer}>
-          <Button onClick={this.closeFilters} primary>
+          <Button onClick={this.closeFilters} variant="primary">
             {i18n.translate('Polaris.Filters.done')}
           </Button>
         </div>
@@ -360,7 +352,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
           </Button>
         ) : (
           <div className={styles.EmptyFooterState}>
-            <Text color="subdued" as="span">
+            <Text tone="subdued" as="span">
               <p>{i18n.translate('Polaris.Filters.noFiltersApplied')}</p>
             </Text>
           </div>
@@ -435,7 +427,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
 
     const helpTextMarkup = helpText ? (
       <div id="FiltersHelpText" className={styles.HelpText}>
-        <Text color="subdued" as="span">
+        <Text tone="subdued" as="span">
           {helpText}
         </Text>
       </div>
@@ -567,7 +559,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
 
     const clearButtonMarkup = !filter.hideClearButton && (
       <Button
-        plain
+        variant="plain"
         disabled={removeHandler == null}
         onClick={removeHandler}
         accessibilityLabel={i18n.translate('Polaris.Filters.clearLabel', {

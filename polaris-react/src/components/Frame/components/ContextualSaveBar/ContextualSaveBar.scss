@@ -4,7 +4,7 @@
   /* stylelint-disable -- polaris: Used to apply dark theme to action buttons */
   --p-color-bg-surface: var(--p-color-bg-inverse);
   --p-color-text: var(--p-color-text-inverse);
-  --p-color-bg-hover: var(--p-color-bg-fill-inverse-hover);
+  --p-color-bg-surface-hover: var(--p-color-bg-fill-inverse-hover);
   --p-color-bg-surface-secondary-active: var(--p-color-bg-fill-inverse-active);
   /* stylelint-enable */
   display: flex;
@@ -71,8 +71,9 @@
   flex-direction: row;
   gap: var(--p-space-200);
 
-  #{$se23} & [class*='Polaris-Icon__Svg'],
-  #{$se23} & [class*='Icon-Svg'] {
+  // stylelint-disable -- Icon overrides specific to Contextual Save Bar
+  & [class*='Polaris-Icon__Svg'],
+  & [class*='Icon-Svg'] {
     fill: var(--p-color-text-inverse);
   }
 }
@@ -80,10 +81,8 @@
 .ActionContainer {
   flex-shrink: 0;
 
-  // Button overrides specific to Contextual Save Bar
-  /* stylelint-disable -- summer edition overrides */
-  #{$se23} & [class*='Polaris-Button--primary'],
-  #{$se23} & [class*='Button-primary'] {
+  & [class*='Polaris-Button--primary'],
+  & [class*='Button-primary'] {
     --pc-color-text: rgba(48, 48, 48, 1);
     --pc-button-text: var(--pc-color-text);
     --pc-button-color: rgba(255, 255, 255, 1);
@@ -123,8 +122,8 @@
     }
   }
 
-  #{$se23} & [class*='Polaris-Button--primaryPlain'],
-  #{$se23} & [class*='Button-primaryPlain'] {
+  & [class*='Polaris-Button--tertiary'],
+  & [class*='Button-tertiary'] {
     --pc-button-color: var(--p-color-bg-fill-inverse);
     --pc-button-color-hover: var(--p-color-bg-fill-inverse-hover);
     --pc-button-color-active: var(--p-color-bg-fill-inverse-active);

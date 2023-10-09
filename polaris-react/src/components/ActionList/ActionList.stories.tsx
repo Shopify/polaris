@@ -3,13 +3,11 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
   Avatar,
-  Box,
   Button,
   Icon,
   Popover,
-  TextField,
   Thumbnail,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 import {
   TickSmallMinor,
@@ -29,7 +27,7 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="1600">
+    <BlockStack gap="1600">
       <InAPopover />
       <WithIconsOrImage />
       <WithAnIconAndASuffix />
@@ -38,7 +36,7 @@ export function All() {
       <WithDestructiveItem />
       <WithHelpText />
       <WithAPrefixAndASuffix />
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
@@ -376,7 +374,7 @@ export function WithAPrefixAndASuffix() {
           },
           {
             content: 'Or there',
-            prefix: <Avatar customer name="Farrah" size="small" />,
+            prefix: <Avatar customer name="Farrah" size="sm" />,
             suffix: <Icon source={ChevronRightMinor} />,
           },
         ]}

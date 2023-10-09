@@ -9,7 +9,7 @@ import {ButtonGroup} from '../../ButtonGroup';
 import {TextField} from '../../TextField';
 import {Text} from '../../Text';
 import {Tooltip} from '../../Tooltip';
-import {HorizontalStack} from '../../HorizontalStack';
+import {InlineStack} from '../../InlineStack';
 import en from '../../../../locales/en.json';
 
 interface HandlerMap {
@@ -278,7 +278,7 @@ describe('<Pagination />', () => {
         );
 
         expect(pagination).toContainReactComponent(ButtonGroup, {
-          segmented: true,
+          variant: 'segmented',
         });
         expect(pagination).toContainReactComponent(Button, {url: '/prev'});
         expect(pagination).toContainReactComponent(Button, {url: '/next'});
@@ -295,11 +295,10 @@ describe('<Pagination />', () => {
           label="Hello, world!"
           type="page"
         />,
-        {features: {polarisSummerEditions2023: false}},
       );
 
       expect(pagination).toContainReactComponent(ButtonGroup, {
-        segmented: false,
+        variant: 'segmented',
       });
     });
 
@@ -310,7 +309,7 @@ describe('<Pagination />', () => {
         );
 
         expect(pagination).toContainReactComponent(Text, {
-          color: 'subdued',
+          tone: 'subdued',
         });
       });
     });
@@ -322,7 +321,7 @@ describe('<Pagination />', () => {
         <Pagination hasNext nextURL="/next" previousURL="/prev" type="table" />,
       );
 
-      expect(pagination).toContainReactComponent(HorizontalStack, {
+      expect(pagination).toContainReactComponent(InlineStack, {
         align: 'end',
         blockAlign: 'center',
       });
@@ -340,7 +339,7 @@ describe('<Pagination />', () => {
           />,
         );
 
-        expect(pagination).toContainReactComponent(HorizontalStack, {
+        expect(pagination).toContainReactComponent(InlineStack, {
           align: 'space-between',
           blockAlign: 'center',
         });

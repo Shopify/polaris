@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 
 describe('<LegacyStack />', () => {
@@ -10,7 +11,7 @@ describe('<LegacyStack />', () => {
     const legacyStack = mountWithApp(
       <LegacyStack>{renderChildren()}</LegacyStack>,
     );
-
+    // eslint-disable-next-line import/no-deprecated
     expect(legacyStack).toContainReactComponentTimes(LegacyStack.Item, 2);
   });
 });

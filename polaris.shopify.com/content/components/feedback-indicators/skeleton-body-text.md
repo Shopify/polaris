@@ -1,6 +1,6 @@
 ---
 title: Skeleton body text
-description: Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
+shortDescription: Provides a low fidelity representation of content before it appears, improving perceived load times.
 category: Feedback indicators
 releasedIn: 1.7.0
 keywords:
@@ -15,7 +15,20 @@ examples:
   - fileName: skeleton-body-text-single-line-content.tsx
     title: Single line content
     description: Use this component to represent a short, single line of text, like a timestamp.
+previewImg: /images/components/feedback-indicators/skeleton-body-text.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Skeleton body text is used to provide a low fidelity representation of content before it appears on the page, and improves load times perceived by merchants. Can be used for content in or outside of a card.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -33,19 +46,21 @@ Skeleton body text component should:
 
 Show static content that never changes on a page and use skeleton loading for dynamic content. Skeleton body text can sometimes be used to represent non-typographic content such as forms. Don’t use placeholder content that will change when the page fully loads.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
 Use skeleton body text for dynamic content.
+
 ![Image showing skeleton body text for dynamic content](/images/components/feedback-indicators/skeleton-body-text/do-use-skeleton-body-for-dynamic-content@2x.png)
 
 #### Don’t
 
 Use skeleton body text for static content or use placeholder content for dynamic content.
+
 ![Image showing skeleton body text for static content](/images/components/feedback-indicators/skeleton-body-text/dont-use-skeleton-body-for-static-or-placeholder-for-dynamic-text@2x.png)
 
-<!-- end -->
+</DoDont>
 
 ---
 

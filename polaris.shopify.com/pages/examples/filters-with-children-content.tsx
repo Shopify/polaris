@@ -81,8 +81,7 @@ function FiltersWithChildrenContentExample() {
               <div style={{paddingLeft: '8px'}}>
                 <Button
                   onClick={() => console.log('New filter saved')}
-                  primary
-                  plain
+                  variant="tertiary"
                 >
                   Save
                 </Button>
@@ -106,7 +105,7 @@ function FiltersWithChildrenContentExample() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item

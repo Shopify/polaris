@@ -1,6 +1,5 @@
 ---
 title: Index table
-description: An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it.
 category: Tables
 keywords:
   - ResourceList
@@ -73,7 +72,20 @@ examples:
   - fileName: index-table-with-subheaders.tsx
     title: With subheaders
     description: An index table with multiple table headers. Use to present merchants with resources grouped by a relevant data value to enable faster bulk selection.
+previewImg: /images/components/tables/index-table.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+An index table displays a collection of objects of the same type, like orders or products. The main job of an index table is to help merchants get an at-a-glance of the objects to perform actions or navigate to a full-page representation of it.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 Index tables can also:
 
@@ -144,7 +156,7 @@ Index tables should:
 
 - Identify the type of resource, usually with a heading
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -155,11 +167,11 @@ Index tables should:
 
 - _No heading_
 
-<!-- end -->
+</DoDont>
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -169,7 +181,7 @@ Index tables should:
 
 - Products
 
-<!-- end -->
+</DoDont>
 
 - Follow the verb + noun formula for bulk actions
 
@@ -183,21 +195,19 @@ An `IndexTable.Row` is used to render a row representing an item within an `Inde
 
 ### IndexTable.Row properties
 
-| Prop                  | Type                                                          | Description                                                                                                                                                                                         |
-| --------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| children              | ReactNode                                                     | Table header or data cells                                                                                                                                                                          |
-| id                    | string                                                        | A unique identifier for the row                                                                                                                                                                     |
-| selected?             | boolean &#124; "indeterminate"                                | A boolean property indicating whether the row or it's related rows are selected                                                                                                                     |
-| position              | number                                                        | The zero-indexed position of the row. Used for Shift key multi-selection as well as selection of a range of rows when a `selectionRange` is set.                                                    |
-| subdued? (deprecated) | boolean                                                       | Whether the row should be subdued. Deprecated in favor of `tone`.                                                                                                                                   |
-| status? (deprecated)  | "subdued" &#124; "success" &#124; "warning" &#124; "critical" | Whether the row should have a status. Deprecated in favor of `tone`.                                                                                                                                |
-| tone?                 | "subdued" &#124; "success" &#124; "warning" &#124; "critical" | Whether the row should visually indicate its status with color                                                                                                                                      |
-| disabled?             | boolean                                                       | Whether the row should be disabled                                                                                                                                                                  |
-| selectionRange?       | [number, number]                                              | A tuple array with the first and last index of the range of other rows that the row describes. All non-disabled rows in the range are selected when the row with a selection range set is selected. |
-| rowType?              | "data" &#124; "subheader"                                     | Indicates the relationship or role of the row's contents. A `rowType` of "subheader" looks and behaves the same as the table header. Defaults to "data".                                            |
-| accessibilityLabel?   | string                                                        | Label set on the row's checkbox. Defaults to "Select {resourceName}"                                                                                                                                |
-| onClick?              | () => void                                                    | Callback fired when the row is clicked. Overrides the default click behaviour.                                                                                                                      |
-| onNavigation?         | (id: string) => void                                          | Callback fired when the row is clicked and contains an anchor element with the `data-primary-link` property set                                                                                     |
+| Prop                | Type                                                          | Description                                                                                                                                                                                         |
+| ------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| children            | ReactNode                                                     | Table header or data cells                                                                                                                                                                          |
+| id                  | string                                                        | A unique identifier for the row                                                                                                                                                                     |
+| selected?           | boolean &#124; "indeterminate"                                | A boolean property indicating whether the row or it's related rows are selected                                                                                                                     |
+| position            | number                                                        | The zero-indexed position of the row. Used for Shift key multi-selection as well as selection of a range of rows when a `selectionRange` is set.                                                    |
+| tone?               | "subdued" &#124; "success" &#124; "warning" &#124; "critical" | Whether the row should visually indicate its status with a background color                                                                                                                         |
+| disabled?           | boolean                                                       | Whether the row should be disabled                                                                                                                                                                  |
+| selectionRange?     | [number, number]                                              | A tuple array with the first and last index of the range of other rows that the row describes. All non-disabled rows in the range are selected when the row with a selection range set is selected. |
+| rowType?            | "data" &#124; "subheader"                                     | Indicates the relationship or role of the row's contents. A `rowType` of "subheader" looks and behaves the same as the table header. Defaults to "data".                                            |
+| accessibilityLabel? | string                                                        | Label set on the row's checkbox. Defaults to "Select \{resourceName\}"                                                                                                                              |
+| onClick?            | () => void                                                    | Callback fired when the row is clicked. Overrides the default click behaviour.                                                                                                                      |
+| onNavigation?       | (id: string) => void                                          | Callback fired when the row is clicked and contains an anchor element with the `data-primary-link` property set                                                                                     |
 
 ## IndexTable.Cell
 
@@ -234,14 +244,14 @@ The `IndexTable` is an actionable, filterable, and sortable table widget that su
 
 Merchants can select a group of rows at once by clicking or <kbd>Space</kbd> keypressing a subheader row's checkbox. To indicate that an `IndexTable.Row` serves as a subheader for 1 or more rows below it, set the:
 
-- Zero-indexed table `position` of the first and last `IndexTable.Row` described by the subheader `IndexTable.Row` as a tuple array on its `subHeaderRange` prop
+- Zero-indexed table `position` of the first and last `IndexTable.Row` described by the subheader `IndexTable.Row` as a tuple array on its `selectionRange` prop
 - Unique `id` on the `IndexTable.Cell` that contains the subheader content
 - Element tag to `"th"` on the `as` prop of the subheader `IndexTable.Cell`
 - Subheader `IndexTable.Cell` `scope` prop to `"colgroup"`
 
 To associate the subheader `IndexTable.Row` with each `IndexTable.Cell` that it describes, set the:
 
-- Unique `id` provided to the subheader `IndexTable.Cell` on the `headers` prop of each related `IndexTable.Cell` (contained by an `IndexTable.Row` that's position is within the `subHeaderRange`) as well as the unique `id` of its corresponding column heading that you provided to the `IndexTable` `headings` prop
+- Unique `id` provided to the subheader `IndexTable.Cell` on the `headers` prop of each related `IndexTable.Cell` (contained by an `IndexTable.Row` that's position is within the `selectionRange`) as well as the unique `id` of its corresponding column heading that you provided to the `IndexTable` `headings` prop
 
 ### Keyboard support
 

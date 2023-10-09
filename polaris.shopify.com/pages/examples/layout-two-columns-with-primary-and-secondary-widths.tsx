@@ -16,7 +16,7 @@ function LayoutExample() {
             </p>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Tags" sectioned>
             <p>Add tags to your order.</p>
           </LegacyCard>

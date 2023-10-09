@@ -24,6 +24,7 @@ import {
   FormLayout,
   Frame,
   Layout,
+  // eslint-disable-next-line import/no-deprecated
   LegacyCard,
   Loading,
   Modal,
@@ -33,6 +34,7 @@ import {
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
+  // eslint-disable-next-line import/no-deprecated
   LegacyStack,
   Text,
   // eslint-disable-next-line import/no-deprecated
@@ -551,7 +553,7 @@ export function DetailsPage() {
       fullWidth
       backAction={{content: 'Products', url: '/products/31'}}
       title={title}
-      titleMetadata={<Badge status="success">Success badge</Badge>}
+      titleMetadata={<Badge tone="success">Success badge</Badge>}
       primaryAction={{
         content: 'Save this page',
         onAction: () => console.log('save'),
@@ -624,7 +626,7 @@ export function DetailsPage() {
             </DropZone>
           </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
+        <Layout.Section variant="oneThird">
           <LegacyCard title="Organization">
             <LegacyCard.Section>
               <Select

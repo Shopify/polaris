@@ -1,8 +1,8 @@
-const {getCustomPropertyNames, tokens} = require('@shopify/polaris-tokens');
+const {getThemeVarNames, themeDefault} = require('@shopify/polaris-tokens');
 
 const {messages, ruleName} = require('.');
 
-const polarisCustomPropertyNames = getCustomPropertyNames(tokens);
+const themeVarNames = getThemeVarNames(themeDefault);
 
 /*
  --p-* Tokens are to be defined in polaris-tokens.
@@ -20,10 +20,7 @@ const config = [
   {
     allowedProperties: [allowedCustomPropertyNames],
     allowedValues: {
-      '/.+/': [
-        ...polarisCustomPropertyNames,
-        invalidOrDeprecatedPrivateCustomPropertyNames,
-      ],
+      '/.+/': [...themeVarNames, invalidOrDeprecatedPrivateCustomPropertyNames],
     },
   },
 ];

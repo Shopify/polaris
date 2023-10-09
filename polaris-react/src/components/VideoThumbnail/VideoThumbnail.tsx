@@ -9,6 +9,7 @@ import {
 } from '../../utilities/duration';
 import {useMediaQuery} from '../../utilities/media-query';
 import {Icon} from '../Icon';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 import {Text} from '../Text';
 

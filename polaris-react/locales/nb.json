@@ -14,24 +14,23 @@
         "partiallyComplete": "Delvis fullført",
         "complete": "Ferdig"
       },
-      "STATUS_LABELS": {
-        "info": "Info",
+      "TONE_LABELS": {
+        "info": "Informasjon",
         "success": "Vellykket",
         "warning": "Advarsel",
         "attention": "Obs",
         "new": "Ny",
         "critical": "Kritisk",
-        "readOnly": "Kun lesetilgang",
+        "readOnly": "Skrivebeskyttet",
         "enabled": "Aktivert"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Avvis varsel"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Laster inn",
-      "connectedDisclosureAccessibilityLabel": "Relaterte handlinger"
+      "spinnerAccessibilityLabel": "Laster inn"
     },
     "Common": {
       "checkbox": "avmerkingsboks",

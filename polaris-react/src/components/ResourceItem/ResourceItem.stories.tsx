@@ -78,6 +78,22 @@ export function SelectableWithMedia() {
             name: 'Yi So-Yeon',
             location: 'Gwangju, South Korea',
           },
+          {
+            id: '146',
+            url: '#',
+            avatarSource:
+              'https://burst.shopifycdn.com/photos/woman-standing-in-front-of-yellow-background.jpg?width=746',
+            name: 'Jane Smith',
+            location: 'Manhattan, New York',
+          },
+          {
+            id: '147',
+            url: '#',
+            avatarSource:
+              'https://burst.shopifycdn.com/photos/relaxing-in-headphones.jpg?width=746',
+            name: 'Grace Baker',
+            location: 'Los Angeles, California',
+          },
         ]}
         renderItem={(item) => {
           const {id, url, avatarSource, name, location} = item;
@@ -87,12 +103,7 @@ export function SelectableWithMedia() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               accessibilityLabel={`View details for ${name}`}
               name={name}
@@ -134,12 +145,7 @@ export function WithMedia() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               accessibilityLabel={`View details for ${name}`}
               name={name}
@@ -182,12 +188,7 @@ export function WithShortcutActions() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               shortcutActions={[
                 {content: 'View latest order', url: latestOrderUrl},
@@ -236,12 +237,7 @@ export function WithPersistedShortcutActions() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               persistActions
               shortcutActions={shortcutActions}
@@ -286,12 +282,7 @@ export function WithVerticalAlignment() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               accessibilityLabel={`View details for ${name}`}
               name={name}

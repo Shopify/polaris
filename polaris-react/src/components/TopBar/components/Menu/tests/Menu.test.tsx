@@ -72,7 +72,7 @@ describe('<Menu />', () => {
       },
       badge: {
         content: 'new',
-        status: 'new' as 'new',
+        tone: 'new' as 'new',
       },
     };
     const menu = mountWithApp(

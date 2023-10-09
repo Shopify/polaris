@@ -1,14 +1,17 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Box, Card, DatePicker, VerticalStack} from '@shopify/polaris';
+import {Box, Card, DatePicker, BlockStack} from '@shopify/polaris';
 
 export default {
   component: DatePicker,
+  parameters: {
+    chromatic: {delay: 300},
+  },
 } as ComponentMeta<typeof DatePicker>;
 
 export function All() {
   return (
-    <VerticalStack gap="400">
+    <BlockStack gap="400">
       <Box maxWidth="290px">
         <Card>
           <Default />
@@ -34,7 +37,7 @@ export function All() {
           <WithSpecificDisabledDates />
         </Card>
       </Box>
-    </VerticalStack>
+    </BlockStack>
   );
 }
 

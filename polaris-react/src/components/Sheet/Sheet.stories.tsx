@@ -124,7 +124,7 @@ export function Default() {
               accessibilityLabel="Cancel"
               icon={MobileCancelMajor}
               onClick={toggleSheetActive}
-              plain
+              variant="plain"
             />
           </div>
           <Scrollable style={{padding: '1rem', height: '100%'}}>
@@ -149,7 +149,7 @@ export function Default() {
             }}
           >
             <Button onClick={toggleSheetActive}>Cancel</Button>
-            <Button primary onClick={toggleSheetActive}>
+            <Button variant="primary" onClick={toggleSheetActive}>
               Done
             </Button>
           </div>
@@ -470,21 +470,21 @@ export function WithSearchableListbox() {
                 marginBottom: 'var(--p-space-200)',
               }}
             >
-              <Text as="h3" variant="headingXs" color="subdued">
+              <Text as="h3" variant="headingSm" tone="subdued">
                 Action
               </Text>
               <Button
                 accessibilityLabel="Cancel"
                 icon={MobileCancelMajor}
                 onClick={handleCloseSheet}
-                plain
+                variant="plain"
               />
             </div>
             <TextContainer>
               <Text variant="headingMd" as="h2">
                 Look up customer segmentation membership
               </Text>
-              <Text color="subdued" as="span">
+              <Text tone="subdued" as="span">
                 Look up whether a customer is included in a segment.
               </Text>
             </TextContainer>

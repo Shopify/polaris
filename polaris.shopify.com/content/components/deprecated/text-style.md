@@ -1,6 +1,6 @@
 ---
 title: Text style
-description: Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text.
+shortDescription: Enhances text with additional visual meaning, like using subdued text to de-emphasize it.
 category: Deprecated
 keywords:
   - TextStyle
@@ -19,10 +19,25 @@ keywords:
   - decrease
   - input
   - fields
-status:
-  value: Deprecated
-  message: This component is no longer supported. Please use the Text component instead.
+status: Deprecated
+previewImg: /images/components/deprecated/text-style.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text.
+
+</Lede>
+
+<StatusBanner status={frontmatter.status}>
+  This component is no longer supported. Please use the Text component instead.
+</StatusBanner>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Mapping to the Text component
 

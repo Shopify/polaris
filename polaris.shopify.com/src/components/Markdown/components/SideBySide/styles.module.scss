@@ -1,0 +1,56 @@
+@import '../../../../styles/variables.scss';
+
+.SideBySide {
+  display: grid;
+  column-gap: var(--p-space-400);
+  row-gap: var(--p-space-800);
+
+  --txt-column-width: 35%;
+  /*
+   * Rules of the grid:
+   * The second (img) column should never be bigger than 30rem.
+   * The first (text) column should never shrink below 35% of the container.
+   * The first (text) column should grow to fill the remaining space (1fr).
+   * The second (img) column should never shrink below 20rem. */
+  grid-template-columns:
+    minmax(
+      // Give this column a minimum width (thin container)
+      var(--txt-column-width),
+      // Grow to fill the remaining space when possible (wide container)
+      1fr
+    )
+    minmax(
+      min(
+        // Minimum size of 20rem to keep it legible
+        20rem,
+        // Except when the container is too thin: let it shrinnk so the text
+        // column can still take up its desired minimum width
+        calc(100% - var(--txt-column-width))
+      ),
+      // Maximum width (wide container) - avoids gigantic images
+      30rem
+    );
+
+  @media screen and (max-width: $breakpointMobile) {
+    grid-template-columns: 1fr;
+    row-gap: var(--p-space-400);
+  }
+
+  // Make images look nicer
+  img {
+    background: var(--p-color-bg-fill-secondary);
+    border-radius: var(--border-radius-400);
+    border: 1px solid #c9cccf;
+  }
+
+  // When rendered as part of a list, ensure the extra markup doesn't interfere
+  // with the grid layout
+  & > ul,
+  & > ol {
+    display: contents;
+    & > li {
+      --list-bullet-display: none;
+      display: contents;
+    }
+  }
+}

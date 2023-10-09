@@ -4,6 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import type {ActionMenuProps} from '../../ActionMenu';
 import {Badge} from '../../Badge';
+// eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../../LegacyCard';
 import {Page} from '../Page';
 import type {PageProps} from '../Page';
@@ -36,6 +37,7 @@ describe('<Page />', () => {
     it('renders its children', () => {
       const card = <LegacyCard />;
       const page = mountWithApp(<Page {...mockProps}>{card}</Page>);
+      // eslint-disable-next-line import/no-deprecated
       expect(page).toContainReactComponent(LegacyCard);
     });
   });
@@ -264,32 +266,6 @@ describe('<Page />', () => {
       );
       expect(page).toContainReactComponent(Header, {
         backAction,
-      });
-    });
-  });
-
-  describe('divider', () => {
-    it('renders border when divider is true and header props exist', () => {
-      const wrapper = mountWithApp(<Page {...mockProps} divider />);
-      expect(wrapper).toContainReactComponent('div', {
-        className: 'divider',
-      });
-    });
-
-    it('does not render border when divider is true and no header props exist', () => {
-      const wrapper = mountWithApp(<Page divider />);
-      expect(wrapper).not.toContainReactComponent('div', {
-        className: 'Content divider',
-      });
-      expect(wrapper).toContainReactComponent('div', {
-        className: 'Content',
-      });
-    });
-
-    it('does not render border when divider is false', () => {
-      const wrapper = mountWithApp(<Page {...mockProps} divider={false} />);
-      expect(wrapper).not.toContainReactComponent('div', {
-        className: 'divider',
       });
     });
   });

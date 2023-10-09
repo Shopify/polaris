@@ -28,7 +28,7 @@ function MultipleToastExample() {
     <div style={{height: '250px'}}>
       <Frame>
         <Page title="Toast example">
-          <ButtonGroup segmented>
+          <ButtonGroup variant="segmented">
             <Button onClick={toggleActiveOne}>Show toast 1</Button>
             <Button onClick={toggleActiveTwo}>Show toast 2</Button>
           </ButtonGroup>

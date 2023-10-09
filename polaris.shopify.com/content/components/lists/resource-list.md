@@ -1,6 +1,5 @@
 ---
 title: Resource list
-description: A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
 category: Lists
 keywords:
   - ResourceList
@@ -67,7 +66,20 @@ examples:
   - fileName: resource-list-with-all-of-its-elements.tsx
     title: With all of its elements
     description: Use as a broad example that includes most props available to resource list.
+previewImg: /images/components/lists/resource-list.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 Resource lists can also:
 
@@ -109,8 +121,6 @@ Resource lists function as:
 
 Because a details page displays all the content and actions for an individual resource, you can think of a resource list as a summary of these details pages. In this way resource lists bridge a middle level in Shopify’s navigation hierarchy.
 
-![Schematic showing content from a details page being surfaced on a resource list](/images/components/lists/resource-list/list-surfacing-show@2x.png)
-
 #### A resource list isn’t a data table
 
 On wide screens, a resource list often looks like a table, especially if some content is aligned in columns. Despite this, resource lists and data tables have different purposes.
@@ -146,7 +156,7 @@ Resource lists should:
 
 - Identify the type of resource, usually with a heading
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -157,11 +167,11 @@ Resource lists should:
 
 - _No heading_
 
-<!-- end -->
+</DoDont>
 
 - Indicate when not all members of a resource are being shown. For a card summarizing and linking to recently purchased products:
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -171,7 +181,7 @@ Resource lists should:
 
 - Products
 
-<!-- end -->
+</DoDont>
 
 - Follow the verb + noun formula for bulk actions
 

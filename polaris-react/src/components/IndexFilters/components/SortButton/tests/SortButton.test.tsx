@@ -8,7 +8,7 @@ import type {SortButtonChoice} from '../../../types';
 import {SortButton} from '..';
 import type {SortButtonProps} from '../SortButton';
 import {DirectionButton} from '../components';
-import {FilterButton} from '../..';
+import {Button} from '../../../../Button';
 
 describe('SortButton', () => {
   const choices: SortButtonChoice[] = [
@@ -63,7 +63,7 @@ describe('SortButton', () => {
     const wrapper = mountWithApp(<SortButton {...props} />);
 
     wrapper.act(() => {
-      wrapper.find(FilterButton)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
     });
 
     expect(wrapper).toContainReactComponent(Popover, {
@@ -71,7 +71,7 @@ describe('SortButton', () => {
     });
 
     wrapper.act(() => {
-      wrapper.find(FilterButton)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
     });
 
     expect(wrapper).toContainReactComponent(Popover, {
@@ -88,7 +88,7 @@ describe('SortButton', () => {
     const wrapper = mountWithApp(<SortButton {...props} />);
 
     wrapper.act(() => {
-      wrapper.find(FilterButton)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
     });
 
     wrapper.act(() => {
@@ -107,7 +107,7 @@ describe('SortButton', () => {
     const wrapper = mountWithApp(<SortButton {...props} />);
 
     wrapper.act(() => {
-      wrapper.find(FilterButton)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
     });
 
     expect(wrapper).toContainReactComponent(DirectionButton, {
@@ -125,7 +125,7 @@ describe('SortButton', () => {
     const wrapper = mountWithApp(<SortButton {...props} />);
 
     wrapper.act(() => {
-      wrapper.find(FilterButton)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
     });
 
     expect(wrapper).toContainReactComponent(DirectionButton, {
@@ -143,7 +143,7 @@ describe('SortButton', () => {
     const wrapper = mountWithApp(<SortButton {...props} />);
 
     wrapper.act(() => {
-      wrapper.find(FilterButton)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
     });
 
     wrapper.act(() => {
@@ -165,7 +165,7 @@ describe('SortButton', () => {
     const wrapper = mountWithApp(<SortButton {...props} />);
 
     wrapper.act(() => {
-      wrapper.find(FilterButton)!.trigger('onClick');
+      wrapper.find(Button)!.trigger('onClick');
     });
 
     wrapper.act(() => {

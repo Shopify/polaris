@@ -7,9 +7,9 @@ import {Box} from '../Box';
 import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
-import {HorizontalGrid} from '../HorizontalGrid';
-import {HorizontalStack} from '../HorizontalStack';
-import type {HorizontalStackProps} from '../HorizontalStack';
+import {InlineGrid} from '../InlineGrid';
+import {InlineStack} from '../InlineStack';
+import type {InlineStackProps} from '../InlineStack';
 import {Popover} from '../Popover';
 import {UnstyledLink} from '../UnstyledLink';
 import type {AvatarProps} from '../Avatar';
@@ -19,7 +19,6 @@ import {useBreakpoints} from '../../utilities/breakpoints';
 import type {BreakpointsDirectionAlias} from '../../utilities/breakpoints';
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useFeatures} from '../../utilities/features';
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
@@ -85,7 +84,6 @@ interface PropsFromWrapper {
   breakpoints?: BreakpointsMatches;
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
-  features: ReturnType<typeof useFeatures>;
 }
 
 interface State {
@@ -157,7 +155,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       name,
       context: {selectable, selectMode, hasBulkActions, loading, resourceName},
       i18n,
-      features: {polarisSummerEditions2023},
       verticalAlignment,
       dataHref,
       breakpoints,
@@ -168,17 +165,6 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
-
-    const itemPaddingInline: React.ComponentProps<typeof Box>['padding'] =
-      polarisSummerEditions2023 ? '300' : {xs: '400', sm: '500'};
-    const itemPaddingBlock: React.ComponentProps<typeof Box>['padding'] = '300';
-
-    const gapBetweenCheckboxAndMedia: React.ComponentProps<
-      typeof HorizontalStack
-    >['gap'] = polarisSummerEditions2023 ? '300' : '400';
-    const gapBetweenOwnedAndChildren: React.ComponentProps<
-      typeof HorizontalGrid
-    >['gap'] = polarisSummerEditions2023 ? '300' : '500';
 
     if (selectable) {
       const checkboxAccessibilityLabel =
@@ -198,14 +184,10 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                 labelHidden
                 checked={selected}
                 disabled={loading}
-                bleedInlineStart={itemPaddingInline}
-                bleedInlineEnd={
-                  media
-                    ? gapBetweenCheckboxAndMedia
-                    : gapBetweenOwnedAndChildren
-                }
-                bleedBlockStart={itemPaddingBlock}
-                bleedBlockEnd={itemPaddingBlock}
+                bleedInlineStart="300"
+                bleedInlineEnd="300"
+                bleedBlockStart="300"
+                bleedBlockEnd="300"
                 fill
                 labelClassName={styles.CheckboxLabel}
               />
@@ -217,15 +199,15 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (media || selectable) {
       ownedMarkup = (
-        <HorizontalStack
-          gap={gapBetweenCheckboxAndMedia}
+        <InlineStack
+          gap="300"
           blockAlign={
             media && selectable ? 'center' : getAlignment(verticalAlignment)
           }
         >
           {handleMarkup}
           {media}
-        </HorizontalStack>
+        </InlineStack>
       );
     }
 
@@ -243,6 +225,8 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       styles.ListItem,
       focused && !focusedInner && styles.focused,
       hasBulkActions && styles.hasBulkActions,
+      selected && styles.selected,
+      selectable && styles.selectable,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -254,8 +238,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
               {buttonsFrom(shortcutActions, {
-                plain: true,
-                primary: polarisSummerEditions2023,
+                variant: 'tertiary',
               })}
             </ButtonGroup>
           </div>
@@ -275,8 +258,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                   <Button
                     accessibilityLabel={disclosureAccessibilityLabel}
                     onClick={this.handleActionsClick}
-                    plain
-                    primary={polarisSummerEditions2023}
+                    variant="tertiary"
                     icon={HorizontalDotsMinor}
                   />
                 }
@@ -291,7 +273,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
             <Box position="absolute" insetBlockStart="400" insetInlineEnd="500">
-              <ButtonGroup segmented>
+              <ButtonGroup variant="segmented">
                 {buttonsFrom(shortcutActions, {size: 'slim'})}
               </ButtonGroup>
             </Box>
@@ -304,27 +286,27 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       <Box
         id={this.props.id}
         position="relative"
-        paddingInlineStart={itemPaddingInline}
-        paddingInlineEnd={itemPaddingInline}
-        paddingBlockStart={itemPaddingBlock}
-        paddingBlockEnd={itemPaddingBlock}
+        paddingInlineStart="300"
+        paddingInlineEnd="300"
+        paddingBlockStart="300"
+        paddingBlockEnd="300"
         zIndex="var(--pc-resource-item-content-stacking-order)"
       >
-        <HorizontalGrid columns={{xs: '1fr auto'}}>
-          <HorizontalGrid
+        <InlineGrid columns={{xs: '1fr auto'}}>
+          <InlineGrid
             columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
-            gap={gapBetweenOwnedAndChildren}
+            gap="300"
           >
             {ownedMarkup}
-            <HorizontalStack blockAlign={getAlignment(verticalAlignment)}>
+            <InlineStack blockAlign={getAlignment(verticalAlignment)}>
               <Box width="100%" padding="0">
                 {children}
               </Box>
-            </HorizontalStack>
-          </HorizontalGrid>
+            </InlineStack>
+          </InlineGrid>
           {actionsMarkup}
           {disclosureMarkup}
-        </HorizontalGrid>
+        </InlineGrid>
       </Box>
     );
 
@@ -513,21 +495,17 @@ function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
 
 export function ResourceItem(props: ResourceItemProps) {
   const breakpoints = useBreakpoints();
-  const features = useFeatures();
   return (
     <BaseResourceItem
       {...props}
       breakpoints={breakpoints}
       context={useContext(ResourceListContext)}
       i18n={useI18n()}
-      features={features}
     />
   );
 }
 
-function getAlignment(
-  alignment?: Alignment,
-): HorizontalStackProps['blockAlign'] {
+function getAlignment(alignment?: Alignment): InlineStackProps['blockAlign'] {
   switch (alignment) {
     case 'leading':
       return 'start';

@@ -1,5 +1,4 @@
 import React, {useRef, useState} from 'react';
-import {zIndex} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -10,11 +9,11 @@ import {Badge} from '../../../Badge';
 import {Text} from '../../../Text';
 import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
-import {HorizontalStack} from '../../../HorizontalStack';
+import {InlineStack} from '../../../InlineStack';
 import {Box} from '../../../Box';
 import {Tooltip} from '../../../Tooltip';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
-import {useFeatures} from '../../../../utilities/features';
+import {useTheme} from '../../../../utilities/use-theme';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -40,8 +39,6 @@ export function Item({
   role,
   variant = 'default',
 }: ItemProps) {
-  const {polarisSummerEditions2023} = useFeatures();
-
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
@@ -84,12 +81,8 @@ export function Item({
       <Box>{contentText}</Box>
       <Text
         as="span"
-        variant={polarisSummerEditions2023 ? 'bodySm' : undefined}
-        color={
-          polarisSummerEditions2023 && (active || disabled)
-            ? undefined
-            : 'subdued'
-        }
+        variant="bodySm"
+        tone={active || disabled ? undefined : 'subdued'}
       >
         {helpText}
       </Text>
@@ -100,7 +93,7 @@ export function Item({
 
   const badgeMarkup = badge && (
     <span className={styles.Suffix}>
-      <Badge status={badge.status}>{badge.content}</Badge>
+      <Badge tone={badge.tone}>{badge.content}</Badge>
     </span>
   );
 
@@ -113,23 +106,15 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <HorizontalStack
-      blockAlign="center"
-      gap={polarisSummerEditions2023 ? '150' : '400'}
-      wrap={!truncate}
-    >
+    <InlineStack blockAlign="center" gap="150" wrap={!truncate}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
       {suffixMarkup}
-    </HorizontalStack>
+    </InlineStack>
   );
 
-  const contentWrapper = polarisSummerEditions2023 ? (
-    <Box width="100%">{contentElement}</Box>
-  ) : (
-    contentElement
-  );
+  const contentWrapper = <Box width="100%">{contentElement}</Box>;
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
 
@@ -170,6 +155,7 @@ export function Item({
 }
 
 export const TruncateText = ({children}: {children: string}) => {
+  const theme = useTheme();
   const textRef = useRef<HTMLSpanElement>(null);
   const [isOverflowing, setIsOverflowing] = useState(false);
   useIsomorphicLayoutEffect(() => {
@@ -189,7 +175,7 @@ export const TruncateText = ({children}: {children: string}) => {
 
   return isOverflowing ? (
     <Tooltip
-      zIndexOverride={Number(zIndex['z-index-11'])}
+      zIndexOverride={Number(theme.zIndex['z-index-11'])}
       preferredPosition="above"
       hoverDelay={1000}
       content={children}

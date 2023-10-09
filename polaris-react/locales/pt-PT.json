@@ -14,7 +14,7 @@
         "partiallyComplete": "Parcialmente concluído",
         "complete": "Concluído"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Informações",
         "success": "Sucesso",
         "warning": "Aviso",
@@ -24,14 +24,13 @@
         "readOnly": "Só de leitura",
         "enabled": "Ativado"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Ignorar notificação"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "A carregar",
-      "connectedDisclosureAccessibilityLabel": "Ações relacionadas"
+      "spinnerAccessibilityLabel": "A carregar"
     },
     "Common": {
       "checkbox": "caixa de verificação",

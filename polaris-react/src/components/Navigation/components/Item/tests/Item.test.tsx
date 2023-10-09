@@ -128,7 +128,7 @@ describe('<Nav.Item />', () => {
       );
 
       expect(item).toContainReactComponent(Badge, {
-        status: 'new',
+        tone: 'new',
         children: '1',
       });
     });
@@ -162,7 +162,6 @@ describe('<Nav.Item />', () => {
       {
         location: 'foo',
       },
-      {features: {polarisSummerEditions2023: true}},
     );
 
     expect(item).toContainReactComponent(Icon, {
@@ -188,7 +187,6 @@ describe('<Nav.Item />', () => {
       {
         location: 'bar',
       },
-      {features: {polarisSummerEditions2023: true}},
     );
 
     expect(item).toContainReactComponent(Icon, {

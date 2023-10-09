@@ -5,7 +5,12 @@ import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 import {gridOptions, featureFlagOptions} from './manager';
-import {breakpoints} from '@shopify/polaris-tokens';
+import isChromatic from 'chromatic/isChromatic';
+import {
+  breakpoints,
+  themeNameDefault,
+  themeNames,
+} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -19,24 +24,15 @@ function StrictModeDecorator(Story, context) {
 }
 
 function AppProviderDecorator(Story, context) {
-  const {
-    polarisSummerEditions2023,
-    polarisSummerEditions2023ShadowBevelOptOut,
-  } = context.globals;
+  // Use system font in chromatic snapshots to avoid async font loading flakiness
+  if (isChromatic()) {
+    document.getElementById('inter-font-link').removeAttribute('href');
+  }
 
   if (context.args.omitAppProvider) return <Story {...context} />;
 
   return (
-    <AppProvider
-      features={{
-        polarisSummerEditions2023:
-          process.env.STORYBOOK_SE23 === 'on'
-            ? true
-            : polarisSummerEditions2023,
-        polarisSummerEditions2023ShadowBevelOptOut,
-      }}
-      i18n={enTranslations}
-    >
+    <AppProvider theme={context.globals.theme} i18n={enTranslations}>
       <FrameContext.Provider value={{}}>
         <Story {...context} />
       </FrameContext.Provider>
@@ -129,6 +125,16 @@ export const globalTypes = {
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
+    },
+  },
+  theme: {
+    description: 'Global theme for components',
+    defaultValue: themeNameDefault,
+    toolbar: {
+      title: 'Theme',
+      icon: 'circlehollow',
+      items: themeNames,
+      dynamicTitle: true,
     },
   },
   ...featureFlagOptions,

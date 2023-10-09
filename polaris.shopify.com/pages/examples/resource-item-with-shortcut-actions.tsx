@@ -35,12 +35,7 @@ function ResourceItemExample() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               shortcutActions={shortcutActions}
               accessibilityLabel={`View details for ${name}`}

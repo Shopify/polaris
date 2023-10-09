@@ -133,7 +133,7 @@ export interface LinkAction {
 
 export interface BadgeAction {
   badge?: {
-    status: 'new';
+    tone: 'new';
     content: string;
   };
 }
@@ -193,7 +193,7 @@ export interface ActionListItemDescriptor
   accessibilityLabel?: string;
   /** @deprecated Badge component */
   badge?: {
-    status: 'new';
+    tone: 'new';
     content: string;
   };
   /** Additional hint text to display with item */
@@ -256,17 +256,6 @@ export interface MenuGroupDescriptor extends BadgeAction {
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
   /** Callback when the menu is clicked */
   onClick?(openActions: () => void): void;
-}
-
-export interface ConnectedDisclosure {
-  /** Visually hidden label for the connected disclosure button.
-   * @default 'Related actions'
-   */
-  accessibilityLabel?: string;
-  /** Whether or not the disclosure is disabled */
-  disabled?: boolean;
-  /** List of actions */
-  actions: ActionListItemDescriptor[];
 }
 
 export enum Key {

@@ -10,19 +10,12 @@
 .ShopName {
   margin-left: var(--p-space-200);
   font-weight: var(--p-font-weight-semibold);
-  font-size: var(--p-font-size-100);
-  color: var(--p-color-text);
-
-  #{$se23} & {
-    color: var(--p-color-text-inverse);
-  }
+  font-size: var(--p-font-size-350);
+  color: var(--p-color-text-inverse);
 }
 
-#{$se23} {
-  [class*='Navigation'] {
-    /* stylelint-disable-next-line selector-max-combinators -- se23 */
-    .ShopName {
-      color: var(--p-color-text-inverse);
-    }
+[class*='Navigation'] {
+  .ShopName {
+    color: var(--p-color-text-inverse);
   }
 }

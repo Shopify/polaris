@@ -40,13 +40,3 @@ body {
     padding-top: var(--p-space-500);
   }
 }
-
-.divider {
-  border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
-  padding-top: var(--p-space-800);
-
-  #{$se23} & {
-    border-top: 0;
-    padding-top: 0;
-  }
-}

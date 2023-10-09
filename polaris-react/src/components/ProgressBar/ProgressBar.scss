@@ -37,47 +37,32 @@
   height: progress-bar-height(large);
 }
 
-.colorHighlight {
+.toneHighlight {
   // stylelint-disable -- Polaris component custom properties
   --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
-  --pc-progress-bar-indicator: var(--p-color-border-info);
-  // stylelint-enable
-
-  #{$se23} & {
-    // stylelint-disable-next-line -- Polaris component custom properties, se23 temporary styles
-    --pc-progress-bar-indicator: var(--p-color-bg-fill-info);
-  }
-}
-
-.colorPrimary {
-  // stylelint-disable -- Polaris component custom properties
-  --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
-  --pc-progress-bar-indicator: var(--p-color-bg-primary);
+  --pc-progress-bar-indicator: var(--p-color-bg-fill-info);
   // stylelint-enable
 }
 
-.colorSuccess {
+.tonePrimary {
   // stylelint-disable -- Polaris component custom properties
   --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
-  --pc-progress-bar-indicator: var(--p-color-border-success);
+  --pc-progress-bar-indicator: var(--p-color-bg-fill-brand);
   // stylelint-enable
-
-  #{$se23} & {
-    // stylelint-disable-next-line -- Polaris component custom properties, se23 temporary styles
-    --pc-progress-bar-indicator: var(--p-color-bg-fill-success);
-  }
 }
 
-.colorCritical {
+.toneSuccess {
   // stylelint-disable -- Polaris component custom properties
   --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
-  --pc-progress-bar-indicator: var(--p-color-bg-fill-critical-secondary);
+  --pc-progress-bar-indicator: var(--p-color-bg-fill-success);
   // stylelint-enable
+}
 
-  #{$se23} & {
-    // stylelint-disable-next-line -- Polaris component custom properties, se23 temporary styles
-    --pc-progress-bar-indicator: var(--p-color-bg-fill-critical);
-  }
+.toneCritical {
+  // stylelint-disable -- Polaris component custom properties
+  --pc-progress-bar-background: var(--p-color-bg-fill-tertiary);
+  --pc-progress-bar-indicator: var(--p-color-bg-fill-critical);
+  // stylelint-enable
 }
 
 .Indicator {

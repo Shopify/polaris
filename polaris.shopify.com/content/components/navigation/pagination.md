@@ -1,6 +1,5 @@
 ---
 title: Pagination
-description: Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling.
 category: Navigation
 keywords:
   - lists
@@ -32,7 +31,20 @@ examples:
   - fileName: pagination-with-table-type.tsx
     title: With table type
     description: Use for pagination at the bottom of tables or lists.
+previewImg: /images/components/navigation/pagination.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use pagination to let merchants move through an ordered collection of items that has been split into pages. On the web, pagination uses buttons to move back and forth between pages. On iOS and Android, pagination uses infinite scrolling.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 

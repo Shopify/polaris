@@ -1,6 +1,6 @@
 ---
 title: Loading
-description: The loading component is used to indicate to merchants that a page is loading or an upload is processing.
+shortDescription: Used to indicate to merchants that a page is loading or an upload is processing.
 category: Feedback indicators
 keywords:
   - spinner
@@ -11,7 +11,20 @@ examples:
   - fileName: loading-default.tsx
     title: Default
     description: Use to indicate that the page is loading.
+previewImg: /images/components/feedback-indicators/loading.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+The loading component is used to indicate to merchants that a page is loading or an upload is processing.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Required components
 

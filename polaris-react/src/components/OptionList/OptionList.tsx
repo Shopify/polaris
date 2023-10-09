@@ -11,9 +11,7 @@ import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {Box} from '../Box';
 import type {BoxProps} from '../Box';
 import {Text} from '../Text';
-import {Bleed} from '../Bleed';
-import {useFeatures} from '../../utilities/features';
-import {VerticalStack} from '../VerticalStack';
+import {BlockStack} from '../BlockStack';
 
 import {Option} from './components';
 
@@ -28,8 +26,6 @@ export interface OptionListProps {
   options?: OptionDescriptor[];
   /** Defines a specific role attribute for the list itself */
   role?: 'listbox' | 'combobox' | string;
-  /** Defines a specific role attribute for each option in the list */
-  optionRole?: string;
   /** Sections containing a header and related options */
   sections?: SectionDescriptor[];
   /** The selected options */
@@ -53,14 +49,12 @@ export function OptionList({
   selected,
   allowMultiple,
   role,
-  optionRole,
   verticalAlign,
   onChange,
   id: idProp,
   onPointerEnterOption,
   onFocusOption,
 }: OptionListProps) {
-  const {polarisSummerEditions2023} = useFeatures();
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );
@@ -127,32 +121,16 @@ export function OptionList({
   const optionsMarkup = optionsExist
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
         const isFirstOption = sectionIndex === 0;
-        const sectionPaddingBlockStart = polarisSummerEditions2023
-          ? '300'
-          : '400';
-        const firstOptionBlockStartPadding = polarisSummerEditions2023
-          ? '050'
-          : '200';
         const titleLevel = isFirstOption ? 'h2' : 'h3';
         const titleMarkup = title ? (
           <Box
-            paddingBlockStart={
-              isFirstOption
-                ? firstOptionBlockStartPadding
-                : sectionPaddingBlockStart
-            }
-            paddingInlineStart={polarisSummerEditions2023 ? '150' : '200'}
-            paddingBlockEnd={polarisSummerEditions2023 ? '100' : '200'}
-            paddingInlineEnd={polarisSummerEditions2023 ? '150' : '200'}
-            borderColor="border-subdued"
-            borderBlockStartWidth={
-              !isFirstOption && !polarisSummerEditions2023 ? '1' : undefined
-            }
+            paddingBlockStart={isFirstOption ? '050' : '300'}
+            paddingInlineStart="150"
+            paddingBlockEnd="100"
+            paddingInlineEnd="150"
+            borderColor="border-secondary"
           >
-            <Text
-              as={polarisSummerEditions2023 ? titleLevel : 'p'}
-              variant="headingXs"
-            >
+            <Text as={titleLevel} variant="headingSm">
               {title}
             </Text>
           </Box>
@@ -175,7 +153,6 @@ export function OptionList({
                 select={isSelected}
                 allowMultiple={allowMultiple}
                 verticalAlign={verticalAlign}
-                role={optionRole}
                 onPointerEnter={handlePointerEnter}
                 onFocus={handleFocus}
               />
@@ -183,35 +160,23 @@ export function OptionList({
           });
 
         const option = (
-          <Bleed
-            marginBlockStart={
-              title || polarisSummerEditions2023 ? undefined : '050'
-            }
+          <Box
+            as="ul"
+            id={`${id}-${sectionIndex}`}
+            role={role as BoxProps['role']}
           >
-            <Box
-              as="ul"
-              id={`${id}-${sectionIndex}`}
-              role={role as BoxProps['role']}
-            >
-              {optionsMarkup}
-            </Box>
-          </Bleed>
+            {optionsMarkup}
+          </Box>
         );
 
         // eslint-disable-next-line no-nested-ternary
         const blockStartPadding = isFirstOption
-          ? // eslint-disable-next-line no-nested-ternary
-            polarisSummerEditions2023
-            ? title
-              ? '100'
-              : '0'
-            : undefined
-          : // eslint-disable-next-line no-nested-ternary
-          polarisSummerEditions2023
           ? title
-            ? '050'
+            ? '100'
             : '0'
-          : '200';
+          : title
+          ? '050'
+          : '0';
 
         return (
           <Box
@@ -219,28 +184,17 @@ export function OptionList({
             as="li"
             paddingBlockStart={blockStartPadding}
           >
-            {polarisSummerEditions2023 ? (
-              <VerticalStack gap={isFirstOption && sections ? undefined : '0'}>
-                {titleMarkup}
-                {option}
-              </VerticalStack>
-            ) : (
-              <>
-                {titleMarkup}
-                {option}
-              </>
-            )}
+            <BlockStack gap={isFirstOption && sections ? undefined : '0'}>
+              {titleMarkup}
+              {option}
+            </BlockStack>
           </Box>
         );
       })
     : null;
 
   return (
-    <Box
-      as="ul"
-      role={role as BoxProps['role']}
-      padding={polarisSummerEditions2023 ? '150' : '200'}
-    >
+    <Box as="ul" role={role as BoxProps['role']} padding="150">
       {optionsMarkup}
     </Box>
   );

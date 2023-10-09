@@ -3,8 +3,7 @@ import React from 'react';
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {Box} from '../../../Box';
-import {HorizontalStack} from '../../../HorizontalStack';
-import {useFeatures} from '../../../../utilities/features';
+import {InlineStack} from '../../../InlineStack';
 
 export interface FooterProps {
   /** Primary action */
@@ -20,38 +19,31 @@ export function Footer({
   secondaryActions,
   children,
 }: FooterProps) {
-  const {polarisSummerEditions2023} = useFeatures();
-
   const primaryActionButton =
-    (primaryAction && buttonsFrom(primaryAction, {primary: true})) || null;
+    (primaryAction && buttonsFrom(primaryAction, {variant: 'primary'})) || null;
   const secondaryActionButtons =
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
   const actions =
     primaryActionButton || secondaryActionButtons ? (
-      <HorizontalStack gap="200">
+      <InlineStack gap="200">
         {secondaryActionButtons}
         {primaryActionButton}
-      </HorizontalStack>
+      </InlineStack>
     ) : null;
 
   return (
-    <HorizontalStack gap="400" blockAlign="center">
+    <InlineStack gap="400" blockAlign="center">
       <Box
-        borderColor={polarisSummerEditions2023 ? 'border' : 'border-subdued'}
-        borderBlockStartWidth="1"
-        minHeight={
-          polarisSummerEditions2023 ? undefined : 'var(--p-space-1600)'
-        }
+        borderColor="border"
+        borderBlockStartWidth="025"
         padding="400"
-        paddingInlineStart={polarisSummerEditions2023 ? undefined : '500'}
-        paddingInlineEnd={polarisSummerEditions2023 ? undefined : '500'}
         width="100%"
       >
-        <HorizontalStack gap="400" blockAlign="center" align="space-between">
+        <InlineStack gap="400" blockAlign="center" align="space-between">
           <Box>{children}</Box>
           {actions}
-        </HorizontalStack>
+        </InlineStack>
       </Box>
-    </HorizontalStack>
+    </InlineStack>
   );
 }

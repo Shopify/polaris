@@ -9,14 +9,12 @@ import {
   Listbox,
   LegacyStack,
   AutoSelection,
-  VerticalStack,
-  HorizontalStack,
+  BlockStack,
+  InlineStack,
   Text,
   Box,
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
-
-import {useFeatures} from '../../utilities/features';
 
 export default {
   component: Listbox,
@@ -24,55 +22,55 @@ export default {
 
 export function All() {
   return (
-    <VerticalStack gap="800">
-      <VerticalStack gap="400">
+    <BlockStack gap="800">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           Default
         </Text>
         <Default />
         <Box paddingBlockEnd="300" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With loading
         </Text>
         <WithLoading />
         <Box paddingBlockEnd="300" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="400">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With action
         </Text>
         <WithAction />
         <Box paddingBlockEnd="300" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With custom element
         </Text>
         <WithCustomOptions />
         <Box paddingBlockEnd="300" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With search
         </Text>
         <WithSearch />
         <Box paddingBlockEnd="300" />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           With disabled text option
         </Text>
         <WithDisabledTextOption />
-      </VerticalStack>
+      </BlockStack>
       <Box paddingBlockEnd="300" />
-    </VerticalStack>
+    </BlockStack>
   );
 }
 
@@ -106,7 +104,7 @@ export function WithAction() {
       </Listbox.Option>
       <Listbox.Action value="ActionValue">
         <LegacyStack spacing="tight">
-          <Icon source={CirclePlusMinor} color="base" />
+          <Icon source={CirclePlusMinor} tone="base" />
           <div>Add item</div>
         </LegacyStack>
       </Listbox.Action>
@@ -167,12 +165,12 @@ export function WithCustomOptions() {
           <Listbox.Option key={id} value={value} selected={selected}>
             <Listbox.TextOption selected={selected}>
               <Box width="100%">
-                <HorizontalStack gap="200" align="space-between">
+                <InlineStack gap="200" align="space-between">
                   {label}
-                  <Text as="span" color="subdued">
+                  <Text as="span" tone="subdued">
                     {`${subscribers} subscribers`}
                   </Text>
-                </HorizontalStack>
+                </InlineStack>
               </Box>
             </Listbox.TextOption>
           </Listbox.Option>
@@ -183,8 +181,6 @@ export function WithCustomOptions() {
 }
 
 export function WithSearch() {
-  const {polarisSummerEditions2023} = useFeatures();
-
   interface CustomerSegment {
     id: string;
     label: string;
@@ -389,9 +385,7 @@ export function WithSearch() {
     <Listbox.Action value={actionValue}>
       <span
         style={{
-          color: polarisSummerEditions2023
-            ? 'var(--p-color-text-secondary)'
-            : 'var(--p-color-text-emphasis)',
+          color: 'var(--p-color-text-secondary)',
         }}
       >
         Show all 111 segments
@@ -452,10 +446,10 @@ export function WithSearch() {
           shadow
           style={{
             position: 'relative',
-            height: polarisSummerEditions2023 ? '262px' : '292px',
+            height: '262px',
             padding: 'var(--p-space-200) 0',
-            borderBottomLeftRadius: 'var(--p-border-radius-2)',
-            borderBottomRightRadius: 'var(--p-border-radius-2)',
+            borderBottomLeftRadius: 'var(--p-border-radius-200)',
+            borderBottomRightRadius: 'var(--p-border-radius-200)',
           }}
           onScrolledToBottom={handleLazyLoadSegments}
         >

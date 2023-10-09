@@ -20,7 +20,7 @@ $spinner-size: 20px;
     z-index: var(--p-z-index-1);
     top: 56px;
     width: 100vw;
-    box-shadow: var(--p-shadow-sm);
+    box-shadow: var(--p-shadow-200);
   }
 
   .IndexFilters.IndexFiltersStickyFlush {
@@ -30,14 +30,10 @@ $spinner-size: 20px;
 
 .TabsWrapper {
   flex: 1;
-  height: var(--p-space-1200);
+  height: 44px;
 
-  #{$se23} & {
-    height: 44px;
-
-    @media #{$p-breakpoints-md-down} {
-      height: var(--p-space-1200);
-    }
+  @media #{$p-breakpoints-md-down} {
+    height: var(--p-space-1200);
   }
 }
 
@@ -46,7 +42,6 @@ $spinner-size: 20px;
   padding: var(--p-space-100) var(--p-space-0) var(--p-space-200)
     var(--p-space-300);
   padding: 0;
-  height: auto;
 
   &.TabsWrapperLoading {
     position: relative;
@@ -91,13 +86,13 @@ $spinner-size: 20px;
   gap: var(--p-space-200);
   align-items: center;
   justify-content: flex-start;
-  padding: var(--p-space-200) var(--p-space-300) var(--p-space-200) 0;
+  padding: var(--p-space-150) var(--p-space-200);
 
   @media #{$p-breakpoints-md-down} {
     position: relative;
-    padding: var(--p-space-300) var(--p-space-400);
+    padding: var(--p-space-200);
+    height: 3rem;
     border-left: var(--p-border-width-025) solid var(--p-color-border-secondary);
-    gap: var(--p-space-200);
 
     &::before {
       content: '';
@@ -114,14 +109,6 @@ $spinner-size: 20px;
         var(--p-color-bg-surface)
       );
       // stylelint-enable
-    }
-  }
-
-  #{$se23} & {
-    padding: var(--p-space-150) var(--p-space-200);
-
-    @media #{$p-breakpoints-md-down} {
-      height: 3rem;
     }
   }
 }

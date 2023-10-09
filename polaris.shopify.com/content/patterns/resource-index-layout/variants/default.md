@@ -2,7 +2,7 @@
 hideFromNav: true
 ---
 
-<div as="HowItHelps">
+<HowItHelps>
 
 ## How it helps merchants
 
@@ -13,41 +13,41 @@ hideFromNav: true
 3. At the top of the index, merchants can use filters, sorting, and multi-select actions that affect the list below.
 4. In the main body of the index, merchants find the individual resource objects that they want to view or manage.
 
-<div as="DefinitionTable">
+<DefinitionTable>
 
 ### Use when merchants need to:
 
 **Overview and manage resources**
 : Resource objects, such as products, orders and customers, are at the heart of merchants’ businesses. While resource types can be very different, they typically share many general activities, such as adding, finding, or taking action. Use the resource index layout pattern when merchants need to organize objects and carry out such activities. An example can be found in Products.
 
-</div>
-</div>
-<div as="Usage">
+</DefinitionTable>
+</HowItHelps>
+<Usage>
 
 ## Using this pattern
 
 This pattern uses the [`Card`](/components/layout-and-structure/card), [`Badge`](/components/feedback-indicators/badge), [`ChoiceList`](/components/selection-and-input/choice-list), [`IndexFilter`](/components/selection-and-input/index-filters), [`IndexTable`](/components/tables/index-table) and [`Page`](/components/layout-and-structure/page) components.
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"previewContext","for":"example"}
 <div style={{ padding: '2rem', height: '600px' }}>
   {(____CODE____)()}
 </div>
 ```
 
-<!-- prettier-ignore -->
+{/* prettier-ignore */}
 ```javascript {"type":"sandboxContext","for":"example"}
 {(____CODE____)()}
 ```
 
-```javascript {"type":"livePreview","id":"example"}
+```javascript {"type":"livePreview","id":"example","title":"Resource index layout"}
 function IndexFiltersDefault() {
   function disambiguateLabel(key, value) {
     switch (key) {
       case 'type':
         return value.map((val) => `type: ${val}`).join(', ');
-      case 'status':
-        return value.map((val) => `status: ${val}`).join(', ');
+      case 'tone':
+        return value.map((val) => `tone: ${val}`).join(', ');
       default:
         return value;
     }
@@ -134,8 +134,8 @@ function IndexFiltersDefault() {
   const sortOptions = [
     {label: 'Product', value: 'product asc', directionLabel: 'Ascending'},
     {label: 'Product', value: 'product desc', directionLabel: 'Descending'},
-    {label: 'Status', value: 'status asc', directionLabel: 'A-Z'},
-    {label: 'Status', value: 'status desc', directionLabel: 'Z-A'},
+    {label: 'Status', value: 'tone asc', directionLabel: 'A-Z'},
+    {label: 'Status', value: 'tone desc', directionLabel: 'Z-A'},
     {label: 'Type', value: 'type asc', directionLabel: 'A-Z'},
     {label: 'Type', value: 'type desc', directionLabel: 'Z-A'},
     {label: 'Vendor', value: 'vendor asc', directionLabel: 'Ascending'},
@@ -162,7 +162,7 @@ function IndexFiltersDefault() {
           disabled: false,
           loading: false,
         };
-  const [status, setStatus] = useState(undefined);
+  const [tone, setStatus] = useState(undefined);
   const [type, setType] = useState(undefined);
   const [queryValue, setQueryValue] = useState('');
   const handleStatusChange = useCallback((value) => setStatus(value), []);
@@ -181,18 +181,18 @@ function IndexFiltersDefault() {
   }, [handleStatusRemove, handleQueryValueRemove, handleTypeRemove]);
   const filters = [
     {
-      key: 'status',
+      key: 'tone',
       label: 'Status',
       filter: (
         <ChoiceList
-          title="status"
+          title="tone"
           titleHidden
           choices={[
             {label: 'Active', value: 'active'},
             {label: 'Draft', value: 'draft'},
             {label: 'Archived', value: 'archived'},
           ]}
-          selected={status || []}
+          selected={tone || []}
           onChange={handleStatusChange}
           allowMultiple
         />
@@ -219,11 +219,11 @@ function IndexFiltersDefault() {
     },
   ];
   const appliedFilters = [];
-  if (status && !isEmpty(status)) {
-    const key = 'status';
+  if (tone && !isEmpty(tone)) {
+    const key = 'tone';
     appliedFilters.push({
       key,
-      label: disambiguateLabel(key, status),
+      label: disambiguateLabel(key, tone),
       onRemove: handleStatusRemove,
     });
   }
@@ -240,7 +240,7 @@ function IndexFiltersDefault() {
       id: '1020',
       price: '$200',
       product: '1ZPRESSO | J-MAX Manual Coffee Grinder',
-      status: <Badge status="success">Active</Badge>,
+      tone: <Badge tone="success">Active</Badge>,
       inventory: '20 in stock',
       type: 'Brew Gear',
       vendor: 'Espresso Shot Coffee',
@@ -249,7 +249,7 @@ function IndexFiltersDefault() {
       id: '1018',
       price: '$200',
       product: 'Acaia Pearl Set',
-      status: <Badge status="success">Active</Badge>,
+      tone: <Badge tone="success">Active</Badge>,
       inventory: '2 in stock for 50 variants',
       type: 'Brew Gear',
       vendor: 'Espresso Shot Coffee',
@@ -258,7 +258,7 @@ function IndexFiltersDefault() {
       id: '1016',
       price: '$200',
       product: 'AeroPress Go Brewer',
-      status: <Badge status="info">Draft</Badge>,
+      tone: <Badge tone="info">Draft</Badge>,
       inventory: '3 in stock for 50 variants',
       type: 'Brew Gear',
       vendor: 'Espresso Shot Coffee',
@@ -267,7 +267,7 @@ function IndexFiltersDefault() {
       id: '1015',
       price: '$200',
       product: 'Canadiano Brewer',
-      status: <Badge status="success">Active</Badge>,
+      tone: <Badge tone="success">Active</Badge>,
       inventory: '890 in stock for 50 variants',
       type: 'Brew Merch',
       vendor: 'Espresso Shot Coffee',
@@ -276,7 +276,7 @@ function IndexFiltersDefault() {
       id: '1014',
       price: '$200',
       product: 'Canadiano Brewer White Ash',
-      status: <Badge status="success">Active</Badge>,
+      tone: <Badge tone="success">Active</Badge>,
       inventory: '890 in stock for 50 variants',
       type: 'Brew Gear',
       vendor: 'Espresso Shot Coffee',
@@ -289,10 +289,7 @@ function IndexFiltersDefault() {
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(products);
   const rowMarkup = products.map(
-    (
-      {id, thumbnail, product, price, status, inventory, type, vendor},
-      index,
-    ) => (
+    ({id, thumbnail, product, price, tone, inventory, type, vendor}, index) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -307,7 +304,7 @@ function IndexFiltersDefault() {
         </IndexTable.Cell>
         <IndexTable.Cell>{product}</IndexTable.Cell>
         <IndexTable.Cell>{price}</IndexTable.Cell>
-        <IndexTable.Cell>{status}</IndexTable.Cell>
+        <IndexTable.Cell>{tone}</IndexTable.Cell>
         <IndexTable.Cell>{inventory}</IndexTable.Cell>
         <IndexTable.Cell>{type}</IndexTable.Cell>
         <IndexTable.Cell>{vendor}</IndexTable.Cell>
@@ -383,13 +380,22 @@ function IndexFiltersDefault() {
 }
 ```
 
-</div>
-<div as="UsefulToKnow">
+</Usage>
 
 ### Useful to know
 
-- <span>Use the resource type as page title.</span> ![“Orders” and “Gift cards” pages](/images/patterns/resource-index-layout/resource-index-usage-1.png)
-- <span>Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.</span> ![“Add product” primary action button on a resource index page](/images/patterns/resource-index-layout/resource-index-usage-2.png)
-- <span>Set the page width to normal if the index doesn’t need full width.</span> ![Index page with margins on either side of the main content](/images/patterns/resource-index-layout/resource-index-usage-3.png)
+<SideBySide>
 
-</div>
+- Use the resource type as page title.
+
+  ![“Orders” and “Gift cards” pages](/images/patterns/resource-index-layout/resource-index-usage-1.png)
+
+- Always use the primary action in the top right corner for resource creation. Remove the button if there is no such functionality.
+
+  ![“Add product” primary action button on a resource index page](/images/patterns/resource-index-layout/resource-index-usage-2.png)
+
+- Set the page width to normal if the index doesn’t need full width.
+
+  ![Index page with margins on either side of the main content](/images/patterns/resource-index-layout/resource-index-usage-3.png)
+
+</SideBySide>

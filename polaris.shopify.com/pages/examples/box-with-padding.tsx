@@ -1,14 +1,14 @@
 import React from 'react';
-import {VerticalStack, Box, Text, HorizontalStack} from '@shopify/polaris';
+import {BlockStack, Box, Text, InlineStack} from '@shopify/polaris';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BoxWithPaddingExample() {
   return (
-    <VerticalStack gap="400">
+    <BlockStack gap="400">
       <div
         style={{
-          backgroundColor: 'var(--p-color-bg-info-strong)',
+          backgroundColor: 'var(--p-color-bg-fill-info)',
           width: '586px',
         }}
       >
@@ -16,31 +16,31 @@ function BoxWithPaddingExample() {
           <Placeholder label="padding" childAlign="center" />
         </Box>
       </div>
-      <HorizontalStack gap="400">
-        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
+      <InlineStack gap="400">
+        <div style={{backgroundColor: 'var(--p-color-bg-fill-info)'}}>
           <Box paddingInlineStart="400" width="284px">
             <Placeholder label="paddingInlineStart" childAlign="start" />
           </Box>
         </div>
-        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-fill-info)'}}>
           <Box paddingInlineEnd="400" width="284px">
             <Placeholder label="paddingInlineEnd" childAlign="end" />
           </Box>
         </div>
-      </HorizontalStack>
-      <HorizontalStack gap="400">
-        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
+      </InlineStack>
+      <InlineStack gap="400">
+        <div style={{backgroundColor: 'var(--p-color-bg-fill-info)'}}>
           <Box paddingBlockStart="400" width="284px">
             <Placeholder label="paddingBlockStart" childAlign="center" />
           </Box>
         </div>
-        <div style={{backgroundColor: 'var(--p-color-bg-info-strong)'}}>
+        <div style={{backgroundColor: 'var(--p-color-bg-fill-info)'}}>
           <Box paddingBlockEnd="400" width="284px">
             <Placeholder label="paddingBlockEnd" childAlign="center" />
           </Box>
         </div>
-      </HorizontalStack>
-    </VerticalStack>
+      </InlineStack>
+    </BlockStack>
   );
 }
 
@@ -63,17 +63,17 @@ const Placeholder = ({
         width: width,
       }}
     >
-      <HorizontalStack gap="400" align={childAlign}>
+      <InlineStack gap="400" align={childAlign}>
         <div
           style={{
-            color: 'var(--p-color-text-on-color)',
+            color: 'var(--p-color-text-info-on-bg-fill)',
           }}
         >
           <Text as="h2" variant="bodyMd" fontWeight="medium">
             {label}
           </Text>
         </div>
-      </HorizontalStack>
+      </InlineStack>
     </div>
   );
 };

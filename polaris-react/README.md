@@ -33,7 +33,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@11.26.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@12.0.0-beta.2/build/esm/styles.css"
 />
 ```
 
@@ -59,6 +59,20 @@ ReactDOM.render(
 );
 ```
 
+4. Load the web font [Inter](https://fonts.google.com/specimen/Inter).
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com/" />
+<link
+  rel="preconnect"
+  href="https://fonts.gstatic.com/"
+  crossorigin="anonymous"
+/>
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@450;550;650;700&display=swap"
+/>
+```
+
 ## Using the CSS components
 
 If React doesn’t make sense for your application, you can use a CSS-only version of our components. This includes all the styles you need for every component in the library, but you’ll be responsible for writing the correct markup and updating classes and DOM attributes in response to user events.
@@ -70,7 +84,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@11.26.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@12.0.0-beta.2/build/esm/styles.css"
 />
 ```
 

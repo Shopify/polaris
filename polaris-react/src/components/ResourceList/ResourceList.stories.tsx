@@ -20,7 +20,7 @@ export default {
 
 export function Default() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -39,7 +39,7 @@ export function Default() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -94,7 +94,7 @@ export function WithEmptyState() {
     <Page title="Files">
       <Layout>
         <Layout.Section>
-          <Card padding="0">
+          <Card padding="0" roundedAbove="sm">
             <ResourceList
               emptyState={emptyStateMarkup}
               items={items}
@@ -133,7 +133,7 @@ export function WithSelectionAndNoBulkActions() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -147,7 +147,7 @@ export function WithSelectionAndNoBulkActions() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -213,7 +213,7 @@ export function WithBulkActions() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -228,7 +228,7 @@ export function WithBulkActions() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -290,7 +290,7 @@ export function WithBulkActionsAndManyItems() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -305,7 +305,7 @@ export function WithBulkActionsAndManyItems() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -371,7 +371,7 @@ export function WithLoadingState() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -387,7 +387,7 @@ export function WithLoadingState() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -409,7 +409,7 @@ export function WithLoadingState() {
 
 export function WithTotalCount() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -428,7 +428,7 @@ export function WithTotalCount() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -455,7 +455,7 @@ export function WithTotalCount() {
 
 export function WithHeaderContent() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         headerContent="Customer details shown below"
         items={[
@@ -474,7 +474,7 @@ export function WithHeaderContent() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -522,7 +522,7 @@ export function WithSorting() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -542,7 +542,7 @@ export function WithSorting() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -584,7 +584,7 @@ export function WithAlternateTool() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         items={items}
         renderItem={renderItem}
@@ -596,7 +596,7 @@ export function WithAlternateTool() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -694,7 +694,7 @@ export function WithFiltering() {
   );
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -706,7 +706,7 @@ export function WithFiltering() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem id={id} url={url} media={media}>
@@ -806,7 +806,7 @@ export function WithACustomEmptySearchResultState() {
   );
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -819,7 +819,7 @@ export function WithACustomEmptySearchResultState() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem id={id} url={url} media={media}>
@@ -853,7 +853,7 @@ export function WithACustomEmptySearchResultState() {
 
 export function WithItemShortcutActions() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -874,7 +874,7 @@ export function WithItemShortcutActions() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location, latestOrderUrl} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
           const shortcutActions = latestOrderUrl
             ? [
                 {
@@ -909,7 +909,7 @@ export function WithItemShortcutActions() {
 
 export function WithPersistentItemShortcutActions() {
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
@@ -930,7 +930,7 @@ export function WithPersistentItemShortcutActions() {
         ]}
         renderItem={(item) => {
           const {id, url, name, location, latestOrderUrl} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
           const shortcutActions = latestOrderUrl
             ? [
                 {
@@ -1034,7 +1034,7 @@ export function WithMultiselect() {
   ];
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -1050,7 +1050,7 @@ export function WithMultiselect() {
 
   function renderItem(item, _, index) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -1183,7 +1183,7 @@ export function WithAllOfItsElements() {
   );
 
   return (
-    <Card padding="0">
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -1208,7 +1208,7 @@ export function WithAllOfItsElements() {
 
   function renderItem(item) {
     const {id, url, name, location, latestOrderUrl} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
     const shortcutActions = latestOrderUrl
       ? [{content: 'View latest order', url: latestOrderUrl}]
       : null;

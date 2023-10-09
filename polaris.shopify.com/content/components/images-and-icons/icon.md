@@ -1,13 +1,12 @@
 ---
 title: Icon
-description: Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
+shortDescription: Used to visually communicate core parts of the product and available actions, acting as wayfinding tools.
 category: Images and icons
 keywords:
   - iconography
   - visual indicator
   - svg
   - icon background
-  - icon backdrop
   - accessible icons
   - icon alternative text
   - alt text
@@ -21,16 +20,26 @@ examples:
   - fileName: icon-colored.tsx
     title: Colored
     description: Apply a color to the icon.
-  - fileName: icon-with-backdrop.tsx
-    title: With backdrop
-    description: Apply a backdrop to the icon.
   - fileName: icon-with-custom-svg.tsx
     title: With custom SVG
     description: Specify an SVG as a string to render it in an image tag, instead of an inline SVG to prevent script injection.
   - fileName: icon-with-custom-svg-and-color.tsx
     title: With custom SVG and color
     description: When using changing color of an svg and it uses currentColor, the white color is applied.
+previewImg: /images/components/images-and-icons/icon.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Icons are used to visually communicate core parts of the product and available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Accessibility
 
@@ -38,7 +47,7 @@ Using icons can be a great help to merchants who have difficulties with reading,
 
 If the icon appears without text, then use the `accessibilityLabel` prop to give the icon a text alternative. This adds an `aria-label` that’s conveyed to screen reader users.
 
-<!-- dodont -->
+<DoDont>
 
 #### Do
 
@@ -66,7 +75,7 @@ If the icon appears without text, then use the `accessibilityLabel` prop to give
 <Icon source={CirclePlusMinor} accessibilityLabel="Circle plus icon" />
 ```
 
-<!-- end -->
+</DoDont>
 
 ---
 

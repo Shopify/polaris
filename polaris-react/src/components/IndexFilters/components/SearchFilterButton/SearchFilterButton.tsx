@@ -5,9 +5,8 @@ import {SearchMinor, FilterMinor} from '@shopify/polaris-icons';
 import {Icon} from '../../../Icon';
 import {Tooltip} from '../../../Tooltip';
 import {Text} from '../../../Text';
-import {HorizontalStack} from '../../../HorizontalStack';
-import {FilterButton} from '../FilterButton';
-import {useFeatures} from '../../../../utilities/features';
+import {InlineStack} from '../../../InlineStack';
+import {Button} from '../../../Button';
 
 export interface SearchFilterButtonProps {
   onClick: () => void;
@@ -28,27 +27,22 @@ export function SearchFilterButton({
   hideFilters,
   hideQueryField,
 }: SearchFilterButtonProps) {
-  const {polarisSummerEditions2023: se23} = useFeatures();
-
   const iconMarkup = (
-    <HorizontalStack gap="0">
-      {hideQueryField ? null : <Icon source={SearchMinor} color="base" />}
-      {hideFilters ? null : <Icon source={FilterMinor} color="base" />}
-    </HorizontalStack>
+    <InlineStack gap="0">
+      {hideQueryField ? null : <Icon source={SearchMinor} tone="base" />}
+      {hideFilters ? null : <Icon source={FilterMinor} tone="base" />}
+    </InlineStack>
   );
-
-  const childMarkup = !se23 ? iconMarkup : null;
 
   const activator = (
     <div style={style}>
-      <FilterButton
+      <Button
+        size="slim"
         onClick={onClick}
-        label={label}
         disabled={disabled}
-        icon={se23 ? iconMarkup : undefined}
-      >
-        {childMarkup}
-      </FilterButton>
+        icon={iconMarkup}
+        accessibilityLabel={label}
+      />
     </div>
   );
 

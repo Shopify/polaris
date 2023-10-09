@@ -1,6 +1,5 @@
 ---
 title: Text
-description: Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
 category: Typography
 keywords:
   - titles
@@ -36,10 +35,10 @@ examples:
     title: Weight
     description: >-
       Use to give text a range of font weights.
-  - fileName: text-color.tsx
-    title: Color
+  - fileName: text-tone.tsx
+    title: Tone
     description: >-
-      Use to set text color.
+      Use to set text tone (color).
   - fileName: text-inheritance.tsx
     title: Inheritance
     description: >-
@@ -48,7 +47,20 @@ examples:
     title: Decoration
     description: >-
       Use to define text decoration
+previewImg: /images/components/typography/text.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Typography helps establish hierarchy and communicate important content by creating clear visual patterns.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Variant tokens
 
@@ -56,14 +68,12 @@ Each variant uses a predetermined combination of the [font tokens](/tokens/font)
 
 | Variant      | Font size token     | px value | rem value | Font line height token | Font weight token          | Reponsive |
 | ------------ | ------------------- | -------- | --------- | ---------------------- | -------------------------- | --------- |
-| `heading4Xl` | `--p-font-size-700` | 40       | 2.5       | `--p-line-height-7`    | `--p-font-weight-bold`     | Yes       |
 | `heading3Xl` | `--p-font-size-600` | 32       | 2         | `--p-line-height-6`    | `--p-font-weight-semibold` | Yes       |
 | `heading2Xl` | `--p-font-size-500` | 28       | 1.75      | `--p-line-height-5`    | `--p-font-weight-semibold` | Yes       |
 | `headingXl`  | `--p-font-size-400` | 24       | 1.5       | `--p-line-height-4`    | `--p-font-weight-semibold` | Yes       |
 | `headingLg`  | `--p-font-size-300` | 20       | 1.25      | `--p-line-height-3`    | `--p-font-weight-semibold` | Yes       |
 | `headingMd`  | `--p-font-size-200` | 16       | 1         | `--p-line-height-3`    | `--p-font-weight-semibold` | No        |
 | `headingSm`  | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-semibold` | No        |
-| `headingXs`  | `--p-font-size-75`  | 12       | 0.75      | `--p-line-height-1`    | `--p-font-weight-semibold` | No        |
 | `bodyLg`     | `--p-font-size-200` | 16       | 1         | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
 | `bodyMd`     | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
 | `bodySm`     | `--p-font-size-75`  | 12       | 0.75      | `--p-line-height-1`    | `--p-font-weight-regular`  | No        |
@@ -101,7 +111,7 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <DisplayText size="extraLarge">Sales this year</DisplayText>
-+ <Text variant="heading4xl" as="p">Sales this year</Text>
++ <Text variant="heading3xl" as="p">Sales this year</Text>
 ```
 
 ### Heading
@@ -115,7 +125,7 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <Subheading>Accounts</Subheading>
-+ <Text variant="headingXs" as="h3">Accounts</Text>
++ <Text variant="headingSm" as="h3">Accounts</Text>
 ```
 
 ### Caption
@@ -131,7 +141,7 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <TextStyle variation="subdued">No supplier listed</TextStyle>
-+ <Text as="span" color="subdued">No supplier listed</Text>
++ <Text as="span" tone="subdued">No supplier listed</Text>
 ```
 
 #### Strong
@@ -145,21 +155,21 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <TextStyle variation="positive">No supplier listed</TextStyle>
-+ <Text as="span" color="success">No supplier listed</Text>
++ <Text as="span" tone="success">No supplier listed</Text>
 ```
 
 #### Negative
 
 ```diff
 - <TextStyle variation="negative">No supplier listed</TextStyle>
-+ <Text as="span" color="critical">No supplier listed</Text>
++ <Text as="span" tone="critical">No supplier listed</Text>
 ```
 
 #### Warning
 
 ```diff
 - <TextStyle variation="warning">No supplier listed</TextStyle>
-+ <Text as="span" color="warning">No supplier listed</Text>
++ <Text as="span" tone="warning">No supplier listed</Text>
 ```
 
 #### Code

@@ -75,7 +75,7 @@ function AutocompleteActionBeforeExample() {
         actionBefore={{
           accessibilityLabel: 'Action label',
           badge: {
-            status: 'new',
+            tone: 'new',
             content: 'New!',
           },
           content:

@@ -10,7 +10,7 @@ import {
   OptionList,
   Popover,
   Thumbnail,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 import {DiscountsMajor, DiscountsMinor} from '@shopify/polaris-icons';
 
@@ -203,7 +203,7 @@ export function WithDisabledOption() {
 
 export function All() {
   return (
-    <VerticalStack gap="200">
+    <BlockStack gap="200">
       <Card padding="0">
         <OptionList
           title="Default"
@@ -334,12 +334,12 @@ export function All() {
                 {
                   value: 'avatar_extra_small',
                   label: 'Avatar extra small',
-                  media: <Avatar name="Hello World" size="extraSmall" />,
+                  media: <Avatar name="Hello World" size="xs" />,
                 },
                 {
                   value: 'avatar_small',
                   label: 'Avatar small',
-                  media: <Avatar name="Hello World" size="small" />,
+                  media: <Avatar name="Hello World" size="sm" />,
                 },
               ],
             },
@@ -433,6 +433,6 @@ export function All() {
           selected={['source']}
         />
       </Card>
-    </VerticalStack>
+    </BlockStack>
   );
 }

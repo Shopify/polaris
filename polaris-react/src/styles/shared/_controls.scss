@@ -1,9 +1,9 @@
 @function control-height() {
-  @return 36px;
+  @return 32px;
 }
 
 @function control-vertical-padding() {
-  @return calc((36px - var(--p-font-line-height-3) - var(--p-space-050)) / 2);
+  @return calc((36px - var(--p-font-line-height-600) - var(--p-space-050)) / 2);
 }
 
 @mixin control-backdrop($style: base) {
@@ -13,32 +13,13 @@
     background-color: var(--p-color-bg-surface);
     border-radius: var(--p-border-radius-100);
 
-    &::before {
-      content: '';
-      position: absolute;
-      top: calc(-1 * var(--p-border-width-050));
-      right: calc(-1 * var(--p-border-width-050));
-      bottom: calc(-1 * var(--p-border-width-050));
-      left: calc(-1 * var(--p-border-width-050));
-      border-radius: var(--p-border-radius-100);
-      background-color: var(--p-color-bg-interactive);
-      opacity: 0;
-      transform: scale(0.25);
-      transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
-        transform var(--p-motion-duration-100) var(--p-motion-ease);
-
-      #{$se23} & {
-        content: none;
-      }
-    }
-
     &.hover,
     &:hover {
       cursor: pointer;
       border-color: var(--p-color-border-hover);
     }
   } @else if $style == active {
-    border-color: var(--p-color-border-interactive);
+    border-color: var(--p-color-border-emphasis);
 
     &::before {
       opacity: 1;
@@ -51,7 +32,7 @@
     border-color: var(--p-color-border-disabled);
 
     &::before {
-      background-color: var(--p-color-bg-disabled);
+      background-color: var(--p-color-bg-surface-disabled);
     }
 
     &:hover {

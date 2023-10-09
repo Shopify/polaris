@@ -1,6 +1,6 @@
 ---
 title: Avatar
-description: Avatars are used to show a thumbnail representation of an individual or business in the interface.
+shortDescription: Used to show a thumbnail representation of an individual or business in the interface.
 category: Images and icons
 keywords:
   - photo
@@ -28,19 +28,30 @@ examples:
   - fileName: avatar-extra-small.tsx
     title: Extra small
     description: Use to present an avatar in a condensed layout, such as a data table cell or an action list item.
-  - fileName: avatar-square.tsx
-    title: Square
-    description: Use a `square` shape when the avatar represents a non-person entity like an app, channel, or store.
+previewImg: /images/components/images-and-icons/avatar.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Avatars are used to show a thumbnail representation of an individual or business in the interface.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
-Avatars should be one of 4 sizes:
+Avatars should be one of 5 sizes:
 
-- Extra small (24 x 24 px): use in tightly condensed layouts
-- Small (32 × 32 px): use when the medium size is too big for the layout, or when the avatar has less importance
-- Medium (40 × 40 px): use as the default size
-- Large (60 × 60 px): use when an avatar is a focal point, such as on a single customer card
+- Extra small (20 x 20 px): use in tightly condensed layouts
+- Small (24 × 24 px): use when the medium size is too big for the layout, or when the avatar has less importance
+- Medium (28 × 28 px): use as the default size
+- Large (32 × 32 px): use when an avatar is a focal point, such as on a single customer card
+- Extra large (40 × 40 px): use when an avatar is a focal point, such as on a single customer card
 
 ---
 

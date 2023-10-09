@@ -14,7 +14,7 @@
         "partiallyComplete": "Hoàn tất một phần",
         "complete": "Hoàn tất"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Thông tin",
         "success": "Thành công",
         "warning": "Cảnh báo",
@@ -24,14 +24,13 @@
         "readOnly": "Chỉ đọc",
         "enabled": "Đã bật"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
     },
     "Banner": {
       "dismissButton": "Bỏ qua thông báo"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Đang tải",
-      "connectedDisclosureAccessibilityLabel": "Thao tác có liên quan"
+      "spinnerAccessibilityLabel": "Đang tải"
     },
     "Common": {
       "checkbox": "hộp kiểm",

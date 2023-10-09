@@ -25,17 +25,11 @@
 }
 
 .Title {
-  margin-bottom: var(--p-space-500);
-  #{$se23} & {
-    margin-bottom: var(--p-space-200);
-  }
+  margin-bottom: var(--p-space-200);
 }
 
 .Buttons {
-  margin-top: var(--p-space-500);
-  #{$se23} & {
-    margin-top: var(--p-space-200);
-  }
+  margin-top: var(--p-space-200);
 }
 
 .Container {
@@ -46,7 +40,9 @@
   right: var(--p-space-400);
   top: var(--p-space-400);
   position: absolute;
-  #{$se23} & svg {
+
+  // stylelint-disable-next-line -- Dismiss icon color override
+  & svg {
     fill: var(--p-color-icon-secondary);
   }
 }

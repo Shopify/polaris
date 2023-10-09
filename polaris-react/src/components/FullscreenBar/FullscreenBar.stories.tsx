@@ -6,11 +6,10 @@ import {
   ButtonGroup,
   FullscreenBar,
   Text,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/polaris';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
-import {useFeatures} from '../../utilities/features';
 
 export default {
   component: FullscreenBar,
@@ -20,26 +19,25 @@ export default {
 export function All() {
   return (
     <>
-      <VerticalStack gap="400">
+      <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With children
         </Text>
         <WithChildren />
-      </VerticalStack>
+      </BlockStack>
 
-      <VerticalStack gap="200">
+      <BlockStack gap="200">
         <Text as="h2" variant="headingXl">
           No children
         </Text>
         <NoChildren />
-      </VerticalStack>
+      </BlockStack>
     </>
   );
 }
 
 export function WithChildren() {
   const [isFullscreen, setFullscreen] = useState(true);
-  const {polarisSummerEditions2023} = useFeatures();
   const breakpoints = useBreakpoints();
 
   const handleActionClick = useCallback(() => {
@@ -52,7 +50,7 @@ export function WithChildren() {
     </Text>
   ) : null;
 
-  const titleMarkup = polarisSummerEditions2023 ? (
+  const titleMarkup = (
     <div
       style={{
         marginLeft: 'var(--p-space-200)',
@@ -61,12 +59,6 @@ export function WithChildren() {
       }}
     >
       {titleContentMarkup}
-    </div>
-  ) : (
-    <div style={{marginLeft: '1rem', flexGrow: 1}}>
-      <Text as="p" variant="headingLg">
-        Page title
-      </Text>
     </div>
   );
 
@@ -82,11 +74,11 @@ export function WithChildren() {
           paddingRight: '1rem',
         }}
       >
-        <Badge status="info">Draft</Badge>
+        <Badge tone="info">Draft</Badge>
         {titleMarkup}
         <ButtonGroup>
           <Button onClick={() => {}}>Secondary Action</Button>
-          <Button primary onClick={() => {}}>
+          <Button variant="primary" onClick={() => {}}>
             Primary Action
           </Button>
         </ButtonGroup>

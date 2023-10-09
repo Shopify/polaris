@@ -94,7 +94,7 @@ $list-filters-footer-height: 70px;
 
   &:hover {
     cursor: pointer;
-    background-color: var(--p-color-bg-hover);
+    background-color: var(--p-color-bg-surface-hover);
     outline: var(--p-border-width-025) solid transparent;
   }
 
@@ -133,12 +133,8 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-400);
     width: calc(100% - var(--p-space-800));
     height: var(--p-space-025);
-    background-color: var(--p-color-bg-surface-secondary);
+    background-color: var(--p-color-bg-surface-tertiary);
     display: block;
-
-    #{$se23} & {
-      background-color: var(--p-color-bg-surface-tertiary);
-    }
   }
 
   &::before {
@@ -158,12 +154,8 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-400);
     width: calc(100% - var(--p-space-800));
     height: var(--p-space-025);
-    background-color: var(--p-color-bg-surface-secondary);
+    background-color: var(--p-color-bg-surface-tertiary);
     display: block;
-
-    #{$se23} & {
-      background-color: var(--p-color-bg-surface-tertiary);
-    }
   }
 
   &::before {
@@ -185,12 +177,8 @@ $list-filters-footer-height: 70px;
     left: var(--p-space-400);
     width: calc(100% - var(--p-space-800));
     height: var(--p-space-025);
-    background-color: var(--p-color-bg-surface-secondary);
+    background-color: var(--p-color-bg-surface-tertiary);
     display: block;
-
-    #{$se23} & {
-      background-color: var(--p-color-bg-surface-tertiary);
-    }
   }
 
   &::after {

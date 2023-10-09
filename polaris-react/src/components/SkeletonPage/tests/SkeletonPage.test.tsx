@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
+// eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../../LegacyCard';
 import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
@@ -38,7 +39,7 @@ describe('<SkeletonPage />', () => {
 
       expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
       expect(skeletonPage).not.toContainReactComponent(Box, {
-        background: 'bg-strong',
+        background: 'bg-fill-tertiary',
       });
     });
 
@@ -49,7 +50,7 @@ describe('<SkeletonPage />', () => {
         className: 'Title',
       });
       expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'bg-strong',
+        background: 'bg-fill-tertiary',
       });
     });
 
@@ -60,7 +61,7 @@ describe('<SkeletonPage />', () => {
         className: 'Title',
       });
       expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'bg-strong',
+        background: 'bg-fill-tertiary',
       });
     });
   });
@@ -68,7 +69,7 @@ describe('<SkeletonPage />', () => {
   it('renders backAction', () => {
     const skeletonPage = mountWithApp(<SkeletonPage backAction />);
     expect(skeletonPage).toContainReactComponent(Box, {
-      background: 'bg-strong',
+      background: 'bg-fill-tertiary',
       minWidth: '2.25rem',
       minHeight: '2.25rem',
       maxWidth: '2.25rem',

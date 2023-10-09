@@ -13,7 +13,7 @@ import type {
 } from '../../types';
 import {ActionList} from '../ActionList';
 import {Popover} from '../Popover';
-import {HorizontalStack} from '../HorizontalStack';
+import {InlineStack} from '../InlineStack';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 
@@ -300,10 +300,10 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const groupContent =
       promotedActionsMarkup || actionsPopover ? (
-        <HorizontalStack gap="300">
+        <InlineStack gap="300">
           {promotedActionsMarkup}
           {actionsPopover}
-        </HorizontalStack>
+        </InlineStack>
       ) : null;
 
     if (!groupContent) {
@@ -352,7 +352,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     for (const action of actions) {
       for (const item of action.items) {
-        if (item.badge?.status === 'new') return true;
+        if (item.badge?.tone === 'new') return true;
       }
     }
 

@@ -1,6 +1,6 @@
 ---
 title: Exception list
-description: Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front.
+shortDescription: Helps merchants notice important, standout information that adds extra context to a task.
 category: Feedback indicators
 keywords:
   - exception list
@@ -11,7 +11,20 @@ examples:
   - fileName: exception-list-default.tsx
     title: Default
     description: Use icons to add clarity or assist in visualizing the meaning
+previewImg: /images/components/feedback-indicators/exception-list.png
 ---
+
+# {frontmatter.title}
+
+<Lede>
+
+Use exception lists to help merchants notice important, standout information that adds extra context to a task. Exception lists often consist of a title and description. Each item in the list either has a bullet or icon at the front.
+
+</Lede>
+
+<Examples />
+
+<Props componentName={frontmatter.title} />
 
 ## Best practices
 
@@ -41,18 +54,6 @@ For error states, exception lists should:
 If placed next to an item in a [resource list](https://polaris.shopify.com/components/resource-list), exceptions lists should:
 
 - Make the entire list item clickable because the exception list itself isn’t clickable
-
-<!-- dodont -->
-
-#### Do
-
-- ![Exception list being used inside a resource list item](/images/components/feedback-indicators/exception-list/do-exception-list@2x.png)
-
-#### Don’t
-
-- ![Exception list being used in place of a banner](/images/components/feedback-indicators/exception-list/dont-exception-list@2x.png)
-
-<!-- end -->
 
 ---
 

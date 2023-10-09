@@ -7,9 +7,20 @@ keywords:
   - space rules
 ---
 
+import RulePreamble from '../_preamble.md';
+import RulePostamble from '../_postamble.md';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="space" />
+
 ```diff
 // Do
 + margin-bottom: var(--p-space-025);
 // Don't
 - margin-bottom: var(--p-choice-margin);
 ```
+
+<RulePostamble />
