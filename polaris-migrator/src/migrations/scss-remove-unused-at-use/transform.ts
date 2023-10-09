@@ -43,6 +43,7 @@ const plugin = (options: PluginOptions = {}): Plugin => {
         }
 
         // Remove target import
+        console.log({atUseNamespace});
         if (!root.source?.input.css.includes(`${atUseNamespace}.`)) {
           atRule.remove();
         }

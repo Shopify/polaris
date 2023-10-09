@@ -1,0 +1,17 @@
+.Foo {
+  @include common.breakpoint-mobile {
+    margin-top: auto;
+  }
+
+  @include common.breakpoint-tablet {
+    margin-top: auto;
+  }
+
+  @include common.breakpoint-desktop {
+    margin-top: auto;
+  }
+
+  @include common.breakpoint-desktop-large {
+    margin-top: auto;
+  }
+}
