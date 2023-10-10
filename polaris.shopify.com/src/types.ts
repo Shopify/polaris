@@ -74,6 +74,7 @@ export type FrontMatter = {
   expanded?: boolean;
   releasedIn?: string | number;
   showTOC?: boolean;
+  collapsibleTOC?: boolean;
 };
 
 export type PatternFrontMatter = Omit<FrontMatter, 'description'> & {

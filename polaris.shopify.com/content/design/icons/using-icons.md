@@ -71,7 +71,7 @@ Consistently pairing specific icons with objects enables users to quickly recogn
   <Do>
     ![An inbox icon next to a number, representing an order number.](/images/design/icons/icons-using-5@2x.png)
 
-    Use icons to identify common objects, to improve the overall clarity of the interface.
+    Use icons to identify common objects, and to improve the overall clarity of the interface.
 
   </Do>
   <Dont>

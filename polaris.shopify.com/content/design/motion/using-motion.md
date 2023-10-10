@@ -16,7 +16,7 @@ icon: PlayMinor
 
 ## Feedback
 
-Motion can be used to provide feedback, helping merchants understand the results of their actions. It offers visual cues that indicate the result of an interaction, reinforcing merchant's confidence in their actions.
+Motion can be used to provide feedback, helping merchants understand the results of their actions. It offers visual cues that indicate the result of an interaction, reinforcing merchants' confidence in their actions.
 
 <Stack gap="400">
   <Do>
