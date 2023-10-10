@@ -143,7 +143,7 @@ Text that is underlined can serve two purposes: linking to other pages, or offer
 
     ![Visual of a link in a footer of a page](/images/design/typography/typography-using-type-14-formatting-underline-link@2x.png)
 
-    Text links have a solid underline and use a distinct link color (link) to differentiate them additionally from surrounding text.
+    Text links have a solid underline and use a distinct [link color](/design/colors/using-color#link) to differentiate them additionally from surrounding text.
 
   </DirectiveCard>
 
