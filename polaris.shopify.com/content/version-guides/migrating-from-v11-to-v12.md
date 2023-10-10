@@ -52,8 +52,14 @@ Follow the migration guide sections below where we have the [@shopify/polaris-mi
 ```bash
 # Example migration
 npx @shopify/polaris-migrator ...
-# Stash files with "polaris-migrator:" comments
-git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Find modified files containing "polaris-migrator:" manual migration comments
+matching_files=$(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Stash the files needing manual migration if there are any
+if [[ -n "$matching_files" ]]; then
+    git stash push $matching_files
+else
+    echo "No modified files contain 'polaris-migrator:'"
+fi
 # Stage all migrated files without "polaris-migrator:" comments
 git add .
 # Format staged files only
