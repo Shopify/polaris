@@ -52,8 +52,14 @@ Follow the migration guide sections below where we have the [@shopify/polaris-mi
 ```bash
 # Example migration
 npx @shopify/polaris-migrator ...
-# Stash files with "polaris-migrator:" comments
-git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Find modified files containing "polaris-migrator:" manual migration comments
+matching_files=$(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Stash the files needing manual migration if there are any
+if [[ -n "$matching_files" ]]; then
+    git stash push $matching_files
+else
+    echo "No modified files contain 'polaris-migrator:'"
+fi
 # Stage all migrated files without "polaris-migrator:" comments
 git add .
 # Format staged files only
@@ -90,7 +96,7 @@ git add .
 # Format staged files only
 git diff --staged --name-only | xargs npx prettier --write
 # Optional: run stylelint if using stylelint-polaris and running migrations on stylesheets
-npx stylelint "./**/*.{css,scss}"
+npx stylelint "**/*.{css,scss}"
 #  Commit manual migrations
 git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 ```
@@ -120,7 +126,7 @@ git commit -m "[Manual] Migrate X from Polaris v11 to v12"
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-react-avatar-component "./**/*.{ts,tsx}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-react-avatar-component "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -233,9 +239,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 ### IndexTable.Row
 
-**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
-
-#### Step 1: Replace `status` prop with `tone`
+#### Replace `status` prop with `tone`
 
 <Code
   code={{
@@ -265,7 +269,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 </CollapsibleDetails>
 
-#### Step 2: Replace `subdued` prop with `tone`
+#### Replace `subdued` prop with `tone`
 
 <Code
   code={{
@@ -640,7 +644,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-react-update-button-component "./**/*.{ts,tsx}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-react-update-button-component "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -994,7 +998,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 ### Text
 
-**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
+**🔔 Stepped migration**: You must run the `color` -> `tone` migration after running the tone rename migrations.
 
 #### Step 1: Replace `warning` tone with `caution`
 
@@ -1358,7 +1362,7 @@ To replace deprecated `border` custom properties, you can run the [v12-styles-re
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-border "./**/*..{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-border "**/*.{css,scss}"`,
   }}
 />
 
@@ -1504,7 +1508,7 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   code={{
     title: 'Polaris Migrator codemod for step 1',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "./**/*..{css,scss}" --step=1`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "**/*.{css,scss}" --step=1`,
   }}
 />
 
@@ -1713,7 +1717,7 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   code={{
     title: 'Polaris Migrator codemod for step 2',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "./**/*..{css,scss}" --step=2`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "**/*.{css,scss}" --step=2`,
   }}
 />
 
@@ -1968,7 +1972,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 1',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=1`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "**/*.{css,scss}" --step=1`,
   }}
 />
 
@@ -2009,7 +2013,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 2',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=2`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "**/*.{css,scss}" --step=2`,
   }}
 />
 
@@ -2040,7 +2044,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 3',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=3`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "**/*.{css,scss}" --step=3`,
   }}
 />
 
@@ -2071,7 +2075,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 4',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=4`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "**/*.{css,scss}" --step=4`,
   }}
 />
 
@@ -2109,7 +2113,7 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
 
 </CollapsibleDetails>
 
-**🔔 Stepped migration**: The font migration needs to be run in **2** sequential steps due to context dependent manual migrations.
+**🔔 Stepped migration**: The shadow migration needs to be run in **2** sequential steps due to context dependent manual migrations.
 
 #### Shadow migration step 1
 
@@ -2117,7 +2121,7 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
   code={{
     title: 'Polaris Migrator codemod for step 1',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow "./**/*..{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow "**/*.{css,scss}"`,
   }}
 />
 
@@ -2139,12 +2143,6 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
     code={{
       title: `Check RegExp for outdated <Box shadow="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?shadow`,
-    }}
-  />
-  <Code
-    code={{
-      title: `Check RegExp for outdated <ShadowBevel boxShadow="..." /> prop`,
-      code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
     }}
   />
 </CollapsibleDetails>
@@ -2232,7 +2230,7 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-space "./**/*..{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-space "**/*.{css,scss}"`,
   }}
 />
 
