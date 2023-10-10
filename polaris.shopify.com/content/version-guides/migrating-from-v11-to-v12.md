@@ -1042,7 +1042,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 **🔔 Stepped migration**: You must run the `color` -> `tone` migration after running the tone rename migrations.
 
-#### Step 1: Replace `warning` tone with `caution`
+#### Step 1: Replace `color="warning"` with `tone="caution"`
 
 <Code
   code={{
