@@ -90,7 +90,7 @@ git add .
 # Format staged files only
 git diff --staged --name-only | xargs npx prettier --write
 # Optional: run stylelint if using stylelint-polaris and running migrations on stylesheets
-npx stylelint "./**/*..{css,scss}"
+npx stylelint "./**/*.{css,scss}"
 #  Commit manual migrations
 git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 ```
@@ -1358,7 +1358,7 @@ To replace deprecated `border` custom properties, you can run the [v12-styles-re
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-border "./**/*..{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-border "./**/*.{css,scss}"`,
   }}
 />
 
@@ -1504,7 +1504,7 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   code={{
     title: 'Polaris Migrator codemod for step 1',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "./**/*..{css,scss}" --step=1`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "./**/*.{css,scss}" --step=1`,
   }}
 />
 
@@ -1713,7 +1713,7 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   code={{
     title: 'Polaris Migrator codemod for step 2',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "./**/*..{css,scss}" --step=2`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "./**/*.{css,scss}" --step=2`,
   }}
 />
 
@@ -1968,7 +1968,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 1',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=1`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*.{css,scss}" --step=1`,
   }}
 />
 
@@ -2009,7 +2009,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 2',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=2`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*.{css,scss}" --step=2`,
   }}
 />
 
@@ -2040,7 +2040,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 3',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=3`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*.{css,scss}" --step=3`,
   }}
 />
 
@@ -2071,7 +2071,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 4',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=4`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*.{css,scss}" --step=4`,
   }}
 />
 
@@ -2117,7 +2117,7 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
   code={{
     title: 'Polaris Migrator codemod for step 1',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow "./**/*..{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow "./**/*.{css,scss}"`,
   }}
 />
 
@@ -2141,7 +2141,6 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?shadow`,
     }}
   />
-
 </CollapsibleDetails>
 
 <CollapsibleDetails summary="➡️ Token replacement mappings for step 1">
@@ -2227,7 +2226,7 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-space "./**/*..{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-space "./**/*.{css,scss}"`,
   }}
 />
 
