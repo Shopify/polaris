@@ -940,7 +940,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 </CollapsibleDetails>
 
-#### Step 2: Replace `highlight` tone with `info`
+#### Step 2: Replace `color="highlight"` with `tone="info"`
 
 <Code
   code={{
