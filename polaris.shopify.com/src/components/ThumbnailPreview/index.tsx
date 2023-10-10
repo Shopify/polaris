@@ -41,8 +41,8 @@ const Preview = ({
           {...(aspectRatio && aspectRatios[aspectRatio])}
           style={{
             objectFit: aspectRatio ? 'contain' : 'cover',
-            maxHeight: '100%',
-            maxWidth: '100%',
+            width: '100%',
+            height: '100%',
           }}
         />
       ) : null}
