@@ -50,7 +50,7 @@ When running token and component migrations, we recommend the following workflow
 The [polaris-migrator](/tools/polaris-migrator) CLI commands are scaffolded for you to paste into your terminal:
 
 - Tailor the directories in the command glob paths to those relevant to your app's file structure. For example, this generic monorepo glob `**/*.{css,scss}` might need to be changed to explicitly target stylesheets in `{src}/**/*.{css,scss}` in your app.
-- Adjust the file extensions for the migrations you are running. For example, React component migrations in a TypeScript app should target `*.{,ts,tsx}` files, while token migrations should target `*.{css,scss}` files.
+- Adjust the file extensions for the migrations you are running. For example, React component migrations in a TypeScript app should target `*.{ts,tsx}` files, while token migrations should target `*.{css,scss}` files.
 
 ```bash
 # Example migration
