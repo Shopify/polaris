@@ -1357,10 +1357,8 @@ Page dividers are no longer a pattern in the new Polaris design language. If you
 <CollapsibleDetails summary="💡 Migration example">
 
 ```diff
-- <Icon source={CirclePlusMinor} color={iconColor} backdrop />
-+ <Box background={boxBackground} padding="100" width="28px" borderRadius="full">
-+  <Icon source={CirclePlusMinor} color={iconColor} />
-+ </Box>
+- <Page divider />
++ <Page />
 ```
 
 </CollapsibleDetails>
