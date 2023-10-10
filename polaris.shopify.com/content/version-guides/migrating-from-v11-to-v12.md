@@ -785,9 +785,9 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 ```diff
 - <Button
--   connectedDisclosure={
--     <Popover activator={<Button icon={ChevronDownMinor} />} />
--   }
+-   connectedDisclosure={{
+-     icon: ChevronDownMinor,
+-   }}
 - >
 -   Save
 - </Button>
