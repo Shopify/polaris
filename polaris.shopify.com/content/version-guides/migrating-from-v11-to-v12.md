@@ -2141,12 +2141,7 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?shadow`,
     }}
   />
-  <Code
-    code={{
-      title: `Check RegExp for outdated <ShadowBevel boxShadow="..." /> prop`,
-      code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
-    }}
-  />
+
 </CollapsibleDetails>
 
 <CollapsibleDetails summary="➡️ Token replacement mappings for step 1">
