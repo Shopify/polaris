@@ -43,7 +43,7 @@ In code applications, the system mono font is used consistently. Use the mono fo
   <Dont>
     ![A table of products with their prices, but the prices are styled with a mono font instead of tabular numbers](/images/design/typography/typography-font-04-mono-dont@2x.png)
 
-    Don’t use mono to align numbers for readability. Use tabular numbers (link) instead.
+    Don’t use mono to align numbers for readability. Use [tabular numbers](/design/typography/using-type#tabular-numbers) instead.
 
   </Dont>
 
@@ -61,6 +61,6 @@ Polaris offers two typescale: heading and body. These typescales are used to cre
 
 The typescale in the admin is tailored for UI usage as the primary focus. Designed with software in mind first and foremost, it’s optimized for use in high density layouts with intricate details and complex features.
 
-Learn more about applying type in the using type section (link).
+Learn more about applying type in the [using type section](/design/typography/using-type).
 
 ![Each font size of both the heading and body typescales with their line heights highlighted and aligned on a 4px grid](/images/design/typography/typography-font-06-typescale@2x.png)
