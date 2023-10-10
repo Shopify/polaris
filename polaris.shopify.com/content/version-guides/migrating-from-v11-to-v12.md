@@ -900,7 +900,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 **🔔 Stepped migration**: You must run the `color` -> `tone` migration after running the tone rename migrations.
 
-#### Step 1: Replace `warning` tone with `caution`
+#### Step 1: Replace `color="warning"` with `tone="caution"`
 
 <Code
   code={{
