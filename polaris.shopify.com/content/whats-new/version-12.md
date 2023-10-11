@@ -37,11 +37,11 @@ Polaris version 12 introduces a new design language for Shopify's admin. This in
 
 The new design language was crafted with guiding principles in mind, ultimately to create surfaces that best serve merchants.
 
-- **Pro feel**: Interactions are highly functional, responsive, and effective.
-- **Meaningful**: Visual language is clear for merchants.
-- **High density**: Space is optimized while maintaining high usability.
-- **Tactility**: Interfaces incorporate a sense of realness.
-- **Commonality**: Objects with similar appearance share a common behavior.
+- **What is pro?**: "Pro", in Shopify's context, refers to a design language that prioritizes efficiency and intuitive interactions, catering to the daily tasks merchants perform everyday.
+- **Assign meaning**: Visual language is clear for merchants.
+- **Increase density**: Space is optimized while maintaining high usability.
+- **Craft juicy interactions**: Interfaces incorporate a sense of realness.
+- **Make it predictable**: Objects with similar appearance share a common behavior.
 
 Read more about Polaris' [design principles](/design/design-principles) to start designing in the new language.
 
