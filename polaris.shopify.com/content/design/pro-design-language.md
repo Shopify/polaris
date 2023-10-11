@@ -194,7 +194,7 @@ status: New
 
         <Box padding="400">
 
-          Interactions are quick and user-actions provide instant [feedback](/motion/using-motion#feedback) that feels almost life-like. Transitions are seamless and help create an intuitive [navigation](/design/motion/using-motion#navigation) experience.
+          Interactions are quick and user-actions provide instant [feedback](/design/motion/using-motion#feedback) that feels almost life-like. Transitions are seamless and help create an intuitive [navigation](/design/motion/using-motion#navigation) experience.
 
         </Box>
 
