@@ -43,7 +43,7 @@ The new design language was crafted with guiding principles in mind, ultimately 
 - **Tactility**: Interfaces incorporate a sense of realness.
 - **Commonality**: Objects with similar appearance share a common behavior.
 
-Read more about Polaris' [design principles](/design/design-principles) to start designing in the new language.
+Read more about Polaris' [design principles](/design/pro-design-language) to start designing in the new language.
 
 ### Token refinement
 
