@@ -1382,6 +1382,39 @@ Page dividers are no longer a pattern in the new Polaris design language. If you
 
 </CollapsibleDetails>
 
+### ProgressBar
+
+#### Replace `color` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName ProgressBar --fromProp color --toProp tone "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <ProgressBar color="..." /> prop`,
+    code: String.raw`<ProgressBar[^>\w](?:[^>]|\n)*?color`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <ProgressBar color="success" />
++ <ProgressBar tone="success" />
+```
+
+</CollapsibleDetails>
+
 ### AppProvider
 
 The `AppProvider` `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. If these were the only features passed into your `AppProvider`, you can safely remove the `features` prop completely from your Polaris `AppProvider`. If that is not the case, you will need to remove the features specifically related to `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut` from being passed into the `features` prop.
