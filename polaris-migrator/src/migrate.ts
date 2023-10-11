@@ -38,7 +38,6 @@ export async function migrate(
     }
 
     const filepaths = globby.sync(files, {cwd: process.cwd()});
-
     if (filepaths.length === 0) {
       throw new Error(`No files found for ${files}`);
     }

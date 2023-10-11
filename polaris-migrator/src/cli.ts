@@ -60,8 +60,7 @@ export const cliConfig = createCLIConfig({
     stdin: {
       alias: 's',
       type: 'boolean',
-      description:
-        'If true, each line of the standard input is used as a path.',
+      description: 'If true, each line of the standard input is used as a path',
     },
   },
 });
