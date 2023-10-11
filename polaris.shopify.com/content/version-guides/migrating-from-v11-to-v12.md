@@ -1196,7 +1196,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 ### Modal
 
-#### Replace `small` prop with `variant="small"`
+#### Replace `small` prop with `size="small"`
 
 <Code
   code={{
@@ -1227,7 +1227,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
-#### Replace `large` prop with `variant="large"`
+#### Replace `large` prop with `size="large"`
 
 <Code
   code={{
@@ -1258,7 +1258,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
-#### Replace `fullScreen` prop with `variant="fullScreen"`
+#### Replace `fullScreen` prop with `size="fullScreen"`
 
 <Code
   code={{
