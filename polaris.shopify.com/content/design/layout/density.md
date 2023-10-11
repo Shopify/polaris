@@ -47,7 +47,7 @@ Information-rich interfaces, like index pages or data tables, require high-densi
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 4}}>
             <Box padding="400">
-                Another way to create visual zones in high density layouts is to use different surface colors. Secondary colors can be used to create visual hierarchy within a high density component to increase visual hierarchy and to guide merchants to the data that matters most.
+                Another way to create visual zones in high density layouts is to [use different surface colors](/design/colors/using-color#surface). Secondary colors can be used to create visual hierarchy within a high density component, and to guide merchants to the data that matters most.
             </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -67,7 +67,7 @@ Information-rich interfaces, like index pages or data tables, require high-densi
 
                 ### Grid and vertical divisions
 
-                Dividing surfaces vertically and in a grid pattern also offers a way to increase density. This type of visual pattern is better suited for selections or data visualization and should be used accordingly. These divisions are made by using different surface background colors instead of using line dividers.
+                Dividing surfaces vertically and in a grid pattern also offers a way to increase density. This type of visual pattern is better suited for selections or data visualization and should be used accordingly. These divisions are made by using different surface colors instead of using line dividers.
             </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>
@@ -96,7 +96,9 @@ Information-rich interfaces, like index pages or data tables, require high-densi
 
                 ### Action components use high density
 
-                Smaller components, like option lists or popovers, are built with high density in mind. Because their main purpose is to offer a set of actions to the merchant, they need to feel small and efficient. Effectively designed action components give the feeling of a pro tool in the Shopify admin and increase efficiency when using different features.
+                Smaller components, like option lists or popovers, are built with high density in mind. Because their main purpose is to offer a set of actions to the merchant, they need to feel small and efficient.
+
+                Effectively designed action components give the [feeling of a pro tool](/design/pro-design-language) in the Shopify admin and increase efficiency when using different features.
             </Box>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6, lg: 8}}>

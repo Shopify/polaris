@@ -33,7 +33,7 @@ Good type positioning also establishes visual prominence and emphasizes key info
 
 ![A card with different levels of type presented in different weights, sizes and positions ](/images/design/typography/typography-overview-02-hierarchy-do@2x.png)
 
-Use a combination of weight, size, color and positioning to define hierarchy.
+Use a combination of weight, size, [color](/design/colors/using-color#text) and positioning to define hierarchy.
 
   </Do>
 
