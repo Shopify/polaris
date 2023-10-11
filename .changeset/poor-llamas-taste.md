@@ -2,4 +2,4 @@
 '@shopify/polaris-migrator': minor
 ---
 
-Updated the `migrate` function to accept a file list
+Updated the CLI to accept a file list via `stdin`
