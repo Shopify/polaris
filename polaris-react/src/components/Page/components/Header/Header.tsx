@@ -128,6 +128,14 @@ export function Header({
     </div>
   );
 
+  const pageReadyAccessibilityLabelMarkup = title ? (
+    <div role="status">
+      <Text visuallyHidden as="p">
+        {i18n.translate('pageReadyAccessibilityLabel', {title})}
+      </Text>
+    </div>
+  ) : undefined;
+
   const primaryActionMarkup = primaryAction ? (
     <PrimaryActionMarkup primaryAction={primaryAction} />
   ) : null;
@@ -208,6 +216,7 @@ export function Header({
       paddingInlineEnd={{xs: '400', sm: '0'}}
       visuallyHidden={titleHidden}
     >
+      {pageReadyAccessibilityLabelMarkup}
       <div className={headerClassNames}>
         <FilterActionsProvider filterActions={Boolean(filterActions)}>
           <ConditionalRender

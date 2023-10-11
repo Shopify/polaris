@@ -242,7 +242,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "View actions for {title}"
+        "rollupActionsLabel": "View actions for {title}",
+        "pageReadyAccessibilityLabel": "{title}. This page is ready"
       }
     },
     "Pagination": {
