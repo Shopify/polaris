@@ -145,7 +145,7 @@ status: New
 
         <Box padding="400">
 
-          Space is used to [create groups](/design/layout/spacial-organization) of related information. Color adds or removes emphasis to make the interface easier to scan and enables efficient decision making.
+          Space is used to [create groups](/design/layout/spacial-organization) of related information. [Color](/design/colors) adds or removes emphasis to make the interface easier to scan and enables efficient decision making.
 
         </Box>
 
