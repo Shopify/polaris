@@ -11,12 +11,12 @@ export interface MigrateOptions {
   dry?: boolean;
   print?: boolean;
   force?: boolean;
-  filesType?: 'glob' | 'file-list';
+  stdin?: boolean;
 }
 
 export async function migrate(
   migration: string,
-  files: string,
+  files: string | string[],
   options: MigrateOptions = {},
 ) {
   const migrationFile = path.join(
@@ -29,33 +29,24 @@ export async function migrate(
       throw new Error(`No migration found for ${migration}`);
     }
 
-    if (!files) throw new Error(`No path provided for migration`);
+    if (!options.stdin && !files) {
+      throw new Error(`No path provided for migration`);
+    }
 
     if (!options.dry) {
       checkGitStatus(options.force);
     }
 
-    let filePaths;
+    const filepaths = globby.sync(files, {cwd: process.cwd()});
 
-    if (options.filesType === 'file-list') {
-      filePaths = (
-        await fs.promises.readFile(path.resolve(process.cwd(), files), 'utf-8')
-      )
-        .split('\n')
-        .filter(Boolean)
-        .map((file) => path.resolve(process.cwd(), file));
-    } else {
-      filePaths = globby.sync(files, {cwd: process.cwd()});
-    }
-
-    if (filePaths.length === 0) {
+    if (filepaths.length === 0) {
       throw new Error(`No files found for ${files}`);
     }
 
     // eslint-disable-next-line no-console
     console.log(chalk.green('Running migration:'), migration);
 
-    await jscodeshift.run(migrationFile, filePaths, {
+    await jscodeshift.run(migrationFile, filepaths, {
       babel: true,
       ignorePattern: ['**/node_modules/**', '**/.next/**', '**/build/**'],
       extensions: 'tsx,ts,jsx,js',

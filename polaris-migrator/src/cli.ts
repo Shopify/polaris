@@ -57,6 +57,12 @@ export const cliConfig = createCLIConfig({
       description: 'Bypass Git safety checks and forcibly run migrations',
       type: 'boolean',
     },
+    stdin: {
+      alias: 's',
+      type: 'boolean',
+      description:
+        'If true, each line of the standard input is used as a path.',
+    },
   },
 });
 
@@ -89,5 +95,23 @@ const {input, flags} = meow({
 });
 
 export async function run() {
-  await migrate(input[0], input[1], flags);
+  let files: string | string[];
+
+  if (flags.stdin) {
+    let buffer = '';
+
+    for await (const chunk of process.stdin) {
+      buffer += chunk.toString();
+    }
+
+    files = buffer.split('\n').filter(Boolean);
+
+    if (files.length === 0) {
+      throw new Error('No files provided via stdin');
+    }
+  } else {
+    files = input[1];
+  }
+
+  await migrate(input[0], files, flags);
 }
