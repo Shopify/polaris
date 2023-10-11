@@ -127,6 +127,34 @@ $spinner-icon-size: 12px;
 }
 // stylelint-enable
 
+// stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators -- specificity bump for magic styles to override
+.magic {
+  > .Input {
+    color: var(--p-color-text-magic);
+  }
+
+  > .Backdrop {
+    background-color: var(--p-color-bg-surface-magic);
+    border-color: var(--p-color-border-magic-secondary);
+  }
+
+  &:not(.disabled):not(.error):not(.readOnly)
+    > .Input:hover:not(:focus-visible) {
+    ~ .Backdrop {
+      background-color: var(--p-color-bg-surface-magic-hover);
+      border-color: var(--p-color-border-magic-secondary-hover);
+    }
+  }
+
+  &.focus > .Input,
+  &.focus > .VerticalContent,
+  &.TextField:focus-within > .Input,
+  &.Input:focus-visible {
+    color: var(--p-color-text);
+  }
+}
+// stylelint-enable
+
 .disabled {
   color: var(--p-color-text-disabled);
   cursor: initial;
