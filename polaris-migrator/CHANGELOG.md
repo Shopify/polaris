@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.26.0
+
+### Minor Changes
+
+- [#10950](https://github.com/Shopify/polaris/pull/10950) [`da2466f41`](https://github.com/Shopify/polaris/commit/da2466f41eeecc325e1ffdd22146e5a6dd9ecc9e) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated the CLI to accept a file list via `stdin`
+
 ## 0.25.0
 
 ### Minor Changes

@@ -1,5 +1,13 @@
 # polaris.shopify.com
 
+## 0.58.6
+
+### Patch Changes
+
+- [#10944](https://github.com/Shopify/polaris/pull/10944) [`eb5600159`](https://github.com/Shopify/polaris/commit/eb560015932979a0daa3eccd4e87f119d3a94c1d) Thanks [@sarahill](https://github.com/sarahill)! - Updated Design resources links to the UI Kit community kits on the Getting started page
+
+* [#10959](https://github.com/Shopify/polaris/pull/10959) [`c1081e46e`](https://github.com/Shopify/polaris/commit/c1081e46e2220d1df3b9b84fb11a50a93ac1ed45) Thanks [@sarahill](https://github.com/sarahill)! - Updated the v12 what's new post to include Figma UI kits
+
 ## 0.58.5
 
 ### Patch Changes
