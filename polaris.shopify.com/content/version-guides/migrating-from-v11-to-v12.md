@@ -177,6 +177,25 @@ git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 
 </CollapsibleDetails>
 
+#### Remove `shape` prop
+
+The `Avatar` `shape` prop was deprecated because circular shapes are no longer part of the admin design language. Remove the `shape` prop from `Avatar`.
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for deprecated <Avatar shape="..." /> prop`,
+    code: String.raw`<Avatar[^>\w](?:[^>]|\n)*?shape`,
+  }}
+/>
+
+```diff
+- <Avatar size="xs" shape="round" />
+- <Avatar size="xs" shape="square" />
++ <Avatar size="xs" />
++ <Avatar size="xs" />
+```
+
 ### Badge
 
 #### Replace `status` prop with `tone`
@@ -1113,7 +1132,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
-#### Replace `headingXs` prop with `headingSm`
+#### Replace `variant="headingXs"` prop with `variant="headingSm"`
 
 <Code
   code={{
@@ -1144,7 +1163,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
-#### Replace `heading4xl` with `heading3xl`
+#### Replace `variant="heading4xl"` with `variant="heading3xl"`
 
 <Code
   code={{
@@ -1359,6 +1378,39 @@ Page dividers are no longer a pattern in the new Polaris design language. If you
 ```diff
 - <Page divider />
 + <Page />
+```
+
+</CollapsibleDetails>
+
+### ProgressBar
+
+#### Replace `color` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName ProgressBar --fromProp color --toProp tone "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <ProgressBar color="..." /> prop`,
+    code: String.raw`<ProgressBar[^>\w](?:[^>]|\n)*?color`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <ProgressBar color="success" />
++ <ProgressBar tone="success" />
 ```
 
 </CollapsibleDetails>
