@@ -1132,7 +1132,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
-#### Replace `headingXs` prop with `headingSm`
+#### Replace `variant="headingXs"` prop with `variant="headingSm"`
 
 <Code
   code={{
@@ -1163,7 +1163,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
-#### Replace `heading4xl` with `heading3xl`
+#### Replace `variant="heading4xl"` with `variant="heading3xl"`
 
 <Code
   code={{
