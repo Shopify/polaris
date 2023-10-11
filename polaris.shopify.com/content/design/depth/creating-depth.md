@@ -104,7 +104,7 @@ keywords:
       </Grid.Cell>
 
       <Grid.Cell area="b">
-        <DirectiveCard status="Tip">
+        <DirectiveCard status="Do">
           ![Two buttons, where the one being pressed is darked than the other.](/images/design/depth/creating/depth-creating-6@2x.png)
 
           Decrease the brightness of an element when it’s being pushed down in the Z index. When a button is pressed, it goes down.
@@ -112,7 +112,7 @@ keywords:
       </Grid.Cell>
 
       <Grid.Cell area='c'>
-        <DirectiveCard status="Tip">
+        <DirectiveCard status="Do">
           ![A menu where the item selected featured a light background. ](/images/design/depth/creating/depth-creating-7@2x.png)
 
           Increase the brightness of an element when it’s being pushed up in the Z index. When a page is active, it goes up.
@@ -183,57 +183,36 @@ keywords:
 
         <Box padding="400">
 
-          ## Containers
-          Containers, even in flat design, enhance depth perception in an interface by establishing hierarchy and guiding attention. Grouping related elements in a container forms a visual "chunk" on its own layer, creating an illusion of depth.
+          ## Surface depth
+          Surfaces can enhance depth perception in an interface by establishing hierarchy and guiding attention.
 
-
-          The distinct separation between the container and other elements, depending on the visual boundary, can suggest an indentation or elevation, further intensifying the sense of depth and spatial hierarchy.
-
-
+          Distinct separation between surfaces, depending on the visual boundary, can suggest an indentation or elevation, further intensifying the sense of depth and [spatial organization](/design/layout/spacial-organization).
 
         </Box>
 
       </Grid.Cell>
       <Grid.Cell area="b">
         <Stack gap="400">
-          <DoDont className="margin-considered-harmful">
 
-            #### Do
-            ![A list of items with distinct labels and icons grouped within the same container.](/images/design/depth/creating/depth-creating-12@2x.png)
-
-            Use containers to group related elements together. This makes the interface easier to understand and navigate.
-
-            #### Dont
-            ![A list of items with distinct labels and icons each housed in individual containers.](/images/design/depth/creating/depth-creating-13@2x.png)
-
-            Use too many containers, as they can make the interface look too segmented, cluttered and confusing. Use them sparingly and only when necessary to highlight or downplay a group of information.
-
-          </DoDont>
           <Do>
             ![The bottom of the search results card, featuring a grey background that contains secondary information.](/images/design/depth/creating/depth-creating-14@2x.png)
 
             Use a gray background to de-emphasize contained information. This will divert merchants’ attention towards more important information, as the muted background visually recedes, pushing the contained content into the background.
           </Do>
-          <Do>
-            ![A table with products, featuring an outline container and outline dividers between rows.](/images/design/depth/creating/depth-creating-15@2x.png)
 
-            Use outlines to contain a group of information that needs to be emphasized. This will make the container stand out from the rest of the interface, drawing merchant’s attention to the grouped elements.
-            The outlined container creates an illusion of depth, suggesting that the contained content is elevated above the primary interface layer.
-          </Do>
           <Grid areas={{ xs: ['a a a a a a', 'b b b b b b'], lg: ['a a a a a a b b b b b b'] }}>
             <Grid.Cell area="a">
               <Dont>
                 ![A table with products, featuring a yellow background for the first brown, and yellow outline for the main container.](/images/design/depth/creating/depth-creating-16@2x.png)
 
-                Use bright or contrasting colors for container backgrounds or outlines, unless it’s a system message, as this will distract from the main content and create a cluttered appearance.
-                System messages do require such emphasis to ensure they are noticed and understood.
+                Use bright or contrasting colors for container backgrounds or borders. This distracts merchants from the main content and creates a cluttered UI. More guidance can be found under [Color](/design/colors).
               </Dont>
             </Grid.Cell>
             <Grid.Cell area="b">
               <Dont>
                 ![A card with a footer with a gray background and a distinct bevel effect between the main content and the footer.](/images/design/depth/creating/depth-creating-17@2x.png)
 
-                Use unique styles for containers. This will make the interface noisy and confuse merchants about the information hierarchy.
+                Use unique styles for surfaces, like inset shadows. This makes the interface noisy and creates confusing information hierarchy.
               </Dont>
             </Grid.Cell>
           </Grid>
