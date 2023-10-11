@@ -177,6 +177,25 @@ git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 
 </CollapsibleDetails>
 
+#### Remove `shape` prop
+
+The `Avatar` `shape` prop was deprecated because circular shapes are no longer part of the admin design language. Remove the `shape` prop from `Avatar`.
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for deprecated <Avatar shape="..." /> prop`,
+    code: String.raw`<Avatar[^>\w](?:[^>]|\n)*?shape`,
+  }}
+/>
+
+```diff
+- <Avatar size="xs" shape="round" />
+- <Avatar size="xs" shape="square" />
++ <Avatar size="xs" />
++ <Avatar size="xs" />
+```
+
 ### Badge
 
 #### Replace `status` prop with `tone`
