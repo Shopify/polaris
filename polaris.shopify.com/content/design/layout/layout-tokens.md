@@ -83,12 +83,14 @@ description: Apply consistent and harmonious space within and between ui element
             <Grid.Cell columnSpan={{xs: 6}}>
                 <Do>
                 ![](/images/design/layout/tokens/layout-tokens-card-gap@2x.png)
+
                 Always use semantic tokens over primitive ones when possible.
                 </Do>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6}}>
                 <Do>
                 ![](/images/design/layout/tokens/layout-tokens-button-gap@2x.png)
+
                 Only use semantic tokens for the type of space as specified.
                 </Do>
             </Grid.Cell>
