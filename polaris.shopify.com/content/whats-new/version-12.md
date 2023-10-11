@@ -1,6 +1,6 @@
 ---
 title: Version 12
-description: This version introduces Shopify's new admin design language, refined tokens, and aligned component APIs.
+description: This version introduces Shopify's new admin design language, refined tokens, aligned component APIs, and an updated Figma UI kit.
 previewImg: /images/updates/uplift-beta@2x.png
 keywords:
   - new design language
@@ -77,6 +77,14 @@ The version 12 breaking component changes aim to simplify inconsistent and compl
 - Renaming various color control props to `tone` and space control props to `gap`. This creates more consistent APIs across components
 - Consolidating boolean props to a single `variant` prop on various components to make logical combinations more intentional
 
+### Figma UI Kit
+
+The Polaris [components](https://www.figma.com/community/file/1293611962331823010/polaris-components), [styles](https://www.figma.com/community/file/1293614121185734569/polaris-styles), and [icons](https://www.figma.com/community/file/1293614863849914283/polaris-icons) libraries have been updated to reflect the new design language, updated tokens, and component API changes.
+
+#### Figma variables
+
+The kits have been updated to use Figma variables for color, space, and size. Color variables are accessible via fill, stroke, and text color menus in the right panel. Space variables are accessible via auto layout's gap and padding.
+
 ## Resources
 
 - [v11 to v12 migration guide](/version-guides/migrating-from-v11-to-v12)
@@ -84,3 +92,6 @@ The version 12 breaking component changes aim to simplify inconsistent and compl
 - [Design principles](/design/design-principles)
 - [Uplifted components](/components)
 - [Updated token lists](/tokens)
+- [Figma component library](https://www.figma.com/community/file/1293611962331823010/polaris-components)
+- [Figma styles library](https://www.figma.com/community/file/1293614121185734569/polaris-styles)
+- [Figma icons library](https://www.figma.com/community/file/1293614863849914283/polaris-icons)
