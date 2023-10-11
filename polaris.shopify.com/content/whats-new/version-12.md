@@ -33,17 +33,16 @@ Follow our [migration guide](/version-guides/migrating-from-v11-to-v12) to upgra
 
 Polaris version 12 introduces a new design language for Shopify's admin. This includes a style uplift for all of our [components](/components), updates to our token values, and a [new web font, Inter](/version-guides/migrating-from-v11-to-v12#a-new-web-font).
 
-#### Design principles
+#### Pro design language
 
-The new design language was crafted with guiding principles in mind, ultimately to create surfaces that best serve merchants.
+"Pro", in Shopify's context, refers to a design language that prioritizes efficiency and intuitive interactions, catering to the daily tasks merchants perform everyday.
 
-- **What is pro?**: "Pro", in Shopify's context, refers to a design language that prioritizes efficiency and intuitive interactions, catering to the daily tasks merchants perform everyday.
 - **Assign meaning**: Visual language is clear for merchants.
 - **Increase density**: Space is optimized while maintaining high usability.
 - **Craft juicy interactions**: Interfaces incorporate a sense of realness.
 - **Make it predictable**: Objects with similar appearance share a common behavior.
 
-Read more about Polaris' [design principles](/design/design-principles) to start designing in the new language.
+Read more about Polaris' [Pro design language](/design/pro-design-language) to start designing in the new language.
 
 ### Token refinement
 
@@ -81,6 +80,6 @@ The version 12 breaking component changes aim to simplify inconsistent and compl
 
 - [v11 to v12 migration guide](/version-guides/migrating-from-v11-to-v12)
 - [Add the new web font](/version-guides/migrating-from-v11-to-v12#a-new-web-font)
-- [Design principles](/design/design-principles)
+- [Pro design language](/design/pro-design-language)
 - [Uplifted components](/components)
 - [Updated token lists](/tokens)
