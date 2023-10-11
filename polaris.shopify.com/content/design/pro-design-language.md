@@ -181,7 +181,7 @@ status: New
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
+        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls muted loop>
           <source src="/images/design/pro/pro-design-language-08-juicy-realness.mp4" type="video/mp4" />
 
           A series of buttons in every state, default, hovered and clicked
@@ -202,7 +202,7 @@ status: New
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
+        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls muted loop>
           <source src="/images/design/pro/pro-design-language-09-juicy-quick.mp4" type="video/mp4" />
 
           Navigation opening/closing animation
@@ -223,7 +223,7 @@ status: New
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls autoPlay muted loop>
+        <video width="100%" style={{borderRadius: '8px'}} height="auto" controls muted loop>
           <source src="/images/design/pro/pro-design-language-10-juicy-animation.mp4" type="video/mp4" />
 
           Animation of a checkbox being ticked in an index page
