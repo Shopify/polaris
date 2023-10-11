@@ -307,7 +307,6 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
             return a.order > b.order ? 1 : -1;
           },
         );
-        console.log(JSON.stringify(scope.posts, null, 2));
         end();
       },
     ],
