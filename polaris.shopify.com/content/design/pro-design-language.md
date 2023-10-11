@@ -26,7 +26,7 @@ status: New
 
           It involves using space efficiently to allow merchants to view more data at once. It's about avoiding being verbose and making the interface action-driven with intuitive icons for swift navigation.
 
-          It also means combining motion, color, and depth to create a responsive and dynamic interface, with clear affordances, that enable intuitive interaction without confusion about interactivity.
+          It also means combining [motion](/design/motion), [color](/design/color), and [depth](/design/depth) to create a responsive and dynamic interface, with clear affordances, that enable intuitive interaction without confusion about interactivity.
 
         </Box>
 
@@ -54,7 +54,7 @@ status: New
 
           **Visual language is clear for merchants.**
 
-          Strong meaning is associated when using color. Red means danger, green means go. Color roles are heightened in the interface and add a layer of detail that merchants can quickly understand and master.
+          Strong meaning is associated when using color. Red means danger, green means go. [Color roles](/design/colors/palettes-and-roles#color-roles) are heightened in the interface and add a layer of detail that merchants can quickly understand and master.
         </Box>
 
       </Grid.Cell>
@@ -69,7 +69,7 @@ status: New
 
         <Box padding="400">
 
-          Leveraging established symbols to identify key functionality helps merchants understand the admin at first glance. Using clear icons that are widely recognized creates a clear and predictable experience.
+          Leveraging established symbols to identify key functionality helps merchants understand the admin at first glance. [Using clear icons](/design/icons) that are widely recognized creates a clear and predictable experience.
 
         </Box>
 
@@ -113,7 +113,7 @@ status: New
 
           **Space is optimized while maintaining high usability.**
 
-          Density in the interface adapts to the task: high density is used in data-rich environments, while low density is employed in focused, detailed areas.
+          [Density](/design/layout/density) in the interface adapts to the task: high density is used in data-rich environments, while low density is employed in focused, detailed areas.
 
         </Box>
 
@@ -129,7 +129,7 @@ status: New
 
         <Box padding="400">
 
-          Information is structured in a clear visual hierarchy, emphasizing important details through variants like size, weight, and color.
+          Information is structured in a clear visual [hierarchy](/design/typography), emphasizing important details through variants like size, weight, and color.
 
         </Box>
 
@@ -145,7 +145,7 @@ status: New
 
         <Box padding="400">
 
-          Space is used to create groups of related information. Color adds or removes emphasis to make the interface easier to scan and enables efficient decision making.
+          Space is used to [create groups](/design/layout/spacial-organization) of related information. Color adds or removes emphasis to make the interface easier to scan and enables efficient decision making.
 
         </Box>
 
@@ -173,7 +173,7 @@ status: New
 
           **Interfaces incorporate a sense of realness.**
 
-          Primary interaction points provide a dramatic visual response to interaction. Variables like position and lighting change to mimic how physical buttons react when pressed. A hover transition is smooth and unobtrusive, whilst feedback from a click feels more dramatic and visceral.
+          Primary interaction points provide a [dramatic visual response](/design/motion) to interaction. Variables like position and lighting change to mimic how physical buttons react when pressed. A hover transition is smooth and unobtrusive, whilst feedback from a click feels more dramatic and visceral.
 
         </Box>
 
@@ -194,7 +194,7 @@ status: New
 
         <Box padding="400">
 
-          Interactions are quick and user-actions provide instant feedback that feels almost life-like. Transitions are seamless and help create an intuitive navigation experience.
+          Interactions are quick and user-actions provide instant [feedback](/motion/using-motion#feedback) that feels almost life-like. Transitions are seamless and help create an intuitive [navigation](/design/motion/using-motion#navigation) experience.
 
         </Box>
 
@@ -215,7 +215,7 @@ status: New
 
         <Box padding="400">
 
-          Detailed interactions, such as animating a checkbox when it is ticked, create a sense of familiarity and reference how merchants interact with real-world objects. These animations contribute to making the admin interface feel dynamic and alive, whilst making merchants feel more comfortable and confident in their interactions.
+          Detailed interactions, such as [animating](/design/motion/creating-motion#animation) a checkbox when it is ticked, create a sense of familiarity and reference how merchants interact with real-world objects. These animations contribute to making the admin interface feel dynamic and alive, whilst making merchants feel more comfortable and confident in their interactions.
 
         </Box>
 
@@ -264,7 +264,7 @@ status: New
 
         <Box padding="400">
 
-          By using consistent signifiers throughout the user experience, merchants can effectively apply the concepts they learn as they navigate the admin. This enables a smoother learning curve and makes the interface progressively easier to use.
+          By using [consistent signifiers](/design/icons#universal) throughout the user experience, merchants can effectively apply the concepts they learn as they navigate the admin. This enables a smoother learning curve and makes the interface progressively easier to use.
 
         </Box>
 

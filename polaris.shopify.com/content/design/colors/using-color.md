@@ -54,7 +54,7 @@ icon: PaintBrushMajor
 
           ### Background
 
-          Background colors are used as the baseline of all UI in the admin. The admin itself has a background, and some components can also have a background if they are not built within a container.
+          Background colors are used as the baseline of all UI in the admin. The admin itself has a background, and some components can also have a background if they are not built within a [surface](/design/layout/spacial-organization#surfaces).
 
           Background colors can only have other elements of any other color except for other background colors above them. Multiple background colors can exist in the same viewport only if they exist side by side.
 
@@ -136,7 +136,7 @@ icon: PaintBrushMajor
       <Do>
       ![A collection of elements using surface colors, like cards and tables](/images/design/colors/color-using-color-surface-do@2x.png)
 
-      Use surface colors for all containers, like cards, tables, banners, modals, and so on.
+      Use surface colors for all surfaces, like cards, tables, banners, modals, and so on.
       </Do>
 
     </Grid.Cell>
@@ -235,7 +235,7 @@ icon: PaintBrushMajor
 
           ### Border
 
-          Borders are used primarily in data tables to enhance visual structure and organization or large amounts of information. They visually separate and contain elements, and can be used to either delineate rows or define the space of an encapsulated table.
+          Borders are used primarily in data tables to enhance visual structure and organization or large amounts of information. They visually separate and contain elements, and can be used to either delineate rows or define the space of a [nested table](/design/layout/spacial-organization#nesting-tables).
 
         </Box>
 
@@ -243,7 +243,7 @@ icon: PaintBrushMajor
 
       <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
-        ![Diagram of an inset table](/images/design/colors/color-using-color-border@2x.png)
+        ![Diagram of a nested table](/images/design/colors/color-using-color-border@2x.png)
 
       </Grid.Cell>
 
@@ -258,7 +258,7 @@ icon: PaintBrushMajor
       <Do>
       ![An index table](/images/design/colors/color-using-color-border-do@2x.png)
 
-      Use borders for tables, and containers that look like tables, to make data easier to read.
+      Use borders for tables, and divided surfaces that look like tables, to make data easier to read.
       </Do>
 
     </Grid.Cell>
@@ -268,7 +268,7 @@ icon: PaintBrushMajor
       <Do>
       ![A table inset within a card surrounded with other content](/images/design/colors/color-using-color-border-inset-do@2x.png)
 
-      Use borders when a data table is contained within a card.
+      Use borders when a data table is nested within a card.
       </Do>
 
     </Grid.Cell>
@@ -278,7 +278,7 @@ icon: PaintBrushMajor
       <Dont>
       ![A card with separate sections delimited with horizontal divider lines](/images/design/colors/color-using-color-border-dont@2x.png)
 
-      Use borders to delineate information. Check out grouping elements for guidance.
+      Use borders to delineate information. Check out [Dividing surfaces](/design/layout/spacial-organization#dividing-surfaces) for guidance.
       </Dont>
 
     </Grid.Cell>
@@ -398,7 +398,7 @@ icon: PaintBrushMajor
       <Dont>
       ![An “Add favorite product” button with a link color](/images/design/colors/color-using-color-link-dont@2x.png)
 
-      Use link color to style text buttons. Use the appropriate color role and component instead.
+      Use link color to style text buttons. Use the appropriate [color role](/design/colors/palettes-and-roles#color-roles) and component instead.
       </Dont>
 
     </Grid.Cell>
@@ -472,7 +472,7 @@ icon: PaintBrushMajor
 
         ## Combining color roles
 
-        Elements with different color roles can coexist alongside each other, enhancing merchants' comprehension of complex patterns when appropriately utilized in component combinations.
+        Elements with different [color roles](/design/colors/palettes-and-roles#color-roles) can coexist alongside each other, enhancing merchants' comprehension of complex patterns when appropriately utilized in component combinations.
 
         In some cases, the superposition of elements with different color roles is necessary, like using a critical icon button on a default card. These combinations may require additional testing to check for proper color contrast.
 
