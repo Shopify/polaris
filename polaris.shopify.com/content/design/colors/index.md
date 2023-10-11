@@ -48,7 +48,7 @@ status: New
 
         <Box padding="400">
 
-        Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
+        Each usage of color within the Shopify admin is purposefully tied to a [specific meaning](/design/colors/palettes-and-roles#color-roles). For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
 
         This deliberate color coding facilitates merchants in identifying which parts of the user interface require focus and distinguishes them from the default features provided by the Shopify admin.
         </Box>
@@ -151,7 +151,7 @@ status: New
 
           Polaris offers consistent color palettes for each color role. This means that each color is assigned a specific relationship within the overall palette.
 
-          These color relationships ensure that color contrasts remain consistent across every application of color and ensure proper legibility and understanding when it comes to combining texts with color and interactive shapes with various backgrounds.
+          These [color relationships](/design/colors/using-color#combining-color-roles) ensure that color contrasts remain consistent across every application of color and ensure proper legibility and understanding when it comes to combining texts with color and interactive shapes with various backgrounds.
 
         </Box>
 

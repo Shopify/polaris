@@ -33,7 +33,7 @@ icon: ColorsMajor
 
           The global palette is built using HSLuv Lightness values. HSLuv is a color space that stands for "Hue, Saturation, Lightness (L), and perceptual uniformity." It is designed to address the limitations of traditional color spaces, such as RGB and HSL, by providing more perceptually uniform and intuitive color representation. It aims to ensure that color transformations, such as lightening or darkening, are visually consistent and predictable to the human eye.
 
-          Considering this, the Polaris color palette maintains uniformity in shades within each hue. Consequently, colors like Red 12 and Blue 12 will have identical contrast ratios when paired with the same color, such as Gray 01. This simplifies the process of styling color roles by easily substituting hues as necessary.
+          Considering this, the Polaris color palette maintains uniformity in shades within each hue. Consequently, colors like Red 12 and Blue 12 will have identical contrast ratios when paired with the same color, such as Gray 1. This simplifies the process of styling color roles by easily substituting hues as necessary.
 
         </Box>
 
@@ -63,7 +63,7 @@ icon: ColorsMajor
 
           Color roles like `default` will have all tokens defined, because the default color role offers the baseline color for all elements in the Shopify admin. Roles like `critical` or `information` will only have a selection of tokens defined, as these roles are usually applied to specific, smaller and more specialized components like badges or banners.
 
-          More information about tokens and their usage can be found under Using color.
+          More information about tokens and their usage can be found under [Using color](/design/colors/using-color).
 
         </Box>
 
@@ -807,7 +807,7 @@ icon: ColorsMajor
       <Dont>
       ![Tabs styled with navigation colors on top of an index page](/images/design/colors/color-palettes-roles-nav-dont@2x.png)
 
-      Use nav colors for other navigational elements, like tabs or links. These should use the default color role.
+      Use nav colors for other navigational elements, like tabs or links. These should use the [default color role](/design/colors/palettes-and-roles#default).
       </Dont>
 
     </Grid.Cell>
