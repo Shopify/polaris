@@ -145,7 +145,7 @@ description: Components, elements and surfaces are organized to create compositi
 
                     ![Nested surfaces in a card that have a smaller border radius than the card, achieving a clean, nested look](/images/design/layout/layout-spatial-10-nesting@2x.png)
 
-                    Reduce the border radius of inset surfaces in order to create a nested look.
+                    Reduce the [border radius](/tokens/border) of inset surfaces in order to create a nested look.
                 </Do>
             </Grid.Cell>
             <Grid.Cell columnSpan={{xs: 6}}>
@@ -172,7 +172,7 @@ description: Components, elements and surfaces are organized to create compositi
 
                 ### Nesting tables
 
-                Tables and lists that exist within another container follow slightly different spacing guidelines. Horizontal padding is adjusted to give more space for data, and to avoid having too much empty space overall.
+                [Tables](/components/tables) and lists that exist within another container follow slightly different spacing guidelines. Horizontal padding is adjusted to give more space for data, and to avoid having too much empty space overall.
             </Box>
 
             </Grid.Cell>
@@ -240,7 +240,7 @@ description: Components, elements and surfaces are organized to create compositi
 
                 ### Buttons
 
-                Buttons are shaped elements, as their contents can vary their sizing to adjust for visual balance. Sizing of buttons depends on context.
+                [Buttons](/components/actions/button) are shaped elements, as their contents can vary their sizing to adjust for visual balance. Sizing of buttons depends on context.
 
                 Standalone or grouped, buttons have a default size that is widely used in the admin. Because buttons often pull the most attention to a primary action, their size has been adjusted so as to not overwhelm the visual balance of the admin.
 
