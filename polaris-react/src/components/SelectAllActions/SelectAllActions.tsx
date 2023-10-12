@@ -67,12 +67,12 @@ export const SelectAllActions = ({
         return (
           <div className={wrapperClasses} ref={nodeRef}>
             <Box
-              background={isSticky ? 'bg-subdued' : undefined}
+              background={isSticky ? 'bg-subdued' : 'bg-subdued'}
               borderBlockStartWidth="025"
-              borderColor="border-subdued"
+              borderColor="border"
               width="100%"
-              paddingBlockStart="200"
-              paddingBlockEnd="200"
+              paddingBlockStart="300"
+              paddingBlockEnd="300"
               paddingInlineStart="400"
               paddingInlineEnd="400"
             >

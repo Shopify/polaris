@@ -4,9 +4,14 @@ import {debounce} from '../../../utilities/debounce';
 
 const DEBOUNCE_PERIOD = 250;
 
-const PADDING_IN_SELECT_MODE = 37;
+const PADDING_IN_SELECT_MODE = 41;
 
-export function useIsSelectAllActionsSticky(selectMode: boolean) {
+const PAGINATION_WIDTH_OFFSET = 64;
+
+export function useIsSelectAllActionsSticky(
+  selectMode: boolean,
+  hasPagination?: boolean,
+) {
   const hasIOSupport =
     typeof window !== 'undefined' && Boolean(window.IntersectionObserver);
   const [isSelectAllActionsSticky, setIsSticky] = useState(false);
@@ -17,6 +22,8 @@ export function useIsSelectAllActionsSticky(selectMode: boolean) {
     useState(0);
   const selectAllActionsIntersectionRef = useRef<HTMLDivElement>(null);
   const tableMeasurerRef = useRef<HTMLDivElement>(null);
+
+  const widthOffset = hasPagination ? PAGINATION_WIDTH_OFFSET : 0;
 
   const handleIntersect = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
@@ -45,13 +52,13 @@ export function useIsSelectAllActionsSticky(selectMode: boolean) {
     const box = node.getBoundingClientRect();
     const paddingHeight = selectMode ? PADDING_IN_SELECT_MODE : 0;
     const offsetHeight = box.height - paddingHeight;
-    const maxWidth = box.width;
+    const maxWidth = box.width - widthOffset;
     const offsetLeft = box.left;
 
     setSelectAllActionsAbsoluteOffset(offsetHeight);
     setSelectAllActionsMaxWidth(maxWidth);
     setSelectAllActionsOffsetLeft(offsetLeft);
-  }, [selectMode]);
+  }, [selectMode, widthOffset]);
 
   useEffect(() => {
     computeTableDimensions();
