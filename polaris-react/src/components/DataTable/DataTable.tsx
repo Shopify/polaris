@@ -10,6 +10,8 @@ import {headerCell} from '../shared';
 import {EventListener} from '../EventListener';
 import {AfterInitialMount} from '../AfterInitialMount';
 import {Sticky} from '../Sticky';
+import {Pagination} from '../Pagination';
+import type {PaginationProps} from '../Pagination';
 
 import {Cell, Navigation} from './components';
 import type {CellProps} from './components';
@@ -27,6 +29,8 @@ export type TableRow =
 export type TableData = string | number | React.ReactNode;
 
 export type ColumnContentType = 'text' | 'numeric';
+
+export type DataTablePaginationProps = Omit<PaginationProps, 'type'>;
 
 const getRowClientHeights = (rows: NodeList | undefined) => {
   const heights: number[] = [];
@@ -97,6 +101,8 @@ export interface DataTableProps {
   fixedFirstColumns?: number;
   /** Specify a min width for the first column if neccessary */
   firstColumnMinWidth?: string;
+  /** Properties to enable pagination at the bottom of the table. */
+  pagination?: DataTablePaginationProps;
 }
 
 type CombinedProps = DataTableProps & {
@@ -177,6 +183,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       hasZebraStripingOnData = false,
       stickyHeader = false,
       hasFixedFirstColumn: fixedFirstColumn = false,
+      pagination,
     } = this.props;
     const {
       condensed,
@@ -300,6 +307,10 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
       <div className={styles.Footer}>{footerContent}</div>
     ) : null;
 
+    const paginationMarkup = pagination ? (
+      <Pagination type="table" {...pagination} />
+    ) : null;
+
     const headerTotalsMarkup = !showTotalsInFooter ? totalsMarkup : null;
     const footerTotalsMarkup = showTotalsInFooter ? (
       <tfoot>{totalsMarkup}</tfoot>
@@ -398,6 +409,7 @@ class DataTableInner extends PureComponent<CombinedProps, DataTableState> {
               {footerTotalsMarkup}
             </table>
           </div>
+          {paginationMarkup}
           {footerMarkup}
         </div>
       </div>

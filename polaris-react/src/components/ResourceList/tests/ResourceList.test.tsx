@@ -13,6 +13,7 @@ import {EmptyState} from '../../EmptyState';
 import {Select} from '../../Select';
 import {Spinner} from '../../Spinner';
 import {ResourceItem} from '../../ResourceItem';
+import {Pagination} from '../../Pagination';
 import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
 import {ResourceList} from '../ResourceList';
 import styles from '../ResourceList.scss';
@@ -1357,6 +1358,35 @@ describe('<ResourceList />', () => {
       resourceList.setProps({items: newItems});
 
       expect(computeTableDimensions).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('pagination', () => {
+    it('does not render Pagination when pagination props are not provided', () => {
+      const resourceList = mountWithApp(
+        <ResourceList items={itemsWithID} renderItem={renderItem} />,
+      );
+
+      expect(resourceList).not.toContainReactComponent(Pagination);
+    });
+
+    it('renders Pagination with table type when pagination props are provided', () => {
+      const paginationProps = {
+        hasNext: true,
+      };
+
+      const resourceList = mountWithApp(
+        <ResourceList
+          items={itemsWithID}
+          renderItem={renderItem}
+          pagination={paginationProps}
+        />,
+      );
+
+      expect(resourceList).toContainReactComponent(Pagination, {
+        type: 'table',
+        ...paginationProps,
+      });
     });
   });
 });

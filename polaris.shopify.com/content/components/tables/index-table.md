@@ -75,6 +75,9 @@ examples:
   - fileName: index-table-with-subheaders.tsx
     title: With subheaders
     description: An index table with multiple table headers. Use to present merchants with resources grouped by a relevant data value to enable faster bulk selection.
+  - fileName: index-table-with-pagination.tsx
+    title: With pagination
+    description: Use when the table contains many rows and they need paginating.
 previewImg: /images/components/tables/index-table.png
 ---
 

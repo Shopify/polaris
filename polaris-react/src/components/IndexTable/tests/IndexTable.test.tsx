@@ -22,6 +22,7 @@ import {AfterInitialMount} from '../../AfterInitialMount';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Tooltip} from '../../Tooltip';
 import {IndexProvider} from '../../IndexProvider';
+import {Pagination} from '../../Pagination';
 
 jest.mock('../utilities', () => ({
   ...jest.requireActual('../utilities'),
@@ -800,6 +801,35 @@ describe('<IndexTable>', () => {
       index.setProps({itemCount: 60});
 
       expect(computeTableDimensions).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('pagination', () => {
+    it('does not render Pagination when pagination props are not provided', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} pagination={undefined}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(index).not.toContainReactComponent(Pagination);
+    });
+
+    it('renders Pagination with table type when pagination props are provided', () => {
+      const paginationProps = {
+        hasNext: true,
+      };
+
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} pagination={paginationProps}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(index).toContainReactComponent(Pagination, {
+        type: 'table',
+        ...paginationProps,
+      });
     });
   });
 });
