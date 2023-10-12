@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fixes an issue with the `primary` variant styles conflicting with the `tertiary` variant in `Button`
+Fixed an issue with the `primary` variant styles conflicting with the `tertiary` variant in `Button`
