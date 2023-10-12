@@ -23,11 +23,11 @@ interface ReplacementOptions {
   toValue?: string;
 }
 
-interface ReplacementMaps {
+export interface ReplacementMaps {
   [componentName: string]: ReplacementOptions[];
 }
 
-export interface MigrationOptions extends Options, ReplacementOptions {
+export interface MigrationOptions extends Options, Partial<ReplacementOptions> {
   relative?: boolean;
   componentName?: string;
   replacementMaps?: ReplacementMaps;
