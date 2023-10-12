@@ -24,7 +24,10 @@ const normalizedReplacementMap2 = Object.fromEntries(
 );
 
 const componentReplacementOptions: ComponentReplacementOptions = {
-  Box: ['background'],
+  Banner: ['textColor'],
+  Box: ['background', 'borderColor', 'color', 'outlineColor'],
+  Card: ['background'],
+  Divider: ['borderColor'],
 };
 
 export interface MigrationOptions extends Options {
