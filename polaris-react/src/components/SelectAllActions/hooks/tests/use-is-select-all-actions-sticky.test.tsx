@@ -2,7 +2,7 @@ import React from 'react';
 import {intersectionObserver} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
-import {useIsBulkActionsSticky} from '..';
+import {useIsSelectAllActionsSticky} from '..';
 
 interface ComponentProps {
   selectMode: boolean;
@@ -10,27 +10,27 @@ interface ComponentProps {
 
 function Component({selectMode}: ComponentProps) {
   const {
-    bulkActionsIntersectionRef,
+    selectAllActionsIntersectionRef,
     tableMeasurerRef,
-    isBulkActionsSticky,
-    bulkActionsAbsoluteOffset,
-    bulkActionsMaxWidth,
-    bulkActionsOffsetLeft,
-  } = useIsBulkActionsSticky(selectMode);
+    isSelectAllActionsSticky,
+    selectAllActionsAbsoluteOffset,
+    selectAllActionsMaxWidth,
+    selectAllActionsOffsetLeft,
+  } = useIsSelectAllActionsSticky(selectMode);
 
   return (
     <div className="table" ref={tableMeasurerRef}>
-      <p className="sticky">{isBulkActionsSticky ? 'true' : 'false'}</p>
-      <span className="offset">{bulkActionsAbsoluteOffset}</span>
-      <span className="width">{bulkActionsMaxWidth}</span>
-      <span className="left">{bulkActionsOffsetLeft}</span>
+      <p className="sticky">{isSelectAllActionsSticky ? 'true' : 'false'}</p>
+      <span className="offset">{selectAllActionsAbsoluteOffset}</span>
+      <span className="width">{selectAllActionsMaxWidth}</span>
+      <span className="left">{selectAllActionsOffsetLeft}</span>
       <em style={{height: 400}} />
-      <i className="intersection" ref={bulkActionsIntersectionRef} />
+      <i className="intersection" ref={selectAllActionsIntersectionRef} />
     </div>
   );
 }
 
-describe('useIsBulkActionsSticky', () => {
+describe('useIsSelectAllActionsSticky', () => {
   let getBoundingClientRectSpy: jest.SpyInstance;
 
   beforeEach(() => {
@@ -62,7 +62,7 @@ describe('useIsBulkActionsSticky', () => {
     it('returns the offset correctly when select mode is true', () => {
       const component = mountWithApp(<Component selectMode />);
       const result = component.findAll('span')[0]?.text();
-      expect(result).toBe('308');
+      expect(result).toBe('363');
     });
 
     it('returns the width value correctly', () => {
@@ -79,7 +79,7 @@ describe('useIsBulkActionsSticky', () => {
   });
 
   describe('when isIntersecting', () => {
-    it('sets the isBulkActionsSticky value to false', () => {
+    it('sets the useIsSelectAllActionsSticky value to false', () => {
       const component = mountWithApp(<Component selectMode />);
 
       const intersector = component.find('i');
@@ -97,7 +97,7 @@ describe('useIsBulkActionsSticky', () => {
   });
 
   describe('when not isIntersecting', () => {
-    it('sets the isBulkActionsSticky value to true', () => {
+    it('sets the useIsSelectAllActionsSticky value to true', () => {
       const component = mountWithApp(<Component selectMode />);
 
       const intersector = component.find('i');

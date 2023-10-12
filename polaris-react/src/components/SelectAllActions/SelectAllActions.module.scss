@@ -5,7 +5,16 @@
   gap: var(--p-space-200);
   align-items: center;
   justify-content: flex-start;
-  will-change: opacity;
+  width: 100%;
+  transition: var(--p-duration-100) var(--p-ease);
+  transition-property: transform, opacity;
+  will-change: opacity, transform;
+  // transform: translateY(50px);
+
+  &.SelectAllActions-not-sticky {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 .SelectAllActions-entering,
@@ -14,14 +23,15 @@
   display: flex;
 }
 
-.SelectAllActions-entered {
-  opacity: 1;
-  display: flex;
-}
-
 .SelectAllActions-exited {
   opacity: 0;
   display: none;
+}
+
+.SelectAllActions-entered {
+  opacity: 1;
+  display: flex;
+  transform: translateY(0);
 }
 
 .PaginatedSelectAll {
