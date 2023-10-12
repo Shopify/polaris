@@ -20,179 +20,128 @@ status: New
 
 <Subnav />
 
-<Stack gap="800">
+<MdxCard>
 
-<Card>
+  <MdxColumn span="1/3">
+  
+    ## Color has purpose
 
-    <Grid gap="400">
+    The purpose of using color has to be clear. Color needs to support a message or status that needs to be easily identifiable by merchants.
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+  </MdxColumn>
 
-        <Box padding="400">
+  <MdxColumn span="2/3">
 
-          ## Color has purpose
+    ![A display of Polaris components like badges, menus and banners with different color roles](/images/design/colors/color-overview-purpose@2x.png)
 
-          The purpose of using color has to be clear. Color needs to support a message or status that needs to be easily identifiable by merchants.
+  </MdxColumn>
 
-        </Box>
+  <MdxColumn span="1/3">
+  
+    Each usage of color within the Shopify admin is purposefully tied to a [specific meaning](/design/colors/palettes-and-roles#color-roles). For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
 
-      </Grid.Cell>
+    This deliberate color coding facilitates merchants in identifying which parts of the user interface require focus and distinguishes them from the default features provided by the Shopify admin.
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+  </MdxColumn>
 
-        ![A display of Polaris components like badges, menus and banners with different color roles](/images/design/colors/color-overview-purpose@2x.png)
+  <MdxColumn span="1/3" variant="do">
 
-      </Grid.Cell>
+    ![A list of badges that display paid, fulfilled, in progress, partially paid and unfulfilled states](/images/design/colors/color-overview-states-do@2x.png)
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+    Use color to support different states merchants need to be informed about.
 
-        <Box padding="400">
+  </MdxColumn>
 
-        Each usage of color within the Shopify admin is purposefully tied to a specific meaning. For instance, red signifies critical errors, green represents success messages, and blue is used to draw attention to tips and offers. Using color as decoration is exclusive to illustration.
+  <MdxColumn span="1/3" variant="dont">
 
-        This deliberate color coding facilitates merchants in identifying which parts of the user interface require focus and distinguishes them from the default features provided by the Shopify admin.
-        </Box>
+    ![A Mdxcard with a pink border and a pink $99 trying to entice the merchant](/images/design/colors/color-overview-decorate-dont@2x.png)
 
-      </Grid.Cell>
+    Use color to decorate or to distract merchants from performing tasks.
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
+  </MdxColumn>
 
-        <Do>
-        ![A list of badges that display paid, fulfilled, in progress, partially paid and unfulfilled states](/images/design/colors/color-overview-states-do@2x.png)
+</MdxCard>
 
-        Use color to support different states merchants need to be informed about.
-        </Do>
+<MdxCard>
 
-      </Grid.Cell>
+  <MdxColumn span="1/3">
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
+    ## Color has impact
 
-        <Dont>
-          ![A card with a pink border and a pink $99 trying to entice the merchant](/images/design/colors/color-overview-decorate-dont@2x.png)
+    The Shopify admin interface adopts a black and white color scheme, intentionally creating a neutral backdrop. By employing this monochromatic design, elements that incorporate color gain heightened visual impact and prominence.
 
-          Use color to decorate or to distract merchants from performing tasks.
-        </Dont>
+  </MdxColumn>
 
-      </Grid.Cell>
+  <MdxColumn span="2/3">
 
-    </Grid>
+    ![MdxCards in a grayscale interface with colorful badges that serve as headings](/images/design/colors/color-overview-impact@2x.png)
 
-  </Card>
+  </MdxColumn>
 
-  <Card>
+  <MdxColumn span="1/3">
 
-    <Grid gap="400">
+    The intentional design of the overall interface in black and white enables strategically positioned and carefully selected elements to grab merchants' attention. By utilizing color purposefully, the focus is directed towards crucial information, actions, and visual cues.
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+    Create impact when using color by using appropriate shades to convey the importance of what is being communicated to merchants.
 
-        <Box padding="400">
+  </MdxColumn>
 
-          ## Color has impact
+  <MdxColumn span="1/3" variant="do">
 
-          The Shopify admin interface adopts a black and white color scheme, intentionally creating a neutral backdrop. By employing this monochromatic design, elements that incorporate color gain heightened visual impact and prominence.
+    ![A modal with a bright red header and bright red button that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-vivid-do@2x.png)
 
-        </Box>
+    Use strong, vivid colors to grab attention to things that matter most.
 
-      </Grid.Cell>
+  </MdxColumn>
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+  <MdxColumn span="1/3" variant="dont">
 
-        ![Cards in a grayscale interface with colorful badges that serve as headings](/images/design/colors/color-overview-impact@2x.png)
+    ![A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-diminish-dont@2x.png)
 
-      </Grid.Cell>
+    Contradict or diminish messaging by using subdued colors or grayscale.
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
+  </MdxColumn>
 
-        <Box padding="400">
+</MdxCard>
 
-          The intentional design of the overall interface in black and white enables strategically positioned and carefully selected elements to grab merchants' attention. By utilizing color purposefully, the focus is directed towards crucial information, actions, and visual cues.
+<MdxCard>
 
-          Create impact when using color by using appropriate shades to convey the importance of what is being communicated to merchants.
+  <MdxColumn span="1/3">
+    
+    ## Color is accessible
 
-        </Box>
+    Polaris offers consistent color palettes for each color role. This means that each color is assigned a specific relationship within the overall palette.
 
-      </Grid.Cell>
+    These [color relationships](/design/colors/using-color#combining-color-roles) ensure that color contrasts remain consistent across every application of color and ensure proper legibility and understanding when it comes to combining texts with color and interactive shapes with various backgrounds.
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
+  </MdxColumn>
 
-        <Do>
-          ![A modal with a bright red header and bright red button that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-vivid-do@2x.png)
+  <MdxColumn span="2/3">
 
-          Use strong, vivid colors to grab attention to things that matter most.
-        </Do>
+    ![A dialog box with various elements highlighted where color combinations used for these elements passes AA and AAA accessibility standards for contrast](/images/design/colors/color-overview-accessible@2x.png)
 
-      </Grid.Cell>
+  </MdxColumn>
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
+  <MdxColumn span="1/3">
 
+      Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify, and interact with.
 
-        <Dont>
-          ![A modal with a gray header and white button with red text that stops the user from navigating away from a page with unsaved changes](/images/design/colors/color-overview-diminish-dont@2x.png)
+  </MdxColumn>
 
-          Contradict or diminish messaging by using subdued colors or grayscale.
-        </Dont>
+  <MdxColumn span="1/3" variant="do">
+  
+    ![An orange badge with an alert icon and text label in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-conjunction-do@2x.png)
 
+    Use color in conjunction with other discernible elements to amplify the message.
 
-      </Grid.Cell>
+  </MdxColumn>
 
-    </Grid>
+  <MdxColumn span="1/3" variant="dont">
 
-  </Card>
+    ![A text label in orange in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-alone-dont@2x.png)
 
-  <Card>
+    Use color alone to convey meaning
 
-    <Grid gap="400">
+  </MdxColumn>
 
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box padding="400">
-
-          ## Color is accessible
-
-          Polaris offers consistent color palettes for each color role. This means that each color is assigned a specific relationship within the overall palette.
-
-          These color relationships ensure that color contrasts remain consistent across every application of color and ensure proper legibility and understanding when it comes to combining texts with color and interactive shapes with various backgrounds.
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
-
-        ![A dialog box with various elements highlighted where color combinations used for these elements passes AA and AAA accessibility standards for contrast](/images/design/colors/color-overview-accessible@2x.png)
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 6, lg: 4, xl: 4}}>
-
-        <Box padding="400">
-
-          Colors are meant to be easily understood and read by all merchants. Sufficient contrast makes things easier to find, identify, and interact with.
-
-        </Box>
-
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
-        <Do>
-           ![An orange badge with an alert icon and text label in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-conjunction-do@2x.png)
-
-            Use color in conjunction with other discernible elements to amplify the message.
-        </Do>
-      </Grid.Cell>
-
-      <Grid.Cell columnSpan={{xs: 6, sm: 6, md: 3, lg: 4, xl: 4}}>
-
-        <Dont>
-          ![A text label in orange in a table column that indicates that an item is almost out of stock](/images/design/colors/color-overview-alone-dont@2x.png)
-
-          Use color alone to convey meaning
-        </Dont>
-
-      </Grid.Cell>
-
-    </Grid>
-
-  </Card>
-
-</Stack>
+</MdxCard>

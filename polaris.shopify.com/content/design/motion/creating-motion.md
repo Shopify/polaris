@@ -24,7 +24,8 @@ Transitions should be smooth and fluid, guiding merchants’ attention and maint
       width="100%"
       height="auto"
       controls
-      autoPlay
+      
+      playsInline
       muted
       loop
     >
@@ -48,7 +49,7 @@ Transitions should be smooth and fluid, guiding merchants’ attention and maint
         width="100%"
         height="auto"
         controls
-        autoPlay
+        playsInline
         muted
         loop
       >
@@ -67,7 +68,7 @@ Transitions should be smooth and fluid, guiding merchants’ attention and maint
         width="100%"
         height="auto"
         controls
-        autoPlay
+        playsInline
         muted
         loop
       >
@@ -91,7 +92,7 @@ Animations should be simple and purposeful, used to enhance understanding or pro
 
 #### Do
 
-<video width="100%" height="auto" controls autoPlay muted loop>
+<video width="100%" height="auto" controls playsInline muted loop>
   <source
     src="/images/design/motion/creating/02-animation-do.mp4"
     type="video/mp4"
@@ -107,7 +108,7 @@ tone of the interface.
     width="100%"
     height="auto"
     controls
-    autoPlay
+    playsInline
     muted
     loop
   >
@@ -128,7 +129,7 @@ Timing is crucial in motion design. Motion is fast enough to not cause delay, bu
 
 #### Do
 
-<video width="100%" height="auto" controls autoPlay muted loop>
+<video width="100%" height="auto" controls playsInline muted loop>
   <source
     src="/images/design/motion/creating/03-timing-do.mp4"
     type="video/mp4"
@@ -144,7 +145,7 @@ the motion to merchant expectations.
     width="100%"
     height="auto"
     controls
-    autoPlay
+    playsInline
     muted
     loop
   >

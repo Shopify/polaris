@@ -75,16 +75,12 @@ export const DoDont = ({children, className}: DoDontProps) => {
 
 export const Do = ({children}: DoDontProps) => {
   return (
-    <DirectiveCard minHeight="100%" status={DirectiveStatusName.Do}>
-      {children}
-    </DirectiveCard>
+    <DirectiveCard status={DirectiveStatusName.Do}>{children}</DirectiveCard>
   );
 };
 
 export const Dont = ({children}: DoDontProps) => {
   return (
-    <DirectiveCard minHeight="100%" status={DirectiveStatusName.Dont}>
-      {children}
-    </DirectiveCard>
+    <DirectiveCard status={DirectiveStatusName.Dont}>{children}</DirectiveCard>
   );
 };

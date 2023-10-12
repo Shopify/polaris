@@ -29,7 +29,7 @@ Motion has a clear purpose. It helps merchants understand the interface and the 
 >
   <Grid.Cell area="a">
     <Do>
-      <video width="100%" height="auto" controls autoPlay muted loop>
+      <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/01-purposeful-do.mp4"
           type="video/mp4"
@@ -42,7 +42,7 @@ Motion has a clear purpose. It helps merchants understand the interface and the 
   </Grid.Cell>
   <Grid.Cell area="b">
     <Dont>
-      <video width="100%" height="auto" controls autoPlay muted loop>
+      <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/01-purposeful-dont.mp4"
           type="video/mp4"
@@ -65,7 +65,7 @@ Motion should be a reaction to merchant interactions, providing immediate visual
 >
   <Grid.Cell area="a">
     <Do>
-      <video width="100%" height="auto" controls autoPlay muted loop>
+      <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/02-responsive-do.mp4"
           type="video/mp4"
@@ -78,7 +78,7 @@ Motion should be a reaction to merchant interactions, providing immediate visual
   </Grid.Cell>
   <Grid.Cell area="b">
     <Dont>
-      <video width="100%" height="auto" controls autoPlay muted loop>
+      <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/02-responsive-dont.mp4"
           type="video/mp4"
@@ -103,7 +103,7 @@ A snappy animation starts rapidly, and slows down towards the end, making the tr
 >
   <Grid.Cell area="a">
     <Do>
-      <video width="100%" height="auto" controls autoPlay muted loop>
+      <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/03-snappy-do.mp4"
           type="video/mp4"
@@ -116,7 +116,7 @@ A snappy animation starts rapidly, and slows down towards the end, making the tr
   </Grid.Cell>
   <Grid.Cell area="b">
     <Dont>
-      <video width="100%" height="auto" controls autoPlay muted loop>
+      <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/03-snappy-dont.mp4"
           type="video/mp4"

@@ -24,7 +24,7 @@ Motion can be used to provide feedback, helping merchants understand the results
       width="100%"
       height="auto"
       controls
-      autoPlay
+      playsInline
       muted
       loop
     >
@@ -48,7 +48,7 @@ Motion can be used to provide feedback, helping merchants understand the results
 
         height="auto"
         controls
-        autoPlay
+        playsInline
         muted
         loop
       >
@@ -69,7 +69,7 @@ Motion can be used to provide feedback, helping merchants understand the results
 
         height="auto"
         controls
-        autoPlay
+        playsInline
         muted
         loop
       >
@@ -97,7 +97,7 @@ Motion can guide merchant attention during navigation, helping to maintain conte
 
       height="auto"
       controls
-      autoPlay
+      playsInline
       muted
       loop
     >
@@ -122,7 +122,7 @@ Motion can guide merchant attention during navigation, helping to maintain conte
 
         height="auto"
         controls
-        autoPlay
+        playsInline
         muted
         loop
       >
@@ -143,7 +143,7 @@ Motion can guide merchant attention during navigation, helping to maintain conte
 
         height="auto"
         controls
-        autoPlay
+        playsInline
         muted
         loop
       >
@@ -171,7 +171,7 @@ Motion can be used to indicate loading states, keeping merchants informed and en
 
       height="auto"
       controls
-      autoPlay
+      playsInline
       muted
       loop
     >
@@ -204,7 +204,7 @@ Motion can be used to indicate loading states, keeping merchants informed and en
 
         height="auto"
         controls
-        autoPlay
+        playsInline
         muted
         loop
       >
