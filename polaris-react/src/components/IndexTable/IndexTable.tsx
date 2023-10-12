@@ -15,6 +15,8 @@ import {EventListener} from '../EventListener';
 import {SelectAllActions} from '../SelectAllActions';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
+import {Pagination} from '../Pagination';
+import type {PaginationProps} from '../Pagination';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {Text} from '../Text';
@@ -89,6 +91,8 @@ interface IndexTableSortToggleLabels {
   [key: number]: IndexTableSortToggleLabel;
 }
 
+export type IndexTablePaginationProps = Omit<PaginationProps, 'type'>;
+
 export interface IndexTableBaseProps {
   headings: NonEmptyArray<IndexTableHeading>;
   promotedBulkActions?: BulkActionsProps['promotedActions'];
@@ -119,6 +123,8 @@ export interface IndexTableBaseProps {
   sortToggleLabels?: IndexTableSortToggleLabels;
   /** Add zebra striping to table rows */
   hasZebraStriping?: boolean;
+  /** Properties to enable pagination at the bottom of the table. */
+  pagination?: IndexTablePaginationProps;
 }
 
 export interface TableHeadingRect {
@@ -1165,21 +1171,29 @@ export function IndexTable({
   hasMoreItems,
   condensed,
   onSelectionChange,
+  pagination,
   ...indexTableBaseProps
 }: IndexTableProps) {
+  const paginationMarkup = pagination ? (
+    <Pagination type="table" {...pagination} />
+  ) : null;
+
   return (
-    <IndexProvider
-      selectable={selectable && !condensed}
-      itemCount={itemCount}
-      selectedItemsCount={selectedItemsCount}
-      resourceName={passedResourceName}
-      loading={loading}
-      hasMoreItems={hasMoreItems}
-      condensed={condensed}
-      onSelectionChange={onSelectionChange}
-    >
-      <IndexTableBase {...indexTableBaseProps}>{children}</IndexTableBase>
-    </IndexProvider>
+    <>
+      <IndexProvider
+        selectable={selectable && !condensed}
+        itemCount={itemCount}
+        selectedItemsCount={selectedItemsCount}
+        resourceName={passedResourceName}
+        loading={loading}
+        hasMoreItems={hasMoreItems}
+        condensed={condensed}
+        onSelectionChange={onSelectionChange}
+      >
+        <IndexTableBase {...indexTableBaseProps}>{children}</IndexTableBase>
+      </IndexProvider>
+      {paginationMarkup}
+    </>
   );
 }
 
