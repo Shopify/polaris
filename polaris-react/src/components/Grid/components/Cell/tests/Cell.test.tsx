@@ -37,8 +37,8 @@ describe('<Cell />', () => {
 
     expect(cell).toContainReactComponent('div', {
       style: {
-        '--pc-column-xs': '2 / span 1',
-        '--pc-column-lg': 'span 12',
+        '--pc-grid-cell-column-xs': '2 / span 1',
+        '--pc-grid-cell-column-lg': 'span 12',
       } as React.CSSProperties,
     });
   });
@@ -50,8 +50,8 @@ describe('<Cell />', () => {
 
     expect(cell).toContainReactComponent('div', {
       style: {
-        '--pc-row-xs': '2 / span 3',
-        '--pc-row-lg': '1 / span 2',
+        '--pc-grid-cell-row-xs': '2 / span 3',
+        '--pc-grid-cell-row-lg': '1 / span 2',
       } as React.CSSProperties,
     });
   });

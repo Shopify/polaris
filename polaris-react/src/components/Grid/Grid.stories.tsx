@@ -28,7 +28,7 @@ export function TwoColumn() {
 export function TwoThirdsAndOneThirdColumn() {
   return (
     <Page fullWidth>
-      <Grid columns={{sm: 3}}>
+      <Grid>
         <Grid.Cell columnSpan={{xs: 6, sm: 4, md: 4, lg: 8, xl: 8}}>
           <LegacyCard title="Sales" sectioned>
             <p>View a summary of your online store’s sales.</p>

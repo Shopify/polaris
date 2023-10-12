@@ -97,6 +97,7 @@
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.0",
     "sass-loader": "^12.4.0",
+    "type-fest": "^2.19.0",
     "webpack": "5"
   },
   "browserslist": [

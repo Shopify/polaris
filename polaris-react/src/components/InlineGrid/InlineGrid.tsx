@@ -5,16 +5,14 @@ import {
   getResponsiveProps,
   getResponsiveValue,
   sanitizeCustomProperties,
+  mapResponsivePropValues,
 } from '../../utilities/css';
-import type {ResponsiveValue, ResponsiveProp} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './InlineGrid.scss';
 
 type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnsType = number | string | ColumnsAlias[];
-type Columns = ResponsiveProp<ColumnsType>;
-type Gap = ResponsiveProp<SpaceScale>;
-type InlineGridAlignItems = 'start' | 'end' | 'center';
 
 export interface InlineGridProps extends React.AriaAttributes {
   children?: React.ReactNode;
@@ -23,18 +21,18 @@ export interface InlineGridProps extends React.AriaAttributes {
    * columns={6}
    * columns={{xs: 1, sm: 2, md: 3, lg: 4, xl: 6}}
    */
-  columns?: Columns;
+  columns?: ResponsiveProp<ColumnsType>;
   /** The spacing between children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
    * @example
    * gap='200'
    * gap={{xs: '100', sm: '200', md: '300', lg: '400', xl: '500'}}
    */
-  gap?: Gap;
+  gap?: ResponsiveProp<SpaceScale>;
   /** Vertical alignment of children. If not set, inline elements will stretch to the height of the parent.
    * @example
    * alignItems='start'
    */
-  alignItems?: InlineGridAlignItems;
+  alignItems?: 'start' | 'end' | 'center';
 }
 
 export function InlineGrid({
@@ -47,7 +45,7 @@ export function InlineGrid({
     ...getResponsiveValue(
       'inline-grid',
       'grid-template-columns',
-      formatInlineGrid(columns),
+      mapResponsivePropValues(columns, getColumnValue),
     ),
     ...getResponsiveProps('inline-grid', 'gap', 'space', gap),
     '--pc-inline-grid-align-items': alignItems,
@@ -58,23 +56,6 @@ export function InlineGrid({
       {children}
     </div>
   );
-}
-
-function formatInlineGrid(columns?: Columns): ResponsiveValue {
-  if (
-    typeof columns === 'object' &&
-    columns !== null &&
-    !Array.isArray(columns)
-  ) {
-    return Object.fromEntries(
-      Object.entries(columns).map(([breakpointAlias, breakpointInlineGrid]) => [
-        breakpointAlias,
-        getColumnValue(breakpointInlineGrid),
-      ]),
-    );
-  }
-
-  return getColumnValue(columns);
 }
 
 function getColumnValue(columns?: ColumnsType) {
