@@ -17,8 +17,9 @@ import {
   TextField,
   Text,
   useIndexResourceState,
-  Thumbnail,
+  BlockStack,
   Box,
+  Thumbnail,
   Badge,
 } from '@shopify/polaris';
 
@@ -4480,48 +4481,17 @@ export function WithSubHeaders() {
 }
 
 export function WithPagination() {
-  const customers = [
-    {
-      id: '3410',
+  const customers = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
       url: '#',
-      name: 'Mae Jemison',
+      name: `Mae Jemison ${num}`,
       location: 'Decatur, USA',
       orders: 20,
-      amountSpent: '$2,400',
-    },
-    {
-      id: '3411',
-      url: '#',
-      name: 'Joe Jemison',
-      location: 'Sydney, AU',
-      orders: 20,
-      amountSpent: '$1,400',
-    },
-    {
-      id: '3412',
-      url: '#',
-      name: 'Sam Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$400',
-    },
-    {
-      id: '3413',
-      url: '#',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$4,300',
-    },
-    {
-      id: '2563',
-      url: '#',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-    },
-  ];
+      amountSpent: '$24,00',
+    };
+  });
+
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
@@ -4561,7 +4531,6 @@ export function WithPagination() {
   return (
     <LegacyCard>
       <IndexTable
-        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -4590,6 +4559,140 @@ export function WithPagination() {
         {rowMarkup}
       </IndexTable>
     </LegacyCard>
+  );
+}
+
+export function WithPaginationAndBulkActions() {
+  const customers = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '#',
+      name: `Mae Jemison ${num}`,
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$24,00',
+    };
+  });
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const promotedBulkActions = [
+    {
+      content: 'Capture payments',
+      onAction: () => console.log('Todo: implement payment capture'),
+    },
+    {
+      title: 'Edit customers',
+      actions: [
+        {
+          content: 'Add customers',
+          onAction: () => console.log('Todo: implement adding customers'),
+        },
+        {
+          content: 'Delete customers',
+          onAction: () => console.log('Todo: implement deleting customers'),
+        },
+      ],
+    },
+    {
+      title: 'Export',
+      actions: [
+        {
+          content: 'Export as PDF',
+          onAction: () => console.log('Todo: implement PDF exporting'),
+        },
+        {
+          content: 'Export as CSV',
+          onAction: () => console.log('Todo: implement CSV exporting'),
+        },
+      ],
+    },
+  ];
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Box paddingBlockEnd="400">
+      <BlockStack gap="200">
+        <LegacyCard>
+          <IndexTable
+            condensed={useBreakpoints().smDown}
+            resourceName={resourceName}
+            itemCount={customers.length}
+            selectedItemsCount={
+              allResourcesSelected ? 'All' : selectedResources.length
+            }
+            onSelectionChange={handleSelectionChange}
+            headings={[
+              {title: 'Name'},
+              {title: 'Location'},
+              {
+                alignment: 'end',
+                id: 'order-count',
+                title: 'Order count',
+              },
+              {
+                alignment: 'end',
+                id: 'amount-spent',
+                title: 'Amount spent',
+              },
+            ]}
+            pagination={{
+              hasNext: true,
+              onNext: () => {},
+            }}
+          >
+            {rowMarkup}
+          </IndexTable>
+        </LegacyCard>
+      </BlockStack>
+    </Box>
   );
 }
 

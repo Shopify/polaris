@@ -24,7 +24,11 @@
   }
 
   &.table {
+    --pc-pagination-index: 35;
     border-top: 1px solid var(--p-color-border);
+    position: sticky;
+    bottom: 0;
+    z-index: var(--pc-pagination-index);
 
     button {
       --button-min-height: var(--p-height-700);
