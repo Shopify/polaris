@@ -240,79 +240,82 @@ export const color: {
   },
   'color-bg-inverse': {
     value: colors.gray[16],
-    description:
-      'Use for the background of components that appear on an inverse background.',
+    description: 'Use for high contrast page or component backgrounds.',
   },
   'color-bg-surface': {
     value: colors.gray[1],
     description:
-      'The background color for elements with the highest level of prominence, like a card or a banner. .',
+      'The background color for elements with the highest level of prominence, like a card.',
   },
   'color-bg-surface-hover': {
     value: colors.gray[4],
     description:
-      'The background color for elements with the highest level of prominence, like a card or a banner, when hovered.',
+      'The hover state color for elements with the highest level of prominence.',
   },
   'color-bg-surface-active': {
     value: colors.gray[5],
     description:
-      'The background color for elements with the highest level of prominence, like a card or a banner, when pressed.',
+      'The active state (on press) color for elements with the highest level of prominence.',
   },
   'color-bg-surface-selected': {
     value: colors.gray[6],
     description:
-      'The background color for elements with the highest level of prominence, like a card or a banner, when selected.',
+      'The selected state color for elements with the highest level of prominence.',
   },
   'color-bg-surface-disabled': {
     value: colors.blackAlpha[5],
-    description: 'Use for backgrounds of elements in a disabled state.',
+    description: 'The disabled state color for elements.',
   },
   'color-bg-surface-secondary': {
     value: colors.gray[4],
     description:
-      'The background color for elements with a medium level of prominence.',
+      'The background color for elements with a secondary level of prominence.',
   },
   'color-bg-surface-secondary-hover': {
     value: colors.gray[6],
     description:
-      'The background color for elements with a medium level of prominence, when hovered.',
+      'The hover state color for elements with a secondary level of prominence.',
   },
   'color-bg-surface-secondary-active': {
     value: colors.gray[7],
     description:
-      'The background color for elements with a medium level of prominence, when pressed.',
+      'The active state (on press) color for elements with a secondary level of prominence.',
   },
   'color-bg-surface-secondary-selected': {
     value: colors.gray[7],
     description:
-      'The background color for elements with a medium level of prominence, when selected.',
+      'The selected state color for elements with a secondary level of prominence.',
   },
   'color-bg-surface-tertiary': {
     value: colors.gray[5],
     description:
-      'The background color for elements with a low level of prominence.',
+      'The background color for elements with a third level of prominence.',
   },
   'color-bg-surface-tertiary-hover': {
     value: colors.gray[7],
     description:
-      'The background color for elements with a low level of prominence, when hovered.',
+      'The hover state color for elements with a third level of prominence.',
   },
   'color-bg-surface-tertiary-active': {
     value: colors.gray[8],
     description:
-      'The background color for elements with a low level of prominence, when pressed.',
+      'The active state (on press) color for elements with a third level of prominence.',
   },
   'color-bg-surface-brand': {
     value: colors.gray[8],
+    description: 'Use to apply the key color to elements.',
   },
   'color-bg-surface-brand-hover': {
     value: colors.gray[7],
+    description: 'The hover state color for key elements.',
   },
   'color-bg-surface-brand-active': {
     value: colors.gray[6],
+    description: 'The active state (on press) color for key elements.',
   },
   'color-bg-surface-brand-selected': {
     value: colors.gray[6],
+    description: 'The selected state color for key elements.',
   },
   'color-bg-surface-info': {
     value: colors.azure[3],
@@ -322,12 +325,12 @@ export const color: {
   'color-bg-surface-info-hover': {
     value: colors.azure[4],
     description:
-      'Use for backgrounds communicating important information, when hovered.',
+      'The hover state color for communicating important information.',
   },
   'color-bg-surface-info-active': {
     value: colors.azure[6],
     description:
-      'Use for backgrounds communicating important information, when pressed.',
+      'The active state (on press) color for communicating important information.',
   },
   'color-bg-surface-success': {
     value: colors.green[3],
@@ -335,11 +338,11 @@ export const color: {
   },
   'color-bg-surface-success-hover': {
     value: colors.green[4],
-    description: 'Use for backgrounds communicating success, when hovered.',
+    description: 'The hover sate color for communicating success.',
   },
   'color-bg-surface-success-active': {
     value: colors.green[5],
-    description: 'Use for backgrounds communicating success, when pressed.',
+    description: 'The active state (on press) color for communicating success.',
   },
   'color-bg-surface-caution': {
     value: colors.yellow[2],
@@ -347,11 +350,11 @@ export const color: {
   },
   'color-bg-surface-caution-hover': {
     value: colors.yellow[3],
-    description: 'Use for backgrounds communicating caution, when hovered.',
+    description: 'The hover sate for communicating caution.',
   },
   'color-bg-surface-caution-active': {
     value: colors.yellow[4],
-    description: 'Use for backgrounds communicating caution, when pressed.',
+    description: 'The active state (on press) color for communicating caution.',
   },
   'color-bg-surface-warning': {
     value: colors.orange[3],
@@ -359,11 +362,11 @@ export const color: {
   },
   'color-bg-surface-warning-hover': {
     value: colors.orange[4],
-    description: 'Use for backgrounds communicating warning, when hovered.',
+    description: 'The hover state color for communicating warning.',
   },
   'color-bg-surface-warning-active': {
     value: colors.orange[5],
-    description: 'Use for backgrounds communicating warning, when pressed.',
+    description: 'The active state (on press) color for communicating warning.',
   },
   'color-bg-surface-critical': {
     value: colors.red[4],
@@ -373,311 +376,323 @@ export const color: {
   'color-bg-surface-critical-hover': {
     value: colors.red[5],
     description:
-      'Use for backgrounds communicating critical information, when hovered.',
+      'The hover state color for communicating critical information.',
   },
   'color-bg-surface-critical-active': {
     value: colors.red[6],
     description:
-      'Use for backgrounds communicating critical information, when pressed.',
+      'The active state (on press) color for communicating critical information.',
   },
   'color-bg-surface-emphasis': {
     value: colors.blue[3],
+    description:
+      'Use for backgrounds indicating areas of focus in editors, such as the theme editor.',
   },
   'color-bg-surface-emphasis-hover': {
     value: colors.blue[4],
+    description:
+      'The hover state color for elements indicating areas of focus in editors.',
   },
   'color-bg-surface-emphasis-active': {
     value: colors.blue[5],
+    description:
+      'The active state (on press) color for elements indicating areas of focus in editors.',
   },
   'color-bg-surface-magic': {
     value: colors.purple[3],
+    description: 'Use for backgrounds of elements suggested by magic AI.',
   },
   'color-bg-surface-magic-hover': {
     value: colors.purple[4],
+    description: 'The hover state color for elements suggested by magic AI.',
   },
   'color-bg-surface-magic-active': {
     value: colors.purple[6],
+    description:
+      'The active state (on press) color for elements suggested by magic AI.',
   },
   'color-bg-surface-inverse': {
     value: colors.gray[15],
+    description: 'Use for elements on bg-inverse.',
   },
   'color-bg-surface-transparent': {
     value: colors.blackAlpha[1],
+    description: 'Use for elements that need a fully transparent background.',
   },
   'color-bg-fill': {
     value: colors.gray[1],
     description:
-      'Use for the background color of contained elements with a smaller surface area, like a button.',
+      'The background color of contained elements with a smaller surface area, like a button.',
   },
   'color-bg-fill-hover': {
     value: colors.gray[3],
     description:
-      'Use for the background color of contained elements with a smaller surface area, like a button, when hovered.',
+      'The hover state color of contained elements with a smaller surface area, like a button.',
   },
   'color-bg-fill-active': {
     value: colors.gray[4],
     description:
-      'Use for the background color of contained elements with a smaller surface area, like a button, when pressed.',
+      'The active state (on press) color of contained elements with a smaller surface area, like a button.',
   },
   'color-bg-fill-selected': {
     value: colors.gray[10],
     description:
-      'Use for the background color of contained elements with a smaller surface area, like a button, when selected.',
+      'The selected state color of contained elements with a smaller surface area, like a button or checkbox.',
   },
   'color-bg-fill-disabled': {
     value: colors.blackAlpha[5],
     description:
-      'Use for backgrounds of contained elements in a disabled state, like a button or tag.',
+      'The disabled state color of contained elements with a smaller surface area, like a button.',
   },
   'color-bg-fill-secondary': {
     value: colors.gray[6],
     description:
-      'Use for the background color of elements with a smaller surface area and a medium level of prominence.',
+      'The background color of elements with a smaller surface area and a secondary level of prominence.',
   },
   'color-bg-fill-secondary-hover': {
     value: colors.gray[7],
     description:
-      'Use for the background color of elements with a smaller surface area and a medium level of prominence, when hovered.',
+      'The hover state color of elements with a smaller surface area and a secondary level of prominence.',
   },
   'color-bg-fill-secondary-active': {
     value: colors.gray[8],
     description:
-      'Use for the background color of elements with a smaller surface area and a medium level of prominence, when pressed.',
+      'The active state (on press) color of elements with a smaller surface area and a secondary level of prominence.',
   },
   'color-bg-fill-tertiary': {
     value: colors.gray[8],
     description:
-      'Use for the background color of elements with a smaller surface area and a low level of prominence.',
+      'The background color of elements with a smaller surface area and a third level of prominence.',
   },
   'color-bg-fill-tertiary-hover': {
     value: colors.gray[9],
     description:
-      'Use for the background color of elements with a smaller surface area and a low level of prominence, when hovered.',
+      'The hover state color of elements with a smaller surface area and a third level of prominence.',
   },
   'color-bg-fill-tertiary-active': {
     value: colors.gray[10],
     description:
-      'Use for the background color of elements with a smaller surface area and a low level of prominence, when pressed.',
+      'The active state (on press) color of elements with a smaller surface area and a third level of prominence.',
   },
   'color-bg-fill-brand': {
     value: colors.gray[15],
-    description: 'Use to pull focus to main actions, like primary buttons.',
+    description: 'The background color of main actions, like primary buttons.',
   },
   'color-bg-fill-brand-hover': {
     value: colors.gray[16],
-    description:
-      'Use to pull focus to main actions, like primary buttons, when hovered.',
+    description: 'The hover state color of main actions, like primary buttons.',
   },
   'color-bg-fill-brand-active': {
     value: colors.gray[16],
     description:
-      'Use to pull focus to main actions, like primary buttons, when pressed.',
+      'The active state (on press) color of main actions, like primary buttons.',
   },
   'color-bg-fill-brand-selected': {
     value: colors.gray[15],
     description:
-      'Use to pull focus to main actions, like primary buttons or checkboxes, when selected.',
+      'The selected state color of main actions, like primary buttons.',
   },
   'color-bg-fill-brand-disabled': {
     value: colors.blackAlpha[9],
     description:
-      'Use for backgrounds of main actions in a disabled state, like primary buttosn.',
+      'The disabled state color of main actions, like primary buttons.',
   },
   'color-bg-fill-info': {
     value: colors.azure[9],
     description:
-      'Use for the background color of elements with a smaller surface area communicating important information, like a badge or button.',
+      'Use for backgrounds communicating important information on elements with a smaller surface area, like a badge or button.',
   },
   'color-bg-fill-info-hover': {
     value: colors.azure[10],
     description:
-      'Use for the background color of elements with a smaller surface area communicating important information, when hovered.',
+      'The hover state color for communicating important informtion on elements with a smaller surface area.',
   },
   'color-bg-fill-info-active': {
     value: colors.azure[11],
     description:
-      'Use for the background color of elements with a smaller surface area communicating important information, when pressed.',
+      'The active state (on press) color for communicating important informtion on elements with a smaller surface area.',
   },
   'color-bg-fill-info-secondary': {
     value: colors.azure[4],
     description:
-      'Use for the background color of elements with a smaller surface area communicating important information, with a medium level of prominence.',
+      'Use for backgrounds communicating important information on elements with a smaller surface area, with a secondary level of prominence.',
   },
   'color-bg-fill-success': {
     value: colors.green[12],
-    description: `Use for the background color of elements with a smaller surface area communicating success, like a badge or a banner.`,
+    description: `Use for backgrounds communicating success on elements with a smaller surface area, like a badge or a banner.`,
   },
   'color-bg-fill-success-hover': {
     value: colors.green[13],
     description:
-      'Use for the background color of elements with a smaller surface area communicating success, when hovered.',
+      'The hover state color for communicating success on elements with a smaller surface area.',
   },
   'color-bg-fill-success-active': {
     value: colors.green[14],
     description:
-      'Use for the background color of elements with a smaller surface area communicating success, when pressed.',
+      'The active state (on press) color for communicating success on elements with a smaller surface area.',
   },
   'color-bg-fill-success-secondary': {
     value: colors.green[3],
     description:
-      'Use for the background color of elements with a smaller surface area communicating success, with a medium level of prominence.',
+      'Use for backgrounds communicating success on elements with a smaller surface area, with a secondary level of prominence.',
   },
   'color-bg-fill-warning': {
     value: colors.orange[9],
     description:
-      'Use for the background color of elements with a smaller surface area communicating warning, like a badge or a banner.',
+      'Use for backgrounds communicating warning on elements with a smaller surface area, like a badge or a banner.',
   },
   'color-bg-fill-warning-hover': {
     value: colors.orange[10],
     description:
-      'Use for the background color of elements with a smaller surface area communicating warning, when hovered.',
+      'The hover state color for communicating warning on elements with a smaller surface area.',
   },
   'color-bg-fill-warning-active': {
     value: colors.orange[11],
     description:
-      'Use for the background color of elements with a smaller surface area communicating warning, when pressed.',
+      'The active state (on press) color for communicating warning on elements with a smaller surface area.',
   },
   'color-bg-fill-warning-secondary': {
     value: colors.orange[7],
     description:
-      'Use for the background color of elements with a smaller surface area communicating warning, with a medium level of prominence.',
+      'Use for backgrounds communicating warning on elements with a smaller surface area, with a secondary level of prominence.',
   },
   'color-bg-fill-caution': {
     value: colors.yellow[6],
     description:
-      'Use for the background color of elements with a smaller surface area communicating caution, like a badge or a banner.',
+      'Use for backgrounds communicating caution on elements with a smaller surface area, like a badge or a banner.',
   },
   'color-bg-fill-caution-hover': {
     value: colors.yellow[8],
     description:
-      'Use for the background color of elements with a smaller surface area communicating caution, when hovered.',
+      'The hover state color for communicating caution on elements with a smaller surface area.',
   },
   'color-bg-fill-caution-active': {
     value: colors.yellow[9],
-    description: `Use for the background color of elements with a smaller surface area communicating caution, when pressed.`,
+    description:
+      'The active state (on press) color for communicating caution on elements with a smaller surface area.',
   },
   'color-bg-fill-caution-secondary': {
     value: colors.yellow[4],
     description:
-      'Use for the background color of elements with a smaller surface area communicating caution, with a medium level of prominence.',
+      'Use for backgrounds communicating caution on elements with a smaller surface area, with a secondary level of prominence.',
   },
   'color-bg-fill-critical': {
     value: colors.red[12],
     description:
-      'Use for the background color of elements with a smaller surface area communicating critical information, like a button or a badge.',
+      'Use for backgrounds communicating critical information on elements with a smaller surface area, like a badge or a banner.',
   },
   'color-bg-fill-critical-hover': {
     value: colors.red[13],
     description:
-      'Use for the background color of elements with a smaller surface area communicating critical information, when hovered.',
+      'The hover state color for communicating critical information on elements with a smaller surface area.',
   },
   'color-bg-fill-critical-active': {
     value: colors.red[14],
     description:
-      'Use for the background color of elements with a smaller surface area communicating critical information, when pressed.',
+      'The active state (on press) color for communicating critical information on elements with a smaller surface area.',
   },
   'color-bg-fill-critical-selected': {
     value: colors.red[14],
     description:
-      'Use for the background color of elements with a smaller surface area communicating critical information, when selected.',
+      'The selected state color for communicating critical information on elements with a smaller surface area.',
   },
   'color-bg-fill-critical-secondary': {
     value: colors.red[6],
     description:
-      'Use for the background color of elements with a smaller surface area communicating critical information, with a medium level of prominence.',
+      'Use for backgrounds communicating critical information on elements with a smaller surface area, with a secondary level of prominence.',
   },
   'color-bg-fill-emphasis': {
     value: colors.blue[13],
     description:
-      'Use for the background color of elements with a smaller surface area with a high level of prominence, like a button or a badge.',
+      'Use for backgrounds indicating areas of focus in editors on elements with a smaller surface area, like a button or a badge.',
   },
   'color-bg-fill-emphasis-hover': {
     value: colors.blue[14],
     description:
-      'Use for the background color of elements with a smaller surface area with a high level of prominence, when hovered.',
+      'The hover state color for indicating areas of focus in editors on elements with a smaller surface area.',
   },
   'color-bg-fill-emphasis-active': {
     value: colors.blue[15],
     description:
-      'Use for the background color of elements with a smaller surface area with a high level of prominence, when pressed.',
+      'The active state (on press) color for indicating areas of focus in editors on elements with a smaller surface area.',
   },
   'color-bg-fill-magic': {
     value: colors.purple[12],
     description:
-      'Use for the background color of elements suggested by magic AI, like a suggested product tag.',
+      'The background color of elements suggested by magic AI, like a badge or a banner.',
   },
   'color-bg-fill-magic-secondary': {
     value: colors.purple[6],
     description:
-      'Use for the background color of elements suggested by magic AI, with a medium level of prominence.',
+      'The background color of elements suggested by magic AI, with a secondary level of prominence.',
   },
   'color-bg-fill-magic-secondary-hover': {
     value: colors.purple[7],
     description:
-      'Use for the background color of elements suggested by magic AI, with a medium level of prominence, when hovered.',
+      'The hover state color of elements suggested by magic AI, with a secondary level of prominence.',
   },
   'color-bg-fill-magic-secondary-active': {
     value: colors.purple[8],
     description:
-      'Use for the background color of elements suggested by magic AI, with a medium level of prominence, when pressed.',
+      'The active state (on press) color of elements suggested by magic AI, with a secondary level of prominence.',
   },
   'color-bg-fill-inverse': {
     value: colors.gray[15],
     description:
-      'Use for the background color of elements with a smaller surface area on an inverse background.',
+      'The background color of elements with a smaller surface area on an inverse background.',
   },
   'color-bg-fill-inverse-hover': {
     value: colors.gray[14],
     description:
-      'Use for the background color of elements with a smaller surface area on an inverse background, when hovered.',
+      'The hover state color of elements with a smaller surface area on an inverse background.',
   },
   'color-bg-fill-inverse-active': {
     value: colors.gray[13],
     description:
-      'Use for the background color of elements with a smaller surface area on an inverse background, when pressed.',
+      'The active state (on press) color of elements with a smaller surface area on an inverse background.',
   },
   'color-bg-fill-transparent': {
     value: colors.blackAlpha[3],
     description:
-      'Use for the background color of elements that need to sit on different background colors, like tabs.',
+      'The background color of elements that need to sit on different background colors, like tabs.',
   },
   'color-bg-fill-transparent-hover': {
     value: colors.blackAlpha[5],
     description:
-      'Use for the background color of elements that need to sit on different background colors, like tabs, when hovered.',
+      'The hover state color of elements that need to sit on different background colors, like tabs.',
   },
   'color-bg-fill-transparent-active': {
     value: colors.blackAlpha[7],
     description:
-      'Use for the background color of elements that need to sit on different background colors, like tabs, when pressed.',
+      'The active state (on press) color of elements that need to sit on different background colors, like tabs.',
   },
   'color-bg-fill-transparent-selected': {
     value: colors.blackAlpha[7],
     description:
-      'Use for the background color of elements that need to sit on different background colors, like tabs, when selected.',
+      'The selected state color of elements that need to sit on different background colors, like tabs.',
   },
   'color-bg-fill-transparent-secondary': {
     value: colors.blackAlpha[6],
     description:
-      'Use for the background color of elements that need to sit on different background colors, like tabs, with a medium level of prominence.',
+      'The background color of elements that need to sit on different background colors, with a secondary level of prominence.',
   },
   'color-bg-fill-transparent-secondary-hover': {
     value: colors.blackAlpha[7],
     description:
-      'Use for the background color of elements that need to sit on different background colors, like tabs, with a medium level of prominence, when hovered.',
+      'The hover state color of elements that need to sit on different background colors, with a secondary level of prominence.',
   },
   'color-bg-fill-transparent-secondary-active': {
     value: colors.blackAlpha[8],
     description:
-      'Use for the background color of elements that need to sit on different background colors, like tabs, with a medium level of prominence, when pressed.',
+      'The active state (on press) color of elements that need to sit on different background colors, with a secondary level of prominence.',
   },
   'color-text': {
     value: colors.gray[15],
-    description: 'Use for the default text color.',
+    description: 'The default text color.',
   },
   'color-text-secondary': {
     value: colors.gray[13],
-    description: 'Use for text with lower prominence.',
+    description: 'Use for text with a secondary level of prominence.',
   },
   'color-text-disabled': {
     value: colors.gray[11],
@@ -689,11 +704,11 @@ export const color: {
   },
   'color-text-link-hover': {
     value: colors.blue[14],
-    description: 'Use for text links when hovered.',
+    description: 'The hover state color for text links.',
   },
   'color-text-link-active': {
     value: colors.blue[15],
-    description: 'Use for text links when pressed.',
+    description: 'The active state (on press) color for text links.',
   },
   'color-text-brand': {
     value: colors.gray[14],
@@ -701,7 +716,7 @@ export const color: {
   },
   'color-text-brand-hover': {
     value: colors.gray[15],
-    description: 'Use for text that needs to pull attention, when hovered.',
+    description: 'The hover state color for text that needs to pull attention.',
   },
   'color-text-brand-on-bg-fill': {
     value: colors.gray[1],
@@ -709,15 +724,15 @@ export const color: {
   },
   'color-text-brand-on-bg-fill-hover': {
     value: colors.gray[8],
-    description: 'Use for text on bg-fill-brand-hover, when hovered.',
+    description: 'The hover state color for text on bg-fill-brand-hover.',
   },
   'color-text-brand-on-bg-fill-active': {
     value: colors.gray[10],
-    description: 'Use for text on bg-fill-brand-active, when pressed.',
+    description: 'The active state (on press) color for text on bg-fill-brand.',
   },
   'color-text-brand-on-bg-fill-disabled': {
     value: colors.gray[1],
-    description: 'Use for disabled text on bg-fill-brand-disabled.',
+    description: 'The disabled state color for text on bg-fill-brand-disabled.',
   },
   'color-text-info': {
     value: colors.azure[14],
@@ -726,12 +741,12 @@ export const color: {
   'color-text-info-hover': {
     value: colors.azure[15],
     description:
-      'Use for text communicating important information, when hovered.',
+      'The hover state color for text communicating important information.',
   },
   'color-text-info-active': {
     value: colors.azure[16],
     description:
-      'Use for text communicating important information, when pressed.',
+      'The active state (on press) color for text communicating important information.',
   },
   'color-text-info-on-bg-fill': {
     value: colors.azure[16],
@@ -743,11 +758,12 @@ export const color: {
   },
   'color-text-success-hover': {
     value: colors.green[15],
-    description: 'Use for text communicating success, when hovered.',
+    description: 'The hover sate color for text communicating success.',
   },
   'color-text-success-active': {
     value: colors.green[16],
-    description: 'Use for text communicating success, when pressed.',
+    description:
+      'The active state (on press) color for text communicating success.',
   },
   'color-text-success-on-bg-fill': {
     value: colors.green[1],
@@ -759,11 +775,12 @@ export const color: {
   },
   'color-text-caution-hover': {
     value: colors.yellow[15],
-    description: 'Use for text communicating caution, when hovered.',
+    description: 'The hover state color for text communicating caution.',
   },
   'color-text-caution-active': {
     value: colors.yellow[16],
-    description: 'Use for text communicating caution, when pressed.',
+    description:
+      'The active state (on press) color for text communicating caution.',
   },
   'color-text-caution-on-bg-fill': {
     value: colors.yellow[15],
@@ -775,11 +792,12 @@ export const color: {
   },
   'color-text-warning-hover': {
     value: colors.orange[15],
-    description: 'Use for text communicating warning, when hovered.',
+    description: 'The hover state color for text communicating warning.',
   },
   'color-text-warning-active': {
     value: colors.orange[16],
-    description: 'Use for text communicating warning, when pressed.',
+    description:
+      'The active state (on press) color for text communicating warning.',
   },
   'color-text-warning-on-bg-fill': {
     value: colors.orange[16],
@@ -792,12 +810,12 @@ export const color: {
   'color-text-critical-hover': {
     value: colors.red[15],
     description:
-      'Use for text communicating critical information, when hovered.',
+      'The hover state color for text communicating critical information.',
   },
   'color-text-critical-active': {
     value: colors.red[16],
     description:
-      'Use for text communicating critical information, when pressed.',
+      'The active state (on press) color for text communicating critical information.',
   },
   'color-text-critical-on-bg-fill': {
     value: colors.red[1],
@@ -805,17 +823,17 @@ export const color: {
   },
   'color-text-emphasis': {
     value: colors.blue[13],
-    description: 'Use for text with the highest level of prominence.',
+    description:
+      'Use for text indicating areas of focus in editors, like the theme editor.',
   },
   'color-text-emphasis-hover': {
     value: colors.blue[14],
-    description:
-      'Use for text with the highest level of prominence, when hovered.',
+    description: 'The hover state color for text indicating areas of focus.',
   },
   'color-text-emphasis-active': {
     value: colors.blue[15],
     description:
-      'Use for text with the highest level of prominence, when pressed.',
+      'The active state (on press) color for text indicating areas of focus.',
   },
   'color-text-emphasis-on-bg-fill': {
     value: colors.blue[1],
@@ -851,29 +869,29 @@ export const color: {
   },
   'color-border': {
     value: colors.gray[8],
-    description: 'Use as the default color for borders on any element.',
+    description: 'The default color for borders on any element.',
   },
   'color-border-hover': {
     value: colors.gray[10],
-    description: 'Use as the hover color for borders on any element.',
+    description: 'The hover color for borders on any element.',
   },
   'color-border-disabled': {
     value: colors.gray[7],
-    description: 'Use as the disabled color for borders on any element.',
+    description: 'The disabled color for borders on any element.',
   },
   'color-border-secondary': {
     value: colors.gray[7],
-    description: 'Use as the color for hr elements or any visual dividers.',
+    description: 'The color for hr elements or any visual dividers.',
   },
   'color-border-tertiary': {
     value: colors.gray[10],
     description:
-      'Use as the border color on any element. Pair with bg-surface-tertiary or bg-fill-tertiary.',
+      'The border color on any element. Pair with bg-surface-tertiary or bg-fill-tertiary.',
   },
   'color-border-focus': {
     value: colors.blue[13],
     description:
-      'Use for the focus ring for any interactive element in a focused state.',
+      'The focus ring for any interactive element in a focused state.',
   },
   'color-border-brand': {
     value: colors.gray[8],
@@ -909,11 +927,12 @@ export const color: {
   },
   'color-border-emphasis-hover': {
     value: colors.blue[14],
-    description: 'Use for borders indicating areas of focus, when hovered.',
+    description: 'The hover state color for borders indicating areas of focus.',
   },
   'color-border-emphasis-active': {
     value: colors.blue[15],
-    description: 'Use for borders indicating areas of focus, when pressed.',
+    description:
+      'The active state (on press) color for borders indicating areas of focus.',
   },
   'color-border-magic': {
     value: colors.purple[10],
@@ -931,27 +950,28 @@ export const color: {
   },
   'color-border-inverse-hover': {
     value: colors.gray[10],
-    description: 'Use for borders on an inverse background, when hovered.',
+    description: 'The hover state color for borders on an inverse background.',
   },
   'color-border-inverse-active': {
     value: colors.gray[8],
-    description: 'Use for borders on an inverse background, when pressed.',
+    description:
+      'The active state (on press) color for borders on an inverse background.',
   },
   'color-icon': {
     value: colors.gray[14],
-    description: 'Use as the default color for icons.',
+    description: 'The default color for icons.',
   },
   'color-icon-hover': {
     value: colors.gray[15],
-    description: 'Use as the hover state for icons.',
+    description: 'The hover state color for icons.',
   },
   'color-icon-active': {
     value: colors.gray[16],
-    description: 'Use as the active state color for icons.',
+    description: 'The active state (on press) color for icons.',
   },
   'color-icon-disabled': {
     value: colors.gray[10],
-    description: 'Use as the disabled state color for icons.',
+    description: 'The disabled state color for icons.',
   },
   'color-icon-secondary': {
     value: colors.gray[12],
@@ -959,15 +979,15 @@ export const color: {
   },
   'color-icon-secondary-hover': {
     value: colors.gray[13],
-    description: 'Use for secondary icons, when hovered.',
+    description: 'The hover state color for secondary icons.',
   },
   'color-icon-secondary-active': {
     value: colors.gray[14],
-    description: 'Use for secondary icons, when pressed.',
+    description: 'The active state (on press) color for secondary icons.',
   },
   'color-icon-brand': {
     value: colors.gray[16],
-    description: 'Use for brand icons.',
+    description: 'Use for icons that need to pull more focus.',
   },
   'color-icon-info': {
     value: colors.azure[11],
@@ -991,17 +1011,18 @@ export const color: {
   },
   'color-icon-emphasis': {
     value: colors.blue[13],
-    description: 'Use for icons with the highest level of prominence.',
+    description:
+      'Use for icons indicating areas of focus in editors, like the theme editor.',
   },
   'color-icon-emphasis-hover': {
     value: colors.blue[14],
     description:
-      'Use for icons with the highest level of prominence, when hovered.',
+      'The hover color for icons indicating areas of focus in editors.',
   },
   'color-icon-emphasis-active': {
     value: colors.blue[15],
     description:
-      'Use for icons with the highest level of prominence, when pressed.',
+      'The active state (on press) color for icons indicating areas of focus in editors.',
   },
   'color-icon-magic': {
     value: colors.purple[12],
