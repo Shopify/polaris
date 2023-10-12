@@ -241,7 +241,7 @@ export const color: {
   'color-bg-inverse': {
     value: colors.gray[16],
     description:
-      'Use for the background of components that appear on a dark background.',
+      'Use for the background of components that appear on an inverse background.',
   },
   'color-bg-surface': {
     value: colors.gray[1],
@@ -624,17 +624,17 @@ export const color: {
   'color-bg-fill-inverse': {
     value: colors.gray[15],
     description:
-      'Use for the background color of elements with a smaller surface area on a dark background.',
+      'Use for the background color of elements with a smaller surface area on an inverse background.',
   },
   'color-bg-fill-inverse-hover': {
     value: colors.gray[14],
     description:
-      'Use for the background color of elements with a smaller surface area on a dark background, when hovered.',
+      'Use for the background color of elements with a smaller surface area on an inverse background, when hovered.',
   },
   'color-bg-fill-inverse-active': {
     value: colors.gray[13],
     description:
-      'Use for the background color of elements with a smaller surface area on a dark background, when pressed.',
+      'Use for the background color of elements with a smaller surface area on an inverse background, when pressed.',
   },
   'color-bg-fill-transparent': {
     value: colors.blackAlpha[3],
@@ -839,15 +839,15 @@ export const color: {
   },
   'color-text-inverse': {
     value: colors.gray[8],
-    description: 'Use for text on a dark background.',
+    description: 'Use for text on an inverse background.',
   },
   'color-text-inverse-secondary': {
     value: colors.gray[11],
-    description: 'Use for secondary text on a dark background.',
+    description: 'Use for secondary text on an inverse background.',
   },
   'color-text-link-inverse': {
     value: colors.blue[8],
-    description: 'Use for text links on a dark background.',
+    description: 'Use for text links on an inverse background.',
   },
   'color-border': {
     value: colors.gray[8],
@@ -863,114 +863,153 @@ export const color: {
   },
   'color-border-secondary': {
     value: colors.gray[7],
-    description:
-      'Used as the default color for hr elements or any visual dividers.',
+    description: 'Use as the color for hr elements or any visual dividers.',
   },
   'color-border-tertiary': {
     value: colors.gray[10],
+    description:
+      'Use as the border color on any element. Pair with bg-surface-tertiary or bg-fill-tertiary.',
   },
   'color-border-focus': {
     value: colors.blue[13],
-    description: 'Use as the focus color for any interactive element.',
+    description:
+      'Use for the focus ring for any interactive element in a focused state.',
   },
   'color-border-brand': {
     value: colors.gray[8],
   },
   'color-border-info': {
     value: colors.azure[8],
+    description: 'Use for borders communicating information.',
   },
   'color-border-success': {
     value: colors.green[5],
+    description: 'Use for borders communicating success.',
   },
   'color-border-caution': {
     value: colors.yellow[5],
+    description: 'Use for borders communicating caution.',
   },
   'color-border-warning': {
     value: colors.orange[8],
+    description: 'Use for borders communicating warning.',
   },
   'color-border-critical': {
     value: colors.red[8],
+    description: 'Use for borders communicating critical information.',
   },
   'color-border-critical-secondary': {
     value: colors.red[14],
+    description:
+      'Use for borders communicating critical information, such as borders on invalid text fields.',
   },
   'color-border-emphasis': {
     value: colors.blue[13],
+    description: 'Use for borders indicating areas of focus.',
   },
   'color-border-emphasis-hover': {
     value: colors.blue[14],
+    description: 'Use for borders indicating areas of focus, when hovered.',
   },
   'color-border-emphasis-active': {
     value: colors.blue[15],
+    description: 'Use for borders indicating areas of focus, when pressed.',
   },
   'color-border-magic': {
     value: colors.purple[10],
+    description: 'Use for borders suggested by magic AI.',
   },
   'color-border-magic-secondary': {
     value: colors.purple[12],
+    description:
+      'Use for borders suggested by magic AI, such as borders on text fields.',
   },
   'color-border-inverse': {
     value: colors.gray[13],
+    description:
+      'Use for borders on an inverse background, such as borders on the global search.',
   },
   'color-border-inverse-hover': {
     value: colors.gray[10],
+    description: 'Use for borders on an inverse background, when hovered.',
   },
   'color-border-inverse-active': {
     value: colors.gray[8],
+    description: 'Use for borders on an inverse background, when pressed.',
   },
   'color-icon': {
     value: colors.gray[14],
+    description: 'Use as the default color for icons.',
   },
   'color-icon-hover': {
     value: colors.gray[15],
+    description: 'Use as the hover state for icons.',
   },
   'color-icon-active': {
     value: colors.gray[16],
+    description: 'Use as the active state color for icons.',
   },
   'color-icon-disabled': {
     value: colors.gray[10],
+    description: 'Use as the disabled state color for icons.',
   },
   'color-icon-secondary': {
     value: colors.gray[12],
+    description: 'Use for secondary icons.',
   },
   'color-icon-secondary-hover': {
     value: colors.gray[13],
+    description: 'Use for secondary icons, when hovered.',
   },
   'color-icon-secondary-active': {
     value: colors.gray[14],
+    description: 'Use for secondary icons, when pressed.',
   },
   'color-icon-brand': {
     value: colors.gray[16],
+    description: 'Use for brand icons.',
   },
   'color-icon-info': {
     value: colors.azure[11],
+    description: 'Use for icons communicating information.',
   },
   'color-icon-success': {
     value: colors.green[12],
+    description: 'Use for icons communicating success.',
   },
   'color-icon-caution': {
     value: colors.yellow[11],
+    description: 'Use for icons communicating caution.',
   },
   'color-icon-warning': {
     value: colors.orange[11],
+    description: 'Use for icons communicating warning.',
   },
   'color-icon-critical': {
     value: colors.red[11],
+    description: 'Use for icons communicating critical information.',
   },
   'color-icon-emphasis': {
     value: colors.blue[13],
+    description: 'Use for icons with the highest level of prominence.',
   },
   'color-icon-emphasis-hover': {
     value: colors.blue[14],
+    description:
+      'Use for icons with the highest level of prominence, when hovered.',
   },
   'color-icon-emphasis-active': {
     value: colors.blue[15],
+    description:
+      'Use for icons with the highest level of prominence, when pressed.',
   },
   'color-icon-magic': {
     value: colors.purple[12],
+    description: 'Use for icons suggested by magic AI.',
   },
   'color-icon-inverse': {
     value: colors.gray[8],
+    description: 'Use for icons on an inverse background.',
   },
   'color-avatar-bg-fill': {
     value: colors.gray[11],
