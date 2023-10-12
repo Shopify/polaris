@@ -12,7 +12,10 @@ import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
-import {SelectAllActions} from '../SelectAllActions';
+import {
+  SelectAllActions,
+  useIsSelectAllActionsSticky,
+} from '../SelectAllActions';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 import {Pagination} from '../Pagination';
@@ -22,7 +25,7 @@ import {Spinner} from '../Spinner';
 import {Text} from '../Text';
 import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
-import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
+import {BulkActions} from '../BulkActions';
 import type {BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
 import {
@@ -211,14 +214,14 @@ function IndexTableBase({
   }
 
   const {
-    bulkActionsIntersectionRef,
+    selectAllActionsIntersectionRef,
     tableMeasurerRef,
-    isBulkActionsSticky,
-    bulkActionsAbsoluteOffset,
-    bulkActionsMaxWidth,
-    bulkActionsOffsetLeft,
+    isSelectAllActionsSticky,
+    selectAllActionsAbsoluteOffset,
+    selectAllActionsMaxWidth,
+    selectAllActionsOffsetLeft,
     computeTableDimensions,
-  } = useIsBulkActionsSticky(selectMode);
+  } = useIsSelectAllActionsSticky(selectMode);
 
   useEffect(() => {
     computeTableDimensions();
@@ -583,36 +586,37 @@ function IndexTableBase({
 
   const shouldShowBulkActions = bulkActionsSelectable && selectedItemsCount;
 
-  const bulkActionClassNames = classNames(
-    styles.BulkActionsWrapper,
-    isBulkActionsSticky && styles.BulkActionsWrapperSticky,
+  const selectAllActionsClassNames = classNames(
+    styles.SelectAllActionsWrapper,
+    isSelectAllActionsSticky && styles.SelectAllActionsWrapperSticky,
   );
 
   const shouldShowActions = !condensed || selectedItemsCount;
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
 
-  const bulkActionsMarkup =
+  const selectAllActionsMarkup =
     shouldShowBulkActions && !condensed ? (
       <div
-        className={bulkActionClassNames}
+        className={selectAllActionsClassNames}
         style={{
-          insetBlockStart: isBulkActionsSticky
+          insetBlockStart: isSelectAllActionsSticky
             ? undefined
-            : bulkActionsAbsoluteOffset,
-          width: bulkActionsMaxWidth,
-          insetInlineStart: isBulkActionsSticky
-            ? bulkActionsOffsetLeft
+            : selectAllActionsAbsoluteOffset,
+          width: selectAllActionsMaxWidth,
+          insetInlineStart: isSelectAllActionsSticky
+            ? selectAllActionsOffsetLeft
             : undefined,
         }}
       >
-        <BulkActions
+        <SelectAllActions
+          label={i18n.translate('Polaris.IndexTable.selected', {
+            selectedItemsCount: selectedItemsCountLabel,
+          })}
           selectMode={selectMode}
-          promotedActions={promotedActions}
-          actions={actions}
-          onSelectModeToggle={condensed ? handleSelectModeToggle : undefined}
-          isSticky={isBulkActionsSticky}
-          width={bulkActionsMaxWidth}
+          paginatedSelectAllText={paginatedSelectAllText}
+          paginatedSelectAllAction={paginatedSelectAllAction}
+          isSticky={isSelectAllActionsSticky}
         />
       </div>
     ) : null;
@@ -626,27 +630,28 @@ function IndexTableBase({
             isSticky && styles['StickyTableHeader-isSticky'],
           );
 
-          const selectAllActionsClassName = classNames(
-            styles.SelectAllActionsWrapper,
+          const bulkActionsClassName = classNames(
+            styles.BulkActionsWrapper,
             condensed && styles['StickyTableHeader-condensed'],
             isSticky && styles['StickyTableHeader-isSticky'],
           );
 
-          const selectAllActionsMarkup =
+          const bulkActionsMarkup =
             shouldShowBulkActions && !condensed ? (
-              <div className={selectAllActionsClassName}>
-                <SelectAllActions
-                  label={i18n.translate('Polaris.IndexTable.selected', {
-                    selectedItemsCount: selectedItemsCountLabel,
-                  })}
-                  accessibilityLabel={bulkActionsAccessibilityLabel}
-                  selected={bulkSelectState}
+              <div className={bulkActionsClassName}>
+                <BulkActions
                   selectMode={selectMode}
                   onToggleAll={handleTogglePage}
                   paginatedSelectAllText={paginatedSelectAllText}
                   paginatedSelectAllAction={paginatedSelectAllAction}
+                  accessibilityLabel={bulkActionsAccessibilityLabel}
+                  selected={bulkSelectState}
+                  promotedActions={promotedActions}
+                  actions={actions}
+                  onSelectModeToggle={
+                    condensed ? handleSelectModeToggle : undefined
+                  }
                 />
-                {loadingMarkup}
               </div>
             ) : null;
 
@@ -678,12 +683,12 @@ function IndexTableBase({
             </div>
           );
 
-          const stickyContent = selectAllActionsMarkup ?? headerMarkup;
+          const stickyContent = bulkActionsMarkup ?? headerMarkup;
 
           return stickyContent;
         }}
       </Sticky>
-      {bulkActionsMarkup}
+      {selectAllActionsMarkup}
     </div>
   );
 
@@ -793,10 +798,9 @@ function IndexTableBase({
 
   const tableWrapperClassNames = classNames(
     styles.IndexTableWrapper,
-    hideScrollContainer && styles['IndexTableWrapper-scrollBarHidden'],
-    Boolean(bulkActionsMarkup) &&
+    Boolean(selectAllActionsMarkup) &&
       selectMode &&
-      styles.IndexTableWrapperWithBulkActions,
+      styles.IndexTableWrapperWithSelectAllActions,
   );
 
   return (
@@ -806,7 +810,7 @@ function IndexTableBase({
           {!shouldShowBulkActions && !condensed && loadingMarkup}
           {tableContentMarkup}
         </div>
-        <div ref={bulkActionsIntersectionRef} />
+        <div ref={selectAllActionsIntersectionRef} />
       </div>
       {scrollBarMarkup}
     </>

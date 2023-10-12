@@ -51,7 +51,7 @@ export function BulkActionButton({
       disclosure={disclosure && showContentInButton}
       onClick={onAction}
       disabled={disabled}
-      size="slim"
+      size="micro"
       icon={
         isActivatorForMoreActionsPopover ? (
           <Icon source={HorizontalDotsMinor} tone="base" />

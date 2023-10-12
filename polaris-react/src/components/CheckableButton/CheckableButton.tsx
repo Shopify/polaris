@@ -52,9 +52,11 @@ export const CheckableButton = forwardRef(function CheckableButton(
           ref={checkBoxRef}
         />
       </div>
-      <span className={styles.Label} aria-live={ariaLive}>
-        {label}
-      </span>
+      {label ? (
+        <span className={styles.Label} aria-live={ariaLive}>
+          {label}
+        </span>
+      ) : null}
     </div>
   );
 });
