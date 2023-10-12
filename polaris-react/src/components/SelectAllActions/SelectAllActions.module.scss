@@ -6,10 +6,9 @@
   align-items: center;
   justify-content: flex-start;
   width: 100%;
-  transition: var(--p-duration-100) var(--p-ease);
+  transition: var(--p-motion-duration-100) var(--p-motion-ease);
   transition-property: transform, opacity;
   will-change: opacity, transform;
-  // transform: translateY(50px);
 
   &.SelectAllActions-not-sticky {
     transform: none;

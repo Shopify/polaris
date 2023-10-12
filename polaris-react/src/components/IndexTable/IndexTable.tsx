@@ -730,7 +730,6 @@ function IndexTableBase({
     styles.Table,
     hasMoreLeftColumns && styles['Table-scrolling'],
     selectMode && styles.disableTextSelection,
-    selectMode && shouldShowBulkActions && styles.selectMode,
     !selectable && styles['Table-unselectable'],
     canFitStickyColumn && styles['Table-sticky'],
     isSortable && styles['Table-sortable'],
@@ -1223,13 +1222,8 @@ export function IndexTable({
   hasMoreItems,
   condensed,
   onSelectionChange,
-  pagination,
   ...indexTableBaseProps
 }: IndexTableProps) {
-  const paginationMarkup = pagination ? (
-    <Pagination type="table" {...pagination} />
-  ) : null;
-
   return (
     <>
       <IndexProvider
@@ -1242,11 +1236,8 @@ export function IndexTable({
         condensed={condensed}
         onSelectionChange={onSelectionChange}
       >
-        <IndexTableBase {...indexTableBaseProps} pagination={pagination}>
-          {children}
-        </IndexTableBase>
+        <IndexTableBase {...indexTableBaseProps}>{children}</IndexTableBase>
       </IndexProvider>
-      {/* {paginationMarkup} */}
     </>
   );
 }
