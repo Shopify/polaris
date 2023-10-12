@@ -15,7 +15,7 @@ order: 1
 
 Upgrading to Polaris v12 from v11 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExp searches. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
 
-Not on v11 yet either? Check out our other [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) to get up to date.
+Not on v11 yet? You'll need to follow the [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) for previous major versions before upgrading to v12.
 
 <Code
   code={{
@@ -25,7 +25,7 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
   }}
 />
 
-<CollapsibleDetails summary="Note: If you've installed other Polaris packages independently, you will also need to upgrade those to the versions we released along with v12.">
+<CollapsibleDetails summary="Note: If you've installed other Polaris packages independently, you will also need to upgrade those to the major versions we released along with v12.">
 
 | Package                      | Version          |
 | ---------------------------- | ---------------- |
@@ -45,15 +45,24 @@ Not on v11 yet either? Check out our other [migration guides](https://github.com
 
 When running token and component migrations, we recommend the following workflow:
 
-### 1️⃣ Automated migrations using Polaris Migrator
+### 1️⃣ Automate migrations using Polaris Migrator
 
-Follow the migration guide sections below where we have the [@shopify/polaris-migrator](/tools/polaris-migrator) commands scaffolded for you to paste into your terminal. We've defaulted the glob path in the commands to run on all `ts`/`tsx`/`scss`/`css` files, but feel free to update them to your own app's relevant path, e.g., `{app,packages}/**/*.{css,scss}`. The file extensions can be adjusted depending on what migrations you are running. For example, component migrations can be run on `*.{ts,tsx}` files while token migrations can be run on `*.{css,scss}` files.
+The [polaris-migrator](/tools/polaris-migrator) CLI commands are scaffolded for you to paste into your terminal:
+
+- Tailor the directories in the command glob paths to those relevant to your app's file structure. For example, this generic monorepo glob `**/*.{css,scss}` might need to be changed to explicitly target stylesheets in `{src}/**/*.{css,scss}` in your app.
+- Adjust the file extensions for the migrations you are running. For example, React component migrations in a TypeScript app should target `*.{ts,tsx}` files, while token migrations should target `*.{css,scss}` files.
 
 ```bash
 # Example migration
 npx @shopify/polaris-migrator ...
-# Stash files with "polaris-migrator:" comments
-git stash push $(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Find modified files containing "polaris-migrator:" manual migration comments
+matching_files=$(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Stash the files needing manual migrations if there are any
+if [[ -n "$matching_files" ]]; then
+    git stash push $matching_files
+else
+    echo "No modified files contain 'polaris-migrator:'"
+fi
 # Stage all migrated files without "polaris-migrator:" comments
 git add .
 # Format staged files only
@@ -64,9 +73,9 @@ git add .
 git commit -m "[Automated] Migrate X from Polaris v11 to v12"
 ```
 
-The polaris migrator could insert comments or skip instances that are unsafe to automatically migrate. You will need to resolve those issues in the next manual migration step.
+The `polaris-migrator` could insert comments or skip instances that are unsafe to automatically migrate. You will need to resolve those issues in the next manual migration step.
 
-### 2️⃣ Manual migrations using migrator comments and RegExp code search
+### 2️⃣ Manually migrate using migrator comments and RegExp code search
 
 Now, you need to validate the automatic migration and manually update any outstanding issues. The migration guide sections may have additional resources to help you resolve the migrations manually, such as `💡 Migration example`, `➡️ Replacement mappings` tables, and descriptions of what the automated migrations are doing.
 
@@ -90,7 +99,7 @@ git add .
 # Format staged files only
 git diff --staged --name-only | xargs npx prettier --write
 # Optional: run stylelint if using stylelint-polaris and running migrations on stylesheets
-npx stylelint "./**/*..{css,scss}"
+npx stylelint "**/*.{css,scss}"
 #  Commit manual migrations
 git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 ```
@@ -120,7 +129,7 @@ git commit -m "[Manual] Migrate X from Polaris v11 to v12"
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-react-avatar-component "./**/*.{ts,tsx}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-react-avatar-component "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -128,6 +137,7 @@ git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Avatar size="..." /> prop`,
     code: String.raw`<Avatar[^>\w](?:[^>]|\n)*?size`,
   }}
@@ -167,6 +177,25 @@ git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 
 </CollapsibleDetails>
 
+#### Remove `shape` prop
+
+The `Avatar` `shape` prop was deprecated because circular shapes are no longer part of the admin design language. Remove the `shape` prop from `Avatar`.
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for deprecated <Avatar shape="..." /> prop`,
+    code: String.raw`<Avatar[^>\w](?:[^>]|\n)*?shape`,
+  }}
+/>
+
+```diff
+- <Avatar size="xs" shape="round" />
+- <Avatar size="xs" shape="square" />
++ <Avatar size="xs" />
++ <Avatar size="xs" />
+```
+
 ### Badge
 
 #### Replace `status` prop with `tone`
@@ -175,7 +204,7 @@ git commit -m "[Manual] Migrate X from Polaris v11 to v12"
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Badge" --from="status" --to="tone"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Badge --fromProp status --toProp tone "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -185,6 +214,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Badge status="..." /> prop`,
     code: String.raw`<Badge[^>\w](?:[^>]|\n)*?status`,
   }}
@@ -207,7 +237,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Badge" --from="statusAndProgressLabelOverride" --to="toneAndProgressLabelOverride"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Badge --fromProp statusAndProgressLabelOverride --toProp toneAndProgressLabelOverride "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -215,6 +245,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Badge statusAndProgressLabelOverride="..." /> prop`,
     code: String.raw`<Badge[^>\w](?:[^>]|\n)*?statusAndProgressLabelOverride`,
   }}
@@ -233,15 +264,13 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 ### IndexTable.Row
 
-**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
-
-#### Step 1: Replace `status` prop with `tone`
+#### Replace `status` prop with `tone`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="IndexTable.Row" --from="status" --to="tone"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName IndexTable.Row --fromProp status --toProp tone "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -249,6 +278,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <IndexTable.Row status="..." /> prop`,
     code: String.raw`<IndexTable\.Row[^>\w](?:[^>]|\n)*?status`,
   }}
@@ -265,13 +295,13 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 </CollapsibleDetails>
 
-#### Step 2: Replace `subdued` prop with `tone`
+#### Replace `subdued` prop with `tone`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="IndexTable.Row" --from="subdued" --to="tone" --toValue="subdued"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName IndexTable.Row --fromPropType boolean --fromProp subdued --toProp tone --toValue subdued "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -279,6 +309,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <IndexTable.Row subdued="..." /> prop`,
     code: String.raw`<IndexTable\.Row[^>\w](?:[^>]|\n)*?subdued`,
   }}
@@ -303,7 +334,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Layout.Section" --from="oneThird" --to="variant" --toValue="oneThird"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp oneThird --toProp variant --toValue oneThird "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -311,6 +342,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Layout.Section oneThird /> prop`,
     code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneThird`,
   }}
@@ -333,7 +365,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Layout.Section" --from="oneHalf" --to="variant" --toValue="oneHalf"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp oneHalf --toProp variant --toValue oneHalf "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -341,6 +373,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Layout.Section oneHalf /> prop`,
     code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneHalf`,
   }}
@@ -363,7 +396,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Layout.Section" --from="fullWidth" --to="variant" --toValue="fullWidth"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp fullWidth --toProp variant --toValue fullWidth "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -371,6 +404,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Layout.Section fullWidth /> prop`,
     code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?fullWidth`,
   }}
@@ -393,7 +427,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Layout.Section" --from="secondary" --to="variant" --toValue="oneThird"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp secondary --toProp variant --toValue oneThird "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -401,6 +435,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Layout.Section secondary /> prop`,
     code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?secondary`,
   }}
@@ -425,7 +460,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="TextField" --from="borderless" --to="variant" --toValue="borderless"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName TextField --fromPropType boolean --fromProp borderless --toProp variant --toValue borderless "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -433,6 +468,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <TextField borderless /> prop`,
     code: String.raw`<TextField[^>\w](?:[^>]|\n)*?borderless`,
   }}
@@ -459,7 +495,7 @@ This border radius property rename aligns with [CSS border radius constituent pr
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Box" --from="borderRadiusEndStart" --to="borderEndStartRadius"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Box --fromProp borderRadiusEndStart --toProp borderEndStartRadius "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -467,7 +503,7 @@ This border radius property rename aligns with [CSS border radius constituent pr
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Box" --from="borderRadiusEndEnd" --to="borderEndEndRadius"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Box --fromProp borderRadiusEndEnd --toProp borderEndEndRadius "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -475,7 +511,7 @@ This border radius property rename aligns with [CSS border radius constituent pr
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Box" --from="borderRadiusStartStart" --to="borderStartStartRadius"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Box --fromProp borderRadiusStartStart --toProp borderStartStartRadius "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -483,7 +519,7 @@ This border radius property rename aligns with [CSS border radius constituent pr
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Box" --from="borderRadiusStartEnd" --to="borderStartEndRadius"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Box --fromProp borderRadiusStartEnd --toProp borderStartEndRadius "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -491,6 +527,7 @@ This border radius property rename aligns with [CSS border radius constituent pr
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Box borderRadiusEndStart="..." /> prop`,
     code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusEndStart`,
   }}
@@ -498,6 +535,7 @@ This border radius property rename aligns with [CSS border radius constituent pr
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Box borderRadiusEndEnd="..." /> prop`,
     code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusEndEnd`,
   }}
@@ -505,6 +543,7 @@ This border radius property rename aligns with [CSS border radius constituent pr
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Box borderRadiusStartStart="..." /> prop`,
     code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusStartStart`,
   }}
@@ -512,6 +551,7 @@ This border radius property rename aligns with [CSS border radius constituent pr
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Box borderRadiusStartEnd="..." /> prop`,
     code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadiusStartEnd`,
   }}
@@ -538,7 +578,7 @@ Directional components now use `Inline` and `Block` naming conventions which are
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component "./**/*.{ts,tsx}" --renameFrom="HorizontalStack" --renameTo="InlineStack" --renamePropsFrom="HorizontalStackProps" --renamePropsTo="InlineStackProps"`,
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component --renameFrom HorizontalStack --renameTo InlineStack --renamePropsFrom HorizontalStackProps --renamePropsTo InlineStackProps "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -546,6 +586,7 @@ Directional components now use `Inline` and `Block` naming conventions which are
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <HorizontalStack /> component`,
     code: String.raw`HorizontalStack`,
   }}
@@ -572,7 +613,7 @@ Directional components now use `Inline` and `Block` naming conventions which are
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component "./**/*.{ts,tsx}" --renameFrom="VerticalStack" --renameTo="BlockStack" --renamePropsFrom="VerticalStackProps" --renamePropsTo="BlockStackProps"`,
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component --renameFrom VerticalStack --renameTo BlockStack --renamePropsFrom VerticalStackProps --renamePropsTo BlockStackProps "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -580,6 +621,7 @@ Directional components now use `Inline` and `Block` naming conventions which are
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <VerticalStack /> component`,
     code: String.raw`VerticalStack`,
   }}
@@ -606,7 +648,7 @@ Directional components now use `Inline` and `Block` naming conventions which are
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component "./**/*.{ts,tsx}" --renameFrom="HorizontalGrid" --renameTo="InlineGrid" --renamePropsFrom="HorizontalGridProps" --renamePropsTo="InlineGridProps"`,
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component --renameFrom HorizontalGrid --renameTo InlineGrid --renamePropsFrom HorizontalGridProps --renamePropsTo InlineGridProps "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -614,6 +656,7 @@ Directional components now use `Inline` and `Block` naming conventions which are
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <HorizontalGrid /> component`,
     code: String.raw`HorizontalGrid`,
   }}
@@ -640,7 +683,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-react-update-button-component "./**/*.{ts,tsx}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-react-update-button-component "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -648,6 +691,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Button connectedDisclosure /> prop`,
     code: String.raw`<Button[^>\w](?:[^>]|\n)*?connectedDisclosure`,
   }}
@@ -655,6 +699,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Button destructive /> prop`,
     code: String.raw`<Button[^>\w](?:[^>]|\n)*?destructive`,
   }}
@@ -662,6 +707,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Button outline /> prop`,
     code: String.raw`<Button[^>\w](?:[^>]|\n)*?outline`,
   }}
@@ -669,6 +715,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Button monochrome /> prop`,
     code: String.raw`<Button[^>\w](?:[^>]|\n)*?monochrome`,
   }}
@@ -676,6 +723,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Button plain /> prop`,
     code: String.raw`<Button[^>\w](?:[^>]|\n)*?plain`,
   }}
@@ -683,6 +731,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Button primary /> prop`,
     code: String.raw`<Button[^>\w](?:[^>]|\n)*?primary`,
   }}
@@ -690,6 +739,7 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Button primarySuccess /> prop`,
     code: String.raw`<Button[^>\w](?:[^>]|\n)*?primarySuccess`,
   }}
@@ -753,10 +803,16 @@ The `Button` component has been updated to replace deprecated `connectedDisclosu
 The [updated split example](/components/actions/button) can also be referenced as an example for this manual migration.
 
 ```diff
-- <Button connectedDisclosure />
+- <Button
+-   connectedDisclosure={{
+-     icon: ChevronDownMinor,
+-   }}
+- >
+-   Save
+- </Button>
 + <ButtonGroup variant="segmented">
-+   <Button />
-+   <Button icon={ChevronDownMinor} />
++   <Button>Save</Button>
++   <Popover activator={<Button icon={ChevronDownMinor} />}/>
 + </ButtonGroup>
 ```
 
@@ -770,7 +826,7 @@ The [updated split example](/components/actions/button) can also be referenced a
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="ButtonGroup" --from="spacing" --to="gap"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName ButtonGroup --fromProp spacing --toProp gap "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -778,6 +834,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <ButtonGroup spacing="..." /> prop`,
     code: String.raw`<ButtonGroup[^>\w](?:[^>]|\n)*?spacing`,
   }}
@@ -800,7 +857,7 @@ The [updated split example](/components/actions/button) can also be referenced a
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="ButtonGroup" --from="segmented" --to="variant" --toValue="segmented"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName ButtonGroup --fromPropType boolean --fromProp segmented --toProp variant --toValue segmented "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -808,6 +865,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <ButtonGroup segmented /> prop`,
     code: String.raw`<ButtonGroup[^>\w](?:[^>]|\n)*?segmented`,
   }}
@@ -832,7 +890,7 @@ The [updated split example](/components/actions/button) can also be referenced a
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Banner" --from="status" --to="tone"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Banner --fromProp status --toProp tone "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -840,6 +898,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Banner status="..." /> prop`,
     code: String.raw`<Banner[^>\w](?:[^>]|\n)*?status`,
   }}
@@ -858,15 +917,15 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 ### Icon
 
-**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
+**🔔 Stepped migration**: You must run the `color` -> `tone` migration after running the tone rename migrations.
 
-#### Step 1: Replace `color` prop with `tone`
+#### Step 1: Replace `color="warning"` with `tone="caution"`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Icon" --from="color" --to="tone"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Icon --fromProp color --toProp tone --fromValue warning --toValue caution "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -874,36 +933,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Icon color="..." /> prop`,
-    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <Icon color="success" />
-+ <Icon tone="success" />
-```
-
-</CollapsibleDetails>
-
-#### Step 2: Replace `warning` tone with `caution`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Icon" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Icon color="warning" /> prop`,
     code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color="warning"`,
   }}
@@ -911,6 +941,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Icon color="warning" /> prop`,
     code: String.raw`<Icon[^>\w](?:[^>]|\n)*?tone="warning"`,
   }}
@@ -928,13 +959,13 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 </CollapsibleDetails>
 
-#### Step 3: Replace `highlight` tone with `info`
+#### Step 2: Replace `color="highlight"` with `tone="info"`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Icon" --from="tone" --to="tone" --fromValue="highlight" --toValue="info"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Icon --fromProp color --toProp tone --fromValue highlight --toValue info "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -942,6 +973,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Icon color="highlight" /> prop`,
     code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color="highlight"`,
   }}
@@ -949,6 +981,7 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Icon color="highlight" /> prop`,
     code: String.raw`<Icon[^>\w](?:[^>]|\n)*?tone="highlight"`,
   }}
@@ -966,6 +999,37 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 </CollapsibleDetails>
 
+#### Step 3: Replace `color` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Icon --fromProp color --toProp tone "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Icon color="..." /> prop`,
+    code: String.raw`<Icon[^>\w](?:[^>]|\n)*?color`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Icon color="success" />
++ <Icon tone="success" />
+```
+
+</CollapsibleDetails>
+
 #### Remove `backdrop` prop
 
 Backdrop is not a pattern in the new Polaris design language. If you must use a backdrop on your icon, use Box.
@@ -974,6 +1038,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Icon backdrop /> prop`,
     code: String.raw`<Icon[^>\w](?:[^>]|\n)*?backdrop`,
   }}
@@ -994,15 +1059,15 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 ### Text
 
-**🔔 Stepped migration**: You must run the `color` -> `tone` migration before running the tone rename migrations.
+**🔔 Stepped migration**: You must run the `color` -> `tone` migration after running the tone rename migrations.
 
-#### Step 1: Replace `color` prop with `tone`
+#### Step 1: Replace `color="warning"` with `tone="caution"`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Text" --from="color" --to="tone"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp color --toProp tone --fromValue warning --toValue caution "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1010,36 +1075,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
-    title: `Check RegExp for outdated <Text color="..." /> prop`,
-    code: String.raw`<Text[^>\w](?:[^>]|\n)*?color`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <Text color="success" />
-+ <Text tone="success" />
-```
-
-</CollapsibleDetails>
-
-#### Step 2: Replace `warning` tone with `caution`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Text" --from="tone" --to="tone" --fromValue="warning" --toValue="caution"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Text color="warning" /> prop`,
     code: String.raw`<Text[^>\w](?:[^>]|\n)*?color="warning"`,
   }}
@@ -1047,6 +1083,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Text color="warning" /> prop`,
     code: String.raw`<Text[^>\w](?:[^>]|\n)*?tone="warning"`,
   }}
@@ -1064,13 +1101,13 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
-#### Replace `headingXs` prop with `headingSm`
+#### Step 2: Replace `color` prop with `tone`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Text" --from="variant" --to="variant" --fromValue="headingXs" --toValue="headingSm"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp color --toProp tone "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1078,6 +1115,38 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Text color="..." /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?color`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text color="success" />
++ <Text tone="success" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `variant="headingXs"` prop with `variant="headingSm"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp variant --fromValue headingXs --toValue headingSm "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Text variant="headingXs" /> prop`,
     code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="headingXs"`,
   }}
@@ -1094,13 +1163,13 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
-#### Replace `heading4xl` with `heading3xl`
+#### Replace `variant="heading4xl"` with `variant="heading3xl"`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Text" --from="variant" --to="variant" --fromValue="heading4xl" --toValue="heading3xl"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp variant --fromValue heading4xl --toValue heading3xl "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1108,6 +1177,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Text variant="heading4xl" /> prop`,
     code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="heading4xl"`,
   }}
@@ -1132,7 +1202,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Modal" --from="small" --to="size" --toValue="small"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Modal --fromPropType boolean --fromProp small --toProp size --toValue small "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1140,6 +1210,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Modal small /> prop`,
     code: String.raw`<Modal[^>\w](?:[^>]|\n)*?small`,
   }}
@@ -1162,7 +1233,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Modal" --from="large" --to="size" --toValue="large"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Modal --fromPropType boolean --fromProp large --toProp size --toValue large "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1170,6 +1241,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Modal large /> prop`,
     code: String.raw`<Modal[^>\w](?:[^>]|\n)*?large`,
   }}
@@ -1192,7 +1264,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="Modal" --from="fullScreen" --to="size" --toValue="fullScreen"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Modal --fromPropType boolean --fromProp fullScreen --toProp size --toValue fullScreen "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1200,6 +1272,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Modal fullScreen /> prop`,
     code: String.raw`<Modal[^>\w](?:[^>]|\n)*?fullScreen`,
   }}
@@ -1224,7 +1297,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="List" --from="spacing" --to="gap"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName List --fromProp spacing --toProp gap "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1232,6 +1305,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <List spacing="..." /> prop`,
     code: String.raw`<List[^>\w](?:[^>]|\n)*?spacing`,
   }}
@@ -1256,7 +1330,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component-prop "./**/*.{ts,tsx}" --componentName="DescriptionList" --from="spacing" --to="gap"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName DescriptionList --fromProp spacing --toProp gap "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1264,6 +1338,7 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <DescriptionList spacing="..." /> prop`,
     code: String.raw`<DescriptionList[^>\w](?:[^>]|\n)*?spacing`,
   }}
@@ -1290,6 +1365,7 @@ Page dividers are no longer a pattern in the new Polaris design language. If you
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <Page divider /> prop`,
     code: String.raw`<Page[^>\w](?:[^>]|\n)*?divider`,
   }}
@@ -1300,10 +1376,41 @@ Page dividers are no longer a pattern in the new Polaris design language. If you
 <CollapsibleDetails summary="💡 Migration example">
 
 ```diff
-- <Icon source={CirclePlusMinor} color={iconColor} backdrop />
-+ <Box background={boxBackground} padding="100" width="28px" borderRadius="full">
-+  <Icon source={CirclePlusMinor} color={iconColor} />
-+ </Box>
+- <Page divider />
++ <Page />
+```
+
+</CollapsibleDetails>
+
+### ProgressBar
+
+#### Replace `color` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName ProgressBar --fromProp color --toProp tone "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <ProgressBar color="..." /> prop`,
+    code: String.raw`<ProgressBar[^>\w](?:[^>]|\n)*?color`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <ProgressBar color="success" />
++ <ProgressBar tone="success" />
 ```
 
 </CollapsibleDetails>
@@ -1316,6 +1423,7 @@ The `AppProvider` `features` prop no longer accepts the keys `polarisSummerEditi
 
 <Code
   code={{
+    className: 'language-regex',
     title: `Check RegExp for outdated <AppProvider features={...} /> prop`,
     code: String.raw`<AppProvider[^>\w](?:[^>]|\n)*?features`,
   }}
@@ -1358,7 +1466,7 @@ To replace deprecated `border` custom properties, you can run the [v12-styles-re
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-border "./**/*..{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-border "**/*.{css,scss}"`,
   }}
 />
 
@@ -1376,84 +1484,98 @@ To replace deprecated `border` custom properties, you can run the [v12-styles-re
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Tooltip borderRadius="..." /> prop`,
       code: String.raw`<Tooltip[^>\w](?:[^>]|\n)*?borderRadius`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderRadius`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderEndStartRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderEndStartRadius`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderEndEndRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderEndEndRadius`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderStartStartRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderStartStartRadius`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderStartEndRadius="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderStartEndRadius`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderWidth`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderBlockStartWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderBlockStartWidth`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderBlockEndWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderBlockEndWidth`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderInlineStartWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderInlineStartWidth`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderInlineEndWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderInlineEndWidth`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box outlineWidth="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineWidth`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <ShadowBevel borderRadius="..." /> prop`,
       code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?borderRadius`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Divider borderWidth="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderWidth`,
     }}
@@ -1504,7 +1626,7 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   code={{
     title: 'Polaris Migrator codemod for step 1',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "./**/*..{css,scss}" --step=1`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "**/*.{css,scss}" --step=1`,
   }}
 />
 
@@ -1526,42 +1648,49 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box background="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Card background="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
       code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box color="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
     }}
@@ -1713,7 +1842,7 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   code={{
     title: 'Polaris Migrator codemod for step 2',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "./**/*..{css,scss}" --step=2`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-color "**/*.{css,scss}" --step=2`,
   }}
 />
 
@@ -1724,6 +1853,7 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
@@ -1740,42 +1870,49 @@ To replace deprecated `color` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box background="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Card background="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
       code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box color="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
     }}
@@ -1815,42 +1952,49 @@ Manually migrate the following tokens to their hardcoded values:
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box background="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Card background="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
       code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box color="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
     }}
@@ -1884,42 +2028,49 @@ If you want to unblock your migration quickly you can manually hardcode the valu
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box background="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Card background="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?background`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box borderColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box outlineColor="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?outlineColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Divider borderColor="..." /> prop`,
       code: String.raw`<Divider[^>\w](?:[^>]|\n)*?borderColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Banner textColor="..." /> prop`,
       code: String.raw`<Banner[^>\w](?:[^>]|\n)*?textColor`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box color="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?color`,
     }}
@@ -1968,7 +2119,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 1',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=1`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "**/*.{css,scss}" --step=1`,
   }}
 />
 
@@ -2009,7 +2160,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 2',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=2`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "**/*.{css,scss}" --step=2`,
   }}
 />
 
@@ -2040,7 +2191,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 3',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=3`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "**/*.{css,scss}" --step=3`,
   }}
 />
 
@@ -2071,7 +2222,7 @@ To replace deprecated `font` custom properties, you can run the [v12-styles-repl
   code={{
     title: 'Polaris Migrator codemod for step 4',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "./**/*..{css,scss}" --step=4`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-font "**/*.{css,scss}" --step=4`,
   }}
 />
 
@@ -2109,7 +2260,7 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
 
 </CollapsibleDetails>
 
-**🔔 Stepped migration**: The font migration needs to be run in **2** sequential steps due to context dependent manual migrations.
+**🔔 Stepped migration**: The shadow migration needs to be run in **2** sequential steps due to context dependent manual migrations.
 
 #### Shadow migration step 1
 
@@ -2117,7 +2268,7 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
   code={{
     title: 'Polaris Migrator codemod for step 1',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow "./**/*..{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow "**/*.{css,scss}"`,
   }}
 />
 
@@ -2137,14 +2288,9 @@ To replace deprecated `shadow` custom properties, you can run the [v12-styles-re
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box shadow="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?shadow`,
-    }}
-  />
-  <Code
-    code={{
-      title: `Check RegExp for outdated <ShadowBevel boxShadow="..." /> prop`,
-      code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
     }}
   />
 </CollapsibleDetails>
@@ -2203,12 +2349,14 @@ The following tokens need to be manually migrated because their values are conte
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box shadow="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?shadow`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <ShadowBevel boxShadow="..." /> prop`,
       code: String.raw`<ShadowBevel[^>\w](?:[^>]|\n)*?boxShadow`,
     }}
@@ -2232,7 +2380,7 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-space "./**/*..{css,scss}"`,
+    code: String.raw`npx @shopify/polaris-migrator v12-styles-replace-custom-property-space "**/*.{css,scss}"`,
   }}
 />
 
@@ -2248,6 +2396,7 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Tooltip padding="..." /> prop`,
       code: String.raw`<Tooltip[^>\w](?:[^>]|\n)*?padding`,
     }}
@@ -2259,66 +2408,77 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <HorizontalGrid gap="..." /> prop`,
       code: String.raw`<HorizontalGrid[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <InlineGrid gap="..." /> prop`,
       code: String.raw`<InlineGrid[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box padding="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?padding`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box paddingBlockStart="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingBlockStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box paddingBlockEnd="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingBlockEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box paddingInlineStart="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingInlineStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box paddingInlineEnd="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?paddingInlineEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box insetBlockStart="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetBlockStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box insetBlockEnd="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetBlockEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box insetInlineStart="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetInlineStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Box insetInlineEnd="..." /> prop`,
       code: String.raw`<Box[^>\w](?:[^>]|\n)*?insetInlineEnd`,
     }}
@@ -2330,12 +2490,14 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <VerticalStack gap="..." /> prop`,
       code: String.raw`<VerticalStack[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <BlockStack gap="..." /> prop`,
       code: String.raw`<BlockStack[^>\w](?:[^>]|\n)*?gap`,
     }}
@@ -2347,168 +2509,196 @@ To replace deprecated `space` custom properties, you can run the [v12-styles-rep
   </p>
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <HorizontalStack gap="..." /> prop`,
       code: String.raw`<HorizontalStack[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <InlineStack gap="..." /> prop`,
       code: String.raw`<InlineStack[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Choice bleed="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleed`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Choice bleedBlockStart="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedBlockStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Choice bleedBlockEnd="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Choice bleedInlineStart="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedInlineStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Choice bleedInlineEnd="..." /> prop`,
       code: String.raw`<Choice[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <RadioButton bleed="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleed`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <RadioButton bleedBlockStart="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <RadioButton bleedBlockEnd="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <RadioButton bleedInlineStart="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <RadioButton bleedInlineEnd="..." /> prop`,
       code: String.raw`<RadioButton[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Checkbox bleed="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleed`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Checkbox bleedBlockStart="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Checkbox bleedBlockEnd="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedBlockEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Checkbox bleedInlineStart="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Checkbox bleedInlineEnd="..." /> prop`,
       code: String.raw`<Checkbox[^>\w](?:[^>]|\n)*?bleedInlineEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Stack gap="..." /> prop`,
       code: String.raw`<Stack[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Grid gap="..." /> prop`,
       code: String.raw`<Grid[^>\w](?:[^>]|\n)*?gap`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Grid gapX="..." /> prop`,
       code: String.raw`<Grid[^>\w](?:[^>]|\n)*?gapX`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Grid gapY="..." /> prop`,
       code: String.raw`<Grid[^>\w](?:[^>]|\n)*?gapY`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Card padding="..." /> prop`,
       code: String.raw`<Card[^>\w](?:[^>]|\n)*?padding`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Bleed marginInline="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginInline`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Bleed marginBlock="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginBlock`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Bleed marginBlockStart="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginBlockStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Bleed marginBlockEnd="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginBlockEnd`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Bleed marginInlineStart="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginInlineStart`,
     }}
   />
   <Code
     code={{
+      className: 'language-regex',
       title: `Check RegExp for outdated <Bleed marginInlineEnd="..." /> prop`,
       code: String.raw`<Bleed[^>\w](?:[^>]|\n)*?marginInlineEnd`,
     }}
