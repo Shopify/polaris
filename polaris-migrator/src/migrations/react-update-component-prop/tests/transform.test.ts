@@ -80,20 +80,26 @@ const fixtures = [
     name: 'with-replacement-maps',
     options: {
       replacementMaps: {
-        MyComponent1: [
+        MyComponentA: [
           {
             fromProp: 'prop1',
             toProp: 'newProp1',
             fromValue: 'value-1',
             toValue: 'new-value-1',
           },
-        ],
-        MyComponent2: [
           {
+            fromPropType: 'boolean',
             fromProp: 'prop2',
             toProp: 'newProp2',
-            fromValue: 'value-2',
             toValue: 'new-value-2',
+          },
+        ],
+        MyComponentB: [
+          {
+            fromProp: 'prop3',
+            toProp: 'newProp3',
+            fromValue: 'value-3',
+            toValue: 'new-value-3',
           },
         ],
       },

@@ -1,26 +1,30 @@
 import React from 'react';
-// @ts-expect-error
-import {MyComponent1, MyComponent2 as CustomComponent} from '@shopify/polaris';
+import {
+  // @ts-expect-error
+  MyComponentA,
+  // @ts-expect-error
+  MyComponentB as MyComponentBAlias,
+} from '@shopify/polaris';
 
 declare function Child(props: any): JSX.Element;
 
-const MyComponentWrapper =
+const MyComponentAWrapper =
   /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
-  MyComponent1;
+  MyComponentA;
 
 export function App() {
   return (
     <>
-      <MyComponent1 newProp1="new-value-1" foo="bar">
+      <MyComponentA newProp1="new-value-1" newProp2="new-value-2" foo="bar">
         Hello
-        <Child prop1="value-1" />
-        <MyComponentWrapper />
-      </MyComponent1>
-      <CustomComponent newProp2="new-value-2" foo="bar">
+        <Child prop1="value-1" prop2 />
+        <MyComponentAWrapper />
+      </MyComponentA>
+      <MyComponentBAlias newProp3="new-value-3" foo="bar">
         Hello
-        <Child prop2="value-2" />
-        <MyComponentWrapper />
-      </CustomComponent>
+        <Child prop3="value-3" />
+        <MyComponentAWrapper />
+      </MyComponentBAlias>
     </>
   );
 }
