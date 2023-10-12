@@ -6,9 +6,10 @@ import {useIsSelectAllActionsSticky} from '..';
 
 interface ComponentProps {
   selectMode: boolean;
+  hasPagination?: boolean;
 }
 
-function Component({selectMode}: ComponentProps) {
+function Component({selectMode, hasPagination}: ComponentProps) {
   const {
     selectAllActionsIntersectionRef,
     tableMeasurerRef,
@@ -16,7 +17,7 @@ function Component({selectMode}: ComponentProps) {
     selectAllActionsAbsoluteOffset,
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
-  } = useIsSelectAllActionsSticky(selectMode);
+  } = useIsSelectAllActionsSticky(selectMode, hasPagination);
 
   return (
     <div className="table" ref={tableMeasurerRef}>
@@ -62,13 +63,19 @@ describe('useIsSelectAllActionsSticky', () => {
     it('returns the offset correctly when select mode is true', () => {
       const component = mountWithApp(<Component selectMode />);
       const result = component.findAll('span')[0]?.text();
-      expect(result).toBe('363');
+      expect(result).toBe('359');
     });
 
     it('returns the width value correctly', () => {
       const component = mountWithApp(<Component selectMode />);
       const result = component.findAll('span')[1]?.text();
       expect(result).toBe('600');
+    });
+
+    it('returns the width value correctly when hasPagination is true', () => {
+      const component = mountWithApp(<Component selectMode hasPagination />);
+      const result = component.findAll('span')[1]?.text();
+      expect(result).toBe('536');
     });
 
     it('returns the left value correctly', () => {

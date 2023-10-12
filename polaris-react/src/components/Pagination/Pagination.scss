@@ -24,11 +24,13 @@
   }
 
   &.table {
+    /* stylelint-disable-next-line -- custom z index to work with the z-indexes in the IndexTable */
     --pc-pagination-index: 35;
-    border-top: 1px solid var(--p-color-border);
     position: sticky;
     bottom: 0;
+    /* stylelint-disable-next-line -- sets the z-index created above */
     z-index: var(--pc-pagination-index);
+    border-top: 1px solid var(--p-color-border);
 
     button {
       --button-min-height: var(--p-height-700);
