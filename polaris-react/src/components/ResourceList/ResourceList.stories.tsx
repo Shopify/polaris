@@ -1248,3 +1248,51 @@ export function WithAllOfItsElements() {
     }
   }
 }
+
+export function WithPagination() {
+  return (
+    <Card padding="0">
+      <ResourceList
+        resourceName={{singular: 'customer', plural: 'customers'}}
+        items={[
+          {
+            id: 100,
+            url: '#',
+            name: 'Mae Jemison',
+            location: 'Decatur, USA',
+          },
+          {
+            id: 200,
+            url: '#',
+            name: 'Ellen Ochoa',
+            location: 'Los Angeles, USA',
+          },
+        ]}
+        pagination={{
+          hasNext: true,
+          onNext: () => {},
+        }}
+        renderItem={(item) => {
+          const {id, url, name, location} = item;
+          const media = <Avatar customer size="medium" name={name} />;
+
+          return (
+            <ResourceItem
+              id={id}
+              url={url}
+              media={media}
+              accessibilityLabel={`View details for ${name}`}
+            >
+              <h3>
+                <Text fontWeight="bold" as="span">
+                  {name}
+                </Text>
+              </h3>
+              <div>{location}</div>
+            </ResourceItem>
+          );
+        }}
+      />
+    </Card>
+  );
+}

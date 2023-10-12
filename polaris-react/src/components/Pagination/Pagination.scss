@@ -24,6 +24,8 @@
   }
 
   &.table {
+    border-top: 1px solid var(--p-color-border);
+
     button {
       --button-min-height: var(--p-space-600);
       background-color: var(--p-color-bg-surface-secondary);
