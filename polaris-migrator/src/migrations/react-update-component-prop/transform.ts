@@ -27,7 +27,7 @@ interface ReplacementMaps {
   [componentName: string]: ReplacementOptions[];
 }
 
-export interface MigrationOptions extends Options, ReplacementOptions {
+export interface MigrationOptions extends Options, Partial<ReplacementOptions> {
   relative?: boolean;
   componentName?: string;
   replacementMaps?: ReplacementMaps;
@@ -88,6 +88,22 @@ export default function transformer(
   for (const replacementMapEntry of Object.entries(replacementMaps)) {
     const [componentName, replacementOptions] = replacementMapEntry;
 
+    const componentNames = componentName.split('.');
+    const targetComponentName = componentNames[0];
+
+    const sourcePaths = normalizeImportSourcePaths(j, source, {
+      relative: options.relative,
+      from: targetComponentName,
+      to: targetComponentName,
+    });
+
+    if (
+      !sourcePaths ||
+      !hasImportSpecifier(j, source, targetComponentName, sourcePaths.from)
+    ) {
+      continue;
+    }
+
     for (const replacementOption of replacementOptions) {
       const {
         fromPropType = 'string',
@@ -96,23 +112,6 @@ export default function transformer(
         fromValue,
         toValue,
       } = replacementOption;
-
-      const componentNames = componentName.split('.');
-      const targetComponentName = componentNames[0];
-
-      const sourcePaths = normalizeImportSourcePaths(j, source, {
-        relative: options.relative,
-        from: targetComponentName,
-        to: targetComponentName,
-      });
-
-      if (!sourcePaths) continue;
-
-      if (
-        !hasImportSpecifier(j, source, targetComponentName, sourcePaths.from)
-      ) {
-        continue;
-      }
 
       const localElementName =
         getImportSpecifierName(
