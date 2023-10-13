@@ -21,7 +21,7 @@ export default function transformer(
   throw new Error('Invalid step');
 }
 
-const replacementMap1 = {
+export const replacementMap1 = {
   '--p-color-avatar-background-experimental': '--p-color-avatar-bg-fill',
   '--p-color-avatar-color-experimental': '--p-color-avatar-text-on-bg-fill',
   '--p-color-avatar-style-five-background-experimental':
@@ -180,7 +180,7 @@ const replacementMap1 = {
   '--p-color-text-warning-experimental': '--p-color-text-warning',
 };
 
-const replacementMap2 = {
+export const replacementMap2 = {
   '--p-color-bg-app': '--p-color-bg',
 };
 
