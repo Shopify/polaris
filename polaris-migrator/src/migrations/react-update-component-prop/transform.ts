@@ -23,7 +23,7 @@ interface ReplacementOptions {
   toValue?: string;
 }
 
-interface ReplacementMaps {
+export interface ReplacementMaps {
   [componentName: string]: ReplacementOptions[];
 }
 
