@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fixes disabled state for `monochromePlain` variant in `Button`
+Fixed disabled state for `monochromePlain` variant in `Button`
