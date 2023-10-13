@@ -350,7 +350,7 @@ export const color: {
   },
   'color-bg-surface-caution-hover': {
     value: colors.yellow[3],
-    description: 'The hover sate for communicating caution.',
+    description: 'The hover state for communicating caution.',
   },
   'color-bg-surface-caution-active': {
     value: colors.yellow[4],
@@ -505,12 +505,12 @@ export const color: {
   'color-bg-fill-info-hover': {
     value: colors.azure[10],
     description:
-      'The hover state color for communicating important informtion on elements with a smaller surface area.',
+      'The hover state color for communicating important information on elements with a smaller surface area.',
   },
   'color-bg-fill-info-active': {
     value: colors.azure[11],
     description:
-      'The active state (on press) color for communicating important informtion on elements with a smaller surface area.',
+      'The active state (on press) color for communicating important information on elements with a smaller surface area.',
   },
   'color-bg-fill-info-secondary': {
     value: colors.azure[4],
@@ -758,7 +758,7 @@ export const color: {
   },
   'color-text-success-hover': {
     value: colors.green[15],
-    description: 'The hover sate color for text communicating success.',
+    description: 'The hover state color for text communicating success.',
   },
   'color-text-success-active': {
     value: colors.green[16],
