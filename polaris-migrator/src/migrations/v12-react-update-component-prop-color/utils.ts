@@ -2,7 +2,7 @@ import type {ReplacementMaps} from '../react-update-component-prop/transform';
 
 type ComponentFromProp = string;
 
-export interface ComponentReplacementOptions {
+export interface ComponentFromPropsMap {
   [componentName: string]: ComponentFromProp[];
 }
 
@@ -13,21 +13,19 @@ interface ReplacementMap {
 }
 
 export function getReplacementMaps(
-  componentReplacementOptions: ComponentReplacementOptions,
+  componentFromPropsMap: ComponentFromPropsMap,
   replacementMap: ReplacementMap,
 ): ReplacementMaps {
   return Object.fromEntries(
-    Object.entries(componentReplacementOptions).map(
-      ([componentName, fromProps]) => [
-        componentName,
-        fromProps.flatMap((fromProp) =>
-          Object.entries(replacementMap).map(([fromValue, toValue]) => ({
-            fromProp,
-            fromValue,
-            toValue,
-          })),
-        ),
-      ],
-    ),
+    Object.entries(componentFromPropsMap).map(([componentName, fromProps]) => [
+      componentName,
+      fromProps.flatMap((fromProp) =>
+        Object.entries(replacementMap).map(([fromValue, toValue]) => ({
+          fromProp,
+          fromValue,
+          toValue,
+        })),
+      ),
+    ]),
   );
 }

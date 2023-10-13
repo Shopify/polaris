@@ -6,7 +6,7 @@ import {
   replacementMap2,
 } from '../v12-styles-replace-custom-property-color/transform';
 
-import type {ComponentReplacementOptions} from './utils';
+import type {ComponentFromPropsMap} from './utils';
 import {getReplacementMaps} from './utils';
 
 const normalizedReplacementMap1 = Object.fromEntries(
@@ -23,7 +23,7 @@ const normalizedReplacementMap2 = Object.fromEntries(
   ]),
 );
 
-const componentReplacementOptions: ComponentReplacementOptions = {
+const componentFromPropsMap: ComponentFromPropsMap = {
   Banner: ['textColor'],
   Box: ['background', 'borderColor', 'color', 'outlineColor'],
   Card: ['background'],
@@ -42,14 +42,14 @@ export default function transformer(
   if (options.step === 1) {
     return reactUpdateComponentProp(fileInfo, _, {
       replacementMaps: getReplacementMaps(
-        componentReplacementOptions,
+        componentFromPropsMap,
         normalizedReplacementMap1,
       ),
     });
   } else if (options.step === 2) {
     return reactUpdateComponentProp(fileInfo, _, {
       replacementMaps: getReplacementMaps(
-        componentReplacementOptions,
+        componentFromPropsMap,
         normalizedReplacementMap2,
       ),
     });
