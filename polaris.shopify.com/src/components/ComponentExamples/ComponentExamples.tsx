@@ -4,12 +4,10 @@ import styles from './ComponentExamples.module.scss';
 import CodesandboxButton from '../CodesandboxButton';
 import {className as classNames} from '../../utils/various';
 import Code from '../Code';
-import {Tab} from '@headlessui/react';
 import {className} from '../../utils/various';
 import Markdown from '../Markdown';
 import {useRouter} from 'next/router';
 import {useSearchParams} from 'next/navigation';
-import style from 'react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark';
 
 const exampleIframeId = 'example-iframe';
 const iframePadding = 192;
@@ -30,6 +28,7 @@ export type ComponentExampleSerialized = {
 
 interface Props {
   examples: ComponentExampleSerialized[];
+  componentTitle: string;
 }
 
 // https://stackoverflow.com/a/60338028
@@ -52,7 +51,7 @@ function formatHTML(html: string): string {
   return result.substring(1, result.length - 3);
 }
 
-const ComponentExamples = ({examples}: Props) => {
+const ComponentExamples = ({examples, componentTitle}: Props) => {
   const [htmlCode, setHTMLCode] = useState('');
   const [iframeHeight, setIframeHeight] = useState(400);
   const router = useRouter();
@@ -86,6 +85,7 @@ const ComponentExamples = ({examples}: Props) => {
     return () => clearInterval(waitForExampleContentToRender);
   };
 
+  // get example names and index
   const defaultExampleName = examples[0].fileName.replace('.tsx', '');
   let exampleName = params.get('example') || defaultExampleName;
   let exampleFilename =
@@ -94,8 +94,10 @@ const ComponentExamples = ({examples}: Props) => {
     (obj) => obj.fileName === exampleFilename,
   );
 
+  // update query param to the selected example
   const updateSelectedExample = (index: number) => {
     exampleName = examples[index].fileName.replace('.tsx', '');
+
     router.replace(
       {
         pathname: router.pathname,
@@ -105,6 +107,88 @@ const ComponentExamples = ({examples}: Props) => {
       {shallow: true},
     );
   };
+
+  // manage keyboard focus for tabs and tabpanels
+  const examplesLength = examples.length - 1;
+
+  const setSelectedToPreviousTab = () => {
+    if (exampleIndex === 0) {
+      setSelectedTab(examplesLength);
+    } else {
+      const index = exampleIndex - 1;
+      setSelectedTab(index);
+    }
+  };
+
+  const setSelectedToNextTab = () => {
+    if (exampleIndex === examplesLength) {
+      setSelectedTab(0);
+    } else {
+      const index = exampleIndex + 1;
+      setSelectedTab(index);
+    }
+  };
+
+  const setSelectedTab = (index: number) => {
+    exampleIndex = index;
+    updateSelectedExample(index);
+  };
+
+  const onKeyDownHandler = (event: React.KeyboardEvent<HTMLElement>) => {
+    switch (event.key) {
+      case 'ArrowLeft':
+        setSelectedToPreviousTab();
+        break;
+
+      case 'ArrowRight':
+        setSelectedToNextTab();
+        break;
+
+      case 'Home':
+        setSelectedTab(0);
+        break;
+
+      case 'End':
+        setSelectedTab(examplesLength);
+        break;
+
+      default:
+        break;
+    }
+  };
+
+  const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  useEffect(() => {
+    buttonRefs.current = buttonRefs.current.slice(0, examples.length);
+  }, [examples]);
+
+  useEffect(() => {
+    const currentButtonRef = buttonRefs.current[exampleIndex];
+    if (currentButtonRef) {
+      currentButtonRef.focus();
+    }
+  }, [exampleIndex]);
+
+  const tablistId = 'component-examples-tablist';
+
+  const tabButtons = examples.map((example, index) => {
+    return (
+      <button
+        role="tab"
+        type="button"
+        id={`tab-${index}`}
+        key={example.fileName}
+        onClick={() => updateSelectedExample(index)}
+        aria-controls={`tabpanel-${index}`}
+        tabIndex={index === exampleIndex ? 0 : -1}
+        ref={(el) => (buttonRefs.current[index] = el)}
+        aria-selected={index === exampleIndex}
+      >
+        <span>{example.title}</span>
+      </button>
+    );
+  });
 
   const examplesMarkup = examples.map(
     ({fileName, description, code}, index) => {
@@ -151,97 +235,19 @@ const ComponentExamples = ({examples}: Props) => {
     },
   );
 
-  const tablistId = 'component-examples-tablist';
-
-  const examplesLength = examples.length - 1;
-
-  const setSelectedToPreviousTab = (event) => {
-    if (exampleIndex === 0) {
-      setSelectedTab(examplesLength);
-    } else {
-      const index = exampleIndex - 1;
-      setSelectedTab(index);
-    }
-  };
-
-  const setSelectedToNextTab = (event) => {
-    if (exampleIndex === examplesLength) {
-      setSelectedTab(0);
-    } else {
-      const index = exampleIndex + 1;
-      setSelectedTab(index);
-    }
-  };
-
-  const setSelectedTab = (index: number) => {
-    exampleIndex = index;
-    updateSelectedExample(index);
-  };
-
-  const onKeyDownHandler = (event) => {
-    switch (event.key) {
-      case 'ArrowLeft':
-        setSelectedToPreviousTab(event);
-        break;
-
-      case 'ArrowRight':
-        setSelectedToNextTab(event);
-        break;
-
-      case 'Home':
-        setSelectedTab(0);
-        break;
-
-      case 'End':
-        setSelectedTab(examplesLength);
-        break;
-
-      default:
-        break;
-    }
-  };
-
-  const buttonRefs = useRef([]);
-
-  useEffect(() => {
-    buttonRefs.current = buttonRefs.current.slice(0, examples.length);
-  }, [examples]);
-
-  useEffect(() => {
-    const currentButtonRef = buttonRefs.current[exampleIndex];
-    if (currentButtonRef) {
-      currentButtonRef.focus();
-    }
-  }, [exampleIndex]);
-
-  const tabButtons = examples.map((example, index) => {
-    return (
-      <button
-        id={`tab-${index}`}
-        key={example.fileName}
-        onClick={() => updateSelectedExample(index)}
-        aria-controls={`tabpanel-${index}`}
-        tabIndex={index === exampleIndex ? 0 : -1}
-        ref={(el) => (buttonRefs.current[index] = el)}
-        {...(index === exampleIndex ? {'aria-selected': 'true'} : {})}
-      >
-        <span>{example.title}</span>
-      </button>
-    );
-  });
-
   return (
     <>
-      <h3 id={tablistId}>Component examples</h3>
-      <div className="tabs" aria-labelledby={tablistId}>
-        <div
-          className={styles.ExamplesList}
-          id="examples"
-          role="tablist"
-          onKeyDown={onKeyDownHandler}
-        >
-          {tabButtons}
-        </div>
+      <h3 id={tablistId} className="visuallyHidden">
+        {componentTitle} component examples
+      </h3>
+      <div
+        aria-labelledby={tablistId}
+        className={styles.ExamplesList}
+        id="examples"
+        role="tablist"
+        onKeyDown={onKeyDownHandler}
+      >
+        {tabButtons}
       </div>
       {examplesMarkup[exampleIndex]}
     </>

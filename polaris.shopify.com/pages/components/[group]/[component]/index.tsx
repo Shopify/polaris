@@ -57,7 +57,10 @@ const Components = ({
         components={{
           Examples: () =>
             Boolean(examples.length) ? (
-              <ComponentExamples examples={examples} />
+              <ComponentExamples
+                examples={examples}
+                componentTitle={mdx.frontmatter.title}
+              />
             ) : null,
           Props: ({componentName}) =>
             type && mdx.frontmatter.status !== 'Deprecated' ? (
