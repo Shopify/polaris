@@ -6,7 +6,7 @@ export default function transformer(fileInfo: FileInfo, _: API) {
   return stylesReplaceCustomProperty(fileInfo, _, {replacementMaps});
 }
 
-const replacementMaps = {
+export const replacementMaps = {
   '/.+/': {
     '--p-border-radius-0-experimental': '--p-border-radius-0',
     '--p-border-radius-05': '--p-border-radius-050',
