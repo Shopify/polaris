@@ -1,33 +1,19 @@
 import type {FileInfo, API} from 'jscodeshift';
 
-import {replacementMaps} from '../v12-styles-replace-custom-property-border/transform';
+import {replacementMaps} from '../v12-styles-replace-custom-property-shadow/transform';
 import reactUpdateComponentProp from '../react-update-component-prop/transform';
 import type {ComponentFromPropsMap} from '../react-update-component-prop/utils';
 import {getReplacementMaps} from '../react-update-component-prop/utils';
 
-const widthReplacementMap = Object.fromEntries(
-  Object.entries(replacementMaps['/.+/']).filter(
-    ([key]) => !key.includes('border-radius'),
-  ),
-);
-
 const normalizedReplacementMap = Object.fromEntries(
-  Object.entries(widthReplacementMap).map(([fromValue, toValue]) => [
-    fromValue.replace('--p-border-width-', ''),
-    toValue.replace('--p-border-width-', ''),
+  Object.entries(replacementMaps['/.+/']).map(([fromValue, toValue]) => [
+    fromValue.replace('--p-shadow-', ''),
+    toValue.replace('--p-shadow-', ''),
   ]),
 );
 
 const componentFromPropsMap: ComponentFromPropsMap = {
-  Box: [
-    'borderWidth',
-    'borderBlockStartWidth',
-    'borderBlockEndWidth',
-    'borderInlineStartWidth',
-    'borderInlineEndWidth',
-    'outlineWidth',
-  ],
-  Divider: ['borderWidth'],
+  Box: ['shadow'],
 };
 
 export default function transformer(fileInfo: FileInfo, _: API) {

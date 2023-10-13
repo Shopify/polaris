@@ -5,9 +5,8 @@ import {
   replacementMap1,
   replacementMap2,
 } from '../v12-styles-replace-custom-property-color/transform';
-
-import type {ComponentFromPropsMap} from './utils';
-import {getReplacementMaps} from './utils';
+import type {ComponentFromPropsMap} from '../react-update-component-prop/utils';
+import {getReplacementMaps} from '../react-update-component-prop/utils';
 
 const normalizedReplacementMap1 = Object.fromEntries(
   Object.entries(replacementMap1).map(([fromValue, toValue]) => [

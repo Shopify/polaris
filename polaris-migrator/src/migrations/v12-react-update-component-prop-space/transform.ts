@@ -2,7 +2,7 @@ import type {FileInfo, API} from 'jscodeshift';
 
 import {replacementMaps} from '../v12-styles-replace-custom-property-space/transform';
 import reactUpdateComponentProp from '../react-update-component-prop/transform';
-import type {ComponentReplacementOptions} from '../react-update-component-prop/utils';
+import type {ComponentFromPropsMap} from '../react-update-component-prop/utils';
 import {getReplacementMaps} from '../react-update-component-prop/utils';
 
 const normalizedReplacementMap = Object.fromEntries(
@@ -12,7 +12,7 @@ const normalizedReplacementMap = Object.fromEntries(
   ]),
 );
 
-const componentReplacementOptions: ComponentReplacementOptions = {
+const componentFromPropsMap: ComponentFromPropsMap = {
   Bleed: [
     'marginInline',
     'marginBlock',
@@ -68,7 +68,7 @@ const componentReplacementOptions: ComponentReplacementOptions = {
 export default function transformer(fileInfo: FileInfo, _: API) {
   return reactUpdateComponentProp(fileInfo, _, {
     replacementMaps: getReplacementMaps(
-      componentReplacementOptions,
+      componentFromPropsMap,
       normalizedReplacementMap,
     ),
   });
