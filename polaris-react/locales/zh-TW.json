@@ -347,7 +347,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "檢視 {title} 的動作"
+        "rollupActionsLabel": "檢視 {title} 的動作",
+        "pageReadyAccessibilityLabel": "{title}。此頁面已準備就緒"
       }
     },
     "FullscreenBar": {

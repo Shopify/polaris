@@ -348,7 +348,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Afficher les actions pour {title}"
+        "rollupActionsLabel": "Afficher les actions pour {title}",
+        "pageReadyAccessibilityLabel": "{title}. Cette page est prête"
       }
     },
     "FullscreenBar": {

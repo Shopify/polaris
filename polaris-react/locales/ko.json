@@ -347,7 +347,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "{title} 작업 보기"
+        "rollupActionsLabel": "{title} 작업 보기",
+        "pageReadyAccessibilityLabel": "{title}. 이 페이지가 준비되었습니다"
       }
     },
     "FullscreenBar": {

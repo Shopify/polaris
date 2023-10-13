@@ -349,7 +349,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Zobrazte akce pro: {title}"
+        "rollupActionsLabel": "Zobrazte akce pro: {title}",
+        "pageReadyAccessibilityLabel": "{title}. Tato stránka je připravena."
       }
     },
     "FullscreenBar": {

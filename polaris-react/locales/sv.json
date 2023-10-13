@@ -347,7 +347,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Visa åtgärder för {title}"
+        "rollupActionsLabel": "Visa åtgärder för {title}",
+        "pageReadyAccessibilityLabel": "{title}. Den här sidan är redo"
       }
     },
     "FullscreenBar": {

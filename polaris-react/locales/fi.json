@@ -347,7 +347,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Tarkastele nimikettä {title} koskevia toimintoja"
+        "rollupActionsLabel": "Tarkastele nimikettä {title} koskevia toimintoja",
+        "pageReadyAccessibilityLabel": "{title}. Tämä sivu on valmis"
       }
     },
     "FullscreenBar": {

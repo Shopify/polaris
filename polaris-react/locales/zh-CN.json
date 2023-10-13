@@ -347,7 +347,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "查看用于 {title} 的操作"
+        "rollupActionsLabel": "查看用于 {title} 的操作",
+        "pageReadyAccessibilityLabel": "{title}。此页面已就绪"
       }
     },
     "FullscreenBar": {

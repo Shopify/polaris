@@ -347,7 +347,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Xem thao tác đối với {title}"
+        "rollupActionsLabel": "Xem thao tác đối với {title}",
+        "pageReadyAccessibilityLabel": "{title}. Trang này đã sẵn sàng"
       }
     },
     "FullscreenBar": {

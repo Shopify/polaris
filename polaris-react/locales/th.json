@@ -347,7 +347,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "ดูการดำเนินการสำหรับ {title}"
+        "rollupActionsLabel": "ดูการดำเนินการสำหรับ {title}",
+        "pageReadyAccessibilityLabel": "{title} หน้านี้พร้อมแล้ว"
       }
     },
     "FullscreenBar": {
