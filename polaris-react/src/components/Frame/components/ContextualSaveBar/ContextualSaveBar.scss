@@ -81,8 +81,8 @@
 .ActionContainer {
   flex-shrink: 0;
 
-  & [class*='Polaris-Button--primary'],
-  & [class*='Button-primary'] {
+  & [class*='Polaris-Button--variantPrimary'],
+  & [class*='Button-variantPrimary'] {
     --pc-color-text: rgba(48, 48, 48, 1);
     --pc-button-text: var(--pc-color-text);
     --pc-button-color: rgba(255, 255, 255, 1);
@@ -122,8 +122,8 @@
     }
   }
 
-  & [class*='Polaris-Button--tertiary'],
-  & [class*='Button-tertiary'] {
+  & [class*='Polaris-Button--variantTertiary'],
+  & [class*='Button-variantTertiary'] {
     --pc-button-color: var(--p-color-bg-fill-inverse);
     --pc-button-color-hover: var(--p-color-bg-fill-inverse-hover);
     --pc-button-color-active: var(--p-color-bg-fill-inverse-active);
