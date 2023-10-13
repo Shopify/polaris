@@ -510,11 +510,15 @@ function TokenPreview({name, value}: TokenPreviewProps) {
         {...previewDivAttributes}
         style={{
           display: 'flex',
+          background: 'var(--p-color-bg)',
+          borderRadius: 'var(--p-border-radius-200)',
+          padding: 'var(--p-space-400)',
         }}
       >
         <div
           style={{
-            width: 50,
+            width: '100%',
+            minWidth: 50,
             minHeight: 50,
             background: 'white',
             boxShadow: value,
