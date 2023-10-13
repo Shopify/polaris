@@ -15,15 +15,15 @@ import {
   normalizeImportSourcePaths,
 } from '../../utilities/imports';
 
-interface ReplacementOptions {
+export interface ReplacementOptions {
   fromPropType?: 'string' | 'boolean';
-  fromProp: string;
+  fromProp?: string;
   toProp?: string;
   fromValue?: string;
   toValue?: string;
 }
 
-interface ReplacementMaps {
+export interface ReplacementMaps {
   [componentName: string]: ReplacementOptions[];
 }
 
