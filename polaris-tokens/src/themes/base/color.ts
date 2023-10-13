@@ -895,6 +895,7 @@ export const color: {
   },
   'color-border-brand': {
     value: colors.gray[8],
+    description: 'Use for borders paired with brand colors.',
   },
   'color-border-info': {
     value: colors.azure[8],
