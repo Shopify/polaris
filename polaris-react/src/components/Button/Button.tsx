@@ -123,21 +123,16 @@ export function Button({
 
   const className = classNames(
     styles.Button,
-    variant === 'primary' && styles.primary,
-    variant === 'plain' && styles.plain,
-    variant === 'tertiary' && styles.tertiary,
-    variant === 'monochromePlain' && styles.monochrome,
-    variant === 'monochromePlain' && styles.plain,
-    tone === 'critical' && styles.critical,
-    tone === 'success' && styles.success,
+    fullWidth && styles.fullWidth,
+    icon && children == null && styles.iconOnly,
     isDisabled && styles.disabled,
     loading && styles.loading,
     pressed && !disabled && !url && styles.pressed,
+    removeUnderline && styles.removeUnderline,
     size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
     textAlign && styles[variationName('textAlign', textAlign)],
-    fullWidth && styles.fullWidth,
-    icon && children == null && styles.iconOnly,
-    removeUnderline && styles.removeUnderline,
+    tone && styles[variationName('tone', tone)],
+    variant && styles[variationName('variant', variant)],
   );
 
   const disclosureMarkup = disclosure ? (
