@@ -338,7 +338,7 @@ export const color: {
   },
   'color-bg-surface-success-hover': {
     value: colors.green[4],
-    description: 'The hover sate color for communicating success.',
+    description: 'The hover state color for communicating success.',
   },
   'color-bg-surface-success-active': {
     value: colors.green[5],
