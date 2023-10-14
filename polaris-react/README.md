@@ -70,6 +70,7 @@ ReactDOM.render(
 />
 <link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@450;550;650;700&display=swap"
+  rel="stylesheet"
 />
 ```
 
