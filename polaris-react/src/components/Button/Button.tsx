@@ -1,12 +1,13 @@
 import React from 'react';
+import {cva } from 'class-variance-authority';
 import {
-  SelectMinor,
+  SelectMinor
   ChevronDownMinor,
   ChevronUpMinor,
 } from '@shopify/polaris-icons';
 
 import type {BaseButton, IconSource} from '../../types';
-import {classNames, variationName} from '../../utilities/css';
+import {classNames} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import type {MouseUpBlurHandler} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
@@ -16,6 +17,43 @@ import {UnstyledButton} from '../UnstyledButton';
 import type {UnstyledButtonProps} from '../UnstyledButton';
 
 import styles from './Button.scss';
+
+const button = cva(styles.Button, {
+  variants: {
+    variant: {
+      primary: styles.variantPrimary,
+      plain: styles.variantPlain,
+      tertiary: styles.variantTertiary,
+      monochromePlain: styles.variantMonochromePlain,
+    },
+    tone: {
+      critical: styles.toneCritical,
+      success: styles.toneSuccess,
+    },
+    size: {
+      micro: styles.sizeMicro,
+      slim: styles.sizeSlim,
+      medium: '',
+      large: styles.sizeLarge,
+    },
+    textAlign: {
+      left: styles.textAlignLeft,
+      right: styles.textAlignRight,
+      center: styles.textAlignCenter,
+      start: styles.textAlignStart,
+      end: styles.textAlignEnd,
+    },
+    disabled: {true: styles.disabled},
+    loading: {true: styles.loading},
+    pressed: {true: styles.pressed},
+    fullWidth: {true: styles.fullWidth},
+    iconOnly: {true: styles.iconOnly},
+    removeUnderline: {true: styles.removeUnderline},
+  },
+  defaultVariants: {
+    size: 'medium',
+  },
+});
 
 export interface ButtonProps extends BaseButton {
   /** The content to display inside the button */
@@ -83,8 +121,6 @@ type ActionButtonProps = Pick<
   | 'onPointerDown'
 >;
 
-const DEFAULT_SIZE = 'medium';
-
 export function Button({
   id,
   children,
@@ -114,7 +150,7 @@ export function Button({
   icon,
   disclosure,
   removeUnderline,
-  size = DEFAULT_SIZE,
+  size = 'medium',
   textAlign,
   fullWidth,
   dataPrimaryLink,
@@ -124,20 +160,21 @@ export function Button({
   const i18n = useI18n();
 
   const isDisabled = disabled || loading;
+  const isPressed = pressed && !disabled && !url;
+  const isIconOnly = Boolean(icon) && Boolean(children);
 
-  const className = classNames(
-    styles.Button,
-    fullWidth && styles.fullWidth,
-    icon && children == null && styles.iconOnly,
-    isDisabled && styles.disabled,
-    loading && styles.loading,
-    pressed && !disabled && !url && styles.pressed,
-    removeUnderline && styles.removeUnderline,
-    size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
-    textAlign && styles[variationName('textAlign', textAlign)],
-    tone && styles[variationName('tone', tone)],
-    variant && styles[variationName('variant', variant)],
-  );
+  const className = button({
+    variant,
+    tone,
+    loading,
+    size,
+    textAlign,
+    fullWidth,
+    removeUnderline,
+    disabled: isDisabled,
+    pressed: isPressed,
+    iconOnly: isIconOnly,
+  });
 
   const disclosureMarkup = disclosure ? (
     <span className={styles.Icon}>
