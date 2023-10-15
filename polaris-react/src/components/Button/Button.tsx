@@ -1,13 +1,12 @@
 import React from 'react';
-import {cva } from 'class-variance-authority';
+import {cva, cx} from 'class-variance-authority';
 import {
-  SelectMinor
+  SelectMinor,
   ChevronDownMinor,
   ChevronUpMinor,
 } from '@shopify/polaris-icons';
 
 import type {BaseButton, IconSource} from '../../types';
-import {classNames} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 import type {MouseUpBlurHandler} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
@@ -178,9 +177,7 @@ export function Button({
 
   const disclosureMarkup = disclosure ? (
     <span className={styles.Icon}>
-      <div
-        className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
-      >
+      <div className={cx(styles.DisclosureIcon, loading && styles.hidden)}>
         <Icon
           source={
             loading
@@ -202,17 +199,14 @@ export function Button({
     icon
   );
   const iconMarkup = iconSource ? (
-    <span className={classNames(styles.Icon, loading && styles.hidden)}>
+    <span className={cx(styles.Icon, loading && styles.hidden)}>
       {iconSource}
     </span>
   ) : null;
 
   const childMarkup = children ? (
     <span
-      className={classNames(
-        styles.Text,
-        removeUnderline && styles.removeUnderline,
-      )}
+      className={cx(styles.Text, removeUnderline && styles.removeUnderline)}
       // Fixes Safari bug that doesn't re-render button text to correct color
       key={disabled ? 'text-disabled' : 'text'}
     >
