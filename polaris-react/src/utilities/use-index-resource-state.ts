@@ -53,6 +53,8 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
       selectionType: SelectionType,
       isSelecting: boolean,
       selection?: string | Range,
+      // This is not used in the function, but needed to keep the type compatible with IndexProviderProps onSelectionChange
+      _position?: number,
     ) => {
       if (selectionType === SelectionType.All) {
         setAllResourcesSelected(isSelecting);
