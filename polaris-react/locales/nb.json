@@ -347,7 +347,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Vis handlinger for {title}"
+        "rollupActionsLabel": "Vis handlinger for {title}",
+        "pageReadyAccessibilityLabel": "{title}. Denne siden er klar"
       }
     },
     "FullscreenBar": {
