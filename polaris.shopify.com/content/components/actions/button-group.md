@@ -35,7 +35,7 @@ previewImg: /images/components/actions/button-group.png
 
 <Lede>
 
-Button group displays multiple related actions stacked or in a horizontal row to help with arrangement and spacing.
+Button group displays multiple related actions in a horizontal row to help with arrangement and spacing.
 
 </Lede>
 
