@@ -180,7 +180,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
     computeTableDimensions,
-  } = useIsSelectAllActionsSticky(selectMode);
+  } = useIsSelectAllActionsSticky(selectMode, Boolean(pagination));
 
   useEffect(() => {
     computeTableDimensions();
