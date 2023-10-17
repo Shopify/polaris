@@ -41,7 +41,9 @@ export interface ButtonProps extends BaseButton {
   dataPrimaryLink?: boolean;
   /** Sets the color treatment of the Button. */
   tone?: 'critical' | 'success';
-  /** Changes the visual appearance of the Button. */
+  /** Changes the visual appearance of the Button.
+   * @default 'secondary'
+   */
   variant?: 'primary' | 'secondary' | 'tertiary' | 'plain' | 'monochromePlain';
 }
 
@@ -119,7 +121,7 @@ export function Button({
   fullWidth,
   dataPrimaryLink,
   tone,
-  variant,
+  variant = 'secondary',
 }: ButtonProps) {
   const i18n = useI18n();
 
