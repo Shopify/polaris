@@ -110,11 +110,24 @@ export function WithoutPrimaryActionInHeader() {
   );
 }
 
-export function WithDestructiveSecondaryAction() {
+export function WithDestructiveAndPlainSecondaryActions() {
   return (
     <Page
       title="General"
-      secondaryActions={[{content: 'Delete', tone: 'critical'}]}
+      secondaryActions={[
+        {
+          content: 'Edit',
+          variant: 'plain',
+        },
+        {
+          content: 'Delete',
+          destructive: true,
+        },
+        {
+          content: 'Delete',
+          tone: 'critical',
+        },
+      ]}
     >
       <p>Page content</p>
     </Page>

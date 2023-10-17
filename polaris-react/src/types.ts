@@ -2,6 +2,7 @@ import type React from 'react';
 
 /* eslint-disable @shopify/strict-component-boundaries */
 import type {AvatarProps} from './components/Avatar';
+import type {ButtonProps} from './components/Button';
 import type {IconProps} from './components/Icon';
 import type {ThumbnailProps} from './components/Thumbnail';
 /* eslint-enable @shopify/strict-component-boundaries */
@@ -158,7 +159,9 @@ export interface DisableableAction extends Action {
 
 export interface DestructableAction extends Action {
   /** Destructive action */
+  /** @deprecated Use tone instead */
   destructive?: boolean;
+  tone?: Extract<ButtonProps['tone'], 'critical'>;
 }
 
 export interface IconableAction extends Action {
@@ -173,11 +176,13 @@ export interface LoadableAction extends Action {
 
 export interface OutlineableAction extends Action {
   /** Should action be displayed as an outlined button */
+  /** @deprecated Use variant instead */
   outline?: boolean;
 }
 
 export interface PlainAction extends Action {
   /** Should action be displayed as a plain link */
+  /** @deprecated Use variant instead */
   plain?: boolean;
 }
 
@@ -213,7 +218,7 @@ export interface ActionListItemDescriptor
   /** Whether the action is active or not */
   active?: boolean;
   /** The item variations */
-  variant?: 'default' | 'menu' | 'indented';
+  variant?: ButtonProps['variant'] | 'default' | 'menu' | 'indented';
   /** Defines a role for the action */
   role?: string;
 }

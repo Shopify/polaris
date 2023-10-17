@@ -42,7 +42,7 @@ export interface ButtonProps extends BaseButton {
   /** Sets the color treatment of the Button. */
   tone?: 'critical' | 'success';
   /** Changes the visual appearance of the Button. */
-  variant?: 'plain' | 'primary' | 'tertiary' | 'monochromePlain';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'plain' | 'monochromePlain';
 }
 
 interface CommonButtonProps

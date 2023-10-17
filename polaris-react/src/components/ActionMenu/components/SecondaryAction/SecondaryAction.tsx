@@ -2,14 +2,16 @@ import React, {useEffect, useRef} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {Tooltip} from '../../../Tooltip';
-import {Button} from '../../../Button';
 import type {ButtonProps} from '../../../Button';
+import {Button} from '../../../Button';
+import type {MenuActionDescriptor} from '../../../../types';
 
 import styles from './SecondaryAction.scss';
 
-interface SecondaryAction extends ButtonProps {
+interface SecondaryAction
+  extends ButtonProps,
+    Omit<MenuActionDescriptor, 'icon' | 'tone' | 'variant'> {
   helpText?: React.ReactNode;
-  onAction?(): void;
   getOffsetWidth?(width: number): void;
 }
 
@@ -30,7 +32,12 @@ export function SecondaryAction({
   }, [getOffsetWidth]);
 
   const buttonMarkup = (
-    <Button onClick={onAction} {...rest}>
+    <Button
+      onClick={onAction}
+      tone={rest.destructive ? 'critical' : undefined}
+      variant={rest.plain || rest.outline ? 'plain' : undefined}
+      {...rest}
+    >
       {children}
     </Button>
   );
