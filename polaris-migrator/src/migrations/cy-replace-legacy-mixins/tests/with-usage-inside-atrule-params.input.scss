@@ -1,0 +1,9 @@
+@use 'global-styles/legacy-polaris-v8';
+
+.CloseButton {
+  @include legacy-polaris-v8.unstyled-button;
+
+  @media (min-width: #{legacy-polaris-v8.layout-width(primary, max)}) {
+    display: none;
+  }
+}

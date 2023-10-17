@@ -1,0 +1,14 @@
+@use 'global-styles/legacy-polaris-v8';
+@use 'global-styles/common';
+@use '../../variables';
+
+.CloseButton {
+  @include legacy-polaris-v8.unstyled-button;
+
+  height: legacy-polaris-v8.control-height();
+  height: legacy-polaris-v8.top-bar-height();
+
+  #{common.$se23} & {
+    background: black;
+  }
+}

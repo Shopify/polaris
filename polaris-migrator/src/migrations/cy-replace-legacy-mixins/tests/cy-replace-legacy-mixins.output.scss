@@ -1,0 +1,27 @@
+@import 'global/legacy-polaris-v8.css';
+
+.CloseButton {
+  @include legacy-polaris-v8-unstyled-button;
+  @include legacy-polaris-v8-focus-ring;
+  @include legacy-polaris-v8-focus-ring-focused;
+  @include legacy-polaris-v8-no-focus-ring;
+  @include legacy-polaris-v8-visually-hidden;
+  @include legacy-polaris-v8-base-button-disabled;
+  @include legacy-polaris-v8-unstyled-button;
+  @include legacy-polaris-v8-unstyled-link;
+  @include legacy-polaris-v8-unstyled-list;
+  @include legacy-polaris-v8-page-content-layout;
+  @include legacy-polaris-v8-page-header-layout;
+  @include legacy-polaris-v8-text-style-caption;
+  @include legacy-polaris-v8-text-style-heading;
+  @include legacy-polaris-v8-text-style-subheading;
+  @include legacy-polaris-v8-text-style-input;
+  @include legacy-polaris-v8-text-style-body;
+  @include legacy-polaris-v8-text-style-display-large;
+  @include legacy-polaris-v8-text-style-display-medium;
+  @include legacy-polaris-v8-text-style-display-small;
+  @include legacy-polaris-v8-text-breakword;
+  @include legacy-polaris-v8-truncate;
+  @include legacy-polaris-v8-skeleton-shimmer;
+  @include legacy-polaris-v8-skeleton-content;
+}

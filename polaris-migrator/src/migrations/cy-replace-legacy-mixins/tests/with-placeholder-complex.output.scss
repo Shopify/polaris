@@ -1,0 +1,10 @@
+@use 'global-styles/legacy-polaris-v8';
+
+.Card,
+%Card {
+  height: 20px;
+}
+
+.CloseButton {
+  @include legacy-polaris-v8.unstyled-button;
+}

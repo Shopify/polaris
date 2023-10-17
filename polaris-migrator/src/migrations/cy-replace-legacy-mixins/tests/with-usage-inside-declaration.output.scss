@@ -1,0 +1,8 @@
+@import 'global/legacy-polaris-v8.css';
+
+.CloseButton {
+  @include legacy-polaris-v8-unstyled-button;
+
+  height: $legacy-polaris-v8-control-height;
+  height: $legacy-polaris-v8-top-bar-height;
+}

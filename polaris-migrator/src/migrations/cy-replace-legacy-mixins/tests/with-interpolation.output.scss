@@ -1,0 +1,9 @@
+@use 'global-styles/legacy-polaris-v8';
+
+$foo: 1px;
+
+.CloseButton {
+  @include legacy-polaris-v8.unstyled-button;
+
+  height: #{$foo};
+}

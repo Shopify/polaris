@@ -1,0 +1,17 @@
+@import 'global/legacy-polaris-v8.css';
+@import 'global/common.css';
+
+.CloseButton {
+  @include legacy-polaris-v8-unstyled-button;
+
+  height: $legacy-polaris-v8-control-height;
+  height: $legacy-polaris-v8-top-bar-height;
+
+  @include summer-editions-2023 {
+    background: black;
+  }
+
+  @include summer-editions-2023 {
+    background: green;
+  }
+}
