@@ -902,8 +902,8 @@ function IndexTableBase({
 
     const defaultHeaderTooltipProps = {
       ...defaultTooltipProps,
-      padding: '4' as Padding,
-      borderRadius: '2' as BorderRadius,
+      padding: '400' as Padding,
+      borderRadius: '200' as BorderRadius,
       content: heading.tooltipContent,
       preferredPosition: 'above' as TooltipOverlayProps['preferredPosition'],
     };
