@@ -37,7 +37,7 @@ function Layout({
     githubIssueSubject,
   )}&amp;labels=polaris.shopify.com`;
   const editOnGithubUrl = editPageLinkPath
-    ? `https://github.com/Shopify/polaris/tree/main${editPageLinkPath}`
+    ? `https://github.com/Shopify/polaris/tree/main/${editPageLinkPath}`
     : '';
 
   return (
