@@ -4,7 +4,7 @@ import {mount} from 'tests/utilities';
 import {isInputFocused} from '../is-input-focused';
 
 describe('isInputFocused', () => {
-  it('returns true when the the focused element is not input, textarea, select or has the attribute contenteditable', () => {
+  it('returns true when the focused element is not input, textarea, select or has the attribute contenteditable', () => {
     const markup = mount(<button />);
     markup.domNode!.focus();
     expect(isInputFocused()).toBe(false);
