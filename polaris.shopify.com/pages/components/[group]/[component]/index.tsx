@@ -135,7 +135,7 @@ export const getStaticProps: GetStaticProps<
     let type = getRelevantTypes(
       allType,
       propName,
-      `polaris-react/src/components/${componentDirName}/${componentDirName}.tsx`,
+      `packages/polaris-react/src/components/${componentDirName}/${componentDirName}.tsx`,
       mdx.frontmatter.status || '',
     );
 

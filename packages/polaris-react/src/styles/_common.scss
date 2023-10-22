@@ -17,7 +17,7 @@
 @import './shared/typography';
 @import './shared/interaction-state';
 
-@import '../../../node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
+@import '../../../../node_modules/@shopify/polaris-tokens/dist/scss/media-queries';
 
 // Ideally we'd use :where here so we don't introduce higher specificity with the
 // tag+attribute selector.

@@ -7,12 +7,7 @@
   },
   "workspaces": {
     "packages": [
-      "polaris-tokens",
-      "polaris-for-vscode",
-      "polaris-icons",
-      "polaris-migrator",
-      "polaris-react",
-      "stylelint-polaris",
+      "packages/*",
       "polaris.shopify.com"
     ],
     "nohoist": [
@@ -88,22 +83,22 @@
   "size-limit": [
     {
       "name": "polaris-react-cjs",
-      "path": "polaris-react/build/cjs/index.js",
+      "path": "packages/polaris-react/build/cjs/index.js",
       "limit": "250 kB"
     },
     {
       "name": "polaris-react-esm",
-      "path": "polaris-react/build/esm/index.js",
+      "path": "packages/polaris-react/build/esm/index.js",
       "limit": "165 kB"
     },
     {
       "name": "polaris-react-esnext",
-      "path": "polaris-react/build/esnext/index.esnext",
+      "path": "packages/polaris-react/build/esnext/index.esnext",
       "limit": "225 kB"
     },
     {
       "name": "polaris-react-css",
-      "path": "polaris-react/build/esm/styles.css",
+      "path": "packages/polaris-react/build/esm/styles.css",
       "limit": "50 kB"
     }
   ]

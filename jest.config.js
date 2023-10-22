@@ -1,11 +1,9 @@
 module.exports = {
   projects: [
-    // '<rootDir>/polaris-for-vscode',
-    '<rootDir>/polaris-icons',
-    '<rootDir>/polaris-react',
-    '<rootDir>/polaris-tokens',
-    // '<rootDir>/polaris.shopify.com',
-    '<rootDir>/stylelint-polaris',
+    '<rootDir>/packages/polaris-icons',
+    '<rootDir>/packages/polaris-react',
+    '<rootDir>/packages/polaris-tokens',
+    '<rootDir>/packages/stylelint-polaris',
   ],
   watchPlugins: [
     'jest-watch-typeahead/filename',
