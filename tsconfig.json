@@ -1,11 +1,11 @@
 {
   "files": [],
   "references": [
-    {"path": "./polaris-for-vscode"},
-    {"path": "./polaris-migrator"},
-    {"path": "./polaris-react"},
-    {"path": "./polaris-tokens"},
-    {"path": "./polaris.shopify.com"},
-    {"path": "./stylelint-polaris"}
+    {"path": "./packages/polaris-for-vscode"},
+    {"path": "./packages/polaris-migrator"},
+    {"path": "./packages/polaris-react"},
+    {"path": "./packages/polaris-tokens"},
+    {"path": "./packages/stylelint-polaris"},
+    {"path": "./polaris.shopify.com"}
   ]
 }

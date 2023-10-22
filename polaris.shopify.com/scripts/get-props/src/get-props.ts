@@ -278,8 +278,8 @@ function getSymbolComment(
 const isExecutedThroughCommandLine = require.main === module;
 if (isExecutedThroughCommandLine) {
   globby([
-    '../polaris-react/src/**/*.ts',
-    '../polaris-react/src/**/*.tsx',
+    '../packages/polaris-react/src/**/*.ts',
+    '../packages/polaris-react/src/**/*.tsx',
   ]).then((files) => {
     let filesWithoutTests = files.filter((file) => !file.endsWith('test.tsx'));
     const ast = getProps(filesWithoutTests);

@@ -28,12 +28,7 @@ module.exports = {
       rootDir: 'polaris.shopify.com',
     },
   },
-  ignorePatterns: [
-    'node_modules',
-    'dist',
-    'polaris-react/build',
-    'polaris-react/build-internal',
-  ],
+  ignorePatterns: ['node_modules', 'dist', 'build', 'build-internal'],
   rules: {
     'func-style': 'off',
     'no-process-env': 'off',
@@ -99,13 +94,13 @@ module.exports = {
   overrides: [
     ...packages.map((packageDir) => noExtraneousDependenciesConfig(packageDir)),
     {
-      files: ['polaris-migrator/src/**/*.{ts,tsx}'],
+      files: ['packages/polaris-migrator/src/**/*.{ts,tsx}'],
       rules: {
         'import/no-default-export': 'off',
       },
     },
     {
-      files: ['polaris-migrator/src/**/tests/*.{ts,tsx}'],
+      files: ['packages/polaris-migrator/src/**/tests/*.{ts,tsx}'],
       rules: {
         'import/no-extraneous-dependencies': 'off',
         '@shopify/jsx-no-hardcoded-content': 'off',
@@ -113,7 +108,7 @@ module.exports = {
       },
     },
     {
-      files: ['polaris-react/src/**/*.{ts,tsx}'],
+      files: ['packages/polaris-react/src/**/*.{ts,tsx}'],
       extends: ['plugin:@shopify/typescript-type-checking'],
       rules: {
         '@typescript-eslint/prefer-readonly': 'off',
@@ -122,7 +117,7 @@ module.exports = {
       },
     },
     {
-      files: ['*/rollup.config.mjs'],
+      files: ['**/rollup.config.mjs'],
       rules: {
         'import/extensions': 'off',
         'import/no-default-export': 'off',
@@ -141,8 +136,8 @@ module.exports = {
     },
     {
       files: [
-        'polaris-react/playground/*.tsx',
-        'polaris-react/src/components/**/*.stories.tsx',
+        'packages/polaris-react/playground/*.tsx',
+        'packages/polaris-react/src/components/**/*.stories.tsx',
       ],
       rules: {
         'react/prefer-stateless-function': 'off',
@@ -154,9 +149,15 @@ module.exports = {
       },
     },
     {
-      files: ['polaris-tokens/**/*'],
+      files: ['packages/polaris-tokens/**/*'],
       rules: {
         'node/no-unsupported-features/node-builtins': 'off',
+      },
+    },
+    {
+      files: ['packages/stylelint-polaris/**/*.test.js'],
+      globals: {
+        testRule: 'readonly',
       },
     },
     {
@@ -173,12 +174,6 @@ module.exports = {
       rules: {
         '@typescript-eslint/triple-slash-reference': 'off',
         'spaced-comment': 'off',
-      },
-    },
-    {
-      files: ['stylelint-polaris/**/*.test.js'],
-      globals: {
-        testRule: 'readonly',
       },
     },
   ],

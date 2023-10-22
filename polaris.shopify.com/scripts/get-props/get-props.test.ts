@@ -4,7 +4,7 @@ import path from 'path';
 it('Normalizes paths', () => {
   expect(
     normalizePath(
-      '/Users/martenbjork/my-files/src/polaris/polaris-react/foo.tsx',
+      '/Users/martenbjork/my-files/src/polaris/packages/polaris-react/foo.tsx',
     ),
   ).toEqual('polaris-react/foo.tsx');
 

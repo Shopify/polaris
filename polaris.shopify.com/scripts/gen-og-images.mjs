@@ -71,7 +71,7 @@ const generateHTML = async (url, slug) => {
     if (data.icon && data.icon in polarisIcons) {
       const iconFilePath = path.join(
         process.cwd(),
-        `../polaris-icons/dist/svg/${data.icon}.svg`,
+        `../packages/polaris-icons/dist/svg/${data.icon}.svg`,
       );
       const iconData = await readFile(iconFilePath);
 

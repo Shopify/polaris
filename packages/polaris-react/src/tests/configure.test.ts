@@ -7,7 +7,10 @@ import {DEFAULT_LOCALE, SUPPORTED_LOCALES} from '..';
 
 describe('DEFAULT_LOCALE', () => {
   it('matches `source_language` in `translation.yml`', () => {
-    const translationYmlPath = resolve(__dirname, '../../../translation.yml');
+    const translationYmlPath = resolve(
+      __dirname,
+      '../../../../translation.yml',
+    );
     const sourceLanguage = (
       yaml.load(readFileSync(translationYmlPath, 'utf8')) as any
     ).source_language;

@@ -8,12 +8,7 @@
   },
   "include": [
     // Paths to lint
-    "polaris-codemods",
-    "polaris-for-vscode",
-    "polaris-migrator",
-    "polaris-react",
-    "polaris-tokens",
-    "polaris.shopify.com",
-    "stylelint-polaris"
+    "packages",
+    "polaris.shopify.com"
   ]
 }

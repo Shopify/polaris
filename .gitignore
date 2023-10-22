@@ -9,10 +9,10 @@
 dist
 node_modules
 Session.vim
-/polaris-react/build
-/polaris-react/build-internal
-/polaris-react/src/styles/_media-queries.scss
-/polaris-tokens/build
+/packages/polaris-react/build
+/packages/polaris-react/build-internal
+/packages/polaris-react/src/styles/_media-queries.scss
+/packages/polaris-tokens/build
 /polaris.shopify.com/.cache/
 /polaris.shopify.com/public/sitemap.xml
 /polaris.shopify.com/public/og-images

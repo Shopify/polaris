@@ -6,16 +6,16 @@ on:
       - main
       - next
     paths:
-      - 'polaris-react/src/**'
-      - 'polaris-react/playground/**'
-      - 'polaris-react/.storybook/**'
-      - 'polaris-tokens/src/**'
+      - 'packages/polaris-react/src/**'
+      - 'packages/polaris-react/playground/**'
+      - 'packages/polaris-react/.storybook/**'
+      - 'packages/polaris-tokens/src/**'
   pull_request:
     paths:
-      - 'polaris-react/src/**'
-      - 'polaris-react/playground/**'
-      - 'polaris-react/.storybook/**'
-      - 'polaris-tokens/src/**'
+      - 'packages/polaris-react/src/**'
+      - 'packages/polaris-react/playground/**'
+      - 'packages/polaris-react/.storybook/**'
+      - 'packages/polaris-tokens/src/**'
 
 jobs:
   accessibility_test:

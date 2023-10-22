@@ -1,6 +1,9 @@
 /** @type {import('stylelint').Config} */
 module.exports = {
-  extends: ['@shopify/stylelint-plugin/prettier', './stylelint-polaris'],
+  extends: [
+    '@shopify/stylelint-plugin/prettier',
+    './packages/stylelint-polaris',
+  ],
   // Disabling @shopify/stylelint-plugin/configs/core no-unknown-animations as stylelint is not aware of global Polaris keyframes
   // TODO: create custom plugin to ensure animation-names match Polaris keyframe names
   customSyntax: 'postcss-scss',
@@ -10,7 +13,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['polaris-migrator/**/tests/*.{css,scss}'],
+      files: ['packages/polaris-migrator/**/tests/*.{css,scss}'],
       rules: {
         'comment-empty-line-before': null,
         'declaration-property-value-disallowed-list': null,
@@ -23,9 +26,9 @@ module.exports = {
     '**/node_modules/**/*.{css,scss}',
     '**/dist/**/*.{css,scss}',
     'documentation/guides/legacy-polaris-v8-public-api.scss',
-    'polaris-react/build/**/*.{css,scss}',
-    'polaris-react/build-internal/**/*.{css,scss}',
-    'stylelint-polaris/tests/**/*.{css,scss}',
+    'packages/polaris-react/build/**/*.{css,scss}',
+    'packages/polaris-react/build-internal/**/*.{css,scss}',
+    'packages/stylelint-polaris/tests/**/*.{css,scss}',
     // TODO: Remove and address stylelint errors
     'polaris.shopify.com/**/*.{css,scss}',
   ],
