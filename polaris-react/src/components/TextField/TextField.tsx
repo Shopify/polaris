@@ -249,6 +249,7 @@ export function TextField({
   const uniqId = useId();
   const id = idProp ?? uniqId;
 
+  const textFieldRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const prefixRef = useRef<HTMLDivElement>(null);
@@ -603,7 +604,7 @@ export function TextField({
       readOnly={readOnly}
     >
       <Connected left={connectedLeft} right={connectedRight}>
-        <div className={className} onClick={handleClick}>
+        <div className={className} onClick={handleClick} ref={textFieldRef}>
           {prefixMarkup}
           {inputMarkup}
           {suffixMarkup}
@@ -734,6 +735,11 @@ export function TextField({
   }
 
   function handleOnBlur(event: React.FocusEvent) {
+    // Return early if new focus target is inside the TextField component
+    if (textFieldRef.current?.contains(event?.relatedTarget)) {
+      return;
+    }
+
     setFocus(false);
 
     if (onBlur) {
