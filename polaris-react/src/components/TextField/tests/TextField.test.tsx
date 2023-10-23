@@ -242,6 +242,55 @@ describe('<TextField />', () => {
       element.find('input')!.trigger('onBlur');
       expect(spy).toHaveBeenCalled();
     });
+
+    it('is called when the Spinner is blurred', () => {
+      const spy = jest.fn();
+      const element = mountWithApp(
+        <TextField
+          label="TextField"
+          onBlur={spy}
+          onChange={noop}
+          type="number"
+          autoComplete="off"
+        />,
+      );
+      element.find(Spinner)!.trigger('onBlur');
+      expect(spy).toHaveBeenCalled();
+    });
+
+    it('is not called when the input is blurred and focus moves to the Spinner', () => {
+      const spy = jest.fn();
+      const element = mountWithApp(
+        <TextField
+          label="TextField"
+          onBlur={spy}
+          onChange={noop}
+          type="number"
+          autoComplete="off"
+        />,
+      );
+      const relatedTarget = element.find(Spinner)!.domNode;
+
+      element.find('input')!.trigger('onBlur', {relatedTarget});
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('is not called when the Spinner is blurred and focus moves to the input', () => {
+      const spy = jest.fn();
+      const element = mountWithApp(
+        <TextField
+          label="TextField"
+          onBlur={spy}
+          onChange={noop}
+          type="number"
+          autoComplete="off"
+        />,
+      );
+      const relatedTarget = element.find('input')!.domNode;
+
+      element.find(Spinner)!.trigger('onBlur', {relatedTarget});
+      expect(spy).not.toHaveBeenCalled();
+    });
   });
 
   describe('id', () => {
