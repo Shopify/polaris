@@ -28,10 +28,10 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
     helpTextElement = (
       <Box
         id={helpTextID}
-        paddingBlockStart="200"
-        paddingInlineStart="200"
+        paddingBlockStart="400"
+        paddingInlineStart="400"
         paddingBlockEnd="0"
-        paddingInlineEnd="200"
+        paddingInlineEnd="400"
         color="text-secondary"
       >
         {helpText}

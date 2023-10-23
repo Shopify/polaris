@@ -1,15 +1,16 @@
 @import '../../styles/common';
 
 $item-min-size: 220px;
+$item-spacing: var(--p-space-400);
 
 .FormLayout {
-  margin-top: calc(-1 * var(--p-space-200));
-  margin-left: calc(-1 * var(--p-space-200));
+  margin-top: calc(-1 * #{$item-spacing});
+  margin-left: calc(-1 * #{$item-spacing});
 }
 
 .Title {
   margin-bottom: 0;
-  padding: var(--p-space-200) var(--p-space-200) 0;
+  padding: $item-spacing $item-spacing 0;
 }
 
 .Items {
@@ -19,9 +20,9 @@ $item-min-size: 220px;
 
 .Item {
   flex: 1 1 $item-min-size;
-  margin-top: var(--p-space-200);
-  margin-left: var(--p-space-200);
-  max-width: calc(100% - var(--p-space-200));
+  margin-top: $item-spacing;
+  margin-left: $item-spacing;
+  max-width: calc(100% - $item-spacing);
 
   .grouped & {
     min-width: $item-min-size;
