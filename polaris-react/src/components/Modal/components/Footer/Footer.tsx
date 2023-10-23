@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type {ComplexAction} from '../../../../types';
-import {buttonsFrom} from '../../../Button';
+import {buttonFrom, buttonsFrom} from '../../../Button';
 import {Box} from '../../../Box';
 import {InlineStack} from '../../../InlineStack';
 
@@ -20,9 +20,21 @@ export function Footer({
   children,
 }: FooterProps) {
   const primaryActionButton =
-    (primaryAction && buttonsFrom(primaryAction, {variant: 'primary'})) || null;
+    (primaryAction &&
+      buttonsFrom(primaryAction, {
+        variant: 'primary',
+        tone: primaryAction?.destructive ? 'critical' : primaryAction.tone,
+      })) ||
+    null;
   const secondaryActionButtons =
-    (secondaryActions && buttonsFrom(secondaryActions)) || null;
+    (secondaryActions &&
+      secondaryActions.map((action) =>
+        buttonFrom(action, {
+          tone: action.destructive ? 'critical' : action.tone,
+          variant: action.plain ? 'plain' : action.variant,
+        }),
+      )) ||
+    null;
   const actions =
     primaryActionButton || secondaryActionButtons ? (
       <InlineStack gap="200">

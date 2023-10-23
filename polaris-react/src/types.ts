@@ -184,6 +184,8 @@ export interface PlainAction extends Action {
   /** Should action be displayed as a plain link */
   /** @deprecated Use variant instead */
   plain?: boolean;
+  /** Should action be displayed as a plain link */
+  variant?: Extract<ButtonProps['variant'], 'plain'>;
 }
 
 export interface TooltipAction {
@@ -218,7 +220,11 @@ export interface ActionListItemDescriptor
   /** Whether the action is active or not */
   active?: boolean;
   /** The item variations */
-  variant?: ButtonProps['variant'] | 'default' | 'menu' | 'indented';
+  variant?:
+    | 'default'
+    | 'menu'
+    | 'indented'
+    | Extract<ButtonProps['variant'], 'plain'>;
   /** Defines a role for the action */
   role?: string;
 }
