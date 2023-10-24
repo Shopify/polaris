@@ -38,12 +38,14 @@ export function PageActions({
   if (isInterface(secondaryActions) && secondaryActions.length > 0) {
     secondaryActionsMarkup = (
       <ButtonGroup>
-        {secondaryActions.map((action) =>
-          buttonFrom(action, {
-            tone: action.destructive ? 'critical' : undefined,
-            variant: action.plain ? 'plain' : undefined,
-          }),
-        )}
+        {secondaryActions.map((action) => {
+          const plainVariant = action.plain ? 'plain' : undefined;
+          const primaryVariant = action.destructive ? 'primary' : undefined;
+          return buttonFrom(action, {
+            tone: action.destructive ? 'critical' : action.tone,
+            variant: plainVariant ?? primaryVariant ?? action.variant,
+          });
+        })}
       </ButtonGroup>
     );
   } else if (isReactElement(secondaryActions)) {

@@ -14,8 +14,13 @@ export function Default() {
       }}
       secondaryActions={[
         {
+          content: 'Archive',
+          variant: 'primary',
+        },
+        {
           content: 'Delete',
           tone: 'critical',
+          variant: 'primary',
         },
       ]}
     />
@@ -52,7 +57,7 @@ export function WithCustomSecondaryAction() {
       primaryAction={{
         content: 'Save',
       }}
-      secondaryActions={<Button>Save</Button>}
+      secondaryActions={<Button>Cancel</Button>}
     />
   );
 }

@@ -120,8 +120,7 @@ export function WithDestructiveAndPlainSecondaryActions() {
           variant: 'plain',
         },
         {
-          content: 'Delete',
-          destructive: true,
+          content: 'Duplicate',
         },
         {
           content: 'Delete',
