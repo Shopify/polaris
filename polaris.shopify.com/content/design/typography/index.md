@@ -64,12 +64,12 @@ Polaris assigns meaning to type based on its usage. Mono is used for code; tabul
 
   </Do>
 
-  <Do>
+  <Dont>
     ![A list of products with an “add product” button that is style like a link](/images/design/typography/typography-overview-06-purpose-dont@2x.png)
 
     Repurpose or reinterpret known patterns in typography, especially when it comes to interactions.
 
-  </Do>
+  </Dont>
 </InlineGrid>
 
 </Stack>
