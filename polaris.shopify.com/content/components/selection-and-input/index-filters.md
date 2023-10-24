@@ -61,7 +61,7 @@ You can create views and control which actions can be performed on a particular 
 
 ## Anatomy
 
-![A diagram of the IndexFilters component showing the components it is composed of.](/images/components/selection-and-input/index-filters/index-filters-anatomy.png)
+![A diagram of the IndexFilters component showing the components it is composed of.](/images/components/selection-and-input/index-filters/index-filters-anatomy@2x.png)
 Index filters are made up of the following:
 
 1. **Tabs**: A list of saved views. Each tab represents a subset of the list that has been sorted, filtered, and or queried and saved with a unique name. New views can be created directly from the tab list, or by editing the filters, query, or sort selection of an existing view and saving it as new.

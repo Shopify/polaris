@@ -201,13 +201,15 @@ Tertiary actions should:
 
 #### Do
 
-- Use a plain button for a tertiary action if needed
-  ![Screenshot of modal with a plain button as a tertiary action](/images/components/overlays/modal/do-use-plain-button-for-tertiary-action@2x.png)
+![Screenshot of modal with a plain button as a tertiary action](/images/components/overlays/modal/do-use-plain-button-for-tertiary-action@2x.png)
+
+Use a plain button for a tertiary action if needed
 
 #### Don’t
 
-- Use a tertiary action for a destructive action
-  ![Screenshot of modal with a destructive button as a tertiary action](/images/components/overlays/modal/dont-use-destructive-tertiary-action@2x.png)
+![Screenshot of modal with a destructive button as a tertiary action](/images/components/overlays/modal/dont-use-destructive-tertiary-action@2x.png)
+
+Use a tertiary action for a destructive action
 
 </DoDont>
 
