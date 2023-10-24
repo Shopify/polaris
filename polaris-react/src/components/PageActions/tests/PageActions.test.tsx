@@ -4,7 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 import {ButtonGroup} from '../../ButtonGroup';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../../LegacyStack';
-import {buttonsFrom} from '../../Button';
+import {Button, buttonsFrom} from '../../Button';
 import {PageActions} from '../PageActions';
 
 jest.mock('../../Button', () => ({
@@ -55,13 +55,17 @@ describe('<PageActions />', () => {
       {
         content: 'Delete',
         destructive: true,
-        outline: true,
       },
     ];
 
     it('renders buttons for each secondaryAction', () => {
-      mountWithApp(<PageActions secondaryActions={mockActions} />);
-      expect(buttonsFrom).toHaveBeenCalledWith(mockActions);
+      const actions = mountWithApp(
+        <PageActions secondaryActions={mockActions} />,
+      );
+      expect(actions).toContainReactComponent(Button, {
+        children: mockActions[0].content,
+        tone: 'critical',
+      });
     });
 
     it('renders a button group when defined', () => {

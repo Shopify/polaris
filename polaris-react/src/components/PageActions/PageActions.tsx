@@ -40,8 +40,8 @@ export function PageActions({
       <ButtonGroup>
         {secondaryActions.map((action) =>
           buttonFrom(action, {
-            tone: action.destructive ? 'critical' : action.tone,
-            variant: action.plain ? 'plain' : action.variant,
+            tone: action.destructive ? 'critical' : undefined,
+            variant: action.plain ? 'plain' : undefined,
           }),
         )}
       </ButtonGroup>
