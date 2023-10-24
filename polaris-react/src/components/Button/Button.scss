@@ -765,7 +765,8 @@
   }
 
   &.sizeLarge {
-    margin: calc(-1 * var(var(--p-space-200))) calc(-1 * var(--p-space-500));
+    margin-block: calc(-1 * var(var(--p-space-200)));
+    margin-inline: calc(-1 * var(--p-space-500));
   }
 
   &.iconOnly {
@@ -916,7 +917,8 @@
   min-height: var(--pc-button-large-min-height);
   /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom height */
   min-width: var(--pc-button-large-min-height);
-  padding: var(var(--p-space-200)) var(--p-space-300);
+  padding-block: var(var(--p-space-200));
+  padding-inline: var(--p-space-300);
 
   .Content {
     font-size: var(--p-font-size-325);
@@ -941,15 +943,6 @@
   &:focus,
   &:active {
     color: currentColor;
-
-    svg {
-      fill: currentColor;
-    }
-  }
-
-  &.disabled {
-    color: currentColor;
-    opacity: 0.4;
 
     svg {
       fill: currentColor;
