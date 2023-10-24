@@ -75,7 +75,11 @@ const replacementMap1 = {
   '--p-color-bg-inset-strong': '--p-color-bg-fill-inverse',
   '--p-color-bg-inset': '--p-color-bg-fill-secondary',
   '--p-color-bg-interactive': '--p-color-bg-fill-brand',
+  '--p-color-bg-interactive-active': '--p-color-bg-fill-brand-active',
+  '--p-color-bg-interactive-disabled': '--p-color-bg-surface-disabled',
+  '--p-color-bg-interactive-hover': '--p-color-bg-fill-brand-hover',
   '--p-color-bg-interactive-selected': '--p-color-bg-surface-brand-selected',
+  '--p-color-bg-interactive-subdued': '--p-color-bg-surface-brand',
   '--p-color-bg-interactive-subdued-active':
     '--p-color-bg-surface-brand-active',
   '--p-color-bg-interactive-subdued-hover': '--p-color-bg-surface-brand-hover',
