@@ -710,6 +710,12 @@ export function DisabledState() {
       <Button variant="plain" tone="critical" disabled>
         Buy shipping label
       </Button>
+      {/* Visual check to ensure the button color is not inherited from the parent */}
+      <Box color="text-critical">
+        <Button variant="monochromePlain" disabled>
+          Buy shipping label
+        </Button>
+      </Box>
     </ButtonGroup>
   );
 }
