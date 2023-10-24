@@ -16,7 +16,6 @@ export function Default() {
         {
           content: 'Delete',
           tone: 'critical',
-          variant: 'primary',
         },
       ]}
     />
@@ -41,7 +40,6 @@ export function WithCustomPrimaryAction() {
         {
           content: 'Delete',
           tone: 'critical',
-          variant: 'primary',
         },
       ]}
     />
