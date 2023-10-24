@@ -39,7 +39,7 @@ A Listbox is a vertical list of interactive options, with room for icons, descri
 
 ## Anatomy
 
-![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/images/components/lists/listbox/listbox-anatomy.png)
+![A diagram of the Listbox component showing the smaller primitive components it can be composed of.](/images/components/lists/listbox/listbox-anatomy@2x.png)
 
 A listbox can be composed of:
 
