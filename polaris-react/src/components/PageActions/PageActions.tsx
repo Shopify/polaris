@@ -8,7 +8,7 @@ import type {
 // eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 import {ButtonGroup} from '../ButtonGroup';
-import {buttonsFrom} from '../Button';
+import {buttonFrom, buttonsFrom} from '../Button';
 import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';
 
@@ -37,7 +37,14 @@ export function PageActions({
   let secondaryActionsMarkup: MaybeJSX = null;
   if (isInterface(secondaryActions) && secondaryActions.length > 0) {
     secondaryActionsMarkup = (
-      <ButtonGroup>{buttonsFrom(secondaryActions)}</ButtonGroup>
+      <ButtonGroup>
+        {secondaryActions.map((action) =>
+          buttonFrom(action, {
+            tone: action.destructive ? 'critical' : action.tone,
+            variant: action.plain ? 'plain' : action.variant,
+          }),
+        )}
+      </ButtonGroup>
     );
   } else if (isReactElement(secondaryActions)) {
     secondaryActionsMarkup = <>{secondaryActions}</>;
