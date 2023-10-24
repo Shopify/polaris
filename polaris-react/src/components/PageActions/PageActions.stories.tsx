@@ -14,10 +14,6 @@ export function Default() {
       }}
       secondaryActions={[
         {
-          content: 'Archive',
-          variant: 'primary',
-        },
-        {
           content: 'Delete',
           tone: 'critical',
           variant: 'primary',
@@ -45,6 +41,7 @@ export function WithCustomPrimaryAction() {
         {
           content: 'Delete',
           tone: 'critical',
+          variant: 'primary',
         },
       ]}
     />

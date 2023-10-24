@@ -8,7 +8,7 @@ function PageExample() {
       primaryAction={{
         content: 'Save',
       }}
-      secondaryActions={<Button>Save</Button>}
+      secondaryActions={<Button>Cancel</Button>}
     />
   );
 }

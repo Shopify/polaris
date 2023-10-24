@@ -9,7 +9,8 @@ function PageExample() {
       secondaryActions={[
         {
           content: 'Delete',
-          destructive: true,
+          tone: 'critical',
+          variant: 'primary',
         },
       ]}
     />
