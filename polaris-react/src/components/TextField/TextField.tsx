@@ -15,7 +15,7 @@ import {Labelled, helpTextID, labelID} from '../Labelled';
 import type {LabelledProps} from '../Labelled';
 import {Connected} from '../Connected';
 import {Key} from '../../types';
-import type {Error} from '../../types';
+import type {Error, Tone} from '../../types';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
 import {useEventListener} from '../../utilities/use-event-listener';
@@ -51,8 +51,6 @@ type InputMode =
   | 'search'
   | 'email'
   | 'url';
-
-type Tone = 'magic';
 
 interface SelectSuggestion {
   suggestion?: string;

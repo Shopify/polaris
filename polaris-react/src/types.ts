@@ -48,6 +48,8 @@ export type Error =
   | React.ReactElement
   | (string | React.ReactElement)[];
 
+export type Tone = 'magic';
+
 export interface BaseButton {
   /** A unique identifier for the button */
   id?: string;
