@@ -1,5 +1,12 @@
 # Changelog
 
+## 15.0.1
+
+### Patch Changes
+
+- Updated dependencies [[`f1d256fce`](https://github.com/Shopify/polaris/commit/f1d256fcee9594bcb5a03ab8fee591d3832f12c4)]:
+  - @shopify/polaris-tokens@8.0.1
+
 ## 15.0.0
 
 ### Major Changes

@@ -1,5 +1,23 @@
 # polaris.shopify.com
 
+## 0.59.0
+
+### Minor Changes
+
+- [#11030](https://github.com/Shopify/polaris/pull/11030) [`f55a84ce7`](https://github.com/Shopify/polaris/commit/f55a84ce7f24ea8ae4a465eda41e993b02cf59bb) Thanks [@lgriffee](https://github.com/lgriffee)! - Update stylelint-polaris version matchups chart
+
+### Patch Changes
+
+- [#10792](https://github.com/Shopify/polaris/pull/10792) [`2980e9d26`](https://github.com/Shopify/polaris/commit/2980e9d26ef7dd5da399c84c035cf062121bb4bc) Thanks [@SMAKSS](https://github.com/SMAKSS)! - Fixed typos and `editOnGithubUrl` in docs
+
+* [#10974](https://github.com/Shopify/polaris/pull/10974) [`2b3b61069`](https://github.com/Shopify/polaris/commit/2b3b610697223772fdde5663698c085795d56f00) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Removed autoplay from all videos on Motion design guidance pages
+
+- [#10925](https://github.com/Shopify/polaris/pull/10925) [`4590fd828`](https://github.com/Shopify/polaris/commit/4590fd8284b08cd6ce91a029dcc5e20a80b1a1c9) Thanks [@MohammedEsafi](https://github.com/MohammedEsafi)! - Improved the visibility of shadows in Dark Mode for token previews
+
+- Updated dependencies [[`2980e9d26`](https://github.com/Shopify/polaris/commit/2980e9d26ef7dd5da399c84c035cf062121bb4bc), [`d7e4aa7f9`](https://github.com/Shopify/polaris/commit/d7e4aa7f97e7a427f940bf09d277fc93d540d8b0), [`00952a33a`](https://github.com/Shopify/polaris/commit/00952a33a37164110a23e1a6ab7795976b075349), [`8568e5141`](https://github.com/Shopify/polaris/commit/8568e5141c8a795ae0ba9036b702d4e3c94d0d9a), [`de419ba2b`](https://github.com/Shopify/polaris/commit/de419ba2bf3afda1e234d8b3e603452382bb54f2), [`fb508b91c`](https://github.com/Shopify/polaris/commit/fb508b91c311efe3b17d926604667147eed795e8), [`bb310cd3a`](https://github.com/Shopify/polaris/commit/bb310cd3abf18b272583afa6e732ce6b422b0b97), [`e34a4db32`](https://github.com/Shopify/polaris/commit/e34a4db32228cb25c061495e84563f1df23f650a), [`f1d256fce`](https://github.com/Shopify/polaris/commit/f1d256fcee9594bcb5a03ab8fee591d3832f12c4), [`65998488f`](https://github.com/Shopify/polaris/commit/65998488f9a696835d57f1b37ef9b3dfc3b0a86f), [`9fb367afd`](https://github.com/Shopify/polaris/commit/9fb367afd23aeed1710cd18f3595ddc5b7e271ae)]:
+  - @shopify/polaris@12.0.1
+  - @shopify/polaris-tokens@8.0.1
+
 ## 0.58.6
 
 ### Patch Changes
