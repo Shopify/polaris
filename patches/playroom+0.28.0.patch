@@ -256,7 +256,7 @@ index 9285b94..899cf7e 100644
          ...style,
          transition: 'opacity .3s ease',
 diff --git a/node_modules/playroom/src/Playroom/Preview.tsx b/node_modules/playroom/src/Playroom/Preview.tsx
-index 0183aaf..39cebbd 100644
+index 0183aaf..c5faef1 100644
 --- a/node_modules/playroom/src/Playroom/Preview.tsx
 +++ b/node_modules/playroom/src/Playroom/Preview.tsx
 @@ -43,6 +43,16 @@ export default ({ themes, components, FrameComponent }: PreviewProps) => {
@@ -271,7 +271,7 @@ index 0183aaf..39cebbd 100644
 +  // it.
 +  // See: https://github.com/seek-oss/playroom/issues/159#issuecomment-637945761
 +  // Also: https://stackoverflow.com/a/18678703
-+  const isInSameOriginIFrame = !!window.frameElement;
++  const isInSameOriginIFrame = window.origin === 'null' || !!window.frameElement;
 +
    return (
      <CatchErrors code={code}>
