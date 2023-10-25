@@ -1,4 +1,9 @@
-import {Grid, GridCellProps} from '@shopify/polaris';
+import {
+  Grid,
+  GridCellProps,
+  InlineGrid,
+  InlineGridProps,
+} from '@shopify/polaris';
 import {SpaceScale} from '@shopify/polaris-tokens';
 
 import {Card} from '../../../Card';
@@ -49,6 +54,46 @@ export const MdxColumn = ({
 
   return <Grid.Cell columnSpan={columnSpan[span]}>{content}</Grid.Cell>;
 };
+
+export const Section = ({children}: {children: React.ReactNode}) => (
+  <div className={styles.MdxCard}>
+    <Card>{children}</Card>
+  </div>
+);
+
+interface RowProps {
+  children: React.ReactNode;
+  variant?: '1' | '1-2' | '1-1' | '1-1-1';
+}
+
+export const Row = ({children, variant = '1-1-1'}: RowProps) => (
+  <InlineGrid gap="400" columns={rowVariantMap[variant]}>
+    {children}
+  </InlineGrid>
+);
+
+const rowVariantMap: {
+  [key in NonNullable<RowProps['variant']>]: InlineGridProps['columns'];
+} = {
+  '1': 1,
+  '1-2': {xs: 1, lg: ['oneThird', 'twoThirds']},
+  '1-1': {xs: 1, lg: ['oneHalf', 'oneHalf']},
+  '1-1-1': {xs: 1, lg: ['oneThird', 'oneThird', 'oneThird']},
+};
+
+interface ColumnProps {
+  children: React.ReactNode;
+  variant?: 'do' | 'dont' | 'caution' | 'tip';
+}
+
+export const Column = ({children, variant}: ColumnProps) =>
+  variant ? (
+    <DirectiveCard minHeight="100%" status={statusMap[variant]}>
+      {children}
+    </DirectiveCard>
+  ) : (
+    <div>{children}</div>
+  );
 
 const statusMap: {
   [key in NonNullable<MdxColumnProps['variant']>]: DirectiveStatusName;

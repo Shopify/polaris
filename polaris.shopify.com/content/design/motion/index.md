@@ -19,16 +19,14 @@ status: New
 
 <Subnav />
 
-## Purposeful
+<Section>
+  <Row>
+    <Column>
+      ## Purposeful
 
-Motion has a clear purpose. It helps merchants understand the interface and the results of their actions, instead of being used as decoration or entertainment.
-
-<Grid
-  gap="400"
-  areas={{xs: ['aaaaaa', 'bbbbbb'], lg: ['a a a a a a b b b b b b']}}
->
-  <Grid.Cell area="a">
-    <Do>
+      Motion has a clear purpose. It helps merchants understand the interface and the results of their actions, instead of being used as decoration or entertainment.
+    </Column>
+    <Column variant="do">
       <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/01-purposeful-do.mp4"
@@ -38,10 +36,8 @@ Motion has a clear purpose. It helps merchants understand the interface and the 
         animates elements that were already in view.
       </video>
       Use motion to enhance merchant understanding and provide context.
-    </Do>
-  </Grid.Cell>
-  <Grid.Cell area="b">
-    <Dont>
+    </Column>
+    <Column variant="dont">
       <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/01-purposeful-dont.mp4"
@@ -51,20 +47,19 @@ Motion has a clear purpose. It helps merchants understand the interface and the 
         animates all elements that change on the page.
       </video>
       Allow motion to complicate the interface or hinder merchant comprehension.
-    </Dont>
-  </Grid.Cell>
-</Grid>
+    </Column>
 
-## Responsive
+  </Row>
+</Section>
 
-Motion should be a reaction to merchant interactions, providing immediate visual feedback, and making the interface feel alive and responsive.
+<Section>
+  <Row>
+    <Column>
+      ## Responsive
 
-<Grid
-  gap="400"
-  areas={{xs: ['aaaaaa', 'bbbbbb'], lg: ['a a a a a a b b b b b b']}}
->
-  <Grid.Cell area="a">
-    <Do>
+      Motion should be a reaction to merchant interactions, providing immediate visual feedback, and making the interface feel alive and responsive.
+    </Column>
+    <Column variant="do">
       <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/02-responsive-do.mp4"
@@ -74,10 +69,8 @@ Motion should be a reaction to merchant interactions, providing immediate visual
       </video>
       Use motion to provide feedback on merchant actions. The scale of the motion
       should match the scale of the action performed.
-    </Do>
-  </Grid.Cell>
-  <Grid.Cell area="b">
-    <Dont>
+    </Column>
+    <Column variant="dont">
       <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/02-responsive-dont.mp4"
@@ -87,22 +80,21 @@ Motion should be a reaction to merchant interactions, providing immediate visual
         the tick mark.
       </video>
       Allow motion to complicate the interface or hinder merchant comprehension.
-    </Dont>
-  </Grid.Cell>
-</Grid>
+    </Column>
 
-## Snappy
+  </Row>
+</Section>
 
-Motion should feel quick and subtle.
+<Section>
+  <Row>
+    <Column>      
+      ## Snappy
 
-A snappy animation starts rapidly, and slows down towards the end, making the transition feel quick while still providing a cue as to where things are coming from, making the motion feel more natural.
+      Motion should feel quick and subtle.
 
-<Grid
-  gap="400"
-  areas={{xs: ['aaaaaa', 'bbbbbb'], lg: ['a a a a a a b b b b b b']}}
->
-  <Grid.Cell area="a">
-    <Do>
+      A snappy animation starts rapidly, and slows down towards the end, making the transition feel quick while still providing a cue as to where things are coming from, making the motion feel more natural.
+    </Column>
+    <Column variant="do">
       <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/03-snappy-do.mp4"
@@ -112,10 +104,8 @@ A snappy animation starts rapidly, and slows down towards the end, making the tr
       </video>
       Make motion feel snappy. This gives the animation a lively and energetic feel
       that doesn’t get in the way of merchants.
-    </Do>
-  </Grid.Cell>
-  <Grid.Cell area="b">
-    <Dont>
+    </Column>
+    <Column variant="dont">
       <video width="100%" height="auto" controls playsInline muted loop>
         <source
           src="/images/design/motion/overview/03-snappy-dont.mp4"
@@ -125,6 +115,7 @@ A snappy animation starts rapidly, and slows down towards the end, making the tr
       </video>
       Use abrupt, instant, or distracting motion, as these make it hard to follow
       along with changes happening on the interface.
-    </Dont>
-  </Grid.Cell>
-</Grid>
+    </Column>
+
+  </Row>
+</Section>

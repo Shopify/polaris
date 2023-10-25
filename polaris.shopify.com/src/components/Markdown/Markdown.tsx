@@ -14,7 +14,7 @@ import {Grid, InlineGrid} from '@shopify/polaris';
 import styles from './Markdown.module.scss';
 import Code, {InlineCode} from '../../components/Code';
 import {DirectiveCard} from './components/DirectiveCard';
-import {MdxCard, MdxColumn} from './components/Mdx';
+import {MdxCard, MdxColumn, Section, Row, Column} from './components/Mdx';
 import {Box, type WithAsProp} from '../../components/Box';
 import {Stack} from '../../components/Stack';
 import StatusBanner from '../../components/StatusBanner';
@@ -239,6 +239,9 @@ function Markdown<
         Card,
         MdxCard,
         MdxColumn,
+        Section,
+        Row,
+        Column,
         DirectiveCard,
         FeaturedCardGrid,
         YoutubeVideo,
