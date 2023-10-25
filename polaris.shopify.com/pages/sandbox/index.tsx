@@ -1,10 +1,9 @@
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef} from 'react';
 import type {InferGetServerSidePropsType, GetServerSideProps} from 'next';
 import {useRouter} from 'next/router';
 
-import SandboxHeader from '../src/components/SandboxHeader';
-import SandboxHelpDialog from '../src/components/SandboxHelpDialog';
-import SandboxContainer from '../src/components/SandboxContainer';
+import SandboxHeader from '../../src/components/SandboxHeader';
+import SandboxContainer from '../../src/components/SandboxContainer';
 
 export const getServerSideProps: GetServerSideProps = async ({query}) => {
   // We need to pass initial query param to our nested iframe
@@ -18,29 +17,12 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
   };
 };
 
-const MS_DELAY_BEFORE_SHOW_ONBOARDING = 500;
-
 export default function Sandbox({
   initialSearchParams,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const router = useRouter();
   const searchValue = useRef('');
-  const [isHelpOpen, setHelpIsOpen] = useState(false);
-
-  // After the page has rendered at least once, we might show the help dialog
-  // (so it animates onto the screen nicely)
-  useEffect(() => {
-    const helpTimeout = setTimeout(() => {
-      const hasAlreadyBeenOnboarded = localStorage.getItem('onboarded');
-      if (hasAlreadyBeenOnboarded) {
-        return;
-      }
-      localStorage.setItem('onboarded', 'true');
-      setHelpIsOpen(true);
-    }, MS_DELAY_BEFORE_SHOW_ONBOARDING);
-    return () => clearTimeout(helpTimeout);
-  }, []);
 
   useEffect(() => {
     /**
@@ -71,13 +53,13 @@ export default function Sandbox({
     return () => clearInterval(iframeUrlPoll);
   }, [router]);
 
+  const copyUrl = `${
+    typeof window !== 'undefined' ? window.location.origin : ''
+  }/sandbox${initialSearchParams}`;
+
   return (
     <SandboxContainer>
-      <SandboxHeader
-        setHelpIsOpen={setHelpIsOpen}
-        url={typeof window !== 'undefined' ? window.location.href : ''}
-      />
-      <SandboxHelpDialog {...{isOpen: isHelpOpen, setIsOpen: setHelpIsOpen}} />
+      <SandboxHeader copyUrl={copyUrl} />
       <iframe
         id="main"
         ref={iframeRef}

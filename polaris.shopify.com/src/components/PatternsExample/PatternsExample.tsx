@@ -250,6 +250,7 @@ const PatternsExample = ({
         id="live-preview-iframe"
         defaultHeight={'400px'}
         src={previewUrl}
+        sandbox="allow-scripts"
       />
     </ExampleWrapper>
   );
@@ -282,6 +283,7 @@ const PatternsExample = ({
           defaultHeight={defaultHeight}
           minHeight={minHeight}
           src={previewUrl}
+          sandbox="allow-scripts"
         />
       </ExampleWrapper>
     </dialog>
