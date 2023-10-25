@@ -115,6 +115,28 @@ describe('<TextField />', () => {
       expect(onClick).toHaveBeenCalled();
     });
 
+    it('bubbles up to the parent element when it occurs in the textarea', () => {
+      const onClick = jest.fn();
+      const event = new MouseEvent('click', {
+        view: window,
+        bubbles: true,
+        cancelable: true,
+      });
+      const textField = mountWithApp(
+        <div onClick={onClick}>
+          <TextField
+            type="text"
+            label="TextField"
+            autoComplete="off"
+            multiline
+          />
+        </div>,
+      );
+
+      textField.find('textarea')!.domNode?.dispatchEvent(event);
+      expect(onClick).toHaveBeenCalled();
+    });
+
     it('bubbles up to the parent element when it occurs in the spinner', () => {
       const onClick = jest.fn();
       const event = new MouseEvent('click', {
