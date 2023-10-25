@@ -122,6 +122,8 @@ There are over 40 rules configured in Stylelint Polaris to help you avoid errors
 | 11.0.0                     | 10.48.0          |
 | 12.0.0                     | 10.49.0          |
 | 13.0.0                     | 11.0.0           |
+| 14.0.0                     | 11.12.0          |
+| 15.0.0                     | 12.0.0           |
 
 _\*@shopify/stylelint-polaris v5.0.0 was the first stable release_
 
