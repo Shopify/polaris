@@ -26,12 +26,22 @@ export function buttonsFrom(
 }
 
 export function buttonFrom(
-  {content, onAction, ...action}: ComplexAction,
+  {content, onAction, plain, destructive, ...action}: ComplexAction,
   overrides?: Partial<ButtonProps>,
   key?: any,
 ) {
+  const variant = !overrides?.variant && plain ? 'plain' : overrides?.variant;
+  const tone = !overrides?.tone && destructive ? 'critical' : overrides?.tone;
+
   return (
-    <Button key={key} onClick={onAction} {...action} {...overrides}>
+    <Button
+      key={key}
+      onClick={onAction}
+      tone={tone}
+      variant={variant}
+      {...action}
+      {...overrides}
+    >
       {content}
     </Button>
   );

@@ -32,6 +32,9 @@ examples:
   - fileName: modal-with-primary-action.tsx
     title: With primary action
     description: Use to let merchants take a key action.
+  - fileName: modal-with-destructive-primary-action.tsx
+    title: With destructive primary action
+    description: Use to let merchants take a key action that cannot be undone.
   - fileName: modal-with-primary-and-secondary-actions.tsx
     title: With primary and secondary actions
     description: Use to let merchants take key actions at the bottom of the modal.
