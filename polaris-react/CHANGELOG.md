@@ -1,5 +1,32 @@
 # Changelog
 
+## 12.0.1
+
+### Patch Changes
+
+- [#10792](https://github.com/Shopify/polaris/pull/10792) [`2980e9d26`](https://github.com/Shopify/polaris/commit/2980e9d26ef7dd5da399c84c035cf062121bb4bc) Thanks [@SMAKSS](https://github.com/SMAKSS)! - Fixed typos and `editOnGithubUrl` in docs
+
+* [#10960](https://github.com/Shopify/polaris/pull/10960) [`d7e4aa7f9`](https://github.com/Shopify/polaris/commit/d7e4aa7f97e7a427f940bf09d277fc93d540d8b0) Thanks [@oksanashopify](https://github.com/oksanashopify)! - fixed background-color for unselectable tabel first-child cell
+
+- [#10975](https://github.com/Shopify/polaris/pull/10975) [`00952a33a`](https://github.com/Shopify/polaris/commit/00952a33a37164110a23e1a6ab7795976b075349) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed loading button spinner color
+
+* [#10935](https://github.com/Shopify/polaris/pull/10935) [`8568e5141`](https://github.com/Shopify/polaris/commit/8568e5141c8a795ae0ba9036b702d4e3c94d0d9a) Thanks [@gazjones00](https://github.com/gazjones00)! - Fixed an issue with the `primary` variant styles conflicting with the `tertiary` variant in `Button`
+
+- [#10934](https://github.com/Shopify/polaris/pull/10934) [`de419ba2b`](https://github.com/Shopify/polaris/commit/de419ba2bf3afda1e234d8b3e603452382bb54f2) Thanks [@gazjones00](https://github.com/gazjones00)! - Fixed disabled state for `monochromePlain` variant in `Button`
+
+* [#10993](https://github.com/Shopify/polaris/pull/10993) [`fb508b91c`](https://github.com/Shopify/polaris/commit/fb508b91c311efe3b17d926604667147eed795e8) Thanks [@FCalabria](https://github.com/FCalabria)! - Fixed incompatible type between IndexTable and useIndexResourceState
+
+- [#10998](https://github.com/Shopify/polaris/pull/10998) [`bb310cd3a`](https://github.com/Shopify/polaris/commit/bb310cd3abf18b272583afa6e732ce6b422b0b97) Thanks [@alisterdev](https://github.com/alisterdev)! - Update SkeletonThumbnail size values to correspond to Thumbnail
+
+* [#10999](https://github.com/Shopify/polaris/pull/10999) [`e34a4db32`](https://github.com/Shopify/polaris/commit/e34a4db32228cb25c061495e84563f1df23f650a) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated `Checkbox` icon to use tokens vs hard coded value
+
+- [#10910](https://github.com/Shopify/polaris/pull/10910) [`65998488f`](https://github.com/Shopify/polaris/commit/65998488f9a696835d57f1b37ef9b3dfc3b0a86f) Thanks [@chloerice](https://github.com/chloerice)! - Fixed negative margin of `segmented` `ButtonGroup.Item` when child `Button` is `primary`
+
+* [#11028](https://github.com/Shopify/polaris/pull/11028) [`9fb367afd`](https://github.com/Shopify/polaris/commit/9fb367afd23aeed1710cd18f3595ddc5b7e271ae) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `buttonFrom` utility function not mapping boolean variant properties to `variant` and `tone`
+
+* Updated dependencies [[`f1d256fce`](https://github.com/Shopify/polaris/commit/f1d256fcee9594bcb5a03ab8fee591d3832f12c4)]:
+  - @shopify/polaris-tokens@8.0.1
+
 ## 12.0.0
 
 ### Major Changes
