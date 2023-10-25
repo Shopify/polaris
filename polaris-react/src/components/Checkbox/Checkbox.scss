@@ -80,8 +80,7 @@
       // We set the border-color to transparent here
       // in order for the background color to bleed all the way to the edge of the element.
       border-color: transparent;
-      // stylelint-disable-next-line polaris/color/function-disallowed-list -- set background color
-      background-color: rgba(--p-color-checkbox-bg-surface-disabled);
+      background-color: var(--p-color-checkbox-bg-surface-disabled);
       box-shadow: none;
 
       &::before {
