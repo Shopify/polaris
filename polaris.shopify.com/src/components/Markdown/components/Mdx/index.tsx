@@ -56,7 +56,7 @@ export const MdxColumn = ({
 };
 
 export const Section = ({children}: {children: React.ReactNode}) => (
-  <div className={styles.MdxCard}>
+  <div className={styles.Section}>
     <Card>{children}</Card>
   </div>
 );

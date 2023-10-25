@@ -2,6 +2,18 @@
   margin-bottom: var(--p-space-800);
 }
 
+.Section {
+  margin-bottom: var(--p-space-800);
+
+  & .Row {
+    margin-bottom: var(--p-space-400);
+  }
+
+  & .Row:last-child {
+    margin-bottom: 0;
+  }
+}
+
 .Row {
-  margin-bottom: var(--p-space-400);
+  margin-bottom: var(--p-space-800);
 }
