@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.0.1
+
+### Patch Changes
+
+- [#10976](https://github.com/Shopify/polaris/pull/10976) [`f1d256fce`](https://github.com/Shopify/polaris/commit/f1d256fcee9594bcb5a03ab8fee591d3832f12c4) Thanks [@sarahill](https://github.com/sarahill)! - Added descriptions to color tokens
+
 ## 8.0.0
 
 ### Major Changes
