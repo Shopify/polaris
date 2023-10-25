@@ -1,3 +1,7 @@
 .MdxCard {
   margin-bottom: var(--p-space-800);
 }
+
+.Row {
+  margin-bottom: var(--p-space-400);
+}
