@@ -150,6 +150,7 @@ const replacementMap1 = {
   '--p-color-border-magic-strong': '--p-color-border-magic-secondary',
   '--p-color-border-primary': '--p-color-border-brand',
   '--p-color-border-strong': '--p-color-border-tertiary',
+  '--p-color-border-strong-hover': '--p-color-border-tertiary',
   '--p-color-border-subdued': '--p-color-border-secondary',
   '--p-color-border-success-subdued': '--p-color-border-success',
   '--p-color-icon-critical-strong-active-experimental':
