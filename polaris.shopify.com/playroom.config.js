@@ -66,5 +66,19 @@ module.exports = {
       ],
     },
   }),
-  iframeSandbox: 'allow-scripts allow-same-origin',
+  // IMPORTANT SECURITY NOTES:
+  // NOTE: DO NOT add "allow-same-origin" and "allow-scripts" together;
+  // > Setting both the allow-scripts and allow-same-origin keywords together
+  // > when the embedded page has the same origin as the page containing the
+  // > iframe allows the embedded page to simply remove the sandbox attribute
+  // > and then reload itself, effectively breaking out of the sandbox
+  // > altogether.
+  // - https://html.spec.whatwg.org/multipage/iframe-embed-object.html#attr-iframe-sandbox
+  //
+  // NOTE: DO NOT EVER add "allow-same-origin"; it will open up access to
+  // cookies and other things on *.shopify.com (because we host Playroom on
+  // polaris.shopify.com) to malicious scripts. We've patched Playroom to
+  // not need access to the same origin, so there shouldn't be any need to
+  // enable it.
+  iframeSandbox: 'allow-scripts',
 };
