@@ -18,58 +18,66 @@ status: New
 
 <Subnav />
 
-## Typography defines hierarchy
+<Section>
+  <Row variant="1-2">
+  
+    <Column>
+      ## Typography defines hierarchy
 
-Typography plays a crucial role in defining hierarchy within design. Variable weights convey different levels of importance, where bolder weights indicate greater significance.
+      Typography plays a crucial role in defining hierarchy within design. Variable weights convey different levels of importance, where bolder weights indicate greater significance.
 
-Good type positioning also establishes visual prominence and emphasizes key information.
+      Good type positioning also establishes visual prominence and emphasizes key information.
+    </Column>
+    <Column>
+      ![A series of cards in the admin, each introduced by a bold heading and medium weight body typography](/images/design/typography/typography-overview-01-hierarchy@2x.png)
+    </Column>
 
-<Stack gap='400'>
+  </Row>
+  <Row variant="1-1-1">
+  
+    <Column>
+      {/* Empty space */}
+    </Column>
+    <Column variant="do">
+      ![A card with different levels of type presented in different weights, sizes and positions ](/images/design/typography/typography-overview-02-hierarchy-do@2x.png)
 
-![A series of cards in the admin, each introduced by a bold heading and medium weight body typography](/images/design/typography/typography-overview-01-hierarchy@2x.png)
+      Use a combination of weight, size, [color](/design/colors/using-color#text) and positioning to define hierarchy.
+    </Column>
+    <Column variant="dont">
+      ![The same card as before, but only using color to style all type elements](/images/design/typography/typography-overview-03-hierarchy-dont@2x.png)
 
-<InlineGrid gap='400' columns={{xs: '1', md: '2'}}>
-  <Do>
+      Rely only on color to define hierarchy.
+    </Column>
 
-![A card with different levels of type presented in different weights, sizes and positions ](/images/design/typography/typography-overview-02-hierarchy-do@2x.png)
+  </Row>
+</Section>
 
-Use a combination of weight, size, [color](/design/colors/using-color#text) and positioning to define hierarchy.
+<Section>
+  <Row variant="1-2">
+    <Column>
+      ## Typography defines purpose
 
-  </Do>
+      Polaris assigns meaning to type based on its usage. Mono is used for code; tabular number stylesets are employed for numbers and currency amounts; and typescales are designed with UI design in mind.
+    </Column>
+    <Column>
+      ![A variety of cards, one showing a list of prices neatly aligned, another one showing monospace type for code, and another one showing type and icon pairings](/images/design/typography/typography-overview-04-purpose@2x.png)
+    </Column>
 
-  <Dont>
-    ![The same card as before, but only using color to style all type elements](/images/design/typography/typography-overview-03-hierarchy-dont@2x.png)
+  </Row>
+  <Row variant="1-1-1">
+    <Column>
+      {/* Empty space */}
+    </Column>
+    <Column variant="do">
+      ![Different currency amounts in the Shopify admin, all using tabular numbers](/images/design/typography/typography-overview-05-purpose-do@2x.png)
 
-    Rely only on color to define hierarchy.
+      Consistently style similar or repeating type in the UI.
+    </Column>
+    <Column variant="dont">
+      ![A list of products with an “add product” button that is style like a link](/images/design/typography/typography-overview-06-purpose-dont@2x.png)
 
-  </Dont>
-</InlineGrid>
+      Repurpose or reinterpret known patterns in typography, especially when it comes to interactions.
+    </Column>
 
-</Stack>
-
-## Typography defines purpose
-
-Polaris assigns meaning to type based on its usage. Mono is used for code; tabular number stylesets are employed for numbers and currency amounts; and typescales are designed with UI design in mind.
-
-<Stack gap='400'>
-
-![A variety of cards, one showing a list of prices neatly aligned, another one showing monospace type for code, and another one showing type and icon pairings](/images/design/typography/typography-overview-04-purpose@2x.png)
-
-<InlineGrid gap='400' columns={{xs: '1', md: '2'}}>
-  <Do>
-
-    ![Different currency amounts in the Shopify admin, all using tabular numbers](/images/design/typography/typography-overview-05-purpose-do@2x.png)
-
-    Consistently style similar or repeating type in the UI.
-
-  </Do>
-
-  <Dont>
-    ![A list of products with an “add product” button that is style like a link](/images/design/typography/typography-overview-06-purpose-dont@2x.png)
-
-    Repurpose or reinterpret known patterns in typography, especially when it comes to interactions.
-
-  </Dont>
-</InlineGrid>
-
-</Stack>
+  </Row>
+</Section>
