@@ -37,6 +37,163 @@ npx @shopify/polaris-migrator <migration> <path>
 
 ## Migrations
 
+### v12
+
+#### `v12-react-avatar-component`
+
+Replace deprecated `Avatar` component `size` prop values with corresponding replacement values.
+
+```diff
+- <Avatar size="extraSmall" />
+- <Avatar size="small" />
+- <Avatar size="medium" />
+- <Avatar size="large" />
+- <Avatar size="xl-experimental" />
+- <Avatar size="2xl-experimental" />
++ <Avatar size="xs" />
++ <Avatar size="sm" />
++ <Avatar size="md" />
++ <Avatar size="lg" />
++ <Avatar size="xl" />
++ <Avatar size="xl" />
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v12-react-avatar-component <path>
+```
+
+<br />
+
+#### `v12-react-update-button-component`
+
+Consolidates `Button` boolean props to `variant` and `tone`. The `Button` component has been updated to replace deprecated `connectedDisclosure`, `outline`, `destructive`, `primary`, `primarySuccess`, `plain`, and `monochrome` props with a new `variant` prop that supports multiple variation options.
+
+```diff
+- <Button plain />
++ <Button variant="plain" />
+- <Button primary />
++ <Button variant="primary" />
+- <Button primary plain />
++ <Button variant="tertiary" />
+- <Button monochrome plain />
++ <Button variant="monochromePlain" />
+- <Button destructive />
++ <Button variant="primary" tone="critical" />
+- <Button primarySuccess />
++ <Button variant="primary" tone="success" />
+- <Button destructive plain />
++ <Button variant="plain" tone="critical" />
+- <Button destructive />
++ <Button variant="primary" tone="critical" />
+- <Button primarySuccess />
++ <Button variant="primary" tone="success" />
+- <Button destructive outline />
++ <Button tone="critical" />
+- <Button destructive plain />
++ <Button variant="plain" tone="critical" />
+- <Button monochrome />
++ <Button />
+- <Button outline />
++ <Button />
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v12-react-update-button-component <path>
+```
+
+<br />
+
+#### `v12-styles-replace-custom-property-border`
+
+Replace deprecated border CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- border-radius: var(--p-border-radius-1);
++ border-radius: var(--p-border-radius-100);
+```
+
+```diff
+- border-width: var(--p-border-width-1);
++ border-width: var(--p-border-width-025);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-border <path>
+```
+
+<br />
+
+#### `v12-styles-replace-custom-property-color`
+
+Replace deprecated color CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- color: var(--p-color-bg);
++ color: var(--p-color-bg-surface);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-color <path>
+```
+
+#### `v12-styles-replace-custom-property-font`
+
+Replace deprecated font CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- font-size: var(--p-font-size-75);
++ font-size: var(--p-font-size-300);
+```
+
+```diff
+- line-height: var(--p-font-line-height-1);
++ line-height: var(--p-font-line-height-400);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-font <path>
+```
+
+#### `v12-styles-replace-custom-property-shadow`
+
+Replace deprecated shadow CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- box-shadow: var(--p-shadow-xs);
++ box-shadow: var(--p-shadow-100);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-shadow <path>
+```
+
+#### `v12-styles-replace-custom-property-space`
+
+Replace deprecated space CSS custom properties with corresponding Polaris custom property replacement values.
+
+```diff
+- padding: var(--p-space-1);
++ padding: var(--p-space-100);
+```
+
+<br />
+
+```sh
+npx @shopify/polaris-migrator v12-styles-replace-custom-property-space <path>
+```
+
 ### v11
 
 #### `v11-react-update-page-breadcrumbs`
