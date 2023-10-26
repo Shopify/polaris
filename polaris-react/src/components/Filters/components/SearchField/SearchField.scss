@@ -1,6 +1,8 @@
 @import '../../../../styles/common';
 
 .SearchField {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-indexfilter-search-padding-inline: var(--p-space-150);
   position: relative;
   display: flex;
   padding-block: var(--p-space-025);
@@ -19,7 +21,8 @@
   border: var(--p-border-width-025) solid var(--p-color-input-border);
   border-radius: var(--p-border-radius-100);
   border-color: var(--p-color-input-border);
-  padding-inline: var(--p-space-150);
+  // stylelint-disable-next-line -- Polaris component custom properties
+  padding-inline: var(--pc-indexfilter-search-padding-inline);
   width: 100%;
 
   &:hover {
@@ -54,19 +57,32 @@
   outline-offset: var(--p-space-025);
 }
 
-.ClearButton {
+.Suffix {
   position: absolute;
   top: 50%;
-  right: 0;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  right: var(--pc-indexfilter-search-padding-inline);
+  transform: translateY(-50%);
+}
+
+.ClearButton {
   background: none;
   border: none;
-  transform: translateY(-50%);
   opacity: 0;
   transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
   cursor: pointer;
+  padding: 0;
 }
 
 .ClearButton-focused {
   opacity: 1;
   pointer-events: auto;
+}
+
+.Spinner {
+  width: var(--p-space-500);
+
+  svg {
+    display: block;
+  }
 }

@@ -1,4 +1,4 @@
-import React, {useState, useRef, useEffect, useMemo} from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import type {ReactNode} from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
@@ -18,7 +18,6 @@ import type {
 import {InlineStack} from '../InlineStack';
 import type {BoxProps} from '../Box';
 import {Box} from '../Box';
-import {Spinner} from '../Spinner';
 import {Button} from '../Button';
 
 import {FilterPill, SearchField} from './components';
@@ -280,17 +279,6 @@ export function Filters({
 
   const shouldShowAddButton = filters.some((filter) => !filter.pinned);
 
-  const additionalContent = useMemo(() => {
-    return (
-      <>
-        <div className={styles.Spinner}>
-          {loading ? <Spinner size="small" /> : null}
-        </div>
-        {children}
-      </>
-    );
-  }, [loading, children]);
-
   const containerSpacing: {
     paddingBlockStart: BoxProps['paddingBlockStart'];
     paddingBlockEnd: BoxProps['paddingBlockEnd'];
@@ -335,9 +323,10 @@ export function Filters({
               focused={focused}
               disabled={disabled || disableQueryField}
               borderlessQueryField={borderlessQueryField}
+              loading={loading}
             />
           </div>
-          {additionalContent}
+          {children}
         </InlineStack>
       </Box>
     </div>
@@ -454,7 +443,7 @@ export function Filters({
                 md: '300',
               }}
             >
-              {additionalContent}
+              {children}
             </InlineStack>
           </Box>
         ) : null}
