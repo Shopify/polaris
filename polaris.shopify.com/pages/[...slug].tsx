@@ -292,6 +292,24 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
         end();
       },
     ],
+    [
+      // design pages need top-level index.md pages in correct order
+      () => pathIsDirectory && params.slug[0] === 'design',
+      async (end) => {
+        // Non-recursive search for .md files except index.md
+        scope.posts = await getRichCards(`${slugPath}/!(index|_*).md`);
+        scope.posts = [
+          ...scope.posts,
+          ...(await getRichCards(`${slugPath}/*/index.md`)),
+        ];
+        scope.posts.sort(
+          (a: SortedRichCardGridProps, b: SortedRichCardGridProps) => {
+            return a.order > b.order ? 1 : -1;
+          },
+        );
+        end();
+      },
+    ],
     // index pages need to know the files in their folder
     [
       () => pathIsDirectory,
