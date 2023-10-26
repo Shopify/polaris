@@ -7,11 +7,14 @@ keywords:
   - documenting in polaris
   - documentation guidelines
 order: 4
+hideChildren: true
 ---
 
 # {frontmatter.title}
 
 <Lede>{frontmatter.description}</Lede>
+
+{/* <Subnav /> */}
 
 Shopify teams create documentation for polaris.shopify.com, but open source contributors are welcome to make copy edits as well as update or add examples to [component documentation](/contributing/components).
 

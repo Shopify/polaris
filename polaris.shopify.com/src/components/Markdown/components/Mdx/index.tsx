@@ -56,7 +56,7 @@ export const MdxColumn = ({
 };
 
 export const Section = ({children}: {children: React.ReactNode}) => (
-  <div className={styles.MdxCard}>
+  <div className={styles.Section}>
     <Card>{children}</Card>
   </div>
 );
@@ -67,9 +67,11 @@ interface RowProps {
 }
 
 export const Row = ({children, variant = '1-1-1'}: RowProps) => (
-  <InlineGrid gap="400" columns={rowVariantMap[variant]}>
-    {children}
-  </InlineGrid>
+  <div className={styles.Row}>
+    <InlineGrid gap="400" columns={rowVariantMap[variant]}>
+      {children}
+    </InlineGrid>
+  </div>
 );
 
 const rowVariantMap: {
@@ -77,13 +79,13 @@ const rowVariantMap: {
 } = {
   '1': 1,
   '1-2': {xs: 1, lg: ['oneThird', 'twoThirds']},
-  '1-1': {xs: 1, lg: ['oneHalf', 'oneHalf']},
+  '1-1': {xs: 1, md: ['oneHalf', 'oneHalf']},
   '1-1-1': {xs: 1, lg: ['oneThird', 'oneThird', 'oneThird']},
 };
 
 interface ColumnProps {
   children: React.ReactNode;
-  variant?: 'do' | 'dont' | 'caution' | 'tip';
+  variant?: 'do' | 'dont' | 'caution' | 'tip' | 'directive';
 }
 
 export const Column = ({children, variant}: ColumnProps) =>
@@ -96,8 +98,9 @@ export const Column = ({children, variant}: ColumnProps) =>
   );
 
 const statusMap: {
-  [key in NonNullable<MdxColumnProps['variant']>]: DirectiveStatusName;
+  [key in NonNullable<ColumnProps['variant']>]: DirectiveStatusName | undefined;
 } = {
+  directive: undefined,
   do: DirectiveStatusName.Do,
   dont: DirectiveStatusName.Dont,
   caution: DirectiveStatusName.Caution,
