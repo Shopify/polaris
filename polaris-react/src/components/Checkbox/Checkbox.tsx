@@ -13,7 +13,7 @@ import type {ChoiceBleedProps} from '../Choice';
 import {Choice, helpTextID} from '../Choice';
 import {errorTextID} from '../InlineError';
 import {Icon} from '../Icon';
-import type {Error, CheckboxHandles} from '../../types';
+import type {Error, CheckboxHandles, Tone} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
 
 import styles from './Checkbox.scss';
@@ -51,6 +51,8 @@ export interface CheckboxProps extends ChoiceBleedProps {
   helpText?: React.ReactNode;
   /** Display an error message */
   error?: Error | boolean;
+  /** Indicates the tone of the checkbox */
+  tone?: Tone;
 }
 
 export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
@@ -77,6 +79,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       bleedBlockEnd,
       bleedInlineStart,
       bleedInlineEnd,
+      tone,
     }: CheckboxProps,
     ref,
   ) {
@@ -153,6 +156,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
+      tone && tone === 'magic' && styles.magic,
     );
 
     const extraChoiceProps = {
@@ -173,6 +177,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
         disabled={disabled}
         labelClassName={classNames(styles.ChoiceLabel, labelClassName)}
         fill={fill}
+        tone={tone}
         {...extraChoiceProps}
       >
         <span className={wrapperClassName}>
