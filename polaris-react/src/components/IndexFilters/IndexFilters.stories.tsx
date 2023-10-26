@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useEffect} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TabProps} from '@shopify/polaris';
 import {
@@ -224,6 +224,23 @@ function BasicExample(
   const [moneySpent, setMoneySpent] = useState(null);
   const [taggedWith, setTaggedWith] = useState('');
   const [queryValue, setQueryValue] = useState('');
+  const [uncontrolledLoading, setLoading] = useState<boolean>(false);
+  const loadingIsControlled = typeof props.loading !== 'undefined';
+  const loading = loadingIsControlled ? props.loading : uncontrolledLoading;
+
+  // Psuedo-loading state transitions
+  useEffect(() => {
+    if (loadingIsControlled) {
+      return;
+    }
+    if (queryValue !== '') {
+      setLoading(true);
+    }
+    const timeoutId = setTimeout(() => {
+      setLoading(false);
+    }, 1500);
+    return () => clearTimeout(timeoutId);
+  }, [loadingIsControlled, queryValue]);
 
   const handleAccountStatusChange = useCallback(
     (value) => setAccountStatus(value),
@@ -344,7 +361,7 @@ function BasicExample(
     <Card padding="0">
       <IndexFilters
         {...props}
-        loading={queryValue !== ''}
+        loading={loading}
         sortOptions={sortOptions}
         sortSelected={sortSelected}
         queryValue={queryValue}
@@ -405,6 +422,10 @@ export function WithFilteringByDefault() {
 
 export function WithoutKeyboardShortcuts() {
   return <BasicExample disableKeyboardShortcuts />;
+}
+
+export function WithLoading() {
+  return <BasicExample loading />;
 }
 
 export function WithPinnedFilters() {
