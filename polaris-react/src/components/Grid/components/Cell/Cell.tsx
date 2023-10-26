@@ -31,6 +31,7 @@ export interface CellProps {
    * https://polaris.shopify.com/components/layout-and-structure
    */
   area?: string;
+  colStart?: Cell;
   column?: Cell;
   columnSpan?: Columns;
   row?: Cell;
@@ -38,6 +39,7 @@ export interface CellProps {
 }
 export function Cell({
   area: gridArea,
+  colStart,
   column,
   columnSpan,
   row,
@@ -54,6 +56,11 @@ export function Cell({
 
   const style = {
     gridArea,
+    '--pc-col-start-xs': colStart?.xs,
+    '--pc-col-start-sm': colStart?.sm,
+    '--pc-col-start-md': colStart?.md,
+    '--pc-col-start-lg': colStart?.lg,
+    '--pc-col-start-xl': colStart?.xl,
     '--pc-column-xs': column?.xs,
     '--pc-column-sm': column?.sm,
     '--pc-column-md': column?.md,
