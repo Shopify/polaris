@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Improving onBlur behavior for TextField component
+Fixed `TextField` blurring when interacting with the `Spinner` buttons
