@@ -301,11 +301,17 @@ export function All() {
       <AllBanners
         title={undefined}
         hideIcon
+        onDismiss={() => {}}
         children={
-          <Text as="p">
-            Changing the phone number for this customer will unsubscribe them
-            from SMS marketing text messages until they provide consent.
-          </Text>
+          <>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </>
         }
       />
       <Text as="h2" variant="headingMd">

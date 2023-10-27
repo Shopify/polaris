@@ -242,10 +242,12 @@ export function InlineIconBanner({
     useState<InlineStackProps['blockAlign']>('center');
   const contentNode = useRef<HTMLDivElement>(null);
   const iconNode = useRef<HTMLDivElement>(null);
+  const dismissIconNode = useRef<HTMLDivElement>(null);
 
   const handleResize = useCallback(() => {
     const contentHeight = contentNode.current?.offsetHeight;
-    const iconBoxHeight = iconNode.current?.offsetHeight;
+    const iconBoxHeight =
+      iconNode.current?.offsetHeight || dismissIconNode.current?.offsetHeight;
 
     if (!contentHeight || !iconBoxHeight) return;
 
@@ -281,7 +283,9 @@ export function InlineIconBanner({
             </Box>
           </InlineStack>
         </Box>
-        {dismissButton}
+        <div ref={dismissIconNode} className={styles.DismissIcon}>
+          {dismissButton}
+        </div>
       </InlineStack>
     </Box>
   );

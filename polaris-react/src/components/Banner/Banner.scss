@@ -40,6 +40,10 @@
   }
 }
 
+.DismissIcon {
+  display: flex;
+}
+
 // stylelint-disable -- Duplicate selectors to bump specificity for button svg color override
 // https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
 
