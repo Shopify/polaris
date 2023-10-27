@@ -121,6 +121,31 @@ git commit -m "[Manual] Migrate X from Polaris v11 to v12"
 
 ## Component migrations
 
+### AppProvider
+
+The `AppProvider` `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. If these were the only features passed into your `AppProvider`, you can safely remove the `features` prop completely from your Polaris `AppProvider`. If that is not the case, you will need to remove the features specifically related to `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut` from being passed into the `features` prop.
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <AppProvider features={...} /> prop`,
+    code: String.raw`<AppProvider[^>\w](?:[^>]|\n)*?features`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <AppProvider features={{polarisSummerEditions2023: true, polarisSummerEditions2023ShadowBevelOptOut: false}} i18n={[]} />
++ <AppProvider i18n={[]} />
+```
+
+</CollapsibleDetails>
+
 ### Avatar
 
 #### Rename `size` prop values
@@ -270,7 +295,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
 
 </CollapsibleDetails>
 
-### IndexTable.Row
+### Banner
 
 #### Replace `status` prop with `tone`
 
@@ -278,7 +303,7 @@ You will also need to update `Badge.pip` `status` -> `tone`
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName IndexTable.Row --fromProp status --toProp tone "**/*.{ts,tsx}"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Banner --fromProp status --toProp tone "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -287,8 +312,8 @@ You will also need to update `Badge.pip` `status` -> `tone`
 <Code
   code={{
     className: 'language-regex',
-    title: `Check RegExp for outdated <IndexTable.Row status="..." /> prop`,
-    code: String.raw`<IndexTable\.Row[^>\w](?:[^>]|\n)*?status`,
+    title: `Check RegExp for outdated <Banner status="..." /> prop`,
+    code: String.raw`<Banner[^>\w](?:[^>]|\n)*?status`,
   }}
 />
 
@@ -297,198 +322,8 @@ You will also need to update `Badge.pip` `status` -> `tone`
 <CollapsibleDetails summary="💡 Migration example">
 
 ```diff
-- <IndexTable.Row status="success" />
-+ <IndexTable.Row tone="success" />
-```
-
-</CollapsibleDetails>
-
-#### Replace `subdued` prop with `tone`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName IndexTable.Row --fromPropType boolean --fromProp subdued --toProp tone --toValue subdued "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <IndexTable.Row subdued="..." /> prop`,
-    code: String.raw`<IndexTable\.Row[^>\w](?:[^>]|\n)*?subdued`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <IndexTable.Row subdued />
-+ <IndexTable.Row tone="subdued" />
-```
-
-</CollapsibleDetails>
-
-### Layout.Section
-
-#### Replace `oneThird` prop with `variant="oneThird"`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp oneThird --toProp variant --toValue oneThird "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <Layout.Section oneThird /> prop`,
-    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneThird`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <Layout.Section oneThird>
-+ <Layout.Section variant="oneThird">
-```
-
-</CollapsibleDetails>
-
-#### Replace `oneHalf` prop with `variant="oneHalf"`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp oneHalf --toProp variant --toValue oneHalf "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <Layout.Section oneHalf /> prop`,
-    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneHalf`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <Layout.Section oneHalf>
-+ <Layout.Section variant="oneHalf">
-```
-
-</CollapsibleDetails>
-
-#### Replace `fullWidth` prop with `variant="fullWidth"`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp fullWidth --toProp variant --toValue fullWidth "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <Layout.Section fullWidth /> prop`,
-    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?fullWidth`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <Layout.Section fullWidth>
-+ <Layout.Section variant="fullWidth">
-```
-
-</CollapsibleDetails>
-
-#### Replace `secondary` prop with `variant="oneThird"`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp secondary --toProp variant --toValue oneThird "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <Layout.Section secondary /> prop`,
-    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?secondary`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <Layout.Section secondary>
-+ <Layout.Section variant="oneThird">
-```
-
-</CollapsibleDetails>
-
-### TextField
-
-#### Replace `borderless` prop with `variant="borderless"`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName TextField --fromPropType boolean --fromProp borderless --toProp variant --toValue borderless "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <TextField borderless /> prop`,
-    code: String.raw`<TextField[^>\w](?:[^>]|\n)*?borderless`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <TextField borderless />
-+ <TextField variant="borderless" />
+- <Banner status="success" />
++ <Banner tone="success" />
 ```
 
 </CollapsibleDetails>
@@ -572,111 +407,6 @@ This border radius property rename aligns with [CSS border radius constituent pr
 ```diff
 - <Box borderRadiusEndStart="2" borderRadiusEndEnd="2" borderRadiusStartStart="2" borderRadiusStartEnd="2" />
 + <Box borderEndStartRadius="2" borderEndEndRadius="2" borderStartStartRadius="2" borderStartEndRadius="2" />
-```
-
-</CollapsibleDetails>
-
-### HorizontalStack
-
-#### Rename `HorizontalStack` component to `InlineStack`
-
-Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component --renameFrom HorizontalStack --renameTo InlineStack --renamePropsFrom HorizontalStackProps --renamePropsTo InlineStackProps "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <HorizontalStack /> component`,
-    code: String.raw`HorizontalStack`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <HorizontalStack />
-+ <InlineStack />
-```
-
-</CollapsibleDetails>
-
-### VerticalStack
-
-#### Rename `VerticalStack` component to `BlockStack`
-
-Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component --renameFrom VerticalStack --renameTo BlockStack --renamePropsFrom VerticalStackProps --renamePropsTo BlockStackProps "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <VerticalStack /> component`,
-    code: String.raw`VerticalStack`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <VerticalStack />
-+ <BlockStack />
-```
-
-</CollapsibleDetails>
-
-### HorizontalGrid
-
-#### Rename `HorizontalGrid` component to `InlineGrid`
-
-Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-rename-component --renameFrom HorizontalGrid --renameTo InlineGrid --renamePropsFrom HorizontalGridProps --renamePropsTo InlineGridProps "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <HorizontalGrid /> component`,
-    code: String.raw`HorizontalGrid`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <HorizontalGrid />
-+ <InlineGrid />
 ```
 
 </CollapsibleDetails>
@@ -890,15 +620,15 @@ The [updated split example](/components/actions/button) can also be referenced a
 
 </CollapsibleDetails>
 
-### Banner
+### DescriptionList
 
-#### Replace `status` prop with `tone`
+#### Replace `spacing` prop with `gap`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Banner --fromProp status --toProp tone "**/*.{ts,tsx}"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName DescriptionList --fromProp spacing --toProp gap "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -907,8 +637,8 @@ The [updated split example](/components/actions/button) can also be referenced a
 <Code
   code={{
     className: 'language-regex',
-    title: `Check RegExp for outdated <Banner status="..." /> prop`,
-    code: String.raw`<Banner[^>\w](?:[^>]|\n)*?status`,
+    title: `Check RegExp for outdated <DescriptionList spacing="..." /> prop`,
+    code: String.raw`<DescriptionList[^>\w](?:[^>]|\n)*?spacing`,
   }}
 />
 
@@ -917,8 +647,78 @@ The [updated split example](/components/actions/button) can also be referenced a
 <CollapsibleDetails summary="💡 Migration example">
 
 ```diff
-- <Banner status="success" />
-+ <Banner tone="success" />
+- <DescriptionList spacing="loose" />
++ <DescriptionList gap="loose" />
+```
+
+</CollapsibleDetails>
+
+### HorizontalGrid
+
+#### Rename `HorizontalGrid` component to `InlineGrid`
+
+Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component --renameFrom HorizontalGrid --renameTo InlineGrid --renamePropsFrom HorizontalGridProps --renamePropsTo InlineGridProps "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <HorizontalGrid /> component`,
+    code: String.raw`HorizontalGrid`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <HorizontalGrid />
++ <InlineGrid />
+```
+
+</CollapsibleDetails>
+
+### HorizontalStack
+
+#### Rename `HorizontalStack` component to `InlineStack`
+
+Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component --renameFrom HorizontalStack --renameTo InlineStack --renamePropsFrom HorizontalStackProps --renamePropsTo InlineStackProps "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <HorizontalStack /> component`,
+    code: String.raw`HorizontalStack`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <HorizontalStack />
++ <InlineStack />
 ```
 
 </CollapsibleDetails>
@@ -1065,6 +865,384 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
+### IndexTable.Row
+
+#### Replace `status` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName IndexTable.Row --fromProp status --toProp tone "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <IndexTable.Row status="..." /> prop`,
+    code: String.raw`<IndexTable\.Row[^>\w](?:[^>]|\n)*?status`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <IndexTable.Row status="success" />
++ <IndexTable.Row tone="success" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `subdued` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName IndexTable.Row --fromPropType boolean --fromProp subdued --toProp tone --toValue subdued "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <IndexTable.Row subdued="..." /> prop`,
+    code: String.raw`<IndexTable\.Row[^>\w](?:[^>]|\n)*?subdued`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <IndexTable.Row subdued />
++ <IndexTable.Row tone="subdued" />
+```
+
+</CollapsibleDetails>
+
+### Layout.Section
+
+#### Replace `oneThird` prop with `variant="oneThird"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp oneThird --toProp variant --toValue oneThird "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Layout.Section oneThird /> prop`,
+    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneThird`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section oneThird>
++ <Layout.Section variant="oneThird">
+```
+
+</CollapsibleDetails>
+
+#### Replace `oneHalf` prop with `variant="oneHalf"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp oneHalf --toProp variant --toValue oneHalf "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Layout.Section oneHalf /> prop`,
+    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?oneHalf`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section oneHalf>
++ <Layout.Section variant="oneHalf">
+```
+
+</CollapsibleDetails>
+
+#### Replace `fullWidth` prop with `variant="fullWidth"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp fullWidth --toProp variant --toValue fullWidth "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Layout.Section fullWidth /> prop`,
+    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?fullWidth`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section fullWidth>
++ <Layout.Section variant="fullWidth">
+```
+
+</CollapsibleDetails>
+
+#### Replace `secondary` prop with `variant="oneThird"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Layout.Section --fromPropType boolean --fromProp secondary --toProp variant --toValue oneThird "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Layout.Section secondary /> prop`,
+    code: String.raw`<Layout\.Section[^>\w](?:[^>]|\n)*?secondary`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Layout.Section secondary>
++ <Layout.Section variant="oneThird">
+```
+
+</CollapsibleDetails>
+
+### List
+
+#### Replace `spacing` prop with `gap`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName List --fromProp spacing --toProp gap "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <List spacing="..." /> prop`,
+    code: String.raw`<List[^>\w](?:[^>]|\n)*?spacing`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <List spacing="loose" />
++ <List gap="loose" />
+```
+
+</CollapsibleDetails>
+
+### Modal
+
+#### Replace `small` prop with `size="small"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Modal --fromPropType boolean --fromProp small --toProp size --toValue small "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Modal small /> prop`,
+    code: String.raw`<Modal[^>\w](?:[^>]|\n)*?small`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Modal small />
++ <Modal size="small" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `large` prop with `size="large"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Modal --fromPropType boolean --fromProp large --toProp size --toValue large "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Modal large /> prop`,
+    code: String.raw`<Modal[^>\w](?:[^>]|\n)*?large`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Modal large />
++ <Modal size="large" />
+```
+
+</CollapsibleDetails>
+
+#### Replace `fullScreen` prop with `size="fullScreen"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Modal --fromPropType boolean --fromProp fullScreen --toProp size --toValue fullScreen "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Modal fullScreen /> prop`,
+    code: String.raw`<Modal[^>\w](?:[^>]|\n)*?fullScreen`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Modal fullScreen />
++ <Modal size="fullScreen" />
+```
+
+</CollapsibleDetails>
+
+### Page
+
+#### Remove `divider` prop
+
+Page dividers are no longer a pattern in the new Polaris design language. If you must use a divider, use the [`Divider`](/components/layout-and-structure/divider) component to add them back in where needed.
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Page divider /> prop`,
+    code: String.raw`<Page[^>\w](?:[^>]|\n)*?divider`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Page divider />
++ <Page />
+```
+
+</CollapsibleDetails>
+
+### ProgressBar
+
+#### Replace `color` prop with `tone`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName ProgressBar --fromProp color --toProp tone "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <ProgressBar color="..." /> prop`,
+    code: String.raw`<ProgressBar[^>\w](?:[^>]|\n)*?color`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <ProgressBar color="success" />
++ <ProgressBar tone="success" />
+```
+
+</CollapsibleDetails>
+
 ### Text
 
 **🔔 Stepped migration**: You must run the `color` -> `tone` migration after running the tone rename migrations.
@@ -1202,46 +1380,15 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 
 </CollapsibleDetails>
 
-### Modal
+### TextField
 
-#### Replace `small` prop with `size="small"`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Modal --fromPropType boolean --fromProp small --toProp size --toValue small "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <Modal small /> prop`,
-    code: String.raw`<Modal[^>\w](?:[^>]|\n)*?small`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <Modal small />
-+ <Modal size="small" />
-```
-
-</CollapsibleDetails>
-
-#### Replace `large` prop with `size="large"`
+#### Replace `borderless` prop with `variant="borderless"`
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Modal --fromPropType boolean --fromProp large --toProp size --toValue large "**/*.{ts,tsx}"`,
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName TextField --fromPropType boolean --fromProp borderless --toProp variant --toValue borderless "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1250,8 +1397,8 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 <Code
   code={{
     className: 'language-regex',
-    title: `Check RegExp for outdated <Modal large /> prop`,
-    code: String.raw`<Modal[^>\w](?:[^>]|\n)*?large`,
+    title: `Check RegExp for outdated <TextField borderless /> prop`,
+    code: String.raw`<TextField[^>\w](?:[^>]|\n)*?borderless`,
   }}
 />
 
@@ -1260,19 +1407,23 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 <CollapsibleDetails summary="💡 Migration example">
 
 ```diff
-- <Modal large />
-+ <Modal size="large" />
+- <TextField borderless />
++ <TextField variant="borderless" />
 ```
 
 </CollapsibleDetails>
 
-#### Replace `fullScreen` prop with `size="fullScreen"`
+### VerticalStack
+
+#### Rename `VerticalStack` component to `BlockStack`
+
+Directional components now use `Inline` and `Block` naming conventions which are defined by [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). This ensures consistency with other Polaris component APIs as well as wider web conventions.
 
 <Code
   code={{
     title: 'polaris-migrator codemod',
     className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Modal --fromPropType boolean --fromProp fullScreen --toProp size --toValue fullScreen "**/*.{ts,tsx}"`,
+    code: String.raw`npx @shopify/polaris-migrator react-rename-component --renameFrom VerticalStack --renameTo BlockStack --renamePropsFrom VerticalStackProps --renamePropsTo BlockStackProps "**/*.{ts,tsx}"`,
   }}
 />
 
@@ -1281,8 +1432,8 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 <Code
   code={{
     className: 'language-regex',
-    title: `Check RegExp for outdated <Modal fullScreen /> prop`,
-    code: String.raw`<Modal[^>\w](?:[^>]|\n)*?fullScreen`,
+    title: `Check RegExp for outdated <VerticalStack /> component`,
+    code: String.raw`VerticalStack`,
   }}
 />
 
@@ -1291,159 +1442,8 @@ Backdrop is not a pattern in the new Polaris design language. If you must use a 
 <CollapsibleDetails summary="💡 Migration example">
 
 ```diff
-- <Modal fullScreen />
-+ <Modal size="fullScreen" />
-```
-
-</CollapsibleDetails>
-
-### List
-
-#### Replace `spacing` prop with `gap`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName List --fromProp spacing --toProp gap "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <List spacing="..." /> prop`,
-    code: String.raw`<List[^>\w](?:[^>]|\n)*?spacing`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <List spacing="loose" />
-+ <List gap="loose" />
-```
-
-</CollapsibleDetails>
-
-### DescriptionList
-
-#### Replace `spacing` prop with `gap`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName DescriptionList --fromProp spacing --toProp gap "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <DescriptionList spacing="..." /> prop`,
-    code: String.raw`<DescriptionList[^>\w](?:[^>]|\n)*?spacing`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <DescriptionList spacing="loose" />
-+ <DescriptionList gap="loose" />
-```
-
-</CollapsibleDetails>
-
-### Page
-
-#### Remove `divider` prop
-
-Page dividers are no longer a pattern in the new Polaris design language. If you must use a divider, use the [`Divider`](/components/layout-and-structure/divider) component to add them back in where needed.
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <Page divider /> prop`,
-    code: String.raw`<Page[^>\w](?:[^>]|\n)*?divider`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <Page divider />
-+ <Page />
-```
-
-</CollapsibleDetails>
-
-### ProgressBar
-
-#### Replace `color` prop with `tone`
-
-<Code
-  code={{
-    title: 'polaris-migrator codemod',
-    className: 'language-bash',
-    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName ProgressBar --fromProp color --toProp tone "**/*.{ts,tsx}"`,
-  }}
-/>
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <ProgressBar color="..." /> prop`,
-    code: String.raw`<ProgressBar[^>\w](?:[^>]|\n)*?color`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <ProgressBar color="success" />
-+ <ProgressBar tone="success" />
-```
-
-</CollapsibleDetails>
-
-### AppProvider
-
-The `AppProvider` `features` prop no longer accepts the keys `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut`. If these were the only features passed into your `AppProvider`, you can safely remove the `features` prop completely from your Polaris `AppProvider`. If that is not the case, you will need to remove the features specifically related to `polarisSummerEditions2023` and `polarisSummerEditions2023ShadowBevelOptOut` from being passed into the `features` prop.
-
-<CollapsibleDetails summary="✅ Post-migration RegExp validation">
-
-<Code
-  code={{
-    className: 'language-regex',
-    title: `Check RegExp for outdated <AppProvider features={...} /> prop`,
-    code: String.raw`<AppProvider[^>\w](?:[^>]|\n)*?features`,
-  }}
-/>
-
-</CollapsibleDetails>
-
-<CollapsibleDetails summary="💡 Migration example">
-
-```diff
-- <AppProvider features={{polarisSummerEditions2023: true, polarisSummerEditions2023ShadowBevelOptOut: false}} i18n={[]} />
-+ <AppProvider i18n={[]} />
+- <VerticalStack />
++ <BlockStack />
 ```
 
 </CollapsibleDetails>
