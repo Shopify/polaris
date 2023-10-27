@@ -30,7 +30,8 @@ export function buttonFrom(
   overrides?: Partial<ButtonProps>,
   key?: any,
 ) {
-  const variant = !overrides?.variant && plain ? 'plain' : overrides?.variant;
+  const plainVariant = plain ? 'plain' : undefined;
+  const destructiveVariant = destructive ? 'primary' : undefined;
   const tone = !overrides?.tone && destructive ? 'critical' : overrides?.tone;
 
   return (
@@ -38,7 +39,7 @@ export function buttonFrom(
       key={key}
       onClick={onAction}
       tone={tone}
-      variant={variant}
+      variant={plainVariant || destructiveVariant}
       {...action}
       {...overrides}
     >
