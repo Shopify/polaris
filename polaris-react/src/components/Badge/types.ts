@@ -5,13 +5,13 @@ export type Tone =
   | 'critical'
   | 'attention'
   | 'new'
-  | 'info-strong-experimental'
-  | 'success-strong-experimental'
-  | 'warning-strong-experimental'
-  | 'critical-strong-experimental'
-  | 'attention-strong-experimental'
-  | 'read-only-experimental'
-  | 'enabled-experimental';
+  | 'info-strong'
+  | 'success-strong'
+  | 'warning-strong'
+  | 'critical-strong'
+  | 'attention-strong'
+  | 'read-only'
+  | 'enabled';
 
 export enum ToneValue {
   Info = 'info',
@@ -20,13 +20,13 @@ export enum ToneValue {
   Critical = 'critical',
   Attention = 'attention',
   New = 'new',
-  InfoStrong = 'info-strong-experimental',
-  SuccessStrong = 'success-strong-experimental',
-  WarningStrong = 'warning-strong-experimental',
-  CriticalStrong = 'critical-strong-experimental',
-  AttentionStrong = 'attention-strong-experimental',
-  ReadOnly = 'read-only-experimental',
-  Enabled = 'enabled-experimental',
+  InfoStrong = 'info-strong',
+  SuccessStrong = 'success-strong',
+  WarningStrong = 'warning-strong',
+  CriticalStrong = 'critical-strong',
+  AttentionStrong = 'attention-strong',
+  ReadOnly = 'read-only',
+  Enabled = 'enabled',
 }
 
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
