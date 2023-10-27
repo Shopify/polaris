@@ -1,6 +1,6 @@
 import React, {useId} from 'react';
 
-import type {Error, Tone} from '../../types';
+import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
@@ -47,7 +47,7 @@ export interface ChoiceListProps {
   /** Callback when the selected choices change */
   onChange?(selected: string[], name: string): void;
   /** Indicates the tone of the choice list */
-  tone?: Tone;
+  tone?: 'magic';
 }
 
 export function ChoiceList({

@@ -1,10 +1,9 @@
 import React, {useRef, useId} from 'react';
 
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 import type {ChoiceBleedProps} from '../Choice';
-import type {Tone} from '../../types';
 
 import styles from './RadioButton.scss';
 
@@ -36,7 +35,7 @@ export interface RadioButtonProps extends ChoiceBleedProps {
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
   /** Indicates the tone of the text field */
-  tone?: Tone;
+  tone?: 'magic';
 }
 
 export function RadioButton({
@@ -86,7 +85,7 @@ export function RadioButton({
 
   const inputClassName = classNames(
     styles.Input,
-    tone && tone === 'magic' && styles.magic,
+    tone && styles[variationName('tone', tone)],
   );
 
   const extraChoiceProps = {

@@ -47,18 +47,18 @@
     }
   }
 
-  &.magic:checked:not([disabled]) + .Backdrop {
+  &.toneMagic:checked:not([disabled]) + .Backdrop {
     &,
     .ChoiceLabel:hover & {
       background-color: var(--p-color-bg-fill-magic);
       border-color: var(--p-color-bg-fill-magic);
     }
-  }
 
-  &.magic:checked:not([disabled]) + .Backdrop::before {
-    &,
-    .ChoiceLabel:hover & {
-      background-color: var(--p-color-text-magic-on-bg-fill);
+    &::before {
+      &,
+      .ChoiceLabel:hover & {
+        background-color: var(--p-color-text-magic-on-bg-fill);
+      }
     }
   }
 

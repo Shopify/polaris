@@ -6,9 +6,10 @@ import {
   getResponsiveValue,
   classNames,
   sanitizeCustomProperties,
+  variationName,
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
-import type {Error, Tone} from '../../types';
+import type {Error} from '../../types';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 
@@ -71,7 +72,7 @@ interface ChoiceProps extends ChoiceBleedProps {
   /** Additional text to aide in use. Will add a wrapping <div> */
   helpText?: React.ReactNode;
   /** Indicates the tone of the choice */
-  tone?: Tone;
+  tone?: 'magic';
 }
 
 export function Choice({
@@ -96,7 +97,7 @@ export function Choice({
     styles.Choice,
     labelHidden && styles.labelHidden,
     disabled && styles.disabled,
-    tone && tone === 'magic' && styles.magic,
+    tone && styles[variationName('tone', tone)],
     labelClassName,
   );
 

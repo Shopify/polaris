@@ -128,7 +128,7 @@ $spinner-icon-size: 12px;
 // stylelint-enable
 
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators -- specificity bump for magic styles to override
-.magic {
+.toneMagic {
   > .Input {
     color: var(--p-color-text-magic);
   }

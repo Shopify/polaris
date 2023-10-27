@@ -15,7 +15,7 @@ import {Labelled, helpTextID, labelID} from '../Labelled';
 import type {LabelledProps} from '../Labelled';
 import {Connected} from '../Connected';
 import {Key} from '../../types';
-import type {Error, Tone} from '../../types';
+import type {Error} from '../../types';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
 import {useEventListener} from '../../utilities/use-event-listener';
@@ -176,7 +176,7 @@ interface NonMutuallyExclusiveProps {
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
   /** Indicates the tone of the text field */
-  tone?: Tone;
+  tone?: 'magic';
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -293,7 +293,7 @@ export function TextField({
     disabled && styles.disabled,
     readOnly && styles.readOnly,
     error && styles.error,
-    tone && tone === 'magic' && styles.magic,
+    tone && styles[variationName('tone', tone)],
     multiline && styles.multiline,
     focus && !disabled && styles.focus,
     variant !== 'inherit' && styles[variant],
