@@ -77,6 +77,24 @@ export function Error() {
   );
 }
 
+export function Magic() {
+  const [checked, setChecked] = useState<CheckboxState>(false);
+  const handleChange = () => {
+    console.error('This should never be fired');
+  };
+
+  return (
+    <InlineStack gap="200">
+      <Checkbox
+        label="Basic checkbox"
+        checked={checked}
+        onChange={handleChange}
+      />
+      <Checkbox label="Basic checkbox" checked onChange={handleChange} />
+    </InlineStack>
+  );
+}
+
 export function WithBleedAndFill() {
   const [checked1, setChecked1] = useState<CheckboxState>(false);
   const [checked2, setChecked2] = useState<CheckboxState>(false);
