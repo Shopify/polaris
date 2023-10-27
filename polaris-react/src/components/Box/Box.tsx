@@ -105,7 +105,7 @@ export interface BoxProps extends React.AriaAttributes {
   /** Aria role */
   role?: Extract<
     React.AriaRole,
-    'status' | 'presentation' | 'menu' | 'listbox' | 'combobox'
+    'status' | 'presentation' | 'menu' | 'listbox' | 'combobox' | 'group'
   >;
   /** Shadow on box */
   shadow?: ShadowAliasOrScale;
