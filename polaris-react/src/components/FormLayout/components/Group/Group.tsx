@@ -33,11 +33,7 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
 
   if (title) {
     titleID = `${id}Title`;
-    titleElement = (
-      <Text as="p" fontWeight="medium">
-        {title}
-      </Text>
-    );
+    titleElement = <Text as="p">{title}</Text>;
   }
 
   const itemsMarkup = Children.map(children, (child) =>
