@@ -4,7 +4,7 @@ $item-min-size: 220px;
 $item-horizontal-spacing: var(--p-space-300);
 
 .Item {
-  flex: 1 1 $item-min-size;
+  flex: 1 1 auto;
 
   &.grouped {
     min-width: $item-min-size;
