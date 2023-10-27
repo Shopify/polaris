@@ -20,6 +20,7 @@ export function SecondaryAction({
   helpText,
   onAction,
   getOffsetWidth,
+  destructive,
   ...rest
 }: SecondaryAction) {
   const secondaryActionsRef = useRef<HTMLDivElement>(null);
@@ -33,7 +34,7 @@ export function SecondaryAction({
   const buttonMarkup = (
     <Button
       onClick={onAction}
-      tone={rest.destructive ? 'critical' : undefined}
+      tone={destructive ? 'critical' : undefined}
       {...rest}
     >
       {children}
