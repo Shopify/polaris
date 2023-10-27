@@ -735,12 +735,12 @@ export function TextField({
   }
 
   function handleOnBlur(event: React.FocusEvent) {
+    setFocus(false);
+
     // Return early if new focus target is inside the TextField component
     if (textFieldRef.current?.contains(event?.relatedTarget)) {
       return;
     }
-
-    setFocus(false);
 
     if (onBlur) {
       onBlur(event);
