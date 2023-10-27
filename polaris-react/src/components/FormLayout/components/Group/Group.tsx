@@ -1,10 +1,11 @@
 import React, {Children, useId} from 'react';
 
-import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
 import {Box} from '../../../Box';
+import {BlockStack} from '../../../BlockStack';
+import {InlineStack} from '../../../InlineStack';
+import {Text} from '../../../Text';
 import {Item} from '../Item';
-import styles from '../../FormLayout.scss';
 
 export interface GroupProps {
   children?: React.ReactNode;
@@ -14,8 +15,6 @@ export interface GroupProps {
 }
 
 export function Group({children, condensed, title, helpText}: GroupProps) {
-  const className = classNames(condensed ? styles.condensed : styles.grouped);
-
   const id = useId();
 
   let helpTextElement = null;
@@ -26,14 +25,7 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
   if (helpText) {
     helpTextID = `${id}HelpText`;
     helpTextElement = (
-      <Box
-        id={helpTextID}
-        paddingBlockStart="300"
-        paddingInlineStart="300"
-        paddingBlockEnd="0"
-        paddingInlineEnd="300"
-        color="text-secondary"
-      >
+      <Box id={helpTextID} color="text-secondary">
         {helpText}
       </Box>
     );
@@ -42,26 +34,26 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
   if (title) {
     titleID = `${id}Title`;
     titleElement = (
-      <div id={titleID} className={styles.Title}>
+      <Text as="p" fontWeight="medium">
         {title}
-      </div>
+      </Text>
     );
   }
 
   const itemsMarkup = Children.map(children, (child) =>
-    wrapWithComponent(child, Item, {}),
+    wrapWithComponent(child, Item, {condensed}),
   );
 
   return (
-    <div
+    <BlockStack
       role="group"
-      className={className}
+      gap="200"
       aria-labelledby={titleID}
       aria-describedby={helpTextID}
     >
       {titleElement}
-      <div className={styles.Items}>{itemsMarkup}</div>
+      <InlineStack gap="300">{itemsMarkup}</InlineStack>
       {helpTextElement}
-    </div>
+    </BlockStack>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Card, FormLayout, TextField, BlockStack} from '@shopify/polaris';
+import {Card, FormLayout, TextField, Text, BlockStack} from '@shopify/polaris';
 
 export default {
   component: FormLayout,
@@ -45,10 +45,10 @@ export function CondensedFieldGroup() {
   return (
     <FormLayout>
       <FormLayout.Group condensed>
-        <TextField label="Length" onChange={() => {}} autoComplete="off" />
-        <TextField label="Width" onChange={() => {}} autoComplete="off" />
-        <TextField label="Height" onChange={() => {}} autoComplete="off" />
-        <TextField label="Unit" onChange={() => {}} autoComplete="off" />
+        <TextField label="Input 1" onChange={() => {}} autoComplete="off" />
+        <TextField label="Input 2" onChange={() => {}} autoComplete="off" />
+        <TextField label="Input 3" onChange={() => {}} autoComplete="off" />
+        <TextField label="Input 4" onChange={() => {}} autoComplete="off" />
       </FormLayout.Group>
     </FormLayout>
   );
@@ -57,37 +57,66 @@ export function CondensedFieldGroup() {
 export function All() {
   return (
     <BlockStack gap="500">
-      <Card>
-        <FormLayout>
-          <FormLayout.Group
-            title="Default group 1"
-            helpText="Form group help text"
-          >
-            <TextField label="Length" onChange={() => {}} autoComplete="off" />
-            <TextField label="Width" onChange={() => {}} autoComplete="off" />
-          </FormLayout.Group>
-          <FormLayout.Group title="Default group 2">
-            <TextField label="Length" onChange={() => {}} autoComplete="off" />
-            <TextField label="Width" onChange={() => {}} autoComplete="off" />
-            <TextField label="Height" onChange={() => {}} autoComplete="off" />
-            <TextField label="Unit" onChange={() => {}} autoComplete="off" />
-          </FormLayout.Group>
-        </FormLayout>
+      <Card roundedAbove="sm">
+        <BlockStack gap="400">
+          <Text as="h2" variant="headingSm">
+            Card title
+          </Text>
+          <FormLayout>
+            <FormLayout.Group
+              title="Default group 1"
+              helpText="Form group help text"
+            >
+              <TextField
+                label="Input 1"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 2"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+            </FormLayout.Group>
+            <FormLayout.Group title="Default group 2">
+              <TextField
+                label="Input 1"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 2"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 3"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 4"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+            </FormLayout.Group>
+          </FormLayout>
+        </BlockStack>
       </Card>
-      <Card>
+      <Card roundedAbove="sm">
         <FormLayout>
           <FormLayout.Group
             condensed
-            title="Condensed"
+            title="Condensed group"
             helpText="Form group help text"
           >
-            <TextField label="Length" onChange={() => {}} autoComplete="off" />
-            <TextField label="Width" onChange={() => {}} autoComplete="off" />
-            <TextField label="Height" onChange={() => {}} autoComplete="off" />
+            <TextField label="Input 1" onChange={() => {}} autoComplete="off" />
+            <TextField label="Input 2" onChange={() => {}} autoComplete="off" />
+            <TextField label="Input 3" onChange={() => {}} autoComplete="off" />
           </FormLayout.Group>
         </FormLayout>
       </Card>
-      <Card>
+      <Card roundedAbove="sm">
         <FormLayout>
           <FormLayout.Group
             title="Form group title"
