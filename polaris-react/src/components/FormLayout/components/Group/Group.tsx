@@ -18,22 +18,26 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
   const id = useId();
 
   let helpTextElement = null;
-  let helpTextID: undefined | string;
+  let helpTextId: undefined | string;
   let titleElement = null;
-  let titleID: undefined | string;
+  let titleId: undefined | string;
 
   if (helpText) {
-    helpTextID = `${id}HelpText`;
+    helpTextId = `${id}HelpText`;
     helpTextElement = (
-      <Box id={helpTextID} color="text-secondary">
+      <Box id={helpTextId} color="text-secondary">
         {helpText}
       </Box>
     );
   }
 
   if (title) {
-    titleID = `${id}Title`;
-    titleElement = <Text as="p">{title}</Text>;
+    titleId = `${id}Title`;
+    titleElement = (
+      <Text id={titleId} as="p">
+        {title}
+      </Text>
+    );
   }
 
   const itemsMarkup = Children.map(children, (child) =>
@@ -44,8 +48,8 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
     <BlockStack
       role="group"
       gap="200"
-      aria-labelledby={titleID}
-      aria-describedby={helpTextID}
+      aria-labelledby={titleId}
+      aria-describedby={helpTextId}
     >
       {titleElement}
       <InlineStack gap="300">{itemsMarkup}</InlineStack>
