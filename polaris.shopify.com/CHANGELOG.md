@@ -1,5 +1,23 @@
 # polaris.shopify.com
 
+## 0.60.0
+
+### Minor Changes
+
+- [#11045](https://github.com/Shopify/polaris/pull/11045) [`a1c13938f`](https://github.com/Shopify/polaris/commit/a1c13938f08663380dff316b8d6f2d8219a712c5) Thanks [@lgriffee](https://github.com/lgriffee)! - Add v12 polaris migrator documentation
+
+### Patch Changes
+
+- [#10795](https://github.com/Shopify/polaris/pull/10795) [`e78051a80`](https://github.com/Shopify/polaris/commit/e78051a80b9d7eb583ede6ab2f1849a2f16f16fb) Thanks [@SMAKSS](https://github.com/SMAKSS)! - Fixed typos in `<Text />` variant tokens
+
+* [#11051](https://github.com/Shopify/polaris/pull/11051) [`f2fabff25`](https://github.com/Shopify/polaris/commit/f2fabff2519f41b569fca16b7238b17365270d4b) Thanks [@lgriffee](https://github.com/lgriffee)! - Alphabetize component list in v11 to v12 migration guide
+
+- [#11029](https://github.com/Shopify/polaris/pull/11029) [`ca67934e0`](https://github.com/Shopify/polaris/commit/ca67934e0f4164a3f78b8db71e067c3411e39d5d) Thanks [@lgriffee](https://github.com/lgriffee)! - Update `v12-styles-replace-custom-property-color` migration with additional tokens
+
+- Updated dependencies [[`f81abddba`](https://github.com/Shopify/polaris/commit/f81abddba931be239475b660da7126434bd33acf), [`74fb5d5c6`](https://github.com/Shopify/polaris/commit/74fb5d5c6f63e1bb3d43e05737a3a7a04f8465ad), [`78ff4e665`](https://github.com/Shopify/polaris/commit/78ff4e665417ce976ac327e9fcf2c1454726cf81), [`27317aa4b`](https://github.com/Shopify/polaris/commit/27317aa4b67c670f45d53df61e70ed60db5de26d), [`caf553126`](https://github.com/Shopify/polaris/commit/caf5531267591e5928164ba90269db168244ea34), [`7508e7014`](https://github.com/Shopify/polaris/commit/7508e7014c97d2f7950dd04f6a188ddd64dcc0b3), [`73b1d5d2c`](https://github.com/Shopify/polaris/commit/73b1d5d2ccf0a9f203fdf045b752dfbf536aeee5), [`b0d5750b0`](https://github.com/Shopify/polaris/commit/b0d5750b03730e5589334d1c143e4f808bb8d433)]:
+  - @shopify/polaris@12.0.2
+  - @shopify/polaris-tokens@8.0.2
+
 ## 0.59.0
 
 ### Minor Changes

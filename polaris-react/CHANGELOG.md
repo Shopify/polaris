@@ -1,5 +1,26 @@
 # Changelog
 
+## 12.0.2
+
+### Patch Changes
+
+- [#11037](https://github.com/Shopify/polaris/pull/11037) [`f81abddba`](https://github.com/Shopify/polaris/commit/f81abddba931be239475b660da7126434bd33acf) Thanks [@chloerice](https://github.com/chloerice)! - Added tests for `buttonFrom` and `buttonsFrom` utility functions
+
+* [#11061](https://github.com/Shopify/polaris/pull/11061) [`74fb5d5c6`](https://github.com/Shopify/polaris/commit/74fb5d5c6f63e1bb3d43e05737a3a7a04f8465ad) Thanks [@laurkim](https://github.com/laurkim)! - Fixed border radius styling on `TextField.Spinner` component
+
+- [#11062](https://github.com/Shopify/polaris/pull/11062) [`78ff4e665`](https://github.com/Shopify/polaris/commit/78ff4e665417ce976ac327e9fcf2c1454726cf81) Thanks [@chloerice](https://github.com/chloerice)! - Updated `ContextualSaveBar` icon to `RiskMajor` and updated logos in examples to Shopify logo
+
+* [#11052](https://github.com/Shopify/polaris/pull/11052) [`27317aa4b`](https://github.com/Shopify/polaris/commit/27317aa4b67c670f45d53df61e70ed60db5de26d) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed destructive states for PageActions and Page SecondaryActions
+
+- [#11053](https://github.com/Shopify/polaris/pull/11053) [`caf553126`](https://github.com/Shopify/polaris/commit/caf5531267591e5928164ba90269db168244ea34) Thanks [@laurkim](https://github.com/laurkim)! - Removed `experimental` flag from Badge `tone` types
+
+* [#11049](https://github.com/Shopify/polaris/pull/11049) [`7508e7014`](https://github.com/Shopify/polaris/commit/7508e7014c97d2f7950dd04f6a188ddd64dcc0b3) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed Banner InlineIconBanner variant dismiss icon position when hideIcon is true
+
+- [#10808](https://github.com/Shopify/polaris/pull/10808) [`b0d5750b0`](https://github.com/Shopify/polaris/commit/b0d5750b03730e5589334d1c143e4f808bb8d433) Thanks [@jesstelford](https://github.com/jesstelford)! - [IndexFilters] Loading spinner moved to be a suffix within the search box.
+
+- Updated dependencies [[`73b1d5d2c`](https://github.com/Shopify/polaris/commit/73b1d5d2ccf0a9f203fdf045b752dfbf536aeee5)]:
+  - @shopify/polaris-tokens@8.0.2
+
 ## 12.0.1
 
 ### Patch Changes
