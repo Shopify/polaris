@@ -39,6 +39,8 @@ npx @shopify/polaris-migrator <migration> <path>
 
 ### v12
 
+If you are upgrading Polaris from v11 to v12 please follow our [migration guide](/version-guides/migrating-from-v11-to-v12).
+
 #### `v12-react-avatar-component`
 
 Replace deprecated `Avatar` component `size` prop values with corresponding replacement values.
