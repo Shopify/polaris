@@ -54,11 +54,11 @@ function TopBarWrapper({
   }, []);
 
   const logo = {
-    width: 92,
+    width: 86,
     topBarSource:
-      'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-monotone-white-7edf88561b256e005e9b9d003c283c39dcbd74ec844dfc9a3912edeec39b4d7e.svg',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
     url: '#',
-    accessibilityLabel: 'Hem Canada',
+    accessibilityLabel: 'Shopify',
   };
 
   const userMenuMarkup = (

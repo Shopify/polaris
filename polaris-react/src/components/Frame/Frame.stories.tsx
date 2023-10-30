@@ -312,13 +312,12 @@ function InAnApplicationComponent() {
   );
 
   const logo = {
-    width: 124,
+    width: 86,
     topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
     contextualSaveBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    url: '#',
-    accessibilityLabel: 'Jaded Pixel',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    accessibilityLabel: 'Shopify',
   };
 
   return (
@@ -655,13 +654,12 @@ function WithAnOffsetComponent() {
   );
 
   const logo = {
-    width: 124,
+    width: 86,
     topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
     contextualSaveBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    url: '#',
-    accessibilityLabel: 'Jaded Pixel',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    accessibilityLabel: 'Shopify',
   };
 
   return (
@@ -1013,13 +1011,12 @@ function WithSidebarEnabled() {
   );
 
   const logo = {
-    width: 124,
+    width: 86,
     topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
     contextualSaveBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    url: '#',
-    accessibilityLabel: 'Jaded Pixel',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    accessibilityLabel: 'Shopify',
   };
 
   return (
