@@ -9,6 +9,7 @@ import styles from './SecondaryAction.scss';
 
 interface SecondaryAction extends ButtonProps {
   helpText?: React.ReactNode;
+  destructive?: boolean;
   onAction?(): void;
   getOffsetWidth?(width: number): void;
 }
@@ -19,6 +20,7 @@ export function SecondaryAction({
   helpText,
   onAction,
   getOffsetWidth,
+  destructive,
   ...rest
 }: SecondaryAction) {
   const secondaryActionsRef = useRef<HTMLDivElement>(null);
@@ -30,7 +32,11 @@ export function SecondaryAction({
   }, [getOffsetWidth]);
 
   const buttonMarkup = (
-    <Button onClick={onAction} {...rest}>
+    <Button
+      onClick={onAction}
+      tone={destructive ? 'critical' : undefined}
+      {...rest}
+    >
       {children}
     </Button>
   );
