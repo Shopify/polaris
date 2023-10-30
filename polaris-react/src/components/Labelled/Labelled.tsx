@@ -23,6 +23,8 @@ export interface LabelledProps {
   action?: Action;
   /** Additional hint text to display */
   helpText?: React.ReactNode;
+  /** Display additional hint below label */
+  helpTextBelowLabel?: boolean;
   /** Content to display inside the connected */
   children?: React.ReactNode;
   /** Visually hide the label */
@@ -41,6 +43,7 @@ export function Labelled({
   error,
   action,
   helpText,
+  helpTextBelowLabel = false,
   children,
   labelHidden,
   requiredIndicator,
@@ -62,7 +65,9 @@ export function Labelled({
 
   const helpTextMarkup = helpText ? (
     <div
-      className={styles.HelpText}
+      className={
+        helpTextBelowLabel ? styles.HelpTextAfterLabel : styles.HelpText
+      }
       id={helpTextID(id)}
       aria-disabled={disabled}
     >
@@ -95,10 +100,21 @@ export function Labelled({
 
   return (
     <div className={className}>
-      {labelMarkup}
-      {children}
-      {errorMarkup}
-      {helpTextMarkup}
+      {helpTextBelowLabel ? (
+        <>
+          {labelMarkup}
+          {helpTextMarkup}
+          {children}
+          {errorMarkup}
+        </>
+      ) : (
+        <>
+          {labelMarkup}
+          {children}
+          {errorMarkup}
+          {helpTextMarkup}
+        </>
+      )}
     </div>
   );
 }
