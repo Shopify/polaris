@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, {useState, useCallback, useRef, useId, cloneElement} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
@@ -108,10 +109,16 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const handleExited = useCallback(() => {
     setIframeHeight(IFRAME_LOADING_HEIGHT);
 
+    console.log('activator', activator);
+    // console.log('is activator a ref?', isRef(activator));
+
     const activatorElement =
       activator && isRef(activator)
         ? activator && activator.current
         : activatorRef.current;
+
+    console.log(activatorElement);
+
     if (activatorElement) {
       requestAnimationFrame(() => focusFirstFocusableNode(activatorElement));
     }
