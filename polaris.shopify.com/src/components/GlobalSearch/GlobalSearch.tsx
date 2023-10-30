@@ -448,9 +448,9 @@ function SearchResults({
                     description: true,
                   }}
                 >
-                  {results.map(({id, meta}) => {
+                  {results.map(({id, meta, url}) => {
                     if (!meta.tokens) return null;
-                    const {token, category} = meta.tokens;
+                    const {token} = meta.tokens;
                     const resultIndex = resultsInRenderedOrder.findIndex(
                       (r) => {
                         return r.id === id;
@@ -463,12 +463,12 @@ function SearchResults({
                         value={{currentItemId, id}}
                       >
                         <TokenList.Item
-                          category={category}
                           token={token}
                           uuid={uuid}
                           customOnClick={captureSearchClick}
                           searchTerm={searchTerm}
                           rank={rank}
+                          url={url}
                         />
                       </SearchContext.Provider>
                     );

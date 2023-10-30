@@ -123,29 +123,28 @@ function getFigmaUsageForToken(
 }
 
 interface TokenListItemProps {
-  category: string;
   token: TokenPropertiesWithName;
   customOnClick?: Function;
   searchTerm?: string;
   rank?: number;
   uuid?: string;
+  url?: string;
 }
 
 function TokenListItem({
-  category,
   token: {name, value, description},
   customOnClick,
   searchTerm,
   rank,
   uuid,
+  url,
 }: TokenListItemProps) {
   const figmaUsage = getFigmaUsageForToken(name, value);
   const tokenNameWithPrefix = `--p-${name}`;
   const [copy, didJustCopy] = useCopyToClipboard(tokenNameWithPrefix);
 
   const searchAttributes = useGlobalSearchResult();
-  const isClickableSearchResult = !!searchAttributes?.tabIndex;
-  const url = `/tokens/${category}#${searchAttributes?.id}`;
+  const isClickableSearchResult = !!searchAttributes?.tabIndex && url;
 
   const customOnClickHandler = () => {
     uuid &&
