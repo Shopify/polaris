@@ -85,6 +85,8 @@ interface NonMutuallyExclusiveProps {
   value?: string;
   /** Additional hint text to display */
   helpText?: React.ReactNode;
+  /** Display additional hint before input */
+  helpTextBelowLabel?: boolean;
   /** Label for the input */
   label: React.ReactNode;
   /** Adds an action to the label */
@@ -197,6 +199,7 @@ export function TextField({
   placeholder,
   value = '',
   helpText,
+  helpTextBelowLabel = false,
   label,
   labelAction,
   labelHidden,
@@ -598,6 +601,7 @@ export function TextField({
       action={labelAction}
       labelHidden={labelHidden}
       helpText={helpText}
+      helpTextBelowLabel={helpTextBelowLabel}
       requiredIndicator={requiredIndicator}
       disabled={disabled}
       readOnly={readOnly}

@@ -1987,6 +1987,7 @@ describe('<TextField />', () => {
           id="MyField"
           onChange={noop}
           helpText="Help text"
+          helpTextBelowLabel
           autoComplete="off"
         />,
       );
@@ -1995,6 +1996,7 @@ describe('<TextField />', () => {
         id: 'MyField',
         label: 'TextField',
         helpText: 'Help text',
+        helpTextBelowLabel: true,
       });
     });
 
