@@ -32,13 +32,12 @@ function TopBarExample() {
   const handleNavigationToggle = useCallback(() => {
     console.log('toggle navigation visibility');
   }, []);
-
   const logo = {
-    width: 124,
     topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    width: 86,
     url: '#',
-    accessibilityLabel: 'Jaded Pixel',
+    accessibilityLabel: 'Shopify',
   };
 
   const userMenuMarkup = (
