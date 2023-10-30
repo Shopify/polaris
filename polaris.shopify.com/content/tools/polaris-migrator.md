@@ -68,7 +68,7 @@ npx @shopify/polaris-migrator v12-react-avatar-component <path>
 
 #### `v12-react-update-button-component`
 
-Consolidate `Button` boolean props. The `Button` component has been updated to replace deprecated `connectedDisclosure`, `outline`, `destructive`, `primary`, `primarySuccess`, `plain`, and `monochrome` props with a new `variant` prop that supports multiple variation options.
+Consolidate `Button` boolean props to `variant` and `tone`. The `Button` component has been updated to replace deprecated `connectedDisclosure`, `outline`, `destructive`, `primary`, `primarySuccess`, `plain`, and `monochrome` props with a new `variant` prop that supports multiple variation options.
 
 ```diff
 - <Button plain />
