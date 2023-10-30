@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.0.2
+
+### Patch Changes
+
+- [#10602](https://github.com/Shopify/polaris/pull/10602) [`73b1d5d2c`](https://github.com/Shopify/polaris/commit/73b1d5d2ccf0a9f203fdf045b752dfbf536aeee5) Thanks [@patrickDouglas](https://github.com/patrickDouglas)! - Export types missing for the Typescript Compiler (tsc) when using Node16/Bundler Module Resolution.
+
 ## 8.0.1
 
 ### Patch Changes
