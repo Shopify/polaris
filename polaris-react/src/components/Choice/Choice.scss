@@ -34,7 +34,6 @@
   );
   @include responsive-props('choice', 'fill', '--pc-choice-fill');
   display: inline-flex;
-  align-items: center;
   justify-content: flex-start;
   cursor: pointer;
   padding-block-start: calc(
