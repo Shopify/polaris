@@ -1,0 +1,16 @@
+name: SteeringWheelMinor
+set: minor
+description:
+ Steering wheel
+keywords:
+  - steering wheel
+  - car
+  - test drive
+authors:
+  - Joe Thomas
+version: 1
+date_added: 2023-10-31
+date_modified: 2023-10-31
+# Optional: fill exclusive_use if the icon should *only* be used
+# in specific areas of the admin (such as “Orders”):
+exclusive_use:
