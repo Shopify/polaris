@@ -117,8 +117,8 @@
 
     &[class*='Polaris-Button--disabled'],
     &[class*='Button-disabled'] {
-      --pc-button-text: var(--p-color-text-secondary);
       background: var(--pc-button-color-disabled);
+      color: var(--p-color-text-secondary);
     }
   }
 
