@@ -1,5 +1,15 @@
 # Changelog
 
+## 12.0.3
+
+### Patch Changes
+
+- [#11018](https://github.com/Shopify/polaris/pull/11018) [`38ed8a9ba`](https://github.com/Shopify/polaris/commit/38ed8a9baf9e3ddc26b6399cddf6725b25c82031) Thanks [@zaquille-oneil](https://github.com/zaquille-oneil)! - Fixed `TextField` blurring when interacting with the `Spinner` buttons
+
+* [#11067](https://github.com/Shopify/polaris/pull/11067) [`a1cff3557`](https://github.com/Shopify/polaris/commit/a1cff35579417d5dcb43b6da58eb90f7cb0d16f4) Thanks [@laurkim](https://github.com/laurkim)! - Fixed disabled button styling on `ContextualSaveBar` component
+
+- [#11066](https://github.com/Shopify/polaris/pull/11066) [`9d5fedbce`](https://github.com/Shopify/polaris/commit/9d5fedbce0995da8ad17e6e8a5e2555fb3daa484) Thanks [@laurkim](https://github.com/laurkim)! - Fixed styling on `IndexTable` component header tooltip
+
 ## 12.0.2
 
 ### Patch Changes
