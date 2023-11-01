@@ -5762,6 +5762,11 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
+"@webref/css@^6.8.3":
+  version "6.8.3"
+  resolved "https://registry.yarnpkg.com/@webref/css/-/css-6.8.3.tgz#fde11d1ae496033fdb8d25777236f069a883bdcf"
+  integrity sha512-4RC2WUh1YLJaSNPranPgUJ5USY4/0/dIzZIDQvNQsQqxIV+NyOFX68xRjFr0lNTafdDVy4snDfpXzN53DwOt/Q==
+
 "@xobotyi/scrollbar-width@^1.9.5":
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"
@@ -8782,6 +8787,11 @@ csstype@^3.0.2, csstype@^3.0.6, csstype@^3.0.7:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.1.tgz#841b532c45c758ee546a11d5bd7b7b473c8c30b9"
   integrity sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==
+
+csstype@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.1.2.tgz#1d4bf9d572f11c14031f0436e1c10bc1f571f50b"
+  integrity sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==
 
 csv-generate@^3.4.3:
   version "3.4.3"
