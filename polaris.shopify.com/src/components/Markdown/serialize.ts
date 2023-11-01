@@ -7,7 +7,8 @@ import {
   remarkDefinitionList,
   defListHastHandlers,
 } from 'remark-definition-list';
-import {visit, type Node, type Parent} from 'unist-util-visit';
+import type {Parent, Node} from 'unist';
+import {visit} from 'unist-util-visit';
 import type {Plugin} from 'unified';
 
 import remarkExtractFirstParagraph, {

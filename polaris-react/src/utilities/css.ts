@@ -5,6 +5,10 @@ import {isObject} from './is-object';
 
 type Falsy = boolean | undefined | null | 0;
 
+export type ResponsivePropObject<T> = {
+  [Breakpoint in BreakpointsAlias]?: T;
+};
+
 type ResponsivePropConfig<T = string> = {
   [Breakpoint in BreakpointsAlias]?: T;
 };
@@ -16,6 +20,9 @@ export type ResponsiveValue<T = string> = undefined | ResponsiveProp<T>;
 type ResponsiveVariables<T> = {
   [Breakpoint in `${string}-${BreakpointsAlias}`]?: T;
 };
+
+export type PolarisCSSCustomPropertyName = `${`--p-` | `--pc-`}${string}`;
+export type PolarisCSSVar = `var(${PolarisCSSCustomPropertyName})`;
 
 export function classNames(...classes: (string | Falsy)[]) {
   return classes.filter(Boolean).join(' ');
@@ -105,4 +112,21 @@ export function getResponsiveValue<T = string>(
       responsiveValue,
     ]),
   );
+}
+
+export function createPolarisCSSVar<
+  T extends string | number | undefined = string,
+>(tokenSubgroup: string | null, tokenValue: T): PolarisCSSVar {
+  // `Grid`'s `gap` prop used to allow passing fully formed var() functions as
+  // the value. This is no longer supported in v12+.
+  if (typeof tokenValue === 'string' && tokenValue.startsWith('var(')) {
+    throw new Error(
+      `"${tokenValue}" is not from the ${tokenSubgroup} token group.`,
+    );
+  }
+
+  // NOTE: All our token values today are either strings or numbers, so
+  // stringifying them here works. But if we ever have anything more complex
+  // (such as an object) this may generate invalid token names.
+  return `var(--p-${tokenSubgroup ? `${tokenSubgroup}-` : ''}${tokenValue})`;
 }

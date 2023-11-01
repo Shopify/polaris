@@ -178,7 +178,6 @@ export enum Breakpoints {
   Mobile = 500,
   Tablet = 768,
   Desktop = 1400,
-  DesktopLarge = 1600,
 }
 
 export type StatusName =

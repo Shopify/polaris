@@ -26,6 +26,12 @@ export type BorderTokenGroup = {
   [TokenName in BorderTokenName]: string;
 };
 
+export type BorderStyleProps = {
+  [T in (typeof borderRadiusStyleProps)[number]]?: BorderRadiusAliasOrScale;
+} & {
+  [T in (typeof borderWidthStyleProps)[number]]?: BorderWidthScale;
+};
+
 export const border: {
   [TokenName in BorderTokenName]: MetaTokenProperties;
 } = {
@@ -75,3 +81,41 @@ export const border: {
     value: size[100],
   },
 };
+
+const borderRadiusStyleProps = [
+  // Shorthand
+  'borderRadius',
+  // Logical properties
+  'borderStartStartRadius',
+  'borderStartEndRadius',
+  'borderEndStartRadius',
+  'borderEndEndRadius',
+  // Positional properties
+  'borderTopLeftRadius',
+  'borderTopRightRadius',
+  'borderBottomLeftRadius',
+  'borderBottomRightRadius',
+] as const;
+
+const borderWidthStyleProps = [
+  // Shorthand
+  'borderWidth',
+  'outlineWidth',
+  // Logical properties
+  'borderBlockStartWidth',
+  'borderBlockEndWidth',
+  'borderInlineStartWidth',
+  'borderInlineEndWidth',
+  'borderInlineWidth',
+  'borderBlockWidth',
+  // Positional properties
+  'borderLeftWidth',
+  'borderRightWidth',
+  'borderTopWidth',
+  'borderBottomWidth',
+] as const;
+
+export const borderStylePropTokenGroups = {
+  'border-radius': borderRadiusStyleProps,
+  'border-width': borderWidthStyleProps,
+} as const;

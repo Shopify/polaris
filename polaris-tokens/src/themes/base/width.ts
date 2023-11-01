@@ -29,6 +29,10 @@ export type WidthTokenGroup = {
   [TokenName in WidthTokenName]: string;
 };
 
+export type WidthStyleProps = {
+  [T in (typeof widthStyleProps)[number]]: WidthScale;
+};
+
 export const width: {
   [TokenName in WidthTokenName]: MetaTokenProperties;
 } = {
@@ -93,3 +97,22 @@ export const width: {
     value: size[3200],
   },
 };
+
+const widthStyleProps = [
+  // Shorthands
+  'containIntrinsicSize',
+  // Logical properties
+  // TODO: Reinstate these once our token scales are usable
+  // 'inlineSize',
+  // 'minInlineSize',
+  // 'maxInlineSize',
+  'containIntrinsicInlineSize',
+  // Positional properties
+  // TODO: Reinstate these once our token scales are usable
+  // 'width',
+  // 'minWidth',
+  // 'maxWidth',
+  'containIntrinsicWidth',
+] as const;
+
+export const widthStylePropTokenGroups = {width: widthStyleProps} as const;
