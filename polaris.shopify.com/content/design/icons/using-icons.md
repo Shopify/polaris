@@ -54,7 +54,7 @@ keywords:
       Use icons to replace text for common actions with universally understood icons.
     </Column>
     <Column variant="dont">
-      ![ A series of abstract icon buttons with no labels.](/images/design/icons/icons-using-2@2x.png)
+      ![ A series of abstract icon buttons with no labels.](/images/design/icons/icons-using-3@2x.png)
 
       Use ambiguous icons without a text label, as that can lead to confusion and misinterpretation.
     </Column>
@@ -64,7 +64,7 @@ keywords:
 
 <Section>
   <Row variant="1-1-1">
-  
+
     <Column>
       ### Indicate common objects
 
@@ -83,7 +83,7 @@ keywords:
 
   </Row>
   <Row variant="1-2">
-  
+
     <Column>
       {/* Empty space */}
     </Column>
@@ -98,7 +98,7 @@ keywords:
 
 <Section>
   <Row>
-  
+
     <Column span="1/3">
       ### Size
 

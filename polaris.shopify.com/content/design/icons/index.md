@@ -32,7 +32,7 @@ status: New
 
 <Section>
   <Row>
-  
+
     <Column>
       ## Clear
 
@@ -46,7 +46,7 @@ status: New
     <Column variant="dont">
       ![Two detailed icons representing an house and a flower.](/images/design/icons/icons-overview-clear-2@2x.png)
 
-      Embellish the icon with unnecessary details.
+      Embellish icons with unnecessary details.
     </Column>
 
   </Row>
@@ -54,10 +54,10 @@ status: New
 
 <Section>
   <Row variant="1-2">
-  
+
     <Column>
         ## Consistent
-        
+
         Icons follow a cohesive visual style across the user interface. This includes a consistent use of line weights, shapes, dimensions, perspectives, and general style. Consistency in designs enables users to quickly recognize functionality and navigate the interface more intuitively.
     </Column>
     <Column span="2/3" variant="do">
@@ -69,7 +69,7 @@ status: New
   </Row>
 
   <Row variant="1-1-1">
-  
+
     <Column>
       {/* Empty space */}
     </Column>
@@ -81,7 +81,7 @@ status: New
     <Column variant="dont">
       ![A microphone and a pencil represented in a unique way.](/images/design/icons/icons-overview-consistent-3@2x.png)
 
-      Reinvent the way an object is represented.
+      Reinterpret or stylize universally recognized icons.
     </Column>
 
   </Row>
@@ -89,7 +89,7 @@ status: New
 
 <Section>
   <Row>
-  
+
     <Column>
       ## Universal
 
@@ -103,7 +103,7 @@ status: New
     <Column variant="dont">
         ![An icon with a 2 euro coin representing the concept of “Money”; an icon with an american football representing the concept of “Sports”; and a floppy disk representing the concept of “Save”.](/images/design/icons/icons-overview-universal-2@2x.png)
 
-        Rely on cultural-specific, niche symbols or outdated metaphors may not be understood by all users.
+        Relying on cultural-specific, niche, or outdated metaphors may not be suitable for all users.
     </Column>
 
   </Row>
