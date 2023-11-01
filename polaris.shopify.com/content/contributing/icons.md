@@ -45,7 +45,7 @@ To learn about best practices for designing and using Polaris icons, read the [i
 4. Flatten the other icon by expanding all strokes and then combining them into a single shape using the [boolean operations](https://help.figma.com/hc/en-us/articles/360039957534-Boolean-operations). Once into a single shape, flatten the entire vector by hitting 'Command + E'.
 5. Create a branch in the [Polaris Icon Library](https://www.figma.com/file/fVIazfJNe3AOJTJmBKgTO9/Polaris-Gen-3-Icons?type=design&node-id=753-2&mode=design&t=dpxRTbWHU6wBZi9k-11) adding your icon to the appropriate page
    <br /> - Convert your icon into a component.
-   <br /> - Rename the component follwing the established convention. This name will also be used in the Polaris Icon
+   <br /> - Rename the component follwing the established convention. This name will also be used in the Polaris Icon.
 6. Export flattened component as svg.
 7. Request a review and merge from a Polaris designer.
 
