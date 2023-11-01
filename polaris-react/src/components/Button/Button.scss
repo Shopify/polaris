@@ -1021,6 +1021,10 @@
   > :last-child:first-child .Button::after {
     border-radius: var(--p-border-radius-200);
   }
+
+  > :not(:first-child) .Button.primary {
+    margin-left: calc(-1 * var(--p-space-025));
+  }
 }
 
 [data-buttongroup-connected-top='true'] {
