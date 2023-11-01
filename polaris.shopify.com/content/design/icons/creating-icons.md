@@ -53,7 +53,7 @@ keywords:
 
     Exceptionally, if the icon requires more visual prominence, or more space to
     read effectively, the content can expand beyond that, however, no part of
-    the icon should exceed 16 x 16 Column
+    the icon should exceed 16 x 16.
 
   </Column>
 </Row>
@@ -221,7 +221,7 @@ Outlined icons are the default. Filled icons are reserved for navigation only.
 
     ![A calendar, an inbox and a shop icon with the corner radius highlighted. 3 pixels for the calendar, 2 pixels for the inbox and 1 pixel for the inbox.](/images/design/icons/icons-creating-outline-5@2x.png)
 
-    Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded. Sharp corners are not allowed, except for intersections and Columntouts.
+    Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
 
   </Column>
   <Column variant="directive">
@@ -267,7 +267,7 @@ Outlined icons are the default. Filled icons are reserved for navigation only.
 
     Stroke weight is 1.5 px, but is reduced to 1.25 px when used inside a shape as a cut-out. Shapes must align with the pixel grid.
 
-    Exceptions are allowed Columnor optical adjustments, as long as they fall on 0.25 px increments.
+    Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
 
   </Column>
   <Column variant="directive">
@@ -276,7 +276,7 @@ Outlined icons are the default. Filled icons are reserved for navigation only.
 
     Terminals are round.
 
-    Corner radius can Columno from 1 px to 3 px, depending on the object roundness.Joins must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
+    Corner radius can go from 1 px to 3 px, depending on the object roundness.Joins must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
 
   </Column>
 </Row>
