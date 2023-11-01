@@ -56,7 +56,14 @@ export function WithMultiChoice() {
       title="While the customer is checking out"
       choices={[
         {
-          label: 'Use the shipping address as the billing address by default',
+          label: (
+            <div>
+              Use the shipping address as the billing address by default
+              <br />
+              This is the second line
+              <br /> this is the third line
+            </div>
+          ),
           value: 'shipping',
           helpText:
             'Reduces the number of fields required to check out. The billing address can still be edited.',
@@ -74,6 +81,35 @@ export function WithMultiChoice() {
   );
 }
 
+export function WithMultiLineLabel() {
+  const [selected, setSelected] = useState(['hidden']);
+
+  const handleChange = useCallback((value) => setSelected(value), []);
+
+  return (
+    <ChoiceList
+      allowMultiple
+      title="While the customer is checking out"
+      choices={[
+        {
+          label: (
+            <div>
+              Use the shipping address as the billing address by default
+              <br />
+              This is the second line
+              <br /> This is the third line
+            </div>
+          ),
+          value: 'shipping',
+          helpText:
+            'Reduces the number of fields required to check out. The billing address can still be edited.',
+        },
+      ]}
+      selected={selected}
+      onChange={handleChange}
+    />
+  );
+}
 export function WithChildrenContent() {
   const [selected, setSelected] = useState(['none']);
   const [textFieldValue, setTextFieldValue] = useState('');
