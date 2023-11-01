@@ -38,6 +38,14 @@ export type MotionTokenGroup = {
   [TokenName in MotionTokenName]: string;
 };
 
+export type MotionStyleProps = {
+  [T in (typeof motionDurationStyleProps)[number]]?: MotionDurationScale;
+} & {
+  [T in (typeof motionKeyframesStyleProps)[number]]?: MotionKeyframesAlias;
+} & {
+  [T in (typeof motionTimingFunctionStyleProps)[number]]?: MotionTimingFunctionAlias;
+};
+
 export const motion: {
   [TokenName in MotionTokenName]: MetaTokenProperties;
 } = {
@@ -123,3 +131,15 @@ export const motion: {
       '{ from { transform: translateY(calc(var(--p-space-100) * -1)); opacity: 0; } to { transform: none; opacity: 1; } }',
   },
 };
+
+const motionDurationStyleProps = ['transitionDuration'] as const;
+
+const motionKeyframesStyleProps = ['animationName'] as const;
+
+const motionTimingFunctionStyleProps = ['transitionTimingFunction'] as const;
+
+export const motionStylePropTokenGoups = {
+  'motion-duration': motionDurationStyleProps,
+  'motion-keyframes': motionKeyframesStyleProps,
+  motion: motionTimingFunctionStyleProps,
+} as const;

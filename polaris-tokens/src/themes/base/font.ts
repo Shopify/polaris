@@ -52,6 +52,18 @@ export type FontTokenGroup = {
   [TokenName in FontTokenName]: string;
 };
 
+export type FontStyleProps = {
+  [T in (typeof fontSizeStyleProps)[number]]?: FontSizeScale;
+} & {
+  [T in (typeof fontLineHeightStyleProps)[number]]?: FontLineHeightScale;
+} & {
+  [T in (typeof fontWeightStyleProps)[number]]?: FontWeightAlias;
+} & {
+  [T in (typeof fontFamilyStyleProps)[number]]?: FontFamilyAlias;
+} & {
+  [T in (typeof fontLetterSpacingStyleProps)[number]]?: FontLetterSpacingAlias;
+};
+
 export const font: {
   [TokenName in FontTokenName]: MetaTokenProperties;
 } = {
@@ -142,3 +154,23 @@ export const font: {
     value: size[1200],
   },
 };
+
+const fontSizeStyleProps = ['fontSize'] as const;
+
+const fontLineHeightStyleProps = ['lineHeight'] as const;
+
+const fontWeightStyleProps = ['fontWeight'] as const;
+
+const fontFamilyStyleProps = ['fontFamily'] as const;
+
+const fontLetterSpacingStyleProps = ['letterSpacing'] as const;
+
+export const fontStylePropTokenGroups = {
+  font: [
+    ...fontSizeStyleProps,
+    ...fontLineHeightStyleProps,
+    ...fontWeightStyleProps,
+    ...fontFamilyStyleProps,
+    ...fontLetterSpacingStyleProps,
+  ],
+} as const;

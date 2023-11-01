@@ -73,6 +73,9 @@ export function ChoiceList({
   const titleMarkup = title ? (
     <Box
       as="legend"
+      // User agent default styles have a 2px padding around <legend> elements
+      // that we don't want.
+      padding="0"
       paddingBlockEnd={{xs: '500', md: '100'}}
       visuallyHidden={titleHidden}
     >

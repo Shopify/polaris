@@ -243,6 +243,16 @@ export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
 };
 
+export type ColorStyleProps = {
+  [T in (typeof colorBackgroundStyleProps)[number]]?: ColorBackgroundAlias;
+} & {
+  [T in (typeof colorBorderStyleProps)[number]]?: ColorBorderAlias;
+} & {
+  [T in (typeof colorTextStyleProps)[number]]?: ColorTextAlias;
+} & {
+  [T in (typeof colorIconStyleProps)[number]]?: ColorIconAlias;
+};
+
 export const color: {
   [TokenName in ColorTokenName]: MetaTokenProperties;
 } = {
@@ -1164,3 +1174,36 @@ export const color: {
     value: 'transparent',
   },
 };
+
+const colorBackgroundStyleProps = ['backgroundColor'] as const;
+
+const colorBorderStyleProps = [
+  // Shorthand
+  'borderColor',
+  'outlineColor',
+  // Logical properties
+  'borderInlineColor',
+  'borderBlockColor',
+  'borderInlineStartColor',
+  'borderInlineEndColor',
+  'borderBlockStartColor',
+  'borderBlockEndColor',
+  // Positional properties
+  'borderLeftColor',
+  'borderRightColor',
+  'borderTopColor',
+  'borderBottomColor',
+] as const;
+
+const colorTextStyleProps = ['color'] as const;
+
+const colorIconStyleProps = ['fill'] as const;
+
+export const colorStylePropTokenGroups = {
+  color: [
+    ...colorBackgroundStyleProps,
+    ...colorBorderStyleProps,
+    ...colorTextStyleProps,
+    ...colorIconStyleProps,
+  ],
+} as const;
