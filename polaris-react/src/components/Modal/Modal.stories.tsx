@@ -15,7 +15,6 @@ import {
   Frame,
   FrameContext,
 } from '@shopify/polaris';
-import {EditMajor} from '@shopify/polaris-icons';
 
 export default {
   component: Modal,
@@ -26,9 +25,7 @@ export function Default() {
 
   const handleChange = useCallback(() => setActive(!active), [active]);
 
-  const activator = (
-    <Button variant="tertiary" onClick={handleChange} icon={EditMajor} />
-  );
+  const activator = <Button onClick={handleChange}>Open</Button>;
 
   return (
     <Frame>
@@ -447,7 +444,7 @@ export function WithActivatorRef() {
 
   const activator = (
     <div ref={buttonRef}>
-      <Button variant="tertiary" onClick={handleOpen} icon={EditMajor} />
+      <Button onClick={handleOpen}>Open</Button>
     </div>
   );
 
