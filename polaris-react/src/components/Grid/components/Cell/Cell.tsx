@@ -1,14 +1,11 @@
 import React from 'react';
 
-import {classNames} from '../../../../utilities/css';
+import {classNames, getResponsiveValue} from '../../../../utilities/css';
+import type {ResponsiveProp} from '../../../../utilities/css';
 
 import styles from './Cell.scss';
 
-type Breakpoints = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-
-type Cell = {
-  [Breakpoint in Breakpoints]?: string;
-};
+type Cell = ResponsiveProp;
 
 interface Columns {
   /** Number of columns the section should span on extra small screens */
@@ -54,16 +51,8 @@ export function Cell({
 
   const style = {
     gridArea,
-    '--pc-column-xs': column?.xs,
-    '--pc-column-sm': column?.sm,
-    '--pc-column-md': column?.md,
-    '--pc-column-lg': column?.lg,
-    '--pc-column-xl': column?.xl,
-    '--pc-row-xs': row?.xs,
-    '--pc-row-sm': row?.sm,
-    '--pc-row-md': row?.md,
-    '--pc-row-lg': row?.lg,
-    '--pc-row-xl': row?.xl,
+    ...getResponsiveValue('grid-cell', 'column', column),
+    ...getResponsiveValue('grid-cell', 'row', row),
   };
 
   return (

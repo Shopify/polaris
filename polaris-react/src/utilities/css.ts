@@ -1,19 +1,25 @@
 import type {BreakpointsAlias} from '@shopify/polaris-tokens';
 import {breakpointsAliases} from '@shopify/polaris-tokens';
+import type {Entries} from 'type-fest';
 
 import {isObject} from './is-object';
 
 type Falsy = boolean | undefined | null | 0;
 
-type ResponsivePropConfig<T = string> = {
+export type ResponsivePropObject<T = string> = {
   [Breakpoint in BreakpointsAlias]?: T;
 };
 
-export type ResponsiveProp<T> = T | ResponsivePropConfig<T>;
+export type ResponsiveProp<T = string> = T | ResponsivePropObject<T>;
 
-export type ResponsiveValue<T = string> = undefined | ResponsiveProp<T>;
+export type PolarisCSSCustomPropertyName = `${`--p-` | `--pc-`}${string}`;
+export type PolarisCSSVar = `var(${PolarisCSSCustomPropertyName})`;
 
-type ResponsiveVariables<T> = {
+type ResponsiveCSSCustomProperties = {
+  [Breakpoint in `${string}-${BreakpointsAlias}`]?: PolarisCSSVar;
+};
+
+type ResponsiveValues<T> = {
   [Breakpoint in `${string}-${BreakpointsAlias}`]?: T;
 };
 
@@ -35,6 +41,34 @@ export function sanitizeCustomProperties(
   return nonNullValues.length ? Object.fromEntries(nonNullValues) : undefined;
 }
 
+export function createPolarisCSSVar<T extends string | number = string>(
+  tokenSubgroup: string,
+  tokenValue: T,
+): PolarisCSSVar {
+  // `Grid`'s `gap` prop used to allow passing fully formed var() functions as
+  // the value. This is no longer supported in v12+.
+  if (typeof tokenValue === 'string' && tokenValue.startsWith('var(')) {
+    throw new Error(
+      `"${tokenValue}" is not from the ${tokenSubgroup} token group.`,
+    );
+  }
+
+  // NOTE: All our token values today are either strings or numbers, so
+  // stringifying them here works. But if we ever have anything more complex
+  // (such as an object) this may generate invalid token names.
+  return `var(--p-${tokenSubgroup}-${tokenValue})`;
+}
+
+export function createPolarisCSSCustomProperty(
+  componentName: string,
+  componentProp: string,
+  breakpointAlias?: BreakpointsAlias,
+): PolarisCSSCustomPropertyName {
+  return `--pc-${componentName}-${componentProp}${
+    breakpointAlias ? `-${breakpointAlias}` : ''
+  }`;
+}
+
 /**
  * Given params like so:
  * (
@@ -52,57 +86,101 @@ export function sanitizeCustomProperties(
  *   '--pc-button-padding-lg': 'var(--p-spacing-6)'
  * }
  *
+ * NOTE: Also supports legacy / deprecated values which are a complete CSS
+ * variable declaration (primarily for `Grid`):
+ * (
+ *   'grid',
+ *   'gap',
+ *   'spacing',
+ *   {
+ *     sm: "var(--p-spacing-4)",
+ *     lg: "var(--p-spacing-6)"
+ *   }
+ * )
+ *
  */
-export function getResponsiveProps<T = string>(
+export function getResponsiveProps<T extends string | number = string>(
   componentName: string,
   componentProp: string,
   tokenSubgroup: string,
   responsiveProp?: ResponsiveProp<T>,
-): ResponsiveVariables<T> {
-  if (!responsiveProp) return {};
+): ResponsiveCSSCustomProperties {
+  // "falsey" values are valid except `null` or `undefined`
+  if (responsiveProp == null) return {};
 
-  let result: ResponsivePropConfig;
-
-  if (!isObject(responsiveProp)) {
-    result = {
-      [breakpointsAliases[0]]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
-    };
-  } else {
-    result = Object.fromEntries(
-      Object.entries(responsiveProp).map(([breakpointAlias, aliasOrScale]) => [
-        breakpointAlias,
-        `var(--p-${tokenSubgroup}-${aliasOrScale})`,
+  if (isObject(responsiveProp)) {
+    return Object.fromEntries(
+      (
+        Object.entries(responsiveProp).filter(
+          ([, aliasOrScale]) => aliasOrScale != null,
+          // Use 'Required' here because .filter() doesn't type narrow
+        ) as Entries<Required<typeof responsiveProp>>
+      ).map(([breakpointAlias, aliasOrScale]) => [
+        createPolarisCSSCustomProperty(
+          componentName,
+          componentProp,
+          breakpointAlias,
+        ),
+        createPolarisCSSVar(tokenSubgroup, aliasOrScale),
       ]),
     );
   }
 
-  // Prefix each responsive key with the correct token name
-  return Object.fromEntries(
-    Object.entries(result).map(([breakpointAlias, value]) => [
-      `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
-      value,
-    ]),
-  ) as unknown as ResponsiveVariables<T>;
+  return {
+    [createPolarisCSSCustomProperty(
+      componentName,
+      componentProp,
+      breakpointsAliases[0],
+    )]: createPolarisCSSVar(tokenSubgroup, responsiveProp as T),
+  };
 }
 
-export function getResponsiveValue<T = string>(
+export function getResponsiveValue<T extends string | number = string>(
   componentName: string,
   componentProp: string,
-  responsiveProp?: ResponsiveValue<T>,
-): ResponsiveVariables<T> {
-  if (!responsiveProp) return {};
+  responsiveProp?: ResponsiveProp<T>,
+): ResponsiveValues<T> {
+  // "falsey" values are valid except `null` or `undefined`
+  if (responsiveProp == null) return {};
 
-  if (!isObject(responsiveProp)) {
-    return {
-      [`--pc-${componentName}-${componentProp}-${breakpointsAliases[0]}`]:
-        responsiveProp,
-    } as ResponsiveVariables<T>;
+  if (isObject(responsiveProp)) {
+    return Object.fromEntries(
+      (
+        Object.entries(responsiveProp).filter(
+          ([, responsiveValue]) => responsiveValue != null,
+          // Use 'Required' here because .filter() doesn't type narrow
+        ) as Entries<Required<typeof responsiveProp>>
+      ).map(([breakpointAlias, responsiveValue]) => [
+        createPolarisCSSCustomProperty(
+          componentName,
+          componentProp,
+          breakpointAlias,
+        ),
+        responsiveValue,
+      ]),
+    );
   }
 
-  return Object.fromEntries(
-    Object.entries(responsiveProp).map(([breakpointAlias, responsiveValue]) => [
-      `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
-      responsiveValue,
-    ]),
-  );
+  return {
+    [createPolarisCSSCustomProperty(
+      componentName,
+      componentProp,
+      breakpointsAliases[0],
+    )]: responsiveProp as T,
+  };
+}
+
+export function mapResponsivePropValues<Input, Output>(
+  responsiveProp: ResponsiveProp<Input> | undefined,
+  fn: (value?: Input) => Output | undefined,
+): ResponsiveProp<Output> | undefined {
+  if (isObject(responsiveProp)) {
+    return Object.fromEntries(
+      (Object.entries(responsiveProp) as Entries<typeof responsiveProp>).map(
+        ([breakpointAlias, value]) => [breakpointAlias, fn(value)],
+      ),
+    );
+  }
+
+  return fn(responsiveProp as Input);
 }
