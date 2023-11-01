@@ -20,19 +20,17 @@ const file = await fs.open(
 await file.write('/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */');
 await file.write("\n@import '../../styles/mixins';");
 await file.write('\n.Box {');
+await file.write(`\n  @include responsive-props('box', (`);
 for (let [shortname, data] of Object.entries(parsedFiles)) {
   for (let i = 0; i < data.properties.length; i++) {
     const property = data.properties[i];
     if (property.inherited === 'yes') {
-      await file.write(
-        `\n  @include responsive-props('box', '${property.name}', '${property.name}', 'inherit');`,
-      );
+      await file.write(`\n    (prop: '${property.name}', default: 'inherit'),`);
     } else {
-      await file.write(
-        `\n  @include responsive-props('box', '${property.name}', '${property.name}');`,
-      );
+      await file.write(`\n    '${property.name}',`);
     }
   }
 }
-await file.write('\n};');
+await file.write(`\n  ));`);
+await file.write('\n}');
 await file.close();
