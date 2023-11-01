@@ -23,7 +23,11 @@ await file.write('\n.Box {');
 for (let [shortname, data] of Object.entries(parsedFiles)) {
   for (let i = 0; i < data.properties.length; i++) {
     const property = data.properties[i];
-    if (property.inherited !== 'yes') {
+    if (property.inherited === 'yes') {
+      await file.write(
+        `\n  @include responsive-props('box', '${property.name}', '${property.name}', 'inherit');`,
+      );
+    } else {
       await file.write(
         `\n  @include responsive-props('box', '${property.name}', '${property.name}');`,
       );
