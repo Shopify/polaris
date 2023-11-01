@@ -1,206 +1,5 @@
 @import './variables.scss';
 
-/* Generated from https://www.npmjs.com/package/@webref/css on October 7th,
-* 2023:
-var css = require("@webref/css")
-const parsedFiles = await css.listAll();
-const inherited = [];
-for (const data of Object.values(parsedFiles)) {
-  inherited.push(...data.properties.filter(prop => prop.inherited === 'yes').map(prop => prop.name));
-}
-console.log(inherited);
-*/
-$inheritedProperties: (
-  '-webkit-text-fill-color',
-  '-webkit-text-stroke',
-  '-webkit-text-stroke-color',
-  '-webkit-text-stroke-width',
-  'accent-color',
-  'block-ellipsis',
-  'border-boundary',
-  'border-collapse',
-  'border-spacing',
-  'box-snap',
-  'caption-side',
-  'caret',
-  'caret-color',
-  'caret-shape',
-  'clip-rule',
-  'color',
-  'color-interpolation',
-  'color-interpolation-filters',
-  'color-scheme',
-  'cursor',
-  'direction',
-  'dominant-baseline',
-  'empty-cells',
-  'fill',
-  'fill-color',
-  'fill-image',
-  'fill-opacity',
-  'fill-position',
-  'fill-repeat',
-  'fill-rule',
-  'fill-size',
-  'font',
-  'font-family',
-  'font-feature-settings',
-  'font-kerning',
-  'font-language-override',
-  'font-optical-sizing',
-  'font-palette',
-  'font-size',
-  'font-size-adjust',
-  'font-size-adjust',
-  'font-stretch',
-  'font-style',
-  'font-synthesis',
-  'font-synthesis-position',
-  'font-synthesis-small-caps',
-  'font-synthesis-style',
-  'font-synthesis-weight',
-  'font-variant',
-  'font-variant-alternates',
-  'font-variant-caps',
-  'font-variant-east-asian',
-  'font-variant-emoji',
-  'font-variant-ligatures',
-  'font-variant-numeric',
-  'font-variant-position',
-  'font-variation-settings',
-  'font-weight',
-  'forced-color-adjust',
-  'hanging-punctuation',
-  'hanging-punctuation',
-  'hyphenate-character',
-  'hyphenate-limit-chars',
-  'hyphenate-limit-last',
-  'hyphenate-limit-lines',
-  'hyphenate-limit-zone',
-  'hyphens',
-  'hyphens',
-  'image-orientation',
-  'image-rendering',
-  'image-resolution',
-  'initial-letter-align',
-  'initial-letter-wrap',
-  'inline-sizing',
-  'letter-spacing',
-  'letter-spacing',
-  'line-break',
-  'line-break',
-  'line-height',
-  'line-height-step',
-  'line-padding',
-  'line-snap',
-  'list-style-image',
-  'list-style-position',
-  'list-style-type',
-  'marker',
-  'marker-end',
-  'marker-mid',
-  'marker-side',
-  'marker-start',
-  'math-depth',
-  'math-shift',
-  'math-style',
-  'orphans',
-  'overflow-wrap',
-  'overflow-wrap',
-  'paint-order',
-  'pointer-events',
-  'print-color-adjust',
-  'quotes',
-  'ruby-align',
-  'ruby-merge',
-  'ruby-overhang',
-  'ruby-position',
-  'scrollbar-color',
-  'shape-rendering',
-  'speak',
-  'speak-as',
-  'stroke',
-  'stroke-align',
-  'stroke-alignment',
-  'stroke-color',
-  'stroke-dash-corner',
-  'stroke-dash-justify',
-  'stroke-dashadjust',
-  'stroke-dasharray',
-  'stroke-dashcorner',
-  'stroke-dashoffset',
-  'stroke-image',
-  'stroke-linecap',
-  'stroke-linejoin',
-  'stroke-miterlimit',
-  'stroke-opacity',
-  'stroke-position',
-  'stroke-repeat',
-  'stroke-size',
-  'stroke-width',
-  'tab-size',
-  'tab-size',
-  'text-align',
-  'text-align',
-  'text-align-all',
-  'text-align-all',
-  'text-align-last',
-  'text-align-last',
-  'text-anchor',
-  'text-autospace',
-  'text-box-edge',
-  'text-combine-upright',
-  'text-decoration-skip',
-  'text-decoration-skip-box',
-  'text-decoration-skip-ink',
-  'text-decoration-skip-spaces',
-  'text-emphasis-color',
-  'text-emphasis-color',
-  'text-emphasis-position',
-  'text-emphasis-position',
-  'text-emphasis-skip',
-  'text-emphasis-style',
-  'text-emphasis-style',
-  'text-indent',
-  'text-indent',
-  'text-justify',
-  'text-justify',
-  'text-orientation',
-  'text-rendering',
-  'text-shadow',
-  'text-shadow',
-  'text-size-adjust',
-  'text-spacing',
-  'text-spacing-trim',
-  'text-transform',
-  'text-transform',
-  'text-underline-offset',
-  'text-underline-position',
-  'text-underline-position',
-  'text-wrap-mode',
-  'text-wrap-style',
-  'visibility',
-  'voice-balance',
-  'voice-family',
-  'voice-pitch',
-  'voice-range',
-  'voice-rate',
-  'voice-stress',
-  'voice-volume',
-  'white-space',
-  'white-space',
-  'white-space-collapse',
-  'widows',
-  'word-break',
-  'word-break',
-  'word-space-transform',
-  'word-spacing',
-  'word-spacing',
-  'word-wrap',
-  'word-wrap',
-  'writing-mode'
-);
-
 @mixin dark-mode {
   :global(.dark-mode) & {
     @content;
@@ -232,19 +31,67 @@ $inheritedProperties: (
   }
 }
 
+@function is-map($var) {
+  @return type-of($var) == 'map';
+}
+
 @function is-null($var) {
   @return type-of($var) == 'null';
 }
 
-@function is-inherited($declarationProp) {
-  @return not is-null(index($inheritedProperties, $declarationProp));
+// NOTE: Order is important here; will search backwards through this list to
+// find fallback values
+$breakpointKeys: ('xs', 'sm', 'md', 'lg', 'xl');
+
+@function find-default-with-fallback($default, $breakpoint) {
+  $initialIndex: index($breakpointKeys, $breakpoint);
+
+  // If the given '$breakpoint' doesn't exist, just return null
+  @if is-null($initialIndex) {
+    @return null;
+  }
+
+  // Search backwards until a non-null value is found in the $defaults map
+  // NOTE: Arrays in SASS are 1-based, so we're iterating down to AND INCLUDING
+  // index "1" (the first element).
+  @for $index from $initialIndex through 1 {
+    $value: map-get($default, nth($breakpointKeys, $index));
+    @if not is-null($value) {
+      @return $value;
+    }
+  }
+
+  // Couldn't find a non-null default, so return null
+  @return null;
 }
 
 @function get-default($declarationProp, $default: null, $key: null) {
+  $value: null;
+  @if is-map($default) {
+    @if not is-null($key) {
+      $value: find-default-with-fallback($default, $key);
+    }
+  } @else {
+    $value: $default;
+  }
+  @if not is-null($value) {
+    @return $value;
+  }
+
   // Most CSS properties' W3C spec defaults are 'initial', but some (like color)
   // default to different values (like 'inherit'). To match our consumer's
-  // expectations of how styling works, we have to mimic that behaviour here.
-  @return if(is-inherited($declarationProp), 'inherit', 'initial');
+  // expectations of how styling works, those properties should have their
+  // default passed in as `inherit`.
+  //
+  // To calculate which ones are inherited:
+  // var css = require("@webref/css")
+  // const parsedFiles = await css.listAll();
+  // const inherited = [];
+  // for (const data of Object.values(parsedFiles)) {
+  //   inherited.push(...data.properties.filter(prop => prop.inherited === 'yes').map(prop => prop.name));
+  // }
+  // console.log(inherited);
+  @return 'initial';
 }
 
 @mixin scope-custom-property(
