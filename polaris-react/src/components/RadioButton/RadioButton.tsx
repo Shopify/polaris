@@ -1,6 +1,6 @@
 import React, {useRef, useId} from 'react';
 
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 import type {ChoiceBleedProps} from '../Choice';
@@ -34,6 +34,8 @@ export interface RadioButtonProps extends ChoiceBleedProps {
   fill?: ResponsiveProp<boolean>;
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
+  /** Indicates the tone of the text field */
+  tone?: 'magic';
 }
 
 export function RadioButton({
@@ -55,6 +57,7 @@ export function RadioButton({
   bleedBlockEnd,
   bleedInlineStart,
   bleedInlineEnd,
+  tone,
 }: RadioButtonProps) {
   const uniqId = useId();
   const id = idProp ?? uniqId;
@@ -80,7 +83,10 @@ export function RadioButton({
     ? describedBy.join(' ')
     : undefined;
 
-  const inputClassName = classNames(styles.Input);
+  const inputClassName = classNames(
+    styles.Input,
+    tone && styles[variationName('tone', tone)],
+  );
 
   const extraChoiceProps = {
     helpText,
@@ -100,6 +106,7 @@ export function RadioButton({
       labelClassName={styles.ChoiceLabel}
       fill={fill}
       {...extraChoiceProps}
+      {...(checked ? {tone} : {})}
     >
       <span className={styles.RadioButton}>
         <input

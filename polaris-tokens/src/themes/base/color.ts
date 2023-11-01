@@ -134,6 +134,7 @@ export type ColorBorderAlias =
   | 'border-inverse-hover'
   | 'border-inverse'
   | 'border-magic-secondary'
+  | 'border-magic-secondary-hover'
   | 'border-magic'
   | 'border-secondary'
   | 'border-success'
@@ -202,6 +203,7 @@ export type ColorTextAlias =
   | 'text-link'
   | 'text-magic-on-bg-fill'
   | 'text-magic'
+  | 'text-magic-secondary'
   | 'text-secondary'
   | 'text-success-active'
   | 'text-success-hover'
@@ -399,15 +401,15 @@ export const color: {
       'The active state (on press) color for elements indicating areas of focus in editors.',
   },
   'color-bg-surface-magic': {
-    value: colors.purple[3],
+    value: colors.purple[2],
     description: 'Use for backgrounds of elements suggested by magic AI.',
   },
   'color-bg-surface-magic-hover': {
-    value: colors.purple[4],
+    value: colors.purple[3],
     description: 'The hover state color for elements suggested by magic AI.',
   },
   'color-bg-surface-magic-active': {
-    value: colors.purple[6],
+    value: colors.purple[5],
     description:
       'The active state (on press) color for elements suggested by magic AI.',
   },
@@ -851,6 +853,11 @@ export const color: {
     value: colors.purple[14],
     description: 'Use for text suggested by magic AI.',
   },
+  'color-text-magic-secondary': {
+    value: colors.purple[12],
+    description:
+      'Use for text suggested by magic AI with a secondary level of prominence.',
+  },
   'color-text-magic-on-bg-fill': {
     value: colors.purple[1],
     description: 'Use for text and icons on bg-fill-magic.',
@@ -936,10 +943,15 @@ export const color: {
       'The active state (on press) color for borders indicating areas of focus.',
   },
   'color-border-magic': {
-    value: colors.purple[10],
+    value: colors.purple[6],
     description: 'Use for borders suggested by magic AI.',
   },
   'color-border-magic-secondary': {
+    value: colors.purple[11],
+    description:
+      'Use for borders suggested by magic AI, such as borders on text fields.',
+  },
+  'color-border-magic-secondary-hover': {
     value: colors.purple[12],
     description:
       'Use for borders suggested by magic AI, such as borders on text fields.',

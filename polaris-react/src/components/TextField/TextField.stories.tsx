@@ -41,6 +41,22 @@ export function Default() {
   );
 }
 
+export function Magic() {
+  const [value, setValue] = useState('Jaded Pixel');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  return (
+    <TextField
+      label="Store name"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      tone="magic"
+    />
+  );
+}
+
 export function Number() {
   const [value, setValue] = useState('1.0');
   const [value1, setValue1] = useState('1.0');

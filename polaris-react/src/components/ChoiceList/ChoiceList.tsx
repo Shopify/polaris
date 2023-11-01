@@ -46,6 +46,8 @@ export interface ChoiceListProps {
   disabled?: boolean;
   /** Callback when the selected choices change */
   onChange?(selected: string[], name: string): void;
+  /** Indicates the tone of the choice list */
+  tone?: 'magic';
 }
 
 export function ChoiceList({
@@ -58,6 +60,7 @@ export function ChoiceList({
   error,
   disabled = false,
   name: nameProp,
+  tone,
 }: ChoiceListProps) {
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
   // see https://github.com/Microsoft/TypeScript/issues/28768
@@ -119,6 +122,7 @@ export function ChoiceList({
             ariaDescribedBy={
               error && describedByError ? errorTextID(finalName) : null
             }
+            tone={tone}
           />
           {children}
         </Bleed>

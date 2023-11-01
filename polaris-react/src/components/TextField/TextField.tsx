@@ -175,6 +175,8 @@ interface NonMutuallyExclusiveProps {
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
+  /** Indicates the tone of the text field */
+  tone?: 'magic';
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -241,6 +243,7 @@ export function TextField({
   onSpinnerChange,
   onFocus,
   onBlur,
+  tone,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -291,6 +294,7 @@ export function TextField({
     disabled && styles.disabled,
     readOnly && styles.readOnly,
     error && styles.error,
+    tone && styles[variationName('tone', tone)],
     multiline && styles.multiline,
     focus && !disabled && styles.focus,
     variant !== 'inherit' && styles[variant],
