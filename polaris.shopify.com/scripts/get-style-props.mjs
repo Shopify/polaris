@@ -18,13 +18,16 @@ const file = await fs.open(
 );
 
 await file.write('/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */');
-await file.write("\n@import '../../styles/common';");
+await file.write("\n@import '../../styles/mixins';");
 await file.write('\n.Box {');
 for (let [shortname, data] of Object.entries(parsedFiles)) {
   for (let i = 0; i < data.properties.length; i++) {
-    await file.write(
-      `\n  @include responsive-props('box', '${data.properties[i].name}', '${data.properties[i].name}');`,
-    );
+    const property = data.properties[i];
+    if (property.inherited !== 'yes') {
+      await file.write(
+        `\n  @include responsive-props('box', '${property.name}', '${property.name}');`,
+      );
+    }
   }
 }
 await file.write('\n};');
