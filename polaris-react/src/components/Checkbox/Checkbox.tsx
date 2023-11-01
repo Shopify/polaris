@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import {MinusMinor} from '@shopify/polaris-icons';
 
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 import type {ChoiceBleedProps} from '../Choice';
 import {Choice, helpTextID} from '../Choice';
@@ -51,6 +51,8 @@ export interface CheckboxProps extends ChoiceBleedProps {
   helpText?: React.ReactNode;
   /** Display an error message */
   error?: Error | boolean;
+  /** Indicates the tone of the checkbox */
+  tone?: 'magic';
 }
 
 export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
@@ -77,6 +79,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
       bleedBlockEnd,
       bleedInlineStart,
       bleedInlineEnd,
+      tone,
     }: CheckboxProps,
     ref,
   ) {
@@ -153,6 +156,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     const inputClassName = classNames(
       styles.Input,
       isIndeterminate && styles['Input-indeterminate'],
+      tone && styles[variationName('tone', tone)],
     );
 
     const extraChoiceProps = {
@@ -173,6 +177,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
         disabled={disabled}
         labelClassName={classNames(styles.ChoiceLabel, labelClassName)}
         fill={fill}
+        tone={tone}
         {...extraChoiceProps}
       >
         <span className={wrapperClassName}>
