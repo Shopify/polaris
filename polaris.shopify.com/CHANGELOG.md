@@ -1,5 +1,14 @@
 # polaris.shopify.com
 
+## 0.60.3
+
+### Patch Changes
+
+- [#11083](https://github.com/Shopify/polaris/pull/11083) [`54dcc984b`](https://github.com/Shopify/polaris/commit/54dcc984b268612b01026985b026f711331570d3) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fixed typos in Design > Icons section created from MDX layout refactor
+
+- Updated dependencies [[`460c48cfa`](https://github.com/Shopify/polaris/commit/460c48cfa51fb42c08e1f7256adc3919ae7eca1a), [`9c0433c02`](https://github.com/Shopify/polaris/commit/9c0433c02c420c5a928bc790d4377da96630e90d), [`c0be502a8`](https://github.com/Shopify/polaris/commit/c0be502a803b44913ac17179009c0f298497b433)]:
+  - @shopify/polaris@12.1.0
+
 ## 0.60.2
 
 ### Patch Changes
