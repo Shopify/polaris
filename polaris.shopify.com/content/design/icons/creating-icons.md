@@ -1,5 +1,5 @@
 ---
-title: Creating Icons
+title: Creating icons
 description: Icons enhance an experience by providing intuitive and efficient navigation, conveying information concisely, and making it more visually appealing.
 icon: EditMinor
 keywords:
@@ -40,20 +40,18 @@ keywords:
 
 <Row variant="1-1">
   <Column variant="directive">
-  
-    ![A 20 pixels square grid with an icon in a 14 pixels square.](/images/design/icons/icons-creating-layout-1@2x.png)
 
-    The icon container is 20x20 px, but the content of an icon should be
-    confined within the 14 x 14 px.
+    ![A 20 pixels square grid with an icon in a 14 px square.](/images/design/icons/icons-creating-layout-1@2x.png)
+
+    The icon container is 20 &times; 20 px. The content of an icon should be
+    confined within a safe space of 14 &times; 14 px.
 
   </Column>
   <Column variant="directive">
-  
+
     ![A 20 pixels square grid with an icon in a 14 pixels square, with an element sticking out slightly.](/images/design/icons/icons-creating-layout-2@2x.png)
 
-    Exceptionally, if the icon requires more visual prominence, or more space to
-    read effectively, the content can expand beyond that, however, no part of
-    the icon should exceed 16 x 16.
+    Exceptionally, parts of an icon can go beyond the 14 &times; 14 px safe space, but should leave a space of at least 1 px from the edges of the icon container.
 
   </Column>
 </Row>
@@ -62,14 +60,14 @@ keywords:
 
 <Row variant="1-1">
   <Column variant="directive">
-  
+
     ![Four icons that fit inside the following grids: 13x13 pixels square, 14x14 pixels circle, 14x12 pixels rectangles, horizontal and vertical.](/images/design/icons/icons-creating-keylines-1@2x.png)
 
     The overall shape of an icon can vary from a circle to a square, or from a tall rectangle to a wide one. Always start with the following keylines, so that all icons have the same visual weight.
 
   </Column>
   <Column variant="directive">
-  
+
     ![Four icons that stick our slightly from the the following grids: 13x13 pixels square, 14x14 pixels circle, 14x12 pixels rectangles, horizontal and vertical.](/images/design/icons/icons-creating-keylines-2@2x.png)
 
     These guidelines are a starting point, not a hard constraint. If it makes the concept stronger or keeps the icon optically aligned, it’s ok to deviate.
@@ -81,7 +79,7 @@ keywords:
 
 <Row variant="1-1">
   <Column variant="do">
-  
+
     ![An archive box and a building represented in two dimensions. ](/images/design/icons/icons-creating-rules-1@2x.png)
 
     Ensure that icons are two-dimensional, and objects face forward.
@@ -108,7 +106,7 @@ keywords:
   <Column variant="do">
     ![A presentation board icon centered in a 20 pixel square.](/images/design/icons/icons-creating-rules-4@2x.png)
 
-    Center icons in their container.
+    Center icons in their container. Adjust optically if needed.
 
   </Column>
 </Row>
@@ -118,14 +116,14 @@ keywords:
 
     ![Three simple icons made with simple geometric shapes representing a smile, a scroll and a page](/images/design/icons/icons-creating-rules-5@2x.png)
 
-    Bold and stylize icons.
+    Use simple geometric shapes, angles, and rounded corners.
 
   </Column>
   <Column variant="dont">
 
     ![Three icons made with organic shapes and small details representing a pin, a bell and a christmas tree.](/images/design/icons/icons-creating-rules-6@2x.png)
 
-    Use small details and organic shapes.
+    Use excessive details or organic shapes.
 
   </Column>
 </Row>
@@ -221,14 +219,14 @@ Outlined icons are the default. Filled icons are reserved for navigation only.
 
     ![A calendar, an inbox and a shop icon with the corner radius highlighted. 3 pixels for the calendar, 2 pixels for the inbox and 1 pixel for the inbox.](/images/design/icons/icons-creating-outline-5@2x.png)
 
-    Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
+    Corner radius can go from 1 px to 3 px, depending on the object roundness. Joints and terminals must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
 
   </Column>
   <Column variant="directive">
 
     ![Six outline icons with small filled object highlighted, like a credit card that is made out of outlines and an icon that is filled.](/images/design/icons/icons-creating-outline-6@2x.png)
 
-    Filled shapes can be used, only in really small objects, like a dot in an exclamation point.
+    Filled shapes can be used, only in really small objects, like in the dot of an exclamation point.
 
   </Column>
   <Column variant="directive">
@@ -276,7 +274,7 @@ Outlined icons are the default. Filled icons are reserved for navigation only.
 
     Terminals are round.
 
-    Corner radius can go from 1 px to 3 px, depending on the object roundness.Joins must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
+    Corner radius can vary from 1 px to 3 px, depending on the object's roundness. Terminals and joints are rounded. Sharp corners are not allowed, except in intersections and knockouts.
 
   </Column>
 </Row>

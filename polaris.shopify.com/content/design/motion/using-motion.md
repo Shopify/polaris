@@ -1,5 +1,5 @@
 ---
-title: Using Motion
+title: Using motion
 description: Motion brings dynamism to an interface, offers visual feedback and aids merchants understanding the outcomes of their actions.
 keywords:
   - motion
