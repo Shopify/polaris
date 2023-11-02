@@ -3,7 +3,11 @@
   "display": "Next.js",
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -20,7 +24,12 @@
     "composite": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "downlevelIteration": true
+    "downlevelIteration": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "src",
@@ -30,9 +39,13 @@
     "next-env.d.ts",
     "scripts/get-props/src/get-props.ts",
     "constants.js",
-    "../polaris-tokens/dist"
+    "../polaris-tokens/dist",
+    ".next/types/**/*.ts"
   ],
-  "exclude": ["node_modules", "scripts/get-props/testData"],
+  "exclude": [
+    "node_modules",
+    "scripts/get-props/testData"
+  ],
   "ts-node": {
     "transpileOnly": true,
     "files": true,
