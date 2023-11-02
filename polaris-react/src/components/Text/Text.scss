@@ -120,6 +120,12 @@
   @include _heading3xl;
 }
 
+.bodyXs {
+  font-size: var(--p-text-body-xs-font-size);
+  font-weight: var(--p-text-body-xs-font-weight);
+  line-height: var(--p-text-body-xs-font-line-height);
+}
+
 .bodySm {
   font-size: var(--p-text-body-sm-font-size);
   font-weight: var(--p-text-body-sm-font-weight);

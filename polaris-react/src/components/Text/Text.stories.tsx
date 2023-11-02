@@ -35,6 +35,9 @@ export const Variants = () => (
     <Text as="p" variant="bodySm">
       Text with BodySm variant
     </Text>
+    <Text as="p" variant="bodyXs">
+      Text with BodyXs variant
+    </Text>
     <Text as="strong" variant="bodySm">
       Text as a strong tag
     </Text>
