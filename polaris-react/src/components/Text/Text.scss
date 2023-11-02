@@ -75,7 +75,7 @@
 .headingLg {
   font-size: var(--p-font-size-500);
   line-height: var(--p-font-line-height-600);
-  font-weight: var(--p-font-weight-bold);
+  font-weight: var(--p-font-weight-semibold);
 
   @media (--p-breakpoints-md-up) {
     font-size: var(--p-text-heading-lg-font-size);
