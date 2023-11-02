@@ -32,13 +32,13 @@ examples:
     description: An index table with simple items and no bulk actions, sorting, or filtering.
   - fileName: index-table-with-views-search-filter-sorting.tsx
     title: With saved views, search, filtering, and sorting
-    description: An index table with saved views, search, filtering, sorting, and bulk actions
+    description: An index table with saved views, search, filtering, sorting, and bulk actions.
   - fileName: index-filters-with-edit-colums-button.tsx
     title: With edit columns button
-    description: An index table with edit columns, saved views, search, filtering, sorting, and bulk actions
+    description: An index table with edit columns, saved views, search, filtering, sorting, and bulk actions.
   - fileName: index-table-with-disabled-rows.tsx
     title: With disabled rows
-    description: An index table with saved views, search, filtering, sorting, and bulk actions
+    description: An index table with saved views, search, filtering, sorting, and bulk actions.
   - fileName: index-table-small-screen.tsx
     title: Small screen
     description: A small screen index table with simple items and no bulk actions, sorting, or filtering.
