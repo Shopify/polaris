@@ -267,7 +267,6 @@ Outlined icons are the default. Filled icons are reserved for navigation only.
     Stroke weight is 1.5 px, but is reduced to 1.25 px when used inside a shape as a cut-out. Shapes must align with the pixel grid.
 
     Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
-    Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
 
   </Column>
   <Column variant="directive">

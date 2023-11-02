@@ -87,7 +87,7 @@ status: New
 
 <Section>
   <Row>
-    <Column>      
+    <Column>
       ## Snappy
 
       Motion should feel quick and subtle.

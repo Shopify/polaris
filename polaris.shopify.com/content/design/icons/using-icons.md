@@ -44,7 +44,7 @@ keywords:
 <Section>
   <Row variant="1-1-1">
     <Column>
-      ### Replacing standard actions
+      ## Replacing standard actions
 
       Common actions like edit, delete, and search have established icons that are universally understood. Leveraging pre-existing knowledge will improve clarity and help reduce clutter, since these icons require no text label.
     </Column>
@@ -66,7 +66,7 @@ keywords:
   <Row variant="1-1-1">
 
     <Column>
-      ### Indicate common objects
+      ## Indicating common objects
 
       Consistently pairing specific icons with objects enables users to quickly recognize them, which promotes a more efficient and intuitive interaction with the interface.
     </Column>
@@ -100,7 +100,7 @@ keywords:
   <Row>
 
     <Column span="1/3">
-      ### Size
+      ## Icon sizing
 
       Icon size and weight was specifically crafted to pair with typography.
     </Column>
