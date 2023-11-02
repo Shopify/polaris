@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.1.0
+
+### Minor Changes
+
+- [#11087](https://github.com/Shopify/polaris/pull/11087) [`23055adcf`](https://github.com/Shopify/polaris/commit/23055adcfa97decbfbc51924bd121d1dae76ac6f) Thanks [@matallo](https://github.com/matallo)! - Added `--p-color-border-magic-secondary-hover` token
+
 ## 8.0.2
 
 ### Patch Changes
