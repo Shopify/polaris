@@ -124,7 +124,7 @@ order: 2
 
 <Section>
   <Row variant="1-2">
-    <Column>      
+    <Column>
       ### Body
 
       Body is used everywhere else in the admin. Buttons, inputs, paragraphs, navigation elements, etc. Any element that is part of the usable UI uses body type.

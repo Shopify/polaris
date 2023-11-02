@@ -1,5 +1,5 @@
 ---
-title: Font and Typescale
+title: Font and typescale
 description: Typography is the art of arranging type in ways that provides innate hierarchy to UI.
 showTOC: true
 keywords:
@@ -62,7 +62,7 @@ order: 1
 
   </Column>
 </Row>
-  
+
 <Row variant="1-1">
   <Column variant="dont">
     ![A promotional card that uses mono typeface to indicate a new AI feature](/images/design/typography/typography-font-05-mono-decoration-dont@2x.png)

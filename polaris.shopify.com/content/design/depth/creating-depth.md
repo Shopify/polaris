@@ -1,5 +1,5 @@
 ---
-title: Creating Depth
+title: Creating depth
 icon: VariantMajor
 showTOC: true
 keywords:
