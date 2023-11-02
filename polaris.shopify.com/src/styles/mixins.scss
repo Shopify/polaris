@@ -51,7 +51,6 @@ $breakpointMediaQueries: (
   'md': 'screen and (min-width: #{$breakpointTablet})',
   'lg': 'screen and (min-width: #{$breakpointDesktopSmall})',
   'xl': 'screen and (min-width: #{$breakpointDesktop})',
-  '2xl': 'screen and (min-width: #{$breakpointDesktopLarge})',
 );
 
 $breakpointKeys: map-keys($breakpointMediaQueries);
