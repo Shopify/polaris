@@ -50,7 +50,7 @@ export const MdxColumn = ({
       {children}
     </DirectiveCard>
   ) : (
-    children
+    <Box padding="400">{children}</Box>
   );
 
   return <Grid.Cell columnSpan={columnSpan[span]}>{content}</Grid.Cell>;
