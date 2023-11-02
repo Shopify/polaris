@@ -1,4 +1,4 @@
-import type {PropsWithChildren, ReactNode} from 'react';
+import type {PropsWithChildren} from 'react';
 import React, {useState, useRef, useEffect} from 'react';
 import {PlusMinor} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
