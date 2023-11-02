@@ -10,11 +10,10 @@ import {
   RangeSlider,
   TextField,
   Card,
-  Page,
-  Badge,
   Button,
   useSetIndexFiltersMode,
   IndexFiltersMode,
+  ButtonGroup,
 } from '@shopify/polaris';
 import {
   ViewMinor,
@@ -1310,20 +1309,22 @@ export function WithAsyncData() {
       />
       <Table />
       <div style={{padding: '1rem'}}>
-        <Button
-          size="micro"
-          variant="primary"
-          onClick={() => setLoadData(true)}
-        >
-          Load filter data
-        </Button>
-        <Button
-          size="micro"
-          variant="primary"
-          onClick={() => setAddAsyncFilter(true)}
-        >
-          Add async filter
-        </Button>
+        <ButtonGroup>
+          <Button
+            size="micro"
+            variant="primary"
+            onClick={() => setLoadData(true)}
+          >
+            Load filter data
+          </Button>
+          <Button
+            size="micro"
+            variant="primary"
+            onClick={() => setAddAsyncFilter(true)}
+          >
+            Add async filter
+          </Button>
+        </ButtonGroup>
       </div>
     </Card>
   );
