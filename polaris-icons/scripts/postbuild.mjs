@@ -11,5 +11,5 @@ const svgDir = path.join(outputDir, 'svg');
 Object.entries(deprecatedIcons).forEach(([deprecatedIconName, newIconName]) => {
   const target = path.join(svgDir, `${newIconName}.svg`);
   const link = path.join(svgDir, `${deprecatedIconName}.svg`);
-  fs.symlinkSync(target, link);
+  fs.cpSync(target, link);
 });
