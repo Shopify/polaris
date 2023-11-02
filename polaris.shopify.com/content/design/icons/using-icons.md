@@ -1,5 +1,5 @@
 ---
-title: Using Icons
+title: Using icons
 description: Icons enhance an experience by providing intuitive and efficient navigation, conveying information concisely, and making it more visually appealing.
 icon: PaintBrushMajor
 keywords:
@@ -44,7 +44,7 @@ keywords:
 <Section>
   <Row variant="1-1-1">
     <Column>
-      ### Replacing standard actions
+      ## Replacing standard actions
 
       Common actions like edit, delete, and search have established icons that are universally understood. Leveraging pre-existing knowledge will improve clarity and help reduce clutter, since these icons require no text label.
     </Column>
@@ -54,7 +54,7 @@ keywords:
       Use icons to replace text for common actions with universally understood icons.
     </Column>
     <Column variant="dont">
-      ![ A series of abstract icon buttons with no labels.](/images/design/icons/icons-using-2@2x.png)
+      ![ A series of abstract icon buttons with no labels.](/images/design/icons/icons-using-3@2x.png)
 
       Use ambiguous icons without a text label, as that can lead to confusion and misinterpretation.
     </Column>
@@ -64,9 +64,9 @@ keywords:
 
 <Section>
   <Row variant="1-1-1">
-  
+
     <Column>
-      ### Indicate common objects
+      ## Indicating common objects
 
       Consistently pairing specific icons with objects enables users to quickly recognize them, which promotes a more efficient and intuitive interaction with the interface.
     </Column>
@@ -83,7 +83,7 @@ keywords:
 
   </Row>
   <Row variant="1-2">
-  
+
     <Column>
       {/* Empty space */}
     </Column>
@@ -98,9 +98,9 @@ keywords:
 
 <Section>
   <Row>
-  
+
     <Column span="1/3">
-      ### Size
+      ## Icon sizing
 
       Icon size and weight was specifically crafted to pair with typography.
     </Column>

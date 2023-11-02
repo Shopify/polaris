@@ -3,6 +3,7 @@ title: Motion
 description: Motion brings dynamism to an interface, offers visual feedback, and aids merchants understanding the outcomes of their actions.
 order: 6
 showTOC: true
+icon: ShipmentMajor
 keywords:
   - animation
   - motion
@@ -79,7 +80,7 @@ status: New
         An elaborate animation of the tick mark that fills in the container and rotates
         the tick mark.
       </video>
-      Allow motion to complicate the interface or hinder merchant comprehension.
+      Use motion that doesn't correspond to merchants’ interactions and expectations.
     </Column>
 
   </Row>
@@ -87,7 +88,7 @@ status: New
 
 <Section>
   <Row>
-    <Column>      
+    <Column>
       ## Snappy
 
       Motion should feel quick and subtle.

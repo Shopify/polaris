@@ -6,7 +6,7 @@ keywords:
   - depth
   - visual hierarchy
   - focus
-icon: TypeMajor
+icon: CategoriesMajor
 showTOC: true
 hideChildren: true
 status: New
