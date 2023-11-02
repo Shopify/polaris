@@ -1,7 +1,8 @@
 import style from './style.module.scss';
-import {PropsWithChildren} from 'react';
+import {forwardRef} from 'react';
 import decamelize from 'decamelize';
 import * as CSS from 'csstype';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import {getResponsiveProps} from '../../utils/various';
 
 function getCssProps(styleProps: Record<string, any>) {
@@ -16,16 +17,20 @@ function getCssProps(styleProps: Record<string, any>) {
   }, {});
 }
 
-export function Cube({
-  children,
-  ...styleProps
-}: PropsWithChildren<CSS.Properties & {as?: Element}>) {
+export interface CubeProps extends CSS.Properties {}
+
+type PolymorphicCube = Polymorphic.ForwardRefComponent<any, CubeProps>;
+
+export const Cube = forwardRef(function Cube(
+  {as: Tag = 'div', children, ...styleProps},
+  forwardedRef,
+) {
   const styles = {
     ...getCssProps(styleProps),
   };
   return (
-    <div style={styles} className={style.Box}>
+    <Tag ref={forwardedRef} style={styles} className={style.Box}>
       {children}
-    </div>
+    </Tag>
   );
-}
+}) as PolymorphicCube;
