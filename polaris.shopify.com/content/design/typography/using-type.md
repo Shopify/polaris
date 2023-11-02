@@ -6,7 +6,7 @@ keywords:
   - type styles
   - font sizes
   - fonts
-icon: TypeMajor
+icon: Type
 hideChildren: true
 order: 2
 ---

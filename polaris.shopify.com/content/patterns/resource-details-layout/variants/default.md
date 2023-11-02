@@ -62,19 +62,19 @@ function ResourceDetailsLayout() {
       secondaryActions={[
         {
           content: 'Duplicate',
-          icon: DuplicateMinor,
+          icon: Duplicate,
           accessibilityLabel: 'Secondary action label',
           onAction: () => alert('Duplicate action'),
         },
         {
           content: 'Archive',
-          icon: ArchiveMinor,
+          icon: Archive,
           accessibilityLabel: 'Secondary action label',
           onAction: () => alert('Archive action'),
         },
         {
           content: 'Delete',
-          icon: DeleteMinor,
+          icon: Delete,
           destructive: true,
           accessibilityLabel: 'Secondary action label',
           onAction: () => alert('Delete action'),

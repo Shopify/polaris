@@ -1,6 +1,6 @@
 import React, {useEffect, useCallback, useRef, useReducer} from 'react';
 import type {KeyboardEvent, FocusEvent} from 'react';
-import {ChevronDownMinor, PlusMinor} from '@shopify/polaris-icons';
+import {ChevronDown, Plus} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -474,7 +474,7 @@ export const Tabs = ({
             styles['IconWrap-open'],
         )}
       >
-        <Icon source={ChevronDownMinor} tone="subdued" />
+        <Icon source={ChevronDown} tone="subdued" />
       </div>
     </>
   );
@@ -524,9 +524,7 @@ export const Tabs = ({
           });
         }
       }}
-      icon={
-        <Icon source={PlusMinor} accessibilityLabel={createViewA11yLabel} />
-      }
+      icon={<Icon source={Plus} accessibilityLabel={createViewA11yLabel} />}
       disabled={disabled}
       onTogglePopover={handleTogglePopover}
       onToggleModal={handleToggleModal}

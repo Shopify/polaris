@@ -1,7 +1,7 @@
 ---
 title: Spacial organization
 order: 1
-icon: BuyButtonButtonLayoutMajor
+icon: BuyButtonButtonLayout
 keywords:
   - layout
   - layout components

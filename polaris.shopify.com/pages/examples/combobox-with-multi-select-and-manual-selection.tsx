@@ -7,7 +7,7 @@ import {
   LegacyStack,
   AutoSelection,
 } from '@shopify/polaris';
-import {SearchMinor} from '@shopify/polaris-icons';
+import {Search} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -99,7 +99,7 @@ function MultiManualComboboxExample() {
         allowMultiple
         activator={
           <Combobox.TextField
-            prefix={<Icon source={SearchMinor} />}
+            prefix={<Icon source={Search} />}
             onChange={updateText}
             label="Search tags"
             labelHidden

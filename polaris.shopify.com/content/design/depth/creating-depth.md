@@ -1,6 +1,6 @@
 ---
 title: Creating depth
-icon: VariantMajor
+icon: Variant
 showTOC: true
 keywords:
   - depth

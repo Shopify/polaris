@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ReactNode} from 'react';
-import {ArrowDownMinor, ArrowUpMinor} from '@shopify/polaris-icons';
+import {ArrowDown, ArrowUp} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../../../utilities/css';
 import {UnstyledButton} from '../../../../../UnstyledButton';
@@ -34,10 +34,7 @@ export function DirectionButton({
   }
   return (
     <UnstyledButton className={classes} onClick={handleClick}>
-      <Icon
-        source={direction === 'asc' ? ArrowUpMinor : ArrowDownMinor}
-        tone="base"
-      />
+      <Icon source={direction === 'asc' ? ArrowUp : ArrowDown} tone="base" />
       <span className={styles.Label}>{children}</span>
     </UnstyledButton>
   );

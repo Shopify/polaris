@@ -1,5 +1,5 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
-import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
+import {SortAscending, SortDescending} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 import {themeDefault, toPx} from '@shopify/polaris-tokens';
 
@@ -946,13 +946,11 @@ function IndexTableBase({
         heading.defaultSortDirection ?? defaultSortDirection;
 
       let SourceComponent =
-        newDirection === 'ascending' ? SortAscendingMajor : SortDescendingMajor;
+        newDirection === 'ascending' ? SortAscending : SortDescending;
       if (isCurrentlySorted) {
         newDirection = isAscending ? 'descending' : 'ascending';
         SourceComponent =
-          sortDirection === 'ascending'
-            ? SortAscendingMajor
-            : SortDescendingMajor;
+          sortDirection === 'ascending' ? SortAscending : SortDescending;
       }
 
       const iconMarkup = (
