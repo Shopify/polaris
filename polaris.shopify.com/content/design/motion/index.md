@@ -79,7 +79,7 @@ status: New
         An elaborate animation of the tick mark that fills in the container and rotates
         the tick mark.
       </video>
-      Allow motion to complicate the interface or hinder merchant comprehension.
+      Use motion that doesn't correspond to merchants’ interactions and expectations.
     </Column>
 
   </Row>

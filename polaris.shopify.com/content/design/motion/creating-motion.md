@@ -17,7 +17,7 @@ icon: TransactionMajor
 <Section>
   <Row variant="1-2">
     <Column>
-      ## Transition
+      ## Transitions
 
       Transitions should be smooth and fluid, guiding merchants’ attention and maintaining context as they navigate the interface. They play a crucial role in ensuring continuity in the experience.
     </Column>
@@ -63,9 +63,9 @@ icon: TransactionMajor
 
 <Section>
   <Row variant="1-1-1">
-  
-    <Column>      
-      ## Animation
+
+    <Column>
+      ## Animations
 
       Animations should be simple and purposeful, used to enhance understanding or provide visual feedback.
     </Column>
