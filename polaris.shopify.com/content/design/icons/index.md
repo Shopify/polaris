@@ -4,6 +4,7 @@ description: Icons enhance an experience by providing intuitive and efficient na
 hideChildren: true
 showTOC: true
 order: 4
+icon: FaviconMajor
 keywords:
   - shopify icons
   - icon sets
