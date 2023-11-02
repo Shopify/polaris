@@ -9,6 +9,7 @@ import {LegacyCard} from '../../LegacyCard';
 import {Page} from '../Page';
 import type {PageProps} from '../Page';
 import {Header} from '../components';
+import {Button} from '../../Button';
 
 window.matchMedia =
   window.matchMedia ||
@@ -91,6 +92,20 @@ describe('<Page />', () => {
       expect(page).toContainReactComponent(Header);
     });
 
+    it('renders a critical button when destructive is true', () => {
+      const primaryAction = {
+        content: 'Save',
+        destructive: true,
+      };
+      const page = mountWithApp(
+        <Page {...mockProps} primaryAction={primaryAction} />,
+      );
+      expect(page).toContainReactComponent(Button, {
+        tone: 'critical',
+        variant: 'primary',
+      });
+    });
+
     it('gets passed into the <Header />', () => {
       const primaryAction = {
         content: 'Save',
@@ -115,6 +130,21 @@ describe('<Page />', () => {
         <Page {...mockProps} secondaryActions={secondaryActions} />,
       );
       expect(page).toContainReactComponent(Header);
+    });
+
+    it('renders a critical button when destructive is true', () => {
+      const secondaryActions = [
+        {
+          content: 'Preview',
+          destructive: true,
+        },
+      ];
+      const page = mountWithApp(
+        <Page {...mockProps} secondaryActions={secondaryActions} />,
+      );
+      expect(page).toContainReactComponent(Button, {
+        tone: 'critical',
+      });
     });
 
     it('gets passed into the <Header />', () => {

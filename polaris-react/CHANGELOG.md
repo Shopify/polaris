@@ -1,5 +1,26 @@
 # Changelog
 
+## 12.1.1
+
+### Patch Changes
+
+- Updated dependencies [[`23055adcf`](https://github.com/Shopify/polaris/commit/23055adcfa97decbfbc51924bd121d1dae76ac6f)]:
+  - @shopify/polaris-tokens@8.1.0
+
+## 12.1.0
+
+### Minor Changes
+
+- [#10819](https://github.com/Shopify/polaris/pull/10819) [`460c48cfa`](https://github.com/Shopify/polaris/commit/460c48cfa51fb42c08e1f7256adc3919ae7eca1a) Thanks [@matallo](https://github.com/matallo)! - - Added `tone` prop with `magic` value to `TextField`
+  - Added `tone` prop with `magic` value to `ChoiceList`
+  - Added `tone` prop with `magic` value to `Checkbox`
+
+### Patch Changes
+
+- [#11079](https://github.com/Shopify/polaris/pull/11079) [`9c0433c02`](https://github.com/Shopify/polaris/commit/9c0433c02c420c5a928bc790d4377da96630e90d) Thanks [@kyledurand](https://github.com/kyledurand)! - Added tests for destructive mapping in `Page` and `Modal`
+
+* [#11081](https://github.com/Shopify/polaris/pull/11081) [`c0be502a8`](https://github.com/Shopify/polaris/commit/c0be502a803b44913ac17179009c0f298497b433) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated Page titleMetadata documentation
+
 ## 12.0.4
 
 ### Patch Changes

@@ -55,7 +55,6 @@ describe('<PageActions />', () => {
       {
         content: 'Delete',
         destructive: true,
-        outline: true,
       },
     ];
 

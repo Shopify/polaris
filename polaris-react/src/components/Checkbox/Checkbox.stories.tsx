@@ -77,6 +77,20 @@ export function Error() {
   );
 }
 
+export function Magic() {
+  const [checked, setChecked] = useState<CheckboxState>();
+  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
+
+  return (
+    <Checkbox
+      label="Magic checkbox"
+      checked={checked}
+      onChange={handleChange}
+      tone="magic"
+    />
+  );
+}
+
 export function WithBleedAndFill() {
   const [checked1, setChecked1] = useState<CheckboxState>(false);
   const [checked2, setChecked2] = useState<CheckboxState>(false);

@@ -354,6 +354,26 @@ describe('<Modal>', () => {
       expect(modal).toContainReactComponent(Footer);
     });
 
+    it('renders a destructive primaryAction', () => {
+      const modal = mountWithApp(
+        <Modal
+          title="foo"
+          onClose={jest.fn()}
+          open
+          primaryAction={{
+            content: 'Save',
+            onAction: jest.fn(),
+            destructive: true,
+          }}
+        />,
+      );
+
+      expect(modal).toContainReactComponent(Button, {
+        variant: 'primary',
+        tone: 'critical',
+      });
+    });
+
     it('renders if secondaryActions are passed in', () => {
       const modal = mountWithApp(
         <Modal
@@ -365,6 +385,24 @@ describe('<Modal>', () => {
       );
 
       expect(modal).toContainReactComponent(Footer);
+    });
+  });
+
+  it('renders destructive secondaryActions', () => {
+    const modal = mountWithApp(
+      <Modal
+        title="foo"
+        onClose={jest.fn()}
+        open
+        secondaryActions={[
+          {content: 'Discard', onAction: jest.fn(), destructive: true},
+        ]}
+      />,
+    );
+
+    expect(modal).toContainReactComponent(Button, {
+      variant: 'primary',
+      tone: 'critical',
     });
   });
 
