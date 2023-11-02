@@ -3,7 +3,6 @@ import {
   GridCellProps,
   InlineGrid,
   InlineGridProps,
-  Box,
 } from '@shopify/polaris';
 import {SpaceScale} from '@shopify/polaris-tokens';
 
@@ -95,7 +94,7 @@ export const Column = ({children, variant}: ColumnProps) =>
       {children}
     </DirectiveCard>
   ) : (
-    <Box padding="400">{children}</Box>
+    <div>{children}</div>
   );
 
 const statusMap: {
