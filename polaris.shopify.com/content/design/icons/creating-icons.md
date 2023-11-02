@@ -219,8 +219,7 @@ Outlined icons are the default. Filled icons are reserved for navigation only.
 
     ![A calendar, an inbox and a shop icon with the corner radius highlighted. 3 pixels for the calendar, 2 pixels for the inbox and 1 pixel for the inbox.](/images/design/icons/icons-creating-outline-5@2x.png)
 
-    Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
-    Corner radius can go from 1 px to 3 px, depending on the object roundness. Joins must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
+    Corner radius can go from 1 px to 3 px, depending on the object roundness. Joints and terminals must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
 
   </Column>
   <Column variant="directive">
