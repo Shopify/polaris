@@ -19,9 +19,6 @@ const replacementMaps = {
     '--p-shadow-xl': '--p-shadow-500',
     '--p-shadow-2xl': '--p-shadow-600',
     '--p-shadow-bevel-experimental': '--p-shadow-bevel-100',
-    '--p-shadow-card-sm-experimental': '--p-shadow-100',
-    '--p-shadow-card-md-experimental': '--p-shadow-200',
-    '--p-shadow-card-lg-experimental': '--p-shadow-300',
     '--p-shadow-button-experimental': '--p-shadow-button',
     '--p-shadow-button-hover-experimental': '--p-shadow-button-hover',
     '--p-shadow-button-disabled-experimental':
