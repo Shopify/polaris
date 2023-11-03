@@ -846,8 +846,8 @@
   }
 
   &.sizeLarge {
-    padding-left: var(var(--p-space-200));
-    padding-right: var(var(--p-space-200));
+    padding-left: var(--p-space-200);
+    padding-right: var(--p-space-200);
 
     @media #{$p-breakpoints-md-up} {
       padding-left: var(--p-space-150);
