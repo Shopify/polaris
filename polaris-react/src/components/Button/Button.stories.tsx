@@ -314,10 +314,10 @@ export function MonochromePlain() {
     <Box padding="400">
       <InlineStack gap="500" blockAlign="center">
         <Button variant="monochromePlain">Default</Button>
-        <Button variant="monochromePlain" icon={PlusMinor}>
+        <Button variant="monochromePlain" icon={Plus}>
           With icon
         </Button>
-        <Button variant="monochromePlain" disabled icon={PlusMinor}>
+        <Button variant="monochromePlain" disabled icon={Plus}>
           Disabled with icon
         </Button>
         <Button variant="monochromePlain" disclosure>
@@ -720,7 +720,7 @@ export function DisabledState() {
       </Button>
       {/* Visual check to ensure the button color is not inherited from the parent */}
       <Box color="text-critical">
-        <Button variant="monochromePlain" disabled icon={CancelSmallMinor}>
+        <Button variant="monochromePlain" disabled icon={CancelSmall}>
           Buy shipping label
         </Button>
       </Box>
