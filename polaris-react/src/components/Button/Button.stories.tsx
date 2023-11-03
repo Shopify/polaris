@@ -720,7 +720,7 @@ export function DisabledState() {
       </Button>
       {/* Visual check to ensure the button color is not inherited from the parent */}
       <Box color="text-critical">
-        <Button variant="monochromePlain" disabled>
+        <Button variant="monochromePlain" disabled icon={CancelSmallMinor}>
           Buy shipping label
         </Button>
       </Box>

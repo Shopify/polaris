@@ -955,23 +955,8 @@
     visibility: hidden;
   }
 
-  &.iconOnly {
-    svg {
-      fill: currentColor;
-    }
-
-    &.disabled {
-      color: var(--p-color-text-disabled);
-
-      svg {
-        fill: currentColor;
-      }
-    }
-
-    &:focus svg,
-    &:active svg {
-      fill: currentColor;
-    }
+  &.disabled {
+    color: var(--p-color-text-disabled);
   }
 
   .Text:not(.removeUnderline) {
