@@ -918,7 +918,7 @@
   min-height: var(--pc-button-large-min-height);
   /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom height */
   min-width: var(--pc-button-large-min-height);
-  padding-block: var(var(--p-space-200));
+  padding-block: var(--p-space-200);
   padding-inline: var(--p-space-300);
 
   .Content {
