@@ -68,7 +68,7 @@ export function WithCustomContent() {
     <Tag url="#">
       <InlineStack gap="050">
         <Bleed marginInlineStart="100">
-          <Icon tone="base" source={MagicMinor} />
+          <Icon tone="base" source={Magic} />
         </Bleed>
         <span>Wholesale</span>
       </InlineStack>
