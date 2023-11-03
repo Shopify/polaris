@@ -18,9 +18,11 @@
   /* stylelint-disable-next-line polaris/typography/polaris/at-rule-disallowed-list -- Matching custom input with TextField */
   @include text-style-input;
   flex: 1;
+  color: var(--p-color-text);
   border: var(--p-border-width-025) solid var(--p-color-input-border);
   border-radius: var(--p-border-radius-100);
   border-color: var(--p-color-input-border);
+  background-color: var(--p-color-input-bg-surface);
   // stylelint-disable-next-line -- Polaris component custom properties
   padding-inline: var(--pc-indexfilter-search-padding-inline);
   width: 100%;

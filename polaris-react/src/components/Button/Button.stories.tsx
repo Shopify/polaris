@@ -10,7 +10,6 @@ import {
   Box,
   Popover,
   ActionList,
-  Divider,
 } from '@shopify/polaris';
 import {
   Plus,
@@ -305,6 +304,30 @@ export function Plain() {
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
+      </InlineStack>
+    </Box>
+  );
+}
+
+export function MonochromePlain() {
+  return (
+    <Box padding="400">
+      <InlineStack gap="500" blockAlign="center">
+        <Button variant="monochromePlain">Default</Button>
+        <Button variant="monochromePlain" icon={Plus}>
+          With icon
+        </Button>
+        <Button variant="monochromePlain" disabled icon={Plus}>
+          Disabled with icon
+        </Button>
+        <Button variant="monochromePlain" disclosure>
+          Disclosure
+        </Button>
+        <Box color="text-success">
+          <Button variant="monochromePlain" disclosure>
+            Inherited color
+          </Button>
+        </Box>
       </InlineStack>
     </Box>
   );
@@ -697,7 +720,7 @@ export function DisabledState() {
       </Button>
       {/* Visual check to ensure the button color is not inherited from the parent */}
       <Box color="text-critical">
-        <Button variant="monochromePlain" disabled>
+        <Button variant="monochromePlain" disabled icon={CancelSmall}>
           Buy shipping label
         </Button>
       </Box>
