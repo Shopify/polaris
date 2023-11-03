@@ -91,6 +91,22 @@ async function getProperties() {
       continue;
     }
 
+    // Need to ensure shorthand properties come before longhand properties so
+    // the most specific (longhand) applies when set.
+    // For example, `flex-flow` is a shorthand of `flex-direction` and
+    // `flex-wrap`, and so must come before both of those.
+    // Cannot use alphabetical sorting (`flex-direction` would end up before
+    // `flex-flow` which is invalid).
+    // Cannot use `property.logicalProperyGroup` as that's not reliable (doesn't
+    // even exist for the `flex` family of properties).
+    // Cannot rely on the properties in this dataset containing both long and
+    // shorthand variants since later "Delta" specs might introduce new
+    // shorthands (and so would come after the longhand when iterating and
+    // therefore are invalid).
+    // Possible solutions:
+    // 1. Filter out all the shorthand properties.
+    // 2. Create a list of { 'flex-direction': 'flex-flow' } used to sort
+    //    longhands after shorthands
     for (let i = 0; i < data.properties.length; i++) {
       const propertySpec = data.properties[i];
       if (
@@ -98,14 +114,6 @@ async function getProperties() {
           (existingProp) => existingProp.name === propertySpec.name,
         )
       ) {
-        // TODO: This could be a long-hand version of another property, such as
-        // `margin-left` -> `margin` as indicated by .logicalPropertyGroup.
-        // However, the .logicalPropertyGroup value does not always seem map to
-        // a CSS property name, so it's not possible to know which shorthand the
-        // longhand should come after. We need to figure this out somehow so we
-        // can ensure specificity is maintained. It'll also be tricky if the
-        // shorthand comes after the the longhands in the webref data - what do
-        // we do with the longhands until we encounter the shorthand?
         properties.push({name: propertySpec.name});
       }
     }
@@ -144,18 +152,25 @@ async function writeProperties(file, properties) {
   await file.write('\n}');
 }
 
-async function writeScopeCustomProperty(componentName, propertyName) {
-  for (let breakpoint of breakpoints) {
-    /* TODO, can we do this?
-      *
+/*
+* Ouputs something like:
+
   --pc-box-z-index-xs: initial;
-  --pc-box-z-index-sm: var(--pc-box-z-index-xs, initial);
-  --pc-box-z-index-md: var(--pc-box-z-index-sm, initial);
-  --pc-box-z-index-lg: var(--pc-box-z-index-md, initial);
-  --pc-box-z-index-xl: var(--pc-box-z-index-lg, initial);
-    */
+  --pc-box-z-index-sm: var(--pc-box-z-index-xs);
+  --pc-box-z-index-md: var(--pc-box-z-index-sm);
+  --pc-box-z-index-lg: var(--pc-box-z-index-md);
+  --pc-box-z-index-xl: var(--pc-box-z-index-lg);
+*/
+async function writeScopeCustomProperty(componentName, propertyName) {
+  const propPrefix = `--pc-${componentName}-${propertyName}`;
+  // Sets the value to 'inherit' if it's an inherited property, or 'initial'
+  // otherwise. See: https://www.w3.org/TR/css-cascade-5/#inherit-initial
+  await file.write(`\n  ${propPrefix}-${breakpoints[0].key}: initial;`);
+  for (let index = 1; index < breakpoints.length; index++) {
+    const breakpoint = breakpoints[index];
+    const prevBreakpoint = breakpoints[index - 1];
     await file.write(
-      `\n  --pc-${componentName}-${propertyName}-${breakpoint.key}: initial;`,
+      `\n  ${propPrefix}-${breakpoint.key}: var(${propPrefix}-${prevBreakpoint.key});`,
     );
   }
 }
@@ -163,16 +178,22 @@ async function writeScopeCustomProperty(componentName, propertyName) {
 async function writeResponsiveDeclarationAtBreakpoint(
   componentName,
   property,
-  breakpoint,
+  breakpointKey,
 ) {
-  const lastIndex = breakpoints.findIndex((b) => b.key === breakpoint);
-  // Sets the value to 'inherit' if it's an inherited property, or 'initial'
-  // otherwise. See: https://www.w3.org/TR/css-cascade-5/#inherit-initial
-  let variables = 'unset';
-
-  // Nest the fallbacks from smallest on the inside to largest on the outside
-  for (let index = 0; index <= lastIndex; index++) {
-    variables = `var(--pc-${componentName}-${property.name}-${breakpoints[index].key}, ${variables})`;
-  }
-  await file.write(`\n  ${property.name}: ${variables};`);
+  const breakpoint = breakpoints.find((b) => b.key === breakpointKey);
+  // `unset` Sets the value to 'inherit' if it's an inherited property, or
+  // 'initial' otherwise.
+  // See: https://www.w3.org/TR/css-cascade-5/#inherit-initial
+  //
+  // But, why do we need the fallback here?
+  // If the user passes in a value of 'initial' for the `xs` breakpoint, they've
+  // overridden our scoping which sets it to `unset`, but the value of 'initial'
+  // is equivalent to the "guaranteed-invalid value" which the spec says makes
+  // the entire property invalid, therefore the property will be at the whim of
+  // the cascade which we DO NOT want; we want to ensure it is set to either
+  // `inherit` or `initial` when no/invalid value is passed. Hence we use
+  // `unset` to achieve that.
+  await file.write(
+    `\n  ${property.name}: var(--pc-${componentName}-${property.name}-${breakpoint.key});`,
+  );
 }
