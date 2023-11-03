@@ -93,25 +93,21 @@ async function getProperties() {
 
     for (let i = 0; i < data.properties.length; i++) {
       const propertySpec = data.properties[i];
-
-      // TODO: This could be a long-hand version of another property, such as
-      // `margin-left` -> `margin` as indicated by .logicalPropertyGroup. However,
-      // the .logicalPropertyGroup value does not always seem map to a CSS
-      // property name, so it's not possible to know which shorthand the
-      // longhand should come after. We need to figure this out somehow so we
-      // can ensure specificity is maintained. It'll also be tricky if the
-      // shorthand comes after the the longhands in the webref data - what do we
-      // do with the longhands until we encounter the shorthand?
-      let prop = properties.find(
-        (existingProp) => existingProp.name === propertySpec.name,
-      );
-
-      if (!prop) {
-        prop = {name: propertySpec.name, inherited: false};
-        properties.push(prop);
+      if (
+        !properties.find(
+          (existingProp) => existingProp.name === propertySpec.name,
+        )
+      ) {
+        // TODO: This could be a long-hand version of another property, such as
+        // `margin-left` -> `margin` as indicated by .logicalPropertyGroup.
+        // However, the .logicalPropertyGroup value does not always seem map to
+        // a CSS property name, so it's not possible to know which shorthand the
+        // longhand should come after. We need to figure this out somehow so we
+        // can ensure specificity is maintained. It'll also be tricky if the
+        // shorthand comes after the the longhands in the webref data - what do
+        // we do with the longhands until we encounter the shorthand?
+        properties.push({name: propertySpec.name});
       }
-
-      prop.inherited = propertySpec.inherited === 'yes';
     }
   }
 
@@ -170,7 +166,9 @@ async function writeResponsiveDeclarationAtBreakpoint(
   breakpoint,
 ) {
   const lastIndex = breakpoints.findIndex((b) => b.key === breakpoint);
-  let variables = property.inherited ? 'inherit' : 'initial';
+  // Sets the value to 'inherit' if it's an inherited property, or 'initial'
+  // otherwise. See: https://www.w3.org/TR/css-cascade-5/#inherit-initial
+  let variables = 'unset';
 
   // Nest the fallbacks from smallest on the inside to largest on the outside
   for (let index = 0; index <= lastIndex; index++) {
