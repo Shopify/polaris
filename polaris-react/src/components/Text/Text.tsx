@@ -26,6 +26,7 @@ type Variant =
   | 'headingXl'
   | 'heading2xl'
   | 'heading3xl'
+  | 'bodyXs'
   | 'bodySm'
   | 'bodyMd'
   | 'bodyLg';

@@ -68,15 +68,16 @@ Each variant uses a predetermined combination of the [font tokens](/tokens/font)
 
 | Variant      | Font size token     | px value | rem value | Font line height token | Font weight token          | Reponsive |
 | ------------ | ------------------- | -------- | --------- | ---------------------- | -------------------------- | --------- |
-| `heading3xl` | `--p-font-size-600` | 32       | 2         | `--p-line-height-6`    | `--p-font-weight-semibold` | Yes       |
-| `heading2xl` | `--p-font-size-500` | 28       | 1.75      | `--p-line-height-5`    | `--p-font-weight-semibold` | Yes       |
-| `headingXl`  | `--p-font-size-400` | 24       | 1.5       | `--p-line-height-4`    | `--p-font-weight-semibold` | Yes       |
-| `headingLg`  | `--p-font-size-300` | 20       | 1.25      | `--p-line-height-3`    | `--p-font-weight-semibold` | Yes       |
-| `headingMd`  | `--p-font-size-200` | 16       | 1         | `--p-line-height-3`    | `--p-font-weight-semibold` | No        |
-| `headingSm`  | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-semibold` | No        |
-| `bodyLg`     | `--p-font-size-200` | 16       | 1         | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
-| `bodyMd`     | `--p-font-size-100` | 14       | 0.875     | `--p-line-height-2`    | `--p-font-weight-regular`  | No        |
-| `bodySm`     | `--p-font-size-75`  | 12       | 0.75      | `--p-line-height-1`    | `--p-font-weight-regular`  | No        |
+| `heading3xl` | `--p-font-size-900` | 36       | 2.25      | `--p-line-height-1200` | `--p-font-weight-bold`     | Yes       |
+| `heading2xl` | `--p-font-size-750` | 30       | 1.875     | `--p-line-height-1000` | `--p-font-weight-bold`     | Yes       |
+| `headingXl`  | `--p-font-size-600` | 24       | 1.5       | `--p-line-height-800`  | `--p-font-weight-bold`     | Yes       |
+| `headingLg`  | `--p-font-size-500` | 20       | 1.25      | `--p-line-height-600`  | `--p-font-weight-semibold` | Yes       |
+| `headingMd`  | `--p-font-size-350` | 14       | 0.875     | `--p-line-height-500`  | `--p-font-weight-semibold` | No        |
+| `headingSm`  | `--p-font-size-325` | 13       | 0.8125    | `--p-line-height-500`  | `--p-font-weight-semibold` | No        |
+| `bodyLg`     | `--p-font-size-350` | 14       | 0.875     | `--p-line-height-500`  | `--p-font-weight-regular`  | No        |
+| `bodyMd`     | `--p-font-size-325` | 13       | 0.8125    | `--p-line-height-500`  | `--p-font-weight-regular`  | No        |
+| `bodySm`     | `--p-font-size-300` | 12       | 0.75      | `--p-line-height-400`  | `--p-font-weight-regular`  | No        |
+| `bodyXs`     | `--p-font-size-275` | 11       | 0.6875    | `--p-line-height-300`  | `--p-font-weight-regular`  | No        |
 
 ---
 
