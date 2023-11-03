@@ -1,5 +1,5 @@
 import React, {useState, useMemo} from 'react';
-import {SortMinor} from '@shopify/polaris-icons';
+import {Sort} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {Popover} from '../../../Popover';
@@ -102,7 +102,7 @@ export function SortButton({
     >
       <Button
         size="slim"
-        icon={SortMinor}
+        icon={Sort}
         onClick={handleClick}
         disabled={disabled}
         accessibilityLabel={i18n.translate(

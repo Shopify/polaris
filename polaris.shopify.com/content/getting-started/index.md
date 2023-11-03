@@ -16,7 +16,7 @@ keywords:
   - ui kits
   - plugins
 order: 1
-icon: HintMajor
+icon: Hint
 ---
 
 # {frontmatter.title}

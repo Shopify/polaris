@@ -1,5 +1,5 @@
 import {ExceptionList} from '@shopify/polaris';
-import {NoteMinor} from '@shopify/polaris-icons';
+import {Note} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -8,7 +8,7 @@ function ExceptionListExample() {
     <ExceptionList
       items={[
         {
-          icon: NoteMinor,
+          icon: Note,
           description:
             'This customer is awesome. Make sure to treat them right!',
         },

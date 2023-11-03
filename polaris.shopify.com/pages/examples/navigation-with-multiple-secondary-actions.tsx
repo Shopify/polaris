@@ -1,10 +1,10 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
-  HomeMinor,
-  CirclePlusOutlineMinor,
-  ProductsMinor,
-  CircleMinusOutlineMinor,
-  OrdersMinor,
+  Home,
+  CirclePlusOutline,
+  Products,
+  CircleMinusOutline,
+  Orders,
 } from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -19,20 +19,20 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Home',
-              icon: HomeMinor,
+              icon: Home,
               selected: false,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
-              icon: OrdersMinor,
+              icon: Orders,
               badge: '2',
               secondaryActions: [
                 {
                   url: '#',
                   accessibilityLabel: 'Add a product',
-                  icon: CirclePlusOutlineMinor,
+                  icon: CirclePlusOutline,
                   tooltip: {
                     content: 'Create new order',
                   },
@@ -43,19 +43,19 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
-              icon: ProductsMinor,
+              icon: Products,
               secondaryActions: [
                 {
                   url: '#',
                   accessibilityLabel: 'Add a product',
-                  icon: CirclePlusOutlineMinor,
+                  icon: CirclePlusOutline,
                   tooltip: {
                     content: 'Add a product',
                   },
                 },
                 {
                   accessibilityLabel: 'Remove a product',
-                  icon: CircleMinusOutlineMinor,
+                  icon: CircleMinusOutline,
                   onClick: () => {},
                   tooltip: {
                     content: 'Remove a product',

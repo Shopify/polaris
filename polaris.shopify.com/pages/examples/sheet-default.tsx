@@ -8,7 +8,7 @@ import {
   ChoiceList,
   Text,
 } from '@shopify/polaris';
-import {MobileCancelMajor} from '@shopify/polaris-icons';
+import {MobileCancel} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -109,7 +109,7 @@ function SheetExample() {
             </Text>
             <Button
               accessibilityLabel="Cancel"
-              icon={MobileCancelMajor}
+              icon={MobileCancel}
               onClick={toggleSheetActive}
               variant="plain"
             />

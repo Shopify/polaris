@@ -3,12 +3,7 @@ import type {
   ColorIconAlias,
   ColorTextAlias,
 } from '@shopify/polaris-tokens';
-import {
-  DiamondAlertMinor,
-  InfoMinor,
-  RiskMinor,
-  TickMinor,
-} from '@shopify/polaris-icons';
+import {DiamondAlert, Info, Risk, Tick} from '@shopify/polaris-icons';
 import {useImperativeHandle, useRef, useState} from 'react';
 
 import type {IconSource} from '../../types';
@@ -39,7 +34,7 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
       text: 'text-success',
       icon: 'text-success',
     },
-    icon: TickMinor,
+    icon: Tick,
   },
   warning: {
     withinPage: {
@@ -52,7 +47,7 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
       text: 'text-warning',
       icon: 'text-warning',
     },
-    icon: RiskMinor,
+    icon: Risk,
   },
   critical: {
     withinPage: {
@@ -65,7 +60,7 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
       text: 'text-critical',
       icon: 'text-critical',
     },
-    icon: DiamondAlertMinor,
+    icon: DiamondAlert,
   },
   info: {
     withinPage: {
@@ -78,7 +73,7 @@ export const bannerAttributes: {[key in BannerTone]: BannerAttributes} = {
       text: 'text-info',
       icon: 'text-info',
     },
-    icon: InfoMinor,
+    icon: Info,
   },
 };
 

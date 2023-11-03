@@ -108,7 +108,7 @@ function DatePickerExample() {
             <TextField
               role="combobox"
               label={'Start date'}
-              prefix={<Icon source={CalendarMinor} />}
+              prefix={<Icon source={Calendar} />}
               value={formattedValue}
               onFocus={() => setVisible(true)}
               onChange={handleInputValueChange}

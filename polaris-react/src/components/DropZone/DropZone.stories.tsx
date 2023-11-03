@@ -11,7 +11,7 @@ import {
   Thumbnail,
   InlineStack,
 } from '@shopify/polaris';
-import {NoteMinor} from '@shopify/polaris-icons';
+import {Note} from '@shopify/polaris-icons';
 
 export default {
   component: DropZone,
@@ -40,7 +40,7 @@ export function Default() {
               source={
                 validImageTypes.includes(file.type)
                   ? window.URL.createObjectURL(file)
-                  : NoteMinor
+                  : Note
               }
             />
             <div>
@@ -151,7 +151,7 @@ export function WithSingleFileUpload() {
         source={
           validImageTypes.includes(file.type)
             ? window.URL.createObjectURL(file)
-            : NoteMinor
+            : Note
         }
       />
       <div>
@@ -192,7 +192,7 @@ export function WithDropOnPage() {
             source={
               validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
-                : NoteMinor
+                : Note
             }
           />
           <div>
@@ -315,7 +315,7 @@ export function Nested() {
             source={
               validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
-                : NoteMinor
+                : Note
             }
           />
           <div>
@@ -441,7 +441,7 @@ export function WithCustomFileUploadText() {
             source={
               validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
-                : NoteMinor
+                : Note
             }
           />
           <div>
@@ -489,7 +489,7 @@ export function WithCustomFileDialogTrigger() {
             source={
               validImageTypes.includes(file.type)
                 ? window.URL.createObjectURL(file)
-                : NoteMinor
+                : Note
             }
           />
           <div>
@@ -548,7 +548,7 @@ export function Error() {
               source={
                 validImageTypes.includes(file.type)
                   ? window.URL.createObjectURL(file)
-                  : NoteMinor
+                  : Note
               }
             />
             <div>

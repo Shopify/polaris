@@ -1,7 +1,7 @@
 ---
 title: Loading
 description: Navigating the Shopify admin should be fast, meaningful, and focused. Intentional loading states deliver a continuous flow for merchants.
-icon: RefreshMajor
+icon: Refresh
 noIndex: true
 url: /patterns-legacy/loading
 keywords:
