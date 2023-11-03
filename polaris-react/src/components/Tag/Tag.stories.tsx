@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {InlineStack, Icon, LegacyStack, Tag, Bleed} from '@shopify/polaris';
-import {MagicMinor, Wand} from '@shopify/polaris-icons';
+import {Magic} from '@shopify/polaris-icons';
 
 export default {
   component: Tag,
