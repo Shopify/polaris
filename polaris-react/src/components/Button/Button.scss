@@ -47,8 +47,8 @@
   }
 
   // stylelint-disable selector-max-specificity -- focus styles
-  &:focus:not(.variantPrimary):not(.variantPlain):not(.variantTertiary),
-  &:focus-visible:not(.variantPrimary):not(.variantPlain):not(.variantTertiary) {
+  &:focus:not(.variantPrimary):not(.variantTertiary):not(.variantPlain):not(.variantMonochromePlain),
+  &:focus-visible:not(.variantPrimary):not(.variantTertiary):not(.variantPlain):not(.variantMonochromePlain) {
     // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
     box-shadow: var(--pc-button-shadow);
   }
@@ -84,7 +84,7 @@
     line-height: var(--p-font-line-height-400);
   }
 
-  .Button:not(.variantPlain) & {
+  .Button:not(.variantPlain):not(.variantMonochromePlain) & {
     width: 100%;
   }
 
@@ -933,7 +933,7 @@
   }
 }
 
-.variantMonochromePlain {
+.Button.variantMonochromePlain {
   color: currentColor;
 
   svg {
