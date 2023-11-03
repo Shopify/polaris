@@ -41,12 +41,6 @@
 
     &:not(:first-child) {
       margin-left: calc(-1 * var(--p-space-025));
-
-      /* stylelint-disable-next-line polaris/conventions/selector-disallowed-list, selector-max-specificity, selector-max-combinators -- Primary buttons segment groups need the negative margin-left applied directly on the button element. They have inset shine via shadow bevels that cause the appearance of double borders when composed in a segmented ButtonGroup, which flattens the joint between them and ruins the illusion of dimension. */
-      [class*='Button-variantPrimary'],
-      [class*='Polaris-Button--variantPrimary'] {
-        margin-left: calc(-1 * var(--p-space-025));
-      }
     }
   }
 

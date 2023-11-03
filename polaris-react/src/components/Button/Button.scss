@@ -997,7 +997,7 @@
     border-radius: var(--p-border-radius-200);
   }
   // Primary segmented button groups need the negative margin-left applied directly on the button element. They have inset shine via shadow bevels that cause the appearance of double borders when composed in a segmented ButtonGroup, which flattens the joint between them and ruins the illusion of dimension.
-  > :not(:first-child) .Button.primary {
+  > :not(:first-child) .Button.variantPrimary {
     margin-left: calc(-1 * var(--p-space-025));
   }
 }
