@@ -2,7 +2,20 @@ import css from '@webref/css';
 import fs from 'fs/promises';
 import path from 'path';
 import * as url from 'url';
+const breakpoints = [
+  {key: 'xs', value: '0px;'},
+  {key: 'sm', value: '500px;'},
+  {key: 'md', value: '768px;'},
+  {key: 'lg', value: '1040px;'},
+  {key: 'xl', value: '1400px;'},
+];
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+/*
+  const propsList = ['z-index', {prop: 'x', default: 'y'}]
+  responsiveCSSProps('box', propsList);
+*/
+
+function responsiveProps() {}
 
 // Generate style.module.scss from that same spec
 /*
@@ -93,7 +106,6 @@ const getOrPushProperty = (list, name) => {
 await file.write('/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */');
 await file.write("\n@import '../../styles/mixins';");
 await file.write('\n.Box {');
-await file.write(`\n  @include responsive-props('box', (`);
 
 // Do a pass to gather up properties and group them by shorthand -> longhand
 for (let [shortname, data] of Object.entries(parsedFiles)) {
@@ -118,9 +130,58 @@ for (let [shortname, data] of Object.entries(parsedFiles)) {
 }
 
 // Now write them all out in the correct order
-for (let property of properties) {
-  await writeProperty(file, property);
-}
-await file.write(`\n  ));`);
+await writeProperties(properties);
+// for (let property of properties) {
+//   await writeProperty(file, property);
+// }
 await file.write('\n}');
 await file.close();
+
+async function writeScopeCustomProperty(componentName, propertyName) {
+  for (let breakpoint of breakpoints) {
+    await file.write(
+      `\n  --pc-${componentName}-${propertyName}-${breakpoint.key}: initial;`,
+    );
+  }
+}
+
+async function writeResponsiveDeclarationAtBreakpoint(
+  componentName,
+  property,
+  breakpoint,
+) {
+  const lastIndex = breakpoints.findIndex((b) => b.key === breakpoint);
+  let variables = property.inherited ? 'inherit' : 'initial';
+
+  // Nest the fallbacks from smallest on the inside to largest on the outside
+  for (let index = 0; index <= lastIndex; index++) {
+    variables = `var(--pc-${componentName}-${property.name}-${breakpoints[index].key}, ${variables})`;
+  }
+  await file.write(`\n  ${property.name}: ${variables};`);
+}
+
+async function writeProperties(properties) {
+  for (let property of properties) {
+    await writeScopeCustomProperty('box', property.name);
+    await writeResponsiveDeclarationAtBreakpoint('box', property, 'xs');
+  }
+  const mediaQueries = breakpoints.slice(1);
+  for (let breakpoint of mediaQueries) {
+    await file.write(
+      `\n  @media and screen (min-width: ${breakpoint.value}) {`,
+    );
+    for (let property of properties) {
+      await writeResponsiveDeclarationAtBreakpoint(
+        'box',
+        property,
+        breakpoint.key,
+      );
+    }
+    await file.write('\n};');
+  }
+
+  // Iterate and dump properties once as responsiveCSS values
+  // Loop through media queries to generate media queries in css
+  // Internally loop through properties to generate css properties with
+  // valid scopes and callbacks.
+}
