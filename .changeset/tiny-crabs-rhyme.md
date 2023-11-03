@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fixed icon and disabled state colors
+Fixed `Tag` icon and disabled state colors
