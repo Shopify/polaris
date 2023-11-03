@@ -5,7 +5,7 @@ keywords:
   - motion
   - animation
   - design
-icon: TransactionMajor
+icon: Transaction
 ---
 
 # Motion &rarr; {frontmatter.title}

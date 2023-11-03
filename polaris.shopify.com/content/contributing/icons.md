@@ -26,26 +26,33 @@ To learn about best practices for designing and using Polaris icons, read the [i
 2. Read the [design guidelines](https://polaris.shopify.com/design/icons/creating-icons) so you have an understanding of the icon design language.
 3. If you are designing a new icon:
    <br /> - Design the new icon following the design language guidance.
-   <br /> - Please save an unflattened version of your icon where all the strokes are live and things can be easily changed in case updates need to happen in the future.
+   <br /> - Please save an unflattened version of your icon where all the strokes
+   are live and things can be easily changed in case updates need to happen in the
+   future.
    <br /> - Request feedback from a Polaris designer.
-   
 4. If you need assistance designing the new icon:
-   <br /> - Reach out in the #polaris Slack channel requesting a new icon. If possible, have some concepts or ideas around the icon you need when you reach out.
-   <br /> - A designer will reach out to get context and information around what you need, deadlines and other relevant information.
-   <br /> - A designer will work with you to design an icon that meets your team’s needs with your feedback along the way.
+   <br /> - Reach out in the #polaris Slack channel requesting a new icon. If
+   possible, have some concepts or ideas around the icon you need when you reach
+   out.
+   <br /> - A designer will reach out to get context and information around what
+   you need, deadlines and other relevant information.
+   <br /> - A designer will work with you to design an icon that meets your
+   team’s needs with your feedback along the way.
 5. Once the design is complete continue to add it to both the Figma library and the Polaris Icon package.
 
 ## Adding to Figma
 
-1. Duplicate your unflattened working icon.  
-2. Create a branch in the [Polaris Icons (unflattened)](https://www.figma.com/file/oeKyR0kuHIMktdVjdLHJvy/Polaris-Icons-(unflattened)?type=design&node-id=308-158&mode=design&t=jBRTBE9dSDwWTi3V-11) file and add your working icon to the group that makes the most sense. 
+1. Duplicate your unflattened working icon.
+2. Create a branch in the [Polaris Icons (unflattened)](<https://www.figma.com/file/oeKyR0kuHIMktdVjdLHJvy/Polaris-Icons-(unflattened)?type=design&node-id=308-158&mode=design&t=jBRTBE9dSDwWTi3V-11>) file and add your working icon to the group that makes the most sense.
    <br /> - Convert your icon into a component
-   <br /> - Rename the component follwing the established convention. This name will also be used in the Polaris Icon package.
+   <br /> - Rename the component follwing the established convention. This name will
+   also be used in the Polaris Icon package.
 3. Request a review and merge from a Polaris designer.
 4. Flatten the other icon by expanding all strokes and then combining them into a single shape using the [boolean operations](https://help.figma.com/hc/en-us/articles/360039957534-Boolean-operations). Once into a single shape, flatten the entire vector by hitting 'Command + E'.
 5. Create a branch in the [Polaris Icon Library](https://www.figma.com/file/fVIazfJNe3AOJTJmBKgTO9/Polaris-Gen-3-Icons?type=design&node-id=753-2&mode=design&t=dpxRTbWHU6wBZi9k-11) adding your icon to the appropriate page
    <br /> - Convert your icon into a component.
-   <br /> - Rename the component follwing the established convention. This name will also be used in the Polaris Icon.c
+   <br /> - Rename the component follwing the established convention. This name will
+   also be used in the Polaris Icon.c
 6. Export flattened component as svg.
 7. Request a review and merge from a Polaris designer.
 
@@ -55,14 +62,17 @@ To learn about best practices for designing and using Polaris icons, read the [i
 2. Copy and rename the icon template files found in the `ICON_TEMPLATES` folder.
    <br /> - Name should match assets in Figma.
 3. Open your exported file and add the icon SVG to the `.svg` file.
-   <br /> - Only add the actual svg `path` data. Don't edit any of the data inside the `svg` tag itself. 
-   <br /> - Remove any `clip-path` meta data that Figma may have added. It isn't needed.
+   <br /> - Only add the actual svg `path` data. Don't edit any of the data
+   inside the `svg` tag itself.
+   <br /> - Remove any `clip-path` meta data that Figma may have added. It isn't
+   needed.
 4. Add the icon metadata to the `.yml` file.
 5. If you are editing an existing icon:
    <br /> - Replace the existing icon SVG in the `.svg` file.
    <br /> - Update the relevant metadata in the `.yml` file.
 6. Open a terminal inside VS Code and run `yarn changeset` to add an entry to the change log and release notes.
-   <br /> - Use the "Return" key to skip to the next prompt and the "Spacebar" to make a selection.
+   <br /> - Use the "Return" key to skip to the next prompt and the "Spacebar"
+   to make a selection.
    <br /> - Icons contributions should always be a `Minor` release.
 7. Commit your changes and open a pull request in the Shopify/polaris GitHub repo.
 8. Request review from a Polaris team member.

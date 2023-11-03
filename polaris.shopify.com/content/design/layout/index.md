@@ -1,6 +1,6 @@
 ---
 title: Layout
-icon: TemplateMajor
+icon: Template
 order: 5
 showTOC: true
 keywords:

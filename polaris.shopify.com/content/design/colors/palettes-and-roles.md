@@ -8,7 +8,7 @@ keywords:
   - color use
   - black and white
   - grayscale
-icon: ColorsMajor
+icon: Colors
 ---
 
 # Color &rarr; {frontmatter.title}

@@ -5,7 +5,7 @@ keywords:
   - motion
   - animation
   - design
-icon: PlayMinor
+icon: Play
 ---
 
 # Motion &rarr; {frontmatter.title}

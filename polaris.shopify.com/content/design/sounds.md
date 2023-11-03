@@ -6,7 +6,7 @@ keywords:
   - audio
   - sonic
   - noise
-icon: SoundMajor
+icon: Sound
 ---
 
 ![Visual representation of sound waves as concentric circles](/images/design/sounds/sound-intro@2x.png)

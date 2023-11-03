@@ -1,7 +1,7 @@
 ---
 title: Components
 order: 7
-icon: AppsMajor
+icon: Apps
 previewImg: /images/components.png
 ---
 

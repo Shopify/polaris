@@ -92,7 +92,7 @@ function DateListPicker() {
       activator={
         <Button
           onClick={() => setPopoverActive(!popoverActive)}
-          icon={CalendarMinor}
+          icon={Calendar}
         >
           {selected.title}
         </Button>

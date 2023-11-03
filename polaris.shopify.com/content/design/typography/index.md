@@ -7,7 +7,7 @@ keywords:
   - type styles
   - font sizes
   - fonts
-icon: TypeMajor
+icon: Type
 hideChildren: true
 status: New
 ---

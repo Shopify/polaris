@@ -1,6 +1,6 @@
 import React, {useRef} from 'react';
 import type {FocusEventHandler} from 'react';
-import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
+import {SortAscending, SortDescending} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
@@ -101,8 +101,7 @@ export function Cell({
   const iconClassName = classNames(sortable && styles.Icon);
   const direction =
     sorted && sortDirection ? sortDirection : defaultSortDirection;
-  const source =
-    direction === 'descending' ? SortDescendingMajor : SortAscendingMajor;
+  const source = direction === 'descending' ? SortDescending : SortAscending;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 

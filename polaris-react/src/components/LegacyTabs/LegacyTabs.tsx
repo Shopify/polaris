@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {HorizontalDotsMinor, ChevronDownMinor} from '@shopify/polaris-icons';
+import {HorizontalDots, ChevronDown} from '@shopify/polaris-icons';
 
 import {Box} from '../Box';
 import {Icon} from '../Icon';
@@ -130,10 +130,10 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     const disclosureButtonContent = hasCustomDisclosure ? (
       <>
         {disclosureText}
-        <Icon source={ChevronDownMinor} tone="subdued" />
+        <Icon source={ChevronDown} tone="subdued" />
       </>
     ) : (
-      <Icon source={HorizontalDotsMinor} tone="subdued" />
+      <Icon source={HorizontalDots} tone="subdued" />
     );
 
     const disclosureButton = (

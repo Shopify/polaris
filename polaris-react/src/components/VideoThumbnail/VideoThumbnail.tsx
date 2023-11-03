@@ -1,5 +1,5 @@
 import React from 'react';
-import {PlayMinor} from '@shopify/polaris-icons';
+import {Play} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../utilities/i18n';
 import {
@@ -81,7 +81,7 @@ export function VideoThumbnail({
     <div className={styles.Timestamp}>
       <LegacyStack alignment="center" spacing="extraTight">
         <span className={styles.PlayIcon}>
-          <Icon source={PlayMinor} />
+          <Icon source={Play} />
         </span>
         <Text
           variant={isNavigationCollapsed ? 'bodyLg' : 'bodyMd'}

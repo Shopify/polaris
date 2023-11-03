@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from '@shopify/polaris';
-import {PhoneMajor} from '@shopify/polaris-icons';
+import {Phone} from '@shopify/polaris-icons';
 
 export function App() {
   const isPolarisUplift = true;
@@ -16,7 +16,7 @@ export function App() {
       <Button plain={isPolarisUplift} primary>
         Edit
       </Button>
-      <Button icon={PhoneMajor} variant="tertiary" />
+      <Button icon={Phone} variant="tertiary" />
     </>
   );
 }
