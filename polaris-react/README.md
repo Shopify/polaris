@@ -59,17 +59,13 @@ ReactDOM.render(
 );
 ```
 
-4. Load the web font [Inter](https://fonts.google.com/specimen/Inter).
+4. Load the web font [Inter](https://github.com/rsms/inter).
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com/" />
+<link rel="preconnect" href="https://cdn.shopify.com/" />
 <link
-  rel="preconnect"
-  href="https://fonts.gstatic.com/"
-  crossorigin="anonymous"
-/>
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@450;550;650;700&display=swap"
+  rel="stylesheet"
+  href="https://cdn.shopify.com/static/fonts/inter/inter.css"
 />
 ```
 
