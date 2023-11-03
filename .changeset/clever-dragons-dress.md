@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-Replace all Major/Minor icons with non-suffixed icon version
+Replaced all Major/Minor icon sets with non-suffixed icon
