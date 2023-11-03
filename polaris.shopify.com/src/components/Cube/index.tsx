@@ -3,7 +3,7 @@ import {forwardRef} from 'react';
 import decamelize from 'decamelize';
 import * as CSS from 'csstype';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import {getResponsiveProps} from '../../utils/various';
+import {getResponsiveValue} from '../../utils/various';
 
 function getCssProps(styleProps: Record<string, any>) {
   // camelCase to kebabCase of styleProps
@@ -11,7 +11,9 @@ function getCssProps(styleProps: Record<string, any>) {
   return Object.entries(styleProps).reduce((acc, [key, value]) => {
     const decamelizedPropKey = decamelize(key, {separator: '-'});
     return {
-      ...getResponsiveProps('box', decamelizedPropKey, null, value),
+      // TODO: Use `getResponsiveProps` for properties that must match to token
+      // values only.
+      ...getResponsiveValue('box', decamelizedPropKey, value),
       ...acc,
     };
   }, {});
