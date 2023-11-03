@@ -22,15 +22,14 @@ To learn about best practices for designing and using Polaris icons, read the [i
 
 ## Designing a new icon
 
-1. [Create an issue](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request&template=FEATURE_REQUEST.md) while using the "Icon" issue label. This helps track what work is being done and manage releases of Polaris.
-2. Read the [design guidelines](https://polaris.shopify.com/design/icons/creating-icons) so you have an understanding of the icon design language.
-3. If you are designing a new icon:
+1. Read the [design guidelines](https://polaris.shopify.com/design/icons/creating-icons) so you have an understanding of the icon design language.
+2. If you are designing a new icon:
    <br /> - Design the new icon following the design language guidance.
    <br /> - Please save an unflattened version of your icon where all the strokes
    are live and things can be easily changed in case updates need to happen in the
    future.
    <br /> - Request feedback from a Polaris designer.
-4. If you need assistance designing the new icon:
+3. If you need assistance designing the new icon:
    <br /> - Reach out in the #polaris Slack channel requesting a new icon. If
    possible, have some concepts or ideas around the icon you need when you reach
    out.
@@ -38,7 +37,7 @@ To learn about best practices for designing and using Polaris icons, read the [i
    you need, deadlines and other relevant information.
    <br /> - A designer will work with you to design an icon that meets your
    team’s needs with your feedback along the way.
-5. Once the design is complete continue to add it to both the Figma library and the Polaris Icon package.
+4. Once the design is complete continue to add it to both the Figma library and the Polaris Icon package.
 
 ## Adding to Figma
 
