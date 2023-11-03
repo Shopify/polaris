@@ -62,8 +62,8 @@ To learn about best practices for designing and using Polaris icons, read the [i
 
 If you are not familiar or comfortable submitting a pull request directly you can simply add any icon update directly to our Github board and a Polaris team member will submit a pull request for you. This will be done in batches every two weeks.
 1. Create an issue in the Polaris repository. 
-   <br /> - Use the [Propose new icon](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon%2Cuntriaged&projects=&template=NEW_ICON.yml&title=%5BIcon%5D%3A+New+icon+%3Cicon-name%3E) for new icon contributions
-   <br /> - Use the [Propose updates to an existing icon](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon%2Cuntriaged&projects=&template=UPDATE_ICON.yml&title=%5BIcon%5D%3A+Update+icon+%3Cicon-name%3E) for updates to current Polaris icons.
+   <br /> - Use the [Propose new icon](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon%2Cuntriaged&projects=&template=NEW_ICON.yml&title=%5BIcon%5D%3A+New+icon+%3Cicon-name%3E) issue template for new icon contributions
+   <br /> - Use the [Propose updates to an existing icon](https://github.com/Shopify/polaris/issues/new?assignees=&labels=Icon%2Cuntriaged&projects=&template=UPDATE_ICON.yml&title=%5BIcon%5D%3A+Update+icon+%3Cicon-name%3E) issue template for updates to current Polaris icons.
 2. Provide as much information and context as you have. 
    <br /> - Relevant screenshots or links to design files detailing the user experience are very valuable.
    <br /> - Please indicate if you have or plan to contribute these icon updates to the Figma library as well.
