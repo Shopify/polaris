@@ -1,5 +1,4 @@
 name: Card reader chip
-set: major
 description: Used to represent a card chip reader.
 keywords:
   - credit card

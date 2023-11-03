@@ -1,5 +1,4 @@
 name: Outgoing
-set: major
 description: >-
   Used to represent an outgoing item or resource, or exporting an item or
   resource.

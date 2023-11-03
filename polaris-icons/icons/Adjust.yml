@@ -1,5 +1,4 @@
 name: Adjust
-set: minor
 description: Used to denote that an adjustment can be made.
 keywords:
   - adjust

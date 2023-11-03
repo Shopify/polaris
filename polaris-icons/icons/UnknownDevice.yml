@@ -1,5 +1,4 @@
 name: Unknown device
-set: major
 description: Used to represent an unknown device, item or resource.
 keywords:
   - unknown

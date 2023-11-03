@@ -1,5 +1,4 @@
 name: Product Reference
-set: minor
 description: Used to represent products referenced on other resources
 keywords:
   - products

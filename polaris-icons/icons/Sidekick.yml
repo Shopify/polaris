@@ -1,5 +1,4 @@
 name: Sidekick
-set: major
 description: Used to denote Sidekick features and toggling Sidekick on/off.
 keywords:
   - magic

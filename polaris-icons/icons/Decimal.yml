@@ -1,5 +1,4 @@
 name: Decimal
-set: minor
 description: Used to denote a decimal number
 keywords:
   - decimal

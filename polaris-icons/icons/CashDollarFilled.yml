@@ -1,5 +1,4 @@
 name: Cash filled (dollar)
-set: major
 description: Used to represent Dollar currency.
 keywords:
   - currency

@@ -1,5 +1,4 @@
 name: Volume
-set: minor
 description: Used to represent volume measurement
 keywords:
   - volume

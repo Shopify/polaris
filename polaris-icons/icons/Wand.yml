@@ -1,5 +1,4 @@
 name: Wand
-set: minor
 description: >-
   Used to represent an action to perform an automatic process or series of
   processes.

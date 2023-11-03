@@ -1,5 +1,4 @@
 name: Online store
-set: minor
 description: Used to represent an online store.
 keywords:
   - online store

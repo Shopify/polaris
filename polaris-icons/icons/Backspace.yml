@@ -1,5 +1,4 @@
 name: Backspace
-set: major
 description: Used to represent backspace on a mobile keyboard.
 keywords:
   - backspace

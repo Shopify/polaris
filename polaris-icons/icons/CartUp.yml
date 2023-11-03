@@ -1,5 +1,4 @@
 name: Cart up
-set: major
 description: Used to represent retrieving the contents of saved shopping cart.
 keywords:
   - cart

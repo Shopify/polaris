@@ -1,5 +1,4 @@
 name: Buy button button layout
-set: major
 description: Used to represent a centered layout for our Buy Button.
 keywords:
   - center

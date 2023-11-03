@@ -1,5 +1,4 @@
 name: Landing page
-set: major
 description: Used to represent a landing page or adding an item or resource to a page.
 keywords:
   - landing

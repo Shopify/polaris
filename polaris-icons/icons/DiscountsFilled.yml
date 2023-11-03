@@ -1,5 +1,4 @@
 name: Discounts filled
-set: minor
 description: Used to represent a discount.
 keywords:
   - discount

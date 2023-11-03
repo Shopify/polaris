@@ -1,5 +1,4 @@
 name: Phone out
-set: major
 description: Used to represent an outgoing phone call.
 keywords:
   - call

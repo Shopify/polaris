@@ -1,5 +1,4 @@
 name: Blog
-set: major
 description: Used to represent a blog post, or something being written.
 keywords:
   - author

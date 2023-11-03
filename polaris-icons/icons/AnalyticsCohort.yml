@@ -1,5 +1,4 @@
 name: AnalyticsCohort
-set: minor
 description: Used to represent a cohort analysis.
 keywords:
   - analytics

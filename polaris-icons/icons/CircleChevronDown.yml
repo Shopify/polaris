@@ -1,5 +1,4 @@
 name: Circle chevron down
-set: minor
 description: Used to represent a collapsible section, or an action to navigate down.
 keywords:
   - chevron

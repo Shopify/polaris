@@ -1,5 +1,4 @@
 name: Barcode
-set: major
 description: Used to represent a barcode.
 keywords:
   - barcode

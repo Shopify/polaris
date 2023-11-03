@@ -1,5 +1,4 @@
 name: Cash (dollar)
-set: minor
 description: Used to represent Dollar currency.
 keywords:
   - currency

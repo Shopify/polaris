@@ -1,5 +1,4 @@
 name: Mobile back arrow
-set: major
 description: Used to represent backwards navigation.
 keywords:
   - back

@@ -1,5 +1,4 @@
 name: Camera
-set: major
 description: Used to represent a camera.
 keywords:
   - camera

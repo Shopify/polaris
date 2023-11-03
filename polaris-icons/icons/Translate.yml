@@ -1,5 +1,4 @@
 name: Translate
-set: major
 description: Used to represent internationalization or multiple language options.
 keywords:
   - language

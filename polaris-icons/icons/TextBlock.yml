@@ -1,5 +1,4 @@
 name: Text block
-set: major
 description: Used to represent a paragraph or block of text.
 keywords:
   - text

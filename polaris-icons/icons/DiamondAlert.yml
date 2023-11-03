@@ -1,5 +1,4 @@
 name: Diamond alert
-set: minor
 description: Used to alert merchants of a critical error.
 keywords:
   - alert

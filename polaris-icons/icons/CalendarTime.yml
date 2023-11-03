@@ -1,5 +1,4 @@
 name: Calendar time
-set: minor
 description: Used to denote the action of opening a date picker with time
 keywords:
   - calendar

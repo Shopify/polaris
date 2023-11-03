@@ -1,5 +1,4 @@
 name: Save
-set: minor
 description: Used to denote the action of saving.
 keywords:
   - save

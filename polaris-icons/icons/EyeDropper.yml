@@ -1,5 +1,4 @@
 name: Color dropper
-set: minor
 description: Used to represent a color picker.
 keywords:
   - color

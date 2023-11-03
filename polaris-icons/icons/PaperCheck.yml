@@ -1,5 +1,4 @@
 name: PaperCheck
-set: minor
 description: Used to represent a paper check payment method.
 keywords:
   - payment method

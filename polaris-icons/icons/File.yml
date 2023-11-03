@@ -1,5 +1,4 @@
 name: File
-set: minor
 description: Used to denote a file such as images, video, pdfs, etc.
 keywords:
   - file

@@ -1,5 +1,4 @@
 name: Mention
-set: major
 description: Used to represent an action to mention someone.
 keywords:
   - at

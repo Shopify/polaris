@@ -1,5 +1,4 @@
 name: Insert Dynamic Source
-set: minor
 description: >-
   Used to represent inserting a dynamic source into an input field that supports
   multiple dynamic sources

@@ -1,5 +1,4 @@
 name: Product returns
-set: minor
 description: Used to help direct merchants to returns page.
 keywords:
   - return

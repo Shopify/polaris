@@ -1,5 +1,4 @@
 name: Template
-set: minor
 description: Used to represent templates.
 keywords:
   - template

@@ -1,5 +1,4 @@
 name: Location filled
-set: major
 description: Used to represent a location.
 keywords:
   - location

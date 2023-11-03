@@ -1,5 +1,4 @@
 name: Sidebar left
-set: major
 description: Used to represent the left section of a component, page or layout.
 keywords:
   - sidebar

@@ -1,5 +1,4 @@
 name: Wearable
-set: major
 description: Used to represent a wearable device or wristwatch.
 keywords:
   - wearable

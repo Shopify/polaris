@@ -1,5 +1,4 @@
 name: Cancel
-set: minor
 description: >-
   Used to denote the action of cancelling a task or action and to close an
   overlay or view.

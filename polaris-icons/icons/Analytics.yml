@@ -1,5 +1,4 @@
 name: Analytics
-set: minor
 description: Used to represent analytics or data.
 keywords:
   - analytics

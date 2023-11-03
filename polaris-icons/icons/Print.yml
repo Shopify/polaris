@@ -1,5 +1,4 @@
 name: Print
-set: minor
 description: Used to denote the action of printing.
 keywords:
   - print

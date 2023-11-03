@@ -1,5 +1,4 @@
 name: Type
-set: minor
 description: >-
   Used to represent a typeface or an action to change the properties of a
   typeface or body of text.

@@ -1,5 +1,4 @@
 name: Indent
-set: minor
 description: Used to increase text indentation with list formatting.
 keywords:
   - text format

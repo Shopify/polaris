@@ -1,5 +1,4 @@
 name: Tablet
-set: major
 description: Used to represent a tablet.
 keywords:
   - tablet

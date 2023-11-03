@@ -1,5 +1,4 @@
 name: Paint brush
-set: major
 description: Used to represent a paintbrush or an action to customize an item or resource.
 keywords:
   - brush

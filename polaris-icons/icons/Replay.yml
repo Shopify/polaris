@@ -1,5 +1,4 @@
 name: Replay
-set: minor
 description: Used to represent an action to replay or restart something.
 keywords:
   - replay

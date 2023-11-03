@@ -1,5 +1,4 @@
 name: Underline
-set: minor
 description: Used to format text with an underline.
 keywords:
   - text format

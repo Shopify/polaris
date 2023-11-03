@@ -1,5 +1,4 @@
 name: Link
-set: minor
 description: Used to represent a link.
 keywords:
   - chain

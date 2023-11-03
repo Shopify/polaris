@@ -11,11 +11,9 @@ import jsYaml from 'js-yaml';
 import svgr from '@svgr/core';
 import {optimize} from 'svgo';
 import svgoConfig from './svgo.config.js';
-import deprecatedIcons from './deprecated-icons.js';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const outputDir = path.join(__dirname, 'dist');
-const svgDir = path.join(outputDir, 'svg');
 
 const convert = svgr.default;
 const iconBasePath = new URL('./icons', import.meta.url).pathname;
@@ -49,22 +47,6 @@ iconPaths.forEach((filename) => {
   };
   iconExports.push(
     `export {default as ${exportName}} from '../icons/${exportName}.svg';`,
-  );
-  iconTypes.push(
-    `export declare const ${exportName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,
-  );
-});
-
-Object.keys(deprecatedIcons).forEach((exportName) => {
-  const iconName = exportName.replace(/Major|Minor/g, '');
-  const iconData = iconMetadata[iconName];
-
-  iconMetadata[exportName] = {
-    id: exportName,
-    ...iconData,
-  };
-  iconExports.push(
-    `export {default as ${exportName}} from '../icons/${iconName}.svg';`,
   );
   iconTypes.push(
     `export declare const ${exportName}: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;`,

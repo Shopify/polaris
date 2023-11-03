@@ -1,5 +1,4 @@
 name: Gauge
-set: minor
 description: Used to represent an analytics benchmark
 keywords:
   - analytics

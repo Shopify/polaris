@@ -1,5 +1,4 @@
 name: AnalyticsTable
-set: minor
 description: Used to represent a data table.
 keywords:
   - analytics

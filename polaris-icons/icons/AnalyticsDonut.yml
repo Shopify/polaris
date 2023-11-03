@@ -1,5 +1,4 @@
 name: AnalyticsDonut
-set: minor
 description: Used to represent a donut chart.
 keywords:
   - analytics

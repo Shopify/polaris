@@ -1,5 +1,4 @@
 name: Clock
-set: minor
 description: Used to indicate time.
 keywords:
   - time

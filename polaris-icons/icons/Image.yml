@@ -1,5 +1,4 @@
 name: Image
-set: major
 description: Used to represent an image or placeholder.
 keywords:
   - image

@@ -1,5 +1,4 @@
 name: AnalyticsLine
-set: minor
 description: Used to represent a line chart.
 keywords:
   - analytics

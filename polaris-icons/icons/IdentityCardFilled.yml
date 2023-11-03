@@ -1,5 +1,4 @@
 name: Identity card filled
-set: major
 description: >-
   Used to represent a personal identification document, such as a driver’s
   license.

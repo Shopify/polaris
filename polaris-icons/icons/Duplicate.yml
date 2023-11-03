@@ -1,5 +1,4 @@
 name: Duplicate
-set: minor
 description: >-
   Used to denote the action of duplicating orders, to save as (reports), and to
   copy content to clipboard like an address.

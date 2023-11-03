@@ -1,5 +1,4 @@
 name: Forms
-set: major
 description: Used to represent a text input for a form.
 keywords:
   - form

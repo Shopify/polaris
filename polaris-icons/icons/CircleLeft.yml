@@ -1,5 +1,4 @@
 name: Circle left
-set: major
 description: Used to represent backwards naviagation, or that something is before it.
 keywords:
   - arrow

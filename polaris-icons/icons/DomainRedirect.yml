@@ -1,5 +1,4 @@
 name: Domain redirect
-set: minor
 description: Used to represent a redirect domain.
 keywords:
   - domain

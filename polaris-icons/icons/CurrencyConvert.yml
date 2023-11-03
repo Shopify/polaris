@@ -1,5 +1,4 @@
 name: Currency convert
-set: minor
 description: Used to represent currency conversion.
 keywords:
   - currency

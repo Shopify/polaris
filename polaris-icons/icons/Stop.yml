@@ -1,5 +1,4 @@
 name: Stop
-set: major
 description: Used to represent a stop action.
 keywords:
   - stop

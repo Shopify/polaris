@@ -1,5 +1,4 @@
 name: Behavior
-set: minor
 description: Used to represent a user clicking, or interacting with something.
 keywords:
   - click

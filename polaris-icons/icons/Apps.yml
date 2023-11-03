@@ -1,5 +1,4 @@
 name: Apps
-set: minor
 description: Used to represent partner apps.
 keywords:
   - add

@@ -1,5 +1,4 @@
 name: Tax
-set: major
 description: Used to represent sales tax or a tax receipt.
 keywords:
   - sales tax

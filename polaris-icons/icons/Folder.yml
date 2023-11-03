@@ -1,5 +1,4 @@
 name: Folder
-set: major
 description: Used to represent a folder.
 keywords:
   - folder

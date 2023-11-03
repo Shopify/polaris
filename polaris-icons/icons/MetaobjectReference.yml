@@ -1,5 +1,4 @@
 name: Metaobject Reference
-set: minor
 description: Used to represent a metaobject referenced on other resources
 keywords:
   - metaobject

@@ -1,5 +1,4 @@
 name: Customers
-set: minor
 description: Used to represent a customer, or user.
 keywords:
   - customer

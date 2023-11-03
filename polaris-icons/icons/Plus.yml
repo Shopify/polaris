@@ -1,5 +1,4 @@
 name: Plus
-set: minor
 description: Used to denote the action of adding an item and zooming into a map.
 keywords:
   - plus

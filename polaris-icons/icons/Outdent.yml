@@ -1,5 +1,4 @@
 name: Outdent
-set: minor
 description: Used to decrease text indentation with list formatting.
 keywords:
   - text format

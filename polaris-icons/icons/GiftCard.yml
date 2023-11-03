@@ -1,5 +1,4 @@
 name: Gift card
-set: minor
 description: Used to represent a gift card or present.
 keywords:
   - gift

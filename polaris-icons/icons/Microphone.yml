@@ -1,5 +1,4 @@
 name: Microphone
-set: major
 description: Used to represent a microphone.
 keywords:
   - mic

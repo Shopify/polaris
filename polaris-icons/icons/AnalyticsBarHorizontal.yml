@@ -1,5 +1,4 @@
 name: AnalyticsBarHorizontal
-set: minor
 description: Used to represent a horizontal bar chart.
 keywords:
   - analytics

@@ -1,5 +1,4 @@
 name: Maximize
-set: minor
 description: Used to represent an action to make an item, resource or view larger.
 keywords:
   - expand

@@ -1,5 +1,4 @@
 name: Viewport short
-set: major
 description: Used to represent an action to make a viewport, item or resource shorter.
 keywords:
   - viewport

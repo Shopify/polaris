@@ -1,5 +1,4 @@
 name: Package filled
-set: major
 description: Used to represent a package or box that merchants can ship their products in.
 keywords:
   - shipping

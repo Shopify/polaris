@@ -1,5 +1,4 @@
 name: Customer minus
-set: major
 description: Used to represent removing a customer, or user.
 keywords:
   - remove

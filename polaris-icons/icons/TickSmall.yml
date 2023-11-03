@@ -1,5 +1,4 @@
 name: Tick small
-set: minor
 description: Used to denote the action of checking a Polaris checkbox.
 keywords:
   - checkmark

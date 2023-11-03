@@ -1,5 +1,4 @@
 name: Text color
-set: minor
 description: Used to format text with a specific color.
 keywords:
   - text format

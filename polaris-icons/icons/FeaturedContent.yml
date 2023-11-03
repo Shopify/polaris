@@ -1,5 +1,4 @@
 name: Featured content
-set: major
 description: Used to represent a featured or favorite page or content item.
 keywords:
   - favourite

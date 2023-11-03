@@ -1,5 +1,4 @@
 name: Referral code
-set: major
 description: Used to represent a referral code’s usage status.
 keywords:
   - referral

@@ -1,5 +1,4 @@
 name: Inventory filled
-set: major
 description: Used to represent inventory or a warehouse.
 keywords:
   - inventory

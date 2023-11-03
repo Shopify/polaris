@@ -1,5 +1,4 @@
 name: Page down
-set: major
 description: Used to represent an action to download a page or document.
 keywords:
   - document

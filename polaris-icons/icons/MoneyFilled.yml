@@ -1,5 +1,4 @@
 name: Money filled
-set: minor
 description: Used to represent money.
 keywords:
   - money

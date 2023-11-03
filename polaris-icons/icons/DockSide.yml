@@ -1,5 +1,4 @@
 name: Dock Side
-set: major
 description: Used to represent a window that is docked to the right side of the admin
 keywords:
   - magic

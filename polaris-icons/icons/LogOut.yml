@@ -1,5 +1,4 @@
 name: Log out
-set: minor
 description: Used to denote the action of logging out of Shopify.
 keywords:
   - logout

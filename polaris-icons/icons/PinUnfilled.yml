@@ -1,5 +1,4 @@
 name: Pin Unfilled
-set: minor
 description: Used to represent an unpinned item or an action to unpin something.
 keywords:
   - unpin

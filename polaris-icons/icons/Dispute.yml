@@ -1,5 +1,4 @@
 name: Dispute
-set: minor
 description: Used to represent a dispute or important conversation or notification.
 keywords:
   - dispute

@@ -1,5 +1,4 @@
 name: Fulfillment on hold
-set: major
 description: The fulfillment icon is associated with the 'on hold' status.
 keywords:
   - fulfillment

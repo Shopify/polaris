@@ -1,5 +1,4 @@
 name: Recent searches
-set: major
 description: Used to represent recent searches or search history.
 keywords:
   - history

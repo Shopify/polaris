@@ -1,5 +1,4 @@
 name: Dock Floating
-set: major
 description: Used to represent a window that is floating in the bottom right of the admin
 keywords:
   - magic

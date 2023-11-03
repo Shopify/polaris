@@ -1,5 +1,4 @@
 name: Flag
-set: major
 description: Used to represent a flag.
 keywords:
   - flag

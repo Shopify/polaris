@@ -1,5 +1,4 @@
 name: Passkey
-set: minor
 description: Used to represent a passkey
 keywords:
   - passkey

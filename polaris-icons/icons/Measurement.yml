@@ -1,5 +1,4 @@
 name: Measurement
-set: minor
 description: Used to represent measurement including dimension, volume, and weight.
 keywords:
   - dimension

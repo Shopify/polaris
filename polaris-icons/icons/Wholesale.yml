@@ -1,5 +1,4 @@
 name: Wholesale
-set: major
 description: Used to represent a forklift or equipment used in a warehouse.
 keywords:
   - forklift

@@ -1,5 +1,4 @@
 name: Store
-set: minor
 description: Used to represent a store or shop.
 keywords:
   - store

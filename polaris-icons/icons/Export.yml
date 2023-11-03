@@ -1,5 +1,4 @@
 name: Export
-set: minor
 description: Used to denote the action of exporting content.
 keywords:
   - export

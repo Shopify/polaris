@@ -1,5 +1,4 @@
 name: Page Reference
-set: minor
 description: Used to represent pages referenced on other resources
 keywords:
   - page

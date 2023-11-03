@@ -1,5 +1,4 @@
 name: Settings
-set: minor
 description: Used to represent settings or a configuration option.
 keywords:
   - configure

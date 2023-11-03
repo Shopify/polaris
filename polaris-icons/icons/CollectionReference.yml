@@ -1,5 +1,4 @@
 name: Collection Reference
-set: minor
 description: Used to represent collections referenced on other resources
 keywords:
   - collection

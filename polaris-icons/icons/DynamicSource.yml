@@ -1,5 +1,4 @@
 name: Dynamic Source
-set: minor
 description: Used to represent a dynamic source
 keywords:
   - dynamic source

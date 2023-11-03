@@ -1,5 +1,4 @@
 name: Redo
-set: major
 description: Used to indicate redoing an action after undoing it.
 keywords:
   - redo

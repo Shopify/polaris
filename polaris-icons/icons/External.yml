@@ -1,5 +1,4 @@
 name: External
-set: minor
 description: Used to denote the action of navigating to an external resource.
 keywords:
   - external

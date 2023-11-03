@@ -1,5 +1,4 @@
 name: First visit
-set: major
 description: Used to represent a first view or visitor.
 keywords:
   - first

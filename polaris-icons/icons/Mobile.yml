@@ -1,5 +1,4 @@
 name: Mobile
-set: major
 description: Used to represent a mobile phone.
 keywords:
   - mobile

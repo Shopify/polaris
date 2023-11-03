@@ -1,5 +1,4 @@
 name: Returns
-set: major
 description: Used to represent returns on an order.
 keywords:
   - returns

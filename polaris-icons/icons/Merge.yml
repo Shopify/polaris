@@ -1,5 +1,4 @@
 name: Merge
-set: minor
 description: Used to represent merging of objects.
 keywords:
   - merge

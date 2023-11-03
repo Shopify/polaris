@@ -1,5 +1,4 @@
 name: Credit card cancel
-set: major
 description: Used to represent a cancellation related to a charge
 keywords:
   - card

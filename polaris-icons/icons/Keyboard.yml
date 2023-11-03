@@ -1,5 +1,4 @@
 name: Keyboard
-set: minor
 description: Used to represent a keyboard or keyboard shortcuts.
 keywords:
   - keyboard

@@ -1,5 +1,4 @@
 name: Toggle
-set: minor
 description: Used to dennote something that can be toggled on and off.
 keywords:
   - toggle

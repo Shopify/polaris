@@ -1,5 +1,4 @@
 name: Bug
-set: major
 description: Used to represent a bug in code.
 keywords:
   - bug

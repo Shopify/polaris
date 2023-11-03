@@ -1,5 +1,4 @@
 name: Buy button vertical layout
-set: major
 description: Used to represent a vertical layout for our Buy Button.
 keywords:
   - button

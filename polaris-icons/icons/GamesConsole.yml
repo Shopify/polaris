@@ -1,5 +1,4 @@
 name: Games console
-set: major
 description: Used to represent a console controller.
 keywords:
   - console

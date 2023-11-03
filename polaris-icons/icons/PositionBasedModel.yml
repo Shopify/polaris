@@ -1,5 +1,4 @@
 name: Position based attribution model
-set: minor
 description: Used to represent the position based marketing attribution model
 keywords:
   - marketing

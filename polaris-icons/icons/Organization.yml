@@ -1,5 +1,4 @@
 name: Organization
-set: major
 description: Used to represent a plus organization.
 keywords:
   - organization
