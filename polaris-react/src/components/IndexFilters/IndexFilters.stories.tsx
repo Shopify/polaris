@@ -666,7 +666,7 @@ export function WithPinnedFilters() {
         queryValue={queryValue}
         queryPlaceholder="Searching in all"
         onQueryChange={handleFiltersQueryChange}
-        onQueryClear={() => {}}
+        onQueryClear={() => setQueryValue('')}
         onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{
@@ -952,7 +952,7 @@ export function WithPrefilledFilters() {
         queryValue={queryValue}
         queryPlaceholder="Searching in all"
         onQueryChange={handleFiltersQueryChange}
-        onQueryClear={() => {}}
+        onQueryClear={() => setQueryValue('')}
         onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{
@@ -1284,7 +1284,7 @@ export function WithAsyncData() {
         queryValue={queryValue}
         queryPlaceholder="Searching in all"
         onQueryChange={handleFiltersQueryChange}
-        onQueryClear={() => {}}
+        onQueryClear={() => setQueryValue('')}
         onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{
@@ -1588,7 +1588,7 @@ export function Disabled() {
         queryValue={queryValue}
         queryPlaceholder="Searching in all"
         onQueryChange={handleFiltersQueryChange}
-        onQueryClear={() => {}}
+        onQueryClear={() => setQueryValue('')}
         onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{

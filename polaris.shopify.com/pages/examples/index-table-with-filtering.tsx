@@ -304,7 +304,7 @@ function IndexTableWithFilteringExample() {
         queryValue={queryValue}
         queryPlaceholder="Searching in all"
         onQueryChange={handleQueryValueChange}
-        onQueryClear={() => {}}
+        onQueryClear={() => setQueryValue('')}
         onSort={setSortSelected}
         primaryAction={primaryAction}
         cancelAction={{
