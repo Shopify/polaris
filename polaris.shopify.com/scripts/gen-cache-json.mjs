@@ -69,8 +69,8 @@ const getMdContent = async (filePath) => {
   const {data} = matter(fileContent);
   const slug = filePath
     .replace(`${process.cwd()}/content/`, '')
-    .replace('/index.md', '')
-    .replace('.md', '');
+    .replace('/index.mdx', '')
+    .replace('.mdx', '');
 
   return {frontMatter: data, slug};
 };
@@ -85,8 +85,8 @@ const genCacheJson = async () => {
   }
 
   const pathGlob = [
-    path.join(process.cwd(), 'content/*.md'),
-    path.join(process.cwd(), 'content/**/*.md'),
+    path.join(process.cwd(), 'content/*.mdx'),
+    path.join(process.cwd(), 'content/**/*.mdx'),
   ];
 
   const mdFiles = await globby(pathGlob);

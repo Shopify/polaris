@@ -28,7 +28,7 @@ function load(filePath: string): string {
 async function loadPatternAndVariants(slug: string): Promise<PatternMDX> {
   const markdownFilePath = path.resolve(
     patternsContentAbsoluteDir,
-    `${slug}/index.md`,
+    `${slug}/index.mdx`,
   );
 
   const [pattern] = await serializeMdx<PatternFrontMatter>(markdownFilePath, {

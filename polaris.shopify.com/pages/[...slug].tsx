@@ -121,7 +121,7 @@ const contentDir = 'content';
 // Grab only the portion of the filepath which is used in the URL into capture
 // group $1.
 // Examples here: https://regex101.com/r/y3VciS/1
-const slugExtracter = new RegExp(`^${contentDir}/(.*?)(/index)?\.md$`);
+const slugExtracter = new RegExp(`^${contentDir}/(.*?)(/index)?\.mdx$`);
 
 const extractSlugFromPath = (filePath: string) =>
   filePath.replace(slugExtracter, '/$1');
@@ -232,12 +232,12 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   const slugPath = [contentDir, ...params.slug].join('/');
 
   let pathIsDirectory = false;
-  let mdRelativePath = `${slugPath}.md`;
+  let mdRelativePath = `${slugPath}.mdx`;
 
   // If this exact markdown file doesn't exist, we'll check for a matching
   // directory name with an index.md file instead
   if (!fs.existsSync(mdRelativePath)) {
-    mdRelativePath = `${slugPath}/index.md`;
+    mdRelativePath = `${slugPath}/index.mdx`;
     if (!fs.existsSync(mdRelativePath)) {
       return {notFound: true};
     }
@@ -261,9 +261,9 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
         params.slug.length === 1 &&
         params.slug[0] === 'patterns',
       async (end) => {
-        scope.posts = await getRichCards(`${slugPath}/*/index.md`);
+        scope.posts = await getRichCards(`${slugPath}/*/index.mdx`);
         scope.legacyPatternPosts = await getRichCards(
-          `${contentDir}/patterns-legacy/!(index|_*).md`,
+          `${contentDir}/patterns-legacy/!(index|_*).mdx`,
         );
         end();
       },
@@ -276,14 +276,14 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
         params.slug[0] === 'components',
       async (end) => {
         // Get the groups
-        scope.posts = await getRichCards(`${slugPath}/*/index.md`);
+        scope.posts = await getRichCards(`${slugPath}/*/index.mdx`);
 
         // Get the components for each group
         scope.posts = await Promise.all(
           scope.posts.map(async (group: SortedRichCardGridProps) => ({
             ...group,
             children: await getRichCards(
-              `${contentDir}${group.url}/!(index|_*).md`,
+              `${contentDir}${group.url}/!(index|_*).mdx`,
             ),
           })),
         );
@@ -297,10 +297,10 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
       () => pathIsDirectory && params.slug[0] === 'design',
       async (end) => {
         // Non-recursive search for .md files except index.md
-        scope.posts = await getRichCards(`${slugPath}/!(index|_*).md`);
+        scope.posts = await getRichCards(`${slugPath}/!(index|_*).mdx`);
         scope.posts = [
           ...scope.posts,
-          ...(await getRichCards(`${slugPath}/*/index.md`)),
+          ...(await getRichCards(`${slugPath}/*/index.mdx`)),
         ];
         scope.posts.sort(
           (a: SortedRichCardGridProps, b: SortedRichCardGridProps) => {
@@ -315,7 +315,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
       () => pathIsDirectory,
       async () => {
         // Non-recursive search for .md files except index.md
-        scope.posts = await getRichCards(`${slugPath}/!(index|_*).md`);
+        scope.posts = await getRichCards(`${slugPath}/!(index|_*).mdx`);
       },
     ],
   ]);
@@ -368,7 +368,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = globby
     // Recursive search for all markdown files (globby requires posix paths)
     // Note: files prefixed with an underscore are ignored
-    .sync(`${contentDir}/**/!(_)*.md`)
+    .sync(`${contentDir}/**/!(_)*.mdx`)
     .map(extractSlugFromPath)
     .filter(fileShouldNotBeRenderedWithCatchAllTemplate);
 
