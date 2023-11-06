@@ -2811,14 +2811,20 @@ Instead of importing `tokens` directly you should use the `useTheme` hook when y
 
 ### A new web font
 
-The new design language comes with a web font called [Inter via Google Fonts](https://fonts.google.com/specimen/Inter).
-Polaris references this font but does not load it. Your app will need to load the font, otherwise it will fallback to the user's system font.
+The new design language comes with a web font called [Inter](https://github.com/rsms/inter).
+
+Polaris references this font but does not load it. Your app will need to load the font, otherwise it will fallback to the user's system font. You can load this font from Shopify by adding the following to your app's `<head>`:
 
 {/* prettier-ignore */}
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com/" />
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="anonymous" />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@450;550;650;700&display=swap" />
+<link
+  rel="preconnect"
+  href="https://cdn.shopify.com/"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.shopify.com/static/fonts/inter/inter.css"
+/>
 ```
 
 ### Icons
