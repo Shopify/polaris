@@ -131,7 +131,7 @@ async function writeProperties(file, properties) {
   await file.write('\n.Box {');
 
   for (let property of properties) {
-    await writeScopeCustomProperty('box', property.name, property.inherited);
+    await writeScopeCustomProperty('box', property.name);
     await writeResponsiveDeclarationAtBreakpoint('box', property, 'xs');
   }
 
@@ -159,52 +159,59 @@ async function writeProperties(file, properties) {
 * Ouputs something like:
 
   --pc-box-z-index-xs: initial;
-  --pc-box-z-index-sm: var(--pc-box-z-index-xs);
-  --pc-box-z-index-md: var(--pc-box-z-index-sm);
-  --pc-box-z-index-lg: var(--pc-box-z-index-md);
-  --pc-box-z-index-xl: var(--pc-box-z-index-lg);
+  --pc-box-z-index-sm: var(--pc-box-z-index-xs, initial);
+  --pc-box-z-index-md: var(--pc-box-z-index-sm, initial);
+  --pc-box-z-index-lg: var(--pc-box-z-index-md, initial);
+  --pc-box-z-index-xl: var(--pc-box-z-index-lg, initial);
 */
-async function writeScopeCustomProperty(
-  componentName,
-  propertyName,
-  isInherited,
-) {
-  const propPrefix = `--pc-${componentName}-${propertyName}`;
-  // Sets the value to 'inherit' if it's an inherited property, or 'initial'
-  // otherwise. See: https://www.w3.org/TR/css-cascade-5/#inherit-initial
-  await file.write(
-    `\n  ${propPrefix}-${breakpoints[0].key}: ${
-      isInherited ? 'inherit' : 'initial'
-    };`,
-  );
-  for (let index = 1; index < breakpoints.length; index++) {
-    const breakpoint = breakpoints[index];
-    const prevBreakpoint = breakpoints[index - 1];
+async function writeScopeCustomProperty(componentName, propertyName) {
+  for (let breakpoint of breakpoints) {
     await file.write(
-      `\n  ${propPrefix}-${breakpoint.key}: var(${propPrefix}-${prevBreakpoint.key});`,
+      `\n  --pc-${componentName}-${propertyName}-${breakpoint.key}: initial;`,
     );
   }
 }
 
+/*
+  * Generates something like:
+  *
+    color: var(--pc-box-color-xl, var(--pc-box-color-lg, var(--pc-box-color-md, var(--pc-box-color-sm, var(--pc-box-color-xs, inherit)))));
+
+  * Why can't this be simpler, like `color: var(--pc-box-color-xl)`?
+* Because we want the custom property to fallback to the `-lg` size if `-xl`
+* isn't set.
+* Ok, so why can't the defaults be simpler, like:
+*
+  --pc-box-color-xs: inherit;
+  // ...
+  --pc-box-color-lg: var(--pc-box-color-md);
+  --pc-box-color-xl: var(--pc-box-color-lg);
+* 
+* Because `inherit` applies to what's on the left of the `:` (ie; the CSS custom
+* property, NOT the final CSS declaration [like `color`]), and so it'll
+* accidentally "inherit" the value of a CSS custom property further up the tree.
+*
+* Test case:
+  <Cube color={{xs: 'red', md: 'white'}}>
+    Cube 1
+    <Cube color={{sm: 'skyblue', md: 'green'}}>
+      Cube 2<Cube>Cube 3</Cube>
+    </Cube>
+  </Cube>
+*/
 async function writeResponsiveDeclarationAtBreakpoint(
   componentName,
   property,
-  breakpointKey,
+  breakpoint,
 ) {
-  const breakpoint = breakpoints.find((b) => b.key === breakpointKey);
-  // `unset` Sets the value to 'inherit' if it's an inherited property, or
-  // 'initial' otherwise.
-  // See: https://www.w3.org/TR/css-cascade-5/#inherit-initial
-  //
-  // But, why do we need the fallback here?
-  // If the user passes in a value of 'initial' for the `xs` breakpoint, they've
-  // overridden our scoping which sets it to `unset`, but the value of 'initial'
-  // is equivalent to the "guaranteed-invalid value" which the spec says makes
-  // the entire property invalid, therefore the property will be at the whim of
-  // the cascade which we DO NOT want; we want to ensure it is set to either
-  // `inherit` or `initial` when no/invalid value is passed. Hence we use
-  // `unset` to achieve that.
-  await file.write(
-    `\n  ${property.name}: var(--pc-${componentName}-${property.name}-${breakpoint.key});`,
-  );
+  const lastIndex = breakpoints.findIndex((b) => b.key === breakpoint);
+  // Sets the value to 'inherit' if it's an inherited property, or 'initial'
+  // otherwise. See: https://www.w3.org/TR/css-cascade-5/#inherit-initial
+  let variables = property.inherited ? 'inherit' : 'initial';
+
+  // Nest the fallbacks from smallest on the inside to largest on the outside
+  for (let index = 0; index <= lastIndex; index++) {
+    variables = `var(--pc-${componentName}-${property.name}-${breakpoints[index].key}, ${variables})`;
+  }
+  await file.write(`\n  ${property.name}: ${variables};`);
 }
