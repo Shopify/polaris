@@ -151,6 +151,7 @@ export type ColorIconAlias =
   | 'icon-brand'
   | 'icon-caution'
   | 'icon-critical'
+  | 'icon-critical-secondary'
   | 'icon-disabled'
   | 'icon-emphasis-active'
   | 'icon-emphasis-hover'
@@ -1020,6 +1021,10 @@ export const color: {
   },
   'color-icon-critical': {
     value: colors.red[11],
+    description: 'Use for icons communicating critical information.',
+  },
+  'color-icon-critical-secondary': {
+    value: colors.red[14],
     description: 'Use for icons communicating critical information.',
   },
   'color-icon-emphasis': {

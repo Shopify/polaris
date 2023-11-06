@@ -33,6 +33,10 @@
   fill: var(--p-color-icon-critical);
 }
 
+.toneCriticalSecondary svg {
+  fill: var(--p-color-icon-critical-secondary);
+}
+
 .toneInteractive svg {
   fill: var(--p-color-icon-emphasis);
 }

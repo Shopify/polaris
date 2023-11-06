@@ -12,6 +12,7 @@ type Tone =
   | 'caution'
   | 'warning'
   | 'critical'
+  | 'criticalSecondary'
   | 'interactive'
   | 'info'
   | 'success'

@@ -47,6 +47,10 @@ export function Colored() {
       </Text>
       <Icon source={CirclePlusMinor} tone="critical" />
       <Text as="p" variant="bodyMd" alignment="center">
+        Critical secondary tone
+      </Text>
+      <Icon source={CirclePlusMinor} tone="criticalSecondary" />
+      <Text as="p" variant="bodyMd" alignment="center">
         Emphasis tone
       </Text>
       <Icon source={CirclePlusMinor} tone="emphasis" />
