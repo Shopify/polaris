@@ -26,7 +26,7 @@ status: New
 
           It involves using space efficiently to allow merchants to view more data at once. It's about avoiding being verbose and making the interface action-driven with intuitive icons for swift navigation.
 
-          It also means combining [motion](/design/motion), [color](/design/color), and [depth](/design/depth) to create a responsive and dynamic interface, with clear affordances, that enable intuitive interaction without confusion about interactivity.
+          It also means combining [motion](/design/motion), [color](/design/colors), and [depth](/design/depth) to create a responsive and dynamic interface, with clear affordances, that enable intuitive interaction without confusion about interactivity.
 
         </Box>
 
