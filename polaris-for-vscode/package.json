@@ -46,7 +46,6 @@
     "@shopify/polaris-tokens": "^8.1.0",
     "@types/node": "16.x",
     "@types/vscode": "^1.84.0",
-    "@vscode/test-electron": "^2.3.6",
     "globby": "^11.1.0",
     "vsce": "^2.15.0"
   }
