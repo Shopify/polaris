@@ -11,7 +11,27 @@ const breakpoints = [
   {key: 'xl', value: '1400px'},
 ];
 
-const properties = await getProperties();
+// Object keys in JS are sorted by insertion order.
+// Only some CSS properties need to be inserted, so we add them to this object
+// here. This object is used as the basis of the final output, but at this time
+// we don't know the actual values of each key, so we just set it to `null`
+// which enables our algorithm to later look it up based on a truthy check (eg;
+// !!propertiesMustBeSorted[name]).
+// TODO: How do we ensure this list is exhaustive?
+const propertiesMustBeSorted = {
+  animation: null,
+  'animation-delay': null,
+  'animation-direction': null,
+  'animation-duration': null,
+  'animation-fill-mode': null,
+  'animation-iteration-count': null,
+  'animation-name': null,
+  'animation-play-state': null,
+  'animation-timeline': null,
+  'animation-timing-function': null,
+};
+
+const properties = await getProperties(propertiesMustBeSorted);
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const file = await fs.open(
@@ -23,7 +43,7 @@ await file.close();
 
 // -----
 
-async function getProperties() {
+async function getProperties(properties) {
   // @webref/css conveniently curates down all the available specs for us. Some
   // specs are defined as "Delta" where they add / modify some properties, those
   // specs are suffixed with `-<number>`
@@ -79,9 +99,6 @@ async function getProperties() {
 
   const parsedFiles = await css.listAll();
 
-  // An array as order is important
-  const properties = [];
-
   // Do a pass to gather up properties and group them by shorthand -> longhand
   for (let [shortname, data] of Object.entries(parsedFiles)) {
     // Treat delta specs the same as their "full" spec name. The data in
@@ -109,15 +126,11 @@ async function getProperties() {
     //    longhands after shorthands
     for (let i = 0; i < data.properties.length; i++) {
       const propertySpec = data.properties[i];
-      if (
-        !properties.find(
-          (existingProp) => existingProp.name === propertySpec.name,
-        )
-      ) {
-        properties.push({
+      if (!properties[propertySpec.name]) {
+        properties[propertySpec.name] = {
           name: propertySpec.name,
           inherited: propertySpec.inherited === 'yes',
-        });
+        };
       }
     }
   }
@@ -130,9 +143,9 @@ async function writeProperties(file, properties) {
   await file.write("\n@import '../../styles/mixins';");
   await file.write('\n.Box {');
 
-  for (let property of properties) {
-    await writeScopeCustomProperty('box', property.name);
-    await writeResponsiveDeclarationAtBreakpoint('box', property, 'xs');
+  for (let [name, property] of Object.entries(properties)) {
+    await writeScopeCustomProperty('box', name);
+    await writeResponsiveDeclarationAtBreakpoint('box', name, property, 'xs');
   }
 
   // Skip the 'xs' size as we've done it above outside of the media queries
@@ -142,9 +155,10 @@ async function writeProperties(file, properties) {
     await file.write(
       `\n  @media screen and (min-width: ${breakpoint.value}) {`,
     );
-    for (let property of properties) {
+    for (let [name, property] of Object.entries(properties)) {
       await writeResponsiveDeclarationAtBreakpoint(
         'box',
+        name,
         property,
         breakpoint.key,
       );
@@ -201,6 +215,7 @@ async function writeScopeCustomProperty(componentName, propertyName) {
 */
 async function writeResponsiveDeclarationAtBreakpoint(
   componentName,
+  propertyName,
   property,
   breakpoint,
 ) {
@@ -211,7 +226,7 @@ async function writeResponsiveDeclarationAtBreakpoint(
 
   // Nest the fallbacks from smallest on the inside to largest on the outside
   for (let index = 0; index <= lastIndex; index++) {
-    variables = `var(--pc-${componentName}-${property.name}-${breakpoints[index].key}, ${variables})`;
+    variables = `var(--pc-${componentName}-${propertyName}-${breakpoints[index].key}, ${variables})`;
   }
-  await file.write(`\n  ${property.name}: ${variables};`);
+  await file.write(`\n  ${propertyName}: ${variables};`);
 }
