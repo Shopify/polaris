@@ -114,7 +114,10 @@ async function getProperties() {
           (existingProp) => existingProp.name === propertySpec.name,
         )
       ) {
-        properties.push({name: propertySpec.name});
+        properties.push({
+          name: propertySpec.name,
+          inherited: propertySpec.inherited === 'yes',
+        });
       }
     }
   }
@@ -128,7 +131,7 @@ async function writeProperties(file, properties) {
   await file.write('\n.Box {');
 
   for (let property of properties) {
-    await writeScopeCustomProperty('box', property.name);
+    await writeScopeCustomProperty('box', property.name, property.inherited);
     await writeResponsiveDeclarationAtBreakpoint('box', property, 'xs');
   }
 
@@ -161,11 +164,19 @@ async function writeProperties(file, properties) {
   --pc-box-z-index-lg: var(--pc-box-z-index-md);
   --pc-box-z-index-xl: var(--pc-box-z-index-lg);
 */
-async function writeScopeCustomProperty(componentName, propertyName) {
+async function writeScopeCustomProperty(
+  componentName,
+  propertyName,
+  isInherited,
+) {
   const propPrefix = `--pc-${componentName}-${propertyName}`;
   // Sets the value to 'inherit' if it's an inherited property, or 'initial'
   // otherwise. See: https://www.w3.org/TR/css-cascade-5/#inherit-initial
-  await file.write(`\n  ${propPrefix}-${breakpoints[0].key}: initial;`);
+  await file.write(
+    `\n  ${propPrefix}-${breakpoints[0].key}: ${
+      isInherited ? 'inherit' : 'initial'
+    };`,
+  );
   for (let index = 1; index < breakpoints.length; index++) {
     const breakpoint = breakpoints[index];
     const prevBreakpoint = breakpoints[index - 1];
