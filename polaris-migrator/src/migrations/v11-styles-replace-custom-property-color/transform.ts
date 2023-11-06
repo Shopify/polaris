@@ -150,6 +150,7 @@ const allMap = {
   '--p-icon-on-interactive': '--p-color-icon-on-color',
   '--p-icon-on-primary': '--p-color-icon-on-color',
   '--p-icon-critical': '--p-color-icon-critical',
+  '--p-icon-critical-secondary': '--p-color-icon-critical-secondary',
   '--p-icon-on-critical': '--p-color-icon-on-color',
   '--p-icon-warning': '--p-color-icon-caution',
   '--p-icon-highlight': '--p-color-icon-info',

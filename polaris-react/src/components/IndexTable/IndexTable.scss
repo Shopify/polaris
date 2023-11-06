@@ -783,7 +783,6 @@ $loading-panel-height: 53px;
 }
 
 .Table-unselectable {
-  background-color: red;
   &.Table-sticky {
     // stylelint-disable-next-line selector-max-class, selector-max-specificity -- makes first column sticky when table is unselectable
     .TableCell:first-child {
