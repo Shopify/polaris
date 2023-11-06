@@ -2215,6 +2215,7 @@ export function WithTonesWithoutCheckboxes() {
       location: 'Los Angeles, USA',
       orders: 30,
       amountSpent: '$140',
+      status: 'subdued',
     },
   ];
   const resourceName = {

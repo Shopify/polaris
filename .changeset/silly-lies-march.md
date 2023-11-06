@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Fixed hover state for IndexTable without checkboxes
+Fixed hover state of `IndexTable.Row` when `selectable` is `false`
