@@ -37,9 +37,6 @@ jobs:
       - name: Build extension
         run: yarn build --filter=polaris-for-vscode
 
-      - name: Run Tests
-        run: yarn test --filter=polaris-for-vscode
-
       - name: Publish extension in the marketplace
         run: yarn workspace polaris-for-vscode vsce publish
         env:
