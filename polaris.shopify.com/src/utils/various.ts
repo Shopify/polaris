@@ -96,11 +96,11 @@ export const viewTransition = (callback: () => void | Promise<unknown>) => {
 
 type Falsy = boolean | undefined | null | 0;
 
-export type ResponsivePropObject<T = string> = {
+export type ResponsivePropObject<T> = {
   [Breakpoint in BreakpointsAlias]?: T;
 };
 
-export type ResponsiveProp<T = string> = T | ResponsivePropObject<T>;
+export type ResponsiveProp<T> = T | ResponsivePropObject<T>;
 
 export type PolarisCSSCustomPropertyName = `${`--p-` | `--pc-`}${string}`;
 export type PolarisCSSVar = `var(${PolarisCSSCustomPropertyName})`;

@@ -12,6 +12,7 @@ function getCssProps(styleProps: Record<string, any>) {
     const decamelizedPropKey = decamelize(key, {separator: '-'});
     return {
       // TODO: Use `getResponsiveProps` for properties that must match to token
+      // We need a way to differentiate properties that require token values from those that do not
       // values only.
       ...getResponsiveValue('box', decamelizedPropKey, value),
       ...acc,
