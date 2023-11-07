@@ -1,10 +1,21 @@
 name: Billing statement filled (rupee)
 description: N/A
 keywords:
-  - N/A
+  - Rupee
+  - Receipt
+  - Invoice
+  - Bill
+  - Payment
+  - Receipt
+  - Purchase
+  - Transaction
+  - Proof
+  - Expense
+  - Statement
 authors:
   - Joe Thomas
   - José Torre
+  - Holly Schofield
 date_added: 2023-07-06
 date_modified: 2023-11-07
 exclusive_use:

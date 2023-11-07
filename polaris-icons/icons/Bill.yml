@@ -1,7 +1,15 @@
 name: Bill
-description: N/A
+description: User to represent Bill Pay, or a receipt.
 keywords:
-  - N/A
+  - Invoice
+  - Bill
+  - Payment
+  - Receipt
+  - Purchase
+  - Transaction
+  - Proof
+  - Expense
+  - Statement
 authors:
   - José Torre
 date_added: 2023-11-07

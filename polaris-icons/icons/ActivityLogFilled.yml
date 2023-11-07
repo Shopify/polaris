@@ -1,11 +1,14 @@
 name: Activity log filled
-description: N/A
+description: Used to represent a story activity log, or any other report/series of events that happened in the past.
 keywords:
-  - Page
-  - Log
-  - Activity
+  - History
+  - Timeline
+  - Events
+  - Past
+  - Monitoring
 authors:
   - José Torre
+  - Holly Schofield
 date_added: 2023-11-07
 date_modified: 2023-11-07
 exclusive_use:

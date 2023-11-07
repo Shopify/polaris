@@ -1,10 +1,12 @@
 name: Reports
 description: N/A
 keywords:
-  - N/A
+  - Report
+  - Explore
 authors:
   - José Torre
   - Joe Thomas
+  - Miru Alves
 date_added: 2019-03-15
 date_modified: 2023-11-07
 exclusive_use:

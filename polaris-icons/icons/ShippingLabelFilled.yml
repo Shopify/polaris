@@ -1,9 +1,15 @@
 name: Shipping label filled
-description: N/A
+description: Used to represent shipping labels.
 keywords:
-  - N/A
+  - Label
+  - Shipping
+  - Delivery
+  - Package
+  - Postage
+  - Parcel
 authors:
   - José Torre
+  - Holly Schofield
 date_added: 2023-11-07
 date_modified: 2023-11-07
 exclusive_use:
