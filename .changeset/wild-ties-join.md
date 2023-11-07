@@ -10,4 +10,6 @@ Added new icons for `ShippingLabel`, `ShippingLabelFilled`, `Bill`, `BillFilled`
 
 Removed icons `ReportFilledMinor`, `ReportMinor`, `ListMajor`, `ListFilledMajor`
 
-Remove `version` from icon `.yml` files
+Removed `version` from icon `.yml` files
+
+Updated default icon color to `#4A4A4A`

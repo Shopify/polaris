@@ -18,7 +18,7 @@ const allIconFiles = globby
         .use(parse, {fragment: true, space: 'svg'})
         .parse(iconSource),
       expectedViewbox: '0 0 20 20',
-      expectedFillColors: ['#5C5F62', '#5c5f62'],
+      expectedFillColors: ['#4A4A4A'],
     };
   });
 
