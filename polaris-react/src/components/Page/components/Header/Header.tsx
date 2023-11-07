@@ -131,7 +131,9 @@ export function Header({
   const pageReadyAccessibilityLabelMarkup = title ? (
     <div role="status">
       <Text visuallyHidden as="p">
-        {i18n.translate('pageReadyAccessibilityLabel', {title})}
+        {i18n.translate('Polaris.Page.Header.pageReadyAccessibilityLabel', {
+          title,
+        })}
       </Text>
     </div>
   ) : undefined;
