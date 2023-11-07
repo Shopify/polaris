@@ -1,6 +1,10 @@
 import {size} from '../../size';
 import type {MetaTokenProperties} from '../types';
 
+export const typeMap = {
+  HeightScale: ['block-size'],
+};
+
 export type HeightScale =
   | '0'
   | '025'

@@ -1,6 +1,9 @@
 import {size} from '../../size';
 import type {MetaTokenProperties} from '../types';
 
+export const typeMap = {
+  WidthScale: ['inline-size'],
+};
 export type WidthScale =
   | '0'
   | '025'

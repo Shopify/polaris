@@ -1,5 +1,9 @@
 import type {MetaTokenProperties} from '../types';
 
+export const typeMap = {
+  ShadowAliasOrScale: ['box-shadow'],
+};
+
 export type ShadowScale = '0' | '100' | '200' | '300' | '400' | '500' | '600';
 
 export type ShadowBevelScale = '100';
