@@ -42,17 +42,17 @@ async function writeTSProperties(tsFile, properties) {
   };
   await tsFile.write('/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */');
   await tsFile.write("\nimport * as CSS from 'csstype';");
+  await tsFile.write("\nimport {ResponsiveProp} from '../../utils/various';");
   await tsFile.write(
     "\nimport type {ComputedTokenCSSProperties} from '@shopify/polaris-tokens';",
   );
   // We Omit the keys of the ComputedTokenCSSProperties interface, as we want to ensure that there are no type collisions between
   // CSS.Properties and our token types.
   await tsFile.write(
-    `\nexport interface CubeProps extends Omit<Pick<CSS.Properties, ${generateTSPickList(
+    `\nexport type CubeProps = Omit<Pick<CSS.Properties, ${generateTSPickList(
       camelisedKeys,
-    )}>, keyof ComputedTokenCSSProperties>, ComputedTokenCSSProperties {`,
+    )}>, keyof ComputedTokenCSSProperties> & { [K in keyof ComputedTokenCSSProperties]: ResponsiveProp<ComputedTokenCSSProperties[K]> };`,
   );
-  await tsFile.write('\n};');
 }
 
 async function getProperties() {
