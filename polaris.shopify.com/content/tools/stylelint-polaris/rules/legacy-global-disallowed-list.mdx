@@ -1,0 +1,28 @@
+---
+title: legacy/global-disallowed-list
+description: Disallows use of legacy custom properties and Sass mixin map data.
+keywords:
+  - stylelint
+  - legacy
+  - legacy rules
+---
+
+import RulePreamble from '../_preamble.mdx';
+import RulePostamble from '../_postamble.mdx';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="legacy" />
+
+Use [Polaris tokens](https://polaris.shopify.com/tokens) when possible. Otherwise use hard coded pixel or rem values instead of legacy mixins/variables.
+
+```diff
+// Do
++ left: calc(-1 * var(--p-space-100));
+// Don't
+- left: -1 * $timeline-border-width;
+```
+
+<RulePostamble />

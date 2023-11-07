@@ -55,14 +55,14 @@ const generateHTML = async (url, slug) => {
     url.startsWith('/design/') ||
     url.startsWith('/content/')
   ) {
-    let mdFilePath = path.join(process.cwd(), `content${url}.md`);
+    let mdFilePath = path.join(process.cwd(), `content${url}.mdx`);
     if (!existsSync(mdFilePath)) {
       // In case the markdown is nested in a folder instead of named after the
       // url directly, we want to try /index.md instead
-      mdFilePath = path.join(process.cwd(), `content${url}/index.md`);
+      mdFilePath = path.join(process.cwd(), `content${url}/index.mdx`);
       if (!existsSync(mdFilePath)) {
         throw new Error(
-          `Failed to load content file for url ${url}. Tried content${url}.md, content${url}/index.md`,
+          `Failed to load content file for url ${url}. Tried content${url}.mdx, content${url}/index.mdx`,
         );
       }
     }
