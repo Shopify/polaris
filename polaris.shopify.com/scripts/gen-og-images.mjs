@@ -81,7 +81,7 @@ const generateHTML = async (url, slug) => {
 
   const html = `
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@650');
+  @import url('https://cdn.shopify.com/static/fonts/inter/inter.css');
 
   * {
     margin: 0;
