@@ -1,3 +1,22 @@
+import type {BorderCSSProperties} from './themes/base/border';
+import type {ColorCSSProperties} from './themes/base/color';
+import type {FontCSSProperties} from './themes/base/font';
+import type {HeightCSSProperties} from './themes/base/height';
+import type {WidthCSSProperties} from './themes/base/width';
+import type {ShadowCSSProperties} from './themes/base/shadow';
+import type {SpaceCSSProperties} from './themes/base/space';
+import type {MotionCSSProperties} from './themes/base/motion';
+
+export interface ComputedTokenCSSProperties
+  extends BorderCSSProperties,
+    ColorCSSProperties,
+    FontCSSProperties,
+    HeightCSSProperties,
+    WidthCSSProperties,
+    ShadowCSSProperties,
+    SpaceCSSProperties,
+    MotionCSSProperties {}
+
 export {breakpointsAliases} from './themes/base/breakpoints';
 
 export type {BreakpointsAliasDirection} from './utils';

@@ -2,20 +2,18 @@ import {size} from '../../size';
 import {createVarName} from '../../utils';
 import type {MetaTokenProperties} from '../types';
 
-export const typeMap = {
-  SpaceScale: [
-    'margin-block-start',
-    'margin-block-end',
-    'margin-inline-start',
-    'margin-inline-end',
-    'padding-block-start',
-    'padding-block-end',
-    'padding-inline-start',
-    'padding-inline-end',
-    'row-gap',
-    'column-gap',
-  ],
-};
+export interface SpaceCSSProperties {
+  marginBlockStart: SpaceScale;
+  marginBlockEnd: SpaceScale;
+  marginInlineStart: SpaceScale;
+  marginInlineEnd: SpaceScale;
+  paddingBlockStart: SpaceScale;
+  paddingBlockEnd: SpaceScale;
+  paddingInlineStart: SpaceScale;
+  paddingInlineEnd: SpaceScale;
+  rowGap: SpaceScale;
+  columnGap: SpaceScale;
+}
 
 export type SpaceScale =
   | '0'
