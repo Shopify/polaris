@@ -8,6 +8,9 @@ import {classNames} from '../../../../utilities/css';
 import {Icon} from '../../../Icon';
 import {useI18n} from '../../../../utilities/i18n';
 import {UnstyledButton} from '../../../UnstyledButton';
+import {BlockStack} from '../../../BlockStack';
+import {TextField} from '../../../TextField';
+import {Box} from '../../../Box';
 
 import styles from './SearchField.scss';
 
@@ -37,25 +40,11 @@ export function SearchField({
   borderlessQueryField,
   loading,
 }: SearchFieldProps) {
-  const i18n = useI18n();
   const id = useId();
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const [focusVisible, setFocusVisible] = useState(false);
-
-  const handleFocus = () => {
-    onFocus?.();
-    setFocusVisible(true);
-  };
-
-  const handleBlur = () => {
-    onBlur?.();
-    setFocusVisible(false);
-  };
-
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const nextValue = event.currentTarget.value;
-    onChange(nextValue);
+  function handleChange(newValue: string) {
+    onChange(newValue);
   }
 
   useEffect(() => {
@@ -76,55 +65,22 @@ export function SearchField({
     </div>
   ) : null;
 
-  const clearButtonMarkup = (
-    <UnstyledButton
-      className={classNames(
-        styles.ClearButton,
-        (focused || focusVisible) && value !== '' && styles.visible,
-      )}
-      onClick={handleClear}
-      disabled={disabled}
-    >
-      <Text as="span" visuallyHidden>
-        {i18n.translate('Polaris.Common.clear')}
-      </Text>
-      <Icon source={CircleCancelMinor} tone="subdued" />
-    </UnstyledButton>
-  );
-
-  const suffixMarkup =
-    loadingMarkup || clearButtonMarkup ? (
-      <div className={styles.Suffix}>
-        {clearButtonMarkup}
-        {loadingMarkup}
-      </div>
-    ) : null;
-
   return (
-    <div
-      className={classNames(
-        styles.SearchField,
-        (focused || focusVisible) && !disabled && styles.focusVisible,
-        borderlessQueryField && styles.borderless,
-        disabled && styles.disabled,
-      )}
-    >
-      <label className={styles.Label} htmlFor={id}>
-        {placeholder}
-      </label>
-      <input
-        id={id}
-        ref={inputRef}
-        className={classNames(styles.Input)}
-        value={value}
-        onChange={handleChange}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        autoComplete="off"
-        placeholder={placeholder}
-        disabled={disabled}
-      />
-      {suffixMarkup}
-    </div>
+    <TextField
+      id={id}
+      labelHidden
+      label={placeholder}
+      focused={focused}
+      variant={borderlessQueryField ? 'borderless' : undefined}
+      value={value}
+      onChange={handleChange}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      autoComplete="off"
+      placeholder={placeholder}
+      disabled={disabled}
+      suffix={loadingMarkup}
+      onClearButtonClick={handleClear}
+    />
   );
 }
