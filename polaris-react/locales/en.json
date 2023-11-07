@@ -280,8 +280,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Actions",
-        "moreActionsActivatorLabel": "More actions",
-        "warningMessage": "To provide a better user experience. There should only be a maximum of {maxPromotedActions} promoted actions."
+        "moreActionsActivatorLabel": "More actions"
       }
     },
     "SkeletonPage": {
