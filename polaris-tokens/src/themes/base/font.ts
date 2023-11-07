@@ -1,6 +1,14 @@
 import {size} from '../../size';
 import type {MetaTokenProperties} from '../types';
 
+export const typeMap = {
+  FontSizeScale: ['font-size'],
+  FontLineHeightScale: ['line-height'],
+  FontWeightAlias: ['font-weight'],
+  FontFamilyAlias: ['font-family'],
+  FontLetterSpacingAlias: ['letter-spacing'],
+};
+
 export type FontFamilyPrefix = 'font-family';
 type FontFamilyAlias = 'sans' | 'mono';
 
