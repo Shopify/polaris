@@ -21,7 +21,6 @@ const fuse = new Fuse(Object.values(iconMetadata), {
     {name: 'name', weight: 3},
     {name: 'id', weight: 2},
     {name: 'keywords', weight: 2},
-    {name: 'set', weight: 1},
     {name: 'fileName', weight: 1},
     {name: 'description', weight: 1},
   ],
@@ -98,7 +97,7 @@ function IconsPage() {
   };
 
   const pageTitle = iconMetadata[activeIcon]
-    ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
+    ? `${iconMetadata[activeIcon].name}`
     : 'Icons';
 
   const githubIssueTitle = `[Icon] New icon ${searchText}`;

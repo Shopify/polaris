@@ -9,7 +9,6 @@ interface Props {
   fileName: string;
   iconData: {
     name: string;
-    set: string;
     description: string;
     keywords: string[];
   };
@@ -32,7 +31,7 @@ function IconDetails({fileName, iconData}: Props) {
 
   if (!fileName) return <EmptyState />;
 
-  const {set, description, name, keywords} = iconData;
+  const {description, name, keywords} = iconData;
 
   const reactExamples = {
     imports: `import {\n  ${fileName}\n} from '@shopify/polaris-icons';`,
@@ -53,7 +52,6 @@ function IconDetails({fileName, iconData}: Props) {
       <div className={styles.Section}>
         <div className={styles.Preview}>
           <Icon source={(polarisIcons as any)[fileName]} />
-          <div className={styles.SetBadge}>{set}</div>
         </div>
 
         <h2 className={styles.Title}>{name}</h2>
