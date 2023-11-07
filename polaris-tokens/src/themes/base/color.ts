@@ -1,12 +1,12 @@
 import type {MetaTokenProperties} from '../types';
 import * as colors from '../../colors';
 
-export const typeMap = {
-  ColorBackgroundAlias: ['background-color'],
-  ColorBorderAlias: ['border-color'],
-  ColorIconAlias: ['color', 'fill'],
-  ColorTextAlias: ['color'],
-};
+export interface ColorCSSProperties {
+  backgroundColor: ColorBackgroundAlias;
+  borderColor: ColorBorderAlias;
+  color: ColorTextAlias | ColorTextAlias;
+  fill: ColorIconAlias;
+}
 export type ColorBackgroundAlias =
   | 'bg-fill-active'
   | 'bg-fill-brand-active'

@@ -1,8 +1,9 @@
 import type {MetaTokenProperties} from '../types';
 
-export const typeMap = {
-  ZindexZScale: ['z-index'],
-};
+export interface ZIndexCSSProperties {
+  zIndex: ZIndexZScale;
+}
+
 export type ZIndexZScale =
   | '1'
   | '2'

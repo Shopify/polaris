@@ -1,9 +1,9 @@
 import {size} from '../../size';
 import type {MetaTokenProperties} from '../types';
 
-export const typeMap = {
-  HeightScale: ['block-size'],
-};
+export interface HeightCSSProperties {
+  blockSize: HeightScale;
+}
 
 export type HeightScale =
   | '0'
