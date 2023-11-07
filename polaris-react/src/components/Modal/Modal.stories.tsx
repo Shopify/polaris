@@ -14,7 +14,15 @@ import {
   TextField,
   Frame,
   FrameContext,
+  Listbox,
+  BlockStack,
+  Box,
+  Scrollable,
+  Icon,
+  EmptySearchResult,
+  AutoSelection,
 } from '@shopify/polaris';
+import {SearchMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Modal,
@@ -397,36 +405,295 @@ export function WithoutATitle() {
 }
 
 export function WithScrollListener() {
+  interface CustomerSegment {
+    id: string;
+    label: string;
+    value: string;
+  }
+
+  const segments: CustomerSegment[] = [
+    {
+      label: 'All customers',
+      id: 'gid://shopify/CustomerSegment/1',
+      value: '0',
+    },
+    {
+      label: 'VIP customers',
+      id: 'gid://shopify/CustomerSegment/2',
+      value: '1',
+    },
+    {
+      label: 'New customers',
+      id: 'gid://shopify/CustomerSegment/3',
+      value: '2',
+    },
+    {
+      label: 'Abandoned carts - last 30 days',
+      id: 'gid://shopify/CustomerSegment/4',
+      value: '3',
+    },
+    {
+      label: 'Wholesale customers',
+      id: 'gid://shopify/CustomerSegment/5',
+      value: '4',
+    },
+    {
+      label: 'Email subscribers',
+      id: 'gid://shopify/CustomerSegment/6',
+      value: '5',
+    },
+    {
+      label: 'From New York',
+      id: 'gid://shopify/CustomerSegment/7',
+      value: '6',
+    },
+    {
+      label: 'Repeat buyers',
+      id: 'gid://shopify/CustomerSegment/8',
+      value: '7',
+    },
+    {
+      label: 'First time buyers',
+      id: 'gid://shopify/CustomerSegment/9',
+      value: '8',
+    },
+    {
+      label: 'From Canada',
+      id: 'gid://shopify/CustomerSegment/10',
+      value: '9',
+    },
+    {
+      label: 'Bought in last 60 days',
+      id: 'gid://shopify/CustomerSegment/11',
+      value: '10',
+    },
+    {
+      label: 'Bought last BFCM',
+      id: 'gid://shopify/CustomerSegment/12',
+      value: '11',
+    },
+  ];
+
+  const lazyLoadSegments: CustomerSegment[] = Array.from(Array(100)).map(
+    (_, index) => ({
+      label: `Other customers ${index + 13}`,
+      id: `gid://shopify/CustomerSegment/${index + 13}`,
+      value: `${index + 12}`,
+    }),
+  );
+
+  segments.push(...lazyLoadSegments);
+
+  const interval = 25;
   const [active, setActive] = useState(true);
-
-  const handleChange = useCallback(() => setActive(!active), [active]);
-
-  const handleScrollBottom = useCallback(
-    () => console.log('Scrolled to bottom'),
+  const [query, setQuery] = useState('');
+  const [lazyLoading, setLazyLoading] = useState(false);
+  const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
+  const [visibleOptionIndex, setVisibleOptionIndex] = useState(25);
+  const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
+  const [selectedSegments, setSelectedSegments] = useState<string[]>([]);
+  const [filteredSegments, setFilteredSegments] = useState<CustomerSegment[]>(
     [],
   );
 
-  const activator = <Button onClick={handleChange}>Open</Button>;
+  const modalBodyRef = useRef<HTMLDivElement>(null);
+
+  const handleClose = () => {
+    setActive(!active);
+    setVisibleOptionIndex(25);
+  };
+
+  const handleFilterSegments = (query: string) => {
+    const nextFilteredSegments = segments.filter((segment) => {
+      return segment.label
+        .toLocaleLowerCase()
+        .includes(query.toLocaleLowerCase().trim());
+    });
+
+    setFilteredSegments(nextFilteredSegments);
+  };
+
+  const handleQueryChange = (query: string) => {
+    setQuery(query);
+
+    if (query.length >= 2) handleFilterSegments(query);
+  };
+
+  const handleQueryClear = () => {
+    handleQueryChange('');
+    handleResetVisibleOptionIndex();
+  };
+
+  const handleResetVisibleOptionIndex = () => {
+    setVisibleOptionIndex(interval);
+  };
+
+  const handleSegmentSelect = (segmentId: string) => () => {
+    if (selectedSegments.includes(segmentId)) {
+      setSelectedSegments(
+        selectedSegments.filter((option) => option !== segmentId),
+      );
+    } else {
+      setSelectedSegments([...selectedSegments, segmentId]);
+    }
+  };
+
+  const handleActiveOptionChange = (_: string, domId: string) => {
+    setActiveOptionId(domId);
+  };
+
+  /* This is just to illustrate lazy loading state vs loading state. This is an example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage` from your GraphQL query data instead of this fake "willLoadMoreResults" state along with setting `first` your GraphQL query's variables to your app's default max edges limit (e.g., 250). */
+
+  const handleLazyLoadSegments = () => {
+    if (willLoadMoreResults) {
+      setLazyLoading(true);
+
+      const options = query ? filteredSegments : segments;
+
+      setTimeout(() => {
+        const remainingOptionCount = options.length - visibleOptionIndex;
+        const nextVisibleOptionIndex =
+          remainingOptionCount >= interval
+            ? visibleOptionIndex + interval
+            : visibleOptionIndex + remainingOptionCount;
+
+        setLazyLoading(false);
+        setVisibleOptionIndex(nextVisibleOptionIndex);
+
+        if (remainingOptionCount <= interval) {
+          setWillLoadMoreResults(false);
+        }
+      }, 1000);
+    }
+  };
+
+  const listboxId = 'SearchableListboxInSheet';
+
+  const textFieldMarkup = (
+    <div
+      style={{
+        padding: 'var(--p-space-400) var(--p-space-200)',
+        // position: 'sticky',
+        // zIndex: 'var(--p-z-index-12)',
+        width: '100%',
+        background: 'var(--p-color-bg-surface)',
+      }}
+    >
+      <TextField
+        clearButton
+        labelHidden
+        label="Customer segments"
+        placeholder="Search segments"
+        autoComplete="off"
+        value={query}
+        prefix={<Icon source={SearchMinor} />}
+        ariaActiveDescendant={activeOptionId}
+        ariaControls={listboxId}
+        onChange={handleQueryChange}
+        onClearButtonClick={handleQueryClear}
+      />
+    </div>
+  );
+
+  const segmentOptions = query ? filteredSegments : segments;
+
+  const segmentList =
+    segmentOptions.length > 0
+      ? segmentOptions
+          .slice(0, visibleOptionIndex)
+          .map(({label, id, value}) => {
+            const selected = selectedSegments.includes(id);
+
+            return (
+              <Listbox.Option key={id} value={value} selected={selected}>
+                <Listbox.TextOption selected={selected}>
+                  {label}
+                </Listbox.TextOption>
+              </Listbox.Option>
+            );
+          })
+      : null;
+
+  const lazyLoadingMarkup = lazyLoading ? (
+    <Listbox.Loading
+      accessibilityLabel={`${
+        query ? 'Filtering' : 'Loading'
+      } customer segments`}
+    />
+  ) : null;
+
+  const noResultsMarkup =
+    segmentOptions.length === 0 ? (
+      <EmptySearchResult
+        title=""
+        description={`No segments found matching "${query}"`}
+      />
+    ) : null;
+
+  const listboxMarkup = (
+    <div
+      style={{
+        position: 'relative',
+        width: '100%',
+      }}
+    >
+      <Listbox
+        enableKeyboardControl
+        autoSelection={AutoSelection.FirstSelected}
+        accessibilityLabel="Search for and select a customer segment"
+        customListId={listboxId}
+        onSelect={handleSegmentSelect}
+        onActiveOptionChange={handleActiveOptionChange}
+      >
+        {segmentList}
+        {noResultsMarkup}
+        {lazyLoadingMarkup}
+      </Listbox>
+    </div>
+  );
+
+  const listMarkup = (
+    <div
+      style={{
+        alignItems: 'stretch',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'stretch',
+        position: 'relative',
+        width: '100%',
+        height: '600px',
+        overflow: 'hidden',
+      }}
+    >
+      {textFieldMarkup}
+      <Scrollable
+        shadow
+        style={{
+          position: 'relative',
+          width: '100%',
+          minHeight: 'calc(100% - 64px)',
+          paddingBottom: 'var(--p-space-200)',
+        }}
+        onScrolledToBottom={handleLazyLoadSegments}
+      >
+        {listboxMarkup}
+      </Scrollable>
+    </div>
+  );
+
+  const activator = <Button onClick={handleClose}>Open</Button>;
 
   return (
     <Frame>
-      <div style={{height: '500px'}}>
-        <Modal
-          activator={activator}
-          open={active}
-          title="Scrollable content"
-          onClose={handleChange}
-          onScrolledToBottom={handleScrollBottom}
-        >
-          {Array.from({length: 50}, (_, index) => (
-            <Modal.Section key={index}>
-              <TextContainer>
-                Item <a href="#Content">#{index}</a>
-              </TextContainer>
-            </Modal.Section>
-          ))}
-        </Modal>
-      </div>
+      <Modal
+        noScroll
+        activator={activator}
+        open={active}
+        title="Select a customer segment"
+        onClose={handleClose}
+      >
+        {listMarkup}
+      </Modal>
     </Frame>
   );
 }
