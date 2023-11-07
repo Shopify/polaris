@@ -8,12 +8,40 @@ export default function Page() {
       {[...Array(1).keys()].map((id) => (
         <Cube key={id}>A cube</Cube>
       ))}
-      <Cube display="flex" flexDirection="row" gap="20px">
-        <Cube width="40px" padding="4px" backgroundColor="bg" />
-        <Cube width="40px" padding="4px" backgroundColor="avatar-four-bg-fill">
+      <Cube display="flex" flexDirection="row" rowGap="300">
+        <Cube
+          blockSize={{xs: '1000'}}
+          paddingBlockStart="400"
+          paddingBlockEnd="400"
+          paddingInlineStart="400"
+          paddingInlineEnd="400"
+          backgroundColor="bg-fill-critical"
+        />
+        <Cube
+          inlineSize="100"
+          paddingBlockStart="400"
+          paddingBlockEnd="400"
+          paddingInlineStart="400"
+          paddingInlineEnd="400"
+          backgroundColor="avatar-four-bg-fill"
+        >
           <Cube display="flex" flexDirection="column">
-            <Cube height="40px" padding="4px" backgroundColor="#b2fba5" />
-            <Cube height="40px" padding="4px" backgroundColor="#aa9499" />
+            <Cube
+              blockSize="1200"
+              paddingBlockStart="400"
+              paddingBlockEnd="400"
+              paddingInlineStart="400"
+              paddingInlineEnd="400"
+              backgroundColor="backdrop-bg"
+            />
+            <Cube
+              blockSize="800"
+              paddingBlockStart="400"
+              paddingBlockEnd="400"
+              paddingInlineStart="400"
+              paddingInlineEnd="400"
+              backgroundColor="bg-fill-hover"
+            />
           </Cube>
         </Cube>
       </Cube>

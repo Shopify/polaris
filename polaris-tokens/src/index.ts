@@ -7,15 +7,14 @@ import type {ShadowCSSProperties} from './themes/base/shadow';
 import type {SpaceCSSProperties} from './themes/base/space';
 import type {MotionCSSProperties} from './themes/base/motion';
 
-export interface ComputedTokenCSSProperties
-  extends BorderCSSProperties,
-    ColorCSSProperties,
-    FontCSSProperties,
-    HeightCSSProperties,
-    WidthCSSProperties,
-    ShadowCSSProperties,
-    SpaceCSSProperties,
-    MotionCSSProperties {}
+export type ComputedTokenCSSProperties = BorderCSSProperties &
+  ColorCSSProperties &
+  FontCSSProperties &
+  HeightCSSProperties &
+  WidthCSSProperties &
+  ShadowCSSProperties &
+  SpaceCSSProperties &
+  MotionCSSProperties;
 
 export {breakpointsAliases} from './themes/base/breakpoints';
 
