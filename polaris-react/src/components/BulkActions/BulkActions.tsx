@@ -26,8 +26,6 @@ type BulkActionListSection = ActionListSection;
 
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
-const MAX_PROMOTED_ACTIONS = 2;
-
 const BUTTONS_NODE_ADDITIONAL_WIDTH = 64;
 
 export interface BulkActionsProps {
@@ -206,19 +204,6 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       this.props;
 
     const actionSections = this.actionSections();
-
-    if (
-      promotedActions &&
-      promotedActions.length > MAX_PROMOTED_ACTIONS &&
-      process.env.NODE_ENV === 'development'
-    ) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        i18n.translate('Polaris.ResourceList.BulkActions.warningMessage', {
-          maxPromotedActions: MAX_PROMOTED_ACTIONS,
-        }),
-      );
-    }
 
     const {popoverVisible, measuring} = this.state;
 

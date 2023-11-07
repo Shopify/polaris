@@ -601,13 +601,17 @@ export const Tabs = ({
                     disabled ? (
                       newTab
                     ) : (
-                      <Tooltip
-                        content={i18n.translate('Polaris.Tabs.newViewTooltip')}
-                        preferredPosition="above"
-                        hoverDelay={400}
-                      >
-                        {newTab}
-                      </Tooltip>
+                      <div>
+                        <Tooltip
+                          content={i18n.translate(
+                            'Polaris.Tabs.newViewTooltip',
+                          )}
+                          preferredPosition="above"
+                          hoverDelay={400}
+                        >
+                          {newTab}
+                        </Tooltip>
+                      </div>
                     )
                   }
                 />
