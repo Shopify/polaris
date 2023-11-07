@@ -9,3 +9,5 @@ Updated icons for `Jobs`, `JobsFilled`, `Automation`, `AutomationFilled`, `GiftC
 Added new icons for `ShippingLabel`, `ShippingLabelFilled`, `Bill`, `BillFilled`, `UsersPermissions`, `UsersPermissionsFilled`, `ActivityLog`, `ActivityLogFilled`, `Instagram`, `Tips`
 
 Removed icons `ReportFilledMinor`, `ReportMinor`, `ListMajor`, `ListFilledMajor`
+
+Remove `version` from icon `.yml` files

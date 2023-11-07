@@ -22,13 +22,7 @@ const iconPaths = globby.sync(path.join(iconBasePath, '*.yml'));
 const iconExports = [];
 const iconTypes = [];
 const iconMetadata = {};
-const ommitedKeys = [
-  'version',
-  'exclusive_use',
-  'authors',
-  'date_modified',
-  'date_added',
-];
+const ommitedKeys = ['exclusive_use', 'authors', 'date_modified', 'date_added'];
 
 iconPaths.forEach((filename) => {
   const iconData = jsYaml.load(fs.readFileSync(filename), {
