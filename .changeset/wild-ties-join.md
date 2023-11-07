@@ -2,9 +2,9 @@
 '@shopify/polaris-icons': major
 ---
 
-Remove Major and Minor icons sizing. All icons are the same size (ex: `AddMajor` -> `Add`).
+Removed Major and Minor icons sizing. All icons are the same size (ex: `AddMajor` -> `Add`).
 
-Update icons for `Jobs`, `JobsFilled`, `Automation`, `AutomationFilled`, `GiftCard`, `InventoryFilled`, `Reports`, `ShipmentFilled`, `AppsFilled`, `Markets`, `MarketsFilled`, `BillingStatementDollarFilled`, `BillingStatementEuroFilled`, `BillingStatementPoundFilled`, `BillingStatementRupeeFilled`, `BillingStatementYenFilled`, `LegalFilled`, `IdentityCard`, `IdentityCardFilled`, `Domains`, `DomainNew`, `DomainsFilled`, `Store`, `OnlineStore`, `ManagedStore`, `ImportStore`, `Tax`, `TaxFilled`, `PackageFilled`, `Location`, `LocationFilled`, `InactiveLocation`, `Pin`, `Globe`, `Transport`, `Nature`, `Food`, `Colors` to use the new design language
+Updated icons for `Jobs`, `JobsFilled`, `Automation`, `AutomationFilled`, `GiftCard`, `InventoryFilled`, `Reports`, `ShipmentFilled`, `AppsFilled`, `Markets`, `MarketsFilled`, `BillingStatementDollarFilled`, `BillingStatementEuroFilled`, `BillingStatementPoundFilled`, `BillingStatementRupeeFilled`, `BillingStatementYenFilled`, `LegalFilled`, `IdentityCard`, `IdentityCardFilled`, `Domains`, `DomainNew`, `DomainsFilled`, `Store`, `OnlineStore`, `ManagedStore`, `ImportStore`, `Tax`, `TaxFilled`, `PackageFilled`, `Location`, `LocationFilled`, `InactiveLocation`, `Pin`, `Globe`, `Transport`, `Nature`, `Food`, `Colors` to use the new design language
 
 Added new icons for `ShippingLabel`, `ShippingLabelFilled`, `Bill`, `BillFilled`, `UsersPermissions`, `UsersPermissionsFilled`, `ActivityLog`, `ActivityLogFilled`, `Instagram`, `Tips`
 
