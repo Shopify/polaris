@@ -12,6 +12,11 @@ export type BorderRadiusScale =
   | '500'
   | '750';
 
+export const typeMap = {
+  BorderRadiusScale: ['border-radius'],
+  BorderWidthScale: ['border-width'],
+};
+
 export type BorderRadiusAlias = 'full';
 
 export type BorderRadiusAliasOrScale = BorderRadiusAlias | BorderRadiusScale;
