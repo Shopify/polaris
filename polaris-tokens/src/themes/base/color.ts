@@ -3,12 +3,12 @@ import * as colors from '../../colors';
 
 export type ColorGlobalAlias = 'transparent';
 
-export const typeMap = {
-  ColorBackgroundAlias: ['background-color'],
-  ColorBorderAlias: ['border-color'],
-  ColorIconAlias: ['color', 'fill'],
-  ColorTextAlias: ['color'],
-};
+export interface ColorCSSProperties {
+  backgroundColor: ColorBackgroundAlias;
+  borderColor: ColorBorderAlias;
+  color: ColorTextAlias | ColorTextAlias;
+  fill: ColorIconAlias;
+}
 
 export type ColorBackgroundAlias =
   | 'bg-fill-active'

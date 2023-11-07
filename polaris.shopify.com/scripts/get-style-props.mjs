@@ -1,6 +1,8 @@
 import css from '@webref/css';
+import mdnData from './mdn-properties-data.mjs';
 import fs from 'fs/promises';
 import path from 'path';
+import camelcase from 'camelcase';
 import * as url from 'url';
 
 const breakpoints = [
@@ -14,14 +16,44 @@ const breakpoints = [
 const properties = await getProperties();
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-const file = await fs.open(
+const sassFile = await fs.open(
   path.resolve(__dirname, '../src/components/Cube/style.module.scss'),
   'w+',
 );
-await writeProperties(file, properties);
-await file.close();
+
+await writeProperties(sassFile, properties);
+
+await sassFile.close();
+
+const tsFile = await fs.open(
+  path.resolve(__dirname, '../src/components/Cube/types.ts'),
+  'w+',
+);
+await writeTSProperties(tsFile, properties);
+await tsFile.close();
 
 // -----
+
+async function writeTSProperties(tsFile, properties) {
+  const camelisedKeys = Object.keys(properties).map((key) => camelcase(key));
+  const generateTSPickList = (keys) => {
+    // We add additional single quotes here because the second argument for Pick is a union of string literal types
+    return camelisedKeys.map((key) => `'${key}'`).join(' | ');
+  };
+  await tsFile.write('/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */');
+  await tsFile.write("\nimport * as CSS from 'csstype';");
+  await tsFile.write(
+    "\nimport type {ComputedTokenCSSProperties} from '@shopify/polaris-tokens';",
+  );
+  // We Omit the keys of the ComputedTokenCSSProperties interface, as we want to ensure that there are no type collisions between
+  // CSS.Properties and our token types.
+  await tsFile.write(
+    `\nexport interface CubeProps extends Omit<Pick<CSS.Properties, ${generateTSPickList(
+      camelisedKeys,
+    )}>, keyof ComputedTokenCSSProperties>, ComputedTokenCSSProperties {`,
+  );
+  await tsFile.write('\n};');
+}
 
 async function getProperties() {
   // @webref/css conveniently curates down all the available specs for us. Some
@@ -310,9 +342,38 @@ async function getProperties() {
       }
     }
   }
+  // For some reason these properties are not excluded from the mdn data set we've imported,
+  // But is excluded from the csstype library that the CSS.Properties comes from.
+  // We filter them out here so we a) remove unnecessary rule and variable instantiation in our CSS
+  // and b) don't get type errors in our typescript files.
+  const disallowList = [
+    'font-synthesis-weight',
+    'font-synthesis-style',
+    'font-synthesis-small-caps',
+  ];
   // We need to filter out null values, as they represent css properties we do not support.
   return Object.fromEntries(
-    Object.entries(shorthandProperties).filter(([_, value]) => {
+    Object.entries(shorthandProperties).filter(([key, value]) => {
+      if (
+        !Object.entries(mdnData)
+          .filter(([key, value]) => {
+            return (
+              // We don't want to include any experimental or non-standard css rules in our CSS
+              // These also throw type errors when we generate our types in writeTSProperties
+              value.status === 'standard' &&
+              // We don't want to include vendor prefixed properties
+              // We need this because most other vender prefixed properties are marked as not 'standard' in our mdn Data set
+              // but there are a few webkit properties that are "standard" oddly enough.
+              !key.startsWith('-webkit') &&
+              !disallowList.includes(key)
+            );
+          })
+          .map(([key]) => key)
+          .includes(key)
+      ) {
+        return false;
+      }
+
       return value !== null;
     }),
   );
@@ -324,8 +385,14 @@ async function writeProperties(file, properties) {
   await file.write('\n.Box {');
 
   for (let [name, property] of Object.entries(properties)) {
-    await writeScopeCustomProperty('box', name);
-    await writeResponsiveDeclarationAtBreakpoint('box', name, property, 'xs');
+    await writeScopeCustomProperty('box', name, file);
+    await writeResponsiveDeclarationAtBreakpoint(
+      'box',
+      name,
+      property,
+      'xs',
+      file,
+    );
   }
 
   // Skip the 'xs' size as we've done it above outside of the media queries
@@ -341,6 +408,7 @@ async function writeProperties(file, properties) {
         name,
         property,
         breakpoint.key,
+        file,
       );
     }
     await file.write('\n}');
@@ -358,7 +426,7 @@ async function writeProperties(file, properties) {
   --pc-box-z-index-lg: var(--pc-box-z-index-md, initial);
   --pc-box-z-index-xl: var(--pc-box-z-index-lg, initial);
 */
-async function writeScopeCustomProperty(componentName, propertyName) {
+async function writeScopeCustomProperty(componentName, propertyName, file) {
   for (let breakpoint of breakpoints) {
     await file.write(
       `\n  --pc-${componentName}-${propertyName}-${breakpoint.key}: initial;`,
@@ -398,6 +466,7 @@ async function writeResponsiveDeclarationAtBreakpoint(
   propertyName,
   property,
   breakpoint,
+  file,
 ) {
   const lastIndex = breakpoints.findIndex((b) => b.key === breakpoint);
   // Sets the value to 'inherit' if it's an inherited property, or 'initial'

@@ -1,10 +1,10 @@
 import type {MetaTokenProperties} from '../types';
 
-export const typeMap = {
-  MotionDurationScale: ['transition-duration'],
-  MotionKeyFrameAlias: ['animation-name'],
-  MotionTimingFunctionAlias: ['transition-timing-function'],
-};
+export interface MotionCSSProperties {
+  transitionDuration: MotionDurationScale;
+  animationName: MotionKeyframesAlias;
+  transitionTimingFunction: MotionTimingFunctionAlias;
+}
 export type MotionDurationScale =
   | '0'
   | '50'

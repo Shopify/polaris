@@ -1,7 +1,7 @@
 import style from './style.module.scss';
 import {forwardRef} from 'react';
 import decamelize from 'decamelize';
-import * as CSS from 'csstype';
+import type {CubeProps} from './types';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import {getResponsiveValue} from '../../utils/various';
 
@@ -19,9 +19,7 @@ function getCssProps(styleProps: Record<string, any>) {
   }, {});
 }
 
-export interface CubeProps extends CSS.Properties {}
-
-type PolymorphicCube = Polymorphic.ForwardRefComponent<any, CubeProps>;
+type PolymorphicCube = Polymorphic.ForwardRefComponent<any, Partial<CubeProps>>;
 
 export const Cube = forwardRef(function Cube(
   {as: Tag = 'div', children, ...styleProps},

@@ -1,8 +1,8 @@
 import type {MetaTokenProperties} from '../types';
 
-export const typeMap = {
-  ShadowAliasOrScale: ['box-shadow'],
-};
+export interface ShadowCSSProperties {
+  boxShadow: ShadowAliasOrScale;
+}
 
 export type ShadowScale = '0' | '100' | '200' | '300' | '400' | '500' | '600';
 
