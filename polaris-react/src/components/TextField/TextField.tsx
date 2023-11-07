@@ -261,11 +261,15 @@ export function TextField({
   const buttonPressTimer = useRef<number>();
   const spinnerRef = useRef<HTMLDivElement>(null);
 
+  const getInputRef = useCallback(() => {
+    return multiline ? textAreaRef.current : inputRef.current;
+  }, [multiline]);
+
   useEffect(() => {
-    const input = multiline ? textAreaRef.current : inputRef.current;
+    const input = getInputRef();
     if (!input || focused === undefined) return;
     focused ? input.focus() : input.blur();
-  }, [focused, verticalContent, multiline]);
+  }, [focused, verticalContent, getInputRef]);
 
   useEffect(() => {
     const input = inputRef.current;
@@ -506,7 +510,7 @@ export function TextField({
     setFocus(true);
 
     if (selectTextOnFocus && !suggestion) {
-      const input = multiline ? textAreaRef.current : inputRef.current;
+      const input = getInputRef();
       input?.select();
     }
 
@@ -649,7 +653,7 @@ export function TextField({
       return;
     }
 
-    inputRef.current?.focus();
+    getInputRef()?.focus();
   }
 
   function handleClickChild(event: React.MouseEvent) {
@@ -667,7 +671,7 @@ export function TextField({
     }
 
     setFocus(true);
-    inputRef.current?.focus();
+    getInputRef()?.focus();
   }
 
   function handleClearButtonPress() {
@@ -752,11 +756,11 @@ export function TextField({
   }
 
   function isInput(target: HTMLElement | EventTarget) {
+    const input = getInputRef();
     return (
       target instanceof HTMLElement &&
-      inputRef.current &&
-      (inputRef.current.contains(target) ||
-        inputRef.current.contains(document.activeElement))
+      input &&
+      (input.contains(target) || input.contains(document.activeElement))
     );
   }
 

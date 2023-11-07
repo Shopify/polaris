@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps<RulesProps> = async () => {
 const rulesPath = 'content/tools/stylelint-polaris/rules';
 
 function indexPageMetadata() {
-  const markdownPath = path.resolve(process.cwd(), `${rulesPath}/index.md`);
+  const markdownPath = path.resolve(process.cwd(), `${rulesPath}/index.mdx`);
   const markdown = fs.readFileSync(markdownPath, 'utf-8');
   const {
     frontMatter: {title, description},
@@ -63,10 +63,10 @@ function indexPageMetadata() {
 }
 
 function ruleListMarkdown(directory: string): string {
-  const globPath = [`${directory}/*.md`];
+  const globPath = [`${directory}/*.mdx`];
   const rulePagePaths = globby
     .sync(globPath)
-    .filter((path) => !path.endsWith(`${rulesPath}/index.md`));
+    .filter((path) => !path.endsWith(`${rulesPath}/index.mdx`));
 
   const content: {[key: string]: string[]} = {};
   rulePagePaths.forEach((markdownFilePath) => {
@@ -79,7 +79,7 @@ function ruleListMarkdown(directory: string): string {
       const url = markdownFilePath
         .replace(`${process.cwd()}/content`, '')
         .replace('/index', '')
-        .replace(/\.md$/, '');
+        .replace(/\.mdx$/, '');
 
       const category = uppercaseFirst(title.split('/')[0]).replace(
         'Media-queries',

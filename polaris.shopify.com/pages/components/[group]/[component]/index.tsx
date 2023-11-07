@@ -82,7 +82,7 @@ export const getStaticProps: GetStaticProps<
 > = async (context) => {
   const componentSlug = context.params?.component;
   const groupSlug = context.params?.group;
-  const relativeMdPath = `content/components/${groupSlug}/${componentSlug}.md`;
+  const relativeMdPath = `content/components/${groupSlug}/${componentSlug}.mdx`;
 
   const mdFilePath = path.resolve(process.cwd(), relativeMdPath);
   const editPageLinkPath = `polaris.shopify.com/${relativeMdPath}`;
@@ -154,12 +154,12 @@ export const getStaticProps: GetStaticProps<
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const globPath = path.resolve(process.cwd(), 'content/components/**/*.md');
+  const globPath = path.resolve(process.cwd(), 'content/components/**/*.mdx');
   const paths = globby
     .sync(globPath)
-    .filter((path) => !path.endsWith('index.md'))
+    .filter((path) => !path.endsWith('index.mdx'))
     .map((path) =>
-      path.replace(`${process.cwd()}/content`, '').replace('.md', ''),
+      path.replace(`${process.cwd()}/content`, '').replace('.mdx', ''),
     );
 
   return {

@@ -9,3 +9,7 @@ scripts
 src
 rollup.config.js
 tsconfig.tsbuildinfo
+node_modules
+
+# Ignore parent directories
+../**

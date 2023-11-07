@@ -47,8 +47,8 @@
   }
 
   // stylelint-disable selector-max-specificity -- focus styles
-  &:focus:not(.variantPrimary):not(.variantTertiary):not(.variantPlain):not(.variantMonochromePlain),
-  &:focus-visible:not(.variantPrimary):not(.variantTertiary):not(.variantPlain):not(.variantMonochromePlain) {
+  &:focus:not(.variantPrimary):not(.variantTertiary):not(.variantPlain):not(.variantMonochromePlain):not(.pressed),
+  &:focus-visible:not(.variantPrimary):not(.variantTertiary):not(.variantPlain):not(.variantMonochromePlain):not(.pressed) {
     // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
     box-shadow: var(--pc-button-shadow);
   }

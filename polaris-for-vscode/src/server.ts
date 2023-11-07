@@ -12,7 +12,6 @@ import {
   TextDocumentSyncKind,
 } from 'vscode-languageserver/node';
 import type {
-  InitializeParams,
   CompletionItem,
   TextDocumentPositionParams,
   InitializeResult,
@@ -99,9 +98,7 @@ const tokenGroupPatterns: TokenGroupPatterns = {
   zIndex: /z-index/,
 };
 
-connection.onInitialize((params: InitializeParams) => {
-  const capabilities = params.capabilities;
-
+connection.onInitialize(() => {
   const result: InitializeResult = {
     capabilities: {
       textDocumentSync: TextDocumentSyncKind.Incremental,
