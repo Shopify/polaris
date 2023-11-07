@@ -59,10 +59,6 @@ Object.keys(deprecatedIcons).forEach((exportName) => {
   const iconName = exportName.replace(/Major|Minor/g, '');
   const iconData = iconMetadata[iconName];
 
-  iconMetadata[exportName] = {
-    id: exportName,
-    ...iconData,
-  };
   iconExports.push(
     `export {default as ${exportName}} from '../icons/${iconName}.svg';`,
   );
