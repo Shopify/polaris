@@ -5,6 +5,7 @@ import path from 'path';
 import camelcase from 'camelcase';
 import * as url from 'url';
 
+// TODO: Import these from token lib?
 const breakpoints = [
   {key: 'xs', value: '0px'},
   {key: 'sm', value: '500px'},
@@ -12,6 +13,286 @@ const breakpoints = [
   {key: 'lg', value: '1040px'},
   {key: 'xl', value: '1400px'},
 ];
+
+// TODO: Confirm this list is complete.
+const cssShorthandProperties = [
+  'animation',
+  'background',
+  'border',
+  'border-block',
+  'border-block-end',
+  'border-block-start',
+  'border-bottom',
+  'border-color',
+  'border-image',
+  'border-inline',
+  'border-inline-end',
+  'border-inline-start',
+  'border-left',
+  'border-radius',
+  'border-right',
+  'border-style',
+  'border-top',
+  'border-width',
+  'border-inline-width',
+  'border-block-width',
+  'box-shadow',
+  'column-rule',
+  'columns',
+  'contain-intrinsic-size',
+  'flex',
+  'flex-flow',
+  'font',
+  'gap',
+  'grid',
+  'grid-area',
+  'grid-column',
+  'grid-row',
+  'grid-template',
+  'inset',
+  'inset-inline',
+  'inset-block',
+  'list-style',
+  'margin',
+  'margin-block',
+  'margin-inline',
+  'mask',
+  'offset',
+  'outline',
+  'overflow',
+  'overscroll-behavior',
+  'padding',
+  'padding-block',
+  'padding-inline',
+  'place-content',
+  'place-items',
+  'place-self',
+  'scroll-padding',
+  'scroll-padding-inline',
+  'scroll-padding-block',
+  'scroll-margin',
+  'scroll-margin-inline',
+  'scroll-margin-block',
+  'text-decoration',
+  'text-emphasis',
+  'transition',
+];
+
+// We don't want to include any experimental or non-standard css rules in our
+// CSS. These also throw type errors when we generate our types in
+// `writeTSProperties()`.
+const standardCSSProperties = Object.entries(mdnData)
+  .filter(([_, value]) => value.status === 'standard')
+  .map(([key]) => key);
+
+const disallowedCSSProperties = [
+  // Shorthand properties need to come before longhand properties so
+  // the most specific (longhand) applies based on CSS order.
+  // For example, `flex-flow` is a shorthand of `<flex-direction> <flex-wrap>`,
+  // and so must come before both of those.
+  //
+  // Challenges with supporting shorthand properties:
+  // a. Cannot use alphabetical sorting (`flex-direction` would end up before
+  // `flex-flow` which is invalid).
+  // b. Cannot use `property.logicalProperyGroup` from `@webref/css` as that's not
+  // reliable (doesn't even exist for the `flex` family of properties).
+  // c. Cannot rely on the order of properties in an @webref/css specification
+  // containing both long and shorthand variants since later "Delta" specs might
+  // introduce new shorthands (and so would come after the longhand when
+  // iterating and therefore are invalid).
+  //
+  // Possible solutions:
+  // 1. Use data like { 'flex-flow': ['flex-direction', 'flex-wrap'] } to sort
+  //    longhands after shorthands
+  // 2. Filter out all the shorthand properties completely.
+  //
+  // We're chosing solution #2 here; filtering out shorthand CSS Properties.
+  // This is distinct from a later step where we create "aliases" to enable a
+  // builder to pass a single value which acts as a fallback for the props
+  // specified as fallbacks. Some of these aliases may have identical names to
+  // the shorthand properties, but shouldn't be confused as being the same.
+  ...cssShorthandProperties,
+
+  // We only support logical properties, but later alias these to their logical
+  // counterparts following the principle of: Do what the user intended, not
+  // what they said.
+  'width',
+  'height',
+  'padding-left',
+  'padding-top',
+  'padding-right',
+  'padding-bottom',
+  'margin-left',
+  'margin-top',
+  'margin-right',
+  'margin-bottom',
+  'max-width',
+  'max-height',
+  'min-width',
+  'min-height',
+  'border-top-left-radius',
+  'border-top-right-radius',
+  'border-bottom-right-radius',
+  'border-bottom-left-radius',
+  'border-top-color',
+  'border-right-color',
+  'border-bottom-color',
+  'border-left-color',
+  'border-top-style',
+  'border-right-style',
+  'border-bottom-style',
+  'border-left-style',
+  'border-top-width',
+  'border-right-width',
+  'border-bottom-width',
+  'border-left-width',
+  'overflow-x',
+  'overflow-y',
+  'overscroll-behavior-x',
+  'overscroll-behavior-y',
+  'top',
+  'left',
+  'right',
+  'bottom',
+  'contain-intrinsic-width',
+  'contain-intrinsic-height',
+
+  // For some reason these properties are not excluded from the mdn data set we've imported,
+  // But is excluded from the csstype library that the CSS.Properties comes from.
+  // We filter them out here so we a) remove unnecessary rule and variable instantiation in our CSS
+  // and b) don't get type errors in our typescript files.
+  'font-synthesis-weight',
+  'font-synthesis-style',
+  'font-synthesis-small-caps',
+
+  // We don't want to include vendor prefixed properties, but oddly this one
+  // property shows up in the list of "standard" CSS Properties.
+  '-webkit-line-clamp',
+  // TODO...
+];
+
+// TODO: Throw error when a CSS property with the same name is allowed.
+const stylePropAliases = {
+  rowGap: ['gap'],
+  columnGap: ['gap'],
+  paddingInlineStart: ['paddingLeft', 'paddingInline', 'padding'],
+  paddingInlineEnd: ['paddingRight', 'paddingInline', 'padding'],
+  paddingBlockStart: ['paddingTop', 'paddingBlock', 'padding'],
+  paddingBlockEnd: ['paddingBottom', 'paddingBlock', 'padding'],
+  marginInlineStart: ['marginLeft', 'marginInline', 'margin'],
+  marginInlineEnd: ['marginRight', 'marginInline', 'margin'],
+  marginBlockStart: ['marginTop', 'marginBlock', 'margin'],
+  marginBlockEnd: ['marginBottom', 'marginBlock', 'margin'],
+  inlineSize: ['width', 'size'],
+  blockSize: ['height', 'size'],
+  minInlineSize: ['minWidth', 'minSize'],
+  minBlockSize: ['minHeight', 'minSize'],
+  maxInlineSize: ['maxWidth', 'maxSize'],
+  maxBlockSize: ['maxHeight', 'maxSize'],
+  containIntrinsicInlineSize: ['containIntrinsicWidth', 'containIntrinsicSize'],
+  containIntrinsicBlockSize: ['containIntrinsicHeight', 'containIntrinsicSize'],
+  overflowInline: ['overflowX', 'overflow'],
+  overflowBlock: ['overflowY', 'overflow'],
+  overscrollBehaviorInline: ['overscrollBehaviorX', 'overscrollBehavior'],
+  overscrollBehaviorBlock: ['overscrollBehaviorY', 'overscrollBehavior'],
+  borderStartStartRadius: ['borderTopLeftRadius', 'borderRadius'],
+  borderStartEndRadius: ['borderTopRightRadius', 'borderRadius'],
+  borderEndStartRadius: ['borderBottomLeftRadius', 'borderRadius'],
+  borderEndEndRadius: ['borderBottomRightRadius', 'borderRadius'],
+  borderInlineStartColor: [
+    'borderLeftColor',
+    'borderInlineColor',
+    'borderColor',
+  ],
+  borderInlineEndColor: [
+    'borderRightColor',
+    'borderInlineColor',
+    'borderColor',
+  ],
+  borderBlockStartColor: ['borderTopColor', 'borderBlockColor', 'borderColor'],
+  borderBlockEndColor: ['borderBottomColor', 'borderBlockColor', 'borderColor'],
+  borderInlineStartStyle: [
+    'borderLeftStyle',
+    'borderInlineStyle',
+    'borderStyle',
+  ],
+  borderInlineEndStyle: [
+    'borderRightStyle',
+    'borderInlineStyle',
+    'borderStyle',
+  ],
+  borderBlockStartStyle: ['borderTopStyle', 'borderBlockStyle', 'borderStyle'],
+  borderBlockEndStyle: ['borderBottomStyle', 'borderBlockStyle', 'borderStyle'],
+  borderInlineStartWidth: [
+    'borderLeftWidth',
+    'borderInlineWidth',
+    'borderWidth',
+  ],
+  borderInlineEndWidth: [
+    'borderRightWidth',
+    'borderInlineWidth',
+    'borderWidth',
+  ],
+  borderBlockStartWidth: ['borderTopWidth', 'borderBlockWidth', 'borderWidth'],
+  borderBlockEndWidth: ['borderBottomWidth', 'borderBlockWidth', 'borderWidth'],
+  insetInlineStart: ['left', 'insetInline', 'inset'],
+  insetInlineEnd: ['right', 'insetInline', 'inset'],
+  insetBlockStart: ['top', 'insetBlock', 'inset'],
+  insetBlockEnd: ['bottom', 'insetBlock', 'inset'],
+  scrollPaddingInlineStart: [
+    'scrollPaddingLeft',
+    'scrollPaddingInline',
+    'scrollPadding',
+  ],
+  scrollPaddingInlineEnd: [
+    'scrollPaddingRight',
+    'scrollPaddingInline',
+    'scrollPadding',
+  ],
+  scrollPaddingBlockStart: [
+    'scrollPaddingTop',
+    'scrollPaddingBlock',
+    'scrollPadding',
+  ],
+  scrollPaddingBlockEnd: [
+    'scrollPaddingBottom',
+    'scrollPaddingBlock',
+    'scrollPadding',
+  ],
+  scrollMarginInlineStart: [
+    'scrollMarginLeft',
+    'scrollMarginInline',
+    'scrollMargin',
+  ],
+  scrollMarginInlineEnd: [
+    'scrollMarginRight',
+    'scrollMarginInline',
+    'scrollMargin',
+  ],
+  scrollMarginBlockStart: [
+    'scrollMarginTop',
+    'scrollMarginBlock',
+    'scrollMargin',
+  ],
+  scrollMarginBlockEnd: [
+    'scrollMarginBottom',
+    'scrollMarginBlock',
+    'scrollMargin',
+  ],
+  // TODO...And more
+};
+
+const inverseAliases = Object.entries(stylePropAliases).reduce(
+  (acc, [prop, aliases]) => {
+    for (let alias of aliases) {
+      acc[alias] = acc[alias] ?? [];
+      acc[alias].push(prop);
+    }
+    return acc;
+  },
+  {},
+);
+
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const properties = await getProperties();
 
@@ -25,7 +306,7 @@ await writeProperties(sassFile, properties);
 await sassFile.close();
 
 const tsFile = await fs.open(
-  path.resolve(__dirname, '../src/components/Cube/types.ts'),
+  path.resolve(__dirname, '../src/components/Cube/generated-data.ts'),
   'w+',
 );
 await writeTSProperties(tsFile, properties);
@@ -37,26 +318,65 @@ async function writeTSProperties(tsFile, properties) {
   const camelisedKeys = Object.keys(properties).map((key) => camelcase(key));
   const generateTSPickList = (keys) => {
     // We add additional single quotes here because the second argument for Pick is a union of string literal types
-    return camelisedKeys.map((key) => `'${key}'`).join(' | ');
+    return keys.map((key) => `'${key}'`).join(' | ');
   };
-  await tsFile.write('/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */');
-  await tsFile.write("\nimport * as CSS from 'csstype';");
-  await tsFile.write("\nimport {ResponsiveProp} from '../../utils/various';");
-  await tsFile.write(
-    "\nimport type {ComputedTokenCSSProperties} from '@shopify/polaris-tokens';",
-  );
-  // We Omit the keys of the ComputedTokenCSSProperties interface, as we want to ensure that there are no type collisions between
-  // CSS.Properties and our token types.
-  await tsFile.write(
-    `\nexport type CSSProperties= Omit<Pick<CSS.Properties, ${generateTSPickList(
-      camelisedKeys,
-    )}>, keyof ComputedTokenCSSProperties>`,
-  );
-  await tsFile.write(
-    `\nexport type ResponsiveTokenProperties = { [K in keyof ComputedTokenCSSProperties]: ResponsiveProp<ComputedTokenCSSProperties[K]> }`,
-  );
-  await tsFile.write(
-    `\nexport type CubeProps = CSSProperties & ResponsiveTokenProperties;`,
+  await tsFile.write(`
+/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
+import * as CSS from 'csstype';
+import type {ComputedTokenCSSProperties} from '@shopify/polaris-tokens';
+import {ResponsiveProp} from '../../utils/various';
+
+// We Omit the keys of the ComputedTokenCSSProperties interface, as we want to
+// ensure that there are no type collisions between CSS.Properties and our token
+// types.
+type CSSProperties = Omit<
+  Pick<
+    CSS.Properties,
+    ${generateTSPickList(camelisedKeys)}
+  >,
+  keyof ComputedTokenCSSProperties
+>;
+
+type ResponsiveCSSProperties = {
+  [K in keyof CSSProperties]?: ResponsiveProp<CSSProperties[K]>
+};
+
+type ResponsiveTokenProperties = {
+  [K in keyof ComputedTokenCSSProperties]?: ResponsiveProp<ComputedTokenCSSProperties[K]>
+};
+
+type StyleProps = ResponsiveCSSProperties & ResponsiveTokenProperties;
+
+// TODO: Do we need the intersections here? Can we somehow guarantee that just
+// taking the first prop will give us the correct type?
+type StylePropAliases = {
+  ${Object.entries(inverseAliases)
+    .map(
+      ([alias, styleProps]) =>
+        `${alias}?: ${styleProps
+          .map((prop) => `StyleProps['${prop}']`)
+          .join(' & ')};`,
+    )
+    .join('\n  ')}
+};
+
+export type CubeProps = StyleProps & StylePropAliases;
+
+/**
+ * An ordered set of aliases for each style prop that has them.
+ */
+export const stylePropAliases: Partial<Record<keyof StyleProps, readonly (keyof StylePropAliases)[]>> = ${JSON.stringify(
+    stylePropAliases,
+    null,
+    2,
+  )} as const;
+  `);
+}
+
+function isCSSPropertyAllowed(name) {
+  return (
+    standardCSSProperties.includes(name) &&
+    !disallowedCSSProperties.includes(name)
   );
 }
 
@@ -69,7 +389,7 @@ async function getProperties() {
 
   // Note, we don't list the "Delta" specs here (those ending in `-<number>`),
   // but they will be included if found.
-  const supportedSpecifications = [
+  const allowedSpecifications = [
     'CSS',
     'compositing',
     'css-align',
@@ -114,250 +434,21 @@ async function getProperties() {
     'scroll-animations',
   ];
 
-  // Object keys in JS are sorted by insertion order.
-  // Only some CSS properties need to be inserted, so we add them to this object
-  // here. This object is used as the basis of the final output, but at this time
-  // we don't know the actual values of each key, so we just set it to `null`
-  // which enables our algorithm to later look it up based on a truthy check (eg;
-  // !!propertiesMustBeSorted[name]).
-  // TODO: How do we ensure this list is exhaustive?
-  const shorthandPropertiesMap = {
-    animation: [
-      'animation-name',
-      'animation-duration',
-      'animation-timing-function',
-      'animation-delay',
-      'animation-iteration-count',
-      'animation-direction',
-      'animation-fill-mode',
-      'animation-play-state',
-    ],
-    background: [
-      'background-color',
-      'background-image',
-      'background-repeat',
-      'background-attachment',
-      'background-position',
-    ],
-    border: ['border-width', 'border-style', 'border-color'],
-    'border-block': [
-      'border-block-width',
-      'border-block-style',
-      'border-block-color',
-    ],
-    'border-block-end': [
-      'border-block-end-width',
-      'border-block-end-style',
-      'border-block-end-color',
-    ],
-    'border-block-start': [
-      'border-block-start-width',
-      'border-block-start-style',
-      'border-block-start-color',
-    ],
-    'border-bottom': [
-      'border-bottom-width',
-      'border-bottom-style',
-      'border-bottom-color',
-    ],
-    'border-color': [
-      'border-top-color',
-      'border-right-color',
-      'border-bottom-color',
-      'border-left-color',
-    ],
-    'border-image': [
-      'border-image-source',
-      'border-image-slice',
-      'border-image-width',
-      'border-image-outset',
-      'border-image-repeat',
-    ],
-    'border-inline': [
-      'border-inline-width',
-      'border-inline-style',
-      'border-inline-color',
-    ],
-    'border-inline-end': [
-      'border-inline-end-width',
-      'border-inline-end-style',
-      'border-inline-end-color',
-    ],
-    'border-inline-start': [
-      'border-inline-start-width',
-      'border-inline-start-style',
-      'border-inline-start-color',
-    ],
-    'border-left': [
-      'border-left-width',
-      'border-left-style',
-      'border-left-color',
-    ],
-    'border-radius': [
-      'border-top-left-radius',
-      'border-top-right-radius',
-      'border-bottom-right-radius',
-      'border-bottom-left-radius',
-    ],
-    'border-right': [
-      'border-right-width',
-      'border-right-style',
-      'border-right-color',
-    ],
-    'border-style': [
-      'border-top-style',
-      'border-right-style',
-      'border-bottom-style',
-      'border-left-style',
-    ],
-    'border-top': ['border-top-width', 'border-top-style', 'border-top-color'],
-    'border-width': [
-      'border-top-width',
-      'border-right-width',
-      'border-bottom-width',
-      'border-left-width',
-    ],
-    'box-shadow': ['box-shadow'],
-    'column-rule': [
-      'column-rule-width',
-      'column-rule-style',
-      'column-rule-color',
-    ],
-    columns: ['column-width', 'column-count'],
-    flex: ['flex-grow', 'flex-shrink', 'flex-basis'],
-    'flex-flow': ['flex-direction', 'flex-wrap'],
-    font: [
-      'font-style',
-      'font-variant',
-      'font-weight',
-      'font-stretch',
-      'font-size',
-      'line-height',
-      'font-family',
-    ],
-    gap: ['row-gap', 'column-gap'],
-    grid: [
-      'grid-template-rows',
-      'grid-template-columns',
-      'grid-template-areas',
-      'grid-auto-rows',
-      'grid-auto-columns',
-      'grid-auto-flow',
-    ],
-    'grid-area': [
-      'grid-row-start',
-      'grid-column-start',
-      'grid-row-end',
-      'grid-column-end',
-    ],
-    'grid-column': ['grid-column-start', 'grid-column-end'],
-    'grid-row': ['grid-row-start', 'grid-row-end'],
-    'grid-template': [
-      'grid-template-rows',
-      'grid-template-columns',
-      'grid-template-areas',
-    ],
-    'list-style': [
-      'list-style-type',
-      'list-style-position',
-      'list-style-image',
-    ],
-    margin: ['margin-top', 'margin-right', 'margin-bottom', 'margin-left'],
-    mask: [
-      'mask-image',
-      'mask-mode',
-      'mask-repeat',
-      'mask-position',
-      'mask-clip',
-      'mask-origin',
-      'mask-size',
-      'mask-composite',
-    ],
-    offset: [
-      'offset-position',
-      'offset-path',
-      'offset-distance',
-      'offset-rotate',
-      'offset-anchor',
-    ],
-    outline: ['outline-width', 'outline-style', 'outline-color'],
-    overflow: ['overflow-x', 'overflow-y'],
-    padding: ['padding-top', 'padding-right', 'padding-bottom', 'padding-left'],
-    'place-content': ['align-content', 'justify-content'],
-    'place-items': ['align-items', 'justify-items'],
-    'place-self': ['align-self', 'justify-self'],
-    'text-decoration': [
-      'text-decoration-line',
-      'text-decoration-style',
-      'text-decoration-color',
-      'text-decoration-thickness',
-    ],
-    'text-emphasis': ['text-emphasis-style', 'text-emphasis-color'],
-    transition: [
-      'transition-property',
-      'transition-duration',
-      'transition-timing-function',
-      'transition-delay',
-    ],
-  };
-
-  const shorthandProperties = Object.entries(shorthandPropertiesMap).reduce(
-    (acc, [key, value]) => {
-      /*
-      We don't include key here because we do not support css shorthands,
-      but we do support alias props whose values are fallbacks for the longhand css properties
-      ( i.e. padding is an alias whose token value is a fallback for padding-block-start and padding-block-end etc).
-      {
-        'animation-name': null
-        ...
-      }
-    */
-      if (value === 'background') {
-        console.log(value);
-      }
-
-      for (let val of value) {
-        acc[val] = null;
-      }
-      return acc;
-    },
-    {},
-  );
-
   const parsedFiles = await css.listAll();
-  // Do a pass to gather up properties and group them by shorthand -> longhand
-  // { CSS: { properties: [] }, print: { properties: [] } }
+
+  const properties = {};
   for (let [shortname, data] of Object.entries(parsedFiles)) {
     // Treat delta specs the same as their "full" spec name. The data in
     // @webref/css is ordered, so deltas will always come after full specs.
     shortname = stripDeltaSpecSuffix(shortname);
-    if (!supportedSpecifications.includes(shortname)) {
+    if (!allowedSpecifications.includes(shortname)) {
       continue;
     }
 
-    // Need to ensure shorthand properties come before longhand properties so
-    // the most specific (longhand) applies when set.
-    // For example, `flex-flow` is a shorthand of `flex-direction` and
-    // `flex-wrap`, and so must come before both of those.
-    // Cannot use alphabetical sorting (`flex-direction` would end up before
-    // `flex-flow` which is invalid).
-    // Cannot use `property.logicalProperyGroup` as that's not reliable (doesn't
-    // even exist for the `flex` family of properties).
-    // Cannot rely on the properties in this dataset containing both long and
-    // shorthand variants since later "Delta" specs might introduce new
-    // shorthands (and so would come after the longhand when iterating and
-    // therefore are invalid).
-    // Possible solutions:
-    // 1. Filter out all the shorthand properties.
-    // 2. Create a list of { 'flex-direction': 'flex-flow' } used to sort
-    //    longhands after shorthands
     for (let i = 0; i < data.properties.length; i++) {
       const propertySpec = data.properties[i];
-      if (
-        !shorthandProperties[propertySpec.name] &&
-        !Object.keys(shorthandPropertiesMap).includes(propertySpec.name)
-      ) {
-        shorthandProperties[propertySpec.name] = {
+      if (isCSSPropertyAllowed(propertySpec.name)) {
+        properties[propertySpec.name] = {
           name: propertySpec.name,
           inherited: propertySpec.inherited === 'yes',
         };
@@ -365,60 +456,16 @@ async function getProperties() {
     }
   }
 
-  // For some reason these properties are not excluded from the mdn data set we've imported,
-  // But is excluded from the csstype library that the CSS.Properties comes from.
-  // We filter them out here so we a) remove unnecessary rule and variable instantiation in our CSS
-  // and b) don't get type errors in our typescript files.
-  const disallowList = [
-    'font-synthesis-weight',
-    'font-synthesis-style',
-    'font-synthesis-small-caps',
-  ];
-  // We need to filter out null values, as they represent css properties we do not support.
-  return Object.fromEntries(
-    Object.entries(shorthandProperties).filter(([key, value]) => {
-      if (
-        !Object.entries(mdnData)
-          .filter(([key, value]) => {
-            return (
-              // We don't want to include any experimental or non-standard css rules in our CSS
-              // These also throw type errors when we generate our types in writeTSProperties
-              value.status === 'standard' &&
-              // We don't want to include vendor prefixed properties
-              // We need this because most other vender prefixed properties are marked as not 'standard' in our mdn Data set
-              // but there are a few webkit properties that are "standard" oddly enough.
-              !key.startsWith('-webkit') &&
-              !disallowList.includes(key)
-            );
-          })
-          .map(([key]) => key)
-          .includes(key)
-      ) {
-        return false;
-      }
-
-      return value !== null;
-    }),
-  );
+  return properties;
 }
 
 async function writeProperties(file, properties) {
   await file.write('/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */');
   await file.write("\n@import '../../styles/mixins';");
+
   await file.write('\n.Box {');
-  const filteredProperties = Object.entries(properties).filter(
-    ([key]) =>
-      ![
-        'width',
-        'height',
-        'max-width',
-        'max-height',
-        'min-width',
-        'min-height',
-      ].includes(key),
-  );
-  for (let [name, property] of filteredProperties) {
-    // console.log(name, property);
+  const propertyEntries = Object.entries(properties);
+  for (let [name, property] of propertyEntries) {
     await writeScopeCustomProperty('box', name, file);
     await writeResponsiveDeclarationAtBreakpoint(
       'box',
@@ -426,29 +473,30 @@ async function writeProperties(file, properties) {
       property,
       'xs',
       file,
+      2,
     );
   }
+  await file.write('\n}');
 
   // Skip the 'xs' size as we've done it above outside of the media queries
   // (mobile first ftw!)
   const mediaQueries = breakpoints.slice(1);
   for (let breakpoint of mediaQueries) {
-    await file.write(
-      `\n  @media screen and (min-width: ${breakpoint.value}) {`,
-    );
-    for (let [name, property] of filteredProperties) {
+    await file.write(`\n@media screen and (min-width: ${breakpoint.value}) {`);
+    await file.write(`\n  .Box {`);
+    for (let [name, property] of propertyEntries) {
       await writeResponsiveDeclarationAtBreakpoint(
         'box',
         name,
         property,
         breakpoint.key,
         file,
+        4,
       );
     }
-    await file.write('\n}');
+    await file.write(`\n  }`);
+    await file.write(`\n}`);
   }
-
-  await file.write('\n}');
 }
 
 /*
@@ -501,6 +549,7 @@ async function writeResponsiveDeclarationAtBreakpoint(
   property,
   breakpoint,
   file,
+  indent = 2,
 ) {
   const lastIndex = breakpoints.findIndex((b) => b.key === breakpoint);
   // Sets the value to 'inherit' if it's an inherited property, or 'initial'
@@ -511,7 +560,7 @@ async function writeResponsiveDeclarationAtBreakpoint(
   for (let index = 0; index <= lastIndex; index++) {
     variables = `var(--pc-${componentName}-${propertyName}-${breakpoints[index].key}, ${variables})`;
   }
-  await file.write(`\n  ${propertyName}: ${variables};`);
+  await file.write(`\n${' '.repeat(indent)}${propertyName}: ${variables};`);
 }
 
 // For typescript we want to:

@@ -14,43 +14,23 @@ export default function Page() {
         {[...Array(1).keys()].map((id) => (
           <Cube key={id}>A cube</Cube>
         ))}
-        <Cube display="flex" flexDirection="row" rowGap="space-300">
+        <Cube display="flex" flexDirection="row" gap="space-300">
           <Cube
-            blockSize={{xs: 'height-1600', sm: 'height-100'}}
-            inlineSize="width-200"
-            paddingBlockStart="space-400"
-            paddingBlockEnd="space-400"
-            paddingInlineStart="space-400"
-            paddingInlineEnd="space-400"
-            backgroundColor="color-bg-fill-critical"
+            padding="space-400"
+            size="width-300"
+            paddingBlock="space-600"
+            outlineStyle="solid"
+            outlineWidth="3px"
+            outlineColor={{xs: 'blue', md: 'green'}}
           />
           <Cube
-            inlineSize="width-100"
-            paddingBlockStart="space-400"
-            paddingBlockEnd="space-400"
-            paddingInlineStart="space-400"
-            paddingInlineEnd="space-400"
-            backgroundColor="color-avatar-four-bg-fill"
-          >
-            <Cube display="flex" flexDirection="column">
-              <Cube
-                blockSize="height-1200"
-                paddingBlockStart="space-400"
-                paddingBlockEnd="space-400"
-                paddingInlineStart="space-400"
-                paddingInlineEnd="space-400"
-                backgroundColor="color-backdrop-bg"
-              />
-              <Cube
-                blockSize="height-800"
-                paddingBlockStart="space-400"
-                paddingBlockEnd="space-400"
-                paddingInlineStart="space-400"
-                paddingInlineEnd="space-400"
-                backgroundColor="color-bg-fill-hover"
-              />
-            </Cube>
-          </Cube>
+            padding="space-400"
+            size="width-150"
+            paddingBlock="space-600"
+            outlineStyle="solid"
+            outlineWidth="3px"
+            outlineColor={{xs: 'blue', md: 'green'}}
+          />
         </Cube>
       </div>
     </AppProvider>
