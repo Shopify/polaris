@@ -1,9 +1,9 @@
 import type {MetaTokenProperties} from '../types';
 
 export interface MotionCSSProperties {
-  transitionDuration: MotionDurationScale;
-  animationName: MotionKeyframesAlias;
-  transitionTimingFunction: MotionTimingFunctionAlias;
+  transitionDuration: `motion-duration-${MotionDurationScale}`;
+  animationName: `motion-keyframes-${MotionKeyframesAlias}`;
+  transitionTimingFunction: `motion-${MotionTimingFunctionAlias}`;
 }
 export type MotionDurationScale =
   | '0'

@@ -13,8 +13,8 @@ export type BorderRadiusScale =
   | '750';
 
 export interface BorderCSSProperties {
-  borderRadius: BorderRadiusScale;
-  borderWidth: BorderWidthScale;
+  borderRadius: `border-radius-${BorderRadiusAliasOrScale}`;
+  borderWidth: `border-width-${BorderWidthScale}`;
 }
 
 export type BorderRadiusAlias = 'full';
