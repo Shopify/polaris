@@ -780,7 +780,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       <div className={resourceListWrapperClasses} ref={tableMeasurerRef}>
         {filterControlMarkup}
         {headerMarkup}
-        {/* {bulkActionsMarkup} */}
         {listMarkup}
         {emptySearchStateMarkup}
         {emptyStateMarkup}

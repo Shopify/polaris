@@ -4366,15 +4366,126 @@ export function WithPagination() {
   );
 }
 
+export function WithStickyScrollBar() {
+  const customers = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '#',
+      name: `Mae Jemison ${num}`,
+      location: 'Truth or Consequences, United States of America',
+      orders: 20,
+      amountSpent: '$24,00',
+      channel: 'Point of sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
+      tags: 'No tags applied',
+    };
+  });
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        channel,
+        paymentStatus,
+        fulfillmentStatus,
+        tags,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{tags}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Box paddingBlockEnd="400">
+      <BlockStack gap="200">
+        <LegacyCard>
+          <IndexTable
+            resourceName={resourceName}
+            itemCount={customers.length}
+            selectedItemsCount={
+              allResourcesSelected ? 'All' : selectedResources.length
+            }
+            onSelectionChange={handleSelectionChange}
+            headings={[
+              {title: 'Name'},
+              {title: 'Location'},
+              {
+                alignment: 'end',
+                id: 'order-count',
+                title: 'Order count',
+              },
+              {
+                alignment: 'end',
+                id: 'amount-spent',
+                title: 'Amount spent',
+              },
+              {title: 'Channel'},
+              {title: 'Payment status'},
+              {title: 'Fulfillment status'},
+              {title: 'Tags'},
+            ]}
+          >
+            {rowMarkup}
+          </IndexTable>
+        </LegacyCard>
+      </BlockStack>
+    </Box>
+  );
+}
+
 export function WithPaginationAndBulkActions() {
   const customers = Array.from({length: 50}, (_, num) => {
     return {
       id: `${num}`,
       url: '#',
       name: `Mae Jemison ${num}`,
-      location: 'Decatur, USA',
+      location: 'Truth or Consequences, United States of America',
       orders: 20,
       amountSpent: '$24,00',
+      channel: 'Point of sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
+      tags: 'No tags applied',
     };
   });
 
@@ -4434,7 +4545,20 @@ export function WithPaginationAndBulkActions() {
   ];
 
   const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        channel,
+        paymentStatus,
+        fulfillmentStatus,
+        tags,
+      },
+      index,
+    ) => (
       <IndexTable.Row
         id={id}
         key={id}
@@ -4457,6 +4581,10 @@ export function WithPaginationAndBulkActions() {
             {amountSpent}
           </Text>
         </IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{tags}</IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -4488,6 +4616,10 @@ export function WithPaginationAndBulkActions() {
                 id: 'amount-spent',
                 title: 'Amount spent',
               },
+              {title: 'Channel'},
+              {title: 'Payment status'},
+              {title: 'Fulfillment status'},
+              {title: 'Tags'},
             ]}
             pagination={{
               hasNext: true,
