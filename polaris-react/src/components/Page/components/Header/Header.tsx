@@ -49,6 +49,8 @@ interface PrimaryAction
 export interface HeaderProps extends TitleProps {
   /** Visually hide the title */
   titleHidden?: boolean;
+  /** A label to use for the page when the page is ready, used by screen readers. Will override the title prop if present */
+  pageReadyAccessibilityLabel?: string;
   /** Enables filtering action list items */
   filterActions?: boolean;
   /** Primary page-level action */
@@ -74,6 +76,7 @@ const LONG_TITLE = 34;
 export function Header({
   title,
   subtitle,
+  pageReadyAccessibilityLabel,
   titleMetadata,
   additionalMetadata,
   titleHidden = false,
@@ -128,15 +131,19 @@ export function Header({
     </div>
   );
 
-  const pageReadyAccessibilityLabelMarkup = title ? (
-    <div role="status">
-      <Text visuallyHidden as="p">
-        {i18n.translate('Polaris.Page.Header.pageReadyAccessibilityLabel', {
-          title,
-        })}
-      </Text>
-    </div>
-  ) : undefined;
+  const labelForPageReadyAccessibilityLabel =
+    pageReadyAccessibilityLabel || title;
+
+  const pageReadyAccessibilityLabelMarkup =
+    labelForPageReadyAccessibilityLabel ? (
+      <div role="status">
+        <Text visuallyHidden as="p">
+          {i18n.translate('Polaris.Page.Header.pageReadyAccessibilityLabel', {
+            title: labelForPageReadyAccessibilityLabel,
+          })}
+        </Text>
+      </div>
+    ) : undefined;
 
   const primaryActionMarkup = primaryAction ? (
     <PrimaryActionMarkup primaryAction={primaryAction} />
