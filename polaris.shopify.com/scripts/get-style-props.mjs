@@ -12,10 +12,9 @@ const breakpoints = [
   {key: 'lg', value: '1040px'},
   {key: 'xl', value: '1400px'},
 ];
-
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const properties = await getProperties();
 
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const sassFile = await fs.open(
   path.resolve(__dirname, '../src/components/Cube/style.module.scss'),
   'w+',
