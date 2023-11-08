@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Czynności",
-        "moreActionsActivatorLabel": "Więcej czynności",
-        "warningMessage": "Aby zapewnić większy komfort użytkowania, maksymalna liczba promowanych czynności powinna wynosić tylko {maxPromotedActions}."
+        "moreActionsActivatorLabel": "Więcej czynności"
       },
       "showingTotalCount": "Wyświetlanie {itemsCount} z {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Zaznaczono wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze",

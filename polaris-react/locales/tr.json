@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "İşlemler",
-        "moreActionsActivatorLabel": "Diğer işlemler",
-        "warningMessage": "Daha iyi bir kullanıcı deneyimi sunmak için. Öne çıkarılan işlemlerin sayısı en fazla {maxPromotedActions} olmalıdır."
+        "moreActionsActivatorLabel": "Diğer işlemler"
       },
       "showingTotalCount": "{totalItemsCount} {resource} içinden {itemsCount} tanesi gösteriliyor",
       "allFilteredItemsSelected": "Bu filtredeki {itemsLength}+ {resourceNamePlural} tümü seçildi",

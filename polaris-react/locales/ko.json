@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "작업",
-        "moreActionsActivatorLabel": "기타 작업",
-        "warningMessage": "더 나은 사용자 환경을 제공하려면 프로모션 작업의 수가 {maxPromotedActions}개 이하여야 합니다."
+        "moreActionsActivatorLabel": "기타 작업"
       },
       "showingTotalCount": "{resource} {totalItemsCount}개 중 {itemsCount}개 표시",
       "allFilteredItemsSelected": "이 필터에서 길이가 {itemsLength}보다 긴 {resourceNamePlural}을(를) 모두 선택했습니다.",
