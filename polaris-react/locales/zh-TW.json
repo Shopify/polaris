@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "動作",
-        "moreActionsActivatorLabel": "更多動作",
-        "warningMessage": "為提供更良好的用戶體驗，您一次舉辦的促銷活動應以 {maxPromotedActions} 項為限。"
+        "moreActionsActivatorLabel": "更多動作"
       },
       "showingTotalCount": "顯示第 {itemsCount} 個 {resource}，共 {totalItemsCount} 個",
       "allFilteredItemsSelected": "已選取此篩選條件中全部 {itemsLength}+ 個{resourceNamePlural}",

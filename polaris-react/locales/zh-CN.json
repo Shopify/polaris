@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "编辑",
-        "moreActionsActivatorLabel": "其他操作",
-        "warningMessage": "为了提供更好的用户体验，最多只能有 {maxPromotedActions} 个推广操作。"
+        "moreActionsActivatorLabel": "其他操作"
       },
       "showingTotalCount": "显示 {itemsCount} 个 {resource}（共 {totalItemsCount} 个）",
       "allFilteredItemsSelected": "已选择此筛选器中所有 {itemsLength}+ 个{resourceNamePlural}。",
