@@ -15,7 +15,11 @@ import {
   IndexFiltersMode,
   ButtonGroup,
 } from '@shopify/polaris';
-import {View, Delete, MobileVerticalDots} from '@shopify/polaris-icons';
+import {
+  ViewMinor,
+  DeleteMinor,
+  MobileVerticalDotsMajor,
+} from '@shopify/polaris-icons';
 
 import type {IndexFiltersProps} from './IndexFilters';
 

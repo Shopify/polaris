@@ -1,5 +1,10 @@
 import {Button, Popover, ActionList} from '@shopify/polaris';
-import {Import, Export, Edit, Delete} from '@shopify/polaris-icons';
+import {
+  ImportMinor,
+  ExportMinor,
+  EditMinor,
+  DeleteMinor,
+} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -28,15 +33,15 @@ function SectionedActionListExample() {
             {
               title: 'File options',
               items: [
-                {content: 'Import file', icon: Import},
-                {content: 'Export file', icon: Export},
+                {content: 'Import file', icon: ImportMinor},
+                {content: 'Export file', icon: ExportMinor},
               ],
             },
             {
               title: 'Bulk actions',
               items: [
-                {content: 'Edit', icon: Edit},
-                {content: 'Delete', icon: Delete},
+                {content: 'Edit', icon: EditMinor},
+                {content: 'Delete', icon: DeleteMinor},
               ],
             },
           ]}

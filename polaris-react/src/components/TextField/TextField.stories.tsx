@@ -16,7 +16,11 @@ import {
   Tooltip,
   BlockStack,
 } from '@shopify/polaris';
-import {Delete, QuestionMark, Search} from '@shopify/polaris-icons';
+import {
+  DeleteMinor,
+  QuestionMarkMinor,
+  SearchMinor,
+} from '@shopify/polaris-icons';
 
 export default {
   component: TextField,
@@ -415,7 +419,7 @@ export function WithSeparateValidationError() {
           <InlineError message={errorMessage} fieldID={textFieldID} />
         </div>
       </LegacyStack.Item>
-      <Button icon={Delete} accessibilityLabel="Remove item" />
+      <Button icon={DeleteMinor} accessibilityLabel="Remove item" />
     </LegacyStack>
   );
 
@@ -703,7 +707,7 @@ export function All() {
           type="search"
           value="Value"
           onChange={() => {}}
-          prefix={<Icon source={Search} />}
+          prefix={<Icon source={SearchMinor} />}
           autoComplete="off"
         />
         <TextField
@@ -712,7 +716,7 @@ export function All() {
           onChange={() => {}}
           suffix={
             <Tooltip content="Hello world">
-              <Icon source={QuestionMark} />
+              <Icon source={QuestionMarkMinor} />
             </Tooltip>
           }
           autoComplete="off"

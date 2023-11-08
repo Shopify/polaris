@@ -1,10 +1,10 @@
 import React, {useEffect, useRef} from 'react';
 import {
-  CirclePlus,
-  Tick,
-  Risk,
-  Info,
-  DiamondAlert,
+  CirclePlusMinor,
+  TickMinor,
+  RiskMinor,
+  InfoMinor,
+  DiamondAlertMinor,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
@@ -46,8 +46,8 @@ describe('<Banner />', () => {
   });
 
   it('passes the provided icon source to Icon', () => {
-    const banner = mountWithApp(<Banner icon={CirclePlus} />);
-    expect(banner).toContainReactComponent(Icon, {source: CirclePlus});
+    const banner = mountWithApp(<Banner icon={CirclePlusMinor} />);
+    expect(banner).toContainReactComponent(Icon, {source: CirclePlusMinor});
   });
 
   it('disables aria-live when stopAnnouncements is enabled', () => {
@@ -366,10 +366,10 @@ describe('<Banner />', () => {
 
   describe('icon', () => {
     it.each([
-      ['success', Tick],
-      ['info', Info],
-      ['warning', Risk],
-      ['critical', DiamondAlert],
+      ['success', TickMinor],
+      ['info', InfoMinor],
+      ['warning', RiskMinor],
+      ['critical', DiamondAlertMinor],
     ])('icon when status is %s', (tone: BannerTone, icon: any) => {
       const banner = mountWithApp(<Banner tone={tone} />);
 

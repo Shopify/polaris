@@ -1,5 +1,5 @@
 import React from 'react';
-import {ChevronLeft, ChevronRight} from '@shopify/polaris-icons';
+import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
@@ -52,7 +52,7 @@ export function Navigation({
     <div className={styles.Navigation} ref={setRef}>
       <Button
         variant="tertiary"
-        icon={ChevronLeft}
+        icon={ChevronLeftMinor}
         disabled={isScrolledFarthestLeft}
         accessibilityLabel={leftA11yLabel}
         onClick={navigateTableLeft}
@@ -60,7 +60,7 @@ export function Navigation({
       {pipMarkup}
       <Button
         variant="tertiary"
-        icon={ChevronRight}
+        icon={ChevronRightMinor}
         disabled={isScrolledFarthestRight}
         accessibilityLabel={rightA11yLabel}
         onClick={navigateTableRight}

@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback, useMemo} from 'react';
-import {ArrowLeft, ArrowRight} from '@shopify/polaris-icons';
+import {ArrowLeftMinor, ArrowRightMinor} from '@shopify/polaris-icons';
 
 import {Button} from '../Button';
 import {classNames} from '../../utilities/css';
@@ -260,7 +260,7 @@ export function DatePicker({
       <div className={styles.Header}>
         <Button
           variant="tertiary"
-          icon={ArrowLeft}
+          icon={ArrowLeftMinor}
           accessibilityLabel={i18n.translate(
             'Polaris.DatePicker.previousMonth',
             {
@@ -274,7 +274,7 @@ export function DatePicker({
         />
         <Button
           variant="tertiary"
-          icon={ArrowRight}
+          icon={ArrowRightMinor}
           accessibilityLabel={i18n.translate('Polaris.DatePicker.nextMonth', {
             nextMonth,
             nextYear,

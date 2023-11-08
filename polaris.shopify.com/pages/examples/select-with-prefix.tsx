@@ -1,5 +1,5 @@
 import {Icon, Select} from '@shopify/polaris';
-import {CaretUp, CaretDown} from '@shopify/polaris-icons';
+import {CaretUpMinor, CaretDownMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -15,12 +15,12 @@ function PrefixExample() {
     {
       label: 'Increase',
       value: 'Increase',
-      prefix: <Icon source={CaretUp} />,
+      prefix: <Icon source={CaretUpMinor} />,
     },
     {
       label: 'Decrease',
       value: 'Decrease',
-      prefix: <Icon source={CaretDown} />,
+      prefix: <Icon source={CaretDownMinor} />,
     },
   ];
 

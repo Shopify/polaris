@@ -1,18 +1,19 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {
-  Analytics,
-  Apps,
-  CirclePlus,
-  Customers,
-  Discounts,
-  External,
-  Globe,
-  Home,
-  Marketing,
-  Orders,
-  Products,
-  Settings,
-  Wifi,
+  AnalyticsMajor,
+  AppsMajor,
+  CirclePlusMinor,
+  CustomersMajor,
+  DiscountsMajor,
+  ExternalMinor,
+  GlobeMinor,
+  HomeMajor,
+  MarketingMajor,
+  OrdersMajor,
+  ProductsMajor,
+  ProductsMinor,
+  SettingsMajor,
+  WifiMajor,
 } from '@shopify/polaris-icons';
 
 import {
@@ -219,7 +220,7 @@ export function DetailsPage() {
         items={[
           {
             label: 'Home',
-            icon: Home,
+            icon: HomeMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('home');
@@ -229,7 +230,7 @@ export function DetailsPage() {
           },
           {
             label: 'Orders',
-            icon: Orders,
+            icon: OrdersMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('orders');
@@ -268,7 +269,7 @@ export function DetailsPage() {
           },
           {
             label: 'Products',
-            icon: Products,
+            icon: ProductsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('products');
@@ -307,7 +308,7 @@ export function DetailsPage() {
           },
           {
             label: 'Customers',
-            icon: Customers,
+            icon: CustomersMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('customers');
@@ -317,7 +318,7 @@ export function DetailsPage() {
           },
           {
             label: 'Analytics',
-            icon: Analytics,
+            icon: AnalyticsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('analytics');
@@ -327,7 +328,7 @@ export function DetailsPage() {
           },
           {
             label: 'Marketing',
-            icon: Marketing,
+            icon: MarketingMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('marketing');
@@ -337,7 +338,7 @@ export function DetailsPage() {
           },
           {
             label: 'Discounts',
-            icon: Discounts,
+            icon: DiscountsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('discounts');
@@ -347,7 +348,7 @@ export function DetailsPage() {
           },
           {
             label: 'Apps',
-            icon: Apps,
+            icon: AppsMajor,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('apps');
@@ -361,7 +362,7 @@ export function DetailsPage() {
         fill
         title="Sales channels"
         action={{
-          icon: CirclePlus,
+          icon: CirclePlusMinor,
           accessibilityLabel: 'Add sales channel',
           onClick: toggleModalActive,
           tooltip: {
@@ -411,14 +412,14 @@ export function DetailsPage() {
           },
           {
             label: 'Updog Marketplace',
-            icon: Products,
+            icon: ProductsMinor,
             onClick: () => {},
             matches: navItemActive === 'pos',
             url: '#',
             secondaryAction: {
               url: '#',
               accessibilityLabel: 'OLp',
-              icon: External,
+              icon: ExternalMinor,
               tooltip: {
                 content: 'Open Updog Marketplace',
               },
@@ -426,14 +427,14 @@ export function DetailsPage() {
           },
           {
             label: 'Radio',
-            icon: Wifi,
+            icon: WifiMajor,
             onClick: () => {},
             matches: navItemActive === 'pos',
             url: '#',
             secondaryAction: {
               url: '#',
               accessibilityLabel: 'radio',
-              icon: Globe,
+              icon: GlobeMinor,
             },
           },
         ]}
@@ -441,7 +442,7 @@ export function DetailsPage() {
       <Navigation.Section
         items={[
           {
-            icon: Settings,
+            icon: SettingsMajor,
             label: 'Settings',
             onClick: toggleModalActive,
           },

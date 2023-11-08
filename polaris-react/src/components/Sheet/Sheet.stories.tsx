@@ -16,7 +16,7 @@ import {
   Icon,
   AutoSelection,
 } from '@shopify/polaris';
-import {MobileCancel, Search} from '@shopify/polaris-icons';
+import {MobileCancelMajor, SearchMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Sheet,
@@ -122,7 +122,7 @@ export function Default() {
             </Text>
             <Button
               accessibilityLabel="Cancel"
-              icon={MobileCancel}
+              icon={MobileCancelMajor}
               onClick={toggleSheetActive}
               variant="plain"
             />
@@ -359,7 +359,7 @@ export function WithSearchableListbox() {
           placeholder="Search segments"
           autoComplete="off"
           value={query}
-          prefix={<Icon source={Search} />}
+          prefix={<Icon source={SearchMinor} />}
           ariaActiveDescendant={activeOptionId}
           ariaControls={listboxId}
           onChange={handleQueryChange}
@@ -475,7 +475,7 @@ export function WithSearchableListbox() {
               </Text>
               <Button
                 accessibilityLabel="Cancel"
-                icon={MobileCancel}
+                icon={MobileCancelMajor}
                 onClick={handleCloseSheet}
                 variant="plain"
               />

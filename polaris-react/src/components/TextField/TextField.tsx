@@ -6,7 +6,7 @@ import React, {
   useCallback,
   useId,
 } from 'react';
-import {CircleCancel} from '@shopify/polaris-icons';
+import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -367,7 +367,7 @@ export function TextField({
         <Text as="span" visuallyHidden>
           {i18n.translate('Polaris.Common.clear')}
         </Text>
-        <Icon source={CircleCancel} tone="base" />
+        <Icon source={CircleCancelMinor} tone="base" />
       </button>
     ) : null;
 

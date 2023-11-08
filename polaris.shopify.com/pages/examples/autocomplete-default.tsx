@@ -1,5 +1,5 @@
 import {Autocomplete, Icon} from '@shopify/polaris';
-import {Search} from '@shopify/polaris-icons';
+import {SearchMinor} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -56,7 +56,7 @@ function AutocompleteExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={Search} tone="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
       autoComplete="off"
     />

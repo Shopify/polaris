@@ -1,5 +1,5 @@
 import React from 'react';
-import {Cancel} from '@shopify/polaris-icons';
+import {CancelMajor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {Button} from '../../../Button';
@@ -16,7 +16,7 @@ export function CloseButton({pressed, onClick}: CloseButtonProps) {
     <Button
       variant="tertiary"
       pressed={pressed}
-      icon={Cancel}
+      icon={CancelMajor}
       onClick={onClick}
       accessibilityLabel={i18n.translate('Polaris.Common.close')}
     />

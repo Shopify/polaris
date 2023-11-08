@@ -14,7 +14,7 @@ import {
   Text,
   TextContainer,
 } from '@shopify/polaris';
-import {Discounts} from '@shopify/polaris-icons';
+import {DiscountsMajor, DiscountsMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Banner,
@@ -247,7 +247,7 @@ export function CustomIcon() {
   return (
     <Banner
       tone="info"
-      icon={Discounts}
+      icon={DiscountsMajor}
       title="Choose a plan and your discount will be applied at checkout."
     />
   );
@@ -325,7 +325,7 @@ export function All() {
       <Text as="h2" variant="headingMd">
         Custom icon
       </Text>
-      <AllBanners icon={Discounts} onDismiss={() => {}} />
+      <AllBanners icon={DiscountsMajor} onDismiss={() => {}} />
       <Text as="h2" variant="headingMd">
         With links
       </Text>
@@ -365,7 +365,7 @@ export function All() {
         In card custom icon
       </Text>
       <LegacyCard sectioned>
-        <AllBanners icon={Discounts} onDismiss={() => {}} />
+        <AllBanners icon={DiscountsMinor} onDismiss={() => {}} />
       </LegacyCard>
       <Text as="h2" variant="headingMd">
         In card with links

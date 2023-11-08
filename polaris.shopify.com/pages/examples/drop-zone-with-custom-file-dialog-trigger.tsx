@@ -5,7 +5,7 @@ import {
   DropZone,
   Text,
 } from '@shopify/polaris';
-import {Note} from '@shopify/polaris-icons';
+import {NoteMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -35,7 +35,7 @@ function DropZoneWithCustomFileDialogExample() {
             source={
               validImageTypes.indexOf(file.type) > -1
                 ? window.URL.createObjectURL(file)
-                : Note
+                : NoteMinor
             }
           />
           <div>

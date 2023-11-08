@@ -1,12 +1,12 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  Delete,
-  Plus,
-  ArrowDown,
-  External,
-  View,
-  MobileVerticalDots,
+  DeleteMinor,
+  PlusMinor,
+  ArrowDownMinor,
+  ExternalMinor,
+  ViewMinor,
+  MobileVerticalDotsMajor,
 } from '@shopify/polaris-icons';
 import {
   Badge,
@@ -34,20 +34,20 @@ export function Default() {
         {
           content: 'Delete',
           tone: 'critical',
-          icon: Delete,
+          icon: DeleteMinor,
           accessibilityLabel: 'Delete action label',
           onAction: () => console.log('Delete action'),
         },
         {
           content: 'View on your store',
-          icon: View,
+          icon: ViewMinor,
           onAction: () => console.log('View on your store action'),
         },
       ]}
       actionGroups={[
         {
           title: 'Promote',
-          icon: MobileVerticalDots,
+          icon: MobileVerticalDotsMajor,
           actions: [
             {
               content: 'Share on Facebook',
@@ -176,7 +176,7 @@ export function WithSubtitle() {
       backAction={{content: 'Products', url: '#'}}
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
-      secondaryActions={[{content: 'Download', icon: ArrowDown}]}
+      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
@@ -192,7 +192,7 @@ export function WithSubtitleAndAdditionalMetadata() {
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       additionalMetadata="Net payment due: Within 60 days of receipt"
-      secondaryActions={[{content: 'Download', icon: ArrowDown}]}
+      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
@@ -207,7 +207,7 @@ export function WithSubtitleAndAdditionalMetadataAndNoBackAction() {
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       additionalMetadata="Net payment due: Within 60 days of receipt"
-      secondaryActions={[{content: 'Download', icon: ArrowDown}]}
+      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
@@ -225,7 +225,7 @@ export function WithExternalLink() {
         {
           content: 'Promote',
           external: true,
-          icon: External,
+          icon: ExternalMinor,
           url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
         },
       ]}
@@ -256,7 +256,7 @@ export function FullWidth() {
     <Page
       fullWidth
       title="Orders"
-      primaryAction={{content: 'Create order', icon: Plus}}
+      primaryAction={{content: 'Create order', icon: PlusMinor}}
       secondaryActions={[{content: 'Export'}]}
       pagination={{
         hasNext: true,

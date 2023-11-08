@@ -1,5 +1,9 @@
 import React from 'react';
-import {Select, ChevronDown, ChevronUp} from '@shopify/polaris-icons';
+import {
+  SelectMinor,
+  ChevronDownMinor,
+  ChevronUpMinor,
+} from '@shopify/polaris-icons';
 
 import type {BaseButton, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
@@ -144,7 +148,11 @@ export function Button({
           source={
             loading
               ? 'placeholder'
-              : getDisclosureIconSource(disclosure, ChevronUp, ChevronDown)
+              : getDisclosureIconSource(
+                  disclosure,
+                  ChevronUpMinor,
+                  ChevronDownMinor,
+                )
           }
         />
       </div>
@@ -248,7 +256,7 @@ function getDisclosureIconSource(
   downIcon: IconSource,
 ) {
   if (disclosure === 'select') {
-    return Select;
+    return SelectMinor;
   }
 
   return disclosure === 'up' ? upIcon : downIcon;

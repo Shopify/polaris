@@ -1,13 +1,13 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
-  Home,
-  Orders,
-  CirclePlusOutline,
-  Products,
-  Customers,
-  Marketing,
-  OnlineStore,
-  View,
+  HomeMinor,
+  OrdersMinor,
+  CirclePlusOutlineMinor,
+  ProductsMinor,
+  CustomersMinor,
+  MarketingMinor,
+  OnlineStoreMinor,
+  ViewMinor,
 } from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -23,13 +23,13 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Inactive item',
-              icon: Home,
+              icon: HomeMinor,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Item with indicator',
-              icon: Home,
+              icon: HomeMinor,
               subNavigationItems: [
                 {
                   url: '#',
@@ -45,24 +45,24 @@ function NavigationExample() {
               excludePaths: ['#'],
               label: 'New item',
               new: true,
-              icon: Home,
+              icon: HomeMinor,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Badged item',
               badge: 'Old',
-              icon: Home,
+              icon: HomeMinor,
             },
             {
               url: '#',
               label: 'Active with secondary action',
-              icon: Orders,
+              icon: OrdersMinor,
               selected: true,
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'Add an order',
-                icon: CirclePlusOutline,
+                icon: CirclePlusOutlineMinor,
                 tooltip: {
                   content: 'Add an order',
                 },
@@ -71,7 +71,7 @@ function NavigationExample() {
             {
               url: location,
               label: 'Active item with sub navigation',
-              icon: Products,
+              icon: ProductsMinor,
               selected: true,
               subNavigationItems: [
                 {
@@ -97,13 +97,13 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Disabled item',
-              icon: Customers,
+              icon: CustomersMinor,
               disabled: true,
             },
             {
               url: '#',
               label: 'Overflow item',
-              icon: Marketing,
+              icon: MarketingMinor,
             },
           ]}
           rollup={{
@@ -120,7 +120,7 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Icon as svg',
-              icon: OnlineStore,
+              icon: OnlineStoreMinor,
             },
             {
               url: '#',
@@ -141,7 +141,7 @@ function NavigationExample() {
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'View your online store',
-                icon: View,
+                icon: ViewMinor,
                 tooltip: {
                   content: 'View your online store',
                 },
@@ -150,7 +150,7 @@ function NavigationExample() {
           ]}
           action={{
             accessibilityLabel: 'Add sales channel',
-            icon: CirclePlusOutline,
+            icon: CirclePlusOutlineMinor,
             onClick: () => {},
           }}
           separator
