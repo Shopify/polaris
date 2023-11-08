@@ -1,0 +1,16 @@
+name: Circle cancel
+set: major
+description: Used to represent an action to cancel or remove an item or resource.
+keywords:
+  - cancel
+  - delete
+  - stop
+  - remove
+  - x
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 1
+date_added: 2019-03-15
+date_modified: 2023-06-23
+exclusive_use:

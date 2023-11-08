@@ -1,0 +1,19 @@
+name: Clock
+set: major
+description: Used to represent a clock, or the time.
+keywords:
+  - time
+  - clock
+  - watch
+  - minute
+  - second
+  - hour
+  - stopwatch
+  - circle
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 1
+date_added: 2019-03-12
+date_modified: 2023-06-23
+exclusive_use:
