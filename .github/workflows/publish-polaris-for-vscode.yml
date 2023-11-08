@@ -17,7 +17,7 @@ jobs:
       - uses: actions/checkout@v3
         name: Checkout
 
-      - name: Testing testing a ${{github.ref}} b ${{github.head_ref}}
+      - name: Testing testing a ${{github.ref}} b ${{github.head_ref}} c ${{github.ref_name}}
         run: echo 'its working'
         # Only run on merges from refs/heads/changeset-release/main
         if: ${{ github.head_ref == 'refs/heads/alex-test-vscode-k' }}
