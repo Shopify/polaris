@@ -1,10 +1,11 @@
 import React, {Children, useId} from 'react';
 
-import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
 import {Box} from '../../../Box';
+import {BlockStack} from '../../../BlockStack';
+import {InlineStack} from '../../../InlineStack';
+import {Text} from '../../../Text';
 import {Item} from '../Item';
-import styles from '../../FormLayout.scss';
 
 export interface GroupProps {
   children?: React.ReactNode;
@@ -14,54 +15,45 @@ export interface GroupProps {
 }
 
 export function Group({children, condensed, title, helpText}: GroupProps) {
-  const className = classNames(condensed ? styles.condensed : styles.grouped);
-
   const id = useId();
 
   let helpTextElement = null;
-  let helpTextID: undefined | string;
+  let helpTextId: undefined | string;
   let titleElement = null;
-  let titleID: undefined | string;
+  let titleId: undefined | string;
 
   if (helpText) {
-    helpTextID = `${id}HelpText`;
+    helpTextId = `${id}HelpText`;
     helpTextElement = (
-      <Box
-        id={helpTextID}
-        paddingBlockStart="200"
-        paddingInlineStart="200"
-        paddingBlockEnd="0"
-        paddingInlineEnd="200"
-        color="text-secondary"
-      >
+      <Box id={helpTextId} color="text-secondary">
         {helpText}
       </Box>
     );
   }
 
   if (title) {
-    titleID = `${id}Title`;
+    titleId = `${id}Title`;
     titleElement = (
-      <div id={titleID} className={styles.Title}>
+      <Text id={titleId} as="p">
         {title}
-      </div>
+      </Text>
     );
   }
 
   const itemsMarkup = Children.map(children, (child) =>
-    wrapWithComponent(child, Item, {}),
+    wrapWithComponent(child, Item, {condensed}),
   );
 
   return (
-    <div
+    <BlockStack
       role="group"
-      className={className}
-      aria-labelledby={titleID}
-      aria-describedby={helpTextID}
+      gap="200"
+      aria-labelledby={titleId}
+      aria-describedby={helpTextId}
     >
       {titleElement}
-      <div className={styles.Items}>{itemsMarkup}</div>
+      <InlineStack gap="300">{itemsMarkup}</InlineStack>
       {helpTextElement}
-    </div>
+    </BlockStack>
   );
 }
