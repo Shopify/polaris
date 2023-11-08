@@ -1,5 +1,5 @@
 import React, {Component, createRef, useContext, useId} from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {HorizontalDotsIcon} from '@shopify/polaris-icons';
 import isEqual from 'react-fast-compare';
 
 import {ActionList} from '../ActionList';
@@ -259,7 +259,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                     accessibilityLabel={disclosureAccessibilityLabel}
                     onClick={this.handleActionsClick}
                     variant="tertiary"
-                    icon={HorizontalDotsMinor}
+                    icon={HorizontalDotsIcon}
                   />
                 }
                 onClose={this.handleCloseRequest}

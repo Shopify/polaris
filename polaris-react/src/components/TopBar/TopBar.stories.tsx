@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
-import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+import {ArrowLeftIcon, QuestionMarkIcon} from '@shopify/polaris-icons';
 
 import type {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
 
@@ -68,7 +68,7 @@ function TopBarWrapper({
           ? userActions
           : [
               {
-                items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+                items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
               },
               {
                 items: [{content: 'Community forums'}],
@@ -105,7 +105,7 @@ function TopBarWrapper({
     <TopBar.Menu
       activatorContent={
         <span>
-          <Icon source={QuestionMarkMajor} />
+          <Icon source={QuestionMarkIcon} />
           <Text as="span" visuallyHidden>
             Secondary menu
           </Text>
@@ -145,7 +145,7 @@ function TopBarWrapper({
 export function Default() {
   const userActions: UserMenuProps['actions'] = [
     {
-      items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+      items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
     },
     {
       items: [{content: 'Community forums'}],
@@ -163,7 +163,7 @@ export function Default() {
 export function WithCustomActivator() {
   const userActions: UserMenuProps['actions'] = [
     {
-      items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+      items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
     },
     {
       items: [{content: 'Community forums'}],
@@ -197,7 +197,7 @@ export function WithCustomActivator() {
 export function WithMessage() {
   const userActions: UserMenuProps['actions'] = [
     {
-      items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+      items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
     },
     {
       items: [{content: 'Community forums'}],

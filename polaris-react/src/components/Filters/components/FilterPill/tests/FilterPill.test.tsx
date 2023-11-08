@@ -1,7 +1,7 @@
 import React from 'react';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
-import {ChevronDownMinor} from '@shopify/polaris-icons';
+import {ChevronDownIcon} from '@shopify/polaris-icons';
 
 import {FilterPill} from '../FilterPill';
 import type {FilterPillProps} from '../FilterPill';
@@ -85,7 +85,7 @@ describe('<Filters />', () => {
     it('when not selected, renders a chevron icon', () => {
       const wrapper = mountWithApp(<FilterPill {...defaultProps} />, {});
       expect(wrapper.findAll(UnstyledButton)[0]).toContainReactComponent(Icon, {
-        source: ChevronDownMinor,
+        source: ChevronDownIcon,
       });
     });
 
@@ -97,7 +97,7 @@ describe('<Filters />', () => {
       expect(wrapper.findAll(UnstyledButton)[0]).not.toContainReactComponent(
         Icon,
         {
-          source: ChevronDownMinor,
+          source: ChevronDownIcon,
         },
       );
     });

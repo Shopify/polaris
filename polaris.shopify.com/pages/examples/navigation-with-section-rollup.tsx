@@ -1,5 +1,5 @@
 import {Frame, Navigation} from '@shopify/polaris';
-import {HomeMinor, OrdersMinor, ProductsMinor} from '@shopify/polaris-icons';
+import {HomeIcon, OrdersIcon, ProductsIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -13,19 +13,19 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Home',
-              icon: HomeMinor,
+              icon: HomeIcon,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
-              icon: OrdersMinor,
+              icon: OrdersIcon,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
-              icon: ProductsMinor,
+              icon: ProductsIcon,
             },
           ]}
           rollup={{

@@ -1,0 +1,17 @@
+name: Horizontal dots
+description: >-
+  Used to represent additional actions in areas where three or more actions are
+  used.
+keywords:
+  - menu
+  - ellipsis
+  - three dots
+  - dots
+  - overflow
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 1
+date_added: 2018-11-14
+date_modified: 2023-06-23
+exclusive_use:

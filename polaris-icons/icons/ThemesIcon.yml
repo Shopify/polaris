@@ -1,0 +1,13 @@
+name: Themes
+description: Used to indicate free themes in the Shopify theme store.
+keywords:
+  - theme
+  - free
+  - customize
+authors:
+  - N/A
+  - Joe Thomas
+version: 1
+date_added: 2019-03-11
+date_modified: 2023-06-23
+exclusive_use: Shopify themes

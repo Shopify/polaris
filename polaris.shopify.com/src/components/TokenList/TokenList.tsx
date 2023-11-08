@@ -8,7 +8,7 @@ import Tooltip from '../Tooltip';
 import {figmaColorNames} from '../../data/figmaColorNames';
 import Link from 'next/link';
 import {useGlobalSearchResult} from '../GlobalSearch/GlobalSearch';
-import {ClipboardMinor} from '@shopify/polaris-icons';
+import {ClipboardIcon} from '@shopify/polaris-icons';
 import SearchResultHighlight from '../SearchResultHighlight';
 import {toPxs} from '@shopify/polaris-tokens';
 
@@ -200,7 +200,7 @@ function TokenListItem({
                       }}
                       tabIndex={searchAttributes?.tabIndex}
                     >
-                      <Icon source={ClipboardMinor} width={14} height={14} />
+                      <Icon source={ClipboardIcon} width={14} height={14} />
                     </button>
                   </Tooltip>
                 </div>

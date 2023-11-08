@@ -1,0 +1,13 @@
+name: Position based attribution model
+description: Used to represent the position based marketing attribution model
+keywords:
+  - marketing
+  - attribution model
+  - position based
+authors:
+  - Serene Chen
+  - Joe Thomas
+version: 1
+date_added: 2022-10-18
+date_modified: 2023-06-23
+exclusive_use:

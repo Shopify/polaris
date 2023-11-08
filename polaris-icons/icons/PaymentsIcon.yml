@@ -1,0 +1,15 @@
+name: Payments
+description: Used to represent a payment made by credit or debit card.
+keywords:
+  - credit
+  - credit card
+  - debit
+  - debit card
+  - payment
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 1
+date_added: 2019-03-15
+date_modified: 2023-06-23
+exclusive_use:

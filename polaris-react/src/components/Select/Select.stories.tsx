@@ -11,7 +11,7 @@ import {
   TextField,
   Text,
 } from '@shopify/polaris';
-import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
+import {CaretDownIcon, CaretUpIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Select,
@@ -86,12 +86,12 @@ export function WithPrefix() {
     {
       label: 'Increase',
       value: 'Increase',
-      prefix: <Icon source={CaretUpMinor} />,
+      prefix: <Icon source={CaretUpIcon} />,
     },
     {
       label: 'Decrease',
       value: 'Decrease',
-      prefix: <Icon source={CaretDownMinor} />,
+      prefix: <Icon source={CaretDownIcon} />,
     },
   ];
 

@@ -1,0 +1,17 @@
+name: Accessibility
+description: Used to represent accessibility information or features.
+keywords:
+  - accessibility
+  - usability
+  - a11y
+  - disability
+  - equal access
+  - universal design
+  - eye
+authors:
+  - N/A
+  - Joe Thomas
+version: 1
+date_added: 2019-03-15
+date_modified: 2023-06-23
+exclusive_use:

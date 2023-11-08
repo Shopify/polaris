@@ -1,0 +1,13 @@
+name: Pin Unfilled
+description: Used to represent an unpinned item or an action to unpin something.
+keywords:
+  - unpin
+authors:
+  - David Luong
+  - Adam Whitcroft
+  - Chris Blinstrub
+  - Joe Thomas
+version: 1
+date_added: 2023-01-30
+date_modified: 2023-06-23
+exclusive_use:

@@ -1,0 +1,15 @@
+name: Sort ascending
+description: >-
+  Used to indicate that a list of items or resources has been sorted by
+  ascending order.
+keywords:
+  - ascending
+  - sort
+  - order
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 2
+date_added: 2019-03-15
+date_modified: 2023-07-17
+exclusive_use:

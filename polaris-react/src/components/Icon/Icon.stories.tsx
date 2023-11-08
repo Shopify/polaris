@@ -1,14 +1,14 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Icon, Text, BlockStack} from '@shopify/polaris';
-import {CirclePlusMinor} from '@shopify/polaris-icons';
+import {CirclePlusIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Icon,
 } as ComponentMeta<typeof Icon>;
 
 export function Default() {
-  return <Icon source={CirclePlusMinor} />;
+  return <Icon source={CirclePlusIcon} />;
 }
 
 export function Colored() {
@@ -17,71 +17,71 @@ export function Colored() {
       <Text as="p" variant="bodyMd" alignment="center">
         Base tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="base" />
+      <Icon source={CirclePlusIcon} tone="base" />
       <Text as="p" variant="bodyMd" alignment="center">
         Subdued tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="subdued" />
+      <Icon source={CirclePlusIcon} tone="subdued" />
       <Text as="p" variant="bodyMd" alignment="center">
         Primary tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="primary" />
+      <Icon source={CirclePlusIcon} tone="primary" />
       <Text as="p" variant="bodyMd" alignment="center">
         Info tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="info" />
+      <Icon source={CirclePlusIcon} tone="info" />
       <Text as="p" variant="bodyMd" alignment="center">
         Success tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="success" />
+      <Icon source={CirclePlusIcon} tone="success" />
       <Text as="p" variant="bodyMd" alignment="center">
         Caution tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="caution" />
+      <Icon source={CirclePlusIcon} tone="caution" />
       <Text as="p" variant="bodyMd" alignment="center">
         Warning tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="warning" />
+      <Icon source={CirclePlusIcon} tone="warning" />
       <Text as="p" variant="bodyMd" alignment="center">
         Critical tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="critical" />
+      <Icon source={CirclePlusIcon} tone="critical" />
       <Text as="p" variant="bodyMd" alignment="center">
         Emphasis tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="emphasis" />
+      <Icon source={CirclePlusIcon} tone="emphasis" />
       <Text as="p" variant="bodyMd" alignment="center">
         Magic tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="magic" />
+      <Icon source={CirclePlusIcon} tone="magic" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Primary tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textPrimary" />
+      <Icon source={CirclePlusIcon} tone="textPrimary" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Caution tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textCaution" />
+      <Icon source={CirclePlusIcon} tone="textCaution" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Warning tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textWarning" />
+      <Icon source={CirclePlusIcon} tone="textWarning" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Critical tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textCritical" />
+      <Icon source={CirclePlusIcon} tone="textCritical" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Info tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textInfo" />
+      <Icon source={CirclePlusIcon} tone="textInfo" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Success tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textSuccess" />
+      <Icon source={CirclePlusIcon} tone="textSuccess" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Magic tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textMagic" />
+      <Icon source={CirclePlusIcon} tone="textMagic" />
     </BlockStack>
   );
 }

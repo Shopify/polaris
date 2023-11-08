@@ -1,9 +1,9 @@
 import React, {Component, createRef} from 'react';
 import {
-  SearchMinor,
-  ChevronUpMinor,
-  ChevronDownMinor,
-  CancelSmallMinor,
+  SearchIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
+  CancelSmallIcon,
 } from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -157,7 +157,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
 
     const filtersContentMarkup = filters.map((filter, index) => {
       const filterIsOpen = this.state[`${filter.key}${Suffix.Filter}`] === true;
-      const icon = filterIsOpen ? ChevronUpMinor : ChevronDownMinor;
+      const icon = filterIsOpen ? ChevronUpIcon : ChevronDownIcon;
       const className = classNames(
         styles.FilterTriggerContainer,
         filterIsOpen && styles.open,
@@ -277,7 +277,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
             labelHidden
             prefix={
               <span className={styles.SearchIcon}>
-                <Icon source={SearchMinor} />
+                <Icon source={SearchIcon} />
               </span>
             }
             clearButton
@@ -299,7 +299,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
           {moreFiltersLabel}
         </Text>
         <Button
-          icon={CancelSmallMinor}
+          icon={CancelSmallIcon}
           variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
@@ -310,7 +310,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
     const filtersMobileHeaderMarkup = (
       <div className={filtersContainerHeaderClassname}>
         <Button
-          icon={CancelSmallMinor}
+          icon={CancelSmallIcon}
           variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}

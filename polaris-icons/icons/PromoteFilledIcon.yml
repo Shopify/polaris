@@ -1,0 +1,13 @@
+name: Promote filled
+description: >-
+  Used to represent an action to open an external resource, or promote an item
+  or resource.
+keywords:
+  - external
+  - promote
+authors:
+  - Joe Thomas
+version: 1
+date_added: 2023-07-06
+date_modified: 2023-07-06
+exclusive_use:

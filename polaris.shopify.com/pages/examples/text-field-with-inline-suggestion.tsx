@@ -37,7 +37,7 @@ function TextFieldWithSuggestionExample() {
       'Massachusetts',
       'Michigan',
       'Minnesota',
-      'Minor Outlying Islands',
+      'Icon Outlying Islands',
       'Mississippi',
       'Missouri',
       'Montana',

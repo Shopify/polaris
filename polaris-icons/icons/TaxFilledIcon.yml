@@ -1,0 +1,12 @@
+name: Tax filled
+description: Used to represent sales tax or a tax receipt.
+keywords:
+  - sales tax
+  - tax reciept
+  - tax
+authors:
+  - Joe Thomas
+version: 1
+date_added: 2023-07-06
+date_modified: 2023-07-06
+exclusive_use:

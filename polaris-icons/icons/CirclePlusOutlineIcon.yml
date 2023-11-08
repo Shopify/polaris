@@ -1,0 +1,16 @@
+name: Circle plus outline
+description: >-
+  Used to denote the action of adding new content, like adding a new variant
+  option name in the mobile app.
+keywords:
+  - plus
+  - circle
+  - outline
+  - +
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 1
+date_added: 2018-11-14
+date_modified: 2023-06-23
+exclusive_use:

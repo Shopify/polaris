@@ -1,0 +1,14 @@
+name: Home filled
+description: Used to help direct merchants back to the admin home page.
+keywords:
+  - home page
+  - home
+  - base
+  - main page
+  - start
+authors:
+  - Joe Thomas
+version: 1
+date_added: 2023-07-06
+date_modified: 2023-07-06
+exclusive_use:

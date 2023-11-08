@@ -1,10 +1,10 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
-  HomeMinor,
-  CirclePlusOutlineMinor,
-  ProductsMinor,
-  CircleMinusOutlineMinor,
-  OrdersMinor,
+  HomeIcon,
+  CirclePlusOutlineIcon,
+  ProductsIcon,
+  CircleMinusOutlineIcon,
+  OrdersIcon,
 } from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -19,20 +19,20 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Home',
-              icon: HomeMinor,
+              icon: HomeIcon,
               selected: false,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
-              icon: OrdersMinor,
+              icon: OrdersIcon,
               badge: '2',
               secondaryActions: [
                 {
                   url: '#',
                   accessibilityLabel: 'Add a product',
-                  icon: CirclePlusOutlineMinor,
+                  icon: CirclePlusOutlineIcon,
                   tooltip: {
                     content: 'Create new order',
                   },
@@ -43,19 +43,19 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
-              icon: ProductsMinor,
+              icon: ProductsIcon,
               secondaryActions: [
                 {
                   url: '#',
                   accessibilityLabel: 'Add a product',
-                  icon: CirclePlusOutlineMinor,
+                  icon: CirclePlusOutlineIcon,
                   tooltip: {
                     content: 'Add a product',
                   },
                 },
                 {
                   accessibilityLabel: 'Remove a product',
-                  icon: CircleMinusOutlineMinor,
+                  icon: CircleMinusOutlineIcon,
                   onClick: () => {},
                   tooltip: {
                     content: 'Remove a product',

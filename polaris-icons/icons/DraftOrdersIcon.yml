@@ -1,0 +1,13 @@
+name: Draft orders
+description: Used to represent an order that is in a Draft state.
+keywords:
+  - draft
+  - order
+  - pending
+authors:
+  - N/A
+  - Joe Thomas
+version: 1
+date_added: 2019-03-15
+date_modified: 2023-06-23
+exclusive_use:

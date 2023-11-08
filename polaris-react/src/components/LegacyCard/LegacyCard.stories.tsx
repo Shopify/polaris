@@ -17,7 +17,7 @@ import {
   BlockStack,
   Box,
 } from '@shopify/polaris';
-import {ProductsMajor, CancelMajor} from '@shopify/polaris-icons';
+import {ProductsIcon, CancelIcon} from '@shopify/polaris-icons';
 
 export default {
   component: LegacyCard,
@@ -287,7 +287,7 @@ export function WithCustomReactNodeTitle() {
       <LegacyCard.Section
         title={
           <LegacyStack>
-            <Icon source={ProductsMajor} />
+            <Icon source={ProductsIcon} />
             <Text variant="headingSm" as="h3">
               New Products
             </Text>
@@ -541,7 +541,7 @@ export function All() {
       <LegacyCard>
         <LegacyCard.Header title="Header with icon button child">
           <Button
-            icon={CancelMajor}
+            icon={CancelIcon}
             variant="tertiary"
             accessibilityLabel="Cancel button"
           />

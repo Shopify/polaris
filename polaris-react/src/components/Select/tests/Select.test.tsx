@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {CircleTickOutlineMinor} from '@shopify/polaris-icons';
+import {CircleTickOutlineIcon} from '@shopify/polaris-icons';
 
 import {InlineError} from '../../InlineError';
 import {Icon} from '../../Icon';
@@ -213,7 +213,7 @@ describe('<Select />', () => {
         {
           value: 'one',
           label: 'One',
-          prefix: <Icon source={CircleTickOutlineMinor} />,
+          prefix: <Icon source={CircleTickOutlineIcon} />,
         },
       ];
       const select = mountWithApp(
@@ -221,7 +221,7 @@ describe('<Select />', () => {
       );
 
       expect(select).toContainReactComponentTimes(Icon, 1, {
-        source: CircleTickOutlineMinor,
+        source: CircleTickOutlineIcon,
       });
     });
   });

@@ -12,11 +12,11 @@ import type {
   RefCallback,
 } from 'react';
 import {
-  InfoMinor,
-  DuplicateMinor,
-  EditMinor,
-  DeleteMinor,
-  ChevronDownMinor,
+  InfoIcon,
+  DuplicateIcon,
+  EditIcon,
+  DeleteIcon,
+  ChevronDownIcon,
 } from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
@@ -209,19 +209,19 @@ export const Tab = forwardRef(
 
     const actionContent = {
       rename: {
-        icon: InfoMinor,
+        icon: InfoIcon,
         content: i18n.translate('Polaris.Tabs.Tab.rename'),
       },
       duplicate: {
-        icon: DuplicateMinor,
+        icon: DuplicateIcon,
         content: i18n.translate('Polaris.Tabs.Tab.duplicate'),
       },
       edit: {
-        icon: EditMinor,
+        icon: EditIcon,
         content: i18n.translate('Polaris.Tabs.Tab.edit'),
       },
       delete: {
-        icon: DeleteMinor,
+        icon: DeleteIcon,
         content: i18n.translate('Polaris.Tabs.Tab.delete'),
         destructive: true,
       },
@@ -280,7 +280,7 @@ export const Tab = forwardRef(
     const disclosureMarkup =
       selected && actions?.length ? (
         <div className={classNames(styles.IconWrap)}>
-          <Icon source={ChevronDownMinor} />
+          <Icon source={ChevronDownIcon} />
         </div>
       ) : null;
 

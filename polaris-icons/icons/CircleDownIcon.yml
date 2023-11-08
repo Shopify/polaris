@@ -1,0 +1,12 @@
+name: Circle down
+description: Used to represent downwards navigation, or that something is below it.
+keywords:
+  - arrow
+  - down
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 1
+date_added: 2019-03-12
+date_modified: 2023-06-23
+exclusive_use:

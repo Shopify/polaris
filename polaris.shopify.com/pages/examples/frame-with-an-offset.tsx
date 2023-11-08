@@ -19,10 +19,10 @@ import {
   TopBar,
 } from '@shopify/polaris';
 import {
-  ArrowLeftMinor,
-  HomeMajor,
-  OrdersMajor,
-  ConversationMinor,
+  ArrowLeftIcon,
+  HomeIcon,
+  OrdersIcon,
+  ConversationIcon,
 } from '@shopify/polaris-icons';
 import {useState, useCallback, useRef} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -180,7 +180,7 @@ function FrameExample() {
         items={[
           {
             label: 'Back to Shopify',
-            icon: ArrowLeftMinor,
+            icon: ArrowLeftIcon,
           },
         ]}
       />
@@ -190,17 +190,17 @@ function FrameExample() {
         items={[
           {
             label: 'Dashboard',
-            icon: HomeMajor,
+            icon: HomeIcon,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersMajor,
+            icon: OrdersIcon,
             onClick: toggleIsLoading,
           },
         ]}
         action={{
-          icon: ConversationMinor,
+          icon: ConversationIcon,
           accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}

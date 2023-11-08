@@ -1,0 +1,15 @@
+name: Header
+description: Used to represent the header section of a component, page or layout.
+keywords:
+  - layout
+  - header
+  - content
+  - dashed
+  - section
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 1
+date_added: 2019-02-25
+date_modified: 2023-06-23
+exclusive_use:

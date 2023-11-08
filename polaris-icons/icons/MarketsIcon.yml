@@ -1,0 +1,14 @@
+name: Markets
+description: Used to represent Markets, Shopify’s international commerce product.
+keywords:
+  - markets
+  - international
+  - commerce
+  - global
+authors:
+  - Justina Chua
+  - Joe Thomas
+version: 1
+date_added: 2022-03-09
+date_modified: 2023-06-23
+exclusive_use:

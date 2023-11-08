@@ -1,0 +1,16 @@
+name: Viewport narrow
+description: Used to represent an action to make a viewport, item or resource narrower.
+keywords:
+  - viewport
+  - narrow
+  - arrows
+  - horizontal
+  - left
+  - right
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 1
+date_added: 2019-03-15
+date_modified: 2023-06-23
+exclusive_use:

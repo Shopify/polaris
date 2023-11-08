@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  ChevronDownMinor,
-  ChevronUpMinor,
-  PlusMinor,
-  SelectMinor,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  PlusIcon,
+  SelectIcon,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
@@ -141,8 +141,8 @@ describe('<Button />', () => {
 
   describe('icon', () => {
     it('renders an icon if it’s a component', () => {
-      const button = mountWithApp(<Button icon={PlusMinor} />);
-      expect(button).toContainReactComponent(Icon, {source: PlusMinor});
+      const button = mountWithApp(<Button icon={PlusIcon} />);
+      expect(button).toContainReactComponent(Icon, {source: PlusIcon});
     });
 
     it('renders a react node if it is one', () => {
@@ -325,7 +325,7 @@ describe('<Button />', () => {
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: ChevronDownMinor});
+      expect(disclosureIcon).toHaveReactProps({source: ChevronDownIcon});
     });
 
     it('is facing down if set to "down"', () => {
@@ -333,7 +333,7 @@ describe('<Button />', () => {
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: ChevronDownMinor});
+      expect(disclosureIcon).toHaveReactProps({source: ChevronDownIcon});
     });
 
     it('is facing up if set to "up"', () => {
@@ -341,7 +341,7 @@ describe('<Button />', () => {
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: ChevronUpMinor});
+      expect(disclosureIcon).toHaveReactProps({source: ChevronUpIcon});
     });
 
     it('is double-arrow if set to "select"', () => {
@@ -349,7 +349,7 @@ describe('<Button />', () => {
       const disclosureIcon = button
         .find('div', {className: styles.DisclosureIcon})!
         .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: SelectMinor});
+      expect(disclosureIcon).toHaveReactProps({source: SelectIcon});
     });
   });
 

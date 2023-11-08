@@ -1,6 +1,6 @@
 import React, {PureComponent, createRef} from 'react';
 import type {MouseEvent} from 'react';
-import {MobileCancelMajor} from '@shopify/polaris-icons';
+import {MobileCancelIcon} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
@@ -171,7 +171,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                   )}
                   tabIndex={tabIndex}
                 >
-                  <Icon source={MobileCancelMajor} />
+                  <Icon source={MobileCancelIcon} />
                 </button>
               </div>
             </CSSTransition>

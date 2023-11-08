@@ -1,0 +1,11 @@
+name: Location filled
+description: Used to represent a location.
+keywords:
+  - location
+  - pin
+authors:
+  - Joe Thomas
+version: 1
+date_added: 2023-07-06
+date_modified: 2023-07-06
+exclusive_use:

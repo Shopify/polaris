@@ -59,7 +59,6 @@ export default metadata;
 const metadataTypes = `export interface Icon {
   id: string;
   name: string;
-  set: 'major' | 'minor';
   description: string;
   keywords: string[];
 }

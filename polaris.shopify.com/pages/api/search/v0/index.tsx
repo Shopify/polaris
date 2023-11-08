@@ -112,7 +112,7 @@ const getSearchResults = (query?: string) => {
   // Add icons
   Object.keys(iconMetadata).forEach((fileName) => {
     results.push({
-      id: slugify(`icons ${fileName} ${iconMetadata[fileName].set}`),
+      id: slugify(`icons ${fileName}`),
       category: 'icons',
       url: `/icons?icon=${fileName}`,
       score: 0,
@@ -189,7 +189,6 @@ const getSearchResults = (query?: string) => {
       {name: 'meta.icons.icon.fileName', weight: 50},
       {name: 'meta.icons.icon.name', weight: 50},
       {name: 'meta.icons.icon.keywords', weight: 20},
-      {name: 'meta.icons.icon.set', weight: 20},
       {name: 'meta.icons.icon.description', weight: 50},
     ],
     includeScore: true,

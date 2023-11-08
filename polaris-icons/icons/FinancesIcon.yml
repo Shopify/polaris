@@ -1,0 +1,15 @@
+name: Finances
+description: Used to represent the Finances section.
+keywords:
+  - balance
+  - billing
+  - finances
+  - money
+  - payout
+authors:
+  - N/A
+  - Joe Thomas
+version: 1
+date_added: 2021-11-25
+date_modified: 2023-06-23
+exclusive_use:

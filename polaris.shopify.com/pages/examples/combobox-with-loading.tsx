@@ -1,5 +1,5 @@
 import {Listbox, Combobox, Icon} from '@shopify/polaris';
-import {SearchMinor} from '@shopify/polaris-icons';
+import {SearchIcon} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -92,7 +92,7 @@ function LoadingAutocompleteExample() {
       <Combobox
         activator={
           <Combobox.TextField
-            prefix={<Icon source={SearchMinor} />}
+            prefix={<Icon source={SearchIcon} />}
             onChange={updateText}
             label="Search tags"
             labelHidden

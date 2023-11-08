@@ -1,0 +1,13 @@
+name: First visit
+description: Used to represent a first view or visitor.
+keywords:
+  - first
+  - view
+  - visitor
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+version: 1
+date_added: 2019-03-15
+date_modified: 2023-07-24
+exclusive_use:
