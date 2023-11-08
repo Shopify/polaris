@@ -4472,6 +4472,8 @@ export function WithPaginationAndBulkActions() {
             selectedItemsCount={
               allResourcesSelected ? 'All' : selectedResources.length
             }
+            bulkActions={bulkActions}
+            promotedBulkActions={promotedBulkActions}
             onSelectionChange={handleSelectionChange}
             headings={[
               {title: 'Name'},
