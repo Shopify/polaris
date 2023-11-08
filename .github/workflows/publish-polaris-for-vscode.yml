@@ -8,15 +8,13 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    # Only run on merges from refs/heads/changeset-release/main
+    if: ${{ github.ref == 'refs/heads/alex-test-vscode-*' }}
+    # if: ${{ github.ref == 'refs/heads/changeset-release/main' }}
 
     steps:
       - uses: actions/checkout@v3
         name: Checkout
-
-      - name: Check branch is changesets/main
-        # if: ${{ github.ref == 'refs/heads/changeset-release/main' }}
-        if: ${{ github.ref == 'refs/heads/alex-test-vscode-*' }}
-        run: echo "Deploying VS code extension on branch $GITHUB_REF"
 
       - name: Free up space on GitHub image
         run: |
