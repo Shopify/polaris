@@ -1,7 +1,7 @@
 import type {MetaTokenProperties} from '../types';
 
 export interface ZIndexCSSProperties {
-  zIndex: ZIndexZScale;
+  zIndex: `z-index-${ZIndexZScale}`;
 }
 
 export type ZIndexZScale =

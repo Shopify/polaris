@@ -1,7 +1,7 @@
 import type {MetaTokenProperties} from '../types';
 
 export interface ShadowCSSProperties {
-  boxShadow: ShadowAliasOrScale;
+  boxShadow: `shadow-${ShadowAliasOrScale}`;
 }
 
 export type ShadowScale = '0' | '100' | '200' | '300' | '400' | '500' | '600';

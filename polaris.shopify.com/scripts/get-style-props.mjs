@@ -49,9 +49,15 @@ async function writeTSProperties(tsFile, properties) {
   // We Omit the keys of the ComputedTokenCSSProperties interface, as we want to ensure that there are no type collisions between
   // CSS.Properties and our token types.
   await tsFile.write(
-    `\nexport type CubeProps = Omit<Pick<CSS.Properties, ${generateTSPickList(
+    `\nexport type CSSProperties= Omit<Pick<CSS.Properties, ${generateTSPickList(
       camelisedKeys,
-    )}>, keyof ComputedTokenCSSProperties> & { [K in keyof ComputedTokenCSSProperties]: ResponsiveProp<ComputedTokenCSSProperties[K]> };`,
+    )}>, keyof ComputedTokenCSSProperties>`,
+  );
+  await tsFile.write(
+    `\nexport type ResponsiveTokenProperties = { [K in keyof ComputedTokenCSSProperties]: ResponsiveProp<ComputedTokenCSSProperties[K]> }`,
+  );
+  await tsFile.write(
+    `\nexport type CubeProps = CSSProperties & ResponsiveTokenProperties;`,
   );
 }
 
@@ -116,7 +122,7 @@ async function getProperties() {
   // which enables our algorithm to later look it up based on a truthy check (eg;
   // !!propertiesMustBeSorted[name]).
   // TODO: How do we ensure this list is exhaustive?
-  const shorthandProperties = Object.entries({
+  const shorthandPropertiesMap = {
     animation: [
       'animation-name',
       'animation-duration',
@@ -294,20 +300,34 @@ async function getProperties() {
       'transition-timing-function',
       'transition-delay',
     ],
-  }).reduce((acc, [key, value]) => {
-    /*
+  };
+
+  const shorthandProperties = Object.entries(shorthandPropertiesMap).reduce(
+    (acc, [key, value]) => {
+      /*
       We don't include key here because we do not support css shorthands,
       but we do support alias props whose values are fallbacks for the longhand css properties
       ( i.e. padding is an alias whose token value is a fallback for padding-block-start and padding-block-end etc).
+      {
+        'animation-name': null
+        ...
+      }
     */
-    for (let val of value) {
-      acc[val] = null;
-    }
-    return acc;
-  }, {});
+      if (value === 'background') {
+        console.log(value);
+      }
+
+      for (let val of value) {
+        acc[val] = null;
+      }
+      return acc;
+    },
+    {},
+  );
 
   const parsedFiles = await css.listAll();
   // Do a pass to gather up properties and group them by shorthand -> longhand
+  // { CSS: { properties: [] }, print: { properties: [] } }
   for (let [shortname, data] of Object.entries(parsedFiles)) {
     // Treat delta specs the same as their "full" spec name. The data in
     // @webref/css is ordered, so deltas will always come after full specs.
@@ -334,7 +354,10 @@ async function getProperties() {
     //    longhands after shorthands
     for (let i = 0; i < data.properties.length; i++) {
       const propertySpec = data.properties[i];
-      if (!shorthandProperties[propertySpec.name]) {
+      if (
+        !shorthandProperties[propertySpec.name] &&
+        !Object.keys(shorthandPropertiesMap).includes(propertySpec.name)
+      ) {
         shorthandProperties[propertySpec.name] = {
           name: propertySpec.name,
           inherited: propertySpec.inherited === 'yes',
@@ -342,6 +365,7 @@ async function getProperties() {
       }
     }
   }
+
   // For some reason these properties are not excluded from the mdn data set we've imported,
   // But is excluded from the csstype library that the CSS.Properties comes from.
   // We filter them out here so we a) remove unnecessary rule and variable instantiation in our CSS
@@ -383,8 +407,19 @@ async function writeProperties(file, properties) {
   await file.write('/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */');
   await file.write("\n@import '../../styles/mixins';");
   await file.write('\n.Box {');
-
-  for (let [name, property] of Object.entries(properties)) {
+  const filteredProperties = Object.entries(properties).filter(
+    ([key]) =>
+      ![
+        'width',
+        'height',
+        'max-width',
+        'max-height',
+        'min-width',
+        'min-height',
+      ].includes(key),
+  );
+  for (let [name, property] of filteredProperties) {
+    // console.log(name, property);
     await writeScopeCustomProperty('box', name, file);
     await writeResponsiveDeclarationAtBreakpoint(
       'box',
@@ -402,7 +437,7 @@ async function writeProperties(file, properties) {
     await file.write(
       `\n  @media screen and (min-width: ${breakpoint.value}) {`,
     );
-    for (let [name, property] of Object.entries(properties)) {
+    for (let [name, property] of filteredProperties) {
       await writeResponsiveDeclarationAtBreakpoint(
         'box',
         name,

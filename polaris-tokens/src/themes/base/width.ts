@@ -2,7 +2,7 @@ import {size} from '../../size';
 import type {MetaTokenProperties} from '../types';
 
 export interface WidthCSSProperties {
-  inlineSize: WidthScale;
+  inlineSize: `width-${WidthScale}`;
 }
 export type WidthScale =
   | '0'

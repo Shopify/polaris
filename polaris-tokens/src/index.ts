@@ -16,6 +16,42 @@ export type ComputedTokenCSSProperties = BorderCSSProperties &
   SpaceCSSProperties &
   MotionCSSProperties;
 
+export const designTokenStyleProps = [
+  'backgroundColor',
+  'borderColor',
+  'borderRadius',
+  'borderWidth',
+  'boxShadow',
+  'color',
+  'fill',
+  'fontFamily',
+  'fontSize',
+  'fontWeight',
+  'blockSize',
+  'inlineSize',
+  'lineHeight',
+  'margin',
+  'marginBlockEnd',
+  'marginBlockStart',
+  'marginBottom',
+  'marginInlineEnd',
+  'marginInlineStart',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'paddingBlockEnd',
+  'paddingBlockStart',
+  'paddingBottom',
+  'paddingInlineEnd',
+  'paddingInlineStart',
+  'animationDuration',
+  'animationName',
+  'transitionDuration',
+  'transitionProperty',
+  'transitionTimingFunction',
+  'zIndex',
+] as const;
+
 export {breakpointsAliases} from './themes/base/breakpoints';
 
 export type {BreakpointsAliasDirection} from './utils';

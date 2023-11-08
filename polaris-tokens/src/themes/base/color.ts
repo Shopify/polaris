@@ -2,10 +2,10 @@ import type {MetaTokenProperties} from '../types';
 import * as colors from '../../colors';
 
 export interface ColorCSSProperties {
-  backgroundColor: ColorBackgroundAlias;
-  borderColor: ColorBorderAlias;
-  color: ColorTextAlias | ColorTextAlias;
-  fill: ColorIconAlias;
+  backgroundColor: `color-${ColorBackgroundAlias}`;
+  borderColor: `color-${ColorBorderAlias}`;
+  color: `color-${ColorTextAlias}` | `color-${ColorTextAlias}`;
+  fill: `color-${ColorIconAlias}`;
 }
 export type ColorBackgroundAlias =
   | 'bg-fill-active'
