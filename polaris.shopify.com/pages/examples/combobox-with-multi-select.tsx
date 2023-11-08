@@ -7,7 +7,7 @@ import {
   TextContainer,
 } from '@shopify/polaris';
 
-import {Search} from '@shopify/polaris-icons';
+import {SearchMinor} from '@shopify/polaris-icons';
 
 import {useState, useCallback, useMemo} from 'react';
 
@@ -101,7 +101,7 @@ function MultiAutoComboboxExample() {
         allowMultiple
         activator={
           <Combobox.TextField
-            prefix={<Icon source={Search} />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden

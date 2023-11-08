@@ -11,7 +11,7 @@ import {
   BlockStack,
   useBreakpoints,
 } from '@shopify/polaris';
-import {CircleInformation} from '@shopify/polaris-icons';
+import {CircleInformationMajor} from '@shopify/polaris-icons';
 
 export default {
   component: SettingToggle,
@@ -72,7 +72,7 @@ export function WithPrimitiveComponents() {
   const helpLink = (
     <Button
       variant="plain"
-      icon={CircleInformation}
+      icon={CircleInformationMajor}
       accessibilityLabel="Learn more"
     />
   );
@@ -186,7 +186,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
   const helpLink = (
     <Button
       variant="plain"
-      icon={CircleInformation}
+      icon={CircleInformationMajor}
       accessibilityLabel="Learn more"
     />
   );

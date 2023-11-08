@@ -1,5 +1,5 @@
 import React from 'react';
-import {MobileHamburger} from '@shopify/polaris-icons';
+import {MobileHamburgerMajor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
@@ -87,7 +87,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
       <div className={styles.IconWrapper}>
-        <Icon source={MobileHamburger} />
+        <Icon source={MobileHamburgerMajor} />
       </div>
     </button>
   ) : null;

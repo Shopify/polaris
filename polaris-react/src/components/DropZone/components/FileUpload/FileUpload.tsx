@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {Upload} from '@shopify/polaris-icons';
+import {UploadMajor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
@@ -75,7 +75,7 @@ export function FileUpload(props: FileUploadProps) {
         <div
           className={classNames(styles.UploadIcon, disabled && styles.disabled)}
         >
-          <Icon source={Upload} />
+          <Icon source={UploadMajor} />
         </div>
       );
 

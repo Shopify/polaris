@@ -21,7 +21,12 @@ import {
   TopBar,
   Text,
 } from '@shopify/polaris';
-import {ArrowLeft, Conversation, Home, Orders} from '@shopify/polaris-icons';
+import {
+  ArrowLeftMinor,
+  ConversationMinor,
+  HomeMajor,
+  OrdersMajor,
+} from '@shopify/polaris-icons';
 
 export default {
   component: Frame,
@@ -186,7 +191,7 @@ function InAnApplicationComponent() {
         items={[
           {
             label: 'Back to Shopify',
-            icon: ArrowLeft,
+            icon: ArrowLeftMinor,
           },
         ]}
       />
@@ -196,17 +201,17 @@ function InAnApplicationComponent() {
         items={[
           {
             label: 'Dashboard',
-            icon: Home,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: Orders,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
         action={{
-          icon: Conversation,
+          icon: ConversationMinor,
           accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}
@@ -528,7 +533,7 @@ function WithAnOffsetComponent() {
         items={[
           {
             label: 'Back to Shopify',
-            icon: ArrowLeft,
+            icon: ArrowLeftMinor,
           },
         ]}
       />
@@ -538,17 +543,17 @@ function WithAnOffsetComponent() {
         items={[
           {
             label: 'Dashboard',
-            icon: Home,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: Orders,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
         action={{
-          icon: Conversation,
+          icon: ConversationMinor,
           accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}
@@ -876,7 +881,7 @@ function WithSidebarEnabled() {
         items={[
           {
             label: 'Back to Shopify',
-            icon: ArrowLeft,
+            icon: ArrowLeftMinor,
           },
         ]}
       />
@@ -886,17 +891,17 @@ function WithSidebarEnabled() {
         items={[
           {
             label: 'Dashboard',
-            icon: Home,
+            icon: HomeMajor,
             onClick: toggleIsLoading,
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: Orders,
+            icon: OrdersMajor,
             onClick: toggleIsLoading,
           },
         ]}
         action={{
-          icon: Conversation,
+          icon: ConversationMinor,
           accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}

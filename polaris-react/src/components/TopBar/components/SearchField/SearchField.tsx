@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState, useRef, useId} from 'react';
-import {CircleCancel, Search} from '@shopify/polaris-icons';
+import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
@@ -96,7 +96,7 @@ export function SearchField({
         setForceActive(true);
       }}
     >
-      <Icon source={CircleCancel} />
+      <Icon source={CircleCancelMinor} />
     </button>
   );
 
@@ -126,7 +126,7 @@ export function SearchField({
         onKeyDown={preventDefault}
       />
       <span className={styles.Icon}>
-        <Icon source={Search} />
+        <Icon source={SearchMinor} />
       </span>
 
       {clearMarkup}

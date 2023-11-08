@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from '@shopify/polaris';
-import {Phone} from '@shopify/polaris-icons';
+import {PhoneMajor} from '@shopify/polaris-icons';
 
 export function App() {
   const hasFormError = false;
@@ -10,7 +10,7 @@ export function App() {
   return (
     <>
       <Button disabled tone="critical" />
-      <Button icon={Phone} size="large" />
+      <Button icon={PhoneMajor} size="large" />
       <Button variant="plain" />
       <Button />
       <Button />
@@ -30,7 +30,7 @@ export function App() {
       />
       {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
       <Button
-        icon={Phone}
+        icon={PhoneMajor}
         removeUnderline
         plain={!primary}
         monochrome={!primary}

@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {InlineStack, Icon, LegacyStack, Tag, Bleed} from '@shopify/polaris';
-import {Magic} from '@shopify/polaris-icons';
+import {WandMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Tag,
@@ -68,7 +68,7 @@ export function WithCustomContent() {
     <Tag url="#">
       <InlineStack gap="050">
         <Bleed marginInlineStart="100">
-          <Icon tone="base" source={Magic} />
+          <Icon tone="base" source={WandMinor} />
         </Bleed>
         <span>Wholesale</span>
       </InlineStack>

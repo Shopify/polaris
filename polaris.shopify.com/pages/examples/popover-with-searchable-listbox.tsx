@@ -10,7 +10,7 @@ import {
   EmptySearchResult,
   Text,
 } from '@shopify/polaris';
-import {Search} from '@shopify/polaris-icons';
+import {SearchMinor} from '@shopify/polaris-icons';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -204,7 +204,7 @@ function PopoverWithSearchableListboxExample() {
           placeholder="Search segments"
           autoComplete="off"
           value={query}
-          prefix={<Icon source={Search} />}
+          prefix={<Icon source={SearchMinor} />}
           ariaActiveDescendant={activeOptionId}
           ariaControls={listboxId}
           onChange={handleQueryChange}

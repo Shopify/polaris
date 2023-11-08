@@ -1,4 +1,4 @@
-import {Search} from '@shopify/polaris-icons';
+import {SearchMajor} from '@shopify/polaris-icons';
 import {HTMLProps} from 'react';
 import Icon from '../Icon';
 import styles from './SearchField.module.scss';
@@ -11,7 +11,7 @@ function SearchField({onChange, ...props}: Props) {
   return (
     <div className={styles.SearchField}>
       <div className={styles.Icon}>
-        <Icon source={Search} />
+        <Icon source={SearchMajor} />
       </div>
       <input
         type="search"

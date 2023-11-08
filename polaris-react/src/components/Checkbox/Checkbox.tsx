@@ -5,7 +5,7 @@ import React, {
   useContext,
   useId,
 } from 'react';
-import {Minus} from '@shopify/polaris-icons';
+import {MinusMinor} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
@@ -211,7 +211,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
               !isIndeterminate && styles.animated,
             )}
           >
-            {isIndeterminate ? <Icon source={Minus} /> : iconSource}
+            {isIndeterminate ? <Icon source={MinusMinor} /> : iconSource}
           </span>
         </span>
       </Choice>

@@ -1,5 +1,5 @@
 import {LegacyCard, LegacyStack, Icon, List, Text} from '@shopify/polaris';
-import {Products} from '@shopify/polaris-icons';
+import {ProductsMajor} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -9,7 +9,7 @@ function LegacyCardExample() {
       <LegacyCard.Section
         title={
           <LegacyStack>
-            <Icon source={Products} />
+            <Icon source={ProductsMajor} />
             <Text variant="headingSm" as="h3">
               New Products
             </Text>

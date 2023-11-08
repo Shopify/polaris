@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from '@shopify/polaris-icons';
+import {ViewMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {Avatar} from '../../../../Avatar';
@@ -8,7 +8,7 @@ import {Menu} from '../../Menu';
 
 describe('<UserMenu />', () => {
   const userMenuProps = {
-    actions: [{items: [{icon: View}]}],
+    actions: [{items: [{icon: ViewMinor}]}],
     name: '',
     initials: '',
     open: false,

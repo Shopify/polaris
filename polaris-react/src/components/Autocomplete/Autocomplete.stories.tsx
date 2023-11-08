@@ -7,7 +7,11 @@ import {
   Tag,
   TextContainer,
 } from '@shopify/polaris';
-import {CirclePlus, Delete, Search} from '@shopify/polaris-icons';
+import {
+  CirclePlusMinor,
+  DeleteMinor,
+  SearchMinor,
+} from '@shopify/polaris-icons';
 
 export default {
   component: Autocomplete,
@@ -66,7 +70,7 @@ export function Default() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={Search} tone="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
@@ -267,7 +271,7 @@ export function WithMultipleSections() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={Search} tone="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
@@ -344,7 +348,7 @@ export function WithLoading() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={Search} tone="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
@@ -547,14 +551,14 @@ export function WithEmptyState() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={Search} tone="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
 
   const emptyState = (
     <>
-      <Icon source={Search} />
+      <Icon source={SearchMinor} />
       <div style={{textAlign: 'center'}}>
         <TextContainer>Could not find any results</TextContainer>
       </div>
@@ -635,7 +639,7 @@ export function WithAction() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={Search} />}
+      prefix={<Icon source={SearchMinor} />}
       placeholder="Search"
     />
   );
@@ -652,7 +656,7 @@ export function WithAction() {
           content: 'Action with long name',
           ellipsis: true,
           helpText: 'Help text',
-          icon: CirclePlus,
+          icon: CirclePlusMinor,
           onAction: () => {
             console.log('actionBefore clicked!');
           },
@@ -728,7 +732,7 @@ export function WithWrappingAction() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={Search} />}
+      prefix={<Icon source={SearchMinor} />}
       placeholder="Search"
     />
   );
@@ -746,7 +750,7 @@ export function WithWrappingAction() {
             'Action with long name that will need to wrap on small display in order to have a nice display',
           ellipsis: true,
           helpText: 'Help text',
-          icon: CirclePlus,
+          icon: CirclePlusMinor,
           wrapOverflow: true,
           onAction: () => {
             console.log('actionBefore clicked!');
@@ -823,7 +827,7 @@ export function WithDestructiveAction() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={Search} />}
+      prefix={<Icon source={SearchMinor} />}
       placeholder="Search"
     />
   );
@@ -835,7 +839,7 @@ export function WithDestructiveAction() {
           accessibilityLabel: 'Destructive action label',
           content: 'Destructive action',
           destructive: true,
-          icon: Delete,
+          icon: DeleteMinor,
           onAction: () => {
             console.log('actionBefore clicked!');
           },

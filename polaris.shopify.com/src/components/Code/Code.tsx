@@ -1,4 +1,4 @@
-import {Clipboard} from '@shopify/polaris-icons';
+import {ClipboardMinor} from '@shopify/polaris-icons';
 import {Tab} from '@headlessui/react';
 import {useState} from 'react';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
@@ -103,7 +103,7 @@ export function CopyButton({code}: {code: string}) {
           onClick={copy}
           aria-label="Copy to clipboard"
         >
-          <Icon source={Clipboard} width={16} height={16} />
+          <Icon source={ClipboardMinor} width={16} height={16} />
         </button>
       </Tooltip>
     </div>

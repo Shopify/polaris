@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import type {PropsWithChildren} from 'react';
 import type {ColorTextAlias} from '@shopify/polaris-tokens';
-import {Cancel} from '@shopify/polaris-icons';
+import {CancelMinor} from '@shopify/polaris-icons';
 
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Text} from '../Text';
@@ -155,7 +155,7 @@ export function BannerLayout({
               styles[isInlineIconBanner ? 'icon-secondary' : bannerColors.icon]
             }
           >
-            <Icon source={Cancel} />
+            <Icon source={CancelMinor} />
           </span>
         }
         onClick={onDismiss}

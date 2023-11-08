@@ -1,5 +1,5 @@
 import {Autocomplete, Icon} from '@shopify/polaris';
-import {Search, CirclePlus} from '@shopify/polaris-icons';
+import {SearchMinor, CirclePlusMinor} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -63,7 +63,7 @@ function AutocompleteActionBeforeExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={Search} />}
+      prefix={<Icon source={SearchMinor} />}
       placeholder="Search"
       autoComplete="off"
     />
@@ -81,7 +81,7 @@ function AutocompleteActionBeforeExample() {
           content: 'Action with long name',
           ellipsis: true,
           helpText: 'Help text',
-          icon: CirclePlus,
+          icon: CirclePlusMinor,
           onAction: () => {
             console.log('actionBefore clicked!');
           },

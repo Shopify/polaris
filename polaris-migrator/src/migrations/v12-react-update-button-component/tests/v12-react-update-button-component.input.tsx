@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ButtonProps} from '@shopify/polaris';
 import {Button} from '@shopify/polaris';
-import {Phone} from '@shopify/polaris-icons';
+import {PhoneMajor} from '@shopify/polaris-icons';
 
 declare function CustomButton(props: ButtonProps): JSX.Element;
 declare const Styles: {
@@ -19,7 +19,7 @@ export function App() {
       <Button destructive outline disabled>
         Delete App
       </Button>
-      <Button icon={Phone} size="large" monochrome outline>
+      <Button icon={PhoneMajor} size="large" monochrome outline>
         Call
       </Button>
       <Button plain>Edit</Button>
@@ -45,7 +45,7 @@ export function App() {
         Selected branch
       </Button>
       <Button
-        icon={Phone}
+        icon={PhoneMajor}
         removeUnderline
         plain={!primary}
         monochrome={!primary}

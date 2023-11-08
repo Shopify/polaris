@@ -8,7 +8,7 @@ import {
   Scrollable,
   EmptySearchResult,
 } from '@shopify/polaris';
-import {Search} from '@shopify/polaris-icons';
+import {SearchMinor} from '@shopify/polaris-icons';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -177,7 +177,7 @@ function ListboxWithSearchExample() {
         placeholder="Search segments"
         autoComplete="off"
         value={query}
-        prefix={<Icon source={Search} />}
+        prefix={<Icon source={SearchMinor} />}
         ariaActiveDescendant={activeOptionId}
         ariaControls={listboxId}
         onChange={handleQueryChange}

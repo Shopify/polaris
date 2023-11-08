@@ -1,5 +1,5 @@
 import React from 'react';
-import {ChevronDown, ChevronUp} from '@shopify/polaris-icons';
+import {ChevronDownMinor, ChevronUpMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
 import styles from '../../TextField.scss';
@@ -39,7 +39,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={ChevronUp} />
+            <Icon source={ChevronUpMinor} />
           </div>
         </div>
         <div
@@ -52,7 +52,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={ChevronDown} />
+            <Icon source={ChevronDownMinor} />
           </div>
         </div>
       </div>

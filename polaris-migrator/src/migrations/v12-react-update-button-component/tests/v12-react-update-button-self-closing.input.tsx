@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from '@shopify/polaris';
-import {Phone} from '@shopify/polaris-icons';
+import {PhoneMajor} from '@shopify/polaris-icons';
 
 export function App() {
   const hasFormError = false;
@@ -10,7 +10,7 @@ export function App() {
   return (
     <>
       <Button destructive outline disabled />
-      <Button icon={Phone} size="large" monochrome outline />
+      <Button icon={PhoneMajor} size="large" monochrome outline />
       <Button plain />
       <Button monochrome />
       <Button outline />
@@ -28,7 +28,7 @@ export function App() {
         size={polarisSummerEditions2023Enabled ? 'large' : undefined}
       />
       <Button
-        icon={Phone}
+        icon={PhoneMajor}
         removeUnderline
         plain={!primary}
         monochrome={!primary}

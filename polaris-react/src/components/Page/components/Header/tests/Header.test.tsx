@@ -1,5 +1,5 @@
 import React from 'react';
-import {Plus} from '@shopify/polaris-icons';
+import {PlusMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {ActionMenu} from '../../../../ActionMenu';
@@ -287,7 +287,7 @@ describe('<Header />', () => {
 
   const primaryAction: HeaderProps['primaryAction'] = {
     content: 'Click me!',
-    icon: Plus,
+    icon: PlusMinor,
   };
 
   const secondaryActions: HeaderProps['secondaryActions'] = [
@@ -322,7 +322,7 @@ describe('<Header />', () => {
     );
     expect(header.findAll('div', {className: 'Row'})).toHaveLength(1);
     expect(header).toContainReactComponent(Button, {
-      icon: Plus,
+      icon: PlusMinor,
       children: undefined,
     });
   });
