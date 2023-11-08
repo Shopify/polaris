@@ -40,13 +40,13 @@ deprecated: true
 
 ### Renaming an icon
 
-When you deprecate an icon with a replacement (that is, you rename an icon), rename the icon’s SVGs and metadata file, then add a `deprecated_aliases` key to the metadata with an array containing each of the icon’s previous names. For instance, if you were to rename `Old.yml` to `New.yml`, add these lines to `New.yml`:
+When you deprecate an icon with a replacement (that is, you rename an icon), rename the icon’s SVGs and metadata file, then add a `deprecated_aliases` key to the metadata with an array containing each of the icon’s previous names. For instance, if you were to rename `OldMajor.yml` to `NewMajor.yml`, add these lines to `NewMajor.yml`:
 
 ```yml
-# New.yml
+# NewMajor.yml
 ---
 deprecated_aliases:
-  - Old
+  - OldMajor
 ```
 
 This will maintain an export with the original name but mark it as deprecated and instruct consumers to use the new name.

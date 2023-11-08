@@ -6,19 +6,35 @@ const unified = require('unified');
 const parse = require('rehype-parse');
 const {select, selectAll} = require('hast-util-select');
 
+const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
+
+const configPerSet = new Map([
+  ['Major', {viewbox: '0 0 20 20', colors: ['#5C5F62', '#5c5f62']}],
+  ['Minor', {viewbox: '0 0 20 20', colors: ['#5C5F62', '#5c5f62']}],
+]);
+
 const allIconFiles = globby
   .sync(path.resolve(__dirname, '../icons/*.svg'))
   .map((absoluteIconPath) => {
+    // We don't care about the first item, only the groups matches
+    const [, set] = nameRegex.exec(absoluteIconPath) || [];
+
     const iconSource = fs.readFileSync(absoluteIconPath, 'utf-8');
 
+    const svg = configPerSet.get([set].filter(Boolean).join('_'));
+    if (svg == null) {
+      throw new Error(
+        `SVG config not found for ${absoluteIconPath}. Make sure your icon contains "Major" or "Minor" in its name.`,
+      );
+    }
     return {
       iconPath: path.relative(path.join(__dirname, '..'), absoluteIconPath),
       iconSource,
       iconAst: unified()
         .use(parse, {fragment: true, space: 'svg'})
         .parse(iconSource),
-      expectedViewbox: '0 0 20 20',
-      expectedFillColors: ['#5C5F62', '#5c5f62'],
+      expectedViewbox: svg.viewbox,
+      expectedFillColors: svg.colors,
     };
   });
 

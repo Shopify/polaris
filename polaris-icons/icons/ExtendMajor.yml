@@ -1,0 +1,14 @@
+name: Extend
+set: major
+description: Action | Used when a merchant extends or expands text using AI.
+keywords:
+  - extend
+  - expand
+  - lengthen
+authors:
+  - David Goligorsky
+  - Joe Thomas
+version: 1
+date_added: 2023-03-18
+date_modified: 2023-06-23
+exclusive_use:

@@ -1,0 +1,19 @@
+name: Bold
+set: major
+description: Used to format text with an emphasized style.
+keywords:
+  - text format
+  - bold
+  - strong
+  - rich text
+  - rte
+  - format
+  - text
+  - text editing
+authors:
+  - Joe Thomas
+  - Russell Baylis
+version: 1
+date_added: 2023-06-30
+date_modified: 2023-07-19
+exclusive_use:
