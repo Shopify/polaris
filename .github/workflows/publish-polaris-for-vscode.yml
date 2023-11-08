@@ -3,11 +3,11 @@ name: Release Polaris for VS Code
 on:
   push:
     paths:
-      - polaris-for-vscode/CHANGELOG.md
-      - polaris-tokens/CHANGELOG.md
+      - 'polaris-for-vscode/CHANGELOG.md'
+      - 'polaris-tokens/CHANGELOG.md'
     branches:
-      # - main
       - alex-test-vscode
+      # - main
 
 jobs:
   release:
