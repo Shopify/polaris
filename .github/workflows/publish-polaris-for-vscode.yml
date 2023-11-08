@@ -1,8 +1,12 @@
 name: Release Polaris for VS Code
 
 on:
+  paths:
+    - polaris-for-vscode/CHANGELOG.md
+    - polaris-icons/CHANGELOG.md
   push:
     branches:
+      # - main
       - alex-test-vscode
 
 jobs:
