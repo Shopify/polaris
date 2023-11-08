@@ -13,7 +13,7 @@
   --pc-box-padding-block-end-md: initial;
   padding-block-end: var(--pc-box-padding-block-end-xs);
 
-  @media screen and min-width (#{breakpoint-md}) {
+  @media screen and (min-width: #{breakpoint-md}) {
     padding-block-end: var(
       --pc-box-padding-block-end-md,
       var(--pc-box-padding-block-end-xs, initial)
