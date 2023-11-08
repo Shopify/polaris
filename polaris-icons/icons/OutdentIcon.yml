@@ -1,5 +1,5 @@
 name: Outdent
-description: Used to outdent text with list formatting.
+description: Used to decrease text indentation with list formatting.
 keywords:
   - text format
   - list
@@ -10,7 +10,6 @@ keywords:
   - text editing
 authors:
   - Russell Baylis
-version: 1
-date_added: 2023-03-30
+date_added: 2023-06-30
 date_modified: 2023-06-30
 exclusive_use:

@@ -2,8 +2,8 @@ name: Ordered list
 description: Used to format text with a numbered list.
 keywords:
   - text format
-  - italic
-  - italicize
+  - list
+  - numbered list
   - rich text
   - rte
   - format
@@ -13,7 +13,6 @@ authors:
   - Joe Thomas
   - José Torre
   - Russell Baylis
-version: 1
 date_added: 2023-06-30
 date_modified: 2023-06-30
 exclusive_use:

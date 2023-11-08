@@ -1,16 +1,9 @@
 name: Fraud protect
-description: >-
-  Used to represent that an order is protected by Fraud Protect from chargebacks
-  due to fraud.
+description: N/A
 keywords:
-  - fraud protect
-  - protected
-  - risk
-  - fraud
+  - N/A
 authors:
-  - Money UX team
   - Joe Thomas
-version: 1
 date_added: 2019-03-15
 date_modified: 2023-06-23
 exclusive_use:

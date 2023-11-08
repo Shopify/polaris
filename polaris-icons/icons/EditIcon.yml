@@ -1,14 +1,14 @@
 name: Edit
-description: Used to represent an action to edit an item or resource.
+description: Used to represent the action of editing or modifying information.
 keywords:
-  - edit
-  - pen
   - pencil
-  - write
+  - pen
+  - paper
+  - edit
+  - page
+  - change
 authors:
-  - Adam Whitcroft
   - Joe Thomas
-version: 1
-date_added: 2019-03-15
+date_added: 2019-03-01
 date_modified: 2023-06-23
 exclusive_use:

@@ -1,16 +1,15 @@
 name: Question mark
-description: Used to give merchants help or support for a feature.
+description: >-
+  Used to represent help, information or as an action to reveal more information
+  about an item or resource.
 keywords:
-  - question
-  - question mark
   - help
-  - support
-  - learn more
-  - circle
+  - hint
+  - info
+  - question
 authors:
-  - N/A
+  - Adam Whitcroft
   - Joe Thomas
-version: 1
 date_added: 2019-03-15
 date_modified: 2023-06-23
 exclusive_use:

@@ -1,19 +1,16 @@
 name: Cancel
 description: >-
   Used to denote the action of cancelling a task or action and to close an
-  overlay modal or bottom sheet.
+  overlay or view.
 keywords:
   - cancel
-  - delete
   - stop
-  - remove
   - undo
+  - remove
   - x
-  - close
 authors:
-  - Anthony Menecola
+  - Adam Whitcroft
   - Joe Thomas
-version: 1
-date_added: 2022-10-27
+date_added: 2022-10-28
 date_modified: 2023-07-28
 exclusive_use:

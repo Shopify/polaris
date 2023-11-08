@@ -1,10 +1,14 @@
 name: Jobs filled
 description: N/A
 keywords:
-  - N/A
+  - Job
+  - Briefcase
+  - Work
+  - Luggage
+  - Business
 authors:
   - Joe Thomas
-version: 1
+  - José Torre
 date_added: 2023-07-06
-date_modified: 2023-07-06
+date_modified: 2023-11-07
 exclusive_use:

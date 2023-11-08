@@ -1,0 +1,13 @@
+name: Rows 2
+description: Used to represent a 2 row layout.
+keywords:
+  - two rows
+  - row
+  - layout
+authors:
+  - Laura Forbes
+  - Yoann Jailin
+  - Joe Thomas
+exclusive_use: Shopify Email
+date_added: 2023-01-25
+date_modified: 2023-06-23

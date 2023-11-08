@@ -1,13 +1,12 @@
 name: Print
-description: Used to represent a printer or an action to print something.
+description: Used to denote the action of printing.
 keywords:
-  - desktop
-  - label
+  - print
+  - printing
   - printer
 authors:
   - Adam Whitcroft
   - Joe Thomas
-version: 1
-date_added: 2019-03-15
+date_added: 2018-11-14
 date_modified: 2023-06-23
 exclusive_use:

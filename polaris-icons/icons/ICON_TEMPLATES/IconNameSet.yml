@@ -1,5 +1,4 @@
 name: Name of the icon
-set: major or minor
 description:
   # Icon type   | Example description
   # ----------- | --------------------------
@@ -22,7 +21,6 @@ authors:
   # - Co-author’s name (optional)
   # (delete this comment block)
   - N/A
-version: 1
 date_added: YYYY-MM-DD
 date_modified: YYYY-MM-DD
 # Optional: fill exclusive_use if the icon should *only* be used
