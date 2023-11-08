@@ -13,8 +13,8 @@ jobs:
   release:
     runs-on: ubuntu-latest
     # Only run on merges from refs/heads/changeset-release/main
-    if: ${{ github.ref == 'refs/heads/alex-test-vscode-d' }}
-    # if: ${{ github.ref == 'refs/heads/changeset-release/main' }}
+    if: ${{ github.head_ref == 'refs/heads/alex-test-vscode-*' }}
+    # if: ${{ github.head_ref == 'refs/heads/changeset-release/main' }}
 
     steps:
       - uses: actions/checkout@v3
