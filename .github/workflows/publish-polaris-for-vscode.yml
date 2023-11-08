@@ -12,13 +12,16 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # Only run on merges from refs/heads/changeset-release/main
-    if: ${{ github.head_ref == 'refs/heads/alex-test-vscode-j' }}
-    # if: ${{ github.head_ref == 'refs/heads/changeset-release/main' }}
 
     steps:
       - uses: actions/checkout@v3
         name: Checkout
+
+      - name: Testing testing ${{github.ref}} ${{github.head_ref}}
+        run: echo 'its working'
+        # Only run on merges from refs/heads/changeset-release/main
+        if: ${{ github.head_ref == 'refs/heads/alex-test-vscode-j' }}
+        # if: ${{ github.head_ref == 'refs/heads/changeset-release/main' }}
 
       - name: Free up space on GitHub image
         run: |
