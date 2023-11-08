@@ -15,13 +15,6 @@ import PageMeta from '../PageMeta';
 import {className} from '../../utils/various';
 import Page from '../Page';
 
-const majorMinorRegEx = /Major|Minor$/;
-Object.keys(iconMetadata).forEach((key) => {
-  if (majorMinorRegEx.test(key)) {
-    delete iconMetadata[key];
-  }
-});
-
 const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,
   keys: [
