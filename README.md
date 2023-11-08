@@ -1,5 +1,10 @@
 <div align="center">
-  <a href="https://polaris.shopify.com"><img src="https://github.com/Shopify/polaris/blob/main/documentation/readme.png?raw=true" alt="" /></a>
+  <a href="https://polaris.shopify.com">
+    <img
+      src="https://github.com/Shopify/polaris/blob/main/documentation/readme.png?raw=true"
+      alt=""
+    />
+  </a>
 </div>
 
 # Polaris
