@@ -3,16 +3,16 @@ import {createVarName} from '../../utils';
 import type {MetaTokenProperties} from '../types';
 
 export interface SpaceCSSProperties {
-  marginBlockStart: SpaceScale;
-  marginBlockEnd: SpaceScale;
-  marginInlineStart: SpaceScale;
-  marginInlineEnd: SpaceScale;
-  paddingBlockStart: SpaceScale;
-  paddingBlockEnd: SpaceScale;
-  paddingInlineStart: SpaceScale;
-  paddingInlineEnd: SpaceScale;
-  rowGap: SpaceScale;
-  columnGap: SpaceScale;
+  marginBlockStart: `space-${SpaceScale}`;
+  marginBlockEnd: `space-${SpaceScale}`;
+  marginInlineStart: `space-${SpaceScale}`;
+  marginInlineEnd: `space-${SpaceScale}`;
+  paddingBlockStart: `space-${SpaceScale}`;
+  paddingBlockEnd: `space-${SpaceScale}`;
+  paddingInlineStart: `space-${SpaceScale}`;
+  paddingInlineEnd: `space-${SpaceScale}`;
+  rowGap: `space-${SpaceScale}`;
+  columnGap: `space-${SpaceScale}`;
 }
 
 export type SpaceScale =

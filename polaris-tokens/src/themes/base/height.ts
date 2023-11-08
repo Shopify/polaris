@@ -2,7 +2,7 @@ import {size} from '../../size';
 import type {MetaTokenProperties} from '../types';
 
 export interface HeightCSSProperties {
-  blockSize: HeightScale;
+  blockSize: `height-${HeightScale}`;
 }
 
 export type HeightScale =
