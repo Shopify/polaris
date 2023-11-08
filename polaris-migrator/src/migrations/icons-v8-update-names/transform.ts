@@ -23,7 +23,7 @@ export default function transformer(
     });
 
   majorMinorIcons.forEach((element) => {
-    element.value.name.replace(/Major|Minor/g, '');
+    element.value.name.replace(/Major|Minor/g, 'Icon');
   });
 
   return source.toSource();

@@ -1,6 +1,6 @@
 import {check} from '../../../utilities/check';
 
-const transform = 'react-remove-major-minor-icons';
+const transform = 'icons-v8-update-names';
 const fixtures = ['transform'];
 
 for (const fixture of fixtures) {
