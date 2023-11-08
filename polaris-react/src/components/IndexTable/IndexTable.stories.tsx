@@ -1753,6 +1753,72 @@ export function WithStickyLastColumn() {
       status: 'subdued',
     },
   ];
+
+  const customersForNestedRows = [
+    {
+      id: '34112',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
+    },
+    {
+      id: '25612',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      channel: 'Online Store',
+      paymentStatus: 'Paid',
+      fulfillmentStatus: 'Unfulfilled',
+    },
+    {
+      id: '25622',
+      url: '#',
+      name: 'Helen Troy',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$975',
+      lastOrderDate: 'May 31, 2023',
+      status: 'success',
+    },
+    {
+      id: '41022',
+      url: '#',
+      name: 'Colm Dillane',
+      location: 'New York, USA',
+      orders: 27,
+      amountSpent: '$2885',
+      lastOrderDate: 'May 31, 2023',
+      status: 'critical',
+    },
+    {
+      id: '25642',
+      url: '#',
+      name: 'Al Chemist',
+      location: 'New York, USA',
+      orders: 19,
+      amountSpent: '$1,209',
+      lastOrderDate: 'April 4, 2023',
+      disabled: true,
+      status: 'warning',
+    },
+    {
+      id: '25632',
+      url: '#',
+      name: 'Larry June',
+      location: 'San Francisco, USA',
+      orders: 22,
+      amountSpent: '$1,400',
+      lastOrderDate: 'March 19, 2023',
+      status: 'subdued',
+    },
+  ];
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
@@ -1806,6 +1872,53 @@ export function WithStickyLastColumn() {
     ),
   );
 
+  const nestedRowMarkup = customersForNestedRows.map(
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        status,
+        channel,
+        paymentStatus,
+        fulfillmentStatus,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+        tone={status as IndexTableRowProps['tone']}
+        rowType={index > 0 ? 'child' : 'subheader'}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{status}</IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
   return (
     <LegacyCard>
       <IndexTable
@@ -1835,6 +1948,7 @@ export function WithStickyLastColumn() {
         lastColumnSticky
       >
         {rowMarkup}
+        {nestedRowMarkup}
       </IndexTable>
     </LegacyCard>
   );
@@ -3168,6 +3282,49 @@ export function WithZebraStriping() {
       amountSpent: '$140',
     },
   ];
+
+  const customersForNestedRows = [
+    {
+      id: '34101',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '34111',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '34121',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '34131',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '25631',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
@@ -3183,6 +3340,34 @@ export function WithZebraStriping() {
         key={id}
         selected={selectedResources.includes(id)}
         position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+  const nestedRowMarkup = customersForNestedRows.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+        rowType={index > 0 ? 'child' : 'subheader'}
       >
         <IndexTable.Cell>
           <Text fontWeight="bold" as="span">
@@ -3230,6 +3415,7 @@ export function WithZebraStriping() {
         hasZebraStriping
       >
         {rowMarkup}
+        {nestedRowMarkup}
       </IndexTable>
     </LegacyCard>
   );
@@ -4630,6 +4816,10 @@ export function WithNestedRowsLastColumnSticky() {
       price: '$2,400',
       size: 'Small Lorem ipsum dolor sit amet',
       color: 'Orange Lorem ipsum dolor sit amet',
+      vendor: 'Fit Lines',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
     },
     {
       id: '2562',
@@ -4637,6 +4827,10 @@ export function WithNestedRowsLastColumnSticky() {
       price: '$975',
       size: 'Medium',
       color: 'Orange',
+      vendor: 'Fit Lines',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
     },
     {
       id: '4102',
@@ -4644,6 +4838,10 @@ export function WithNestedRowsLastColumnSticky() {
       price: '$2885',
       size: 'Large',
       color: 'Orange',
+      vendor: 'Fit Lines',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
     },
     {
       id: '2564',
@@ -4652,6 +4850,10 @@ export function WithNestedRowsLastColumnSticky() {
       size: 'Small',
       color: 'Red',
       disabled: true,
+      vendor: 'Fit Lines',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
     },
     {
       id: '2563',
@@ -4659,6 +4861,10 @@ export function WithNestedRowsLastColumnSticky() {
       price: '$1,400',
       size: 'Small',
       color: 'Green',
+      vendor: 'Fit Lines',
+      channel: 'Point of Sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
     },
   ];
 
@@ -4673,6 +4879,26 @@ export function WithNestedRowsLastColumnSticky() {
       alignment: 'end',
       id: 'column-header--quantity',
       title: 'Available',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--vendor',
+      title: 'Vendor',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--channel',
+      title: 'Channel',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--paymentStatus',
+      title: 'Status',
+    },
+    {
+      alignment: 'end',
+      id: 'column-header--fulfillmentStatus',
+      title: 'Fulfillment Status',
     },
   ];
 
@@ -4762,7 +4988,21 @@ export function WithNestedRowsLastColumnSticky() {
           <IndexTable.Cell />
         </IndexTable.Row>
         {products.map(
-          ({id, size, quantity, price, position, disabled}, rowIndex) => {
+          (
+            {
+              id,
+              size,
+              quantity,
+              price,
+              position,
+              disabled,
+              vendor,
+              channel,
+              paymentStatus,
+              fulfillmentStatus,
+            },
+            rowIndex,
+          ) => {
             return (
               <IndexTable.Row
                 rowType="child"
@@ -4785,6 +5025,26 @@ export function WithNestedRowsLastColumnSticky() {
                 <IndexTable.Cell>
                   <Text as="span" alignment="end" numeric>
                     {quantity}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {vendor}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {channel}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {paymentStatus}
+                  </Text>
+                </IndexTable.Cell>
+                <IndexTable.Cell>
+                  <Text as="span" alignment="end" numeric>
+                    {fulfillmentStatus}
                   </Text>
                 </IndexTable.Cell>
               </IndexTable.Row>

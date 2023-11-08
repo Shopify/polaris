@@ -168,8 +168,20 @@ $loading-panel-height: 53px;
     }
   }
 
+  // stylelint-disable-next-line selector-max-class -- adds success tone for nested rows
+  &.TableRow-child.toneSuccess {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds success tone for nested rows
+    &,
+    .TableCell-first {
+      // stylelint-disable-next-line -- adds success tone for nested rows
+      &::before {
+        background-color: var(--p-color-bg-surface-success);
+      }
+    }
+  }
+
   &.toneWarning {
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- added crtical tone for suspended products
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- adds warning tone for suspended products
     &,
     .TableCell-first,
     .TableCell-first + .TableCell,
@@ -178,13 +190,37 @@ $loading-panel-height: 53px;
     }
   }
 
+  // stylelint-disable-next-line selector-max-class -- adds warning tone for nested rows
+  &.TableRow-child.toneWarning {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds warning tone for nested rows
+    &,
+    .TableCell-first {
+      // stylelint-disable-next-line -- adds warning tone for nested rows
+      &::before {
+        background-color: var(--p-color-bg-surface-warning);
+      }
+    }
+  }
+
   &.toneCritical {
-    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- added crtical tone for suspended products
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- adds crtical tone for suspended products
     &,
     .TableCell-first,
     .TableCell-first + .TableCell,
     .TableCell:last-child {
       background-color: var(--p-color-bg-surface-critical);
+    }
+  }
+
+  // stylelint-disable-next-line selector-max-class -- adds critical tone for nested rows
+  &.TableRow-child.toneCritical {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds critical tone for nested rows
+    &,
+    .TableCell-first {
+      // stylelint-disable-next-line -- adds critical tone for nested rows
+      &::before {
+        background-color: var(--p-color-bg-surface-critical);
+      }
     }
   }
 
@@ -196,6 +232,18 @@ $loading-panel-height: 53px;
     .TableCell:last-child {
       background-color: var(--p-color-bg-surface-secondary);
       color: var(--p-color-text-secondary);
+    }
+  }
+
+  // stylelint-disable-next-line selector-max-class -- adds secondary tone for nested rows
+  &.TableRow-child.toneSubdued {
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds secondary tone for nested rows
+    &,
+    .TableCell-first {
+      // stylelint-disable-next-line -- adds secondary tone for nested rows
+      &::before {
+        background-color: var(--p-color-bg-surface-secondary);
+      }
     }
   }
 
@@ -266,7 +314,17 @@ $loading-panel-height: 53px;
     }
 
     .TableCell-first + .TableCell {
-      padding-left: var(--pc-index-table-checkbox-child-offset);
+      --pc-index-table-cell-padding: var(--p-space-150);
+      padding-left: calc(
+        var(--pc-index-table-checkbox-child-offset) +
+          var(--pc-index-table-cell-padding)
+      );
+      @media #{$p-breakpoints-sm-down} {
+        padding-left: calc(
+          var(--pc-index-table-checkbox-child-offset-sm) +
+            var(--pc-index-table-cell-padding)
+        );
+      }
     }
     // stylelint-enable -- polaris/conventions/polaris/custom-property-allowed-list
   }
@@ -281,9 +339,17 @@ $loading-panel-height: 53px;
     .TableCell-first + .TableCell,
     .TableCell:last-child {
       background-color: var(--p-color-bg-surface-selected);
-      // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- background color for selected nested rows
-      &::before {
-        background-color: var(--p-color-bg-surface-selected);
+    }
+
+    // stylelint-disable-next-line selector-max-class -- adds selected tone for nested rows
+    &.TableRow-child {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds selected tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds selected tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-selected);
+        }
       }
     }
 
@@ -299,6 +365,18 @@ $loading-panel-height: 53px;
       }
     }
 
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds success active tone for nested rows
+    &.TableRow-child.toneSuccess {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds success active tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds success active tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-success-active);
+        }
+      }
+    }
+
     /* stylelint-disable-next-line selector-max-class -- generated by polaris-migrator DO NOT COPY */
     &.toneWarning {
       // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- added crtical tone for suspended products
@@ -308,6 +386,18 @@ $loading-panel-height: 53px;
       .TableCell-first + .TableCell,
       .TableCell:last-child {
         background-color: var(--p-color-bg-surface-warning-active);
+      }
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds warning active tone for nested rows
+    &.TableRow-child.toneWarning {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds warning active tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds warning active tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-warning-active);
+        }
       }
     }
 
@@ -323,6 +413,18 @@ $loading-panel-height: 53px;
       }
     }
 
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds critical active tone for nested rows
+    &.TableRow-child.toneCritical {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds critical active tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds critical active tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-critical-active);
+        }
+      }
+    }
+
     /* stylelint-disable-next-line selector-max-class -- generated by polaris-migrator DO NOT COPY */
     &.toneSubdued {
       // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity -- generated by polaris-migrator DO NOT COPY
@@ -332,6 +434,18 @@ $loading-panel-height: 53px;
       .TableCell-first + .TableCell,
       .TableCell:last-child {
         background-color: var(--p-color-bg-surface-secondary-active);
+      }
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds secondary active tone for nested rows
+    &.TableRow-child.toneSubdued {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds secondary active tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds secondary active tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-secondary-active);
+        }
       }
     }
 
@@ -356,9 +470,17 @@ $loading-panel-height: 53px;
     .TableCell-first + .TableCell,
     .TableCell:last-child {
       background-color: var(--p-color-bg-surface-hover);
-      // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- background color for selected nested rows
-      &::before {
-        background-color: var(--p-color-bg-surface-hover);
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds hover tone for nested rows
+    &.TableRow-child {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds hover tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds hover tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-hover);
+        }
       }
     }
 
@@ -373,6 +495,18 @@ $loading-panel-height: 53px;
       }
     }
 
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds success tone for nested rows
+    &.TableRow-child.toneSuccess {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds success tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds success tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-success-hover);
+        }
+      }
+    }
+
     /* stylelint-disable-next-line selector-max-class, selector-max-specificity -- generated by polaris-migrator DO NOT COPY */
     &.toneCritical {
       /* stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- generated by polaris-migrator DO NOT COPY */
@@ -381,6 +515,18 @@ $loading-panel-height: 53px;
       .TableCell-first + .TableCell,
       .TableCell:last-child {
         background-color: var(--p-color-bg-surface-critical-hover);
+      }
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds critical tone for nested rows
+    &.TableRow-child.toneCritical {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds critical tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds critical tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-critical-hover);
+        }
       }
     }
 
@@ -395,6 +541,18 @@ $loading-panel-height: 53px;
       }
     }
 
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds warning tone for nested rows
+    &.TableRow-child.toneWarning {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds warning tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds warning tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-warning-hover);
+        }
+      }
+    }
+
     /* stylelint-disable-next-line selector-max-class, selector-max-specificity -- generated by polaris-migrator DO NOT COPY */
     &.toneSubdued {
       /* stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- generated by polaris-migrator DO NOT COPY */
@@ -403,6 +561,18 @@ $loading-panel-height: 53px;
       .TableCell-first + .TableCell,
       .TableCell:last-child {
         background-color: var(--p-color-bg-surface-secondary-hover);
+      }
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds secondary tone for nested rows
+    &.TableRow-child.toneSubdued {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds secondary tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds secondary tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-secondary-hover);
+        }
       }
     }
 
@@ -433,6 +603,18 @@ $loading-panel-height: 53px;
       }
     }
 
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds hover tone for nested rows
+    &.TableRow-child {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds hover tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds hover tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-brand-hover);
+        }
+      }
+    }
+
     /* stylelint-disable-next-line selector-max-class, selector-max-specificity -- generated by polaris-migrator DO NOT COPY */
     &.toneSuccess {
       // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity -- generated by polaris-migrator DO NOT COPY
@@ -442,6 +624,18 @@ $loading-panel-height: 53px;
       .TableCell-first + .TableCell,
       .TableCell:last-child {
         background-color: var(--p-color-bg-surface-success-hover);
+      }
+    }
+
+    // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds success hover tone for nested rows
+    &.TableRow-child.toneSuccess {
+      // stylelint-disable-next-line selector-max-class, selector-max-specificity -- adds success hover tone for nested rows
+      &,
+      .TableCell-first {
+        // stylelint-disable-next-line -- adds success hover tone for nested rows
+        &::before {
+          background-color: var(--p-color-bg-surface-success-hover);
+        }
       }
     }
 
@@ -527,6 +721,17 @@ $loading-panel-height: 53px;
     }
   }
 
+  .TableRow-child:nth-child(2n) {
+    // stylelint-disable-next-line  -- adds secondary tone for nested rows
+    &,
+    .TableCell-first {
+      // stylelint-disable-next-line -- adds secondary tone for nested rows
+      &::before {
+        background-color: var(--p-color-bg-surface-secondary);
+      }
+    }
+  }
+
   .Table-scrolling .TableRow-hovered:not(.TableRow-disabled):nth-child(2n + 1),
   .TableRow-hovered:not(.TableRow-disabled):nth-child(2n + 1),
   .Table-scrolling .TableRow-hovered:not(.TableRow-disabled):nth-child(2n),
@@ -555,6 +760,18 @@ $loading-panel-height: 53px;
     }
   }
 
+  .TableRow-child.TableRow-selected:nth-child(2n),
+  .TableRow-child.TableRow-selected:nth-child(2n + 1) {
+    // stylelint-disable-next-line  -- adds selected tone for nested rows
+    &,
+    .TableCell-first {
+      // stylelint-disable-next-line -- adds selected tone for nested rows
+      &::before {
+        background-color: var(--p-color-bg-surface-brand-selected);
+      }
+    }
+  }
+
   .Table-scrolling .TableRow-hovered.TableRow-selected:nth-child(2n + 1),
   .TableRow-hovered.TableRow-selected:nth-child(2n + 1),
   .Table-scrolling .TableRow-hovered.TableRow-selected:nth-child(2n),
@@ -566,6 +783,18 @@ $loading-panel-height: 53px;
     .TableCell-first + .TableCell,
     .TableCell:last-child {
       background-color: var(--p-color-bg-surface-brand-hover);
+    }
+  }
+
+  .TableRow-hovered.TableRow-selected:nth-child(2n),
+  .TableRow-hovered.TableRow-selected:nth-child(2n + 1) {
+    // stylelint-disable-next-line  -- adds hover tone for nested rows
+    &,
+    .TableCell-first {
+      // stylelint-disable-next-line -- adds hover tone for nested rows
+      &::before {
+        background-color: var(--p-color-bg-surface-brand-hover);
+      }
     }
   }
 }
