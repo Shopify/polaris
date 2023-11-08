@@ -7,6 +7,10 @@
   display: flex;
   padding-block: var(--p-space-025);
   margin-left: var(--p-space-050);
+
+  svg {
+    fill: var(--p-color-icon-secondary);
+  }
 }
 
 .Label {
@@ -76,7 +80,7 @@
   padding: 0;
 }
 
-.ClearButton-focused {
+.ClearButton-visible {
   opacity: 1;
   pointer-events: auto;
 }

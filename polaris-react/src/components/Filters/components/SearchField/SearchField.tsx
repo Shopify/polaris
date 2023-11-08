@@ -56,6 +56,39 @@ export function SearchField({
     }
   }
 
+  const loadingMarkup = loading ? (
+    <div className={styles.Spinner}>
+      <Spinner size="small" />
+    </div>
+  ) : null;
+
+  const clearButtonMarkup =
+    value !== '' && focused ? (
+      <UnstyledButton
+        className={classNames(
+          styles.ClearButton,
+          focused && styles['ClearButton-visible'],
+        )}
+        onClick={() => handleClear()}
+        disabled={disabled}
+      >
+        <Text as="span" visuallyHidden>
+          {i18n.translate('Polaris.Common.clear')}
+        </Text>
+        <Icon source={CircleCancelMinor} tone="subdued" />
+      </UnstyledButton>
+    ) : null;
+
+  const suffixMarkup =
+    loadingMarkup || clearButtonMarkup ? (
+      <div className={styles.Suffix}>
+        <InlineStack gap="200">
+          {loadingMarkup}
+          {clearButtonMarkup}
+        </InlineStack>
+      </div>
+    ) : null;
+
   return (
     <div className={styles.SearchField}>
       <label className={styles.Label} htmlFor={id}>
@@ -77,32 +110,7 @@ export function SearchField({
         placeholder={placeholder}
         disabled={disabled}
       />
-      {loading || value !== '' ? (
-        <div className={styles.Suffix}>
-          <InlineStack gap="200">
-            {loading ? (
-              <div className={styles.Spinner}>
-                <Spinner size="small" />
-              </div>
-            ) : null}
-            {value !== '' ? (
-              <UnstyledButton
-                className={classNames(
-                  styles.ClearButton,
-                  focused && styles['ClearButton-focused'],
-                )}
-                onClick={() => handleClear()}
-                disabled={disabled}
-              >
-                <Text as="span" visuallyHidden>
-                  {i18n.translate('Polaris.Common.clear')}
-                </Text>
-                <Icon source={CircleCancelMinor} tone="subdued" />
-              </UnstyledButton>
-            ) : null}
-          </InlineStack>
-        </div>
-      ) : null}
+      {suffixMarkup}
     </div>
   );
 }
