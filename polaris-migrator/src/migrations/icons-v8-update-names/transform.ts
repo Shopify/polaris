@@ -15,16 +15,15 @@ export default function transformer(
     return fileInfo.source;
   }
 
-  const majorMinorIcons = source
-    .find(j.JSXOpeningElement)
-    .filter(j.JSIdentifier)
-    .filter((element) => {
-      return deprecatedIcons.includes(element.value.name);
+  // Replace all usages of deprecated icons
+  source
+    .find(j.Identifier)
+    .filter((path) => deprecatedIcons.includes(path.node.name))
+    .forEach((path) => {
+      j(path).replaceWith(
+        j.identifier(path.node.name.replace(/Major|Minor/g, 'Icon')),
+      );
     });
-
-  majorMinorIcons.forEach((element) => {
-    element.value.name.replace(/Major|Minor/g, 'Icon');
-  });
 
   return source.toSource();
 }
