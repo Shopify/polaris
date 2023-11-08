@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Toiminnat",
-        "moreActionsActivatorLabel": "Lisää toimintoja",
-        "warningMessage": "Paremman käyttäjäkokemuksen tarjoamiseksi. Mainostettavia toimintoja saa olla enintään {maxPromotedActions}."
+        "moreActionsActivatorLabel": "Lisää toimintoja"
       },
       "showingTotalCount": "Näytetään {itemsCount}/{totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Kaikki tämän suodattimen {itemsLength} {resourceNamePlural} on valittu",

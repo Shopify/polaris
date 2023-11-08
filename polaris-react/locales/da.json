@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Handlinger",
-        "moreActionsActivatorLabel": "Flere handlinger",
-        "warningMessage": "Sikring af en bedre brugeroplevelse. Der bør maksimalt være {maxPromotedActions} handlinger, der promoveres."
+        "moreActionsActivatorLabel": "Flere handlinger"
       },
       "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} i dette filter er valgt",

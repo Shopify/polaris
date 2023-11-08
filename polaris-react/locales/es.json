@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Acciones",
-        "moreActionsActivatorLabel": "Más acciones",
-        "warningMessage": "Para ofrecer una mejor experiencia de usuario. Solo debe haber un máximo de {maxPromotedActions} acciones promocionadas."
+        "moreActionsActivatorLabel": "Más acciones"
       },
       "showingTotalCount": "Se muestran {itemsCount} de {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Los más de {itemsLength} {resourceNamePlural} de este filtro están seleccionados.",

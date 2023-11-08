@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Åtgärder",
-        "moreActionsActivatorLabel": "Fler åtgärder",
-        "warningMessage": "För att ge en bättre användarupplevelse. Det får bara vara maximalt {maxPromotedActions} främjande åtgärder."
+        "moreActionsActivatorLabel": "Fler åtgärder"
       },
       "showingTotalCount": "Visar {itemsCount} av {totalItemsCount} {resource}",
       "allFilteredItemsSelected": "Alla {itemsLength} + {resourceNamePlural} i detta filter har valts",

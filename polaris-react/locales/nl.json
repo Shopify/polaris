@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Acties",
-        "moreActionsActivatorLabel": "Meer acties",
-        "warningMessage": "Om een betere gebruikerservaring te bieden, zouden er maximaal {maxPromotedActions} gepromote acties moeten zijn."
+        "moreActionsActivatorLabel": "Meer acties"
       },
       "showingTotalCount": "{itemsCount} van {totalItemsCount} {resource} zichtbaar",
       "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd",

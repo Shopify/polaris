@@ -199,8 +199,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Thao tác",
-        "moreActionsActivatorLabel": "Thao tác khác",
-        "warningMessage": "Để mang đến trải nghiệm tốt hơn cho người dùng. Chỉ nên có tối đa {maxPromotedActions} thao tác quảng cáo."
+        "moreActionsActivatorLabel": "Thao tác khác"
       }
     },
     "SkeletonPage": {

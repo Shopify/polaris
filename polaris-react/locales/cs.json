@@ -196,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Akce",
-        "moreActionsActivatorLabel": "Další akce",
-        "warningMessage": "Chceme zlepšit uživatelské zkušenosti. Propagačních akcí by mělo být maximálně {maxPromotedActions}."
+        "moreActionsActivatorLabel": "Další akce"
       },
       "showingTotalCount": "Zobrazuje se tento počet: {itemsCount} z {totalItemsCount} ({resource})",
       "allFilteredItemsSelected": "V tomto filtru byly vybrány veškeré položky typu {resourceNamePlural}: {itemsLength}",
