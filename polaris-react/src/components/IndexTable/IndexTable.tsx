@@ -698,6 +698,7 @@ function IndexTableBase({
 
   const scrollBarWrapperClassNames = classNames(
     styles.ScrollBarContainer,
+    pagination && styles.ScrollBarContainerWithPagination,
     condensed && styles.scrollBarContainerCondensed,
     hideScrollContainer && styles.scrollBarContainerHidden,
   );
@@ -817,11 +818,11 @@ function IndexTableBase({
         <div className={tableWrapperClassNames} ref={tableMeasurerRef}>
           {!shouldShowBulkActions && !condensed && loadingMarkup}
           {tableContentMarkup}
+          {scrollBarMarkup}
           {paginationMarkup}
         </div>
         <div ref={selectAllActionsIntersectionRef} />
       </div>
-      {scrollBarMarkup}
     </>
   );
 

@@ -1406,6 +1406,15 @@ $scroll-bar-size: var(--p-space-200);
   }
 }
 
+.ScrollBarContainerWithPagination {
+  bottom: 40px;
+
+  @media #{$p-breakpoints-sm-up} {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
 .scrollBarContainerCondensed {
   visibility: hidden;
   pointer-events: none;
