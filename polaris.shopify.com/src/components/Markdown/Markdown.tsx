@@ -8,7 +8,7 @@ import React, {
   type PropsWithChildren,
 } from 'react';
 import {MDXRemote, type MDXRemoteProps} from './next-mdx-importer';
-import {Clipboard} from '@shopify/polaris-icons';
+import {ClipboardMinor} from '@shopify/polaris-icons';
 import {Grid, InlineGrid} from '@shopify/polaris';
 
 import styles from './Markdown.module.scss';
@@ -314,7 +314,7 @@ export const HeadingWithCopyButton = forwardRef(
               }
             }}
           >
-            <Icon source={Clipboard} width={16} height={16} />
+            <Icon source={ClipboardMinor} width={16} height={16} />
           </button>
         </Tooltip>
       );

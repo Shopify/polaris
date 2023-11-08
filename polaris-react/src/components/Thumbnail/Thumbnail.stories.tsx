@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {InlineStack, Thumbnail, BlockStack} from '@shopify/polaris';
-import {Note} from '@shopify/polaris-icons';
+import {NoteMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Thumbnail,
@@ -61,5 +61,5 @@ export function Large() {
 }
 
 export function WithComponentSource() {
-  return <Thumbnail source={Note} size="large" alt="Small document" />;
+  return <Thumbnail source={NoteMinor} size="large" alt="Small document" />;
 }

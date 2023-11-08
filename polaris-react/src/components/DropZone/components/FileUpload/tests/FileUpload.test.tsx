@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {Upload} from '@shopify/polaris-icons';
+import {UploadMajor} from '@shopify/polaris-icons';
 
 import {Text} from '../../../../Text';
 import {DropZoneContext} from '../../../context';
@@ -87,7 +87,7 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload).toContainReactComponent(Icon, {source: Upload});
+    expect(fileUpload).toContainReactComponent(Icon, {source: UploadMajor});
   });
 
   it('sets a default actionTitle if the prop is provided then removed', () => {

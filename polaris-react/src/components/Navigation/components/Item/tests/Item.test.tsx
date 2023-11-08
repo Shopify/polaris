@@ -1,5 +1,9 @@
 import React from 'react';
-import {Plus, StarFilled, StarOutline} from '@shopify/polaris-icons';
+import {
+  PlusMinor,
+  StarFilledMinor,
+  StarOutlineMinor,
+} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
@@ -152,8 +156,8 @@ describe('<Nav.Item />', () => {
       <Item
         label="some label"
         url="foo"
-        icon={StarFilled}
-        matchedItemIcon={StarOutline}
+        icon={StarFilledMinor}
+        matchedItemIcon={StarOutlineMinor}
       />,
       {
         location: 'foo',
@@ -161,7 +165,7 @@ describe('<Nav.Item />', () => {
     );
 
     expect(item).toContainReactComponent(Icon, {
-      source: StarOutline,
+      source: StarOutlineMinor,
     });
   });
 
@@ -170,8 +174,8 @@ describe('<Nav.Item />', () => {
       <Item
         label="some label"
         url="foo"
-        icon={StarFilled}
-        matchedItemIcon={StarOutline}
+        icon={StarFilledMinor}
+        matchedItemIcon={StarOutlineMinor}
         subNavigationItems={[
           {
             url: 'bar',
@@ -186,7 +190,7 @@ describe('<Nav.Item />', () => {
     );
 
     expect(item).toContainReactComponent(Icon, {
-      source: StarOutline,
+      source: StarOutlineMinor,
     });
   });
 
@@ -198,7 +202,7 @@ describe('<Nav.Item />', () => {
           url="foo"
           secondaryAction={{
             url: 'bar',
-            icon: Plus,
+            icon: PlusMinor,
             accessibilityLabel: 'label',
           }}
         />,
@@ -221,7 +225,7 @@ describe('<Nav.Item />', () => {
           url="foo"
           secondaryAction={{
             url: 'bar',
-            icon: Plus,
+            icon: PlusMinor,
             onClick: handler,
             accessibilityLabel: 'label',
           }}
@@ -244,7 +248,7 @@ describe('<Nav.Item />', () => {
           label="some label"
           url="foo"
           secondaryAction={{
-            icon: Plus,
+            icon: PlusMinor,
             accessibilityLabel: 'label',
           }}
         />,
@@ -265,7 +269,7 @@ describe('<Nav.Item />', () => {
           label="some label"
           url="foo"
           secondaryAction={{
-            icon: Plus,
+            icon: PlusMinor,
             onClick: handler,
             accessibilityLabel: 'label',
           }}
@@ -288,7 +292,7 @@ describe('<Nav.Item />', () => {
           url="foo"
           secondaryAction={{
             url: 'bar',
-            icon: Plus,
+            icon: PlusMinor,
             accessibilityLabel: 'label',
             tooltip: {
               content: 'This is tooltip text',
@@ -315,7 +319,7 @@ describe('<Nav.Item />', () => {
           secondaryActions={[
             {
               url: 'bar',
-              icon: Plus,
+              icon: PlusMinor,
               accessibilityLabel: 'label',
             },
           ]}
@@ -340,7 +344,7 @@ describe('<Nav.Item />', () => {
           secondaryActions={[
             {
               url: 'bar',
-              icon: Plus,
+              icon: PlusMinor,
               onClick: handler,
               accessibilityLabel: 'label',
             },
@@ -365,7 +369,7 @@ describe('<Nav.Item />', () => {
           url="foo"
           secondaryActions={[
             {
-              icon: Plus,
+              icon: PlusMinor,
               accessibilityLabel: 'label',
             },
           ]}
@@ -388,7 +392,7 @@ describe('<Nav.Item />', () => {
           url="foo"
           secondaryActions={[
             {
-              icon: Plus,
+              icon: PlusMinor,
               onClick: handler,
               accessibilityLabel: 'label',
             },
@@ -413,7 +417,7 @@ describe('<Nav.Item />', () => {
           secondaryActions={[
             {
               url: 'bar',
-              icon: Plus,
+              icon: PlusMinor,
               accessibilityLabel: 'label',
               tooltip: {
                 content: 'This is tooltip text',
@@ -439,12 +443,12 @@ describe('<Nav.Item />', () => {
           secondaryActions={[
             {
               url: 'bar',
-              icon: Plus,
+              icon: PlusMinor,
               accessibilityLabel: 'bar label',
             },
             {
               url: 'baz',
-              icon: Plus,
+              icon: PlusMinor,
               accessibilityLabel: 'baz label',
             },
           ]}
@@ -472,7 +476,7 @@ describe('<Nav.Item />', () => {
         length: MAX_SECONDARY_ACTIONS + 1,
       }).map((_, index) => ({
         url: `url-${index}`,
-        icon: Plus,
+        icon: PlusMinor,
         accessibilityLabel: `label ${index}`,
       }));
 
@@ -650,14 +654,14 @@ describe('<Nav.Item />', () => {
   describe('delegated props', () => {
     it('delegates icon to <Icon />', () => {
       const item = mountWithNavigationProvider(
-        <Item label="some label" url="foo" disabled={false} icon={Plus} />,
+        <Item label="some label" url="foo" disabled={false} icon={PlusMinor} />,
         {
           location: 'bar',
         },
       );
 
       expect(item).toContainReactComponent(Icon, {
-        source: Plus,
+        source: PlusMinor,
       });
     });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Exit} from '@shopify/polaris-icons';
+import {ExitMajor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';
 import {Text} from '../Text';
@@ -30,7 +30,7 @@ export function FullscreenBar({onAction, children}: FullscreenBarProps) {
         onClick={onAction}
         aria-label={i18n.translate('Polaris.FullscreenBar.accessibilityLabel')}
       >
-        <Icon source={Exit} />
+        <Icon source={ExitMajor} />
         {backButtonMarkup}
       </button>
       {children}

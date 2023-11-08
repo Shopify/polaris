@@ -1,4 +1,4 @@
-import {CaretDown} from '@shopify/polaris-icons';
+import {CaretDownMinor} from '@shopify/polaris-icons';
 import {className} from '../../utils/various';
 
 import Icon from '../Icon';
@@ -54,7 +54,7 @@ const Select = ({
         })}
       </select>
       <div className={styles.SelectIcon}>
-        <Icon source={CaretDown} width={16} height={16} />
+        <Icon source={CaretDownMinor} width={16} height={16} />
       </div>
     </div>
   );

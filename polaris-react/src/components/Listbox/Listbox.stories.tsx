@@ -14,7 +14,7 @@ import {
   Text,
   Box,
 } from '@shopify/polaris';
-import {CirclePlus, Search} from '@shopify/polaris-icons';
+import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Listbox,
@@ -104,7 +104,7 @@ export function WithAction() {
       </Listbox.Option>
       <Listbox.Action value="ActionValue">
         <LegacyStack spacing="tight">
-          <Icon source={CirclePlus} tone="base" />
+          <Icon source={CirclePlusMinor} tone="base" />
           <div>Add item</div>
         </LegacyStack>
       </Listbox.Action>
@@ -353,7 +353,7 @@ export function WithSearch() {
         placeholder="Search segments"
         autoComplete="off"
         value={query}
-        prefix={<Icon source={Search} />}
+        prefix={<Icon source={SearchMinor} />}
         ariaActiveDescendant={activeOptionId}
         ariaControls={listboxId}
         onChange={handleQueryChange}

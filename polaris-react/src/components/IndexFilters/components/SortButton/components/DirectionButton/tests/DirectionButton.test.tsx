@@ -1,5 +1,5 @@
 import React from 'react';
-import {ArrowUp, ArrowDown} from '@shopify/polaris-icons';
+import {ArrowUpMinor, ArrowDownMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {UnstyledButton} from '../../../../../../UnstyledButton';
@@ -19,7 +19,7 @@ describe('DirectionButton', () => {
     const wrapper = mountWithApp(<DirectionButton {...props} />);
 
     expect(wrapper).toContainReactComponent(Icon, {
-      source: ArrowUp,
+      source: ArrowUpMinor,
     });
   });
 
@@ -34,7 +34,7 @@ describe('DirectionButton', () => {
     const wrapper = mountWithApp(<DirectionButton {...props} />);
 
     expect(wrapper).toContainReactComponent(Icon, {
-      source: ArrowDown,
+      source: ArrowDownMinor,
     });
   });
 
@@ -49,7 +49,7 @@ describe('DirectionButton', () => {
     const wrapper = mountWithApp(<DirectionButton {...props} />);
 
     expect(wrapper).toContainReactComponent(Icon, {
-      source: ArrowUp,
+      source: ArrowUpMinor,
     });
   });
 

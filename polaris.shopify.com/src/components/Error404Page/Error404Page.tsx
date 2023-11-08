@@ -7,7 +7,7 @@ import styles from './Error404Page.module.scss';
 import {useRouter} from 'next/router';
 import {useEffect} from 'react';
 import {useState} from 'react';
-import {CircleAlert} from '@shopify/polaris-icons';
+import {CircleAlertMajor} from '@shopify/polaris-icons';
 
 interface Props {}
 
@@ -30,7 +30,7 @@ function Error404Page({}: Props) {
         <div style={{textAlign: 'center', marginTop: '4rem'}}>
           <Longform>
             <div className={styles.Icon}>
-              <Icon source={CircleAlert} width={100} height={100} />
+              <Icon source={CircleAlertMajor} width={100} height={100} />
             </div>
             <h1 style={{marginTop: '2rem'}}>There’s no page at this address</h1>
             <p>

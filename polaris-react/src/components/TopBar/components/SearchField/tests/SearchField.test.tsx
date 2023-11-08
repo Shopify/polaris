@@ -1,5 +1,5 @@
 import React from 'react';
-import {CircleCancel} from '@shopify/polaris-icons';
+import {CircleCancelMinor} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../../../../Icon';
@@ -53,7 +53,7 @@ describe('<SearchField />', () => {
       );
 
       expect(textField).toContainReactComponent(Icon, {
-        source: CircleCancel,
+        source: CircleCancelMinor,
       });
     });
 

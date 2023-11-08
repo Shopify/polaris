@@ -1,5 +1,5 @@
 import {Button, Popover, ActionList, Icon} from '@shopify/polaris';
-import {Import, TickSmall, Export} from '@shopify/polaris-icons';
+import {ImportMinor, TickSmallMinor, ExportMinor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -28,10 +28,10 @@ function ActionListWithSuffixExample() {
             {
               active: true,
               content: 'Import file',
-              icon: Import,
-              suffix: <Icon source={TickSmall} />,
+              icon: ImportMinor,
+              suffix: <Icon source={TickSmallMinor} />,
             },
-            {content: 'Export file', icon: Export},
+            {content: 'Export file', icon: ExportMinor},
           ]}
         />
       </Popover>

@@ -1,5 +1,5 @@
 import React, {useContext, useMemo, useRef, useState} from 'react';
-import {Search} from '@shopify/polaris-icons';
+import {SearchMinor} from '@shopify/polaris-icons';
 
 import type {ActionListItemDescriptor, ActionListSection} from '../../types';
 import {Key} from '../../types';
@@ -160,7 +160,7 @@ export function ActionList({
             autoComplete="off"
             value={searchText}
             onChange={(value) => setSeachText(value)}
-            prefix={<Icon source={Search} />}
+            prefix={<Icon source={SearchMinor} />}
             onClearButtonClick={() => setSeachText('')}
           />
         </Box>

@@ -20,7 +20,7 @@ import {
   Text,
   BlockStack,
 } from '@shopify/polaris';
-import {Search} from '@shopify/polaris-icons';
+import {SearchMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Popover,
@@ -624,7 +624,7 @@ export function WithSearchableListbox() {
           placeholder="Search segments"
           autoComplete="off"
           value={query}
-          prefix={<Icon source={Search} />}
+          prefix={<Icon source={SearchMinor} />}
           ariaActiveDescendant={activeOptionId}
           ariaControls={listboxId}
           onChange={handleQueryChange}

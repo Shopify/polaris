@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ButtonProps} from '@shopify/polaris';
 import {Button} from '@shopify/polaris';
-import {Phone} from '@shopify/polaris-icons';
+import {PhoneMajor} from '@shopify/polaris-icons';
 
 declare function CustomButton(
   props: /* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */
@@ -24,7 +24,7 @@ export function App() {
       <Button disabled tone="critical">
         Delete App
       </Button>
-      <Button icon={Phone} size="large">
+      <Button icon={PhoneMajor} size="large">
         Call
       </Button>
       <Button variant="plain">Edit</Button>
@@ -54,7 +54,7 @@ export function App() {
       </Button>
       {/* polaris-migrator: Unable to migrate the following expression. Please upgrade manually. */}
       <Button
-        icon={Phone}
+        icon={PhoneMajor}
         removeUnderline
         plain={!primary}
         monochrome={!primary}

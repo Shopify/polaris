@@ -10,7 +10,7 @@ import {
   TextContainer,
   Text,
 } from '@shopify/polaris';
-import {Search} from '@shopify/polaris-icons';
+import {SearchMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Combobox,
@@ -85,7 +85,7 @@ export function Default() {
       <Combobox
         activator={
           <Combobox.TextField
-            prefix={<Icon source={Search} />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden
@@ -171,7 +171,7 @@ export function WithManualSelection() {
       <Combobox
         activator={
           <Combobox.TextField
-            prefix={<Icon source={Search} />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden
@@ -282,7 +282,7 @@ export function WithMultiSelect() {
         allowMultiple
         activator={
           <Combobox.TextField
-            prefix={<Icon source={Search} />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden
@@ -394,7 +394,7 @@ export function WithMultiSelectAndManualSelection() {
         allowMultiple
         activator={
           <Combobox.TextField
-            prefix={<Icon source={Search} />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden
@@ -681,7 +681,7 @@ export function WithLoading() {
         height="220px"
         activator={
           <Combobox.TextField
-            prefix={<Icon source={Search} />}
+            prefix={<Icon source={SearchMinor} />}
             onChange={updateText}
             label="Search tags"
             labelHidden

@@ -268,7 +268,7 @@ function DateRangePicker() {
       activator={
         <Button
           size="slim"
-          icon={Calendar}
+          icon={CalendarMinor}
           onClick={() => setPopoverActive(!popoverActive)}
         >
           {buttonValue}
@@ -330,20 +330,20 @@ function DateRangePicker() {
                     role="combobox"
                     label={'Since'}
                     labelHidden
-                    prefix={<Icon source={Calendar} />}
+                    prefix={<Icon source={CalendarMinor} />}
                     value={inputValues.since}
                     onChange={handleStartInputValueChange}
                     onBlur={handleInputBlur}
                     autoComplete="off"
                   />
                 </div>
-                <Icon source={ArrowRight} />
+                <Icon source={ArrowRightMinor} />
                 <div style={{flexGrow: 1}}>
                   <TextField
                     role="combobox"
                     label={'Until'}
                     labelHidden
-                    prefix={<Icon source={Calendar} />}
+                    prefix={<Icon source={CalendarMinor} />}
                     value={inputValues.until}
                     onChange={handleEndInputValueChange}
                     onBlur={handleInputBlur}

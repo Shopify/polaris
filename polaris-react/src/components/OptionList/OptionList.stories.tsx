@@ -12,7 +12,7 @@ import {
   Thumbnail,
   BlockStack,
 } from '@shopify/polaris';
-import {Discounts} from '@shopify/polaris-icons';
+import {DiscountsMajor, DiscountsMinor} from '@shopify/polaris-icons';
 
 export default {
   component: OptionList,
@@ -319,12 +319,12 @@ export function All() {
                 {
                   value: 'minor',
                   label: 'Minor',
-                  media: <Icon source={Discounts} />,
+                  media: <Icon source={DiscountsMinor} />,
                 },
                 {
                   value: 'major',
                   label: 'Major',
-                  media: <Icon source={Discounts} />,
+                  media: <Icon source={DiscountsMajor} />,
                 },
               ],
             },

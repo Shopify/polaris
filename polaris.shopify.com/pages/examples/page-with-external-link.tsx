@@ -1,5 +1,5 @@
 import {Page, LegacyCard} from '@shopify/polaris';
-import {External} from '@shopify/polaris-icons';
+import {ExternalMinor} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -12,7 +12,7 @@ function PageExample() {
         {
           content: 'Promote',
           external: true,
-          icon: External,
+          icon: ExternalMinor,
           url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
         },
       ]}

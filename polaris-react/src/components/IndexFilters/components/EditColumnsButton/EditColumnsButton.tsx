@@ -1,5 +1,5 @@
 import React from 'react';
-import {Columns3} from '@shopify/polaris-icons';
+import {Columns3Minor} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {Button} from '../../../Button';
@@ -30,7 +30,7 @@ export function EditColumnsButton({onClick, disabled}: EditColumnsButtonProps) {
         size="slim"
         onClick={onClick}
         disabled={disabled}
-        icon={Columns3}
+        icon={Columns3Minor}
         accessibilityLabel={i18n.translate(
           'Polaris.IndexFilters.EditColumnsButton.accessibilityLabel',
         )}

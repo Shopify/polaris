@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from '@shopify/polaris';
-import {Phone} from '@shopify/polaris-icons';
+import {PhoneMajor} from '@shopify/polaris-icons';
 
 export function App() {
   const isPolarisUplift = true;
@@ -21,7 +21,7 @@ export function App() {
       <Button plain={isPolarisUplift} monochrome>
         Edit
       </Button>
-      <Button icon={Phone} plain monochrome />
+      <Button icon={PhoneMajor} plain monochrome />
     </>
   );
 }
