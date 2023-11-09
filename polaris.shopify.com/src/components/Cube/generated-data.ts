@@ -1,121 +1,331 @@
-
 /* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import * as CSS from 'csstype';
-import type {ComputedTokenCSSProperties} from '@shopify/polaris-tokens';
-import {ResponsiveProp} from '../../utils/various';
-
-// We Omit the keys of the ComputedTokenCSSProperties interface, as we want to
-// ensure that there are no type collisions between CSS.Properties and our token
-// types.
-type CSSProperties = Omit<
-  Pick<
-    CSS.Properties,
-    'zIndex' | 'pageBreakBefore' | 'pageBreakAfter' | 'pageBreakInside' | 'mixBlendMode' | 'isolation' | 'backgroundBlendMode' | 'alignContent' | 'justifyContent' | 'justifySelf' | 'alignSelf' | 'justifyItems' | 'alignItems' | 'rowGap' | 'columnGap' | 'animationDuration' | 'animationName' | 'animationTimingFunction' | 'animationIterationCount' | 'animationDirection' | 'animationPlayState' | 'animationDelay' | 'animationFillMode' | 'backgroundPosition' | 'backgroundClip' | 'backgroundColor' | 'backgroundImage' | 'backgroundRepeat' | 'backgroundAttachment' | 'backgroundOrigin' | 'backgroundSize' | 'borderImageSource' | 'borderImageSlice' | 'borderImageWidth' | 'borderImageOutset' | 'borderImageRepeat' | 'breakBefore' | 'breakAfter' | 'breakInside' | 'orphans' | 'widows' | 'boxDecorationBreak' | 'color' | 'opacity' | 'display' | 'order' | 'visibility' | 'flexDirection' | 'flexWrap' | 'flexGrow' | 'flexShrink' | 'flexBasis' | 'fontSizeAdjust' | 'fontFamily' | 'fontWeight' | 'fontStretch' | 'fontStyle' | 'fontSize' | 'fontSynthesis' | 'fontKerning' | 'fontVariantLigatures' | 'fontVariantPosition' | 'fontVariantCaps' | 'fontVariantNumeric' | 'fontVariantAlternates' | 'fontVariantEastAsian' | 'fontVariant' | 'fontFeatureSettings' | 'fontLanguageOverride' | 'fontOpticalSizing' | 'fontVariationSettings' | 'fontPalette' | 'fontVariantEmoji' | 'gridTemplateColumns' | 'gridTemplateRows' | 'gridTemplateAreas' | 'gridAutoColumns' | 'gridAutoRows' | 'gridAutoFlow' | 'gridRowStart' | 'gridColumnStart' | 'gridRowEnd' | 'gridColumnEnd' | 'objectFit' | 'objectPosition' | 'imageOrientation' | 'imageRendering' | 'verticalAlign' | 'lineHeight' | 'listStyleImage' | 'listStyleType' | 'listStylePosition' | 'counterReset' | 'counterIncrement' | 'counterSet' | 'blockSize' | 'inlineSize' | 'minBlockSize' | 'minInlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'marginBlockStart' | 'marginBlockEnd' | 'marginInlineStart' | 'marginInlineEnd' | 'paddingBlockStart' | 'paddingBlockEnd' | 'paddingInlineStart' | 'paddingInlineEnd' | 'borderBlockStartWidth' | 'borderBlockEndWidth' | 'borderInlineStartWidth' | 'borderInlineEndWidth' | 'borderBlockStartStyle' | 'borderBlockEndStyle' | 'borderInlineStartStyle' | 'borderInlineEndStyle' | 'borderBlockStyle' | 'borderInlineStyle' | 'borderBlockStartColor' | 'borderBlockEndColor' | 'borderInlineStartColor' | 'borderInlineEndColor' | 'borderBlockColor' | 'borderInlineColor' | 'borderStartStartRadius' | 'borderStartEndRadius' | 'borderEndStartRadius' | 'borderEndEndRadius' | 'columnSpan' | 'columnWidth' | 'columnCount' | 'columnRuleColor' | 'columnRuleStyle' | 'columnRuleWidth' | 'columnFill' | 'overflowClipMargin' | 'textOverflow' | 'overflowBlock' | 'overflowInline' | 'scrollBehavior' | 'scrollbarGutter' | 'overscrollBehaviorInline' | 'overscrollBehaviorBlock' | 'position' | 'insetBlockStart' | 'insetInlineStart' | 'insetBlockEnd' | 'insetInlineEnd' | 'scrollSnapType' | 'scrollSnapAlign' | 'scrollSnapStop' | 'scrollPaddingTop' | 'scrollPaddingRight' | 'scrollPaddingBottom' | 'scrollPaddingLeft' | 'scrollPaddingInlineStart' | 'scrollPaddingBlockStart' | 'scrollPaddingInlineEnd' | 'scrollPaddingBlockEnd' | 'scrollMarginTop' | 'scrollMarginRight' | 'scrollMarginBottom' | 'scrollMarginLeft' | 'scrollMarginBlockStart' | 'scrollMarginInlineStart' | 'scrollMarginBlockEnd' | 'scrollMarginInlineEnd' | 'scrollbarColor' | 'scrollbarWidth' | 'shapeOutside' | 'shapeImageThreshold' | 'shapeMargin' | 'containIntrinsicBlockSize' | 'containIntrinsicInlineSize' | 'boxSizing' | 'tableLayout' | 'borderCollapse' | 'borderSpacing' | 'captionSide' | 'emptyCells' | 'textTransform' | 'whiteSpace' | 'tabSize' | 'wordBreak' | 'lineBreak' | 'hyphens' | 'hyphenateCharacter' | 'hyphenateLimitChars' | 'overflowWrap' | 'wordWrap' | 'textAlign' | 'textAlignLast' | 'textJustify' | 'wordSpacing' | 'letterSpacing' | 'textIndent' | 'hangingPunctuation' | 'textDecorationLine' | 'textDecorationStyle' | 'textDecorationColor' | 'textDecorationThickness' | 'textUnderlinePosition' | 'textUnderlineOffset' | 'textDecorationSkipInk' | 'textEmphasisStyle' | 'textEmphasisColor' | 'textEmphasisPosition' | 'textShadow' | 'translate' | 'rotate' | 'scale' | 'transformStyle' | 'perspective' | 'perspectiveOrigin' | 'backfaceVisibility' | 'transform' | 'transformOrigin' | 'transformBox' | 'transitionProperty' | 'transitionDuration' | 'transitionTimingFunction' | 'transitionDelay' | 'outlineWidth' | 'outlineStyle' | 'outlineColor' | 'outlineOffset' | 'resize' | 'cursor' | 'caretColor' | 'caretShape' | 'caret' | 'userSelect' | 'accentColor' | 'inputSecurity' | 'willChange' | 'direction' | 'unicodeBidi' | 'writingMode' | 'textOrientation' | 'textCombineUpright' | 'backdropFilter' | 'filter' | 'offsetPath' | 'offsetDistance' | 'offsetAnchor' | 'offsetRotate'
-  >,
-  keyof ComputedTokenCSSProperties
->;
-
-type ResponsiveCSSProperties = {
-  [K in keyof CSSProperties]?: ResponsiveProp<CSSProperties[K]>
-};
-
-type ResponsiveTokenProperties = {
-  [K in keyof ComputedTokenCSSProperties]?: ResponsiveProp<ComputedTokenCSSProperties[K]>
-};
-
-type StyleProps = ResponsiveCSSProperties & ResponsiveTokenProperties;
-
-// TODO: Do we need the intersections here? Can we somehow guarantee that just
-// taking the first prop will give us the correct type?
-type StylePropAliases = {
-  gap?: StyleProps['rowGap'] & StyleProps['columnGap'];
-  paddingLeft?: StyleProps['paddingInlineStart'];
-  paddingInline?: StyleProps['paddingInlineStart'] & StyleProps['paddingInlineEnd'];
-  padding?: StyleProps['paddingInlineStart'] & StyleProps['paddingInlineEnd'] & StyleProps['paddingBlockStart'] & StyleProps['paddingBlockEnd'];
-  paddingRight?: StyleProps['paddingInlineEnd'];
-  paddingTop?: StyleProps['paddingBlockStart'];
-  paddingBlock?: StyleProps['paddingBlockStart'] & StyleProps['paddingBlockEnd'];
-  paddingBottom?: StyleProps['paddingBlockEnd'];
-  marginLeft?: StyleProps['marginInlineStart'];
-  marginInline?: StyleProps['marginInlineStart'] & StyleProps['marginInlineEnd'];
-  margin?: StyleProps['marginInlineStart'] & StyleProps['marginInlineEnd'] & StyleProps['marginBlockStart'] & StyleProps['marginBlockEnd'];
-  marginRight?: StyleProps['marginInlineEnd'];
-  marginTop?: StyleProps['marginBlockStart'];
-  marginBlock?: StyleProps['marginBlockStart'] & StyleProps['marginBlockEnd'];
-  marginBottom?: StyleProps['marginBlockEnd'];
-  width?: StyleProps['inlineSize'];
-  size?: StyleProps['inlineSize'] & StyleProps['blockSize'];
-  height?: StyleProps['blockSize'];
-  minWidth?: StyleProps['minInlineSize'];
-  minSize?: StyleProps['minInlineSize'] & StyleProps['minBlockSize'];
-  minHeight?: StyleProps['minBlockSize'];
-  maxWidth?: StyleProps['maxInlineSize'];
-  maxSize?: StyleProps['maxInlineSize'] & StyleProps['maxBlockSize'];
-  maxHeight?: StyleProps['maxBlockSize'];
-  containIntrinsicWidth?: StyleProps['containIntrinsicInlineSize'];
-  containIntrinsicSize?: StyleProps['containIntrinsicInlineSize'] & StyleProps['containIntrinsicBlockSize'];
-  containIntrinsicHeight?: StyleProps['containIntrinsicBlockSize'];
-  overflowX?: StyleProps['overflowInline'];
-  overflow?: StyleProps['overflowInline'] & StyleProps['overflowBlock'];
-  overflowY?: StyleProps['overflowBlock'];
-  overscrollBehaviorX?: StyleProps['overscrollBehaviorInline'];
-  overscrollBehavior?: StyleProps['overscrollBehaviorInline'] & StyleProps['overscrollBehaviorBlock'];
-  overscrollBehaviorY?: StyleProps['overscrollBehaviorBlock'];
-  borderTopLeftRadius?: StyleProps['borderStartStartRadius'];
-  borderRadius?: StyleProps['borderStartStartRadius'] & StyleProps['borderStartEndRadius'] & StyleProps['borderEndStartRadius'] & StyleProps['borderEndEndRadius'];
-  borderTopRightRadius?: StyleProps['borderStartEndRadius'];
-  borderBottomLeftRadius?: StyleProps['borderEndStartRadius'];
-  borderBottomRightRadius?: StyleProps['borderEndEndRadius'];
-  borderLeftColor?: StyleProps['borderInlineStartColor'];
-  borderInlineColor?: StyleProps['borderInlineStartColor'] & StyleProps['borderInlineEndColor'];
-  borderColor?: StyleProps['borderInlineStartColor'] & StyleProps['borderInlineEndColor'] & StyleProps['borderBlockStartColor'] & StyleProps['borderBlockEndColor'];
-  borderRightColor?: StyleProps['borderInlineEndColor'];
-  borderTopColor?: StyleProps['borderBlockStartColor'];
-  borderBlockColor?: StyleProps['borderBlockStartColor'] & StyleProps['borderBlockEndColor'];
-  borderBottomColor?: StyleProps['borderBlockEndColor'];
-  borderLeftStyle?: StyleProps['borderInlineStartStyle'];
-  borderInlineStyle?: StyleProps['borderInlineStartStyle'] & StyleProps['borderInlineEndStyle'];
-  borderStyle?: StyleProps['borderInlineStartStyle'] & StyleProps['borderInlineEndStyle'] & StyleProps['borderBlockStartStyle'] & StyleProps['borderBlockEndStyle'];
-  borderRightStyle?: StyleProps['borderInlineEndStyle'];
-  borderTopStyle?: StyleProps['borderBlockStartStyle'];
-  borderBlockStyle?: StyleProps['borderBlockStartStyle'] & StyleProps['borderBlockEndStyle'];
-  borderBottomStyle?: StyleProps['borderBlockEndStyle'];
-  borderLeftWidth?: StyleProps['borderInlineStartWidth'];
-  borderInlineWidth?: StyleProps['borderInlineStartWidth'] & StyleProps['borderInlineEndWidth'];
-  borderWidth?: StyleProps['borderInlineStartWidth'] & StyleProps['borderInlineEndWidth'] & StyleProps['borderBlockStartWidth'] & StyleProps['borderBlockEndWidth'];
-  borderRightWidth?: StyleProps['borderInlineEndWidth'];
-  borderTopWidth?: StyleProps['borderBlockStartWidth'];
-  borderBlockWidth?: StyleProps['borderBlockStartWidth'] & StyleProps['borderBlockEndWidth'];
-  borderBottomWidth?: StyleProps['borderBlockEndWidth'];
-  left?: StyleProps['insetInlineStart'];
-  insetInline?: StyleProps['insetInlineStart'] & StyleProps['insetInlineEnd'];
-  inset?: StyleProps['insetInlineStart'] & StyleProps['insetInlineEnd'] & StyleProps['insetBlockStart'] & StyleProps['insetBlockEnd'];
-  right?: StyleProps['insetInlineEnd'];
-  top?: StyleProps['insetBlockStart'];
-  insetBlock?: StyleProps['insetBlockStart'] & StyleProps['insetBlockEnd'];
-  bottom?: StyleProps['insetBlockEnd'];
-  scrollPaddingLeft?: StyleProps['scrollPaddingInlineStart'];
-  scrollPaddingInline?: StyleProps['scrollPaddingInlineStart'] & StyleProps['scrollPaddingInlineEnd'];
-  scrollPadding?: StyleProps['scrollPaddingInlineStart'] & StyleProps['scrollPaddingInlineEnd'] & StyleProps['scrollPaddingBlockStart'] & StyleProps['scrollPaddingBlockEnd'];
-  scrollPaddingRight?: StyleProps['scrollPaddingInlineEnd'];
-  scrollPaddingTop?: StyleProps['scrollPaddingBlockStart'];
-  scrollPaddingBlock?: StyleProps['scrollPaddingBlockStart'] & StyleProps['scrollPaddingBlockEnd'];
-  scrollPaddingBottom?: StyleProps['scrollPaddingBlockEnd'];
-  scrollMarginLeft?: StyleProps['scrollMarginInlineStart'];
-  scrollMarginInline?: StyleProps['scrollMarginInlineStart'] & StyleProps['scrollMarginInlineEnd'];
-  scrollMargin?: StyleProps['scrollMarginInlineStart'] & StyleProps['scrollMarginInlineEnd'] & StyleProps['scrollMarginBlockStart'] & StyleProps['scrollMarginBlockEnd'];
-  scrollMarginRight?: StyleProps['scrollMarginInlineEnd'];
-  scrollMarginTop?: StyleProps['scrollMarginBlockStart'];
-  scrollMarginBlock?: StyleProps['scrollMarginBlockStart'] & StyleProps['scrollMarginBlockEnd'];
-  scrollMarginBottom?: StyleProps['scrollMarginBlockEnd'];
-};
-
-export type CubeProps = StyleProps & StylePropAliases;
+// NOTE: Includes aliases as well as CSS Properties
+import type {TokenizedStyleProps as TokenizedStylePropsAndAliases} from '@shopify/polaris-tokens';
+import type {ResponsiveProp} from '../../utils/various';
 
 /**
- * An ordered set of aliases for each style prop that has them.
+ * A subset of Raw CSS properties supported in Polaris
  */
-export const stylePropAliases: Partial<Record<keyof StyleProps, readonly (keyof StylePropAliases)[]>> = {
+type NonTokenizedStyleProps = Pick<CSS.Properties, SupportedRawCSSStyleProps>;
+
+/**
+ * Props which act as an alias to one or more more non-tokenized style props.
+ *
+ * For example; 'justify' is an alias to 'justify-items' when that individual
+ * prop isn't set.
+ */
+type NonTokenizedStylePropAliases = {
+  overflowX?: NonTokenizedStyleProps['overflowInline'];
+  overflow?: NonTokenizedStyleProps['overflowInline'] & NonTokenizedStyleProps['overflowBlock'];
+  overflowY?: NonTokenizedStyleProps['overflowBlock'];
+  overscrollBehaviorX?: NonTokenizedStyleProps['overscrollBehaviorInline'];
+  overscrollBehavior?: NonTokenizedStyleProps['overscrollBehaviorInline'] & NonTokenizedStyleProps['overscrollBehaviorBlock'];
+  overscrollBehaviorY?: NonTokenizedStyleProps['overscrollBehaviorBlock'];
+  borderTopLeftRadius?: NonTokenizedStyleProps['borderStartStartRadius'];
+  borderTopRightRadius?: NonTokenizedStyleProps['borderStartEndRadius'];
+  borderBottomLeftRadius?: NonTokenizedStyleProps['borderEndStartRadius'];
+  borderBottomRightRadius?: NonTokenizedStyleProps['borderEndEndRadius'];
+  borderLeftColor?: NonTokenizedStyleProps['borderInlineStartColor'];
+  borderInlineColor?: NonTokenizedStyleProps['borderInlineStartColor'] & NonTokenizedStyleProps['borderInlineEndColor'];
+  borderRightColor?: NonTokenizedStyleProps['borderInlineEndColor'];
+  borderTopColor?: NonTokenizedStyleProps['borderBlockStartColor'];
+  borderBlockColor?: NonTokenizedStyleProps['borderBlockStartColor'] & NonTokenizedStyleProps['borderBlockEndColor'];
+  borderBottomColor?: NonTokenizedStyleProps['borderBlockEndColor'];
+  borderLeftStyle?: NonTokenizedStyleProps['borderInlineStartStyle'];
+  borderInlineStyle?: NonTokenizedStyleProps['borderInlineStartStyle'] & NonTokenizedStyleProps['borderInlineEndStyle'];
+  borderStyle?: NonTokenizedStyleProps['borderInlineStartStyle'] & NonTokenizedStyleProps['borderInlineEndStyle'] & NonTokenizedStyleProps['borderBlockStartStyle'] & NonTokenizedStyleProps['borderBlockEndStyle'];
+  borderRightStyle?: NonTokenizedStyleProps['borderInlineEndStyle'];
+  borderTopStyle?: NonTokenizedStyleProps['borderBlockStartStyle'];
+  borderBlockStyle?: NonTokenizedStyleProps['borderBlockStartStyle'] & NonTokenizedStyleProps['borderBlockEndStyle'];
+  borderBottomStyle?: NonTokenizedStyleProps['borderBlockEndStyle'];
+  borderLeftWidth?: NonTokenizedStyleProps['borderInlineStartWidth'];
+  borderInlineWidth?: NonTokenizedStyleProps['borderInlineStartWidth'] & NonTokenizedStyleProps['borderInlineEndWidth'];
+  borderRightWidth?: NonTokenizedStyleProps['borderInlineEndWidth'];
+  borderTopWidth?: NonTokenizedStyleProps['borderBlockStartWidth'];
+  borderBlockWidth?: NonTokenizedStyleProps['borderBlockStartWidth'] & NonTokenizedStyleProps['borderBlockEndWidth'];
+  borderBottomWidth?: NonTokenizedStyleProps['borderBlockEndWidth'];
+  left?: NonTokenizedStyleProps['insetInlineStart'];
+  insetInline?: NonTokenizedStyleProps['insetInlineStart'] & NonTokenizedStyleProps['insetInlineEnd'];
+  inset?: NonTokenizedStyleProps['insetInlineStart'] & NonTokenizedStyleProps['insetInlineEnd'] & NonTokenizedStyleProps['insetBlockStart'] & NonTokenizedStyleProps['insetBlockEnd'];
+  right?: NonTokenizedStyleProps['insetInlineEnd'];
+  top?: NonTokenizedStyleProps['insetBlockStart'];
+  insetBlock?: NonTokenizedStyleProps['insetBlockStart'] & NonTokenizedStyleProps['insetBlockEnd'];
+  bottom?: NonTokenizedStyleProps['insetBlockEnd'];
+  scrollPaddingLeft?: NonTokenizedStyleProps['scrollPaddingInlineStart'];
+  scrollPaddingInline?: NonTokenizedStyleProps['scrollPaddingInlineStart'] & NonTokenizedStyleProps['scrollPaddingInlineEnd'];
+  scrollPadding?: NonTokenizedStyleProps['scrollPaddingInlineStart'] & NonTokenizedStyleProps['scrollPaddingInlineEnd'] & NonTokenizedStyleProps['scrollPaddingBlockStart'] & NonTokenizedStyleProps['scrollPaddingBlockEnd'];
+  scrollPaddingRight?: NonTokenizedStyleProps['scrollPaddingInlineEnd'];
+  scrollPaddingTop?: NonTokenizedStyleProps['scrollPaddingBlockStart'];
+  scrollPaddingBlock?: NonTokenizedStyleProps['scrollPaddingBlockStart'] & NonTokenizedStyleProps['scrollPaddingBlockEnd'];
+  scrollPaddingBottom?: NonTokenizedStyleProps['scrollPaddingBlockEnd'];
+  scrollMarginLeft?: NonTokenizedStyleProps['scrollMarginInlineStart'];
+  scrollMarginInline?: NonTokenizedStyleProps['scrollMarginInlineStart'] & NonTokenizedStyleProps['scrollMarginInlineEnd'];
+  scrollMargin?: NonTokenizedStyleProps['scrollMarginInlineStart'] & NonTokenizedStyleProps['scrollMarginInlineEnd'] & NonTokenizedStyleProps['scrollMarginBlockStart'] & NonTokenizedStyleProps['scrollMarginBlockEnd'];
+  scrollMarginRight?: NonTokenizedStyleProps['scrollMarginInlineEnd'];
+  scrollMarginTop?: NonTokenizedStyleProps['scrollMarginBlockStart'];
+  scrollMarginBlock?: NonTokenizedStyleProps['scrollMarginBlockStart'] & NonTokenizedStyleProps['scrollMarginBlockEnd'];
+  scrollMarginBottom?: NonTokenizedStyleProps['scrollMarginBlockEnd'];
+  justify?: NonTokenizedStyleProps['justifyItems'];
+  align?: NonTokenizedStyleProps['alignItems'];
+};
+
+/**
+ * Style props who only accept tokenized values.
+ *
+ * For example; 'padding-inline-start' can only accept the 'space-*' tokens.
+ */
+type TokenizedStyleProps= Omit<TokenizedStylePropsAndAliases, typeof stylePropAliasNames[number]>;
+
+/**
+ * Props which act as an alias to one or more more tokenized style props.
+ *
+ * For example; 'padding' is an alias to 'padding-inline-start',
+ * 'padding-inline-end', etc, when those individual props aren't set.
+ */
+type TokenizedStylePropAliases = Pick<
+  TokenizedStylePropsAndAliases,
+  typeof stylePropAliasNames[number] & keyof TokenizedStylePropsAndAliases
+>;
+
+type StyleProps = NonTokenizedStyleProps &
+  NonTokenizedStylePropAliases &
+  TokenizedStyleProps &
+  TokenizedStylePropAliases;
+
+/**
+ * A combination of raw CSS style props, tokenized style props (derived from
+ * @shopify/polaris-tokens), and helpful aliases for frequently used props.
+ */
+export type ResponsiveStyleProps = {
+  [K in keyof StyleProps]?: ResponsiveProp<StyleProps[K]>
+}
+
+/**
+ * CSS properties for which we pass the user supplied value through. Does not
+ * include any properties which are tokenized, or any alias properties.
+ */
+type SupportedRawCSSStyleProps = 'zIndex' |
+  'pageBreakBefore' |
+  'pageBreakAfter' |
+  'pageBreakInside' |
+  'mixBlendMode' |
+  'isolation' |
+  'backgroundBlendMode' |
+  'alignContent' |
+  'justifyContent' |
+  'justifySelf' |
+  'alignSelf' |
+  'justifyItems' |
+  'alignItems' |
+  'animationDuration' |
+  'animationTimingFunction' |
+  'animationIterationCount' |
+  'animationDirection' |
+  'animationPlayState' |
+  'animationDelay' |
+  'animationFillMode' |
+  'backgroundPosition' |
+  'backgroundClip' |
+  'backgroundImage' |
+  'backgroundRepeat' |
+  'backgroundAttachment' |
+  'backgroundOrigin' |
+  'backgroundSize' |
+  'borderImageSource' |
+  'borderImageSlice' |
+  'borderImageWidth' |
+  'borderImageOutset' |
+  'borderImageRepeat' |
+  'breakBefore' |
+  'breakAfter' |
+  'breakInside' |
+  'orphans' |
+  'widows' |
+  'boxDecorationBreak' |
+  'opacity' |
+  'display' |
+  'order' |
+  'visibility' |
+  'flexDirection' |
+  'flexWrap' |
+  'flexGrow' |
+  'flexShrink' |
+  'flexBasis' |
+  'fontSizeAdjust' |
+  'fontStretch' |
+  'fontStyle' |
+  'fontSynthesis' |
+  'fontKerning' |
+  'fontVariantLigatures' |
+  'fontVariantPosition' |
+  'fontVariantCaps' |
+  'fontVariantNumeric' |
+  'fontVariantAlternates' |
+  'fontVariantEastAsian' |
+  'fontVariant' |
+  'fontFeatureSettings' |
+  'fontLanguageOverride' |
+  'fontOpticalSizing' |
+  'fontVariationSettings' |
+  'fontPalette' |
+  'fontVariantEmoji' |
+  'gridTemplateColumns' |
+  'gridTemplateRows' |
+  'gridTemplateAreas' |
+  'gridAutoColumns' |
+  'gridAutoRows' |
+  'gridAutoFlow' |
+  'gridRowStart' |
+  'gridColumnStart' |
+  'gridRowEnd' |
+  'gridColumnEnd' |
+  'objectFit' |
+  'objectPosition' |
+  'imageOrientation' |
+  'imageRendering' |
+  'verticalAlign' |
+  'listStyleImage' |
+  'listStyleType' |
+  'listStylePosition' |
+  'counterReset' |
+  'counterIncrement' |
+  'counterSet' |
+  'minBlockSize' |
+  'minInlineSize' |
+  'maxBlockSize' |
+  'maxInlineSize' |
+  'borderBlockStartWidth' |
+  'borderBlockEndWidth' |
+  'borderInlineStartWidth' |
+  'borderInlineEndWidth' |
+  'borderBlockStartStyle' |
+  'borderBlockEndStyle' |
+  'borderInlineStartStyle' |
+  'borderInlineEndStyle' |
+  'borderBlockStartColor' |
+  'borderBlockEndColor' |
+  'borderInlineStartColor' |
+  'borderInlineEndColor' |
+  'borderStartStartRadius' |
+  'borderStartEndRadius' |
+  'borderEndStartRadius' |
+  'borderEndEndRadius' |
+  'columnSpan' |
+  'columnWidth' |
+  'columnCount' |
+  'columnRuleColor' |
+  'columnRuleStyle' |
+  'columnRuleWidth' |
+  'columnFill' |
+  'overflowClipMargin' |
+  'textOverflow' |
+  'overflowBlock' |
+  'overflowInline' |
+  'scrollBehavior' |
+  'scrollbarGutter' |
+  'overscrollBehaviorInline' |
+  'overscrollBehaviorBlock' |
+  'position' |
+  'insetBlockStart' |
+  'insetInlineStart' |
+  'insetBlockEnd' |
+  'insetInlineEnd' |
+  'scrollSnapType' |
+  'scrollSnapAlign' |
+  'scrollSnapStop' |
+  'scrollPaddingInlineStart' |
+  'scrollPaddingBlockStart' |
+  'scrollPaddingInlineEnd' |
+  'scrollPaddingBlockEnd' |
+  'scrollMarginBlockStart' |
+  'scrollMarginInlineStart' |
+  'scrollMarginBlockEnd' |
+  'scrollMarginInlineEnd' |
+  'scrollbarColor' |
+  'scrollbarWidth' |
+  'shapeOutside' |
+  'shapeImageThreshold' |
+  'shapeMargin' |
+  'containIntrinsicBlockSize' |
+  'containIntrinsicInlineSize' |
+  'boxSizing' |
+  'tableLayout' |
+  'borderCollapse' |
+  'borderSpacing' |
+  'captionSide' |
+  'emptyCells' |
+  'textTransform' |
+  'whiteSpace' |
+  'tabSize' |
+  'wordBreak' |
+  'lineBreak' |
+  'hyphens' |
+  'hyphenateCharacter' |
+  'hyphenateLimitChars' |
+  'overflowWrap' |
+  'wordWrap' |
+  'textAlign' |
+  'textAlignLast' |
+  'textJustify' |
+  'wordSpacing' |
+  'textIndent' |
+  'hangingPunctuation' |
+  'textDecorationLine' |
+  'textDecorationStyle' |
+  'textDecorationColor' |
+  'textDecorationThickness' |
+  'textUnderlinePosition' |
+  'textUnderlineOffset' |
+  'textDecorationSkipInk' |
+  'textEmphasisStyle' |
+  'textEmphasisColor' |
+  'textEmphasisPosition' |
+  'textShadow' |
+  'translate' |
+  'rotate' |
+  'scale' |
+  'transformStyle' |
+  'perspective' |
+  'perspectiveOrigin' |
+  'backfaceVisibility' |
+  'transform' |
+  'transformOrigin' |
+  'transformBox' |
+  'transitionProperty' |
+  'transitionDelay' |
+  'outlineWidth' |
+  'outlineStyle' |
+  'outlineColor' |
+  'outlineOffset' |
+  'resize' |
+  'cursor' |
+  'caretColor' |
+  'caretShape' |
+  'caret' |
+  'userSelect' |
+  'accentColor' |
+  'inputSecurity' |
+  'willChange' |
+  'direction' |
+  'unicodeBidi' |
+  'writingMode' |
+  'textOrientation' |
+  'textCombineUpright' |
+  'backdropFilter' |
+  'filter' |
+  'offsetPath' |
+  'offsetDistance' |
+  'offsetAnchor' |
+  'offsetRotate';
+
+/**
+ * Props which act as an alias to one or more more specific props.
+ *
+ * For example; 'padding' is an alias to 'padding-inline-start',
+ * 'padding-inline-end', etc, when those individual props aren't set.
+ */
+export const stylePropAliases = {
   "rowGap": [
     "gap"
   ],
@@ -345,6 +555,14 @@ export const stylePropAliases: Partial<Record<keyof StyleProps, readonly (keyof 
     "scrollMarginBottom",
     "scrollMarginBlock",
     "scrollMargin"
+  ],
+  "justifyItems": [
+    "justify"
+  ],
+  "alignItems": [
+    "align"
   ]
 } as const;
-  
+
+// Extract a unique set of just the alias names
+export const stylePropAliasNames = Array.from(new Set(Object.values(stylePropAliases).flat()));

@@ -1,11 +1,13 @@
 import style from './style.module.scss';
 import {forwardRef} from 'react';
 import decamelize from 'decamelize';
-import {designTokenStyleProps} from '@shopify/polaris-tokens';
+import {tokenizedStyleProps} from '@shopify/polaris-tokens';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import type {Entries} from 'type-fest';
 import {getResponsiveValue, getResponsiveProps} from '../../utils/various';
-import {type CubeProps, stylePropAliases} from './generated-data';
+import {type ResponsiveStyleProps, stylePropAliases} from './generated-data';
+
+type CubeProps = ResponsiveStyleProps;
 
 // Extract a unique set of just the alias names
 const allAliases = Array.from(new Set(Object.values(stylePropAliases).flat()));
@@ -14,8 +16,8 @@ const stylePropAliasesEntries = Object.entries(stylePropAliases) as Entries<
   Required<typeof stylePropAliases>
 >;
 
-function convertStylePropsToCSSProperties(styleProps: CubeProps) {
-  const stylePropsWithExpandedAliases: CubeProps = {...styleProps};
+function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
+  const stylePropsWithExpandedAliases: ResponsiveStyleProps = {...styleProps};
 
   // Ensure constituent styles are given fallback values even when they're not
   // passed in as an explicit style prop.
@@ -59,7 +61,7 @@ function convertStylePropsToCSSProperties(styleProps: CubeProps) {
 
     return {
       ...acc,
-      ...(designTokenStyleProps.includes(key as any)
+      ...(tokenizedStyleProps.includes(key as any)
         ? // no token subgroup because it's defined as part of the value
           getResponsiveProps('box', decamelizedPropKey, null, value)
         : getResponsiveValue('box', decamelizedPropKey, value)),

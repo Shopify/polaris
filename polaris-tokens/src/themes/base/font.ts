@@ -1,13 +1,49 @@
 import {size} from '../../size';
-import type {MetaTokenProperties} from '../types';
+import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 
-export interface FontCSSProperties {
-  fontSize: FontSizeScale;
-  lineHeight: FontLineHeightScale;
-  fontWeight: FontWeightAlias;
-  fontFamily: FontFamilyAlias;
-  letterSpacing: FontLetterSpacingAlias;
-}
+const mappedFontSizeStyleProps = ['fontSize'] as const;
+type MappedFontSizeStyleProps = ObjectFromKeys<
+  typeof mappedFontSizeStyleProps,
+  FontSizeScale
+>;
+
+const mappedFontLineHeightStyleProps = ['lineHeight'] as const;
+type MappedFontLineHeightStyleProps = ObjectFromKeys<
+  typeof mappedFontLineHeightStyleProps,
+  FontLineHeightScale
+>;
+
+const mappedFontWeightStyleProps = ['fontWeight'] as const;
+type MappedFontWeightStyleProps = ObjectFromKeys<
+  typeof mappedFontWeightStyleProps,
+  FontWeightAlias
+>;
+
+const mappedFontFamilyStyleProps = ['fontFamily'] as const;
+type MappedFontFamilyStyleProps = ObjectFromKeys<
+  typeof mappedFontFamilyStyleProps,
+  FontFamilyAlias
+>;
+
+const mappedFontLetterSpacingStyleProps = ['letterSpacing'] as const;
+type MappedFontLetterSpacingStyleProps = ObjectFromKeys<
+  typeof mappedFontLetterSpacingStyleProps,
+  FontLetterSpacingAlias
+>;
+
+export const mappedFontStyleProps = [
+  ...mappedFontSizeStyleProps,
+  ...mappedFontLineHeightStyleProps,
+  ...mappedFontWeightStyleProps,
+  ...mappedFontFamilyStyleProps,
+  ...mappedFontLetterSpacingStyleProps,
+];
+
+export type MappedFontStyleProps = MappedFontSizeStyleProps &
+  MappedFontLineHeightStyleProps &
+  MappedFontWeightStyleProps &
+  MappedFontFamilyStyleProps &
+  MappedFontLetterSpacingStyleProps;
 
 export type FontFamilyPrefix = 'font-family';
 type FontFamilyAlias = 'sans' | 'mono';

@@ -1,4 +1,4 @@
-import type {MetaTokenProperties} from '../types';
+import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 import {size} from '../../size';
 
 export type BorderRadiusScale =
@@ -12,10 +12,25 @@ export type BorderRadiusScale =
   | '500'
   | '750';
 
-export interface BorderCSSProperties {
-  borderRadius: `border-radius-${BorderRadiusAliasOrScale}`;
-  borderWidth: `border-width-${BorderWidthScale}`;
-}
+const mappedBorderRadiusStyleProps = ['borderRadius'] as const;
+type MappedBorderRadiusStypeProps = ObjectFromKeys<
+  typeof mappedBorderRadiusStyleProps,
+  `border-radius-${BorderRadiusAliasOrScale}`
+>;
+
+const mappedBorderWidthStyleProps = ['borderWidth'] as const;
+type MappedBorderWidthStyleProps = ObjectFromKeys<
+  typeof mappedBorderWidthStyleProps,
+  `border-width-${BorderWidthScale}`
+>;
+
+export const mappedBorderStyleProps = [
+  ...mappedBorderRadiusStyleProps,
+  ...mappedBorderWidthStyleProps,
+];
+
+export type MappedBorderStyleProps = MappedBorderRadiusStypeProps &
+  MappedBorderWidthStyleProps;
 
 export type BorderRadiusAlias = 'full';
 
