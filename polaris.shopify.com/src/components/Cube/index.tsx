@@ -1,11 +1,20 @@
 import style from './style.module.scss';
 import {forwardRef} from 'react';
+import invariant from 'tiny-invariant';
 import decamelize from 'decamelize';
 import {tokenizedStyleProps} from '@shopify/polaris-tokens';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import type {Entries} from 'type-fest';
-import {getResponsiveValue, getResponsiveProps} from '../../utils/various';
-import {type ResponsiveStyleProps, stylePropAliases} from './generated-data';
+import {
+  getResponsiveValue,
+  getResponsiveProps,
+  isObject,
+} from '../../utils/various';
+import {
+  type ResponsiveStyleProps,
+  stylePropAliases,
+  disallowedCSSPropertyValues,
+} from './generated-data';
 
 type CubeProps = ResponsiveStyleProps;
 
@@ -56,6 +65,18 @@ function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
     if (typeof value === 'undefined') {
       return acc;
     }
+    invariant(
+      isObject(value)
+        ? !Object.entries(value).some(([_, value]) =>
+            disallowedCSSPropertyValues.includes(value),
+          )
+        : !disallowedCSSPropertyValues.includes(value as any),
+      `${disallowedCSSPropertyValues.join(
+        ',',
+      )} are reserved values, and were passed into the ${String(
+        key,
+      )} prop. Please use a different value.`,
+    );
 
     const decamelizedPropKey = decamelize(key, {separator: '-'});
 
