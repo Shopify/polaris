@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useId} from 'react';
+import React, {useEffect, useState, useRef, useId} from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
 import {InlineStack} from '../../../InlineStack';
@@ -40,8 +40,22 @@ export function SearchField({
   const i18n = useI18n();
   const id = useId();
   const inputRef = useRef<HTMLInputElement>(null);
-  function handleChange(value: string) {
-    onChange(value);
+
+  const [focusVisible, setFocusVisible] = useState(false);
+
+  const handleFocus = () => {
+    onFocus?.();
+    setFocusVisible(true);
+  };
+
+  const handleBlur = () => {
+    onBlur?.();
+    setFocusVisible(false);
+  };
+
+  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const nextValue = event.currentTarget.value;
+    onChange(nextValue);
   }
 
   useEffect(() => {
@@ -62,50 +76,50 @@ export function SearchField({
     </div>
   ) : null;
 
-  const clearButtonMarkup =
-    value !== '' && focused ? (
-      <UnstyledButton
-        className={classNames(
-          styles.ClearButton,
-          focused && styles['ClearButton-visible'],
-        )}
-        onClick={() => handleClear()}
-        disabled={disabled}
-      >
-        <Text as="span" visuallyHidden>
-          {i18n.translate('Polaris.Common.clear')}
-        </Text>
-        <Icon source={CircleCancelMinor} tone="subdued" />
-      </UnstyledButton>
-    ) : null;
+  const clearButtonMarkup = (
+    <UnstyledButton
+      className={classNames(
+        styles.ClearButton,
+        (focused || focusVisible) && value !== '' && styles.visible,
+      )}
+      onClick={handleClear}
+      disabled={disabled}
+    >
+      <Text as="span" visuallyHidden>
+        {i18n.translate('Polaris.Common.clear')}
+      </Text>
+      <Icon source={CircleCancelMinor} tone="subdued" />
+    </UnstyledButton>
+  );
 
   const suffixMarkup =
     loadingMarkup || clearButtonMarkup ? (
       <div className={styles.Suffix}>
-        <InlineStack gap="200">
-          {loadingMarkup}
-          {clearButtonMarkup}
-        </InlineStack>
+        {clearButtonMarkup}
+        {loadingMarkup}
       </div>
     ) : null;
 
   return (
-    <div className={styles.SearchField}>
+    <div
+      className={classNames(
+        styles.SearchField,
+        (focused || focusVisible) && !disabled && styles.focusVisible,
+        borderlessQueryField && styles.borderless,
+        disabled && styles.disabled,
+      )}
+    >
       <label className={styles.Label} htmlFor={id}>
         {placeholder}
       </label>
       <input
         id={id}
         ref={inputRef}
-        className={classNames(
-          styles.Input,
-          focused && styles.focused,
-          borderlessQueryField && styles.borderless,
-        )}
+        className={classNames(styles.Input)}
         value={value}
-        onChange={(event) => handleChange(event?.currentTarget.value ?? value)}
-        onFocus={onFocus}
-        onBlur={onBlur}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
         autoComplete="off"
         placeholder={placeholder}
         disabled={disabled}

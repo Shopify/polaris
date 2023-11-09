@@ -1,15 +1,36 @@
 @import '../../../../styles/common';
 
 .SearchField {
-  // stylelint-disable-next-line -- Polaris component custom properties
-  --pc-indexfilter-search-padding-inline: var(--p-space-150);
   position: relative;
+  height: var(--p-height-700);
   display: flex;
-  padding-block: var(--p-space-025);
+  gap: var(--p-space-200);
   margin-left: var(--p-space-050);
+  border-style: solid;
+  border-width: var(--p-border-width-025);
+  border-radius: var(--p-border-radius-100);
+  border-color: var(--p-color-input-border);
+  background-color: none;
+  transition: outline var(--p-motion-duration-100) var(--p-motion-ease);
 
-  svg {
-    fill: var(--p-color-icon-secondary);
+  &.borderless {
+    border-width: 0;
+  }
+
+  &:hover {
+    border-color: var(--p-color-input-border-hover);
+    background-color: var(--p-color-input-bg-surface-hover);
+  }
+
+  &.focusVisible {
+    border-color: none;
+    outline: var(--p-border-width-050) solid var(--p-color-border-emphasis);
+    outline-offset: calc(-1 * var(--p-border-width-025));
+    background-color: var(--p-color-input-bg-surface-active);
+  }
+
+  &.disabled {
+    background-color: var(--p-color-bg-fill-disabled);
   }
 }
 
@@ -19,76 +40,53 @@
 }
 
 .Input {
-  /* stylelint-disable-next-line polaris/typography/polaris/at-rule-disallowed-list -- Matching custom input with TextField */
-  @include text-style-input;
   flex: 1;
   color: var(--p-color-text);
-  border: var(--p-border-width-025) solid var(--p-color-input-border);
-  border-radius: var(--p-border-radius-100);
-  border-color: var(--p-color-input-border);
-  background-color: var(--p-color-input-bg-surface);
-  // stylelint-disable-next-line -- Polaris component custom properties
-  padding-inline: var(--pc-indexfilter-search-padding-inline);
+  background: none;
+  border: none;
+  padding-inline: var(--p-space-150);
   width: 100%;
 
-  &:hover {
-    border-color: var(--p-color-input-border-hover);
-    background-color: var(--p-color-input-bg-surface-hover);
-  }
-
   &:active,
   &:focus {
-    border-color: var(--p-color-input-border-active);
-    border-width: var(--p-border-width-025);
-    background-color: var(--p-color-input-bg-surface-active);
+    outline: none;
   }
-
-  &:disabled {
-    background-color: var(--p-color-bg-fill-disabled);
-  }
-}
-
-.borderless {
-  border-width: 0;
-
-  &:hover,
-  &:active,
-  &:focus {
-    border-width: 0;
-  }
-}
-
-.focused:not(:disabled) {
-  outline: var(--p-border-width-050) solid var(--p-color-border-focus);
-  outline-offset: var(--p-space-025);
 }
 
 .Suffix {
-  position: absolute;
-  top: 50%;
-  // stylelint-disable-next-line -- Polaris component custom properties
-  right: var(--pc-indexfilter-search-padding-inline);
-  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  padding-right: var(--p-space-150);
 }
 
 .ClearButton {
+  opacity: 0;
+  pointer-events: none;
   background: none;
   border: none;
-  opacity: 0;
   transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
   cursor: pointer;
-  padding: 0;
-}
+  padding: 0 var(--p-space-150);
+  // Nudge the button to center
+  // margin-top: var(--p-space-025);
+  height: var(--p-height-700);
 
-.ClearButton-visible {
-  opacity: 1;
-  pointer-events: auto;
+  &.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
 }
 
 .Spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: var(--p-space-500);
 
   svg {
+    width: var(--p-width-400);
     display: block;
+    fill: var(--p-color-icon-secondary);
   }
 }
