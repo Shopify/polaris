@@ -4,6 +4,7 @@ import type {themeNames} from './constants';
 export type MetaThemeBase = typeof metaThemeBase;
 export type MetaTheme = MetaThemeBase;
 
+// prettier-ignore
 export type ThemeName = typeof themeNames[number];
 export type ThemeBase = ExtractMetaThemeValues<MetaThemeBase>;
 export type Theme = ExtractMetaThemeValues<MetaTheme>;
@@ -51,4 +52,8 @@ export type ExtractMetaTokenGroupValues<T extends MetaTokenGroupShape> = {
 
 export type ExtractMetaThemeValues<T extends MetaThemeShape> = {
   [K in keyof T]: ExtractMetaTokenGroupValues<T[K]>;
+};
+
+export type ObjectFromKeys<Arr extends readonly string[], T> = {
+  [K in Arr[number]]: T;
 };

@@ -1,19 +1,40 @@
 import {size} from '../../size';
 import {createVarName} from '../../utils';
-import type {MetaTokenProperties} from '../types';
+import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 
-export interface SpaceCSSProperties {
-  marginBlockStart: `space-${SpaceScale}`;
-  marginBlockEnd: `space-${SpaceScale}`;
-  marginInlineStart: `space-${SpaceScale}`;
-  marginInlineEnd: `space-${SpaceScale}`;
-  paddingBlockStart: `space-${SpaceScale}`;
-  paddingBlockEnd: `space-${SpaceScale}`;
-  paddingInlineStart: `space-${SpaceScale}`;
-  paddingInlineEnd: `space-${SpaceScale}`;
-  rowGap: `space-${SpaceScale}`;
-  columnGap: `space-${SpaceScale}`;
-}
+export const mappedSpaceStyleProps = [
+  'marginBlockStart',
+  'marginBlockEnd',
+  'marginInlineStart',
+  'marginInlineEnd',
+  'paddingBlockStart',
+  'paddingBlockEnd',
+  'paddingInlineStart',
+  'paddingInlineEnd',
+  'rowGap',
+  'columnGap',
+  // aliases
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
+  'paddingBottom',
+  'paddingInline',
+  'paddingBlock',
+  'padding',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'marginBottom',
+  'marginBlock',
+  'marginInline',
+  'margin',
+  'gap',
+] as const;
+
+export type MappedSpaceStyleProps = ObjectFromKeys<
+  typeof mappedSpaceStyleProps,
+  `space-${SpaceScale}`
+>;
 
 export type SpaceScale =
   | '0'

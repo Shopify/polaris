@@ -131,10 +131,9 @@ export function sanitizeCustomProperties(
   return nonNullValues.length ? Object.fromEntries(nonNullValues) : undefined;
 }
 
-export function createPolarisCSSVar<T extends string | number = string>(
-  tokenSubgroup: string | null,
-  tokenValue: T,
-): PolarisCSSVar {
+export function createPolarisCSSVar<
+  T extends string | number | undefined = string,
+>(tokenSubgroup: string | null, tokenValue: T): PolarisCSSVar {
   // `Grid`'s `gap` prop used to allow passing fully formed var() functions as
   // the value. This is no longer supported in v12+.
   if (typeof tokenValue === 'string' && tokenValue.startsWith('var(')) {
@@ -189,7 +188,9 @@ export function createPolarisCSSCustomProperty(
  * )
  *
  */
-export function getResponsiveProps<T extends string | number = string>(
+export function getResponsiveProps<
+  T extends string | number | undefined = string,
+>(
   componentName: string,
   componentProp: string,
   tokenSubgroup: string | null,
@@ -203,15 +204,15 @@ export function getResponsiveProps<T extends string | number = string>(
       (
         Object.entries(responsiveProp).filter(
           ([, aliasOrScale]) => aliasOrScale != null,
-          // Use 'Required' here because .filter() doesn't type narrow
-        ) as Entries<Required<typeof responsiveProp>>
+        ) as Entries<ResponsivePropObject<T>>
       ).map(([breakpointAlias, aliasOrScale]) => [
         createPolarisCSSCustomProperty(
           componentName,
           componentProp,
           breakpointAlias,
         ),
-        createPolarisCSSVar(tokenSubgroup, aliasOrScale),
+        // Use ! here because .filter() doesn't type narrow
+        createPolarisCSSVar<T>(tokenSubgroup, aliasOrScale!),
       ]),
     );
   }
@@ -221,11 +222,13 @@ export function getResponsiveProps<T extends string | number = string>(
       componentName,
       componentProp,
       breakpointsAliases[0],
-    )]: createPolarisCSSVar(tokenSubgroup, responsiveProp as T),
+    )]: createPolarisCSSVar<T>(tokenSubgroup, responsiveProp),
   };
 }
 
-export function getResponsiveValue<T extends string | number = string>(
+export function getResponsiveValue<
+  T extends string | number | undefined = string,
+>(
   componentName: string,
   componentProp: string,
   responsiveProp?: ResponsiveProp<T>,
@@ -239,7 +242,7 @@ export function getResponsiveValue<T extends string | number = string>(
         Object.entries(responsiveProp).filter(
           ([, responsiveValue]) => responsiveValue != null,
           // Use 'Required' here because .filter() doesn't type narrow
-        ) as Entries<Required<typeof responsiveProp>>
+        ) as Entries<Required<ResponsivePropObject<T>>>
       ).map(([breakpointAlias, responsiveValue]) => [
         createPolarisCSSCustomProperty(
           componentName,

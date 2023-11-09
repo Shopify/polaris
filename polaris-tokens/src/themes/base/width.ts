@@ -1,9 +1,24 @@
 import {size} from '../../size';
-import type {MetaTokenProperties} from '../types';
+import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 
-export interface WidthCSSProperties {
-  inlineSize: `width-${WidthScale}`;
-}
+export const mappedWidthStyleProps = [
+  'inlineSize',
+  // aliases
+  'size',
+  'width',
+  'minSize',
+  'minWidth',
+  'maxSize',
+  'maxWidth',
+  'containIntrinsicSize',
+  'containIntrinsicWidth',
+] as const;
+
+export type MappedWidthStyleProps = ObjectFromKeys<
+  typeof mappedWidthStyleProps,
+  `width-${WidthScale}`
+>;
+
 export type WidthScale =
   | '0'
   | '025'

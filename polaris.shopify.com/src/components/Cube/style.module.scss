@@ -703,18 +703,6 @@
   --pc-box-border-inline-end-style-lg: initial;
   --pc-box-border-inline-end-style-xl: initial;
   border-inline-end-style: var(--pc-box-border-inline-end-style-xs, initial);
-  --pc-box-border-block-style-xs: initial;
-  --pc-box-border-block-style-sm: initial;
-  --pc-box-border-block-style-md: initial;
-  --pc-box-border-block-style-lg: initial;
-  --pc-box-border-block-style-xl: initial;
-  border-block-style: var(--pc-box-border-block-style-xs, initial);
-  --pc-box-border-inline-style-xs: initial;
-  --pc-box-border-inline-style-sm: initial;
-  --pc-box-border-inline-style-md: initial;
-  --pc-box-border-inline-style-lg: initial;
-  --pc-box-border-inline-style-xl: initial;
-  border-inline-style: var(--pc-box-border-inline-style-xs, initial);
   --pc-box-border-block-start-color-xs: initial;
   --pc-box-border-block-start-color-sm: initial;
   --pc-box-border-block-start-color-md: initial;
@@ -1603,8 +1591,6 @@
     border-block-end-style: var(--pc-box-border-block-end-style-sm, var(--pc-box-border-block-end-style-xs, initial));
     border-inline-start-style: var(--pc-box-border-inline-start-style-sm, var(--pc-box-border-inline-start-style-xs, initial));
     border-inline-end-style: var(--pc-box-border-inline-end-style-sm, var(--pc-box-border-inline-end-style-xs, initial));
-    border-block-style: var(--pc-box-border-block-style-sm, var(--pc-box-border-block-style-xs, initial));
-    border-inline-style: var(--pc-box-border-inline-style-sm, var(--pc-box-border-inline-style-xs, initial));
     border-block-start-color: var(--pc-box-border-block-start-color-sm, var(--pc-box-border-block-start-color-xs, initial));
     border-block-end-color: var(--pc-box-border-block-end-color-sm, var(--pc-box-border-block-end-color-xs, initial));
     border-inline-start-color: var(--pc-box-border-inline-start-color-sm, var(--pc-box-border-inline-start-color-xs, initial));
@@ -1854,8 +1840,6 @@
     border-block-end-style: var(--pc-box-border-block-end-style-md, var(--pc-box-border-block-end-style-sm, var(--pc-box-border-block-end-style-xs, initial)));
     border-inline-start-style: var(--pc-box-border-inline-start-style-md, var(--pc-box-border-inline-start-style-sm, var(--pc-box-border-inline-start-style-xs, initial)));
     border-inline-end-style: var(--pc-box-border-inline-end-style-md, var(--pc-box-border-inline-end-style-sm, var(--pc-box-border-inline-end-style-xs, initial)));
-    border-block-style: var(--pc-box-border-block-style-md, var(--pc-box-border-block-style-sm, var(--pc-box-border-block-style-xs, initial)));
-    border-inline-style: var(--pc-box-border-inline-style-md, var(--pc-box-border-inline-style-sm, var(--pc-box-border-inline-style-xs, initial)));
     border-block-start-color: var(--pc-box-border-block-start-color-md, var(--pc-box-border-block-start-color-sm, var(--pc-box-border-block-start-color-xs, initial)));
     border-block-end-color: var(--pc-box-border-block-end-color-md, var(--pc-box-border-block-end-color-sm, var(--pc-box-border-block-end-color-xs, initial)));
     border-inline-start-color: var(--pc-box-border-inline-start-color-md, var(--pc-box-border-inline-start-color-sm, var(--pc-box-border-inline-start-color-xs, initial)));
@@ -2105,8 +2089,6 @@
     border-block-end-style: var(--pc-box-border-block-end-style-lg, var(--pc-box-border-block-end-style-md, var(--pc-box-border-block-end-style-sm, var(--pc-box-border-block-end-style-xs, initial))));
     border-inline-start-style: var(--pc-box-border-inline-start-style-lg, var(--pc-box-border-inline-start-style-md, var(--pc-box-border-inline-start-style-sm, var(--pc-box-border-inline-start-style-xs, initial))));
     border-inline-end-style: var(--pc-box-border-inline-end-style-lg, var(--pc-box-border-inline-end-style-md, var(--pc-box-border-inline-end-style-sm, var(--pc-box-border-inline-end-style-xs, initial))));
-    border-block-style: var(--pc-box-border-block-style-lg, var(--pc-box-border-block-style-md, var(--pc-box-border-block-style-sm, var(--pc-box-border-block-style-xs, initial))));
-    border-inline-style: var(--pc-box-border-inline-style-lg, var(--pc-box-border-inline-style-md, var(--pc-box-border-inline-style-sm, var(--pc-box-border-inline-style-xs, initial))));
     border-block-start-color: var(--pc-box-border-block-start-color-lg, var(--pc-box-border-block-start-color-md, var(--pc-box-border-block-start-color-sm, var(--pc-box-border-block-start-color-xs, initial))));
     border-block-end-color: var(--pc-box-border-block-end-color-lg, var(--pc-box-border-block-end-color-md, var(--pc-box-border-block-end-color-sm, var(--pc-box-border-block-end-color-xs, initial))));
     border-inline-start-color: var(--pc-box-border-inline-start-color-lg, var(--pc-box-border-inline-start-color-md, var(--pc-box-border-inline-start-color-sm, var(--pc-box-border-inline-start-color-xs, initial))));
@@ -2356,8 +2338,6 @@
     border-block-end-style: var(--pc-box-border-block-end-style-xl, var(--pc-box-border-block-end-style-lg, var(--pc-box-border-block-end-style-md, var(--pc-box-border-block-end-style-sm, var(--pc-box-border-block-end-style-xs, initial)))));
     border-inline-start-style: var(--pc-box-border-inline-start-style-xl, var(--pc-box-border-inline-start-style-lg, var(--pc-box-border-inline-start-style-md, var(--pc-box-border-inline-start-style-sm, var(--pc-box-border-inline-start-style-xs, initial)))));
     border-inline-end-style: var(--pc-box-border-inline-end-style-xl, var(--pc-box-border-inline-end-style-lg, var(--pc-box-border-inline-end-style-md, var(--pc-box-border-inline-end-style-sm, var(--pc-box-border-inline-end-style-xs, initial)))));
-    border-block-style: var(--pc-box-border-block-style-xl, var(--pc-box-border-block-style-lg, var(--pc-box-border-block-style-md, var(--pc-box-border-block-style-sm, var(--pc-box-border-block-style-xs, initial)))));
-    border-inline-style: var(--pc-box-border-inline-style-xl, var(--pc-box-border-inline-style-lg, var(--pc-box-border-inline-style-md, var(--pc-box-border-inline-style-sm, var(--pc-box-border-inline-style-xs, initial)))));
     border-block-start-color: var(--pc-box-border-block-start-color-xl, var(--pc-box-border-block-start-color-lg, var(--pc-box-border-block-start-color-md, var(--pc-box-border-block-start-color-sm, var(--pc-box-border-block-start-color-xs, initial)))));
     border-block-end-color: var(--pc-box-border-block-end-color-xl, var(--pc-box-border-block-end-color-lg, var(--pc-box-border-block-end-color-md, var(--pc-box-border-block-end-color-sm, var(--pc-box-border-block-end-color-xs, initial)))));
     border-inline-start-color: var(--pc-box-border-inline-start-color-xl, var(--pc-box-border-inline-start-color-lg, var(--pc-box-border-inline-start-color-md, var(--pc-box-border-inline-start-color-sm, var(--pc-box-border-inline-start-color-xs, initial)))));

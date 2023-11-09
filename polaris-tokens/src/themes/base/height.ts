@@ -1,9 +1,17 @@
 import {size} from '../../size';
-import type {MetaTokenProperties} from '../types';
+import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 
-export interface HeightCSSProperties {
-  blockSize: `height-${HeightScale}`;
-}
+export const mappedHeightStyleProps = [
+  'blockSize',
+  'height',
+  'minHeight',
+  'maxHeight',
+  'containIntrinsicHeight',
+] as const;
+export type MappedHeightStyleProps = ObjectFromKeys<
+  typeof mappedHeightStyleProps,
+  `height-${HeightScale}`
+>;
 
 export type HeightScale =
   | '0'

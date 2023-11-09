@@ -1,12 +1,37 @@
-import type {MetaTokenProperties} from '../types';
+import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 import * as colors from '../../colors';
 
-export interface ColorCSSProperties {
-  backgroundColor: `color-${ColorBackgroundAlias}`;
-  borderColor: `color-${ColorBorderAlias}`;
-  color: `color-${ColorTextAlias}` | `color-${ColorTextAlias}`;
-  fill: `color-${ColorIconAlias}`;
-}
+const mappedColorBackgroundStyleProps = [
+  'backgroundColor',
+  'borderColor',
+] as const;
+type MappedColorBackgroundStyleProps = ObjectFromKeys<
+  typeof mappedColorBackgroundStyleProps,
+  `color-${ColorBorderAlias}`
+>;
+
+const mappedColorTextStyleProps = ['color'] as const;
+type MappedColorTextStyleProps = ObjectFromKeys<
+  typeof mappedColorTextStyleProps,
+  `color-${ColorTextAlias}`
+>;
+
+const mappedColorIconStyleProps = ['fill'] as const;
+type MappedColorIconStyleProps = ObjectFromKeys<
+  typeof mappedColorIconStyleProps,
+  `color-${ColorIconAlias}`
+>;
+
+export type MappedColorStyleProps = MappedColorBackgroundStyleProps &
+  MappedColorTextStyleProps &
+  MappedColorIconStyleProps;
+
+export const mappedColorStyleProps = [
+  ...mappedColorBackgroundStyleProps,
+  ...mappedColorTextStyleProps,
+  ...mappedColorIconStyleProps,
+];
+
 export type ColorBackgroundAlias =
   | 'bg-fill-active'
   | 'bg-fill-brand-active'

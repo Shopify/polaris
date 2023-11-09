@@ -1,8 +1,11 @@
-import type {MetaTokenProperties} from '../types';
+import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 
-export interface ShadowCSSProperties {
-  boxShadow: `shadow-${ShadowAliasOrScale}`;
-}
+export const mappedShadowStyleProps = ['boxShadow'] as const;
+
+export type MappedShadowStyleProps = ObjectFromKeys<
+  typeof mappedShadowStyleProps,
+  `shadow-${ShadowAliasOrScale}`
+>;
 
 export type ShadowScale = '0' | '100' | '200' | '300' | '400' | '500' | '600';
 
