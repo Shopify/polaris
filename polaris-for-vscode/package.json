@@ -38,12 +38,12 @@
     "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
   },
   "dependencies": {
+    "@shopify/polaris-tokens": "^8.1.0",
     "vscode-languageclient": "^9.0.1",
     "vscode-languageserver": "^9.0.1",
     "vscode-languageserver-textdocument": "^1.0.11"
   },
   "devDependencies": {
-    "@shopify/polaris-tokens": "^8.1.0",
     "@types/node": "16.x",
     "@types/vscode": "^1.64.0",
     "globby": "^11.1.0",
