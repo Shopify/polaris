@@ -14,14 +14,7 @@
 
 ### 👩‍💻 [polaris-for-vscode](/polaris-for-vscode)
 
-The `polaris-for-vscode` extension is published to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode) after every new release of `@shopify/polaris-tokens`. The extension is published using the [`publish-polaris-for-vscode.yml`](/github/workflows/publish-polaris-for-vscode.yml) workflow.
-
-You can create a manual release of the extension by following these steps:
-
-- [Draft a new release](https://github.com/Shopify/polaris/releases)
-- Target the commit that you want to release
-- Create a new tag with the prefix `polaris-for-vscode` (example: `polaris-for-vscode@0.8.0`)
-- This will trigger the [publish-polaris-for-vscode.yml](https://github.com/Shopify/polaris/blob/main/.github/workflows/publish-polaris-for-vscode.yml) workflow
+The `polaris-for-vscode` extension is published to the [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode). The extension is automatically released using the [`publish-polaris-for-vscode.yml`](/github/workflows/publish-polaris-for-vscode.yml) workflow.
 
 ## Version releases
 
