@@ -1,10 +1,35 @@
-import type {MetaTokenProperties} from '../types';
+import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 
-export interface MotionCSSProperties {
-  transitionDuration: `motion-duration-${MotionDurationScale}`;
-  animationName: `motion-keyframes-${MotionKeyframesAlias}`;
-  transitionTimingFunction: `motion-${MotionTimingFunctionAlias}`;
-}
+export const mappedMotionDurationStyleProps = ['transitionDuration'] as const;
+export type MappedMotionDurationStyleProps = ObjectFromKeys<
+  typeof mappedMotionDurationStyleProps,
+  `motion-duration-${MotionDurationScale}`
+>;
+
+export const mappedMotionKeyframesStyleProps = ['animationName'] as const;
+export type MappedMotionKeyframesStyleProps = ObjectFromKeys<
+  typeof mappedMotionKeyframesStyleProps,
+  `motion-keyframes-${MotionKeyframesAlias}`
+>;
+
+export const mappedMotionTimingFunctionStyleProps = [
+  'transitionTimingFunction',
+] as const;
+export type MappedMotionTimingFunctionStyleProps = ObjectFromKeys<
+  typeof mappedMotionTimingFunctionStyleProps,
+  `motion-${MotionTimingFunctionAlias}`
+>;
+
+export const mappedMotionStyleProps = [
+  ...mappedMotionDurationStyleProps,
+  ...mappedMotionKeyframesStyleProps,
+  ...mappedMotionTimingFunctionStyleProps,
+];
+
+export type MappedMotionStyleProps = MappedMotionDurationStyleProps &
+  MappedMotionKeyframesStyleProps &
+  MappedMotionTimingFunctionStyleProps;
+
 export type MotionDurationScale =
   | '0'
   | '50'

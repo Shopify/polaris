@@ -14,7 +14,7 @@ export default function Page() {
         {[...Array(1).keys()].map((id) => (
           <Cube key={id}>A cube</Cube>
         ))}
-        <Cube display="flex" flexDirection="row" gap="space-300">
+        <Cube display="flex" flexDirection="row" gap="space-300" align="center">
           <Cube
             padding="space-400"
             size="width-300"

@@ -4,6 +4,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import camelcase from 'camelcase';
 import * as url from 'url';
+import {tokenizedStyleProps} from '@shopify/polaris-tokens';
 
 // TODO: Import these from token lib?
 const breakpoints = [
@@ -32,6 +33,8 @@ const cssShorthandProperties = [
   'border-radius',
   'border-right',
   'border-style',
+  'border-block-style',
+  'border-inline-style',
   'border-top',
   'border-width',
   'border-inline-width',
@@ -279,8 +282,13 @@ const stylePropAliases = {
     'scrollMarginBlock',
     'scrollMargin',
   ],
+  justifyItems: ['justify'],
+  alignItems: ['align'],
   // TODO...And more
 };
+
+// Extract a unique set of just the alias names
+const allAliases = Array.from(new Set(Object.values(stylePropAliases).flat()));
 
 const inverseAliases = Object.entries(stylePropAliases).reduce(
   (acc, [prop, aliases]) => {
@@ -315,62 +323,101 @@ await tsFile.close();
 // -----
 
 async function writeTSProperties(tsFile, properties) {
-  const camelisedKeys = Object.keys(properties).map((key) => camelcase(key));
-  const generateTSPickList = (keys) => {
-    // We add additional single quotes here because the second argument for Pick is a union of string literal types
-    return keys.map((key) => `'${key}'`).join(' | ');
+  const generateTSPickList = (keys, indent) => {
+    // We add additional single quotes here because the second argument for Pick
+    // is a union of string literal types
+    return keys.map((key) => `'${key}'`).join(` |\n${' '.repeat(indent)}`);
   };
-  await tsFile.write(`
-/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
+
+  await tsFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import * as CSS from 'csstype';
-import type {ComputedTokenCSSProperties} from '@shopify/polaris-tokens';
-import {ResponsiveProp} from '../../utils/various';
+// NOTE: Includes aliases as well as CSS Properties
+import type {TokenizedStyleProps as TokenizedStylePropsAndAliases} from '@shopify/polaris-tokens';
+import type {ResponsiveProp} from '../../utils/various';
 
-// We Omit the keys of the ComputedTokenCSSProperties interface, as we want to
-// ensure that there are no type collisions between CSS.Properties and our token
-// types.
-type CSSProperties = Omit<
-  Pick<
-    CSS.Properties,
-    ${generateTSPickList(camelisedKeys)}
-  >,
-  keyof ComputedTokenCSSProperties
->;
+/**
+ * A subset of Raw CSS properties supported in Polaris
+ */
+type NonTokenizedStyleProps = Pick<CSS.Properties, SupportedRawCSSStyleProps>;
 
-type ResponsiveCSSProperties = {
-  [K in keyof CSSProperties]?: ResponsiveProp<CSSProperties[K]>
-};
-
-type ResponsiveTokenProperties = {
-  [K in keyof ComputedTokenCSSProperties]?: ResponsiveProp<ComputedTokenCSSProperties[K]>
-};
-
-type StyleProps = ResponsiveCSSProperties & ResponsiveTokenProperties;
-
-// TODO: Do we need the intersections here? Can we somehow guarantee that just
-// taking the first prop will give us the correct type?
-type StylePropAliases = {
+/**
+ * Props which act as an alias to one or more more non-tokenized style props.
+ *
+ * For example; 'justify' is an alias to 'justify-items' when that individual
+ * prop isn't set.
+ */
+type NonTokenizedStylePropAliases = {
   ${Object.entries(inverseAliases)
+    .filter(([key]) => !tokenizedStyleProps.includes(key))
     .map(
       ([alias, styleProps]) =>
         `${alias}?: ${styleProps
-          .map((prop) => `StyleProps['${prop}']`)
+          .map((prop) => `NonTokenizedStyleProps['${prop}']`)
           .join(' & ')};`,
     )
     .join('\n  ')}
 };
 
-export type CubeProps = StyleProps & StylePropAliases;
+/**
+ * Style props who only accept tokenized values.
+ *
+ * For example; 'padding-inline-start' can only accept the 'space-*' tokens.
+ */
+type TokenizedStyleProps= Omit<TokenizedStylePropsAndAliases, typeof stylePropAliasNames[number]>;
 
 /**
- * An ordered set of aliases for each style prop that has them.
+ * Props which act as an alias to one or more more tokenized style props.
+ *
+ * For example; 'padding' is an alias to 'padding-inline-start',
+ * 'padding-inline-end', etc, when those individual props aren't set.
  */
-export const stylePropAliases: Partial<Record<keyof StyleProps, readonly (keyof StylePropAliases)[]>> = ${JSON.stringify(
+type TokenizedStylePropAliases = Pick<
+  TokenizedStylePropsAndAliases,
+  typeof stylePropAliasNames[number] & keyof TokenizedStylePropsAndAliases
+>;
+
+type StyleProps = NonTokenizedStyleProps &
+  NonTokenizedStylePropAliases &
+  TokenizedStyleProps &
+  TokenizedStylePropAliases;
+
+/**
+ * A combination of raw CSS style props, tokenized style props (derived from
+ * @shopify/polaris-tokens), and helpful aliases for frequently used props.
+ */
+export type ResponsiveStyleProps = {
+  [K in keyof StyleProps]?: ResponsiveProp<StyleProps[K]>
+}
+
+/**
+ * CSS properties for which we pass the user supplied value through. Does not
+ * include any properties which are tokenized, or any alias properties.
+ */
+type SupportedRawCSSStyleProps = ${generateTSPickList(
+    Object.keys(properties)
+      .map((key) => camelcase(key))
+      .filter(
+        (key) =>
+          !tokenizedStyleProps.includes(key) && !allAliases.includes(key),
+      ),
+    2,
+  )};
+
+/**
+ * Props which act as an alias to one or more more specific props.
+ *
+ * For example; 'padding' is an alias to 'padding-inline-start',
+ * 'padding-inline-end', etc, when those individual props aren't set.
+ */
+export const stylePropAliases = ${JSON.stringify(
     stylePropAliases,
     null,
     2,
   )} as const;
-  `);
+
+// Extract a unique set of just the alias names
+export const stylePropAliasNames = Array.from(new Set(Object.values(stylePropAliases).flat()));
+`);
 }
 
 function isCSSPropertyAllowed(name) {
