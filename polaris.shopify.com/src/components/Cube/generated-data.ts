@@ -7,7 +7,10 @@ import type {ResponsiveProp} from '../../utils/various';
 /**
  * A subset of Raw CSS properties supported in Polaris
  */
-type NonTokenizedStyleProps = Pick<CSS.Properties, SupportedRawCSSStyleProps>;
+type ExtrudedCSSProperties = Pick<CSS.Properties, SupportedRawCSSStyleProps>;
+type NonTokenizedStyleProps = {
+  [K in keyof ExtrudedCSSProperties]: Exclude<ExtrudedCSSProperties[K], 'inherit' | 'initial' | '-moz-initial'>;
+}
 
 /**
  * Props which act as an alias to one or more more non-tokenized style props.
@@ -563,6 +566,19 @@ export const stylePropAliases = {
     "align"
   ]
 } as const;
+
+/*
+  A list of values that if passed to any styleProp on our Box component should
+  warn the user, and bail early from the css property injection procedure.
+
+  We do this as there is no good way for us to explicitly disallow this string literal in our types holistically for every style property.
+*/
+
+export const disallowedCSSPropertyValues = [
+  "inherit",
+  "initial",
+  "-moz-initial"
+] as const;
 
 // Extract a unique set of just the alias names
 export const stylePropAliasNames = Array.from(new Set(Object.values(stylePropAliases).flat()));

@@ -174,6 +174,8 @@ const disallowedCSSProperties = [
   // TODO...
 ];
 
+const disallowedCSSPropertyValues = ['inherit', 'initial', '-moz-initial'];
+
 // TODO: Throw error when a CSS property with the same name is allowed.
 const stylePropAliases = {
   rowGap: ['gap'],
@@ -338,7 +340,12 @@ import type {ResponsiveProp} from '../../utils/various';
 /**
  * A subset of Raw CSS properties supported in Polaris
  */
-type NonTokenizedStyleProps = Pick<CSS.Properties, SupportedRawCSSStyleProps>;
+type ExtrudedCSSProperties = Pick<CSS.Properties, SupportedRawCSSStyleProps>;
+type NonTokenizedStyleProps = {
+  [K in keyof ExtrudedCSSProperties]: Exclude<ExtrudedCSSProperties[K], ${disallowedCSSPropertyValues
+    .map((v) => `'${v}'`)
+    .join(' | ')}>;
+}
 
 /**
  * Props which act as an alias to one or more more non-tokenized style props.
@@ -411,6 +418,19 @@ type SupportedRawCSSStyleProps = ${generateTSPickList(
  */
 export const stylePropAliases = ${JSON.stringify(
     stylePropAliases,
+    null,
+    2,
+  )} as const;
+
+/*
+  A list of values that if passed to any styleProp on our Box component should
+  warn the user, and bail early from the css property injection procedure.
+
+  We do this as there is no good way for us to explicitly disallow this string literal in our types holistically for every style property.
+*/
+
+export const disallowedCSSPropertyValues = ${JSON.stringify(
+    disallowedCSSPropertyValues,
     null,
     2,
   )} as const;
