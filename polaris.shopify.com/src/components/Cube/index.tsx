@@ -53,8 +53,6 @@ function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
     delete stylePropsWithExpandedAliases[alias];
   }
 
-  // camelCase to kebabCase of styleProps
-  // intiailise responsive values from valid styleProps
   return (
     Object.entries(stylePropsWithExpandedAliases) as Entries<
       typeof stylePropsWithExpandedAliases
@@ -65,6 +63,7 @@ function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
     if (typeof value === 'undefined') {
       return acc;
     }
+
     invariant(
       isObject(value)
         ? !Object.entries(value).some(([_, value]) =>
