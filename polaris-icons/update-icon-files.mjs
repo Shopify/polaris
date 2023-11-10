@@ -5,6 +5,17 @@ import glob from 'globby';
 import path from 'path';
 
 const iconRenames = {
+  // new icons
+  Bill: 'Bill',
+  BillFilled: 'BillFilled',
+  ShippingLabel: 'ShippingLabel',
+  ShippingLabelFilled: 'ShippingLabelFilled',
+  ActivityLog: 'ActivityLog',
+  ActivityLogFilled: 'ActivityLogFilled',
+  Instagram: 'Instagram',
+  Tips: 'Tips',
+
+  // old icons
   AbandonedCart: 'CartAbandoned',
   AbandonedCartFilled: 'CartAbandonedFilled',
   Accessibility: 'EyeCheckMark',
@@ -16,7 +27,7 @@ const iconRenames = {
   AddImage: 'ImageAdd',
   AddNote: 'NoteAdd',
   AddProduct: 'ProductAdd',
-  Adjustment: 'Adjustment',
+  Adjust: 'Adjustment',
   Affiliate: 'Affiliate',
   Alert: 'AlertCircle',
   Analytics: 'ChartVertical',
@@ -28,7 +39,7 @@ const iconRenames = {
   AnalyticsFunnel: 'ChartFunnel',
   AnalyticsLine: 'ChartLine',
   AnalyticsTable: 'DataTable',
-  Anyclick: 'ChartHistogramFull',
+  AnyClickModel: 'ChartHistogramFull',
   AppExtension: 'AppExtension',
   Apps: 'Apps',
   AppsFilled: 'AppsFilled',
@@ -115,6 +126,7 @@ const iconRenames = {
   CircleChevronLeft: 'CircleChevronLeft',
   CircleChevronRight: 'CircleChevronRight',
   CircleChevronUp: 'CircleChevronUp',
+  CircleDisabled: 'Disabled',
   CircleDisable: 'Disabled',
   CircleDots: 'MenuHorizontal',
   CircleDown: 'CircleDown',
@@ -155,12 +167,12 @@ const iconRenames = {
   CustomerPlus: 'PersonAdd',
   Customers: 'Person',
   CustomersFilled: 'PersonFilled',
-  DataDriven: 'ChartVertical',
+  DataDrivenModel: 'ChartVertical',
   DataVisualization: 'DataPresentation',
   Decimal: 'HashtagDecimal',
   Delete: 'Delete',
   Desktop: 'Desktop',
-  DetailedPopup: 'LayoutPopup',
+  DetailedPopUp: 'LayoutPopup',
   DiamondAlert: 'AlertDiamond',
   DigitalMediaReceiver: 'MediaReceiver',
   DiscountAutomatic: 'CartDiscount',
@@ -208,7 +220,7 @@ const iconRenames = {
   Filter: 'Filter',
   Finances: 'Money',
   FinancesFilled: 'MoneyFilled',
-  FirstClick: 'ChartHistogramFirst',
+  FirstClickModel: 'ChartHistogramFirst',
   FirstOrder: 'OrderFirst',
   FirstVisit: 'EyeFirst',
   Flag: 'Flag',
@@ -273,18 +285,18 @@ const iconRenames = {
   LandingPage: 'DomainLandingPage',
   Language: 'Language',
   LanguageFilled: 'LanguageFilled',
-  LastClick: 'ChartHistogramLast',
-  LastClickNonDirect: 'ChartHistogramSecondLast',
+  LastClickModel: 'ChartHistogramLast',
+  LastNonDirectClickModel: 'ChartHistogramSecondLast',
   Legal: 'Contract',
   LegalFilled: 'ContractFilled',
-  Linear: 'ChartHistogramFlat',
+  LinearModel: 'ChartHistogramFlat',
   Link: 'Link',
   List: 'ListBulleted',
   LiveView: 'Live',
   LiveViewFilled: 'LiveFilled',
   Location: 'Location',
   LocationFilled: 'LocationFilled',
-  LocationInactive: 'LocationNone',
+  InactiveLocation: 'LocationNone',
   Locations: 'Location',
   LocationsInactive: 'LocationNone',
   Lock: 'Lock',
@@ -322,6 +334,7 @@ const iconRenames = {
   MobileVerticalDots: 'MenuVertical',
   Moneris: 'Calculator',
   Money: 'Money',
+  MoneyFilled: 'MoneyFilled',
   Nature: 'Nature',
   Navigation: 'Compass',
   Note: 'Note',
@@ -334,6 +347,7 @@ const iconRenames = {
   OrderStatus: 'OrdersStatus',
   Organization: 'Organization',
   Outdate: 'TextIndentRemove',
+  Outdent: 'Outdent',
   Outgoing: 'Outgoing',
   Package: 'Package',
   PackageFilled: 'PackageFilled',
@@ -368,7 +382,7 @@ const iconRenames = {
   Plus: 'Plus',
   PointOfSale: 'PointOfSale',
   Popular: 'ChartPopular',
-  PositionBased: 'ChartHistogramFirstLast',
+  PositionBasedModel: 'ChartHistogramFirstLast',
   PriceList: 'PriceList',
   PriceListFilled: 'PriceListFilled',
   PriceLookup: 'SearchList',
@@ -467,7 +481,7 @@ const iconRenames = {
   Tick: 'Check',
   TickSmall: 'CheckSmall',
   Tiktok: 'SocialTiktok',
-  TimeDecay: 'ChartHistogramGrowth',
+  TimeDecayModel: 'ChartHistogramGrowth',
   TimelineAttachment: 'PageAttachment',
   Tips: 'TipJar',
   Title: 'TextTitle',
@@ -482,7 +496,7 @@ const iconRenames = {
   Transfer: 'Transfer',
   TransferIn: 'TransferIn',
   TransferOut: 'TransferOut',
-  TransfersFilled: 'ArrowsOutHorizontalFilled',
+  TransferFilled: 'ArrowsOutHorizontalFilled',
   TransferWithinShopify: 'TransferInternal',
   Translate: 'LanguageTranslate',
   Transport: 'Airplane',
@@ -497,12 +511,12 @@ const iconRenames = {
   UnknownDevice: 'UnknownDevice',
   UpdateInventory: 'InventoryUpdated',
   Upload: 'Upload',
-  UserPermissions: 'PersonLock',
-  UserPermissionsFilled: 'PersonLockFilled',
+  UsersAndPermissions: 'PersonLock',
+  UsersAndPermissionsFilled: 'PersonLockFilled',
   Variant: 'Variant',
   View: 'View',
   ViewportNarrow: 'ViewportNarrow',
-  ViewportShortNarrow: 'ViewportShortNarrow',
+  ViewportShort: 'ViewportShort',
   ViewportTall: 'ViewportTall',
   ViewportWide: 'ViewportWide',
   Vimeo: 'SocialVimeo',
@@ -519,27 +533,28 @@ const iconRenames = {
 const dirname = new URL('.', import.meta.url).pathname;
 
 const svgFiles = glob.sync(`${dirname}/icons/*.svg`);
-const ymlFiles = glob.sync(`${dirname}/icons/*.yml`);
 
 for (const file of svgFiles) {
-  const filename = path.basename(file, '.svg').replace('Icon', '');
+  const filename = path.basename(file).replace('Icon.svg', '');
   const newFilename = filename.replace(filename, iconRenames[filename]);
   const newFile = file.replace(filename, newFilename);
 
   if (iconRenames[filename] === undefined) {
-    console.log(`No rename for ${filename}`);
+    console.warn(`No rename for ${filename}.svg`);
   } else {
     await fs.promises.rename(file, newFile);
   }
 }
 
+const ymlFiles = glob.sync(`${dirname}/icons/*.yml`);
+
 for (const file of ymlFiles) {
-  const filename = path.basename(file, '.yml').replace('Icon', '');
+  const filename = path.basename(file).replace('Icon.yml', '');
   const newFilename = filename.replace(filename, iconRenames[filename]);
   const newFile = file.replace(filename, newFilename);
 
   if (iconRenames[filename] === undefined) {
-    console.log(`No rename for ${filename}`);
+    console.warn(`No rename for ${filename}.yml`);
   } else {
     await fs.promises.rename(file, newFile);
   }
