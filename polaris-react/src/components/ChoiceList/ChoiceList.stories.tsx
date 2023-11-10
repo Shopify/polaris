@@ -6,10 +6,12 @@ export default {
   component: ChoiceList,
 } as ComponentMeta<typeof ChoiceList>;
 
-export function Default() {
-  const [selected, setSelected] = useState(['hidden']);
+type HiddenOptionalRequired = 'hidden' | 'optional' | 'required';
 
-  const handleChange = useCallback((value) => setSelected(value), []);
+export function Default() {
+  const [selected, setSelected] = useState<HiddenOptionalRequired[]>([
+    'hidden',
+  ]);
 
   return (
     <ChoiceList
@@ -20,15 +22,15 @@ export function Default() {
         {label: 'Required', value: 'required'},
       ]}
       selected={selected}
-      onChange={handleChange}
+      onChange={setSelected}
     />
   );
 }
 
 export function WithError() {
-  const [selected, setSelected] = useState(['hidden']);
-
-  const handleChange = useCallback((value) => setSelected(value), []);
+  const [selected, setSelected] = useState([
+    'hidden' as HiddenOptionalRequired,
+  ]);
 
   return (
     <ChoiceList
@@ -39,16 +41,16 @@ export function WithError() {
         {label: 'Required', value: 'required'},
       ]}
       selected={selected}
-      onChange={handleChange}
+      onChange={setSelected}
       error="Company name cannot be hidden at this time"
     />
   );
 }
 
 export function Magic() {
-  const [selected, setSelected] = useState(['hidden']);
-
-  const handleChange = useCallback((value) => setSelected(value), []);
+  const [selected, setSelected] = useState<HiddenOptionalRequired[]>([
+    'hidden',
+  ]);
 
   return (
     <ChoiceList
@@ -59,16 +61,14 @@ export function Magic() {
         {label: 'Required', value: 'required'},
       ]}
       selected={selected}
-      onChange={handleChange}
+      onChange={setSelected}
       tone="magic"
     />
   );
 }
 
 export function WithMultiChoice() {
-  const [selected, setSelected] = useState(['hidden']);
-
-  const handleChange = useCallback((value) => setSelected(value), []);
+  const [selected, setSelected] = useState([] as string[]);
 
   return (
     <ChoiceList
@@ -89,15 +89,13 @@ export function WithMultiChoice() {
         },
       ]}
       selected={selected}
-      onChange={handleChange}
+      onChange={setSelected}
     />
   );
 }
 
 export function MagicWithMultiChoice() {
-  const [selected, setSelected] = useState(['hidden']);
-
-  const handleChange = useCallback((value) => setSelected(value), []);
+  const [selected, setSelected] = useState<string[]>([]);
 
   return (
     <ChoiceList
@@ -118,34 +116,29 @@ export function MagicWithMultiChoice() {
         },
       ]}
       selected={selected}
-      onChange={handleChange}
+      onChange={setSelected}
       tone="magic"
     />
   );
 }
 
 export function WithChildrenContent() {
-  const [selected, setSelected] = useState(['none']);
+  const [selected, setSelected] = useState([
+    'none' as 'none' | 'minimum_purchase' | 'minimum_quantity',
+  ]);
   const [textFieldValue, setTextFieldValue] = useState('');
-
-  const handleChoiceListChange = useCallback((value) => setSelected(value), []);
-
-  const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
-    [],
-  );
 
   const renderChildren = useCallback(
     () => (
       <TextField
         label="Minimum Quantity"
         labelHidden
-        onChange={handleTextFieldChange}
+        onChange={setTextFieldValue}
         value={textFieldValue}
         autoComplete="off"
       />
     ),
-    [handleTextFieldChange, textFieldValue],
+    [textFieldValue],
   );
 
   return (
@@ -164,7 +157,7 @@ export function WithChildrenContent() {
         },
       ]}
       selected={selected}
-      onChange={handleChoiceListChange}
+      onChange={setSelected}
     />
   );
 }
@@ -173,25 +166,18 @@ export function WithDynamicChildrenContent() {
   const [selected, setSelected] = useState(['none']);
   const [textFieldValue, setTextFieldValue] = useState('');
 
-  const handleChoiceListChange = useCallback((value) => setSelected(value), []);
-
-  const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
-    [],
-  );
-
   const renderChildren = useCallback(
     (isSelected) =>
       isSelected && (
         <TextField
           label="Minimum Quantity"
           labelHidden
-          onChange={handleTextFieldChange}
+          onChange={setTextFieldValue}
           value={textFieldValue}
           autoComplete="off"
         />
       ),
-    [handleTextFieldChange, textFieldValue],
+    [textFieldValue],
   );
 
   return (
@@ -212,7 +198,7 @@ export function WithDynamicChildrenContent() {
           },
         ]}
         selected={selected}
-        onChange={handleChoiceListChange}
+        onChange={setSelected}
       />
     </div>
   );

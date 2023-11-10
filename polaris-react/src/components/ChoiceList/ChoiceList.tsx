@@ -10,9 +10,9 @@ import {Bleed} from '../Bleed';
 
 import styles from './ChoiceList.scss';
 
-interface Choice {
+interface Choice<TValue extends string> {
   /** Value of the choice */
-  value: string;
+  value: TValue;
   /** Label for the choice */
   label: React.ReactNode;
   /** A unique identifier for the choice */
@@ -27,13 +27,13 @@ interface Choice {
   renderChildren?(isSelected: boolean): React.ReactNode | false;
 }
 
-export interface ChoiceListProps {
+export interface ChoiceListProps<TValue extends string = string> {
   /** Label for list of choices */
   title: React.ReactNode;
   /** Collection of choices */
-  choices: Choice[];
+  choices: Choice<TValue>[] | readonly Choice<TValue>[];
   /** Collection of selected choices */
-  selected: string[];
+  selected: TValue[];
   /** Name for form input */
   name?: string;
   /** Allow merchants to select multiple options at once */
@@ -45,12 +45,12 @@ export interface ChoiceListProps {
   /** Disable all choices **/
   disabled?: boolean;
   /** Callback when the selected choices change */
-  onChange?(selected: string[], name: string): void;
+  onChange?(selected: TValue[], name: string): void;
   /** Indicates the tone of the choice list */
   tone?: 'magic';
 }
 
-export function ChoiceList({
+export function ChoiceList<TValue extends string>({
   title,
   titleHidden,
   allowMultiple,
@@ -61,7 +61,7 @@ export function ChoiceList({
   disabled = false,
   name: nameProp,
   tone,
-}: ChoiceListProps) {
+}: ChoiceListProps<TValue>) {
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
   // see https://github.com/Microsoft/TypeScript/issues/28768
   const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;
@@ -97,7 +97,7 @@ export function ChoiceList({
       );
     }
 
-    const isSelected = choiceIsSelected(choice, selected);
+    const isSelected = selected.includes(choice.value);
     const renderedChildren = choice.renderChildren
       ? choice.renderChildren(isSelected)
       : null;
@@ -116,7 +116,7 @@ export function ChoiceList({
             label={label}
             disabled={choiceDisabled || disabled}
             fill={{xs: true, sm: false}}
-            checked={choiceIsSelected(choice, selected)}
+            checked={isSelected}
             helpText={helpText}
             onChange={handleChange}
             ariaDescribedBy={
@@ -154,14 +154,10 @@ export function ChoiceList({
 
 function noop() {}
 
-function choiceIsSelected({value}: Choice, selected: string[]) {
-  return selected.includes(value);
-}
-
-function updateSelectedChoices(
-  {value}: Choice,
+function updateSelectedChoices<TValue extends string>(
+  {value}: Choice<TValue>,
   checked: boolean,
-  selected: string[],
+  selected: TValue[],
   allowMultiple = false,
 ) {
   if (checked) {
