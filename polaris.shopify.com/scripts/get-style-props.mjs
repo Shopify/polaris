@@ -311,7 +311,7 @@ const sassFile = await fs.open(
   'w+',
 );
 
-await writeProperties(sassFile, properties);
+await writeCSSMediaVars(sassFile);
 
 await sassFile.close();
 
@@ -524,61 +524,37 @@ async function getProperties() {
   return properties;
 }
 
-async function writeProperties(file, properties) {
-  await file.write('/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */');
-  await file.write("\n@import '../../styles/mixins';");
-
-  await file.write('\n.Box {');
-  const propertyEntries = Object.entries(properties);
-  for (let [name, property] of propertyEntries) {
-    await writeScopeCustomProperty('box', name, file);
-    await writeResponsiveDeclarationAtBreakpoint(
-      'box',
-      name,
-      property,
-      'xs',
-      file,
-      2,
-    );
-  }
-  await file.write('\n}');
-
+// See: https://github.com/propjockey/css-media-vars/blob/master/css-media-vars.css
+async function writeCSSMediaVars(file) {
   // Skip the 'xs' size as we've done it above outside of the media queries
   // (mobile first ftw!)
-  const mediaQueries = breakpoints.slice(1);
-  for (let breakpoint of mediaQueries) {
-    await file.write(`\n@media screen and (min-width: ${breakpoint.value}) {`);
-    await file.write(`\n  .Box {`);
-    for (let [name, property] of propertyEntries) {
-      await writeResponsiveDeclarationAtBreakpoint(
-        'box',
-        name,
-        property,
-        breakpoint.key,
-        file,
-        4,
-      );
-    }
-    await file.write(`\n  }`);
-    await file.write(`\n}`);
-  }
+  const breakpointsWithoutXs = breakpoints.slice(1);
+  await file.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
+.Box {
+  ${breakpointsWithoutXs
+    // Set css-media-vars values to `initial`. If any of these are attempted to be
+    // read in a custom CSS Property, it will have the value 'initial' which then
+    // triggers the fallback of `var()` to be substituted.
+    .map(({key}) => `--_p-media-${key}: initial;`)
+    .join('\n  ')}
 }
-
-/*
-* Ouputs something like:
-
-  --pc-box-z-index-xs: initial;
-  --pc-box-z-index-sm: var(--pc-box-z-index-xs, initial);
-  --pc-box-z-index-md: var(--pc-box-z-index-sm, initial);
-  --pc-box-z-index-lg: var(--pc-box-z-index-md, initial);
-  --pc-box-z-index-xl: var(--pc-box-z-index-lg, initial);
-*/
-async function writeScopeCustomProperty(componentName, propertyName, file) {
-  for (let breakpoint of breakpoints) {
-    await file.write(
-      `\n  --pc-${componentName}-${propertyName}-${breakpoint.key}: initial;`,
-    );
+${breakpointsWithoutXs
+  // At each breakpoint, set the css-media-vars value to ` ` (a space; a valid
+  // value in CSS!). Now when this is attempted to be read, it will simply
+  // insert a space which is ignored and the rest of the value is used.
+  // Later, these will be used in a rule similar to:
+  // --pc-box-color-sm: var(--_p-media-sm) red;
+  // --pc-box-color-lg: var(--_p-media-lg) blue;
+  // color: var(--pc-box-color-lg, var(--pc-box-color-sm, unset));
+  .map(
+    ({key, value}) => `
+@media screen and (min-width: ${value}) {
+  .Box {
+    --_p-media-${key}: ;
   }
+}`,
+  )
+  .join('\n')}`);
 }
 
 /*
