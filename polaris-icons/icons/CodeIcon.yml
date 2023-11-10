@@ -1,24 +1,13 @@
-name: Code
-description: Used to represent programming.
+name: Embed
+description: Used to represent an object embedded from a web resource.
 keywords:
-  - code
-  - block
-  - liquid
-  - script
-  - syntax
+  - embed
+  - web resource
+  - web
+  - iframe
 authors:
-  - L
-  - e
-  - i
-  - 'n'
-  - a
-  - ' '
-  - L
-  - e
-  - u
-  - 'n'
-  - g
+  - Adam Whitcroft
   - Joe Thomas
-date_added: 2022-09-15
+date_added: 2018-11-14
 date_modified: 2023-06-23
 exclusive_use:

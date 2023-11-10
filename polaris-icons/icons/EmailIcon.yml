@@ -1,11 +1,9 @@
-name: Email
-description: N/A
+name: Invite
+description: Used to represent an email or letter.
 keywords:
   - email
-  - letter
-  - mail
-  - rectangle
   - invite
+  - letter
 authors:
   - Adam Whitcroft
   - Joe Thomas

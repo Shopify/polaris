@@ -1,13 +1,9 @@
-name: Location
-description: Used to represent a location.
+name: Locations
+description: N/A
 keywords:
-  - location
-  - pin
+  - N/A
 authors:
-  - Adam Whitcroft
   - Joe Thomas
-  - José Torre
-  - Holly Schofield
-date_added: 2019-03-15
-date_modified: 2023-11-07
+date_added: 2019-03-01
+date_modified: 2023-06-23
 exclusive_use:

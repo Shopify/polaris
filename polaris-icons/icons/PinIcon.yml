@@ -1,14 +1,12 @@
-name: Pin
-description: Used to represent a pin or an action to pin or save something.
+name: Pin Unfilled
+description: Used to represent an unpinned item or an action to unpin something.
 keywords:
-  - pin
-  - save
+  - unpin
 authors:
   - David Luong
   - Adam Whitcroft
   - Chris Blinstrub
   - Joe Thomas
-  - José Torre
-date_added: 2019-03-15
-date_modified: 2023-11-07
+date_added: 2023-01-30
+date_modified: 2023-07-13
 exclusive_use:
