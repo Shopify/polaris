@@ -6,7 +6,7 @@
   --_p-media-xl: initial;
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 490px) {
   .Box {
     --_p-media-sm: ;
   }
@@ -24,7 +24,7 @@
   }
 }
 
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1440px) {
   .Box {
     --_p-media-xl: ;
   }

@@ -4,16 +4,21 @@ import fs from 'fs/promises';
 import path from 'path';
 import camelcase from 'camelcase';
 import * as url from 'url';
-import {tokenizedStyleProps} from '@shopify/polaris-tokens';
+import {
+  tokenizedStyleProps,
+  metaThemeDefault,
+  toPx,
+} from '@shopify/polaris-tokens';
 
-// TODO: Import these from token lib?
-const breakpoints = [
-  {key: 'xs', value: '0px'},
-  {key: 'sm', value: '500px'},
-  {key: 'md', value: '768px'},
-  {key: 'lg', value: '1040px'},
-  {key: 'xl', value: '1400px'},
-];
+// Get all breakpoints massaged into a more useful set of data
+const breakpoints = Object.entries(metaThemeDefault.breakpoints).map(
+  ([key, breakpoint]) => ({
+    // We just want the actual size, no prefix
+    key: key.replace('breakpoints-', ''),
+    // convert rems to px
+    value: toPx(breakpoint.value),
+  }),
+);
 
 // TODO: Confirm this list is complete.
 const cssShorthandProperties = [
