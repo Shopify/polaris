@@ -329,247 +329,63 @@ type SupportedRawCSSStyleProps = 'zIndex' |
  * For example; 'padding' is an alias to 'padding-inline-start',
  * 'padding-inline-end', etc, when those individual props aren't set.
  */
-export const stylePropAliases = {
-  "rowGap": [
-    "gap"
-  ],
-  "columnGap": [
-    "gap"
-  ],
-  "paddingInlineStart": [
-    "paddingLeft",
-    "paddingInline",
-    "padding"
-  ],
-  "paddingInlineEnd": [
-    "paddingRight",
-    "paddingInline",
-    "padding"
-  ],
-  "paddingBlockStart": [
-    "paddingTop",
-    "paddingBlock",
-    "padding"
-  ],
-  "paddingBlockEnd": [
-    "paddingBottom",
-    "paddingBlock",
-    "padding"
-  ],
-  "marginInlineStart": [
-    "marginLeft",
-    "marginInline",
-    "margin"
-  ],
-  "marginInlineEnd": [
-    "marginRight",
-    "marginInline",
-    "margin"
-  ],
-  "marginBlockStart": [
-    "marginTop",
-    "marginBlock",
-    "margin"
-  ],
-  "marginBlockEnd": [
-    "marginBottom",
-    "marginBlock",
-    "margin"
-  ],
-  "inlineSize": [
-    "width",
-    "size"
-  ],
-  "blockSize": [
-    "height",
-    "size"
-  ],
-  "minInlineSize": [
-    "minWidth",
-    "minSize"
-  ],
-  "minBlockSize": [
-    "minHeight",
-    "minSize"
-  ],
-  "maxInlineSize": [
-    "maxWidth",
-    "maxSize"
-  ],
-  "maxBlockSize": [
-    "maxHeight",
-    "maxSize"
-  ],
-  "containIntrinsicInlineSize": [
-    "containIntrinsicWidth",
-    "containIntrinsicSize"
-  ],
-  "containIntrinsicBlockSize": [
-    "containIntrinsicHeight",
-    "containIntrinsicSize"
-  ],
-  "overflowInline": [
-    "overflowX",
-    "overflow"
-  ],
-  "overflowBlock": [
-    "overflowY",
-    "overflow"
-  ],
-  "overscrollBehaviorInline": [
-    "overscrollBehaviorX",
-    "overscrollBehavior"
-  ],
-  "overscrollBehaviorBlock": [
-    "overscrollBehaviorY",
-    "overscrollBehavior"
-  ],
-  "borderStartStartRadius": [
-    "borderTopLeftRadius",
-    "borderRadius"
-  ],
-  "borderStartEndRadius": [
-    "borderTopRightRadius",
-    "borderRadius"
-  ],
-  "borderEndStartRadius": [
-    "borderBottomLeftRadius",
-    "borderRadius"
-  ],
-  "borderEndEndRadius": [
-    "borderBottomRightRadius",
-    "borderRadius"
-  ],
-  "borderInlineStartColor": [
-    "borderLeftColor",
-    "borderInlineColor",
-    "borderColor"
-  ],
-  "borderInlineEndColor": [
-    "borderRightColor",
-    "borderInlineColor",
-    "borderColor"
-  ],
-  "borderBlockStartColor": [
-    "borderTopColor",
-    "borderBlockColor",
-    "borderColor"
-  ],
-  "borderBlockEndColor": [
-    "borderBottomColor",
-    "borderBlockColor",
-    "borderColor"
-  ],
-  "borderInlineStartStyle": [
-    "borderLeftStyle",
-    "borderInlineStyle",
-    "borderStyle"
-  ],
-  "borderInlineEndStyle": [
-    "borderRightStyle",
-    "borderInlineStyle",
-    "borderStyle"
-  ],
-  "borderBlockStartStyle": [
-    "borderTopStyle",
-    "borderBlockStyle",
-    "borderStyle"
-  ],
-  "borderBlockEndStyle": [
-    "borderBottomStyle",
-    "borderBlockStyle",
-    "borderStyle"
-  ],
-  "borderInlineStartWidth": [
-    "borderLeftWidth",
-    "borderInlineWidth",
-    "borderWidth"
-  ],
-  "borderInlineEndWidth": [
-    "borderRightWidth",
-    "borderInlineWidth",
-    "borderWidth"
-  ],
-  "borderBlockStartWidth": [
-    "borderTopWidth",
-    "borderBlockWidth",
-    "borderWidth"
-  ],
-  "borderBlockEndWidth": [
-    "borderBottomWidth",
-    "borderBlockWidth",
-    "borderWidth"
-  ],
-  "insetInlineStart": [
-    "left",
-    "insetInline",
-    "inset"
-  ],
-  "insetInlineEnd": [
-    "right",
-    "insetInline",
-    "inset"
-  ],
-  "insetBlockStart": [
-    "top",
-    "insetBlock",
-    "inset"
-  ],
-  "insetBlockEnd": [
-    "bottom",
-    "insetBlock",
-    "inset"
-  ],
-  "scrollPaddingInlineStart": [
-    "scrollPaddingLeft",
-    "scrollPaddingInline",
-    "scrollPadding"
-  ],
-  "scrollPaddingInlineEnd": [
-    "scrollPaddingRight",
-    "scrollPaddingInline",
-    "scrollPadding"
-  ],
-  "scrollPaddingBlockStart": [
-    "scrollPaddingTop",
-    "scrollPaddingBlock",
-    "scrollPadding"
-  ],
-  "scrollPaddingBlockEnd": [
-    "scrollPaddingBottom",
-    "scrollPaddingBlock",
-    "scrollPadding"
-  ],
-  "scrollMarginInlineStart": [
-    "scrollMarginLeft",
-    "scrollMarginInline",
-    "scrollMargin"
-  ],
-  "scrollMarginInlineEnd": [
-    "scrollMarginRight",
-    "scrollMarginInline",
-    "scrollMargin"
-  ],
-  "scrollMarginBlockStart": [
-    "scrollMarginTop",
-    "scrollMarginBlock",
-    "scrollMargin"
-  ],
-  "scrollMarginBlockEnd": [
-    "scrollMarginBottom",
-    "scrollMarginBlock",
-    "scrollMargin"
-  ],
-  "justifyItems": [
-    "justify"
-  ],
-  "alignItems": [
-    "align"
-  ]
+export const stylePropAliasFallbacks = {
+  "rowGap": ["gap"],
+  "columnGap": ["gap"],
+  "paddingInlineStart": ["paddingLeft","paddingInline","padding"],
+  "paddingInlineEnd": ["paddingRight","paddingInline","padding"],
+  "paddingBlockStart": ["paddingTop","paddingBlock","padding"],
+  "paddingBlockEnd": ["paddingBottom","paddingBlock","padding"],
+  "marginInlineStart": ["marginLeft","marginInline","margin"],
+  "marginInlineEnd": ["marginRight","marginInline","margin"],
+  "marginBlockStart": ["marginTop","marginBlock","margin"],
+  "marginBlockEnd": ["marginBottom","marginBlock","margin"],
+  "inlineSize": ["width","size"],
+  "blockSize": ["height","size"],
+  "minInlineSize": ["minWidth","minSize"],
+  "minBlockSize": ["minHeight","minSize"],
+  "maxInlineSize": ["maxWidth","maxSize"],
+  "maxBlockSize": ["maxHeight","maxSize"],
+  "containIntrinsicInlineSize": ["containIntrinsicWidth","containIntrinsicSize"],
+  "containIntrinsicBlockSize": ["containIntrinsicHeight","containIntrinsicSize"],
+  "overflowInline": ["overflowX","overflow"],
+  "overflowBlock": ["overflowY","overflow"],
+  "overscrollBehaviorInline": ["overscrollBehaviorX","overscrollBehavior"],
+  "overscrollBehaviorBlock": ["overscrollBehaviorY","overscrollBehavior"],
+  "borderStartStartRadius": ["borderTopLeftRadius","borderRadius"],
+  "borderStartEndRadius": ["borderTopRightRadius","borderRadius"],
+  "borderEndStartRadius": ["borderBottomLeftRadius","borderRadius"],
+  "borderEndEndRadius": ["borderBottomRightRadius","borderRadius"],
+  "borderInlineStartColor": ["borderLeftColor","borderInlineColor","borderColor"],
+  "borderInlineEndColor": ["borderRightColor","borderInlineColor","borderColor"],
+  "borderBlockStartColor": ["borderTopColor","borderBlockColor","borderColor"],
+  "borderBlockEndColor": ["borderBottomColor","borderBlockColor","borderColor"],
+  "borderInlineStartStyle": ["borderLeftStyle","borderInlineStyle","borderStyle"],
+  "borderInlineEndStyle": ["borderRightStyle","borderInlineStyle","borderStyle"],
+  "borderBlockStartStyle": ["borderTopStyle","borderBlockStyle","borderStyle"],
+  "borderBlockEndStyle": ["borderBottomStyle","borderBlockStyle","borderStyle"],
+  "borderInlineStartWidth": ["borderLeftWidth","borderInlineWidth","borderWidth"],
+  "borderInlineEndWidth": ["borderRightWidth","borderInlineWidth","borderWidth"],
+  "borderBlockStartWidth": ["borderTopWidth","borderBlockWidth","borderWidth"],
+  "borderBlockEndWidth": ["borderBottomWidth","borderBlockWidth","borderWidth"],
+  "insetInlineStart": ["left","insetInline","inset"],
+  "insetInlineEnd": ["right","insetInline","inset"],
+  "insetBlockStart": ["top","insetBlock","inset"],
+  "insetBlockEnd": ["bottom","insetBlock","inset"],
+  "scrollPaddingInlineStart": ["scrollPaddingLeft","scrollPaddingInline","scrollPadding"],
+  "scrollPaddingInlineEnd": ["scrollPaddingRight","scrollPaddingInline","scrollPadding"],
+  "scrollPaddingBlockStart": ["scrollPaddingTop","scrollPaddingBlock","scrollPadding"],
+  "scrollPaddingBlockEnd": ["scrollPaddingBottom","scrollPaddingBlock","scrollPadding"],
+  "scrollMarginInlineStart": ["scrollMarginLeft","scrollMarginInline","scrollMargin"],
+  "scrollMarginInlineEnd": ["scrollMarginRight","scrollMarginInline","scrollMargin"],
+  "scrollMarginBlockStart": ["scrollMarginTop","scrollMarginBlock","scrollMargin"],
+  "scrollMarginBlockEnd": ["scrollMarginBottom","scrollMarginBlock","scrollMargin"],
+  "justifyItems": ["justify"],
+  "alignItems": ["align"],
 } as const;
 
 // Extract a unique set of just the alias names
-export const stylePropAliasNames = Array.from(new Set(Object.values(stylePropAliases).flat()));
+export const stylePropAliasNames = Array.from(new Set(Object.values(stylePropAliasFallbacks).flat()));
 
 /**
  * A list of values that if passed to any styleProp on our Box component should

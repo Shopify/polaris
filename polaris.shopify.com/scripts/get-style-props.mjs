@@ -30,6 +30,8 @@ const cssShorthandProperties = [
   'border-block-start',
   'border-bottom',
   'border-color',
+  'border-inline-color',
+  'border-block-color',
   'border-image',
   'border-inline',
   'border-inline-end',
@@ -121,9 +123,9 @@ const disallowedCSSProperties = [
   // the shorthand properties, but shouldn't be confused as being the same.
   ...cssShorthandProperties,
 
-  // We only support logical properties, but later alias these to their logical
-  // counterparts following the principle of: Do what the user intended, not
-  // what they said.
+  // We only support logical properties, but later alias these to their
+  // positional counterparts following the principle of: Do what the user
+  // intended, not what they said.
   'width',
   'height',
   'padding-left',
@@ -158,6 +160,14 @@ const disallowedCSSProperties = [
   'overflow-y',
   'overscroll-behavior-x',
   'overscroll-behavior-y',
+  'scroll-padding-top',
+  'scroll-padding-right',
+  'scroll-padding-bottom',
+  'scroll-padding-left',
+  'scroll-margin-top',
+  'scroll-margin-right',
+  'scroll-margin-bottom',
+  'scroll-margin-left',
   'top',
   'left',
   'right',
@@ -176,13 +186,11 @@ const disallowedCSSProperties = [
   // We don't want to include vendor prefixed properties, but oddly this one
   // property shows up in the list of "standard" CSS Properties.
   '-webkit-line-clamp',
-  // TODO...
 ];
 
 const disallowedCSSPropertyValues = ['inherit', 'initial', '-moz-initial'];
 
-// TODO: Throw error when a CSS property with the same name is allowed.
-const stylePropAliases = {
+const stylePropAliasFallbacks = {
   rowGap: ['gap'],
   columnGap: ['gap'],
   paddingInlineStart: ['paddingLeft', 'paddingInline', 'padding'],
@@ -295,9 +303,11 @@ const stylePropAliases = {
 };
 
 // Extract a unique set of just the alias names
-const allAliases = Array.from(new Set(Object.values(stylePropAliases).flat()));
+const allAliases = Array.from(
+  new Set(Object.values(stylePropAliasFallbacks).flat()),
+);
 
-const inverseAliases = Object.entries(stylePropAliases).reduce(
+const inverseAliases = Object.entries(stylePropAliasFallbacks).reduce(
   (acc, [prop, aliases]) => {
     for (let alias of aliases) {
       acc[alias] = acc[alias] ?? [];
@@ -370,7 +380,7 @@ type NonTokenizedStylePropAliases = {
  *
  * For example; 'padding-inline-start' can only accept the 'space-*' tokens.
  */
-type TokenizedStyleProps= Omit<TokenizedStylePropsAndAliases, typeof stylePropAliasNames[number]>;
+type TokenizedStyleProps = Omit<TokenizedStylePropsAndAliases, typeof stylePropAliasNames[number]>;
 
 /**
  * Props which act as an alias to one or more more tokenized style props.
@@ -420,14 +430,17 @@ type SupportedRawCSSStyleProps = ${generateTSPickList(
  * For example; 'padding' is an alias to 'padding-inline-start',
  * 'padding-inline-end', etc, when those individual props aren't set.
  */
-export const stylePropAliases = ${JSON.stringify(
-    stylePropAliases,
-    null,
-    2,
-  )} as const;
+export const stylePropAliasFallbacks = {
+  ${Object.entries(stylePropAliasFallbacks)
+    .map(
+      ([styleProp, aliasFallbacks]) =>
+        `"${styleProp}": ${JSON.stringify(aliasFallbacks)},`,
+    )
+    .join('\n  ')}
+} as const;
 
 // Extract a unique set of just the alias names
-export const stylePropAliasNames = Array.from(new Set(Object.values(stylePropAliases).flat()));
+export const stylePropAliasNames = Array.from(new Set(Object.values(stylePropAliasFallbacks).flat()));
 
 /**
  * A list of values that if passed to any styleProp on our Box component should
@@ -507,6 +520,7 @@ async function getProperties() {
   const parsedFiles = await css.listAll();
 
   const properties = {};
+  const aliasCollisions = [];
   for (let [shortname, data] of Object.entries(parsedFiles)) {
     // Treat delta specs the same as their "full" spec name. The data in
     // @webref/css is ordered, so deltas will always come after full specs.
@@ -518,12 +532,31 @@ async function getProperties() {
     for (let i = 0; i < data.properties.length; i++) {
       const propertySpec = data.properties[i];
       if (isCSSPropertyAllowed(propertySpec.name)) {
+        // To avoid ambiguity and ensure data integrity, we do not allow aliases
+        // to have the same name as an allowed CSS property.
+        const possibleAliasName = camelcase(propertySpec.name);
+        if (allAliases.includes(possibleAliasName)) {
+          aliasCollisions.push([propertySpec.name, possibleAliasName]);
+        }
+
         properties[propertySpec.name] = {
           name: propertySpec.name,
           inherited: propertySpec.inherited === 'yes',
         };
       }
     }
+  }
+
+  if (aliasCollisions.length) {
+    console.error(
+      `The following CSS properties collide with style prop aliases. Did you mean to add the CSS properties to cssShorthandProperties[] or disallowedCSSProperties[]?
+
+${aliasCollisions
+  .map(([cssProp, alias]) => `${cssProp} => ${alias}`)
+  .join('\n')}`,
+    );
+
+    process.exit(-1);
   }
 
   return properties;
@@ -608,8 +641,3 @@ async function writeResponsiveDeclarationAtBreakpoint(
   }
   await file.write(`\n${' '.repeat(indent)}${propertyName}: ${variables};`);
 }
-
-// For typescript we want to:
-// For properties that have design token values, enforce only using token values
-// For properties that do not have design token values, fallback to the original CSS property type.
-// disallow-list, initial and inherit as possible values.

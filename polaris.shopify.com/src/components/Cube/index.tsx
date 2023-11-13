@@ -13,17 +13,19 @@ import {
 } from '../../utils/various';
 import {
   type ResponsiveStyleProps,
-  stylePropAliases,
+  stylePropAliasFallbacks,
   disallowedCSSPropertyValues,
 } from './generated-data';
 
 type CubeProps = ResponsiveStyleProps;
 
 // Extract a unique set of just the alias names
-const allAliases = Array.from(new Set(Object.values(stylePropAliases).flat()));
+const allAliases = Array.from(
+  new Set(Object.values(stylePropAliasFallbacks).flat()),
+);
 
-const stylePropAliasesEntries = Object.entries(stylePropAliases) as Entries<
-  Required<typeof stylePropAliases>
+const aliasFallbackEntries = Object.entries(stylePropAliasFallbacks) as Entries<
+  Required<typeof stylePropAliasFallbacks>
 >;
 
 function coerceToObjectSyntax<T extends string | number | undefined = string>(
@@ -130,7 +132,7 @@ function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
 
   // Ensure constituent styles are given fallback values even when they're not
   // passed in as an explicit style prop.
-  stylePropAliasesEntries.forEach(([styleProp, aliases]) => {
+  aliasFallbackEntries.forEach(([styleProp, aliases]) => {
     for (
       let index = 0;
       // Stop looping if there are no more fallbacks
