@@ -4,3 +4,4 @@ node_modules
 /polaris-react/build
 /polaris-react/build-internal
 /polaris.shopify.com/public/sandbox
+/polaris.shopify.com/src/components/Cube/generated-data.ts
