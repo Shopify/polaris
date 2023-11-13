@@ -2,9 +2,9 @@ name: Release Polaris for VS Code
 
 on:
   push:
-    tags:
-      - 'shopify/polaris-tokens*' # Publish when a new version of polaris-tokens is released
-      - 'polaris-for-vscode*' # Push events to matching polaris-for-vscode*
+    paths:
+      - 'polaris-for-vscode/CHANGELOG.md'
+      - 'polaris-tokens/CHANGELOG.md'
     branches:
       - main
 

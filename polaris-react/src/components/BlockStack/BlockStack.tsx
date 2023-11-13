@@ -45,7 +45,7 @@ export interface BlockStackProps extends React.AriaAttributes {
   /** Aria role */
   role?: Extract<
     React.AriaRole,
-    'status' | 'presentation' | 'menu' | 'listbox' | 'combobox'
+    'status' | 'presentation' | 'menu' | 'listbox' | 'combobox' | 'group'
   >;
 }
 

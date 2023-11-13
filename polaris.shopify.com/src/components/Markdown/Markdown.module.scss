@@ -28,7 +28,7 @@
 }
 
 .UnorderedList {
-  .ListItem {
+  & > .ListItem {
     --list-bullet-width: 0.95em;
     &::before {
       content: '\2022';
@@ -38,7 +38,7 @@
 
 .OrderedList {
   counter-reset: item;
-  .ListItem {
+  & > .ListItem {
     --list-bullet-width: 1.35em;
     counter-increment: item;
     &::before {
