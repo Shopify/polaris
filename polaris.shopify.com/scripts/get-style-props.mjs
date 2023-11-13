@@ -20,7 +20,7 @@ const breakpoints = Object.entries(metaThemeDefault.breakpoints).map(
   }),
 );
 
-// TODO: Confirm this list is complete.
+// TODO: Confirm this list is complete or source it from mdn/webref data somehow
 const cssShorthandProperties = [
   'animation',
   'background',
@@ -88,7 +88,7 @@ const cssShorthandProperties = [
   'transition',
 ];
 
-// TODO: Confirm this list is complete.
+// TODO: Confirm this list is complete or source it from mdn/webref data somehow
 const positionalCSSProperties = [
   'width',
   'height',
@@ -491,49 +491,17 @@ async function getProperties() {
 
   // Note, we don't list the "Delta" specs here (those ending in `-<number>`),
   // but they will be included if found.
-  const allowedSpecifications = [
-    'CSS',
-    'compositing',
-    'css-align',
-    'css-animations',
-    'css-backgrounds',
-    'css-borders',
-    'css-box',
-    'css-break',
-    'css-color',
-    'css-display',
-    'css-flexbox',
-    'css-fonts',
-    'css-grid',
-    'css-images',
-    'css-inline',
-    'css-line-grid',
-    'css-link-params',
-    'css-lists',
-    'css-logical',
-    'css-multicol',
-    'css-nav',
-    'css-overflow',
-    'css-overscroll',
-    'css-position',
-    'css-scroll-snap',
-    'css-scrollbars',
-    'css-shapes',
-    'css-size-adjust',
-    'css-sizing',
-    'css-speech',
-    'css-tables',
-    'css-text',
-    'css-text-decor',
-    'css-transforms',
-    'css-transitions',
-    'css-ui',
-    'css-view-transitions',
-    'css-will-change',
-    'css-writing-modes',
-    'filter-effects',
-    'motion',
-    'scroll-animations',
+  const disallowedSpecifications = [
+    'SVG',
+    'compat',
+    'css-cascade',
+    'css-content',
+    'css-gcpm',
+    'css-layout-api',
+    'css-page',
+    'css-page-floats',
+    'mathml-core',
+    'svg-strokes',
   ];
 
   const parsedFiles = await css.listAll();
@@ -544,7 +512,7 @@ async function getProperties() {
     // Treat delta specs the same as their "full" spec name. The data in
     // @webref/css is ordered, so deltas will always come after full specs.
     shortname = stripDeltaSpecSuffix(shortname);
-    if (!allowedSpecifications.includes(shortname)) {
+    if (disallowedSpecifications.includes(shortname)) {
       continue;
     }
 
