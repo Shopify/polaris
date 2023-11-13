@@ -233,8 +233,8 @@ import {
   CircleLeftIcon,
   MinusCircleIcon,
   MinusCircleIcon,
-  MinusCirlceIcon,
-  MinusCirlceIcon,
+  MinusCircleIcon,
+  MinusCircleIcon,
   PlusCircleIcon,
   PlusCircleIcon,
   PlusCircleIcon,
@@ -1260,8 +1260,8 @@ export function App() {
       <Icon source={CircleLeftIcon} />
       <Icon source={MinusCircleIcon} />
       <Icon source={MinusCircleIcon} />
-      <Icon source={MinusCirlceIcon} />
-      <Icon source={MinusCirlceIcon} />
+      <Icon source={MinusCircleIcon} />
+      <Icon source={MinusCircleIcon} />
       <Icon source={PlusCircleIcon} />
       <Icon source={PlusCircleIcon} />
       <Icon source={PlusCircleIcon} />
