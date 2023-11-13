@@ -1,4 +1,4 @@
-name: Balance filled
+name: Wallet filled
 description: >-
   The account’s current balance. This amount is comprised of any transaction not
   yet included in a payout.

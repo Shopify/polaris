@@ -1,4 +1,4 @@
-name: Card reader
+name: Credit card reader
 description: Used to represent the Shopify Tap and Chip reader.
 keywords:
   - chip and swipe

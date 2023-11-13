@@ -1,4 +1,4 @@
-name: AnalyticsBarStacked
+name: Chart stacked
 description: Used to represent a stacked bar chart.
 keywords:
   - analytics

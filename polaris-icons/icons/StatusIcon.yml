@@ -1,4 +1,4 @@
-name: Store status
+name: Status
 description: Used to represent the activity of a shop or store.
 keywords:
   - status

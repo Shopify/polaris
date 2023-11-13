@@ -1,4 +1,4 @@
-name: Orders filled
+name: Order filled
 description: Used to represent an inbox or an item or resource arriving in an inbox.
 keywords:
   - inbox

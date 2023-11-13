@@ -1,4 +1,4 @@
-name: Log out
+name: Exit
 description: Used to denote the action of logging out of Shopify.
 keywords:
   - logout

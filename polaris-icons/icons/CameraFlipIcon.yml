@@ -1,4 +1,4 @@
-name: Flip camera
+name: Camera flip
 description: Used to represent an action to flip a mobile phone camera.
 keywords:
   - camera

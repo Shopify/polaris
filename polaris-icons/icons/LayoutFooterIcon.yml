@@ -1,4 +1,4 @@
-name: Footer
+name: Layout footer
 description: Used to represent the footer section of a component, page or layout.
 keywords:
   - layout

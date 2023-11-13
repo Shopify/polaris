@@ -1,4 +1,4 @@
-name: Translate
+name: Language translate
 description: Used to represent internationalization or multiple language options.
 keywords:
   - language

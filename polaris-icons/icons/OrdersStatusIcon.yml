@@ -1,4 +1,4 @@
-name: Order status
+name: Orders status
 description: Used to represent the activity of an inbox.
 keywords:
   - activity

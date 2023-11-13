@@ -1,4 +1,4 @@
-name: Colors
+name: Color
 description: Used to represent a color swatch, or palette of colors.
 keywords:
   - color

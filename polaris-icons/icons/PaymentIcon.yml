@@ -1,4 +1,4 @@
-name: Payments
+name: Payment
 description: Used to represent a payment made by credit or debit card.
 keywords:
   - credit

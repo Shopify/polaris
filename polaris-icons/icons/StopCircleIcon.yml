@@ -1,4 +1,4 @@
-name: Stop
+name: Stop circle
 description: Used to represent a stop action.
 keywords:
   - stop

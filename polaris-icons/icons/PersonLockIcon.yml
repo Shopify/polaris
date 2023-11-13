@@ -1,4 +1,4 @@
-name: Users and permissions
+name: Person lock
 description: Used to represent access permissions for users.
 keywords:
   - Lock

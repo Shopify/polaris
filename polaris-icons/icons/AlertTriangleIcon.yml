@@ -1,4 +1,4 @@
-name: Risk
+name: Alert triangle
 description: Used to represent risk associated with orders.
 keywords:
   - risk

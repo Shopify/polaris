@@ -1,4 +1,4 @@
-name: Customers filled
+name: Person filled
 description: Used to represent a customer, or user.
 keywords:
   - customer

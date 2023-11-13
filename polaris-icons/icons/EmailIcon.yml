@@ -1,4 +1,4 @@
-name: Invite
+name: Email
 description: Used to represent an email or letter.
 keywords:
   - email

@@ -1,4 +1,4 @@
-name: Behavior
+name: Cursor
 description: Used to represent a user clicking, or interacting with something.
 keywords:
   - click

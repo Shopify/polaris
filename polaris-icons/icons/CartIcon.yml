@@ -1,4 +1,4 @@
-name: Checkout
+name: Cart
 description: Used to represent a shopping cart.
 keywords:
   - checkout

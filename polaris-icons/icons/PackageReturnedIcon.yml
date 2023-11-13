@@ -1,4 +1,4 @@
-name: Returns
+name: Package returned
 description: Used to represent returns on an order.
 keywords:
   - returns

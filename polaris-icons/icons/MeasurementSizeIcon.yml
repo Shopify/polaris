@@ -1,4 +1,4 @@
-name: Measurement
+name: Measurement size
 description: Used to represent measurement including dimension, volume, and weight.
 keywords:
   - dimension

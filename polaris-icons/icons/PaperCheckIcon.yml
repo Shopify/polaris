@@ -1,4 +1,4 @@
-name: PaperCheck
+name: Paper check
 description: Used to represent a paper check payment method.
 keywords:
   - payment method

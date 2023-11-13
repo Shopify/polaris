@@ -1,4 +1,4 @@
-name: Column with text
+name: Text in columns
 description: >-
   Used to represent a layout option of two columns, each featuring an image and
   text.

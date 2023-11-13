@@ -1,4 +1,4 @@
-name: Managed store
+name: Store managed
 description: Used to represent a managed or approved store.
 keywords:
   - approved

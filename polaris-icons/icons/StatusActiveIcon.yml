@@ -1,4 +1,4 @@
-name: Active status
+name: Status active
 description: Used to represent a resource that is in an Active state.
 keywords:
   - active

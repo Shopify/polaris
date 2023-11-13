@@ -1,4 +1,4 @@
-name: AnalyticsCohort
+name: Chart cohort
 description: Used to represent a cohort analysis.
 keywords:
   - analytics

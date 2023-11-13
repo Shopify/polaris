@@ -1,4 +1,4 @@
-name: Abandoned cart
+name: Cart abandoned
 description: Used to represent a prospective purchase that a buyer didn’t complete.
 keywords:
   - orders

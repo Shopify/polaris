@@ -1,4 +1,4 @@
-name: Cash filled (dollar)
+name: Cash dollar filled
 description: Used to represent Dollar currency.
 keywords:
   - currency

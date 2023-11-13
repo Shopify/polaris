@@ -1,4 +1,4 @@
-name: Draft orders filled
+name: Order draft filled
 description: Used to represent an order that is in a Draft state.
 keywords:
   - draft

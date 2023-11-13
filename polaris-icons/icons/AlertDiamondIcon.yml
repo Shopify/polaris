@@ -1,4 +1,4 @@
-name: Diamond alert
+name: Alert diamond
 description: Used to alert merchants of a critical error.
 keywords:
   - alert

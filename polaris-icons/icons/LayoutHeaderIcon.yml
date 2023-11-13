@@ -1,4 +1,4 @@
-name: Header
+name: Layout header
 description: Used to represent the header section of a component, page or layout.
 keywords:
   - layout

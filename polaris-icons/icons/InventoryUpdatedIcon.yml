@@ -1,4 +1,4 @@
-name: Update inventory
+name: Inventory updated
 description: Used to represent updated inventory at a warehouse.
 keywords:
   - warehouse

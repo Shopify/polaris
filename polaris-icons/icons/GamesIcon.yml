@@ -1,4 +1,4 @@
-name: Games console
+name: Games
 description: Used to represent a console controller.
 keywords:
   - console

@@ -1,4 +1,4 @@
-name: Shipment
+name: Delivery
 description: >-
   Used to represent shipping-related events or actions such as shipping labels
   or tracking information.

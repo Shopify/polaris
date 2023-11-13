@@ -1,4 +1,4 @@
-name: InactiveLocation
+name: Location none
 description: Used to represent an inactive location.
 keywords:
   - inactive location

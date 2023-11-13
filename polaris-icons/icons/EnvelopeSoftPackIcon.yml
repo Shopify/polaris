@@ -1,4 +1,4 @@
-name: Soft pack
+name: Envelope soft pack
 description: >-
   Used to represent a soft pack envelope (or bubble mailer) that merchants can
   use to ship orders to their customers.

@@ -1,4 +1,4 @@
-name: Block
+name: Layout block
 description: >-
   Used to represent a content block as a sub-element of a section, page or
   layout.

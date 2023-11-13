@@ -1,4 +1,4 @@
-name: Insert Dynamic Source
+name: Database add
 description: >-
   Used to represent inserting a dynamic source into an input field that supports
   multiple dynamic sources
