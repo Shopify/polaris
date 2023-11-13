@@ -16,7 +16,11 @@ import {
   Tooltip,
   BlockStack,
 } from '@shopify/polaris';
-import {DeleteIcon, QuestionMarkIcon, SearchIcon} from '@shopify/polaris-icons';
+import {
+  DeleteIcon,
+  QuestionCircleIcon,
+  SearchIcon,
+} from '@shopify/polaris-icons';
 
 export default {
   component: TextField,
@@ -712,7 +716,7 @@ export function All() {
           onChange={() => {}}
           suffix={
             <Tooltip content="Hello world">
-              <Icon source={QuestionMarkIcon} />
+              <Icon source={QuestionCircleIcon} />
             </Tooltip>
           }
           autoComplete="off"

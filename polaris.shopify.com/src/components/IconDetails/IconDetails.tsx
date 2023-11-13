@@ -130,7 +130,7 @@ function EmptyState() {
   return (
     <div className={styles.IconDetails}>
       <div className={styles.EmptyState}>
-        <Icon source={polarisIcons.BehaviorIcon} width={46} height={46} />
+        <Icon source={polarisIcons.CursorIcon} width={46} height={46} />
         <p>Select an icon</p>
       </div>
     </div>

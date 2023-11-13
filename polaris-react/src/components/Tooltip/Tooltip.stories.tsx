@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {QuestionMarkIcon} from '@shopify/polaris-icons';
+import {QuestionCircleIcon} from '@shopify/polaris-icons';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
@@ -70,7 +70,7 @@ export function PreferredPosition() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               the activator
             </Text>
-            <Icon source={QuestionMarkIcon} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
         <Tooltip
@@ -88,7 +88,7 @@ export function PreferredPosition() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               the activator
             </Text>
-            <Icon source={QuestionMarkIcon} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
       </InlineStack>
@@ -114,7 +114,7 @@ export function Width() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               content width
             </Text>
-            <Icon source={QuestionMarkIcon} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
         <Tooltip
@@ -132,7 +132,7 @@ export function Width() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               content width
             </Text>
-            <Icon source={QuestionMarkIcon} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
       </InlineStack>
@@ -155,7 +155,7 @@ export function Padding() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               content padding
             </Text>
-            <Icon source={QuestionMarkIcon} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
         <Tooltip
@@ -173,7 +173,7 @@ export function Padding() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               content padding
             </Text>
-            <Icon source={QuestionMarkIcon} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
       </InlineStack>
@@ -199,7 +199,7 @@ export function BorderRadius() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               border radius
             </Text>
-            <Icon source={QuestionMarkIcon} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
         <Tooltip
@@ -217,7 +217,7 @@ export function BorderRadius() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               border radius
             </Text>
-            <Icon source={QuestionMarkIcon} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
       </InlineStack>

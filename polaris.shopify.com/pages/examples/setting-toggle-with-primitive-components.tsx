@@ -8,7 +8,7 @@ import {
   BlockStack,
   useBreakpoints,
 } from '@shopify/polaris';
-import {CircleInformationIcon} from '@shopify/polaris-icons';
+import {InfoIcon} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -42,11 +42,7 @@ export function WithPrimitiveComponents() {
   );
 
   const helpLink = (
-    <Button
-      variant="plain"
-      icon={CircleInformationIcon}
-      accessibilityLabel="Learn more"
-    />
+    <Button variant="plain" icon={InfoIcon} accessibilityLabel="Learn more" />
   );
 
   const settingTitle = title ? (

@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
-import {ArrowLeftIcon, QuestionMarkIcon} from '@shopify/polaris-icons';
+import {ArrowLeftIcon, QuestionCircleIcon} from '@shopify/polaris-icons';
 
 import type {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
 
@@ -105,7 +105,7 @@ function TopBarWrapper({
     <TopBar.Menu
       activatorContent={
         <span>
-          <Icon source={QuestionMarkIcon} />
+          <Icon source={QuestionCircleIcon} />
           <Text as="span" visuallyHidden>
             Secondary menu
           </Text>
