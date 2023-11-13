@@ -1,20 +1,15 @@
 #!/usr/bin/env node
 import yargs from 'yargs';
 import {hideBin} from 'yargs/helpers';
-import {XMLParser} from 'fast-xml-parser';
 import fs from 'node:fs/promises';
 import {promisify} from 'node:util';
-import fetch from 'node-fetch';
 import ora from 'ora';
 import tmp from 'tmp';
 import {metaThemeDefault, toPx} from '@shopify/polaris-tokens';
 
 import {prettyExeca, genAssets, startLocalServer} from './util.mjs';
 
-const PROD_DOMAIN = 'https://polaris.shopify.com';
-const STAGE_DOMAIN = 'https://polaris-staging.shopifycloud.com';
-const LOCAL_DOMAIN = 'http://localhost:3000';
-const SCREEN_RATIO = 16 / 9;
+const SCREEN_RATIO = 3 / 4;
 
 // Get all breakpoints massaged into a more useful set of data
 const breakpointsObj = Object.entries(metaThemeDefault.breakpoints).map(
@@ -54,6 +49,20 @@ const BACKSTOP_DEFAULT_CONFIG = {
   asyncCompareLimit: 50,
   debug: false,
   debugWindow: false,
+  scenarios: [
+    {
+      // When running in `reference` mode, will use the `referenceUrl` key.
+      // When running in `test` mode, will use the `url` key.
+      referenceUrl: '<TODO>',
+      url: '<TODO>',
+      // Just use the url as the label
+      label: '<TODO>',
+      // Hide the moving parts on motion pages
+      ...(pathName === '/tokens/motion' && {
+        removeSelectors: ['[data-preview]'],
+      }),
+    },
+  ],
 };
 
 tmp.setGracefulCleanup();
@@ -113,50 +122,16 @@ if (
 const spinner = ora();
 
 // Step 2: Run the local server
-let serverProcess;
-if (
-  (argv._[0] === 'reference' && argv.from === 'local') ||
-  argv._[0] === 'test'
-) {
-  spinner.start(`Starting local server`);
-  serverProcess = startLocalServer();
-  serverProcess.catch((err) => {
-    console.error(err.stderr);
-    process.exit(-1);
-  });
-  spinner.succeed(`Started local server`);
-}
-
-const domain =
-  argv._[0] === 'test'
-    ? PROD_DOMAIN
-    : {local: LOCAL_DOMAIN, prod: PROD_DOMAIN, stage: STAGE_DOMAIN}[argv.from];
-
-// Step 3: Scrape the sitemap for all urls
-spinner.start(`Fetching sitemap from ${domain}`);
-let sitemap;
-try {
-  sitemap = await getSitemapFromUrl(domain);
-  spinner.succeed(`Fetched sitemap from ${domain}`);
-} catch (error) {
-  spinner.fail(`Couldn't fetch sitemap from ${domain}`);
-  throw error;
-}
-
-if (!sitemap?.urlset?.url?.length) {
-  spinner.fail(
-    'Unable to determine URLs to screenshot; sitemap appears to be empty',
-  );
+spinner.start(`Starting local server`);
+const serverProcess = startLocalServer();
+serverProcess.catch((err) => {
+  console.error(err.stderr);
   process.exit(-1);
-}
+});
+spinner.succeed(`Started local server`);
 
 // Step 4: Convert sitemap into backstop test scenarios and write config to disk
 spinner.start(`Preparing to capture screenshots`);
-const scenarios = sitemapToScenarios(sitemap, domain);
-const backstopConfig = {
-  ...BACKSTOP_DEFAULT_CONFIG,
-  scenarios,
-};
 let configFilePath;
 try {
   configFilePath = await promisify(tmp.file)({
@@ -164,7 +139,7 @@ try {
     postfix: '.json',
     discardDescriptor: true,
   });
-  await fs.writeFile(configFilePath, JSON.stringify(backstopConfig));
+  await fs.writeFile(configFilePath, JSON.stringify(BACKSTOP_DEFAULT_CONFIG));
   spinner.succeed('Preparations complete');
 } catch (error) {
   spinner.start(`Failed to prepare BackstopJS`);
@@ -195,32 +170,4 @@ try {
 } finally {
   // Gracefully exit the process with whatever exit code backstop gave us
   process.exit(exitCode);
-}
-
-// ----
-
-async function getSitemapFromUrl(url) {
-  const response = await fetch(`${url}/sitemap.xml`);
-  const sitemapXml = await response.text();
-  return new XMLParser().parse(sitemapXml);
-}
-
-function sitemapToScenarios(sitemap, domain) {
-  return sitemap.urlset.url.map(({loc}) => {
-    // NOTE: sitemap URLs are always prod, even when generated locally.
-    const pathName = loc.replace(PROD_DOMAIN, '');
-    const url = `${domain}${pathName}`;
-    return {
-      // When running in `reference` mode, will use the `referenceUrl` key.
-      // When running in `test` mode, will use the `url` key.
-      referenceUrl: url,
-      url,
-      // Just use the url as the label
-      label: pathName,
-      // Hide the moving parts on motion pages
-      ...(pathName === '/tokens/motion' && {
-        removeSelectors: ['[data-preview]'],
-      }),
-    };
-  });
 }
