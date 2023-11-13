@@ -200,7 +200,14 @@ type SupportedRawCSSStyleProps = 'zIndex' |
   'orphans' |
   'widows' |
   'boxDecorationBreak' |
+  'colorScheme' |
+  'printColorAdjust' |
   'opacity' |
+  'contain' |
+  'containerType' |
+  'containerName' |
+  'container' |
+  'contentVisibility' |
   'display' |
   'order' |
   'visibility' |
@@ -268,6 +275,24 @@ type SupportedRawCSSStyleProps = 'zIndex' |
   'borderStartEndRadius' |
   'borderEndStartRadius' |
   'borderEndEndRadius' |
+  'clipPath' |
+  'maskImage' |
+  'maskMode' |
+  'maskRepeat' |
+  'maskPosition' |
+  'maskClip' |
+  'maskOrigin' |
+  'maskSize' |
+  'maskComposite' |
+  'maskBorderSource' |
+  'maskBorderMode' |
+  'maskBorderSlice' |
+  'maskBorderWidth' |
+  'maskBorderOutset' |
+  'maskBorderRepeat' |
+  'maskBorder' |
+  'maskType' |
+  'clip' |
   'columnSpan' |
   'columnWidth' |
   'columnCount' |
@@ -288,6 +313,7 @@ type SupportedRawCSSStyleProps = 'zIndex' |
   'insetInlineStart' |
   'insetBlockEnd' |
   'insetInlineEnd' |
+  'overflowAnchor' |
   'scrollSnapType' |
   'scrollSnapAlign' |
   'scrollSnapStop' |
