@@ -1,5 +1,5 @@
 import {Autocomplete, Icon} from '@shopify/polaris';
-import {SearchIcon, CirclePlusIcon} from '@shopify/polaris-icons';
+import {SearchIcon, PlusCircleIcon} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -81,7 +81,7 @@ function AutocompleteActionBeforeExample() {
           content: 'Action with long name',
           ellipsis: true,
           helpText: 'Help text',
-          icon: CirclePlusIcon,
+          icon: PlusCircleIcon,
           onAction: () => {
             console.log('actionBefore clicked!');
           },

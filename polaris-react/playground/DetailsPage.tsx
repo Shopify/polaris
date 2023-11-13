@@ -1,16 +1,16 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {
-  AnalyticsIcon,
+  ChartVerticalIcon,
   AppsIcon,
-  CirclePlusIcon,
-  CustomersIcon,
-  DiscountsIcon,
+  PlusCircleIcon,
+  PersonIcon,
+  DiscountIcon,
   ExternalIcon,
   GlobeIcon,
   HomeIcon,
-  MarketingIcon,
-  OrdersIcon,
-  ProductsIcon,
+  TargetIcon,
+  OrderIcon,
+  ProductIcon,
   SettingsIcon,
   WifiIcon,
 } from '@shopify/polaris-icons';
@@ -229,7 +229,7 @@ export function DetailsPage() {
           },
           {
             label: 'Orders',
-            icon: OrdersIcon,
+            icon: OrderIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('orders');
@@ -268,7 +268,7 @@ export function DetailsPage() {
           },
           {
             label: 'Products',
-            icon: ProductsIcon,
+            icon: ProductIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('products');
@@ -307,7 +307,7 @@ export function DetailsPage() {
           },
           {
             label: 'Customers',
-            icon: CustomersIcon,
+            icon: PersonIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('customers');
@@ -317,7 +317,7 @@ export function DetailsPage() {
           },
           {
             label: 'Analytics',
-            icon: AnalyticsIcon,
+            icon: ChartVerticalIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('analytics');
@@ -327,7 +327,7 @@ export function DetailsPage() {
           },
           {
             label: 'Marketing',
-            icon: MarketingIcon,
+            icon: TargetIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('marketing');
@@ -337,7 +337,7 @@ export function DetailsPage() {
           },
           {
             label: 'Discounts',
-            icon: DiscountsIcon,
+            icon: DiscountIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('discounts');
@@ -361,7 +361,7 @@ export function DetailsPage() {
         fill
         title="Sales channels"
         action={{
-          icon: CirclePlusIcon,
+          icon: PlusCircleIcon,
           accessibilityLabel: 'Add sales channel',
           onClick: toggleModalActive,
           tooltip: {
@@ -411,7 +411,7 @@ export function DetailsPage() {
           },
           {
             label: 'Updog Marketplace',
-            icon: ProductsIcon,
+            icon: ProductIcon,
             onClick: () => {},
             matches: navItemActive === 'pos',
             url: '#',

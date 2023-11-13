@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState, useId} from 'react';
-import {HorizontalDotsIcon} from '@shopify/polaris-icons';
+import {MenuHorizontalIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useMediaQuery} from '../../../../utilities/media-query';
@@ -150,7 +150,7 @@ export function Section({
             aria-label={ariaLabel}
           >
             <span className={styles.Icon}>
-              <Icon source={HorizontalDotsIcon} />
+              <Icon source={MenuHorizontalIcon} />
             </span>
           </button>
         </div>

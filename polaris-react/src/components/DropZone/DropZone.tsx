@@ -7,7 +7,7 @@ import React, {
   useId,
 } from 'react';
 import type {FunctionComponent} from 'react';
-import {UploadIcon, CircleAlertIcon} from '@shopify/polaris-icons';
+import {UploadIcon, AlertCircleIcon} from '@shopify/polaris-icons';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames, variationName} from '../../utilities/css';
@@ -344,7 +344,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const dragErrorOverlay =
     dragging &&
     (internalError || error) &&
-    overlayMarkup(CircleAlertIcon, errorOverlayTextWithDefault, 'critical');
+    overlayMarkup(AlertCircleIcon, errorOverlayTextWithDefault, 'critical');
 
   const context = useMemo(
     () => ({

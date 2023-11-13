@@ -1,10 +1,10 @@
 import {Icon} from '@shopify/polaris';
-import {CirclePlusIcon} from '@shopify/polaris-icons';
+import {PlusCircleIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function IconExample() {
-  return <Icon source={CirclePlusIcon} />;
+  return <Icon source={PlusCircleIcon} />;
 }
 
 export default withPolarisExample(IconExample);

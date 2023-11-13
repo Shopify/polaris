@@ -1,7 +1,11 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {ExceptionList} from '@shopify/polaris';
-import {NoteIcon, RiskIcon, AlertIcon} from '@shopify/polaris-icons';
+import {
+  NoteIcon,
+  AlertTriangleIcon,
+  AlertCircleIcon,
+} from '@shopify/polaris-icons';
 
 export default {
   component: ExceptionList,
@@ -42,14 +46,14 @@ export function All() {
         },
         {
           title: 'Order #1002',
-          icon: RiskIcon,
+          icon: AlertTriangleIcon,
           status: 'warning',
           description:
             'This customer is awesome. Make sure to treat them right!',
         },
         {
           title: 'Order #1003',
-          icon: AlertIcon,
+          icon: AlertCircleIcon,
           status: 'critical',
           description:
             'This customer is awesome. Make sure to treat them right!',

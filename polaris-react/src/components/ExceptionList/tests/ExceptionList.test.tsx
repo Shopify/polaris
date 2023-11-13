@@ -1,5 +1,5 @@
 import React from 'react';
-import {CirclePlusIcon, NoteIcon} from '@shopify/polaris-icons';
+import {PlusCircleIcon, NoteIcon} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {ExceptionList} from '../ExceptionList';
@@ -17,7 +17,7 @@ describe('<ExceptionList />', () => {
               'This customer is awesome. Make sure to treat them right!',
           },
           {
-            icon: CirclePlusIcon,
+            icon: PlusCircleIcon,
             description: 'Add a gift to this order',
           },
         ]}

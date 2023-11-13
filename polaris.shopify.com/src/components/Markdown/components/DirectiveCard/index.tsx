@@ -1,10 +1,10 @@
 import {Children, ReactElement} from 'react';
 import {Icon, Bleed} from '@shopify/polaris';
 import {
-  CancelSmallIcon,
+  XSmallIcon,
   FlagIcon,
-  RiskIcon,
-  TickSmallIcon,
+  AlertTriangleIcon,
+  CheckSmallIcon,
 } from '@shopify/polaris-icons';
 
 import {Box} from '../../../Box';
@@ -62,9 +62,9 @@ export const DirectiveCard = ({children, status, ...props}: DirectiveProps) => {
 
 export const Pill = ({status}: {status: DirectiveStatus}) => {
   const iconMap = {
-    Do: TickSmallIcon,
-    ["Don't"]: CancelSmallIcon,
-    Caution: RiskIcon,
+    Do: CheckSmallIcon,
+    ["Don't"]: XSmallIcon,
+    Caution: AlertTriangleIcon,
     Tip: FlagIcon,
   };
   return (

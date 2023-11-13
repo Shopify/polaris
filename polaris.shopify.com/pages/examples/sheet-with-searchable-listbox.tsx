@@ -11,7 +11,7 @@ import {
   TextContainer,
   Text,
 } from '@shopify/polaris';
-import {MobileCancelIcon, SearchIcon} from '@shopify/polaris-icons';
+import {XIcon, SearchIcon} from '@shopify/polaris-icons';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -324,7 +324,7 @@ function SheetWithSearchableListboxExample() {
               </Text>
               <Button
                 accessibilityLabel="Cancel"
-                icon={MobileCancelIcon}
+                icon={XIcon}
                 onClick={handleCloseSheet}
                 variant="plain"
               />

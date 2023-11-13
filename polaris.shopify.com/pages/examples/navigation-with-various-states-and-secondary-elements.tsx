@@ -1,12 +1,12 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
   HomeIcon,
-  OrdersIcon,
-  CirclePlusOutlineIcon,
-  ProductsIcon,
-  CustomersIcon,
-  MarketingIcon,
-  OnlineStoreIcon,
+  OrderIcon,
+  PlusCircleIcon,
+  ProductIcon,
+  PersonIcon,
+  TargetIcon,
+  StoreOnlineIcon,
   ViewIcon,
 } from '@shopify/polaris-icons';
 import React from 'react';
@@ -57,12 +57,12 @@ function NavigationExample() {
             {
               url: '#',
               label: 'Active with secondary action',
-              icon: OrdersIcon,
+              icon: OrderIcon,
               selected: true,
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'Add an order',
-                icon: CirclePlusOutlineIcon,
+                icon: PlusCircleIcon,
                 tooltip: {
                   content: 'Add an order',
                 },
@@ -71,7 +71,7 @@ function NavigationExample() {
             {
               url: location,
               label: 'Active item with sub navigation',
-              icon: ProductsIcon,
+              icon: ProductIcon,
               selected: true,
               subNavigationItems: [
                 {
@@ -97,13 +97,13 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Disabled item',
-              icon: CustomersIcon,
+              icon: PersonIcon,
               disabled: true,
             },
             {
               url: '#',
               label: 'Overflow item',
-              icon: MarketingIcon,
+              icon: TargetIcon,
             },
           ]}
           rollup={{
@@ -120,7 +120,7 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Icon as svg',
-              icon: OnlineStoreIcon,
+              icon: StoreOnlineIcon,
             },
             {
               url: '#',
@@ -150,7 +150,7 @@ function NavigationExample() {
           ]}
           action={{
             accessibilityLabel: 'Add sales channel',
-            icon: CirclePlusOutlineIcon,
+            icon: PlusCircleIcon,
             onClick: () => {},
           }}
           separator

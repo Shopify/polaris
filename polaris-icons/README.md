@@ -40,13 +40,13 @@ Import the [`Icon`](https://polaris.shopify.com/components/images-and-icons/icon
 2. Import an icon from Polaris icons:
 
    ```tsx
-   import {AddIcon} from '@shopify/polaris-icons';
+   import {PlusIcon} from '@shopify/polaris-icons';
    ```
 
 3. Pass the imported Polaris icon to the `source` prop of the `Icon` component:
 
    ```tsx
-   <Icon source={AddIcon} />
+   <Icon source={PlusIcon} />
    ```
 
 ### SVG files

@@ -1,9 +1,9 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
   HomeIcon,
-  OrdersIcon,
-  CirclePlusOutlineIcon,
-  ProductsIcon,
+  OrderIcon,
+  PlusCircleIcon,
+  ProductIcon,
 } from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -24,11 +24,11 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
-              icon: OrdersIcon,
+              icon: OrderIcon,
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'Add an order',
-                icon: CirclePlusOutlineIcon,
+                icon: PlusCircleIcon,
                 tooltip: {
                   content: 'Add an order',
                 },
@@ -38,7 +38,7 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
-              icon: ProductsIcon,
+              icon: ProductIcon,
             },
           ]}
         />

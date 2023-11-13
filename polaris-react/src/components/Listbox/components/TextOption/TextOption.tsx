@@ -1,5 +1,5 @@
 import React, {memo, useContext} from 'react';
-import {TickIcon} from '@shopify/polaris-icons';
+import {CheckIcon} from '@shopify/polaris-icons';
 
 import {Box} from '../../../Box';
 import {Checkbox} from '../../../Checkbox';
@@ -40,7 +40,7 @@ export const TextOption = memo(function TextOption({
       <InlineStack wrap={false} align="space-between" gap="200">
         {children}
         <InlineStack align="end">
-          <Icon source={TickIcon} />
+          <Icon source={CheckIcon} />
         </InlineStack>
       </InlineStack>
     </Box>

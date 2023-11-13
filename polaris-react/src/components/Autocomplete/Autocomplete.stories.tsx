@@ -7,7 +7,7 @@ import {
   Tag,
   TextContainer,
 } from '@shopify/polaris';
-import {CirclePlusIcon, DeleteIcon, SearchIcon} from '@shopify/polaris-icons';
+import {PlusCircleIcon, DeleteIcon, SearchIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Autocomplete,
@@ -652,7 +652,7 @@ export function WithAction() {
           content: 'Action with long name',
           ellipsis: true,
           helpText: 'Help text',
-          icon: CirclePlusIcon,
+          icon: PlusCircleIcon,
           onAction: () => {
             console.log('actionBefore clicked!');
           },
@@ -746,7 +746,7 @@ export function WithWrappingAction() {
             'Action with long name that will need to wrap on small display in order to have a nice display',
           ellipsis: true,
           helpText: 'Help text',
-          icon: CirclePlusIcon,
+          icon: PlusCircleIcon,
           wrapOverflow: true,
           onAction: () => {
             console.log('actionBefore clicked!');

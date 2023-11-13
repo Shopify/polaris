@@ -21,8 +21,8 @@ import {
 import {
   ArrowLeftIcon,
   HomeIcon,
-  OrdersIcon,
-  ConversationIcon,
+  OrderIcon,
+  ChatIcon,
 } from '@shopify/polaris-icons';
 import {useState, useCallback, useRef} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -195,12 +195,12 @@ function FrameExample() {
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersIcon,
+            icon: OrderIcon,
             onClick: toggleIsLoading,
           },
         ]}
         action={{
-          icon: ConversationIcon,
+          icon: ChatIcon,
           accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}

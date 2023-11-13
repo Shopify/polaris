@@ -1,19 +1,19 @@
 import {Icon} from '@shopify/polaris';
-import {CirclePlusIcon} from '@shopify/polaris-icons';
+import {PlusCircleIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function IconExample() {
   return (
     <div>
-      <Icon source={CirclePlusIcon} tone="base" />
-      <Icon source={CirclePlusIcon} tone="subdued" />
-      <Icon source={CirclePlusIcon} tone="primary" />
-      <Icon source={CirclePlusIcon} tone="info" />
-      <Icon source={CirclePlusIcon} tone="success" />
-      <Icon source={CirclePlusIcon} tone="caution" />
-      <Icon source={CirclePlusIcon} tone="warning" />
-      <Icon source={CirclePlusIcon} tone="critical" />
+      <Icon source={PlusCircleIcon} tone="base" />
+      <Icon source={PlusCircleIcon} tone="subdued" />
+      <Icon source={PlusCircleIcon} tone="primary" />
+      <Icon source={PlusCircleIcon} tone="info" />
+      <Icon source={PlusCircleIcon} tone="success" />
+      <Icon source={PlusCircleIcon} tone="caution" />
+      <Icon source={PlusCircleIcon} tone="warning" />
+      <Icon source={PlusCircleIcon} tone="critical" />
     </div>
   );
 }

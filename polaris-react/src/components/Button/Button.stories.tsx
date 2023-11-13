@@ -14,7 +14,7 @@ import {
 import {
   PlusIcon,
   DeleteIcon,
-  CancelSmallIcon,
+  XSmallIcon,
   EditIcon,
   ChevronDownIcon,
 } from '@shopify/polaris-icons';
@@ -39,7 +39,7 @@ export function All() {
               </Button>
               <Button disclosure>Label</Button>
               <Button
-                icon={CancelSmallIcon}
+                icon={XSmallIcon}
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
@@ -71,7 +71,7 @@ export function All() {
               </Button>
               <Button disclosure>Label</Button>
               <Button
-                icon={CancelSmallIcon}
+                icon={XSmallIcon}
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
@@ -103,7 +103,7 @@ export function All() {
               </Button>
               <Button
                 tone="critical"
-                icon={CancelSmallIcon}
+                icon={XSmallIcon}
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
@@ -145,7 +145,7 @@ export function All() {
               </Button>
               <Button
                 tone="critical"
-                icon={CancelSmallIcon}
+                icon={XSmallIcon}
                 onClick={() => {}}
                 accessibilityLabel="Dismiss"
               />
@@ -190,7 +190,7 @@ export function All() {
             <Button
               variant="primary"
               tone="critical"
-              icon={CancelSmallIcon}
+              icon={XSmallIcon}
               onClick={() => {}}
               accessibilityLabel="Dismiss"
             />
@@ -218,7 +218,7 @@ export function All() {
             <Button
               variant="primary"
               tone="success"
-              icon={CancelSmallIcon}
+              icon={XSmallIcon}
               onClick={() => {}}
               accessibilityLabel="Dismiss"
             />
@@ -261,7 +261,7 @@ export function All() {
             <Button
               variant="tertiary"
               tone="critical"
-              icon={CancelSmallIcon}
+              icon={XSmallIcon}
               onClick={() => {}}
               accessibilityLabel="Dismiss"
             />
@@ -298,14 +298,14 @@ export function Plain() {
         </Button>
         <Button
           variant="plain"
-          icon={CancelSmallIcon}
+          icon={XSmallIcon}
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
         <Button
           variant="plain"
           disabled
-          icon={CancelSmallIcon}
+          icon={XSmallIcon}
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
@@ -379,7 +379,7 @@ export function Tertiary() {
         <InlineStack gap="500" blockAlign="end">
           <Button
             variant="tertiary"
-            icon={CancelSmallIcon}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -420,7 +420,7 @@ export function PlainDestructive() {
       <Button
         variant="plain"
         tone="critical"
-        icon={CancelSmallIcon}
+        icon={XSmallIcon}
         onClick={() => {}}
         accessibilityLabel="Dismiss"
       />
@@ -428,7 +428,7 @@ export function PlainDestructive() {
         variant="plain"
         tone="critical"
         disabled
-        icon={CancelSmallIcon}
+        icon={XSmallIcon}
         onClick={() => {}}
         accessibilityLabel="Dismiss"
       />
@@ -456,7 +456,7 @@ export function Primary() {
           </Button>
           <Button
             variant="primary"
-            icon={CancelSmallIcon}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -486,7 +486,7 @@ export function Primary() {
           </Button>
           <Button
             variant="primary"
-            icon={CancelSmallIcon}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -725,7 +725,7 @@ export function DisabledState() {
       </Button>
       {/* Visual check to ensure the button color is not inherited from the parent */}
       <Box color="text-critical">
-        <Button variant="monochromePlain" disabled icon={CancelSmallIcon}>
+        <Button variant="monochromePlain" disabled icon={XSmallIcon}>
           Buy shipping label
         </Button>
       </Box>

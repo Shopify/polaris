@@ -16,7 +16,7 @@ import {
   Icon,
   AutoSelection,
 } from '@shopify/polaris';
-import {MobileCancelIcon, SearchIcon} from '@shopify/polaris-icons';
+import {XIcon, SearchIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Sheet,
@@ -122,7 +122,7 @@ export function Default() {
             </Text>
             <Button
               accessibilityLabel="Cancel"
-              icon={MobileCancelIcon}
+              icon={XIcon}
               onClick={toggleSheetActive}
               variant="plain"
             />
@@ -475,7 +475,7 @@ export function WithSearchableListbox() {
               </Text>
               <Button
                 accessibilityLabel="Cancel"
-                icon={MobileCancelIcon}
+                icon={XIcon}
                 onClick={handleCloseSheet}
                 variant="plain"
               />

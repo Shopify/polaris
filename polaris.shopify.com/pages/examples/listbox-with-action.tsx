@@ -1,5 +1,5 @@
 import {Listbox, LegacyStack, Icon} from '@shopify/polaris';
-import {CirclePlusIcon} from '@shopify/polaris-icons';
+import {PlusCircleIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -12,7 +12,7 @@ function ListboxWithActionExample() {
       </Listbox.Option>
       <Listbox.Action value="ActionValue">
         <LegacyStack spacing="tight">
-          <Icon source={CirclePlusIcon} tone="base" />
+          <Icon source={PlusCircleIcon} tone="base" />
           <div>Add item</div>
         </LegacyStack>
       </Listbox.Action>

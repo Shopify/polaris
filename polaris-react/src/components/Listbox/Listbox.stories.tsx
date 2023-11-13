@@ -14,7 +14,7 @@ import {
   Text,
   Box,
 } from '@shopify/polaris';
-import {CirclePlusIcon, SearchIcon} from '@shopify/polaris-icons';
+import {PlusCircleIcon, SearchIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Listbox,
@@ -104,7 +104,7 @@ export function WithAction() {
       </Listbox.Option>
       <Listbox.Action value="ActionValue">
         <LegacyStack spacing="tight">
-          <Icon source={CirclePlusIcon} tone="base" />
+          <Icon source={PlusCircleIcon} tone="base" />
           <div>Add item</div>
         </LegacyStack>
       </Listbox.Action>

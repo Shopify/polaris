@@ -10,13 +10,13 @@ import {
   BlockStack,
 } from '@shopify/polaris';
 import {
-  TickSmallIcon,
+  CheckSmallIcon,
   ChevronRightIcon,
   DeleteIcon,
   ExportIcon,
   ImportIcon,
   EditIcon,
-  CustomersIcon,
+  PersonIcon,
   DuplicateIcon,
   ArchiveIcon,
 } from '@shopify/polaris-icons';
@@ -144,14 +144,14 @@ export function WithAnIconAndASuffix() {
               active: true,
               content: 'Import file',
               icon: ImportIcon,
-              suffix: <Icon source={TickSmallIcon} />,
+              suffix: <Icon source={CheckSmallIcon} />,
             },
             {content: 'Export file', icon: ExportIcon},
             {
               disabled: true,
               content: 'Disable file',
               icon: ImportIcon,
-              suffix: <Icon source={TickSmallIcon} />,
+              suffix: <Icon source={CheckSmallIcon} />,
             },
           ]}
         />
@@ -202,7 +202,7 @@ export function WithSections() {
                 {
                   content:
                     'Manage several customers at once with a CSV file import',
-                  icon: CustomersIcon,
+                  icon: PersonIcon,
                   truncate: true,
                 },
               ],
@@ -337,14 +337,14 @@ export function WithHelpText() {
                   content: 'Active blogs',
                   helpText: 'This is helpful text',
                   icon: ImportIcon,
-                  suffix: <Icon source={TickSmallIcon} />,
+                  suffix: <Icon source={CheckSmallIcon} />,
                 },
                 {
                   disabled: true,
                   content: 'Disabled blogs',
                   helpText: 'This is also helpful text',
                   icon: ImportIcon,
-                  suffix: <Icon source={TickSmallIcon} />,
+                  suffix: <Icon source={CheckSmallIcon} />,
                 },
               ],
             },

@@ -1,14 +1,14 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Icon, Text, BlockStack} from '@shopify/polaris';
-import {CirclePlusIcon} from '@shopify/polaris-icons';
+import {PlusCircleIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Icon,
 } as ComponentMeta<typeof Icon>;
 
 export function Default() {
-  return <Icon source={CirclePlusIcon} />;
+  return <Icon source={PlusCircleIcon} />;
 }
 
 export function Colored() {
@@ -17,71 +17,71 @@ export function Colored() {
       <Text as="p" variant="bodyMd" alignment="center">
         Base tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="base" />
+      <Icon source={PlusCircleIcon} tone="base" />
       <Text as="p" variant="bodyMd" alignment="center">
         Subdued tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="subdued" />
+      <Icon source={PlusCircleIcon} tone="subdued" />
       <Text as="p" variant="bodyMd" alignment="center">
         Primary tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="primary" />
+      <Icon source={PlusCircleIcon} tone="primary" />
       <Text as="p" variant="bodyMd" alignment="center">
         Info tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="info" />
+      <Icon source={PlusCircleIcon} tone="info" />
       <Text as="p" variant="bodyMd" alignment="center">
         Success tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="success" />
+      <Icon source={PlusCircleIcon} tone="success" />
       <Text as="p" variant="bodyMd" alignment="center">
         Caution tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="caution" />
+      <Icon source={PlusCircleIcon} tone="caution" />
       <Text as="p" variant="bodyMd" alignment="center">
         Warning tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="warning" />
+      <Icon source={PlusCircleIcon} tone="warning" />
       <Text as="p" variant="bodyMd" alignment="center">
         Critical tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="critical" />
+      <Icon source={PlusCircleIcon} tone="critical" />
       <Text as="p" variant="bodyMd" alignment="center">
         Emphasis tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="emphasis" />
+      <Icon source={PlusCircleIcon} tone="emphasis" />
       <Text as="p" variant="bodyMd" alignment="center">
         Magic tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="magic" />
+      <Icon source={PlusCircleIcon} tone="magic" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Primary tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="textPrimary" />
+      <Icon source={PlusCircleIcon} tone="textPrimary" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Caution tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="textCaution" />
+      <Icon source={PlusCircleIcon} tone="textCaution" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Warning tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="textWarning" />
+      <Icon source={PlusCircleIcon} tone="textWarning" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Critical tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="textCritical" />
+      <Icon source={PlusCircleIcon} tone="textCritical" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Info tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="textInfo" />
+      <Icon source={PlusCircleIcon} tone="textInfo" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Success tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="textSuccess" />
+      <Icon source={PlusCircleIcon} tone="textSuccess" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Magic tone
       </Text>
-      <Icon source={CirclePlusIcon} tone="textMagic" />
+      <Icon source={PlusCircleIcon} tone="textMagic" />
     </BlockStack>
   );
 }

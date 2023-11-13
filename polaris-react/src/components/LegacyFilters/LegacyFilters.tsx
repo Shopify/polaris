@@ -3,7 +3,7 @@ import {
   SearchIcon,
   ChevronUpIcon,
   ChevronDownIcon,
-  CancelSmallIcon,
+  XSmallIcon,
 } from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -299,7 +299,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
           {moreFiltersLabel}
         </Text>
         <Button
-          icon={CancelSmallIcon}
+          icon={XSmallIcon}
           variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
@@ -310,7 +310,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
     const filtersMobileHeaderMarkup = (
       <div className={filtersContainerHeaderClassname}>
         <Button
-          icon={CancelSmallIcon}
+          icon={XSmallIcon}
           variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}

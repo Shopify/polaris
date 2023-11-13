@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {AlertIcon, CancelSmallIcon} from '@shopify/polaris-icons';
+import {AlertCircleIcon, XSmallIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {Key} from '../../../../types';
@@ -50,7 +50,7 @@ export function Toast({
 
   const dismissMarkup = (
     <button type="button" className={styles.CloseButton} onClick={onDismiss}>
-      <Icon source={CancelSmallIcon} />
+      <Icon source={XSmallIcon} />
     </button>
   );
 
@@ -69,7 +69,7 @@ export function Toast({
 
   const leadingIconMarkup = error ? (
     <div className={styles.LeadingIcon}>
-      <Icon source={AlertIcon} tone="base" />
+      <Icon source={AlertCircleIcon} tone="base" />
     </div>
   ) : null;
 

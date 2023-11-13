@@ -1,10 +1,10 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
   HomeIcon,
-  OrdersIcon,
-  ProductsIcon,
-  OnlineStoreIcon,
-  CirclePlusOutlineIcon,
+  OrderIcon,
+  ProductIcon,
+  StoreOnlineIcon,
+  PlusCircleIcon,
 } from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -25,13 +25,13 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
-              icon: OrdersIcon,
+              icon: OrderIcon,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
-              icon: ProductsIcon,
+              icon: ProductIcon,
             },
           ]}
         />
@@ -42,12 +42,12 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Online Store',
-              icon: OnlineStoreIcon,
+              icon: StoreOnlineIcon,
             },
           ]}
           action={{
             accessibilityLabel: 'Add sales channel',
-            icon: CirclePlusOutlineIcon,
+            icon: PlusCircleIcon,
             onClick: () => {},
           }}
         />

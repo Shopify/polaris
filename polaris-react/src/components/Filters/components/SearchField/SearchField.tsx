@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useId} from 'react';
-import {CircleCancelIcon} from '@shopify/polaris-icons';
+import {XCircleIcon} from '@shopify/polaris-icons';
 
 import {InlineStack} from '../../../InlineStack';
 import {Spinner} from '../../../Spinner';
@@ -97,7 +97,7 @@ export function SearchField({
                 <Text as="span" visuallyHidden>
                   {i18n.translate('Polaris.Common.clear')}
                 </Text>
-                <Icon source={CircleCancelIcon} tone="subdued" />
+                <Icon source={XCircleIcon} tone="subdued" />
               </UnstyledButton>
             ) : null}
           </InlineStack>

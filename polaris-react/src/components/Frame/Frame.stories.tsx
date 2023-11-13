@@ -23,9 +23,9 @@ import {
 } from '@shopify/polaris';
 import {
   ArrowLeftIcon,
-  ConversationIcon,
+  ChatIcon,
   HomeIcon,
-  OrdersIcon,
+  OrderIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -206,12 +206,12 @@ function InAnApplicationComponent() {
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersIcon,
+            icon: OrderIcon,
             onClick: toggleIsLoading,
           },
         ]}
         action={{
-          icon: ConversationIcon,
+          icon: ChatIcon,
           accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}
@@ -548,12 +548,12 @@ function WithAnOffsetComponent() {
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersIcon,
+            icon: OrderIcon,
             onClick: toggleIsLoading,
           },
         ]}
         action={{
-          icon: ConversationIcon,
+          icon: ChatIcon,
           accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}
@@ -896,12 +896,12 @@ function WithSidebarEnabled() {
           },
           {
             label: 'Jaded Pixel Orders',
-            icon: OrdersIcon,
+            icon: OrderIcon,
             onClick: toggleIsLoading,
           },
         ]}
         action={{
-          icon: ConversationIcon,
+          icon: ChatIcon,
           accessibilityLabel: 'Contact support',
           onClick: toggleModalActive,
         }}

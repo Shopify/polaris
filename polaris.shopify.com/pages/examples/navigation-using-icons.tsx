@@ -1,9 +1,9 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
   HomeIcon,
-  OrdersIcon,
-  ProductsIcon,
-  CustomersIcon,
+  OrderIcon,
+  ProductIcon,
+  PersonIcon,
 } from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -24,20 +24,20 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
-              icon: OrdersIcon,
+              icon: OrderIcon,
               badge: '15',
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
-              icon: ProductsIcon,
+              icon: ProductIcon,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Customers',
-              icon: CustomersIcon,
+              icon: PersonIcon,
             },
           ]}
         />

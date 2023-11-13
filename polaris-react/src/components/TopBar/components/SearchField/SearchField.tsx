@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState, useRef, useId} from 'react';
-import {CircleCancelIcon, SearchIcon} from '@shopify/polaris-icons';
+import {XCircleIcon, SearchIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
@@ -96,7 +96,7 @@ export function SearchField({
         setForceActive(true);
       }}
     >
-      <Icon source={CircleCancelIcon} />
+      <Icon source={XCircleIcon} />
     </button>
   );
 

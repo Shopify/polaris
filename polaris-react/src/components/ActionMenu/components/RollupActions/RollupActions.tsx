@@ -1,5 +1,5 @@
 import React from 'react';
-import {HorizontalDotsIcon} from '@shopify/polaris-icons';
+import {MenuHorizontalIcon} from '@shopify/polaris-icons';
 
 import type {
   ActionListSection,
@@ -38,7 +38,7 @@ export function RollupActions({
   const activatorMarkup = (
     <div className={styles.RollupActivator}>
       <Button
-        icon={HorizontalDotsIcon}
+        icon={MenuHorizontalIcon}
         accessibilityLabel={
           accessibilityLabel ||
           i18n.translate('Polaris.ActionMenu.RollupActions.rollupButton')

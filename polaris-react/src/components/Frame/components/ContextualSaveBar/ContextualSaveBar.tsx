@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {RiskIcon} from '@shopify/polaris-icons';
+import {AlertTriangleIcon} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
@@ -126,7 +126,7 @@ export function ContextualSaveBar({
         {logoMarkup}
         <div className={contentsClassName}>
           <div className={styles.MessageContainer}>
-            <Icon source={RiskIcon} />
+            <Icon source={AlertTriangleIcon} />
             {message && (
               <Text as="h2" variant="headingMd" tone="text-inverse" truncate>
                 {message}
