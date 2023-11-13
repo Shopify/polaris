@@ -255,10 +255,11 @@
     bottom: 0;
     // stylelint-disable-next-line polaris/color/function-disallowed-list -- custom background
     background: linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.07) 80%,
-      rgba(255, 255, 255, 0.15) 100%
-    );
+        180deg,
+        rgba(255, 255, 255, 0.07) 80%,
+        rgba(255, 255, 255, 0.15) 100%
+      )
+      border-box;
     box-shadow: var(--p-shadow-button-primary);
     /* stylelint-disable-next-line polaris/border/declaration-property-unit-disallowed-list -- custom radius */
     border-radius: 9px;
@@ -468,7 +469,6 @@
   --pc-button-text: var(--p-color-text);
   --pc-button-color-hover: var(--p-color-bg-fill-transparent-hover);
   --pc-button-color-active: var(--p-color-bg-fill-transparent-active);
-  --pc-button-color-depressed: var(--p-surface-selected-depressed);
   // stylelint-enable
   box-shadow: none;
 
