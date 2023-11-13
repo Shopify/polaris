@@ -1,4 +1,4 @@
-name: ListBulleted
+name: Bulleted list
 description: Used to represent a list of items or resources, or a bulleted list.
 keywords:
   - bulleted list
