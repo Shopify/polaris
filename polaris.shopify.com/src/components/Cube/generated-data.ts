@@ -16,57 +16,110 @@ type NonTokenizedStyleProps = Pick<CSS.Properties, SupportedRawCSSStyleProps>;
  * prop isn't set.
  */
 type NonTokenizedStylePropAliases = {
+  
+  /* Alias for `overflowInline` unless already set. */
   overflowX?: NonTokenizedStyleProps['overflowInline'];
+  /* Alias for `overflowInline` and `overflowBlock` unless already set. */
   overflow?: NonTokenizedStyleProps['overflowInline'] & NonTokenizedStyleProps['overflowBlock'];
+  /* Alias for `overflowBlock` unless already set. */
   overflowY?: NonTokenizedStyleProps['overflowBlock'];
+  /* Alias for `overscrollBehaviorInline` unless already set. */
   overscrollBehaviorX?: NonTokenizedStyleProps['overscrollBehaviorInline'];
+  /* Alias for `overscrollBehaviorInline` and `overscrollBehaviorBlock` unless already set. */
   overscrollBehavior?: NonTokenizedStyleProps['overscrollBehaviorInline'] & NonTokenizedStyleProps['overscrollBehaviorBlock'];
+  /* Alias for `overscrollBehaviorBlock` unless already set. */
   overscrollBehaviorY?: NonTokenizedStyleProps['overscrollBehaviorBlock'];
+  /* Alias for `borderStartStartRadius` unless already set. */
   borderTopLeftRadius?: NonTokenizedStyleProps['borderStartStartRadius'];
+  /* Alias for `borderStartEndRadius` unless already set. */
   borderTopRightRadius?: NonTokenizedStyleProps['borderStartEndRadius'];
+  /* Alias for `borderEndStartRadius` unless already set. */
   borderBottomLeftRadius?: NonTokenizedStyleProps['borderEndStartRadius'];
+  /* Alias for `borderEndEndRadius` unless already set. */
   borderBottomRightRadius?: NonTokenizedStyleProps['borderEndEndRadius'];
+  /* Alias for `borderInlineStartColor` unless already set. */
   borderLeftColor?: NonTokenizedStyleProps['borderInlineStartColor'];
+  /* Alias for `borderInlineStartColor` and `borderInlineEndColor` unless already set. */
   borderInlineColor?: NonTokenizedStyleProps['borderInlineStartColor'] & NonTokenizedStyleProps['borderInlineEndColor'];
+  /* Alias for `borderInlineEndColor` unless already set. */
   borderRightColor?: NonTokenizedStyleProps['borderInlineEndColor'];
+  /* Alias for `borderBlockStartColor` unless already set. */
   borderTopColor?: NonTokenizedStyleProps['borderBlockStartColor'];
+  /* Alias for `borderBlockStartColor` and `borderBlockEndColor` unless already set. */
   borderBlockColor?: NonTokenizedStyleProps['borderBlockStartColor'] & NonTokenizedStyleProps['borderBlockEndColor'];
+  /* Alias for `borderBlockEndColor` unless already set. */
   borderBottomColor?: NonTokenizedStyleProps['borderBlockEndColor'];
+  /* Alias for `borderInlineStartStyle` unless already set. */
   borderLeftStyle?: NonTokenizedStyleProps['borderInlineStartStyle'];
+  /* Alias for `borderInlineStartStyle` and `borderInlineEndStyle` unless already set. */
   borderInlineStyle?: NonTokenizedStyleProps['borderInlineStartStyle'] & NonTokenizedStyleProps['borderInlineEndStyle'];
+  /* Alias for `borderInlineStartStyle`, `borderInlineEndStyle`, `borderBlockStartStyle` and `borderBlockEndStyle` unless already set. */
   borderStyle?: NonTokenizedStyleProps['borderInlineStartStyle'] & NonTokenizedStyleProps['borderInlineEndStyle'] & NonTokenizedStyleProps['borderBlockStartStyle'] & NonTokenizedStyleProps['borderBlockEndStyle'];
+  /* Alias for `borderInlineEndStyle` unless already set. */
   borderRightStyle?: NonTokenizedStyleProps['borderInlineEndStyle'];
+  /* Alias for `borderBlockStartStyle` unless already set. */
   borderTopStyle?: NonTokenizedStyleProps['borderBlockStartStyle'];
+  /* Alias for `borderBlockStartStyle` and `borderBlockEndStyle` unless already set. */
   borderBlockStyle?: NonTokenizedStyleProps['borderBlockStartStyle'] & NonTokenizedStyleProps['borderBlockEndStyle'];
+  /* Alias for `borderBlockEndStyle` unless already set. */
   borderBottomStyle?: NonTokenizedStyleProps['borderBlockEndStyle'];
+  /* Alias for `borderInlineStartWidth` unless already set. */
   borderLeftWidth?: NonTokenizedStyleProps['borderInlineStartWidth'];
+  /* Alias for `borderInlineStartWidth` and `borderInlineEndWidth` unless already set. */
   borderInlineWidth?: NonTokenizedStyleProps['borderInlineStartWidth'] & NonTokenizedStyleProps['borderInlineEndWidth'];
+  /* Alias for `borderInlineEndWidth` unless already set. */
   borderRightWidth?: NonTokenizedStyleProps['borderInlineEndWidth'];
+  /* Alias for `borderBlockStartWidth` unless already set. */
   borderTopWidth?: NonTokenizedStyleProps['borderBlockStartWidth'];
+  /* Alias for `borderBlockStartWidth` and `borderBlockEndWidth` unless already set. */
   borderBlockWidth?: NonTokenizedStyleProps['borderBlockStartWidth'] & NonTokenizedStyleProps['borderBlockEndWidth'];
+  /* Alias for `borderBlockEndWidth` unless already set. */
   borderBottomWidth?: NonTokenizedStyleProps['borderBlockEndWidth'];
+  /* Alias for `insetInlineStart` unless already set. */
   left?: NonTokenizedStyleProps['insetInlineStart'];
+  /* Alias for `insetInlineStart` and `insetInlineEnd` unless already set. */
   insetInline?: NonTokenizedStyleProps['insetInlineStart'] & NonTokenizedStyleProps['insetInlineEnd'];
+  /* Alias for `insetInlineStart`, `insetInlineEnd`, `insetBlockStart` and `insetBlockEnd` unless already set. */
   inset?: NonTokenizedStyleProps['insetInlineStart'] & NonTokenizedStyleProps['insetInlineEnd'] & NonTokenizedStyleProps['insetBlockStart'] & NonTokenizedStyleProps['insetBlockEnd'];
+  /* Alias for `insetInlineEnd` unless already set. */
   right?: NonTokenizedStyleProps['insetInlineEnd'];
+  /* Alias for `insetBlockStart` unless already set. */
   top?: NonTokenizedStyleProps['insetBlockStart'];
+  /* Alias for `insetBlockStart` and `insetBlockEnd` unless already set. */
   insetBlock?: NonTokenizedStyleProps['insetBlockStart'] & NonTokenizedStyleProps['insetBlockEnd'];
+  /* Alias for `insetBlockEnd` unless already set. */
   bottom?: NonTokenizedStyleProps['insetBlockEnd'];
+  /* Alias for `scrollPaddingInlineStart` unless already set. */
   scrollPaddingLeft?: NonTokenizedStyleProps['scrollPaddingInlineStart'];
+  /* Alias for `scrollPaddingInlineStart` and `scrollPaddingInlineEnd` unless already set. */
   scrollPaddingInline?: NonTokenizedStyleProps['scrollPaddingInlineStart'] & NonTokenizedStyleProps['scrollPaddingInlineEnd'];
+  /* Alias for `scrollPaddingInlineStart`, `scrollPaddingInlineEnd`, `scrollPaddingBlockStart` and `scrollPaddingBlockEnd` unless already set. */
   scrollPadding?: NonTokenizedStyleProps['scrollPaddingInlineStart'] & NonTokenizedStyleProps['scrollPaddingInlineEnd'] & NonTokenizedStyleProps['scrollPaddingBlockStart'] & NonTokenizedStyleProps['scrollPaddingBlockEnd'];
+  /* Alias for `scrollPaddingInlineEnd` unless already set. */
   scrollPaddingRight?: NonTokenizedStyleProps['scrollPaddingInlineEnd'];
+  /* Alias for `scrollPaddingBlockStart` unless already set. */
   scrollPaddingTop?: NonTokenizedStyleProps['scrollPaddingBlockStart'];
+  /* Alias for `scrollPaddingBlockStart` and `scrollPaddingBlockEnd` unless already set. */
   scrollPaddingBlock?: NonTokenizedStyleProps['scrollPaddingBlockStart'] & NonTokenizedStyleProps['scrollPaddingBlockEnd'];
+  /* Alias for `scrollPaddingBlockEnd` unless already set. */
   scrollPaddingBottom?: NonTokenizedStyleProps['scrollPaddingBlockEnd'];
+  /* Alias for `scrollMarginInlineStart` unless already set. */
   scrollMarginLeft?: NonTokenizedStyleProps['scrollMarginInlineStart'];
+  /* Alias for `scrollMarginInlineStart` and `scrollMarginInlineEnd` unless already set. */
   scrollMarginInline?: NonTokenizedStyleProps['scrollMarginInlineStart'] & NonTokenizedStyleProps['scrollMarginInlineEnd'];
+  /* Alias for `scrollMarginInlineStart`, `scrollMarginInlineEnd`, `scrollMarginBlockStart` and `scrollMarginBlockEnd` unless already set. */
   scrollMargin?: NonTokenizedStyleProps['scrollMarginInlineStart'] & NonTokenizedStyleProps['scrollMarginInlineEnd'] & NonTokenizedStyleProps['scrollMarginBlockStart'] & NonTokenizedStyleProps['scrollMarginBlockEnd'];
+  /* Alias for `scrollMarginInlineEnd` unless already set. */
   scrollMarginRight?: NonTokenizedStyleProps['scrollMarginInlineEnd'];
+  /* Alias for `scrollMarginBlockStart` unless already set. */
   scrollMarginTop?: NonTokenizedStyleProps['scrollMarginBlockStart'];
+  /* Alias for `scrollMarginBlockStart` and `scrollMarginBlockEnd` unless already set. */
   scrollMarginBlock?: NonTokenizedStyleProps['scrollMarginBlockStart'] & NonTokenizedStyleProps['scrollMarginBlockEnd'];
+  /* Alias for `scrollMarginBlockEnd` unless already set. */
   scrollMarginBottom?: NonTokenizedStyleProps['scrollMarginBlockEnd'];
+  /* Alias for `justifyItems` unless already set. */
   justify?: NonTokenizedStyleProps['justifyItems'];
+  /* Alias for `alignItems` unless already set. */
   align?: NonTokenizedStyleProps['alignItems'];
 };
 
@@ -75,7 +128,7 @@ type NonTokenizedStylePropAliases = {
  *
  * For example; 'padding-inline-start' can only accept the 'space-*' tokens.
  */
-type TokenizedStyleProps= Omit<TokenizedStylePropsAndAliases, typeof stylePropAliasNames[number]>;
+type TokenizedStyleProps = Omit<TokenizedStylePropsAndAliases, typeof stylePropAliasNames[number]>;
 
 /**
  * Props which act as an alias to one or more more tokenized style props.

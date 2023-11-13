@@ -350,6 +350,18 @@ async function writeTSProperties(tsFile, properties) {
     return keys.map((key) => `'${key}'`).join(` |\n${' '.repeat(indent)}`);
   };
 
+  const joinEnglish = (arr) => {
+    if (arr.length === 1) {
+      return arr[0];
+    }
+    const joined = arr.slice(0, -1).join(', ');
+    if (arr.length < 2) {
+      return joined;
+    }
+
+    return `${joined} and ${arr[arr.length - 1]}`;
+  };
+
   await tsFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import * as CSS from 'csstype';
 // NOTE: Includes aliases as well as CSS Properties
@@ -371,12 +383,15 @@ type NonTokenizedStylePropAliases = {
   ${Object.entries(inverseAliases)
     .filter(([key]) => !tokenizedStyleProps.includes(key))
     .map(
-      ([alias, styleProps]) =>
-        `${alias}?: ${styleProps
-          .map((prop) => `NonTokenizedStyleProps['${prop}']`)
-          .join(' & ')};`,
+      ([alias, styleProps]) => `
+  /* Alias for ${joinEnglish(
+    styleProps.map((prop) => `\`${prop}\``),
+  )} unless already set. */
+  ${alias}?: ${styleProps
+        .map((prop) => `NonTokenizedStyleProps['${prop}']`)
+        .join(' & ')};`,
     )
-    .join('\n  ')}
+    .join('')}
 };
 
 /**
