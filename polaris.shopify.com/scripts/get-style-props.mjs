@@ -88,44 +88,8 @@ const cssShorthandProperties = [
   'transition',
 ];
 
-// We don't want to include any experimental or non-standard css rules in our
-// CSS. These also throw type errors when we generate our types in
-// `writeTSProperties()`.
-const standardCSSProperties = Object.entries(mdnData)
-  .filter(([_, value]) => value.status === 'standard')
-  .map(([key]) => key);
-
-const disallowedCSSProperties = [
-  // Shorthand properties need to come before longhand properties so
-  // the most specific (longhand) applies based on CSS order.
-  // For example, `flex-flow` is a shorthand of `<flex-direction> <flex-wrap>`,
-  // and so must come before both of those.
-  //
-  // Challenges with supporting shorthand properties:
-  // a. Cannot use alphabetical sorting (`flex-direction` would end up before
-  // `flex-flow` which is invalid).
-  // b. Cannot use `property.logicalProperyGroup` from `@webref/css` as that's not
-  // reliable (doesn't even exist for the `flex` family of properties).
-  // c. Cannot rely on the order of properties in an @webref/css specification
-  // containing both long and shorthand variants since later "Delta" specs might
-  // introduce new shorthands (and so would come after the longhand when
-  // iterating and therefore are invalid).
-  //
-  // Possible solutions:
-  // 1. Use data like { 'flex-flow': ['flex-direction', 'flex-wrap'] } to sort
-  //    longhands after shorthands
-  // 2. Filter out all the shorthand properties completely.
-  //
-  // We're chosing solution #2 here; filtering out shorthand CSS Properties.
-  // This is distinct from a later step where we create "aliases" to enable a
-  // builder to pass a single value which acts as a fallback for the props
-  // specified as fallbacks. Some of these aliases may have identical names to
-  // the shorthand properties, but shouldn't be confused as being the same.
-  ...cssShorthandProperties,
-
-  // We only support logical properties, but later alias these to their
-  // positional counterparts following the principle of: Do what the user
-  // intended, not what they said.
+// TODO: Confirm this list is complete.
+const positionalCSSProperties = [
   'width',
   'height',
   'padding-left',
@@ -174,6 +138,47 @@ const disallowedCSSProperties = [
   'bottom',
   'contain-intrinsic-width',
   'contain-intrinsic-height',
+];
+
+// We don't want to include any experimental or non-standard css rules in our
+// CSS. These also throw type errors when we generate our types in
+// `writeTSProperties()`.
+const standardCSSProperties = Object.entries(mdnData)
+  .filter(([_, value]) => value.status === 'standard')
+  .map(([key]) => key);
+
+const disallowedCSSProperties = [
+  // Shorthand properties need to come before longhand properties so
+  // the most specific (longhand) applies based on CSS order.
+  // For example, `flex-flow` is a shorthand of `<flex-direction> <flex-wrap>`,
+  // and so must come before both of those.
+  //
+  // Challenges with supporting shorthand properties:
+  // a. Cannot use alphabetical sorting (`flex-direction` would end up before
+  // `flex-flow` which is invalid).
+  // b. Cannot use `property.logicalProperyGroup` from `@webref/css` as that's not
+  // reliable (doesn't even exist for the `flex` family of properties).
+  // c. Cannot rely on the order of properties in an @webref/css specification
+  // containing both long and shorthand variants since later "Delta" specs might
+  // introduce new shorthands (and so would come after the longhand when
+  // iterating and therefore are invalid).
+  //
+  // Possible solutions:
+  // 1. Use data like { 'flex-flow': ['flex-direction', 'flex-wrap'] } to sort
+  //    longhands after shorthands
+  // 2. Filter out all the shorthand properties completely.
+  //
+  // We're chosing solution #2 here; filtering out shorthand CSS Properties.
+  // This is distinct from a later step where we create "aliases" to enable a
+  // builder to pass a single value which acts as a fallback for the props
+  // specified as fallbacks. Some of these aliases may have identical names to
+  // the shorthand properties, but shouldn't be confused as being the same.
+  ...cssShorthandProperties,
+
+  // We only support logical properties, but later alias these to their
+  // positional counterparts following the principle of: Do what the user
+  // intended, not what they said.
+  ...positionalCSSProperties,
 
   // For some reason these properties are not excluded from the mdn data set we've imported,
   // But is excluded from the csstype library that the CSS.Properties comes from.
@@ -299,7 +304,6 @@ const stylePropAliasFallbacks = {
   ],
   justifyItems: ['justify'],
   alignItems: ['align'],
-  // TODO...And more
 };
 
 // Extract a unique set of just the alias names
