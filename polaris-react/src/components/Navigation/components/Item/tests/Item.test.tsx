@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  PlusIcon,
-  StarFilledIcon,
-  StarOutlineIcon,
-} from '@shopify/polaris-icons';
+import {PlusIcon, StarFilledIcon, StarIcon} from '@shopify/polaris-icons';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
@@ -157,7 +153,7 @@ describe('<Nav.Item />', () => {
         label="some label"
         url="foo"
         icon={StarFilledIcon}
-        matchedItemIcon={StarOutlineIcon}
+        matchedItemIcon={StarIcon}
       />,
       {
         location: 'foo',
@@ -165,7 +161,7 @@ describe('<Nav.Item />', () => {
     );
 
     expect(item).toContainReactComponent(Icon, {
-      source: StarOutlineIcon,
+      source: StarIcon,
     });
   });
 
@@ -175,7 +171,7 @@ describe('<Nav.Item />', () => {
         label="some label"
         url="foo"
         icon={StarFilledIcon}
-        matchedItemIcon={StarOutlineIcon}
+        matchedItemIcon={StarIcon}
         subNavigationItems={[
           {
             url: 'bar',
@@ -190,7 +186,7 @@ describe('<Nav.Item />', () => {
     );
 
     expect(item).toContainReactComponent(Icon, {
-      source: StarOutlineIcon,
+      source: StarIcon,
     });
   });
 

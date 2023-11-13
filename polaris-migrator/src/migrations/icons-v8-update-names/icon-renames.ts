@@ -1,4 +1,4 @@
-const iconRenames = {
+export const iconRenames = {
   AbandonedCartMajor: 'CartAbandonedIcon',
   AbandonedCartMinor: 'CartAbandonedIcon',
   AbandonedCartFilledMajor: 'CartAbandonedFilledIcon',
@@ -231,8 +231,8 @@ const iconRenames = {
   CircleLeftMinor: 'CircleLeftIcon',
   CircleMinusMajor: 'MinusCircleIcon',
   CircleMinusMinor: 'MinusCircleIcon',
-  CircleMinusOutlineMajor: 'MinusCirlceIcon',
-  CircleMinusOutlineMinor: 'MinusCirlceIcon',
+  CircleMinusOutlineMajor: 'MinusCircleIcon',
+  CircleMinusOutlineMinor: 'MinusCircleIcon',
   CirclePlusMajor: 'PlusCircleIcon',
   CirclePlusMinor: 'PlusCircleIcon',
   CirclePlusOutlineMajor: 'PlusCircleIcon',
