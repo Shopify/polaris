@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
+import type {ChoiceListProps} from '@shopify/polaris';
 import {ChoiceList, TextField} from '@shopify/polaris';
 
 export default {
@@ -52,14 +53,16 @@ export function Magic() {
     'hidden',
   ]);
 
+  const choices: ChoiceListProps<HiddenOptionalRequired>['choices'] = [
+    {label: 'Hidden', value: 'hidden'},
+    {label: 'Optional', value: 'optional'},
+    {label: 'Required', value: 'required'},
+  ];
+
   return (
     <ChoiceList
       title="Company name"
-      choices={[
-        {label: 'Hidden', value: 'hidden'},
-        {label: 'Optional', value: 'optional'},
-        {label: 'Required', value: 'required'},
-      ]}
+      choices={choices}
       selected={selected}
       onChange={setSelected}
       tone="magic"

@@ -31,7 +31,7 @@ export interface ChoiceListProps<TValue extends string = string> {
   /** Label for list of choices */
   title: React.ReactNode;
   /** Collection of choices */
-  choices: Choice<TValue>[] | readonly Choice<TValue>[];
+  choices: Choice<TValue>[];
   /** Collection of selected choices */
   selected: TValue[];
   /** Name for form input */
