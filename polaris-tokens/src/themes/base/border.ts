@@ -16,7 +16,7 @@ export type BorderRadiusAlias = 'full';
 
 export type BorderRadiusAliasOrScale = BorderRadiusAlias | BorderRadiusScale;
 
-export type BorderWidthScale = '0165' | '025' | '050' | '100';
+export type BorderWidthScale = '0' | '0165' | '025' | '050' | '100';
 
 export type BorderTokenName =
   | `border-radius-${BorderRadiusAliasOrScale}`
@@ -58,6 +58,9 @@ export const border: {
   },
   'border-radius-full': {
     value: '9999px',
+  },
+  'border-width-0': {
+    value: size['0'],
   },
   'border-width-0165': {
     value: size['0165'],
