@@ -1616,6 +1616,53 @@ export function WithRowStatus() {
       status: 'warning',
     },
   ];
+
+  const customersForNestedRows = [
+    {
+      id: '34101',
+      url: '#',
+      name: 'Astronaut',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '34111',
+      url: '#',
+      name: 'Baker',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      status: 'subdued',
+    },
+    {
+      id: '34121',
+      url: '#',
+      name: 'Candlestick maker',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      status: 'success',
+    },
+    {
+      id: '34131',
+      url: '#',
+      name: 'Rice Cooker',
+      location: 'Los Angeles, USA',
+      orders: 40,
+      amountSpent: '$40',
+      status: 'critical',
+    },
+    {
+      id: '34141',
+      url: '#',
+      name: 'Volleyball Player',
+      location: 'Delaware, USA',
+      orders: 50,
+      amountSpent: '$80',
+      status: 'warning',
+    },
+  ];
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
@@ -1656,6 +1703,38 @@ export function WithRowStatus() {
     ),
   );
 
+  const rowMarkupNested = customersForNestedRows.map(
+    ({id, name, location, orders, amountSpent, status}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+        tone={status as IndexTableRowProps['tone']}
+        rowType={index > 0 ? 'child' : 'subheader'}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <code>{status}</code>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
   return (
     <LegacyCard>
       <IndexTable
@@ -1682,6 +1761,7 @@ export function WithRowStatus() {
         ]}
       >
         {rowMarkup}
+        {rowMarkupNested}
       </IndexTable>
     </LegacyCard>
   );
@@ -1754,71 +1834,6 @@ export function WithStickyLastColumn() {
     },
   ];
 
-  const customersForNestedRows = [
-    {
-      id: '34112',
-      url: '#',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$2,400',
-      channel: 'Point of Sale',
-      paymentStatus: 'Refunded',
-      fulfillmentStatus: 'Fulfilled',
-    },
-    {
-      id: '25612',
-      url: '#',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-      channel: 'Online Store',
-      paymentStatus: 'Paid',
-      fulfillmentStatus: 'Unfulfilled',
-    },
-    {
-      id: '25622',
-      url: '#',
-      name: 'Helen Troy',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$975',
-      lastOrderDate: 'May 31, 2023',
-      status: 'success',
-    },
-    {
-      id: '41022',
-      url: '#',
-      name: 'Colm Dillane',
-      location: 'New York, USA',
-      orders: 27,
-      amountSpent: '$2885',
-      lastOrderDate: 'May 31, 2023',
-      status: 'critical',
-    },
-    {
-      id: '25642',
-      url: '#',
-      name: 'Al Chemist',
-      location: 'New York, USA',
-      orders: 19,
-      amountSpent: '$1,209',
-      lastOrderDate: 'April 4, 2023',
-      disabled: true,
-      status: 'warning',
-    },
-    {
-      id: '25632',
-      url: '#',
-      name: 'Larry June',
-      location: 'San Francisco, USA',
-      orders: 22,
-      amountSpent: '$1,400',
-      lastOrderDate: 'March 19, 2023',
-      status: 'subdued',
-    },
-  ];
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
@@ -1872,53 +1887,6 @@ export function WithStickyLastColumn() {
     ),
   );
 
-  const nestedRowMarkup = customersForNestedRows.map(
-    (
-      {
-        id,
-        name,
-        location,
-        orders,
-        amountSpent,
-        status,
-        channel,
-        paymentStatus,
-        fulfillmentStatus,
-      },
-      index,
-    ) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        selected={selectedResources.includes(id)}
-        position={index}
-        tone={status as IndexTableRowProps['tone']}
-        rowType={index > 0 ? 'child' : 'subheader'}
-      >
-        <IndexTable.Cell>
-          <Text fontWeight="bold" as="span">
-            {name}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {orders}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>
-          <Text as="span" alignment="end" numeric>
-            {amountSpent}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>{status}</IndexTable.Cell>
-        <IndexTable.Cell>{channel}</IndexTable.Cell>
-        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
-        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
-      </IndexTable.Row>
-    ),
-  );
-
   return (
     <LegacyCard>
       <IndexTable
@@ -1948,7 +1916,6 @@ export function WithStickyLastColumn() {
         lastColumnSticky
       >
         {rowMarkup}
-        {nestedRowMarkup}
       </IndexTable>
     </LegacyCard>
   );
@@ -4808,7 +4775,7 @@ export function WithNestedRows() {
   );
 }
 
-export function WithNestedRowsLastColumnSticky() {
+export function WithNestedRowsStickyLastColumn() {
   const rows = [
     {
       id: '3411',
@@ -4984,6 +4951,10 @@ export function WithNestedRowsLastColumnSticky() {
               {color}
             </Text>
           </IndexTable.Cell>
+          <IndexTable.Cell />
+          <IndexTable.Cell />
+          <IndexTable.Cell />
+          <IndexTable.Cell />
           <IndexTable.Cell />
           <IndexTable.Cell />
         </IndexTable.Row>
@@ -5837,7 +5808,7 @@ export function WithNestedRowsWithThumbnailsOneCellSelectable() {
                 disabled={disabled}
               >
                 <IndexTable.Cell>
-                  <Box paddingInlineStart="150">
+                  <Box>
                     <InlineStack gap="400" blockAlign="center">
                       <Thumbnail
                         source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
