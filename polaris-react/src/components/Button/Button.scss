@@ -64,7 +64,7 @@
   }
 }
 
-.Button[aria-expanded='true']:not(.variantPlain, .variantMonochromePlain, .variantTertiary, .variantPrimary) {
+.Button[aria-expanded='true']:not(.variantPlain):not(.variantMonochromePlain):not(.variantTertiary):not(.variantPrimary) {
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
   --pc-button-shadow: var(--p-shadow-inset-200);
   background: var(--p-color-bg-fill-active);
