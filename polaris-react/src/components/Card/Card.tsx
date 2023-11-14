@@ -4,13 +4,14 @@ import type {
   BorderRadiusAliasOrScale,
   SpaceScale,
 } from '@shopify/polaris-tokens';
-import React from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
 import {ShadowBevel} from '../ShadowBevel';
 import {WithinContentContext} from '../../utilities/within-content-context';
+import {useEventListener} from '../../utilities/use-event-listener';
 
 type Spacing = ResponsiveProp<SpaceScale>;
 
@@ -39,12 +40,28 @@ export const Card = ({
 }: CardProps) => {
   const breakpoints = useBreakpoints();
   const defaultBorderRadius: BorderRadiusAliasOrScale = '300';
+  const cardNode = useRef<HTMLDivElement>(null);
 
-  let hasBorderRadius = !roundedAbove;
+  const defaultRoundedAbove =
+    roundedAbove && breakpoints[`${roundedAbove}Up`] ? true : !roundedAbove;
+  const [hasBorderRadius, setHasBorderRadius] =
+    useState<boolean>(defaultRoundedAbove);
 
-  if (roundedAbove && breakpoints[`${roundedAbove}Up`]) {
-    hasBorderRadius = true;
-  }
+  const handleResize = useCallback(() => {
+    if (breakpoints.smUp) return;
+
+    const cardWidth = cardNode.current?.offsetWidth;
+    const windowWidth = window.innerWidth;
+
+    if (cardWidth === undefined || cardWidth === null) return;
+
+    windowWidth - cardWidth < 1
+      ? setHasBorderRadius(false)
+      : setHasBorderRadius(defaultRoundedAbove);
+  }, [breakpoints.smUp, defaultRoundedAbove]);
+
+  useEffect(() => handleResize(), [handleResize]);
+  useEventListener('resize', handleResize);
 
   return (
     <WithinContentContext.Provider value>
@@ -59,6 +76,7 @@ export const Card = ({
           overflowX="hidden"
           overflowY="hidden"
           minHeight="100%"
+          ref={cardNode}
         >
           {children}
         </Box>
