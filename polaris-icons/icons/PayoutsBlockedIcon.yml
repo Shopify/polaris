@@ -1,11 +1,9 @@
 name: Payouts Blocked
-set: minor
 description: Used to represent blocked payouts.
 keywords:
-   - blocked payouts
-   - payouts blocked
-   - payouts
+  - blocked payouts
+  - payouts blocked
+  - payouts
 authors:
-  Leen Tan
-version: 1
+  - Leen Tan
 date_added: 2023-10-31
