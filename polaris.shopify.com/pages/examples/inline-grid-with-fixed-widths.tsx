@@ -37,7 +37,13 @@ const Placeholder = ({
             width: width ?? undefined,
           }}
         >
-          <Text as="h2" variant="bodyMd" fontWeight="medium" alignment="center">
+          <Text
+            as="h2"
+            variant="bodyMd"
+            fontWeight="medium"
+            alignment="center"
+            tone="text-inverse"
+          >
             {label}
           </Text>
         </div>
