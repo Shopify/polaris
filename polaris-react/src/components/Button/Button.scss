@@ -36,7 +36,8 @@
   transition: background-color 75ms var(--p-motion-ease-out),
     box-shadow 75ms var(--p-motion-ease-out);
 
-  &:active {
+  &:active,
+  &[aria-expanded='true'] {
     // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
     --pc-button-shadow: var(--p-shadow-inset-200);
     background: var(--p-color-bg-fill-active);
@@ -56,6 +57,11 @@
   &:hover {
     // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
     box-shadow: var(--pc-button-shadow-hover);
+  }
+
+  &[aria-expanded='true']:hover {
+    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- reset custom property for expaned button
+    box-shadow: var(--pc-button-shadow);
   }
 
   &.disabled {
