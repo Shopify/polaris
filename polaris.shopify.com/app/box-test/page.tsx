@@ -16,6 +16,7 @@ export default function Page() {
         ))}
         <Cube display="flex" flexDirection="row" gap="space-300" align="center">
           <Cube
+            borderStyle="dashed"
             display={{xs: 'block', md: 'flex'}}
             padding="space-400"
             paddingBlock="space-600"

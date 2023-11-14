@@ -1,7 +1,6 @@
 import style from './style.module.scss';
 import {forwardRef} from 'react';
 import invariant from 'tiny-invariant';
-import decamelize from 'decamelize';
 import {breakpointsAliases, tokenizedStyleProps} from '@shopify/polaris-tokens';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import type {Entries} from 'type-fest';
@@ -24,9 +23,16 @@ const allAliases = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat()),
 );
 
-const aliasFallbackEntries = Object.entries(stylePropAliasFallbacks) as Entries<
-  Required<typeof stylePropAliasFallbacks>
->;
+const inverseAliases = Object.entries(stylePropAliasFallbacks).reduce(
+  (acc, [prop, aliases]) => {
+    for (let alias of aliases) {
+      acc[alias] = acc[alias] ?? [];
+      acc[alias].push(prop);
+    }
+    return acc;
+  },
+  {},
+);
 
 function coerceToObjectSyntax<T extends string | number | undefined = string>(
   responsiveProp: ResponsiveProp<T>,
@@ -75,6 +81,44 @@ function mapObjectValues<T extends object>(
   return result;
 }
 
+function resolveAliasFallbacks(
+  styleProps: ResponsiveStyleProps,
+): ResponsiveStyleProps {
+  const stylePropsWithResolvedAliases: ResponsiveStyleProps = {...styleProps};
+
+  (
+    Object.entries(stylePropAliasFallbacks) as Entries<
+      Required<typeof stylePropAliasFallbacks>
+    >
+  ).forEach(([styleProp, aliases]) => {
+    for (let aliasStyleProp of aliases) {
+      // if a value is already set (either passed in, or from an earlier
+      // fallback), stop iterating
+      if (typeof stylePropsWithResolvedAliases[styleProp] !== 'undefined') {
+        break;
+      }
+
+      // Skip fallbacks that have no value set
+      if (typeof styleProps[aliasStyleProp] === 'undefined') {
+        continue;
+      }
+
+      // TODO: How might we remove the 'as any' here (used to fix the
+      // 'Expression produces a union type that is too complex to represent.'
+      // TS error)?
+      (stylePropsWithResolvedAliases[styleProp] as any) =
+        styleProps[aliasStyleProp];
+    }
+  });
+
+  // Delete the aliases as they're no longer needed.
+  for (let alias of allAliases) {
+    delete stylePropsWithResolvedAliases[alias];
+  }
+
+  return stylePropsWithResolvedAliases;
+}
+
 /*
  * NOTES:
  * - Works because we do mobile first with (min-width) queries
@@ -83,6 +127,7 @@ function mapObjectValues<T extends object>(
  * - No special cases needed for 'inherit' values (color et al) because the
  *   default of `xs = unset` applied directly to the property means the browser
  *   can decide if it's inherit or not.
+ * - Alias fallbacks are applied _before_ default values
  *
  * QUESTIONS:
  * - What about aliases / shorthands? How do they behave when there are
@@ -127,45 +172,46 @@ function mapObjectValues<T extends object>(
  * display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
  * ```
  */
-function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
-  const stylePropsWithExpandedAliases: ResponsiveStyleProps = {...styleProps};
-
+function convertStylePropsToCSSProperties(
+  styleProps: ResponsiveStyleProps,
+  defaults: ResponsiveStyleProps,
+) {
   // Ensure constituent styles are given fallback values even when they're not
   // passed in as an explicit style prop.
-  aliasFallbackEntries.forEach(([styleProp, aliases]) => {
-    for (
-      let index = 0;
-      // Stop looping if there are no more fallbacks
-      index < aliases.length &&
-      // or if a value is already set (either passed in, or from an earlier
-      // fallback)
-      typeof stylePropsWithExpandedAliases[styleProp] === 'undefined';
-      index++
-    ) {
-      // TODO: How might we remove the 'as any' here (used to fix the
-      // 'Expression produces a union type that is too complex to represent.'
-      // TS error)?
-      (stylePropsWithExpandedAliases[styleProp] as any) =
-        styleProps[aliases[index]];
-    }
-  });
+  let longhandStyleProps: ResponsiveStyleProps =
+    resolveAliasFallbacks(styleProps);
 
-  // Then delete the aliases as they're no longer needed.
-  for (let alias of allAliases) {
-    delete stylePropsWithExpandedAliases[alias];
-  }
+  // Mix in the default values. We can't do this before resolving aliases as it
+  // can interfere with the expected fallbacks being applied.
+  // For example, given a fallback:
+  // "paddingInlineStart": ['paddingInline', 'padding']
+  // And a default of { paddingInline: '400' },
+  // If the user passes in { padding: '600' }, we want the final value of
+  // `paddingInlineStart` to fallback to `padding`'s '600'. But if we mixin the
+  // defaults before resolving the fallbacks, `paddingInlineStart` would
+  // fallback to `paddingInline: '400'` which is NOT what we want.
+  longhandStyleProps = {
+    ...defaults,
+    ...longhandStyleProps,
+  };
 
+  // Defaults may have contained aliases, so we have to resolve those again.
+  longhandStyleProps = resolveAliasFallbacks(longhandStyleProps);
+
+  // Now that we have a complete object with all fallbacks and defaults applied,
+  // we can convert it to a style object
   return (
-    Object.entries(stylePropsWithExpandedAliases) as Entries<
-      typeof stylePropsWithExpandedAliases
-    >
+    Object.entries(longhandStyleProps) as Entries<typeof longhandStyleProps>
   ).reduce((acc, [key, stylePropValue]) => {
     // Always work with the object syntax to reduce conditionals below
     let responsiveValues = coerceToObjectSyntax(stylePropValue);
 
-    // Skip undefined or null values (can happen when explicit 'undefined' is
-    // passed in, or from expanding aliases above)
-    responsiveValues = filterObject(responsiveValues, (value) => value != null);
+    // Skip undefined values (can happen when explicit 'undefined' is passed in,
+    // or from resolving aliases above)
+    responsiveValues = filterObject(
+      responsiveValues,
+      (value) => typeof value !== 'undefined',
+    );
 
     // No concrete value at any breakpoints? Just ignore this style prop and
     // move on
@@ -195,8 +241,7 @@ function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
       );
     }
 
-    const cssProp = decamelize(key, {separator: '-'});
-
+    // Now we begin converting the style props into CSS style values
     // Special case: Only a single value set and it's for the 'xs' breakpoint.
     // Just set the CSS property directly as there's no need for
     // responsiveness.
@@ -206,11 +251,11 @@ function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
     ) {
       return {
         ...acc,
-        [cssProp]: responsiveValues['xs'],
+        [key]: responsiveValues['xs'],
       };
     }
 
-    // The final fallback value (mobile first) is handle d slighly diff.
+    // The final fallback value (mobile first) is handled slighly diff.
     // We use 'unset' here to have the browser decide if a value should be
     // inherited or not.
     const xsValue = responsiveValues.xs ?? 'unset';
@@ -228,7 +273,7 @@ function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
     const cssCustomProperties = Object.entries(responsiveValues).reduce(
       (memo, [breakpointAlias, value]) => ({
         ...memo,
-        [`--pc-box-${cssProp}-${breakpointAlias}`]: `var(--_p-media-${breakpointAlias}) ${value}`,
+        [`--pc-box-${key}-${breakpointAlias}`]: `var(--_p-media-${breakpointAlias}) ${value}`,
       }),
       {},
     );
@@ -244,7 +289,7 @@ function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
     // order.
     for (let breakpointAlias of breakpointsAliases) {
       if (typeof responsiveValues[breakpointAlias] !== 'undefined') {
-        cssVar = `var(--pc-box-${cssProp}-${breakpointAlias}, ${cssVar})`;
+        cssVar = `var(--pc-box-${key}-${breakpointAlias}, ${cssVar})`;
       }
     }
 
@@ -258,11 +303,22 @@ function convertStylePropsToCSSProperties(styleProps: ResponsiveStyleProps) {
 
 type PolymorphicCube = Polymorphic.ForwardRefComponent<any, CubeProps>;
 
+const stylePropDefaults: ResponsiveStyleProps = {
+  borderStyle: 'solid',
+  // TODO: We don't have a "zero" token, do we add `0` a valid value to all the
+  // kids at  afterschool care?
+  //borderWidth: 0,
+};
+
 export const Cube = forwardRef(function Cube(
   {as: Tag = 'div', children, ...styleProps},
   forwardedRef,
 ) {
-  const styles = convertStylePropsToCSSProperties(styleProps);
+  const styles = convertStylePropsToCSSProperties(
+    styleProps,
+    stylePropDefaults,
+  );
+
   return (
     <Tag ref={forwardedRef} style={styles} className={style.Box}>
       {children}
