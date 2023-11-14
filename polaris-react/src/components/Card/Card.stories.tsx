@@ -100,3 +100,22 @@ export function WithSubduedSection() {
     </Card>
   );
 }
+
+export function FullWindowWidth() {
+  return (
+    <BlockStack gap="400">
+      <Bleed marginInline="400">
+        <Card>Card with same width as window</Card>
+      </Bleed>
+      <Bleed marginInline="400">
+        <Card roundedAbove="sm">
+          Card with roundedAbove sm and same width as window
+        </Card>
+      </Bleed>
+      <Card>Card with smaller width than window</Card>
+      <Card roundedAbove="md">
+        Card with roundedAbove md and smaller width than window
+      </Card>
+    </BlockStack>
+  );
+}
