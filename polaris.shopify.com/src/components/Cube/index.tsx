@@ -294,9 +294,7 @@ type PolymorphicCube = Polymorphic.ForwardRefComponent<any, CubeProps>;
 
 const stylePropDefaults: ResponsiveStyleProps = {
   borderStyle: 'solid',
-  // TODO: We don't have a "zero" token, do we add `0` a valid value to all the
-  // kids at  afterschool care?
-  //borderWidth: 0,
+  borderWidth: 'border-width-0',
 };
 
 export const Cube = forwardRef(function Cube(
