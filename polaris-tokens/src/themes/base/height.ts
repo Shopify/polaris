@@ -2,7 +2,11 @@ import {size} from '../../size';
 import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 
 export const mappedHeightStyleProps = [
+  // Logical properties
   'blockSize',
+  'minBlockSize',
+  'maxBlockSize',
+  // Positional properties
   'height',
   'minHeight',
   'maxHeight',

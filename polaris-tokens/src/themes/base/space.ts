@@ -3,32 +3,34 @@ import {createVarName} from '../../utils';
 import type {MetaTokenProperties, ObjectFromKeys} from '../types';
 
 export const mappedSpaceStyleProps = [
-  'marginBlockStart',
-  'marginBlockEnd',
+  // Shorthands
+  'margin',
+  'padding',
+  'gap',
+  // Logical properties
+  'marginInline',
   'marginInlineStart',
   'marginInlineEnd',
-  'paddingBlockStart',
-  'paddingBlockEnd',
+  'marginBlock',
+  'marginBlockStart',
+  'marginBlockEnd',
+  'paddingInline',
   'paddingInlineStart',
   'paddingInlineEnd',
+  'paddingBlock',
+  'paddingBlockStart',
+  'paddingBlockEnd',
   'rowGap',
   'columnGap',
-  // aliases
+  // Positional properties
   'paddingLeft',
   'paddingRight',
   'paddingTop',
   'paddingBottom',
-  'paddingInline',
-  'paddingBlock',
-  'padding',
   'marginLeft',
   'marginRight',
   'marginTop',
   'marginBottom',
-  'marginBlock',
-  'marginInline',
-  'margin',
-  'gap',
 ] as const;
 
 export type MappedSpaceStyleProps = ObjectFromKeys<
