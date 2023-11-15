@@ -23,17 +23,6 @@ const allAliases = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat()),
 );
 
-const inverseAliases = Object.entries(stylePropAliasFallbacks).reduce(
-  (acc, [prop, aliases]) => {
-    for (let alias of aliases) {
-      acc[alias] = acc[alias] ?? [];
-      acc[alias].push(prop);
-    }
-    return acc;
-  },
-  {},
-);
-
 function coerceToObjectSyntax<T extends string | number | undefined = string>(
   responsiveProp: ResponsiveProp<T>,
 ): ResponsivePropObject<T> {
