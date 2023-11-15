@@ -12,13 +12,37 @@ export type BorderRadiusScale =
   | '500'
   | '750';
 
-const mappedBorderRadiusStyleProps = ['borderRadius'] as const;
+const mappedBorderRadiusStyleProps = [
+  'borderStartStartRadius',
+  'borderStartEndRadius',
+  'borderEndStartRadius',
+  'borderEndEndRadius',
+  // aliases
+  'borderTopLeftRadius',
+  'borderTopRightRadius',
+  'borderBottomLeftRadius',
+  'borderBottomRightRadius',
+  'borderRadius',
+] as const;
 type MappedBorderRadiusStypeProps = ObjectFromKeys<
   typeof mappedBorderRadiusStyleProps,
   `border-radius-${BorderRadiusAliasOrScale}`
 >;
 
-const mappedBorderWidthStyleProps = ['borderWidth'] as const;
+const mappedBorderWidthStyleProps = [
+  'borderBlockStartWidth',
+  'borderBlockEndWidth',
+  'borderInlineStartWidth',
+  'borderInlineEndWidth',
+  // aliases
+  'borderLeftWidth',
+  'borderRightWidth',
+  'borderTopWidth',
+  'borderBottomWidth',
+  'borderInlineWidth',
+  'borderBlockWidth',
+  'borderWidth',
+] as const;
 type MappedBorderWidthStyleProps = ObjectFromKeys<
   typeof mappedBorderWidthStyleProps,
   `border-width-${BorderWidthScale}`
