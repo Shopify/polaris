@@ -1,5 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
+import type {TextProps} from '@shopify/polaris';
 import {
   Button,
   ButtonGroup,
@@ -13,10 +14,9 @@ import {
 } from '@shopify/polaris';
 import {
   PlusIcon,
-  DeleteIcon,
   XSmallIcon,
-  EditIcon,
   ChevronDownIcon,
+  EditIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -24,262 +24,182 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 export function All() {
+  const textProps: Pick<TextProps, 'as' | 'fontWeight'> = {
+    as: 'span',
+    fontWeight: 'bold',
+  };
   return (
-    <div>
-      <BlockStack gap="800">
-        <BlockStack gap="400">
-          <Text as="h2">default</Text>
-          <Box padding="400">
-            <InlineStack gap="500" blockAlign="end">
-              <Button>Label</Button>
-              <Button disabled>Label</Button>
-              <Button icon={PlusIcon}>Label</Button>
-              <Button disabled icon={PlusIcon}>
-                Label
-              </Button>
-              <Button disclosure>Label</Button>
-              <Button
-                icon={XSmallIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                icon={EditIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                disabled
-                icon={PlusIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                icon={DeleteIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-            </InlineStack>
-          </Box>
-          <Card>
-            <InlineStack gap="500" blockAlign="end">
-              <Button>Label</Button>
-              <Button disabled>Label</Button>
-              <Button icon={PlusIcon}>Label</Button>
-              <Button disabled icon={PlusIcon}>
-                Label
-              </Button>
-              <Button disclosure>Label</Button>
-              <Button
-                icon={XSmallIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                disabled
-                icon={EditIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-            </InlineStack>
-          </Card>
-        </BlockStack>
-        <BlockStack gap="400">
-          <Text as="h2">destructive</Text>
-          <Box padding="400">
-            <InlineStack gap="500" blockAlign="end">
-              <Button tone="critical">Label</Button>
-              <Button tone="critical" disabled>
-                Label
-              </Button>
-              <Button tone="critical" icon={PlusIcon}>
-                Label
-              </Button>
-              <Button tone="critical" disabled icon={PlusIcon}>
-                Label
-              </Button>
-              <Button tone="critical" disclosure>
-                Label
-              </Button>
-              <Button
-                tone="critical"
-                icon={XSmallIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                tone="critical"
-                icon={EditIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                tone="critical"
-                disabled
-                icon={PlusIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                tone="critical"
-                icon={DeleteIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-            </InlineStack>
-          </Box>
-          <Card>
-            <InlineStack gap="500" blockAlign="end">
-              <Button tone="critical">Label</Button>
-              <Button tone="critical" disabled>
-                Label
-              </Button>
-              <Button tone="critical" icon={PlusIcon}>
-                Label
-              </Button>
-              <Button tone="critical" disabled icon={PlusIcon}>
-                Label
-              </Button>
-              <Button tone="critical" disclosure>
-                Label
-              </Button>
-              <Button
-                tone="critical"
-                icon={XSmallIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-              <Button
-                tone="critical"
-                disabled
-                icon={EditIcon}
-                onClick={() => {}}
-                accessibilityLabel="Dismiss"
-              />
-            </InlineStack>
-          </Card>
-        </BlockStack>
-        <BlockStack gap="200">
-          <Text as="h2">primary</Text>
-          <Primary />
-        </BlockStack>
-
-        <BlockStack gap="200">
-          <Text as="h2">primary destructive</Text>
-          <InlineStack gap="500" blockAlign="end">
-            <Button variant="primary" tone="critical">
-              Label
-            </Button>
-            <Button variant="primary" tone="critical" disabled>
-              Label
-            </Button>
-            <Button variant="primary" tone="critical" icon={DeleteIcon}>
-              Label
-            </Button>
-            <Button
-              variant="primary"
-              tone="critical"
-              disabled
-              icon={DeleteIcon}
-            >
-              Label
-            </Button>
-            <Button variant="primary" tone="critical" disclosure>
-              Label
-            </Button>
-            <Button
-              variant="primary"
-              tone="critical"
-              icon={XSmallIcon}
-              onClick={() => {}}
-              accessibilityLabel="Dismiss"
-            />
-          </InlineStack>
-        </BlockStack>
-
-        <BlockStack gap="200">
-          <Text as="h2">primary sucess</Text>
-          <InlineStack gap="500" blockAlign="end">
-            <Button variant="primary" tone="success">
-              Label
-            </Button>
-            <Button variant="primary" tone="success" disabled>
-              Label
-            </Button>
-            <Button variant="primary" tone="success" icon={DeleteIcon}>
-              Label
-            </Button>
-            <Button variant="primary" tone="success" disabled icon={DeleteIcon}>
-              Label
-            </Button>
-            <Button variant="primary" tone="success" disclosure>
-              Label
-            </Button>
-            <Button
-              variant="primary"
-              tone="success"
-              icon={XSmallIcon}
-              onClick={() => {}}
-              accessibilityLabel="Dismiss"
-            />
-          </InlineStack>
-        </BlockStack>
-
-        <BlockStack gap="200">
-          <Text as="h2">plain</Text>
-          <Plain />
-        </BlockStack>
-
-        <BlockStack gap="200">
-          <Text as="h2">plain destructive</Text>
-          <PlainDestructive />
-        </BlockStack>
-
-        <BlockStack gap="200">
-          <Text as="h2">tertiary</Text>
-          <Tertiary />
-        </BlockStack>
-
-        <BlockStack gap="200">
-          <Text as="h2">tertiary destructive</Text>
-          <InlineStack gap="500" blockAlign="end">
-            <Button variant="tertiary" tone="critical">
-              Label
-            </Button>
-            <Button variant="tertiary" tone="critical" disabled>
-              Label
-            </Button>
-            <Button variant="tertiary" tone="critical" icon={PlusIcon}>
-              Label
-            </Button>
-            <Button variant="tertiary" tone="critical" disabled icon={PlusIcon}>
-              Label
-            </Button>
-            <Button variant="tertiary" tone="critical" disclosure>
-              Label
-            </Button>
-            <Button
-              variant="tertiary"
-              tone="critical"
-              icon={XSmallIcon}
-              onClick={() => {}}
-              accessibilityLabel="Dismiss"
-            />
-          </InlineStack>
-        </BlockStack>
-      </BlockStack>
-    </div>
+    <BlockStack gap="400">
+      <Text {...textProps}>Default</Text>
+      <Default />
+      <Text {...textProps}>Critical</Text>
+      <Critical />
+      <Text {...textProps}>Primary</Text>
+      <Primary />
+      <Text {...textProps}>Primary success</Text>
+      <PrimarySuccess />
+      <Text {...textProps}>Primary critical</Text>
+      <PrimaryCritical />
+      <Text {...textProps}>Tertiary</Text>
+      <Tertiary />
+      <Text {...textProps}>Tertiary critical</Text>
+      <TertiaryCritical />
+      <Text {...textProps}>Plain</Text>
+      <Plain />
+      <Text {...textProps}>Plain Critical</Text>
+      <PlainCritical />
+      <Text {...textProps}>Monochrome Plain</Text>
+      <MonochromePlain />
+      <Text {...textProps}>Micro</Text>
+      <Micro />
+      <Text {...textProps}>Slim</Text>
+      <Slim />
+      <Text {...textProps}>Large</Text>
+      <Large />
+      <Text {...textProps}>Full width</Text>
+      <FullWidth />
+      <Text {...textProps}>Text aligned</Text>
+      <TextAligned />
+      <Text {...textProps}>Pressed</Text>
+      <Pressed />
+      <Text {...textProps}>Disclosure</Text>
+      <PlainDisclosure />
+      <Text {...textProps}>Right aligned disclosure</Text>
+      <RightAlignedDisclosure />
+      <Text {...textProps}>Select disclosure</Text>
+      <SelectDisclosure />
+      <Text {...textProps}>Split</Text>
+      <Split />
+      <Text {...textProps}>Disabled state</Text>
+      <DisabledState />
+      <Text {...textProps}>Loading state</Text>
+      <LoadingState />
+    </BlockStack>
   );
 }
 
 export function Default() {
-  return <Button>Add product</Button>;
+  return (
+    <>
+      <Box padding="400">
+        <InlineStack gap="400" blockAlign="end">
+          <Button>Label</Button>
+          <Button disabled>Label</Button>
+          <Button icon={PlusIcon}>Label</Button>
+          <Button disabled icon={PlusIcon}>
+            Label
+          </Button>
+          <Button disclosure>Label</Button>
+          <Button
+            icon={XSmallIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            icon={EditIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </InlineStack>
+      </Box>
+      <Card>
+        <InlineStack gap="400" blockAlign="end">
+          <Button>Label</Button>
+          <Button disabled>Label</Button>
+          <Button icon={PlusIcon}>Label</Button>
+          <Button disabled icon={PlusIcon}>
+            Label
+          </Button>
+          <Button disclosure>Label</Button>
+          <Button
+            icon={XSmallIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            icon={EditIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </InlineStack>
+      </Card>
+    </>
+  );
+}
+
+export function Critical() {
+  return (
+    <>
+      <Box padding="400">
+        <InlineStack gap="400" blockAlign="end">
+          <Button tone="critical">Label</Button>
+          <Button tone="critical" disabled>
+            Label
+          </Button>
+          <Button tone="critical" icon={PlusIcon}>
+            Label
+          </Button>
+          <Button tone="critical" disabled icon={PlusIcon}>
+            Label
+          </Button>
+          <Button tone="critical" disclosure>
+            Label
+          </Button>
+          <Button
+            tone="critical"
+            icon={XSmallIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            tone="critical"
+            icon={EditIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </InlineStack>
+      </Box>
+      <Card>
+        <InlineStack gap="400" blockAlign="end">
+          <Button tone="critical">Label</Button>
+          <Button tone="critical" disabled>
+            Label
+          </Button>
+          <Button tone="critical" icon={PlusIcon}>
+            Label
+          </Button>
+          <Button tone="critical" disabled icon={PlusIcon}>
+            Label
+          </Button>
+          <Button tone="critical" disclosure>
+            Label
+          </Button>
+          <Button
+            tone="critical"
+            icon={XSmallIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            tone="critical"
+            disabled
+            icon={EditIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </InlineStack>
+      </Card>
+    </>
+  );
 }
 
 export function Plain() {
   return (
     <Box padding="400">
-      <InlineStack gap="500" blockAlign="end">
+      <InlineStack gap="400" blockAlign="end">
         <Button variant="plain">Label</Button>
         <Button variant="plain" disabled>
           Label
@@ -317,7 +237,7 @@ export function Plain() {
 export function MonochromePlain() {
   return (
     <Box padding="400">
-      <InlineStack gap="500" blockAlign="center">
+      <InlineStack gap="400" blockAlign="center">
         <Button variant="monochromePlain">Default</Button>
         <Button variant="monochromePlain" icon={PlusIcon}>
           With icon
@@ -342,7 +262,7 @@ export function Tertiary() {
   return (
     <BlockStack gap="400">
       <Box padding="400">
-        <InlineStack gap="500" blockAlign="end">
+        <InlineStack gap="400" blockAlign="end">
           <Button variant="tertiary">Label</Button>
           <Button variant="tertiary" disabled>
             Label
@@ -356,10 +276,23 @@ export function Tertiary() {
           <Button variant="tertiary" disclosure>
             Label
           </Button>
+          <Button
+            variant="tertiary"
+            icon={XSmallIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            variant="tertiary"
+            icon={EditIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
         </InlineStack>
       </Box>
       <Card>
-        <InlineStack gap="500" blockAlign="end">
+        <InlineStack gap="400" blockAlign="end">
           <Button variant="tertiary">Label</Button>
           <Button variant="tertiary" disabled>
             Label
@@ -373,10 +306,6 @@ export function Tertiary() {
           <Button variant="tertiary" disclosure>
             Label
           </Button>
-        </InlineStack>
-      </Card>
-      <Card>
-        <InlineStack gap="500" blockAlign="end">
           <Button
             variant="tertiary"
             icon={XSmallIcon}
@@ -396,9 +325,84 @@ export function Tertiary() {
   );
 }
 
-export function PlainDestructive() {
+export function TertiaryCritical() {
   return (
-    <InlineStack gap="500" blockAlign="end">
+    <BlockStack gap="400">
+      <Box padding="400">
+        <InlineStack gap="400" blockAlign="end">
+          <Button variant="tertiary" tone="critical">
+            Label
+          </Button>
+          <Button variant="tertiary" tone="critical" disabled>
+            Label
+          </Button>
+          <Button variant="tertiary" tone="critical" icon={PlusIcon}>
+            Label
+          </Button>
+          <Button variant="tertiary" tone="critical" disabled icon={PlusIcon}>
+            Label
+          </Button>
+          <Button variant="tertiary" tone="critical" disclosure>
+            Label
+          </Button>
+          <Button
+            variant="tertiary"
+            tone="critical"
+            icon={XSmallIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            variant="tertiary"
+            tone="critical"
+            icon={EditIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </InlineStack>
+      </Box>
+      <Card>
+        <InlineStack gap="400" blockAlign="end">
+          <Button variant="tertiary" tone="critical">
+            Label
+          </Button>
+          <Button variant="tertiary" tone="critical" disabled>
+            Label
+          </Button>
+          <Button variant="tertiary" tone="critical" icon={PlusIcon}>
+            Label
+          </Button>
+          <Button variant="tertiary" tone="critical" disabled icon={PlusIcon}>
+            Label
+          </Button>
+          <Button variant="tertiary" tone="critical" disclosure>
+            Label
+          </Button>
+          <Button
+            variant="tertiary"
+            tone="critical"
+            icon={XSmallIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            variant="tertiary"
+            tone="critical"
+            icon={EditIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </InlineStack>
+      </Card>
+    </BlockStack>
+  );
+}
+
+export function PlainCritical() {
+  return (
+    <InlineStack gap="400" blockAlign="end">
       <Button variant="plain" tone="critical">
         Label
       </Button>
@@ -440,7 +444,7 @@ export function Primary() {
   return (
     <BlockStack gap="400">
       <Box padding="400">
-        <InlineStack gap="500" blockAlign="end">
+        <InlineStack gap="400" blockAlign="end">
           <Button variant="primary">Label</Button>
           <Button variant="primary" disabled>
             Label
@@ -470,7 +474,7 @@ export function Primary() {
         </InlineStack>
       </Box>
       <Card>
-        <InlineStack gap="500" blockAlign="end">
+        <InlineStack gap="400" blockAlign="end">
           <Button variant="primary">Label</Button>
           <Button variant="primary" disabled>
             Label
@@ -503,13 +507,87 @@ export function Primary() {
   );
 }
 
-export function Destructive() {
-  return <Button tone="critical">Delete theme</Button>;
+export function PrimarySuccess() {
+  return (
+    <Box padding="400">
+      <InlineStack gap="400" blockAlign="end">
+        <Button variant="primary" tone="success">
+          Label
+        </Button>
+        <Button variant="primary" tone="success" disabled>
+          Label
+        </Button>
+        <Button variant="primary" tone="success" icon={PlusIcon}>
+          Label
+        </Button>
+        <Button variant="primary" tone="success" disabled icon={PlusIcon}>
+          Label
+        </Button>
+        <Button variant="primary" tone="success" disclosure>
+          Label
+        </Button>
+        <Button
+          variant="primary"
+          tone="success"
+          icon={XSmallIcon}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+        <Button
+          disabled
+          variant="primary"
+          tone="success"
+          icon={EditIcon}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+      </InlineStack>
+    </Box>
+  );
+}
+
+export function PrimaryCritical() {
+  return (
+    <Box padding="400">
+      <InlineStack gap="400" blockAlign="end">
+        <Button variant="primary" tone="critical">
+          Label
+        </Button>
+        <Button variant="primary" tone="critical" disabled>
+          Label
+        </Button>
+        <Button variant="primary" tone="critical" icon={PlusIcon}>
+          Label
+        </Button>
+        <Button variant="primary" tone="critical" disabled icon={PlusIcon}>
+          Label
+        </Button>
+        <Button variant="primary" tone="critical" disclosure>
+          Label
+        </Button>
+        <Button
+          variant="primary"
+          tone="critical"
+          icon={XSmallIcon}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+        <Button
+          disabled
+          variant="primary"
+          tone="critical"
+          icon={EditIcon}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+      </InlineStack>
+    </Box>
+  );
 }
 
 export function Micro() {
   return (
-    <InlineStack gap="500">
+    <InlineStack gap="400">
       <Button size="micro">Label</Button>
       <Button variant="primary" size="micro">
         Label
@@ -527,7 +605,7 @@ export function Micro() {
 
 export function Slim() {
   return (
-    <InlineStack gap="500">
+    <InlineStack gap="400">
       <Button size="slim">Label</Button>
       <Button variant="primary" size="slim">
         Label
@@ -545,20 +623,19 @@ export function Slim() {
 
 export function Large() {
   return (
-    <BlockStack gap="400">
-      <InlineStack gap="500" blockAlign="end">
-        <Button size="large">Create store</Button>
-        <Button size="large" accessibilityLabel="Edit" icon={EditIcon} />
-        <Button size="large" icon={PlusIcon} variant="primary">
-          Create store
-        </Button>
-      </InlineStack>
-      <InlineStack gap="500" blockAlign="end">
-        <Button size="large" fullWidth>
-          Create store
-        </Button>
-      </InlineStack>
-    </BlockStack>
+    <InlineStack gap="400">
+      <Button size="large">Label</Button>
+      <Button size="large" variant="primary">
+        Label
+      </Button>
+      <Button size="large" tone="critical">
+        Label
+      </Button>
+      <Button size="large" variant="plain">
+        Label
+      </Button>
+      <Button size="large" accessibilityLabel="Edit" icon={EditIcon} />
+    </InlineStack>
   );
 }
 
@@ -568,11 +645,11 @@ export function FullWidth() {
 
 export function TextAligned() {
   return (
-    <Button variant="plain" textAlign="left">
-      This is a really long string of text that overflows onto the next line we
-      need to put in a lot of words now you can see the alignment. It is very
-      long but a customer could potentially name something this long.
-    </Button>
+    <Box maxWidth="200px">
+      <Button variant="plain" textAlign="right">
+        This is a really long string of text that overflows onto the next line.
+      </Button>
+    </Box>
   );
 }
 
@@ -636,7 +713,7 @@ export function RightAlignedDisclosure() {
 
 export function SelectDisclosure() {
   return (
-    <div style={{height: '100px'}}>
+    <div>
       <Button disclosure="select" onClick={() => console.log('Open Popover')}>
         Select options
       </Button>
@@ -651,8 +728,8 @@ export function Split() {
     setActive((activeId) => (activeId !== id ? id : null));
   };
   return (
-    <div style={{height: '100px'}}>
-      <InlineStack gap="500">
+    <div>
+      <InlineStack gap="400">
         <ButtonGroup variant="segmented">
           <Button variant="primary">Save</Button>
 
@@ -735,7 +812,7 @@ export function DisabledState() {
 
 export function LoadingState() {
   return (
-    <InlineStack gap="500">
+    <InlineStack gap="400">
       <Button loading>Save product</Button>
       <Button variant="primary" loading>
         Save product

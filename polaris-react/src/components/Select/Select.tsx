@@ -20,6 +20,8 @@ interface StrictOption {
   disabled?: boolean;
   /** Element to display to the left of the option label. Does not show in the dropdown. */
   prefix?: React.ReactNode;
+  /** Unique key applied to the option element. Defaults to option value prop when undefined. */
+  key?: string;
 }
 
 interface HideableStrictOption extends StrictOption {
@@ -272,9 +274,9 @@ function flattenOptions(
 }
 
 function renderSingleOption(option: HideableStrictOption): React.ReactNode {
-  const {value, label, prefix: _prefix, ...rest} = option;
+  const {value, label, prefix: _prefix, key, ...rest} = option;
   return (
-    <option key={value} value={value} {...rest}>
+    <option key={key ?? value} value={value} {...rest}>
       {label}
     </option>
   );

@@ -141,6 +141,69 @@ export function WithBorderRadius() {
   );
 }
 
+export function WithPadding() {
+  return (
+    <BlockStack gap="400">
+      <Box
+        background="bg-surface"
+        padding="100"
+        borderWidth="050"
+        borderColor="border-info"
+      >
+        <Icon source={PaintBrushMajor} tone="base" />
+      </Box>
+      <Box
+        background="bg-surface"
+        paddingBlock="400"
+        borderWidth="050"
+        borderColor="border-info"
+      >
+        <Icon source={PaintBrushMajor} tone="base" />
+      </Box>
+      <Box
+        background="bg-surface"
+        paddingBlockStart="400"
+        borderWidth="050"
+        borderColor="border-info"
+      >
+        <Icon source={PaintBrushMajor} tone="base" />
+      </Box>
+      <Box
+        background="bg-surface"
+        paddingBlockEnd="400"
+        borderWidth="050"
+        borderColor="border-info"
+      >
+        <Icon source={PaintBrushMajor} tone="base" />
+      </Box>
+      <Box
+        background="bg-surface"
+        paddingInline="400"
+        borderWidth="050"
+        borderColor="border-info"
+      >
+        <Icon source={PaintBrushMajor} tone="base" />
+      </Box>
+      <Box
+        background="bg-surface"
+        paddingInlineStart="400"
+        borderWidth="050"
+        borderColor="border-info"
+      >
+        <Icon source={PaintBrushMajor} tone="base" />
+      </Box>
+      <Box
+        background="bg-surface"
+        paddingInlineEnd="400"
+        borderWidth="050"
+        borderColor="border-info"
+      >
+        <Icon source={PaintBrushMajor} tone="base" />
+      </Box>
+    </BlockStack>
+  );
+}
+
 export function WithResponsivePadding() {
   return (
     <BlockStack gap="400">
