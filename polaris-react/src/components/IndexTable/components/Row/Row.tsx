@@ -12,7 +12,7 @@ import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import type {Range} from '../../../../utilities/index-provider/types';
 import styles from '../../IndexTable.scss';
 
-type RowType = 'data' | 'subheader';
+type RowType = 'data' | 'subheader' | 'child';
 type RowStatus = 'subdued' | 'success' | 'warning' | 'critical';
 type TableRowElementType = HTMLTableRowElement & HTMLLIElement;
 
@@ -32,7 +32,7 @@ export interface RowProps {
   /** A tuple array with the first and last index of the range of other rows that this row describes. All rows in the range are selected when the selection range row is selected. */
   selectionRange?: Range;
   /**
-   * Indicates the relationship or role of the row's contents. A "subheader" row displays the same as the table header.
+   * Indicates the relationship or role of the row's contents. A "subheader" row displays the same as the table header. Rows of type "child" are indented.
    *  @default 'data' */
   rowType?: RowType;
   /** Label set on the row's checkbox
@@ -113,6 +113,7 @@ export const Row = memo(function Row({
   const rowClassName = classNames(
     styles.TableRow,
     rowType === 'subheader' && styles['TableRow-subheader'],
+    rowType === 'child' && styles['TableRow-child'],
     selectable && condensed && styles.condensedRow,
     selected && styles['TableRow-selected'],
     hovered && !condensed && styles['TableRow-hovered'],
