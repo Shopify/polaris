@@ -12,9 +12,7 @@ Removed Major and Minor icon sizing. All icons are the same size.
 
 Updated icon design for `JobsIcon`, `JobsFilledIcon`, `AutomationIcon`, `AutomationFilledIcon`, `GiftCardIcon`, `InventoryFilledIcon`, `ReportsIcon`, `ShipmentFilledIcon`, `AppsFilledIcon`, `MarketsIcon`, `MarketsFilledIcon`, `BillingStatementDollarFilledIcon`, `BillingStatementEuroFilledIcon`, `BillingStatementPoundFilledIcon`, `BillingStatementRupeeFilledIcon`, `BillingStatementYenFilledIcon`, `LegalFilledIcon`, `IdentityCardIcon`, `IdentityCardFilledIcon`, `DomainsIcon`, `DomainNewIcon`, `DomainsFilledIcon`, `StoreIcon`, `StoreOnlineIcon`, `ManagedStoreIcon`, `ImportStoreIcon`, `TaxIcon`, `TaxFilledIcon`, `PackageFilledIcon`, `LocationIcon`, `LocationFilledIcon`, `InactiveLocationIcon`, `PinIcon`, `GlobeIcon`, `TransportIcon`, `NatureIcon`, `FoodIcon`, `ColorsIcon`
 
-Added icons `ShippingLabelIcon`, `ShippingLabelFilledIcon`, `BillIcon`, `BillFilledIcon`, `ActivityLogIcon`, `ActivityLogFilledIcon`, `InstagramIcon`, `TipsIcon`
-
-Removed icons `ReportFilledMinor`, `ReportMinor`, `ListMajor`, `ListFilledMajor`
+Added icons `BillIcon`, `BillFilledIcon`
 
 Removed `version` and `set` from icon `.yml` files
 
@@ -814,6 +812,7 @@ Renamed many icons and replaced `Major` and `Minor` suffixes with `Icon`. See ta
 | `ReportMinor`                       | `SearchResourceIcon`            |
 | `ReportsMajor`                      | `SearchResourceIcon`            |
 | `ReportsMinor`                      | `SearchResourceIcon`            |
+| `ReportFilledMinor`                 | `SearchResourceIcon`            |
 | `ResetMajor`                        | `ResetIcon`                     |
 | `ResetMinor`                        | `ResetIcon`                     |
 | `ResourcesMajor`                    | `EyeglassesIcon`                |

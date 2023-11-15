@@ -789,6 +789,7 @@ export const iconRenames = {
   ReportMinor: 'SearchResourceIcon',
   ReportsMajor: 'SearchResourceIcon',
   ReportsMinor: 'SearchResourceIcon',
+  ReportFilledMinor: 'SearchResourceIcon',
   ResetMajor: 'ResetIcon',
   ResetMinor: 'ResetIcon',
   ResourcesMajor: 'EyeglassesIcon',
