@@ -363,59 +363,39 @@ async function writeTSProperties(tsFile, properties) {
   };
 
   await tsFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
-import * as CSS from 'csstype';
-// NOTE: Includes aliases as well as CSS Properties
-import type {TokenizedStyleProps as TokenizedStylePropsAndAliases} from '@shopify/polaris-tokens';
+import type {Properties as CSSStyleProps} from 'csstype';
+import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
+import type {OverrideProperties}  from 'type-fest';
 import type {ResponsiveProp} from '../../utils/various';
 
 /**
- * A subset of Raw CSS properties supported in Polaris
+ * Pick only the keys in \`PickFrom\` which are also in \`IntersectWith\`.
  */
-type NonTokenizedStyleProps = Pick<CSS.Properties, SupportedRawCSSStyleProps>;
-
-/**
- * Props which act as an alias to one or more more non-tokenized style props.
- *
- * For example; 'justify' is an alias to 'justify-items' when that individual
- * prop isn't set.
- */
-type NonTokenizedStylePropAliases = {
-  ${Object.entries(inverseAliases)
-    .filter(([key]) => !tokenizedStyleProps.includes(key))
-    .map(
-      ([alias, styleProps]) => `
-  /* Alias for ${joinEnglish(
-    styleProps.map((prop) => `\`${prop}\``),
-  )} unless already set. */
-  ${alias}?: ${styleProps
-        .map((prop) => `NonTokenizedStyleProps['${prop}']`)
-        .join(' & ')};`,
-    )
-    .join('')}
-};
-
-/**
- * Style props who only accept tokenized values.
- *
- * For example; 'padding-inline-start' can only accept the 'space-*' tokens.
- */
-type TokenizedStyleProps = Omit<TokenizedStylePropsAndAliases, typeof stylePropAliasNames[number]>;
-
-/**
- * Props which act as an alias to one or more more tokenized style props.
- *
- * For example; 'padding' is an alias to 'padding-inline-start',
- * 'padding-inline-end', etc, when those individual props aren't set.
- */
-type TokenizedStylePropAliases = Pick<
-  TokenizedStylePropsAndAliases,
-  typeof stylePropAliasNames[number] & keyof TokenizedStylePropsAndAliases
+type PickIntersection<PickFrom, IntersectWith> = Pick<
+  PickFrom,
+  keyof IntersectWith & keyof PickFrom
 >;
 
-type StyleProps = NonTokenizedStyleProps &
-  NonTokenizedStylePropAliases &
-  TokenizedStyleProps &
-  TokenizedStylePropAliases;
+/**
+ * The subset of all CSS that we support in Polaris (does not include aliases).
+ */
+type SupportedCSSStyleProps = Pick<CSSStyleProps, SupportedRawCSSStyleProps>;
+
+/**
+ * Some of our supported CSS properties must have a value from
+ * \`@shopify/polaris-tokens\`, so we override those properties here
+ *
+ * @example
+ * \`padding-inline-start\` can only accept the \`space-*\` tokens.
+ */
+type SupportedStyleProps = OverrideProperties<
+  SupportedCSSStyleProps,
+  // \`@shopify/polaris-tokens\` may type more CSS properties than we want to
+  // support here, so ensure we're only picking the ones we explicityly support
+  PickIntersection<TokenizedStyleProps, SupportedCSSStyleProps>
+>;
+
+type StyleProps = SupportedStyleProps & StylePropAliases;
 
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
@@ -430,16 +410,81 @@ export type ResponsiveStyleProps = {
 };
 
 /**
+* Polaris specifies some aliases which are used as fallback values when an
+* explicit style prop isn't set. Aliases may themselves fallback to other
+* aliases. Some aliases may be tokenized values or CSS values, but never both.
+*
+ * @example
+ * \`justify\` is an alias to \`justifyItems\` when \`justifyItems\` isn't set.
+*
+* <Box justify="center" />
+* =>
+* style={{ justifyItems: 'center' }}
+*
+* <Box justifyItems="left" justify="center" />
+* =>
+* style={{ justifyItems: 'left' }}
+*
+* @example
+* \`paddingInline\` is an alias to \`paddingInlineStart\` and
+* \`paddingInlineEnd\` when they aren't set.
+*
+* <Box paddingInline="space-400" />
+* =>
+* style={{
+*   paddingInlineStart: '400',
+*   paddingInlineEnd: '400',
+* }}
+*
+* <Box paddingInline="space-400" paddingInlineEnd="space-600" />
+* =>
+* style={{
+*   paddingInlineStart: '400',
+*   paddingInlineEnd: '600',
+* }}
+*
+* @example
+* \`padding\` is an alias to \`paddingInline\` and \`paddingBlock\` which themselves
+* are aliases to \`paddingInlineStart\`, \`paddingInlineEnd\` and
+* \`paddingBlockStart\`, \`paddingBlockEnd\` respectively.
+*
+* <Box padding="space-400" />
+* => style={{
+*   paddingInlineStart: '400',
+*   paddingInlineEnd: '400',
+*   paddingBlockStart: '400',
+*   paddingBlockEnd: '400',
+* }}
+*
+* <Box paddingBlock="space-800" padding="space-400" paddingInlineEnd="space-600" />
+* => style={{
+*   paddingInlineStart: '400',
+*   paddingInlineEnd: '600',
+*   paddingBlockStart: '800',
+*   paddingBlockEnd: '800',
+* }}
+*/
+type StylePropAliases = {${Object.entries(inverseAliases)
+    .map(
+      ([alias, styleProps]) => `
+  /* Alias for ${joinEnglish(
+    styleProps.map((prop) => `\`${prop}\``),
+  )} unless already set. */
+  ${alias}?: ${styleProps
+        .map((prop) => `${`SupportedStyleProps`}['${prop}']`)
+        .join(' & ')};`,
+    )
+    .join('')}
+};
+
+/**
  * CSS properties for which we pass the user supplied value through. Does not
- * include any properties which are tokenized, or any alias properties.
+ * include any alias properties.
  */
 type SupportedRawCSSStyleProps = ${generateTSPickList(
     Object.keys(properties)
       .map((key) => camelcase(key))
-      .filter(
-        (key) =>
-          !tokenizedStyleProps.includes(key) && !allAliases.includes(key),
-      ),
+      .filter((key) => !allAliases.includes(key)),
     2,
   )};
 
@@ -490,7 +535,7 @@ async function getProperties() {
     specShortName.replace(/-\d$/, '');
 
   // Note, we don't list the "Delta" specs here (those ending in `-<number>`),
-  // but they will be included if found.
+  // but they will be excluded if found.
   const disallowedSpecifications = [
     'SVG',
     'compat',

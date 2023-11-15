@@ -13,16 +13,18 @@ export type BorderRadiusScale =
   | '750';
 
 const mappedBorderRadiusStyleProps = [
+  // Shorthand
+  'borderRadius',
+  // Logical properties
   'borderStartStartRadius',
   'borderStartEndRadius',
   'borderEndStartRadius',
   'borderEndEndRadius',
-  // aliases
+  // Positional properties
   'borderTopLeftRadius',
   'borderTopRightRadius',
   'borderBottomLeftRadius',
   'borderBottomRightRadius',
-  'borderRadius',
 ] as const;
 type MappedBorderRadiusStypeProps = ObjectFromKeys<
   typeof mappedBorderRadiusStyleProps,
@@ -30,18 +32,20 @@ type MappedBorderRadiusStypeProps = ObjectFromKeys<
 >;
 
 const mappedBorderWidthStyleProps = [
+  // Shorthand
+  'borderWidth',
+  // Logical properties
   'borderBlockStartWidth',
   'borderBlockEndWidth',
   'borderInlineStartWidth',
   'borderInlineEndWidth',
-  // aliases
+  'borderInlineWidth',
+  'borderBlockWidth',
+  // Positional properties
   'borderLeftWidth',
   'borderRightWidth',
   'borderTopWidth',
   'borderBottomWidth',
-  'borderInlineWidth',
-  'borderBlockWidth',
-  'borderWidth',
 ] as const;
 type MappedBorderWidthStyleProps = ObjectFromKeys<
   typeof mappedBorderWidthStyleProps,
