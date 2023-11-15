@@ -549,6 +549,8 @@ export const iconRenames = {
   LinkMinor: 'LinkIcon',
   ListMajor: 'ListBulletedIcon',
   ListMinor: 'ListBulletedIcon',
+  ListFilledMajor: 'ListBulletedFilledIcon',
+  ListFilledMinor: 'ListBulletedFilledIcon',
   LiveViewMajor: 'LiveIcon',
   LiveViewMinor: 'LiveIcon',
   LiveViewFilledMajor: 'LiveFilledIcon',
