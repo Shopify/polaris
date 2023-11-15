@@ -69,18 +69,14 @@ function Column({children, variant, offset, ...props}: ColumnProps) {
   };
   if (variant) {
     return (
-      <Grid.Cell {...props} colStart={offset ? {lg: '5'} : undefined}>
+      <Grid.Cell {...props}>
         <DirectiveCard minHeight="100%" status={statusMap[variant]}>
           {children}
         </DirectiveCard>
       </Grid.Cell>
     );
   }
-  return (
-    <Grid.Cell {...props} colStart={offset ? {lg: '5'} : undefined}>
-      {children}
-    </Grid.Cell>
-  );
+  return <Grid.Cell {...props}>{children}</Grid.Cell>;
 }
 
 // export function Text({children}: React.PropsWithChildren) {

@@ -15,6 +15,7 @@ icon: PaintBrushMajor
 <Subnav />
 
 <Stack gap="800">
+
 <LayoutSection card>
   <Small>
     <Box padding="400">
@@ -24,305 +25,313 @@ icon: PaintBrushMajor
     </Box>
 
   </Small>
-  <Large standalone>
+
+  <Large>
       ![Different parts of color used in admin identified by their usage](/images/design/colors/color-using-color-relationships@2x.png)
   </Large>
 </LayoutSection>
 
-<Stack gap="400">
-  <LayoutSection card>
-    <Small>
-      <Box padding="400">
+<LayoutSection card>
+  <Small>
+    <Box padding="400">
 
-          ### Background
+        ### Background
 
-          Background colors are used as the baseline of all UI in the admin. The admin itself has a background, and some components can also have a background if they are not built within a [surface](/design/layout/spacial-organization#surfaces).
+        Background colors are used as the baseline of all UI in the admin. The admin itself has a background, and some components can also have a background if they are not built within a [surface](/design/layout/spacial-organization#surfaces).
 
-          Background colors can only have other elements of any other color except for other background colors above them. Multiple background colors can exist in the same viewport only if they exist side by side.
-
-        </Box>
-    </Small>
-    <Large>
-      ![The admin background color](/images/design/colors/color-using-color-background@2x.png)
-    </Large>
-
-  </LayoutSection>
-  <LayoutSection>
-    <Medium variant="do">
-      ![Background colors of the admin and of the sidenav](/images/design/colors/color-using-color-background-do@2x.png)
-
-      Background color is always used in every admin interface.
-    </Medium>
-    <Medium variant="dont">
-      ![Background color applied to a card](/images/design/colors/color-using-color-background-dont@2x.png)
-
-      Use background color on surfaces or on individual elements.
-    </Medium>
-
-  </LayoutSection>
-
-</Stack>
-
-<Stack gap="400">
-  <LayoutSection card>
-    <Small>
-      <Box padding="400">
-
-        ### Surface
-
-        Surface colors are the most versatile in the color system. Surface is the background color for elements with the highest level of prominence, like a card or a banner. Many elements can sit on top of a surface to create complex components and patterns.
-
-        Surface colors also come with various hierarchical levels and can be used to increase or decrease emphasis on specific areas of the UI.
-
-      </Box>
-    </Small>
-    <Large>
-
-      ![Various surfaces in the admin](/images/design/colors/color-using-color-surface@2x.png)
-
-    </Large>
-
-  </LayoutSection>
-  <LayoutSection>
-    <Medium variant="do">
-      ![A collection of elements using surface colors, like cards and tables](/images/design/colors/color-using-color-surface-do@2x.png)
-
-      Use surface colors for all surfaces, like cards, tables, banners, modals, and so on.
-    </Medium>
-    <Medium variant="dont">
-      ![A card split in two distinct sections, with the second one using another surface color](/images/design/colors/color-using-color-surface-dont@2x.png)
-
-      Mix multiple color role surfaces in the same component. Avoid jarring color combinations when nesting components.
-    </Medium>
-
-  </LayoutSection>
-
-</Stack>
-
-<Stack gap="400">
-  <LayoutSection card>
-    <Small>
-      <Box padding="400">
-
-        ### Fill
-
-        Fill is the background color for an element with a smaller surface area like a button or a badge. Fills are usually the most vibrant color in an interface. They sit on backgrounds and surfaces and sometimes sit on top of other fills.
-
-        Fills also come with their explicit text and icon colors, called `on-fill`.
-
-      </Box>
-    </Small>
-    <Large>
-      ![Diagram showing fill colors](/images/design/colors/color-using-color-fill@2x.png)
-    </Large>
-
-  </LayoutSection>
-  <LayoutSection>
-    <Medium variant="do">
-      ![A card with an info badge using fill colors that offers an incentive](/images/design/colors/color-using-color-fill-do@2x.png)
-
-      Use fills on smaller surface areas and on elements that pull a merchant’s attention.
-    </Medium>
-    <Medium variant="dont">
-      ![A card using only fill colors instead of normal surface and text colors](/images/design/colors/color-using-color-fill-dont@2x.png)
-
-      Use fills on large components or as backgrounds for entire interfaces.
-    </Medium>
-    <Medium variant="dont">
-      ![A badge that uses a fill color as background but with a normal text color for its type, making it hard to read](/images/design/colors/color-using-color-fill-onfill-dont@2x.png)
-
-      Mix fills with text colors that are not “on-fill”. These combinations might not pass minimum contrast ratio requirements.
-
-    </Medium>
-
-  </LayoutSection>
-</Stack>
-
-<Stack gap="400">
-  <LayoutSection card>
-    <Small>
-      <Box padding="400">
-
-        ### Border
-
-        Borders are used primarily in data tables to enhance visual structure and organization or large amounts of information. They visually separate and contain elements, and can be used to either delineate rows or define the space of a [nested table](/design/layout/spacial-organization#nesting-tables).
-
-      </Box>
-    </Small>
-    <Large>
-      ![Diagram of a nested table](/images/design/colors/color-using-color-border@2x.png)
-    </Large>
-
-  </LayoutSection>
-  <LayoutSection>
-
-    <Medium variant="do">
-      ![An index table](/images/design/colors/color-using-color-border-do@2x.png)
-
-      Use borders for tables, and divided surfaces that look like tables, to make data easier to read.
-    </Medium>
-    <Medium variant="do">
-      ![A table inset within a card surrounded with other content](/images/design/colors/color-using-color-border-inset-do@2x.png)
-
-      Use borders when a data table is nested within a card.
-
-    </Medium>
-
-    <Medium variant="dont">
-      ![A card with separate sections delimited with horizontal divider lines](/images/design/colors/color-using-color-border-dont@2x.png)
-
-      Use borders to delineate information. Check out [Dividing surfaces](/design/layout/spacial-organization#dividing-surfaces) for guidance.
-    </Medium>
-
-  </LayoutSection>
-
-</Stack>
-
-<Stack gap="400">
-  <LayoutSection card>
-    <Small>
-      <Box padding="400">
-
-        ### Text
-
-        Text color can be used on any text element and any icon element that accompanies text. Text colors are designed to be fully accessible, in terms of contrast on their corresponding backgrounds and surfaces, and should only be used in tandem with them, but can generally be used on any other background or surface if contrast is sufficient.
-
-        Text color that exists on a fill has its own `on-fill` color. This relationship is strict and `on-fill` text can only be used on its corresponding `fill` color.
+        Background colors can only have other elements of any other color except for other background colors above them. Multiple background colors can exist in the same viewport only if they exist side by side.
 
       </Box>
 
-    </Small>
+  </Small>
+  <Large>
+    ![The admin background color](/images/design/colors/color-using-color-background@2x.png)
+  </Large>
 
-    <Large columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+</LayoutSection>
 
-      ![Various typefaces in the admin](/images/design/colors/color-using-color-text@2x.png)
+<LayoutSection>
+  <Medium variant="do">
+    ![Background colors of the admin and of the sidenav](/images/design/colors/color-using-color-background-do@2x.png)
 
-    </Large>
+    Background color is always used in every admin interface.
 
-  </LayoutSection>
-  <LayoutSection>
+  </Medium>
+  <Medium variant="dont">
+    ![Background color applied to a card](/images/design/colors/color-using-color-background-dont@2x.png)
 
-    <Medium variant="do">
-      ![A type composition with a headline, followed by a slightly lighter subtitle and even slightly lighter text](/images/design/colors/color-using-color-text-do@2x.png)
+    Use background color on surfaces or on individual elements.
 
-      Use text color to create visual hierarchy by using default, secondary, or tertiary role colors when available.
-    </Medium>
+  </Medium>
 
-    <Medium variant="dont">
-      ![A card with a surface background, but with text using an on-fill color](/images/design/colors/color-using-color-text-dont@2x.png)
+</LayoutSection>
 
-      Use text `on-fill` colors on anything else but its corresponding `fill` color. These combinations might not pass minimum contrast ratio requirements.
-    </Medium>
+<LayoutSection card>
+  <Small>
+    <Box padding="400">
 
-    <Medium variant="dont">
-      ![A piece of text that says “error”, styled with the critical fill color](/images/design/colors/color-using-color-text-other-dont@2x.png)
+      ### Surface
 
-      Use any other color except for text colors for any text that is part of the UI.
-    </Medium>
+      Surface colors are the most versatile in the color system. Surface is the background color for elements with the highest level of prominence, like a card or a banner. Many elements can sit on top of a surface to create complex components and patterns.
 
-  </LayoutSection>
+      Surface colors also come with various hierarchical levels and can be used to increase or decrease emphasis on specific areas of the UI.
 
-</Stack>
+    </Box>
 
-<Stack gap="400">
+  </Small>
+  <Large>
 
-  <LayoutSection card>
+    ![Various surfaces in the admin](/images/design/colors/color-using-color-surface@2x.png)
 
-      <Small>
+  </Large>
 
-        <Box padding="400">
+</LayoutSection>
+<LayoutSection>
+  <Medium variant="do">
+    ![A collection of elements using surface colors, like cards and tables](/images/design/colors/color-using-color-surface-do@2x.png)
 
-          ### Link
+    Use surface colors for all surfaces, like cards, tables, banners, modals, and so on.
 
-          Link color is used exclusively for text links that appear in lines and paragraphs of text. Link color follows the same logic as Text color: it can only be used with its corresponding background or surface colors in the same color role, but can generally be used on any other background or surface if contrast is sufficient.
+  </Medium>
+  <Medium variant="dont">
+    ![A card split in two distinct sections, with the second one using another surface color](/images/design/colors/color-using-color-surface-dont@2x.png)
 
-        </Box>
+    Mix multiple color role surfaces in the same component. Avoid jarring color combinations when nesting components.
 
-      </Small>
+  </Medium>
 
-      <Large>
+</LayoutSection>
 
-        ![A text with a link in a different color](/images/design/colors/color-using-color-link@2x.png)
+<LayoutSection card>
+  <Small>
+    <Box padding="400">
 
-      </Large>
-    </LayoutSection>
+      ### Fill
 
-  <LayoutSection>
+      Fill is the background color for an element with a smaller surface area like a button or a badge. Fills are usually the most vibrant color in an interface. They sit on backgrounds and surfaces and sometimes sit on top of other fills.
 
-    <Medium variant="do">
-      ![A link within a paragraph of text](/images/design/colors/color-using-color-link-do@2x.png)
+      Fills also come with their explicit text and icon colors, called `on-fill`.
 
-      Use link color for text links and text links that include icons.
-    </Medium>
-    <Medium variant="do">
-      ![An “Add favorite product” button with a link color](/images/design/colors/color-using-color-link-dont@2x.png)
+    </Box>
 
-      Use link color to style text buttons. Use the appropriate [color role](/design/colors/palettes-and-roles#color-roles) and component instead.
-    </Medium>
+  </Small>
+  <Large>
+    ![Diagram showing fill colors](/images/design/colors/color-using-color-fill@2x.png)
+  </Large>
 
-  </LayoutSection>
+</LayoutSection>
+<LayoutSection>
+  <Medium variant="do">
+    ![A card with an info badge using fill colors that offers an incentive](/images/design/colors/color-using-color-fill-do@2x.png)
 
-</Stack>
+    Use fills on smaller surface areas and on elements that pull a merchant’s attention.
 
-<Stack gap="400">
-  <LayoutSection card>
+  </Medium>
+  <Medium variant="dont">
+    ![A card using only fill colors instead of normal surface and text colors](/images/design/colors/color-using-color-fill-dont@2x.png)
+
+    Use fills on large components or as backgrounds for entire interfaces.
+
+  </Medium>
+  <Medium variant="dont">
+    ![A badge that uses a fill color as background but with a normal text color for its type, making it hard to read](/images/design/colors/color-using-color-fill-onfill-dont@2x.png)
+
+    Mix fills with text colors that are not “on-fill”. These combinations might not pass minimum contrast ratio requirements.
+
+  </Medium>
+
+</LayoutSection>
+
+<LayoutSection card>
+  <Small>
+    <Box padding="400">
+
+      ### Border
+
+      Borders are used primarily in data tables to enhance visual structure and organization or large amounts of information. They visually separate and contain elements, and can be used to either delineate rows or define the space of a [nested table](/design/layout/spacial-organization#nesting-tables).
+
+    </Box>
+
+  </Small>
+  <Large>
+    ![Diagram of a nested table](/images/design/colors/color-using-color-border@2x.png)
+  </Large>
+
+</LayoutSection>
+<LayoutSection>
+
+  <Medium variant="do">
+    ![An index table](/images/design/colors/color-using-color-border-do@2x.png)
+
+    Use borders for tables, and divided surfaces that look like tables, to make data easier to read.
+
+  </Medium>
+  <Medium variant="do">
+    ![A table inset within a card surrounded with other content](/images/design/colors/color-using-color-border-inset-do@2x.png)
+
+    Use borders when a data table is nested within a card.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card with separate sections delimited with horizontal divider lines](/images/design/colors/color-using-color-border-dont@2x.png)
+
+    Use borders to delineate information. Check out [Dividing surfaces](/design/layout/spacial-organization#dividing-surfaces) for guidance.
+
+  </Medium>
+
+</LayoutSection>
+
+<LayoutSection card>
+  <Small>
+    <Box padding="400">
+
+      ### Text
+
+      Text color can be used on any text element and any icon element that accompanies text. Text colors are designed to be fully accessible, in terms of contrast on their corresponding backgrounds and surfaces, and should only be used in tandem with them, but can generally be used on any other background or surface if contrast is sufficient.
+
+      Text color that exists on a fill has its own `on-fill` color. This relationship is strict and `on-fill` text can only be used on its corresponding `fill` color.
+
+    </Box>
+
+  </Small>
+
+  <Large columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
+
+    ![Various typefaces in the admin](/images/design/colors/color-using-color-text@2x.png)
+
+  </Large>
+
+</LayoutSection>
+<LayoutSection>
+
+  <Medium variant="do">
+    ![A type composition with a headline, followed by a slightly lighter subtitle and even slightly lighter text](/images/design/colors/color-using-color-text-do@2x.png)
+
+    Use text color to create visual hierarchy by using default, secondary, or tertiary role colors when available.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card with a surface background, but with text using an on-fill color](/images/design/colors/color-using-color-text-dont@2x.png)
+
+    Use text `on-fill` colors on anything else but its corresponding `fill` color. These combinations might not pass minimum contrast ratio requirements.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A piece of text that says “error”, styled with the critical fill color](/images/design/colors/color-using-color-text-other-dont@2x.png)
+
+    Use any other color except for text colors for any text that is part of the UI.
+
+  </Medium>
+
+</LayoutSection>
+
+<LayoutSection card>
+
     <Small>
-        ### Icon
 
-        Icon colors are used exclusively for standalone icons. These colors are tailored to meet color contrast ratios for interactive elements that do not include text. Icon colors should only be used on their corresponding background and surface colors, but can generally be used on any other background or surface if contrast is sufficient.
-    </Small>
-
-    <Large>
-      ![A series of action icons in a table](/images/design/colors/color-using-color-icon@2x.png)
-    </Large>
-
-  </LayoutSection>
-
-  <LayoutSection>
-
-    <Medium variant="do">
-      ![Various buttons that use only icons in a text editor](/images/design/colors/color-using-color-icon-do@2x.png)
-
-      Use icon colors to style an icon that is standalone.
-    </Medium>
-
-    <Medium variant="dont">
-      ![A “unfulfilled” badge with text label, all styled with the icon color](/images/design/colors/color-using-color-icon-dont@2x.png)
-
-      Use icon colors to style text, as the color contrast might not be enough. Instead, style the entire icon and text composition using the text color.
-    </Medium>
-
-  </LayoutSection>
-
-</Stack>
-
-  <LayoutSection card>
-    <Small>
       <Box padding="400">
 
-        ## Combining color roles
+        ### Link
 
-        Elements with different [color roles](/design/colors/palettes-and-roles#color-roles) can coexist alongside each other, enhancing merchants' comprehension of complex patterns when appropriately utilized in component combinations.
-
-        In some cases, the superposition of elements with different color roles is necessary, like using a critical icon button on a default card. These combinations may require additional testing to check for proper color contrast.
+        Link color is used exclusively for text links that appear in lines and paragraphs of text. Link color follows the same logic as Text color: it can only be used with its corresponding background or surface colors in the same color role, but can generally be used on any other background or surface if contrast is sufficient.
 
       </Box>
+
     </Small>
+
     <Large>
-      ![Various parts of the admin with interesting color combinations](/images/design/colors/color-using-color-combining@2x.png)
+
+      ![A text with a link in a different color](/images/design/colors/color-using-color-link@2x.png)
+
     </Large>
 
-    <Medium variant="do">
-      ![Detail shot of different badges used in an order card](/images/design/colors/color-using-color-combining-do@2x.png)
+  </LayoutSection>
 
-      Meaningful combinations of color roles can enhance a merchant’s experience.
-    </Medium>
+<LayoutSection>
 
-    <Medium variant="dont">
-        ![Tabs in an index table with different badges of different colors being used in each tab label](/images/design/colors/color-using-color-combining-dont@2x.png)
+  <Medium variant="do">
+    ![A link within a paragraph of text](/images/design/colors/color-using-color-link-do@2x.png)
 
-        Avoid creating color role combinations that look too jarring or that create visual competition between elements.
-    </Medium>
+    Use link color for text links and text links that include icons.
+
+  </Medium>
+  <Medium variant="do">
+    ![An “Add favorite product” button with a link color](/images/design/colors/color-using-color-link-dont@2x.png)
+
+    Use link color to style text buttons. Use the appropriate [color role](/design/colors/palettes-and-roles#color-roles) and component instead.
+
+  </Medium>
+
+</LayoutSection>
+
+<LayoutSection card>
+  <Small>
+      ### Icon
+
+      Icon colors are used exclusively for standalone icons. These colors are tailored to meet color contrast ratios for interactive elements that do not include text. Icon colors should only be used on their corresponding background and surface colors, but can generally be used on any other background or surface if contrast is sufficient.
+
+  </Small>
+
+{' '}
+
+<Large>
+  ![A series of action icons in a
+  table](/images/design/colors/color-using-color-icon@2x.png)
+</Large>
+
+</LayoutSection>
+
+<LayoutSection>
+
+  <Medium variant="do">
+    ![Various buttons that use only icons in a text editor](/images/design/colors/color-using-color-icon-do@2x.png)
+
+    Use icon colors to style an icon that is standalone.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A “unfulfilled” badge with text label, all styled with the icon color](/images/design/colors/color-using-color-icon-dont@2x.png)
+
+    Use icon colors to style text, as the color contrast might not be enough. Instead, style the entire icon and text composition using the text color.
+
+  </Medium>
+
+</LayoutSection>
+
+<LayoutSection card>
+  <Small>
+    <Box padding="400">
+
+      ## Combining color roles
+
+      Elements with different [color roles](/design/colors/palettes-and-roles#color-roles) can coexist alongside each other, enhancing merchants' comprehension of complex patterns when appropriately utilized in component combinations.
+
+      In some cases, the superposition of elements with different color roles is necessary, like using a critical icon button on a default card. These combinations may require additional testing to check for proper color contrast.
+
+    </Box>
+
+  </Small>
+  <Large>
+    ![Various parts of the admin with interesting color combinations](/images/design/colors/color-using-color-combining@2x.png)
+  </Large>
+
+  <Medium variant="do">
+    ![Detail shot of different badges used in an order card](/images/design/colors/color-using-color-combining-do@2x.png)
+
+    Meaningful combinations of color roles can enhance a merchant’s experience.
+
+  </Medium>
+
+  <Medium variant="dont">
+      ![Tabs in an index table with different badges of different colors being used in each tab label](/images/design/colors/color-using-color-combining-dont@2x.png)
+
+      Avoid creating color role combinations that look too jarring or that create visual competition between elements.
+
+  </Medium>
 
 </LayoutSection>
 
@@ -361,28 +370,28 @@ icon: PaintBrushMajor
   </Medium>
 </LayoutSection>
 
-  <LayoutSection card>
-    <Small>
+<LayoutSection card>
+  <Small>
 
-      <Box padding="400">
+    <Box padding="400">
 
-        ## Using other colors
+      ## Using other colors
 
-        The creation of new color roles is tied to the Shopify admin. Some colors available in the color palette are not yet tied to a color role. Usage of these colors is strictly reserved for illustration work.
+      The creation of new color roles is tied to the Shopify admin. Some colors available in the color palette are not yet tied to a color role. Usage of these colors is strictly reserved for illustration work.
 
-        More information about what color roles are available and their respective purposes can be found in color roles.
+      More information about what color roles are available and their respective purposes can be found in color roles.
 
-      </Box>
+    </Box>
 
-    </Small>
-    <Large variant="do">
+  </Small>
+  <Large variant="do">
 
-      ![Other colors that are not attached to a color role used in an illustration](/images/design/colors/color-using-color-other-colors@2x.png)
+    ![Other colors that are not attached to a color role used in an illustration](/images/design/colors/color-using-color-other-colors@2x.png)
 
-      In the case of illustrations, any color of the color palette can be used. Diagrams, however, need to respect color role usage if they represent an abstracted view of the admin.
+    In the case of illustrations, any color of the color palette can be used. Diagrams, however, need to respect color role usage if they represent an abstracted view of the admin.
 
-    </Large>
+  </Large>
 
-  </LayoutSection>
+</LayoutSection>
 
 </Stack>
