@@ -29,8 +29,8 @@ export function Default() {
 }
 
 export function WithError() {
-  const [selected, setSelected] = useState([
-    'hidden' as HiddenOptionalRequired,
+  const [selected, setSelected] = useState<HiddenOptionalRequired[]>([
+    'hidden',
   ]);
 
   return (
@@ -71,7 +71,7 @@ export function Magic() {
 }
 
 export function WithMultiChoice() {
-  const [selected, setSelected] = useState([] as string[]);
+  const [selected, setSelected] = useState<string[]>([]);
 
   return (
     <ChoiceList
@@ -126,9 +126,7 @@ export function MagicWithMultiChoice() {
 }
 
 export function WithChildrenContent() {
-  const [selected, setSelected] = useState([
-    'none' as 'none' | 'minimum_purchase' | 'minimum_quantity',
-  ]);
+  const [selected, setSelected] = useState(['none']);
   const [textFieldValue, setTextFieldValue] = useState('');
 
   const renderChildren = useCallback(
