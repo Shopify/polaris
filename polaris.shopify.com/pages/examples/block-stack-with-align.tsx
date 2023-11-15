@@ -59,7 +59,12 @@ const Placeholder = ({
             color: 'var(--p-color-text-info-on-bg-fill)',
           }}
         >
-          <Text as="h2" variant="bodyMd" fontWeight="regular">
+          <Text
+            as="h2"
+            variant="bodyMd"
+            fontWeight="regular"
+            tone="text-inverse"
+          >
             {label}
           </Text>
         </div>
