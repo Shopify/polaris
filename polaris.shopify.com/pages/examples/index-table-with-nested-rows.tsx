@@ -130,7 +130,7 @@ export function WithNestedRowsExample() {
   );
 
   const rowMarkup = Object.keys(groupedProducts).map((color, index) => {
-    const {products, position, id: subheaderId} = groupedProducts[color];
+    const {products, position, id: productId} = groupedProducts[color];
     let selected: IndexTableRowProps['selected'] = false;
 
     const someProductsSelected = products.some(({id}) =>
@@ -158,17 +158,17 @@ export function WithNestedRowsExample() {
     const disabled = products.every(({disabled}) => disabled);
 
     return (
-      <Fragment key={subheaderId}>
+      <Fragment key={productId}>
         <IndexTable.Row
-          rowType="subheader"
+          rowType="data"
           selectionRange={rowRange}
-          id={`Subheader-${index}`}
+          id={`Parent-${index}`}
           position={position}
           selected={selected}
           disabled={disabled}
-          accessibilityLabel={`Select all products wich has color ${color}`}
+          accessibilityLabel={`Select all products which have color ${color}`}
         >
-          <IndexTable.Cell scope="col" id={subheaderId}>
+          <IndexTable.Cell scope="col" id={productId}>
             <Text as="span" fontWeight="semibold">
               {color}
             </Text>
@@ -177,37 +177,35 @@ export function WithNestedRowsExample() {
           <IndexTable.Cell />
         </IndexTable.Row>
         {products.map(
-          ({id, size, quantity, price, position, disabled}, rowIndex) => {
-            return (
-              <IndexTable.Row
-                rowType="child"
-                key={rowIndex}
-                id={id}
-                position={position}
-                selected={selectedResources.includes(id)}
-                disabled={disabled}
+          ({id, size, quantity, price, position, disabled}, rowIndex) => (
+            <IndexTable.Row
+              rowType="child"
+              key={rowIndex}
+              id={id}
+              position={position}
+              selected={selectedResources.includes(id)}
+              disabled={disabled}
+            >
+              <IndexTable.Cell
+                scope="row"
+                headers={`${columnHeadings[0].id} ${productId}`}
               >
-                <IndexTable.Cell
-                  scope="row"
-                  headers={`${columnHeadings[0].id} ${subheaderId}`}
-                >
-                  <Text variant="bodyMd" as="span">
-                    {size}
-                  </Text>
-                </IndexTable.Cell>
-                <IndexTable.Cell>
-                  <Text as="span" numeric>
-                    {price}
-                  </Text>
-                </IndexTable.Cell>
-                <IndexTable.Cell>
-                  <Text as="span" alignment="end" numeric>
-                    {quantity}
-                  </Text>
-                </IndexTable.Cell>
-              </IndexTable.Row>
-            );
-          },
+                <Text variant="bodyMd" as="span">
+                  {size}
+                </Text>
+              </IndexTable.Cell>
+              <IndexTable.Cell>
+                <Text as="span" numeric>
+                  {price}
+                </Text>
+              </IndexTable.Cell>
+              <IndexTable.Cell>
+                <Text as="span" alignment="end" numeric>
+                  {quantity}
+                </Text>
+              </IndexTable.Cell>
+            </IndexTable.Row>
+          ),
         )}
       </Fragment>
     );

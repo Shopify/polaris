@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-IndexTable nested rows
+Added child type to IndexTable row
