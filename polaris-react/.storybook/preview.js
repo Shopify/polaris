@@ -6,11 +6,7 @@ import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 import {gridOptions, featureFlagOptions} from './manager';
 import isChromatic from 'chromatic/isChromatic';
-import {
-  breakpoints,
-  themeNameDefault,
-  themeNames,
-} from '@shopify/polaris-tokens';
+import {themeNameDefault, themeNames, themes} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -140,6 +136,7 @@ export const globalTypes = {
   ...featureFlagOptions,
   ...gridOptions,
 };
+const {breakpoints} = themes[themeNameDefault];
 const viewPorts = Object.entries({
   ...breakpoints,
   'breakpoints-xs': '20rem', // Replace the 0px xs breakpoint with 320px (20rem) for testing small screens
