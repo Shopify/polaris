@@ -1,11 +1,10 @@
-import css from '@webref/css';
-import mdnData from './mdn-properties-data.mjs';
 import fs from 'fs/promises';
 import path from 'path';
-import camelcase from 'camelcase';
 import * as url from 'url';
+import {createRequire} from 'node:module';
+import * as ts from 'typescript';
 import {
-  tokenizedStyleProps,
+  tokenizedStyleProps as tokenizedCSSStyleProps,
   metaThemeDefault,
   toPx,
 } from '@shopify/polaris-tokens';
@@ -20,177 +19,108 @@ const breakpoints = Object.entries(metaThemeDefault.breakpoints).map(
   }),
 );
 
-// TODO: Confirm this list is complete or source it from mdn/webref data somehow
-const cssShorthandProperties = [
-  'animation',
-  'background',
-  'border',
-  'border-block',
-  'border-block-end',
-  'border-block-start',
-  'border-bottom',
-  'border-color',
-  'border-inline-color',
-  'border-block-color',
-  'border-image',
-  'border-inline',
-  'border-inline-end',
-  'border-inline-start',
-  'border-left',
-  'border-radius',
-  'border-right',
-  'border-style',
-  'border-block-style',
-  'border-inline-style',
-  'border-top',
-  'border-width',
-  'border-inline-width',
-  'border-block-width',
-  'box-shadow',
-  'column-rule',
-  'columns',
-  'contain-intrinsic-size',
-  'flex',
-  'flex-flow',
-  'font',
-  'gap',
-  'grid',
-  'grid-area',
-  'grid-column',
-  'grid-row',
-  'grid-template',
-  'inset',
-  'inset-inline',
-  'inset-block',
-  'list-style',
-  'margin',
-  'margin-block',
-  'margin-inline',
-  'mask',
-  'offset',
-  'outline',
-  'overflow',
-  'overscroll-behavior',
-  'padding',
-  'padding-block',
-  'padding-inline',
-  'place-content',
-  'place-items',
-  'place-self',
-  'scroll-padding',
-  'scroll-padding-inline',
-  'scroll-padding-block',
-  'scroll-margin',
-  'scroll-margin-inline',
-  'scroll-margin-block',
-  'text-decoration',
-  'text-emphasis',
-  'transition',
-];
+const cssLonghandProperties = getCSSTypeLonghandPropertyNames();
 
 // TODO: Confirm this list is complete or source it from mdn/webref data somehow
 const positionalCSSProperties = [
   'width',
   'height',
-  'padding-left',
-  'padding-top',
-  'padding-right',
-  'padding-bottom',
-  'margin-left',
-  'margin-top',
-  'margin-right',
-  'margin-bottom',
-  'max-width',
-  'max-height',
-  'min-width',
-  'min-height',
-  'border-top-left-radius',
-  'border-top-right-radius',
-  'border-bottom-right-radius',
-  'border-bottom-left-radius',
-  'border-top-color',
-  'border-right-color',
-  'border-bottom-color',
-  'border-left-color',
-  'border-top-style',
-  'border-right-style',
-  'border-bottom-style',
-  'border-left-style',
-  'border-top-width',
-  'border-right-width',
-  'border-bottom-width',
-  'border-left-width',
-  'overflow-x',
-  'overflow-y',
-  'overscroll-behavior-x',
-  'overscroll-behavior-y',
-  'scroll-padding-top',
-  'scroll-padding-right',
-  'scroll-padding-bottom',
-  'scroll-padding-left',
-  'scroll-margin-top',
-  'scroll-margin-right',
-  'scroll-margin-bottom',
-  'scroll-margin-left',
+  'paddingLeft',
+  'paddingTop',
+  'paddingRight',
+  'paddingBottom',
+  'marginLeft',
+  'marginTop',
+  'marginRight',
+  'marginBottom',
+  'maxWidth',
+  'maxHeight',
+  'minWidth',
+  'minHeight',
+  'borderTopLeftRadius',
+  'borderTopRightRadius',
+  'borderBottomRightRadius',
+  'borderBottomLeftRadius',
+  'borderTopColor',
+  'borderRightColor',
+  'borderBottomColor',
+  'borderLeftColor',
+  'borderTopStyle',
+  'borderRightStyle',
+  'borderBottomStyle',
+  'borderLeftStyle',
+  'borderTopWidth',
+  'borderRightWidth',
+  'borderBottomWidth',
+  'borderLeftWidth',
+  'overflowX',
+  'overflowY',
+  'overscrollBehaviorX',
+  'overscrollBehaviorY',
+  'scrollPaddingTop',
+  'scrollPaddingRight',
+  'scrollPaddingBottom',
+  'scrollPaddingLeft',
+  'scrollMarginTop',
+  'scrollMarginRight',
+  'scrollMarginBottom',
+  'scrollMarginLeft',
   'top',
   'left',
   'right',
   'bottom',
-  'contain-intrinsic-width',
-  'contain-intrinsic-height',
+  'containIntrinsicWidth',
+  'containIntrinsicHeight',
 ];
 
-// We don't want to include any experimental or non-standard css rules in our
-// CSS. These also throw type errors when we generate our types in
-// `writeTSProperties()`.
-const standardCSSProperties = Object.entries(mdnData)
-  .filter(([_, value]) => value.status === 'standard')
-  .map(([key]) => key);
+// Remove these once https://github.com/frenic/csstype/pull/188 is merged
+const incorrectlyMarkedAsLonghandByCSSTypes = [
+  'borderBlockColor',
+  'borderBlockStyle',
+  'borderBlockWidth',
+  'borderInlineColor',
+  'borderInlineStyle',
+  'borderInlineWidth',
+];
 
 const disallowedCSSProperties = [
-  // Shorthand properties need to come before longhand properties so
-  // the most specific (longhand) applies based on CSS order.
-  // For example, `flex-flow` is a shorthand of `<flex-direction> <flex-wrap>`,
-  // and so must come before both of those.
-  //
-  // Challenges with supporting shorthand properties:
-  // a. Cannot use alphabetical sorting (`flex-direction` would end up before
-  // `flex-flow` which is invalid).
-  // b. Cannot use `property.logicalProperyGroup` from `@webref/css` as that's not
-  // reliable (doesn't even exist for the `flex` family of properties).
-  // c. Cannot rely on the order of properties in an @webref/css specification
-  // containing both long and shorthand variants since later "Delta" specs might
-  // introduce new shorthands (and so would come after the longhand when
-  // iterating and therefore are invalid).
-  //
-  // Possible solutions:
-  // 1. Use data like { 'flex-flow': ['flex-direction', 'flex-wrap'] } to sort
-  //    longhands after shorthands
-  // 2. Filter out all the shorthand properties completely.
-  //
-  // We're chosing solution #2 here; filtering out shorthand CSS Properties.
-  // This is distinct from a later step where we create "aliases" to enable a
-  // builder to pass a single value which acts as a fallback for the props
-  // specified as fallbacks. Some of these aliases may have identical names to
-  // the shorthand properties, but shouldn't be confused as being the same.
-  ...cssShorthandProperties,
-
   // We only support logical properties, but later alias these to their
   // positional counterparts following the principle of: Do what the user
   // intended, not what they said.
   ...positionalCSSProperties,
 
-  // For some reason these properties are not excluded from the mdn data set we've imported,
-  // But is excluded from the csstype library that the CSS.Properties comes from.
-  // We filter them out here so we a) remove unnecessary rule and variable instantiation in our CSS
-  // and b) don't get type errors in our typescript files.
-  'font-synthesis-weight',
-  'font-synthesis-style',
-  'font-synthesis-small-caps',
+  ...incorrectlyMarkedAsLonghandByCSSTypes,
 
   // We don't want to include vendor prefixed properties, but oddly this one
   // property shows up in the list of "standard" CSS Properties.
-  '-webkit-line-clamp',
+  // '-webkit-line-clamp',
+
+  // Exclude from https://www.w3.org/TR/compat
+  'touchAction',
+  // Exclude from https://www.w3.org/TR/css-cascade
+  'all',
+  // Exclude from https://www.w3.org/TR/css-content
+  'content',
+  'quotes',
+  'stringSet',
+  'bookmarkLevel',
+  'bookmarkLabel',
+  'bookmarkState',
+  // Exclude from https://www.w3.org/TR/css-gcpm
+  'copyInto',
+  'content',
+  'footnoteDisplay',
+  'footnotePolicy',
+  // Exclude from https://www.w3.org/TR/css-page-floats
+  'floatReference',
+  'floatDefer',
+  'floatOffset',
+  // Exclude from https://www.w3.org/TR/css-page
+  'page',
+  // Exclude from https://www.w3.org/TR/mathml-core
+  'mathStyle',
+  'mathShift',
+  'mathDepth',
 ];
 
 const disallowedCSSPropertyValues = ['inherit', 'initial', '-moz-initial'];
@@ -218,6 +148,8 @@ const stylePropAliasFallbacks = {
   overflowBlock: ['overflowY', 'overflow'],
   overscrollBehaviorInline: ['overscrollBehaviorX', 'overscrollBehavior'],
   overscrollBehaviorBlock: ['overscrollBehaviorY', 'overscrollBehavior'],
+  backgroundPositionX: ['backgroundPosition'],
+  backgroundPositionY: ['backgroundPosition'],
   borderStartStartRadius: ['borderTopLeftRadius', 'borderRadius'],
   borderStartEndRadius: ['borderTopRightRadius', 'borderRadius'],
   borderEndStartRadius: ['borderBottomLeftRadius', 'borderRadius'],
@@ -322,8 +254,9 @@ const inverseAliases = Object.entries(stylePropAliasFallbacks).reduce(
   {},
 );
 
+verifyAliases();
+
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
-const properties = await getProperties();
 
 const sassFile = await fs.open(
   path.resolve(__dirname, '../src/components/Cube/style.module.scss'),
@@ -338,12 +271,58 @@ const tsFile = await fs.open(
   path.resolve(__dirname, '../src/components/Cube/generated-data.ts'),
   'w+',
 );
-await writeTSProperties(tsFile, properties);
+await writeTSProperties(tsFile);
 await tsFile.close();
 
 // -----
 
-async function writeTSProperties(tsFile, properties) {
+function verifyAliases() {
+  const aliasCollisions = [];
+  for (let longhandProperty of cssLonghandProperties) {
+    // To avoid ambiguity and ensure data integrity, we do not allow aliases
+    // to have the same name as an allowed CSS property.
+    if (
+      !disallowedCSSProperties.includes(longhandProperty) &&
+      allAliases.includes(longhandProperty)
+    ) {
+      aliasCollisions.push(longhandProperty);
+    }
+  }
+
+  if (aliasCollisions.length) {
+    console.error(
+      `The following CSS properties collide with style prop aliases. Did you mean to add the CSS properties to disallowedCSSProperties[]?
+
+${aliasCollisions.map((prop) => `${prop}`).join('\n')}`,
+    );
+
+    process.exit(-1);
+  }
+}
+
+// TODO, use this for:
+// 1. Ensure there are no aliases overriding longhand CSS properties
+// 2. Filter down the tokenized property names exported from tokens lib
+function getCSSTypeLonghandPropertyNames() {
+  const require = createRequire(import.meta.url);
+  const cssTypeDefinitionFile = require.resolve('csstype/index.d.ts');
+
+  const program = ts.default.createProgram([cssTypeDefinitionFile], {});
+  const checker = program.getTypeChecker();
+  const sourceFile = program.getSourceFile(cssTypeDefinitionFile);
+  const exports = checker.getExportsOfModule(
+    checker.getSymbolAtLocation(sourceFile),
+  );
+  const defaultExportSymbol = exports.find(
+    (e) => e.escapedName === 'StandardLonghandProperties',
+  );
+
+  let type = checker.getDeclaredTypeOfSymbol(defaultExportSymbol);
+
+  return type.getProperties().map(({name}) => name);
+}
+
+async function writeTSProperties(tsFile) {
   const generateTSPickList = (keys, indent) => {
     // We add additional single quotes here because the second argument for Pick
     // is a union of string literal types
@@ -363,7 +342,7 @@ async function writeTSProperties(tsFile, properties) {
   };
 
   await tsFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
-import type {Properties as CSSStyleProps} from 'csstype';
+import type {StandardLonghandProperties, Globals} from 'csstype';
 import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
 import type {OverrideProperties}  from 'type-fest';
 import type {ResponsiveProp} from '../../utils/various';
@@ -379,7 +358,37 @@ type PickIntersection<PickFrom, IntersectWith> = Pick<
 /**
  * The subset of all CSS that we support in Polaris (does not include aliases).
  */
-type SupportedCSSStyleProps = Pick<CSSStyleProps, SupportedRawCSSStyleProps>;
+type SupportedCSSStyleProps = Omit<
+  // Why Longhand properties and not ALL properties?
+  // Shorthand properties need to come before longhand properties so
+  // the most specific (longhand) applies based on CSS order.
+  // For example, \`flex-flow\` is a shorthand of \`<flex-direction> <flex-wrap>\`,
+  // and so must come before both of those.
+  //
+  // Challenges with supporting shorthand properties:
+  // a. Cannot use alphabetical sorting (\`flex-direction\` would end up before
+  // \`flex-flow\` which is invalid).
+  // b. Cannot use \`property.logicalProperyGroup\` from \`@webref/css\` as that's
+  // not reliable (doesn't even exist for the \`flex\` family of properties).
+  // c. Cannot rely on the order of properties in an @webref/css specification
+  // containing both long and shorthand variants since later "Delta" specs might
+  // introduce new shorthands (and so would come after the longhand when
+  // iterating and therefore are invalid).
+  // d. mdn data appears to have an incomplete list of shorthand properties.
+  //
+  // Possible solutions:
+  // 1. Use data like { 'flex-flow': ['flex-direction', 'flex-wrap'] } to sort
+  //    longhands after shorthands
+  // 2. Rely on csstype to filter out all the shorthand properties completely.
+  //
+  // We're chosing solution #2 here; filtering out shorthand CSS Properties.
+  // Note that in a later step where we create "aliases" to enable a builder to
+  // pass a single value which acts as a fallback for the props specified as
+  // fallbacks. Some of these aliases may have identical names to the shorthand
+  // properties, but shouldn't be confused as being the same.
+  StandardLonghandProperties,
+  DisallowedStandardLonghandProperties
+>;
 
 /**
  * Some of our supported CSS properties must have a value from
@@ -399,7 +408,7 @@ type StyleProps = SupportedStyleProps & StylePropAliases;
 
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
- * @shopify/polaris-tokens), and helpful aliases for frequently used props.
+ * \`@shopify/polaris-tokens\`), and helpful aliases for frequently used props.
  */
 export type ResponsiveStyleProps = {
   [K in keyof StyleProps]?: ResponsiveProp<
@@ -464,27 +473,34 @@ export type ResponsiveStyleProps = {
 *   paddingBlockEnd: '800',
 * }}
 */
+// TODO: Wrap these in PropertyValue<type> | (string & {})?
 type StylePropAliases = {${Object.entries(inverseAliases)
     .map(
       ([alias, styleProps]) => `
-  /* Alias for ${joinEnglish(
-    styleProps.map((prop) => `\`${prop}\``),
-  )} unless already set. */
-  ${alias}?: ${styleProps
-        .map((prop) => `${`SupportedStyleProps`}['${prop}']`)
-        .join(' & ')};`,
+  /**
+   * Fallback for ${joinEnglish(styleProps.map((prop) => `\`${prop}\``))}:
+   * ${styleProps
+     .map(
+       (prop) =>
+         `props.${prop} = props.${prop} ?? ${stylePropAliasFallbacks[prop]
+           .map((fallbackProp) => `props.${fallbackProp}`)
+           .join(' ?? ')}`,
+     )
+     .join('\n   * ')}
+   */
+  ${alias}?: SupportedStyleProps['${styleProps[0]}'];`,
     )
-    .join('')}
+    .join('\n')}
 };
 
 /**
- * CSS properties for which we pass the user supplied value through. Does not
- * include any alias properties.
+ * CSS properties we don't support. Note: Contains some aliases which are later
+ * typed to a different value.
  */
-type SupportedRawCSSStyleProps = ${generateTSPickList(
-    Object.keys(properties)
-      .map((key) => camelcase(key))
-      .filter((key) => !allAliases.includes(key)),
+type DisallowedStandardLonghandProperties = ${generateTSPickList(
+    disallowedCSSProperties.filter((prop) =>
+      cssLonghandProperties.includes(prop),
+    ),
     2,
   )};
 
@@ -501,10 +517,12 @@ export const stylePropAliasFallbacks = {
         `"${styleProp}": ${JSON.stringify(aliasFallbacks)},`,
     )
     .join('\n  ')}
-} as const;
+} satisfies Partial<{ [K in keyof SupportedCSSStyleProps]: (keyof StyleProps)[] }>;
 
 // Extract a unique set of just the alias names
-export const stylePropAliasNames = Array.from(new Set(Object.values(stylePropAliasFallbacks).flat()));
+export const stylePropAliasNames: (keyof StyleProps)[] = Array.from(
+  new Set(Object.values(stylePropAliasFallbacks).flat())
+);
 
 /**
  * A list of values that if passed to any styleProp on our Box component should
@@ -516,82 +534,27 @@ export const disallowedCSSPropertyValues = ${JSON.stringify(
     disallowedCSSPropertyValues,
     null,
     2,
-  )} as const;
+  )} satisfies Globals[];
+
+export const tokenizedStyleProps = [
+  // Longhand CSS Style Props
+  ${tokenizedCSSStyleProps
+    .filter(
+      (prop) =>
+        cssLonghandProperties.includes(prop) && !allAliases.includes(prop),
+    )
+    .map((prop) => `'${prop}'`)
+    .join(',\n  ')},
+
+  // Aliases
+  ${Object.entries(inverseAliases)
+    // We only check the first property relying on this alias and assume the
+    // rest are also tokenized
+    .filter(([, properties]) => tokenizedCSSStyleProps.includes(properties[0]))
+    .map(([alias]) => `'${alias}'`)
+    .join(',\n  ')},
+] as const;
 `);
-}
-
-function isCSSPropertyAllowed(name) {
-  return (
-    standardCSSProperties.includes(name) &&
-    !disallowedCSSProperties.includes(name)
-  );
-}
-
-async function getProperties() {
-  // @webref/css conveniently curates down all the available specs for us. Some
-  // specs are defined as "Delta" where they add / modify some properties, those
-  // specs are suffixed with `-<number>`
-  const stripDeltaSpecSuffix = (specShortName) =>
-    specShortName.replace(/-\d$/, '');
-
-  // Note, we don't list the "Delta" specs here (those ending in `-<number>`),
-  // but they will be excluded if found.
-  const disallowedSpecifications = [
-    'SVG',
-    'compat',
-    'css-cascade',
-    'css-content',
-    'css-gcpm',
-    'css-layout-api',
-    'css-page',
-    'css-page-floats',
-    'mathml-core',
-    'svg-strokes',
-  ];
-
-  const parsedFiles = await css.listAll();
-
-  const properties = {};
-  const aliasCollisions = [];
-  for (let [shortname, data] of Object.entries(parsedFiles)) {
-    // Treat delta specs the same as their "full" spec name. The data in
-    // @webref/css is ordered, so deltas will always come after full specs.
-    shortname = stripDeltaSpecSuffix(shortname);
-    if (disallowedSpecifications.includes(shortname)) {
-      continue;
-    }
-
-    for (let i = 0; i < data.properties.length; i++) {
-      const propertySpec = data.properties[i];
-      if (isCSSPropertyAllowed(propertySpec.name)) {
-        // To avoid ambiguity and ensure data integrity, we do not allow aliases
-        // to have the same name as an allowed CSS property.
-        const possibleAliasName = camelcase(propertySpec.name);
-        if (allAliases.includes(possibleAliasName)) {
-          aliasCollisions.push([propertySpec.name, possibleAliasName]);
-        }
-
-        properties[propertySpec.name] = {
-          name: propertySpec.name,
-          inherited: propertySpec.inherited === 'yes',
-        };
-      }
-    }
-  }
-
-  if (aliasCollisions.length) {
-    console.error(
-      `The following CSS properties collide with style prop aliases. Did you mean to add the CSS properties to cssShorthandProperties[] or disallowedCSSProperties[]?
-
-${aliasCollisions
-  .map(([cssProp, alias]) => `${cssProp} => ${alias}`)
-  .join('\n')}`,
-    );
-
-    process.exit(-1);
-  }
-
-  return properties;
 }
 
 // See: https://github.com/propjockey/css-media-vars/blob/master/css-media-vars.css
