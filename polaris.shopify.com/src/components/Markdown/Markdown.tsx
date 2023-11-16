@@ -36,6 +36,7 @@ import {Colors} from './components/Colors';
 import {CollapsibleDetails} from '../../components/CollapsibleDetails';
 import {
   Section as LayoutSection,
+  Text,
   Small,
   Medium,
   Large,
@@ -264,6 +265,7 @@ function Markdown<
         CollapsibleDetails,
         Code,
         LayoutSection,
+        Text,
         Small,
         Medium,
         Large,

@@ -14,15 +14,13 @@ icon: PaintBrushMajor
 
 <Subnav />
 
-<Stack gap="800">
-
 <LayoutSection card>
-  <Small>
+  <Text>
     ## Color relationships
 
     While color roles define the value of each concept of UI it styles, color relationships between each one of these concepts define how color is used in the Shopify admin.
 
-  </Small>
+  </Text>
 
   <Large>
       ![Different parts of color used in admin identified by their usage](/images/design/colors/color-using-color-relationships@2x.png)
@@ -30,7 +28,7 @@ icon: PaintBrushMajor
 </LayoutSection>
 
 <LayoutSection card>
-  <Small>
+  <Text>
 
     ### Background
 
@@ -38,7 +36,7 @@ icon: PaintBrushMajor
 
     Background colors can only have other elements of any other color except for other background colors above them. Multiple background colors can exist in the same viewport only if they exist side by side.
 
-  </Small>
+  </Text>
   <Large>
     ![The admin background color](/images/design/colors/color-using-color-background@2x.png)
   </Large>
@@ -62,7 +60,7 @@ icon: PaintBrushMajor
 </LayoutSection>
 
 <LayoutSection card>
-  <Small>
+  <Text>
 
       ### Surface
 
@@ -70,7 +68,7 @@ icon: PaintBrushMajor
 
       Surface colors also come with various hierarchical levels and can be used to increase or decrease emphasis on specific areas of the UI.
 
-  </Small>
+  </Text>
   <Large>
 
     ![Various surfaces in the admin](/images/design/colors/color-using-color-surface@2x.png)
@@ -95,7 +93,7 @@ icon: PaintBrushMajor
 </LayoutSection>
 
 <LayoutSection card>
-  <Small>
+  <Text>
 
       ### Fill
 
@@ -103,7 +101,7 @@ icon: PaintBrushMajor
 
       Fills also come with their explicit text and icon colors, called `on-fill`.
 
-  </Small>
+  </Text>
   <Large>
     ![Diagram showing fill colors](/images/design/colors/color-using-color-fill@2x.png)
   </Large>
@@ -132,13 +130,13 @@ icon: PaintBrushMajor
 </LayoutSection>
 
 <LayoutSection card>
-  <Small>
+  <Text>
 
       ### Border
 
       Borders are used primarily in data tables to enhance visual structure and organization or large amounts of information. They visually separate and contain elements, and can be used to either delineate rows or define the space of a [nested table](/design/layout/spacial-organization#nesting-tables).
 
-  </Small>
+  </Text>
   <Large>
     ![Diagram of a nested table](/images/design/colors/color-using-color-border@2x.png)
   </Large>
@@ -169,7 +167,7 @@ icon: PaintBrushMajor
 </LayoutSection>
 
 <LayoutSection card>
-  <Small>
+  <Text>
 
       ### Text
 
@@ -177,7 +175,7 @@ icon: PaintBrushMajor
 
       Text color that exists on a fill has its own `on-fill` color. This relationship is strict and `on-fill` text can only be used on its corresponding `fill` color.
 
-  </Small>
+  </Text>
 
   <Large columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
@@ -213,7 +211,7 @@ icon: PaintBrushMajor
 
 <LayoutSection card>
 
-    <Small>
+    <Text>
 
 
         ### Link
@@ -221,7 +219,7 @@ icon: PaintBrushMajor
         Link color is used exclusively for text links that appear in lines and paragraphs of text. Link color follows the same logic as Text color: it can only be used with its corresponding background or surface colors in the same color role, but can generally be used on any other background or surface if contrast is sufficient.
 
 
-    </Small>
+    </Text>
 
     <Large>
 
@@ -284,7 +282,7 @@ icon: PaintBrushMajor
 </LayoutSection>
 
 <LayoutSection card>
-  <Small>
+  <Text>
 
       ## Combining color roles
 
@@ -292,7 +290,7 @@ icon: PaintBrushMajor
 
       In some cases, the superposition of elements with different color roles is necessary, like using a critical icon button on a default card. These combinations may require additional testing to check for proper color contrast.
 
-  </Small>
+  </Text>
   <Large>
     ![Various parts of the admin with interesting color combinations](/images/design/colors/color-using-color-combining@2x.png)
   </Large>
@@ -315,13 +313,13 @@ icon: PaintBrushMajor
 
 <LayoutSection card>
 
-  <Small>
+  <Text>
 
       ## Disabled color scheme
 
       Some elements may require a disabled state. The color scheme for disabled elements is intentionally consistent throughout the admin interface, generally avoiding the use of distinct colors for each color role.
 
-  </Small>
+  </Text>
 
   <Large columnSpan={{xs: 6, sm: 6, md: 6, lg: 8, xl: 8}}>
 
@@ -345,7 +343,7 @@ icon: PaintBrushMajor
 </LayoutSection>
 
 <LayoutSection card>
-  <Small>
+  <Text>
 
       ## Using other colors
 
@@ -353,7 +351,7 @@ icon: PaintBrushMajor
 
       More information about what color roles are available and their respective purposes can be found in color roles.
 
-  </Small>
+  </Text>
   <Large variant="do">
 
     ![Other colors that are not attached to a color role used in an illustration](/images/design/colors/color-using-color-other-colors@2x.png)
@@ -363,5 +361,3 @@ icon: PaintBrushMajor
   </Large>
 
 </LayoutSection>
-
-</Stack>

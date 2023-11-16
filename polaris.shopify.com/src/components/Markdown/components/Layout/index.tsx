@@ -1,19 +1,41 @@
 import React from 'react';
-import {Grid, GridCellProps} from '@shopify/polaris';
+import {Box, Grid, GridCellProps} from '@shopify/polaris';
 import {DirectiveCard, DirectiveStatusName} from '../DirectiveCard';
 import {Card} from '../../../Card';
+import styles from './Layout.module.css';
 export function Section({
   children,
   card = false,
 }: React.PropsWithChildren<{card?: boolean}>) {
   if (!!card) {
     return (
-      <Card>
-        <Grid gap={{xs: '400'}}>{children}</Grid>
-      </Card>
+      <div className={styles.Section}>
+        <Card>
+          <Grid gap={{xs: '400'}}>{children}</Grid>
+        </Card>
+      </div>
     );
   }
-  return <Grid gap={{xs: '400'}}>{children}</Grid>;
+  return (
+    <div className={styles.Section}>
+      <Grid gap={{xs: '400'}}>{children}</Grid>
+    </div>
+  );
+}
+export function Text({
+  children,
+  variant,
+  offset,
+}: React.PropsWithChildren<SpecificProps>) {
+  return (
+    <Column
+      columnSpan={{xs: 6, md: 6, lg: 4}}
+      variant={variant}
+      offset={offset}
+    >
+      <Box padding="400">{children}</Box>
+    </Column>
+  );
 }
 export function Small({
   children,
@@ -21,7 +43,11 @@ export function Small({
   offset,
 }: React.PropsWithChildren<SpecificProps>) {
   return (
-    <Column columnSpan={{xs: 6, lg: 4}} variant={variant} offset={offset}>
+    <Column
+      columnSpan={{xs: 6, md: 3, lg: 4}}
+      variant={variant}
+      offset={offset}
+    >
       {children}
     </Column>
   );
@@ -78,7 +104,3 @@ function Column({children, variant, offset, ...props}: ColumnProps) {
   }
   return <Grid.Cell {...props}>{children}</Grid.Cell>;
 }
-
-// export function Text({children}: React.PropsWithChildren) {
-//   return <Grid.Cell column={{lg: '4'}}>{children}</Grid.Cell>;
-// }
