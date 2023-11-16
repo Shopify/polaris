@@ -64,21 +64,6 @@
   }
 }
 
-.Button[aria-expanded='true']:not(.variantPlain):not(.variantMonochromePlain):not(.variantTertiary):not(.variantPrimary) {
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
-  --pc-button-shadow: var(--p-shadow-inset-200);
-  background: var(--p-color-bg-fill-active);
-
-  .Content {
-    transform: translateY(1px);
-  }
-
-  &:hover {
-    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- reset custom property for expaned button
-    box-shadow: var(--pc-button-shadow);
-  }
-}
-
 .Content {
   font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-medium);
@@ -533,10 +518,6 @@
     color: var(--pc-button-text);
   }
 
-  &[aria-expanded='true']:is([aria-owns]) {
-    background: var(--p-color-bg-fill-transparent-active);
-  }
-
   &::before {
     display: none;
   }
@@ -980,6 +961,25 @@
   .Text:not(.removeUnderline) {
     text-decoration: underline;
   }
+}
+// Overrides for popover active / expanded states on default buttons
+.Button:is([aria-expanded='true'], [aria-owns]):not(.variantPlain):not(.variantMonochromePlain):not(.variantTertiary):not(.variantPrimary) {
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
+  --pc-button-shadow: var(--p-shadow-inset-200);
+  background: var(--p-color-bg-fill-active);
+
+  .Content {
+    transform: translateY(1px);
+  }
+
+  &:hover {
+    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- reset custom property for expaned button
+    box-shadow: var(--pc-button-shadow);
+  }
+}
+// Overrides for popover active / expanded states on plain, monochromePlain, tertiary buttons
+.Button[aria-expanded='true']:is([aria-owns]):is(.variantPlain, .variantMonochromePlain, .variantTertiary) {
+  background: var(--p-color-bg-fill-transparent-active);
 }
 
 [data-buttongroup-variant='segmented'] {
