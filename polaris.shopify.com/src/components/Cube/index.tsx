@@ -1,9 +1,9 @@
 import style from './style.module.scss';
 import {forwardRef} from 'react';
 import invariant from 'tiny-invariant';
-import {breakpointsAliases, tokenizedStyleProps} from '@shopify/polaris-tokens';
+import {breakpointsAliases} from '@shopify/polaris-tokens';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import type {Entries} from 'type-fest';
+import type {Entries, LiteralToPrimitive} from 'type-fest';
 import {
   type ResponsiveProp,
   type ResponsivePropObject,
@@ -14,14 +14,11 @@ import {
   type ResponsiveStyleProps,
   stylePropAliasFallbacks,
   disallowedCSSPropertyValues,
+  stylePropAliasNames as allAliases,
+  tokenizedStyleProps,
 } from './generated-data';
 
 type CubeProps = ResponsiveStyleProps;
-
-// Extract a unique set of just the alias names
-const allAliases = Array.from(
-  new Set(Object.values(stylePropAliasFallbacks).flat()),
-);
 
 function coerceToObjectSyntax<T extends string | number | undefined = string>(
   responsiveProp: ResponsiveProp<T>,
@@ -271,7 +268,7 @@ function convertStylePropsToCSSProperties(
      const properyValue = display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
       */
 
-    let cssVar = xsValue;
+    let cssVar: LiteralToPrimitive<typeof xsValue> = xsValue;
     // Nest the fallbacks from smallest on the inside to largest on the outside.
     // Order is important, so we iterate over the breakpointsAliases which has
     // a known order rather than the style prop's keys which have an unknown

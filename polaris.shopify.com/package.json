@@ -74,7 +74,6 @@
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.2.0",
     "@types/uuid": "^9.0.1",
-    "@webref/css": "^6.8.3",
     "babel-plugin-preval": "^5.1.0",
     "backstopjs": "^6.1.4",
     "camelcase": "^8.0.0",

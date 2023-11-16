@@ -5764,11 +5764,6 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@webref/css@^6.8.3":
-  version "6.8.3"
-  resolved "https://registry.yarnpkg.com/@webref/css/-/css-6.8.3.tgz#fde11d1ae496033fdb8d25777236f069a883bdcf"
-  integrity sha512-4RC2WUh1YLJaSNPranPgUJ5USY4/0/dIzZIDQvNQsQqxIV+NyOFX68xRjFr0lNTafdDVy4snDfpXzN53DwOt/Q==
-
 "@xobotyi/scrollbar-width@^1.9.5":
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/@xobotyi/scrollbar-width/-/scrollbar-width-1.9.5.tgz#80224a6919272f405b87913ca13b92929bdf3c4d"
