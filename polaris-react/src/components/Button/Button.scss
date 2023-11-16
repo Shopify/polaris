@@ -533,6 +533,10 @@
     color: var(--pc-button-text);
   }
 
+  &[aria-expanded='true']:is([aria-owns]) {
+    background: var(--p-color-bg-fill-transparent-active);
+  }
+
   &::before {
     display: none;
   }
