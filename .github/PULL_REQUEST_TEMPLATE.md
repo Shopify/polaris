@@ -22,6 +22,13 @@ Fixes #0000 <!-- link to issue if one exists -->
   Before / after screenshots are appreciated for UI changes. Make sure to include alt text that describes the screenshot.
 
   Include a video if your changes include interactive content.
+
+  If you include an animated gif showing your change, wrapping it in a details tag is recommended. Gifs usually autoplay, which can cause accessibility issues for people reviewing your PR:
+
+  <details>
+    <summary>Summary of your gif(s)</summary>
+    <img src="..." alt="Description of what the gif shows">
+  </details>
 -->
 
 ### How to 🎩
