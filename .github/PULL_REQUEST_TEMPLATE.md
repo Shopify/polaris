@@ -3,7 +3,7 @@
   - Prefix it with [ComponentName] (if applicable), for example: [Button]
   - Start with a verb, for example: Add, Delete, Improve, Fix…
   - Give as much context as necessary and as little as possible
-  - Prefix it with [WIP] while it’s a work in progress
+  - Open it as a draft if it’s a work in progress
 -->
 
 ### WHY are these changes introduced?
@@ -21,47 +21,25 @@ Fixes #0000 <!-- link to issue if one exists -->
 
   Before / after screenshots are appreciated for UI changes. Make sure to include alt text that describes the screenshot.
 
+  Include a video if your changes include interactive content.
+
   If you include an animated gif showing your change, wrapping it in a details tag is recommended. Gifs usually autoplay, which can cause accessibility issues for people reviewing your PR:
 
-    <details>
-      <summary>Summary of your gif(s)</summary>
-      <img src="..." alt="Description of what the gif shows">
-    </details>
+  <details>
+    <summary>Summary of your gif(s)</summary>
+    <img src="..." alt="Description of what the gif shows">
+  </details>
 -->
-
-<!-- ℹ️ Delete the following for small / trivial changes -->
 
 ### How to 🎩
 
-🖥 [Local development instructions](https://github.com/Shopify/polaris/blob/main/README.md#local-development)
+🖥 [Local development instructions](https://github.com/Shopify/polaris/blob/main/README.md#install-dependencies-and-build-workspaces)
 🗒 [General tophatting guidelines](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md)
 📄 [Changelog guidelines](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#changelog)
 
-<!--
-  Give as much information as needed to experiment with the component
-  in the playground.
--->
-
-<details>
-<summary>Copy-paste this code in <code>playground/Playground.tsx</code>:</summary>
-
-```jsx
-import React from 'react';
-import {Page} from '../src';
-
-export function Playground() {
-  return (
-    <Page title="Playground">
-      {/* Add the code you want to test in here */}
-    </Page>
-  );
-}
-```
-
-</details>
-
 ### 🎩 checklist
 
+- [ ] Tested a [snapshot](https://github.com/Shopify/polaris/blob/main/documentation/Releasing.md#-snapshot-releases)
 - [ ] Tested on [mobile](https://github.com/Shopify/polaris/blob/main/documentation/Tophatting.md#cross-browser-testing)
 - [ ] Tested on [multiple browsers](https://help.shopify.com/en/manual/shopify-admin/supported-browsers)
 - [ ] Tested for [accessibility](https://github.com/Shopify/polaris/blob/main/documentation/Accessibility%20testing.md)
