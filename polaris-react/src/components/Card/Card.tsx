@@ -27,7 +27,9 @@ export interface CardProps {
    * padding={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
    */
   padding?: Spacing;
-  /** Border radius value above a set breakpoint */
+  /** Border radius value above a set breakpoint
+   * @default 'sm'
+   */
   roundedAbove?: BreakpointsAlias;
 }
 
@@ -35,16 +37,11 @@ export const Card = ({
   children,
   background = 'bg-surface',
   padding = {xs: '400'},
-  roundedAbove,
+  roundedAbove = 'sm',
 }: CardProps) => {
   const breakpoints = useBreakpoints();
   const defaultBorderRadius: BorderRadiusAliasOrScale = '300';
-
-  let hasBorderRadius = !roundedAbove;
-
-  if (roundedAbove && breakpoints[`${roundedAbove}Up`]) {
-    hasBorderRadius = true;
-  }
+  const hasBorderRadius = Boolean(breakpoints[`${roundedAbove}Up`]);
 
   return (
     <WithinContentContext.Provider value>
