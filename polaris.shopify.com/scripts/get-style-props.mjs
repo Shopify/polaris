@@ -2,12 +2,15 @@ import fs from 'fs/promises';
 import path from 'path';
 import * as url from 'url';
 import {createRequire} from 'node:module';
-import * as ts from 'typescript';
+import _endent from 'endent';
+import ts from 'typescript';
 import {
   tokenizedStyleProps as tokenizedCSSStyleProps,
   metaThemeDefault,
   toPx,
 } from '@shopify/polaris-tokens';
+
+const endent = _endent.default;
 
 // Get all breakpoints massaged into a more useful set of data
 const breakpoints = Object.entries(metaThemeDefault.breakpoints).map(
@@ -19,7 +22,7 @@ const breakpoints = Object.entries(metaThemeDefault.breakpoints).map(
   }),
 );
 
-const cssLonghandProperties = getCSSTypeLonghandPropertyNames();
+const cssLonghandProperties = getCSSTypeLonghandProperties();
 
 // TODO: Confirm this list is complete or source it from mdn/webref data somehow
 const positionalCSSProperties = [
@@ -277,10 +280,12 @@ await tsFile.close();
 // -----
 
 function verifyAliases() {
+  // To avoid ambiguity and ensure data integrity, we do not allow aliases to
+  // have the same name as an allowed CSS property. For example, accidentally
+  // aliasing `rowGap` to `colGap` instead of `gap` will error (because `colGap`
+  // is an allowed CSS Property).
   const aliasCollisions = [];
-  for (let longhandProperty of cssLonghandProperties) {
-    // To avoid ambiguity and ensure data integrity, we do not allow aliases
-    // to have the same name as an allowed CSS property.
+  for (let longhandProperty in cssLonghandProperties) {
     if (
       !disallowedCSSProperties.includes(longhandProperty) &&
       allAliases.includes(longhandProperty)
@@ -289,25 +294,74 @@ function verifyAliases() {
     }
   }
 
-  if (aliasCollisions.length) {
-    console.error(
-      `The following CSS properties collide with style prop aliases. Did you mean to add the CSS properties to disallowedCSSProperties[]?
+  // To simplify our types and avoid the dreaded TS Error "TS2590: Expression
+  // produces a union type that is too complex to represent", we ensure all CSS
+  // properties referencing an alias have the same type.
+  // Without this check, we'd have to do an intersection of each of the CSS
+  // Properties:
+  // ```
+  // borderColor: SupportedCSSStyleProps['borderInlineStartColor']
+  //   & SupportedCSSStyleProps['borderInlineEndColor']
+  //   & SupportedCSSStyleProps['borderBlockStartColor']
+  //   & SupportedCSSStyleProps['borderBlockEndColor'];
+  // ```
+  // Usually this is fine as the types are simple. But for bigger types like
+  // `Color`, there are
+  const typeMismatches = [];
+  Object.entries(inverseAliases).forEach(([alias, props]) => {
+    // Compare the types of every property to ensure there's at least some
+    // overlap
+    if (
+      getArrayIntersection(...props.map((prop) => cssLonghandProperties[prop]))
+        .length === 0
+    ) {
+      typeMismatches.push(alias);
+    }
+  });
 
-${aliasCollisions.map((prop) => `${prop}`).join('\n')}`,
-    );
+  if (aliasCollisions.length || typeMismatches.length) {
+    if (aliasCollisions.length) {
+      console.error(
+        endent`
+          The following CSS properties collide with style prop aliases:
 
-    process.exit(-1);
+          ${aliasCollisions.join(', ')}
+
+          Aliases which happen to have the same name as a CSS property must be added to \`disallowedCSSProperties[]\` to ensure correct typings.
+        `,
+      );
+    }
+
+    if (typeMismatches.length) {
+      console.error(
+        endent`
+          Cannot use aliases as fallback; constituent CSS Properties do not have any overlap
+
+          ${typeMismatches
+            .map(
+              (alias) => endent`
+                Alias \`${alias}\` is a fallback for:
+                  ${inverseAliases[alias]
+                    .map(
+                      (prop) =>
+                        `${prop}: ${cssLonghandProperties[prop].join(' | ')};`,
+                    )
+                    .join('\n  ')}
+              `,
+            )
+            .join('\n\n')}
+        `,
+      );
+      process.exit(-1);
+    }
   }
 }
 
-// TODO, use this for:
-// 1. Ensure there are no aliases overriding longhand CSS properties
-// 2. Filter down the tokenized property names exported from tokens lib
-function getCSSTypeLonghandPropertyNames() {
+function getCSSTypeLonghandProperties() {
   const require = createRequire(import.meta.url);
   const cssTypeDefinitionFile = require.resolve('csstype/index.d.ts');
 
-  const program = ts.default.createProgram([cssTypeDefinitionFile], {});
+  const program = ts.createProgram([cssTypeDefinitionFile], {});
   const checker = program.getTypeChecker();
   const sourceFile = program.getSourceFile(cssTypeDefinitionFile);
   const exports = checker.getExportsOfModule(
@@ -319,14 +373,38 @@ function getCSSTypeLonghandPropertyNames() {
 
   let type = checker.getDeclaredTypeOfSymbol(defaultExportSymbol);
 
-  return type.getProperties().map(({name}) => name);
+  const typeToString = (type) => {
+    const typeString = checker.typeToString(
+      type,
+      undefined,
+      ts.TypeFormatFlags.NoTruncation |
+        ts.TypeFormatFlags.UseSingleQuotesForStringLiteralType |
+        ts.TypeFormatFlags.NoTypeReduction,
+    );
+    if (type.isUnionOrIntersection()) {
+      return `(${typeString})`;
+    }
+    return typeString;
+  };
+
+  return type.getProperties().reduce((acc, {name, valueDeclaration}) => {
+    const valueType = checker.getTypeAtLocation(valueDeclaration);
+    // Pretty much everything from csstype is a union, so this is the hot path
+    if (valueType.isUnion()) {
+      acc[name] = valueType.types.map((unionType) => typeToString(unionType));
+    } else {
+      // Pretend it's a union of a single type when it's not a union
+      acc[name] = [typeToString(valueType)];
+    }
+    return acc;
+  }, {});
 }
 
 async function writeTSProperties(tsFile) {
   const generateTSPickList = (keys, indent) => {
     // We add additional single quotes here because the second argument for Pick
     // is a union of string literal types
-    return keys.map((key) => `'${key}'`).join(` |\n${' '.repeat(indent)}`);
+    return keys.join(`\n${' '.repeat(indent)}| `);
   };
 
   const joinEnglish = (arr) => {
@@ -339,6 +417,39 @@ async function writeTSProperties(tsFile) {
     }
 
     return `${joined} and ${arr[arr.length - 1]}`;
+  };
+
+  const createMinimumCommonUnionForAlias = (styleProps) => {
+    const types = styleProps.map((prop) => cssLonghandProperties[prop]);
+    if (arraysAreEqualSets(...types)) {
+      // If all the types are the same, just refernce the first from the
+      // list
+      return `SupportedStyleProps['${styleProps[0]}']`;
+    }
+
+    // Otherwise, reduce it down to a minimum set by excluding all the
+    // properties not shared
+    const typeIntersection = getArrayIntersection(...types);
+    if (typeIntersection.length === 0) {
+      return `never`;
+    }
+
+    const symetricalDifference = getArrayDifference(
+      types.flat(),
+      typeIntersection,
+    );
+
+    const typesToRemoveFromFirst = getArrayIntersection(
+      types[0],
+      symetricalDifference,
+    );
+
+    return endent`
+      Exclude<
+          SupportedStyleProps['${styleProps[0]}'],
+          ${generateTSPickList(typesToRemoveFromFirst, 0)}
+        >
+    `;
   };
 
   await tsFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
@@ -473,22 +584,24 @@ export type ResponsiveStyleProps = {
 *   paddingBlockEnd: '800',
 * }}
 */
-// TODO: Wrap these in PropertyValue<type> | (string & {})?
-type StylePropAliases = {${Object.entries(inverseAliases)
+interface StylePropAliases {${Object.entries(inverseAliases)
     .map(
       ([alias, styleProps]) => `
   /**
-   * Fallback for ${joinEnglish(styleProps.map((prop) => `\`${prop}\``))}:
+   * Fallback for ${joinEnglish(styleProps.map((prop) => `\`${prop}\``))}.
+   *
+   * \`\`\`
    * ${styleProps
      .map(
        (prop) =>
-         `props.${prop} = props.${prop} ?? ${stylePropAliasFallbacks[prop]
+         `${prop} = props.${prop} ?? ${stylePropAliasFallbacks[prop]
            .map((fallbackProp) => `props.${fallbackProp}`)
-           .join(' ?? ')}`,
+           .join(' ?? ')};`,
      )
      .join('\n   * ')}
+   * \`\`\`
    */
-  ${alias}?: SupportedStyleProps['${styleProps[0]}'];`,
+  ${alias}?: ${createMinimumCommonUnionForAlias(styleProps, alias)};`,
     )
     .join('\n')}
 };
@@ -498,9 +611,11 @@ type StylePropAliases = {${Object.entries(inverseAliases)
  * typed to a different value.
  */
 type DisallowedStandardLonghandProperties = ${generateTSPickList(
-    disallowedCSSProperties.filter((prop) =>
-      cssLonghandProperties.includes(prop),
-    ),
+    disallowedCSSProperties
+      .filter((prop) => Object.hasOwn(cssLonghandProperties, prop))
+      // We add additional single quotes here because the second argument for
+      // Omit is a union of string literal types
+      .map((prop) => `'${prop}'`),
     2,
   )};
 
@@ -536,12 +651,23 @@ export const disallowedCSSPropertyValues = ${JSON.stringify(
     2,
   )} satisfies Globals[];
 
+// TODO, make this a map to token group names:
+// {
+//   borderBlockStartColor: 'color',
+// }
+// or, maybe:
+// {
+//   color: ['borderBlockStartColor', ...]
+// }
+// has to come from token lib though
+// Then use that in Cube to map to the correct token group
 export const tokenizedStyleProps = [
   // Longhand CSS Style Props
   ${tokenizedCSSStyleProps
     .filter(
       (prop) =>
-        cssLonghandProperties.includes(prop) && !allAliases.includes(prop),
+        Object.hasOwn(cssLonghandProperties, prop) &&
+        !allAliases.includes(prop),
     )
     .map((prop) => `'${prop}'`)
     .join(',\n  ')},
@@ -588,4 +714,54 @@ ${breakpointsWithoutXs
 }`,
   )
   .join('\n')}`);
+}
+
+function getArrayIntersection(...arrs) {
+  // Start with a union of all elements.
+  const union = new Set(arrs.flat());
+
+  // Then calculate the intersection of the sets.
+  // Start with the full union and iteratively remove items which aren't in
+  // individual sets.
+  const intersection = new Set(union);
+  for (const arr of arrs) {
+    for (const elem of intersection) {
+      if (!arr.includes(elem)) {
+        intersection.delete(elem);
+      }
+    }
+  }
+
+  return Array.from(intersection);
+}
+
+function getArrayDifference(...arrs) {
+  // Start with the first array
+  const union = new Set(arrs[0]);
+
+  // Then remove elements from every other array
+  arrs.slice(1).forEach((arr) => {
+    for (const elem of arr) {
+      union.delete(elem);
+    }
+  });
+
+  return Array.from(union);
+}
+
+function arraysAreEqualSets(...arrs) {
+  const firstSet = new Set(arrs[0]);
+
+  return arrs.slice(1).every((arr) => {
+    const thisSet = new Set(arr);
+    if (firstSet.size !== thisSet.size) {
+      return false;
+    }
+    for (const elem of firstSet) {
+      if (!thisSet.has(elem)) {
+        return false;
+      }
+    }
+    return true;
+  });
 }

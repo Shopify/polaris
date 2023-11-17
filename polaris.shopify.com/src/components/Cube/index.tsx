@@ -1,9 +1,14 @@
 import style from './style.module.scss';
-import {forwardRef} from 'react';
+import React, {forwardRef} from 'react';
 import invariant from 'tiny-invariant';
 import {breakpointsAliases} from '@shopify/polaris-tokens';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import type {Entries, LiteralToPrimitive} from 'type-fest';
+import type {
+  Entries,
+  LiteralToPrimitive,
+  OmitIndexSignature,
+  Simplify,
+} from 'type-fest';
 import {
   type ResponsiveProp,
   type ResponsivePropObject,
@@ -18,7 +23,7 @@ import {
   tokenizedStyleProps,
 } from './generated-data';
 
-type CubeProps = ResponsiveStyleProps;
+type CubeProps = React.PropsWithChildren<ResponsiveStyleProps>;
 
 function coerceToObjectSyntax<T extends string | number | undefined = string>(
   responsiveProp: ResponsiveProp<T>,
@@ -287,7 +292,22 @@ function convertStylePropsToCSSProperties(
   }, {});
 }
 
-type PolymorphicCube = Polymorphic.ForwardRefComponent<any, CubeProps>;
+// Ensure no index signatures are accidentally introduced into the props list by
+// omitting `[x: string]: unknown` keys (but keep literal keys `foo: string`,
+// etc).
+// Polymorphic.ForwardRefComponent suffers from this occasionally.
+type StrictProps<F> = F extends (props: infer Props) => infer Return
+  ? (props: OmitIndexSignature<Props>) => Return
+  : unknown;
+
+// Flatten the props object for better IDE integration
+type SimplifyProps<F> = F extends (props: infer Props) => infer Return
+  ? (props: Simplify<Props>) => Return
+  : unknown;
+
+type PolymorphicCube = SimplifyProps<
+  StrictProps<Polymorphic.ForwardRefComponent<any, CubeProps>>
+>;
 
 const stylePropDefaults: ResponsiveStyleProps = {
   borderStyle: 'solid',

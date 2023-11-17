@@ -130,554 +130,814 @@ export type ResponsiveStyleProps = {
 *   paddingBlockEnd: '800',
 * }}
 */
-// TODO: Wrap these in PropertyValue<type> | (string & {})?
-type StylePropAliases = {
+interface StylePropAliases {
   /**
-   * Fallback for `rowGap` and `columnGap`:
-   * props.rowGap = props.rowGap ?? props.gap
-   * props.columnGap = props.columnGap ?? props.gap
+   * Fallback for `rowGap` and `columnGap`.
+   *
+   * ```
+   * rowGap = props.rowGap ?? props.gap;
+   * columnGap = props.columnGap ?? props.gap;
+   * ```
    */
   gap?: SupportedStyleProps['rowGap'];
 
   /**
-   * Fallback for `paddingInlineStart`:
-   * props.paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding
+   * Fallback for `paddingInlineStart`.
+   *
+   * ```
+   * paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding;
+   * ```
    */
   paddingLeft?: SupportedStyleProps['paddingInlineStart'];
 
   /**
-   * Fallback for `paddingInlineStart` and `paddingInlineEnd`:
-   * props.paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding
-   * props.paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding
+   * Fallback for `paddingInlineStart` and `paddingInlineEnd`.
+   *
+   * ```
+   * paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding;
+   * paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding;
+   * ```
    */
   paddingInline?: SupportedStyleProps['paddingInlineStart'];
 
   /**
-   * Fallback for `paddingInlineStart`, `paddingInlineEnd`, `paddingBlockStart` and `paddingBlockEnd`:
-   * props.paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding
-   * props.paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding
-   * props.paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding
-   * props.paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding
+   * Fallback for `paddingInlineStart`, `paddingInlineEnd`, `paddingBlockStart` and `paddingBlockEnd`.
+   *
+   * ```
+   * paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding;
+   * paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding;
+   * paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding;
+   * paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding;
+   * ```
    */
   padding?: SupportedStyleProps['paddingInlineStart'];
 
   /**
-   * Fallback for `paddingInlineEnd`:
-   * props.paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding
+   * Fallback for `paddingInlineEnd`.
+   *
+   * ```
+   * paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding;
+   * ```
    */
   paddingRight?: SupportedStyleProps['paddingInlineEnd'];
 
   /**
-   * Fallback for `paddingBlockStart`:
-   * props.paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding
+   * Fallback for `paddingBlockStart`.
+   *
+   * ```
+   * paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding;
+   * ```
    */
   paddingTop?: SupportedStyleProps['paddingBlockStart'];
 
   /**
-   * Fallback for `paddingBlockStart` and `paddingBlockEnd`:
-   * props.paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding
-   * props.paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding
+   * Fallback for `paddingBlockStart` and `paddingBlockEnd`.
+   *
+   * ```
+   * paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding;
+   * paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding;
+   * ```
    */
   paddingBlock?: SupportedStyleProps['paddingBlockStart'];
 
   /**
-   * Fallback for `paddingBlockEnd`:
-   * props.paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding
+   * Fallback for `paddingBlockEnd`.
+   *
+   * ```
+   * paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding;
+   * ```
    */
   paddingBottom?: SupportedStyleProps['paddingBlockEnd'];
 
   /**
-   * Fallback for `marginInlineStart`:
-   * props.marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin
+   * Fallback for `marginInlineStart`.
+   *
+   * ```
+   * marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin;
+   * ```
    */
   marginLeft?: SupportedStyleProps['marginInlineStart'];
 
   /**
-   * Fallback for `marginInlineStart` and `marginInlineEnd`:
-   * props.marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin
-   * props.marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin
+   * Fallback for `marginInlineStart` and `marginInlineEnd`.
+   *
+   * ```
+   * marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin;
+   * marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin;
+   * ```
    */
   marginInline?: SupportedStyleProps['marginInlineStart'];
 
   /**
-   * Fallback for `marginInlineStart`, `marginInlineEnd`, `marginBlockStart` and `marginBlockEnd`:
-   * props.marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin
-   * props.marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin
-   * props.marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin
-   * props.marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin
+   * Fallback for `marginInlineStart`, `marginInlineEnd`, `marginBlockStart` and `marginBlockEnd`.
+   *
+   * ```
+   * marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin;
+   * marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin;
+   * marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin;
+   * marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin;
+   * ```
    */
   margin?: SupportedStyleProps['marginInlineStart'];
 
   /**
-   * Fallback for `marginInlineEnd`:
-   * props.marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin
+   * Fallback for `marginInlineEnd`.
+   *
+   * ```
+   * marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin;
+   * ```
    */
   marginRight?: SupportedStyleProps['marginInlineEnd'];
 
   /**
-   * Fallback for `marginBlockStart`:
-   * props.marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin
+   * Fallback for `marginBlockStart`.
+   *
+   * ```
+   * marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin;
+   * ```
    */
   marginTop?: SupportedStyleProps['marginBlockStart'];
 
   /**
-   * Fallback for `marginBlockStart` and `marginBlockEnd`:
-   * props.marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin
-   * props.marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin
+   * Fallback for `marginBlockStart` and `marginBlockEnd`.
+   *
+   * ```
+   * marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin;
+   * marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin;
+   * ```
    */
   marginBlock?: SupportedStyleProps['marginBlockStart'];
 
   /**
-   * Fallback for `marginBlockEnd`:
-   * props.marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin
+   * Fallback for `marginBlockEnd`.
+   *
+   * ```
+   * marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin;
+   * ```
    */
   marginBottom?: SupportedStyleProps['marginBlockEnd'];
 
   /**
-   * Fallback for `inlineSize`:
-   * props.inlineSize = props.inlineSize ?? props.width ?? props.size
+   * Fallback for `inlineSize`.
+   *
+   * ```
+   * inlineSize = props.inlineSize ?? props.width ?? props.size;
+   * ```
    */
   width?: SupportedStyleProps['inlineSize'];
 
   /**
-   * Fallback for `inlineSize` and `blockSize`:
-   * props.inlineSize = props.inlineSize ?? props.width ?? props.size
-   * props.blockSize = props.blockSize ?? props.height ?? props.size
+   * Fallback for `inlineSize` and `blockSize`.
+   *
+   * ```
+   * inlineSize = props.inlineSize ?? props.width ?? props.size;
+   * blockSize = props.blockSize ?? props.height ?? props.size;
+   * ```
    */
   size?: SupportedStyleProps['inlineSize'];
 
   /**
-   * Fallback for `blockSize`:
-   * props.blockSize = props.blockSize ?? props.height ?? props.size
+   * Fallback for `blockSize`.
+   *
+   * ```
+   * blockSize = props.blockSize ?? props.height ?? props.size;
+   * ```
    */
   height?: SupportedStyleProps['blockSize'];
 
   /**
-   * Fallback for `minInlineSize`:
-   * props.minInlineSize = props.minInlineSize ?? props.minWidth ?? props.minSize
+   * Fallback for `minInlineSize`.
+   *
+   * ```
+   * minInlineSize = props.minInlineSize ?? props.minWidth ?? props.minSize;
+   * ```
    */
   minWidth?: SupportedStyleProps['minInlineSize'];
 
   /**
-   * Fallback for `minInlineSize` and `minBlockSize`:
-   * props.minInlineSize = props.minInlineSize ?? props.minWidth ?? props.minSize
-   * props.minBlockSize = props.minBlockSize ?? props.minHeight ?? props.minSize
+   * Fallback for `minInlineSize` and `minBlockSize`.
+   *
+   * ```
+   * minInlineSize = props.minInlineSize ?? props.minWidth ?? props.minSize;
+   * minBlockSize = props.minBlockSize ?? props.minHeight ?? props.minSize;
+   * ```
    */
-  minSize?: SupportedStyleProps['minInlineSize'];
+  minSize?: Exclude<
+    SupportedStyleProps['minInlineSize'],
+    '-moz-fit-content'
+  >;
 
   /**
-   * Fallback for `minBlockSize`:
-   * props.minBlockSize = props.minBlockSize ?? props.minHeight ?? props.minSize
+   * Fallback for `minBlockSize`.
+   *
+   * ```
+   * minBlockSize = props.minBlockSize ?? props.minHeight ?? props.minSize;
+   * ```
    */
   minHeight?: SupportedStyleProps['minBlockSize'];
 
   /**
-   * Fallback for `maxInlineSize`:
-   * props.maxInlineSize = props.maxInlineSize ?? props.maxWidth ?? props.maxSize
+   * Fallback for `maxInlineSize`.
+   *
+   * ```
+   * maxInlineSize = props.maxInlineSize ?? props.maxWidth ?? props.maxSize;
+   * ```
    */
   maxWidth?: SupportedStyleProps['maxInlineSize'];
 
   /**
-   * Fallback for `maxInlineSize` and `maxBlockSize`:
-   * props.maxInlineSize = props.maxInlineSize ?? props.maxWidth ?? props.maxSize
-   * props.maxBlockSize = props.maxBlockSize ?? props.maxHeight ?? props.maxSize
+   * Fallback for `maxInlineSize` and `maxBlockSize`.
+   *
+   * ```
+   * maxInlineSize = props.maxInlineSize ?? props.maxWidth ?? props.maxSize;
+   * maxBlockSize = props.maxBlockSize ?? props.maxHeight ?? props.maxSize;
+   * ```
    */
-  maxSize?: SupportedStyleProps['maxInlineSize'];
+  maxSize?: Exclude<
+    SupportedStyleProps['maxInlineSize'],
+    '-moz-fit-content'
+  >;
 
   /**
-   * Fallback for `maxBlockSize`:
-   * props.maxBlockSize = props.maxBlockSize ?? props.maxHeight ?? props.maxSize
+   * Fallback for `maxBlockSize`.
+   *
+   * ```
+   * maxBlockSize = props.maxBlockSize ?? props.maxHeight ?? props.maxSize;
+   * ```
    */
   maxHeight?: SupportedStyleProps['maxBlockSize'];
 
   /**
-   * Fallback for `containIntrinsicInlineSize`:
-   * props.containIntrinsicInlineSize = props.containIntrinsicInlineSize ?? props.containIntrinsicWidth ?? props.containIntrinsicSize
+   * Fallback for `containIntrinsicInlineSize`.
+   *
+   * ```
+   * containIntrinsicInlineSize = props.containIntrinsicInlineSize ?? props.containIntrinsicWidth ?? props.containIntrinsicSize;
+   * ```
    */
   containIntrinsicWidth?: SupportedStyleProps['containIntrinsicInlineSize'];
 
   /**
-   * Fallback for `containIntrinsicInlineSize` and `containIntrinsicBlockSize`:
-   * props.containIntrinsicInlineSize = props.containIntrinsicInlineSize ?? props.containIntrinsicWidth ?? props.containIntrinsicSize
-   * props.containIntrinsicBlockSize = props.containIntrinsicBlockSize ?? props.containIntrinsicHeight ?? props.containIntrinsicSize
+   * Fallback for `containIntrinsicInlineSize` and `containIntrinsicBlockSize`.
+   *
+   * ```
+   * containIntrinsicInlineSize = props.containIntrinsicInlineSize ?? props.containIntrinsicWidth ?? props.containIntrinsicSize;
+   * containIntrinsicBlockSize = props.containIntrinsicBlockSize ?? props.containIntrinsicHeight ?? props.containIntrinsicSize;
+   * ```
    */
   containIntrinsicSize?: SupportedStyleProps['containIntrinsicInlineSize'];
 
   /**
-   * Fallback for `containIntrinsicBlockSize`:
-   * props.containIntrinsicBlockSize = props.containIntrinsicBlockSize ?? props.containIntrinsicHeight ?? props.containIntrinsicSize
+   * Fallback for `containIntrinsicBlockSize`.
+   *
+   * ```
+   * containIntrinsicBlockSize = props.containIntrinsicBlockSize ?? props.containIntrinsicHeight ?? props.containIntrinsicSize;
+   * ```
    */
   containIntrinsicHeight?: SupportedStyleProps['containIntrinsicBlockSize'];
 
   /**
-   * Fallback for `overflowInline`:
-   * props.overflowInline = props.overflowInline ?? props.overflowX ?? props.overflow
+   * Fallback for `overflowInline`.
+   *
+   * ```
+   * overflowInline = props.overflowInline ?? props.overflowX ?? props.overflow;
+   * ```
    */
   overflowX?: SupportedStyleProps['overflowInline'];
 
   /**
-   * Fallback for `overflowInline` and `overflowBlock`:
-   * props.overflowInline = props.overflowInline ?? props.overflowX ?? props.overflow
-   * props.overflowBlock = props.overflowBlock ?? props.overflowY ?? props.overflow
+   * Fallback for `overflowInline` and `overflowBlock`.
+   *
+   * ```
+   * overflowInline = props.overflowInline ?? props.overflowX ?? props.overflow;
+   * overflowBlock = props.overflowBlock ?? props.overflowY ?? props.overflow;
+   * ```
    */
   overflow?: SupportedStyleProps['overflowInline'];
 
   /**
-   * Fallback for `overflowBlock`:
-   * props.overflowBlock = props.overflowBlock ?? props.overflowY ?? props.overflow
+   * Fallback for `overflowBlock`.
+   *
+   * ```
+   * overflowBlock = props.overflowBlock ?? props.overflowY ?? props.overflow;
+   * ```
    */
   overflowY?: SupportedStyleProps['overflowBlock'];
 
   /**
-   * Fallback for `overscrollBehaviorInline`:
-   * props.overscrollBehaviorInline = props.overscrollBehaviorInline ?? props.overscrollBehaviorX ?? props.overscrollBehavior
+   * Fallback for `overscrollBehaviorInline`.
+   *
+   * ```
+   * overscrollBehaviorInline = props.overscrollBehaviorInline ?? props.overscrollBehaviorX ?? props.overscrollBehavior;
+   * ```
    */
   overscrollBehaviorX?: SupportedStyleProps['overscrollBehaviorInline'];
 
   /**
-   * Fallback for `overscrollBehaviorInline` and `overscrollBehaviorBlock`:
-   * props.overscrollBehaviorInline = props.overscrollBehaviorInline ?? props.overscrollBehaviorX ?? props.overscrollBehavior
-   * props.overscrollBehaviorBlock = props.overscrollBehaviorBlock ?? props.overscrollBehaviorY ?? props.overscrollBehavior
+   * Fallback for `overscrollBehaviorInline` and `overscrollBehaviorBlock`.
+   *
+   * ```
+   * overscrollBehaviorInline = props.overscrollBehaviorInline ?? props.overscrollBehaviorX ?? props.overscrollBehavior;
+   * overscrollBehaviorBlock = props.overscrollBehaviorBlock ?? props.overscrollBehaviorY ?? props.overscrollBehavior;
+   * ```
    */
   overscrollBehavior?: SupportedStyleProps['overscrollBehaviorInline'];
 
   /**
-   * Fallback for `overscrollBehaviorBlock`:
-   * props.overscrollBehaviorBlock = props.overscrollBehaviorBlock ?? props.overscrollBehaviorY ?? props.overscrollBehavior
+   * Fallback for `overscrollBehaviorBlock`.
+   *
+   * ```
+   * overscrollBehaviorBlock = props.overscrollBehaviorBlock ?? props.overscrollBehaviorY ?? props.overscrollBehavior;
+   * ```
    */
   overscrollBehaviorY?: SupportedStyleProps['overscrollBehaviorBlock'];
 
   /**
-   * Fallback for `backgroundPositionX` and `backgroundPositionY`:
-   * props.backgroundPositionX = props.backgroundPositionX ?? props.backgroundPosition
-   * props.backgroundPositionY = props.backgroundPositionY ?? props.backgroundPosition
+   * Fallback for `backgroundPositionX` and `backgroundPositionY`.
+   *
+   * ```
+   * backgroundPositionX = props.backgroundPositionX ?? props.backgroundPosition;
+   * backgroundPositionY = props.backgroundPositionY ?? props.backgroundPosition;
+   * ```
    */
-  backgroundPosition?: SupportedStyleProps['backgroundPositionX'];
+  backgroundPosition?: Exclude<
+    SupportedStyleProps['backgroundPositionX'],
+    'left'
+    | 'right'
+    | 'x-end'
+    | 'x-start'
+  >;
 
   /**
-   * Fallback for `borderStartStartRadius`:
-   * props.borderStartStartRadius = props.borderStartStartRadius ?? props.borderTopLeftRadius ?? props.borderRadius
+   * Fallback for `borderStartStartRadius`.
+   *
+   * ```
+   * borderStartStartRadius = props.borderStartStartRadius ?? props.borderTopLeftRadius ?? props.borderRadius;
+   * ```
    */
   borderTopLeftRadius?: SupportedStyleProps['borderStartStartRadius'];
 
   /**
-   * Fallback for `borderStartStartRadius`, `borderStartEndRadius`, `borderEndStartRadius` and `borderEndEndRadius`:
-   * props.borderStartStartRadius = props.borderStartStartRadius ?? props.borderTopLeftRadius ?? props.borderRadius
-   * props.borderStartEndRadius = props.borderStartEndRadius ?? props.borderTopRightRadius ?? props.borderRadius
-   * props.borderEndStartRadius = props.borderEndStartRadius ?? props.borderBottomLeftRadius ?? props.borderRadius
-   * props.borderEndEndRadius = props.borderEndEndRadius ?? props.borderBottomRightRadius ?? props.borderRadius
+   * Fallback for `borderStartStartRadius`, `borderStartEndRadius`, `borderEndStartRadius` and `borderEndEndRadius`.
+   *
+   * ```
+   * borderStartStartRadius = props.borderStartStartRadius ?? props.borderTopLeftRadius ?? props.borderRadius;
+   * borderStartEndRadius = props.borderStartEndRadius ?? props.borderTopRightRadius ?? props.borderRadius;
+   * borderEndStartRadius = props.borderEndStartRadius ?? props.borderBottomLeftRadius ?? props.borderRadius;
+   * borderEndEndRadius = props.borderEndEndRadius ?? props.borderBottomRightRadius ?? props.borderRadius;
+   * ```
    */
   borderRadius?: SupportedStyleProps['borderStartStartRadius'];
 
   /**
-   * Fallback for `borderStartEndRadius`:
-   * props.borderStartEndRadius = props.borderStartEndRadius ?? props.borderTopRightRadius ?? props.borderRadius
+   * Fallback for `borderStartEndRadius`.
+   *
+   * ```
+   * borderStartEndRadius = props.borderStartEndRadius ?? props.borderTopRightRadius ?? props.borderRadius;
+   * ```
    */
   borderTopRightRadius?: SupportedStyleProps['borderStartEndRadius'];
 
   /**
-   * Fallback for `borderEndStartRadius`:
-   * props.borderEndStartRadius = props.borderEndStartRadius ?? props.borderBottomLeftRadius ?? props.borderRadius
+   * Fallback for `borderEndStartRadius`.
+   *
+   * ```
+   * borderEndStartRadius = props.borderEndStartRadius ?? props.borderBottomLeftRadius ?? props.borderRadius;
+   * ```
    */
   borderBottomLeftRadius?: SupportedStyleProps['borderEndStartRadius'];
 
   /**
-   * Fallback for `borderEndEndRadius`:
-   * props.borderEndEndRadius = props.borderEndEndRadius ?? props.borderBottomRightRadius ?? props.borderRadius
+   * Fallback for `borderEndEndRadius`.
+   *
+   * ```
+   * borderEndEndRadius = props.borderEndEndRadius ?? props.borderBottomRightRadius ?? props.borderRadius;
+   * ```
    */
   borderBottomRightRadius?: SupportedStyleProps['borderEndEndRadius'];
 
   /**
-   * Fallback for `borderInlineStartColor`:
-   * props.borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor
+   * Fallback for `borderInlineStartColor`.
+   *
+   * ```
+   * borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor;
+   * ```
    */
   borderLeftColor?: SupportedStyleProps['borderInlineStartColor'];
 
   /**
-   * Fallback for `borderInlineStartColor` and `borderInlineEndColor`:
-   * props.borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor
-   * props.borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor
+   * Fallback for `borderInlineStartColor` and `borderInlineEndColor`.
+   *
+   * ```
+   * borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor;
+   * borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor;
+   * ```
    */
   borderInlineColor?: SupportedStyleProps['borderInlineStartColor'];
 
   /**
-   * Fallback for `borderInlineStartColor`, `borderInlineEndColor`, `borderBlockStartColor` and `borderBlockEndColor`:
-   * props.borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor
-   * props.borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor
-   * props.borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor
-   * props.borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor
+   * Fallback for `borderInlineStartColor`, `borderInlineEndColor`, `borderBlockStartColor` and `borderBlockEndColor`.
+   *
+   * ```
+   * borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor;
+   * borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor;
+   * borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor;
+   * borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor;
+   * ```
    */
   borderColor?: SupportedStyleProps['borderInlineStartColor'];
 
   /**
-   * Fallback for `borderInlineEndColor`:
-   * props.borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor
+   * Fallback for `borderInlineEndColor`.
+   *
+   * ```
+   * borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor;
+   * ```
    */
   borderRightColor?: SupportedStyleProps['borderInlineEndColor'];
 
   /**
-   * Fallback for `borderBlockStartColor`:
-   * props.borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor
+   * Fallback for `borderBlockStartColor`.
+   *
+   * ```
+   * borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor;
+   * ```
    */
   borderTopColor?: SupportedStyleProps['borderBlockStartColor'];
 
   /**
-   * Fallback for `borderBlockStartColor` and `borderBlockEndColor`:
-   * props.borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor
-   * props.borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor
+   * Fallback for `borderBlockStartColor` and `borderBlockEndColor`.
+   *
+   * ```
+   * borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor;
+   * borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor;
+   * ```
    */
   borderBlockColor?: SupportedStyleProps['borderBlockStartColor'];
 
   /**
-   * Fallback for `borderBlockEndColor`:
-   * props.borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor
+   * Fallback for `borderBlockEndColor`.
+   *
+   * ```
+   * borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor;
+   * ```
    */
   borderBottomColor?: SupportedStyleProps['borderBlockEndColor'];
 
   /**
-   * Fallback for `borderInlineStartStyle`:
-   * props.borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle
+   * Fallback for `borderInlineStartStyle`.
+   *
+   * ```
+   * borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle;
+   * ```
    */
   borderLeftStyle?: SupportedStyleProps['borderInlineStartStyle'];
 
   /**
-   * Fallback for `borderInlineStartStyle` and `borderInlineEndStyle`:
-   * props.borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle
-   * props.borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle
+   * Fallback for `borderInlineStartStyle` and `borderInlineEndStyle`.
+   *
+   * ```
+   * borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle;
+   * borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle;
+   * ```
    */
   borderInlineStyle?: SupportedStyleProps['borderInlineStartStyle'];
 
   /**
-   * Fallback for `borderInlineStartStyle`, `borderInlineEndStyle`, `borderBlockStartStyle` and `borderBlockEndStyle`:
-   * props.borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle
-   * props.borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle
-   * props.borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle
-   * props.borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle
+   * Fallback for `borderInlineStartStyle`, `borderInlineEndStyle`, `borderBlockStartStyle` and `borderBlockEndStyle`.
+   *
+   * ```
+   * borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle;
+   * borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle;
+   * borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle;
+   * borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle;
+   * ```
    */
   borderStyle?: SupportedStyleProps['borderInlineStartStyle'];
 
   /**
-   * Fallback for `borderInlineEndStyle`:
-   * props.borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle
+   * Fallback for `borderInlineEndStyle`.
+   *
+   * ```
+   * borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle;
+   * ```
    */
   borderRightStyle?: SupportedStyleProps['borderInlineEndStyle'];
 
   /**
-   * Fallback for `borderBlockStartStyle`:
-   * props.borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle
+   * Fallback for `borderBlockStartStyle`.
+   *
+   * ```
+   * borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle;
+   * ```
    */
   borderTopStyle?: SupportedStyleProps['borderBlockStartStyle'];
 
   /**
-   * Fallback for `borderBlockStartStyle` and `borderBlockEndStyle`:
-   * props.borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle
-   * props.borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle
+   * Fallback for `borderBlockStartStyle` and `borderBlockEndStyle`.
+   *
+   * ```
+   * borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle;
+   * borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle;
+   * ```
    */
   borderBlockStyle?: SupportedStyleProps['borderBlockStartStyle'];
 
   /**
-   * Fallback for `borderBlockEndStyle`:
-   * props.borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle
+   * Fallback for `borderBlockEndStyle`.
+   *
+   * ```
+   * borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle;
+   * ```
    */
   borderBottomStyle?: SupportedStyleProps['borderBlockEndStyle'];
 
   /**
-   * Fallback for `borderInlineStartWidth`:
-   * props.borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth
+   * Fallback for `borderInlineStartWidth`.
+   *
+   * ```
+   * borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth;
+   * ```
    */
   borderLeftWidth?: SupportedStyleProps['borderInlineStartWidth'];
 
   /**
-   * Fallback for `borderInlineStartWidth` and `borderInlineEndWidth`:
-   * props.borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth
-   * props.borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth
+   * Fallback for `borderInlineStartWidth` and `borderInlineEndWidth`.
+   *
+   * ```
+   * borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth;
+   * borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth;
+   * ```
    */
   borderInlineWidth?: SupportedStyleProps['borderInlineStartWidth'];
 
   /**
-   * Fallback for `borderInlineStartWidth`, `borderInlineEndWidth`, `borderBlockStartWidth` and `borderBlockEndWidth`:
-   * props.borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth
-   * props.borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth
-   * props.borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth
-   * props.borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth
+   * Fallback for `borderInlineStartWidth`, `borderInlineEndWidth`, `borderBlockStartWidth` and `borderBlockEndWidth`.
+   *
+   * ```
+   * borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth;
+   * borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth;
+   * borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth;
+   * borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth;
+   * ```
    */
   borderWidth?: SupportedStyleProps['borderInlineStartWidth'];
 
   /**
-   * Fallback for `borderInlineEndWidth`:
-   * props.borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth
+   * Fallback for `borderInlineEndWidth`.
+   *
+   * ```
+   * borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth;
+   * ```
    */
   borderRightWidth?: SupportedStyleProps['borderInlineEndWidth'];
 
   /**
-   * Fallback for `borderBlockStartWidth`:
-   * props.borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth
+   * Fallback for `borderBlockStartWidth`.
+   *
+   * ```
+   * borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth;
+   * ```
    */
   borderTopWidth?: SupportedStyleProps['borderBlockStartWidth'];
 
   /**
-   * Fallback for `borderBlockStartWidth` and `borderBlockEndWidth`:
-   * props.borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth
-   * props.borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth
+   * Fallback for `borderBlockStartWidth` and `borderBlockEndWidth`.
+   *
+   * ```
+   * borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth;
+   * borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth;
+   * ```
    */
   borderBlockWidth?: SupportedStyleProps['borderBlockStartWidth'];
 
   /**
-   * Fallback for `borderBlockEndWidth`:
-   * props.borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth
+   * Fallback for `borderBlockEndWidth`.
+   *
+   * ```
+   * borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth;
+   * ```
    */
   borderBottomWidth?: SupportedStyleProps['borderBlockEndWidth'];
 
   /**
-   * Fallback for `insetInlineStart`:
-   * props.insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset
+   * Fallback for `insetInlineStart`.
+   *
+   * ```
+   * insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset;
+   * ```
    */
   left?: SupportedStyleProps['insetInlineStart'];
 
   /**
-   * Fallback for `insetInlineStart` and `insetInlineEnd`:
-   * props.insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset
-   * props.insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset
+   * Fallback for `insetInlineStart` and `insetInlineEnd`.
+   *
+   * ```
+   * insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset;
+   * insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset;
+   * ```
    */
   insetInline?: SupportedStyleProps['insetInlineStart'];
 
   /**
-   * Fallback for `insetInlineStart`, `insetInlineEnd`, `insetBlockStart` and `insetBlockEnd`:
-   * props.insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset
-   * props.insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset
-   * props.insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset
-   * props.insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset
+   * Fallback for `insetInlineStart`, `insetInlineEnd`, `insetBlockStart` and `insetBlockEnd`.
+   *
+   * ```
+   * insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset;
+   * insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset;
+   * insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset;
+   * insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset;
+   * ```
    */
   inset?: SupportedStyleProps['insetInlineStart'];
 
   /**
-   * Fallback for `insetInlineEnd`:
-   * props.insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset
+   * Fallback for `insetInlineEnd`.
+   *
+   * ```
+   * insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset;
+   * ```
    */
   right?: SupportedStyleProps['insetInlineEnd'];
 
   /**
-   * Fallback for `insetBlockStart`:
-   * props.insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset
+   * Fallback for `insetBlockStart`.
+   *
+   * ```
+   * insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset;
+   * ```
    */
   top?: SupportedStyleProps['insetBlockStart'];
 
   /**
-   * Fallback for `insetBlockStart` and `insetBlockEnd`:
-   * props.insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset
-   * props.insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset
+   * Fallback for `insetBlockStart` and `insetBlockEnd`.
+   *
+   * ```
+   * insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset;
+   * insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset;
+   * ```
    */
   insetBlock?: SupportedStyleProps['insetBlockStart'];
 
   /**
-   * Fallback for `insetBlockEnd`:
-   * props.insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset
+   * Fallback for `insetBlockEnd`.
+   *
+   * ```
+   * insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset;
+   * ```
    */
   bottom?: SupportedStyleProps['insetBlockEnd'];
 
   /**
-   * Fallback for `scrollPaddingInlineStart`:
-   * props.scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding
+   * Fallback for `scrollPaddingInlineStart`.
+   *
+   * ```
+   * scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding;
+   * ```
    */
   scrollPaddingLeft?: SupportedStyleProps['scrollPaddingInlineStart'];
 
   /**
-   * Fallback for `scrollPaddingInlineStart` and `scrollPaddingInlineEnd`:
-   * props.scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding
-   * props.scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding
+   * Fallback for `scrollPaddingInlineStart` and `scrollPaddingInlineEnd`.
+   *
+   * ```
+   * scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding;
+   * scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding;
+   * ```
    */
   scrollPaddingInline?: SupportedStyleProps['scrollPaddingInlineStart'];
 
   /**
-   * Fallback for `scrollPaddingInlineStart`, `scrollPaddingInlineEnd`, `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`:
-   * props.scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding
-   * props.scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding
-   * props.scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding
-   * props.scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding
+   * Fallback for `scrollPaddingInlineStart`, `scrollPaddingInlineEnd`, `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`.
+   *
+   * ```
+   * scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding;
+   * scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding;
+   * scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding;
+   * scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding;
+   * ```
    */
   scrollPadding?: SupportedStyleProps['scrollPaddingInlineStart'];
 
   /**
-   * Fallback for `scrollPaddingInlineEnd`:
-   * props.scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding
+   * Fallback for `scrollPaddingInlineEnd`.
+   *
+   * ```
+   * scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding;
+   * ```
    */
   scrollPaddingRight?: SupportedStyleProps['scrollPaddingInlineEnd'];
 
   /**
-   * Fallback for `scrollPaddingBlockStart`:
-   * props.scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding
+   * Fallback for `scrollPaddingBlockStart`.
+   *
+   * ```
+   * scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding;
+   * ```
    */
   scrollPaddingTop?: SupportedStyleProps['scrollPaddingBlockStart'];
 
   /**
-   * Fallback for `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`:
-   * props.scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding
-   * props.scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding
+   * Fallback for `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`.
+   *
+   * ```
+   * scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding;
+   * scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding;
+   * ```
    */
   scrollPaddingBlock?: SupportedStyleProps['scrollPaddingBlockStart'];
 
   /**
-   * Fallback for `scrollPaddingBlockEnd`:
-   * props.scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding
+   * Fallback for `scrollPaddingBlockEnd`.
+   *
+   * ```
+   * scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding;
+   * ```
    */
   scrollPaddingBottom?: SupportedStyleProps['scrollPaddingBlockEnd'];
 
   /**
-   * Fallback for `scrollMarginInlineStart`:
-   * props.scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin
+   * Fallback for `scrollMarginInlineStart`.
+   *
+   * ```
+   * scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin;
+   * ```
    */
   scrollMarginLeft?: SupportedStyleProps['scrollMarginInlineStart'];
 
   /**
-   * Fallback for `scrollMarginInlineStart` and `scrollMarginInlineEnd`:
-   * props.scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin
-   * props.scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin
+   * Fallback for `scrollMarginInlineStart` and `scrollMarginInlineEnd`.
+   *
+   * ```
+   * scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin;
+   * scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin;
+   * ```
    */
   scrollMarginInline?: SupportedStyleProps['scrollMarginInlineStart'];
 
   /**
-   * Fallback for `scrollMarginInlineStart`, `scrollMarginInlineEnd`, `scrollMarginBlockStart` and `scrollMarginBlockEnd`:
-   * props.scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin
-   * props.scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin
-   * props.scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin
-   * props.scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin
+   * Fallback for `scrollMarginInlineStart`, `scrollMarginInlineEnd`, `scrollMarginBlockStart` and `scrollMarginBlockEnd`.
+   *
+   * ```
+   * scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin;
+   * scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin;
+   * scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin;
+   * scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin;
+   * ```
    */
   scrollMargin?: SupportedStyleProps['scrollMarginInlineStart'];
 
   /**
-   * Fallback for `scrollMarginInlineEnd`:
-   * props.scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin
+   * Fallback for `scrollMarginInlineEnd`.
+   *
+   * ```
+   * scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin;
+   * ```
    */
   scrollMarginRight?: SupportedStyleProps['scrollMarginInlineEnd'];
 
   /**
-   * Fallback for `scrollMarginBlockStart`:
-   * props.scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin
+   * Fallback for `scrollMarginBlockStart`.
+   *
+   * ```
+   * scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin;
+   * ```
    */
   scrollMarginTop?: SupportedStyleProps['scrollMarginBlockStart'];
 
   /**
-   * Fallback for `scrollMarginBlockStart` and `scrollMarginBlockEnd`:
-   * props.scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin
-   * props.scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin
+   * Fallback for `scrollMarginBlockStart` and `scrollMarginBlockEnd`.
+   *
+   * ```
+   * scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin;
+   * scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin;
+   * ```
    */
   scrollMarginBlock?: SupportedStyleProps['scrollMarginBlockStart'];
 
   /**
-   * Fallback for `scrollMarginBlockEnd`:
-   * props.scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin
+   * Fallback for `scrollMarginBlockEnd`.
+   *
+   * ```
+   * scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin;
+   * ```
    */
   scrollMarginBottom?: SupportedStyleProps['scrollMarginBlockEnd'];
 
   /**
-   * Fallback for `justifyItems`:
-   * props.justifyItems = props.justifyItems ?? props.justify
+   * Fallback for `justifyItems`.
+   *
+   * ```
+   * justifyItems = props.justifyItems ?? props.justify;
+   * ```
    */
   justify?: SupportedStyleProps['justifyItems'];
 
   /**
-   * Fallback for `alignItems`:
-   * props.alignItems = props.alignItems ?? props.align
+   * Fallback for `alignItems`.
+   *
+   * ```
+   * alignItems = props.alignItems ?? props.align;
+   * ```
    */
   align?: SupportedStyleProps['alignItems'];
 };
@@ -686,68 +946,68 @@ type StylePropAliases = {
  * CSS properties we don't support. Note: Contains some aliases which are later
  * typed to a different value.
  */
-type DisallowedStandardLonghandProperties = 'width' |
-  'height' |
-  'paddingLeft' |
-  'paddingTop' |
-  'paddingRight' |
-  'paddingBottom' |
-  'marginLeft' |
-  'marginTop' |
-  'marginRight' |
-  'marginBottom' |
-  'maxWidth' |
-  'maxHeight' |
-  'minWidth' |
-  'minHeight' |
-  'borderTopLeftRadius' |
-  'borderTopRightRadius' |
-  'borderBottomRightRadius' |
-  'borderBottomLeftRadius' |
-  'borderTopColor' |
-  'borderRightColor' |
-  'borderBottomColor' |
-  'borderLeftColor' |
-  'borderTopStyle' |
-  'borderRightStyle' |
-  'borderBottomStyle' |
-  'borderLeftStyle' |
-  'borderTopWidth' |
-  'borderRightWidth' |
-  'borderBottomWidth' |
-  'borderLeftWidth' |
-  'overflowX' |
-  'overflowY' |
-  'overscrollBehaviorX' |
-  'overscrollBehaviorY' |
-  'scrollPaddingTop' |
-  'scrollPaddingRight' |
-  'scrollPaddingBottom' |
-  'scrollPaddingLeft' |
-  'scrollMarginTop' |
-  'scrollMarginRight' |
-  'scrollMarginBottom' |
-  'scrollMarginLeft' |
-  'top' |
-  'left' |
-  'right' |
-  'bottom' |
-  'containIntrinsicWidth' |
-  'containIntrinsicHeight' |
-  'borderBlockColor' |
-  'borderBlockStyle' |
-  'borderBlockWidth' |
-  'borderInlineColor' |
-  'borderInlineStyle' |
-  'borderInlineWidth' |
-  'touchAction' |
-  'content' |
-  'quotes' |
-  'content' |
-  'page' |
-  'mathStyle' |
-  'mathShift' |
-  'mathDepth';
+type DisallowedStandardLonghandProperties = 'width'
+  | 'height'
+  | 'paddingLeft'
+  | 'paddingTop'
+  | 'paddingRight'
+  | 'paddingBottom'
+  | 'marginLeft'
+  | 'marginTop'
+  | 'marginRight'
+  | 'marginBottom'
+  | 'maxWidth'
+  | 'maxHeight'
+  | 'minWidth'
+  | 'minHeight'
+  | 'borderTopLeftRadius'
+  | 'borderTopRightRadius'
+  | 'borderBottomRightRadius'
+  | 'borderBottomLeftRadius'
+  | 'borderTopColor'
+  | 'borderRightColor'
+  | 'borderBottomColor'
+  | 'borderLeftColor'
+  | 'borderTopStyle'
+  | 'borderRightStyle'
+  | 'borderBottomStyle'
+  | 'borderLeftStyle'
+  | 'borderTopWidth'
+  | 'borderRightWidth'
+  | 'borderBottomWidth'
+  | 'borderLeftWidth'
+  | 'overflowX'
+  | 'overflowY'
+  | 'overscrollBehaviorX'
+  | 'overscrollBehaviorY'
+  | 'scrollPaddingTop'
+  | 'scrollPaddingRight'
+  | 'scrollPaddingBottom'
+  | 'scrollPaddingLeft'
+  | 'scrollMarginTop'
+  | 'scrollMarginRight'
+  | 'scrollMarginBottom'
+  | 'scrollMarginLeft'
+  | 'top'
+  | 'left'
+  | 'right'
+  | 'bottom'
+  | 'containIntrinsicWidth'
+  | 'containIntrinsicHeight'
+  | 'borderBlockColor'
+  | 'borderBlockStyle'
+  | 'borderBlockWidth'
+  | 'borderInlineColor'
+  | 'borderInlineStyle'
+  | 'borderInlineWidth'
+  | 'touchAction'
+  | 'content'
+  | 'quotes'
+  | 'content'
+  | 'page'
+  | 'mathStyle'
+  | 'mathShift'
+  | 'mathDepth';
 
 /**
  * Props which act as an alias to one or more more specific props.
@@ -829,6 +1089,16 @@ export const disallowedCSSPropertyValues = [
   "-moz-initial"
 ] satisfies Globals[];
 
+// TODO, make this a map to token group names:
+// {
+//   borderBlockStartColor: 'color',
+// }
+// or, maybe:
+// {
+//   color: ['borderBlockStartColor', ...]
+// }
+// has to come from token lib though
+// Then use that in Cube to map to the correct token group
 export const tokenizedStyleProps = [
   // Longhand CSS Style Props
   'borderStartStartRadius',
