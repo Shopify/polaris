@@ -1,14 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  Card,
-  BlockStack,
-  Bleed,
-  Box,
-  Divider,
-  List,
-  Text,
-} from '@shopify/polaris';
+import {Card, BlockStack, Bleed, Box, List, Text} from '@shopify/polaris';
 
 export default {
   component: Card,
@@ -16,9 +8,9 @@ export default {
 
 export function Default() {
   return (
-    <Card>
-      <BlockStack gap="500">
-        <Text as="h3" variant="headingMd">
+    <Card roundedAbove="sm">
+      <BlockStack gap="200">
+        <Text as="h3" variant="headingSm">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
@@ -27,24 +19,11 @@ export function Default() {
   );
 }
 
-export function WithBackgroundSubdued() {
-  return (
-    <Card background="bg-surface-tertiary">
-      <BlockStack gap="500">
-        <Text as="h3" variant="headingMd">
-          Online store dashboard
-        </Text>
-        <p>View a summary of your online store’s performance.</p>
-      </BlockStack>
-    </Card>
-  );
-}
-
-export function WithBorderRadiusRoundedAbove() {
+export function WithResponsiveBorderRadius() {
   return (
     <Card roundedAbove="sm">
-      <BlockStack gap="500">
-        <Text as="h3" variant="headingMd">
+      <BlockStack gap="200">
+        <Text as="h3" variant="headingSm">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
@@ -57,7 +36,20 @@ export function WithResponsivePadding() {
   return (
     <Card padding={{xs: '500', sm: '600', md: '800'}} roundedAbove="sm">
       <BlockStack gap={{xs: '400', sm: '500'}}>
-        <Text as="h3" variant="headingMd">
+        <Text as="h3" variant="headingSm">
+          Online store dashboard
+        </Text>
+        <p>View a summary of your online store’s performance.</p>
+      </BlockStack>
+    </Card>
+  );
+}
+
+export function WithSubduedBackground() {
+  return (
+    <Card background="bg-surface-secondary" roundedAbove="sm">
+      <BlockStack gap="200">
+        <Text as="h3" variant="headingSm">
           Online store dashboard
         </Text>
         <p>View a summary of your online store’s performance.</p>
@@ -69,25 +61,21 @@ export function WithResponsivePadding() {
 export function WithSubduedSection() {
   return (
     <Card roundedAbove="sm">
-      <BlockStack gap="500">
-        <Text as="h3" variant="headingMd">
+      <BlockStack gap="200">
+        <Text as="h3" variant="headingSm">
           Staff accounts
         </Text>
-        <Box paddingBlockEnd="500">
+        <Box paddingBlockEnd="200">
           <List>
             <List.Item>Felix Crafford</List.Item>
             <List.Item>Ezequiel Manno</List.Item>
           </List>
         </Box>
       </BlockStack>
-      <Bleed
-        marginBlockEnd={{xs: '400', sm: '500'}}
-        marginInline={{xs: '400', sm: '500'}}
-      >
-        <Divider />
-        <Box background="bg-surface-tertiary" padding={{xs: '400', sm: '500'}}>
+      <Bleed marginBlockEnd="400" marginInline="400">
+        <Box background="bg-surface-secondary" padding="400">
           <BlockStack gap="200">
-            <Text variant="headingSm" as="h3">
+            <Text as="h3" variant="headingSm" fontWeight="medium">
               Deactivated staff accounts
             </Text>
             <List>
