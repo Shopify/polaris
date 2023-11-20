@@ -1,3 +1,40 @@
+import type {MappedBorderStyleProps} from './themes/base/border';
+import {mappedBorderStyleProps} from './themes/base/border';
+import type {MappedColorStyleProps} from './themes/base/color';
+import {mappedColorStyleProps} from './themes/base/color';
+import type {MappedFontStyleProps} from './themes/base/font';
+import {mappedFontStyleProps} from './themes/base/font';
+import type {MappedHeightStyleProps} from './themes/base/height';
+import {mappedHeightStyleProps} from './themes/base/height';
+import type {MappedWidthStyleProps} from './themes/base/width';
+import {mappedWidthStyleProps} from './themes/base/width';
+import type {MappedShadowStyleProps} from './themes/base/shadow';
+import {mappedShadowStyleProps} from './themes/base/shadow';
+import type {MappedSpaceStyleProps} from './themes/base/space';
+import {mappedSpaceStyleProps} from './themes/base/space';
+import type {MappedMotionStyleProps} from './themes/base/motion';
+import {mappedMotionStyleProps} from './themes/base/motion';
+
+export type TokenizedStyleProps = MappedBorderStyleProps &
+  MappedColorStyleProps &
+  MappedFontStyleProps &
+  MappedHeightStyleProps &
+  MappedWidthStyleProps &
+  MappedShadowStyleProps &
+  MappedSpaceStyleProps &
+  MappedMotionStyleProps;
+
+export const tokenizedStyleProps = [
+  ...mappedBorderStyleProps,
+  ...mappedColorStyleProps,
+  ...mappedFontStyleProps,
+  ...mappedHeightStyleProps,
+  ...mappedWidthStyleProps,
+  ...mappedShadowStyleProps,
+  ...mappedSpaceStyleProps,
+  ...mappedMotionStyleProps,
+] as const;
+
 export {breakpointsAliases} from './themes/base/breakpoints';
 
 export type {BreakpointsAliasDirection} from './utils';

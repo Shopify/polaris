@@ -31,60 +31,231 @@
   }
 }
 
-@mixin responsive-props($componentName, $componentProp, $declarationProp) {
+@function is-list($var) {
+  @return type-of($var) == 'list';
+}
+
+@function is-map($var) {
+  @return type-of($var) == 'map';
+}
+
+@function is-null($var) {
+  @return type-of($var) == 'null';
+}
+
+// NOTE: Order is important here; will search backwards through this list to
+// find fallback values
+$breakpointMediaQueries: (
+  'xs': 'screen and (max-width: #{$breakpointMobile})',
+  'sm': 'screen and (min-width: #{$breakpointMobile})',
+  'md': 'screen and (min-width: #{$breakpointTablet})',
+  'lg': 'screen and (min-width: #{$breakpointDesktopSmall})',
+  'xl': 'screen and (min-width: #{$breakpointDesktop})',
+);
+
+$breakpointKeys: map-keys($breakpointMediaQueries);
+
+@function find-default-with-fallback($default, $breakpoint) {
+  $initialIndex: index($breakpointKeys, $breakpoint);
+
+  // If the given '$breakpoint' doesn't exist, just return null
+  @if is-null($initialIndex) {
+    @return null;
+  }
+
+  // Search backwards until a non-null value is found in the $defaults map
+  // NOTE: Arrays in SASS are 1-based, so we're iterating down to AND INCLUDING
+  // index "1" (the first element).
+  @for $index from $initialIndex through 1 {
+    $value: map-get($default, nth($breakpointKeys, $index));
+    @if not is-null($value) {
+      @return $value;
+    }
+  }
+
+  // Couldn't find a non-null default, so return null
+  @return null;
+}
+
+@function get-default($declarationProp, $default: null, $key: null) {
+  $value: null;
+  @if is-map($default) {
+    @if not is-null($key) {
+      $value: find-default-with-fallback($default, $key);
+    }
+  } @else {
+    $value: $default;
+  }
+  @if not is-null($value) {
+    @return $value;
+  }
+
+  // Most CSS properties' W3C spec defaults are 'initial', but some (like color)
+  // default to different values (like 'inherit'). To match our consumer's
+  // expectations of how styling works, those properties should have their
+  // default passed in as `inherit`.
+  //
+  // To calculate which ones are inherited:
+  // var css = require("@webref/css")
+  // const parsedFiles = await css.listAll();
+  // const inherited = [];
+  // for (const data of Object.values(parsedFiles)) {
+  //   inherited.push(...data.properties.filter(prop => prop.inherited === 'yes').map(prop => prop.name));
+  // }
+  // console.log(inherited);
+  @return 'initial';
+}
+
+@mixin scope-custom-property($componentName, $componentProp) {
   // stylelint-disable -- Polaris component custom properties
-  --pc-#{$componentName}-#{$componentProp}-xs: initial;
-  --pc-#{$componentName}-#{$componentProp}-sm: initial;
-  --pc-#{$componentName}-#{$componentProp}-md: initial;
-  --pc-#{$componentName}-#{$componentProp}-lg: initial;
-  --pc-#{$componentName}-#{$componentProp}-xl: initial;
+  @each $breakpoint in $breakpointKeys {
+    --pc-#{$componentName}-#{$componentProp}-#{$breakpoint}: initial;
+  }
+  // stylelint-enable
+}
 
-  #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
+@mixin _reponsiveDeclarationAtBreakpoint(
+  $breakpoint,
+  $name,
+  $prop,
+  $declaration,
+  $default: null
+) {
+  $lastIndex: index($breakpointKeys, $breakpoint);
 
-  @media (min-width: $breakpointMobile) {
-    #{$declarationProp}: var(
-      --pc-#{$componentName}-#{$componentProp}-sm,
-      var(--pc-#{$componentName}-#{$componentProp}-xs)
-    );
+  $var: #{get-default($declaration, $default, $breakpoint)};
+
+  // Nest the fallbacks from smallest on the inside to largest on the outside
+  @for $index from 1 through $lastIndex {
+    $breakpointKey: nth($breakpointKeys, $index);
+    $var: 'var(--pc-#{$name}-#{$prop}-#{$breakpointKey}, #{$var})';
   }
 
-  @media (min-width: $breakpointTablet) {
-    #{$declarationProp}: var(
-      --pc-#{$componentName}-#{$componentProp}-md,
-      var(
-        --pc-#{$componentName}-#{$componentProp}-sm,
-        var(--pc-#{$componentName}-#{$componentProp}-xs)
-      )
-    );
-  }
+  #{$declaration}: #{$var};
+}
 
-  @media (min-width: $breakpointDesktopSmall) {
-    #{$declarationProp}: var(
-      --pc-#{$componentName}-#{$componentProp}-lg,
-      var(
-        --pc-#{$componentName}-#{$componentProp}-md,
-        var(
-          --pc-#{$componentName}-#{$componentProp}-sm,
-          var(--pc-#{$componentName}-#{$componentProp}-xs)
-        )
-      )
-    );
-  }
+/* Can be called in 4 ways:
+ * 
+ * 1. Shorthand for a single property:
+*
+* @include responsive-props('box', 'padding-left')
+*
+* yeilds approximately:
+*
+* --pc-box-padding-left-xs: initial;
+* padding-left: var(--pc-box-padding-left-xs)
+* // ... repeat for sm, md, lg, xl
+*
+* 2. Multiple properties
+*
+* @include responsive-props('box', ('padding-left', 'width'))
+*
+* yeilds approximately:
+*
+* --pc-box-padding-left-xs: initial;
+* --pc-box-width-xs: initial;
+* padding-left: var(--pc-box-padding-left-xs)
+* width: var(--pc-box-width-xs)
+* // ... repeat for sm, md, lg, xl
+*
+* 3. Multiple or single properties properties with specific declaration name:
+*
+* @include responsive-props(
+*   'box',
+*   (
+*     'padding-left',
+*     (prop: 'width', declaration: '--my-var')
+*   )
+* )
+*
+* yeilds approximately:
+*
+* --pc-box-padding-left-xs: initial;
+* --pc-box-width-xs: initial;
+* padding-left: var(--pc-box-padding-left-xs)
+* --my-var: var(--pc-box-width-xs)
+* // ... repeat for sm, md, lg, xl
+*
+* 4. Multiple or single properties properties with defaults:
+*
+* @include responsive-props(
+*   'box',
+*   (
+*     'padding-left',
+*     (prop: 'width', default: '100px')
+*   )
+* )
+*
+* yeilds approximately:
+*
+* --pc-box-padding-left-xs: initial;
+* --pc-box-width-xs: 100;
+* padding-left: var(--pc-box-padding-left-xs)
+* --my-var: var(--pc-box-width-xs)
+* // ... repeat for sm, md, lg, xl
+*/
+@mixin responsive-props($componentName, $props) {
+  /* Force the input to be a list with a single element */
+  $propsMap: if(is-list($props), $props, ($props));
 
-  @media (min-width: $breakpointDesktop) {
-    #{$declarationProp}: var(
-      --pc-#{$componentName}-#{$componentProp}-xl,
-      var(
-        --pc-#{$componentName}-#{$componentProp}-lg,
-        var(
-          --pc-#{$componentName}-#{$componentProp}-md,
-          var(
-            --pc-#{$componentName}-#{$componentProp}-sm,
-            var(--pc-#{$componentName}-#{$componentProp}-xs)
-          )
-        )
-      )
-    );
+  @if length($propsMap) > 0 {
+    @each $prop in $propsMap {
+      $componentProp: null;
+      $declarationProp: null;
+      $default: null;
+
+      @if is-map($prop) {
+        $componentProp: map-get($prop, 'prop');
+        $declarationProp: map-get($prop, 'declaration') or $componentProp;
+        $default: map-get($prop, 'default');
+      } @else {
+        $componentProp: $prop;
+        $declarationProp: $prop;
+      }
+
+      @if not is-null($componentProp) {
+        @include scope-custom-property($componentName, $componentProp);
+
+        @include _reponsiveDeclarationAtBreakpoint(
+          'xs',
+          $componentName,
+          $componentProp,
+          $declarationProp,
+          $default
+        );
+      }
+    }
+
+    /* Start from 2 to exclude 'xs' which is already handled above */
+    @for $index from 2 through length($breakpointKeys) {
+      $breakpoint: nth($breakpointKeys, $index);
+      @media #{map-get($breakpointMediaQueries, $breakpoint)} {
+        @each $prop in $propsMap {
+          $componentProp: null;
+          $declarationProp: null;
+          $default: null;
+
+          @if is-map($prop) {
+            $componentProp: map-get($prop, 'prop');
+            $declarationProp: map-get($prop, 'declaration') or $componentProp;
+            $default: map-get($prop, 'default');
+          } @else {
+            $componentProp: $prop;
+            $declarationProp: $prop;
+          }
+
+          @if not is-null($componentProp) {
+            @include _reponsiveDeclarationAtBreakpoint(
+              $breakpoint,
+              $componentName,
+              $componentProp,
+              $declarationProp,
+              $default
+            );
+          }
+        }
+      }
+    }
   }
   // stylelint-enable
 }
