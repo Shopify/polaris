@@ -1,5 +1,5 @@
 // TODO: Confirm this list is complete or source it from mdn/webref data somehow
-export const positionalCSSProperties = [
+const positionalCSSProperties = [
   'width',
   'height',
   'paddingLeft',
@@ -51,7 +51,7 @@ export const positionalCSSProperties = [
 ];
 
 // Remove these once https://github.com/frenic/csstype/pull/188 is merged
-export const incorrectlyMarkedAsLonghandByCSSTypes = [
+const incorrectlyMarkedAsLonghandByCSSTypes = [
   'borderBlockColor',
   'borderBlockStyle',
   'borderBlockWidth',
@@ -102,115 +102,122 @@ export const disallowedCSSPropertyValues = [
   '-moz-initial',
 ];
 
-export const stylePropAliasFallbacks = {
-  rowGap: ['gap'],
-  columnGap: ['gap'],
-  paddingInlineStart: ['paddingLeft', 'paddingInline', 'padding'],
-  paddingInlineEnd: ['paddingRight', 'paddingInline', 'padding'],
-  paddingBlockStart: ['paddingTop', 'paddingBlock', 'padding'],
-  paddingBlockEnd: ['paddingBottom', 'paddingBlock', 'padding'],
-  marginInlineStart: ['marginLeft', 'marginInline', 'margin'],
-  marginInlineEnd: ['marginRight', 'marginInline', 'margin'],
-  marginBlockStart: ['marginTop', 'marginBlock', 'margin'],
-  marginBlockEnd: ['marginBottom', 'marginBlock', 'margin'],
-  inlineSize: ['width', 'size'],
-  blockSize: ['height', 'size'],
-  minInlineSize: ['minWidth', 'minSize'],
-  minBlockSize: ['minHeight', 'minSize'],
-  maxInlineSize: ['maxWidth', 'maxSize'],
-  maxBlockSize: ['maxHeight', 'maxSize'],
-  containIntrinsicInlineSize: ['containIntrinsicWidth', 'containIntrinsicSize'],
-  containIntrinsicBlockSize: ['containIntrinsicHeight', 'containIntrinsicSize'],
-  overflowInline: ['overflowX', 'overflow'],
-  overflowBlock: ['overflowY', 'overflow'],
-  overscrollBehaviorInline: ['overscrollBehaviorX', 'overscrollBehavior'],
-  overscrollBehaviorBlock: ['overscrollBehaviorY', 'overscrollBehavior'],
-  backgroundPositionX: ['backgroundPosition'],
-  backgroundPositionY: ['backgroundPosition'],
-  borderStartStartRadius: ['borderTopLeftRadius', 'borderRadius'],
-  borderStartEndRadius: ['borderTopRightRadius', 'borderRadius'],
-  borderEndStartRadius: ['borderBottomLeftRadius', 'borderRadius'],
-  borderEndEndRadius: ['borderBottomRightRadius', 'borderRadius'],
-  borderInlineStartColor: [
-    'borderLeftColor',
-    'borderInlineColor',
-    'borderColor',
-  ],
-  borderInlineEndColor: [
-    'borderRightColor',
-    'borderInlineColor',
-    'borderColor',
-  ],
-  borderBlockStartColor: ['borderTopColor', 'borderBlockColor', 'borderColor'],
-  borderBlockEndColor: ['borderBottomColor', 'borderBlockColor', 'borderColor'],
-  borderInlineStartStyle: [
-    'borderLeftStyle',
-    'borderInlineStyle',
-    'borderStyle',
-  ],
-  borderInlineEndStyle: [
-    'borderRightStyle',
-    'borderInlineStyle',
-    'borderStyle',
-  ],
-  borderBlockStartStyle: ['borderTopStyle', 'borderBlockStyle', 'borderStyle'],
-  borderBlockEndStyle: ['borderBottomStyle', 'borderBlockStyle', 'borderStyle'],
-  borderInlineStartWidth: [
-    'borderLeftWidth',
-    'borderInlineWidth',
-    'borderWidth',
-  ],
-  borderInlineEndWidth: [
-    'borderRightWidth',
-    'borderInlineWidth',
-    'borderWidth',
-  ],
-  borderBlockStartWidth: ['borderTopWidth', 'borderBlockWidth', 'borderWidth'],
-  borderBlockEndWidth: ['borderBottomWidth', 'borderBlockWidth', 'borderWidth'],
-  insetInlineStart: ['left', 'insetInline', 'inset'],
-  insetInlineEnd: ['right', 'insetInline', 'inset'],
-  insetBlockStart: ['top', 'insetBlock', 'inset'],
-  insetBlockEnd: ['bottom', 'insetBlock', 'inset'],
-  scrollPaddingInlineStart: [
-    'scrollPaddingLeft',
-    'scrollPaddingInline',
-    'scrollPadding',
-  ],
-  scrollPaddingInlineEnd: [
-    'scrollPaddingRight',
-    'scrollPaddingInline',
-    'scrollPadding',
-  ],
-  scrollPaddingBlockStart: [
-    'scrollPaddingTop',
-    'scrollPaddingBlock',
-    'scrollPadding',
-  ],
-  scrollPaddingBlockEnd: [
-    'scrollPaddingBottom',
-    'scrollPaddingBlock',
-    'scrollPadding',
-  ],
-  scrollMarginInlineStart: [
-    'scrollMarginLeft',
-    'scrollMarginInline',
-    'scrollMargin',
-  ],
-  scrollMarginInlineEnd: [
-    'scrollMarginRight',
-    'scrollMarginInline',
-    'scrollMargin',
-  ],
-  scrollMarginBlockStart: [
-    'scrollMarginTop',
-    'scrollMarginBlock',
-    'scrollMargin',
-  ],
-  scrollMarginBlockEnd: [
-    'scrollMarginBottom',
-    'scrollMarginBlock',
-    'scrollMargin',
-  ],
-  justifyItems: ['justify'],
-  alignItems: ['align'],
+/**
+ * An incomplete list of supported style props.
+ *
+ * The complete list is roughly:
+ * ```
+ * styleProps = {
+ *   ...StandardLonghandProperties.exclude(disallowedCSSProperties),
+ *   ...stylePropConfig,
+ *   ...stylePropConfig[].fallbacks.flat(),
+ * };
+ * ```
+ *
+ * Where `StandardLonghandProperties` comes from csstype:
+ * https://github.com/frenic/csstype/blob/46694defae2cf3386218d0000490b0d0ac385aa6/index.d.ts#L11
+ */
+export const stylePropConfig = {
+  rowGap: {aliases: ['gap']},
+  columnGap: {aliases: ['gap']},
+  paddingInlineStart: {aliases: ['paddingLeft', 'paddingInline', 'padding']},
+  paddingInlineEnd: {aliases: ['paddingRight', 'paddingInline', 'padding']},
+  paddingBlockStart: {aliases: ['paddingTop', 'paddingBlock', 'padding']},
+  paddingBlockEnd: {aliases: ['paddingBottom', 'paddingBlock', 'padding']},
+  marginInlineStart: {aliases: ['marginLeft', 'marginInline', 'margin']},
+  marginInlineEnd: {aliases: ['marginRight', 'marginInline', 'margin']},
+  marginBlockStart: {aliases: ['marginTop', 'marginBlock', 'margin']},
+  marginBlockEnd: {aliases: ['marginBottom', 'marginBlock', 'margin']},
+  inlineSize: {aliases: ['width', 'size']},
+  blockSize: {aliases: ['height', 'size']},
+  minInlineSize: {aliases: ['minWidth', 'minSize']},
+  minBlockSize: {aliases: ['minHeight', 'minSize']},
+  maxInlineSize: {aliases: ['maxWidth', 'maxSize']},
+  maxBlockSize: {aliases: ['maxHeight', 'maxSize']},
+  containIntrinsicInlineSize: {
+    aliases: ['containIntrinsicWidth', 'containIntrinsicSize'],
+  },
+  containIntrinsicBlockSize: {
+    aliases: ['containIntrinsicHeight', 'containIntrinsicSize'],
+  },
+  overflowInline: {aliases: ['overflowX', 'overflow']},
+  overflowBlock: {aliases: ['overflowY', 'overflow']},
+  overscrollBehaviorInline: {
+    aliases: ['overscrollBehaviorX', 'overscrollBehavior'],
+  },
+  overscrollBehaviorBlock: {
+    aliases: ['overscrollBehaviorY', 'overscrollBehavior'],
+  },
+  backgroundPositionX: {aliases: ['backgroundPosition']},
+  backgroundPositionY: {aliases: ['backgroundPosition']},
+  borderStartStartRadius: {aliases: ['borderTopLeftRadius', 'borderRadius']},
+  borderStartEndRadius: {aliases: ['borderTopRightRadius', 'borderRadius']},
+  borderEndStartRadius: {aliases: ['borderBottomLeftRadius', 'borderRadius']},
+  borderEndEndRadius: {aliases: ['borderBottomRightRadius', 'borderRadius']},
+  borderInlineStartColor: {
+    aliases: ['borderLeftColor', 'borderInlineColor', 'borderColor'],
+  },
+  borderInlineEndColor: {
+    aliases: ['borderRightColor', 'borderInlineColor', 'borderColor'],
+  },
+  borderBlockStartColor: {
+    aliases: ['borderTopColor', 'borderBlockColor', 'borderColor'],
+  },
+  borderBlockEndColor: {
+    aliases: ['borderBottomColor', 'borderBlockColor', 'borderColor'],
+  },
+  borderInlineStartStyle: {
+    aliases: ['borderLeftStyle', 'borderInlineStyle', 'borderStyle'],
+  },
+  borderInlineEndStyle: {
+    aliases: ['borderRightStyle', 'borderInlineStyle', 'borderStyle'],
+  },
+  borderBlockStartStyle: {
+    aliases: ['borderTopStyle', 'borderBlockStyle', 'borderStyle'],
+  },
+  borderBlockEndStyle: {
+    aliases: ['borderBottomStyle', 'borderBlockStyle', 'borderStyle'],
+  },
+  borderInlineStartWidth: {
+    aliases: ['borderLeftWidth', 'borderInlineWidth', 'borderWidth'],
+  },
+  borderInlineEndWidth: {
+    aliases: ['borderRightWidth', 'borderInlineWidth', 'borderWidth'],
+  },
+  borderBlockStartWidth: {
+    aliases: ['borderTopWidth', 'borderBlockWidth', 'borderWidth'],
+  },
+  borderBlockEndWidth: {
+    aliases: ['borderBottomWidth', 'borderBlockWidth', 'borderWidth'],
+  },
+  insetInlineStart: {aliases: ['left', 'insetInline', 'inset']},
+  insetInlineEnd: {aliases: ['right', 'insetInline', 'inset']},
+  insetBlockStart: {aliases: ['top', 'insetBlock', 'inset']},
+  insetBlockEnd: {aliases: ['bottom', 'insetBlock', 'inset']},
+  scrollPaddingInlineStart: {
+    aliases: ['scrollPaddingLeft', 'scrollPaddingInline', 'scrollPadding'],
+  },
+  scrollPaddingInlineEnd: {
+    aliases: ['scrollPaddingRight', 'scrollPaddingInline', 'scrollPadding'],
+  },
+  scrollPaddingBlockStart: {
+    aliases: ['scrollPaddingTop', 'scrollPaddingBlock', 'scrollPadding'],
+  },
+  scrollPaddingBlockEnd: {
+    aliases: ['scrollPaddingBottom', 'scrollPaddingBlock', 'scrollPadding'],
+  },
+  scrollMarginInlineStart: {
+    aliases: ['scrollMarginLeft', 'scrollMarginInline', 'scrollMargin'],
+  },
+  scrollMarginInlineEnd: {
+    aliases: ['scrollMarginRight', 'scrollMarginInline', 'scrollMargin'],
+  },
+  scrollMarginBlockStart: {
+    aliases: ['scrollMarginTop', 'scrollMarginBlock', 'scrollMargin'],
+  },
+  scrollMarginBlockEnd: {
+    aliases: ['scrollMarginBottom', 'scrollMarginBlock', 'scrollMargin'],
+  },
+  justifyItems: {aliases: ['justify']},
+  alignItems: {aliases: ['align']},
 };

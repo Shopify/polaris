@@ -13,7 +13,7 @@ import {
 import {
   disallowedCSSProperties,
   disallowedCSSPropertyValues,
-  stylePropAliasFallbacks,
+  stylePropConfig,
 } from './data.mjs';
 
 const endent = _endent.default;
@@ -32,12 +32,16 @@ const cssLonghandProperties = getCSSTypeLonghandProperties();
 
 // Extract a unique set of just the alias names
 const allAliases = Array.from(
-  new Set(Object.values(stylePropAliasFallbacks).flat()),
+  new Set(
+    Object.values(stylePropConfig)
+      .map(({aliases}) => aliases ?? [])
+      .flat(),
+  ),
 );
 
-const inverseAliases = Object.entries(stylePropAliasFallbacks).reduce(
-  (acc, [prop, aliases]) => {
-    for (let alias of aliases) {
+const inverseAliases = Object.entries(stylePropConfig).reduce(
+  (acc, [prop, {aliases}]) => {
+    for (let alias of aliases ?? []) {
       acc[alias] = acc[alias] ?? [];
       acc[alias].push(prop);
     }
@@ -391,7 +395,7 @@ interface StylePropAliases {${Object.entries(inverseAliases)
    * ${styleProps
      .map(
        (prop) =>
-         `${prop} = props.${prop} ?? ${stylePropAliasFallbacks[prop]
+         `${prop} = props.${prop} ?? ${stylePropConfig[prop].aliases
            .map((fallbackProp) => `props.${fallbackProp}`)
            .join(' ?? ')};`,
      )
@@ -427,10 +431,10 @@ type DisallowedStandardLonghandProperties = ${generateTSPickList(
  * 'padding-inline-end', etc, when those individual props aren't set.
  */
 export const stylePropAliasFallbacks = {
-  ${Object.entries(stylePropAliasFallbacks)
+  ${Object.entries(stylePropConfig)
+    .filter(([, {aliases}]) => aliases?.length)
     .map(
-      ([styleProp, aliasFallbacks]) =>
-        `"${styleProp}": ${JSON.stringify(aliasFallbacks)},`,
+      ([styleProp, {aliases}]) => `"${styleProp}": ${JSON.stringify(aliases)},`,
     )
     .join('\n  ')}
 } satisfies Partial<{ [K in keyof SupportedCSSStyleProps]: (keyof StyleProps)[] }>;
