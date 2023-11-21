@@ -42,7 +42,7 @@ function CardWithAllElements() {
   );
 
   const salesMarkup = (
-    <Box>
+    <div>
       <ResourceList
         resourceName={{singular: 'sale', plural: 'sales'}}
         items={[
@@ -73,7 +73,7 @@ function CardWithAllElements() {
           );
         }}
       />
-    </Box>
+    </div>
   );
 
   return (

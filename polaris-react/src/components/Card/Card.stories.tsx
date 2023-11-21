@@ -201,12 +201,12 @@ export function WithSubsection() {
             John Smith
           </Text>
         </BlockStack>
-        <Box>
+        <div>
           <BlockStack gap="200">
             <Text as="h3" variant="headingSm" fontWeight="medium">
               Addresses
             </Text>
-            <Box>
+            <div>
               <Text as="p" variant="bodyMd">
                 123 First St
               </Text>
@@ -216,8 +216,8 @@ export function WithSubsection() {
               <Text as="p" variant="bodyMd">
                 The Universe
               </Text>
-            </Box>
-            <Box>
+            </div>
+            <div>
               <Text as="p" variant="bodyMd">
                 123 Second St
               </Text>
@@ -227,14 +227,14 @@ export function WithSubsection() {
               <Text as="p" variant="bodyMd">
                 The Universe
               </Text>
-            </Box>
+            </div>
           </BlockStack>
-        </Box>
-        <Box>
+        </div>
+        <div>
           <Text as="p" variant="bodyMd">
             A single subsection without a sibling has no visual appearance
           </Text>
-        </Box>
+        </div>
       </BlockStack>
     </Card>
   );
@@ -314,7 +314,7 @@ export function WithSectionsAndActions() {
   );
 }
 
-export function WithSectionsAndDestructiveAction() {
+export function WithSectionsAndCriticalAction() {
   return (
     <Card roundedAbove="sm">
       <BlockStack gap="400">
@@ -560,7 +560,7 @@ export function WithCustomFooterActions() {
   );
 }
 
-export function WithDestructiveFooterActions() {
+export function WithCriticalFooterActions() {
   return (
     <Card roundedAbove="sm">
       <BlockStack gap="200">
@@ -650,7 +650,7 @@ export function WithAllElements() {
   );
 
   const salesMarkup = (
-    <Box>
+    <div>
       <ResourceList
         resourceName={{singular: 'sale', plural: 'sales'}}
         items={[
@@ -681,7 +681,7 @@ export function WithAllElements() {
           );
         }}
       />
-    </Box>
+    </div>
   );
 
   return (

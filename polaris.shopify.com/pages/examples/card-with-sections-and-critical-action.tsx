@@ -9,7 +9,7 @@ import {
 } from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function CardWithSectionsAndDestructiveAction() {
+function CardWithSectionsAndCriticalAction() {
   return (
     <Card roundedAbove="sm">
       <BlockStack gap="400">
@@ -53,4 +53,4 @@ function CardWithSectionsAndDestructiveAction() {
   );
 }
 
-export default withPolarisExample(CardWithSectionsAndDestructiveAction);
+export default withPolarisExample(CardWithSectionsAndCriticalAction);

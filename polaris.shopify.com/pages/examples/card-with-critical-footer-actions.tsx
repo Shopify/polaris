@@ -10,7 +10,7 @@ import {
 } from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function CardWithDestructiveFooterActions() {
+function CardWithCriticalFooterActions() {
   return (
     <Card roundedAbove="sm">
       <BlockStack gap="200">
@@ -50,4 +50,4 @@ function CardWithDestructiveFooterActions() {
   );
 }
 
-export default withPolarisExample(CardWithDestructiveFooterActions);
+export default withPolarisExample(CardWithCriticalFooterActions);

@@ -1,5 +1,5 @@
 import React from 'react';
-import {BlockStack, Box, Card, Text} from '@shopify/polaris';
+import {BlockStack, Card, Text} from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function CardWithSubsection() {
@@ -14,12 +14,12 @@ function CardWithSubsection() {
             John Smith
           </Text>
         </BlockStack>
-        <Box>
+        <div>
           <BlockStack gap="200">
             <Text as="h3" variant="headingSm" fontWeight="medium">
               Addresses
             </Text>
-            <Box>
+            <div>
               <Text as="p" variant="bodyMd">
                 123 First St
               </Text>
@@ -29,8 +29,8 @@ function CardWithSubsection() {
               <Text as="p" variant="bodyMd">
                 The Universe
               </Text>
-            </Box>
-            <Box>
+            </div>
+            <div>
               <Text as="p" variant="bodyMd">
                 123 Second St
               </Text>
@@ -40,14 +40,14 @@ function CardWithSubsection() {
               <Text as="p" variant="bodyMd">
                 The Universe
               </Text>
-            </Box>
+            </div>
           </BlockStack>
-        </Box>
-        <Box>
+        </div>
+        <div>
           <Text as="p" variant="bodyMd">
             A single subsection without a sibling has no visual appearance
           </Text>
-        </Box>
+        </div>
       </BlockStack>
     </Card>
   );
