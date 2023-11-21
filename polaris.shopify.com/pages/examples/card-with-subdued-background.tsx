@@ -1,15 +1,21 @@
-import {Card, Text} from '@shopify/polaris';
+import {BlockStack, Card, List, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function CardExample() {
+function CardWithSubduedBackground() {
   return (
     <Card background="bg-surface-secondary">
-      <Text as="h2" variant="bodyMd">
-        Content inside a card
-      </Text>
+      <BlockStack gap="200">
+        <Text as="h3" variant="headingSm" fontWeight="medium">
+          Deactivated staff accounts
+        </Text>
+        <List>
+          <List.Item>Felix Crafford</List.Item>
+          <List.Item>Ezequiel Manno</List.Item>
+        </List>
+      </BlockStack>
     </Card>
   );
 }
 
-export default withPolarisExample(CardExample);
+export default withPolarisExample(CardWithSubduedBackground);
