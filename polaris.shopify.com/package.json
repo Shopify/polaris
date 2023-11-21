@@ -20,7 +20,7 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "./scripts/get-props/src/get-props.ts",
-    "get-style-props": "node ./scripts/get-style-props.mjs",
+    "get-style-props": "node ./scripts/get-style-props/index.mjs",
     "gen-assets": "yarn get-props && node scripts/gen-assets.mjs",
     "gen-colors": "ts-node ./scripts/gen-colors.ts",
     "visual-regression": "node scripts/visual-regression.mjs"
