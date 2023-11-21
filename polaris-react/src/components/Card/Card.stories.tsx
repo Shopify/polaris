@@ -62,7 +62,7 @@ export function WithResponsivePadding() {
   );
 }
 
-export function WithSubduedBackground() {
+export function WithSubdued() {
   return (
     <Card background="bg-surface-secondary" roundedAbove="sm">
       <BlockStack gap="200">
@@ -75,7 +75,23 @@ export function WithSubduedBackground() {
   );
 }
 
-export function WithSingleSection() {
+export function WithSubduedForSecondaryContent() {
+  return (
+    <Card background="bg-surface-secondary" roundedAbove="sm">
+      <BlockStack gap="200">
+        <Text as="h3" variant="headingSm" fontWeight="medium">
+          Deactivated staff accounts
+        </Text>
+        <List>
+          <List.Item>Felix Crafford</List.Item>
+          <List.Item>Ezequiel Manno</List.Item>
+        </List>
+      </BlockStack>
+    </Card>
+  );
+}
+
+export function WithSection() {
   return (
     <Card roundedAbove="sm">
       <Text as="h2" variant="headingSm">
@@ -86,6 +102,37 @@ export function WithSingleSection() {
           View a summary of your online store’s performance.
         </Text>
       </Box>
+    </Card>
+  );
+}
+
+export function WithSubduedSection() {
+  return (
+    <Card roundedAbove="sm">
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingSm">
+          Staff accounts
+        </Text>
+        <Box paddingBlockEnd="200">
+          <List>
+            <List.Item>Felix Crafford</List.Item>
+            <List.Item>Ezequiel Manno</List.Item>
+          </List>
+        </Box>
+      </BlockStack>
+      <Bleed marginBlockEnd="400" marginInline="400">
+        <Box background="bg-surface-secondary" padding="400">
+          <BlockStack gap="200">
+            <Text as="h3" variant="headingSm" fontWeight="medium">
+              Deactivated staff accounts
+            </Text>
+            <List>
+              <List.Item>Felix Crafford</List.Item>
+              <List.Item>Ezequiel Manno</List.Item>
+            </List>
+          </BlockStack>
+        </Box>
+      </Bleed>
     </Card>
   );
 }
@@ -142,37 +189,6 @@ export function WithMultipleTitledSections() {
   );
 }
 
-export function WithSubduedSection() {
-  return (
-    <Card roundedAbove="sm">
-      <BlockStack gap="200">
-        <Text as="h2" variant="headingSm">
-          Staff accounts
-        </Text>
-        <Box paddingBlockEnd="200">
-          <List>
-            <List.Item>Felix Crafford</List.Item>
-            <List.Item>Ezequiel Manno</List.Item>
-          </List>
-        </Box>
-      </BlockStack>
-      <Bleed marginBlockEnd="400" marginInline="400">
-        <Box background="bg-surface-secondary" padding="400">
-          <BlockStack gap="200">
-            <Text as="h3" variant="headingSm" fontWeight="medium">
-              Deactivated staff accounts
-            </Text>
-            <List>
-              <List.Item>Felix Crafford</List.Item>
-              <List.Item>Ezequiel Manno</List.Item>
-            </List>
-          </BlockStack>
-        </Box>
-      </Bleed>
-    </Card>
-  );
-}
-
 export function WithSubsection() {
   return (
     <Card roundedAbove="sm">
@@ -224,7 +240,7 @@ export function WithSubsection() {
   );
 }
 
-export function WithFlushSection() {
+export function WithFlushedSection() {
   return (
     <Card roundedAbove="sm">
       <Bleed marginInline="400" marginBlockStart="400">
@@ -244,7 +260,7 @@ export function WithFlushSection() {
   );
 }
 
-export function WithFlushSectionAndSubduedSection() {
+export function WithFlushedSectionAndSubduedSection() {
   return (
     <Card roundedAbove="sm">
       <Bleed marginInline="400" marginBlock="400">
@@ -264,7 +280,7 @@ export function WithFlushSectionAndSubduedSection() {
   );
 }
 
-export function WithSectionsAndAction() {
+export function WithSectionsAndActions() {
   return (
     <Card roundedAbove="sm">
       <BlockStack gap="400">
