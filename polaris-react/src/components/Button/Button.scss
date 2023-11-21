@@ -963,7 +963,7 @@
   }
 }
 // Overrides for popover active / expanded states on default buttons
-.Button:is([aria-expanded='true'], [aria-owns]):not(.variantPlain):not(.variantMonochromePlain):not(.variantTertiary):not(.variantPrimary) {
+.Button:is([aria-expanded='true']):is([aria-owns]):not(.variantPlain):not(.variantMonochromePlain):not(.variantTertiary):not(.variantPrimary) {
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
   --pc-button-shadow: var(--p-shadow-inset-200);
   background: var(--p-color-bg-fill-active);
