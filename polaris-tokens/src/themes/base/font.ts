@@ -1,49 +1,5 @@
 import {size} from '../../size';
-import type {MetaTokenProperties, ObjectFromKeys} from '../types';
-
-const mappedFontSizeStyleProps = ['fontSize'] as const;
-type MappedFontSizeStyleProps = ObjectFromKeys<
-  typeof mappedFontSizeStyleProps,
-  FontSizeScale
->;
-
-const mappedFontLineHeightStyleProps = ['lineHeight'] as const;
-type MappedFontLineHeightStyleProps = ObjectFromKeys<
-  typeof mappedFontLineHeightStyleProps,
-  FontLineHeightScale
->;
-
-const mappedFontWeightStyleProps = ['fontWeight'] as const;
-type MappedFontWeightStyleProps = ObjectFromKeys<
-  typeof mappedFontWeightStyleProps,
-  FontWeightAlias
->;
-
-const mappedFontFamilyStyleProps = ['fontFamily'] as const;
-type MappedFontFamilyStyleProps = ObjectFromKeys<
-  typeof mappedFontFamilyStyleProps,
-  FontFamilyAlias
->;
-
-const mappedFontLetterSpacingStyleProps = ['letterSpacing'] as const;
-type MappedFontLetterSpacingStyleProps = ObjectFromKeys<
-  typeof mappedFontLetterSpacingStyleProps,
-  FontLetterSpacingAlias
->;
-
-export const mappedFontStyleProps = [
-  ...mappedFontSizeStyleProps,
-  ...mappedFontLineHeightStyleProps,
-  ...mappedFontWeightStyleProps,
-  ...mappedFontFamilyStyleProps,
-  ...mappedFontLetterSpacingStyleProps,
-];
-
-export type MappedFontStyleProps = MappedFontSizeStyleProps &
-  MappedFontLineHeightStyleProps &
-  MappedFontWeightStyleProps &
-  MappedFontFamilyStyleProps &
-  MappedFontLetterSpacingStyleProps;
+import type {MetaTokenProperties} from '../types';
 
 export type FontFamilyPrefix = 'font-family';
 type FontFamilyAlias = 'sans' | 'mono';
@@ -94,6 +50,18 @@ export type FontTokenName =
 
 export type FontTokenGroup = {
   [TokenName in FontTokenName]: string;
+};
+
+export type FontStyleProps = {
+  [T in typeof fontSizeStyleProps[number]]?: FontSizeScale;
+} & {
+  [T in typeof fontLineHeightStyleProps[number]]?: FontLineHeightScale;
+} & {
+  [T in typeof fontWeightStyleProps[number]]?: FontWeightAlias;
+} & {
+  [T in typeof fontFamilyStyleProps[number]]?: FontFamilyAlias;
+} & {
+  [T in typeof fontLetterSpacingStyleProps[number]]?: FontLetterSpacingAlias;
 };
 
 export const font: {
@@ -186,3 +154,23 @@ export const font: {
     value: size[1200],
   },
 };
+
+const fontSizeStyleProps = ['fontSize'] as const;
+
+const fontLineHeightStyleProps = ['lineHeight'] as const;
+
+const fontWeightStyleProps = ['fontWeight'] as const;
+
+const fontFamilyStyleProps = ['fontFamily'] as const;
+
+const fontLetterSpacingStyleProps = ['letterSpacing'] as const;
+
+export const fontStylePropTokenGroups = {
+  font: [
+    ...fontSizeStyleProps,
+    ...fontLineHeightStyleProps,
+    ...fontWeightStyleProps,
+    ...fontFamilyStyleProps,
+    ...fontLetterSpacingStyleProps,
+  ],
+} as const;

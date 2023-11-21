@@ -1,42 +1,6 @@
 import {size} from '../../size';
 import {createVarName} from '../../utils';
-import type {MetaTokenProperties, ObjectFromKeys} from '../types';
-
-export const mappedSpaceStyleProps = [
-  // Shorthands
-  'margin',
-  'padding',
-  'gap',
-  // Logical properties
-  'marginInline',
-  'marginInlineStart',
-  'marginInlineEnd',
-  'marginBlock',
-  'marginBlockStart',
-  'marginBlockEnd',
-  'paddingInline',
-  'paddingInlineStart',
-  'paddingInlineEnd',
-  'paddingBlock',
-  'paddingBlockStart',
-  'paddingBlockEnd',
-  'rowGap',
-  'columnGap',
-  // Positional properties
-  'paddingLeft',
-  'paddingRight',
-  'paddingTop',
-  'paddingBottom',
-  'marginLeft',
-  'marginRight',
-  'marginTop',
-  'marginBottom',
-] as const;
-
-export type MappedSpaceStyleProps = ObjectFromKeys<
-  typeof mappedSpaceStyleProps,
-  `space-${SpaceScale}`
->;
+import type {MetaTokenProperties} from '../types';
 
 export type SpaceScale =
   | '0'
@@ -68,6 +32,10 @@ export type SpaceTokenName = `space-${SpaceAliasOrScale}`;
 
 export type SpaceTokenGroup = {
   [TokenName in SpaceTokenName]: string;
+};
+
+export type SpaceStyleProps = {
+  [T in typeof spaceStyleProps[number]]: SpaceScale;
 };
 
 export const space: {
@@ -144,3 +112,38 @@ export const space: {
 function createVar(spaceTokenName: SpaceTokenName) {
   return `var(${createVarName(spaceTokenName)})`;
 }
+
+const spaceStyleProps = [
+  // Shorthands
+  'margin',
+  'padding',
+  'gap',
+  // Logical properties
+  'marginInline',
+  'marginInlineStart',
+  'marginInlineEnd',
+  'marginBlock',
+  'marginBlockStart',
+  'marginBlockEnd',
+  'paddingInline',
+  'paddingInlineStart',
+  'paddingInlineEnd',
+  'paddingBlock',
+  'paddingBlockStart',
+  'paddingBlockEnd',
+  'rowGap',
+  'columnGap',
+  // Positional properties
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
+  'paddingBottom',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'marginBottom',
+] as const;
+
+export const spaceStylePropTokenGroups = {
+  space: spaceStyleProps,
+} as const;

@@ -1,38 +1,7 @@
-import type {MetaTokenProperties, ObjectFromKeys} from '../types';
+import type {MetaTokenProperties} from '../types';
 import * as colors from '../../colors';
 
 export type ColorGlobalAlias = 'transparent';
-
-const mappedColorBackgroundStyleProps = [
-  'backgroundColor',
-  'borderColor',
-] as const;
-type MappedColorBackgroundStyleProps = ObjectFromKeys<
-  typeof mappedColorBackgroundStyleProps,
-  `color-${ColorBorderAlias}`
->;
-
-const mappedColorTextStyleProps = ['color'] as const;
-type MappedColorTextStyleProps = ObjectFromKeys<
-  typeof mappedColorTextStyleProps,
-  `color-${ColorTextAlias}`
->;
-
-const mappedColorIconStyleProps = ['fill'] as const;
-type MappedColorIconStyleProps = ObjectFromKeys<
-  typeof mappedColorIconStyleProps,
-  `color-${ColorIconAlias}`
->;
-
-export type MappedColorStyleProps = MappedColorBackgroundStyleProps &
-  MappedColorTextStyleProps &
-  MappedColorIconStyleProps;
-
-export const mappedColorStyleProps = [
-  ...mappedColorBackgroundStyleProps,
-  ...mappedColorTextStyleProps,
-  ...mappedColorIconStyleProps,
-];
 
 export type ColorBackgroundAlias =
   | 'bg-fill-active'
@@ -268,6 +237,16 @@ export type ColorTokenName =
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
+};
+
+export type ColorStyleProps = {
+  [T in typeof colorBackgroundStyleProps[number]]?: ColorBackgroundAlias;
+} & {
+  [T in typeof colorBorderStyleProps[number]]?: ColorBorderAlias;
+} & {
+  [T in typeof colorTextStyleProps[number]]?: ColorTextAlias;
+} & {
+  [T in typeof colorIconStyleProps[number]]?: ColorIconAlias;
 };
 
 export const color: {
@@ -1179,3 +1158,20 @@ export const color: {
     value: 'transparent',
   },
 };
+
+const colorBackgroundStyleProps = ['backgroundColor'] as const;
+
+// TODO: Fill this out with longhand properties
+const colorBorderStyleProps = ['borderColor'] as const;
+
+const colorTextStyleProps = ['color'] as const;
+
+const colorIconStyleProps = ['fill'] as const;
+
+export const colorStylePropTokenGroups = {
+  color: [
+    ...colorBackgroundStyleProps,
+    ...colorTextStyleProps,
+    ...colorIconStyleProps,
+  ],
+} as const;

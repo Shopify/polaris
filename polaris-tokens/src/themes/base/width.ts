@@ -1,25 +1,5 @@
 import {size} from '../../size';
-import type {MetaTokenProperties, ObjectFromKeys} from '../types';
-
-export const mappedWidthStyleProps = [
-  // Shorthands
-  'containIntrinsicSize',
-  // Logical properties
-  'inlineSize',
-  'minInlineSize',
-  'maxInlineSize',
-  'containIntrinsicInlineSize',
-  // Positional properties
-  'width',
-  'minWidth',
-  'maxWidth',
-  'containIntrinsicWidth',
-] as const;
-
-export type MappedWidthStyleProps = ObjectFromKeys<
-  typeof mappedWidthStyleProps,
-  `width-${WidthScale}`
->;
+import type {MetaTokenProperties} from '../types';
 
 export type WidthScale =
   | '0'
@@ -47,6 +27,10 @@ export type WidthTokenName = `width-${WidthScale}`;
 
 export type WidthTokenGroup = {
   [TokenName in WidthTokenName]: string;
+};
+
+export type WidthStyleProps = {
+  [T in typeof widthStyleProps[number]]: WidthScale;
 };
 
 export const width: {
@@ -113,3 +97,20 @@ export const width: {
     value: size[3200],
   },
 };
+
+const widthStyleProps = [
+  // Shorthands
+  'containIntrinsicSize',
+  // Logical properties
+  'inlineSize',
+  'minInlineSize',
+  'maxInlineSize',
+  'containIntrinsicInlineSize',
+  // Positional properties
+  'width',
+  'minWidth',
+  'maxWidth',
+  'containIntrinsicWidth',
+] as const;
+
+export const widthStylePropTokenGroups = {width: widthStyleProps} as const;

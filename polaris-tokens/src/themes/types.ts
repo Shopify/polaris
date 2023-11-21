@@ -53,7 +53,3 @@ export type ExtractMetaTokenGroupValues<T extends MetaTokenGroupShape> = {
 export type ExtractMetaThemeValues<T extends MetaThemeShape> = {
   [K in keyof T]: ExtractMetaTokenGroupValues<T[K]>;
 };
-
-export type ObjectFromKeys<Arr extends readonly string[], T> = {
-  [K in Arr[number]]: T;
-};

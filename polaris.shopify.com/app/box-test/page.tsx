@@ -14,20 +14,34 @@ export default function Page() {
         {[...Array(1).keys()].map((id) => (
           <Cube key={id}>A cube</Cube>
         ))}
-        <Cube display="flex" flexDirection="row" gap="space-300" align="center">
+        <Cube>
+          {/*
+          <Cube display="flex" />
+          <div style={`display: flex`} />
+
+          <Cube display={{
+            xs: 'grid',
+            xl: 'flex'
+          }} />
+          <div style={`
+            --pc-box-display-sm: var(--_p-media-sm) grid;
+            --pc-box-display-xl: var(--_p-media-xl) flex;
+            display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
+          `} />
+          */}
           <Cube
             borderStyle="dashed"
             display={{xs: 'block', md: 'flex'}}
-            padding="space-400"
-            paddingBlock="space-600"
+            padding="400"
+            paddingBlock="600"
             outlineStyle="solid"
             outlineWidth="3px"
             outlineColor={{xs: 'blue', md: 'green'}}
           />
           <Cube
-            padding="space-400"
-            size="width-150"
-            paddingBlock="space-600"
+            padding="400"
+            size="150"
+            paddingBlock="600"
             outlineStyle="solid"
             outlineWidth="3px"
             outlineColor={{xs: 'blue', md: 'green'}}

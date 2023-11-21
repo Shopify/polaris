@@ -1,11 +1,4 @@
-import type {MetaTokenProperties, ObjectFromKeys} from '../types';
-
-export const mappedZIndexStyleProps = ['zIndex'] as const;
-
-export type MappedZIndexStyleProps = ObjectFromKeys<
-  typeof mappedZIndexStyleProps,
-  `z-index-${ZIndexZScale}`
->;
+import type {MetaTokenProperties} from '../types';
 
 export type ZIndexZScale =
   | '0'
@@ -26,6 +19,10 @@ export type ZIndexTokenName = `z-index-${ZIndexZScale}`;
 
 export type ZIndexTokenGroup = {
   [TokenName in ZIndexTokenName]: string;
+};
+
+export type ZIndexStyleProps = {
+  [T in typeof zIndexStyleProps[number]]: ZIndexZScale;
 };
 
 export const zIndex: {
@@ -71,3 +68,9 @@ export const zIndex: {
     value: '520',
   },
 };
+
+const zIndexStyleProps = ['zIndex'];
+
+export const zIndexStylePropTokenGroups = {
+  'z-index': zIndexStyleProps,
+} as const;

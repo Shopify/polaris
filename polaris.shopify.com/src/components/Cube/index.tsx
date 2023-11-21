@@ -20,7 +20,7 @@ import {
   stylePropAliasFallbacks,
   disallowedCSSPropertyValues,
   stylePropAliasNames as allAliases,
-  tokenizedStyleProps,
+  stylePropTokenGroupMap,
 } from './generated-data';
 
 type CubeProps = React.PropsWithChildren<ResponsiveStyleProps>;
@@ -226,9 +226,12 @@ function convertStylePropsToCSSProperties(
 
     // If this is a tokenized styleprop, we must convert the "values" into CSS
     // `var()` calls
-    if (tokenizedStyleProps.includes(key as any)) {
+    if (Object.hasOwn(stylePropTokenGroupMap, key)) {
       responsiveValues = mapObjectValues(responsiveValues, (value) =>
-        createPolarisCSSVar(null, value),
+        createPolarisCSSVar(
+          stylePropTokenGroupMap[key as keyof typeof stylePropTokenGroupMap],
+          value,
+        ),
       );
     }
 
@@ -311,9 +314,92 @@ type PolymorphicCube = SimplifyProps<
 
 const stylePropDefaults: ResponsiveStyleProps = {
   borderStyle: 'solid',
-  borderWidth: 'border-width-0',
+  borderWidth: '0',
 };
 
+/**
+The lowest level Polaris primitive from which everything in the system is built.
+
+@example
+```
+// Standard CSS properties
+<Cube display="flex" />
+
+// Will pass through directly to the underlaying element
+<div style={`display: flex`} />
+```
+
+@example
+```
+// Tokenized CSS properties
+<Cube paddingInlineStart="400" />
+
+// Converted to Polaris tokens then passed to the underlaying element
+<div style={`padding-inline-start: var(--p-space-400)`} />
+```
+
+@example
+```
+// Alias properties
+<Cube padding="400" />
+
+// Expanded to constituent properties and converted to Polaris tokens then pased
+// to the underlaying element
+<div style={`
+  padding-inline-start: var(--p-space-400);
+  padding-inline-end:   var(--p-space-400);
+  padding-block-start:  var(--p-space-400);
+  padding-block-end:    var(--p-space-400);
+`} />
+```
+
+@example
+```
+// All standard CSS properties, tokenized properties, and aliases can accept a
+// reponsive set of values
+<Cube
+  display={{
+    sm: 'grid',
+    xl: 'flex',
+  }}
+  paddingInline={{
+    xs: '200',
+    lg: '400',
+  }}
+/>
+
+// Aliases are expanded, tokenized values are converted to Polaris tokens, then
+// converted to responsive CSS variables and passed to the underlaying element
+<div style={`
+  --pc-box-display-sm: var(--_p-media-sm) grid;
+  --pc-box-display-xl: var(--_p-media-xl) flex;
+  display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
+
+  --pc-box-padding-inline-start-xs: var(--_p-media-xs) var(--p-space-200);
+  --pc-box-padding-inline-start-lg: var(--_p-media-lg) var(--p-space-400);
+  padding-inline-start: var(--pc-box-padding-inline-start-lg, var(--pc-box-padding-inline-start-xs, unset));
+
+  --pc-box-padding-inline-end-xs: var(--_p-media-xs) var(--p-space-200);
+  --pc-box-padding-inline-end-lg: var(--_p-media-lg) var(--p-space-400);
+  padding-inline-end: var(--pc-box-padding-inline-end-lg, var(--pc-box-padding-inline-end-xs, unset));
+`} />
+```
+
+@example
+```
+// Order doesn't matter
+<Cube paddingInlineStart="200" padding="400" paddingBlock="600" />
+
+// Most specific always wins (`paddingInlineStart` then `paddingBlock` then
+// `padding`)
+<div style={`
+  padding-inline-start: var(--p-space-200);
+  padding-inline-end:   var(--p-space-400);
+  padding-block-start:  var(--p-space-600);
+  padding-block-end:    var(--p-space-600);
+`} />
+```
+*/
 export const Cube = forwardRef(function Cube(
   {as: Tag = 'div', children, ...styleProps},
   forwardedRef,
