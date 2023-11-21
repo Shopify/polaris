@@ -1,34 +1,4 @@
-import type {MetaTokenProperties, ObjectFromKeys} from '../types';
-
-export const mappedMotionDurationStyleProps = ['transitionDuration'] as const;
-export type MappedMotionDurationStyleProps = ObjectFromKeys<
-  typeof mappedMotionDurationStyleProps,
-  `motion-duration-${MotionDurationScale}`
->;
-
-export const mappedMotionKeyframesStyleProps = ['animationName'] as const;
-export type MappedMotionKeyframesStyleProps = ObjectFromKeys<
-  typeof mappedMotionKeyframesStyleProps,
-  `motion-keyframes-${MotionKeyframesAlias}`
->;
-
-export const mappedMotionTimingFunctionStyleProps = [
-  'transitionTimingFunction',
-] as const;
-export type MappedMotionTimingFunctionStyleProps = ObjectFromKeys<
-  typeof mappedMotionTimingFunctionStyleProps,
-  `motion-${MotionTimingFunctionAlias}`
->;
-
-export const mappedMotionStyleProps = [
-  ...mappedMotionDurationStyleProps,
-  ...mappedMotionKeyframesStyleProps,
-  ...mappedMotionTimingFunctionStyleProps,
-];
-
-export type MappedMotionStyleProps = MappedMotionDurationStyleProps &
-  MappedMotionKeyframesStyleProps &
-  MappedMotionTimingFunctionStyleProps;
+import type {MetaTokenProperties} from '../types';
 
 export type MotionDurationScale =
   | '0'
@@ -66,6 +36,14 @@ export type MotionTokenName =
 
 export type MotionTokenGroup = {
   [TokenName in MotionTokenName]: string;
+};
+
+export type MotionStyleProps = {
+  [T in typeof motionDurationStyleProps[number]]?: MotionDurationScale;
+} & {
+  [T in typeof motionKeyframesStyleProps[number]]?: MotionKeyframesAlias;
+} & {
+  [T in typeof motionTimingFunctionStyleProps[number]]?: MotionTimingFunctionAlias;
 };
 
 export const motion: {
@@ -153,3 +131,16 @@ export const motion: {
       '{ from { transform: translateY(calc(var(--p-space-100) * -1)); opacity: 0; } to { transform: none; opacity: 1; } }',
   },
 };
+
+const motionDurationStyleProps = ['transitionDuration'] as const;
+
+const motionKeyframesStyleProps = ['animationName'] as const;
+
+const motionTimingFunctionStyleProps = ['transitionTimingFunction'] as const;
+
+export const motionStylePropTokenGoups = {
+  'motion-duration': motionDurationStyleProps,
+  'motion-keyframes': motionKeyframesStyleProps,
+  motion: motionTimingFunctionStyleProps,
+  color: ['color'],
+} as const;

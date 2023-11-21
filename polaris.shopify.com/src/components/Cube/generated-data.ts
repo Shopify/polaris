@@ -943,8 +943,12 @@ interface StylePropAliases {
 };
 
 /**
- * CSS properties we don't support. Note: Contains some aliases which are later
- * typed to a different value.
+ * CSS properties we don't support.
+ *
+ * Note: Some 'disallowed' properties happen to share a name with allowed
+ * aliases (eg; `paddingInline` is an alias for `paddingInlineStart` and
+ * `paddingInlineEnd`), so they appear in the list below, but are later
+ * included in the final `StyleProps` type.
  */
 type DisallowedStandardLonghandProperties = 'width'
   | 'height'
@@ -1007,7 +1011,61 @@ type DisallowedStandardLonghandProperties = 'width'
   | 'page'
   | 'mathStyle'
   | 'mathShift'
-  | 'mathDepth';
+  | 'mathDepth'
+  | 'paddingLeft'
+  | 'paddingRight'
+  | 'paddingTop'
+  | 'paddingBottom'
+  | 'marginLeft'
+  | 'marginRight'
+  | 'marginTop'
+  | 'marginBottom'
+  | 'width'
+  | 'height'
+  | 'minWidth'
+  | 'minHeight'
+  | 'maxWidth'
+  | 'maxHeight'
+  | 'containIntrinsicWidth'
+  | 'containIntrinsicHeight'
+  | 'overflowX'
+  | 'overflowY'
+  | 'overscrollBehaviorX'
+  | 'overscrollBehaviorY'
+  | 'borderTopLeftRadius'
+  | 'borderTopRightRadius'
+  | 'borderBottomLeftRadius'
+  | 'borderBottomRightRadius'
+  | 'borderLeftColor'
+  | 'borderInlineColor'
+  | 'borderRightColor'
+  | 'borderTopColor'
+  | 'borderBlockColor'
+  | 'borderBottomColor'
+  | 'borderLeftStyle'
+  | 'borderInlineStyle'
+  | 'borderRightStyle'
+  | 'borderTopStyle'
+  | 'borderBlockStyle'
+  | 'borderBottomStyle'
+  | 'borderLeftWidth'
+  | 'borderInlineWidth'
+  | 'borderRightWidth'
+  | 'borderTopWidth'
+  | 'borderBlockWidth'
+  | 'borderBottomWidth'
+  | 'left'
+  | 'right'
+  | 'top'
+  | 'bottom'
+  | 'scrollPaddingLeft'
+  | 'scrollPaddingRight'
+  | 'scrollPaddingTop'
+  | 'scrollPaddingBottom'
+  | 'scrollMarginLeft'
+  | 'scrollMarginRight'
+  | 'scrollMarginTop'
+  | 'scrollMarginBottom';
 
 /**
  * Props which act as an alias to one or more more specific props.
@@ -1089,92 +1147,87 @@ export const disallowedCSSPropertyValues = [
   "-moz-initial"
 ] satisfies Globals[];
 
-// TODO, make this a map to token group names:
-// {
-//   borderBlockStartColor: 'color',
-// }
-// or, maybe:
-// {
-//   color: ['borderBlockStartColor', ...]
-// }
-// has to come from token lib though
-// Then use that in Cube to map to the correct token group
-export const tokenizedStyleProps = [
+/**
+ * Style props which only accept tokens need to be assigned to a token group.
+ */
+export const stylePropTokenGroupMap = {
   // Longhand CSS Style Props
-  'borderStartStartRadius',
-  'borderStartEndRadius',
-  'borderEndStartRadius',
-  'borderEndEndRadius',
-  'borderBlockStartWidth',
-  'borderBlockEndWidth',
-  'borderInlineStartWidth',
-  'borderInlineEndWidth',
-  'backgroundColor',
-  'color',
-  'fontSize',
-  'lineHeight',
-  'fontWeight',
-  'fontFamily',
-  'letterSpacing',
-  'blockSize',
-  'minBlockSize',
-  'maxBlockSize',
-  'inlineSize',
-  'minInlineSize',
-  'maxInlineSize',
-  'containIntrinsicInlineSize',
-  'boxShadow',
-  'marginInlineStart',
-  'marginInlineEnd',
-  'marginBlockStart',
-  'marginBlockEnd',
-  'paddingInlineStart',
-  'paddingInlineEnd',
-  'paddingBlockStart',
-  'paddingBlockEnd',
-  'rowGap',
-  'columnGap',
-  'transitionDuration',
-  'animationName',
-  'transitionTimingFunction',
+  'borderStartStartRadius': "border-radius",
+  'borderStartEndRadius': "border-radius",
+  'borderEndStartRadius': "border-radius",
+  'borderEndEndRadius': "border-radius",
+  'borderBlockStartWidth': "border-width",
+  'borderBlockEndWidth': "border-width",
+  'borderInlineStartWidth': "border-width",
+  'borderInlineEndWidth': "border-width",
+  'backgroundColor': "color",
+  'color': "color",
+  'fontSize': "font",
+  'lineHeight': "font",
+  'fontWeight': "font",
+  'fontFamily': "font",
+  'letterSpacing': "font",
+  'blockSize': "height",
+  'minBlockSize': "height",
+  'maxBlockSize': "height",
+  'containIntrinsicBlockSize': "height",
+  'inlineSize': "width",
+  'minInlineSize': "width",
+  'maxInlineSize': "width",
+  'containIntrinsicInlineSize': "width",
+  'boxShadow': "shadow",
+  'marginInlineStart': "space",
+  'marginInlineEnd': "space",
+  'marginBlockStart': "space",
+  'marginBlockEnd': "space",
+  'paddingInlineStart': "space",
+  'paddingInlineEnd': "space",
+  'paddingBlockStart': "space",
+  'paddingBlockEnd': "space",
+  'rowGap': "space",
+  'columnGap': "space",
+  'transitionDuration': "motion-duration",
+  'animationName': "motion-keyframes",
+  'transitionTimingFunction': "motion",
 
   // Aliases
-  'gap',
-  'paddingLeft',
-  'paddingInline',
-  'padding',
-  'paddingRight',
-  'paddingTop',
-  'paddingBlock',
-  'paddingBottom',
-  'marginLeft',
-  'marginInline',
-  'margin',
-  'marginRight',
-  'marginTop',
-  'marginBlock',
-  'marginBottom',
-  'width',
-  'size',
-  'height',
-  'minWidth',
-  'minSize',
-  'minHeight',
-  'maxWidth',
-  'maxSize',
-  'maxHeight',
-  'containIntrinsicWidth',
-  'containIntrinsicSize',
-  'borderTopLeftRadius',
-  'borderRadius',
-  'borderTopRightRadius',
-  'borderBottomLeftRadius',
-  'borderBottomRightRadius',
-  'borderLeftWidth',
-  'borderInlineWidth',
-  'borderWidth',
-  'borderRightWidth',
-  'borderTopWidth',
-  'borderBlockWidth',
-  'borderBottomWidth',
-] as const;
+  'gap': "space",
+  'paddingLeft': "space",
+  'paddingInline': "space",
+  'padding': "space",
+  'paddingRight': "space",
+  'paddingTop': "space",
+  'paddingBlock': "space",
+  'paddingBottom': "space",
+  'marginLeft': "space",
+  'marginInline': "space",
+  'margin': "space",
+  'marginRight': "space",
+  'marginTop': "space",
+  'marginBlock': "space",
+  'marginBottom': "space",
+  'width': "width",
+  'size': "width",
+  'height': "height",
+  'minWidth': "width",
+  'minSize': "width",
+  'minHeight': "height",
+  'maxWidth': "width",
+  'maxSize': "width",
+  'maxHeight': "height",
+  'containIntrinsicWidth': "width",
+  'containIntrinsicSize': "width",
+  'containIntrinsicHeight': "height",
+  'borderTopLeftRadius': "border-radius",
+  'borderRadius': "border-radius",
+  'borderTopRightRadius': "border-radius",
+  'borderBottomLeftRadius': "border-radius",
+  'borderBottomRightRadius': "border-radius",
+  'borderLeftWidth': "border-width",
+  'borderInlineWidth': "border-width",
+  'borderWidth': "border-width",
+  'borderRightWidth': "border-width",
+  'borderTopWidth': "border-width",
+  'borderBlockWidth': "border-width",
+  'borderBottomWidth': "border-width",
+} as const;

@@ -1,39 +1,65 @@
-import type {MappedBorderStyleProps} from './themes/base/border';
-import {mappedBorderStyleProps} from './themes/base/border';
-import type {MappedColorStyleProps} from './themes/base/color';
-import {mappedColorStyleProps} from './themes/base/color';
-import type {MappedFontStyleProps} from './themes/base/font';
-import {mappedFontStyleProps} from './themes/base/font';
+import {deepmerge} from 'deepmerge-ts';
+
+import type {BorderStyleProps} from './themes/base/border';
+import {borderStylePropTokenGroups} from './themes/base/border';
+import type {ColorStyleProps} from './themes/base/color';
+import {colorStylePropTokenGroups} from './themes/base/color';
+import type {FontStyleProps} from './themes/base/font';
+import {fontStylePropTokenGroups} from './themes/base/font';
 import type {MappedHeightStyleProps} from './themes/base/height';
-import {mappedHeightStyleProps} from './themes/base/height';
-import type {MappedWidthStyleProps} from './themes/base/width';
-import {mappedWidthStyleProps} from './themes/base/width';
-import type {MappedShadowStyleProps} from './themes/base/shadow';
-import {mappedShadowStyleProps} from './themes/base/shadow';
-import type {MappedSpaceStyleProps} from './themes/base/space';
-import {mappedSpaceStyleProps} from './themes/base/space';
-import type {MappedMotionStyleProps} from './themes/base/motion';
-import {mappedMotionStyleProps} from './themes/base/motion';
+import {heightStylePropTokenGroups} from './themes/base/height';
+import type {WidthStyleProps} from './themes/base/width';
+import {widthStylePropTokenGroups} from './themes/base/width';
+import type {ShadowStyleProps} from './themes/base/shadow';
+import {shadowStylePropTokenGroups} from './themes/base/shadow';
+import type {SpaceStyleProps} from './themes/base/space';
+import {spaceStylePropTokenGroups} from './themes/base/space';
+import type {MotionStyleProps} from './themes/base/motion';
+import {motionStylePropTokenGoups} from './themes/base/motion';
 
-export type TokenizedStyleProps = MappedBorderStyleProps &
-  MappedColorStyleProps &
-  MappedFontStyleProps &
+export type TokenizedStyleProps = BorderStyleProps &
+  ColorStyleProps &
+  FontStyleProps &
   MappedHeightStyleProps &
-  MappedWidthStyleProps &
-  MappedShadowStyleProps &
-  MappedSpaceStyleProps &
-  MappedMotionStyleProps;
+  WidthStyleProps &
+  ShadowStyleProps &
+  SpaceStyleProps &
+  MotionStyleProps;
 
-export const tokenizedStyleProps = [
-  ...mappedBorderStyleProps,
-  ...mappedColorStyleProps,
-  ...mappedFontStyleProps,
-  ...mappedHeightStyleProps,
-  ...mappedWidthStyleProps,
-  ...mappedShadowStyleProps,
-  ...mappedSpaceStyleProps,
-  ...mappedMotionStyleProps,
-] as const;
+export const metaTokenGroups = deepmerge(
+  borderStylePropTokenGroups,
+  colorStylePropTokenGroups,
+  fontStylePropTokenGroups,
+  heightStylePropTokenGroups,
+  widthStylePropTokenGroups,
+  shadowStylePropTokenGroups,
+  spaceStylePropTokenGroups,
+  motionStylePropTokenGoups,
+);
+
+// Check the integrity of the style prop token groups; a CSS Property may only
+// exist in a single token group.
+if (process.env.NODE_ENV !== 'production') {
+  type MetaTokenGroups = typeof metaTokenGroups;
+  type TokenGroupNames = keyof MetaTokenGroups;
+  type TokenizedStyleProps = MetaTokenGroups[TokenGroupNames][number];
+
+  const acc: Partial<{[x in TokenizedStyleProps]: TokenGroupNames}> = {};
+  for (const tokenGroup in metaTokenGroups) {
+    if (!Object.prototype.hasOwnProperty.call(metaTokenGroups, tokenGroup)) {
+      continue;
+    }
+    const props = metaTokenGroups[tokenGroup as TokenGroupNames];
+    for (const prop of props) {
+      if (acc[prop] && acc[prop] !== tokenGroup) {
+        throw new Error(
+          `Tokenized CSS Properties must only be a member of one token group. '${prop}' was found in two different groups: '${acc[prop]}' and '${tokenGroup}'`,
+        );
+      }
+      acc[prop] = tokenGroup as TokenGroupNames;
+    }
+  }
+}
 
 export {breakpointsAliases} from './themes/base/breakpoints';
 

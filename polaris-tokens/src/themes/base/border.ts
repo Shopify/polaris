@@ -1,4 +1,4 @@
-import type {MetaTokenProperties, ObjectFromKeys} from '../types';
+import type {MetaTokenProperties} from '../types';
 import {size} from '../../size';
 
 export type BorderRadiusScale =
@@ -12,54 +12,6 @@ export type BorderRadiusScale =
   | '500'
   | '750';
 
-const mappedBorderRadiusStyleProps = [
-  // Shorthand
-  'borderRadius',
-  // Logical properties
-  'borderStartStartRadius',
-  'borderStartEndRadius',
-  'borderEndStartRadius',
-  'borderEndEndRadius',
-  // Positional properties
-  'borderTopLeftRadius',
-  'borderTopRightRadius',
-  'borderBottomLeftRadius',
-  'borderBottomRightRadius',
-] as const;
-type MappedBorderRadiusStypeProps = ObjectFromKeys<
-  typeof mappedBorderRadiusStyleProps,
-  `border-radius-${BorderRadiusAliasOrScale}`
->;
-
-const mappedBorderWidthStyleProps = [
-  // Shorthand
-  'borderWidth',
-  // Logical properties
-  'borderBlockStartWidth',
-  'borderBlockEndWidth',
-  'borderInlineStartWidth',
-  'borderInlineEndWidth',
-  'borderInlineWidth',
-  'borderBlockWidth',
-  // Positional properties
-  'borderLeftWidth',
-  'borderRightWidth',
-  'borderTopWidth',
-  'borderBottomWidth',
-] as const;
-type MappedBorderWidthStyleProps = ObjectFromKeys<
-  typeof mappedBorderWidthStyleProps,
-  `border-width-${BorderWidthScale}`
->;
-
-export const mappedBorderStyleProps = [
-  ...mappedBorderRadiusStyleProps,
-  ...mappedBorderWidthStyleProps,
-];
-
-export type MappedBorderStyleProps = MappedBorderRadiusStypeProps &
-  MappedBorderWidthStyleProps;
-
 export type BorderRadiusAlias = 'full';
 
 export type BorderRadiusAliasOrScale = BorderRadiusAlias | BorderRadiusScale;
@@ -72,6 +24,12 @@ export type BorderTokenName =
 
 export type BorderTokenGroup = {
   [TokenName in BorderTokenName]: string;
+};
+
+export type BorderStyleProps = {
+  [T in typeof borderRadiusStyleProps[number]]?: BorderRadiusAliasOrScale;
+} & {
+  [T in typeof borderWidthStyleProps[number]]?: BorderWidthScale;
 };
 
 export const border: {
@@ -123,3 +81,40 @@ export const border: {
     value: size[100],
   },
 };
+
+const borderRadiusStyleProps = [
+  // Shorthand
+  'borderRadius',
+  // Logical properties
+  'borderStartStartRadius',
+  'borderStartEndRadius',
+  'borderEndStartRadius',
+  'borderEndEndRadius',
+  // Positional properties
+  'borderTopLeftRadius',
+  'borderTopRightRadius',
+  'borderBottomLeftRadius',
+  'borderBottomRightRadius',
+] as const;
+
+const borderWidthStyleProps = [
+  // Shorthand
+  'borderWidth',
+  // Logical properties
+  'borderBlockStartWidth',
+  'borderBlockEndWidth',
+  'borderInlineStartWidth',
+  'borderInlineEndWidth',
+  'borderInlineWidth',
+  'borderBlockWidth',
+  // Positional properties
+  'borderLeftWidth',
+  'borderRightWidth',
+  'borderTopWidth',
+  'borderBottomWidth',
+] as const;
+
+export const borderStylePropTokenGroups = {
+  'border-radius': borderRadiusStyleProps,
+  'border-width': borderWidthStyleProps,
+} as const;

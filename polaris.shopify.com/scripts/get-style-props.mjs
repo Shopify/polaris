@@ -5,7 +5,7 @@ import {createRequire} from 'node:module';
 import _endent from 'endent';
 import ts from 'typescript';
 import {
-  tokenizedStyleProps as tokenizedCSSStyleProps,
+  metaTokenGroups as tokenizedCSSStyleProps,
   metaThemeDefault,
   toPx,
 } from '@shopify/polaris-tokens';
@@ -93,10 +93,6 @@ const disallowedCSSProperties = [
   ...positionalCSSProperties,
 
   ...incorrectlyMarkedAsLonghandByCSSTypes,
-
-  // We don't want to include vendor prefixed properties, but oddly this one
-  // property shows up in the list of "standard" CSS Properties.
-  // '-webkit-line-clamp',
 
   // Exclude from https://www.w3.org/TR/compat
   'touchAction',
@@ -257,6 +253,16 @@ const inverseAliases = Object.entries(stylePropAliasFallbacks).reduce(
   {},
 );
 
+const cssPropsToTokenGroup = Object.entries(tokenizedCSSStyleProps).reduce(
+  (acc, [tokenGroup, props]) => {
+    for (let prop of props) {
+      acc[prop] = tokenGroup;
+    }
+    return acc;
+  },
+  {},
+);
+
 verifyAliases();
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
@@ -282,17 +288,13 @@ await tsFile.close();
 function verifyAliases() {
   // To avoid ambiguity and ensure data integrity, we do not allow aliases to
   // have the same name as an allowed CSS property. For example, accidentally
-  // aliasing `rowGap` to `colGap` instead of `gap` will error (because `colGap`
-  // is an allowed CSS Property).
-  const aliasCollisions = [];
-  for (let longhandProperty in cssLonghandProperties) {
-    if (
+  // aliasing `rowGap` to `columnGap` instead of `gap` will error (because
+  // `columnGap` is an allowed CSS Property).
+  const aliasCollisions = Object.keys(cssLonghandProperties).filter(
+    (longhandProperty) =>
       !disallowedCSSProperties.includes(longhandProperty) &&
-      allAliases.includes(longhandProperty)
-    ) {
-      aliasCollisions.push(longhandProperty);
-    }
-  }
+      allAliases.includes(longhandProperty),
+  );
 
   // To simplify our types and avoid the dreaded TS Error "TS2590: Expression
   // produces a union type that is too complex to represent", we ensure all CSS
@@ -306,7 +308,8 @@ function verifyAliases() {
   //   & SupportedCSSStyleProps['borderBlockEndColor'];
   // ```
   // Usually this is fine as the types are simple. But for bigger types like
-  // `Color`, there are
+  // `Color`, there are _hundreds_ of unions which then get intersected and it
+  // blows past TS's 10,000 limit when checking every possible combination.
   const typeMismatches = [];
   Object.entries(inverseAliases).forEach(([alias, props]) => {
     // Compare the types of every property to ensure there's at least some
@@ -352,8 +355,9 @@ function verifyAliases() {
             .join('\n\n')}
         `,
       );
-      process.exit(-1);
     }
+
+    process.exit(-1);
   }
 }
 
@@ -422,7 +426,7 @@ async function writeTSProperties(tsFile) {
   const createMinimumCommonUnionForAlias = (styleProps) => {
     const types = styleProps.map((prop) => cssLonghandProperties[prop]);
     if (arraysAreEqualSets(...types)) {
-      // If all the types are the same, just refernce the first from the
+      // If all the types are the same, just reference the first from the
       // list
       return `SupportedStyleProps['${styleProps[0]}']`;
     }
@@ -601,17 +605,21 @@ interface StylePropAliases {${Object.entries(inverseAliases)
      .join('\n   * ')}
    * \`\`\`
    */
-  ${alias}?: ${createMinimumCommonUnionForAlias(styleProps, alias)};`,
+  ${alias}?: ${createMinimumCommonUnionForAlias(styleProps)};`,
     )
     .join('\n')}
 };
 
 /**
- * CSS properties we don't support. Note: Contains some aliases which are later
- * typed to a different value.
+ * CSS properties we don't support.
+ *
+ * Note: Some 'disallowed' properties happen to share a name with allowed
+ * aliases (eg; \`paddingInline\` is an alias for \`paddingInlineStart\` and
+ * \`paddingInlineEnd\`), so they appear in the list below, but are later
+ * included in the final \`StyleProps\` type.
  */
 type DisallowedStandardLonghandProperties = ${generateTSPickList(
-    disallowedCSSProperties
+    [...disallowedCSSProperties, ...allAliases]
       .filter((prop) => Object.hasOwn(cssLonghandProperties, prop))
       // We add additional single quotes here because the second argument for
       // Omit is a union of string literal types
@@ -651,35 +659,36 @@ export const disallowedCSSPropertyValues = ${JSON.stringify(
     2,
   )} satisfies Globals[];
 
-// TODO, make this a map to token group names:
-// {
-//   borderBlockStartColor: 'color',
-// }
-// or, maybe:
-// {
-//   color: ['borderBlockStartColor', ...]
-// }
-// has to come from token lib though
-// Then use that in Cube to map to the correct token group
-export const tokenizedStyleProps = [
+/**
+ * Style props which only accept tokens need to be assigned to a token group.
+ */
+export const stylePropTokenGroupMap = {
   // Longhand CSS Style Props
-  ${tokenizedCSSStyleProps
+  ${Object.entries(cssPropsToTokenGroup)
     .filter(
-      (prop) =>
+      ([prop]) =>
         Object.hasOwn(cssLonghandProperties, prop) &&
         !allAliases.includes(prop),
     )
-    .map((prop) => `'${prop}'`)
+    .map(([prop, tokenGroup]) => `'${prop}': ${JSON.stringify(tokenGroup)}`)
     .join(',\n  ')},
 
   // Aliases
   ${Object.entries(inverseAliases)
+    // Aliases map to longhand CSS properties eventually, but some might map to
+    // other properties in the meantime, so we have to resolve all of them
+    .filter(([, properties]) =>
+      Object.hasOwn(cssPropsToTokenGroup, properties[0]),
+    )
     // We only check the first property relying on this alias and assume the
-    // rest are also tokenized
-    .filter(([, properties]) => tokenizedCSSStyleProps.includes(properties[0]))
-    .map(([alias]) => `'${alias}'`)
+    // rest are also tokenized thanks to earlier checks confirming all the
+    // properties have the same type.
+    .map(
+      ([alias, properties]) =>
+        `'${alias}': ${JSON.stringify(cssPropsToTokenGroup[properties[0]])}`,
+    )
     .join(',\n  ')},
-] as const;
+} as const;
 `);
 }
 
