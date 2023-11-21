@@ -23,16 +23,12 @@
 }
 
 .withinPage {
-  @include shadow-bevel(
-    $boxShadow: var(--p-shadow-200),
-    $borderRadius: var(--p-border-radius-0)
-  );
+  box-shadow: var(--p-shadow-bevel);
+  border-radius: none;
 
   @media #{$p-breakpoints-sm-up} {
-    @include shadow-bevel(
-      $boxShadow: var(--p-shadow-200),
-      $borderRadius: var(--p-border-radius-300)
-    );
+    box-shadow: var(--p-shadow-bevel);
+    border-radius: var(--p-border-radius-300);
   }
 
   + .Banner {

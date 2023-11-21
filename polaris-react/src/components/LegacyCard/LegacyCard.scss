@@ -2,15 +2,10 @@
 
 .LegacyCard {
   background-color: var(--p-color-bg-surface);
-  box-shadow: var(--p-shadow-300);
+  box-shadow: var(--p-shadow-bevel);
+  border-radius: none;
   outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
-
-  @include shadow-bevel(
-    $boxShadow: var(--p-shadow-100),
-    $borderRadius: var(--p-border-radius-0),
-    $zIndex: 101
-  );
 
   // Override custom heading font sizes
   h2,
@@ -27,13 +22,8 @@
   }
 
   @media #{$p-breakpoints-sm-up} {
-    border-radius: var(--p-border-radius-200);
-
-    @include shadow-bevel(
-      $boxShadow: var(--p-shadow-100),
-      $borderRadius: var(--p-border-radius-300),
-      $zIndex: 101
-    );
+    border-radius: var(--p-border-radius-300);
+    box-shadow: var(--p-shadow-bevel);
 
     .Section:first-child {
       border-top-left-radius: var(--p-border-radius-300);
@@ -48,13 +38,6 @@
 
   @media print {
     box-shadow: none;
-
-    @include shadow-bevel(
-      $boxShadow: none,
-      $borderRadius: var(--p-border-radius-0),
-      $border: none,
-      $content: none
-    );
   }
 }
 

@@ -9,7 +9,6 @@ import React from 'react';
 import {useBreakpoints} from '../../utilities/breakpoints';
 import type {ResponsiveProp} from '../../utilities/css';
 import {Box} from '../Box';
-import {ShadowBevel} from '../ShadowBevel';
 import {WithinContentContext} from '../../utilities/within-content-context';
 
 type Spacing = ResponsiveProp<SpaceScale>;
@@ -45,21 +44,17 @@ export const Card = ({
 
   return (
     <WithinContentContext.Provider value>
-      <ShadowBevel
-        boxShadow="100"
-        borderRadius={hasBorderRadius ? defaultBorderRadius : '0'}
-        zIndex="32"
+      <Box
+        borderRadius={hasBorderRadius ? defaultBorderRadius : undefined}
+        background={background}
+        padding={padding}
+        overflowX="hidden"
+        overflowY="hidden"
+        minHeight="100%"
+        shadow="bevel"
       >
-        <Box
-          background={background}
-          padding={padding}
-          overflowX="hidden"
-          overflowY="hidden"
-          minHeight="100%"
-        >
-          {children}
-        </Box>
-      </ShadowBevel>
+        {children}
+      </Box>
     </WithinContentContext.Provider>
   );
 };

@@ -4,8 +4,8 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 import {setMediaWidth} from 'tests/utilities/breakpoints';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
+import {Box} from '../../Box';
 import {Card} from '..';
-import {ShadowBevel} from '../../ShadowBevel';
 
 const heading = <p>Online store dashboard</p>;
 const subheading = <p>View a summary of your online store performance</p>;
@@ -60,7 +60,7 @@ describe('Card', () => {
       </Card>,
     );
 
-    expect(card).toContainReactComponent(ShadowBevel, {
+    expect(card).toContainReactComponent(Box, {
       borderRadius: '300',
     });
   });
