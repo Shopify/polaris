@@ -54,15 +54,10 @@ $bulk-actions-button-stacking-order: (
   justify-content: flex-start;
   padding: var(--p-space-300);
   background: var(--p-color-bg-surface);
-  border-radius: var(--p-border-radius-200);
-  box-shadow: var(--p-shadow-300), var(--p-shadow-500);
   max-width: 100%;
   pointer-events: auto;
-
-  @include shadow-bevel(
-    $boxShadow: var(--p-shadow-300),
-    $borderRadius: var(--p-border-radius-300)
-  );
+  box-shadow: var(--p-shadow-bevel);
+  border-radius: var(--p-border-radius-300);
 
   @media #{$p-breakpoints-sm-down} {
     // stylelint-disable-next-line selector-max-combinators, selector-max-type -- the first item of button group on small screen needs to fill the space

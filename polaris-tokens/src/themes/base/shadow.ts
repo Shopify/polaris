@@ -7,6 +7,7 @@ export type ShadowBevelScale = '100';
 export type ShadowInsetScale = '100' | '200';
 
 export type ShadowAlias =
+  | 'bevel'
   | 'button'
   | 'button-hover'
   | 'button-inset'
@@ -55,6 +56,10 @@ export const shadow: {
   },
   'shadow-600': {
     value: '0px 20px 20px -8px rgba(26, 26, 26, 0.28)',
+  },
+  'shadow-bevel': {
+    value:
+      '0px 1px 0px 0px rgba(26, 26, 26, 0.10), 0px 0px 0px 1px rgba(0, 0, 0, 0.10), 0px -1px 0px 0px rgba(255, 255, 255, 0.40), 0px 3px 1px -1px rgba(26, 26, 26, 0.07)',
   },
   'shadow-bevel-100': {
     value:
