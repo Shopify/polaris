@@ -164,7 +164,7 @@ interface NonMutuallyExclusiveProps {
   /** Visual styling options for the TextField
    * @default 'inherit'
    */
-  variant?: 'inherit' | 'borderless';
+  variant?: 'inherit' | 'borderless' | 'slim' | 'borderlessSlim';
   /** Callback fired when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback fired when value is changed */

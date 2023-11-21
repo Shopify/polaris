@@ -845,6 +845,22 @@ export function All() {
           autoComplete="off"
         />
       </FormLayout.Group>
+      <FormLayout.Group>
+        <TextField
+          label="Slim variant"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+          variant="slim"
+        />
+        <TextField
+          label="Borderless slim variant"
+          value="Value"
+          onChange={() => {}}
+          autoComplete="off"
+          variant="borderlessSlim"
+        />
+      </FormLayout.Group>
     </FormLayout>
   );
 }
