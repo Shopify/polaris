@@ -978,7 +978,7 @@
   }
 }
 // Overrides for popover active / expanded states on plain, monochromePlain, tertiary buttons
-.Button[aria-expanded='true']:is([aria-owns]):is(.variantPlain, .variantMonochromePlain, .variantTertiary) {
+.Button:is([aria-expanded='true']):is([aria-owns]):is(.variantTertiary) {
   background: var(--p-color-bg-fill-transparent-active);
 }
 
