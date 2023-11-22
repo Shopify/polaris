@@ -6,22 +6,13 @@
   font-weight: var(--p-font-weight-bold);
   font-size: var(--p-font-size-500);
   line-height: var(--p-font-line-height-600);
-}
 
-.TitleWithSubtitle {
-  margin-top: 0;
-}
-
-.SubTitle {
-  margin-top: var(--p-space-050);
-  color: var(--p-color-text-secondary);
-
-  &.SubtitleCompact {
-    margin-top: var(--p-space-050);
+  &.TitleWithSubtitle {
+    margin-top: 0;
   }
 }
 
-.TitleWithMetadataWrapper {
+.TitleWrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -37,9 +28,13 @@
       display: inline;
     }
   }
+}
 
-  .TitleMetadata {
-    margin-top: 0;
-    vertical-align: bottom;
+.SubTitle {
+  margin-top: var(--p-space-050);
+  color: var(--p-color-text-secondary);
+
+  &.SubtitleCompact {
+    margin-top: var(--p-space-050);
   }
 }
