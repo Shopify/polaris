@@ -1161,8 +1161,15 @@ export const color: {
 
 const colorBackgroundStyleProps = ['backgroundColor'] as const;
 
-// TODO: Fill this out with longhand properties
-const colorBorderStyleProps = ['borderColor'] as const;
+const colorBorderStyleProps = [
+  'borderColor',
+  'borderInlineColor',
+  'borderBlockColor',
+  'borderInlineStartColor',
+  'borderInlineEndColor',
+  'borderBlockStartColor',
+  'borderBlockEndColor',
+] as const;
 
 const colorTextStyleProps = ['color'] as const;
 
