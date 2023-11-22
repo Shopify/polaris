@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  SelectMinor,
   ChevronDownMinor,
   ChevronUpMinor,
+  SelectMinor,
 } from '@shopify/polaris-icons';
 
 import type {BaseButton, IconSource} from '../../types';
@@ -42,7 +42,7 @@ export interface ButtonProps extends BaseButton {
   /** Sets the color treatment of the Button. */
   tone?: 'critical' | 'success';
   /** Changes the visual appearance of the Button. */
-  variant?: 'plain' | 'primary' | 'tertiary' | 'monochromePlain';
+  variant?: 'plain' | 'primary' | 'secondary' | 'tertiary' | 'monochromePlain';
 }
 
 interface CommonButtonProps
@@ -83,8 +83,6 @@ type ActionButtonProps = Pick<
   | 'onPointerDown'
 >;
 
-const DEFAULT_SIZE = 'medium';
-
 export function Button({
   id,
   children,
@@ -114,48 +112,46 @@ export function Button({
   icon,
   disclosure,
   removeUnderline,
-  size = DEFAULT_SIZE,
-  textAlign,
+  size = 'medium',
+  textAlign = 'center',
   fullWidth,
   dataPrimaryLink,
   tone,
-  variant,
+  variant = 'secondary',
 }: ButtonProps) {
   const i18n = useI18n();
-
   const isDisabled = disabled || loading;
 
   const className = classNames(
     styles.Button,
+    styles.pressable,
+    styles[variationName('variant', variant)],
+    styles[variationName('size', size)],
+    styles[variationName('textAlign', textAlign)],
     fullWidth && styles.fullWidth,
+    disclosure && styles.disclosure,
+    icon && children && styles.iconWithText,
     icon && children == null && styles.iconOnly,
     isDisabled && styles.disabled,
     loading && styles.loading,
     pressed && !disabled && !url && styles.pressed,
     removeUnderline && styles.removeUnderline,
-    size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
-    textAlign && styles[variationName('textAlign', textAlign)],
     tone && styles[variationName('tone', tone)],
-    variant && styles[variationName('variant', variant)],
   );
 
   const disclosureMarkup = disclosure ? (
-    <span className={styles.Icon}>
-      <div
-        className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
-      >
-        <Icon
-          source={
-            loading
-              ? 'placeholder'
-              : getDisclosureIconSource(
-                  disclosure,
-                  ChevronUpMinor,
-                  ChevronDownMinor,
-                )
-          }
-        />
-      </div>
+    <span className={loading ? styles.hidden : ''}>
+      <Icon
+        source={
+          loading
+            ? 'placeholder'
+            : getDisclosureIconSource(
+                disclosure,
+                ChevronUpMinor,
+                ChevronDownMinor,
+              )
+        }
+      />
     </span>
   ) : null;
 
@@ -165,17 +161,12 @@ export function Button({
     icon
   );
   const iconMarkup = iconSource ? (
-    <span className={classNames(styles.Icon, loading && styles.hidden)}>
-      {iconSource}
-    </span>
+    <span className={loading ? styles.hidden : ''}>{iconSource}</span>
   ) : null;
 
   const childMarkup = children ? (
     <span
-      className={classNames(
-        styles.Text,
-        removeUnderline && styles.removeUnderline,
-      )}
+      className={removeUnderline ? styles.removeUnderline : ''}
       // Fixes Safari bug that doesn't re-render button text to correct color
       key={disabled ? 'text-disabled' : 'text'}
     >
@@ -230,12 +221,10 @@ export function Button({
 
   const buttonMarkup = (
     <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
-      <span className={styles.Content}>
-        {spinnerSVGMarkup}
-        {iconMarkup}
-        {childMarkup}
-        {disclosureMarkup}
-      </span>
+      {spinnerSVGMarkup}
+      {iconMarkup}
+      {childMarkup}
+      {disclosureMarkup}
     </UnstyledButton>
   );
 

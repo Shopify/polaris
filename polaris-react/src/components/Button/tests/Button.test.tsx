@@ -11,9 +11,8 @@ import {Icon} from '../../Icon';
 import {Spinner} from '../../Spinner';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Button} from '../Button';
-import styles from '../Button.module.scss';
 
-describe('<Button />', () => {
+describe('Button copy', () => {
   let warnSpy: jest.SpyInstance | null = null;
 
   beforeEach(() => {
@@ -295,7 +294,8 @@ describe('<Button />', () => {
   });
 
   describe('pressed', () => {
-    const buttonPressedClasses = 'Button pressed';
+    const buttonPressedClasses =
+      'Button pressable variantSecondary sizeMedium textAlignCenter pressed';
 
     it('outputs a pressed button', () => {
       const button = mountWithApp(<Button pressed />);
@@ -322,33 +322,25 @@ describe('<Button />', () => {
   describe('disclosure', () => {
     it('assumes "down" if set to true', () => {
       const button = mountWithApp(<Button disclosure />);
-      const disclosureIcon = button
-        .find('div', {className: styles.DisclosureIcon})!
-        .find(Icon);
+      const disclosureIcon = button.find(Icon);
       expect(disclosureIcon).toHaveReactProps({source: ChevronDownMinor});
     });
 
     it('is facing down if set to "down"', () => {
       const button = mountWithApp(<Button disclosure="down" />);
-      const disclosureIcon = button
-        .find('div', {className: styles.DisclosureIcon})!
-        .find(Icon);
+      const disclosureIcon = button.find(Icon);
       expect(disclosureIcon).toHaveReactProps({source: ChevronDownMinor});
     });
 
     it('is facing up if set to "up"', () => {
       const button = mountWithApp(<Button disclosure="up" />);
-      const disclosureIcon = button
-        .find('div', {className: styles.DisclosureIcon})!
-        .find(Icon);
+      const disclosureIcon = button.find(Icon);
       expect(disclosureIcon).toHaveReactProps({source: ChevronUpMinor});
     });
 
     it('is double-arrow if set to "select"', () => {
       const button = mountWithApp(<Button disclosure="select" />);
-      const disclosureIcon = button
-        .find('div', {className: styles.DisclosureIcon})!
-        .find(Icon);
+      const disclosureIcon = button.find(Icon);
       expect(disclosureIcon).toHaveReactProps({source: SelectMinor});
     });
   });
