@@ -65,7 +65,7 @@ verifyAliases();
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 const sassFile = await fs.open(
-  path.resolve(__dirname, '../../src/components/Cube/style.module.scss'),
+  path.resolve(__dirname, '../../src/components/Cube/style.module.css'),
   'w+',
 );
 
