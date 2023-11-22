@@ -1172,6 +1172,11 @@ const colorBorderStyleProps = [
   'borderInlineEndColor',
   'borderBlockStartColor',
   'borderBlockEndColor',
+  // Positional properties
+  'borderLeftColor',
+  'borderRightColor',
+  'borderTopColor',
+  'borderBottomColor',
 ] as const;
 
 const colorTextStyleProps = ['color'] as const;
