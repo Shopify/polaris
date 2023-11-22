@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import {MDXRemote, type MDXRemoteProps} from './next-mdx-importer';
 import {ClipboardMinor} from '@shopify/polaris-icons';
-import {Grid, InlineGrid} from '@shopify/polaris';
+import {InlineGrid} from '@shopify/polaris';
 
 import styles from './Markdown.module.scss';
 import Code, {InlineCode} from '../../components/Code';
@@ -242,7 +242,6 @@ function Markdown<
         Stack,
         InlineGrid,
         SideBySide,
-        Grid,
         Card,
         DirectiveCard,
         FeaturedCardGrid,
