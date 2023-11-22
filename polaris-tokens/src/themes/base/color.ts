@@ -1162,7 +1162,10 @@ export const color: {
 const colorBackgroundStyleProps = ['backgroundColor'] as const;
 
 const colorBorderStyleProps = [
+  // Shorthand
   'borderColor',
+  'outlineColor',
+  // Logical properties
   'borderInlineColor',
   'borderBlockColor',
   'borderInlineStartColor',

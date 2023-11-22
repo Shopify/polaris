@@ -100,6 +100,7 @@ const borderRadiusStyleProps = [
 const borderWidthStyleProps = [
   // Shorthand
   'borderWidth',
+  'outlineWidth',
   // Logical properties
   'borderBlockStartWidth',
   'borderBlockEndWidth',
