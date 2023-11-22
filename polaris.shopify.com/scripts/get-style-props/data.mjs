@@ -116,6 +116,18 @@ export const disallowedCSSPropertyValues = [
  *
  * Where `StandardLonghandProperties` comes from csstype:
  * https://github.com/frenic/csstype/blob/46694defae2cf3386218d0000490b0d0ac385aa6/index.d.ts#L11
+ *
+ * Type:
+ * {
+ *   [x: string]: {
+ *     aliases?: (keyof StandardLonghandProperties | keyof Aliases)[],
+ *     // Function style is only called once aliases have been applied.
+ *     // Returning undefined (hardcoded or from the function) will use the
+ *     // global default of 'unset' (ie; let the browser figure it out while
+ *     // respecting our DOM-level scoping).
+ *     default?: string | (props: ResponsiveStyleProps) => (string | undefined)
+ *   }
+ * }
  */
 export const stylePropConfig = {
   rowGap: {aliases: ['gap']},
@@ -168,15 +180,31 @@ export const stylePropConfig = {
   },
   borderInlineStartStyle: {
     aliases: ['borderLeftStyle', 'borderInlineStyle', 'borderStyle'],
+    getDefault: (props) =>
+      props.borderInlineStartColor || props.borderInlineStartWidth
+        ? 'solid'
+        : undefined,
   },
   borderInlineEndStyle: {
     aliases: ['borderRightStyle', 'borderInlineStyle', 'borderStyle'],
+    getDefault: (props) =>
+      props.borderInlineEndColor || props.borderInlineEndWidth
+        ? 'solid'
+        : undefined,
   },
   borderBlockStartStyle: {
     aliases: ['borderTopStyle', 'borderBlockStyle', 'borderStyle'],
+    getDefault: (props) =>
+      props.borderBlockStartColor || props.borderBlockStartWidth
+        ? 'solid'
+        : undefined,
   },
   borderBlockEndStyle: {
     aliases: ['borderBottomStyle', 'borderBlockStyle', 'borderStyle'],
+    getDefault: (props) =>
+      props.borderBlockEndColor || props.borderBlockEndWidth
+        ? 'solid'
+        : undefined,
   },
   borderInlineStartWidth: {
     aliases: ['borderLeftWidth', 'borderInlineWidth', 'borderWidth'],
@@ -189,6 +217,10 @@ export const stylePropConfig = {
   },
   borderBlockEndWidth: {
     aliases: ['borderBottomWidth', 'borderBlockWidth', 'borderWidth'],
+  },
+  outlineStyle: {
+    getDefault: (props) =>
+      props.outlineWidth || props.outlineColor ? 'solid' : undefined,
   },
   insetInlineStart: {aliases: ['left', 'insetInline', 'inset']},
   insetInlineEnd: {aliases: ['right', 'insetInline', 'inset']},

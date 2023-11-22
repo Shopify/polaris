@@ -46,6 +46,10 @@ export default function Page() {
             outlineWidth="3px"
             outlineColor={{xs: 'blue', md: 'green'}}
           />
+          <Cube borderWidth="050">
+            Setting a borderWidth should also set the borderStyle to "solid" by
+            default
+          </Cube>
         </Cube>
       </div>
     </AppProvider>
