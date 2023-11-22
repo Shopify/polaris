@@ -10,6 +10,7 @@ import {
   RangeSlider,
   Badge,
   IndexFiltersMode,
+  useBreakpoints,
 } from '@shopify/polaris';
 import type {IndexFiltersProps, TabProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
@@ -324,6 +325,7 @@ function IndexTableWithFilteringExample() {
         setMode={setMode}
       />
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={orders.length}
         selectedItemsCount={

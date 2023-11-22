@@ -4,6 +4,7 @@ import {
   Link,
   useIndexResourceState,
   Text,
+  useBreakpoints,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -72,6 +73,7 @@ function ClickThroughLinkIndexTableExample() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={

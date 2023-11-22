@@ -3,6 +3,7 @@ import {
   Text,
   useIndexResourceState,
   IndexTable,
+  useBreakpoints,
 } from '@shopify/polaris';
 import type {IndexTableRowProps, IndexTableProps} from '@shopify/polaris';
 import React, {Fragment} from 'react';
@@ -214,6 +215,7 @@ export function WithNestedRowsExample() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length

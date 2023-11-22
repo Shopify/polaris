@@ -156,6 +156,8 @@ Index tables should:
 Index tables can optionally:
 
 - Provide bulk actions for tasks that are often applied to many list items at once. For example, merchants may want to add the same tag to a large number of products.
+- Hide bulk actions on small screens using the `condensed` prop. We only recommend hiding bulk actions on screens smaller than 490px using our `breakpoints-sm` value: `condensed={useBreakpoints().smDown}`.
+  - Hiding bulk actions means a merchant can’t select multiple items at once, so it should only be used when the bulk actions are not essential to the merchant’s workflow.
 
 ---
 

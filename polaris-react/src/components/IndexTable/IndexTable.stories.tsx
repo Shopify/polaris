@@ -6,6 +6,7 @@ import type {
   IndexTableRowProps,
 } from '@shopify/polaris';
 import {
+  useBreakpoints,
   InlineStack,
   LegacyCard,
   EmptySearchResult,
@@ -107,6 +108,7 @@ export function Default() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -326,6 +328,7 @@ export function Flush() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -637,6 +640,7 @@ export function WithDisabledRows() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={selectableCustomers.length}
         selectedItemsCount={
@@ -731,6 +735,7 @@ export function WithSubduedRows() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -807,6 +812,7 @@ export function WithEmptyState() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -938,6 +944,7 @@ export function WithBulkActions() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -1096,6 +1103,7 @@ export function WithMultiplePromotedBulkActions() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -1203,41 +1211,36 @@ export function WithBulkActionsAndSelectionAcrossPages() {
   );
 
   return (
-    <div
-      style={{
-        padding: 'var(--p-space-400) var(--p-space-400) var(--p-space-1000)',
-      }}
-    >
-      <LegacyCard>
-        <IndexTable
-          resourceName={resourceName}
-          itemCount={customers.length}
-          selectedItemsCount={
-            allResourcesSelected ? 'All' : selectedResources.length
-          }
-          onSelectionChange={handleSelectionChange}
-          hasMoreItems
-          bulkActions={bulkActions}
-          promotedBulkActions={promotedBulkActions}
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {
-              alignment: 'end',
-              id: 'order-count',
-              title: 'Order count',
-            },
-            {
-              alignment: 'end',
-              id: 'amount-spent',
-              title: 'Amount spent',
-            },
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </LegacyCard>
-    </div>
+    <LegacyCard>
+      <IndexTable
+        condensed={useBreakpoints().smDown}
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        hasMoreItems
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
   );
 }
 
@@ -1323,6 +1326,7 @@ export function WithLoadingState() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -1525,6 +1529,7 @@ export function WithFiltering() {
         primaryAction={primaryAction}
       />
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -1738,6 +1743,7 @@ export function WithRowStatus() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -1890,6 +1896,7 @@ export function WithStickyLastColumn() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -2009,6 +2016,7 @@ export function WithRowNavigationLink() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -2124,6 +2132,7 @@ export function WithClickableButtonColumn() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -2225,6 +2234,7 @@ export function WithoutCheckboxes() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         headings={[
@@ -2333,6 +2343,7 @@ export function WithTonesWithoutCheckboxes() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         headings={[
@@ -2553,6 +2564,7 @@ export function WithAllOfItsElements() {
         primaryAction={primaryAction}
       />
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -2750,6 +2762,7 @@ export function WithSortableHeadings() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={rows.length}
         selectedItemsCount={
@@ -2936,6 +2949,7 @@ export function WithSortableCustomHeadings() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={rows.length}
         selectedItemsCount={
@@ -3061,6 +3075,7 @@ export function WithCustomTooltips() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -3178,6 +3193,7 @@ export function WithHeadingTooltips() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -3359,6 +3375,7 @@ export function WithZebraStriping() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -3560,6 +3577,7 @@ export function WithZebraStripingAndRowStatus() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -3704,6 +3722,7 @@ export function WithZebraStripingAndStickyLastColumn() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -3786,6 +3805,7 @@ export function WithZebraStripingAndWithoutCheckboxes() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         headings={[
@@ -4248,6 +4268,7 @@ export function WithSubHeaders() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
@@ -4344,6 +4365,7 @@ export function WithPagination() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -4570,6 +4592,7 @@ export function WithSubHeadersNonSelectable() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
@@ -4761,6 +4784,7 @@ export function WithNestedRows() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
@@ -5029,6 +5053,7 @@ export function WithNestedRowsStickyLastColumn() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
@@ -5222,6 +5247,7 @@ export function WithNestedRowsNonSelectable() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
@@ -5428,6 +5454,7 @@ export function WithNestedRowsWithThumbnails() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
@@ -5634,6 +5661,7 @@ export function WithNestedRowsWithThumbnailsNonSelectable() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
@@ -5842,6 +5870,7 @@ export function WithNestedRowsWithThumbnailsOneCellSelectable() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
@@ -6048,6 +6077,7 @@ export function WithNestedRowsWithThumbnailsOneCellNonSelectable() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
