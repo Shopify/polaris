@@ -3,6 +3,7 @@ import {
   Text,
   useIndexResourceState,
   IndexTable,
+  useBreakpoints,
 } from '@shopify/polaris';
 import type {IndexTableRowProps, IndexTableProps} from '@shopify/polaris';
 import React, {Fragment} from 'react';
@@ -225,6 +226,7 @@ export function WithSubHeadersExample() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         onSelectionChange={handleSelectionChange}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length

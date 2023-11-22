@@ -4,6 +4,7 @@ import {
   useIndexResourceState,
   Text,
   Badge,
+  useBreakpoints,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -74,6 +75,7 @@ function StickyLastCellIndexTableExample() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={orders.length}
         selectedItemsCount={

@@ -1,4 +1,10 @@
-import {IndexTable, LegacyCard, Text, Badge} from '@shopify/polaris';
+import {
+  IndexTable,
+  LegacyCard,
+  Text,
+  Badge,
+  useBreakpoints,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -60,6 +66,7 @@ function IndexTableWithoutCheckboxesExample() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={orders.length}
         headings={[
