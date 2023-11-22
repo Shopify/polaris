@@ -1,4 +1,4 @@
-import style from './style.module.scss';
+import style from './style.module.css';
 import React, {forwardRef} from 'react';
 import invariant from 'tiny-invariant';
 import {breakpointsAliases} from '@shopify/polaris-tokens';
