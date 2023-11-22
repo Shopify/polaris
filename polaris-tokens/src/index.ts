@@ -50,6 +50,7 @@ export type {
   ColorBorderAlias,
   ColorIconAlias,
   ColorTextAlias,
+  ColorGlobalAlias,
 } from './themes/base/color';
 
 export type {
