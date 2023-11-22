@@ -434,15 +434,29 @@ export const stylePropAliasFallbacks = {
   ${Object.entries(stylePropConfig)
     .filter(([, {aliases}]) => aliases?.length)
     .map(
-      ([styleProp, {aliases}]) => `"${styleProp}": ${JSON.stringify(aliases)},`,
+      ([styleProp, {aliases}]) => `${styleProp}: ${JSON.stringify(aliases)},`,
     )
     .join('\n  ')}
-} satisfies Partial<{ [K in keyof SupportedCSSStyleProps]: (keyof StyleProps)[] }>;
+} satisfies { [K in keyof SupportedCSSStyleProps]?: (keyof StyleProps)[] };
 
 // Extract a unique set of just the alias names
 export const stylePropAliasNames: (keyof StyleProps)[] = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat())
 );
+
+export const stylePropDefaults = {
+  ${Object.entries(stylePropConfig)
+    .filter(([, {getDefault}]) => typeof getDefault !== 'undefined')
+    .map(
+      ([styleProp, {getDefault}]) => `${styleProp}: ${getDefault.toString()},`,
+    )
+    .join('\n  ')}
+} satisfies {
+  [K in keyof StyleProps]?:
+    | StyleProps[K]
+    | undefined
+    | ((props: ResponsiveStyleProps) => StyleProps[K] | undefined)
+};
 
 /**
  * A list of values that if passed to any styleProp on our Box component should
@@ -467,7 +481,7 @@ export const stylePropTokenGroupMap = {
         Object.hasOwn(cssLonghandProperties, prop) &&
         !allAliases.includes(prop),
     )
-    .map(([prop, tokenGroup]) => `'${prop}': ${JSON.stringify(tokenGroup)}`)
+    .map(([prop, tokenGroup]) => `${prop}: ${JSON.stringify(tokenGroup)}`)
     .join(',\n  ')},
 
   // Aliases
@@ -482,7 +496,7 @@ export const stylePropTokenGroupMap = {
     // properties have the same type.
     .map(
       ([alias, properties]) =>
-        `'${alias}': ${JSON.stringify(cssPropsToTokenGroup[properties[0]])}`,
+        `${alias}: ${JSON.stringify(cssPropsToTokenGroup[properties[0]])}`,
     )
     .join(',\n  ')},
 } as const;

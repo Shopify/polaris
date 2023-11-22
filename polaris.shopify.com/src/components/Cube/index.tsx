@@ -21,6 +21,7 @@ import {
   disallowedCSSPropertyValues,
   stylePropAliasNames as allAliases,
   stylePropTokenGroupMap,
+  stylePropDefaults,
 } from './generated-data';
 
 type CubeProps = React.PropsWithChildren<ResponsiveStyleProps>;
@@ -165,7 +166,7 @@ function resolveAliasFallbacks(
  */
 function convertStylePropsToCSSProperties(
   styleProps: ResponsiveStyleProps,
-  defaults: ResponsiveStyleProps,
+  defaults: typeof stylePropDefaults,
 ) {
   // Ensure constituent styles are given fallback values even when they're not
   // passed in as an explicit style prop.
@@ -182,7 +183,14 @@ function convertStylePropsToCSSProperties(
   // defaults before resolving the fallbacks, `paddingInlineStart` would
   // fallback to `paddingInline: '400'` which is NOT what we want.
   longhandStyleProps = {
-    ...defaults,
+    ...Object.fromEntries(
+      Object.entries(defaults).map(([prop, getDefault]) => [
+        prop,
+        typeof getDefault === 'function'
+          ? getDefault(longhandStyleProps)
+          : getDefault,
+      ]),
+    ),
     ...longhandStyleProps,
   };
 
@@ -311,11 +319,6 @@ type SimplifyProps<F> = F extends (props: infer Props) => infer Return
 type PolymorphicCube = SimplifyProps<
   StrictProps<Polymorphic.ForwardRefComponent<any, CubeProps>>
 >;
-
-const stylePropDefaults: ResponsiveStyleProps = {
-  borderStyle: 'solid',
-  borderWidth: '0',
-};
 
 /**
 The lowest level Polaris primitive from which everything in the system is built.
