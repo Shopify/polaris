@@ -1,6 +1,7 @@
 import React from 'react';
 import type {ComponentProps} from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {SearchField} from '..';
 import {TextField} from '../../../../TextField';
@@ -14,6 +15,11 @@ describe('SearchField', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
   });
 
   it('will call onChange when changed', () => {

@@ -259,6 +259,15 @@ $spinner-icon-size: 12px;
   }
 }
 
+/* stylelint-disable -- override focus ring offset by increasing specificity */
+.slim.borderless.slim.borderless {
+  .Input,
+  .Backdrop {
+    outline-offset: 0;
+  }
+}
+/* stylelint-enable */
+
 .Input-hasClearButton {
   // Hide webkit search input clear button
   &[type='search'] {

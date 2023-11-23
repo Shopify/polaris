@@ -4,6 +4,7 @@ import {SearchMinor} from '@shopify/polaris-icons';
 import {Spinner} from '../../../Spinner';
 import {Icon} from '../../../Icon';
 import {TextField} from '../../../TextField';
+import {useBreakpoints} from '../../../../utilities/breakpoints';
 
 import styles from './SearchField.scss';
 
@@ -34,6 +35,8 @@ export function SearchField({
   loading,
 }: SearchFieldProps) {
   const id = useId();
+  const {mdUp} = useBreakpoints();
+
   function handleChange(value: string) {
     onChange(value);
   }
@@ -59,7 +62,7 @@ export function SearchField({
       disabled={disabled}
       variant={borderlessQueryField ? 'borderless' : 'inherit'}
       size="slim"
-      prefix={<Icon source={SearchMinor} />}
+      prefix={mdUp ? <Icon source={SearchMinor} /> : undefined}
       suffix={
         loading ? (
           <div className={styles.Spinner}>
