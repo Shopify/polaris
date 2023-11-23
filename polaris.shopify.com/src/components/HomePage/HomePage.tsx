@@ -75,8 +75,8 @@ function HomePage({}: Props) {
                 width={1600}
                 height={800}
                 style={{width: '100%', height: 'auto'}}
-                src="/images/home-news.png"
-                alt="A list showcasing the new font sizes in Polaris"
+                src="/images/home-v12.png"
+                alt="Polaris"
               />
             </div>
           </div>
