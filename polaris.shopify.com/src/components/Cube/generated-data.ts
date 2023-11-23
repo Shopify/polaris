@@ -132,36 +132,44 @@ export type ResponsiveStyleProps = {
 */
 interface StylePropAliases {
   /**
-   * Fallback for `rowGap` and `columnGap`.
+   * Alias for setting `rowGap` and `columnGap`:
    *
    * ```
    * rowGap = props.rowGap ?? props.gap;
    * columnGap = props.columnGap ?? props.gap;
    * ```
+   *
+   * @see {@link SupportedStyleProps.rowGap}
+   * @see {@link SupportedStyleProps.columnGap}
    */
   gap?: SupportedStyleProps['rowGap'];
 
   /**
-   * Fallback for `paddingInlineStart`.
+   * Alias for setting `paddingInlineStart`:
    *
    * ```
    * paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.paddingInlineStart}
    */
   paddingLeft?: SupportedStyleProps['paddingInlineStart'];
 
   /**
-   * Fallback for `paddingInlineStart` and `paddingInlineEnd`.
+   * Alias for setting `paddingInlineStart` and `paddingInlineEnd`:
    *
    * ```
    * paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding;
    * paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.paddingInlineStart}
+   * @see {@link SupportedStyleProps.paddingInlineEnd}
    */
   paddingInline?: SupportedStyleProps['paddingInlineStart'];
 
   /**
-   * Fallback for `paddingInlineStart`, `paddingInlineEnd`, `paddingBlockStart` and `paddingBlockEnd`.
+   * Alias for setting `paddingInlineStart`, `paddingInlineEnd`, `paddingBlockStart` and `paddingBlockEnd`:
    *
    * ```
    * paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding;
@@ -169,67 +177,86 @@ interface StylePropAliases {
    * paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding;
    * paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.paddingInlineStart}
+   * @see {@link SupportedStyleProps.paddingInlineEnd}
+   * @see {@link SupportedStyleProps.paddingBlockStart}
+   * @see {@link SupportedStyleProps.paddingBlockEnd}
    */
   padding?: SupportedStyleProps['paddingInlineStart'];
 
   /**
-   * Fallback for `paddingInlineEnd`.
+   * Alias for setting `paddingInlineEnd`:
    *
    * ```
    * paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.paddingInlineEnd}
    */
   paddingRight?: SupportedStyleProps['paddingInlineEnd'];
 
   /**
-   * Fallback for `paddingBlockStart`.
+   * Alias for setting `paddingBlockStart`:
    *
    * ```
    * paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.paddingBlockStart}
    */
   paddingTop?: SupportedStyleProps['paddingBlockStart'];
 
   /**
-   * Fallback for `paddingBlockStart` and `paddingBlockEnd`.
+   * Alias for setting `paddingBlockStart` and `paddingBlockEnd`:
    *
    * ```
    * paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding;
    * paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.paddingBlockStart}
+   * @see {@link SupportedStyleProps.paddingBlockEnd}
    */
   paddingBlock?: SupportedStyleProps['paddingBlockStart'];
 
   /**
-   * Fallback for `paddingBlockEnd`.
+   * Alias for setting `paddingBlockEnd`:
    *
    * ```
    * paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.paddingBlockEnd}
    */
   paddingBottom?: SupportedStyleProps['paddingBlockEnd'];
 
   /**
-   * Fallback for `marginInlineStart`.
+   * Alias for setting `marginInlineStart`:
    *
    * ```
    * marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.marginInlineStart}
    */
   marginLeft?: SupportedStyleProps['marginInlineStart'];
 
   /**
-   * Fallback for `marginInlineStart` and `marginInlineEnd`.
+   * Alias for setting `marginInlineStart` and `marginInlineEnd`:
    *
    * ```
    * marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin;
    * marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.marginInlineStart}
+   * @see {@link SupportedStyleProps.marginInlineEnd}
    */
   marginInline?: SupportedStyleProps['marginInlineStart'];
 
   /**
-   * Fallback for `marginInlineStart`, `marginInlineEnd`, `marginBlockStart` and `marginBlockEnd`.
+   * Alias for setting `marginInlineStart`, `marginInlineEnd`, `marginBlockStart` and `marginBlockEnd`:
    *
    * ```
    * marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin;
@@ -237,90 +264,116 @@ interface StylePropAliases {
    * marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin;
    * marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.marginInlineStart}
+   * @see {@link SupportedStyleProps.marginInlineEnd}
+   * @see {@link SupportedStyleProps.marginBlockStart}
+   * @see {@link SupportedStyleProps.marginBlockEnd}
    */
   margin?: SupportedStyleProps['marginInlineStart'];
 
   /**
-   * Fallback for `marginInlineEnd`.
+   * Alias for setting `marginInlineEnd`:
    *
    * ```
    * marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.marginInlineEnd}
    */
   marginRight?: SupportedStyleProps['marginInlineEnd'];
 
   /**
-   * Fallback for `marginBlockStart`.
+   * Alias for setting `marginBlockStart`:
    *
    * ```
    * marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.marginBlockStart}
    */
   marginTop?: SupportedStyleProps['marginBlockStart'];
 
   /**
-   * Fallback for `marginBlockStart` and `marginBlockEnd`.
+   * Alias for setting `marginBlockStart` and `marginBlockEnd`:
    *
    * ```
    * marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin;
    * marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.marginBlockStart}
+   * @see {@link SupportedStyleProps.marginBlockEnd}
    */
   marginBlock?: SupportedStyleProps['marginBlockStart'];
 
   /**
-   * Fallback for `marginBlockEnd`.
+   * Alias for setting `marginBlockEnd`:
    *
    * ```
    * marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.marginBlockEnd}
    */
   marginBottom?: SupportedStyleProps['marginBlockEnd'];
 
   /**
-   * Fallback for `inlineSize`.
+   * Alias for setting `inlineSize`:
    *
    * ```
    * inlineSize = props.inlineSize ?? props.width ?? props.size;
    * ```
+   *
+   * @see {@link SupportedStyleProps.inlineSize}
    */
   width?: SupportedStyleProps['inlineSize'];
 
   /**
-   * Fallback for `inlineSize` and `blockSize`.
+   * Alias for setting `inlineSize` and `blockSize`:
    *
    * ```
    * inlineSize = props.inlineSize ?? props.width ?? props.size;
    * blockSize = props.blockSize ?? props.height ?? props.size;
    * ```
+   *
+   * @see {@link SupportedStyleProps.inlineSize}
+   * @see {@link SupportedStyleProps.blockSize}
    */
   size?: SupportedStyleProps['inlineSize'];
 
   /**
-   * Fallback for `blockSize`.
+   * Alias for setting `blockSize`:
    *
    * ```
    * blockSize = props.blockSize ?? props.height ?? props.size;
    * ```
+   *
+   * @see {@link SupportedStyleProps.blockSize}
    */
   height?: SupportedStyleProps['blockSize'];
 
   /**
-   * Fallback for `minInlineSize`.
+   * Alias for setting `minInlineSize`:
    *
    * ```
    * minInlineSize = props.minInlineSize ?? props.minWidth ?? props.minSize;
    * ```
+   *
+   * @see {@link SupportedStyleProps.minInlineSize}
    */
   minWidth?: SupportedStyleProps['minInlineSize'];
 
   /**
-   * Fallback for `minInlineSize` and `minBlockSize`.
+   * Alias for setting `minInlineSize` and `minBlockSize`:
    *
    * ```
    * minInlineSize = props.minInlineSize ?? props.minWidth ?? props.minSize;
    * minBlockSize = props.minBlockSize ?? props.minHeight ?? props.minSize;
    * ```
+   *
+   * @see {@link SupportedStyleProps.minInlineSize}
+   * @see {@link SupportedStyleProps.minBlockSize}
    */
   minSize?: Exclude<
     SupportedStyleProps['minInlineSize'],
@@ -328,30 +381,37 @@ interface StylePropAliases {
   >;
 
   /**
-   * Fallback for `minBlockSize`.
+   * Alias for setting `minBlockSize`:
    *
    * ```
    * minBlockSize = props.minBlockSize ?? props.minHeight ?? props.minSize;
    * ```
+   *
+   * @see {@link SupportedStyleProps.minBlockSize}
    */
   minHeight?: SupportedStyleProps['minBlockSize'];
 
   /**
-   * Fallback for `maxInlineSize`.
+   * Alias for setting `maxInlineSize`:
    *
    * ```
    * maxInlineSize = props.maxInlineSize ?? props.maxWidth ?? props.maxSize;
    * ```
+   *
+   * @see {@link SupportedStyleProps.maxInlineSize}
    */
   maxWidth?: SupportedStyleProps['maxInlineSize'];
 
   /**
-   * Fallback for `maxInlineSize` and `maxBlockSize`.
+   * Alias for setting `maxInlineSize` and `maxBlockSize`:
    *
    * ```
    * maxInlineSize = props.maxInlineSize ?? props.maxWidth ?? props.maxSize;
    * maxBlockSize = props.maxBlockSize ?? props.maxHeight ?? props.maxSize;
    * ```
+   *
+   * @see {@link SupportedStyleProps.maxInlineSize}
+   * @see {@link SupportedStyleProps.maxBlockSize}
    */
   maxSize?: Exclude<
     SupportedStyleProps['maxInlineSize'],
@@ -359,105 +419,131 @@ interface StylePropAliases {
   >;
 
   /**
-   * Fallback for `maxBlockSize`.
+   * Alias for setting `maxBlockSize`:
    *
    * ```
    * maxBlockSize = props.maxBlockSize ?? props.maxHeight ?? props.maxSize;
    * ```
+   *
+   * @see {@link SupportedStyleProps.maxBlockSize}
    */
   maxHeight?: SupportedStyleProps['maxBlockSize'];
 
   /**
-   * Fallback for `containIntrinsicInlineSize`.
+   * Alias for setting `containIntrinsicInlineSize`:
    *
    * ```
    * containIntrinsicInlineSize = props.containIntrinsicInlineSize ?? props.containIntrinsicWidth ?? props.containIntrinsicSize;
    * ```
+   *
+   * @see {@link SupportedStyleProps.containIntrinsicInlineSize}
    */
   containIntrinsicWidth?: SupportedStyleProps['containIntrinsicInlineSize'];
 
   /**
-   * Fallback for `containIntrinsicInlineSize` and `containIntrinsicBlockSize`.
+   * Alias for setting `containIntrinsicInlineSize` and `containIntrinsicBlockSize`:
    *
    * ```
    * containIntrinsicInlineSize = props.containIntrinsicInlineSize ?? props.containIntrinsicWidth ?? props.containIntrinsicSize;
    * containIntrinsicBlockSize = props.containIntrinsicBlockSize ?? props.containIntrinsicHeight ?? props.containIntrinsicSize;
    * ```
+   *
+   * @see {@link SupportedStyleProps.containIntrinsicInlineSize}
+   * @see {@link SupportedStyleProps.containIntrinsicBlockSize}
    */
   containIntrinsicSize?: SupportedStyleProps['containIntrinsicInlineSize'];
 
   /**
-   * Fallback for `containIntrinsicBlockSize`.
+   * Alias for setting `containIntrinsicBlockSize`:
    *
    * ```
    * containIntrinsicBlockSize = props.containIntrinsicBlockSize ?? props.containIntrinsicHeight ?? props.containIntrinsicSize;
    * ```
+   *
+   * @see {@link SupportedStyleProps.containIntrinsicBlockSize}
    */
   containIntrinsicHeight?: SupportedStyleProps['containIntrinsicBlockSize'];
 
   /**
-   * Fallback for `overflowInline`.
+   * Alias for setting `overflowInline`:
    *
    * ```
    * overflowInline = props.overflowInline ?? props.overflowX ?? props.overflow;
    * ```
+   *
+   * @see {@link SupportedStyleProps.overflowInline}
    */
   overflowX?: SupportedStyleProps['overflowInline'];
 
   /**
-   * Fallback for `overflowInline` and `overflowBlock`.
+   * Alias for setting `overflowInline` and `overflowBlock`:
    *
    * ```
    * overflowInline = props.overflowInline ?? props.overflowX ?? props.overflow;
    * overflowBlock = props.overflowBlock ?? props.overflowY ?? props.overflow;
    * ```
+   *
+   * @see {@link SupportedStyleProps.overflowInline}
+   * @see {@link SupportedStyleProps.overflowBlock}
    */
   overflow?: SupportedStyleProps['overflowInline'];
 
   /**
-   * Fallback for `overflowBlock`.
+   * Alias for setting `overflowBlock`:
    *
    * ```
    * overflowBlock = props.overflowBlock ?? props.overflowY ?? props.overflow;
    * ```
+   *
+   * @see {@link SupportedStyleProps.overflowBlock}
    */
   overflowY?: SupportedStyleProps['overflowBlock'];
 
   /**
-   * Fallback for `overscrollBehaviorInline`.
+   * Alias for setting `overscrollBehaviorInline`:
    *
    * ```
    * overscrollBehaviorInline = props.overscrollBehaviorInline ?? props.overscrollBehaviorX ?? props.overscrollBehavior;
    * ```
+   *
+   * @see {@link SupportedStyleProps.overscrollBehaviorInline}
    */
   overscrollBehaviorX?: SupportedStyleProps['overscrollBehaviorInline'];
 
   /**
-   * Fallback for `overscrollBehaviorInline` and `overscrollBehaviorBlock`.
+   * Alias for setting `overscrollBehaviorInline` and `overscrollBehaviorBlock`:
    *
    * ```
    * overscrollBehaviorInline = props.overscrollBehaviorInline ?? props.overscrollBehaviorX ?? props.overscrollBehavior;
    * overscrollBehaviorBlock = props.overscrollBehaviorBlock ?? props.overscrollBehaviorY ?? props.overscrollBehavior;
    * ```
+   *
+   * @see {@link SupportedStyleProps.overscrollBehaviorInline}
+   * @see {@link SupportedStyleProps.overscrollBehaviorBlock}
    */
   overscrollBehavior?: SupportedStyleProps['overscrollBehaviorInline'];
 
   /**
-   * Fallback for `overscrollBehaviorBlock`.
+   * Alias for setting `overscrollBehaviorBlock`:
    *
    * ```
    * overscrollBehaviorBlock = props.overscrollBehaviorBlock ?? props.overscrollBehaviorY ?? props.overscrollBehavior;
    * ```
+   *
+   * @see {@link SupportedStyleProps.overscrollBehaviorBlock}
    */
   overscrollBehaviorY?: SupportedStyleProps['overscrollBehaviorBlock'];
 
   /**
-   * Fallback for `backgroundPositionX` and `backgroundPositionY`.
+   * Alias for setting `backgroundPositionX` and `backgroundPositionY`:
    *
    * ```
    * backgroundPositionX = props.backgroundPositionX ?? props.backgroundPosition;
    * backgroundPositionY = props.backgroundPositionY ?? props.backgroundPosition;
    * ```
+   *
+   * @see {@link SupportedStyleProps.backgroundPositionX}
+   * @see {@link SupportedStyleProps.backgroundPositionY}
    */
   backgroundPosition?: Exclude<
     SupportedStyleProps['backgroundPositionX'],
@@ -468,16 +554,18 @@ interface StylePropAliases {
   >;
 
   /**
-   * Fallback for `borderStartStartRadius`.
+   * Alias for setting `borderStartStartRadius`:
    *
    * ```
    * borderStartStartRadius = props.borderStartStartRadius ?? props.borderTopLeftRadius ?? props.borderRadius;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderStartStartRadius}
    */
   borderTopLeftRadius?: SupportedStyleProps['borderStartStartRadius'];
 
   /**
-   * Fallback for `borderStartStartRadius`, `borderStartEndRadius`, `borderEndStartRadius` and `borderEndEndRadius`.
+   * Alias for setting `borderStartStartRadius`, `borderStartEndRadius`, `borderEndStartRadius` and `borderEndEndRadius`:
    *
    * ```
    * borderStartStartRadius = props.borderStartStartRadius ?? props.borderTopLeftRadius ?? props.borderRadius;
@@ -485,57 +573,73 @@ interface StylePropAliases {
    * borderEndStartRadius = props.borderEndStartRadius ?? props.borderBottomLeftRadius ?? props.borderRadius;
    * borderEndEndRadius = props.borderEndEndRadius ?? props.borderBottomRightRadius ?? props.borderRadius;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderStartStartRadius}
+   * @see {@link SupportedStyleProps.borderStartEndRadius}
+   * @see {@link SupportedStyleProps.borderEndStartRadius}
+   * @see {@link SupportedStyleProps.borderEndEndRadius}
    */
   borderRadius?: SupportedStyleProps['borderStartStartRadius'];
 
   /**
-   * Fallback for `borderStartEndRadius`.
+   * Alias for setting `borderStartEndRadius`:
    *
    * ```
    * borderStartEndRadius = props.borderStartEndRadius ?? props.borderTopRightRadius ?? props.borderRadius;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderStartEndRadius}
    */
   borderTopRightRadius?: SupportedStyleProps['borderStartEndRadius'];
 
   /**
-   * Fallback for `borderEndStartRadius`.
+   * Alias for setting `borderEndStartRadius`:
    *
    * ```
    * borderEndStartRadius = props.borderEndStartRadius ?? props.borderBottomLeftRadius ?? props.borderRadius;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderEndStartRadius}
    */
   borderBottomLeftRadius?: SupportedStyleProps['borderEndStartRadius'];
 
   /**
-   * Fallback for `borderEndEndRadius`.
+   * Alias for setting `borderEndEndRadius`:
    *
    * ```
    * borderEndEndRadius = props.borderEndEndRadius ?? props.borderBottomRightRadius ?? props.borderRadius;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderEndEndRadius}
    */
   borderBottomRightRadius?: SupportedStyleProps['borderEndEndRadius'];
 
   /**
-   * Fallback for `borderInlineStartColor`.
+   * Alias for setting `borderInlineStartColor`:
    *
    * ```
    * borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineStartColor}
    */
   borderLeftColor?: SupportedStyleProps['borderInlineStartColor'];
 
   /**
-   * Fallback for `borderInlineStartColor` and `borderInlineEndColor`.
+   * Alias for setting `borderInlineStartColor` and `borderInlineEndColor`:
    *
    * ```
    * borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor;
    * borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineStartColor}
+   * @see {@link SupportedStyleProps.borderInlineEndColor}
    */
   borderInlineColor?: SupportedStyleProps['borderInlineStartColor'];
 
   /**
-   * Fallback for `borderInlineStartColor`, `borderInlineEndColor`, `borderBlockStartColor` and `borderBlockEndColor`.
+   * Alias for setting `borderInlineStartColor`, `borderInlineEndColor`, `borderBlockStartColor` and `borderBlockEndColor`:
    *
    * ```
    * borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor;
@@ -543,67 +647,86 @@ interface StylePropAliases {
    * borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor;
    * borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineStartColor}
+   * @see {@link SupportedStyleProps.borderInlineEndColor}
+   * @see {@link SupportedStyleProps.borderBlockStartColor}
+   * @see {@link SupportedStyleProps.borderBlockEndColor}
    */
   borderColor?: SupportedStyleProps['borderInlineStartColor'];
 
   /**
-   * Fallback for `borderInlineEndColor`.
+   * Alias for setting `borderInlineEndColor`:
    *
    * ```
    * borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineEndColor}
    */
   borderRightColor?: SupportedStyleProps['borderInlineEndColor'];
 
   /**
-   * Fallback for `borderBlockStartColor`.
+   * Alias for setting `borderBlockStartColor`:
    *
    * ```
    * borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderBlockStartColor}
    */
   borderTopColor?: SupportedStyleProps['borderBlockStartColor'];
 
   /**
-   * Fallback for `borderBlockStartColor` and `borderBlockEndColor`.
+   * Alias for setting `borderBlockStartColor` and `borderBlockEndColor`:
    *
    * ```
    * borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor;
    * borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderBlockStartColor}
+   * @see {@link SupportedStyleProps.borderBlockEndColor}
    */
   borderBlockColor?: SupportedStyleProps['borderBlockStartColor'];
 
   /**
-   * Fallback for `borderBlockEndColor`.
+   * Alias for setting `borderBlockEndColor`:
    *
    * ```
    * borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderBlockEndColor}
    */
   borderBottomColor?: SupportedStyleProps['borderBlockEndColor'];
 
   /**
-   * Fallback for `borderInlineStartStyle`.
+   * Alias for setting `borderInlineStartStyle`:
    *
    * ```
    * borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineStartStyle}
    */
   borderLeftStyle?: SupportedStyleProps['borderInlineStartStyle'];
 
   /**
-   * Fallback for `borderInlineStartStyle` and `borderInlineEndStyle`.
+   * Alias for setting `borderInlineStartStyle` and `borderInlineEndStyle`:
    *
    * ```
    * borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle;
    * borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineStartStyle}
+   * @see {@link SupportedStyleProps.borderInlineEndStyle}
    */
   borderInlineStyle?: SupportedStyleProps['borderInlineStartStyle'];
 
   /**
-   * Fallback for `borderInlineStartStyle`, `borderInlineEndStyle`, `borderBlockStartStyle` and `borderBlockEndStyle`.
+   * Alias for setting `borderInlineStartStyle`, `borderInlineEndStyle`, `borderBlockStartStyle` and `borderBlockEndStyle`:
    *
    * ```
    * borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle;
@@ -611,67 +734,86 @@ interface StylePropAliases {
    * borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineStartStyle}
+   * @see {@link SupportedStyleProps.borderInlineEndStyle}
+   * @see {@link SupportedStyleProps.borderBlockStartStyle}
+   * @see {@link SupportedStyleProps.borderBlockEndStyle}
    */
   borderStyle?: SupportedStyleProps['borderInlineStartStyle'];
 
   /**
-   * Fallback for `borderInlineEndStyle`.
+   * Alias for setting `borderInlineEndStyle`:
    *
    * ```
    * borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineEndStyle}
    */
   borderRightStyle?: SupportedStyleProps['borderInlineEndStyle'];
 
   /**
-   * Fallback for `borderBlockStartStyle`.
+   * Alias for setting `borderBlockStartStyle`:
    *
    * ```
    * borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderBlockStartStyle}
    */
   borderTopStyle?: SupportedStyleProps['borderBlockStartStyle'];
 
   /**
-   * Fallback for `borderBlockStartStyle` and `borderBlockEndStyle`.
+   * Alias for setting `borderBlockStartStyle` and `borderBlockEndStyle`:
    *
    * ```
    * borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderBlockStartStyle}
+   * @see {@link SupportedStyleProps.borderBlockEndStyle}
    */
   borderBlockStyle?: SupportedStyleProps['borderBlockStartStyle'];
 
   /**
-   * Fallback for `borderBlockEndStyle`.
+   * Alias for setting `borderBlockEndStyle`:
    *
    * ```
    * borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderBlockEndStyle}
    */
   borderBottomStyle?: SupportedStyleProps['borderBlockEndStyle'];
 
   /**
-   * Fallback for `borderInlineStartWidth`.
+   * Alias for setting `borderInlineStartWidth`:
    *
    * ```
    * borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineStartWidth}
    */
   borderLeftWidth?: SupportedStyleProps['borderInlineStartWidth'];
 
   /**
-   * Fallback for `borderInlineStartWidth` and `borderInlineEndWidth`.
+   * Alias for setting `borderInlineStartWidth` and `borderInlineEndWidth`:
    *
    * ```
    * borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth;
    * borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineStartWidth}
+   * @see {@link SupportedStyleProps.borderInlineEndWidth}
    */
   borderInlineWidth?: SupportedStyleProps['borderInlineStartWidth'];
 
   /**
-   * Fallback for `borderInlineStartWidth`, `borderInlineEndWidth`, `borderBlockStartWidth` and `borderBlockEndWidth`.
+   * Alias for setting `borderInlineStartWidth`, `borderInlineEndWidth`, `borderBlockStartWidth` and `borderBlockEndWidth`:
    *
    * ```
    * borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth;
@@ -679,67 +821,86 @@ interface StylePropAliases {
    * borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineStartWidth}
+   * @see {@link SupportedStyleProps.borderInlineEndWidth}
+   * @see {@link SupportedStyleProps.borderBlockStartWidth}
+   * @see {@link SupportedStyleProps.borderBlockEndWidth}
    */
   borderWidth?: SupportedStyleProps['borderInlineStartWidth'];
 
   /**
-   * Fallback for `borderInlineEndWidth`.
+   * Alias for setting `borderInlineEndWidth`:
    *
    * ```
    * borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderInlineEndWidth}
    */
   borderRightWidth?: SupportedStyleProps['borderInlineEndWidth'];
 
   /**
-   * Fallback for `borderBlockStartWidth`.
+   * Alias for setting `borderBlockStartWidth`:
    *
    * ```
    * borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderBlockStartWidth}
    */
   borderTopWidth?: SupportedStyleProps['borderBlockStartWidth'];
 
   /**
-   * Fallback for `borderBlockStartWidth` and `borderBlockEndWidth`.
+   * Alias for setting `borderBlockStartWidth` and `borderBlockEndWidth`:
    *
    * ```
    * borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderBlockStartWidth}
+   * @see {@link SupportedStyleProps.borderBlockEndWidth}
    */
   borderBlockWidth?: SupportedStyleProps['borderBlockStartWidth'];
 
   /**
-   * Fallback for `borderBlockEndWidth`.
+   * Alias for setting `borderBlockEndWidth`:
    *
    * ```
    * borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * ```
+   *
+   * @see {@link SupportedStyleProps.borderBlockEndWidth}
    */
   borderBottomWidth?: SupportedStyleProps['borderBlockEndWidth'];
 
   /**
-   * Fallback for `insetInlineStart`.
+   * Alias for setting `insetInlineStart`:
    *
    * ```
    * insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset;
    * ```
+   *
+   * @see {@link SupportedStyleProps.insetInlineStart}
    */
   left?: SupportedStyleProps['insetInlineStart'];
 
   /**
-   * Fallback for `insetInlineStart` and `insetInlineEnd`.
+   * Alias for setting `insetInlineStart` and `insetInlineEnd`:
    *
    * ```
    * insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset;
    * insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset;
    * ```
+   *
+   * @see {@link SupportedStyleProps.insetInlineStart}
+   * @see {@link SupportedStyleProps.insetInlineEnd}
    */
   insetInline?: SupportedStyleProps['insetInlineStart'];
 
   /**
-   * Fallback for `insetInlineStart`, `insetInlineEnd`, `insetBlockStart` and `insetBlockEnd`.
+   * Alias for setting `insetInlineStart`, `insetInlineEnd`, `insetBlockStart` and `insetBlockEnd`:
    *
    * ```
    * insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset;
@@ -747,67 +908,86 @@ interface StylePropAliases {
    * insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset;
    * insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset;
    * ```
+   *
+   * @see {@link SupportedStyleProps.insetInlineStart}
+   * @see {@link SupportedStyleProps.insetInlineEnd}
+   * @see {@link SupportedStyleProps.insetBlockStart}
+   * @see {@link SupportedStyleProps.insetBlockEnd}
    */
   inset?: SupportedStyleProps['insetInlineStart'];
 
   /**
-   * Fallback for `insetInlineEnd`.
+   * Alias for setting `insetInlineEnd`:
    *
    * ```
    * insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset;
    * ```
+   *
+   * @see {@link SupportedStyleProps.insetInlineEnd}
    */
   right?: SupportedStyleProps['insetInlineEnd'];
 
   /**
-   * Fallback for `insetBlockStart`.
+   * Alias for setting `insetBlockStart`:
    *
    * ```
    * insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset;
    * ```
+   *
+   * @see {@link SupportedStyleProps.insetBlockStart}
    */
   top?: SupportedStyleProps['insetBlockStart'];
 
   /**
-   * Fallback for `insetBlockStart` and `insetBlockEnd`.
+   * Alias for setting `insetBlockStart` and `insetBlockEnd`:
    *
    * ```
    * insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset;
    * insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset;
    * ```
+   *
+   * @see {@link SupportedStyleProps.insetBlockStart}
+   * @see {@link SupportedStyleProps.insetBlockEnd}
    */
   insetBlock?: SupportedStyleProps['insetBlockStart'];
 
   /**
-   * Fallback for `insetBlockEnd`.
+   * Alias for setting `insetBlockEnd`:
    *
    * ```
    * insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset;
    * ```
+   *
+   * @see {@link SupportedStyleProps.insetBlockEnd}
    */
   bottom?: SupportedStyleProps['insetBlockEnd'];
 
   /**
-   * Fallback for `scrollPaddingInlineStart`.
+   * Alias for setting `scrollPaddingInlineStart`:
    *
    * ```
    * scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollPaddingInlineStart}
    */
   scrollPaddingLeft?: SupportedStyleProps['scrollPaddingInlineStart'];
 
   /**
-   * Fallback for `scrollPaddingInlineStart` and `scrollPaddingInlineEnd`.
+   * Alias for setting `scrollPaddingInlineStart` and `scrollPaddingInlineEnd`:
    *
    * ```
    * scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding;
    * scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollPaddingInlineStart}
+   * @see {@link SupportedStyleProps.scrollPaddingInlineEnd}
    */
   scrollPaddingInline?: SupportedStyleProps['scrollPaddingInlineStart'];
 
   /**
-   * Fallback for `scrollPaddingInlineStart`, `scrollPaddingInlineEnd`, `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`.
+   * Alias for setting `scrollPaddingInlineStart`, `scrollPaddingInlineEnd`, `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`:
    *
    * ```
    * scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding;
@@ -815,67 +995,86 @@ interface StylePropAliases {
    * scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollPaddingInlineStart}
+   * @see {@link SupportedStyleProps.scrollPaddingInlineEnd}
+   * @see {@link SupportedStyleProps.scrollPaddingBlockStart}
+   * @see {@link SupportedStyleProps.scrollPaddingBlockEnd}
    */
   scrollPadding?: SupportedStyleProps['scrollPaddingInlineStart'];
 
   /**
-   * Fallback for `scrollPaddingInlineEnd`.
+   * Alias for setting `scrollPaddingInlineEnd`:
    *
    * ```
    * scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollPaddingInlineEnd}
    */
   scrollPaddingRight?: SupportedStyleProps['scrollPaddingInlineEnd'];
 
   /**
-   * Fallback for `scrollPaddingBlockStart`.
+   * Alias for setting `scrollPaddingBlockStart`:
    *
    * ```
    * scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollPaddingBlockStart}
    */
   scrollPaddingTop?: SupportedStyleProps['scrollPaddingBlockStart'];
 
   /**
-   * Fallback for `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`.
+   * Alias for setting `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`:
    *
    * ```
    * scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollPaddingBlockStart}
+   * @see {@link SupportedStyleProps.scrollPaddingBlockEnd}
    */
   scrollPaddingBlock?: SupportedStyleProps['scrollPaddingBlockStart'];
 
   /**
-   * Fallback for `scrollPaddingBlockEnd`.
+   * Alias for setting `scrollPaddingBlockEnd`:
    *
    * ```
    * scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollPaddingBlockEnd}
    */
   scrollPaddingBottom?: SupportedStyleProps['scrollPaddingBlockEnd'];
 
   /**
-   * Fallback for `scrollMarginInlineStart`.
+   * Alias for setting `scrollMarginInlineStart`:
    *
    * ```
    * scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollMarginInlineStart}
    */
   scrollMarginLeft?: SupportedStyleProps['scrollMarginInlineStart'];
 
   /**
-   * Fallback for `scrollMarginInlineStart` and `scrollMarginInlineEnd`.
+   * Alias for setting `scrollMarginInlineStart` and `scrollMarginInlineEnd`:
    *
    * ```
    * scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin;
    * scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollMarginInlineStart}
+   * @see {@link SupportedStyleProps.scrollMarginInlineEnd}
    */
   scrollMarginInline?: SupportedStyleProps['scrollMarginInlineStart'];
 
   /**
-   * Fallback for `scrollMarginInlineStart`, `scrollMarginInlineEnd`, `scrollMarginBlockStart` and `scrollMarginBlockEnd`.
+   * Alias for setting `scrollMarginInlineStart`, `scrollMarginInlineEnd`, `scrollMarginBlockStart` and `scrollMarginBlockEnd`:
    *
    * ```
    * scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin;
@@ -883,61 +1082,79 @@ interface StylePropAliases {
    * scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin;
    * scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollMarginInlineStart}
+   * @see {@link SupportedStyleProps.scrollMarginInlineEnd}
+   * @see {@link SupportedStyleProps.scrollMarginBlockStart}
+   * @see {@link SupportedStyleProps.scrollMarginBlockEnd}
    */
   scrollMargin?: SupportedStyleProps['scrollMarginInlineStart'];
 
   /**
-   * Fallback for `scrollMarginInlineEnd`.
+   * Alias for setting `scrollMarginInlineEnd`:
    *
    * ```
    * scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollMarginInlineEnd}
    */
   scrollMarginRight?: SupportedStyleProps['scrollMarginInlineEnd'];
 
   /**
-   * Fallback for `scrollMarginBlockStart`.
+   * Alias for setting `scrollMarginBlockStart`:
    *
    * ```
    * scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollMarginBlockStart}
    */
   scrollMarginTop?: SupportedStyleProps['scrollMarginBlockStart'];
 
   /**
-   * Fallback for `scrollMarginBlockStart` and `scrollMarginBlockEnd`.
+   * Alias for setting `scrollMarginBlockStart` and `scrollMarginBlockEnd`:
    *
    * ```
    * scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin;
    * scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollMarginBlockStart}
+   * @see {@link SupportedStyleProps.scrollMarginBlockEnd}
    */
   scrollMarginBlock?: SupportedStyleProps['scrollMarginBlockStart'];
 
   /**
-   * Fallback for `scrollMarginBlockEnd`.
+   * Alias for setting `scrollMarginBlockEnd`:
    *
    * ```
    * scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin;
    * ```
+   *
+   * @see {@link SupportedStyleProps.scrollMarginBlockEnd}
    */
   scrollMarginBottom?: SupportedStyleProps['scrollMarginBlockEnd'];
 
   /**
-   * Fallback for `justifyItems`.
+   * Alias for setting `justifyItems`:
    *
    * ```
    * justifyItems = props.justifyItems ?? props.justify;
    * ```
+   *
+   * @see {@link SupportedStyleProps.justifyItems}
    */
   justify?: SupportedStyleProps['justifyItems'];
 
   /**
-   * Fallback for `alignItems`.
+   * Alias for setting `alignItems`:
    *
    * ```
    * alignItems = props.alignItems ?? props.align;
    * ```
+   *
+   * @see {@link SupportedStyleProps.alignItems}
    */
   align?: SupportedStyleProps['alignItems'];
 };
