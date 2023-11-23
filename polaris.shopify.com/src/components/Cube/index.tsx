@@ -110,31 +110,6 @@ function identity<T>(arg: T): T {
   return arg;
 }
 
-let getCustomPropertyForStyleProp: (
-  prop: keyof ResponsiveStyleProps,
-  breakpointAlias: BreakpointsAlias,
-  index: string | number,
-) => string;
-if (process.env.NODE_ENV === 'production') {
-  getCustomPropertyForStyleProp = (_, breakpointAlias, index) => {
-    // This format is specially constructed to aid in gzipping.
-    // The final `style` attribute will end up with something like:
-    // ```
-    // --_p-0sm: var(--_p-media-sm) double;
-    // --_p-1sm: var(--_p-media-sm) flex;
-    // --_p-2sm: var(--_p-media-sm) var(--p-space-400);
-    // --_p-3sm: var(--_p-media-sm) 2;
-    // ```
-    // The string `sm: var(--_p-media-sm) ` appears multiple times, which is
-    // great for the gzip algo to eat up!
-    return `--_p-${index}${breakpointAlias}`;
-  };
-} else {
-  getCustomPropertyForStyleProp = (prop, breakpointAlias) => {
-    return `--pc-box-${prop}-${breakpointAlias}`;
-  };
-}
-
 /*
  * NOTES:
  * - Works because we do mobile first with (min-width) queries
@@ -229,6 +204,8 @@ function convertStylePropsToCSSProperties(
   // Defaults may have contained aliases, so we have to resolve those again.
   longhandStyleProps = resolveAliasFallbacks(longhandStyleProps);
 
+  const customPropertyCache: Record<string, string> = {};
+
   // Now that we have a complete object with all fallbacks and defaults applied,
   // we can convert it to a style object
   return (
@@ -264,13 +241,14 @@ function convertStylePropsToCSSProperties(
       )} prop. Please use a different value.`,
     );
 
+    // Allow the library consumer to map values. For example; converting tokens
+    // into concrete CSS values or variables.
     const mappedResponsiveValues: ResponsivePropObject<any> = mapObjectValues(
       responsiveValues,
       (value, breakpoint) => valueMapper(value, key, breakpoint),
     );
 
-    // Now we begin converting the style props into CSS style values
-    // Special case: Only a single value set and it's for the 'xs' breakpoint.
+    // Special case: Only a single value set and it's for the 'xs' breakpoint
     // Just set the CSS property directly as there's no need for
     // responsiveness.
     if (
@@ -283,56 +261,159 @@ function convertStylePropsToCSSProperties(
       };
     }
 
-    // The final fallback value (mobile first) is handled slighly diff.
-    // We use 'unset' here to have the browser decide if a value should be
-    // inherited or not.
-    const xsValue = mappedResponsiveValues.xs ?? 'unset';
-
-    // Now that we've captured the value, remove it from the object we're
-    // about to process
-    delete mappedResponsiveValues.xs;
-
-    /**
-     * Use the space hack to have the value parsed as 'initial' or the value
-     * after two spaces
-     * --pc-box-display-sm: var(--_p-media-sm) grid;
-     * --pc-box-display-xl: var(--_p-media-xl) flex;
-     * */
-    const cssCustomProperties = Object.entries(mappedResponsiveValues).reduce(
-      (memo, [breakpointAlias, value]) => ({
-        ...memo,
-        [getCustomPropertyForStyleProp(
-          key,
-          breakpointAlias as BreakpointsAlias,
-          index,
-        )]: `var(--_p-media-${breakpointAlias}) ${value}`,
-      }),
-      {},
-    );
-
     /*
      const properyValue = display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
       */
+    let getCustomPropertyNameForStyleProp: (
+      prop: keyof ResponsiveStyleProps,
+      value: string,
+      breakpointAlias?: BreakpointsAlias,
+    ) => string;
+    if (process.env.NODE_ENV === 'production') {
+      // Cache values to re-use prop names in production builds
+      getCustomPropertyNameForStyleProp = (_, value, breakpointAlias) => {
+        if (typeof customPropertyCache[value] !== 'undefined') {
+          return customPropertyCache[value];
+        }
+        // This format is specially constructed to aid in gzipping.
+        // The final `style` attribute will end up with something like:
+        // ```
+        // --_p-0sm: var(--_p-media-sm) double;
+        // --_p-1sm: var(--_p-media-sm) flex;
+        // --_p-2sm: var(--_p-media-sm) var(--p-space-400);
+        // --_p-3sm: var(--_p-media-sm) 2;
+        // ```
+        // The string `sm: var(--_p-media-sm) ` appears multiple times, which is
+        // great for the gzip algo to eat up!
+        const newCustomProperty = `--_p${index}${
+          typeof breakpointAlias !== 'undefined' ? `${breakpointAlias}` : ''
+        }`;
+        customPropertyCache[value] = newCustomProperty;
+        return newCustomProperty;
+      };
+    } else {
+      getCustomPropertyNameForStyleProp = (prop, _, breakpointAlias) => {
+        return `--pc-box-${prop}${
+          typeof breakpointAlias !== 'undefined' ? `-${breakpointAlias}` : ''
+        }`;
+      };
+    }
 
-    let cssVar: string = xsValue.toString();
+    const cssCustomProperties: Record<string, unknown> = {};
+
+    const numberOfKeysWithValuesMinusXs = Object.keys(
+      mappedResponsiveValues,
+    ).filter((key) => key !== 'xs').length;
+
+    // When there's only 1 responsive value to be set (ignoring 'xs'), we will
+    // put the responsive fallback in its own custom property
+    const willCreateFallbackCustomProperty = numberOfKeysWithValuesMinusXs > 1;
+
+    // The final fallback value ('xs') can be either:
+    // 1. A concrete value (eg; gap={{ xs: '10px' }})
+    // 2. `unset` to have the browser decide if a property should be inherited
+    //    from a parent DOM node or not.
+    //
+    // However, `unset` will apply to whatever is on the left-hand of the `:`,
+    // and is _not_ used as a concrete value when in a var() statement.
+    //
+    // Ie; `--gap: unset; gap: var(--gap);` will _not_ result in `gap: unset`,
+    // but rather will tell the browser to pretend `--gap` wasn't set, and to
+    // go look up the DOM parent nodes for the nearest concrete value of
+    // `--gap`. This would break our style encapsulation.
+    // On the other hand, `--gap: initial; gap: var(--gap, unset)` will
+    // resolve `--gap` to the concrete value of `initial` (so will not go
+    // looking at parent DOM nodes), then will attemp to resolve the `gap`
+    // property as `var(initial, unset)`, and since `initial` in a `var()`
+    // results in using the fallback, the concrete calculated value becomes
+    // `gap: unset` which is what we want.
+    //
+    // Therefore, when calculating the fallback value for the fallback custom
+    // CSS Property, we can only use the concrete value here and not `unset`
+    // UNLESS we're sure we're putting the fallback directly on the CSS
+    // property.
+    let fallbackPropertyValue =
+      typeof mappedResponsiveValues.xs !== 'undefined'
+        ? mappedResponsiveValues.xs
+        : willCreateFallbackCustomProperty
+        ? ''
+        : 'unset';
+
     // Nest the fallbacks from smallest on the inside to largest on the outside.
     // Order is important, so we iterate over the breakpointsAliases which has
     // a known order rather than the style prop's keys which have an unknown
     // order.
-    for (let breakpointAlias of breakpointsAliases) {
-      if (typeof mappedResponsiveValues[breakpointAlias] !== 'undefined') {
-        cssVar = `var(${getCustomPropertyForStyleProp(
-          key,
-          breakpointAlias,
-          index,
-        )}, ${cssVar})`;
+    // NOTE: We skip the smallest breakpoint as we've already used that as the
+    // fallback value above
+    for (let breakpointAlias of breakpointsAliases.slice(1)) {
+      const value = mappedResponsiveValues[breakpointAlias];
+
+      // Skip breakpoints without a value
+      if (typeof value === 'undefined') {
+        continue;
       }
+
+      let customPropertyValue: string;
+
+      // Now we begin converting the style props into CSS style values
+      if (breakpointAlias === breakpointsAliases[0]) {
+        // We're mobile first, so no need for media query on the smallest
+        // breakpoint
+        customPropertyValue = value;
+      } else {
+        /**
+         * Use the space hack to have the value parsed as 'initial' or the value
+         * after two spaces
+         * --pc-box-display-sm: var(--_p-media-sm) grid;
+         * --pc-box-display-xl: var(--_p-media-xl) flex;
+         * */
+        customPropertyValue = `var(--_p-media-${breakpointAlias}) ${value}`;
+      }
+
+      const customPropertyName = getCustomPropertyNameForStyleProp(
+        key,
+        customPropertyValue,
+        breakpointAlias,
+      );
+
+      cssCustomProperties[customPropertyName] = customPropertyValue;
+
+      // Accumulate the fallback var statements. Eg;
+      // ```
+      // var(--pc-box-gap-xl,
+      //   var(--pc-box-gap-lg,
+      //     var(--pc-box-gap-md,
+      //       var(--pc-box-gap-sm, 10px)
+      //     )
+      //   )
+      // )
+      // ```
+      fallbackPropertyValue = `var(${customPropertyName}${
+        fallbackPropertyValue !== '' ? `, ${fallbackPropertyValue}` : ''
+      })`;
+    }
+
+    let fallbackPropertyName: string;
+
+    if (willCreateFallbackCustomProperty) {
+      // Assign the fallback statements to their own variable so it can be
+      // re-used to save bytes / readability
+      fallbackPropertyName = getCustomPropertyNameForStyleProp(
+        key,
+        fallbackPropertyValue,
+      );
+      cssCustomProperties[fallbackPropertyName] = fallbackPropertyValue;
+
+      cssCustomProperties[key] = `var(${fallbackPropertyName}${
+        typeof mappedResponsiveValues.xs === 'undefined' ? `, unset` : ''
+      })`;
+    } else {
+      cssCustomProperties[key] = fallbackPropertyValue;
     }
 
     return {
       ...acc,
       ...cssCustomProperties,
-      [key]: cssVar,
     };
   }, {});
 }

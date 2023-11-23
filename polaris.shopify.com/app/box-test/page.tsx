@@ -40,9 +40,11 @@ export default function Page() {
             display={{xs: 'block', md: 'flex'}}
             padding="400"
             paddingBlock="600"
-            outlineStyle="solid"
+            // borderStyle={{sm: 'solid'}}
+            outlineStyle={{xs: 'dashed', sm: 'solid', md: 'groove'}}
+            zIndex={{sm: 2, md: 5}}
             outlineWidth="3px"
-            outlineColor={{xs: 'blue', md: 'green'}}
+            outlineColor={{sm: 'blue', md: 'green'}}
           />
           <Cube
             padding="400"
