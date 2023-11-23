@@ -12,6 +12,10 @@ type PickIntersection<PickFrom, IntersectWith> = Pick<
   keyof IntersectWith & keyof PickFrom
 >;
 
+// Force Typescript to flatten out a union type to its concrete values
+type WrapInObject<T> = T extends unknown ? { key: T } : never;
+type Unwrap<T> = T extends { key: unknown } ? T["key"] : never;
+
 /**
  * The subset of all CSS that we support in Polaris (does not include aliases).
  */
@@ -71,7 +75,7 @@ export type ResponsiveStyleProps = {
   [K in keyof StyleProps]?: ResponsiveProp<
     // Excluding globally disallowed values as the last thing we do ensures none
     // slip through the cracks in the above type definitions.
-    Exclude<StyleProps[K], (typeof disallowedCSSPropertyValues)[number]>
+    Unwrap<WrapInObject<Exclude<StyleProps[K], (typeof disallowedCSSPropertyValues)[number]>>>
   >;
 };
 
