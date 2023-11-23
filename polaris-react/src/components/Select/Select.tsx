@@ -1,13 +1,14 @@
-import React, {useId} from 'react';
+import React, {useCallback, useId} from 'react';
 import {SelectMinor} from '@shopify/polaris-icons';
 
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import {Labelled, helpTextID} from '../Labelled';
 import type {LabelledProps} from '../Labelled';
 import {Box} from '../Box';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
 import type {Error} from '../../types';
+import {useToggle} from '../../utilities/use-toggle';
 
 import styles from './Select.scss';
 
@@ -75,6 +76,8 @@ export interface SelectProps {
   onBlur?(): void;
   /** Visual required indicator, add an asterisk to label */
   requiredIndicator?: boolean;
+  /** Indicates the tone of the select */
+  tone?: 'magic';
 }
 
 const PLACEHOLDER_VALUE = '';
@@ -96,7 +99,10 @@ export function Select({
   onFocus,
   onBlur,
   requiredIndicator,
+  tone,
 }: SelectProps) {
+  const {value: focused, toggle: toggleFocused} = useToggle(false);
+
   const uniqId = useId();
   const id = idProp ?? uniqId;
   const labelHidden = labelInline ? true : labelHiddenProp;
@@ -104,8 +110,13 @@ export function Select({
   const className = classNames(
     styles.Select,
     error && styles.error,
+    tone && styles[variationName('tone', tone)],
     disabled && styles.disabled,
   );
+
+  const handleFocus = useCallback(() => {
+    toggleFocused();
+  }, [toggleFocused]);
 
   const handleChange = onChange
     ? (event: React.ChangeEvent<HTMLSelectElement>) =>
@@ -136,7 +147,13 @@ export function Select({
 
   const inlineLabelMarkup = labelInline && (
     <Box paddingInlineEnd="100">
-      <Text as="span" tone="subdued" truncate>
+      <Text
+        as="span"
+        tone={
+          tone && tone === 'magic' && !focused ? 'magic-subdued' : 'subdued'
+        }
+        truncate
+      >
         {label}
       </Text>
     </Box>
@@ -179,8 +196,14 @@ export function Select({
           value={value}
           className={styles.Input}
           disabled={disabled}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          onFocus={() => {
+            handleFocus();
+            onFocus?.();
+          }}
+          onBlur={() => {
+            toggleFocused();
+            onBlur?.();
+          }}
           onChange={handleChange}
           aria-invalid={Boolean(error)}
           aria-describedby={
