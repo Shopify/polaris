@@ -76,7 +76,11 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
       <WithinContentContext.Provider value>
         <nav className={styles.Navigation} aria-labelledby={ariaLabelledBy}>
           {mediaMarkup}
-          <Scrollable className={styles.PrimaryNavigation}>
+          <Scrollable
+            className={styles.PrimaryNavigation}
+            scrollbarGutter="stable"
+            scrollbarWidth="thin"
+          >
             {children}
           </Scrollable>
         </nav>
