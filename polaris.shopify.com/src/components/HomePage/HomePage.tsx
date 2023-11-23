@@ -76,7 +76,7 @@ function HomePage({}: Props) {
                 height={800}
                 style={{width: '100%', height: 'auto'}}
                 src="/images/home-v12.png"
-                alt="Polaris"
+                alt="Polaris v12"
               />
             </div>
           </div>
