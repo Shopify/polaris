@@ -1,14 +1,12 @@
 import style from './style.module.css';
 import React, {forwardRef} from 'react';
 import invariant from 'tiny-invariant';
-import {breakpointsAliases} from '@shopify/polaris-tokens';
+import {
+  breakpointsAliases,
+  type BreakpointsAlias,
+} from '@shopify/polaris-tokens';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import type {
-  Entries,
-  LiteralToPrimitive,
-  OmitIndexSignature,
-  Simplify,
-} from 'type-fest';
+import type {Entries, OmitIndexSignature, Simplify} from 'type-fest';
 import {
   type ResponsiveProp,
   type ResponsivePropObject,
@@ -59,14 +57,11 @@ function filterObject<T extends object>(
   return result;
 }
 
-function mapObjectValues<T extends object>(
+function mapObjectValues<T extends object, R = T[keyof T]>(
   obj: T,
-  map: (
-    val: T[Extract<keyof T, string>],
-    key: Extract<keyof T, string>,
-  ) => T[Extract<keyof T, string>],
-): T {
-  const result: T = {...obj};
+  map: (val: T[keyof T], key: keyof T) => R,
+): {[K in keyof T]: R} {
+  const result: {[K in keyof T]: R} = {} as {[K in keyof T]: R};
   for (let key in obj) {
     result[key] = map(obj[key], key);
   }
@@ -109,6 +104,10 @@ function resolveAliasFallbacks(
   }
 
   return stylePropsWithResolvedAliases;
+}
+
+function identity<T>(arg: T): T {
+  return arg;
 }
 
 /*
@@ -167,6 +166,14 @@ function resolveAliasFallbacks(
 function convertStylePropsToCSSProperties(
   styleProps: ResponsiveStyleProps,
   defaults: typeof stylePropDefaults,
+  valueMapper: <
+    Prop extends keyof ResponsiveStyleProps,
+    Value = ResponsiveStyleProps[Prop],
+  >(
+    value: Value,
+    prop: Prop,
+    breakpoint: BreakpointsAlias,
+  ) => unknown = identity,
 ) {
   // Ensure constituent styles are given fallback values even when they're not
   // passed in as an explicit style prop.
@@ -232,16 +239,10 @@ function convertStylePropsToCSSProperties(
       )} prop. Please use a different value.`,
     );
 
-    // If this is a tokenized styleprop, we must convert the "values" into CSS
-    // `var()` calls
-    if (Object.hasOwn(stylePropTokenGroupMap, key)) {
-      responsiveValues = mapObjectValues(responsiveValues, (value) =>
-        createPolarisCSSVar(
-          stylePropTokenGroupMap[key as keyof typeof stylePropTokenGroupMap],
-          value,
-        ),
-      );
-    }
+    const mappedResponsiveValues: ResponsivePropObject<any> = mapObjectValues(
+      responsiveValues,
+      (value, breakpoint) => valueMapper(value, key, breakpoint),
+    );
 
     // Now we begin converting the style props into CSS style values
     // Special case: Only a single value set and it's for the 'xs' breakpoint.
@@ -249,22 +250,22 @@ function convertStylePropsToCSSProperties(
     // responsiveness.
     if (
       numberOfKeysWithValues === 1 &&
-      typeof responsiveValues['xs'] !== 'undefined'
+      typeof mappedResponsiveValues['xs'] !== 'undefined'
     ) {
       return {
         ...acc,
-        [key]: responsiveValues['xs'],
+        [key]: mappedResponsiveValues['xs'],
       };
     }
 
     // The final fallback value (mobile first) is handled slighly diff.
     // We use 'unset' here to have the browser decide if a value should be
     // inherited or not.
-    const xsValue = responsiveValues.xs ?? 'unset';
+    const xsValue = mappedResponsiveValues.xs ?? 'unset';
 
     // Now that we've captured the value, remove it from the object we're
     // about to process
-    delete responsiveValues.xs;
+    delete mappedResponsiveValues.xs;
 
     /**
      * Use the space hack to have the value parsed as 'initial' or the value
@@ -272,7 +273,7 @@ function convertStylePropsToCSSProperties(
      * --pc-box-display-sm: var(--_p-media-sm) grid;
      * --pc-box-display-xl: var(--_p-media-xl) flex;
      * */
-    const cssCustomProperties = Object.entries(responsiveValues).reduce(
+    const cssCustomProperties = Object.entries(mappedResponsiveValues).reduce(
       (memo, [breakpointAlias, value]) => ({
         ...memo,
         [`--pc-box-${key}-${breakpointAlias}`]: `var(--_p-media-${breakpointAlias}) ${value}`,
@@ -284,13 +285,13 @@ function convertStylePropsToCSSProperties(
      const properyValue = display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
       */
 
-    let cssVar: LiteralToPrimitive<typeof xsValue> = xsValue;
+    let cssVar: string = xsValue.toString();
     // Nest the fallbacks from smallest on the inside to largest on the outside.
     // Order is important, so we iterate over the breakpointsAliases which has
     // a known order rather than the style prop's keys which have an unknown
     // order.
     for (let breakpointAlias of breakpointsAliases) {
-      if (typeof responsiveValues[breakpointAlias] !== 'undefined') {
+      if (typeof mappedResponsiveValues[breakpointAlias] !== 'undefined') {
         cssVar = `var(--pc-box-${key}-${breakpointAlias}, ${cssVar})`;
       }
     }
@@ -410,6 +411,14 @@ export const Cube = forwardRef(function Cube(
   const styles = convertStylePropsToCSSProperties(
     styleProps,
     stylePropDefaults,
+    (value, prop) =>
+      // If this is a tokenized styleprop, we must convert it to a CSS var().
+      Object.hasOwn(stylePropTokenGroupMap, prop)
+        ? createPolarisCSSVar(
+            stylePropTokenGroupMap[prop as keyof typeof stylePropTokenGroupMap],
+            value as string | number,
+          )
+        : value,
   );
 
   return (
