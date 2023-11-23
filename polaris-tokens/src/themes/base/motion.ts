@@ -142,5 +142,4 @@ export const motionStylePropTokenGoups = {
   'motion-duration': motionDurationStyleProps,
   'motion-keyframes': motionKeyframesStyleProps,
   motion: motionTimingFunctionStyleProps,
-  color: ['color'],
 } as const;
