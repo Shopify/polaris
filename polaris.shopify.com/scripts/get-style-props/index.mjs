@@ -112,8 +112,9 @@ function verifyAliases() {
     // Compare the types of every property to ensure there's at least some
     // overlap
     if (
-      getArrayIntersection(...props.map((prop) => cssLonghandProperties[prop]))
-        .length === 0
+      getArrayIntersection(
+        ...props.map((prop) => cssLonghandProperties[prop].type),
+      ).length === 0
     ) {
       typeMismatches.push(alias);
     }
@@ -144,7 +145,9 @@ function verifyAliases() {
                   ${inverseAliases[alias]
                     .map(
                       (prop) =>
-                        `${prop}: ${cssLonghandProperties[prop].join(' | ')};`,
+                        `${prop}: ${cssLonghandProperties[prop].type.join(
+                          ' | ',
+                        )};`,
                     )
                     .join('\n  ')}
               `,
@@ -162,16 +165,18 @@ function getCSSTypeLonghandProperties() {
   const require = createRequire(import.meta.url);
   const cssTypeDefinitionFile = require.resolve('csstype/index.d.ts');
 
+  // Setup the TS compiler
   const program = ts.createProgram([cssTypeDefinitionFile], {});
   const checker = program.getTypeChecker();
   const sourceFile = program.getSourceFile(cssTypeDefinitionFile);
+
+  // Grab the export we're interested in
   const exports = checker.getExportsOfModule(
     checker.getSymbolAtLocation(sourceFile),
   );
   const defaultExportSymbol = exports.find(
     (e) => e.escapedName === 'StandardLonghandProperties',
   );
-
   let type = checker.getDeclaredTypeOfSymbol(defaultExportSymbol);
 
   const typeToString = (type) => {
@@ -188,14 +193,25 @@ function getCSSTypeLonghandProperties() {
     return typeString;
   };
 
+  // Gather data about each property on the export
   return type.getProperties().reduce((acc, {name, valueDeclaration}) => {
+    acc[name] = {
+      jsDoc: ts.displayPartsToString(
+        checker
+          .getSymbolAtLocation(valueDeclaration.name)
+          .getDocumentationComment(checker),
+      ),
+    };
+
     const valueType = checker.getTypeAtLocation(valueDeclaration);
-    // Pretty much everything from csstype is a union, so this is the hot path
     if (valueType.isUnion()) {
-      acc[name] = valueType.types.map((unionType) => typeToString(unionType));
+      // Everything from csstype is a union, so this is the hot path
+      acc[name].type = valueType.types.map((unionType) =>
+        typeToString(unionType),
+      );
     } else {
-      // Pretend it's a union of a single type when it's not a union
-      acc[name] = [typeToString(valueType)];
+      // Just in case; pretend it's a union of a single type when it's not a union
+      acc[name].type = [typeToString(valueType)];
     }
     return acc;
   }, {});
@@ -221,7 +237,7 @@ async function writeTSProperties(tsFile) {
   };
 
   const createMinimumCommonUnionForAlias = (styleProps) => {
-    const types = styleProps.map((prop) => cssLonghandProperties[prop]);
+    const types = styleProps.map((prop) => cssLonghandProperties[prop].type);
     if (arraysAreEqualSets(...types)) {
       // If all the types are the same, just reference the first from the
       // list
@@ -389,7 +405,7 @@ interface StylePropAliases {${Object.entries(inverseAliases)
     .map(
       ([alias, styleProps]) => `
   /**
-   * Fallback for ${joinEnglish(styleProps.map((prop) => `\`${prop}\``))}.
+   * Alias for setting ${joinEnglish(styleProps.map((prop) => `\`${prop}\``))}:
    *
    * \`\`\`
    * ${styleProps
@@ -401,6 +417,10 @@ interface StylePropAliases {${Object.entries(inverseAliases)
      )
      .join('\n   * ')}
    * \`\`\`
+   *
+   * ${styleProps
+     .map((prop) => `@see {@link SupportedStyleProps.${prop}}`)
+     .join('\n   * ')}
    */
   ${alias}?: ${createMinimumCommonUnionForAlias(styleProps)};`,
     )
