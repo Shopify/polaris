@@ -41,6 +41,12 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   hint?: boolean;
   /** Adds a tabIndex to scrollable when children are not focusable */
   focusable?: boolean;
+  /** Reserves space for the scrollbar */
+  scrollbarGutter?: 'stable' | 'stable both-edges';
+  /** @experimental Sets the width of the scrollbar in browsers that support it
+   * See https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width#browser_compatibility for supported browsers
+   */
+  scrollbarWidth?: 'thin' | 'none';
   /** Called when scrolled to the bottom of the scroll area */
   onScrolledToBottom?(): void;
 }
@@ -63,6 +69,8 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       shadow,
       hint,
       focusable,
+      scrollbarGutter,
+      scrollbarWidth,
       onScrolledToBottom,
       ...rest
     }: ScrollableProps,
@@ -156,6 +164,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
             ref={scrollArea}
             // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
             tabIndex={focusable ? 0 : undefined}
+            style={{scrollbarGutter, scrollbarWidth, ...rest.style}}
           >
             {children}
           </div>
