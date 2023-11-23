@@ -35,7 +35,14 @@ type Alignment = 'start' | 'center' | 'end' | 'justify';
 
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
-type Tone = 'success' | 'critical' | 'caution' | 'subdued' | 'text-inverse';
+type Tone =
+  | 'success'
+  | 'critical'
+  | 'caution'
+  | 'subdued'
+  | 'text-inverse'
+  | 'magic'
+  | 'magic-subdued';
 
 type TextDecorationLine = 'line-through';
 
