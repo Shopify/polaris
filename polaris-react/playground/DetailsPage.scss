@@ -19,3 +19,39 @@
     color: var(--p-color-text-inverse);
   }
 }
+
+// Custon button styles
+
+.SimpleButton {
+  all: unset;
+  position: relative;
+  color: #fff;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: var(--p-font-weight-semibold);
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-400);
+
+  border-radius: 8px;
+  background: linear-gradient(180deg, #3e3d3e 0%, #403e40 79.91%, #5e5d5e 100%);
+  box-shadow: 0 0 0 1px rgba(27, 27, 27, 0.8) inset,
+    0 -1px 0 1px rgba(0, 0, 0, 0.8) inset,
+    0 0.5px 0px 1.5px rgba(118, 118, 118, 0.8) inset;
+}
+
+.SimpleButton:hover {
+  color: var(--p-color-text-brand-on-bg-fill-hover);
+  background: #2f2f2f;
+}
+
+.SimpleButton:active {
+  color: var(--p-color-text-brand-on-bg-fill-active);
+  padding-block: 7px 5px;
+  background: #292929;
+  box-shadow: 0rem 0.1875rem 0rem 0rem #000 inset;
+}
+
+.SimpleButton:focus-visible {
+  outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+  outline-offset: var(--p-space-025);
+}

@@ -19,6 +19,7 @@ import {
 import {
   ActionList,
   Badge,
+  Button,
   ContextualSaveBar,
   DropZone,
   FormLayout,
@@ -642,6 +643,11 @@ export function DetailsPage() {
                 onChange={setSelected}
                 value={selected}
               />
+              <br />
+              <button className={styles.SimpleButton}>Save</button>
+              <div />
+              <br />
+              <Button variant="primary">Save</Button>
             </LegacyCard.Section>
             <LegacyCard.Section title="Collections" />
             <LegacyCard.Section title="Tags" />
