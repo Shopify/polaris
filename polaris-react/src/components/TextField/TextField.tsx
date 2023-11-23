@@ -164,7 +164,12 @@ interface NonMutuallyExclusiveProps {
   /** Visual styling options for the TextField
    * @default 'inherit'
    */
-  variant?: 'inherit' | 'borderless' | 'slim' | 'borderlessSlim';
+  variant?: 'inherit' | 'borderless';
+  /**
+   * Changes the size of the input, giving it more or less padding
+   * @default 'medium'
+   */
+  size?: 'slim' | 'medium';
   /** Callback fired when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback fired when value is changed */
@@ -238,6 +243,7 @@ export function TextField({
   selectTextOnFocus,
   suggestion,
   variant = 'inherit',
+  size = 'medium',
   onClearButtonClick,
   onChange,
   onSpinnerChange,
@@ -302,6 +308,7 @@ export function TextField({
     multiline && styles.multiline,
     focus && !disabled && styles.focus,
     variant !== 'inherit' && styles[variant],
+    size === 'slim' && styles.slim,
   );
 
   const inputType = type === 'currency' ? 'text' : type;

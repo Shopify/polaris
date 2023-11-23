@@ -251,15 +251,6 @@ $spinner-icon-size: 12px;
   }
 }
 
-.borderlessSlim {
-  .Input,
-  .Backdrop {
-    border: none;
-    min-height: 28px;
-    padding-block: var(--p-space-050);
-  }
-}
-
 .slim {
   .Input,
   .Backdrop {

@@ -91,8 +91,6 @@ export interface FiltersProps {
   disableFilters?: boolean;
   /** Whether the text field should be borderless. Should be true when used as part of the IndexFilters component. */
   borderlessQueryField?: boolean;
-  /** Prefix SearchMinor icon on query field. */
-  showQueryIcon?: boolean;
   /** Whether an asyncronous task is currently being run. */
   loading?: boolean;
   mountedState?: TransitionStatus;
@@ -119,7 +117,6 @@ export function Filters({
   hideQueryField,
   disableQueryField,
   borderlessQueryField,
-  showQueryIcon,
   loading,
   disableFilters,
   mountedState,
@@ -170,7 +167,6 @@ export function Filters({
               focused={focused}
               disabled={disabled || disableQueryField}
               borderlessQueryField={borderlessQueryField}
-              showQueryIcon={showQueryIcon}
               loading={loading}
             />
           </div>
@@ -189,7 +185,7 @@ export function Filters({
       : undefined;
 
   const filtersMarkup =
-    hideFilters || filters?.length === 0 ? null : (
+    hideFilters || filters.length === 0 ? null : (
       <FiltersBar
         filters={filters}
         appliedFilters={appliedFilters}

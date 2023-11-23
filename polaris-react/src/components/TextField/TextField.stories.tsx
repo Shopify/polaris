@@ -858,7 +858,8 @@ export function All() {
           value="Value"
           onChange={() => {}}
           autoComplete="off"
-          variant="borderlessSlim"
+          variant="borderless"
+          size="slim"
         />
       </FormLayout.Group>
     </FormLayout>

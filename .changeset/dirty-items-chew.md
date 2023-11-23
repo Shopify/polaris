@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added variant 'slim' and variant 'borderlessSlim' to TextField
+Added size prop to TextField

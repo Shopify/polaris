@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris': minor
+'@shopify/polaris': patch
 ---
 
-Added optional `showQueryIcon` boolean to Filters
+Added SearchMinor icon to Filters search field

@@ -17,9 +17,7 @@ export interface SearchFieldProps {
   placeholder?: string;
   disabled?: boolean;
   borderlessQueryField?: boolean;
-  /** Prefix SearchMinor icon on query field. */
-  showQueryIcon?: boolean;
-  /** Show a loading spinner to the right of the TextField */
+  /** Show a loading spinner to the right of the input */
   loading?: boolean;
 }
 
@@ -33,7 +31,6 @@ export function SearchField({
   placeholder,
   disabled,
   borderlessQueryField,
-  showQueryIcon,
   loading,
 }: SearchFieldProps) {
   const id = useId();
@@ -53,15 +50,16 @@ export function SearchField({
     <TextField
       id={id}
       value={value}
-      onChange={(event) => handleChange(event ?? value)}
+      onChange={(eventValue) => handleChange(eventValue ?? value)}
       onFocus={onFocus}
       onBlur={onBlur}
       onClearButtonClick={handleClear}
       autoComplete="off"
       placeholder={placeholder}
       disabled={disabled}
-      variant={borderlessQueryField ? 'borderlessSlim' : 'slim'}
-      prefix={showQueryIcon ? <Icon source={SearchMinor} /> : undefined}
+      variant={borderlessQueryField ? 'borderless' : 'inherit'}
+      size="slim"
+      prefix={<Icon source={SearchMinor} />}
       suffix={
         loading ? (
           <div className={styles.Spinner}>
@@ -70,7 +68,7 @@ export function SearchField({
         ) : null
       }
       focused={focused}
-      label=""
+      label={placeholder}
       labelHidden
       clearButton
     />

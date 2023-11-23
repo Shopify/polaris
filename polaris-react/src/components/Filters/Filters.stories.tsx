@@ -1386,7 +1386,6 @@ export function WithAdditionalFilterSections() {
               onQueryChange={handleFiltersQueryChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleFiltersClearAll}
-              showQueryIcon
             />
           }
           flushFilters
