@@ -110,6 +110,31 @@ function identity<T>(arg: T): T {
   return arg;
 }
 
+let getCustomPropertyForStyleProp: (
+  prop: keyof ResponsiveStyleProps,
+  breakpointAlias: BreakpointsAlias,
+  index: string | number,
+) => string;
+if (process.env.NODE_ENV === 'production') {
+  getCustomPropertyForStyleProp = (_, breakpointAlias, index) => {
+    // This format is specially constructed to aid in gzipping.
+    // The final `style` attribute will end up with something like:
+    // ```
+    // --_p-0sm: var(--_p-media-sm) double;
+    // --_p-1sm: var(--_p-media-sm) flex;
+    // --_p-2sm: var(--_p-media-sm) var(--p-space-400);
+    // --_p-3sm: var(--_p-media-sm) 2;
+    // ```
+    // The string `sm: var(--_p-media-sm) ` appears multiple times, which is
+    // great for the gzip algo to eat up!
+    return `--_p-${index}${breakpointAlias}`;
+  };
+} else {
+  getCustomPropertyForStyleProp = (prop, breakpointAlias) => {
+    return `--pc-box-${prop}-${breakpointAlias}`;
+  };
+}
+
 /*
  * NOTES:
  * - Works because we do mobile first with (min-width) queries
@@ -208,7 +233,7 @@ function convertStylePropsToCSSProperties(
   // we can convert it to a style object
   return (
     Object.entries(longhandStyleProps) as Entries<typeof longhandStyleProps>
-  ).reduce((acc, [key, stylePropValue]) => {
+  ).reduce((acc, [key, stylePropValue], index) => {
     // Always work with the object syntax to reduce conditionals below
     let responsiveValues = coerceToObjectSyntax(stylePropValue);
 
@@ -276,7 +301,11 @@ function convertStylePropsToCSSProperties(
     const cssCustomProperties = Object.entries(mappedResponsiveValues).reduce(
       (memo, [breakpointAlias, value]) => ({
         ...memo,
-        [`--pc-box-${key}-${breakpointAlias}`]: `var(--_p-media-${breakpointAlias}) ${value}`,
+        [getCustomPropertyForStyleProp(
+          key,
+          breakpointAlias as BreakpointsAlias,
+          index,
+        )]: `var(--_p-media-${breakpointAlias}) ${value}`,
       }),
       {},
     );
@@ -292,7 +321,11 @@ function convertStylePropsToCSSProperties(
     // order.
     for (let breakpointAlias of breakpointsAliases) {
       if (typeof mappedResponsiveValues[breakpointAlias] !== 'undefined') {
-        cssVar = `var(--pc-box-${key}-${breakpointAlias}, ${cssVar})`;
+        cssVar = `var(${getCustomPropertyForStyleProp(
+          key,
+          breakpointAlias,
+          index,
+        )}, ${cssVar})`;
       }
     }
 

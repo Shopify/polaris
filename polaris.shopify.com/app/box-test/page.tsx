@@ -30,7 +30,13 @@ export default function Page() {
           `} />
           */}
           <Cube
-            borderStyle="dashed"
+            borderStyle={{
+              xs: 'dashed',
+              sm: 'double',
+              md: 'groove',
+              lg: 'inset',
+              xl: 'outset',
+            }}
             display={{xs: 'block', md: 'flex'}}
             padding="400"
             paddingBlock="600"
