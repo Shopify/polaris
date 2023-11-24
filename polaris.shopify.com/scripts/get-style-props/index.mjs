@@ -14,6 +14,8 @@ import {
   disallowedCSSProperties,
   disallowedCSSPropertyValues,
   stylePropConfig,
+  modifiers,
+  cssCustomPropertyNamespace,
 } from './data.mjs';
 
 const endent = _endent.default;
@@ -69,7 +71,7 @@ const sassFile = await fs.open(
   'w+',
 );
 
-await writeCSSMediaVars(sassFile);
+await writeCSSMediaVars(sassFile, modifiers);
 
 await sassFile.close();
 
@@ -241,7 +243,7 @@ async function writeTSProperties(tsFile) {
     if (arraysAreEqualSets(...types)) {
       // If all the types are the same, just reference the first from the
       // list
-      return `SupportedStyleProps['${styleProps[0]}']`;
+      return `LonghandStyleProps['${styleProps[0]}']`;
     }
 
     // Otherwise, reduce it down to a minimum set by excluding all the
@@ -263,7 +265,7 @@ async function writeTSProperties(tsFile) {
 
     return endent`
       Exclude<
-          SupportedStyleProps['${styleProps[0]}'],
+          LonghandStyleProps['${styleProps[0]}'],
           ${generateTSPickList(typesToRemoveFromFirst, 0)}
         >
     `;
@@ -272,7 +274,7 @@ async function writeTSProperties(tsFile) {
   await tsFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import type {StandardLonghandProperties, Globals} from 'csstype';
 import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
-import type {OverrideProperties}  from 'type-fest';
+import type {OverrideProperties, Simplify}  from 'type-fest';
 import type {ResponsiveProp} from '../../utils/various';
 
 /**
@@ -333,14 +335,14 @@ type SupportedCSSStyleProps = Omit<
  * @example
  * \`padding-inline-start\` can only accept the \`space-*\` tokens.
  */
-type SupportedStyleProps = OverrideProperties<
+type LonghandStyleProps = OverrideProperties<
   SupportedCSSStyleProps,
   // \`@shopify/polaris-tokens\` may type more CSS properties than we want to
   // support here, so ensure we're only picking the ones we explicityly support
   PickIntersection<TokenizedStyleProps, SupportedCSSStyleProps>
 >;
 
-type StyleProps = SupportedStyleProps & StylePropAliases;
+type StyleProps = LonghandStyleProps & StylePropAliases;
 
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
@@ -353,6 +355,17 @@ export type ResponsiveStyleProps = {
     Unwrap<WrapInObject<Exclude<StyleProps[K], (typeof disallowedCSSPropertyValues)[number]>>>
   >;
 };
+
+/**
+ * A combination of raw CSS style props, tokenized style props (derived from
+ * \`@shopify/polaris-tokens\`), helpful aliases for frequently used props, and
+* the modifiers ${joinEnglish(Object.values(modifiers))}.
+ */
+export type ResponsiveStylePropsWithModifiers = Simplify<
+  ResponsiveStyleProps & {
+    [K in typeof modifiers[number]]?: ResponsiveStyleProps;
+  }
+>;
 
 /**
 * Polaris specifies some aliases which are used as fallback values when an
@@ -427,7 +440,7 @@ interface StylePropAliases {${Object.entries(inverseAliases)
    * \`\`\`
    *
    * ${styleProps
-     .map((prop) => `@see {@link SupportedStyleProps.${prop}}`)
+     .map((prop) => `@see {@link LonghandStyleProps.${prop}}`)
      .join('\n   * ')}
    */
   ${alias}?: ${createMinimumCommonUnionForAlias(styleProps)};`,
@@ -528,24 +541,53 @@ export const stylePropTokenGroupMap = {
     )
     .join(',\n  ')},
 } as const;
+
+export const cssCustomPropertyNamespace = ${JSON.stringify(
+    cssCustomPropertyNamespace,
+  )};
+
+export const modifiers = ${JSON.stringify(Object.values(modifiers))} as const;
 `);
 }
 
 // See: https://github.com/propjockey/css-media-vars/blob/master/css-media-vars.css
-async function writeCSSMediaVars(file) {
+// // Order of 'modifiers' is order they are applied (index 0 has highest
+// // priority)
+// modifiers: {
+//   ':hover': '_hover',
+//   ':visited': '_visited',
+// }
+async function writeCSSMediaVars(file, modifiers = {}) {
   // Skip the 'xs' size as we've done it above outside of the media queries
   // (mobile first ftw!)
   const breakpointsWithoutXs = breakpoints.slice(1);
-  await file.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
-.Box {
-  ${breakpointsWithoutXs
-    // Set css-media-vars values to `initial`. If any of these are attempted to be
-    // read in a custom CSS Property, it will have the value 'initial' which then
-    // triggers the fallback of `var()` to be substituted.
-    .map(({key}) => `--_p-media-${key}: initial;`)
-    .join('\n  ')}
-}
-${breakpointsWithoutXs
+
+  const baseBreakpointKey = '';
+  const breakpointsWithBaseXs = [
+    {...breakpoints[0], key: baseBreakpointKey},
+    ...breakpointsWithoutXs,
+  ];
+
+  // Set css-media-vars values to `initial`. If any of these are attempted to be
+  // read in a custom CSS Property, it will have the value 'initial' which then
+  // triggers the fallback of `var()` to be substituted.
+  const defaults = endent`
+    ${breakpointsWithoutXs
+      .map(({key}) => `--${cssCustomPropertyNamespace}${key}: initial;`)
+      .join('\n')}
+
+    ${Object.entries(modifiers)
+      .map(([, modifierName]) =>
+        breakpointsWithBaseXs
+          .map(
+            ({key}) =>
+              `--${cssCustomPropertyNamespace}${key}${modifierName}: initial;`,
+          )
+          .join('\n'),
+      )
+      .join('\n\n')}
+  `;
+
   // At each breakpoint, set the css-media-vars value to ` ` (a space; a valid
   // value in CSS!). Now when this is attempted to be read, it will simply
   // insert a space which is ignored and the rest of the value is used.
@@ -553,15 +595,41 @@ ${breakpointsWithoutXs
   // --pc-box-color-sm: var(--_p-media-sm) red;
   // --pc-box-color-lg: var(--_p-media-lg) blue;
   // color: var(--pc-box-color-lg, var(--pc-box-color-sm, unset));
-  .map(
-    ({key, value}) => `
-@media screen and (min-width: ${value}) {
-  .Box {
-    --_p-media-${key}: ;
-  }
-}`,
-  )
-  .join('\n')}`);
+  const mediaQueries = breakpointsWithoutXs
+    .map(
+      ({key, value}) =>
+        `@media screen and (min-width: ${value}) { .Box { --${cssCustomPropertyNamespace}${key}: ; } }`,
+    )
+    .join('\n');
+
+  const selectorsEnabled = Object.entries(modifiers)
+    .map(
+      ([selector, modifierName]) => endent`
+        .Box${selector} {
+          ${breakpointsWithBaseXs
+            .map(
+              ({key}) =>
+                `--${cssCustomPropertyNamespace}${key}${modifierName}: ${
+                  key === baseBreakpointKey
+                    ? ''
+                    : `var(--${cssCustomPropertyNamespace}${key})`
+                };`,
+            )
+            .join('\n')}
+        }`,
+    )
+    .join('\n\n');
+
+  await file.write(endent`
+    /* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
+    .Box {
+      ${defaults}
+    }
+
+    ${mediaQueries}
+
+    ${selectorsEnabled}
+  `);
 }
 
 function getArrayIntersection(...arrs) {

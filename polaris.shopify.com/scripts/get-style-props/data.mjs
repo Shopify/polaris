@@ -94,11 +94,16 @@ export const disallowedCSSProperties = [
   'mathStyle',
   'mathShift',
   'mathDepth',
+  // Standardized, but no browser support, so we alias it to x/y
+  'overflowInline',
+  'overflowBlock',
 ];
 
 export const disallowedCSSPropertyValues = [
+  'unset',
   'inherit',
   'initial',
+  'revert',
   '-moz-initial',
 ];
 
@@ -152,8 +157,8 @@ export const stylePropConfig = {
   containIntrinsicBlockSize: {
     aliases: ['containIntrinsicHeight', 'containIntrinsicSize'],
   },
-  overflowInline: {aliases: ['overflowX', 'overflow']},
-  overflowBlock: {aliases: ['overflowY', 'overflow']},
+  overflowX: {aliases: ['overflowInline', 'overflow']},
+  overflowY: {aliases: ['overflowBlock', 'overflow']},
   overscrollBehaviorInline: {
     aliases: ['overscrollBehaviorX', 'overscrollBehavior'],
   },
@@ -253,3 +258,12 @@ export const stylePropConfig = {
   justifyItems: {aliases: ['justify']},
   alignItems: {aliases: ['align']},
 };
+
+// keys are CSS selectors, values are used as CSS custom property names (see
+// https://drafts.csswg.org/css-syntax-3/#non-ascii-ident-code-point) AND
+// Typescript types
+export const modifiers = {':hover': '_hover', ':visited': '_visited'};
+
+// Used to ensure custom properties don't collide with other user created ones
+// Alternatives: ⅀ ℈ ￪ 〓 ￮ _
+export const cssCustomPropertyNamespace = '⅀';
