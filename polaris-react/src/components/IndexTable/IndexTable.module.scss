@@ -837,9 +837,17 @@ $loading-panel-height: 53px;
 .TableHeading-align-end {
   text-align: right;
 
-  [class*='TooltipContainer'] {
+  [class*='TooltipContainer'],
+  [class*='SortableTableHeadingWithCustomMarkup'] {
     justify-content: end;
   }
+}
+
+.TableHeading-extra-padding-right {
+  // stylelint-disable -- polaris component custom properties
+  --pc-index-table-heading-extra-padding-right: 0rem;
+  padding-right: var(--pc-index-table-heading-extra-padding-right);
+  // stylelint-enable
 }
 
 .TableHeading-sortable {
