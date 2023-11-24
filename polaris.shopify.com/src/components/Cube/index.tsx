@@ -15,30 +15,95 @@ import {
 } from '../../utils/various';
 import {
   type ResponsiveStyleProps,
+  type ResponsiveStylePropsWithModifiers,
   stylePropAliasFallbacks,
   disallowedCSSPropertyValues,
   stylePropAliasNames as allAliases,
   stylePropTokenGroupMap,
   stylePropDefaults,
+  cssCustomPropertyNamespace,
+  modifiers,
 } from './generated-data';
 
-type CubeProps = React.PropsWithChildren<ResponsiveStyleProps>;
+const baseStylePropsModifierKey = '' as const;
+type BaseStylePropsModifierKey = typeof baseStylePropsModifierKey;
 
-function coerceToObjectSyntax<T extends string | number | undefined = string>(
-  responsiveProp: ResponsiveProp<T>,
-): ResponsivePropObject<T> {
-  // "falsey" values are valid except `null` or `undefined`
-  if (responsiveProp == null) {
-    return {};
-  }
+const baseStylePropsBreakpointKey = '' as const;
+type BaseStylePropsBreakpointKey = typeof baseStylePropsBreakpointKey;
 
-  if (isObject(responsiveProp)) {
-    return responsiveProp;
-  }
+type BreakpointsAliasesWithBaseKey =
+  | BaseStylePropsBreakpointKey
+  | Exclude<BreakpointsAlias, typeof breakpointsAliases[0]>;
 
-  return {
-    [breakpointsAliases[0]]: responsiveProp,
-  };
+// The "base" styles always come last after other modifiers
+const allModifiers: Array<
+  typeof modifiers[number] | BaseStylePropsModifierKey
+> = [...modifiers, baseStylePropsModifierKey];
+
+type CubeProps = React.PropsWithChildren<ResponsiveStylePropsWithModifiers>;
+
+type ResponsiveStylePropObjects = {
+  [T in keyof ResponsiveStyleProps]?: ResponsiveStyleProps[T] extends ResponsiveProp<
+    infer V
+  >
+    ? ResponsivePropObject<V>
+    : never;
+};
+
+type ModifierStyleProps = {
+  [K in typeof allModifiers[number]]?: ResponsiveStyleProps;
+};
+
+type StyleValue = {
+  name: keyof ResponsiveStyleProps;
+  modifier?: typeof allModifiers[number];
+  breakpoint?: BreakpointsAliasesWithBaseKey;
+  value: unknown;
+};
+
+const reversedBreakpointsAliases = [...breakpointsAliases].reverse();
+
+// Performs 3 main functions:
+// 1. Converts all values to object syntax
+// 2. Removes `undefined` and `null` values
+// 3. Removes `{}` values
+function normalizeStyleProps(
+  responsiveProps: ResponsiveStyleProps,
+): ResponsiveStylePropObjects {
+  return Object.fromEntries(
+    Object.entries(responsiveProps)
+      .map(([stylePropName, stylePropValue]) => {
+        // "falsey" values are valid except `null` or `undefined`.
+        // Set to empty object so it's removed by the following filter().
+        if (stylePropValue == null) {
+          return [stylePropName, {}];
+        }
+
+        if (isObject(stylePropValue)) {
+          return [
+            stylePropName,
+            // Skip undefined values (can happen when explicit 'undefined' is
+            // passed in, or from resolving aliases above).
+            // May result in an empty object, which will be cause by the
+            // following filter().
+            filterObject(
+              stylePropValue,
+              (value) => typeof value !== 'undefined',
+            ),
+          ];
+        }
+
+        return [
+          stylePropName,
+          {
+            [breakpointsAliases[0]]: stylePropValue,
+          },
+        ];
+      })
+      // No concrete value at any breakpoints? Just ignore this style prop and
+      // move on
+      .filter(([, stylePropValue]) => Object.keys(stylePropValue).length),
+  );
 }
 
 function filterObject<T extends object>(
@@ -110,71 +175,30 @@ function identity<T>(arg: T): T {
   return arg;
 }
 
-/*
- * NOTES:
- * - Works because we do mobile first with (min-width) queries
- * - The final value in the var fallbacks is always the `xs` size
- * - `xs` default value is `unset`
- * - No special cases needed for 'inherit' values (color et al) because the
- *   default of `xs = unset` applied directly to the property means the browser
- *   can decide if it's inherit or not.
- * - Alias fallbacks are applied _before_ default values
- *
- * QUESTIONS:
- * - What about aliases / shorthands? How do they behave when there are
- *   mismatched gaps like `paddingInline={{ sm: '10', lg: '50' }}
- *   paddingInlineStart={{ md: '40', xl: '100' }}`?
- *
- * Examples:
- *
- * // A non-responsive value, or only 'xs':
- * `display={{ xs: 'flex' }}` / `display="flex"`
- * ```
- * display: flex;
- * ```
- *
- * // A single responsive value
- * `display={{ sm: 'flex' }}`
- * ```
- * --pc-box-display-sm: var(--_p-media-sm) flex;
- * display: var(--pc-box-display-sm, unset);
- * ```
- *
- * // `xs` and another responsive value
- * `display={{ xs: `gird`, sm: 'flex' }}`
- * ```
- * --pc-box-display-sm: var(--_p-media-sm) flex;
- * display: var(--pc-box-display-sm, grid);
- * ```
- *
- * // Multiple adjacent resopnsive values
- * `display={{ md: 'grid', lg: 'flex' }}`
- * ```
- * --pc-box-display-md: var(--_p-media-md) grid;
- * --pc-box-display-lg: var(--_p-media-lg) flex;
- * display: var(--pc-box-display-lg, var(--pc-box-display-md, unset));
- * ```
- *
- * // Multiple resopnsive values with gaps
- * `display={{ sm: 'grid', xl: 'flex' }}`
- * ```
- * --pc-box-display-sm: var(--_p-media-sm) grid;
- * --pc-box-display-xl: var(--_p-media-xl) flex;
- * display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
- * ```
- */
-function convertStylePropsToCSSProperties(
+function keyByModifiers(styleProps: ResponsiveStylePropsWithModifiers) {
+  const modifierStyleProps: ModifierStyleProps = {};
+  for (let modifier of modifiers) {
+    if (typeof styleProps[modifier] !== 'undefined') {
+      modifierStyleProps[modifier] = styleProps[modifier]!;
+    }
+  }
+
+  const stylePropsWithoutModifiers: ResponsiveStyleProps = {...styleProps};
+  modifiers.forEach((modifier) => {
+    delete stylePropsWithoutModifiers[modifier as keyof ResponsiveStyleProps];
+  });
+
+  if (Object.keys(stylePropsWithoutModifiers).length) {
+    modifierStyleProps[baseStylePropsModifierKey] = stylePropsWithoutModifiers;
+  }
+
+  return modifierStyleProps;
+}
+
+function resolveConcreteLonghandValues(
   styleProps: ResponsiveStyleProps,
   defaults: typeof stylePropDefaults,
-  valueMapper: <
-    Prop extends keyof ResponsiveStyleProps,
-    Value = ResponsiveStyleProps[Prop],
-  >(
-    value: Value,
-    prop: Prop,
-    breakpoint: BreakpointsAlias,
-  ) => unknown = identity,
-) {
+): ResponsiveStyleProps {
   // Ensure constituent styles are given fallback values even when they're not
   // passed in as an explicit style prop.
   let longhandStyleProps: ResponsiveStyleProps =
@@ -204,217 +228,434 @@ function convertStylePropsToCSSProperties(
   // Defaults may have contained aliases, so we have to resolve those again.
   longhandStyleProps = resolveAliasFallbacks(longhandStyleProps);
 
+  return longhandStyleProps;
+}
+
+/*
+ * NOTES:
+ * - Works because we do mobile first with (min-width) queries
+ * - The final value in the var fallbacks is always the `xs` size
+ * - `xs` default value is `unset`
+ * - No special cases needed for 'inherit' values (color et al) because the
+ *   default of `xs = unset` applied directly to the property means the browser
+ *   can decide if it's inherit or not.
+ * - Alias fallbacks are applied _before_ default values
+ *
+ * QUESTIONS:
+ * - What about aliases / shorthands? How do they behave when there are
+ *   mismatched gaps like `paddingInline={{ sm: '10', lg: '50' }}
+ *   paddingInlineStart={{ md: '40', xl: '100' }}`?
+ *
+ * Examples:
+ *
+ * // A non-responsive value, or only 'xs':
+ * `display={{ xs: 'flex' }}` / `display="flex"`
+ * ```
+ * display: flex;
+ * ```
+ *
+ * // A single responsive value
+ * `display={{ sm: 'flex' }}`
+ * ```
+ * --pc-box-display-sm: var(--_sm) flex;
+ * display: var(--pc-box-display-sm, unset);
+ * ```
+ *
+ * // `xs` and another responsive value
+ * `display={{ xs: `gird`, sm: 'flex' }}`
+ * ```
+ * --pc-box-display-sm: var(--_sm) flex;
+ * display: var(--pc-box-display-sm, grid);
+ * ```
+ *
+ * // Multiple adjacent resopnsive values
+ * `display={{ md: 'grid', lg: 'flex' }}`
+ * ```
+ * --pc-box-display-md: var(--_md) grid;
+ * --pc-box-display-lg: var(--_lg) flex;
+ * display: var(--pc-box-display-lg, var(--pc-box-display-md, unset));
+ * ```
+ *
+ * // Multiple resopnsive values with gaps
+ * `display={{ sm: 'grid', xl: 'flex' }}`
+ * ```
+ * --pc-box-display-sm: var(--_sm) grid;
+ * --pc-box-display-xl: var(--_xl) flex;
+ * display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
+ * ```
+ */
+function convertStylePropsToCSSProperties(
+  styleProps: ResponsiveStyleProps,
+  defaults: typeof stylePropDefaults,
+  valueMapper: (
+    value: ResponsiveStyleProps[typeof prop],
+    prop: keyof ResponsiveStyleProps,
+    breakpoint: BreakpointsAlias,
+    modifier: typeof allModifiers[number],
+  ) => unknown = identity,
+) {
+  const stylePropsByModifier = mapObjectValues(
+    // Split out things like `_hover` into their own objects:
+    // {
+    //   '<base>': ResponsiveStyleProps,
+    //   '_hover': ResponsiveStyleProps,
+    //   '_visited': ResponsiveStyleProps,
+    //   ... etc
+    // }
+    keyByModifiers(styleProps),
+    (value) =>
+      normalizeStyleProps(
+        // Expand all the aliases and apply defaults.
+        resolveConcreteLonghandValues(value!, defaults),
+      ),
+  );
+
+  // Get a list of all the properties that are set across the normal styleProps
+  // AND the modifiers.
+  const allStylePropNames = Array.from(
+    new Set(
+      Object.values(stylePropsByModifier)
+        .map((modifierStyleProps) => Object.keys(modifierStyleProps))
+        .flat(),
+    ),
+  ) as Array<keyof ResponsiveStyleProps>;
+
+  // Phase 3: Iterate over each of the style props set, converting them to the
+  // appropriate CSS for a `style` attribute.
   const customPropertyCache: Record<string, string> = {};
 
-  // Now that we have a complete object with all fallbacks and defaults applied,
-  // we can convert it to a style object
-  return (
-    Object.entries(longhandStyleProps) as Entries<typeof longhandStyleProps>
-  ).reduce((acc, [key, stylePropValue], index) => {
-    // Always work with the object syntax to reduce conditionals below
-    let responsiveValues = coerceToObjectSyntax(stylePropValue);
+  // Iterate over a union of all the keys of nonmodifier and all modifiers
+  // so we catch styles that are only applied on hover, but not normally, etc.
+  return allStylePropNames.reduce((acc, stylePropName, index) => {
+    // Gather all the values, and ensure they're ordered correctly:
+    // Modifiers are ordered based on config (with non-modified values always
+    // coming last).
+    // Within each modifier, breakpoints are ordered from largest to smallest.
+    const valuesByPriority: Array<StyleValue> = [];
 
-    // Skip undefined values (can happen when explicit 'undefined' is passed in,
-    // or from resolving aliases above)
-    responsiveValues = filterObject(
-      responsiveValues,
-      (value) => typeof value !== 'undefined',
-    );
+    for (let _modifier of allModifiers) {
+      const modifier = _modifier as typeof allModifiers[number];
+      if (typeof stylePropsByModifier[modifier] === 'undefined') {
+        continue;
+      }
 
-    // No concrete value at any breakpoints? Just ignore this style prop and
-    // move on
-    const numberOfKeysWithValues = Object.keys(responsiveValues).length;
-    if (numberOfKeysWithValues === 0) {
+      const stylePropObject = stylePropsByModifier[modifier]![stylePropName];
+
+      // Style prop has no values set for this modifier
+      if (typeof stylePropObject === 'undefined') {
+        continue;
+      }
+
+      for (let _breakpoint of reversedBreakpointsAliases) {
+        const breakpoint = _breakpoint as typeof breakpointsAliases[number];
+
+        // Style prop has no value set for this breakpoint on the the given
+        // modifier
+        if (typeof stylePropObject[breakpoint] !== 'undefined') {
+          valuesByPriority.push({
+            name: stylePropName,
+            modifier,
+            breakpoint:
+              breakpoint === breakpointsAliases[0]
+                ? baseStylePropsBreakpointKey
+                : breakpoint,
+            // Allow the library consumer to map values. For example; converting
+            // tokens into concrete CSS values or variables.
+            value: valueMapper(
+              stylePropObject[breakpoint],
+              stylePropName,
+              breakpoint,
+              modifier,
+            ),
+          });
+        }
+      }
+    }
+
+    // Nothing to do.
+    if (valuesByPriority.length === 0) {
       return acc;
     }
 
     // Since Typescript doesn't have negation types (`string & not 'inherit'`),
-    // we need to do a runtime check for invalid values
+    // we need to do a runtime check for invalid values because some of the
+    // csstype types have a `| string` union which then allows some values to
+    // sneak through at runtime.
     invariant(
-      !Object.values(responsiveValues).some((responsiveValue) =>
-        disallowedCSSPropertyValues.includes(responsiveValue as any),
+      !valuesByPriority.some(({value}) =>
+        disallowedCSSPropertyValues.includes(
+          value as typeof disallowedCSSPropertyValues[number],
+        ),
       ),
       `${disallowedCSSPropertyValues.join(
         ',',
       )} are reserved values, but were passed into the ${String(
-        key,
+        stylePropName,
       )} prop. Please use a different value.`,
     );
 
-    // Allow the library consumer to map values. For example; converting tokens
-    // into concrete CSS values or variables.
-    const mappedResponsiveValues: ResponsivePropObject<any> = mapObjectValues(
-      responsiveValues,
-      (value, breakpoint) => valueMapper(value, key, breakpoint),
-    );
+    const getCustomPropertyValueForStyleProp = ({
+      value,
+      breakpoint,
+      modifier,
+    }: StyleValue): string => {
+      /**
+       * Use the space hack to have the value parsed as 'initial' or the value
+       * after two spaces. Think of it like an `if` where `initial === false`,
+       * and `' ' === true`:
+       *
+       * ```
+       * --pc-box-display-sm: var(--_if-sm) grid;
+       * --pc-box-display-xl: var(--_if-xl) flex;
+       * ```
+       *
+       * NOTE: The CSS custom property name must match what's in the generated
+       * `.css` file.
+       * */
+      return `var(--${cssCustomPropertyNamespace}${breakpoint}${modifier}) ${value}`;
+    };
 
-    // Special case: Only a single value set and it's for the 'xs' breakpoint
-    // Just set the CSS property directly as there's no need for
-    // responsiveness.
-    if (
-      numberOfKeysWithValues === 1 &&
-      typeof mappedResponsiveValues['xs'] !== 'undefined'
-    ) {
-      return {
-        ...acc,
-        [key]: mappedResponsiveValues['xs'],
-      };
-    }
-
-    /*
-     const properyValue = display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
-      */
+    // TODO: Move this out of the loop
     let getCustomPropertyNameForStyleProp: (
-      prop: keyof ResponsiveStyleProps,
-      value: string,
-      breakpointAlias?: BreakpointsAlias,
+      customPropertyValue: unknown,
+      styleValue?: Partial<StyleValue>,
     ) => string;
-    if (process.env.NODE_ENV === 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       // Cache values to re-use prop names in production builds
-      getCustomPropertyNameForStyleProp = (_, value, breakpointAlias) => {
-        if (typeof customPropertyCache[value] !== 'undefined') {
-          return customPropertyCache[value];
+      getCustomPropertyNameForStyleProp = (
+        customPropertyValue,
+        {breakpoint, modifier} = {},
+      ) => {
+        const valueString = String(customPropertyValue);
+
+        if (typeof customPropertyCache[valueString] !== 'undefined') {
+          return customPropertyCache[valueString];
         }
+
         // This format is specially constructed to aid in gzipping.
         // The final `style` attribute will end up with something like:
         // ```
-        // --_p-0sm: var(--_p-media-sm) double;
-        // --_p-1sm: var(--_p-media-sm) flex;
-        // --_p-2sm: var(--_p-media-sm) var(--p-space-400);
-        // --_p-3sm: var(--_p-media-sm) 2;
+        // --_0sm: var(--_sm) double;
+        // --_1sm: var(--_sm) flex;
+        // --_2sm: var(--_sm) var(--p-space-400);
+        // --_3sm: var(--_sm) 2;
         // ```
-        // The string `sm: var(--_p-media-sm) ` appears multiple times, which is
+        // The string `sm: var(--_sm) ` appears multiple times, which is
         // great for the gzip algo to eat up!
-        const newCustomProperty = `--_p${index}${
-          typeof breakpointAlias !== 'undefined' ? `${breakpointAlias}` : ''
-        }`;
-        customPropertyCache[value] = newCustomProperty;
+        const newCustomProperty = `--${cssCustomPropertyNamespace}${index}${
+          typeof modifier !== 'undefined' ? `${modifier}` : ''
+        }${typeof breakpoint !== 'undefined' ? `${breakpoint}` : ''}`;
+
+        customPropertyCache[valueString] = newCustomProperty;
+
         return newCustomProperty;
       };
     } else {
-      getCustomPropertyNameForStyleProp = (prop, _, breakpointAlias) => {
-        return `--pc-box-${prop}${
-          typeof breakpointAlias !== 'undefined' ? `-${breakpointAlias}` : ''
-        }`;
+      getCustomPropertyNameForStyleProp = (
+        _,
+        {name, breakpoint, modifier} = {},
+      ) => {
+        return `--${cssCustomPropertyNamespace}${
+          typeof modifier !== 'undefined' ? `${modifier}-` : ''
+        }${typeof breakpoint !== 'undefined' ? `${breakpoint}-` : ''}${name}`;
       };
     }
 
-    const cssCustomProperties: Record<string, unknown> = {};
-
-    const numberOfKeysWithValuesMinusXs = Object.keys(
-      mappedResponsiveValues,
-    ).filter((key) => key !== 'xs').length;
-
-    // When there's only 1 responsive value to be set (ignoring 'xs'), we will
-    // put the responsive fallback in its own custom property
-    const willCreateFallbackCustomProperty = numberOfKeysWithValuesMinusXs > 1;
-
-    // The final fallback value ('xs') can be either:
-    // 1. A concrete value (eg; gap={{ xs: '10px' }})
-    // 2. `unset` to have the browser decide if a property should be inherited
-    //    from a parent DOM node or not.
-    //
-    // However, `unset` will apply to whatever is on the left-hand of the `:`,
-    // and is _not_ used as a concrete value when in a var() statement.
-    //
-    // Ie; `--gap: unset; gap: var(--gap);` will _not_ result in `gap: unset`,
-    // but rather will tell the browser to pretend `--gap` wasn't set, and to
-    // go look up the DOM parent nodes for the nearest concrete value of
-    // `--gap`. This would break our style encapsulation.
-    // On the other hand, `--gap: initial; gap: var(--gap, unset)` will
-    // resolve `--gap` to the concrete value of `initial` (so will not go
-    // looking at parent DOM nodes), then will attemp to resolve the `gap`
-    // property as `var(initial, unset)`, and since `initial` in a `var()`
-    // results in using the fallback, the concrete calculated value becomes
-    // `gap: unset` which is what we want.
-    //
-    // Therefore, when calculating the fallback value for the fallback custom
-    // CSS Property, we can only use the concrete value here and not `unset`
-    // UNLESS we're sure we're putting the fallback directly on the CSS
-    // property.
-    let fallbackPropertyValue =
-      typeof mappedResponsiveValues.xs !== 'undefined'
-        ? mappedResponsiveValues.xs
-        : willCreateFallbackCustomProperty
-        ? ''
-        : 'unset';
-
-    // Nest the fallbacks from smallest on the inside to largest on the outside.
-    // Order is important, so we iterate over the breakpointsAliases which has
-    // a known order rather than the style prop's keys which have an unknown
-    // order.
-    // NOTE: We skip the smallest breakpoint as we've already used that as the
-    // fallback value above
-    for (let breakpointAlias of breakpointsAliases.slice(1)) {
-      const value = mappedResponsiveValues[breakpointAlias];
-
-      // Skip breakpoints without a value
-      if (typeof value === 'undefined') {
-        continue;
-      }
-
-      let customPropertyValue: string;
-
-      // Now we begin converting the style props into CSS style values
-      if (breakpointAlias === breakpointsAliases[0]) {
-        // We're mobile first, so no need for media query on the smallest
-        // breakpoint
-        customPropertyValue = value;
-      } else {
-        /**
-         * Use the space hack to have the value parsed as 'initial' or the value
-         * after two spaces
-         * --pc-box-display-sm: var(--_p-media-sm) grid;
-         * --pc-box-display-xl: var(--_p-media-xl) flex;
-         * */
-        customPropertyValue = `var(--_p-media-${breakpointAlias}) ${value}`;
-      }
-
+    const getCustomPropertyForStyleProp = (
+      style: StyleValue,
+    ): [string, string] => {
+      const customPropertyValue = getCustomPropertyValueForStyleProp(style);
       const customPropertyName = getCustomPropertyNameForStyleProp(
-        key,
         customPropertyValue,
-        breakpointAlias,
+        style,
       );
-
-      cssCustomProperties[customPropertyName] = customPropertyValue;
-
-      // Accumulate the fallback var statements. Eg;
-      // ```
-      // var(--pc-box-gap-xl,
-      //   var(--pc-box-gap-lg,
-      //     var(--pc-box-gap-md,
-      //       var(--pc-box-gap-sm, 10px)
-      //     )
-      //   )
-      // )
-      // ```
-      fallbackPropertyValue = `var(${customPropertyName}${
-        fallbackPropertyValue !== '' ? `, ${fallbackPropertyValue}` : ''
-      })`;
-    }
-
-    let fallbackPropertyName: string;
-
-    if (willCreateFallbackCustomProperty) {
-      // Assign the fallback statements to their own variable so it can be
-      // re-used to save bytes / readability
-      fallbackPropertyName = getCustomPropertyNameForStyleProp(
-        key,
-        fallbackPropertyValue,
-      );
-      cssCustomProperties[fallbackPropertyName] = fallbackPropertyValue;
-
-      cssCustomProperties[key] = `var(${fallbackPropertyName}${
-        typeof mappedResponsiveValues.xs === 'undefined' ? `, unset` : ''
-      })`;
-    } else {
-      cssCustomProperties[key] = fallbackPropertyValue;
-    }
-
-    return {
-      ...acc,
-      ...cssCustomProperties,
+      return [customPropertyName, customPropertyValue];
     };
+
+    let leastSpecificValue: unknown;
+
+    const lastValue = valuesByPriority[valuesByPriority.length - 1];
+
+    // Is the least specific / final fallback value set (ie; smallest
+    // breakpoint with no modifiers)? If so, it can be set directly without
+    // needing to be processed like other CSS custom properties which leverage
+    // the space hack.
+    if (
+      lastValue.breakpoint === baseStylePropsBreakpointKey &&
+      lastValue.modifier === baseStylePropsModifierKey
+    ) {
+      // Capture the value of the last item
+      leastSpecificValue = lastValue.value;
+      // Then remove it so it doesn't get processed like other CSS variables.
+      valuesByPriority.pop();
+    }
+
+    // We need to ensure CSS declarations are scoped to the current DOM node
+    // only.
+    //
+    // Since there's no official "scoping" in CSS (yet), we can apply a
+    // functionaly equivalent "scope" to the CSS custom properties we're using
+    // in the declarations (to power the "space hack").
+    //
+    // We'll combine 3 facts from the spec to enforce scoping:
+    //
+    // 1. All CSS custom properties resolve to the "Guaranteed invalid value"
+    //    until they're processed at the time of applying styles to a DOM node.
+    //    The value is resolved by walking up the DOM tree to look for
+    //    definitions of the custom property.
+    // 2. When processing a `var(<cutom-property>, <fallback>)`, if the
+    //    `<custom-property>` resolves to the "Guaranteed invalid value" and a
+    //    `<fallback>` is provided, the browser will process that `<fallback>`
+    //    (which itself could be another `var()`, or a concrete value). Finally,
+    //    if the entire `var()` recursively resolves to the "Guaranteed invalid
+    //    value",
+    // 3. A value of `initial` acts as a concrete value to stop the browser
+    //    walking up the DOM tree, but is also equal to the "Guaranteed invalid
+    //    value" when assigned to a custom property.
+    //
+    // Therefore, as long as every CSS custom property we reference has a
+    // concrete value or `initial`, or references another custom property which
+    // resolves to a concrete value or `initial`, we stop the browser walking up
+    // the DOM tree to find other definitions of our custom property, and hence
+    // have scopped that property to this DOM node.
+    //
+    // ---
+    //
+    // So, why do we use `unset` insetad of `initial`?
+    // To have the browser decide if a CSS declaration's value should be
+    // inherited via the cascade or not:
+    //
+    // ```
+    // --colorVal: initial;
+    // color: var(--colorVal, unset)
+    // ```
+    //
+    // The browser will follow these steps:
+    //
+    // 1. Resolve `--colorVal` to the concrete value of `initial` (will not go
+    //    looking at parent DOM nodes, retaining our style encapsulation).
+    // 2. Because `initial` is equalivalent to the "Guaranteed invalid value",
+    //    it will process the fallback value, resultin in the `var()` resolving
+    //    to `unset`.
+    // 2. Convert `unset` to be either `initial` or `inherit` as the value to
+    //    the CSS declaration. In this case, `color` is inherited, so the
+    //    example above is equivalent to `color: inherit`.
+    //
+    // Of note about `unset` is its behaviour when used as the value of a CSS
+    // custom property:
+    //
+    // ```
+    // --colorVal: unset;
+    // color: var(--colorVal);
+    // ```
+    //
+    // The first line will instruct the browser to un-set the CSS custom
+    // property `--colorVal` (as if no value was ever set on it). So when it
+    // comes to process the `var(--colorVal)`, the resolved value is _not_
+    // `unset`, but rather the Guaranteed invalid value.
+    //
+    // On the surface this seems fine, as the `color` declaration then becomes
+    // invalid, and the browser will fallback to `inherit` for this DOM node.
+    //
+    // However, when there exists a parent DOM node which _does_ specify a
+    // concrete value (including `initial`) for `--colorVal`, the browser will
+    // use that as the resolved value for the `var()`. Which breaks our
+    // encapsulation.
+    //
+    // For this reason, we must ensure we only ever use `unset` as the fallback
+    // for a CSS declaration, never as the fallback for a CSS custom property.
+    switch (valuesByPriority.length) {
+      case 0:
+        // No concrete value? Just return; there's nothing to do.
+        if (!leastSpecificValue) {
+          return acc;
+        }
+
+        // Only a single value set and it's for the smallest breakpoint without
+        // a modifier?
+        // Set the CSS property directly as there's no need for
+        // responsiveness.
+        return {
+          ...acc,
+          [stylePropName]: leastSpecificValue,
+        };
+
+      case 1:
+        const [customPropertyName, customPropertyValue] =
+          getCustomPropertyForStyleProp(valuesByPriority[0]);
+        return {
+          ...acc,
+          [customPropertyName]: customPropertyValue,
+          [stylePropName]: `var(${customPropertyName}, ${
+            leastSpecificValue || 'unset'
+          })`,
+        };
+
+      // Optimization: When there are more than 2 fallbacks, we create a separate CSS
+      // custom property to hold them. This can then be re-used across many
+      // similar properties that have the same value.
+      //
+      // For example, instead of:
+      // ```
+      // paddingInlineStart: var(--_0xl, var(--_0lg, var(--_0md, var(--_0sm, 10px))));
+      // paddingInlineEnd:   var(--_0xl, var(--_0lg, var(--_0md, var(--_0sm, 10px))));
+      // paddingBlockStart:  var(--_0xl, var(--_0lg, var(--_0md, var(--_0sm, 10px))));
+      // paddingBlockEnd:    var(--_0xl, var(--_0lg, var(--_0md, var(--_0sm, 10px))));
+      // ```
+      //
+      // We can move those into a re-usable variable to save some bytes & help
+      // readability:
+      // ```
+      // --_0: var(--_0xl, var(--_0lg, var(--_0md, var(--_0sm, 10px))));
+      // paddingInlineStart: var(--_0);
+      // paddingInlineEnd:   var(--_0);
+      // paddingBlockStart:  var(--_0);
+      // paddingBlockEnd:    var(--_0);
+      // ```
+      default:
+        const cssCustomProperties = Object.fromEntries(
+          valuesByPriority.map((styleValue) =>
+            getCustomPropertyForStyleProp(styleValue),
+          ),
+        );
+
+        // Accumulate the first half of the fallback var statements. Eg;
+        // ```
+        // var(--pc-box-gap-xl, var(--pc-box-gap-lg, var(--pc-box-gap-md
+        // ```
+        let fallbackValueStart = Object.keys(cssCustomProperties)
+          .map((propertyName) => `var(${propertyName}`)
+          .join(',');
+
+        // If there's a concrete value for the least specific (smallest
+        // breakpoing & no modifier), then we can insert that as the final
+        // fallback in the custom property.
+        const fallbackValueMiddle = leastSpecificValue
+          ? `,${leastSpecificValue}`
+          : '';
+
+        // Prepare the second half of the fallback. Eg;
+        // ```
+        // )))
+        // ```
+        const fallbackValueEnd = ')'.repeat(valuesByPriority.length);
+
+        const fallbackValue = `${fallbackValueStart}${fallbackValueMiddle}${fallbackValueEnd}`;
+        const fallbackPropertyName =
+          getCustomPropertyNameForStyleProp(fallbackValue);
+
+        return {
+          ...acc,
+          ...cssCustomProperties,
+          [fallbackPropertyName]: fallbackValue,
+          // Since the least specific value (smallest breakpoint / no modifier) was
+          // used above, there's no need for a fallback on the CSS property itself.
+          // Instead, we need to set it explicitly to `unset`.
+          [stylePropName]: `var(${fallbackPropertyName}${
+            leastSpecificValue ? '' : ',unset'
+          })`,
+        };
+    }
   }, {});
 }
 
@@ -459,7 +700,7 @@ The lowest level Polaris primitive from which everything in the system is built.
 @example
 ```
 // Alias properties
-<Cube padding="400" />
+<Cube paddingInlineStart="600" padding="400"  />
 
 // Expanded to constituent properties and converted to Polaris tokens then pased
 // to the underlaying element
@@ -489,16 +730,17 @@ The lowest level Polaris primitive from which everything in the system is built.
 // Aliases are expanded, tokenized values are converted to Polaris tokens, then
 // converted to responsive CSS variables and passed to the underlaying element
 <div style={`
-  --pc-box-display-sm: var(--_p-media-sm) grid;
-  --pc-box-display-xl: var(--_p-media-xl) flex;
-  display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
+  --pc-box-display-sm: var(--_sm) grid;
+  --pc-box-display-xl: var(--_xl) flex;
+  --pc-box-color-hover-sm: var(--_hovered-sm) red;
+  color: var(--pc-box-color-hover-xl, var(--pc-box-display-xl, var(--pc-box-display-sm, unset)));
 
-  --pc-box-padding-inline-start-xs: var(--_p-media-xs) var(--p-space-200);
-  --pc-box-padding-inline-start-lg: var(--_p-media-lg) var(--p-space-400);
+  --pc-box-padding-inline-start-xs: var(--_xs) var(--p-space-200);
+  --pc-box-padding-inline-start-lg: var(--_lg) var(--p-space-400);
   padding-inline-start: var(--pc-box-padding-inline-start-lg, var(--pc-box-padding-inline-start-xs, unset));
 
-  --pc-box-padding-inline-end-xs: var(--_p-media-xs) var(--p-space-200);
-  --pc-box-padding-inline-end-lg: var(--_p-media-lg) var(--p-space-400);
+  --pc-box-padding-inline-end-xs: var(--_xs) var(--p-space-200);
+  --pc-box-padding-inline-end-lg: var(--_lg) var(--p-space-400);
   padding-inline-end: var(--pc-box-padding-inline-end-lg, var(--pc-box-padding-inline-end-xs, unset));
 `} />
 ```

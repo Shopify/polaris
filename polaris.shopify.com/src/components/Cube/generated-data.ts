@@ -1,7 +1,7 @@
 /* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import type {StandardLonghandProperties, Globals} from 'csstype';
 import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
-import type {OverrideProperties}  from 'type-fest';
+import type {OverrideProperties, Simplify}  from 'type-fest';
 import type {ResponsiveProp} from '../../utils/various';
 
 /**
@@ -58,14 +58,14 @@ type SupportedCSSStyleProps = Omit<
  * @example
  * `padding-inline-start` can only accept the `space-*` tokens.
  */
-type SupportedStyleProps = OverrideProperties<
+type LonghandStyleProps = OverrideProperties<
   SupportedCSSStyleProps,
   // `@shopify/polaris-tokens` may type more CSS properties than we want to
   // support here, so ensure we're only picking the ones we explicityly support
   PickIntersection<TokenizedStyleProps, SupportedCSSStyleProps>
 >;
 
-type StyleProps = SupportedStyleProps & StylePropAliases;
+type StyleProps = LonghandStyleProps & StylePropAliases;
 
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
@@ -78,6 +78,17 @@ export type ResponsiveStyleProps = {
     Unwrap<WrapInObject<Exclude<StyleProps[K], (typeof disallowedCSSPropertyValues)[number]>>>
   >;
 };
+
+/**
+ * A combination of raw CSS style props, tokenized style props (derived from
+ * `@shopify/polaris-tokens`), helpful aliases for frequently used props, and
+* the modifiers _hover and _visited.
+ */
+export type ResponsiveStylePropsWithModifiers = Simplify<
+  ResponsiveStyleProps & {
+    [K in typeof modifiers[number]]?: ResponsiveStyleProps;
+  }
+>;
 
 /**
 * Polaris specifies some aliases which are used as fallback values when an
@@ -143,10 +154,10 @@ interface StylePropAliases {
    * columnGap = props.columnGap ?? props.gap;
    * ```
    *
-   * @see {@link SupportedStyleProps.rowGap}
-   * @see {@link SupportedStyleProps.columnGap}
+   * @see {@link LonghandStyleProps.rowGap}
+   * @see {@link LonghandStyleProps.columnGap}
    */
-  gap?: SupportedStyleProps['rowGap'];
+  gap?: LonghandStyleProps['rowGap'];
 
   /**
    * Alias for setting `paddingInlineStart`:
@@ -155,9 +166,9 @@ interface StylePropAliases {
    * paddingInlineStart = props.paddingInlineStart ?? props.paddingLeft ?? props.paddingInline ?? props.padding;
    * ```
    *
-   * @see {@link SupportedStyleProps.paddingInlineStart}
+   * @see {@link LonghandStyleProps.paddingInlineStart}
    */
-  paddingLeft?: SupportedStyleProps['paddingInlineStart'];
+  paddingLeft?: LonghandStyleProps['paddingInlineStart'];
 
   /**
    * Alias for setting `paddingInlineStart` and `paddingInlineEnd`:
@@ -167,10 +178,10 @@ interface StylePropAliases {
    * paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding;
    * ```
    *
-   * @see {@link SupportedStyleProps.paddingInlineStart}
-   * @see {@link SupportedStyleProps.paddingInlineEnd}
+   * @see {@link LonghandStyleProps.paddingInlineStart}
+   * @see {@link LonghandStyleProps.paddingInlineEnd}
    */
-  paddingInline?: SupportedStyleProps['paddingInlineStart'];
+  paddingInline?: LonghandStyleProps['paddingInlineStart'];
 
   /**
    * Alias for setting `paddingInlineStart`, `paddingInlineEnd`, `paddingBlockStart` and `paddingBlockEnd`:
@@ -182,12 +193,12 @@ interface StylePropAliases {
    * paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding;
    * ```
    *
-   * @see {@link SupportedStyleProps.paddingInlineStart}
-   * @see {@link SupportedStyleProps.paddingInlineEnd}
-   * @see {@link SupportedStyleProps.paddingBlockStart}
-   * @see {@link SupportedStyleProps.paddingBlockEnd}
+   * @see {@link LonghandStyleProps.paddingInlineStart}
+   * @see {@link LonghandStyleProps.paddingInlineEnd}
+   * @see {@link LonghandStyleProps.paddingBlockStart}
+   * @see {@link LonghandStyleProps.paddingBlockEnd}
    */
-  padding?: SupportedStyleProps['paddingInlineStart'];
+  padding?: LonghandStyleProps['paddingInlineStart'];
 
   /**
    * Alias for setting `paddingInlineEnd`:
@@ -196,9 +207,9 @@ interface StylePropAliases {
    * paddingInlineEnd = props.paddingInlineEnd ?? props.paddingRight ?? props.paddingInline ?? props.padding;
    * ```
    *
-   * @see {@link SupportedStyleProps.paddingInlineEnd}
+   * @see {@link LonghandStyleProps.paddingInlineEnd}
    */
-  paddingRight?: SupportedStyleProps['paddingInlineEnd'];
+  paddingRight?: LonghandStyleProps['paddingInlineEnd'];
 
   /**
    * Alias for setting `paddingBlockStart`:
@@ -207,9 +218,9 @@ interface StylePropAliases {
    * paddingBlockStart = props.paddingBlockStart ?? props.paddingTop ?? props.paddingBlock ?? props.padding;
    * ```
    *
-   * @see {@link SupportedStyleProps.paddingBlockStart}
+   * @see {@link LonghandStyleProps.paddingBlockStart}
    */
-  paddingTop?: SupportedStyleProps['paddingBlockStart'];
+  paddingTop?: LonghandStyleProps['paddingBlockStart'];
 
   /**
    * Alias for setting `paddingBlockStart` and `paddingBlockEnd`:
@@ -219,10 +230,10 @@ interface StylePropAliases {
    * paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding;
    * ```
    *
-   * @see {@link SupportedStyleProps.paddingBlockStart}
-   * @see {@link SupportedStyleProps.paddingBlockEnd}
+   * @see {@link LonghandStyleProps.paddingBlockStart}
+   * @see {@link LonghandStyleProps.paddingBlockEnd}
    */
-  paddingBlock?: SupportedStyleProps['paddingBlockStart'];
+  paddingBlock?: LonghandStyleProps['paddingBlockStart'];
 
   /**
    * Alias for setting `paddingBlockEnd`:
@@ -231,9 +242,9 @@ interface StylePropAliases {
    * paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBottom ?? props.paddingBlock ?? props.padding;
    * ```
    *
-   * @see {@link SupportedStyleProps.paddingBlockEnd}
+   * @see {@link LonghandStyleProps.paddingBlockEnd}
    */
-  paddingBottom?: SupportedStyleProps['paddingBlockEnd'];
+  paddingBottom?: LonghandStyleProps['paddingBlockEnd'];
 
   /**
    * Alias for setting `marginInlineStart`:
@@ -242,9 +253,9 @@ interface StylePropAliases {
    * marginInlineStart = props.marginInlineStart ?? props.marginLeft ?? props.marginInline ?? props.margin;
    * ```
    *
-   * @see {@link SupportedStyleProps.marginInlineStart}
+   * @see {@link LonghandStyleProps.marginInlineStart}
    */
-  marginLeft?: SupportedStyleProps['marginInlineStart'];
+  marginLeft?: LonghandStyleProps['marginInlineStart'];
 
   /**
    * Alias for setting `marginInlineStart` and `marginInlineEnd`:
@@ -254,10 +265,10 @@ interface StylePropAliases {
    * marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin;
    * ```
    *
-   * @see {@link SupportedStyleProps.marginInlineStart}
-   * @see {@link SupportedStyleProps.marginInlineEnd}
+   * @see {@link LonghandStyleProps.marginInlineStart}
+   * @see {@link LonghandStyleProps.marginInlineEnd}
    */
-  marginInline?: SupportedStyleProps['marginInlineStart'];
+  marginInline?: LonghandStyleProps['marginInlineStart'];
 
   /**
    * Alias for setting `marginInlineStart`, `marginInlineEnd`, `marginBlockStart` and `marginBlockEnd`:
@@ -269,12 +280,12 @@ interface StylePropAliases {
    * marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin;
    * ```
    *
-   * @see {@link SupportedStyleProps.marginInlineStart}
-   * @see {@link SupportedStyleProps.marginInlineEnd}
-   * @see {@link SupportedStyleProps.marginBlockStart}
-   * @see {@link SupportedStyleProps.marginBlockEnd}
+   * @see {@link LonghandStyleProps.marginInlineStart}
+   * @see {@link LonghandStyleProps.marginInlineEnd}
+   * @see {@link LonghandStyleProps.marginBlockStart}
+   * @see {@link LonghandStyleProps.marginBlockEnd}
    */
-  margin?: SupportedStyleProps['marginInlineStart'];
+  margin?: LonghandStyleProps['marginInlineStart'];
 
   /**
    * Alias for setting `marginInlineEnd`:
@@ -283,9 +294,9 @@ interface StylePropAliases {
    * marginInlineEnd = props.marginInlineEnd ?? props.marginRight ?? props.marginInline ?? props.margin;
    * ```
    *
-   * @see {@link SupportedStyleProps.marginInlineEnd}
+   * @see {@link LonghandStyleProps.marginInlineEnd}
    */
-  marginRight?: SupportedStyleProps['marginInlineEnd'];
+  marginRight?: LonghandStyleProps['marginInlineEnd'];
 
   /**
    * Alias for setting `marginBlockStart`:
@@ -294,9 +305,9 @@ interface StylePropAliases {
    * marginBlockStart = props.marginBlockStart ?? props.marginTop ?? props.marginBlock ?? props.margin;
    * ```
    *
-   * @see {@link SupportedStyleProps.marginBlockStart}
+   * @see {@link LonghandStyleProps.marginBlockStart}
    */
-  marginTop?: SupportedStyleProps['marginBlockStart'];
+  marginTop?: LonghandStyleProps['marginBlockStart'];
 
   /**
    * Alias for setting `marginBlockStart` and `marginBlockEnd`:
@@ -306,10 +317,10 @@ interface StylePropAliases {
    * marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin;
    * ```
    *
-   * @see {@link SupportedStyleProps.marginBlockStart}
-   * @see {@link SupportedStyleProps.marginBlockEnd}
+   * @see {@link LonghandStyleProps.marginBlockStart}
+   * @see {@link LonghandStyleProps.marginBlockEnd}
    */
-  marginBlock?: SupportedStyleProps['marginBlockStart'];
+  marginBlock?: LonghandStyleProps['marginBlockStart'];
 
   /**
    * Alias for setting `marginBlockEnd`:
@@ -318,9 +329,9 @@ interface StylePropAliases {
    * marginBlockEnd = props.marginBlockEnd ?? props.marginBottom ?? props.marginBlock ?? props.margin;
    * ```
    *
-   * @see {@link SupportedStyleProps.marginBlockEnd}
+   * @see {@link LonghandStyleProps.marginBlockEnd}
    */
-  marginBottom?: SupportedStyleProps['marginBlockEnd'];
+  marginBottom?: LonghandStyleProps['marginBlockEnd'];
 
   /**
    * Alias for setting `inlineSize`:
@@ -329,9 +340,9 @@ interface StylePropAliases {
    * inlineSize = props.inlineSize ?? props.width ?? props.size;
    * ```
    *
-   * @see {@link SupportedStyleProps.inlineSize}
+   * @see {@link LonghandStyleProps.inlineSize}
    */
-  width?: SupportedStyleProps['inlineSize'];
+  width?: LonghandStyleProps['inlineSize'];
 
   /**
    * Alias for setting `inlineSize` and `blockSize`:
@@ -341,10 +352,10 @@ interface StylePropAliases {
    * blockSize = props.blockSize ?? props.height ?? props.size;
    * ```
    *
-   * @see {@link SupportedStyleProps.inlineSize}
-   * @see {@link SupportedStyleProps.blockSize}
+   * @see {@link LonghandStyleProps.inlineSize}
+   * @see {@link LonghandStyleProps.blockSize}
    */
-  size?: SupportedStyleProps['inlineSize'];
+  size?: LonghandStyleProps['inlineSize'];
 
   /**
    * Alias for setting `blockSize`:
@@ -353,9 +364,9 @@ interface StylePropAliases {
    * blockSize = props.blockSize ?? props.height ?? props.size;
    * ```
    *
-   * @see {@link SupportedStyleProps.blockSize}
+   * @see {@link LonghandStyleProps.blockSize}
    */
-  height?: SupportedStyleProps['blockSize'];
+  height?: LonghandStyleProps['blockSize'];
 
   /**
    * Alias for setting `minInlineSize`:
@@ -364,9 +375,9 @@ interface StylePropAliases {
    * minInlineSize = props.minInlineSize ?? props.minWidth ?? props.minSize;
    * ```
    *
-   * @see {@link SupportedStyleProps.minInlineSize}
+   * @see {@link LonghandStyleProps.minInlineSize}
    */
-  minWidth?: SupportedStyleProps['minInlineSize'];
+  minWidth?: LonghandStyleProps['minInlineSize'];
 
   /**
    * Alias for setting `minInlineSize` and `minBlockSize`:
@@ -376,11 +387,11 @@ interface StylePropAliases {
    * minBlockSize = props.minBlockSize ?? props.minHeight ?? props.minSize;
    * ```
    *
-   * @see {@link SupportedStyleProps.minInlineSize}
-   * @see {@link SupportedStyleProps.minBlockSize}
+   * @see {@link LonghandStyleProps.minInlineSize}
+   * @see {@link LonghandStyleProps.minBlockSize}
    */
   minSize?: Exclude<
-    SupportedStyleProps['minInlineSize'],
+    LonghandStyleProps['minInlineSize'],
     '-moz-fit-content'
   >;
 
@@ -391,9 +402,9 @@ interface StylePropAliases {
    * minBlockSize = props.minBlockSize ?? props.minHeight ?? props.minSize;
    * ```
    *
-   * @see {@link SupportedStyleProps.minBlockSize}
+   * @see {@link LonghandStyleProps.minBlockSize}
    */
-  minHeight?: SupportedStyleProps['minBlockSize'];
+  minHeight?: LonghandStyleProps['minBlockSize'];
 
   /**
    * Alias for setting `maxInlineSize`:
@@ -402,9 +413,9 @@ interface StylePropAliases {
    * maxInlineSize = props.maxInlineSize ?? props.maxWidth ?? props.maxSize;
    * ```
    *
-   * @see {@link SupportedStyleProps.maxInlineSize}
+   * @see {@link LonghandStyleProps.maxInlineSize}
    */
-  maxWidth?: SupportedStyleProps['maxInlineSize'];
+  maxWidth?: LonghandStyleProps['maxInlineSize'];
 
   /**
    * Alias for setting `maxInlineSize` and `maxBlockSize`:
@@ -414,11 +425,11 @@ interface StylePropAliases {
    * maxBlockSize = props.maxBlockSize ?? props.maxHeight ?? props.maxSize;
    * ```
    *
-   * @see {@link SupportedStyleProps.maxInlineSize}
-   * @see {@link SupportedStyleProps.maxBlockSize}
+   * @see {@link LonghandStyleProps.maxInlineSize}
+   * @see {@link LonghandStyleProps.maxBlockSize}
    */
   maxSize?: Exclude<
-    SupportedStyleProps['maxInlineSize'],
+    LonghandStyleProps['maxInlineSize'],
     '-moz-fit-content'
   >;
 
@@ -429,9 +440,9 @@ interface StylePropAliases {
    * maxBlockSize = props.maxBlockSize ?? props.maxHeight ?? props.maxSize;
    * ```
    *
-   * @see {@link SupportedStyleProps.maxBlockSize}
+   * @see {@link LonghandStyleProps.maxBlockSize}
    */
-  maxHeight?: SupportedStyleProps['maxBlockSize'];
+  maxHeight?: LonghandStyleProps['maxBlockSize'];
 
   /**
    * Alias for setting `containIntrinsicInlineSize`:
@@ -440,9 +451,9 @@ interface StylePropAliases {
    * containIntrinsicInlineSize = props.containIntrinsicInlineSize ?? props.containIntrinsicWidth ?? props.containIntrinsicSize;
    * ```
    *
-   * @see {@link SupportedStyleProps.containIntrinsicInlineSize}
+   * @see {@link LonghandStyleProps.containIntrinsicInlineSize}
    */
-  containIntrinsicWidth?: SupportedStyleProps['containIntrinsicInlineSize'];
+  containIntrinsicWidth?: LonghandStyleProps['containIntrinsicInlineSize'];
 
   /**
    * Alias for setting `containIntrinsicInlineSize` and `containIntrinsicBlockSize`:
@@ -452,10 +463,10 @@ interface StylePropAliases {
    * containIntrinsicBlockSize = props.containIntrinsicBlockSize ?? props.containIntrinsicHeight ?? props.containIntrinsicSize;
    * ```
    *
-   * @see {@link SupportedStyleProps.containIntrinsicInlineSize}
-   * @see {@link SupportedStyleProps.containIntrinsicBlockSize}
+   * @see {@link LonghandStyleProps.containIntrinsicInlineSize}
+   * @see {@link LonghandStyleProps.containIntrinsicBlockSize}
    */
-  containIntrinsicSize?: SupportedStyleProps['containIntrinsicInlineSize'];
+  containIntrinsicSize?: LonghandStyleProps['containIntrinsicInlineSize'];
 
   /**
    * Alias for setting `containIntrinsicBlockSize`:
@@ -464,44 +475,44 @@ interface StylePropAliases {
    * containIntrinsicBlockSize = props.containIntrinsicBlockSize ?? props.containIntrinsicHeight ?? props.containIntrinsicSize;
    * ```
    *
-   * @see {@link SupportedStyleProps.containIntrinsicBlockSize}
+   * @see {@link LonghandStyleProps.containIntrinsicBlockSize}
    */
-  containIntrinsicHeight?: SupportedStyleProps['containIntrinsicBlockSize'];
+  containIntrinsicHeight?: LonghandStyleProps['containIntrinsicBlockSize'];
 
   /**
-   * Alias for setting `overflowInline`:
+   * Alias for setting `overflowX`:
    *
    * ```
-   * overflowInline = props.overflowInline ?? props.overflowX ?? props.overflow;
+   * overflowX = props.overflowX ?? props.overflowInline ?? props.overflow;
    * ```
    *
-   * @see {@link SupportedStyleProps.overflowInline}
+   * @see {@link LonghandStyleProps.overflowX}
    */
-  overflowX?: SupportedStyleProps['overflowInline'];
+  overflowInline?: LonghandStyleProps['overflowX'];
 
   /**
-   * Alias for setting `overflowInline` and `overflowBlock`:
+   * Alias for setting `overflowX` and `overflowY`:
    *
    * ```
-   * overflowInline = props.overflowInline ?? props.overflowX ?? props.overflow;
-   * overflowBlock = props.overflowBlock ?? props.overflowY ?? props.overflow;
+   * overflowX = props.overflowX ?? props.overflowInline ?? props.overflow;
+   * overflowY = props.overflowY ?? props.overflowBlock ?? props.overflow;
    * ```
    *
-   * @see {@link SupportedStyleProps.overflowInline}
-   * @see {@link SupportedStyleProps.overflowBlock}
+   * @see {@link LonghandStyleProps.overflowX}
+   * @see {@link LonghandStyleProps.overflowY}
    */
-  overflow?: SupportedStyleProps['overflowInline'];
+  overflow?: LonghandStyleProps['overflowX'];
 
   /**
-   * Alias for setting `overflowBlock`:
+   * Alias for setting `overflowY`:
    *
    * ```
-   * overflowBlock = props.overflowBlock ?? props.overflowY ?? props.overflow;
+   * overflowY = props.overflowY ?? props.overflowBlock ?? props.overflow;
    * ```
    *
-   * @see {@link SupportedStyleProps.overflowBlock}
+   * @see {@link LonghandStyleProps.overflowY}
    */
-  overflowY?: SupportedStyleProps['overflowBlock'];
+  overflowBlock?: LonghandStyleProps['overflowY'];
 
   /**
    * Alias for setting `overscrollBehaviorInline`:
@@ -510,9 +521,9 @@ interface StylePropAliases {
    * overscrollBehaviorInline = props.overscrollBehaviorInline ?? props.overscrollBehaviorX ?? props.overscrollBehavior;
    * ```
    *
-   * @see {@link SupportedStyleProps.overscrollBehaviorInline}
+   * @see {@link LonghandStyleProps.overscrollBehaviorInline}
    */
-  overscrollBehaviorX?: SupportedStyleProps['overscrollBehaviorInline'];
+  overscrollBehaviorX?: LonghandStyleProps['overscrollBehaviorInline'];
 
   /**
    * Alias for setting `overscrollBehaviorInline` and `overscrollBehaviorBlock`:
@@ -522,10 +533,10 @@ interface StylePropAliases {
    * overscrollBehaviorBlock = props.overscrollBehaviorBlock ?? props.overscrollBehaviorY ?? props.overscrollBehavior;
    * ```
    *
-   * @see {@link SupportedStyleProps.overscrollBehaviorInline}
-   * @see {@link SupportedStyleProps.overscrollBehaviorBlock}
+   * @see {@link LonghandStyleProps.overscrollBehaviorInline}
+   * @see {@link LonghandStyleProps.overscrollBehaviorBlock}
    */
-  overscrollBehavior?: SupportedStyleProps['overscrollBehaviorInline'];
+  overscrollBehavior?: LonghandStyleProps['overscrollBehaviorInline'];
 
   /**
    * Alias for setting `overscrollBehaviorBlock`:
@@ -534,9 +545,9 @@ interface StylePropAliases {
    * overscrollBehaviorBlock = props.overscrollBehaviorBlock ?? props.overscrollBehaviorY ?? props.overscrollBehavior;
    * ```
    *
-   * @see {@link SupportedStyleProps.overscrollBehaviorBlock}
+   * @see {@link LonghandStyleProps.overscrollBehaviorBlock}
    */
-  overscrollBehaviorY?: SupportedStyleProps['overscrollBehaviorBlock'];
+  overscrollBehaviorY?: LonghandStyleProps['overscrollBehaviorBlock'];
 
   /**
    * Alias for setting `backgroundPositionX` and `backgroundPositionY`:
@@ -546,11 +557,11 @@ interface StylePropAliases {
    * backgroundPositionY = props.backgroundPositionY ?? props.backgroundPosition;
    * ```
    *
-   * @see {@link SupportedStyleProps.backgroundPositionX}
-   * @see {@link SupportedStyleProps.backgroundPositionY}
+   * @see {@link LonghandStyleProps.backgroundPositionX}
+   * @see {@link LonghandStyleProps.backgroundPositionY}
    */
   backgroundPosition?: Exclude<
-    SupportedStyleProps['backgroundPositionX'],
+    LonghandStyleProps['backgroundPositionX'],
     'left'
     | 'right'
     | 'x-end'
@@ -564,9 +575,9 @@ interface StylePropAliases {
    * borderStartStartRadius = props.borderStartStartRadius ?? props.borderTopLeftRadius ?? props.borderRadius;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderStartStartRadius}
+   * @see {@link LonghandStyleProps.borderStartStartRadius}
    */
-  borderTopLeftRadius?: SupportedStyleProps['borderStartStartRadius'];
+  borderTopLeftRadius?: LonghandStyleProps['borderStartStartRadius'];
 
   /**
    * Alias for setting `borderStartStartRadius`, `borderStartEndRadius`, `borderEndStartRadius` and `borderEndEndRadius`:
@@ -578,12 +589,12 @@ interface StylePropAliases {
    * borderEndEndRadius = props.borderEndEndRadius ?? props.borderBottomRightRadius ?? props.borderRadius;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderStartStartRadius}
-   * @see {@link SupportedStyleProps.borderStartEndRadius}
-   * @see {@link SupportedStyleProps.borderEndStartRadius}
-   * @see {@link SupportedStyleProps.borderEndEndRadius}
+   * @see {@link LonghandStyleProps.borderStartStartRadius}
+   * @see {@link LonghandStyleProps.borderStartEndRadius}
+   * @see {@link LonghandStyleProps.borderEndStartRadius}
+   * @see {@link LonghandStyleProps.borderEndEndRadius}
    */
-  borderRadius?: SupportedStyleProps['borderStartStartRadius'];
+  borderRadius?: LonghandStyleProps['borderStartStartRadius'];
 
   /**
    * Alias for setting `borderStartEndRadius`:
@@ -592,9 +603,9 @@ interface StylePropAliases {
    * borderStartEndRadius = props.borderStartEndRadius ?? props.borderTopRightRadius ?? props.borderRadius;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderStartEndRadius}
+   * @see {@link LonghandStyleProps.borderStartEndRadius}
    */
-  borderTopRightRadius?: SupportedStyleProps['borderStartEndRadius'];
+  borderTopRightRadius?: LonghandStyleProps['borderStartEndRadius'];
 
   /**
    * Alias for setting `borderEndStartRadius`:
@@ -603,9 +614,9 @@ interface StylePropAliases {
    * borderEndStartRadius = props.borderEndStartRadius ?? props.borderBottomLeftRadius ?? props.borderRadius;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderEndStartRadius}
+   * @see {@link LonghandStyleProps.borderEndStartRadius}
    */
-  borderBottomLeftRadius?: SupportedStyleProps['borderEndStartRadius'];
+  borderBottomLeftRadius?: LonghandStyleProps['borderEndStartRadius'];
 
   /**
    * Alias for setting `borderEndEndRadius`:
@@ -614,9 +625,9 @@ interface StylePropAliases {
    * borderEndEndRadius = props.borderEndEndRadius ?? props.borderBottomRightRadius ?? props.borderRadius;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderEndEndRadius}
+   * @see {@link LonghandStyleProps.borderEndEndRadius}
    */
-  borderBottomRightRadius?: SupportedStyleProps['borderEndEndRadius'];
+  borderBottomRightRadius?: LonghandStyleProps['borderEndEndRadius'];
 
   /**
    * Alias for setting `borderInlineStartColor`:
@@ -625,9 +636,9 @@ interface StylePropAliases {
    * borderInlineStartColor = props.borderInlineStartColor ?? props.borderLeftColor ?? props.borderInlineColor ?? props.borderColor;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineStartColor}
+   * @see {@link LonghandStyleProps.borderInlineStartColor}
    */
-  borderLeftColor?: SupportedStyleProps['borderInlineStartColor'];
+  borderLeftColor?: LonghandStyleProps['borderInlineStartColor'];
 
   /**
    * Alias for setting `borderInlineStartColor` and `borderInlineEndColor`:
@@ -637,10 +648,10 @@ interface StylePropAliases {
    * borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineStartColor}
-   * @see {@link SupportedStyleProps.borderInlineEndColor}
+   * @see {@link LonghandStyleProps.borderInlineStartColor}
+   * @see {@link LonghandStyleProps.borderInlineEndColor}
    */
-  borderInlineColor?: SupportedStyleProps['borderInlineStartColor'];
+  borderInlineColor?: LonghandStyleProps['borderInlineStartColor'];
 
   /**
    * Alias for setting `borderInlineStartColor`, `borderInlineEndColor`, `borderBlockStartColor` and `borderBlockEndColor`:
@@ -652,12 +663,12 @@ interface StylePropAliases {
    * borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineStartColor}
-   * @see {@link SupportedStyleProps.borderInlineEndColor}
-   * @see {@link SupportedStyleProps.borderBlockStartColor}
-   * @see {@link SupportedStyleProps.borderBlockEndColor}
+   * @see {@link LonghandStyleProps.borderInlineStartColor}
+   * @see {@link LonghandStyleProps.borderInlineEndColor}
+   * @see {@link LonghandStyleProps.borderBlockStartColor}
+   * @see {@link LonghandStyleProps.borderBlockEndColor}
    */
-  borderColor?: SupportedStyleProps['borderInlineStartColor'];
+  borderColor?: LonghandStyleProps['borderInlineStartColor'];
 
   /**
    * Alias for setting `borderInlineEndColor`:
@@ -666,9 +677,9 @@ interface StylePropAliases {
    * borderInlineEndColor = props.borderInlineEndColor ?? props.borderRightColor ?? props.borderInlineColor ?? props.borderColor;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineEndColor}
+   * @see {@link LonghandStyleProps.borderInlineEndColor}
    */
-  borderRightColor?: SupportedStyleProps['borderInlineEndColor'];
+  borderRightColor?: LonghandStyleProps['borderInlineEndColor'];
 
   /**
    * Alias for setting `borderBlockStartColor`:
@@ -677,9 +688,9 @@ interface StylePropAliases {
    * borderBlockStartColor = props.borderBlockStartColor ?? props.borderTopColor ?? props.borderBlockColor ?? props.borderColor;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderBlockStartColor}
+   * @see {@link LonghandStyleProps.borderBlockStartColor}
    */
-  borderTopColor?: SupportedStyleProps['borderBlockStartColor'];
+  borderTopColor?: LonghandStyleProps['borderBlockStartColor'];
 
   /**
    * Alias for setting `borderBlockStartColor` and `borderBlockEndColor`:
@@ -689,10 +700,10 @@ interface StylePropAliases {
    * borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderBlockStartColor}
-   * @see {@link SupportedStyleProps.borderBlockEndColor}
+   * @see {@link LonghandStyleProps.borderBlockStartColor}
+   * @see {@link LonghandStyleProps.borderBlockEndColor}
    */
-  borderBlockColor?: SupportedStyleProps['borderBlockStartColor'];
+  borderBlockColor?: LonghandStyleProps['borderBlockStartColor'];
 
   /**
    * Alias for setting `borderBlockEndColor`:
@@ -701,9 +712,9 @@ interface StylePropAliases {
    * borderBlockEndColor = props.borderBlockEndColor ?? props.borderBottomColor ?? props.borderBlockColor ?? props.borderColor;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderBlockEndColor}
+   * @see {@link LonghandStyleProps.borderBlockEndColor}
    */
-  borderBottomColor?: SupportedStyleProps['borderBlockEndColor'];
+  borderBottomColor?: LonghandStyleProps['borderBlockEndColor'];
 
   /**
    * Alias for setting `borderInlineStartStyle`:
@@ -712,9 +723,9 @@ interface StylePropAliases {
    * borderInlineStartStyle = props.borderInlineStartStyle ?? props.borderLeftStyle ?? props.borderInlineStyle ?? props.borderStyle;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineStartStyle}
+   * @see {@link LonghandStyleProps.borderInlineStartStyle}
    */
-  borderLeftStyle?: SupportedStyleProps['borderInlineStartStyle'];
+  borderLeftStyle?: LonghandStyleProps['borderInlineStartStyle'];
 
   /**
    * Alias for setting `borderInlineStartStyle` and `borderInlineEndStyle`:
@@ -724,10 +735,10 @@ interface StylePropAliases {
    * borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineStartStyle}
-   * @see {@link SupportedStyleProps.borderInlineEndStyle}
+   * @see {@link LonghandStyleProps.borderInlineStartStyle}
+   * @see {@link LonghandStyleProps.borderInlineEndStyle}
    */
-  borderInlineStyle?: SupportedStyleProps['borderInlineStartStyle'];
+  borderInlineStyle?: LonghandStyleProps['borderInlineStartStyle'];
 
   /**
    * Alias for setting `borderInlineStartStyle`, `borderInlineEndStyle`, `borderBlockStartStyle` and `borderBlockEndStyle`:
@@ -739,12 +750,12 @@ interface StylePropAliases {
    * borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineStartStyle}
-   * @see {@link SupportedStyleProps.borderInlineEndStyle}
-   * @see {@link SupportedStyleProps.borderBlockStartStyle}
-   * @see {@link SupportedStyleProps.borderBlockEndStyle}
+   * @see {@link LonghandStyleProps.borderInlineStartStyle}
+   * @see {@link LonghandStyleProps.borderInlineEndStyle}
+   * @see {@link LonghandStyleProps.borderBlockStartStyle}
+   * @see {@link LonghandStyleProps.borderBlockEndStyle}
    */
-  borderStyle?: SupportedStyleProps['borderInlineStartStyle'];
+  borderStyle?: LonghandStyleProps['borderInlineStartStyle'];
 
   /**
    * Alias for setting `borderInlineEndStyle`:
@@ -753,9 +764,9 @@ interface StylePropAliases {
    * borderInlineEndStyle = props.borderInlineEndStyle ?? props.borderRightStyle ?? props.borderInlineStyle ?? props.borderStyle;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineEndStyle}
+   * @see {@link LonghandStyleProps.borderInlineEndStyle}
    */
-  borderRightStyle?: SupportedStyleProps['borderInlineEndStyle'];
+  borderRightStyle?: LonghandStyleProps['borderInlineEndStyle'];
 
   /**
    * Alias for setting `borderBlockStartStyle`:
@@ -764,9 +775,9 @@ interface StylePropAliases {
    * borderBlockStartStyle = props.borderBlockStartStyle ?? props.borderTopStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderBlockStartStyle}
+   * @see {@link LonghandStyleProps.borderBlockStartStyle}
    */
-  borderTopStyle?: SupportedStyleProps['borderBlockStartStyle'];
+  borderTopStyle?: LonghandStyleProps['borderBlockStartStyle'];
 
   /**
    * Alias for setting `borderBlockStartStyle` and `borderBlockEndStyle`:
@@ -776,10 +787,10 @@ interface StylePropAliases {
    * borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderBlockStartStyle}
-   * @see {@link SupportedStyleProps.borderBlockEndStyle}
+   * @see {@link LonghandStyleProps.borderBlockStartStyle}
+   * @see {@link LonghandStyleProps.borderBlockEndStyle}
    */
-  borderBlockStyle?: SupportedStyleProps['borderBlockStartStyle'];
+  borderBlockStyle?: LonghandStyleProps['borderBlockStartStyle'];
 
   /**
    * Alias for setting `borderBlockEndStyle`:
@@ -788,9 +799,9 @@ interface StylePropAliases {
    * borderBlockEndStyle = props.borderBlockEndStyle ?? props.borderBottomStyle ?? props.borderBlockStyle ?? props.borderStyle;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderBlockEndStyle}
+   * @see {@link LonghandStyleProps.borderBlockEndStyle}
    */
-  borderBottomStyle?: SupportedStyleProps['borderBlockEndStyle'];
+  borderBottomStyle?: LonghandStyleProps['borderBlockEndStyle'];
 
   /**
    * Alias for setting `borderInlineStartWidth`:
@@ -799,9 +810,9 @@ interface StylePropAliases {
    * borderInlineStartWidth = props.borderInlineStartWidth ?? props.borderLeftWidth ?? props.borderInlineWidth ?? props.borderWidth;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineStartWidth}
+   * @see {@link LonghandStyleProps.borderInlineStartWidth}
    */
-  borderLeftWidth?: SupportedStyleProps['borderInlineStartWidth'];
+  borderLeftWidth?: LonghandStyleProps['borderInlineStartWidth'];
 
   /**
    * Alias for setting `borderInlineStartWidth` and `borderInlineEndWidth`:
@@ -811,10 +822,10 @@ interface StylePropAliases {
    * borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineStartWidth}
-   * @see {@link SupportedStyleProps.borderInlineEndWidth}
+   * @see {@link LonghandStyleProps.borderInlineStartWidth}
+   * @see {@link LonghandStyleProps.borderInlineEndWidth}
    */
-  borderInlineWidth?: SupportedStyleProps['borderInlineStartWidth'];
+  borderInlineWidth?: LonghandStyleProps['borderInlineStartWidth'];
 
   /**
    * Alias for setting `borderInlineStartWidth`, `borderInlineEndWidth`, `borderBlockStartWidth` and `borderBlockEndWidth`:
@@ -826,12 +837,12 @@ interface StylePropAliases {
    * borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineStartWidth}
-   * @see {@link SupportedStyleProps.borderInlineEndWidth}
-   * @see {@link SupportedStyleProps.borderBlockStartWidth}
-   * @see {@link SupportedStyleProps.borderBlockEndWidth}
+   * @see {@link LonghandStyleProps.borderInlineStartWidth}
+   * @see {@link LonghandStyleProps.borderInlineEndWidth}
+   * @see {@link LonghandStyleProps.borderBlockStartWidth}
+   * @see {@link LonghandStyleProps.borderBlockEndWidth}
    */
-  borderWidth?: SupportedStyleProps['borderInlineStartWidth'];
+  borderWidth?: LonghandStyleProps['borderInlineStartWidth'];
 
   /**
    * Alias for setting `borderInlineEndWidth`:
@@ -840,9 +851,9 @@ interface StylePropAliases {
    * borderInlineEndWidth = props.borderInlineEndWidth ?? props.borderRightWidth ?? props.borderInlineWidth ?? props.borderWidth;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderInlineEndWidth}
+   * @see {@link LonghandStyleProps.borderInlineEndWidth}
    */
-  borderRightWidth?: SupportedStyleProps['borderInlineEndWidth'];
+  borderRightWidth?: LonghandStyleProps['borderInlineEndWidth'];
 
   /**
    * Alias for setting `borderBlockStartWidth`:
@@ -851,9 +862,9 @@ interface StylePropAliases {
    * borderBlockStartWidth = props.borderBlockStartWidth ?? props.borderTopWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderBlockStartWidth}
+   * @see {@link LonghandStyleProps.borderBlockStartWidth}
    */
-  borderTopWidth?: SupportedStyleProps['borderBlockStartWidth'];
+  borderTopWidth?: LonghandStyleProps['borderBlockStartWidth'];
 
   /**
    * Alias for setting `borderBlockStartWidth` and `borderBlockEndWidth`:
@@ -863,10 +874,10 @@ interface StylePropAliases {
    * borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderBlockStartWidth}
-   * @see {@link SupportedStyleProps.borderBlockEndWidth}
+   * @see {@link LonghandStyleProps.borderBlockStartWidth}
+   * @see {@link LonghandStyleProps.borderBlockEndWidth}
    */
-  borderBlockWidth?: SupportedStyleProps['borderBlockStartWidth'];
+  borderBlockWidth?: LonghandStyleProps['borderBlockStartWidth'];
 
   /**
    * Alias for setting `borderBlockEndWidth`:
@@ -875,9 +886,9 @@ interface StylePropAliases {
    * borderBlockEndWidth = props.borderBlockEndWidth ?? props.borderBottomWidth ?? props.borderBlockWidth ?? props.borderWidth;
    * ```
    *
-   * @see {@link SupportedStyleProps.borderBlockEndWidth}
+   * @see {@link LonghandStyleProps.borderBlockEndWidth}
    */
-  borderBottomWidth?: SupportedStyleProps['borderBlockEndWidth'];
+  borderBottomWidth?: LonghandStyleProps['borderBlockEndWidth'];
 
   /**
    * Alias for setting `insetInlineStart`:
@@ -886,9 +897,9 @@ interface StylePropAliases {
    * insetInlineStart = props.insetInlineStart ?? props.left ?? props.insetInline ?? props.inset;
    * ```
    *
-   * @see {@link SupportedStyleProps.insetInlineStart}
+   * @see {@link LonghandStyleProps.insetInlineStart}
    */
-  left?: SupportedStyleProps['insetInlineStart'];
+  left?: LonghandStyleProps['insetInlineStart'];
 
   /**
    * Alias for setting `insetInlineStart` and `insetInlineEnd`:
@@ -898,10 +909,10 @@ interface StylePropAliases {
    * insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset;
    * ```
    *
-   * @see {@link SupportedStyleProps.insetInlineStart}
-   * @see {@link SupportedStyleProps.insetInlineEnd}
+   * @see {@link LonghandStyleProps.insetInlineStart}
+   * @see {@link LonghandStyleProps.insetInlineEnd}
    */
-  insetInline?: SupportedStyleProps['insetInlineStart'];
+  insetInline?: LonghandStyleProps['insetInlineStart'];
 
   /**
    * Alias for setting `insetInlineStart`, `insetInlineEnd`, `insetBlockStart` and `insetBlockEnd`:
@@ -913,12 +924,12 @@ interface StylePropAliases {
    * insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset;
    * ```
    *
-   * @see {@link SupportedStyleProps.insetInlineStart}
-   * @see {@link SupportedStyleProps.insetInlineEnd}
-   * @see {@link SupportedStyleProps.insetBlockStart}
-   * @see {@link SupportedStyleProps.insetBlockEnd}
+   * @see {@link LonghandStyleProps.insetInlineStart}
+   * @see {@link LonghandStyleProps.insetInlineEnd}
+   * @see {@link LonghandStyleProps.insetBlockStart}
+   * @see {@link LonghandStyleProps.insetBlockEnd}
    */
-  inset?: SupportedStyleProps['insetInlineStart'];
+  inset?: LonghandStyleProps['insetInlineStart'];
 
   /**
    * Alias for setting `insetInlineEnd`:
@@ -927,9 +938,9 @@ interface StylePropAliases {
    * insetInlineEnd = props.insetInlineEnd ?? props.right ?? props.insetInline ?? props.inset;
    * ```
    *
-   * @see {@link SupportedStyleProps.insetInlineEnd}
+   * @see {@link LonghandStyleProps.insetInlineEnd}
    */
-  right?: SupportedStyleProps['insetInlineEnd'];
+  right?: LonghandStyleProps['insetInlineEnd'];
 
   /**
    * Alias for setting `insetBlockStart`:
@@ -938,9 +949,9 @@ interface StylePropAliases {
    * insetBlockStart = props.insetBlockStart ?? props.top ?? props.insetBlock ?? props.inset;
    * ```
    *
-   * @see {@link SupportedStyleProps.insetBlockStart}
+   * @see {@link LonghandStyleProps.insetBlockStart}
    */
-  top?: SupportedStyleProps['insetBlockStart'];
+  top?: LonghandStyleProps['insetBlockStart'];
 
   /**
    * Alias for setting `insetBlockStart` and `insetBlockEnd`:
@@ -950,10 +961,10 @@ interface StylePropAliases {
    * insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset;
    * ```
    *
-   * @see {@link SupportedStyleProps.insetBlockStart}
-   * @see {@link SupportedStyleProps.insetBlockEnd}
+   * @see {@link LonghandStyleProps.insetBlockStart}
+   * @see {@link LonghandStyleProps.insetBlockEnd}
    */
-  insetBlock?: SupportedStyleProps['insetBlockStart'];
+  insetBlock?: LonghandStyleProps['insetBlockStart'];
 
   /**
    * Alias for setting `insetBlockEnd`:
@@ -962,9 +973,9 @@ interface StylePropAliases {
    * insetBlockEnd = props.insetBlockEnd ?? props.bottom ?? props.insetBlock ?? props.inset;
    * ```
    *
-   * @see {@link SupportedStyleProps.insetBlockEnd}
+   * @see {@link LonghandStyleProps.insetBlockEnd}
    */
-  bottom?: SupportedStyleProps['insetBlockEnd'];
+  bottom?: LonghandStyleProps['insetBlockEnd'];
 
   /**
    * Alias for setting `scrollPaddingInlineStart`:
@@ -973,9 +984,9 @@ interface StylePropAliases {
    * scrollPaddingInlineStart = props.scrollPaddingInlineStart ?? props.scrollPaddingLeft ?? props.scrollPaddingInline ?? props.scrollPadding;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollPaddingInlineStart}
+   * @see {@link LonghandStyleProps.scrollPaddingInlineStart}
    */
-  scrollPaddingLeft?: SupportedStyleProps['scrollPaddingInlineStart'];
+  scrollPaddingLeft?: LonghandStyleProps['scrollPaddingInlineStart'];
 
   /**
    * Alias for setting `scrollPaddingInlineStart` and `scrollPaddingInlineEnd`:
@@ -985,10 +996,10 @@ interface StylePropAliases {
    * scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollPaddingInlineStart}
-   * @see {@link SupportedStyleProps.scrollPaddingInlineEnd}
+   * @see {@link LonghandStyleProps.scrollPaddingInlineStart}
+   * @see {@link LonghandStyleProps.scrollPaddingInlineEnd}
    */
-  scrollPaddingInline?: SupportedStyleProps['scrollPaddingInlineStart'];
+  scrollPaddingInline?: LonghandStyleProps['scrollPaddingInlineStart'];
 
   /**
    * Alias for setting `scrollPaddingInlineStart`, `scrollPaddingInlineEnd`, `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`:
@@ -1000,12 +1011,12 @@ interface StylePropAliases {
    * scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollPaddingInlineStart}
-   * @see {@link SupportedStyleProps.scrollPaddingInlineEnd}
-   * @see {@link SupportedStyleProps.scrollPaddingBlockStart}
-   * @see {@link SupportedStyleProps.scrollPaddingBlockEnd}
+   * @see {@link LonghandStyleProps.scrollPaddingInlineStart}
+   * @see {@link LonghandStyleProps.scrollPaddingInlineEnd}
+   * @see {@link LonghandStyleProps.scrollPaddingBlockStart}
+   * @see {@link LonghandStyleProps.scrollPaddingBlockEnd}
    */
-  scrollPadding?: SupportedStyleProps['scrollPaddingInlineStart'];
+  scrollPadding?: LonghandStyleProps['scrollPaddingInlineStart'];
 
   /**
    * Alias for setting `scrollPaddingInlineEnd`:
@@ -1014,9 +1025,9 @@ interface StylePropAliases {
    * scrollPaddingInlineEnd = props.scrollPaddingInlineEnd ?? props.scrollPaddingRight ?? props.scrollPaddingInline ?? props.scrollPadding;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollPaddingInlineEnd}
+   * @see {@link LonghandStyleProps.scrollPaddingInlineEnd}
    */
-  scrollPaddingRight?: SupportedStyleProps['scrollPaddingInlineEnd'];
+  scrollPaddingRight?: LonghandStyleProps['scrollPaddingInlineEnd'];
 
   /**
    * Alias for setting `scrollPaddingBlockStart`:
@@ -1025,9 +1036,9 @@ interface StylePropAliases {
    * scrollPaddingBlockStart = props.scrollPaddingBlockStart ?? props.scrollPaddingTop ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollPaddingBlockStart}
+   * @see {@link LonghandStyleProps.scrollPaddingBlockStart}
    */
-  scrollPaddingTop?: SupportedStyleProps['scrollPaddingBlockStart'];
+  scrollPaddingTop?: LonghandStyleProps['scrollPaddingBlockStart'];
 
   /**
    * Alias for setting `scrollPaddingBlockStart` and `scrollPaddingBlockEnd`:
@@ -1037,10 +1048,10 @@ interface StylePropAliases {
    * scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollPaddingBlockStart}
-   * @see {@link SupportedStyleProps.scrollPaddingBlockEnd}
+   * @see {@link LonghandStyleProps.scrollPaddingBlockStart}
+   * @see {@link LonghandStyleProps.scrollPaddingBlockEnd}
    */
-  scrollPaddingBlock?: SupportedStyleProps['scrollPaddingBlockStart'];
+  scrollPaddingBlock?: LonghandStyleProps['scrollPaddingBlockStart'];
 
   /**
    * Alias for setting `scrollPaddingBlockEnd`:
@@ -1049,9 +1060,9 @@ interface StylePropAliases {
    * scrollPaddingBlockEnd = props.scrollPaddingBlockEnd ?? props.scrollPaddingBottom ?? props.scrollPaddingBlock ?? props.scrollPadding;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollPaddingBlockEnd}
+   * @see {@link LonghandStyleProps.scrollPaddingBlockEnd}
    */
-  scrollPaddingBottom?: SupportedStyleProps['scrollPaddingBlockEnd'];
+  scrollPaddingBottom?: LonghandStyleProps['scrollPaddingBlockEnd'];
 
   /**
    * Alias for setting `scrollMarginInlineStart`:
@@ -1060,9 +1071,9 @@ interface StylePropAliases {
    * scrollMarginInlineStart = props.scrollMarginInlineStart ?? props.scrollMarginLeft ?? props.scrollMarginInline ?? props.scrollMargin;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollMarginInlineStart}
+   * @see {@link LonghandStyleProps.scrollMarginInlineStart}
    */
-  scrollMarginLeft?: SupportedStyleProps['scrollMarginInlineStart'];
+  scrollMarginLeft?: LonghandStyleProps['scrollMarginInlineStart'];
 
   /**
    * Alias for setting `scrollMarginInlineStart` and `scrollMarginInlineEnd`:
@@ -1072,10 +1083,10 @@ interface StylePropAliases {
    * scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollMarginInlineStart}
-   * @see {@link SupportedStyleProps.scrollMarginInlineEnd}
+   * @see {@link LonghandStyleProps.scrollMarginInlineStart}
+   * @see {@link LonghandStyleProps.scrollMarginInlineEnd}
    */
-  scrollMarginInline?: SupportedStyleProps['scrollMarginInlineStart'];
+  scrollMarginInline?: LonghandStyleProps['scrollMarginInlineStart'];
 
   /**
    * Alias for setting `scrollMarginInlineStart`, `scrollMarginInlineEnd`, `scrollMarginBlockStart` and `scrollMarginBlockEnd`:
@@ -1087,12 +1098,12 @@ interface StylePropAliases {
    * scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollMarginInlineStart}
-   * @see {@link SupportedStyleProps.scrollMarginInlineEnd}
-   * @see {@link SupportedStyleProps.scrollMarginBlockStart}
-   * @see {@link SupportedStyleProps.scrollMarginBlockEnd}
+   * @see {@link LonghandStyleProps.scrollMarginInlineStart}
+   * @see {@link LonghandStyleProps.scrollMarginInlineEnd}
+   * @see {@link LonghandStyleProps.scrollMarginBlockStart}
+   * @see {@link LonghandStyleProps.scrollMarginBlockEnd}
    */
-  scrollMargin?: SupportedStyleProps['scrollMarginInlineStart'];
+  scrollMargin?: LonghandStyleProps['scrollMarginInlineStart'];
 
   /**
    * Alias for setting `scrollMarginInlineEnd`:
@@ -1101,9 +1112,9 @@ interface StylePropAliases {
    * scrollMarginInlineEnd = props.scrollMarginInlineEnd ?? props.scrollMarginRight ?? props.scrollMarginInline ?? props.scrollMargin;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollMarginInlineEnd}
+   * @see {@link LonghandStyleProps.scrollMarginInlineEnd}
    */
-  scrollMarginRight?: SupportedStyleProps['scrollMarginInlineEnd'];
+  scrollMarginRight?: LonghandStyleProps['scrollMarginInlineEnd'];
 
   /**
    * Alias for setting `scrollMarginBlockStart`:
@@ -1112,9 +1123,9 @@ interface StylePropAliases {
    * scrollMarginBlockStart = props.scrollMarginBlockStart ?? props.scrollMarginTop ?? props.scrollMarginBlock ?? props.scrollMargin;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollMarginBlockStart}
+   * @see {@link LonghandStyleProps.scrollMarginBlockStart}
    */
-  scrollMarginTop?: SupportedStyleProps['scrollMarginBlockStart'];
+  scrollMarginTop?: LonghandStyleProps['scrollMarginBlockStart'];
 
   /**
    * Alias for setting `scrollMarginBlockStart` and `scrollMarginBlockEnd`:
@@ -1124,10 +1135,10 @@ interface StylePropAliases {
    * scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollMarginBlockStart}
-   * @see {@link SupportedStyleProps.scrollMarginBlockEnd}
+   * @see {@link LonghandStyleProps.scrollMarginBlockStart}
+   * @see {@link LonghandStyleProps.scrollMarginBlockEnd}
    */
-  scrollMarginBlock?: SupportedStyleProps['scrollMarginBlockStart'];
+  scrollMarginBlock?: LonghandStyleProps['scrollMarginBlockStart'];
 
   /**
    * Alias for setting `scrollMarginBlockEnd`:
@@ -1136,9 +1147,9 @@ interface StylePropAliases {
    * scrollMarginBlockEnd = props.scrollMarginBlockEnd ?? props.scrollMarginBottom ?? props.scrollMarginBlock ?? props.scrollMargin;
    * ```
    *
-   * @see {@link SupportedStyleProps.scrollMarginBlockEnd}
+   * @see {@link LonghandStyleProps.scrollMarginBlockEnd}
    */
-  scrollMarginBottom?: SupportedStyleProps['scrollMarginBlockEnd'];
+  scrollMarginBottom?: LonghandStyleProps['scrollMarginBlockEnd'];
 
   /**
    * Alias for setting `justifyItems`:
@@ -1147,9 +1158,9 @@ interface StylePropAliases {
    * justifyItems = props.justifyItems ?? props.justify;
    * ```
    *
-   * @see {@link SupportedStyleProps.justifyItems}
+   * @see {@link LonghandStyleProps.justifyItems}
    */
-  justify?: SupportedStyleProps['justifyItems'];
+  justify?: LonghandStyleProps['justifyItems'];
 
   /**
    * Alias for setting `alignItems`:
@@ -1158,9 +1169,9 @@ interface StylePropAliases {
    * alignItems = props.alignItems ?? props.align;
    * ```
    *
-   * @see {@link SupportedStyleProps.alignItems}
+   * @see {@link LonghandStyleProps.alignItems}
    */
-  align?: SupportedStyleProps['alignItems'];
+  align?: LonghandStyleProps['alignItems'];
 };
 
 /**
@@ -1233,6 +1244,8 @@ type DisallowedStandardLonghandProperties = 'width'
   | 'mathStyle'
   | 'mathShift'
   | 'mathDepth'
+  | 'overflowInline'
+  | 'overflowBlock'
   | 'paddingLeft'
   | 'paddingRight'
   | 'paddingTop'
@@ -1249,8 +1262,8 @@ type DisallowedStandardLonghandProperties = 'width'
   | 'maxHeight'
   | 'containIntrinsicWidth'
   | 'containIntrinsicHeight'
-  | 'overflowX'
-  | 'overflowY'
+  | 'overflowInline'
+  | 'overflowBlock'
   | 'overscrollBehaviorX'
   | 'overscrollBehaviorY'
   | 'borderTopLeftRadius'
@@ -1313,8 +1326,8 @@ export const stylePropAliasFallbacks = {
   maxBlockSize: ["maxHeight","maxSize"],
   containIntrinsicInlineSize: ["containIntrinsicWidth","containIntrinsicSize"],
   containIntrinsicBlockSize: ["containIntrinsicHeight","containIntrinsicSize"],
-  overflowInline: ["overflowX","overflow"],
-  overflowBlock: ["overflowY","overflow"],
+  overflowX: ["overflowInline","overflow"],
+  overflowY: ["overflowBlock","overflow"],
   overscrollBehaviorInline: ["overscrollBehaviorX","overscrollBehavior"],
   overscrollBehaviorBlock: ["overscrollBehaviorY","overscrollBehavior"],
   backgroundPositionX: ["backgroundPosition"],
@@ -1389,8 +1402,10 @@ export const stylePropDefaults = {
  * literal in our types holistically for every style property.
  */
 export const disallowedCSSPropertyValues = [
+  "unset",
   "inherit",
   "initial",
+  "revert",
   "-moz-initial"
 ] satisfies Globals[];
 
@@ -1478,3 +1493,7 @@ export const stylePropTokenGroupMap = {
   borderBlockWidth: "border-width",
   borderBottomWidth: "border-width",
 } as const;
+
+export const cssCustomPropertyNamespace = "⅀";
+
+export const modifiers = ["_hover","_visited"] as const;
