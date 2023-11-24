@@ -27,7 +27,7 @@
     border-top: 1px solid var(--p-color-border);
 
     button {
-      --button-min-height: 28px;
+      --button-min-height: var(--p-height-700);
       background-color: var(--p-color-bg-surface-secondary);
       min-height: var(--button-min-height);
       min-width: var(--button-min-height);
