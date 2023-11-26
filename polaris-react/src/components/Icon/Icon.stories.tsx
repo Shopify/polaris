@@ -82,6 +82,14 @@ export function Colored() {
         Text Magic tone
       </Text>
       <Icon source={CirclePlusMinor} tone="textMagic" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        Placeholder
+      </Text>
+      <Icon source="placeholder" />
+      <Text as="p" variant="bodyMd" alignment="center">
+        External icon
+      </Text>
+      <Icon source="https://polaris.shopify.com/images/shopify-logo.svg" />
     </BlockStack>
   );
 }
