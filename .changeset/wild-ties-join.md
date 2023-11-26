@@ -8,6 +8,8 @@ This is a major update for `polaris-icons`. Please use the migration to update i
 npx @shopify/polaris-migrator icons-v8-update-names <path>
 ```
 
+All icon fill values are replaced with `currentColor`. If you are using the `<Icon>` component you will not see a change.
+
 Removed Major and Minor icon sizing. All icons are the same size.
 
 Updated icon design for `JobsIcon`, `JobsFilledIcon`, `AutomationIcon`, `AutomationFilledIcon`, `GiftCardIcon`, `InventoryFilledIcon`, `ReportsIcon`, `ShipmentFilledIcon`, `AppsFilledIcon`, `MarketsIcon`, `MarketsFilledIcon`, `BillingStatementDollarFilledIcon`, `BillingStatementEuroFilledIcon`, `BillingStatementPoundFilledIcon`, `BillingStatementRupeeFilledIcon`, `BillingStatementYenFilledIcon`, `LegalFilledIcon`, `IdentityCardIcon`, `IdentityCardFilledIcon`, `DomainsIcon`, `DomainNewIcon`, `DomainsFilledIcon`, `StoreIcon`, `StoreOnlineIcon`, `ManagedStoreIcon`, `ImportStoreIcon`, `TaxIcon`, `TaxFilledIcon`, `PackageFilledIcon`, `LocationIcon`, `LocationFilledIcon`, `InactiveLocationIcon`, `PinIcon`, `GlobeIcon`, `TransportIcon`, `NatureIcon`, `FoodIcon`, `ColorsIcon`
