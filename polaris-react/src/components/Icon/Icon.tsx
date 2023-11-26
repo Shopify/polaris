@@ -45,17 +45,6 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
     sourceType = 'external';
   }
 
-  if (
-    tone &&
-    sourceType === 'external' &&
-    process.env.NODE_ENV === 'development'
-  ) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Recoloring external SVGs is not supported. Set the intended color on your SVG instead.',
-    );
-  }
-
   const className = classNames(
     styles.Icon,
     tone && styles[variationName('tone', tone)],
@@ -64,17 +53,10 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
 
   const SourceComponent = source;
   const contentMarkup = {
-    function: (
-      <SourceComponent
-        className={styles.Svg}
-        focusable="false"
-        aria-hidden="true"
-      />
-    ),
+    function: <SourceComponent focusable="false" aria-hidden="true" />,
     placeholder: <div className={styles.Placeholder} />,
     external: (
       <img
-        className={styles.Img}
         src={`data:image/svg+xml;utf8,${source}`}
         alt=""
         aria-hidden="true"
