@@ -30,8 +30,6 @@ const positionalCSSProperties = [
   'borderRightWidth',
   'borderBottomWidth',
   'borderLeftWidth',
-  'overflowX',
-  'overflowY',
   'overscrollBehaviorX',
   'overscrollBehaviorY',
   'scrollPaddingTop',
