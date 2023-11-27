@@ -320,11 +320,6 @@ const getCustomPropertyForStyleProp = (
 /*
  * NOTES:
  * - Works because we do mobile first with (min-width) queries
- * - The final value in the var fallbacks is always the `xs` size
- * - `xs` default value is `unset`
- * - No special cases needed for 'inherit' values (color et al) because the
- *   default of `xs = unset` applied directly to the property means the browser
- *   can decide if it's inherit or not.
  * - Alias fallbacks are applied _before_ default values
  *
  * QUESTIONS:
@@ -344,7 +339,7 @@ const getCustomPropertyForStyleProp = (
  * `display={{ sm: 'flex' }}`
  * ```
  * --pc-box-display-sm: var(--_sm) flex;
- * display: var(--pc-box-display-sm, unset);
+ * display: var(--pc-box-display-sm);
  * ```
  *
  * // `xs` and another responsive value
@@ -359,7 +354,7 @@ const getCustomPropertyForStyleProp = (
  * ```
  * --pc-box-display-md: var(--_md) grid;
  * --pc-box-display-lg: var(--_lg) flex;
- * display: var(--pc-box-display-lg, var(--pc-box-display-md, unset));
+ * display: var(--pc-box-display-lg, var(--pc-box-display-md));
  * ```
  *
  * // Multiple resopnsive values with gaps
@@ -367,7 +362,7 @@ const getCustomPropertyForStyleProp = (
  * ```
  * --pc-box-display-sm: var(--_sm) grid;
  * --pc-box-display-xl: var(--_xl) flex;
- * display: var(--pc-box-display-xl, var(--pc-box-display-sm, unset));
+ * display: var(--pc-box-display-xl, var(--pc-box-display-sm));
  * ```
  */
 function convertStylePropsToCSSProperties(
@@ -531,52 +526,6 @@ function convertStylePropsToCSSProperties(
     // to a concrete value or `initial`, we stop the browser walking up the DOM
     // tree to find other definitions of our custom property, and hence have
     // scopped that property to this DOM node.
-    //
-    // ---
-    //
-    // So, why do we use `unset` insetad of `initial`?
-    // To have the browser decide if a CSS declaration's value should be
-    // inherited via the cascade or not:
-    //
-    // ```
-    // --colorVal: initial;
-    // color: var(--colorVal, unset)
-    // ```
-    //
-    // The browser will follow these steps:
-    //
-    // 1. Resolve `--colorVal` to the concrete value of `initial` (will not go
-    //    looking at parent DOM nodes, retaining our style encapsulation).
-    // 2. Because `initial` is equalivalent to the "Guaranteed-invalid value",
-    //    it will process the fallback value, resultin in the `var()` resolving
-    //    to `unset`.
-    // 2. Convert `unset` to be either `initial` or `inherit` as the value to
-    //    the CSS declaration. In this case, `color` is inherited, so the
-    //    example above is equivalent to `color: inherit`.
-    //
-    // Of note about `unset` is its behaviour when used as the value of a CSS
-    // custom property:
-    //
-    // ```
-    // --colorVal: unset;
-    // color: var(--colorVal);
-    // ```
-    //
-    // The first line will instruct the browser to un-set the CSS custom
-    // property `--colorVal` (as if no value was ever set on it). So when it
-    // comes to process the `var(--colorVal)`, the resolved value is _not_
-    // `unset`, but rather the Guaranteed-invalid value.
-    //
-    // On the surface this seems fine, as the `color` declaration then becomes
-    // invalid, and the browser will fallback to `inherit` for this DOM node.
-    //
-    // However, when there exists a parent DOM node which _does_ specify a
-    // concrete value (including `initial`) for `--colorVal`, the browser will
-    // use that as the resolved value for the `var()`. Which breaks our
-    // encapsulation.
-    //
-    // For this reason, we must ensure we only ever use `unset` as the fallback
-    // for a CSS declaration, never as the fallback for a CSS custom property.
     switch (valuesByPriority.length) {
       case 0:
         // No concrete value? Just return; there's nothing to do.
@@ -603,8 +552,18 @@ function convertStylePropsToCSSProperties(
         return {
           ...acc,
           [customPropertyName]: customPropertyValue,
-          [stylePropName]: `var(${customPropertyName}, ${
-            leastSpecificValue || 'unset'
+          // When the least specific value is set we use it directly here as the
+          // fallback. When it's _not_ set, we don't have to do anything because
+          // our CSS "space hack" will guarantee the custom property will
+          // resolve to either a concrete value or the "Guaranteed-invalid
+          // value" / `initial`. In that case, the CSS declaration will act as
+          // if the custom property's value was `unset`, letting the browser
+          // decide to set the declartion to either `initial` (whatever the
+          // base-line value of the document is) or `inherit`.
+          [stylePropName]: `var(${customPropertyName}${
+            typeof leastSpecificValue !== 'undefined'
+              ? `,${leastSpecificValue}`
+              : ''
           })`,
         };
 
@@ -674,10 +633,15 @@ function convertStylePropsToCSSProperties(
           [fallbackPropertyName]: fallbackValue,
           // Since the least specific value (smallest breakpoint / no modifier) was
           // used above, there's no need for a fallback on the CSS property itself.
-          // Instead, we need to set it explicitly to `unset`.
-          [stylePropName]: `var(${fallbackPropertyName}${
-            leastSpecificValue ? '' : ',unset'
-          })`,
+          //
+          // When the least specific value isn't set we don't have to do
+          // anything because our CSS "space hack" will guarantee the custom
+          // property will resolve to either a concrete value or the
+          // "Guaranteed-invalid value" / `initial`. In that case, the CSS
+          // declaration will act as if the custom property's value was `unset`,
+          // letting the browser decide to set the declartion to either `initial`
+          // (whatever the base-line value of the document is) or `inherit`.
+          [stylePropName]: `var(${fallbackPropertyName})`,
         };
     }
   }, {});
