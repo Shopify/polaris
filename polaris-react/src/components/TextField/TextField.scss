@@ -23,6 +23,7 @@ $spinner-icon-size: 12px;
   // only show the clear button when focused within the textfield
   &:focus-within {
     .ClearButton {
+      display: block;
       visibility: visible;
       opacity: 1;
     }
@@ -30,6 +31,7 @@ $spinner-icon-size: 12px;
 
   &:not(:focus-within) {
     .ClearButton {
+      display: none;
       visibility: hidden;
       opacity: 0;
     }
@@ -248,6 +250,23 @@ $spinner-icon-size: 12px;
     min-height: var(--p-space-800);
   }
 }
+
+.slim {
+  .Input,
+  .Backdrop {
+    min-height: 28px;
+    padding-block: var(--p-space-050);
+  }
+}
+
+/* stylelint-disable -- override focus ring offset by increasing specificity */
+.slim.borderless.slim.borderless {
+  .Input,
+  .Backdrop {
+    outline-offset: 0;
+  }
+}
+/* stylelint-enable */
 
 .Input-hasClearButton {
   // Hide webkit search input clear button

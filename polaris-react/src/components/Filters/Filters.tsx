@@ -5,7 +5,6 @@ import type {TransitionStatus} from 'react-transition-group';
 import {classNames} from '../../utilities/css';
 import type {AppliedFilterInterface, FilterInterface} from '../../types';
 import {InlineStack} from '../InlineStack';
-import type {BoxProps} from '../Box';
 import {Box} from '../Box';
 
 import {FiltersBar, SearchField} from './components';
@@ -123,21 +122,10 @@ export function Filters({
   onAddFilterClick,
   closeOnChildOverlayClick,
 }: FiltersProps) {
-  const containerSpacing: {
-    paddingBlockStart: BoxProps['paddingBlockStart'];
-    paddingBlockEnd: BoxProps['paddingBlockEnd'];
-    paddingInlineStart: BoxProps['paddingInlineStart'];
-    paddingInlineEnd: BoxProps['paddingInlineEnd'];
-  } = {
-    paddingInlineStart: '200',
-    paddingInlineEnd: '200',
-    paddingBlockStart: '200',
-    paddingBlockEnd: '200',
-  };
-
+  const hideFilterBar = hideFilters || filters.length === 0;
   const queryFieldMarkup = hideQueryField ? null : (
-    <div className={classNames(styles.Container, styles.ContainerUplift)}>
-      <Box {...containerSpacing}>
+    <div className={styles.Container}>
+      <Box padding={hideFilterBar ? '300' : '200'}>
         <InlineStack
           align="start"
           blockAlign="center"
@@ -184,22 +172,21 @@ export function Filters({
         }
       : undefined;
 
-  const filtersMarkup =
-    hideFilters || filters.length === 0 ? null : (
-      <FiltersBar
-        filters={filters}
-        appliedFilters={appliedFilters}
-        onClearAll={onClearAll}
-        disabled={disabled}
-        hideQueryField={hideQueryField}
-        disableFilters={disableFilters}
-        onAddFilterClick={onAddFilterClick}
-        closeOnChildOverlayClick={closeOnChildOverlayClick}
-        mountedStateStyles={mountedStateStyles}
-      >
-        {children}
-      </FiltersBar>
-    );
+  const filtersMarkup = hideFilterBar ? null : (
+    <FiltersBar
+      filters={filters}
+      appliedFilters={appliedFilters}
+      onClearAll={onClearAll}
+      disabled={disabled}
+      hideQueryField={hideQueryField}
+      disableFilters={disableFilters}
+      onAddFilterClick={onAddFilterClick}
+      closeOnChildOverlayClick={closeOnChildOverlayClick}
+      mountedStateStyles={mountedStateStyles}
+    >
+      {children}
+    </FiltersBar>
+  );
 
   return (
     <div
