@@ -158,9 +158,17 @@ export const Row = memo(function Row({
           return;
         }
 
-        primaryLinkElement.current.dispatchEvent(
-          new MouseEvent(event.type, event.nativeEvent),
-        );
+        if (document?.startViewTransition) {
+          document.startViewTransition(() => {
+            primaryLinkElement.current?.dispatchEvent(
+              new MouseEvent(event.type, event.nativeEvent),
+            );
+          });
+        } else {
+          primaryLinkElement.current?.dispatchEvent(
+            new MouseEvent(event.type, event.nativeEvent),
+          );
+        }
       } else {
         isNavigating.current = false;
         handleInteraction(event);

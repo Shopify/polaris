@@ -49,6 +49,7 @@ export function Item({
   showVerticalHoverPointer,
   onMouseEnter,
   onMouseLeave,
+  viewTransition,
 }: ItemProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
@@ -278,6 +279,7 @@ export function Item({
         aria-disabled={disabled}
         aria-label={accessibilityLabel}
         onClick={getClickHandler(onClick)}
+        viewTransition={viewTransition}
         {...normalizeAriaAttributes(
           secondaryNavigationId,
           subNavigationItems.length > 0,
@@ -375,6 +377,8 @@ export function Item({
 interface ItemSecondaryActionProps extends SecondaryAction {
   tabIndex: number;
   disabled?: boolean;
+  /** Starts a View Transition when link is clicked */
+  viewTransition?: boolean;
 }
 
 export function ItemSecondaryAction({
@@ -385,6 +389,7 @@ export function ItemSecondaryAction({
   onClick,
   disabled,
   tabIndex,
+  viewTransition,
 }: ItemSecondaryActionProps) {
   const markup = url ? (
     <UnstyledLink
@@ -395,6 +400,7 @@ export function ItemSecondaryAction({
       aria-disabled={disabled}
       aria-label={accessibilityLabel}
       onClick={onClick}
+      viewTransition={viewTransition}
     >
       <Icon source={icon} />
     </UnstyledLink>
