@@ -324,10 +324,12 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const groupContent =
       promotedActionsMarkup || actionsPopover ? (
-        <InlineStack gap="100" blockAlign="center">
+        <InlineStack gap="300" blockAlign="center">
           <CheckableButton {...checkableButtonProps} />
-          {promotedActionsMarkup}
-          {actionsPopover}
+          <InlineStack gap="100" blockAlign="center">
+            {promotedActionsMarkup}
+            {actionsPopover}
+          </InlineStack>
         </InlineStack>
       ) : null;
 

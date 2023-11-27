@@ -77,7 +77,7 @@ export const SelectAllActions = ({
               paddingInlineEnd="400"
             >
               <InlineStack gap="200" align="start" blockAlign="center">
-                <Text as="span" variant="bodySm" fontWeight="semibold">
+                <Text as="span" variant="bodySm" fontWeight="medium">
                   {hasTextAndAction ? paginatedSelectAllText : label}
                 </Text>
                 {paginatedSelectAllMarkup}
