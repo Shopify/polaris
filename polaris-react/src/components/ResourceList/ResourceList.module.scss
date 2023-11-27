@@ -200,6 +200,13 @@ $item-wrapper-loading-height: 64px;
   align-self: auto;
 }
 
+.ResourceListWrapperWithBulkActions {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-resource-list-bulk-actions-offset: 41px;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  padding-bottom: var(--pc-resource-list-bulk-actions-offset);
+}
+
 .CheckableButtonWrapper {
   display: none;
 
