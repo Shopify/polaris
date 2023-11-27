@@ -55,7 +55,6 @@ type ModifierStyleProps = {
 };
 
 type StyleValue = {
-  name: keyof ResponsiveStyleProps;
   modifier?: typeof allModifiers[number];
   breakpoint?: BreakpointsAliasesWithBaseKey;
   value: unknown;
@@ -231,6 +230,93 @@ function resolveConcreteLonghandValues(
   return longhandStyleProps;
 }
 
+const getCustomPropertyValueForStyleProp = ({
+  value,
+  breakpoint,
+  modifier,
+}: StyleValue): string => {
+  /**
+   * Use the space hack to have the value parsed as 'initial' or the value after
+   * two spaces. Think of it like an `if` where `initial === false`, and `' ' ===
+   * true`:
+   *
+   * ```
+   * --pc-box-display-sm: var(--_if-sm) grid;
+   * --pc-box-display-xl: var(--_if-xl) flex;
+   * ```
+   *
+   * NOTE: The CSS custom property name must match what's in the generated
+   * `.css` file.
+   * */
+  return `var(--${cssCustomPropertyNamespace}${breakpoint}${modifier}) ${value}`;
+};
+
+interface CustomPropertyCache {
+  properties: Partial<Record<keyof ResponsiveStyleProps, number>>;
+  propertyCount: number;
+  values: Record<string, string>;
+}
+
+const createCustomPropertyCache = (): CustomPropertyCache => ({
+  properties: {},
+  propertyCount: 0,
+  values: {},
+});
+
+// Cache values to re-use prop names in production builds
+const getCustomPropertyNameForStyleProp = (
+  cache: CustomPropertyCache,
+  name: keyof ResponsiveStyleProps,
+  value: unknown,
+  {breakpoint, modifier}: Partial<StyleValue> = {},
+): string => {
+  const valueString = String(value);
+
+  if (typeof cache.values[valueString] !== 'undefined') {
+    return cache.values[valueString];
+  }
+
+  let index = cache.properties[name];
+
+  if (typeof index === 'undefined') {
+    index = ++cache.propertyCount;
+    cache.properties[name] = index;
+  }
+
+  // This format is specially constructed to aid in gzipping.
+  // The final `style` attribute will end up with something like:
+  // ```
+  // --_0sm: var(--_sm) double;
+  // --_1sm: var(--_sm) flex;
+  // --_2sm: var(--_sm) var(--p-space-400);
+  // --_3sm: var(--_sm) 2;
+  // ```
+  // The string `sm: var(--_sm) ` appears multiple times, which is
+  // great for the gzip algo to eat up!
+  const newCustomProperty = `--${cssCustomPropertyNamespace}${index}${
+    typeof modifier !== 'undefined' ? `${modifier}` : ''
+  }${typeof breakpoint !== 'undefined' ? `${breakpoint}` : ''}`;
+
+  cache.values[valueString] = newCustomProperty;
+
+  return newCustomProperty;
+};
+
+const getCustomPropertyForStyleProp = (
+  cache: CustomPropertyCache,
+  name: keyof ResponsiveStyleProps,
+  style: StyleValue,
+): [string, string] => {
+  const customPropertyValue = getCustomPropertyValueForStyleProp(style);
+  const customPropertyName = getCustomPropertyNameForStyleProp(
+    cache,
+    name,
+    customPropertyValue,
+    style,
+  );
+  return [customPropertyName, customPropertyValue];
+};
+
 /*
  * NOTES:
  * - Works because we do mobile first with (min-width) queries
@@ -322,11 +408,11 @@ function convertStylePropsToCSSProperties(
 
   // Phase 3: Iterate over each of the style props set, converting them to the
   // appropriate CSS for a `style` attribute.
-  const customPropertyCache: Record<string, string> = {};
+  const customPropertyCache = createCustomPropertyCache();
 
   // Iterate over a union of all the keys of nonmodifier and all modifiers
   // so we catch styles that are only applied on hover, but not normally, etc.
-  return allStylePropNames.reduce((acc, stylePropName, index) => {
+  return allStylePropNames.reduce((acc, stylePropName) => {
     // Gather all the values, and ensure they're ordered correctly:
     // Modifiers are ordered based on config (with non-modified values always
     // coming last).
@@ -353,7 +439,6 @@ function convertStylePropsToCSSProperties(
         // modifier
         if (typeof stylePropObject[breakpoint] !== 'undefined') {
           valuesByPriority.push({
-            name: stylePropName,
             modifier,
             breakpoint:
               breakpoint === breakpointsAliases[0]
@@ -394,84 +479,6 @@ function convertStylePropsToCSSProperties(
       )} prop. Please use a different value.`,
     );
 
-    const getCustomPropertyValueForStyleProp = ({
-      value,
-      breakpoint,
-      modifier,
-    }: StyleValue): string => {
-      /**
-       * Use the space hack to have the value parsed as 'initial' or the value
-       * after two spaces. Think of it like an `if` where `initial === false`,
-       * and `' ' === true`:
-       *
-       * ```
-       * --pc-box-display-sm: var(--_if-sm) grid;
-       * --pc-box-display-xl: var(--_if-xl) flex;
-       * ```
-       *
-       * NOTE: The CSS custom property name must match what's in the generated
-       * `.css` file.
-       * */
-      return `var(--${cssCustomPropertyNamespace}${breakpoint}${modifier}) ${value}`;
-    };
-
-    // TODO: Move this out of the loop
-    let getCustomPropertyNameForStyleProp: (
-      customPropertyValue: unknown,
-      styleValue?: Partial<StyleValue>,
-    ) => string;
-    if (process.env.NODE_ENV !== 'production') {
-      // Cache values to re-use prop names in production builds
-      getCustomPropertyNameForStyleProp = (
-        customPropertyValue,
-        {breakpoint, modifier} = {},
-      ) => {
-        const valueString = String(customPropertyValue);
-
-        if (typeof customPropertyCache[valueString] !== 'undefined') {
-          return customPropertyCache[valueString];
-        }
-
-        // This format is specially constructed to aid in gzipping.
-        // The final `style` attribute will end up with something like:
-        // ```
-        // --_0sm: var(--_sm) double;
-        // --_1sm: var(--_sm) flex;
-        // --_2sm: var(--_sm) var(--p-space-400);
-        // --_3sm: var(--_sm) 2;
-        // ```
-        // The string `sm: var(--_sm) ` appears multiple times, which is
-        // great for the gzip algo to eat up!
-        const newCustomProperty = `--${cssCustomPropertyNamespace}${index}${
-          typeof modifier !== 'undefined' ? `${modifier}` : ''
-        }${typeof breakpoint !== 'undefined' ? `${breakpoint}` : ''}`;
-
-        customPropertyCache[valueString] = newCustomProperty;
-
-        return newCustomProperty;
-      };
-    } else {
-      getCustomPropertyNameForStyleProp = (
-        _,
-        {name, breakpoint, modifier} = {},
-      ) => {
-        return `--${cssCustomPropertyNamespace}${
-          typeof modifier !== 'undefined' ? `${modifier}-` : ''
-        }${typeof breakpoint !== 'undefined' ? `${breakpoint}-` : ''}${name}`;
-      };
-    }
-
-    const getCustomPropertyForStyleProp = (
-      style: StyleValue,
-    ): [string, string] => {
-      const customPropertyValue = getCustomPropertyValueForStyleProp(style);
-      const customPropertyName = getCustomPropertyNameForStyleProp(
-        customPropertyValue,
-        style,
-      );
-      return [customPropertyName, customPropertyValue];
-    };
-
     let leastSpecificValue: unknown;
 
     const lastValue = valuesByPriority[valuesByPriority.length - 1];
@@ -494,30 +501,36 @@ function convertStylePropsToCSSProperties(
     // only.
     //
     // Since there's no official "scoping" in CSS (yet), we can apply a
-    // functionaly equivalent "scope" to the CSS custom properties we're using
+    // functionally equivalent "scope" to the CSS custom properties we're using
     // in the declarations (to power the "space hack").
     //
-    // We'll combine 3 facts from the spec to enforce scoping:
+    // We'll enforce scoping by combining 3 facts from the spec plus 1 from the
+    // CSS "space hack" we use:
     //
-    // 1. All CSS custom properties resolve to the "Guaranteed invalid value"
+    // 1. All CSS custom properties resolve to the ["Guaranteed-invalid
+    //    value"](https://www.w3.org/TR/css-variables/#guaranteed-invalid-value)
     //    until they're processed at the time of applying styles to a DOM node.
     //    The value is resolved by walking up the DOM tree to look for
-    //    definitions of the custom property.
+    //    definitions of the custom property, starting at the current node.
     // 2. When processing a `var(<cutom-property>, <fallback>)`, if the
-    //    `<custom-property>` resolves to the "Guaranteed invalid value" and a
-    //    `<fallback>` is provided, the browser will process that `<fallback>`
-    //    (which itself could be another `var()`, or a concrete value). Finally,
-    //    if the entire `var()` recursively resolves to the "Guaranteed invalid
-    //    value",
+    //    `<custom-property>` resolves to the "Guaranteed-invalid value" and a
+    //    `<fallback>` is provided, the browser will recursively process that
+    //    `<fallback>` (which itself could be another `var()`, or a concrete
+    //    value). See: https://www.w3.org/TR/css-variables/#using-variables
     // 3. A value of `initial` acts as a concrete value to stop the browser
-    //    walking up the DOM tree, but is also equal to the "Guaranteed invalid
+    //    walking up the DOM tree, but is also equal to the "Guaranteed-invalid
     //    value" when assigned to a custom property.
+    // 4. The CSS "space hack" specifies custom properties with a format of
+    //    `--name: var(--if-cond) <value>` where `--if-cond` can be either
+    //    `initial` or a space (` `). Given there's always a `<value>` set,
+    //    `--name` will always resolve to a concrete value of either `initial`
+    //    or `  <value>` (which the browser trims to remove leading whitespace).
     //
-    // Therefore, as long as every CSS custom property we reference has a
-    // concrete value or `initial`, or references another custom property which
-    // resolves to a concrete value or `initial`, we stop the browser walking up
-    // the DOM tree to find other definitions of our custom property, and hence
-    // have scopped that property to this DOM node.
+    // Therefore, given every CSS custom property we reference has a concrete
+    // value or `initial`, or references another custom property which resolves
+    // to a concrete value or `initial`, we stop the browser walking up the DOM
+    // tree to find other definitions of our custom property, and hence have
+    // scopped that property to this DOM node.
     //
     // ---
     //
@@ -534,7 +547,7 @@ function convertStylePropsToCSSProperties(
     //
     // 1. Resolve `--colorVal` to the concrete value of `initial` (will not go
     //    looking at parent DOM nodes, retaining our style encapsulation).
-    // 2. Because `initial` is equalivalent to the "Guaranteed invalid value",
+    // 2. Because `initial` is equalivalent to the "Guaranteed-invalid value",
     //    it will process the fallback value, resultin in the `var()` resolving
     //    to `unset`.
     // 2. Convert `unset` to be either `initial` or `inherit` as the value to
@@ -552,7 +565,7 @@ function convertStylePropsToCSSProperties(
     // The first line will instruct the browser to un-set the CSS custom
     // property `--colorVal` (as if no value was ever set on it). So when it
     // comes to process the `var(--colorVal)`, the resolved value is _not_
-    // `unset`, but rather the Guaranteed invalid value.
+    // `unset`, but rather the Guaranteed-invalid value.
     //
     // On the surface this seems fine, as the `color` declaration then becomes
     // invalid, and the browser will fallback to `inherit` for this DOM node.
@@ -582,7 +595,11 @@ function convertStylePropsToCSSProperties(
 
       case 1:
         const [customPropertyName, customPropertyValue] =
-          getCustomPropertyForStyleProp(valuesByPriority[0]);
+          getCustomPropertyForStyleProp(
+            customPropertyCache,
+            stylePropName,
+            valuesByPriority[0],
+          );
         return {
           ...acc,
           [customPropertyName]: customPropertyValue,
@@ -615,7 +632,11 @@ function convertStylePropsToCSSProperties(
       default:
         const cssCustomProperties = Object.fromEntries(
           valuesByPriority.map((styleValue) =>
-            getCustomPropertyForStyleProp(styleValue),
+            getCustomPropertyForStyleProp(
+              customPropertyCache,
+              stylePropName,
+              styleValue,
+            ),
           ),
         );
 
@@ -641,8 +662,11 @@ function convertStylePropsToCSSProperties(
         const fallbackValueEnd = ')'.repeat(valuesByPriority.length);
 
         const fallbackValue = `${fallbackValueStart}${fallbackValueMiddle}${fallbackValueEnd}`;
-        const fallbackPropertyName =
-          getCustomPropertyNameForStyleProp(fallbackValue);
+        const fallbackPropertyName = getCustomPropertyNameForStyleProp(
+          customPropertyCache,
+          stylePropName,
+          fallbackValue,
+        );
 
         return {
           ...acc,
