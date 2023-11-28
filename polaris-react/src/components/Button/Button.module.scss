@@ -47,8 +47,12 @@
   }
 
   // stylelint-disable selector-max-specificity -- focus styles
-  &:focus:not(.variantPrimary):not(.variantTertiary):not(.variantPlain):not(.variantMonochromePlain):not(.pressed),
-  &:focus-visible:not(.variantPrimary):not(.variantTertiary):not(.variantPlain):not(.variantMonochromePlain):not(.pressed) {
+  &:focus:not(.variantPrimary):not(.variantTertiary):not(.variantPlain):not(
+      .variantMonochromePlain
+    ):not(.pressed),
+  &:focus-visible:not(.variantPrimary):not(.variantTertiary):not(
+      .variantPlain
+    ):not(.variantMonochromePlain):not(.pressed) {
     // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
     box-shadow: var(--pc-button-shadow);
   }
@@ -963,7 +967,9 @@
   }
 }
 // Overrides for popover active / expanded states on default buttons
-.Button:is([aria-expanded='true']):is([aria-owns]):not(.variantPlain):not(.variantMonochromePlain):not(.variantTertiary):not(.variantPrimary) {
+.Button:is([aria-expanded='true']):is([aria-owns]):not(.variantPlain):not(
+    .variantMonochromePlain
+  ):not(.variantTertiary):not(.variantPrimary) {
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
   --pc-button-shadow: var(--p-shadow-inset-200);
   background: var(--p-color-bg-fill-active);
