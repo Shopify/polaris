@@ -551,10 +551,7 @@ export function DetailsPage() {
   const actualPageMarkup = (
     <Page
       fullWidth
-      backAction={{
-        content: 'Products',
-        url: '/products/31',
-      }}
+      backAction={{content: 'Products', url: '/products/31'}}
       title={title}
       titleMetadata={<Badge tone="success">Success badge</Badge>}
       primaryAction={{
