@@ -2,9 +2,10 @@ import React, {forwardRef} from 'react';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import type {OmitIndexSignature, Simplify} from 'type-fest';
 
-import {createPolarisCSSVar} from '../../utilities/css';
+import {classNames, createPolarisCSSVar} from '../../utilities/css';
 
 import style from './style.module.css';
+import classes from './Box.scss';
 import type {ResponsiveStylePropsWithModifiers} from './generated-data';
 import {stylePropTokenGroupMap, stylePropDefaults} from './generated-data';
 import {convertStylePropsToCSSProperties} from './get-style-props';
@@ -22,12 +23,25 @@ type SimplifyProps<F> = F extends (props: infer Props) => infer Return
   ? (props: Simplify<Props>) => Return
   : unknown;
 
-type BoxProps = React.PropsWithChildren<
-  ResponsiveStylePropsWithModifiers & React.AriaAttributes
->;
+export interface BoxProps
+  extends ResponsiveStylePropsWithModifiers,
+    React.AriaAttributes {
+  /** HTML id attribute */
+  id?: HTMLElement['id'];
+  /** HTML role attribute */
+  role?: HTMLElement['role'];
+  /** HTML tabIndex */
+  tabIndex?: number;
+  /** Visually hide the contents during print */
+  printHidden?: boolean;
+  /** Visually hide the contents (still announced by screenreader) */
+  visuallyHidden?: boolean;
+}
 
 type PolymorphicBox = SimplifyProps<
-  StrictProps<Polymorphic.ForwardRefComponent<any, BoxProps>>
+  StrictProps<
+    Polymorphic.ForwardRefComponent<any, React.PropsWithChildren<BoxProps>>
+  >
 >;
 
 /**
@@ -115,7 +129,16 @@ The lowest level Polaris primitive from which everything in the system is built.
 ```
 */
 export const Box = forwardRef(function Box(
-  {as: Tag = 'div', children, ...props},
+  {
+    as: Tag = 'div',
+    id,
+    role,
+    printHidden,
+    visuallyHidden,
+    tabIndex,
+    children,
+    ...props
+  },
   forwardedRef,
 ) {
   const propArray = Object.entries(props);
@@ -138,8 +161,23 @@ export const Box = forwardRef(function Box(
         : value,
   );
 
+  const className = classNames(
+    style.Box,
+    visuallyHidden && classes.visuallyHidden,
+    printHidden && classes.printHidden,
+    Tag === 'ul' && classes.listReset,
+  );
+
   return (
-    <Tag ref={forwardedRef} style={styles} className={style.Box} {...ariaProps}>
+    <Tag
+      ref={forwardedRef}
+      id={id}
+      role={role}
+      tabIndex={tabIndex}
+      style={styles}
+      className={className}
+      {...ariaProps}
+    >
       {children}
     </Tag>
   );
