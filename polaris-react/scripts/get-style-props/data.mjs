@@ -177,6 +177,7 @@ export const stylePropConfig = {
   overscrollBehaviorBlock: {
     aliases: ['overscrollBehaviorY', 'overscrollBehavior'],
   },
+  backgroundColor: {aliases: ['background']},
   backgroundPositionX: {aliases: ['backgroundPosition']},
   backgroundPositionY: {aliases: ['backgroundPosition']},
   borderStartStartRadius: {aliases: ['borderTopLeftRadius', 'borderRadius']},

@@ -551,6 +551,17 @@ interface StylePropAliases {
   overscrollBehaviorY?: LonghandStyleProps['overscrollBehaviorBlock'];
 
   /**
+   * Alias for setting `backgroundColor`:
+   *
+   * ```
+   * backgroundColor = props.backgroundColor ?? props.background;
+   * ```
+   *
+   * @see {@link LonghandStyleProps.backgroundColor}
+   */
+  background?: LonghandStyleProps['backgroundColor'];
+
+  /**
    * Alias for setting `backgroundPositionX` and `backgroundPositionY`:
    *
    * ```
@@ -1329,6 +1340,7 @@ export const stylePropAliasFallbacks = {
   overflowY: ["overflowBlock","overflow"],
   overscrollBehaviorInline: ["overscrollBehaviorX","overscrollBehavior"],
   overscrollBehaviorBlock: ["overscrollBehaviorY","overscrollBehavior"],
+  backgroundColor: ["background"],
   backgroundPositionX: ["backgroundPosition"],
   backgroundPositionY: ["backgroundPosition"],
   borderStartStartRadius: ["borderTopLeftRadius","borderRadius"],
@@ -1480,6 +1492,7 @@ export const stylePropTokenGroupMap = {
   containIntrinsicWidth: "width",
   containIntrinsicSize: "width",
   containIntrinsicHeight: "height",
+  background: "color",
   borderTopLeftRadius: "border-radius",
   borderRadius: "border-radius",
   borderTopRightRadius: "border-radius",
