@@ -165,7 +165,7 @@ export const Row = memo(function Row({
             );
           });
         } else {
-          primaryLinkElement.current?.dispatchEvent(
+          primaryLinkElement.current.dispatchEvent(
             new MouseEvent(event.type, event.nativeEvent),
           );
         }
