@@ -1,3 +1,17 @@
+import path from 'path';
+import * as url from 'url';
+
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+
+export const styleFile = path.resolve(
+  __dirname,
+  '../../src/components/Box/style.module.css',
+);
+export const typesFile = path.resolve(
+  __dirname,
+  '../../src/components/Box/generated-data.ts',
+);
+
 // TODO: Confirm this list is complete or source it from mdn/webref data somehow
 const positionalCSSProperties = [
   'width',
