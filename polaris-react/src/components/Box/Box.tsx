@@ -1,6 +1,5 @@
 import React, {forwardRef} from 'react';
-import type * as Polymorphic from '@radix-ui/react-polymorphic';
-import type {OmitIndexSignature, Simplify} from 'type-fest';
+import type {Simplify} from 'type-fest';
 
 import {classNames, createPolarisCSSVar} from '../../utilities/css';
 
@@ -10,26 +9,22 @@ import type {ResponsiveStylePropsWithModifiers} from './generated-data';
 import {stylePropTokenGroupMap, stylePropDefaults} from './generated-data';
 import {convertStylePropsToCSSProperties} from './get-style-props';
 
-// Ensure no index signatures are accidentally introduced into the props list by
-// omitting `[x: string]: unknown` keys (but keep literal keys `foo: string`,
-// etc).
-// Polymorphic.ForwardRefComponent suffers from this occasionally.
-type StrictProps<F> = F extends (props: infer Props) => infer Return
-  ? (props: OmitIndexSignature<Props>) => Return
-  : unknown;
-
-// Flatten the props object for better IDE integration
-type SimplifyProps<F> = F extends (props: infer Props) => infer Return
-  ? (props: Simplify<Props>) => Return
-  : unknown;
+type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
 
 export interface BoxProps
   extends ResponsiveStylePropsWithModifiers,
     React.AriaAttributes {
+  /** HTML Element type
+   * @default 'div'
+   */
+  as?: Element;
   /** HTML id attribute */
   id?: HTMLElement['id'];
-  /** HTML role attribute */
-  role?: HTMLElement['role'];
+  /** Aria role */
+  role?: Extract<
+    React.AriaRole,
+    'status' | 'presentation' | 'menu' | 'listbox' | 'combobox' | 'group'
+  >;
   /** HTML tabIndex */
   tabIndex?: number;
   /** Visually hide the contents during print */
@@ -37,12 +32,6 @@ export interface BoxProps
   /** Visually hide the contents (still announced by screenreader) */
   visuallyHidden?: boolean;
 }
-
-type PolymorphicBox = SimplifyProps<
-  StrictProps<
-    Polymorphic.ForwardRefComponent<any, React.PropsWithChildren<BoxProps>>
-  >
->;
 
 /**
 The lowest level Polaris primitive from which everything in the system is built.
@@ -128,7 +117,10 @@ The lowest level Polaris primitive from which everything in the system is built.
 `} />
 ```
 */
-export const Box = forwardRef(function Box(
+export const Box = forwardRef<
+  HTMLElement,
+  Simplify<React.PropsWithChildren<BoxProps>>
+>(function Box(
   {
     as: Tag = 'div',
     id,
@@ -168,17 +160,17 @@ export const Box = forwardRef(function Box(
     Tag === 'ul' && classes.listReset,
   );
 
-  return (
-    <Tag
-      ref={forwardedRef}
-      id={id}
-      role={role}
-      tabIndex={tabIndex}
-      style={styles}
-      className={className}
-      {...ariaProps}
-    >
-      {children}
-    </Tag>
+  return React.createElement(
+    Tag,
+    {
+      ref: forwardedRef,
+      id,
+      role,
+      tabIndex,
+      style: styles,
+      className,
+      ...ariaProps,
+    },
+    children,
   );
-}) as PolymorphicBox;
+});
