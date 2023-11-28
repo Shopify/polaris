@@ -33,6 +33,8 @@ module.exports = {
     'dist',
     'polaris-react/build',
     'polaris-react/build-internal',
+    '/polaris-react/src/components/Box/generated-data.ts',
+    '/polaris-react/src/components/Box/generated-style.scss',
   ],
   rules: {
     'func-style': 'off',
