@@ -31,4 +31,30 @@ describe('Box', () => {
       'aria-describedby': 'test',
     });
   });
+
+  it('tokenizes style props', () => {
+    const box = mountWithApp(<Box color="text">{children}</Box>);
+
+    expect(box).toContainReactComponent('div', {
+      style: {
+        color: 'var(--p-color-text)',
+      },
+    });
+  });
+
+  it('tokenizes responsive style props', () => {
+    const box = mountWithApp(
+      <Box color={{md: 'text', lg: 'text-brand-hover'}}>{children}</Box>,
+    );
+
+    expect(box).toContainReactComponent('div', {
+      style: {
+        // @ts-expect-error Yes, Typescript, CSS Custom properties do exist.
+        '--⅀1': 'var(--⅀1lg,var(--⅀1md))',
+        '--⅀1lg': 'var(--⅀lg) var(--p-color-text-brand-hover)',
+        '--⅀1md': 'var(--⅀md) var(--p-color-text)',
+        color: 'var(--⅀1)',
+      },
+    });
+  });
 });
