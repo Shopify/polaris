@@ -1,7 +1,7 @@
+/* eslint no-console: 0 */
 import fs from 'fs/promises';
-import path from 'path';
-import * as url from 'url';
 import {createRequire} from 'node:module';
+
 import _endent from 'endent';
 import ts from 'typescript';
 import {
@@ -14,8 +14,10 @@ import {
   disallowedCSSProperties,
   disallowedCSSPropertyValues,
   stylePropConfig,
-  modifiers,
+  modifiers as modifiersData,
   cssCustomPropertyNamespace,
+  styleFile,
+  typesFile,
 } from './data.mjs';
 
 const endent = _endent.default;
@@ -43,7 +45,7 @@ const allAliases = Array.from(
 
 const inverseAliases = Object.entries(stylePropConfig).reduce(
   (acc, [prop, {aliases}]) => {
-    for (let alias of aliases ?? []) {
+    for (const alias of aliases ?? []) {
       acc[alias] = acc[alias] ?? [];
       acc[alias].push(prop);
     }
@@ -54,7 +56,7 @@ const inverseAliases = Object.entries(stylePropConfig).reduce(
 
 const cssPropsToTokenGroup = Object.entries(tokenizedCSSStyleProps).reduce(
   (acc, [tokenGroup, props]) => {
-    for (let prop of props) {
+    for (const prop of props) {
       acc[prop] = tokenGroup;
     }
     return acc;
@@ -64,21 +66,13 @@ const cssPropsToTokenGroup = Object.entries(tokenizedCSSStyleProps).reduce(
 
 verifyAliases();
 
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
+const sassFile = await fs.open(styleFile, 'w+');
 
-const sassFile = await fs.open(
-  path.resolve(__dirname, '../../src/components/Cube/style.module.css'),
-  'w+',
-);
-
-await writeCSSMediaVars(sassFile, modifiers);
+await writeCSSMediaVars(sassFile, modifiersData);
 
 await sassFile.close();
 
-const tsFile = await fs.open(
-  path.resolve(__dirname, '../../src/components/Cube/generated-data.ts'),
-  'w+',
-);
+const tsFile = await fs.open(typesFile, 'w+');
 await writeTSProperties(tsFile);
 await tsFile.close();
 
@@ -177,19 +171,20 @@ function getCSSTypeLonghandProperties() {
     checker.getSymbolAtLocation(sourceFile),
   );
   const defaultExportSymbol = exports.find(
-    (e) => e.escapedName === 'StandardLonghandProperties',
+    (exportedSymbol) =>
+      exportedSymbol.escapedName === 'StandardLonghandProperties',
   );
-  let type = checker.getDeclaredTypeOfSymbol(defaultExportSymbol);
+  const type = checker.getDeclaredTypeOfSymbol(defaultExportSymbol);
 
-  const typeToString = (type) => {
+  const typeToString = (typeObj) => {
     const typeString = checker.typeToString(
-      type,
+      typeObj,
       undefined,
       ts.TypeFormatFlags.NoTruncation |
         ts.TypeFormatFlags.UseSingleQuotesForStringLiteralType |
         ts.TypeFormatFlags.NoTypeReduction,
     );
-    if (type.isUnionOrIntersection()) {
+    if (typeObj.isUnionOrIntersection()) {
       return `(${typeString})`;
     }
     return typeString;
@@ -219,7 +214,7 @@ function getCSSTypeLonghandProperties() {
   }, {});
 }
 
-async function writeTSProperties(tsFile) {
+async function writeTSProperties(targetFile) {
   const generateTSPickList = (keys, indent) => {
     // We add additional single quotes here because the second argument for Pick
     // is a union of string literal types
@@ -271,11 +266,12 @@ async function writeTSProperties(tsFile) {
     `;
   };
 
-  await tsFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
+  await targetFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import type {StandardLonghandProperties, Globals} from 'csstype';
 import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
 import type {OverrideProperties, Simplify}  from 'type-fest';
-import type {ResponsiveProp} from '../../utils/various';
+
+import type {ResponsiveProp} from '../../utilities/css';
 
 /**
  * Pick only the keys in \`PickFrom\` which are also in \`IntersectWith\`.
@@ -359,7 +355,7 @@ export type ResponsiveStyleProps = {
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
  * \`@shopify/polaris-tokens\`), helpful aliases for frequently used props, and
-* the modifiers ${joinEnglish(Object.values(modifiers))}.
+* the modifiers ${joinEnglish(Object.values(modifiersData))}.
  */
 export type ResponsiveStylePropsWithModifiers = Simplify<
   ResponsiveStyleProps & {
@@ -546,7 +542,9 @@ export const cssCustomPropertyNamespace = ${JSON.stringify(
     cssCustomPropertyNamespace,
   )};
 
-export const modifiers = ${JSON.stringify(Object.values(modifiers))} as const;
+export const modifiers = ${JSON.stringify(
+    Object.values(modifiersData),
+  )} as const;
 `);
 }
 

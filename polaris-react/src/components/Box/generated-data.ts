@@ -2,7 +2,8 @@
 import type {StandardLonghandProperties, Globals} from 'csstype';
 import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
 import type {OverrideProperties, Simplify}  from 'type-fest';
-import type {ResponsiveProp} from '../../utils/various';
+
+import type {ResponsiveProp} from '../../utilities/css';
 
 /**
  * Pick only the keys in `PickFrom` which are also in `IntersectWith`.
@@ -1416,6 +1417,7 @@ export const stylePropTokenGroupMap = {
   borderStartEndRadius: "border-radius",
   borderEndStartRadius: "border-radius",
   borderEndEndRadius: "border-radius",
+  outlineWidth: "border-width",
   borderBlockStartWidth: "border-width",
   borderBlockEndWidth: "border-width",
   borderInlineStartWidth: "border-width",

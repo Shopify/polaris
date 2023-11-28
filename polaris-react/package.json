@@ -42,9 +42,9 @@
   "scripts": {
     "build": "run-s build:types build:js build:validate",
     "build:types": "tsc -b",
-    "build:js": "rollup -c",
+    "build:js": "yarn get-style-props && rollup -c",
     "build:validate": "node scripts/build-validate.js",
-    "dev": "yarn run storybook",
+    "dev": "yarn get-style-props && yarn run storybook",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}' --quiet",
@@ -53,7 +53,8 @@
     "start": "serve ./build-internal/storybook/static -l ${PORT:=6006}",
     "storybook": "start-storybook -p 6006 --quiet",
     "storybook:build": "build-storybook -o build-internal/storybook/static",
-    "preversion": "node ./scripts/readme-update-version"
+    "preversion": "node ./scripts/readme-update-version",
+    "get-style-props": "node ./scripts/get-style-props/index.mjs"
   },
   "dependencies": {
     "@shopify/polaris-icons": "^7.9.0",
@@ -61,8 +62,11 @@
     "@types/react": "*",
     "@types/react-dom": "*",
     "@types/react-transition-group": "^4.4.2",
+    "csstype": "^3.1.2",
     "react-fast-compare": "^3.2.0",
-    "react-transition-group": "^4.4.2"
+    "react-transition-group": "^4.4.2",
+    "tiny-invariant": "^1.3.1",
+    "type-fest": "^4.7.1"
   },
   "peerDependencies": {
     "react": "^18.0.0",
@@ -86,6 +90,7 @@
     "change-case": "^3.1.0",
     "chromatic": "^6.5.4",
     "create-file-webpack": "^1.0.2",
+    "endent": "^2.1.0",
     "globby": "^11.1.0",
     "js-yaml": "^4.1.0",
     "node-sass": "^9.0.0",
@@ -99,6 +104,7 @@
     "react-dom": "^18.2.0",
     "rimraf": "^3.0.0",
     "sass-loader": "^12.4.0",
+    "typescript": "^4.9.3",
     "webpack": "5"
   },
   "browserslist": [

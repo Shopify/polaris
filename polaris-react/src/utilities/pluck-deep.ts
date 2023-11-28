@@ -1,4 +1,4 @@
-import {isObject} from './is-object';
+import {isObjectishOrFunction} from './is-object';
 
 export function pluckDeep(obj: {[key: string]: any} | null, key: string): any {
   if (!obj) {
@@ -11,7 +11,7 @@ export function pluckDeep(obj: {[key: string]: any} | null, key: string): any {
       return obj[key];
     }
 
-    if (isObject(obj[currKey])) {
+    if (isObjectishOrFunction(obj[currKey])) {
       const plucked = pluckDeep(obj[currKey], key);
       if (plucked) {
         return plucked;
