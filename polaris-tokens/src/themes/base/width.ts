@@ -102,14 +102,16 @@ const widthStyleProps = [
   // Shorthands
   'containIntrinsicSize',
   // Logical properties
-  'inlineSize',
-  'minInlineSize',
-  'maxInlineSize',
+  // TODO: Reinstate these once our token scales are usable
+  // 'inlineSize',
+  // 'minInlineSize',
+  // 'maxInlineSize',
   'containIntrinsicInlineSize',
   // Positional properties
-  'width',
-  'minWidth',
-  'maxWidth',
+  // TODO: Reinstate these once our token scales are usable
+  // 'width',
+  // 'minWidth',
+  // 'maxWidth',
   'containIntrinsicWidth',
 ] as const;
 
