@@ -43,6 +43,8 @@ export interface ButtonProps extends BaseButton {
   tone?: 'critical' | 'success';
   /** Changes the visual appearance of the Button. */
   variant?: 'plain' | 'primary' | 'secondary' | 'tertiary' | 'monochromePlain';
+  /** Start view transitions when clicking a link */
+  viewTransition?: boolean;
 }
 
 interface CommonButtonProps
@@ -65,7 +67,7 @@ interface CommonButtonProps
 
 type LinkButtonProps = Pick<
   ButtonProps,
-  'url' | 'external' | 'download' | 'target'
+  'url' | 'external' | 'download' | 'target' | 'viewTransition'
 >;
 
 type ActionButtonProps = Pick<
@@ -118,6 +120,7 @@ export function Button({
   dataPrimaryLink,
   tone,
   variant = 'secondary',
+  viewTransition,
 }: ButtonProps) {
   const i18n = useI18n();
   const isDisabled = disabled || loading;
@@ -204,6 +207,7 @@ export function Button({
     external,
     download,
     target,
+    viewTransition,
   };
   const actionProps: ActionButtonProps = {
     submit,

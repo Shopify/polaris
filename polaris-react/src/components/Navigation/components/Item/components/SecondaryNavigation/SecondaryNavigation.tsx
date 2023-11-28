@@ -40,9 +40,6 @@ export function SecondaryNavigation({
     isEqual(item, hoveredItem),
   );
 
-  // eslint-disable-next-line no-console -- no reason
-  console.log({subNavigationItems});
-
   return (
     <div
       className={classNames(

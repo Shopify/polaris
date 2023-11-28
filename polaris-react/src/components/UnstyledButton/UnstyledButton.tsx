@@ -62,6 +62,7 @@ export function UnstyledButton({
   const handleClick = useDisableClick(disabled, onClick);
 
   if (url) {
+    console.log({rest});
     buttonMarkup = disabled ? (
       // Render an `<a>` so toggling disabled/enabled state changes only the
       // `href` attribute instead of replacing the whole element.

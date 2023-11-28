@@ -13,6 +13,7 @@ export interface BreadcrumbsProps {
 export function Breadcrumbs({backAction}: BreadcrumbsProps) {
   const {content} = backAction;
 
+  console.log({backAction});
   const breadcrumbMarkup = (
     <Button
       key={content}
@@ -21,6 +22,9 @@ export function Breadcrumbs({backAction}: BreadcrumbsProps) {
       onPointerDown={handleMouseUpByBlurring}
       icon={ArrowLeftMinor}
       accessibilityLabel={backAction.accessibilityLabel ?? content}
+      viewTransition={
+        'viewTransition' in backAction ? backAction.viewTransition : undefined
+      }
     />
   );
 
