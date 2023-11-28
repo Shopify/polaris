@@ -664,6 +664,10 @@ type SimplifyProps<F> = F extends (props: infer Props) => infer Return
   ? (props: Simplify<Props>) => Return
   : unknown;
 
+type BoxProps = React.PropsWithChildren<
+  ResponsiveStylePropsWithModifiers & React.AriaAttributes
+>;
+
 type PolymorphicBox = SimplifyProps<
   StrictProps<Polymorphic.ForwardRefComponent<any, BoxProps>>
 >;
@@ -753,9 +757,16 @@ The lowest level Polaris primitive from which everything in the system is built.
 ```
 */
 export const Box = forwardRef(function Box(
-  {as: Tag = 'div', children, ...styleProps},
+  {as: Tag = 'div', children, ...props},
   forwardedRef,
 ) {
+  const propArray = Object.entries(props);
+  const styleProps = Object.fromEntries(
+    propArray.filter(([key]) => !key.startsWith('aria-')),
+  );
+  const ariaProps = Object.fromEntries(
+    propArray.filter(([key]) => key.startsWith('aria-')),
+  );
   const styles = convertStylePropsToCSSProperties(
     styleProps,
     stylePropDefaults,
@@ -770,7 +781,7 @@ export const Box = forwardRef(function Box(
   );
 
   return (
-    <Tag ref={forwardedRef} style={styles} className={style.Box}>
+    <Tag ref={forwardedRef} style={styles} className={style.Box} {...ariaProps}>
       {children}
     </Tag>
   );
