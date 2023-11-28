@@ -1184,6 +1184,17 @@ interface StylePropAliases {
    * @see {@link LonghandStyleProps.alignItems}
    */
   align?: LonghandStyleProps['alignItems'];
+
+  /**
+   * Alias for setting `boxShadow`:
+   *
+   * ```
+   * boxShadow = props.boxShadow ?? props.shadow;
+   * ```
+   *
+   * @see {@link LonghandStyleProps.boxShadow}
+   */
+  shadow?: LonghandStyleProps['boxShadow'];
 };
 
 /**
@@ -1373,6 +1384,7 @@ export const stylePropAliasFallbacks = {
   scrollMarginBlockEnd: ["scrollMarginBottom","scrollMarginBlock","scrollMargin"],
   justifyItems: ["justify"],
   alignItems: ["align"],
+  boxShadow: ["shadow"],
 } satisfies { [K in keyof SupportedCSSStyleProps]?: (keyof StyleProps)[] };
 
 // Extract a unique set of just the alias names
@@ -1490,8 +1502,9 @@ export const stylePropTokenGroupMap = {
   borderTopWidth: "border-width",
   borderBlockWidth: "border-width",
   borderBottomWidth: "border-width",
+  shadow: "shadow",
 } as const;
 
-export const cssCustomPropertyNamespace = "⅀";
+export const cssCustomPropertyNamespace = "_";
 
 export const modifiers = ["_hover","_visited"] as const;

@@ -3,13 +3,21 @@ import type {Simplify} from 'type-fest';
 
 import {classNames, createPolarisCSSVar} from '../../utilities/css';
 
-import style from './style.module.css';
+import generatedStyle from './generated-style.scss';
 import classes from './Box.scss';
 import type {ResponsiveStylePropsWithModifiers} from './generated-data';
 import {stylePropTokenGroupMap, stylePropDefaults} from './generated-data';
 import {convertStylePropsToCSSProperties} from './get-style-props';
 
-type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
+type Element =
+  | 'div'
+  | 'p'
+  | 'button'
+  | 'span'
+  | 'section'
+  | 'legend'
+  | 'ul'
+  | 'li';
 
 export interface BoxProps
   extends ResponsiveStylePropsWithModifiers,
@@ -154,7 +162,7 @@ export const Box = forwardRef<
   );
 
   const className = classNames(
-    style.Box,
+    generatedStyle.Box,
     visuallyHidden && classes.visuallyHidden,
     printHidden && classes.printHidden,
     Tag === 'ul' && classes.listReset,

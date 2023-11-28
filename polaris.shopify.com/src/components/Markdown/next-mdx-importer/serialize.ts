@@ -1,7 +1,7 @@
 import type {Plugin} from 'unified';
-import type {Literal} from 'unist';
+import type {Literal, Node} from 'unist';
 import {VFile} from 'vfile';
-import {visit, type Node} from 'unist-util-visit';
+import {visit} from 'unist-util-visit';
 import type {MDXRemoteSerializeResult} from 'next-mdx-remote';
 import {serialize as nextMdxSerialize} from 'next-mdx-remote/serialize';
 import {is as isVFile} from 'vfile-is';
