@@ -182,9 +182,9 @@ function keyByModifiers(styleProps: ResponsiveStylePropsWithModifiers) {
     delete stylePropsWithoutModifiers[modifier as keyof ResponsiveStyleProps];
   });
 
-  if (Object.keys(stylePropsWithoutModifiers).length) {
-    modifierStyleProps[baseStylePropsModifierKey] = stylePropsWithoutModifiers;
-  }
+  // Always set base style props, regardless if there are any values.
+  // This enables the defaults resolution to work.
+  modifierStyleProps[baseStylePropsModifierKey] = stylePropsWithoutModifiers;
 
   return modifierStyleProps;
 }
@@ -220,9 +220,7 @@ function resolveConcreteLonghandValues(
   };
 
   // Defaults may have contained aliases, so we have to resolve those again.
-  longhandStyleProps = resolveAliasFallbacks(longhandStyleProps);
-
-  return longhandStyleProps;
+  return resolveAliasFallbacks(longhandStyleProps);
 }
 
 const getCustomPropertyValueForStyleProp = ({
