@@ -6,9 +6,9 @@
     "node": "^16.17.0 || >=18.12.0"
   },
   "scripts": {
-    "build": "yarn gen-colors && yarn gen-assets && yarn get-style-props && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
+    "build": "yarn gen-colors && yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
     "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
-    "dev": "yarn gen-colors && yarn get-props && yarn get-style-props && run-p dev:*",
+    "dev": "yarn gen-colors && yarn get-props && run-p dev:*",
     "dev:server": "open http://localhost:3000 && next dev",
     "dev:playroom": "rm -rf ./public/playroom && playroom start",
     "dev:watch-md": "node scripts/watch-md.mjs",
@@ -20,7 +20,6 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "./scripts/get-props/src/get-props.ts",
-    "get-style-props": "node ./scripts/get-style-props/index.mjs",
     "gen-assets": "yarn get-props && node scripts/gen-assets.mjs",
     "gen-colors": "ts-node ./scripts/gen-colors.ts",
     "visual-regression": "node scripts/visual-regression.mjs"
@@ -73,6 +72,7 @@
     "@types/marked": "^4.0.3",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
     "@types/uuid": "^9.0.1",
     "babel-plugin-preval": "^5.1.0",
     "backstopjs": "^6.1.4",
@@ -105,5 +105,9 @@
     "ts-node": "^10.7.0",
     "typescript": "^4.9.3",
     "yargs": "^17.7.1"
+  },
+  "resolutions": {
+    "@types/react": "18.2.0",
+    "@types/react-dom": "18.2.0"
   }
 }

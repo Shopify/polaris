@@ -26,7 +26,6 @@ import {DoDont, Do, Dont} from './components/DoDont';
 import {Heading} from '../../components/Heading';
 import PatternsExample from '../../components/PatternsExample';
 import {Card} from '../../components/Card';
-import {Cube} from '../../components/Cube';
 import RichCardGrid from '../RichCardGrid';
 import Tooltip from '../Tooltip';
 import Icon from '../Icon';

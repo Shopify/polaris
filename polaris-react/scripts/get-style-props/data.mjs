@@ -5,7 +5,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 export const styleFile = path.resolve(
   __dirname,
-  '../../src/components/Box/style.module.css',
+  '../../src/components/Box/generated-style.scss',
 );
 export const typesFile = path.resolve(
   __dirname,
@@ -270,6 +270,7 @@ export const stylePropConfig = {
   },
   justifyItems: {aliases: ['justify']},
   alignItems: {aliases: ['align']},
+  boxShadow: {aliases: ['shadow']},
 };
 
 // keys are CSS selectors, values are used as CSS custom property names (see
@@ -279,4 +280,4 @@ export const modifiers = {':hover': '_hover', ':visited': '_visited'};
 
 // Used to ensure custom properties don't collide with other user created ones
 // Alternatives: ⅀ ℈ ￪ 〓 ￮ _
-export const cssCustomPropertyNamespace = '⅀';
+export const cssCustomPropertyNamespace = '_';
