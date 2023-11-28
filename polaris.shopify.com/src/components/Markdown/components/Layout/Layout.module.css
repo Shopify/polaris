@@ -1,0 +1,7 @@
+.Section {
+  margin-block-end: var(--p-space-800);
+}
+
+.Section:last-child {
+  margin-block-end: 0;
+}

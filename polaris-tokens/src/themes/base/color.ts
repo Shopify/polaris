@@ -854,7 +854,7 @@ export const color: {
     description: 'Use for text suggested by magic AI.',
   },
   'color-text-magic-secondary': {
-    value: colors.purple[12],
+    value: colors.purple[13],
     description:
       'Use for text suggested by magic AI with a secondary level of prominence.',
   },

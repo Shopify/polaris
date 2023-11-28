@@ -1,9 +1,10 @@
 import React from 'react';
 import type {ComponentProps} from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {SearchField} from '..';
-import {UnstyledButton} from '../../../../UnstyledButton';
+import {TextField} from '../../../../TextField';
 
 describe('SearchField', () => {
   const defaultProps: ComponentProps<typeof SearchField> = {
@@ -14,6 +15,11 @@ describe('SearchField', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
   });
 
   it('will call onChange when changed', () => {
@@ -22,7 +28,7 @@ describe('SearchField', () => {
     const wrapper = mountWithApp(<SearchField {...props} onChange={spy} />, {});
 
     wrapper.act(() => {
-      wrapper.find('input')!.trigger('onChange');
+      wrapper.find(TextField)!.trigger('onChange');
     });
 
     expect(spy).toHaveBeenCalledTimes(1);
@@ -33,7 +39,7 @@ describe('SearchField', () => {
     const wrapper = mountWithApp(<SearchField {...props} />, {});
 
     wrapper.act(() => {
-      wrapper.findAll(UnstyledButton)[0]?.trigger('onClick');
+      wrapper.find(TextField)?.trigger('onClearButtonClick');
     });
 
     expect(props.onChange).toHaveBeenCalledWith('');

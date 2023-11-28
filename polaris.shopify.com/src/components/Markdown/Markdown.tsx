@@ -9,12 +9,11 @@ import React, {
 } from 'react';
 import {MDXRemote, type MDXRemoteProps} from './next-mdx-importer';
 import {ClipboardIcon} from '@shopify/polaris-icons';
-import {Grid, InlineGrid} from '@shopify/polaris';
+import {InlineGrid} from '@shopify/polaris';
 
 import styles from './Markdown.module.scss';
 import Code, {InlineCode} from '../../components/Code';
 import {DirectiveCard} from './components/DirectiveCard';
-import {MdxCard, MdxColumn, Section, Row, Column} from './components/Mdx';
 import {Box, type WithAsProp} from '../../components/Box';
 import {Stack} from '../../components/Stack';
 import StatusBanner from '../../components/StatusBanner';
@@ -34,6 +33,14 @@ import {FeaturedCardGrid} from '../FeaturedCardGrid';
 import {useCopyToClipboard} from '../../utils/hooks';
 import {Colors} from './components/Colors';
 import {CollapsibleDetails} from '../../components/CollapsibleDetails';
+import {
+  Section as LayoutSection,
+  Text,
+  Small,
+  Medium,
+  Large,
+  ExtraLarge,
+} from './components/Layout';
 
 const CodeVisibilityContext = createContext<
   [
@@ -235,13 +242,7 @@ function Markdown<
         Stack,
         InlineGrid,
         SideBySide,
-        Grid,
         Card,
-        MdxCard,
-        MdxColumn,
-        Section,
-        Row,
-        Column,
         DirectiveCard,
         FeaturedCardGrid,
         YoutubeVideo,
@@ -256,6 +257,12 @@ function Markdown<
         Colors,
         CollapsibleDetails,
         Code,
+        LayoutSection,
+        Text,
+        Small,
+        Medium,
+        Large,
+        ExtraLarge,
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">

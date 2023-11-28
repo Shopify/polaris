@@ -77,6 +77,46 @@ export function Disabled() {
   );
 }
 
+export function Magic() {
+  return (
+    <Select
+      label="Date range"
+      tone="magic"
+      options={[
+        {label: 'Today', value: 'today'},
+        {label: 'Yesterday', value: 'yesterday'},
+        {label: 'Last 7 days', value: 'lastWeek'},
+      ]}
+    />
+  );
+}
+
+export function WithInlineLabelMagic() {
+  const [selected, setSelected] = useState('newestUpdate');
+
+  const handleSelectChange = useCallback((value) => setSelected(value), []);
+
+  const options = [
+    {label: 'Newest update', value: 'newestUpdate'},
+    {label: 'Oldest update', value: 'oldestUpdate'},
+    {label: 'Most spent', value: 'mostSpent'},
+    {label: 'Most orders', value: 'mostOrders'},
+    {label: 'Last name A–Z', value: 'lastNameAlpha'},
+    {label: 'Last name Z–A', value: 'lastNameReverseAlpha'},
+  ];
+
+  return (
+    <Select
+      label="Sort by"
+      tone="magic"
+      labelInline
+      options={options}
+      onChange={handleSelectChange}
+      value={selected}
+    />
+  );
+}
+
 export function WithPrefix() {
   const [selected, setSelected] = useState('enabled');
 
@@ -206,6 +246,13 @@ export function All() {
           error="Province is required"
         />
         <Select
+          label="Magic"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          tone="magic"
+          onChange={() => {}}
+        />
+        <Select
           label="Required"
           options={['Ontario', 'Newfoundland and Labrador']}
           value="Ontario"
@@ -248,6 +295,14 @@ export function All() {
       <FormLayout.Group>
         <Select
           label="Label inline"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          labelInline
+        />
+        <Select
+          label="Label inline magic"
+          tone="magic"
           options={['Ontario', 'Newfoundland and Labrador']}
           value="Ontario"
           onChange={() => {}}

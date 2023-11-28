@@ -190,31 +190,28 @@ Examples of warning message types:
 
 ## Anti-patterns
 
-<Grid>
- <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
-<Dont>
-![Toast error message](/images/content/error-messages/dont-toast-error@2x.png)
+<LayoutSection>
+  <Medium variant="dont">
+  ![Toast error message](/images/content/error-messages/dont-toast-error@2x.png)
 
 ### Avoid using toast for error messages
 
 Although error toast is still available, we discourage its use. Toast messages are too short to adequately explain what went wrong and how to fix the problem. Because the toast component appears at the bottom of the screen and disappears after 3 seconds, it can easily be missed. Reserve toast for errors not caused by merchants, like a connection issue. Always try to use a banner to inform merchants about persistent errors.
 
-</Dont>
-</Grid.Cell>
- <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
-<Dont>
-![Modal error message](/images/content/error-messages/dont-modals-for-errors@2x.png)
+  </Medium>
+
+  <Medium variant="dont">
+  ![Modal error message](/images/content/error-messages/dont-modals-for-errors@2x.png)
 
 ### Don’t use modals for errors
 
 Modal dialogs are a good way to ask merchants to confirm a destructive action, but not to tell them an error has occurred.
 Modals block merchants until a decision is made, which is likely to make merchants feel pressured. Most errors don’t need to block access to the rest of the feature.
 
-</Dont>
-</Grid.Cell>
- <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
-<Dont>
-![Home notification error message](/images/content/error-messages/dont-home-notification@2x.png)
+  </Medium>
+
+  <Medium variant="dont">
+  ![Home notification error message](/images/content/error-messages/dont-home-notification@2x.png)
 
 ### Avoid using [home notifications](#home-notifications) for errors
 
@@ -222,9 +219,9 @@ Home notification errors are for high-priority tasks that merchants must complet
 a negative impact to their business, like losing money.
 One exception is errors for features that don‘t have a dedicated details page.
 
-</Dont>
-</Grid.Cell>
-</Grid>
+  </Medium>
+</LayoutSection>
+
 ---
 
 ## Form validation

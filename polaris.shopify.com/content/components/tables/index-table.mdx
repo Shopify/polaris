@@ -78,6 +78,9 @@ examples:
   - fileName: index-table-with-pagination.tsx
     title: With pagination
     description: Use when the table contains many rows and they need paginating.
+  - fileName: index-table-with-nested-rows.tsx
+    title: With nested rows
+    description: An index table with nested rows. Use to present hierarchical or related data in a structured manner.
 previewImg: /images/components/tables/index-table.png
 ---
 
@@ -153,6 +156,8 @@ Index tables should:
 Index tables can optionally:
 
 - Provide bulk actions for tasks that are often applied to many list items at once. For example, merchants may want to add the same tag to a large number of products.
+- Hide bulk actions on small screens using the `condensed` prop. We only recommend hiding bulk actions on screens smaller than 490px using our `breakpoints-sm` value: `condensed={useBreakpoints().smDown}`.
+  - Hiding bulk actions means a merchant can’t select multiple items at once, so it should only be used when the bulk actions are not essential to the merchant’s workflow.
 
 ---
 
@@ -210,7 +215,7 @@ An `IndexTable.Row` is used to render a row representing an item within an `Inde
 | tone?               | "subdued" &#124; "success" &#124; "warning" &#124; "critical" | Whether the row should visually indicate its status with a background color                                                                                                                         |
 | disabled?           | boolean                                                       | Whether the row should be disabled                                                                                                                                                                  |
 | selectionRange?     | [number, number]                                              | A tuple array with the first and last index of the range of other rows that the row describes. All non-disabled rows in the range are selected when the row with a selection range set is selected. |
-| rowType?            | "data" &#124; "subheader"                                     | Indicates the relationship or role of the row's contents. A `rowType` of "subheader" looks and behaves the same as the table header. Defaults to "data".                                            |
+| rowType?            | "data" &#124; "subheader" &#124; "child"                      | Indicates the relationship or role of the row's contents. A `rowType` of "subheader" looks and behaves the same as the table header. Rows of type "child" are indented. Defaults to "data".         |
 | accessibilityLabel? | string                                                        | Label set on the row's checkbox. Defaults to "Select \{resourceName\}"                                                                                                                              |
 | onClick?            | () => void                                                    | Callback fired when the row is clicked. Overrides the default click behaviour.                                                                                                                      |
 | onNavigation?       | (id: string) => void                                          | Callback fired when the row is clicked and contains an anchor element with the `data-primary-link` property set                                                                                     |

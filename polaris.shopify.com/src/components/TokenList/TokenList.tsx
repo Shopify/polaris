@@ -145,7 +145,7 @@ function TokenListItem({
 
   const searchAttributes = useGlobalSearchResult();
   const isClickableSearchResult = !!searchAttributes?.tabIndex;
-  const url = `/tokens/${category}#${searchAttributes?.id}`;
+  const url = `/tokens/${slugify(category)}#${name}`;
 
   const customOnClickHandler = () => {
     uuid &&

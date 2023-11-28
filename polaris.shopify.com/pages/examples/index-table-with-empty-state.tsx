@@ -3,6 +3,7 @@ import {
   IndexTable,
   LegacyCard,
   Text,
+  useBreakpoints,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -54,6 +55,7 @@ function IndexTableWithCustomEmptyStateExample() {
   return (
     <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         emptyState={emptyStateMarkup}

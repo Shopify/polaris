@@ -36,229 +36,251 @@ keywords:
 
 <Subnav />
 
-## Icon layout
+<LayoutSection card>
+  <ExtraLarge>
+    <Text>
 
-<Row variant="1-1">
-  <Column variant="directive">
+      ## Grid and keylines
+
+      The icon grid and keylines ensure consistent sizing of icons in the Shopify admin.
+
+    </Text>
+
+  </ExtraLarge>
+
+  <Medium variant="directive">
 
     ![A 20 pixels square grid with an icon in a 14 px square.](/images/design/icons/icons-creating-layout-1@2x.png)
 
     The icon container is 20 &times; 20 px. The content of an icon should be
     confined within a safe space of 14 &times; 14 px.
 
-  </Column>
-  <Column variant="directive">
+  </Medium>
+  <Medium variant="directive">
 
     ![A 20 pixels square grid with an icon in a 14 pixels square, with an element sticking out slightly.](/images/design/icons/icons-creating-layout-2@2x.png)
 
     Exceptionally, parts of an icon can go beyond the 14 &times; 14 px safe space, but should leave a space of at least 1 px from the edges of the icon container.
 
-  </Column>
-</Row>
+  </Medium>
 
-## Keylines
-
-<Row variant="1-1">
-  <Column variant="directive">
+  <Medium variant="directive">
 
     ![Four icons that fit inside the following grids: 13x13 pixels square, 14x14 pixels circle, 14x12 pixels rectangles, horizontal and vertical.](/images/design/icons/icons-creating-keylines-1@2x.png)
 
     The overall shape of an icon can vary from a circle to a square, or from a tall rectangle to a wide one. Always start with the following keylines, so that all icons have the same visual weight.
 
-  </Column>
-  <Column variant="directive">
+  </Medium>
+  <Medium variant="directive">
 
     ![Four icons that stick our slightly from the the following grids: 13x13 pixels square, 14x14 pixels circle, 14x12 pixels rectangles, horizontal and vertical.](/images/design/icons/icons-creating-keylines-2@2x.png)
 
     These guidelines are a starting point, not a hard constraint. If it makes the concept stronger or keeps the icon optically aligned, it’s ok to deviate.
 
-  </Column>
-</Row>
+  </Medium>
+</LayoutSection>
 
-## General Rules
+<LayoutSection card>
 
-<Row variant="1-1">
-  <Column variant="do">
+  <ExtraLarge>
+    <Text>
+
+      ## Design guidelines
+
+      Consistent use of stroke widths, style and metaphor is necessary for icons to feel streamlined in the admin.
+
+    </Text>
+
+  </ExtraLarge>
+
+  <Medium variant="do">
 
     ![An archive box and a building represented in two dimensions. ](/images/design/icons/icons-creating-rules-1@2x.png)
 
     Ensure that icons are two-dimensional, and objects face forward.
 
-  </Column>
-  <Column variant="dont">
+  </Medium>
+  <Medium variant="dont">
 
     ![An archive box and a building represented with a perspective. ](/images/design/icons/icons-creating-rules-2@2x.png)
 
     Use perspective and 3D objects
 
-  </Column>
-</Row>
+  </Medium>
 
-<Row variant="1-1">
-  <Column variant="caution">
+  <Medium variant="caution">
 
     ![A package and a globe represented with slight hints of a third dimension.](/images/design/icons/icons-creating-rules-3@2x.png)
 
     Subtle hints of a third dimension are acceptable when necessary for
     conceptual clarity.
 
-  </Column>
-  <Column variant="do">
+  </Medium>
+
+  <Medium variant="do">
     ![A presentation board icon centered in a 20 pixel square.](/images/design/icons/icons-creating-rules-4@2x.png)
 
     Center icons in their container. Adjust optically if needed.
 
-  </Column>
-</Row>
+  </Medium>
 
-<Row variant="1-1">
-  <Column variant="do">
+  <Medium variant="do">
 
     ![Three simple icons made with simple geometric shapes representing a smile, a scroll and a page](/images/design/icons/icons-creating-rules-5@2x.png)
 
     Use simple geometric shapes, angles, and rounded corners.
 
-  </Column>
-  <Column variant="dont">
+  </Medium>
+  <Medium variant="dont">
 
     ![Three icons made with organic shapes and small details representing a pin, a bell and a christmas tree.](/images/design/icons/icons-creating-rules-6@2x.png)
 
     Use excessive details or organic shapes.
 
-  </Column>
-</Row>
+  </Medium>
 
-<Row variant="1-1">
-  <Column variant="do">
+  <Medium variant="do">
 
     ![A shopping cart with solid speed lines behind. ](/images/design/icons/icons-creating-rules-7@2x.png)
 
     Use a consistent visual style, stroke weight and only one color.
 
-  </Column>
-  <Column variant="dont">
+  </Medium>
+
+  <Medium variant="dont">
 
     ![A shopping cart with semi-transparent speed lines behind.](/images/design/icons/icons-creating-rules-8@2x.png)
 
     Use transparency.
 
-  </Column>
-</Row>
+  </Medium>
+</LayoutSection>
 
-{/* Filled vs outlined */}
+<LayoutSection card>
 
-## Filled vs Outlined
+  <Text>
 
-Outlined icons are the default. Filled icons are reserved for navigation only.
+    ## Filled vs Outlined
 
-<Row variant="1">
-  ![Shopify’s admin interface with search open, showing a few results that use
-  different icons like a person, a tag, or an inbox, to differentiate the types
-  of results.](/images/design/icons/icons-creating-filled-vs-outline-1@2x.png)
-</Row>
+    The default style of icons used throughout the admin is outlined. Usage of filled icons is strictly reserved for the main admin navigation and specific, semi-permanent states.
 
-<Row variant="1-1-1">
-  <Column variant="do">
+  </Text>
+  <Large>
+    ![Shopify’s admin interface with search open, showing a few results that use
+    different icons like a person, a tag, or an inbox, to differentiate the types
+    of results.](/images/design/icons/icons-creating-filled-vs-outline-1@2x.png)
+  </Large>
+
+  <Small variant="do">
     ![A settings navigation menu with icons differentiating each item in the menu. All icons are filled expect for the one selected that is outlined.](/images/design/icons/icons-creating-filled-vs-outline-2@2x.png)
 
-    Use filled icons as navigation.
+    Only use filled icons in the main navigation.
 
-  </Column>
-  <Column variant="do">
+  </Small>
+  <Small variant="do">
     ![A filled icons with a pin.](/images/design/icons/icons-creating-filled-vs-outline-3@2x.png)
 
     Use filled icons for semi-permanent selected states, like pinning an app.
 
-  </Column>
-  <Column variant="dont">
+  </Small>
+  <Small variant="dont">
     ![A filled icon within a blue badge.](/images/design/icons/icons-creating-filled-vs-outline-4@2x.png)
 
     Use filled icons to create emphasis.
 
-  </Column>
-</Row>
+  </Small>
+</LayoutSection>
 
-### Designing outlined icons
+<LayoutSection card>
+  <ExtraLarge>
+    <Text>
 
-<Row variant="1-1">
-  <Column variant="directive">
+      ### Designing outlined icons
+
+    </Text>
+
+  </ExtraLarge>
+  <Medium variant="directive">
 
     ![An inbox icon where the outline stroke is highlighted.](/images/design/icons/icons-creating-outline-1@2x.png)
 
     Stroke weight is 1.5px
 
-  </Column>
-  <Column variant="directive">
+  </Medium>
+  <Medium variant="directive">
 
     ![An inbox icon where the alignment with the pixel grid is highlighted. ](/images/design/icons/icons-creating-outline-2@2x.png)
 
     Since the stroke has half a pixel, one side of the stroke should always be aligned with the pixel grid.
 
-  </Column>
-</Row>
+  </Medium>
 
-<Row variant="1-1">
-  <Column variant="directive">
+  <Medium variant="directive">
 
     ![A clock icon highlighting the alignment with 0.25 pixels increments.](/images/design/icons/icons-creating-outline-3@2x.png)
 
     Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
 
-  </Column>
-  <Column variant="directive">
+  </Medium>
+
+  <Medium variant="directive">
 
     ![A Shopping card icons with the stroke terminals highlighted.](/images/design/icons/icons-creating-outline-4@2x.png)
 
     Terminals are round, even when a shape cuts out into another.
 
-  </Column>
-</Row>
+  </Medium>
 
-<Row variant="1-1-1">
-  <Column variant="directive">
+  <Medium variant="directive">
 
     ![A calendar, an inbox and a shop icon with the corner radius highlighted. 3 pixels for the calendar, 2 pixels for the inbox and 1 pixel for the inbox.](/images/design/icons/icons-creating-outline-5@2x.png)
 
     Corner radius can go from 1 px to 3 px, depending on the object roundness. Joints and terminals must be rounded. Sharp corners are not allowed, except for intersections and cutouts.
 
-  </Column>
-  <Column variant="directive">
+  </Medium>
+
+  <Medium variant="directive">
 
     ![Six outline icons with small filled object highlighted, like a credit card that is made out of outlines and an icon that is filled.](/images/design/icons/icons-creating-outline-6@2x.png)
 
     Filled shapes can be used, only in really small objects, like in the dot of an exclamation point.
 
-  </Column>
-  <Column variant="directive">
+  </Medium>
+
+  <Medium variant="directive">
 
     ![An icons with a hand pressing a button, where the gaps between the button and the hand. ](/images/design/icons/icons-creating-outline-7@2x.png)
 
     The minimum gap between strokes should never be less than 1px.
 
-  </Column>
-</Row>
+  </Medium>
+</LayoutSection>
 
-### Designing filled icons
+<LayoutSection card>
+  <ExtraLarge>
+    <Text>
 
-<Row variant="1-1">
-  <Column variant="directive">
+      ### Designing filled icons
+
+    </Text>
+
+  </ExtraLarge>
+  <Medium variant="directive">
 
     ![A filled icon overlapping an outlined icon.](/images/design/icons/icons-creating-filled-1@2x.png)
 
     Filled icons should align closely to their outline pairs. They don’t need to be a pixel perfect match, but they must have a similar visual weight, and the transition from one to the other must feel smooth.
 
-  </Column>
-  <Column variant="directive">
+  </Medium>
+  <Medium variant="directive">
 
     ![A tag, a person and a flower icons made of simple shapes.](/images/design/icons/icons-creating-filled-2@2x.png)
 
     Icons are made out of contiguous shapes. Ideally one, but it’s possible to go up to three when required for clarity.
 
-  </Column>
-</Row>
+  </Medium>
 
-<Row variant="1-1">
-  <Column variant="directive">
+  <Medium variant="directive">
 
     ![Two icons with the stroke weight being highlighted.](/images/design/icons/icons-creating-filled-3@2x.png)
 
@@ -267,8 +289,9 @@ Outlined icons are the default. Filled icons are reserved for navigation only.
 
     Exceptions are allowed for optical adjustments, as long as they fall on 0.25 px increments.
 
-  </Column>
-  <Column variant="directive">
+  </Medium>
+
+  <Medium variant="directive">
 
     ![A shopping cart icon with the stroke terminals being highlighted, and a wallet icon with cutouts and intersection angles highlighted.](/images/design/icons/icons-creating-filled-4@2x.png)
 
@@ -276,22 +299,21 @@ Outlined icons are the default. Filled icons are reserved for navigation only.
 
     Corner radius can vary from 1 px to 3 px, depending on the object's roundness. Terminals and joints are rounded. Sharp corners are not allowed, except in intersections and knockouts.
 
-  </Column>
-</Row>
+  </Medium>
 
-<Row variant="1-1">
-  <Column variant="directive">
+  <Medium variant="directive">
 
     ![Two arrow icons with the stroke being highlighted.](/images/design/icons/icons-creating-filled-5@2x.png)
 
     If it’s not possible to fill the outline icon, a 2px stroke can be used as a filled version.
 
-  </Column>
-  <Column variant="directive">
+  </Medium>
+
+  <Medium variant="directive">
 
     ![An icon with a person and a key, where the gap between the two elements is highlighted.](/images/design/icons/icons-creating-filled-6@2x.png)
 
     The minimum gap between strokes should never be less than 1px.
 
-  </Column>
-</Row>
+  </Medium>
+</LayoutSection>
