@@ -100,14 +100,16 @@ export const height: {
 
 const heightStyleProps = [
   // Logical properties
-  'blockSize',
-  'minBlockSize',
-  'maxBlockSize',
+  // TODO: Reinstate these once our token scales are usable
+  // 'blockSize',
+  // 'minBlockSize',
+  // 'maxBlockSize',
   'containIntrinsicBlockSize',
   // Positional properties
-  'height',
-  'minHeight',
-  'maxHeight',
+  // TODO: Reinstate these once our token scales are usable
+  // 'height',
+  // 'minHeight',
+  // 'maxHeight',
   'containIntrinsicHeight',
 ] as const;
 
