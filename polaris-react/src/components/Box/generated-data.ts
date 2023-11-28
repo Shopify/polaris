@@ -1368,6 +1368,11 @@ export const stylePropAliasNames: (keyof StyleProps)[] = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat())
 );
 
+export type PropDefaults = {[K in keyof StyleProps]?:
+  | StyleProps[K]
+  | undefined
+  | ((props: ResponsiveStyleProps) => StyleProps[K] | undefined) };
+
 export const stylePropDefaults = {
   borderInlineStartStyle: (props) =>
       props.borderInlineStartColor || props.borderInlineStartWidth
@@ -1387,12 +1392,7 @@ export const stylePropDefaults = {
         : undefined,
   outlineStyle: (props) =>
       props.outlineWidth || props.outlineColor ? 'solid' : undefined,
-} satisfies {
-  [K in keyof StyleProps]?:
-    | StyleProps[K]
-    | undefined
-    | ((props: ResponsiveStyleProps) => StyleProps[K] | undefined)
-};
+} satisfies PropDefaults;
 
 /**
  * A list of values that if passed to any styleProp on our Box component should

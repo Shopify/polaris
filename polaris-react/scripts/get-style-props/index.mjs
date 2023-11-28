@@ -481,6 +481,11 @@ export const stylePropAliasNames: (keyof StyleProps)[] = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat())
 );
 
+export type PropDefaults = {[K in keyof StyleProps]?:
+  | StyleProps[K]
+  | undefined
+  | ((props: ResponsiveStyleProps) => StyleProps[K] | undefined) };
+
 export const stylePropDefaults = {
   ${Object.entries(stylePropConfig)
     .filter(([, {getDefault}]) => typeof getDefault !== 'undefined')
@@ -488,12 +493,7 @@ export const stylePropDefaults = {
       ([styleProp, {getDefault}]) => `${styleProp}: ${getDefault.toString()},`,
     )
     .join('\n  ')}
-} satisfies {
-  [K in keyof StyleProps]?:
-    | StyleProps[K]
-    | undefined
-    | ((props: ResponsiveStyleProps) => StyleProps[K] | undefined)
-};
+} satisfies PropDefaults;
 
 /**
  * A list of values that if passed to any styleProp on our Box component should
