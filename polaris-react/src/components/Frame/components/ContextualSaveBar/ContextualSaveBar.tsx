@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {DisputeMinor} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
@@ -10,6 +10,8 @@ import {classNames} from '../../../../utilities/css';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {useI18n} from '../../../../utilities/i18n';
 import {ShadowBevel} from '../../../ShadowBevel';
+import {useEventListener} from '../../../../utilities/use-event-listener';
+import {debounce} from '../../../../utilities/debounce';
 
 import styles from './ContextualSaveBar.scss';
 
@@ -19,9 +21,29 @@ export function ContextualSaveBar({
   discardAction,
   fullWidth,
   secondaryMenu,
-  leaveConfirmation = false,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
+  const barRef = useRef<HTMLDivElement>(null);
+  const insideBarRef = useRef<HTMLDivElement>(null);
+
+  const handleLeaveConfirmation = debounce(
+    () => {
+      barRef.current?.classList.add(styles.Shake);
+      insideBarRef.current?.classList.add(styles.GreenBar);
+
+      setTimeout(() => {
+        barRef.current?.classList.remove(styles.Shake);
+        insideBarRef.current?.classList.remove(styles.GreenBar);
+      }, 1000);
+    },
+    50,
+    {leading: false, trailing: true},
+  );
+
+  useEventListener(
+    'onLeaveDirtyState' as keyof WindowEventMap,
+    handleLeaveConfirmation,
+  );
 
   const discardActionContent =
     discardAction && discardAction.content
@@ -68,14 +90,9 @@ export function ContextualSaveBar({
   );
 
   return (
-    <div className={classNames(leaveConfirmation && styles.Shake)}>
+    <div ref={barRef}>
       <ShadowBevel boxShadow="400" borderRadius="400">
-        <div
-          className={classNames(
-            styles.ContextualSaveBar,
-            leaveConfirmation && styles.GreenBar,
-          )}
-        >
+        <div className={styles.ContextualSaveBar} ref={insideBarRef}>
           <div className={contentsClassName}>
             <div className={styles.MessageContainer}>
               <Icon source={DisputeMinor} />

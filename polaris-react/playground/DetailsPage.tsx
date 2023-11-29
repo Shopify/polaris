@@ -58,7 +58,6 @@ export function DetailsPage() {
   const skipToContentRef = useRef<HTMLAnchorElement>(null);
   const [toastActive, setToastActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isLeaveConfirmation, setIsLeaveConfirmation] = useState(false);
   const [isDirty, setIsDirty] = useState(false);
   const [searchActive, setSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -85,7 +84,6 @@ export function DetailsPage() {
     setEmailFieldValue(defaultState.current.emailFieldValue);
     setNameFieldValue(defaultState.current.nameFieldValue);
     setIsDirty(false);
-    setIsLeaveConfirmation(false);
   }, []);
   const handleSave = useCallback(() => {
     defaultState.current.nameFieldValue = nameFieldValue;
@@ -120,6 +118,8 @@ export function DetailsPage() {
   );
   const toggleIsLoading = useCallback(() => {
     if (isDirty) {
+      const event = new CustomEvent('onLeaveDirtyState');
+      window.dispatchEvent(event);
       setIsLeaveConfirmation(true);
       return;
     }
@@ -176,7 +176,6 @@ export function DetailsPage() {
         discardConfirmationModal: true,
       }}
       contextControl={contextControlMarkup}
-      leaveConfirmation={isLeaveConfirmation}
     />
   ) : null;
 
