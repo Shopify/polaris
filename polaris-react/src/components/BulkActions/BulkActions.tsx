@@ -54,10 +54,6 @@ export interface BulkActionsProps {
   onSelectModeToggle?(selectMode: boolean): void;
   /** Callback when more actions button is toggled */
   onMoreActionPopoverToggle?(isOpen: boolean): void;
-  // /** If the BulkActions is currently sticky in view */
-  // isSticky?: boolean;
-  // /** The width of the BulkActions */
-  // width: number;
   /** Used for forwarding the ref */
   innerRef?: React.Ref<any>;
 }
@@ -220,8 +216,6 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       disabled,
       promotedActions,
       i18n,
-      // isSticky,
-      // width,
       paginatedSelectAllText,
       paginatedSelectAllAction,
       accessibilityLabel,
