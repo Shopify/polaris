@@ -1,16 +1,13 @@
 import React, {useEffect, useState, useRef, useId} from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
-import {InlineStack} from '../../../InlineStack';
 import {Spinner} from '../../../Spinner';
 import {Text} from '../../../Text';
 import {classNames} from '../../../../utilities/css';
 import {Icon} from '../../../Icon';
 import {useI18n} from '../../../../utilities/i18n';
 import {UnstyledButton} from '../../../UnstyledButton';
-import {BlockStack} from '../../../BlockStack';
 import {TextField} from '../../../TextField';
-import {Box} from '../../../Box';
 
 import styles from './SearchField.scss';
 
@@ -41,7 +38,20 @@ export function SearchField({
   loading,
 }: SearchFieldProps) {
   const id = useId();
+  const i18n = useI18n();
   const inputRef = useRef<HTMLInputElement>(null);
+
+  const [focusVisible, setFocusVisible] = useState(false);
+
+  const handleFocus = () => {
+    onFocus?.();
+    setFocusVisible(true);
+  };
+
+  const handleBlur = () => {
+    onBlur?.();
+    setFocusVisible(false);
+  };
 
   function handleChange(newValue: string) {
     onChange(newValue);
@@ -59,28 +69,47 @@ export function SearchField({
     }
   }
 
-  const loadingMarkup = loading ? (
+  const loadingMarkup = (
     <div className={styles.Spinner}>
       <Spinner size="small" />
     </div>
-  ) : null;
+  );
+
+  const clearButtonMarkup = (
+    <UnstyledButton
+      className={classNames(
+        styles.ClearButton,
+        (focused || focusVisible) && value !== '' && styles.visible,
+      )}
+      onClick={handleClear}
+      disabled={disabled}
+    >
+      <Text as="span" visuallyHidden>
+        {i18n.translate('Polaris.Common.clear')}
+      </Text>
+      <Icon source={CircleCancelMinor} tone="subdued" />
+    </UnstyledButton>
+  );
+
+  const suffixMarkup = loading ? loadingMarkup : clearButtonMarkup;
 
   return (
-    <TextField
-      id={id}
-      labelHidden
-      label={placeholder}
-      focused={focused}
-      variant={borderlessQueryField ? 'borderless' : undefined}
-      value={value}
-      onChange={handleChange}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      autoComplete="off"
-      placeholder={placeholder}
-      disabled={disabled}
-      suffix={loadingMarkup}
-      onClearButtonClick={handleClear}
-    />
+    <div className={styles.Input}>
+      <TextField
+        id={id}
+        labelHidden
+        label={placeholder}
+        focused={focused}
+        variant={borderlessQueryField ? 'borderless' : undefined}
+        value={value}
+        onChange={handleChange}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        autoComplete="off"
+        placeholder={placeholder}
+        disabled={disabled}
+        suffix={suffixMarkup}
+      />
+    </div>
   );
 }

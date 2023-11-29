@@ -40,17 +40,27 @@
 }
 
 .Input {
-  flex: 1;
-  color: var(--p-color-text);
-  background: none;
-  border: none;
-  padding-inline: var(--p-space-150);
-  width: 100%;
+  margin-left: var(--p-space-050);
 
-  &:active,
-  &:focus {
-    outline: none;
+  *:not(button, svg) {
+    // stylelint-disable -- TextField needs to be smaller to prevent layout shift between filter modes of IndexFilters
+    --pc-text-field-border-radius: var(--p-border-radius-100);
+    // --pc-text-field-backdrop-outline-offset: calc(-1 * var(--p-border-width-100));
+    --pc-text-field-contents-margin-outer: var(--p-space-150);
+    --pc-text-field-min-height: 1.625rem;
+
+    height: var(--p-height-700);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
   }
+
+  input {
+    flex: 1 0 auto;
+    padding: var(--p-space-025) var(--p-space-150);
+  }
+  // stylelint-enable
 }
 
 .Suffix {
