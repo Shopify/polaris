@@ -10,28 +10,18 @@ import type {
   ResponsiveStyleProps,
   ResponsiveStylePropsWithModifiers,
   PropDefaults,
+  BreakpointsAliasesWithBaseKey,
 } from './generated-data';
 import {
+  allModifiers,
+  baseStylePropsModifierKey,
+  baseStylePropsBreakpointKey,
   stylePropAliasFallbacks,
   disallowedCSSPropertyValues,
   stylePropAliasNames as allAliases,
   cssCustomPropertyNamespace,
   modifiers,
 } from './generated-data';
-
-const baseStylePropsModifierKey = '' as const;
-type BaseStylePropsModifierKey = typeof baseStylePropsModifierKey;
-
-const baseStylePropsBreakpointKey = '' as const;
-type BaseStylePropsBreakpointKey = typeof baseStylePropsBreakpointKey;
-
-type BreakpointsAliasesWithBaseKey =
-  | BaseStylePropsBreakpointKey
-  | Exclude<BreakpointsAlias, (typeof breakpointsAliases)[0]>;
-
-// The "base" styles always come last after other modifiers
-const allModifiers: ((typeof modifiers)[number] | BaseStylePropsModifierKey)[] =
-  [...modifiers, baseStylePropsModifierKey];
 
 type ResponsiveStylePropObjects = {
   [T in keyof ResponsiveStyleProps]?: ResponsiveStyleProps[T] extends ResponsiveProp<

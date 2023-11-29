@@ -12,6 +12,11 @@ export const typesFile = path.resolve(
   '../../src/components/Box/generated-data.ts',
 );
 
+export const valueMapperFile = path.resolve(
+  __dirname,
+  '../../src/components/Box/.scss',
+);
+
 const positionalCSSProperties = [
   'width',
   'height',
@@ -284,3 +289,24 @@ export const modifiers = {':hover': '_hover', ':visited': '_visited'};
 // Used to ensure custom properties don't collide with other user created ones
 // Alternatives: ⅀ ℈ ￪ 〓 ￮ _
 export const cssCustomPropertyNamespace = '_';
+
+export const BoxValueMapperFactory =
+  (stylePropTokenGroupMap) => (value, prop) => {
+    // If this is a tokenized styleprop, we must convert it to a CSS var().
+    if (!Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop))
+      return value;
+    const tokenSubgroup = stylePropTokenGroupMap[prop];
+
+    // `Grid`'s `gap` prop used to allow passing fully formed var() functions as
+    // the value. This is no longer supported in v12+.
+    if (typeof value === 'string' && value.startsWith('var(')) {
+      throw new Error(
+        `"${value}" is not from the ${tokenSubgroup} token group.`,
+      );
+    }
+
+    // NOTE: All our token values today are either strings or numbers, so
+    // stringifying them here works. But if we ever have anything more complex
+    // (such as an object) this may generate invalid token names.
+    return `var(--p-${tokenSubgroup ? `${tokenSubgroup}-` : ''}${value})`;
+  };
