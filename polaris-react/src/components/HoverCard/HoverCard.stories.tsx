@@ -41,7 +41,7 @@ export function Default() {
   return (
     <div style={{margin: '0 auto', height: '600px', width: '960px'}}>
       <InlineStack align="center" blockAlign="center">
-        <BlockStack gap="5">
+        <BlockStack gap="500">
           <Box minHeight="200px" />
           <BlockStack>
             <Text as="p" tone="subdued">
@@ -75,7 +75,7 @@ export function Default() {
             </ButtonGroup>
           </BlockStack>
           <Card>
-            <BlockStack gap="3" inlineAlign="center">
+            <BlockStack gap="300" inlineAlign="center">
               <Text as="h2" variant="headingSm">
                 Customer
               </Text>
@@ -86,8 +86,8 @@ export function Default() {
                 activatorWrapper="div"
                 preferredPosition={position}
               >
-                <Box padding="4">
-                  <BlockStack gap="4">
+                <Box padding="400">
+                  <BlockStack gap="400">
                     <BlockStack gap="0">
                       <Text as="span" variant="headingSm">
                         <Link removeUnderline>Saul Goodman</Link>
@@ -102,14 +102,14 @@ export function Default() {
                       </Text>
                     </BlockStack>
                     <Box width="100%">
-                      <BlockStack gap="1">
-                        <InlineStack wrap={false} gap="1" align="start">
+                      <BlockStack gap="100">
+                        <InlineStack wrap={false} gap="100" align="start">
                           <Icon tone="subdued" source={LocationsMinor} />
                           <Text tone="subdued" as="p">
                             Albequerque, NM, USA
                           </Text>
                         </InlineStack>
-                        <InlineStack wrap={false} gap="1" align="start">
+                        <InlineStack wrap={false} gap="100" align="start">
                           <Box>
                             <Icon tone="subdued" source={OrdersMinor} />
                           </Box>
@@ -257,8 +257,8 @@ export function InTable() {
           activatorWrapper="div"
           preferredPosition="right"
         >
-          <Box padding="4">
-            <BlockStack gap="4">
+          <Box padding="400">
+            <BlockStack gap="400">
               <BlockStack gap="0">
                 <Text as="span" variant="headingSm">
                   <Link removeUnderline>{name}</Link>
@@ -271,8 +271,8 @@ export function InTable() {
                 </Text>
               </BlockStack>
               <Box width="100%">
-                <BlockStack gap="1">
-                  <InlineStack wrap={false} gap="1" align="start">
+                <BlockStack gap="100">
+                  <InlineStack wrap={false} gap="100" align="start">
                     <Box>
                       <Icon tone="subdued" source={LocationsMinor} />
                     </Box>
@@ -280,7 +280,7 @@ export function InTable() {
                       {location}
                     </Text>
                   </InlineStack>
-                  <InlineStack wrap={false} gap="1" align="start">
+                  <InlineStack wrap={false} gap="100" align="start">
                     <Box>
                       <Icon tone="subdued" source={OrdersMinor} />
                     </Box>
