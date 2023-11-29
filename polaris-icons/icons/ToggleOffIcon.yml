@@ -1,5 +1,5 @@
-name: Toggle
-description: Used to dennote something that can be toggled on and off.
+name: Toggle off
+description: Used to dennote that an element is toggled off.
 keywords:
   - toggle
   - setting
