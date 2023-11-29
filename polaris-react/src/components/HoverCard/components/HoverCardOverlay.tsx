@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from 'react';
-import {motion} from '@shopify/polaris-tokens';
+import {themeDefault} from '@shopify/polaris-tokens';
 
 import {classNames} from '../../../utilities/css';
 import {overlay} from '../../shared';
@@ -82,7 +82,7 @@ export class HoverCardOverlay extends PureComponent<
         this.clearTransitionTimeout();
         this.enteringTimer = window.setTimeout(() => {
           this.setState({transitionStatus: TransitionStatus.Entered});
-        }, parseInt(motion['motion-duration-100'], 10));
+        }, parseInt(themeDefault.motion['motion-duration-100'], 10));
       });
     }
 
