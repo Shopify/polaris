@@ -18,7 +18,7 @@ export function Default() {
         }}
       >
         <ContextualSaveBar
-          message="Unsaved changes"
+          message="You have unsaved changes"
           saveAction={{
             onAction: () => console.log('add form submit logic'),
             loading: false,
@@ -44,7 +44,7 @@ export function Disabled() {
         }}
       >
         <ContextualSaveBar
-          message="Unsaved changes"
+          message="You have unsaved changes"
           saveAction={{
             onAction: () => console.log('add form submit logic'),
             loading: false,
@@ -71,7 +71,7 @@ export function WithFlushContents() {
       >
         <ContextualSaveBar
           alignContentFlush
-          message="Unsaved changes"
+          message="You have unsaved changes"
           saveAction={{
             onAction: () => console.log('add form submit logic'),
           }}
@@ -96,7 +96,7 @@ export function WithFullWidth() {
       >
         <ContextualSaveBar
           fullWidth
-          message="Unsaved changes"
+          message="You have unsaved changes"
           saveAction={{
             onAction: () => console.log('add form submit logic'),
             loading: false,

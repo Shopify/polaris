@@ -246,7 +246,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       <CSSAnimation
         in={showContextualSaveBar}
         className={styles.ContextualSaveBar}
-        type="fade"
+        type="slideUp"
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>

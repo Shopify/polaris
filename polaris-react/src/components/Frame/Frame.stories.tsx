@@ -138,7 +138,7 @@ function InAnApplicationComponent() {
 
   const contextualSaveBarMarkup = isDirty ? (
     <ContextualSaveBar
-      message="Unsaved changes"
+      message="You have unsaved changes"
       saveAction={{
         onAction: handleSave,
       }}
@@ -480,7 +480,7 @@ function WithAnOffsetComponent() {
 
   const contextualSaveBarMarkup = isDirty ? (
     <ContextualSaveBar
-      message="Unsaved changes"
+      message="You have unsaved changes"
       saveAction={{
         onAction: handleSave,
       }}
@@ -828,7 +828,7 @@ function WithSidebarEnabled() {
 
   const contextualSaveBarMarkup = isDirty ? (
     <ContextualSaveBar
-      message="Unsaved changes"
+      message="You have unsaved changes"
       saveAction={{
         onAction: handleSave,
       }}

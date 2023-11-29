@@ -11,3 +11,12 @@
   opacity: 1;
   pointer-events: auto;
 }
+
+.startSlideUp {
+  transform: translateY(100vh);
+  transition: transform var(--p-motion-duration-500) var(--p-motion-ease-in-out);
+}
+
+.endSlideUp {
+  transform: translateY(0);
+}

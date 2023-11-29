@@ -57,7 +57,7 @@
   }
 
   @media #{$p-breakpoints-md-up} {
-    padding: 0 var(--p-space-800);
+    padding: 0 var(--p-space-400);
   }
 }
 
@@ -153,6 +153,65 @@
 
 .Action {
   margin-left: var(--p-space-200);
+}
+
+.GreenBar.GreenBar.GreenBar {
+  transition: background-color 0.3s var(--p-motion-ease);
+  background: var(--p-color-bg-fill-success-active);
+
+  h2 {
+    color: var(--p-color-text-success-on-bg-fill);
+  }
+
+  svg {
+    fill: var(--p-color-text-success-on-bg-fill);
+  }
+
+  & [class*='Polaris-Button--variantTertiary'],
+  & [class*='Button-variantTertiary'] {
+    --pc-button-color: rgba(255, 255, 255, 0.11);
+    --pc-button-color-hover: rgba(255, 255, 255, 0.15);
+    --pc-button-color-active: rgba(255, 255, 255, 0.2);
+    --pc-button-text: var(--p-color-text-success-on-bg-fill);
+
+    &::after {
+      content: none;
+    }
+
+    &:hover {
+      --pc-button-text: var(--p-color-text-success-on-bg-fill);
+    }
+
+    &:active {
+      --pc-button-text: var(--p-color-text-success-on-bg-fill);
+      box-shadow: none;
+    }
+  }
+}
+
+.Shake {
+  animation: shake 0.6s;
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-1.5deg);
+  }
+  40% {
+    transform: rotate(1.5deg);
+  }
+  60% {
+    transform: rotate(-1.5deg);
+  }
+  80% {
+    transform: rotate(1.5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 .ContextControl {

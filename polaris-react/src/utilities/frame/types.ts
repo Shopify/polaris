@@ -49,6 +49,8 @@ export interface ContextualSaveBarProps {
   contextControl?: React.ReactNode;
   /** Accepts a node that is rendered to the left of the discard and save actions */
   secondaryMenu?: React.ReactNode;
+  /** Shake */
+  leaveConfirmation?: boolean;
 }
 
 // Toast
