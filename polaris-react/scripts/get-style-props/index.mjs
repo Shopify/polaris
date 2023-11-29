@@ -2,6 +2,7 @@
 import fs from 'fs/promises';
 import {createRequire} from 'node:module';
 
+import decamelize from 'decamelize';
 import _endent from 'endent';
 import ts from 'typescript';
 import {
@@ -18,6 +19,7 @@ import {
   cssCustomPropertyNamespace,
   styleFile,
   typesFile,
+  BoxValueMapperFactory,
 } from './data.mjs';
 
 const endent = _endent.default;
@@ -268,7 +270,7 @@ async function writeTSProperties(targetFile) {
 
   await targetFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import type {StandardLonghandProperties, Globals} from 'csstype';
-import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
+import type {breakpointsAliases,BreakpointsAlias,TokenizedStyleProps} from '@shopify/polaris-tokens';
 import type {OverrideProperties, Simplify}  from 'type-fest';
 
 import type {ResponsiveProp} from '../../utilities/css';
@@ -549,6 +551,28 @@ export const cssCustomPropertyNamespace = ${JSON.stringify(
 export const modifiers = ${JSON.stringify(
     Object.values(modifiersData),
   )} as const;
+
+export const baseStylePropsModifierKey = '' as const;
+type BaseStylePropsModifierKey = typeof baseStylePropsModifierKey;
+
+export const baseStylePropsBreakpointKey = '' as const;
+type BaseStylePropsBreakpointKey = typeof baseStylePropsBreakpointKey;
+
+export type BreakpointsAliasesWithBaseKey =
+  | BaseStylePropsBreakpointKey
+  | Exclude<BreakpointsAlias, (typeof breakpointsAliases)[0]>;
+
+// The "base" styles always come last after other modifiers
+export const allModifiers: ((typeof modifiers)[number] | BaseStylePropsModifierKey)[] =
+  [...modifiers, baseStylePropsModifierKey];
+
+export type ValueMapperFactory = (map: typeof stylePropTokenGroupMap) => (
+  value: ResponsiveStyleProps[typeof prop],
+  prop: keyof typeof stylePropTokenGroupMap,
+  breakpoint: BreakpointsAlias,
+  modifier: (typeof allModifiers)[number],
+) => unknown;
+export const valueMapperFactory: ValueMapperFactory= ${BoxValueMapperFactory.toString()};
 `);
 }
 
@@ -604,6 +628,25 @@ async function writeCSSMediaVars(file, modifiers = {}) {
     )
     .join('\n');
 
+  const defaultCSSProperties = endent`${Object.entries(stylePropConfig)
+    .filter(
+      ([, {getDefault}]) =>
+        typeof getDefault !== 'undefined' && typeof getDefault !== 'function',
+    )
+    .map(
+      ([styleProp, {getDefault}]) =>
+        `${decamelize(styleProp, '-')}: ${BoxValueMapperFactory(
+          Object.fromEntries(
+            Object.entries(cssPropsToTokenGroup).filter(
+              ([prop]) =>
+                Object.hasOwn(cssLonghandProperties, prop) &&
+                !allAliases.includes(prop),
+            ),
+          ),
+        )(getDefault, styleProp)};\n`,
+    )
+    .join('')}`;
+
   const selectorsEnabled = Object.entries(modifiers)
     .map(
       ([selector, modifierName]) => endent`
@@ -625,6 +668,7 @@ async function writeCSSMediaVars(file, modifiers = {}) {
   await file.write(endent`
     /* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
     .Box {
+      ${defaultCSSProperties}
       ${defaults}
     }
 

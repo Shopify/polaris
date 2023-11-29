@@ -1,6 +1,6 @@
 /* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import type {StandardLonghandProperties, Globals} from 'csstype';
-import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
+import type {breakpointsAliases,BreakpointsAlias,TokenizedStyleProps} from '@shopify/polaris-tokens';
 import type {OverrideProperties, Simplify}  from 'type-fest';
 
 import type {ResponsiveProp} from '../../utilities/css';
@@ -1454,18 +1454,19 @@ export const stylePropTokenGroupMap = {
   borderInlineStartWidth: "border-width",
   borderInlineEndWidth: "border-width",
   backgroundColor: "color",
-  outlineColor: "color",
-  borderInlineStartColor: "color",
-  borderInlineEndColor: "color",
-  borderBlockStartColor: "color",
-  borderBlockEndColor: "color",
   color: "color",
   fontSize: "font",
   lineHeight: "font",
   fontWeight: "font",
   fontFamily: "font",
   letterSpacing: "font",
+  blockSize: "height",
+  minBlockSize: "height",
+  maxBlockSize: "height",
   containIntrinsicBlockSize: "height",
+  inlineSize: "width",
+  minInlineSize: "width",
+  maxInlineSize: "width",
   containIntrinsicInlineSize: "width",
   boxShadow: "shadow",
   marginInlineStart: "space",
@@ -1476,10 +1477,6 @@ export const stylePropTokenGroupMap = {
   paddingInlineEnd: "space",
   paddingBlockStart: "space",
   paddingBlockEnd: "space",
-  insetInlineStart: "space",
-  insetInlineEnd: "space",
-  insetBlockStart: "space",
-  insetBlockEnd: "space",
   rowGap: "space",
   columnGap: "space",
   transitionDuration: "motion-duration",
@@ -1502,6 +1499,15 @@ export const stylePropTokenGroupMap = {
   marginTop: "space",
   marginBlock: "space",
   marginBottom: "space",
+  width: "width",
+  size: "width",
+  height: "height",
+  minWidth: "width",
+  minSize: "width",
+  minHeight: "height",
+  maxWidth: "width",
+  maxSize: "width",
+  maxHeight: "height",
   containIntrinsicWidth: "width",
   containIntrinsicSize: "width",
   containIntrinsicHeight: "height",
@@ -1511,13 +1517,6 @@ export const stylePropTokenGroupMap = {
   borderTopRightRadius: "border-radius",
   borderBottomLeftRadius: "border-radius",
   borderBottomRightRadius: "border-radius",
-  borderLeftColor: "color",
-  borderInlineColor: "color",
-  borderColor: "color",
-  borderRightColor: "color",
-  borderTopColor: "color",
-  borderBlockColor: "color",
-  borderBottomColor: "color",
   borderLeftWidth: "border-width",
   borderInlineWidth: "border-width",
   borderWidth: "border-width",
@@ -1525,16 +1524,49 @@ export const stylePropTokenGroupMap = {
   borderTopWidth: "border-width",
   borderBlockWidth: "border-width",
   borderBottomWidth: "border-width",
-  left: "space",
-  insetInline: "space",
-  inset: "space",
-  right: "space",
-  top: "space",
-  insetBlock: "space",
-  bottom: "space",
   shadow: "shadow",
 } as const;
 
 export const cssCustomPropertyNamespace = "_";
 
 export const modifiers = ["_hover","_visited"] as const;
+
+export const baseStylePropsModifierKey = '' as const;
+type BaseStylePropsModifierKey = typeof baseStylePropsModifierKey;
+
+export const baseStylePropsBreakpointKey = '' as const;
+type BaseStylePropsBreakpointKey = typeof baseStylePropsBreakpointKey;
+
+export type BreakpointsAliasesWithBaseKey =
+  | BaseStylePropsBreakpointKey
+  | Exclude<BreakpointsAlias, (typeof breakpointsAliases)[0]>;
+
+// The "base" styles always come last after other modifiers
+export const allModifiers: ((typeof modifiers)[number] | BaseStylePropsModifierKey)[] =
+  [...modifiers, baseStylePropsModifierKey];
+
+export type ValueMapperFactory = (map: typeof stylePropTokenGroupMap) => (
+  value: ResponsiveStyleProps[typeof prop],
+  prop: keyof typeof stylePropTokenGroupMap,
+  breakpoint: BreakpointsAlias,
+  modifier: (typeof allModifiers)[number],
+) => unknown;
+export const valueMapperFactory: ValueMapperFactory= (stylePropTokenGroupMap) => (value, prop) => {
+    // If this is a tokenized styleprop, we must convert it to a CSS var().
+    if (!Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop))
+      return value;
+    const tokenSubgroup = stylePropTokenGroupMap[prop];
+
+    // `Grid`'s `gap` prop used to allow passing fully formed var() functions as
+    // the value. This is no longer supported in v12+.
+    if (typeof value === 'string' && value.startsWith('var(')) {
+      throw new Error(
+        `"${value}" is not from the ${tokenSubgroup} token group.`,
+      );
+    }
+
+    // NOTE: All our token values today are either strings or numbers, so
+    // stringifying them here works. But if we ever have anything more complex
+    // (such as an object) this may generate invalid token names.
+    return `var(--p-${tokenSubgroup ? `${tokenSubgroup}-` : ''}${value})`;
+  };
