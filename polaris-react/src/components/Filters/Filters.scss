@@ -9,19 +9,10 @@
   background: var(--p-color-bg-surface);
 }
 
-.ContainerUplift {
-  background: none;
-}
-
 @media #{$p-breakpoints-sm-down} {
   .Container {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    height: 57px;
-
-    &.ContainerUplift {
-      height: unset;
-    }
   }
 }
 
@@ -52,7 +43,7 @@
 .FiltersInner {
   overflow: auto;
   white-space: nowrap;
-  padding: var(--p-space-300) var(--p-space-400) var(--p-space-500);
+  padding: var(--p-space-300) var(--p-space-200) var(--p-space-500);
 }
 
 .hideQueryField .FiltersInner {

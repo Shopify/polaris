@@ -25,50 +25,43 @@ Creating layouts in polaris.shopify.com is done using a combination of component
 
 {/* Add code snippets with screenshot of layout */}
 
-### Full width layout in Card
+### Full width layout in Section
 
 ```mdx
-<Card>
-  <Row variant="1-1-1">
-    <Column></Column>
-    <Column></Column>
-    <Column></Column>
-  </Row>
-</Card>
+<LayoutSection>
+  <Text></Text>
+  <Small variant="do"></Small>
+  <Small variant="dont"></Small>
+</LayoutSection>
 ```
 
 ## Component options
 
-- `Card`
-- `Row`
-- `Column`
-- `Lede`
-- `Subnav`
+- `Section`
+- `Text`
+- `Small`
+- `Medium`
+- `Large`
+- `ExtraLarge`
 
-### `Card`
+### `LayoutSection`
 
-The `Card` component creates a new card.
+The `LayoutSection` component creates a new content section.
 
-### `Row`
+### `Text`
 
-The `Row` component creates a new row.
+The `Text` component creates a new tile for text content.
 
-### `Column`
+### `Small`, `Medium`, `Large`, `ExtraLarge`
 
-The `Column` component creates a new column. It should be used within a `Row` component.
+These component create a section tile for images, videos, and directives.
 
 By default, it will not add any styles. It does support applying additional styles using the `variant` prop.
 
 ```mdx
-<Column variant="directive">...</Column>
-<Column variant="do">...</Column>
-<Column variant="dont">...</Column>
-<Column variant="caution">...</Column>
-<Column variant="tip">...</Column>
+<Small variant="directive">...</Small>
+<Small variant="do">...</Small>
+<Small variant="dont">...</Small>
+<Small variant="caution">...</Small>
+<Small variant="tip">...</Column>
 ```
-
-## Questions
-
-- When to use a specific layout?
-- What content authoring tasks do we want to document?
-- Are these components good enough?

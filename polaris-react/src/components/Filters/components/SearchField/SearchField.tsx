@@ -1,13 +1,10 @@
-import React, {useEffect, useRef, useId} from 'react';
+import React, {useId} from 'react';
 import {XCircleIcon} from '@shopify/polaris-icons';
 
-import {InlineStack} from '../../../InlineStack';
 import {Spinner} from '../../../Spinner';
-import {Text} from '../../../Text';
-import {classNames} from '../../../../utilities/css';
 import {Icon} from '../../../Icon';
-import {useI18n} from '../../../../utilities/i18n';
-import {UnstyledButton} from '../../../UnstyledButton';
+import {TextField} from '../../../TextField';
+import {useBreakpoints} from '../../../../utilities/breakpoints';
 
 import styles from './SearchField.scss';
 
@@ -37,16 +34,12 @@ export function SearchField({
   borderlessQueryField,
   loading,
 }: SearchFieldProps) {
-  const i18n = useI18n();
   const id = useId();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const {mdUp} = useBreakpoints();
+
   function handleChange(value: string) {
     onChange(value);
   }
-
-  useEffect(() => {
-    if (focused) inputRef.current?.focus();
-  }, [focused]);
 
   function handleClear() {
     if (onClear) {
@@ -57,52 +50,30 @@ export function SearchField({
   }
 
   return (
-    <div className={styles.SearchField}>
-      <label className={styles.Label} htmlFor={id}>
-        {placeholder}
-      </label>
-      <input
-        id={id}
-        ref={inputRef}
-        className={classNames(
-          styles.Input,
-          focused && styles.focused,
-          borderlessQueryField && styles.borderless,
-        )}
-        value={value}
-        onChange={(event) => handleChange(event?.currentTarget.value ?? value)}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        autoComplete="off"
-        placeholder={placeholder}
-        disabled={disabled}
-      />
-      {loading || value !== '' ? (
-        <div className={styles.Suffix}>
-          <InlineStack gap="200">
-            {loading ? (
-              <div className={styles.Spinner}>
-                <Spinner size="small" />
-              </div>
-            ) : null}
-            {value !== '' ? (
-              <UnstyledButton
-                className={classNames(
-                  styles.ClearButton,
-                  focused && styles['ClearButton-focused'],
-                )}
-                onClick={() => handleClear()}
-                disabled={disabled}
-              >
-                <Text as="span" visuallyHidden>
-                  {i18n.translate('Polaris.Common.clear')}
-                </Text>
-                <Icon source={XCircleIcon} tone="subdued" />
-              </UnstyledButton>
-            ) : null}
-          </InlineStack>
-        </div>
-      ) : null}
-    </div>
+    <TextField
+      id={id}
+      value={value}
+      onChange={(eventValue) => handleChange(eventValue ?? value)}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onClearButtonClick={handleClear}
+      autoComplete="off"
+      placeholder={placeholder}
+      disabled={disabled}
+      variant={borderlessQueryField ? 'borderless' : 'inherit'}
+      size="slim"
+      prefix={mdUp ? <Icon source={XCircleIcon} /> : undefined}
+      suffix={
+        loading ? (
+          <div className={styles.Spinner}>
+            <Spinner size="small" />
+          </div>
+        ) : null
+      }
+      focused={focused}
+      label={placeholder}
+      labelHidden
+      clearButton
+    />
   );
 }

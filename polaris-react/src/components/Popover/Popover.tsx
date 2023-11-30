@@ -33,7 +33,10 @@ export interface PopoverProps {
   preferredAlignment?: PopoverOverlayProps['preferredAlignment'];
   /** Show or hide the Popover */
   active: boolean;
-  /** The element to activate the Popover */
+  /** The element to activate the Popover.
+   * If using a button, use the default or tertiary variant
+   * which will show an active state when popover is active
+   */
   activator: React.ReactElement;
   /**
    * Use the activator's input element to calculate the Popover position

@@ -2,7 +2,7 @@ import {Card, Text} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function CardExample() {
+function CardDefault() {
   return (
     <Card>
       <Text as="h2" variant="bodyMd">
@@ -12,4 +12,4 @@ function CardExample() {
   );
 }
 
-export default withPolarisExample(CardExample);
+export default withPolarisExample(CardDefault);

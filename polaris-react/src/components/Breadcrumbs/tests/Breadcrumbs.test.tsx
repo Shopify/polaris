@@ -3,7 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 
 import type {CallbackAction, LinkAction} from '../../../types';
 import {Breadcrumbs} from '../Breadcrumbs';
-import {Text} from '../../Text';
 
 describe('<Breadcrumbs />', () => {
   describe('url', () => {
@@ -85,8 +84,8 @@ describe('<Breadcrumbs />', () => {
     };
     const wrapper = mountWithApp(<Breadcrumbs backAction={linkBackAction} />);
 
-    expect(wrapper).toContainReactComponent(Text, {
-      visuallyHidden: true,
+    expect(wrapper).toContainReactComponent('a', {
+      'aria-label': linkBackAction.content,
     });
   });
 });

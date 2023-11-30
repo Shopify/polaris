@@ -366,6 +366,7 @@ export function IndexFilters({
                       xs: '0',
                       md: '200',
                     }}
+                    wrap={false}
                   >
                     <div
                       className={classNames(

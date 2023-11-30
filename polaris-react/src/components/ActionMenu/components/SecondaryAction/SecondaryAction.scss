@@ -19,7 +19,9 @@
       background-color: var(--p-color-bg-fill-tertiary-hover) !important;
     }
 
-    &:active {
+    /* stylelint-disable-next-line selector-no-qualifying-type -- add expanded styling */
+    &:active,
+    &[aria-expanded='true'] {
       background-color: var(--p-color-bg-fill-tertiary-active) !important;
       box-shadow: var(--p-shadow-inset-200) !important;
     }

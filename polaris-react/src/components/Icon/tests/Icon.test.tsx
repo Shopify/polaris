@@ -18,6 +18,14 @@ describe('<Icon />', () => {
         visuallyHidden: true,
       });
     });
+
+    it('does not render the label when not provided', () => {
+      const element = mountWithApp(<Icon source="placeholder" />).find('span');
+
+      expect(element).not.toContainReactComponent(Text, {
+        visuallyHidden: true,
+      });
+    });
   });
 
   describe('source', () => {

@@ -169,6 +169,20 @@ describe('<Row />', () => {
         expect(onSelectionChangeSpy).not.toHaveBeenCalled();
       });
     });
+
+    describe('when a `rowType` of `child` is set', () => {
+      it('applies the .TableRow-child class to the table row element', () => {
+        const row = mountWithTable(
+          <Row id="id" selected rowType="child" position={1}>
+            <td />
+          </Row>,
+        );
+
+        expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
+          styles['TableRow-child'],
+        );
+      });
+    });
   });
 
   it('allows the checkbox to be indeterminate', () => {

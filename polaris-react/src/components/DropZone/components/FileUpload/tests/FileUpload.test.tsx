@@ -5,7 +5,6 @@ import {UploadIcon} from '@shopify/polaris-icons';
 import {Text} from '../../../../Text';
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
-import {uploadArrow as uploadArrowImage} from '../../../images';
 import {Icon} from '../../../../Icon';
 
 describe('<FileUpload />', () => {
@@ -48,9 +47,10 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
-      expect(fileUpload).not.toContainReactComponent('img', {
-        src: uploadArrowImage,
+      expect(fileUpload).not.toContainReactComponent(Icon, {
+        source: UploadMajor,
       });
+
       expect(fileUpload).not.toContainReactComponent(Text);
 
       expect(fileUpload).toContainReactComponent('div', {
@@ -68,9 +68,7 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload).not.toContainReactComponent('img', {
-      src: uploadArrowImage,
-    });
+    expect(fileUpload).not.toContainReactComponent(Icon, {source: UploadMajor});
     expect(fileUpload).not.toContainReactComponent(Text);
 
     expect(fileUpload).toContainReactComponent('div', {

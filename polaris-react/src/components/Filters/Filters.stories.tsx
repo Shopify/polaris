@@ -1449,3 +1449,70 @@ export function WithAdditionalFilterSections() {
     }
   }
 }
+
+export function WithFilterBarHidden() {
+  const [queryValue, setQueryValue] = useState('');
+
+  const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
+  const handleFiltersClearAll = useCallback(() => {
+    handleQueryValueRemove();
+  }, [handleQueryValueRemove]);
+  const handleFiltersQueryChange = useCallback(
+    (value) => setQueryValue(value),
+    [],
+  );
+
+  return (
+    <div style={{height: '568px'}}>
+      <LegacyCard>
+        <ResourceList
+          resourceName={{singular: 'customer', plural: 'customers'}}
+          filterControl={
+            <Filters
+              queryValue={queryValue}
+              queryPlaceholder="Searching in all"
+              filters={[]}
+              onQueryChange={handleFiltersQueryChange}
+              onQueryClear={handleQueryValueRemove}
+              onClearAll={handleFiltersClearAll}
+              hideFilters
+            />
+          }
+          flushFilters
+          items={[
+            {
+              id: '341',
+              url: '#',
+              name: 'Mae Jemison',
+              location: 'Decatur, USA',
+            },
+            {
+              id: '256',
+              url: '#',
+              name: 'Ellen Ochoa',
+              location: 'Los Angeles, USA',
+            },
+          ]}
+          renderItem={(item) => {
+            const {id, url, name, location} = item;
+            const media = <Avatar customer size="md" name={name} />;
+
+            return (
+              <ResourceList.Item
+                id={id}
+                url={url}
+                media={media}
+                accessibilityLabel={`View details for ${name}`}
+              >
+                <Text as="h3" fontWeight="bold">
+                  {name}
+                </Text>
+                <div>{location}</div>
+              </ResourceList.Item>
+            );
+          }}
+        />
+      </LegacyCard>
+    </div>
+  );
+}

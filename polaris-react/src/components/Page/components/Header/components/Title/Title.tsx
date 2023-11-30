@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../../../../../utilities/css';
+import {Bleed} from '../../../../../Bleed';
 import {Text} from '../../../../../Text';
 
 import styles from './Title.scss';
@@ -30,16 +31,14 @@ export function Title({
   const titleMarkup = title ? <h1 className={className}>{title}</h1> : null;
 
   const titleMetadataMarkup = titleMetadata ? (
-    <div className={styles.TitleMetadata}>{titleMetadata}</div>
+    <Bleed marginBlock="100">{titleMetadata}</Bleed>
   ) : null;
 
-  const wrappedTitleMarkup = titleMetadata ? (
-    <div className={styles.TitleWithMetadataWrapper}>
+  const wrappedTitleMarkup = (
+    <div className={styles.TitleWrapper}>
       {titleMarkup}
       {titleMetadataMarkup}
     </div>
-  ) : (
-    titleMarkup
   );
 
   const subtitleMarkup = subtitle ? (

@@ -468,7 +468,6 @@
   --pc-button-text: var(--p-color-text);
   --pc-button-color-hover: var(--p-color-bg-fill-transparent-hover);
   --pc-button-color-active: var(--p-color-bg-fill-transparent-active);
-  --pc-button-color-depressed: var(--p-surface-selected-depressed);
   // stylelint-enable
   box-shadow: none;
 
@@ -962,6 +961,25 @@
   .Text:not(.removeUnderline) {
     text-decoration: underline;
   }
+}
+// Overrides for popover active / expanded states on default buttons
+.Button:is([aria-expanded='true']):is([aria-owns]):not(.variantPlain):not(.variantMonochromePlain):not(.variantTertiary):not(.variantPrimary) {
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- custom property
+  --pc-button-shadow: var(--p-shadow-inset-200);
+  background: var(--p-color-bg-fill-active);
+
+  .Content {
+    transform: translateY(1px);
+  }
+
+  &:hover {
+    // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- reset custom property for expaned button
+    box-shadow: var(--pc-button-shadow);
+  }
+}
+// Overrides for popover active / expanded states on plain, monochromePlain, tertiary buttons
+.Button:is([aria-expanded='true']):is([aria-owns]):is(.variantTertiary) {
+  background: var(--p-color-bg-fill-transparent-active);
 }
 
 [data-buttongroup-variant='segmented'] {
