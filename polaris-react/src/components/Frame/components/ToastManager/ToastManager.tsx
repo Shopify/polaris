@@ -14,10 +14,12 @@ import styles from './ToastManager.scss';
 
 export interface ToastManagerProps {
   toastMessages: ToastPropsWithID[];
+  showContextualSaveBar?: boolean;
 }
 
 export const ToastManager = memo(function ToastManager({
   toastMessages,
+  showContextualSaveBar = false,
 }: ToastManagerProps) {
   const toastNodes: React.RefObject<HTMLDivElement>[] = [];
 
@@ -64,7 +66,9 @@ export const ToastManager = memo(function ToastManager({
     <Portal idPrefix="toast">
       <EventListener event="resize" handler={updateToasts} />
       <div className={styles.ToastManager} aria-live="assertive">
-        <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
+        <TransitionGroup component={null}>
+          {!showContextualSaveBar && toastsMarkup}
+        </TransitionGroup>
       </div>
     </Portal>
   );

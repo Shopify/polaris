@@ -294,7 +294,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           >
             <div className={styles.Content}>{children}</div>
           </main>
-          <ToastManager toastMessages={toastMessages} />
+
+          <ToastManager
+            toastMessages={toastMessages}
+            showContextualSaveBar={showContextualSaveBar}
+          />
           {globalRibbonMarkup}
           <EventListener event="resize" handler={this.handleResize} />
         </div>
