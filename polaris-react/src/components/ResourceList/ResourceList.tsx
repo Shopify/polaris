@@ -180,6 +180,8 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
     computeTableDimensions,
+    isScrolledPastTop,
+    selectAllActionsPastTopOffset,
   } = useIsSelectAllActionsSticky(selectMode, Boolean(pagination));
 
   useEffect(() => {
@@ -751,8 +753,25 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     </ul>
   ) : null;
 
+  const paginationWrapperClassNames = classNames(
+    styles.PaginationWrapper,
+    selectedItems &&
+      selectedItems.length &&
+      styles.PaginationWrapperWithSelectAllActions,
+    isScrolledPastTop && styles.PaginationWrapperScrolledPastTop,
+  );
+
   const paginationMarkup = pagination ? (
-    <Pagination type="table" {...pagination} />
+    <div
+      className={paginationWrapperClassNames}
+      style={
+        {
+          '--pc-index-table-pagination-top-offset': `${selectAllActionsPastTopOffset}px`,
+        } as React.CSSProperties
+      }
+    >
+      <Pagination type="table" {...pagination} />
+    </div>
   ) : null;
 
   // This is probably a legit error but I don't have the time to refactor this
@@ -772,6 +791,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     Boolean(bulkActionsMarkup) &&
       selectMode &&
       bulkActions &&
+      !pagination &&
       styles.ResourceListWrapperWithBulkActions,
   );
 

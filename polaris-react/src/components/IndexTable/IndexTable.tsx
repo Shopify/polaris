@@ -222,6 +222,9 @@ function IndexTableBase({
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
     computeTableDimensions,
+    isScrolledPastTop,
+    selectAllActionsPastTopOffset,
+    scrollbarPastTopOffset,
   } = useIsSelectAllActionsSticky(selectMode, Boolean(pagination));
 
   useEffect(() => {
@@ -696,8 +699,12 @@ function IndexTableBase({
   const scrollBarWrapperClassNames = classNames(
     styles.ScrollBarContainer,
     pagination && styles.ScrollBarContainerWithPagination,
+    shouldShowBulkActions && styles.ScrollBarContainerWithSelectAllActions,
     condensed && styles.scrollBarContainerCondensed,
     hideScrollContainer && styles.scrollBarContainerHidden,
+    isScrolledPastTop &&
+      (pagination || shouldShowBulkActions) &&
+      styles.ScrollBarContainerScrolledPastTop,
   );
 
   const scrollBarClassNames = classNames(
@@ -710,6 +717,11 @@ function IndexTableBase({
         <div
           className={scrollBarWrapperClassNames}
           ref={scrollContainerElement}
+          style={
+            {
+              '--pc-index-table-scroll-bar-top-offset': `${scrollbarPastTopOffset}px`,
+            } as React.CSSProperties
+          }
         >
           <div
             onScroll={handleScrollBarScroll}
@@ -805,8 +817,23 @@ function IndexTableBase({
       styles.IndexTableWrapperWithSelectAllActions,
   );
 
+  const paginationWrapperClassNames = classNames(
+    styles.PaginationWrapper,
+    shouldShowBulkActions && styles.PaginationWrapperWithSelectAllActions,
+    isScrolledPastTop && styles.PaginationWrapperScrolledPastTop,
+  );
+
   const paginationMarkup = pagination ? (
-    <Pagination type="table" {...pagination} />
+    <div
+      className={paginationWrapperClassNames}
+      style={
+        {
+          '--pc-index-table-pagination-top-offset': `${selectAllActionsPastTopOffset}px`,
+        } as React.CSSProperties
+      }
+    >
+      <Pagination type="table" {...pagination} />
+    </div>
   ) : null;
 
   return (

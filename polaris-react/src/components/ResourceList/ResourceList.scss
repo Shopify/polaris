@@ -207,6 +207,40 @@ $item-wrapper-loading-height: 64px;
   padding-bottom: var(--pc-resource-list-bulk-actions-offset);
 }
 
+.PaginationWrapper {
+  /* stylelint-disable-next-line -- custom z index to work with the z-indexes in the IndexTable */
+  --pc-pagination-index: 30;
+  /* stylelint-disable-next-line -- sets the z-index created above */
+  z-index: var(--pc-pagination-index);
+  @media (--p-breakpoints-md-up) {
+    position: sticky;
+    bottom: 0;
+  }
+}
+
+.PaginationWrapperWithSelectAllActions {
+  position: sticky;
+  bottom: 0;
+}
+
+.PaginationWrapperScrolledPastTop {
+  @media (--p-breakpoints-md-up) {
+    position: absolute;
+    bottom: auto;
+    /* stylelint-disable-next-line -- set from the use-is-select-all-actions-sticky hook */
+    top: var(--pc-index-table-pagination-top-offset);
+    width: 100%;
+  }
+
+  &.PaginationWrapperWithSelectAllActions {
+    position: absolute;
+    bottom: auto;
+    /* stylelint-disable-next-line -- set from the use-is-select-all-actions-sticky hook */
+    top: var(--pc-index-table-pagination-top-offset);
+    width: 100%;
+  }
+}
+
 .CheckableButtonWrapper {
   display: none;
 
