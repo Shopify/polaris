@@ -254,38 +254,3 @@ export function normalizeImportSourcePaths(
 
   return sourcePaths;
 }
-
-export function updateImports(
-  j: core.JSCodeshift,
-  source: Collection<any>,
-  options: {
-    fromSpecifier: string;
-    toSpecifier: string;
-    fromSourcePath: string;
-    toSourcePath: string;
-  },
-) {
-  const {fromSpecifier, toSpecifier, fromSourcePath, toSourcePath} = options;
-
-  // Insert new import
-  if (!hasImportDeclaration(j, source, toSourcePath)) {
-    insertImportDeclaration(
-      j,
-      source,
-      toSpecifier,
-      toSourcePath,
-      fromSourcePath,
-    );
-  }
-  if (!hasImportSpecifier(j, source, toSpecifier, toSourcePath)) {
-    insertImportSpecifier(j, source, toSpecifier, toSourcePath);
-  }
-
-  // Remove old import
-  if (hasImportSpecifier(j, source, fromSpecifier, fromSourcePath)) {
-    removeImportSpecifier(j, source, fromSpecifier, fromSourcePath);
-  }
-  if (!hasImportSpecifiers(j, source, fromSourcePath)) {
-    removeImportDeclaration(j, source, fromSourcePath);
-  }
-}
