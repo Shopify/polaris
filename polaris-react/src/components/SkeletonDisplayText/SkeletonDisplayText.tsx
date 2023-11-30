@@ -1,6 +1,10 @@
 import React from 'react';
 
-import {classNames, variationName} from '../../utilities/css';
+import {
+  classNames,
+  sanitizeCustomProperties,
+  variationName,
+} from '../../utilities/css';
 
 import styles from './SkeletonDisplayText.scss';
 
@@ -12,15 +16,25 @@ export interface SkeletonDisplayTextProps {
    * @default 'medium'
    */
   size?: Size;
+  /**
+   * Adjusts max-width
+   * @default undefined
+   */
+  maxWidth?: `${number}ch` | `${number}%`;
 }
 
 export function SkeletonDisplayText({
   size = 'medium',
+  maxWidth,
 }: SkeletonDisplayTextProps) {
   const className = classNames(
     styles.DisplayText,
     size && styles[variationName('size', size)],
   );
 
-  return <div className={className} />;
+  const style = {
+    '--pc-skeleton-display-text-max-width': maxWidth ? maxWidth : undefined,
+  } as React.CSSProperties;
+
+  return <div className={className} style={sanitizeCustomProperties(style)} />;
 }
