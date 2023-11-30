@@ -13,6 +13,7 @@ import {
   TextField,
   Text,
   BlockStack,
+  Box,
 } from '@shopify/polaris';
 
 export default {
@@ -1275,7 +1276,7 @@ export function WithPagination() {
         }}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -1354,7 +1355,7 @@ export function WithBulkActionsAndPagination() {
           }}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceItem
@@ -1374,7 +1375,6 @@ export function WithBulkActionsAndPagination() {
           }}
         />
       </Card>
-      <Card>This is another card</Card>
     </BlockStack>
   );
 }

@@ -110,6 +110,9 @@ describe('<IndexTable>', () => {
       selectAllActionsMaxWidth: 0,
       selectAllActionsOffsetLeft: 0,
       computeTableDimensions: jest.fn(),
+      isScrolledPastTop: false,
+      scrollbarPastTopOffset: 0,
+      selectAllActionsPastTopOffset: 0,
     });
   });
 
@@ -788,6 +791,9 @@ describe('<IndexTable>', () => {
         selectAllActionsMaxWidth: 0,
         selectAllActionsOffsetLeft: 0,
         computeTableDimensions,
+        isScrolledPastTop: false,
+        scrollbarPastTopOffset: 0,
+        selectAllActionsPastTopOffset: 0,
       });
       const index = mountWithApp(
         <IndexTable {...defaultProps} itemCount={mockTableItems.length}>

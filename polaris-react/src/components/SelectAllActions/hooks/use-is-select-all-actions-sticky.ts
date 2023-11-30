@@ -4,9 +4,10 @@ import {debounce} from '../../../utilities/debounce';
 
 const DEBOUNCE_PERIOD = 250;
 
-const PADDING_IN_SELECT_MODE = 41;
-
+const SELECT_ALL_ACTIONS_HEIGHT = 41;
 const PAGINATION_WIDTH_OFFSET = 64;
+const SCROLL_BAR_HEIGHT = 13;
+const POST_SCROLL_OFFSET = 120;
 
 export function useIsSelectAllActionsSticky(
   selectMode: boolean,
@@ -15,6 +16,7 @@ export function useIsSelectAllActionsSticky(
   const hasIOSupport =
     typeof window !== 'undefined' && Boolean(window.IntersectionObserver);
   const [isSelectAllActionsSticky, setIsSticky] = useState(false);
+  const [isScrolledPastTop, setIsScrolledPastTop] = useState(false);
   const [selectAllActionsAbsoluteOffset, setSelectAllActionsAbsoluteOffset] =
     useState(0);
   const [selectAllActionsMaxWidth, setSelectAllActionsMaxWidth] = useState(0);
@@ -31,6 +33,13 @@ export function useIsSelectAllActionsSticky(
     });
   };
 
+  const handleTableIntersect = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry: IntersectionObserverEntry) => {
+      setIsSticky(entry.isIntersecting);
+      setIsScrolledPastTop(!entry.isIntersecting);
+    });
+  };
+
   const options = {
     root: null,
     rootMargin: '0px',
@@ -38,6 +47,17 @@ export function useIsSelectAllActionsSticky(
   };
   const observerRef = useRef<IntersectionObserver | null>(
     hasIOSupport ? new IntersectionObserver(handleIntersect, options) : null,
+  );
+
+  const tableOptions = {
+    root: null,
+    rootMargin: '0px 0px -120px 0px',
+    threshold: 0,
+  };
+  const tableObserverRef = useRef<IntersectionObserver | null>(
+    hasIOSupport
+      ? new IntersectionObserver(handleTableIntersect, tableOptions)
+      : null,
   );
 
   const computeTableDimensions = useCallback(() => {
@@ -50,7 +70,7 @@ export function useIsSelectAllActionsSticky(
       };
     }
     const box = node.getBoundingClientRect();
-    const paddingHeight = selectMode ? PADDING_IN_SELECT_MODE : 0;
+    const paddingHeight = selectMode ? SELECT_ALL_ACTIONS_HEIGHT : 0;
     const offsetHeight = box.height - paddingHeight;
     const maxWidth = box.width - widthOffset;
     const offsetLeft = box.left;
@@ -59,6 +79,18 @@ export function useIsSelectAllActionsSticky(
     setSelectAllActionsMaxWidth(maxWidth);
     setSelectAllActionsOffsetLeft(offsetLeft);
   }, [selectMode, widthOffset]);
+
+  const computeDimensionsPastScroll = useCallback(() => {
+    setSelectAllActionsAbsoluteOffset(79);
+  }, []);
+
+  useEffect(() => {
+    if (isScrolledPastTop) {
+      computeDimensionsPastScroll();
+    } else {
+      computeTableDimensions();
+    }
+  }, [isScrolledPastTop, computeDimensionsPastScroll, computeTableDimensions]);
 
   useEffect(() => {
     computeTableDimensions();
@@ -94,6 +126,23 @@ export function useIsSelectAllActionsSticky(
     };
   }, [selectAllActionsIntersectionRef]);
 
+  useEffect(() => {
+    const observer = tableObserverRef.current;
+    if (!observer) {
+      return;
+    }
+
+    const node = tableMeasurerRef.current;
+
+    if (node) {
+      observer.observe(node);
+    }
+
+    return () => {
+      observer?.disconnect();
+    };
+  }, [tableMeasurerRef]);
+
   return {
     selectAllActionsIntersectionRef,
     tableMeasurerRef,
@@ -102,5 +151,10 @@ export function useIsSelectAllActionsSticky(
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
     computeTableDimensions,
+    isScrolledPastTop,
+    selectAllActionsPastTopOffset:
+      POST_SCROLL_OFFSET - SELECT_ALL_ACTIONS_HEIGHT,
+    scrollbarPastTopOffset:
+      POST_SCROLL_OFFSET - SELECT_ALL_ACTIONS_HEIGHT - SCROLL_BAR_HEIGHT,
   };
 }

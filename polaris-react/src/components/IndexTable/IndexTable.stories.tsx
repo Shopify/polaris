@@ -4788,6 +4788,11 @@ export function WithPaginationAndBulkActions() {
   return (
     <Box paddingBlockEnd="400">
       <BlockStack gap="200">
+        <Box minHeight="2000px">
+          <LegacyCard>
+            <p>Content before the table</p>
+          </LegacyCard>
+        </Box>
         <LegacyCard>
           <IndexTable
             condensed={useBreakpoints().smDown}
@@ -4825,6 +4830,11 @@ export function WithPaginationAndBulkActions() {
             {rowMarkup}
           </IndexTable>
         </LegacyCard>
+        <Box minHeight="2000px">
+          <LegacyCard>
+            <p>Content after the table</p>
+          </LegacyCard>
+        </Box>
       </BlockStack>
     </Box>
   );

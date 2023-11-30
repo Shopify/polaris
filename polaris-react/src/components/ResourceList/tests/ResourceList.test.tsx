@@ -80,6 +80,9 @@ describe('<ResourceList />', () => {
     selectAllActionsMaxWidth: 0,
     selectAllActionsOffsetLeft: 0,
     computeTableDimensions: jest.fn(),
+    scrollbarPastTopOffset: 0,
+    selectAllActionsPastTopOffset: 0,
+    isScrolledPastTop: false,
   });
 
   beforeEach(() => {
@@ -1337,6 +1340,9 @@ describe('<ResourceList />', () => {
         selectAllActionsMaxWidth: 0,
         selectAllActionsOffsetLeft: 0,
         computeTableDimensions,
+        scrollbarPastTopOffset: 0,
+        selectAllActionsPastTopOffset: 0,
+        isScrolledPastTop: false,
       });
       const newItems = [...itemsWithID, {id: 12, url: '//shopify.com'}];
       const resourceList = mountWithApp(
