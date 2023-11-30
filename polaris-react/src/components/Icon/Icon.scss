@@ -1,7 +1,6 @@
 @import '../../styles/common';
 
 .Icon {
-  position: relative;
   display: block;
   height: 20px;
   width: 20px;
@@ -14,76 +13,85 @@
   color: var(--p-color-bg-surface);
 }
 
-.toneBase {
-  color: var(--p-color-icon);
+.toneBase svg {
+  fill: var(--p-color-icon);
 }
 
-.toneSubdued {
-  color: var(--p-color-icon-secondary);
+.toneSubdued svg {
+  fill: var(--p-color-icon-secondary);
 }
 
-.toneCaution {
-  color: var(--p-color-icon-caution);
+.toneCaution svg {
+  fill: var(--p-color-icon-caution);
 }
 
-.toneWarning {
-  color: var(--p-color-icon-warning);
+.toneWarning svg {
+  fill: var(--p-color-icon-warning);
 }
 
-.toneCritical {
-  color: var(--p-color-icon-critical);
+.toneCritical svg {
+  fill: var(--p-color-icon-critical);
 }
 
-.toneInteractive {
-  color: var(--p-color-icon-emphasis);
+.toneInteractive svg {
+  fill: var(--p-color-icon-emphasis);
 }
 
-.toneInfo {
-  color: var(--p-color-icon-info);
+.toneInfo svg {
+  fill: var(--p-color-icon-info);
 }
 
-.toneSuccess {
-  color: var(--p-color-icon-success);
+.toneSuccess svg {
+  fill: var(--p-color-icon-success);
 }
 
-.tonePrimary {
-  color: var(--p-color-icon-brand);
+.tonePrimary svg {
+  fill: var(--p-color-icon-brand);
 }
 
-.toneEmphasis {
-  color: var(--p-color-icon-emphasis);
+.toneEmphasis svg {
+  fill: var(--p-color-icon-emphasis);
 }
 
-.toneMagic {
-  color: var(--p-color-icon-magic);
+.toneMagic svg {
+  fill: var(--p-color-icon-magic);
 }
 
-.toneTextCaution {
-  color: var(--p-color-text-caution);
+.toneTextCaution svg {
+  fill: var(--p-color-text-caution);
 }
 
-.toneTextWarning {
-  color: var(--p-color-text-warning);
+.toneTextWarning svg {
+  fill: var(--p-color-text-warning);
 }
 
-.toneTextCritical {
-  color: var(--p-color-text-critical);
+.toneTextCritical svg {
+  fill: var(--p-color-text-critical);
 }
 
-.toneTextInfo {
-  color: var(--p-color-text-info);
+.toneTextInfo svg {
+  fill: var(--p-color-text-info);
 }
 
-.toneTextPrimary {
-  color: var(--p-color-text-brand);
+.toneTextPrimary svg {
+  fill: var(--p-color-text-brand);
 }
 
-.toneTextSuccess {
-  color: var(--p-color-text-success);
+.toneTextSuccess svg {
+  fill: var(--p-color-text-success);
 }
 
-.toneTextMagic {
-  color: var(--p-color-text-magic);
+.toneTextMagic svg {
+  fill: var(--p-color-text-magic);
+}
+
+.Svg,
+.Img {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .Placeholder {
