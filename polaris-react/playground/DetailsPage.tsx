@@ -120,7 +120,6 @@ export function DetailsPage() {
     if (isDirty) {
       const event = new CustomEvent('onLeaveDirtyState');
       window.dispatchEvent(event);
-      setIsLeaveConfirmation(true);
       return;
     }
     setIsLoading((isLoading) => !isLoading);

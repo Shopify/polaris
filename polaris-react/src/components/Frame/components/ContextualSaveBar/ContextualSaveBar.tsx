@@ -36,8 +36,8 @@ export function ContextualSaveBar({
         insideBarRef.current?.classList.remove(styles.GreenBar);
       }, 1000);
     },
-    50,
-    {leading: false, trailing: true},
+    500,
+    {leading: true, trailing: false},
   );
 
   useEventListener(
