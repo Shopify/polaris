@@ -959,8 +959,8 @@ Renamed many icons and replaced `Major` and `Minor` suffixes with `Icon`. See ta
 | `TipsMinor`                         | `TipJarIcon`                    |
 | `TitleMajor`                        | `TextTitleIcon`                 |
 | `TitleMinor`                        | `TextTitleIcon`                 |
-| `ToggleMajor`                       | `ToggleIcon`                    |
-| `ToggleMinor`                       | `ToggleIcon`                    |
+| `ToggleMajor`                       | `ToggleOffIcon`                 |
+| `ToggleMinor`                       | `ToggleOffIcon`                 |
 | `ToolsMajor`                        | `WrenchIcon`                    |
 | `ToolsMinor`                        | `WrenchIcon`                    |
 | `TransactionMajor`                  | `TransactionIcon`               |

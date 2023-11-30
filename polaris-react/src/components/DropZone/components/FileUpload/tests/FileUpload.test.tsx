@@ -48,7 +48,7 @@ describe('<FileUpload />', () => {
       );
 
       expect(fileUpload).not.toContainReactComponent(Icon, {
-        source: UploadMajor,
+        source: UploadIcon,
       });
 
       expect(fileUpload).not.toContainReactComponent(Text);
@@ -68,7 +68,7 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload).not.toContainReactComponent(Icon, {source: UploadMajor});
+    expect(fileUpload).not.toContainReactComponent(Icon, {source: UploadIcon});
     expect(fileUpload).not.toContainReactComponent(Text);
 
     expect(fileUpload).toContainReactComponent('div', {
