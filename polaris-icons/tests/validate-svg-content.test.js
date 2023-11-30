@@ -59,19 +59,16 @@ allIconFiles.forEach(
         });
       });
 
-      it('only has <path>s, <polygon>s and <circle>s with an explict fill color', () => {
-        const nodesWithUndefinedFill = selectAll(
-          'path:not([fill]), circle:not([fill]), polygon:not([fill])',
-          iconAst,
-        );
+      it('only has <svg>s with an explict fill color', () => {
+        const nodesWithUndefinedFill = selectAll('svg:not([fill])', iconAst);
 
         expect(nodeSources(nodesWithUndefinedFill, iconSource)).toStrictEqual(
           [],
         );
       });
 
-      it('only has <path>s that only use the [d, fill, fill-rule, fill-opacity] attributes', () => {
-        const allowedAttributes = ['d', 'fill', 'fillRule', 'fillOpacity'];
+      it('only has <path>s that only use the [d, fill-rule, fill-opacity] attributes', () => {
+        const allowedAttributes = ['d', 'fillRule', 'fillOpacity'];
 
         const nodesWithDisallowedAttributes = selectAll('path', iconAst).filter(
           (node) => {
@@ -85,8 +82,8 @@ allIconFiles.forEach(
         ).toStrictEqual([]);
       });
 
-      it('only has <polygon>s that only use the [fill, points] attributes', () => {
-        const allowedAttributes = ['fill', 'points'];
+      it('only has <polygon>s that only use the [points] attributes', () => {
+        const allowedAttributes = ['points'];
 
         const nodesWithDisallowedAttributes = selectAll(
           'polygon',
@@ -101,8 +98,8 @@ allIconFiles.forEach(
         ).toStrictEqual([]);
       });
 
-      it('only has <circle>s that only use the [cx, cy, r, fill, fill-rule] attributes', () => {
-        const allowedAttributes = ['cx', 'cy', 'r', 'fill', 'fillRule'];
+      it('only has <circle>s that only use the [cx, cy, r, fill-rule] attributes', () => {
+        const allowedAttributes = ['cx', 'cy', 'r', 'fillRule'];
 
         const nodesWithDisallowedAttributes = selectAll(
           'circle',
