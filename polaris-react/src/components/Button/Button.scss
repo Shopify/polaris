@@ -239,11 +239,15 @@
 
 .variantPrimary {
   // stylelint-disable -- Button custom properties
-  --pc-button-color: var(--p-color-bg-fill-brand);
+  // --pc-button-color: var(--p-color-bg-fill-brand);
+  --pc-button-color: linear-gradient(180deg, #3e3d3e 0%, #403e40 79.91%, #5e5d5e 100%);
   --pc-button-text: var(--p-color-text-brand-on-bg-fill);
-  --pc-button-color-hover: var(--p-color-bg-fill-brand-hover);
-  --pc-button-color-active: var(--p-color-bg-fill-brand-active);
+  --pc-button-color-hover: #2f2f2f;
+  --pc-button-color-active: #303030;
   --pc-button-color-depressed: var(--p-color-bg-fill-brand-active);
+  box-shadow: 0 0 0 1px #1a1a1a inset,
+    0 0.5px 0 1.5px #757575 inset,
+    0 -1px 0 1px #000000 inset;
   // stylelint-enable
 
   &::before {
