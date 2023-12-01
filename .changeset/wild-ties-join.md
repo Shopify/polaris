@@ -8,6 +8,8 @@ This is a major update for `polaris-icons`. Please use the migration to update i
 npx @shopify/polaris-migrator icons-v8-update-names <path>
 ```
 
+All icon fill values in the icon .svg files have been replaced with `currentColor`. If you are using the `<Icon>` component you will not see a change.
+
 Removed Major and Minor icon sizing. All icons are the same size.
 
 Added `MetaobjectFilledIcon`, `PriceListIcon` and `PriceListFilledIcon`
