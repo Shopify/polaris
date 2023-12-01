@@ -1341,6 +1341,9 @@ export function WithBulkActionsAndPagination() {
   ];
   return (
     <BlockStack gap="400">
+      <div style={{height: 2000}}>
+        <Card>Hello world</Card>
+      </div>
       <Card padding="0">
         <ResourceList
           resourceName={resourceName}
@@ -1375,6 +1378,9 @@ export function WithBulkActionsAndPagination() {
           }}
         />
       </Card>
+      <div style={{height: 2000}}>
+        <Card>Hello world</Card>
+      </div>
     </BlockStack>
   );
 }

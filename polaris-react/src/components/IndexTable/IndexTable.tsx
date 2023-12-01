@@ -228,7 +228,11 @@ function IndexTableBase({
     isScrolledPastTop,
     selectAllActionsPastTopOffset,
     scrollbarPastTopOffset,
-  } = useIsSelectAllActionsSticky(selectMode, Boolean(pagination));
+  } = useIsSelectAllActionsSticky({
+    selectMode,
+    hasPagination: Boolean(pagination),
+    tableType: 'index-table',
+  });
 
   useEffect(() => {
     computeTableDimensions();

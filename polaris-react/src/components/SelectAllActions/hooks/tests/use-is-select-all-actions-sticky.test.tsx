@@ -2,14 +2,14 @@ import React from 'react';
 import {intersectionObserver} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
-import {useIsSelectAllActionsSticky} from '..';
+import {useIsSelectAllActionsSticky} from '../use-is-select-all-actions-sticky';
+import type {UseIsSelectAllActionsStickyProps} from '../use-is-select-all-actions-sticky';
 
-interface ComponentProps {
-  selectMode: boolean;
-  hasPagination?: boolean;
-}
-
-function Component({selectMode, hasPagination}: ComponentProps) {
+function Component({
+  selectMode = false,
+  hasPagination,
+  tableType = 'index-table',
+}: Partial<UseIsSelectAllActionsStickyProps>) {
   const {
     selectAllActionsIntersectionRef,
     tableMeasurerRef,
@@ -17,7 +17,7 @@ function Component({selectMode, hasPagination}: ComponentProps) {
     selectAllActionsAbsoluteOffset,
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
-  } = useIsSelectAllActionsSticky(selectMode, hasPagination);
+  } = useIsSelectAllActionsSticky({selectMode, hasPagination, tableType});
 
   return (
     <div className="table" ref={tableMeasurerRef}>
