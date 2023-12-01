@@ -122,7 +122,7 @@ export function WithCustomSVGAndColor() {
 
 export function PolarisIconsLibrary() {
   return (
-    <BlockStack as="ul" gap="100" inlineAlign="start">
+    <BlockStack gap="100" inlineAlign="start">
       {Object.keys(iconMetadata).map((icon) => (
         <InlineStack key={icon} gap="200">
           <Icon source={polarisIcons[icon]} />
