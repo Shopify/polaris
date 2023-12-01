@@ -182,7 +182,11 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     computeTableDimensions,
     isScrolledPastTop,
     selectAllActionsPastTopOffset,
-  } = useIsSelectAllActionsSticky(selectMode, Boolean(pagination));
+  } = useIsSelectAllActionsSticky({
+    selectMode,
+    hasPagination: Boolean(pagination),
+    tableType: 'resource-list',
+  });
 
   useEffect(() => {
     computeTableDimensions();

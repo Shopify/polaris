@@ -4581,10 +4581,10 @@ export function WithPaginationAndBulkActions() {
             {amountSpent}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        {/* <IndexTable.Cell>{channel}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
-        <IndexTable.Cell>{tags}</IndexTable.Cell>
+        <IndexTable.Cell>{tags}</IndexTable.Cell> */}
       </IndexTable.Row>
     ),
   );
@@ -4621,10 +4621,10 @@ export function WithPaginationAndBulkActions() {
                 id: 'amount-spent',
                 title: 'Amount spent',
               },
-              {title: 'Channel'},
-              {title: 'Payment status'},
-              {title: 'Fulfillment status'},
-              {title: 'Tags'},
+              // {title: 'Channel'},
+              // {title: 'Payment status'},
+              // {title: 'Fulfillment status'},
+              // {title: 'Tags'},
             ]}
             pagination={{
               hasNext: true,
