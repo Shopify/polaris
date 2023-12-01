@@ -124,7 +124,7 @@ export function Avatar({
     size && styles[variationName('size', size)],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
     !customer &&
-      !source &&
+      !hasImage &&
       styles[variationName('style', styleClass(nameString))],
   );
 
