@@ -17,8 +17,8 @@ export interface SkeletonDisplayTextProps {
    */
   size?: Size;
   /**
-   * Adjusts max-width
-   * @default undefined
+   * Maxium width of the text
+   * @default '120px'
    */
   maxWidth?: `${number}ch` | `${number}%`;
 }
@@ -33,7 +33,7 @@ export function SkeletonDisplayText({
   );
 
   const style = {
-    '--pc-skeleton-display-text-max-width': maxWidth ? maxWidth : undefined,
+    '--pc-skeleton-display-text-max-width': maxWidth ?? undefined,
   } as React.CSSProperties;
 
   return <div className={className} style={sanitizeCustomProperties(style)} />;
