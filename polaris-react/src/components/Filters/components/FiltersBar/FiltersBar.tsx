@@ -127,7 +127,7 @@ export function FiltersBar({
   );
 
   const unsectionedFilters = unpinnedFilters
-    .filter((filter) => !filter.section)
+    .filter((filter) => !filter.section && !filter.hidden)
     .map(filterToActionItem);
 
   const sectionedFilters = unpinnedFilters

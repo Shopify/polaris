@@ -401,6 +401,8 @@ export interface FilterInterface {
   suffix?: React.ReactNode;
   /** Optional section heading that this filter will go under  */
   section?: string;
+  /** Optional: hides the filter from the dropdown  */
+  hidden?: boolean;
 }
 
 /* Useful for defining mutually exclusive props such as:
