@@ -43,17 +43,19 @@ export default function transformer(
 
   // Replace the imports and remove duplicates
   iconNames.forEach((iconName) => {
-    if (isKeyOf(iconRenames, iconName)) {
-      // If there is a legacy import
-      if (hasImportSpecifier(j, source, iconName, sourcePath)) {
-        // If the new import is not already there add it
-        if (!hasImportSpecifier(j, source, iconRenames[iconName], sourcePath)) {
-          insertImportSpecifier(j, source, iconRenames[iconName], sourcePath);
-        }
+    if (!isKeyOf(iconRenames, iconName)) {
+      return;
+    }
 
-        // Remove legacy import
-        removeImportSpecifier(j, source, iconName, sourcePath);
+    // If there is a legacy import
+    if (hasImportSpecifier(j, source, iconName, sourcePath)) {
+      // If the new import is not already there add it
+      if (!hasImportSpecifier(j, source, iconRenames[iconName], sourcePath)) {
+        insertImportSpecifier(j, source, iconRenames[iconName], sourcePath);
       }
+
+      // Remove legacy import
+      removeImportSpecifier(j, source, iconName, sourcePath);
     }
   });
 
