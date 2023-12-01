@@ -1,14 +1,20 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Icon, Text, BlockStack} from '@shopify/polaris';
-import {CirclePlusMinor} from '@shopify/polaris-icons';
+import {Icon, Text, BlockStack, InlineStack} from '@shopify/polaris';
+import * as polarisIcons from '@shopify/polaris-icons';
+import iconMetadata from '@shopify/polaris-icons/metadata';
 
 export default {
   component: Icon,
 } as ComponentMeta<typeof Icon>;
 
+interface Icons {
+  [key: string]: any;
+}
+const icons: Icons = polarisIcons;
+
 export function Default() {
-  return <Icon source={CirclePlusMinor} />;
+  return <Icon source={icons.CirclePlusMinor} />;
 }
 
 export function Colored() {
@@ -17,71 +23,71 @@ export function Colored() {
       <Text as="p" variant="bodyMd" alignment="center">
         Base tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="base" />
+      <Icon source={icons.CirclePlusMinor} tone="base" />
       <Text as="p" variant="bodyMd" alignment="center">
         Subdued tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="subdued" />
+      <Icon source={icons.CirclePlusMinor} tone="subdued" />
       <Text as="p" variant="bodyMd" alignment="center">
         Primary tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="primary" />
+      <Icon source={icons.CirclePlusMinor} tone="primary" />
       <Text as="p" variant="bodyMd" alignment="center">
         Info tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="info" />
+      <Icon source={icons.CirclePlusMinor} tone="info" />
       <Text as="p" variant="bodyMd" alignment="center">
         Success tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="success" />
+      <Icon source={icons.CirclePlusMinor} tone="success" />
       <Text as="p" variant="bodyMd" alignment="center">
         Caution tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="caution" />
+      <Icon source={icons.CirclePlusMinor} tone="caution" />
       <Text as="p" variant="bodyMd" alignment="center">
         Warning tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="warning" />
+      <Icon source={icons.CirclePlusMinor} tone="warning" />
       <Text as="p" variant="bodyMd" alignment="center">
         Critical tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="critical" />
+      <Icon source={icons.CirclePlusMinor} tone="critical" />
       <Text as="p" variant="bodyMd" alignment="center">
         Emphasis tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="emphasis" />
+      <Icon source={icons.CirclePlusMinor} tone="emphasis" />
       <Text as="p" variant="bodyMd" alignment="center">
         Magic tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="magic" />
+      <Icon source={icons.CirclePlusMinor} tone="magic" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Primary tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textPrimary" />
+      <Icon source={icons.CirclePlusMinor} tone="textPrimary" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Caution tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textCaution" />
+      <Icon source={icons.CirclePlusMinor} tone="textCaution" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Warning tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textWarning" />
+      <Icon source={icons.CirclePlusMinor} tone="textWarning" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Critical tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textCritical" />
+      <Icon source={icons.CirclePlusMinor} tone="textCritical" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Info tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textInfo" />
+      <Icon source={icons.CirclePlusMinor} tone="textInfo" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Success tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textSuccess" />
+      <Icon source={icons.CirclePlusMinor} tone="textSuccess" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Magic tone
       </Text>
-      <Icon source={CirclePlusMinor} tone="textMagic" />
+      <Icon source={icons.CirclePlusMinor} tone="textMagic" />
     </BlockStack>
   );
 }
@@ -114,4 +120,17 @@ export function WithCustomSVGAndColor() {
   };
 
   return <Icon source={iconContent} tone="warning" />;
+}
+
+export function PolarisIconsLibrary() {
+  return (
+    <BlockStack gap="100" inlineAlign="start">
+      {Object.keys(iconMetadata).map((icon) => (
+        <InlineStack key={icon} gap="200">
+          <Icon source={polarisIcons[icon]} />
+          <Text as="span">{icon}</Text>
+        </InlineStack>
+      ))}
+    </BlockStack>
+  );
 }
