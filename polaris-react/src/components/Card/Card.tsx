@@ -51,7 +51,11 @@ export const Card = ({
         overflowX="hidden"
         overflowY="hidden"
         minHeight="100%"
-        shadow="bevel"
+        outlineWidth="025"
+        outlineStyle="solid"
+        outlineColor="bevel-border"
+        outlineOffset="-025"
+        shadow="bevel-100"
       >
         {children}
       </Box>

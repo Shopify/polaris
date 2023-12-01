@@ -10,8 +10,10 @@ $vertical-motion-offset: -5px;
   max-width: calc(100vw - var(--p-space-800));
   margin: $visible-portion-of-arrow var(--p-space-200) var(--p-space-400);
   will-change: left, top;
-  box-shadow: var(--p-shadow-bevel);
   border-radius: var(--p-border-radius-300);
+  box-shadow: var(--p-shadow-bevel-100), var(--p-shadow-300);
+  outline: var(--p-border-width-025) solid var(--p-color-bevel-border);
+  outline-offset: calc(-1 * var(--p-border-width-025));
 }
 
 .PopoverOverlay {

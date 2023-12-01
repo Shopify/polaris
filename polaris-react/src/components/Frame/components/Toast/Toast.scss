@@ -6,11 +6,14 @@ $Backdrop-opacity: 0.88;
   display: inline-flex;
   max-width: 500px;
   padding: var(--p-space-200) var(--p-space-300);
+  border-radius: var(--p-border-radius-200);
   background: var(--p-color-bg-inverse);
   color: var(--p-color-text-inverse);
   margin-bottom: var(--p-space-500);
-  box-shadow: var(--p-shadow-bevel);
-  border-radius: var(--p-border-radius-200);
+  box-shadow: var(--p-shadow-bevel-100), var(--p-shadow-400);
+  outline: var(--p-border-width-025) solid
+    var(--p-color-bevel-transparent-border);
+  outline-offset: calc(-1 * var(--p-border-width-025));
 
   @media #{$p-breakpoints-sm-up} {
     padding: var(--p-space-300);

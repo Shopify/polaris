@@ -140,6 +140,8 @@ export interface BoxProps extends React.AriaAttributes {
   opacity?: string;
   /** Outline color */
   outlineColor?: ColorBorderAlias;
+  /** Outline offset */
+  outlineOffset?: BorderWidthScale | `-${BorderWidthScale}`;
   /** Outline style */
   outlineStyle?: LineStyles;
   /** Outline width */
@@ -178,6 +180,7 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       overflowX,
       overflowY,
       outlineColor,
+      outlineOffset,
       outlineStyle,
       outlineWidth,
       padding,
@@ -270,7 +273,10 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       '--pc-box-max-width': maxWidth,
       '--pc-box-outline-color': outlineColor
         ? `var(--p-color-${outlineColor})`
-        : undefined,
+        : 'transparent',
+      '--pc-box-outline-offset': outlineOffset?.startsWith('-')
+        ? `calc(-1 * var(--p-border-width-${outlineOffset.slice(1)}))`
+        : `var(--p-border-width-${outlineOffset})`,
       '--pc-box-outline-style': outlineStyleValue,
       '--pc-box-outline-width': outlineWidth
         ? `var(--p-border-width-${outlineWidth})`
