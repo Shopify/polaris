@@ -4,6 +4,9 @@
   background-color: var(--p-color-bg-surface);
   position: relative;
   display: flex;
+  outline: var(--p-border-width-025) solid var(--p-color-bevel-transparent-border);
+  outline-offset: calc(-1 * var(--p-border-width-025));
+  box-shadow: var(--p-shadow-bevel-100), var(--p-shadow-200);
 
   &:focus {
     outline: none;
@@ -23,11 +26,9 @@
 }
 
 .withinPage {
-  box-shadow: var(--p-shadow-bevel);
   border-radius: none;
 
   @media #{$p-breakpoints-sm-up} {
-    box-shadow: var(--p-shadow-bevel);
     border-radius: var(--p-border-radius-300);
   }
 

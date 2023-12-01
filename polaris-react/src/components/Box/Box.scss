@@ -35,6 +35,7 @@
   --pc-box-min-width: initial;
   --pc-box-max-width: initial;
   --pc-box-outline-color: initial;
+  --pc-box-outline-offset: initial;
   --pc-box-outline-style: initial;
   --pc-box-outline-width: initial;
   --pc-box-overflow-x: initial;
@@ -102,6 +103,8 @@
   max-width: var(--pc-box-max-width);
   // stylelint-disable-next-line -- component custom property that maps to Polaris tokens
   outline-color: var(--pc-box-outline-color);
+  // stylelint-disable-next-line -- component custom property that maps to Polaris tokens
+  outline-offset: var(--pc-box-outline-offset);
   // stylelint-disable-next-line -- component custom property that maps to Polaris tokens
   outline-style: var(--pc-box-outline-style);
   // stylelint-disable-next-line -- component custom property that maps to Polaris tokens

@@ -144,7 +144,9 @@ export type ColorBorderAlias =
   /** Specialty and component border colors. */
   | 'input-border-active'
   | 'input-border-hover'
-  | 'input-border';
+  | 'input-border'
+  | 'bevel-border'
+  | 'bevel-transparent-border';
 
 export type ColorIconAlias =
   | 'icon-active'
@@ -1044,6 +1046,12 @@ export const color: {
   'color-icon-inverse': {
     value: colors.gray[8],
     description: 'Use for icons on an inverse background.',
+  },
+  'color-bevel-border': {
+    value: colors.gray[8],
+  },
+  'color-bevel-transparent-border': {
+    value: 'rgba(0, 0, 0, 0.12)',
   },
   'color-avatar-bg-fill': {
     value: colors.gray[11],
