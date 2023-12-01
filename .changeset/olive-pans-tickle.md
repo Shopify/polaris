@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-add hidden prop to FilterInterface
+Added an optional `hidden` property to the `Filters` `FilterInterface` type to support `filters` that are only set programmatically
