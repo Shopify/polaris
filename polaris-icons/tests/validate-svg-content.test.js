@@ -28,7 +28,7 @@ allIconFiles.forEach(
         const properties = Object.keys(
           select(':root', iconAst).properties,
         ).sort();
-        expect(properties).toStrictEqual(['viewBox', 'xmlns'].sort());
+        expect(properties).toStrictEqual(['viewBox', 'xmlns', 'fill'].sort());
       });
 
       it(`has an xml namespace`, () => {
