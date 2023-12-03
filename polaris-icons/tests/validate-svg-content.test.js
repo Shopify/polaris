@@ -17,7 +17,6 @@ const allIconFiles = globby
         .use(parse, {fragment: true, space: 'svg'})
         .parse(iconSource),
       expectedViewbox: '0 0 20 20',
-      expectedFillColors: ['currentColor'],
     };
   });
 
@@ -28,7 +27,7 @@ allIconFiles.forEach(
         const properties = Object.keys(
           select(':root', iconAst).properties,
         ).sort();
-        expect(properties).toStrictEqual(['viewBox', 'xmlns', 'fill'].sort());
+        expect(properties).toStrictEqual(['viewBox', 'xmlns'].sort());
       });
 
       it(`has an xml namespace`, () => {
@@ -59,12 +58,9 @@ allIconFiles.forEach(
         });
       });
 
-      it('only has <svg>s with an explict fill color', () => {
-        const nodesWithUndefinedFill = selectAll('svg:not([fill])', iconAst);
-
-        expect(nodeSources(nodesWithUndefinedFill, iconSource)).toStrictEqual(
-          [],
-        );
+      it('no fill on all elements', () => {
+        const nodesWithFill = selectAll('*:([fill])', iconAst);
+        expect(nodeSources(nodesWithFill, iconSource)).toStrictEqual([]);
       });
 
       it('only has <path>s that only use the [d, fill-rule, fill-opacity] attributes', () => {
@@ -132,22 +128,6 @@ allIconFiles.forEach(
           nodeSources(nodesWithDisallowedValues, iconSource),
         ).toStrictEqual([]);
       });
-
-      if (expectedFillColors) {
-        const expectedFillsString = expectedFillColors.join(',');
-
-        it(`has no nodes that use fill colors other than [${expectedFillsString}]`, () => {
-          const nodesWithInvalidFill = selectAll('[fill]', iconAst).filter(
-            (node) => {
-              return !expectedFillColors.includes(node.properties.fill);
-            },
-          );
-
-          expect(nodeSources(nodesWithInvalidFill, iconSource)).toStrictEqual(
-            [],
-          );
-        });
-      }
     });
   },
 );
