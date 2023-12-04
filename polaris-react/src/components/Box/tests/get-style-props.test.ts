@@ -166,7 +166,7 @@ describe('convertStylePropsToCSSProperties', () => {
   });
 
   describe('defaults', () => {
-    it('applies string values', () => {
+    it('does not apply static values', () => {
       const styleProps: ResponsiveStylePropsWithModifiers = {display: 'flex'};
       const defaults: PropDefaults = {
         borderInlineStartStyle: 'solid',
@@ -174,7 +174,6 @@ describe('convertStylePropsToCSSProperties', () => {
       expect(convertStylePropsToCSSProperties(styleProps, defaults))
         .toMatchInlineSnapshot(`
         Object {
-          "borderInlineStartStyle": "solid",
           "display": "flex",
         }
       `);
@@ -203,15 +202,43 @@ describe('convertStylePropsToCSSProperties', () => {
       });
     });
 
-    it('are applied even when no style props are passed', () => {
+    it('are not applied when no style props are passed', () => {
       const styleProps: ResponsiveStylePropsWithModifiers = {};
+      const defaults: PropDefaults = {
+        borderInlineStartStyle: 'solid',
+      };
+      expect(
+        convertStylePropsToCSSProperties(styleProps, defaults),
+      ).toMatchInlineSnapshot(`Object {}`);
+    });
+
+    it('are applied when defaults are passed, and responsive style props are passed that are not xs', () => {
+      const styleProps: ResponsiveStylePropsWithModifiers = {
+        borderInlineStartStyle: {md: 'dashed'},
+      };
       const defaults: PropDefaults = {
         borderInlineStartStyle: 'solid',
       };
       expect(convertStylePropsToCSSProperties(styleProps, defaults))
         .toMatchInlineSnapshot(`
         Object {
-          "borderInlineStartStyle": "solid",
+          "--_1md": "var(--_md) dashed",
+          "borderInlineStartStyle": "var(--_1md,solid)",
+        }
+      `);
+    });
+
+    it('are not applied when defaults are passed, and responsive style props are passed that include xs', () => {
+      const styleProps: ResponsiveStylePropsWithModifiers = {
+        borderInlineStartStyle: {xs: 'dashed'},
+      };
+      const defaults: PropDefaults = {
+        borderInlineStartStyle: 'solid',
+      };
+      expect(convertStylePropsToCSSProperties(styleProps, defaults))
+        .toMatchInlineSnapshot(`
+        Object {
+          "borderInlineStartStyle": "dashed",
         }
       `);
     });
