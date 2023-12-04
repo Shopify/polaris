@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Portal} from '../../Portal';
 import {PositionedOverlay} from '../../PositionedOverlay';
@@ -11,7 +12,22 @@ const defaultProps = {
   activator: <div>Activator</div>,
 };
 
+jest.mock('../../../utilities/breakpoints', () => ({
+  ...(jest.requireActual('../../../utilities/breakpoints') as any),
+  useBreakpoints: jest.fn(),
+}));
+
 describe('<HoverCard />', () => {
+  beforeEach(() => {
+    matchMedia.mock();
+    mockUseBreakpoints(true);
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
+    jest.clearAllMocks();
+  });
+
   it('renders a portal when active', () => {
     const hoverCard = mountWithApp(<HoverCard {...defaultProps} active />);
     expect(hoverCard).toContainReactComponent(Portal);
@@ -74,3 +90,13 @@ describe('<HoverCard />', () => {
     });
   });
 });
+
+function mockUseBreakpoints(mdUp: boolean) {
+  const useBreakpoints: jest.Mock = jest.requireMock(
+    '../../../utilities/breakpoints',
+  ).useBreakpoints;
+
+  useBreakpoints.mockReturnValue({
+    mdUp,
+  });
+}
