@@ -36,8 +36,7 @@ export type Descriptor = SectionDescriptor | OptionDescriptor;
 
 export type IconSource =
   | React.FunctionComponent<React.SVGProps<SVGSVGElement>>
-  | 'placeholder'
-  | string;
+  | 'placeholder';
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 
