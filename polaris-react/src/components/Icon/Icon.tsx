@@ -8,6 +8,7 @@ import styles from './Icon.scss';
 
 type Tone =
   | 'base'
+  | 'currentColor'
   | 'subdued'
   | 'caution'
   | 'warning'

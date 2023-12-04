@@ -13,6 +13,10 @@
   color: var(--p-color-bg-surface);
 }
 
+.currentColor svg {
+  fill: currentColor;
+}
+
 .toneBase svg {
   fill: var(--p-color-icon);
 }
