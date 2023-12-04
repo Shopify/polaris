@@ -116,7 +116,8 @@ export type ColorBackgroundAlias =
   | 'nav-bg'
   | 'radio-button-bg-surface-disabled'
   | 'video-thumbnail-play-button-bg-fill-hover'
-  | 'video-thumbnail-play-button-bg-fill';
+  | 'video-thumbnail-play-button-bg-fill'
+  | 'badge-new-bg-fill';
 
 export type ColorBorderAlias =
   | 'border-brand'
@@ -221,7 +222,8 @@ export type ColorTextAlias =
   | 'avatar-text-on-bg-fill'
   | 'avatar-three-text-on-bg-fill'
   | 'avatar-two-text-on-bg-fill'
-  | 'video-thumbnail-play-button-text-on-bg-fill';
+  | 'video-thumbnail-play-button-text-on-bg-fill'
+  | 'badge-new-text';
 
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
@@ -515,7 +517,7 @@ export const color: {
       'The active state (on press) color for communicating important information on elements with a smaller surface area.',
   },
   'color-bg-fill-info-secondary': {
-    value: colors.azure[4],
+    value: colors.azure[5],
     description:
       'Use for backgrounds communicating important information on elements with a smaller surface area, with a secondary level of prominence.',
   },
@@ -534,7 +536,7 @@ export const color: {
       'The active state (on press) color for communicating success on elements with a smaller surface area.',
   },
   'color-bg-fill-success-secondary': {
-    value: colors.green[3],
+    value: colors.green[4],
     description:
       'Use for backgrounds communicating success on elements with a smaller surface area, with a secondary level of prominence.',
   },
@@ -574,7 +576,7 @@ export const color: {
       'The active state (on press) color for communicating caution on elements with a smaller surface area.',
   },
   'color-bg-fill-caution-secondary': {
-    value: colors.yellow[4],
+    value: colors.yellow[5],
     description:
       'Use for backgrounds communicating caution on elements with a smaller surface area, with a secondary level of prominence.',
   },
@@ -599,7 +601,7 @@ export const color: {
       'The selected state color for communicating critical information on elements with a smaller surface area.',
   },
   'color-bg-fill-critical-secondary': {
-    value: colors.red[6],
+    value: colors.red[7],
     description:
       'Use for backgrounds communicating critical information on elements with a smaller surface area, with a secondary level of prominence.',
   },
@@ -737,7 +739,7 @@ export const color: {
     description: 'The disabled state color for text on bg-fill-brand-disabled.',
   },
   'color-text-info': {
-    value: colors.azure[14],
+    value: colors.azure[15],
     description: 'Use for text communicating important information.',
   },
   'color-text-info-hover': {
@@ -1137,5 +1139,11 @@ export const color: {
   },
   'color-video-thumbnail-play-button-text-on-bg-fill': {
     value: colors.gray[1],
+  },
+  'color-badge-new-bg-fill': {
+    value: colors.teal[5],
+  },
+  'color-badge-new-text': {
+    value: colors.teal[14],
   },
 };
