@@ -4,14 +4,14 @@ $vertical-motion-offset: -5px;
 
 .HoverCard {
   background: var(--p-color-bg-surface);
-  max-width: calc(100vw - var(--p-space-8));
-  margin: var(--p-space-1) var(--p-space-2) var(--p-space-4);
-  box-shadow: var(--p-shadow-xl);
-  border-radius: var(--p-border-radius-2);
+  max-width: calc(100vw - var(--p-space-800));
+  margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
+  box-shadow: var(--p-shadow-500);
+  border-radius: var(--p-border-radius-300);
   will-change: left, right, top;
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-md),
-    $borderRadius: var(--p-border-radius-3),
+    $borderRadius: var(--p-border-radius-300),
     $zIndex: 2
   );
 
@@ -21,10 +21,14 @@ $vertical-motion-offset: -5px;
 }
 
 .HoverCardOverlay {
+  top: 0;
+  width: auto;
   opacity: 0;
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
-    transform var(--p-motion-duration-100) var(--p-motion-ease);
   transform: translateY($vertical-motion-offset);
+  /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- need custom bezier curve for hovercard animations */
+  transition: opacity var(--p-motion-duration-100) ease-in-out,
+    top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
+    width var(--p-duration-400) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
 
 .HoverCardOverlay-entering {
@@ -43,7 +47,7 @@ $vertical-motion-offset: -5px;
 }
 
 .positionedAbove {
-  margin: var(--p-space-4) var(--p-space-2);
+  margin: var(--p-space-400) var(--p-space-200);
 }
 
 .ActivatorWrapper {
@@ -53,27 +57,40 @@ $vertical-motion-offset: -5px;
   &.snapToParent {
     width: 100%;
   }
+
+  &:hover {
+    .HoverCardOverlay {
+      opacity: 1;
+    }
+
+    .HoverCardOverlay-entering {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .HoverCardOverlay-open {
+      opacity: 1;
+      transform: none;
+    }
+  }
 }
 
 .ContentContainer {
   position: relative;
   overflow: hidden;
   background: var(--p-color-bg);
-  border-radius: var(--p-space-2);
+  border-radius: var(--p-space-300);
 
   /* Prevent Scrollable's box shadows overflowing the rounded corners of this
    * element on Safari prior to tech preview version 156.
    * See: https://bugs.webkit.org/show_bug.cgi?id=68196 */
   isolation: isolate;
-
-  #{$se23} & {
-    border-radius: var(--p-space-3);
-  }
 }
 
 .Content {
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
+  transition: all var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
