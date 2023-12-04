@@ -10,6 +10,8 @@ import type {
   ResponsiveStyleProps,
   ResponsiveStylePropsWithModifiers,
   PropDefaults,
+  StaticPropDefaults,
+  DynamicPropDefaults,
   BreakpointsAliasesWithBaseKey,
 } from './generated-data';
 import {
@@ -179,7 +181,7 @@ function keyByModifiers(styleProps: ResponsiveStylePropsWithModifiers) {
 
 function resolveConcreteLonghandValues(
   styleProps: ResponsiveStyleProps,
-  defaults: PropDefaults,
+  defaults: DynamicPropDefaults,
 ): ResponsiveStyleProps {
   // Ensure constituent styles are given fallback values even when they're not
   // passed in as an explicit style prop.
@@ -356,6 +358,16 @@ export function convertStylePropsToCSSProperties(
     modifier: (typeof allModifiers)[number],
   ) => unknown = identity,
 ) {
+  const dynamicDefaults: DynamicPropDefaults = Object.fromEntries(
+    Object.entries(defaults).filter(
+      ([_, getDefault]) => typeof getDefault === 'function',
+    ),
+  );
+  const staticDefaults: StaticPropDefaults = Object.fromEntries(
+    Object.entries(defaults).filter(
+      ([_, getDefault]) => typeof getDefault !== 'function',
+    ),
+  );
   const stylePropsByModifier = mapObjectValues(
     // Split out things like `_hover` into their own objects:
     // {
@@ -368,7 +380,7 @@ export function convertStylePropsToCSSProperties(
     (value) =>
       normalizeStyleProps(
         // Expand all the aliases and apply defaults.
-        resolveConcreteLonghandValues(value!, defaults),
+        resolveConcreteLonghandValues(value!, dynamicDefaults),
       ),
   );
 
@@ -471,6 +483,8 @@ export function convertStylePropsToCSSProperties(
       leastSpecificValue = lastValue.value;
       // Then remove it so it doesn't get processed like other CSS variables.
       valuesByPriority.pop();
+    } else if (staticDefaults[stylePropName]) {
+      leastSpecificValue = staticDefaults[stylePropName];
     }
 
     // We need to ensure CSS declarations are scoped to the current DOM node

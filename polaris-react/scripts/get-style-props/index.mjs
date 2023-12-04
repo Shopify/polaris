@@ -482,10 +482,11 @@ export const stylePropAliasNames: (keyof StyleProps)[] = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat())
 );
 
-export type PropDefaults = {[K in keyof StyleProps]?:
-  | StyleProps[K]
-  | undefined
-  | ((props: ResponsiveStyleProps) => StyleProps[K] | undefined) };
+type StaticDefaultValue<K extends keyof StyleProps> = StyleProps[K] | undefined;
+type DynamicDefaultValue<K extends keyof StyleProps> = (props: ResponsiveStyleProps) => StyleProps[K] | undefined;
+export type PropDefaults = { [K in keyof StyleProps]?: StaticDefaultValue<K> | DynamicDefaultValue<K>};
+export type StaticPropDefaults = {[K in keyof StyleProps]?: StaticDefaultValue<K>};
+export type DynamicPropDefaults = { [K in keyof StyleProps]?: DynamicDefaultValue<K>;}
 
 export const stylePropDefaults = {
   ${Object.entries(stylePropConfig)
