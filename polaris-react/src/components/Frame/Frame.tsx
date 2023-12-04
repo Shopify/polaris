@@ -246,7 +246,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       <CSSAnimation
         in={showContextualSaveBar}
         className={styles.ContextualSaveBar}
-        type="fade"
+        type="slideUp"
       >
         <ContextualSaveBar {...this.contextualSaveBar} />
       </CSSAnimation>
@@ -294,7 +294,11 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           >
             <div className={styles.Content}>{children}</div>
           </main>
-          <ToastManager toastMessages={toastMessages} />
+
+          <ToastManager
+            toastMessages={toastMessages}
+            showContextualSaveBar={showContextualSaveBar}
+          />
           {globalRibbonMarkup}
           <EventListener event="resize" handler={this.handleResize} />
         </div>

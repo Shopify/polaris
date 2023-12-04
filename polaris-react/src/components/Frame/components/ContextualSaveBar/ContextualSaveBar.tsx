@@ -1,74 +1,61 @@
-import React, {useCallback} from 'react';
-import {RiskMajor} from '@shopify/polaris-icons';
+import React, {useRef} from 'react';
+import {DisputeMinor} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
-import {Image} from '../../../Image';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
 import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
-import {useFrame} from '../../../../utilities/frame';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
-import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
-import {useToggle} from '../../../../utilities/use-toggle';
+import {ShadowBevel} from '../../../ShadowBevel';
+import {useEventListener} from '../../../../utilities/use-event-listener';
+import {debounce} from '../../../../utilities/debounce';
 
-import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.scss';
 
 export function ContextualSaveBar({
-  alignContentFlush,
   message,
   saveAction,
   discardAction,
   fullWidth,
-  contextControl,
   secondaryMenu,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
-  const {logo} = useFrame();
-  const {
-    value: discardConfirmationModalVisible,
-    toggle: toggleDiscardConfirmationModal,
-    setFalse: closeDiscardConfirmationModal,
-  } = useToggle(false);
+  const barRef = useRef<HTMLDivElement>(null);
+  const insideBarRef = useRef<HTMLDivElement>(null);
 
-  const handleDiscardAction = useCallback(() => {
-    if (discardAction && discardAction.onAction) {
-      discardAction.onAction();
-    }
-    closeDiscardConfirmationModal();
-  }, [closeDiscardConfirmationModal, discardAction]);
+  const handleLeaveConfirmation = debounce(
+    () => {
+      barRef.current?.classList.add(styles.Shake);
+      insideBarRef.current?.classList.add(styles.GreenBar);
+
+      setTimeout(() => {
+        barRef.current?.classList.remove(styles.Shake);
+        insideBarRef.current?.classList.remove(styles.GreenBar);
+      }, 1000);
+    },
+    500,
+    {leading: true, trailing: false},
+  );
+
+  useEventListener(
+    'onLeaveDirtyState' as keyof WindowEventMap,
+    handleLeaveConfirmation,
+  );
 
   const discardActionContent =
     discardAction && discardAction.content
       ? discardAction.content
       : i18n.translate('Polaris.ContextualSaveBar.discard');
 
-  let discardActionHandler;
-  if (discardAction && discardAction.discardConfirmationModal) {
-    discardActionHandler = toggleDiscardConfirmationModal;
-  } else if (discardAction) {
-    discardActionHandler = discardAction.onAction;
-  }
-
-  const discardConfirmationModalMarkup = discardAction &&
-    discardAction.onAction &&
-    discardAction.discardConfirmationModal && (
-      <DiscardConfirmationModal
-        open={discardConfirmationModalVisible}
-        onCancel={toggleDiscardConfirmationModal}
-        onDiscard={handleDiscardAction}
-      />
-    );
-
   const discardActionMarkup = discardAction && (
     <Button
       variant="tertiary"
       size="large"
       url={discardAction.url}
-      onClick={discardActionHandler}
+      onClick={discardAction?.onAction}
       loading={discardAction.loading}
       disabled={discardAction.disabled}
       accessibilityLabel={discardAction.content}
@@ -97,52 +84,34 @@ export function ContextualSaveBar({
     </Button>
   );
 
-  const width = getWidth(logo, 104);
-
-  const imageMarkup = logo && (
-    <Image style={{width}} source={logo.contextualSaveBarSource || ''} alt="" />
-  );
-
-  const logoMarkup =
-    alignContentFlush || contextControl ? null : (
-      <div className={styles.LogoContainer} style={{width}}>
-        {imageMarkup}
-      </div>
-    );
-
-  const contextControlMarkup = contextControl ? (
-    <div className={styles.ContextControl}>{contextControl}</div>
-  ) : null;
-
   const contentsClassName = classNames(
     styles.Contents,
     fullWidth && styles.fullWidth,
   );
 
   return (
-    <>
-      <div className={styles.ContextualSaveBar}>
-        {contextControlMarkup}
-        {logoMarkup}
-        <div className={contentsClassName}>
-          <div className={styles.MessageContainer}>
-            <Icon source={RiskMajor} />
-            {message && (
-              <Text as="h2" variant="headingMd" tone="text-inverse" truncate>
-                {message}
-              </Text>
-            )}
-          </div>
-          <div className={styles.ActionContainer}>
-            <LegacyStack spacing="tight" wrap={false}>
-              {secondaryMenu}
-              {discardActionMarkup}
-              {saveActionMarkup}
-            </LegacyStack>
+    <div ref={barRef}>
+      <ShadowBevel boxShadow="400" borderRadius="400">
+        <div className={styles.ContextualSaveBar} ref={insideBarRef}>
+          <div className={contentsClassName}>
+            <div className={styles.MessageContainer}>
+              <Icon source={DisputeMinor} />
+              {message && (
+                <Text as="h2" variant="headingMd" tone="text-inverse" truncate>
+                  {message}
+                </Text>
+              )}
+            </div>
+            <div className={styles.ActionContainer}>
+              <LegacyStack spacing="tight" wrap={false}>
+                {secondaryMenu}
+                {discardActionMarkup}
+                {saveActionMarkup}
+              </LegacyStack>
+            </div>
           </div>
         </div>
-      </div>
-      {discardConfirmationModalMarkup}
-    </>
+      </ShadowBevel>
+    </div>
   );
 }
