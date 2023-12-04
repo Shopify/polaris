@@ -272,6 +272,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       stopLoading: this.stopLoading,
       setContextualSaveBar: this.setContextualSaveBar,
       removeContextualSaveBar: this.removeContextualSaveBar,
+      showContextualSaveBar: this.showContextualSaveBar,
+      getContextualSaveBarProps: this.getContextualSaveBarProps,
     };
 
     return (
@@ -358,6 +360,15 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   private removeContextualSaveBar = () => {
     this.contextualSaveBar = null;
     this.setState({showContextualSaveBar: false});
+  };
+
+  private showContextualSaveBar = () => {
+    const {showContextualSaveBar} = this.state;
+    return showContextualSaveBar;
+  };
+
+  private getContextualSaveBarProps = () => {
+    return this.contextualSaveBar;
   };
 
   private startLoading = () => {

@@ -1,7 +1,10 @@
-import React from 'react';
+/* eslint-disable @shopify/strict-component-boundaries */
+/* eslint-disable @shopify/jsx-no-hardcoded-content */
+import React, {useCallback, useRef} from 'react';
+import {ChevronDownMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
-import {buttonFrom} from '../../../Button';
+import {Button, buttonFrom} from '../../../Button';
 import {Text} from '../../../Text';
 import {Tooltip} from '../../../Tooltip';
 import {useMediaQuery} from '../../../../utilities/media-query';
@@ -29,6 +32,15 @@ import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
 import {InlineStack} from '../../../InlineStack';
 import {FilterActionsProvider} from '../../../FilterActionsProvider';
+import {useFrame} from '../../../../utilities/frame';
+import {Badge} from '../../../Badge';
+import {Icon} from '../../../Icon';
+import {Bleed} from '../../../Bleed';
+import {useToggle} from '../../../../utilities/use-toggle';
+import {DiscardConfirmationModal} from '../../../Frame/components/ContextualSaveBar/components';
+import {CSSAnimation} from '../../../Frame/components';
+import {useEventListener} from '../../../../utilities/use-event-listener';
+import {debounce} from '../../../../utilities/debounce';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
@@ -88,6 +100,7 @@ export function Header({
 }: HeaderProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
+  const {showContextualSaveBar, getContextualSaveBarProps} = useFrame();
 
   const isSingleRow =
     !primaryAction &&
@@ -117,12 +130,129 @@ export function Header({
       </div>
     ) : null;
 
+  const {discardAction, saveAction} = getContextualSaveBarProps() || {};
+
+  const saveActionContent =
+    saveAction && saveAction.content
+      ? saveAction.content
+      : i18n.translate('Polaris.ContextualSaveBar.save');
+
+  const {
+    value: discardConfirmationModalVisible,
+    toggle: toggleDiscardConfirmationModal,
+    setFalse: closeDiscardConfirmationModal,
+  } = useToggle(false);
+
+  const handleDiscardAction = useCallback(() => {
+    if (discardAction && discardAction.onAction) {
+      discardAction.onAction();
+    }
+    closeDiscardConfirmationModal();
+  }, [closeDiscardConfirmationModal, discardAction]);
+
+  const discardActionContent =
+    discardAction && discardAction.content
+      ? discardAction.content
+      : i18n.translate('Polaris.ContextualSaveBar.discard');
+
+  let discardActionHandler;
+  if (discardAction && discardAction.discardConfirmationModal) {
+    discardActionHandler = toggleDiscardConfirmationModal;
+  } else if (discardAction) {
+    discardActionHandler = discardAction.onAction;
+  }
+
+  const discardConfirmationModalMarkup = discardAction &&
+    discardAction.onAction &&
+    discardAction.discardConfirmationModal && (
+      <DiscardConfirmationModal
+        open={discardConfirmationModalVisible}
+        onCancel={toggleDiscardConfirmationModal}
+        onDiscard={handleDiscardAction}
+      />
+    );
+
+  const handleLeaveConfirmation = debounce(
+    () => {
+      badgeRef.current?.classList.add(styles.Green, styles.Shake);
+
+      setTimeout(() => {
+        badgeRef.current?.classList.remove(styles.Green, styles.Shake);
+      }, 300);
+    },
+    500,
+    {leading: true, trailing: false},
+  );
+
+  useEventListener(
+    'onLeaveDirtyState' as keyof WindowEventMap,
+    handleLeaveConfirmation,
+  );
+
+  const badgeRef = useRef<HTMLDivElement>(null);
+
   const pageTitleMarkup = (
     <div className={styles.TitleWrapper}>
       <Title
         title={title}
         subtitle={subtitle}
-        titleMetadata={titleMetadata}
+        titleMetadata={
+          <InlineStack wrap={false}>
+            {!showContextualSaveBar() && titleMetadata}
+            <CSSAnimation
+              in={showContextualSaveBar()}
+              type="fade"
+              className={styles.Save}
+            >
+              <Box paddingInlineStart="200">
+                <InlineStack gap="200" align="center">
+                  <div
+                    style={{maxHeight: '20px', paddingBlock: '2px'}}
+                    ref={badgeRef}
+                  >
+                    <Badge size="small">
+                      <InlineStack align="center" gap="025">
+                        <Text as="span">Unsaved changes</Text>
+                        <Bleed marginBlock="050">
+                          <Icon source={ChevronDownMinor} />
+                        </Bleed>
+                      </InlineStack>
+                    </Badge>
+                  </div>
+                  <CSSAnimation in={showContextualSaveBar()} type="slideFade">
+                    <InlineStack gap="200" align="center">
+                      {discardAction && (
+                        <Button
+                          size="micro"
+                          url={discardAction.url}
+                          onClick={discardActionHandler}
+                          loading={discardAction.loading}
+                          disabled={discardAction.disabled}
+                          accessibilityLabel={discardAction.content}
+                        >
+                          {discardActionContent}
+                        </Button>
+                      )}
+                      {saveAction && (
+                        <Button
+                          size="micro"
+                          variant="primary"
+                          url={saveAction.url}
+                          onClick={saveAction.onAction}
+                          loading={saveAction.loading}
+                          disabled={saveAction.disabled}
+                          accessibilityLabel={saveAction.content}
+                        >
+                          {saveActionContent}
+                        </Button>
+                      )}
+                    </InlineStack>
+                  </CSSAnimation>
+                </InlineStack>
+              </Box>
+            </CSSAnimation>
+          </InlineStack>
+        }
         compactTitle={compactTitle}
       />
     </div>
@@ -141,7 +271,7 @@ export function Header({
       <ActionMenu
         actions={secondaryActions}
         groups={actionGroups}
-        rollup={isNavigationCollapsed}
+        rollup={isNavigationCollapsed || showContextualSaveBar()}
         rollupActionsLabel={
           title
             ? i18n.translate('Polaris.Page.Header.rollupActionsLabel', {title})
@@ -197,6 +327,7 @@ export function Header({
     paginationMarkup,
     primaryActionMarkup,
     title,
+    showContextualSaveBar: showContextualSaveBar(),
   });
 
   return (
@@ -238,6 +369,7 @@ export function Header({
           </ConditionalRender>
         </FilterActionsProvider>
       </div>
+      {discardConfirmationModalMarkup}
     </Box>
   );
 }
@@ -311,6 +443,7 @@ function determineLayout({
   paginationMarkup,
   primaryActionMarkup,
   title,
+  showContextualSaveBar = false,
 }: {
   actionMenuMarkup: MaybeJSX;
   additionalMetadataMarkup: MaybeJSX;
@@ -320,6 +453,7 @@ function determineLayout({
   paginationMarkup: MaybeJSX;
   primaryActionMarkup: MaybeJSX;
   title?: string;
+  showContextualSaveBar?: boolean;
 }) {
   //    Header Layout
   // |----------------------------------------------------|
@@ -367,6 +501,32 @@ function determineLayout({
         actionMenuMarkup == null &&
         title != null &&
         title.length <= SHORT_TITLE,
+    },
+    desktopCompactSaveBar: {
+      slots: {
+        slot1: breadcrumbMarkup,
+        slot2: pageTitleMarkup,
+        slot3: actionMenuMarkup,
+        slot4: null,
+        slot5: additionalMetadataMarkup,
+      },
+      condition:
+        !isNavigationCollapsed &&
+        paginationMarkup == null &&
+        actionMenuMarkup == null &&
+        title != null &&
+        title.length <= SHORT_TITLE &&
+        showContextualSaveBar,
+    },
+    desktopDefaultSaveBar: {
+      slots: {
+        slot1: breadcrumbMarkup,
+        slot2: pageTitleMarkup,
+        slot3: actionMenuMarkup,
+        slot4: null,
+        slot5: additionalMetadataMarkup,
+      },
+      condition: showContextualSaveBar,
     },
     desktopDefault: {
       slots: {

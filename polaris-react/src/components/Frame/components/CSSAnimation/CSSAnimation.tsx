@@ -4,11 +4,11 @@ import {classNames, variationName} from '../../../../utilities/css';
 
 import styles from './CSSAnimation.scss';
 
-type AnimationType = 'fade';
+type AnimationType = 'fade' | 'slideFade';
 
 export interface CSSAnimationProps {
   in: boolean;
-  className: string;
+  className?: string;
   type: AnimationType;
   children?: React.ReactNode;
 }
