@@ -12,6 +12,7 @@ import {Portal} from '../Portal';
 import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {classNames} from '../../utilities/css';
 import {useToggle} from '../../utilities/use-toggle';
+import {useBreakpoints} from '../../utilities/breakpoints';
 
 import styles from './HoverCard.scss';
 import {HoverCardOverlay} from './components/HoverCardOverlay';
@@ -62,7 +63,6 @@ export function HoverCard({
   toggleActive,
   ...rest
 }: HoverCardProps) {
-  const overlayRef = useRef<HoverCardOverlay>(null);
   const activatorRef = useRef<HTMLElement>(null);
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -70,14 +70,14 @@ export function HoverCard({
 
   const id = useId();
 
+  const {mdUp} = useBreakpoints();
+
   const {presenceList, addPresence, removePresence} =
     useEphemeralPresenceManager();
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
 
-  const {value: active, setFalse: handleBlur} = useToggle(
-    Boolean(originalActive),
-  );
+  const {value: active, setTrue, setFalse} = useToggle(Boolean(originalActive));
 
   const WrapperComponent: any = activatorWrapper;
 
@@ -115,10 +115,11 @@ export function HoverCard({
 
     mouseEntered.current = false;
     handleClose();
-    handleBlur();
+    setFalse();
   };
 
   const handleMouseEnter = () => {
+    if (!mdUp) return;
     mouseEntered.current = true;
     if (hoverDelay && !presenceList.hovercard) {
       hoverDelayTimeout.current = setTimeout(() => {
@@ -127,6 +128,8 @@ export function HoverCard({
     } else {
       handleOpen();
     }
+
+    setTrue();
   };
 
   // https://github.com/facebook/react/issues/10109
@@ -141,14 +144,11 @@ export function HoverCard({
     }
   }, [activatorNode]);
 
-  console.log(presenceList);
-
   const portal =
-    activatorNode && active ? (
+    activatorNode && active && mdUp ? (
       <Portal idPrefix="hovercard">
         <HoverCardOverlay
           id={id}
-          ref={overlayRef}
           active={active}
           activator={activatorNode}
           snapToParent={snapToParent}
