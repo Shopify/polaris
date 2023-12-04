@@ -219,7 +219,7 @@ describe('<Autocomplete/>', () => {
             ellipsis: false,
             active: false,
             role: 'option',
-            icon: 'icon',
+            icon: 'placeholder' as const,
             disabled: false,
             destructive: true,
             badge: {
@@ -246,7 +246,7 @@ describe('<Autocomplete/>', () => {
             ellipsis: false,
             active: false,
             role: 'option',
-            icon: 'icon',
+            icon: 'placeholder' as const,
             disabled: false,
             destructive: true,
             badge: {

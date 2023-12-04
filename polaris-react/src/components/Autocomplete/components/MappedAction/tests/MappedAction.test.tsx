@@ -125,7 +125,7 @@ describe('MappedAction', () => {
     });
 
     it('renders icon', () => {
-      const source = 'icon';
+      const source = 'placeholder';
       const mappedAction = mountWithListboxProvider(
         <MappedAction icon={source} />,
       );
@@ -142,7 +142,7 @@ describe('MappedAction', () => {
     });
 
     it('renders icon instead of image', () => {
-      const source = 'icon';
+      const source = 'placeholder';
       const image = 'image';
       const mappedAction = mountWithListboxProvider(
         <MappedAction icon={source} image={image} />,
@@ -167,7 +167,7 @@ describe('MappedAction', () => {
     });
 
     it('renders prefix instead of icon', () => {
-      const source = 'icon';
+      const source = 'placeholder';
       const mappedAction = mountWithListboxProvider(
         <MappedAction prefix={<MockComponent />} icon={source} />,
       );
