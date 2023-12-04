@@ -60,7 +60,7 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
   const className = classNames(
     styles.Icon,
     tone && styles[variationName('tone', tone)],
-    tone && styles.applyColor,
+    tone && tone !== 'currentColor' && styles.applyColor,
   );
 
   const SourceComponent = source;
