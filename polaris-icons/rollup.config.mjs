@@ -101,12 +101,6 @@ function customTypes({fileName, source}) {
 function svgBuild(options = {}) {
   const filter = createFilter(options.include || '**/*.svg', options.exclude);
 
-  /** @type {import('svgo').OptimizeOptions} */
-
-  svgoConfig.plugins.push({
-    ...replaceFillAttributeSvgoPlugin(),
-  });
-
   const optimizedSvgs = [];
 
   return {
@@ -147,25 +141,6 @@ function svgBuild(options = {}) {
           source: optimizedSvg,
         });
       });
-    },
-  };
-}
-
-/**
- * An SVGO plugin that applies a transform function to every fill attribute
- * in an SVG. This lets you replace fill colors or remove them entirely.
- */
-function replaceFillAttributeSvgoPlugin() {
-  return {
-    type: 'perItem',
-    name: 'replaceFillAttibute',
-    description: 'replaces fill attributes using a user-defined function',
-    fn(item) {
-      if (!item.isElem() || !item.attr('fill')) {
-        return;
-      }
-
-      item.removeAttr('fill');
     },
   };
 }
