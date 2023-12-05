@@ -102,6 +102,8 @@ export type ColorBackgroundAlias =
   | 'avatar-five-bg-fill'
   | 'avatar-four-bg-fill'
   | 'avatar-one-bg-fill'
+  | 'avatar-seven-bg-fill'
+  | 'avatar-six-bg-fill'
   | 'avatar-three-bg-fill'
   | 'avatar-two-bg-fill'
   | 'backdrop-bg'
@@ -218,6 +220,8 @@ export type ColorTextAlias =
   | 'avatar-five-text-on-bg-fill'
   | 'avatar-four-text-on-bg-fill'
   | 'avatar-one-text-on-bg-fill'
+  | 'avatar-seven-text-on-bg-fill'
+  | 'avatar-six-text-on-bg-fill'
   | 'avatar-text-on-bg-fill'
   | 'avatar-three-text-on-bg-fill'
   | 'avatar-two-text-on-bg-fill'
@@ -1049,31 +1053,43 @@ export const color: {
     value: colors.gray[11],
   },
   'color-avatar-five-bg-fill': {
-    value: colors.rose[7],
+    value: colors.rose[11],
   },
   'color-avatar-five-text-on-bg-fill': {
-    value: colors.rose[14],
+    value: colors.rose[2],
   },
   'color-avatar-four-bg-fill': {
-    value: colors.azure[7],
+    value: colors.azure[10],
   },
   'color-avatar-four-text-on-bg-fill': {
-    value: colors.azure[14],
+    value: colors.azure[16],
   },
   'color-avatar-one-bg-fill': {
-    value: colors.magenta[7],
+    value: colors.magenta[12],
   },
   'color-avatar-one-text-on-bg-fill': {
-    value: colors.magenta[14],
+    value: colors.magenta[3],
+  },
+  'color-avatar-seven-bg-fill': {
+    value: colors.purple[11],
+  },
+  'color-avatar-seven-text-on-bg-fill': {
+    value: colors.purple[2],
+  },
+  'color-avatar-six-bg-fill': {
+    value: colors.lime[9],
+  },
+  'color-avatar-six-text-on-bg-fill': {
+    value: colors.lime[15],
   },
   'color-avatar-text-on-bg-fill': {
     value: colors.gray[1],
   },
   'color-avatar-three-bg-fill': {
-    value: colors.cyan[7],
+    value: colors.teal[9],
   },
   'color-avatar-three-text-on-bg-fill': {
-    value: colors.cyan[14],
+    value: colors.teal[15],
   },
   'color-avatar-two-bg-fill': {
     value: colors.green[7],
