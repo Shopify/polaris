@@ -7,7 +7,6 @@ import React, {
   Children,
 } from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
-import {themeDefault, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -52,13 +51,6 @@ function getAllItemsOnPage<TItemType extends ResourceListItemData>(
     return idForItem(item, index);
   });
 }
-
-const isBreakpointsXS = () => {
-  return typeof window === 'undefined'
-    ? false
-    : window.innerWidth <
-        parseFloat(toPx(themeDefault.breakpoints['breakpoints-sm']) ?? '');
-};
 
 function defaultIdForItem<TItemType extends ResourceListItemData>(
   item: TItemType,
@@ -199,18 +191,13 @@ export function ResourceList<TItemType extends ResourceListItemData>({
 
   const handleResize = debounce(
     () => {
-      const newSmallScreen = isBreakpointsXS();
       if (
         selectedItems &&
         selectedItems.length === 0 &&
         selectMode &&
-        !newSmallScreen
+        !xsOnly
       ) {
         handleSelectMode(false);
-      }
-
-      if (smallScreen !== newSmallScreen) {
-        setSmallScreen(newSmallScreen);
       }
     },
     50,
@@ -224,7 +211,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       (promotedBulkActions && promotedBulkActions.length > 0) ||
         (bulkActions && bulkActions.length > 0) ||
         selectable,
-    ) && !smallScreen;
+    ) && !xsOnly;
 
   const selectAllSelectState = (): boolean | 'indeterminate' => {
     let selectState: boolean | 'indeterminate' = 'indeterminate';

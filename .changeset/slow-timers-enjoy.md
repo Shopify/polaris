@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Convert breakpoints mixins to scss variables
+Replace hardcoded breakpoints tokens with `useBreakpoints` hook
