@@ -294,6 +294,7 @@
         "rename": "Rename view",
         "duplicate": "Duplicate view",
         "edit": "Edit view",
+        "editColumns": "Edit columns",
         "delete": "Delete view",
         "copy": "Copy of {name}",
         "deleteModal": {

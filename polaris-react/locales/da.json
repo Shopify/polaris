@@ -213,6 +213,7 @@
         "rename": "Omdøb visning",
         "duplicate": "Dupliker visning",
         "edit": "Rediger visning",
+        "editColumns": "Rediger kolonner",
         "delete": "Slet visning",
         "copy": "Kopi af {name}",
         "deleteModal": {
