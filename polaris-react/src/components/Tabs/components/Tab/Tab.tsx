@@ -14,6 +14,7 @@ import type {
 import {
   InfoMinor,
   DuplicateMinor,
+  Columns3Minor,
   EditMinor,
   DeleteMinor,
   ChevronDownMinor,
@@ -219,6 +220,10 @@ export const Tab = forwardRef(
       edit: {
         icon: EditMinor,
         content: i18n.translate('Polaris.Tabs.Tab.edit'),
+      },
+      'edit-columns': {
+        icon: Columns3Minor,
+        content: i18n.translate('Polaris.Tabs.Tab.editColumns'),
       },
       delete: {
         icon: DeleteMinor,

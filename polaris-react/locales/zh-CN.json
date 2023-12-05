@@ -213,6 +213,7 @@
         "rename": "重命名视图",
         "duplicate": "复制视图",
         "edit": "编辑视图",
+        "editColumns": "编辑列",
         "delete": "删除视图",
         "copy": "{name} 的副本",
         "deleteModal": {
