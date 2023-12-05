@@ -2,7 +2,12 @@ import type {ReactNode} from 'react';
 
 import type {ActionListItemDescriptor} from '../../types';
 
-export type TabAction = 'rename' | 'edit' | 'duplicate' | 'delete';
+export type TabAction =
+  | 'rename'
+  | 'edit'
+  | 'edit-columns'
+  | 'duplicate'
+  | 'delete';
 
 interface TabActionDescriptor
   extends Omit<ActionListItemDescriptor, 'onAction'> {

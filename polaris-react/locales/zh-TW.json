@@ -213,6 +213,7 @@
         "rename": "重新命名檢視畫面",
         "duplicate": "複製檢視畫面",
         "edit": "編輯檢視畫面",
+        "editColumns": "編輯欄",
         "delete": "刪除檢視畫面",
         "copy": "{name}的副本",
         "deleteModal": {

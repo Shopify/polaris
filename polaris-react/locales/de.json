@@ -213,6 +213,7 @@
         "rename": "Ansicht umbenennen",
         "duplicate": "Ansicht duplizieren",
         "edit": "Ansicht bearbeiten",
+        "editColumns": "Spalten bearbeiten",
         "delete": "Ansicht löschen",
         "copy": "Kopie von {name}",
         "deleteModal": {
