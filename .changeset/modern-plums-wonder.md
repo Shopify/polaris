@@ -3,4 +3,4 @@
 '@shopify/polaris-tokens': minor
 ---
 
-Updated avatar background and text colors
+Updated `Avatar` background and text colors
