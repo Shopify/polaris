@@ -8,7 +8,7 @@ interface Stories {
 
 const stories: Stories = {};
 const req = require.context('../src/components', true, /.stories.tsx$/);
-req.keys().forEach((filePath) =>
+req.keys().forEach((filePath: string) =>
   req(filePath).__namedExportsOrder.forEach((namedExport: string) => {
     const componentName = `${filePath.split('/')[1]}:${namedExport}`;
     stories[componentName] = req(filePath)[namedExport];
@@ -26,6 +26,7 @@ export function KitchenSink() {
           'Sheet',
           'Frame',
           'Loading',
+          'AppProvider',
         ].includes(id.split(':')[0]),
     )
     .map(([id, Story]) => {

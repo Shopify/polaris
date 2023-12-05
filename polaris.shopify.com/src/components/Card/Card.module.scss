@@ -1,0 +1,34 @@
+@import '../../styles/mixins.scss';
+.Card {
+  @include dark-mode {
+    box-shadow: var(--card-shadow);
+  }
+
+  border-radius: var(--border-radius-700);
+  background-color: var(--surface);
+  border-radius: var(--p-border-radius-300, 12px);
+  border-radius: var(--p-border-radius-300, 12px);
+
+  // As this will be used with Markdown elements and components
+  // We want to preserve margin rules for all children
+  // Except the last-child, so as not to introduce unecessary space
+  // at the bottom of the card
+  :last-child {
+    margin-block: 0;
+  }
+
+  box-shadow: 0px 1px 0px 0px rgba(26, 26, 26, 0.07),
+    0px 1px 0px 0px rgba(208, 208, 208, 0.4) inset,
+    1px 0px 0px 0px #e3e3e3 inset, -1px 0px 0px 0px #e3e3e3 inset,
+    0px -1px 0px 0px #d4d4d4 inset;
+  box-shadow: 0px 1px 0px 0px color(display-p3 0.102 0.102 0.102 / 0.07),
+    0px 1px 0px 0px color(display-p3 0.8157 0.8157 0.8157 / 0.4) inset,
+    1px 0px 0px 0px color(display-p3 0.8902 0.8902 0.8902) inset,
+    -1px 0px 0px 0px color(display-p3 0.8902 0.8902 0.8902) inset,
+    0px -1px 0px 0px color(display-p3 0.8314 0.8314 0.8314) inset;
+
+  .Card {
+    box-shadow: none;
+    background-color: var(--surface-subdued);
+  }
+}

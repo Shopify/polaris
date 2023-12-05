@@ -12,6 +12,7 @@ module.exports = {
     'plugin:@shopify/polaris',
     'plugin:@shopify/prettier',
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     tsconfigRootDir: __dirname,
     project: [
@@ -50,6 +51,7 @@ module.exports = {
       },
     ],
     '@babel/no-unused-expressions': 'off',
+    'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
     'import/named': 'off',
     'import/no-default-export': ['error'],
     'react/button-has-type': 'off',
@@ -60,6 +62,8 @@ module.exports = {
     '@shopify/no-ancestor-directory-import': 'error',
     '@shopify/react-prefer-private-members': 'off',
     '@typescript-eslint/array-type': ['error', {default: 'array'}],
+    '@typescript-eslint/consistent-type-imports': 'error',
+    '@typescript-eslint/consistent-type-exports': 'error',
     '@typescript-eslint/naming-convention': 'off',
     'jsx-a11y/label-has-for': [
       2,
@@ -78,21 +82,22 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-noninteractive-element-interactions': 'off',
     'jsx-a11y/no-noninteractive-element-to-interactive-role': 'off',
+    'no-restricted-imports': [
+      'error',
+      {
+        paths: [
+          {
+            name: 'react',
+            importNames: ['useLayoutEffect'],
+            message:
+              'Please use useIsomorphicLayoutEffect from the utilities directory instead',
+          },
+        ],
+      },
+    ],
   },
   overrides: [
     ...packages.map((packageDir) => noExtraneousDependenciesConfig(packageDir)),
-    {
-      files: ['polaris-cli/src/**/*.{ts,tsx}'],
-      rules: {
-        'import/no-default-export': 'off',
-      },
-    },
-    {
-      files: ['polaris-for-figma/src/**/*.{ts,tsx}'],
-      rules: {
-        '@shopify/jsx-no-hardcoded-content': 'off',
-      },
-    },
     {
       files: ['polaris-migrator/src/**/*.{ts,tsx}'],
       rules: {
@@ -122,12 +127,6 @@ module.exports = {
         'import/extensions': 'off',
         'import/no-default-export': 'off',
         'import/no-anonymous-default-export': 'off',
-        // We could omit this if we set `engines` fields properly
-        // As we don't set them then eslint thinks we're using node 8
-        'node/no-unsupported-features/node-builtins': [
-          'error',
-          {version: '>=16.0.0'},
-        ],
       },
     },
     {

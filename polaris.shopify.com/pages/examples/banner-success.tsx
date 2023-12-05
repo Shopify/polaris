@@ -6,7 +6,7 @@ function BannerExample() {
   return (
     <Banner
       title="Your shipping label is ready to print."
-      status="success"
+      tone="success"
       action={{content: 'Print label'}}
       onDismiss={() => {}}
     />

@@ -1,14 +1,14 @@
-import React, {useRef, useState} from 'react';
+import React, {useRef, useId} from 'react';
 
-import {useUniqueId} from '../../utilities/unique-id';
-import {useToggle} from '../../utilities/use-toggle';
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
+import type {ChoiceBleedProps} from '../Choice';
 
 import styles from './RadioButton.scss';
 
-export interface RadioButtonProps {
-  /** Indicates the ID of the element that describes the the radio button*/
+export interface RadioButtonProps extends ChoiceBleedProps {
+  /** Indicates the ID of the element that describes the radio button */
   ariaDescribedBy?: string;
   /** Label for the radio button */
   label: React.ReactNode;
@@ -16,8 +16,6 @@ export interface RadioButtonProps {
   labelHidden?: boolean;
   /** Radio button is selected */
   checked?: boolean;
-  /** Additional text to aid in use */
-  helpText?: React.ReactNode;
   /** Disable input */
   disabled?: boolean;
   /** ID for form input */
@@ -28,10 +26,16 @@ export interface RadioButtonProps {
   value?: string;
   /** Callback when the radio button is toggled */
   onChange?(newValue: boolean, id: string): void;
-  /** Callback when radio button is focussed */
+  /** Callback when radio button is focused */
   onFocus?(): void;
   /** Callback when focus is removed */
   onBlur?(): void;
+  /** Grow to fill the space. Equivalent to width: 100%; height: 100% */
+  fill?: ResponsiveProp<boolean>;
+  /** Additional text to aide in use */
+  helpText?: React.ReactNode;
+  /** Indicates the tone of the text field */
+  tone?: 'magic';
 }
 
 export function RadioButton({
@@ -47,25 +51,21 @@ export function RadioButton({
   id: idProp,
   name: nameProp,
   value,
+  fill,
+  bleed,
+  bleedBlockStart,
+  bleedBlockEnd,
+  bleedInlineStart,
+  bleedInlineEnd,
+  tone,
 }: RadioButtonProps) {
-  const id = useUniqueId('RadioButton', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
   const name = nameProp || id;
   const inputNode = useRef<HTMLInputElement>(null);
-  const [keyFocused, setKeyFocused] = useState(false);
-
-  const {
-    value: mouseOver,
-    setTrue: handleMouseOver,
-    setFalse: handleMouseOut,
-  } = useToggle(false);
-
-  const handleKeyUp = () => {
-    !keyFocused && setKeyFocused(true);
-  };
 
   const handleBlur = () => {
     onBlur && onBlur();
-    setKeyFocused(false);
   };
 
   function handleChange({currentTarget}: React.ChangeEvent<HTMLInputElement>) {
@@ -85,13 +85,17 @@ export function RadioButton({
 
   const inputClassName = classNames(
     styles.Input,
-    keyFocused && styles.keyFocused,
+    tone && styles[variationName('tone', tone)],
   );
 
-  const backdropClassName = classNames(
-    styles.Backdrop,
-    mouseOver && styles.hover,
-  );
+  const extraChoiceProps = {
+    helpText,
+    bleed,
+    bleedBlockStart,
+    bleedBlockEnd,
+    bleedInlineStart,
+    bleedInlineEnd,
+  };
 
   return (
     <Choice
@@ -99,9 +103,10 @@ export function RadioButton({
       labelHidden={labelHidden}
       disabled={disabled}
       id={id}
-      helpText={helpText}
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
+      labelClassName={styles.ChoiceLabel}
+      fill={fill}
+      {...extraChoiceProps}
+      {...(checked ? {tone} : {})}
     >
       <span className={styles.RadioButton}>
         <input
@@ -114,12 +119,11 @@ export function RadioButton({
           className={inputClassName}
           onChange={handleChange}
           onFocus={onFocus}
-          onKeyUp={handleKeyUp}
           onBlur={handleBlur}
           aria-describedby={ariaDescribedBy}
           ref={inputNode}
         />
-        <span className={backdropClassName} />
+        <span className={styles.Backdrop} />
       </span>
     </Choice>
   );

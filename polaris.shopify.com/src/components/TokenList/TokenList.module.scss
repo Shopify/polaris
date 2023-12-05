@@ -71,20 +71,8 @@
 
   tr td.Value,
   tr td.FigmaUsage {
-    white-space: pre;
-    overflow: hidden;
+    white-space: normal;
     position: relative;
-
-    &::before {
-      content: '';
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      width: 50px;
-      background: linear-gradient(to right, transparent, var(--surface));
-    }
   }
 
   @media screen and (max-width: $breakpointDesktop) {
@@ -153,9 +141,7 @@
 }
 
 .TokenName {
-  white-space: pre;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
 }
 
 .TokenClipboard {
@@ -192,4 +178,24 @@
     left: 0;
     right: 0;
   }
+}
+
+.Frame {
+  background: var(--text);
+  opacity: 0.1;
+  position: absolute;
+  min-height: 0%;
+  width: 4%;
+  padding-bottom: 4%;
+  border-radius: 50%;
+  animation-fill-mode: backwards;
+  animation-iteration-count: infinite;
+  animation-play-state: paused;
+  animation-name: slide;
+}
+
+.Playhead {
+  opacity: 1;
+  animation-play-state: running;
+  outline: 1px solid var(--surface);
 }

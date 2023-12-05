@@ -1,10 +1,13 @@
 import {useEffect, useRef, useState} from 'react';
+import {Box} from '../Box';
 import {TOCItem} from '../../utils/hooks';
-import {className} from '../../utils/various';
+import {className as classNames} from '../../utils/various';
 import styles from './TOC.module.scss';
+import {motion, AnimatePresence} from 'framer-motion';
 
 interface Props {
   items: TOCItem[];
+  collapsibleTOC?: boolean;
 }
 
 function getContentTopMargin(): number {
@@ -42,11 +45,22 @@ function scanPageForCurrentHeading(): string | void {
   }
 }
 
-function TOC({items}: Props) {
+function TOC({items, collapsibleTOC = false}: Props) {
   const isNested = !!items.find((item) => item.children.length > 0);
   const [idOfCurrentHeading, setIdOfCurrentHeading] = useState<string>();
   const temporarilyIgnoreScrolling = useRef(false);
   const lastScrollY = useRef(0);
+
+  const [manuallyExpandedSections, setManuallyExpandedSections] = useState<{
+    [id: string]: boolean;
+  }>({});
+
+  const manuallyToggleSection = (id: string, expanded: boolean) => {
+    setManuallyExpandedSections({
+      ...manuallyExpandedSections,
+      [id]: expanded,
+    });
+  };
 
   function waitForScrollToStop() {
     function checkIfStillScrolling() {
@@ -102,37 +116,95 @@ function TOC({items}: Props) {
 
   useEffect(() => detectCurrentHeading(), [items]);
 
-  const Link = ({toId, linkText}: {toId: string; linkText: string}) => (
-    <a
-      href={`#${toId}`}
-      data-is-current={toId === idOfCurrentHeading}
-      onClick={(evt) => {
-        scrollIntoView(toId);
-        evt.preventDefault();
-      }}
-    >
-      {linkText}
-    </a>
-  );
+  const Link = ({
+    toId,
+    linkText,
+    collapsibleButton,
+  }: {
+    toId: string;
+    linkText: string;
+    collapsibleButton?: React.ReactNode;
+  }) => {
+    const activeLink = toId === idOfCurrentHeading;
+    const className = classNames(styles.Link, activeLink && styles.active);
+
+    return (
+      <a
+        className={className}
+        href={`#${toId}`}
+        onClick={(evt) => {
+          scrollIntoView(toId);
+          evt.preventDefault();
+        }}
+      >
+        <span
+          className={classNames(
+            Boolean(collapsibleButton) && styles.TOCItemMaxWidth,
+          )}
+        >
+          {linkText}
+        </span>
+        {collapsibleButton}
+      </a>
+    );
+  };
 
   return (
-    <div className={className(styles.TOC, isNested && styles.isNested)}>
+    <div className={classNames(styles.TOC, isNested && styles.isNested)}>
       <ul>
+        <Box
+          style={{
+            paddingInlineStart: 'var(--p-space-200)',
+            paddingInlineEnd: 'var(--p-space-200)',
+            paddingBlockEnd: 'var(--p-space-200)',
+          }}
+        >
+          <h2 className={styles.Header}>On this page</h2>
+        </Box>
         {items.map(({title, id, children}) => {
+          const isExpanded = manuallyExpandedSections[id] === true;
+          const tocAriaId = `toc-${id}`;
+
           return (
-            <li key={title}>
-              <Link toId={id} linkText={title} />
-              {children.length > 0 && (
-                <ul>
-                  {children.map((child) => {
-                    return (
-                      <li key={child.title}>
-                        <Link toId={child.id} linkText={child.title} />
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
+            <li key={title} className={styles.Item}>
+              <Link
+                toId={id}
+                linkText={title}
+                collapsibleButton={
+                  children.length > 0 && collapsibleTOC ? (
+                    <button
+                      className={styles.Toggle}
+                      onClick={(evt) => {
+                        evt.preventDefault();
+                        evt.stopPropagation();
+                        manuallyToggleSection(id, !isExpanded);
+                      }}
+                      aria-label="Toggle section"
+                      aria-expanded={isExpanded}
+                      aria-controls={isExpanded ? tocAriaId : undefined}
+                    />
+                  ) : null
+                }
+              />
+              <AnimatePresence initial={false}>
+                {children.length > 0 && (isExpanded || !collapsibleTOC) && (
+                  <motion.ul
+                    initial={{opacity: 0, height: 0}}
+                    animate={{opacity: 1, scale: 1, height: 'auto'}}
+                    exit={{opacity: 0, height: 0}}
+                    transition={{ease: 'easeInOut', duration: 0.15}}
+                    id={tocAriaId}
+                  >
+                    {children.map((child) => {
+                      return (
+                        <li key={child.title}>
+                          <Link toId={child.id} linkText={child.title} />
+                        </li>
+                      );
+                    })}
+                  </motion.ul>
+                )}
+              </AnimatePresence>
             </li>
           );
         })}

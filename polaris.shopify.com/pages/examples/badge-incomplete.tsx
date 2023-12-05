@@ -1,12 +1,14 @@
-import {Badge} from '@shopify/polaris';
+import {Badge, Card} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BadgeExample() {
   return (
-    <Badge progress="incomplete" status="attention">
-      Unfulfilled
-    </Badge>
+    <Card>
+      <Badge progress="incomplete" tone="attention">
+        Unfulfilled
+      </Badge>
+    </Card>
   );
 }
 

@@ -1,37 +1,37 @@
 import {
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
   ResourceItem,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListExample() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
-            id: 110,
-            url: 'customers/341',
+            id: '110',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
-            latestOrderUrl: 'orders/1456',
+            latestOrderUrl: '#',
           },
           {
-            id: 210,
-            url: 'customers/256',
+            id: '210',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
-            latestOrderUrl: 'orders/1457',
+            latestOrderUrl: '#',
           },
         ]}
         renderItem={(item) => {
           const {id, url, name, location, latestOrderUrl} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
           const shortcutActions = latestOrderUrl
             ? [
                 {
@@ -40,7 +40,7 @@ function ResourceListExample() {
                   url: latestOrderUrl,
                 },
               ]
-            : null;
+            : undefined;
 
           return (
             <ResourceItem
@@ -51,15 +51,15 @@ function ResourceListExample() {
               shortcutActions={shortcutActions}
               persistActions
             >
-              <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
-              </h3>
+              <Text variant="bodyMd" fontWeight="bold" as="h3">
+                {name}
+              </Text>
               <div>{location}</div>
             </ResourceItem>
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 

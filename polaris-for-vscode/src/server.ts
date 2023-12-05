@@ -1,56 +1,75 @@
-import {createVar, metadata, MetadataGroup} from '@shopify/polaris-tokens';
+import type {MetaTheme, MetaTokenGroupShape} from '@shopify/polaris-tokens';
+import {
+  createVarName,
+  metaThemeDefault,
+  isTokenName,
+} from '@shopify/polaris-tokens';
 import {
   createConnection,
   TextDocuments,
   ProposedFeatures,
-  InitializeParams,
-  CompletionItem,
   CompletionItemKind,
-  TextDocumentPositionParams,
   TextDocumentSyncKind,
+} from 'vscode-languageserver/node';
+import type {
+  CompletionItem,
+  TextDocumentPositionParams,
   InitializeResult,
 } from 'vscode-languageserver/node';
 import {TextDocument} from 'vscode-languageserver-textdocument';
 
-const {legacy, ...restTokenGroups} = metadata;
+const excludedTokenGroupNames = [] as const;
 
-const groupedCompletionItemTokenGroups = restTokenGroups;
+type ExcludedTokenGroupName = typeof excludedTokenGroupNames[number];
 
-type GroupedCompletionItemsKey = keyof typeof groupedCompletionItemTokenGroups;
+type TokenGroupName = Exclude<keyof MetaTheme, ExcludedTokenGroupName>;
 
-type GroupedCompletionItems = {
-  [K in GroupedCompletionItemsKey]: CompletionItem[];
+const tokenGroups = Object.fromEntries(
+  Object.entries(metaThemeDefault).filter(
+    ([tokenGroupName]) =>
+      !excludedTokenGroupNames.includes(
+        tokenGroupName as ExcludedTokenGroupName,
+      ),
+  ),
+) as unknown as Omit<MetaTheme, ExcludedTokenGroupName>;
+
+type TokenGroupCompletionItems = {
+  [T in TokenGroupName]: CompletionItem[];
 };
 
 /**
  * Grouped VS Code `CompletionItem`s for Polaris custom properties
  */
-const groupedCompletionItems = Object.fromEntries(
-  Object.entries(groupedCompletionItemTokenGroups).map(
-    ([groupedCompletionItemsKey, tokenGroup]: [string, MetadataGroup]) => {
-      const groupedCompletionItemProperties: CompletionItem[] = Object.entries(
-        tokenGroup,
-      ).map(
-        ([tokenName, tokenProperties]): CompletionItem => ({
-          label: createVar(tokenName),
-          insertText: `${createVar(tokenName)}`,
-          detail: tokenProperties.value,
-          documentation: tokenProperties.description,
-          filterText: createVar(tokenName),
-          kind:
-            groupedCompletionItemsKey === 'color'
-              ? CompletionItemKind.Color
-              : CompletionItemKind.Variable,
-        }),
+const tokenGroupCompletionItems = Object.fromEntries(
+  Object.entries(tokenGroups).map(
+    ([tokenGroupName, tokenGroup]: [string, MetaTokenGroupShape]) => {
+      const completionItems: CompletionItem[] = Object.entries(tokenGroup).map(
+        ([tokenName, tokenProperties]): CompletionItem => {
+          if (!isTokenName(tokenName)) {
+            throw new Error(`Invalid token name: ${tokenName}`);
+          }
+
+          return {
+            label: createVarName(tokenName),
+            insertText: `${createVarName(tokenName)}`,
+            detail: tokenProperties.value,
+            documentation: tokenProperties.description,
+            filterText: createVarName(tokenName),
+            kind:
+              tokenGroupName === 'color'
+                ? CompletionItemKind.Color
+                : CompletionItemKind.Variable,
+          };
+        },
       );
 
-      return [groupedCompletionItemsKey, groupedCompletionItemProperties];
+      return [tokenGroupName, completionItems];
     },
   ),
-) as unknown as GroupedCompletionItems;
+) as unknown as TokenGroupCompletionItems;
 
-const allGroupedCompletionItems: CompletionItem[] = Object.values(
-  groupedCompletionItems,
+const allTokenGroupCompletionItems: CompletionItem[] = Object.values(
+  tokenGroupCompletionItems,
 ).flat();
 
 // Create a connection for the server, using Node's IPC as a transport.
@@ -60,25 +79,26 @@ const connection = createConnection(ProposedFeatures.all);
 // Create a simple text document manager.
 const documents: TextDocuments<TextDocument> = new TextDocuments(TextDocument);
 
-type GroupedCompletionItemPatterns = {
-  [T in GroupedCompletionItemsKey]: RegExp;
+type TokenGroupPatterns = {
+  [T in TokenGroupName]: RegExp;
 };
 
-const groupedCompletionItemPatterns: GroupedCompletionItemPatterns = {
+const tokenGroupPatterns: TokenGroupPatterns = {
+  border: /border/,
   breakpoints: /width/,
-  colors:
+  color:
     /color|background|shadow|border|column-rule|filter|opacity|outline|text-decoration/,
-  spacing: /margin|padding|gap|top|left|right|bottom/,
-  font: /font|line-height/,
-  zIndex: /z-index/,
-  shape: /border/,
-  depth: /shadow/,
+  text: /font|letter-spacing|line-height/,
+  font: /font|letter-spacing|line-height/,
+  height: /height|min-height|max-height/,
   motion: /animation/,
+  shadow: /shadow/,
+  space: /margin|padding|gap|top|left|right|bottom/,
+  width: /width|min-width|max-width/,
+  zIndex: /z-index/,
 };
 
-connection.onInitialize((params: InitializeParams) => {
-  const capabilities = params.capabilities;
-
+connection.onInitialize(() => {
   const result: InitializeResult = {
     capabilities: {
       textDocumentSync: TextDocumentSyncKind.Incremental,
@@ -108,25 +128,19 @@ connection.onCompletion(
       end: {line: textDocumentPosition.position.line, character: 1000},
     });
 
-    for (const tokenGroup in groupedCompletionItemPatterns) {
-      if (
-        Object.prototype.hasOwnProperty.call(
-          groupedCompletionItemPatterns,
-          tokenGroup,
-        )
-      ) {
-        const category =
-          tokenGroup as keyof typeof groupedCompletionItemPatterns;
+    for (const [tokenGroupName, pattern] of Object.entries(
+      tokenGroupPatterns,
+    )) {
+      if (!pattern.test(currentText)) continue;
 
-        if (groupedCompletionItemPatterns[category].test(currentText)) {
-          const currentCompletionItems = groupedCompletionItems[category];
-          if (currentCompletionItems) {
-            matchedCompletionItems = matchedCompletionItems.concat(
-              currentCompletionItems,
-            );
-          }
-        }
-      }
+      const currentCompletionItems =
+        tokenGroupCompletionItems[
+          tokenGroupName as keyof typeof tokenGroupPatterns
+        ];
+
+      matchedCompletionItems = matchedCompletionItems.concat(
+        currentCompletionItems,
+      );
     }
 
     // if there were matches above, send them
@@ -135,7 +149,7 @@ connection.onCompletion(
     }
 
     // if there were no matches, send everything
-    return allGroupedCompletionItems;
+    return allTokenGroupCompletionItems;
   },
 );
 

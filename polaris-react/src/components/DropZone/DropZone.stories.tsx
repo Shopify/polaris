@@ -2,13 +2,14 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,
-  Caption,
-  Card,
+  Text,
+  LegacyCard,
   DropZone,
   List,
   Page,
-  Stack,
+  BlockStack,
   Thumbnail,
+  InlineStack,
 } from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
 
@@ -30,25 +31,27 @@ export function Default() {
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
     <div style={{padding: '0'}}>
-      <Stack vertical>
+      <BlockStack gap="400">
         {files.map((file, index) => (
-          <Stack alignment="center" key={index}>
+          <InlineStack gap="400" align="center" key={index}>
             <Thumbnail
               size="small"
               alt={file.name}
               source={
                 validImageTypes.includes(file.type)
-                  ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                    window.URL.createObjectURL(file)
+                  ? window.URL.createObjectURL(file)
                   : NoteMinor
               }
             />
             <div>
-              {file.name} <Caption>{file.size} bytes</Caption>
+              {file.name}{' '}
+              <Text variant="bodySm" as="p">
+                {file.size} bytes
+              </Text>
             </div>
-          </Stack>
+          </InlineStack>
         ))}
-      </Stack>
+      </BlockStack>
     </div>
   );
 
@@ -83,21 +86,23 @@ export function WithImageFileUpload() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
-            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size} bytes
+            </Text>
           </div>
-        </Stack>
+        </InlineStack>
       ))}
-    </Stack>
+    </BlockStack>
   );
 
   const errorMessage = hasError && (
@@ -116,13 +121,13 @@ export function WithImageFileUpload() {
   );
 
   return (
-    <Stack vertical>
+    <BlockStack gap="400">
       {errorMessage}
       <DropZone accept="image/*" type="image" onDrop={handleDrop}>
         {uploadedFiles}
         {fileUpload}
       </DropZone>
-    </Stack>
+    </BlockStack>
   );
 }
 
@@ -139,21 +144,23 @@ export function WithSingleFileUpload() {
 
   const fileUpload = !file && <DropZone.FileUpload />;
   const uploadedFile = file && (
-    <Stack>
+    <InlineStack gap="400">
       <Thumbnail
         size="small"
         alt={file.name}
         source={
           validImageTypes.includes(file.type)
-            ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-              window.URL.createObjectURL(file)
+            ? window.URL.createObjectURL(file)
             : NoteMinor
         }
       />
       <div>
-        {file.name} <Caption>{file.size} bytes</Caption>
+        {file.name}{' '}
+        <Text variant="bodySm" as="p">
+          {file.size} bytes
+        </Text>
       </div>
-    </Stack>
+    </InlineStack>
   );
 
   return (
@@ -176,32 +183,34 @@ export function WithDropOnPage() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size} bytes
+            </Text>
           </div>
-        </Stack>
+        </InlineStack>
       ))}
-    </Stack>
+    </BlockStack>
   );
 
   const uploadMessage = !uploadedFiles && <DropZone.FileUpload />;
 
   return (
     <Page
-      breadcrumbs={[{content: 'Products'}]}
+      backAction={{content: 'Products'}}
       title="Jar With Lock-Lid"
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
@@ -235,21 +244,23 @@ export function AcceptsOnlySVGFiles() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
-            // eslint-disable-next-line node/no-unsupported-features/node-builtins
             source={window.URL.createObjectURL(file)}
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size} bytes
+            </Text>
           </div>
-        </Stack>
+        </InlineStack>
       ))}
-    </Stack>
+    </BlockStack>
   );
 
   const errorMessage = hasError && (
@@ -268,7 +279,7 @@ export function AcceptsOnlySVGFiles() {
   );
 
   return (
-    <Stack vertical>
+    <BlockStack gap="400">
       {errorMessage}
       <DropZone
         accept="image/svg+xml"
@@ -278,7 +289,7 @@ export function AcceptsOnlySVGFiles() {
       >
         {uploadedFiles}
       </DropZone>
-    </Stack>
+    </BlockStack>
   );
 }
 
@@ -295,56 +306,113 @@ export function Nested() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size} bytes
+            </Text>
           </div>
-        </Stack>
+        </InlineStack>
       ))}
-    </Stack>
+    </BlockStack>
   );
 
   return (
     <DropZone outline={false} onDrop={handleDrop}>
-      <Card sectioned>
+      <LegacyCard sectioned>
         <DropZone onClick={handleDropZoneClick}>
           {uploadedFiles}
           {fileUpload}
         </DropZone>
-      </Card>
+      </LegacyCard>
     </DropZone>
   );
 }
 
 export function MediumSized() {
   return (
-    <div style={{width: 114, height: 114}}>
-      <DropZone>
-        <DropZone.FileUpload />
-      </DropZone>
-    </div>
+    <BlockStack gap="400">
+      <BlockStack gap="200">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Medium sized Drop zone
+          </Text>
+        </div>
+        <div style={{width: 114, height: 114}}>
+          <DropZone>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+      </BlockStack>
+      <BlockStack gap="200">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Medium sized Drop zone with label and hint
+          </Text>
+        </div>
+        <div style={{width: 140, height: 114}}>
+          <DropZone label="Field label">
+            <DropZone.FileUpload actionHint="Accepts .gif" />
+          </DropZone>
+        </div>
+      </BlockStack>
+    </BlockStack>
   );
 }
 
 export function SmallSized() {
   return (
-    <div style={{width: 50, height: 50}}>
-      <DropZone>
-        <DropZone.FileUpload />
-      </DropZone>
-    </div>
+    <BlockStack gap="400">
+      <BlockStack gap="200">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Small sized Drop zone
+          </Text>
+        </div>
+        <div style={{width: 50, height: 50}}>
+          <DropZone>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+      </BlockStack>
+      <BlockStack gap="200">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Small sized Drop zone with error
+          </Text>
+          <Text as="p">Drag file in to see error state</Text>
+        </div>
+        <div style={{width: 50, height: 50}}>
+          <DropZone error>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+      </BlockStack>
+      <BlockStack gap="200">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Small sized Drop zone with disabled state
+          </Text>
+        </div>
+        <div style={{width: 50, height: 50}}>
+          <DropZone disabled>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+      </BlockStack>
+    </BlockStack>
   );
 }
 
@@ -364,25 +432,27 @@ export function WithCustomFileUploadText() {
   );
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size} bytes
+            </Text>
           </div>
-        </Stack>
+        </InlineStack>
       ))}
-    </Stack>
+    </BlockStack>
   );
 
   return (
@@ -410,29 +480,31 @@ export function WithCustomFileDialogTrigger() {
   const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
 
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <BlockStack gap="400">
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <InlineStack gap="400" align="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
             source={
               validImageTypes.includes(file.type)
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  window.URL.createObjectURL(file)
+                ? window.URL.createObjectURL(file)
                 : NoteMinor
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size} bytes
+            </Text>
           </div>
-        </Stack>
+        </InlineStack>
       ))}
-    </Stack>
+    </BlockStack>
   );
 
   return (
-    <Card
+    <LegacyCard
       sectioned
       title="Product Images"
       actions={[
@@ -449,6 +521,73 @@ export function WithCustomFileDialogTrigger() {
       >
         {uploadedFiles}
       </DropZone>
-    </Card>
+    </LegacyCard>
+  );
+}
+
+export function Error() {
+  const [files, setFiles] = useState([]);
+
+  const handleDropZoneDrop = useCallback(
+    (_dropFiles, acceptedFiles, _rejectedFiles) =>
+      setFiles((files) => [...files, ...acceptedFiles]),
+    [],
+  );
+
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+
+  const fileUpload = !files.length && <DropZone.FileUpload />;
+  const uploadedFiles = files.length > 0 && (
+    <div style={{padding: '0'}}>
+      <BlockStack gap="400">
+        {files.map((file, index) => (
+          <InlineStack gap="400" align="center" key={index}>
+            <Thumbnail
+              size="small"
+              alt={file.name}
+              source={
+                validImageTypes.includes(file.type)
+                  ? window.URL.createObjectURL(file)
+                  : NoteMinor
+              }
+            />
+            <div>
+              {file.name}{' '}
+              <Text variant="bodySm" as="p">
+                {file.size} bytes
+              </Text>
+            </div>
+          </InlineStack>
+        ))}
+      </BlockStack>
+    </div>
+  );
+
+  return (
+    <BlockStack gap="200">
+      <div>
+        <Text as="h2" variant="headingMd">
+          Drop zone with error
+        </Text>
+        <Text as="p">Drag file in to see error state</Text>
+      </div>
+      <DropZone error onDrop={handleDropZoneDrop}>
+        {uploadedFiles}
+        {fileUpload}
+      </DropZone>
+    </BlockStack>
+  );
+}
+
+export function Disabled() {
+  const handleDropZoneDrop = () => {
+    // eslint-disable-next-line no-alert
+    alert("this shouldn't be called");
+  };
+
+  return (
+    <DropZone disabled onDrop={handleDropZoneDrop}>
+      <DropZone.FileUpload />
+    </DropZone>
   );
 }

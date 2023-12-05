@@ -5,17 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function PageExample() {
   return (
     <PageActions
-      primaryAction={
-        <Button
-          primary
-          connectedDisclosure={{
-            accessibilityLabel: 'Other save actions',
-            actions: [{content: 'Save as draft'}],
-          }}
-        >
-          Save
-        </Button>
-      }
+      primaryAction={<Button variant="primary">Save</Button>}
       secondaryActions={[
         {
           content: 'Delete',

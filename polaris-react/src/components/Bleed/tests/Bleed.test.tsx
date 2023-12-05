@@ -16,44 +16,49 @@ describe('<Bleed />', () => {
     expect(bleed).toContainReactComponent(Children);
   });
 
-  it('does not render custom properties by default', () => {
-    const bleed = mountWithApp(
-      <Bleed>
-        <Children />
-      </Bleed>,
-    );
-
-    expect(bleed).toContainReactComponent('div', {style: undefined});
-  });
-
   it('only renders the custom property that matches the property passed in', () => {
     const bleed = mountWithApp(
-      <Bleed left="2">
+      <Bleed marginInlineStart="200">
         <Children />
       </Bleed>,
     );
 
     expect(bleed).toContainReactComponent('div', {
       style: {
-        '--pc-bleed-margin-left': 'var(--p-space-2)',
+        '--pc-bleed-margin-inline-start-xs': 'var(--p-space-200)',
       } as React.CSSProperties,
     });
   });
 
   it('renders custom properties combined with any overrides if they are passed in', () => {
     const bleed = mountWithApp(
-      <Bleed spacing="1" left="2" horizontal="3">
+      <Bleed marginBlock="100" marginInlineStart="200" marginInline="300">
         <Children />
       </Bleed>,
     );
 
     expect(bleed).toContainReactComponent('div', {
       style: {
-        '--pc-bleed-margin-bottom': 'var(--p-space-1)',
-        '--pc-bleed-margin-left': 'var(--p-space-2)',
-        '--pc-bleed-margin-right': 'var(--p-space-3)',
-        '--pc-bleed-margin-top': 'var(--p-space-1)',
+        '--pc-bleed-margin-block-start-xs': 'var(--p-space-100)',
+        '--pc-bleed-margin-block-end-xs': 'var(--p-space-100)',
+        '--pc-bleed-margin-inline-start-xs': 'var(--p-space-200)',
+        '--pc-bleed-margin-inline-end-xs': 'var(--p-space-300)',
       } as React.CSSProperties,
+    });
+  });
+
+  it('renders margin based on breakpoints', () => {
+    const bleed = mountWithApp(
+      <Bleed marginInlineStart={{xs: '200', md: '800'}}>
+        <Children />
+      </Bleed>,
+    );
+
+    expect(bleed).toContainReactComponent('div', {
+      style: expect.objectContaining({
+        '--pc-bleed-margin-inline-start-xs': 'var(--p-space-200)',
+        '--pc-bleed-margin-inline-start-md': 'var(--p-space-800)',
+      }) as React.CSSProperties,
     });
   });
 });

@@ -1,6 +1,5 @@
 import React, {useCallback, useRef, useEffect} from 'react';
 import {CSSTransition} from 'react-transition-group';
-import {motion} from '@shopify/polaris-tokens';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
 import {useMediaQuery} from '../../utilities/media-query';
@@ -11,6 +10,7 @@ import {Backdrop} from '../Backdrop';
 import {TrapFocus} from '../TrapFocus';
 import {Portal} from '../Portal';
 import {KeypressListener} from '../KeypressListener';
+import {useTheme} from '../../utilities/use-theme';
 
 import styles from './Sheet.scss';
 
@@ -45,7 +45,7 @@ export interface SheetProps {
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
 }
 
-/** @deprecated Use <Modal /> instead or avoid modal patterns all together. */
+/** @deprecated Use Modal instead or avoid modal patterns all together. */
 export function Sheet({
   children,
   open,
@@ -55,6 +55,7 @@ export function Sheet({
   accessibilityLabel,
   activator,
 }: SheetProps) {
+  const theme = useTheme();
   const {isNavigationCollapsed} = useMediaQuery();
   const container = useRef<HTMLDivElement>(null);
   const activatorRef = useRef<HTMLDivElement>(null);
@@ -94,7 +95,7 @@ export function Sheet({
           classNames={
             isNavigationCollapsed ? BOTTOM_CLASS_NAMES : RIGHT_CLASS_NAMES
           }
-          timeout={parseInt(motion['duration-300'], 10)}
+          timeout={parseInt(theme.motion['motion-duration-300'], 10)}
           in={open}
           mountOnEnter
           unmountOnExit

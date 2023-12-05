@@ -2,7 +2,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  Card,
+  LegacyCard,
   Form,
   FormLayout,
   Spinner,
@@ -13,6 +13,16 @@ import {
 export default {
   component: Spinner,
 } as ComponentMeta<typeof Spinner>;
+
+export function All() {
+  return (
+    <>
+      <Default />
+      <Small />
+      <WithFocusManagement />
+    </>
+  );
+}
 
 export function Default() {
   return <Spinner accessibilityLabel="Spinner example" size="large" />;
@@ -81,12 +91,12 @@ export function WithFocusManagement() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <Tabs tabs={tabs.current} selected={selected} onSelect={handleTabChange}>
-        <Card.Section title={tabs.current[selected].content}>
+        <LegacyCard.Section title={tabs.current[selected].content}>
           {sectionMarkup}
-        </Card.Section>
+        </LegacyCard.Section>
       </Tabs>
-    </Card>
+    </LegacyCard>
   );
 }

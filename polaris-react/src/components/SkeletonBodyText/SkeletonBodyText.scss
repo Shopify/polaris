@@ -2,11 +2,15 @@
 
 $body-text-last-line-width: 80%;
 
+.SkeletonBodyTextContainer {
+  width: 100%;
+}
+
 .SkeletonBodyText {
-  height: var(--p-space-2);
+  height: var(--p-space-200);
   display: flex;
-  background-color: var(--p-surface-neutral);
-  border-radius: var(--p-border-radius-base);
+  background-color: var(--p-color-bg-fill-tertiary);
+  border-radius: var(--p-border-radius-100);
 
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;
@@ -17,6 +21,6 @@ $body-text-last-line-width: 80%;
   }
 
   + .SkeletonBodyText {
-    margin-top: var(--p-space-3);
+    margin-top: var(--p-space-300);
   }
 }

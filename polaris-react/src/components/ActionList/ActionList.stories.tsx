@@ -7,6 +7,7 @@ import {
   Icon,
   Popover,
   Thumbnail,
+  BlockStack,
 } from '@shopify/polaris';
 import {
   TickSmallMinor,
@@ -15,11 +16,29 @@ import {
   ExportMinor,
   ImportMinor,
   EditMinor,
+  CustomersMajor,
+  DuplicateMinor,
+  ArchiveMinor,
 } from '@shopify/polaris-icons';
 
 export default {
   component: ActionList,
 } as ComponentMeta<typeof ActionList>;
+
+export function All() {
+  return (
+    <BlockStack gap="1600">
+      <InAPopover />
+      <WithIconsOrImage />
+      <WithAnIconAndASuffix />
+      <WithSections />
+      <WithSectionsNoTitles />
+      <WithDestructiveItem />
+      <WithHelpText />
+      <WithAPrefixAndASuffix />
+    </BlockStack>
+  );
+}
 
 export function InAPopover() {
   const [active, setActive] = useState(true);
@@ -90,8 +109,8 @@ export function WithIconsOrImage() {
         <ActionList
           actionRole="menuitem"
           items={[
-            {content: 'Import file', icon: ImportMinor},
-            {content: 'Export file', icon: ExportMinor},
+            {content: 'Duplicate', icon: DuplicateMinor},
+            {content: 'Archive', icon: ArchiveMinor},
           ]}
         />
       </Popover>
@@ -128,6 +147,12 @@ export function WithAnIconAndASuffix() {
               suffix: <Icon source={TickSmallMinor} />,
             },
             {content: 'Export file', icon: ExportMinor},
+            {
+              disabled: true,
+              content: 'Disable file',
+              icon: ImportMinor,
+              suffix: <Icon source={TickSmallMinor} />,
+            },
           ]}
         />
       </Popover>
@@ -166,6 +191,58 @@ export function WithSections() {
             },
             {
               title: 'Bulk actions',
+              items: [
+                {content: 'Edit', icon: EditMinor},
+                {content: 'Delete', icon: DeleteMinor},
+              ],
+            },
+            {
+              title: 'More options',
+              items: [
+                {
+                  content:
+                    'Manage several customers at once with a CSV file import',
+                  icon: CustomersMajor,
+                  truncate: true,
+                },
+              ],
+            },
+          ]}
+        />
+      </Popover>
+    </div>
+  );
+}
+
+export function WithSectionsNoTitles() {
+  const [active, setActive] = useState(true);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const activator = (
+    <Button onClick={toggleActive} disclosure>
+      More actions
+    </Button>
+  );
+
+  return (
+    <div style={{height: '250px'}}>
+      <Popover
+        active={active}
+        activator={activator}
+        autofocusTarget="first-node"
+        onClose={toggleActive}
+      >
+        <ActionList
+          actionRole="menuitem"
+          sections={[
+            {
+              items: [
+                {content: 'Import file', icon: ImportMinor},
+                {content: 'Export file', icon: ExportMinor},
+              ],
+            },
+            {
               items: [
                 {content: 'Edit', icon: EditMinor},
                 {content: 'Delete', icon: DeleteMinor},
@@ -255,6 +332,20 @@ export function WithHelpText() {
                   content: 'Blogs',
                   helpText: 'Manage blogs published to your Online Store',
                 },
+                {
+                  active: true,
+                  content: 'Active blogs',
+                  helpText: 'This is helpful text',
+                  icon: ImportMinor,
+                  suffix: <Icon source={TickSmallMinor} />,
+                },
+                {
+                  disabled: true,
+                  content: 'Disabled blogs',
+                  helpText: 'This is also helpful text',
+                  icon: ImportMinor,
+                  suffix: <Icon source={TickSmallMinor} />,
+                },
               ],
             },
           ]}
@@ -283,10 +374,24 @@ export function WithAPrefixAndASuffix() {
           },
           {
             content: 'Or there',
-            prefix: <Avatar customer name="Farrah" size="small" />,
+            prefix: <Avatar customer name="Farrah" size="sm" />,
             suffix: <Icon source={ChevronRightMinor} />,
           },
         ]}
+      />
+    </div>
+  );
+}
+
+export function WithFiltering() {
+  return (
+    <div style={{height: '250px', maxWidth: '350px'}}>
+      <ActionList
+        actionRole="menuitem"
+        allowFiltering
+        items={Array.from({length: 8}).map((_, index) => ({
+          content: `Item #${index + 1}`,
+        }))}
       />
     </div>
   );

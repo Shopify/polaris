@@ -2,9 +2,9 @@ import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
-  Card,
+  LegacyCard,
   ChoiceList,
-  Heading,
+  Text,
   List,
   Page,
   Scrollable,
@@ -13,8 +13,6 @@ import {
   Listbox,
   TextField,
   TextContainer,
-  TextStyle,
-  Subheading,
   Icon,
   AutoSelection,
 } from '@shopify/polaris';
@@ -89,14 +87,14 @@ export function Default() {
 
   return (
     <Page narrowWidth>
-      <Card
+      <LegacyCard
         sectioned
         subdued
         title="Product availability"
         actions={salesChannelAction}
       >
         {salesChannelsCardMarkup}
-      </Card>
+      </LegacyCard>
       <Sheet
         open={sheetActive}
         onClose={toggleSheetActive}
@@ -119,12 +117,14 @@ export function Default() {
               width: '100%',
             }}
           >
-            <Heading>Manage sales channels</Heading>
+            <Text variant="headingMd" as="h2">
+              Manage sales channels
+            </Text>
             <Button
               accessibilityLabel="Cancel"
               icon={MobileCancelMajor}
               onClick={toggleSheetActive}
-              plain
+              variant="plain"
             />
           </div>
           <Scrollable style={{padding: '1rem', height: '100%'}}>
@@ -149,7 +149,7 @@ export function Default() {
             }}
           >
             <Button onClick={toggleSheetActive}>Cancel</Button>
-            <Button primary onClick={toggleSheetActive}>
+            <Button variant="primary" onClick={toggleSheetActive}>
               Done
             </Button>
           </div>
@@ -343,11 +343,11 @@ export function WithSearchableListbox() {
   const textFieldMarkup = (
     <div
       style={{
-        padding: 'var(--p-space-4) var(--p-space-2)',
+        padding: 'var(--p-space-400) var(--p-space-200)',
         position: 'sticky',
-        zIndex: 'var(--p-z-12)',
+        zIndex: 'var(--p-z-index-12)',
         width: '100%',
-        background: 'var(--p-surface)',
+        background: 'var(--p-color-bg-surface)',
       }}
     >
       <StopPropagation>
@@ -390,7 +390,9 @@ export function WithSearchableListbox() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span style={{color: 'var(--p-color-text-emphasis)'}}>
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 
@@ -456,7 +458,7 @@ export function WithSearchableListbox() {
               flexDirection: 'column',
               justifyContent: 'space-between',
               width: '100%',
-              padding: 'var(--p-space-4)',
+              padding: 'var(--p-space-400)',
             }}
           >
             <div
@@ -465,24 +467,26 @@ export function WithSearchableListbox() {
                 display: 'flex',
                 justifyContent: 'space-between',
                 width: '100%',
-                marginBottom: 'var(--p-space-2)',
+                marginBottom: 'var(--p-space-200)',
               }}
             >
-              <TextStyle variation="subdued">
-                <Subheading>Action</Subheading>
-              </TextStyle>
+              <Text as="h3" variant="headingSm" tone="subdued">
+                Action
+              </Text>
               <Button
                 accessibilityLabel="Cancel"
                 icon={MobileCancelMajor}
                 onClick={handleCloseSheet}
-                plain
+                variant="plain"
               />
             </div>
             <TextContainer>
-              <Heading>Look up customer segmentation membership</Heading>
-              <TextStyle variation="subdued">
+              <Text variant="headingMd" as="h2">
+                Look up customer segmentation membership
+              </Text>
+              <Text tone="subdued" as="span">
                 Look up whether a customer is included in a segment.
-              </TextStyle>
+              </Text>
             </TextContainer>
           </div>
           <div
@@ -506,7 +510,7 @@ export function WithSearchableListbox() {
                 position: 'relative',
                 width: '100%',
                 height: '292px',
-                padding: 'var(--p-space-2) 0',
+                padding: 'var(--p-space-200) 0',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >

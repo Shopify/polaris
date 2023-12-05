@@ -1,11 +1,11 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {UploadMajor} from '@shopify/polaris-icons';
 
-import {Caption} from '../../../../Caption';
-import {TextStyle} from '../../../../TextStyle';
+import {Text} from '../../../../Text';
 import {DropZoneContext} from '../../../context';
 import {FileUpload} from '../FileUpload';
-import {uploadArrow as uploadArrowImage} from '../../../images';
+import {Icon} from '../../../../Icon';
 
 describe('<FileUpload />', () => {
   const defaultStates = {
@@ -47,11 +47,11 @@ describe('<FileUpload />', () => {
         </DropZoneContext.Provider>,
       );
 
-      expect(fileUpload).not.toContainReactComponent('img', {
-        src: uploadArrowImage,
+      expect(fileUpload).not.toContainReactComponent(Icon, {
+        source: UploadMajor,
       });
-      expect(fileUpload).not.toContainReactComponent(Caption);
-      expect(fileUpload).not.toContainReactComponent(TextStyle);
+
+      expect(fileUpload).not.toContainReactComponent(Text);
 
       expect(fileUpload).toContainReactComponent('div', {
         className: 'Action',
@@ -68,11 +68,8 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload).not.toContainReactComponent('img', {
-      src: uploadArrowImage,
-    });
-    expect(fileUpload).not.toContainReactComponent(Caption);
-    expect(fileUpload).not.toContainReactComponent(TextStyle);
+    expect(fileUpload).not.toContainReactComponent(Icon, {source: UploadMajor});
+    expect(fileUpload).not.toContainReactComponent(Text);
 
     expect(fileUpload).toContainReactComponent('div', {
       className: 'Action',
@@ -88,10 +85,7 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload).not.toContainReactComponent(Caption);
-    expect(fileUpload).not.toContainReactComponent(TextStyle);
-
-    expect(fileUpload).toContainReactComponentTimes('img', 1);
+    expect(fileUpload).toContainReactComponent(Icon, {source: UploadMajor});
   });
 
   it('sets a default actionTitle if the prop is provided then removed', () => {
@@ -117,8 +111,7 @@ describe('<FileUpload />', () => {
       </DropZoneContext.Provider>,
     );
 
-    expect(fileUpload).toContainReactComponent(Caption);
-    expect(fileUpload).toContainReactComponent(TextStyle);
+    expect(fileUpload).toContainReactComponent(Text);
     expect(fileUpload).toContainReactText('Hint');
   });
 

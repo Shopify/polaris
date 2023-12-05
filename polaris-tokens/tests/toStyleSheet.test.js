@@ -1,62 +1,59 @@
 import {
-  getCustomProperties,
+  getMetaThemeDecls,
+  getMetaTokenGroupDecls,
   getKeyframes,
-  getStaticCustomProperties,
 } from '../scripts/toStyleSheet';
 
 const mockTokenGroup = {
-  'design-token-1': {
+  'token-name-1': {
     value: 'valueA',
   },
-  'design-token-2': {
+  'token-name-2': {
     value: 'valueB',
   },
 };
 
 const mockMotionTokenGroup = {
-  ...mockTokenGroup,
-  'keyframes-token-1': {
+  'motion-token-1': {
     value: 'valueA',
   },
-  'keyframes-token-2': {
+  'motion-token-2': {
     value: 'valueB',
   },
+  'motion-keyframes-token-1': {
+    value: 'valueC',
+  },
+  'motion-keyframes-token-2': {
+    value: 'valueD',
+  },
+};
+const mockTheme = {
+  tokenGroupName: mockTokenGroup,
+  motion: mockMotionTokenGroup,
 };
 
-const mockTokens = {
-  colors: {},
-  // Note: We don't need to assign mock values to the remaining static tokens.
-  depth: mockTokenGroup,
-  font: {},
-  motion: {},
-  legacyTokens: {},
-  shape: {},
-  spacing: {},
-  zIndex: {},
-};
+const expectedTokenGroupDecls =
+  '--p-token-name-1:valueA;--p-token-name-2:valueB;';
 
-const expectedCustomProperties =
-  '--p-design-token-1:valueA;--p-design-token-2:valueB;';
+const expectedMotionTokenGroupDecls =
+  '--p-motion-token-1:valueA;--p-motion-token-2:valueB;--p-motion-keyframes-token-1:p-motion-keyframes-token-1;--p-motion-keyframes-token-2:p-motion-keyframes-token-2;';
 
-const expectedKeyframes =
-  '@keyframes p-keyframes-token-1valueA@keyframes p-keyframes-token-2valueB';
+const expectedThemeDecls = `${expectedTokenGroupDecls}${expectedMotionTokenGroupDecls}`;
 
-const expectedKeyframesCustomProperties =
-  '--p-keyframes-token-1:p-keyframes-token-1;--p-keyframes-token-2:p-keyframes-token-2;';
+const expectedMotionKeyframes =
+  '@keyframes p-motion-keyframes-token-1valueC@keyframes p-motion-keyframes-token-2valueD';
 
-describe('getCustomProperties', () => {
-  it('creates a string of CSS custom properties', () => {
-    const customProperties = getCustomProperties(mockTokenGroup);
+describe('getMetaTokenGroupDecls', () => {
+  it('creates a string of CSS declarations', () => {
+    const tokenGroupDecls = getMetaTokenGroupDecls(mockTokenGroup);
 
-    expect(customProperties).toBe(expectedCustomProperties);
+    expect(tokenGroupDecls).toBe(expectedTokenGroupDecls);
   });
 
-  it('creates a string of CSS custom properties and keyframes at-rules from motion tokens', () => {
-    const customProperties = getCustomProperties(mockMotionTokenGroup);
+  it('creates a string of CSS declarations and keyframes at-rules from motion tokens', () => {
+    const tokenGroupDecls = getMetaTokenGroupDecls(mockMotionTokenGroup);
 
-    expect(customProperties).toBe(
-      `${expectedCustomProperties}${expectedKeyframesCustomProperties}`,
-    );
+    expect(tokenGroupDecls).toBe(expectedMotionTokenGroupDecls);
   });
 });
 
@@ -64,14 +61,14 @@ describe('getKeyframes', () => {
   it('creates a string of keyframes at-rules', () => {
     const keyframes = getKeyframes(mockMotionTokenGroup);
 
-    expect(keyframes).toBe(expectedKeyframes);
+    expect(keyframes).toBe(expectedMotionKeyframes);
   });
 });
 
-describe('getStaticCustomProperties', () => {
-  it('creates a string of static CSS custom properties', () => {
-    const staticCustomProperties = getStaticCustomProperties(mockTokens);
+describe('getMetaThemeDecls', () => {
+  it('creates a string of CSS declarations', () => {
+    const themeDecls = getMetaThemeDecls(mockTheme);
 
-    expect(staticCustomProperties).toBe(expectedCustomProperties);
+    expect(themeDecls).toBe(expectedThemeDecls);
   });
 });

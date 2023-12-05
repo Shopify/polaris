@@ -16,7 +16,7 @@ function PressedButton() {
   }, [isFirstButtonActive]);
 
   return (
-    <ButtonGroup segmented>
+    <ButtonGroup variant="segmented">
       <Button pressed={isFirstButtonActive} onClick={handleFirstButtonClick}>
         First button
       </Button>

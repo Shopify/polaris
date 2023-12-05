@@ -1,4 +1,4 @@
-name: Release
+name: Create version packages PR or release
 
 on:
   push:
@@ -14,6 +14,17 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+
+      - name: Free up space on GitHub image
+        run: |
+          # Based on the official advice:
+          # https://github.com/actions/virtual-environments/issues/2840#issuecomment-790492173
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -32,4 +43,4 @@ jobs:
           publish: yarn release
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}

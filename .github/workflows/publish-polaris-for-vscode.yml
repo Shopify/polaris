@@ -2,8 +2,11 @@ name: Release Polaris for VS Code
 
 on:
   push:
-    tags:
-      - 'vscode*' # Push events to matching vscode*
+    paths:
+      - 'polaris-for-vscode/CHANGELOG.md'
+      - 'polaris-tokens/CHANGELOG.md'
+    branches:
+      - main
 
 jobs:
   release:
@@ -12,6 +15,15 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: Checkout
+
+      - name: Free up space on GitHub image
+        run: |
+          # Based on the official advice:
+          # https://github.com/actions/virtual-environments/issues/2840#issuecomment-790492173
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - uses: actions/setup-node@v3
         name: Use Node.js 16.x
@@ -23,10 +35,7 @@ jobs:
         run: yarn
 
       - name: Build extension
-        run: yarn turbo run build --filter=polaris-for-vscode
-
-      - name: Run Tests
-        run: yarn turbo run test --filter=polaris-for-vscode
+        run: yarn build --filter=polaris-for-vscode
 
       - name: Publish extension in the marketplace
         run: yarn workspace polaris-for-vscode vsce publish

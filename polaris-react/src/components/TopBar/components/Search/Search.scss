@@ -4,29 +4,29 @@
 .Search {
   position: fixed;
   visibility: hidden;
-  z-index: var(--p-z-8);
+  z-index: var(--p-z-index-8);
   pointer-events: none;
   top: $top-bar-height;
   left: 0;
   right: 0;
-  box-shadow: var(--p-shadow-modal);
+  box-shadow: var(--p-shadow-600);
   overflow: hidden;
 
   @media #{$p-breakpoints-sm-up} {
     position: absolute;
     top: 100%;
     max-width: $search-max-width;
-    margin: var(--p-space-1) var(--p-space-5) 0;
-    border-radius: var(--p-border-radius-2);
+    margin: var(--p-space-100) var(--p-space-500) 0;
+    border-radius: var(--p-border-radius-200);
   }
 
   @media #{$p-breakpoints-md-up} {
-    margin: var(--p-space-1) var(--p-space-8) 0;
+    margin: var(--p-space-100) var(--p-space-800) 0;
   }
 }
 
 .SearchContent {
-  background-color: var(--p-surface);
+  background-color: var(--p-color-bg-surface);
 }
 
 .visible {

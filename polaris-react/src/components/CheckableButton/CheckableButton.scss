@@ -1,99 +1,54 @@
 @import '../../styles/common';
 @import '../ResourceList/variables';
 
-$button-vertical-padding: calc(
-  (36px - var(--p-font-line-height-2) - var(--p-space-05)) / 2
-);
-
 .CheckableButton {
-  @include text-style-button;
-  @include recolor-icon(var(--p-icon-on-interactive));
+  color: var(--p-color-text);
+  font-size: var(--p-font-size-300);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-font-line-height-400);
+  letter-spacing: initial;
   display: flex;
   align-items: center;
-  min-height: 36px;
-  min-width: 36px;
+  gap: calc(var(--p-space-300) + var(--p-space-025));
   margin: 0;
-  padding: $button-vertical-padding var(--p-space-4);
-  line-height: 1;
   cursor: pointer;
   user-select: none;
   text-decoration: none;
   text-align: left;
-  border-radius: var(--p-border-radius-1);
-  width: 100%;
-  background: var(--p-surface);
-  box-shadow: var(--p-shadow-button);
-  border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
-  border-top-color: var(--p-border-subdued);
-  border-bottom-color: var(--p-border-shadow-subdued);
+  border-radius: var(--p-border-radius-100);
+  width: auto;
 
-  [data-buttongroup-segmented='true'] & {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  // Checkable Button has no opinion on its own height, it simply fills its
+  // container
+  min-height: auto;
+  min-width: auto;
+  height: 100%;
+
+  svg {
+    fill: var(--p-color-text-brand-on-bg-fill);
   }
 
-  &:hover {
-    background: var(--p-action-secondary-hovered);
-  }
-
+  &:hover,
   &:active {
-    background: var(--p-action-secondary-pressed);
-  }
-
-  &.CheckableButton-measuring {
-    font-size: 15px;
-    font-weight: var(--p-font-weight-bold);
-
-    // simulates measuring with an additional digit (e.g. 00 instead of 0)
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 15px;
-    }
-  }
-
-  @media #{$p-breakpoints-sm-up} {
-    flex: 0 1 auto;
+    background: transparent;
   }
 
   &:focus {
     outline: none;
   }
-
-  &.CheckableButton-plain {
-    border-radius: var(--p-border-radius-base);
-    box-shadow: none;
-    background: transparent;
-    border: none;
-
-    &:hover {
-      background: transparent;
-    }
-  }
-
-  &.CheckableButton-selectMode {
-    @include text-emphasis-subdued;
-    font-weight: var(--p-font-weight-medium);
-  }
-
-  &.CheckableButton-selected {
-    color: var(--p-text);
-  }
 }
 
 .Checkbox {
   pointer-events: none;
-  height: var(--p-choice-size);
-  width: var(--p-choice-size);
-  margin-left: calc(-1 * var(--p-space-2) - var(--p-control-border-width));
-}
 
-.CheckableButton-selectMode {
-  .Checkbox {
-    margin-left: calc(
-      -1 * var(--p-space-2) - var(--p-control-border-width) - var(--p-border-width-1)
-    );
-  }
+  /*
+      We do not want to worry about setting the height and width explicitly.
+      We want to inherits the height and width of its child (in this case the Checkbox component).
+
+      We do this using flexbox because "the cross size of each flex container is the minimum size necessary to contain the flex items" as per the spec.
+      https://www.w3.org/TR/css-flexbox-1/#flex-lines
+  */
+  display: flex;
 }
 
 .Label {
@@ -104,5 +59,6 @@ $button-vertical-padding: calc(
   text-overflow: ellipsis;
   // padding to fix the bottom of letters being cutoff by overflow: hidden
   padding: var(--p-space-025) 0;
-  margin-left: calc(var(--p-space-5) - var(--p-control-border-width));
+  // stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- custom label line height
+  line-height: 18px;
 }

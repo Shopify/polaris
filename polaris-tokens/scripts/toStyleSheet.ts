@@ -1,59 +1,88 @@
 import fs from 'fs';
 import path from 'path';
 
-import {Metadata, MetadataGroup} from '../src';
+import type {
+  MetaThemeShape,
+  MetaTokenGroupShape,
+  TokenName,
+} from '../src/themes/types';
+import {metaThemePartials, metaThemeDefault} from '../src/themes';
+import {themeNameDefault} from '../src/themes/constants';
+import {createThemeSelector, isTokenName} from '../src/themes/utils';
+import {createVarName} from '../src/utils';
+import type {Entries} from '../src/types';
 
 const cssOutputDir = path.join(__dirname, '../dist/css');
-const sassOutputDir = path.join(__dirname, '../dist/scss');
+const scssOutputDir = path.join(__dirname, '../dist/scss');
 const cssOutputPath = path.join(cssOutputDir, 'styles.css');
-const sassOutputPath = path.join(sassOutputDir, 'styles.scss');
+const scssOutputPath = path.join(scssOutputDir, 'styles.scss');
 
-/**
- * Creates static CSS custom properties.
- * Note: These values don't vary by color-scheme.
- */
-export function getStaticCustomProperties(metadata: Metadata) {
-  return Object.entries(metadata)
-    .map(([_, tokenGroup]) => getCustomProperties(tokenGroup))
+/** Creates CSS declarations from a base or variant partial theme. */
+export function getMetaThemeDecls(metaTheme: MetaThemeShape) {
+  return Object.values(metaTheme)
+    .map((metaTokenGroup) => getMetaTokenGroupDecls(metaTokenGroup))
     .join('');
 }
 
-/**
- * Creates CSS custom properties for a given metadata object.
- */
-export function getCustomProperties(tokenGroup: MetadataGroup) {
-  return Object.entries(tokenGroup)
-    .map(([token, {value}]) =>
-      token.startsWith('keyframes')
-        ? `--p-${token}:p-${token};`
-        : `--p-${token}:${value};`,
-    )
+/** Creates CSS declarations from a token group. */
+export function getMetaTokenGroupDecls(metaTokenGroup: MetaTokenGroupShape) {
+  return Object.entries(metaTokenGroup)
+    .map((entry) => {
+      const [tokenName, {value}] = entry as [
+        TokenName,
+        MetaTokenGroupShape[string],
+      ];
+
+      return tokenName.startsWith('motion-keyframes')
+        ? `${createVarName(tokenName)}:p-${tokenName};`
+        : `${createVarName(tokenName)}:${value};`;
+    })
     .join('');
 }
 
-/**
- * Concatenates the `keyframes` token-group into a single string.
- */
-export function getKeyframes(motion: MetadataGroup) {
+/** Creates `@keyframes` rules for `motion-keyframes-*` tokens. */
+export function getKeyframes(motion: MetaTokenGroupShape) {
   return Object.entries(motion)
-    .filter(([token]) => token.startsWith('keyframes'))
-    .map(([token, {value}]) => `@keyframes p-${token}${value}`)
+    .filter(([tokenName]) => tokenName.startsWith('motion-keyframes'))
+    .map(([tokenName, {value}]) => `@keyframes p-${tokenName}${value}`)
     .join('');
 }
 
-export async function toStyleSheet(metadata: Metadata) {
-  if (!fs.existsSync(cssOutputDir)) {
-    await fs.promises.mkdir(cssOutputDir, {recursive: true});
-  }
-  if (!fs.existsSync(sassOutputDir)) {
-    await fs.promises.mkdir(sassOutputDir, {recursive: true});
-  }
+export async function toStyleSheet() {
+  await fs.promises.mkdir(cssOutputDir, {recursive: true}).catch((error) => {
+    if (error.code !== 'EEXIST') {
+      throw error;
+    }
+  });
 
-  const styles = `
-  :root{color-scheme:light;${getStaticCustomProperties(metadata)}}
-  ${getKeyframes(metadata.motion)}
-`;
+  await fs.promises.mkdir(scssOutputDir, {recursive: true}).catch((error) => {
+    if (error.code !== 'EEXIST') {
+      throw error;
+    }
+  });
+
+  const metaThemePartialsEntries = Object.entries(metaThemePartials).filter(
+    ([themeName]) => themeName !== themeNameDefault,
+  ) as Entries<Omit<typeof metaThemePartials, typeof themeNameDefault>>;
+
+  const styles = [
+    [
+      `:root,${createThemeSelector(themeNameDefault)}`,
+      `{color-scheme:light;${getMetaThemeDecls(metaThemeDefault)}}`,
+    ].join(''),
+    metaThemePartialsEntries.map(
+      ([themeName, metaThemePartial]) =>
+        `${createThemeSelector(themeName)}{${getMetaThemeDecls(
+          metaThemePartial,
+        )}}`,
+    ),
+    getKeyframes(metaThemeDefault.motion),
+    // Newline terminator
+    '',
+  ]
+    .flat()
+    .join('\n');
 
   await fs.promises.writeFile(cssOutputPath, styles);
-  await fs.promises.writeFile(sassOutputPath, styles);
+  await fs.promises.writeFile(scssOutputPath, styles);
 }

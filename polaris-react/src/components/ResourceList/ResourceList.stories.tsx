@@ -5,13 +5,13 @@ import {
   Button,
   Card,
   EmptyState,
-  Filters,
+  LegacyFilters,
   Layout,
   Page,
   ResourceItem,
   ResourceList,
   TextField,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 
 export default {
@@ -20,26 +20,26 @@ export default {
 
 export function Default() {
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
             id: 100,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
           {
             id: 200,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
           },
         ]}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -49,7 +49,9 @@ export function Default() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -66,7 +68,7 @@ export function WithEmptyState() {
   const filters = [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       disabled={!items.length}
       queryValue=""
       filters={filters}
@@ -92,7 +94,7 @@ export function WithEmptyState() {
     <Page title="Files">
       <Layout>
         <Layout.Section>
-          <Card>
+          <Card padding="0" roundedAbove="sm">
             <ResourceList
               emptyState={emptyStateMarkup}
               items={items}
@@ -118,20 +120,20 @@ export function WithSelectionAndNoBulkActions() {
   const items = [
     {
       id: 101,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 201,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
   ];
 
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -145,7 +147,7 @@ export function WithSelectionAndNoBulkActions() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -155,7 +157,9 @@ export function WithSelectionAndNoBulkActions() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -174,13 +178,13 @@ export function WithBulkActions() {
   const items = [
     {
       id: 103,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 203,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -209,7 +213,7 @@ export function WithBulkActions() {
   ];
 
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -224,7 +228,7 @@ export function WithBulkActions() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -234,7 +238,86 @@ export function WithBulkActions() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </h3>
+        <div>{location}</div>
+      </ResourceItem>
+    );
+  }
+}
+
+export function WithBulkActionsAndManyItems() {
+  const [selectedItems, setSelectedItems] = useState([]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const items = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$24,00',
+    };
+  });
+
+  const promotedBulkActions = [
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  return (
+    <Card padding="0" roundedAbove="sm">
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        renderItem={renderItem}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        promotedBulkActions={promotedBulkActions}
+        bulkActions={bulkActions}
+      />
+    </Card>
+  );
+
+  function renderItem(item) {
+    const {id, url, name, location} = item;
+    const media = <Avatar customer size="md" name={name} />;
+
+    return (
+      <ResourceItem
+        id={id}
+        url={url}
+        media={media}
+        accessibilityLabel={`View details for ${name}`}
+      >
+        <h3>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -253,13 +336,13 @@ export function WithLoadingState() {
   const items = [
     {
       id: 104,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 204,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -288,7 +371,7 @@ export function WithLoadingState() {
   ];
 
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -304,7 +387,7 @@ export function WithLoadingState() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -314,7 +397,9 @@ export function WithLoadingState() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -324,26 +409,26 @@ export function WithLoadingState() {
 
 export function WithTotalCount() {
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
             id: 105,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
           },
           {
             id: 205,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
           },
         ]}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -353,7 +438,9 @@ export function WithTotalCount() {
               accessibilityLabel={`View details for ${name}`}
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -361,6 +448,51 @@ export function WithTotalCount() {
         }}
         showHeader
         totalItemsCount={50}
+      />
+    </Card>
+  );
+}
+
+export function WithHeaderContent() {
+  return (
+    <Card padding="0" roundedAbove="sm">
+      <ResourceList
+        headerContent="Customer details shown below"
+        items={[
+          {
+            id: 105,
+            url: '#',
+            name: 'Mae Jemison',
+            location: 'Decatur, USA',
+          },
+          {
+            id: 205,
+            url: '#',
+            name: 'Ellen Ochoa',
+            location: 'Los Angeles, USA',
+          },
+        ]}
+        renderItem={(item) => {
+          const {id, url, name, location} = item;
+          const media = <Avatar customer size="md" name={name} />;
+
+          return (
+            <ResourceItem
+              id={id}
+              url={url}
+              media={media}
+              accessibilityLabel={`View details for ${name}`}
+            >
+              <h3>
+                <Text fontWeight="bold" as="span">
+                  {name}
+                </Text>
+              </h3>
+              <div>{location}</div>
+            </ResourceItem>
+          );
+        }}
+        showHeader
       />
     </Card>
   );
@@ -377,20 +509,20 @@ export function WithSorting() {
   const items = [
     {
       id: 106,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 206,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
   ];
 
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -410,7 +542,7 @@ export function WithSorting() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -420,7 +552,9 @@ export function WithSorting() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -437,20 +571,20 @@ export function WithAlternateTool() {
   const items = [
     {
       id: 107,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 207,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
   ];
 
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         items={items}
         renderItem={renderItem}
@@ -462,7 +596,7 @@ export function WithAlternateTool() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -472,7 +606,9 @@ export function WithAlternateTool() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -503,13 +639,13 @@ export function WithFiltering() {
   const items = [
     {
       id: 108,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 208,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -543,7 +679,7 @@ export function WithFiltering() {
     : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -554,11 +690,11 @@ export function WithFiltering() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -570,12 +706,14 @@ export function WithFiltering() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem id={id} url={url} media={media}>
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -653,7 +791,7 @@ export function WithACustomEmptySearchResultState() {
     : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -664,11 +802,11 @@ export function WithACustomEmptySearchResultState() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -681,12 +819,14 @@ export function WithACustomEmptySearchResultState() {
 
   function renderItem(item) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem id={id} url={url} media={media}>
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -713,28 +853,28 @@ export function WithACustomEmptySearchResultState() {
 
 export function WithItemShortcutActions() {
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
             id: 109,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
-            latestOrderUrl: 'orders/1456',
+            latestOrderUrl: '#',
           },
           {
             id: 209,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
-            latestOrderUrl: 'orders/1457',
+            latestOrderUrl: '#',
           },
         ]}
         renderItem={(item) => {
           const {id, url, name, location, latestOrderUrl} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
           const shortcutActions = latestOrderUrl
             ? [
                 {
@@ -754,7 +894,9 @@ export function WithItemShortcutActions() {
               shortcutActions={shortcutActions}
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -767,28 +909,28 @@ export function WithItemShortcutActions() {
 
 export function WithPersistentItemShortcutActions() {
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
             id: 110,
-            url: 'customers/341',
+            url: '#',
             name: 'Mae Jemison',
             location: 'Decatur, USA',
-            latestOrderUrl: 'orders/1456',
+            latestOrderUrl: '#',
           },
           {
             id: 210,
-            url: 'customers/256',
+            url: '#',
             name: 'Ellen Ochoa',
             location: 'Los Angeles, USA',
-            latestOrderUrl: 'orders/1457',
+            latestOrderUrl: '#',
           },
         ]}
         renderItem={(item) => {
           const {id, url, name, location, latestOrderUrl} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
           const shortcutActions = latestOrderUrl
             ? [
                 {
@@ -809,7 +951,9 @@ export function WithPersistentItemShortcutActions() {
               persistActions
             >
               <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
+                <Text fontWeight="bold" as="span">
+                  {name}
+                </Text>
               </h3>
               <div>{location}</div>
             </ResourceItem>
@@ -831,37 +975,37 @@ export function WithMultiselect() {
   const items = [
     {
       id: 111,
-      url: 'customers/231',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
       id: 211,
-      url: 'customers/246',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
     {
       id: 311,
-      url: 'customers/276',
+      url: '#',
       name: 'Joe Smith',
       location: 'Arizona, USA',
     },
     {
       id: 411,
-      url: 'customers/349',
+      url: '#',
       name: 'Haden Jerado',
       location: 'Decatur, USA',
     },
     {
       id: 511,
-      url: 'customers/419',
+      url: '#',
       name: 'Tom Thommas',
       location: 'Florida, USA',
     },
     {
       id: 611,
-      url: 'customers/516',
+      url: '#',
       name: 'Emily Amrak',
       location: 'Texas, USA',
     },
@@ -890,7 +1034,7 @@ export function WithMultiselect() {
   ];
 
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -906,7 +1050,7 @@ export function WithMultiselect() {
 
   function renderItem(item, _, index) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -917,7 +1061,9 @@ export function WithMultiselect() {
         accessibilityLabel={`View details for ${name}`}
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -958,17 +1104,17 @@ export function WithAllOfItsElements() {
   const items = [
     {
       id: 112,
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
-      latestOrderUrl: 'orders/1456',
+      latestOrderUrl: '#',
     },
     {
       id: 212,
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
-      latestOrderUrl: 'orders/1457',
+      latestOrderUrl: '#',
     },
   ];
 
@@ -1022,7 +1168,7 @@ export function WithAllOfItsElements() {
     : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -1033,11 +1179,11 @@ export function WithAllOfItsElements() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
-    <Card>
+    <Card padding="0" roundedAbove="sm">
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -1062,7 +1208,7 @@ export function WithAllOfItsElements() {
 
   function renderItem(item) {
     const {id, url, name, location, latestOrderUrl} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
     const shortcutActions = latestOrderUrl
       ? [{content: 'View latest order', url: latestOrderUrl}]
       : null;
@@ -1076,7 +1222,9 @@ export function WithAllOfItsElements() {
         persistActions
       >
         <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
         </h3>
         <div>{location}</div>
       </ResourceItem>
@@ -1099,4 +1247,52 @@ export function WithAllOfItsElements() {
       return value === '' || value == null;
     }
   }
+}
+
+export function WithPagination() {
+  return (
+    <Card padding="0">
+      <ResourceList
+        resourceName={{singular: 'customer', plural: 'customers'}}
+        items={[
+          {
+            id: 100,
+            url: '#',
+            name: 'Mae Jemison',
+            location: 'Decatur, USA',
+          },
+          {
+            id: 200,
+            url: '#',
+            name: 'Ellen Ochoa',
+            location: 'Los Angeles, USA',
+          },
+        ]}
+        pagination={{
+          hasNext: true,
+          onNext: () => {},
+        }}
+        renderItem={(item) => {
+          const {id, url, name, location} = item;
+          const media = <Avatar customer size="medium" name={name} />;
+
+          return (
+            <ResourceItem
+              id={id}
+              url={url}
+              media={media}
+              accessibilityLabel={`View details for ${name}`}
+            >
+              <h3>
+                <Text fontWeight="bold" as="span">
+                  {name}
+                </Text>
+              </h3>
+              <div>{location}</div>
+            </ResourceItem>
+          );
+        }}
+      />
+    </Card>
+  );
 }

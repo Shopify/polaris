@@ -14,19 +14,23 @@
         "partiallyComplete": "Częściowo kompletne",
         "complete": "Zakończ"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Informacja",
-        "success": "Udało się",
+        "success": "Powodzenie",
         "warning": "Ostrzeżenie",
         "attention": "Uwaga",
-        "new": "Nowy",
-        "critical": "Krytyczny"
+        "new": "Nowe",
+        "critical": "Krytyczne",
+        "readOnly": "Tylko do odczytu",
+        "enabled": "Włączone"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Odrzuć powiadomienie"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Ładowanie",
-      "connectedDisclosureAccessibilityLabel": "Powiązane czynności"
+      "spinnerAccessibilityLabel": "Ładowanie"
     },
     "Common": {
       "checkbox": "pole wyboru",
@@ -152,7 +156,9 @@
       "clearAllFilters": "Wyczyść wszystkie filtry",
       "clear": "Wyczyść",
       "clearLabel": "Wyczyść {filterName}",
-      "moreFiltersWithCount": "Więcej filtrów ({count})"
+      "moreFiltersWithCount": "Więcej filtrów ({count})",
+      "addFilter": "Dodaj filtr",
+      "clearFilters": "Wyczyść wszystko"
     },
     "Modal": {
       "iFrameTitle": "znacznik treści",
@@ -174,7 +180,7 @@
       "showing": "Wyświetlanie {itemsCount} {resource}",
       "loading": "Ładowanie {resource}",
       "selected": "Wybrano {selectedItemsCount}",
-      "allItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie są zaznaczone.",
+      "allItemsSelected": "Zaznaczono wszystkie {itemsLength}+ {resourceNamePlural} w Twoim sklepie",
       "selectAllItems": "Zaznacz wszystkie {itemsLength}+ {resourceNamePlural} w swoim sklepie",
       "emptySearchResultTitle": "Nie znaleziono {resourceNamePlural}",
       "emptySearchResultDescription": "Spróbuj zmienić filtry lub szukany termin",
@@ -183,8 +189,6 @@
       "a11yCheckboxSelectAllSingle": "Wybierz {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Odznacz wszystkie {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Wybierz wszystkie {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} pozycja",
-      "ariaLivePlural": "{itemsLength} pozycje(-i)",
       "Item": {
         "actionsDropdownLabel": "Czynności dla {accessibilityLabel}",
         "actionsDropdown": "Lista rozwijana czynności",
@@ -192,18 +196,59 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Czynności",
-        "moreActionsActivatorLabel": "Więcej czynności",
-        "warningMessage": "Aby zapewnić większy komfort użytkowania, maksymalna liczba promowanych czynności powinna wynosić tylko {maxPromotedActions}."
+        "moreActionsActivatorLabel": "Więcej czynności"
       },
       "showingTotalCount": "Wyświetlanie {itemsCount} z {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze są zaznaczone.",
+      "allFilteredItemsSelected": "Zaznaczono wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze",
       "selectAllFilteredItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural} w tym filtrze"
     },
     "SkeletonPage": {
       "loadingLabel": "Ładowanie strony"
     },
     "Tabs": {
-      "toggleTabsLabel": "Więcej kart"
+      "toggleTabsLabel": "Więcej widoków",
+      "newViewAccessibilityLabel": "Utwórz nowy widok",
+      "newViewTooltip": "Utwórz widok",
+      "Tab": {
+        "rename": "Zmień nazwę widoku",
+        "duplicate": "Duplikuj widok",
+        "edit": "Edytuj widok",
+        "delete": "Usuń widok",
+        "copy": "Kopia {name}",
+        "deleteModal": {
+          "title": "Czy usunąć widok?",
+          "description": "Tej czynności nie można cofnąć. Widok {viewName} nie będzie już dostępny w Twoim panelu administracyjnym.",
+          "cancel": "Anuluj",
+          "delete": "Usuń widok"
+        }
+      },
+      "RenameModal": {
+        "title": "Zmień nazwę widoku",
+        "label": "Nazwa",
+        "cancel": "Anuluj",
+        "create": "Zapisz",
+        "errors": {
+          "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Duplikuj widok",
+        "label": "Nazwa",
+        "cancel": "Anuluj",
+        "create": "Utwórz widok",
+        "errors": {
+          "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Utwórz nowy widok",
+        "label": "Nazwisko",
+        "cancel": "Anuluj",
+        "create": "Utwórz widok",
+        "errors": {
+          "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Usuń {children}"
@@ -220,7 +265,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Czynności"
+      "popoverButton": "Czynności",
+      "dismissButton": "Odrzuć"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -281,7 +327,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Pozycja",
       "defaultItemPlural": "Pozycje",
-      "allItemsSelected": "Wybrano wszystkie {itemsLength}+ {resourceNamePlural}.",
+      "allItemsSelected": "Wybrano wszystkie {itemsLength}+ {resourceNamePlural}",
       "selected": "Wybrano {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Usuń wybór {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Wybierz {resourceNameSingular}",
@@ -309,6 +355,52 @@
     "FullscreenBar": {
       "back": "Powrót",
       "accessibilityLabel": "Zakończ tryb pełnoekranowy"
+    },
+    "FilterPill": {
+      "clear": "Wyczyść"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Wyszukaj i przefiltruj",
+      "searchFilterTooltipWithShortcut": "Wyszukaj i przefiltruj (F)",
+      "searchFilterAccessibilityLabel": "Wyszukaj i przefiltruj wyniki",
+      "sort": "Sortuj wyniki",
+      "addView": "Dodaj nowy widok",
+      "newView": "Niestandardowe wyszukiwanie",
+      "SortButton": {
+        "ariaLabel": "Sortuj wyniki",
+        "tooltip": "Sortuj",
+        "title": "Sortuj wg",
+        "sorting": {
+          "asc": "Rosnąco",
+          "desc": "Malejąco",
+          "az": "A–Z",
+          "za": "Z–A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Anuluj",
+        "update": "Aktualizuj",
+        "save": "Zapisz",
+        "saveAs": "Zapisz jako",
+        "modal": {
+          "title": "Zapisz widok jako",
+          "label": "Nazwisko",
+          "sameName": "Widok o tej nazwie już istnieje. Wybierz inną nazwę.",
+          "save": "Zapisz",
+          "cancel": "Anuluj"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Edytuj kolumny",
+        "accessibilityLabel": "Dostosuj kolejność i widoczność kolumn tabeli"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Wyczyść",
+        "search": "Szukaj",
+        "placeholder": "Szukaj czynności"
+      }
     }
   }
 }

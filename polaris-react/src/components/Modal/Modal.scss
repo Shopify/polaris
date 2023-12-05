@@ -2,13 +2,6 @@
 
 $small-width: 620px;
 
-.BodyWrapper {
-  display: flex;
-  flex-grow: 1;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
 .Body {
   width: 100%;
 }
@@ -22,9 +15,4 @@ $small-width: 620px;
   @media #{$p-breakpoints-md-up} {
     max-width: $small-width;
   }
-}
-
-.Spinner {
-  margin: var(--p-space-4);
-  text-align: center;
 }

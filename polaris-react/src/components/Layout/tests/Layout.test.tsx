@@ -1,7 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Heading} from '../../Heading';
+import {Text} from '../../Text';
+// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../TextContainer';
 import {Section} from '../components';
 import {Layout} from '../Layout';
@@ -45,7 +46,7 @@ describe('<Layout />', () => {
       const annotatedSection = mountWithApp(
         <Layout.AnnotatedSection title={title} id="someId" />,
       );
-      expect(annotatedSection.find(Heading, {id: 'someId'})).toContainReactText(
+      expect(annotatedSection.find(Text, {id: 'someId'})).toContainReactText(
         title,
       );
     });
@@ -57,6 +58,7 @@ describe('<Layout />', () => {
       );
 
       const annotedDescriptionTextContainer =
+        // eslint-disable-next-line import/no-deprecated
         annotatedSection.find(TextContainer)!;
 
       expect(annotedDescriptionTextContainer.find('div')).toContainReactText(
@@ -68,8 +70,8 @@ describe('<Layout />', () => {
       const annotatedSection = mountWithApp(
         <Layout.AnnotatedSection description={<MyComponent />} />,
       );
-
       const annotedDescriptionTextContainer =
+        // eslint-disable-next-line import/no-deprecated
         annotatedSection.find(TextContainer)!;
 
       expect(annotedDescriptionTextContainer).toContainReactComponent(
@@ -85,8 +87,9 @@ describe('<Layout />', () => {
       );
 
       const annotedDescriptionTextContainer =
+        // eslint-disable-next-line import/no-deprecated
         annotatedSection.find(TextContainer)!;
-
+      // eslint-disable-next-line import/no-deprecated
       expect(annotatedSection).toContainReactComponent(TextContainer);
       expect(annotedDescriptionTextContainer).not.toContainReactComponent(
         'div',
@@ -104,7 +107,7 @@ describe('<Layout />', () => {
           </Layout.AnnotatedSection>
         </Layout>,
       );
-      expect(layout).toContainReactComponent(Heading, {id: 'MySection'});
+      expect(layout).toContainReactComponent(Text, {id: 'MySection'});
     });
   });
 });

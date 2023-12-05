@@ -7,9 +7,9 @@ function Example() {
     <div style={{height: '250px'}}>
       <Frame
         logo={{
-          width: 124,
+          width: 86,
           contextualSaveBarSource:
-            'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
         }}
       >
         <ContextualSaveBar

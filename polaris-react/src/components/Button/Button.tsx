@@ -1,58 +1,48 @@
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import {
-  CaretDownMinor,
-  CaretUpMinor,
   SelectMinor,
+  ChevronDownMinor,
+  ChevronUpMinor,
 } from '@shopify/polaris-icons';
 
-import type {BaseButton, ConnectedDisclosure, IconSource} from '../../types';
+import type {BaseButton, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
-import {
-  handleMouseUpByBlurring,
-  MouseUpBlurHandler,
-} from '../../utilities/focus';
+import {handleMouseUpByBlurring} from '../../utilities/focus';
+import type {MouseUpBlurHandler} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {Spinner} from '../Spinner';
-import {Popover} from '../Popover';
-import {ActionList} from '../ActionList';
-import {UnstyledButton, UnstyledButtonProps} from '../UnstyledButton';
-import {useDisableClick} from '../../utilities/use-disable-interaction';
+import {UnstyledButton} from '../UnstyledButton';
+import type {UnstyledButtonProps} from '../UnstyledButton';
 
 import styles from './Button.scss';
 
 export interface ButtonProps extends BaseButton {
   /** The content to display inside the button */
   children?: string | string[];
-  /** Provides extra visual weight and identifies the primary action in a set of buttons */
-  primary?: boolean;
-  /** Indicates a dangerous or potentially negative action */
-  destructive?: boolean;
   /**
    * Changes the size of the button, giving it more or less padding
    * @default 'medium'
    */
-  size?: 'slim' | 'medium' | 'large';
+  size?: 'micro' | 'slim' | 'medium' | 'large';
   /** Changes the inner text alignment of the button */
   textAlign?: 'left' | 'right' | 'center' | 'start' | 'end';
-  /** Gives the button a subtle alternative to the default button styling, appropriate for certain backdrops */
-  outline?: boolean;
   /** Allows the button to grow to the width of its container */
   fullWidth?: boolean;
   /** Displays the button with a disclosure icon. Defaults to `down` when set to true */
   disclosure?: 'down' | 'up' | 'select' | boolean;
-  /** Renders a button that looks like a link */
-  plain?: boolean;
-  /** Makes `plain` and `outline` Button colors (text, borders, icons) the same as the current text color. Also adds an underline to `plain` Buttons */
-  monochrome?: boolean;
-  /** Removes underline from button text (including on interaction) when `monochrome` and `plain` are true */
+  /** Removes underline from button text (including on interaction)
+   * @deprecated Use a variant instead
+   */
   removeUnderline?: boolean;
   /** Icon to display to the left of the button content */
   icon?: React.ReactElement | IconSource;
-  /** Disclosure button connected right of the button. Toggles a popover action list. */
-  connectedDisclosure?: ConnectedDisclosure;
   /** Indicates whether or not the button is the primary navigation link when rendered inside of an `IndexTable.Row` */
   dataPrimaryLink?: boolean;
+  /** Sets the color treatment of the Button. */
+  tone?: 'critical' | 'success';
+  /** Changes the visual appearance of the Button. */
+  variant?: 'plain' | 'primary' | 'tertiary' | 'monochromePlain';
 }
 
 interface CommonButtonProps
@@ -73,7 +63,10 @@ interface CommonButtonProps
   'data-primary-link'?: boolean;
 }
 
-type LinkButtonProps = Pick<ButtonProps, 'url' | 'external' | 'download'>;
+type LinkButtonProps = Pick<
+  ButtonProps,
+  'url' | 'external' | 'download' | 'target'
+>;
 
 type ActionButtonProps = Pick<
   ButtonProps,
@@ -99,6 +92,7 @@ export function Button({
   disabled,
   external,
   download,
+  target,
   submit,
   loading,
   pressed,
@@ -118,18 +112,14 @@ export function Button({
   onTouchStart,
   onPointerDown,
   icon,
-  primary,
-  outline,
-  destructive,
   disclosure,
-  plain,
-  monochrome,
   removeUnderline,
   size = DEFAULT_SIZE,
   textAlign,
   fullWidth,
-  connectedDisclosure,
   dataPrimaryLink,
+  tone,
+  variant,
 }: ButtonProps) {
   const i18n = useI18n();
 
@@ -137,20 +127,16 @@ export function Button({
 
   const className = classNames(
     styles.Button,
-    primary && styles.primary,
-    outline && styles.outline,
-    destructive && styles.destructive,
-    isDisabled && styles.disabled,
-    loading && styles.loading,
-    plain && styles.plain,
-    pressed && !disabled && !url && styles.pressed,
-    monochrome && styles.monochrome,
-    size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
-    textAlign && styles[variationName('textAlign', textAlign)],
     fullWidth && styles.fullWidth,
     icon && children == null && styles.iconOnly,
-    connectedDisclosure && styles.connectedDisclosure,
+    isDisabled && styles.disabled,
+    loading && styles.loading,
+    pressed && !disabled && !url && styles.pressed,
     removeUnderline && styles.removeUnderline,
+    size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
+    textAlign && styles[variationName('textAlign', textAlign)],
+    tone && styles[variationName('tone', tone)],
+    variant && styles[variationName('variant', variant)],
   );
 
   const disclosureMarkup = disclosure ? (
@@ -159,7 +145,15 @@ export function Button({
         className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
         <Icon
-          source={loading ? 'placeholder' : getDisclosureIconSource(disclosure)}
+          source={
+            loading
+              ? 'placeholder'
+              : getDisclosureIconSource(
+                  disclosure,
+                  ChevronUpMinor,
+                  ChevronDownMinor,
+                )
+          }
         />
       </div>
     </span>
@@ -200,69 +194,6 @@ export function Button({
     </span>
   ) : null;
 
-  const [disclosureActive, setDisclosureActive] = useState(false);
-  const toggleDisclosureActive = useCallback(() => {
-    setDisclosureActive((disclosureActive) => !disclosureActive);
-  }, []);
-
-  const handleClick = useDisableClick(disabled, toggleDisclosureActive);
-
-  let connectedDisclosureMarkup;
-
-  if (connectedDisclosure) {
-    const connectedDisclosureClassName = classNames(
-      styles.Button,
-      primary && styles.primary,
-      outline && styles.outline,
-      size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
-      textAlign && styles[variationName('textAlign', textAlign)],
-      destructive && styles.destructive,
-      connectedDisclosure.disabled && styles.disabled,
-      styles.iconOnly,
-      styles.ConnectedDisclosure,
-      monochrome && styles.monochrome,
-    );
-
-    const defaultLabel = i18n.translate(
-      'Polaris.Button.connectedDisclosureAccessibilityLabel',
-    );
-
-    const {disabled, accessibilityLabel: disclosureLabel = defaultLabel} =
-      connectedDisclosure;
-
-    const connectedDisclosureActivator = (
-      <button
-        type="button"
-        className={connectedDisclosureClassName}
-        aria-disabled={disabled}
-        aria-label={disclosureLabel}
-        aria-describedby={ariaDescribedBy}
-        aria-checked={ariaChecked}
-        onClick={handleClick}
-        onMouseUp={handleMouseUpByBlurring}
-        tabIndex={disabled ? -1 : undefined}
-      >
-        <span className={styles.Icon}>
-          <Icon source={CaretDownMinor} />
-        </span>
-      </button>
-    );
-
-    connectedDisclosureMarkup = (
-      <Popover
-        active={disclosureActive}
-        onClose={toggleDisclosureActive}
-        activator={connectedDisclosureActivator}
-        preferredAlignment="right"
-      >
-        <ActionList
-          items={connectedDisclosure.actions}
-          onActionAnyItem={toggleDisclosureActive}
-        />
-      </Popover>
-    );
-  }
-
   const commonProps: CommonButtonProps = {
     id,
     className,
@@ -281,6 +212,7 @@ export function Button({
     url,
     external,
     download,
+    target,
   };
   const actionProps: ActionButtonProps = {
     submit,
@@ -307,14 +239,7 @@ export function Button({
     </UnstyledButton>
   );
 
-  return connectedDisclosureMarkup ? (
-    <div className={styles.ConnectedDisclosureWrapper}>
-      {buttonMarkup}
-      {connectedDisclosureMarkup}
-    </div>
-  ) : (
-    buttonMarkup
-  );
+  return buttonMarkup;
 }
 
 function isIconSource(x: any): x is IconSource {
@@ -327,10 +252,12 @@ function isIconSource(x: any): x is IconSource {
 
 function getDisclosureIconSource(
   disclosure: NonNullable<ButtonProps['disclosure']>,
+  upIcon: IconSource,
+  downIcon: IconSource,
 ) {
   if (disclosure === 'select') {
     return SelectMinor;
   }
 
-  return disclosure === 'up' ? CaretUpMinor : CaretDownMinor;
+  return disclosure === 'up' ? upIcon : downIcon;
 }

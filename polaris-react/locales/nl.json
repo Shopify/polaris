@@ -14,19 +14,23 @@
         "partiallyComplete": "Gedeeltelijk voltooid",
         "complete": "Voltooid"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Info",
         "success": "Geslaagd",
         "warning": "Waarschuwing",
-        "attention": "Attentie",
+        "attention": "Let op",
         "new": "Nieuw",
-        "critical": "Kritiek"
+        "critical": "Kritiek",
+        "readOnly": "Alleen-lezen",
+        "enabled": "Ingeschakeld"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Melding sluiten"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Laden",
-      "connectedDisclosureAccessibilityLabel": "Gerelateerde acties"
+      "spinnerAccessibilityLabel": "Laden"
     },
     "Common": {
       "checkbox": "selectievakje",
@@ -152,7 +156,9 @@
       "clearAllFilters": "Alle filters wissen",
       "clear": "Wissen",
       "clearLabel": "{filterName} wissen",
-      "moreFiltersWithCount": "Meer filters ({count})"
+      "moreFiltersWithCount": "Meer filters ({count})",
+      "addFilter": "Filter toevoegen",
+      "clearFilters": "Alles wissen"
     },
     "Modal": {
       "iFrameTitle": "opmaak hoofdtekst",
@@ -174,7 +180,7 @@
       "showing": "Weergave van {itemsCount} {resource}",
       "loading": "{resource} aan het laden",
       "selected": "{selectedItemsCount} geselecteerd",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in je winkel zijn geselecteerd.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in je winkel zijn geselecteerd",
       "selectAllItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in je winkel",
       "emptySearchResultTitle": "Geen {resourceNamePlural} gevonden",
       "emptySearchResultDescription": "Probeer de filters of zoekterm te wijzigen",
@@ -183,8 +189,6 @@
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} selecteren",
       "a11yCheckboxDeselectAllMultiple": "Alle {itemsLength} {resourceNamePlural} deselecteren",
       "a11yCheckboxSelectAllMultiple": "Alle {itemsLength} {resourceNamePlural} selecteren",
-      "ariaLiveSingular": "{itemsLength} artikel",
-      "ariaLivePlural": "{itemsLength} artikelen",
       "Item": {
         "actionsDropdownLabel": "Acties voor {accessibilityLabel}",
         "actionsDropdown": "Acties vervolgkeuzelijst",
@@ -192,18 +196,59 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Acties",
-        "moreActionsActivatorLabel": "Meer acties",
-        "warningMessage": "Om een betere gebruikerservaring te bieden, zouden er maximaal {maxPromotedActions} gepromote acties moeten zijn."
+        "moreActionsActivatorLabel": "Meer acties"
       },
       "showingTotalCount": "{itemsCount} van {totalItemsCount} {resource} zichtbaar",
-      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd.",
+      "allFilteredItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} in dit filter zijn geselecteerd",
       "selectAllFilteredItems": "Selecteer alle {itemsLength}+ {resourceNamePlural} in dit filter."
     },
     "SkeletonPage": {
       "loadingLabel": "Pagina is aan het laden"
     },
     "Tabs": {
-      "toggleTabsLabel": "Meer tabbladen"
+      "toggleTabsLabel": "Meer weergaven",
+      "newViewAccessibilityLabel": "Nieuwe weergave aanmaken",
+      "newViewTooltip": "Weergave aanmaken",
+      "Tab": {
+        "rename": "Naam van weergave wijzigen",
+        "duplicate": "Weergave dupliceren",
+        "edit": "Weergave bewerken",
+        "delete": "Weergave verwijderen",
+        "copy": "Kopie van {name}",
+        "deleteModal": {
+          "title": "Weergave verwijderen?",
+          "description": "Je kunt dit niet ongedaan maken. De {viewName}-weergave is niet meer beschikbaar in het Shopify-beheercentrum.",
+          "cancel": "Annuleren",
+          "delete": "Weergave verwijderen"
+        }
+      },
+      "RenameModal": {
+        "title": "Naam van weergave wijzigen",
+        "label": "Naam",
+        "cancel": "Annuleren",
+        "create": "Opslaan",
+        "errors": {
+          "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Dubbele weergave",
+        "label": "Naam",
+        "cancel": "Annuleren",
+        "create": "Weergave aanmaken",
+        "errors": {
+          "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Nieuwe weergave aanmaken",
+        "label": "Naam",
+        "cancel": "Annuleren",
+        "create": "Weergave aanmaken",
+        "errors": {
+          "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "{children} verwijderen"
@@ -220,7 +265,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Acties"
+      "popoverButton": "Acties",
+      "dismissButton": "Sluiten"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -279,7 +325,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Artikel",
       "defaultItemPlural": "Artikelen",
-      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} zijn geselecteerd.",
+      "allItemsSelected": "Alle {itemsLength}+ {resourceNamePlural} zijn geselecteerd",
       "selected": "{selectedItemsCount} geselecteerd",
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} deselecteren",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} selecteren",
@@ -307,6 +353,52 @@
     "FullscreenBar": {
       "back": "Terug",
       "accessibilityLabel": "Volledig scherm-modus afsluiten"
+    },
+    "FilterPill": {
+      "clear": "Wissen"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Zoeken en filteren",
+      "searchFilterTooltipWithShortcut": "Zoeken en filteren (F)",
+      "searchFilterAccessibilityLabel": "Resultaten zoeken en filteren",
+      "sort": "Resultaten sorteren",
+      "addView": "Nieuwe weergave toevoegen",
+      "newView": "Aangepast zoeken",
+      "SortButton": {
+        "ariaLabel": "Resultaten sorteren",
+        "tooltip": "Sorteren",
+        "title": "Sorteren op",
+        "sorting": {
+          "asc": "Oplopend",
+          "desc": "Aflopend",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Annuleren",
+        "update": "Bijwerken",
+        "save": "Opslaan",
+        "saveAs": "Opslaan als",
+        "modal": {
+          "title": "Weergave opslaan als",
+          "label": "Naam",
+          "sameName": "Er bestaat al een weergave met deze naam. Kies een andere naam.",
+          "save": "Opslaan",
+          "cancel": "Annuleren"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Kolommen bewerken",
+        "accessibilityLabel": "Kolomvolgorde en zichtbaarheid van tabel aanpassen"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Wissen",
+        "search": "Zoeken",
+        "placeholder": "Zoekacties"
+      }
     }
   }
 }

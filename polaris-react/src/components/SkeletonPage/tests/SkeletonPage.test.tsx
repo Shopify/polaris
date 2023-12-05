@@ -1,12 +1,12 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Card} from '../../Card';
-import {DisplayText} from '../../DisplayText';
+// eslint-disable-next-line import/no-deprecated
+import {LegacyCard} from '../../LegacyCard';
 import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
-import {SkeletonDisplayText} from '../../SkeletonDisplayText';
 import {SkeletonPage} from '../SkeletonPage';
+import {Box} from '../../Box';
 
 describe('<SkeletonPage />', () => {
   it('renders its children', () => {
@@ -14,12 +14,12 @@ describe('<SkeletonPage />', () => {
       return (
         <Layout>
           <Layout.Section>
-            <Card sectioned>
+            <LegacyCard sectioned>
               <SkeletonBodyText />
-            </Card>
-            <Card sectioned title="Variants">
+            </LegacyCard>
+            <LegacyCard sectioned title="Variants">
               <SkeletonBodyText />
-            </Card>
+            </LegacyCard>
           </Layout.Section>
         </Layout>
       );
@@ -38,7 +38,9 @@ describe('<SkeletonPage />', () => {
       const skeletonPage = mountWithApp(<SkeletonPage title="Products" />);
 
       expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
-      expect(skeletonPage).not.toContainReactComponent(DisplayText);
+      expect(skeletonPage).not.toContainReactComponent(Box, {
+        background: 'bg-fill-tertiary',
+      });
     });
 
     it('renders SkeletonTitle when a title not defined', () => {
@@ -47,8 +49,8 @@ describe('<SkeletonPage />', () => {
       expect(skeletonPage).not.toContainReactComponent('h1', {
         className: 'Title',
       });
-      expect(skeletonPage).toContainReactComponent('div', {
-        className: 'SkeletonTitle',
+      expect(skeletonPage).toContainReactComponent(Box, {
+        background: 'bg-fill-tertiary',
       });
     });
 
@@ -58,23 +60,30 @@ describe('<SkeletonPage />', () => {
       expect(skeletonPage).not.toContainReactComponent('h1', {
         className: 'Title',
       });
-      expect(skeletonPage).toContainReactComponent('div', {
-        className: 'SkeletonTitle',
+      expect(skeletonPage).toContainReactComponent(Box, {
+        background: 'bg-fill-tertiary',
       });
     });
   });
 
-  it('renders breadcrumbs', () => {
-    const skeletonPage = mountWithApp(<SkeletonPage breadcrumbs />);
-    expect(skeletonPage).toContainReactComponent(SkeletonBodyText);
+  it('renders backAction', () => {
+    const skeletonPage = mountWithApp(<SkeletonPage backAction />);
+    expect(skeletonPage).toContainReactComponent(Box, {
+      background: 'bg-fill-tertiary',
+      minWidth: '2.25rem',
+      minHeight: '2.25rem',
+      maxWidth: '2.25rem',
+    });
   });
 
   describe('primaryAction', () => {
-    it('renders SkeletonDisplayText if true', () => {
+    it('renders if true', () => {
       const skeletonPage = mountWithApp(
         <SkeletonPage title="Title" primaryAction />,
       );
-      expect(skeletonPage).toContainReactComponent(SkeletonDisplayText);
+      expect(skeletonPage).toContainReactComponent(Box, {
+        id: 'SkeletonPage-PrimaryAction',
+      });
     });
   });
 });

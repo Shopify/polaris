@@ -1,6 +1,12 @@
 import React, {useCallback, useMemo, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Autocomplete, Icon, Stack, Tag, TextContainer} from '@shopify/polaris';
+import {
+  Autocomplete,
+  Icon,
+  LegacyStack,
+  Tag,
+  TextContainer,
+} from '@shopify/polaris';
 import {
   CirclePlusMinor,
   DeleteMinor,
@@ -64,7 +70,7 @@ export function Default() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
@@ -138,7 +144,7 @@ export function WithMultipleTags() {
 
   const verticalContentMarkup =
     selectedOptions.length > 0 ? (
-      <Stack spacing="extraTight" alignment="center">
+      <LegacyStack spacing="extraTight" alignment="center">
         {selectedOptions.map((option) => {
           let tagLabel = '';
           tagLabel = option.replace('_', ' ');
@@ -149,7 +155,7 @@ export function WithMultipleTags() {
             </Tag>
           );
         })}
-      </Stack>
+      </LegacyStack>
     ) : null;
 
   const textField = (
@@ -265,7 +271,7 @@ export function WithMultipleSections() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
@@ -342,7 +348,7 @@ export function WithLoading() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );
@@ -454,11 +460,11 @@ export function WithLazyLoading() {
     : null;
   const optionList = options.slice(0, visibleOptionIndex);
   const selectedTagMarkup = hasSelectedOptions ? (
-    <Stack spacing="extraTight">{tagsMarkup}</Stack>
+    <LegacyStack spacing="extraTight">{tagsMarkup}</LegacyStack>
   ) : null;
 
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       {selectedTagMarkup}
       <Autocomplete
         allowMultiple
@@ -471,7 +477,7 @@ export function WithLazyLoading() {
         onLoadMoreResults={handleLoadMoreResults}
         willLoadMoreResults={willLoadMoreResults}
       />
-    </Stack>
+    </LegacyStack>
   );
 
   function titleCase(string) {
@@ -545,7 +551,7 @@ export function WithEmptyState() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} color="base" />}
+      prefix={<Icon source={SearchMinor} tone="base" />}
       placeholder="Search"
     />
   );

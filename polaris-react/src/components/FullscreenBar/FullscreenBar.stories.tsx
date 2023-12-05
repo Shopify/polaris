@@ -4,21 +4,63 @@ import {
   Badge,
   Button,
   ButtonGroup,
-  DisplayText,
   FullscreenBar,
+  Text,
+  BlockStack,
 } from '@shopify/polaris';
+
+import {useBreakpoints} from '../../utilities/breakpoints';
 
 export default {
   component: FullscreenBar,
   parameters: {layout: 'fullscreen'},
 } as ComponentMeta<typeof FullscreenBar>;
 
+export function All() {
+  return (
+    <>
+      <BlockStack gap="400">
+        <Text as="h2" variant="headingXl">
+          With children
+        </Text>
+        <WithChildren />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          No children
+        </Text>
+        <NoChildren />
+      </BlockStack>
+    </>
+  );
+}
+
 export function WithChildren() {
   const [isFullscreen, setFullscreen] = useState(true);
+  const breakpoints = useBreakpoints();
 
   const handleActionClick = useCallback(() => {
     setFullscreen(false);
   }, []);
+
+  const titleContentMarkup = breakpoints.mdUp ? (
+    <Text as="p" variant="headingMd">
+      Join our email list
+    </Text>
+  ) : null;
+
+  const titleMarkup = (
+    <div
+      style={{
+        marginLeft: 'var(--p-space-200)',
+        marginRight: 'var(--p-space-400)',
+        flexGrow: 1,
+      }}
+    >
+      {titleContentMarkup}
+    </div>
+  );
 
   const fullscreenBarMarkup = (
     <FullscreenBar onAction={handleActionClick}>
@@ -32,13 +74,11 @@ export function WithChildren() {
           paddingRight: '1rem',
         }}
       >
-        <Badge status="info">Draft</Badge>
-        <div style={{marginLeft: '1rem', flexGrow: 1}}>
-          <DisplayText size="small">Page title</DisplayText>
-        </div>
+        <Badge tone="info">Draft</Badge>
+        {titleMarkup}
         <ButtonGroup>
           <Button onClick={() => {}}>Secondary Action</Button>
-          <Button primary onClick={() => {}}>
+          <Button variant="primary" onClick={() => {}}>
             Primary Action
           </Button>
         </ButtonGroup>
@@ -53,7 +93,9 @@ export function WithChildren() {
         {!isFullscreen && (
           <Button onClick={() => setFullscreen(true)}>Go Fullscreen</Button>
         )}
-        <DisplayText size="small">Page content</DisplayText>
+        <Text as="p" variant="headingLg">
+          Page content
+        </Text>
       </div>
     </div>
   );
@@ -75,7 +117,9 @@ export function NoChildren() {
         {!isFullscreen && (
           <Button onClick={() => setFullscreen(true)}>Go Fullscreen</Button>
         )}
-        <DisplayText size="small">Page content</DisplayText>
+        <Text as="p" variant="headingLg">
+          Page content
+        </Text>
       </div>
     </div>
   );

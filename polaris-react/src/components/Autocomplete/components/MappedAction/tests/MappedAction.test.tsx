@@ -10,7 +10,7 @@ import {Icon} from '../../../../Icon';
 describe('MappedAction', () => {
   it('renders badge when provided', () => {
     const badge = {
-      status: 'new' as const,
+      tone: 'new' as const,
       content: 'new',
     };
     const mappedAction = mountWithListboxProvider(
@@ -18,7 +18,7 @@ describe('MappedAction', () => {
     );
 
     expect(mappedAction).toContainReactComponent(Badge, {
-      status: badge.status,
+      tone: badge.tone,
       children: badge.content,
     });
   });

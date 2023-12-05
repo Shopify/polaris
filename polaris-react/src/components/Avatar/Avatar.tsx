@@ -7,9 +7,7 @@ import {Image} from '../Image';
 
 import styles from './Avatar.scss';
 
-type Size = 'extraSmall' | 'small' | 'medium' | 'large';
-
-type Shape = 'square' | 'round';
+type Size = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 
 enum Status {
   Pending = 'PENDING',
@@ -17,7 +15,15 @@ enum Status {
   Errored = 'ERRORED',
 }
 
-export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'];
+export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'] as const;
+
+const avatarStrokeWidth: {[S in Size]: string} = {
+  xs: '3',
+  sm: '2.5',
+  md: '2.5',
+  lg: '2.5',
+  xl: '2',
+};
 
 /**
  * Computes a rudimentary hash from a string by xoring the character codes
@@ -45,11 +51,6 @@ export interface AvatarProps {
    * @default 'medium'
    */
   size?: Size;
-  /**
-   * Shape of avatar
-   * @default 'round'
-   */
-  shape?: Shape;
   /** The name of the person */
   name?: string;
   /** Initials of person to display */
@@ -70,8 +71,7 @@ export function Avatar({
   onError,
   initials,
   customer,
-  size = 'medium',
-  shape = 'round',
+  size = 'md',
   accessibilityLabel,
 }: AvatarProps) {
   const i18n = useI18n();
@@ -109,15 +109,12 @@ export function Avatar({
     label = i18n.translate('Polaris.Avatar.labelWithInitials', {
       initials: splitInitials,
     });
-  } else {
-    label = i18n.translate('Polaris.Avatar.label');
   }
 
   const className = classNames(
     styles.Avatar,
     size && styles[variationName('size', size)],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
-    shape && styles[variationName('shape', shape)],
     !customer &&
       !source &&
       styles[variationName('style', styleClass(nameString))],
@@ -147,12 +144,28 @@ export function Avatar({
   // Use `dominant-baseline: central` instead of `dy` when Edge supports it.
   const verticalOffset = '0.35em';
 
+  const avatarPath = (
+    <>
+      <path
+        fill="none"
+        d="M25.5 13.5C25.5 16.5376 23.0376 19 20 19C16.9624 19 14.5 16.5376 14.5 13.5C14.5 10.4624 16.9624 8 20 8C23.0376 8 25.5 10.4624 25.5 13.5Z"
+        stroke="currentColor"
+        strokeWidth={avatarStrokeWidth[size]}
+      />
+      <path
+        fill="none"
+        d="M10.3433 29.682L9.47 31.254C9.03481 32.0373 9.60125 33 10.4974 33H29.5026C30.3988 33 30.9652 32.0373 30.53 31.254L29.6567 29.682C27.7084 26.175 24.0119 24 20 24C15.9882 24 12.2916 26.175 10.3433 29.682Z"
+        stroke="currentColor"
+        strokeWidth={avatarStrokeWidth[size]}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </>
+  );
+
   const avatarBody =
     customer || !initials ? (
-      <path
-        fill="currentColor"
-        d="M8.28 27.5A14.95 14.95 0 0120 21.8c4.76 0 8.97 2.24 11.72 5.7a14.02 14.02 0 01-8.25 5.91 14.82 14.82 0 01-6.94 0 14.02 14.02 0 01-8.25-5.9zM13.99 12.78a6.02 6.02 0 1112.03 0 6.02 6.02 0 01-12.03 0z"
-      />
+      avatarPath
     ) : (
       <text
         className={textClassName}
@@ -175,7 +188,11 @@ export function Avatar({
   );
 
   return (
-    <span aria-label={label} role="img" className={className}>
+    <span
+      aria-label={label}
+      role={label ? 'img' : 'presentation'}
+      className={className}
+    >
       {svgMarkup}
       {imageMarkUp}
     </span>

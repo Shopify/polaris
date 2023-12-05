@@ -13,16 +13,17 @@
 
 .Buttons {
   display: flex;
-  gap: 0.5rem;
+  gap: 1.5rem;
 
-  button {
+  button,
+  a {
     display: flex;
     align-items: center;
     gap: 0.25rem;
     background: transparent;
     font-size: var(--font-size-300);
-    min-width: 6rem;
     text-align: center;
+    color: var(--text);
 
     &:hover {
       color: var(--text-strong);

@@ -1,21 +1,21 @@
 import {
   DropZone,
-  Stack,
+  LegacyStack,
   Thumbnail,
-  Caption,
   Banner,
   List,
+  Text,
 } from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DropZoneWithImageFileUpload() {
-  const [files, setFiles] = useState([]);
-  const [rejectedFiles, setRejectedFiles] = useState([]);
+  const [files, setFiles] = useState<File[]>([]);
+  const [rejectedFiles, setRejectedFiles] = useState<File[]>([]);
   const hasError = rejectedFiles.length > 0;
 
   const handleDrop = useCallback(
-    (_droppedFiles, acceptedFiles, rejectedFiles) => {
+    (_droppedFiles: File[], acceptedFiles: File[], rejectedFiles: File[]) => {
       setFiles((files) => [...files, ...acceptedFiles]);
       setRejectedFiles(rejectedFiles);
     },
@@ -24,27 +24,27 @@ function DropZoneWithImageFileUpload() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <LegacyStack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <LegacyStack alignment="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
             source={window.URL.createObjectURL(file)}
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size} bytes
+            </Text>
           </div>
-        </Stack>
+        </LegacyStack>
       ))}
-    </Stack>
+    </LegacyStack>
   );
 
   const errorMessage = hasError && (
-    <Banner
-      title="The following images couldn’t be uploaded:"
-      status="critical"
-    >
+    <Banner title="The following images couldn’t be uploaded:" tone="critical">
       <List type="bullet">
         {rejectedFiles.map((file, index) => (
           <List.Item key={index}>
@@ -56,13 +56,13 @@ function DropZoneWithImageFileUpload() {
   );
 
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       {errorMessage}
       <DropZone accept="image/*" type="image" onDrop={handleDrop}>
         {uploadedFiles}
         {fileUpload}
       </DropZone>
-    </Stack>
+    </LegacyStack>
   );
 }
 

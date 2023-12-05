@@ -1,4 +1,11 @@
-import React, {Component} from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+  useImperativeHandle,
+  forwardRef,
+} from 'react';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
@@ -7,16 +14,14 @@ import {
   StickyManagerContext,
 } from '../../utilities/sticky-manager';
 import {scrollable} from '../shared';
+import {useLazyRef} from '../../utilities/use-lazy-ref';
+import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 
 import {ScrollTo} from './components';
 import {ScrollableContext} from './context';
 import styles from './Scrollable.scss';
 
-const MAX_SCROLL_DISTANCE = 100;
-const DELTA_THRESHOLD = 0.2;
-const DELTA_PERCENTAGE = 0.2;
-const EVENTS_TO_LOCK = ['scroll', 'touchmove', 'wheel'];
-const PREFERS_REDUCED_MOTION = prefersReducedMotion();
+const MAX_SCROLL_HINT_DISTANCE = 100;
 const LOW_RES_BUFFER = 2;
 
 export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
@@ -40,75 +45,17 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   onScrolledToBottom?(): void;
 }
 
-interface State {
-  topShadow: boolean;
-  bottomShadow: boolean;
-  scrollPosition: number;
-  canScroll: boolean;
+export interface ScrollToOptions {
+  behavior?: 'instant' | 'smooth' | 'auto';
 }
 
-export class Scrollable extends Component<ScrollableProps, State> {
-  static ScrollTo = ScrollTo;
-  static forNode(node: HTMLElement): HTMLElement | Document {
-    const closestElement = node.closest(scrollable.selector);
-    return closestElement instanceof HTMLElement ? closestElement : document;
-  }
+export interface ScrollableRef {
+  scrollTo: (scrollY: number, options?: ScrollToOptions) => void;
+}
 
-  state: State = {
-    topShadow: false,
-    bottomShadow: false,
-    scrollPosition: 0,
-    canScroll: false,
-  };
-
-  private stickyManager = new StickyManager();
-
-  private scrollArea: HTMLElement | null = null;
-
-  private handleResize = debounce(
-    () => {
-      this.handleScroll();
-    },
-    50,
-    {trailing: true},
-  );
-
-  componentDidMount() {
-    if (this.scrollArea == null) {
-      return;
-    }
-    this.stickyManager.setContainer(this.scrollArea);
-    this.scrollArea.addEventListener('scroll', () => {
-      window.requestAnimationFrame(this.handleScroll);
-    });
-    window.addEventListener('resize', this.handleResize);
-    window.requestAnimationFrame(() => {
-      this.handleScroll();
-      if (this.props.hint) {
-        this.scrollHint();
-      }
-    });
-  }
-
-  componentWillUnmount() {
-    if (this.scrollArea == null) {
-      return;
-    }
-    this.scrollArea.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.handleResize);
-    this.stickyManager.removeScrollListener();
-  }
-
-  componentDidUpdate() {
-    const {scrollPosition} = this.state;
-    if (scrollPosition && this.scrollArea && scrollPosition > 0) {
-      this.scrollArea.scrollTop = scrollPosition;
-    }
-  }
-
-  render() {
-    const {topShadow, bottomShadow, canScroll} = this.state;
-    const {
+const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
+  (
+    {
       children,
       className,
       horizontal = true,
@@ -118,26 +65,95 @@ export class Scrollable extends Component<ScrollableProps, State> {
       focusable,
       onScrolledToBottom,
       ...rest
-    } = this.props;
+    }: ScrollableProps,
+    forwardedRef,
+  ) => {
+    const [topShadow, setTopShadow] = useState(false);
+    const [bottomShadow, setBottomShadow] = useState(false);
+    const stickyManager = useLazyRef(() => new StickyManager());
+    const scrollArea = useRef<HTMLDivElement>(null);
+
+    const scrollTo = useCallback(
+      (scrollY: number, options: ScrollToOptions = {}) => {
+        const optionsBehavior = options.behavior || 'smooth';
+        const behavior = prefersReducedMotion() ? 'auto' : optionsBehavior;
+        // @ts-expect-error TS removed "instant" option but browsers support it.
+        scrollArea.current?.scrollTo({top: scrollY, behavior});
+      },
+      [],
+    );
+
+    const defaultRef = useRef();
+    useImperativeHandle(forwardedRef || defaultRef, () => ({scrollTo}));
+
+    const handleScroll = useCallback(() => {
+      const currentScrollArea = scrollArea.current;
+
+      if (!currentScrollArea) {
+        return;
+      }
+
+      requestAnimationFrame(() => {
+        const {scrollTop, clientHeight, scrollHeight} = currentScrollArea;
+        const canScroll = Boolean(scrollHeight > clientHeight);
+        const isBelowTopOfScroll = Boolean(scrollTop > 0);
+        const isAtBottomOfScroll = Boolean(
+          scrollTop + clientHeight >= scrollHeight - LOW_RES_BUFFER,
+        );
+
+        setTopShadow(isBelowTopOfScroll);
+        setBottomShadow(!isAtBottomOfScroll);
+
+        if (canScroll && isAtBottomOfScroll && onScrolledToBottom) {
+          onScrolledToBottom();
+        }
+      });
+    }, [onScrolledToBottom]);
+
+    useComponentDidMount(() => {
+      handleScroll();
+
+      if (hint) {
+        requestAnimationFrame(() => performScrollHint(scrollArea.current));
+      }
+    });
+
+    useEffect(() => {
+      const currentScrollArea = scrollArea.current;
+
+      if (!currentScrollArea) {
+        return;
+      }
+
+      const handleResize = debounce(handleScroll, 50, {trailing: true});
+
+      stickyManager.current?.setContainer(currentScrollArea);
+      currentScrollArea.addEventListener('scroll', handleScroll);
+      globalThis.addEventListener('resize', handleResize);
+
+      return () => {
+        currentScrollArea.removeEventListener('scroll', handleScroll);
+        globalThis.removeEventListener('resize', handleResize);
+      };
+    }, [stickyManager, handleScroll]);
 
     const finalClassName = classNames(
       className,
       styles.Scrollable,
       vertical && styles.vertical,
       horizontal && styles.horizontal,
-      topShadow && styles.hasTopShadow,
-      bottomShadow && styles.hasBottomShadow,
-      vertical && canScroll && styles.verticalHasScrolling,
+      shadow && topShadow && styles.hasTopShadow,
+      shadow && bottomShadow && styles.hasBottomShadow,
     );
 
     return (
-      <ScrollableContext.Provider value={this.scrollToPosition}>
-        <StickyManagerContext.Provider value={this.stickyManager}>
+      <ScrollableContext.Provider value={scrollTo}>
+        <StickyManagerContext.Provider value={stickyManager.current}>
           <div
             className={finalClassName}
             {...scrollable.props}
             {...rest}
-            ref={this.setScrollArea}
+            ref={scrollArea}
             // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
             tabIndex={focusable ? 0 : undefined}
           >
@@ -146,113 +162,10 @@ export class Scrollable extends Component<ScrollableProps, State> {
         </StickyManagerContext.Provider>
       </ScrollableContext.Provider>
     );
-  }
+  },
+);
 
-  private setScrollArea = (scrollArea: HTMLElement | null) => {
-    this.scrollArea = scrollArea;
-  };
-
-  private handleScroll = () => {
-    const {scrollArea} = this;
-    const {scrollPosition} = this.state;
-    const {shadow, onScrolledToBottom} = this.props;
-    if (scrollArea == null) {
-      return;
-    }
-    const {scrollTop, clientHeight, scrollHeight} = scrollArea;
-    const shouldBottomShadow = Boolean(
-      shadow && !(scrollTop + clientHeight >= scrollHeight),
-    );
-    const shouldTopShadow = Boolean(
-      shadow && scrollTop > 0 && scrollPosition > 0,
-    );
-
-    const canScroll = scrollHeight > clientHeight;
-    const hasScrolledToBottom =
-      scrollHeight - scrollTop <= clientHeight + LOW_RES_BUFFER;
-
-    if (canScroll && hasScrolledToBottom && onScrolledToBottom) {
-      onScrolledToBottom();
-    }
-
-    this.setState({
-      topShadow: shouldTopShadow,
-      bottomShadow: shouldBottomShadow,
-      scrollPosition: scrollTop,
-      canScroll,
-    });
-  };
-
-  private scrollHint = () => {
-    const {scrollArea} = this;
-    if (scrollArea == null) {
-      return;
-    }
-    const {clientHeight, scrollHeight} = scrollArea;
-    if (
-      PREFERS_REDUCED_MOTION ||
-      this.state.scrollPosition > 0 ||
-      scrollHeight <= clientHeight
-    ) {
-      return;
-    }
-
-    const scrollDistance = scrollHeight - clientHeight;
-    this.toggleLock();
-    this.setState(
-      {
-        scrollPosition:
-          scrollDistance > MAX_SCROLL_DISTANCE
-            ? MAX_SCROLL_DISTANCE
-            : scrollDistance,
-      },
-      () => {
-        window.requestAnimationFrame(this.scrollStep);
-      },
-    );
-  };
-
-  private scrollStep = () => {
-    this.setState(
-      ({scrollPosition}) => {
-        const delta = scrollPosition * DELTA_PERCENTAGE;
-        return {
-          scrollPosition: delta < DELTA_THRESHOLD ? 0 : scrollPosition - delta,
-        };
-      },
-      () => {
-        if (this.state.scrollPosition > 0) {
-          window.requestAnimationFrame(this.scrollStep);
-        } else {
-          this.toggleLock(false);
-        }
-      },
-    );
-  };
-
-  private toggleLock(shouldLock = true) {
-    const {scrollArea} = this;
-    if (scrollArea == null) {
-      return;
-    }
-
-    EVENTS_TO_LOCK.forEach((eventName) => {
-      if (shouldLock) {
-        scrollArea.addEventListener(eventName, prevent);
-      } else {
-        scrollArea.removeEventListener(eventName, prevent);
-      }
-    });
-  }
-
-  private scrollToPosition = (scrollY: number) => {
-    this.setState({scrollPosition: scrollY});
-  };
-}
-
-function prevent(evt: Event) {
-  evt.preventDefault();
-}
+ScrollableComponent.displayName = 'Scrollable';
 
 function prefersReducedMotion() {
   try {
@@ -261,3 +174,42 @@ function prefersReducedMotion() {
     return false;
   }
 }
+
+function performScrollHint(elem?: HTMLDivElement | null) {
+  if (!elem || prefersReducedMotion()) {
+    return;
+  }
+
+  const scrollableDistance = elem.scrollHeight - elem.clientHeight;
+  const distanceToPeek =
+    Math.min(MAX_SCROLL_HINT_DISTANCE, scrollableDistance) - LOW_RES_BUFFER;
+
+  const goBackToTop = () => {
+    requestAnimationFrame(() => {
+      if (elem.scrollTop >= distanceToPeek) {
+        elem.removeEventListener('scroll', goBackToTop);
+        elem.scrollTo({top: 0, behavior: 'smooth'});
+      }
+    });
+  };
+
+  elem.addEventListener('scroll', goBackToTop);
+  elem.scrollTo({top: MAX_SCROLL_HINT_DISTANCE, behavior: 'smooth'});
+}
+
+const forNode = (node: HTMLElement): HTMLElement | Document => {
+  const closestElement = node.closest(scrollable.selector);
+  return closestElement instanceof HTMLElement ? closestElement : document;
+};
+
+type ScrollableType = typeof ScrollableComponent & {
+  ScrollTo: typeof ScrollTo;
+  forNode: typeof forNode;
+};
+
+// @ts-expect-error - expected functions/sub-components are assigned after declaration
+const Scrollable: ScrollableType = ScrollableComponent;
+Scrollable.ScrollTo = ScrollTo;
+Scrollable.forNode = forNode;
+
+export {Scrollable};

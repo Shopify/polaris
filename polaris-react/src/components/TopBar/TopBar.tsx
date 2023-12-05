@@ -142,12 +142,16 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
 
   return (
     <div className={styles.TopBar}>
-      {navigationButtonMarkup}
-      {contextMarkup}
-      <div className={styles.Contents}>
-        <div className={styles.SearchField}>{searchMarkup}</div>
-        <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
-        {userMenu}
+      <div className={styles.Container}>
+        <div className={styles.LeftContent}>
+          {navigationButtonMarkup}
+          {contextMarkup}
+        </div>
+        <div className={styles.Search}>{searchMarkup}</div>
+        <div className={styles.RightContent}>
+          <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
+          {userMenu}
+        </div>
       </div>
     </div>
   );

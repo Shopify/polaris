@@ -1,43 +1,48 @@
 import React, {
   forwardRef,
+  useContext,
   useRef,
   useState,
-  useContext,
-  useImperativeHandle,
+  useEffect,
+  useCallback,
 } from 'react';
-import {
-  CancelSmallMinor,
-  CircleTickMajor,
-  CircleInformationMajor,
-  CircleAlertMajor,
-  DiamondAlertMajor,
-} from '@shopify/polaris-icons';
+import type {PropsWithChildren} from 'react';
+import type {ColorTextAlias} from '@shopify/polaris-tokens';
+import {CancelMinor} from '@shopify/polaris-icons';
 
-import {classNames, variationName} from '../../utilities/css';
-import {BannerContext} from '../../utilities/banner-context';
-import {useUniqueId} from '../../utilities/unique-id';
-import {useI18n} from '../../utilities/i18n';
 import type {Action, DisableableAction, LoadableAction} from '../../types';
+import {Text} from '../Text';
+import type {InlineStackProps} from '../InlineStack';
+import {InlineStack} from '../InlineStack';
+import type {BoxProps} from '../Box';
+import {Box} from '../Box';
 import {Button} from '../Button';
-import {Heading} from '../Heading';
 import {ButtonGroup} from '../ButtonGroup';
-import {UnstyledButton, unstyledButtonFrom} from '../UnstyledButton';
-import {UnstyledLink} from '../UnstyledLink';
-import {Spinner} from '../Spinner';
-import {Icon, IconProps} from '../Icon';
+import {Icon} from '../Icon';
+import type {IconProps} from '../Icon';
+import {BannerContext} from '../../utilities/banner-context';
 import {WithinContentContext} from '../../utilities/within-content-context';
+import {classNames} from '../../utilities/css';
+import {useBreakpoints} from '../../utilities/breakpoints';
+import {useI18n} from '../../utilities/i18n';
+import {useEventListener} from '../../utilities/use-event-listener';
+import {BlockStack} from '../BlockStack';
 
 import styles from './Banner.scss';
+import type {BannerHandles} from './utilities';
+import {bannerAttributes, useBannerFocus} from './utilities';
 
-export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
+export type BannerTone = 'success' | 'info' | 'warning' | 'critical';
 
 export interface BannerProps {
   /** Title content for the banner. */
   title?: string;
-  /** Icon to display in the banner. Use only major, duotone icons */
+  /** Status icon to display in the banner. Use only major icons */
   icon?: IconProps['source'];
+  /** Renders the banner without a status icon. */
+  hideIcon?: boolean;
   /** Sets the status of the banner. */
-  status?: BannerStatus;
+  tone?: BannerTone;
   /** The child elements to render in the banner. */
   children?: React.ReactNode;
   /** Action for banner */
@@ -51,109 +56,17 @@ export interface BannerProps {
 }
 
 export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
-  {
-    icon,
-    action,
-    secondaryAction,
-    title,
-    children,
-    status,
-    onDismiss,
-    stopAnnouncements,
-  }: BannerProps,
+  props: BannerProps,
   bannerRef,
 ) {
+  const {tone, stopAnnouncements} = props;
   const withinContentContainer = useContext(WithinContentContext);
-  const id = useUniqueId('Banner');
-  const i18n = useI18n();
   const {wrapperRef, handleKeyUp, handleBlur, handleMouseUp, shouldShowFocus} =
     useBannerFocus(bannerRef);
-  const {defaultIcon, iconColor, ariaRoleType} = useBannerAttributes(status);
-  const iconName = icon || defaultIcon;
   const className = classNames(
     styles.Banner,
-    status && styles[variationName('status', status)],
-    onDismiss && styles.hasDismiss,
     shouldShowFocus && styles.keyFocused,
     withinContentContainer ? styles.withinContentContainer : styles.withinPage,
-  );
-
-  let headingMarkup: React.ReactNode = null;
-  let headingID: string | undefined;
-
-  if (title) {
-    headingID = `${id}Heading`;
-    headingMarkup = (
-      <div className={styles.Heading} id={headingID}>
-        <Heading element="p">{title}</Heading>
-      </div>
-    );
-  }
-
-  const spinnerMarkup = action?.loading ? (
-    <button
-      disabled
-      aria-busy
-      className={classNames(styles.Button, styles.loading)}
-    >
-      <span className={styles.Spinner}>
-        <Spinner
-          size="small"
-          accessibilityLabel={i18n.translate(
-            'Polaris.Button.spinnerAccessibilityLabel',
-          )}
-        />
-      </span>
-      {action.content}
-    </button>
-  ) : null;
-
-  const primaryActionMarkup = action ? (
-    <div className={styles.PrimaryAction}>
-      {action.loading
-        ? spinnerMarkup
-        : unstyledButtonFrom(action, {
-            className: styles.Button,
-          })}
-    </div>
-  ) : null;
-
-  const secondaryActionMarkup = secondaryAction ? (
-    <SecondaryActionFrom action={secondaryAction} />
-  ) : null;
-
-  const actionMarkup =
-    action || secondaryAction ? (
-      <div className={styles.Actions}>
-        <ButtonGroup>
-          {primaryActionMarkup}
-          {secondaryActionMarkup}
-        </ButtonGroup>
-      </div>
-    ) : null;
-
-  let contentMarkup: React.ReactNode = null;
-  let contentID: string | undefined;
-
-  if (children || actionMarkup) {
-    contentID = `${id}Content`;
-    contentMarkup = (
-      <div className={styles.Content} id={contentID}>
-        {children}
-        {actionMarkup}
-      </div>
-    );
-  }
-
-  const dismissButton = onDismiss && (
-    <div className={styles.Dismiss}>
-      <Button
-        plain
-        icon={CancelSmallMinor}
-        onClick={onDismiss}
-        accessibilityLabel="Dismiss notification"
-      />
-    </div>
   );
 
   return (
@@ -163,133 +76,258 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
         // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
         tabIndex={0}
         ref={wrapperRef}
-        role={ariaRoleType}
+        role={tone === 'warning' || tone === 'critical' ? 'alert' : 'status'}
         aria-live={stopAnnouncements ? 'off' : 'polite'}
         onMouseUp={handleMouseUp}
         onKeyUp={handleKeyUp}
         onBlur={handleBlur}
-        aria-labelledby={headingID}
-        aria-describedby={contentID}
       >
-        {dismissButton}
-
-        <div className={styles.Ribbon}>
-          <Icon source={iconName} color={iconColor} />
-        </div>
-
-        <div className={styles.ContentWrapper}>
-          {headingMarkup}
-          {contentMarkup}
-        </div>
+        <BannerLayout {...props} />
       </div>
     </BannerContext.Provider>
   );
 });
 
-function SecondaryActionFrom({action}: {action: Action}) {
-  if (action.url) {
+interface BannerLayoutProps {
+  backgroundColor: BoxProps['background'];
+  textColor: ColorTextAlias;
+  bannerTitle: React.ReactNode;
+  bannerIcon: React.ReactNode;
+  actionButtons: React.ReactNode;
+  dismissButton: React.ReactNode;
+}
+
+export function BannerLayout({
+  tone = 'info',
+  icon,
+  hideIcon,
+  onDismiss,
+  action,
+  secondaryAction,
+  title,
+  children,
+}: BannerProps) {
+  const i18n = useI18n();
+  const withinContentContainer = useContext(WithinContentContext);
+  const isInlineIconBanner = !title && !withinContentContainer;
+  const bannerTone = Object.keys(bannerAttributes).includes(tone)
+    ? tone
+    : 'info';
+  const bannerColors =
+    bannerAttributes[bannerTone][
+      withinContentContainer ? 'withinContentContainer' : 'withinPage'
+    ];
+
+  const sharedBannerProps: BannerLayoutProps = {
+    backgroundColor: bannerColors.background,
+    textColor: bannerColors.text,
+    bannerTitle: title ? (
+      <Text as="h2" variant="headingSm" breakWord>
+        {title}
+      </Text>
+    ) : null,
+    bannerIcon: hideIcon ? null : (
+      <span className={styles[bannerColors.icon]}>
+        <Icon source={icon ?? bannerAttributes[bannerTone].icon} />
+      </span>
+    ),
+    actionButtons:
+      action || secondaryAction ? (
+        <ButtonGroup>
+          {action && (
+            <Button onClick={action.onAction} {...action}>
+              {action.content}
+            </Button>
+          )}
+          {secondaryAction && (
+            <Button onClick={secondaryAction.onAction} {...secondaryAction}>
+              {secondaryAction.content}
+            </Button>
+          )}
+        </ButtonGroup>
+      ) : null,
+    dismissButton: onDismiss ? (
+      <Button
+        variant="tertiary"
+        icon={
+          <span
+            className={
+              styles[isInlineIconBanner ? 'icon-secondary' : bannerColors.icon]
+            }
+          >
+            <Icon source={CancelMinor} />
+          </span>
+        }
+        onClick={onDismiss}
+        accessibilityLabel={i18n.translate('Polaris.Banner.dismissButton')}
+      />
+    ) : null,
+  };
+
+  if (withinContentContainer) {
     return (
-      <UnstyledLink
-        className={styles.SecondaryAction}
-        url={action.url}
-        external={action.external}
-      >
-        <span className={styles.Text}>{action.content}</span>
-      </UnstyledLink>
+      <WithinContentContainerBanner {...sharedBannerProps}>
+        {children}
+      </WithinContentContainerBanner>
     );
   }
 
-  return (
-    <UnstyledButton
-      className={styles.SecondaryAction}
-      onClick={action.onAction}
-    >
-      <span className={styles.Text}>{action.content}</span>
-    </UnstyledButton>
-  );
-}
-
-interface BannerAttributes {
-  iconColor: IconProps['color'];
-  defaultIcon: IconProps['source'];
-  ariaRoleType: 'status' | 'alert';
-}
-
-function useBannerAttributes(status: BannerProps['status']): BannerAttributes {
-  switch (status) {
-    case 'success':
-      return {
-        defaultIcon: CircleTickMajor,
-        iconColor: 'success',
-        ariaRoleType: 'status',
-      };
-
-    case 'info':
-      return {
-        defaultIcon: CircleInformationMajor,
-        iconColor: 'highlight',
-        ariaRoleType: 'status',
-      };
-
-    case 'warning':
-      return {
-        defaultIcon: CircleAlertMajor,
-        iconColor: 'warning',
-        ariaRoleType: 'alert',
-      };
-
-    case 'critical':
-      return {
-        defaultIcon: DiamondAlertMajor,
-        iconColor: 'critical',
-        ariaRoleType: 'alert',
-      };
-
-    default:
-      return {
-        defaultIcon: CircleInformationMajor,
-        iconColor: 'base',
-        ariaRoleType: 'status',
-      };
+  if (isInlineIconBanner) {
+    return (
+      <InlineIconBanner {...sharedBannerProps}>{children}</InlineIconBanner>
+    );
   }
+
+  return <DefaultBanner {...sharedBannerProps}>{children}</DefaultBanner>;
 }
 
-export interface BannerHandles {
-  focus(): void;
-}
+export function DefaultBanner({
+  backgroundColor,
+  textColor,
+  bannerTitle,
+  bannerIcon,
+  actionButtons,
+  dismissButton,
+  children,
+}: PropsWithChildren<BannerLayoutProps>) {
+  const {smUp} = useBreakpoints();
+  const hasContent = children || actionButtons;
 
-function useBannerFocus(bannerRef: React.Ref<BannerHandles>) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-  const [shouldShowFocus, setShouldShowFocus] = useState(false);
-
-  useImperativeHandle(
-    bannerRef,
-    () => ({
-      focus: () => {
-        wrapperRef.current?.focus();
-        setShouldShowFocus(true);
-      },
-    }),
-    [],
+  return (
+    <Box width="100%">
+      <BlockStack align="space-between">
+        <Box
+          background={backgroundColor}
+          color={textColor}
+          borderStartStartRadius={smUp ? '300' : undefined}
+          borderStartEndRadius={smUp ? '300' : undefined}
+          borderEndStartRadius={!hasContent && smUp ? '300' : undefined}
+          borderEndEndRadius={!hasContent && smUp ? '300' : undefined}
+          padding="300"
+        >
+          <InlineStack
+            align="space-between"
+            blockAlign="center"
+            gap="200"
+            wrap={false}
+          >
+            <InlineStack gap="100" wrap={false}>
+              {bannerIcon}
+              {bannerTitle}
+            </InlineStack>
+            {dismissButton}
+          </InlineStack>
+        </Box>
+        {hasContent && (
+          <Box padding={{xs: '300', md: '400'}} paddingBlockStart="300">
+            <BlockStack gap="200">
+              <div>{children}</div>
+              {actionButtons}
+            </BlockStack>
+          </Box>
+        )}
+      </BlockStack>
+    </Box>
   );
+}
 
-  const handleKeyUp = (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.target === wrapperRef.current) {
-      setShouldShowFocus(true);
-    }
-  };
+export function InlineIconBanner({
+  backgroundColor,
+  bannerIcon,
+  actionButtons,
+  dismissButton,
+  children,
+}: PropsWithChildren<Omit<BannerLayoutProps, 'textColor' | 'bannerTitle'>>) {
+  const [blockAlign, setBlockAlign] =
+    useState<InlineStackProps['blockAlign']>('center');
+  const contentNode = useRef<HTMLDivElement>(null);
+  const iconNode = useRef<HTMLDivElement>(null);
+  const dismissIconNode = useRef<HTMLDivElement>(null);
 
-  const handleBlur = () => setShouldShowFocus(false);
-  const handleMouseUp = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.currentTarget.blur();
-    setShouldShowFocus(false);
-  };
+  const handleResize = useCallback(() => {
+    const contentHeight = contentNode.current?.offsetHeight;
+    const iconBoxHeight =
+      iconNode.current?.offsetHeight || dismissIconNode.current?.offsetHeight;
 
-  return {
-    wrapperRef,
-    handleKeyUp,
-    handleBlur,
-    handleMouseUp,
-    shouldShowFocus,
-  };
+    if (!contentHeight || !iconBoxHeight) return;
+
+    contentHeight > iconBoxHeight
+      ? setBlockAlign('start')
+      : setBlockAlign('center');
+  }, []);
+
+  useEffect(() => handleResize(), [handleResize]);
+  useEventListener('resize', handleResize);
+
+  return (
+    <Box width="100%" padding="300" borderRadius="300">
+      <InlineStack align="space-between" blockAlign={blockAlign} wrap={false}>
+        <Box width="100%">
+          <InlineStack gap="200" wrap={false} blockAlign={blockAlign}>
+            {bannerIcon ? (
+              <div ref={iconNode}>
+                <Box
+                  background={backgroundColor}
+                  borderRadius="200"
+                  padding="100"
+                >
+                  {bannerIcon}
+                </Box>
+              </div>
+            ) : null}
+            <Box ref={contentNode} width="100%">
+              <BlockStack gap="200">
+                <div>{children}</div>
+                {actionButtons}
+              </BlockStack>
+            </Box>
+          </InlineStack>
+        </Box>
+        <div ref={dismissIconNode} className={styles.DismissIcon}>
+          {dismissButton}
+        </div>
+      </InlineStack>
+    </Box>
+  );
+}
+
+export function WithinContentContainerBanner({
+  backgroundColor,
+  textColor,
+  bannerTitle,
+  bannerIcon,
+  actionButtons,
+  dismissButton,
+  children,
+}: PropsWithChildren<BannerLayoutProps>) {
+  return (
+    <Box
+      width="100%"
+      background={backgroundColor}
+      padding="200"
+      borderRadius="200"
+      color={textColor}
+    >
+      <InlineStack
+        align="space-between"
+        blockAlign="start"
+        wrap={false}
+        gap="200"
+      >
+        <InlineStack gap="150" wrap={false}>
+          {bannerIcon}
+          <Box width="100%">
+            <BlockStack gap="200">
+              <BlockStack gap="050">
+                {bannerTitle}
+                <div>{children}</div>
+              </BlockStack>
+              {actionButtons}
+            </BlockStack>
+          </Box>
+        </InlineStack>
+        {dismissButton}
+      </InlineStack>
+    </Box>
+  );
 }

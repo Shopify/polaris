@@ -1,7 +1,7 @@
 name: Propose new icon
 description: For new icon contributions and suggestions for polaris-icons
 title: '[Icon]: New icon <icon-name>'
-labels: ['Icon', 'untriaged']
+labels: ['Icon', 'untriaged', 'Fast follow']
 body:
   - type: markdown
     attributes:
@@ -54,6 +54,11 @@ body:
     attributes:
       label: Icon author
       description: Comma-delimited string of authors first and last name, e.g. Sam Rose, Lo Kim
+  - type: textarea
+    id: icon-figma-link
+    attributes:
+      label: Icon Figma link
+      description: Provide a Figma link to a preview of the proposed icon
   - type: textarea
     id: icon-svg
     attributes:

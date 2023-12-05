@@ -1,7 +1,7 @@
-import React, {PureComponent, createRef, MouseEvent} from 'react';
+import React, {PureComponent, createRef} from 'react';
+import type {MouseEvent} from 'react';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
-import {motion} from '@shopify/polaris-tokens';
 
 import {useI18n} from '../../utilities/i18n';
 import {useMediaQuery} from '../../utilities/media-query';
@@ -14,12 +14,13 @@ import {Backdrop} from '../Backdrop';
 import {TrapFocus} from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
-import {
-  FrameContext,
+import {FrameContext} from '../../utilities/frame';
+import type {
   ContextualSaveBarProps,
   ToastID,
   ToastPropsWithID,
 } from '../../utilities/frame';
+import {UseTheme} from '../../utilities/use-theme';
 
 import {
   ToastManager,
@@ -50,6 +51,10 @@ export interface FrameProps {
   skipToContentTarget?: React.RefObject<HTMLAnchorElement>;
   /** A callback function to handle clicking the mobile navigation dismiss button */
   onNavigationDismiss?(): void;
+  /** A boolean property indicating whether there should be space for a sidebar
+   * @default false
+   */
+  sidebar?: boolean;
 }
 
 type CombinedProps = FrameProps & {
@@ -111,6 +116,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       showMobileNavigation = false,
       skipToContentTarget,
       i18n,
+      sidebar,
       mediaQuery: {isNavigationCollapsed},
     } = this.props;
     const navClassName = classNames(
@@ -130,44 +136,48 @@ class FrameInner extends PureComponent<CombinedProps, State> {
     };
 
     const navigationMarkup = navigation ? (
-      <TrapFocus trapping={mobileNavShowing}>
-        <CSSTransition
-          nodeRef={this.navigationNode}
-          appear={isNavigationCollapsed}
-          exit={isNavigationCollapsed}
-          in={showMobileNavigation}
-          timeout={parseInt(motion['duration-300'], 10)}
-          classNames={navTransitionClasses}
-        >
-          <div
-            key="NavContent"
-            {...mobileNavAttributes}
-            aria-label={i18n.translate('Polaris.Frame.navigationLabel')}
-            ref={this.navigationNode}
-            className={navClassName}
-            onKeyDown={this.handleNavKeydown}
-            id={APP_FRAME_NAV}
-            hidden={mobileNavHidden}
-          >
-            {navigation}
-            <button
-              type="button"
-              className={styles.NavigationDismiss}
-              onClick={this.handleNavigationDismiss}
-              aria-hidden={
-                mobileNavHidden ||
-                (!isNavigationCollapsed && !showMobileNavigation)
-              }
-              aria-label={i18n.translate(
-                'Polaris.Frame.Navigation.closeMobileNavigationLabel',
-              )}
-              tabIndex={tabIndex}
+      <UseTheme>
+        {(theme) => (
+          <TrapFocus trapping={mobileNavShowing}>
+            <CSSTransition
+              nodeRef={this.navigationNode}
+              appear={isNavigationCollapsed}
+              exit={isNavigationCollapsed}
+              in={showMobileNavigation}
+              timeout={parseInt(theme.motion['motion-duration-300'], 10)}
+              classNames={navTransitionClasses}
             >
-              <Icon source={MobileCancelMajor} />
-            </button>
-          </div>
-        </CSSTransition>
-      </TrapFocus>
+              <div
+                key="NavContent"
+                {...mobileNavAttributes}
+                aria-label={i18n.translate('Polaris.Frame.navigationLabel')}
+                ref={this.navigationNode}
+                className={navClassName}
+                onKeyDown={this.handleNavKeydown}
+                id={APP_FRAME_NAV}
+                hidden={mobileNavHidden}
+              >
+                {navigation}
+                <button
+                  type="button"
+                  className={styles.NavigationDismiss}
+                  onClick={this.handleNavigationDismiss}
+                  aria-hidden={
+                    mobileNavHidden ||
+                    (!isNavigationCollapsed && !showMobileNavigation)
+                  }
+                  aria-label={i18n.translate(
+                    'Polaris.Frame.Navigation.closeMobileNavigationLabel',
+                  )}
+                  tabIndex={tabIndex}
+                >
+                  <Icon source={MobileCancelMajor} />
+                </button>
+              </div>
+            </CSSTransition>
+          </TrapFocus>
+        )}
+      </UseTheme>
     ) : null;
 
     const loadingMarkup =
@@ -176,16 +186,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           <Loading />
         </div>
       ) : null;
-
-    const contextualSaveBarMarkup = (
-      <CSSAnimation
-        in={showContextualSaveBar}
-        className={styles.ContextualSaveBar}
-        type="fade"
-      >
-        <ContextualSaveBar {...this.contextualSaveBar} />
-      </CSSAnimation>
-    );
 
     const topBarMarkup = topBar ? (
       <div
@@ -239,6 +239,17 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       styles.Frame,
       navigation && styles.hasNav,
       topBar && styles.hasTopBar,
+      sidebar && styles.hasSidebar,
+    );
+
+    const contextualSaveBarMarkup = (
+      <CSSAnimation
+        in={showContextualSaveBar}
+        className={styles.ContextualSaveBar}
+        type="fade"
+      >
+        <ContextualSaveBar {...this.contextualSaveBar} />
+      </CSSAnimation>
     );
 
     const navigationOverlayMarkup =
@@ -256,6 +267,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       logo,
       showToast: this.showToast,
       hideToast: this.hideToast,
+      toastMessages,
       startLoading: this.startLoading,
       stopLoading: this.stopLoading,
       setContextualSaveBar: this.setContextualSaveBar,

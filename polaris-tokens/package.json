@@ -1,17 +1,19 @@
 {
   "name": "@shopify/polaris-tokens",
-  "version": "6.2.1",
+  "version": "8.1.0",
   "description": "",
   "main": "dist/cjs/build/index.js",
   "module": "dist/esm/build/index.mjs",
   "types": "dist/types/build/index.d.ts",
+  "engines": {
+    "node": "^16.17.0 || >=18.12.0"
+  },
   "exports": {
     ".": {
       "types": "./dist/types/build/index.d.ts",
       "import": "./dist/esm/build/index.mjs",
       "require": "./dist/cjs/build/index.js"
     },
-    "./json/*": "./dist/json/*",
     "./css/*": "./dist/css/*",
     "./scss/*": "./dist/scss/*"
   },
@@ -28,9 +30,6 @@
     "test": "jest",
     "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo build"
   },
-  "devDependencies": {
-    "@shopify/browserslist-config": "^3.0.0"
-  },
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify <dev@shopify.com>",
   "homepage": "https://polaris.shopify.com",
@@ -43,9 +42,20 @@
     "@shopify:registry": "https://registry.npmjs.org"
   },
   "browserslist": [
-    "extends @shopify/browserslist-config"
+    "last 3 chrome versions",
+    "last 3 firefox versions",
+    "last 3 opera versions",
+    "last 3 edge versions",
+    "last 3 safari versions",
+    "last 3 chromeandroid versions",
+    "last 1 firefoxandroid versions",
+    "ios >= 13.4",
+    "node 16.17.0"
   ],
   "files": [
     "dist"
-  ]
+  ],
+  "dependencies": {
+    "deepmerge": "^4.3.1"
+  }
 }

@@ -3,13 +3,19 @@
 .ContextControl {
   display: flex;
   align-items: center;
-  padding: 0 var(--p-space-3);
+  padding: 0 var(--p-space-300);
   height: $top-bar-height;
 }
 
 .ShopName {
-  margin-left: var(--p-space-2);
+  margin-left: var(--p-space-200);
   font-weight: var(--p-font-weight-semibold);
-  font-size: var(--p-font-size-100);
-  color: var(--p-text);
+  font-size: var(--p-font-size-350);
+  color: var(--p-color-text-inverse);
+}
+
+[class*='Navigation'] {
+  .ShopName {
+    color: var(--p-color-text-inverse);
+  }
 }

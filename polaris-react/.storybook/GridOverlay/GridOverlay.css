@@ -11,11 +11,11 @@
   bottom: 0;
   right: 0;
   display: grid;
-  gap: var(--p-space-3);
+  gap: var(--p-space-300);
   grid-template-columns: repeat(4, 1fr);
-  padding: 0 var(--p-space-3);
+  padding: 0 var(--p-space-300);
   margin: 0 auto;
-  background-color: var(--p-action-critical);
+  background-color: var(--p-color-bg-fill-critical);
   opacity: 0.25;
   pointer-events: none;
 }
@@ -23,13 +23,13 @@
 @media (min-width: 768px) {
   .GridOverlay {
     grid-template-columns: repeat(12, 1fr);
-    padding: 0 var(--p-space-8);
+    padding: 0 var(--p-space-800);
   }
 }
 
 .Cell {
   height: 100%;
-  background-color: var(--p-surface);
+  background-color: var(--p-color-bg-surface);
 }
 
 .inFrame {

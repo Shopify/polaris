@@ -14,19 +14,23 @@
         "partiallyComplete": "Parcialmente concluído",
         "complete": "Concluído"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Informações",
         "success": "Sucesso",
         "warning": "Aviso",
         "attention": "Atenção",
         "new": "Novo",
-        "critical": "Crítico"
+        "critical": "Crítico",
+        "readOnly": "Só de leitura",
+        "enabled": "Ativado"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Ignorar notificação"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "A carregar",
-      "connectedDisclosureAccessibilityLabel": "Ações relacionadas"
+      "spinnerAccessibilityLabel": "A carregar"
     },
     "Common": {
       "checkbox": "caixa de verificação",
@@ -152,7 +156,9 @@
       "clearAllFilters": "Limpar todos os filtros",
       "clear": "Limpar",
       "clearLabel": "Limpar {filterName}",
-      "moreFiltersWithCount": "Mais filtros ({count})"
+      "moreFiltersWithCount": "Mais filtros ({count})",
+      "addFilter": "Adicionar filtro",
+      "clearFilters": "Limpar tudo"
     },
     "Modal": {
       "iFrameTitle": "marcação de corpo",
@@ -174,7 +180,7 @@
       "showing": "A mostrar {itemsCount} {resource}",
       "loading": "A carregar {resource}",
       "selected": "{selectedItemsCount} selecionada",
-      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados.",
+      "allItemsSelected": "Todos os {itemsLength}+ {resourceNamePlural} da sua loja estão selecionados",
       "selectAllItems": "Selecione todos os {itemsLength}+ {resourceNamePlural} da sua loja",
       "emptySearchResultTitle": "Nenhum {resourceNamePlural} encontrado",
       "emptySearchResultDescription": "Tente alterar os filtros ou o termo de pesquisa",
@@ -183,8 +189,6 @@
       "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Desselecionar tudo {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Selecionar tudo {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} item",
-      "ariaLivePlural": "{itemsLength} itens",
       "Item": {
         "actionsDropdownLabel": "Ações para {accessibilityLabel}",
         "actionsDropdown": "Menu pendente de ações",
@@ -192,18 +196,59 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Ações",
-        "moreActionsActivatorLabel": "Mais ações",
-        "warningMessage": "Para oferecer uma melhor experiência de utilizador. Deve existir apenas um máximo de {maxPromotedActions} ações promovidas."
+        "moreActionsActivatorLabel": "Mais ações"
       },
       "showingTotalCount": "Mostrar {itemsCount} de {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Todos os {itemsLength} + {resourceNamePlural} neste filtro estão selecionados.",
+      "allFilteredItemsSelected": "Todos os {itemsLength} + {resourceNamePlural} neste filtro estão selecionados",
       "selectAllFilteredItems": "Selecionar todos os {itemsLength}+ {resourceNamePlural} neste filtro"
     },
     "SkeletonPage": {
       "loadingLabel": "Página a carregar"
     },
     "Tabs": {
-      "toggleTabsLabel": "Mais separadores"
+      "toggleTabsLabel": "Mais visualizações",
+      "newViewAccessibilityLabel": "Criar uma nova visualização",
+      "newViewTooltip": "Criar visualização",
+      "Tab": {
+        "rename": "Renomear visualização",
+        "duplicate": "Duplicar visualização",
+        "edit": "Editar visualização",
+        "delete": "Eliminar visualização",
+        "copy": "Cópia de {name}",
+        "deleteModal": {
+          "title": "Eliminar visualização?",
+          "description": "Esta ação não pode ser anulada. A vista de {viewName} deixará de estar disponível no seu admin.",
+          "cancel": "Cancelar",
+          "delete": "Eliminar visualização"
+        }
+      },
+      "RenameModal": {
+        "title": "Renomear visualização",
+        "label": "Nome",
+        "cancel": "Cancelar",
+        "create": "Guardar",
+        "errors": {
+          "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Duplicar visualização",
+        "label": "Nome",
+        "cancel": "Cancelar",
+        "create": "Criar visualização",
+        "errors": {
+          "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Criar uma nova visualização",
+        "label": "Nome",
+        "cancel": "Cancelar",
+        "create": "Criar visualização",
+        "errors": {
+          "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Remover {children}"
@@ -220,7 +265,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Ações"
+      "popoverButton": "Ações",
+      "dismissButton": "Ignorar"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -280,7 +326,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Item",
       "defaultItemPlural": "Itens",
-      "allItemsSelected": "Todos os itens de {resourceNamePlural} de {itemsLength}+ foram selecionados.",
+      "allItemsSelected": "Todos os {itemsLength}+ de {resourceNamePlural} foram selecionados",
       "selected": "{selectedItemsCount} selecionada",
       "a11yCheckboxDeselectAllSingle": "Desselecionar {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Selecionar {resourceNameSingular}",
@@ -308,6 +354,52 @@
     "FullscreenBar": {
       "back": "Voltar",
       "accessibilityLabel": "Sair do modo ecrã inteiro"
+    },
+    "FilterPill": {
+      "clear": "Limpar"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Pesquisar e filtrar",
+      "searchFilterTooltipWithShortcut": "Pesquisar e filtrar (F)",
+      "searchFilterAccessibilityLabel": "Resultados da pesquisa e do filtro",
+      "sort": "Ordenar os resultados",
+      "addView": "Adicionar uma nova visualização",
+      "newView": "Pesquisa personalizada",
+      "SortButton": {
+        "ariaLabel": "Ordenar os resultados",
+        "tooltip": "Ordenar",
+        "title": "Ordenar por",
+        "sorting": {
+          "asc": "Ascendente",
+          "desc": "Descendente",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Cancelar",
+        "update": "Atualizar",
+        "save": "Guardar",
+        "saveAs": "Guardar como",
+        "modal": {
+          "title": "Guardar visualização como",
+          "label": "Nome",
+          "sameName": "Já existe uma visualização com este nome. Escolha um nome diferente.",
+          "save": "Guardar",
+          "cancel": "Cancelar"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Editar colunas",
+        "accessibilityLabel": "Personalizar visibilidade e ordem da coluna da tabela"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Limpar",
+        "search": "Pesquisar",
+        "placeholder": "Pesquisar ações"
+      }
     }
   }
 }

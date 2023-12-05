@@ -84,4 +84,17 @@ describe('<Choice />', () => {
       );
     }
   });
+
+  it('adds labelClassName to the label', () => {
+    const element = mountWithApp(
+      <Choice
+        id="MyChoice"
+        label="Label"
+        labelClassName="CustomLabelClassName"
+      />,
+    );
+    expect(element.find('label')!.prop('className')).toMatch(
+      /.*CustomLabelClassName.*/,
+    );
+  });
 });

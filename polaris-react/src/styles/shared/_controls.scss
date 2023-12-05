@@ -1,77 +1,54 @@
 @function control-height() {
-  @return 36px;
-}
-
-@function control-slim-height() {
-  @return 28px;
+  @return 32px;
 }
 
 @function control-vertical-padding() {
-  @return calc((36px - var(--p-font-line-height-3) - var(--p-space-05)) / 2);
-}
-
-@function control-icon-transition() {
-  @return transform var(--p-duration-100) var(--p-ease-in);
+  @return calc((36px - var(--p-font-line-height-600) - var(--p-space-050)) / 2);
 }
 
 @mixin control-backdrop($style: base) {
   @if $style == base {
     position: relative;
-    border: var(--p-control-border-width) solid var(--p-border);
-    background-color: var(--p-surface);
-    border-radius: var(--p-border-radius-1);
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: calc(-1 * var(--p-control-border-width));
-      right: calc(-1 * var(--p-control-border-width));
-      bottom: calc(-1 * var(--p-control-border-width));
-      left: calc(-1 * var(--p-control-border-width));
-      border-radius: var(--p-border-radius-1);
-      background-color: var(--p-interactive);
-      opacity: 0;
-      transform: scale(0.25);
-      transition: opacity var(--p-duration-100) var(--p-ease),
-        transform var(--p-duration-100) var(--p-ease);
-    }
+    border: var(--p-border-width-050) solid var(--p-color-input-border);
+    background-color: var(--p-color-bg-surface);
+    border-radius: var(--p-border-radius-100);
 
     &.hover,
     &:hover {
       cursor: pointer;
-      border-color: var(--p-border-hovered);
+      border-color: var(--p-color-border-hover);
     }
   } @else if $style == active {
-    border-color: var(--p-interactive);
+    border-color: var(--p-color-border-emphasis);
 
     &::before {
       opacity: 1;
       transform: scale(1);
       @media (-ms-high-contrast: active) {
-        border: var(--p-border-width-2) solid windowText;
+        border: var(--p-border-width-050) solid windowText;
       }
     }
   } @else if $style == disabled {
-    border-color: var(--p-border-disabled);
+    border-color: var(--p-color-border-disabled);
 
     &::before {
-      background-color: var(--p-action-secondary-disabled);
+      background-color: var(--p-color-bg-surface-disabled);
     }
 
     &:hover {
       cursor: default;
     }
   } @else if $style == error {
-    border-color: var(--p-border-critical);
-    background-color: var(--p-surface-critical);
+    border-color: var(--p-color-border-critical);
+    background-color: var(--p-color-bg-fill-critical-secondary);
 
     &.hover,
     &:hover {
-      border-color: var(--p-border-critical);
+      border-color: var(--p-color-border-critical);
     }
 
     &::before {
-      background-color: var(--p-border-critical);
+      background-color: var(--p-color-border-critical);
     }
   }
 }

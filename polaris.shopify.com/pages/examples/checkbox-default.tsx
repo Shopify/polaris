@@ -4,7 +4,10 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function CheckboxExample() {
   const [checked, setChecked] = useState(false);
-  const handleChange = useCallback((newChecked) => setChecked(newChecked), []);
+  const handleChange = useCallback(
+    (newChecked: boolean) => setChecked(newChecked),
+    [],
+  );
 
   return (
     <Checkbox

@@ -36,6 +36,270 @@ index 56defa7..1e7cf3b 100644
        },
      },
      module: {
+diff --git a/node_modules/playroom/src/Playroom/Frame.tsx b/node_modules/playroom/src/Playroom/Frame.tsx
+index b175d74..9a320fd 100644
+--- a/node_modules/playroom/src/Playroom/Frame.tsx
++++ b/node_modules/playroom/src/Playroom/Frame.tsx
+@@ -1,9 +1,9 @@
+-import React from 'react';
+-import { useParams } from '../utils/params';
++import React, { useEffect, useState } from 'react';
+ // @ts-ignore
+ import CatchErrors from './CatchErrors/CatchErrors';
+ // @ts-ignore
+ import RenderCode from './RenderCode/RenderCode';
++import { INCOMING_CODE, ARE_YOU_READY, READY_TO_RECEIVE } from './constants';
+ 
+ interface FrameProps {
+   themes: Record<string, any>;
+@@ -18,11 +18,24 @@ export default function Frame({
+   components,
+   FrameComponent,
+ }: FrameProps) {
+-  const { themeName, code } = useParams((rawParams) => ({
+-    themeName:
+-      typeof rawParams.themeName === 'string' ? rawParams.themeName : '',
+-    code: typeof rawParams.code === 'string' ? rawParams.code : '',
+-  }));
++  const [code, setCode] = useState(`/*#__PURE__*/
++  React.createElement(React.Fragment, null);`);
++  const [themeName, setThemeName] = useState('');
++  useEffect(() => {
++    const listener = (e: any) => {
++      switch(e.data?.type) {
++        case ARE_YOU_READY:
++          e.source.postMessage({ type: READY_TO_RECEIVE, ready: true }, e.origin);
++          break;
++        case INCOMING_CODE:
++          setCode(e.data.code);
++          setThemeName(e.data.themeName);
++          break;
++      }
++    }
++    window.addEventListener('message', listener);
++    return () => window.removeEventListener('message', listener);
++  }, []);
+ 
+   const resolvedThemeName =
+     themeName === '__PLAYROOM__NO_THEME__' ? null : themeName;
+diff --git a/node_modules/playroom/src/Playroom/Frames/Frames.tsx b/node_modules/playroom/src/Playroom/Frames/Frames.tsx
+index 5b4af43..4800827 100644
+--- a/node_modules/playroom/src/Playroom/Frames/Frames.tsx
++++ b/node_modules/playroom/src/Playroom/Frames/Frames.tsx
+@@ -1,4 +1,4 @@
+-import React, { useRef } from 'react';
++import React, { useRef, useEffect, useState } from 'react';
+ import flatMap from 'lodash/flatMap';
+ import Iframe from './Iframe';
+ import { compileJsx } from '../../utils/compileJsx';
+@@ -6,7 +6,6 @@ import { PlayroomProps } from '../Playroom';
+ import { Strong } from '../Strong/Strong';
+ import { Text } from '../Text/Text';
+ import playroomConfig from '../../config';
+-import frameSrc from './frameSrc';
+ 
+ import * as styles from './Frames.css';
+ 
+@@ -20,6 +19,16 @@ let renderCode = '<React.Fragment></React.Fragment>';
+ 
+ export default function Frames({ code, themes, widths }: FramesProps) {
+   const scrollingPanelRef = useRef<HTMLDivElement | null>(null);
++  const [params, setParams] = useState<string>('');
++
++  useEffect(() => {
++    const search = new URLSearchParams(window.location.search);
++    search.delete('code');
++    search.delete('theme');
++    if (search.size) {
++      setParams(`?${search.toString()}`)
++    }
++  }, []);
+ 
+   const frames = flatMap(widths, (width) =>
+     themes.map((theme) => ({
+@@ -44,10 +53,9 @@ export default function Frames({ code, themes, widths }: FramesProps) {
+             <div className={styles.frameBorder} />
+             <Iframe
+               intersectionRootRef={scrollingPanelRef}
+-              src={frameSrc(
+-                { themeName: frame.theme, code: renderCode },
+-                playroomConfig
+-              )}
++              code={renderCode}
++              themeName={frame.theme}
++              src={`${playroomConfig.baseUrl}frame.html${params}`}
+               className={styles.frame}
+               style={{ width: frame.width }}
+               data-testid="previewFrame"
+diff --git a/node_modules/playroom/src/Playroom/Frames/Iframe.tsx b/node_modules/playroom/src/Playroom/Frames/Iframe.tsx
+index 9285b94..899cf7e 100644
+--- a/node_modules/playroom/src/Playroom/Frames/Iframe.tsx
++++ b/node_modules/playroom/src/Playroom/Frames/Iframe.tsx
+@@ -2,26 +2,33 @@ import React, {
+   useState,
+   useEffect,
+   useRef,
++  useCallback,
+   AllHTMLAttributes,
+   MutableRefObject,
+ } from 'react';
+ import { useIntersection } from 'react-use';
++import { ARE_YOU_READY, READY_TO_RECEIVE, INCOMING_CODE } from '../constants';
+ 
+ import playroomConfig from '../../config';
+ 
+ interface IframeProps extends AllHTMLAttributes<HTMLIFrameElement> {
+   src: string;
++  code: string;
++  themeName: string;
+   intersectionRootRef: MutableRefObject<Element | null>;
+ }
+ 
+ export default function Iframe({
+   intersectionRootRef,
++  code,
++  themeName,
+   style,
+   src,
+   ...restProps
+ }: IframeProps) {
+   const [loaded, setLoaded] = useState(false);
+-  const [renderedSrc, setRenderedSrc] = useState<string | null>(null);
++  const [renderedSrc, setRenderedSrc] = useState<string | undefined>(undefined);
++  const [readyToPost, setReadyToPost] = useState(false);
+   const iframeRef = useRef<HTMLIFrameElement | null>(null);
+   const intersection = useIntersection(iframeRef, {
+     root: intersectionRootRef.current,
+@@ -29,8 +36,17 @@ export default function Iframe({
+     threshold: 0,
+   });
+ 
++  const postMessageToIframe = useCallback((message) => {
++    // Note that we're sending the message to '*', rather than some
++    // specific origin. Sandboxed iframes without the 'allow-same-origin'
++    // header don't have an origin which we can target.
++    // See: https://web.dev/articles/sandboxed-iframes
++    iframeRef.current?.contentWindow?.postMessage(message, '*');
++  }, []);
++
+   const intersectionRatio = intersection?.intersectionRatio ?? null;
+ 
++  // Only render the iframe once it's actually on screen
+   useEffect(() => {
+     if (intersectionRatio === null) {
+       return;
+@@ -41,26 +57,56 @@ export default function Iframe({
+     }
+   }, [intersectionRatio, src, renderedSrc]);
+ 
++  // A call-and-response / ping-pong to wait for the iframe to declare itself
++  // ready. Why do we do polling instead of just having the iframe send a
++  // message to `window.origin`? Because sandboxded iframes without the
++  // 'allow-same-origin' header don't have an origin which it can target. So
++  // instead we send messages to the iframe which can then use `event.origin`.
+   useEffect(() => {
+-    if (renderedSrc !== null) {
+-      const location = iframeRef.current?.contentWindow?.location;
++    // If the iframe isn't on screen / loaded yet, no need to poll yet.
++    // If the iframe is already ready, don't do anything.
++    if (!loaded || readyToPost) {
++      return;
++    }
+ 
+-      if (location) {
+-        location.replace(renderedSrc);
++    // Listen to hear if the iframe says is ready
++    const listener = (e: any) => {
++      if (e.data.type === READY_TO_RECEIVE && e.source === iframeRef.current?.contentWindow) {
++        cleanup();
++        setReadyToPost(true);
+       }
+     }
+-  }, [renderedSrc]);
++    window.addEventListener('message', listener);
++
++    // Start polling the iframe asking if it's ready yet
++    const timeoutId = window.setTimeout(() => {
++      postMessageToIframe({ type: ARE_YOU_READY });
++    }, 500);
++
++    const cleanup = () => {
++      window.removeEventListener('message', listener);
++      window.clearTimeout(timeoutId);
++    }
++
++    return cleanup;
++  }, [readyToPost, loaded])
++
++  // Each time the code changes (and the iframe is ready to receive), send the
++  // updated code
++  useEffect(() => {
++    if (!readyToPost) {
++      return;
++    }
++
++    postMessageToIframe({ type: INCOMING_CODE,  themeName, code });
++  }, [readyToPost, themeName, code])
+ 
+   return (
+     <iframe
+       ref={iframeRef}
+       sandbox={playroomConfig.iframeSandbox}
+       onLoad={() => setLoaded(true)}
+-      onMouseEnter={() => {
+-        if (src !== renderedSrc) {
+-          setRenderedSrc(src);
+-        }
+-      }}
++      src={renderedSrc}
+       style={{
+         ...style,
+         transition: 'opacity .3s ease',
+diff --git a/node_modules/playroom/src/Playroom/Preview.tsx b/node_modules/playroom/src/Playroom/Preview.tsx
+index 0183aaf..c5faef1 100644
+--- a/node_modules/playroom/src/Playroom/Preview.tsx
++++ b/node_modules/playroom/src/Playroom/Preview.tsx
+@@ -43,6 +43,16 @@ export default ({ themes, components, FrameComponent }: PreviewProps) => {
+ 
+   const resolvedTheme = themeName ? themes[themeName] : null;
+ 
++  // The SplashScreen is in place for security concerns to help mitigate
++  // phishing attacks (an attacker could add arbitrary code to the URL which is
++  // run in the target's browser tricking them into entering credentials, etc),
++  // however it's superfulous when run as an embed in an iframe (where the
++  // attacker doesn't have control over the URL to set the code), so we remove
++  // it.
++  // See: https://github.com/seek-oss/playroom/issues/159#issuecomment-637945761
++  // Also: https://stackoverflow.com/a/18678703
++  const isInSameOriginIFrame = window.origin === 'null' || !!window.frameElement;
++
+   return (
+     <CatchErrors code={code}>
+       <div className={styles.renderContainer}>
+@@ -53,9 +63,11 @@ export default ({ themes, components, FrameComponent }: PreviewProps) => {
+           <RenderCode code={code} scope={components} />
+         </FrameComponent>
+       </div>
+-      <div className={styles.splashScreenContainer}>
+-        <SplashScreen />
+-      </div>
++      {!isInSameOriginIFrame ? (
++        <div className={styles.splashScreenContainer}>
++          <SplashScreen />
++        </div>)
++      : null}
+     </CatchErrors>
+   );
+ };
+diff --git a/node_modules/playroom/src/Playroom/constants.ts b/node_modules/playroom/src/Playroom/constants.ts
+new file mode 100644
+index 0000000..c7f8e29
+--- /dev/null
++++ b/node_modules/playroom/src/Playroom/constants.ts
+@@ -0,0 +1,3 @@
++export const ARE_YOU_READY = "PLAYROOM_ARE_YOU_READY";
++export const READY_TO_RECEIVE = "PLAYROOM_READY_TO_RECEIVE";
++export const INCOMING_CODE = "PLAYROOM_INCOMING_CODE";
 diff --git a/node_modules/playroom/src/utils/compileJsx.ts b/node_modules/playroom/src/utils/compileJsx.ts
 index dadea77..82d080c 100644
 --- a/node_modules/playroom/src/utils/compileJsx.ts
@@ -78,3 +342,34 @@ index a1819bf..70ac15c 100644
  };
  
  export const formatForInsertion = ({
+diff --git a/node_modules/playroom/src/utils/usePreviewUrl.ts b/node_modules/playroom/src/utils/usePreviewUrl.ts
+index ec225dd..c1cce20 100644
+--- a/node_modules/playroom/src/utils/usePreviewUrl.ts
++++ b/node_modules/playroom/src/utils/usePreviewUrl.ts
+@@ -8,15 +8,24 @@ const baseUrl = window.location.href
+   .split(playroomConfig.paramType === 'hash' ? '#' : '?')[0]
+   .split('index.html')[0];
+ 
++const extraParams = new URLSearchParams(window.location.search);
++extraParams.delete('code');
++extraParams.delete('theme');
++
++let extraParamsStr = '';
++if (extraParams.size) {
++  extraParamsStr = `&${extraParams.toString()}`
++}
++
+ export default (theme: string) => {
+   const [{ code }] = useContext(StoreContext);
+ 
+   const isThemed = theme !== '__PLAYROOM__NO_THEME__';
+ 
+-  return createPreviewUrl({
++  return `${createPreviewUrl({
+     baseUrl,
+     code,
+     theme: isThemed ? theme : undefined,
+     paramType: playroomConfig.paramType,
+-  });
++  })}${extraParamsStr}`;
+ };

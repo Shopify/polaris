@@ -1,16 +1,17 @@
 import type {I18n} from '../../utilities/i18n';
 
-import {Progress, ProgressValue, Status, StatusValue} from './types';
+import {ProgressValue, ToneValue} from './types';
+import type {Progress, Tone} from './types';
 
 export function getDefaultAccessibilityLabel(
   i18n: I18n,
   progress?: Progress,
-  status?: Status,
+  tone?: Tone,
 ): string {
   let progressLabel = '';
-  let statusLabel = '';
+  let toneLabel = '';
 
-  if (!progress && !status) {
+  if (!progress && !tone) {
     return '';
   }
 
@@ -30,35 +31,46 @@ export function getDefaultAccessibilityLabel(
       break;
   }
 
-  switch (status) {
-    case StatusValue.Info:
-      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.info');
+  switch (tone) {
+    case ToneValue.Info:
+    case ToneValue.InfoStrong:
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.info');
       break;
-    case StatusValue.Success:
-      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.success');
+    case ToneValue.Success:
+    case ToneValue.SuccessStrong:
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.success');
       break;
-    case StatusValue.Warning:
-      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.warning');
+    case ToneValue.Warning:
+    case ToneValue.WarningStrong:
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.warning');
       break;
-    case StatusValue.Critical:
-      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.critical');
+    case ToneValue.Critical:
+    case ToneValue.CriticalStrong:
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.critical');
       break;
-    case StatusValue.Attention:
-      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.attention');
+    case ToneValue.Attention:
+    case ToneValue.AttentionStrong:
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.attention');
       break;
-    case StatusValue.New:
-      statusLabel = i18n.translate('Polaris.Badge.STATUS_LABELS.new');
+    case ToneValue.New:
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.new');
+      break;
+    case ToneValue.ReadOnly:
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.readOnly');
+      break;
+    case ToneValue.Enabled:
+      toneLabel = i18n.translate('Polaris.Badge.TONE_LABELS.enabled');
       break;
   }
 
-  if (!status && progress) {
+  if (!tone && progress) {
     return progressLabel;
-  } else if (status && !progress) {
-    return statusLabel;
+  } else if (tone && !progress) {
+    return toneLabel;
   } else {
-    return i18n.translate('Polaris.Badge.progressAndStatus', {
+    return i18n.translate('Polaris.Badge.progressAndTone', {
       progressLabel,
-      statusLabel,
+      toneLabel,
     });
   }
 }

@@ -26,7 +26,7 @@ export function Default() {
 }
 
 export function WithError() {
-  const [selected, setSelected] = useState('hidden');
+  const [selected, setSelected] = useState(['hidden']);
 
   const handleChange = useCallback((value) => setSelected(value), []);
 
@@ -41,6 +41,26 @@ export function WithError() {
       selected={selected}
       onChange={handleChange}
       error="Company name cannot be hidden at this time"
+    />
+  );
+}
+
+export function Magic() {
+  const [selected, setSelected] = useState(['hidden']);
+
+  const handleChange = useCallback((value) => setSelected(value), []);
+
+  return (
+    <ChoiceList
+      title="Company name"
+      choices={[
+        {label: 'Hidden', value: 'hidden'},
+        {label: 'Optional', value: 'optional'},
+        {label: 'Required', value: 'required'},
+      ]}
+      selected={selected}
+      onChange={handleChange}
+      tone="magic"
     />
   );
 }
@@ -74,6 +94,36 @@ export function WithMultiChoice() {
   );
 }
 
+export function MagicWithMultiChoice() {
+  const [selected, setSelected] = useState(['hidden']);
+
+  const handleChange = useCallback((value) => setSelected(value), []);
+
+  return (
+    <ChoiceList
+      allowMultiple
+      title="While the customer is checking out"
+      choices={[
+        {
+          label: 'Use the shipping address as the billing address by default',
+          value: 'shipping',
+          helpText:
+            'Reduces the number of fields required to check out. The billing address can still be edited.',
+        },
+        {
+          label: 'Require a confirmation step',
+          value: 'confirmation',
+          helpText:
+            'Customers must review their order details before purchasing.',
+        },
+      ]}
+      selected={selected}
+      onChange={handleChange}
+      tone="magic"
+    />
+  );
+}
+
 export function WithChildrenContent() {
   const [selected, setSelected] = useState(['none']);
   const [textFieldValue, setTextFieldValue] = useState('');
@@ -103,11 +153,14 @@ export function WithChildrenContent() {
       title="Discount minimum requirements"
       choices={[
         {label: 'None', value: 'none'},
-        {label: 'Minimum purchase', value: 'minimum_purchase'},
+        {
+          label: 'Minimum purchase',
+          value: 'minimum_purchase',
+          renderChildren,
+        },
         {
           label: 'Minimum quantity',
           value: 'minimum_quantity',
-          renderChildren,
         },
       ]}
       selected={selected}
@@ -147,7 +200,11 @@ export function WithDynamicChildrenContent() {
         title="Discount minimum requirements"
         choices={[
           {label: 'None', value: 'none'},
-          {label: 'Minimum purchase', value: 'minimum_purchase'},
+          {
+            label: 'Minimum purchase',
+            value: 'minimum_purchase',
+            renderChildren,
+          },
           {
             label: 'Minimum quantity',
             value: 'minimum_quantity',

@@ -13,12 +13,14 @@
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "moduleDetection": "force",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "composite": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "downlevelIteration": true
   },
   "include": [
     "src",
@@ -27,11 +29,15 @@
     "**/*.json",
     "next-env.d.ts",
     "scripts/get-props/src/get-props.ts",
-    "constants.js"
+    "constants.js",
+    "../polaris-tokens/dist"
   ],
-  "exclude": [
-    "node_modules",
-    "pages/examples/**/*",
-    "scripts/get-props/testData"
-  ]
+  "exclude": ["node_modules", "scripts/get-props/testData"],
+  "ts-node": {
+    "transpileOnly": true,
+    "files": true,
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  }
 }

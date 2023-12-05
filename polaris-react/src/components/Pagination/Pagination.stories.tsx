@@ -27,13 +27,13 @@ export function WithKeyboardNavigation() {
       <Pagination
         hasPrevious
         previousKeys={[74]}
-        previousTooltip="j"
+        previousTooltip="Previous (J)"
         onPrevious={() => {
           console.log('Previous');
         }}
         hasNext
         nextKeys={[75]}
-        nextTooltip="k"
+        nextTooltip="Next (K)"
         onNext={() => {
           console.log('Next');
         }}
@@ -55,5 +55,28 @@ export function WithLabel() {
         console.log('Next');
       }}
     />
+  );
+}
+
+export function WithTableType() {
+  return (
+    <div
+      style={{
+        maxWidth: 'calc(700px + (2 * var(--p-space-400)))',
+        margin: '0 auto',
+      }}
+    >
+      <Pagination
+        onPrevious={() => {
+          console.log('Previous');
+        }}
+        onNext={() => {
+          console.log('Next');
+        }}
+        type="table"
+        hasNext
+        label="1-50 of 8,450 orders"
+      />
+    </div>
   );
 }

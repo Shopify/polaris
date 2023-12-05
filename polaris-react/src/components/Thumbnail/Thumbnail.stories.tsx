@@ -1,17 +1,31 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Thumbnail} from '@shopify/polaris';
+import {InlineStack, Thumbnail, BlockStack} from '@shopify/polaris';
 import {NoteMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Thumbnail,
 } as ComponentMeta<typeof Thumbnail>;
 
+export function All() {
+  return (
+    <BlockStack gap="400">
+      <InlineStack gap="400" blockAlign="center">
+        <ExtraSmall />
+        <Small />
+        <Default />
+        <Large />
+      </InlineStack>
+      <WithComponentSource />
+    </BlockStack>
+  );
+}
+
 export function Default() {
   return (
     <Thumbnail
-      source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
-      alt="Black choker necklace"
+      source="https://burst.shopifycdn.com/photos/light-up-sneakers-women.jpg"
+      alt="Light up sneakers women"
     />
   );
 }
@@ -19,9 +33,9 @@ export function Default() {
 export function ExtraSmall() {
   return (
     <Thumbnail
-      source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+      source="https://burst.shopifycdn.com/photos/light-up-sneakers-women.jpg"
       size="extraSmall"
-      alt="Black choker necklace"
+      alt="Light up sneakers women"
     />
   );
 }
@@ -29,9 +43,9 @@ export function ExtraSmall() {
 export function Small() {
   return (
     <Thumbnail
-      source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+      source="https://burst.shopifycdn.com/photos/light-up-sneakers-women.jpg"
       size="small"
-      alt="Black choker necklace"
+      alt="Light up sneakers women"
     />
   );
 }
@@ -39,9 +53,9 @@ export function Small() {
 export function Large() {
   return (
     <Thumbnail
-      source="https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg"
+      source="https://burst.shopifycdn.com/photos/light-up-sneakers-women.jpg"
       size="large"
-      alt="Black choker necklace"
+      alt="Light up sneakers women"
     />
   );
 }

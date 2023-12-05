@@ -36,7 +36,7 @@ describe('<Avatar />', () => {
       const src = 'image/path/';
       const avatar = mountWithApp(<Avatar source={src} />);
       expect(avatar).toContainReactComponent('span', {
-        className: 'Avatar sizeMedium shapeRound',
+        className: 'Avatar sizeMd',
       });
       expect(avatar).toContainReactComponent('span', {
         className: expect.not.stringContaining('styleOne'),
@@ -60,7 +60,7 @@ describe('<Avatar />', () => {
       const src = 'image/path/';
       const avatar = mountWithApp(<Avatar customer source={src} />);
       expect(avatar).toContainReactComponent('span', {
-        className: 'Avatar sizeMedium shapeRound',
+        className: 'Avatar sizeMd',
       });
       expect(avatar).toContainReactComponent('span', {
         className: expect.not.stringContaining('styleOne'),
@@ -71,7 +71,7 @@ describe('<Avatar />', () => {
   describe('Initials', () => {
     it('renders initials if the Image onError prop is triggered and the Intials are provided', () => {
       const avatar = mountWithApp(
-        <Avatar size="large" initials="DL" source="image/path/" />,
+        <Avatar size="lg" initials="DL" source="image/path/" />,
       );
 
       expect(avatar).toContainReactComponent(Image);
@@ -97,12 +97,7 @@ describe('<Avatar />', () => {
     it('gets invoked in the event of an error', () => {
       const spy = jest.fn();
       const avatar = mountWithApp(
-        <Avatar
-          size="large"
-          initials="DL"
-          source="image/path/"
-          onError={spy}
-        />,
+        <Avatar size="lg" initials="DL" source="image/path/" onError={spy} />,
       );
 
       avatar.find(Image)!.trigger('onError');
@@ -114,7 +109,7 @@ describe('<Avatar />', () => {
     it('re-renders the image if a the source prop is changed after an error', () => {
       const workingSrc = 'image/goodPath/';
       const avatar = mountWithApp(
-        <Avatar size="large" initials="DL" source="image/path/" />,
+        <Avatar size="lg" initials="DL" source="image/path/" />,
       );
       avatar.find(Image)!.trigger('onError');
 
@@ -152,20 +147,20 @@ describe('<Avatar />', () => {
     });
   });
 
-  describe('shape', () => {
-    it('renders a square background when square is passed to shape', () => {
-      const avatar = mountWithApp(<Avatar initials="DL" shape="square" />);
+  describe('accessibilityRole', () => {
+    it('is presentation role if name, initials, or accessibilityLabel not passed', () => {
+      const avatar = mountWithApp(<Avatar />);
 
       expect(avatar).toContainReactComponent('span', {
-        className: expect.stringContaining('shapeSquare'),
+        role: 'presentation',
       });
     });
 
-    it('renders a round background when square is not passed to shape', () => {
-      const avatar = mountWithApp(<Avatar initials="DL" />);
+    it('is img role if name passed', () => {
+      const avatar = mountWithApp(<Avatar name="Hello World" />);
 
       expect(avatar).toContainReactComponent('span', {
-        className: expect.stringContaining('shapeRound'),
+        role: 'img',
       });
     });
   });

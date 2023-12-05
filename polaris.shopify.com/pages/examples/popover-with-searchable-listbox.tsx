@@ -4,12 +4,11 @@ import {
   TextField,
   Icon,
   Link,
-  Heading,
   Popover,
   AutoSelection,
   Scrollable,
   EmptySearchResult,
-  DisplayText,
+  Text,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
@@ -99,7 +98,9 @@ function PopoverWithSearchableListboxExample() {
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
-  const [filteredSegments, setFilteredSegments] = useState([]);
+  const [filteredSegments, setFilteredSegments] = useState<
+    typeof segments[number][]
+  >([]);
 
   const handleClickShowAll = () => {
     setShowFooterAction(false);
@@ -179,15 +180,15 @@ function PopoverWithSearchableListboxExample() {
   const activator = (
     <div
       style={{
-        fontSize: 'var(--p-font-size-300)',
-        color: 'var(--p-text)',
-        borderBottom: '1px dashed var(--p-border)',
+        fontSize: 'var(--p-font-size-500)',
+        color: 'var(--p-color-text)',
+        borderBottom: '1px dashed var(--p-color-border)',
       }}
     >
       <Link monochrome removeUnderline onClick={handleOpenPicker}>
-        <DisplayText element="h1">
+        <Text as="h1" variant="headingXl">
           {segments[selectedSegmentIndex].label}
-        </DisplayText>
+        </Text>
       </Link>
     </div>
   );
@@ -234,7 +235,9 @@ function PopoverWithSearchableListboxExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span style={{color: 'var(--p-color-text-emphasis)'}}>
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 
@@ -302,9 +305,9 @@ function PopoverWithSearchableListboxExample() {
                 position: 'relative',
                 width: '310px',
                 height: '292px',
-                padding: 'var(--p-space-2) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                padding: 'var(--p-space-200) 0',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >

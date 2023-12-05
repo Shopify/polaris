@@ -6,6 +6,10 @@ import type {IconProps} from './components/Icon';
 import type {ThumbnailProps} from './components/Thumbnail';
 /* eslint-enable @shopify/strict-component-boundaries */
 
+export type Entry<T> = [keyof T, T[keyof T]];
+export type Entries<T> = Entry<T>[];
+export type Experimental<T extends string> = `${T}-experimental`;
+
 export interface OptionDescriptor {
   /** Value of the option */
   value: string;
@@ -37,6 +41,8 @@ export type IconSource =
 
 export type HeadingTagName = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p';
 
+export type Target = '_blank' | '_self' | '_parent' | '_top';
+
 export type Error =
   | string
   | React.ReactElement
@@ -49,6 +55,8 @@ export interface BaseButton {
   url?: string;
   /** Forces url to open in a new tab */
   external?: boolean;
+  /** Where to display the url */
+  target?: Target;
   /** Tells the browser to download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value */
   download?: string | boolean;
   /** Allows the button to submit a form */
@@ -72,8 +80,8 @@ export interface BaseButton {
   /** Indicates the current checked state of the button when acting as a toggle or switch */
   ariaChecked?: 'false' | 'true';
   /** Callback when clicked */
-  onClick?(): void;
-  /** Callback when button becomes focussed */
+  onClick?(): unknown;
+  /** Callback when button becomes focused */
   onFocus?(): void;
   /** Callback when focus leaves button */
   onBlur?(): void;
@@ -88,7 +96,7 @@ export interface BaseButton {
   /** Callback when element is touched */
   onTouchStart?(): void;
   /** Callback when pointerdown event is being triggered */
-  onPointerDown?(): void;
+  onPointerDown?(event: React.PointerEvent<HTMLButtonElement>): void;
 }
 
 export interface Action {
@@ -102,6 +110,8 @@ export interface Action {
   url?: string;
   /** Forces url to open in a new tab */
   external?: boolean;
+  /** Where to display the url */
+  target?: Target;
   /** Callback when an action takes place */
   onAction?(): void;
   /** Callback when mouse enter */
@@ -123,7 +133,7 @@ export interface LinkAction {
 
 export interface BadgeAction {
   badge?: {
-    status: 'new';
+    tone: 'new';
     content: string;
   };
 }
@@ -183,7 +193,7 @@ export interface ActionListItemDescriptor
   accessibilityLabel?: string;
   /** @deprecated Badge component */
   badge?: {
-    status: 'new';
+    tone: 'new';
     content: string;
   };
   /** Additional hint text to display with item */
@@ -196,17 +206,21 @@ export interface ActionListItemDescriptor
   prefix?: React.ReactNode;
   /** Suffix source */
   suffix?: React.ReactNode;
-  /**  Add an ellipsis suffix to action content */
+  /** @deprecated Add an ellipsis suffix to action content. ellipsis appends `...` without truncating. Use truncate instead. */
   ellipsis?: boolean;
+  /** Truncate the action content either at the beginning or at the end */
+  truncate?: boolean;
   /** Whether the action is active or not */
   active?: boolean;
+  /** The item variations */
+  variant?: 'default' | 'menu' | 'indented';
   /** Defines a role for the action */
   role?: string;
 }
 
 export interface ActionListSection {
   /** Section title */
-  title?: string;
+  title?: string | React.ReactNode;
   /** Collection of action items for the list */
   items: readonly ActionListItemDescriptor[];
 }
@@ -242,17 +256,6 @@ export interface MenuGroupDescriptor extends BadgeAction {
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
   /** Callback when the menu is clicked */
   onClick?(openActions: () => void): void;
-}
-
-export interface ConnectedDisclosure {
-  /** Visually hidden label for the connected disclosure button.
-   * @default 'Related actions'
-   */
-  accessibilityLabel?: string;
-  /** Whether or not the disclosure is disabled */
-  disabled?: boolean;
-  /** List of actions */
-  actions: ActionListItemDescriptor[];
 }
 
 export enum Key {
@@ -364,3 +367,65 @@ export interface CheckboxHandles {
 export type NonEmptyArray<T> = [T, ...T[]];
 
 export type ArrayElement<T> = T extends (infer U)[] ? U : never;
+
+export interface AppliedFilterInterface {
+  /** A unique key used to identify the applied filter */
+  key: string;
+  /** A label for the applied filter */
+  label: string;
+  /** Callback when the remove button is pressed */
+  onRemove(key: string): void;
+}
+
+export interface FilterInterface {
+  /** A unique key used to identify the filter */
+  key: string;
+  /** The label for the filter */
+  label: string;
+  /** The markup for the given filter */
+  filter: React.ReactNode;
+  /** Whether or not the filter should have a shortcut popover displayed */
+  shortcut?: boolean;
+  /** Whether or not the filter should be pinned, permanently displaying the filter */
+  pinned?: boolean;
+  /** Whether or not the filter is disabled */
+  disabled?: boolean;
+  /**
+   * @default false
+   * Whether or not the clear button is displayed
+   */
+  hideClearButton?: boolean;
+  /** Optional callback when filter is pressed */
+  onAction?: () => void;
+  /** Suffix source */
+  suffix?: React.ReactNode;
+  /** Optional section heading that this filter will go under  */
+  section?: string;
+}
+
+/* Useful for defining mutually exclusive props such as:
+ *
+ * interface MessageBasics {
+ *   timestamp?: number;
+ * }
+ * interface MessageWithText extends MessageBasics {
+ *   text: string;
+ * }
+ * interface MessageWithAttachment extends MessageBasics {
+ *   attachment: string;
+ * }
+ * type Message =
+ *   | (MessageWithText & Never<MessageWithAttachment>)
+ *   | (MessageWithAttachment & Never<MessageWithText>);
+ *
+ * // 👍 OK
+ * let foo: Message = {attachment: 'a'}
+ * let bar: Message = {text: 'b'}
+ *
+ * // ❌ ERROR: Type '{ attachment: string; text: string; }' is not assignable to type 'Message'.
+ * let baz: Message = {attachment: 'a', text: 'b'}
+ */
+export type Never<T> = {
+  // The +? forces optionality of the type
+  [P in keyof T]+?: never;
+};

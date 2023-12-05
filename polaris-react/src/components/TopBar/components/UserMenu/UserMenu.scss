@@ -2,26 +2,22 @@
 
 .Details {
   max-width: 160px;
-  margin-left: var(--p-space-2);
+  margin-right: 0;
+  // stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- set padding
+  padding: 0 var(--p-space-200) 0 10px;
+
+  > p {
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-400);
+  }
 
   @media #{$p-breakpoints-md-down} {
     display: none;
   }
 }
 
-.Name {
-  @include truncate;
-  @include text-style-body;
-  font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-1);
-  color: var(--p-text);
-  text-align: left;
-}
-
-.Detail {
-  @include text-style-caption;
-  @include truncate;
-  opacity: 0.7;
-  color: var(--p-text);
-  text-align: left;
+.Message > p {
+  color: var(--p-color-text-inverse-secondary);
+  font-size: var(--p-font-size-275);
+  line-height: var(--p-font-line-height-300);
 }

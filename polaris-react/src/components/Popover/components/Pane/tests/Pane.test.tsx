@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Scrollable} from '../../../../Scrollable';
+// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../../TextContainer';
 import {Pane} from '../Pane';
 import {Section} from '../../Section';
@@ -54,6 +55,44 @@ describe('<Pane />', () => {
       );
 
       expect(popoverPane).toContainReactComponentTimes(Scrollable, 1);
+    });
+  });
+
+  describe('subdued', () => {
+    it(`does not append the subdued class if the prop isn't provided`, () => {
+      const Children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = mountWithApp(
+        <Pane>
+          <Children />
+        </Pane>,
+      );
+
+      expect(popoverPane.find(Scrollable)?.props.className).not.toContain(
+        'Pane-subdued',
+      );
+    });
+
+    it('appends the subdued class if the prop isn provided', () => {
+      const Children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = mountWithApp(
+        <Pane subdued>
+          <Children />
+        </Pane>,
+      );
+
+      expect(popoverPane.find(Scrollable)?.props.className).toContain(
+        'Pane-subdued',
+      );
     });
   });
 
@@ -150,6 +189,56 @@ describe('<Pane />', () => {
 
       expect(popoverPane).toContainReactComponent(Scrollable, {
         style,
+      });
+    });
+  });
+
+  describe('captureOverscroll', () => {
+    const Children = () => (
+      <TextContainer>
+        <p>Text</p>
+      </TextContainer>
+    );
+
+    describe('when not passed', () => {
+      it('does not apply the Pane-captureOverscroll class', () => {
+        const popoverPane = mountWithApp(
+          <Pane>
+            <Children />
+          </Pane>,
+        );
+
+        expect(popoverPane).toContainReactComponent(Scrollable, {
+          className: 'Pane',
+        });
+      });
+    });
+
+    describe('when passed as true', () => {
+      it('applies the Pane-captureOverscroll class', () => {
+        const popoverPane = mountWithApp(
+          <Pane captureOverscroll>
+            <Children />
+          </Pane>,
+        );
+
+        expect(popoverPane).toContainReactComponent(Scrollable, {
+          className: 'Pane Pane-captureOverscroll',
+        });
+      });
+    });
+
+    describe('when passed as false', () => {
+      it('does not apply the Pane-captureOverscroll class', () => {
+        const popoverPane = mountWithApp(
+          <Pane captureOverscroll={false}>
+            <Children />
+          </Pane>,
+        );
+
+        expect(popoverPane).toContainReactComponent(Scrollable, {
+          className: 'Pane',
+        });
       });
     });
   });

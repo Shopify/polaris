@@ -1,10 +1,10 @@
 import React from 'react';
 
 import {useI18n} from '../../utilities/i18n';
-import {DisplayText} from '../DisplayText';
-import {TextStyle} from '../TextStyle';
+import {Text} from '../Text';
 import {Image} from '../Image';
-import {Stack} from '../Stack';
+// eslint-disable-next-line import/no-deprecated
+import {LegacyStack} from '../LegacyStack';
 
 import {emptySearch} from './illustrations';
 
@@ -29,10 +29,14 @@ export function EmptySearchResult({
   ) : null;
 
   return (
-    <Stack alignment="center" vertical>
+    <LegacyStack alignment="center" vertical>
       {illustrationMarkup}
-      <DisplayText size="small">{title}</DisplayText>
-      <TextStyle variation="subdued">{descriptionMarkup}</TextStyle>
-    </Stack>
+      <Text variant="headingLg" as="p">
+        {title}
+      </Text>
+      <Text tone="subdued" as="span">
+        {descriptionMarkup}
+      </Text>
+    </LegacyStack>
   );
 }

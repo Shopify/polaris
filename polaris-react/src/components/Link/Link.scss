@@ -9,40 +9,29 @@
   border: 0;
   font-size: inherit;
   font-weight: inherit;
-  color: var(--p-interactive);
+  color: var(--p-color-text-link);
   text-decoration: underline;
   cursor: pointer;
 
   &:hover {
-    color: var(--p-interactive-hovered);
-    text-decoration: none;
+    color: var(--p-color-text-link-hover);
+    text-decoration: underline;
   }
 
-  &:focus:not(:active) {
-    outline: var(--p-focused) auto var(--p-border-width-1);
+  &:focus,
+  &:focus-visible {
+    outline: var(--p-color-border-focus) auto var(--p-border-width-050);
+    outline-offset: var(--p-space-050);
+    border-radius: var(--p-border-radius-150);
   }
 
   &:active {
     position: relative;
-    color: var(--p-interactive-pressed);
-
-    &::before {
-      content: '';
-      position: absolute;
-      z-index: -1;
-      // this mimics the box model of the plain button backdrop
-      top: -2px;
-      right: -5px;
-      bottom: -2px;
-      left: -5px;
-      display: block;
-
-      border-radius: var(--p-border-radius-base);
-    }
+    color: var(--p-color-text-link-active);
   }
 
   @media print {
-    text-decoration-color: var(--p-border-neutral-subdued);
+    text-decoration-color: var(--p-color-border-tertiary);
   }
 }
 

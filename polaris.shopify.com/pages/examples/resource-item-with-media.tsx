@@ -1,22 +1,22 @@
 import {
-  Card,
+  LegacyCard,
   ResourceList,
   ResourceItem,
   Avatar,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceItemExample() {
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'customer', plural: 'customers'}}
         items={[
           {
-            id: 145,
-            url: 'customers/145',
+            id: '145',
+            url: '#',
             avatarSource:
               'https://burst.shopifycdn.com/photos/freelance-designer-working-on-laptop.jpg?width=746',
             name: 'Yi So-Yeon',
@@ -31,25 +31,20 @@ function ResourceItemExample() {
               id={id}
               url={url}
               media={
-                <Avatar
-                  customer
-                  size="medium"
-                  name={name}
-                  source={avatarSource}
-                />
+                <Avatar customer size="md" name={name} source={avatarSource} />
               }
               accessibilityLabel={`View details for ${name}`}
               name={name}
             >
-              <h3>
-                <TextStyle variation="strong">{name}</TextStyle>
-              </h3>
+              <Text variant="bodyMd" fontWeight="bold" as="h3">
+                {name}
+              </Text>
               <div>{location}</div>
             </ResourceItem>
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 

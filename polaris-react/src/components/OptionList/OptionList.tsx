@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useId} from 'react';
 
 import type {
   Descriptor,
@@ -7,11 +7,13 @@ import type {
 } from '../../types';
 import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
+import {Box} from '../Box';
+import type {BoxProps} from '../Box';
+import {Text} from '../Text';
+import {BlockStack} from '../BlockStack';
 
 import {Option} from './components';
-import styles from './OptionList.scss';
 
 type Alignment = 'top' | 'center' | 'bottom';
 
@@ -24,8 +26,6 @@ export interface OptionListProps {
   options?: OptionDescriptor[];
   /** Defines a specific role attribute for the list itself */
   role?: 'listbox' | 'combobox' | string;
-  /** Defines a specific role attribute for each option in the list */
-  optionRole?: string;
   /** Sections containing a header and related options */
   sections?: SectionDescriptor[];
   /** The selected options */
@@ -36,6 +36,10 @@ export interface OptionListProps {
   verticalAlign?: Alignment;
   /** Callback when selection is changed */
   onChange(selected: string[]): void;
+  /** Callback when pointer enters an option */
+  onPointerEnterOption?(selected: string): void;
+  /** Callback when focusing an option */
+  onFocusOption?(selected: string): void;
 }
 
 export function OptionList({
@@ -45,15 +49,17 @@ export function OptionList({
   selected,
   allowMultiple,
   role,
-  optionRole,
   verticalAlign,
   onChange,
   id: idProp,
+  onPointerEnterOption,
+  onFocusOption,
 }: OptionListProps) {
   const [normalizedOptions, setNormalizedOptions] = useState(
     createNormalizedOptions(options, sections, title),
   );
-  const id = useUniqueId('OptionList', idProp);
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
 
   useDeepEffect(
     () => {
@@ -86,12 +92,48 @@ export function OptionList({
     [normalizedOptions, selected, allowMultiple, onChange],
   );
 
+  const handlePointerEnter = useCallback(
+    (sectionIndex: number, optionIndex: number) => {
+      if (!onPointerEnterOption) return;
+
+      const selectedValue =
+        normalizedOptions[sectionIndex].options[optionIndex].value;
+
+      onPointerEnterOption(selectedValue);
+    },
+    [normalizedOptions, onPointerEnterOption],
+  );
+
+  const handleFocus = useCallback(
+    (sectionIndex: number, optionIndex: number) => {
+      if (!onFocusOption) return;
+
+      const selectedValue =
+        normalizedOptions[sectionIndex].options[optionIndex].value;
+
+      onFocusOption(selectedValue);
+    },
+    [normalizedOptions, onFocusOption],
+  );
+
   const optionsExist = normalizedOptions.length > 0;
 
   const optionsMarkup = optionsExist
     ? normalizedOptions.map(({title, options}, sectionIndex) => {
+        const isFirstOption = sectionIndex === 0;
+        const titleLevel = isFirstOption ? 'h2' : 'h3';
         const titleMarkup = title ? (
-          <p className={styles.Title}>{title}</p>
+          <Box
+            paddingBlockStart={isFirstOption ? '050' : '300'}
+            paddingInlineStart="150"
+            paddingBlockEnd="100"
+            paddingInlineEnd="150"
+            borderColor="border-secondary"
+          >
+            <Text as={titleLevel} variant="headingSm">
+              {title}
+            </Text>
+          </Box>
         ) : null;
         const optionsMarkup =
           options &&
@@ -111,30 +153,50 @@ export function OptionList({
                 select={isSelected}
                 allowMultiple={allowMultiple}
                 verticalAlign={verticalAlign}
-                role={optionRole}
+                onPointerEnter={handlePointerEnter}
+                onFocus={handleFocus}
               />
             );
           });
 
+        const option = (
+          <Box
+            as="ul"
+            id={`${id}-${sectionIndex}`}
+            role={role as BoxProps['role']}
+          >
+            {optionsMarkup}
+          </Box>
+        );
+
+        // eslint-disable-next-line no-nested-ternary
+        const blockStartPadding = isFirstOption
+          ? title
+            ? '100'
+            : '0'
+          : title
+          ? '050'
+          : '0';
+
         return (
-          <li key={title || `noTitle-${sectionIndex}`}>
-            {titleMarkup}
-            <ul
-              className={styles.Options}
-              id={`${id}-${sectionIndex}`}
-              role={role}
-            >
-              {optionsMarkup}
-            </ul>
-          </li>
+          <Box
+            key={title || `noTitle-${sectionIndex}`}
+            as="li"
+            paddingBlockStart={blockStartPadding}
+          >
+            <BlockStack gap={isFirstOption && sections ? undefined : '0'}>
+              {titleMarkup}
+              {option}
+            </BlockStack>
+          </Box>
         );
       })
     : null;
 
   return (
-    <ul className={styles.OptionList} role={role}>
+    <Box as="ul" role={role as BoxProps['role']} padding="150">
       {optionsMarkup}
-    </ul>
+    </Box>
   );
 }
 

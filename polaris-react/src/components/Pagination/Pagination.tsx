@@ -7,8 +7,13 @@ import {isInputFocused} from '../../utilities/is-input-focused';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {KeypressListener} from '../KeypressListener';
-import {TextStyle} from '../TextStyle';
+import {Text} from '../Text';
 import {Tooltip} from '../Tooltip';
+import {Box} from '../Box';
+import {InlineStack} from '../InlineStack';
+import {classNames} from '../../utilities/css';
+
+import styles from './Pagination.scss';
 
 interface AccessibilityLabels {
   previous: string;
@@ -42,6 +47,8 @@ export interface PaginationProps {
   onPrevious?(): void;
   /** Text to provide more context in between the arrow buttons */
   label?: React.ReactNode;
+  /** Layout structure of the component */
+  type?: 'page' | 'table';
 }
 
 export function Pagination({
@@ -58,6 +65,7 @@ export function Pagination({
   accessibilityLabel,
   accessibilityLabels,
   label,
+  type = 'page',
 }: PaginationProps) {
   const i18n = useI18n();
 
@@ -75,7 +83,6 @@ export function Pagination({
 
   const prev = (
     <Button
-      outline
       icon={ChevronLeftMinor}
       accessibilityLabel={previousLabel}
       url={previousURL}
@@ -86,7 +93,11 @@ export function Pagination({
   );
   const constructedPrevious =
     previousTooltip && hasPrevious ? (
-      <Tooltip activatorWrapper="span" content={previousTooltip}>
+      <Tooltip
+        activatorWrapper="span"
+        content={previousTooltip}
+        preferredPosition="below"
+      >
         {prev}
       </Tooltip>
     ) : (
@@ -95,7 +106,6 @@ export function Pagination({
 
   const next = (
     <Button
-      outline
       icon={ChevronRightMinor}
       accessibilityLabel={nextLabel}
       url={nextURL}
@@ -106,7 +116,11 @@ export function Pagination({
   );
   const constructedNext =
     nextTooltip && hasNext ? (
-      <Tooltip activatorWrapper="span" content={nextTooltip}>
+      <Tooltip
+        activatorWrapper="span"
+        content={nextTooltip}
+        preferredPosition="below"
+      >
         {next}
       </Tooltip>
     ) : (
@@ -147,22 +161,63 @@ export function Pagination({
       />
     ));
 
+  if (type === 'table') {
+    const labelMarkup = label ? (
+      <Text as="span" variant="bodySm" fontWeight="medium">
+        {label}
+      </Text>
+    ) : null;
+
+    return (
+      <nav
+        aria-label={navLabel}
+        ref={node}
+        className={classNames(styles.Pagination, styles.table)}
+      >
+        {previousButtonEvents}
+        {nextButtonEvents}
+        <Box
+          background="bg-surface-secondary"
+          paddingBlockStart="150"
+          paddingBlockEnd="150"
+          paddingInlineStart="300"
+          paddingInlineEnd="200"
+        >
+          <InlineStack
+            align={labelMarkup ? 'space-between' : 'end'}
+            blockAlign="center"
+          >
+            {labelMarkup}
+            <ButtonGroup variant="segmented">
+              {constructedPrevious}
+              {constructedNext}
+            </ButtonGroup>
+          </InlineStack>
+        </Box>
+      </nav>
+    );
+  }
+
   const labelTextMarkup =
     hasNext && hasPrevious ? (
-      <TextStyle>{label}</TextStyle>
+      <span>{label}</span>
     ) : (
-      <TextStyle variation="subdued">{label}</TextStyle>
+      <Text tone="subdued" as="span">
+        {label}
+      </Text>
     );
 
   const labelMarkup = label ? (
-    <div aria-live="polite">{labelTextMarkup}</div>
+    <Box padding="300" paddingBlockStart="0" paddingBlockEnd="0">
+      <div aria-live="polite">{labelTextMarkup}</div>
+    </Box>
   ) : null;
 
   return (
-    <nav aria-label={navLabel} ref={node}>
+    <nav aria-label={navLabel} ref={node} className={styles.Pagination}>
       {previousButtonEvents}
       {nextButtonEvents}
-      <ButtonGroup segmented={!label}>
+      <ButtonGroup variant="segmented">
         {constructedPrevious}
         {labelMarkup}
         {constructedNext}

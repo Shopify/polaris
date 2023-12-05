@@ -5,7 +5,8 @@ import type {
   DisableableAction,
   LoadableAction,
 } from '../../types';
-import {Stack} from '../Stack';
+// eslint-disable-next-line import/no-deprecated
+import {LegacyStack} from '../LegacyStack';
 import {ButtonGroup} from '../ButtonGroup';
 import {buttonsFrom} from '../Button';
 import {isInterface} from '../../utilities/is-interface';
@@ -30,7 +31,7 @@ export function PageActions({
   if (isReactElement(primaryAction)) {
     primaryActionMarkup = <>{primaryAction}</>;
   } else if (primaryAction) {
-    primaryActionMarkup = buttonsFrom(primaryAction, {primary: true});
+    primaryActionMarkup = buttonsFrom(primaryAction, {variant: 'primary'});
   }
 
   let secondaryActionsMarkup: MaybeJSX = null;
@@ -42,14 +43,12 @@ export function PageActions({
     secondaryActionsMarkup = <>{secondaryActions}</>;
   }
 
-  const distribution = secondaryActionsMarkup ? 'equalSpacing' : 'trailing';
-
   return (
     <div className={styles.PageActions}>
-      <Stack distribution={distribution} spacing="tight">
+      <LegacyStack distribution="trailing" spacing="tight">
         {secondaryActionsMarkup}
         {primaryActionMarkup}
-      </Stack>
+      </LegacyStack>
     </div>
   );
 }

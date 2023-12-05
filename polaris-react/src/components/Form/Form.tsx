@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 
-import {VisuallyHidden} from '../VisuallyHidden';
+import {Text} from '../Text';
 import {useI18n} from '../../utilities/i18n';
 
 type Enctype =
@@ -36,7 +36,7 @@ export interface FormProps {
   /** Where to display response after form submittal */
   target?: Target;
   /** Callback when form is submitted */
-  onSubmit(event: React.FormEvent<HTMLFormElement>): void;
+  onSubmit(event: React.FormEvent<HTMLFormElement>): unknown;
 }
 
 export function Form({
@@ -70,11 +70,11 @@ export function Form({
   const autoCompleteInputs = normalizeAutoComplete(autoComplete);
 
   const submitMarkup = implicitSubmit ? (
-    <VisuallyHidden>
+    <Text as="span" visuallyHidden>
       <button type="submit" aria-hidden="true" tabIndex={-1}>
         {i18n.translate('Polaris.Common.submit')}
       </button>
-    </VisuallyHidden>
+    </Text>
   ) : null;
 
   return (

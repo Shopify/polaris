@@ -2,11 +2,11 @@ import {
   List,
   Button,
   Page,
-  Card,
+  LegacyCard,
   Sheet,
-  Heading,
   Scrollable,
   ChoiceList,
+  Text,
 } from '@shopify/polaris';
 import {MobileCancelMajor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
@@ -14,41 +14,39 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function SheetExample() {
   const [sheetActive, setSheetActive] = useState(true);
-  const [title, setTitle] = useState('Big yellow socks');
-  const [description, setDescription] = useState(
-    "They’re big, yellow socks. What more could you possibly want from socks? These socks will change your life.\n\nThey’re made from light, hand-loomed cotton that’s so soft, you'll feel like you are walking on a cloud.",
-  );
-  const [salesChannels, setSalesChannels] = useState([
+
+  const [salesChannels] = useState([
     {value: 'onlineStore', label: 'Online Store'},
     {value: 'facebook', label: 'Facebook'},
     {value: 'googleShopping', label: 'Google shopping'},
     {value: 'facebookMarketing', label: 'Facebook Marketing'},
   ]);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState<string[]>([]);
 
   const toggleSheetActive = useCallback(
     () => setSheetActive((sheetActive) => !sheetActive),
     [],
   );
-  const handleSelectedChange = useCallback((value) => setSelected(value), []);
-  const handleTitleChange = useCallback((value) => setTitle(value), []);
-  const handleDescriptionChange = useCallback(
-    (value) => setDescription(value),
+  const handleSelectedChange = useCallback(
+    (value: string[]) => setSelected(value),
     [],
   );
 
-  const selectedSalesChannels = selected.map((key) => {
-    return salesChannels.reduce((accumulator, current) => {
-      accumulator[current.value] = current.label;
-      return accumulator;
-    }, {})[key];
+  let selectedSalesChannels: {value: string; label: string}[] = [];
+  selected.forEach((selection) => {
+    salesChannels.forEach((channel) => {
+      if (channel.value === selection) {
+        selectedSalesChannels.push(channel);
+      }
+    });
   });
+
   const hasSelectedSalesChannels = selectedSalesChannels.length > 0;
 
   const salesChannelsCardMarkup = hasSelectedSalesChannels ? (
     <List>
       {selectedSalesChannels.map((channel, index) => (
-        <List.Item key={index}>{channel}</List.Item>
+        <List.Item key={index}>{channel.label}</List.Item>
       ))}
     </List>
   ) : (
@@ -72,18 +70,18 @@ function SheetExample() {
           content: 'Manage sales channels',
         },
       ]
-    : null;
+    : undefined;
 
   return (
     <Page narrowWidth>
-      <Card
+      <LegacyCard
         sectioned
         subdued
         title="Product availability"
         actions={salesChannelAction}
       >
         {salesChannelsCardMarkup}
-      </Card>
+      </LegacyCard>
       <Sheet
         open={sheetActive}
         onClose={toggleSheetActive}
@@ -106,12 +104,14 @@ function SheetExample() {
               width: '100%',
             }}
           >
-            <Heading>Manage sales channels</Heading>
+            <Text variant="headingMd" as="h2">
+              Manage sales channels
+            </Text>
             <Button
               accessibilityLabel="Cancel"
               icon={MobileCancelMajor}
               onClick={toggleSheetActive}
-              plain
+              variant="plain"
             />
           </div>
           <Scrollable style={{padding: '1rem', height: '100%'}}>
@@ -136,7 +136,7 @@ function SheetExample() {
             }}
           >
             <Button onClick={toggleSheetActive}>Cancel</Button>
-            <Button primary onClick={toggleSheetActive}>
+            <Button variant="primary" onClick={toggleSheetActive}>
               Done
             </Button>
           </div>

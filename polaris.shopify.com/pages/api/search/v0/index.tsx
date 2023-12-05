@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 import Fuse from 'fuse.js';
-import {metadata, MetadataProperties} from '@shopify/polaris-tokens';
+import {metaThemeDefault, MetaTokenProperties} from '@shopify/polaris-tokens';
 import iconMetadata from '@shopify/polaris-icons/metadata';
 
 import {
@@ -8,72 +8,87 @@ import {
   GroupedSearchResults,
   searchResultCategories,
   SearchResultCategory,
+  FoundationsCategory,
   Status,
   SiteJSON,
+  PatternFrontMatter,
 } from '../../../../src/types';
 
 import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
 
 import siteJson from '../../../../.cache/site.json';
 
-const pages: SiteJSON = siteJson;
+const pages: SiteJSON = siteJson as unknown as SiteJSON;
 
 const componentSlugs = Object.keys(pages).filter((slug) =>
   slug.startsWith('components/'),
+);
+const patternSlugs = Object.keys(pages).filter((slug) =>
+  slug.startsWith('patterns/'),
 );
 const foundationSlugs = Object.keys(pages).filter(
   (slug) =>
     slug.startsWith('foundations/') ||
     slug.startsWith('design/') ||
-    slug.startsWith('content/') ||
-    slug.startsWith('patterns/'),
+    slug.startsWith('content/'),
 );
 
 const MAX_RESULTS: {[key in SearchResultCategory]: number} = {
   foundations: 8,
   components: 6,
+  patterns: 6,
   tokens: 5,
   icons: 9,
 };
 
-const getSearchResults = (query: string) => {
-  if (query.length === 0) return [];
+const getSearchResults = (query?: string) => {
+  if (query == null || query?.length === 0) return [];
 
   let results: SearchResults = [];
 
   // Add components
   componentSlugs.forEach((slug) => {
-    const {status, title, description = ''} = pages[slug].frontMatter;
+    const {
+      status,
+      title,
+      description = '',
+      category = '',
+    } = pages[slug].frontMatter;
+
+    const url = category
+      ? `/components/${slugify(category)}/${slugify(title)}`
+      : `/components/${slugify(title)}`;
 
     results.push({
       id: slugify(`components ${title}`),
       category: 'components',
       score: 0,
-      url: `/components/${slugify(title)}`,
+      url,
       meta: {
         components: {
           title,
           description: stripMarkdownLinks(description),
           status: status as Status,
+          group: slugify(category),
         },
       },
     });
   });
 
-  const {colors, depth, font, motion, shape, spacing, zIndex} = metadata;
+  const {color, border, font, motion, shadow, space, zIndex} = metaThemeDefault;
   const tokenGroups = {
-    colors,
-    depth,
+    color,
+    border,
     font,
     motion,
-    shape,
-    spacing,
+    shadow,
+    space,
     zIndex,
   };
 
   Object.entries(tokenGroups).forEach(([groupSlug, tokenGroup]) => {
     Object.entries(tokenGroup).forEach(
-      ([tokenName, tokenProperties]: [string, MetadataProperties]) => {
+      ([tokenName, tokenProperties]: [string, MetaTokenProperties]) => {
         results.push({
           id: slugify(`tokens ${tokenName}`),
           category: 'tokens',
@@ -112,7 +127,7 @@ const getSearchResults = (query: string) => {
   // Add foundations
   foundationSlugs.forEach((slug) => {
     const {title, icon = '', description = ''} = pages[slug].frontMatter;
-    const category = slug.split('/')[0].toLowerCase();
+    const category = slug.split('/')[0].toLowerCase() as FoundationsCategory;
 
     results.push({
       id: slugify(`foundations ${title}`),
@@ -130,11 +145,37 @@ const getSearchResults = (query: string) => {
     });
   });
 
+  patternSlugs.forEach((slug) => {
+    const {
+      title,
+      description = '',
+      previewImg,
+    } = pages[slug].frontMatter as PatternFrontMatter;
+
+    results.push({
+      id: slugify(`pattern ${title}`),
+      category: 'patterns',
+      score: 0,
+      url: `/${slug}`,
+      meta: {
+        patterns: {
+          title,
+          description,
+          previewImg,
+        },
+      },
+    });
+  });
+
   const fuse = new Fuse(results, {
     keys: [
       // Foundations
       {name: 'meta.foundations.title', weight: 100},
       {name: 'meta.foundations.description', weight: 50},
+
+      // Patterns
+      {name: 'meta.patterns.title', weight: 100},
+      {name: 'meta.patterns.description', weight: 50},
 
       // Components
       {name: 'meta.components.title', weight: 100},

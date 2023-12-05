@@ -5,7 +5,7 @@ import genCacheJson from './gen-cache-json.mjs';
 
 const mdPath = path.join(process.cwd(), 'content');
 
-// Run intially
+// Run initially
 await genCacheJson();
 
 // Run whenever there is a change to a .md file

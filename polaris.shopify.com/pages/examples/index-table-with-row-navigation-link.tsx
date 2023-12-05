@@ -1,9 +1,10 @@
 import {
   IndexTable,
-  TextStyle,
-  Card,
+  LegacyCard,
   Link,
   useIndexResourceState,
+  Text,
+  useBreakpoints,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -12,7 +13,7 @@ function ClickThroughLinkIndexTableExample() {
   const customers = [
     {
       id: '3411',
-      url: 'customers/341',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       orders: 20,
@@ -20,7 +21,7 @@ function ClickThroughLinkIndexTableExample() {
     },
     {
       id: '2561',
-      url: 'customers/256',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       orders: 30,
@@ -49,19 +50,30 @@ function ClickThroughLinkIndexTableExample() {
             url={url}
             onClick={() => console.log(`Clicked ${name}`)}
           >
-            <TextStyle variation="strong">{name}</TextStyle>
+            <Text fontWeight="bold" as="span">
+              {name}
+            </Text>
           </Link>
         </IndexTable.Cell>
         <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -71,13 +83,28 @@ function ClickThroughLinkIndexTableExample() {
         headings={[
           {title: 'Name'},
           {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent', hidden: false},
+          {
+            id: 'order-count',
+            title: (
+              <Text as="span" alignment="end">
+                Order count
+              </Text>
+            ),
+          },
+          {
+            id: 'amount-spent',
+            hidden: false,
+            title: (
+              <Text as="span" alignment="end">
+                Amount spent
+              </Text>
+            ),
+          },
         ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 

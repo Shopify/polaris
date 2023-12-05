@@ -5,15 +5,21 @@
   border-radius: var(--border-radius-round);
   padding: 0.05rem 0.25rem;
   color: var(--text);
+  white-space: nowrap;
 
-  &[data-value='alpha'],
+  &[data-value='alpha'] {
+    background: var(--surface-attention);
+  }
+
   &[data-value='warning'],
-  &[data-value='deprecated'] {
+  &[data-value='deprecated'],
+  &[data-value='legacy'] {
     background: var(--surface-warning);
   }
 
   &[data-value='beta'],
-  &[data-value='information'] {
+  &[data-value='information'],
+  &[data-value='new'] {
     background: var(--surface-information);
   }
 }

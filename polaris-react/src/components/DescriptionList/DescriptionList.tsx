@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
+import {Text} from '../Text';
 
 import styles from './DescriptionList.scss';
 
@@ -15,13 +16,10 @@ export interface DescriptionListProps {
   /** Collection of items for list */
   items: Item[];
   /** Determines the spacing between list items */
-  spacing?: 'tight' | 'loose';
+  gap?: 'tight' | 'loose';
 }
 
-export function DescriptionList({
-  items,
-  spacing = 'loose',
-}: DescriptionListProps) {
+export function DescriptionList({items, gap = 'loose'}: DescriptionListProps) {
   // There's no good key to give React so using the index is a last resport.
   // we can't use the term/description value as it may be a react component
   // which can't be stringified
@@ -29,7 +27,9 @@ export function DescriptionList({
     (allTerms, {term, description}, index) => [
       ...allTerms,
       <dt key={`dt${index}`} className={styles.Term}>
-        {term}
+        <Text as="span" variant="headingSm">
+          {term}
+        </Text>
       </dt>,
       <dd key={`dd${index}`} className={styles.Description}>
         {description}
@@ -40,7 +40,7 @@ export function DescriptionList({
 
   const className = classNames(
     styles.DescriptionList,
-    spacing === 'tight' && styles.spacingTight,
+    gap === 'tight' && styles.spacingTight,
   );
 
   return <dl className={className}>{terms}</dl>;

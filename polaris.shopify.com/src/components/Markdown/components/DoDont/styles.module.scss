@@ -1,0 +1,21 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/fonts.scss';
+
+.DoDont {
+  #{$notMarginConsideredHarmful} & {
+    margin: 2rem 0 2rem;
+    & + & {
+      margin-top: -1rem;
+    }
+  }
+  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: max-content;
+
+  @media screen and (max-width: $breakpointMobile) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

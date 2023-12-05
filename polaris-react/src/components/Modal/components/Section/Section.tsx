@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {Box} from '../../../Box';
 import {classNames} from '../../../../utilities/css';
 
 import styles from './Section.scss';
@@ -19,10 +20,21 @@ export function Section({
 }: SectionProps) {
   const className = classNames(
     styles.Section,
-    flush && styles.flush,
-    subdued && styles.subdued,
     titleHidden && styles.titleHidden,
   );
 
-  return <section className={className}>{children}</section>;
+  return (
+    <div className={className}>
+      <Box
+        as="section"
+        padding={flush ? '0' : '400'}
+        {...(titleHidden && {paddingInlineEnd: '0'})}
+        {...(subdued && {
+          background: 'bg-surface-tertiary',
+        })}
+      >
+        {children}
+      </Box>
+    </div>
+  );
 }

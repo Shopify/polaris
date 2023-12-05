@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {Box} from '../../../Box';
 import styles from '../../Popover.scss';
 
 export interface SectionProps {
@@ -7,5 +8,16 @@ export interface SectionProps {
 }
 
 export function Section({children}: SectionProps) {
-  return <div className={styles.Section}>{children}</div>;
+  return (
+    <div className={styles.Section}>
+      <Box
+        paddingInlineStart="300"
+        paddingInlineEnd="300"
+        paddingBlockStart="200"
+        paddingBlockEnd="150"
+      >
+        {children}
+      </Box>
+    </div>
+  );
 }

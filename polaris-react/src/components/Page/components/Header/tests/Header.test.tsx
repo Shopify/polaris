@@ -10,7 +10,8 @@ import {ButtonGroup} from '../../../../ButtonGroup';
 import {Pagination} from '../../../../Pagination';
 import {Tooltip} from '../../../../Tooltip';
 import type {LinkAction, MenuActionDescriptor} from '../../../../../types';
-import {Header, HeaderProps} from '../Header';
+import {Header} from '../Header';
+import type {HeaderProps} from '../Header';
 
 describe('<Header />', () => {
   const mockProps: HeaderProps = {
@@ -47,20 +48,36 @@ describe('<Header />', () => {
   });
 
   describe('breadcrumbs', () => {
-    const breadcrumbs: LinkAction[] = [
-      {
-        content: 'Products',
-        url: 'https://www.google.com',
-      },
-    ];
+    const backAction: LinkAction = {
+      content: 'Products',
+      url: 'https://www.google.com',
+    };
 
     it('get passed into Breadcrumbs', () => {
       const header = mountWithApp(
-        <Header {...mockProps} breadcrumbs={breadcrumbs} />,
+        <Header {...mockProps} backAction={backAction} />,
       );
       expect(header).toContainReactComponent(Breadcrumbs, {
-        breadcrumbs,
+        backAction,
       });
+    });
+
+    it('renders breadcrumb markup if not an array', () => {
+      const backAction: LinkAction = {
+        content: 'Products',
+        url: 'https://www.google.com',
+      };
+      const header = mountWithApp(
+        <Header {...mockProps} backAction={backAction} />,
+      );
+      expect(header).toContainReactComponent(Breadcrumbs, {
+        backAction,
+      });
+    });
+
+    it('does not render breadcrumb markup if no breadcrumbs', () => {
+      const header = mountWithApp(<Header {...mockProps} />);
+      expect(header).not.toContainReactComponent(Breadcrumbs);
     });
   });
 
@@ -77,7 +94,7 @@ describe('<Header />', () => {
       );
 
       expect(header).toContainReactComponent(Button, {
-        primary: true,
+        variant: 'primary',
         children: buttonContent,
       });
     });
@@ -93,7 +110,6 @@ describe('<Header />', () => {
       );
 
       expect(header).toContainReactComponent(Button, {
-        primary: false,
         children: buttonContent,
       });
     });
@@ -162,18 +178,6 @@ describe('<Header />', () => {
       expect(wrapper).toContainReactComponent(ActionMenu, {
         groups: mockActionGroups,
       });
-    });
-  });
-
-  describe('additionalNavigation', () => {
-    it('renders element if passed', () => {
-      const TestComponent = () => <div />;
-
-      const header = mountWithApp(
-        <Header {...mockProps} additionalNavigation={<TestComponent />} />,
-      );
-
-      expect(header).toContainReactComponent(TestComponent);
     });
   });
 
@@ -291,12 +295,10 @@ describe('<Header />', () => {
     {content: 'mock content 2'},
   ];
 
-  const breadcrumbs: LinkAction[] = [
-    {
-      content: 'Products',
-      url: 'https://www.google.com',
-    },
-  ];
+  const backAction: LinkAction = {
+    content: 'Products',
+    url: 'https://www.google.com',
+  };
 
   it('does not render primary and secondary action wrapper divs', () => {
     const header = mountWithApp(
@@ -341,7 +343,7 @@ describe('<Header />', () => {
 
   it('renders a default mobile layout', () => {
     const header = mountWithApp(
-      <Header title="mmmmmmmmm" breadcrumbs={breadcrumbs} />,
+      <Header title="mmmmmmmmm" backAction={backAction} />,
       {
         mediaQuery: {isNavigationCollapsed: true},
       },

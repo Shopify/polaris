@@ -1,10 +1,10 @@
-import {Text, Stack} from '@shopify/polaris';
+import {Text, LegacyStack} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TextExample() {
   return (
-    <Stack vertical>
+    <LegacyStack vertical>
       <Text variant="bodyLg" as="p" alignment="start">
         Manage your Shopify store on-the-go with real-time notifications, access
         to your dashboard, and order management, all from your smartphone.
@@ -21,7 +21,7 @@ function TextExample() {
         Manage your Shopify store on-the-go with real-time notifications, access
         to your dashboard, and order management, all from your smartphone.
       </Text>
-    </Stack>
+    </LegacyStack>
   );
 }
 

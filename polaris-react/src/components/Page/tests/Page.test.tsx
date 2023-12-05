@@ -4,9 +4,12 @@ import {mountWithApp} from 'tests/utilities';
 
 import type {ActionMenuProps} from '../../ActionMenu';
 import {Badge} from '../../Badge';
-import {Card} from '../../Card';
-import {Page, PageProps} from '../Page';
+// eslint-disable-next-line import/no-deprecated
+import {LegacyCard} from '../../LegacyCard';
+import {Page} from '../Page';
+import type {PageProps} from '../Page';
 import {Header} from '../components';
+import {Button} from '../../Button';
 
 window.matchMedia =
   window.matchMedia ||
@@ -33,9 +36,10 @@ describe('<Page />', () => {
 
   describe('children', () => {
     it('renders its children', () => {
-      const card = <Card />;
+      const card = <LegacyCard />;
       const page = mountWithApp(<Page {...mockProps}>{card}</Page>);
-      expect(page).toContainReactComponent(Card);
+      // eslint-disable-next-line import/no-deprecated
+      expect(page).toContainReactComponent(LegacyCard);
     });
   });
 
@@ -58,7 +62,7 @@ describe('<Page />', () => {
   describe('subtitle', () => {
     it('gets passed into the <Header />', () => {
       const subtitle = 'Subtitle';
-      const page = mountWithApp(<Page {...mockProps} subtitle={subtitle} />);
+      const page = mountWithApp(<Page subtitle={subtitle} />);
       expect(page).toContainReactComponent(Header, {
         subtitle,
       });
@@ -88,6 +92,20 @@ describe('<Page />', () => {
       expect(page).toContainReactComponent(Header);
     });
 
+    it('renders a critical button when destructive is true', () => {
+      const primaryAction = {
+        content: 'Save',
+        destructive: true,
+      };
+      const page = mountWithApp(
+        <Page {...mockProps} primaryAction={primaryAction} />,
+      );
+      expect(page).toContainReactComponent(Button, {
+        tone: 'critical',
+        variant: 'primary',
+      });
+    });
+
     it('gets passed into the <Header />', () => {
       const primaryAction = {
         content: 'Save',
@@ -112,6 +130,21 @@ describe('<Page />', () => {
         <Page {...mockProps} secondaryActions={secondaryActions} />,
       );
       expect(page).toContainReactComponent(Header);
+    });
+
+    it('renders a critical button when destructive is true', () => {
+      const secondaryActions = [
+        {
+          content: 'Preview',
+          destructive: true,
+        },
+      ];
+      const page = mountWithApp(
+        <Page {...mockProps} secondaryActions={secondaryActions} />,
+      );
+      expect(page).toContainReactComponent(Button, {
+        tone: 'critical',
+      });
     });
 
     it('gets passed into the <Header />', () => {
@@ -233,53 +266,36 @@ describe('<Page />', () => {
     });
   });
 
-  describe('breadcrumbs', () => {
-    const breadcrumbs = [
-      {
-        content: 'Products',
-        onAction: noop,
-      },
-    ];
+  describe('backAction', () => {
+    const backAction = {
+      content: 'Products',
+      onAction: noop,
+    };
 
     it('renders a <Header /> when defined', () => {
       const page = mountWithApp(
-        <Page {...mockProps} breadcrumbs={breadcrumbs} />,
+        <Page {...mockProps} backAction={backAction} />,
+      );
+      expect(page).toContainReactComponent(Header);
+    });
+
+    it('renders a <Header /> when defined not as an array', () => {
+      const backAction = {
+        content: 'Products',
+        onAction: noop,
+      };
+      const page = mountWithApp(
+        <Page {...mockProps} backAction={backAction} />,
       );
       expect(page).toContainReactComponent(Header);
     });
 
     it('gets passed into the <Header />', () => {
       const page = mountWithApp(
-        <Page {...mockProps} breadcrumbs={breadcrumbs} />,
+        <Page {...mockProps} backAction={backAction} />,
       );
       expect(page).toContainReactComponent(Header, {
-        breadcrumbs,
-      });
-    });
-  });
-
-  describe('divider', () => {
-    it('renders border when divider is true and header props exist', () => {
-      const wrapper = mountWithApp(<Page {...mockProps} divider />);
-      expect(wrapper).toContainReactComponent('div', {
-        className: 'divider',
-      });
-    });
-
-    it('does not render border when divider is true and no header props exist', () => {
-      const wrapper = mountWithApp(<Page divider />);
-      expect(wrapper).not.toContainReactComponent('div', {
-        className: 'Content divider',
-      });
-      expect(wrapper).toContainReactComponent('div', {
-        className: 'Content',
-      });
-    });
-
-    it('does not render border when divider is false', () => {
-      const wrapper = mountWithApp(<Page {...mockProps} divider={false} />);
-      expect(wrapper).not.toContainReactComponent('div', {
-        className: 'divider',
+        backAction,
       });
     });
   });

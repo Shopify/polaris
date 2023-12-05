@@ -1,26 +1,37 @@
-import {Card, Stack, Icon, Subheading, List} from '@shopify/polaris';
-import {ProductsMajor} from '@shopify/polaris-icons';
 import React from 'react';
+import {
+  BlockStack,
+  Card,
+  Icon,
+  InlineStack,
+  List,
+  Text,
+} from '@shopify/polaris';
+import {ProductsMinor} from '@shopify/polaris-icons';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function CardExample() {
+function CardWithCustomReactNodeTitle() {
   return (
-    <Card title="Products">
-      <Card.Section
-        title={
-          <Stack>
-            <Icon source={ProductsMajor} />
-            <Subheading>New Products</Subheading>
-          </Stack>
-        }
-      >
+    <Card roundedAbove="sm">
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingSm">
+          Products
+        </Text>
+        <BlockStack inlineAlign="start">
+          <InlineStack gap="400">
+            <Icon source={ProductsMinor} />
+            <Text as="h3" variant="headingSm">
+              New Products
+            </Text>
+          </InlineStack>
+        </BlockStack>
         <List>
           <List.Item>Socks</List.Item>
           <List.Item>Super Shoes</List.Item>
         </List>
-      </Card.Section>
+      </BlockStack>
     </Card>
   );
 }
 
-export default withPolarisExample(CardExample);
+export default withPolarisExample(CardWithCustomReactNodeTitle);

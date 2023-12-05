@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useId} from 'react';
 
-import {classNames} from '../../utilities/css';
-import {useUniqueId} from '../../utilities/unique-id';
 import type {Error} from '../../types';
 import {Checkbox} from '../Checkbox';
 import {RadioButton} from '../RadioButton';
 import {InlineError, errorTextID} from '../InlineError';
+import {BlockStack} from '../BlockStack';
+import {Box} from '../Box';
+import {Bleed} from '../Bleed';
 
 import styles from './ChoiceList.scss';
 
@@ -20,7 +21,7 @@ interface Choice {
   disabled?: boolean;
   /** Additional text to aide in use */
   helpText?: React.ReactNode;
-  /** Indicates that the choice is aria-describedBy the error message*/
+  /** Indicates that the choice is aria-describedBy the error message */
   describedByError?: boolean;
   /**  Method to render children with a choice */
   renderChildren?(isSelected: boolean): React.ReactNode | false;
@@ -45,6 +46,8 @@ export interface ChoiceListProps {
   disabled?: boolean;
   /** Callback when the selected choices change */
   onChange?(selected: string[], name: string): void;
+  /** Indicates the tone of the choice list */
+  tone?: 'magic';
 }
 
 export function ChoiceList({
@@ -57,21 +60,24 @@ export function ChoiceList({
   error,
   disabled = false,
   name: nameProp,
+  tone,
 }: ChoiceListProps) {
   // Type asserting to any is required for TS3.2 but can be removed when we update to 3.3
   // see https://github.com/Microsoft/TypeScript/issues/28768
   const ControlComponent: any = allowMultiple ? Checkbox : RadioButton;
 
-  const name = useUniqueId('ChoiceList', nameProp);
+  const uniqName = useId();
+  const name = nameProp ?? uniqName;
   const finalName = allowMultiple ? `${name}[]` : name;
 
-  const className = classNames(
-    styles.ChoiceList,
-    titleHidden && styles.titleHidden,
-  );
-
   const titleMarkup = title ? (
-    <legend className={styles.Title}>{title}</legend>
+    <Box
+      as="legend"
+      paddingBlockEnd={{xs: '500', md: '100'}}
+      visuallyHidden={titleHidden}
+    >
+      {title}
+    </Box>
   ) : null;
 
   const choicesMarkup = choices.map((choice) => {
@@ -96,41 +102,53 @@ export function ChoiceList({
       ? choice.renderChildren(isSelected)
       : null;
     const children = renderedChildren ? (
-      <div className={styles.ChoiceChildren}>{renderedChildren}</div>
+      <div className={styles.ChoiceChildren}>
+        <Box paddingBlockStart={{xs: '400', md: '0'}}>{renderedChildren}</Box>
+      </div>
     ) : null;
-
     return (
-      <li key={value} className={styles.ChoiceItem}>
-        <ControlComponent
-          name={finalName}
-          value={value}
-          id={id}
-          label={label}
-          disabled={choiceDisabled || disabled}
-          checked={choiceIsSelected(choice, selected)}
-          helpText={helpText}
-          onChange={handleChange}
-          ariaDescribedBy={
-            error && describedByError ? errorTextID(finalName) : null
-          }
-        />
-        {children}
+      <li key={value}>
+        <Bleed marginBlockEnd={helpText ? {xs: '100', md: '0'} : {xs: '0'}}>
+          <ControlComponent
+            name={finalName}
+            value={value}
+            id={id}
+            label={label}
+            disabled={choiceDisabled || disabled}
+            fill={{xs: true, sm: false}}
+            checked={choiceIsSelected(choice, selected)}
+            helpText={helpText}
+            onChange={handleChange}
+            ariaDescribedBy={
+              error && describedByError ? errorTextID(finalName) : null
+            }
+            tone={tone}
+          />
+          {children}
+        </Bleed>
       </li>
     );
   });
 
   const errorMarkup = error && (
-    <div className={styles.ChoiceError}>
+    <Box paddingBlockStart={{xs: '0', md: '100'}} paddingBlockEnd="200">
       <InlineError message={error} fieldID={finalName} />
-    </div>
+    </Box>
   );
 
   return (
-    <fieldset className={className} id={finalName} aria-invalid={error != null}>
+    <BlockStack
+      as="fieldset"
+      gap={{xs: '400', md: '0'}}
+      aria-invalid={error != null}
+      id={finalName}
+    >
       {titleMarkup}
-      <ul className={styles.Choices}>{choicesMarkup}</ul>
+      <BlockStack as="ul" gap={{xs: '400', md: '0'}}>
+        {choicesMarkup}
+      </BlockStack>
       {errorMarkup}
-    </fieldset>
+    </BlockStack>
   );
 }
 

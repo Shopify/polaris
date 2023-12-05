@@ -1,29 +1,33 @@
+@import '../../styles/common';
+
 .ButtonGroup {
+  // stylelint-disable -- ButtonGroup custom properties
   --pc-button-group-item: 10;
   --pc-button-group-focused: 20;
+  // stylelint-enable
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: calc(-1 * var(--p-space-2));
-  margin-left: calc(-1 * var(--p-space-2));
+  margin-top: calc(-1 * var(--p-space-200));
+  margin-left: calc(-1 * var(--p-space-200));
 }
 
 .Item {
-  margin-top: var(--p-space-2);
-  margin-left: var(--p-space-2);
+  margin-top: var(--p-space-200);
+  margin-left: var(--p-space-200);
 }
 
 .Item-plain {
   &:not(:first-child) {
-    margin-left: var(--p-space-4);
+    margin-left: var(--p-space-200);
   }
 
   &:not(:last-child) {
-    margin-right: var(--p-space-2);
+    margin-right: var(--p-space-200);
   }
 }
 
-.segmented {
+.variantSegmented {
   display: flex;
   flex-wrap: nowrap;
   margin-top: 0;
@@ -31,10 +35,9 @@
 
   .Item {
     position: relative;
-    z-index: var(--pc-button-group-item);
     margin-top: 0;
     margin-left: 0;
-    line-height: normal;
+    line-height: 1;
 
     &:not(:first-child) {
       margin-left: calc(-1 * var(--p-space-025));
@@ -42,6 +45,7 @@
   }
 
   .Item-focused {
+    // stylelint-disable-next-line  -- custom property
     z-index: var(--pc-button-group-focused);
   }
 }
@@ -53,31 +57,36 @@
 }
 
 .extraTight {
-  margin-top: calc(-1 * var(--p-space-1));
-  margin-left: calc(-1 * var(--p-space-1));
+  margin-top: calc(-1 * var(--p-space-100));
+  margin-left: calc(-1 * var(--p-space-100));
 
   .Item {
-    margin-top: var(--p-space-1);
-    margin-left: var(--p-space-1);
+    margin-top: var(--p-space-100);
+    margin-left: var(--p-space-100);
   }
 }
 
 .tight {
-  margin-top: calc(-1 * var(--p-space-2));
-  margin-left: calc(-1 * var(--p-space-2));
+  margin-top: calc(-1 * var(--p-space-200));
+  margin-left: calc(-1 * var(--p-space-200));
 
   .Item {
-    margin-top: var(--p-space-2);
-    margin-left: var(--p-space-2);
+    margin-top: var(--p-space-200);
+    margin-left: var(--p-space-200);
   }
 }
 
 .loose {
-  margin-top: calc(-1 * var(--p-space-5));
-  margin-left: calc(-1 * var(--p-space-5));
+  margin-top: calc(-1 * var(--p-space-500));
+  margin-left: calc(-1 * var(--p-space-500));
 
   .Item {
-    margin-top: var(--p-space-5);
-    margin-left: var(--p-space-5);
+    margin-top: var(--p-space-500);
+    margin-left: var(--p-space-500);
   }
+}
+
+.noWrap {
+  display: flex;
+  flex-wrap: nowrap;
 }

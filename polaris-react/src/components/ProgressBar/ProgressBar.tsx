@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
-import {motion} from '@shopify/polaris-tokens';
 
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
+import {useTheme} from '../../utilities/use-theme';
 
 import styles from './ProgressBar.scss';
 
 type Size = 'small' | 'medium' | 'large';
-type Color = 'highlight' | 'primary' | 'success' | 'critical';
+type Tone = 'highlight' | 'primary' | 'success' | 'critical';
 
 export interface ProgressBarProps {
   /**
@@ -22,11 +22,6 @@ export interface ProgressBarProps {
    */
   size?: Size;
   /**
-   * Color of progressbar
-   * @default 'highlight'
-   */
-  color?: Color;
-  /**
    * Whether the fill animation is triggered
    * @default 'true'
    */
@@ -35,21 +30,28 @@ export interface ProgressBarProps {
    * Id (ids) of element (elements) that describes progressbar
    */
   ariaLabelledBy?: string;
+  /**
+   * Color of progressbar
+   * @default 'highlight'
+   */
+  tone?: Tone;
 }
 
 export function ProgressBar({
   progress = 0,
   size = 'medium',
-  color = 'highlight',
+  tone = 'highlight',
   animated: hasAppearAnimation = true,
   ariaLabelledBy,
 }: ProgressBarProps) {
+  const theme = useTheme();
   const i18n = useI18n();
+  const indicatorRef = useRef<HTMLDivElement>(null);
 
   const className = classNames(
     styles.ProgressBar,
     size && styles[variationName('size', size)],
-    color && styles[variationName('color', color)],
+    tone && styles[variationName('tone', tone)],
   );
 
   const warningMessage = i18n.translate(
@@ -62,8 +64,8 @@ export function ProgressBar({
   const parsedProgress = parseProgress(progress, warningMessage);
 
   const progressBarDuration = hasAppearAnimation
-    ? motion['duration-500']
-    : motion['duration-0'];
+    ? theme.motion['motion-duration-500']
+    : theme.motion['motion-duration-0'];
 
   /* eslint-disable @shopify/jsx-no-hardcoded-content */
   return (
@@ -78,12 +80,14 @@ export function ProgressBar({
         in
         appear
         timeout={parseInt(progressBarDuration, 10)}
+        nodeRef={indicatorRef}
         classNames={{
           appearActive: styles.IndicatorAppearActive,
           appearDone: styles.IndicatorAppearDone,
         }}
       >
         <div
+          ref={indicatorRef}
           className={styles.Indicator}
           style={
             {

@@ -1,4 +1,4 @@
-import {Badge, Card, Tabs} from '@shopify/polaris';
+import {LegacyCard, Tabs} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -6,40 +6,34 @@ function TabsWithBadgeExample() {
   const [selected, setSelected] = useState(0);
 
   const handleTabChange = useCallback(
-    (selectedTabIndex) => setSelected(selectedTabIndex),
+    (selectedTabIndex: number) => setSelected(selectedTabIndex),
     [],
   );
 
   const tabs = [
     {
       id: 'all-customers-fitted-3',
-      content: (
-        <span>
-          All <Badge status="new">10+</Badge>
-        </span>
-      ),
+      content: 'All',
+      badge: '10+',
       accessibilityLabel: 'All customers',
       panelID: 'all-customers-fitted-content-3',
     },
     {
       id: 'accepts-marketing-fitted-3',
-      content: (
-        <span>
-          Accepts marketing <Badge status="new">4</Badge>
-        </span>
-      ),
+      content: 'Accepts marketing',
+      badge: '4',
       panelID: 'accepts-marketing-fitted-content-3',
     },
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
-        <Card.Section title={tabs[selected].content}>
+        <LegacyCard.Section title={tabs[selected].content}>
           <p>Tab {selected} selected</p>
-        </Card.Section>
+        </LegacyCard.Section>
       </Tabs>
-    </Card>
+    </LegacyCard>
   );
 }
 

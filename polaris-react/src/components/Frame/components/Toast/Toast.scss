@@ -3,35 +3,48 @@
 $Backdrop-opacity: 0.88;
 
 .Toast {
-  @include text-style-display-small;
   display: inline-flex;
   max-width: 500px;
-  padding: var(--p-space-2) var(--p-space-4);
-  border-radius: var(--p-border-radius-2);
-  background: var(--p-surface-dark);
-  color: var(--p-text-on-dark);
-  margin-bottom: var(--p-space-5);
+  padding: var(--p-space-200) var(--p-space-300);
+  border-radius: var(--p-border-radius-100);
+  background: var(--p-color-bg-inverse);
+  color: var(--p-color-text-inverse);
+  margin-bottom: var(--p-space-500);
+  box-shadow: var(--p-shadow-500);
 
-  @media #{$p-breakpoints-md-up} {
-    padding: var(--p-space-4);
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-400),
+    $borderRadius: var(--p-border-radius-200)
+  );
+
+  @media #{$p-breakpoints-sm-up} {
+    padding: var(--p-space-300);
   }
 
   @media (forced-colors: active) {
-    border: var(--p-border-width-2) solid transparent;
+    border: var(--p-border-width-050) solid transparent;
   }
 }
 
 .Action {
-  margin-left: var(--p-space-8);
-  margin-right: var(--p-space-4);
+  margin-left: var(--p-space-400);
+  color: var(--p-color-text-inverse);
 }
 
 .error {
-  background: var(--p-action-critical);
-  color: var(--p-text-on-critical);
+  background: var(--p-color-bg-fill-critical);
+  color: var(--p-color-text-critical-on-bg-fill);
 
   .CloseButton {
-    fill: var(--p-icon-on-critical);
+    color: var(--p-color-text-critical-on-bg-fill);
+  }
+}
+
+.LeadingIcon {
+  margin-right: var(--p-space-150);
+
+  svg {
+    fill: currentColor;
   }
 }
 
@@ -40,23 +53,24 @@ $Backdrop-opacity: 0.88;
   align-self: center;
   flex-direction: column;
   justify-content: flex-start;
-  margin-right: calc(-1 * var(--p-space-4));
-  padding: 0 var(--p-space-4);
+  padding: 0;
   border: none;
   appearance: none;
   background: transparent;
-  color: currentColor;
-  @include recolor-icon(currentColor);
+  color: var(--p-color-icon-inverse);
   cursor: pointer;
+  margin-left: var(--p-space-200);
 
-  @media #{$p-breakpoints-md-up} {
-    align-self: flex-start;
-    margin: calc(-1 * var(--p-space-2)) calc(-1 * var(--p-space-4))
-      calc(-1 * var(--p-space-2)) 0;
-    padding: var(--p-space-3) var(--p-space-4) var(--p-space-2);
+  svg {
+    fill: currentColor;
   }
 
   &:focus {
     outline: none;
+  }
+
+  &:focus,
+  &:hover {
+    color: var(--p-color-text-inverse);
   }
 }

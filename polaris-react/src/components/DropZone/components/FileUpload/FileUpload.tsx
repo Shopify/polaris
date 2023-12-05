@@ -1,14 +1,14 @@
 import React, {useContext} from 'react';
+import {UploadMajor} from '@shopify/polaris-icons';
 
+import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
 import {capitalize} from '../../../../utilities/capitalize';
-import {Stack} from '../../../Stack';
-import {Caption} from '../../../Caption';
-import {TextStyle} from '../../../TextStyle';
-import {uploadArrow} from '../../images';
+import {Text} from '../../../Text';
 import {DropZoneContext} from '../../context';
 import {useI18n} from '../../../../utilities/i18n';
 import {createAllowMultipleKey} from '../../utils';
+import {BlockStack} from '../../../BlockStack';
 
 import styles from './FileUpload.scss';
 
@@ -47,31 +47,38 @@ export function FileUpload(props: FileUploadProps) {
   );
 
   const actionHintMarkup = actionHint && (
-    <Caption>
-      <TextStyle variation="subdued">{actionHint}</TextStyle>
-    </Caption>
+    <Text variant="bodySm" as="p" tone="subdued">
+      {actionHint}
+    </Text>
   );
 
   let viewMarkup;
   switch (size) {
     case 'large':
       viewMarkup = (
-        <Stack vertical spacing="tight">
+        <BlockStack inlineAlign="center" gap="200">
           {actionMarkup}
           {actionHintMarkup}
-        </Stack>
+        </BlockStack>
       );
       break;
     case 'medium':
       viewMarkup = (
-        <Stack vertical spacing="tight">
+        <BlockStack inlineAlign="center" gap="200">
           {actionMarkup}
           {actionHintMarkup}
-        </Stack>
+        </BlockStack>
       );
       break;
     case 'small':
-      viewMarkup = <img width="20" src={uploadArrow} alt="" />;
+      viewMarkup = (
+        <div
+          className={classNames(styles.UploadIcon, disabled && styles.disabled)}
+        >
+          <Icon source={UploadMajor} />
+        </div>
+      );
+
       break;
   }
 

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {buttonFrom} from '../../../Button';
-import {TextStyle} from '../../../TextStyle';
+import {Text} from '../../../Text';
 import {Tooltip} from '../../../Tooltip';
 import {useMediaQuery} from '../../../../utilities/media-query';
 import {useI18n} from '../../../../utilities/i18n';
@@ -19,13 +19,19 @@ import type {
   MenuGroupDescriptor,
   TooltipAction,
 } from '../../../../types';
-import {Breadcrumbs, BreadcrumbsProps} from '../../../Breadcrumbs';
-import {Pagination, PaginationProps} from '../../../Pagination';
+import {Breadcrumbs} from '../../../Breadcrumbs';
+import type {BreadcrumbsProps} from '../../../Breadcrumbs';
+import {Pagination} from '../../../Pagination';
+import type {PaginationProps} from '../../../Pagination';
 import {ActionMenu, hasGroupsWithActions} from '../../../ActionMenu';
 import {isInterface} from '../../../../utilities/is-interface';
 import {isReactElement} from '../../../../utilities/is-react-element';
+import {Box} from '../../../Box';
+import {InlineStack} from '../../../InlineStack';
+import {FilterActionsProvider} from '../../../FilterActionsProvider';
 
-import {Title, TitleProps} from './components';
+import {Title} from './components';
+import type {TitleProps} from './components';
 import styles from './Header.scss';
 
 type MaybeJSX = JSX.Element | null;
@@ -43,18 +49,18 @@ interface PrimaryAction
 export interface HeaderProps extends TitleProps {
   /** Visually hide the title */
   titleHidden?: boolean;
+  /** Enables filtering action list items */
+  filterActions?: boolean;
   /** Primary page-level action */
   primaryAction?: PrimaryAction | React.ReactNode;
   /** Page-level pagination */
   pagination?: PaginationProps;
-  /** Collection of breadcrumbs */
-  breadcrumbs?: BreadcrumbsProps['breadcrumbs'];
+  /** A back action link */
+  backAction?: BreadcrumbsProps['backAction'];
   /** Collection of secondary page-level actions */
   secondaryActions?: MenuActionDescriptor[] | React.ReactNode;
   /** Collection of page-level groups of secondary actions */
   actionGroups?: MenuGroupDescriptor[];
-  /** @deprecated Additional navigation markup */
-  additionalNavigation?: React.ReactNode;
   // Additional meta data
   additionalMetadata?: React.ReactNode | string;
   /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
@@ -73,8 +79,8 @@ export function Header({
   titleHidden = false,
   primaryAction,
   pagination,
-  additionalNavigation,
-  breadcrumbs = [],
+  filterActions,
+  backAction,
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
@@ -83,13 +89,6 @@ export function Header({
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
 
-  if (additionalNavigation && process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Deprecation: The `additionalNavigation` on Page is deprecated and will be removed in the next major version.',
-    );
-  }
-
   const isSingleRow =
     !primaryAction &&
     !pagination &&
@@ -97,32 +96,24 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
-  const breadcrumbMarkup =
-    breadcrumbs.length > 0 ? (
-      <div className={styles.BreadcrumbWrapper}>
-        <Breadcrumbs breadcrumbs={breadcrumbs} />
-      </div>
-    ) : null;
+  const breadcrumbMarkup = backAction ? (
+    <div className={styles.BreadcrumbWrapper}>
+      <Box maxWidth="100%" paddingInlineEnd="100" printHidden>
+        <Breadcrumbs backAction={backAction} />
+      </Box>
+    </div>
+  ) : null;
 
   const paginationMarkup =
     pagination && !isNavigationCollapsed ? (
       <div className={styles.PaginationWrapper}>
-        <Pagination {...pagination} />
-      </div>
-    ) : null;
-
-  const additionalNavigationMarkup = additionalNavigation ? (
-    <div className={styles.AdditionalNavigationWrapper}>
-      {additionalNavigation}
-    </div>
-  ) : null;
-
-  const navigationMarkup =
-    breadcrumbMarkup || paginationMarkup || additionalNavigationMarkup ? (
-      <div className={styles.Navigation}>
-        {breadcrumbMarkup}
-        {additionalNavigationMarkup}
-        {paginationMarkup}
+        <Box printHidden>
+          <Pagination
+            {...pagination}
+            hasPrevious={pagination.hasPrevious}
+            hasNext={pagination.hasNext}
+          />
+        </Box>
       </div>
     ) : null;
 
@@ -163,28 +154,43 @@ export function Header({
     actionMenuMarkup = <>{secondaryActions}</>;
   }
 
+  const navigationMarkup =
+    breadcrumbMarkup || paginationMarkup ? (
+      <Box
+        printHidden
+        paddingBlockEnd="100"
+        paddingInlineEnd={
+          actionMenuMarkup && isNavigationCollapsed ? '1000' : undefined
+        }
+      >
+        <InlineStack gap="400" align="space-between" blockAlign="center">
+          {breadcrumbMarkup}
+          {paginationMarkup}
+        </InlineStack>
+      </Box>
+    ) : null;
+
   const additionalMetadataMarkup = additionalMetadata ? (
     <div className={styles.AdditionalMetaData}>
-      <TextStyle variation="subdued">{additionalMetadata}</TextStyle>
+      <Text tone="subdued" as="span" variant="bodySm">
+        {additionalMetadata}
+      </Text>
     </div>
   ) : null;
 
   const headerClassNames = classNames(
-    styles.Header,
     isSingleRow && styles.isSingleRow,
-    titleHidden && styles.titleHidden,
     navigationMarkup && styles.hasNavigation,
     actionMenuMarkup && styles.hasActionMenu,
     isNavigationCollapsed && styles.mobileView,
-    !breadcrumbs.length && styles.noBreadcrumbs,
+    !backAction && styles.noBreadcrumbs,
     title && title.length < LONG_TITLE && styles.mediumTitle,
     title && title.length > LONG_TITLE && styles.longTitle,
   );
 
-  const {slot1, slot2, slot3, slot4, slot5, slot6} = determineLayout({
+  const {slot1, slot2, slot3, slot4, slot5} = determineLayout({
     actionMenuMarkup,
     additionalMetadataMarkup,
-    additionalNavigationMarkup,
     breadcrumbMarkup,
     isNavigationCollapsed,
     pageTitleMarkup,
@@ -194,35 +200,45 @@ export function Header({
   });
 
   return (
-    <div className={headerClassNames}>
-      <ConditionalRender condition={[slot1, slot2, slot3, slot4].some(notNull)}>
-        <div className={styles.Row}>
-          {slot1}
-          {slot2}
-          <ConditionalRender condition={[slot3, slot4].some(notNull)}>
-            <div className={styles.RightAlign}>
-              <ConditionalWrapper
-                condition={[slot3, slot4].every(notNull)}
-                wrapper={(children) => (
-                  <div className={styles.Actions}>{children}</div>
-                )}
-              >
-                {slot3}
-                {slot4}
-              </ConditionalWrapper>
+    <Box
+      position="relative"
+      paddingBlockStart={{xs: '400', md: '600'}}
+      paddingBlockEnd={{xs: '400', md: '600'}}
+      paddingInlineStart={{xs: '400', sm: '0'}}
+      paddingInlineEnd={{xs: '400', sm: '0'}}
+      visuallyHidden={titleHidden}
+    >
+      <div className={headerClassNames}>
+        <FilterActionsProvider filterActions={Boolean(filterActions)}>
+          <ConditionalRender
+            condition={[slot1, slot2, slot3, slot4].some(notNull)}
+          >
+            <div className={styles.Row}>
+              {slot1}
+              {slot2}
+              <ConditionalRender condition={[slot3, slot4].some(notNull)}>
+                <div className={styles.RightAlign}>
+                  <ConditionalWrapper
+                    condition={[slot3, slot4].every(notNull)}
+                    wrapper={(children) => (
+                      <div className={styles.Actions}>{children}</div>
+                    )}
+                  >
+                    {slot3}
+                    {slot4}
+                  </ConditionalWrapper>
+                </div>
+              </ConditionalRender>
             </div>
           </ConditionalRender>
-        </div>
-      </ConditionalRender>
-      <ConditionalRender condition={[slot5, slot6].some(notNull)}>
-        <div className={styles.Row}>
-          <div className={styles.LeftAlign}>{slot5}</div>
-          <ConditionalRender condition={slot6 != null}>
-            <div className={styles.RightAlign}>{slot6}</div>
+          <ConditionalRender condition={[slot5].some(notNull)}>
+            <div className={styles.Row}>
+              <InlineStack gap="400">{slot5}</InlineStack>
+            </div>
           </ConditionalRender>
-        </div>
-      </ConditionalRender>
-    </div>
+        </FilterActionsProvider>
+      </div>
+    </Box>
   );
 }
 
@@ -240,7 +256,7 @@ function PrimaryActionMarkup({
     const content = buttonFrom(
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
-        primary,
+        variant: primary ? 'primary' : undefined,
       },
     );
 
@@ -253,7 +269,11 @@ function PrimaryActionMarkup({
     actionMarkup = primaryAction;
   }
 
-  return <div className={styles.PrimaryActionWrapper}>{actionMarkup}</div>;
+  return (
+    <div className={styles.PrimaryActionWrapper}>
+      <Box printHidden>{actionMarkup}</Box>
+    </div>
+  );
 }
 
 function shouldShowIconOnly(
@@ -285,7 +305,6 @@ function notNull(value: any) {
 function determineLayout({
   actionMenuMarkup,
   additionalMetadataMarkup,
-  additionalNavigationMarkup,
   breadcrumbMarkup,
   isNavigationCollapsed,
   pageTitleMarkup,
@@ -295,7 +314,6 @@ function determineLayout({
 }: {
   actionMenuMarkup: MaybeJSX;
   additionalMetadataMarkup: MaybeJSX;
-  additionalNavigationMarkup: MaybeJSX;
   breadcrumbMarkup: MaybeJSX;
   isNavigationCollapsed: boolean;
   pageTitleMarkup: JSX.Element;
@@ -307,7 +325,7 @@ function determineLayout({
   // |----------------------------------------------------|
   // | slot1 | slot2 |                    | slot3 | slot4 |
   // |----------------------------------------------------|
-  // | slot5 |                                    | slot6 |
+  // | slot5 |                                            |
   // |----------------------------------------------------|
   //
   const layouts = {
@@ -318,7 +336,6 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition:
         isNavigationCollapsed &&
@@ -333,7 +350,6 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition: isNavigationCollapsed,
     },
@@ -344,7 +360,6 @@ function determineLayout({
         slot3: actionMenuMarkup,
         slot4: primaryActionMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition:
         !isNavigationCollapsed &&
@@ -365,7 +380,6 @@ function determineLayout({
         ),
         slot4: paginationMarkup,
         slot5: additionalMetadataMarkup,
-        slot6: additionalNavigationMarkup,
       },
       condition: !isNavigationCollapsed,
     },

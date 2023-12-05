@@ -1,31 +1,36 @@
-import React, {Component, createRef, useContext} from 'react';
+import React, {Component, createRef, useContext, useId} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 import isEqual from 'react-fast-compare';
 
-import {classNames, variationName} from '../../utilities/css';
-import {useI18n} from '../../utilities/i18n';
-import type {DisableableAction} from '../../types';
 import {ActionList} from '../ActionList';
-import {Popover} from '../Popover';
-import type {AvatarProps} from '../Avatar';
-import {UnstyledLink} from '../UnstyledLink';
-import type {ThumbnailProps} from '../Thumbnail';
+import {Box} from '../Box';
+import {Button, buttonsFrom} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
 import {Checkbox} from '../Checkbox';
-import {Button, buttonsFrom} from '../Button';
+import {InlineGrid} from '../InlineGrid';
+import {InlineStack} from '../InlineStack';
+import type {InlineStackProps} from '../InlineStack';
+import {Popover} from '../Popover';
+import {UnstyledLink} from '../UnstyledLink';
+import type {AvatarProps} from '../Avatar';
+import type {DisableableAction} from '../../types';
+import type {ThumbnailProps} from '../Thumbnail';
+import {useBreakpoints} from '../../utilities/breakpoints';
+import type {BreakpointsDirectionAlias} from '../../utilities/breakpoints';
+import {classNames} from '../../utilities/css';
+import {useI18n} from '../../utilities/i18n';
 import {
   ResourceListContext,
   SELECT_ALL_ITEMS,
-  ResourceListSelectedItems,
 } from '../../utilities/resource-list';
-import {globalIdGeneratorFactory} from '../../utilities/unique-id';
+import type {ResourceListSelectedItems} from '../../utilities/resource-list';
 
 import styles from './ResourceItem.scss';
 
 type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 
 interface BaseProps {
-  /** Visually hidden text for screen readers used for item link*/
+  /** Visually hidden text for screen readers used for item link */
   accessibilityLabel?: string;
   /** Individual item name used by various text labels */
   name?: string;
@@ -55,6 +60,10 @@ interface BaseProps {
   verticalAlignment?: Alignment;
   /** Prefetched url attribute to bind to the main element being returned */
   dataHref?: string;
+  /** Callback when mouse cursor is on item */
+  onMouseOver?: () => void;
+  /** Callback when mouse cursor leaves item */
+  onMouseOut?: () => void;
 }
 
 interface PropsWithUrl extends BaseProps {
@@ -68,8 +77,11 @@ interface PropsWithClick extends BaseProps {
 }
 
 export type ResourceItemProps = PropsWithUrl | PropsWithClick;
-
+type BreakpointsMatches = {
+  [DirectionAlias in BreakpointsDirectionAlias]: boolean;
+};
 interface PropsFromWrapper {
+  breakpoints?: BreakpointsMatches;
   context: React.ContextType<typeof ResourceListContext>;
   i18n: ReturnType<typeof useI18n>;
 }
@@ -82,11 +94,6 @@ interface State {
 }
 
 type CombinedProps = PropsFromWrapper & (PropsWithUrl | PropsWithClick);
-
-const getUniqueCheckboxID = globalIdGeneratorFactory(
-  'ResourceListItemCheckbox',
-);
-const getUniqueOverlayID = globalIdGeneratorFactory('ResourceListItemOverlay');
 
 class BaseResourceItem extends Component<CombinedProps, State> {
   static getDerivedStateFromProps(nextProps: CombinedProps, prevState: State) {
@@ -107,8 +114,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   };
 
   private node: HTMLDivElement | null = null;
-  private checkboxId = getUniqueCheckboxID();
-  private overlayId = getUniqueOverlayID();
+  private overlayRef = createRef<HTMLAnchorElement>();
   private buttonOverlay = createRef<HTMLButtonElement>();
 
   shouldComponentUpdate(nextProps: CombinedProps, nextState: State) {
@@ -147,10 +153,12 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       persistActions = false,
       accessibilityLabel,
       name,
-      context: {selectable, selectMode, loading, resourceName},
+      context: {selectable, selectMode, hasBulkActions, loading, resourceName},
       i18n,
       verticalAlignment,
       dataHref,
+      breakpoints,
+      onMouseOver,
     } = this.props;
 
     const {actionsMenuVisible, focused, focusedInner, selected} = this.state;
@@ -158,42 +166,48 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     let ownedMarkup: React.ReactNode = null;
     let handleMarkup: React.ReactNode = null;
 
-    const mediaMarkup = media ? (
-      <div className={styles.Media}>{media}</div>
-    ) : null;
-
     if (selectable) {
       const checkboxAccessibilityLabel =
         name || accessibilityLabel || i18n.translate('Polaris.Common.checkbox');
 
       handleMarkup = (
-        <div className={styles.Handle} onClick={this.handleLargerSelectionArea}>
-          <div onClick={stopPropagation} className={styles.CheckboxWrapper}>
-            <div onChange={this.handleLargerSelectionArea}>
+        <div
+          className={styles.CheckboxWrapper}
+          onClick={stopPropagation}
+          onChange={this.handleLargerSelectionArea}
+        >
+          <UseId>
+            {(id) => (
               <Checkbox
-                id={this.checkboxId}
+                id={id}
                 label={checkboxAccessibilityLabel}
                 labelHidden
                 checked={selected}
                 disabled={loading}
+                bleedInlineStart="300"
+                bleedInlineEnd="300"
+                bleedBlockStart="300"
+                bleedBlockEnd="300"
+                fill
+                labelClassName={styles.CheckboxLabel}
               />
-            </div>
-          </div>
+            )}
+          </UseId>
         </div>
       );
     }
 
     if (media || selectable) {
       ownedMarkup = (
-        <div
-          className={classNames(
-            styles.Owned,
-            !mediaMarkup && styles.OwnedNoMedia,
-          )}
+        <InlineStack
+          gap="300"
+          blockAlign={
+            media && selectable ? 'center' : getAlignment(verticalAlignment)
+          }
         >
           {handleMarkup}
-          {mediaMarkup}
-        </div>
+          {media}
+        </InlineStack>
       );
     }
 
@@ -210,6 +224,9 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     const listItemClassName = classNames(
       styles.ListItem,
       focused && !focusedInner && styles.focused,
+      hasBulkActions && styles.hasBulkActions,
+      selected && styles.selected,
+      selectable && styles.selectable,
     );
 
     let actionsMarkup: React.ReactNode | null = null;
@@ -217,15 +234,15 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
     if (shortcutActions && !loading) {
       if (persistActions) {
-        actionsMarkup = (
+        actionsMarkup = breakpoints?.lgUp ? (
           <div className={styles.Actions} onClick={stopPropagation}>
             <ButtonGroup>
               {buttonsFrom(shortcutActions, {
-                plain: true,
+                variant: 'tertiary',
               })}
             </ButtonGroup>
           </div>
-        );
+        ) : null;
 
         const disclosureAccessibilityLabel = name
           ? i18n.translate('Polaris.ResourceList.Item.actionsDropdownLabel', {
@@ -233,54 +250,64 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             })
           : i18n.translate('Polaris.ResourceList.Item.actionsDropdown');
 
-        disclosureMarkup = (
-          <div className={styles.Disclosure} onClick={stopPropagation}>
-            <Popover
-              activator={
-                <Button
-                  accessibilityLabel={disclosureAccessibilityLabel}
-                  onClick={this.handleActionsClick}
-                  plain
-                  icon={HorizontalDotsMinor}
-                />
-              }
-              onClose={this.handleCloseRequest}
-              active={actionsMenuVisible}
-            >
-              <ActionList items={shortcutActions} />
-            </Popover>
-          </div>
-        );
-      } else {
+        disclosureMarkup =
+          !selectMode && breakpoints?.lgDown ? (
+            <div onClick={stopPropagation}>
+              <Popover
+                activator={
+                  <Button
+                    accessibilityLabel={disclosureAccessibilityLabel}
+                    onClick={this.handleActionsClick}
+                    variant="tertiary"
+                    icon={HorizontalDotsMinor}
+                  />
+                }
+                onClose={this.handleCloseRequest}
+                active={actionsMenuVisible}
+              >
+                <ActionList items={shortcutActions} />
+              </Popover>
+            </div>
+          ) : null;
+      } else if (breakpoints?.lgUp) {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
-            <ButtonGroup segmented>
-              {buttonsFrom(shortcutActions, {
-                size: 'slim',
-              })}
-            </ButtonGroup>
+            <Box position="absolute" insetBlockStart="400" insetInlineEnd="500">
+              <ButtonGroup variant="segmented">
+                {buttonsFrom(shortcutActions, {size: 'slim'})}
+              </ButtonGroup>
+            </Box>
           </div>
         );
       }
     }
 
-    const content = children ? (
-      <div className={styles.Content}>{children}</div>
-    ) : null;
-
-    const containerClassName = classNames(
-      styles.Container,
-      verticalAlignment &&
-        styles[variationName('alignment', verticalAlignment)],
-    );
-
     const containerMarkup = (
-      <div className={containerClassName} id={this.props.id}>
-        {ownedMarkup}
-        {content}
-        {actionsMarkup}
-        {disclosureMarkup}
-      </div>
+      <Box
+        id={this.props.id}
+        position="relative"
+        paddingInlineStart="300"
+        paddingInlineEnd="300"
+        paddingBlockStart="300"
+        paddingBlockEnd="300"
+        zIndex="var(--pc-resource-item-content-stacking-order)"
+      >
+        <InlineGrid columns={{xs: '1fr auto'}}>
+          <InlineGrid
+            columns={{xs: media || selectable ? 'auto 1fr' : '1fr'}}
+            gap="300"
+          >
+            {ownedMarkup}
+            <InlineStack blockAlign={getAlignment(verticalAlignment)}>
+              <Box width="100%" padding="0">
+                {children}
+              </Box>
+            </InlineStack>
+          </InlineGrid>
+          {actionsMarkup}
+          {disclosureMarkup}
+        </InlineGrid>
+      </Box>
     );
 
     const tabIndex = loading ? -1 : 0;
@@ -292,15 +319,20 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       });
 
     const accessibleMarkup = url ? (
-      <UnstyledLink
-        aria-describedby={this.props.id}
-        aria-label={ariaLabel}
-        className={styles.Link}
-        url={url}
-        external={external}
-        tabIndex={tabIndex}
-        id={this.overlayId}
-      />
+      <UseId>
+        {(id) => (
+          <UnstyledLink
+            aria-describedby={this.props.id}
+            aria-label={ariaLabel}
+            className={styles.Link}
+            url={url}
+            external={external}
+            tabIndex={tabIndex}
+            id={id}
+            ref={this.overlayRef}
+          />
+        )}
+      </UseId>
     ) : (
       <button
         className={styles.Button}
@@ -323,6 +355,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
             onFocus={this.handleFocus}
             onBlur={this.handleBlur}
             onKeyUp={this.handleKeyUp}
+            onMouseOver={onMouseOver}
             onMouseOut={this.handleMouseOut}
             data-href={url}
           >
@@ -341,8 +374,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
   private handleFocus = (event: React.FocusEvent<HTMLElement>) => {
     if (
       event.target === this.buttonOverlay.current ||
-      (this.node &&
-        event.target === this.node.querySelector(`#${this.overlayId}`))
+      (this.node && event.target === this.overlayRef.current)
     ) {
       this.setState({focused: true, focusedInner: false});
     } else if (this.node && this.node.contains(event.target)) {
@@ -364,6 +396,9 @@ class BaseResourceItem extends Component<CombinedProps, State> {
 
   private handleMouseOut = () => {
     this.state.focused && this.setState({focused: false, focusedInner: false});
+    if (this.props.onMouseOut) {
+      this.props.onMouseOut();
+    }
   };
 
   private handleLargerSelectionArea = (event: React.MouseEvent<any>) => {
@@ -459,11 +494,35 @@ function isSelected(id: string, selectedItems?: ResourceListSelectedItems) {
 }
 
 export function ResourceItem(props: ResourceItemProps) {
+  const breakpoints = useBreakpoints();
   return (
     <BaseResourceItem
       {...props}
+      breakpoints={breakpoints}
       context={useContext(ResourceListContext)}
       i18n={useI18n()}
     />
   );
+}
+
+function getAlignment(alignment?: Alignment): InlineStackProps['blockAlign'] {
+  switch (alignment) {
+    case 'leading':
+      return 'start';
+    case 'trailing':
+      return 'end';
+    case 'center':
+      return 'center';
+    case 'fill':
+      return 'stretch';
+    case 'baseline':
+      return 'baseline';
+    default:
+      return 'start';
+  }
+}
+
+function UseId(props: {children(id: string): JSX.Element}) {
+  const id = useId();
+  return props.children(id);
 }

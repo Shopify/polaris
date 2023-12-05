@@ -1,10 +1,15 @@
 import React, {useCallback} from 'react';
+import {RiskMajor} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
-import {Stack} from '../../../Stack';
+// eslint-disable-next-line import/no-deprecated
+import {LegacyStack} from '../../../LegacyStack';
+import {Text} from '../../../Text';
+import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
-import {ContextualSaveBarProps, useFrame} from '../../../../utilities/frame';
+import {useFrame} from '../../../../utilities/frame';
+import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
@@ -60,6 +65,8 @@ export function ContextualSaveBar({
 
   const discardActionMarkup = discardAction && (
     <Button
+      variant="tertiary"
+      size="large"
       url={discardAction.url}
       onClick={discardActionHandler}
       loading={discardAction.loading}
@@ -77,7 +84,9 @@ export function ContextualSaveBar({
 
   const saveActionMarkup = saveAction && (
     <Button
-      primary
+      variant="primary"
+      tone="success"
+      size="large"
       url={saveAction.url}
       onClick={saveAction.onAction}
       loading={saveAction.loading}
@@ -116,13 +125,20 @@ export function ContextualSaveBar({
         {contextControlMarkup}
         {logoMarkup}
         <div className={contentsClassName}>
-          <h2 className={styles.Message}>{message}</h2>
+          <div className={styles.MessageContainer}>
+            <Icon source={RiskMajor} />
+            {message && (
+              <Text as="h2" variant="headingMd" tone="text-inverse" truncate>
+                {message}
+              </Text>
+            )}
+          </div>
           <div className={styles.ActionContainer}>
-            <Stack spacing="tight" wrap={false}>
+            <LegacyStack spacing="tight" wrap={false}>
               {secondaryMenu}
               {discardActionMarkup}
               {saveActionMarkup}
-            </Stack>
+            </LegacyStack>
           </div>
         </div>
       </div>

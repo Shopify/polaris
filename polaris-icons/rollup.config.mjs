@@ -9,6 +9,7 @@ import globby from 'globby';
 import jsYaml from 'js-yaml';
 import svgr from '@svgr/core';
 import {optimize} from 'svgo';
+import svgoConfig from './svgo.config.js';
 
 const convert = svgr.default;
 const iconBasePath = new URL('./icons', import.meta.url).pathname;
@@ -101,48 +102,6 @@ function svgBuild(options = {}) {
   const filter = createFilter(options.include || '**/*.svg', options.exclude);
 
   /** @type {import('svgo').OptimizeOptions} */
-  const svgoConfig = {
-    plugins: [
-      {
-        name: 'preset-default',
-        params: {
-          overrides: {
-            /**
-             * viewBox is needed in order to produce 20px by 20px containers
-             * with smaller (minor) icons inside.
-             */
-            removeViewBox: false,
-
-            /**
-             * The following 2 settings are disabled to reduce rendering inconsistency
-             * on Android. Android uses a subset of the SVG spec called SVG Tiny:
-             * https://developer.android.com/studio/write/vector-asset-studio#svg-support
-             */
-
-            /**
-             * Merging mutliple detached paths into a single path can lead to
-             * rendering issues on some platforms where detatched paths are joined
-             * by hairlines. Not merging paths results in greater compatibility
-             * with minimal additional overhead.
-             */
-            mergePaths: false,
-
-            convertPathData: {
-              /**
-               * Mixing absolute and relative path commands can lead to rendering
-               * issues on some platforms. This disables converting some path data to
-               * absolute if it is shorter, keeping all path data relative. Using
-               * relative paths means that data points are relative  to the current
-               * point at the start of the path command, which does not greatly
-               * increase the quantity of path data.
-               */
-              utilizeAbsolute: false,
-            },
-          },
-        },
-      },
-    ],
-  };
 
   svgoConfig.plugins.push({
     ...replaceFillAttributeSvgoPlugin(),
@@ -222,6 +181,11 @@ export default [
         interop,
         entryFileNames: '[name].js',
         chunkFileNames: '[name].js',
+        manualChunks: (id) => {
+          if (id.startsWith(iconBasePath)) {
+            return id.replace(iconBasePath, 'icons/');
+          }
+        },
       },
       {
         dir: 'dist',
@@ -229,17 +193,14 @@ export default [
         interop,
         entryFileNames: '[name].mjs',
         chunkFileNames: '[name].mjs',
+        manualChunks: (id) => {
+          if (id.startsWith(iconBasePath)) {
+            return id.replace(iconBasePath, 'icons/');
+          }
+        },
       },
     ],
-    manualChunks: (id) => {
-      // Generate distinct chunks for each icon
-      // This allows consuming apps to split up the icons into multiple subchunks
-      // containing a few icons each instead of always having to put every icon
-      // into a single shared chunk
-      if (id.startsWith(iconBasePath)) {
-        return id.replace(iconBasePath, 'icons/');
-      }
-    },
+
     external: ['react'],
     onwarn: (warning, warn) => {
       // Unresolved imports means Rollup couldn't find an import, possibly because

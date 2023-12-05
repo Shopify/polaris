@@ -1,9 +1,10 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Checkbox} from '../../Checkbox';
+import {Checkbox} from '../../../../Checkbox';
 import {Scrollable} from '../../../../Scrollable';
-import {Option, OptionProps} from '../Option';
+import {Option} from '../Option';
+import type {OptionProps} from '../Option';
 
 describe('<Option />', () => {
   const defaultProps: OptionProps = {
@@ -13,6 +14,8 @@ describe('<Option />', () => {
     section: 0,
     index: 0,
     onClick: noop,
+    onPointerEnter: noop,
+    onFocus: noop,
   };
 
   it('renders a checkbox if allowMultiple is true', () => {
@@ -56,7 +59,7 @@ describe('<Option />', () => {
     const input = mountWithApp(
       <Option {...defaultProps} onClick={spy} allowMultiple />,
     ).find('input')!;
-    input.trigger('onChange');
+    input.trigger('onClick');
 
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(section, index);
@@ -73,10 +76,52 @@ describe('<Option />', () => {
     expect(spy).not.toHaveBeenCalled();
   });
 
+  describe('onPointerEnter', () => {
+    it('is called with section and index if option is not disabled', () => {
+      const spy = jest.fn();
+      const {section, index} = defaultProps;
+
+      const listItem = mountWithApp(
+        <Option {...defaultProps} onPointerEnter={spy} />,
+      ).find('li')!;
+      listItem.trigger('onPointerEnter');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(section, index);
+    });
+
+    it('is not called if option is disabled', () => {
+      const spy = jest.fn();
+
+      const listItem = mountWithApp(
+        <Option {...defaultProps} onPointerEnter={spy} disabled />,
+      ).find('li')!;
+      listItem.trigger('onPointerEnter');
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('onFocus', () => {
+    it('is called with section and index', () => {
+      const spy = jest.fn();
+      const {section, index} = defaultProps;
+
+      const listItem = mountWithApp(
+        <Option {...defaultProps} onFocus={spy} />,
+      ).find('button')!;
+      listItem.trigger('onFocus');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(section, index);
+    });
+  });
+
   it('sets the pass through props for Checkbox if multiple items are allowed', () => {
     const {id, value, select, disabled} = defaultProps;
     const checkbox = mountWithApp(
       <Option {...defaultProps} allowMultiple />,
+      {},
     ).find(Checkbox)!;
 
     expect(checkbox.prop('id')).toBe(id);
@@ -100,7 +145,7 @@ describe('<Option />', () => {
     );
 
     expect(option).toContainReactComponent('label', {
-      className: 'Label select',
+      className: expect.stringContaining('Label select'),
     });
   });
 
@@ -111,7 +156,7 @@ describe('<Option />', () => {
 
     expect(option).toContainReactComponent(Scrollable.ScrollTo);
     expect(option).toContainReactComponent('label', {
-      className: 'Label active',
+      className: expect.stringContaining('Label active'),
     });
   });
 
@@ -120,7 +165,7 @@ describe('<Option />', () => {
       const option = mountWithApp(<Option {...defaultProps} allowMultiple />);
 
       expect(option).toContainReactComponent('label', {
-        className: 'Label',
+        className: expect.stringContaining('Label'),
       });
     });
 
@@ -130,7 +175,7 @@ describe('<Option />', () => {
       );
 
       expect(option).toContainReactComponent('label', {
-        className: 'Label verticalAlignTop',
+        className: expect.stringContaining('Label verticalAlignTop'),
       });
     });
 
@@ -140,7 +185,7 @@ describe('<Option />', () => {
       );
 
       expect(option).toContainReactComponent('label', {
-        className: 'Label verticalAlignCenter',
+        className: expect.stringContaining('Label verticalAlignCenter'),
       });
     });
 
@@ -150,7 +195,7 @@ describe('<Option />', () => {
       );
 
       expect(option).toContainReactComponent('label', {
-        className: 'Label verticalAlignBottom',
+        className: expect.stringContaining('Label verticalAlignBottom'),
       });
     });
   });

@@ -1,12 +1,7 @@
 import React, {useState} from 'react';
 import {
-  Stack,
   Icon,
-  Page,
-  Card,
-  Layout,
-  Button,
-  Popover,
+  LegacyCard,
   TextField,
   Listbox,
   AutoSelection,
@@ -94,20 +89,22 @@ const interval = 25;
 
 function ListboxWithSearchExample() {
   const [showFooterAction, setShowFooterAction] = useState(true);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState<string>('');
   const [lazyLoading, setLazyLoading] = useState(false);
   const [willLoadMoreResults, setWillLoadMoreResults] = useState(true);
   const [visibleOptionIndex, setVisibleOptionIndex] = useState(6);
   const [activeOptionId, setActiveOptionId] = useState(segments[0].id);
   const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
-  const [filteredSegments, setFilteredSegments] = useState([]);
+  const [filteredSegments, setFilteredSegments] = useState<
+    typeof segments[number][]
+  >([]);
 
   const handleClickShowAll = () => {
     setShowFooterAction(false);
     setVisibleOptionIndex(segments.length);
   };
 
-  const handleFilterSegments = (query) => {
+  const handleFilterSegments = (query: any) => {
     const nextFilteredSegments = segments.filter((segment) => {
       return segment.label
         .toLocaleLowerCase()
@@ -117,7 +114,7 @@ function ListboxWithSearchExample() {
     setFilteredSegments(nextFilteredSegments);
   };
 
-  const handleQueryChange = (query) => {
+  const handleQueryChange = (query: any) => {
     setQuery(query);
 
     if (query.length >= 2) handleFilterSegments(query);
@@ -127,11 +124,7 @@ function ListboxWithSearchExample() {
     handleQueryChange('');
   };
 
-  const handleResetVisibleOptionIndex = () => {
-    setVisibleOptionIndex(interval);
-  };
-
-  const handleSegmentSelect = (segmentIndex) => {
+  const handleSegmentSelect = (segmentIndex: string) => {
     if (segmentIndex === actionValue) {
       return handleClickShowAll();
     }
@@ -139,11 +132,15 @@ function ListboxWithSearchExample() {
     setSelectedSegmentIndex(Number(segmentIndex));
   };
 
-  const handleActiveOptionChange = (_, domId) => {
+  const handleActiveOptionChange = (_: string, domId: string) => {
     setActiveOptionId(domId);
   };
 
-  /* This is just to illustrate lazy loading state vs loading state. This is an example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage` from your GraphQL query data instead of this fake "willLoadMoreResults" state along with setting `first` your GraphQL query's variables to your app's default max edges limit (e.g., 250). */
+  // This is just to illustrate lazy loading state vs loading state. This is an
+  // example, so we aren't fetching from GraphQL. You'd use `pageInfo.hasNextPage`
+  // from your GraphQL query data instead of this fake "willLoadMoreResults" state
+  // along with setting `first` your GraphQL query's variables to your app's
+  // default max edges limit (e.g., 250).
 
   const handleLazyLoadSegments = () => {
     if (willLoadMoreResults && !showFooterAction) {
@@ -210,7 +207,9 @@ function ListboxWithSearchExample() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span style={{color: 'var(--p-color-text-emphasis)'}}>
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 
@@ -247,7 +246,7 @@ function ListboxWithSearchExample() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <div
         style={{
           alignItems: 'stretch',
@@ -267,18 +266,17 @@ function ListboxWithSearchExample() {
           shadow
           style={{
             position: 'relative',
-            width: '310px',
             height: '292px',
-            padding: 'var(--p-space-2) 0',
-            borderBottomLeftRadius: 'var(--p-border-radius-2)',
-            borderBottomRightRadius: 'var(--p-border-radius-2)',
+            padding: 'var(--p-space-200) 0',
+            borderBottomLeftRadius: 'var(--p-border-radius-200)',
+            borderBottomRightRadius: 'var(--p-border-radius-200)',
           }}
           onScrolledToBottom={handleLazyLoadSegments}
         >
           {listboxMarkup}
         </Scrollable>
       </div>
-    </Card>
+    </LegacyCard>
   );
 }
 

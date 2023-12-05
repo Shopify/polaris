@@ -2,12 +2,14 @@ import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
+import {Backdrop} from '../../Backdrop';
 import {Badge} from '../../Badge';
+import {Box} from '../../Box';
 import {Button} from '../../Button';
+import {Portal} from '../../Portal';
 import {Scrollable} from '../../Scrollable';
 import {Spinner} from '../../Spinner';
-import {Portal} from '../../Portal';
-import {Backdrop} from '../../Backdrop';
+import {Text} from '../../Text';
 import {Footer, Dialog, Header} from '../components';
 import {Modal} from '../Modal';
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -157,12 +159,12 @@ describe('<Modal>', () => {
   describe('large', () => {
     it('passes large to Dialog if true', () => {
       const modal = mountWithApp(
-        <Modal title="foo" large onClose={jest.fn()} open>
+        <Modal title="foo" size="large" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {large: true});
+      expect(modal).toContainReactComponent(Dialog, {size: 'large'});
     });
 
     it('does not pass large to Dialog be default', () => {
@@ -172,19 +174,19 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {large: undefined});
+      expect(modal).toContainReactComponent(Dialog, {size: undefined});
     });
   });
 
   describe('small', () => {
     it('passes small to Dialog if true', () => {
       const modal = mountWithApp(
-        <Modal title="foo" small onClose={jest.fn()} open>
+        <Modal title="foo" size="small" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {small: true});
+      expect(modal).toContainReactComponent(Dialog, {size: 'small'});
     });
 
     it('does not pass small to Dialog by default', () => {
@@ -194,7 +196,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {small: undefined});
+      expect(modal).toContainReactComponent(Dialog, {size: undefined});
     });
   });
 
@@ -223,12 +225,12 @@ describe('<Modal>', () => {
   describe('fullScreen', () => {
     it('passes fullScreen to Dialog if true', () => {
       const modal = mountWithApp(
-        <Modal title="foo" fullScreen onClose={jest.fn()} open>
+        <Modal title="foo" size="fullScreen" onClose={jest.fn()} open>
           <Badge />
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {fullScreen: true});
+      expect(modal).toContainReactComponent(Dialog, {size: 'fullScreen'});
     });
 
     it('does not pass fullScreen to Dialog be default', () => {
@@ -238,7 +240,7 @@ describe('<Modal>', () => {
         </Modal>,
       );
 
-      expect(modal).toContainReactComponent(Dialog, {fullScreen: undefined});
+      expect(modal).toContainReactComponent(Dialog, {size: undefined});
     });
   });
 
@@ -302,9 +304,7 @@ describe('<Modal>', () => {
         <Modal onClose={jest.fn()} open title="foo" />,
       );
 
-      expect(modal.find(Header)).toContainReactComponent('div', {
-        className: 'Header',
-      });
+      expect(modal.find(Box)).toContainReactComponent(Text);
     });
 
     it('only renders a close button when titleHidden is present', () => {
@@ -313,7 +313,13 @@ describe('<Modal>', () => {
       );
 
       expect(modal.find(Header)).toContainReactComponent('div', {
-        className: 'titleHidden',
+        style: expect.objectContaining({
+          position: 'absolute',
+        }) as React.CSSProperties,
+      });
+      expect(modal.find(Header)).not.toContainReactComponent(Text, {
+        as: 'h2',
+        variant: 'headingLg',
       });
     });
   });
@@ -348,6 +354,26 @@ describe('<Modal>', () => {
       expect(modal).toContainReactComponent(Footer);
     });
 
+    it('renders a destructive primaryAction', () => {
+      const modal = mountWithApp(
+        <Modal
+          title="foo"
+          onClose={jest.fn()}
+          open
+          primaryAction={{
+            content: 'Save',
+            onAction: jest.fn(),
+            destructive: true,
+          }}
+        />,
+      );
+
+      expect(modal).toContainReactComponent(Button, {
+        variant: 'primary',
+        tone: 'critical',
+      });
+    });
+
     it('renders if secondaryActions are passed in', () => {
       const modal = mountWithApp(
         <Modal
@@ -359,6 +385,24 @@ describe('<Modal>', () => {
       );
 
       expect(modal).toContainReactComponent(Footer);
+    });
+  });
+
+  it('renders destructive secondaryActions', () => {
+    const modal = mountWithApp(
+      <Modal
+        title="foo"
+        onClose={jest.fn()}
+        open
+        secondaryActions={[
+          {content: 'Discard', onAction: jest.fn(), destructive: true},
+        ]}
+      />,
+    );
+
+    expect(modal).toContainReactComponent(Button, {
+      variant: 'primary',
+      tone: 'critical',
     });
   });
 

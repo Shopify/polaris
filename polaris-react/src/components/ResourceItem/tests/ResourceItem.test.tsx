@@ -1,10 +1,14 @@
-import React, {AllHTMLAttributes} from 'react';
+import React from 'react';
+import type {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
+import {setMediaWidth} from 'tests/utilities/breakpoints';
 
 import {Avatar} from '../../Avatar';
 import {Button} from '../../Button';
 import {ButtonGroup} from '../../ButtonGroup';
 import {Checkbox} from '../../Checkbox';
+import {InlineStack} from '../../InlineStack';
 import {Thumbnail} from '../../Thumbnail';
 import {UnstyledLink} from '../../UnstyledLink';
 import {ResourceItem} from '../ResourceItem';
@@ -17,10 +21,12 @@ describe('<ResourceItem />', () => {
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
     spy.mockImplementation(() => {});
+    matchMedia.mock();
   });
 
   afterEach(() => {
     spy.mockRestore();
+    matchMedia.restore();
   });
 
   const mockDefaultContext = {
@@ -126,6 +132,7 @@ describe('<ResourceItem />', () => {
     });
 
     it('is used on the disclosure action menu when there are persistent actions', () => {
+      setMediaWidth('breakpoints-lg');
       const item = mountWithApp(
         <ResourceListContext.Provider value={mockSelectableContext}>
           <ResourceItem
@@ -142,7 +149,7 @@ describe('<ResourceItem />', () => {
       const expectedLabel = `Actions for ${name}`;
 
       expect(item).toContainReactComponentTimes(Button, 1, {
-        plain: true,
+        variant: 'tertiary',
         accessibilityLabel: expectedLabel,
       });
     });
@@ -405,7 +412,12 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.find('div', {className: styles.Handle})!.trigger('onClick', {
+      const checkboxWrapperEl = wrapper.findWhere<'div'>(
+        (node) =>
+          node.is('div') && node.prop('className')!.includes('CheckboxWrapper'),
+      );
+
+      checkboxWrapperEl!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {},
       });
@@ -420,7 +432,12 @@ describe('<ResourceItem />', () => {
         </ResourceListContext.Provider>,
       );
 
-      wrapper.find('div', {className: styles.Handle})!.trigger('onClick', {
+      const checkboxWrapperEl = wrapper.findWhere<'div'>(
+        (node) =>
+          node.is('div') && node.prop('className')!.includes('CheckboxWrapper'),
+      );
+
+      checkboxWrapperEl!.trigger('onChange', {
         stopPropagation: () => {},
         nativeEvent: {shiftKey: false},
       });
@@ -545,8 +562,7 @@ describe('<ResourceItem />', () => {
           <ResourceItem id={itemId} url={url} media={<Avatar customer />} />
         </ResourceListContext.Provider>,
       );
-      const media = wrapper.find('div', {className: styles.Media});
-      expect(media).toContainReactComponent(Avatar);
+      expect(wrapper).toContainReactComponent(Avatar);
     });
 
     it('includes a <Thumbnail /> if one is provided', () => {
@@ -559,8 +575,7 @@ describe('<ResourceItem />', () => {
           />
         </ResourceListContext.Provider>,
       );
-      const media = wrapper.find('div', {className: styles.Media});
-      expect(media).toContainReactComponent(Thumbnail);
+      expect(wrapper).toContainReactComponent(Thumbnail);
     });
   });
 
@@ -576,7 +591,8 @@ describe('<ResourceItem />', () => {
       });
     });
 
-    it('renders shortcut actions when some are provided', () => {
+    it('renders shortcut actions when some are provided and viewport is lgUp', () => {
+      setMediaWidth('breakpoints-lg');
       const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
@@ -591,7 +607,8 @@ describe('<ResourceItem />', () => {
       });
     });
 
-    it('renders persistent shortcut actions if persistActions is true', () => {
+    it('renders persistent shortcut actions if persistActions is true and viewport is lgUp', () => {
+      setMediaWidth('breakpoints-lg');
       const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
@@ -650,6 +667,44 @@ describe('<ResourceItem />', () => {
     });
   });
 
+  describe('mouse events', () => {
+    it('triggers onMouseOver callback when mouse over event is triggered on container', () => {
+      const onMouseOverSpy = jest.fn();
+      const resourceItem = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectModeContext}>
+          <ResourceItem id={itemId} url={url} onMouseOver={onMouseOverSpy} />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(onMouseOverSpy).not.toHaveBeenCalled();
+
+      const wrapperDiv = resourceItem.find('div', {'data-href': url} as any);
+
+      wrapperDiv!.trigger('onMouseOver');
+
+      expect(onMouseOverSpy).toHaveBeenCalled();
+      onMouseOverSpy.mockRestore();
+    });
+
+    it('triggers onMouseOut callback when mouse out event is triggered on container', () => {
+      const onMouseOutSpy = jest.fn();
+      const resourceItem = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectModeContext}>
+          <ResourceItem id={itemId} url={url} onMouseOut={onMouseOutSpy} />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(onMouseOutSpy).not.toHaveBeenCalled();
+
+      const wrapperDiv = resourceItem.find('div', {'data-href': url} as any);
+
+      wrapperDiv!.trigger('onMouseOut');
+
+      expect(onMouseOutSpy).toHaveBeenCalled();
+      onMouseOutSpy.mockRestore();
+    });
+  });
+
   describe('focused', () => {
     it('removes the focus state when mousing out a focused item', () => {
       const resourceItem = mountWithApp(
@@ -679,9 +734,7 @@ describe('<ResourceItem />', () => {
     it('renders with default flex-start alignment if not provided', () => {
       const resourceItem = mountWithApp(<ResourceItem id={itemId} url={url} />);
 
-      expect(resourceItem).toContainReactComponent('div', {
-        className: 'Container',
-      });
+      expect(resourceItem).toContainReactComponent(InlineStack);
     });
 
     it('renders with leading vertical alignment', () => {
@@ -689,8 +742,8 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="leading" />,
       );
 
-      expect(resourceItem).toContainReactComponent('div', {
-        className: 'Container alignmentLeading',
+      expect(resourceItem).toContainReactComponent(InlineStack, {
+        blockAlign: 'start',
       });
     });
 
@@ -699,8 +752,8 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="center" />,
       );
 
-      expect(resourceItem).toContainReactComponent('div', {
-        className: 'Container alignmentCenter',
+      expect(resourceItem).toContainReactComponent(InlineStack, {
+        blockAlign: 'center',
       });
     });
 
@@ -709,8 +762,8 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="trailing" />,
       );
 
-      expect(resourceItem).toContainReactComponent('div', {
-        className: 'Container alignmentTrailing',
+      expect(resourceItem).toContainReactComponent(InlineStack, {
+        blockAlign: 'end',
       });
     });
 
@@ -719,8 +772,8 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="fill" />,
       );
 
-      expect(resourceItem).toContainReactComponent('div', {
-        className: 'Container alignmentFill',
+      expect(resourceItem).toContainReactComponent(InlineStack, {
+        blockAlign: 'stretch',
       });
     });
 
@@ -729,8 +782,8 @@ describe('<ResourceItem />', () => {
         <ResourceItem id={itemId} url={url} verticalAlignment="baseline" />,
       );
 
-      expect(resourceItem).toContainReactComponent('div', {
-        className: 'Container alignmentBaseline',
+      expect(resourceItem).toContainReactComponent(InlineStack, {
+        blockAlign: 'baseline',
       });
     });
   });

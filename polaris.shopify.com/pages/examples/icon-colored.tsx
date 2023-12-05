@@ -6,13 +6,14 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function IconExample() {
   return (
     <div>
-      <Icon source={CirclePlusMinor} color="base" />
-      <Icon source={CirclePlusMinor} color="subdued" />
-      <Icon source={CirclePlusMinor} color="primary" />
-      <Icon source={CirclePlusMinor} color="highlight" />
-      <Icon source={CirclePlusMinor} color="success" />
-      <Icon source={CirclePlusMinor} color="warning" />
-      <Icon source={CirclePlusMinor} color="critical" />
+      <Icon source={CirclePlusMinor} tone="base" />
+      <Icon source={CirclePlusMinor} tone="subdued" />
+      <Icon source={CirclePlusMinor} tone="primary" />
+      <Icon source={CirclePlusMinor} tone="info" />
+      <Icon source={CirclePlusMinor} tone="success" />
+      <Icon source={CirclePlusMinor} tone="caution" />
+      <Icon source={CirclePlusMinor} tone="warning" />
+      <Icon source={CirclePlusMinor} tone="critical" />
     </div>
   );
 }

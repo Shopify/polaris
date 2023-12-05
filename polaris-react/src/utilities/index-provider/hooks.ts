@@ -2,9 +2,8 @@ import {useContext, useRef, useCallback} from 'react';
 
 import {useI18n} from '../i18n';
 
-import {
-  SELECT_ALL_ITEMS,
-  SelectionType,
+import {SELECT_ALL_ITEMS, SelectionType} from './types';
+import type {
   HandleSelectionChange,
   Range,
   BulkSelectionDataOptions,
@@ -180,6 +179,8 @@ export function useHandleBulkSelection({
         selectionType === SelectionType.All
       ) {
         onSelectionChange(selectionType, toggleType);
+      } else if (selectionType === SelectionType.Range) {
+        onSelectionChange(SelectionType.Range, toggleType, selection);
       }
     },
     [onSelectionChange],

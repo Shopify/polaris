@@ -1,0 +1,41 @@
+# This workflow warns and then closes issues and PRs that have had no activity for a specified amount of time.
+#
+# You can adjust the behavior by modifying this file.
+# For more information, see:
+# https://github.com/actions/stale
+name: Mark stale issues and pull requests
+
+on:
+  schedule:
+    - cron: '31 3 * * *' # randomly chosen time of day
+  workflow_dispatch:
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    permissions:
+      issues: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/stale@v4
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-issue-stale: 180
+          days-before-pr-stale: 180
+          days-before-close: 30
+          stale-issue-message: |-
+            Hi! We noticed there hasn’t been activity on this issue in a while. After 30 days, it will close automatically.
+
+            If it’s still relevant, or you have updates, comment and let us know. And don’t worry, you can always re-open later if needed.
+          stale-pr-message: |-
+            Hi! We noticed there hasn’t been activity on this PR in a while. After 30 days, it will close automatically.
+
+            If it’s still relevant, or you have updates, comment and let us know. And don’t worry, you can always re-open later if needed.
+          stale-issue-label: 'no-issue-activity'
+          stale-pr-label: 'no-pr-activity'
+          ascending: true
+          # The math seems a bit fuzzy, but this should amount to a max of 50 issues daily.
+          # But then the same issues get checked first so we don't end up progressing too quickly until we can close what we started.
+          # Hopefully https://github.com/actions/stale/issues/692 will be closed and fix some of this mess.
+          operations-per-run: 200

@@ -24,13 +24,18 @@ interface Columns {
 }
 
 export interface CellProps {
+  /**
+   * Set grid-template-areas
+   * @deprecated To avoid a11y issues, nest layout components in individual grid
+   * cells instead. See:
+   * https://polaris.shopify.com/components/layout-and-structure
+   */
   area?: string;
   column?: Cell;
   columnSpan?: Columns;
   row?: Cell;
   children?: React.ReactNode;
 }
-
 export function Cell({
   area: gridArea,
   column,

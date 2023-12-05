@@ -1,0 +1,14 @@
+@import '../../styles/variables.scss';
+
+.LedeParagraph {
+  &,
+  & p {
+    font-size: var(--font-size-600);
+    font-weight: var(--font-weight-500);
+    letter-spacing: var(--letter-spacing-300);
+
+    #{$notMarginConsideredHarmful} {
+      margin-bottom: 1.5rem;
+    }
+  }
+}

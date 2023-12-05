@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import type {ActionListItemDescriptor} from '../../../../types';
@@ -6,9 +6,14 @@ import {Scrollable} from '../../../Scrollable';
 import {Icon} from '../../../Icon';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {Badge} from '../../../Badge';
-import {TextStyle} from '../../../TextStyle';
+import {Text} from '../../../Text';
 import styles from '../../ActionList.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
+import {InlineStack} from '../../../InlineStack';
+import {Box} from '../../../Box';
+import {Tooltip} from '../../../Tooltip';
+import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
+import {useTheme} from '../../../../utilities/use-theme';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -20,6 +25,7 @@ export function Item({
   helpText,
   url,
   onAction,
+  onMouseEnter,
   icon,
   image,
   prefix,
@@ -28,14 +34,19 @@ export function Item({
   external,
   destructive,
   ellipsis,
+  truncate,
   active,
   role,
+  variant = 'default',
 }: ItemProps) {
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
     destructive && styles.destructive,
     active && styles.active,
+    variant === 'default' && styles.default,
+    variant === 'indented' && styles.indented,
+    variant === 'menu' && styles.menu,
   );
 
   let prefixMarkup: React.ReactNode | null = null;
@@ -58,37 +69,52 @@ export function Item({
     );
   }
 
-  const contentText = ellipsis && content ? `${content}…` : content;
+  let contentText: string | React.ReactNode = content || '';
+  if (truncate && content) {
+    contentText = <TruncateText>{content}</TruncateText>;
+  } else if (ellipsis) {
+    contentText = `${content}…`;
+  }
 
   const contentMarkup = helpText ? (
-    <span className={styles.ContentBlock}>
-      <span className={styles.ContentBlockInner}>{contentText}</span>
-      <TextStyle variation="subdued">{helpText}</TextStyle>
-    </span>
+    <>
+      <Box>{contentText}</Box>
+      <Text
+        as="span"
+        variant="bodySm"
+        tone={active || disabled ? undefined : 'subdued'}
+      >
+        {helpText}
+      </Text>
+    </>
   ) : (
     contentText
   );
 
   const badgeMarkup = badge && (
     <span className={styles.Suffix}>
-      <Badge status={badge.status}>{badge.content}</Badge>
+      <Badge tone={badge.tone}>{badge.content}</Badge>
     </span>
   );
 
   const suffixMarkup = suffix && (
-    <span className={styles.Suffix}>{suffix}</span>
+    <Box>
+      <span className={styles.Suffix}>{suffix}</span>
+    </Box>
   );
 
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <span className={styles.Content}>
+    <InlineStack blockAlign="center" gap="150" wrap={!truncate}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}
       {suffixMarkup}
-    </span>
+    </InlineStack>
   );
+
+  const contentWrapper = <Box width="100%">{contentElement}</Box>;
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
 
@@ -102,7 +128,7 @@ export function Item({
       onClick={disabled ? null : onAction}
       role={role}
     >
-      {contentElement}
+      {contentWrapper}
     </UnstyledLink>
   ) : (
     <button
@@ -114,8 +140,9 @@ export function Item({
       onClick={onAction}
       onMouseUp={handleMouseUpByBlurring}
       role={role}
+      onMouseEnter={onMouseEnter}
     >
-      {contentElement}
+      {contentWrapper}
     </button>
   );
 
@@ -126,3 +153,39 @@ export function Item({
     </>
   );
 }
+
+export const TruncateText = ({children}: {children: string}) => {
+  const theme = useTheme();
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  useIsomorphicLayoutEffect(() => {
+    if (textRef.current) {
+      setIsOverflowing(
+        textRef.current.scrollWidth > textRef.current.offsetWidth,
+      );
+    }
+  }, [children]);
+  const text = (
+    <Text as="span" truncate>
+      <Box width="100%" ref={textRef}>
+        {children}
+      </Box>
+    </Text>
+  );
+
+  return isOverflowing ? (
+    <Tooltip
+      zIndexOverride={Number(theme.zIndex['z-index-11'])}
+      preferredPosition="above"
+      hoverDelay={1000}
+      content={children}
+      dismissOnMouseOut
+    >
+      <Text as="span" truncate>
+        {children}
+      </Text>
+    </Tooltip>
+  ) : (
+    text
+  );
+};

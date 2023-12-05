@@ -1,4 +1,4 @@
-import {Button, Modal, TextContainer} from '@shopify/polaris';
+import {Button, Frame, Modal, TextContainer} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -13,23 +13,25 @@ function ModalWithScrollListenerExample() {
 
   return (
     <div style={{height: '500px'}}>
-      <Modal
-        activator={activator}
-        open={active}
-        title="Scrollable content"
-        onClose={handleChange}
-        onScrolledToBottom={handleScrollBottom}
-      >
-        {Array.from({length: 50}, (_, index) => (
-          <Modal.Section key={index}>
-            <TextContainer>
-              <p>
-                Item <a href="#">#{index}</a>
-              </p>
-            </TextContainer>
-          </Modal.Section>
-        ))}
-      </Modal>
+      <Frame>
+        <Modal
+          activator={activator}
+          open={active}
+          title="Scrollable content"
+          onClose={handleChange}
+          onScrolledToBottom={handleScrollBottom}
+        >
+          {Array.from({length: 50}, (_, index) => (
+            <Modal.Section key={index}>
+              <TextContainer>
+                <p>
+                  Item <a href="#">#{index}</a>
+                </p>
+              </TextContainer>
+            </Modal.Section>
+          ))}
+        </Modal>
+      </Frame>
     </div>
   );
 }

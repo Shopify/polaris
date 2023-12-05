@@ -2,5 +2,29 @@ $pageMaxWidth: 1240px;
 
 $breakpointMobile: 500px;
 $breakpointTablet: 768px;
+$breakpointDesktopSmall: 1040px;
 $breakpointDesktop: 1400px;
 $breakpointDesktopLarge: 1600px;
+
+// NOTE: Prettier messes with the comments for some reason
+// prettier-ignore
+$notMarginConsideredHarmful:
+  // Extend the current selector
+  '&'
+  // Use :where() to not change the specificity of the selector
+  + ':where('
+  // Only match when the current selector is NOT a decendent of the
+  // .margin-considered-harmful class
+  + ':not('
+  // Using seemingly redundant :is() here for backwards compatability with older
+  // browsers that haven't yet enabled complex selectors within a `:not()`, but
+  // HAVE enabled them in a `:is()`. See:
+  // https://groups.google.com/a/chromium.org/g/blink-dev/c/0alTkXvDCL8/m/-ClOGvOJBAAJ
+  + ':is('
+  // :global() to stop CSS Modules munging this classname.
+  // The * means "all possible decenders", so when coupled with the :not(), it
+  // means "not an ancestor of". This is necessary due to the way :not() works
+  // when finding a matching selector. See:
+  // https://developer.mozilla.org/en-US/docs/Web/CSS/:not?ref=serpapi#description
+  + ':global(.margin-considered-harmful) *)'
+  + '))';

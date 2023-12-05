@@ -1,22 +1,27 @@
-import {Card, ResourceList, ResourceItem, TextStyle} from '@shopify/polaris';
+import {LegacyCard, ResourceList, ResourceItem, Text} from '@shopify/polaris';
+import type {ResourceListProps} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
+const items = [
+  {
+    id: '6',
+    url: 'posts/6',
+    title: 'How To Get Value From Wireframes',
+    author: 'Jonathan Mangrove',
+  },
+];
+
 function ResourceItemExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<
+    ResourceListProps['selectedItems']
+  >([]);
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={{singular: 'blog post', plural: 'blog posts'}}
-        items={[
-          {
-            id: 6,
-            url: 'posts/6',
-            title: 'How To Get Value From Wireframes',
-            author: 'Jonathan Mangrove',
-          },
-        ]}
+        items={items}
         selectedItems={selectedItems}
         onSelectionChange={setSelectedItems}
         selectable
@@ -30,15 +35,15 @@ function ResourceItemExample() {
               accessibilityLabel={`View details for ${title}`}
               name={title}
             >
-              <h3>
-                <TextStyle variation="strong">{title}</TextStyle>
-              </h3>
+              <Text variant="bodyMd" fontWeight="bold" as="h3">
+                {title}
+              </Text>
               {authorMarkup}
             </ResourceItem>
           );
         }}
       />
-    </Card>
+    </LegacyCard>
   );
 }
 

@@ -4,6 +4,8 @@ import {existsSync} from 'fs';
 import path from 'path';
 import {writeFile, readFile, mkdir, rm} from 'fs/promises';
 import pMap from 'p-map';
+import ora from 'ora';
+import * as polarisIcons from '@shopify/polaris-icons';
 
 const sitemapPath = path.join(process.cwd(), 'public/sitemap.xml');
 const imgDir = path.join(process.cwd(), 'public/og-images');
@@ -23,7 +25,7 @@ const shopifyLogo = `<svg height="30" width="30" viewBox="0 0 109.5 124.5" xmlns
 </svg>
 `;
 
-const defaultImage = `<svg viewBox="0 0 99 99" fill="none" xmlns="http://www.w3.org/2000/svg">
+const defaultImage = `<svg viewBox="0 0 99 99" xmlns="http://www.w3.org/2000/svg">
 <path d="M98.9999 49.5C98.9999 76.838 76.838 98.9999 49.5 98.9999C22.1619 98.9999 0 76.838 0 49.5C0 22.1619 22.1619 0 49.5 0C76.838 0 98.9999 22.1619 98.9999 49.5Z" fill="#fff"/>
 <path d="M99.0001 49.6709C99.0001 76.9144 76.9149 98.9996 49.6714 98.9996C49.6714 71.7561 71.7566 49.6709 99.0001 49.6709Z" fill="#fff"/>
 <path d="M49.5 0C49.5 27.3381 27.3381 49.5 0 49.5C27.3381 49.5 49.5 71.6618 49.5 98.9999C49.5 71.6618 71.6618 49.5 98.9999 49.5C71.6618 49.5 49.5 27.3381 49.5 0Z" fill="#000"/>
@@ -51,25 +53,35 @@ const generateHTML = async (url, slug) => {
   if (
     url.startsWith('/foundations/') ||
     url.startsWith('/design/') ||
-    url.startsWith('/content/') ||
-    url.startsWith('/patterns/')
+    url.startsWith('/content/')
   ) {
-    const mdFilePath = path.join(process.cwd(), `content${url}.md`);
+    let mdFilePath = path.join(process.cwd(), `content${url}.mdx`);
+    if (!existsSync(mdFilePath)) {
+      // In case the markdown is nested in a folder instead of named after the
+      // url directly, we want to try /index.md instead
+      mdFilePath = path.join(process.cwd(), `content${url}/index.mdx`);
+      if (!existsSync(mdFilePath)) {
+        throw new Error(
+          `Failed to load content file for url ${url}. Tried content${url}.mdx, content${url}/index.mdx`,
+        );
+      }
+    }
     const markdownContent = await readFile(mdFilePath, 'utf-8');
     const {data} = matter(markdownContent);
-    if (!data.icon) return;
-    const iconFilePath = path.join(
-      process.cwd(),
-      `../polaris-icons/dist/svg/${data.icon}.svg`,
-    );
-    const iconData = await readFile(iconFilePath);
+    if (data.icon && data.icon in polarisIcons) {
+      const iconFilePath = path.join(
+        process.cwd(),
+        `../polaris-icons/dist/svg/${data.icon}.svg`,
+      );
+      const iconData = await readFile(iconFilePath);
 
-    htmlImg = `<div class="polaris-icon">${iconData}</div>`;
+      htmlImg = `<div class="polaris-icon">${iconData}</div>`;
+    }
   }
 
   const html = `
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500');
+  @import url('https://cdn.shopify.com/static/fonts/inter/inter.css');
 
   * {
     margin: 0;
@@ -90,7 +102,7 @@ const generateHTML = async (url, slug) => {
 
   h1 {
     font-size: 80px;
-    font-weight: 500;
+    font-weight: 650;
     letter-spacing: -0.01rem;
     max-width: 520px;
   }
@@ -154,7 +166,11 @@ const generateHTML = async (url, slug) => {
 };
 
 const genOgImages = async () => {
-  if (existsSync(imgDir)) await rm(imgDir, {recursive: true});
+  const spinner = ora('Generating Open Graph images from sitemap').start();
+  if (existsSync(imgDir)) {
+    await rm(imgDir, {recursive: true});
+  }
+
   await mkdir(imgDir, {recursive: true});
 
   const sitemap = await readFile(sitemapPath, 'utf-8');
@@ -166,6 +182,8 @@ const genOgImages = async () => {
     defaultViewport: {width: 1200, height: 630},
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
+
+  let completed = 0;
 
   const getPNG = async (url) => {
     try {
@@ -182,9 +200,11 @@ const genOgImages = async () => {
       }
       await writeFile(`${imgDir}${imgPath}/${slug}.png`, image);
       await page.close();
+      completed++;
+      spinner.text = `Generated ${completed} of ${urls.length} Open Graph images from sitemap`;
     } catch (error) {
-      console.error(`❌ Failed to generate png for ${url}`);
-      throw new Error(error);
+      spinner.fail(`Failed to generate Open Graph png for ${url}`);
+      throw error;
     }
   };
 
@@ -193,7 +213,9 @@ const genOgImages = async () => {
   await Promise.all(generateImages);
 
   await browser.close();
-  console.log(`✅ Created ${urls.length} og-images from sitemap`);
+  spinner.succeed(
+    `Generated ${urls.length} of ${urls.length} Open Graph images from sitemap`,
+  );
 };
 
 export default genOgImages;

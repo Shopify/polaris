@@ -5,10 +5,10 @@ import {
   EmptySearchResult,
   Icon,
   Listbox,
-  Stack,
+  LegacyStack,
   Tag,
   TextContainer,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
@@ -296,7 +296,7 @@ export function WithMultiSelect() {
         ) : null}
       </Combobox>
       <TextContainer>
-        <Stack>{tagsMarkup}</Stack>
+        <LegacyStack>{tagsMarkup}</LegacyStack>
       </TextContainer>
     </div>
   );
@@ -410,7 +410,7 @@ export function WithMultiSelectAndManualSelection() {
         ) : null}
       </Combobox>
       <TextContainer>
-        <Stack>{tagsMarkup}</Stack>
+        <LegacyStack>{tagsMarkup}</LegacyStack>
       </TextContainer>
     </div>
   );
@@ -481,7 +481,9 @@ export function WithMultiSelectAndVerticalContent() {
       return (
         <p>
           {start}
-          <TextStyle variation="strong">{highlight}</TextStyle>
+          <Text fontWeight="bold" as="span">
+            {highlight}
+          </Text>
           {end}
         </p>
       );
@@ -505,13 +507,13 @@ export function WithMultiSelectAndVerticalContent() {
 
   const verticalContentMarkup =
     selectedTags.length > 0 ? (
-      <Stack spacing="extraTight" alignment="center">
+      <LegacyStack spacing="extraTight" alignment="center">
         {selectedTags.map((tag) => (
           <Tag key={`option-${tag}`} onRemove={removeTag(tag)}>
             {tag}
           </Tag>
         ))}
-      </Stack>
+      </LegacyStack>
     ) : null;
 
   const optionMarkup =

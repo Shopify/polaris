@@ -4,8 +4,9 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
+        <link rel="preconnect" href="https://cdn.shopify.com/" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          href="https://cdn.shopify.com/static/fonts/inter/inter.css"
           rel="stylesheet"
         ></link>
       </Head>

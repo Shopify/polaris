@@ -1,10 +1,10 @@
 import {
   AppProvider,
   Page,
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -30,38 +30,38 @@ function AppProviderExample() {
       }}
     >
       <Page>
-        <Card>
+        <LegacyCard>
           <ResourceList
             showHeader
             items={[
               {
-                id: 341,
-                url: 'customers/341',
+                id: '341',
+                url: '#',
                 name: 'Mae Jemison',
                 location: 'Decatur, USA',
               },
               {
-                id: 256,
-                url: 'customers/256',
+                id: '256',
+                url: '#',
                 name: 'Ellen Ochoa',
                 location: 'Los Angeles, USA',
               },
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar customer size="medium" name={name} />;
+              const media = <Avatar customer size="md" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
-                  <h3>
-                    <TextStyle variation="strong">{name}</TextStyle>
-                  </h3>
+                  <Text variant="bodyMd" fontWeight="bold" as="h3">
+                    {name}
+                  </Text>
                   <div>{location}</div>
                 </ResourceList.Item>
               );
             }}
           />
-        </Card>
+        </LegacyCard>
       </Page>
     </AppProvider>
   );

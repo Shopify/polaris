@@ -8,14 +8,13 @@ import {Scrollable} from '../Scrollable';
 import {layer, dataPolarisTopBar} from '../shared';
 
 import {
-  PreferredPosition,
-  PreferredAlignment,
   calculateVerticalPosition,
   calculateHorizontalPosition,
   rectIsOutsideOfRect,
   intersectionWithViewport,
   windowRect,
 } from './utilities/math';
+import type {PreferredPosition, PreferredAlignment} from './utilities/math';
 import styles from './PositionedOverlay.scss';
 
 type Positioning = 'above' | 'below';
@@ -27,6 +26,7 @@ interface OverlayDetails {
   positioning: Positioning;
   measuring: boolean;
   activatorRect: Rect;
+  chevronOffset: number;
 }
 
 export interface PositionedOverlayProps {
@@ -56,12 +56,14 @@ interface State {
   zIndex: number | null;
   outsideScrollableContainer: boolean;
   lockPosition: boolean;
+  chevronOffset: number;
 }
 
 const OBSERVER_CONFIG = {
   childList: true,
   subtree: true,
   characterData: true,
+  attributeFilter: ['style'],
 };
 
 export class PositionedOverlay extends PureComponent<
@@ -80,10 +82,11 @@ export class PositionedOverlay extends PureComponent<
     zIndex: null,
     outsideScrollableContainer: false,
     lockPosition: false,
+    chevronOffset: 0,
   };
 
   private overlay: HTMLElement | null = null;
-  private scrollableContainer: HTMLElement | Document | null = null;
+  private scrollableContainers: (HTMLElement | Document)[] = [];
   private observer: MutationObserver;
 
   constructor(props: PositionedOverlayProps) {
@@ -93,23 +96,20 @@ export class PositionedOverlay extends PureComponent<
   }
 
   componentDidMount() {
-    this.scrollableContainer = Scrollable.forNode(this.props.activator);
-    if (this.scrollableContainer && !this.props.fixed) {
-      this.scrollableContainer.addEventListener(
-        'scroll',
-        this.handleMeasurement,
-      );
+    this.setScrollableContainers();
+
+    if (this.scrollableContainers.length && !this.props.fixed) {
+      this.registerScrollHandlers();
     }
+
     this.handleMeasurement();
   }
 
   componentWillUnmount() {
     this.observer.disconnect();
-    if (this.scrollableContainer && !this.props.fixed) {
-      this.scrollableContainer.removeEventListener(
-        'scroll',
-        this.handleMeasurement,
-      );
+
+    if (this.scrollableContainers.length && !this.props.fixed) {
+      this.unregisterScrollHandlers();
     }
   }
 
@@ -160,6 +160,10 @@ export class PositionedOverlay extends PureComponent<
     );
   }
 
+  get firstScrollableContainer(): HTMLElement | Document | null {
+    return this.scrollableContainers[0] ?? null;
+  }
+
   forceUpdatePosition() {
     // Wait a single animation frame before re-measuring.
     // Consumer's may also need to setup their own timers for
@@ -169,8 +173,15 @@ export class PositionedOverlay extends PureComponent<
   }
 
   private overlayDetails = (): OverlayDetails => {
-    const {measuring, left, right, positioning, height, activatorRect} =
-      this.state;
+    const {
+      measuring,
+      left,
+      right,
+      positioning,
+      height,
+      activatorRect,
+      chevronOffset,
+    } = this.state;
 
     return {
       measuring,
@@ -179,11 +190,43 @@ export class PositionedOverlay extends PureComponent<
       desiredHeight: height,
       positioning,
       activatorRect,
+      chevronOffset,
     };
   };
 
   private setOverlay = (node: HTMLElement | null) => {
     this.overlay = node;
+  };
+
+  private setScrollableContainers = () => {
+    const containers: (HTMLElement | Document)[] = [];
+    let scrollableContainer = Scrollable.forNode(this.props.activator);
+
+    if (scrollableContainer) {
+      containers.push(scrollableContainer);
+
+      while (scrollableContainer?.parentElement) {
+        scrollableContainer = Scrollable.forNode(
+          scrollableContainer.parentElement,
+        );
+
+        containers.push(scrollableContainer);
+      }
+    }
+
+    this.scrollableContainers = containers;
+  };
+
+  private registerScrollHandlers = () => {
+    this.scrollableContainers.forEach((node) => {
+      node.addEventListener('scroll', this.handleMeasurement);
+    });
+  };
+
+  private unregisterScrollHandlers = () => {
+    this.scrollableContainers.forEach((node) => {
+      node.removeEventListener('scroll', this.handleMeasurement);
+    });
   };
 
   private handleMeasurement = () => {
@@ -201,7 +244,7 @@ export class PositionedOverlay extends PureComponent<
         measuring: true,
       }),
       () => {
-        if (this.overlay == null || this.scrollableContainer == null) {
+        if (this.overlay == null || this.firstScrollableContainer == null) {
           return;
         }
 
@@ -222,9 +265,9 @@ export class PositionedOverlay extends PureComponent<
         const activatorRect = getRectForNode(preferredActivator);
 
         const currentOverlayRect = getRectForNode(this.overlay);
-        const scrollableElement = isDocument(this.scrollableContainer)
+        const scrollableElement = isDocument(this.firstScrollableContainer)
           ? document.body
-          : this.scrollableContainer;
+          : this.firstScrollableContainer;
         const scrollableContainerRect = getRectForNode(scrollableElement);
 
         const overlayRect = fullWidth
@@ -272,6 +315,11 @@ export class PositionedOverlay extends PureComponent<
           preferredAlignment,
         );
 
+        const chevronOffset =
+          activatorRect.center.x -
+          horizontalPosition +
+          overlayMargins.horizontal * 2;
+
         this.setState(
           {
             measuring: false,
@@ -292,6 +340,7 @@ export class PositionedOverlay extends PureComponent<
                 intersectionWithViewport(scrollableContainerRect),
               ),
             zIndex,
+            chevronOffset,
           },
           () => {
             if (!this.overlay) return;

@@ -19,11 +19,11 @@ export interface CollapsibleProps {
   /** Toggle whether the collapsible is expanded or not. */
   open: boolean;
   /** Override transition properties. When set to false, disables transition completely.
-   * @default transition={{duration: 'var(--p-duration-150)', timingFunction: 'var(--p-ease-in-out)'}}
+   * @default transition={{duration: 'var(--p-motion-duration-150)', timingFunction: 'var(--p-motion-ease-in-out)'}}
    */
   transition?: boolean | Transition;
-  /** @deprecated Re-measuring is no longer necessary on children update **/
-  preventMeasuringOnChildrenUpdate?: boolean;
+  /** Callback when the animation completes. */
+  onAnimationEnd?(): void;
   /** The content to display inside the collapsible. */
   children?: React.ReactNode;
 }
@@ -35,8 +35,8 @@ export function Collapsible({
   expandOnPrint,
   open,
   transition = true,
-  preventMeasuringOnChildrenUpdate: _preventMeasuringOnChildrenUpdate,
   children,
+  onAnimationEnd,
 }: CollapsibleProps) {
   const [height, setHeight] = useState(0);
   const [isOpen, setIsOpen] = useState(open);
@@ -73,9 +73,10 @@ export function Collapsible({
       if (target === collapsibleContainer.current) {
         setAnimationState('idle');
         setIsOpen(open);
+        onAnimationEnd && onAnimationEnd();
       }
     },
-    [open],
+    [onAnimationEnd, open],
   );
 
   const startAnimation = useCallback(() => {

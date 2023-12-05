@@ -2,7 +2,8 @@ import React from 'react';
 
 import {Icon} from '../../../Icon';
 import type {IconProps} from '../../../Icon';
-import {Option, OptionProps} from '../Option';
+import {Option} from '../Option';
+import type {OptionProps} from '../Option';
 import {TextOption} from '../TextOption';
 import {classNames} from '../../../../utilities/css';
 import {ActionContext} from '../../../../utilities/listbox/context';
@@ -18,7 +19,7 @@ export function Action(props: ActionProps) {
 
   const iconMarkup = icon && (
     <div className={styles.Icon}>
-      <Icon color="subdued" source={icon} />
+      <Icon tone="subdued" source={icon} />
     </div>
   );
 

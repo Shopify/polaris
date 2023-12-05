@@ -1,5 +1,10 @@
-import {Link, Page, Card, DataTable, useBreakpoints} from '@shopify/polaris';
-import {useState} from 'react';
+import {
+  Link,
+  Page,
+  LegacyCard,
+  DataTable,
+  useBreakpoints,
+} from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function DataTableWithFixedFirstColumnsExample() {
@@ -275,13 +280,12 @@ function DataTableWithFixedFirstColumnsExample() {
       '$14,902.10',
     ],
   ];
-  const [sortedRows, setSortedRows] = useState(rows);
   const {lgDown} = useBreakpoints();
   const fixedFirstColumns = lgDown ? 2 : 0;
 
   return (
     <Page title="Sales by product">
-      <Card>
+      <LegacyCard>
         <DataTable
           columnContentTypes={[
             'text',
@@ -301,36 +305,15 @@ function DataTableWithFixedFirstColumnsExample() {
             'Gross sales',
             'Discounts',
           ]}
-          rows={sortedRows}
+          rows={rows}
           totals={['', '', '', 255, '$155,830.00', '', '']}
           sortable={[false, true, false, false, true]}
           defaultSortDirection="descending"
           initialSortColumnIndex={4}
-          onSort={(index, direction) => {
-            setSortedRows(
-              [...rows].sort((rowA, rowB) => {
-                const amountA = rowA[index]?.props?.children
-                  ? rowA[index]?.props?.children
-                  : parseFloat(rowA[index].substring(1));
-                const amountB = rowB[index]?.props?.children
-                  ? rowB[index]?.props?.children
-                  : parseFloat(rowB[index].substring(1));
-
-                return (
-                  direction === 'descending'
-                    ? amountA > amountB
-                    : amountB > amountA
-                )
-                  ? 1
-                  : -1;
-              }),
-            );
-          }}
-          footerContent={`Showing ${sortedRows.length} of ${sortedRows.length} results`}
           stickyHeader
           fixedFirstColumns={fixedFirstColumns}
         />
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }

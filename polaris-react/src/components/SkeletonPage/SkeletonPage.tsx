@@ -1,9 +1,9 @@
 import React from 'react';
 
-import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {SkeletonDisplayText} from '../SkeletonDisplayText';
-import {SkeletonBodyText} from '../SkeletonBodyText';
+import {Box} from '../Box';
+import {BlockStack} from '../BlockStack';
+import {InlineStack} from '../InlineStack';
 
 import styles from './SkeletonPage.scss';
 
@@ -16,8 +16,8 @@ export interface SkeletonPageProps {
   narrowWidth?: boolean;
   /** Shows a skeleton over the primary action */
   primaryAction?: boolean;
-  /** Shows a skeleton over the breadcrumb */
-  breadcrumbs?: boolean;
+  /** Shows a skeleton over the backAction */
+  backAction?: boolean;
   /** The child elements to render in the skeleton page. */
   children?: React.ReactNode;
 }
@@ -28,49 +28,83 @@ export function SkeletonPage({
   narrowWidth,
   primaryAction,
   title = '',
-  breadcrumbs,
+  backAction,
 }: SkeletonPageProps) {
   const i18n = useI18n();
-  const className = classNames(
-    styles.Page,
-    fullWidth && styles.fullWidth,
-    narrowWidth && styles.narrowWidth,
-  );
 
   const titleContent = title ? (
     <h1 className={styles.Title}>{title}</h1>
   ) : (
-    <div className={styles.SkeletonTitle} />
+    <div className={styles.SkeletonTitle}>
+      <Box
+        background="bg-fill-tertiary"
+        minWidth="120px"
+        minHeight="28px"
+        borderRadius="100"
+      />
+    </div>
   );
 
-  const titleMarkup = <div className={styles.TitleWrapper}>{titleContent}</div>;
-
   const primaryActionMarkup = primaryAction ? (
-    <div className={styles.PrimaryAction}>
-      <SkeletonDisplayText size="large" />
-    </div>
+    <Box
+      id="SkeletonPage-PrimaryAction"
+      borderRadius="100"
+      background="bg-fill-tertiary"
+      minHeight="2.25rem"
+      minWidth="6.25rem"
+    />
   ) : null;
 
-  const breadcrumbMarkup = breadcrumbs ? (
-    <div className={styles.BreadcrumbAction} style={{width: 60}}>
-      <SkeletonBodyText lines={1} />
-    </div>
+  const backActionMarkup = backAction ? (
+    <Box
+      borderRadius="100"
+      background="bg-fill-tertiary"
+      minHeight="2.25rem"
+      minWidth="2.25rem"
+      maxWidth="2.25rem"
+    />
   ) : null;
 
   return (
-    <div
-      className={className}
-      role="status"
-      aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
-    >
-      <div className={styles.Header}>
-        {breadcrumbMarkup}
-        <div className={styles.TitleAndPrimaryAction}>
-          {titleMarkup}
-          {primaryActionMarkup}
-        </div>
-      </div>
-      <div className={styles.Content}>{children}</div>
-    </div>
+    <BlockStack gap="400" inlineAlign="center">
+      <Box
+        width="100%"
+        padding="0"
+        paddingInlineStart={{sm: '600'}}
+        paddingInlineEnd={{sm: '600'}}
+        maxWidth="var(--pc-skeleton-page-max-width)"
+        aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
+        role="status"
+        {...(narrowWidth && {
+          maxWidth: 'var(--pc-skeleton-page-max-width-narrow)',
+        })}
+        {...(fullWidth && {
+          maxWidth: 'none',
+        })}
+      >
+        <BlockStack>
+          <Box
+            paddingBlockStart={{xs: '400', md: '500'}}
+            paddingBlockEnd={{xs: '400', md: '500'}}
+            paddingInlineStart={{xs: '400', sm: '0'}}
+            paddingInlineEnd={{xs: '400', sm: '0'}}
+            width="100%"
+          >
+            <InlineStack gap="400" align="space-between" blockAlign="center">
+              <InlineStack gap="400">
+                {backActionMarkup}
+                <Box paddingBlockStart="100" paddingBlockEnd="100">
+                  {titleContent}
+                </Box>
+              </InlineStack>
+              {primaryActionMarkup}
+            </InlineStack>
+          </Box>
+          <Box paddingBlockEnd="200" width="100%">
+            {children}
+          </Box>
+        </BlockStack>
+      </Box>
+    </BlockStack>
   );
 }

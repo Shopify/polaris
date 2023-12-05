@@ -2,8 +2,8 @@ import {
   Badge,
   ButtonGroup,
   FullscreenBar,
-  DisplayText,
   Button,
+  Text,
 } from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -27,13 +27,15 @@ function FullscreenBarExample() {
           paddingRight: '1rem',
         }}
       >
-        <Badge status="info">Draft</Badge>
+        <Badge tone="info">Draft</Badge>
         <div style={{marginLeft: '1rem', flexGrow: 1}}>
-          <DisplayText size="small">Page title</DisplayText>
+          <Text variant="headingLg" as="p">
+            Page title
+          </Text>
         </div>
         <ButtonGroup>
           <Button onClick={() => {}}>Secondary Action</Button>
-          <Button primary onClick={() => {}}>
+          <Button variant="primary" onClick={() => {}}>
             Primary Action
           </Button>
         </ButtonGroup>
@@ -48,7 +50,9 @@ function FullscreenBarExample() {
         {!isFullscreen && (
           <Button onClick={() => setFullscreen(true)}>Go Fullscreen</Button>
         )}
-        <DisplayText size="small">Page content</DisplayText>
+        <Text variant="headingLg" as="p">
+          Page content
+        </Text>
       </div>
     </div>
   );

@@ -2,44 +2,57 @@ import {
   ChoiceList,
   TextField,
   RangeSlider,
-  Card,
+  LegacyCard,
   ResourceList,
   Filters,
   Avatar,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function ResourceListFiltersExample() {
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+function FiltersWithQueryFieldDisabledExample() {
+  const [accountStatus, setAccountStatus] = useState<string[] | undefined>(
+    undefined,
+  );
+  const [moneySpent, setMoneySpent] = useState<[number, number] | undefined>(
+    undefined,
+  );
+  const [taggedWith, setTaggedWith] = useState<string | undefined>(undefined);
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
+    (value: string[]) => setAccountStatus(value),
     [],
   );
   const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
+    (value: [number, number]) => setMoneySpent(value),
     [],
   );
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
   const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
   const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
+    () => setAccountStatus(undefined),
     [],
   );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleMoneySpentRemove = useCallback(
+    () => setMoneySpent(undefined),
+    [],
+  );
+  const handleTaggedWithRemove = useCallback(
+    () => setTaggedWith(undefined),
+    [],
+  );
+  const handleQueryValueRemove = useCallback(
+    () => setQueryValue(undefined),
+    [],
+  );
   const handleFiltersClearAll = useCallback(() => {
     handleAccountStatusRemove();
     handleMoneySpentRemove();
@@ -134,7 +147,7 @@ function ResourceListFiltersExample() {
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -148,23 +161,24 @@ function ResourceListFiltersExample() {
               disableQueryField
             />
           }
+          flushFilters
           items={[
             {
-              id: 341,
-              url: 'customers/341',
+              id: '341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
-              url: 'customers/256',
+              id: '256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item
@@ -173,32 +187,34 @@ function ResourceListFiltersExample() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: any) {
     switch (key) {
       case 'moneySpent':
         return `Money spent is between $${value[0]} and $${value[1]}`;
       case 'taggedWith':
         return `Tagged with ${value}`;
       case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
+        return value.map((val: string) => `Customer ${val}`).join(', ');
       default:
         return value;
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(
+    value: string | string[] | [number, number] | undefined,
+  ): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {
@@ -207,4 +223,4 @@ function ResourceListFiltersExample() {
   }
 }
 
-export default withPolarisExample(ResourceListFiltersExample);
+export default withPolarisExample(FiltersWithQueryFieldDisabledExample);

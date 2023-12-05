@@ -1,10 +1,10 @@
 import {
-  Card,
+  LegacyCard,
   ResourceList,
   Button,
   Avatar,
   ResourceItem,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -17,33 +17,33 @@ function ResourceListWithAlternateToolExample() {
 
   const items = [
     {
-      id: 107,
-      url: 'customers/341',
+      id: '107',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 207,
-      url: 'customers/256',
+      id: '207',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         items={items}
         renderItem={renderItem}
         resourceName={resourceName}
         alternateTool={<Button>Email customers</Button>}
       />
-    </Card>
+    </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: typeof items[number]) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -52,9 +52,9 @@ function ResourceListWithAlternateToolExample() {
         media={media}
         accessibilityLabel={`View details for ${name}`}
       >
-        <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </h3>
+        <Text variant="bodyMd" fontWeight="bold" as="h3">
+          {name}
+        </Text>
         <div>{location}</div>
       </ResourceItem>
     );

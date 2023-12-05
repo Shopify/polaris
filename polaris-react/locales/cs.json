@@ -14,19 +14,23 @@
         "partiallyComplete": "Částečně dokončeno",
         "complete": "Dokončeno"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Informace",
         "success": "Úspěch",
         "warning": "Varování",
         "attention": "Upozornění",
         "new": "Novinka",
-        "critical": "Kritické"
+        "critical": "Kritické",
+        "readOnly": "Pouze pro čtení",
+        "enabled": "Aktivováno"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel}: {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Zavřít notifikaci"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Načítání",
-      "connectedDisclosureAccessibilityLabel": "Související akce"
+      "spinnerAccessibilityLabel": "Načítání"
     },
     "Common": {
       "checkbox": "zaškrtávací pole",
@@ -152,7 +156,9 @@
       "clearAllFilters": "Vymazat všechny filtry",
       "clear": "Vymazat",
       "clearLabel": "Vymazat {filterName}",
-      "moreFiltersWithCount": "Další filtry ({count})"
+      "moreFiltersWithCount": "Další filtry ({count})",
+      "addFilter": "Přidat filtr",
+      "clearFilters": "Vymazat vše"
     },
     "Modal": {
       "iFrameTitle": "kód hlavní části",
@@ -174,7 +180,7 @@
       "showing": "Zobrazuje se tento počet: {itemsCount} ({resource})",
       "loading": "Načítání: {resource}",
       "selected": "Vybráno: {selectedItemsCount}",
-      "allItemsSelected": "V obchodě bylo vybráno vše typu {resourceNamePlural}: {itemsLength} a více.",
+      "allItemsSelected": "V obchodě byly vybrány veškeré položky typu {resourceNamePlural}: {itemsLength} a více",
       "selectAllItems": "Vybrat v obchodě vše typu {resourceNamePlural}: {itemsLength} a více",
       "emptySearchResultTitle": "Nepovedlo se najít: {resourceNamePlural}",
       "emptySearchResultDescription": "Zkuste změnit filtry nebo hledaný termín",
@@ -183,8 +189,6 @@
       "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Zrušit celý výběr: {resourceNamePlural} ({itemsLength})",
       "a11yCheckboxSelectAllMultiple": "Vybrat vše: {resourceNamePlural} ({itemsLength})",
-      "ariaLiveSingular": "{itemsLength} položka",
-      "ariaLivePlural": "{itemsLength} polož.",
       "Item": {
         "actionsDropdownLabel": "Akce pro: {accessibilityLabel}",
         "actionsDropdown": "Rozevírací nabídka akcí",
@@ -192,18 +196,59 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Akce",
-        "moreActionsActivatorLabel": "Další akce",
-        "warningMessage": "Chceme zlepšit uživatelské zkušenosti. Propagačních akcí by mělo být maximálně {maxPromotedActions}."
+        "moreActionsActivatorLabel": "Další akce"
       },
       "showingTotalCount": "Zobrazuje se tento počet: {itemsCount} z {totalItemsCount} ({resource})",
-      "allFilteredItemsSelected": "Jsou vybrány všechny položky ({resourceNamePlural}: {itemsLength} a více) v tomto filtru.",
+      "allFilteredItemsSelected": "V tomto filtru byly vybrány veškeré položky typu {resourceNamePlural}: {itemsLength}",
       "selectAllFilteredItems": "Vybrat všechny položky ({resourceNamePlural}: {itemsLength} a více) v tomto filtru"
     },
     "SkeletonPage": {
       "loadingLabel": "Stránka se načítá"
     },
     "Tabs": {
-      "toggleTabsLabel": "Více karet"
+      "toggleTabsLabel": "Více zobrazení",
+      "newViewAccessibilityLabel": "Vytvořte nové zobrazení",
+      "newViewTooltip": "Vytvořit zobrazení",
+      "Tab": {
+        "rename": "Přejmenovat zobrazení",
+        "duplicate": "Duplikování zobrazení",
+        "edit": "Upravit zobrazení",
+        "delete": "Odstranit zobrazení",
+        "copy": "{name} – kopie",
+        "deleteModal": {
+          "title": "Chcete zobrazení odstranit?",
+          "description": "Tato akce je nevratná. Zobrazení {viewName} už nebude k dispozici ve vašem administrátorovi.",
+          "cancel": "Zrušit",
+          "delete": "Odstranit zobrazení"
+        }
+      },
+      "RenameModal": {
+        "title": "Přejmenovat zobrazení",
+        "label": "Název",
+        "cancel": "Zrušit",
+        "create": "Uložit",
+        "errors": {
+          "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Duplikování zobrazení",
+        "label": "Název",
+        "cancel": "Zrušit",
+        "create": "Vytvořit zobrazení",
+        "errors": {
+          "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Vytvořte nové zobrazení",
+        "label": "Název",
+        "cancel": "Zrušit",
+        "create": "Vytvořit zobrazení",
+        "errors": {
+          "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Odebrat: {children}"
@@ -220,7 +265,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "Akce"
+      "popoverButton": "Akce",
+      "dismissButton": "Zavřít"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -281,7 +327,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Položka",
       "defaultItemPlural": "Položky",
-      "allItemsSelected": "Bylo vybráno veškeré zboží typu {resourceNamePlural} ({itemsLength} a více).",
+      "allItemsSelected": "Byly vybrány veškeré položky typu {resourceNamePlural}: {itemsLength} a více",
       "selected": "Vybráno: {selectedItemsCount}",
       "a11yCheckboxDeselectAllSingle": "Zrušit výběr: {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vybrat: {resourceNameSingular}",
@@ -309,6 +355,52 @@
     "FullscreenBar": {
       "back": "Zpět",
       "accessibilityLabel": "Ukončit režim celé obrazovky"
+    },
+    "FilterPill": {
+      "clear": "Vymazat"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Hledat a filtrovat",
+      "searchFilterAccessibilityLabel": "Výsledky hledání a filtrování",
+      "sort": "Seřadit výsledky",
+      "addView": "Přidat nové zobrazení",
+      "newView": "Vlastní hledání",
+      "SortButton": {
+        "ariaLabel": "Seřadit výsledky",
+        "tooltip": "Seřadit",
+        "title": "Seřadit podle",
+        "sorting": {
+          "asc": "Vzestupně",
+          "desc": "Sestupně",
+          "az": "A–Z",
+          "za": "Z–A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Zrušit",
+        "update": "Aktualizovat",
+        "save": "Uložit",
+        "saveAs": "Uložit jako",
+        "modal": {
+          "title": "Uložení zobrazení jako",
+          "label": "Název",
+          "sameName": "Zobrazení s tímto názvem už existuje. Zvolte prosím odlišný název.",
+          "save": "Uložit",
+          "cancel": "Zrušit"
+        }
+      },
+      "searchFilterTooltipWithShortcut": "Hledejte a filtrujte (F)",
+      "EditColumnsButton": {
+        "tooltip": "Upravit sloupce",
+        "accessibilityLabel": "Přizpůsobit pořadí a viditelnost sloupců tabulky"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Vymazat",
+        "search": "Hledat",
+        "placeholder": "Vyhledejte akce"
+      }
     }
   }
 }

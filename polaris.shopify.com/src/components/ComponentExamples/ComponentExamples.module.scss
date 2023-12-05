@@ -26,11 +26,20 @@
     }
 
     &[aria-selected='true'] {
-      background: var(--search-highlight-color);
-      &:focus {
-        box-shadow: var(--focus-outline);
-      }
+      background: var(--surface-active);
     }
+
+    &:focus {
+      box-shadow: var(--focus-outline);
+    }
+  }
+}
+
+.Tab {
+  display: hidden;
+
+  &.selected {
+    display: block;
   }
 }
 

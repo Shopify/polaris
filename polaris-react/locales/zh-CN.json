@@ -14,19 +14,23 @@
         "partiallyComplete": "部分完成",
         "complete": "完成"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "信息",
         "success": "成功",
         "warning": "警告",
         "attention": "注意",
         "new": "新",
-        "critical": "重要信息"
+        "critical": "重要",
+        "readOnly": "只读",
+        "enabled": "已启用"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "忽略通知"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "正在加载",
-      "connectedDisclosureAccessibilityLabel": "相关操作"
+      "spinnerAccessibilityLabel": "正在加载"
     },
     "Common": {
       "checkbox": "复选框",
@@ -152,7 +156,9 @@
       "clearAllFilters": "清除所有筛选条件",
       "clear": "清除",
       "clearLabel": "清除 {filterName}",
-      "moreFiltersWithCount": "更多筛选条件（{count} 个）"
+      "moreFiltersWithCount": "更多筛选条件（{count} 个）",
+      "addFilter": "添加筛选条件",
+      "clearFilters": "全部清除"
     },
     "Modal": {
       "iFrameTitle": "正文标记",
@@ -174,7 +180,7 @@
       "showing": "显示 {itemsCount} 个 {resource}",
       "loading": "正在加载 {resource}",
       "selected": "已选择 {selectedItemsCount} 个",
-      "allItemsSelected": "已选择您商店中所有 {itemsLength}+ 个 {resourceNamePlural}。",
+      "allItemsSelected": "已选择您商店中所有 {itemsLength}+ 个{resourceNamePlural}。",
       "selectAllItems": "选择商店中所有 {itemsLength}+ 个 {resourceNamePlural}",
       "emptySearchResultTitle": "找不到 {resourceNamePlural}",
       "emptySearchResultDescription": "请尝试更改筛选条件或搜索词",
@@ -183,8 +189,6 @@
       "a11yCheckboxSelectAllSingle": "选择 {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "取消选择所有 {itemsLength} 个 {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "选择所有 {itemsLength} 个 {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} 个项",
-      "ariaLivePlural": "{itemsLength} 个项",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel} 的操作",
         "actionsDropdown": "操作下拉菜单",
@@ -192,8 +196,7 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "编辑",
-        "moreActionsActivatorLabel": "其他操作",
-        "warningMessage": "为了提供更好的用户体验，最多只能有 {maxPromotedActions} 个推广操作。"
+        "moreActionsActivatorLabel": "其他操作"
       },
       "showingTotalCount": "显示 {itemsCount} 个 {resource}（共 {totalItemsCount} 个）",
       "allFilteredItemsSelected": "已选择此筛选器中所有 {itemsLength}+ 个{resourceNamePlural}。",
@@ -203,7 +206,49 @@
       "loadingLabel": "页面加载"
     },
     "Tabs": {
-      "toggleTabsLabel": "更多标签"
+      "toggleTabsLabel": "更多视图",
+      "newViewAccessibilityLabel": "创建新视图",
+      "newViewTooltip": "创建视图",
+      "Tab": {
+        "rename": "重命名视图",
+        "duplicate": "复制视图",
+        "edit": "编辑视图",
+        "delete": "删除视图",
+        "copy": "{name} 的副本",
+        "deleteModal": {
+          "title": "删除视图？",
+          "description": "此操作无法撤销。您的后台中将不再提供 {viewName} 视图。",
+          "cancel": "取消",
+          "delete": "删除视图"
+        }
+      },
+      "RenameModal": {
+        "title": "重命名视图",
+        "label": "名称",
+        "cancel": "取消",
+        "create": "保存",
+        "errors": {
+          "sameName": "已存在具有此名称的视图。请选择其他名称。"
+        }
+      },
+      "DuplicateModal": {
+        "title": "复制视图",
+        "label": "名称",
+        "cancel": "取消",
+        "create": "创建视图",
+        "errors": {
+          "sameName": "已存在具有此名称的视图。请选择其他名称。"
+        }
+      },
+      "CreateViewModal": {
+        "title": "创建新视图",
+        "label": "名称",
+        "cancel": "取消",
+        "create": "创建视图",
+        "errors": {
+          "sameName": "已存在具有此名称的视图。请选择其他名称。"
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "删除 {children}"
@@ -220,7 +265,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "编辑"
+      "popoverButton": "编辑",
+      "dismissButton": "忽略"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -307,6 +353,52 @@
     "FullscreenBar": {
       "back": "上一步",
       "accessibilityLabel": "退出全屏模式"
+    },
+    "FilterPill": {
+      "clear": "清除"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "搜索和筛选",
+      "searchFilterTooltipWithShortcut": "搜索和筛选 (F)",
+      "searchFilterAccessibilityLabel": "搜索和筛选结果",
+      "sort": "对结果排序",
+      "addView": "添加新视图",
+      "newView": "自定义搜索",
+      "SortButton": {
+        "ariaLabel": "对结果排序",
+        "tooltip": "排序",
+        "title": "排序方式",
+        "sorting": {
+          "asc": "升序",
+          "desc": "降序",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "取消",
+        "update": "更新",
+        "save": "保存",
+        "saveAs": "另存为",
+        "modal": {
+          "title": "将视图另存为",
+          "label": "名称",
+          "sameName": "已存在具有此名称的视图。请选择其他名称。",
+          "save": "保存",
+          "cancel": "取消"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "编辑列",
+        "accessibilityLabel": "自定义表列顺序和可见性"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "清除",
+        "search": "搜索",
+        "placeholder": "搜索操作"
+      }
     }
   }
 }

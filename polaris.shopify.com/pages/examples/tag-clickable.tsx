@@ -1,9 +1,13 @@
-import {Tag} from '@shopify/polaris';
+import {Card, Tag} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TagExample() {
-  return <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>;
+  return (
+    <Card>
+      <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
+    </Card>
+  );
 }
 
 export default withPolarisExample(TagExample);

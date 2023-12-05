@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Card, EmptyState, Link} from '@shopify/polaris';
+import {LegacyCard, EmptyState, Link} from '@shopify/polaris';
 
 export default {
   component: EmptyState,
@@ -8,7 +8,7 @@ export default {
 
 export function Default() {
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <EmptyState
         heading="Manage your inventory transfers"
         action={{content: 'Add transfer'}}
@@ -20,13 +20,13 @@ export function Default() {
       >
         <p>Track and receive your incoming inventory from suppliers.</p>
       </EmptyState>
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithSubduedFooterContext() {
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <EmptyState
         heading="Manage your inventory transfers"
         action={{content: 'Add transfer'}}
@@ -48,13 +48,13 @@ export function WithSubduedFooterContext() {
       >
         <p>Track and receive your incoming inventory from suppliers.</p>
       </EmptyState>
-    </Card>
+    </LegacyCard>
   );
 }
 
 export function WithFullWidthLayout() {
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <EmptyState
         heading="Upload a file to get started"
         action={{content: 'Upload files'}}
@@ -67,6 +67,22 @@ export function WithFullWidthLayout() {
           full width.
         </p>
       </EmptyState>
-    </Card>
+    </LegacyCard>
+  );
+}
+
+export function WithoutContentContainer() {
+  return (
+    <EmptyState
+      heading="Manage your inventory transfers"
+      action={{content: 'Add transfer'}}
+      secondaryAction={{
+        content: 'Learn more',
+        url: 'https://help.shopify.com',
+      }}
+      image="https://cdn.shopify.com/s/files/1/0262/4071/2726/files/emptystate-files.png"
+    >
+      <p>Track and receive your incoming inventory from suppliers.</p>
+    </EmptyState>
   );
 }

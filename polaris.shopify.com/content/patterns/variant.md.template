@@ -1,0 +1,78 @@
+---
+title: {title - optional when only 1 variant}
+slug: {slug - optional when only 1 variant}
+hideFromNav: true
+---
+
+<!-- Optional when only 1 variant -->
+{description}
+
+<HowItHelps>
+
+## How it helps merchants
+
+{image}
+
+{ordered list}
+
+<DefinitionTable>
+
+### Use when merchants need to:
+
+<!-- Use the Description List format to display a 2 column table: -->
+<!-- **{term}** -->
+<!-- : {definition} -->
+
+</DefinitionTable>
+</HowItHelps>
+
+<Usage>
+
+## Using this pattern
+
+This pattern uses the <!-- [`Box`](/components/box), ... etc --> components.
+
+<!-- Optional: This code is wrapped around what is rendered in the live preview. -->
+<!-- Useful for layout, etc. -->
+<!-- Will not be visible in the copy+paste code snippet. -->
+
+{/* prettier-ignore */}
+```javascript {"type":"previewContext","for":"example"}
+<div>____CODE____</div>
+```
+
+<!-- Optional: This code is wrapped around the code when clicking "Open in Sandbox". -->
+<!-- Useful for getting it to play nice with Playroom.
+<!-- Will be visible in Playroom. Will not be visible in the copy+paste code snippet. -->
+
+{/* prettier-ignore */}
+```javascript {"type":"sandboxContext","for":"example"}
+<div>____CODE____</div>
+```
+
+<!-- The "id" here is used by the "for" of the above context codeblocks. -->
+<!-- Must have "type":"livePreview" to be rendered as a live preview. -->
+<!-- "title" will show up in the exported Sandbox code. -->
+
+{/* prettier-ignore */}
+```javascript {"type":"livePreview","id":"example","title":"Some awesome variant"}
+<Page divider>
+  <BlockStack gap="1600">Coming Soon</BlockStack>
+</Page>
+```
+
+</Usage>
+
+### Useful to know
+
+<SideBySide>
+
+- This text will be in the left hand column.
+
+  ![This image will be in the right hand column](https://placekitten.com/500/400)
+
+- This text will be in the left hand column.
+
+  ![This image will be in the right hand column](https://placekitten.com/500/400)
+
+</SideBySide>

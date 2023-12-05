@@ -19,14 +19,13 @@ import {
 import {
   ActionList,
   Badge,
-  Caption,
-  Card,
   ContextualSaveBar,
   DropZone,
-  DropZoneProps,
   FormLayout,
   Frame,
   Layout,
+  // eslint-disable-next-line import/no-deprecated
+  LegacyCard,
   Loading,
   Modal,
   Navigation,
@@ -35,14 +34,19 @@ import {
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
-  Stack,
+  // eslint-disable-next-line import/no-deprecated
+  LegacyStack,
+  Text,
+  // eslint-disable-next-line import/no-deprecated
   TextContainer,
   TextField,
   Thumbnail,
   Toast,
   TopBar,
-  VisuallyHidden,
+  FooterHelp,
+  Link,
 } from '../src';
+import type {DropZoneProps, PageProps} from '../src';
 
 import styles from './DetailsPage.scss';
 
@@ -60,7 +64,7 @@ export function DetailsPage() {
   const [userMenuActive, setUserMenuActive] = useState(false);
   const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
-  const [navItemActive, setNavItemActive] = useState('');
+  const [navItemActive, setNavItemActive] = useState('products');
   const initialDescription =
     'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
   const [previewValue, setPreviewValue] = useState(initialDescription);
@@ -137,7 +141,6 @@ export function DetailsPage() {
         width="36"
         height="36"
         viewBox="0 0 36 36"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
@@ -451,7 +454,7 @@ export function DetailsPage() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <VisuallyHidden>
+    <Text as="span" visuallyHidden>
       <a
         href="#SkipToContent"
         id="SkipToContentTarget"
@@ -460,7 +463,7 @@ export function DetailsPage() {
       >
         Page content
       </a>
-    </VisuallyHidden>
+    </Text>
   );
 
   const [title, setTitle] = useState(
@@ -480,7 +483,7 @@ export function DetailsPage() {
     setPreviewValue(newValue);
   }, []);
 
-  const actions1 = [
+  const actions1: PageProps['secondaryActions'] = [
     {
       content: 'Duplicate',
       onAction: () => console.log('duplicate'),
@@ -490,17 +493,18 @@ export function DetailsPage() {
       onAction: () => console.log('print'),
     },
   ];
-  const actions2 = [
+  const actions2: PageProps['secondaryActions'] = [
     {
       content: 'Print',
       onAction: () => console.log('print'),
     },
   ];
 
-  const [actions, setActions] = useState(actions1);
+  const [actions, setActions] =
+    useState<PageProps['secondaryActions']>(actions1);
 
   const toggleActions = () => {
-    if (actions.length === 2) {
+    if (Array.isArray(actions) && actions.length === 2) {
       setActions(actions2);
     } else {
       setActions(actions1);
@@ -520,49 +524,52 @@ export function DetailsPage() {
 
   const fileUpload = !files.length && <DropZone.FileUpload />;
   const uploadedFiles = files.length > 0 && (
-    <Stack vertical>
+    <LegacyStack vertical>
       {files.map((file, index) => (
-        <Stack alignment="center" key={index}>
+        <LegacyStack alignment="center" key={index}>
           <Thumbnail
             size="small"
             alt={file.name}
             source={
               validImageTypes.indexOf(file.type) > 0
-                ? // eslint-disable-next-line node/no-unsupported-features/node-builtins
-                  URL.createObjectURL(file)
+                ? URL.createObjectURL(file)
                 : 'https://cdn.shopify.com/s/files/1/0757/9955/files/New_Post.png?12678548500147524304'
             }
           />
           <div>
-            {file.name} <Caption>{file.size} bytes</Caption>
+            {file.name}{' '}
+            <Text as="p" variant="bodySm">
+              {file.size} bytes
+            </Text>
           </div>
-        </Stack>
+        </LegacyStack>
       ))}
-    </Stack>
+    </LegacyStack>
   );
 
   // ---- Page markup ----
   const actualPageMarkup = (
     <Page
       fullWidth
-      breadcrumbs={[{content: 'Products', url: '/products/31'}]}
+      backAction={{content: 'Products', url: '/products/31'}}
       title={title}
-      titleMetadata={<Badge status="success">Success badge</Badge>}
+      titleMetadata={<Badge tone="success">Success badge</Badge>}
       primaryAction={{
         content: 'Save this page',
-
         onAction: () => console.log('save'),
       }}
       additionalMetadata="Created May 8, 2020 at 7:31 am from Developer Tools (via import)"
-      secondaryActions={[
-        ...actions,
-        {
-          content: 'View',
-          onAction: () => {
-            console.log(previewValue);
+      secondaryActions={
+        Array.isArray(actions) && [
+          ...actions,
+          {
+            content: 'View',
+            onAction: () => {
+              console.log(previewValue);
+            },
           },
-        },
-      ]}
+        ]
+      }
       actionGroups={[
         {
           title: 'Promote',
@@ -575,7 +582,6 @@ export function DetailsPage() {
           actions: [
             {
               content: 'Embed on a website',
-
               onAction: () => console.log('embed'),
             },
             {
@@ -593,7 +599,7 @@ export function DetailsPage() {
       <Layout>
         {skipToContentTarget}
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Title"
@@ -612,17 +618,17 @@ export function DetailsPage() {
                 multiline
               />
             </FormLayout>
-          </Card>
-          <Card title="Media" sectioned>
+          </LegacyCard>
+          <LegacyCard title="Media" sectioned>
             <DropZone onDrop={handleDropZoneDrop}>
               {uploadedFiles}
               {fileUpload}
             </DropZone>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
-          <Card title="Organization">
-            <Card.Section>
+        <Layout.Section variant="oneThird">
+          <LegacyCard title="Organization">
+            <LegacyCard.Section>
               <Select
                 label="Product type"
                 options={options}
@@ -636,10 +642,10 @@ export function DetailsPage() {
                 onChange={setSelected}
                 value={selected}
               />
-            </Card.Section>
-            <Card.Section title="Collections" />
-            <Card.Section title="Tags" />
-          </Card>
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Collections" />
+            <LegacyCard.Section title="Tags" />
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
@@ -650,12 +656,12 @@ export function DetailsPage() {
     <SkeletonPage>
       <Layout>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
             </TextContainer>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </SkeletonPage>
@@ -707,6 +713,12 @@ export function DetailsPage() {
       {pageMarkup}
       {toastMarkup}
       {modalMarkup}
+      <FooterHelp>
+        Learn more about{' '}
+        <Link url="https://help.shopify.com/manual/orders/fulfill-orders">
+          fulfilling orders
+        </Link>
+      </FooterHelp>
     </Frame>
   );
 }

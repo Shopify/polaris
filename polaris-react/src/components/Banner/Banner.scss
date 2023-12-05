@@ -1,280 +1,92 @@
 @import '../../styles/common';
 
-@mixin banner-variants($in-page) {
-  --pc-banner-background: var(--p-background);
-  --pc-banner-border: var(--p-banner-border-default);
-  transition: box-shadow var(--p-duration-200) var(--p-ease);
-  transition-delay: var(--p-duration-100);
-  box-shadow: var(--pc-banner-border);
-  outline: var(--p-border-width-1) solid transparent;
-
-  @if $in-page {
-    @include focus-ring('wide');
-    border-radius: var(--p-border-radius-2);
-    background-color: var(--pc-banner-background);
-  } @else {
-    @include focus-ring('base');
-    border-radius: var(--p-border-radius-1);
-    background-color: var(--pc-banner-background);
-  }
+.Banner {
+  background-color: var(--p-color-bg-surface);
+  position: relative;
+  display: flex;
 
   &:focus {
     outline: none;
   }
 
   &.keyFocused {
-    box-shadow: var(--pc-banner-border);
-    @include focus-ring('wide', $style: 'focused');
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   }
-
-  &.statusSuccess {
-    --pc-banner-background: var(--p-surface-success-subdued);
-    --pc-banner-border: var(--p-banner-border-success);
-  }
-
-  &.statusInfo {
-    --pc-banner-background: var(--p-surface-highlight-subdued);
-    --pc-banner-border: var(--p-banner-border-highlight);
-  }
-
-  &.statusWarning {
-    --pc-banner-background: var(--p-surface-warning-subdued);
-    --pc-banner-border: var(--p-banner-border-warning);
-  }
-
-  &.statusCritical {
-    --pc-banner-background: var(--p-surface-critical-subdued);
-    --pc-banner-border: var(--p-banner-border-critical);
-  }
-}
-
-.Banner {
-  --pc-banner-secondary-action-horizontal-padding: var(--p-space-3);
-  --pc-banner-secondary-action-vertical-padding: var(--p-space-2);
-  position: relative;
-  display: flex;
-
-  // stylelint-disable selector-max-class, selector-max-combinators, selector-max-specificity
-  &.statusCritical .PrimaryAction .Button {
-    border-color: var(--p-border-critical-subdued);
-    background: var(--p-surface-critical-subdued);
-
-    &:hover {
-      border-color: var(--p-border-critical-subdued);
-      background: var(--p-surface-critical-subdued-hovered);
-    }
-
-    &:active {
-      border-color: var(--p-border-critical-subdued);
-      background: var(--p-surface-critical-subdued-pressed);
-    }
-
-    &:focus:not(:active) {
-      border-color: var(--p-border-critical-subdued);
-      background: var(--p-surface-critical-subdued);
-    }
-  }
-
-  &.statusWarning .PrimaryAction .Button {
-    border-color: var(--p-border-warning-subdued);
-    background: var(--p-surface-warning-subdued);
-
-    &:hover {
-      border-color: var(--p-border-warning-subdued);
-      background: var(--p-surface-warning-subdued-hovered);
-    }
-
-    &:active {
-      border-color: var(--p-border-warning-subdued);
-      background: var(--p-surface-warning-subdued-pressed);
-    }
-
-    &:focus:not(:active) {
-      border-color: var(--p-border-warning-subdued);
-      background: var(--p-surface-warning-subdued);
-    }
-  }
-
-  &.statusInfo .PrimaryAction .Button {
-    border-color: var(--p-border-highlight-subdued);
-    background: var(--p-surface-highlight-subdued);
-
-    &:hover {
-      border-color: var(--p-border-highlight-subdued);
-      background: var(--p-surface-highlight-subdued-hovered);
-    }
-
-    &:active {
-      border-color: var(--p-border-highlight-subdued);
-      background: var(--p-surface-highlight-subdued-pressed);
-    }
-
-    &:focus:not(:active) {
-      border-color: var(--p-border-highlight-subdued);
-      background: var(--p-surface-highlight-subdued);
-    }
-  }
-
-  &.statusSuccess .PrimaryAction .Button {
-    border-color: var(--p-border-success-subdued);
-    background: var(--p-surface-success-subdued);
-
-    &:hover {
-      border-color: var(--p-border-success-subdued);
-      background: var(--p-surface-success-subdued-hovered);
-    }
-
-    &:active {
-      border-color: var(--p-border-success-subdued);
-      background: var(--p-surface-success-subdued-pressed);
-    }
-
-    &:focus:not(:active) {
-      border-color: var(--p-border-success-subdued);
-      background: var(--p-surface-success-subdued);
-    }
-  }
-  // stylelint-enable selector-max-class, selector-max-combinators, selector-max-specificity
-}
-
-.ContentWrapper {
-  margin-top: calc(-1 * var(--p-space-05));
-  flex: 1 1 auto;
 }
 
 .withinContentContainer {
-  padding: var(--p-space-4);
-
-  .Dismiss {
-    top: var(--p-space-4);
-    right: var(--p-space-3);
-    position: absolute;
-  }
-
-  .Ribbon {
-    padding-right: var(--p-space-4);
-  }
-
-  @include banner-variants($in-page: false);
+  border-radius: var(--p-border-radius-200);
 
   + .Banner {
-    margin-top: var(--p-space-2);
-  }
-
-  .Actions {
-    padding: var(--p-space-3) 0 var(--p-space-1) 0;
+    margin-top: var(--p-space-200);
   }
 }
 
 .withinPage {
-  border-radius: 0 0 var(--p-border-radius-base) var(--p-border-radius-base);
-  padding: var(--p-space-5);
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-200),
+    $borderRadius: var(--p-border-radius-0)
+  );
 
-  @include banner-variants(true);
+  @media #{$p-breakpoints-sm-up} {
+    @include shadow-bevel(
+      $boxShadow: var(--p-shadow-200),
+      $borderRadius: var(--p-border-radius-300)
+    );
+  }
 
   + .Banner {
-    margin-top: var(--p-space-5);
-  }
-
-  .Ribbon {
-    padding-right: var(--p-space-4);
-  }
-
-  .Actions {
-    padding-top: var(--p-space-4);
-  }
-
-  .Dismiss {
-    right: var(--p-space-4);
-    top: var(--p-space-5);
-    position: absolute;
+    margin-top: var(--p-space-400);
   }
 }
 
-.hasDismiss {
-  padding-right: calc(var(--p-space-8) + var(--p-icon-size-small));
+.DismissIcon {
+  display: flex;
 }
 
-.Heading {
-  word-break: break-word;
-}
+// stylelint-disable -- Duplicate selectors to bump specificity for button svg color override
+// https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
 
-.Content {
-  @include text-breakword;
-  padding: var(--p-space-05) 0;
-}
-
-.Ribbon {
-  flex: 0 0 var(--p-space-8);
-}
-
-.PrimaryAction {
-  margin-right: var(--p-space-2);
-}
-
-// We need pretty high specificity to do the descendant selectors
-// onto the text, which needs to be the relative positioned wrapper
-// so that the borders/ backgrounds do not extend outside of it.
-
-.SecondaryAction {
-  @include unstyled-button;
-  display: inline-block;
-  text-align: left;
-  text-decoration: none;
-  margin: calc(-1 * var(--pc-banner-secondary-action-vertical-padding))
-    calc(-0.5 * var(--pc-banner-secondary-action-horizontal-padding));
-  padding: var(--pc-banner-secondary-action-vertical-padding)
-    var(--pc-banner-secondary-action-horizontal-padding);
-  color: var(--p-text);
-  padding-left: var(--p-space-2);
-
-  &:hover > .Text {
-    text-decoration: underline;
-  }
-
-  &:active > .Text {
-    text-decoration: underline;
-  }
-
-  &:focus > .Text {
-    @include plain-button-backdrop;
-    @include high-contrast-button-outline;
-    @include focus-ring($style: 'focused');
-    box-shadow: none;
-    text-decoration: underline;
-  }
-
-  &:visited {
-    color: inherit;
+@mixin recolor-icon($fill-color: null) {
+  svg,
+  path {
+    fill: $fill-color;
   }
 }
 
-.Text {
-  @include focus-ring;
+.text-success-on-bg-fill.text-success-on-bg-fill.text-success-on-bg-fill {
+  @include recolor-icon(var(--p-color-text-success-on-bg-fill));
 }
 
-.Button {
-  @include button-base;
-  @include text-style-button;
-  @include focus-ring($border-width: 2px);
-  color: var(--p-text);
-
-  &:focus {
-    @include focus-ring($style: 'focused');
-  }
+.text-success.text-success.text-success {
+  @include recolor-icon(var(--p-color-text-success));
 }
 
-.loading {
-  position: relative;
-  color: transparent;
-  pointer-events: none;
+.text-warning-on-bg-fill.text-warning-on-bg-fill.text-warning-on-bg-fill {
+  @include recolor-icon(var(--p-color-text-warning-on-bg-fill));
 }
 
-.Spinner {
-  --pc-spinner-size: var(--p-space-5);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: calc(-1 * (var(--pc-spinner-size) / 2));
-  margin-left: calc(-1 * (var(--pc-spinner-size) / 2));
+.text-warning.text-warning.text-warning {
+  @include recolor-icon(var(--p-color-text-warning));
 }
+
+.text-critical-on-bg-fill.text-critical-on-bg-fill.text-critical-on-bg-fill {
+  @include recolor-icon(var(--p-color-text-critical-on-bg-fill));
+}
+
+.text-critical.text-critical.text-critical {
+  @include recolor-icon(var(--p-color-text-critical));
+}
+
+.text-info-on-bg-fill.text-info-on-bg-fill.text-info-on-bg-fill {
+  @include recolor-icon(var(--p-color-text-info-on-bg-fill));
+}
+
+.text-info.text-info.text-info {
+  @include recolor-icon(var(--p-color-text-info));
+}
+
+.icon-secondary.icon-secondary.icon-secondary {
+  @include recolor-icon(var(--p-color-icon-secondary));
+}
+// stylelint-enable

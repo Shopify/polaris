@@ -1,10 +1,9 @@
 import {useState} from 'react';
-import {
+import {getMediaConditions, themeDefault} from '@shopify/polaris-tokens';
+import type {
   BreakpointsAlias,
   BreakpointsAliasDirection,
   BreakpointsTokenGroup,
-  getMediaConditions,
-  breakpoints,
 } from '@shopify/polaris-tokens';
 
 import {isServer} from './target';
@@ -57,10 +56,19 @@ type BreakpointsMatches = {
   [DirectionAlias in BreakpointsDirectionAlias]: boolean;
 };
 
-const breakpointsQueryEntries = getBreakpointsQueryEntries(breakpoints);
+const breakpointsQueryEntries = getBreakpointsQueryEntries(
+  themeDefault.breakpoints,
+);
 
-function getMatches(defaults?: UseBreakpointsOptions['defaults']) {
-  if (!isServer) {
+function getMatches(
+  defaults?: UseBreakpointsOptions['defaults'],
+  /**
+   * Used to force defaults on initial client side render so they match SSR
+   * values and hence avoid a Hydration error.
+   */
+  forceDefaults?: boolean,
+) {
+  if (!isServer && !forceDefaults) {
     return Object.fromEntries(
       breakpointsQueryEntries.map(([directionAlias, query]) => [
         directionAlias,
@@ -116,7 +124,13 @@ export interface UseBreakpointsOptions {
  * breakpoints //=> All values will be `true` during SSR
  */
 export function useBreakpoints(options?: UseBreakpointsOptions) {
-  const [breakpoints, setBreakpoints] = useState(getMatches(options?.defaults));
+  // On SSR, and initial CSR, we force usage of the defaults to avoid a
+  // hydration mismatch error.
+  // Later, in the effect, we will call this again on the client side without
+  // any defaults to trigger a more accurate client side evaluation.
+  const [breakpoints, setBreakpoints] = useState(
+    getMatches(options?.defaults, true),
+  );
 
   useIsomorphicLayoutEffect(() => {
     const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
@@ -126,13 +140,26 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
     const handler = () => setBreakpoints(getMatches());
 
     mediaQueryLists.forEach((mql) => {
-      mql.addEventListener('change', handler);
+      if (mql.addListener) {
+        mql.addListener(handler);
+      } else {
+        mql.addEventListener('change', handler);
+      }
     });
 
-    return () =>
+    // Trigger the breakpoint recalculation at least once client-side to ensure
+    // we don't have stale default values from SSR.
+    handler();
+
+    return () => {
       mediaQueryLists.forEach((mql) => {
-        mql.removeEventListener('change', handler);
+        if (mql.removeListener) {
+          mql.removeListener(handler);
+        } else {
+          mql.removeEventListener('change', handler);
+        }
       });
+    };
   }, []);
 
   return breakpoints;

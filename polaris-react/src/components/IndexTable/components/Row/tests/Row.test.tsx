@@ -1,13 +1,19 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
+import type {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {DeepPartial} from '@shopify/useful-types';
 
-import {IndexTable, IndexTableProps} from '../../../IndexTable';
+import {IndexTable} from '../../../IndexTable';
+import type {IndexTableProps} from '../../../IndexTable';
 import {RowHoveredContext} from '../../../../../utilities/index-table';
+import {SelectionType} from '../../../../../utilities/index-provider';
 import {Row} from '../Row';
 import {Checkbox} from '../../Checkbox';
 import {Button} from '../../../../Button';
 import {Link} from '../../../../Link';
+import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
+import styles from '../../../IndexTable.scss';
+import type {Range} from '../../../../../utilities/index-provider';
 
 const defaultEvent = {
   preventDefault: noop,
@@ -80,6 +86,115 @@ describe('<Row />', () => {
     );
 
     expect(row).toContainReactComponent(RowHoveredContext.Provider);
+  });
+
+  it('applies the styles.TableRow class to the table row element', () => {
+    const row = mountWithTable(
+      <Row id="id" selected position={1}>
+        <td />
+      </Row>,
+    );
+
+    expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
+      styles.TableRow,
+    );
+  });
+
+  describe('rowType', () => {
+    describe('when a `rowType` of `subheader` is set', () => {
+      it('applies the .TableRow-subheader class to the table row element', () => {
+        const row = mountWithTable(
+          <Row id="id" selected rowType="subheader" position={1}>
+            <td />
+          </Row>,
+        );
+
+        expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
+          styles['TableRow-subheader'],
+        );
+      });
+
+      it('calls onSelectionChange with the `selectionRange` when present and the row checkbox cell is clicked', () => {
+        const onSelectionChangeSpy = jest.fn();
+        const range: Range = [0, 1];
+        const row = mountWithTable(
+          <Row {...defaultProps} rowType="subheader" selectionRange={range}>
+            <th>
+              <a href="/">Child without data-primary-link</a>
+            </th>
+          </Row>,
+          {
+            indexTableProps: {
+              itemCount: 50,
+              selectedItemsCount: 0,
+              onSelectionChange: onSelectionChangeSpy,
+            },
+          },
+        );
+
+        row.find('div', {className: 'Wrapper'})!.triggerKeypath('onClick', {
+          stopPropagation: noop,
+          key: ' ',
+          nativeEvent: {},
+        });
+
+        expect(onSelectionChangeSpy).toHaveBeenCalledTimes(1);
+        expect(onSelectionChangeSpy).toHaveBeenCalledWith(
+          SelectionType.Range,
+          true,
+          range,
+        );
+      });
+
+      it('does not call onSelectionChange with the `selectionRange` when present and the row is clicked', () => {
+        const onSelectionChangeSpy = jest.fn();
+        const range: Range = [0, 1];
+        const row = mountWithTable(
+          <Row {...defaultProps} rowType="subheader" selectionRange={range}>
+            <th>
+              <a href="/">Child without data-primary-link</a>
+            </th>
+          </Row>,
+          {
+            indexTableProps: {
+              itemCount: 50,
+              selectedItemsCount: 0,
+              onSelectionChange: onSelectionChangeSpy,
+            },
+          },
+        );
+
+        triggerOnClick(row, 1, defaultEvent);
+
+        expect(onSelectionChangeSpy).not.toHaveBeenCalled();
+      });
+    });
+
+    describe('when a `rowType` of `child` is set', () => {
+      it('applies the .TableRow-child class to the table row element', () => {
+        const row = mountWithTable(
+          <Row id="id" selected rowType="child" position={1}>
+            <td />
+          </Row>,
+        );
+
+        expect(row.find(Row)?.find('tr')?.prop('className')).toContain(
+          styles['TableRow-child'],
+        );
+      });
+    });
+  });
+
+  it('allows the checkbox to be indeterminate', () => {
+    const row = mountWithTable(
+      <Row id="id" selected="indeterminate" position={1}>
+        <td />
+      </Row>,
+    );
+
+    expect(row.find(Row)?.find(PolarisCheckbox)?.prop('checked')).toBe(
+      'indeterminate',
+    );
   });
 
   it(`dispatches a mouse event when the row is clicked and selectMode is false`, () => {
@@ -329,37 +444,61 @@ describe('<Row />', () => {
     );
   });
 
-  it('has an undefined status by default', () => {
+  it('has an undefined tone by default', () => {
     const row = mountWithTable(
       <Row {...defaultProps}>
         <td />
       </Row>,
     );
 
-    expect(row).toHaveReactProps({status: undefined});
+    expect(row).toHaveReactProps({tone: undefined});
   });
 
-  it('applies success status styles when status prop is set to "success"', () => {
+  it('applies subdued tone styles when tone prop is set to "subdued"', () => {
     const row = mountWithTable(
-      <Row {...defaultProps} status="success">
+      <Row {...defaultProps} tone="subdued">
         <td />
       </Row>,
     );
 
     expect(row).toContainReactComponent('tr', {
-      className: 'TableRow statusSuccess',
+      className: 'TableRow toneSubdued',
     });
   });
 
-  it('applies subdued status styles when status prop is set to "subdued"', () => {
+  it('applies success tone styles when tone prop is set to "success"', () => {
     const row = mountWithTable(
-      <Row {...defaultProps} status="subdued">
+      <Row {...defaultProps} tone="success">
         <td />
       </Row>,
     );
 
     expect(row).toContainReactComponent('tr', {
-      className: 'TableRow statusSubdued',
+      className: 'TableRow toneSuccess',
+    });
+  });
+
+  it('applies warning tone styles when tone prop is set to "warning"', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps} tone="warning">
+        <td />
+      </Row>,
+    );
+
+    expect(row).toContainReactComponent('tr', {
+      className: 'TableRow toneWarning',
+    });
+  });
+
+  it('applies critical tone styles when tone prop is set to "critical"', () => {
+    const row = mountWithTable(
+      <Row {...defaultProps} tone="critical">
+        <td />
+      </Row>,
+    );
+
+    expect(row).toContainReactComponent('tr', {
+      className: 'TableRow toneCritical',
     });
   });
 

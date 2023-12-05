@@ -1,21 +1,31 @@
-$key-base-height: 24px;
+@import '../../styles/common';
+
+$key-base-dimension: 28px;
 
 .KeyboardKey {
-  display: inline-block;
-  height: $key-base-height;
-  margin: 0 var(--p-space-05) var(--p-space-05);
-  padding: 0 var(--p-space-1);
-  background-color: var(--p-surface);
-  box-shadow: 0 0 0 1px var(--p-border-subdued),
-    0 var(--p-space-05) 0 0 var(--p-surface),
-    0 var(--p-space-05) 0 1px var(--p-border-subdued);
-  border-radius: var(--p-border-radius-1);
-  font-family: var(--p-font-family-sans);
-  font-size: var(--p-font-size-75);
+  height: $key-base-dimension;
+  display: inline-flex;
+  justify-content: center;
+  margin: 0 var(--p-space-050) var(--p-space-050);
+  margin-bottom: 0;
+  padding: 0 var(--p-space-200);
+  background: var(--p-color-bg-surface-tertiary);
+  border-radius: var(--p-border-radius-100);
+  color: var(--p-color-text-secondary);
+  font-size: var(--p-font-size-350);
   font-weight: var(--p-font-weight-medium);
-  line-height: $key-base-height;
-  color: var(--p-text-subdued);
+  font-family: var(--p-font-family-sans);
+  line-height: $key-base-dimension;
   text-align: center;
-  min-width: $key-base-height;
+  min-width: $key-base-dimension;
   user-select: none;
+}
+
+.small {
+  box-shadow: none;
+  line-height: var(--p-font-size-400);
+  padding: var(--p-space-050) var(--p-space-100);
+  font-size: var(--p-font-size-300);
+  height: var(--p-space-500);
+  min-width: var(--p-space-500);
 }

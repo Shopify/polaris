@@ -1,0 +1,122 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../styles/fonts.scss';
+
+.Colors {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  font-size: 0.75rem;
+  font-weight: var(--p-font-weight-semibold);
+
+  @media (min-width: $breakpointTablet) {
+    grid-template-columns: repeat(16, 1fr);
+  }
+
+  h3 {
+    font-size: 0.75rem;
+  }
+
+  .ColorsSwatch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    overflow: visible;
+    cursor: pointer;
+  }
+
+  .ColorsSelected {
+    &:after {
+      content: '';
+      background: url(/images/icon-do.svg) black no-repeat;
+      background-position: center;
+      display: block;
+      width: var(--p-space-500);
+      height: var(--p-space-500);
+      top: var(--p-space-500);
+      border-radius: var(--p-border-radius-200);
+    }
+  }
+}
+
+.ColorsContainer {
+  border-radius: var(--p-border-radius-200);
+  overflow: hidden;
+  margin-bottom: var(--p-space-200);
+}
+
+.ColorsContrastContainer {
+  h3 {
+    font-weight: var(--p-font-weight-semibold);
+  }
+
+  span {
+    font-weight: var(--p-font-weight-bold);
+    font-size: var(--font-size-900);
+  }
+
+  .ColorBox {
+    display: flex;
+    gap: var(--p-space-200);
+    margin-top: var(--p-space-200);
+    align-items: center;
+
+    div {
+      height: var(--p-space-800);
+      width: var(--p-space-800);
+      border-radius: var(--p-border-radius-200);
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      display: inline-block;
+    }
+
+    span {
+      font-size: var(--font-size-75);
+      font-weight: var(--p-font-weight-medium);
+    }
+  }
+}
+
+.ColorsWCAG {
+  display: inline-block;
+  background-color: var(--surface);
+  padding: var(--p-space-050) var(--p-space-200) var(--p-space-050) var(--p-space-500);
+  border-radius: var(--p-space-200);
+  font-size: var(--font-size-100);
+  font-weight: var(--font-weight-600);
+  line-height: 1rem;
+  position: relative;
+
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 20px;
+    width: 20px;
+    background-image: url(/images/icon-indeterminate.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: cover;
+    z-index: 1;
+    transition: var(--p-ease-out) var(--p-duration-200) all;
+  }
+}
+
+.ColorsWCAGPass {
+  background-color: var(--fill-success);
+  color: var(--text-success-onfill);
+
+  &:after {
+    background-image: url(/images/icon-do.svg);
+  }
+}
+
+.ColorsWCAGFail {
+  background-color: var(--fill-critical);
+  color: var(--text-critical-onfill);
+
+  &:after {
+    background-image: url(/images/icon-dont.svg);
+  }
+}

@@ -2,7 +2,8 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Option} from '../components';
-import {OptionList, OptionListProps} from '../OptionList';
+import {OptionList} from '../OptionList';
+import type {OptionListProps} from '../OptionList';
 import type {OptionDescriptor} from '../../../types';
 
 describe('<OptionList />', () => {
@@ -250,6 +251,34 @@ describe('<OptionList />', () => {
     expect(spy).toHaveBeenCalledWith([firstOption(options, sections)]);
   });
 
+  it('calls onPointerEnterOption with options and sections', () => {
+    const spy = jest.fn();
+    const {options, sections} = defaultProps;
+
+    const option = mountWithApp(
+      <OptionList {...defaultProps} onPointerEnterOption={spy} />,
+    ).find(Option);
+
+    option?.find('li')!.trigger('onPointerEnter');
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(firstOption(options, sections));
+  });
+
+  it('calls onFocusOption with options and sections', () => {
+    const spy = jest.fn();
+    const {options, sections} = defaultProps;
+
+    const option = mountWithApp(
+      <OptionList {...defaultProps} onFocusOption={spy} />,
+    ).find(Option);
+
+    option?.find('button')!.trigger('onFocus');
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(firstOption(options, sections));
+  });
+
   describe('allowMultiple', () => {
     it('renders options and sections', () => {
       const {options, sections} = defaultProps;
@@ -456,7 +485,7 @@ describe('<OptionList />', () => {
           <OptionList {...defaultProps} onChange={spy} allowMultiple />,
         ).find('input');
 
-        inputWrapper!.trigger('onChange');
+        inputWrapper!.trigger('onClick');
 
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toHaveBeenCalledWith([firstOption(options, sections)]);
@@ -476,7 +505,7 @@ describe('<OptionList />', () => {
           />,
         ).find('input');
 
-        inputWrapper!.trigger('onChange');
+        inputWrapper!.trigger('onClick');
 
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toHaveBeenCalledWith([
@@ -499,13 +528,34 @@ describe('<OptionList />', () => {
           />,
         ).find('input');
 
-        inputWrapper!.trigger('onChange');
+        inputWrapper!.trigger('onClick');
 
         const valueToCheck = firstOption(options, sections);
         const newSelected = selected.filter((value) => value !== valueToCheck);
 
         expect(spy).toHaveBeenCalledTimes(1);
         expect(spy).toHaveBeenCalledWith(newSelected);
+      });
+    });
+  });
+
+  describe('onPointerEnterOption', () => {
+    it('does not select the item', () => {
+      const spy = jest.fn();
+      const {options, sections} = defaultProps;
+
+      const optionList = mountWithApp(
+        <OptionList {...defaultProps} onPointerEnterOption={spy} />,
+      );
+
+      const option = optionList.find(Option);
+
+      option?.find('li')!.trigger('onPointerEnter');
+
+      expect(spy).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalledWith(firstOption(options, sections));
+      expect(optionList).toHaveReactProps({
+        selected: [],
       });
     });
   });
@@ -539,12 +589,8 @@ function firstOption(
   options?: OptionDescriptor[],
   sections?: OptionListProps['sections'],
 ): string {
-  const firstOptionsValue =
-    options == null || options === [] ? '' : options[0].value;
-  const firstSectionOptionsValue =
-    sections == null || sections === [] || sections[0].options === []
-      ? ''
-      : sections[0].options[0].value;
+  const firstOptionsValue = options?.[0]?.value ?? '';
+  const firstSectionOptionsValue = sections?.[0]?.options?.[0]?.value ?? '';
   return firstOptionsValue || firstSectionOptionsValue;
 }
 

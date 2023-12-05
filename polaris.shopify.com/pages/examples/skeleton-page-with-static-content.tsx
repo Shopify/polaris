@@ -1,4 +1,9 @@
-import {SkeletonPage, Layout, Card, SkeletonBodyText} from '@shopify/polaris';
+import {
+  SkeletonPage,
+  Layout,
+  LegacyCard,
+  SkeletonBodyText,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -7,33 +12,33 @@ function SkeletonExample() {
     <SkeletonPage title="Products" primaryAction>
       <Layout>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <SkeletonBodyText />
-          </Card>
-          <Card sectioned title="Images">
+          </LegacyCard>
+          <LegacyCard sectioned title="Images">
             <SkeletonBodyText />
-          </Card>
-          <Card sectioned title="Variants">
+          </LegacyCard>
+          <LegacyCard sectioned title="Variants">
             <SkeletonBodyText />
-          </Card>
+          </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
-          <Card title="Sales channels">
-            <Card.Section>
+        <Layout.Section variant="oneThird">
+          <LegacyCard title="Sales channels">
+            <LegacyCard.Section>
               <SkeletonBodyText lines={2} />
-            </Card.Section>
-            <Card.Section>
+            </LegacyCard.Section>
+            <LegacyCard.Section>
               <SkeletonBodyText lines={1} />
-            </Card.Section>
-          </Card>
-          <Card title="Organization" subdued>
-            <Card.Section>
+            </LegacyCard.Section>
+          </LegacyCard>
+          <LegacyCard title="Organization" subdued>
+            <LegacyCard.Section>
               <SkeletonBodyText lines={2} />
-            </Card.Section>
-            <Card.Section>
+            </LegacyCard.Section>
+            <LegacyCard.Section>
               <SkeletonBodyText lines={2} />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </SkeletonPage>

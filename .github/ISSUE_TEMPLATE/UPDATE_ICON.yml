@@ -1,7 +1,7 @@
 name: Propose updates to an existing icon
 description: For modifications to an existing icon in polaris-icons
 title: '[Icon]: Update icon <icon-name>'
-labels: ['Icon', 'untriaged']
+labels: ['Icon', 'untriaged', 'Fast follow']
 body:
   - type: markdown
     attributes:
@@ -30,6 +30,11 @@ body:
         - Unsure
     validations:
       required: true
+  - type: textarea
+    id: icon-figma-link
+    attributes:
+      label: Icon Figma link
+      description: Provide a Figma link to a preview of the proposed icon revision
   - type: textarea
     id: icon-svg
     attributes:

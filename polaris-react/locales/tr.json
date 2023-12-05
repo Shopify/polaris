@@ -14,19 +14,23 @@
         "partiallyComplete": "Kısmen tamamlandı",
         "complete": "Tamamlandı"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "Bilgi",
         "success": "Başarılı",
         "warning": "Uyarı",
         "attention": "Dikkat",
         "new": "Yeni",
-        "critical": "Kritik"
+        "critical": "Kritik",
+        "readOnly": "Salt okunur",
+        "enabled": "Etkinleştirildi"
       },
-      "progressAndStatus": "{statusLabel} - {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Bildirimi kapat"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Yükleniyor",
-      "connectedDisclosureAccessibilityLabel": "İlgili işlemler"
+      "spinnerAccessibilityLabel": "Yükleniyor"
     },
     "Common": {
       "checkbox": "onay kutusu",
@@ -152,7 +156,9 @@
       "clearAllFilters": "Tüm filtreleri temizle",
       "clear": "Temizle",
       "clearLabel": "{filterName} filtresini temizle",
-      "moreFiltersWithCount": "Daha fazla filtre ({count})"
+      "moreFiltersWithCount": "Daha fazla filtre ({count})",
+      "addFilter": "Filtre ekle",
+      "clearFilters": "Tümünü temizle"
     },
     "Modal": {
       "iFrameTitle": "gövde işaretlemesi",
@@ -174,7 +180,7 @@
       "showing": "{itemsCount} {resource} gösteriliyor",
       "loading": "{resource} yükleniyor",
       "selected": "{selectedItemsCount} adet seçildi",
-      "allItemsSelected": "Mağazanızdaki şu kaynakların tümü seçildi: {itemsLength}+ {resourceNamePlural}.",
+      "allItemsSelected": "Mağazanızdaki {itemsLength}+ {resourceNamePlural} tümü seçildi",
       "selectAllItems": "Mağazanızdaki şu kaynakların tümünü seçin: {itemsLength}+ {resourceNamePlural}",
       "emptySearchResultTitle": "{resourceNamePlural} bulunamadı",
       "emptySearchResultDescription": "Filtreleri veya arama terimini değiştirmeyi deneyin",
@@ -183,8 +189,6 @@
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} kaynağını seç",
       "a11yCheckboxDeselectAllMultiple": "Şunların tümünün seçimini kaldır: {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Şunların tümünü seç: {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} ürün",
-      "ariaLivePlural": "{itemsLength} ürün",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel} ile ilgili işlemler",
         "actionsDropdown": "İşlemler açılır listesi",
@@ -192,18 +196,59 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "İşlemler",
-        "moreActionsActivatorLabel": "Diğer işlemler",
-        "warningMessage": "Daha iyi bir kullanıcı deneyimi sunmak için. Öne çıkarılan işlemlerin sayısı en fazla {maxPromotedActions} olmalıdır."
+        "moreActionsActivatorLabel": "Diğer işlemler"
       },
       "showingTotalCount": "{totalItemsCount} {resource} içinden {itemsCount} tanesi gösteriliyor",
-      "allFilteredItemsSelected": "Mevcut filtreyle gösterilen şu kaynakların tümü seçildi: {itemsLength}+ {resourceNamePlural}.",
+      "allFilteredItemsSelected": "Bu filtredeki {itemsLength}+ {resourceNamePlural} tümü seçildi",
       "selectAllFilteredItems": "Mevcut filtreyle gösterilen şu kaynakların tümünü seçin: {itemsLength}+ {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "Sayfa yükleniyor"
     },
     "Tabs": {
-      "toggleTabsLabel": "Daha fazla sekme"
+      "toggleTabsLabel": "Daha fazla görünüm",
+      "newViewAccessibilityLabel": "Yeni görünüm oluştur",
+      "newViewTooltip": "Görünüm oluştur",
+      "Tab": {
+        "rename": "Görünümü yeniden adlandır",
+        "duplicate": "Görünümü çoğalt",
+        "edit": "Görünümü düzenle",
+        "delete": "Görünümü sil",
+        "copy": "{name} kopyası",
+        "deleteModal": {
+          "title": "Görünüm silinsin mi?",
+          "description": "Bu işlem geri alınamaz. {viewName} görünümü artık yöneticinizde kullanılamayacak.",
+          "cancel": "İptal",
+          "delete": "Görünümü sil"
+        }
+      },
+      "RenameModal": {
+        "title": "Görünümü yeniden adlandır",
+        "label": "Ad",
+        "cancel": "İptal",
+        "create": "Kaydet",
+        "errors": {
+          "sameName": "Bu ada sahip bir görünüm zaten var. Lütfen farklı bir ad seçin."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Görünümü çoğalt",
+        "label": "Ad",
+        "cancel": "İptal",
+        "create": "Görünüm oluştur",
+        "errors": {
+          "sameName": "Bu ada sahip bir görünüm zaten var. Lütfen farklı bir ad seçin."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Yeni görünüm oluştur",
+        "label": "Ad",
+        "cancel": "İptal",
+        "create": "Görünüm oluştur",
+        "errors": {
+          "sameName": "Bu ada sahip bir görünüm zaten var. Lütfen farklı bir ad seçin."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Şunu kaldır: {children}"
@@ -220,7 +265,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "İşlemler"
+      "popoverButton": "İşlemler",
+      "dismissButton": "Kapat"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -279,7 +325,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Ürün",
       "defaultItemPlural": "Ürünler",
-      "allItemsSelected": "Şunların tümü seçildi: {itemsLength}+ {resourceNamePlural}.",
+      "allItemsSelected": "{itemsLength}+ {resourceNamePlural} tümü seçildi.",
       "selected": "{selectedItemsCount} adet seçildi",
       "a11yCheckboxDeselectAllSingle": "{resourceNameSingular} kaynağının seçimini kaldır",
       "a11yCheckboxSelectAllSingle": "{resourceNameSingular} kaynağını seç",
@@ -307,6 +353,52 @@
     "FullscreenBar": {
       "back": "Geri",
       "accessibilityLabel": "Tam ekran modundan çık"
+    },
+    "FilterPill": {
+      "clear": "Temizle"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Arama ve filtreleme",
+      "searchFilterTooltipWithShortcut": "Arama ve filtreleme (F)",
+      "searchFilterAccessibilityLabel": "Arama ve sonuçları filtreleme",
+      "sort": "Sonuçlarınızı sıralayın",
+      "addView": "Yeni bir görünüm ekle",
+      "newView": "Özel arama",
+      "SortButton": {
+        "ariaLabel": "Sonuçları sırala",
+        "tooltip": "Sırala",
+        "title": "Sıralama ölçütü:",
+        "sorting": {
+          "asc": "Artan",
+          "desc": "Azalan",
+          "az": "A-Z",
+          "za": "Z-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "İptal",
+        "update": "Güncelle",
+        "save": "Kaydet",
+        "saveAs": "Farklı kaydet",
+        "modal": {
+          "title": "Görünümü farklı kaydet",
+          "label": "Ad",
+          "sameName": "Bu ada sahip bir görünüm zaten var. Lütfen farklı bir ad seçin.",
+          "save": "Kaydet",
+          "cancel": "İptal"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Sütunları düzenleyin",
+        "accessibilityLabel": "Tablonun sütun sırasını ve görünürlüğünü özelleştirin"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Temizle",
+        "search": "Ara",
+        "placeholder": "Eylemleri arayın"
+      }
     }
   }
 }

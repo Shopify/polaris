@@ -5,7 +5,7 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function TooltipExample() {
   return (
     <div style={{width: '200px'}}>
-      <ButtonGroup segmented fullWidth>
+      <ButtonGroup variant="segmented" fullWidth>
         <Tooltip content="Bold" dismissOnMouseOut>
           <Button>B</Button>
         </Tooltip>

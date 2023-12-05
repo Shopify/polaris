@@ -1,0 +1,67 @@
+---
+title: Creating layout
+navTitle: Creating layout
+keywords:
+  - how to contribute to polaris documentation
+  - how to contribute to the style guide
+  - documenting in polaris
+  - documentation guidelines
+order: 1
+---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<Subnav />
+
+Creating layouts in polaris.shopify.com is done using a combination of components and layout options.
+
+## Layout options
+
+1: Full width
+1-2: 1/3 - 2/3
+1-1-1: 1/3 - 1/3 - 1/3
+
+{/* Add code snippets with screenshot of layout */}
+
+### Full width layout in Section
+
+```mdx
+<LayoutSection>
+  <Text></Text>
+  <Small variant="do"></Small>
+  <Small variant="dont"></Small>
+</LayoutSection>
+```
+
+## Component options
+
+- `Section`
+- `Text`
+- `Small`
+- `Medium`
+- `Large`
+- `ExtraLarge`
+
+### `LayoutSection`
+
+The `LayoutSection` component creates a new content section.
+
+### `Text`
+
+The `Text` component creates a new tile for text content.
+
+### `Small`, `Medium`, `Large`, `ExtraLarge`
+
+These component create a section tile for images, videos, and directives.
+
+By default, it will not add any styles. It does support applying additional styles using the `variant` prop.
+
+```mdx
+<Small variant="directive">...</Small>
+<Small variant="do">...</Small>
+<Small variant="dont">...</Small>
+<Small variant="caution">...</Small>
+<Small variant="tip">...</Column>
+```

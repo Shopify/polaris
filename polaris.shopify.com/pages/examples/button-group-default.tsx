@@ -2,13 +2,13 @@ import {ButtonGroup, Button} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function ButtonGroupExample() {
+function ButtonGroupDefaultExample() {
   return (
     <ButtonGroup>
       <Button>Cancel</Button>
-      <Button primary>Save</Button>
+      <Button variant="primary">Save</Button>
     </ButtonGroup>
   );
 }
 
-export default withPolarisExample(ButtonGroupExample);
+export default withPolarisExample(ButtonGroupDefaultExample);

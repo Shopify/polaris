@@ -1,11 +1,11 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
 
-import {tokenGroupKeys} from './[tokens]';
+import {tokenGroupNames} from './[tokens]';
 
 const getGithubUrl = (file: string) => {
   const fileName = `${file}.ts`;
   const githubUrl = 'https://github.com/Shopify/polaris/blob';
-  const filePath = `/main/polaris-tokens/src/token-groups/${fileName}`;
+  const filePath = `/main/polaris-tokens/src/themes/base/${fileName}`;
 
   return `${githubUrl}${filePath}`;
 };
@@ -66,14 +66,14 @@ const html = `
                 </tr>
             </thead>
             <tbody>
-            ${tokenGroupKeys
-              .map((tokenGroup) => {
-                const url = `/api/tokens/v0/${tokenGroup}`;
+            ${tokenGroupNames
+              .map((tokenGroupName) => {
+                const url = `/api/tokens/v0/${tokenGroupName}`;
                 const cssUrl = `${url}?format=css`;
 
                 return `
                     <tr>
-                        <td>${tokenGroup}</td>
+                        <td>${tokenGroupName}</td>
                         <td>
                             <a href="${url}">${url}</a>
                         </td>
@@ -81,7 +81,7 @@ const html = `
                             <a href="${cssUrl}">${cssUrl}</a>
                         </td>
                         <td>
-                            <a href="${getGithubUrl(tokenGroup)}">File</a>
+                            <a href="${getGithubUrl(tokenGroupName)}">File</a>
                         </td>
                     </tr>
                 `;

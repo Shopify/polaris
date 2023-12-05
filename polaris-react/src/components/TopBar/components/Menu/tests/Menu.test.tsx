@@ -72,7 +72,7 @@ describe('<Menu />', () => {
       },
       badge: {
         content: 'new',
-        status: 'new' as 'new',
+        tone: 'new' as 'new',
       },
     };
     const menu = mountWithApp(
@@ -122,14 +122,7 @@ describe('<Menu />', () => {
   });
 
   describe('isFullHeight', () => {
-    it('passes isFullHeight to popover as false if menu is not provided a message', () => {
-      const {message, ...rest} = defaultProps;
-      const menu = mountWithApp(<Menu {...rest} open />);
-
-      expect(menu).toContainReactComponent(Popover, {fullHeight: false});
-    });
-
-    it('passes isFullHeight to popover as true if menu is provided a message', () => {
+    it('passes isFullHeight to popover as true', () => {
       const menu = mountWithApp(<Menu {...defaultProps} open />);
 
       expect(menu).toContainReactComponent(Popover, {

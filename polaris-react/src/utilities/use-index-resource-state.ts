@@ -5,6 +5,7 @@ export enum SelectionType {
   Page = 'page',
   Multi = 'multi',
   Single = 'single',
+  Range = 'range',
 }
 type Range = [number, number];
 type ResourceIDResolver<T extends {[key: string]: unknown}> = (
@@ -32,7 +33,7 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     selectedResources?: string[];
     allResourcesSelected?: boolean;
     resourceIDResolver?: ResourceIDResolver<T>;
-    resourceFilter?: (value: T) => boolean;
+    resourceFilter?: (value: T, index: number) => boolean;
   } = {
     selectedResources: [],
     allResourcesSelected: false,
@@ -52,6 +53,8 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
       selectionType: SelectionType,
       isSelecting: boolean,
       selection?: string | Range,
+      // This is not used in the function, but needed to keep the type compatible with IndexProviderProps onSelectionChange
+      _position?: number,
     ) => {
       if (selectionType === SelectionType.All) {
         setAllResourcesSelected(isSelecting);
@@ -85,18 +88,22 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
           break;
         case SelectionType.Multi:
           if (!selection) break;
-          setSelectedResources((newSelectedResources) => {
+          setSelectedResources((currentSelectedResources) => {
             const ids: string[] = [];
             const filteredResources = resourceFilter
               ? resources.filter(resourceFilter)
               : resources;
-            for (let i = selection[0] as number; i <= selection[1]; i++) {
+            for (
+              let i = selection[0] as number;
+              i <= (selection[1] as number);
+              i++
+            ) {
               if (filteredResources.includes(resources[i])) {
                 const id = resourceIDResolver(resources[i]);
 
                 if (
-                  (isSelecting && !newSelectedResources.includes(id)) ||
-                  (!isSelecting && newSelectedResources.includes(id))
+                  (isSelecting && !currentSelectedResources.includes(id)) ||
+                  (!isSelecting && currentSelectedResources.includes(id))
                 ) {
                   ids.push(id);
                 }
@@ -104,8 +111,49 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
             }
 
             return isSelecting
-              ? [...newSelectedResources, ...ids]
-              : newSelectedResources.filter((id) => !ids.includes(id));
+              ? [...currentSelectedResources, ...ids]
+              : currentSelectedResources.filter((id) => !ids.includes(id));
+          });
+
+          break;
+        case SelectionType.Range:
+          if (!selection) break;
+
+          setSelectedResources((currentSelectedResources) => {
+            const filteredResources = resourceFilter
+              ? resources.filter(resourceFilter)
+              : resources;
+
+            const resourceIds = filteredResources.map(resourceIDResolver);
+
+            const selectedIds = resourceIds.slice(
+              Number(selection[0]),
+              Number(selection[1]) + 1,
+            );
+
+            const isIndeterminate = selectedIds.some((id) => {
+              return selectedResources.includes(id);
+            });
+
+            const isChecked = selectedIds.every((id) => {
+              return selectedResources.includes(id);
+            });
+
+            const isSelectingAllInRange =
+              !isChecked && (isSelecting || isIndeterminate);
+
+            const nextSelectedResources = isSelectingAllInRange
+              ? [
+                  ...new Set([
+                    ...currentSelectedResources,
+                    ...selectedIds,
+                  ]).values(),
+                ]
+              : currentSelectedResources.filter(
+                  (id) => !selectedIds.includes(id),
+                );
+
+            return nextSelectedResources;
           });
           break;
       }
@@ -113,7 +161,7 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     [
       allResourcesSelected,
       resourceFilter,
-      selectedResources.length,
+      selectedResources,
       resources,
       resourceIDResolver,
     ],

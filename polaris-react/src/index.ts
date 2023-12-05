@@ -23,9 +23,12 @@ export type {
   ComplexAction,
   MenuActionDescriptor,
   MenuGroupDescriptor,
-  ConnectedDisclosure,
   CheckboxHandles,
+  AppliedFilterInterface,
+  FilterInterface,
 } from './types';
+
+export {DEFAULT_LOCALE, SUPPORTED_LOCALES} from './configure';
 
 // AppProvider contains CSS that affects element level CSS (e.g. `html`, `button`)
 // It should be first to ensure its CSS is first in compiled output
@@ -46,12 +49,6 @@ export type {
 export {ActionMenu} from './components/ActionMenu';
 export type {ActionMenuProps} from './components/ActionMenu';
 
-export {AlphaCard} from './components/AlphaCard';
-export type {AlphaCardProps} from './components/AlphaCard';
-
-export {AlphaStack} from './components/AlphaStack';
-export type {AlphaStackProps} from './components/AlphaStack';
-
 export {Autocomplete} from './components/Autocomplete';
 export type {AutocompleteProps} from './components/Autocomplete';
 
@@ -63,17 +60,13 @@ export type {BackdropProps} from './components/Backdrop';
 
 export {
   Badge,
-  StatusValue as BadgeStatusValue,
+  ToneValue as BadgeStatusValue,
   ProgressValue as BadgeProgressValue,
 } from './components/Badge';
 export type {BadgeProps} from './components/Badge';
 
 export {Banner} from './components/Banner';
-export type {
-  BannerProps,
-  BannerStatus,
-  BannerHandles,
-} from './components/Banner';
+export type {BannerProps, BannerTone, BannerHandles} from './components/Banner';
 
 export {Bleed} from './components/Bleed';
 export type {BleedProps} from './components/Bleed';
@@ -96,16 +89,8 @@ export type {ButtonGroupProps} from './components/ButtonGroup';
 export {CalloutCard} from './components/CalloutCard';
 export type {CalloutCardProps} from './components/CalloutCard';
 
-export {Caption} from './components/Caption';
-export type {CaptionProps} from './components/Caption';
-
 export {Card} from './components/Card';
-export type {
-  CardProps,
-  CardSectionProps,
-  CardHeaderProps,
-  CardSubsectionProps,
-} from './components/Card';
+export type {CardProps} from './components/Card';
 
 export {Checkbox} from './components/Checkbox';
 export type {CheckboxProps} from './components/Checkbox';
@@ -119,17 +104,14 @@ export type {CollapsibleProps} from './components/Collapsible';
 export {ColorPicker} from './components/ColorPicker';
 export type {ColorPickerProps} from './components/ColorPicker';
 
-export {Columns} from './components/Columns';
-export type {ColumnsProps} from './components/Columns';
+export {InlineGrid} from './components/InlineGrid';
+export type {InlineGridProps} from './components/InlineGrid';
 
 export {Combobox} from './components/Combobox';
 export type {ComboboxProps} from './components/Combobox';
 
 export {Connected} from './components/Connected';
 export type {ConnectedProps} from './components/Connected';
-
-export {ContentBlock} from './components/ContentBlock';
-export type {ContentBlockProps} from './components/ContentBlock';
 
 export {ContextualSaveBar} from './components/ContextualSaveBar';
 export type {ContextualSaveBarProps} from './components/ContextualSaveBar';
@@ -149,8 +131,8 @@ export type {DatePickerProps, Range} from './components/DatePicker';
 export {DescriptionList} from './components/DescriptionList';
 export type {DescriptionListProps} from './components/DescriptionList';
 
-export {DisplayText} from './components/DisplayText';
-export type {DisplayTextProps} from './components/DisplayText';
+export {Divider} from './components/Divider';
+export type {DividerProps} from './components/Divider';
 
 export {DropZone} from './components/DropZone';
 export type {DropZoneProps} from './components/DropZone';
@@ -168,11 +150,7 @@ export {ExceptionList} from './components/ExceptionList';
 export type {ExceptionListProps} from './components/ExceptionList';
 
 export {Filters} from './components/Filters';
-export type {
-  FiltersProps,
-  AppliedFilterInterface,
-  FilterInterface,
-} from './components/Filters';
+export type {FiltersProps} from './components/Filters';
 
 export {Focus} from './components/Focus';
 export type {FocusProps} from './components/Focus';
@@ -199,23 +177,33 @@ export type {FullscreenBarProps} from './components/FullscreenBar';
 export {Grid} from './components/Grid';
 export type {GridProps, CellProps as GridCellProps} from './components/Grid';
 
-export {Heading} from './components/Heading';
-export type {HeadingProps} from './components/Heading';
-
 export {Icon} from './components/Icon';
 export type {IconProps} from './components/Icon';
 
 export {Image} from './components/Image';
 export type {ImageProps} from './components/Image';
 
+export {
+  IndexFilters,
+  useSetIndexFiltersMode,
+  IndexFiltersMode,
+} from './components/IndexFilters';
+export type {
+  IndexFiltersProps,
+  SortButtonChoice,
+} from './components/IndexFilters';
+
 export {IndexTable} from './components/IndexTable';
-export type {IndexTableProps} from './components/IndexTable';
+export type {
+  IndexTableProps,
+  RowProps as IndexTableRowProps,
+} from './components/IndexTable';
 
 export {Indicator} from './components/Indicator';
 export type {IndicatorProps} from './components/Indicator';
 
-export {Inline} from './components/Inline';
-export type {InlineProps} from './components/Inline';
+export {InlineStack} from './components/InlineStack';
+export type {InlineStackProps} from './components/InlineStack';
 
 export {InlineCode} from './components/InlineCode';
 export type {InlineCodeProps} from './components/InlineCode';
@@ -229,9 +217,6 @@ export type {KeyboardKeyProps} from './components/KeyboardKey';
 export {KeypressListener} from './components/KeypressListener';
 export type {KeypressListenerProps} from './components/KeypressListener';
 
-export {KonamiCode} from './components/KonamiCode';
-export type {KonamiCodeProps} from './components/KonamiCode';
-
 export {Label, labelID} from './components/Label';
 export type {LabelProps} from './components/Label';
 
@@ -240,6 +225,23 @@ export type {LabelledProps} from './components/Labelled';
 
 export {Layout} from './components/Layout';
 export type {LayoutProps} from './components/Layout';
+
+export {LegacyCard} from './components/LegacyCard';
+export type {
+  LegacyCardProps,
+  LegacyCardSectionProps,
+  LegacyCardHeaderProps,
+  LegacyCardSubsectionProps,
+} from './components/LegacyCard';
+
+export {LegacyFilters} from './components/LegacyFilters';
+export type {LegacyFiltersProps} from './components/LegacyFilters';
+
+export {LegacyStack} from './components/LegacyStack';
+export type {LegacyStackProps} from './components/LegacyStack';
+
+export {LegacyTabs} from './components/LegacyTabs';
+export type {LegacyTabsProps} from './components/LegacyTabs';
 
 export {Link} from './components/Link';
 export type {LinkProps} from './components/Link';
@@ -312,12 +314,15 @@ export {ResourceList} from './components/ResourceList';
 export type {ResourceListProps} from './components/ResourceList';
 
 export {Scrollable} from './components/Scrollable';
-export type {ScrollableProps} from './components/Scrollable';
+export type {ScrollableProps, ScrollableRef} from './components/Scrollable';
 
 export {ScrollLock} from './components/ScrollLock';
 
 export {Select} from './components/Select';
 export type {SelectProps, SelectOption, SelectGroup} from './components/Select';
+
+export {SelectAllActions} from './components/SelectAllActions';
+export type {SelectAllActionsProps} from './components/SelectAllActions';
 
 export {SettingToggle} from './components/SettingToggle';
 export type {SettingToggleProps} from './components/SettingToggle';
@@ -345,17 +350,11 @@ export type {SkeletonThumbnailProps} from './components/SkeletonThumbnail';
 export {Spinner} from './components/Spinner';
 export type {SpinnerProps} from './components/Spinner';
 
-export {Stack} from './components/Stack';
-export type {StackProps} from './components/Stack';
-
 export {Sticky} from './components/Sticky';
 export type {StickyProps} from './components/Sticky';
 
-export {Subheading} from './components/Subheading';
-export type {SubheadingProps} from './components/Subheading';
-
 export {Tabs} from './components/Tabs';
-export type {TabsProps} from './components/Tabs';
+export type {TabsProps, TabProps} from './components/Tabs';
 
 export {Tag} from './components/Tag';
 export type {TagProps} from './components/Tag';
@@ -369,14 +368,8 @@ export type {TextContainerProps} from './components/TextContainer';
 export {TextField} from './components/TextField';
 export type {TextFieldProps} from './components/TextField';
 
-export {TextStyle} from './components/TextStyle';
-export type {TextStyleProps} from './components/TextStyle';
-
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
-
-export {Tiles} from './components/Tiles';
-export type {TilesProps} from './components/Tiles';
 
 export {Toast} from './components/Toast';
 export type {ToastProps} from './components/Toast';
@@ -399,10 +392,10 @@ export type {UnstyledButtonProps} from './components/UnstyledButton';
 export {UnstyledLink} from './components/UnstyledLink';
 export type {UnstyledLinkProps} from './components/UnstyledLink';
 
-export {VideoThumbnail} from './components/VideoThumbnail';
+export {BlockStack} from './components/BlockStack';
+export type {BlockStackProps} from './components/BlockStack';
 
-export {VisuallyHidden} from './components/VisuallyHidden';
-export type {VisuallyHiddenProps} from './components/VisuallyHidden';
+export {VideoThumbnail} from './components/VideoThumbnail';
 
 export type {
   RGBColor,
@@ -424,10 +417,11 @@ export {
   rgbaString,
   hexToRgb,
 } from './utilities/color-transformers';
-
+export {useFrame, FrameContext} from './utilities/frame';
 export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT} from './utilities/scroll-lock-manager';
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
 export {useEventListener} from './utilities/use-event-listener';
+export {useTheme} from './utilities/use-theme';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {
   useRowHovered as useIndexTableRowHovered,
@@ -439,3 +433,4 @@ export {
   SelectionType as IndexTableSelectionType,
 } from './utilities/index-provider';
 export {useBreakpoints} from './utilities/breakpoints';
+export {useReadOnlyEphemeralPresenceManager as useEphemeralPresenceManager} from './utilities/ephemeral-presence-manager';

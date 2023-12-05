@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Icon, Stack, Tag} from '@shopify/polaris';
+import {InlineStack, Icon, LegacyStack, Tag, Bleed} from '@shopify/polaris';
 import {WandMinor} from '@shopify/polaris-icons';
 
 export default {
@@ -8,7 +8,13 @@ export default {
 } as ComponentMeta<typeof Tag>;
 
 export function Default() {
-  return <Tag>Wholesale</Tag>;
+  return (
+    <InlineStack gap="100">
+      <Tag>Wholesale</Tag>
+      <Tag disabled>Disabled</Tag>
+      <Tag url="#">With URL</Tag>
+    </InlineStack>
+  );
 }
 
 export function Removable() {
@@ -30,29 +36,42 @@ export function Removable() {
   );
 
   const tagMarkup = selectedTags.map((option) => (
-    <Tag key={option} onRemove={removeTag(option)}>
+    <Tag
+      key={option}
+      onRemove={removeTag(option)}
+      disabled={option === 'Antique'}
+    >
       {option}
     </Tag>
   ));
 
-  return <Stack spacing="tight">{tagMarkup}</Stack>;
+  return <LegacyStack spacing="tight">{tagMarkup}</LegacyStack>;
 }
 
 export function Clickable() {
-  return <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>;
+  return (
+    <InlineStack gap="100">
+      <Tag onClick={() => console.log('Clicked')}>Wholesale</Tag>
+      <Tag onClick={() => console.log('Clicked')} disabled>
+        Wholesale (clickable disabled)
+      </Tag>
+    </InlineStack>
+  );
 }
 
 export function WithLink() {
-  return <Tag url="/collections/wholesale">Wholesale</Tag>;
+  return <Tag url="#">Wholesale</Tag>;
 }
 
 export function WithCustomContent() {
   return (
-    <Tag url="/collections/wholesale">
-      <Stack spacing="extraTight">
-        <Icon source={WandMinor} />
+    <Tag url="#">
+      <InlineStack gap="050">
+        <Bleed marginInlineStart="100">
+          <Icon tone="base" source={WandMinor} />
+        </Bleed>
         <span>Wholesale</span>
-      </Stack>
+      </InlineStack>
     </Tag>
   );
 }
@@ -75,10 +94,10 @@ export function RemovableWithLink() {
   );
 
   const tagMarkup = selectedTags.map((option) => (
-    <Tag key={option} onRemove={removeTag(option)} url="/collections/wholesale">
+    <Tag key={option} onRemove={removeTag(option)} url="#">
       {option}
     </Tag>
   ));
 
-  return <Stack spacing="tight">{tagMarkup}</Stack>;
+  return <LegacyStack spacing="tight">{tagMarkup}</LegacyStack>;
 }

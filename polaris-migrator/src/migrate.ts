@@ -11,16 +11,17 @@ export interface MigrateOptions {
   dry?: boolean;
   print?: boolean;
   force?: boolean;
+  stdin?: boolean;
 }
 
 export async function migrate(
   migration: string,
-  files: string,
+  files: string | string[],
   options: MigrateOptions = {},
 ) {
   const migrationFile = path.join(
     __dirname,
-    `./migrations/${migration}/${migration}.js`,
+    `./migrations/${migration}/transform.js`,
   );
 
   try {
@@ -28,7 +29,9 @@ export async function migrate(
       throw new Error(`No migration found for ${migration}`);
     }
 
-    if (!files) throw new Error(`No path provided for migration`);
+    if (!options.stdin && !files) {
+      throw new Error(`No path provided for migration`);
+    }
 
     if (!options.dry) {
       checkGitStatus(options.force);
@@ -48,7 +51,6 @@ export async function migrate(
       extensions: 'tsx,ts,jsx,js',
       parser: 'tsx',
       verbose: 2,
-      runInBand: true,
       silent: false,
       stdin: false,
       ...options,

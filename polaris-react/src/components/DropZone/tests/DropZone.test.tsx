@@ -1,13 +1,14 @@
 import React from 'react';
 import {act} from 'react-dom/test-utils';
 import {clock} from '@shopify/jest-dom-mocks';
-import {mountWithApp, CustomRoot} from 'tests/utilities';
+import {mountWithApp} from 'tests/utilities';
+import type {CustomRoot} from 'tests/utilities';
 
-import {Caption} from '../../Caption';
+import {Text} from '../../Text';
 import {Label} from '../../Label';
 import {Labelled} from '../../Labelled';
-import {TextStyle} from '../../TextStyle';
-import {DropZone, DropZoneFileType} from '../DropZone';
+import {DropZone} from '../DropZone';
+import type {DropZoneFileType} from '../DropZone';
 import {DropZoneContext} from '../context';
 
 const files = [
@@ -220,7 +221,7 @@ describe('<DropZone />', () => {
     [true, 'video', 'Drop videos to upload', 'Upload videos'],
   ])(
     'renders texts when allowMultiple is %s and type is %s',
-    (allowMultiple, type, expectedTextStyle, expectedLabelText) => {
+    (allowMultiple, type, expectedText, expectedLabelText) => {
       const dropZone = mountWithApp(
         <DropZone
           overlay
@@ -237,8 +238,8 @@ describe('<DropZone />', () => {
 
       dropZone.forceUpdate();
 
-      expect(dropZone).toContainReactComponent(TextStyle, {
-        children: expectedTextStyle,
+      expect(dropZone).toContainReactComponent(Text, {
+        children: expectedText,
       });
 
       expect(dropZone).toContainReactComponent(Labelled, {
@@ -321,34 +322,43 @@ describe('<DropZone />', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      expect(dropZone).not.toContainReactComponent(TextStyle);
-      expect(dropZone).not.toContainReactComponent(Caption);
+      expect(dropZone).not.toContainReactComponent(Text, {
+        variant: 'bodySm',
+        as: 'p',
+      });
     });
 
-    it('renders a Caption containing the overlayText on medium screens', () => {
+    it('renders a Text containing the overlayText on medium screens', () => {
       setBoundingClientRect('medium');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const captionText = dropZone.find(Caption);
-      expect(captionText).toContainReactText(overlayText);
+      const text = dropZone.find(Text, {
+        variant: 'bodySm',
+        as: 'p',
+      });
+      expect(text).toContainReactText(overlayText);
     });
 
-    it('renders a Caption containing the overlayText on large screens', () => {
+    it('renders a Text containing the overlayText on large screens', () => {
       setBoundingClientRect('large');
       const dropZone = mountWithApp(<DropZone overlayText={overlayText} />);
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const captionText = dropZone.find(Caption);
-      expect(captionText).toContainReactText(overlayText);
+      const text = dropZone.find(Text, {
+        variant: 'bodySm',
+        as: 'p',
+      });
+      expect(text).toContainReactText(overlayText);
     });
 
-    it('renders a TextStyle containing the overlayText on any screen size when variableHeight is true', () => {
+    it('renders a Text containing the overlayText on any screen size when variableHeight is true', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(
         <DropZone overlayText={overlayText} variableHeight />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const textStyle = dropZone.find(TextStyle);
-      expect(textStyle).toContainReactText(overlayText);
+      expect(dropZone).toContainReactComponent(Text, {
+        children: overlayText,
+      });
     });
   });
 
@@ -361,32 +371,35 @@ describe('<DropZone />', () => {
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      expect(dropZone).not.toContainReactComponent(TextStyle);
-      expect(dropZone).not.toContainReactComponent(Caption);
+      expect(dropZone).not.toContainReactComponent(Text, {
+        variant: 'bodySm',
+        as: 'p',
+      });
     });
 
-    it('renders a Caption containing the overlayText on medium screens', () => {
+    it('renders a Text containing the overlayText on medium screens', () => {
       setBoundingClientRect('medium');
       const dropZone = mountWithApp(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const captionText = dropZone.find(Caption);
-      expect(captionText).toContainReactText(errorOverlayText);
+      expect(dropZone).toContainReactComponent(Text, {
+        children: errorOverlayText,
+      });
     });
 
-    it('renders a Caption containing the overlayText on large screens', () => {
+    it('renders a Text containing the overlayText on large screens', () => {
       setBoundingClientRect('large');
       const dropZone = mountWithApp(
         <DropZone errorOverlayText={errorOverlayText} accept="image/gif" />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const captionText = dropZone.find(Caption);
-
-      expect(captionText).toContainReactText(errorOverlayText);
+      expect(dropZone).toContainReactComponent(Text, {
+        children: errorOverlayText,
+      });
     });
 
-    it('renders a TextStyle containing the overlayText on any screen size when variableHeight is true', () => {
+    it('renders a Text containing the overlayText on any screen size when variableHeight is true', () => {
       setBoundingClientRect('small');
       const dropZone = mountWithApp(
         <DropZone
@@ -396,8 +409,9 @@ describe('<DropZone />', () => {
         />,
       );
       fireEvent({wrapper: dropZone, eventType: 'dragenter'});
-      const textStyle = dropZone.find(TextStyle);
-      expect(textStyle).toContainReactText(errorOverlayText);
+      expect(dropZone).toContainReactComponent(Text, {
+        children: errorOverlayText,
+      });
     });
   });
 

@@ -7,7 +7,7 @@ function BannerExample() {
     <Banner
       title="Before you can purchase a shipping label, this change needs to be made:"
       action={{content: 'Edit address'}}
-      status="warning"
+      tone="warning"
     >
       <List>
         <List.Item>

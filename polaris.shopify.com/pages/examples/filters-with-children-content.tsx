@@ -1,29 +1,35 @@
 import {
   TextField,
-  Card,
+  LegacyCard,
   ResourceList,
   Filters,
   Button,
   Avatar,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function FiltersExample() {
-  const [taggedWith, setTaggedWith] = useState(null);
-  const [queryValue, setQueryValue] = useState(null);
+function FiltersWithChildrenContentExample() {
+  const [taggedWith, setTaggedWith] = useState<string | undefined>(undefined);
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
   const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(
+    () => setTaggedWith(undefined),
+    [],
+  );
+  const handleQueryValueRemove = useCallback(
+    () => setQueryValue(undefined),
+    [],
+  );
 
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
@@ -47,19 +53,20 @@ function FiltersExample() {
     },
   ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith',
-          label: disambiguateLabel('taggedWith', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+  const appliedFilters =
+    taggedWith && !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith',
+            label: disambiguateLabel('taggedWith', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
   return (
     <div style={{height: '568px'}}>
-      <Card>
+      <LegacyCard>
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -72,29 +79,33 @@ function FiltersExample() {
               onClearAll={handleClearAll}
             >
               <div style={{paddingLeft: '8px'}}>
-                <Button onClick={() => console.log('New filter saved')}>
+                <Button
+                  onClick={() => console.log('New filter saved')}
+                  variant="tertiary"
+                >
                   Save
                 </Button>
               </div>
             </Filters>
           }
+          flushFilters
           items={[
             {
-              id: 341,
-              url: 'customers/341',
+              id: '341',
+              url: '#',
               name: 'Mae Jemison',
               location: 'Decatur, USA',
             },
             {
-              id: 256,
-              url: 'customers/256',
+              id: '256',
+              url: '#',
               name: 'Ellen Ochoa',
               location: 'Los Angeles, USA',
             },
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="medium" name={name} />;
+            const media = <Avatar customer size="md" name={name} />;
 
             return (
               <ResourceList.Item
@@ -103,19 +114,19 @@ function FiltersExample() {
                 media={media}
                 accessibilityLabel={`View details for ${name}`}
               >
-                <h3>
-                  <TextStyle variation="strong">{name}</TextStyle>
-                </h3>
+                <Text as="h3" variant="bodyMd" fontWeight="bold">
+                  {name}
+                </Text>
                 <div>{location}</div>
               </ResourceList.Item>
             );
           }}
         />
-      </Card>
+      </LegacyCard>
     </div>
   );
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: string): string {
     switch (key) {
       case 'taggedWith':
         return `Tagged with ${value}`;
@@ -124,7 +135,7 @@ function FiltersExample() {
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(value: string): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {
@@ -133,4 +144,4 @@ function FiltersExample() {
   }
 }
 
-export default withPolarisExample(FiltersExample);
+export default withPolarisExample(FiltersWithChildrenContentExample);

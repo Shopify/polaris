@@ -4,23 +4,23 @@
   position: relative;
   display: flex;
   height: $top-bar-height;
-  box-shadow: var(--p-shadow-top-bar);
-  background-color: var(--p-surface);
+  box-shadow: var(--p-shadow-100);
+  background-color: var(--p-color-bg-surface);
 }
 
 .BackAction {
   display: flex;
   flex: 0 1 auto;
   align-items: center;
-  padding-left: var(--p-space-3);
-  padding-right: var(--p-space-3);
+  padding-left: var(--p-space-400);
+  padding-right: var(--p-space-400);
   border-width: 0;
-  border-right: var(--p-border-base);
-  background-color: var(--p-surface);
+  border-right: var(--p-border-width-025) solid var(--p-color-border-secondary);
+  background-color: var(--p-color-bg-surface);
   font-weight: var(--p-font-weight-medium);
   cursor: pointer;
 }
 
 .BackAction :first-child {
-  padding-right: var(--p-space-05);
+  margin-right: var(--p-space-150);
 }

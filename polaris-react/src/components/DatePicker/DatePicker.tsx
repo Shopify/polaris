@@ -259,7 +259,7 @@ export function DatePicker({
     >
       <div className={styles.Header}>
         <Button
-          plain
+          variant="tertiary"
           icon={ArrowLeftMinor}
           accessibilityLabel={i18n.translate(
             'Polaris.DatePicker.previousMonth',
@@ -273,7 +273,7 @@ export function DatePicker({
           }
         />
         <Button
-          plain
+          variant="tertiary"
           icon={ArrowRightMinor}
           accessibilityLabel={i18n.translate('Polaris.DatePicker.nextMonth', {
             nextMonth,

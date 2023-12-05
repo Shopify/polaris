@@ -1,4 +1,4 @@
-name: metafields
+name: Metafields
 set: minor
 description: Used to represent metafields
 keywords:
@@ -6,7 +6,8 @@ keywords:
   - data sources
 authors:
   - Leina Leung
+  - Joe Thomas
 version: 1
 date_added: 2022-08-24
-date_modified: 2022-08-24
+date_modified: 2023-06-23
 exclusive_use:

@@ -1,15 +1,18 @@
 import {
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
   ResourceItem,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
+import type {ResourceListProps} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListWithBulkActionsExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<
+    ResourceListProps['selectedItems']
+  >([]);
 
   const resourceName = {
     singular: 'customer',
@@ -18,14 +21,14 @@ function ResourceListWithBulkActionsExample() {
 
   const items = [
     {
-      id: 103,
-      url: 'customers/341',
+      id: '103',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 203,
-      url: 'customers/256',
+      id: '203',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -54,7 +57,7 @@ function ResourceListWithBulkActionsExample() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -64,12 +67,12 @@ function ResourceListWithBulkActionsExample() {
         promotedBulkActions={promotedBulkActions}
         bulkActions={bulkActions}
       />
-    </Card>
+    </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: typeof items[number]) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -78,9 +81,9 @@ function ResourceListWithBulkActionsExample() {
         media={media}
         accessibilityLabel={`View details for ${name}`}
       >
-        <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </h3>
+        <Text variant="bodyMd" fontWeight="bold" as="h3">
+          {name}
+        </Text>
         <div>{location}</div>
       </ResourceItem>
     );

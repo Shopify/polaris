@@ -3,15 +3,19 @@
 .FooterHelp {
   display: flex;
   justify-content: center;
-  margin: var(--p-space-5) 0;
+  margin: var(--p-space-500) 0;
   width: 100%;
 
   @media #{$p-breakpoints-sm-up} {
-    margin: var(--p-space-5);
+    margin: var(--p-space-500);
     width: auto;
   }
 }
 
 .Text {
-  @include text-style-input;
+  font-size: var(--p-font-size-350);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-500);
+  border: none;
+  letter-spacing: initial;
 }

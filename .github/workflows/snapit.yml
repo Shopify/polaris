@@ -12,7 +12,7 @@ jobs:
     name: Snapshot Release
     if: |
       github.event.issue.pull_request &&
-      (github.event.comment.body == '/snapit' || github.event.comment.body == '/snapshot-release')
+      (startsWith(github.event.comment.body, '/snapit') || startsWith(github.event.comment.body, '/snapshot-release'))
     runs-on: ubuntu-latest
     steps:
       - name: Enforce permission requirement
@@ -63,7 +63,7 @@ jobs:
       # issue_comment requires us to checkout the branch
       # https://github.com/actions/checkout/issues/331#issuecomment-1120113003
       - name: Checkout pull request branch
-        run: hub pr checkout ${{ github.event.issue.number }}
+        run: gh pr checkout ${{ github.event.issue.number }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -76,6 +76,15 @@ jobs:
           if [[ $(git branch --show-current) == 'changeset-release/main' ]]; then
             git checkout origin/main -- .changeset
           fi
+
+      - name: Free up space on GitHub image
+        run: |
+          # Based on the official advice:
+          # https://github.com/actions/virtual-environments/issues/2840#issuecomment-790492173
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
       - name: Setup Node.js
         uses: actions/setup-node@v3

@@ -1,0 +1,231 @@
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.Image {
+  border-radius: var(--p-border-radius-200);
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--p-color-border);
+}
+
+.List {
+  list-style: none;
+  position: relative;
+  .ListItem {
+    position: relative;
+    margin-left: var(--list-bullet-width);
+    /* Using before elements as they respond to layout unlike ::marker, so we
+    * can wrap the li's in a <Stack> and use the gap property */
+    &::before {
+      display: var(--list-bullet-display, inline-block);
+      position: absolute;
+      flex-shrink: 0;
+      width: var(--list-bullet-width);
+      right: 100%;
+    }
+  }
+}
+
+.UnorderedList {
+  & > .ListItem {
+    --list-bullet-width: 0.95em;
+    &::before {
+      content: '\2022';
+    }
+  }
+}
+
+.OrderedList {
+  counter-reset: item;
+  & > .ListItem {
+    --list-bullet-width: 1.35em;
+    counter-increment: item;
+    &::before {
+      content: counter(item);
+    }
+  }
+}
+
+.InlineCode {
+  font-family: var(--font-family-mono);
+  font-size: 0.9em;
+  font-weight: var(--font-weight-500);
+  background: var(--surface-code-inline);
+  border-radius: var(--border-radius-300);
+  padding: 0.15rem 0.25rem;
+}
+
+.HorizontalRule {
+  height: 1px;
+  box-shadow: 0 0.5px var(--border-color);
+  background: var(--surface);
+  border-radius: var(--border-radius-200);
+  opacity: 0;
+  display: none;
+}
+
+.Strong {
+  font-weight: var(--font-weight-500);
+  color: var(--text-strong);
+}
+
+.TableWrapper {
+  overflow: auto;
+  max-width: calc(100vw - 2.5rem);
+  width: 100%;
+  overflow-wrap: normal;
+}
+
+.Table {
+  font-size: var(--font-size-300);
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  width: 100%;
+
+  th {
+    font-weight: var(--font-weight-600);
+    font-size: var(--font-size-300);
+    letter-spacing: var(--letter-spacing-100);
+    text-align: left;
+    background-color: var(--surface-subdued);
+    color: var(--text-strong);
+
+    &:first-child {
+      border-top-left-radius: 0.5rem;
+    }
+
+    &:last-child {
+      border-top-right-radius: 0.5rem;
+    }
+  }
+
+  th,
+  td {
+    padding: 0.6rem 0.70588rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+
+    &:first-child {
+      padding-left: 1.5rem;
+    }
+
+    &:last-child {
+      padding-right: 1.5rem;
+    }
+
+    @media screen and (min-width: $breakpointDesktop) {
+      &:first-child {
+        padding-left: 1.5rem;
+      }
+
+      &:last-child {
+        padding-right: 1.5rem;
+      }
+    }
+  }
+
+  tbody {
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:last-child td:first-child {
+      border-bottom-left-radius: 0.5rem;
+    }
+
+    tr:last-child td:last-child {
+      border-bottom-right-radius: 0.5rem;
+    }
+  }
+}
+
+/* The various gaps between adjacent elements */
+.Heading-h1 {
+  #{$notMarginConsideredHarmful} {
+    margin-block: 1.5rem;
+  }
+}
+
+.Heading-h2 {
+  #{$notMarginConsideredHarmful} {
+    margin-block: 3rem 1rem;
+  }
+}
+
+.Heading-h3 {
+  #{$notMarginConsideredHarmful} {
+    margin-block: 1.5rem 1rem;
+  }
+}
+
+.Heading-h4,
+.Heading-h5,
+.Heading-h6,
+.List,
+.Paragraph,
+.HorizontalRule {
+  #{$notMarginConsideredHarmful} {
+    margin-block: 1rem;
+  }
+}
+
+.Heading-h1,
+.Heading-h2,
+.Heading-h3,
+.Heading-h4,
+.Heading-h5,
+.Heading-h6,
+.Paragraph,
+.List {
+  &:first-child {
+    #{$notMarginConsideredHarmful} {
+      margin-top: 0;
+    }
+  }
+}
+
+.Heading-h3,
+.Heading-h4 {
+  + .Paragraph,
+  + .List {
+    #{$notMarginConsideredHarmful} {
+      margin-top: -0.5rem;
+    }
+  }
+}
+
+.List {
+  .List {
+    #{$notMarginConsideredHarmful} {
+      margin-block: 0;
+    }
+  }
+
+  .Paragraph {
+    #{$notMarginConsideredHarmful} {
+      margin-block: 0;
+    }
+  }
+}
+
+.MarkdownCopyButton {
+  opacity: 0.5;
+  transition: opacity 100ms ease-in;
+  background: none;
+  outline: none;
+}
+
+.MarkdownHeading {
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-100);
+
+  &:hover {
+    .MarkdownCopyButton {
+      opacity: 1;
+    }
+  }
+}

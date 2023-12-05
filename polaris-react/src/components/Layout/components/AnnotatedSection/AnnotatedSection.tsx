@@ -1,6 +1,8 @@
 import React from 'react';
 
-import {Heading} from '../../../Heading';
+import {Box} from '../../../Box';
+import {Text} from '../../../Text';
+// eslint-disable-next-line import/no-deprecated
 import {TextContainer} from '../../../TextContainer';
 import styles from '../../Layout.scss';
 
@@ -18,18 +20,24 @@ export function AnnotatedSection({
   id,
 }: AnnotatedSectionProps) {
   const descriptionMarkup =
-    typeof description === 'string' ? <p>{description}</p> : description;
+    typeof description === 'string' ? (
+      <Text as="p" variant="bodyMd">
+        {description}
+      </Text>
+    ) : (
+      description
+    );
 
   return (
     <div className={styles.AnnotatedSection}>
       <div className={styles.AnnotationWrapper}>
         <div className={styles.Annotation}>
-          <TextContainer>
-            <Heading id={id}>{title}</Heading>
+          <TextContainer spacing="tight">
+            <Text id={id} variant="headingMd" as="h2">
+              {title}
+            </Text>
             {descriptionMarkup && (
-              <div className={styles.AnnotationDescription}>
-                {descriptionMarkup}
-              </div>
+              <Box color="text-secondary">{descriptionMarkup}</Box>
             )}
           </TextContainer>
         </div>

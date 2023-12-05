@@ -53,20 +53,19 @@ export function LinkButton({
   ...rest
 }: LinkButtonProps) {
   return (
-    <Link href={href} passHref>
-      <a
-        className={className(
-          styles.Button,
-          small && styles.small,
-          pill && styles.pill,
-          primary && styles.primary,
-          fill && styles.fill,
-        )}
-        download={download}
-        {...rest}
-      >
-        {children}
-      </a>
+    <Link
+      href={href}
+      className={className(
+        styles.Button,
+        small && styles.small,
+        pill && styles.pill,
+        primary && styles.primary,
+        fill && styles.fill,
+      )}
+      download={download}
+      {...rest}
+    >
+      {children}
     </Link>
   );
 }

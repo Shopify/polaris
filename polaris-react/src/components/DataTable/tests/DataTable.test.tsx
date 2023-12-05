@@ -3,8 +3,10 @@ import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import {Checkbox} from '../../Checkbox';
+import {Pagination} from '../../Pagination';
 import {Cell, Navigation} from '../components';
-import {DataTable, DataTableProps} from '../DataTable';
+import {DataTable} from '../DataTable';
+import type {DataTableProps} from '../DataTable';
 
 describe('<DataTable />', () => {
   const headings = ['Product', 'Price', 'Order Number', 'Quantity', 'Subtotal'];
@@ -636,6 +638,29 @@ describe('<DataTable />', () => {
       const tables = dataTable.findAll('table');
 
       expect(tables).toHaveLength(1);
+    });
+  });
+
+  describe('pagination', () => {
+    it('does not render Pagination when pagination props are not provided', () => {
+      const dataTable = mountWithApp(<DataTable {...defaultProps} />);
+
+      expect(dataTable).not.toContainReactComponent(Pagination);
+    });
+
+    it('renders Pagination with table type when pagination props are provided', () => {
+      const paginationProps = {
+        hasNext: true,
+      };
+
+      const dataTable = mountWithApp(
+        <DataTable {...defaultProps} pagination={paginationProps} />,
+      );
+
+      expect(dataTable).toContainReactComponent(Pagination, {
+        type: 'table',
+        ...paginationProps,
+      });
     });
   });
 });

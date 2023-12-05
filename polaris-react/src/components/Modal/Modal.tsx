@@ -1,21 +1,25 @@
-import React, {useState, useCallback, useRef} from 'react';
+import React, {useState, useCallback, useRef, useId, cloneElement} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
-import {useUniqueId} from '../../utilities/unique-id/hooks';
 import {useI18n} from '../../utilities/i18n';
 import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
 import {Backdrop} from '../Backdrop';
+import {Box} from '../Box';
+import {InlineStack} from '../InlineStack';
 import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
 import {Portal} from '../Portal';
 
-import {Dialog, Footer, FooterProps, Header, Section} from './components';
+import {Dialog, Footer, Header, Section} from './components';
+import type {FooterProps} from './components';
 import styles from './Modal.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
+
+export type ModalSize = 'small' | 'large' | 'fullScreen';
 
 export interface ModalProps extends FooterProps {
   /** Whether the modal is open or not */
@@ -39,10 +43,8 @@ export interface ModalProps extends FooterProps {
   instant?: boolean;
   /** Automatically adds sections to modal */
   sectioned?: boolean;
-  /** Increases the modal width */
-  large?: boolean;
-  /** Decreases the modal width */
-  small?: boolean;
+  /** The size of the modal */
+  size?: ModalSize;
   /** Limits modal height on large sceens with scrolling */
   limitHeight?: boolean;
   /** Replaces modal content with a spinner while a background action is being performed */
@@ -59,8 +61,6 @@ export interface ModalProps extends FooterProps {
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
   /** Removes Scrollable container from the modal content */
   noScroll?: boolean;
-  /** Sets modal to the height of the viewport on small screens */
-  fullScreen?: boolean;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -75,8 +75,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   instant,
   sectioned,
   loading,
-  large,
-  small,
+  size,
   limitHeight,
   footer,
   primaryAction,
@@ -87,12 +86,12 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onIFrameLoad,
   onTransitionEnd,
   noScroll,
-  fullScreen,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
+  const [closing, setClosing] = useState(false);
 
-  const headerId = useUniqueId('modal-header');
-  const activatorRef = useRef<HTMLDivElement>(null);
+  const headerId = useId();
+  const activatorRef = useRef<HTMLElement>(null);
 
   const i18n = useI18n();
   const iframeTitle = i18n.translate('Polaris.Modal.iFrameTitle');
@@ -152,15 +151,19 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       : children;
 
     const body = loading ? (
-      <div className={styles.Spinner}>
-        <Spinner />
-      </div>
+      <Box padding="400">
+        <InlineStack gap="400" align="center" blockAlign="center">
+          <Spinner />
+        </InlineStack>
+      </Box>
     ) : (
       content
     );
 
     const scrollContainerMarkup = noScroll ? (
-      <div className={styles.Body}>{body}</div>
+      <Box width="100%" overflowX="hidden" overflowY="hidden">
+        {body}
+      </Box>
     ) : (
       <Scrollable
         shadow
@@ -191,28 +194,32 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         onClose={onClose}
         onEntered={handleEntered}
         onExited={handleExited}
-        large={large}
-        small={small}
+        size={size}
         limitHeight={limitHeight}
-        fullScreen={fullScreen}
+        setClosing={setClosing}
       >
-        <Header titleHidden={titleHidden} id={headerId} onClose={onClose}>
+        <Header
+          titleHidden={titleHidden}
+          id={headerId}
+          closing={closing}
+          onClose={onClose}
+        >
           {title}
         </Header>
-        <div className={styles.BodyWrapper}>{bodyMarkup}</div>
+        {bodyMarkup}
         {footerMarkup}
       </Dialog>
     );
 
-    backdrop = <Backdrop onClick={onClose} />;
+    backdrop = <Backdrop setClosing={setClosing} onClick={onClose} />;
   }
 
   const animated = !instant;
 
   const activatorMarkup =
-    activator && !isRef(activator) ? (
-      <div ref={activatorRef}>{activator}</div>
-    ) : null;
+    activator && !isRef(activator)
+      ? cloneElement(activator, {ref: activatorRef})
+      : null;
 
   return (
     <WithinContentContext.Provider value>

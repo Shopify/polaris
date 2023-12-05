@@ -1,28 +1,6 @@
-import type {Metadata} from './metadata';
-
 export type Entry<T> = [keyof T, T[keyof T]];
 export type Entries<T> = Entry<T>[];
-
-export interface MetadataProperties {
-  description?: string;
-  value: string;
-}
-
-export interface MetadataGroup {
-  [token: string]: MetadataProperties;
-}
-
-export interface MetadataBase {
-  [tokenGroup: string]: MetadataGroup;
-}
-
-export type TokenGroup<T extends MetadataGroup = MetadataGroup> = {
-  [K in keyof T]: T[K]['value'];
-};
-
-export type Tokens = {
-  [TokenGroupName in keyof Metadata]: TokenGroup<Metadata[TokenGroupName]>;
-};
+export type Experimental<T extends string> = `${T}-experimental`;
 
 // The following utility types are copied directly from `type-fest`:
 // https://github.com/sindresorhus/type-fest

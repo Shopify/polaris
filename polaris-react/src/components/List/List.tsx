@@ -7,7 +7,14 @@ import styles from './List.scss';
 
 type Type = 'bullet' | 'number';
 
+type Spacing = 'extraTight' | 'loose';
+
 export interface ListProps {
+  /**
+   * Determines the space between list items
+   * @default 'loose'
+   */
+  gap?: Spacing;
   /**
    * Type of list to display
    * @default 'bullet'
@@ -19,9 +26,10 @@ export interface ListProps {
 
 export const List: React.FunctionComponent<ListProps> & {
   Item: typeof Item;
-} = function List({children, type = 'bullet'}: ListProps) {
+} = function List({children, gap = 'loose', type = 'bullet'}: ListProps) {
   const className = classNames(
     styles.List,
+    gap && styles[variationName('spacing', gap)],
     type && styles[variationName('type', type)],
   );
 

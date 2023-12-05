@@ -1,20 +1,30 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {
-  ActionList,
-  Frame,
-  Icon,
-  TopBar,
-  VisuallyHidden,
-} from '@shopify/polaris';
+import {ActionList, Frame, Icon, TopBar, Text, Avatar} from '@shopify/polaris';
 import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+
+import type {UserMenuProps} from '../../../build/ts/latest/src/components/TopBar';
 
 export default {
   component: TopBar,
 } as ComponentMeta<typeof TopBar>;
 
-export function Default() {
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+function TopBarWrapper({
+  userActions,
+  name,
+  detail,
+  initials,
+  customActivator,
+  message,
+}: {
+  userActions?: UserMenuProps['actions'];
+  name?: UserMenuProps['name'];
+  detail?: UserMenuProps['detail'];
+  initials?: UserMenuProps['initials'];
+  customActivator?: UserMenuProps['customActivator'];
+  message?: UserMenuProps['message'];
+}) {
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(true);
   const [isSecondaryMenuOpen, setIsSecondaryMenuOpen] = useState(false);
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -44,26 +54,33 @@ export function Default() {
   }, []);
 
   const logo = {
-    width: 124,
+    width: 86,
     topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-    url: 'http://jadedpixel.com',
-    accessibilityLabel: 'Jaded Pixel',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    url: '#',
+    accessibilityLabel: 'Shopify',
   };
 
   const userMenuMarkup = (
     <TopBar.UserMenu
-      actions={[
-        {
-          items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
-        },
-        {
-          items: [{content: 'Community forums'}],
-        },
-      ]}
-      name="Dharma"
-      detail="Jaded Pixel"
-      initials="D"
+      actions={
+        userActions
+          ? userActions
+          : [
+              {
+                items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+              },
+              {
+                items: [{content: 'Community forums'}],
+              },
+            ]
+      }
+      name={name ? name : 'Xquenda Andreev'}
+      detail={detail && detail}
+      initials={initials ? initials : 'JD'}
+      customActivator={customActivator}
+      customWidth="300px"
+      message={message}
       open={isUserMenuOpen}
       onToggle={toggleIsUserMenuOpen}
     />
@@ -89,7 +106,9 @@ export function Default() {
       activatorContent={
         <span>
           <Icon source={QuestionMarkMajor} />
-          <VisuallyHidden>Secondary menu</VisuallyHidden>
+          <Text as="span" visuallyHidden>
+            Secondary menu
+          </Text>
         </span>
       }
       open={isSecondaryMenuOpen}
@@ -120,5 +139,83 @@ export function Default() {
     <div style={{height: '250px'}}>
       <Frame topBar={topBarMarkup} logo={logo} />
     </div>
+  );
+}
+
+export function Default() {
+  const userActions: UserMenuProps['actions'] = [
+    {
+      items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+    },
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+  return (
+    <TopBarWrapper
+      userActions={userActions}
+      name="Xquenda Andreev"
+      initials="XA"
+    />
+  );
+}
+
+export function WithCustomActivator() {
+  const userActions: UserMenuProps['actions'] = [
+    {
+      items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+    },
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+
+  const customActivator = (
+    <>
+      <Avatar size="sm" initials="XA" name="Xquenda Andreev" />
+      <span style={{marginLeft: '0.5rem'}}>
+        <Text as="p" alignment="start" fontWeight="medium" truncate>
+          Xquenda Andreev
+        </Text>
+        <Text as="p" variant="bodySm" alignment="start" truncate>
+          Hem Canada
+        </Text>
+      </span>
+    </>
+  );
+
+  return (
+    <TopBarWrapper
+      userActions={userActions}
+      name="Xquenda Andreev"
+      detail="Hem Canada"
+      customActivator={customActivator}
+    />
+  );
+}
+
+export function WithMessage() {
+  const userActions: UserMenuProps['actions'] = [
+    {
+      items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+    },
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+
+  return (
+    <TopBarWrapper
+      userActions={userActions}
+      name="Xquenda Andreev"
+      detail="Hem Canada"
+      initials="XA"
+      message={{
+        title: 'Message title',
+        description: 'Message description',
+        link: {to: 'https://www.shopify.com', content: 'Link content'},
+        action: {content: 'Action content', onClick: () => {}},
+      }}
+    />
   );
 }

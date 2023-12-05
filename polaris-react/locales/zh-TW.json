@@ -14,19 +14,23 @@
         "partiallyComplete": "部分完成",
         "complete": "完成"
       },
-      "STATUS_LABELS": {
+      "TONE_LABELS": {
         "info": "資訊",
         "success": "成功",
         "warning": "警告",
         "attention": "注意",
-        "new": "全新功能",
-        "critical": "重要"
+        "new": "新",
+        "critical": "重要",
+        "readOnly": "唯讀",
+        "enabled": "已啟用"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "關閉通知"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "載入中",
-      "connectedDisclosureAccessibilityLabel": "相關動作"
+      "spinnerAccessibilityLabel": "載入中"
     },
     "Common": {
       "checkbox": "核取方塊",
@@ -152,11 +156,13 @@
       "clearAllFilters": "清除所有篩選條件",
       "clear": "清除",
       "clearLabel": "清除 {filterName}",
-      "moreFiltersWithCount": "更多篩選條件 ({count})"
+      "moreFiltersWithCount": "更多篩選條件 ({count})",
+      "addFilter": "新增篩選條件",
+      "clearFilters": "全部清除"
     },
     "Modal": {
       "iFrameTitle": "本文標記",
-      "modalWarning": "強制回應缺少以下必要屬性：{missingProps}"
+      "modalWarning": "互動視窗缺少以下必要屬性：{missingProps}"
     },
     "Pagination": {
       "previous": "上一頁",
@@ -174,7 +180,7 @@
       "showing": "顯示 {itemsCount} {resource}",
       "loading": "正在載入 {resource}",
       "selected": "已選取 {selectedItemsCount} 項",
-      "allItemsSelected": "已選取您商店中所有 {itemsLength}+ {resourceNamePlural}。",
+      "allItemsSelected": "已選取您商店中全部 {itemsLength}+ 個{resourceNamePlural}",
       "selectAllItems": "選取您商店中全部 {itemsLength}+ {resourceNamePlural}",
       "emptySearchResultTitle": "找不到 {resourceNamePlural}",
       "emptySearchResultDescription": "請嘗試變更篩選條件或搜尋詞彙",
@@ -183,8 +189,6 @@
       "a11yCheckboxSelectAllSingle": "選取 {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "取消選取全部 {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "選取全部 {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} 個商品",
-      "ariaLivePlural": "{itemsLength} 個商品",
       "Item": {
         "actionsDropdownLabel": "{accessibilityLabel} 的動作",
         "actionsDropdown": "動作下拉式選單",
@@ -192,18 +196,59 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "動作",
-        "moreActionsActivatorLabel": "更多動作",
-        "warningMessage": "為提供更良好的用戶體驗，您一次舉辦的促銷活動應以 {maxPromotedActions} 項為限。"
+        "moreActionsActivatorLabel": "更多動作"
       },
       "showingTotalCount": "顯示第 {itemsCount} 個 {resource}，共 {totalItemsCount} 個",
-      "allFilteredItemsSelected": "已選取套用此篩選條件後顯示的全部 {itemsLength}+ 個 {resourceNamePlural}。",
+      "allFilteredItemsSelected": "已選取此篩選條件中全部 {itemsLength}+ 個{resourceNamePlural}",
       "selectAllFilteredItems": "選取套用此篩選條件後顯示的全部 {itemsLength}+ 個 {resourceNamePlural}"
     },
     "SkeletonPage": {
       "loadingLabel": "頁面載入中"
     },
     "Tabs": {
-      "toggleTabsLabel": "更多分頁"
+      "toggleTabsLabel": "更多檢視畫面",
+      "newViewAccessibilityLabel": "建立新檢視畫面",
+      "newViewTooltip": "建立檢視畫面",
+      "Tab": {
+        "rename": "重新命名檢視畫面",
+        "duplicate": "複製檢視畫面",
+        "edit": "編輯檢視畫面",
+        "delete": "刪除檢視畫面",
+        "copy": "{name}的副本",
+        "deleteModal": {
+          "title": "是否要刪除檢視畫面？",
+          "description": "此動作無法復原。{viewName} 檢視畫面已無法在您的管理介面中使用。",
+          "cancel": "取消",
+          "delete": "刪除檢視畫面"
+        }
+      },
+      "RenameModal": {
+        "title": "重新命名檢視畫面",
+        "label": "名稱",
+        "cancel": "取消",
+        "create": "儲存",
+        "errors": {
+          "sameName": "已有其他檢視畫面使用此名稱。請使用其他名稱。"
+        }
+      },
+      "DuplicateModal": {
+        "title": "複製檢視畫面",
+        "label": "名稱",
+        "cancel": "取消",
+        "create": "建立檢視畫面",
+        "errors": {
+          "sameName": "已有其他檢視畫面使用此名稱。請使用其他名稱。"
+        }
+      },
+      "CreateViewModal": {
+        "title": "建立新檢視畫面",
+        "label": "名稱",
+        "cancel": "取消",
+        "create": "建立檢視畫面",
+        "errors": {
+          "sameName": "已有其他檢視畫面使用此名稱。請使用其他名稱。"
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "移除 {children}"
@@ -220,7 +265,8 @@
       }
     },
     "MediaCard": {
-      "popoverButton": "動作"
+      "popoverButton": "動作",
+      "dismissButton": "關閉"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -279,7 +325,7 @@
     "IndexProvider": {
       "defaultItemSingular": "品項",
       "defaultItemPlural": "品項",
-      "allItemsSelected": "已選取全部 {itemsLength} + {resourceNamePlural}。",
+      "allItemsSelected": "已選取全部 {itemsLength}+ 個{resourceNamePlural}",
       "selected": "已選取 {selectedItemsCount} 項",
       "a11yCheckboxDeselectAllSingle": "取消選取 {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "選取 {resourceNameSingular}",
@@ -307,6 +353,52 @@
     "FullscreenBar": {
       "back": "返回",
       "accessibilityLabel": "退出全螢幕模式"
+    },
+    "FilterPill": {
+      "clear": "清除"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "搜尋及篩選",
+      "searchFilterAccessibilityLabel": "搜尋及篩選結果",
+      "sort": "排序搜尋結果",
+      "addView": "新增檢視畫面",
+      "newView": "自訂搜尋條件",
+      "SortButton": {
+        "ariaLabel": "排序搜尋結果",
+        "tooltip": "排序",
+        "title": "排序依據",
+        "sorting": {
+          "asc": "遞增",
+          "desc": "遞減",
+          "az": "由 A 到 Z",
+          "za": "由 Z 到 A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "取消",
+        "update": "更新",
+        "save": "儲存",
+        "saveAs": "另存新檔",
+        "modal": {
+          "title": "將檢視畫面另存為",
+          "label": "名稱",
+          "sameName": "已有其他檢視畫面使用此名稱。請使用其他名稱。",
+          "save": "儲存",
+          "cancel": "取消"
+        }
+      },
+      "searchFilterTooltipWithShortcut": "搜尋和篩選 (F)",
+      "EditColumnsButton": {
+        "tooltip": "編輯欄",
+        "accessibilityLabel": "自訂表格欄順序和能見度"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "清除",
+        "search": "搜尋",
+        "placeholder": "搜尋動作"
+      }
     }
   }
 }

@@ -83,7 +83,7 @@ $breakpointNav: $breakpointTablet;
         }
 
         + ul > li:last-child {
-          padding-bottom: 0.5rem;
+          padding-bottom: 1rem;
         }
 
         > a {
@@ -108,7 +108,40 @@ $breakpointNav: $breakpointTablet;
           padding-left: 2.25rem;
 
           > a {
+            color: var(--text-strong);
+          }
+
+          &.isCurrent > a {
+            color: var(--primary);
+          }
+        }
+
+        > ul > li {
+          > .NavItem {
+            font-size: var(--font-size-200);
+            letter-spacing: var(--letter-spacing-300);
+            padding-left: 2.75rem;
+
+            > a {
+              color: var(--text);
+            }
+
+            &.isCurrent > a {
+              color: var(--primary);
+            }
+          }
+        }
+      }
+
+      > ul > li > ul > li {
+        > .NavItem {
+          font-size: var(--font-size-200);
+          letter-spacing: var(--letter-spacing-300);
+          padding-left: 3rem;
+
+          > a {
             color: var(--text);
+            white-space: normal;
           }
 
           &.isCurrent > a {
@@ -222,7 +255,7 @@ $breakpointNav: $breakpointTablet;
     transform: scale(0.8);
 
     @include dark-mode {
-      filter: invert(1);
+      fill: white;
     }
   }
 
@@ -254,7 +287,7 @@ $breakpointNav: $breakpointTablet;
   }
 
   @include dark-mode {
-    filter: invert(1);
+    fill: white;
   }
 }
 

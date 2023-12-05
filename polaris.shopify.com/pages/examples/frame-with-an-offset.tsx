@@ -1,7 +1,7 @@
 import {
   ActionList,
   AppProvider,
-  Card,
+  LegacyCard,
   ContextualSaveBar,
   FormLayout,
   Frame,
@@ -32,7 +32,7 @@ function FrameExample() {
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
   });
-  const skipToContentRef = useRef(null);
+  const skipToContentRef = useRef<HTMLAnchorElement>(null);
 
   const [toastActive, setToastActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -55,11 +55,11 @@ function FrameExample() {
   const [supportMessage, setSupportMessage] = useState('');
 
   const handleSubjectChange = useCallback(
-    (value) => setSupportSubject(value),
+    (value: string) => setSupportSubject(value),
     [],
   );
   const handleMessageChange = useCallback(
-    (value) => setSupportMessage(value),
+    (value: string) => setSupportMessage(value),
     [],
   );
   const handleDiscard = useCallback(() => {
@@ -75,11 +75,11 @@ function FrameExample() {
     setToastActive(true);
     setStoreName(defaultState.current.nameFieldValue);
   }, [emailFieldValue, nameFieldValue]);
-  const handleNameFieldChange = useCallback((value) => {
+  const handleNameFieldChange = useCallback((value: string) => {
     setNameFieldValue(value);
     value && setIsDirty(true);
   }, []);
-  const handleEmailFieldChange = useCallback((value) => {
+  const handleEmailFieldChange = useCallback((value: string) => {
     setEmailFieldValue(value);
     value && setIsDirty(true);
   }, []);
@@ -87,7 +87,7 @@ function FrameExample() {
     setSearchActive(false);
     setSearchValue('');
   }, []);
-  const handleSearchFieldChange = useCallback((value) => {
+  const handleSearchFieldChange = useCallback((value: string) => {
     setSearchValue(value);
     setSearchActive(value.length > 0);
   }, []);
@@ -222,7 +222,7 @@ function FrameExample() {
           title="Account details"
           description="Jaded Pixel will use this as your account information."
         >
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Full name"
@@ -238,7 +238,7 @@ function FrameExample() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>
@@ -248,12 +248,12 @@ function FrameExample() {
     <SkeletonPage>
       <Layout>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
             </TextContainer>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </SkeletonPage>
@@ -292,13 +292,12 @@ function FrameExample() {
   );
 
   const logo = {
-    width: 124,
+    width: 86,
     topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
     contextualSaveBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    url: 'http://jadedpixel.com',
-    accessibilityLabel: 'Jaded Pixel',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    accessibilityLabel: 'Shopify',
   };
 
   return (
@@ -350,7 +349,7 @@ function FrameExample() {
           navigation={navigationMarkup}
           showMobileNavigation={mobileNavigationActive}
           onNavigationDismiss={toggleMobileNavigationActive}
-          skipToContentTarget={skipToContentRef.current}
+          skipToContentTarget={skipToContentRef}
         >
           {contextualSaveBarMarkup}
           {loadingMarkup}

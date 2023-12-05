@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 @mixin dark-mode {
   :global(.dark-mode) & {
     @content;
@@ -27,4 +29,62 @@
       background-color: var(--text-subdued);
     }
   }
+}
+
+@mixin responsive-props($componentName, $componentProp, $declarationProp) {
+  // stylelint-disable -- Polaris component custom properties
+  --pc-#{$componentName}-#{$componentProp}-xs: initial;
+  --pc-#{$componentName}-#{$componentProp}-sm: initial;
+  --pc-#{$componentName}-#{$componentProp}-md: initial;
+  --pc-#{$componentName}-#{$componentProp}-lg: initial;
+  --pc-#{$componentName}-#{$componentProp}-xl: initial;
+
+  #{$declarationProp}: var(--pc-#{$componentName}-#{$componentProp}-xs);
+
+  @media (min-width: $breakpointMobile) {
+    #{$declarationProp}: var(
+      --pc-#{$componentName}-#{$componentProp}-sm,
+      var(--pc-#{$componentName}-#{$componentProp}-xs)
+    );
+  }
+
+  @media (min-width: $breakpointTablet) {
+    #{$declarationProp}: var(
+      --pc-#{$componentName}-#{$componentProp}-md,
+      var(
+        --pc-#{$componentName}-#{$componentProp}-sm,
+        var(--pc-#{$componentName}-#{$componentProp}-xs)
+      )
+    );
+  }
+
+  @media (min-width: $breakpointDesktopSmall) {
+    #{$declarationProp}: var(
+      --pc-#{$componentName}-#{$componentProp}-lg,
+      var(
+        --pc-#{$componentName}-#{$componentProp}-md,
+        var(
+          --pc-#{$componentName}-#{$componentProp}-sm,
+          var(--pc-#{$componentName}-#{$componentProp}-xs)
+        )
+      )
+    );
+  }
+
+  @media (min-width: $breakpointDesktop) {
+    #{$declarationProp}: var(
+      --pc-#{$componentName}-#{$componentProp}-xl,
+      var(
+        --pc-#{$componentName}-#{$componentProp}-lg,
+        var(
+          --pc-#{$componentName}-#{$componentProp}-md,
+          var(
+            --pc-#{$componentName}-#{$componentProp}-sm,
+            var(--pc-#{$componentName}-#{$componentProp}-xs)
+          )
+        )
+      )
+    );
+  }
+  // stylelint-enable
 }

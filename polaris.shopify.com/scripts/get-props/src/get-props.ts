@@ -1,3 +1,5 @@
+#!/usr/bin/env ts-node
+
 import * as ts from 'typescript';
 import * as fs from 'fs';
 import path from 'path';
@@ -44,15 +46,6 @@ export function getProps(filePaths: string[]): AllTypes {
       });
     }
   }
-
-  Object.entries(ast).forEach(([name, value]) => {
-    const definitionCount = Object.keys(value).length;
-    if (definitionCount !== 1) {
-      console.warn(
-        `A type called "${name}" is defined in ${definitionCount} files`,
-      );
-    }
-  });
 
   return ast;
 
@@ -290,8 +283,16 @@ if (isExecutedThroughCommandLine) {
   ]).then((files) => {
     let filesWithoutTests = files.filter((file) => !file.endsWith('test.tsx'));
     const ast = getProps(filesWithoutTests);
-    const filePath = path.join(__dirname, '../../../../../src/data/props.json');
-    fs.writeFileSync(filePath, JSON.stringify(ast, undefined, 2));
+
+    const cacheDir = path.join(__dirname, '../../../.cache');
+    if (!fs.existsSync(cacheDir)) {
+      fs.mkdirSync(cacheDir, {recursive: true});
+    }
+
+    fs.writeFileSync(
+      path.join(cacheDir, 'props.json'),
+      JSON.stringify(ast, undefined, 2),
+    );
   });
 }
 
@@ -310,7 +311,12 @@ export function getRelevantTypes(
   ast: AllTypes,
   name: string,
   filePath: string,
+  status: string,
 ): FilteredTypes {
+  if (status === 'Deprecated') {
+    return {};
+  }
+
   let matchingNode = ast[name][filePath];
 
   if (!matchingNode) {

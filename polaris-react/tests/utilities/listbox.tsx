@@ -1,13 +1,12 @@
-import React, {ReactElement} from 'react';
+import React from 'react';
+import type {ReactElement} from 'react';
 import {createMount} from '@shopify/react-testing';
 
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import {PolarisTestProvider} from '../../src/components/PolarisTestProvider';
 import {ListboxContext} from '../../src/utilities/listbox';
-import {
-  ComboboxListboxContext,
-  ComboboxListboxType,
-} from '../../src/utilities/combobox';
+import {ComboboxListboxContext} from '../../src/utilities/combobox';
+import type {ComboboxListboxType} from '../../src/utilities/combobox';
 import translations from '../../locales/en.json';
 
 import {mountWithApp} from './react-testing';
@@ -27,10 +26,7 @@ export function mountWithListboxProvider(
     },
     render(element: React.ReactElement) {
       return (
-        <PolarisTestProvider
-          i18n={translations}
-          features={{newDesignLanguage: true}}
-        >
+        <PolarisTestProvider i18n={translations}>
           <ListboxContext.Provider value={context}>
             {element}
           </ListboxContext.Provider>
@@ -44,8 +40,6 @@ export function mountWithComboboxListContext(
   listbox: ReactElement,
   context: ComboboxListboxType = {},
 ) {
-  // This is probably a legit error but I don't have the time to refactor this
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const providerValue = {
     setActiveOptionId: () => null,
     ...context,

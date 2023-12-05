@@ -1,15 +1,15 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  Card,
+  LegacyCard,
   FormLayout,
   Icon,
   InlineError,
   Link,
   Select,
-  Stack,
+  LegacyStack,
   TextField,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
 
@@ -77,6 +77,46 @@ export function Disabled() {
   );
 }
 
+export function Magic() {
+  return (
+    <Select
+      label="Date range"
+      tone="magic"
+      options={[
+        {label: 'Today', value: 'today'},
+        {label: 'Yesterday', value: 'yesterday'},
+        {label: 'Last 7 days', value: 'lastWeek'},
+      ]}
+    />
+  );
+}
+
+export function WithInlineLabelMagic() {
+  const [selected, setSelected] = useState('newestUpdate');
+
+  const handleSelectChange = useCallback((value) => setSelected(value), []);
+
+  const options = [
+    {label: 'Newest update', value: 'newestUpdate'},
+    {label: 'Oldest update', value: 'oldestUpdate'},
+    {label: 'Most spent', value: 'mostSpent'},
+    {label: 'Most orders', value: 'mostOrders'},
+    {label: 'Last name A–Z', value: 'lastNameAlpha'},
+    {label: 'Last name Z–A', value: 'lastNameReverseAlpha'},
+  ];
+
+  return (
+    <Select
+      label="Sort by"
+      tone="magic"
+      labelInline
+      options={options}
+      onChange={handleSelectChange}
+      value={selected}
+    />
+  );
+}
+
 export function WithPrefix() {
   const [selected, setSelected] = useState('enabled');
 
@@ -131,7 +171,7 @@ export function WithSeparateValidationError() {
   const unitSelectID = 'unit';
   const errorMessage = generateErrorMessage();
   const formGroupMarkup = (
-    <Stack vertical spacing="extraTight">
+    <LegacyStack vertical spacing="extraTight">
       <FormLayout>
         <FormLayout.Group condensed>
           <TextField
@@ -154,10 +194,10 @@ export function WithSeparateValidationError() {
         </FormLayout.Group>
       </FormLayout>
       <InlineError message={errorMessage} fieldID={unitSelectID} />
-    </Stack>
+    </LegacyStack>
   );
 
-  return <Card sectioned>{formGroupMarkup}</Card>;
+  return <LegacyCard sectioned>{formGroupMarkup}</LegacyCard>;
 
   function generateErrorMessage() {
     const weightError =
@@ -170,14 +210,112 @@ export function WithSeparateValidationError() {
     }
 
     return (
-      <span>
-        <TextStyle variation="negative">
-          <p>
-            {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
-            <Link>Manage shipping</Link>
-          </p>
-        </TextStyle>
-      </span>
+      <Text tone="critical" as="span">
+        <p>
+          {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
+          <Link>Manage shipping</Link>
+        </p>
+      </Text>
     );
   }
+}
+
+export function All() {
+  return (
+    <FormLayout>
+      <FormLayout.Group>
+        <Select
+          label="Default"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+        />
+        <Select
+          label="Disabled"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          disabled
+          helpText="Help text"
+        />
+        <Select
+          label="Error"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          error="Province is required"
+        />
+        <Select
+          label="Magic"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          tone="magic"
+          onChange={() => {}}
+        />
+        <Select
+          label="Required"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          requiredIndicator
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <Select
+          label="Placeholder"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value=""
+          placeholder="Placeholder"
+          onChange={() => {}}
+        />
+        <Select
+          label="Label action"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          labelAction={{content: 'Action'}}
+          onChange={() => {}}
+        />
+        <Select
+          label="Help text"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          helpText="Help text"
+          onChange={() => {}}
+        />
+        <Select
+          label="Long text"
+          options={[
+            'Ontario',
+            'Newfoundland and Labrador and Newfoundland and Labrador and Newfoundland and Labrador',
+          ]}
+          value="Newfoundland and Labrador and Newfoundland and Labrador and Newfoundland and Labrador"
+          onChange={() => {}}
+        />
+      </FormLayout.Group>
+      <FormLayout.Group>
+        <Select
+          label="Label inline"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          labelInline
+        />
+        <Select
+          label="Label inline magic"
+          tone="magic"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Ontario"
+          onChange={() => {}}
+          labelInline
+        />
+        <Select
+          label="Label hidden"
+          options={['Ontario', 'Newfoundland and Labrador']}
+          value="Label hidden"
+          onChange={() => {}}
+          labelHidden
+        />
+      </FormLayout.Group>
+    </FormLayout>
+  );
 }

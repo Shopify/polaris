@@ -1,15 +1,12 @@
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   AppProvider,
   Avatar,
-  Card,
-  ContextualSaveBar,
-  Layout,
+  LegacyCard,
   Page,
   ResourceList,
-  SettingToggle,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
 
 export default {
@@ -18,7 +15,7 @@ export default {
   parameters: {layout: 'fullscreen'},
 } as ComponentMeta<typeof AppProvider>;
 
-export function Default() {
+export function Default(_, context) {
   return (
     <AppProvider
       i18n={{
@@ -39,44 +36,46 @@ export function Default() {
       }}
     >
       <Page>
-        <Card>
+        <LegacyCard>
           <ResourceList
             showHeader
             items={[
               {
                 id: 341,
-                url: 'customers/341',
+                url: '#',
                 name: 'Mae Jemison',
                 location: 'Decatur, USA',
               },
               {
                 id: 256,
-                url: 'customers/256',
+                url: '#',
                 name: 'Ellen Ochoa',
                 location: 'Los Angeles, USA',
               },
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar customer size="medium" name={name} />;
+              const media = <Avatar customer size="md" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
                   <h3>
-                    <TextStyle variation="strong">{name}</TextStyle>
+                    <Text fontWeight="bold" as="span">
+                      {name}
+                    </Text>
                   </h3>
                   <div>{location}</div>
                 </ResourceList.Item>
               );
             }}
           />
-        </Card>
+        </LegacyCard>
       </Page>
     </AppProvider>
   );
 }
 
-export function WithI18n() {
+export function WithI18n(_, context) {
   return (
     <AppProvider
       i18n={{
@@ -97,44 +96,46 @@ export function WithI18n() {
       }}
     >
       <Page>
-        <Card>
+        <LegacyCard>
           <ResourceList
             showHeader
             items={[
               {
                 id: 341,
-                url: 'customers/341',
+                url: '#',
                 name: 'Mae Jemison',
                 location: 'Decatur, USA',
               },
               {
                 id: 256,
-                url: 'customers/256',
+                url: '#',
                 name: 'Ellen Ochoa',
                 location: 'Los Angeles, USA',
               },
             ]}
             renderItem={(item) => {
               const {id, url, name, location} = item;
-              const media = <Avatar customer size="medium" name={name} />;
+              const media = <Avatar customer size="md" name={name} />;
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
                   <h3>
-                    <TextStyle variation="strong">{name}</TextStyle>
+                    <Text fontWeight="bold" as="span">
+                      {name}
+                    </Text>
                   </h3>
                   <div>{location}</div>
                 </ResourceList.Item>
               );
             }}
           />
-        </Card>
+        </LegacyCard>
       </Page>
     </AppProvider>
   );
 }
 
-export function WithLinkComponent() {
+export function WithLinkComponent(_, context) {
   const CustomLinkComponent = ({children, url, ...rest}) => {
     return (
       <a
@@ -150,7 +151,7 @@ export function WithLinkComponent() {
   return (
     <AppProvider linkComponent={CustomLinkComponent} i18n={{}}>
       <Page
-        breadcrumbs={[{content: 'Products', url: '#'}]}
+        backAction={{content: 'Products', url: '#'}}
         title="Jar With Lock-Lid"
         primaryAction={{content: 'Save', disabled: true}}
       >

@@ -1,41 +1,41 @@
 import React from 'react';
 
-import {VisuallyHidden} from '../VisuallyHidden';
+import {Text} from '../Text';
 import {classNames, variationName} from '../../utilities/css';
 import type {IconSource} from '../../types';
 
 import styles from './Icon.scss';
 
-type Color =
+type Tone =
   | 'base'
   | 'subdued'
+  | 'caution'
+  | 'warning'
   | 'critical'
   | 'interactive'
-  | 'warning'
-  | 'highlight'
+  | 'info'
   | 'success'
-  | 'primary';
-
-const COLORS_WITH_BACKDROPS = [
-  'base',
-  'critical',
-  'highlight',
-  'success',
-  'warning',
-];
+  | 'primary'
+  | 'emphasis'
+  | 'magic'
+  | 'textCaution'
+  | 'textWarning'
+  | 'textCritical'
+  | 'textInfo'
+  | 'textSuccess'
+  | 'textPrimary'
+  | 'textMagic';
 
 export interface IconProps {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
   source: IconSource;
   /** Set the color for the SVG fill */
-  color?: Color;
-  /** Show a backdrop behind the icon */
-  backdrop?: boolean;
+  tone?: Tone;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
 }
 
-export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
+export function Icon({source, tone, accessibilityLabel}: IconProps) {
   let sourceType: 'function' | 'placeholder' | 'external';
   if (typeof source === 'function') {
     sourceType = 'function';
@@ -46,7 +46,7 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
   }
 
   if (
-    color &&
+    tone &&
     sourceType === 'external' &&
     process.env.NODE_ENV === 'development'
   ) {
@@ -56,23 +56,10 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
     );
   }
 
-  if (
-    backdrop &&
-    color &&
-    !COLORS_WITH_BACKDROPS.includes(color) &&
-    process.env.NODE_ENV === 'development'
-  ) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `The ${color} variant does not have a supported backdrop color`,
-    );
-  }
-
   const className = classNames(
     styles.Icon,
-    color && styles[variationName('color', color)],
-    color && styles.applyColor,
-    backdrop && styles.hasBackdrop,
+    tone && styles[variationName('tone', tone)],
+    tone && styles.applyColor,
   );
 
   const SourceComponent = source;
@@ -97,7 +84,11 @@ export function Icon({source, color, backdrop, accessibilityLabel}: IconProps) {
 
   return (
     <span className={className}>
-      <VisuallyHidden>{accessibilityLabel}</VisuallyHidden>
+      {accessibilityLabel && (
+        <Text as="span" visuallyHidden>
+          {accessibilityLabel}
+        </Text>
+      )}
       {contentMarkup[sourceType]}
     </span>
   );

@@ -1,7 +1,7 @@
-import React, {AllHTMLAttributes} from 'react';
+import React from 'react';
+import type {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Key} from '../../../types';
 import {Checkbox} from '../Checkbox';
 
 describe('<Checkbox />', () => {
@@ -103,7 +103,7 @@ describe('<Checkbox />', () => {
       const element = mountWithApp(<Checkbox label="Checkbox" />);
 
       expect(element).toContainReactComponent('input', {
-        id: 'PolarisCheckbox1',
+        id: ':r8:',
       });
     });
   });
@@ -139,7 +139,7 @@ describe('<Checkbox />', () => {
       );
 
       expect(checkbox).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisCheckbox1HelpText',
+        'aria-describedby': ':rc:HelpText',
       });
 
       expect(checkbox.find('div')).toContainReactText('Some help');
@@ -169,7 +169,7 @@ describe('<Checkbox />', () => {
       );
 
       expect(checkbox).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisCheckbox1Error',
+        'aria-describedby': ':re:Error',
       });
 
       expect(checkbox.find('div')).toContainReactText('Some error');
@@ -189,7 +189,7 @@ describe('<Checkbox />', () => {
       );
 
       expect(checkbox).toContainReactComponent('input', {
-        'aria-describedby': 'PolarisCheckbox1Error PolarisCheckbox1HelpText',
+        'aria-describedby': ':rg:Error :rg:HelpText',
       });
       expect(checkbox.find('div')).toContainReactText('Some error');
       expect(checkbox.find('div')).toContainReactText('Some help');
@@ -248,56 +248,6 @@ describe('<Checkbox />', () => {
 
       expect(checkBox).toContainReactComponent('input', {
         'aria-controls': 'SomeId',
-      });
-    });
-  });
-
-  describe('Hovering the label', () => {
-    it('adds the hover class to the Backdrop onMouseOver the label', () => {
-      const checkBox = mountWithApp(<Checkbox label="checkbox" />);
-
-      const label = checkBox.find('label');
-      label!.trigger('onMouseOver');
-
-      expect(checkBox).toContainReactComponent('span', {
-        className: 'Backdrop hover',
-      });
-    });
-
-    it('removes the hover class from the Backdrop onMouseOut the label', () => {
-      const checkBox = mountWithApp(<Checkbox label="checkbox" />);
-
-      const label = checkBox.find('label');
-      label!.trigger('onMouseOver');
-      label!.trigger('onMouseOut');
-
-      expect(checkBox).toContainReactComponent('span', {
-        className: 'Backdrop',
-      });
-    });
-  });
-
-  describe('Focus className', () => {
-    it('on keyUp adds a keyFocused class to the input', () => {
-      const checkbox = mountWithApp(<Checkbox label="Checkbox" />);
-
-      checkbox.find('input')!.trigger('onKeyUp', {
-        keyCode: Key.Space,
-      });
-
-      expect(checkbox).toContainReactComponent('input', {
-        className: 'Input keyFocused',
-      });
-    });
-
-    it('on change does not add a keyFocused class to the input', () => {
-      const checkbox = mountWithApp(<Checkbox label="Checkbox" />);
-      const checkboxInput = checkbox.find('input');
-      checkboxInput!.trigger('onChange', {
-        currentTarget: checkboxInput!.domNode as HTMLInputElement,
-      });
-      expect(checkbox).not.toContainReactComponent('input', {
-        className: 'Input keyFocused',
       });
     });
   });

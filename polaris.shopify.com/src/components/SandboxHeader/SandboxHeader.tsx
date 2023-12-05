@@ -1,43 +1,68 @@
+import {useState, useEffect, Fragment} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import {ClipboardMinor} from '@shopify/polaris-icons';
+import {ClipboardMinor, EditMinor} from '@shopify/polaris-icons';
 import {useCopyToClipboard} from '../../utils/hooks';
 import Icon from '../Icon';
+import SandboxHelpDialog from '../SandboxHelpDialog';
 
 import styles from './SandboxHeader.module.scss';
 
 interface Props {
-  url: string;
-  setHelpIsOpen: (open: boolean) => void;
+  copyUrl: string;
+  editUrl?: string;
 }
 
-function SandboxHeader({url, setHelpIsOpen}: Props) {
-  const [copy, didJustCopy] = useCopyToClipboard(url);
+const MS_DELAY_BEFORE_SHOW_ONBOARDING = 500;
+
+function SandboxHeader({copyUrl, editUrl}: Props) {
+  const [copy, didJustCopy] = useCopyToClipboard(copyUrl);
+  const [isHelpOpen, setHelpIsOpen] = useState(false);
+
+  // After the page has rendered at least once, we might show the help dialog
+  // (so it animates onto the screen nicely)
+  useEffect(() => {
+    const helpTimeout = setTimeout(() => {
+      const hasAlreadyBeenOnboarded = localStorage.getItem('onboarded');
+      if (hasAlreadyBeenOnboarded) {
+        return;
+      }
+      localStorage.setItem('onboarded', 'true');
+      setHelpIsOpen(true);
+    }, MS_DELAY_BEFORE_SHOW_ONBOARDING);
+    return () => clearTimeout(helpTimeout);
+  }, []);
 
   return (
-    <div className={styles.Header}>
-      <Link href="/">
-        <a className={styles.Logo}>
+    <Fragment>
+      <div className={styles.Header}>
+        <Link href="/" className={styles.Logo}>
           <Image
             src="/images/shopify-logo.svg"
-            layout="fixed"
             width={24}
             height={24}
             alt="Shopify logo"
           />
           Polaris Sandbox
-        </a>
-      </Link>
+        </Link>
 
-      <div className={styles.Buttons}>
-        <button onClick={() => setHelpIsOpen(true)}>Learn more</button>
-        <button className={styles.CopyURLButton} onClick={copy}>
-          <Icon source={ClipboardMinor} width="1em" height="1em" />
-          {didJustCopy ? 'Copied!' : 'Copy URL'}
-        </button>
+        <div className={styles.Buttons}>
+          <button onClick={() => setHelpIsOpen(true)}>Learn more</button>
+          <button className={styles.CopyURLButton} onClick={copy}>
+            <Icon source={ClipboardMinor} width="1em" height="1em" />
+            {didJustCopy ? 'Copied!' : 'Copy URL'}
+          </button>
+          {editUrl ? (
+            <Link href={editUrl}>
+              <Icon source={EditMinor} width="1em" height="1em" />
+              Edit
+            </Link>
+          ) : null}
+        </div>
       </div>
-    </div>
+      <SandboxHelpDialog {...{isOpen: isHelpOpen, setIsOpen: setHelpIsOpen}} />
+    </Fragment>
   );
 }
 

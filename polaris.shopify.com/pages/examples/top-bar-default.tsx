@@ -1,10 +1,4 @@
-import {
-  TopBar,
-  ActionList,
-  Icon,
-  VisuallyHidden,
-  Frame,
-} from '@shopify/polaris';
+import {TopBar, ActionList, Icon, Frame, Text} from '@shopify/polaris';
 import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -30,7 +24,7 @@ function TopBarExample() {
     setSearchValue('');
   }, []);
 
-  const handleSearchChange = useCallback((value) => {
+  const handleSearchChange = useCallback((value: string) => {
     setSearchValue(value);
     setIsSearchActive(value.length > 0);
   }, []);
@@ -38,13 +32,12 @@ function TopBarExample() {
   const handleNavigationToggle = useCallback(() => {
     console.log('toggle navigation visibility');
   }, []);
-
   const logo = {
-    width: 124,
     topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
-    url: 'http://jadedpixel.com',
-    accessibilityLabel: 'Jaded Pixel',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    width: 86,
+    url: '#',
+    accessibilityLabel: 'Shopify',
   };
 
   const userMenuMarkup = (
@@ -85,7 +78,9 @@ function TopBarExample() {
       activatorContent={
         <span>
           <Icon source={QuestionMarkMajor} />
-          <VisuallyHidden>Secondary menu</VisuallyHidden>
+          <Text as="span" visuallyHidden>
+            Secondary menu
+          </Text>
         </span>
       }
       open={isSecondaryMenuOpen}

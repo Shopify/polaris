@@ -21,13 +21,23 @@
 }
 
 .Page {
+  view-transition-name: page;
   --toc-width: 16rem;
   display: flex;
-  gap: 5rem;
+  gap: 2.5rem;
+  /* If the TOC is not visible, ensure the Post column is centered */
+  justify-content: center;
 }
 
 .Post {
   flex: 1;
+}
+
+.PostContent {
+  @media screen and (max-width: $breakpointDesktop) {
+    /* Ensure the page width doesn't become too wide when TOC is hidden */
+    max-width: 776px;
+  }
 }
 
 .Footer {
@@ -50,15 +60,16 @@
 }
 
 .TOCWrapper {
+  @include layout-scrollbars();
+
   align-self: flex-start;
   position: sticky;
   top: calc(var(--header-height) + 4.25rem);
-  padding: 0 0 0 1.5rem;
+  padding: var(--p-space-400) var(--p-space-200) var(--p-space-200);
   width: var(--toc-width);
   overscroll-behavior: contain;
-  overflow: auto;
-  box-shadow: inset 1px 0 var(--border-color);
-  @include layout-scrollbars();
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--p-border-radius-300);
 
   @media screen and (max-width: $breakpointDesktop) {
     display: none;

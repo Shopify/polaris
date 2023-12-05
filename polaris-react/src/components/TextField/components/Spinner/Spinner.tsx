@@ -1,5 +1,5 @@
 import React from 'react';
-import {CaretDownMinor, CaretUpMinor} from '@shopify/polaris-icons';
+import {ChevronDownMinor, ChevronUpMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
 import styles from '../../TextField.scss';
@@ -11,10 +11,11 @@ export interface SpinnerProps {
   onClick?(event: React.MouseEvent): void;
   onMouseDown(onChange: HandleStepFn): void;
   onMouseUp(): void;
+  onBlur(event: React.FocusEvent): void;
 }
 
 export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
-  function Spinner({onChange, onClick, onMouseDown, onMouseUp}, ref) {
+  function Spinner({onChange, onClick, onMouseDown, onMouseUp, onBlur}, ref) {
     function handleStep(step: number) {
       return () => onChange(step);
     }
@@ -22,7 +23,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
     function handleMouseDown(onChange: HandleStepFn) {
       return (event: React.MouseEvent) => {
         if (event.button !== 0) return;
-        onMouseDown(onChange);
+        onMouseDown?.(onChange);
       };
     }
 
@@ -35,9 +36,10 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onClick={handleStep(1)}
           onMouseDown={handleMouseDown(handleStep(1))}
           onMouseUp={onMouseUp}
+          onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={CaretUpMinor} />
+            <Icon source={ChevronUpMinor} />
           </div>
         </div>
         <div
@@ -47,9 +49,10 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onClick={handleStep(-1)}
           onMouseDown={handleMouseDown(handleStep(-1))}
           onMouseUp={onMouseUp}
+          onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={CaretDownMinor} />
+            <Icon source={ChevronDownMinor} />
           </div>
         </div>
       </div>

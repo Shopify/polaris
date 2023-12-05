@@ -1,9 +1,13 @@
 import React from 'react';
 
-import {ActionList, ActionListProps} from '../../../ActionList';
+import {ActionList} from '../../../ActionList';
+import type {ActionListProps} from '../../../ActionList';
 import {Popover} from '../../../Popover';
+import {Box} from '../../../Box';
+import {classNames} from '../../../../utilities/css';
 
-import {Message, MessageProps} from './components';
+import {Message} from './components';
+import type {MessageProps} from './components';
 import styles from './Menu.scss';
 
 export interface MenuProps {
@@ -23,6 +27,10 @@ export interface MenuProps {
   onClose(): void;
   /** A string that provides the accessibility labeling */
   accessibilityLabel?: string;
+  /** A custom width value that can be used to set the width of the menu */
+  customWidth?: string;
+  /** A boolean property indicating whether the menu is being used as a user menu */
+  userMenu?: boolean;
 }
 
 export function Menu(props: MenuProps) {
@@ -34,12 +42,14 @@ export function Menu(props: MenuProps) {
     activatorContent,
     message,
     accessibilityLabel,
+    customWidth,
+    userMenu,
   } = props;
 
   const badgeProps = message &&
     message.badge && {
       content: message.badge.content,
-      status: message.badge.status,
+      tone: message.badge.tone,
     };
 
   const messageMarkup = message && (
@@ -55,15 +65,16 @@ export function Menu(props: MenuProps) {
     />
   );
 
-  const isFullHeight = Boolean(message);
-
   return (
     <Popover
       activator={
         <div className={styles.ActivatorWrapper}>
           <button
             type="button"
-            className={styles.Activator}
+            className={classNames(
+              styles.Activator,
+              userMenu && styles['Activator-userMenu'],
+            )}
             onClick={onOpen}
             aria-label={accessibilityLabel}
           >
@@ -74,11 +85,19 @@ export function Menu(props: MenuProps) {
       active={open}
       onClose={onClose}
       fixed
-      fullHeight={isFullHeight}
+      fullHeight
       preferredAlignment="right"
     >
-      <ActionList onActionAnyItem={onClose} sections={actions} />
-      {messageMarkup}
+      <div className={styles.MenuItems}>
+        <Box width={customWidth}>
+          <ActionList
+            actionRole="menuitem"
+            onActionAnyItem={onClose}
+            sections={actions}
+          />
+          {messageMarkup}
+        </Box>
+      </div>
     </Popover>
   );
 }

@@ -16,6 +16,7 @@
   h2,
   h3,
   h4,
+  h5,
   p,
   ul,
   ol,
@@ -44,6 +45,10 @@
 
   h4 {
     @include heading-4;
+  }
+
+  h5 {
+    font-weight: bold;
   }
 
   h3,
@@ -129,6 +134,9 @@
     display: none;
   }
 
+  a code,
+  li > code,
+  td > code,
   p code {
     font-family: var(--font-family-mono);
     font-size: 0.9em;
@@ -136,6 +144,10 @@
     background: var(--surface-code-inline);
     border-radius: var(--border-radius-300);
     padding: 0.15rem 0.25rem;
+  }
+
+  li pre {
+    margin: 0.25rem 0;
   }
 
   .usage-list {
@@ -212,8 +224,9 @@
   :global {
     .table-wrapper {
       overflow: auto;
-      max-width: calc(100vw - 1.25rem);
+      max-width: calc(100vw - 2.5rem);
       width: 100%;
+      overflow-wrap: normal;
     }
   }
 }

@@ -1,20 +1,78 @@
 import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  Card,
+  LegacyCard,
   EmptySearchResult,
   Scrollable,
   TextField,
   Icon,
   Listbox,
-  Stack,
+  LegacyStack,
   AutoSelection,
+  BlockStack,
+  InlineStack,
+  Text,
+  Box,
 } from '@shopify/polaris';
 import {CirclePlusMinor, SearchMinor} from '@shopify/polaris-icons';
 
 export default {
   component: Listbox,
 } as ComponentMeta<typeof Listbox>;
+
+export function All() {
+  return (
+    <BlockStack gap="800">
+      <BlockStack gap="400">
+        <Text as="h2" variant="headingXl">
+          Default
+        </Text>
+        <Default />
+        <Box paddingBlockEnd="300" />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With loading
+        </Text>
+        <WithLoading />
+        <Box paddingBlockEnd="300" />
+      </BlockStack>
+
+      <BlockStack gap="400">
+        <Text as="h2" variant="headingXl">
+          With action
+        </Text>
+        <WithAction />
+        <Box paddingBlockEnd="300" />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With custom element
+        </Text>
+        <WithCustomOptions />
+        <Box paddingBlockEnd="300" />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With search
+        </Text>
+        <WithSearch />
+        <Box paddingBlockEnd="300" />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With disabled text option
+        </Text>
+        <WithDisabledTextOption />
+      </BlockStack>
+      <Box paddingBlockEnd="300" />
+    </BlockStack>
+  );
+}
 
 export function Default() {
   return (
@@ -45,31 +103,79 @@ export function WithAction() {
         Item 2
       </Listbox.Option>
       <Listbox.Action value="ActionValue">
-        <Stack spacing="tight">
-          <Icon source={CirclePlusMinor} color="base" />
+        <LegacyStack spacing="tight">
+          <Icon source={CirclePlusMinor} tone="base" />
           <div>Add item</div>
-        </Stack>
+        </LegacyStack>
       </Listbox.Action>
     </Listbox>
   );
 }
 
-export function WithCustomElement() {
+export function WithCustomOptions() {
+  interface CustomerSegment {
+    id: string;
+    label: string;
+    value: string;
+    subscribers: number;
+  }
+
+  const [selectedSegmentIndex, setSelectedSegmentIndex] = useState(0);
+
+  const segments: CustomerSegment[] = [
+    {
+      label: 'All customers',
+      id: 'gid://shopify/CustomerSegment/1',
+      value: '0',
+      subscribers: 23,
+    },
+    {
+      label: 'VIP customers',
+      id: 'gid://shopify/CustomerSegment/2',
+      value: '1',
+      subscribers: 16,
+    },
+    {
+      label: 'New customers',
+      id: 'gid://shopify/CustomerSegment/3',
+      value: '2',
+      subscribers: 2,
+    },
+    {
+      label: 'Abandoned carts - last 30 days',
+      id: 'gid://shopify/CustomerSegment/4',
+      value: '3',
+      subscribers: 108,
+    },
+  ];
+
+  const handleSegmentSelect = (segmentIndex: string) => {
+    setSelectedSegmentIndex(Number(segmentIndex));
+  };
+
   return (
-    <Listbox accessibilityLabel="Listbox with custom element example">
-      <Listbox.Action value="ActionValue" divider>
-        Add item
-      </Listbox.Action>
-      <Listbox.Option value="UniqueValue-1">
-        <div>Item 1</div>
-      </Listbox.Option>
-      <Listbox.Option value="UniqueValue-2">
-        <div>Item 2</div>
-      </Listbox.Option>
-      <Listbox.Option value="UniqueValue-3">
-        <div>Item 3</div>
-      </Listbox.Option>
-      <Listbox.Loading accessibilityLabel="items are loading" />
+    <Listbox
+      onSelect={handleSegmentSelect}
+      accessibilityLabel="Listbox with custom element example"
+    >
+      {segments.map(({label, id, value, subscribers}) => {
+        const selected = segments[selectedSegmentIndex].value === value;
+
+        return (
+          <Listbox.Option key={id} value={value} selected={selected}>
+            <Listbox.TextOption selected={selected}>
+              <Box width="100%">
+                <InlineStack gap="200" align="space-between">
+                  {label}
+                  <Text as="span" tone="subdued">
+                    {`${subscribers} subscribers`}
+                  </Text>
+                </InlineStack>
+              </Box>
+            </Listbox.TextOption>
+          </Listbox.Option>
+        );
+      })}
     </Listbox>
   );
 }
@@ -277,7 +383,13 @@ export function WithSearch() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span
+        style={{
+          color: 'var(--p-color-text-secondary)',
+        }}
+      >
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 
@@ -314,7 +426,7 @@ export function WithSearch() {
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <div
         style={{
           alignItems: 'stretch',
@@ -334,16 +446,36 @@ export function WithSearch() {
           shadow
           style={{
             position: 'relative',
-            height: '292px',
-            padding: 'var(--p-space-2) 0',
-            borderBottomLeftRadius: 'var(--p-border-radius-2)',
-            borderBottomRightRadius: 'var(--p-border-radius-2)',
+            height: '262px',
+            padding: 'var(--p-space-200) 0',
+            borderBottomLeftRadius: 'var(--p-border-radius-200)',
+            borderBottomRightRadius: 'var(--p-border-radius-200)',
           }}
           onScrolledToBottom={handleLazyLoadSegments}
         >
           {listboxMarkup}
         </Scrollable>
       </div>
-    </Card>
+    </LegacyCard>
+  );
+}
+
+export function WithDisabledTextOption() {
+  return (
+    <LegacyCard>
+      <Box paddingBlockStart="200" paddingBlockEnd="200">
+        <Listbox accessibilityLabel="Listbox with disabled item example">
+          <Listbox.Option value="UniqueValue-1">
+            <Listbox.TextOption>Item 1</Listbox.TextOption>
+          </Listbox.Option>
+          <Listbox.Option value="UniqueValue-2" disabled>
+            <Listbox.TextOption disabled>Item 2</Listbox.TextOption>
+          </Listbox.Option>
+          <Listbox.Option value="UniqueValue-3">
+            <Listbox.TextOption>Item 3</Listbox.TextOption>
+          </Listbox.Option>
+        </Listbox>
+      </Box>
+    </LegacyCard>
   );
 }

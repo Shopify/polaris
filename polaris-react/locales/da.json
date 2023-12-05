@@ -14,19 +14,23 @@
         "partiallyComplete": "Delvist fuldført",
         "complete": "Fuldført"
       },
-      "STATUS_LABELS": {
-        "info": "Info",
-        "success": "Succes",
+      "TONE_LABELS": {
+        "info": "Oplysninger",
+        "success": "Gennemført",
         "warning": "Advarsel",
         "attention": "Bemærk",
-        "new": "Nyhed",
-        "critical": "Kritisk"
+        "new": "Nye",
+        "critical": "Kritisk",
+        "readOnly": "Skrivebeskyttet",
+        "enabled": "Aktiveret"
       },
-      "progressAndStatus": "{statusLabel} {progressLabel}"
+      "progressAndTone": "{toneLabel} {progressLabel}"
+    },
+    "Banner": {
+      "dismissButton": "Afvis meddelelse"
     },
     "Button": {
-      "spinnerAccessibilityLabel": "Indlæser",
-      "connectedDisclosureAccessibilityLabel": "Relaterede handlinger"
+      "spinnerAccessibilityLabel": "Indlæser"
     },
     "Common": {
       "checkbox": "afkrydsningsfelt",
@@ -152,7 +156,9 @@
       "clearAllFilters": "Ryd alle filtre",
       "clear": "Ryd",
       "clearLabel": "Ryd {filterName}",
-      "moreFiltersWithCount": "Flere filtre: ({count})"
+      "moreFiltersWithCount": "Flere filtre: ({count})",
+      "addFilter": "Tilføj filter",
+      "clearFilters": "Ryd alt"
     },
     "Modal": {
       "iFrameTitle": "body markup",
@@ -174,7 +180,7 @@
       "showing": "Viser {itemsCount} {resource}",
       "loading": "Indlæser {resource}",
       "selected": "{selectedItemsCount} valgt",
-      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} i din butik er valgt.",
+      "allItemsSelected": "Alle {itemsLength} + {resourceNamePlural} i din butik er valgt",
       "selectAllItems": "Vælg alle {itemsLength} + {resourceNamePlural} i butikken",
       "emptySearchResultTitle": "Ingen {resourceNamePlural} blev fundet",
       "emptySearchResultDescription": "Prøv at ændre filtrene eller søgeordet",
@@ -183,8 +189,6 @@
       "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",
       "a11yCheckboxDeselectAllMultiple": "Fravælg alle {itemsLength} {resourceNamePlural}",
       "a11yCheckboxSelectAllMultiple": "Vælg alle {itemsLength} {resourceNamePlural}",
-      "ariaLiveSingular": "{itemsLength} vare",
-      "ariaLivePlural": "{itemsLength} varer",
       "Item": {
         "actionsDropdownLabel": "Handlinger for {accessibilityLabel}",
         "actionsDropdown": "Rulleliste med handlinger",
@@ -192,18 +196,59 @@
       },
       "BulkActions": {
         "actionsActivatorLabel": "Handlinger",
-        "moreActionsActivatorLabel": "Flere handlinger",
-        "warningMessage": "Sikring af en bedre brugeroplevelse. Der bør maksimalt være {maxPromotedActions} handlinger, der promoveres."
+        "moreActionsActivatorLabel": "Flere handlinger"
       },
       "showingTotalCount": "Viser {itemsCount} af {totalItemsCount} {resource}",
-      "allFilteredItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} i dette filter er valgt.",
+      "allFilteredItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} i dette filter er valgt",
       "selectAllFilteredItems": "Vælg alle mere end {itemsLength} {resourceNamePlural} i dette filter"
     },
     "SkeletonPage": {
       "loadingLabel": "Indlæser side"
     },
     "Tabs": {
-      "toggleTabsLabel": "Flere faner"
+      "toggleTabsLabel": "Flere visninger",
+      "newViewAccessibilityLabel": "Opret ny visning",
+      "newViewTooltip": "Opret visning",
+      "Tab": {
+        "rename": "Omdøb visning",
+        "duplicate": "Dupliker visning",
+        "edit": "Rediger visning",
+        "delete": "Slet visning",
+        "copy": "Kopi af {name}",
+        "deleteModal": {
+          "title": "Vil du slette visningen?",
+          "description": "Dette kan ikke fortrydes. {viewName} visning vil ikke længere være tilgængelig i din administrator.",
+          "cancel": "Annuller",
+          "delete": "Slet visning"
+        }
+      },
+      "RenameModal": {
+        "title": "Omdøb visning",
+        "label": "Navn",
+        "cancel": "Annuller",
+        "create": "Gem",
+        "errors": {
+          "sameName": "Der findes allerede en visning med dette navn. Vælg et andet navn."
+        }
+      },
+      "DuplicateModal": {
+        "title": "Dupliker visning",
+        "label": "Navn",
+        "cancel": "Annuller",
+        "create": "Opret visning",
+        "errors": {
+          "sameName": "Der findes allerede en visning med dette navn. Vælg et andet navn."
+        }
+      },
+      "CreateViewModal": {
+        "title": "Opret ny visning",
+        "label": "Navn",
+        "cancel": "Annuller",
+        "create": "Opret visning",
+        "errors": {
+          "sameName": "Der findes allerede en visning med dette navn. Vælg et andet navn."
+        }
+      }
     },
     "Tag": {
       "ariaLabel": "Fjern {children}"
@@ -216,11 +261,12 @@
       "toggleMenuLabel": "Åbn/luk menuen",
       "SearchField": {
         "clearButtonLabel": "Ryd",
-        "search": "Søgning"
+        "search": "Søg"
       }
     },
     "MediaCard": {
-      "popoverButton": "Handlinger"
+      "popoverButton": "Handlinger",
+      "dismissButton": "Afvis"
     },
     "VideoThumbnail": {
       "playButtonA11yLabel": {
@@ -279,7 +325,7 @@
     "IndexProvider": {
       "defaultItemSingular": "Vare",
       "defaultItemPlural": "Varer",
-      "allItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} er valgt.",
+      "allItemsSelected": "Alle mere end {itemsLength} {resourceNamePlural} er valgt",
       "selected": "{selectedItemsCount} valgt",
       "a11yCheckboxDeselectAllSingle": "Fravælg {resourceNameSingular}",
       "a11yCheckboxSelectAllSingle": "Vælg {resourceNameSingular}",
@@ -307,6 +353,52 @@
     "FullscreenBar": {
       "back": "Tilbage",
       "accessibilityLabel": "Afslut fuldskærmstilstand"
+    },
+    "FilterPill": {
+      "clear": "Ryd"
+    },
+    "IndexFilters": {
+      "searchFilterTooltip": "Søg og filtrer",
+      "searchFilterTooltipWithShortcut": "Søg og filtrer (F)",
+      "searchFilterAccessibilityLabel": "Søg og filtrer resultater",
+      "sort": "Sortér dine resultater",
+      "addView": "Tilføj en ny visning",
+      "newView": "Tilpasset søgning",
+      "SortButton": {
+        "ariaLabel": "Sortér resultaterne",
+        "tooltip": "Sortér",
+        "title": "Sortér efter",
+        "sorting": {
+          "asc": "Stigende",
+          "desc": "Faldende",
+          "az": "A-Å",
+          "za": "Å-A"
+        }
+      },
+      "UpdateButtons": {
+        "cancel": "Annuller",
+        "update": "Opdater",
+        "save": "Gem",
+        "saveAs": "Gem som",
+        "modal": {
+          "title": "Gem visning som",
+          "label": "Navn",
+          "sameName": "Der findes allerede en visning med dette navn. Vælg et andet navn.",
+          "save": "Gem",
+          "cancel": "Annuller"
+        }
+      },
+      "EditColumnsButton": {
+        "tooltip": "Rediger kolonner",
+        "accessibilityLabel": "Tilpas rækkefølgen og synligheden af tabelkolonner"
+      }
+    },
+    "ActionList": {
+      "SearchField": {
+        "clearButtonLabel": "Ryd",
+        "search": "Søg",
+        "placeholder": "Søg efter handlinger"
+      }
     }
   }
 }

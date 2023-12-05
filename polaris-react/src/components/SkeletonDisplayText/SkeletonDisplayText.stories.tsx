@@ -17,3 +17,7 @@ export function ExtraLarge() {
 export function Small() {
   return <SkeletonDisplayText size="small" />;
 }
+
+export function MaxWidth() {
+  return <SkeletonDisplayText maxWidth="80%" />;
+}

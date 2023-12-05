@@ -1,6 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Card, Grid, Page} from '@shopify/polaris';
+import {LegacyCard, Grid, Page} from '@shopify/polaris';
 
 export default {
   component: Grid,
@@ -11,14 +11,14 @@ export function TwoColumn() {
     <Page fullWidth>
       <Grid>
         <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
-          <Card title="Sales" sectioned>
+          <LegacyCard title="Sales" sectioned>
             <p>View a summary of your online store’s sales.</p>
-          </Card>
+          </LegacyCard>
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 3, md: 3, lg: 6, xl: 6}}>
-          <Card title="Orders" sectioned>
+          <LegacyCard title="Orders" sectioned>
             <p>View a summary of your online store’s orders.</p>
-          </Card>
+          </LegacyCard>
         </Grid.Cell>
       </Grid>
     </Page>
@@ -30,14 +30,14 @@ export function TwoThirdsAndOneThirdColumn() {
     <Page fullWidth>
       <Grid columns={{sm: 3}}>
         <Grid.Cell columnSpan={{xs: 6, sm: 4, md: 4, lg: 8, xl: 8}}>
-          <Card title="Sales" sectioned>
+          <LegacyCard title="Sales" sectioned>
             <p>View a summary of your online store’s sales.</p>
-          </Card>
+          </LegacyCard>
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 2, md: 2, lg: 4, xl: 4}}>
-          <Card title="Orders" sectioned>
+          <LegacyCard title="Orders" sectioned>
             <p>View a summary of your online store’s orders.</p>
-          </Card>
+          </LegacyCard>
         </Grid.Cell>
       </Grid>
     </Page>
@@ -49,19 +49,19 @@ export function ThreeOneThirdColumn() {
     <Page fullWidth>
       <Grid>
         <Grid.Cell columnSpan={{xs: 6, sm: 2, md: 2, lg: 4, xl: 4}}>
-          <Card title="Sales" sectioned>
+          <LegacyCard title="Sales" sectioned>
             <p>View a summary of your online store’s sales.</p>
-          </Card>
+          </LegacyCard>
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 2, md: 2, lg: 4, xl: 4}}>
-          <Card title="Orders" sectioned>
+          <LegacyCard title="Orders" sectioned>
             <p>View a summary of your online store’s orders.</p>
-          </Card>
+          </LegacyCard>
         </Grid.Cell>
         <Grid.Cell columnSpan={{xs: 6, sm: 2, md: 2, lg: 4, xl: 4}}>
-          <Card title="Orders" sectioned>
+          <LegacyCard title="Orders" sectioned>
             <p>View a summary of your online store’s orders.</p>
-          </Card>
+          </LegacyCard>
         </Grid.Cell>
       </Grid>
     </Page>
@@ -71,7 +71,7 @@ export function ThreeOneThirdColumn() {
 export function CustomLayout() {
   return (
     <Page fullWidth>
-      <Card sectioned>
+      <LegacyCard sectioned>
         <Grid
           columns={{xs: 1, sm: 4, md: 4, lg: 6, xl: 6}}
           areas={{
@@ -89,7 +89,7 @@ export function CustomLayout() {
             <div
               style={{
                 height: '60px',
-                background: 'aquamarine',
+                background: 'var(--p-color-text-info)',
               }}
             />
           </Grid.Cell>
@@ -97,7 +97,7 @@ export function CustomLayout() {
             <div
               style={{
                 height: '60px',
-                background: 'aquamarine',
+                background: 'var(--p-color-text-info)',
               }}
             />
           </Grid.Cell>
@@ -105,12 +105,12 @@ export function CustomLayout() {
             <div
               style={{
                 height: '60px',
-                background: 'aquamarine',
+                background: 'var(--p-color-text-info)',
               }}
             />
           </Grid.Cell>
         </Grid>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }

@@ -1,9 +1,10 @@
-import React, {memo, Children, NamedExoticComponent} from 'react';
+import React, {memo, Children} from 'react';
+import type {NamedExoticComponent} from 'react';
 
 import {wrapWithComponent, isElementOfType} from '../../utilities/components';
+import {BlockStack} from '../BlockStack';
 
 import {Group, Item} from './components';
-import styles from './FormLayout.scss';
 
 export interface FormLayoutProps {
   /** The content to display inside the layout. */
@@ -14,9 +15,7 @@ export const FormLayout = memo(function FormLayout({
   children,
 }: FormLayoutProps) {
   return (
-    <div className={styles.FormLayout}>
-      {Children.map(children, wrapChildren)}
-    </div>
+    <BlockStack gap="400">{Children.map(children, wrapChildren)}</BlockStack>
   );
 }) as NamedExoticComponent<FormLayoutProps> & {
   Group: typeof Group;

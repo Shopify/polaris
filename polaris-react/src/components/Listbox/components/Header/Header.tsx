@@ -1,8 +1,9 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
+import type {ReactNode} from 'react';
 
 import {useSection} from '../Section';
-
-import styles from './Header.scss';
+import {Box} from '../../../Box';
+import {Text} from '../../../Text';
 
 interface HeaderProps {
   children: ReactNode;
@@ -13,7 +14,16 @@ export function Header({children}: HeaderProps) {
 
   const content =
     typeof children === 'string' ? (
-      <div className={styles.Header}>{children}</div>
+      <Box
+        paddingBlockStart="200"
+        paddingInlineStart="400"
+        paddingBlockEnd="200"
+        paddingInlineEnd="400"
+      >
+        <Text as="span" variant="headingSm" tone="subdued">
+          {children}
+        </Text>
+      </Box>
     ) : (
       children
     );

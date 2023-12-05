@@ -65,22 +65,22 @@ describe('<Grid />', () => {
     const grid = mountWithApp(
       <Grid
         gap={{
-          xs: 'var(--p-space-1)',
-          sm: 'var(--p-space-1)',
-          md: 'var(--p-space-2)',
-          lg: 'var(--p-space-4)',
-          xl: 'var(--p-space-4)',
+          xs: 'var(--p-space-100)',
+          sm: 'var(--p-space-100)',
+          md: 'var(--p-space-200)',
+          lg: 'var(--p-space-400)',
+          xl: 'var(--p-space-400)',
         }}
       />,
     );
 
     expect(grid).toContainReactComponent('div', {
       style: {
-        '--pc-grid-gap-xs': 'var(--p-space-1)',
-        '--pc-grid-gap-sm': 'var(--p-space-1)',
-        '--pc-grid-gap-md': 'var(--p-space-2)',
-        '--pc-grid-gap-lg': 'var(--p-space-4)',
-        '--pc-grid-gap-xl': 'var(--p-space-4)',
+        '--pc-grid-gap-xs': 'var(--p-space-100)',
+        '--pc-grid-gap-sm': 'var(--p-space-100)',
+        '--pc-grid-gap-md': 'var(--p-space-200)',
+        '--pc-grid-gap-lg': 'var(--p-space-400)',
+        '--pc-grid-gap-xl': 'var(--p-space-400)',
       } as React.CSSProperties,
     });
   });

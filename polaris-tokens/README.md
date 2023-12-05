@@ -24,13 +24,13 @@ Accessing all of the available token groups
 // Token values only
 import {tokens} from '@shopify/polaris-tokens';
 
-console.log(tokens.colors.background); // 'rgba(246, 246, 247, 1)'
+console.log(tokens.color['color-bg']); // 'rgba(...)'
 
 // Tokens with metadata
 import {metadata} from '@shopify/polaris-tokens';
 
-console.log(metadata.colors.background.value); // 'rgba(246, 246, 247, 1)'
-console.log(metadata.colors.background.description); // 'For use as a background color, in components such as Page and Frame backgrounds.'
+console.log(metadata.color['color-bg'].value); // 'rgba(...)'
+console.log(metadata.color['color-bg'].description); // 'For use as a background color, in components such as Page and Frame backgrounds.'
 ```
 
 #### CSS
@@ -41,7 +41,7 @@ Importing all of the css variables. CSS variables are prefixed with `--p` to sig
 import '@shopify/polaris-tokens/css/styles.css';
 
 div {
-  background: var(--p-background);
+  background: var(--p-color-bg-surface);
 }
 ```
 

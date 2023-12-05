@@ -2,15 +2,15 @@ import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Banner,
-  Card,
+  Box,
+  LegacyCard,
   FormLayout,
-  Heading,
+  Text,
   Layout,
   Page,
   ResourceList,
   TextContainer,
   TextField,
-  TextStyle,
   Thumbnail,
 } from '@shopify/polaris';
 
@@ -18,14 +18,56 @@ export default {
   component: Layout,
 } as ComponentMeta<typeof Layout>;
 
+export function All() {
+  return (
+    <>
+      <Text as="h2" variant="headingXl">
+        One column
+      </Text>
+      <OneColumn />
+      <Box paddingBlockEnd="800" />
+
+      <Text as="h2" variant="headingXl">
+        Two columns with primary and secondary widths
+      </Text>
+      <TwoColumnsWithPrimaryAndSecondaryWidths />
+      <Box paddingBlockEnd="800" />
+
+      <Text as="h2" variant="headingXl">
+        Two columns with equal width
+      </Text>
+      <TwoColumnsWithEqualWidth />
+      <Box paddingBlockEnd="800" />
+
+      <Text as="h2" variant="headingXl">
+        Three columns with equal width
+      </Text>
+      <ThreeColumnsWithEqualWidth />
+      <Box paddingBlockEnd="800" />
+
+      <Text as="h2" variant="headingXl">
+        Annotated
+      </Text>
+      <Annotated />
+      <Box paddingBlockEnd="800" />
+
+      <Text as="h2" variant="headingXl">
+        Annotated with banner at the top
+      </Text>
+      <AnnotatedWithBannerAtTheTop />
+      <Box paddingBlockEnd="800" />
+    </>
+  );
+}
+
 export function OneColumn() {
   return (
     <Page fullWidth>
       <Layout>
         <Layout.Section>
-          <Card title="Online store dashboard" sectioned>
+          <LegacyCard title="Online store dashboard" sectioned>
             <p>View a summary of your online store’s performance.</p>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
@@ -37,19 +79,19 @@ export function TwoColumnsWithPrimaryAndSecondaryWidths() {
     <Page fullWidth>
       <Layout>
         <Layout.Section>
-          <Card title="Order details" sectioned>
+          <LegacyCard title="Order details" sectioned>
             <p>
               Use to follow a normal section with a secondary section to create
               a 2/3 + 1/3 layout on detail pages (such as individual product or
               order pages). Can also be used on any page that needs to structure
               a lot of content. This layout stacks the columns on small screens.
             </p>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
-        <Layout.Section secondary>
-          <Card title="Tags" sectioned>
+        <Layout.Section variant="oneThird">
+          <LegacyCard title="Tags" sectioned>
             <p>Add tags to your order.</p>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
@@ -60,18 +102,20 @@ export function TwoColumnsWithEqualWidth() {
   return (
     <Page fullWidth>
       <Layout>
-        <Layout.Section oneHalf>
-          <Card title="Florida" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <TextStyle variation="subdued">455 units available</TextStyle>
-            </Card.Section>
-            <Card.Section title="Items">
+        <Layout.Section variant="oneHalf">
+          <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text tone="subdued" as="span">
+                455 units available
+              </Text>
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
                     id: '341',
-                    url: 'produdcts/341',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '254',
@@ -84,7 +128,7 @@ export function TwoColumnsWithEqualWidth() {
                   },
                   {
                     id: '256',
-                    url: 'produdcts/256',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -107,7 +151,9 @@ export function TwoColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -115,21 +161,23 @@ export function TwoColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
-        <Layout.Section oneHalf>
-          <Card title="Nevada" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <TextStyle variation="subdued">301 units available</TextStyle>
-            </Card.Section>
-            <Card.Section title="Items">
+        <Layout.Section variant="oneHalf">
+          <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text tone="subdued" as="span">
+                301 units available
+              </Text>
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
                     id: '342',
-                    url: 'produdcts/342',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '100',
@@ -142,7 +190,7 @@ export function TwoColumnsWithEqualWidth() {
                   },
                   {
                     id: '257',
-                    url: 'produdcts/257',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -165,7 +213,9 @@ export function TwoColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -173,8 +223,8 @@ export function TwoColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
@@ -185,18 +235,20 @@ export function ThreeColumnsWithEqualWidth() {
   return (
     <Page fullWidth>
       <Layout>
-        <Layout.Section oneThird>
-          <Card title="Florida" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <TextStyle variation="subdued">455 units available</TextStyle>
-            </Card.Section>
-            <Card.Section title="Items">
+        <Layout.Section variant="oneThird">
+          <LegacyCard title="Florida" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text tone="subdued" as="span">
+                455 units available
+              </Text>
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
                     id: '343',
-                    url: 'produdcts/343',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '254',
@@ -209,7 +261,7 @@ export function ThreeColumnsWithEqualWidth() {
                   },
                   {
                     id: '258',
-                    url: 'produdcts/258',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -232,7 +284,9 @@ export function ThreeColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -240,21 +294,23 @@ export function ThreeColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
-        <Layout.Section oneThird>
-          <Card title="Nevada" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <TextStyle variation="subdued">301 units available</TextStyle>
-            </Card.Section>
-            <Card.Section title="Items">
+        <Layout.Section variant="oneThird">
+          <LegacyCard title="Nevada" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text tone="subdued" as="span">
+                301 units available
+              </Text>
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
                     id: '344',
-                    url: 'produdcts/344',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '100',
@@ -267,7 +323,7 @@ export function ThreeColumnsWithEqualWidth() {
                   },
                   {
                     id: '259',
-                    url: 'produdcts/259',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '201',
@@ -290,7 +346,9 @@ export function ThreeColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -298,21 +356,23 @@ export function ThreeColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
-        <Layout.Section oneThird>
-          <Card title="Minneapolis" actions={[{content: 'Manage'}]}>
-            <Card.Section>
-              <TextStyle variation="subdued">1931 units available</TextStyle>
-            </Card.Section>
-            <Card.Section title="Items">
+        <Layout.Section variant="oneThird">
+          <LegacyCard title="Minneapolis" actions={[{content: 'Manage'}]}>
+            <LegacyCard.Section>
+              <Text tone="subdued" as="span">
+                1931 units available
+              </Text>
+            </LegacyCard.Section>
+            <LegacyCard.Section title="Items">
               <ResourceList
                 resourceName={{singular: 'product', plural: 'products'}}
                 items={[
                   {
                     id: '345',
-                    url: 'produdcts/345',
+                    url: '#',
                     name: 'Black & orange scarf',
                     sku: '9234194023',
                     quantity: '1230',
@@ -325,7 +385,7 @@ export function ThreeColumnsWithEqualWidth() {
                   },
                   {
                     id: '260',
-                    url: 'produdcts/260',
+                    url: '#',
                     name: 'Tucan scarf',
                     sku: '9234194010',
                     quantity: '701',
@@ -348,7 +408,9 @@ export function ThreeColumnsWithEqualWidth() {
                       accessibilityLabel={`View details for ${name}`}
                     >
                       <h3>
-                        <TextStyle variation="strong">{name}</TextStyle>
+                        <Text fontWeight="bold" as="span">
+                          {name}
+                        </Text>
                       </h3>
                       <div>SKU: {sku}</div>
                       <div>{quantity} available</div>
@@ -356,8 +418,8 @@ export function ThreeColumnsWithEqualWidth() {
                   );
                 }}
               />
-            </Card.Section>
-          </Card>
+            </LegacyCard.Section>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>
@@ -369,11 +431,11 @@ export function Annotated() {
     <Page fullWidth>
       <Layout>
         <Layout.AnnotatedSection
-          id="storeDetails"
+          id="storeDetails-annotated"
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Store name"
@@ -387,7 +449,7 @@ export function Annotated() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>
@@ -404,11 +466,11 @@ export function AnnotatedWithBannerAtTheTop() {
           </Banner>
         </Layout.Section>
         <Layout.AnnotatedSection
-          id="storeDetails"
+          id="storeDetails-annotatedWithBanner"
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Store name"
@@ -422,7 +484,7 @@ export function AnnotatedWithBannerAtTheTop() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>

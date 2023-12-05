@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useRef, useEffect} from 'react';
 
-import {AppProvider} from '../src';
+import {AppProvider, FrameContext} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
-import {gridOptions} from './manager';
-import {breakpoints} from '@shopify/polaris-tokens';
+import {gridOptions, featureFlagOptions} from './manager';
+import isChromatic from 'chromatic/isChromatic';
+import {themeNameDefault, themeNames, themes} from '@shopify/polaris-tokens';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -19,11 +20,18 @@ function StrictModeDecorator(Story, context) {
 }
 
 function AppProviderDecorator(Story, context) {
+  // Use system font in chromatic snapshots to avoid async font loading flakiness
+  if (isChromatic()) {
+    document.getElementById('inter-font-link').removeAttribute('href');
+  }
+
   if (context.args.omitAppProvider) return <Story {...context} />;
 
   return (
-    <AppProvider i18n={enTranslations}>
-      <Story {...context} />
+    <AppProvider theme={context.globals.theme} i18n={enTranslations}>
+      <FrameContext.Provider value={{}}>
+        <Story {...context} />
+      </FrameContext.Provider>
     </AppProvider>
   );
 }
@@ -55,31 +63,80 @@ function ReactRenderProfiler(Story, context) {
   );
 }
 
+/**
+ * Ensures all anchor tags in a Storybook story open in the same tab by setting their `target` attribute to `_self` if
+ * the target is not already set. This is to prevent the storybook preview iframe from navigating to the link target.
+ *
+ * Parameters:
+ * - `disableAnchorTargetOverride` - Disable the anchor target override for a specific story
+ */
+function AnchorTargetOverrideDecorator(Story, context) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const node = ref.current;
+
+    if (node && !context?.parameters?.disableAnchorTargetOverride) {
+      const updateAnchorTargets = () => {
+        node.querySelectorAll('a').forEach((anchor) => {
+          if (!anchor.getAttribute('target')) {
+            anchor.setAttribute('target', '_self');
+          }
+        });
+      };
+      const observer = new MutationObserver(updateAnchorTargets);
+
+      // Run the callback once immediately to update all existing anchor tags
+      updateAnchorTargets();
+
+      observer.observe(node, {childList: true, subtree: true});
+
+      return () => observer.disconnect();
+    }
+  }, []);
+
+  return (
+    <div ref={ref}>
+      <Story {...context} />
+    </div>
+  );
+}
+
 export const globalTypes = {
   strictMode: {
-    name: 'React.StrictMode',
     defaultValue: true,
     toolbar: {
+      title: 'React.StrictMode',
       items: [
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
-      showName: true,
     },
   },
   profiler: {
-    name: 'React.Profiler',
     defaultValue: false,
     toolbar: {
+      title: 'React.Profiler',
       items: [
         {title: 'Disabled', value: false},
         {title: 'Enabled', value: true},
       ],
-      showName: true,
     },
   },
+  theme: {
+    description: 'Global theme for components',
+    defaultValue: themeNameDefault,
+    toolbar: {
+      title: 'Theme',
+      icon: 'circlehollow',
+      items: themeNames,
+      dynamicTitle: true,
+    },
+  },
+  ...featureFlagOptions,
   ...gridOptions,
 };
+const {breakpoints} = themes[themeNameDefault];
 const viewPorts = Object.entries({
   ...breakpoints,
   'breakpoints-xs': '20rem', // Replace the 0px xs breakpoint with 320px (20rem) for testing small screens
@@ -90,11 +147,16 @@ const viewPorts = Object.entries({
   };
 });
 
-export const parameters = {viewport: {viewports: {...viewPorts}}};
+export const parameters = {
+  viewport: {viewports: {...viewPorts}},
+  // Increases precision of rendered snapshot diffs. Default is 0.063
+  chromatic: {diffThreshold: 0.03},
+};
 
 export const decorators = [
   GridOverlayDecorator,
   StrictModeDecorator,
   AppProviderDecorator,
   ReactRenderProfiler,
+  AnchorTargetOverrideDecorator,
 ];

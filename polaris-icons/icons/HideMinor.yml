@@ -1,6 +1,8 @@
 name: Hide
 set: minor
-description: Used to represent an action to hide something, or to represent a hidden item or resource.
+description: >-
+  Used to represent an action to hide something, or to represent a hidden item
+  or resource.
 keywords:
   - section
   - conceal
@@ -9,7 +11,8 @@ keywords:
   - show
 authors:
   - Adam Whitcroft
+  - Joe Thomas
 version: 1
 date_added: 2019-02-25
-date_modified: 2019-02-25
+date_modified: 2023-06-23
 exclusive_use:

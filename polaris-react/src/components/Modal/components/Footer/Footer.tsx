@@ -2,10 +2,8 @@ import React from 'react';
 
 import type {ComplexAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
-import {ButtonGroup} from '../../../ButtonGroup';
-import {Stack} from '../../../Stack';
-
-import styles from './Footer.scss';
+import {Box} from '../../../Box';
+import {InlineStack} from '../../../InlineStack';
 
 export interface FooterProps {
   /** Primary action */
@@ -22,25 +20,30 @@ export function Footer({
   children,
 }: FooterProps) {
   const primaryActionButton =
-    (primaryAction && buttonsFrom(primaryAction, {primary: true})) || null;
+    (primaryAction && buttonsFrom(primaryAction, {variant: 'primary'})) || null;
   const secondaryActionButtons =
     (secondaryActions && buttonsFrom(secondaryActions)) || null;
   const actions =
     primaryActionButton || secondaryActionButtons ? (
-      <ButtonGroup>
+      <InlineStack gap="200">
         {secondaryActionButtons}
         {primaryActionButton}
-      </ButtonGroup>
+      </InlineStack>
     ) : null;
 
   return (
-    <div className={styles.Footer}>
-      <div className={styles.FooterContent}>
-        <Stack alignment="center">
-          <Stack.Item fill>{children}</Stack.Item>
+    <InlineStack gap="400" blockAlign="center">
+      <Box
+        borderColor="border"
+        borderBlockStartWidth="025"
+        padding="400"
+        width="100%"
+      >
+        <InlineStack gap="400" blockAlign="center" align="space-between">
+          <Box>{children}</Box>
           {actions}
-        </Stack>
-      </div>
-    </div>
+        </InlineStack>
+      </Box>
+    </InlineStack>
   );
 }

@@ -7,11 +7,14 @@ function ConnectedFieldsExample() {
   const [selectValue, setSelectValue] = useState('kg');
 
   const handleTextFieldChange = useCallback(
-    (value) => setTextFieldValue(value),
+    (value: string) => setTextFieldValue(value),
     [],
   );
 
-  const handleSelectChange = useCallback((value) => setSelectValue(value), []);
+  const handleSelectChange = useCallback(
+    (value: string) => setSelectValue(value),
+    [],
+  );
 
   return (
     <TextField

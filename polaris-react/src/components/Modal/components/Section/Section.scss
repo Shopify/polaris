@@ -1,24 +1,16 @@
 @import '../../../../styles/common';
 
-$close-button-width: calc(var(--p-space-12) + var(--p-space-1));
+$close-button-width: calc(var(--p-space-1200) + var(--p-space-100));
 
 .Section {
   flex: 0 0 auto;
-  padding: var(--p-space-5);
 
   &:not(:last-of-type) {
-    border-bottom: var(--p-border-divider);
+    border-bottom: var(--p-border-width-025) solid
+      var(--p-color-border-secondary);
   }
+}
 
-  &.subdued {
-    background: var(--p-surface-subdued);
-  }
-
-  &.flush {
-    padding: 0;
-  }
-
-  &.titleHidden {
-    padding-right: $close-button-width;
-  }
+.titleHidden {
+  padding-right: calc(#{$close-button-width} + var(--p-space-100));
 }

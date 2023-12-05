@@ -1,9 +1,9 @@
 import React, {useCallback, useRef, useState} from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Args, ComponentMeta} from '@storybook/react';
 import {
   ActionList,
   AppProvider,
-  Card,
+  LegacyCard,
   ContextualSaveBar,
   FormLayout,
   Frame,
@@ -19,7 +19,7 @@ import {
   TextField,
   Toast,
   TopBar,
-  VisuallyHidden,
+  Text,
 } from '@shopify/polaris';
 import {
   ArrowLeftMinor,
@@ -34,7 +34,11 @@ export default {
   parameters: {layout: 'fullscreen'},
 } as ComponentMeta<typeof Frame>;
 
-export function InAnApplication() {
+export const InAnApplication = {
+  render: (_args: Args) => <InAnApplicationComponent />,
+};
+
+function InAnApplicationComponent() {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -218,7 +222,7 @@ export function InAnApplication() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <VisuallyHidden>
+    <Text as="span" visuallyHidden>
       <a
         id="SkipToContentTarget"
         ref={skipToContentRef}
@@ -227,7 +231,7 @@ export function InAnApplication() {
       >
         Account details
       </a>
-    </VisuallyHidden>
+    </Text>
   );
 
   const actualPageMarkup = (
@@ -238,7 +242,7 @@ export function InAnApplication() {
           title="Account details"
           description="Jaded Pixel will use this as your account information."
         >
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Full name"
@@ -254,7 +258,7 @@ export function InAnApplication() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>
@@ -264,12 +268,12 @@ export function InAnApplication() {
     <SkeletonPage>
       <Layout>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
             </TextContainer>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </SkeletonPage>
@@ -308,13 +312,12 @@ export function InAnApplication() {
   );
 
   const logo = {
-    width: 124,
+    width: 86,
     topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
     contextualSaveBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    url: 'http://jadedpixel.com',
-    accessibilityLabel: 'Jaded Pixel',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    accessibilityLabel: 'Shopify',
   };
 
   return (
@@ -373,7 +376,11 @@ export function InAnApplication() {
   );
 }
 
-export function WithAnOffset() {
+export const WithAnOffset = {
+  render: (_args: Args) => <WithAnOffsetComponent />,
+};
+
+function WithAnOffsetComponent() {
   const defaultState = useRef({
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
@@ -557,7 +564,7 @@ export function WithAnOffset() {
   const loadingMarkup = isLoading ? <Loading /> : null;
 
   const skipToContentTarget = (
-    <VisuallyHidden>
+    <Text as="span" visuallyHidden>
       <a
         id="SkipToContentTarget"
         ref={skipToContentRef}
@@ -566,7 +573,7 @@ export function WithAnOffset() {
       >
         Account details
       </a>
-    </VisuallyHidden>
+    </Text>
   );
 
   const actualPageMarkup = (
@@ -577,7 +584,7 @@ export function WithAnOffset() {
           title="Account details"
           description="Jaded Pixel will use this as your account information."
         >
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Full name"
@@ -593,7 +600,7 @@ export function WithAnOffset() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>
@@ -603,12 +610,12 @@ export function WithAnOffset() {
     <SkeletonPage>
       <Layout>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <TextContainer>
               <SkeletonDisplayText size="small" />
               <SkeletonBodyText lines={9} />
             </TextContainer>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </SkeletonPage>
@@ -647,13 +654,12 @@ export function WithAnOffset() {
   );
 
   const logo = {
-    width: 124,
+    width: 86,
     topBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-color.svg?6215648040070010999',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
     contextualSaveBarSource:
-      'https://cdn.shopify.com/s/files/1/0446/6937/files/jaded-pixel-logo-gray.svg?6215648040070010999',
-    url: 'http://jadedpixel.com',
-    accessibilityLabel: 'Jaded Pixel',
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    accessibilityLabel: 'Shopify',
   };
 
   return (
@@ -712,6 +718,373 @@ export function WithAnOffset() {
           {pageMarkup}
           {toastMarkup}
           {modalMarkup}
+        </Frame>
+      </AppProvider>
+    </div>
+  );
+}
+
+export const WithSidebar = {
+  render: (_args: Args) => <WithSidebarEnabled />,
+};
+
+function WithSidebarEnabled() {
+  const defaultState = useRef({
+    emailFieldValue: 'dharma@jadedpixel.com',
+    nameFieldValue: 'Jaded Pixel',
+  });
+  const skipToContentRef = useRef(null);
+
+  const [toastActive, setToastActive] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isDirty, setIsDirty] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
+  const [userMenuActive, setUserMenuActive] = useState(false);
+  const [mobileNavigationActive, setMobileNavigationActive] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
+  const [nameFieldValue, setNameFieldValue] = useState(
+    defaultState.current.nameFieldValue,
+  );
+  const [emailFieldValue, setEmailFieldValue] = useState(
+    defaultState.current.emailFieldValue,
+  );
+  const [storeName, setStoreName] = useState(
+    defaultState.current.nameFieldValue,
+  );
+  const [supportSubject, setSupportSubject] = useState('');
+  const [supportMessage, setSupportMessage] = useState('');
+
+  const handleSubjectChange = useCallback(
+    (value) => setSupportSubject(value),
+    [],
+  );
+  const handleMessageChange = useCallback(
+    (value) => setSupportMessage(value),
+    [],
+  );
+  const handleDiscard = useCallback(() => {
+    setEmailFieldValue(defaultState.current.emailFieldValue);
+    setNameFieldValue(defaultState.current.nameFieldValue);
+    setIsDirty(false);
+  }, []);
+  const handleSave = useCallback(() => {
+    defaultState.current.nameFieldValue = nameFieldValue;
+    defaultState.current.emailFieldValue = emailFieldValue;
+
+    setIsDirty(false);
+    setToastActive(true);
+    setStoreName(defaultState.current.nameFieldValue);
+  }, [emailFieldValue, nameFieldValue]);
+  const handleNameFieldChange = useCallback((value) => {
+    setNameFieldValue(value);
+    value && setIsDirty(true);
+  }, []);
+  const handleEmailFieldChange = useCallback((value) => {
+    setEmailFieldValue(value);
+    value && setIsDirty(true);
+  }, []);
+  const handleSearchResultsDismiss = useCallback(() => {
+    setSearchActive(false);
+    setSearchValue('');
+  }, []);
+  const handleSearchFieldChange = useCallback((value) => {
+    setSearchValue(value);
+    setSearchActive(value.length > 0);
+  }, []);
+  const toggleToastActive = useCallback(
+    () => setToastActive((toastActive) => !toastActive),
+    [],
+  );
+  const toggleUserMenuActive = useCallback(
+    () => setUserMenuActive((userMenuActive) => !userMenuActive),
+    [],
+  );
+  const toggleMobileNavigationActive = useCallback(
+    () =>
+      setMobileNavigationActive(
+        (mobileNavigationActive) => !mobileNavigationActive,
+      ),
+    [],
+  );
+  const toggleIsLoading = useCallback(
+    () => setIsLoading((isLoading) => !isLoading),
+    [],
+  );
+  const toggleModalActive = useCallback(
+    () => setModalActive((modalActive) => !modalActive),
+    [],
+  );
+
+  const toastMarkup = toastActive ? (
+    <Toast onDismiss={toggleToastActive} content="Changes saved" />
+  ) : null;
+
+  const userMenuActions = [
+    {
+      items: [{content: 'Community forums'}],
+    },
+  ];
+
+  const contextualSaveBarMarkup = isDirty ? (
+    <ContextualSaveBar
+      message="Unsaved changes"
+      saveAction={{
+        onAction: handleSave,
+      }}
+      discardAction={{
+        onAction: handleDiscard,
+      }}
+    />
+  ) : null;
+
+  const userMenuMarkup = (
+    <TopBar.UserMenu
+      actions={userMenuActions}
+      name="Dharma"
+      detail={storeName}
+      initials="D"
+      open={userMenuActive}
+      onToggle={toggleUserMenuActive}
+    />
+  );
+
+  const searchResultsMarkup = (
+    <ActionList
+      items={[{content: 'Shopify help center'}, {content: 'Community forums'}]}
+    />
+  );
+
+  const searchFieldMarkup = (
+    <TopBar.SearchField
+      onChange={handleSearchFieldChange}
+      value={searchValue}
+      placeholder="Search"
+    />
+  );
+
+  const topBarMarkup = (
+    <TopBar
+      showNavigationToggle
+      userMenu={userMenuMarkup}
+      searchResultsVisible={searchActive}
+      searchField={searchFieldMarkup}
+      searchResults={searchResultsMarkup}
+      onSearchResultsDismiss={handleSearchResultsDismiss}
+      onNavigationToggle={toggleMobileNavigationActive}
+    />
+  );
+
+  const navigationMarkup = (
+    <Navigation location="/">
+      <Navigation.Section
+        items={[
+          {
+            label: 'Back to Shopify',
+            icon: ArrowLeftMinor,
+          },
+        ]}
+      />
+      <Navigation.Section
+        separator
+        title="Jaded Pixel App"
+        items={[
+          {
+            label: 'Dashboard',
+            icon: HomeMajor,
+            onClick: toggleIsLoading,
+          },
+          {
+            label: 'Jaded Pixel Orders',
+            icon: OrdersMajor,
+            onClick: toggleIsLoading,
+          },
+        ]}
+        action={{
+          icon: ConversationMinor,
+          accessibilityLabel: 'Contact support',
+          onClick: toggleModalActive,
+        }}
+      />
+    </Navigation>
+  );
+
+  const loadingMarkup = isLoading ? <Loading /> : null;
+
+  const skipToContentTarget = (
+    <Text as="span" visuallyHidden>
+      <a
+        id="SkipToContentTarget"
+        ref={skipToContentRef}
+        tabIndex={-1}
+        href="#SkipLink"
+      >
+        Account details
+      </a>
+    </Text>
+  );
+
+  const actualPageMarkup = (
+    <Page title="Account">
+      <Layout>
+        {skipToContentTarget}
+        <Layout.AnnotatedSection
+          title="Account details"
+          description="Jaded Pixel will use this as your account information."
+        >
+          <LegacyCard sectioned>
+            <FormLayout>
+              <TextField
+                label="Full name"
+                value={nameFieldValue}
+                onChange={handleNameFieldChange}
+                autoComplete="name"
+              />
+              <TextField
+                type="email"
+                label="Email"
+                value={emailFieldValue}
+                onChange={handleEmailFieldChange}
+                autoComplete="email"
+              />
+            </FormLayout>
+          </LegacyCard>
+          <LegacyCard sectioned>
+            <div
+              style={{
+                height: '1000px',
+              }}
+            >
+              Spacer to test contextual save bar in a scrolling page
+            </div>
+          </LegacyCard>
+        </Layout.AnnotatedSection>
+      </Layout>
+    </Page>
+  );
+
+  const loadingPageMarkup = (
+    <SkeletonPage>
+      <Layout>
+        <Layout.Section>
+          <LegacyCard sectioned>
+            <TextContainer>
+              <SkeletonDisplayText size="small" />
+              <SkeletonBodyText lines={9} />
+            </TextContainer>
+          </LegacyCard>
+        </Layout.Section>
+      </Layout>
+    </SkeletonPage>
+  );
+
+  const pageMarkup = isLoading ? loadingPageMarkup : actualPageMarkup;
+
+  const modalMarkup = (
+    <Modal
+      open={modalActive}
+      onClose={toggleModalActive}
+      title="Contact support"
+      primaryAction={{
+        content: 'Send',
+        onAction: toggleModalActive,
+      }}
+    >
+      <Modal.Section>
+        <FormLayout>
+          <TextField
+            label="Subject"
+            value={supportSubject}
+            onChange={handleSubjectChange}
+            autoComplete="off"
+          />
+          <TextField
+            label="Message"
+            value={supportMessage}
+            onChange={handleMessageChange}
+            autoComplete="off"
+            multiline
+          />
+        </FormLayout>
+      </Modal.Section>
+    </Modal>
+  );
+
+  const logo = {
+    width: 86,
+    topBarSource:
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    contextualSaveBarSource:
+      'https://cdn.shopify.com/s/files/1/2376/3301/files/Shopify_Secondary_Inverted.png',
+    accessibilityLabel: 'Shopify',
+  };
+
+  return (
+    <div style={{height: '500px'}}>
+      <AppProvider
+        i18n={{
+          Polaris: {
+            Avatar: {
+              label: 'Avatar',
+              labelWithInitials: 'Avatar with initials {initials}',
+            },
+            ContextualSaveBar: {
+              save: 'Save',
+              discard: 'Discard',
+            },
+            TextField: {
+              characterCount: '{count} characters',
+            },
+            TopBar: {
+              toggleMenuLabel: 'Toggle menu',
+
+              SearchField: {
+                clearButtonLabel: 'Clear',
+                search: 'Search',
+              },
+            },
+            Modal: {
+              iFrameTitle: 'body markup',
+            },
+            Frame: {
+              skipToContent: 'Skip to content',
+              navigationLabel: 'Navigation',
+              Navigation: {
+                closeMobileNavigationLabel: 'Close navigation',
+              },
+            },
+          },
+        }}
+      >
+        <Frame
+          logo={logo}
+          topBar={topBarMarkup}
+          navigation={navigationMarkup}
+          showMobileNavigation={mobileNavigationActive}
+          onNavigationDismiss={toggleMobileNavigationActive}
+          skipToContentTarget={skipToContentRef.current}
+          sidebar
+        >
+          {contextualSaveBarMarkup}
+          {loadingMarkup}
+          {pageMarkup}
+          {toastMarkup}
+          {modalMarkup}
+          <div
+            style={{
+              position: 'fixed',
+              bottom: 'var(--p-space-200)',
+              right: 'var(--p-space-200)',
+              width: 'calc(var(--pc-sidebar-width) - var(--p-space-400))',
+              height: 'calc(100vh - 3.5rem - var(--p-space-400))',
+              background: 'var(--p-color-bg-surface)',
+              padding: 'var(--p-space-200)',
+              boxShadow: 'var(--p-shadow-300)',
+              borderRadius: 'var(--p-border-radius-300)',
+            }}
+          >
+            This is a sidebar
+          </div>
         </Frame>
       </AppProvider>
     </div>

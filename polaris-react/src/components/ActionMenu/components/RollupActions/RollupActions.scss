@@ -1,15 +1,32 @@
+@import '../../../../styles/common';
+
 .RollupActivator {
   text-align: right;
-  // Override `.iconOnly` negative margins
-  // stylelint-disable-next-line selector-no-qualifying-type
+  // stylelint-disable-next-line selector-no-qualifying-type -- override `.iconOnly` negative margins
   button[type='button'] {
+    background: var(--p-color-bg-fill-tertiary);
+    border-radius: var(--p-border-radius-200);
+    border: none;
+    box-shadow: none;
     margin: 0;
-    border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
-    // stylelint-disable-next-line selector-max-specificity
-    &:hover,
-    &:active,
-    &:focus {
-      border: var(--p-border-width-1) solid var(--p-border-neutral-subdued);
+
+    // stylelint-disable-next-line selector-max-specificity -- apply active styles
+    &:active {
+      background: var(--p-color-bg-fill-tertiary-active);
+    }
+
+    // stylelint-disable-next-line selector-max-specificity -- apply focus styles
+    &:focus:not(:active) {
+      /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- button overrides */
+      @include no-focus-ring;
+      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+      outline-offset: var(--p-space-050);
+      background: var(--p-color-bg-fill-tertiary-active);
+    }
+
+    // stylelint-disable-next-line selector-max-specificity -- apply hover styles
+    &:hover {
+      background: var(--p-color-bg-fill-tertiary-hover);
     }
   }
 }

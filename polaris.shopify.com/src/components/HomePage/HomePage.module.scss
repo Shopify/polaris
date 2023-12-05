@@ -92,13 +92,13 @@
 .Promos {
   margin-top: 4rem;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   overflow: hidden;
   gap: 1rem;
 
   @media screen and (max-width: $breakpointTablet) {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
     gap: 1rem;
     margin-top: 2rem;
   }
@@ -189,23 +189,12 @@
     flex-direction: column-reverse;
     background: var(--decorative-4);
 
-    video {
+    video,
+    .Poster {
       width: 100%;
       height: auto;
       filter: brightness(100%) contrast(2) saturate(0);
       mix-blend-mode: plus-lighter;
     }
-  }
-
-  .Poster {
-    position: absolute;
-    border-radius: 24px;
-    overflow: hidden;
-    width: 60%;
-    height: 85%;
-    left: 50%;
-    top: 50%;
-    transform: translateY(-50%) translateX(33px);
-    box-shadow: 0 50px 50px rgba(0, 0, 0, 0.15);
   }
 }

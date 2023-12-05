@@ -1,59 +1,28 @@
 import React from 'react';
 import {ArrowLeftMinor} from '@shopify/polaris-icons';
 
-import {Icon} from '../Icon';
-import {UnstyledLink} from '../UnstyledLink';
 import type {CallbackAction, LinkAction} from '../../types';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
-import {VisuallyHidden} from '../VisuallyHidden';
-
-import styles from './Breadcrumbs.scss';
+import {Button} from '../Button';
 
 export interface BreadcrumbsProps {
-  /** Collection of breadcrumbs */
-  breadcrumbs: (CallbackAction | LinkAction)[];
+  /** Back action link */
+  backAction: CallbackAction | LinkAction;
 }
 
-export function Breadcrumbs({breadcrumbs}: BreadcrumbsProps) {
-  const breadcrumb = breadcrumbs[breadcrumbs.length - 1];
-  if (breadcrumb == null) {
-    return null;
-  }
+export function Breadcrumbs({backAction}: BreadcrumbsProps) {
+  const {content} = backAction;
 
-  const {content} = breadcrumb;
-
-  const contentMarkup = (
-    <>
-      <span className={styles.Icon}>
-        <Icon source={ArrowLeftMinor} />
-      </span>
-      <VisuallyHidden>{content}</VisuallyHidden>
-    </>
+  const breadcrumbMarkup = (
+    <Button
+      key={content}
+      url={'url' in backAction ? backAction.url : undefined}
+      onClick={'onAction' in backAction ? backAction.onAction : undefined}
+      onPointerDown={handleMouseUpByBlurring}
+      icon={ArrowLeftMinor}
+      accessibilityLabel={backAction.accessibilityLabel ?? content}
+    />
   );
-
-  const breadcrumbMarkup =
-    'url' in breadcrumb ? (
-      <UnstyledLink
-        key={content}
-        url={breadcrumb.url}
-        className={styles.Breadcrumb}
-        onMouseUp={handleMouseUpByBlurring}
-        aria-label={breadcrumb.accessibilityLabel}
-      >
-        {contentMarkup}
-      </UnstyledLink>
-    ) : (
-      <button
-        key={content}
-        className={styles.Breadcrumb}
-        onClick={breadcrumb.onAction}
-        onMouseUp={handleMouseUpByBlurring}
-        type="button"
-        aria-label={breadcrumb.accessibilityLabel}
-      >
-        {contentMarkup}
-      </button>
-    );
 
   return <nav role="navigation">{breadcrumbMarkup}</nav>;
 }

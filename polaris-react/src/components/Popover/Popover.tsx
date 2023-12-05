@@ -5,6 +5,7 @@ import React, {
   useCallback,
   useImperativeHandle,
   useRef,
+  useId,
   useState,
 } from 'react';
 import type {AriaAttributes} from 'react';
@@ -15,16 +16,9 @@ import {
 } from '../../utilities/focus';
 import {Portal} from '../Portal';
 import {portal} from '../shared';
-import {useUniqueId} from '../../utilities/unique-id';
 
-import {
-  PopoverCloseSource,
-  PopoverAutofocusTarget,
-  Pane,
-  PopoverOverlay,
-  PopoverOverlayProps,
-  Section,
-} from './components';
+import {PopoverCloseSource, Pane, PopoverOverlay, Section} from './components';
+import type {PopoverAutofocusTarget, PopoverOverlayProps} from './components';
 import {setActivatorAttributes} from './set-activator-attributes';
 
 export {PopoverCloseSource};
@@ -39,7 +33,10 @@ export interface PopoverProps {
   preferredAlignment?: PopoverOverlayProps['preferredAlignment'];
   /** Show or hide the Popover */
   active: boolean;
-  /** The element to activate the Popover */
+  /** The element to activate the Popover.
+   * If using a button, use the default or tertiary variant
+   * which will show an active state when popover is active
+   */
   activator: React.ReactElement;
   /**
    * Use the activator's input element to calculate the Popover position
@@ -78,6 +75,11 @@ export interface PopoverProps {
   autofocusTarget?: PopoverAutofocusTarget;
   /** Prevents closing the popover when other overlays are clicked */
   preventCloseOnChildOverlayClick?: boolean;
+  /**
+   * Prevents page scrolling when the end of the scrollable Popover overlay content is reached - applied to Pane subcomponent
+   * @default false
+   */
+  captureOverscroll?: boolean;
 }
 
 export interface PopoverPublicAPI {
@@ -112,7 +114,7 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
     const activatorContainer = useRef<HTMLElement>(null);
 
     const WrapperComponent: any = activatorWrapper;
-    const id = useUniqueId('popover');
+    const id = useId();
 
     function forceUpdatePosition() {
       overlayRef.current?.forceUpdatePosition();
@@ -154,17 +156,27 @@ const PopoverComponent = forwardRef<PopoverPublicAPI, PopoverProps>(
         return;
       }
 
-      if (
-        (source === PopoverCloseSource.FocusOut ||
-          source === PopoverCloseSource.EscapeKeypress) &&
-        activatorNode
-      ) {
+      if (source === PopoverCloseSource.FocusOut && activatorNode) {
         const focusableActivator =
           findFirstFocusableNodeIncludingDisabled(activatorNode) ||
           findFirstFocusableNodeIncludingDisabled(activatorContainer.current) ||
           activatorContainer.current;
         if (!focusNextFocusableNode(focusableActivator, isInPortal)) {
           focusableActivator.focus();
+        }
+      } else if (
+        source === PopoverCloseSource.EscapeKeypress &&
+        activatorNode
+      ) {
+        const focusableActivator =
+          findFirstFocusableNodeIncludingDisabled(activatorNode) ||
+          findFirstFocusableNodeIncludingDisabled(activatorContainer.current) ||
+          activatorContainer.current;
+
+        if (focusableActivator) {
+          focusableActivator.focus();
+        } else {
+          focusNextFocusableNode(focusableActivator, isInPortal);
         }
       }
     };

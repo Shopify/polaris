@@ -3,12 +3,13 @@ import React from 'react';
 import type {Action} from '../../types';
 import {Avatar} from '../Avatar';
 import {buttonFrom} from '../Button';
-import {Card} from '../Card';
-import {Stack} from '../Stack';
-import {TextStyle} from '../TextStyle';
 import {SettingAction} from '../SettingAction';
-
-import styles from './AccountConnection.scss';
+import {Card} from '../Card';
+import {Box} from '../Box';
+import {InlineStack} from '../InlineStack';
+import {Text} from '../Text';
+import {BlockStack} from '../BlockStack';
+import {useBreakpoints} from '../../utilities/breakpoints';
 
 export interface AccountConnectionProps {
   /** Content to display as title */
@@ -36,6 +37,8 @@ export function AccountConnection({
   details,
   termsOfService,
 }: AccountConnectionProps) {
+  const breakpoints = useBreakpoints();
+
   const initials = accountName
     ? accountName
         .split(/\s+/)
@@ -44,47 +47,50 @@ export function AccountConnection({
     : undefined;
 
   const avatarMarkup = connected ? (
-    <Avatar
-      accessibilityLabel=""
-      name={accountName}
-      initials={initials}
-      source={avatarUrl}
-    />
+    <span>
+      <Avatar
+        accessibilityLabel=""
+        name={accountName}
+        initials={initials}
+        source={avatarUrl}
+      />
+    </span>
   ) : null;
 
-  let titleMarkup: React.ReactNode = null;
-  if (title) {
-    titleMarkup = <div>{title}</div>;
-  } else if (accountName) {
-    titleMarkup = <div>{accountName}</div>;
-  }
+  const titleContent = title ? title : accountName;
+
+  const titleMarkup = (
+    <Text as="h2" variant="headingSm">
+      {titleContent}
+    </Text>
+  );
 
   const detailsMarkup = details ? (
-    <div>
-      <TextStyle variation="subdued">{details}</TextStyle>
-    </div>
+    <Text as="span" tone="subdued">
+      {details}
+    </Text>
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
-    <div className={styles.TermsOfService}>{termsOfService}</div>
+    <Box paddingBlockStart={breakpoints.mdUp ? '400' : '500'}>
+      {termsOfService}
+    </Box>
   ) : null;
 
   const actionElement = action
-    ? buttonFrom(action, {primary: !connected})
+    ? buttonFrom(action, {variant: connected ? undefined : 'primary'})
     : null;
 
   return (
-    <Card sectioned>
+    <Card>
       <SettingAction action={actionElement}>
-        <Stack>
+        <InlineStack gap="400">
           {avatarMarkup}
-          <Stack.Item fill>
-            <div className={styles.Content}>
-              {titleMarkup}
-              {detailsMarkup}
-            </div>
-          </Stack.Item>
-        </Stack>
+          <BlockStack gap="100">
+            {titleMarkup}
+            {detailsMarkup}
+          </BlockStack>
+        </InlineStack>
       </SettingAction>
       {termsOfServiceMarkup}
     </Card>

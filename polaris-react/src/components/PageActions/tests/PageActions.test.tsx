@@ -2,7 +2,8 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {ButtonGroup} from '../../ButtonGroup';
-import {Stack} from '../../Stack';
+// eslint-disable-next-line import/no-deprecated
+import {LegacyStack} from '../../LegacyStack';
 import {buttonsFrom} from '../../Button';
 import {PageActions} from '../PageActions';
 
@@ -12,35 +13,17 @@ jest.mock('../../Button', () => ({
 }));
 
 describe('<PageActions />', () => {
-  describe('<Stack />', () => {
+  describe('<LegacyStack />', () => {
     it('renders a stack component', () => {
       const pageActions = mountWithApp(<PageActions />);
-      expect(pageActions).toContainReactComponentTimes(Stack, 1);
-    });
-
-    it('uses equalSpacing distribution if secondaryActions are provided', () => {
-      const mockActions = [{content: 'Delete'}];
-
-      const pageActions = mountWithApp(
-        <PageActions secondaryActions={mockActions} />,
-      );
-      const stack = pageActions.find(Stack);
-      expect(stack).toHaveReactProps({
-        distribution: 'equalSpacing',
-      });
-    });
-
-    it('uses trailing distribution if secondaryActions are not provided', () => {
-      const pageActions = mountWithApp(<PageActions />);
-      const stack = pageActions.find(Stack);
-      expect(stack).toHaveReactProps({
-        distribution: 'trailing',
-      });
+      // eslint-disable-next-line import/no-deprecated
+      expect(pageActions).toContainReactComponentTimes(LegacyStack, 1);
     });
 
     it('passes spacing tight to Stack', () => {
       const pageActions = mountWithApp(<PageActions />);
-      const stack = pageActions.find(Stack);
+      // eslint-disable-next-line import/no-deprecated
+      const stack = pageActions.find(LegacyStack);
       expect(stack).toHaveReactProps({
         spacing: 'tight',
       });
@@ -52,7 +35,9 @@ describe('<PageActions />', () => {
 
     it('renders a button', () => {
       mountWithApp(<PageActions primaryAction={mockAction} />);
-      expect(buttonsFrom).toHaveBeenCalledWith(mockAction, {primary: true});
+      expect(buttonsFrom).toHaveBeenCalledWith(mockAction, {
+        variant: 'primary',
+      });
     });
 
     it('renders a `ReactNode`', () => {
@@ -70,7 +55,6 @@ describe('<PageActions />', () => {
       {
         content: 'Delete',
         destructive: true,
-        outline: true,
       },
     ];
 

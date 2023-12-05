@@ -12,7 +12,7 @@ function HomePage({}: Props) {
   const useMotion = useMedia('(prefers-reduced-motion: no-preference)');
 
   return (
-    <Page showTOC={false}>
+    <Page>
       <div className={styles.HomePage}>
         <PageMeta description="A starter kit for reimagining commerce." />
 
@@ -29,44 +29,35 @@ function HomePage({}: Props) {
         </div>
 
         <div className={styles.EntryPoints}>
-          <Link href="/foundations">
-            <a className={styles.EntryPoint}>
-              <h3>Foundations</h3>
-              <p>
-                Fundamental design guidance for creating quality admin
-                experiences
-              </p>
-            </a>
+          <Link href="/foundations" className={styles.EntryPoint}>
+            <h3>Foundations</h3>
+            <p>
+              Fundamental design guidance for creating quality admin experiences
+            </p>
           </Link>
 
-          <Link href="/components">
-            <a className={styles.EntryPoint}>
-              <h3>Components</h3>
-              <p>
-                Reusable elements and styles, packaged through code, for
-                building admin interfaces
-              </p>
-            </a>
+          <Link href="/components" className={styles.EntryPoint}>
+            <h3>Components</h3>
+            <p>
+              Reusable elements and styles, packaged through code, for building
+              admin interfaces
+            </p>
           </Link>
 
-          <Link href="/tokens/colors">
-            <a className={styles.EntryPoint}>
-              <h3>Tokens</h3>
-              <p>
-                Coded names that represent design decisions for color, spacing,
-                typography, and more
-              </p>
-            </a>
+          <Link href="/tokens/color" className={styles.EntryPoint}>
+            <h3>Tokens</h3>
+            <p>
+              Coded names that represent design decisions for color, spacing,
+              typography, and more
+            </p>
           </Link>
 
-          <Link href="/icons">
-            <a className={styles.EntryPoint}>
-              <h3>Icons</h3>
-              <p>
-                Over 400 carefully designed icons focused on commerce and
-                entrepreneurship
-              </p>
-            </a>
+          <Link href="/icons" className={styles.EntryPoint}>
+            <h3>Icons</h3>
+            <p>
+              Over 400 carefully designed icons focused on commerce and
+              entrepreneurship
+            </p>
           </Link>
         </div>
 
@@ -74,17 +65,18 @@ function HomePage({}: Props) {
           <div className={className(styles.Promo, styles.News, 'dark-mode')}>
             <div className={styles.Text}>
               <h3>
-                <span>New</span> Version 10 typography
+                <span>New</span> Version 12
               </h3>
-              <p>Learn about what changes are coming to Polaris typography.</p>
-              <Link href="/whats-new/version-10-typography">Read post</Link>
+              <p>Learn how to upgrade to Polaris&apos; new design language.</p>
+              <Link href="/whats-new/version-12">Read post</Link>
             </div>
             <div className={styles.Image}>
               <Image
                 width={1600}
                 height={800}
-                src="/images/home-news.png"
-                alt="A list showcasing the new font sizes in Polaris"
+                style={{width: '100%', height: 'auto'}}
+                src="/images/home-v12.png"
+                alt="Polaris v12"
               />
             </div>
           </div>
@@ -101,9 +93,7 @@ function HomePage({}: Props) {
                 Autocompletion for Polaris tokens, right inside your favorite
                 code editor
               </p>
-              <Link href="https://marketplace.visualstudio.com/items?itemName=Shopify.polaris-for-vscode">
-                Install
-              </Link>
+              <Link href="/tools/polaris-for-vscode">Install</Link>
             </div>
             <div className={styles.Image}>
               {useMotion ? (

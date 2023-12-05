@@ -4,26 +4,31 @@ import React, {
   useEffect,
   useRef,
   useCallback,
+  useId,
 } from 'react';
 import {CircleCancelMinor} from '@shopify/polaris-icons';
 
-import {VisuallyHidden} from '../VisuallyHidden';
 import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
-import {useUniqueId} from '../../utilities/unique-id';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
-import {Labelled, LabelledProps, helpTextID, labelID} from '../Labelled';
+import {Labelled, helpTextID, labelID} from '../Labelled';
+import type {LabelledProps} from '../Labelled';
 import {Connected} from '../Connected';
-import {Error, Key} from '../../types';
+import {Key} from '../../types';
+import type {Error} from '../../types';
 import {Icon} from '../Icon';
+import {Text} from '../Text';
+import {useEventListener} from '../../utilities/use-event-listener';
 
-import {Resizer, Spinner, SpinnerProps} from './components';
+import {Resizer, Spinner} from './components';
+import type {SpinnerProps} from './components';
 import styles from './TextField.scss';
 
 type Type =
   | 'text'
   | 'email'
   | 'number'
+  | 'integer'
   | 'password'
   | 'search'
   | 'tel'
@@ -118,6 +123,8 @@ interface NonMutuallyExclusiveProps {
   role?: string;
   /** Limit increment value for numeric and date-time inputs */
   step?: number;
+  /** Increment value for numeric and date-time inputs when using Page Up or Page Down */
+  largeStep?: number;
   /** Enable automatic completion by the browser. Set to "off" when you do not want the browser to fill in info */
   autoComplete: string;
   /** Mimics the behavior of the native HTML attribute, limiting the maximum value */
@@ -154,14 +161,27 @@ interface NonMutuallyExclusiveProps {
   requiredIndicator?: boolean;
   /** Indicates whether or not a monospaced font should be used */
   monospaced?: boolean;
+  /** Visual styling options for the TextField
+   * @default 'inherit'
+   */
+  variant?: 'inherit' | 'borderless';
+  /**
+   * Changes the size of the input, giving it more or less padding
+   * @default 'medium'
+   */
+  size?: 'slim' | 'medium';
   /** Callback fired when clear button is clicked */
   onClearButtonClick?(id: string): void;
   /** Callback fired when value is changed */
   onChange?(value: string, id: string): void;
+  /** When provided, callback fired instead of onChange when value is changed via the number step control  */
+  onSpinnerChange?(value: string, id: string): void;
   /** Callback fired when input is focused */
   onFocus?: (event?: React.FocusEvent) => void;
   /** Callback fired when input is blurred */
   onBlur?(event?: React.FocusEvent): void;
+  /** Indicates the tone of the text field */
+  tone?: 'magic';
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -201,6 +221,7 @@ export function TextField({
   id: idProp,
   role,
   step,
+  largeStep,
   autoComplete,
   max,
   maxLength,
@@ -221,18 +242,23 @@ export function TextField({
   monospaced,
   selectTextOnFocus,
   suggestion,
+  variant = 'inherit',
+  size = 'medium',
   onClearButtonClick,
   onChange,
+  onSpinnerChange,
   onFocus,
   onBlur,
+  tone,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
+  const uniqId = useId();
+  const id = idProp ?? uniqId;
 
-  const id = useUniqueId('TextField', idProp);
-
+  const textFieldRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const prefixRef = useRef<HTMLDivElement>(null);
@@ -241,11 +267,15 @@ export function TextField({
   const buttonPressTimer = useRef<number>();
   const spinnerRef = useRef<HTMLDivElement>(null);
 
+  const getInputRef = useCallback(() => {
+    return multiline ? textAreaRef.current : inputRef.current;
+  }, [multiline]);
+
   useEffect(() => {
-    const input = multiline ? textAreaRef.current : inputRef.current;
+    const input = getInputRef();
     if (!input || focused === undefined) return;
     focused ? input.focus() : input.blur();
-  }, [focused, verticalContent, multiline]);
+  }, [focused, verticalContent, getInputRef]);
 
   useEffect(() => {
     const input = inputRef.current;
@@ -274,11 +304,15 @@ export function TextField({
     disabled && styles.disabled,
     readOnly && styles.readOnly,
     error && styles.error,
+    tone && styles[variationName('tone', tone)],
     multiline && styles.multiline,
-    focus && styles.focus,
+    focus && !disabled && styles.focus,
+    variant !== 'inherit' && styles[variant],
+    size === 'slim' && styles.slim,
   );
 
   const inputType = type === 'currency' ? 'text' : type;
+  const isNumericType = type === 'number' || type === 'integer';
 
   const prefixMarkup = prefix ? (
     <div className={styles.Prefix} id={`${id}-Prefix`} ref={prefixRef}>
@@ -337,16 +371,16 @@ export function TextField({
         onClick={handleClearButtonPress}
         disabled={disabled}
       >
-        <VisuallyHidden>
+        <Text as="span" visuallyHidden>
           {i18n.translate('Polaris.Common.clear')}
-        </VisuallyHidden>
-        <Icon source={CircleCancelMinor} color="base" />
+        </Text>
+        <Icon source={CircleCancelMinor} tone="base" />
       </button>
     ) : null;
 
   const handleNumberChange = useCallback(
-    (steps: number) => {
-      if (onChange == null) {
+    (steps: number, stepAmount = normalizedStep) => {
+      if (onChange == null && onSpinnerChange == null) {
         return;
       }
       // Returns the length of decimal places in a number
@@ -359,23 +393,37 @@ export function TextField({
 
       // Making sure the new value has the same length of decimal places as the
       // step / value has.
-      const decimalPlaces = Math.max(dpl(numericValue), dpl(normalizedStep));
+      const decimalPlaces =
+        type === 'integer' ? 0 : Math.max(dpl(numericValue), dpl(stepAmount));
 
       const newValue = Math.min(
         Number(normalizedMax),
-        Math.max(numericValue + steps * normalizedStep, Number(normalizedMin)),
+        Math.max(numericValue + steps * stepAmount, Number(normalizedMin)),
       );
 
-      onChange(String(newValue.toFixed(decimalPlaces)), id);
+      if (onSpinnerChange != null) {
+        onSpinnerChange(String(newValue.toFixed(decimalPlaces)), id);
+      } else if (onChange != null) {
+        onChange(String(newValue.toFixed(decimalPlaces)), id);
+      }
     },
-    [id, normalizedMax, normalizedMin, onChange, normalizedStep, value],
+    [
+      id,
+      normalizedMax,
+      normalizedMin,
+      onChange,
+      onSpinnerChange,
+      normalizedStep,
+      type,
+      value,
+    ],
   );
 
-  const handleButtonRelease = useCallback(() => {
+  const handleSpinnerButtonRelease = useCallback(() => {
     clearTimeout(buttonPressTimer.current);
   }, []);
 
-  const handleButtonPress: SpinnerProps['onMouseDown'] = useCallback(
+  const handleSpinnerButtonPress: SpinnerProps['onMouseDown'] = useCallback(
     (onChange) => {
       const minInterval = 50;
       const decrementBy = 10;
@@ -392,21 +440,22 @@ export function TextField({
 
       buttonPressTimer.current = window.setTimeout(onChangeInterval, interval);
 
-      document.addEventListener('mouseup', handleButtonRelease, {
+      document.addEventListener('mouseup', handleSpinnerButtonRelease, {
         once: true,
       });
     },
-    [handleButtonRelease],
+    [handleSpinnerButtonRelease],
   );
 
   const spinnerMarkup =
-    type === 'number' && step !== 0 && !disabled && !readOnly ? (
+    isNumericType && step !== 0 && !disabled && !readOnly ? (
       <Spinner
         onClick={handleClickChild}
         onChange={handleNumberChange}
-        onMouseDown={handleButtonPress}
-        onMouseUp={handleButtonRelease}
+        onMouseDown={handleSpinnerButtonPress}
+        onMouseUp={handleSpinnerButtonRelease}
         ref={spinnerRef}
+        onBlur={handleOnBlur}
       />
     ) : null;
 
@@ -462,26 +511,28 @@ export function TextField({
     suggestion && styles.suggestion,
   );
 
-  const handleOnFocus = (event: React.FocusEvent<HTMLElement>) => {
+  const handleOnFocus = (
+    event: React.FocusEvent<HTMLElement> | React.MouseEvent<HTMLInputElement>,
+  ) => {
     setFocus(true);
 
     if (selectTextOnFocus && !suggestion) {
-      const input = multiline ? textAreaRef.current : inputRef.current;
+      const input = getInputRef();
       input?.select();
     }
 
     if (onFocus) {
-      onFocus(event);
+      onFocus(event as React.FocusEvent<HTMLInputElement>);
     }
   };
 
-  const handleOnBlur = (event: React.FocusEvent) => {
-    setFocus(false);
+  useEventListener('wheel', handleOnWheel, inputRef);
 
-    if (onBlur) {
-      onBlur(event);
+  function handleOnWheel(event: WheelEvent) {
+    if (document.activeElement === event.target && isNumericType) {
+      event.stopPropagation();
     }
-  };
+  }
 
   const input = createElement(multiline ? 'textarea' : 'input', {
     name,
@@ -520,8 +571,15 @@ export function TextField({
     onBlur: handleOnBlur,
     onClick: handleClickChild,
     onKeyPress: handleKeyPress,
+    onKeyDown: handleKeyDown,
     onChange: !suggestion ? handleChange : undefined,
     onInput: suggestion ? handleChange : undefined,
+    // 1Password disable data attribute
+    'data-1p-ignore': autoComplete === 'off' || undefined,
+    // LastPass disable data attribute
+    'data-lpignore': autoComplete === 'off' || undefined,
+    // Dashlane disable data attribute
+    'data-form-type': autoComplete === 'off' ? 'other' : undefined,
   });
 
   const inputWithVerticalContentMarkup = verticalContent ? (
@@ -557,9 +615,11 @@ export function TextField({
       labelHidden={labelHidden}
       helpText={helpText}
       requiredIndicator={requiredIndicator}
+      disabled={disabled}
+      readOnly={readOnly}
     >
       <Connected left={connectedLeft} right={connectedRight}>
-        <div className={className} onClick={handleClick}>
+        <div className={className} onClick={handleClick} ref={textFieldRef}>
           {prefixMarkup}
           {inputMarkup}
           {suffixMarkup}
@@ -577,7 +637,19 @@ export function TextField({
     onChange && onChange(event.currentTarget.value, id);
   }
 
-  function handleClick({target}: React.MouseEvent) {
+  function handleClick(event: React.MouseEvent<HTMLInputElement>) {
+    const {target} = event;
+
+    // For TextFields used with Combobox, focus needs to be set again even
+    // if the TextField is already focused to trigger the logic to open the
+    // Combobox activator
+    const inputRefRole = inputRef?.current?.getAttribute('role');
+    if (target === inputRef.current && inputRefRole === 'combobox') {
+      inputRef.current?.focus();
+      handleOnFocus(event);
+      return;
+    }
+
     if (
       isPrefixOrSuffix(target) ||
       isVerticalContent(target) ||
@@ -588,7 +660,7 @@ export function TextField({
       return;
     }
 
-    inputRef.current?.focus();
+    getInputRef()?.focus();
   }
 
   function handleClickChild(event: React.MouseEvent) {
@@ -606,6 +678,7 @@ export function TextField({
     }
 
     setFocus(true);
+    getInputRef()?.focus();
   }
 
   function handleClearButtonPress() {
@@ -614,20 +687,87 @@ export function TextField({
 
   function handleKeyPress(event: React.KeyboardEvent) {
     const {key, which} = event;
-    const numbersSpec = /[\d.eE+-]$/;
-    if (type !== 'number' || which === Key.Enter || numbersSpec.test(key)) {
+    const numbersSpec = /[\d.,eE+-]$/;
+    const integerSpec = /[\deE+-]$/;
+
+    if (
+      !isNumericType ||
+      which === Key.Enter ||
+      (type === 'number' && numbersSpec.test(key)) ||
+      (type === 'integer' && integerSpec.test(key))
+    ) {
       return;
     }
 
     event.preventDefault();
   }
 
+  function handleKeyDown(event: React.KeyboardEvent) {
+    if (!isNumericType) {
+      return;
+    }
+
+    const {key, which} = event;
+
+    if (type === 'integer' && (key === 'ArrowUp' || which === Key.UpArrow)) {
+      handleNumberChange(1);
+      event.preventDefault();
+    }
+    if (
+      type === 'integer' &&
+      (key === 'ArrowDown' || which === Key.DownArrow)
+    ) {
+      handleNumberChange(-1);
+      event.preventDefault();
+    }
+
+    if ((which === Key.Home || key === 'Home') && min !== undefined) {
+      if (onSpinnerChange != null) {
+        onSpinnerChange(String(min), id);
+      } else if (onChange != null) {
+        onChange(String(min), id);
+      }
+    }
+
+    if ((which === Key.End || key === 'End') && max !== undefined) {
+      if (onSpinnerChange != null) {
+        onSpinnerChange(String(max), id);
+      } else if (onChange != null) {
+        onChange(String(max), id);
+      }
+    }
+
+    if ((which === Key.PageUp || key === 'PageUp') && largeStep !== undefined) {
+      handleNumberChange(1, largeStep);
+    }
+
+    if (
+      (which === Key.PageDown || key === 'PageDown') &&
+      largeStep !== undefined
+    ) {
+      handleNumberChange(-1, largeStep);
+    }
+  }
+
+  function handleOnBlur(event: React.FocusEvent) {
+    setFocus(false);
+
+    // Return early if new focus target is inside the TextField component
+    if (textFieldRef.current?.contains(event?.relatedTarget)) {
+      return;
+    }
+
+    if (onBlur) {
+      onBlur(event);
+    }
+  }
+
   function isInput(target: HTMLElement | EventTarget) {
+    const input = getInputRef();
     return (
       target instanceof HTMLElement &&
-      inputRef.current &&
-      (inputRef.current.contains(target) ||
-        inputRef.current.contains(document.activeElement))
+      input &&
+      (input.contains(target) || input.contains(document.activeElement))
     );
   }
 
@@ -666,7 +806,7 @@ function getRows(multiline?: boolean | number) {
 function normalizeAriaMultiline(multiline?: boolean | number) {
   if (!multiline) return undefined;
 
-  return Boolean(multiline) || multiline > 0
+  return Boolean(multiline) || (typeof multiline === 'number' && multiline > 0)
     ? {'aria-multiline': true}
     : undefined;
 }

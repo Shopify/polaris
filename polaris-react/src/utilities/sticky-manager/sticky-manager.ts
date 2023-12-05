@@ -1,9 +1,10 @@
-import {spacing} from '@shopify/polaris-tokens';
+import {themeDefault} from '@shopify/polaris-tokens';
 
 import {debounce} from '../debounce';
 import {dataPolarisTopBar, scrollable} from '../../components/shared';
 import {stackedContent} from '../breakpoints';
-import {getRectForNode, Rect} from '../geometry';
+import {getRectForNode} from '../geometry';
+import type {Rect} from '../geometry';
 
 interface StickyItem {
   /** Node of the sticky element */
@@ -134,7 +135,13 @@ export class StickyManager {
     }
 
     const stickyOffset = offset
-      ? this.getOffset(stickyNode) + parseInt(spacing['space-5'], 10)
+      ? this.getOffset(stickyNode) +
+        parseInt(
+          // Important: This will not update when the active theme changes.
+          // Update this to `useTheme` once converted to a function component.
+          themeDefault.space['space-500'],
+          10,
+        )
       : this.getOffset(stickyNode);
 
     const scrollPosition = scrollTop + stickyOffset;

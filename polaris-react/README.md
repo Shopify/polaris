@@ -33,7 +33,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@10.8.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@12.1.1/build/esm/styles.css"
 />
 ```
 
@@ -41,7 +41,7 @@ Otherwise include the CSS in your HTML. We suggest copying the styles file into 
 
 ```js
 import enTranslations from '@shopify/polaris/locales/en.json';
-import {AppProvider, Page, Card, Button} from '@shopify/polaris';
+import {AppProvider, Page, LegacyCard, Button} from '@shopify/polaris';
 ```
 
 3.  Tell React to render the element in the DOM:
@@ -50,13 +50,23 @@ import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 ReactDOM.render(
   <AppProvider i18n={enTranslations}>
     <Page title="Example app">
-      <Card sectioned>
+      <LegacyCard sectioned>
         <Button onClick={() => alert('Button clicked!')}>Example button</Button>
-      </Card>
+      </LegacyCard>
     </Page>
   </AppProvider>,
   document.querySelector('#app'),
 );
+```
+
+4. Load the web font [Inter](https://github.com/rsms/inter).
+
+```html
+<link rel="preconnect" href="https://cdn.shopify.com/" />
+<link
+  rel="stylesheet"
+  href="https://cdn.shopify.com/static/fonts/inter/inter.css"
+/>
 ```
 
 ## Using the CSS components
@@ -70,7 +80,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@10.8.0/build/esm/styles.css"
+  href="https://unpkg.com/@shopify/polaris@12.1.1/build/esm/styles.css"
 />
 ```
 

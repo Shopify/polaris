@@ -3,6 +3,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {clamp} from '../../../../utilities/clamp';
 import {Labelled, helpTextID} from '../../../Labelled';
+import {Text} from '../../../Text';
 import {invertNumber} from '../../utilities';
 import type {RangeSliderProps} from '../../types';
 import sharedStyles from '../../RangeSlider.scss';
@@ -65,7 +66,9 @@ export function SingleThumb(props: SingleThumbProps) {
   const outputMarkup = !disabled && output && (
     <output htmlFor={id} className={styles.Output}>
       <div className={styles.OutputBubble}>
-        <span className={styles.OutputText}>{clampedValue}</span>
+        <Text as="span" variant="headingSm" alignment="center">
+          {clampedValue}
+        </Text>
       </div>
     </output>
   );

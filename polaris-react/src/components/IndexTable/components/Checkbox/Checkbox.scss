@@ -1,10 +1,5 @@
 @import '../../../../styles/common';
 
-$expanded-height: 20px;
-$expanded-width: 36px;
-$condensed-height: 44px;
-$condensed-width: 50px;
-
 .TableCellContentContainer {
   display: flex;
   align-items: center;
@@ -14,16 +9,4 @@ $condensed-width: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.expanded {
-  width: $expanded-width;
-  height: $expanded-height;
-  padding-left: var(--p-space-4);
-}
-
-.condensed {
-  min-width: $condensed-width;
-  min-height: $condensed-height;
-  margin-right: calc(-1 * var(--p-space-4));
 }

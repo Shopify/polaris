@@ -14,13 +14,13 @@ function AutocompleteActionBeforeExample() {
     ],
     [],
   );
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
   const [loading, setLoading] = useState(false);
 
   const updateText = useCallback(
-    (value) => {
+    (value: string) => {
       setInputValue(value);
 
       if (!loading) {
@@ -45,7 +45,7 @@ function AutocompleteActionBeforeExample() {
   );
 
   const updateSelection = useCallback(
-    (selected) => {
+    (selected: string[]) => {
       const selectedText = selected.map((selectedItem) => {
         const matchedOption = options.find((option) => {
           return option.value.match(selectedItem);
@@ -53,7 +53,7 @@ function AutocompleteActionBeforeExample() {
         return matchedOption && matchedOption.label;
       });
       setSelectedOptions(selected);
-      setInputValue(selectedText[0]);
+      setInputValue(selectedText[0] || '');
     },
     [options],
   );
@@ -65,6 +65,7 @@ function AutocompleteActionBeforeExample() {
       value={inputValue}
       prefix={<Icon source={SearchMinor} />}
       placeholder="Search"
+      autoComplete="off"
     />
   );
 
@@ -74,7 +75,7 @@ function AutocompleteActionBeforeExample() {
         actionBefore={{
           accessibilityLabel: 'Action label',
           badge: {
-            status: 'new',
+            tone: 'new',
             content: 'New!',
           },
           content:

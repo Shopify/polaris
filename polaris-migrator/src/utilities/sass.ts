@@ -1,14 +1,32 @@
+import type {FileInfo, API, Options} from 'jscodeshift';
+import type {
+  Root,
+  Result,
+  Plugin,
+  Container,
+  Declaration,
+  Node as PostCSSNode,
+  Rule as PostCSSRule,
+  Comment as PostCSSComment,
+  AtRule,
+} from 'postcss';
 import postcss from 'postcss';
-import valueParser, {
+import type {
   Node,
   ParsedValue,
   FunctionNode,
   Dimension,
 } from 'postcss-value-parser';
-import {toPx} from '@shopify/polaris-tokens';
-import prettier from 'prettier';
+import valueParser from 'postcss-value-parser';
+import {toPx, getThemeVarNames, themeDefault} from '@shopify/polaris-tokens';
+
+import {POLARIS_MIGRATOR_COMMENT} from './constants';
 
 const defaultNamespace = '';
+
+const themeVarNamesRegExp = new RegExp(
+  getThemeVarNames(themeDefault).join('|'),
+);
 
 function getNamespace(options?: NamespaceOptions) {
   return options?.namespace || defaultNamespace;
@@ -45,14 +63,54 @@ export function isNumericOperator(node: Node): boolean {
 /**
  * Checks if any descendant `valueParser` node is a numeric operator
  */
-export function hasNumericOperator(parsedValue: ParsedValue): boolean {
+export function hasNumericOperator(
+  parsedValue: ParsedValue,
+  deep = true,
+): boolean {
   let containsNumericOperator = false;
 
   parsedValue.walk((node) => {
-    if (isNumericOperator(node)) containsNumericOperator = true;
+    if (isNumericOperator(node)) {
+      containsNumericOperator = true;
+      return StopWalkingFunctionNodes;
+    }
+
+    if (!deep) {
+      return StopWalkingFunctionNodes;
+    }
   });
 
   return containsNumericOperator;
+}
+
+/**
+ * Checks if a `valueParser` node is a [SASS variable](https://sass-lang.com/documentation/variables)
+ */
+export function isSassVariable(node: Node): boolean {
+  return node.type === 'word' && node.value.startsWith('$');
+}
+
+/**
+ * Checks if any descendant `valueParser` node is a SASS variable
+ */
+export function hasSassVariable(
+  parsedValue: ParsedValue,
+  deep = true,
+): boolean {
+  let containsSassVariable = false;
+
+  parsedValue.walk((node) => {
+    if (isSassVariable(node)) {
+      containsSassVariable = true;
+      return StopWalkingFunctionNodes;
+    }
+
+    if (!deep) {
+      return StopWalkingFunctionNodes;
+    }
+  });
+
+  return containsSassVariable;
 }
 
 /**
@@ -78,11 +136,19 @@ export function isSassFunction(name: string, node: Node): node is FunctionNode {
 export function hasSassFunction(
   name: string,
   parsedValue: ParsedValue,
+  deep = true,
 ): boolean {
   let containsSassFunction = false;
 
   parsedValue.walk((node) => {
-    if (isSassFunction(name, node)) containsSassFunction = true;
+    if (isSassFunction(name, node)) {
+      containsSassFunction = true;
+      return StopWalkingFunctionNodes;
+    }
+
+    if (!deep) {
+      return StopWalkingFunctionNodes;
+    }
   });
 
   return containsSassFunction;
@@ -236,18 +302,302 @@ export function toTransformablePx(value: string) {
  */
 export const StopWalkingFunctionNodes = false;
 
-export function createInlineComment(text: string, options?: {prose?: boolean}) {
-  const formatted = prettier
-    .format(text, {
-      parser: options?.prose ? 'markdown' : 'scss',
-      proseWrap: 'never',
-      printWidth: 9999,
-    })
-    .trim();
-  const comment = postcss.comment({text: formatted});
+/**
+ * All transformable duration units. These values are used to determine
+ * if a decl.value can be mapped to a Polaris custom property.
+ *
+ * Note: <time> is a dimension with 's' or 'ms' as the unit:
+ * https://w3c.github.io/csswg-drafts/css-values-3/#time-value
+ */
+export const transformableDurationUnits = ['s', 'ms'];
+
+export function isTransformableDuration(
+  dimension: false | Dimension,
+): dimension is Dimension {
+  if (!dimension) return false;
+
+  // Zero is the only unitless dimension our duration transforms support
+  if (isUnitlessZero(dimension)) return true;
+
+  return transformableDurationUnits.includes(dimension.unit);
+}
+
+export function isPolarisVar(node: Node): boolean {
+  return (
+    isSassFunction('var', node) &&
+    themeVarNamesRegExp.test(node.nodes?.[0]?.value ?? '')
+  );
+}
+
+export function createInlineComment(text: string) {
+  const comment = postcss.comment({text: text.replace(/\s+/gm, ' ').trim()});
 
   comment.raws.left = ' ';
   comment.raws.inline = true;
 
   return comment;
+}
+
+interface PluginOptions extends Options, NamespaceOptions {}
+
+interface Report {
+  node: PostCSSNode;
+  severity: 'warning' | 'error';
+  message: string;
+}
+
+interface PluginContext {
+  fix: boolean;
+}
+
+// Extracted from stylelint
+type StylelintRuleBase<P = any, S = any> = (
+  primaryOption: P,
+  secondaryOptions: {[key: string]: S},
+  context: PluginContext,
+) => (root: Root, result: Result) => void;
+
+interface StylelintRuleMeta {
+  url: string;
+  deprecated?: boolean;
+  fixable?: boolean;
+}
+
+type StylelintRule<P = any, S = any> = StylelintRuleBase<P, S> & {
+  ruleName: string;
+  meta?: StylelintRuleMeta;
+};
+// End: Extracted from stylelint
+
+type Walker<N extends PostCSSNode> = (node: N) => false | void;
+
+export type PolarisMigrator = (
+  primaryOption: true,
+  secondaryOptions: {
+    options: {[key: string]: any};
+    methods: {
+      report: (report: Report) => void;
+      each: <T extends Container>(root: T, walker: Walker<PostCSSNode>) => void;
+      walk: <T extends Container>(root: T, walker: Walker<PostCSSNode>) => void;
+      walkComments: <T extends Container>(
+        root: T,
+        walker: Walker<PostCSSComment>,
+      ) => void;
+      walkAtRules: <T extends Container>(
+        root: T,
+        atRuleWalker: Walker<AtRule>,
+      ) => void;
+      walkDecls: <T extends Container>(
+        root: T,
+        declWalker: Walker<Declaration>,
+      ) => void;
+      walkRules: <T extends Container>(
+        root: T,
+        ruleWalker: Walker<PostCSSRule>,
+      ) => void;
+    };
+  },
+  context: PluginContext,
+) => (root: Root, result: Result) => void;
+
+// Expose a stylelint-like API for creating sass migrators so we can easily
+// migrate to that tool in the future.
+function convertStylelintRuleToPostcssProcessor(ruleFn: StylelintRule) {
+  return (fileInfo: FileInfo, _: API, options: Options) => {
+    const plugin: Plugin = {
+      postcssPlugin: ruleFn.ruleName,
+      // PostCSS will rewalk the AST every time a declaration/rule/etc is
+      // mutated by a plugin. This can be useful in some cases, but in ours we
+      // only want single-pass behaviour.
+      //
+      // This can be avoided in 2 ways:
+      //
+      // 1) Flagging each declaration as we pass it, then skipping it on
+      //    subsequent passes.
+      // 2) Using postcss's Once() plugin callback.
+      //
+      // stylelint also uses `Once()`, so we're able to remove this once we've
+      // migrated:
+      // https://github.com/stylelint/stylelint/blob/cb425cb/lib/postcssPlugin.js#L22
+      Once(root, {result}) {
+        // NOTE: For fullest compatibility with stylelint, we initialise the
+        // rule here _inside_ the postcss Once function just like stylelint
+        // does. This means multiple passes can be performed without rules
+        // accidentally retaining scoped variables, etc.
+        ruleFn(
+          // Normally, this comes from stylelint config, but for this shim we
+          // just hard-code it, and instead rely on the "seconary" options
+          // object for passing through the jscodeshift options.
+          true,
+          options,
+          // Also normally comes from styelint via the cli `--fix` flag.
+          {fix: true},
+        )(root, result);
+      },
+    };
+
+    return postcss(plugin).process(fileInfo.source, {
+      syntax: require('postcss-scss'),
+    }).css;
+  };
+}
+
+export function createSassMigrator(name: string, ruleFn: PolarisMigrator) {
+  const wrappedRule: StylelintRule = ((
+    primary,
+    secondaryOptions: PluginOptions,
+    context,
+  ) => {
+    const reports = new Map<PostCSSNode, Report[]>();
+
+    const addDedupedReport = (newReport: Report) => {
+      if (!reports.has(newReport.node)) {
+        reports.set(newReport.node, []);
+      }
+
+      const reportsForNode = reports.get(newReport.node)!;
+
+      if (
+        reportsForNode.findIndex(
+          (existingReport) =>
+            existingReport.severity === newReport.severity &&
+            existingReport.message === newReport.message,
+        ) === -1
+      ) {
+        reportsForNode.push(newReport);
+      }
+    };
+
+    const flushReportsAsComments = () => {
+      // @ts-expect-error No idea why TS is complaining here
+      for (const [node, reportsForNode] of reports) {
+        node.before(createInlineComment(POLARIS_MIGRATOR_COMMENT));
+
+        for (const report of reportsForNode) {
+          node.before(
+            createInlineComment(`${report.severity}: ${report.message}`),
+          );
+        }
+      }
+      reports.clear();
+    };
+
+    function createWalker<T extends PostCSSNode>(args: {
+      walker: (node: T) => false | void;
+      serialiseSuggestion: (node: T) => string;
+    }): (node: T) => false | void {
+      const {walker, serialiseSuggestion} = args;
+
+      return (node: T) => {
+        let oldNode: T;
+        if (context.fix) {
+          oldNode = node.clone();
+        }
+
+        const result = walker(node);
+
+        const isPartialFix =
+          context.fix &&
+          reports.has(node) &&
+          node.toString() !== oldNode!.toString();
+
+        flushReportsAsComments();
+
+        // Our migrations have an opinion on partial fixes (when multiple
+        // issues are found in a single node, and some but not all can be
+        // fixed): We dump out the partial fix result as a comment
+        // immediately above the node.
+        if (isPartialFix) {
+          node.before(createInlineComment(serialiseSuggestion(node)));
+          // Undo changes
+          node.replaceWith(oldNode!);
+        }
+
+        return result;
+      };
+    }
+
+    return ruleFn(
+      primary,
+      // We're kind of abusing stylelint's types here since the
+      // SecondaryOptions param can take an arbitrary object. But we need a
+      // way to pass the methods into the rule function somehow, and this way
+      // means less Typescript hackery.
+      {
+        options: secondaryOptions,
+        methods: {
+          report: addDedupedReport,
+          each(root, walker) {
+            root.each(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.toString(),
+              }),
+            );
+          },
+          walk(root, walker) {
+            root.walk(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.toString(),
+              }),
+            );
+          },
+          walkAtRules(root, walker) {
+            root.walkAtRules(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => `@${node.name} ${node.params}`,
+              }),
+            );
+          },
+          walkComments(root, walker) {
+            root.walkComments(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.text,
+              }),
+            );
+          },
+          walkDecls(root, walker) {
+            root.walkDecls(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => `${node.prop}: ${node.value};`,
+              }),
+            );
+          },
+          walkRules(root, walker) {
+            root.walkRules(
+              createWalker({
+                walker,
+                serialiseSuggestion: (node) => node.selector,
+              }),
+            );
+          },
+        },
+      },
+      context,
+    );
+  }) as StylelintRule;
+
+  wrappedRule.ruleName = name;
+  wrappedRule.meta = {
+    // TODO: link directly to the specific rule
+    url: 'https://www.npmjs.com/package/@shopify/stylelint-polaris',
+    fixable: true,
+  };
+
+  return convertStylelintRuleToPostcssProcessor(wrappedRule);
+}
+
+export function setNodeValue(node: Node, value: string): void {
+  const {sourceIndex} = node;
+  const parsedValue = valueParser(value).nodes[0];
+  Object.assign(node, parsedValue);
+  // The node we're replacing might be mid-way through a higher-level value
+  // string. Eg; 'border: 1px solid', the 'solid' node is 5 characters into the
+  // higher-level value, so we need to correct the index here.
+  node.sourceIndex += sourceIndex;
+  node.sourceEndIndex += sourceIndex;
 }

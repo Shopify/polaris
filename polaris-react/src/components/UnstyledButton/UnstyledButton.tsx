@@ -19,6 +19,7 @@ export function UnstyledButton({
   className,
   url,
   external,
+  target,
   download,
   submit,
   disabled,
@@ -70,6 +71,7 @@ export function UnstyledButton({
         {...interactiveProps}
         url={url}
         external={external}
+        target={target}
         download={download}
         {...rest}
       >

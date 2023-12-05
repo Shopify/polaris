@@ -109,13 +109,13 @@ function IconsPage() {
   )}`;
 
   return (
-    <Page title="Icons" showTOC={false}>
+    <Page title="Icons">
       <PageMeta title={pageTitle} />
 
       <div className={className(!useModal && styles.PageLayout)}>
         <div className={styles.IconGrids}>
           <SearchField
-            value={searchText}
+            defaultValue={searchText}
             onChange={(value) => updateQueryParams(value)}
             placeholder="Search icons"
           />

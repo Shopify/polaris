@@ -1,12 +1,5 @@
-import React, {
-  useContext,
-  memo,
-  useEffect,
-  useRef,
-  useCallback,
-  Fragment,
-  ReactNode,
-} from 'react';
+import React, {useContext, memo, useEffect, useRef, useCallback} from 'react';
+import type {ReactNode} from 'react';
 
 import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
@@ -19,20 +12,26 @@ import sharedStyles from '../../IndexTable.scss';
 
 import styles from './Checkbox.scss';
 
-export const Checkbox = memo(function Checkbox() {
+interface CheckboxProps {
+  accessibilityLabel?: string;
+}
+
+export const Checkbox = memo(function Checkbox({
+  accessibilityLabel,
+}: CheckboxProps) {
   const i18n = useI18n();
-  const {resourceName, condensed} = useIndexValue();
+  const {resourceName} = useIndexValue();
   const {itemId, selected, disabled, onInteraction} = useContext(RowContext);
 
-  const wrapperClassName = classNames(
-    styles.Wrapper,
-    condensed ? styles.condensed : styles.expanded,
-  );
-
-  const Wrapper = condensed ? Fragment : CheckboxWrapper;
+  const wrapperClassName = classNames(styles.Wrapper);
+  const label = accessibilityLabel
+    ? accessibilityLabel
+    : i18n.translate('Polaris.IndexTable.selectItem', {
+        resourceName: resourceName.singular,
+      });
 
   return (
-    <Wrapper>
+    <CheckboxWrapper>
       <div className={styles.TableCellContentContainer}>
         <div
           className={wrapperClassName}
@@ -40,17 +39,15 @@ export const Checkbox = memo(function Checkbox() {
           onKeyUp={noop}
         >
           <PolarisCheckbox
-            id={itemId}
-            label={i18n.translate('Polaris.IndexTable.selectItem', {
-              resourceName: resourceName.singular,
-            })}
+            id={`Select-${itemId}`}
+            label={label}
             labelHidden
             checked={selected}
             disabled={disabled}
           />
         </div>
       </div>
-    </Wrapper>
+    </CheckboxWrapper>
   );
 });
 

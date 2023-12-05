@@ -1,193 +1,155 @@
-import React, {createElement, forwardRef, PropsWithChildren} from 'react';
+import React, {forwardRef} from 'react';
 import type {
-  DepthShadowAlias,
-  SpacingSpaceScale,
+  ColorTextAlias,
+  ColorBackgroundAlias,
+  ColorBorderAlias,
+  BorderWidthScale,
+  BorderRadiusAliasOrScale,
+  ShadowAliasOrScale,
+  SpaceScale,
 } from '@shopify/polaris-tokens';
 
-import {classNames, sanitizeCustomProperties} from '../../utilities/css';
+import {
+  getResponsiveProps,
+  classNames,
+  sanitizeCustomProperties,
+} from '../../utilities/css';
+import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section';
+type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
 
+type LineStyles = 'solid' | 'dashed';
 type Overflow = 'hidden' | 'scroll';
+type Position = 'relative' | 'absolute' | 'fixed' | 'sticky';
 
-export type BackgroundColorTokenScale =
-  | 'action-critical'
-  | 'action-critical-depressed'
-  | 'action-critical-disabled'
-  | 'action-critical-hovered'
-  | 'action-critical-pressed'
-  | 'action-primary'
-  | 'action-primary-depressed'
-  | 'action-primary-disabled'
-  | 'action-primary-hovered'
-  | 'action-primary-pressed'
-  | 'action-secondary'
-  | 'action-secondary-depressed'
-  | 'action-secondary-disabled'
-  | 'action-secondary-hovered'
-  | 'action-secondary-hovered-dark'
-  | 'action-secondary-pressed'
-  | 'action-secondary-pressed-dark'
-  | 'backdrop'
-  | 'background'
-  | 'background-hovered'
-  | 'background-pressed'
-  | 'background-selected'
-  | 'overlay'
-  | 'surface'
-  | 'surface-attention'
-  | 'surface-critical'
-  | 'surface-critical-subdued'
-  | 'surface-critical-subdued-depressed'
-  | 'surface-critical-subdued-hovered'
-  | 'surface-critical-subdued-pressed'
-  | 'surface-dark'
-  | 'surface-depressed'
-  | 'surface-disabled'
-  | 'surface-highlight'
-  | 'surface-highlight-subdued'
-  | 'surface-highlight-subdued-hovered'
-  | 'surface-highlight-subdued-pressed'
-  | 'surface-hovered'
-  | 'surface-hovered-dark'
-  | 'surface-neutral'
-  | 'surface-neutral-disabled'
-  | 'surface-neutral-hovered'
-  | 'surface-neutral-pressed'
-  | 'surface-neutral-subdued'
-  | 'surface-neutral-subdued-dark'
-  | 'surface-pressed'
-  | 'surface-pressed-dark'
-  | 'surface-primary-selected'
-  | 'surface-primary-selected-hovered'
-  | 'surface-primary-selected-pressed'
-  | 'surface-search-field'
-  | 'surface-search-field-dark'
-  | 'surface-selected'
-  | 'surface-selected-hovered'
-  | 'surface-selected-pressed'
-  | 'surface-subdued'
-  | 'surface-success'
-  | 'surface-success-subdued'
-  | 'surface-success-subdued-hovered'
-  | 'surface-success-subdued-pressed'
-  | 'surface-warning'
-  | 'surface-warning-subdued'
-  | 'surface-warning-subdued-hovered'
-  | 'surface-warning-subdued-pressed';
+type Spacing = ResponsiveProp<SpaceScale>;
 
-export type ColorTokenScale =
-  | 'text'
-  | 'text-critical'
-  | 'text-disabled'
-  | 'text-highlight'
-  | 'text-on-critical'
-  | 'text-on-dark'
-  | 'text-on-interactive'
-  | 'text-on-primary'
-  | 'text-primary'
-  | 'text-primary-hovered'
-  | 'text-primary-pressed'
-  | 'text-subdued'
-  | 'text-subdued-on-dark'
-  | 'text-success'
-  | 'text-warning';
-
-export type BorderTokenAlias =
-  | 'base'
-  | 'dark'
-  | 'divider'
-  | 'divider-on-dark'
-  | 'transparent';
-
-interface Border {
-  bottom: BorderTokenAlias;
-  left: BorderTokenAlias;
-  right: BorderTokenAlias;
-  top: BorderTokenAlias;
-}
-
-export type BorderRadiusTokenScale =
-  | '05'
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | 'base'
-  | 'large'
-  | 'half';
-
-interface BorderRadius {
-  bottomLeft: BorderRadiusTokenScale;
-  bottomRight: BorderRadiusTokenScale;
-  topLeft: BorderRadiusTokenScale;
-  topRight: BorderRadiusTokenScale;
-}
-
-interface Spacing {
-  bottom: SpacingSpaceScale;
-  left: SpacingSpaceScale;
-  right: SpacingSpaceScale;
-  top: SpacingSpaceScale;
-}
-
-export interface BoxProps extends PropsWithChildren {
-  /** HTML Element type */
+export interface BoxProps extends React.AriaAttributes {
+  children?: React.ReactNode;
+  /** HTML Element type
+   * @default 'div'
+   */
   as?: Element;
   /** Background color */
-  background?: BackgroundColorTokenScale;
+  background?: ColorBackgroundAlias;
+  /** Border color */
+  borderColor?: ColorBorderAlias | 'transparent';
   /** Border style */
-  border?: BorderTokenAlias;
-  /** Bottom border style */
-  borderBottom?: BorderTokenAlias;
-  /** Left border style */
-  borderLeft?: BorderTokenAlias;
-  /** Right border style */
-  borderRight?: BorderTokenAlias;
-  /** Top border style */
-  borderTop?: BorderTokenAlias;
+  borderStyle?: LineStyles;
   /** Border radius */
-  borderRadius?: BorderRadiusTokenScale;
-  /** Bottom left border radius */
-  borderRadiusBottomLeft?: BorderRadiusTokenScale;
-  /** Bottom right border radius */
-  borderRadiusBottomRight?: BorderRadiusTokenScale;
-  /** Top left border radius */
-  borderRadiusTopLeft?: BorderRadiusTokenScale;
-  /** Top right border radius */
-  borderRadiusTopRight?: BorderRadiusTokenScale;
+  borderRadius?: BorderRadiusAliasOrScale;
+  /** Vertical end horizontal start border radius */
+  borderEndStartRadius?: BorderRadiusAliasOrScale;
+  /** Vertical end horizontal end border radius */
+  borderEndEndRadius?: BorderRadiusAliasOrScale;
+  /** Vertical start horizontal start border radius */
+  borderStartStartRadius?: BorderRadiusAliasOrScale;
+  /** Vertical start horizontal end border radius */
+  borderStartEndRadius?: BorderRadiusAliasOrScale;
+  /** Border width */
+  borderWidth?: BorderWidthScale;
+  /** Vertical start border width */
+  borderBlockStartWidth?: BorderWidthScale;
+  /** Vertical end border width */
+  borderBlockEndWidth?: BorderWidthScale;
+  /** Horizontal start border width */
+  borderInlineStartWidth?: BorderWidthScale;
+  /** Horizontal end border width */
+  borderInlineEndWidth?: BorderWidthScale;
   /** Color of children */
-  color?: ColorTokenScale;
+  color?: ColorTextAlias;
   /** HTML id attribute */
   id?: string;
-  /** Set minimum height of container */
+  /** Minimum height of container */
   minHeight?: string;
-  /** Set minimum width of container */
+  /** Minimum width of container */
   minWidth?: string;
-  /** Set maximum width of container */
+  /** Maximum width of container */
   maxWidth?: string;
   /** Clip horizontal content of children */
   overflowX?: Overflow;
   /** Clip vertical content of children */
   overflowY?: Overflow;
-  /** Spacing around children */
-  padding?: SpacingSpaceScale;
-  /** Bottom spacing around children */
-  paddingBottom?: SpacingSpaceScale;
-  /** Left spacing around children */
-  paddingLeft?: SpacingSpaceScale;
-  /** Right spacing around children */
-  paddingRight?: SpacingSpaceScale;
-  /** Top spacing around children */
-  paddingTop?: SpacingSpaceScale;
-  /** Shadow */
-  shadow?: DepthShadowAlias;
-  /** Set width of container */
+  /** Spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * padding='400'
+   * padding={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
+   */
+  padding?: Spacing;
+  /** Vertical start and end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingBlock='400'
+   * paddingBlock={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
+   */
+  paddingBlock?: Spacing;
+  /** Vertical start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingBlockStart='400'
+   * paddingBlockStart={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
+   */
+  paddingBlockStart?: Spacing;
+  /** Vertical end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingBlockEnd='400'
+   * paddingBlockEnd={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
+   */
+  paddingBlockEnd?: Spacing;
+  /** Horizontal start and end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingInline='400'
+   * paddingInline={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
+   */
+  paddingInline?: Spacing;
+  /** Horizontal start spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingInlineStart='400'
+   * paddingInlineStart={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
+   */
+  paddingInlineStart?: Spacing;
+  /** Horizontal end spacing around children. Accepts a spacing token or an object of spacing tokens for different screen sizes.
+   * @example
+   * paddingInlineEnd='400'
+   * paddingInlineEnd={{xs: '200', sm: '300', md: '400', lg: '500', xl: '600'}}
+   */
+  paddingInlineEnd?: Spacing;
+  /** Aria role */
+  role?: Extract<
+    React.AriaRole,
+    'status' | 'presentation' | 'menu' | 'listbox' | 'combobox' | 'group'
+  >;
+  /** Shadow on box */
+  shadow?: ShadowAliasOrScale;
+  /** Set tab order */
+  tabIndex?: Extract<React.AllHTMLAttributes<HTMLElement>['tabIndex'], number>;
+  /** Width of container */
   width?: string;
+  // These could be moved to new layout component(s) in the future
+  /** Position of box */
+  position?: Position;
+  /** Top position of box */
+  insetBlockStart?: Spacing;
+  /** Bottom position of box */
+  insetBlockEnd?: Spacing;
+  /** Left position of box */
+  insetInlineStart?: Spacing;
+  /** Right position of box */
+  insetInlineEnd?: Spacing;
+  /** Opacity of box */
+  opacity?: string;
+  /** Outline color */
+  outlineColor?: ColorBorderAlias;
+  /** Outline style */
+  outlineStyle?: LineStyles;
+  /** Outline width */
+  outlineWidth?: BorderWidthScale;
+  /** Visually hide the contents during print */
+  printHidden?: boolean;
+  /** Visually hide the contents (still announced by screenreader) */
+  visuallyHidden?: boolean;
+  /** z-index of box */
+  zIndex?: string;
 }
 
 export const Box = forwardRef<HTMLElement, BoxProps>(
@@ -195,16 +157,18 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
     {
       as = 'div',
       background,
-      border,
-      borderBottom,
-      borderLeft,
-      borderRight,
-      borderTop,
+      borderColor,
+      borderStyle,
+      borderWidth,
+      borderBlockStartWidth,
+      borderBlockEndWidth,
+      borderInlineStartWidth,
+      borderInlineEndWidth,
       borderRadius,
-      borderRadiusBottomLeft,
-      borderRadiusBottomRight,
-      borderRadiusTopLeft,
-      borderRadiusTopRight,
+      borderEndStartRadius,
+      borderEndEndRadius,
+      borderStartStartRadius,
+      borderStartEndRadius,
       children,
       color,
       id,
@@ -213,98 +177,166 @@ export const Box = forwardRef<HTMLElement, BoxProps>(
       maxWidth,
       overflowX,
       overflowY,
+      outlineColor,
+      outlineStyle,
+      outlineWidth,
       padding,
-      paddingBottom,
-      paddingLeft,
-      paddingRight,
-      paddingTop,
+      paddingBlock,
+      paddingBlockStart,
+      paddingBlockEnd,
+      paddingInline,
+      paddingInlineStart,
+      paddingInlineEnd,
+      role,
       shadow,
+      tabIndex,
       width,
+      printHidden,
+      visuallyHidden,
+      position,
+      insetBlockStart,
+      insetBlockEnd,
+      insetInlineStart,
+      insetInlineEnd,
+      zIndex,
+      opacity,
+      ...restProps
     },
     ref,
   ) => {
-    const borders = {
-      bottom: borderBottom ? borderBottom : border,
-      left: borderLeft ? borderLeft : border,
-      right: borderRight ? borderRight : border,
-      top: borderTop ? borderTop : border,
-    } as Border;
+    // eslint-disable-next-line no-nested-ternary
+    const borderStyleValue = borderStyle
+      ? borderStyle
+      : borderColor ||
+        borderWidth ||
+        borderBlockStartWidth ||
+        borderBlockEndWidth ||
+        borderInlineStartWidth ||
+        borderInlineEndWidth
+      ? 'solid'
+      : undefined;
 
-    const borderRadiuses = {
-      bottomLeft: borderRadiusBottomLeft
-        ? borderRadiusBottomLeft
-        : borderRadius,
-      bottomRight: borderRadiusBottomRight
-        ? borderRadiusBottomRight
-        : borderRadius,
-      topLeft: borderRadiusTopLeft ? borderRadiusTopLeft : borderRadius,
-      topRight: borderRadiusTopRight ? borderRadiusTopRight : borderRadius,
-    } as BorderRadius;
-
-    const paddings = {
-      bottom: paddingBottom ? paddingBottom : padding,
-      left: paddingLeft ? paddingLeft : padding,
-      right: paddingRight ? paddingRight : padding,
-      top: paddingTop ? paddingTop : padding,
-    } as Spacing;
+    // eslint-disable-next-line no-nested-ternary
+    const outlineStyleValue = outlineStyle
+      ? outlineStyle
+      : outlineColor || outlineWidth
+      ? 'solid'
+      : undefined;
 
     const style = {
-      '--pc-box-color': color ? `var(--p-${color})` : undefined,
-      '--pc-box-background': background ? `var(--p-${background})` : undefined,
-      '--pc-box-border-bottom': borders.bottom
-        ? `var(--p-border-${borders.bottom})`
+      '--pc-box-color': color ? `var(--p-color-${color})` : undefined,
+      '--pc-box-background': background
+        ? `var(--p-color-${background})`
         : undefined,
-      '--pc-box-border-left': borders.left
-        ? `var(--p-border-${borders.left})`
+      // eslint-disable-next-line no-nested-ternary
+      '--pc-box-border-color': borderColor
+        ? borderColor === 'transparent'
+          ? 'transparent'
+          : `var(--p-color-${borderColor})`
         : undefined,
-      '--pc-box-border-right': borders.right
-        ? `var(--p-border-${borders.right})`
+      '--pc-box-border-style': borderStyleValue,
+      '--pc-box-border-radius': borderRadius
+        ? `var(--p-border-radius-${borderRadius})`
         : undefined,
-      '--pc-box-border-top': borders.top
-        ? `var(--p-border-${borders.top})`
+      '--pc-box-border-end-start-radius': borderEndStartRadius
+        ? `var(--p-border-radius-${borderEndStartRadius})`
         : undefined,
-      '--pc-box-border-radius-bottom-left': borderRadiuses.bottomLeft
-        ? `var(--p-border-radius-${borderRadiuses.bottomLeft})`
+      '--pc-box-border-end-end-radius': borderEndEndRadius
+        ? `var(--p-border-radius-${borderEndEndRadius})`
         : undefined,
-      '--pc-box-border-radius-bottom-right': borderRadiuses.bottomRight
-        ? `var(--p-border-radius-${borderRadiuses.bottomRight})`
+      '--pc-box-border-start-start-radius': borderStartStartRadius
+        ? `var(--p-border-radius-${borderStartStartRadius})`
         : undefined,
-      '--pc-box-border-radius-top-left': borderRadiuses.topLeft
-        ? `var(--p-border-radius-${borderRadiuses.topLeft})`
+      '--pc-box-border-start-end-radius': borderStartEndRadius
+        ? `var(--p-border-radius-${borderStartEndRadius})`
         : undefined,
-      '--pc-box-border-radius-top-right': borderRadiuses.topRight
-        ? `var(--p-border-radius-${borderRadiuses.topRight})`
+      '--pc-box-border-width': borderWidth
+        ? `var(--p-border-width-${borderWidth})`
         : undefined,
-      '--pc-box-min-height': minHeight ?? undefined,
-      '--pc-box-min-width': minWidth ?? undefined,
-      '--pc-box-max-width': maxWidth ?? undefined,
-      '--pc-box-overflow-x': overflowX ?? undefined,
-      '--pc-box-overflow-y': overflowY ?? undefined,
-      '--pc-box-padding-bottom': paddings.bottom
-        ? `var(--p-space-${paddings.bottom})`
+      '--pc-box-border-block-start-width': borderBlockStartWidth
+        ? `var(--p-border-width-${borderBlockStartWidth})`
         : undefined,
-      '--pc-box-padding-left': paddings.left
-        ? `var(--p-space-${paddings.left})`
+      '--pc-box-border-block-end-width': borderBlockEndWidth
+        ? `var(--p-border-width-${borderBlockEndWidth})`
         : undefined,
-      '--pc-box-padding-right': paddings.right
-        ? `var(--p-space-${paddings.right})`
+      '--pc-box-border-inline-start-width': borderInlineStartWidth
+        ? `var(--p-border-width-${borderInlineStartWidth})`
         : undefined,
-      '--pc-box-padding-top': paddings.top
-        ? `var(--p-space-${paddings.top})`
+      '--pc-box-border-inline-end-width': borderInlineEndWidth
+        ? `var(--p-border-width-${borderInlineEndWidth})`
         : undefined,
+      '--pc-box-min-height': minHeight,
+      '--pc-box-min-width': minWidth,
+      '--pc-box-max-width': maxWidth,
+      '--pc-box-outline-color': outlineColor
+        ? `var(--p-color-${outlineColor})`
+        : undefined,
+      '--pc-box-outline-style': outlineStyleValue,
+      '--pc-box-outline-width': outlineWidth
+        ? `var(--p-border-width-${outlineWidth})`
+        : undefined,
+      '--pc-box-overflow-x': overflowX,
+      '--pc-box-overflow-y': overflowY,
+      ...getResponsiveProps(
+        'box',
+        'padding-block-start',
+        'space',
+        paddingBlockStart || paddingBlock || padding,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-block-end',
+        'space',
+        paddingBlockEnd || paddingBlock || padding,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-start',
+        'space',
+        paddingInlineStart || paddingInline || padding,
+      ),
+      ...getResponsiveProps(
+        'box',
+        'padding-inline-end',
+        'space',
+        paddingInlineEnd || paddingInline || padding,
+      ),
       '--pc-box-shadow': shadow ? `var(--p-shadow-${shadow})` : undefined,
-      '--pc-box-width': width ?? undefined,
+      '--pc-box-width': width,
+      position,
+      '--pc-box-inset-block-start': insetBlockStart
+        ? `var(--p-space-${insetBlockStart})`
+        : undefined,
+      '--pc-box-inset-block-end': insetBlockEnd
+        ? `var(--p-space-${insetBlockEnd})`
+        : undefined,
+      '--pc-box-inset-inline-start': insetInlineStart
+        ? `var(--p-space-${insetInlineStart})`
+        : undefined,
+      '--pc-box-inset-inline-end': insetInlineEnd
+        ? `var(--p-space-${insetInlineEnd})`
+        : undefined,
+      zIndex,
+      opacity,
     } as React.CSSProperties;
 
-    const className = classNames(styles.Box);
+    const className = classNames(
+      styles.Box,
+      visuallyHidden && styles.visuallyHidden,
+      printHidden && styles.printHidden,
+      as === 'ul' && styles.listReset,
+    );
 
-    return createElement(
+    return React.createElement(
       as,
       {
         className,
         id,
         ref,
         style: sanitizeCustomProperties(style),
+        role,
+        tabIndex,
+        ...restProps,
       },
       children,
     );

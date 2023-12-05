@@ -1,7 +1,21 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Badge, Button, Card, Page, PageActions, Stack} from '@shopify/polaris';
-import {PlusMinor, ArrowDownMinor, ExternalMinor} from '@shopify/polaris-icons';
+import {
+  ArrowDownMinor,
+  DeleteMinor,
+  ExternalMinor,
+  MobileVerticalDotsMajor,
+  PlusMinor,
+  ViewMinor,
+} from '@shopify/polaris-icons';
+import {
+  Badge,
+  Button,
+  LegacyCard,
+  LegacyStack,
+  Page,
+  PageActions,
+} from '@shopify/polaris';
 
 export default {
   component: Page,
@@ -10,27 +24,30 @@ export default {
 export function Default() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      backAction={{content: 'Products', url: '#'}}
       title="3/4 inch Leather pet collar"
-      titleMetadata={<Badge status="success">Paid</Badge>}
+      titleMetadata={<Badge tone="success">Paid</Badge>}
       subtitle="Perfect for any pet"
       compactTitle
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
         {
-          content: 'Duplicate',
-          accessibilityLabel: 'Secondary action label',
-          onAction: () => console.log('Duplicate action'),
+          content: 'Delete',
+          tone: 'critical',
+          icon: DeleteMinor,
+          accessibilityLabel: 'Delete action label',
+          onAction: () => console.log('Delete action'),
         },
         {
           content: 'View on your store',
+          icon: ViewMinor,
           onAction: () => console.log('View on your store action'),
         },
       ]}
       actionGroups={[
         {
           title: 'Promote',
-          accessibilityLabel: 'Action group label',
+          icon: MobileVerticalDotsMajor,
           actions: [
             {
               content: 'Share on Facebook',
@@ -45,9 +62,9 @@ export function Default() {
         hasNext: true,
       }}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -55,23 +72,13 @@ export function Default() {
 export function WithCustomPrimaryAction() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+      backAction={{content: 'Settings', url: '#'}}
       title="General"
-      primaryAction={
-        <Button
-          primary
-          connectedDisclosure={{
-            accessibilityLabel: 'Other save actions',
-            actions: [{content: 'Save as new'}],
-          }}
-        >
-          Save
-        </Button>
-      }
+      primaryAction={<Button variant="primary">Save</Button>}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -79,7 +86,7 @@ export function WithCustomPrimaryAction() {
 export function WithoutPrimaryActionInHeader() {
   return (
     <Page
-      breadcrumbs={[{content: 'Orders', url: '/orders'}]}
+      backAction={{content: 'Orders', url: '#'}}
       title="#1085"
       secondaryActions={[
         {content: 'Print'},
@@ -91,14 +98,14 @@ export function WithoutPrimaryActionInHeader() {
         hasNext: true,
       }}
     >
-      <Card sectioned title="Fulfill order">
-        <Stack alignment="center">
-          <Stack.Item fill>
+      <LegacyCard sectioned title="Fulfill order">
+        <LegacyStack alignment="center">
+          <LegacyStack.Item fill>
             <p>Buy postage and ship remaining 2 items</p>
-          </Stack.Item>
-          <Button primary>Continue</Button>
-        </Stack>
-      </Card>
+          </LegacyStack.Item>
+          <Button variant="primary">Continue</Button>
+        </LegacyStack>
+      </LegacyCard>
     </Page>
   );
 }
@@ -107,7 +114,7 @@ export function WithDestructiveSecondaryAction() {
   return (
     <Page
       title="General"
-      secondaryActions={[{content: 'Delete', destructive: true}]}
+      secondaryActions={[{content: 'Delete', tone: 'critical'}]}
     >
       <p>Page content</p>
     </Page>
@@ -116,19 +123,7 @@ export function WithDestructiveSecondaryAction() {
 
 export function WithCustomSecondaryAction() {
   return (
-    <Page
-      title="General"
-      secondaryActions={
-        <Button
-          connectedDisclosure={{
-            accessibilityLabel: 'Other save actions',
-            actions: [{content: 'Save as new'}],
-          }}
-        >
-          Save
-        </Button>
-      }
-    >
+    <Page title="General" secondaryActions={<Button>Save</Button>}>
       <p>Page content</p>
     </Page>
   );
@@ -149,9 +144,28 @@ export function WithToolTipAction() {
         },
       ]}
     >
-      <Card title="Product X" sectioned>
+      <LegacyCard title="Product X" sectioned>
         <p>Product X information</p>
-      </Card>
+      </LegacyCard>
+    </Page>
+  );
+}
+
+export function WithBackActionOnAction() {
+  return (
+    <Page
+      backAction={{
+        content: 'Settings',
+        onAction: () => {
+          // eslint-disable-next-line no-alert
+          alert('Clicked back button');
+        },
+      }}
+      title="General"
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
     </Page>
   );
 }
@@ -159,14 +173,45 @@ export function WithToolTipAction() {
 export function WithSubtitle() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      backAction={{content: 'Products', url: '#'}}
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
+    </Page>
+  );
+}
+
+export function WithSubtitleAndAdditionalMetadata() {
+  return (
+    <Page
+      backAction={{content: 'Products', url: '#'}}
+      title="Invoice"
+      subtitle="Statement period: May 3, 2019 to June 2, 2019"
+      additionalMetadata="Net payment due: Within 60 days of receipt"
+      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
+    </Page>
+  );
+}
+
+export function WithSubtitleAndAdditionalMetadataAndNoBackAction() {
+  return (
+    <Page
+      title="Invoice"
+      subtitle="Statement period: May 3, 2019 to June 2, 2019"
+      additionalMetadata="Net payment due: Within 60 days of receipt"
+      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
     </Page>
   );
 }
@@ -185,9 +230,9 @@ export function WithExternalLink() {
         },
       ]}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -195,13 +240,13 @@ export function WithExternalLink() {
 export function WithoutPagination() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+      backAction={{content: 'Settings', url: '#'}}
       title="General"
       primaryAction={{content: 'Save'}}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -217,9 +262,9 @@ export function FullWidth() {
         hasNext: true,
       }}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -228,13 +273,13 @@ export function NarrowWidth() {
   return (
     <Page
       narrowWidth
-      breadcrumbs={[{content: 'Orders', url: '/orders'}]}
+      backAction={{content: 'Orders', url: '#'}}
       title="Add payment method"
       primaryAction={{content: 'Save', disabled: true}}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
       <PageActions
         primaryAction={{content: 'Save', disabled: true}}
         secondaryActions={[{content: 'Delete'}]}
@@ -272,9 +317,9 @@ export function WithActionGroups() {
         },
       ]}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
@@ -282,9 +327,9 @@ export function WithActionGroups() {
 export function WithContentAfterTitle() {
   return (
     <Page
-      breadcrumbs={[{content: 'Products', url: '/products'}]}
+      backAction={{content: 'Products', url: '#'}}
       title="Jar With Lock-Lid"
-      titleMetadata={<Badge status="attention">Verified</Badge>}
+      titleMetadata={<Badge tone="attention">Verified</Badge>}
       primaryAction={{content: 'Save', disabled: true}}
       secondaryActions={[
         {content: 'Duplicate'},
@@ -295,23 +340,37 @@ export function WithContentAfterTitle() {
         hasNext: true,
       }}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }
 
-export function WithDivider() {
+export function WithContentAfterTitleAndSubtitle() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
-      title="General"
-      divider
+      backAction={{content: 'Products', url: '#'}}
+      title="Jar With Lock-Lid"
+      titleMetadata={
+        <Button disclosure size="large">
+          All locations
+        </Button>
+      }
+      subtitle="Created: May 3, 2019 to June 2, 2019"
+      primaryAction={{content: 'Save', disabled: true}}
+      secondaryActions={[
+        {content: 'Duplicate'},
+        {content: 'View on your store'},
+      ]}
+      pagination={{
+        hasPrevious: true,
+        hasNext: true,
+      }}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }

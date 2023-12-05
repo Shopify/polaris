@@ -1,16 +1,21 @@
-import React, {useRef} from 'react';
+import React, {useContext, useMemo, useRef, useState} from 'react';
+import {SearchMinor} from '@shopify/polaris-icons';
 
+import type {ActionListItemDescriptor, ActionListSection} from '../../types';
+import {Key} from '../../types';
 import {
   wrapFocusNextFocusableMenuItem,
   wrapFocusPreviousFocusableMenuItem,
 } from '../../utilities/focus';
+import {useI18n} from '../../utilities/i18n';
+import {Box} from '../Box';
 import {KeypressListener} from '../KeypressListener';
-import {ActionListItemDescriptor, ActionListSection, Key} from '../../types';
-import {classNames} from '../../utilities/css';
+import {FilterActionsContext} from '../FilterActionsProvider';
+import {TextField} from '../TextField';
+import {Icon} from '../Icon';
 
-import {Section, Item} from './components';
+import {Item, Section} from './components';
 import type {ItemProps} from './components';
-import styles from './ActionList.scss';
 
 export interface ActionListProps {
   /** Collection of actions for list */
@@ -19,9 +24,13 @@ export interface ActionListProps {
   sections?: readonly ActionListSection[];
   /** Defines a specific role attribute for each action in the list */
   actionRole?: 'menuitem' | string;
+  /** Allow users to filter items in the list. Will only show if more than 8 items in the list. The item content of every items must be a string for this to work */
+  allowFiltering?: boolean;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
 }
+
+const FILTER_ACTIONS_THRESHOLD = 8;
 
 export type ActionListItemProps = ItemProps;
 
@@ -29,10 +38,14 @@ export function ActionList({
   items,
   sections = [],
   actionRole,
+  allowFiltering,
   onActionAnyItem,
 }: ActionListProps) {
+  const i18n = useI18n();
+  const filterActions = useContext(FilterActionsContext);
   let finalSections: readonly ActionListSection[] = [];
   const actionListRef = useRef<HTMLDivElement & HTMLUListElement>(null);
+  const [searchText, setSeachText] = useState('');
 
   if (items) {
     finalSections = [{items}, ...sections];
@@ -40,23 +53,34 @@ export function ActionList({
     finalSections = sections;
   }
 
-  const className = classNames(styles.ActionList);
+  const isFilterable = finalSections?.some((section) =>
+    section.items.some((item) => typeof item.content === 'string'),
+  );
 
   const hasMultipleSections = finalSections.length > 1;
-  const Element = hasMultipleSections ? 'ul' : 'div';
   const elementRole =
     hasMultipleSections && actionRole === 'menuitem' ? 'menu' : undefined;
   const elementTabIndex =
     hasMultipleSections && actionRole === 'menuitem' ? -1 : undefined;
 
-  const sectionMarkup = finalSections.map((section, index) => {
+  const filteredSections = finalSections?.map((section) => ({
+    ...section,
+    items: section.items.filter(({content}) =>
+      typeof content === 'string'
+        ? content?.toLowerCase().includes(searchText.toLowerCase())
+        : content,
+    ),
+  }));
+
+  const sectionMarkup = filteredSections.map((section, index) => {
     return section.items.length > 0 ? (
       <Section
-        key={section.title || index}
+        key={typeof section.title === 'string' ? section.title : index}
         section={section}
         hasMultipleSections={hasMultipleSections}
         actionRole={actionRole}
         onActionAnyItem={onActionAnyItem}
+        isFirst={index === 0}
       />
     ) : null;
   });
@@ -101,16 +125,56 @@ export function ActionList({
       </>
     ) : null;
 
+  const totalFilteredActions = useMemo(() => {
+    const totalSectionItems =
+      filteredSections?.reduce(
+        (acc: number, section) => acc + section.items.length,
+        0,
+      ) || 0;
+
+    return totalSectionItems;
+  }, [filteredSections]);
+
+  const totalActions =
+    finalSections?.reduce(
+      (acc: number, section) => acc + section.items.length,
+      0,
+    ) || 0;
+
+  const hasManyActions = totalActions >= FILTER_ACTIONS_THRESHOLD;
+
   return (
-    <Element
-      ref={actionListRef}
-      className={className}
-      role={elementRole}
-      tabIndex={elementTabIndex}
-    >
-      {listeners}
-      {sectionMarkup}
-    </Element>
+    <>
+      {(allowFiltering || filterActions) && hasManyActions && isFilterable && (
+        <Box
+          padding="200"
+          paddingBlockEnd={totalFilteredActions > 0 ? '0' : '200'}
+        >
+          <TextField
+            clearButton
+            labelHidden
+            label={i18n.translate('Polaris.ActionList.SearchField.placeholder')}
+            placeholder={i18n.translate(
+              'Polaris.ActionList.SearchField.placeholder',
+            )}
+            autoComplete="off"
+            value={searchText}
+            onChange={(value) => setSeachText(value)}
+            prefix={<Icon source={SearchMinor} />}
+            onClearButtonClick={() => setSeachText('')}
+          />
+        </Box>
+      )}
+      <Box
+        as={hasMultipleSections ? 'ul' : 'div'}
+        ref={actionListRef}
+        role={elementRole}
+        tabIndex={elementTabIndex}
+      >
+        {listeners}
+        {sectionMarkup}
+      </Box>
+    </>
   );
 }
 

@@ -2,7 +2,8 @@ import React from 'react';
 
 import type {ComplexAction} from '../../types';
 
-import {Button, ButtonProps} from './Button';
+import {Button} from './Button';
+import type {ButtonProps} from './Button';
 
 export function buttonsFrom(
   action: ComplexAction,
@@ -25,12 +26,23 @@ export function buttonsFrom(
 }
 
 export function buttonFrom(
-  {content, onAction, ...action}: ComplexAction,
+  {content, onAction, plain, destructive, ...action}: ComplexAction,
   overrides?: Partial<ButtonProps>,
   key?: any,
 ) {
+  const plainVariant = plain ? 'plain' : undefined;
+  const destructiveVariant = destructive ? 'primary' : undefined;
+  const tone = !overrides?.tone && destructive ? 'critical' : overrides?.tone;
+
   return (
-    <Button key={key} onClick={onAction} {...action} {...overrides}>
+    <Button
+      key={key}
+      onClick={onAction}
+      tone={tone}
+      variant={plainVariant || destructiveVariant}
+      {...action}
+      {...overrides}
+    >
       {content}
     </Button>
   );

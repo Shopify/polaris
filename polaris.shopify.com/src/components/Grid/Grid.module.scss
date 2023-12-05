@@ -3,9 +3,19 @@
 @import '../../styles/mixins.scss';
 
 .Grid {
+  --props-grid-item-min-width: 16rem;
+  --props-grid-gap-x: var(--props-grid-gap, 1rem);
+  --props-grid-gap-y: var(--props-grid-gap, 1.75rem);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(16rem, 100%), 1fr));
-  gap: 1.75rem 1rem;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(min(var(--props-grid-item-min-width), 100%), 1fr)
+  );
+  gap: var(--props-grid-gap-y) var(--props-grid-gap-x);
+}
+
+.condensed {
+  grid-template-columns: repeat(auto-fill, minmax(min(14.5rem, 100%), 1fr));
 }
 
 .GridItem {
@@ -34,27 +44,5 @@
 }
 
 .Preview {
-  overflow: hidden;
   margin-bottom: 1rem;
-  border-radius: var(--border-radius-600);
-}
-
-.DeepLinks {
-  margin-top: 0.75rem;
-  gap: 0 0.75rem;
-  font-size: var(--font-size-300);
-  display: none;
-
-  a {
-    position: relative;
-    display: block;
-    white-space: pre;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    &::before {
-      content: '→ ';
-      color: var(--text-subdued);
-    }
-  }
 }

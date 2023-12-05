@@ -3,9 +3,9 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function MultiChoiceListExample() {
-  const [selected, setSelected] = useState(['hidden']);
+  const [selected, setSelected] = useState<string[]>(['hidden']);
 
-  const handleChange = useCallback((value) => setSelected(value), []);
+  const handleChange = useCallback((value: string[]) => setSelected(value), []);
 
   return (
     <ChoiceList

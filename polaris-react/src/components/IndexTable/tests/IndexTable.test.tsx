@@ -8,18 +8,21 @@ import {EmptySearchResult} from '../../EmptySearchResult';
 import {EventListener} from '../../EventListener';
 import {Spinner} from '../../Spinner';
 import {Sticky} from '../../Sticky';
-import {Button} from '../../Button';
 import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
-import {VisuallyHidden} from '../../VisuallyHidden';
+import {Text} from '../../Text';
 import {BulkActions} from '../../BulkActions';
-import {IndexTable, IndexTableProps} from '../IndexTable';
-import type {IndexTableSortDirection} from '../IndexTable';
+import type {useIsBulkActionsSticky} from '../../BulkActions';
+import {SelectAllActions} from '../../SelectAllActions';
+import {IndexTable} from '../IndexTable';
+import type {IndexTableProps, IndexTableSortDirection} from '../IndexTable';
 import {ScrollContainer} from '../components';
 import {SelectionType} from '../../../utilities/index-provider';
 import {AfterInitialMount} from '../../AfterInitialMount';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Tooltip} from '../../Tooltip';
+import {IndexProvider} from '../../IndexProvider';
+import {Pagination} from '../../Pagination';
 
 jest.mock('../utilities', () => ({
   ...jest.requireActual('../utilities'),
@@ -32,6 +35,20 @@ jest.mock('../../../utilities/debounce', () => ({
     callback();
   },
 }));
+
+jest.mock('../../BulkActions', () => ({
+  ...jest.requireActual('../../BulkActions'),
+  useIsBulkActionsSticky: jest.fn(),
+}));
+
+function mockUseIsBulkActionsSticky(
+  args: ReturnType<typeof useIsBulkActionsSticky>,
+) {
+  const useIsBulkActionsSticky: jest.Mock =
+    jest.requireMock('../../BulkActions').useIsBulkActionsSticky;
+
+  useIsBulkActionsSticky.mockReturnValue(args);
+}
 
 const mockTableItems = [
   {
@@ -84,6 +101,15 @@ describe('<IndexTable>', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     (getTableHeadingsBySelector as jest.Mock).mockReturnValue([]);
+    mockUseIsBulkActionsSticky({
+      bulkActionsIntersectionRef: {current: null},
+      tableMeasurerRef: {current: null},
+      isBulkActionsSticky: false,
+      bulkActionsAbsoluteOffset: 0,
+      bulkActionsMaxWidth: 0,
+      bulkActionsOffsetLeft: 0,
+      computeTableDimensions: jest.fn(),
+    });
   });
 
   it('renders an <EmptySearchResult /> if no items are passed', () => {
@@ -191,22 +217,6 @@ describe('<IndexTable>', () => {
         stickyHeaderElement.domNode!.scrollLeft;
 
       expect(stickyHeaderElementScrollLeft).toBe(updatedScrollLeft);
-    });
-
-    it('updates sticky table column header styles when scrolling right & hasMoreLeftColumns is false', () => {
-      const index = mountWithApp(
-        <IndexTable {...defaultProps} itemCount={1}>
-          {mockTableItems.map(mockRenderRow)}
-        </IndexTable>,
-      );
-
-      const scrollContainer = index.find(ScrollContainer);
-      scrollContainer!.trigger('onScroll', true);
-
-      expect(index).toContainReactComponent('div', {
-        className:
-          'StickyTableColumnHeader StickyTableColumnHeader-isScrolling',
-      });
     });
 
     it('updates sticky last column styles when scrolled right', () => {
@@ -327,7 +337,10 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      expect(index).toContainReactComponent(VisuallyHidden, {children: title});
+      expect(index).toContainReactComponent(Text, {
+        children: title,
+        visuallyHidden: true,
+      });
     });
 
     it('renders a sticky last heading if `lastColumnSticky` prop is true and last heading is not hidden', () => {
@@ -376,13 +389,13 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('table', {
         className: 'Table Table-sticky Table-sticky-last',
       });
-      expect(index).toContainReactComponent(VisuallyHidden, {
+      expect(index).toContainReactComponent(Text, {
         children: title,
       });
     });
   });
 
-  describe('BulkActions', () => {
+  describe('SelectAllActions', () => {
     const originalInnerWidth = window.innerWidth;
 
     afterEach(() => {
@@ -408,7 +421,7 @@ describe('<IndexTable>', () => {
       );
 
       index
-        .find(BulkActions)!
+        .find(SelectAllActions)!
         .triggerKeypath('paginatedSelectAllAction.onAction');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
@@ -434,7 +447,7 @@ describe('<IndexTable>', () => {
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>,
       );
-      expect(index.find(BulkActions)).toContainReactText(customString);
+      expect(index.find(SelectAllActions)).toContainReactText(customString);
     });
 
     it('toggles all page resources when onToggleAll is triggered', () => {
@@ -453,71 +466,12 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      index.find(BulkActions)!.trigger('onToggleAll');
+      index.find(SelectAllActions)!.trigger('onToggleAll');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
         SelectionType.Page,
         true,
       );
-    });
-
-    it('passes smallScreen to bulk actions', () => {
-      const promotedActions = [{content: 'PromotedAction'}];
-
-      const indexTable = mountWithApp(
-        <IndexTable
-          {...defaultProps}
-          selectable
-          selectedItemsCount={1}
-          itemCount={2}
-          promotedBulkActions={promotedActions}
-        >
-          {mockTableItems.map(mockRenderCondensedRow)}
-        </IndexTable>,
-      );
-
-      indexTable.find(BulkActions)!.trigger('onToggleAll');
-
-      expect(indexTable).toContainReactComponent(BulkActions, {
-        smallScreen: expect.any(Boolean),
-      });
-    });
-
-    it('passes an updated smallScreen value to bulk actions after resize', () => {
-      Object.defineProperty(window, 'innerWidth', {
-        value: 1000,
-      });
-
-      const promotedActions = [{content: 'PromotedAction'}];
-
-      const indexTable = mountWithApp(
-        <IndexTable
-          {...defaultProps}
-          selectable
-          selectedItemsCount={1}
-          itemCount={2}
-          promotedBulkActions={promotedActions}
-        >
-          {mockTableItems.map(mockRenderCondensedRow)}
-        </IndexTable>,
-      );
-
-      indexTable.find(BulkActions)!.trigger('onToggleAll');
-
-      expect(indexTable).toContainReactComponent(BulkActions, {
-        smallScreen: false,
-      });
-
-      indexTable.act(() => {
-        Object.defineProperty(window, 'innerWidth', {
-          value: 300,
-        });
-        window.dispatchEvent(new Event('resize'));
-      });
-
-      expect(indexTable).toContainReactComponent(BulkActions, {
-        smallScreen: true,
-      });
     });
   });
 
@@ -537,30 +491,24 @@ describe('<IndexTable>', () => {
       });
     });
 
-    it('renders bulk actions when selectable', () => {
+    it('does not render bulk actions', () => {
       const index = mountWithApp(
         <IndexTable {...defaultIndexTableProps} condensed>
           {mockTableItems.map(mockRenderCondensedRow)}
         </IndexTable>,
       );
 
-      index.find(Button, {children: 'Select'})?.trigger('onClick');
-
-      expect(index).toContainReactComponent(BulkActions, {
-        selectMode: true,
-      });
+      expect(index).not.toContainReactComponent(BulkActions);
     });
 
-    it('does not render a Select button when not selectable', () => {
+    it('does not render SelectAllActions', () => {
       const index = mountWithApp(
         <IndexTable {...defaultIndexTableProps} condensed selectable={false}>
           {mockTableItems.map(mockRenderCondensedRow)}
         </IndexTable>,
       );
 
-      expect(index).not.toContainReactComponent(Button, {
-        children: 'Select',
-      });
+      expect(index).not.toContainReactComponent(SelectAllActions);
     });
 
     it('does not render bulk actions with onSelectModeToggle when condensed is false', () => {
@@ -578,19 +526,6 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent(BulkActions, {
         onSelectModeToggle: undefined,
       });
-    });
-
-    it('toggles selectable state when the bulk action button is triggered', () => {
-      const index = mountWithApp(
-        <IndexTable {...defaultIndexTableProps} condensed>
-          {mockTableItems.map(mockRenderCondensedRow)}
-        </IndexTable>,
-      );
-
-      index.find(Button, {children: 'Select'})?.trigger('onClick');
-      index.find(BulkActions)?.trigger('onSelectModeToggle');
-
-      expect(index).not.toContainReactComponent(BulkActions);
     });
 
     it('renders sort markup', () => {
@@ -618,20 +553,7 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('ul');
     });
 
-    it('leaves small screen select mode when going from condensed to regular', () => {
-      const index = mountWithApp(
-        <IndexTable {...defaultIndexTableProps} condensed>
-          {mockTableItems.map(mockRenderCondensedRow)}
-        </IndexTable>,
-      );
-
-      index.find(Button, {children: 'Select'})?.trigger('onClick');
-      index.setProps({condensed: false});
-
-      expect(index).not.toContainReactComponent(BulkActions);
-    });
-
-    it('does not render bulk actions with onSelectModeToggle unless items are selected', () => {
+    it('does not render bulk actions with bulkActions and promotedActions', () => {
       Object.defineProperty(window, 'innerWidth', {
         value: 300,
       });
@@ -652,20 +574,17 @@ describe('<IndexTable>', () => {
       );
 
       expect(index).not.toContainReactComponent(BulkActions);
+    });
 
-      index.find(Sticky)!.find(Button)!.trigger('onClick');
-      expect(index).toContainReactComponent(BulkActions, {
-        actions: [],
-        promotedActions: [],
-      });
+    it('prevents rows from being selectable', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultIndexTableProps} condensed>
+          {mockTableItems.map(mockRenderCondensedRow)}
+        </IndexTable>,
+      );
 
-      index.setProps({
-        selectedItemsCount: 2,
-      });
-
-      expect(index).toContainReactComponent(BulkActions, {
-        actions: bulkActions,
-        promotedActions,
+      expect(index).toContainReactComponent(IndexProvider, {
+        selectable: false,
       });
     });
   });
@@ -771,6 +690,26 @@ describe('<IndexTable>', () => {
           expect(index.findAll('th')[3]).toContainReactComponent(source);
         },
       );
+
+      it('uses column defaultSortDirection instead of table defaultSortDirection', () => {
+        const index = mountWithApp(
+          <IndexTable
+            {...defaultSortingProps}
+            defaultSortDirection="ascending"
+            headings={[
+              {title: 'Foo'},
+              {title: 'Bar'},
+              {title: 'Baz', defaultSortDirection: 'descending'},
+            ]}
+          >
+            {tableItems.map(mockRenderRow)}
+          </IndexTable>,
+        );
+
+        expect(index.findAll('th')[3]).toContainReactComponent(
+          SortDescendingMajor,
+        );
+      });
     });
 
     describe('onSort', () => {
@@ -836,6 +775,60 @@ describe('<IndexTable>', () => {
         expect(index.findAll('th')[1]).toContainReactComponent(Tooltip);
         expect(index.findAll('th')[2]).not.toContainReactComponent(Tooltip);
         expect(index.findAll('th')[3]).toContainReactComponent(Tooltip);
+      });
+    });
+  });
+
+  describe('computeTableDimensions', () => {
+    it('invokes the computeTableDimensions callback when the number of items changes', () => {
+      const computeTableDimensions = jest.fn();
+      mockUseIsBulkActionsSticky({
+        bulkActionsIntersectionRef: {current: null},
+        tableMeasurerRef: {current: null},
+        isBulkActionsSticky: false,
+        bulkActionsAbsoluteOffset: 0,
+        bulkActionsMaxWidth: 0,
+        bulkActionsOffsetLeft: 0,
+        computeTableDimensions,
+      });
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+      expect(computeTableDimensions).toHaveBeenCalledTimes(1);
+
+      index.setProps({itemCount: 60});
+
+      expect(computeTableDimensions).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('pagination', () => {
+    it('does not render Pagination when pagination props are not provided', () => {
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} pagination={undefined}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(index).not.toContainReactComponent(Pagination);
+    });
+
+    it('renders Pagination with table type when pagination props are provided', () => {
+      const paginationProps = {
+        hasNext: true,
+      };
+
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} pagination={paginationProps}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(index).toContainReactComponent(Pagination, {
+        type: 'table',
+        ...paginationProps,
       });
     });
   });

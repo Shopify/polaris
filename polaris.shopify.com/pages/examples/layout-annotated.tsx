@@ -1,4 +1,10 @@
-import {Page, Layout, Card, FormLayout, TextField} from '@shopify/polaris';
+import {
+  Page,
+  Layout,
+  LegacyCard,
+  FormLayout,
+  TextField,
+} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -11,7 +17,7 @@ function LayoutExample() {
           title="Store details"
           description="Shopify and your customers will use this information to contact you."
         >
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Store name"
@@ -25,7 +31,7 @@ function LayoutExample() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.AnnotatedSection>
       </Layout>
     </Page>

@@ -3,8 +3,9 @@ import type {ComponentMeta} from '@storybook/react';
 import {
   ActionList,
   Avatar,
+  Box,
   Button,
-  Card,
+  LegacyCard,
   FormLayout,
   Popover,
   ResourceList,
@@ -13,11 +14,11 @@ import {
   TextField,
   Icon,
   Link,
-  Heading,
   AutoSelection,
   Scrollable,
   EmptySearchResult,
-  DisplayText,
+  Text,
+  BlockStack,
 } from '@shopify/polaris';
 import {SearchMinor} from '@shopify/polaris-icons';
 
@@ -25,33 +26,114 @@ export default {
   component: Popover,
 } as ComponentMeta<typeof Popover>;
 
-export function WithActionList() {
-  const [popoverActive, setPopoverActive] = useState(true);
+export function All() {
+  return (
+    <BlockStack gap="800">
+      <BlockStack gap="400">
+        <Text as="h2" variant="headingXl">
+          With action list
+        </Text>
+        <WithActionList />
+      </BlockStack>
 
-  const togglePopoverActive = useCallback(
-    () => setPopoverActive((popoverActive) => !popoverActive),
-    [],
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With content and actions
+        </Text>
+        <WithContentAndActions />
+      </BlockStack>
+
+      <BlockStack gap="400">
+        <Text as="h2" variant="headingXl">
+          With form components
+        </Text>
+        <WithFormComponents />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With lazy loaded list
+        </Text>
+        <WithLazyLoadedList />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With scrollable lazy loaded list
+        </Text>
+        <WithScrollableLazyLoadedList />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With searchable listbox
+        </Text>
+        <WithSearchableListbox />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With loading smaller content
+        </Text>
+        <WithLoadingSmallerContent />
+      </BlockStack>
+    </BlockStack>
   );
+}
+
+export function WithActionList() {
+  const [activePopover, setActivePopover] = useState(null);
+
+  const togglePopoverActive = useCallback((popover, isClosing) => {
+    const currentPopover = isClosing ? null : popover;
+    setActivePopover(currentPopover);
+  }, []);
 
   const activator = (
-    <Button onClick={togglePopoverActive} disclosure>
+    <Button
+      id="button-1"
+      onClick={() => togglePopoverActive('popover1', false)}
+      disclosure
+    >
+      More actions
+    </Button>
+  );
+  const activator2 = (
+    <Button
+      id="button-2"
+      onClick={() => togglePopoverActive('popover2', false)}
+      disclosure
+    >
       More actions
     </Button>
   );
 
   return (
     <div style={{height: '250px'}}>
-      <Popover
-        active={popoverActive}
-        activator={activator}
-        autofocusTarget="first-node"
-        onClose={togglePopoverActive}
-      >
-        <ActionList
-          actionRole="menuitem"
-          items={[{content: 'Import'}, {content: 'Export'}]}
-        />
-      </Popover>
+      <BlockStack gap="400">
+        <Popover
+          active={activePopover === 'popover1'}
+          activator={activator}
+          autofocusTarget="first-node"
+          onClose={() => togglePopoverActive('popover1', true)}
+        >
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Import file'}, {content: 'Export file'}]}
+          />
+        </Popover>
+        <Popover
+          active={activePopover === 'popover2'}
+          activator={activator2}
+          autofocusTarget="first-node"
+          onClose={() => togglePopoverActive('popover2', true)}
+        >
+          <ActionList
+            actionRole="menuitem"
+            items={[{content: 'Import file'}, {content: 'Export file'}]}
+          />
+        </Popover>
+      </BlockStack>
     </div>
   );
 }
@@ -62,6 +144,12 @@ export function WithContentAndActions() {
   const togglePopoverActive = useCallback(
     () => setPopoverActive((popoverActive) => !popoverActive),
     [],
+  );
+
+  const textMarkup = (
+    <Text as="h2" variant="headingSm">
+      Available sales channels
+    </Text>
   );
 
   const activator = (
@@ -79,9 +167,7 @@ export function WithContentAndActions() {
         onClose={togglePopoverActive}
       >
         <Popover.Pane fixed>
-          <Popover.Section>
-            <p>Available sales channels</p>
-          </Popover.Section>
+          <Popover.Section>{textMarkup}</Popover.Section>
         </Popover.Pane>
         <Popover.Pane>
           <ActionList
@@ -192,7 +278,7 @@ export function WithLazyLoadedList() {
   }));
 
   return (
-    <Card sectioned>
+    <LegacyCard sectioned>
       <div style={{height: '280px'}}>
         <Popover
           sectioned
@@ -206,14 +292,123 @@ export function WithLazyLoadedList() {
           </Popover.Pane>
         </Popover>
       </div>
-    </Card>
+    </LegacyCard>
   );
 
   function renderItem({name, initials}) {
     return (
       <ResourceList.Item
         id={name}
-        media={<Avatar size="medium" name={name} initials={initials} />}
+        media={<Avatar size="xs" name={name} initials={initials} />}
+        verticalAlignment="center"
+        onClick={handleResourceListItemClick}
+      >
+        {name}
+      </ResourceList.Item>
+    );
+  }
+
+  function getInitials(name) {
+    return name
+      .split(' ')
+      .map((surnameOrFamilyName) => {
+        return surnameOrFamilyName.slice(0, 1);
+      })
+      .join('');
+  }
+}
+
+export function WithScrollableLazyLoadedList() {
+  const [popoverActive, setPopoverActive] = useState(true);
+  const [visibleStaffIndex, setVisibleStaffIndex] = useState(5);
+  const staff = [
+    'Abbey Mayert',
+    'Abbi Senger',
+    'Abdul Goodwin',
+    'Abdullah Borer',
+    'Abe Nader',
+    'Abigayle Smith',
+    'Abner Torphy',
+    'Abraham Towne',
+    'Abraham Vik',
+    'Ada Fisher',
+    'Adah Pouros',
+    'Adam Waelchi',
+    'Adan Zemlak',
+    'Addie Wehner',
+    'Addison Wexler',
+    'Alex Hernandez',
+  ];
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const handleScrolledToBottom = useCallback(() => {
+    const totalIndexes = staff.length;
+    const interval =
+      visibleStaffIndex + 3 < totalIndexes
+        ? 3
+        : totalIndexes - visibleStaffIndex;
+
+    console.log({interval});
+
+    if (interval > 0) {
+      setVisibleStaffIndex(visibleStaffIndex + interval);
+    }
+  }, [staff.length, visibleStaffIndex]);
+
+  const handleResourceListItemClick = useCallback(() => {}, []);
+
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure>
+      View staff
+    </Button>
+  );
+
+  const staffList = staff.slice(0, visibleStaffIndex).map((name) => ({
+    name,
+    initials: getInitials(name),
+  }));
+
+  return (
+    <LegacyCard sectioned>
+      <div style={{height: '280px'}}>
+        <Popover
+          sectioned
+          active={popoverActive}
+          activator={activator}
+          onClose={togglePopoverActive}
+          ariaHaspopup={false}
+        >
+          <Popover.Pane>
+            <Scrollable
+              shadow
+              style={{
+                position: 'relative',
+                width: '231px',
+                height: '262px',
+                padding: 'var(--p-space-200) 0',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
+              }}
+              onScrolledToBottom={handleScrolledToBottom}
+            >
+              <ResourceList items={staffList} renderItem={renderItem} />
+            </Scrollable>
+          </Popover.Pane>
+        </Popover>
+      </div>
+    </LegacyCard>
+  );
+
+  function renderItem({name, initials}) {
+    return (
+      <ResourceList.Item
+        id={name}
+        media={<Avatar size="xs" name={name} initials={initials} />}
+        verticalAlignment="center"
         onClick={handleResourceListItemClick}
       >
         {name}
@@ -405,15 +600,15 @@ export function WithSearchableListbox() {
   const activator = (
     <div
       style={{
-        fontSize: 'var(--p-font-size-300)',
-        color: 'var(--p-text)',
-        borderBottom: '1px dashed var(--p-border)',
+        fontSize: 'var(--p-font-size-500)',
+        color: 'var(--p-color-text)',
+        borderBottom: '1px dashed var(--p-color-border)',
       }}
     >
       <Link monochrome removeUnderline onClick={handleOpenPicker}>
-        <DisplayText element="h1">
+        <Text as="h1" variant="headingXl">
           {segments[selectedSegmentIndex].label}
-        </DisplayText>
+        </Text>
       </Link>
     </div>
   );
@@ -460,7 +655,13 @@ export function WithSearchableListbox() {
 
   const showAllMarkup = showFooterAction ? (
     <Listbox.Action value={actionValue}>
-      <span style={{color: 'var(--p-interactive)'}}>Show all 111 segments</span>
+      <span
+        style={{
+          color: 'var(--p-color-text-secondary)',
+        }}
+      >
+        Show all 111 segments
+      </span>
     </Listbox.Action>
   ) : null;
 
@@ -527,16 +728,104 @@ export function WithSearchableListbox() {
               style={{
                 position: 'relative',
                 width: '310px',
-                height: '292px',
-                padding: 'var(--p-space-2) 0',
-                borderBottomLeftRadius: 'var(--p-border-radius-2)',
-                borderBottomRightRadius: 'var(--p-border-radius-2)',
+                height: '262px',
+                padding: 'var(--p-space-200) 0',
+                borderBottomLeftRadius: 'var(--p-border-radius-200)',
+                borderBottomRightRadius: 'var(--p-border-radius-200)',
               }}
               onScrolledToBottom={handleLazyLoadSegments}
             >
               {listboxMarkup}
             </Scrollable>
           </div>
+        </Popover.Pane>
+      </Popover>
+    </div>
+  );
+}
+
+export function WithLoadingSmallerContent() {
+  const [popoverActive, setPopoverActive] = useState(true);
+  const [loading, setLoading] = useState(false);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const activator = (
+    <Button
+      onClick={() => {
+        setLoading(true);
+        togglePopoverActive();
+        window.setTimeout(() => {
+          setLoading(false);
+        }, 500);
+      }}
+      disclosure
+    >
+      Show server data
+    </Button>
+  );
+
+  return (
+    <div style={{height: '280px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+        ariaHaspopup={false}
+        sectioned
+      >
+        {loading ? (
+          <div style={{height: '200px'}}>
+            <p>Loading...</p>
+          </div>
+        ) : (
+          <div>
+            <p>Small content from the server</p>
+          </div>
+        )}
+      </Popover>
+    </div>
+  );
+}
+
+export function WithSubduedPane() {
+  const [popoverActive, setPopoverActive] = useState(true);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const activator = (
+    <Button
+      onClick={() => {
+        togglePopoverActive();
+      }}
+      disclosure
+    >
+      Show popover
+    </Button>
+  );
+
+  return (
+    <div style={{height: '280px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+      >
+        <Popover.Pane>
+          <Box padding="400">
+            <Text as="p">Popover content</Text>
+          </Box>
+        </Popover.Pane>
+        <Popover.Pane subdued>
+          <Box padding="400">
+            <Text as="p">Subdued popover pane</Text>
+          </Box>
         </Popover.Pane>
       </Popover>
     </div>

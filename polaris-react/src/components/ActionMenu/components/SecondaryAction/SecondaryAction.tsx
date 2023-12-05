@@ -9,19 +9,21 @@ import styles from './SecondaryAction.scss';
 
 interface SecondaryAction extends ButtonProps {
   helpText?: React.ReactNode;
+  destructive?: boolean;
   onAction?(): void;
   getOffsetWidth?(width: number): void;
 }
 
 export function SecondaryAction({
   children,
-  destructive,
+  tone,
   helpText,
   onAction,
   getOffsetWidth,
+  destructive,
   ...rest
 }: SecondaryAction) {
-  const secondaryActionsRef = useRef<HTMLSpanElement>(null);
+  const secondaryActionsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!getOffsetWidth || !secondaryActionsRef.current) return;
@@ -30,26 +32,32 @@ export function SecondaryAction({
   }, [getOffsetWidth]);
 
   const buttonMarkup = (
-    <Button onClick={onAction} {...rest}>
+    <Button
+      onClick={onAction}
+      tone={destructive ? 'critical' : undefined}
+      {...rest}
+    >
       {children}
     </Button>
   );
 
   const actionMarkup = helpText ? (
-    <Tooltip content={helpText}>{buttonMarkup}</Tooltip>
+    <Tooltip preferredPosition="below" content={helpText}>
+      {buttonMarkup}
+    </Tooltip>
   ) : (
     buttonMarkup
   );
 
   return (
-    <span
+    <div
       className={classNames(
         styles.SecondaryAction,
-        destructive && styles.destructive,
+        tone === 'critical' && styles.critical,
       )}
       ref={secondaryActionsRef}
     >
       {actionMarkup}
-    </span>
+    </div>
   );
 }

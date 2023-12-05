@@ -14,7 +14,6 @@ import {useRouter} from 'next/router';
 import StatusBadge from '../StatusBadge';
 
 const NAV_ID = 'nav';
-
 interface Props {
   darkMode: DarkMode;
   children: React.ReactNode;
@@ -28,6 +27,9 @@ function Frame({darkMode, children}: Props) {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const {asPath} = useRouter();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => setIsMounted(true), []);
 
   useEffect(() => {
     const mainContent = document.querySelector('#main');
@@ -110,26 +112,25 @@ function Frame({darkMode, children}: Props) {
           <NavToggleIcon />
         </button>
 
-        <Link href="/">
-          <a className={styles.Logo}>
-            <Image
-              src="/images/shopify-logo.svg"
-              layout="fixed"
-              width={24}
-              height={24}
-              alt="Shopify logo"
-            />
-            Polaris
-          </a>
+        <Link href="/" className={styles.Logo}>
+          <Image
+            alt="Shopify logo"
+            src="/images/shopify-logo.svg"
+            width={24}
+            height={24}
+          />
+          Polaris
         </Link>
 
-        <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
-          {darkMode.value ? (
-            <div className={styles.LightModeIcon}>💡</div>
-          ) : (
-            <div className={styles.DarkModeIcon}>🌙</div>
-          )}
-        </button>
+        {isMounted && (
+          <button className={styles.DarkModeToggle} onClick={darkMode.toggle}>
+            {darkMode.value ? (
+              <span className={styles.LightModeIcon}>💡</span>
+            ) : (
+              <span className={styles.DarkModeIcon}>🌙</span>
+            )}
+          </button>
+        )}
 
         <GlobalSearch />
       </div>
@@ -192,7 +193,9 @@ function NavItem({
   return (
     <>
       {nav.children &&
+        !nav.hideFromNav &&
         Object.entries(nav.children)
+          .filter(([, child]) => !child.hideFromNav)
           .sort((_a, _b) => {
             const [, a] = _a as [string, NavItem];
             const [, b] = _b as [string, NavItem];
@@ -217,10 +220,11 @@ function NavItem({
             const segments = asPath.slice(1).split('/');
             const keyAndLevelMatchUrl = !!(segments[level] === key);
             const manuallyExpandedStatus = manuallyExpandedSections[key];
-            const isExpanded =
-              manuallyExpandedStatus === undefined
-                ? keyAndLevelMatchUrl
-                : manuallyExpandedStatus;
+            const isExpanded = child.expanded
+              ? child.expanded
+              : manuallyExpandedStatus === undefined
+              ? keyAndLevelMatchUrl
+              : manuallyExpandedStatus;
 
             const removeParams = (path: string) => path.replace(/\?.+$/gi, '');
             const isCurrent = removeParams(asPath) === child.slug;
@@ -236,30 +240,29 @@ function NavItem({
                     isCurrent && styles.isCurrent,
                   )}
                 >
-                  <Link href={child.slug} passHref>
-                    <a
-                      onClick={handleLinkClick}
-                      aria-current={isCurrent ? 'page' : 'false'}
-                      onKeyDown={(evt) => {
-                        if (level === 0 && i === 0) {
-                          handleShiftTabOnFirstLink(evt);
-                        }
-                      }}
-                    >
-                      {child.title}
+                  <Link
+                    href={child.slug}
+                    onClick={handleLinkClick}
+                    aria-current={isCurrent ? 'page' : 'false'}
+                    onKeyDown={(evt) => {
+                      if (level === 0 && i === 0) {
+                        handleShiftTabOnFirstLink(evt);
+                      }
+                    }}
+                  >
+                    {child.title}
 
-                      {child.status && <StatusBadge status={child.status} />}
-                    </a>
+                    {child.status && <StatusBadge status={child.status} />}
                   </Link>
 
-                  {isExpandable && (
+                  {isExpandable && !child.expanded && (
                     <button
                       className={styles.Toggle}
                       onClick={() => manuallyToggleSection(key, !isExpanded)}
                       aria-label="Toggle section"
                       aria-expanded={isExpanded}
                       aria-controls={isExpanded ? navAriaId : undefined}
-                    ></button>
+                    />
                   )}
                 </span>
 

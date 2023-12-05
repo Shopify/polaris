@@ -22,9 +22,11 @@ target_languages:
     zh-CN,
     zh-TW,
   ]
+async_pr_mode: per_pr
 components:
   - name: 'default'
     scheme: react
     audience: merchant
+    owners: ['@Shopify/polaris-eng']
     paths:
       - polaris-react/locales/{{language}}.json

@@ -1,27 +1,17 @@
-import {Page, Button, Card} from '@shopify/polaris';
+import {Page, Button, LegacyCard} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function PageExample() {
   return (
     <Page
-      breadcrumbs={[{content: 'Settings', url: '/settings'}]}
+      backAction={{content: 'Settings', url: '#'}}
       title="General"
-      primaryAction={
-        <Button
-          primary
-          connectedDisclosure={{
-            accessibilityLabel: 'Other save actions',
-            actions: [{content: 'Save as new'}],
-          }}
-        >
-          Save
-        </Button>
-      }
+      primaryAction={<Button variant="primary">Save</Button>}
     >
-      <Card title="Credit card" sectioned>
+      <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
-      </Card>
+      </LegacyCard>
     </Page>
   );
 }

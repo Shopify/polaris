@@ -1,20 +1,171 @@
 @import '../../styles/common';
 
-$item-min-height: 16px;
-$item-min-width: 50px;
-$item-vertical-padding: $item-min-height * 0.5;
+:root {
+  --item-min-height: var(--p-space-400);
+  --item-min-width: 50px;
+  --item-vertical-padding: var(--p-space-200);
+}
 
-.Tabs {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0;
-  padding: 0;
-  list-style: none;
+.Outer {
+  @media #{$p-breakpoints-md-down} {
+    max-width: 100%;
+    overflow: hidden;
+    height: unset;
+    padding: 0;
+  }
 }
 
 .Wrapper {
-  border-bottom: var(--p-border-divider);
-  padding: 0 var(--p-space-2);
+  @media #{$p-breakpoints-md-down} {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--p-space-200);
+  }
+}
+
+.WrapperWithNewButton {
+  @media #{$p-breakpoints-md-up} {
+    position: relative;
+    display: inline-flex;
+    padding-right: var(--p-space-800);
+  }
+}
+
+.ButtonWrapper {
+  @media #{$p-breakpoints-md-down} {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.Tabs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: var(--p-space-100);
+
+  @media #{$p-breakpoints-md-up} {
+    padding: 0 var(--p-space-100);
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+}
+
+.Tab {
+  // stylelint-disable-next-line -- no way to set focus ring without mixin currently
+  @include focus-ring($size: 'wide');
+  // stylelint-disable-next-line -- required to reset button styles on touch screens
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  padding: var(--p-space-150) var(--p-space-300);
+  border: 0;
+  border-radius: var(--p-border-radius-200);
+  background-color: transparent;
+  color: var(--p-color-text-brand);
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  min-width: 100%; // IE11 fix for overflowing flex items from parent container
+  margin-top: var(--p-space-025);
+  margin-bottom: calc(-1 * var(--p-space-025));
+  outline: none;
+  text-align: center;
+  white-space: nowrap;
+
+  &[aria-disabled='true'] {
+    cursor: default;
+    color: var(--p-color-text-disabled);
+
+    path {
+      fill: var(--p-color-icon-disabled);
+    }
+  }
+
+  &:not([aria-disabled='true']):hover {
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
+  }
+
+  &:not([aria-disabled='true']):focus {
+    background-color: var(--p-color-bg-surface-hover);
+    color: var(--p-color-text);
+  }
+
+  &:not([aria-disabled='true']):focus-visible {
+    background-color: transparent;
+    color: var(--p-color-text-brand);
+    // stylelint-disable-next-line -- set focus ring using mixin
+    @include focus-ring($size: 'wide', $style: 'focused');
+  }
+
+  // stylelint-disable-next-line selector-max-specificity -- specificity required to override focus ring
+  &:not([aria-disabled='true']):focus-visible:not(:active) {
+    // stylelint-disable-next-line -- no way to set focus ring without mixin currently
+    @include focus-ring($style: 'focused');
+    outline: 0;
+  }
+
+  &:not([aria-disabled='true']):active {
+    background-color: var(--p-color-bg-surface-tertiary);
+    color: var(--p-color-text-brand);
+    z-index: var(--p-z-index-1);
+  }
+
+  path {
+    fill: currentColor;
+  }
+
+  @media #{$p-breakpoints-md-up} {
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-400);
+    height: 1.75rem;
+  }
+}
+
+.Tab-active {
+  background: var(--p-color-bg-fill-transparent-selected);
+  border-radius: var(--p-border-radius-200);
+  color: var(--p-color-text);
+
+  &[aria-disabled='true'] {
+    background: var(--p-color-bg-surface-disabled);
+    color: var(--p-color-text-disabled);
+  }
+
+  &:not([aria-disabled='true']):hover,
+  &:not([aria-disabled='true']):focus {
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
+  }
+
+  &:not([aria-disabled='true']):active {
+    background-color: var(--p-color-bg-fill-transparent-selected);
+    color: var(--p-color-text-brand);
+  }
+}
+
+.Tab-hasActions {
+  padding-right: var(--p-space-200);
+}
+
+.Tab-iconOnly {
+  padding-left: var(--p-space-100);
+  padding-right: var(--p-space-100);
+  width: var(--p-space-800);
+}
+
+.fillSpace {
+  .TabContainer {
+    flex: 1 1 auto;
+  }
 }
 
 .fitted {
@@ -22,17 +173,6 @@ $item-vertical-padding: $item-min-height * 0.5;
 
   .TabContainer {
     flex: 1 1 100%;
-  }
-
-  .Title {
-    width: 100%;
-    padding: var(--p-space-2) var(--p-space-4);
-  }
-}
-
-.fillSpace {
-  .TabContainer {
-    flex: 1 1 auto;
   }
 }
 
@@ -42,139 +182,29 @@ $item-vertical-padding: $item-min-height * 0.5;
   padding: 0;
 }
 
-.Tab {
-  @include unstyled-button;
-  @include text-style-body;
-  @include text-emphasis-subdued;
-  color: var(--p-text);
-  position: relative;
-  justify-content: center;
-  width: 100%;
-  min-width: 100%; // IE11 fix for overflowing flex items from parent container
-  margin-top: var(--p-space-025);
-  margin-bottom: calc(-1 * var(--p-space-025));
-  padding: var(--p-space-2) var(--p-space-1);
-  outline: none;
-  text-align: center;
-  white-space: nowrap;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: none;
-
-    .Title {
-      @include text-emphasis-normal;
-      background-color: transparent;
-      // stylelint-disable-next-line selector-max-specificity
-      &::before {
-        background-color: var(--p-border-hovered);
-      }
-    }
-  }
-
-  &:active {
-    .Title {
-      background-color: transparent;
-      // stylelint-disable-next-line selector-max-specificity
-      &::before {
-        background: var(--p-surface-primary-selected-pressed);
-      }
-    }
-  }
-
-  &:focus {
-    .Title {
-      @include text-emphasis-normal;
-    }
-
-    &:not(:active) {
-      // stylelint-disable-next-line selector-max-specificity
-      .Title {
-        @include focus-ring($style: 'focused');
-      }
-    }
-  }
-
-  &:visited {
-    color: inherit;
-  }
-}
-
-.Tab-selected {
-  @include text-emphasis-normal;
-
-  &:focus .Title {
-    outline: var(--p-border-width-3) solid transparent;
-    // stylelint-disable-next-line  selector-max-specificity
-    &::before {
-      background: var(--p-action-primary);
-    }
-  }
-
-  .Title {
-    outline: var(--p-border-width-3) solid transparent;
-    color: var(--p-text);
-
-    &::before {
-      background: var(--p-action-primary);
-    }
-  }
-}
-
-.Title {
-  @include focus-ring;
-  border-radius: var(--p-border-radius-1);
-  display: block;
-  padding: var(--p-space-2) var(--p-space-4);
-  min-width: $item-min-width;
-  color: var(--p-text-subdued);
-
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: calc(-1 * var(--p-space-2));
-    left: 0;
-    right: 0;
-    height: var(--p-border-width-3);
-    border-top-left-radius: var(--p-border-radius-1);
-    border-top-right-radius: var(--p-border-radius-1);
-  }
-}
-
 .titleWithIcon {
   display: flex;
-}
-
-.Panel {
-  display: block;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.Panel-hidden {
-  display: none;
 }
 
 .List {
   list-style: none;
   margin: 0;
-  padding: var(--p-space-2);
+  padding: var(--p-space-200);
 }
 
 .Item {
+  // stylelint-disable-next-line -- no way to set unstyled-button without mixin currently
   @include unstyled-button;
+  // stylelint-disable-next-line -- no way to set focus ring without mixin currently
   @include focus-ring;
   display: block;
   width: 100%;
-  min-height: $item-min-height;
-  padding: $item-vertical-padding var(--p-space-4);
+  min-height: var(--item-min-height);
+  padding: var(--item-vertical-padding) var(--p-space-400);
   text-align: left;
   text-decoration: none;
   cursor: pointer;
-  border-radius: var(--p-border-radius-1);
+  border-radius: var(--p-border-radius-100);
   color: inherit;
 
   &::-moz-focus-inner {
@@ -182,14 +212,17 @@ $item-vertical-padding: $item-min-height * 0.5;
   }
 
   &:hover {
-    background-color: var(--p-surface-hovered);
+    background-color: var(--p-color-bg-surface-hover);
+    color: var(--p-color-text);
   }
 
   &:active {
-    background-color: var(--p-surface-primary-selected-pressed);
+    background-color: var(--p-color-bg-surface-active);
+    color: var(--p-color-text);
   }
 
-  &:focus:not(:active) {
+  &:focus-visible:not(:active) {
+    // stylelint-disable-next-line -- no way to set focus ring without mixin currently
     @include focus-ring($style: 'focused');
   }
 
@@ -207,31 +240,95 @@ $item-vertical-padding: $item-min-height * 0.5;
 }
 
 .DisclosureActivator {
+  // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
   @include focus-ring;
+  // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
+  @include unstyled-button;
   height: 100%;
   background-color: transparent;
+  color: var(--p-color-text-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  border-radius: var(--p-border-radius-200);
+  padding: 0 var(--p-space-200) 0 var(--p-space-300);
+  margin-top: var(--p-space-025);
   border: none;
   outline: none;
-  margin: var(--p-space-025) var(--p-space-025) calc(-1 * var(--p-space-025)) 0;
 
-  &:hover,
-  &:focus {
-    @include recolor-icon(var(--p-icon));
+  svg {
+    fill: var(--p-color-icon);
   }
 
-  &:focus .Title {
+  &:hover svg,
+  &:focus svg {
+    fill: var(--p-color-icon);
+  }
+
+  &:not([aria-disabled='true']):hover {
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
+  }
+
+  &:not([aria-disabled='true']):focus {
+    background-color: transparent;
+    color: var(--p-color-text-brand);
+  }
+
+  &:not([aria-disabled='true']):focus-visible {
+    // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
     @include focus-ring($style: 'focused');
+    outline: 0;
   }
 
-  // stylelint-disable-next-line selector-max-specificity
-  &:hover .Title::before {
-    background-color: var(--p-border-hovered);
+  &:not([aria-disabled='true']):active {
+    background-color: var(--p-color-bg-surface-tertiary);
+    z-index: var(--p-z-index-1);
+  }
+
+  &[aria-disabled='true'] {
+    cursor: default;
+    color: var(--p-color-text-disabled);
+    background: var(--p-color-bg-surface-disabled);
+
+    path {
+      fill: var(--p-color-icon-disabled);
+    }
   }
 }
 
-.TabMeasurer {
+.TabsMeasurer {
   display: flex;
+  gap: 0;
+  padding: 0;
   visibility: hidden;
   height: 0;
+}
+
+.NewTab {
+  padding: 0 var(--p-space-200) 0 var(--p-space-100);
+
+  @media #{$p-breakpoints-md-up} {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+  }
+}
+
+.ActionListWrap {
+  display: block;
+}
+
+.Panel {
+  display: block;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Panel-hidden {
+  display: none;
 }

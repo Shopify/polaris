@@ -32,5 +32,6 @@ export default {
     'vscode-languageclient/node',
     'vscode-languageserver/node',
     'vscode-languageserver-textdocument',
+    '@shopify/polaris-tokens',
   ],
 };

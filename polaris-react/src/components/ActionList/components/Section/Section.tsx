@@ -1,11 +1,14 @@
 import React from 'react';
 
 import {Item} from '../Item';
+import {Box} from '../../../Box';
+import {Text} from '../../../Text';
 import type {
   ActionListItemDescriptor,
   ActionListSection,
 } from '../../../../types';
-import styles from '../../ActionList.scss';
+import {InlineStack} from '../../../InlineStack';
+import {BlockStack} from '../../../BlockStack';
 
 export interface SectionProps {
   /** Section of action items */
@@ -16,11 +19,14 @@ export interface SectionProps {
   actionRole?: 'option' | 'menuitem' | string;
   /** Callback when any item is clicked or keypressed */
   onActionAnyItem?: ActionListItemDescriptor['onAction'];
+  /** Whether it is the first in a group of sections */
+  isFirst?: boolean;
 }
 
 export function Section({
   section,
   hasMultipleSections,
+  isFirst,
   actionRole,
   onActionAnyItem,
 }: SectionProps) {
@@ -36,30 +42,51 @@ export function Section({
   };
   const actionMarkup = section.items.map(
     ({content, helpText, onAction, ...item}, index) => {
+      const itemMarkup = (
+        <Item
+          content={content}
+          helpText={helpText}
+          role={actionRole}
+          onAction={handleAction(onAction)}
+          {...item}
+        />
+      );
+
       return (
-        <li
+        <Box
+          as="li"
           key={`${content}-${index}`}
           role={actionRole === 'menuitem' ? 'presentation' : undefined}
         >
-          <Item
-            content={content}
-            helpText={helpText}
-            role={actionRole}
-            onAction={handleAction(onAction)}
-            {...item}
-          />
-        </li>
+          <InlineStack wrap={false}>{itemMarkup}</InlineStack>
+        </Box>
       );
     },
   );
 
-  const className = section.title ? undefined : styles['Section-withoutTitle'];
+  let titleMarkup: string | React.ReactNode = null;
 
-  const titleMarkup = section.title ? (
-    <p className={styles.Title}>{section.title}</p>
-  ) : null;
+  if (section.title) {
+    titleMarkup =
+      typeof section.title === 'string' ? (
+        <Box
+          paddingBlockStart="300"
+          paddingBlockEnd="100"
+          paddingInlineStart="300"
+          paddingInlineEnd="300"
+        >
+          <Text as="p" variant="headingSm">
+            {section.title}
+          </Text>
+        </Box>
+      ) : (
+        <Box padding="200" paddingInlineEnd="150">
+          {section.title}
+        </Box>
+      );
+  }
 
-  let sectionRole;
+  let sectionRole: 'menu' | 'presentation' | undefined;
   switch (actionRole) {
     case 'option':
       sectionRole = 'presentation';
@@ -73,22 +100,33 @@ export function Section({
   }
 
   const sectionMarkup = (
-    <div className={className}>
+    <>
       {titleMarkup}
-      <ul
-        className={styles.Actions}
-        role={sectionRole}
+      <Box
+        as="div"
+        padding="150"
+        {...(hasMultipleSections && {paddingBlockStart: '0'})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        {actionMarkup}
-      </ul>
-    </div>
+        <BlockStack gap="100" as="ul" {...(sectionRole && {role: sectionRole})}>
+          {actionMarkup}
+        </BlockStack>
+      </Box>
+    </>
   );
 
   return hasMultipleSections ? (
-    <li className={styles.Section} role="presentation">
+    <Box
+      as="li"
+      role="presentation"
+      borderColor="border-secondary"
+      {...(!isFirst && {borderBlockStartWidth: '025'})}
+      {...(!section.title && {
+        paddingBlockStart: '150',
+      })}
+    >
       {sectionMarkup}
-    </li>
+    </Box>
   ) : (
     sectionMarkup
   );

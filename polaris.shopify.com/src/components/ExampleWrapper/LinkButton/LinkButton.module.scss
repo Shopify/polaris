@@ -1,0 +1,20 @@
+.Link {
+  background: transparent;
+  font-size: var(--font-size-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+
+  &:hover,
+  &:focus {
+    color: var(--text-link);
+  }
+
+  &.dark-mode {
+    .Icon {
+      filter: none;
+    }
+  }
+}

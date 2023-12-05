@@ -1,6 +1,10 @@
 import React, {memo, useContext} from 'react';
+import {TickMinor} from '@shopify/polaris-icons';
 
+import {Box} from '../../../Box';
 import {Checkbox} from '../../../Checkbox';
+import {InlineStack} from '../../../InlineStack';
+import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
 import {ComboboxListboxOptionContext} from '../../../../utilities/combobox/context';
 import {ActionContext} from '../../../../utilities/listbox/context';
@@ -31,6 +35,19 @@ export const TextOption = memo(function TextOption({
     isAction && styles.isAction,
   );
 
+  const optionMarkup = selected ? (
+    <Box width="100%">
+      <InlineStack wrap={false} align="space-between" gap="200">
+        {children}
+        <InlineStack align="end">
+          <Icon source={TickMinor} />
+        </InlineStack>
+      </InlineStack>
+    </Box>
+  ) : (
+    <>{children}</>
+  );
+
   return (
     <div className={textOptionClassName}>
       <div className={styles.Content}>
@@ -39,7 +56,7 @@ export const TextOption = memo(function TextOption({
             <Checkbox disabled={disabled} checked={selected} label={children} />
           </div>
         ) : (
-          children
+          optionMarkup
         )}
       </div>
     </div>

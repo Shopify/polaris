@@ -8,10 +8,9 @@ import {
 
 import translations from '../../locales/en.json';
 // eslint-disable-next-line @shopify/strict-component-boundaries
-import {
-  PolarisTestProvider,
-  WithPolarisTestProviderOptions,
-} from '../../src/components/PolarisTestProvider';
+import {PolarisTestProvider} from '../../src/components/PolarisTestProvider';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import type {WithPolarisTestProviderOptions} from '../../src/components/PolarisTestProvider';
 
 export {createMount, mount, ReactTestingElement, CustomRoot};
 
@@ -23,8 +22,9 @@ export const mountWithApp = createMount<
     return options;
   },
   render(element, context) {
+    const {...rest} = context;
     return (
-      <PolarisTestProvider i18n={translations} {...context}>
+      <PolarisTestProvider i18n={translations} {...rest}>
         {element}
       </PolarisTestProvider>
     );

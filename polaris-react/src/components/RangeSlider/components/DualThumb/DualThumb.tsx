@@ -5,6 +5,7 @@ import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
 import type {RangeSliderProps, DualValue} from '../../types';
 import {Labelled, labelID} from '../../../Labelled';
+import {Text} from '../../../Text';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {Key} from '../../../../types';
@@ -189,7 +190,9 @@ export class DualThumb extends Component<DualThumbProps, State> {
           }}
         >
           <div className={styles.OutputBubble}>
-            <span className={styles.OutputText}>{value[0]}</span>
+            <Text as="span" variant="headingSm" alignment="center">
+              {value[0]}
+            </Text>
           </div>
         </output>
       ) : null;
@@ -205,7 +208,9 @@ export class DualThumb extends Component<DualThumbProps, State> {
           }}
         >
           <div className={styles.OutputBubble}>
-            <span className={styles.OutputText}>{value[1]}</span>
+            <Text as="span" variant="headingSm" alignment="center">
+              {value[1]}
+            </Text>
           </div>
         </output>
       ) : null;

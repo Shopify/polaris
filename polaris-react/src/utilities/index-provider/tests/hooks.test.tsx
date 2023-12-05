@@ -4,13 +4,13 @@ import {mountWithApp, mount} from 'tests/utilities';
 import {
   IndexRowContext,
   IndexSelectionChangeContext,
-  IndexContextType,
   IndexContext,
 } from '../context';
-import {
+import type {IndexContextType} from '../context';
+import {SelectionType} from '../types';
+import type {
   BulkSelectionDataOptions,
   HandleBulkSelectionOptions,
-  SelectionType,
 } from '../types';
 import {
   useIndexRow,
@@ -189,7 +189,7 @@ describe('useBulkSelectionData', () => {
       singular: 'order',
       plural: 'orders',
     };
-    const paginatedSelectAllText = `All ${itemCount}+ ${resourceName.plural} are selected.`;
+    const paginatedSelectAllText = `All ${itemCount}+ ${resourceName.plural} are selected`;
     const mockComponent = mountWithApp(
       <MockComponent
         selectedItemsCount="All"
@@ -215,7 +215,7 @@ describe('useHandleBulkSelection', () => {
     return <TypedChild onSelectionChange={contextValue} />;
   }
 
-  it('selects ranges', () => {
+  it('selects ranges with shift key selection', () => {
     const onSelectionChangeSpy = jest.fn();
     const mockComponent = mount(
       <MockComponent onSelectionChange={onSelectionChangeSpy} />,
@@ -244,6 +244,23 @@ describe('useHandleBulkSelection', () => {
       SelectionType.Multi,
       true,
       [3, 4],
+    );
+  });
+
+  it('selects ranges with subheader selection', () => {
+    const onSelectionChangeSpy = jest.fn();
+    const mockComponent = mount(
+      <MockComponent onSelectionChange={onSelectionChangeSpy} />,
+    );
+
+    const typedChild = mockComponent.find(TypedChild)!;
+
+    typedChild.trigger('onSelectionChange', SelectionType.Range, true, [1, 3]);
+
+    expect(onSelectionChangeSpy).toHaveBeenLastCalledWith(
+      SelectionType.Range,
+      true,
+      [1, 3],
     );
   });
 });

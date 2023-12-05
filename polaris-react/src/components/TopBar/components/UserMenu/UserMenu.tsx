@@ -1,9 +1,12 @@
 import React from 'react';
 
 import type {IconableAction} from '../../../../types';
-import {Avatar, AvatarProps} from '../../../Avatar';
+import {Avatar} from '../../../Avatar';
+import type {AvatarProps} from '../../../Avatar';
 import {MessageIndicator} from '../../../MessageIndicator';
-import {Menu, MenuProps} from '../Menu';
+import {Menu} from '../Menu';
+import type {MenuProps} from '../Menu';
+import {Text} from '../../../Text';
 
 import styles from './UserMenu.scss';
 
@@ -26,6 +29,10 @@ export interface UserMenuProps {
   open: boolean;
   /** A callback function to handle opening and closing the user menu */
   onToggle(): void;
+  /** A custom activator that can be used when the default activator is not desired */
+  customActivator?: React.ReactNode;
+  /** A width value that customizes the width of the user menu */
+  customWidth?: string;
 }
 
 export function UserMenu({
@@ -38,22 +45,39 @@ export function UserMenu({
   onToggle,
   open,
   accessibilityLabel,
+  customActivator,
+  customWidth,
 }: UserMenuProps) {
   const showIndicator = Boolean(message);
 
-  const activatorContentMarkup = (
+  const activatorContentMarkup = customActivator ? (
+    customActivator
+  ) : (
     <>
+      <span className={styles.Details}>
+        <Text as="p" alignment="start" fontWeight="medium" truncate>
+          {name}
+        </Text>
+        <span className={styles.Message}>
+          <Text
+            as="p"
+            variant="bodySm"
+            alignment="start"
+            tone="subdued"
+            truncate
+          >
+            {detail}
+          </Text>
+        </span>
+      </span>
       <MessageIndicator active={showIndicator}>
         <Avatar
-          size="small"
-          source={avatar}
+          size="md"
           initials={initials && initials.replace(' ', '')}
+          source={avatar}
+          name={name}
         />
       </MessageIndicator>
-      <span className={styles.Details}>
-        <p className={styles.Name}>{name}</p>
-        <p className={styles.Detail}>{detail}</p>
-      </span>
     </>
   );
 
@@ -66,6 +90,8 @@ export function UserMenu({
       actions={actions}
       message={message}
       accessibilityLabel={accessibilityLabel}
+      customWidth={customWidth}
+      userMenu
     />
   );
 }

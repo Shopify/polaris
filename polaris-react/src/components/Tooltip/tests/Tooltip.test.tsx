@@ -35,6 +35,32 @@ describe('<Tooltip />', () => {
     expect(tooltipActive.find(TooltipOverlay)).toContainReactComponent('div');
   });
 
+  it('does not render when active is false', () => {
+    const tooltipActive = mountWithApp(
+      <Tooltip content="Inner content" active={false}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltipActive.find(TooltipOverlay)).not.toContainReactComponent(
+      'div',
+    );
+  });
+
+  it('does not render when active prop is updated to false', () => {
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content" active={undefined}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div');
+
+    tooltip.setProps({active: false});
+    expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
+  });
+
   it('passes preventInteraction to TooltipOverlay when dismissOnMouseOut is true', () => {
     const tooltip = mountWithApp(
       <Tooltip dismissOnMouseOut content="Inner content" active>
@@ -236,6 +262,251 @@ describe('<Tooltip />', () => {
     );
     expect(tooltip).toContainReactComponent(TooltipOverlay, {
       accessibilityLabel,
+    });
+  });
+
+  it("passes 'zIndexOverride' to TooltipOverlay", () => {
+    const tooltip = mountWithApp(
+      <Tooltip active content="Inner content" zIndexOverride={100}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      zIndexOverride: 100,
+    });
+  });
+
+  describe('width', () => {
+    it('renders content with the default width', () => {
+      const tooltip = mountWithApp(
+        <Tooltip content="Inner content">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
+        className: expect.stringContaining('default'),
+      });
+      expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div', {
+        className: expect.stringContaining('wide'),
+      });
+    });
+
+    it('renders content with wide width when declared', () => {
+      const tooltip = mountWithApp(
+        <Tooltip content="Inner content" width="wide">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+      expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div', {
+        className: expect.stringContaining('default'),
+      });
+      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
+        className: expect.stringContaining('wide'),
+      });
+    });
+  });
+
+  describe('padding', () => {
+    it('renders content with default padding', () => {
+      const tooltip = mountWithApp(
+        <Tooltip content="Inner content">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
+        style: expect.objectContaining({
+          '--pc-tooltip-padding': 'var(--p-space-100) var(--p-space-200)',
+        }) as React.CSSProperties,
+      });
+    });
+
+    it('renders content with a padding of 4 when declared', () => {
+      const tooltip = mountWithApp(
+        <Tooltip content="Inner content" padding="400">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+      expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div', {
+        style: expect.objectContaining({
+          '--pc-tooltip-padding': 'var(--p-space-100) var(--p-space-200)',
+        }) as React.CSSProperties,
+      });
+
+      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
+        style: expect.objectContaining({
+          '--pc-tooltip-padding': 'var(--p-space-400)',
+        }) as React.CSSProperties,
+      });
+    });
+  });
+
+  describe('borderRadius', () => {
+    it('renders content with the default border radius', () => {
+      const tooltip = mountWithApp(
+        <Tooltip content="Inner content">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
+        style: expect.objectContaining({
+          '--pc-tooltip-border-radius': 'var(--p-border-radius-200)',
+        }) as React.CSSProperties,
+      });
+    });
+
+    it('renders content with a border radius of 200 when declared', () => {
+      const tooltip = mountWithApp(
+        <Tooltip content="Inner content" borderRadius="200">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div', {
+        style: expect.objectContaining({
+          '--pc-tooltip-border-radius': 'var(--p-border-radius-200)',
+        }) as React.CSSProperties,
+      });
+    });
+  });
+
+  describe('with hoverDelay', () => {
+    it('renders on mouseOver after specified hoverDelay', () => {
+      jest.useFakeTimers();
+
+      const tooltip = mountWithApp(
+        <Tooltip hoverDelay={2000} content="Inner content">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+      expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
+
+      tooltip.act(() => jest.advanceTimersByTime(1999));
+
+      expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
+
+      tooltip.act(() => jest.advanceTimersByTime(1));
+
+      expect(tooltip.find(TooltipOverlay)).toContainReactComponent('div');
+
+      jest.useRealTimers();
+    });
+
+    it('does not render on mouseOver if mouseLeave occurs before hoverDelay ellapses', () => {
+      jest.useFakeTimers();
+
+      const tooltip = mountWithApp(
+        <Tooltip hoverDelay={2000} content="Inner content">
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+
+      tooltip.act(() => jest.advanceTimersByTime(500));
+
+      findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+      tooltip.act(() => jest.advanceTimersByTime(2000));
+
+      expect(tooltip.find(TooltipOverlay)).not.toContainReactComponent('div');
+
+      jest.useRealTimers();
+    });
+  });
+
+  it('will not pass the instant prop when no tooltip is currently present', () => {
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      instant: false,
+    });
+  });
+
+  it('will pass the instant prop when immediately re-entering the activator', () => {
+    jest.useFakeTimers();
+
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    tooltip.act(() => jest.advanceTimersByTime(5));
+
+    findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+    tooltip.act(() => jest.advanceTimersByTime(5));
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      instant: true,
+    });
+  });
+
+  it('will remove the instant prop when re-entering the activator after a delay', () => {
+    jest.useFakeTimers();
+
+    const tooltip = mountWithApp(
+      <Tooltip content="Inner content">
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    tooltip.act(() => jest.advanceTimersByTime(5));
+
+    findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+    tooltip.act(() => jest.advanceTimersByTime(150));
+    findWrapperComponent(tooltip)!.trigger('onMouseOver');
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      instant: false,
+    });
+  });
+
+  describe('overriding hover delay', () => {
+    it('will pass the instant prop when immediately re-entering the activator', () => {
+      jest.useFakeTimers();
+
+      const tooltip = mountWithApp(
+        <Tooltip content="Inner content" hoverDelay={1000}>
+          <Link>link content</Link>
+        </Tooltip>,
+      );
+
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+      tooltip.act(() => jest.advanceTimersByTime(1010));
+
+      findWrapperComponent(tooltip)!.trigger('onMouseLeave');
+
+      tooltip.act(() => jest.advanceTimersByTime(5));
+      findWrapperComponent(tooltip)!.trigger('onMouseOver');
+      expect(tooltip).toContainReactComponent(TooltipOverlay, {
+        instant: true,
+      });
     });
   });
 });

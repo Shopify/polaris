@@ -1,6 +1,17 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {SkeletonThumbnail} from '@shopify/polaris';
+import {SkeletonThumbnail, BlockStack} from '@shopify/polaris';
+
+export function All() {
+  return (
+    <BlockStack gap="400">
+      <ExtraSmall />
+      <Small />
+      <Medium />
+      <Large />
+    </BlockStack>
+  );
+}
 
 export default {
   component: SkeletonThumbnail,

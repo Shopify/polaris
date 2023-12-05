@@ -1,15 +1,18 @@
 import {
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
   ResourceItem,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
+import type {ResourceListProps} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListWithLoadingExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<
+    ResourceListProps['selectedItems']
+  >([]);
 
   const resourceName = {
     singular: 'customer',
@@ -18,14 +21,14 @@ function ResourceListWithLoadingExample() {
 
   const items = [
     {
-      id: 104,
-      url: 'customers/341',
+      id: '104',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 204,
-      url: 'customers/256',
+      id: '204',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
@@ -54,7 +57,7 @@ function ResourceListWithLoadingExample() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -65,12 +68,17 @@ function ResourceListWithLoadingExample() {
         bulkActions={bulkActions}
         loading
       />
-    </Card>
+    </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: {
+    id: string;
+    url: string;
+    name: string;
+    location: string;
+  }) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -79,9 +87,9 @@ function ResourceListWithLoadingExample() {
         media={media}
         accessibilityLabel={`View details for ${name}`}
       >
-        <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </h3>
+        <Text variant="bodyMd" fontWeight="bold" as="h3">
+          {name}
+        </Text>
         <div>{location}</div>
       </ResourceItem>
     );

@@ -1,15 +1,18 @@
 import {
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
   ResourceItem,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
+import type {ResourceListProps} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<
+    ResourceListProps['selectedItems']
+  >([]);
 
   const resourceName = {
     singular: 'customer',
@@ -18,38 +21,38 @@ function ResourceListExample() {
 
   const items = [
     {
-      id: 111,
-      url: 'customers/231',
+      id: '111',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
     },
     {
-      id: 211,
-      url: 'customers/246',
+      id: '211',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
     },
     {
-      id: 311,
-      url: 'customers/276',
+      id: '311',
+      url: '#',
       name: 'Joe Smith',
       location: 'Arizona, USA',
     },
     {
-      id: 411,
-      url: 'customers/349',
+      id: '411',
+      url: '#',
       name: 'Haden Jerado',
       location: 'Decatur, USA',
     },
     {
-      id: 511,
-      url: 'customers/419',
+      id: '511',
+      url: '#',
       name: 'Tom Thommas',
       location: 'Florida, USA',
     },
     {
-      id: 611,
-      url: 'customers/516',
+      id: '611',
+      url: '#',
       name: 'Emily Amrak',
       location: 'Texas, USA',
     },
@@ -78,7 +81,7 @@ function ResourceListExample() {
   ];
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -89,12 +92,12 @@ function ResourceListExample() {
         bulkActions={bulkActions}
         resolveItemId={resolveItemIds}
       />
-    </Card>
+    </LegacyCard>
   );
 
-  function renderItem(item, _, index) {
+  function renderItem(item: typeof items[number], _: string, index: number) {
     const {id, url, name, location} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
 
     return (
       <ResourceItem
@@ -104,15 +107,15 @@ function ResourceListExample() {
         sortOrder={index}
         accessibilityLabel={`View details for ${name}`}
       >
-        <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </h3>
+        <Text variant="bodyMd" fontWeight="bold" as="h3">
+          {name}
+        </Text>
         <div>{location}</div>
       </ResourceItem>
     );
   }
 
-  function resolveItemIds({id}) {
+  function resolveItemIds({id}: {id: string}) {
     return id;
   }
 }

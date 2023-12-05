@@ -1,10 +1,7 @@
-import {
-  BreakpointsTokenName,
-  breakpoints,
-  getMediaConditions,
-} from '@shopify/polaris-tokens';
+import {themeDefault, getMediaConditions} from '@shopify/polaris-tokens';
+import type {BreakpointsTokenName} from '@shopify/polaris-tokens';
 
-const mediaConditions = getMediaConditions(breakpoints);
+const mediaConditions = getMediaConditions(themeDefault.breakpoints);
 
 export function setMediaWidth(breakpointsTokenName: BreakpointsTokenName) {
   const aliasDirectionConditions = Object.values(

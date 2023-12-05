@@ -1,9 +1,13 @@
-import {Badge} from '@shopify/polaris';
+import {Badge, Card} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function BadgeExample() {
-  return <Badge progress="complete">Fulfilled</Badge>;
+  return (
+    <Card>
+      <Badge progress="complete">Fulfilled</Badge>
+    </Card>
+  );
 }
 
 export default withPolarisExample(BadgeExample);

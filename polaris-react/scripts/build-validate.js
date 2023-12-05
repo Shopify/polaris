@@ -1,4 +1,3 @@
-// eslint-disable-next-line node/no-unsupported-features/node-builtins
 const assert = require('assert').strict;
 const fs = require('fs');
 
@@ -44,8 +43,12 @@ function validateStandardBuild() {
   const cssContent = fs.readFileSync('./build/esm/styles.css', 'utf-8');
   assert.ok(cssContent.includes('.Polaris-Avatar {'));
   assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton {'));
-  assert.ok(cssContent.includes('@keyframes p-keyframes-bounce {'));
-  assert.ok(cssContent.includes('--p-keyframes-bounce:p-keyframes-bounce;'));
+  assert.ok(cssContent.includes('@keyframes p-motion-keyframes-bounce {'));
+  assert.ok(
+    cssContent.includes(
+      '--p-motion-keyframes-bounce:p-motion-keyframes-bounce;',
+    ),
+  );
 }
 
 function validateEsNextBuild() {
@@ -67,9 +70,13 @@ function validateEsNextBuild() {
     'utf-8',
   );
   assert.ok(cssContent.includes('.Polaris-Avatar_z763p {'));
-  assert.ok(cssKeyframesContent.includes('@keyframes p-keyframes-spin {'));
   assert.ok(
-    cssKeyframesContent.includes('--p-keyframes-spin:p-keyframes-spin;'),
+    cssKeyframesContent.includes('@keyframes p-motion-keyframes-spin {'),
+  );
+  assert.ok(
+    cssKeyframesContent.includes(
+      '--p-motion-keyframes-spin:p-motion-keyframes-spin;',
+    ),
   );
 
   const jsContent = fs.readFileSync(
@@ -83,9 +90,7 @@ function validateEsNextBuild() {
 }
 
 function validateAncillaryOutput() {
-  assert.ok(fs.existsSync('./build/ts/latest/src/index.d.ts'));
-  // Downleveled for consumers on older TypeScript versions
-  assert.ok(fs.existsSync('./build/ts/3.4/src/index.d.ts'));
+  assert.ok(fs.existsSync('./build/ts/src/index.d.ts'));
 }
 
 function validateVersionReplacement() {
@@ -113,10 +118,7 @@ function validateVersionReplacement() {
   assert.strictEqual(fileBuckets.includesTemplateString.length, 0);
 
   assert.deepStrictEqual(fileBuckets.includesVersion, [
-    './build/cjs/configure.js',
-    './build/esm/configure.js',
     './build/esm/styles.css',
-    './build/esnext/configure.esnext',
     './build/esnext/components/AppProvider/AppProvider.css',
   ]);
 }

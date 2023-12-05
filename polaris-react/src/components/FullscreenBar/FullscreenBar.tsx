@@ -2,6 +2,7 @@ import React from 'react';
 import {ExitMajor} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';
+import {Text} from '../Text';
 import {useI18n} from '../../utilities/i18n';
 
 import styles from './FullscreenBar.scss';
@@ -16,6 +17,12 @@ export interface FullscreenBarProps {
 export function FullscreenBar({onAction, children}: FullscreenBarProps) {
   const i18n = useI18n();
 
+  const backButtonMarkup = (
+    <Text as="span" variant="bodyLg">
+      {i18n.translate('Polaris.FullscreenBar.back')}
+    </Text>
+  );
+
   return (
     <div className={styles.FullscreenBar}>
       <button
@@ -24,7 +31,7 @@ export function FullscreenBar({onAction, children}: FullscreenBarProps) {
         aria-label={i18n.translate('Polaris.FullscreenBar.accessibilityLabel')}
       >
         <Icon source={ExitMajor} />
-        {i18n.translate('Polaris.FullscreenBar.back')}
+        {backButtonMarkup}
       </button>
       {children}
     </div>

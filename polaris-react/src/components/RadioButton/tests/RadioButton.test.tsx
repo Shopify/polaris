@@ -76,28 +76,6 @@ describe('<RadioButton />', () => {
     });
   });
 
-  describe('Focus className', () => {
-    it('on keyUp adds a keyFocused class to the input', () => {
-      const radioButton = mountWithApp(<RadioButton label="Radio" />);
-
-      radioButton.find('input')!.trigger('onKeyUp');
-      expect(radioButton).toContainReactComponent('input', {
-        className: 'Input keyFocused',
-      });
-    });
-
-    it('on change does not add a keyFocused class to the input', () => {
-      const radioButton = mountWithApp(<RadioButton label="Radio" />);
-      const radioInput = radioButton.find('input');
-      radioInput!.trigger('onChange', {
-        currentTarget: radioInput!.domNode as HTMLInputElement,
-      });
-      expect(radioButton).not.toContainReactComponent('input', {
-        className: 'Input keyFocused',
-      });
-    });
-  });
-
   describe('onBlur()', () => {
     it('is called when the input is focused', () => {
       const spy = jest.fn();
@@ -170,31 +148,6 @@ describe('<RadioButton />', () => {
 
       expect(ariaDescribedBy).toHaveReactProps({
         'aria-describedby': 'SomeId',
-      });
-    });
-  });
-
-  describe('Hovering the label', () => {
-    it('adds the hover class to the Backdrop onMouseOver the label', () => {
-      const radioButton = mountWithApp(<RadioButton label="radioButton" />);
-
-      const label = radioButton.find('label');
-      label!.trigger('onMouseOver');
-
-      expect(radioButton).toContainReactComponent('span', {
-        className: 'Backdrop hover',
-      });
-    });
-
-    it('removes the hover class from the Backdrop onMouseOut the label', () => {
-      const radioButton = mountWithApp(<RadioButton label="radioButton" />);
-
-      const label = radioButton.find('label');
-      label!.trigger('onMouseOver');
-      label!.trigger('onMouseOut');
-
-      expect(radioButton).toContainReactComponent('span', {
-        className: 'Backdrop',
       });
     });
   });

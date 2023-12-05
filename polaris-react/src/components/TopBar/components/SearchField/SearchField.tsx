@@ -1,11 +1,10 @@
-import React, {useCallback, useEffect, useState, useRef} from 'react';
+import React, {useCallback, useEffect, useState, useRef, useId} from 'react';
 import {CircleCancelMinor, SearchMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import {Icon} from '../../../Icon';
-import {VisuallyHidden} from '../../../VisuallyHidden';
+import {Text} from '../../../Text';
 
 import styles from './SearchField.scss';
 
@@ -45,7 +44,7 @@ export function SearchField({
   const [forceActive, setForceActive] = useState(false);
 
   const input = useRef<HTMLInputElement>(null);
-  const searchId = useUniqueId('SearchField');
+  const searchId = useId();
 
   const handleChange = useCallback(
     ({currentTarget}: React.ChangeEvent<HTMLInputElement>) => {
@@ -108,11 +107,11 @@ export function SearchField({
 
   return (
     <div className={className} onFocus={handleFocus} onBlur={handleBlur}>
-      <VisuallyHidden>
+      <Text as="span" visuallyHidden>
         <label htmlFor={searchId}>
           {i18n.translate('Polaris.TopBar.SearchField.search')}
         </label>
-      </VisuallyHidden>
+      </Text>
       <input
         id={searchId}
         className={styles.Input}

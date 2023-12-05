@@ -1,15 +1,18 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState, useId} from 'react';
 import {HorizontalDotsMinor} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useMediaQuery} from '../../../../utilities/media-query';
-import {useUniqueId} from '../../../../utilities/unique-id';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {Collapsible} from '../../../Collapsible';
-import {Icon, IconProps} from '../../../Icon';
-import {Item, ItemProps} from '../Item';
+import {Icon} from '../../../Icon';
+import type {IconProps} from '../../../Icon';
+import {Text} from '../../../Text';
+import {Item} from '../Item';
+import type {ItemProps} from '../../types';
 import styles from '../../Navigation.scss';
-import {Tooltip, TooltipProps} from '../../../Tooltip';
+import {Tooltip} from '../../../Tooltip';
+import type {TooltipProps} from '../../../Tooltip';
 
 export interface SectionProps {
   items: ItemProps[];
@@ -100,7 +103,9 @@ export function Section({
 
   const sectionHeadingMarkup = title && (
     <li className={styles.SectionHeading}>
-      <span className={styles.Text}>{title}</span>
+      <Text as="span" variant="bodySm" fontWeight="medium" tone="subdued">
+        {title}
+      </Text>
       {actionMarkup}
     </li>
   );
@@ -136,16 +141,20 @@ export function Section({
 
   const toggleRollup = rollup && items.length > rollup.after && (
     <div className={styles.ListItem} key="List Item">
-      <button
-        type="button"
-        className={toggleClassName}
-        onClick={toggleExpanded}
-        aria-label={ariaLabel}
-      >
-        <span className={styles.Icon}>
-          <Icon source={HorizontalDotsMinor} />
-        </span>
-      </button>
+      <div className={styles.ItemWrapper}>
+        <div className={styles.ItemInnerWrapper}>
+          <button
+            type="button"
+            className={toggleClassName}
+            onClick={toggleExpanded}
+            aria-label={ariaLabel}
+          >
+            <span className={styles.Icon}>
+              <Icon source={HorizontalDotsMinor} />
+            </span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 
@@ -177,7 +186,7 @@ export function Section({
     );
   }
 
-  const additionalItemsId = useUniqueId('AdditionalItems');
+  const additionalItemsId = useId();
 
   const activeItemsMarkup = rollup && additionalItems.length > 0 && (
     <li className={styles.RollupSection}>

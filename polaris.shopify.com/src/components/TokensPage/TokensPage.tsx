@@ -1,5 +1,5 @@
 import styles from './TokensPage.module.scss';
-import {MetadataGroup, metadata as allTokens} from '@shopify/polaris-tokens';
+import {MetaTokenGroupShape, metaThemeDefault} from '@shopify/polaris-tokens';
 import {Status, TokenPropertiesWithName} from '../../types';
 import TokenList from '../TokenList';
 import Link from 'next/link';
@@ -9,13 +9,16 @@ import Page from '../Page';
 
 interface Props {
   tokenGroup:
+    | 'border'
     | 'breakpoints'
-    | 'colors'
-    | 'depth'
+    | 'color'
     | 'font'
+    | 'height'
     | 'motion'
-    | 'shape'
-    | 'spacing'
+    | 'shadow'
+    | 'space'
+    | 'text'
+    | 'width'
     | 'zIndex';
 }
 
@@ -28,32 +31,44 @@ export type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    title: 'Colors',
-    url: `/tokens/colors`,
+    title: 'Border',
+    url: `/tokens/border`,
+  },
+  {
+    title: 'Breakpoints',
+    url: `/tokens/breakpoints`,
+  },
+  {
+    title: 'Color',
+    url: `/tokens/color`,
   },
   {
     title: 'Font',
     url: `/tokens/font`,
   },
   {
-    title: 'Shape',
-    url: `/tokens/shape`,
-  },
-  {
-    title: 'Spacing',
-    url: `/tokens/spacing`,
-  },
-  {
-    title: 'Depth',
-    url: `/tokens/depth`,
+    title: 'Height',
+    url: `/tokens/height`,
   },
   {
     title: 'Motion',
     url: `/tokens/motion`,
   },
   {
-    title: 'Breakpoints',
-    url: `/tokens/breakpoints`,
+    title: 'Shadow',
+    url: `/tokens/shadow`,
+  },
+  {
+    title: 'Space',
+    url: `/tokens/space`,
+  },
+  {
+    title: 'Text',
+    url: `/tokens/text`,
+  },
+  {
+    title: 'Width',
+    url: `/tokens/width`,
   },
   {
     title: 'Z-Index',
@@ -63,7 +78,7 @@ const navItems: NavItem[] = [
 
 function tokensToFilteredArray(
   filter: string,
-  tokenGroup: MetadataGroup,
+  tokenGroup: MetaTokenGroupShape,
 ): TokenPropertiesWithName[] {
   return Object.entries(tokenGroup)
     .filter(([name]) => {
@@ -79,14 +94,17 @@ function TokensPage({tokenGroup}: Props) {
   const router = useRouter();
 
   const tokens = {
-    breakpoints: tokensToFilteredArray(filter, allTokens.breakpoints),
-    colors: tokensToFilteredArray(filter, allTokens.colors),
-    depth: tokensToFilteredArray(filter, allTokens.depth),
-    font: tokensToFilteredArray(filter, allTokens.font),
-    motion: tokensToFilteredArray(filter, allTokens.motion),
-    shape: tokensToFilteredArray(filter, allTokens.shape),
-    spacing: tokensToFilteredArray(filter, allTokens.spacing),
-    zIndex: tokensToFilteredArray(filter, allTokens.zIndex),
+    border: tokensToFilteredArray(filter, metaThemeDefault.border),
+    breakpoints: tokensToFilteredArray(filter, metaThemeDefault.breakpoints),
+    color: tokensToFilteredArray(filter, metaThemeDefault.color),
+    font: tokensToFilteredArray(filter, metaThemeDefault.font),
+    height: tokensToFilteredArray(filter, metaThemeDefault.height),
+    motion: tokensToFilteredArray(filter, metaThemeDefault.motion),
+    shadow: tokensToFilteredArray(filter, metaThemeDefault.shadow),
+    space: tokensToFilteredArray(filter, metaThemeDefault.space),
+    text: tokensToFilteredArray(filter, metaThemeDefault.text),
+    width: tokensToFilteredArray(filter, metaThemeDefault.width),
+    zIndex: tokensToFilteredArray(filter, metaThemeDefault.zIndex),
   };
 
   const keyframeStyles = tokens['motion']
@@ -95,7 +113,7 @@ function TokensPage({tokenGroup}: Props) {
     .join('\n');
 
   return (
-    <Page showTOC={false}>
+    <Page>
       <div className={styles.TokensPage}>
         <div className={styles.Banner}>
           <h1>Tokens</h1>
@@ -109,10 +127,11 @@ function TokensPage({tokenGroup}: Props) {
                 const isCurrent = router.asPath.endsWith(slugify(item.title));
                 return (
                   <li key={item.title}>
-                    <Link href={item.url} passHref>
-                      <a aria-current={isCurrent ? 'page' : undefined}>
-                        {item.title}
-                      </a>
+                    <Link
+                      href={item.url}
+                      aria-current={isCurrent ? 'page' : undefined}
+                    >
+                      {item.title}
                     </Link>
                   </li>
                 );

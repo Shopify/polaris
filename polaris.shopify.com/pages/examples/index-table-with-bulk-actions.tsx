@@ -1,42 +1,84 @@
 import {
   IndexTable,
-  TextStyle,
-  Card,
+  LegacyCard,
   useIndexResourceState,
+  Text,
+  Badge,
+  useBreakpoints,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function IndexTableWithBulkActionsExample() {
-  const customers = [
+  const orders = [
     {
-      id: '3413',
-      url: 'customers/341',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$2,400',
+      id: '1020',
+      order: '#1020',
+      date: 'Jul 20 at 4:34pm',
+      customer: 'Jaydon Stanton',
+      total: '$969.44',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
     },
     {
-      id: '2563',
-      url: 'customers/256',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
+      id: '1019',
+      order: '#1019',
+      date: 'Jul 20 at 3:46pm',
+      customer: 'Ruben Westerfelt',
+      total: '$701.19',
+      paymentStatus: <Badge progress="partiallyComplete">Partially paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1018',
+      order: '#1018',
+      date: 'Jul 20 at 3.44pm',
+      customer: 'Leo Carder',
+      total: '$798.24',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
     },
   ];
   const resourceName = {
-    singular: 'customer',
-    plural: 'customers',
+    singular: 'order',
+    plural: 'orders',
   };
 
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
-    useIndexResourceState(customers);
+    useIndexResourceState(orders);
+
+  const rowMarkup = orders.map(
+    (
+      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {order}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {total}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
 
   const promotedBulkActions = [
     {
-      content: 'Edit customers',
+      content: 'Create shipping labels',
       onAction: () => console.log('Todo: implement bulk edit'),
     },
   ];
@@ -50,50 +92,35 @@ function IndexTableWithBulkActionsExample() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
-      content: 'Delete customers',
+      content: 'Delete orders',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
   ];
 
-  const rowMarkup = customers.map(
-    ({id, name, location, orders, amountSpent}, index) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        selected={selectedResources.includes(id)}
-        position={index}
-      >
-        <IndexTable.Cell>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
-      </IndexTable.Row>
-    ),
-  );
-
   return (
-    <Card>
+    <LegacyCard>
       <IndexTable
+        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
-        itemCount={customers.length}
+        itemCount={orders.length}
         selectedItemsCount={
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Order'},
+          {title: 'Date'},
+          {title: 'Customer'},
+          {title: 'Total', alignment: 'end'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
+        ]}
         bulkActions={bulkActions}
         promotedBulkActions={promotedBulkActions}
-        headings={[
-          {title: 'Name'},
-          {title: 'Location'},
-          {title: 'Order count'},
-          {title: 'Amount spent'},
-        ]}
       >
         {rowMarkup}
       </IndexTable>
-    </Card>
+    </LegacyCard>
   );
 }
 

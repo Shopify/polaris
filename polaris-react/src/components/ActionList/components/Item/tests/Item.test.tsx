@@ -1,8 +1,8 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
-import {Item} from '../Item';
-import {TextStyle} from '../../../../TextStyle';
+import {Item, TruncateText} from '../Item';
+import {Text} from '../../../../Text';
 import {UnstyledLink} from '../../../../UnstyledLink';
 
 describe('<Item />', () => {
@@ -20,6 +20,13 @@ describe('<Item />', () => {
     const item = mountWithApp(<Item onAction={mockOnAction} />);
     item.find('button')!.trigger('onClick');
     expect(mockOnAction).toHaveBeenCalledTimes(1);
+  });
+
+  it('calls onMouseEnter when the mouse enters button', () => {
+    const onMouseEnterSpy = jest.fn();
+    const button = mountWithApp(<Item onMouseEnter={onMouseEnterSpy} />);
+    button.find('button')!.trigger('onMouseEnter');
+    expect(onMouseEnterSpy).toHaveBeenCalledTimes(1);
   });
 
   it('passes the external prop down to the link', () => {
@@ -54,7 +61,7 @@ describe('<Item />', () => {
   it('renders helpText when the helpText prop is defined', () => {
     const helpText = 'Foo';
     const item = mountWithApp(<Item helpText={helpText} />);
-    expect(item.find(TextStyle)).toContainReactText(helpText);
+    expect(item.find(Text)).toContainReactText(helpText);
   });
 
   it('passes `accessibilityLabel` to `<button />`', () => {
@@ -94,6 +101,28 @@ describe('<Item />', () => {
     expect(item).toContainReactComponent(UnstyledLink, {
       onClick: null,
     });
+  });
+
+  it('truncates when the truncate prop is true', () => {
+    const item = mountWithApp(
+      <Item
+        content="Test longer than usual string that probably overflows."
+        truncate
+      />,
+    );
+    expect(item).toContainReactComponent(TruncateText, {
+      children: 'Test longer than usual string that probably overflows.',
+    });
+  });
+
+  it('does not truncate when the truncate prop is false', () => {
+    const item = mountWithApp(
+      <Item
+        content="Test longer than usual string that probably overflows."
+        truncate={false}
+      />,
+    );
+    expect(item).not.toContainReactComponent(TruncateText);
   });
 });
 

@@ -1,32 +1,41 @@
 import {
   TextField,
-  Filters,
+  LegacyFilters,
   Button,
-  Card,
+  LegacyCard,
   ResourceList,
   Avatar,
   ResourceItem,
-  TextStyle,
+  Text,
 } from '@shopify/polaris';
+import type {ResourceListProps} from '@shopify/polaris';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function ResourceListExample() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<
+    ResourceListProps['selectedItems']
+  >([]);
   const [sortValue, setSortValue] = useState('DATE_MODIFIED_DESC');
-  const [taggedWith, setTaggedWith] = useState('VIP');
-  const [queryValue, setQueryValue] = useState(null);
+  const [taggedWith, setTaggedWith] = useState<string | undefined>('VIP');
+  const [queryValue, setQueryValue] = useState<string | undefined>(undefined);
 
   const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
+    (value: string) => setTaggedWith(value),
     [],
   );
   const handleQueryValueChange = useCallback(
-    (value) => setQueryValue(value),
+    (value: string) => setQueryValue(value),
     [],
   );
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(null), []);
-  const handleQueryValueRemove = useCallback(() => setQueryValue(null), []);
+  const handleTaggedWithRemove = useCallback(
+    () => setTaggedWith(undefined),
+    [],
+  );
+  const handleQueryValueRemove = useCallback(
+    () => setQueryValue(undefined),
+    [],
+  );
   const handleClearAll = useCallback(() => {
     handleTaggedWithRemove();
     handleQueryValueRemove();
@@ -39,15 +48,15 @@ function ResourceListExample() {
 
   const items = [
     {
-      id: 112,
-      url: 'customers/341',
+      id: '112',
+      url: '#',
       name: 'Mae Jemison',
       location: 'Decatur, USA',
       latestOrderUrl: 'orders/1456',
     },
     {
-      id: 212,
-      url: 'customers/256',
+      id: '212',
+      url: '#',
       name: 'Ellen Ochoa',
       location: 'Los Angeles, USA',
       latestOrderUrl: 'orders/1457',
@@ -93,18 +102,19 @@ function ResourceListExample() {
     },
   ];
 
-  const appliedFilters = !isEmpty(taggedWith)
-    ? [
-        {
-          key: 'taggedWith3',
-          label: disambiguateLabel('taggedWith3', taggedWith),
-          onRemove: handleTaggedWithRemove,
-        },
-      ]
-    : [];
+  const appliedFilters =
+    taggedWith && !isEmpty(taggedWith)
+      ? [
+          {
+            key: 'taggedWith3',
+            label: disambiguateLabel('taggedWith3', taggedWith),
+            onRemove: handleTaggedWithRemove,
+          },
+        ]
+      : [];
 
   const filterControl = (
-    <Filters
+    <LegacyFilters
       queryValue={queryValue}
       filters={filters}
       appliedFilters={appliedFilters}
@@ -115,11 +125,11 @@ function ResourceListExample() {
       <div style={{paddingLeft: '8px'}}>
         <Button onClick={() => console.log('New filter saved')}>Save</Button>
       </div>
-    </Filters>
+    </LegacyFilters>
   );
 
   return (
-    <Card>
+    <LegacyCard>
       <ResourceList
         resourceName={resourceName}
         items={items}
@@ -139,15 +149,15 @@ function ResourceListExample() {
         }}
         filterControl={filterControl}
       />
-    </Card>
+    </LegacyCard>
   );
 
-  function renderItem(item) {
+  function renderItem(item: typeof items[number]) {
     const {id, url, name, location, latestOrderUrl} = item;
-    const media = <Avatar customer size="medium" name={name} />;
+    const media = <Avatar customer size="md" name={name} />;
     const shortcutActions = latestOrderUrl
       ? [{content: 'View latest order', url: latestOrderUrl}]
-      : null;
+      : undefined;
     return (
       <ResourceItem
         id={id}
@@ -157,15 +167,15 @@ function ResourceListExample() {
         shortcutActions={shortcutActions}
         persistActions
       >
-        <h3>
-          <TextStyle variation="strong">{name}</TextStyle>
-        </h3>
+        <Text variant="bodyMd" fontWeight="bold" as="h3">
+          {name}
+        </Text>
         <div>{location}</div>
       </ResourceItem>
     );
   }
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(key: string, value: string): string {
     switch (key) {
       case 'taggedWith3':
         return `Tagged with ${value}`;
@@ -174,7 +184,7 @@ function ResourceListExample() {
     }
   }
 
-  function isEmpty(value) {
+  function isEmpty(value: string): boolean {
     if (Array.isArray(value)) {
       return value.length === 0;
     } else {

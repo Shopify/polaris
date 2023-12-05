@@ -7,54 +7,6 @@ $page-max-width: $layout-width-primary-max + $layout-width-secondary-max +
   max-width: $page-max-width;
 
   @media #{$p-breakpoints-sm-up} {
-    padding: 0 var(--p-space-6);
+    padding: 0 var(--p-space-600);
   }
-}
-
-@mixin page-content-layout {
-  padding: var(--p-space-2) 0;
-
-  @media #{$p-breakpoints-md-up} {
-    padding-top: var(--p-space-5);
-  }
-}
-
-@mixin page-title-layout {
-  @include layout-flex-fix;
-  @include text-breakword;
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  margin-top: calc(-1 * var(--p-space-2));
-  margin-left: calc(-1 * var(--p-space-2));
-
-  > * {
-    margin-top: var(--p-space-2);
-    margin-left: var(--p-space-2);
-  }
-}
-
-@mixin page-header-layout {
-  padding: var(--p-space-4);
-
-  @media #{$p-breakpoints-sm-up} {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  @media #{$p-breakpoints-md-up} {
-    padding: var(--p-space-5) 0;
-  }
-}
-
-@mixin page-header-has-navigation {
-  padding-top: var(--p-space-4);
-}
-
-@mixin page-header-without-navigation {
-  margin-top: unset;
-}
-
-@mixin page-header-has-secondary-actions {
-  padding-top: var(--p-space-4);
 }

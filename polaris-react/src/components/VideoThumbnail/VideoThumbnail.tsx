@@ -9,7 +9,8 @@ import {
 } from '../../utilities/duration';
 import {useMediaQuery} from '../../utilities/media-query';
 import {Icon} from '../Icon';
-import {Stack} from '../Stack';
+// eslint-disable-next-line import/no-deprecated
+import {LegacyStack} from '../LegacyStack';
 import {Text} from '../Text';
 
 import styles from './VideoThumbnail.scss';
@@ -77,8 +78,8 @@ export function VideoThumbnail({
   }
 
   const timeStampMarkup = videoLength ? (
-    <p className={styles.Timestamp}>
-      <Stack alignment="center" spacing="extraTight">
+    <div className={styles.Timestamp}>
+      <LegacyStack alignment="center" spacing="extraTight">
         <span className={styles.PlayIcon}>
           <Icon source={PlayMinor} />
         </span>
@@ -89,8 +90,8 @@ export function VideoThumbnail({
         >
           {secondsToTimestamp(videoLength)}
         </Text>
-      </Stack>
-    </p>
+      </LegacyStack>
+    </div>
   ) : null;
 
   let progressMarkup = null;

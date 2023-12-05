@@ -1,3 +1,5 @@
+@import '../../styles/common';
+
 $small-size: 20px;
 $large-size: 44px;
 
@@ -7,8 +9,9 @@ $large-size: 44px;
 }
 
 .Spinner svg {
-  animation: var(--p-keyframes-spin) var(--p-duration-500) linear infinite;
-  fill: var(--p-border-highlight);
+  animation: var(--p-motion-keyframes-spin) var(--p-motion-duration-500) linear
+    infinite;
+  fill: var(--p-color-bg-fill-brand);
 }
 
 .sizeSmall svg {

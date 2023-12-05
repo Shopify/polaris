@@ -1,0 +1,12 @@
+name: Instagram
+set: Minor
+description: Instagram logo
+keywords:
+  - instagram
+  - social media
+authors:
+  - Joe Thomas
+version: 1
+date_added: 2023-07-20
+date_modified: 2023-07-28
+exclusive_use:

@@ -18,7 +18,12 @@ type Gap = {
 };
 
 export interface GridProps {
-  /* Set grid-template-areas */
+  /**
+   * Set grid-template-areas
+   * @deprecated To avoid a11y issues, nest layout components in individual grid
+   * cells instead. See:
+   * https://polaris.shopify.com/components/layout-and-structure
+   */
   areas?: Areas;
   /* Number of columns */
   columns?: Columns;
@@ -26,11 +31,6 @@ export interface GridProps {
   gap?: Gap;
   children?: React.ReactNode;
 }
-/** **Experimental!**
- * This component is in alpha. Use with caution.
- * 6 column default for xs, sm, and md breakpoints.
- * 12 columns for lg, and xl.
- */
 export const Grid: React.FunctionComponent<GridProps> & {
   Cell: typeof Cell;
 } = function Grid({gap, areas, children, columns}: GridProps) {

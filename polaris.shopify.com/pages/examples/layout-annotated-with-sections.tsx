@@ -1,12 +1,11 @@
 import {
   Page,
   Layout,
-  Card,
+  LegacyCard,
   FormLayout,
   TextField,
   TextContainer,
-  TextStyle,
-  Heading,
+  Text,
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -15,21 +14,21 @@ function LayoutExample() {
   return (
     <Page fullWidth>
       <Layout>
-        <Layout.Section oneThird>
-          <div style={{marginTop: 'var(--p-space-5)'}}>
+        <Layout.Section variant="oneThird">
+          <div style={{marginTop: 'var(--p-space-500)'}}>
             <TextContainer>
-              <Heading id="storeDetails">Store details</Heading>
-              <p>
-                <TextStyle variation="subdued">
-                  Shopify and your customers will use this information to
-                  contact you.
-                </TextStyle>
-              </p>
+              <Text id="storeDetails" variant="headingMd" as="h2">
+                Store details
+              </Text>
+              <Text tone="subdued" as="p">
+                Shopify and your customers will use this information to contact
+                you.
+              </Text>
             </TextContainer>
           </div>
         </Layout.Section>
         <Layout.Section>
-          <Card sectioned>
+          <LegacyCard sectioned>
             <FormLayout>
               <TextField
                 label="Store name"
@@ -43,7 +42,7 @@ function LayoutExample() {
                 autoComplete="email"
               />
             </FormLayout>
-          </Card>
+          </LegacyCard>
         </Layout.Section>
       </Layout>
     </Page>

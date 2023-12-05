@@ -29,20 +29,23 @@
 
   ul {
     display: flex;
+    flex-wrap: wrap;
     box-shadow: var(--card-shadow);
-    border-radius: var(--border-radius-600);
+    border-top: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
     font-size: var(--font-size-400);
-    overflow: hidden;
   }
 
   li {
     flex: 1;
+    min-width: 125px;
   }
 
   a {
     padding: 0.75rem 1rem;
     display: block;
     color: var(--text-strong);
+    border-bottom: 1px solid var(--border-color);
     border-right: 1px solid var(--border-color);
     text-align: center;
     font-weight: var(--font-weight-500);
@@ -56,10 +59,6 @@
     }
   }
 
-  li:last-child a {
-    border-right: none;
-  }
-
   @media screen and (max-width: $breakpointDesktop) {
     margin-bottom: 2rem;
 
@@ -68,24 +67,10 @@
 
       li {
         min-width: 25%;
-
-        &:nth-child(4n) a {
-          border-right: none;
-        }
       }
 
       a {
-        border-bottom: var(--border);
         padding: 0.66rem 0;
-      }
-
-      li:nth-last-child(1),
-      li:nth-last-child(2),
-      li:nth-last-child(3),
-      li:nth-last-child(4) {
-        a {
-          border-bottom: none;
-        }
       }
     }
   }
@@ -93,16 +78,6 @@
     ul {
       li {
         min-width: 50%;
-
-        &:nth-child(2n) a {
-          border-right: none;
-        }
-      }
-
-      a,
-      li:nth-last-child(3) a,
-      li:nth-last-child(4) a {
-        border-bottom: var(--border);
       }
     }
   }
