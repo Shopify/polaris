@@ -2,4 +2,5 @@
 '@shopify/polaris': minor
 ---
 
-Fix modal activator not regaining focus when the modal is closed
+- Fixed `Modal` `activator` not regaining focus on close
+- Added an `activatorWrapper` prop to `Modal` to support setting the element that wraps the `activator`
