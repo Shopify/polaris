@@ -1,3 +1,4 @@
+import type {ReactNode} from 'react';
 import React, {useRef} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
@@ -27,17 +28,31 @@ jest.mock('react-transition-group', () => {
   };
 });
 
+jest.mock('../../TrapFocus', () => ({
+  ...jest.requireActual('../../TrapFocus'),
+  TrapFocus({children}: {children: ReactNode}) {
+    return <div>{children}</div>;
+  },
+}));
+
 describe('<Modal>', () => {
   let scrollSpy: jest.SpyInstance;
+  let requestAnimationFrameSpy: jest.SpyInstance;
 
   beforeEach(() => {
     scrollSpy = jest.spyOn(window, 'scroll');
     animationFrame.mock();
+    requestAnimationFrameSpy = jest.spyOn(window, 'requestAnimationFrame');
+    requestAnimationFrameSpy.mockImplementation((cb: () => number) => {
+      cb();
+      return 1;
+    });
   });
 
   afterEach(() => {
     animationFrame.restore();
     scrollSpy.mockRestore();
+    requestAnimationFrameSpy.mockRestore();
   });
 
   it('has a child with contentContext', () => {
@@ -513,10 +528,41 @@ describe('<Modal>', () => {
       }).not.toThrow();
     });
 
-    // Causes a circular dependency that causes the whole test file to be unrunnable
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('focuses the activator when the activator is an element on close', () => {
+    it('wraps the activator in a div by default', () => {
+      const activator = <Button />;
+
+      const modal = mountWithApp(
+        <Modal title="foo" onClose={noop} open={false} activator={activator} />,
+      );
+
+      expect(modal).toContainReactComponent(Box, {
+        as: 'div',
+        children: activator,
+      });
+    });
+
+    it('wraps the activator in a span if activatorWrapper is provided', () => {
+      const activator = <Button />;
+
+      const modal = mountWithApp(
+        <Modal
+          title="foo"
+          onClose={noop}
+          open={false}
+          activator={activator}
+          activatorWrapper="span"
+        />,
+      );
+
+      expect(modal).toContainReactComponent(Box, {
+        as: 'span',
+        children: activator,
+      });
+    });
+
+    it('focuses the activator on close when the activator is an element', () => {
       const id = 'activator-id';
+
       const modal = mountWithApp(
         <Modal
           title="foo"
@@ -527,21 +573,22 @@ describe('<Modal>', () => {
       );
 
       modal.find(Dialog)!.trigger('onExited');
-      const activator = modal.find('button', {id})!.domNode;
+
+      const activator = modal.find('button', {
+        id,
+      })!.domNode;
 
       expect(document.activeElement).toBe(activator);
     });
 
-    // Causes a circular dependency that causes the whole test file to be unrunnable
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('focuses the activator when the activator a ref on close', () => {
-      const buttonId = 'buttonId';
+    it('focuses the activator on close when the activator is a ref', () => {
+      const id = 'buttonId';
       const TestHarness = () => {
         const buttonRef = useRef<HTMLDivElement>(null);
 
         const button = (
           <div ref={buttonRef}>
-            <Button id={buttonId} />
+            <Button id={id} />
           </div>
         );
 
@@ -557,11 +604,11 @@ describe('<Modal>', () => {
 
       testHarness.find(Modal)!.find(Dialog)!.trigger('onExited');
 
-      expect(document.activeElement).toBe(
-        testHarness.findWhere(
-          (wrap) => wrap.is('button') && wrap.prop('id') === buttonId,
-        )!.domNode,
-      );
+      const activator = testHarness.find('button', {
+        id,
+      })!.domNode;
+
+      expect(document.activeElement).toBe(activator);
     });
   });
 });
