@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.0
+
+### Minor Changes
+
+- [#11122](https://github.com/Shopify/polaris/pull/11122) [`636d133e2`](https://github.com/Shopify/polaris/commit/636d133e20d13b9741ed44b9df52c1bc69ec0634) Thanks [@alex-page](https://github.com/alex-page)! - Update dependencies and published files to fix vsce publish
+
+### Patch Changes
+
+- Updated dependencies [[`c58632afa`](https://github.com/Shopify/polaris/commit/c58632afa1141c467533b7564e725f99ebbed71c), [`32cfbecb1`](https://github.com/Shopify/polaris/commit/32cfbecb136f57077bb5beefb58a4cc554dc8f71), [`97683ac05`](https://github.com/Shopify/polaris/commit/97683ac052fcc69c6f689520c15fde555d14fbfa), [`fe8491507`](https://github.com/Shopify/polaris/commit/fe8491507f7cd77af6866bd6f5d49229923dbad0)]:
+  - @shopify/polaris-tokens@8.2.0
+
 ## 0.8.0
 
 ### Minor Changes
