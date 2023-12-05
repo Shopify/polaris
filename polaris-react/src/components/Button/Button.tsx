@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {isValidElement} from 'react';
 import {
   SelectMinor,
   ChevronDownMinor,
@@ -144,29 +144,50 @@ export function Button({
       <div
         className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
-        <Icon
-          source={
-            loading
-              ? 'placeholder'
-              : getDisclosureIconSource(
-                  disclosure,
-                  ChevronUpMinor,
-                  ChevronDownMinor,
-                )
-          }
-        />
+        {loading ? (
+          <div
+            style={{
+              display: 'block',
+              height: '20px',
+              width: '20px',
+              maxHeight: '100%',
+              maxWidth: '100%',
+              margin: 'auto',
+              paddingBottom: '100%',
+              background: 'currentColor',
+            }}
+          />
+        ) : (
+          <Icon
+            source={getDisclosureIconSource(
+              disclosure,
+              ChevronUpMinor,
+              ChevronDownMinor,
+            )}
+          />
+        )}
       </div>
     </span>
   ) : null;
 
-  const iconSource = isIconSource(icon) ? (
-    <Icon source={loading ? 'placeholder' : icon} />
-  ) : (
-    icon
-  );
-  const iconMarkup = iconSource ? (
+  const iconMarkup = isIconSourceLike(icon) ? (
     <span className={classNames(styles.Icon, loading && styles.hidden)}>
-      {iconSource}
+      {loading ? (
+        <div
+          style={{
+            display: 'block',
+            height: '20px',
+            width: '20px',
+            maxHeight: '100%',
+            maxWidth: '100%',
+            margin: 'auto',
+            paddingBottom: '100%',
+            background: 'currentColor',
+          }}
+        />
+      ) : (
+        <Icon source={icon} />
+      )}
     </span>
   ) : null;
 
@@ -242,12 +263,10 @@ export function Button({
   return buttonMarkup;
 }
 
-function isIconSource(x: any): x is IconSource {
-  return (
-    typeof x === 'string' ||
-    (typeof x === 'object' && x.body) ||
-    typeof x === 'function'
-  );
+function isIconSourceLike(
+  x?: React.ReactElement | IconSource,
+): x is IconSource {
+  return isValidElement(x);
 }
 
 function getDisclosureIconSource(
