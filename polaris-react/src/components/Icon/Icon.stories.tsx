@@ -92,10 +92,6 @@ export function Colored() {
   );
 }
 
-export function WithPlaceholder() {
-  return <Icon source="placeholder" />;
-}
-
 export function WithCustomSVGAndColor() {
   const iconContent = () => {
     return (

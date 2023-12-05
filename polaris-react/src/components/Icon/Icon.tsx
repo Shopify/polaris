@@ -51,11 +51,7 @@ export function Icon(props: IconProps) {
           {accessibilityLabel}
         </Text>
       )}
-      {Source === 'placeholder' ? (
-        <div className={styles.Placeholder} />
-      ) : (
-        <Source className={styles.Svg} focusable="false" aria-hidden="true" />
-      )}
+      <Source className={styles.Svg} focusable="false" aria-hidden="true" />
     </span>
   );
 }
