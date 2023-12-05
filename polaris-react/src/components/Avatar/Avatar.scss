@@ -132,6 +132,26 @@
   }
 }
 
+.styleSix {
+  background: var(--p-color-avatar-six-bg-fill);
+  color: var(--p-color-avatar-six-text-on-bg-fill);
+
+  svg,
+  text {
+    color: var(--p-color-avatar-six-text-on-bg-fill);
+  }
+}
+
+.styleSeven {
+  background: var(--p-color-avatar-seven-bg-fill);
+  color: var(--p-color-avatar-seven-text-on-bg-fill);
+
+  svg,
+  text {
+    color: var(--p-color-avatar-seven-text-on-bg-fill);
+  }
+}
+
 .imageHasLoaded {
   background: transparent;
 }
