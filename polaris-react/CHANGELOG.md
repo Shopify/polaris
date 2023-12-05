@@ -28,11 +28,11 @@
 
 * [#11115](https://github.com/Shopify/polaris/pull/11115) [`45deb1941`](https://github.com/Shopify/polaris/commit/45deb1941fe7736f10f99ebb2b8f2989d7ca9c96) Thanks [@fatimasajadi](https://github.com/fatimasajadi)! - Fixed hover state of `IndexTable.Row` when `selectable` is `false`
 
-- [#10790](https://github.com/Shopify/polaris/pull/10790) [`53fe61479`](https://github.com/Shopify/polaris/commit/53fe61479df4e6334533dac84ba3f8ab58474d88) Thanks [@sophschneider](https://github.com/sophschneider)! - Updated IndexTable, ResourceList, and DataTable to have built-in pagination props
+- [#10633](https://github.com/Shopify/polaris/pull/10633) [`53fe61479`](https://github.com/Shopify/polaris/commit/53fe61479df4e6334533dac84ba3f8ab58474d88) Thanks [@mattkubej](https://github.com/mattkubej)! - Updated IndexTable, ResourceList, and DataTable to have built-in pagination props
 
-* [#10790](https://github.com/Shopify/polaris/pull/10790) [`35d92bcd8`](https://github.com/Shopify/polaris/commit/35d92bcd822d779421930087a015f3f2ef435083) Thanks [@sophschneider](https://github.com/sophschneider)! - Updated Filters to not render or perform filters logic if the filters array is empty
+* [#10726](https://github.com/Shopify/polaris/pull/10726) [`35d92bcd8`](https://github.com/Shopify/polaris/commit/35d92bcd822d779421930087a015f3f2ef435083) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated Filters to not render or perform filters logic if the filters array is empty
 
-- [#10790](https://github.com/Shopify/polaris/pull/10790) [`9159e5083`](https://github.com/Shopify/polaris/commit/9159e50830e2cb1876d1441d93eb32112f123429) Thanks [@sophschneider](https://github.com/sophschneider)! - Added support for an `EditColumns` button rendered in the `IndexFilters` deprecating the `Tabs`'s `edit-columns` action.
+- [#10800](https://github.com/Shopify/polaris/pull/10800) [`9159e5083`](https://github.com/Shopify/polaris/commit/9159e50830e2cb1876d1441d93eb32112f123429) Thanks [@sirgalleto](https://github.com/sirgalleto)! - Added support for an `EditColumns` button rendered in the `IndexFilters` deprecating the `Tabs`'s `edit-columns` action.
 
   - `IndexFilters`
     - Added support for rendering an Edit Columns button using the `showEditColumnsButton` flag.
@@ -75,7 +75,7 @@
 
 * [#11206](https://github.com/Shopify/polaris/pull/11206) [`0e8ab42b4`](https://github.com/Shopify/polaris/commit/0e8ab42b4731c42705302862ff090e9c38ff5c4f) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed disjointed Navigation arrow on small screens
 
-- [#10790](https://github.com/Shopify/polaris/pull/10790) [`fe8491507`](https://github.com/Shopify/polaris/commit/fe8491507f7cd77af6866bd6f5d49229923dbad0) Thanks [@sophschneider](https://github.com/sophschneider)! - Add support for using breakpoint tokens in CSS by using `@custom-media`
+- [#10804](https://github.com/Shopify/polaris/pull/10804) [`fe8491507`](https://github.com/Shopify/polaris/commit/fe8491507f7cd77af6866bd6f5d49229923dbad0) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Add support for using breakpoint tokens in CSS by using `@custom-media`
 
 * [#11124](https://github.com/Shopify/polaris/pull/11124) [`ad504d5be`](https://github.com/Shopify/polaris/commit/ad504d5be8e660838e4f8a80b01eda228c3c03df) Thanks [@sarahill](https://github.com/sarahill)! - Removed bevel from `pressed` `Button` when focused
 
@@ -95,7 +95,7 @@
 
 * [#11012](https://github.com/Shopify/polaris/pull/11012) [`c25478fba`](https://github.com/Shopify/polaris/commit/c25478fbadd7540d7eb38b6c184ec41fdd989add) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `FormLayout` spacing
 
-- [#10790](https://github.com/Shopify/polaris/pull/10790) [`c849ff468`](https://github.com/Shopify/polaris/commit/c849ff468f0c82c02b8064e20859ffa1063d1e2e) Thanks [@sophschneider](https://github.com/sophschneider)! - [Modal] Disallow vertical scroll with use of noScroll
+- [#10753](https://github.com/Shopify/polaris/pull/10753) [`c849ff468`](https://github.com/Shopify/polaris/commit/c849ff468f0c82c02b8064e20859ffa1063d1e2e) Thanks [@stephxshopify](https://github.com/stephxshopify)! - [Modal] Disallow vertical scroll with use of noScroll
 
 - Updated dependencies [[`c58632afa`](https://github.com/Shopify/polaris/commit/c58632afa1141c467533b7564e725f99ebbed71c), [`c3cad73cb`](https://github.com/Shopify/polaris/commit/c3cad73cb58217577ebd6c9b94ce184a1d362f0d), [`0b1961c16`](https://github.com/Shopify/polaris/commit/0b1961c162c6401589acf7d1ac5b9f12ab3b8f97), [`32cfbecb1`](https://github.com/Shopify/polaris/commit/32cfbecb136f57077bb5beefb58a4cc554dc8f71), [`97683ac05`](https://github.com/Shopify/polaris/commit/97683ac052fcc69c6f689520c15fde555d14fbfa), [`fe8491507`](https://github.com/Shopify/polaris/commit/fe8491507f7cd77af6866bd6f5d49229923dbad0)]:
   - @shopify/polaris-tokens@8.2.0
