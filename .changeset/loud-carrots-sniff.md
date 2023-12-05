@@ -2,4 +2,4 @@
 '@shopify/polaris': major
 ---
 
-Removed Data URL support from the `Icon` component
+Removed Data URL and `'placeholder'` support from the `Icon` component
