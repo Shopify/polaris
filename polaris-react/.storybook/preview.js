@@ -20,11 +20,6 @@ function StrictModeDecorator(Story, context) {
 }
 
 function AppProviderDecorator(Story, context) {
-  // Use system font in chromatic snapshots to avoid async font loading flakiness
-  if (isChromatic()) {
-    document.getElementById('inter-font-link').removeAttribute('href');
-  }
-
   if (context.args.omitAppProvider) return <Story {...context} />;
 
   return (
