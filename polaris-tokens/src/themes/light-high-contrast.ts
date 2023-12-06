@@ -29,11 +29,6 @@ export const metaThemeLightHighContrastPartial = createMetaThemePartial({
       value: colors.gray[6],
     },
   },
-  shadow: {
-    'shadow-bevel-100': {
-      value: '0px 1px 0px 0px rgba(194, 194, 194, 1)',
-    },
-  },
 });
 
 export const metaThemeLightHighContrast = createMetaTheme(

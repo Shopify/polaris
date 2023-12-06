@@ -11,7 +11,7 @@ $vertical-motion-offset: -5px;
   margin: $visible-portion-of-arrow var(--p-space-200) var(--p-space-400);
   will-change: left, top;
   border-radius: var(--p-border-radius-300);
-  box-shadow: var(--p-shadow-bevel-100), var(--p-shadow-300);
+  box-shadow: var(--p-shadow-bevel-300);
   outline: var(--p-border-width-025) solid var(--p-color-bevel-border);
   outline-offset: calc(-1 * var(--p-border-width-025));
 }
