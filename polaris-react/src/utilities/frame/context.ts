@@ -15,6 +15,8 @@ export interface FrameContextType {
   toastMessages: ToastPropsWithID[];
   setContextualSaveBar(props: ContextualSaveBarProps): void;
   removeContextualSaveBar(): void;
+  showContextualSaveBar(): boolean | null;
+  getContextualSaveBarProps(): ContextualSaveBarProps | null;
   startLoading(): void;
   stopLoading(): void;
 }

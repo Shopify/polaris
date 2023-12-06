@@ -3,11 +3,28 @@
 .startFade {
   opacity: 0;
   will-change: opacity;
-  transition: opacity var(--p-motion-duration-300) var(--p-motion-ease-out);
+  transition: opacity 500ms var(--p-motion-ease-out);
   pointer-events: none;
 }
 
 .endFade {
   opacity: 1;
+  pointer-events: auto;
+}
+
+.startSlideFade {
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 500ms var(--p-motion-ease-out);
+  pointer-events: none;
+  transform: translateX(-100px);
+  will-change: transform;
+  transition: transform var(--p-motion-duration-300) var(--p-motion-ease-out);
+}
+
+.endSlideFade {
+  opacity: 1;
+  transform: translateX(0px);
+  transition: transform var(--p-motion-duration-300) var(--p-motion-ease-out);
   pointer-events: auto;
 }

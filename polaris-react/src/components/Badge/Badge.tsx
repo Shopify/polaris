@@ -15,7 +15,7 @@ import {getDefaultAccessibilityLabel} from './utils';
 const DEFAULT_SIZE: Size = 'medium';
 interface NonMutuallyExclusiveProps {
   /** The content to display inside the badge. */
-  children?: string;
+  children?: React.ReactNode;
   /** Colors and labels the badge with the given tone. */
   tone?: Tone;
   /** Render a pip showing the progress of a given task. */

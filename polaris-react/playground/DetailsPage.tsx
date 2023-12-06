@@ -116,10 +116,14 @@ export function DetailsPage() {
       ),
     [],
   );
-  const toggleIsLoading = useCallback(
-    () => setIsLoading((isLoading) => !isLoading),
-    [],
-  );
+  const toggleIsLoading = useCallback(() => {
+    if (isDirty) {
+      const event = new CustomEvent('onLeaveDirtyState');
+      window.dispatchEvent(event);
+      return;
+    }
+    setIsLoading((isLoading) => !isLoading);
+  }, [isDirty]);
   const toggleModalActive = useCallback(
     () => setModalActive((modalActive) => !modalActive),
     [],
@@ -162,7 +166,7 @@ export function DetailsPage() {
 
   const contextualSaveBarMarkup = isDirty ? (
     <ContextualSaveBar
-      message="Unsaved changes"
+      message="You have unsaved changes"
       saveAction={{
         onAction: handleSave,
       }}
@@ -223,7 +227,7 @@ export function DetailsPage() {
             icon: HomeMajor,
             onClick: () => {
               toggleIsLoading();
-              setNavItemActive('home');
+              !isDirty && setNavItemActive('home');
             },
             matches: navItemActive === 'home',
             url: '#',
@@ -233,7 +237,7 @@ export function DetailsPage() {
             icon: OrdersMajor,
             onClick: () => {
               toggleIsLoading();
-              setNavItemActive('orders');
+              !isDirty && setNavItemActive('orders');
             },
             matches: navItemActive === 'orders',
             url: '#',
@@ -242,7 +246,7 @@ export function DetailsPage() {
                 label: 'All orders',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('all-orders');
+                  !isDirty && setNavItemActive('all-orders');
                 },
                 matches: navItemActive.includes('orders'),
                 url: '#',
@@ -252,7 +256,7 @@ export function DetailsPage() {
                 label: 'Drafts',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('drafts');
+                  !isDirty && setNavItemActive('drafts');
                 },
                 matches: navItemActive === 'drafts',
               },
@@ -261,7 +265,7 @@ export function DetailsPage() {
                 label: 'Abandoned checkouts',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('abandoned');
+                  !isDirty && setNavItemActive('abandoned');
                 },
                 matches: navItemActive === 'abandoned',
               },
@@ -272,7 +276,7 @@ export function DetailsPage() {
             icon: ProductsMajor,
             onClick: () => {
               toggleIsLoading();
-              setNavItemActive('products');
+              !isDirty && setNavItemActive('products');
             },
             matches: navItemActive === 'products',
             url: '#',
@@ -281,7 +285,7 @@ export function DetailsPage() {
                 label: 'All products',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('all-products');
+                  !isDirty && setNavItemActive('all-products');
                 },
                 matches: navItemActive.includes('products'),
                 url: '#',
@@ -291,7 +295,7 @@ export function DetailsPage() {
                 label: 'Inventory',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('inventory');
+                  !isDirty && setNavItemActive('inventory');
                 },
                 matches: navItemActive === 'inventory',
               },
@@ -300,7 +304,7 @@ export function DetailsPage() {
                 label: 'Transfers',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('transfers');
+                  !isDirty && setNavItemActive('transfers');
                 },
                 matches: navItemActive === 'transfers',
               },
@@ -311,7 +315,7 @@ export function DetailsPage() {
             icon: CustomersMajor,
             onClick: () => {
               toggleIsLoading();
-              setNavItemActive('customers');
+              !isDirty && setNavItemActive('customers');
             },
             matches: navItemActive === 'customers',
             url: '#',
@@ -321,7 +325,7 @@ export function DetailsPage() {
             icon: AnalyticsMajor,
             onClick: () => {
               toggleIsLoading();
-              setNavItemActive('analytics');
+              !isDirty && setNavItemActive('analytics');
             },
             matches: navItemActive === 'analytics',
             url: '#',
@@ -331,7 +335,7 @@ export function DetailsPage() {
             icon: MarketingMajor,
             onClick: () => {
               toggleIsLoading();
-              setNavItemActive('marketing');
+              !isDirty && setNavItemActive('marketing');
             },
             matches: navItemActive === 'marketing',
             url: '#',
@@ -341,7 +345,7 @@ export function DetailsPage() {
             icon: DiscountsMajor,
             onClick: () => {
               toggleIsLoading();
-              setNavItemActive('discounts');
+              !isDirty && setNavItemActive('discounts');
             },
             matches: navItemActive === 'discounts',
             url: '#',
@@ -351,7 +355,7 @@ export function DetailsPage() {
             icon: AppsMajor,
             onClick: () => {
               toggleIsLoading();
-              setNavItemActive('apps');
+              !isDirty && setNavItemActive('apps');
             },
             matches: navItemActive === 'apps',
             url: '#',
@@ -375,7 +379,7 @@ export function DetailsPage() {
             icon: posIcon,
             onClick: () => {
               toggleIsLoading();
-              setNavItemActive('pos');
+              !isDirty && setNavItemActive('pos');
             },
             matches: navItemActive === 'pos',
             url: '#',
@@ -384,7 +388,7 @@ export function DetailsPage() {
                 label: 'Overview',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('pos');
+                  !isDirty && setNavItemActive('pos');
                 },
                 matches: navItemActive.includes('pos'),
                 url: '#',
@@ -394,7 +398,7 @@ export function DetailsPage() {
                 label: 'Staff',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('pos');
+                  !isDirty && setNavItemActive('pos');
                 },
                 matches: navItemActive === 'pos',
               },
@@ -403,7 +407,7 @@ export function DetailsPage() {
                 label: 'Locations',
                 onClick: () => {
                   toggleIsLoading();
-                  setNavItemActive('pos');
+                  !isDirty && setNavItemActive('pos');
                 },
                 matches: navItemActive === 'pos',
                 external: true,
@@ -551,7 +555,12 @@ export function DetailsPage() {
   const actualPageMarkup = (
     <Page
       fullWidth
-      backAction={{content: 'Products', url: '/products/31'}}
+      backAction={{
+        onAction: () => {
+          toggleIsLoading();
+          !isDirty && setNavItemActive('home');
+        },
+      }}
       title={title}
       titleMetadata={<Badge tone="success">Success badge</Badge>}
       primaryAction={{
