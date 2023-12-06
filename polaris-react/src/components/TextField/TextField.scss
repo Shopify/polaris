@@ -343,7 +343,7 @@ $spinner-icon-size: 12px;
   color: var(--p-color-text-secondary);
   padding: var(--p-space-200) var(--p-space-200) 0 var(--p-space-200);
   max-height: 140px;
-  overflow: scroll;
+  overflow: auto;
   border: var(--p-border-width-025) solid transparent;
   width: 100%;
 

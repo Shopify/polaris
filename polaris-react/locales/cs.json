@@ -213,6 +213,7 @@
         "rename": "Přejmenovat zobrazení",
         "duplicate": "Duplikování zobrazení",
         "edit": "Upravit zobrazení",
+        "editColumns": "Upravit sloupce",
         "delete": "Odstranit zobrazení",
         "copy": "{name} – kopie",
         "deleteModal": {

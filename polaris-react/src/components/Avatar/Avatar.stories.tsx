@@ -33,11 +33,13 @@ type Style = typeof STYLE_CLASSES[number];
 const styleInitialsDefault: {
   [S in Style]: string;
 } = {
-  one: 'AA',
-  two: 'AG',
-  three: 'AC',
-  four: 'AB',
-  five: 'AE',
+  one: 'AI',
+  two: 'AM',
+  three: 'AB',
+  four: 'AC',
+  five: 'AG',
+  six: 'AA',
+  seven: 'AE',
 };
 
 const styleInitialsDefaultEntries = Object.entries(
@@ -47,11 +49,13 @@ const styleInitialsDefaultEntries = Object.entries(
 const styleInitialsLong: {
   [S in Style]: string;
 } = {
-  one: 'AAA',
-  two: 'AAB',
-  three: 'AAC',
-  four: 'AAD',
+  one: 'AAG',
+  two: 'AAD',
+  three: 'AAB',
+  four: 'AEE',
   five: 'AAE',
+  six: 'AAF',
+  seven: 'AAC',
 };
 
 const styleInitialsLongEntries = Object.entries(styleInitialsLong) as Entries<

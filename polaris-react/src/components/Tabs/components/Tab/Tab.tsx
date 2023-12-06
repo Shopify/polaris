@@ -15,6 +15,7 @@ import {
   InfoIcon,
   DuplicateIcon,
   EditIcon,
+  LayoutColumns3Icon,
   DeleteIcon,
   ChevronDownIcon,
 } from '@shopify/polaris-icons';
@@ -219,6 +220,10 @@ export const Tab = forwardRef(
       edit: {
         icon: EditIcon,
         content: i18n.translate('Polaris.Tabs.Tab.edit'),
+      },
+      'edit-columns': {
+        icon: LayoutColumns3Icon,
+        content: i18n.translate('Polaris.Tabs.Tab.editColumns'),
       },
       delete: {
         icon: DeleteIcon,

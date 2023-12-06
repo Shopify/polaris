@@ -71,9 +71,9 @@ export interface SelectProps {
   /** Callback when selection is changed */
   onChange?(selected: string, id: string): void;
   /** Callback when select is focused */
-  onFocus?(): void;
+  onFocus?(event?: React.FocusEvent<HTMLSelectElement>): void;
   /** Callback when focus is removed */
-  onBlur?(): void;
+  onBlur?(event?: React.FocusEvent<HTMLSelectElement>): void;
   /** Visual required indicator, add an asterisk to label */
   requiredIndicator?: boolean;
   /** Indicates the tone of the select */
@@ -114,9 +114,21 @@ export function Select({
     disabled && styles.disabled,
   );
 
-  const handleFocus = useCallback(() => {
-    toggleFocused();
-  }, [toggleFocused]);
+  const handleFocus = useCallback(
+    (event: React.FocusEvent<HTMLSelectElement>) => {
+      toggleFocused();
+      onFocus?.(event);
+    },
+    [onFocus, toggleFocused],
+  );
+
+  const handleBlur = useCallback(
+    (event: React.FocusEvent<HTMLSelectElement>) => {
+      toggleFocused();
+      onBlur?.(event);
+    },
+    [onBlur, toggleFocused],
+  );
 
   const handleChange = onChange
     ? (event: React.ChangeEvent<HTMLSelectElement>) =>
@@ -196,14 +208,8 @@ export function Select({
           value={value}
           className={styles.Input}
           disabled={disabled}
-          onFocus={() => {
-            handleFocus();
-            onFocus?.();
-          }}
-          onBlur={() => {
-            toggleFocused();
-            onBlur?.();
-          }}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
           onChange={handleChange}
           aria-invalid={Boolean(error)}
           aria-describedby={

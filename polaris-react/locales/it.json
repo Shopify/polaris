@@ -213,6 +213,7 @@
         "rename": "Rinomina vista",
         "duplicate": "Duplica vista",
         "edit": "Modifica vista",
+        "editColumns": "Modifica colonne",
         "delete": "Elimina vista",
         "copy": "Copia di {name}",
         "deleteModal": {
