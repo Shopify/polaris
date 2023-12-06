@@ -1,2 +1,2 @@
-polaris-storybook: yarn turbo run dev --filter=@shopify/polaris
-polaris-website: yarn turbo run dev --filter=polaris.shopify.com
+storybook: yarn turbo run dev --filter=@shopify/polaris
+website: yarn turbo run dev --filter=polaris.shopify.com
