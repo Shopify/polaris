@@ -39,10 +39,6 @@ server {
     location / {
         proxy_pass http://storybook;
     }
-
-    location / {
-        proxy_pass http://website;
-    }
 }
 
 server {
