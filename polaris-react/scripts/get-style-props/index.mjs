@@ -273,7 +273,7 @@ import type {StandardLonghandProperties, Globals} from 'csstype';
 import type {breakpointsAliases,BreakpointsAlias,TokenizedStyleProps} from '@shopify/polaris-tokens';
 import type {OverrideProperties, Simplify}  from 'type-fest';
 
-import type {ResponsiveProp} from '../../utilities/css';
+import type {ResponsiveProp, ResponsivePropObject} from '../../utilities/css';
 
 /**
  * Pick only the keys in \`PickFrom\` which are also in \`IntersectWith\`.
@@ -363,6 +363,14 @@ export type ResponsiveStylePropsWithModifiers = Simplify<
     [K in typeof modifiers[number]]?: ResponsiveStyleProps;
   }
 >;
+
+export type ResponsiveStylePropObjects = {
+  [T in keyof ResponsiveStyleProps]?: ResponsiveStyleProps[T] extends ResponsiveProp<
+    infer V
+  >
+    ? ResponsivePropObject<V>
+    : never;
+};
 
 /**
 * Polaris specifies some aliases which are used as fallback values when an
@@ -482,11 +490,19 @@ export const stylePropAliasNames: (keyof StyleProps)[] = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat())
 );
 
-type StaticDefaultValue<K extends keyof StyleProps> = StyleProps[K] | undefined;
-type DynamicDefaultValue<K extends keyof StyleProps> = (props: ResponsiveStyleProps) => StyleProps[K] | undefined;
-export type PropDefaults = { [K in keyof StyleProps]?: StaticDefaultValue<K> | DynamicDefaultValue<K>};
-export type StaticPropDefaults = {[K in keyof StyleProps]?: StaticDefaultValue<K>};
-export type DynamicPropDefaults = { [K in keyof StyleProps]?: DynamicDefaultValue<K>;}
+type StaticDefaultValue<K extends keyof SupportedCSSStyleProps> =
+  | SupportedCSSStyleProps[K]
+  | undefined;
+
+type DynamicDefaultValue<K extends keyof SupportedCSSStyleProps> = (
+  props: ResponsiveStylePropObjects
+) => SupportedCSSStyleProps[K] | undefined;
+
+export type PropDefaults = {
+  [K in keyof SupportedCSSStyleProps]?:
+    | StaticDefaultValue<K>
+    | DynamicDefaultValue<K>;
+};
 
 export const stylePropDefaults = {
   ${Object.entries(stylePropConfig)

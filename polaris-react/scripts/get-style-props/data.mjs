@@ -131,7 +131,7 @@ export const disallowedCSSPropertyValues = [
  * styleProps = {
  *   ...StandardLonghandProperties.exclude(disallowedCSSProperties),
  *   ...stylePropConfig,
- *   ...stylePropConfig[].fallbacks.flat(),
+ *   ...stylePropConfig[].aliases.flat(),
  * };
  * ```
  *
