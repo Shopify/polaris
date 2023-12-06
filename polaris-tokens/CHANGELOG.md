@@ -1,5 +1,20 @@
 # Changelog
 
+## 8.2.0
+
+### Minor Changes
+
+- [#11173](https://github.com/Shopify/polaris/pull/11173) [`c58632afa`](https://github.com/Shopify/polaris/commit/c58632afa1141c467533b7564e725f99ebbed71c) Thanks [@jesstelford](https://github.com/jesstelford)! - Add 0 tokens where missing as per [the team's decision](https://github.com/Shopify/polaris/discussions/7334#discussioncomment-4988991).
+
+* [#11261](https://github.com/Shopify/polaris/pull/11261) [`32cfbecb1`](https://github.com/Shopify/polaris/commit/32cfbecb136f57077bb5beefb58a4cc554dc8f71) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated `Avatar` background and text colors
+
+- [#11219](https://github.com/Shopify/polaris/pull/11219) [`97683ac05`](https://github.com/Shopify/polaris/commit/97683ac052fcc69c6f689520c15fde555d14fbfa) Thanks [@matallo](https://github.com/matallo)! - - Bumped `color-text-magic-secondary` to purple 13
+  - Added `tone` prop with `magic` value to `Select`
+  - Added `magic` value to `tone` prop of `Text`
+  - Added `magic-subdued` value to `tone` prop of `Text`
+
+* [#10790](https://github.com/Shopify/polaris/pull/10790) [`fe8491507`](https://github.com/Shopify/polaris/commit/fe8491507f7cd77af6866bd6f5d49229923dbad0) Thanks [@sophschneider](https://github.com/sophschneider)! - Add support for using breakpoint tokens in CSS by using `@custom-media`
+
 ## 8.1.0
 
 ### Minor Changes
