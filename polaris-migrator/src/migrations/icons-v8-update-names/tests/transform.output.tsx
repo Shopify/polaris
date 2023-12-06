@@ -182,7 +182,7 @@ import {
   ExternalIcon,
   ExternalSmallIcon,
   EyeDropperIcon,
-  SocialFacebookIcon,
+  LogoFacebookIcon,
   FaviconIcon,
   StarIcon,
   CollectionFeaturedIcon,
@@ -241,7 +241,7 @@ import {
   IncomingIcon,
   TextIndentIcon,
   DatabaseAddIcon,
-  SocialInstagramIcon,
+  LogoInstagramIcon,
   InventoryFilledIcon,
   IqIcon,
   TextItalicIcon,
@@ -328,7 +328,7 @@ import {
   PhoneOutIcon,
   PinFilledIcon,
   PinIcon,
-  SocialPintrestIcon,
+  LogoPintrestIcon,
   PlanFilledIcon,
   PlanIcon,
   PlayCircleIcon,
@@ -391,7 +391,7 @@ import {
   SmileyJoyIcon,
   SmileyNeutralIcon,
   SmileySadIcon,
-  SocialSnapchatIcon,
+  LogoSnapchatIcon,
   SocialAdIcon,
   SocialPostIcon,
   EnvelopeSoftPackIcon,
@@ -425,7 +425,7 @@ import {
   ThumbsDownIcon,
   ThumbsUpIcon,
   CheckSmallIcon,
-  SocialTiktokIcon,
+  LogoTiktokIcon,
   ChartHistogramGrowthIcon,
   PageAttachmentIcon,
   TipJarIcon,
@@ -445,9 +445,9 @@ import {
   TransferInternalIcon,
   LanguageTranslateIcon,
   AirplaneIcon,
-  SocialTumblrIcon,
-  SocialTwitchIcon,
-  SocialTwitterIcon,
+  LogoTumblrIcon,
+  LogoTwitchIcon,
+  LogoTwitterIcon,
   TextFontIcon,
   TextUnderlineIcon,
   UndoIcon,
@@ -463,7 +463,7 @@ import {
   ViewportShortIcon,
   ViewportTallIcon,
   ViewportWideIcon,
-  SocialVimeoIcon,
+  LogoVimeoIcon,
   BookOpenIcon,
   MeasurementVolumeIcon,
   WandIcon,
@@ -471,7 +471,7 @@ import {
   MeasurementWeightIcon,
   ForkliftIcon,
   WifiIcon,
-  SocialYoutubeIcon,
+  LogoYoutubeIcon,
 } from '@shopify/polaris-icons';
 import React from 'react';
 
@@ -860,8 +860,8 @@ export function App() {
       <Icon source={ExternalSmallIcon} />
       <Icon source={EyeDropperIcon} />
       <Icon source={EyeDropperIcon} />
-      <Icon source={SocialFacebookIcon} />
-      <Icon source={SocialFacebookIcon} />
+      <Icon source={LogoFacebookIcon} />
+      <Icon source={LogoFacebookIcon} />
       <Icon source={FaviconIcon} />
       <Icon source={FaviconIcon} />
       <Icon source={StarIcon} />
@@ -980,8 +980,8 @@ export function App() {
       <Icon source={InfoIcon} />
       <Icon source={DatabaseAddIcon} />
       <Icon source={DatabaseAddIcon} />
-      <Icon source={SocialInstagramIcon} />
-      <Icon source={SocialInstagramIcon} />
+      <Icon source={LogoInstagramIcon} />
+      <Icon source={LogoInstagramIcon} />
       <Icon source={ImportIcon} />
       <Icon source={ImportIcon} />
       <Icon source={InventoryIcon} />
@@ -1182,8 +1182,8 @@ export function App() {
       <Icon source={PhoneOutIcon} />
       <Icon source={PinFilledIcon} />
       <Icon source={PinFilledIcon} />
-      <Icon source={SocialPintrestIcon} />
-      <Icon source={SocialPintrestIcon} />
+      <Icon source={LogoPintrestIcon} />
+      <Icon source={LogoPintrestIcon} />
       <Icon source={PinIcon} />
       <Icon source={PinIcon} />
       <Icon source={PlanIcon} />
@@ -1320,8 +1320,8 @@ export function App() {
       <Icon source={SmileyNeutralIcon} />
       <Icon source={SmileySadIcon} />
       <Icon source={SmileySadIcon} />
-      <Icon source={SocialSnapchatIcon} />
-      <Icon source={SocialSnapchatIcon} />
+      <Icon source={LogoSnapchatIcon} />
+      <Icon source={LogoSnapchatIcon} />
       <Icon source={SocialAdIcon} />
       <Icon source={SocialAdIcon} />
       <Icon source={SocialPostIcon} />
@@ -1392,8 +1392,8 @@ export function App() {
       <Icon source={CheckIcon} />
       <Icon source={CheckSmallIcon} />
       <Icon source={CheckSmallIcon} />
-      <Icon source={SocialTiktokIcon} />
-      <Icon source={SocialTiktokIcon} />
+      <Icon source={LogoTiktokIcon} />
+      <Icon source={LogoTiktokIcon} />
       <Icon source={ChartHistogramGrowthIcon} />
       <Icon source={ChartHistogramGrowthIcon} />
       <Icon source={PageAttachmentIcon} />
@@ -1434,12 +1434,12 @@ export function App() {
       <Icon source={AirplaneIcon} />
       <Icon source={WrenchIcon} />
       <Icon source={WrenchIcon} />
-      <Icon source={SocialTumblrIcon} />
-      <Icon source={SocialTumblrIcon} />
-      <Icon source={SocialTwitchIcon} />
-      <Icon source={SocialTwitchIcon} />
-      <Icon source={SocialTwitterIcon} />
-      <Icon source={SocialTwitterIcon} />
+      <Icon source={LogoTumblrIcon} />
+      <Icon source={LogoTumblrIcon} />
+      <Icon source={LogoTwitchIcon} />
+      <Icon source={LogoTwitchIcon} />
+      <Icon source={LogoTwitterIcon} />
+      <Icon source={LogoTwitterIcon} />
       <Icon source={TextFontIcon} />
       <Icon source={TextFontIcon} />
       <Icon source={TextUnderlineIcon} />
@@ -1470,8 +1470,8 @@ export function App() {
       <Icon source={ViewportTallIcon} />
       <Icon source={ViewportWideIcon} />
       <Icon source={ViewportWideIcon} />
-      <Icon source={SocialVimeoIcon} />
-      <Icon source={SocialVimeoIcon} />
+      <Icon source={LogoVimeoIcon} />
+      <Icon source={LogoVimeoIcon} />
       <Icon source={BookOpenIcon} />
       <Icon source={BookOpenIcon} />
       <Icon source={MeasurementVolumeIcon} />
@@ -1486,8 +1486,8 @@ export function App() {
       <Icon source={ForkliftIcon} />
       <Icon source={WifiIcon} />
       <Icon source={WifiIcon} />
-      <Icon source={SocialYoutubeIcon} />
-      <Icon source={SocialYoutubeIcon} />
+      <Icon source={LogoYoutubeIcon} />
+      <Icon source={LogoYoutubeIcon} />
     </>
   );
 }

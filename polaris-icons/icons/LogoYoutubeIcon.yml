@@ -1,8 +1,7 @@
-name: Social facebook
-set: Minor
-description: Facebook logo
+name: Logo youtube
+description: Used to represent Youtube.
 keywords:
-  - facebook
+  - Youtube
   - social media
 authors:
   - Joe Thomas
