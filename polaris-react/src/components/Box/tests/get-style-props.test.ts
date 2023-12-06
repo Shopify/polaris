@@ -92,7 +92,7 @@ describe('convertStylePropsToCSSProperties', () => {
     `);
   });
 
-  it("responsive props fallback to 'unset' when width below smallest breakpoint specified.", () => {
+  it('fallback to browser default behaviour (ie; `unset`) for responsive sizes smaller than those set on the style prop', () => {
     const styleProps: ResponsiveStylePropsWithModifiers = {
       backgroundColor: {md: 'bg-fill-info'},
     };
@@ -177,7 +177,7 @@ describe('convertStylePropsToCSSProperties', () => {
         ).toMatchInlineSnapshot(`Object {}`);
       });
 
-      it('is included in inline styles when responsive style props are passed that are not xs', () => {
+      it('is set when responsive style props are passed that are not xs', () => {
         const styleProps: ResponsiveStylePropsWithModifiers = {
           borderInlineStartStyle: {md: 'dashed'},
         };
@@ -223,7 +223,7 @@ describe('convertStylePropsToCSSProperties', () => {
     });
 
     describe('dynamic/function value', () => {
-      it('applies function values', () => {
+      it("applies function values even when styleprop isn't passed", () => {
         const styleProps: ResponsiveStylePropsWithModifiers = {display: 'flex'};
         const mockGetDefault = jest.fn(() => 'solid');
         const defaults: PropDefaults = {
@@ -273,6 +273,24 @@ describe('convertStylePropsToCSSProperties', () => {
           `);
       });
 
+      it('is set when responsive style props are passed that are not xs', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          borderInlineStartStyle: {md: 'dashed'},
+        };
+        const mockGetDefault = jest.fn(() => 'solid');
+        const defaults: PropDefaults = {
+          borderInlineStartStyle:
+            mockGetDefault as PropDefaults['borderInlineStartStyle'],
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "--_1md": "var(--_md) dashed",
+              "borderInlineStartStyle": "var(--_1md,solid)",
+            }
+          `);
+      });
+
       it('ignores undefined values', () => {
         const styleProps: ResponsiveStylePropsWithModifiers = {};
         const mockGetDefault = jest.fn(() => undefined);
@@ -301,9 +319,15 @@ describe('convertStylePropsToCSSProperties', () => {
         // @ts-expect-error The array index DOES exist given the above expect()
         // call
         expect(mockGetDefault.mock.calls[0][0]).toMatchObject({
-          display: 'flex',
-          paddingInlineStart: '200',
-          paddingInlineEnd: '200',
+          display: {
+            xs: 'flex',
+          },
+          paddingInlineEnd: {
+            xs: '200',
+          },
+          paddingInlineStart: {
+            xs: '200',
+          },
         });
       });
     });

@@ -3,15 +3,13 @@ import {breakpointsAliases} from '@shopify/polaris-tokens';
 import type {BreakpointsAlias} from '@shopify/polaris-tokens';
 import type {Entries} from 'type-fest';
 
-import type {ResponsiveProp, ResponsivePropObject} from '../../utilities/css';
 import {isObject} from '../../utilities/is-object';
 
 import type {
   ResponsiveStyleProps,
   ResponsiveStylePropsWithModifiers,
+  ResponsiveStylePropObjects,
   PropDefaults,
-  StaticPropDefaults,
-  DynamicPropDefaults,
   BreakpointsAliasesWithBaseKey,
 } from './generated-data';
 import {
@@ -24,14 +22,6 @@ import {
   cssCustomPropertyNamespace,
   modifiers,
 } from './generated-data';
-
-type ResponsiveStylePropObjects = {
-  [T in keyof ResponsiveStyleProps]?: ResponsiveStyleProps[T] extends ResponsiveProp<
-    infer V
-  >
-    ? ResponsivePropObject<V>
-    : never;
-};
 
 type ModifierStyleProps = {
   [K in (typeof allModifiers)[number]]?: ResponsiveStyleProps;
@@ -179,40 +169,6 @@ function keyByModifiers(styleProps: ResponsiveStylePropsWithModifiers) {
   return modifierStyleProps;
 }
 
-function resolveConcreteLonghandValues(
-  styleProps: ResponsiveStyleProps,
-  defaults: DynamicPropDefaults,
-): ResponsiveStyleProps {
-  // Ensure constituent styles are given fallback values even when they're not
-  // passed in as an explicit style prop.
-  let longhandStyleProps: ResponsiveStyleProps =
-    resolveAliasFallbacks(styleProps);
-
-  // Mix in the default values. We can't do this before resolving aliases as it
-  // can interfere with the expected fallbacks being applied.
-  // For example, given a fallback:
-  // "paddingInlineStart": ['paddingInline', 'padding']
-  // And a default of { paddingInline: '400' },
-  // If the user passes in { padding: '600' }, we want the final value of
-  // `paddingInlineStart` to fallback to `padding`'s '600'. But if we mixin the
-  // defaults before resolving the fallbacks, `paddingInlineStart` would
-  // fallback to `paddingInline: '400'` which is NOT what we want.
-  longhandStyleProps = {
-    ...Object.fromEntries(
-      Object.entries(defaults).map(([prop, getDefault]) => [
-        prop,
-        typeof getDefault === 'function'
-          ? getDefault(longhandStyleProps)
-          : getDefault,
-      ]),
-    ),
-    ...longhandStyleProps,
-  };
-
-  // Defaults may have contained aliases, so we have to resolve those again.
-  return resolveAliasFallbacks(longhandStyleProps);
-}
-
 const getCustomPropertyValueForStyleProp = ({
   value,
   breakpoint,
@@ -358,16 +314,6 @@ export function convertStylePropsToCSSProperties(
     modifier: (typeof allModifiers)[number],
   ) => unknown = identity,
 ) {
-  const dynamicDefaults: DynamicPropDefaults = Object.fromEntries(
-    Object.entries(defaults).filter(
-      ([_, getDefault]) => typeof getDefault === 'function',
-    ),
-  );
-  const staticDefaults: StaticPropDefaults = Object.fromEntries(
-    Object.entries(defaults).filter(
-      ([_, getDefault]) => typeof getDefault !== 'function',
-    ),
-  );
   const stylePropsByModifier = mapObjectValues(
     // Split out things like `_hover` into their own objects:
     // {
@@ -379,10 +325,29 @@ export function convertStylePropsToCSSProperties(
     keyByModifiers(styleProps),
     (value) =>
       normalizeStyleProps(
-        // Expand all the aliases and apply defaults.
-        resolveConcreteLonghandValues(value!, dynamicDefaults),
+        // Ensure constituent styles are given fallback values even when they're not
+        // passed in as an explicit style prop.
+        resolveAliasFallbacks(value!),
       ),
   );
+
+  // Dynamic defaults must always have their style prop set, so we inject those
+  // keys into the style object now (with a value of `undefined`).
+  // Note 1: we do not evaluate the dynamic values yet, that happens later.
+  // Note 2: static defaults can fallback to the generated .css values.
+  stylePropsByModifier[baseStylePropsModifierKey] = {
+    ...Object.fromEntries(
+      Object.entries(defaults)
+        .filter(([, getDefault]) => typeof getDefault === 'function')
+        .map(([prop]) => [
+          prop,
+          {
+            [breakpointsAliases[0]]: undefined,
+          },
+        ]),
+    ),
+    ...stylePropsByModifier[baseStylePropsModifierKey],
+  };
 
   // Get a list of all the properties that are set across the normal styleProps
   // AND the modifiers.
@@ -445,11 +410,6 @@ export function convertStylePropsToCSSProperties(
       }
     }
 
-    // Nothing to do.
-    if (valuesByPriority.length === 0) {
-      return acc;
-    }
-
     // Since Typescript doesn't have negation types (`string & not 'inherit'`),
     // we need to do a runtime check for invalid values because some of the
     // csstype types have a `| string` union which then allows some values to
@@ -469,12 +429,12 @@ export function convertStylePropsToCSSProperties(
 
     let leastSpecificValue: unknown;
 
-    const lastValue = valuesByPriority[valuesByPriority.length - 1];
+    const lastValue = valuesByPriority[valuesByPriority.length - 1] ?? {};
 
     // Is the least specific / final fallback value set (ie; smallest
-    // breakpoint with no modifiers)? If so, it can be set directly without
-    // needing to be processed like other CSS custom properties which leverage
-    // the space hack.
+    // breakpoint with no modifiers)?
+    // If so, it can be set directly without needing to be processed like other
+    // CSS custom properties which leverage the space hack.
     if (
       lastValue.breakpoint === baseStylePropsBreakpointKey &&
       lastValue.modifier === baseStylePropsModifierKey
@@ -483,8 +443,33 @@ export function convertStylePropsToCSSProperties(
       leastSpecificValue = lastValue.value;
       // Then remove it so it doesn't get processed like other CSS variables.
       valuesByPriority.pop();
-    } else if (staticDefaults[stylePropName]) {
-      leastSpecificValue = staticDefaults[stylePropName];
+    } else {
+      // This typecast is ok since PropDefaults is a subset of Props
+      const possibleDefault = defaults[stylePropName as keyof PropDefaults];
+
+      // If there's a default set for this style prop, it too can be set
+      // directly without being having to leverage the space hack.
+      if (typeof possibleDefault === 'function') {
+        // Dynamic values need to be evaluated now
+        leastSpecificValue = possibleDefault(
+          stylePropsByModifier[baseStylePropsModifierKey] ?? {},
+        );
+      } else {
+        // Why set a static value here when we're already setting it in the
+        // generated .css file? Because the CSS cascade information has been
+        // discarded by the browser by the time CSS custom properties are
+        // evalutated, so when a style prop is set the browser no longer knows
+        // about the values in the .css file (style attribute overrides the
+        // class properties).
+        // Therefore, we need to explicitly set the value here. Since we're only
+        // iterating over the properties which are explicitly set, we are only
+        // setting a default value here when we're leveraging the space hack.
+        // For non-passed style props, we're not setting that declaration on the
+        // style attribute, so this line will never execute, and the browser
+        // will be able to use the cascaded value from the .css file.
+        // See: https://www.w3.org/TR/css-variables/#invalid-variables
+        leastSpecificValue = possibleDefault;
+      }
     }
 
     // We need to ensure CSS declarations are scoped to the current DOM node
