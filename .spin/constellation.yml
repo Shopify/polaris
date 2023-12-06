@@ -1,0 +1,5 @@
+schema: v1
+description: Shopify's Admin Design System
+repos:
+  - polaris
+    - branch: "main"
