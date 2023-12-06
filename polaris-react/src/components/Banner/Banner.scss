@@ -6,7 +6,7 @@
   display: flex;
   outline: var(--p-border-width-025) solid var(--p-color-bevel-transparent-border);
   outline-offset: calc(-1 * var(--p-border-width-025));
-  box-shadow: var(--p-shadow-bevel-100), var(--p-shadow-200);
+  box-shadow: var(--p-shadow-bevel-200);
 
   &:focus {
     outline: none;
