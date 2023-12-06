@@ -165,82 +165,147 @@ describe('convertStylePropsToCSSProperties', () => {
     `);
   });
 
-  describe('defaults', () => {
-    it('does not apply static values', () => {
-      const styleProps: ResponsiveStylePropsWithModifiers = {display: 'flex'};
-      const defaults: PropDefaults = {
-        borderInlineStartStyle: 'solid',
-      };
-      expect(convertStylePropsToCSSProperties(styleProps, defaults))
-        .toMatchInlineSnapshot(`
-        Object {
-          "display": "flex",
-        }
-      `);
-    });
+  describe('default', () => {
+    describe('static value', () => {
+      it('is inherited from generated .css file when styleProp not set', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {};
+        const defaults: PropDefaults = {
+          borderInlineStartStyle: 'solid',
+        };
+        expect(
+          convertStylePropsToCSSProperties(styleProps, defaults),
+        ).toMatchInlineSnapshot(`Object {}`);
+      });
 
-    it('applies function values', () => {
-      const mockGetDefault = jest.fn(() => 'solid');
-      const styleProps: ResponsiveStylePropsWithModifiers = {display: 'flex'};
-      const defaults: PropDefaults = {
-        borderInlineStartStyle:
-          mockGetDefault as PropDefaults['borderInlineStartStyle'],
-      };
-      expect(convertStylePropsToCSSProperties(styleProps, defaults))
-        .toMatchInlineSnapshot(`
-        Object {
-          "borderInlineStartStyle": "solid",
-          "display": "flex",
-        }
-      `);
+      it('is included in inline styles when responsive style props are passed that are not xs', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          borderInlineStartStyle: {md: 'dashed'},
+        };
+        const defaults: PropDefaults = {
+          borderInlineStartStyle: 'solid',
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "--_1md": "var(--_md) dashed",
+              "borderInlineStartStyle": "var(--_1md,solid)",
+            }
+          `);
+      });
 
-      expect(mockGetDefault.mock.calls).toHaveLength(1);
-      // @ts-expect-error The array index DOES exist given the above expect()
-      // call
-      expect(mockGetDefault.mock.calls[0][0]).toMatchObject({
-        display: 'flex',
+      it('is overridden by "xs" value in a responsive style prop', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          borderInlineStartStyle: {xs: 'dashed'},
+        };
+        const defaults: PropDefaults = {
+          borderInlineStartStyle: 'solid',
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "borderInlineStartStyle": "dashed",
+            }
+          `);
+      });
+
+      it('does not interfere with non-default style props', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {display: 'flex'};
+        const defaults: PropDefaults = {
+          borderInlineStartStyle: 'solid',
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "display": "flex",
+            }
+          `);
       });
     });
 
-    it('are not applied when no style props are passed', () => {
-      const styleProps: ResponsiveStylePropsWithModifiers = {};
-      const defaults: PropDefaults = {
-        borderInlineStartStyle: 'solid',
-      };
-      expect(
-        convertStylePropsToCSSProperties(styleProps, defaults),
-      ).toMatchInlineSnapshot(`Object {}`);
-    });
+    describe('dynamic/function value', () => {
+      it('applies function values', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {display: 'flex'};
+        const mockGetDefault = jest.fn(() => 'solid');
+        const defaults: PropDefaults = {
+          borderInlineStartStyle:
+            mockGetDefault as PropDefaults['borderInlineStartStyle'],
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "borderInlineStartStyle": "solid",
+              "display": "flex",
+            }
+          `);
+      });
 
-    it('are applied when defaults are passed, and responsive style props are passed that are not xs', () => {
-      const styleProps: ResponsiveStylePropsWithModifiers = {
-        borderInlineStartStyle: {md: 'dashed'},
-      };
-      const defaults: PropDefaults = {
-        borderInlineStartStyle: 'solid',
-      };
-      expect(convertStylePropsToCSSProperties(styleProps, defaults))
-        .toMatchInlineSnapshot(`
-        Object {
-          "--_1md": "var(--_md) dashed",
-          "borderInlineStartStyle": "var(--_1md,solid)",
-        }
-      `);
-    });
+      it('is overridden by a static style prop value', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          borderInlineStartStyle: 'dashed',
+        };
+        const mockGetDefault = jest.fn(() => 'solid');
+        const defaults: PropDefaults = {
+          borderInlineStartStyle:
+            mockGetDefault as PropDefaults['borderInlineStartStyle'],
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "borderInlineStartStyle": "dashed",
+            }
+          `);
+      });
 
-    it('are not applied when defaults are passed, and responsive style props are passed that include xs', () => {
-      const styleProps: ResponsiveStylePropsWithModifiers = {
-        borderInlineStartStyle: {xs: 'dashed'},
-      };
-      const defaults: PropDefaults = {
-        borderInlineStartStyle: 'solid',
-      };
-      expect(convertStylePropsToCSSProperties(styleProps, defaults))
-        .toMatchInlineSnapshot(`
-        Object {
-          "borderInlineStartStyle": "dashed",
-        }
-      `);
+      it('is overridden by "xs" value in a responsive style prop', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          borderInlineStartStyle: {xs: 'dashed'},
+        };
+        const mockGetDefault = jest.fn(() => 'solid');
+        const defaults: PropDefaults = {
+          borderInlineStartStyle:
+            mockGetDefault as PropDefaults['borderInlineStartStyle'],
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "borderInlineStartStyle": "dashed",
+            }
+          `);
+      });
+
+      it('ignores undefined values', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {};
+        const mockGetDefault = jest.fn(() => undefined);
+        const defaults: PropDefaults = {
+          borderInlineStartStyle:
+            mockGetDefault as PropDefaults['borderInlineStartStyle'],
+        };
+        expect(
+          convertStylePropsToCSSProperties(styleProps, defaults),
+        ).toMatchInlineSnapshot(`Object {}`);
+      });
+
+      it('is called with longhand style props', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          display: 'flex',
+          paddingInline: '200',
+        };
+        const mockGetDefault = jest.fn(() => 'solid');
+        const defaults: PropDefaults = {
+          borderInlineStartStyle:
+            mockGetDefault as PropDefaults['borderInlineStartStyle'],
+        };
+        convertStylePropsToCSSProperties(styleProps, defaults);
+
+        expect(mockGetDefault.mock.calls).toHaveLength(1);
+        // @ts-expect-error The array index DOES exist given the above expect()
+        // call
+        expect(mockGetDefault.mock.calls[0][0]).toMatchObject({
+          display: 'flex',
+          paddingInlineStart: '200',
+          paddingInlineEnd: '200',
+        });
+      });
     });
   });
 
