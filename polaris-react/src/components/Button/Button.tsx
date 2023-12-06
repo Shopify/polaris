@@ -170,8 +170,9 @@ export function Button({
     </span>
   ) : null;
 
-  const iconMarkup = isIconSourceLike(icon) ? (
+  const iconMarkup = icon ? (
     <span className={classNames(styles.Icon, loading && styles.hidden)}>
+      {/* eslint-disable-next-line no-nested-ternary */}
       {loading ? (
         <div
           style={{
@@ -185,6 +186,8 @@ export function Button({
             background: 'currentColor',
           }}
         />
+      ) : isValidElement(icon) ? (
+        icon
       ) : (
         <Icon source={icon} />
       )}
@@ -261,12 +264,6 @@ export function Button({
   );
 
   return buttonMarkup;
-}
-
-function isIconSourceLike(
-  x?: React.ReactElement | IconSource,
-): x is IconSource {
-  return isValidElement(x);
 }
 
 function getDisclosureIconSource(
