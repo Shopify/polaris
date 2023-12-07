@@ -1,17 +1,15 @@
 const fs = require('fs');
 const path = require('path');
 
+const svgo = require('svgo');
 const globby = require('globby');
 const unified = require('unified');
 const parse = require('rehype-parse');
 const {select, selectAll} = require('hast-util-select');
 
-const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
+const svgoConfig = require('../svgo.config');
 
-const configPerSet = new Map([
-  ['Major', {viewbox: '0 0 20 20', colors: ['#5C5F62', '#5c5f62']}],
-  ['Minor', {viewbox: '0 0 20 20', colors: ['#5C5F62', '#5c5f62']}],
-]);
+const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
 
 const allIconFiles = globby
   .sync(path.resolve(__dirname, '../icons/*.svg'))
@@ -20,16 +18,21 @@ const allIconFiles = globby
     const [, set] = nameRegex.exec(absoluteIconPath) || [];
 
     const iconSource = fs.readFileSync(absoluteIconPath, 'utf-8');
+    const optimizedSource = svgo.optimize(iconSource, svgoConfig).data;
 
-    const svg = configPerSet.get([set].filter(Boolean).join('_'));
+    const svg = new Map([
+      ['Major', {viewbox: '0 0 20 20'}],
+      ['Minor', {viewbox: '0 0 20 20'}],
+    ]).get([set].filter(Boolean).join('_'));
     if (svg == null) {
       throw new Error(
-        `SVG config not found for ${absoluteIconPath}. Make sure your icon contains "Major" or "Minor" in its name.`,
+        `SVG metadata not found for ${absoluteIconPath}. Make sure your icon contains "Major" or "Minor" in its name.`,
       );
     }
     return {
       iconPath: path.relative(path.join(__dirname, '..'), absoluteIconPath),
       iconSource,
+      optimizedSource,
       iconAst: unified()
         .use(parse, {fragment: true, space: 'svg'})
         .parse(iconSource),
@@ -39,13 +42,17 @@ const allIconFiles = globby
   });
 
 allIconFiles.forEach(
-  ({iconPath, iconSource, iconAst, expectedViewbox, expectedFillColors}) => {
+  ({
+    iconPath,
+    iconSource,
+    optimizedSource,
+    iconAst,
+    expectedViewbox,
+    expectedFillColors,
+  }) => {
     describe(`SVG Contents: packages/${iconPath}`, () => {
-      it(`only has the expected root attributes`, () => {
-        const properties = Object.keys(
-          select(':root', iconAst).properties,
-        ).sort();
-        expect(properties).toStrictEqual(['viewBox', 'xmlns'].sort());
+      it(`is optimized`, () => {
+        expect(iconSource).toStrictEqual(optimizedSource);
       });
 
       it(`has an xml namespace`, () => {
@@ -64,31 +71,8 @@ allIconFiles.forEach(
         expect(nodeSources(groupNodes, iconSource)).toStrictEqual([]);
       });
 
-      it('tags are self-closing whenever possible', () => {
-        const allNodes = selectAll('*', iconAst);
-        const allNodeStrings = nodeSources(allNodes, iconSource);
-
-        allNodes.forEach((node, i) => {
-          if (node.children.length === 0) {
-            // eslint-disable-next-line jest/no-conditional-expect
-            expect(allNodeStrings[i]).not.toContain(`</${node.tagName}>`);
-          }
-        });
-      });
-
-      it('only has <path>s, <polygon>s and <circle>s with an explict fill color', () => {
-        const nodesWithUndefinedFill = selectAll(
-          'path:not([fill]), circle:not([fill]), polygon:not([fill])',
-          iconAst,
-        );
-
-        expect(nodeSources(nodesWithUndefinedFill, iconSource)).toStrictEqual(
-          [],
-        );
-      });
-
-      it('only has <path>s that only use the [d, fill, fill-rule, fill-opacity] attributes', () => {
-        const allowedAttributes = ['d', 'fill', 'fillRule', 'fillOpacity'];
+      it('only has <path>s that only use the [d, fill-rule, fill-opacity] attributes', () => {
+        const allowedAttributes = ['d', 'fillRule', 'fillOpacity'];
 
         const nodesWithDisallowedAttributes = selectAll('path', iconAst).filter(
           (node) => {
@@ -102,8 +86,8 @@ allIconFiles.forEach(
         ).toStrictEqual([]);
       });
 
-      it('only has <polygon>s that only use the [fill, points] attributes', () => {
-        const allowedAttributes = ['fill', 'points'];
+      it('only has <polygon>s that only use the [points] attributes', () => {
+        const allowedAttributes = ['points'];
 
         const nodesWithDisallowedAttributes = selectAll(
           'polygon',
@@ -118,8 +102,8 @@ allIconFiles.forEach(
         ).toStrictEqual([]);
       });
 
-      it('only has <circle>s that only use the [cx, cy, r, fill, fill-rule] attributes', () => {
-        const allowedAttributes = ['cx', 'cy', 'r', 'fill', 'fillRule'];
+      it('only has <circle>s that only use the [cx, cy, r, fill-rule] attributes', () => {
+        const allowedAttributes = ['cx', 'cy', 'r', 'fillRule'];
 
         const nodesWithDisallowedAttributes = selectAll(
           'circle',
@@ -152,22 +136,6 @@ allIconFiles.forEach(
           nodeSources(nodesWithDisallowedValues, iconSource),
         ).toStrictEqual([]);
       });
-
-      if (expectedFillColors) {
-        const expectedFillsString = expectedFillColors.join(',');
-
-        it(`has no nodes that use fill colors other than [${expectedFillsString}]`, () => {
-          const nodesWithInvalidFill = selectAll('[fill]', iconAst).filter(
-            (node) => {
-              return !expectedFillColors.includes(node.properties.fill);
-            },
-          );
-
-          expect(nodeSources(nodesWithInvalidFill, iconSource)).toStrictEqual(
-            [],
-          );
-        });
-      }
     });
   },
 );
