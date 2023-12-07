@@ -71,6 +71,10 @@ function StylelintResourceLink({category}: {category: string}): JSX.Element {
   );
 }
 
+const PresentTenseVerb: React.FC<{
+  children: string;
+}> = ({children}) => `${children.slice(-1) === 's' ? 'are' : 'is'}`;
+
 const CatchAllTemplate = ({
   mdx,
   seoDescription,
@@ -92,8 +96,7 @@ const CatchAllTemplate = ({
       <Markdown
         {...mdx}
         components={{
-          PresentTenseVerb: ({children}: {children: string}) =>
-            `${children.slice(-1) === 's' ? 'are' : 'is'}`,
+          PresentTenseVerb,
           StylelintResourceLink,
         }}
       />
