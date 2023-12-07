@@ -7,31 +7,16 @@ const unified = require('unified');
 const parse = require('rehype-parse');
 const {select, selectAll} = require('hast-util-select');
 
-<<<<<<< HEAD
-=======
 const svgoConfig = require('../svgo.config');
 
 const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
 
->>>>>>> main
 const allIconFiles = globby
   .sync(path.resolve(__dirname, '../icons/*.svg'))
   .map((absoluteIconPath) => {
     const iconSource = fs.readFileSync(absoluteIconPath, 'utf-8');
-<<<<<<< HEAD
-=======
     const optimizedSource = svgo.optimize(iconSource, svgoConfig).data;
 
-    const svg = new Map([
-      ['Major', {viewbox: '0 0 20 20'}],
-      ['Minor', {viewbox: '0 0 20 20'}],
-    ]).get([set].filter(Boolean).join('_'));
-    if (svg == null) {
-      throw new Error(
-        `SVG metadata not found for ${absoluteIconPath}. Make sure your icon contains "Major" or "Minor" in its name.`,
-      );
-    }
->>>>>>> main
     return {
       iconPath: path.relative(path.join(__dirname, '..'), absoluteIconPath),
       iconSource,
@@ -73,26 +58,6 @@ allIconFiles.forEach(
         expect(nodeSources(groupNodes, iconSource)).toStrictEqual([]);
       });
 
-<<<<<<< HEAD
-      it('tags are self-closing whenever possible', () => {
-        const allNodes = selectAll('*', iconAst);
-        const allNodeStrings = nodeSources(allNodes, iconSource);
-
-        allNodes.forEach((node, i) => {
-          if (node.children.length === 0) {
-            // eslint-disable-next-line jest/no-conditional-expect
-            expect(allNodeStrings[i]).not.toContain(`</${node.tagName}>`);
-          }
-        });
-      });
-
-      it('no fill on all elements', () => {
-        const nodesWithFill = selectAll('*:([fill])', iconAst);
-        expect(nodeSources(nodesWithFill, iconSource)).toStrictEqual([]);
-      });
-
-=======
->>>>>>> main
       it('only has <path>s that only use the [d, fill-rule, fill-opacity] attributes', () => {
         const allowedAttributes = ['d', 'fillRule', 'fillOpacity'];
 

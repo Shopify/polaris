@@ -98,13 +98,7 @@ function customTypes({fileName, source}) {
 function svgBuild(options = {}) {
   const filter = createFilter(options.include || '**/*.svg', options.exclude);
 
-<<<<<<< HEAD
-  /** @type {import('svgo').OptimizeOptions} */
-
-  const optimizedSvgs = [];
-=======
   const svgs = [];
->>>>>>> main
 
   return {
     name: 'svgBuild',
