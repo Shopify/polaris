@@ -8,19 +8,13 @@ This is a major update for `polaris-icons`. Please use the migration to update i
 npx @shopify/polaris-migrator icons-v8-update-names <path>
 ```
 
-All icon fill values in the icon .svg files have been replaced with `currentColor`. If you are using the `<Icon>` component you will not see a change.
-
 Removed Major and Minor icon sizing. All icons are the same size.
 
-Added `MetaobjectFilledIcon`, `PriceListIcon` and `PriceListFilledIcon`
+Added `BillIcon`, `BillFilledIcon`, `LogoCriteo`, `LogoMeta`, `LogoGoogle`, `MetaobjectFilledIcon`, `PriceListIcon` and `PriceListFilledIcon`
 
 Updated icon design for `JobsIcon`, `JobsFilledIcon`, `AutomationIcon`, `AutomationFilledIcon`, `GiftCardIcon`, `InventoryFilledIcon`, `ReportsIcon`, `ShipmentFilledIcon`, `AppsFilledIcon`, `MarketsIcon`, `MarketsFilledIcon`, `BillingStatementDollarFilledIcon`, `BillingStatementEuroFilledIcon`, `BillingStatementPoundFilledIcon`, `BillingStatementRupeeFilledIcon`, `BillingStatementYenFilledIcon`, `LegalFilledIcon`, `IdentityCardIcon`, `IdentityCardFilledIcon`, `DomainsIcon`, `DomainNewIcon`, `DomainsFilledIcon`, `StoreIcon`, `StoreOnlineIcon`, `ManagedStoreIcon`, `ImportStoreIcon`, `TaxIcon`, `TaxFilledIcon`, `PackageFilledIcon`, `LocationIcon`, `LocationFilledIcon`, `InactiveLocationIcon`, `PinIcon`, `GlobeIcon`, `TransportIcon`, `NatureIcon`, `FoodIcon`, `ColorsIcon`
 
-Added icons `BillIcon`, `BillFilledIcon`
-
 Removed `version` and `set` from icon `.yml` files
-
-Updated default icon color to `#4A4A4A`
 
 Renamed many icons and replaced `Major` and `Minor` suffixes with `Icon`. See table:
 
