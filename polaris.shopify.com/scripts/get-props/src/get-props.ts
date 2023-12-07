@@ -1,4 +1,4 @@
-#!/usr/bin/env ts-node
+#!/usr/bin/env tsx
 
 import * as ts from 'typescript';
 import * as fs from 'fs';
