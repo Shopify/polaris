@@ -361,15 +361,36 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   };
 
   private startLoading = () => {
+    this.showBrowserLoading(
+      new Promise((resolve) => {
+        this.loadingPromiseResolve = resolve;
+      }),
+    );
     this.setState(({loadingStack}: State) => ({
       loadingStack: loadingStack + 1,
     }));
   };
 
   private stopLoading = () => {
+    if (this.loadingPromiseResolve) {
+      this.loadingPromiseResolve();
+    }
     this.setState(({loadingStack}: State) => ({
       loadingStack: Math.max(0, loadingStack - 1),
     }));
+  };
+
+  private loadingPromiseResolve: (value?: any) => void = () => {};
+
+  private showBrowserLoading = (promise: Promise<any>) => {
+    window.navigation.addEventListener(
+      'navigate',
+      (event: NavigateEvent) => {
+        event.intercept({scroll: 'manual', handler: () => promise});
+      },
+      {once: true},
+    );
+    return window.navigation.navigate(location.href).finished;
   };
 
   private handleResize = () => {
