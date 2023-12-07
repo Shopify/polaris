@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.10.0
+
+### Minor Changes
+
+- [#11073](https://github.com/Shopify/polaris/pull/11073) [`c3cad73cb`](https://github.com/Shopify/polaris/commit/c3cad73cb58217577ebd6c9b94ce184a1d362f0d) Thanks [@lntn2022](https://github.com/lntn2022)! - Add PayoutsBlocked icon
+
+* [#11136](https://github.com/Shopify/polaris/pull/11136) [`0b1961c16`](https://github.com/Shopify/polaris/commit/0b1961c162c6401589acf7d1ac5b9f12ab3b8f97) Thanks [@alex-page](https://github.com/alex-page)! - Update Metaobject and MetaobjectReference icon SVGs
+
 ## 7.9.0
 
 ### Minor Changes

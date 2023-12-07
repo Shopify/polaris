@@ -1,18 +1,41 @@
 const fs = require('fs');
 const path = require('path');
 
+const svgo = require('svgo');
 const globby = require('globby');
 const unified = require('unified');
 const parse = require('rehype-parse');
 const {select, selectAll} = require('hast-util-select');
 
+<<<<<<< HEAD
+=======
+const svgoConfig = require('../svgo.config');
+
+const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
+
+>>>>>>> main
 const allIconFiles = globby
   .sync(path.resolve(__dirname, '../icons/*.svg'))
   .map((absoluteIconPath) => {
     const iconSource = fs.readFileSync(absoluteIconPath, 'utf-8');
+<<<<<<< HEAD
+=======
+    const optimizedSource = svgo.optimize(iconSource, svgoConfig).data;
+
+    const svg = new Map([
+      ['Major', {viewbox: '0 0 20 20'}],
+      ['Minor', {viewbox: '0 0 20 20'}],
+    ]).get([set].filter(Boolean).join('_'));
+    if (svg == null) {
+      throw new Error(
+        `SVG metadata not found for ${absoluteIconPath}. Make sure your icon contains "Major" or "Minor" in its name.`,
+      );
+    }
+>>>>>>> main
     return {
       iconPath: path.relative(path.join(__dirname, '..'), absoluteIconPath),
       iconSource,
+      optimizedSource,
       iconAst: unified()
         .use(parse, {fragment: true, space: 'svg'})
         .parse(iconSource),
@@ -21,13 +44,17 @@ const allIconFiles = globby
   });
 
 allIconFiles.forEach(
-  ({iconPath, iconSource, iconAst, expectedViewbox, expectedFillColors}) => {
+  ({
+    iconPath,
+    iconSource,
+    optimizedSource,
+    iconAst,
+    expectedViewbox,
+    expectedFillColors,
+  }) => {
     describe(`SVG Contents: packages/${iconPath}`, () => {
-      it(`only has the expected root attributes`, () => {
-        const properties = Object.keys(
-          select(':root', iconAst).properties,
-        ).sort();
-        expect(properties).toStrictEqual(['viewBox', 'xmlns'].sort());
+      it(`is optimized`, () => {
+        expect(iconSource).toStrictEqual(optimizedSource);
       });
 
       it(`has an xml namespace`, () => {
@@ -46,6 +73,7 @@ allIconFiles.forEach(
         expect(nodeSources(groupNodes, iconSource)).toStrictEqual([]);
       });
 
+<<<<<<< HEAD
       it('tags are self-closing whenever possible', () => {
         const allNodes = selectAll('*', iconAst);
         const allNodeStrings = nodeSources(allNodes, iconSource);
@@ -63,6 +91,8 @@ allIconFiles.forEach(
         expect(nodeSources(nodesWithFill, iconSource)).toStrictEqual([]);
       });
 
+=======
+>>>>>>> main
       it('only has <path>s that only use the [d, fill-rule, fill-opacity] attributes', () => {
         const allowedAttributes = ['d', 'fillRule', 'fillOpacity'];
 
