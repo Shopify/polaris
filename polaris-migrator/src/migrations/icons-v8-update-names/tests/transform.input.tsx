@@ -244,6 +244,7 @@ import {
   CircleUpMinor,
   ClipboardMajor,
   ClipboardMinor,
+  ClipboardCheckFilledMajor,
   ClockMajor,
   ClockMinor,
   CodeMajor,
@@ -1260,6 +1261,7 @@ export function App() {
       <Icon source={CircleUpMinor} />
       <Icon source={ClipboardMajor} />
       <Icon source={ClipboardMinor} />
+      <Icon source={ClipboardCheckFilledMajor} />
       <Icon source={ClockMajor} />
       <Icon source={ClockMinor} />
       <Icon source={CodeMajor} />

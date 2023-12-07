@@ -191,6 +191,7 @@ export const iconRenames = {
   ChatMinor: 'ChatIcon',
   ChecklistMajor: 'ClipboardCheckIcon',
   ChecklistMinor: 'ClipboardCheckIcon',
+  ClipboardCheckFilledMajor: 'ClipboardCheckFilledIcon',
   ChecklistAlternateMajor: 'ClipboardChecklistIcon',
   ChecklistAlternateMinor: 'ClipboardChecklistIcon',
   CheckoutMajor: 'CartIcon',

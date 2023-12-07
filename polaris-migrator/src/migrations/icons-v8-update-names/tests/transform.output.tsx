@@ -117,6 +117,7 @@ import {
   CheckCircleIcon,
   CircleUpIcon,
   ClipboardIcon,
+  ClipboardCheckFilledIcon,
   ClockIcon,
   CodeIcon,
   CollectionReferenceIcon,
@@ -722,6 +723,7 @@ export function App() {
       <Icon source={CircleUpIcon} />
       <Icon source={ClipboardIcon} />
       <Icon source={ClipboardIcon} />
+      <Icon source={ClipboardCheckFilledIcon} />
       <Icon source={ClockIcon} />
       <Icon source={ClockIcon} />
       <Icon source={CodeIcon} />
