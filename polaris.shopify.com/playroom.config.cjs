@@ -5,7 +5,7 @@
 
 const path = require('path');
 const {themeDefault, toPx} = require('@shopify/polaris-tokens');
-const {playroom} = require('./constants');
+const {playroom} = require('./constants.cjs');
 
 // Note: We insert a 320 breakpoint to ensure we capture a representation of the
 // "xs" size (which technically finishes at 1px smaller than the first non-zero value

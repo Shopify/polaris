@@ -1,4 +1,7 @@
-const path = require('path');
+import path from 'node:path';
+import * as url from 'url';
+
+const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 /* eslint-disable require-await */
 /** @type {import('next').NextConfig} */
@@ -168,7 +171,7 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;
 
 const whatsNew = [
   {

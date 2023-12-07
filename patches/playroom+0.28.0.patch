@@ -15,6 +15,184 @@ index 6c82bbe..f05b80b 100644
  ## TypeScript Support
  
  If a `tsconfig.json` file is present in your project, static prop types are parsed using [react-docgen-typescript](https://github.com/styleguidist/react-docgen-typescript) to provide better autocompletion in the Playroom editor.
+diff --git a/node_modules/playroom/bin/cli.cjs b/node_modules/playroom/bin/cli.cjs
+new file mode 100755
+index 0000000..2d88fc8
+--- /dev/null
++++ b/node_modules/playroom/bin/cli.cjs
+@@ -0,0 +1,83 @@
++#!/usr/bin/env node
++const path = require('path');
++const commandLineArgs = require('command-line-args');
++const commandLineUsage = require('command-line-usage');
++const findUp = require('find-up');
++const lib = require('../lib');
++
++const showUsage = () => {
++  console.log(
++    commandLineUsage([
++      {
++        header: 'playroom',
++        content:
++          'Code-oriented component design tool.\n\nUsage: playroom <command> [options...]',
++      },
++      {
++        header: 'Commands',
++        content: [
++          { name: 'start', summary: 'Start a local playroom.' },
++          {
++            name: 'build',
++            summary: 'Build a playroom for production.',
++          },
++          { name: 'help', summary: 'Show this usage guide.' },
++        ],
++      },
++      {
++        header: 'Options',
++        optionList: [
++          {
++            name: 'config',
++            typeLabel: '{underline path}',
++            description: 'Path to a config file.',
++          },
++        ],
++      },
++    ])
++  );
++};
++
++/* eslint-disable consistent-return */
++(async () => {
++  const args = commandLineArgs([
++    { name: 'command', defaultOption: true, defaultValue: 'start' },
++    { name: 'config' },
++    { name: 'help', type: Boolean },
++  ]);
++
++  if (args.command === 'help' || args.help) {
++    return showUsage();
++  }
++
++  const cwd = process.cwd();
++  const configPath = args.config
++    ? path.resolve(cwd, args.config)
++    : await findUp(['playroom.config.js', 'playroom.config.mjs', 'playroom.config.cjs'], { cwd });
++
++  if (!configPath) {
++    console.error(
++      'Please add a playroom.config.js to the root of your project.'
++    );
++    process.exit(1);
++  }
++
++  const { default: config } = await import(configPath);
++
++  const playroom = lib({
++    cwd: path.dirname(configPath),
++    ...config,
++  });
++
++  if (playroom.hasOwnProperty(args.command)) {
++    playroom[args.command]((err) => {
++      if (err) {
++        console.error(err);
++        process.exit(1);
++      }
++    });
++  } else {
++    showUsage();
++    process.exit(1);
++  }
++})();
+diff --git a/node_modules/playroom/bin/cli.js b/node_modules/playroom/bin/cli.js
+index daf1a38..cd0ea90 100755
+--- a/node_modules/playroom/bin/cli.js
++++ b/node_modules/playroom/bin/cli.js
+@@ -1,83 +1,2 @@
+ #!/usr/bin/env node
+-const path = require('path');
+-const commandLineArgs = require('command-line-args');
+-const commandLineUsage = require('command-line-usage');
+-const findUp = require('find-up');
+-const lib = require('../lib');
+-
+-const showUsage = () => {
+-  console.log(
+-    commandLineUsage([
+-      {
+-        header: 'playroom',
+-        content:
+-          'Code-oriented component design tool.\n\nUsage: playroom <command> [options...]',
+-      },
+-      {
+-        header: 'Commands',
+-        content: [
+-          { name: 'start', summary: 'Start a local playroom.' },
+-          {
+-            name: 'build',
+-            summary: 'Build a playroom for production.',
+-          },
+-          { name: 'help', summary: 'Show this usage guide.' },
+-        ],
+-      },
+-      {
+-        header: 'Options',
+-        optionList: [
+-          {
+-            name: 'config',
+-            typeLabel: '{underline path}',
+-            description: 'Path to a config file.',
+-          },
+-        ],
+-      },
+-    ])
+-  );
+-};
+-
+-/* eslint-disable consistent-return */
+-(async () => {
+-  const args = commandLineArgs([
+-    { name: 'command', defaultOption: true, defaultValue: 'start' },
+-    { name: 'config' },
+-    { name: 'help', type: Boolean },
+-  ]);
+-
+-  if (args.command === 'help' || args.help) {
+-    return showUsage();
+-  }
+-
+-  const cwd = process.cwd();
+-  const configPath = args.config
+-    ? path.resolve(cwd, args.config)
+-    : await findUp('playroom.config.js', { cwd });
+-
+-  if (!configPath) {
+-    console.error(
+-      'Please add a playroom.config.js to the root of your project.'
+-    );
+-    process.exit(1);
+-  }
+-
+-  const config = require(configPath);
+-
+-  const playroom = lib({
+-    cwd: path.dirname(configPath),
+-    ...config,
+-  });
+-
+-  if (playroom.hasOwnProperty(args.command)) {
+-    playroom[args.command]((err) => {
+-      if (err) {
+-        console.error(err);
+-        process.exit(1);
+-      }
+-    });
+-  } else {
+-    showUsage();
+-    process.exit(1);
+-  }
+-})();
++require('./cli.cjs');
 diff --git a/node_modules/playroom/lib/defaultModules/processCode.js b/node_modules/playroom/lib/defaultModules/processCode.js
 new file mode 100644
 index 0000000..36a436c
