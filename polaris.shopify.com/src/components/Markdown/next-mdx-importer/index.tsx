@@ -4,7 +4,7 @@ import {
   type MDXRemoteSerializeResult,
 } from 'next-mdx-remote';
 
-import {componentName, filePathProp, scopeKey} from './constants';
+import {componentName, filePathProp, scopeKey} from './constants.mts';
 
 // Re-export for convenience
 export type {MDXRemoteProps};

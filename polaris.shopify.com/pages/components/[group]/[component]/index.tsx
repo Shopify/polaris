@@ -8,7 +8,7 @@ import type {
   ComponentExample,
   ComponentExampleSerialized,
 } from '../../../../src/components/ComponentExamples';
-import {serializeMdx} from '../../../../src/components/Markdown/serialize';
+import {serializeMdx} from '../../../../src/components/Markdown/serialize.mts';
 import Markdown from '../../../../src/components/Markdown';
 import Page from '../../../../src/components/Page';
 import {toPascalCase} from '../../../../src/utils/various';

@@ -1,7 +1,7 @@
 import fs from 'fs';
 import globby from 'globby';
 
-import {serializeMdx} from '../components/Markdown/serialize';
+import {serializeMdx} from '../components/Markdown/serialize.mts';
 import type {SerializedMdx} from '../types';
 import {FrontMatter} from '../types';
 import type {RichCardGridProps} from '../components/RichCardGrid';

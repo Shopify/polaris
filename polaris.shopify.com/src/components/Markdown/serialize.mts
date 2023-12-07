@@ -1,4 +1,4 @@
-import {serialize, pathToVFile} from './next-mdx-importer/serialize';
+import {serialize, pathToVFile} from './next-mdx-importer/serialize.mts';
 import remarkUnwrapImages from 'remark-unwrap-images';
 import {VFile, type Data} from 'vfile';
 import remarkGfm from 'remark-gfm';

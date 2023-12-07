@@ -6,7 +6,7 @@ import type {MDXRemoteSerializeResult} from 'next-mdx-remote';
 import {serialize as nextMdxSerialize} from 'next-mdx-remote/serialize';
 import {is as isVFile} from 'vfile-is';
 
-import {componentName, filePathProp, scopeKey} from './constants';
+import {componentName, filePathProp, scopeKey} from './constants.mts';
 
 // Because this isn't exported by next-mdx-remote, we have to pull it off the
 // function directly.

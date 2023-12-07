@@ -12,7 +12,7 @@ import {parseMarkdown} from '../../../../src/utils/markdown.mjs';
 import {
   serializeMdx,
   type SerializedMdxReturn,
-} from '../../../../src/components/Markdown/serialize';
+} from '../../../../src/components/Markdown/serialize.mts';
 
 export interface RulesProps {
   title: string;

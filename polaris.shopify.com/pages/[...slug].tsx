@@ -9,8 +9,8 @@ import {
   getStaticPaths as getPaths,
   getStaticProps as getProps,
   SlugNotFoundError,
-} from '../src/utils/route-data-loader';
-import type {Props} from '../src/utils/route-data-loader';
+} from '../src/utils/route-data-loader.mjs';
+import type {Props} from '../src/utils/route-data-loader.mjs';
 import Markdown from '../src/components/Markdown';
 import Page from '../src/components/Page';
 import PageMeta from '../src/components/PageMeta';

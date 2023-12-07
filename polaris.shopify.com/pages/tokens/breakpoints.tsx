@@ -2,7 +2,7 @@ import type {GetStaticProps, InferGetStaticPropsType} from 'next';
 import React from 'react';
 import endent from 'endent';
 import {VFile} from 'vfile';
-import {serializeMdx} from '../../src/components/Markdown/serialize';
+import {serializeMdx} from '../../src/components/Markdown/serialize.mts';
 import type {SerializedMdx} from '../../src/types';
 import TokensPage from '../../src/components/TokensPage';
 import PageMeta from '../../src/components/PageMeta';

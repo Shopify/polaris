@@ -7,7 +7,7 @@ import PatternPage from '../../src/components/PatternPage';
 import type {Props, PatternMDX} from '../../src/components/PatternPage';
 import ComingSoon from '../../src/components/ComingSoon';
 import {PatternFrontMatter, PatternVariantFontMatter} from '../../src/types';
-import {serializeMdx} from '../../src/components/Markdown/serialize';
+import {serializeMdx} from '../../src/components/Markdown/serialize.mts';
 
 const getDirectories = async (source: string) =>
   (await readdir(source, {withFileTypes: true}))
