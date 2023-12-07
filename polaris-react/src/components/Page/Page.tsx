@@ -15,9 +15,17 @@ export interface PageProps extends HeaderProps {
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
   narrowWidth?: boolean;
+  /** Start view transitions when navigating */
+  viewTransition?: boolean;
 }
 
-export function Page({children, fullWidth, narrowWidth, ...rest}: PageProps) {
+export function Page({
+  children,
+  fullWidth,
+  narrowWidth,
+  viewTransition = false,
+  ...rest
+}: PageProps) {
   const pageClassName = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
@@ -35,10 +43,19 @@ export function Page({children, fullWidth, narrowWidth, ...rest}: PageProps) {
     (rest.actionGroups != null && rest.actionGroups.length > 0) ||
     rest.backAction != null;
 
-  const contentClassName = classNames(!hasHeaderContent && styles.Content);
+  const contentClassName = classNames(
+    !hasHeaderContent && styles.Content,
+    viewTransition && styles.PageContent,
+  );
 
   const headerMarkup = hasHeaderContent ? (
-    <Header filterActions {...rest} />
+    viewTransition ? (
+      <span className={styles.PageHeader}>
+        <Header filterActions {...rest} />
+      </span>
+    ) : (
+      <Header filterActions {...rest} />
+    )
   ) : null;
 
   return (
