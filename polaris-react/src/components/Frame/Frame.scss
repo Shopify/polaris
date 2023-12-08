@@ -232,6 +232,10 @@ $sidebar-breakpoint: 1200px;
       margin-right: var(--pc-sidebar-width);
     }
   }
+
+  .hasViewTransition & {
+    view-transition-name: 'frame-content';
+  }
 }
 
 .GlobalRibbonContainer {
