@@ -1,11 +1,5 @@
 import {TextField} from '@shopify/polaris';
-import {
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-  KeyboardEventHandler,
-} from 'react';
+import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TextFieldWithSuggestionExample() {
