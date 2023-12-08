@@ -3,4 +3,5 @@
 '@shopify/polaris-tokens': minor
 ---
 
-Remapping bg-fill-magic-secondary colors and adding a Magic tone to Badge
+- Remapped the `bg-fill-magic-secondary` token colors
+- Added a Magic `tone` to `Badge`
