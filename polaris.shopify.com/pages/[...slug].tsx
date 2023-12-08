@@ -318,14 +318,7 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
       async (end) => {
         // Flatten each group to an array of objects
         const tokenGroupObjects = mapValues(tokenGroups, (tokens) =>
-          Object.entries(tokens)
-            .map(([name, value]) => ({name, ...value}))
-            // Some tokens have custom sorting for display
-            .sort((token) =>
-              token.name.includes('ease') || token.name.includes('linear')
-                ? -1
-                : 1,
-            ),
+          Object.entries(tokens).map(([name, value]) => ({name, ...value})),
         );
         scope.tokens = tokenGroupObjects;
         end();
