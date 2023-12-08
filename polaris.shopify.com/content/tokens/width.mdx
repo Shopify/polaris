@@ -1,0 +1,19 @@
+---
+title: Width
+showTOC: false
+---
+
+# Tokens &rarr; {frontmatter.title}
+
+<TokensNav selected="width" />
+
+<TokenList>
+  {tokens.width
+    .map((token) => (
+      <TokenList.Item
+        key={token.name}
+        category="width"
+        token={token}
+      />
+    ))}
+</TokenList>

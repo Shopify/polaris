@@ -1,0 +1,19 @@
+---
+title: Space
+showTOC: false
+---
+
+# Tokens &rarr; {frontmatter.title}
+
+<TokensNav selected="space" />
+
+<TokenList>
+  {tokens.space
+    .map((token) => (
+      <TokenList.Item
+        key={token.name}
+        category="space"
+        token={token}
+      />
+    ))}
+</TokenList>

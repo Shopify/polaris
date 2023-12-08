@@ -1,0 +1,19 @@
+---
+title: Font
+showTOC: false
+---
+
+# Tokens &rarr; {frontmatter.title}
+
+<TokensNav selected="font" />
+
+<TokenList>
+  {tokens.font
+    .map((token) => (
+      <TokenList.Item
+        key={token.name}
+        category="font"
+        token={token}
+      />
+    ))}
+</TokenList>

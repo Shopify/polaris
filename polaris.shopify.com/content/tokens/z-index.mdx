@@ -1,0 +1,19 @@
+---
+title: Z-Index
+showTOC: false
+---
+
+# Tokens &rarr; {frontmatter.title}
+
+<TokensNav selected="z-index" />
+
+<TokenList>
+  {tokens['zIndex']
+    .map((token) => (
+      <TokenList.Item
+        key={token.name}
+        category="z-index"
+        token={token}
+      />
+    ))}
+</TokenList>
