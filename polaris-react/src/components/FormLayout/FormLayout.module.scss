@@ -1,17 +1,38 @@
 @import '../../styles/common';
 
 $item-min-size: 220px;
-$item-horizontal-spacing: var(--p-space-300);
+$item-vertical-spacing: var(--p-space-300);
+$group-vertical-spacing: var(--p-space-400);
+
+.FormLayout {
+  display: flex;
+  flex-direction: column;
+
+  /* stylelint-disable selector-max-class, selector-max-combinators -- Spacing between direct descendant Items is tighter than between or around Groups */
+  > .Item + .Item {
+    margin-top: $item-vertical-spacing;
+  }
+
+  > .Item + .Group,
+  > .Group + .Group,
+  > .Group + .Item {
+    margin-top: $group-vertical-spacing;
+  }
+  /* stylelint-enable */
+}
+
+.Group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--p-space-200);
+}
 
 .Item {
   flex: 1 1 auto;
+  min-width: $item-min-size;
 
-  &.grouped {
-    min-width: $item-min-size;
-
-    @media (--p-breakpoints-xs-only) {
-      min-width: 100%;
-    }
+  @media (--p-breakpoints-xs-only) {
+    min-width: 100%;
   }
 
   &.condensed {
