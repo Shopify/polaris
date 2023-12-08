@@ -585,35 +585,33 @@ export function WithInlineSuggestion() {
   );
 
   const [value, setValue] = useState('');
-  const [suggestion, setSuggestion] = useState('');
+  const [suggestion, setSuggestion] = useState<string | undefined>();
 
-  const handleSuggestion = useCallback(
-    (nextValue) => {
-      const nextSuggestion = suggestions.find((suggestion) =>
-        suggestion.toLowerCase().startsWith(nextValue.toLowerCase()),
-      );
+  const handleChange = useCallback(
+    (value: string) => {
+      const suggestion =
+        value &&
+        suggestions.find((suggestion) =>
+          suggestion.toLowerCase().startsWith(value.toLowerCase()),
+        );
 
-      if (nextSuggestion) setSuggestion(nextSuggestion);
+      setValue(value);
+      setSuggestion(suggestion);
     },
     [suggestions],
   );
 
-  useEffect(() => {
-    if (value !== suggestion) handleSuggestion(value);
-  }, [handleSuggestion, suggestion, value]);
-
-  const handleChange = useCallback((value) => {
-    setValue(value);
-    setSuggestion('');
-  }, []);
-
   const handleKeyDown = useCallback(
-    (event) => {
-      if (event.key === 'Enter') {
-        handleChange(suggestion);
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === 'Tab') {
+        setValue(suggestion || value);
+        setSuggestion('');
+      } else if (event.key === 'Backspace') {
+        setValue(value);
+        setSuggestion('');
       }
     },
-    [suggestion, handleChange],
+    [value, suggestion],
   );
 
   return (
@@ -624,6 +622,7 @@ export function WithInlineSuggestion() {
         value={value}
         onChange={handleChange}
         suggestion={suggestion}
+        autoComplete="off"
       />
     </div>
   );
