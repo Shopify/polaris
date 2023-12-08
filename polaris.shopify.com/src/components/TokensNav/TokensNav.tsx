@@ -1,20 +1,11 @@
+import type {Theme} from '@shopify/polaris-tokens';
+
 import styles from './TokensNav.module.scss';
 import Link from 'next/link';
 import {slugify} from '../../utils/various';
 
 interface Props {
-  selected?:
-    | 'border'
-    | 'breakpoints'
-    | 'color'
-    | 'font'
-    | 'height'
-    | 'motion'
-    | 'shadow'
-    | 'space'
-    | 'text'
-    | 'width'
-    | 'zIndex';
+  selected?: keyof Theme;
 }
 
 export type NavItem = {
