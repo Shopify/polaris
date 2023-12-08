@@ -55,7 +55,6 @@ export interface FrameProps {
    * @default false
    */
   sidebar?: boolean;
-  viewTransition?: boolean;
 }
 
 type CombinedProps = FrameProps & {
@@ -119,7 +118,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       i18n,
       sidebar,
       mediaQuery: {isNavigationCollapsed},
-      viewTransition = false,
     } = this.props;
     const navClassName = classNames(
       styles.Navigation,
@@ -244,11 +242,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       sidebar && styles.hasSidebar,
     );
 
-    const frameContentClassName = classNames(
-      styles.Content,
-      viewTransition && styles.ContentContainer,
-    );
-
     const contextualSaveBarMarkup = (
       <CSSAnimation
         in={showContextualSaveBar}
@@ -299,7 +292,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
             id={APP_FRAME_MAIN}
             data-has-global-ribbon={Boolean(globalRibbon)}
           >
-            <div className={frameContentClassName}>{children}</div>
+            <div className={styles.Content}>{children}</div>
           </main>
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}

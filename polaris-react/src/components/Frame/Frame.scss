@@ -234,10 +234,6 @@ $sidebar-breakpoint: 1200px;
   }
 }
 
-.ContentContainer {
-  view-transition-name: frame-content;
-}
-
 .GlobalRibbonContainer {
   position: fixed;
   z-index: var(--p-z-index-3);
