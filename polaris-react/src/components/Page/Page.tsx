@@ -43,10 +43,7 @@ export function Page({
     (rest.actionGroups != null && rest.actionGroups.length > 0) ||
     rest.backAction != null;
 
-  const contentClassName = classNames(
-    !hasHeaderContent && styles.Content,
-    viewTransition && styles.PageContent,
-  );
+  const contentClassName = classNames(!hasHeaderContent && styles.Content);
 
   const headerMarkup = hasHeaderContent ? (
     viewTransition ? (
