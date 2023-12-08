@@ -28,6 +28,47 @@ export function Default() {
   );
 }
 
+export function NestedGroups() {
+  return (
+    <FormLayout>
+      <FormLayout.Group title="Billing address" variant="block">
+        <FormLayout.Group>
+          <TextField
+            label="First name"
+            onChange={() => {}}
+            autoComplete="off"
+          />
+          <TextField label="Last name" onChange={() => {}} autoComplete="off" />
+        </FormLayout.Group>
+
+        <TextField
+          label="Address line 1"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        <TextField
+          label="Address line 2"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+
+        <FormLayout.Group>
+          <TextField label="City" onChange={() => {}} autoComplete="off" />
+          <TextField label="State" onChange={() => {}} autoComplete="off" />
+          <TextField
+            type="number"
+            label="Zip code"
+            onChange={() => {}}
+            autoComplete="off"
+          />
+        </FormLayout.Group>
+      </FormLayout.Group>
+
+      <TextField label="Promo code" onChange={() => {}} autoComplete="off" />
+    </FormLayout>
+  );
+}
+
 export function WithGroups() {
   return (
     <FormLayout>
@@ -98,108 +139,152 @@ export function WithGroups() {
 
 export function All() {
   return (
-    <Card roundedAbove="sm">
-      <BlockStack gap="400">
-        <Text as="h2" variant="headingSm">
-          Card title
-        </Text>
-        <FormLayout>
-          <TextField
-            label="Ungrouped input 1"
-            onChange={() => {}}
-            autoComplete="off"
-          />
-          <TextField
-            label="Ungrouped input 2"
-            onChange={() => {}}
-            autoComplete="email"
-          />
-          <TextField
-            label="Ungrouped input 3"
-            onChange={() => {}}
-            autoComplete="email"
-          />
-
-          <FormLayout.Group title="Default group">
+    <BlockStack gap="400">
+      <Card roundedAbove="sm">
+        <BlockStack gap="400">
+          <Text as="h2" variant="headingSm">
+            Card title
+          </Text>
+          <FormLayout>
             <TextField
-              type="number"
-              label="Minimum order"
+              label="Ungrouped input 1"
               onChange={() => {}}
               autoComplete="off"
             />
             <TextField
-              type="number"
-              label="Maximum order"
+              label="Ungrouped input 2"
               onChange={() => {}}
-              autoComplete="off"
-            />
-          </FormLayout.Group>
-
-          <TextField
-            label="Ungrouped input 4"
-            onChange={() => {}}
-            autoComplete="email"
-          />
-
-          <FormLayout.Group title="Default group 2">
-            <TextField label="Input 1" onChange={() => {}} autoComplete="off" />
-            <TextField label="Input 2" onChange={() => {}} autoComplete="off" />
-            <TextField label="Input 3" onChange={() => {}} autoComplete="off" />
-            <TextField label="Input 4" onChange={() => {}} autoComplete="off" />
-          </FormLayout.Group>
-
-          <FormLayout.Group condensed title="Condensed group">
-            <TextField label="Input 1" onChange={() => {}} autoComplete="off" />
-            <TextField label="Input 2" onChange={() => {}} autoComplete="off" />
-            <TextField label="Input 3" onChange={() => {}} autoComplete="off" />
-            <TextField label="Input 4" onChange={() => {}} autoComplete="off" />
-          </FormLayout.Group>
-
-          <FormLayout.Group title="Vertical group" variant="block">
-            <TextField
-              type="number"
-              label="Available"
-              onChange={() => {}}
-              autoComplete="off"
+              autoComplete="email"
             />
             <TextField
-              type="number"
-              label="Incoming"
+              label="Ungrouped input 3"
               onChange={() => {}}
-              autoComplete="off"
+              autoComplete="email"
             />
-          </FormLayout.Group>
 
-          <FormLayout.Group
-            title="Group with all of its elements"
-            helpText="Group help text"
-          >
-            <TextField
-              label="Input 1 label"
-              onChange={() => {}}
-              autoComplete="off"
-              helpText="Input 1 help text"
-            />
-            <TextField
-              label="Input 2 label"
-              onChange={() => {}}
-              autoComplete="off"
-              helpText="Input 2 help text"
-            />
-          </FormLayout.Group>
+            <FormLayout.Group title="Default group">
+              <TextField
+                type="number"
+                label="Minimum order"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                type="number"
+                label="Maximum order"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+            </FormLayout.Group>
 
-          <TextField
-            label="Ungrouped input 5"
-            onChange={() => {}}
-            autoComplete="email"
-          />
-          <TextField
-            label="Ungrouped input 6"
-            onChange={() => {}}
-            autoComplete="email"
-          />
-        </FormLayout>
-      </BlockStack>
-    </Card>
+            <TextField
+              label="Ungrouped input 4"
+              onChange={() => {}}
+              autoComplete="email"
+            />
+
+            <FormLayout.Group title="Default group 2">
+              <TextField
+                label="Input 1"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 2"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 3"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 4"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+            </FormLayout.Group>
+
+            <FormLayout.Group condensed title="Condensed group">
+              <TextField
+                label="Input 1"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 2"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 3"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                label="Input 4"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+            </FormLayout.Group>
+
+            <FormLayout.Group title="Vertical group" variant="block">
+              <TextField
+                type="number"
+                label="Available"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+              <TextField
+                type="number"
+                label="Incoming"
+                onChange={() => {}}
+                autoComplete="off"
+              />
+            </FormLayout.Group>
+
+            <FormLayout.Group
+              title="Group with all of its elements"
+              helpText="Group help text"
+            >
+              <TextField
+                label="Input 1 label"
+                onChange={() => {}}
+                autoComplete="off"
+                helpText="Input 1 help text"
+              />
+              <TextField
+                label="Input 2 label"
+                onChange={() => {}}
+                autoComplete="off"
+                helpText="Input 2 help text"
+              />
+            </FormLayout.Group>
+
+            <TextField
+              label="Ungrouped input 5"
+              onChange={() => {}}
+              autoComplete="email"
+            />
+            <TextField
+              label="Ungrouped input 6"
+              onChange={() => {}}
+              autoComplete="email"
+            />
+          </FormLayout>
+        </BlockStack>
+      </Card>
+
+      <Card>
+        <BlockStack gap="400">
+          <Text as="h2" variant="headingSm">
+            Nested groups
+          </Text>
+
+          <NestedGroups />
+        </BlockStack>
+      </Card>
+    </BlockStack>
   );
 }
