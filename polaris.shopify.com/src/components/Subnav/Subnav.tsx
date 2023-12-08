@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import navJSON from '../../../.cache/nav.json';
+import navJSON from '../../../.cache/nav';
 import {NavJSON, NavItem} from '../../types';
 import {className} from '../../utils/various';
 
