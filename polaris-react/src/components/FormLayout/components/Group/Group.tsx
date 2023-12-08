@@ -55,9 +55,13 @@ export function Group({
     );
   }
 
-  const itemsMarkup = Children.map(children, (child) =>
-    wrapWithComponent(child, Item, {condensed}),
-  );
+  const itemsMarkup = Children.map(children, (child: React.ReactElement) => {
+    if (isGroup(child.props)) {
+      return child;
+    }
+
+    return wrapWithComponent(child, Item, {condensed});
+  });
 
   const InputWrapper = variant === 'inline' ? InlineStack : BlockStack;
 
@@ -73,4 +77,8 @@ export function Group({
       {helpTextElement}
     </div>
   );
+}
+
+function isGroup(props: any): props is GroupProps {
+  return 'role' in props && props.role === 'group';
 }

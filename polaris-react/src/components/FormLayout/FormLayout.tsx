@@ -25,10 +25,14 @@ export const FormLayout = memo(function FormLayout({
 
 FormLayout.Group = Group;
 
-function wrapChildren(child: React.ReactElement, index: number) {
+export function wrapChildren(
+  child: React.ReactElement,
+  index: number,
+  props?: any,
+) {
   if (isElementOfType(child, Group)) {
     return child;
   }
-  const props = {key: index};
-  return wrapWithComponent(child, Item, props);
+  const childProps = {key: index, ...props};
+  return wrapWithComponent(child, Item, childProps);
 }
