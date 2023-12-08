@@ -2,10 +2,10 @@ import React, {Children, useId} from 'react';
 
 import {wrapWithComponent} from '../../../../utilities/components';
 import {Box} from '../../../Box';
-import {BlockStack} from '../../../BlockStack';
 import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import {Item} from '../Item';
+import styles from '../../FormLayout.scss';
 
 export interface GroupProps {
   children?: React.ReactNode;
@@ -45,15 +45,15 @@ export function Group({children, condensed, title, helpText}: GroupProps) {
   );
 
   return (
-    <BlockStack
+    <div
       role="group"
-      gap="200"
+      className={styles.Group}
       aria-labelledby={titleId}
       aria-describedby={helpTextId}
     >
       {titleElement}
       <InlineStack gap="300">{itemsMarkup}</InlineStack>
       {helpTextElement}
-    </BlockStack>
+    </div>
   );
 }
