@@ -290,8 +290,9 @@ if (isExecutedThroughCommandLine) {
     }
 
     fs.writeFileSync(
-      path.join(cacheDir, 'props.json'),
-      JSON.stringify(ast, undefined, 2),
+      path.join(cacheDir, 'props.ts'),
+      `import type {AllTypes} from '../src/types';
+export default ${JSON.stringify(ast)} satisfies AllTypes;`,
     );
   });
 }

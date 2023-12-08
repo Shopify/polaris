@@ -5,8 +5,8 @@ import {DarkMode} from 'use-dark-mode';
 import {motion, AnimatePresence} from 'framer-motion';
 
 import GlobalSearch from '../GlobalSearch';
-import navJSON from '../../../.cache/nav.json';
-import {NavJSON, NavItem, Breakpoints} from '../../types';
+import nav from '../../../.cache/nav';
+import {NavItem, Breakpoints} from '../../types';
 
 import styles from './Frame.module.scss';
 import {className} from '../../utils/various';
@@ -18,8 +18,6 @@ interface Props {
   darkMode: DarkMode;
   children: React.ReactNode;
 }
-
-const nav = navJSON as NavJSON;
 
 function Frame({darkMode, children}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
