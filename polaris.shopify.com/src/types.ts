@@ -56,6 +56,7 @@ export interface Example extends FrontMatter {
 
 export type FrontMatter = {
   title: string;
+  navTitle?: string;
   draft?: boolean;
   noIndex?: boolean;
   category?: string;
@@ -63,18 +64,24 @@ export type FrontMatter = {
   description?: string;
   shortDescription?: string;
   seoDescription?: string;
+  lede?: string;
+  githubDiscussionsLink?: string;
   examples?: Example[];
   icon?: string;
   order?: number;
   keywords?: (string | number)[];
   status?: Status;
   hideFromNav?: boolean;
+  hideChildren?: true;
   featured?: boolean;
   previewImg?: string;
   expanded?: boolean;
   releasedIn?: string | number;
   showTOC?: boolean;
   collapsibleTOC?: boolean;
+  newSection?: true;
+  primitives?: string[];
+  variants?: string[];
 };
 
 export type PatternFrontMatter = Omit<FrontMatter, 'description'> & {
@@ -180,15 +187,14 @@ export enum Breakpoints {
   DesktopLarge = 1600,
 }
 
-export enum StatusName {
-  New = 'New',
-  Deprecated = 'Deprecated',
-  Alpha = 'Alpha',
-  Beta = 'Beta',
-  Information = 'Information',
-  Legacy = 'Legacy',
-  Warning = 'Warning',
-}
+export type StatusName =
+  | 'New'
+  | 'Deprecated'
+  | 'Alpha'
+  | 'Beta'
+  | 'Information'
+  | 'Legacy'
+  | 'Warning';
 
 export type Status = StatusName;
 
@@ -238,11 +244,39 @@ export interface NavItem {
   order?: number;
   icon?: string;
   color?: string;
-  hideChildren?: false;
+  hideChildren?: true;
   newSection?: true;
   status?: Status;
-  children?: NavJSON;
+  children?: {
+    [key: string]: NavItem;
+  };
   expanded?: boolean;
   hideFromNav?: boolean;
   featured?: boolean;
+}
+
+type ColorScale =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | '14'
+  | '15'
+  | '16';
+
+export type ColorValue = {
+  [index in ColorScale]: string;
+};
+
+export interface ColorsJSON {
+  [key: string]: ColorValue;
 }

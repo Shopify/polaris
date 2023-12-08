@@ -1,13 +1,10 @@
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import navJSON from '../../../.cache/nav.json';
-import {NavJSON} from '../../types';
+import nav from '../../../.cache/nav';
 import get from 'lodash.get';
 
 import styles from './Breadcrumbs.module.scss';
 import {deslugify} from '../../utils/various';
-
-const nav = navJSON as NavJSON;
 
 function Breadcrumbs() {
   const {asPath} = useRouter();
