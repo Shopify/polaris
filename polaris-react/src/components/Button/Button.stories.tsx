@@ -267,6 +267,9 @@ export function Tertiary() {
           <Button variant="tertiary" disabled>
             Label
           </Button>
+          <Button variant="tertiary" pressed>
+            Label
+          </Button>
           <Button variant="tertiary" icon={PlusMinor}>
             Label
           </Button>
@@ -295,6 +298,9 @@ export function Tertiary() {
         <InlineStack gap="400" blockAlign="end">
           <Button variant="tertiary">Label</Button>
           <Button variant="tertiary" disabled>
+            Label
+          </Button>
+          <Button variant="tertiary" pressed>
             Label
           </Button>
           <Button variant="tertiary" icon={PlusMinor}>

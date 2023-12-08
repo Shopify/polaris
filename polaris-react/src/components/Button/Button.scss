@@ -468,6 +468,7 @@
   --pc-button-text: var(--p-color-text);
   --pc-button-color-hover: var(--p-color-bg-fill-transparent-hover);
   --pc-button-color-active: var(--p-color-bg-fill-transparent-active);
+  --pc-button-color-depressed: var(--p-color-bg-fill-transparent-active);
   // stylelint-enable
   box-shadow: none;
 
@@ -490,6 +491,10 @@
     svg {
       fill: var(--p-color-icon-disabled);
     }
+  }
+
+  &.pressed {
+    box-shadow: none;
   }
 
   &:active {
