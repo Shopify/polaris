@@ -246,7 +246,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
     const frameContentClassName = classNames(
       styles.Content,
-      viewTransition && styles.hasViewTransition,
+      viewTransition && styles.ContentContainer,
     );
 
     const contextualSaveBarMarkup = (
