@@ -1,0 +1,19 @@
+---
+title: Color
+showTOC: false
+---
+
+# Tokens &rarr; {frontmatter.title}
+
+<TokensNav selected="color" />
+
+<TokenList>
+  {tokens.color
+    .map((token) => (
+      <TokenList.Item
+        key={token.name}
+        category="color"
+        token={token}
+      />
+    ))}
+</TokenList>

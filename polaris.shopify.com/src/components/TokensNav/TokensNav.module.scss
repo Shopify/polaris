@@ -2,28 +2,6 @@
 @import '../../styles/mixins.scss';
 @import '../../styles/variables.scss';
 
-.TokensPage {
-  margin-top: var(--header-margin);
-  margin-bottom: var(--header-margin);
-}
-
-.Banner {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-
-  h1 {
-    @include heading-1;
-  }
-
-  p {
-    max-width: 43rem;
-    font-size: var(--font-size-700);
-    letter-spacing: var(--letter-spacing-300);
-    color: var(--text-strong);
-  }
-}
-
 .TokensNav {
   margin: 1.5rem 0 3.5rem;
 
