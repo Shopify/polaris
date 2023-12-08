@@ -60,6 +60,21 @@ export function WithGroups() {
         <TextField label="Input 4" onChange={() => {}} autoComplete="off" />
       </FormLayout.Group>
 
+      <FormLayout.Group title="Vertical group" variant="block">
+        <TextField
+          type="number"
+          label="Available"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+        <TextField
+          type="number"
+          label="Incoming"
+          onChange={() => {}}
+          autoComplete="off"
+        />
+      </FormLayout.Group>
+
       <FormLayout.Group
         title="Group with all of its elements"
         helpText="Group help text"
@@ -138,6 +153,21 @@ export function All() {
             <TextField label="Input 2" onChange={() => {}} autoComplete="off" />
             <TextField label="Input 3" onChange={() => {}} autoComplete="off" />
             <TextField label="Input 4" onChange={() => {}} autoComplete="off" />
+          </FormLayout.Group>
+
+          <FormLayout.Group title="Vertical group" variant="block">
+            <TextField
+              type="number"
+              label="Available"
+              onChange={() => {}}
+              autoComplete="off"
+            />
+            <TextField
+              type="number"
+              label="Incoming"
+              onChange={() => {}}
+              autoComplete="off"
+            />
           </FormLayout.Group>
 
           <FormLayout.Group
