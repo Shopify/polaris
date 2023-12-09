@@ -1,6 +1,6 @@
 ---
 title: Form layout
-shortDescription: Manages the layout of all forms and fields within it. Used for the layout of new forms and managing the layout of all forms.
+shortDescription: Used for composing the layout of form fields and groups of fields within a form.
 category: Layout and structure
 keywords:
   - FormLayout
@@ -30,16 +30,22 @@ keywords:
 examples:
   - fileName: form-layout-default.tsx
     title: Default
-    description: Use to stack form fields vertically, which makes them easier to scan and complete.
-  - fileName: form-layout-inline-group.tsx
+    description: Use to arrange fields vertically in a simple form.
+  - fileName: form-layout-with-groups.tsx
+    title: With groups
+    description: Use to arrange related fields within a larger form into sections.
+  - fileName: form-layout-with-inline-group.tsx
     title: Inline group
-    description: Use to horizontally arrange closely related fields within a larger form or group. Works best for grouping familiar fields such as a row of city, state, and zip code fields in an address form. Do not inline unrelated fields, as this makes them easier to miss. Field groups wrap automatically on smaller screens.
-  - fileName: form-layout-nested-groups.tsx
-    title: Nested groups
-    description: Use to horizontally and vertically arrange closely related fields within a larger form. Works best for arranging familiar fields inline within a larger field group, such as a row of city, state, and zip code fields in an address field group. Field groups wrap automatically on smaller screens.
-  - fileName: form-layout-condensed-group.tsx
+    description: Use to horizontally arrange closely related fields within a larger form or form group. For example, a row of city, state, and zip code fields in a customer profile form. Form groups are inline by default. Do not inline unrelated fields, as this makes them easier to miss. Field groups wrap automatically on smaller screens. Set the `presentational` prop on the form group if it's strictly for layout and shouldn't be marked up as a semantic section of the form.
+  - fileName: form-layout-with-vertical-group.tsx
+    title: Vertical group
+    description: Use to vertically arrange closely related fields within a larger form or form group. Field groups wrap automatically on smaller screens. Set the `presentational` prop on the form group if it's strictly for layout and shouldn't be marked up as a semantic section of the form.
+  - fileName: form-layout-with-condensed-group.tsx
     title: Condensed group
-    description: Use for inline groups of inputs with short character length, like numeric dimensions. Field groups wrap automatically on smaller screens.The mininum width of the fields is reduced in condensed groups to allow more fields to fit in the row before wrapping to an additional row.
+    description: Use for inline groups of inputs with short character length, like numeric dimensions. The mininum width of the fields is reduced by 50% in condensed groups to allow more fields to fit in the row before wrapping to an additional row. Field groups wrap automatically on smaller screens. Set the `presentational` prop on the form group if it's strictly for layout and shouldn't be marked up as a semantic section of the form.
+  - fileName: form-layout-with-nested-groups.tsx
+    title: Nested groups
+    description: Use to horizontally and vertically arrange closely related fields within a larger form. Works best for arranging familiar fields  within a larger field group, such as a row of city, state, and zip code fields in an address field group. Field groups wrap automatically on smaller screens. Set the `presentational` prop on the form group if it's strictly for layout and shouldn't be marked up as a semantic section of the form.
 previewImg: /images/components/layout-and-structure/form-layout.png
 ---
 
@@ -47,7 +53,7 @@ previewImg: /images/components/layout-and-structure/form-layout.png
 
 <Lede>
 
-Use form layout to arrange fields within a form using standard spacing. By default it stacks fields vertically but also supports horizontal groups of fields.
+Use form layout to arrange and group fields within a form using standard spacing.
 
 </Lede>
 
@@ -59,56 +65,43 @@ Use form layout to arrange fields within a form using standard spacing. By defau
 
 Forms should:
 
-- Be considerate of merchants’ time and privacy by only asking for information that’s required
-- Group related tasks under section titles to provide more context and make the interface easier to scan
-- Follow a logical, predictable order—for example, always ask for first name first, and last name second on forms
+- Be considerate of merchants’ time and privacy by only asking for information that’s required.
+- Group related fields in a large form in `FormLayout.Group` with a `title` to make the form easier to read and successfully complete.
+- Follow a logical, predictable order. For example, name and address fields should be arranged in the order that is customary for the merchant's locale
 
 ---
 
 ## Content guidelines
 
-### Form section title
+### Group title
 
-Form section titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings).
+Form group titles should follow the content guidelines for [headings and subheadings](https://polaris.shopify.com/content/actionable-language#headings-and-subheadings).
 
-### Field label
+### Group help text
 
-A label is a short description of a field. Labels are not help text, and they shouldn’t be used to provide instruction, but they should be meaningful and clearly indicate what is expected. Labels should be:
+Form groups can have help text to provide extra guidance to merchants filling out a sectioned form. This text is easy for people to ignore, so merchants should not need to depend on it to fill out a form. As with all help text, form group help text should be succinct, easy to read, and provided only if necessary.
 
-- Placed above or beside the form field
-- Short and succinct (1–3 words)
-- Written in sentence case (the first word capitalized, the rest lowercase)
+---
 
-<DoDont>
+## FormLayout.Group
 
-#### Do
+A `FormLayout.Group` is used to arrange related fields within a larger form into sections within a `FormLayout`. `FormLayout.Group` is given the semantic `role` of `group` by default, but it can be used strictly for layout by setting the `presentational` prop.
 
-- Email address
+### FormLayout.Group properties
 
-#### Don’t
-
-- What is your email address?
-
-</DoDont>
-
-<DoDont>
-
-#### Do
-
-- Phone number
-
-#### Don’t
-
-- My phone number is:
-
-</DoDont>
-
-### Help text
-
-Help text provides extra guidance to people filling out a form field. This text is easy for people to ignore, so merchants should not need to depend on it to fill out a form. As with all forms, help text should be succinct and easy to read.
+| Prop            | Type                    | Description                                                                                                                                                           |
+| --------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| children?       | ReactNode               | The child inputs to group.                                                                                                                                            |
+| condensed?      | boolean                 | Whether to reduce the `min-width` of child inputs by 50%. Use when an `inline` group has child inputs with a short maximum character length, like numeric dimensions. |
+| presentational? | boolean                 | Use when nesting a group inside of another for layout purposes. Presentational groups will not have a `role` of `group` and cannot be given a title or help text.     |
+| title?          | string                  | Label describing the input group.                                                                                                                                     |
+| helpText?       | ReactNode               | Helpful text for the input group.                                                                                                                                     |
+| variant?        | "inline" &#124; "block" | Flex direction of the input group. Defaults to `inline`.                                                                                                              |
 
 ---
 
 ## Related components
 
-- To arrange the largest sections of a page, [use the layout component](https://polaris.shopify.com/components/layout-and-structure/layout)
+- To arrange the largest sections of a page, use the [layout component](https://polaris.shopify.com/components/layout-and-structure/layout)
+- To arrange elements horizontally within a content container, use the [inline stack component](https://polaris.shopify.com/components/layout-and-structure/inline-stack)
+- To arrange elements vertically within a content container, use the [block stack component](https://polaris.shopify.com/components/layout-and-structure/block-stack)

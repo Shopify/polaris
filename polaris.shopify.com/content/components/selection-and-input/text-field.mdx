@@ -183,15 +183,22 @@ The `inputMode` property should be set to select the appropriate virtual keyboar
 
 ## Content guidelines
 
-For text field content guidelines, reference the [text fields experience](https://polaris.shopify.com/patterns/text-fields) page.
+### Label
+
+A label is a short description of a field. Labels are not help text and they shouldn’t be used to provide instruction, but they should be meaningful and clearly indicate what is expected. Labels should be:
+
+- Placed above or beside the form field
+- Short and succinct (1–3 words)
+- Written in sentence case (the first word capitalized, the rest lowercase)
+
+Reference the [text field pattern](https://polaris.shopify.com/patterns-legacy/text-fields) page for additional text field content guidelines.
 
 ---
 
 ## Related components
 
-- To lay out the elements in a responsive form, [use the form layout component](https://polaris.shopify.com/components/form-layout)
-- To describe an invalid form input with a separate validation error, [use the inline error component](https://polaris.shopify.com/components/inline-error)
-- It’s common to [use a select component](https://polaris.shopify.com/components/select) connected to the left or right of a text field.
+- To lay out the elements in a responsive form, use the [form layout component](https://polaris.shopify.com/components/selection-and-input/form-layout)
+- To indicate that a group of interdependent form inputs is invalid, use the [inline error component](https://polaris.shopify.com/components/selection-and-input/inline-error)
 
 ---
 
@@ -209,13 +216,13 @@ Use the `id` prop to provide a unique `id` attribute value for the text field. I
 
 ### Labeling
 
-The `label` prop is required to convey the purpose of the checkbox to all merchants.
+The `label` prop is required to convey the purpose of the input to all merchants.
 
 If there are separate visual cues that convey the purpose of the text field to sighted merchants, then the label can be visually hidden with the `labelHidden` prop.
 
 When you provide help text via the `helpText` prop or an inline error message via the `error` prop, the help or error content is conveyed to screen reader users with the `aria-describedby` attribute. This attribute causes the content to be read along with the label, either immediately or after a short delay.
 
-Use the `placeholder` prop to provide additional instructions. However, don’t rely on placeholders alone since the content isn’t always conveyed to all merchants.
+Use the `placeholder` prop to provide additional instructions. However, don’t rely on placeholders alone since the content isn’t always conveyed to merchants using assistive technologies.
 
 <DoDont>
 
@@ -242,4 +249,4 @@ Text fields have standard keyboard support.
 
 #### Automatically focusing
 
-Although you can use the `autoFocus` prop to automatically move focus to the text field, it’s generally best to avoid focusing on fields automatically. The `autoFocus` prop is set to `false` by default and should only be used in cases where it won’t force focus to skip other controls or content of equal or greater importance.
+Although you can use the `autoFocus` prop to automatically move focus to the text field, it’s generally best to avoid focusing on fields automatically. The `autoFocus` prop is set to `false` by default. Do not use `autoFocus` in cases where forcing focus would skip other controls or content of equal or greater importance. Only focus text field automatically if the primary task is to filter or search, such as in a searchable listbox or index filters.
