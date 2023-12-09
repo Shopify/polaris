@@ -3,4 +3,5 @@
 ---
 
 - Added support for vertical layout of `FormLayout.Group` children
-- Fixed `FormLayout` giving uniform spacing to a direct descendant `FormLayout.Item` and `FormLayout.Group`
+- Fixed the hierarchy of `FormLayout` child spacing
+- Added support for nesting field groups by preventing `FormLayout.Group` from wrapping child instances of `FormLayout.Group` with `FormLayout.Item`
