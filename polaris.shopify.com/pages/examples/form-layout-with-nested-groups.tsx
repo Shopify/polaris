@@ -2,11 +2,11 @@ import {FormLayout, TextField} from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
-function VerticalGroupExample() {
+function NestedGroupExample() {
   return (
     <FormLayout>
       <FormLayout.Group title="Billing address" variant="block">
-        <FormLayout.Group>
+        <FormLayout.Group presentational>
           <TextField
             label="First name"
             onChange={() => {}}
@@ -26,7 +26,7 @@ function VerticalGroupExample() {
           autoComplete="off"
         />
 
-        <FormLayout.Group>
+        <FormLayout.Group presentational>
           <TextField label="City" onChange={() => {}} autoComplete="off" />
           <TextField label="State" onChange={() => {}} autoComplete="off" />
           <TextField
@@ -36,11 +36,11 @@ function VerticalGroupExample() {
             autoComplete="off"
           />
         </FormLayout.Group>
-
-        <TextField label="Promo code" onChange={() => {}} autoComplete="off" />
       </FormLayout.Group>
+
+      <TextField label="Promo code" onChange={() => {}} autoComplete="off" />
     </FormLayout>
   );
 }
 
-export default withPolarisExample(VerticalGroupExample);
+export default withPolarisExample(NestedGroupExample);

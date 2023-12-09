@@ -16,7 +16,10 @@ interface AccessibilityGroupProps {
   title?: string;
   helpText?: React.ReactNode;
 }
+
 interface BaseGroupProps {
+  /** Unique identifier for the form group */
+  id?: string;
   /** The child inputs to group */
   children?: React.ReactNode;
   /** Whether to reduce the min-width of child inputs by 50%. Use for inline groups of inputs with short character length, like numeric dimensions. */
@@ -40,19 +43,24 @@ type MutuallyExclusivePresentationalProps =
 type GroupProps = BaseGroupProps & MutuallyExclusivePresentationalProps;
 
 export function Group({
+  id: providedId,
   children,
   condensed,
   presentational,
   title,
   helpText,
   variant = 'inline',
+  ...rest
 }: GroupProps) {
-  const id = useId();
+  const generatedId = useId();
 
   let helpTextElement = null;
   let helpTextId: undefined | string;
   let titleElement = null;
   let titleId: undefined | string;
+
+  const role = presentational ? undefined : 'group';
+  const id = providedId ?? generatedId;
 
   if (helpText && !presentational) {
     helpTextId = `${id}HelpText`;
@@ -72,30 +80,35 @@ export function Group({
     );
   }
 
-  const itemsMarkup = Children.map(children, (child: React.ReactElement) => {
-    if (isGroup(child.props)) {
-      return child;
-    }
+  // Children.toArray removes empty nodes, preventing wrapping of null etc
+  const childMarkup = Children.toArray(children).map(
+    (child: React.ReactElement) => {
+      if (isGroup(child.props)) {
+        return child;
+      }
 
-    return wrapWithComponent(child, Item, {condensed});
-  });
+      return wrapWithComponent(child, Item, {condensed});
+    },
+  );
 
   const InputWrapper = variant === 'inline' ? InlineStack : BlockStack;
 
   return (
     <div
-      role={presentational ? undefined : 'group'}
+      {...rest}
+      role={role}
       className={styles.Group}
       aria-labelledby={titleId}
       aria-describedby={helpTextId}
+      data-form-layout-group
     >
       {titleElement}
-      <InputWrapper gap="300">{itemsMarkup}</InputWrapper>
+      <InputWrapper gap="300">{childMarkup}</InputWrapper>
       {helpTextElement}
     </div>
   );
 }
 
 function isGroup(props: any): props is GroupProps {
-  return 'role' in props && props.role === 'group';
+  return props['data-form-layout-group'] !== undefined;
 }

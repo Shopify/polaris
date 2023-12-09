@@ -9,18 +9,10 @@ export default {
 export function Default() {
   return (
     <FormLayout>
+      <TextField label="Store name" onChange={() => {}} autoComplete="off" />
       <TextField
-        label="Ungrouped input 1"
-        onChange={() => {}}
-        autoComplete="off"
-      />
-      <TextField
-        label="Ungrouped input 2"
-        onChange={() => {}}
-        autoComplete="email"
-      />
-      <TextField
-        label="Ungrouped input 3"
+        type="email"
+        label="Account email"
         onChange={() => {}}
         autoComplete="email"
       />
@@ -32,7 +24,7 @@ export function NestedGroups() {
   return (
     <FormLayout>
       <FormLayout.Group title="Billing address" variant="block">
-        <FormLayout.Group>
+        <FormLayout.Group presentational>
           <TextField
             label="First name"
             onChange={() => {}}
@@ -52,7 +44,7 @@ export function NestedGroups() {
           autoComplete="off"
         />
 
-        <FormLayout.Group>
+        <FormLayout.Group presentational>
           <TextField label="City" onChange={() => {}} autoComplete="off" />
           <TextField label="State" onChange={() => {}} autoComplete="off" />
           <TextField
@@ -75,19 +67,19 @@ export function WithGroups() {
       <FormLayout.Group title="Default group">
         <TextField
           type="number"
-          label="Minimum order"
+          label="Input 1"
           onChange={() => {}}
           autoComplete="off"
         />
         <TextField
           type="number"
-          label="Maximum order"
+          label="Input 2"
           onChange={() => {}}
           autoComplete="off"
         />
       </FormLayout.Group>
 
-      <FormLayout.Group title="Default group 2">
+      <FormLayout.Group title="Default group with many inputs">
         <TextField label="Input 1" onChange={() => {}} autoComplete="off" />
         <TextField label="Input 2" onChange={() => {}} autoComplete="off" />
         <TextField label="Input 3" onChange={() => {}} autoComplete="off" />
@@ -102,18 +94,8 @@ export function WithGroups() {
       </FormLayout.Group>
 
       <FormLayout.Group title="Vertical group" variant="block">
-        <TextField
-          type="number"
-          label="Available"
-          onChange={() => {}}
-          autoComplete="off"
-        />
-        <TextField
-          type="number"
-          label="Incoming"
-          onChange={() => {}}
-          autoComplete="off"
-        />
+        <TextField label="Input 1" onChange={() => {}} autoComplete="off" />
+        <TextField label="Input 2" onChange={() => {}} autoComplete="off" />
       </FormLayout.Group>
 
       <FormLayout.Group
@@ -165,13 +147,13 @@ export function All() {
             <FormLayout.Group title="Default group">
               <TextField
                 type="number"
-                label="Minimum order"
+                label="Input 1"
                 onChange={() => {}}
                 autoComplete="off"
               />
               <TextField
                 type="number"
-                label="Maximum order"
+                label="Input 2"
                 onChange={() => {}}
                 autoComplete="off"
               />
@@ -231,14 +213,12 @@ export function All() {
 
             <FormLayout.Group title="Vertical group" variant="block">
               <TextField
-                type="number"
-                label="Available"
+                label="Input 1"
                 onChange={() => {}}
                 autoComplete="off"
               />
               <TextField
-                type="number"
-                label="Incoming"
+                label="Input 2"
                 onChange={() => {}}
                 autoComplete="off"
               />

@@ -5,16 +5,12 @@ import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 function Example() {
   return (
     <FormLayout>
-      <FormLayout.Group>
+      <FormLayout.Group presentational>
+        <TextField label="City" onChange={() => {}} autoComplete="off" />
+        <TextField label="State" onChange={() => {}} autoComplete="off" />
         <TextField
           type="number"
-          label="Minimum order"
-          onChange={() => {}}
-          autoComplete="off"
-        />
-        <TextField
-          type="number"
-          label="Maximum order"
+          label="Zip code"
           onChange={() => {}}
           autoComplete="off"
         />
