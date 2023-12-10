@@ -8,6 +8,7 @@ import styles from './Icon.scss';
 
 type Tone =
   | 'base'
+  | 'inherit'
   | 'subdued'
   | 'caution'
   | 'warning'
@@ -59,7 +60,6 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
   const className = classNames(
     styles.Icon,
     tone && styles[variationName('tone', tone)],
-    tone && styles.applyColor,
   );
 
   const SourceComponent = source;
