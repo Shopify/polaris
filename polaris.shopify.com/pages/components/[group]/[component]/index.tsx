@@ -13,14 +13,10 @@ import Markdown from '../../../../src/components/Markdown';
 import Page from '../../../../src/components/Page';
 import {toPascalCase} from '../../../../src/utils/various';
 import PageMeta from '../../../../src/components/PageMeta';
-import type {
-  Status,
-  FilteredTypes,
-  AllTypes,
-  SerializedMdx,
-} from '../../../../src/types';
+import type {Status, FilteredTypes, SerializedMdx} from '../../../../src/types';
 import PropsTable from '../../../../src/components/PropsTable';
 import {getRelevantTypes} from '../../../../scripts/get-props/src/get-props';
+import allType from '../../../../.cache/props';
 
 type FrontMatter = {
   status?: Status;
@@ -124,10 +120,6 @@ export const getStaticProps: GetStaticProps<
         },
       ),
     );
-
-    const propsFilePath = path.resolve(process.cwd(), `.cache/props.json`);
-    const fileContent = fs.readFileSync(propsFilePath, 'utf8');
-    const allType: AllTypes = JSON.parse(fileContent);
 
     const componentDirName = toPascalCase(`${mdx.frontmatter.title} `);
     const propName = toPascalCase(`${mdx.frontmatter.title} Props`);

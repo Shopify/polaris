@@ -4,35 +4,7 @@ import {capitalize} from '../../../../utils/various';
 import {Card} from '../../../Card';
 import styles from './Colors.module.scss';
 
-import palette from '../../../../../.cache/colors.json';
-
-type ColorScale =
-  | '1'
-  | '2'
-  | '3'
-  | '4'
-  | '5'
-  | '6'
-  | '7'
-  | '8'
-  | '9'
-  | '10'
-  | '11'
-  | '12'
-  | '13'
-  | '14'
-  | '15'
-  | '16';
-
-type ColorValue = {
-  [index in ColorScale]: string;
-};
-
-interface Colors {
-  [key: string]: ColorValue;
-}
-
-const colors = palette as unknown as Colors;
+import colors from '../../../../../.cache/colors';
 
 const COLOR_ORDER = [
   'red',
@@ -47,7 +19,7 @@ const COLOR_ORDER = [
   'purple',
   'magenta',
   'rose',
-];
+] as const;
 
 export function Colors() {
   const [selectOne, setSelectOne] = useState(true);
@@ -97,20 +69,25 @@ export function Colors() {
   };
 
   const colorMap = COLOR_ORDER.map((color) => {
-    const shades: ColorValue = colors[color] ?? [];
-    const swatches = Object.entries(shades).map(([shade, value]) => (
-      <div
-        key={value}
-        className={[
-          styles.ColorsSwatch,
-          colorOne.id === color + shade || colorTwo.id === color + shade
-            ? styles.ColorsSelected
-            : undefined,
-        ].join(' ')}
-        style={{backgroundColor: value}}
-        onClick={() => selectColor(value, color + shade)}
-      />
-    ));
+    const shades = colors[color];
+    let swatches: React.JSX.Element[] | null;
+    if (shades) {
+      swatches = Object.entries(shades).map(([shade, value]) => (
+        <div
+          key={value}
+          className={[
+            styles.ColorsSwatch,
+            colorOne.id === color + shade || colorTwo.id === color + shade
+              ? styles.ColorsSelected
+              : undefined,
+          ].join(' ')}
+          style={{backgroundColor: value}}
+          onClick={() => selectColor(value, color + shade)}
+        />
+      ));
+    } else {
+      swatches = null;
+    }
 
     return (
       <div key={color} className={styles.Colors}>

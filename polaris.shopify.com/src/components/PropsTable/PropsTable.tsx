@@ -1,5 +1,5 @@
 import {createContext, useContext, useState} from 'react';
-import {Type, FilteredTypes, StatusName} from '../../types';
+import {Type, FilteredTypes} from '../../types';
 import styles from './PropsTable.module.scss';
 import Longform from '../Longform';
 import {motion, AnimatePresence} from 'framer-motion';
@@ -218,7 +218,7 @@ function TypeTable({
                         )}
                         {deprecationMessage && (
                           <div className={styles.DeprecationNotice}>
-                            <StatusBadge status={StatusName.Deprecated} />{' '}
+                            <StatusBadge status="Deprecated" />{' '}
                             {endWithPeriod(deprecationMessage)}
                           </div>
                         )}

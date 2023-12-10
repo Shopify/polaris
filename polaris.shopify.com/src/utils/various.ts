@@ -1,5 +1,5 @@
-import siteJson from '../../.cache/site.json';
-import {PatternFrontMatter, SiteJSON} from '../types';
+import pages from '../../.cache/site';
+import type {PatternFrontMatter} from '../types';
 import type {BreakpointsAlias} from '@shopify/polaris-tokens';
 import {breakpointsAliases} from '@shopify/polaris-tokens';
 
@@ -13,8 +13,6 @@ interface PatternJSON {
     frontMatter: PatternFrontMatter;
   };
 }
-
-const pages: SiteJSON = siteJson as unknown as SiteJSON;
 
 export const patterns: PatternJSON = Object.keys(pages)
   .filter((slug) => slug.startsWith('patterns/'))

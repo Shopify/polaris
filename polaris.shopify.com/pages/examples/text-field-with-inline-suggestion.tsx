@@ -1,11 +1,5 @@
 import {TextField} from '@shopify/polaris';
-import {
-  useState,
-  useEffect,
-  useCallback,
-  useMemo,
-  KeyboardEventHandler,
-} from 'react';
+import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function TextFieldWithSuggestionExample() {
@@ -73,35 +67,33 @@ function TextFieldWithSuggestionExample() {
   );
 
   const [value, setValue] = useState('');
-  const [suggestion, setSuggestion] = useState('');
+  const [suggestion, setSuggestion] = useState<string | undefined>();
 
-  const handleSuggestion = useCallback(
-    (nextValue: string) => {
-      const nextSuggestion = suggestions.find((suggestion) =>
-        suggestion.toLowerCase().startsWith(nextValue.toLowerCase()),
-      );
+  const handleChange = useCallback(
+    (value: string) => {
+      const suggestion =
+        value &&
+        suggestions.find((suggestion) =>
+          suggestion.toLowerCase().startsWith(value.toLowerCase()),
+        );
 
-      if (nextSuggestion) setSuggestion(nextSuggestion);
+      setValue(value);
+      setSuggestion(suggestion);
     },
     [suggestions],
   );
 
-  useEffect(() => {
-    if (value !== suggestion) handleSuggestion(value);
-  }, [handleSuggestion, suggestion, value]);
-
-  const handleChange = useCallback((value: string) => {
-    setValue(value);
-    setSuggestion('');
-  }, []);
-
-  const handleKeyDown = useCallback<KeyboardEventHandler>(
-    (event) => {
-      if (event.key === 'Enter') {
-        handleChange(suggestion);
+  const handleKeyDown = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key === 'Enter' || event.key === 'Tab') {
+        setValue(suggestion || value);
+        setSuggestion('');
+      } else if (event.key === 'Backspace') {
+        setValue(value);
+        setSuggestion('');
       }
     },
-    [suggestion, handleChange],
+    [value, suggestion],
   );
 
   return (
