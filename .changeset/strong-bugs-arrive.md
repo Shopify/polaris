@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': minor
 ---
 
-Added `PlaceholderMajor`
+Added `SkeletonMajor`
