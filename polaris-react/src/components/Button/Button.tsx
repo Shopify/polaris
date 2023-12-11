@@ -3,7 +3,7 @@ import {
   SelectMinor,
   ChevronDownMinor,
   ChevronUpMinor,
-  PlaceholderMajor,
+  SkeletonMajor,
 } from '@shopify/polaris-icons';
 
 import type {BaseButton, IconSource} from '../../types';
@@ -148,7 +148,7 @@ export function Button({
         <Icon
           source={
             loading
-              ? PlaceholderMajor
+              ? SkeletonMajor
               : getDisclosureIconSource(
                   disclosure,
                   ChevronUpMinor,
@@ -164,7 +164,7 @@ export function Button({
     <span className={classNames(styles.Icon, loading && styles.hidden)}>
       {/* eslint-disable-next-line no-nested-ternary */}
       {loading ? (
-        <Icon source={PlaceholderMajor} />
+        <Icon source={SkeletonMajor} />
       ) : isValidElement(icon) ? (
         icon
       ) : (
