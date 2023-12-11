@@ -128,7 +128,7 @@ export function WithToneInherit() {
 }
 
 export function WithPlaceholder() {
-  return <Icon source="placeholder" />;
+  return <Icon source={icons.PlaceholderMajor} />;
 }
 
 export function WithExternalIcon() {

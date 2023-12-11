@@ -3,6 +3,7 @@ import {
   SelectMinor,
   ChevronDownMinor,
   ChevronUpMinor,
+  PlaceholderMajor,
 } from '@shopify/polaris-icons';
 
 import type {BaseButton, IconSource} from '../../types';
@@ -144,28 +145,17 @@ export function Button({
       <div
         className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
-        {loading ? (
-          <div
-            style={{
-              display: 'block',
-              height: '20px',
-              width: '20px',
-              maxHeight: '100%',
-              maxWidth: '100%',
-              margin: 'auto',
-              paddingBottom: '100%',
-              background: 'currentColor',
-            }}
-          />
-        ) : (
-          <Icon
-            source={getDisclosureIconSource(
-              disclosure,
-              ChevronUpMinor,
-              ChevronDownMinor,
-            )}
-          />
-        )}
+        <Icon
+          source={
+            loading
+              ? PlaceholderMajor
+              : getDisclosureIconSource(
+                  disclosure,
+                  ChevronUpMinor,
+                  ChevronDownMinor,
+                )
+          }
+        />
       </div>
     </span>
   ) : null;
@@ -174,18 +164,7 @@ export function Button({
     <span className={classNames(styles.Icon, loading && styles.hidden)}>
       {/* eslint-disable-next-line no-nested-ternary */}
       {loading ? (
-        <div
-          style={{
-            display: 'block',
-            height: '20px',
-            width: '20px',
-            maxHeight: '100%',
-            maxWidth: '100%',
-            margin: 'auto',
-            paddingBottom: '100%',
-            background: 'currentColor',
-          }}
-        />
+        <Icon source={PlaceholderMajor} />
       ) : isValidElement(icon) ? (
         icon
       ) : (
