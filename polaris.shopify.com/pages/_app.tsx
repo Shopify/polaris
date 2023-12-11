@@ -53,7 +53,9 @@ function MyApp({Component, pageProps}: AppProps) {
   }, [router.events, isProd]);
 
   const ogImagePath = `/og-images${
-    router.asPath === '/' ? '/home' : router.asPath
+    router.asPath === '/'
+      ? '/home'
+      : new URL(router.asPath, 'https://polaris.shopify.com').pathname
   }.png`;
 
   const isPolarisExample = router.asPath.startsWith('/examples');

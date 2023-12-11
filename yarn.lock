@@ -1643,6 +1643,38 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@esm2cjs/aggregate-error@^4.0.0":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@esm2cjs/aggregate-error/-/aggregate-error-4.0.1.tgz#e12c1d9c8204367e3092f15b15ed5bfdc8c9f9c0"
+  integrity sha512-bcKpYqFlH6BJhIV0ru9zymGCNZ7WB6F9YdBADaBPkMM2hewT0xYSHni728KYddb11XrVGHEC0s3TrtD+Mj+W7w==
+  dependencies:
+    "@esm2cjs/clean-stack" "^4.0.0"
+    "@esm2cjs/indent-string" "^5.0.0"
+
+"@esm2cjs/clean-stack@^4.0.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@esm2cjs/clean-stack/-/clean-stack-4.2.0.tgz#d93bd346a64eedd11f9cbfc7cb363aaf5fd629d1"
+  integrity sha512-GdtbXpzo98WA7ZgqAxI4KY1O5sZ4jkorAKcpClLyyQwkfShMRRgz7ElUJ/Qj/jJvqJs70FLMlaGr5g9uZRRRbw==
+  dependencies:
+    "@esm2cjs/escape-string-regexp" "5.0.0"
+
+"@esm2cjs/escape-string-regexp@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@esm2cjs/escape-string-regexp/-/escape-string-regexp-5.0.0.tgz#7d3532a0affa7848fa58b1d1ef9fee66bbe423e5"
+  integrity sha512-10eGSwdRLZ3eTZXZKxX4/+Kz2Lf1wLZcNbrZR4NQKSjfrne8q/p2YW8yQ34M3UMNQNK0XoXYiYTxm9U+YicvOA==
+
+"@esm2cjs/indent-string@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@esm2cjs/indent-string/-/indent-string-5.0.0.tgz#1b8baf8bf84f06056fbb08ed33d72845c0ba3ebd"
+  integrity sha512-vulgkPAkBMW4gOLurzjCQQAd0rp9Gogjl3TSkB+XxrxD+GpgG6SJIG3UedZQsAl+wQtW8h/a3m4EQjQgrA099w==
+
+"@esm2cjs/p-map@^5.5.0":
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/@esm2cjs/p-map/-/p-map-5.5.0.tgz#bb527ceb347586c8c4dc744498f60f3a870e157a"
+  integrity sha512-C+Nq0nRLWKEXOhQxaz15Emg0erhkOlTy/A+dOM7vn9/pNcJj55zwecRwwAZ5/mmYPBhwQCkqZLMEWVbTQbyZTA==
+  dependencies:
+    "@esm2cjs/aggregate-error" "^4.0.0"
+
 "@fastify/ajv-compiler@^3.5.0":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/@fastify/ajv-compiler/-/ajv-compiler-3.5.0.tgz#459bff00fefbf86c96ec30e62e933d2379e46670"
@@ -15950,7 +15982,7 @@ ora@^1.2.0, ora@^1.3.0:
     cli-spinners "^1.0.1"
     log-symbols "^2.1.0"
 
-ora@^5.4.1:
+ora@^5.4.1, ora@^v5.4.1:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/ora/-/ora-5.4.1.tgz#1b2678426af4ac4a509008e5e4ac9e9959db9e18"
   integrity sha512-5b6Y85tPxZZ7QytO+BQzysW31HJku27cRIlkbAXaNx+BdcVi+LlRFmVXzeF6a7JCwJpyw5c4b+YSVImQIrBpuQ==
@@ -15977,21 +16009,6 @@ ora@^6.0.1, ora@^6.1.0:
     is-interactive "^2.0.0"
     is-unicode-supported "^1.1.0"
     log-symbols "^5.1.0"
-    strip-ansi "^7.0.1"
-    wcwidth "^1.0.1"
-
-ora@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/ora/-/ora-6.2.0.tgz#6d727902151d5b1badc599ace4df45a34d53f556"
-  integrity sha512-c1qb/1rdE+EFDYiLXh10VY459uMh7DN9zlgd8mZJLoeiPpYllN8eAOiih2Rkah5ywxRm5tHN5C9zPheDq8d1MA==
-  dependencies:
-    chalk "^5.0.0"
-    cli-cursor "^4.0.0"
-    cli-spinners "^2.6.1"
-    is-interactive "^2.0.0"
-    is-unicode-supported "^1.1.0"
-    log-symbols "^5.1.0"
-    stdin-discarder "^0.1.0"
     strip-ansi "^7.0.1"
     wcwidth "^1.0.1"
 
@@ -19601,13 +19618,6 @@ statuses@2.0.1:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
-
-stdin-discarder@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/stdin-discarder/-/stdin-discarder-0.1.0.tgz#22b3e400393a8e28ebf53f9958f3880622efde21"
-  integrity sha512-xhV7w8S+bUwlPTb4bAOUQhv8/cSS5offJuX8GQGq32ONF0ZtDWKfkdomM3HMRA+LhX6um/FZ0COqlwsjD53LeQ==
-  dependencies:
-    bl "^5.0.0"
 
 stdout-stream@^1.4.0:
   version "1.4.1"
