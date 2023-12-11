@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Refactor Button styles and bevel
+Refactored `Button` styles and bevel
