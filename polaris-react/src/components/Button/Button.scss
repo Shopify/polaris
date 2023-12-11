@@ -1,17 +1,19 @@
+/* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list */
+
 .Button {
-  --pc-button-gap: var(--p-space-050);
   all: unset;
   position: relative;
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   gap: var(--pc-button-gap);
-  padding-block: var(--padding-block);
-  padding-inline: var(--padding-inline);
+  padding-block: var(--pc-button-padding-block);
+  padding-inline: var(--pc-button-padding-inline);
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 
+  --pc-button-gap: var(--p-space-050);
   --pc-button-bg: transparent;
   --pc-button-bg_hover: var(--pc-button-bg);
   --pc-button-bg_active: var(--pc-button-bg);
@@ -27,12 +29,15 @@
   --pc-button-box-shadow_active: var(--pc-button-box-shadow);
   --pc-button-box-shadow_pressed: var(--pc-button-box-shadow_active);
   --pc-button-box-shadow_disabled: var(--pc-button-box-shadow);
+  --pc-button-icon-fill: currentColor;
+  --pc-button-icon-fill_disabled: var(--pc-button-color_disabled);
   border: none;
   border-radius: var(--p-border-radius-200);
   background: var(--pc-button-bg);
   color: var(--pc-button-color);
-  fill: currentColor;
   box-shadow: var(--pc-button-box-shadow);
+  fill: var(--pc-button-icon-fill);
+
   font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-500);
@@ -67,6 +72,7 @@
 .disabled {
   background: var(--pc-button-bg_disabled);
   color: var(--pc-button-color_disabled);
+  fill: var(--pc-button-icon-fill_disabled);
   box-shadow: none;
   cursor: not-allowed;
   user-select: none;
@@ -86,7 +92,9 @@
 .variantPrimary {
   // stylelint-disable  -- custom button tokens
   --pc-button-bg-gradient: linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%);
-  --pc-button-box-shadow: 0px -1px 0px 1px rgba(0, 0, 0, 0.8) inset, 0px 0px 0px 1px rgba(48, 48, 48, 1) inset, 0px 0.5px 0px 1.5px rgba(255, 255, 255, 0.25) inset;
+  --pc-button-box-shadow: 0px -1px 0px 1px rgba(0, 0, 0, 0.8) inset,
+    0px 0px 0px 1px rgba(48, 48, 48, 1) inset,
+    0px 0.5px 0px 1.5px rgba(255, 255, 255, 0.25) inset;
   --pc-button-box-shadow_active: 0 3px 0 0 rgb(0, 0, 0) inset;
   // stylelint-enable
   --pc-button-bg: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand);
@@ -111,6 +119,8 @@
   --pc-button-bg_active: var(--p-color-bg-fill-active);
   --pc-button-bg_pressed: var(--p-color-bg-fill-selected);
   --pc-button-color: var(--p-color-text);
+  --pc-button-icon-fill: var(--p-color-icon);
+  --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
 }
 
 .variantTertiary {
@@ -126,7 +136,7 @@
 .variantPlain,
 .variantMonochromePlain {
   --pc-button-bg_disabled: transparent;
-  margin-inline: calc(-1 * var(--padding-inline));
+  margin-inline: calc(-1 * var(--pc-button-padding-inline));
   font-weight: var(--p-font-weight-regular);
 }
 
@@ -141,11 +151,13 @@
 .toneSuccess:is(.variantSecondary, .variantTertiary, .variantPlain) {
   --pc-button-color: var(--p-color-text-success);
   --pc-button-color_hover: var(--pc-button-color);
+  --pc-button-icon-fill: var(--pc-button-color);
 }
 
 .toneCritical:is(.variantSecondary, .variantTertiary, .variantPlain) {
   --pc-button-color: var(--p-color-text-critical);
   --pc-button-color_hover: var(--pc-button-color);
+  --pc-button-icon-fill: var(--pc-button-color);
 }
 
 .toneSuccess:is(.variantPrimary) {
@@ -170,23 +182,23 @@
 
 // SIZES
 .sizeMicro {
-  --padding-block: var(--p-space-100);
-  --padding-inline: var(--p-space-200);
+  --pc-button-padding-block: var(--p-space-100);
+  --pc-button-padding-inline: var(--p-space-200);
   height: var(--p-height-600);
   min-width: var(--p-width-600);
 }
 
 .sizeSlim,
 .sizeMedium {
-  --padding-block: var(--p-space-150);
-  --padding-inline: var(--p-space-300);
+  --pc-button-padding-block: var(--p-space-150);
+  --pc-button-padding-inline: var(--p-space-300);
   height: var(--p-height-700);
   min-width: var(--p-width-700);
 }
 
 .sizeLarge {
-  --padding-block: var(--p-space-150);
-  --padding-inline: var(--p-space-300);
+  --pc-button-padding-block: var(--p-space-150);
+  --pc-button-padding-inline: var(--p-space-300);
   height: var(--p-height-800);
   min-width: var(--p-height-800);
   // Should we keep font info here?
@@ -219,24 +231,24 @@
 
 // ICON
 .iconOnly {
-  --padding-inline: var(--p-space-100);
+  --pc-button-padding-inline: var(--p-space-100);
 }
 
 .iconOnly:is(.sizeLarge) {
-  --padding-inline: var(--p-space-150);
+  --pc-button-padding-inline: var(--p-space-150);
 }
 
 .iconOnly:is(.sizeMicro) {
-  --padding-inline: var(--p-space-050);
+  --pc-button-padding-inline: var(--p-space-050);
 }
 
 .iconWithText {
-  padding-left: calc(var(--padding-inline) * 0.5);
+  padding-left: calc(var(--pc-button-padding-inline) * 0.5);
 }
 
 // DISCLOSURE
 .disclosure {
-  padding-right: calc(var(--padding-inline) * 0.5);
+  padding-right: calc(var(--pc-button-padding-inline) * 0.5);
 }
 
 .disclosure:is(.textAlignStart, .textAlignLeft) {
@@ -262,7 +274,7 @@
 // SPINNER
 .Spinner {
   position: absolute;
-  top: calc(var(--padding-block) / 2 + 50%);
+  top: calc(var(--pc-button-padding-block) / 2 + 50%);
   left: 50%;
   transform: translate(-50%, -50%);
 }
