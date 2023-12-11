@@ -24,10 +24,6 @@
       border-bottom-right-radius: var(--p-border-radius-200);
     }
   }
-
-  &:has(.MoreFiltersButtonContainer.onlyButtonVisible) + * {
-    margin-left: var(--p-space-200);
-  }
 }
 
 .Item {
@@ -128,4 +124,8 @@
 
 .AuxiliaryContainer {
   flex-grow: 0;
+
+  @media #{$p-breakpoints-sm-down} {
+    margin-left: var(--p-space-200);
+  }
 }
