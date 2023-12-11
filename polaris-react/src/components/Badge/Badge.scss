@@ -125,6 +125,15 @@
   }
 }
 
+.toneMagic {
+  background-color: var(--p-color-bg-fill-magic-secondary);
+  color: var(--p-color-text-magic);
+
+  svg {
+    fill: var(--p-color-icon-magic);
+  }
+}
+
 .toneRead-only {
   color: var(--p-color-text-secondary);
   background-color: transparent;
