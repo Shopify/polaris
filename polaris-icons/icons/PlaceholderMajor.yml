@@ -1,0 +1,10 @@
+name: Placeholder
+set: major
+description: Used as a placeholder for Icons loaded in the future.
+keywords:
+authors:
+  - Aaron Casanova
+version: 1
+date_added: 2023-12-11
+date_modified: 2023-12-11
+exclusive_use:
