@@ -8,6 +8,15 @@ import {Header} from './components';
 import type {HeaderProps} from './components';
 import styles from './Page.module.scss';
 
+export interface ViewTransition {
+  /** Enable/disable view transitions  */
+  enabled?: boolean;
+  /** The view transition name for the page header */
+  headerName?: string;
+  /** The view transition name for the page content */
+  contentName?: string;
+}
+
 export interface PageProps extends HeaderProps {
   /** The contents of the page */
   children?: React.ReactNode;
@@ -15,9 +24,21 @@ export interface PageProps extends HeaderProps {
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
   narrowWidth?: boolean;
+  /** Starts view transitions when navigating */
+  viewTransition?: ViewTransition;
 }
 
-export function Page({children, fullWidth, narrowWidth, ...rest}: PageProps) {
+export function Page({
+  children,
+  fullWidth,
+  narrowWidth,
+  viewTransition = {
+    enabled: false,
+    headerName: undefined,
+    contentName: undefined,
+  },
+  ...rest
+}: PageProps) {
   const pageClassName = classNames(
     styles.Page,
     fullWidth && styles.fullWidth,
@@ -37,14 +58,20 @@ export function Page({children, fullWidth, narrowWidth, ...rest}: PageProps) {
 
   const contentClassName = classNames(!hasHeaderContent && styles.Content);
 
+  const contentStyle = viewTransition.enabled
+    ? ({viewTransitionName: viewTransition.contentName} as React.CSSProperties)
+    : undefined;
+
   const headerMarkup = hasHeaderContent ? (
-    <Header filterActions {...rest} />
+    <Header filterActions viewTransition={viewTransition} {...rest} />
   ) : null;
 
   return (
     <div className={pageClassName}>
       {headerMarkup}
-      <div className={contentClassName}>{children}</div>
+      <div className={contentClassName} style={contentStyle}>
+        {children}
+      </div>
     </div>
   );
 }
