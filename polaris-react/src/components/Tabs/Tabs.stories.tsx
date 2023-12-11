@@ -108,7 +108,12 @@ export function Fitted() {
   );
 }
 
-type AlphaTabAction = 'rename' | 'edit' | 'duplicate' | 'delete';
+type AlphaTabAction =
+  | 'rename'
+  | 'edit'
+  | 'edit-columns'
+  | 'duplicate'
+  | 'delete';
 
 export function WithActions() {
   const sleep = (ms: number) =>
@@ -156,6 +161,11 @@ export function WithActions() {
             },
             {
               type: 'edit' as AlphaTabAction,
+              onAction: () => {},
+              onPrimaryAction: () => {},
+            },
+            {
+              type: 'edit-columns' as AlphaTabAction,
               onAction: () => {},
               onPrimaryAction: () => {},
             },

@@ -7,8 +7,14 @@ import set from 'lodash.set';
 import ora from 'ora';
 
 const cacheDir = path.join(process.cwd(), '.cache');
-const siteJsonFile = `${cacheDir}/site.json`;
-const navJsonFile = `${cacheDir}/nav.json`;
+const siteJsonFile = `${cacheDir}/site.ts`;
+const navJsonFile = `${cacheDir}/nav.ts`;
+
+var isAbsolute = new RegExp('^([a-z]+:|//)', 'i');
+
+const normalizeUrl = (slug) => {
+  return isAbsolute.test(slug) || slug.startsWith('/') ? slug : `/${slug}`;
+};
 
 const genNavJson = async (markdownFiles) => {
   let nav = {};
@@ -41,7 +47,7 @@ const genNavJson = async (markdownFiles) => {
       icon,
       description,
       order,
-      slug: url || `/${slug}`,
+      slug: normalizeUrl(url || slug),
       newSection,
       hideChildren,
       color: color ? color.replace(/\\/g, '') : undefined,
@@ -54,14 +60,29 @@ const genNavJson = async (markdownFiles) => {
     });
   });
 
-  await writeFile(navJsonFile, JSON.stringify(nav), 'utf-8');
+  await writeFile(
+    navJsonFile,
+    `import type {NavJSON} from '../src/types';
+export default ${JSON.stringify(nav)} satisfies NavJSON;`,
+    'utf-8',
+  );
 };
 
 const genSiteJson = async (data) => {
   const json = {};
-  data.forEach((md) => (json[md.slug] = {frontMatter: md.frontMatter}));
+  data.forEach(
+    (md) =>
+      (json[normalizeUrl(md.frontMatter.url ?? md.slug)] = {
+        frontMatter: md.frontMatter,
+      }),
+  );
 
-  await writeFile(siteJsonFile, JSON.stringify(json), 'utf-8');
+  await writeFile(
+    siteJsonFile,
+    `import type {SiteJSON} from '../src/types';
+export default ${JSON.stringify(json)} satisfies SiteJSON;`,
+    'utf-8',
+  );
 };
 
 const getMdContent = async (filePath) => {
@@ -76,31 +97,27 @@ const getMdContent = async (filePath) => {
 };
 
 const genCacheJson = async () => {
-  const spinner = ora(
-    'Generating .cache/nav.json and .cache/site.json',
-  ).start();
+  const spinner = ora('Generating .cache/nav.ts and .cache/site.ts').start();
 
   if (!existsSync(cacheDir)) {
     await mkdir(cacheDir, {recursive: true});
   }
 
   const pathGlob = [
-    path.join(process.cwd(), 'content/*.mdx'),
-    path.join(process.cwd(), 'content/**/*.mdx'),
+    // Note: files prefixed with an underscore are ignored
+    path.join(process.cwd(), 'content/**/!(_)*.mdx'),
   ];
 
   const mdFiles = await globby(pathGlob);
 
   const markdownFiles = (
     await Promise.all(mdFiles.map((filePath) => getMdContent(filePath)))
-  )
-    .filter((md) => !md.frontMatter?.hideFromNav)
-    .sort((a, b) => a.slug.localeCompare(b.slug));
+  ).sort((a, b) => a.slug.localeCompare(b.slug));
 
   await genSiteJson(markdownFiles);
   await genNavJson(markdownFiles);
 
-  spinner.succeed('Generated .cache/nav.json and .cache/site.json');
+  spinner.succeed('Generated .cache/nav.ts and .cache/site.ts');
 };
 
 export default genCacheJson;

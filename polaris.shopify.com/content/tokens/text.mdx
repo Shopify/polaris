@@ -1,0 +1,19 @@
+---
+title: Text
+showTOC: false
+---
+
+# Tokens &rarr; {frontmatter.title}
+
+<TokensNav selected="text" />
+
+<TokenList>
+  {tokens.text
+    .map((token) => (
+      <TokenList.Item
+        key={token.name}
+        category="text"
+        token={token}
+      />
+    ))}
+</TokenList>

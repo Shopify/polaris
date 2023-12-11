@@ -56,42 +56,43 @@ export interface Example extends FrontMatter {
 
 export type FrontMatter = {
   title: string;
+  navTitle?: string;
   draft?: boolean;
-  noIndex?: boolean;
+  noIndex?: true;
   category?: string;
   url?: string;
   description?: string;
   shortDescription?: string;
   seoDescription?: string;
+  lede?: string;
+  githubDiscussionsLink?: string;
   examples?: Example[];
   icon?: string;
   order?: number;
   keywords?: (string | number)[];
   status?: Status;
   hideFromNav?: boolean;
+  hideChildren?: true;
   featured?: boolean;
   previewImg?: string;
   expanded?: boolean;
   releasedIn?: string | number;
   showTOC?: boolean;
   collapsibleTOC?: boolean;
+  newSection?: true;
+  primitives?: string[];
+  variants?: string[];
 };
 
-export type PatternFrontMatter = Omit<FrontMatter, 'description'> & {
+export type PatternFrontMatter = Omit<FrontMatter, 'description' | 'lede'> & {
   /* Description is shown on Patterns index page, and as the meta description on detail page */
   description: string;
   /* Lede is the first paragraph on the detail page, above variants */
   lede: string;
-  previewImg?: string;
-  order?: number;
-  githubDiscussionsLink?: string;
   variants?: string[];
 };
 
-export type PatternVariantFontMatter = {
-  title?: string;
-  slug?: string;
-};
+export type PatternVariantFrontMatter = FrontMatter;
 
 export type MarkdownFile = {
   frontMatter: any;
@@ -111,7 +112,7 @@ export const foundationsCategories = [
   'tools',
 ] as const;
 
-export type FoundationsCategory = typeof foundationsCategories[number];
+export type FoundationsCategory = (typeof foundationsCategories)[number];
 
 export const searchResultCategories = [
   'foundations',
@@ -121,7 +122,7 @@ export const searchResultCategories = [
   'icons',
 ] as const;
 
-export type SearchResultCategory = typeof searchResultCategories[number];
+export type SearchResultCategory = (typeof searchResultCategories)[number];
 
 export interface SearchResult {
   id: string;
@@ -180,15 +181,14 @@ export enum Breakpoints {
   DesktopLarge = 1600,
 }
 
-export enum StatusName {
-  New = 'New',
-  Deprecated = 'Deprecated',
-  Alpha = 'Alpha',
-  Beta = 'Beta',
-  Information = 'Information',
-  Legacy = 'Legacy',
-  Warning = 'Warning',
-}
+export type StatusName =
+  | 'New'
+  | 'Deprecated'
+  | 'Alpha'
+  | 'Beta'
+  | 'Information'
+  | 'Legacy'
+  | 'Warning';
 
 export type Status = StatusName;
 
@@ -238,11 +238,39 @@ export interface NavItem {
   order?: number;
   icon?: string;
   color?: string;
-  hideChildren?: false;
+  hideChildren?: true;
   newSection?: true;
   status?: Status;
-  children?: NavJSON;
+  children?: {
+    [key: string]: NavItem;
+  };
   expanded?: boolean;
   hideFromNav?: boolean;
   featured?: boolean;
+}
+
+type ColorScale =
+  | '1'
+  | '2'
+  | '3'
+  | '4'
+  | '5'
+  | '6'
+  | '7'
+  | '8'
+  | '9'
+  | '10'
+  | '11'
+  | '12'
+  | '13'
+  | '14'
+  | '15'
+  | '16';
+
+export type ColorValue = {
+  [index in ColorScale]: string;
+};
+
+export interface ColorsJSON {
+  [key: string]: ColorValue;
 }

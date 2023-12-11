@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import navJSON from '../../../.cache/nav.json';
-import {NavJSON, NavItem} from '../../types';
+import nav from '../../../.cache/nav';
+import {NavItem} from '../../types';
 import {className} from '../../utils/various';
 
 import styles from './Subnav.module.scss';
@@ -12,7 +12,6 @@ import icons from '../../icons';
 import {useEffect, useState} from 'react';
 
 type PolarisIcon = keyof typeof polarisIcons;
-const nav = navJSON.children as NavJSON;
 
 interface NavObject {
   [key: string]: NavItem;

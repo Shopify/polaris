@@ -5,6 +5,7 @@ export type Tone =
   | 'critical'
   | 'attention'
   | 'new'
+  | 'magic'
   | 'info-strong'
   | 'success-strong'
   | 'warning-strong'
@@ -20,6 +21,7 @@ export enum ToneValue {
   Critical = 'critical',
   Attention = 'attention',
   New = 'new',
+  Magic = 'magic',
   InfoStrong = 'info-strong',
   SuccessStrong = 'success-strong',
   WarningStrong = 'warning-strong',

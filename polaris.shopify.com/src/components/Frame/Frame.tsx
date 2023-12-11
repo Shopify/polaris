@@ -5,8 +5,8 @@ import {DarkMode} from 'use-dark-mode';
 import {motion, AnimatePresence} from 'framer-motion';
 
 import GlobalSearch from '../GlobalSearch';
-import navJSON from '../../../.cache/nav.json';
-import {NavJSON, NavItem, Breakpoints} from '../../types';
+import nav from '../../../.cache/nav';
+import {NavItem, Breakpoints} from '../../types';
 
 import styles from './Frame.module.scss';
 import {className} from '../../utils/various';
@@ -18,8 +18,6 @@ interface Props {
   darkMode: DarkMode;
   children: React.ReactNode;
 }
-
-const nav = navJSON as NavJSON;
 
 function Frame({darkMode, children}: Props) {
   const [showSkipToContentLink, setShowSkipToContentLink] = useState(true);
@@ -214,7 +212,10 @@ function NavItem({
 
             if (!child.slug) return null;
 
-            const isExpandable = child.children && !child.hideChildren;
+            const isExpandable =
+              child.children &&
+              Object.keys(child.children).length &&
+              !child.hideChildren;
             const id = (child.slug || key).replace(/\//g, '');
             const navAriaId = `nav-${id}`;
             const segments = asPath.slice(1).split('/');

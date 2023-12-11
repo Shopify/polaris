@@ -6,6 +6,8 @@ import type {
 import Link from 'next/link';
 import fs from 'fs';
 import globby from 'globby';
+import {metaThemeDefault as tokenGroups} from '@shopify/polaris-tokens';
+import mapValues from 'lodash.mapvalues';
 
 import {serializeMdx} from '../src/components/Markdown/serialize';
 import Markdown from '../src/components/Markdown';
@@ -98,7 +100,7 @@ const CatchAllTemplate = ({
     <Page
       editPageLinkPath={editPageLinkPath}
       isContentPage={isContentPage}
-      showTOC={showTOC || isContentPage}
+      showTOC={showTOC}
       collapsibleTOC={collapsibleTOC}
     >
       <PageMeta title={title} description={seoDescription} noIndex={noIndex} />
@@ -310,6 +312,18 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
         end();
       },
     ],
+    [
+      // token pages need token info
+      () => !pathIsDirectory && params.slug[0] === 'tokens',
+      async (end) => {
+        // Flatten each group to an array of objects
+        const tokenGroupObjects = mapValues(tokenGroups, (tokens) =>
+          Object.entries(tokens).map(([name, value]) => ({name, ...value})),
+        );
+        scope.tokens = tokenGroupObjects;
+        end();
+      },
+    ],
     // index pages need to know the files in their folder
     [
       () => pathIsDirectory,
@@ -330,12 +344,14 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
       ? mdx.frontmatter.seoDescription
       : (data.firstParagraph as string) ?? null;
 
+  const isContentPage = !pathIsDirectory;
+
   const props: Props = {
     mdx,
     seoDescription,
     editPageLinkPath,
-    isContentPage: !pathIsDirectory,
-    showTOC: mdx.frontmatter.showTOC || false,
+    isContentPage,
+    showTOC: mdx.frontmatter.showTOC ?? isContentPage,
     collapsibleTOC: mdx.frontmatter.collapsibleTOC || false,
   };
 
@@ -344,9 +360,9 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
 
 const catchAllTemplateExcludeList = [
   '/icons',
-  '/tokens',
   '/sandbox',
   '/tools/stylelint-polaris/rules',
+  '/coming-soon',
 ];
 
 // We want to render component index & group pages, but not the individual

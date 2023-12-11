@@ -213,6 +213,7 @@
         "rename": "Naam van weergave wijzigen",
         "duplicate": "Weergave dupliceren",
         "edit": "Weergave bewerken",
+        "editColumns": "Kolommen bewerken",
         "delete": "Weergave verwijderen",
         "copy": "Kopie van {name}",
         "deleteModal": {

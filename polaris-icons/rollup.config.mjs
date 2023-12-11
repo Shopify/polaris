@@ -8,8 +8,6 @@ import virtual from '@rollup/plugin-virtual';
 import globby from 'globby';
 import jsYaml from 'js-yaml';
 import svgr from '@svgr/core';
-import {optimize} from 'svgo';
-import svgoConfig from './svgo.config.js';
 
 const convert = svgr.default;
 const iconBasePath = new URL('./icons', import.meta.url).pathname;
@@ -101,13 +99,7 @@ function customTypes({fileName, source}) {
 function svgBuild(options = {}) {
   const filter = createFilter(options.include || '**/*.svg', options.exclude);
 
-  /** @type {import('svgo').OptimizeOptions} */
-
-  svgoConfig.plugins.push({
-    ...replaceFillAttributeSvgoPlugin(),
-  });
-
-  const optimizedSvgs = [];
+  const svgs = [];
 
   return {
     name: 'svgBuild',
@@ -116,16 +108,12 @@ function svgBuild(options = {}) {
         return null;
       }
 
-      const rawSvg = fs.readFileSync(id, 'utf8');
-      const {data: optimizedSvg} = await optimize(rawSvg, {
-        ...svgoConfig,
-        path: id,
-      });
+      const svg = fs.readFileSync(id, 'utf8');
 
-      optimizedSvgs.push({id, optimizedSvg});
+      svgs.push({id, svg});
 
       const svgrState = {filePath: id, caller: {name: 'svgBuild'}};
-      const jsCode = await convert(optimizedSvg, {}, svgrState);
+      const jsCode = await convert(svg, {}, svgrState);
 
       return {
         code: jsCode,
@@ -140,32 +128,13 @@ function svgBuild(options = {}) {
       };
     },
     buildEnd() {
-      optimizedSvgs.forEach(({id, optimizedSvg}) => {
+      svgs.forEach(({id, svg}) => {
         this.emitFile({
           type: 'asset',
           fileName: `svg/${path.basename(id)}`,
-          source: optimizedSvg,
+          source: svg,
         });
       });
-    },
-  };
-}
-
-/**
- * An SVGO plugin that applies a transform function to every fill attribute
- * in an SVG. This lets you replace fill colors or remove them entirely.
- */
-function replaceFillAttributeSvgoPlugin() {
-  return {
-    type: 'perItem',
-    name: 'replaceFillAttibute',
-    description: 'replaces fill attributes using a user-defined function',
-    fn(item) {
-      if (!item.isElem() || !item.attr('fill')) {
-        return;
-      }
-
-      item.removeAttr('fill');
     },
   };
 }

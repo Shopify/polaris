@@ -1,0 +1,66 @@
+@import '../../styles/fonts.scss';
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.TokensNav {
+  margin: 1.5rem 0 3.5rem;
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: var(--card-shadow);
+    border-top: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    font-size: var(--font-size-400);
+  }
+
+  li {
+    flex: 1;
+    min-width: 125px;
+  }
+
+  a {
+    padding: 0.75rem 1rem;
+    display: block;
+    color: var(--text-strong);
+    border-bottom: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    text-align: center;
+    font-weight: var(--font-weight-500);
+
+    &[aria-current='page'] {
+      background: var(--surface-subdued);
+    }
+
+    &:focus-visible {
+      box-shadow: var(--focus-outline-inside);
+    }
+  }
+
+  @media screen and (max-width: $breakpointDesktop) {
+    margin-bottom: 2rem;
+
+    ul {
+      flex-wrap: wrap;
+
+      li {
+        min-width: 25%;
+      }
+
+      a {
+        padding: 0.66rem 0;
+      }
+    }
+  }
+  @media screen and (max-width: $breakpointTablet) {
+    ul {
+      li {
+        min-width: 50%;
+      }
+    }
+  }
+
+  @media screen and (max-width: $breakpointTablet) {
+    margin-bottom: 0.75rem;
+  }
+}

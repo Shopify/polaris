@@ -18,7 +18,7 @@ import type {ResponsiveProp} from '../../utilities/css';
 
 import styles from './Box.scss';
 
-type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
+export type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
 
 type LineStyles = 'solid' | 'dashed';
 type Overflow = 'hidden' | 'scroll';

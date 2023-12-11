@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useRef, useId, cloneElement} from 'react';
+import React, {useState, useCallback, useRef, useId} from 'react';
 import {TransitionGroup} from 'react-transition-group';
 
 import {focusFirstFocusableNode} from '../../utilities/focus';
@@ -7,6 +7,7 @@ import {WithinContentContext} from '../../utilities/within-content-context';
 import {wrapWithComponent} from '../../utilities/components';
 import {Backdrop} from '../Backdrop';
 import {Box} from '../Box';
+import type {Element} from '../Box';
 import {InlineStack} from '../InlineStack';
 import {Scrollable} from '../Scrollable';
 import {Spinner} from '../Spinner';
@@ -59,6 +60,11 @@ export interface ModalProps extends FooterProps {
   onScrolledToBottom?(): void;
   /** The element or the RefObject that activates the Modal */
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
+  /**
+   * The element type to wrap the activator in
+   * @default 'div'
+   */
+  activatorWrapper?: Element;
   /** Removes Scrollable container from the modal content */
   noScroll?: boolean;
 }
@@ -82,6 +88,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   secondaryActions,
   onScrolledToBottom,
   activator,
+  activatorWrapper = 'div',
   onClose,
   onIFrameLoad,
   onTransitionEnd,
@@ -112,6 +119,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       activator && isRef(activator)
         ? activator && activator.current
         : activatorRef.current;
+
     if (activatorElement) {
       requestAnimationFrame(() => focusFirstFocusableNode(activatorElement));
     }
@@ -217,9 +225,11 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   const animated = !instant;
 
   const activatorMarkup =
-    activator && !isRef(activator)
-      ? cloneElement(activator, {ref: activatorRef})
-      : null;
+    activator && !isRef(activator) ? (
+      <Box ref={activatorRef} as={activatorWrapper}>
+        {activator}
+      </Box>
+    ) : null;
 
   return (
     <WithinContentContext.Provider value>

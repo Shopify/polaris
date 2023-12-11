@@ -1,5 +1,27 @@
 # Changelog
 
+## 7.11.0
+
+### Minor Changes
+
+- [#11292](https://github.com/Shopify/polaris/pull/11292) [`2b5ecf8df`](https://github.com/Shopify/polaris/commit/2b5ecf8df3dcc07a3a6a75939e6f3b588f710ea1) Thanks [@alex-page](https://github.com/alex-page)! - Add ClipboardCheckFilledMajor icon
+
+### Patch Changes
+
+- [#11271](https://github.com/Shopify/polaris/pull/11271) [`bd0cede27`](https://github.com/Shopify/polaris/commit/bd0cede27d266ec827220ad9da1016b788811922) Thanks [@alex-page](https://github.com/alex-page)! - - Remove fill as we already remove it as a plugin with rollup
+  - Fix svgo config as the convertPathData was not correctly running with the overridden option
+  - Add a new test to make sure that optimized svg code matches the code in the .svg file
+  - Remove unnecessary tests that are resolved with svgo config
+  - Reduce icons library SVG size by 383.75kb
+
+## 7.10.0
+
+### Minor Changes
+
+- [#11073](https://github.com/Shopify/polaris/pull/11073) [`c3cad73cb`](https://github.com/Shopify/polaris/commit/c3cad73cb58217577ebd6c9b94ce184a1d362f0d) Thanks [@lntn2022](https://github.com/lntn2022)! - Add PayoutsBlocked icon
+
+* [#11136](https://github.com/Shopify/polaris/pull/11136) [`0b1961c16`](https://github.com/Shopify/polaris/commit/0b1961c162c6401589acf7d1ac5b9f12ab3b8f97) Thanks [@alex-page](https://github.com/alex-page)! - Update Metaobject and MetaobjectReference icon SVGs
+
 ## 7.9.0
 
 ### Minor Changes

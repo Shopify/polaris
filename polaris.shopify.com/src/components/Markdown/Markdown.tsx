@@ -41,6 +41,8 @@ import {
   Large,
   ExtraLarge,
 } from './components/Layout';
+import TokenList from '../../components/TokenList';
+import TokensNav from '../../components/TokensNav';
 
 const CodeVisibilityContext = createContext<
   [
@@ -263,6 +265,8 @@ function Markdown<
         Medium,
         Large,
         ExtraLarge,
+        TokenList,
+        TokensNav,
         Tip: ({children}) => (
           <div className="tip-banner">
             <div className="tip-banner__header">

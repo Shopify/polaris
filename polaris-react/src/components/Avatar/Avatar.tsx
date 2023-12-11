@@ -15,7 +15,15 @@ enum Status {
   Errored = 'ERRORED',
 }
 
-export const STYLE_CLASSES = ['one', 'two', 'three', 'four', 'five'] as const;
+export const STYLE_CLASSES = [
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+] as const;
 
 const avatarStrokeWidth: {[S in Size]: string} = {
   xs: '3',
@@ -116,7 +124,7 @@ export function Avatar({
     size && styles[variationName('size', size)],
     hasImage && status === Status.Loaded && styles.imageHasLoaded,
     !customer &&
-      !source &&
+      !hasImage &&
       styles[variationName('style', styleClass(nameString))],
   );
 

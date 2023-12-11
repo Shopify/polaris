@@ -6,7 +6,7 @@ import {readdir} from 'fs/promises';
 import PatternPage from '../../src/components/PatternPage';
 import type {Props, PatternMDX} from '../../src/components/PatternPage';
 import ComingSoon from '../../src/components/ComingSoon';
-import {PatternFrontMatter, PatternVariantFontMatter} from '../../src/types';
+import {PatternFrontMatter, PatternVariantFrontMatter} from '../../src/types';
 import {serializeMdx} from '../../src/components/Markdown/serialize';
 
 const getDirectories = async (source: string) =>
@@ -43,7 +43,7 @@ async function loadPatternAndVariants(slug: string): Promise<PatternMDX> {
       );
       // TODO: Optimize this so we're only sending down the compiled MDX for
       // variants which we're actually viewing
-      const [variant] = await serializeMdx<PatternVariantFontMatter>(
+      const [variant] = await serializeMdx<PatternVariantFrontMatter>(
         variantAbsolutePath,
         {load},
       );
@@ -90,19 +90,13 @@ export const getStaticProps: GetStaticProps<Props, {slug: string[]}> = async ({
   if (pattern.frontmatter.variants.length > 1 && !variant) {
     return {
       redirect: {
-        destination: `/patterns/${slug}/${pattern.frontmatter.variants[0].frontmatter.slug}`,
+        destination:
+          pattern.frontmatter.variants[0].frontmatter.url ??
+          `/patterns/${slug[0]}`,
         permanent: false,
       },
     };
   }
-
-  // console.log('DATA VARIANTS', JSON.stringify(data.variants, null, 2));
-
-  // console.log('DATA VARIANTS', JSON.stringify(data.variants, null, 2));
-
-  // console.log('mdxVariants', JSON.stringify(mdxVariants, null, 2));
-  // console.log('VARIANTS', JSON.stringify(mdxVariants, null, 2));
-  // console.log('DATA.VARIANTS', JSON.stringify(data.variants, null, 2));
 
   return {
     props: {
@@ -137,13 +131,13 @@ export const getStaticPaths: GetStaticPaths<{slug: string[]}> = async () => {
       // are specified
       if (
         !isUnique(
-          pattern.frontmatter.variants.map(({frontmatter: {slug}}) => slug),
+          pattern.frontmatter.variants.map(({frontmatter: {url}}) => url),
         ) ||
         !isUnique(
           pattern.frontmatter.variants.map(({frontmatter: {title}}) => title),
         )
       ) {
-        throw new Error('Variants must have unique title & slug front matter');
+        throw new Error('Variants must have unique title & url front matter');
       }
 
       // Note that we do not provide the pattern's root path here; we need it to
@@ -152,7 +146,11 @@ export const getStaticPaths: GetStaticPaths<{slug: string[]}> = async () => {
       // it'll be running getStaticProps in a node process where it CAN perform
       // a redirect.
       return pattern.frontmatter.variants.map((variant) => ({
-        params: {slug: [slug, variant.frontmatter.slug as string]},
+        params: {
+          slug: (
+            variant.frontmatter.url?.replace(/^\/?patterns\//, '') || slug
+          ).split('/'),
+        },
       }));
     }),
   );

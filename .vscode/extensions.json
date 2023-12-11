@@ -3,6 +3,9 @@
     "dbaeumer.vscode-eslint",
     "EditorConfig.editorconfig",
     "esbenp.prettier-vscode",
-    "Shopify.polaris-for-vscode"
+    "Shopify.polaris-for-vscode",
+    "eamodio.gitlens",
+    "stylelint.vscode-stylelint",
+    "unifiedjs.vscode-mdx"
   ]
 }

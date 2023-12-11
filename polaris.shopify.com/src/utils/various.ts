@@ -1,5 +1,3 @@
-import siteJson from '../../.cache/site.json';
-import {PatternFrontMatter, SiteJSON} from '../types';
 import type {BreakpointsAlias} from '@shopify/polaris-tokens';
 import {breakpointsAliases} from '@shopify/polaris-tokens';
 
@@ -7,32 +5,6 @@ export function isObject(value: any) {
   const type = typeof value;
   return value != null && (type === 'object' || type === 'function');
 }
-
-interface PatternJSON {
-  [key: string]: {
-    frontMatter: PatternFrontMatter;
-  };
-}
-
-const pages: SiteJSON = siteJson as unknown as SiteJSON;
-
-export const patterns: PatternJSON = Object.keys(pages)
-  .filter((slug) => slug.startsWith('patterns/'))
-  .sort((a, b) => a.localeCompare(b))
-  .reduce((memo, key) => {
-    // @ts-expect-error Yes it is compatible Typescript. Shhhh.
-    memo[key] = pages[key];
-    return memo;
-  }, {} as PatternJSON);
-
-export const legacyPatterns: PatternJSON = Object.keys(pages)
-  .filter((slug) => slug.startsWith('patterns-legacy/'))
-  .sort((a, b) => a.localeCompare(b))
-  .reduce((memo, key) => {
-    // @ts-expect-error Yes it is compatible Typescript. Shhhh.
-    memo[key] = pages[key];
-    return memo;
-  }, {} as PatternJSON);
 
 export const slugify = (str: string): string => {
   return (

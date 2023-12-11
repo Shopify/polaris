@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-icons",
-  "version": "7.9.0",
+  "version": "7.11.0",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify Inc.",
   "main": "dist/index.js",
@@ -21,7 +21,7 @@
     "clean": "rm -rf .turbo node_modules dist",
     "dev": "rollup -c -w",
     "test": "jest",
-    "optimize": "yarn svgo -f icons"
+    "optimize": "svgo -f icons"
   },
   "exports": {
     ".": {
