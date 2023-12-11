@@ -212,7 +212,10 @@ function NavItem({
 
             if (!child.slug) return null;
 
-            const isExpandable = child.children && !child.hideChildren;
+            const isExpandable =
+              child.children &&
+              Object.keys(child.children).length &&
+              !child.hideChildren;
             const id = (child.slug || key).replace(/\//g, '');
             const navAriaId = `nav-${id}`;
             const segments = asPath.slice(1).split('/');

@@ -628,17 +628,17 @@ export const color: {
       'The background color of elements suggested by magic AI, like a badge or a banner.',
   },
   'color-bg-fill-magic-secondary': {
-    value: colors.purple[6],
+    value: colors.purple[5],
     description:
       'The background color of elements suggested by magic AI, with a secondary level of prominence.',
   },
   'color-bg-fill-magic-secondary-hover': {
-    value: colors.purple[7],
+    value: colors.purple[6],
     description:
       'The hover state color of elements suggested by magic AI, with a secondary level of prominence.',
   },
   'color-bg-fill-magic-secondary-active': {
-    value: colors.purple[8],
+    value: colors.purple[7],
     description:
       'The active state (on press) color of elements suggested by magic AI, with a secondary level of prominence.',
   },

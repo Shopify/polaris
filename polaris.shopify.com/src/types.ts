@@ -58,7 +58,7 @@ export type FrontMatter = {
   title: string;
   navTitle?: string;
   draft?: boolean;
-  noIndex?: boolean;
+  noIndex?: true;
   category?: string;
   url?: string;
   description?: string;
@@ -84,21 +84,15 @@ export type FrontMatter = {
   variants?: string[];
 };
 
-export type PatternFrontMatter = Omit<FrontMatter, 'description'> & {
+export type PatternFrontMatter = Omit<FrontMatter, 'description' | 'lede'> & {
   /* Description is shown on Patterns index page, and as the meta description on detail page */
   description: string;
   /* Lede is the first paragraph on the detail page, above variants */
   lede: string;
-  previewImg?: string;
-  order?: number;
-  githubDiscussionsLink?: string;
   variants?: string[];
 };
 
-export type PatternVariantFontMatter = {
-  title?: string;
-  slug?: string;
-};
+export type PatternVariantFrontMatter = FrontMatter;
 
 export type MarkdownFile = {
   frontMatter: any;
@@ -118,7 +112,7 @@ export const foundationsCategories = [
   'tools',
 ] as const;
 
-export type FoundationsCategory = typeof foundationsCategories[number];
+export type FoundationsCategory = (typeof foundationsCategories)[number];
 
 export const searchResultCategories = [
   'foundations',
@@ -128,7 +122,7 @@ export const searchResultCategories = [
   'icons',
 ] as const;
 
-export type SearchResultCategory = typeof searchResultCategories[number];
+export type SearchResultCategory = (typeof searchResultCategories)[number];
 
 export interface SearchResult {
   id: string;
