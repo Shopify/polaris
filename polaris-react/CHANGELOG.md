@@ -1,5 +1,17 @@
 # Changelog
 
+## 12.3.0
+
+### Minor Changes
+
+- [#11273](https://github.com/Shopify/polaris/pull/11273) [`d514150b1`](https://github.com/Shopify/polaris/commit/d514150b1b4e58a37b27ec9534108301a57f9b12) Thanks [@alex-page](https://github.com/alex-page)! - Add `inherit` to `<Icon>` tone property
+  Fix appearance of `source="placeholder"` in `<Icon>`
+
+### Patch Changes
+
+- Updated dependencies [[`2b5ecf8df`](https://github.com/Shopify/polaris/commit/2b5ecf8df3dcc07a3a6a75939e6f3b588f710ea1), [`bd0cede27`](https://github.com/Shopify/polaris/commit/bd0cede27d266ec827220ad9da1016b788811922)]:
+  - @shopify/polaris-icons@7.11.0
+
 ## 12.2.0
 
 ### Minor Changes
