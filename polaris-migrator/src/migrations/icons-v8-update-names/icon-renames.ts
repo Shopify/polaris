@@ -835,6 +835,7 @@ export const iconRenames = {
   SidebarRightMinor: 'LayoutSidebarRightIcon',
   SidekickMajor: 'SidekickIcon',
   SidekickMinor: 'SidekickIcon',
+  SkeletonMajor: 'SkeletonIcon',
   SimplifyMajor: 'ArrowsInHorizontalIcon',
   SimplifyMinor: 'ArrowsInHorizontalIcon',
   SlideshowMajor: 'SlideshowIcon',
