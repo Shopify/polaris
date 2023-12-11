@@ -25,10 +25,8 @@
     }
   }
 
-  &:has(.MoreFiltersButtonContainer.onlyButtonVisible) {
-    + * {
-      margin-left: var(--p-space-200);
-    }
+  &:has(.MoreFiltersButtonContainer.onlyButtonVisible) + * {
+    margin-left: var(--p-space-200);
   }
 }
 
