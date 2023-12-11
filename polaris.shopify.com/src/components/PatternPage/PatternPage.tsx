@@ -5,7 +5,7 @@ import Link from 'next/link';
 import {useRouter} from 'next/router';
 
 import type {
-  PatternVariantFontMatter,
+  PatternVariantFrontMatter,
   PatternFrontMatter,
   SerializedMdx,
 } from '../../types';
@@ -24,7 +24,7 @@ import {SideBySide} from '../Markdown/components/SideBySide';
 
 export type PatternMDX = SerializedMdx<
   Omit<PatternFrontMatter, 'variants'> & {
-    variants: SerializedMdx<PatternVariantFontMatter>[];
+    variants: SerializedMdx<PatternVariantFrontMatter>[];
   }
 >;
 
@@ -45,7 +45,7 @@ const SingleVariant = ({children, variants}: VariantRendererProps) =>
 const TabbedVariants = ({children, variants}: VariantRendererProps) => {
   const router = useRouter();
   let exampleIndex = variants.findIndex(
-    ({frontmatter: {slug}}) => slug === router.query.slug?.[1],
+    ({frontmatter: {url}}) => url === router.asPath,
   );
 
   if (exampleIndex === -1) {
@@ -59,10 +59,10 @@ const TabbedVariants = ({children, variants}: VariantRendererProps) => {
           {variants.map((variant) => (
             <Tab
               as={Link}
-              href={`/patterns/${router.query.slug?.[0]}/${variant.frontmatter.slug}`}
+              href={variant.frontmatter.url!}
               shallow
               className={styles.Tab}
-              key={`${variant.frontmatter.slug}-tab`}
+              key={`${variant.frontmatter.url}-tab`}
             >
               <span>{variant.frontmatter.title}</span>
             </Tab>
@@ -72,7 +72,7 @@ const TabbedVariants = ({children, variants}: VariantRendererProps) => {
         <Tab.Panels>
           {variants.map((variant) => (
             <Tab.Panel
-              key={`${variant.frontmatter.slug}-panel`}
+              key={`${variant.frontmatter.url}-panel`}
               className={styles.TabPanel}
             >
               {children(variant)}

@@ -10,6 +10,12 @@ const cacheDir = path.join(process.cwd(), '.cache');
 const siteJsonFile = `${cacheDir}/site.ts`;
 const navJsonFile = `${cacheDir}/nav.ts`;
 
+var isAbsolute = new RegExp('^([a-z]+:|//)', 'i');
+
+const normalizeUrl = (slug) => {
+  return isAbsolute.test(slug) || slug.startsWith('/') ? slug : `/${slug}`;
+};
+
 const genNavJson = async (markdownFiles) => {
   let nav = {};
 
@@ -41,7 +47,7 @@ const genNavJson = async (markdownFiles) => {
       icon,
       description,
       order,
-      slug: url || `/${slug}`,
+      slug: normalizeUrl(url || slug),
       newSection,
       hideChildren,
       color: color ? color.replace(/\\/g, '') : undefined,
@@ -64,7 +70,12 @@ export default ${JSON.stringify(nav)} satisfies NavJSON;`,
 
 const genSiteJson = async (data) => {
   const json = {};
-  data.forEach((md) => (json[md.slug] = {frontMatter: md.frontMatter}));
+  data.forEach(
+    (md) =>
+      (json[normalizeUrl(md.frontMatter.url ?? md.slug)] = {
+        frontMatter: md.frontMatter,
+      }),
+  );
 
   await writeFile(
     siteJsonFile,
@@ -101,9 +112,7 @@ const genCacheJson = async () => {
 
   const markdownFiles = (
     await Promise.all(mdFiles.map((filePath) => getMdContent(filePath)))
-  )
-    .filter((md) => !md.frontMatter?.hideFromNav)
-    .sort((a, b) => a.slug.localeCompare(b.slug));
+  ).sort((a, b) => a.slug.localeCompare(b.slug));
 
   await genSiteJson(markdownFiles);
   await genNavJson(markdownFiles);

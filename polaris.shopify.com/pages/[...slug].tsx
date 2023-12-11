@@ -362,6 +362,7 @@ const catchAllTemplateExcludeList = [
   '/icons',
   '/sandbox',
   '/tools/stylelint-polaris/rules',
+  '/coming-soon',
 ];
 
 // We want to render component index & group pages, but not the individual
