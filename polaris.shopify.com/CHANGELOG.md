@@ -1,5 +1,13 @@
 # polaris.shopify.com
 
+## 0.61.1
+
+### Patch Changes
+
+- Updated dependencies [[`2b5ecf8df`](https://github.com/Shopify/polaris/commit/2b5ecf8df3dcc07a3a6a75939e6f3b588f710ea1), [`bd0cede27`](https://github.com/Shopify/polaris/commit/bd0cede27d266ec827220ad9da1016b788811922), [`d514150b1`](https://github.com/Shopify/polaris/commit/d514150b1b4e58a37b27ec9534108301a57f9b12)]:
+  - @shopify/polaris-icons@7.11.0
+  - @shopify/polaris@12.3.0
+
 ## 0.61.0
 
 ### Minor Changes
