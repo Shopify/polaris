@@ -20,7 +20,7 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "./scripts/get-props/src/get-props.ts",
-    "gen-assets": "yarn get-props && node scripts/gen-cache-json.mjs && ts-node scripts/gen-site-map.ts && ts-node scripts/gen-og-images.ts",
+    "gen-assets": "yarn get-props && node scripts/gen-cache-json.mjs && ts-node scripts/gen-site-map.ts && ts-node scripts/gen-og-images.tsx",
     "gen-colors": "ts-node ./scripts/gen-colors.ts"
   },
   "dependencies": {
@@ -91,10 +91,11 @@
     "ora": "^5.4.1",
     "p-map": "^5.5.0",
     "playroom": "^0.28.0",
-    "puppeteer": "^16.0.0",
     "sass": "^1.49.9",
+    "satori": "^0.10.11",
     "style-loader": "^3.3.1",
     "ts-node": "^10.7.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "wawoff2": "^2.0.1"
   }
 }

@@ -1,10 +1,13 @@
+import React from 'react';
 import * as polarisIcons from '@shopify/polaris-icons';
-import puppeteer from 'puppeteer';
+import wawoff2 from 'wawoff2';
+
 import {existsSync} from 'fs';
 import path from 'path';
 import {writeFile, readFile, mkdir, rm} from 'fs/promises';
 import pMap from '@esm2cjs/p-map';
 import ora from 'ora';
+import satori, {type SatoriOptions} from 'satori';
 import typedSiteJSON from '../.cache/site';
 
 const imgDir = path.join(process.cwd(), 'public/og-images');
@@ -31,17 +34,88 @@ const defaultImage = `<svg viewBox="0 0 99 99" xmlns="http://www.w3.org/2000/svg
 </svg>
 `;
 
-const generateHTML = async (data, url) => {
+const generateSVG = async (data, url, fontData) => {
+  console.log(fontData.buffer);
   const {frontMatter} = data[url];
   const title = frontMatter.title;
 
-  let htmlImg = `<div class="default-icon">${defaultImage}</div>`;
+  const Container = ({title, children, logo}) => {
+    return (
+      <div
+        style={{
+          fontFamily: 'apple-system, BlinkMacSystemFont, sans-serif',
+          width: '1200px',
+          height: '630px',
+          padding: '60px',
+          background: '#000',
+          color: '#fff',
+          perspective: '1800px',
+        }}
+      >
+        <h1
+          style={{
+            fontSize: '80px',
+            fontWeight: '650',
+            letterSpacing: '-0.01rem',
+            maxWidth: '520px',
+          }}
+        >
+          {title}
+        </h1>
+        {children}
+        <div
+          style={{
+            position: 'absolute',
+            bottom: '55px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '12px',
+            opacity: '.5',
+            fontSize: '24px',
+            fontWeight: '500',
+          }}
+        >
+          {logo} Polaris
+        </div>
+      </div>
+    );
+  };
+  const satoriConfig: SatoriOptions = {
+    width: 1200,
+    height: 630,
+    fonts: [
+      {
+        name: 'Inter',
+        data: fontData.buffer,
+        weight: 700,
+        style: 'normal',
+      },
+    ],
+  };
 
   if (url.startsWith('/components/')) {
     const imgPath = path.join(process.cwd(), `public/images${url}.png`);
     const image = await readFile(imgPath);
     const base64 = Buffer.from(image).toString('base64');
-    htmlImg = `<img src="data:image/png;base64,${base64}" class="component-image" />`;
+    /* eslint-disable-next-line */
+    return satori(
+      <Container title={title} logo={shopifyLogo}>
+        <img
+          alt=""
+          src={`data:image/png;base64,${base64}`}
+          style={{
+            position: 'absolute',
+            left: '100px',
+            top: '50%',
+            filter: 'contrast(1.1) invert(1) saturate(0) hue-rotate(180deg)',
+            opacity: '.33',
+            height: 'auto',
+            transform: 'rotateY(-60deg) translateY(-50%) scale(.9)',
+          }}
+        />
+      </Container>,
+      satoriConfig,
+    );
   }
 
   if (
@@ -55,95 +129,43 @@ const generateHTML = async (data, url) => {
         `../polaris-icons/dist/svg/${frontMatter.icon}.svg`,
       );
       const iconData = await readFile(iconFilePath);
-
-      htmlImg = `<div class="polaris-icon">${iconData}</div>`;
+      return satori(
+        <Container title={title} logo={shopifyLogo}>
+          <div
+            style={{
+              position: 'absolute',
+              left: '600px',
+              top: '50%',
+              transform: 'translateY(-50%)',
+              opacity: '.2',
+              filter: 'invert()',
+            }}
+          >
+            ${iconData}
+          </div>
+        </Container>,
+        satoriConfig,
+      );
     }
   }
 
-  const html = `
-  <style>
-  @import url('https://cdn.shopify.com/static/fonts/inter/inter.css');
-
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-
-  body {
-    font-family: inter;
-    width: 1200px;
-    height: 630px;
-    padding: 60px;
-    background: #000;
-    color: #fff;
-    perspective: 1800px;
-    transform-style: preserve-3d;
-  }
-
-  h1 {
-    font-size: 80px;
-    font-weight: 650;
-    letter-spacing: -0.01rem;
-    max-width: 520px;
-  }
-
-  .component-image {
-    position: absolute;
-    left: 100px;
-    top: 50%;
-    transform: translate3d(0, -50%, 0);
-    filter: contrast(1.1) invert(1) saturate(0) hue-rotate(180deg);
-    mix-blend-mode: lighten;
-    opacity: .33;
-    height: auto;
-    transform: rotateY(-60deg) translateY(-50%) scale(.9);
-  }
-
-  .polaris-icon,
-  .default-icon {
-    position: absolute;
-    left: 600px;
-    top: 50%;
-    transform: translate3d(0, -50%, 0);
-    opacity: .2;
-  }
-
-  .polaris-icon svg,
-  .default-icon svg {
-    width: 400px;
-    height: 400px;
-  }
-
-  .default-icon {
-    filter: brightness(1000%);
-  }
-
-  .polaris-icon {
-    filter: invert();
-  }
-
-  .logo {
-    position: absolute;
-    bottom: 55px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    opacity: .5;
-    font-size: 24px;
-    font-weight: 500;
-  }
-</style>
-
-<body>
-  <h1>${title}</h1>
-  ${htmlImg}
-  <div class="logo">
-    ${shopifyLogo} Polaris
-  </div>
-</body>`;
-
-  return Buffer.from(html).toString('base64');
+  return satori(
+    <Container title={title} logo={shopifyLogo}>
+      <div
+        style={{
+          position: 'absolute',
+          left: '600px',
+          top: '50%',
+          transform: 'translateY(-50%)',
+          opacity: '.2',
+          filter: 'brightness(1000%)',
+        }}
+      >
+        ${defaultImage}
+      </div>
+    </Container>,
+    satoriConfig,
+  );
 };
 
 const genOgImages = async () => {
@@ -152,31 +174,34 @@ const genOgImages = async () => {
     await rm(imgDir, {recursive: true});
   }
 
+  const interFontArrayBuffer = await fetch(
+    'https://cdn.shopify.com/static/fonts/inter/Inter-roman.var.woff2?v=3.19',
+    {
+      headers: {
+        accept: '*/*',
+      },
+    },
+  ).then(async (res) => {
+    const fontData = await res.arrayBuffer();
+    console.log(res);
+    return wawoff2.decompress(fontData);
+  });
+  console.log(typeof interFontArrayBuffer, interFontArrayBuffer);
+
   await mkdir(imgDir, {recursive: true});
   const urls = Object.keys(typedSiteJSON);
-  const browser = await puppeteer.launch({
-    defaultViewport: {width: 1200, height: 630},
-    args: ['--no-sandbox', '--disable-setuid-sandbox'],
-  });
-
   let completed = 0;
-
   const getPNG = async (url) => {
     try {
       const imgPath =
         url === ''
           ? 'home'
           : new URL(url, 'https://polaris.shopify.com').pathname;
-      const html = await generateHTML(typedSiteJSON, url);
-      const encodedUrl = `data:text/html;charset=utf-8;base64,${html}`;
-      const page = await browser.newPage();
-      await page.goto(encodedUrl, {waitUntil: 'networkidle0'});
-      const image = await page.screenshot();
+      const svg = await generateSVG(typedSiteJSON, url, interFontArrayBuffer);
       if (!existsSync(`${imgDir}${imgPath}`)) {
         await mkdir(`${imgDir}${imgPath}`, {recursive: true});
       }
-      await writeFile(`${imgDir}${imgPath}.png`, image);
-      await page.close();
+      await writeFile(`${imgDir}${imgPath}.png`, svg);
       completed++;
       spinner.text = `Generated ${completed} of ${urls.length} Open Graph images from sitemap`;
     } catch (error) {
@@ -184,15 +209,6 @@ const genOgImages = async () => {
       throw error;
     }
   };
-
-  const generateImages = await pMap(urls, getPNG, {concurrency: 30});
-
-  await Promise.all(generateImages);
-
-  await browser.close();
-  spinner.succeed(
-    `Generated ${urls.length} of ${urls.length} Open Graph images from sitemap`,
-  );
 };
 
 genOgImages().then(() => {
