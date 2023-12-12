@@ -36,11 +36,13 @@
   background: var(--pc-button-bg);
   color: var(--pc-button-color);
   box-shadow: var(--pc-button-box-shadow);
-  fill: var(--pc-button-icon-fill);
-
   font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-500);
+
+  svg {
+    fill: var(--pc-button-icon-fill);
+  }
 
   @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-300);
@@ -71,9 +73,9 @@
 .Button:disabled,
 .Button[disabled],
 .disabled {
+  --pc-button-icon-fill: var(--pc-button-icon-fill_disabled);
   background: var(--pc-button-bg_disabled);
   color: var(--pc-button-color_disabled);
-  fill: var(--pc-button-icon-fill_disabled);
   box-shadow: none;
   cursor: not-allowed;
   user-select: none;
@@ -92,7 +94,11 @@
 // VARIANTS
 .variantPrimary {
   // stylelint-disable  -- custom button tokens
-  --pc-button-bg-gradient: linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%);
+  --pc-button-bg-gradient: linear-gradient(
+    180deg,
+    rgba(48, 48, 48, 0) 63.53%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
   --pc-button-box-shadow: 0px -1px 0px 1px rgba(0, 0, 0, 0.8) inset,
     0px 0px 0px 1px rgba(48, 48, 48, 1) inset,
     0px 0.5px 0px 1.5px rgba(255, 255, 255, 0.25) inset;
@@ -111,9 +117,11 @@
 .variantSecondary {
   // stylelint-disable  -- custom button tokens
   --pc-button-box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.051) inset,
-    0 0 0 1px rgba(0, 0, 0, 0.149) inset, 0 0.5px 0 1.5px rgb(255, 255, 255) inset;
+    0 0 0 1px rgba(0, 0, 0, 0.149) inset,
+    0 0.5px 0 1.5px rgb(255, 255, 255) inset;
   --pc-button-box-shadow_active: -1px 0 1px 0 #1a1a1a1f inset,
-    1px 0 1px 0 rgba(26, 26, 26, 0.122) inset, 0 2px 1px 0 rgba(26, 26, 26, 0.2) inset;
+    1px 0 1px 0 rgba(26, 26, 26, 0.122) inset,
+    0 2px 1px 0 rgba(26, 26, 26, 0.2) inset;
   // stylelint-enable
   --pc-button-bg: var(--p-color-bg-fill);
   --pc-button-bg_hover: var(--p-color-bg-fill-hover);
@@ -165,7 +173,8 @@
 .toneSuccess:is(.variantPrimary) {
   // stylelint-disable  -- custom button tokens
   --pc-button-box-shadow: 0 -1px 0 1px rgba(12, 81, 50, 0.8) inset,
-    0 0 0 1px rgba(19, 111, 69, 0.8) inset, 0 0.5px 0 1.5px rgba(255, 255, 255, 0.251) inset;
+    0 0 0 1px rgba(19, 111, 69, 0.8) inset,
+    0 0.5px 0 1.5px rgba(255, 255, 255, 0.251) inset;
   // stylelint-enable
   --pc-button-bg: var(--p-color-bg-fill-success);
   --pc-button-bg_hover: var(--p-color-bg-fill-success-hover);
@@ -175,7 +184,8 @@
 .toneCritical:is(.variantPrimary) {
   // stylelint-disable  -- custom button tokens
   --pc-button-box-shadow: 0 -1px 0 1px rgba(142, 31, 11, 0.8) inset,
-    0 0 0 1px rgba(181, 38, 11, 0.8) inset, 0 0.5px 0 1.5px rgba(255, 255, 255, 0.349) inset;
+    0 0 0 1px rgba(181, 38, 11, 0.8) inset,
+    0 0.5px 0 1.5px rgba(255, 255, 255, 0.349) inset;
   // stylelint-enable
   --pc-button-bg: var(--p-color-bg-fill-critical);
   --pc-button-bg_hover: var(--p-color-bg-fill-critical-hover);
@@ -210,7 +220,7 @@
 
 .sizeLarge {
   --pc-button-padding-block: var(--p-space-150);
-  --pc-button-padding-inline: var(--p-space-300);;
+  --pc-button-padding-inline: var(--p-space-300);
   font-size: var(--p-font-size-325);
   line-height: var(--p-font-line-height-500);
   height: var(--p-height-900);
@@ -245,8 +255,36 @@
   width: 100%;
 }
 
-// ICON
+// ICON ONLY
 .iconOnly {
+  &.variantTertiary,
+  &.variantPlain {
+    --pc-button-icon-fill: var(--p-color-icon-secondary);
+
+    /* stylelint-disable-next-line -- selector-max-class */
+    &.toneCritical {
+      --pc-button-icon-fill: var(--p-color-text-critical);
+    }
+  }
+}
+
+/* stylelint-disable selector-max-specificity -- Need the high specificity for icon-only interation states because of how high specificity is with :is usage in the variant and tone class declarations above */
+.iconOnly:is(:hover, :focus):not(.variantPrimary):not(.toneCritical.variantTertiary) {
+  --pc-button-icon-fill: var(--p-color-icon-hover);
+}
+
+.iconOnly:is(:active, .pressed):not(.variantPrimary):not(.toneCritical.variantTertiary) {
+  --pc-button-icon-fill: var(--p-color-icon-active);
+}
+/* stylelint-enable selector-max-specificity */
+
+.disabled:not(.variantPrimary),
+.iconOnly.disabled:not(.variantPrimary) {
+  --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
+  --pc-button-icon-fill: var(--pc-button-icon-fill_disabled);
+}
+
+.iconOnly:is(.sizeSlim, .sizeMedium) {
   --pc-button-padding-inline: var(--p-space-100);
 }
 
@@ -277,7 +315,8 @@
 }
 
 // INTERACTION
-.pressable:active:not(.variantTertiary, .variantPlain, .variantMonochromePlain)
+/* stylelint-disable-next-line selector-max-specificity -- Unchained :not selectors don't compile as intended */
+.pressable:active:not(.variantTertiary):not(.variantPlain):not(.variantMonochromePlain)
   > * {
   transform: translate3d(0, 1px, 0);
 }
