@@ -831,6 +831,7 @@ import {
   SidebarRightMinor,
   SidekickMajor,
   SidekickMinor,
+  SkeletonMajor,
   SimplifyMajor,
   SimplifyMinor,
   SlideshowMajor,
@@ -1848,6 +1849,7 @@ export function App() {
       <Icon source={SidebarRightMinor} />
       <Icon source={SidekickMajor} />
       <Icon source={SidekickMinor} />
+      <Icon source={SkeletonMajor} />
       <Icon source={SimplifyMajor} />
       <Icon source={SimplifyMinor} />
       <Icon source={SlideshowMajor} />
