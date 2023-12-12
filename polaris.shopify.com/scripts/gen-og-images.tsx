@@ -1,14 +1,19 @@
 import React from 'react';
 import * as polarisIcons from '@shopify/polaris-icons';
+import tmp from 'tmp';
+import {registerFont, createCanvas} from 'canvas';
 import wawoff2 from 'wawoff2';
 
-import {existsSync} from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import {writeFile, readFile, mkdir, rm} from 'fs/promises';
 import pMap from '@esm2cjs/p-map';
 import ora from 'ora';
 import satori, {type SatoriOptions} from 'satori';
 import typedSiteJSON from '../.cache/site';
+
+// Automatically cleanup the temporary files/directories when the process exits
+tmp.setGracefulCleanup();
 
 const imgDir = path.join(process.cwd(), 'public/og-images');
 
@@ -34,10 +39,19 @@ const defaultImage = `<svg viewBox="0 0 99 99" xmlns="http://www.w3.org/2000/svg
 </svg>
 `;
 
-const generateSVG = async (data, url, fontData) => {
-  console.log(fontData.buffer);
-  const {frontMatter} = data[url];
+const generateCanvas = async (data, url) => {
+  const {frontMatter} = data[url] ?? {frontMatter: {title: 'Home'}};
   const title = frontMatter.title;
+
+  const canvas = createCanvas(200, 200);
+  const ctx = canvas.getContext('2d');
+
+  // Write "Awesome!"
+  ctx.font = '30px Inter';
+  ctx.rotate(0.1);
+  ctx.fillText('Awesome!', 50, 100);
+
+  return canvas;
 
   const Container = ({title, children, logo}) => {
     return (
@@ -170,38 +184,59 @@ const generateSVG = async (data, url, fontData) => {
 
 const genOgImages = async () => {
   const spinner = ora('Generating Open Graph images from sitemap').start();
-  if (existsSync(imgDir)) {
+  if (fs.existsSync(imgDir)) {
     await rm(imgDir, {recursive: true});
   }
 
-  const interFontArrayBuffer = await fetch(
-    'https://cdn.shopify.com/static/fonts/inter/Inter-roman.var.woff2?v=3.19',
-    {
-      headers: {
-        accept: '*/*',
+  const interFontArrayBuffer = await (
+    await fetch(
+      'https://cdn.shopify.com/static/fonts/inter/Inter-roman.var.woff2?v=3.19',
+      {
+        headers: {
+          accept: '*/*',
+        },
       },
-    },
-  ).then(async (res) => {
-    const fontData = await res.arrayBuffer();
-    console.log(res);
-    return wawoff2.decompress(fontData);
+    )
+  ).arrayBuffer();
+
+  const ttfFileData = await wawoff2.decompress(
+    Buffer.from(interFontArrayBuffer),
+  );
+
+  const fontFile = tmp.fileSync({postfix: '.ttf'});
+
+  fs.writeFileSync(fontFile.fd, ttfFileData);
+  console.log(fontFile.name);
+  registerFont(fontFile.name, {
+    family: 'Inter',
+    weight: '700',
+    style: 'normal',
   });
-  console.log(typeof interFontArrayBuffer, interFontArrayBuffer);
 
   await mkdir(imgDir, {recursive: true});
-  const urls = Object.keys(typedSiteJSON);
+  const urls = ['', ...Object.keys(typedSiteJSON)];
   let completed = 0;
-  const getPNG = async (url) => {
+
+  const getPNG = async (url: keyof typeof typedSiteJSON | '') => {
     try {
       const imgPath =
         url === ''
           ? 'home'
           : new URL(url, 'https://polaris.shopify.com').pathname;
-      const svg = await generateSVG(typedSiteJSON, url, interFontArrayBuffer);
-      if (!existsSync(`${imgDir}${imgPath}`)) {
+      const canvas = await generateCanvas(typedSiteJSON, url);
+      if (!fs.existsSync(`${imgDir}${imgPath}`)) {
         await mkdir(`${imgDir}${imgPath}`, {recursive: true});
       }
-      await writeFile(`${imgDir}${imgPath}.png`, svg);
+
+      const out = fs.createWriteStream(`${imgDir}${imgPath}.png`);
+      const stream = canvas.createPNGStream();
+      stream.pipe(out);
+      await new Promise((resolve, reject) => {
+        out.on('finish', resolve);
+        out.on('error', reject);
+      });
+
+      // await writeFile(`${imgDir}${imgPath}.png`, canvas);
       completed++;
       spinner.text = `Generated ${completed} of ${urls.length} Open Graph images from sitemap`;
     } catch (error) {
@@ -209,6 +244,8 @@ const genOgImages = async () => {
       throw error;
     }
   };
+
+  await getPNG(urls[0]);
 };
 
 genOgImages().then(() => {
