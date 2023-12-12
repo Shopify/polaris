@@ -184,13 +184,12 @@ $item-wrapper-loading-height: 64px;
 }
 
 .SelectAllActionsWrapperAtEnd {
-  height: 0;
-  transition: height var(--p-motion-duration-100) var(--p-motion-ease);
-  overflow: clip;
+  opacity: 0;
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease);
 }
 
 .SelectAllActionsWrapperAtEndAppear {
-  height: 40px;
+  opacity: 1;
 }
 
 .BulkActionsWrapper {
@@ -285,7 +284,6 @@ $item-wrapper-loading-height: 64px;
 
 .ResourceListWrapper {
   position: relative;
-  transition: padding var(--p-motion-duration-100) var(--p-motion-ease);
 }
 
 .ResourceList {

@@ -635,6 +635,7 @@ function IndexTableBase({
           paginatedSelectAllText={paginatedSelectAllText}
           paginatedSelectAllAction={paginatedSelectAllAction}
           isSticky={isSelectAllActionsSticky}
+          hasPagination={Boolean(pagination)}
         />
       </div>
     ) : null;
@@ -650,6 +651,7 @@ function IndexTableBase({
 
           const bulkActionsClassName = classNames(
             styles.BulkActionsWrapper,
+            selectMode && styles.BulkActionsWrapperVisible,
             condensed && styles['StickyTableHeader-condensed'],
             isSticky && styles['StickyTableHeader-isSticky'],
           );
@@ -703,7 +705,12 @@ function IndexTableBase({
 
           const stickyContent = bulkActionsMarkup ?? headerMarkup;
 
-          return stickyContent;
+          return (
+            <>
+              {headerMarkup}
+              {bulkActionsMarkup}
+            </>
+          );
         }}
       </Sticky>
       {selectAllActionsMarkup}
