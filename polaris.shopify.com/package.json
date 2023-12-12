@@ -74,10 +74,8 @@
     "@types/marked": "^4.0.3",
     "@types/prismjs": "^1.26.0",
     "@types/react": "^18.2.0",
-    "@types/tmp": "^0.2.6",
     "@types/uuid": "^9.0.1",
     "babel-plugin-preval": "^5.1.0",
-    "canvas": "^2.11.2",
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
     "eslint": "8.10.0",
@@ -98,9 +96,7 @@
     "sass": "^1.49.9",
     "satori": "^0.10.11",
     "style-loader": "^3.3.1",
-    "tmp": "^0.2.1",
     "ts-node": "^10.7.0",
-    "typescript": "^4.9.3",
-    "wawoff2": "^2.0.1"
+    "typescript": "^4.9.3"
   }
 }

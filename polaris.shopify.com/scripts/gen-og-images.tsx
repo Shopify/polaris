@@ -1,8 +1,5 @@
 import React from 'react';
 import * as polarisIcons from '@shopify/polaris-icons';
-import tmp from 'tmp';
-import {registerFont, createCanvas} from 'canvas';
-import wawoff2 from 'wawoff2';
 import {Transformer} from '@napi-rs/image';
 
 import fs from 'node:fs';
@@ -13,13 +10,10 @@ import ora from 'ora';
 import satori, {type SatoriOptions} from 'satori';
 import typedSiteJSON from '../.cache/site';
 
-const interFolder = path.join(
+const interDir = path.join(
   path.dirname(require.resolve('inter-ui')),
   'Inter (web)',
 );
-
-// Automatically cleanup the temporary files/directories when the process exits
-tmp.setGracefulCleanup();
 
 const imgDir = path.join(process.cwd(), 'public/og-images');
 
@@ -252,10 +246,8 @@ const genOgImages = async () => {
   // });
   //
 
-  const interMedium = fs.readFileSync(
-    path.join(interFolder, 'Inter-Medium.woff'),
-  );
-  const interBold = fs.readFileSync(path.join(interFolder, 'Inter-Bold.woff'));
+  const interMedium = fs.readFileSync(path.join(interDir, 'Inter-Medium.woff'));
+  const interBold = fs.readFileSync(path.join(interDir, 'Inter-Bold.woff'));
 
   const satoriConfig: SatoriOptions = {
     width: 1200,
@@ -296,14 +288,6 @@ const genOgImages = async () => {
       if (!fs.existsSync(`${imgDir}${imgPath}`)) {
         await mkdir(`${imgDir}${imgPath}`, {recursive: true});
       }
-
-      // const out = fs.createWriteStream(`${imgDir}${imgPath}.png`);
-      // const stream = canvas.createPNGStream();
-      // stream.pipe(out);
-      // await new Promise((resolve, reject) => {
-      //   out.on('finish', resolve);
-      //   out.on('error', reject);
-      // });
 
       const trasformer = Transformer.fromSvg(svg);
       const pngData = await trasformer.png();
