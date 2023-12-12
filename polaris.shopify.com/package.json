@@ -64,6 +64,7 @@
   },
   "devDependencies": {
     "@esm2cjs/p-map": "^5.5.0",
+    "@napi-rs/image": "^1.7.0",
     "@types/base-64": "^1.0.0",
     "@types/gtag.js": "^0.0.10",
     "@types/js-yaml": "^4.0.5",
@@ -86,6 +87,7 @@
     "generact": "^0.4.0",
     "get-site-urls": "3.0.0-alpha.1",
     "globby": "^11.1.0",
+    "inter-ui": "3.19.3",
     "is-ci": "^3.0.1",
     "js-yaml": "^4.1.0",
     "lodash.set": "^4.3.2",

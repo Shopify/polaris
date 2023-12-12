@@ -3,6 +3,7 @@ import * as polarisIcons from '@shopify/polaris-icons';
 import tmp from 'tmp';
 import {registerFont, createCanvas} from 'canvas';
 import wawoff2 from 'wawoff2';
+import {Transformer} from '@napi-rs/image';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -11,6 +12,11 @@ import pMap from '@esm2cjs/p-map';
 import ora from 'ora';
 import satori, {type SatoriOptions} from 'satori';
 import typedSiteJSON from '../.cache/site';
+
+const interFolder = path.join(
+  path.dirname(require.resolve('inter-ui')),
+  'Inter (web)',
+);
 
 // Automatically cleanup the temporary files/directories when the process exits
 tmp.setGracefulCleanup();
@@ -39,19 +45,63 @@ const defaultImage = `<svg viewBox="0 0 99 99" xmlns="http://www.w3.org/2000/svg
 </svg>
 `;
 
-const generateCanvas = async (data, url) => {
-  const {frontMatter} = data[url] ?? {frontMatter: {title: 'Home'}};
+const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
   const title = frontMatter.title;
 
-  const canvas = createCanvas(200, 200);
-  const ctx = canvas.getContext('2d');
+  return satori(
+    <div
+      style={{
+        display: 'flex',
+        fontFamily: 'apple-system, BlinkMacSystemFont, sans-serif',
+        width: '1200px',
+        height: '630px',
+        padding: '60px',
+        background: '#000',
+        color: '#fff',
+        perspective: '1800px',
+      }}
+    >
+      <h1
+        style={{
+          fontSize: '80px',
+          fontWeight: '700',
+          letterSpacing: '-0.01rem',
+          maxWidth: '520px',
+        }}
+      >
+        {title}
+      </h1>
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '55px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px',
+          opacity: '.5',
+          fontSize: '24px',
+          fontWeight: '500',
+        }}
+      >
+        {shopifyLogo} Polaris
+      </div>
+    </div>,
+    satoriConfig,
+  );
 
-  // Write "Awesome!"
-  ctx.font = '30px Inter';
-  ctx.rotate(0.1);
-  ctx.fillText('Awesome!', 50, 100);
+  // const canvas = createCanvas(200, 200);
+  // const ctx = canvas.getContext('2d');
 
-  return canvas;
+  // ctx.
+
+  // // Write "Awesome!"
+  // ctx.save();
+  // ctx.font = '80px Inter';
+  // ctx.rotate(0.1);
+  // ctx.fillText(title, 50, 100);
+  // ctx.restore();
+
+  // return canvas;
 
   const Container = ({title, children, logo}) => {
     return (
@@ -69,7 +119,7 @@ const generateCanvas = async (data, url) => {
         <h1
           style={{
             fontSize: '80px',
-            fontWeight: '650',
+            fontWeight: '700',
             letterSpacing: '-0.01rem',
             maxWidth: '520px',
           }}
@@ -93,18 +143,6 @@ const generateCanvas = async (data, url) => {
         </div>
       </div>
     );
-  };
-  const satoriConfig: SatoriOptions = {
-    width: 1200,
-    height: 630,
-    fonts: [
-      {
-        name: 'Inter',
-        data: fontData.buffer,
-        weight: 700,
-        style: 'normal',
-      },
-    ],
   };
 
   if (url.startsWith('/components/')) {
@@ -188,64 +226,95 @@ const genOgImages = async () => {
     await rm(imgDir, {recursive: true});
   }
 
-  const interFontArrayBuffer = await (
-    await fetch(
-      'https://cdn.shopify.com/static/fonts/inter/Inter-roman.var.woff2?v=3.19',
-      {
-        headers: {
-          accept: '*/*',
-        },
-      },
-    )
-  ).arrayBuffer();
+  // const interFontArrayBuffer = await (
+  //   await fetch(
+  //     'https://cdn.shopify.com/static/fonts/inter/Inter-roman.var.woff2?v=3.19',
+  //     {
+  //       headers: {
+  //         accept: '*/*',
+  //       },
+  //     },
+  //   )
+  // ).arrayBuffer();
 
-  const ttfFileData = await wawoff2.decompress(
-    Buffer.from(interFontArrayBuffer),
+  // const ttfFileData = await wawoff2.decompress(
+  //   Buffer.from(interFontArrayBuffer),
+  // );
+
+  // const fontFile = tmp.fileSync({postfix: '.ttf'});
+
+  // fs.writeFileSync(fontFile.fd, ttfFileData);
+
+  // registerFont(fontFile.name, {
+  //   family: 'Inter',
+  //   weight: '700',
+  //   style: 'normal',
+  // });
+  //
+
+  const interMedium = fs.readFileSync(
+    path.join(interFolder, 'Inter-Medium.woff'),
   );
+  const interBold = fs.readFileSync(path.join(interFolder, 'Inter-Bold.woff'));
 
-  const fontFile = tmp.fileSync({postfix: '.ttf'});
-
-  fs.writeFileSync(fontFile.fd, ttfFileData);
-  console.log(fontFile.name);
-  registerFont(fontFile.name, {
-    family: 'Inter',
-    weight: '700',
-    style: 'normal',
-  });
+  const satoriConfig: SatoriOptions = {
+    width: 1200,
+    height: 630,
+    fonts: [
+      {
+        name: 'Inter',
+        data: interMedium,
+        weight: 500,
+        style: 'normal',
+      },
+      {
+        name: 'Inter',
+        data: interBold,
+        weight: 700,
+        style: 'normal',
+      },
+    ],
+  };
 
   await mkdir(imgDir, {recursive: true});
-  const urls = ['', ...Object.keys(typedSiteJSON)];
-  let completed = 0;
 
-  const getPNG = async (url: keyof typeof typedSiteJSON | '') => {
+  let completed = 0;
+  Object.entries({
+    '/home': {
+      frontMatter: {
+        title: 'Polaris',
+      },
+    },
+    ...typedSiteJSON,
+  }).forEach(async ([url, {frontMatter}]) => {
     try {
       const imgPath =
         url === ''
-          ? 'home'
+          ? '/home'
           : new URL(url, 'https://polaris.shopify.com').pathname;
-      const canvas = await generateCanvas(typedSiteJSON, url);
+      const svg = await generateSvg(url, frontMatter, satoriConfig);
       if (!fs.existsSync(`${imgDir}${imgPath}`)) {
         await mkdir(`${imgDir}${imgPath}`, {recursive: true});
       }
 
-      const out = fs.createWriteStream(`${imgDir}${imgPath}.png`);
-      const stream = canvas.createPNGStream();
-      stream.pipe(out);
-      await new Promise((resolve, reject) => {
-        out.on('finish', resolve);
-        out.on('error', reject);
-      });
+      // const out = fs.createWriteStream(`${imgDir}${imgPath}.png`);
+      // const stream = canvas.createPNGStream();
+      // stream.pipe(out);
+      // await new Promise((resolve, reject) => {
+      //   out.on('finish', resolve);
+      //   out.on('error', reject);
+      // });
 
-      // await writeFile(`${imgDir}${imgPath}.png`, canvas);
+      const trasformer = Transformer.fromSvg(svg);
+      const pngData = await trasformer.png();
+      await writeFile(`${imgDir}${imgPath}.png`, pngData);
       completed++;
-      spinner.text = `Generated ${completed} of ${urls.length} Open Graph images from sitemap`;
+      spinner.text = `Generated ${completed} Open Graph images from .cache/site.ts`;
     } catch (error) {
       spinner.fail(`Failed to generate Open Graph png for ${url}`);
       throw error;
     }
-  };
-
-  await getPNG(urls[0]);
+  });
 };
 
 genOgImages().then(() => {
