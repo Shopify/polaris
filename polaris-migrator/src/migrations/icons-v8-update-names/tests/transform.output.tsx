@@ -386,6 +386,7 @@ import {
   LayoutSidebarLeftIcon,
   LayoutSidebarRightIcon,
   SidekickIcon,
+  SkeletonIcon,
   ArrowsInHorizontalIcon,
   SlideshowIcon,
   SmileyHappyIcon,
@@ -1310,6 +1311,7 @@ export function App() {
       <Icon source={LayoutSidebarRightIcon} />
       <Icon source={SidekickIcon} />
       <Icon source={SidekickIcon} />
+      <Icon source={SkeletonIcon} />
       <Icon source={ArrowsInHorizontalIcon} />
       <Icon source={ArrowsInHorizontalIcon} />
       <Icon source={SlideshowIcon} />
