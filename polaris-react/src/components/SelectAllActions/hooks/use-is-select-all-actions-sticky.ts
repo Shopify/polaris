@@ -86,8 +86,9 @@ export function useIsSelectAllActionsSticky({
         offsetLeft: 0,
       };
     }
+    const shouldAddPadding = selectMode && hasPagination;
     const box = node.getBoundingClientRect();
-    const paddingHeight = selectMode ? SELECT_ALL_ACTIONS_HEIGHT : 0;
+    const paddingHeight = shouldAddPadding ? SELECT_ALL_ACTIONS_HEIGHT : 0;
     const offsetHeight = box.height - paddingHeight;
     const maxWidth = box.width - widthOffset;
     const offsetLeft = box.left;
@@ -95,7 +96,7 @@ export function useIsSelectAllActionsSticky({
     setSelectAllActionsAbsoluteOffset(offsetHeight);
     setSelectAllActionsMaxWidth(maxWidth);
     setSelectAllActionsOffsetLeft(offsetLeft);
-  }, [selectMode, widthOffset]);
+  }, [selectMode, widthOffset, hasPagination, tableType]);
 
   const computeDimensionsPastScroll = useCallback(() => {
     setSelectAllActionsAbsoluteOffset(initialPostOffset);

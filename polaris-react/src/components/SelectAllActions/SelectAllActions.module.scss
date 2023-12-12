@@ -8,7 +8,6 @@
   width: 100%;
   transition: var(--p-motion-duration-100) var(--p-motion-ease);
   transition-property: transform, opacity;
-  will-change: opacity, transform;
 
   &.SelectAllActions-not-sticky {
     transform: none;
@@ -18,13 +17,21 @@
 
 .SelectAllActions-entering,
 .SelectAllActions-exiting {
-  opacity: 0;
   display: flex;
+  opacity: 0;
+
+  &:not(:is(.SelectAllActions-not-sticky, .SelectAllActions-hasPagination)) {
+    transform: translateY(100%);
+  }
 }
 
 .SelectAllActions-exited {
-  opacity: 0;
   display: none;
+  opacity: 0;
+
+  &:not(:is(.SelectAllActions-not-sticky, .SelectAllActions-hasPagination)) {
+    transform: translateY(100%);
+  }
 }
 
 .SelectAllActions-entered {

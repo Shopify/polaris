@@ -14,6 +14,7 @@ import {
   Text,
   BlockStack,
   Box,
+  InlineStack,
 } from '@shopify/polaris';
 
 export default {
@@ -292,17 +293,26 @@ export function WithBulkActionsAndManyItems() {
   ];
 
   return (
-    <Card padding="0" roundedAbove="sm">
-      <ResourceList
-        resourceName={resourceName}
-        items={items}
-        renderItem={renderItem}
-        selectedItems={selectedItems}
-        onSelectionChange={setSelectedItems}
-        promotedBulkActions={promotedBulkActions}
-        bulkActions={bulkActions}
-      />
-    </Card>
+    <BlockStack gap="400">
+      <Card padding="0" roundedAbove="sm">
+        <ResourceList
+          resourceName={resourceName}
+          items={items}
+          renderItem={renderItem}
+          selectedItems={selectedItems}
+          onSelectionChange={setSelectedItems}
+          promotedBulkActions={promotedBulkActions}
+          bulkActions={bulkActions}
+        />
+        <Box padding="300" borderBlockStartWidth="025" borderColor="border">
+          <InlineStack align="space-between">
+            <div>Total inventory at all locations</div>
+            <div>32069 available</div>
+          </InlineStack>
+        </Box>
+      </Card>
+      <Card padding="300">Content of another card</Card>
+    </BlockStack>
   );
 
   function renderItem(item) {

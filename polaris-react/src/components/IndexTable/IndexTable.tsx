@@ -595,11 +595,18 @@ function IndexTableBase({
     condensed && styles['StickyTable-condensed'],
   );
 
-  const shouldShowBulkActions = bulkActionsSelectable && selectedItemsCount;
+  const shouldShowBulkActions = bulkActionsSelectable;
 
   const selectAllActionsClassNames = classNames(
     styles.SelectAllActionsWrapper,
     isSelectAllActionsSticky && styles.SelectAllActionsWrapperSticky,
+    !isSelectAllActionsSticky &&
+      !pagination &&
+      styles.SelectAllActionsWrapperAtEnd,
+    selectMode &&
+      !isSelectAllActionsSticky &&
+      !pagination &&
+      styles.SelectAllActionsWrapperAtEndAppear,
   );
 
   const shouldShowActions = !condensed || selectedItemsCount;
