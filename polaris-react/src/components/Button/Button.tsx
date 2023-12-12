@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {isValidElement} from 'react';
 import {
   SelectMinor,
   ChevronDownMinor,
   ChevronUpMinor,
+  SkeletonMajor,
 } from '@shopify/polaris-icons';
 
 import type {BaseButton, IconSource} from '../../types';
@@ -147,7 +148,7 @@ export function Button({
         <Icon
           source={
             loading
-              ? 'placeholder'
+              ? SkeletonMajor
               : getDisclosureIconSource(
                   disclosure,
                   ChevronUpMinor,
@@ -159,14 +160,16 @@ export function Button({
     </span>
   ) : null;
 
-  const iconSource = isIconSource(icon) ? (
-    <Icon source={loading ? 'placeholder' : icon} />
-  ) : (
-    icon
-  );
-  const iconMarkup = iconSource ? (
+  const iconMarkup = icon ? (
     <span className={classNames(styles.Icon, loading && styles.hidden)}>
-      {iconSource}
+      {/* eslint-disable-next-line no-nested-ternary */}
+      {loading ? (
+        <Icon source={SkeletonMajor} />
+      ) : isValidElement(icon) ? (
+        icon
+      ) : (
+        <Icon source={icon} />
+      )}
     </span>
   ) : null;
 
@@ -240,14 +243,6 @@ export function Button({
   );
 
   return buttonMarkup;
-}
-
-function isIconSource(x: any): x is IconSource {
-  return (
-    typeof x === 'string' ||
-    (typeof x === 'object' && x.body) ||
-    typeof x === 'function'
-  );
 }
 
 function getDisclosureIconSource(
