@@ -46,7 +46,7 @@ const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
     <div
       style={{
         display: 'flex',
-        fontFamily: 'apple-system, BlinkMacSystemFont, sans-serif',
+        fontFamily: 'Inter',
         width: '1200px',
         height: '630px',
         padding: '60px',
