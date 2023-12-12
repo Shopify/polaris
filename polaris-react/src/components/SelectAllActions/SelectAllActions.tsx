@@ -25,6 +25,8 @@ export interface SelectAllActionsProps {
   disabled?: boolean;
   /** If the BulkActions is currently sticky in view */
   isSticky?: boolean;
+  /** Whether there is a Pagination element on the associated table. Disables the vertical appear animation if so */
+  hasPagination?: boolean;
 }
 
 export const SelectAllActions = ({
@@ -34,6 +36,7 @@ export const SelectAllActions = ({
   paginatedSelectAllAction,
   disabled,
   isSticky,
+  hasPagination,
 }: SelectAllActionsProps) => {
   const nodeRef = useRef<HTMLDivElement>(null);
   const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
@@ -60,6 +63,7 @@ export const SelectAllActions = ({
       {(status: TransitionStatus) => {
         const wrapperClasses = classNames(
           styles.SelectAllActions,
+          hasPagination && styles['SelectAllActions-hasPagination'],
           !isSticky && styles['SelectAllActions-not-sticky'],
           status && styles[`SelectAllActions-${status}`],
         );

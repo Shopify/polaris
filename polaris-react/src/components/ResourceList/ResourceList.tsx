@@ -553,6 +553,13 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   const selectAllActionsClassNames = classNames(
     styles.SelectAllActionsWrapper,
     isSelectAllActionsSticky && styles.SelectAllActionsWrapperSticky,
+    !isSelectAllActionsSticky &&
+      !pagination &&
+      styles.SelectAllActionsWrapperAtEnd,
+    selectMode &&
+      !isSelectAllActionsSticky &&
+      !pagination &&
+      styles.SelectAllActionsWrapperAtEndAppear,
   );
 
   const selectAllActionsMarkup = isSelectable ? (
@@ -573,6 +580,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         paginatedSelectAllText={paginatedSelectAllText()}
         disabled={loading}
         isSticky={isSelectAllActionsSticky}
+        hasPagination={Boolean(pagination)}
       />
     </div>
   ) : null;

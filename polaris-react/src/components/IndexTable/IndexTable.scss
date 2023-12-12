@@ -21,6 +21,7 @@
 
 .IndexTableWrapper {
   border-radius: 0;
+  transition: padding var(--p-motion-duration-100) var(--p-motion-ease);
 
   .IndexTableWrapper-scrollBarHidden {
     border-radius: inherit;
@@ -1370,6 +1371,16 @@ $loading-panel-height: 53px;
   position: fixed;
   top: auto;
   bottom: 0;
+}
+
+.SelectAllActionsWrapperAtEnd {
+  height: 0;
+  transition: height var(--p-motion-duration-100) var(--p-motion-ease);
+  overflow: clip;
+}
+
+.SelectAllActionsWrapperAtEndAppear {
+  height: 40px;
 }
 
 .BulkActionsWrapper {
