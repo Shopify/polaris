@@ -29,7 +29,7 @@ Quick reference for the structure of Polaris Tokens
 
 `--p-border-[property]-[alias-or-scale]`
 
-### Examples
+#### Examples
 
 - `--p-border-width-100`
 - `--p-border-radius-100`
