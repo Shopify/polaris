@@ -124,10 +124,7 @@
 
 .AuxiliaryContainer {
   flex-grow: 0;
-
-  @media #{$p-breakpoints-md-down} {
-    margin-left: var(--p-space-200);
-  }
+  margin-left: var(--p-space-200);
 
   @media #{$p-breakpoints-md-up} {
     margin-left: 0;
