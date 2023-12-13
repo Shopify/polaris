@@ -16,7 +16,7 @@ const PADDING = 60;
 // To maintain a 1:1 aspect ratio, we can't use regular CSS (we're using a
 // limited set of yoga), so we calculate it manually here.
 // The image is meant to be 20% width.
-const IMG_WIDTH = (WIDTH - PADDING * 2) * 0.2;
+const IMG_WIDTH = (WIDTH - PADDING * 2) * 0.45;
 
 const interDir = path.join(
   path.dirname(require.resolve('inter-ui')),
@@ -74,93 +74,70 @@ const defaultImage = (
 
 const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
   const title = frontMatter.title;
-  let inner = defaultImage;
   let logo = shopifyLogo;
-
-  if (frontMatter.previewImg) {
-    const imgPath = path.join(process.cwd(), `public`, frontMatter.previewImg);
-    const rawImageData = fs.readFileSync(imgPath);
-    // Later conversion from svg to png fails when the final base64 encoded
-    // embedded image is too large, so we resize it down here before embedding
-    // it.
-    const image = await new Transformer(rawImageData)
-      .resize(IMG_WIDTH, null, ResizeFilterType.Lanczos3)
-      .png();
-    const base64 = Buffer.from(image).toString('base64');
-    inner = (
-      /* eslint-disable-next-line */
-      <img
-        alt=""
-        src={`data:image/png;base64,${base64}`}
-        width="100%"
-        style={{
-          borderRadius: '8px',
-          width: IMG_WIDTH,
-        }}
-      />
-    );
-  } else if (frontMatter.icon && frontMatter.icon in polarisIcons) {
-    const Icon = polarisIcons[frontMatter.icon];
-    inner = (
-      <Icon
-        fill="white"
-        style={{width: IMG_WIDTH, height: IMG_WIDTH, opacity: 0.2}}
-      />
-    );
-  }
 
   return satori(
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        flex: 'auto',
+        width: `${WIDTH}px`,
+        height: `${HEIGHT}px`,
         padding: `${PADDING}px`,
+        position: 'relative',
+        display: 'flex',
         background: '#000',
         fontFamily: 'Inter',
         color: '#fff',
-        width: `${WIDTH}px`,
-        height: `${HEIGHT}px`,
       }}
     >
       <div
         style={{
+          position: 'absolute',
           display: 'flex',
-          flexDirection: 'row',
-          flex: 'auto',
+          width: '45%',
+          right: `${PADDING}px`,
+          top: `${PADDING}px`,
         }}
       >
-        <h1
-          style={{
-            flexGrow: '1',
-            fontSize: '80px',
-            fontWeight: '700',
-            letterSpacing: '-0.01rem',
-            margin: '0',
-          }}
-        >
-          {title}
-        </h1>
-        <div
-          style={{
-            display: 'flex',
-            width: '20%',
-          }}
-        >
-          {inner}
-        </div>
+        {defaultImage}
       </div>
       <div
         style={{
           display: 'flex',
-          alignItems: 'flex-start',
-          gap: '12px',
-          opacity: '.5',
-          fontSize: '24px',
-          fontWeight: '500',
+          flexDirection: 'column',
+          flex: 'auto',
         }}
       >
-        {logo} Polaris
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            flex: 'auto',
+          }}
+        >
+          <h1
+            style={{
+              flexGrow: '1',
+              fontSize: '80px',
+              fontWeight: '700',
+              letterSpacing: '-0.01rem',
+              margin: '0',
+            }}
+          >
+            {title}
+          </h1>
+        </div>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '12px',
+            opacity: '.5',
+            fontSize: '24px',
+            fontWeight: '500',
+          }}
+        >
+          {logo} Polaris
+        </div>
       </div>
     </div>,
 
@@ -180,8 +157,8 @@ const genOgImages = async () => {
   const interBold = fs.readFileSync(path.join(interDir, 'Inter-Bold.woff'));
 
   const satoriConfig: SatoriOptions = {
-    width: 1200,
-    height: 630,
+    width: WIDTH,
+    height: HEIGHT,
     fonts: [
       {
         name: 'Inter',
