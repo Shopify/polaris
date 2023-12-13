@@ -169,7 +169,9 @@ const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
 };
 
 const genOgImages = async () => {
-  const spinner = ora('Generating Open Graph images from sitemap').start();
+  const spinner = ora(
+    'Generating Open Graph images from .cache/site.ts',
+  ).start();
   if (fs.existsSync(imgDir)) {
     await rm(imgDir, {recursive: true});
   }
@@ -221,15 +223,16 @@ const genOgImages = async () => {
         await writeFile(`${imgDir}${imgPath}.svg`, svg);
         await writeFile(imgFile, pngData);
         completed++;
-        spinner.text = `Generated ${completed} Open Graph images from .cache/site.ts`;
       } catch (error) {
         spinner.fail(`Failed to generate Open Graph png for ${url}`);
         throw error;
       }
     }),
-  );
+  ).then(() => {
+    spinner.succeed(
+      `Generated ${completed} Open Graph images from .cache/site.ts`,
+    );
+  });
 };
 
-genOgImages().then(() => {
-  console.log('✅ OG Image creation done');
-});
+genOgImages().then(() => {});
