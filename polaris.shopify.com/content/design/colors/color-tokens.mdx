@@ -36,6 +36,10 @@ icon: Hexagon
   page.](/images/design/colors/color-tokens@2x.png)
 </Large>
 
+</LayoutSection>
+
+<LayoutSection card>
+
   <Text>
     ### Semantic tokens
 
@@ -52,56 +56,37 @@ icon: Hexagon
 </Large>
 
 <Text>
+    **Element:** The UI element being styled: `bg`, `bg-surface`, `bg-fill`, `text`, `border`, and `icon`.
 
-#### Formula
+    **Role:** Assigns roles to specific colors for consistent application.
 
-`--p-color` - `{element}` - `{color role}` - `{prominence}` - `{state}`
+    **Prominence:** Communicates what the token is used for.
 
---p-color-surface-info-hover
---p-color-fill-info-secondary-hover
+    **State:** Communicates the state of a UI element.
 
 </Text>
 
 <Large>
-  | Slot | Description | | ------- |
-  ----------------------------------------------------------------------------------------------------
-  | | Element | The actual UI element being styled. There are four options:
-  background (bg), text, border, and icon. | | Role | Assigned roles to specific
-  colors to ensure consistent communication of color throughout the admin. | |
-  Variant | This is the key descriptor of a token that communicates exactly what
-  this token is to be used for. | | State | Communicates the state on which this
-  token is applied. |
+  ![A screenshot showing the token
+  structure](/images/design/colors/color-tokens-formula@2x.png)
 </Large>
 
-  <Text>
-      ### Specialty tokens
+</LayoutSection>
 
-      Some concepts have their own specific color tokens, known as specialty tokens. Specialty tokens start with declaring the concept and any associated variants, followed by the semantic token structure. These tokens should never be used for anything other than the concept they’re referencing.
+<LayoutSection card>
 
-  </Text>
+    <Text>
+        ### Specialty tokens
+
+        Some concepts have their own specific color tokens, known as specialty tokens. Specialty tokens start with declaring the concept and any associated variants, followed by the semantic token structure. These tokens should never be used for anything other than the concept they’re referencing.
+
+    </Text>
 
 <Large>
   ![Specialized token structure broken down into parts and applied to the main
   navigation. The concept is “nav”, the semantic token is
   “bg-surface-selected”](/images/design/colors/color-tokens-specialty@2x.png)
 </Large>
-
-</LayoutSection>
-
-<LayoutSection card>
-  #### Formula
-
-`--p-color` - `{element}` - `{color role}` - `{prominence}` - `{state}`
-
---p-color-surface-info-hover
---p-color-fill-info-secondary-hover
-
-| Slot    | Description                                                                                          |
-| ------- | ---------------------------------------------------------------------------------------------------- |
-| Element | The actual UI element being styled. There are four options: background (bg), text, border, and icon. |
-| Role    | Assigned roles to specific colors to ensure consistent communication of color throughout the admin.  |
-| Variant | This is the key descriptor of a token that communicates exactly what this token is to be used for.   |
-| State   | Communicates the state on which this token is applied.                                               |
 
 </LayoutSection>
 
