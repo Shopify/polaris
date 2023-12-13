@@ -1,5 +1,22 @@
 # Changelog
 
+## 12.4.0
+
+### Minor Changes
+
+- [#11303](https://github.com/Shopify/polaris/pull/11303) [`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - - Remapped the `bg-fill-magic-secondary` token colors
+  - Added a Magic `tone` to `Badge`
+
+### Patch Changes
+
+- [#11299](https://github.com/Shopify/polaris/pull/11299) [`e530a44f9`](https://github.com/Shopify/polaris/commit/e530a44f93e7c865b7d32272ba2347584d60522c) Thanks [@fortmarek](https://github.com/fortmarek)! - Added padding for FooterHelp on small viewports
+
+* [#11329](https://github.com/Shopify/polaris/pull/11329) [`a45dafb35`](https://github.com/Shopify/polaris/commit/a45dafb35cfac975d17bcc55f9c1dee5cf97eecb) Thanks [@lbenie](https://github.com/lbenie)! - `TopBar` Fixed .NavigationIcon styles to ensure Icon color is properly inherited.
+
+* Updated dependencies [[`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756), [`235bc7d0c`](https://github.com/Shopify/polaris/commit/235bc7d0c327c450f94650ffe6f64d68eee2a28e)]:
+  - @shopify/polaris-tokens@8.3.0
+  - @shopify/polaris-icons@7.12.0
+
 ## 12.3.0
 
 ### Minor Changes
