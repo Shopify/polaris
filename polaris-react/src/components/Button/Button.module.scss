@@ -18,7 +18,10 @@
   --pc-button-box-shadow_pressed: var(--pc-button-box-shadow_active);
   --pc-button-box-shadow_disabled: var(--pc-button-box-shadow);
   --pc-button-icon-fill: currentColor;
-  --pc-button-icon-fill_disabled: var(--pc-button-color_disabled);
+  --pc-button-icon-fill_hover: var(--pc-button-icon-fill);
+  --pc-button-icon-fill_active: var(--pc-button-icon-fill);
+  --pc-button-icon-fill_pressed: var(--pc-button-icon-fill_active);
+  --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
   all: unset;
   position: relative;
   box-sizing: border-box;
@@ -56,6 +59,10 @@
   background: var(--pc-button-bg_hover);
   color: var(--pc-button-color_hover);
   box-shadow: var(--pc-button-box-shadow_hover);
+
+  svg {
+    fill: var(--pc-button-icon-fill_hover);
+  }
 }
 
 .Button:active,
@@ -63,6 +70,10 @@
   background: var(--pc-button-bg_active);
   color: var(--pc-button-color_active);
   box-shadow: var(--pc-button-box-shadow_active);
+
+  svg {
+    fill: var(--pc-button-icon-fill_active);
+  }
 }
 
 .Button:focus-visible {
@@ -94,6 +105,10 @@
   background: var(--pc-button-bg_pressed);
   color: var(--pc-button-color_pressed);
   box-shadow: var(--pc-button-box-shadow_pressed);
+
+  svg {
+    fill: var(--pc-button-icon-fill_pressed);
+  }
 }
 
 // VARIANTS
@@ -130,18 +145,23 @@
   --pc-button-bg_pressed: var(--p-color-bg-fill-selected);
   --pc-button-color: var(--p-color-text);
   --pc-button-icon-fill: var(--p-color-icon);
-  --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
 }
 
 .variantTertiary {
   --pc-button-bg_hover: var(--p-color-bg-fill-transparent-hover);
   --pc-button-bg_active: var(--p-color-bg-fill-transparent-active);
   --pc-button-bg_pressed: var(--p-color-bg-fill-selected);
+  --pc-button-bg_disabled: transparent;
   --pc-button-color: var(--p-color-text);
+  --pc-button-icon-fill: var(--p-color-icon);
 }
 
 .variantPlain {
   --pc-button-color: var(--p-color-text-link);
+}
+
+.variantMonochromePlain {
+  --pc-button-icon-fill: var(--p-color-icon);
 }
 
 .variantPlain,
@@ -267,6 +287,12 @@
   --pc-button-padding-inline: var(--p-space-050);
 }
 
+.iconOnly:is(.variantTertiary) {
+  --pc-button-icon-fill: var(--p-color-icon-secondary);
+  --pc-button-icon-fill_hover: var(--p-color-icon);
+  --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
+}
+
 .iconWithText {
   padding-left: calc(var(--pc-button-padding-inline) * 0.5);
 }
@@ -302,10 +328,10 @@
   top: calc(var(--pc-button-padding-block) / 2 + 50%);
   left: 50%;
   transform: translate(-50%, -50%);
-}
 
-.Spinner svg {
-  fill: var(--pc-button-color_disabled);
+  svg {
+    fill: var(--pc-button-icon-fill_disabled);
+  }
 }
 
 // BUTTON GROUP
