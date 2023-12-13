@@ -4,8 +4,7 @@ import {Transformer, ResizeFilterType} from '@napi-rs/image';
 
 import fs from 'node:fs';
 import path from 'node:path';
-import {writeFile, readFile, mkdir, rm} from 'fs/promises';
-import pMap from '@esm2cjs/p-map';
+import {writeFile, mkdir, rm} from 'fs/promises';
 import ora from 'ora';
 import satori, {type SatoriOptions} from 'satori';
 import typedSiteJSON from '../.cache/site';
@@ -18,12 +17,6 @@ const PADDING = 60;
 // limited set of yoga), so we calculate it manually here.
 // The image is meant to be 20% width.
 const IMG_WIDTH = (WIDTH - PADDING * 2) * 0.2;
-const IMG_HEIGHT = IMG_WIDTH;
-
-const imageStyles = {
-  width: IMG_WIDTH,
-  height: IMG_HEIGHT,
-};
 
 const interDir = path.join(
   path.dirname(require.resolve('inter-ui')),
@@ -91,11 +84,10 @@ const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
     // Later conversion from svg to png fails when the final base64 encoded
     // embedded image is too large, so we resize it down here before embedding
     // it.
-    // const image = await new Transformer(rawImageData)
-    //   .resize(100, null, ResizeFilterType.Lanczos3)
-    //   .webp(75);
-    // const base64 = Buffer.from(image).toString('base64');
-    const base64 = Buffer.from(rawImageData).toString('base64');
+    const image = await new Transformer(rawImageData)
+      .resize(IMG_WIDTH, null, ResizeFilterType.Lanczos3)
+      .png();
+    const base64 = Buffer.from(image).toString('base64');
     inner = (
       /* eslint-disable-next-line */
       <img
