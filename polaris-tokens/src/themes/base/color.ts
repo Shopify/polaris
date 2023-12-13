@@ -105,7 +105,6 @@ export type ColorBackgroundAlias =
   | 'avatar-three-bg-fill'
   | 'avatar-two-bg-fill'
   | 'backdrop-bg'
-  | 'badge-new-bg-fill'
   | 'checkbox-bg-surface-disabled'
   | 'input-bg-surface-active'
   | 'input-bg-surface-hover'
@@ -222,7 +221,6 @@ export type ColorTextAlias =
   | 'avatar-text-on-bg-fill'
   | 'avatar-three-text-on-bg-fill'
   | 'avatar-two-text-on-bg-fill'
-  | 'badge-new-text'
   | 'video-thumbnail-play-button-text-on-bg-fill';
 
 export type ColorTokenName =
@@ -1085,12 +1083,6 @@ export const color: {
   },
   'color-backdrop-bg': {
     value: colors.blackAlpha[14],
-  },
-  'color-badge-new-bg-fill': {
-    value: colors.teal[5],
-  },
-  'color-badge-new-text': {
-    value: colors.teal[14],
   },
   'color-checkbox-bg-surface-disabled': {
     value: colors.blackAlpha[7],
