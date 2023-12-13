@@ -287,10 +287,17 @@
   --pc-button-padding-inline: var(--p-space-050);
 }
 
-.iconOnly:is(.variantTertiary) {
+.iconOnly:is(.variantTertiary, .variantPlain, .variantMonochromePlain) {
   --pc-button-icon-fill: var(--p-color-icon-secondary);
-  --pc-button-icon-fill_hover: var(--p-color-icon);
+  --pc-button-icon-fill_hover: var(--p-color-icon-secondary-hover);
+  --pc-button-icon-fill_active: var(--p-color-icon-secondary-active);
   --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
+}
+
+.iconOnly:is(.variantPlain, .variantMonochromePlain) {
+  --pc-button-padding-block: 0;
+  --pc-button-padding-inline: 0;
+  margin: 0;
 }
 
 .iconWithText {
