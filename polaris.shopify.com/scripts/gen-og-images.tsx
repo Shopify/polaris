@@ -80,7 +80,6 @@ const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
   if (frontMatter.previewImg) {
     const imgPath = path.join(process.cwd(), `public`, frontMatter.previewImg);
     const rawImageData = fs.readFileSync(imgPath);
-    // console.log('scaling image', imgPath);
     // Later conversion from svg to png fails when the final base64 encoded
     // embedded image is too large, so we resize it down here before embedding
     // it.
@@ -226,7 +225,6 @@ const genOgImages = async () => {
           // svg comes in at 2x size for some reason.
           .crop(0, 0, WIDTH, HEIGHT)
           .png();
-        await writeFile(`${imgDir}${imgPath}.svg`, svg.data);
         await writeFile(imgFile, pngData);
         completed++;
       } catch (error) {
