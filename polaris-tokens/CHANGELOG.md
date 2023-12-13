@@ -1,5 +1,12 @@
 # Changelog
 
+## 8.3.0
+
+### Minor Changes
+
+- [#11303](https://github.com/Shopify/polaris/pull/11303) [`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - - Remapped the `bg-fill-magic-secondary` token colors
+  - Added a Magic `tone` to `Badge`
+
 ## 8.2.0
 
 ### Minor Changes
