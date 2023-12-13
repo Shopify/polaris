@@ -1,18 +1,6 @@
 /* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- allow custom component properties */
 
 .Button {
-  all: unset;
-  position: relative;
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--pc-button-gap);
-  padding-block: var(--pc-button-padding-block);
-  padding-inline: var(--pc-button-padding-inline);
-  cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-
   --pc-button-gap: var(--p-space-050);
   --pc-button-bg: transparent;
   --pc-button-bg_hover: var(--pc-button-bg);
@@ -31,16 +19,32 @@
   --pc-button-box-shadow_disabled: var(--pc-button-box-shadow);
   --pc-button-icon-fill: currentColor;
   --pc-button-icon-fill_disabled: var(--pc-button-color_disabled);
+  all: unset;
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pc-button-gap);
+  padding-block: var(--pc-button-padding-block);
+  padding-inline: var(--pc-button-padding-inline);
+
+  background: var(--pc-button-bg);
   border: none;
   border-radius: var(--p-border-radius-200);
-  background: var(--pc-button-bg);
-  color: var(--pc-button-color);
   box-shadow: var(--pc-button-box-shadow);
-  fill: var(--pc-button-icon-fill);
+  color: var(--pc-button-color);
 
   font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-500);
+
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  svg {
+    fill: var(--pc-button-icon-fill);
+  }
 
   @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-300);
@@ -73,11 +77,14 @@
 .disabled {
   background: var(--pc-button-bg_disabled);
   color: var(--pc-button-color_disabled);
-  fill: var(--pc-button-icon-fill_disabled);
   box-shadow: none;
   cursor: not-allowed;
   user-select: none;
   pointer-events: none;
+
+  svg {
+    fill: var(--pc-button-icon-fill_disabled);
+  }
 }
 
 .pressed,
@@ -106,6 +113,8 @@
   --pc-button-bg_disabled: var(--p-color-bg-fill-brand-disabled);
   --pc-button-color: var(--p-color-text-brand-on-bg-fill);
   --pc-button-color_disabled: var(--p-color-text-brand-on-bg-fill-disabled);
+  --pc-button-icon-fill: var(--p-color-text-brand-on-bg-fill);
+  --pc-button-icon-fill_disabled: var(--p-color-text-brand-on-bg-fill-disabled);
 }
 
 .variantSecondary {
@@ -210,7 +219,7 @@
 
 .sizeLarge {
   --pc-button-padding-block: var(--p-space-150);
-  --pc-button-padding-inline: var(--p-space-300);;
+  --pc-button-padding-inline: var(--p-space-300);
   font-size: var(--p-font-size-325);
   line-height: var(--p-font-line-height-500);
   height: var(--p-height-900);

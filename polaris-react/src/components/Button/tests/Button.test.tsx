@@ -12,7 +12,7 @@ import {Spinner} from '../../Spinner';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Button} from '../Button';
 
-describe('Button copy', () => {
+describe('<Button />', () => {
   let warnSpy: jest.SpyInstance | null = null;
 
   beforeEach(() => {
