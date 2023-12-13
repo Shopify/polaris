@@ -207,6 +207,16 @@ $item-wrapper-loading-height: 64px;
   */
   display: flex;
   align-self: auto;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
+    visibility var(--p-motion-duration-100) var(--p-motion-ease);
+
+  &.BulkActionsWrapperVisible {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .ResourceListWrapperWithBulkActions {

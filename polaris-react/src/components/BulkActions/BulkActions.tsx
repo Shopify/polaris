@@ -18,6 +18,7 @@ import {InlineStack} from '../InlineStack';
 import {CheckableButton} from '../CheckableButton';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
+import type {ButtonProps} from '../Button';
 
 import {BulkActionButton, BulkActionMenu} from './components';
 import styles from './BulkActions.module.scss';
@@ -56,6 +57,8 @@ export interface BulkActionsProps {
   onMoreActionPopoverToggle?(isOpen: boolean): void;
   /** Used for forwarding the ref */
   innerRef?: React.Ref<any>;
+  /** The size of the buttons to render */
+  buttonSize?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
 }
 
 type CombinedProps = BulkActionsProps & {
@@ -222,6 +225,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       onToggleAll,
       selected,
       innerRef,
+      buttonSize = 'micro',
     } = this.props;
     const actionSections = this.actionSections();
 
@@ -241,6 +245,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                     key={index}
                     {...action}
                     isNewBadgeInBadgeActions={this.isNewBadgeInBadgeActions()}
+                    size={buttonSize}
                   />
                 );
               }
@@ -250,6 +255,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                   disabled={disabled}
                   {...action}
                   handleMeasurement={this.handleMeasurement}
+                  size={buttonSize}
                 />
               );
             })
@@ -303,6 +309,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
                 content={activatorLabel}
                 disabled={disabled}
                 indicator={this.isNewBadgeInBadgeActions()}
+                size={buttonSize}
               />
             }
             preferredAlignment="right"
@@ -333,7 +340,7 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
 
     const group = (
       <Transition
-        timeout={100}
+        timeout={0}
         in={selectMode}
         key="group"
         nodeRef={this.groupNode}

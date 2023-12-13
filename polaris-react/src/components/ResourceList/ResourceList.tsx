@@ -597,7 +597,10 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     </div>
   ) : null;
 
-  const bulkActionClassNames = classNames(styles.BulkActionsWrapper);
+  const bulkActionClassNames = classNames(
+    styles.BulkActionsWrapper,
+    selectMode && styles.BulkActionsWrapperVisible,
+  );
 
   const bulkActionsMarkup =
     isSelectable && (bulkActions || promotedBulkActions) ? (
@@ -612,6 +615,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
           selected={selectAllSelectState()}
           onToggleAll={handleToggleAll}
           ref={checkableButtonRef}
+          buttonSize="medium"
         />
       </div>
     ) : null;
