@@ -97,8 +97,8 @@ $right-column: 1fr;
   margin-right: var(--p-space-200);
   padding: var(--p-space-200);
   border-radius: var(--p-border-radius-100);
-  fill: var(--p-color-icon-inverse);
-  transition: var(--p-motion-duration-150) fill var(--p-motion-ease)
+  color: var(--p-color-icon-inverse);
+  transition: var(--p-motion-duration-150) color var(--p-motion-ease)
     var(--p-motion-duration-50);
 
   &.focused:active {
