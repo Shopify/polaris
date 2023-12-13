@@ -1,13 +1,12 @@
+import * as polarisIcons from '@shopify/polaris-icons';
 import puppeteer from 'puppeteer';
-import matter from 'gray-matter';
 import {existsSync} from 'fs';
 import path from 'path';
 import {writeFile, readFile, mkdir, rm} from 'fs/promises';
-import pMap from 'p-map';
+import pMap from '@esm2cjs/p-map';
 import ora from 'ora';
-import * as polarisIcons from '@shopify/polaris-icons';
+import typedSiteJSON from '../.cache/site';
 
-const sitemapPath = path.join(process.cwd(), 'public/sitemap.xml');
 const imgDir = path.join(process.cwd(), 'public/og-images');
 
 const shopifyLogo = `<svg height="30" width="30" viewBox="0 0 109.5 124.5" xmlns="http://www.w3.org/2000/svg" fill="#fff">
@@ -32,14 +31,9 @@ const defaultImage = `<svg viewBox="0 0 99 99" xmlns="http://www.w3.org/2000/svg
 </svg>
 `;
 
-const capitalizeFirstLetter = (value) => {
-  return value.charAt(0).toUpperCase() + value.slice(1);
-};
-
-const generateHTML = async (url, slug) => {
-  const title = capitalizeFirstLetter(slug || '')
-    .replace('.png', '')
-    .replace(/-/g, ' ');
+const generateHTML = async (data, url) => {
+  const {frontMatter} = data[url];
+  const title = frontMatter.title;
 
   let htmlImg = `<div class="default-icon">${defaultImage}</div>`;
 
@@ -55,23 +49,10 @@ const generateHTML = async (url, slug) => {
     url.startsWith('/design/') ||
     url.startsWith('/content/')
   ) {
-    let mdFilePath = path.join(process.cwd(), `content${url}.mdx`);
-    if (!existsSync(mdFilePath)) {
-      // In case the markdown is nested in a folder instead of named after the
-      // url directly, we want to try /index.md instead
-      mdFilePath = path.join(process.cwd(), `content${url}/index.mdx`);
-      if (!existsSync(mdFilePath)) {
-        throw new Error(
-          `Failed to load content file for url ${url}. Tried content${url}.mdx, content${url}/index.mdx`,
-        );
-      }
-    }
-    const markdownContent = await readFile(mdFilePath, 'utf-8');
-    const {data} = matter(markdownContent);
-    if (data.icon && data.icon in polarisIcons) {
+    if (frontMatter?.icon && frontMatter?.icon in polarisIcons) {
       const iconFilePath = path.join(
         process.cwd(),
-        `../polaris-icons/dist/svg/${data.icon}.svg`,
+        `../polaris-icons/dist/svg/${frontMatter.icon}.svg`,
       );
       const iconData = await readFile(iconFilePath);
 
@@ -172,12 +153,7 @@ const genOgImages = async () => {
   }
 
   await mkdir(imgDir, {recursive: true});
-
-  const sitemap = await readFile(sitemapPath, 'utf-8');
-  const urls = sitemap
-    .match(/loc>[^<]+/gi)
-    .map((match) => match.replace('loc>https://polaris.shopify.com', ''));
-
+  const urls = Object.keys(typedSiteJSON);
   const browser = await puppeteer.launch({
     defaultViewport: {width: 1200, height: 630},
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
@@ -187,10 +163,11 @@ const genOgImages = async () => {
 
   const getPNG = async (url) => {
     try {
-      const slug = url === '' ? 'home' : url.split('/').pop();
       const imgPath =
-        url.split('/').length > 1 ? url.split('/').slice(0, -1).join('/') : url;
-      const html = await generateHTML(url, slug);
+        url === ''
+          ? 'home'
+          : new URL(url, 'https://polaris.shopify.com').pathname;
+      const html = await generateHTML(typedSiteJSON, url);
       const encodedUrl = `data:text/html;charset=utf-8;base64,${html}`;
       const page = await browser.newPage();
       await page.goto(encodedUrl, {waitUntil: 'networkidle0'});
@@ -198,7 +175,7 @@ const genOgImages = async () => {
       if (!existsSync(`${imgDir}${imgPath}`)) {
         await mkdir(`${imgDir}${imgPath}`, {recursive: true});
       }
-      await writeFile(`${imgDir}${imgPath}/${slug}.png`, image);
+      await writeFile(`${imgDir}${imgPath}.png`, image);
       await page.close();
       completed++;
       spinner.text = `Generated ${completed} of ${urls.length} Open Graph images from sitemap`;
@@ -218,4 +195,6 @@ const genOgImages = async () => {
   );
 };
 
-export default genOgImages;
+genOgImages().then(() => {
+  console.log('✅ OG Image creation done');
+});
