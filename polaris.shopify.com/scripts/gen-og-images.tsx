@@ -1,6 +1,6 @@
 import React from 'react';
 import * as polarisIcons from '@shopify/polaris-icons';
-import {Transformer} from '@napi-rs/image';
+import {Transformer, ResizeFilterType} from '@napi-rs/image';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -9,6 +9,21 @@ import pMap from '@esm2cjs/p-map';
 import ora from 'ora';
 import satori, {type SatoriOptions} from 'satori';
 import typedSiteJSON from '../.cache/site';
+import {optimize} from 'svgo';
+
+const WIDTH = 1200;
+const HEIGHT = 630;
+const PADDING = 60;
+// To maintain a 1:1 aspect ratio, we can't use regular CSS (we're using a
+// limited set of yoga), so we calculate it manually here.
+// The image is meant to be 20% width.
+const IMG_WIDTH = (WIDTH - PADDING * 2) * 0.2;
+const IMG_HEIGHT = IMG_WIDTH;
+
+const imageStyles = {
+  width: IMG_WIDTH,
+  height: IMG_HEIGHT,
+};
 
 const interDir = path.join(
   path.dirname(require.resolve('inter-ui')),
@@ -47,8 +62,7 @@ const defaultImage = (
   <svg
     viewBox="0 0 99 99"
     xmlns="http://www.w3.org/2000/svg"
-    width="400px"
-    height="400px"
+    style={{width: IMG_WIDTH, height: IMG_WIDTH}}
   >
     <path
       d="M98.9999 49.5C98.9999 76.838 76.838 98.9999 49.5 98.9999C22.1619 98.9999 0 76.838 0 49.5C0 22.1619 22.1619 0 49.5 0C76.838 0 98.9999 22.1619 98.9999 49.5Z"
@@ -67,94 +81,80 @@ const defaultImage = (
 
 const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
   const title = frontMatter.title;
-  let inner = (
-    <div
-      style={{
-        display: 'flex',
-        position: 'absolute',
-        left: '600px',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        opacity: '.2',
-        filter: 'brightness(1000%)',
-      }}
-    >
-      {defaultImage}
-    </div>
-  );
+  let inner = defaultImage;
   let logo = shopifyLogo;
 
   if (frontMatter.previewImg) {
     const imgPath = path.join(process.cwd(), `public`, frontMatter.previewImg);
-    const image = await readFile(imgPath);
-    const base64 = Buffer.from(image).toString('base64');
+    const rawImageData = fs.readFileSync(imgPath);
+    // console.log('scaling image', imgPath);
+    // Later conversion from svg to png fails when the final base64 encoded
+    // embedded image is too large, so we resize it down here before embedding
+    // it.
+    // const image = await new Transformer(rawImageData)
+    //   .resize(100, null, ResizeFilterType.Lanczos3)
+    //   .webp(75);
+    // const base64 = Buffer.from(image).toString('base64');
+    const base64 = Buffer.from(rawImageData).toString('base64');
     inner = (
       /* eslint-disable-next-line */
       <img
         alt=""
         src={`data:image/png;base64,${base64}`}
-        width="1418"
-        height="810"
-        style={{
-          position: 'absolute',
-          left: '100px',
-          top: '50%',
-          filter: 'contrast(1.1) invert(1) saturate(0) hue-rotate(180deg)',
-          opacity: '.33',
-          transform: 'rotateY(-60deg) translateY(-50%) scale(.9)',
-        }}
+        width="100%"
+        style={{width: IMG_WIDTH}}
       />
     );
   } else if (frontMatter.icon && frontMatter.icon in polarisIcons) {
     const Icon = polarisIcons[frontMatter.icon];
-    inner = (
-      <div
-        style={{
-          display: 'flex',
-          position: 'absolute',
-          left: '600px',
-          top: '50%',
-          transform: 'translateY(-50%)',
-          opacity: '.2',
-        }}
-      >
-        <Icon fill="white" width="400" height="400" />
-      </div>
-    );
+    inner = <Icon fill="white" style={{width: IMG_WIDTH, height: IMG_WIDTH}} />;
   }
 
   return satori(
     <div
       style={{
-        position: 'relative',
         display: 'flex',
-        fontFamily: 'Inter',
-        width: '1200px',
-        height: '630px',
-        padding: '60px',
+        flexDirection: 'column',
+        flex: 'auto',
+        padding: `${PADDING}px`,
         background: '#000',
+        fontFamily: 'Inter',
         color: '#fff',
-        perspective: '1800px',
+        width: `${WIDTH}px`,
+        height: `${HEIGHT}px`,
       }}
     >
-      <h1
-        style={{
-          fontSize: '80px',
-          fontWeight: '700',
-          letterSpacing: '-0.01rem',
-          maxWidth: '520px',
-        }}
-      >
-        {title}
-      </h1>
-      {inner}
       <div
         style={{
-          position: 'absolute',
-          bottom: '55px',
-          left: '60px',
           display: 'flex',
-          alignItems: 'center',
+          flexDirection: 'row',
+          flex: 'auto',
+        }}
+      >
+        <h1
+          style={{
+            flexGrow: '1',
+            fontSize: '80px',
+            fontWeight: '700',
+            letterSpacing: '-0.01rem',
+            margin: '0',
+          }}
+        >
+          {title}
+        </h1>
+        <div
+          style={{
+            display: 'flex',
+            width: '20%',
+          }}
+        >
+          {inner}
+        </div>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'flex-start',
           gap: '12px',
           opacity: '.5',
           fontSize: '24px',
@@ -164,6 +164,7 @@ const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
         {logo} Polaris
       </div>
     </div>,
+
     satoriConfig,
   );
 };
@@ -213,14 +214,19 @@ const genOgImages = async () => {
           url === ''
             ? '/home'
             : new URL(url, 'https://polaris.shopify.com').pathname;
-        const svg = await generateSvg(url, frontMatter, satoriConfig);
+        const svg = optimize(
+          await generateSvg(url, frontMatter, satoriConfig),
+          {},
+        );
 
         const imgFile = `${imgDir}${imgPath}.png`;
         await mkdir(path.dirname(imgFile), {recursive: true});
 
-        const trasformer = Transformer.fromSvg(svg);
-        const pngData = await trasformer.png();
-        await writeFile(`${imgDir}${imgPath}.svg`, svg);
+        const pngData = await Transformer.fromSvg(svg.data)
+          // svg comes in at 2x size for some reason.
+          .crop(0, 0, WIDTH, HEIGHT)
+          .png();
+        await writeFile(`${imgDir}${imgPath}.svg`, svg.data);
         await writeFile(imgFile, pngData);
         completed++;
       } catch (error) {
