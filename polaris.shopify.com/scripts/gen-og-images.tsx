@@ -55,7 +55,7 @@ const defaultImage = (
   <svg
     viewBox="0 0 99 99"
     xmlns="http://www.w3.org/2000/svg"
-    style={{width: IMG_WIDTH, height: IMG_WIDTH}}
+    style={{width: IMG_WIDTH, height: IMG_WIDTH, opacity: 0.2}}
   >
     <path
       d="M98.9999 49.5C98.9999 76.838 76.838 98.9999 49.5 98.9999C22.1619 98.9999 0 76.838 0 49.5C0 22.1619 22.1619 0 49.5 0C76.838 0 98.9999 22.1619 98.9999 49.5Z"
@@ -94,12 +94,20 @@ const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
         alt=""
         src={`data:image/png;base64,${base64}`}
         width="100%"
-        style={{width: IMG_WIDTH}}
+        style={{
+          borderRadius: '8px',
+          width: IMG_WIDTH,
+        }}
       />
     );
   } else if (frontMatter.icon && frontMatter.icon in polarisIcons) {
     const Icon = polarisIcons[frontMatter.icon];
-    inner = <Icon fill="white" style={{width: IMG_WIDTH, height: IMG_WIDTH}} />;
+    inner = (
+      <Icon
+        fill="white"
+        style={{width: IMG_WIDTH, height: IMG_WIDTH, opacity: 0.2}}
+      />
+    );
   }
 
   return satori(
