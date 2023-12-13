@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Updated the Header within the Page component to include a live region for screen readers to announce the page title
+Added a live region to the `Page` `Header` to announce the `title` after navigation changes
