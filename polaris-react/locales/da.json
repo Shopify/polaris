@@ -348,7 +348,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Se handlinger for {title}"
+        "rollupActionsLabel": "Se handlinger for {title}",
+        "pageReadyAccessibilityLabel": "{title}. Denne side er klar"
       }
     },
     "FullscreenBar": {

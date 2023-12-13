@@ -348,7 +348,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Acties voor {title} bekijken"
+        "rollupActionsLabel": "Acties voor {title} bekijken",
+        "pageReadyAccessibilityLabel": "{title}. Deze pagina is klaar"
       }
     },
     "FullscreenBar": {
