@@ -703,8 +703,6 @@ function IndexTableBase({
             </div>
           );
 
-          const stickyContent = bulkActionsMarkup ?? headerMarkup;
-
           return (
             <>
               {headerMarkup}
