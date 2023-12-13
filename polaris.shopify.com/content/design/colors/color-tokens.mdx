@@ -47,8 +47,30 @@ icon: Hexagon
 
 <Large>
   ![Semantic token structure broken down into parts and applied to a list of
-  items in a popover. The element is “bg ”, the role is “secondary “, and the
-  state is “hover“.](/images/design/colors/color-tokens-base@2x.png)
+  items in a popover. The element is `bg`, the role is `secondary`, and the
+  state is `hover`.](/images/design/colors/color-tokens-base@2x.png)
+</Large>
+
+<Text>
+
+#### Formula
+
+`--p-color` - `{element}` - `{color role}` - `{prominence}` - `{state}`
+
+--p-color-surface-info-hover
+--p-color-fill-info-secondary-hover
+
+</Text>
+
+<Large>
+  | Slot | Description | | ------- |
+  ----------------------------------------------------------------------------------------------------
+  | | Element | The actual UI element being styled. There are four options:
+  background (bg), text, border, and icon. | | Role | Assigned roles to specific
+  colors to ensure consistent communication of color throughout the admin. | |
+  Variant | This is the key descriptor of a token that communicates exactly what
+  this token is to be used for. | | State | Communicates the state on which this
+  token is applied. |
 </Large>
 
   <Text>
@@ -67,10 +89,27 @@ icon: Hexagon
 </LayoutSection>
 
 <LayoutSection card>
+  #### Formula
+
+`--p-color` - `{element}` - `{color role}` - `{prominence}` - `{state}`
+
+--p-color-surface-info-hover
+--p-color-fill-info-secondary-hover
+
+| Slot    | Description                                                                                          |
+| ------- | ---------------------------------------------------------------------------------------------------- |
+| Element | The actual UI element being styled. There are four options: background (bg), text, border, and icon. |
+| Role    | Assigned roles to specific colors to ensure consistent communication of color throughout the admin.  |
+| Variant | This is the key descriptor of a token that communicates exactly what this token is to be used for.   |
+| State   | Communicates the state on which this token is applied.                                               |
+
+</LayoutSection>
+
+<LayoutSection card>
   <Text>
       ## Interaction states
 
-      Interaction states are communicated by adding hover, active, selected, or disabled to the end of the semantic token. For example, the state token for -color-bg-surface is -color-bg-surface-hover.
+      Interaction states are communicated by adding `-hover`, `-active`, `-selected`, or `-disabled` to the end of the semantic token. For example, the state token for `-color-bg-surface` is `-color-bg-surface-hover`.
 
       ### Hover
 
@@ -100,7 +139,7 @@ icon: Hexagon
 
       Focus states are triggered by the merchant and highlight elements when using a keyboard to navigate the UI.
 
-      Focus states usually take on the element’s hover state and add a blue outline using the border-focus token.
+      Focus states usually take on the element’s hover state and add a blue outline using the `border-focus` token.
 
   </Text>
 
