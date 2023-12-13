@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fixes an issue where the color of the hamerburger icon was not inherit the color
+`TopBar` Fixed .NavigationIcon styles to ensure Icon color is properly inherited. 
