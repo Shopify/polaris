@@ -348,7 +348,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "{title}のアクションを表示"
+        "rollupActionsLabel": "{title}のアクションを表示",
+        "pageReadyAccessibilityLabel": "{title}。このページの準備が整いました"
       }
     },
     "FullscreenBar": {
