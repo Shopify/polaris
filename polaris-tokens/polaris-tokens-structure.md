@@ -2,7 +2,7 @@
 
 Quick reference for the structure of Polaris Tokens
 
-## Notation reference
+## Notation
 
 - `--p-` - Default Polaris Tokens prefix
 - `-` - Default token name delimiter
