@@ -280,16 +280,28 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     }
   };
 
-  const selectAllActionsLabel = () => {
-    const selectedItemsCount =
-      selectedItems === SELECT_ALL_ITEMS
-        ? `${items.length}+`
-        : selectedItems.length;
+  const [selectedItemsCount, setSelectedItemsCount] = useState(
+    selectedItems === SELECT_ALL_ITEMS
+      ? `${items.length}+`
+      : selectedItems.length,
+  );
 
-    return i18n.translate('Polaris.ResourceList.selected', {
+  useEffect(() => {
+    if (selectedItems === SELECT_ALL_ITEMS || selectedItems.length > 0) {
+      setSelectedItemsCount(
+        selectedItems === SELECT_ALL_ITEMS
+          ? `${items.length}+`
+          : selectedItems.length,
+      );
+    }
+  }, [selectedItems, items.length]);
+
+  const selectAllActionsLabel = i18n.translate(
+    'Polaris.ResourceList.selected',
+    {
       selectedItemsCount,
-    });
-  };
+    },
+  );
 
   const bulkActionsAccessibilityLabel = () => {
     const selectedItemsCount = selectedItems.length;
@@ -574,7 +586,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       }}
     >
       <SelectAllActions
-        label={selectAllActionsLabel()}
+        label={selectAllActionsLabel}
         selectMode={selectMode}
         paginatedSelectAllAction={paginatedSelectAllAction()}
         paginatedSelectAllText={paginatedSelectAllText()}

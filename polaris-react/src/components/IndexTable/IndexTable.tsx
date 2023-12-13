@@ -544,10 +544,25 @@ function IndexTableBase({
   );
   const stickyHeadingsMarkup = headings.map(renderStickyHeading);
 
-  const selectedItemsCountLabel =
+  const [selectedItemsCountValue, setSelectedItemsCountValue] = useState(
     selectedItemsCount === SELECT_ALL_ITEMS
       ? `${itemCount}+`
-      : selectedItemsCount;
+      : selectedItemsCount,
+  );
+
+  useEffect(() => {
+    if (selectedItemsCount === SELECT_ALL_ITEMS || selectedItemsCount > 0) {
+      setSelectedItemsCountValue(
+        selectedItemsCount === SELECT_ALL_ITEMS
+          ? `${itemCount}+`
+          : selectedItemsCount,
+      );
+    }
+  }, [selectedItemsCount, itemCount]);
+
+  const selectAllActionsLabel = i18n.translate('Polaris.IndexTable.selected', {
+    selectedItemsCount: selectedItemsCountValue,
+  });
 
   const handleTogglePage = useCallback(() => {
     handleSelectionChange(
@@ -628,9 +643,7 @@ function IndexTableBase({
         }}
       >
         <SelectAllActions
-          label={i18n.translate('Polaris.IndexTable.selected', {
-            selectedItemsCount: selectedItemsCountLabel,
-          })}
+          label={selectAllActionsLabel}
           selectMode={selectMode}
           paginatedSelectAllText={paginatedSelectAllText}
           paginatedSelectAllAction={paginatedSelectAllAction}
