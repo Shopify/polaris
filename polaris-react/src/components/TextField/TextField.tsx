@@ -313,7 +313,7 @@ export function TextField({
 
   const inputType = type === 'currency' ? 'text' : type;
   const isNumericType = type === 'number' || type === 'integer';
-  const iconPrefix = isIconPrefix();
+  const iconPrefix = React.isValidElement(prefix) && prefix.type === Icon;
 
   const prefixMarkup = prefix ? (
     <div
@@ -799,11 +799,6 @@ export function TextField({
       (verticalContentRef.current.contains(target) ||
         verticalContentRef.current.contains(document.activeElement))
     );
-  }
-
-  function isIconPrefix() {
-    if (!prefixRef.current) return false;
-    return Boolean(prefixRef.current.querySelector('svg'));
   }
 }
 
