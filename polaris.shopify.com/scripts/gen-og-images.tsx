@@ -8,7 +8,6 @@ import {writeFile, mkdir, rm} from 'fs/promises';
 import ora from 'ora';
 import satori, {type SatoriOptions} from 'satori';
 import typedSiteJSON from '../.cache/site';
-import {optimize} from 'svgo';
 
 const WIDTH = 1200;
 const HEIGHT = 630;
@@ -187,15 +186,12 @@ const genOgImages = async () => {
           url === ''
             ? '/home'
             : new URL(url, 'https://polaris.shopify.com').pathname;
-        const svg = optimize(
-          await generateSvg(url, frontMatter, satoriConfig),
-          {},
-        );
+        const svg = await generateSvg(url, frontMatter, satoriConfig);
 
         const imgFile = `${imgDir}${imgPath}.png`;
         await mkdir(path.dirname(imgFile), {recursive: true});
 
-        const pngData = await Transformer.fromSvg(svg.data)
+        const pngData = await Transformer.fromSvg(svg)
           // svg comes in at 2x size for some reason.
           .crop(0, 0, WIDTH, HEIGHT)
           .png();
