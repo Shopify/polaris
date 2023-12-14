@@ -50,6 +50,20 @@ function generateConfig({output, targets, stylesConfig}) {
   };
 }
 
+function entryFileNames(ext) {
+  return (chunkInfo) => {
+    // To preserve backwards compatibility with previous Polaris versions,
+    // CSS Modules should be `<Name>.scss.esnext`, never
+    // `<Name>.module.scss.esnext`
+    if (chunkInfo.name.endsWith('.module.scss')) {
+      return `${chunkInfo.name.replace(/\.module\.scss$/, '.scss')}.${ext}`;
+    }
+
+    // Use regular pattern matching for everything else
+    return `[name].${ext}`;
+  };
+}
+
 /** @type {import('rollup').RollupOptions} */
 export default [
   generateConfig({
@@ -68,14 +82,14 @@ export default [
         format: 'cjs',
         dir: path.dirname(pkg.main),
         preserveModules: true,
-        entryFileNames: '[name].js',
+        entryFileNames: entryFileNames('js'),
         exports: 'named',
       },
       {
         format: 'esm',
         dir: path.dirname(pkg.module),
         preserveModules: true,
-        entryFileNames: '[name].js',
+        entryFileNames: entryFileNames('js'),
       },
     ],
   }),
@@ -94,7 +108,7 @@ export default [
         format: 'esm',
         dir: path.dirname(pkg.esnext),
         preserveModules: true,
-        entryFileNames: '[name].esnext',
+        entryFileNames: entryFileNames('esnext'),
       },
     ],
   }),

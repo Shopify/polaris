@@ -16,7 +16,7 @@ import {usePrevious} from '../../utilities/use-previous';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 import type {TabProps, TabMeasurements} from './types';
 import {Tab, CreateViewModal, List, TabMeasurer, Panel} from './components';
-import styles from './Tabs.scss';
+import styles from './Tabs.module.scss';
 
 export interface TabsState {
   disclosureWidth: number;

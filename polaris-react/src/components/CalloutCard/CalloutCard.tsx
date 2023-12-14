@@ -12,7 +12,7 @@ import {Button, buttonFrom} from '../Button';
 import {Text} from '../Text';
 import {Image} from '../Image';
 
-import styles from './CalloutCard.scss';
+import styles from './CalloutCard.module.scss';
 
 export interface CalloutCardProps {
   /** The content to display inside the callout card. */

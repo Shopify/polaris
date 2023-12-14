@@ -10,7 +10,7 @@ module.exports.generateScopedName = function generateScopedName({
   includeHash = false,
 } = {}) {
   return (name, filename) => {
-    const componentName = basename(filename, '.scss');
+    const componentName = basename(filename, '.module.scss');
     const nestedComponentMatch = NESTED_COMPONENT_PATH_REGEX.exec(filename);
 
     const polarisComponentName =
