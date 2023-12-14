@@ -5,20 +5,7 @@ import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
 import {gridOptions, featureFlagOptions} from './manager';
-import isChromatic from 'chromatic/isChromatic';
 import {themeNameDefault, themeNames, themes} from '@shopify/polaris-tokens';
-
-// Use the document.fonts API to check if fonts have loaded
-// https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts API to
-const fontLoader = async () => ({
-  fonts: await document.fonts.ready,
-});
-
-/* 👇 It's configured as a global loader
- * See https://storybook.js.org/docs/react/writing-stories/loaders
- * to learn more about loaders
- */
-export const loaders = isChromatic() && document.fonts ? [fontLoader] : [];
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
