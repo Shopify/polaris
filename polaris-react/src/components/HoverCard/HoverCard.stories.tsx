@@ -350,7 +350,6 @@ export function InTable() {
     <Card padding="0">
       <HoverCard
         snapToParent
-        standalone
         activator={customerNode.current}
         active={customerNode.current !== null}
         activatorWrapper="div"
