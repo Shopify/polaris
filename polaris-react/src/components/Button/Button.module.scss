@@ -158,6 +158,8 @@
 
 .variantPlain {
   --pc-button-color: var(--p-color-text-link);
+  --pc-button-color_hover: var(--p-color-text-link-hover);
+  --pc-button-color_active: var(--p-color-text-link-active);
 }
 
 .variantMonochromePlain {
@@ -181,14 +183,16 @@
 // TONES
 .toneSuccess:is(.variantSecondary, .variantTertiary, .variantPlain) {
   --pc-button-color: var(--p-color-text-success);
-  --pc-button-color_hover: var(--pc-button-color);
-  --pc-button-icon-fill: var(--pc-button-color);
+  --pc-button-color_hover: var(--p-color-text-success-hover);
+  --pc-button-color_active: var(--p-color-text-success-active);
+  --pc-button-icon-fill: currentColor;
 }
 
 .toneCritical:is(.variantSecondary, .variantTertiary, .variantPlain) {
   --pc-button-color: var(--p-color-text-critical);
-  --pc-button-color_hover: var(--pc-button-color);
-  --pc-button-icon-fill: var(--pc-button-color);
+  --pc-button-color_hover: var(--p-color-text-critical-hover);
+  --pc-button-color_active: var(--p-color-text-critical-active);
+  --pc-button-icon-fill: currentColor;
 }
 
 .toneSuccess:is(.variantPrimary) {
@@ -287,7 +291,7 @@
   --pc-button-padding-inline: var(--p-space-050);
 }
 
-.iconOnly:is(.variantTertiary, .variantPlain, .variantMonochromePlain) {
+.iconOnly:is(.variantTertiary, .variantPlain, .variantMonochromePlain):not(.toneCritical) {
   --pc-button-icon-fill: var(--p-color-icon-secondary);
   --pc-button-icon-fill_hover: var(--p-color-icon-secondary-hover);
   --pc-button-icon-fill_active: var(--p-color-icon-secondary-active);
