@@ -4,12 +4,12 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Portal} from '../../Portal';
 import {PositionedOverlay} from '../../PositionedOverlay';
+import type {HoverCardProps} from '../HoverCard';
 import {HoverCard} from '../HoverCard';
 
-const defaultProps = {
+const defaultProps: Partial<HoverCardProps> = {
   active: false,
   toggleActive: jest.fn(),
-  activator: <div>Activator</div>,
 };
 
 jest.mock('../../../utilities/breakpoints', () => ({
@@ -29,17 +29,22 @@ describe('<HoverCard />', () => {
   });
 
   it('renders a portal when active', () => {
-    const hoverCard = mountWithApp(<HoverCard {...defaultProps} active />);
+    const hoverCard = mountWithApp<HoverCardProps>(
+      <HoverCard {...defaultProps} active />,
+    );
     expect(hoverCard).toContainReactComponent(Portal);
   });
 
   it('renders an activator', () => {
-    const hoverCard = mountWithApp(<HoverCard {...defaultProps} active />);
+    const activator = <div>Activator</div>;
+    const hoverCard = mountWithApp<HoverCardProps>(
+      <HoverCard {...defaultProps}>{activator}</HoverCard>,
+    );
     expect(hoverCard).toContainReactComponent('div', {children: 'Activator'});
   });
 
   it('renders a positionedOverlay when active is true', () => {
-    const hoverCard = mountWithApp(<HoverCard {...defaultProps} active />);
+    const hoverCard = mountWithApp(<HoverCard {...defaultProps} />);
     expect(hoverCard).toContainReactComponent(PositionedOverlay);
   });
 
