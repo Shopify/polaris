@@ -77,6 +77,50 @@ describe('<FiltersBar />', () => {
     });
   });
 
+  it('does not render hidden filters in the ActionList', () => {
+    const scrollSpy = jest.fn();
+    HTMLElement.prototype.scroll = scrollSpy;
+    const props: FiltersBarProps = {
+      ...defaultProps,
+      filters: [
+        ...defaultProps.filters,
+        {
+          key: 'hiddenField',
+          label: 'Hidden field',
+          filter: null,
+          hidden: true,
+        },
+      ],
+    };
+    const wrapper = mountWithApp(<FiltersBar {...props} />);
+
+    wrapper.act(() => {
+      wrapper
+        .find('button', {
+          'aria-label': 'Add filter',
+        })!
+        .trigger('onClick');
+    });
+
+    expect(wrapper).toContainReactComponent(ActionList, {
+      items: [
+        expect.objectContaining({content: defaultProps.filters[0].label}),
+        expect.objectContaining({content: defaultProps.filters[2].label}),
+      ],
+    });
+    expect(wrapper.find(ActionList)).not.toHaveReactProps({
+      items: expect.arrayContaining([
+        {
+          key: 'hiddenField',
+          label: 'Hidden field',
+          filter: null,
+          content: 'Hidden field',
+          onAction: expect.any(Function),
+        },
+      ]),
+    });
+  });
+
   it('renders the unpinned disabled filters inside a Popover', () => {
     const scrollSpy = jest.fn();
     HTMLElement.prototype.scroll = scrollSpy;
