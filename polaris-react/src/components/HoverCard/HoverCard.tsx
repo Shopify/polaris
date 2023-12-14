@@ -37,17 +37,15 @@ Wed 12/13
 interface BaseHoverCardProps {
   /** Unique identifier for the overlay */
   id?: string;
-  /** The activator markup to render */
+  /** The activator markup to render that triggers the overlay. Only wrap individual commerce objects rendered by themselves. */
   children?: React.ReactNode;
-  /** Whether or not there is a child activator. Use when there is more than one activator for the hovercard. */
-  standalone?: boolean;
   /** The preferred direction to open the overlay */
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   /** The preferred alignment of the popover relative to its activator */
   preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   /** Show or hide the overlay */
   active?: boolean;
-  /** The element that activates the overlay */
+  /** The activator element currently triggering the overlay. Use to dynamically trigger a single, standalone overlay with several of the same commerce object in close context, like a column of customer names in an index table of orders. */
   activator?: HTMLElement | null;
   /**
    * The element type to wrap the activator in
@@ -68,34 +66,56 @@ interface BaseHoverCardProps {
   renderContent(): React.ReactNode | null;
 }
 
-interface StandaloneHoverCardProps {
+/**
+ * A HoverCard rendered without `children` that is triggered to be `active` or repositioned by dynamically setting the `activator`.
+ * @prop activator: HTMLElement | null;
+ */
+interface DynamicallyActivatedHoverCardProps {
   activator: HTMLElement | null;
-  standalone: boolean;
 }
 
-interface ChildrenHoverCardProps {
+/**
+ * A HoverCard that renders and is triggered to be `active` by its `children`.
+ * @prop children: React.ReactNode;
+ */
+interface ChildrenActivatedHoverCardProps {
   children: React.ReactNode;
 }
 
-type MutuallyExclusiveStandaloneProps =
-  | StandaloneHoverCardProps
-  | ChildrenHoverCardProps;
+/**
+ * A HoverCard can have either `children` or `activator`.
+ * @interface ChildrenActivatedHoverCardProps - A HoverCard that renders and is triggered to be `active` by its `children`.
+ * @interface DynamicallyActivatedHoverCardProps - A HoverCard rendered without `children` that is triggered to be `active` or repositioned by dynamically setting the `activator`.
+ */
+export type MutuallyExclusiveActivatorProps =
+  | ChildrenActivatedHoverCardProps
+  | DynamicallyActivatedHoverCardProps;
 
 export type HoverCardProps = BaseHoverCardProps &
-  MutuallyExclusiveStandaloneProps;
+  MutuallyExclusiveActivatorProps;
 
+/**
+ * A hover card is an overlay only triggered by mouse over of a link. They are not triggered on focus, keyboard navigable, or visible to screen readers. Use to present a preview of a commerce object's key information when hovering a link to its detail page.
+
+ * HoverCard can either have `children` or set an `activator`.
+ * @interface HoverCardProps - BaseHoverCardProps & ChildrenActivatedHoverCardProps | DynamicallyActivatedHoverCardProps;
+ * @interface BaseHoverCardProps - Non-mutually exclusive props
+ * @interface ChildrenActivatedHoverCardProps - A HoverCard that renders and is triggered by its `children`.
+ * @interface DynamicallyActivatedHoverCardProps - A HoverCard rendered without `children` that is triggered or repositioned by dynamically setting the `activator` prop.
+ */
 export function HoverCard({
-  id: providedId,
   children,
-  standalone = false,
-  active = false,
   activator,
+  active = false,
   activatorWrapper = 'span',
   snapToParent = false,
   hoverDelay,
   zIndexOverride,
+  id: providedId,
+  preferredPosition,
+  preferredAlignment,
   toggleActive,
-  ...rest
+  renderContent,
 }: HoverCardProps) {
   const activatorRef = useRef<HTMLElement>(null);
 
@@ -129,7 +149,9 @@ export function HoverCard({
           activator={activatorElement}
           snapToParent={snapToParent}
           zIndexOverride={zIndexOverride}
-          {...rest}
+          preferredAlignment={preferredAlignment}
+          preferredPosition={preferredPosition}
+          renderContent={renderContent}
         />
       </Portal>
     ) : null;
