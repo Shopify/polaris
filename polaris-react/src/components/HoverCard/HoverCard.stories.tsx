@@ -239,7 +239,7 @@ export function InTable() {
   //   [activeHoverCard],
   // );
 
-  const activatorWrapperProps = useHoverCardActivatorWrapperProps();
+  const activatorWrapperProps = useHoverCardActivatorWrapperProps({});
 
   console.log(activatorWrapperProps);
 
@@ -247,7 +247,7 @@ export function InTable() {
     (customer: any) => (event: React.MouseEvent<HTMLDivElement>) => {
       customerNode.current = event.currentTarget;
       setActiveHoverCard({customer});
-      activatorWrapperProps?.onMouseOver?.();
+      activatorWrapperProps?.handleMouseOver?.();
     },
     [activatorWrapperProps],
   );
@@ -255,7 +255,7 @@ export function InTable() {
   const handleMouseLeaveCustomer = () => {
     setActiveHoverCard({customer: null});
     customerNode.current = null;
-    activatorWrapperProps?.onMouseLeave?.();
+    activatorWrapperProps?.handleMouseLeave?.();
   };
 
   const renderCustomerHoverCard = useCallback(() => {
@@ -356,26 +356,25 @@ export function InTable() {
         activatorWrapper="div"
         preferredPosition="right"
         renderContent={renderCustomerHoverCard}
+      />
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={orders.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Order'},
+          {title: 'Date'},
+          {title: 'Customer'},
+          {title: 'Total', alignment: 'end'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
+        ]}
       >
-        <IndexTable
-          resourceName={resourceName}
-          itemCount={orders.length}
-          selectedItemsCount={
-            allResourcesSelected ? 'All' : selectedResources.length
-          }
-          onSelectionChange={handleSelectionChange}
-          headings={[
-            {title: 'Order'},
-            {title: 'Date'},
-            {title: 'Customer'},
-            {title: 'Total', alignment: 'end'},
-            {title: 'Payment status'},
-            {title: 'Fulfillment status'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </HoverCard>
+        {rowMarkup}
+      </IndexTable>
     </Card>
   );
 }

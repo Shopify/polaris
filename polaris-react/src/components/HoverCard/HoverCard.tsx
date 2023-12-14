@@ -1,23 +1,12 @@
-import React, {
-  Children,
-  useRef,
-  useId,
-  useEffect,
-  useState,
-  useCallback,
-  useMemo,
-} from 'react';
+import React, {useRef, useId, useEffect, useState} from 'react';
 
 import type {PositionedOverlayProps} from '../PositionedOverlay';
 import {Portal} from '../Portal';
-import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
-import type {HoverCardContextType} from '../../utilities/hover-card';
-import {HoverCardContext} from '../../utilities/hover-card';
 import {classNames} from '../../utilities/css';
-import {useBreakpoints} from '../../utilities/breakpoints';
+import {useHoverCardActivatorWrapperProps} from '../../utilities/hover-card';
 
-import styles from './HoverCard.scss';
 import {HoverCardOverlay} from './components/HoverCardOverlay';
+import styles from './HoverCard.scss';
 
 /*
 
@@ -95,8 +84,6 @@ type MutuallyExclusiveStandaloneProps =
 export type HoverCardProps = BaseHoverCardProps &
   MutuallyExclusiveStandaloneProps;
 
-const HOVER_OUT_TIMEOUT = 150;
-
 export function HoverCard({
   id: providedId,
   children,
@@ -111,98 +98,30 @@ export function HoverCard({
   ...rest
 }: HoverCardProps) {
   const activatorRef = useRef<HTMLElement>(null);
-  const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
-  const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
-  const mouseEntered = useRef(false);
 
   const defaultId = useId();
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
 
+  const {isDesktop, handleMouseLeave, handleMouseOver} =
+    useHoverCardActivatorWrapperProps({
+      toggleActive,
+      hoverDelay,
+    });
+
   const WrapperComponent: any = activatorWrapper;
   const id = providedId ?? defaultId;
 
-  // BEGIN HOOK
-  const {mdUp} = useBreakpoints();
-
-  const {presenceList, addPresence, removePresence} =
-    useEphemeralPresenceManager();
-
   useEffect(() => {
-    const currentHoverDelayTimeout = hoverDelayTimeout?.current;
-    const currentHoverOutTimeout = hoverOutTimeout?.current;
-
-    return () => {
-      if (currentHoverDelayTimeout) {
-        clearTimeout(currentHoverDelayTimeout);
-      }
-      if (currentHoverOutTimeout) {
-        clearTimeout(currentHoverOutTimeout);
-      }
-    };
-  }, []);
-
-  const handleOpen = useCallback(() => {
-    toggleActive?.(true);
-    addPresence('hovercard');
-  }, [toggleActive, addPresence]);
-
-  const handleClose = useCallback(() => {
-    toggleActive?.(false);
-    hoverOutTimeout.current = setTimeout(() => {
-      removePresence('hovercard');
-    }, HOVER_OUT_TIMEOUT);
-  }, [toggleActive, removePresence]);
-
-  const handleMouseLeave = useCallback(() => {
-    console.log('mouse left');
-
-    if (hoverDelayTimeout.current) {
-      clearTimeout(hoverDelayTimeout.current);
-      hoverDelayTimeout.current = null;
-    }
-
-    mouseEntered.current = false;
-    handleClose();
-  }, [handleClose, hoverDelayTimeout, mouseEntered]);
-
-  const handleMouseEnter = useCallback(() => {
-    console.log('mouse entered');
-
-    if (!mdUp) return;
-
-    mouseEntered.current = true;
-    if (hoverDelay && !presenceList.hovercard) {
-      hoverDelayTimeout.current = setTimeout(() => {
-        handleOpen();
-      }, hoverDelay);
-    } else {
-      handleOpen();
-    }
-  }, [handleOpen, hoverDelay, hoverDelayTimeout, presenceList, mdUp]);
-
-  // https://github.com/facebook/react/issues/10109
-  // Mouseenter event not triggered when cursor moves from disabled button
-  const handleMouseEnterFix = useCallback(() => {
-    if (!mouseEntered.current) {
-      handleMouseEnter();
-    }
-  }, [handleMouseEnter]);
-
-  // return {handleMouseLeave, handleMouseEnter: handleMouseEnterFix}
-
-  // END HOOK
-
-  useEffect(() => {
-    if (!standalone && !activatorNode && activatorRef.current) {
+    if (!activatorNode && activatorRef.current) {
       setActivatorNode(activatorRef.current);
     }
-  }, [standalone, activator, activatorNode]);
+  }, [activator, activatorNode]);
 
-  const activatorElement = standalone ? activator : activatorNode;
+  const activatorElement = activator ?? activatorNode;
 
   const portal =
-    activatorElement && mdUp ? (
+    activatorElement && isDesktop ? (
       <Portal idPrefix="hovercard">
         <HoverCardOverlay
           id={id}
@@ -220,25 +139,14 @@ export function HoverCard({
     snapToParent && styles.snapToParent,
   );
 
-  const contextValue: HoverCardContextType = useMemo(
-    () => ({
-      onMouseLeave: handleMouseLeave,
-      onMouseOver: handleMouseEnterFix,
-    }),
-    [handleMouseLeave, handleMouseEnterFix],
-  );
-
-  const markup = standalone ? (
-    <HoverCardContext.Provider value={contextValue}>
-      {children}
-      {portal}
-    </HoverCardContext.Provider>
+  const markup = !children ? (
+    portal
   ) : (
     <WrapperComponent
       ref={activatorRef}
       className={activatorWrapperClassname}
       onMouseLeave={handleMouseLeave}
-      onMouseOver={handleMouseEnterFix}
+      onMouseOver={handleMouseOver}
     >
       {children}
       {portal}
