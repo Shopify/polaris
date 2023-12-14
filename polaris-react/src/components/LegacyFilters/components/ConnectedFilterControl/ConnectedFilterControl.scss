@@ -110,6 +110,8 @@
 }
 
 .MoreFiltersButtonContainer.onlyButtonVisible {
+  padding-left: 0;
+
   .Item > div > button {
     border-radius: var(--p-border-radius-200);
   }
@@ -122,4 +124,9 @@
 
 .AuxiliaryContainer {
   flex-grow: 0;
+  margin-left: var(--p-space-200);
+
+  @media #{$p-breakpoints-md-up} {
+    margin-left: 0;
+  }
 }
