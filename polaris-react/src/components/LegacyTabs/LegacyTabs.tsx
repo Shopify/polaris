@@ -11,7 +11,7 @@ import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 import {List, Panel, Tab, TabMeasurer} from './components';
 import type {TabMeasurerProps} from './components';
-import styles from './LegacyTabs.scss';
+import styles from './LegacyTabs.module.scss';
 
 export interface LegacyTabsProps {
   /** Content to display in tabs */

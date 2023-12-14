@@ -2,6 +2,9 @@ const path = require('path');
 const spawn = require('child_process').spawn;
 const CreateFileWebpack = require('create-file-webpack');
 const postcssPlugins = require('../config/postcss-plugins');
+const {generateScopedName} = require('../config/rollup/namespaced-classname');
+
+const moduleIdentCreator = generateScopedName({includeHash: true});
 
 module.exports = {
   core: {
@@ -36,10 +39,9 @@ module.exports = {
             options: {
               importLoaders: 1,
               modules: {
-                localIdentName: '[name]-[local]_[hash:base64:5]',
-                auto: (resourcePath) => {
-                  return !resourcePath.includes('global');
-                },
+                getLocalIdent: ({resourcePath}, _, localName) =>
+                  moduleIdentCreator(localName, resourcePath),
+                auto: true,
               },
             },
           },

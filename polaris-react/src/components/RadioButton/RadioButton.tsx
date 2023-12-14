@@ -5,7 +5,7 @@ import type {ResponsiveProp} from '../../utilities/css';
 import {Choice, helpTextID} from '../Choice';
 import type {ChoiceBleedProps} from '../Choice';
 
-import styles from './RadioButton.scss';
+import styles from './RadioButton.module.scss';
 
 export interface RadioButtonProps extends ChoiceBleedProps {
   /** Indicates the ID of the element that describes the radio button */

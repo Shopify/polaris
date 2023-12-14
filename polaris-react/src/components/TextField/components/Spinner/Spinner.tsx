@@ -2,7 +2,7 @@ import React from 'react';
 import {ChevronDownMinor, ChevronUpMinor} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
-import styles from '../../TextField.scss';
+import styles from '../../TextField.module.scss';
 
 type HandleStepFn = (step: number) => void;
 

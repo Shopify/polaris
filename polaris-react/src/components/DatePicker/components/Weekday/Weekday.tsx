@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import styles from '../../DatePicker.scss';
+import styles from '../../DatePicker.module.scss';
 
 export interface WeekdayProps {
   label: string;

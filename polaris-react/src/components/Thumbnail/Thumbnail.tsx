@@ -4,7 +4,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {Image} from '../Image';
 import {Icon} from '../Icon';
 
-import styles from './Thumbnail.scss';
+import styles from './Thumbnail.module.scss';
 
 type Size = 'extraSmall' | 'small' | 'medium' | 'large';
 

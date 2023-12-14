@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './MessageIndicator.scss';
+import styles from './MessageIndicator.module.scss';
 
 export interface MessageIndicatorProps {
   children?: React.ReactNode;

@@ -3,7 +3,7 @@ import React, {useRef, useEffect, useCallback} from 'react';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
-import styles from '../../TextField.scss';
+import styles from '../../TextField.module.scss';
 
 export interface ResizerProps {
   contents?: string;
