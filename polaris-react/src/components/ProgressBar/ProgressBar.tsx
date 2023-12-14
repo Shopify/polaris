@@ -5,7 +5,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {useTheme} from '../../utilities/use-theme';
 
-import styles from './ProgressBar.scss';
+import styles from './ProgressBar.module.scss';
 
 type Size = 'small' | 'medium' | 'large';
 type Tone = 'highlight' | 'primary' | 'success' | 'critical';

@@ -5,7 +5,7 @@ import {Box} from '../Box';
 import {BlockStack} from '../BlockStack';
 import {InlineStack} from '../InlineStack';
 
-import styles from './SkeletonPage.scss';
+import styles from './SkeletonPage.module.scss';
 
 export interface SkeletonPageProps {
   /** Page title, in large type */

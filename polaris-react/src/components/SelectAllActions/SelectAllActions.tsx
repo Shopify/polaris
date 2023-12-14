@@ -6,7 +6,7 @@ import type {Action} from '../../types';
 import {UnstyledButton} from '../UnstyledButton';
 import {CheckableButton} from '../CheckableButton';
 
-import styles from './SelectAllActions.scss';
+import styles from './SelectAllActions.module.scss';
 
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 type AriaLive = 'off' | 'polite' | undefined;

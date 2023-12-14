@@ -8,7 +8,7 @@ import {Menu} from '../Menu';
 import type {MenuProps} from '../Menu';
 import {Text} from '../../../Text';
 
-import styles from './UserMenu.scss';
+import styles from './UserMenu.module.scss';
 
 export interface UserMenuProps {
   /** An array of action objects that are rendered inside of a popover triggered by this menu */

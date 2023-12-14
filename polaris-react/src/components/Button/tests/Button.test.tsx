@@ -11,7 +11,7 @@ import {Icon} from '../../Icon';
 import {Spinner} from '../../Spinner';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Button} from '../Button';
-import styles from '../Button.scss';
+import styles from '../Button.module.scss';
 
 describe('<Button />', () => {
   let warnSpy: jest.SpyInstance | null = null;

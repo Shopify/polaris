@@ -10,7 +10,7 @@ import {EventListener} from '../EventListener';
 
 import {AlphaPicker, HuePicker, Slidable} from './components';
 import type {SlidableProps} from './components';
-import styles from './ColorPicker.scss';
+import styles from './ColorPicker.module.scss';
 
 interface State {
   pickerSize: {

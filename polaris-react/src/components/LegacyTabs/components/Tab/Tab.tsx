@@ -6,7 +6,7 @@ import {
   focusFirstFocusableNode,
   handleMouseUpByBlurring,
 } from '../../../../utilities/focus';
-import styles from '../../LegacyTabs.scss';
+import styles from '../../LegacyTabs.module.scss';
 
 export interface TabProps {
   id: string;

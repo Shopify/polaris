@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import styles from '../../LegacyTabs.scss';
+import styles from '../../LegacyTabs.module.scss';
 
 export interface PanelProps {
   hidden?: boolean;
