@@ -1141,7 +1141,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
       id: `${num}`,
       url: '#',
       name: `Mae Jemison ${num}`,
-      location: 'Decatur, USA',
+      location: 'Truth or Consequences, New Mexico, United States of America',
       orders: 20,
       amountSpent: '$24,00',
     };

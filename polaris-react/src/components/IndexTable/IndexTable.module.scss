@@ -1455,6 +1455,7 @@ $scroll-bar-size: var(--p-space-200);
   bottom: 0;
   padding: var(--p-space-050);
   background-color: var(--p-color-bg-surface);
+  transition: bottom var(--p-motion-duration-100) var(--p-motion-ease);
 
   @media (--p-breakpoints-sm-up) {
     border-bottom-right-radius: var(--p-border-radius-200);
