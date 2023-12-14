@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useRef} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {PositionedOverlayProps} from '@shopify/polaris';
 import {
@@ -18,6 +18,8 @@ import {
 } from '@shopify/polaris';
 import {LocationsMinor, OrdersMinor} from '@shopify/polaris-icons';
 
+import {useHoverCardActivatorWrapperProps} from '../../utilities/hover-card';
+
 export default {
   component: HoverCard,
 } as ComponentMeta<typeof HoverCard>;
@@ -36,6 +38,44 @@ export function Default() {
     <Link removeUnderline url="#">
       Saul Goodman
     </Link>
+  );
+
+  const renderHoverCardContent = () => (
+    <Box padding="400">
+      <BlockStack gap="400">
+        <BlockStack gap="0">
+          <Text as="span" variant="headingSm">
+            <Link removeUnderline>Saul Goodman</Link>
+          </Text>
+          <Text as="span" variant="bodyMd">
+            <Link url="mailto:help@bettercallsaul.com">
+              help@bettercallsaul.com
+            </Link>
+          </Text>
+          <Text as="p" variant="bodyMd">
+            <Link url="tel:+1505-842-5662">+1 505-842-5662</Link>
+          </Text>
+        </BlockStack>
+        <Box width="100%">
+          <BlockStack gap="100">
+            <InlineStack wrap={false} gap="100" align="start">
+              <Icon tone="subdued" source={LocationsMinor} />
+              <Text tone="subdued" as="p">
+                Albequerque, NM, USA
+              </Text>
+            </InlineStack>
+            <InlineStack wrap={false} gap="100" align="start">
+              <Box>
+                <Icon tone="subdued" source={OrdersMinor} />
+              </Box>
+              <Text tone="subdued" as="p">
+                8 Orders
+              </Text>
+            </InlineStack>
+          </BlockStack>
+        </Box>
+      </BlockStack>
+    </Box>
   );
 
   return (
@@ -80,47 +120,12 @@ export function Default() {
                 Customer
               </Text>
               <HoverCard
-                toggleActive={setActive}
                 active={active}
-                activator={activator}
-                activatorWrapper="div"
                 preferredPosition={position}
+                renderContent={renderHoverCardContent}
+                toggleActive={setActive}
               >
-                <Box padding="400">
-                  <BlockStack gap="400">
-                    <BlockStack gap="0">
-                      <Text as="span" variant="headingSm">
-                        <Link removeUnderline>Saul Goodman</Link>
-                      </Text>
-                      <Text as="span" variant="bodyMd">
-                        <Link url="mailto:help@bettercallsaul.com">
-                          help@bettercallsaul.com
-                        </Link>
-                      </Text>
-                      <Text as="p" variant="bodyMd">
-                        <Link url="tel:+1505-842-5662">+1 505-842-5662</Link>
-                      </Text>
-                    </BlockStack>
-                    <Box width="100%">
-                      <BlockStack gap="100">
-                        <InlineStack wrap={false} gap="100" align="start">
-                          <Icon tone="subdued" source={LocationsMinor} />
-                          <Text tone="subdued" as="p">
-                            Albequerque, NM, USA
-                          </Text>
-                        </InlineStack>
-                        <InlineStack wrap={false} gap="100" align="start">
-                          <Box>
-                            <Icon tone="subdued" source={OrdersMinor} />
-                          </Box>
-                          <Text tone="subdued" as="p">
-                            8 Orders
-                          </Text>
-                        </InlineStack>
-                      </BlockStack>
-                    </Box>
-                  </BlockStack>
-                </Box>
+                {activator}
               </HoverCard>
             </BlockStack>
           </Card>
@@ -165,7 +170,7 @@ export function InTable() {
         name: 'Al Chemist',
         email: 'foodvillain@idontwantthat.com',
         phone: '+12122222222',
-        location: 'New York, NY, USA',
+        location: 'Los Angeles, CA, USA',
         orders: 19,
       },
       total: '$701.19',
@@ -199,152 +204,178 @@ export function InTable() {
     plural: 'orders',
   };
 
+  const customerNode = useRef<HTMLElement | null>(null);
+
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(orders);
 
   const [activeHoverCard, setActiveHoverCard] = useState<{
-    orderId: string | null;
-    type: string | null;
+    customer: {
+      id: string;
+      name: string;
+      email: string;
+      phone: string;
+      location: string;
+      orders: number;
+    } | null;
   }>({
-    orderId: null,
-    type: null,
+    customer: null,
   });
 
-  const toggleHoverCard = useCallback(
-    (orderId: string, type: string) => () => {
-      const {orderId: currentOrderId} = activeHoverCard;
+  // const toggleHoverCard = useCallback(
+  //   (rowIndex: number, type: string, activator: Element) => () => {
+  //     const {rowIndex: currentOrderId} = activeHoverCard;
 
-      if (currentOrderId) {
-        setActiveHoverCard({
-          orderId: null,
-          type: null,
-        });
-      }
+  //     if (currentOrderId) {
+  //       setActiveHoverCard({
+  //         rowIndex: null,
+  //         type: null,
+  //         activator: null,
+  //       });
+  //     }
 
-      setActiveHoverCard({orderId, type});
+  //     setActiveHoverCard({rowIndex, type, activator});
+  //   },
+  //   [activeHoverCard],
+  // );
+
+  const activatorWrapperProps = useHoverCardActivatorWrapperProps();
+
+  console.log(activatorWrapperProps);
+
+  const handleMouseOverCustomer = useCallback(
+    (customer: any) => (event: React.MouseEvent<HTMLDivElement>) => {
+      customerNode.current = event.currentTarget;
+      setActiveHoverCard({customer});
+      activatorWrapperProps?.onMouseOver?.();
     },
-    [activeHoverCard],
+    [activatorWrapperProps],
   );
 
-  const renderCustomerLink = useCallback(
-    (
-      orderId: string,
-      customer: {
-        name: string;
-        phone: string;
-        email: string;
-        location: string;
-        orders: number;
-      },
-    ) => {
-      const {orderId: currentOrderId, type} = activeHoverCard;
-      const {name, phone, email, location, orders} = customer;
+  const handleMouseLeaveCustomer = () => {
+    setActiveHoverCard({customer: null});
+    customerNode.current = null;
+    activatorWrapperProps?.onMouseLeave?.();
+  };
 
-      const linkMarkup = (
-        <Box as="div" minHeight="100%" padding="150">
-          <Link removeUnderline url="#">
-            {name}
-          </Link>
-        </Box>
-      );
+  const renderCustomerHoverCard = useCallback(() => {
+    const {customer} = activeHoverCard;
+    if (!customer) return null;
 
-      return (
-        <HoverCard
-          snapToParent
-          toggleActive={toggleHoverCard(orderId, 'customer')}
-          active={type === 'customer' && currentOrderId === orderId}
-          activator={linkMarkup}
-          activatorWrapper="div"
-          preferredPosition="right"
-        >
-          <Box padding="400">
-            <BlockStack gap="400">
-              <BlockStack gap="0">
-                <Text as="span" variant="headingSm">
-                  <Link removeUnderline>{name}</Link>
+    const {name, phone, email, location, orders} = customer;
+
+    return (
+      <Box padding="400">
+        <BlockStack gap="400">
+          <BlockStack gap="0">
+            <Text as="span" variant="headingSm">
+              <Link removeUnderline>{name}</Link>
+            </Text>
+            <Text as="span" variant="bodyMd">
+              <Link url={`mailto:${email}`}>{email}</Link>
+            </Text>
+            <Text as="p" variant="bodyMd">
+              <Link url={`tel:${phone}`}>{phone}</Link>
+            </Text>
+          </BlockStack>
+          <Box width="100%">
+            <BlockStack gap="100">
+              <InlineStack wrap={false} gap="100" align="start">
+                <Box>
+                  <Icon tone="subdued" source={LocationsMinor} />
+                </Box>
+                <Text tone="subdued" as="p">
+                  {location}
                 </Text>
-                <Text as="span" variant="bodyMd">
-                  <Link url={`mailto:${email}`}>{email}</Link>
+              </InlineStack>
+              <InlineStack wrap={false} gap="100" align="start">
+                <Box>
+                  <Icon tone="subdued" source={OrdersMinor} />
+                </Box>
+                <Text tone="subdued" as="p">
+                  {`${orders} Orders`}
                 </Text>
-                <Text as="p" variant="bodyMd">
-                  <Link url={`tel:${phone}`}>{phone}</Link>
-                </Text>
-              </BlockStack>
-              <Box width="100%">
-                <BlockStack gap="100">
-                  <InlineStack wrap={false} gap="100" align="start">
-                    <Box>
-                      <Icon tone="subdued" source={LocationsMinor} />
-                    </Box>
-                    <Text tone="subdued" as="p">
-                      {location}
-                    </Text>
-                  </InlineStack>
-                  <InlineStack wrap={false} gap="100" align="start">
-                    <Box>
-                      <Icon tone="subdued" source={OrdersMinor} />
-                    </Box>
-                    <Text tone="subdued" as="p">
-                      {`${orders} Orders`}
-                    </Text>
-                  </InlineStack>
-                </BlockStack>
-              </Box>
+              </InlineStack>
             </BlockStack>
           </Box>
-        </HoverCard>
-      );
-    },
-    [activeHoverCard, toggleHoverCard],
-  );
+        </BlockStack>
+      </Box>
+    );
+  }, [activeHoverCard]);
 
   const rowMarkup = orders.map(
     (
       {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
       index,
-    ) => (
-      <IndexTable.Row
-        id={id}
-        key={id}
-        selected={selectedResources.includes(id)}
-        position={index}
-      >
-        <IndexTable.Cell>
-          <Text variant="bodyMd" fontWeight="bold" as="span">
-            {order}
-          </Text>
-        </IndexTable.Cell>
-        <IndexTable.Cell>{date}</IndexTable.Cell>
-        <IndexTable.Cell flush>
-          {renderCustomerLink(id, customer)}
-        </IndexTable.Cell>
-        <IndexTable.Cell>{total}</IndexTable.Cell>
-        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
-        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
-      </IndexTable.Row>
-    ),
+    ) => {
+      const linkMarkup = (
+        <div
+          onMouseOver={handleMouseOverCustomer(customer)}
+          onMouseLeave={handleMouseLeaveCustomer}
+          style={{minHeight: '100%', padding: 'var(--p-space-150)'}}
+        >
+          <Link removeUnderline url="#">
+            {customer.name}
+          </Link>
+        </div>
+      );
+
+      return (
+        <IndexTable.Row
+          id={id}
+          key={id}
+          selected={selectedResources.includes(id)}
+          position={index}
+        >
+          <IndexTable.Cell>
+            <Text variant="bodyMd" fontWeight="bold" as="span">
+              {order}
+            </Text>
+          </IndexTable.Cell>
+          <IndexTable.Cell>{date}</IndexTable.Cell>
+          <IndexTable.Cell flush>{linkMarkup}</IndexTable.Cell>
+          <IndexTable.Cell>
+            <Text as="span" alignment="end" numeric>
+              {total}
+            </Text>
+          </IndexTable.Cell>
+          <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+          <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        </IndexTable.Row>
+      );
+    },
   );
 
   return (
     <Card padding="0">
-      <IndexTable
-        resourceName={resourceName}
-        itemCount={orders.length}
-        selectedItemsCount={
-          allResourcesSelected ? 'All' : selectedResources.length
-        }
-        onSelectionChange={handleSelectionChange}
-        headings={[
-          {title: 'Order'},
-          {title: 'Date'},
-          {title: 'Customer'},
-          {title: 'Total', alignment: 'end'},
-          {title: 'Payment status'},
-          {title: 'Fulfillment status'},
-        ]}
+      <HoverCard
+        snapToParent
+        standalone
+        activator={customerNode.current}
+        active={customerNode.current !== null}
+        activatorWrapper="div"
+        preferredPosition="right"
+        renderContent={renderCustomerHoverCard}
       >
-        {rowMarkup}
-      </IndexTable>
+        <IndexTable
+          resourceName={resourceName}
+          itemCount={orders.length}
+          selectedItemsCount={
+            allResourcesSelected ? 'All' : selectedResources.length
+          }
+          onSelectionChange={handleSelectionChange}
+          headings={[
+            {title: 'Order'},
+            {title: 'Date'},
+            {title: 'Customer'},
+            {title: 'Total', alignment: 'end'},
+            {title: 'Payment status'},
+            {title: 'Fulfillment status'},
+          ]}
+        >
+          {rowMarkup}
+        </IndexTable>
+      </HoverCard>
     </Card>
   );
 }
