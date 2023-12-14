@@ -7,9 +7,11 @@ import {PositionedOverlay} from '../../PositionedOverlay';
 import type {HoverCardProps} from '../HoverCard';
 import {HoverCard} from '../HoverCard';
 
-const defaultProps: Partial<HoverCardProps> = {
+const defaultProps: HoverCardProps = {
+  children: null,
   active: false,
   toggleActive: jest.fn(),
+  renderContent: jest.fn(() => <div />),
 };
 
 jest.mock('../../../utilities/breakpoints', () => ({
@@ -30,32 +32,45 @@ describe('<HoverCard />', () => {
 
   it('renders a portal when active', () => {
     const hoverCard = mountWithApp<HoverCardProps>(
-      <HoverCard {...defaultProps} active />,
+      <HoverCard {...defaultProps} active>
+        <div>Activator</div>
+      </HoverCard>,
     );
     expect(hoverCard).toContainReactComponent(Portal);
   });
 
   it('renders an activator', () => {
-    const activator = <div>Activator</div>;
     const hoverCard = mountWithApp<HoverCardProps>(
-      <HoverCard {...defaultProps}>{activator}</HoverCard>,
+      <HoverCard {...defaultProps}>
+        <div>Activator</div>
+      </HoverCard>,
     );
     expect(hoverCard).toContainReactComponent('div', {children: 'Activator'});
   });
 
   it('renders a positionedOverlay when active is true', () => {
-    const hoverCard = mountWithApp(<HoverCard {...defaultProps} />);
+    const hoverCard = mountWithApp(
+      <HoverCard {...defaultProps} active>
+        <div>Activator</div>
+      </HoverCard>,
+    );
     expect(hoverCard).toContainReactComponent(PositionedOverlay);
   });
 
   it('doesn’t render a hoverCard when active is false', () => {
-    const hoverCard = mountWithApp(<HoverCard {...defaultProps} />);
+    const hoverCard = mountWithApp(
+      <HoverCard {...defaultProps}>
+        <div>Activator</div>
+      </HoverCard>,
+    );
     expect(hoverCard).not.toContainReactComponent(PositionedOverlay);
   });
 
   it("passes 'preferredPosition' to PositionedOverlay", () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active preferredPosition="above" />,
+      <HoverCard {...defaultProps} active preferredPosition="above">
+        <div>Activator</div>
+      </HoverCard>,
     );
 
     expect(hoverCard).toContainReactComponent(PositionedOverlay, {
@@ -65,7 +80,9 @@ describe('<HoverCard />', () => {
 
   it("passes 'preferredAlignment' to PositionedOverlay", () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active preferredAlignment="left" />,
+      <HoverCard {...defaultProps} active preferredAlignment="left">
+        <div>Activator</div>
+      </HoverCard>,
     );
 
     expect(hoverCard).toContainReactComponent(PositionedOverlay, {
@@ -74,20 +91,28 @@ describe('<HoverCard />', () => {
   });
 
   it('has a span as activatorWrapper by default', () => {
-    const hoverCard = mountWithApp(<HoverCard {...defaultProps} />);
+    const hoverCard = mountWithApp(
+      <HoverCard {...defaultProps}>
+        <div>Activator</div>
+      </HoverCard>,
+    );
     expect(hoverCard.children[0].type).toBe('span');
   });
 
   it('has a div as activatorWrapper when activatorWrapper prop is set to div', () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} activatorWrapper="div" />,
+      <HoverCard {...defaultProps} activatorWrapper="div">
+        <div>Activator</div>
+      </HoverCard>,
     );
     expect(hoverCard.children[0].type).toBe('div');
   });
 
   it("passes 'zIndexOverride' to PositionedOverlay", () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active zIndexOverride={100} />,
+      <HoverCard {...defaultProps} active zIndexOverride={100}>
+        <div>Activator</div>
+      </HoverCard>,
     );
 
     expect(hoverCard).toContainReactComponent(PositionedOverlay, {
