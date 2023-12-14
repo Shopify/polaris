@@ -13,10 +13,10 @@ import {optimize} from 'svgo';
 const WIDTH = 1200;
 const HEIGHT = 630;
 const PADDING = 60;
+const LOGO_SCALE = 0.9;
 // To maintain a 1:1 aspect ratio, we can't use regular CSS (we're using a
 // limited set of yoga), so we calculate it manually here.
-// The image is meant to be 20% width.
-const IMG_WIDTH = (WIDTH - PADDING * 2) * 0.45;
+const IMG_SIZE = (HEIGHT - PADDING * 2) * LOGO_SCALE;
 
 const interDir = path.join(
   path.dirname(require.resolve('inter-ui')),
@@ -55,7 +55,14 @@ const defaultImage = (
   <svg
     viewBox="0 0 99 99"
     xmlns="http://www.w3.org/2000/svg"
-    style={{width: IMG_WIDTH, height: IMG_WIDTH, opacity: 0.2}}
+    style={{
+      width: IMG_SIZE,
+      height: IMG_SIZE,
+      opacity: 0.15,
+      position: 'absolute',
+      right: `${PADDING}px`,
+      top: `${PADDING}px`,
+    }}
   >
     <path
       d="M98.9999 49.5C98.9999 76.838 76.838 98.9999 49.5 98.9999C22.1619 98.9999 0 76.838 0 49.5C0 22.1619 22.1619 0 49.5 0C76.838 0 98.9999 22.1619 98.9999 49.5Z"
@@ -89,17 +96,7 @@ const generateSvg = async (url, frontMatter, satoriConfig: SatoriOptions) => {
         color: '#fff',
       }}
     >
-      <div
-        style={{
-          position: 'absolute',
-          display: 'flex',
-          width: '45%',
-          right: `${PADDING}px`,
-          top: `${PADDING}px`,
-        }}
-      >
-        {defaultImage}
-      </div>
+      {defaultImage}
       <div
         style={{
           display: 'flex',
