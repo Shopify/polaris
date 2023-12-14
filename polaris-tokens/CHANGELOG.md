@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.4.0
+
+### Minor Changes
+
+- [#11275](https://github.com/Shopify/polaris/pull/11275) [`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82) Thanks [@yurm04](https://github.com/yurm04)! - Updated semantic tokens `fill-info-secondary`, `text-info`, `fill-success-secondary`, `fill-caution-secondary`, `fill-critical-secondary`.
+
 ## 8.3.0
 
 ### Minor Changes

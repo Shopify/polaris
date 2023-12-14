@@ -1,5 +1,15 @@
 # polaris.shopify.com
 
+## 0.61.3
+
+### Patch Changes
+
+- [#11334](https://github.com/Shopify/polaris/pull/11334) [`ebff4315b`](https://github.com/Shopify/polaris/commit/ebff4315b1f456802463454eeafdbd2a180c724f) Thanks [@sarahill](https://github.com/sarahill)! - Added color token documentation
+
+- Updated dependencies [[`4ddba49c4`](https://github.com/Shopify/polaris/commit/4ddba49c41b218a002b7de0ec53bcde35974cdec), [`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82), [`5c183e0e1`](https://github.com/Shopify/polaris/commit/5c183e0e155ef47a43f7e3290a0f043965c0ecad)]:
+  - @shopify/polaris@12.5.0
+  - @shopify/polaris-tokens@8.4.0
+
 ## 0.61.2
 
 ### Patch Changes
