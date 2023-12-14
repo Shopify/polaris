@@ -22,25 +22,25 @@ enum TransitionStatus {
 }
 
 export interface HoverCardOverlayProps {
-  children?: React.ReactNode;
+  id: string;
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   active: boolean;
-  id: string;
   zIndexOverride?: number;
   activator: HTMLElement;
   snapToParent?: boolean;
+  renderContent(): React.ReactNode | null;
 }
 
 export function HoverCardOverlay({
-  children,
+  id,
   preferredPosition = 'below',
   preferredAlignment = 'center',
   active,
-  id,
   zIndexOverride,
   activator,
   snapToParent,
+  renderContent,
 }: HoverCardOverlayProps) {
   const {motion} = useTheme();
 
@@ -73,7 +73,7 @@ export function HoverCardOverlay({
         clearTransitionTimeout();
         enteringTimer.current = window.setTimeout(() => {
           setTransitionStatus(TransitionStatus.Entered);
-        }, parseInt(motion['motion-duration-500'], 10));
+        }, parseInt(motion['motion-duration-100'], 10));
       });
     }
 
@@ -116,7 +116,7 @@ export function HoverCardOverlay({
             style={contentStyles}
             ref={contentNode}
           >
-            {children}
+            {renderContent()}
           </div>
         </div>
       </div>
