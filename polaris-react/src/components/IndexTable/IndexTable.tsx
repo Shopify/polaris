@@ -731,10 +731,10 @@ function IndexTableBase({
   const scrollBarWrapperClassNames = classNames(
     styles.ScrollBarContainer,
     pagination && styles.ScrollBarContainerWithPagination,
-    shouldShowBulkActions &&
-      selectMode &&
+    shouldShowBulkActions && styles.ScrollBarContainerWithSelectAllActions,
+    selectMode &&
       isSelectAllActionsSticky &&
-      styles.ScrollBarContainerWithSelectAllActions,
+      styles.ScrollBarContainerSelectAllActionsSticky,
     condensed && styles.scrollBarContainerCondensed,
     hideScrollContainer && styles.scrollBarContainerHidden,
     isScrolledPastTop &&

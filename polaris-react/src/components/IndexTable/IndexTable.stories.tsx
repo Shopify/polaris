@@ -1214,6 +1214,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
 
   return (
     <BlockStack gap="200">
+      <div style={{height: 2000}} />
       <LegacyCard>
         <IndexTable
           condensed={useBreakpoints().smDown}

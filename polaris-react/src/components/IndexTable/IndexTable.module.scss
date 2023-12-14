@@ -1482,12 +1482,14 @@ $scroll-bar-size: var(--p-space-200);
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
+
+  &.ScrollBarContainerWithSelectAllActions {
+    // stylelint-disable-next-line -- Polaris component custom properties
+    bottom: var(--pc-index-table-scroll-bar-height-offset);
+  }
 }
 
 .ScrollBarContainerWithSelectAllActions {
-  // stylelint-disable-next-line -- Polaris component custom properties
-  bottom: var(--pc-index-table-scroll-bar-height-offset);
-
   &.ScrollBarContainerScrolledPastTop {
     position: absolute;
     /* stylelint-disable-next-line -- set from the use-is-select-all-actions-sticky hook */
@@ -1500,6 +1502,11 @@ $scroll-bar-size: var(--p-space-200);
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
+}
+
+.ScrollBarContainerSelectAllActionsSticky {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  bottom: var(--pc-index-table-scroll-bar-height-offset);
 }
 
 .scrollBarContainerCondensed {
