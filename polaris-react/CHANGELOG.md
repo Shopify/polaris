@@ -1,5 +1,20 @@
 # Changelog
 
+## 12.5.0
+
+### Minor Changes
+
+- [#11275](https://github.com/Shopify/polaris/pull/11275) [`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82) Thanks [@yurm04](https://github.com/yurm04)! - Updated semantic tokens `fill-info-secondary`, `text-info`, `fill-success-secondary`, `fill-caution-secondary`, `fill-critical-secondary`.
+
+* [#10958](https://github.com/Shopify/polaris/pull/10958) [`5c183e0e1`](https://github.com/Shopify/polaris/commit/5c183e0e155ef47a43f7e3290a0f043965c0ecad) Thanks [@mrcthms](https://github.com/mrcthms)! - Added a live region to the `Page` `Header` to announce the `title` after navigation changes
+
+### Patch Changes
+
+- [#11338](https://github.com/Shopify/polaris/pull/11338) [`4ddba49c4`](https://github.com/Shopify/polaris/commit/4ddba49c41b218a002b7de0ec53bcde35974cdec) Thanks [@alex-page](https://github.com/alex-page)! - `<Toast>` Fix icon color to properly inherit the parent color
+
+- Updated dependencies [[`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82)]:
+  - @shopify/polaris-tokens@8.4.0
+
 ## 12.4.0
 
 ### Minor Changes
