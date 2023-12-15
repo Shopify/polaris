@@ -205,7 +205,10 @@ export type {IndicatorProps} from './components/Indicator';
 export {InlineStack} from './components/InlineStack';
 export type {InlineStackProps} from './components/InlineStack';
 
-export {HoverCard} from './components/HoverCard';
+export {
+  HoverCard,
+  useHoverCardActivatorWrapperProps,
+} from './components/HoverCard';
 export type {HoverCardProps} from './components/HoverCard';
 
 export {InlineCode} from './components/InlineCode';
@@ -437,4 +440,3 @@ export {
 } from './utilities/index-provider';
 export {useBreakpoints} from './utilities/breakpoints';
 export {useReadOnlyEphemeralPresenceManager as useEphemeralPresenceManager} from './utilities/ephemeral-presence-manager';
-export {useHoverCardActivatorWrapperProps} from './utilities/hover-card';
