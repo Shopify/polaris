@@ -1,5 +1,20 @@
 # Changelog
 
+## 12.6.0
+
+### Minor Changes
+
+- [#11317](https://github.com/Shopify/polaris/pull/11317) [`e197ca5f6`](https://github.com/Shopify/polaris/commit/e197ca5f6d518f5f099ca55161951f4ae4591232) Thanks [@yurm04](https://github.com/yurm04)! - [LegacyFilters] Fixed button spacing on `ConnectedFilterControl`
+
+### Patch Changes
+
+- [#11340](https://github.com/Shopify/polaris/pull/11340) [`3213735a0`](https://github.com/Shopify/polaris/commit/3213735a06d67e93e9933fe44011e52297a5cee4) Thanks [@jesstelford](https://github.com/jesstelford)! - Internal refactor: CSS Module files are renamed from _.scss to _.module.scss
+
+* [#11269](https://github.com/Shopify/polaris/pull/11269) [`bc4272a2e`](https://github.com/Shopify/polaris/commit/bc4272a2e3b6d54065d8cad1364ad8612ced0a5d) Thanks [@m4thieulavoie](https://github.com/m4thieulavoie)! - Added an optional `hidden` property to the `Filters` `FilterInterface` type to support `filters` that are only set programmatically
+
+* Updated dependencies [[`0a2f1659d`](https://github.com/Shopify/polaris/commit/0a2f1659d1141dba5cb93f6d64aeceab89155cfb)]:
+  - @shopify/polaris-icons@7.13.0
+
 ## 12.5.0
 
 ### Minor Changes
