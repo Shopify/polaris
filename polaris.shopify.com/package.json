@@ -9,7 +9,7 @@
     "build": "yarn gen-colors && yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
     "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
     "dev": "yarn gen-colors && yarn get-props && run-p dev:*",
-    "dev:server": "open http://localhost:3000 && next dev",
+    "dev:server": "open http://localhost:${POLARIS_WEBSITE_PORT:=3000} && next dev",
     "dev:playroom": "rm -rf ./public/playroom && playroom start",
     "dev:watch-md": "node scripts/watch-md.mjs",
     "lint": "run-p lint:*",
