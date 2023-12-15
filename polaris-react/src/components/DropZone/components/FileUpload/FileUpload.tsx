@@ -75,7 +75,7 @@ export function FileUpload(props: FileUploadProps) {
         <div
           className={classNames(styles.UploadIcon, disabled && styles.disabled)}
         >
-          <Icon source={UploadMajor} />
+          <Icon tone="inherit" source={UploadMajor} />
         </div>
       );
 

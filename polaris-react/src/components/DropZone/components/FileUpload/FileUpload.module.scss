@@ -76,9 +76,9 @@
 }
 
 .UploadIcon {
-  fill: var(--p-color-icon);
+  color: var(--p-color-icon);
 
   &.disabled {
-    fill: var(--p-color-icon-disabled);
+    color: var(--p-color-icon-disabled);
   }
 }
