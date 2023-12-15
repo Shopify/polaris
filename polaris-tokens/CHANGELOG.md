@@ -1,5 +1,18 @@
 # Changelog
 
+## 8.4.0
+
+### Minor Changes
+
+- [#11275](https://github.com/Shopify/polaris/pull/11275) [`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82) Thanks [@yurm04](https://github.com/yurm04)! - Updated semantic tokens `fill-info-secondary`, `text-info`, `fill-success-secondary`, `fill-caution-secondary`, `fill-critical-secondary`.
+
+## 8.3.0
+
+### Minor Changes
+
+- [#11303](https://github.com/Shopify/polaris/pull/11303) [`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - - Remapped the `bg-fill-magic-secondary` token colors
+  - Added a Magic `tone` to `Badge`
+
 ## 8.2.0
 
 ### Minor Changes

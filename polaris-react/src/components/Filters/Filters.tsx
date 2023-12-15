@@ -8,7 +8,7 @@ import {InlineStack} from '../InlineStack';
 import {Box} from '../Box';
 
 import {FiltersBar, SearchField} from './components';
-import styles from './Filters.scss';
+import styles from './Filters.module.scss';
 
 const TRANSITION_DURATION = 'var(--p-motion-duration-150)';
 const TRANSITION_MARGIN = '-36px';

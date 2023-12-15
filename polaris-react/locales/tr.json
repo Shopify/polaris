@@ -348,7 +348,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "{title} ile ilgili işlemleri görüntüle"
+        "rollupActionsLabel": "{title} ile ilgili işlemleri görüntüle",
+        "pageReadyAccessibilityLabel": "{title}. Bu sayfa hazır"
       }
     },
     "FullscreenBar": {

@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': minor
 ---
 
-Added `SkeletonMajor`
+Add PageClock and PageClockFilled icons

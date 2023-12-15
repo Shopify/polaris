@@ -1,5 +1,37 @@
 # Changelog
 
+## 12.5.0
+
+### Minor Changes
+
+- [#11275](https://github.com/Shopify/polaris/pull/11275) [`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82) Thanks [@yurm04](https://github.com/yurm04)! - Updated semantic tokens `fill-info-secondary`, `text-info`, `fill-success-secondary`, `fill-caution-secondary`, `fill-critical-secondary`.
+
+* [#10958](https://github.com/Shopify/polaris/pull/10958) [`5c183e0e1`](https://github.com/Shopify/polaris/commit/5c183e0e155ef47a43f7e3290a0f043965c0ecad) Thanks [@mrcthms](https://github.com/mrcthms)! - Added a live region to the `Page` `Header` to announce the `title` after navigation changes
+
+### Patch Changes
+
+- [#11338](https://github.com/Shopify/polaris/pull/11338) [`4ddba49c4`](https://github.com/Shopify/polaris/commit/4ddba49c41b218a002b7de0ec53bcde35974cdec) Thanks [@alex-page](https://github.com/alex-page)! - `<Toast>` Fix icon color to properly inherit the parent color
+
+- Updated dependencies [[`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82)]:
+  - @shopify/polaris-tokens@8.4.0
+
+## 12.4.0
+
+### Minor Changes
+
+- [#11303](https://github.com/Shopify/polaris/pull/11303) [`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - - Remapped the `bg-fill-magic-secondary` token colors
+  - Added a Magic `tone` to `Badge`
+
+### Patch Changes
+
+- [#11299](https://github.com/Shopify/polaris/pull/11299) [`e530a44f9`](https://github.com/Shopify/polaris/commit/e530a44f93e7c865b7d32272ba2347584d60522c) Thanks [@fortmarek](https://github.com/fortmarek)! - Added padding for FooterHelp on small viewports
+
+* [#11329](https://github.com/Shopify/polaris/pull/11329) [`a45dafb35`](https://github.com/Shopify/polaris/commit/a45dafb35cfac975d17bcc55f9c1dee5cf97eecb) Thanks [@lbenie](https://github.com/lbenie)! - `TopBar` Fixed .NavigationIcon styles to ensure Icon color is properly inherited.
+
+* Updated dependencies [[`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756), [`235bc7d0c`](https://github.com/Shopify/polaris/commit/235bc7d0c327c450f94650ffe6f64d68eee2a28e)]:
+  - @shopify/polaris-tokens@8.3.0
+  - @shopify/polaris-icons@7.12.0
+
 ## 12.3.0
 
 ### Minor Changes

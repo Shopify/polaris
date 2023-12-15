@@ -5,7 +5,7 @@ import {Icon} from '../Icon';
 import type {IconProps} from '../Icon';
 import {Truncate} from '../Truncate';
 
-import styles from './ExceptionList.scss';
+import styles from './ExceptionList.module.scss';
 
 type Description =
   | string

@@ -16,7 +16,7 @@ import {Icon} from '../Icon';
 import type {Error, CheckboxHandles} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
 
-import styles from './Checkbox.scss';
+import styles from './Checkbox.module.scss';
 
 export interface CheckboxProps extends ChoiceBleedProps {
   /** Indicates the ID of the element that is controlled by the checkbox */

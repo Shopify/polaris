@@ -20,7 +20,7 @@ import {InlineStack} from '../../../InlineStack';
 import {Box} from '../../../Box';
 import {Button} from '../../../Button';
 import {FilterPill} from '../FilterPill';
-import styles from '../../Filters.scss';
+import styles from '../../Filters.module.scss';
 
 export interface FiltersBarProps {
   /** Currently entered text in the query field */
@@ -127,7 +127,7 @@ export function FiltersBar({
   );
 
   const unsectionedFilters = unpinnedFilters
-    .filter((filter) => !filter.section)
+    .filter((filter) => !filter.section && !filter.hidden)
     .map(filterToActionItem);
 
   const sectionedFilters = unpinnedFilters

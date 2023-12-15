@@ -6,7 +6,7 @@ import {Icon} from '../../../Icon';
 import {TextField} from '../../../TextField';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 
-import styles from './SearchField.scss';
+import styles from './SearchField.module.scss';
 
 export interface SearchFieldProps {
   onChange: (value: string) => void;

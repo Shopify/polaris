@@ -16,7 +16,7 @@ import {Box} from '../Box';
 import {InlineStack} from '../InlineStack';
 import {BlockStack} from '../BlockStack';
 
-import styles from './MediaCard.scss';
+import styles from './MediaCard.module.scss';
 
 type Size = 'small' | 'medium';
 

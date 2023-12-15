@@ -37,7 +37,7 @@ import {Badge} from '../../../Badge';
 import {InlineStack} from '../../../InlineStack';
 import {Text} from '../../../Text';
 import type {TabPropsWithAddedMethods, TabAction} from '../../types';
-import styles from '../../Tabs.scss';
+import styles from '../../Tabs.module.scss';
 
 import {RenameModal, DuplicateModal} from './components';
 

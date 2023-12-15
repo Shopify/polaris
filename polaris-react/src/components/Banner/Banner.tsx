@@ -28,7 +28,7 @@ import {useI18n} from '../../utilities/i18n';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {BlockStack} from '../BlockStack';
 
-import styles from './Banner.scss';
+import styles from './Banner.module.scss';
 import type {BannerHandles} from './utilities';
 import {bannerAttributes, useBannerFocus} from './utilities';
 

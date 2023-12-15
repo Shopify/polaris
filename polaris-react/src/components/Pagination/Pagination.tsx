@@ -13,7 +13,7 @@ import {Box} from '../Box';
 import {InlineStack} from '../InlineStack';
 import {classNames} from '../../utilities/css';
 
-import styles from './Pagination.scss';
+import styles from './Pagination.module.scss';
 
 interface AccessibilityLabels {
   previous: string;
