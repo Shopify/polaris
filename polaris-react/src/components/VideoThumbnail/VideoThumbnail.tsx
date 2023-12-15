@@ -81,7 +81,7 @@ export function VideoThumbnail({
     <div className={styles.Timestamp}>
       <LegacyStack alignment="center" spacing="extraTight">
         <span className={styles.PlayIcon}>
-          <Icon source={PlayMinor} />
+          <Icon tone="inherit" source={PlayMinor} />
         </span>
         <Text
           variant={isNavigationCollapsed ? 'bodyLg' : 'bodyMd'}
