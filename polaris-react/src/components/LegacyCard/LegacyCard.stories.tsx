@@ -286,8 +286,8 @@ export function WithCustomReactNodeTitle() {
     <LegacyCard title="Products">
       <LegacyCard.Section
         title={
-          <LegacyStack>
-            <Icon source={ProductsMajor} />
+          <LegacyStack spacing="extraTight">
+            <Icon tone="inherit" source={ProductsMajor} />
             <Text variant="headingSm" as="h3">
               New Products
             </Text>
