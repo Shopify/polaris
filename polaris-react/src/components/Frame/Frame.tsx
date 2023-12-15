@@ -86,6 +86,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
 
   private contextualSaveBar: ContextualSaveBarProps | null = null;
   private globalRibbonContainer: HTMLDivElement | null = null;
+  private loadingPromiseResolve: ((value?: any) => void) | null = null;
+  private loadingPromises: {resolve: (value?: unknown) => void}[] = [];
   private navigationNode = createRef<HTMLDivElement>();
 
   componentDidMount() {
@@ -361,15 +363,46 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   };
 
   private startLoading = () => {
+    console.log('startLoading');
+
+    if (this.state.loadingStack === 0) {
+      this.showBrowserLoading(
+        new Promise((resolve) => {
+          this.loadingPromiseResolve = () => {
+            console.log('loadingPromiseResolve');
+            return resolve;
+          };
+        }),
+      );
+    }
+
     this.setState(({loadingStack}: State) => ({
       loadingStack: loadingStack + 1,
     }));
   };
 
   private stopLoading = () => {
+    if (this.state.loadingStack === 0 && this.loadingPromiseResolve) {
+      console.log('stopLoading');
+      this.loadingPromiseResolve();
+      this.loadingPromiseResolve = null;
+    }
+
     this.setState(({loadingStack}: State) => ({
       loadingStack: Math.max(0, loadingStack - 1),
     }));
+  };
+
+  private showBrowserLoading = (promise: Promise<any>) => {
+    console.log('showBrowserLoading');
+    window.navigation.addEventListener(
+      'navigate',
+      (event: NavigateEvent) => {
+        event.intercept({scroll: 'manual', handler: () => promise});
+      },
+      {once: true},
+    );
+    return window.navigation.navigate(location.href).finished;
   };
 
   private handleResize = () => {
