@@ -666,6 +666,8 @@ export const iconRenames = {
   PackageFilledMinor: 'PackageFilledIcon',
   PageMajor: 'PageIcon',
   PageMinor: 'PageIcon',
+  PageClockMajor: 'PageClockIcon',
+  PageClockFilledMajor: 'PageClockFilledIcon',
   PageDownMajor: 'PageDownIcon',
   PageDownMinor: 'PageDownIcon',
   PageMinusMajor: 'PageRemoveIcon',

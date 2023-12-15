@@ -1143,6 +1143,8 @@ export function App() {
       <Icon source={PackageFilledIcon} />
       <Icon source={PageIcon} />
       <Icon source={PageIcon} />
+      <Icon source={PageClockIcon} />
+      <Icon source={PageClockFilledIcon} />
       <Icon source={PageDownIcon} />
       <Icon source={PageDownIcon} />
       <Icon source={PageRemoveIcon} />

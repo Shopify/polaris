@@ -690,6 +690,8 @@ Renamed many icons and replaced `Major` and `Minor` suffixes with `Icon`. See ta
 | `PackageFilledMinor`                | `PackageFilledIcon`             |
 | `PageMajor`                         | `PageIcon`                      |
 | `PageMinor`                         | `PageIcon`                      |
+| `PageClockMajor`                    | `PageClockIcon`                 |
+| `PageClockFilledMinor`              | `PageClockFilledIcon`           |
 | `PageDownMajor`                     | `PageDownIcon`                  |
 | `PageDownMinor`                     | `PageDownIcon`                  |
 | `PageMinusMajor`                    | `PageRemoveIcon`                |

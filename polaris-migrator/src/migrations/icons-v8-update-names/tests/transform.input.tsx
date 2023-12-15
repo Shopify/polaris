@@ -665,6 +665,8 @@ import {
   PageDownMinor,
   PageMajor,
   PageMinor,
+  PageClockMajor,
+  PageClockFilledMajor,
   PageMinusMajor,
   PageMinusMinor,
   PagePlusMajor,
@@ -1681,6 +1683,8 @@ export function App() {
       <Icon source={PackageFilledMinor} />
       <Icon source={PageMajor} />
       <Icon source={PageMinor} />
+      <Icon source={PageClockMajor} />
+      <Icon source={PageClockFilledMajor} />
       <Icon source={PageDownMajor} />
       <Icon source={PageDownMinor} />
       <Icon source={PageMinusMajor} />
