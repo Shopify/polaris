@@ -18,14 +18,7 @@ type Tone =
   | 'success'
   | 'primary'
   | 'emphasis'
-  | 'magic'
-  | 'textCaution'
-  | 'textWarning'
-  | 'textCritical'
-  | 'textInfo'
-  | 'textSuccess'
-  | 'textPrimary'
-  | 'textMagic';
+  | 'magic';
 
 export interface IconProps {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
