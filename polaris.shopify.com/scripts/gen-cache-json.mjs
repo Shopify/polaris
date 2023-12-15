@@ -1,3 +1,4 @@
+import * as url from 'node:url';
 import path from 'path';
 import globby from 'globby';
 import {existsSync} from 'fs';
@@ -103,7 +104,7 @@ const getMdContent = async (filePath) => {
   return {frontMatter: data, slug};
 };
 
-const genCacheJson = async () => {
+export default async function genCacheJson() {
   const spinner = ora('Generating .cache/nav.ts and .cache/site.ts').start();
 
   if (!existsSync(cacheDir)) {
@@ -125,6 +126,21 @@ const genCacheJson = async () => {
   await genNavJson(markdownFiles);
 
   spinner.succeed('Generated .cache/nav.ts and .cache/site.ts');
-};
+}
 
-await genCacheJson();
+if (isMain(import.meta)) {
+  await genCacheJson();
+}
+
+// https://exploringjs.com/nodejs-shell-scripting/ch_nodejs-path.html#determining-if-an-esm-module-is-main
+function isMain(importMeta) {
+  if (import.meta.url.startsWith('file:')) {
+    const modulePath = url.fileURLToPath(import.meta.url);
+
+    if (process.argv[1] === modulePath) {
+      return true;
+    }
+  }
+
+  return false;
+}
