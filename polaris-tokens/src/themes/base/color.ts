@@ -519,7 +519,7 @@ export const color: {
       'The active state (on press) color for communicating important information on elements with a smaller surface area.',
   },
   'color-bg-fill-info-secondary': {
-    value: colors.azure[4],
+    value: colors.azure[5],
     description:
       'Use for backgrounds communicating important information on elements with a smaller surface area, with a secondary level of prominence.',
   },
@@ -538,7 +538,7 @@ export const color: {
       'The active state (on press) color for communicating success on elements with a smaller surface area.',
   },
   'color-bg-fill-success-secondary': {
-    value: colors.green[3],
+    value: colors.green[4],
     description:
       'Use for backgrounds communicating success on elements with a smaller surface area, with a secondary level of prominence.',
   },
@@ -578,7 +578,7 @@ export const color: {
       'The active state (on press) color for communicating caution on elements with a smaller surface area.',
   },
   'color-bg-fill-caution-secondary': {
-    value: colors.yellow[4],
+    value: colors.yellow[5],
     description:
       'Use for backgrounds communicating caution on elements with a smaller surface area, with a secondary level of prominence.',
   },
@@ -603,7 +603,7 @@ export const color: {
       'The selected state color for communicating critical information on elements with a smaller surface area.',
   },
   'color-bg-fill-critical-secondary': {
-    value: colors.red[6],
+    value: colors.red[7],
     description:
       'Use for backgrounds communicating critical information on elements with a smaller surface area, with a secondary level of prominence.',
   },
@@ -741,7 +741,7 @@ export const color: {
     description: 'The disabled state color for text on bg-fill-brand-disabled.',
   },
   'color-text-info': {
-    value: colors.azure[14],
+    value: colors.azure[15],
     description: 'Use for text communicating important information.',
   },
   'color-text-info-hover': {

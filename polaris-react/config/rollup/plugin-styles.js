@@ -52,14 +52,14 @@ module.exports.styles = function styles({
   function transformEsNext(rollup, id, postCssOutput) {
     const relativePath = `./${path.relative(
       path.dirname(id),
-      id.replace(/\.scss$/, processedExt),
+      id.replace(/(\.module)?\.scss$/, processedExt),
     )}`;
 
     rollup.emitFile({
       type: 'asset',
       fileName: id
         .replace(`${inputRoot}/`, '')
-        .replace(/\.scss$/, processedExt),
+        .replace(/(\.module)?\.scss$/, processedExt),
       source: postCssOutput.css,
     });
 

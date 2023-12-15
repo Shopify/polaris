@@ -8,7 +8,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './BlockStack.scss';
+import styles from './BlockStack.module.scss';
 
 type Align =
   | 'start'

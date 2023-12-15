@@ -4,7 +4,7 @@ import type {DisableableAction} from '../../../../types';
 import {buttonsFrom} from '../../../Button';
 import {ButtonGroup} from '../../../ButtonGroup';
 import {Text} from '../../../Text';
-import styles from '../../LegacyCard.scss';
+import styles from '../../LegacyCard.module.scss';
 import {InlineStack} from '../../../InlineStack';
 
 export interface LegacyCardHeaderProps {

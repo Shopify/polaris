@@ -5,7 +5,7 @@ import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {SecondaryAction} from '../SecondaryAction';
 
-import styles from './MenuGroup.scss';
+import styles from './MenuGroup.module.scss';
 
 export interface MenuGroupProps extends MenuGroupDescriptor {
   /** Visually hidden menu description for screen readers */

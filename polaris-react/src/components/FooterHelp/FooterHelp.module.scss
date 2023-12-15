@@ -3,13 +3,8 @@
 .FooterHelp {
   display: flex;
   justify-content: center;
-  margin: var(--p-space-500) 0;
-  width: 100%;
-
-  @media #{$p-breakpoints-sm-up} {
-    margin: var(--p-space-500);
-    width: auto;
-  }
+  margin: var(--p-space-500);
+  width: auto;
 }
 
 .Text {

@@ -69,13 +69,20 @@ export default ${JSON.stringify(nav)} satisfies NavJSON;`,
 };
 
 const genSiteJson = async (data) => {
-  const json = {};
-  data.forEach(
-    (md) =>
-      (json[normalizeUrl(md.frontMatter.url ?? md.slug)] = {
-        frontMatter: md.frontMatter,
-      }),
-  );
+  // We are not filtering on no-index because there may be unlisted pages
+  // that still need og images generated.
+  const json = data
+    .filter(
+      (md) =>
+        !md.slug.endsWith('variants/default') &&
+        !isAbsolute.test(md.frontMatter.url ?? ''),
+    )
+    .reduce((acc, curr) => {
+      acc[normalizeUrl(curr.frontMatter.url ?? curr.slug)] = {
+        frontMatter: curr.frontMatter,
+      };
+      return acc;
+    }, {});
 
   await writeFile(
     siteJsonFile,
@@ -120,4 +127,4 @@ const genCacheJson = async () => {
   spinner.succeed('Generated .cache/nav.ts and .cache/site.ts');
 };
 
-export default genCacheJson;
+await genCacheJson();

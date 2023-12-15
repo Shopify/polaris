@@ -11,7 +11,7 @@ import {Tab, Panel, CreateViewModal, TabMeasurer} from '../components';
 import {Badge} from '../../Badge';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
 import {UnstyledButton} from '../../UnstyledButton';
-import styles from '../Tabs.scss';
+import styles from '../Tabs.module.scss';
 
 jest.mock('../../Portal', () => ({
   ...(jest.requireActual('../../Portal') as any),

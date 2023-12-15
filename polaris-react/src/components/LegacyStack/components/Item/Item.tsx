@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import styles from '../../LegacyStack.scss';
+import styles from '../../LegacyStack.module.scss';
 
 export interface LegacyItemProps {
   /** Elements to display inside item */

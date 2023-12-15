@@ -1,5 +1,34 @@
 # polaris.shopify.com
 
+## 0.61.4
+
+### Patch Changes
+
+- [#11269](https://github.com/Shopify/polaris/pull/11269) [`bc4272a2e`](https://github.com/Shopify/polaris/commit/bc4272a2e3b6d54065d8cad1364ad8612ced0a5d) Thanks [@m4thieulavoie](https://github.com/m4thieulavoie)! - Added an optional `hidden` property to the `Filters` `FilterInterface` type to support `filters` that are only set programmatically
+
+- Updated dependencies [[`3213735a0`](https://github.com/Shopify/polaris/commit/3213735a06d67e93e9933fe44011e52297a5cee4), [`0a2f1659d`](https://github.com/Shopify/polaris/commit/0a2f1659d1141dba5cb93f6d64aeceab89155cfb), [`e197ca5f6`](https://github.com/Shopify/polaris/commit/e197ca5f6d518f5f099ca55161951f4ae4591232), [`bc4272a2e`](https://github.com/Shopify/polaris/commit/bc4272a2e3b6d54065d8cad1364ad8612ced0a5d)]:
+  - @shopify/polaris@12.6.0
+  - @shopify/polaris-icons@7.13.0
+
+## 0.61.3
+
+### Patch Changes
+
+- [#11334](https://github.com/Shopify/polaris/pull/11334) [`ebff4315b`](https://github.com/Shopify/polaris/commit/ebff4315b1f456802463454eeafdbd2a180c724f) Thanks [@sarahill](https://github.com/sarahill)! - Added color token documentation
+
+- Updated dependencies [[`4ddba49c4`](https://github.com/Shopify/polaris/commit/4ddba49c41b218a002b7de0ec53bcde35974cdec), [`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82), [`5c183e0e1`](https://github.com/Shopify/polaris/commit/5c183e0e155ef47a43f7e3290a0f043965c0ecad)]:
+  - @shopify/polaris@12.5.0
+  - @shopify/polaris-tokens@8.4.0
+
+## 0.61.2
+
+### Patch Changes
+
+- Updated dependencies [[`e530a44f9`](https://github.com/Shopify/polaris/commit/e530a44f93e7c865b7d32272ba2347584d60522c), [`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756), [`235bc7d0c`](https://github.com/Shopify/polaris/commit/235bc7d0c327c450f94650ffe6f64d68eee2a28e), [`a45dafb35`](https://github.com/Shopify/polaris/commit/a45dafb35cfac975d17bcc55f9c1dee5cf97eecb)]:
+  - @shopify/polaris@12.4.0
+  - @shopify/polaris-tokens@8.3.0
+  - @shopify/polaris-icons@7.12.0
+
 ## 0.61.1
 
 ### Patch Changes

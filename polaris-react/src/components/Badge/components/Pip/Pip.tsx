@@ -6,7 +6,7 @@ import {Text} from '../../../Text';
 import {useI18n} from '../../../../utilities/i18n';
 import {getDefaultAccessibilityLabel} from '../../utils';
 
-import styles from './Pip.scss';
+import styles from './Pip.module.scss';
 
 export interface PipProps {
   tone?: Tone;

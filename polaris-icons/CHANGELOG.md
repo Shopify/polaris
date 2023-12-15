@@ -1,5 +1,17 @@
 # Changelog
 
+## 7.13.0
+
+### Minor Changes
+
+- [#11349](https://github.com/Shopify/polaris/pull/11349) [`0a2f1659d`](https://github.com/Shopify/polaris/commit/0a2f1659d1141dba5cb93f6d64aeceab89155cfb) Thanks [@alex-page](https://github.com/alex-page)! - Add PageClock and PageClockFilled icons
+
+## 7.12.0
+
+### Minor Changes
+
+- [#11316](https://github.com/Shopify/polaris/pull/11316) [`235bc7d0c`](https://github.com/Shopify/polaris/commit/235bc7d0c327c450f94650ffe6f64d68eee2a28e) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `SkeletonMajor`
+
 ## 7.11.0
 
 ### Minor Changes

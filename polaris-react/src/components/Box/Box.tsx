@@ -16,7 +16,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './Box.scss';
+import styles from './Box.module.scss';
 
 export type Element = 'div' | 'span' | 'section' | 'legend' | 'ul' | 'li';
 

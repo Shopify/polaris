@@ -1,24 +1,17 @@
+// This file is built using vite, so we can use `import.meta.env` to access environment variables.
+// This file is also built by the vite config in './main.js
+
 import React, {useRef, useEffect} from 'react';
 
 import {AppProvider, FrameContext} from '../src';
 import enTranslations from '../locales/en.json';
 import {GridOverlay} from './GridOverlay';
 import {RenderPerformanceProfiler} from './RenderPerformanceProfiler';
-import {gridOptions, featureFlagOptions} from './manager';
-import isChromatic from 'chromatic/isChromatic';
 import {themeNameDefault, themeNames, themes} from '@shopify/polaris-tokens';
-
-// Use the document.fonts API to check if fonts have loaded
-// https://developer.mozilla.org/en-US/docs/Web/API/Document/fonts API to
-const fontLoader = async () => ({
-  fonts: await document.fonts.ready,
-});
-
-/* 👇 It's configured as a global loader
- * See https://storybook.js.org/docs/react/writing-stories/loaders
- * to learn more about loaders
- */
-export const loaders = isChromatic() && document.fonts ? [fontLoader] : [];
+import {
+  gridOptions,
+  featureFlagOptions,
+} from './addons/global-controls-panel/manager';
 
 function StrictModeDecorator(Story, context) {
   const {strictMode} = context.globals;
@@ -34,8 +27,20 @@ function StrictModeDecorator(Story, context) {
 function AppProviderDecorator(Story, context) {
   if (context.args.omitAppProvider) return <Story {...context} />;
 
+  const features = Object.keys(featureFlagOptions).reduce(
+    (acc, featureFlag) => ({
+      ...acc,
+      [featureFlag]: context.globals[featureFlag],
+    }),
+    {},
+  );
+
   return (
-    <AppProvider theme={context.globals.theme} i18n={enTranslations}>
+    <AppProvider
+      theme={context.globals.theme}
+      features={features}
+      i18n={enTranslations}
+    >
       <FrameContext.Provider value={{}}>
         <Story {...context} />
       </FrameContext.Provider>

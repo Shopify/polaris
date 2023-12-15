@@ -15,7 +15,7 @@ import type {
   ComboboxListboxOptionType,
 } from '../../utilities/combobox';
 
-import styles from './Combobox.scss';
+import styles from './Combobox.module.scss';
 import {TextField} from './components';
 
 export interface ComboboxProps {
