@@ -291,6 +291,11 @@
   --pc-button-padding-inline: var(--p-space-050);
 }
 
+.iconOnly:is(.variantTertiary) {
+  margin-block: calc(-1 * var(--pc-button-padding-block));
+  margin-inline: calc(-1 * var(--pc-button-padding-inline));
+}
+
 .iconOnly:is(.variantTertiary, .variantPlain, .variantMonochromePlain):not(.toneCritical) {
   --pc-button-icon-fill: var(--p-color-icon-secondary);
   --pc-button-icon-fill_hover: var(--p-color-icon-secondary-hover);
