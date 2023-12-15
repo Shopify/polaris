@@ -87,7 +87,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
       <div className={styles.IconWrapper}>
-        <Icon source={MobileHamburgerMajor} />
+        <Icon tone="inherit" source={MobileHamburgerMajor} />
       </div>
     </button>
   ) : null;
