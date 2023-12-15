@@ -36,7 +36,7 @@ export function IconInLink({
   tone?: IconProps['tone'];
 }) {
   return (
-    <Link url="#">
+    <Link url="#" accessibilityLabel="This is an example of an icon only link">
       <InlineStack align={inlineAlign} gap="200">
         <Box>
           <Icon source={icons.ViewMinor} />
@@ -56,7 +56,13 @@ export function IconInButton({
   inlineAlign?: InlineStackProps['align'];
   tone?: IconProps['tone'];
 }) {
-  return <Button variant="plain" icon={<Icon source={icons.ViewMinor} />} />;
+  return (
+    <Button
+      accessibilityLabel="This is an example of an icon only link"
+      variant="plain"
+      icon={<Icon source={icons.ViewMinor} />}
+    />
+  );
 }
 
 export function Colored() {
