@@ -18,10 +18,6 @@ $button-size: 20px;
     transition: none;
     background: var(--p-color-bg-fill-disabled);
     color: var(--p-color-text-disabled);
-
-    svg {
-      fill: var(--p-color-icon-disabled);
-    }
   }
 
   &.clickable {
@@ -114,13 +110,9 @@ $button-size: 20px;
   border-radius: 7px;
   color: var(--p-color-icon-secondary);
 
-  svg {
-    fill: currentColor;
-  }
-
   &:hover {
     background: var(--p-color-bg-fill-tertiary-hover);
-    color: var(--p-color-icon-hover);
+    color: var(--p-color-icon-secondary-hover);
     outline: var(--p-border-width-025) solid transparent;
   }
 
@@ -129,7 +121,7 @@ $button-size: 20px;
 
   &:focus-visible {
     background: var(--p-color-bg-fill-tertiary-hover);
-    color: var(--p-color-icon-hover);
+    color: var(--p-color-icon-secondary-hover);
   }
 
   &:focus-visible:not(:active) {
@@ -139,15 +131,13 @@ $button-size: 20px;
 
   &:active {
     background: var(--p-color-bg-fill-tertiary-active);
+    color: var(--p-color-icon-secondary-active);
   }
 
   &:disabled {
     cursor: default;
     pointer-events: none;
-
-    svg {
-      fill: var(--p-color-icon-disabled);
-    }
+    color: var(--p-color-icon-disabled);
   }
 }
 

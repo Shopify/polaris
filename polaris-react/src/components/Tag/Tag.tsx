@@ -81,7 +81,7 @@ export function Tag({
       onMouseUp={handleMouseUpByBlurring}
       disabled={disabled}
     >
-      <Icon source={CancelSmallMinor} />
+      <Icon tone="inherit" source={CancelSmallMinor} />
     </button>
   ) : null;
 
