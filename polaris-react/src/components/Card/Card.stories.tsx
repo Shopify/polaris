@@ -608,8 +608,8 @@ export function WithCustomReactNodeTitle() {
           Products
         </Text>
         <BlockStack inlineAlign="start">
-          <InlineStack gap="400">
-            <Icon source={ProductsMinor} />
+          <InlineStack gap="100">
+            <Icon tone="inherit" source={ProductsMinor} />
             <Text as="h3" variant="headingSm">
               New Products
             </Text>
