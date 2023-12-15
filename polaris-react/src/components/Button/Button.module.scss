@@ -177,7 +177,9 @@
   --pc-button-bg_disabled: transparent;
   margin-block: calc(-1 * var(--pc-button-padding-block));
   margin-inline: calc(-1 * var(--pc-button-padding-inline));
+  font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-400);
 }
 
 // TONES
