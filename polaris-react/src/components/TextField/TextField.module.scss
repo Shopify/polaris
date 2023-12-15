@@ -328,7 +328,12 @@ $spinner-icon-size: 12px;
 
 .Prefix {
   margin-left: var(--p-space-300);
-  margin-right: var(--p-space-200);
+  margin-right: var(--p-space-150);
+}
+
+.PrefixIcon {
+  margin-left: var(--p-space-200);
+  margin-right: var(--p-space-100);
 }
 
 .Suffix {
