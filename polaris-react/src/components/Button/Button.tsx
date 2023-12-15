@@ -145,6 +145,7 @@ export function Button({
         className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
       >
         <Icon
+          tone="inherit"
           source={
             loading
               ? 'placeholder'
@@ -160,7 +161,7 @@ export function Button({
   ) : null;
 
   const iconSource = isIconSource(icon) ? (
-    <Icon source={loading ? 'placeholder' : icon} />
+    <Icon tone="inherit" source={loading ? 'placeholder' : icon} />
   ) : (
     icon
   );
