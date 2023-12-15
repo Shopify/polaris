@@ -38,7 +38,7 @@ export function Thumbnail({
     typeof source === 'string' ? (
       <Image alt={alt} source={source} />
     ) : (
-      <Icon accessibilityLabel={alt} source={source} />
+      <Icon tone="inherit" accessibilityLabel={alt} source={source} />
     );
 
   return <span className={className}>{content}</span>;
