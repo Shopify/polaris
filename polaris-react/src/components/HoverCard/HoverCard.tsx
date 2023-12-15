@@ -1,12 +1,10 @@
-import React, {useRef, useId, useEffect, useState} from 'react';
+import React, {useRef, useId} from 'react';
 
 import type {PositionedOverlayProps} from '../PositionedOverlay';
 import {Portal} from '../Portal';
-import {classNames} from '../../utilities/css';
-import {useHoverCardActivatorWrapperProps} from '../../utilities/hover-card';
 
-import {HoverCardOverlay} from './components/HoverCardOverlay';
-import styles from './HoverCard.scss';
+import {useHoverCardActivatorWrapperProps} from './hooks';
+import {HoverCardOverlay} from './components';
 
 /*
 
@@ -58,12 +56,12 @@ interface BaseHoverCardProps {
   snapToParent?: boolean;
   /** Delay in milliseconds while hovering over an element before the overlay is visible */
   hoverDelay?: number;
+  /** Content to render inside of the overlay. */
+  content: React.ReactNode;
   /** Override on the default z-index of 400 */
   zIndexOverride?: number;
   /** Callback fired when mouse enters or leaves activator */
   toggleActive?(active: boolean): void;
-  /** Callback fired when mouse enters the activator or moves from one activator to another */
-  renderContent(): React.ReactNode | null;
 }
 
 /**
@@ -105,40 +103,37 @@ export type HoverCardProps = BaseHoverCardProps &
  */
 export function HoverCard({
   children,
-  activator,
+  activator: dynamicActivator,
   active = false,
   activatorWrapper = 'span',
   snapToParent = false,
   hoverDelay,
+  content,
   zIndexOverride,
   id: providedId,
   preferredPosition,
   preferredAlignment,
   toggleActive,
-  renderContent,
 }: HoverCardProps) {
-  const activatorRef = useRef<HTMLElement>(null);
-
   const defaultId = useId();
 
-  const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
+  const ref = useRef<HTMLElement | null>(null);
 
-  const {isDesktop, handleMouseLeave, handleMouseOver} =
-    useHoverCardActivatorWrapperProps({
-      toggleActive,
-      hoverDelay,
-    });
+  const {
+    className,
+    isDesktop,
+    activatorElement: childActivator,
+    handleMouseLeave,
+    handleMouseOver,
+  } = useHoverCardActivatorWrapperProps({
+    toggleActive,
+    hoverDelay,
+    ref,
+  });
 
   const WrapperComponent: any = activatorWrapper;
   const id = providedId ?? defaultId;
-
-  useEffect(() => {
-    if (!activatorNode && activatorRef.current) {
-      setActivatorNode(activatorRef.current);
-    }
-  }, [activator, activatorNode]);
-
-  const activatorElement = activator ?? activatorNode;
+  const activatorElement = children ? childActivator : dynamicActivator;
 
   const portal =
     activatorElement && isDesktop ? (
@@ -151,28 +146,24 @@ export function HoverCard({
           zIndexOverride={zIndexOverride}
           preferredAlignment={preferredAlignment}
           preferredPosition={preferredPosition}
-          renderContent={renderContent}
-        />
+        >
+          {content}
+        </HoverCardOverlay>
       </Portal>
     ) : null;
 
-  const activatorWrapperClassname = classNames(
-    styles.ActivatorWrapper,
-    snapToParent && styles.snapToParent,
-  );
-
-  const markup = !children ? (
-    portal
-  ) : (
+  const markup = children ? (
     <WrapperComponent
-      ref={activatorRef}
-      className={activatorWrapperClassname}
+      ref={ref}
+      className={className}
       onMouseLeave={handleMouseLeave}
       onMouseOver={handleMouseOver}
     >
       {children}
       {portal}
     </WrapperComponent>
+  ) : (
+    portal
   );
 
   return markup;

@@ -25,10 +25,10 @@ $vertical-motion-offset: -5px;
   width: auto;
   opacity: 0;
   transform: translateY($vertical-motion-offset);
-  /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- need custom bezier curve for hovercard animations */
-  transition: opacity var(--p-motion-duration-100) ease-in-out,
-    top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
-    width var(--p-duration-400) cubic-bezier(0.25, 0, 0.75, 1.35);
+  /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list, polaris/motion/declaration-property-unit-disallowed-list  -- need custom bezier curve for hovercard animations */
+  transition: opacity /* var(--p-motion-duration-500) */ 5s ease-in-out,
+    top var(--p-motion-duration-500) cubic-bezier(0.25, 0, 0.75, 1.35),
+    width var(--p-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
 
 .HoverCardOverlay-entering {

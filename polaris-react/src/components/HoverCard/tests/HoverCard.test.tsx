@@ -10,8 +10,8 @@ import {HoverCard} from '../HoverCard';
 const defaultProps: HoverCardProps = {
   children: null,
   active: false,
+  content: <div />,
   toggleActive: jest.fn(),
-  renderContent: jest.fn(() => <div />),
 };
 
 jest.mock('../../../utilities/breakpoints', () => ({

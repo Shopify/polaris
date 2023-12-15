@@ -7,6 +7,7 @@ import {
   Box,
   Button,
   HoverCard,
+  useHoverCardActivatorWrapperProps,
   Badge,
   IndexTable,
   Icon,
@@ -17,8 +18,6 @@ import {
   Card,
 } from '@shopify/polaris';
 import {LocationsMinor, OrdersMinor} from '@shopify/polaris-icons';
-
-import {useHoverCardActivatorWrapperProps} from '../../utilities/hover-card';
 
 export default {
   component: HoverCard,
@@ -40,7 +39,7 @@ export function Default() {
     </Link>
   );
 
-  const renderHoverCardContent = () => (
+  const customerHoverCardContent = (
     <Box padding="400">
       <BlockStack gap="400">
         <BlockStack gap="0">
@@ -122,7 +121,7 @@ export function Default() {
               <HoverCard
                 active={active}
                 preferredPosition={position}
-                renderContent={renderHoverCardContent}
+                content={customerHoverCardContent}
                 toggleActive={setActive}
               >
                 {activator}
@@ -136,6 +135,15 @@ export function Default() {
 }
 
 export function InTable() {
+  interface CustomerDetailPreview {
+    id: string;
+    name: string;
+    email: string;
+    phone: string;
+    location: string;
+    orders: number;
+  }
+
   const orders = [
     {
       id: '1020',
@@ -204,67 +212,40 @@ export function InTable() {
     plural: 'orders',
   };
 
-  const customerNode = useRef<HTMLElement | null>(null);
-
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(orders);
 
   const [activeHoverCard, setActiveHoverCard] = useState<{
-    customer: {
-      id: string;
-      name: string;
-      email: string;
-      phone: string;
-      location: string;
-      orders: number;
-    } | null;
+    customer: CustomerDetailPreview | null;
   }>({
     customer: null,
   });
 
-  // const toggleHoverCard = useCallback(
-  //   (rowIndex: number, type: string, activator: Element) => () => {
-  //     const {rowIndex: currentOrderId} = activeHoverCard;
-
-  //     if (currentOrderId) {
-  //       setActiveHoverCard({
-  //         rowIndex: null,
-  //         type: null,
-  //         activator: null,
-  //       });
-  //     }
-
-  //     setActiveHoverCard({rowIndex, type, activator});
-  //   },
-  //   [activeHoverCard],
-  // );
-
-  const activatorWrapperProps = useHoverCardActivatorWrapperProps({});
-
-  console.log(activatorWrapperProps);
+  const {className, activatorElement, handleMouseOver, handleMouseLeave} =
+    useHoverCardActivatorWrapperProps({snapToParent: true, hoverDelay: 100});
 
   const handleMouseOverCustomer = useCallback(
-    (customer: any) => (event: React.MouseEvent<HTMLDivElement>) => {
-      customerNode.current = event.currentTarget;
-      setActiveHoverCard({customer});
-      activatorWrapperProps?.handleMouseOver?.();
-    },
-    [activatorWrapperProps],
+    (customer: CustomerDetailPreview) =>
+      (event: React.MouseEvent<HTMLDivElement>) => {
+        console.log('mouse entered');
+        setActiveHoverCard({customer});
+        handleMouseOver?.(event);
+      },
+    [handleMouseOver],
   );
 
-  const handleMouseLeaveCustomer = () => {
-    setActiveHoverCard({customer: null});
-    customerNode.current = null;
-    activatorWrapperProps?.handleMouseLeave?.();
-  };
+  // const handleMouseLeaveCustomer = useCallback(() => {
+  //   console.log('mouse left');
+  //   setActiveHoverCard({customer: null});
+  //   handleMouseLeave?.();
+  // }, [handleMouseLeave]);
 
-  const renderCustomerHoverCard = useCallback(() => {
-    const {customer} = activeHoverCard;
-    if (!customer) return null;
+  let customerHoverCardContent: React.ReactNode = null;
 
-    const {name, phone, email, location, orders} = customer;
+  if (activeHoverCard.customer) {
+    const {name, phone, email, location, orders} = activeHoverCard?.customer;
 
-    return (
+    customerHoverCardContent = (
       <Box padding="400">
         <BlockStack gap="400">
           <BlockStack gap="0">
@@ -301,7 +282,7 @@ export function InTable() {
         </BlockStack>
       </Box>
     );
-  }, [activeHoverCard]);
+  }
 
   const rowMarkup = orders.map(
     (
@@ -310,8 +291,9 @@ export function InTable() {
     ) => {
       const linkMarkup = (
         <div
+          className={className}
           onMouseOver={handleMouseOverCustomer(customer)}
-          onMouseLeave={handleMouseLeaveCustomer}
+          onMouseLeave={handleMouseLeave}
           style={{minHeight: '100%', padding: 'var(--p-space-150)'}}
         >
           <Link removeUnderline url="#">
@@ -350,11 +332,12 @@ export function InTable() {
     <Card padding="0">
       <HoverCard
         snapToParent
-        activator={customerNode.current}
-        active={customerNode.current !== null}
+        hoverDelay={100}
+        activator={activatorElement}
+        active={activatorElement !== null}
         activatorWrapper="div"
         preferredPosition="right"
-        renderContent={renderCustomerHoverCard}
+        content={customerHoverCardContent}
       />
       <IndexTable
         resourceName={resourceName}

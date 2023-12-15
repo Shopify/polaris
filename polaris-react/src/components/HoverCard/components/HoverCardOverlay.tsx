@@ -23,24 +23,24 @@ enum TransitionStatus {
 
 export interface HoverCardOverlayProps {
   id: string;
+  children: React.ReactNode;
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   active: boolean;
   zIndexOverride?: number;
   activator: HTMLElement;
   snapToParent?: boolean;
-  renderContent(): React.ReactNode | null;
 }
 
 export function HoverCardOverlay({
   id,
+  children,
   preferredPosition = 'below',
   preferredAlignment = 'center',
   active,
   zIndexOverride,
   activator,
   snapToParent,
-  renderContent,
 }: HoverCardOverlayProps) {
   const {motion} = useTheme();
 
@@ -116,7 +116,7 @@ export function HoverCardOverlay({
             style={contentStyles}
             ref={contentNode}
           >
-            {renderContent()}
+            {children}
           </div>
         </div>
       </div>
@@ -126,6 +126,8 @@ export function HoverCardOverlay({
   if (transitionStatus === TransitionStatus.Exited && !active) {
     return null;
   }
+
+  console.log(transitionStatus);
 
   const className = classNames(
     styles.HoverCardOverlay,
