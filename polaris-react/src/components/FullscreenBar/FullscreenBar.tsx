@@ -30,7 +30,7 @@ export function FullscreenBar({onAction, children}: FullscreenBarProps) {
         onClick={onAction}
         aria-label={i18n.translate('Polaris.FullscreenBar.accessibilityLabel')}
       >
-        <Icon source={ExitMajor} />
+        <Icon tone="inherit" source={ExitMajor} />
         {backButtonMarkup}
       </button>
       {children}
