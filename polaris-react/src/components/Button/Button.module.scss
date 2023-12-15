@@ -199,20 +199,28 @@
   // stylelint-disable  -- custom button tokens
   --pc-button-box-shadow: 0 -1px 0 1px rgba(12, 81, 50, 0.8) inset,
     0 0 0 1px rgba(19, 111, 69, 0.8) inset, 0 0.5px 0 1.5px rgba(255, 255, 255, 0.251) inset;
+  --pc-button-box-shadow_active: -1px 0px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    1px 0px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 2px 0px 0px rgba(0, 0, 0, 0.6) inset;
   // stylelint-enable
   --pc-button-bg: var(--p-color-bg-fill-success);
   --pc-button-bg_hover: var(--p-color-bg-fill-success-hover);
   --pc-button-bg_active: var(--p-color-bg-fill-success-active);
+  --pc-button-bg_pressed: var(--p-color-bg-fill-success-selected);
 }
 
 .toneCritical:is(.variantPrimary) {
   // stylelint-disable  -- custom button tokens
   --pc-button-box-shadow: 0 -1px 0 1px rgba(142, 31, 11, 0.8) inset,
     0 0 0 1px rgba(181, 38, 11, 0.8) inset, 0 0.5px 0 1.5px rgba(255, 255, 255, 0.349) inset;
+  --pc-button-box-shadow_active: -1px 0px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    1px 0px 1px 0px rgba(0, 0, 0, 0.2) inset,
+    0px 2px 0px 0px rgba(0, 0, 0, 0.6) inset;
   // stylelint-enable
   --pc-button-bg: var(--p-color-bg-fill-critical);
   --pc-button-bg_hover: var(--p-color-bg-fill-critical-hover);
   --pc-button-bg_active: var(--p-color-bg-fill-critical-active);
+  --pc-button-bg_pressed: var(--p-color-bg-fill-critical-selected);
 }
 
 // SIZES
