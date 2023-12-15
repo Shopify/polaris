@@ -1,6 +1,15 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Icon, Text, BlockStack, InlineStack} from '@shopify/polaris';
+import type {InlineStackProps, IconProps} from '@shopify/polaris';
+import {
+  Button,
+  Icon,
+  Text,
+  Box,
+  Link,
+  BlockStack,
+  InlineStack,
+} from '@shopify/polaris';
 import * as polarisIcons from '@shopify/polaris-icons';
 import iconMetadata from '@shopify/polaris-icons/metadata';
 
@@ -15,6 +24,39 @@ const icons: Icons = polarisIcons;
 
 export function Default() {
   return <Icon source={icons.CirclePlusMinor} />;
+}
+
+export function IconInLink({
+  children,
+  inlineAlign = 'center',
+  tone,
+}: {
+  children?: React.ReactNode;
+  inlineAlign?: InlineStackProps['align'];
+  tone?: IconProps['tone'];
+}) {
+  return (
+    <Link url="#">
+      <InlineStack align={inlineAlign} gap="200">
+        <Box>
+          <Icon source={icons.ViewMinor} />
+        </Box>
+        {children}
+      </InlineStack>
+    </Link>
+  );
+}
+
+export function IconInButton({
+  children,
+  inlineAlign = 'center',
+  tone,
+}: {
+  children?: React.ReactNode;
+  inlineAlign?: InlineStackProps['align'];
+  tone?: IconProps['tone'];
+}) {
+  return <Button variant="plain" icon={<Icon source={icons.ViewMinor} />} />;
 }
 
 export function Colored() {
@@ -123,6 +165,12 @@ export function WithToneInherit() {
         Text inverse tone
         <Icon source={icons.CirclePlusMinor} tone="inherit" />
       </Text>
+      <Box color="text-brand-on-bg-fill">
+        <Text as="p" variant="bodyMd" alignment="center">
+          Text brand on background fill
+          <Icon tone="inherit" source={icons.ViewMinor} />
+        </Text>
+      </Box>
     </BlockStack>
   );
 }
