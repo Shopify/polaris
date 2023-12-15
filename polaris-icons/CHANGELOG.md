@@ -1,5 +1,11 @@
 # Changelog
 
+## 7.13.0
+
+### Minor Changes
+
+- [#11349](https://github.com/Shopify/polaris/pull/11349) [`0a2f1659d`](https://github.com/Shopify/polaris/commit/0a2f1659d1141dba5cb93f6d64aeceab89155cfb) Thanks [@alex-page](https://github.com/alex-page)! - Add PageClock and PageClockFilled icons
+
 ## 7.12.0
 
 ### Minor Changes
