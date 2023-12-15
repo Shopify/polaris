@@ -126,12 +126,12 @@ export function WithPrefix() {
     {
       label: 'Increase',
       value: 'Increase',
-      prefix: <Icon source={CaretUpMinor} />,
+      prefix: <Icon tone="inherit" source={CaretUpMinor} />,
     },
     {
       label: 'Decrease',
       value: 'Decrease',
-      prefix: <Icon source={CaretDownMinor} />,
+      prefix: <Icon tone="inherit" source={CaretDownMinor} />,
     },
   ];
 
