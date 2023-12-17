@@ -9,7 +9,7 @@ import type {ResponsiveStylePropsWithModifiers} from './generated-data';
 import {stylePropTokenGroupMap, stylePropDefaults} from './generated-data';
 import {convertStylePropsToCSSProperties} from './get-style-props';
 
-type Element =
+export type Element =
   | 'div'
   | 'p'
   | 'button'
