@@ -209,4 +209,4 @@ const genOgImages = async () => {
   });
 };
 
-genOgImages().then(() => {});
+export default genOgImages;

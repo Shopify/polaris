@@ -20,7 +20,7 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "./scripts/get-props/src/get-props.ts",
-    "gen-assets": "yarn get-props && node scripts/gen-cache-json.mjs && ts-node scripts/gen-site-map.ts && ts-node scripts/gen-og-images.tsx",
+    "gen-assets": "ts-node ./scripts/gen-assets.ts",
     "gen-colors": "ts-node ./scripts/gen-colors.ts"
   },
   "dependencies": {
