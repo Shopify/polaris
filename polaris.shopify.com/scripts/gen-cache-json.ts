@@ -127,4 +127,4 @@ const genCacheJson = async () => {
   spinner.succeed('Generated .cache/nav.ts and .cache/site.ts');
 };
 
-await genCacheJson();
+export default genCacheJson;

@@ -1,6 +1,5 @@
 import React from 'react';
-import * as polarisIcons from '@shopify/polaris-icons';
-import {Transformer, ResizeFilterType} from '@napi-rs/image';
+import {Transformer} from '@napi-rs/image';
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -209,4 +208,4 @@ const genOgImages = async () => {
   });
 };
 
-genOgImages().then(() => {});
+export default genOgImages;

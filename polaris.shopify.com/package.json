@@ -11,7 +11,7 @@
     "dev": "yarn gen-colors && yarn get-props && run-p dev:*",
     "dev:server": "open http://localhost:${POLARIS_WEBSITE_PORT:=3000} && next dev",
     "dev:playroom": "rm -rf ./public/playroom && playroom start",
-    "dev:watch-md": "node scripts/watch-md.mjs",
+    "dev:watch-md": "ts-node scripts/watch-md.ts",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
@@ -20,7 +20,7 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "./scripts/get-props/src/get-props.ts",
-    "gen-assets": "yarn get-props && node scripts/gen-cache-json.mjs && ts-node scripts/gen-site-map.ts && ts-node scripts/gen-og-images.tsx",
+    "gen-assets": "yarn get-props && ts-node ./scripts/gen-assets.ts",
     "gen-colors": "ts-node ./scripts/gen-colors.ts"
   },
   "dependencies": {
