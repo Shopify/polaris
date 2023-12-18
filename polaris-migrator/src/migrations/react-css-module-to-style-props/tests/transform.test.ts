@@ -4,7 +4,9 @@ const transform = 'react-css-module-to-style-props';
 const fixtures = [
   {
     name: 'simple-class',
-    options: {},
+    options: {
+      componentName: 'MyComponent',
+    },
   },
 ];
 
