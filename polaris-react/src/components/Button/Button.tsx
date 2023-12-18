@@ -140,7 +140,7 @@ export function Button({
   );
 
   const disclosureMarkup = disclosure ? (
-    <span className={loading ? styles.hidden : ''}>
+    <span className={loading ? styles.hidden : styles.Icon}>
       <Icon
         source={
           loading
@@ -161,7 +161,7 @@ export function Button({
     icon
   );
   const iconMarkup = iconSource ? (
-    <span className={loading ? styles.hidden : ''}>{iconSource}</span>
+    <span className={loading ? styles.hidden : styles.Icon}>{iconSource}</span>
   ) : null;
 
   const childMarkup = children ? (
