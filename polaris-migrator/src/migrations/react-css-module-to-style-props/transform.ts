@@ -89,11 +89,16 @@ function convertCSSModuleToStyleProps(
     };
     const evaluateExpression = (expression: any) => {
       if (expression.type === 'MemberExpression') {
-        // Case 1, single property name; e.g. clasName = {styles.Foo};
+        // className = {styles.Foo};
         addMemberExpression(j, source, expression, classNameExpressionArray);
       } else if (expression.type === 'CallExpression') {
-        // Case 2, compound className; e.g. className = classNames(styles.Foo);
+        // className = classNames(styles.Foo, styles.Bar);
         expression.arguments.forEach((expression: any) =>
+          evaluateExpression(expression),
+        );
+      } else if (expression.type === 'ArrayExpression') {
+        // className={[styles.Foo, styles.Bar]}
+        expression.elements.forEach((expression: any) =>
           evaluateExpression(expression),
         );
       }
