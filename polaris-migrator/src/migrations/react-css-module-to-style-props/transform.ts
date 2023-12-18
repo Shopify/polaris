@@ -19,17 +19,9 @@ export default function transformer(
   {jscodeshift: j}: API,
   options: Options,
 ) {
-  const {componentName} = options;
-  const componentParts = componentName?.split('.');
-  if (!componentName || componentParts?.length > 2) {
-    throw new Error(
-      'Missing required options: componentName, or your compound component exceeds 2 levels',
-    );
-  }
-
   const source = j(file.source);
 
-  convertCSSModuleToStyleProps(j, source, componentName, file);
+  convertCSSModuleToStyleProps(j, source, file);
 
   return source.toSource();
 }
@@ -37,28 +29,10 @@ export default function transformer(
 function convertCSSModuleToStyleProps(
   j: JSCodeshift,
   source: Collection<any>,
-  componentName: string,
   file: FileInfo,
 ) {
-  const [component, subcomponent] = componentName.split('.');
-
-  // Handle compound components
-  if (component && subcomponent) {
-    source.find(j.JSXElement).forEach((element) => {
-      if (
-        element.node.openingElement.name.type === 'JSXMemberExpression' &&
-        element.node.openingElement.name.object.type === 'JSXIdentifier' &&
-        element.node.openingElement.name.object.name === component &&
-        element.node.openingElement.name.property.name === subcomponent
-      ) {
-        updateNode(element);
-      }
-    });
-    return;
-  }
-
   // Handle basic components
-  source.findJSXElements(componentName)?.forEach((element) => {
+  source.findJSXElements()?.forEach((element) => {
     updateNode(element);
   });
 
@@ -74,39 +48,67 @@ function convertCSSModuleToStyleProps(
     );
 
     const expression = classNameProp.value.expression;
-    if (expression.type === 'MemberExpression') {
-      // Case 1, single property name; e.g. clasName = {styles.Foo};
-      const property = expression.property.name;
-
-      const importNode = source
+    const classNameExpressions = new Map();
+    const getImportNode = (
+      j: JSCodeshift,
+      source: Collection<any>,
+      name: string,
+    ) => {
+      return source
         .find(j.ImportDeclaration)
         .filter((importDeclaration) => {
           const value = importDeclaration.value;
 
           return Boolean(
             value.specifiers?.some(
-              (specifier) => specifier?.local?.name === 'styles',
+              (specifier) => specifier?.local?.name === name,
             ),
           );
         })
         .nodes()[0];
-
+    };
+    const processCSSFile = (
+      j: JSCodeshift,
+      source: Collection<any>,
+      node: any,
+      file: FileInfo,
+      propertyName: string,
+    ) => {
       const pathToCSSFile = path.resolve(
         path.dirname(file.path),
-        importNode.source.value as string,
+        node.source.value as string,
       );
 
       const cssFile = fs.readFileSync(pathToCSSFile, 'utf8').toString();
 
       const cssAST = postcss.parse(cssFile);
       const cssObject = postcssJS.objectify(cssAST);
-      Object.entries(cssObject[`.${property}`]).forEach(([key, value]) => {
+      Object.entries(cssObject[`.${propertyName}`]).forEach(([key, value]) => {
         insertJSXAttribute(j, element, key, value as string);
       });
       removeJSXAttributes(j, element, 'className');
-      removeImportDeclaration(j, source, importNode.source.value as string);
-      return element;
+      removeImportDeclaration(j, source, node.source.value as string);
+    };
+    if (expression.type === 'MemberExpression') {
+      // Case 1, single property name; e.g. clasName = {styles.Foo};
+
+      const importNode = getImportNode(j, source, expression.object.name);
+      if (!classNameExpressions.has(importNode)) {
+        classNameExpressions.set(importNode, [expression.property.name]);
+      } else {
+        classNameExpressions.get(importNode).push(expression.property.name);
+      }
+    } else if (expression.type === 'CallExpression') {
+      // Collect Properties
     }
+
+    classNameExpressions.forEach((properties, node) => {
+      properties.forEach((propertyName: string) => {
+        processCSSFile(j, source, node, file, propertyName);
+      });
+    });
+
+    return element;
 
     // Case 2, compound className; e.g. className = classNames(styles.Foo, styles.Bar);
 
