@@ -48,7 +48,7 @@ function convertCSSModuleToStyleProps(
     );
 
     const expression = classNameProp.value.expression;
-    const classNameExpressions = new Map();
+    const classNameExpressionArray: [any, string][] = [];
     const getImportNode = (
       j: JSCodeshift,
       source: Collection<any>,
@@ -67,13 +67,16 @@ function convertCSSModuleToStyleProps(
         })
         .nodes()[0];
     };
-    const processCSSFile = (
+    const addMemberExpression = (
       j: JSCodeshift,
       source: Collection<any>,
-      node: any,
-      file: FileInfo,
-      propertyName: string,
+      expression: any,
+      expressionMap: typeof classNameExpressionArray,
     ) => {
+      const importNode = getImportNode(j, source, expression.object.name);
+      expressionMap.push([importNode, expression.property.name]);
+    };
+    const processCSSFile = (node: any, file: FileInfo) => {
       const pathToCSSFile = path.resolve(
         path.dirname(file.path),
         node.source.value as string,
@@ -82,39 +85,62 @@ function convertCSSModuleToStyleProps(
       const cssFile = fs.readFileSync(pathToCSSFile, 'utf8').toString();
 
       const cssAST = postcss.parse(cssFile);
-      const cssObject = postcssJS.objectify(cssAST);
-      Object.entries(cssObject[`.${propertyName}`]).forEach(([key, value]) => {
+      return postcssJS.objectify(cssAST);
+    };
+    const evaluateExpression = (expression: any) => {
+      if (expression.type === 'MemberExpression') {
+        // Case 1, single property name; e.g. clasName = {styles.Foo};
+        addMemberExpression(j, source, expression, classNameExpressionArray);
+      } else if (expression.type === 'CallExpression') {
+        // Case 2, compound className; e.g. className = classNames(styles.Foo);
+        expression.arguments.forEach((expression: any) =>
+          evaluateExpression(expression),
+        );
+      }
+    };
+
+    const insertStyleProps = (
+      j: JSCodeshift,
+      element: any,
+      styleProps: {[key: string]: string},
+    ) => {
+      Object.entries(styleProps).forEach(([key, value]) => {
         insertJSXAttribute(j, element, key, value as string);
       });
       removeJSXAttributes(j, element, 'className');
-      removeImportDeclaration(j, source, node.source.value as string);
     };
-    if (expression.type === 'MemberExpression') {
-      // Case 1, single property name; e.g. clasName = {styles.Foo};
 
-      const importNode = getImportNode(j, source, expression.object.name);
-      if (!classNameExpressions.has(importNode)) {
-        classNameExpressions.set(importNode, [expression.property.name]);
-      } else {
-        classNameExpressions.get(importNode).push(expression.property.name);
-      }
-    } else if (expression.type === 'CallExpression') {
-      // Collect Properties
-    }
+    evaluateExpression(expression);
 
-    classNameExpressions.forEach((properties, node) => {
-      properties.forEach((propertyName: string) => {
-        processCSSFile(j, source, node, file, propertyName);
-      });
+    const styleProps = classNameExpressionArray.reduce(
+      (acc, [importNode, properties]) => {
+        const CSSObject = processCSSFile(importNode, file);
+        return {...acc, ...CSSObject[`.${properties}`]};
+      },
+      {},
+    );
+
+    const importNodes = Array.from(
+      new Set(classNameExpressionArray.map(([importNode]) => importNode)),
+    );
+
+    insertStyleProps(j, element, styleProps);
+    importNodes.forEach((node) => {
+      removeImportDeclaration(j, source, node.source.value);
     });
 
     return element;
 
-    // Case 2, compound className; e.g. className = classNames(styles.Foo, styles.Bar);
-
     // Case 3, compound classNames behind an identifier e.g.
+
     // const x = classNames(styles.Foo, styles.Bar)
     // classNames = {x}
+
+    // Case 4, compound classnames with ternary
+    // clasSNames = classNames(prop ? styles.Foo : styles.Bar);
+
+    // Case 5
+    // classNames={[styles.Foo, styles.Bar]}
 
     // TODO:
     // 1. Use `node.value` to get the variable name passed in

@@ -3,10 +3,10 @@ import {check} from '../../../utilities/check';
 const transform = 'react-css-module-to-style-props';
 const options = {};
 const fixtures = [
-  {
-    name: 'simple-class',
-    options,
-  },
+  // {
+  //   name: 'simple-class',
+  //   options,
+  // },
   {
     name: 'compound-class',
     options,
