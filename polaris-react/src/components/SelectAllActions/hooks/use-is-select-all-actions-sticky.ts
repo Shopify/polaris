@@ -54,7 +54,14 @@ export function useIsSelectAllActionsSticky({
     entries.forEach((entry: IntersectionObserverEntry) => {
       const isScrolledPastTop =
         entry.boundingClientRect.top > 0 && !entry.isIntersecting;
-      setIsSticky(entry.isIntersecting);
+      const rootBoundsHeight = entry.rootBounds?.height || 0;
+
+      const hasTableOffscreen =
+        entry.boundingClientRect.top + entry.boundingClientRect.height >
+        rootBoundsHeight;
+      if (hasTableOffscreen) {
+        setIsSticky(entry.isIntersecting);
+      }
       setIsScrolledPastTop(isScrolledPastTop);
     });
   };
