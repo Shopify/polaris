@@ -28,9 +28,7 @@
   display: inline-flex;
   align-items: center;
   gap: var(--pc-button-gap);
-  padding-block: var(--pc-button-padding-block);
-  padding-inline: var(--pc-button-padding-inline);
-
+  padding: var(--pc-button-padding-block) var(--pc-button-padding-inline);
   background: var(--pc-button-bg);
   border: none;
   border-radius: var(--p-border-radius-200);
@@ -174,8 +172,8 @@
 .variantPlain,
 .variantMonochromePlain {
   --pc-button-bg_disabled: transparent;
-  margin-block: calc(-1 * var(--pc-button-padding-block));
-  margin-inline: calc(-1 * var(--pc-button-padding-inline));
+  margin: calc(-1 * var(--pc-button-padding-block))
+    calc(-1 * var(--pc-button-padding-inline));
   font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-font-line-height-400);
@@ -301,8 +299,8 @@
 }
 
 .iconOnly:is(.variantTertiary) {
-  margin-block: calc(-1 * var(--pc-button-padding-block));
-  margin-inline: calc(-1 * var(--pc-button-padding-inline));
+  margin: calc(-1 * var(--pc-button-padding-block))
+    calc(-1 * var(--pc-button-padding-inline));
 }
 
 .iconOnly:is(.variantTertiary, .variantPlain, .variantMonochromePlain):not(.toneCritical) {
@@ -351,7 +349,7 @@
 
 // ICON
 .Icon {
-  margin-block: calc(-1 * var(--p-space-050));
+  margin: calc(-1 * var(--p-space-050)) 0;
 }
 
 // SPINNER
