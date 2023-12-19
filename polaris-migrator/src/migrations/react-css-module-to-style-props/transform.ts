@@ -34,7 +34,11 @@ const processCSSFile = async (
   importPath: string,
   file: FileInfo,
 ): Promise<StyleFile> => {
-  const pathToCSSFile = path.resolve(path.dirname(file.path), importPath);
+  const pathToCSSFile = path.resolve(
+    path.dirname(file.path),
+    // Normalize the path string to remove trailing query
+    importPath.replace(/\?.*$/, ''),
+  );
   const cssFile = fs.readFileSync(pathToCSSFile, 'utf8').toString();
   // Convert sass into css
   // @ts-expect-error no.
@@ -180,7 +184,7 @@ const getImportNodeForIdentifier = (
   );
 };
 
-const IS_CSS_FILE_PATH = /\.s?css$/;
+const IS_CSS_FILE_PATH = /\.s?css(\?.*)?$/;
 
 const isReferenceToCSSImport = (
   j: JSCodeshift,
@@ -190,6 +194,44 @@ const isReferenceToCSSImport = (
   return IS_CSS_FILE_PATH.test(
     getImportNodeForIdentifier(j, identifier, path)?.value.source.value,
   );
+};
+
+const mergeObjectExpressionList = (j: JSCodeshift, elements: Node[]) => {
+  const result = [];
+
+  let index = 0;
+
+  // Scan the entire array looking for runs of ObjectExpressions we can
+  // merge togethe
+  while (index < elements.length) {
+    const acc = createObjectExpression(j, {});
+    // Accumulate a run of ObjectExpressions using JS object merge order t
+    // override earlier
+    while (
+      index < elements.length &&
+      elements[index]?.type === 'ObjectExpression'
+    ) {
+      mergeObjectExpressions(acc, elements[index] as ObjectExpression);
+      index++;
+    }
+
+    if (Object.keys(acc).length) {
+      // push acc into array if it has keys
+      result.push(acc);
+    }
+
+    if (
+      index < elements.length &&
+      elements[index]?.type !== 'ObjectExpression'
+    ) {
+      result.push(elements[index]);
+      // push element into array
+    }
+
+    index++;
+  }
+
+  return result;
 };
 
 // const isLocalVariableReference = (
@@ -272,66 +314,49 @@ export default async function transformer(
   const bailouts: Path[] = [];
 
   // Is it a call to classNames()?
-  // TODO
   classNameCollection
-    .find(j.FunctionExpression)
-    .filter((path) => path.parentPath.value.type === 'JSXExpressionContainer');
+    .find(j.CallExpression)
+    .filter((path) => path.parentPath.value.type === 'JSXExpressionContainer')
+    .forEach((path) => {
+      const elements = path.value.arguments;
+      const mergedElements = mergeObjectExpressionList(j, elements);
+
+      if (mergedElements.length === 0) {
+        path.replace(createObjectExpression(j, {}));
+      } else if (mergedElements.length === 1) {
+        // Replace the whole array expression with the single POJO
+        path.replace(mergedElements[0]);
+      } else {
+        // Unable to merge all elements, so we set what we've got then flag it
+        // for later handling
+        path.value.arguments = mergedElements;
+        const jsxElement = findUp(path, (parentPath) =>
+          j.JSXElement.check(parentPath.value),
+        );
+        bailouts.push(jsxElement);
+      }
+    });
 
   // Is it just an array of values?
   classNameCollection
     .find(j.ArrayExpression)
     .filter((path) => path.parentPath.value.type === 'JSXExpressionContainer')
     .forEach((path) => {
-      let canFullyMerge = true;
       const elements = path.value.elements;
-      // Reset the elements so we can re-insert runs of ObjectExpressions as
-      // merged objects.
-      path.value.elements = [];
+      const mergedElements = mergeObjectExpressionList(j, elements);
 
-      let index = 0;
-
-      // Scan the entire array looking for runs of ObjectExpressions we can
-      // merge togethe
-      while (index < elements.length) {
-        const acc = createObjectExpression(j, {});
-        // Accumulate a run of ObjectExpressions using JS object merge order t
-        // override earlier
-        while (
-          index < elements.length &&
-          elements[index]?.type === 'ObjectExpression'
-        ) {
-          mergeObjectExpressions(acc, elements[index] as ObjectExpression);
-          index++;
-        }
-
-        if (Object.keys(acc).length) {
-          // push acc into array if it has keys
-          path.value.elements.push(acc);
-        }
-
-        if (
-          index < elements.length &&
-          elements[index]?.type !== 'ObjectExpression'
-        ) {
-          canFullyMerge = false;
-          path.value.elements.push(elements[index]);
-          // push element into array
-        }
-
-        index++;
-      }
-
-      if (canFullyMerge) {
+      if (mergedElements.length === 0) {
+        path.replace(createObjectExpression(j, {}));
+      } else if (mergedElements.length === 1) {
         // Replace the whole array expression with the single POJO
-        // @ts-expect-error This 100% works, the typings for the replace method
-        // must be wrong.
-        path.replace(path.value.elements[0]);
+        path.replace(mergedElements[0]);
       } else {
+        // Unable to merge all elements, so we set what we've got then flag it
+        // for later handling
+        path.value.elements = mergedElements;
         const jsxElement = findUp(path, (parentPath) =>
           j.JSXElement.check(parentPath.value),
         );
-        // Unable to process this fully, create a comment with the current
-        // state, then replace it with the original node
         bailouts.push(jsxElement);
       }
     });
