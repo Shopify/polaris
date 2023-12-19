@@ -40,11 +40,16 @@
     line-height: 1;
 
     &:not(:first-child) {
-      margin-left: calc(-1 * var(--p-space-025));
+      margin-left: calc(-0.5 * var(--p-space-025));
     }
   }
 
-  .Item-focused {
+  [aria-pressed='true'] {
+    // stylelint-disable-next-line  -- bring pressed button to top
+    z-index: var(--pc-button-group-item);
+  }
+
+  .Item-focused:not(:active) {
     // stylelint-disable-next-line  -- custom property
     z-index: var(--pc-button-group-focused);
   }
