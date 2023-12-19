@@ -133,9 +133,8 @@
 
 .variantSecondary {
   // stylelint-disable  -- custom button tokens
-  --pc-button-box-shadow: 0 -1px 0 1px rgba(0, 0, 0, 0.051) inset,
-    0 0 0 1px rgba(0, 0, 0, 0.149) inset, 0 0.5px 0 1.5px rgb(255, 255, 255) inset;
-  --pc-button-box-shadow_active: -1px 0 1px 0 #1a1a1a1f inset,
+  --pc-button-box-shadow: 0 -1px 0 0 #b5b5b5 inset, 0 0 0 1px rgba(0, 0, 0, 0.10) inset, 0 0.5px 0 1.5px #fff inset;
+  --pc-button-box-shadow_active: -1px 0 1px 0 rgba(26, 26, 26, 0.122) inset,
     1px 0 1px 0 rgba(26, 26, 26, 0.122) inset, 0 2px 1px 0 rgba(26, 26, 26, 0.2) inset;
   // stylelint-enable
   --pc-button-bg: var(--p-color-bg-fill);
