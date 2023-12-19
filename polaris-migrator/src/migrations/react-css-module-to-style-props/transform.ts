@@ -2,8 +2,10 @@ import fs from 'fs';
 import path from 'path';
 
 import postcssJS from 'postcss-js';
-import type {JSCodeshift, API, FileInfo, ObjectExpression} from 'jscodeshift';
+import sassPlugin from '@csstools/postcss-sass';
+import sassSyntax from 'postcss-scss';
 import postcss from 'postcss';
+import type {JSCodeshift, API, FileInfo, ObjectExpression} from 'jscodeshift';
 
 import {
   insertJSXAttribute,
@@ -26,19 +28,33 @@ interface StyleFile {
 }
 type ImportCache = Map<Node, StyleFile>;
 
-const processCSSFile = (importPath: string, file: FileInfo): StyleFile => {
+const postcssProcessor = postcss([sassPlugin]);
+
+const processCSSFile = async (
+  importPath: string,
+  file: FileInfo,
+): Promise<StyleFile> => {
   const pathToCSSFile = path.resolve(path.dirname(file.path), importPath);
   const cssFile = fs.readFileSync(pathToCSSFile, 'utf8').toString();
-  const cssAST = postcss.parse(cssFile);
-  return postcssJS.objectify(cssAST);
+  // Convert sass into css
+  // @ts-expect-error no.
+  const cssAST = await postcssProcessor.process(cssFile, {
+    syntax: sassSyntax,
+    from: pathToCSSFile,
+  });
+
+  // parse css into a JS object
+  const parsedCssAst = postcss.parse(cssAST);
+
+  return postcssJS.objectify(parsedCssAst);
 };
 
-const getStyleObjectFromNode = (
+const getStyleObjectFromNode = async (
   j: JSCodeshift,
   file: FileInfo,
   path: Path,
   importCache: ImportCache,
-): StyleObject => {
+): Promise<StyleObject> => {
   const importIdentifier = path.value.object?.name ?? path.value.name;
   // In case the import is something like:
   // import {Foo as Bar} from './styles.scss';
@@ -48,7 +64,7 @@ const getStyleObjectFromNode = (
   const importNodePath = getImportNodeForIdentifier(j, importIdentifier, path);
   let CSSObject = importCache.get(importNodePath);
   if (!CSSObject) {
-    CSSObject = processCSSFile(
+    CSSObject = await processCSSFile(
       importNodePath.value.source.value as string,
       file,
     );
@@ -185,7 +201,10 @@ const isReferenceToCSSImport = (
 //   return false;
 // };
 
-export default function transformer(file: FileInfo, {jscodeshift: j}: API) {
+export default async function transformer(
+  file: FileInfo,
+  {jscodeshift: j}: API,
+) {
   const source = j(file.source);
   const importCache: ImportCache = new Map();
 
@@ -193,18 +212,26 @@ export default function transformer(file: FileInfo, {jscodeshift: j}: API) {
     .findJSXElements()
     .find(j.JSXAttribute, (node) => node.name.name === 'className');
 
-  classNameCollection
-    .find(j.MemberExpression)
-    // @ts-expect-error But it does exist.
-    .filter((path) => isReferenceToCSSImport(j, path.value.object.name, path))
-    .forEach((path) => {
-      const styleObject = getStyleObjectFromNode(j, file, path, importCache);
-      if (styleObject) {
-        path.replace(createObjectExpression(j, styleObject));
-      } else {
-        // TODO: Error? Insert comment?
-      }
-    });
+  await Promise.all(
+    classNameCollection
+      .find(j.MemberExpression)
+      // @ts-expect-error But it does exist.
+      .filter((path) => isReferenceToCSSImport(j, path.value.object.name, path))
+      .paths()
+      .map(async (path) => {
+        const styleObject = await getStyleObjectFromNode(
+          j,
+          file,
+          path,
+          importCache,
+        );
+        if (styleObject) {
+          path.replace(createObjectExpression(j, styleObject));
+        } else {
+          // TODO: Error? Insert comment?
+        }
+      }),
+  );
 
   const identifierCollection = classNameCollection.find(j.Identifier).filter(
     (path) =>
@@ -215,16 +242,24 @@ export default function transformer(file: FileInfo, {jscodeshift: j}: API) {
       !j.Expression.check(path.parentPath.value),
   );
 
-  identifierCollection
-    .filter((path) => isReferenceToCSSImport(j, path.value.name, path))
-    .forEach((path) => {
-      const styleObject = getStyleObjectFromNode(j, file, path, importCache);
-      if (styleObject) {
-        path.replace(createObjectExpression(j, styleObject));
-      } else {
-        // TODO: Error? Insert comment?
-      }
-    });
+  await Promise.all(
+    identifierCollection
+      .filter((path) => isReferenceToCSSImport(j, path.value.name, path))
+      .paths()
+      .map(async (path) => {
+        const styleObject = await getStyleObjectFromNode(
+          j,
+          file,
+          path,
+          importCache,
+        );
+        if (styleObject) {
+          path.replace(createObjectExpression(j, styleObject));
+        } else {
+          // TODO: Error? Insert comment?
+        }
+      }),
+  );
 
   // When we have styles reassigned to a variable, we have to switch over to
   // that assignment and do all the same dance with converting to POJOs, etc
