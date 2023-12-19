@@ -36,6 +36,7 @@
     "generate": "plop"
   },
   "dependencies": {
+    "@csstools/postcss-sass": "^5.0.1",
     "@shopify/polaris-tokens": "^8.4.0",
     "@shopify/stylelint-polaris": "^15.0.6",
     "chalk": "^4.1.0",
