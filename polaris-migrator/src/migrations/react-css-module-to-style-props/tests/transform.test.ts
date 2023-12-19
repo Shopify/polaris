@@ -7,14 +7,14 @@ const fixtures = [
     name: 'simple-class',
     options,
   },
-  // {
-  //   name: 'compound-class',
-  //   options,
-  // },
-  // {
-  //   name: 'compound-array-class',
-  //   options,
-  // },
+  {
+    name: 'compound-class',
+    options,
+  },
+  {
+    name: 'compound-array-class',
+    options,
+  },
   // {
   //   name: 'ternary',
   //   options,
