@@ -2,14 +2,7 @@ import fs from 'fs';
 import path from 'path';
 
 import postcssJS from 'postcss-js';
-import type {
-  JSCodeshift,
-  API,
-  FileInfo,
-  Options,
-  Collection,
-  ObjectExpression,
-} from 'jscodeshift';
+import type {JSCodeshift, API, FileInfo, ObjectExpression} from 'jscodeshift';
 import postcss from 'postcss';
 
 import {
@@ -17,9 +10,10 @@ import {
   removeJSXAttributes,
   insertJSXComment,
 } from '../../utilities/jsx';
-import {removeImportDeclaration} from '../../utilities/imports';
 
-type Property = ObjectExpression['properties'] extends Array<infer T>
+type ObjectExpressionProperty = ObjectExpression['properties'] extends Array<
+  infer T
+>
   ? T
   : never;
 type Path = any;
@@ -31,23 +25,6 @@ interface StyleFile {
   [x: string]: StyleObject;
 }
 type ImportCache = Map<Node, StyleFile>;
-
-const getImportNode = (
-  j: JSCodeshift,
-  source: Collection<any>,
-  name: string,
-) => {
-  return source
-    .find(j.ImportDeclaration)
-    .filter((importDeclaration) => {
-      const value = importDeclaration.value;
-
-      return Boolean(
-        value.specifiers?.some((specifier) => specifier?.local?.name === name),
-      );
-    })
-    .nodes()[0];
-};
 
 const processCSSFile = (importPath: string, file: FileInfo): StyleFile => {
   const pathToCSSFile = path.resolve(path.dirname(file.path), importPath);
@@ -106,13 +83,14 @@ const createObjectExpression = (j: JSCodeshift, obj: {[x: string]: any}) => {
 };
 
 const insertPropertyIntoObjectExpression = (
-  j: JSCodeshift,
   expression: ObjectExpression,
-  property: Property,
+  property: ObjectExpressionProperty,
 ) => {
   let index = -1;
   if (property.type === 'Property') {
     index = expression.properties.findIndex(
+      // @ts-expect-error We've narrowed the type down, but TS doesn't realize
+      // it
       (prop) => prop.type === 'Property' && prop.key.name === property.key.name,
     );
   }
@@ -123,22 +101,25 @@ const insertPropertyIntoObjectExpression = (
 };
 
 const mergeObjectExpressions = (
-  j: JSCodeshift,
   target: ObjectExpression,
   ...expressions: ObjectExpression[]
 ) => {
   expressions.forEach((expression) => {
     expression.properties.forEach((property) =>
-      insertPropertyIntoObjectExpression(j, target, property),
+      insertPropertyIntoObjectExpression(target, property),
     );
   });
 };
 
 const fromObjectExpression = (expression: ObjectExpression) => {
-  return expression.properties.reduce((acc, property) => {
-    acc[property.key.name] = property.value.value;
-    return acc;
-  }, {});
+  return expression.properties
+    .filter((property) => property.type === 'Property')
+    .reduce((acc, property) => {
+      // @ts-expect-error We've narrowed this type above in the filter, but TS
+      // doesn't understand
+      acc[property.key.name] = property.value.value;
+      return acc;
+    }, {});
 };
 
 const insertStyleProps = (
@@ -195,20 +176,16 @@ const isReferenceToCSSImport = (
   );
 };
 
-const isLocalVariableReference = (
-  j: JSCodeshift,
-  identifier: string,
-  path: Path,
-): boolean => {
-  // TODO
-  return false;
-};
+// const isLocalVariableReference = (
+//   j: JSCodeshift,
+//   identifier: string,
+//   path: Path,
+// ): boolean => {
+//   // TODO
+//   return false;
+// };
 
-export default function transformer(
-  file: FileInfo,
-  {jscodeshift: j}: API,
-  options: Options,
-) {
+export default function transformer(file: FileInfo, {jscodeshift: j}: API) {
   const source = j(file.source);
   const importCache: ImportCache = new Map();
 
@@ -218,6 +195,7 @@ export default function transformer(
 
   classNameCollection
     .find(j.MemberExpression)
+    // @ts-expect-error But it does exist.
     .filter((path) => isReferenceToCSSImport(j, path.value.object.name, path))
     .forEach((path) => {
       const styleObject = getStyleObjectFromNode(j, file, path, importCache);
@@ -250,21 +228,22 @@ export default function transformer(
 
   // When we have styles reassigned to a variable, we have to switch over to
   // that assignment and do all the same dance with converting to POJOs, etc
-  identifierCollection
-    .filter((path) => isLocalVariableReference(j, path.value.name, path))
-    .forEach((path) => {
-      // TODO: Recurse on this whole process
-    });
+  // identifierCollection
+  //   .filter((path) => isLocalVariableReference(j, path.value.name, path))
+  //   .forEach((path) => {
+  //     // TODO: Recurse on this whole process
+  //   });
 
   const bailouts: Path[] = [];
 
   // Is it a call to classNames()?
-  const functionCalls = classNameCollection
+  // TODO
+  classNameCollection
     .find(j.FunctionExpression)
     .filter((path) => path.parentPath.value.type === 'JSXExpressionContainer');
 
   // Is it just an array of values?
-  const arrayOfValues = classNameCollection
+  classNameCollection
     .find(j.ArrayExpression)
     .filter((path) => path.parentPath.value.type === 'JSXExpressionContainer')
     .forEach((path) => {
@@ -286,7 +265,7 @@ export default function transformer(
           index < elements.length &&
           elements[index]?.type === 'ObjectExpression'
         ) {
-          mergeObjectExpressions(j, acc, elements[index] as ObjectExpression);
+          mergeObjectExpressions(acc, elements[index] as ObjectExpression);
           index++;
         }
 
@@ -309,6 +288,8 @@ export default function transformer(
 
       if (canFullyMerge) {
         // Replace the whole array expression with the single POJO
+        // @ts-expect-error This 100% works, the typings for the replace method
+        // must be wrong.
         path.replace(path.value.elements[0]);
       } else {
         const jsxElement = findUp(path, (parentPath) =>
@@ -346,7 +327,7 @@ export default function transformer(
 
   const removableImportPaths = importPaths.filter((importPath) => {
     const identifiers = importPath.value.specifiers.map(
-      (specifier) => specifier.local.name,
+      (specifier: any) => specifier.local.name,
     );
 
     const referencesToImport = source
