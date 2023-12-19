@@ -7,12 +7,9 @@ import sassSyntax from 'postcss-scss';
 import postcss from 'postcss';
 import type {JSCodeshift, API, FileInfo, ObjectExpression} from 'jscodeshift';
 
-import {
-  insertJSXAttribute,
-  removeJSXAttributes,
-  insertJSXComment,
-} from '../../utilities/jsx';
+import {insertJSXAttribute, removeJSXAttributes} from '../../utilities/jsx';
 
+// eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/array-type
 type ObjectExpressionProperty = ObjectExpression['properties'] extends Array<
   infer T
 >
@@ -311,8 +308,6 @@ export default async function transformer(
   //     // TODO: Recurse on this whole process
   //   });
 
-  const bailouts: Path[] = [];
-
   // Is it a call to classNames()?
   classNameCollection
     .find(j.CallExpression)
@@ -436,33 +431,6 @@ export default async function transformer(
   });
 
   j(removableImportPaths).remove();
-
-  /*
-    .replaceWith((path) => {
-      const expression = j(path.value);
-      // get Attribute
-      walkExpressions(j, source, file, expression, importCache);
-
-      // const styleProps = classNameExpressionArray.reduce(
-      //   (acc, [importNode, properties]) => {
-      //     const CSSObject = processCSSFile(importNode.source.value as string, file);
-      //     return {...acc, ...CSSObject[`.${properties}`]};
-      //   },
-      //   {},
-      // );
-
-      // const importNodes = Array.from(
-      //   new Set(classNameExpressionArray.map(([importNode]) => importNode)),
-      // );
-
-      // insertStyleProps(j, expression, styleProps);
-      // importNodes.forEach((node) => {
-      //   removeImportDeclaration(j, source, node.source.value);
-      // });
-
-      return expression;
-    });
-  */
 
   return source.toSource();
 }
