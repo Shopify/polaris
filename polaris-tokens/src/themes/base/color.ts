@@ -178,10 +178,12 @@ export type ColorTextAlias =
   | 'text-brand-on-bg-fill-hover'
   | 'text-brand-on-bg-fill'
   | 'text-brand'
+  | 'text-caution-secondary'
   | 'text-caution-active'
   | 'text-caution-hover'
   | 'text-caution-on-bg-fill'
   | 'text-caution'
+  | 'text-critical-secondary'
   | 'text-critical-active'
   | 'text-critical-hover'
   | 'text-critical-on-bg-fill'
@@ -193,6 +195,7 @@ export type ColorTextAlias =
   | 'text-emphasis-on-bg-fill-hover'
   | 'text-emphasis-on-bg-fill'
   | 'text-emphasis'
+  | 'text-info-secondary'
   | 'text-info-active'
   | 'text-info-hover'
   | 'text-info-on-bg-fill'
@@ -207,10 +210,12 @@ export type ColorTextAlias =
   | 'text-magic'
   | 'text-magic-secondary'
   | 'text-secondary'
+  | 'text-success-secondary'
   | 'text-success-active'
   | 'text-success-hover'
   | 'text-success-on-bg-fill'
   | 'text-success'
+  | 'text-warning-secondary'
   | 'text-warning-active'
   | 'text-warning-hover'
   | 'text-warning-on-bg-fill'
@@ -754,6 +759,11 @@ export const color: {
     description:
       'The active state (on press) color for text communicating important information.',
   },
+  'color-text-info-secondary': {
+    value: colors.azure[12],
+    description:
+      'Use for text communicating important information with a secondary level of prominence.',
+  },
   'color-text-info-on-bg-fill': {
     value: colors.azure[16],
     description: 'Use for text and icons on bg-fill-info.',
@@ -770,6 +780,11 @@ export const color: {
     value: colors.green[16],
     description:
       'The active state (on press) color for text communicating success.',
+  },
+  'color-text-success-secondary': {
+    value: colors.green[12],
+    description:
+      'Use for text communicating success with a secondary level of prominence.',
   },
   'color-text-success-on-bg-fill': {
     value: colors.green[1],
@@ -788,6 +803,11 @@ export const color: {
     description:
       'The active state (on press) color for text communicating caution.',
   },
+  'color-text-caution-secondary': {
+    value: colors.yellow[12],
+    description:
+      'Use for text communicating caution with a secondary level of prominence.',
+  },
   'color-text-caution-on-bg-fill': {
     value: colors.yellow[15],
     description: 'Use for text and icons on bg-fill-caution.',
@@ -804,6 +824,11 @@ export const color: {
     value: colors.orange[16],
     description:
       'The active state (on press) color for text communicating warning.',
+  },
+  'color-text-warning-secondary': {
+    value: colors.orange[12],
+    description:
+      'Use for text communicating warning with a secondary level of prominence.',
   },
   'color-text-warning-on-bg-fill': {
     value: colors.orange[16],
@@ -822,6 +847,11 @@ export const color: {
     value: colors.red[16],
     description:
       'The active state (on press) color for text communicating critical information.',
+  },
+  'color-text-critical-secondary': {
+    value: colors.red[12],
+    description:
+      'Use for text communicating critical information with a secondary level of prominence.',
   },
   'color-text-critical-on-bg-fill': {
     value: colors.red[1],
