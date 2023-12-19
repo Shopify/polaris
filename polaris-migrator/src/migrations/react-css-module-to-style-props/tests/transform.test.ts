@@ -15,10 +15,10 @@ const fixtures = [
     name: 'compound-array-class',
     options,
   },
-  // {
-  //   name: 'ternary',
-  //   options,
-  // },
+  {
+    name: 'ternary',
+    options,
+  },
 ];
 
 for (const fixture of fixtures) {

@@ -316,7 +316,12 @@ export default async function transformer(
   // Is it a call to classNames()?
   classNameCollection
     .find(j.CallExpression)
-    .filter((path) => path.parentPath.value.type === 'JSXExpressionContainer')
+    // TODO: Filter to check the value.callee.name identifier comes from an
+    // allow-list of imports which provide the "classnames" functionality
+    // (default to just `"classnames"`).
+    // NOTE: We don't care how deep these function calls are, we just want them
+    // replaced with the POJO.
+    // .filter((path) => path.parentPath.value.type === 'JSXExpressionContainer')
     .forEach((path) => {
       const elements = path.value.arguments;
       const mergedElements = mergeObjectExpressionList(j, elements);
@@ -327,13 +332,8 @@ export default async function transformer(
         // Replace the whole array expression with the single POJO
         path.replace(mergedElements[0]);
       } else {
-        // Unable to merge all elements, so we set what we've got then flag it
-        // for later handling
+        // Unable to merge all elements, so we set what we've got
         path.value.arguments = mergedElements;
-        const jsxElement = findUp(path, (parentPath) =>
-          j.JSXElement.check(parentPath.value),
-        );
-        bailouts.push(jsxElement);
       }
     });
 
@@ -351,13 +351,9 @@ export default async function transformer(
         // Replace the whole array expression with the single POJO
         path.replace(mergedElements[0]);
       } else {
-        // Unable to merge all elements, so we set what we've got then flag it
+        // Unable to merge all elements, so we set what we've got
         // for later handling
         path.value.elements = mergedElements;
-        const jsxElement = findUp(path, (parentPath) =>
-          j.JSXElement.check(parentPath.value),
-        );
-        bailouts.push(jsxElement);
       }
     });
 
@@ -375,13 +371,46 @@ export default async function transformer(
       insertStyleProps(j, jsxElement, pojo);
     });
 
-  // Inject comments
-  j(bailouts).forEach((path) => {
-    const comment = `Couldn't merge all styles:\n${j(path).toSource()}`;
-    insertJSXComment(j, path, comment, 'before');
-    // Restore nodes to their original
-    path.replace(path.value.original);
+  // For all remaining JSX elements with a `className`, we've failed to
+  // successfully migrate them, so revert it to its original state and leave a
+  // comment outlining how far we got.
+  const elementsNotFullyMigrated = source.findJSXElements().filter((path) => {
+    return (
+      j(path)
+        .find(j.JSXAttribute, (node) => node.name.name === 'className')
+        .size() > 0
+    );
   });
+
+  // When it's part of a return statement, we have to insert a regular JS
+  // comment. They live on the node itself in the `.comments` array.
+  elementsNotFullyMigrated
+    .filter((path) => path.parentPath.value.type === 'ReturnStatement')
+    .forEach((path) => {
+      const comment = `Couldn't merge all styles:\n${j(path).toSource()}`;
+      // Restore the changed node to its original state
+      // @ts-expect-error Yes, it does.
+      const originalNode = path.value.original.__clone();
+      originalNode.comments = path.value.comments || [];
+      originalNode.comments.push(j.commentBlock(` ${comment} `));
+      path.replace(originalNode);
+    });
+
+  // When it's part of a JSX tree, we have to insert a `jsxExpressionContainer`
+  // to hold the comment.
+  elementsNotFullyMigrated
+    .filter((path) => path.parentPath.value.type !== 'ReturnStatement')
+    .forEach((path) => {
+      const comment = `Couldn't merge all styles:\n${j(path).toSource()}`;
+
+      const commentContent = j.jsxEmptyExpression();
+      commentContent.comments = [j.commentBlock(` ${comment} `, false, true)];
+      path.insertBefore(j.jsxExpressionContainer(commentContent));
+      path.insertBefore(j.jsxText('\n'));
+      // Restore the changed node to its original state
+      // @ts-expect-error Yes, it does.
+      path.replace(path.value.original);
+    });
 
   const importPaths = Array.from(importCache.keys());
 
@@ -410,7 +439,6 @@ export default async function transformer(
 
   /*
     .replaceWith((path) => {
-      debugger;
       const expression = j(path.value);
       // get Attribute
       walkExpressions(j, source, file, expression, importCache);
