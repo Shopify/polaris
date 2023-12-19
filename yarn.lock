@@ -4989,6 +4989,13 @@
   resolved "https://registry.yarnpkg.com/@types/parse5/-/parse5-5.0.3.tgz#e7b5aebbac150f8b5fdd4a46e7f0bd8e65e19109"
   integrity sha512-kUNnecmtkunAoQ3CnjmMkzNU/gtxG8guhi+Fk2U/kOpIKjIMKnXGp4IJCgQJrXSgMsWYimYG4TGjz/UzbGEBTw==
 
+"@types/postcss-js@^4.0.4":
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/@types/postcss-js/-/postcss-js-4.0.4.tgz#4f0fafd7a0508c7edd33095f8743e8cf5c28ad78"
+  integrity sha512-j5+GMZVIPCJpRTwI/mO64mCzv7X+zAEq3JP0EV2lo/BrLWHAohEubUJimIAY23rH27+wKce0fXUYjAdBoqlaYw==
+  dependencies:
+    postcss "^8.3.3"
+
 "@types/prettier@^2.1.5", "@types/prettier@^2.2.3":
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.7.3.tgz#3e51a17e291d01d17d3fc61422015a933af7a08f"
@@ -18787,7 +18794,7 @@ postcss@^7.0.27:
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.2.1, postcss@^8.2.15, postcss@^8.3.1, postcss@^8.3.11, postcss@^8.4.14, postcss@^8.4.19, postcss@^8.4.27:
+postcss@^8.2.1, postcss@^8.2.15, postcss@^8.3.1, postcss@^8.3.11, postcss@^8.3.3, postcss@^8.4.14, postcss@^8.4.19, postcss@^8.4.27:
   version "8.4.32"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.32.tgz#1dac6ac51ab19adb21b8b34fd2d93a86440ef6c9"
   integrity sha512-D/kj5JNu6oo2EIy+XL/26JEDTlIbB8hw85G8StOE6L74RQAVVP5rej6wxCNqyMbR4RkPfqvezVbPw81Ngd6Kcw==
