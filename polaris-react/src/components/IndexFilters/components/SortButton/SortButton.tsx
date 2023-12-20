@@ -122,13 +122,15 @@ export function SortButton({
       fluidContent
     >
       <Box
-        minWidth="148px"
-        paddingInlineStart="300"
-        paddingInlineEnd="300"
-        paddingBlockStart="200"
-        paddingBlockEnd="200"
-        borderBlockEndWidth="025"
-        borderColor="border-secondary"
+        sx={{
+          minWidth: '148px',
+          paddingInlineStart: '300',
+          paddingInlineEnd: '300',
+          paddingBlockStart: '200',
+          paddingBlockEnd: '200',
+          borderBlockEndWidth: '025',
+          borderColor: 'border-secondary',
+        }}
       >
         <ChoiceList
           title={i18n.translate('Polaris.IndexFilters.SortButton.title')}
@@ -138,10 +140,12 @@ export function SortButton({
         />
       </Box>
       <Box
-        paddingInlineStart="150"
-        paddingInlineEnd="150"
-        paddingBlockStart="200"
-        paddingBlockEnd="200"
+        sx={{
+          paddingInlineStart: '150',
+          paddingInlineEnd: '150',
+          paddingBlockStart: '200',
+          paddingBlockEnd: '200',
+        }}
       >
         <DirectionButton
           direction="asc"

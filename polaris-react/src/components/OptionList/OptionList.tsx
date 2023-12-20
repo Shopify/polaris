@@ -9,7 +9,6 @@ import {isSection} from '../../utilities/options';
 import {arraysAreEqual} from '../../utilities/arrays';
 import {useDeepEffect} from '../../utilities/use-deep-effect';
 import {Box} from '../Box';
-import type {BoxProps} from '../Box';
 import {Text} from '../Text';
 import {BlockStack} from '../BlockStack';
 
@@ -124,11 +123,13 @@ export function OptionList({
         const titleLevel = isFirstOption ? 'h2' : 'h3';
         const titleMarkup = title ? (
           <Box
-            paddingBlockStart={isFirstOption ? '050' : '300'}
-            paddingInlineStart="150"
-            paddingBlockEnd="100"
-            paddingInlineEnd="150"
-            borderColor="border-secondary"
+            sx={{
+              paddingBlockStart: isFirstOption ? '050' : '300',
+              paddingInlineStart: '150',
+              paddingBlockEnd: '100',
+              paddingInlineEnd: '150',
+              borderColor: 'border-secondary',
+            }}
           >
             <Text as={titleLevel} variant="headingSm">
               {title}
@@ -160,11 +161,7 @@ export function OptionList({
           });
 
         const option = (
-          <Box
-            as="ul"
-            id={`${id}-${sectionIndex}`}
-            role={role as BoxProps['role']}
-          >
+          <Box as="ul" id={`${id}-${sectionIndex}`} role={role}>
             {optionsMarkup}
           </Box>
         );
@@ -182,7 +179,9 @@ export function OptionList({
           <Box
             key={title || `noTitle-${sectionIndex}`}
             as="li"
-            paddingBlockStart={blockStartPadding}
+            sx={{
+              paddingBlockStart: blockStartPadding,
+            }}
           >
             <BlockStack gap={isFirstOption && sections ? undefined : '0'}>
               {titleMarkup}
@@ -194,7 +193,13 @@ export function OptionList({
     : null;
 
   return (
-    <Box as="ul" role={role as BoxProps['role']} padding="150">
+    <Box
+      as="ul"
+      role={role}
+      sx={{
+        padding: '150',
+      }}
+    >
       {optionsMarkup}
     </Box>
   );

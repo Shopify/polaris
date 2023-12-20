@@ -97,7 +97,7 @@ export function WithSection() {
       <Text as="h2" variant="headingSm">
         Online store dashboard
       </Text>
-      <Box paddingBlockStart="200">
+      <Box sx={{paddingBlockStart: '200'}}>
         <Text as="p" variant="bodyMd">
           View a summary of your online store’s performance.
         </Text>
@@ -113,7 +113,7 @@ export function WithSubduedSection() {
         <Text as="h2" variant="headingSm">
           Staff accounts
         </Text>
-        <Box paddingBlockEnd="200">
+        <Box sx={{paddingBlockEnd: '200'}}>
           <List>
             <List.Item>Felix Crafford</List.Item>
             <List.Item>Ezequiel Manno</List.Item>
@@ -121,7 +121,7 @@ export function WithSubduedSection() {
         </Box>
       </BlockStack>
       <Bleed marginBlockEnd="400" marginInline="400">
-        <Box background="bg-surface-secondary" padding="400">
+        <Box sx={{background: 'bg-surface-secondary', padding: '400'}}>
           <BlockStack gap="200">
             <Text as="h3" variant="headingSm" fontWeight="medium">
               Deactivated staff accounts
@@ -143,12 +143,12 @@ export function WithMultipleSections() {
       <Text as="h2" variant="headingSm">
         Online store dashboard
       </Text>
-      <Box paddingBlock="200">
+      <Box sx={{paddingBlock: '200'}}>
         <Text as="p" variant="bodyMd">
           View a summary of your online store’s performance.
         </Text>
       </Box>
-      <Box paddingBlockStart="200">
+      <Box sx={{paddingBlockStart: '200'}}>
         <Text as="p" variant="bodyMd">
           View a summary of your online store’s performance, including sales,
           visitors, top products, and referrals.
@@ -164,7 +164,7 @@ export function WithMultipleTitledSections() {
       <Text as="h2" variant="headingSm">
         Online store dashboard
       </Text>
-      <Box paddingBlock="200">
+      <Box sx={{paddingBlock: '200'}}>
         <BlockStack gap="200">
           <Text as="h3" variant="headingSm" fontWeight="medium">
             Reports
@@ -174,7 +174,7 @@ export function WithMultipleTitledSections() {
           </Text>
         </BlockStack>
       </Box>
-      <Box paddingBlockStart="200">
+      <Box sx={{paddingBlockStart: '200'}}>
         <BlockStack gap="200">
           <Text as="h3" variant="headingSm" fontWeight="medium">
             Summary
@@ -249,7 +249,7 @@ export function WithFlushedSection() {
           alt="a sheet with purple and orange stripes"
         />
       </Bleed>
-      <Box paddingBlockStart="400">
+      <Box sx={{paddingBlockStart: '400'}}>
         <Text as="p" variant="bodyMd">
           You can use sales reports to see information about your customers’
           orders based on criteria such as sales over time, by channel, or by
@@ -268,7 +268,7 @@ export function WithFlushedSectionAndSubduedSection() {
           source="https://burst.shopifycdn.com/photos/black-orange-stripes_373x@2x.jpg"
           alt="a sheet with purple and orange stripes"
         />
-        <Box background="bg-surface-secondary" padding="400">
+        <Box sx={{background: 'bg-surface-secondary', padding: '400'}}>
           <Text as="p" variant="bodyMd">
             You can use sales reports to see information about your customers’
             orders based on criteria such as sales over time, by channel, or by
@@ -709,9 +709,11 @@ export function WithAllElements() {
         {salesMarkup}
         <Bleed marginInline="400">
           <Box
-            background="bg-surface-secondary"
-            paddingBlock="300"
-            paddingInline="400"
+            sx={{
+              background: 'bg-surface-secondary',
+              paddingBlock: '300',
+              paddingInline: '400',
+            }}
           >
             <BlockStack gap="200">
               <Text as="h3" variant="headingSm" fontWeight="medium">

@@ -51,11 +51,13 @@ export const Card = ({
         zIndex="32"
       >
         <Box
-          background={background}
-          padding={padding}
-          overflowX="hidden"
-          overflowY="hidden"
-          minHeight="100%"
+          sx={{
+            background,
+            padding,
+            overflowX: 'hidden',
+            overflowY: 'hidden',
+            minHeight: '100%',
+          }}
         >
           {children}
         </Box>

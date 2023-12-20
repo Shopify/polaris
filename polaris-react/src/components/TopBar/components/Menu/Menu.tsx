@@ -89,7 +89,7 @@ export function Menu(props: MenuProps) {
       preferredAlignment="right"
     >
       <div className={styles.MenuItems}>
-        <Box width={customWidth}>
+        <Box sx={{width: customWidth}}>
           <ActionList
             actionRole="menuitem"
             onActionAnyItem={onClose}
