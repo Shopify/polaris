@@ -44,7 +44,7 @@ describe('Box', () => {
 
   it('tokenizes responsive style props', () => {
     const box = mountWithApp(
-      <Box color={{md: 'text', lg: 'text-brand-hover'}}>{children}</Box>,
+      <Box sx={{color: {md: 'text', lg: 'text-brand-hover'}}}>{children}</Box>,
     );
 
     expect(box).toContainReactComponent('div', {

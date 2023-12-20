@@ -20,10 +20,11 @@ export type Element =
   | 'ul'
   | 'li';
 
-export interface BoxNProps {
-  sx: Simplify<ResponsiveStylePropsWithModifiers>;
+export type {ResponsiveStylePropsWithModifiers};
+export interface BoxProps {
+  sx?: Simplify<ResponsiveStylePropsWithModifiers>;
   /** Visually hide the contents during print */
-  printHidden?: 'yes' | 'no';
+  printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
   visuallyHidden?: boolean;
 }
@@ -114,7 +115,7 @@ The lowest level Polaris primitive from which everything in the system is built.
 export const Box = forwardRef(function Box(
   {
     as: Tag = 'div',
-    sx,
+    sx = {},
     // id,
     // role,
     printHidden,
@@ -155,4 +156,4 @@ export const Box = forwardRef(function Box(
     },
     children,
   );
-}) as Polymorphic.ForwardRefComponent<Element, BoxNProps>;
+}) as Polymorphic.ForwardRefComponent<Element, BoxProps>;
