@@ -74,8 +74,6 @@ function IconsPage() {
     : router.query.icon ?? '';
   const currentSearchText = router.query.q ? `${router.query.q}` : '';
 
-  console.log(minorIcons);
-
   useEffect(() => {
     if (router.isReady && activeIcon) {
       scrollToActiveIcon(activeIcon);
