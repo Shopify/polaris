@@ -271,7 +271,7 @@ async function writeTSProperties(targetFile) {
   await targetFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import type {StandardLonghandProperties, Globals} from 'csstype';
 import type {breakpointsAliases,BreakpointsAlias,TokenizedStyleProps} from '@shopify/polaris-tokens';
-import type {OverrideProperties, Simplify}  from 'type-fest';
+import type {PickIndexSignature, OmitIndexSignature, Simplify}  from 'type-fest';
 
 import type {ResponsiveProp, ResponsivePropObject} from '../../utilities/css';
 
@@ -325,6 +325,30 @@ type SupportedCSSStyleProps = Omit<
   DisallowedStandardLonghandProperties
 >;
 
+type SimpleMergeByUnion<Destination, Source> = {
+  // Grab everything that's in Destination, but not in Source
+  [Key in keyof Destination as Key extends keyof Source ? never : Key]: Destination[Key]
+} & {
+  // Grab everything that's in Source, but not in Destination
+  [Key in keyof Source as Key extends keyof Destination ? never : Key]: Source[Key]
+} & {
+  // Union everything that's in both Source and Destination
+  // Doing 'as' here ensures we never end up with a property with type 'never'
+  [Key in keyof Destination as Key extends keyof Source ? Key : never]:
+    Key extends keyof Source
+      ? Destination[Key] | Source[Key]
+      // This should never happen thanks to our 'as' above, but is needed to
+      // satisfy the indexing of 'Source'.
+      : never;
+};
+
+// Splitting out index signatures ensures Typescript doesn't incorrectly narrow
+// down to just the index signatures themselves, wiping out the more specific
+// signatures which we want to keep.
+type MergeByUnion<Destination, Source> =
+  SimpleMergeByUnion<PickIndexSignature<Destination>, PickIndexSignature<Source>>
+  & SimpleMergeByUnion<OmitIndexSignature<Destination>, OmitIndexSignature<Source>>;
+
 /**
  * Some of our supported CSS properties must have a value from
  * \`@shopify/polaris-tokens\`, so we override those properties here
@@ -332,7 +356,7 @@ type SupportedCSSStyleProps = Omit<
  * @example
  * \`padding-inline-start\` can only accept the \`space-*\` tokens.
  */
-type LonghandStyleProps = OverrideProperties<
+type LonghandStyleProps = MergeByUnion<
   SupportedCSSStyleProps,
   // \`@shopify/polaris-tokens\` may type more CSS properties than we want to
   // support here, so ensure we're only picking the ones we explicityly support
