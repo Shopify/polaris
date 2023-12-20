@@ -235,12 +235,12 @@ async function writeTSProperties(targetFile) {
     return `${joined} and ${arr[arr.length - 1]}`;
   };
 
-  const createMinimumCommonUnionForAlias = (styleProps) => {
+  const createMinimumCommonUnionForAlias = (styleProps, type) => {
     const types = styleProps.map((prop) => cssLonghandProperties[prop].type);
     if (arraysAreEqualSets(...types)) {
       // If all the types are the same, just reference the first from the
       // list
-      return `LonghandStyleProps['${styleProps[0]}']`;
+      return `${type}['${styleProps[0]}']`;
     }
 
     // Otherwise, reduce it down to a minimum set by excluding all the
@@ -262,7 +262,7 @@ async function writeTSProperties(targetFile) {
 
     return endent`
       Exclude<
-          LonghandStyleProps['${styleProps[0]}'],
+          ${type}['${styleProps[0]}'],
           ${generateTSPickList(typesToRemoveFromFirst, 0)}
         >
     `;
@@ -271,7 +271,7 @@ async function writeTSProperties(targetFile) {
   await targetFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
 import type {StandardLonghandProperties, Globals} from 'csstype';
 import type {breakpointsAliases,BreakpointsAlias,TokenizedStyleProps} from '@shopify/polaris-tokens';
-import type {OverrideProperties, Simplify}  from 'type-fest';
+import type {PickIndexSignature, OmitIndexSignature, Simplify}  from 'type-fest';
 
 import type {ResponsiveProp, ResponsivePropObject} from '../../utilities/css';
 
@@ -286,7 +286,10 @@ ${
   ''
   // See: https://stackoverflow.com/a/73588195
 }
-// Force Typescript to flatten out a union type to its concrete values
+/**
+ * Force Typescript to flatten out a union type to its concrete values
+ */
+type SimplifyUnion<T> = Unwrap<WrapInObject<T>>;
 type WrapInObject<T> = T extends unknown ? { key: T } : never;
 type Unwrap<T> = T extends { key: unknown } ? T["key"] : never;
 
@@ -325,14 +328,38 @@ type SupportedCSSStyleProps = Omit<
   DisallowedStandardLonghandProperties
 >;
 
+type SimpleMergeByUnion<Destination, Source> = {
+  // Grab everything that's in Destination, but not in Source
+  [Key in keyof Destination as Key extends keyof Source ? never : Key]: Destination[Key]
+} & {
+  // Grab everything that's in Source, but not in Destination
+  [Key in keyof Source as Key extends keyof Destination ? never : Key]: Source[Key]
+} & {
+  // Union everything that's in both Source and Destination
+  // Doing 'as' here ensures we never end up with a property with type 'never'
+  [Key in keyof Destination as Key extends keyof Source ? Key : never]:
+    Key extends keyof Source
+      ? Destination[Key] | Source[Key]
+      // This should never happen thanks to our 'as' above, but is needed to
+      // satisfy the indexing of 'Source'.
+      : never;
+};
+
+// Splitting out index signatures ensures Typescript doesn't incorrectly narrow
+// down to just the index signatures themselves, wiping out the more specific
+// signatures which we want to keep.
+type MergeByUnion<Destination, Source> =
+  SimpleMergeByUnion<PickIndexSignature<Destination>, PickIndexSignature<Source>>
+  & SimpleMergeByUnion<OmitIndexSignature<Destination>, OmitIndexSignature<Source>>;
+
 /**
- * Some of our supported CSS properties must have a value from
- * \`@shopify/polaris-tokens\`, so we override those properties here
+ * Some of our supported CSS properties can use a value from
+ * \`@shopify/polaris-tokens\`, so we merge those properties here
  *
  * @example
  * \`padding-inline-start\` can only accept the \`space-*\` tokens.
  */
-type LonghandStyleProps = OverrideProperties<
+type LonghandStyleProps = MergeByUnion<
   SupportedCSSStyleProps,
   // \`@shopify/polaris-tokens\` may type more CSS properties than we want to
   // support here, so ensure we're only picking the ones we explicityly support
@@ -347,9 +374,12 @@ type StyleProps = LonghandStyleProps & StylePropAliases;
  */
 export type ResponsiveStyleProps = {
   [K in keyof StyleProps]?: ResponsiveProp<
-    // Excluding globally disallowed values as the last thing we do ensures none
-    // slip through the cracks in the above type definitions.
-    Unwrap<WrapInObject<Exclude<StyleProps[K], (typeof disallowedCSSPropertyValues)[number]>>>
+    // Give better IDE autocomplete/intellisense suggestions
+    SimplifyUnion<
+      // Excluding globally disallowed values as the last thing we do ensures
+      // none slip through the cracks in the above type definitions.
+      Exclude<StyleProps[K], (typeof disallowedCSSPropertyValues)[number]>
+    >
   >;
 };
 
@@ -375,7 +405,7 @@ export type ResponsiveStylePropObjects = {
 /**
 * Polaris specifies some aliases which are used as fallback values when an
 * explicit style prop isn't set. Aliases may themselves fallback to other
-* aliases. Some aliases may be tokenized values or CSS values, but never both.
+* aliases.
 *
  * @example
  * \`justify\` is an alias to \`justifyItems\` when \`justifyItems\` isn't set.
@@ -448,7 +478,10 @@ interface StylePropAliases {${Object.entries(inverseAliases)
      .map((prop) => `@see {@link LonghandStyleProps.${prop}}`)
      .join('\n   * ')}
    */
-  ${alias}?: ${createMinimumCommonUnionForAlias(styleProps)};`,
+  ${alias}?: ${createMinimumCommonUnionForAlias(
+        styleProps,
+        'LonghandStyleProps',
+      )};`,
     )
     .join('\n')}
 };
