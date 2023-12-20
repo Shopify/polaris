@@ -9,17 +9,16 @@ export function App() {
   const useFoo = true;
   return (
     /* Couldn't merge all styles:
-    <MyComponent
+    <Box
       className={useFoo ? {
         display: "block",
         color: "red",
         fontWeight: "bold"
       } : {
         display: "block"
-      }}
-    >
+      }}>
       Hello world
-    </MyComponent> */
+    </Box> */
     <MyComponent
       className={useFoo ? classNames(styles.Foo, styles.Bar) : styles2.Bar}
     >
