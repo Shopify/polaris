@@ -12,27 +12,27 @@ export default {
 export function All() {
   return (
     <BlockStack gap="400">
-      <Box maxWidth="290px">
+      <Box sx={{maxWidth: '290px'}}>
         <Card>
           <Default />
         </Card>
       </Box>
-      <Box maxWidth="556px">
+      <Box sx={{maxWidth: '556px'}}>
         <Card>
           <Ranged />
         </Card>
       </Box>
-      <Box maxWidth="556px">
+      <Box sx={{maxWidth: '556px'}}>
         <Card>
           <MultiMonthRanged />
         </Card>
       </Box>
-      <Box maxWidth="290px">
+      <Box sx={{maxWidth: '290px'}}>
         <Card>
           <WithDisabledDateRanges />
         </Card>
       </Box>
-      <Box maxWidth="290px">
+      <Box sx={{maxWidth: '290px'}}>
         <Card>
           <WithSpecificDisabledDates />
         </Card>

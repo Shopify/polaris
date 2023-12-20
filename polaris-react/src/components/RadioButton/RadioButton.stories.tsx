@@ -139,7 +139,13 @@ export function WithBleed() {
       </BlockStack>
       <BlockStack gap="200">
         <Text as="h2">Bleed</Text>
-        <Box width="min-content" background="bg-surface" borderRadius="300">
+        <Box
+          sx={{
+            width: 'min-content',
+            background: 'bg-surface',
+            borderRadius: '300',
+          }}
+        >
           <div
             // Flex to shrink the container to the height of the radio (ie;
             // ignore line-height)

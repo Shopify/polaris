@@ -115,39 +115,43 @@ export function WithOutline() {
   return (
     <BlockStack gap="400">
       <Box
-        sx={{}}
-        background="bg-surface"
-        padding="400"
-        outlineWidth="025"
-        outlineColor="border"
+        sx={{
+          background: 'bg-surface',
+          padding: '400',
+          outlineWidth: '025',
+          outlineColor: 'border',
+        }}
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
-        sx={{}}
-        background="bg-surface"
-        padding="400"
-        outlineWidth="025"
-        outlineStyle="dashed"
-        outlineColor="border-secondary"
+        sx={{
+          background: 'bg-surface',
+          padding: '400',
+          outlineWidth: '025',
+          outlineStyle: 'dashed',
+          outlineColor: 'border-secondary',
+        }}
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
-        sx={{}}
-        background="bg-surface"
-        padding="400"
-        outlineWidth="050"
-        outlineColor="border-info"
+        sx={{
+          background: 'bg-surface',
+          padding: '400',
+          outlineWidth: '050',
+          outlineColor: 'border-info',
+        }}
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>
       <Box
-        sx={{}}
-        background="bg-surface"
-        padding="400"
-        outlineWidth="100"
-        outlineColor="border-caution"
+        sx={{
+          background: 'bg-surface',
+          padding: '400',
+          outlineWidth: '100',
+          outlineColor: 'border-caution',
+        }}
       >
         <Icon source={PaintBrushMajor} tone="base" />
       </Box>

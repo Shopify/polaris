@@ -106,7 +106,7 @@ export function WithPrimitiveComponents() {
   );
 
   const headerMarkup = (
-    <Box width="100%">
+    <Box sx={{width: '100%'}}>
       <InlineStack
         gap="1200"
         align="space-between"
@@ -115,7 +115,7 @@ export function WithPrimitiveComponents() {
       >
         {settingTitle}
         {!mdDown ? (
-          <Box minWidth="fit-content">
+          <Box sx={{minWidth: 'fit-content'}}>
             <InlineStack align="end">{actionMarkup}</InlineStack>
           </Box>
         ) : null}
@@ -129,7 +129,7 @@ export function WithPrimitiveComponents() {
         {description}
       </Text>
       {mdDown ? (
-        <Box width="100%">
+        <Box sx={{width: '100%'}}>
           <InlineStack align="start">{actionMarkup}</InlineStack>
         </Box>
       ) : null}
@@ -139,7 +139,7 @@ export function WithPrimitiveComponents() {
   return (
     <Card>
       <BlockStack gap={{xs: '400', sm: '500'}}>
-        <Box width="100%">
+        <Box sx={{width: '100%'}}>
           <BlockStack gap={{xs: '200', sm: '400'}}>
             {headerMarkup}
             {descriptionMarkup}
@@ -220,7 +220,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
   );
 
   const headerMarkup = (
-    <Box width="100%">
+    <Box sx={{width: '100%'}}>
       <InlineStack
         gap="1200"
         align="space-between"
@@ -229,7 +229,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
       >
         {settingTitle}
         {!mdDown ? (
-          <Box minWidth="fit-content">
+          <Box sx={{minWidth: 'fit-content'}}>
             <InlineStack align="end">{actionMarkup}</InlineStack>
           </Box>
         ) : null}
@@ -243,7 +243,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
         {description}
       </Text>
       {mdDown ? (
-        <Box width="100%">
+        <Box sx={{width: '100%'}}>
           <InlineStack align="start">{actionMarkup}</InlineStack>
         </Box>
       ) : null}
@@ -253,7 +253,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
   return (
     <Card>
       <BlockStack gap={{xs: '400', sm: '500'}}>
-        <Box width="100%">
+        <Box sx={{width: '100%'}}>
           <BlockStack gap={{xs: '200', sm: '400'}}>
             {headerMarkup}
             {descriptionMarkup}

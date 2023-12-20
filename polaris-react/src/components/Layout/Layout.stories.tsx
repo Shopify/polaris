@@ -25,37 +25,37 @@ export function All() {
         One column
       </Text>
       <OneColumn />
-      <Box paddingBlockEnd="800" />
+      <Box sx={{paddingBlockEnd: '800'}} />
 
       <Text as="h2" variant="headingXl">
         Two columns with primary and secondary widths
       </Text>
       <TwoColumnsWithPrimaryAndSecondaryWidths />
-      <Box paddingBlockEnd="800" />
+      <Box sx={{paddingBlockEnd: '800'}} />
 
       <Text as="h2" variant="headingXl">
         Two columns with equal width
       </Text>
       <TwoColumnsWithEqualWidth />
-      <Box paddingBlockEnd="800" />
+      <Box sx={{paddingBlockEnd: '800'}} />
 
       <Text as="h2" variant="headingXl">
         Three columns with equal width
       </Text>
       <ThreeColumnsWithEqualWidth />
-      <Box paddingBlockEnd="800" />
+      <Box sx={{paddingBlockEnd: '800'}} />
 
       <Text as="h2" variant="headingXl">
         Annotated
       </Text>
       <Annotated />
-      <Box paddingBlockEnd="800" />
+      <Box sx={{paddingBlockEnd: '800'}} />
 
       <Text as="h2" variant="headingXl">
         Annotated with banner at the top
       </Text>
       <AnnotatedWithBannerAtTheTop />
-      <Box paddingBlockEnd="800" />
+      <Box sx={{paddingBlockEnd: '800'}} />
     </>
   );
 }

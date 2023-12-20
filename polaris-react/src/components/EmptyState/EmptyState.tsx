@@ -76,7 +76,7 @@ export function EmptyState({
     : null;
 
   const footerContentMarkup = footerContent ? (
-    <Box paddingBlockStart="400">
+    <Box sx={{paddingBlockStart: '400'}}>
       <Text as="span" alignment="center" variant="bodySm">
         {footerContent}
       </Text>
@@ -88,7 +88,11 @@ export function EmptyState({
     : null;
 
   const headingMarkup = heading ? (
-    <Box paddingBlockEnd="150">
+    <Box
+      sx={{
+        paddingBlockEnd: '150',
+      }}
+    >
       <Text variant="headingMd" as="p" alignment="center">
         {heading}
       </Text>
@@ -103,7 +107,11 @@ export function EmptyState({
 
   const textContentMarkup =
     headingMarkup || children ? (
-      <Box paddingBlockEnd="400">
+      <Box
+        sx={{
+          paddingBlockEnd: '400',
+        }}
+      >
         {headingMarkup}
         {childrenMarkup}
       </Box>
@@ -119,7 +127,11 @@ export function EmptyState({
 
   const detailsMarkup =
     textContentMarkup || actionsMarkup || footerContentMarkup ? (
-      <Box maxWidth={fullWidth ? '100%' : '400px'}>
+      <Box
+        sx={{
+          maxWidth: fullWidth ? '100%' : '400px',
+        }}
+      >
         <BlockStack inlineAlign="center">
           {textContentMarkup}
           {actionsMarkup}
@@ -130,10 +142,12 @@ export function EmptyState({
 
   return (
     <Box
-      paddingInlineStart="0"
-      paddingInlineEnd="0"
-      paddingBlockStart="500"
-      paddingBlockEnd="1600"
+      sx={{
+        paddingInlineStart: '0',
+        paddingInlineEnd: '0',
+        paddingBlockStart: '500',
+        paddingBlockEnd: '1600',
+      }}
     >
       <BlockStack inlineAlign="center">
         {imageMarkup}

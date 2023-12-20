@@ -28,7 +28,7 @@ export function All() {
           Default
         </Text>
         <Default />
-        <Box paddingBlockEnd="300" />
+        <Box sx={{paddingBlockEnd: '300'}} />
       </BlockStack>
 
       <BlockStack gap="200">
@@ -36,7 +36,7 @@ export function All() {
           With loading
         </Text>
         <WithLoading />
-        <Box paddingBlockEnd="300" />
+        <Box sx={{paddingBlockEnd: '300'}} />
       </BlockStack>
 
       <BlockStack gap="400">
@@ -44,7 +44,7 @@ export function All() {
           With action
         </Text>
         <WithAction />
-        <Box paddingBlockEnd="300" />
+        <Box sx={{paddingBlockEnd: '300'}} />
       </BlockStack>
 
       <BlockStack gap="200">
@@ -52,7 +52,7 @@ export function All() {
           With custom element
         </Text>
         <WithCustomOptions />
-        <Box paddingBlockEnd="300" />
+        <Box sx={{paddingBlockEnd: '300'}} />
       </BlockStack>
 
       <BlockStack gap="200">
@@ -60,7 +60,7 @@ export function All() {
           With search
         </Text>
         <WithSearch />
-        <Box paddingBlockEnd="300" />
+        <Box sx={{paddingBlockEnd: '300'}} />
       </BlockStack>
 
       <BlockStack gap="200">
@@ -69,7 +69,7 @@ export function All() {
         </Text>
         <WithDisabledTextOption />
       </BlockStack>
-      <Box paddingBlockEnd="300" />
+      <Box sx={{paddingBlockEnd: '300'}} />
     </BlockStack>
   );
 }
@@ -164,7 +164,7 @@ export function WithCustomOptions() {
         return (
           <Listbox.Option key={id} value={value} selected={selected}>
             <Listbox.TextOption selected={selected}>
-              <Box width="100%">
+              <Box sx={{width: '100%'}}>
                 <InlineStack gap="200" align="space-between">
                   {label}
                   <Text as="span" tone="subdued">
@@ -463,7 +463,7 @@ export function WithSearch() {
 export function WithDisabledTextOption() {
   return (
     <LegacyCard>
-      <Box paddingBlockStart="200" paddingBlockEnd="200">
+      <Box sx={{paddingBlockStart: '200', paddingBlockEnd: '200'}}>
         <Listbox accessibilityLabel="Listbox with disabled item example">
           <Listbox.Option value="UniqueValue-1">
             <Listbox.TextOption>Item 1</Listbox.TextOption>

@@ -27,10 +27,12 @@ export function Header({
   if (titleHidden || !children) {
     return (
       <Box
-        position="absolute"
-        insetInlineEnd={headerPaddingInline}
-        insetBlockStart={headerPaddingBlock}
-        zIndex="1"
+        sx={{
+          position: 'absolute',
+          insetInlineEnd: headerPaddingInline,
+          insetBlockStart: headerPaddingBlock,
+          zIndex: '1',
+        }}
       >
         <CloseButton onClick={onClose} />
       </Box>
@@ -39,13 +41,15 @@ export function Header({
 
   return (
     <Box
-      paddingBlockStart="400"
-      paddingBlockEnd="400"
-      paddingInlineStart={headerPaddingInline}
-      paddingInlineEnd={headerPaddingInline}
-      borderBlockEndWidth="025"
-      borderColor="border"
-      background="bg-surface-tertiary"
+      sx={{
+        paddingBlockStart: '400',
+        paddingBlockEnd: '400',
+        paddingInlineStart: headerPaddingInline,
+        paddingInlineEnd: headerPaddingInline,
+        borderBlockEndWidth: '025',
+        borderColor: 'border',
+        background: 'bg-surface-tertiary',
+      }}
     >
       <InlineGrid columns={{xs: '1fr auto'}} gap="400">
         <InlineStack gap="400" blockAlign="center">

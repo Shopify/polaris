@@ -33,7 +33,7 @@ export function List({
 
   return (
     <div onKeyDown={handleKeyDown} onKeyUp={onKeyPress}>
-      <Box as="ul" padding="200">
+      <Box as="ul" sx={{padding: '200'}}>
         {tabs}
       </Box>
     </div>

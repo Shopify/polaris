@@ -138,7 +138,7 @@ export function All() {
   return (
     <LegacyCard sectioned>
       {sizeEntries.map(([size, sizeLabel]) => (
-        <Box key={size} paddingBlockEnd="200">
+        <Box key={size} sx={{paddingBlockEnd: '200'}}>
           <BlockStack gap="300">
             <Text as="h2" variant="headingXl">
               Size: {sizeLabel}

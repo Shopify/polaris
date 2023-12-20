@@ -114,7 +114,7 @@ export function Item({
     </InlineStack>
   );
 
-  const contentWrapper = <Box width="100%">{contentElement}</Box>;
+  const contentWrapper = <Box sx={{width: '100%'}}>{contentElement}</Box>;
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
 
@@ -167,7 +167,7 @@ export const TruncateText = ({children}: {children: string}) => {
   }, [children]);
   const text = (
     <Text as="span" truncate>
-      <Box width="100%" ref={textRef}>
+      <Box sx={{width: '100%'}} ref={textRef}>
         {children}
       </Box>
     </Text>
