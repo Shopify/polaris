@@ -5,10 +5,21 @@ import postcssJS from 'postcss-js';
 import sassPlugin from '@csstools/postcss-sass';
 import sassSyntax from 'postcss-scss';
 import postcss from 'postcss';
-import type {JSCodeshift, API, FileInfo, ObjectExpression} from 'jscodeshift';
+import type {
+  JSCodeshift,
+  API,
+  Collection,
+  FileInfo,
+  ObjectExpression,
+} from 'jscodeshift';
 
 import {insertJSXAttribute, removeJSXAttributes} from '../../utilities/jsx';
 
+// TODO: this should come from config / options. We're hardcoding it now for convenience
+const ABSOLUTE_PATH_TO_BOX = path.resolve(
+  process.cwd(),
+  './polaris-react/src/component/Box',
+);
 // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/array-type
 type ObjectExpressionProperty = ObjectExpression['properties'] extends Array<
   infer T
@@ -300,6 +311,28 @@ export default async function transformer(
       }),
   );
 
+  source
+    .findJSXElements()
+    .filter((path) => {
+      return (
+        j(path)
+          .find(j.JSXAttribute, (node) => node.name.name === 'className')
+          .size() > 0
+      );
+    })
+    .forEach((nodePath) => {
+      j(nodePath)
+        .find(j.JSXOpeningElement)
+        .filter((node: any) => node.parentPath.value === nodePath.node)
+        .replaceWith((path: any) =>
+          j.jsxOpeningElement(j.jsxIdentifier('Box'), path.value.attributes),
+        );
+      j(nodePath)
+        .find(j.JSXClosingElement)
+        .filter((node: any) => node.parentPath.value === nodePath.node)
+        .replaceWith(j.jsxClosingElement(j.jsxIdentifier('Box')));
+    });
+
   // When we have styles reassigned to a variable, we have to switch over to
   // that assignment and do all the same dance with converting to POJOs, etc
   // identifierCollection
@@ -363,6 +396,15 @@ export default async function transformer(
       const jsxElement = findUp(path, (parentPath) =>
         j.JSXElement.check(parentPath.value),
       );
+      j(jsxElement)
+        .find(j.JSXOpeningElement)
+        .filter((node: any) => node.parentPath.value === jsxElement.value)
+        .replaceWith(j.jsxOpeningElement(j.jsxIdentifier('Box'), []));
+
+      j(jsxElement)
+        .find(j.JSXClosingElement)
+        .filter((node: any) => node.parentPath.value === jsxElement.value)
+        .replaceWith(j.jsxClosingElement(j.jsxIdentifier('Box')));
       insertStyleProps(j, jsxElement, pojo);
     });
 
@@ -431,6 +473,31 @@ export default async function transformer(
   });
 
   j(removableImportPaths).remove();
+  function insertBoxImport(
+    j: JSCodeshift,
+    source: Collection<any>,
+    file: FileInfo,
+    pathToBox: string,
+  ) {
+    const pathToPolarisBox = path.relative(file.path, pathToBox);
+    const BoxElements = source
+      .find(j.JSXOpeningElement)
+      .find(j.JSXIdentifier, (node: any) => node.name === 'Box');
+
+    if (BoxElements.size() > 0) {
+      source
+        .find(j.ImportDeclaration)
+        .get()
+        .insertAfter(
+          j.importDeclaration(
+            [j.importSpecifier(j.identifier('Box'))],
+            j.literal(pathToPolarisBox),
+          ),
+        );
+    }
+  }
+
+  insertBoxImport(j, source, file, ABSOLUTE_PATH_TO_BOX);
 
   return source.toSource();
 }
