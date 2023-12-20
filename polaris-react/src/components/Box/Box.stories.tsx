@@ -19,10 +19,13 @@ export function WithBorders() {
   return (
     <BlockStack gap="400">
       <Box
-        background="bg-surface"
-        padding="400"
-        borderWidth="025"
-        borderColor="border"
+        printHidden
+        sx={{
+          background: 'bg-surface',
+          padding: '400',
+          borderWidth: '025',
+          borderColor: 'border',
+        }}
       >
         <Text as="p">1px solid border</Text>
       </Box>

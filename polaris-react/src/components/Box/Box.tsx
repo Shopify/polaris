@@ -1,5 +1,6 @@
 import React, {forwardRef} from 'react';
 import type {Simplify} from 'type-fest';
+import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
 import {classNames, createPolarisCSSVar} from '../../utilities/css';
 
@@ -19,28 +20,13 @@ export type Element =
   | 'ul'
   | 'li';
 
-export interface BoxProps
-  extends ResponsiveStylePropsWithModifiers,
-    React.AriaAttributes {
-  /** HTML Element type
-   * @default 'div'
-   */
-  as?: Element;
-  /** HTML id attribute */
-  id?: HTMLElement['id'];
-  /** Aria role */
-  role?: Extract<
-    React.AriaRole,
-    'status' | 'presentation' | 'menu' | 'listbox' | 'combobox' | 'group'
-  >;
-  /** HTML tabIndex */
-  tabIndex?: number;
+export interface BoxNProps {
+  sx: Simplify<ResponsiveStylePropsWithModifiers>;
   /** Visually hide the contents during print */
-  printHidden?: boolean;
+  printHidden?: 'yes' | 'no';
   /** Visually hide the contents (still announced by screenreader) */
   visuallyHidden?: boolean;
 }
-
 /**
 The lowest level Polaris primitive from which everything in the system is built.
 
@@ -125,31 +111,22 @@ The lowest level Polaris primitive from which everything in the system is built.
 `} />
 ```
 */
-export const Box = forwardRef<
-  HTMLElement,
-  Simplify<React.PropsWithChildren<BoxProps>>
->(function Box(
+export const Box = forwardRef(function Box(
   {
     as: Tag = 'div',
-    id,
-    role,
+    sx,
+    // id,
+    // role,
     printHidden,
     visuallyHidden,
-    tabIndex,
+    // tabIndex,
     children,
     ...props
   },
   forwardedRef,
 ) {
-  const propArray = Object.entries(props);
-  const styleProps = Object.fromEntries(
-    propArray.filter(([key]) => !key.startsWith('aria-')),
-  );
-  const ariaProps = Object.fromEntries(
-    propArray.filter(([key]) => key.startsWith('aria-')),
-  );
   const styles = convertStylePropsToCSSProperties(
-    styleProps,
+    sx,
     stylePropDefaults,
     (value, prop) =>
       // If this is a tokenized styleprop, we must convert it to a CSS var().
@@ -172,13 +149,10 @@ export const Box = forwardRef<
     Tag,
     {
       ref: forwardedRef,
-      id,
-      role,
-      tabIndex,
       style: styles,
       className,
-      ...ariaProps,
+      ...props,
     },
     children,
   );
-});
+}) as Polymorphic.ForwardRefComponent<Element, BoxNProps>;
