@@ -1,8 +1,8 @@
 name: Facebook
-set: Minor
-description: Facebook logo
+set: minor
+description: Used to represent Facebook.
 keywords:
-  - facebook
+  - Facebook
   - social media
 authors:
   - Joe Thomas
