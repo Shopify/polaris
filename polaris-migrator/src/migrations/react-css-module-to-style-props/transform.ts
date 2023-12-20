@@ -11,14 +11,19 @@ import type {
   Collection,
   FileInfo,
   ObjectExpression,
+  Options,
 } from 'jscodeshift';
 
 import {insertJSXAttribute, removeJSXAttributes} from '../../utilities/jsx';
 
+export interface MigrationOptions extends Options {
+  commentOnFailure: boolean;
+}
+
 // TODO: this should come from config / options. We're hardcoding it now for convenience
 const ABSOLUTE_PATH_TO_BOX = path.resolve(
-  process.cwd(),
-  './polaris-react/src/component/Box',
+  __dirname,
+  '../../../../../polaris-react/src/components/Box',
 );
 // eslint-disable-next-line @typescript-eslint/ban-types, @typescript-eslint/array-type
 type ObjectExpressionProperty = ObjectExpression['properties'] extends Array<
@@ -242,6 +247,36 @@ const mergeObjectExpressionList = (j: JSCodeshift, elements: Node[]) => {
   return result;
 };
 
+const insertBoxImport = (
+  j: JSCodeshift,
+  source: Collection<any>,
+  file: FileInfo,
+  pathToBox: string,
+) => {
+  const pathToPolarisBox = path.relative(path.dirname(file.path), pathToBox);
+  const BoxElements = source
+    .find(j.JSXOpeningElement)
+    .find(j.JSXIdentifier, (node: any) => node.name === 'Box')
+    .filter((path) => !getImportNodeForIdentifier(j, path.value.name, path));
+
+  // Cases to think about later:
+  // 1. There's an import from the box path, but it doesn't import `Box`
+  // 2. What if there's a `Box` import from a different file? We need to import
+  //    `Box2` or something.
+
+  if (BoxElements.size() > 0) {
+    source
+      .find(j.ImportDeclaration)
+      .get()
+      .insertAfter(
+        j.importDeclaration(
+          [j.importSpecifier(j.identifier('Box'))],
+          j.literal(pathToPolarisBox),
+        ),
+      );
+  }
+};
+
 // const isLocalVariableReference = (
 //   j: JSCodeshift,
 //   identifier: string,
@@ -254,6 +289,7 @@ const mergeObjectExpressionList = (j: JSCodeshift, elements: Node[]) => {
 export default async function transformer(
   file: FileInfo,
   {jscodeshift: j}: API,
+  options: MigrationOptions,
 ) {
   const source = j(file.source);
   const importCache: ImportCache = new Map();
@@ -424,12 +460,14 @@ export default async function transformer(
   elementsNotFullyMigrated
     .filter((path) => path.parentPath.value.type === 'ReturnStatement')
     .forEach((path) => {
-      const comment = `Couldn't merge all styles:\n${j(path).toSource()}`;
-      // Restore the changed node to its original state
       // @ts-expect-error Yes, it does.
       const originalNode = path.value.original.__clone();
-      originalNode.comments = path.value.comments || [];
-      originalNode.comments.push(j.commentBlock(` ${comment} `));
+      if (options.commentOnFailure) {
+        const comment = `Couldn't merge all styles:\n${j(path).toSource()}`;
+        // Restore the changed node to its original state
+        originalNode.comments = path.value.comments || [];
+        originalNode.comments.push(j.commentBlock(` ${comment} `));
+      }
       path.replace(originalNode);
     });
 
@@ -438,12 +476,14 @@ export default async function transformer(
   elementsNotFullyMigrated
     .filter((path) => path.parentPath.value.type !== 'ReturnStatement')
     .forEach((path) => {
-      const comment = `Couldn't merge all styles:\n${j(path).toSource()}`;
+      if (options.commentOnFailure) {
+        const comment = `Couldn't merge all styles:\n${j(path).toSource()}`;
 
-      const commentContent = j.jsxEmptyExpression();
-      commentContent.comments = [j.commentBlock(` ${comment} `, false, true)];
-      path.insertBefore(j.jsxExpressionContainer(commentContent));
-      path.insertBefore(j.jsxText('\n'));
+        const commentContent = j.jsxEmptyExpression();
+        commentContent.comments = [j.commentBlock(` ${comment} `, false, true)];
+        path.insertBefore(j.jsxExpressionContainer(commentContent));
+        path.insertBefore(j.jsxText('\n'));
+      }
       // Restore the changed node to its original state
       // @ts-expect-error Yes, it does.
       path.replace(path.value.original);
@@ -473,29 +513,6 @@ export default async function transformer(
   });
 
   j(removableImportPaths).remove();
-  function insertBoxImport(
-    j: JSCodeshift,
-    source: Collection<any>,
-    file: FileInfo,
-    pathToBox: string,
-  ) {
-    const pathToPolarisBox = path.relative(file.path, pathToBox);
-    const BoxElements = source
-      .find(j.JSXOpeningElement)
-      .find(j.JSXIdentifier, (node: any) => node.name === 'Box');
-
-    if (BoxElements.size() > 0) {
-      source
-        .find(j.ImportDeclaration)
-        .get()
-        .insertAfter(
-          j.importDeclaration(
-            [j.importSpecifier(j.identifier('Box'))],
-            j.literal(pathToPolarisBox),
-          ),
-        );
-    }
-  }
 
   insertBoxImport(j, source, file, ABSOLUTE_PATH_TO_BOX);
 
