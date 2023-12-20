@@ -123,7 +123,7 @@ export function replaceJSXElement(
       j.jsxIdentifier(componentName),
       element.node.openingElement.attributes,
     ),
-    j.jsxClosingElement(j.jsxIdentifier(componentName)),
+    element.node.openingElement.selfClosing ? null : j.jsxClosingElement(j.jsxIdentifier(componentName)),
     element.node.children,
   );
 

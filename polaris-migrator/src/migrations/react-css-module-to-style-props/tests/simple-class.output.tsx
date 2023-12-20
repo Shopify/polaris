@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Box} from '../../../../../polaris-react/src/component/Box';
+import {Box} from '../../../../../../polaris-react/src/components/Box';
 
 declare function MyComponent(props: any): JSX.Element;
 export function App() {

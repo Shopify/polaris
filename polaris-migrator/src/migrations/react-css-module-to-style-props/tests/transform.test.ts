@@ -19,6 +19,13 @@ const fixtures = [
     name: 'ternary',
     options,
   },
+  {
+    name: 'failure-comment',
+    options: {
+      ...options,
+      commentOnFailure: true,
+    },
+  },
 ];
 
 for (const fixture of fixtures) {

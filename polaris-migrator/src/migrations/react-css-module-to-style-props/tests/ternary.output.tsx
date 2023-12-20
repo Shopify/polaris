@@ -8,17 +8,6 @@ declare function MyComponent(props: any): JSX.Element;
 export function App() {
   const useFoo = true;
   return (
-    /* Couldn't merge all styles:
-    <Box
-      className={useFoo ? {
-        display: "block",
-        color: "red",
-        fontWeight: "bold"
-      } : {
-        display: "block"
-      }}>
-      Hello world
-    </Box> */
     <MyComponent
       className={useFoo ? classNames(styles.Foo, styles.Bar) : styles2.Bar}
     >
