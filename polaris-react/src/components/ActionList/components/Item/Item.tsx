@@ -10,6 +10,7 @@ import {Text} from '../../../Text';
 import styles from '../../ActionList.module.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {InlineStack} from '../../../InlineStack';
+import type {ResponsiveStylePropsWithModifiers} from '../../../Box';
 import {Box} from '../../../Box';
 import {Tooltip} from '../../../Tooltip';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
@@ -42,29 +43,126 @@ export function Item({
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
+
     destructive && styles.destructive,
     active && styles.active,
     variant === 'default' && styles.default,
     variant === 'indented' && styles.indented,
     variant === 'menu' && styles.menu,
   );
+  const indentedItemMargin = 'calc(var(--p-space-500) + var(--p-space-050))';
+  const indentedItemWidth = `calc(100% - ${indentedItemMargin})`;
+
+  const itemStyleProps: ResponsiveStylePropsWithModifiers = {
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    minHeight: 'var(--pc-action-list-item-min-height)',
+    textAlign: 'left',
+    textDecorationLine: 'none',
+    cursor: 'pointer',
+    padding: 'var(--p-space-150)',
+    borderRadius: 'var(--p-border-radius-200)',
+    borderBlockStartWidth: 'var(--p-border-width-025)',
+    borderBlockStartColor: 'transparent',
+    borderBlockStartStyle: 'solid',
+    color: 'inherit',
+    _hover: {
+      backgroundColor: 'var(--p-color-bg-surface-secondary-hover)',
+      textDecorationLine: 'none',
+      outlineWidth: 'var(--p-border-width-050)',
+      outlineStyle: 'solid',
+      outlineColor: 'transparent',
+      ...(disabled && {
+        backgroundColor: 'unset',
+      }),
+      ...(destructive && {
+        backgroundColor: 'var(--p-color-bg-surface-critical-hover)',
+      }),
+    },
+    _active: {
+      backgroundColor: 'var(--p-color-bg-surface-secondary-active)',
+      ...(destructive && {
+        backgroundColor: 'var(--p-color-bg-surface-critical-active)',
+      }),
+    },
+    _before: {
+      ...(active && {
+        display: 'none',
+      }),
+      ...(variant === 'indented' && {
+        content: '""',
+        position: 'absolute',
+        top: 'calc(var(--p-space-300) * -1)',
+        bottom: 0,
+        left: 0,
+        borderLeft: 'var(--p-border-width-025) solid var(--p-color-border)',
+        marginLeft: 'calc(var(--p-space-150) * -1)',
+      }),
+    },
+    _visited: {
+      color: 'inherit',
+    },
+    ...(disabled && {
+      backgroundImage: 'none',
+      color: 'var(--p-color-text-disabled)',
+      cursor: 'default',
+    }),
+    ...(destructive && {
+      color: 'var(--p-color-text-critical)',
+      ...(active && {
+        backgroundColor: 'var(--p-color-bg-surface-critical-active)',
+      }),
+    }),
+    ...(active && {
+      backgroundColor: 'var(--p-color-bg-surface-secondary-selected)',
+      fontWeight: 'var(--p-font-weight-semibold)',
+    }),
+    ...(variant === 'indented' && {
+      position: 'relative',
+      marginLeft: indentedItemMargin,
+      maxWidth: indentedItemWidth,
+    }),
+    // variant === 'menu' && styles.menu,
+  };
 
   let prefixMarkup: React.ReactNode | null = null;
+  const prefixStyleProps = {
+    display: 'flex',
+    flexGrow: '0',
+    flexShrink: '0',
+    flexBasis: 'auto',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBlock: 'calc(-0.5 * var(--pc-action-list-image-size))',
+    marginInline: '0',
+    backgroundSize: 'cover',
+    backgroundPositionX: 'center',
+    backgroundPositionY: 'center',
+  };
 
   if (prefix) {
-    prefixMarkup = <span className={styles.Prefix}>{prefix}</span>;
+    prefixMarkup = (
+      <Box as="span" className={styles.Prefix} sx={prefixStyleProps}>
+        {prefix}
+      </Box>
+    );
   } else if (icon) {
     prefixMarkup = (
-      <span className={styles.Prefix}>
+      <Box as="span" className={styles.Prefix} sx={prefixStyleProps}>
         <Icon source={icon} />
-      </span>
+      </Box>
     );
   } else if (image) {
     prefixMarkup = (
-      <span
+      <Box
+        as="span"
         role="presentation"
         className={styles.Prefix}
-        style={{backgroundImage: `url(${image}`}}
+        sx={{
+          backgroundImage: `url(${image}`,
+          ...prefixStyleProps,
+        }}
       />
     );
   }
@@ -92,18 +190,33 @@ export function Item({
   );
 
   const badgeMarkup = badge && (
-    <span className={styles.Suffix}>
+    <Box as="span" className={styles.Suffix}>
       <Badge tone={badge.tone}>{badge.content}</Badge>
-    </span>
+    </Box>
   );
 
   const suffixMarkup = suffix && (
     <Box>
-      <span className={styles.Suffix}>{suffix}</span>
+      <Box as="span" className={styles.Suffix}>
+        {suffix}
+      </Box>
     </Box>
   );
 
-  const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
+  const textMarkup = (
+    <Box
+      as="span"
+      sx={{
+        minWidth: '0',
+        maxWidth: '100%',
+        flexShrink: '1',
+        flexGrow: '1',
+        flexBasis: 'auto',
+      }}
+    >
+      {contentMarkup}
+    </Box>
+  );
 
   const contentElement = (
     <InlineStack blockAlign="center" gap="150" wrap={!truncate}>
@@ -131,10 +244,12 @@ export function Item({
       {contentWrapper}
     </UnstyledLink>
   ) : (
-    <button
+    <Box
+      as="button"
       id={id}
       type="button"
       className={className}
+      sx={itemStyleProps}
       disabled={disabled}
       aria-label={accessibilityLabel}
       onClick={onAction}
@@ -143,7 +258,7 @@ export function Item({
       onMouseEnter={onMouseEnter}
     >
       {contentWrapper}
-    </button>
+    </Box>
   );
 
   return (
