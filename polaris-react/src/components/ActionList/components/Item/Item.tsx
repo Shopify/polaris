@@ -61,29 +61,31 @@ export function Item({
     textAlign: 'left',
     textDecorationLine: 'none',
     cursor: 'pointer',
-    padding: 'var(--p-space-150)',
-    borderRadius: 'var(--p-border-radius-200)',
-    borderBlockStartWidth: 'var(--p-border-width-025)',
+    padding: '150',
+    borderRadius: '200',
+    borderBlockStartWidth: '025',
     borderBlockStartColor: 'transparent',
     borderBlockStartStyle: 'solid',
-    color: 'inherit',
     _hover: {
-      backgroundColor: 'var(--p-color-bg-surface-secondary-hover)',
+      backgroundColor: 'bg-surface-secondary-hover',
       textDecorationLine: 'none',
-      outlineWidth: 'var(--p-border-width-050)',
+      outlineWidth: '050',
       outlineStyle: 'solid',
       outlineColor: 'transparent',
       ...(disabled && {
         backgroundColor: 'unset',
       }),
       ...(destructive && {
-        backgroundColor: 'var(--p-color-bg-surface-critical-hover)',
+        backgroundColor: 'bg-surface-critical-hover',
       }),
     },
     _active: {
-      backgroundColor: 'var(--p-color-bg-surface-secondary-active)',
+      backgroundColor: 'bg-surface-secondary-active',
       ...(destructive && {
-        backgroundColor: 'var(--p-color-bg-surface-critical-active)',
+        backgroundColor: 'bg-surface-critical-active',
+      }),
+      ...(disabled && {
+        backgroundColor: undefined,
       }),
     },
     _before: {
@@ -96,12 +98,14 @@ export function Item({
         top: 'calc(var(--p-space-300) * -1)',
         bottom: 0,
         left: 0,
-        borderLeft: 'var(--p-border-width-025) solid var(--p-color-border)',
+        borderInlineStartColor: 'var(--p-border-width-025)',
+        borderInlineStartStyle: 'solid',
+        borderInlineStartWidth: '025',
         marginLeft: 'calc(var(--p-space-150) * -1)',
       }),
     },
     _visited: {
-      color: 'inherit',
+      color: undefined,
     },
     ...(disabled && {
       backgroundImage: 'none',
@@ -111,19 +115,18 @@ export function Item({
     ...(destructive && {
       color: 'var(--p-color-text-critical)',
       ...(active && {
-        backgroundColor: 'var(--p-color-bg-surface-critical-active)',
+        backgroundColor: 'bg-surface-critical-active',
       }),
     }),
     ...(active && {
-      backgroundColor: 'var(--p-color-bg-surface-secondary-selected)',
-      fontWeight: 'var(--p-font-weight-semibold)',
+      backgroundColor: 'bg-surface-secondary-selected',
+      fontWeight: 'semibold',
     }),
     ...(variant === 'indented' && {
       position: 'relative',
       marginLeft: indentedItemMargin,
       maxWidth: indentedItemWidth,
     }),
-    // variant === 'menu' && styles.menu,
   };
 
   let prefixMarkup: React.ReactNode | null = null;
@@ -139,6 +142,8 @@ export function Item({
     backgroundSize: 'cover',
     backgroundPositionX: 'center',
     backgroundPositionY: 'center',
+    height: 'var(--pc-action-list-image-size)',
+    width: 'var(--pc-action-list-image-size)',
   };
 
   if (prefix) {
@@ -236,6 +241,7 @@ export function Item({
       id={id}
       url={disabled ? null : url}
       className={className}
+      sx={itemStyleProps}
       external={external}
       aria-label={accessibilityLabel}
       onClick={disabled ? null : onAction}
