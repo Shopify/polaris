@@ -5,7 +5,7 @@ const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 export const styleFile = path.resolve(
   __dirname,
-  '../../src/components/Box/generated-style.scss',
+  '../../src/components/Box/generated-style.module.scss',
 );
 export const typesFile = path.resolve(
   __dirname,
@@ -285,13 +285,13 @@ export const stylePropConfig = {
 // https://drafts.csswg.org/css-syntax-3/#non-ascii-ident-code-point) AND
 // Typescript types
 export const modifiers = {
-  ':link': '_link',
-  ':visited': '_visited',
-  ':hover': '_hover',
-  ':focus': '_focus',
-  ':active': '_active',
   '::before': '_before',
   '::after': '_after',
+  ':active': '_active',
+  ':focus': '_focus',
+  ':hover': '_hover',
+  ':visited': '_visited',
+  ':link': '_link',
 };
 
 // Used to ensure custom properties don't collide with other user created ones

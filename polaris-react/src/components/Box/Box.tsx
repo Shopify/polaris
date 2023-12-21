@@ -2,9 +2,9 @@ import React, {forwardRef} from 'react';
 import type {Simplify} from 'type-fest';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 
-import {classNames, createPolarisCSSVar} from '../../utilities/css';
+import {classNames, createPolarisCSSVar, isCSSVar} from '../../utilities/css';
 
-import generatedStyle from './generated-style.scss';
+import generatedStyle from './generated-style.module.scss';
 import classes from './Box.module.scss';
 import type {ResponsiveStylePropsWithModifiers} from './generated-data';
 import {stylePropTokenGroupMap, stylePropDefaults} from './generated-data';
@@ -18,7 +18,8 @@ export type Element =
   | 'section'
   | 'legend'
   | 'ul'
-  | 'li';
+  | 'li'
+  | 'a';
 
 export type {ResponsiveStylePropsWithModifiers};
 export interface BoxProps {
@@ -116,6 +117,7 @@ export const Box = forwardRef(function Box(
   {
     as: Tag = 'div',
     sx = {},
+    className,
     // id,
     // role,
     printHidden,
@@ -131,7 +133,8 @@ export const Box = forwardRef(function Box(
     stylePropDefaults,
     (value, prop) =>
       // If this is a tokenized styleprop, we must convert it to a CSS var().
-      Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop)
+      Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop) &&
+      !isCSSVar(value as string | number)
         ? createPolarisCSSVar(
             stylePropTokenGroupMap[prop as keyof typeof stylePropTokenGroupMap],
             value as string | number,
@@ -139,11 +142,12 @@ export const Box = forwardRef(function Box(
         : value,
   );
 
-  const className = classNames(
+  const constructedClassname = classNames(
     generatedStyle.Box,
     visuallyHidden && classes.visuallyHidden,
     printHidden && classes.printHidden,
     Tag === 'ul' && classes.listReset,
+    className,
   );
 
   return React.createElement(
@@ -151,7 +155,7 @@ export const Box = forwardRef(function Box(
     {
       ref: forwardedRef,
       style: styles,
-      className,
+      className: constructedClassname,
       ...props,
     },
     children,

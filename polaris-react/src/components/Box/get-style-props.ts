@@ -387,7 +387,6 @@ export function convertStylePropsToCSSProperties(
 
       for (const _breakpoint of reversedBreakpointsAliases) {
         const breakpoint = _breakpoint as (typeof breakpointsAliases)[number];
-
         // Style prop has no value set for this breakpoint on the the given
         // modifier
         if (typeof stylePropObject[breakpoint] !== 'undefined') {
@@ -414,6 +413,7 @@ export function convertStylePropsToCSSProperties(
     // we need to do a runtime check for invalid values because some of the
     // csstype types have a `| string` union which then allows some values to
     // sneak through at runtime.
+
     invariant(
       !valuesByPriority.some(({value}) =>
         disallowedCSSPropertyValues.includes(
