@@ -114,12 +114,16 @@ export function getResponsiveValue<T = string>(
   );
 }
 
+export function isCSSVar(token: string | number | undefined): boolean {
+  return typeof token === 'string' && token.startsWith('var(');
+}
+
 export function createPolarisCSSVar<
   T extends string | number | undefined = string,
 >(tokenSubgroup: string | null, tokenValue: T): PolarisCSSVar {
   // `Grid`'s `gap` prop used to allow passing fully formed var() functions as
   // the value. This is no longer supported in v12+.
-  if (typeof tokenValue === 'string' && tokenValue.startsWith('var(')) {
+  if (isCSSVar(tokenValue)) {
     throw new Error(
       `"${tokenValue}" is not from the ${tokenSubgroup} token group.`,
     );
