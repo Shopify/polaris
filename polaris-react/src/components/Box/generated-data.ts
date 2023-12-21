@@ -113,7 +113,7 @@ export type ResponsiveStyleProps = {
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
  * `@shopify/polaris-tokens`), helpful aliases for frequently used props, and
-* the modifiers _hover and _visited.
+* the modifiers _link, _visited, _hover, _focus, _active, _before and _after.
  */
 export type ResponsiveStylePropsWithModifiers = Simplify<
   ResponsiveStyleProps & {
@@ -1584,7 +1584,7 @@ export const stylePropTokenGroupMap = {
 
 export const cssCustomPropertyNamespace = "_";
 
-export const modifiers = ["_hover","_visited"] as const;
+export const modifiers = ["_link","_visited","_hover","_focus","_active","_before","_after"] as const;
 
 export const baseStylePropsModifierKey = '' as const;
 type BaseStylePropsModifierKey = typeof baseStylePropsModifierKey;

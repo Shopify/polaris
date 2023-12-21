@@ -284,7 +284,15 @@ export const stylePropConfig = {
 // keys are CSS selectors, values are used as CSS custom property names (see
 // https://drafts.csswg.org/css-syntax-3/#non-ascii-ident-code-point) AND
 // Typescript types
-export const modifiers = {':hover': '_hover', ':visited': '_visited'};
+export const modifiers = {
+  ':link': '_link',
+  ':visited': '_visited',
+  ':hover': '_hover',
+  ':focus': '_focus',
+  ':active': '_active',
+  '::before': '_before',
+  '::after': '_after',
+};
 
 // Used to ensure custom properties don't collide with other user created ones
 // Alternatives: ⅀ ℈ ￪ 〓 ￮ _
