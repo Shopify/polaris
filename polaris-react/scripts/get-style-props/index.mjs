@@ -685,7 +685,7 @@ async function writeCSSMediaVars(file, modifiers = {}) {
     )
     .map(
       ([styleProp, {getDefault}]) =>
-        `${decamelize(styleProp, '-')}: ${BoxValueMapperFactory(
+        `${decamelize(styleProp, {separator: '-'})}: ${BoxValueMapperFactory(
           Object.fromEntries(
             Object.entries(cssPropsToTokenGroup).filter(
               ([prop]) =>
