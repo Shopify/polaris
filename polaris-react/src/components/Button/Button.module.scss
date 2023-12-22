@@ -64,7 +64,7 @@
 }
 
 .Button:active,
-.Button[aria-expanded='true'] {
+.Button[data-state='open'] {
   background: var(--pc-button-bg_active);
   color: var(--pc-button-color_active);
   box-shadow: var(--pc-button-box-shadow_active);
