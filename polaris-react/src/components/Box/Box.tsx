@@ -1,8 +1,9 @@
 import React, {forwardRef} from 'react';
-import type {Simplify} from 'type-fest';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
+import {metaThemeDefault, flattenMetaTheme} from '@shopify/polaris-tokens';
+import type {MetaTokenGroupShape} from '@shopify/polaris-tokens';
 
-import {classNames, createPolarisCSSVar, isCSSVar} from '../../utilities/css';
+import {classNames, createPolarisCSSVar} from '../../utilities/css';
 
 import generatedStyle from './generated-style.module.scss';
 import classes from './Box.module.scss';
@@ -22,12 +23,22 @@ export type Element =
   | 'a';
 
 export type {ResponsiveStylePropsWithModifiers};
+
 export interface BoxProps {
-  sx?: Simplify<ResponsiveStylePropsWithModifiers>;
+  sx?: ResponsiveStylePropsWithModifiers;
   /** Visually hide the contents during print */
   printHidden?: boolean;
   /** Visually hide the contents (still announced by screenreader) */
   visuallyHidden?: boolean;
+}
+
+const tokenValueMap: MetaTokenGroupShape = flattenMetaTheme(metaThemeDefault);
+function isTokenVariable(
+  tokenSubGroup: string | null,
+  token: string | number,
+): boolean {
+  const possibleToken = `${tokenSubGroup}-${token}`;
+  return typeof tokenValueMap[possibleToken] !== 'undefined';
 }
 /**
 The lowest level Polaris primitive from which everything in the system is built.
@@ -113,6 +124,7 @@ The lowest level Polaris primitive from which everything in the system is built.
 `} />
 ```
 */
+
 export const Box = forwardRef(function Box(
   {
     as: Tag = 'div',
@@ -131,15 +143,18 @@ export const Box = forwardRef(function Box(
   const styles = convertStylePropsToCSSProperties(
     sx,
     stylePropDefaults,
-    (value, prop) =>
+    (value, prop) => {
       // If this is a tokenized styleprop, we must convert it to a CSS var().
-      Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop) &&
-      !isCSSVar(value as string | number)
+      return isTokenVariable(
+        stylePropTokenGroupMap[prop as keyof typeof stylePropTokenGroupMap],
+        value as string | number,
+      )
         ? createPolarisCSSVar(
             stylePropTokenGroupMap[prop as keyof typeof stylePropTokenGroupMap],
             value as string | number,
           )
-        : value,
+        : value;
+    },
   );
 
   const constructedClassname = classNames(
