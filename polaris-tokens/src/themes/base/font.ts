@@ -166,11 +166,9 @@ const fontFamilyStyleProps = ['fontFamily'] as const;
 const fontLetterSpacingStyleProps = ['letterSpacing'] as const;
 
 export const fontStylePropTokenGroups = {
-  font: [
-    ...fontSizeStyleProps,
-    ...fontLineHeightStyleProps,
-    ...fontWeightStyleProps,
-    ...fontFamilyStyleProps,
-    ...fontLetterSpacingStyleProps,
-  ],
+  'font-family': fontFamilyStyleProps,
+  'font-letter-spacing': fontLetterSpacingStyleProps,
+  'font-line-height': fontLineHeightStyleProps,
+  'font-size': fontSizeStyleProps,
+  'font-weight': fontWeightStyleProps,
 } as const;
