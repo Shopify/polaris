@@ -72,11 +72,11 @@ export function Item({
       outlineWidth: '050',
       outlineStyle: 'solid',
       outlineColor: 'transparent',
-      ...(disabled && {
-        backgroundColor: 'unset',
-      }),
       ...(destructive && {
         backgroundColor: 'bg-surface-critical-hover',
+      }),
+      ...(disabled && {
+        backgroundColor: undefined,
       }),
     },
     _active: {

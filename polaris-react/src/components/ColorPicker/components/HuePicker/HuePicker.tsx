@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 
 import {Slidable} from '../Slidable';
 import type {SlidableProps} from '../Slidable';
+import {Box} from '../../../Box';
 import styles from '../../ColorPicker.module.scss';
 
 import {calculateDraggerY, hueForDraggerY} from './utilities';
@@ -28,14 +29,29 @@ export class HuePicker extends PureComponent<HuePickerProps, State> {
     const draggerY = calculateDraggerY(hue, sliderHeight, draggerHeight);
 
     return (
-      <div className={styles.HuePicker} ref={this.setSliderHeight}>
+      <Box
+        sx={{
+          backgroundImage: `linear-gradient(
+            to bottom,
+            red var(--pc-color-picker-dragger-size),
+            yellow,
+            rgb(0, 255, 0),
+            cyan,
+            blue,
+            rgb(255, 0, 255),
+            red calc(var(--pc-color-picker-size) - var(--pc-color-picker-dragger-size))
+          )`,
+        }}
+        className={styles.HuePicker}
+        ref={this.setSliderHeight}
+      >
         <Slidable
           draggerY={draggerY}
           draggerX={0}
           onChange={this.handleChange}
           onDraggerHeight={this.setDraggerHeight}
         />
-      </div>
+      </Box>
     );
   }
 
