@@ -89,7 +89,6 @@ export const disallowedCSSProperties = [
   // Exclude from https://www.w3.org/TR/css-cascade
   'all',
   // Exclude from https://www.w3.org/TR/css-content
-  'content',
   'quotes',
   'stringSet',
   'bookmarkLevel',
@@ -97,7 +96,6 @@ export const disallowedCSSProperties = [
   'bookmarkState',
   // Exclude from https://www.w3.org/TR/css-gcpm
   'copyInto',
-  'content',
   'footnoteDisplay',
   'footnotePolicy',
   // Exclude from https://www.w3.org/TR/css-page-floats
