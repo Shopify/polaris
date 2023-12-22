@@ -1,0 +1,642 @@
+---
+title: Card layout
+lede: Standardized card layout gives merchants a content structure to rely on.
+url: /patterns/card-layout
+hideChildren: true
+---
+
+<LayoutSection card>
+  <Text>
+    ## Anatomy
+
+    **Cards are made up of three main parts: the header, the body, and the footer. Each part has a specific role and should contain content that serves that role.**
+
+    A standardized structure ensures that common elements can be placed consistently. Consistent placement allows merchants to attach meaning to places, shape expectations, and quickly find what they are looking for.
+
+  </Text>
+
+  <Large>
+    ![A breakdown of major card parts; header up top, body in the middle, and footer at the bottom.](/images/patterns/card-layout/structure/card-layout-structure-01-card-anatomy@2x.png)
+  </Large>
+</LayoutSection>
+
+<LayoutSection card>
+  <ExtraLarge>
+    <Text>
+      ## Header
+
+      The header represents the whole card. It typically has a **card title** that makes the card easy to find, and often a **header action** that allows merchants to modify the card contents or navigate to where they can view more details.
+    </Text>
+
+  </ExtraLarge>
+
+  <Text>
+    ### Card titles
+
+    The card title represents the whole card. It should describe the purpose of the card and help merchants quickly find it among other cards.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![Three examples of good card titles that describe the purpose of the
+  card.](/images/patterns/card-layout/structure/card-layout-structure-02-card-titles@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![A card with a title that conveys the purpose of the card
+    content.](/images/patterns/card-layout/structure/card-layout-structure-03-card-title-do-convey-purpose@2x.png)
+
+Choose a title that clearly conveys the purpose of the card.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![A card with a Products as card title and a list of products in its body. An arrow pointing from the title towards the list to show that the title represents the object type in the list.](/images/patterns/card-layout/structure/card-layout-structure-04-card-title-do-use-object-type-as-title@2x.png)
+
+Use the object type as card title when the card is a list of objects.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![A card with tags as card title and a header action. The header action has a pen icon only, but no label. The action conveys that it’s an update action, and leverages the card title to make it clear what is being updated.](/images/patterns/card-layout/structure/card-layout-structure-05-card-title-do-imply-action@2x.png)
+
+Choose a title to clarify what the header action does.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![A card with Contact information as title showing how it represents the following card section titles, address and social media.](/images/patterns/card-layout/structure/card-layout-structure-06-card-title-do-represent-all-sections@2x.png)
+
+Choose a title that represents all sections if a card has multiple sections.
+
+  </Medium>
+
+  <Text>
+    ### Header actions
+
+    Actions in the header should represent the content of the whole card. The most common header action is the “Update” action, which allows merchants to modify the contents of the card. Another common action is the "View" action, which allows merchants to navigate to the source of the contents.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![The headers of two cards showing icon only
+  buttons.](/images/patterns/card-layout/structure/card-layout-structure-07-header-actions@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![A mouse cursor hovering an icon only header action with a clarifying tool tip floating above it.](/images/patterns/card-layout/structure/card-layout-structure-08-header-actions-do-use-plain-primary-button@2x.png)
+
+    Default to using [tertiary icon buttons](/components/actions/button?example=button-tertiary) in the header. Clarify the action with a tooltip.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card showing a call to action in the header.](/images/patterns/card-layout/structure/card-layout-structure-09-header-actions-dont-place-call-to-action-in-header@2x.png)
+
+    Place call-to-actions in the card header. Instead, place them in the card footer where merchants typically find actions that progress towards their goals. See [footer actions](#footer).
+
+  </Medium>
+
+  <Medium variant="do">
+    ![A card showing an item action being placed on a list item.](/images/patterns/card-layout/structure/card-layout-structure-10-header-actions-do-place-item-actions-on-items@2x.png)
+
+    Place actions that affect specific list items on the item itself.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card showing an item action being placed in the card header.](/images/patterns/card-layout/structure/card-layout-structure-11-header-actions-dont-place-item-actions-in-header@2x.png)
+
+    Place action in the header unless it represents the entire card. Instead, place the action in proximity to what it represents.
+
+  </Medium>
+
+  <Medium variant="caution">
+    ![A card showing an add item list action being placed in the card header.](/images/patterns/card-layout/structure/card-layout-structure-12-header-actions-caution-when-placing-list-actions-in-header@2x.png)
+
+    Avoid placing [list actions](#list-actions) in the card header by default. Default to placing such actions at the end of the list where the added item will appear. If cards only contain a list, then list actions may be placed in the header for merchant convenience.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card showing a three dot icon in the header.](/images/patterns/card-layout/structure/card-layout-structure-13-header-actions-dont-group-actions@2x.png)
+
+    Group actions in the header by default. Instead, use these guidelines to find placements that have meaning to merchants.
+
+  </Medium>
+
+</LayoutSection>
+
+<LayoutSection card>
+
+  <ExtraLarge>
+    <Text>
+      ## Body
+
+      The body holds the main content of a card. Common content types, such as lists, tables, and form layouts, are organized into one or multiple **card sections**.
+    </Text>
+
+  </ExtraLarge>
+
+  <Text>
+    ### Card sections
+
+    Card sections are used to group content in cards, and to separate such groups when there are more than one. A section typically has a heading and a main block of content, such as a list or a form layout.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![A card showing a card body with two card sections
+  outlined.](/images/patterns/card-layout/structure/card-layout-structure-14-body@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![A card showing a card body with two card sections. Both sections have blue outlines.](/images/patterns/card-layout/structure/card-layout-structure-15-body-do-use-card-sections-@2x.png)
+
+    Use a card with multiple sections to group content that shares purpose.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card showing a list with each item being wrapped by its own card section. Each item has a red outline to indicate improper usage.](/images/patterns/card-layout/structure/card-layout-structure-16-body-dont-use-card-sections-for-items@2x.png)
+
+    Use card sections to divide list items. Instead, use the appropriate list component or build a bespoke list structure within a single section.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![A card with a single section having no section title in addition to the card title.](/images/patterns/card-layout/structure/card-layout-structure-17-body-do-omit-section-title@2x.png)
+
+    Omit the section title in cards with a single section. However, maintain the [space-200 gap](/tokens/space#space-200) as typically used between section titles and content.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card that so many list items that it doesn’t fit in the view.](/images/patterns/card-layout/structure/card-layout-structure-18-body-dont-make-content-hard-to-overview@2x.png)
+
+    Allow cards to become so tall that they are difficult to overview. Instead, provide a [footer action](#footer) that allows merchants to expand and collapse the content.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![A card with two sections, each with an update action in its respective section header.](/images/patterns/card-layout/structure/card-layout-structure-19-body-do-place-actions-in-section-header@2x.png)
+
+    Place section actions in the section header where merchants can associate them to what they control.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card with two sections and an action list in the card header. Inside the action lists are actions that correspond with each section title.](/images/patterns/card-layout/structure/card-layout-structure-20-body-dont-group-section-actions-in-card-header@2x.png)
+
+    Group section actions in the card header, as it disconnects them from what they control. Instead, place such actions in the respective section header.
+
+  </Medium>
+
+  <Text>
+    ### Form layouts
+
+    Form layouts are containers that give structure to form elements, or “form layout items”. They often contain multiple items, but can also house a single one.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![A card with a form layout with four form layout items
+  inside.](/images/patterns/card-layout/structure/card-layout-structure-21-form-layouts@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![A card with a form layout wrapped in a card section.](/images/patterns/card-layout/structure/card-layout-structure-22-form-layouts-do-wrap-in-card-section@2x.png)
+
+    Form layouts are containers that give structure to form elements, or “form layout items”. They often contain multiple items, but can also house a single one.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![A card with a single form layout item wrapped in a form layout.](/images/patterns/card-layout/structure/card-layout-structure-23-form-layouts-do-use-form-layout-for-single-items@2x.png)
+
+    Use a form layout even when there is only a single item.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card with three text fields stretching the full width of the card, while their inputs are brief.](/images/patterns/card-layout/structure/card-layout-structure-24-form-layouts-dont-allow-items-to-be-excessively-wide@2x.png)
+
+    Allow form layout items to be wider than necessary. Instead, use a [form layout group](link) to arrange them side-by-side.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card showing two choice lists that take up the full width of the card while only occupying a quarter of it with content.](/images/patterns/card-layout/structure/card-layout-structure-25-form-layouts-dont-create-large-empty-spaces@2x.png)
+
+    Allow large areas of empty space to appear next to choice lists. Instead, find alternatives that make better use of horizontal space.
+
+  </Medium>
+</LayoutSection>
+
+<LayoutSection card>
+  <ExtraLarge>
+    <Text>
+      ## Footer
+
+      The footer is placed after the main content, which makes it an intuitive place for content and actions that extends from the card content. For example, call-to-actions that allow merchants to react to the card and continue with their next task.
+    </Text>
+
+  </ExtraLarge>
+
+  <Text>
+    ### Call-to-actions
+
+    Call-to-actions are specific prompts designed to guide merchants towards a goal. They are placed towards the right to inspire progress. A card can have none, one, or multiple call-to-actions. They are placed in the footer, so that merchants can react to the card contents and easily take the next step forward.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![A card with two calls to actions in the footer, one basic button to the left
+  and one primary to the
+  right.](/images/patterns/card-layout/structure/card-layout-structure-26-footer-call-to-actions@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![A card with a basic button call to action in the footer.](/images/patterns/card-layout/structure/card-layout-structure-27-footer-do-default-to-basic-buttons@2x.png)
+
+    Default to using basic buttons in the footer. Only use a primary button when it’s the most important action on the page.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![A card footer with a basic button with a suffix chevron icon. Below the button is an action list with three call to actions.](/images/patterns/card-layout/structure/card-layout-structure-28-footer-do-group-multiple-actions-in-action-list@2x.png)
+
+    Use an action list if the card has more than two call-to-actions.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card footer showing typical header actions in the footer.](/images/patterns/card-layout/structure/card-layout-structure-28-footer-do-group-multiple-actions-in-action-list@2x.png)
+
+    Use call-to-actions in the footer to update the content or presentation of the card. Instead, use [header actions](#header-actions) and [list actions](#list-actions).
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card footer with a primary button with the label Go to orders.](/images/patterns/card-layout/structure/card-layout-structure-30-footer-dont-use-primary-buttons-for-non-critical-actions@2x.png)
+
+    Use a primary button for actions that aren’t critical to fulfilling the purpose of the page.
+
+  </Medium>
+
+  <Text>
+    ### List actions
+
+    List actions are placed to the left in the footer. They are typically actions that allow merchants to add items to lists or expand and collapse the list.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![A card with a list and a list action at the bottom of the list. The label
+  says add
+  product.](/images/patterns/card-layout/structure/card-layout-structure-31-footer-list-actions@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![A card with a collapsed list in its body and a show more list action in the footer.](/images/patterns/card-layout/structure/card-layout-structure-32-footer-do-allow-merchants-to-expand-and-collapse-long-lists@2x.png)
+
+    Allow merchants to expand and collapse long lists.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card that repeats the object name listed three times. The object name locations appears in the card title, the multi select check box label, and in the show more list action.](/images/patterns/card-layout/structure/card-layout-structure-33-footer-dont-repeat-object-name-in-list-action@2x.png)
+
+    Repeat the object name in the button label. Instead, choose a card title that makes it clear what is being added to the list.
+
+  </Medium>
+</LayoutSection>
+
+<LayoutSection card>
+  <Text>
+    ## Spacing for merchants
+
+    When composing card content, spacing is used to achieve two important visual effects: grouping and hierarchy. When merchants can perceive clear grouping and hierarchy, it’s easier for them to scan a lot of content and faster find what they need.
+
+    In the admin, spacing is mainly achieved using padding and stacks.
+
+  </Text>
+
+  <Large>
+    ![A schematic of a card showing padding being used around the contents of the card and stacks to space content inside it.
+](/images/patterns/card-layout/spacing/card-layout-spacing-01-padding-and-stacks@2x.png)
+  </Large>
+</LayoutSection>
+
+<LayoutSection card>
+  <Text>
+    ## Padding
+
+    Padding is the space between a container’s content and its border. The default card padding is space-400.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![A schematic of a card showing padding being used around the contents of the
+  card and stacks to space content inside
+  it.](/images/patterns/card-layout/spacing/card-layout-spacing-02-padding@2x.png)
+</Large>
+
+  <Text>
+    ### Nested padding
+
+    It’s common that cards have containers nested inside them. When these containers have visual boundaries, such as with borders or dividers, then padding is used to create space between its content and border.
+
+    The general rule is that the deeper an element is nested, the smaller its padding is.
+
+  </Text>
+
+  <Large>
+    ![A schematic of a card showing space-300 padding being used around the contents of a container nested inside the card.](/images/patterns/card-layout/spacing/card-layout-spacing-03-padding-nested@2x.png)
+
+  </Large>
+
+  <Medium variant="do">
+    ![A card with visual overlays showing how padding is applied around the contents of a card and bleed being used to create negative margin to optically adjust a icon only button.](/images/patterns/card-layout/spacing/card-layout-spacing-04-padding-do-use-bleed@2x.png)
+
+    Apply padding to the card by default, and use [bleed](/components/layout-and-structure/bleed) with a negative margin to optically adjust content if needed.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A card showing how padding is used improperly to space content that should be using stacks.](/images/patterns/card-layout/spacing/card-layout-spacing-05-padding-dont-use-padding-between-blocks@2x.png)
+
+    Use padding to create space between elements. Instead, use [block stacks](/components/layout-and-structure/block-stack).
+
+  </Medium>
+
+<Medium variant="do">
+  ![A card showing proper usage of padding when creating space around a list or
+  table header with
+  borders.](/images/patterns/card-layout/spacing/card-layout-spacing-06-padding-do-use-padding-inside-scoped-containers@2x.png)
+
+Use padding inside visually scoped containers, such as the header of a data table.
+
+</Medium>
+
+<Medium variant="dont">
+  ![A card showing how padding is used improperly to create space around a card
+  section.](/images/patterns/card-layout/spacing/card-layout-spacing-07-padding-dont-use-padding-around-content@2x.png)
+
+Use padding for invisible containers, such as card sections or form layouts. Instead, use [block stacks](/components/layout-and-structure/block-stack).
+
+</Medium>
+
+</LayoutSection>
+
+<LayoutSection card>
+  <Text>
+    ## Stacks and gaps
+
+    Stacks are used to group content and give equal spacing between the elements within the group. The space between the elements is called the gap, and is always the same between each element.
+
+  </Text>
+
+  <Large>
+    ![A simple schematic showing a stack with gaps.](/images/patterns/card-layout/spacing/card-layout-spacing-08-stacks-and-gaps@2x.png)
+
+  </Large>
+
+  <Text>
+    ### Nested stacks
+
+    Stacks can also be nested to apply different gaps between different groups of content. It’s the difference between the gap sizes that creates the effect of grouping and hierarchy. Elements with tighter gaps are perceived as more related than those with a looser gap.
+
+  </Text>
+
+  <Large>
+    ![A simple schematic of two nested stacks, one placed as a child inside of the other. The inner stack has a smaller gap than the outer. A label saying closely related is pointing to the inner stack, and a label saying loosely related is pointing to the outer.](/images/patterns/card-layout/spacing/card-layout-spacing-09-stacks-nested-stacks@2x.png)
+
+  </Large>
+
+  <Medium variant="do">
+    ![A card example showing nested stacks applied. The outer stack has space-300 gaps between its three blocks; the card header and two form layout items. The form items are stacks with space-100 gaps between its blocks.](/images/patterns/card-layout/spacing/card-layout-spacing-10-stacks-do-use-nested-stacks@2x.png)
+
+    Use nested stacks to help merchants distinguish between closely and loosely related content, such as between sibling items and the content within an item.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![An example showing a card with a single stack of multiple types of blocks with space-200 gaps between.](/images/patterns/card-layout/spacing/card-layout-spacing-11-stacks-dont-flatten-hierarchy-in-a-single-stack@2x.png)
+
+    Use a flat hierarchy for content that should have different spatial relationships. For example, labels should be closer connected to the element it represents than to the element it doesn’t.
+
+  </Medium>
+
+    <Medium variant="do">
+    ![A example showing a card with a stack of sections with space-400 gaps between them. Each section is a stack with space-200 gaps.](/images/patterns/card-layout/spacing/card-layout-spacing-12-stacks-do-nest-stacks-to-group-sections@2x.png)
+
+    Use nested stacks to clearly associate section titles to the content they represent.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![An example showing a card with a single stack with space-200 gaps. Its blocks are section titles and section content. The equal space between the blocks center the section titles between the section content blocks, making it unclear which they belong to.](/images/patterns/card-layout/spacing/card-layout-spacing-13-stacks-dont-cause-titles-to-float-between-groups@2x.png)
+
+    Use a flat hierarchy that causes section titles to float with equal space to sections above and below.
+
+  </Medium>
+
+  <Text>
+    ### Common stacks
+
+    There are a few common stacks that can be used to meet recurring spacing needs. These stacks have gaps that range from space-100 to space-400, and they are purposefully used to create a familiar hierarchy of groups in cards across the admin.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![A simplified schematic showing nested stacks with three different gap sizes;
+  400, 200, and 100. The stacks with smaller gap sizes are blocks inside stacks
+  with bigger gap
+  sizes.](/images/patterns/card-layout/spacing/card-layout-spacing-14-stacks-common-gaps@2x.png)
+</Large>
+
+{' '}
+
+<Text>
+  **Space-100** is the tightest gap in cards and is used to group the most
+  related elements. The tight spacing makes the grouped elements stand out like
+  a unified item amongst surrounding groups.
+</Text>
+
+{' '}
+
+<Large>
+  ![A simplified schematic showing nested stacks with three different gap sizes;
+  400, 200, and 100. The stacks with smaller gap sizes are blocks inside stacks
+  with bigger gap sizes. The stacks with space-100 gaps are
+  highlighted.](/images/patterns/card-layout/spacing/card-layout-spacing-15-stacks-space-100@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![A part of a card showing two form layout items as stacks with space-100 gaps.](/images/patterns/card-layout/spacing/card-layout-spacing-16-stacks-do-use-inside-form-layout-items@2x.png)
+
+    Use space-100 between the elements within a form layout item.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![Two separate card parts showing stacks with space-100 gaps between the blocks. The stacks are lists and the blocks are simple list items without inner blocks.](/images/patterns/card-layout/spacing/card-layout-spacing-17-stacks-do-use-between-simple-list-items@2x.png)
+
+    Use space-100 between list items without help text or other types of child elements.
+
+  </Medium>
+
+{' '}
+
+<Text>
+  **Space-200** is the second tightest gap and is typically used to separate
+  blocks of content inside card sections. Using space-200 is the most common way
+  to space stacks that use space-100 gaps.
+</Text>
+
+{' '}
+
+<Large>
+  ![A simple schematic showing a card section as a stack with space-200 gaps
+  between its blocks. The blocks are the section header and two generic lists.
+  The lists are stacks with space-100
+  gaps.](/images/patterns/card-layout/spacing/card-layout-spacing-18-stacks-space-200@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![A generic card with its content blocks in a stack with space-200 gaps.](/images/patterns/card-layout/spacing/card-layout-spacing-19-stacks-do-use-between-card-parts@2x.png)
+
+    Use space-200 between the header, body, and footer in a card with a single section.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![A part of a card showing a card section as a stack with space-200 gaps between its blocks.](/images/patterns/card-layout/spacing/card-layout-spacing-20-stacks-do-use-inside-card-sections@2x.png)
+
+    Use space-200 between the heading and content of a card section.
+
+  </Medium>
+
+  <Medium variant="do">
+    ![An example card with a list of checkbox items. The list is a stack with space-200 gaps. Single block list items are blocks in the list stack. Multi-block list items are stacks with space-100 gaps.](/images/patterns/card-layout/spacing/card-layout-spacing-21-stacks-do-use-between-items-that-are-stacks-with-100-gaps@2x.png)
+
+    Use space-200 between items that are stacks with space-100 gaps. Grouping such items looser creates a distinguishable contrast to the tighter inner group.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![A part of a card showing a card section. The content block of the section is a list of single block items in a stack with space-200 gaps.](/images/patterns/card-layout/spacing/card-layout-spacing-22-stacks-dont-use-between-simple-items@2x.png)
+
+    Use space-200 between simple list items. Instead, use space-100 as these are the innermost groups.
+
+  </Medium>
+
+  <Text>
+    **Space-300** gaps are typically used to ensure clear separation between blocks containing closely related but irregularly shaped content, such as form layout items.
+
+    While space-200 gaps might seem logical around stacks with space-100 gaps, a smaller gap size often obscures groupings when block boundaries are hard to discern. This is particularly true for form layout items, where labels, inputs, and help text all exhibit variable size, shape, and weight. By increasing the gap size, content blocks can be more readily perceived as unified, discrete items.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![A simple schematic showing a stack with two blocks; card header and form
+  layout. The form layout is a stack of form layout items. Both stacks have
+  space-300
+  gaps.](/images/patterns/card-layout/spacing/card-layout-spacing-23-stacks-space-300@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![An example card showing a form layout with multiple form layout items. The form layout is a stack with space-300 gaps.](/images/patterns/card-layout/spacing/card-layout-spacing-24-stacks-do-use-between-layout-items@2x.png)
+
+    Use space-300 between form layout items.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![An example card showing a form layout with multiple form layout items. The form layout is a stack with space-200 gaps. The gap size causes unclear separation between two form layout items.](/images/patterns/card-layout/spacing/card-layout-spacing-25-stacks-dont-use-tight-space-between-form-layout-items@2x.png)
+
+    Use too tight spacing between groups of elements that have variable weight and shape, such as form layout items.
+
+  </Medium>
+
+{' '}
+
+<Text>
+  **Space-400** is the loosest card gap and is typically used to space cards
+  with multiple sections. The gap size is the same as the card padding, which
+  structures sections as neatly merged cards.
+</Text>
+
+{' '}
+
+<Large>
+  ![A simple schematic showing a stack with three blocks; card header and two
+  card sections. The stack has space-400 gaps between its blocks. The card
+  sections are stacks with space-200 between its
+  blocks.](/images/patterns/card-layout/spacing/card-layout-spacing-26-stacks-space-400@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![An example card showing multiple card sections as stacks separated by space-400 gaps. The card sections are stacks with space-200 between its blocks.](/images/patterns/card-layout/spacing/card-layout-spacing-27-stacks-do-use-between-sections@2x.png)
+
+    Use space-400 to separate card sections inside cards.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![An example card showing multiple card sections as stacks separated by space-400 gaps. The card sections are stacks with space-400 between its blocks, causing too much distance between section titles and section content.](/images/patterns/card-layout/spacing/card-layout-spacing-28-stacks-dont-use-inside-sections@2x.png)
+
+    Use space-400 inside card sections, as it can disconnect content that belongs together. Instead, default to space-200 and upsize to space-300 if the former seems too tight.
+
+  </Medium>
+</LayoutSection>
+
+<LayoutSection card>
+  <Text>
+    ## Alignment
+
+    Content alignment makes cards more balanced and easier for merchants to scan. Content should be vertically aligned along both the left and right edge of the card. It’s always more important to align content [optically](#optically), so that it appears to be aligned rather than technically being aligned.
+
+  </Text>
+
+{' '}
+
+<Large>
+  ![A card titled Products containing a resource list of products. Clarifying
+  lines show how content is perfectly vertically aligned on both left and right
+  sides.](/images/patterns/card-layout/spacing/card-layout-spacing-29-alignment@2x.png)
+</Large>
+
+  <Medium variant="do">
+    ![An example card showing multiple card sections as stacks separated by space-400 gaps. The card sections are stacks with space-200 between its blocks.](/images/patterns/card-layout/spacing/card-layout-spacing-30-alignment-do-vertically-align@2x.png)
+
+    Use space-400 to separate card sections inside cards.
+
+  </Medium>
+
+  <Medium variant="dont">
+    ![An example card showing multiple card sections as stacks separated by space-400 gaps. The card sections are stacks with space-400 between its blocks, causing too much distance between section titles and section content.](/images/patterns/card-layout/spacing/card-layout-spacing-31-alignment-dont-align-invisible-containers@2x.png)
+
+    Use space-400 inside card sections, as it can disconnect content that belongs together. Instead, default to space-200 and upsize to space-300 if the former seems too tight.
+
+  </Medium>
+</LayoutSection>
