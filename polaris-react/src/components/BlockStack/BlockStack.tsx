@@ -20,7 +20,7 @@ type Align =
 
 type InlineAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
-type Element = 'div' | 'ul' | 'ol' | 'fieldset';
+type Element = 'div' | 'span' | 'ul' | 'ol' | 'li' | 'fieldset';
 
 type Gap = ResponsiveProp<SpaceScale>;
 
