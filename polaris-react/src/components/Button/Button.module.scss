@@ -64,7 +64,7 @@
 }
 
 .Button:active,
-.Button[aria-expanded='true'] {
+.Button[data-state='open'] {
   background: var(--pc-button-bg_active);
   color: var(--pc-button-color_active);
   box-shadow: var(--pc-button-box-shadow_active);
@@ -286,14 +286,17 @@
 
 // ICON
 .iconOnly {
+  --pc-button-padding-block: var(--p-space-100);
   --pc-button-padding-inline: var(--p-space-100);
 }
 
 .iconOnly:is(.sizeLarge) {
+  --pc-button-padding-block: var(--p-space-150);
   --pc-button-padding-inline: var(--p-space-150);
 }
 
 .iconOnly:is(.sizeMicro) {
+  --pc-button-padding-block: var(--p-space-050);
   --pc-button-padding-inline: var(--p-space-050);
 }
 
