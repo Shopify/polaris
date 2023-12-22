@@ -89,7 +89,7 @@ export type {
 
 export {themeNameDefault, themeNames} from './themes/constants';
 
-export {createThemeClassName} from './themes/utils';
+export {createThemeClassName, flattenMetaTheme} from './themes/utils';
 
 export type {
   BorderTokenGroup,
