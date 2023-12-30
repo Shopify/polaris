@@ -24,6 +24,7 @@ export interface SortButtonProps {
   disabled?: boolean;
   onChangeKey?: (key: string) => void;
   onChangeDirection?: (direction: string) => void;
+  sortDirectionButton: boolean;
 }
 
 export function SortButton({
@@ -33,6 +34,7 @@ export function SortButton({
   disabled,
   onChangeKey,
   onChangeDirection,
+  sortDirectionButton,
 }: SortButtonProps) {
   const i18n = useI18n();
 
@@ -137,29 +139,31 @@ export function SortButton({
           onChange={handleChangeChoiceList}
         />
       </Box>
-      <Box
-        paddingInlineStart="150"
-        paddingInlineEnd="150"
-        paddingBlockStart="200"
-        paddingBlockEnd="200"
-      >
-        <DirectionButton
-          direction="asc"
-          active={selectedDirection === SortButtonDirection.Asc}
-          onClick={handleChangeDirection}
-          value={selectedChoices?.[0]?.value}
+      {!sortDirectionButton && (
+        <Box
+          paddingInlineStart="150"
+          paddingInlineEnd="150"
+          paddingBlockStart="200"
+          paddingBlockEnd="200"
         >
-          {selectedChoices?.[0]?.directionLabel}
-        </DirectionButton>
-        <DirectionButton
-          direction="desc"
-          active={selectedDirection === SortButtonDirection.Desc}
-          onClick={handleChangeDirection}
-          value={selectedChoices?.[1]?.value}
-        >
-          {selectedChoices?.[1]?.directionLabel}
-        </DirectionButton>
-      </Box>
+          <DirectionButton
+            direction="asc"
+            active={selectedDirection === SortButtonDirection.Asc}
+            onClick={handleChangeDirection}
+            value={selectedChoices?.[0]?.value}
+          >
+            {selectedChoices?.[0]?.directionLabel}
+          </DirectionButton>
+          <DirectionButton
+            direction="desc"
+            active={selectedDirection === SortButtonDirection.Desc}
+            onClick={handleChangeDirection}
+            value={selectedChoices?.[1]?.value}
+          >
+            {selectedChoices?.[1]?.directionLabel}
+          </DirectionButton>
+        </Box>
+      )}
     </Popover>
   );
 }

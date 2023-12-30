@@ -104,6 +104,8 @@ export interface IndexFiltersProps
   disableKeyboardShortcuts?: boolean;
   /** Whether to display the edit columns button with the other default mode filter actions */
   showEditColumnsButton?: boolean;
+  /** Optional Enable or disable sort direction buttons */
+  disableSortDirectionButtons?: boolean;
 }
 
 export function IndexFilters({
@@ -143,6 +145,7 @@ export function IndexFilters({
   closeOnChildOverlayClick,
   disableKeyboardShortcuts,
   showEditColumnsButton,
+  disableSortDirectionButtons = false,
 }: IndexFiltersProps) {
   const i18n = useI18n();
   const {mdDown} = useBreakpoints();
@@ -270,6 +273,7 @@ export function IndexFilters({
         onChange={handleChangeSortButton}
         onChangeKey={onSortKeyChange}
         onChangeDirection={onSortDirectionChange}
+        sortDirectionButton={disableSortDirectionButtons}
         disabled={disabled}
       />
     );
@@ -280,6 +284,7 @@ export function IndexFilters({
     sortOptions,
     sortSelected,
     disabled,
+    disableSortDirectionButtons,
   ]);
 
   function handleClickEditColumnsButon() {
