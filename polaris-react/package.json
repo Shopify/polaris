@@ -52,8 +52,7 @@
     "clean": "rm -rf .turbo node_modules build build-internal",
     "start": "serve ./build-internal/storybook/static -l ${POLARIS_STORYBOOK_PORT:=6006}",
     "storybook": "storybook dev -p ${POLARIS_STORYBOOK_PORT:=6006} --quiet",
-    "storybook:build": "storybook build -o build-internal/storybook/static",
-    "preversion": "node ./scripts/readme-update-version"
+    "storybook:build": "storybook build -o build-internal/storybook/static"
   },
   "dependencies": {
     "@shopify/polaris-icons": "^7.13.0",
