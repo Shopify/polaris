@@ -1350,47 +1350,39 @@ export function WithBulkActionsAndPagination() {
     },
   ];
   return (
-    <BlockStack gap="400">
-      <div style={{height: 2000}}>
-        <Card>Hello world</Card>
-      </div>
-      <Card padding="0">
-        <ResourceList
-          resourceName={resourceName}
-          items={items}
-          bulkActions={bulkActions}
-          promotedBulkActions={promotedBulkActions}
-          selectedItems={selectedItems}
-          onSelectionChange={setSelectedItems}
-          pagination={{
-            hasNext: true,
-            onNext: () => {},
-          }}
-          renderItem={(item) => {
-            const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
+    <Card padding="0">
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        pagination={{
+          hasNext: true,
+          onNext: () => {},
+        }}
+        renderItem={(item) => {
+          const {id, url, name, location} = item;
+          const media = <Avatar customer size="md" name={name} />;
 
-            return (
-              <ResourceItem
-                id={id}
-                url={url}
-                media={media}
-                accessibilityLabel={`View details for ${name}`}
-              >
-                <h3>
-                  <Text fontWeight="bold" as="span">
-                    {name}
-                  </Text>
-                </h3>
-                <div>{location}</div>
-              </ResourceItem>
-            );
-          }}
-        />
-      </Card>
-      <div style={{height: 2000}}>
-        <Card>Hello world</Card>
-      </div>
-    </BlockStack>
+          return (
+            <ResourceItem
+              id={id}
+              url={url}
+              media={media}
+              accessibilityLabel={`View details for ${name}`}
+            >
+              <h3>
+                <Text fontWeight="bold" as="span">
+                  {name}
+                </Text>
+              </h3>
+              <div>{location}</div>
+            </ResourceItem>
+          );
+        }}
+      />
+    </Card>
   );
 }

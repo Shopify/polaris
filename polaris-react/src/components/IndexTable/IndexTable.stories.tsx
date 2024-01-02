@@ -1213,44 +1213,36 @@ export function WithBulkActionsAndSelectionAcrossPages() {
   );
 
   return (
-    <BlockStack gap="200">
-      <div style={{height: 2000}} />
-      <LegacyCard>
-        <IndexTable
-          condensed={useBreakpoints().smDown}
-          resourceName={resourceName}
-          itemCount={customers.length}
-          selectedItemsCount={
-            allResourcesSelected ? 'All' : selectedResources.length
-          }
-          onSelectionChange={handleSelectionChange}
-          hasMoreItems
-          bulkActions={bulkActions}
-          promotedBulkActions={promotedBulkActions}
-          headings={[
-            {title: 'Name'},
-            {title: 'Location'},
-            {
-              alignment: 'end',
-              id: 'order-count',
-              title: 'Order count',
-            },
-            {
-              alignment: 'end',
-              id: 'amount-spent',
-              title: 'Amount spent',
-            },
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </LegacyCard>
-      <Box minHeight="2000px">
-        <LegacyCard>
-          <p>Content after the table</p>
-        </LegacyCard>
-      </Box>
-    </BlockStack>
+    <LegacyCard>
+      <IndexTable
+        condensed={useBreakpoints().smDown}
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        hasMoreItems
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
   );
 }
 
@@ -4785,65 +4777,53 @@ export function WithPaginationAndBulkActions() {
             {amountSpent}
           </Text>
         </IndexTable.Cell>
-        {/* <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
         <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
         <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
-        <IndexTable.Cell>{tags}</IndexTable.Cell> */}
+        <IndexTable.Cell>{tags}</IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
 
   return (
     <Box paddingBlockEnd="400">
-      <BlockStack gap="200">
-        <Box minHeight="2000px">
-          <LegacyCard>
-            <p>Content before the table</p>
-          </LegacyCard>
-        </Box>
-        <LegacyCard>
-          <IndexTable
-            condensed={useBreakpoints().smDown}
-            resourceName={resourceName}
-            itemCount={customers.length}
-            selectedItemsCount={
-              allResourcesSelected ? 'All' : selectedResources.length
-            }
-            bulkActions={bulkActions}
-            promotedBulkActions={promotedBulkActions}
-            onSelectionChange={handleSelectionChange}
-            headings={[
-              {title: 'Name'},
-              {title: 'Location'},
-              {
-                alignment: 'end',
-                id: 'order-count',
-                title: 'Order count',
-              },
-              {
-                alignment: 'end',
-                id: 'amount-spent',
-                title: 'Amount spent',
-              },
-              // {title: 'Channel'},
-              // {title: 'Payment status'},
-              // {title: 'Fulfillment status'},
-              // {title: 'Tags'},
-            ]}
-            pagination={{
-              hasNext: true,
-              onNext: () => {},
-            }}
-          >
-            {rowMarkup}
-          </IndexTable>
-        </LegacyCard>
-        <Box minHeight="2000px">
-          <LegacyCard>
-            <p>Content after the table</p>
-          </LegacyCard>
-        </Box>
-      </BlockStack>
+      <LegacyCard>
+        <IndexTable
+          condensed={useBreakpoints().smDown}
+          resourceName={resourceName}
+          itemCount={customers.length}
+          selectedItemsCount={
+            allResourcesSelected ? 'All' : selectedResources.length
+          }
+          bulkActions={bulkActions}
+          promotedBulkActions={promotedBulkActions}
+          onSelectionChange={handleSelectionChange}
+          headings={[
+            {title: 'Name'},
+            {title: 'Location'},
+            {
+              alignment: 'end',
+              id: 'order-count',
+              title: 'Order count',
+            },
+            {
+              alignment: 'end',
+              id: 'amount-spent',
+              title: 'Amount spent',
+            },
+            {title: 'Channel'},
+            {title: 'Payment status'},
+            {title: 'Fulfillment status'},
+            {title: 'Tags'},
+          ]}
+          pagination={{
+            hasNext: true,
+            onNext: () => {},
+          }}
+        >
+          {rowMarkup}
+        </IndexTable>
+      </LegacyCard>
     </Box>
   );
 }
