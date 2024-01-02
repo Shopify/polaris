@@ -1,7 +1,7 @@
 ---
 title: Loading
 shortDescription: Used to indicate to merchants that a page is loading or an upload is processing.
-category: Feedback indicators
+category: Internal only
 keywords:
   - spinner
   - loader
@@ -12,6 +12,7 @@ examples:
     title: Default
     description: Use to indicate that the page is loading.
 previewImg: /images/components/feedback-indicators/loading.png
+status: Internal
 ---
 
 # {frontmatter.title}
@@ -21,6 +22,13 @@ previewImg: /images/components/feedback-indicators/loading.png
 The loading component is used to indicate to merchants that a page is loading or an upload is processing.
 
 </Lede>
+
+<StatusBanner status={frontmatter.status}>
+  If you are building a Shopify Application you should use the [App Bridge
+  Loading
+  API](https://shopify.dev/docs/api/app-bridge-library/reference/loading).
+  Internal only components will be removed in future major versions of Polaris.
+</StatusBanner>
 
 <Examples />
 

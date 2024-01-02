@@ -1,7 +1,7 @@
 ---
 title: Frame
 shortDescription: Creates the structure of the Shopify admin. All of the main sections of the admin are nested in the frame.
-category: Utilities
+category: Internal only
 keywords:
   - navigation
   - nav
@@ -24,6 +24,7 @@ examples:
     title: With an offset
     description: Use to present the frame structure and all of its elements with an offset provided to the theme.
 previewImg: /images/components/utilities/frame.png
+status: Internal
 ---
 
 # {frontmatter.title}
@@ -33,6 +34,11 @@ previewImg: /images/components/utilities/frame.png
 The frame component, while not visible in the user interface itself, provides the structure for an application. It wraps the main elements and houses the primary [navigation](https://polaris.shopify.com/components/navigation/navigation), [top bar](https://polaris.shopify.com/components/top-bar), [toast](https://polaris.shopify.com/components/feedback-indicators/toast), and [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) components.
 
 </Lede>
+
+<StatusBanner status={frontmatter.status}>
+  If you are building a Shopify Application you should not use this component.
+  Internal only components will be removed in future major versions of Polaris.
+</StatusBanner>
 
 <Examples />
 

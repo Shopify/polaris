@@ -1,6 +1,6 @@
 ---
 title: Navigation
-category: Navigation
+category: Internal only
 keywords:
   - navigation
   - nav
@@ -48,6 +48,7 @@ examples:
     title: Using Major icons
     description: This example shows how to use the shouldResizeIcon prop when using Major icons
 previewImg: /images/components/navigation/navigation.png
+status: Internal
 ---
 
 # {frontmatter.title}
@@ -57,6 +58,13 @@ previewImg: /images/components/navigation/navigation.png
 The navigation component is used to display the primary navigation in the sidebar of the [frame](https://polaris.shopify.com/components/frame) of an application. Navigation includes a list of links that merchants use to move between sections of the application.
 
 </Lede>
+
+<StatusBanner status={frontmatter.status}>
+  If you are building a Shopify Application you should use the [App Bridge
+  Navigation Menu
+  API](https://shopify.dev/docs/api/app-bridge-library/reference/navigation-menu).
+  Internal only components will be removed in future major versions of Polaris.
+</StatusBanner>
 
 <Examples />
 

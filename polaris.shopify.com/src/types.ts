@@ -188,7 +188,8 @@ export type StatusName =
   | 'Beta'
   | 'Information'
   | 'Legacy'
-  | 'Warning';
+  | 'Warning'
+  | 'Internal';
 
 export type Status = StatusName;
 

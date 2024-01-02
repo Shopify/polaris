@@ -1,7 +1,7 @@
 ---
 title: Modal
 shortDescription: Used to interrupt merchants with urgent information, details, or actions.
-category: Overlays
+category: Internal only
 keywords:
   - modal
   - src
@@ -57,6 +57,7 @@ examples:
     title: Without an activator prop
     description: Use an external activator when technical limitations prevent you from passing the activator as an element or a ref. Make sure to focus the activator on close when choosing this approach. See the [accessibility features of a modal](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html) for more information regarding focus.
 previewImg: /images/components/overlays/modal.png
+status: Internal
 ---
 
 # {frontmatter.title}
@@ -66,6 +67,12 @@ previewImg: /images/components/overlays/modal.png
 Modals are overlays that require merchants to take an action before they can continue interacting with the rest of Shopify. They can be disruptive and should be used thoughtfully and sparingly.
 
 </Lede>
+
+<StatusBanner status={frontmatter.status}>
+  If you are building a Shopify Application you should use the [App Bridge Modal
+  API](https://shopify.dev/docs/api/app-bridge-library/reference/modal).
+  Internal only components will be removed in future major versions of Polaris.
+</StatusBanner>
 
 <Examples />
 

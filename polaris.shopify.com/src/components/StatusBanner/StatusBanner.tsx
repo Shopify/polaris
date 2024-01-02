@@ -11,7 +11,10 @@ function StatusBanner({status, children}: Props) {
   return (
     status && (
       <div className={styles.StatusBanner} data-value={status.toLowerCase()}>
-        <h2>{uppercaseFirst(status)}</h2>
+        <h2>
+          {uppercaseFirst(status)}
+          {status === 'Internal' ? ' only' : null}
+        </h2>
         {children}
       </div>
     )
