@@ -109,7 +109,6 @@ export function Default() {
   return (
     <LegacyCard>
       <IndexTable
-        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
