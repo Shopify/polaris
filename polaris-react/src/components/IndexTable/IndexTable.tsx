@@ -1083,9 +1083,10 @@ function IndexTableBase({
   }
 
   function renderStickyHeading(heading: IndexTableHeading, index: number) {
+    const position = selectable ? index + 1 : index;
     const headingStyle =
-      tableHeadingRects.current && tableHeadingRects.current.length > index
-        ? {minWidth: tableHeadingRects.current[index].offsetWidth}
+      tableHeadingRects.current && tableHeadingRects.current.length > position
+        ? {minWidth: tableHeadingRects.current[position].offsetWidth}
         : undefined;
     const headingAlignment = heading.alignment || 'start';
 
