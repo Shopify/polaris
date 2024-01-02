@@ -60,6 +60,9 @@ function Layout({
               <Link href={editOnGithubUrl}>Edit this page</Link>
             )}
             <Link href={feedbackUrl}>Leave feedback</Link>
+            <Link href="https://github.com/Shopify/polaris/issues/new/choose">
+              Create an issue
+            </Link>
           </p>
         </footer>
       </Box>
