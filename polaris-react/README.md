@@ -28,13 +28,10 @@ yarn add @shopify/polaris
 import '@shopify/polaris/build/esm/styles.css';
 ```
 
-Otherwise include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
+Otherwise include the CSS in your HTML. We suggest copying the latest [styles file](https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css) into your own project. This will need to be updated with future releases.
 
 ```html
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@12.6.0/build/esm/styles.css"
-/>
+<link rel="stylesheet" href="styles.css" />
 ```
 
 2.  Include the translations and any of the provided components in your project:
@@ -75,16 +72,13 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 
 ### Usage
 
-1.  Include the CSS in your HTML. We suggest copying the styles file into your own project, but you may also use it directly:
+1. Include the CSS in your HTML. We suggest copying the latest [styles file](https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css) into your own project. This will need to be updated with future releases.
 
 ```html
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/@shopify/polaris@12.6.0/build/esm/styles.css"
-/>
+<link rel="stylesheet" href="styles.css" />
 ```
 
-2.  Include the markup and associated classes in your HTML document:
+2. Include the markup and associated classes in your HTML document:
 
 ```html
 <button class="Polaris-Button">Example button</button>
