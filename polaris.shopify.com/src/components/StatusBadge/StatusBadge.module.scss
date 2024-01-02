@@ -13,8 +13,7 @@
 
   &[data-value='warning'],
   &[data-value='deprecated'],
-  &[data-value='legacy'],
-  &[data-value='internal'] {
+  &[data-value='legacy'] {
     background: var(--surface-warning);
   }
 

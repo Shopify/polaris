@@ -1,7 +1,7 @@
 ---
 title: Toast
 shortDescription: A non-disruptive message that provides quick feedback on the outcome of an action.
-category: Internal only
+category: Deprecated
 keywords:
   - toast
   - flash message
@@ -31,7 +31,7 @@ examples:
     title: Error
     description: Although error toast is still available and used in the system, we discourage its use. Reserve it for errors not caused by merchants, like a connection issue. Error toast should convey what went wrong in plain language and should not go over 3 words. For all other error message types, follow the [error message guidelines](https://polaris.shopify.com/patterns/error-messages).
 previewImg: /images/components/feedback-indicators/toast.png
-status: Internal
+status: Deprecated
 ---
 
 # {frontmatter.title}
@@ -43,9 +43,8 @@ The toast component is a non-disruptive message that appears at the bottom of th
 </Lede>
 
 <StatusBanner status={frontmatter.status}>
-  If you are building a Shopify Application you should use the [App Bridge Toast
-  API](https://shopify.dev/docs/api/app-bridge-library/reference/toast).
-  Internal only components will be removed in future major versions of Polaris.
+  This component is no longer supported. Please use the [App Bridge Toast
+  API](https://shopify.dev/docs/api/app-bridge-library/reference/toast) instead.
 </StatusBanner>
 
 <Examples />
