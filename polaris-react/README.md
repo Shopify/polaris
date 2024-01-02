@@ -72,7 +72,7 @@ If React doesn’t make sense for your application, you can use a CSS-only versi
 
 ### Usage
 
-1. Include the CSS in your HTML. Copying the latest version of the [styles file](https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css) into your own project. This will need to be updated with future releases.
+1. Include the CSS in your HTML. We suggest copying the latest version of the [styles file](https://unpkg.com/@shopify/polaris@latest/build/esm/styles.css) into your own project. This will need to be updated with future releases.
 
 ```html
 <link rel="stylesheet" href="styles.css" />
