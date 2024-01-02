@@ -79,7 +79,6 @@ function SimpleIndexTableExample() {
   return (
     <LegacyCard>
       <IndexTable
-        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={orders.length}
         selectedItemsCount={
