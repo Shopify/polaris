@@ -93,3 +93,30 @@
 .vertical {
   overflow-y: auto;
 }
+
+.styledScrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track,
+  &::-webkit-scrollbar-corner {
+    background: none;
+  }
+
+  &:hover {
+    scrollbar-color: gray transparent;
+
+    &::-webkit-scrollbar-thumb {
+      background: gray;
+      border: 2px solid transparent;
+      border-radius: 10px;
+      background-clip: content-box;
+    }
+  }
+}

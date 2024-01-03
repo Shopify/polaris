@@ -80,6 +80,7 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
             className={styles.PrimaryNavigation}
             scrollbarGutter="stable"
             scrollbarWidth="thin"
+            non_standard_unstable_styled_scrollbar
           >
             {children}
           </Scrollable>

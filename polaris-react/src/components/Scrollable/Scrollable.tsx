@@ -45,8 +45,9 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   scrollbarGutter?: 'stable' | 'stable both-edges';
   /** @experimental Sets the width of the scrollbar in browsers that support it
    * See https://developer.mozilla.org/en-US/docs/Web/CSS/scrollbar-width#browser_compatibility for supported browsers
+   * @default 'auto'
    */
-  scrollbarWidth?: 'thin' | 'none';
+  scrollbarWidth?: 'auto' | 'thin' | 'none';
   /** Called when scrolled to the bottom of the scroll area */
   onScrolledToBottom?(): void;
 }
@@ -59,7 +60,12 @@ export interface ScrollableRef {
   scrollTo: (scrollY: number, options?: ScrollToOptions) => void;
 }
 
-const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
+const ScrollableComponent = forwardRef<
+  ScrollableRef,
+  ScrollableProps & {
+    non_standard_unstable_styled_scrollbar?: boolean;
+  }
+>(
   (
     {
       children,
@@ -72,6 +78,8 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       scrollbarGutter,
       scrollbarWidth,
       onScrolledToBottom,
+      // @ts-expect-error private, undocumented prop
+      non_standard_unstable_styled_scrollbar,
       ...rest
     }: ScrollableProps,
     forwardedRef,
@@ -152,6 +160,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       horizontal && styles.horizontal,
       shadow && topShadow && styles.hasTopShadow,
       shadow && bottomShadow && styles.hasBottomShadow,
+      non_standard_unstable_styled_scrollbar && styles.styledScrollbar,
     );
 
     return (
