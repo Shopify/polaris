@@ -1,7 +1,6 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
-import {themeDefault, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
@@ -25,6 +24,7 @@ import {UnstyledButton} from '../UnstyledButton';
 import {BulkActions, useIsBulkActionsSticky} from '../BulkActions';
 import type {BulkActionsProps} from '../BulkActions';
 import {classNames} from '../../utilities/css';
+import {useBreakpoints} from '../../utilities/breakpoints';
 import {
   useIndexValue,
   useIndexSelectionChange,
@@ -170,6 +170,7 @@ function IndexTableBase({
   } = useIndexValue();
   const handleSelectionChange = useIndexSelectionChange();
   const i18n = useI18n();
+  const {xsOnly} = useBreakpoints();
 
   const {value: hasMoreLeftColumns, toggle: toggleHasMoreLeftColumns} =
     useToggle(false);
@@ -283,7 +284,7 @@ function IndexTableBase({
         // update sticky header min-widths
         stickyTableHeadings.current.forEach((heading, index) => {
           let minWidth = 0;
-          if (index === 0 && (!isBreakpointsXS() || !selectable)) {
+          if (index === 0 && (!xsOnly || !selectable)) {
             minWidth = calculateFirstHeaderOffset();
           } else if (selectable && tableHeadingRects.current.length > index) {
             minWidth = tableHeadingRects.current[index]?.offsetWidth || 0;
@@ -294,7 +295,7 @@ function IndexTableBase({
           heading.style.minWidth = `${minWidth}px`;
         });
       }),
-    [calculateFirstHeaderOffset, selectable],
+    [calculateFirstHeaderOffset, selectable, xsOnly],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -1138,13 +1139,6 @@ function IndexTableBase({
     handleSelectionChange(SelectionType.All, false);
   }
 }
-
-const isBreakpointsXS = () => {
-  return typeof window === 'undefined'
-    ? false
-    : window.innerWidth <
-        parseFloat(toPx(themeDefault.breakpoints['breakpoints-sm']) ?? '');
-};
 
 function getHeadingKey(heading: IndexTableHeading): string {
   if (heading.id) {

@@ -7,11 +7,11 @@ import React, {
   Children,
 } from 'react';
 import {EnableSelectionMinor} from '@shopify/polaris-icons';
-import {themeDefault, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
 import {isElementOfType} from '../../utilities/components';
+import {useBreakpoints} from '../../utilities/breakpoints';
 import {Button} from '../Button';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
@@ -51,13 +51,6 @@ function getAllItemsOnPage<TItemType extends ResourceListItemData>(
     return idForItem(item, index);
   });
 }
-
-const isBreakpointsXS = () => {
-  return typeof window === 'undefined'
-    ? false
-    : window.innerWidth <
-        parseFloat(toPx(themeDefault.breakpoints['breakpoints-sm']) ?? '');
-};
 
 function defaultIdForItem<TItemType extends ResourceListItemData>(
   item: TItemType,
@@ -162,7 +155,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   );
   const [loadingPosition, setLoadingPositionState] = useState(0);
   const [lastSelected, setLastSelected] = useState<number>();
-  const [smallScreen, setSmallScreen] = useState(isBreakpointsXS());
+  const {xsOnly} = useBreakpoints();
   const forceUpdate: (x?: number) => void = useReducer<(x?: number) => number>(
     (x = 0) => x + 1,
     0,
@@ -198,18 +191,13 @@ export function ResourceList<TItemType extends ResourceListItemData>({
 
   const handleResize = debounce(
     () => {
-      const newSmallScreen = isBreakpointsXS();
       if (
         selectedItems &&
         selectedItems.length === 0 &&
         selectMode &&
-        !newSmallScreen
+        !xsOnly
       ) {
         handleSelectMode(false);
-      }
-
-      if (smallScreen !== newSmallScreen) {
-        setSmallScreen(newSmallScreen);
       }
     },
     50,
@@ -223,7 +211,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       (promotedBulkActions && promotedBulkActions.length > 0) ||
         (bulkActions && bulkActions.length > 0) ||
         selectable,
-    ) && !smallScreen;
+    ) && !xsOnly;
 
   const selectAllSelectState = (): boolean | 'indeterminate' => {
     let selectState: boolean | 'indeterminate' = 'indeterminate';
@@ -420,10 +408,10 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     if (selectedItems && selectedItems.length > 0 && !selectMode) {
       setSelectMode(true);
     }
-    if ((!selectedItems || selectedItems.length === 0) && !isBreakpointsXS()) {
+    if ((!selectedItems || selectedItems.length === 0) && !xsOnly) {
       setSelectMode(false);
     }
-  }, [selectedItems, selectMode]);
+  }, [selectedItems, selectMode, xsOnly]);
 
   useEffect(() => {
     forceUpdate();
@@ -500,7 +488,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       }
     }
 
-    if (newlySelectedItems.length === 0 && !isBreakpointsXS()) {
+    if (newlySelectedItems.length === 0 && !xsOnly) {
       handleSelectMode(false);
     } else if (newlySelectedItems.length > 0) {
       handleSelectMode(true);
@@ -525,7 +513,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       });
     }
 
-    if (newlySelectedItems.length === 0 && !isBreakpointsXS()) {
+    if (newlySelectedItems.length === 0 && !xsOnly) {
       handleSelectMode(false);
     } else if (newlySelectedItems.length > 0) {
       handleSelectMode(true);
@@ -595,8 +583,8 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       <div className={styles.SortWrapper}>
         <Select
           label={i18n.translate('Polaris.ResourceList.sortingLabel')}
-          labelInline={!smallScreen}
-          labelHidden={smallScreen}
+          labelInline={!xsOnly}
+          labelHidden={xsOnly}
           options={sortOptions}
           onChange={onSortChange}
           value={sortValue}
