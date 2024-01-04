@@ -309,3 +309,22 @@ export function WithResponsivePadding() {
     </BlockStack>
   );
 }
+export function WithPseudoElements() {
+  return (
+    <Box
+      sx={{
+        background: 'bg-surface',
+        padding: '400',
+        _before: {
+          content: '>',
+          display: 'block',
+          background: 'bg-primary',
+          width: '200px',
+          height: '20px',
+        },
+      }}
+    >
+      <Icon source={PaintBrushMajor} tone="info" />
+    </Box>
+  );
+}
