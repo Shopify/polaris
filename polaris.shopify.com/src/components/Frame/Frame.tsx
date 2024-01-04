@@ -243,24 +243,35 @@ function NavItem({
                     isCurrent && styles.isCurrent,
                   )}
                 >
-                  <Link
-                    href={child.slug}
-                    onClick={handleLinkClick}
-                    aria-current={isCurrent ? 'page' : 'false'}
-                    onKeyDown={(evt) => {
-                      if (level === 0 && i === 0) {
-                        handleShiftTabOnFirstLink(evt);
-                      }
-                    }}
-                  >
-                    {child.title}
-
-                    {child.navLockIcon ? (
+                  {child.navLockIcon ? (
+                    <a
+                      href={child.slug}
+                      onClick={handleLinkClick}
+                      aria-current={isCurrent ? 'page' : 'false'}
+                      onKeyDown={(evt) => {
+                        if (level === 0 && i === 0) {
+                          handleShiftTabOnFirstLink(evt);
+                        }
+                      }}
+                    >
+                      {child.title}
                       <Icon source={LockMajor} width={16} height={16} />
-                    ) : null}
-
-                    {child.status && <StatusBadge status={child.status} />}
-                  </Link>
+                    </a>
+                  ) : (
+                    <Link
+                      href={child.slug}
+                      onClick={handleLinkClick}
+                      aria-current={isCurrent ? 'page' : 'false'}
+                      onKeyDown={(evt) => {
+                        if (level === 0 && i === 0) {
+                          handleShiftTabOnFirstLink(evt);
+                        }
+                      }}
+                    >
+                      {child.title}
+                      {child.status && <StatusBadge status={child.status} />}
+                    </Link>
+                  )}
 
                   {isExpandable && !child.expanded && (
                     <button
