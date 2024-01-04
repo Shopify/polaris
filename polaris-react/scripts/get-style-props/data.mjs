@@ -281,15 +281,30 @@ export const stylePropConfig = {
 
 // keys are CSS selectors, values are used as CSS custom property names (see
 // https://drafts.csswg.org/css-syntax-3/#non-ascii-ident-code-point) AND
-// Typescript types
+// Typescript types.
+// Can be set to `true` to use a default set of common modifiers.
 export const modifiers = {
-  '::before': '_before',
-  '::after': '_after',
   ':active': '_active',
   ':focus': '_focus',
   ':hover': '_hover',
   ':visited': '_visited',
   ':link': '_link',
+};
+
+// keys are CSS selectors, values are used as CSS custom property names (see
+// https://drafts.csswg.org/css-syntax-3/#non-ascii-ident-code-point) AND
+// Typescript types.
+// Can be set to `true` to use a default set of common pseudo elements.
+// Enables style objects such as:
+// ```
+// &::before { /* Style ::before pseudo */ }
+// &:hover::before { /* Style ::before pseudo when parent is hovered */ }
+// ```
+// NOTE: CSS does not make it possible to style a modified pseudo element. ie;
+// There's no ::before:hover
+export const pseudoElements = {
+  '::before': '_before',
+  '::after': '_after',
 };
 
 // Used to ensure custom properties don't collide with other user created ones
@@ -299,8 +314,11 @@ export const cssCustomPropertyNamespace = '_';
 export const BoxValueMapperFactory =
   (stylePropTokenGroupMap) => (value, prop) => {
     // If this is a tokenized styleprop, we must convert it to a CSS var().
-    if (!Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop))
+    if (!Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop)) {
       return value;
+    }
+
+    // @ts-expect-error The above check ensures this key exists
     const tokenSubgroup = stylePropTokenGroupMap[prop];
 
     // `Grid`'s `gap` prop used to allow passing fully formed var() functions as

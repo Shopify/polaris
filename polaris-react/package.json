@@ -57,6 +57,7 @@
     "get-style-props": "node ./scripts/get-style-props/index.mjs"
   },
   "dependencies": {
+    "@emotion/hash": "^0.9.1",
     "@shopify/polaris-icons": "^7.13.0",
     "@shopify/polaris-tokens": "^8.4.0",
     "@types/decamelize": "^3.0.3",

@@ -15,7 +15,8 @@ import {
   disallowedCSSProperties,
   disallowedCSSPropertyValues,
   stylePropConfig,
-  modifiers as modifiersData,
+  modifiers as modifiersDataRaw,
+  pseudoElements as pseudoElementsDataRaw,
   cssCustomPropertyNamespace,
   styleFile,
   typesFile,
@@ -23,6 +24,41 @@ import {
 } from './data.mjs';
 
 const endent = _endent.default;
+
+/* eslint-disable-next-line no-nested-ternary */
+const modifiersData = isObject(modifiersDataRaw)
+  ? modifiersDataRaw
+  : modifiersDataRaw === true
+  ? {
+      ':active': '_active',
+      ':focus': '_focus',
+      ':hover': '_hover',
+      ':visited': '_visited',
+      ':link': '_link',
+    }
+  : {};
+
+/* eslint-disable-next-line no-nested-ternary */
+const pseudoElementsData = isObject(pseudoElementsDataRaw)
+  ? pseudoElementsDataRaw
+  : pseudoElementsDataRaw === true
+  ? {
+      '::after': '_after',
+      '::backdrop': '_backdrop',
+      '::before': '_before',
+      '::cue': '_cue',
+      '::first-letter': '_firstLetter',
+      '::first-line': '_firstLine',
+      '::file-selector-button': '_fileSelectorButton',
+      '::marker': '_marker',
+      '::placeholder': '_placeholder',
+      '::selection': '_selection',
+    }
+  : {};
+
+function isObject(value) {
+  return value != null && typeof value === 'object' && !Array.isArray(value);
+}
 
 // Get all breakpoints massaged into a more useful set of data
 const breakpoints = Object.entries(metaThemeDefault.breakpoints).map(
@@ -383,15 +419,18 @@ export type ResponsiveStyleProps = {
   >;
 };
 
+type ResponsiveStylePropsWithPseudoElements = ResponsiveStyleProps
+  & { [K in PseudoElementProps]?: ResponsiveStyleProps };
+
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
- * \`@shopify/polaris-tokens\`), helpful aliases for frequently used props, and
-* the modifiers ${joinEnglish(Object.values(modifiersData))}.
+ * \`@shopify/polaris-tokens\`), helpful aliases for frequently used props, the
+ * modifiers ${joinEnglish(Object.values(modifiersData))},
+ * and the pseudoElements ${joinEnglish(Object.values(pseudoElementsData))}.
  */
 export type ResponsiveStylePropsWithModifiers = Simplify<
-  ResponsiveStyleProps & {
-    [K in typeof modifiers[number]]?: ResponsiveStyleProps;
-  }
+  ResponsiveStylePropsWithPseudoElements
+  & { [K in ModifierProps]?: ResponsiveStylePropsWithPseudoElements; }
 >;
 
 export type ResponsiveStylePropObjects = {
@@ -598,9 +637,17 @@ export const cssCustomPropertyNamespace = ${JSON.stringify(
     cssCustomPropertyNamespace,
   )};
 
-export const modifiers = ${JSON.stringify(
+export const modifierProps = ${JSON.stringify(
+    // TODO: Verify values are unique
     Object.values(modifiersData),
   )} as const;
+type ModifierProps = typeof modifierProps[number];
+
+export const pseudoElements = ${JSON.stringify(
+    // TODO: Verify values are unique
+    pseudoElementsData,
+  )} as const;
+type PseudoElementProps = (typeof pseudoElements)[keyof (typeof pseudoElements)];
 
 export const baseStylePropsModifierKey = '' as const;
 type BaseStylePropsModifierKey = typeof baseStylePropsModifierKey;
@@ -613,16 +660,21 @@ export type BreakpointsAliasesWithBaseKey =
   | Exclude<BreakpointsAlias, (typeof breakpointsAliases)[0]>;
 
 // The "base" styles always come last after other modifiers
-export const allModifiers: ((typeof modifiers)[number] | BaseStylePropsModifierKey)[] =
-  [...modifiers, baseStylePropsModifierKey];
+export const allModifierProps: (ModifierProps | BaseStylePropsModifierKey)[] =
+  [...modifierProps, baseStylePropsModifierKey];
 
-export type ValueMapperFactory = (map: typeof stylePropTokenGroupMap) => (
+export type ValueMapper = (
   value: ResponsiveStyleProps[typeof prop],
-  prop: keyof typeof stylePropTokenGroupMap,
+  prop: keyof ResponsiveStyleProps,
   breakpoint: BreakpointsAlias,
-  modifier: (typeof allModifiers)[number],
+  modifier?: (typeof allModifierProps)[number],
+  pseudoElement?: PseudoElementProps,
 ) => unknown;
-export const valueMapperFactory: ValueMapperFactory= ${BoxValueMapperFactory.toString()};
+
+export type ValueMapperFactory =
+  (map: typeof stylePropTokenGroupMap) => ValueMapper;
+
+export const valueMapperFactory: ValueMapperFactory = ${BoxValueMapperFactory.toString()};
 `);
 }
 
@@ -633,6 +685,8 @@ export const valueMapperFactory: ValueMapperFactory= ${BoxValueMapperFactory.toS
 //   ':hover': '_hover',
 //   ':visited': '_visited',
 // }
+// NOTE: We don't need to set any pseudo elements here as they'll be given their
+// own unique classname & selector within an inline <style> tag at runtime.
 async function writeCSSMediaVars(file, modifiers = {}) {
   // Skip the 'xs' size as we've done it above outside of the media queries
   // (mobile first ftw!)
@@ -678,6 +732,7 @@ async function writeCSSMediaVars(file, modifiers = {}) {
     )
     .join('\n');
 
+  // TODO: Support an object syntax for setting defaults on pseudo elements
   const defaultCSSProperties = endent`${Object.entries(stylePropConfig)
     .filter(
       ([, {getDefault}]) =>

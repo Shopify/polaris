@@ -1,7 +1,9 @@
 import invariant from 'tiny-invariant';
 import {breakpointsAliases} from '@shopify/polaris-tokens';
-import type {BreakpointsAlias} from '@shopify/polaris-tokens';
-import type {Entries} from 'type-fest';
+import decamelize from 'decamelize';
+import endent from 'endent';
+import type {Entries, OmitIndexSignature, Simplify} from 'type-fest';
+import type {Properties} from 'csstype';
 
 import {isObject} from '../../utilities/is-object';
 
@@ -11,29 +13,60 @@ import type {
   ResponsiveStylePropObjects,
   PropDefaults,
   BreakpointsAliasesWithBaseKey,
+  ValueMapper,
 } from './generated-data';
 import {
-  allModifiers,
+  allModifierProps,
   baseStylePropsModifierKey,
   baseStylePropsBreakpointKey,
   stylePropAliasFallbacks,
   disallowedCSSPropertyValues,
   stylePropAliasNames as allAliases,
   cssCustomPropertyNamespace,
-  modifiers,
+  modifierProps,
+  pseudoElements,
 } from './generated-data';
 
 type ModifierStyleProps = {
-  [K in (typeof allModifiers)[number]]?: ResponsiveStyleProps;
+  [K in (typeof allModifierProps)[number]]?: ResponsiveStyleProps;
 };
 
 interface StyleValue {
-  modifier?: (typeof allModifiers)[number];
+  modifier?: (typeof allModifierProps)[number];
   breakpoint?: BreakpointsAliasesWithBaseKey;
   value: unknown;
 }
 
+type CSSProperties = Simplify<
+  OmitIndexSignature<Properties> & {
+    [key: `--${typeof cssCustomPropertyNamespace}${string}`]: any;
+  }
+>;
+
+type PseudoElementProps = (typeof pseudoElements)[keyof typeof pseudoElements];
+
+type ModifierProps = (typeof modifierProps)[number];
+
+type ReponsiveStylePseudoElementProps = {
+  [K in PseudoElementProps]?: ResponsiveStyleProps & {
+    [K in ModifierProps]?: ResponsiveStyleProps;
+  };
+};
+
+export type ConversionResult = {
+  style: CSSProperties;
+} & {
+  [K in PseudoElementProps]?: {
+    style: CSSProperties;
+  };
+};
+
 const reversedBreakpointsAliases = [...breakpointsAliases].reverse();
+
+const pseudoElementProps = Object.values(pseudoElements);
+const inversePseudoElements = Object.fromEntries(
+  Object.entries(pseudoElements).map(([key, value]) => [value, key]),
+);
 
 // Performs 3 main functions:
 // 1. Converts all values to object syntax
@@ -151,14 +184,14 @@ function identity<T>(arg: T): T {
 
 function keyByModifiers(styleProps: ResponsiveStylePropsWithModifiers) {
   const modifierStyleProps: ModifierStyleProps = {};
-  for (const modifier of modifiers) {
+  for (const modifier of modifierProps) {
     if (typeof styleProps[modifier] !== 'undefined') {
       modifierStyleProps[modifier] = styleProps[modifier]!;
     }
   }
 
   const stylePropsWithoutModifiers: ResponsiveStyleProps = {...styleProps};
-  modifiers.forEach((modifier) => {
+  modifierProps.forEach((modifier) => {
     delete stylePropsWithoutModifiers[modifier as keyof ResponsiveStyleProps];
   });
 
@@ -305,15 +338,135 @@ const getCustomPropertyForStyleProp = (
  * ```
  */
 export function convertStylePropsToCSSProperties(
-  styleProps: ResponsiveStyleProps,
+  styleProps: ResponsiveStylePropsWithModifiers,
   defaults: PropDefaults = {},
-  valueMapper: (
-    value: ResponsiveStyleProps[typeof prop],
-    prop: keyof ResponsiveStyleProps,
-    breakpoint: BreakpointsAlias,
-    modifier: (typeof allModifiers)[number],
-  ) => unknown = identity,
+  valueMapper: ValueMapper = identity,
+): ConversionResult {
+  const [baseStyleProps, pseudoElementStyleProps] =
+    extractPseudoStyles(styleProps);
+
+  return {
+    style: convert(baseStyleProps, defaults, valueMapper),
+    ...mapObjectValues<
+      ReponsiveStylePseudoElementProps,
+      {style: CSSProperties} | undefined
+    >(pseudoElementStyleProps, (pseudoElementStyleProps, pseudoElement) =>
+      pseudoElementStyleProps
+        ? {
+            style: convert(
+              pseudoElementStyleProps,
+              defaults,
+              valueMapper,
+              pseudoElement,
+            ),
+          }
+        : undefined,
+    ),
+  };
+}
+
+export function convertCSSPropertiesToStyleSheet(
+  styles: CSSProperties,
+  className: string,
+  pseudoElement?: PseudoElementProps,
 ) {
+  return endent`
+    .${className}${pseudoElement ? inversePseudoElements[pseudoElement] : ''} {
+      ${Object.entries(styles)
+        .reduce((acc, [cssProperty, val]) => {
+          acc.push(
+            `${
+              // Leave Custom Properties alone but all other CSS Properties need
+              // to be converted to valid CSS
+              cssProperty.startsWith('--')
+                ? cssProperty
+                : decamelize(cssProperty, {separator: '-'})
+            }: ${val};`,
+          );
+          return acc;
+        }, [] as string[])
+        .join('\n')}
+    }`;
+}
+
+/**
+ * Convert this
+ * ```
+ * {
+ *   color: 'blue',
+ *   _before: {
+ *     content: '">"',
+ *     display: 'block',
+ *   }
+ *   _hover: {
+ *     _before: {
+ *       content: '"<"',
+ *     }
+ *   },
+ * }
+ * ```
+ * to
+ * ```
+ * [
+ *   {
+ *     color: 'blue',
+ *   },
+ *   {
+ *     _before: {
+ *       content: '">"',
+ *       display: 'block',
+ *       _hover: {
+ *         content: '"<"',
+ *       },
+ *     }
+ *   }
+ * ]
+ * ```
+ */
+function extractPseudoStyles(
+  styleProps: ResponsiveStylePropsWithModifiers,
+): [ResponsiveStylePropsWithModifiers, ReponsiveStylePseudoElementProps] {
+  // Don't mutate the original object
+  const baseStyleProps = {...styleProps};
+  const pseudoElementStyleProps: ReponsiveStylePseudoElementProps = {};
+
+  pseudoElementProps.forEach((pseudoElement) => {
+    if (baseStyleProps[pseudoElement]) {
+      pseudoElementStyleProps[pseudoElement] = baseStyleProps[pseudoElement];
+      delete baseStyleProps[pseudoElement];
+    }
+  });
+
+  modifierProps.forEach((modifier) => {
+    if (baseStyleProps[modifier]) {
+      pseudoElementProps.forEach((pseudoElement) => {
+        if (baseStyleProps[modifier]![pseudoElement]) {
+          // Don't mutate the original object
+          baseStyleProps[modifier] = {...styleProps[modifier]};
+
+          // Ensure this pseudo element exists on the object
+          pseudoElementStyleProps[pseudoElement] ??= {};
+
+          // Set the modifier values for this pseudo element
+          pseudoElementStyleProps[pseudoElement]![modifier] =
+            baseStyleProps[modifier]![pseudoElement];
+
+          // Delete the pseudo element styles now that we don't need them
+          delete baseStyleProps[modifier]![pseudoElement];
+        }
+      });
+    }
+  });
+
+  return [baseStyleProps, pseudoElementStyleProps];
+}
+
+function convert(
+  styleProps: ResponsiveStyleProps,
+  defaults: PropDefaults,
+  valueMapper: ValueMapper,
+  pseudoElement?: PseudoElementProps,
+): CSSProperties {
   const stylePropsByModifier = mapObjectValues(
     // Split out things like `_hover` into their own objects:
     // {
@@ -372,8 +525,8 @@ export function convertStylePropsToCSSProperties(
     // Within each modifier, breakpoints are ordered from largest to smallest.
     const valuesByPriority: StyleValue[] = [];
 
-    for (const _modifier of allModifiers) {
-      const modifier = _modifier as (typeof allModifiers)[number];
+    for (const _modifier of allModifierProps) {
+      const modifier = _modifier as (typeof allModifierProps)[number];
       if (typeof stylePropsByModifier[modifier] === 'undefined') {
         continue;
       }
@@ -402,7 +555,8 @@ export function convertStylePropsToCSSProperties(
               stylePropObject[breakpoint],
               stylePropName,
               breakpoint,
-              modifier,
+              modifier === baseStylePropsModifierKey ? undefined : modifier,
+              pseudoElement,
             ),
           });
         }
