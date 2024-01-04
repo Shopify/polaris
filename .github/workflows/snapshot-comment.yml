@@ -1,0 +1,42 @@
+name: Snapshot comment
+
+on:
+  pull_request:
+    paths:
+      - 'polaris-react/**'
+    types:
+      - ready_for_review
+
+jobs:
+  check:
+    if: |
+      (!contains(github.event.pull_request.labels.*.name, '🤖Skip Snapshot')) ||
+      (!contains(github.event.comment.body, 'Your snapshots have been published to npm.'))
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node with v18.12.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.12.0
+
+      - name: Check if author is part of `polaris-team` org
+        uses: tspascoal/get-user-teams-membership@v2
+        id: checkUserMember
+        with:
+          username: ${{ github.actor }}
+          team: 'polaris-team'
+          GITHUB_TOKEN: ${{ secrets.GH_CHECKING_USER_AUTH }}
+
+      - name: Add comment for snapshot testing
+        if: ${{ steps.checkUserMember.outputs.isTeamMember == 'false' }}
+        uses: peter-evans/create-or-update-comment@v3
+        with:
+          issue-number: 1
+          body: |
+            Thank you for contributing to a change to Polaris! 🚀
+            Please ensure you test your changes with a snapshot by commenting `/snapit` on your PR.
