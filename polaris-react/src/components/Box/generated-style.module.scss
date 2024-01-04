@@ -4,48 +4,48 @@
   border-inline-end-width: var(--p-border-width-0);
   border-block-start-width: var(--p-border-width-0);
   border-block-end-width: var(--p-border-width-0);
-  
+
   --_sm: initial;
   --_md: initial;
   --_lg: initial;
   --_xl: initial;
-  
+
   --__before: initial;
   --_sm_before: initial;
   --_md_before: initial;
   --_lg_before: initial;
   --_xl_before: initial;
-  
+
   --__after: initial;
   --_sm_after: initial;
   --_md_after: initial;
   --_lg_after: initial;
   --_xl_after: initial;
-  
+
   --__active: initial;
   --_sm_active: initial;
   --_md_active: initial;
   --_lg_active: initial;
   --_xl_active: initial;
-  
+
   --__focus: initial;
   --_sm_focus: initial;
   --_md_focus: initial;
   --_lg_focus: initial;
   --_xl_focus: initial;
-  
+
   --__hover: initial;
   --_sm_hover: initial;
   --_md_hover: initial;
   --_lg_hover: initial;
   --_xl_hover: initial;
-  
+
   --__visited: initial;
   --_sm_visited: initial;
   --_md_visited: initial;
   --_lg_visited: initial;
   --_xl_visited: initial;
-  
+
   --__link: initial;
   --_sm_link: initial;
   --_md_link: initial;
@@ -53,10 +53,26 @@
   --_xl_link: initial;
 }
 
-@media screen and (min-width: 490px) { .Box { --_sm: ; } }
-@media screen and (min-width: 768px) { .Box { --_md: ; } }
-@media screen and (min-width: 1040px) { .Box { --_lg: ; } }
-@media screen and (min-width: 1440px) { .Box { --_xl: ; } }
+@media screen and (min-width: 490px) {
+  .Box {
+    --_sm: ;
+  }
+}
+@media screen and (min-width: 768px) {
+  .Box {
+    --_md: ;
+  }
+}
+@media screen and (min-width: 1040px) {
+  .Box {
+    --_lg: ;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .Box {
+    --_xl: ;
+  }
+}
 
 .Box::before {
   --__before: ;
