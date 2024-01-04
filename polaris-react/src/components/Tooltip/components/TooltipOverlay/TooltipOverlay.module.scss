@@ -21,6 +21,7 @@
   will-change: opacity, left, top, transform;
   transform: none;
   transition: none;
+  min-width: 4ch;
 
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-300),
