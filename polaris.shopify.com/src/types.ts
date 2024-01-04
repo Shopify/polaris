@@ -72,6 +72,7 @@ export type FrontMatter = {
   keywords?: (string | number)[];
   status?: Status;
   hideFromNav?: boolean;
+  navLockIcon?: boolean;
   hideChildren?: true;
   featured?: boolean;
   previewImg?: string;
@@ -247,6 +248,7 @@ export interface NavItem {
   };
   expanded?: boolean;
   hideFromNav?: boolean;
+  navLockIcon?: boolean;
   featured?: boolean;
 }
 
