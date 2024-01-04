@@ -73,10 +73,6 @@ $large-width: 980px;
     @media #{$p-breakpoints-md-up} {
       max-width: calc(100% - var(--p-space-1600));
     }
-
-    @media #{$p-breakpoints-sm-up} {
-      max-width: $xsmall-width;
-    }
   }
 
   &.sizeLarge {
