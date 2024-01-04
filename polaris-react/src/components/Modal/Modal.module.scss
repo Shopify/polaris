@@ -2,13 +2,17 @@
 
 $small-width: 620px;
 
-.Body {
-  width: 100%;
+.Body,
+.NoScrollBody {
   flex-grow: 1;
 
   @media #{$p-breakpoints-md-up} {
     flex-grow: unset;
   }
+}
+
+.Body {
+  width: 100%;
 }
 
 .IFrame {
