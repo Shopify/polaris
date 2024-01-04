@@ -1,0 +1,19 @@
+---
+title: Border
+showTOC: false
+---
+
+# Tokens &rarr; {frontmatter.title}
+
+<TokensNav selected="border" />
+
+<TokenList>
+  {tokens.border
+    .map((token) => (
+      <TokenList.Item
+        key={token.name}
+        category="border"
+        token={token}
+      />
+    ))}
+</TokenList>

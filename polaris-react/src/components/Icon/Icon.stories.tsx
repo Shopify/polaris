@@ -92,6 +92,41 @@ export function Colored() {
   );
 }
 
+export function WithToneInherit() {
+  return (
+    <BlockStack gap="200">
+      <Text as="p" tone="caution" variant="bodyMd" alignment="center">
+        Caution tone
+        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+      </Text>
+      <Text as="p" tone="critical" variant="bodyMd" alignment="center">
+        Critical tone
+        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+      </Text>
+      <Text as="p" tone="magic" variant="bodyMd" alignment="center">
+        Magic tone
+        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+      </Text>
+      <Text as="p" tone="magic-subdued" variant="bodyMd" alignment="center">
+        Magic subdued tone
+        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+      </Text>
+      <Text as="p" tone="subdued" variant="bodyMd" alignment="center">
+        Subdued tone
+        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+      </Text>
+      <Text as="p" tone="success" variant="bodyMd" alignment="center">
+        Success tone
+        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+      </Text>
+      <Text as="p" tone="text-inverse" variant="bodyMd" alignment="center">
+        Text inverse tone
+        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+      </Text>
+    </BlockStack>
+  );
+}
+
 export function WithPlaceholder() {
   return <Icon source="placeholder" />;
 }

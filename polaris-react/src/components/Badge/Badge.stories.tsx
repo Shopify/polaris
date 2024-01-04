@@ -44,6 +44,10 @@ export function New() {
   return <Badge tone="new">Fulfilled</Badge>;
 }
 
+export function Magic() {
+  return <Badge tone="magic">Magic</Badge>;
+}
+
 export function Incomplete() {
   return (
     <Badge progress="incomplete" tone="attention">
@@ -97,6 +101,7 @@ const tones: {
   attention: 'Attention',
   critical: 'Critical',
   new: 'New',
+  magic: 'Magic',
   'read-only': 'Read-only',
   enabled: 'Enabled',
   'info-strong': 'Info',

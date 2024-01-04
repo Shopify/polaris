@@ -4,7 +4,7 @@ import type {SpaceScale} from '@shopify/polaris-tokens';
 import {getResponsiveProps} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './InlineStack.scss';
+import styles from './InlineStack.module.scss';
 
 type Align =
   | 'start'
@@ -16,9 +16,13 @@ type Align =
 type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Gap = ResponsiveProp<SpaceScale>;
-
+type Element = 'div' | 'span' | 'li' | 'ol' | 'ul';
 export interface InlineStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
+  /** HTML Element type
+   * @default 'div'
+   */
+  as?: Element;
   /** Horizontal alignment of children */
   align?: Align;
   /** Vertical alignment of children */
@@ -36,6 +40,7 @@ export interface InlineStackProps extends React.AriaAttributes {
 }
 
 export const InlineStack = function InlineStack({
+  as: Element = 'div',
   align,
   blockAlign,
   gap,
@@ -50,8 +55,8 @@ export const InlineStack = function InlineStack({
   } as React.CSSProperties;
 
   return (
-    <div className={styles.InlineStack} style={style}>
+    <Element className={styles.InlineStack} style={style}>
       {children}
-    </div>
+    </Element>
   );
 };

@@ -45,7 +45,7 @@ import {useTheme} from '../../utilities/use-theme';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
-import styles from './IndexTable.scss';
+import styles from './IndexTable.module.scss';
 
 interface IndexTableHeadingBase {
   id?: string;
@@ -1083,10 +1083,9 @@ function IndexTableBase({
   }
 
   function renderStickyHeading(heading: IndexTableHeading, index: number) {
-    const position = index + 1;
     const headingStyle =
-      tableHeadingRects.current && tableHeadingRects.current.length > position
-        ? {minWidth: tableHeadingRects.current[position].offsetWidth}
+      tableHeadingRects.current && tableHeadingRects.current.length > index
+        ? {minWidth: tableHeadingRects.current[index].offsetWidth}
         : undefined;
     const headingAlignment = heading.alignment || 'start';
 

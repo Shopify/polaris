@@ -7,7 +7,7 @@ import {
 } from '../../../../utilities/index-table';
 import type {ScrollContextType} from '../../../../utilities/index-table';
 
-import styles from './ScrollContainer.scss';
+import styles from './ScrollContainer.module.scss';
 
 export interface ScrollContainerProps {
   children: React.ReactNode;

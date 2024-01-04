@@ -1,0 +1,31 @@
+---
+title: Motion
+showTOC: false
+---
+
+# Tokens &rarr; {frontmatter.title}
+
+<TokensNav selected="motion" />
+
+<TokenList>
+  {tokens.motion
+    .sort((token) =>
+      token.name.includes('ease') || token.name.includes('linear')
+        ? -1
+        : 1,
+    )
+    .map((token) => (
+      <TokenList.Item
+        key={token.name}
+        category="motion"
+        token={token}
+      />
+    ))}
+</TokenList>
+
+<style>
+  {tokens.motion
+    .filter(({name}) => name.includes('keyframes'))
+    .map(({name, value}) => `@keyframes ${name} ${value}`)
+    .join('\n')}
+</style>

@@ -11,7 +11,7 @@ import {Button, buttonFrom} from '../Button';
 import {Popover} from '../Popover';
 
 import {Header, Section, Subsection} from './components';
-import styles from './LegacyCard.scss';
+import styles from './LegacyCard.module.scss';
 
 export type {
   LegacyCardSectionProps,

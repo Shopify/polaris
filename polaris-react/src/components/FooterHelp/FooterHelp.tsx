@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './FooterHelp.scss';
+import styles from './FooterHelp.module.scss';
 
 export interface FooterHelpProps {
   /** The content to display inside the layout. */

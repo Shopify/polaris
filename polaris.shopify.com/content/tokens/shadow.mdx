@@ -1,0 +1,19 @@
+---
+title: Shadow
+showTOC: false
+---
+
+# Tokens &rarr; {frontmatter.title}
+
+<TokensNav selected="shadow" />
+
+<TokenList>
+  {tokens.shadow
+    .map((token) => (
+      <TokenList.Item
+        key={token.name}
+        category="shadow"
+        token={token}
+      />
+    ))}
+</TokenList>

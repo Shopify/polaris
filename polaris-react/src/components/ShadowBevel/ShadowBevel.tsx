@@ -7,7 +7,7 @@ import type {
 import {getResponsiveValue} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './ShadowBevel.scss';
+import styles from './ShadowBevel.module.scss';
 
 export interface ShadowBevelProps {
   as?: React.ElementType;

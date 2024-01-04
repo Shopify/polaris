@@ -1,5 +1,31 @@
 # Changelog
 
+## 7.13.0
+
+### Minor Changes
+
+- [#11349](https://github.com/Shopify/polaris/pull/11349) [`0a2f1659d`](https://github.com/Shopify/polaris/commit/0a2f1659d1141dba5cb93f6d64aeceab89155cfb) Thanks [@alex-page](https://github.com/alex-page)! - Add PageClock and PageClockFilled icons
+
+## 7.12.0
+
+### Minor Changes
+
+- [#11316](https://github.com/Shopify/polaris/pull/11316) [`235bc7d0c`](https://github.com/Shopify/polaris/commit/235bc7d0c327c450f94650ffe6f64d68eee2a28e) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `SkeletonMajor`
+
+## 7.11.0
+
+### Minor Changes
+
+- [#11292](https://github.com/Shopify/polaris/pull/11292) [`2b5ecf8df`](https://github.com/Shopify/polaris/commit/2b5ecf8df3dcc07a3a6a75939e6f3b588f710ea1) Thanks [@alex-page](https://github.com/alex-page)! - Add ClipboardCheckFilledMajor icon
+
+### Patch Changes
+
+- [#11271](https://github.com/Shopify/polaris/pull/11271) [`bd0cede27`](https://github.com/Shopify/polaris/commit/bd0cede27d266ec827220ad9da1016b788811922) Thanks [@alex-page](https://github.com/alex-page)! - - Remove fill as we already remove it as a plugin with rollup
+  - Fix svgo config as the convertPathData was not correctly running with the overridden option
+  - Add a new test to make sure that optimized svg code matches the code in the .svg file
+  - Remove unnecessary tests that are resolved with svgo config
+  - Reduce icons library SVG size by 383.75kb
+
 ## 7.10.0
 
 ### Minor Changes

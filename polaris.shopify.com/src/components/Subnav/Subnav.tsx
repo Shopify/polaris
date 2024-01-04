@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import navJSON from '../../../.cache/nav';
-import {NavJSON, NavItem} from '../../types';
+import nav from '../../../.cache/nav';
+import {NavItem} from '../../types';
 import {className} from '../../utils/various';
 
 import styles from './Subnav.module.scss';
@@ -12,7 +12,6 @@ import icons from '../../icons';
 import {useEffect, useState} from 'react';
 
 type PolarisIcon = keyof typeof polarisIcons;
-const nav = navJSON.children as NavJSON;
 
 interface NavObject {
   [key: string]: NavItem;
@@ -82,7 +81,7 @@ function getNavItems(path: string): {[key: string]: NavItem} | undefined {
   const paths = path.split('/').filter((segment) => segment);
 
   const navItemPath = paths.join('.children.');
-  const currentNavItem = getObjectValue<NavItem>(nav, navItemPath);
+  const currentNavItem = getObjectValue<NavItem>(nav.children, navItemPath);
 
   const isOverviewPage = currentNavItem?.children !== undefined;
 
@@ -90,7 +89,7 @@ function getNavItems(path: string): {[key: string]: NavItem} | undefined {
   const parentItemPath = paths.slice(0, -1).join('.children.');
   const parentNavItem = isOverviewPage
     ? currentNavItem
-    : getObjectValue<NavItem>(nav, parentItemPath);
+    : getObjectValue<NavItem>(nav.children, parentItemPath);
 
   // Return if we're on a page that doesn't have a subnav
   if (!parentNavItem) return;

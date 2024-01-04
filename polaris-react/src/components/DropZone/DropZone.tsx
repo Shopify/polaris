@@ -32,7 +32,7 @@ import {
   createAllowMultipleKey,
 } from './utils';
 import type {DropZoneEvent} from './utils';
-import styles from './DropZone.scss';
+import styles from './DropZone.module.scss';
 
 export type DropZoneFileType = 'file' | 'image' | 'video';
 

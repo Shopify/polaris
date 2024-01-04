@@ -1,8 +1,8 @@
 name: Instagram
-set: Minor
-description: Instagram logo
+set: minor
+description: Used to represent Instagram.
 keywords:
-  - instagram
+  - Instagram
   - social media
 authors:
   - Joe Thomas

@@ -1,0 +1,68 @@
+@import '../../../../styles/common';
+
+$Backdrop-opacity: 0.88;
+
+.Toast {
+  display: inline-flex;
+  max-width: 500px;
+  padding: var(--p-space-200) var(--p-space-300);
+  border-radius: var(--p-border-radius-100);
+  background: var(--p-color-bg-inverse);
+  color: var(--p-color-text-inverse);
+  margin-bottom: var(--p-space-500);
+  box-shadow: var(--p-shadow-500);
+
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-400),
+    $borderRadius: var(--p-border-radius-200)
+  );
+
+  @media #{$p-breakpoints-sm-up} {
+    padding: var(--p-space-300);
+  }
+
+  @media (forced-colors: active) {
+    border: var(--p-border-width-050) solid transparent;
+  }
+}
+
+.Action {
+  margin-left: var(--p-space-400);
+  color: var(--p-color-text-inverse);
+}
+
+.error {
+  background: var(--p-color-bg-fill-critical);
+  color: var(--p-color-text-critical-on-bg-fill);
+
+  .CloseButton {
+    color: var(--p-color-text-critical-on-bg-fill);
+  }
+}
+
+.LeadingIcon {
+  margin-right: var(--p-space-150);
+}
+
+.CloseButton {
+  display: flex;
+  align-self: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0;
+  border: none;
+  appearance: none;
+  background: transparent;
+  color: var(--p-color-icon-inverse);
+  cursor: pointer;
+  margin-left: var(--p-space-200);
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus,
+  &:hover {
+    color: var(--p-color-text-inverse);
+  }
+}

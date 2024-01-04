@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import styles from '../../FormLayout.scss';
+import styles from '../../FormLayout.module.scss';
 
 export interface ItemProps {
   children?: React.ReactNode;
