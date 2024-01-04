@@ -12,6 +12,8 @@ import styles from './Frame.module.scss';
 import {className} from '../../utils/various';
 import {useRouter} from 'next/router';
 import StatusBadge from '../StatusBadge';
+import Icon from '../Icon';
+import {LockMajor} from '@shopify/polaris-icons';
 
 const NAV_ID = 'nav';
 interface Props {
@@ -252,6 +254,10 @@ function NavItem({
                     }}
                   >
                     {child.title}
+
+                    {child.navLockIcon ? (
+                      <Icon source={LockMajor} width={16} height={16} />
+                    ) : null}
 
                     {child.status && <StatusBadge status={child.status} />}
                   </Link>
