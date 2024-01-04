@@ -243,7 +243,7 @@ function NavItem({
                     isCurrent && styles.isCurrent,
                   )}
                 >
-                  {child.navLockIcon ? (
+                  {child.internalOnly ? (
                     <a
                       href={child.slug}
                       onClick={handleLinkClick}

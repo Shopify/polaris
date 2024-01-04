@@ -36,7 +36,7 @@ const genNavJson = async (markdownFiles) => {
       componentDescriptions,
       relatedResources,
       hideFromNav,
-      navLockIcon,
+      internalOnly,
     } = md.frontMatter;
 
     const {slug} = md;
@@ -58,7 +58,7 @@ const genNavJson = async (markdownFiles) => {
       componentDescriptions,
       relatedResources,
       hideFromNav: hideFromNav || false,
-      navLockIcon: navLockIcon || false,
+      internalOnly: internalOnly || false,
     });
   });
 
