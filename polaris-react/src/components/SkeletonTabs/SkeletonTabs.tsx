@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {classNames} from '../../utilities/css';
-import {SkeletonBodyText} from '../SkeletonBodyText';
 
 import styles from './SkeletonTabs.module.scss';
 
@@ -13,12 +12,9 @@ export function SkeletonTabs({count = 2}: SkeletonTabsProps) {
   return (
     <div className={styles.Tabs}>
       {[...Array(count).keys()].map((key) => {
-        const tabWidthClassName =
-          key % 2 === 0 ? styles['Tab-short'] : styles['Tab-long'];
-
         return (
-          <div key={key} className={classNames(styles.Tab, tabWidthClassName)}>
-            <SkeletonBodyText lines={1} />
+          <div key={key} className={classNames(styles.Tab)}>
+            <div className={styles.TabText} />
           </div>
         );
       })}

@@ -1,23 +1,36 @@
 import React from 'react';
-import type {ComponentMeta} from '@storybook/react';
-import {LegacyCard, SkeletonTabs} from '@shopify/polaris';
+import type {Meta} from '@storybook/react';
+import {BlockStack, LegacyCard, SkeletonTabs} from '@shopify/polaris';
 
 export default {
   component: SkeletonTabs,
-} as ComponentMeta<typeof SkeletonTabs>;
+} as Meta<typeof SkeletonTabs>;
 
-export function Default() {
+export function All() {
   return (
-    <LegacyCard>
-      <SkeletonTabs />
-    </LegacyCard>
+    <BlockStack gap="500">
+      <Default />
+      <WithACustomCount />
+      <InsideOfACard />
+    </BlockStack>
   );
 }
 
+export function Default() {
+  return <SkeletonTabs />;
+}
+
 export function WithACustomCount() {
+  return <SkeletonTabs count={4} />;
+}
+
+export function InsideOfACard() {
   return (
     <LegacyCard>
-      <SkeletonTabs count={4} />
+      <SkeletonTabs count={6} />
+      <LegacyCard.Section title="Something">
+        <p>Tab X selected</p>
+      </LegacyCard.Section>
     </LegacyCard>
   );
 }
