@@ -60,34 +60,6 @@ export function Colored() {
         Magic tone
       </Text>
       <Icon source={icons.CirclePlusMinor} tone="magic" />
-      <Text as="p" variant="bodyMd" alignment="center">
-        Text Primary tone
-      </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textPrimary" />
-      <Text as="p" variant="bodyMd" alignment="center">
-        Text Caution tone
-      </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textCaution" />
-      <Text as="p" variant="bodyMd" alignment="center">
-        Text Warning tone
-      </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textWarning" />
-      <Text as="p" variant="bodyMd" alignment="center">
-        Text Critical tone
-      </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textCritical" />
-      <Text as="p" variant="bodyMd" alignment="center">
-        Text Info tone
-      </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textInfo" />
-      <Text as="p" variant="bodyMd" alignment="center">
-        Text Success tone
-      </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textSuccess" />
-      <Text as="p" variant="bodyMd" alignment="center">
-        Text Magic tone
-      </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textMagic" />
     </BlockStack>
   );
 }
