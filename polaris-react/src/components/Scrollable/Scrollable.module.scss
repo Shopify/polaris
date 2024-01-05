@@ -108,7 +108,7 @@
 }
 
 .styledScrollbar {
-  @supports selector(::-webkit-scrollbar) {
+  @supports #{'selector(::-webkit-scrollbar)'} {
     background: greenyellow;
     scrollbar-color: lightgray transparent;
 
