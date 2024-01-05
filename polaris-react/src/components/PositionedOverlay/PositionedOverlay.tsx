@@ -198,17 +198,24 @@ export class PositionedOverlay extends PureComponent<
   };
 
   private isScrollContainer = (node: HTMLElement) => {
-    if (node.scrollHeight <= node.clientHeight) {
+    const yOverflow = node.scrollHeight > node.clientHeight;
+    const xOverflow = node.scrollWidth > node.clientWidth;
+
+    if (!yOverflow && !xOverflow) {
       return false;
     }
 
-    const overflowY = window.getComputedStyle(node).overflowY;
+    const styles = window.getComputedStyle(node);
+    const yScroll =
+      styles.overflowY === 'auto' || styles.overflowY === 'scroll';
+    const xScroll =
+      styles.overflowX === 'auto' || styles.overflowX === 'scroll';
 
-    if (overflowY === 'visible' || overflowY === 'hidden') {
-      return false;
+    if ((yOverflow && yScroll) || (xOverflow && xScroll)) {
+      return true;
     }
 
-    return true;
+    return false;
   };
 
   private setScrollableContainers = () => {
