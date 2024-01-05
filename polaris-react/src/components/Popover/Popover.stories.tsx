@@ -19,6 +19,7 @@ import {
   EmptySearchResult,
   Text,
   BlockStack,
+  Card,
 } from '@shopify/polaris';
 import {SearchIcon} from '@shopify/polaris-icons';
 
@@ -829,6 +830,49 @@ export function WithSubduedPane() {
         </Popover.Pane>
       </Popover>
     </div>
+  );
+}
+
+export function WithScrollContainer() {
+  const [popoverActive, setPopoverActive] = useState(true);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const activator = (
+    <Button onClick={togglePopoverActive} disclosure size="large">
+      Scroll me!
+    </Button>
+  );
+
+  return (
+    <Card>
+      <div style={{height: '300px', overflow: 'scroll'}}>
+        <div style={{height: '600px', overflow: 'hidden'}}>
+          <Box paddingBlock="2400" />
+          <Popover
+            active={popoverActive}
+            activator={activator}
+            onClose={togglePopoverActive}
+            ariaHaspopup={false}
+            sectioned
+          >
+            <Popover.Pane>
+              <Box padding="400">
+                <Text as="p">Popover content</Text>
+              </Box>
+            </Popover.Pane>
+            <Popover.Pane subdued>
+              <Box padding="400">
+                <Text as="p">Subdued popover pane</Text>
+              </Box>
+            </Popover.Pane>
+          </Popover>
+        </div>
+      </div>
+    </Card>
   );
 }
 
