@@ -4,6 +4,7 @@ import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
 import {BlockStack} from '../BlockStack';
 import {InlineStack} from '../InlineStack';
+import type {ViewTransition} from '../Page';
 
 import styles from './SkeletonPage.module.scss';
 
@@ -20,6 +21,8 @@ export interface SkeletonPageProps {
   backAction?: boolean;
   /** The child elements to render in the skeleton page. */
   children?: React.ReactNode;
+  /** Starts view transitions when navigating */
+  viewTransition?: ViewTransition;
 }
 
 export function SkeletonPage({
@@ -29,6 +32,11 @@ export function SkeletonPage({
   primaryAction,
   title = '',
   backAction,
+  viewTransition = {
+    enabled: false,
+    headerName: undefined,
+    contentName: undefined,
+  },
 }: SkeletonPageProps) {
   const i18n = useI18n();
 
@@ -65,6 +73,60 @@ export function SkeletonPage({
     />
   ) : null;
 
+  const headerContent = (
+    <Box
+      paddingBlockStart={{xs: '400', md: '500'}}
+      paddingBlockEnd={{xs: '400', md: '500'}}
+      paddingInlineStart={{xs: '400', sm: '0'}}
+      paddingInlineEnd={{xs: '400', sm: '0'}}
+      width="100%"
+    >
+      <InlineStack gap="400" align="space-between" blockAlign="center">
+        <InlineStack gap="400">
+          {backActionMarkup}
+          <Box paddingBlockStart="100" paddingBlockEnd="100">
+            {titleContent}
+          </Box>
+        </InlineStack>
+        {primaryActionMarkup}
+      </InlineStack>
+    </Box>
+  );
+
+  const headerMarkup = viewTransition.enabled ? (
+    <div
+      style={
+        {
+          viewTransitionName: viewTransition.headerName,
+        } as React.CSSProperties
+      }
+    >
+      {headerContent}
+    </div>
+  ) : (
+    headerContent
+  );
+
+  const childrenContent = (
+    <Box paddingBlockEnd="200" width="100%">
+      {children}
+    </Box>
+  );
+
+  const contentMarkup = viewTransition.enabled ? (
+    <div
+      style={
+        {
+          viewTransitionName: viewTransition.contentName,
+        } as React.CSSProperties
+      }
+    >
+      {childrenContent}
+    </div>
+  ) : (
+    childrenContent
+  );
+
   return (
     <BlockStack gap="400" inlineAlign="center">
       <Box
@@ -83,26 +145,8 @@ export function SkeletonPage({
         })}
       >
         <BlockStack>
-          <Box
-            paddingBlockStart={{xs: '400', md: '500'}}
-            paddingBlockEnd={{xs: '400', md: '500'}}
-            paddingInlineStart={{xs: '400', sm: '0'}}
-            paddingInlineEnd={{xs: '400', sm: '0'}}
-            width="100%"
-          >
-            <InlineStack gap="400" align="space-between" blockAlign="center">
-              <InlineStack gap="400">
-                {backActionMarkup}
-                <Box paddingBlockStart="100" paddingBlockEnd="100">
-                  {titleContent}
-                </Box>
-              </InlineStack>
-              {primaryActionMarkup}
-            </InlineStack>
-          </Box>
-          <Box paddingBlockEnd="200" width="100%">
-            {children}
-          </Box>
+          {headerMarkup}
+          {contentMarkup}
         </BlockStack>
       </Box>
     </BlockStack>
