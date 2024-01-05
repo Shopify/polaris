@@ -82,6 +82,11 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
             scrollbarWidth="thin"
             horizontal={false}
             non_standard_unstable_styled_scrollbar
+            style={
+              {
+                '--pc-navigation-scrollbar-width': '8px',
+              } as React.CSSProperties
+            }
           >
             {children}
           </Scrollable>

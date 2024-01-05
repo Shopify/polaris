@@ -131,7 +131,7 @@ $nav-max-width: 360px;
     --p-color-nav-bg-surface-hover
   );
   width: 100%;
-  padding: 0 var(--p-space-300);
+  padding: 0 calc(var(--p-space-300) - var(--pc-navigation-scrollbar-width));
 }
 
 .ItemInnerWrapper {
@@ -789,8 +789,10 @@ $nav-max-width: 360px;
   display: flex;
   align-items: center;
   min-height: nav(desktop-nav-height);
-  padding-left: var(--p-space-500);
-  padding-right: var(--p-space-100);
+  padding-left: calc(var(--p-space-500) - var(--pc-navigation-scrollbar-width));
+  padding-right: calc(
+    var(--p-space-100) - var(--pc-navigation-scrollbar-width)
+  );
 
   > :first-child {
     flex: 1 1 auto;
@@ -814,7 +816,10 @@ $nav-max-width: 360px;
     display: flex;
     align-items: center;
     height: calc(100% - var(--p-space-100));
-    margin-right: calc(var(--p-space-200) + var(--p-space-050));
+    margin-right: calc(
+      var(--p-space-200) + var(--p-space-050) -
+        calc(var(--pc-navigation-scrollbar-width) / 2)
+    );
     padding: calc(var(--p-space-100) - var(--p-space-050));
     border-radius: var(--p-border-radius-200);
 

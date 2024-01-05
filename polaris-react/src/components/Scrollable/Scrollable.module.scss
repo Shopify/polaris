@@ -94,27 +94,13 @@
   overflow-y: auto;
 }
 
-.gutterStable {
-  @supports (scrollbar-gutter: stable) {
-    margin-right: calc(var(--p-space-200) * -1);
-  }
-}
-
-.gutterStable-both-edges {
-  @supports (scrollbar-gutter: stable both-edges) {
-    margin-left: calc(var(--p-space-200) * -1);
-    margin-right: calc(var(--p-space-200) * -1);
-  }
-}
-
 .styledScrollbar {
   @supports #{'selector(::-webkit-scrollbar)'} {
-    background: greenyellow;
     scrollbar-color: lightgray transparent;
 
     &::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
+      width: var(--pc-navigation-scrollbar-width, 8px);
+      height: var(--pc-navigation-scrollbar-width, 8px);
     }
 
     &::-webkit-scrollbar-thumb,
@@ -125,13 +111,13 @@
 
     &:hover {
       scrollbar-color: lightgray transparent;
-    }
 
-    &::-webkit-scrollbar-thumb {
-      background: lightgray;
-      border: 2px solid transparent;
-      border-radius: 10px;
-      background-clip: content-box;
+      &::-webkit-scrollbar-thumb {
+        background: lightgray;
+        border: 2px solid transparent;
+        border-radius: var(--p-border-radius-300);
+        background-clip: content-box;
+      }
     }
   }
 }
