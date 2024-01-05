@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-[Navigation] Removed sm media query for padding top
+[Navigation] Updated `padding-top` to `space-100` for small viewports
