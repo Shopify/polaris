@@ -18,7 +18,7 @@ export function SkeletonTabs({count = 2}: SkeletonTabsProps) {
 
         return (
           <div key={key} className={classNames(styles.Tab, tabWidthClassName)}>
-            <SkeletonBodyText lines={1} />
+            <div className={styles.InnerTab} />
           </div>
         );
       })}
