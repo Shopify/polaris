@@ -78,8 +78,9 @@ export const Navigation: React.FunctionComponent<NavigationProps> & {
           {mediaMarkup}
           <Scrollable
             className={styles.PrimaryNavigation}
-            scrollbarGutter="stable"
+            scrollbarGutter="stable both-edges"
             scrollbarWidth="thin"
+            horizontal={false}
             non_standard_unstable_styled_scrollbar
           >
             {children}

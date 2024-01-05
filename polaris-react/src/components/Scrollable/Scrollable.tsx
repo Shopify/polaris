@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 
 import {debounce} from '../../utilities/debounce';
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import {
   StickyManager,
   StickyManagerContext,
@@ -160,6 +160,8 @@ const ScrollableComponent = forwardRef<
       horizontal && styles.horizontal,
       shadow && topShadow && styles.hasTopShadow,
       shadow && bottomShadow && styles.hasBottomShadow,
+      scrollbarGutter &&
+        styles[variationName('gutter', scrollbarGutter).split(' ').join('-')],
       non_standard_unstable_styled_scrollbar && styles.styledScrollbar,
     );
 
