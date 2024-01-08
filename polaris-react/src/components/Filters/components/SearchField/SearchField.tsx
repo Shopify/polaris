@@ -44,30 +44,14 @@ export function SearchField({
   const id = useId();
   const {mdUp} = useBreakpoints();
 
-  const suffix = useMemo(() => {
-    const spinnerMarkup = loading ? (
-      <div className={styles.Spinner}>
-        <Spinner size="small" />
-      </div>
+  const suffix =
+    value && selectedViewName ? (
+      <Text as="span" variant="bodyMd" tone="subdued">
+        {i18n.translate('Polaris.Filters.searchInView', {
+          viewName: selectedViewName,
+        })}
+      </Text>
     ) : null;
-    const viewNameMarkup =
-      value && selectedViewName ? (
-        <Text as="span" variant="bodyMd" tone="subdued">
-          {i18n.translate('Polaris.Filters.searchInView', {
-            viewName: selectedViewName,
-          })}
-        </Text>
-      ) : null;
-
-    return (
-      <InlineStack gap="200">
-        {viewNameMarkup}
-        {spinnerMarkup}
-      </InlineStack>
-    );
-  }, [loading, value, selectedViewName, i18n]);
-
-  console.log({value, suffix, selectedViewName, loading});
 
   function handleChange(value: string) {
     onChange(value);
@@ -100,6 +84,8 @@ export function SearchField({
       label={placeholder}
       labelHidden
       clearButton
+      autoSize
+      loading={loading}
     />
   );
 }

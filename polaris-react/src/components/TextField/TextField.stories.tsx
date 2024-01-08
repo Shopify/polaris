@@ -988,7 +988,7 @@ export function With1PasswordDisabled() {
 }
 
 export function WithAutoSize() {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState('Jaded Pixel');
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
 
@@ -998,8 +998,50 @@ export function WithAutoSize() {
       value={value}
       onChange={handleChange}
       autoSize
-      suffix="in: High value customers"
-      // error="Store name is required"
+      suffix="in: Your stores"
+    />
+  );
+}
+
+export function WithAutoSizeAndDynamicSuffix() {
+  const [value, setValue] = useState('');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  const suffix = value ? 'in: Unfulfilled orders' : null;
+
+  return (
+    <TextField
+      label="Search view"
+      value={value}
+      onChange={handleChange}
+      autoSize
+      placeholder="Searching in Unfulfilled orders"
+      suffix={suffix}
+    />
+  );
+}
+
+export function WithAutoSizeAndOtherElements() {
+  const [value, setValue] = useState('Jaded Pixel');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  const handleTextFieldChange = useCallback((value) => setValue(value), []);
+
+  const handleClearButtonClick = useCallback(() => setValue(''), []);
+
+  return (
+    <TextField
+      label="Search view"
+      value={value}
+      onChange={handleChange}
+      clearButton
+      onClearButtonClick={handleClearButtonClick}
+      autoSize
+      suffix="in: Unfulfilled orders"
+      showCharacterCount
+      maxLength={128}
     />
   );
 }

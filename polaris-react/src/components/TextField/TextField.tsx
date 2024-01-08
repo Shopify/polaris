@@ -19,6 +19,7 @@ import {Key} from '../../types';
 import type {Error} from '../../types';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
+import {Spinner as LoadingSpinner} from '../Spinner';
 import {useEventListener} from '../../utilities/use-event-listener';
 
 import {Resizer, Spinner} from './components';
@@ -185,6 +186,8 @@ interface NonMutuallyExclusiveProps {
   tone?: 'magic';
   /** Whether the TextField will grow as the text within the input changes */
   autoSize?: boolean;
+  /** Indicates the loading state */
+  loading?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -254,10 +257,10 @@ export function TextField({
   onBlur,
   tone,
   autoSize,
+  loading,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
-  const [width, setWidth] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
   const uniqId = useId();
@@ -268,10 +271,10 @@ export function TextField({
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const prefixRef = useRef<HTMLDivElement>(null);
   const suffixRef = useRef<HTMLDivElement>(null);
+  const loadingRef = useRef<HTMLDivElement>(null);
   const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
   const spinnerRef = useRef<HTMLDivElement>(null);
-  const widthMeasurerRef = useRef<HTMLSpanElement>(null);
 
   const getInputRef = useCallback(() => {
     return multiline ? textAreaRef.current : inputRef.current;
@@ -298,10 +301,6 @@ export function TextField({
 
     input.setSelectionRange(value.length, suggestion.length);
   }, [focus, value, type, suggestion]);
-
-  useEffect(() => {
-    setWidth(widthMeasurerRef.current?.offsetWidth ?? null);
-  }, [value]);
 
   const normalizedValue = suggestion ? suggestion : value;
   const normalizedStep = step != null ? step : 1;
@@ -338,6 +337,12 @@ export function TextField({
   const suffixMarkup = suffix ? (
     <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
       {suffix}
+    </div>
+  ) : null;
+
+  const loadingMarkup = loading ? (
+    <div className={styles.Loading} id={`${id}-Loading`} ref={loadingRef}>
+      <LoadingSpinner size="small" />
     </div>
   ) : null;
 
@@ -474,20 +479,13 @@ export function TextField({
       />
     ) : null;
 
-  const style = useMemo(() => {
-    if (multiline && height) {
-      return {
-        height,
-        maxHeight,
-      };
-    }
-    if (autoSize && width != null) {
-      return {
-        width,
-      };
-    }
-    return null;
-  }, [multiline, height, maxHeight, autoSize, width]);
+  const style =
+    multiline && height
+      ? {
+          height,
+          maxHeight,
+        }
+      : null;
 
   const handleExpandingResize = useCallback((height: number) => {
     setHeight(height);
@@ -586,6 +584,7 @@ export function TextField({
     inputMode,
     type: inputType,
     rows: getRows(multiline),
+    size: autoSize ? '1' : undefined,
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
     'aria-labelledby': labelledBy.join(' '),
     'aria-invalid': Boolean(error),
@@ -636,15 +635,16 @@ export function TextField({
   );
 
   const inputAndSuffixMarkup = autoSize ? (
-    <div className={styles.AutoSizeWrapper}>
-      <span
-        className={styles.AutoSizer}
-        ref={widthMeasurerRef}
-        aria-hidden="true"
+    <div className={styles.InputAndSuffixWrapper}>
+      <div
+        className={classNames(
+          styles.AutoSizeWrapper,
+          suffix && styles.AutoSizeWrapperWithSuffix,
+        )}
+        data-auto-size-value={value || placeholder}
       >
-        {value}
-      </span>
-      {inputMarkup}
+        {inputMarkup}
+      </div>
       {suffixMarkup}
     </div>
   ) : (
@@ -671,6 +671,7 @@ export function TextField({
           {prefixMarkup}
           {inputAndSuffixMarkup}
           {characterCountMarkup}
+          {loadingMarkup}
           {clearButtonMarkup}
           {spinnerMarkup}
           {backdropMarkup}

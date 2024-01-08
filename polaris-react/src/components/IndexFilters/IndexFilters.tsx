@@ -188,7 +188,6 @@ export function IndexFilters({
   const viewNames = tabs.map(({content}) => content);
 
   const selectedViewName = viewNames[selected];
-  console.log({viewNames, tabs, selected, selectedViewName});
 
   const handleChangeSortButton = useCallback(
     (value: string[]) => {
