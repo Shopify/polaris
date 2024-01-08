@@ -39,6 +39,7 @@ export interface PositionedOverlayProps {
   preventInteraction?: boolean;
   classNames?: string;
   zIndexOverride?: number;
+  transform?: string;
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
 }
@@ -62,7 +63,7 @@ const OBSERVER_CONFIG = {
   childList: true,
   subtree: true,
   characterData: true,
-  attributeFilter: ['style'],
+  // attributeFilter: ['style'],
 };
 
 export class PositionedOverlay extends PureComponent<
@@ -134,13 +135,15 @@ export class PositionedOverlay extends PureComponent<
       preventInteraction,
       classNames: propClassNames,
       zIndexOverride,
+      transform,
     } = this.props;
 
     const style = {
+      transform,
       top: top == null || isNaN(top) ? undefined : top,
       left: left == null || isNaN(left) ? undefined : left,
       right: right == null || isNaN(right) ? undefined : right,
-      width: width == null || isNaN(width) ? undefined : width,
+      width: width == null || isNaN(width) ? '200' : width,
       zIndex: zIndexOverride || zIndex || undefined,
     };
 
@@ -364,7 +367,7 @@ export class PositionedOverlay extends PureComponent<
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
             height: verticalPosition.height || 0,
-            width: fullWidth || positionHorizontal ? overlayRect.width : null,
+            width: fullWidth ? overlayRect.width : null,
             positioning: verticalPosition.positioning as Positioning,
             outsideScrollableContainer:
               onScrollOut != null &&
