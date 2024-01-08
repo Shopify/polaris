@@ -5,6 +5,7 @@ import React, {
   useRef,
   useCallback,
   useId,
+  useMemo,
 } from 'react';
 import {XCircleIcon} from '@shopify/polaris-icons';
 
@@ -182,6 +183,8 @@ interface NonMutuallyExclusiveProps {
   onBlur?(event?: React.FocusEvent): void;
   /** Indicates the tone of the text field */
   tone?: 'magic';
+  /** Whether the TextField will grow as the text within the input changes */
+  autoSize?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -250,9 +253,11 @@ export function TextField({
   onFocus,
   onBlur,
   tone,
+  autoSize,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
+  const [width, setWidth] = useState<number | null>(null);
   const [focus, setFocus] = useState(Boolean(focused));
   const isAfterInitial = useIsAfterInitialMount();
   const uniqId = useId();
@@ -266,6 +271,7 @@ export function TextField({
   const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
   const spinnerRef = useRef<HTMLDivElement>(null);
+  const widthMeasurerRef = useRef<HTMLSpanElement>(null);
 
   const getInputRef = useCallback(() => {
     return multiline ? textAreaRef.current : inputRef.current;
@@ -292,6 +298,10 @@ export function TextField({
 
     input.setSelectionRange(value.length, suggestion.length);
   }, [focus, value, type, suggestion]);
+
+  useEffect(() => {
+    setWidth(widthMeasurerRef.current?.offsetWidth ?? null);
+  }, [value]);
 
   const normalizedValue = suggestion ? suggestion : value;
   const normalizedStep = step != null ? step : 1;
@@ -464,7 +474,20 @@ export function TextField({
       />
     ) : null;
 
-  const style = multiline && height ? {height, maxHeight} : null;
+  const style = useMemo(() => {
+    if (multiline && height) {
+      return {
+        height,
+        maxHeight,
+      };
+    }
+    if (autoSize && width != null) {
+      return {
+        width,
+      };
+    }
+    return null;
+  }, [multiline, height, maxHeight, autoSize, width]);
 
   const handleExpandingResize = useCallback((height: number) => {
     setHeight(height);
@@ -514,6 +537,7 @@ export function TextField({
     clearButton && styles['Input-hasClearButton'],
     monospaced && styles.monospaced,
     suggestion && styles.suggestion,
+    autoSize && styles['Input-autoSize'],
   );
 
   const handleOnFocus = (
@@ -611,6 +635,25 @@ export function TextField({
     />
   );
 
+  const inputAndSuffixMarkup = autoSize ? (
+    <div className={styles.AutoSizeWrapper}>
+      <span
+        className={styles.AutoSizer}
+        ref={widthMeasurerRef}
+        aria-hidden="true"
+      >
+        {value}
+      </span>
+      {inputMarkup}
+      {suffixMarkup}
+    </div>
+  ) : (
+    <>
+      {inputMarkup}
+      {suffixMarkup}
+    </>
+  );
+
   return (
     <Labelled
       label={label}
@@ -626,8 +669,7 @@ export function TextField({
       <Connected left={connectedLeft} right={connectedRight}>
         <div className={className} onClick={handleClick} ref={textFieldRef}>
           {prefixMarkup}
-          {inputMarkup}
-          {suffixMarkup}
+          {inputAndSuffixMarkup}
           {characterCountMarkup}
           {clearButtonMarkup}
           {spinnerMarkup}

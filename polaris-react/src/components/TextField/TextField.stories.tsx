@@ -986,3 +986,20 @@ export function With1PasswordDisabled() {
     />
   );
 }
+
+export function WithAutoSize() {
+  const [value, setValue] = useState('');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  return (
+    <TextField
+      label="Store name"
+      value={value}
+      onChange={handleChange}
+      autoSize
+      suffix="in: High value customers"
+      // error="Store name is required"
+    />
+  );
+}
