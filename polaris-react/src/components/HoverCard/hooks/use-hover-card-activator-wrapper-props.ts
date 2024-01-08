@@ -10,7 +10,7 @@ const HOVER_OUT_TIMEOUT = 150;
 export function useHoverCardActivatorWrapperProps({
   hoverDelay,
   snapToParent,
-  ref: providedRef,
+  ref: providedActivatorRef,
   toggleActive,
 }: {
   hoverDelay?: number;
@@ -21,7 +21,7 @@ export function useHoverCardActivatorWrapperProps({
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
   const mouseEntered = useRef(false);
-  const dynamicRef = useRef<HTMLElement | null>(null);
+  const dynamicActivatorRef = useRef<HTMLElement | null>(null);
 
   const {mdUp} = useBreakpoints();
 
@@ -29,13 +29,17 @@ export function useHoverCardActivatorWrapperProps({
     useEphemeralPresenceManager();
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
-  const [freezeActive, setFreezeActive] = useState(false);
+  const [overlayActive, setOverlayActive] = useState(false);
 
   useEffect(() => {
-    if (!activatorNode && providedRef && providedRef.current) {
-      setActivatorNode(providedRef.current);
+    if (
+      !activatorNode &&
+      providedActivatorRef &&
+      providedActivatorRef.current
+    ) {
+      setActivatorNode(providedActivatorRef.current);
     }
-  }, [providedRef, activatorNode]);
+  }, [providedActivatorRef, activatorNode]);
 
   useEffect(() => {
     const currentHoverDelayTimeout = hoverDelayTimeout?.current;
@@ -65,28 +69,34 @@ export function useHoverCardActivatorWrapperProps({
   }, [toggleActive, removePresence]);
 
   const handleMouseLeaveActivator = useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
-      if (freezeActive) {
-        dynamicRef.current = event.currentTarget;
-        return;
-      }
+    (event?: React.MouseEvent<HTMLDivElement>) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore - EventTarget does in fact have a parentNode property
+      const parentClassName = event?.relatedTarget?.parentNode?.className;
+      const mouseEnteredHoverCard =
+        parentClassName?.includes('HoverCard-Content');
+
       if (hoverDelayTimeout.current) {
         clearTimeout(hoverDelayTimeout.current);
         hoverDelayTimeout.current = null;
       }
 
-      dynamicRef.current = null;
+      dynamicActivatorRef.current = null;
       mouseEntered.current = false;
+
+      if (mouseEnteredHoverCard) {
+        return;
+      }
+
       handleClose();
     },
-    [freezeActive, handleClose, hoverDelayTimeout, mouseEntered],
+    [handleClose, hoverDelayTimeout, mouseEntered],
   );
 
   const handleMouseEnter = useCallback(
     (event: React.MouseEvent<HTMLDivElement>) => {
       if (!mdUp) return;
-
-      dynamicRef.current = event.currentTarget;
+      dynamicActivatorRef.current = event.currentTarget;
       mouseEntered.current = true;
 
       if (hoverDelay && !presenceList.hovercard) {
@@ -112,11 +122,12 @@ export function useHoverCardActivatorWrapperProps({
   );
 
   const handleMouseEnterOverlay = () => {
-    setFreezeActive(true);
+    setOverlayActive(true);
   };
 
   const handleMouseLeaveOverlay = () => {
-    setFreezeActive(false);
+    handleClose();
+    setOverlayActive(false);
   };
 
   const className = classNames(
@@ -126,10 +137,10 @@ export function useHoverCardActivatorWrapperProps({
 
   return {
     className,
-    freezeActive,
+    overlayActive,
     isDesktop: mdUp,
     present: presenceList.hovercard,
-    activatorElement: dynamicRef?.current ?? activatorNode,
+    activatorElement: dynamicActivatorRef?.current ?? activatorNode,
     setActivatorNode,
     handleMouseLeaveActivator,
     handleMouseEnterActivator: handleMouseEnterFix,
