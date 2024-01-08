@@ -77,7 +77,7 @@ export const SelectAllActions = ({
               width="100%"
               paddingBlockStart="300"
               paddingBlockEnd="300"
-              paddingInlineStart="400"
+              paddingInlineStart="300"
               paddingInlineEnd="400"
             >
               <InlineStack gap="200" align="start" blockAlign="center">

@@ -294,7 +294,7 @@ export function WithBulkActionsAndManyItems() {
 
   return (
     <BlockStack gap="400">
-      <Card padding="0" roundedAbove="sm">
+      <Card padding="0">
         <ResourceList
           resourceName={resourceName}
           items={items}

@@ -14,8 +14,6 @@ interface Props {
   bulkActions: BulkActionButtonProps['content'][];
   promotedActions: NonNullable<BulkActionsProps['promotedActions']>;
   disabled: boolean;
-  width: number;
-  isSticky: boolean;
   accessibilityLabel: string;
   label: string;
   selected: boolean;
@@ -35,8 +33,6 @@ const bulkActionProps: Props = {
     },
   ],
   disabled: false,
-  width: 500,
-  isSticky: false,
 };
 
 describe('<BulkActions />', () => {
@@ -239,8 +235,6 @@ describe('<BulkActions />', () => {
             },
           ],
           disabled: false,
-          width: 500,
-          isSticky: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
 
@@ -284,8 +278,6 @@ describe('<BulkActions />', () => {
             },
           ],
           disabled: false,
-          width: 500,
-          isSticky: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
         const bulkActionButtons = bulkActions.findAll(BulkActionButton);
@@ -320,8 +312,6 @@ describe('<BulkActions />', () => {
             },
           ],
           disabled: false,
-          width: 500,
-          isSticky: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
 
@@ -363,8 +353,6 @@ describe('<BulkActions />', () => {
             },
           ],
           disabled: false,
-          width: 500,
-          isSticky: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
 
