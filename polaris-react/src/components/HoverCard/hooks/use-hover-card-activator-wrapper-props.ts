@@ -29,6 +29,7 @@ export function useHoverCardActivatorWrapperProps({
     useEphemeralPresenceManager();
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
+  const [freezeActive, setFreezeActive] = useState(false);
 
   useEffect(() => {
     if (!activatorNode && providedRef && providedRef.current) {
@@ -56,22 +57,30 @@ export function useHoverCardActivatorWrapperProps({
   }, [toggleActive, addPresence]);
 
   const handleClose = useCallback(() => {
-    toggleActive?.(false);
     hoverOutTimeout.current = setTimeout(() => {
       removePresence('hovercard');
     }, HOVER_OUT_TIMEOUT);
+
+    toggleActive?.(false);
   }, [toggleActive, removePresence]);
 
-  const handleMouseLeave = useCallback(() => {
-    if (hoverDelayTimeout.current) {
-      clearTimeout(hoverDelayTimeout.current);
-      hoverDelayTimeout.current = null;
-    }
+  const handleMouseLeaveActivator = useCallback(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      if (freezeActive) {
+        dynamicRef.current = event.currentTarget;
+        return;
+      }
+      if (hoverDelayTimeout.current) {
+        clearTimeout(hoverDelayTimeout.current);
+        hoverDelayTimeout.current = null;
+      }
 
-    dynamicRef.current = null;
-    mouseEntered.current = false;
-    handleClose();
-  }, [handleClose, hoverDelayTimeout, mouseEntered]);
+      dynamicRef.current = null;
+      mouseEntered.current = false;
+      handleClose();
+    },
+    [freezeActive, handleClose, hoverDelayTimeout, mouseEntered],
+  );
 
   const handleMouseEnter = useCallback(
     (event: React.MouseEvent<HTMLDivElement>) => {
@@ -102,6 +111,14 @@ export function useHoverCardActivatorWrapperProps({
     [handleMouseEnter],
   );
 
+  const handleMouseEnterOverlay = () => {
+    setFreezeActive(true);
+  };
+
+  const handleMouseLeaveOverlay = () => {
+    setFreezeActive(false);
+  };
+
   const className = classNames(
     styles.ActivatorWrapper,
     snapToParent && styles.snapToParent,
@@ -109,10 +126,14 @@ export function useHoverCardActivatorWrapperProps({
 
   return {
     className,
+    freezeActive,
     isDesktop: mdUp,
+    present: presenceList.hovercard,
     activatorElement: dynamicRef?.current ?? activatorNode,
     setActivatorNode,
-    handleMouseLeave,
-    handleMouseOver: handleMouseEnterFix,
+    handleMouseLeaveActivator,
+    handleMouseEnterActivator: handleMouseEnterFix,
+    handleMouseEnterOverlay,
+    handleMouseLeaveOverlay,
   };
 }

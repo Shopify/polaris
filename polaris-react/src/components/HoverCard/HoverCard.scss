@@ -3,12 +3,16 @@
 $vertical-motion-offset: -5px;
 
 .HoverCard {
+  position: relative;
+  display: flex;
+  max-width: max-content;
+  min-width: max-content;
   background: var(--p-color-bg-surface);
-  max-width: calc(100vw - var(--p-space-800));
+  will-change: left, top, max-width;
   margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
   box-shadow: var(--p-shadow-500);
   border-radius: var(--p-border-radius-300);
-  will-change: left, right, top;
+
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-md),
     $borderRadius: var(--p-border-radius-300),
@@ -21,24 +25,21 @@ $vertical-motion-offset: -5px;
 }
 
 .HoverCardOverlay {
-  top: 0;
-  width: auto;
   opacity: 0;
-  transform: translateY($vertical-motion-offset);
-  /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list, polaris/motion/declaration-property-unit-disallowed-list  -- need custom bezier curve for hovercard animations */
-  transition: opacity /* var(--p-motion-duration-500) */ 5s ease-in-out,
-    top var(--p-motion-duration-500) cubic-bezier(0.25, 0, 0.75, 1.35),
-    width var(--p-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
 
 .HoverCardOverlay-entering {
   opacity: 1;
-  transform: translateY(0);
+  // transform: translateY(0);
+  /* stylelint-disable-next-line -- polaris/motion/declaration-property-unit-disallowed-list */
+  transition: opacity var(--p-motion-duration-100) ease-in-out 5s;
 }
 
 .HoverCardOverlay-open {
   opacity: 1;
   transform: none;
+  transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
+    width var(--p-motion-duration-100) ease-in-out;
 }
 
 .measuring:not(.HoverCardOverlay-exiting) {
@@ -57,22 +58,6 @@ $vertical-motion-offset: -5px;
   &.snapToParent {
     width: 100%;
   }
-
-  &:hover {
-    .HoverCardOverlay {
-      opacity: 1;
-    }
-
-    .HoverCardOverlay-entering {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .HoverCardOverlay-open {
-      opacity: 1;
-      transform: none;
-    }
-  }
 }
 
 .ContentContainer {
@@ -88,9 +73,10 @@ $vertical-motion-offset: -5px;
 }
 
 .Content {
+  opacity: 1;
   position: relative;
   display: flex;
   flex-direction: column;
   border-radius: var(--p-border-radius-100);
-  transition: all var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
+  transition: opacity var(--p-motion-duration-100) ease-in-out;
 }

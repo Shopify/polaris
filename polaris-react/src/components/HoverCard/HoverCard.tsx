@@ -120,32 +120,40 @@ export function HoverCard({
   const ref = useRef<HTMLElement | null>(null);
 
   const {
+    freezeActive,
     className,
     isDesktop,
     activatorElement: childActivator,
-    handleMouseLeave,
-    handleMouseOver,
+    handleMouseLeaveActivator,
+    handleMouseEnterActivator,
+    handleMouseEnterOverlay,
+    handleMouseLeaveOverlay,
   } = useHoverCardActivatorWrapperProps({
     toggleActive,
     hoverDelay,
     ref,
   });
 
+  console.log('freeze active', freezeActive);
+
   const WrapperComponent: any = activatorWrapper;
   const id = providedId ?? defaultId;
   const activatorElement = children ? childActivator : dynamicActivator;
-
+  const isActive = dynamicActivator ? activatorElement !== null : active;
+  const renderOverlay = freezeActive ? true : isActive;
   const portal =
     activatorElement && isDesktop ? (
       <Portal idPrefix="hovercard">
         <HoverCardOverlay
           id={id}
-          active={active}
+          active={renderOverlay}
           activator={activatorElement}
           snapToParent={snapToParent}
           zIndexOverride={zIndexOverride}
           preferredAlignment={preferredAlignment}
           preferredPosition={preferredPosition}
+          onMouseEnter={handleMouseEnterOverlay}
+          onMouseLeave={handleMouseLeaveOverlay}
         >
           {content}
         </HoverCardOverlay>
@@ -156,8 +164,8 @@ export function HoverCard({
     <WrapperComponent
       ref={ref}
       className={className}
-      onMouseLeave={handleMouseLeave}
-      onMouseOver={handleMouseOver}
+      onMouseLeave={handleMouseLeaveActivator}
+      onMouseEnter={handleMouseEnterActivator}
     >
       {children}
       {portal}

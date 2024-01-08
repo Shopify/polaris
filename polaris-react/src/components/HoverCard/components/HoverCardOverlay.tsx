@@ -19,6 +19,7 @@ enum TransitionStatus {
   Entered = 'entered',
   Exiting = 'exiting',
   Exited = 'exited',
+  Moving = 'moving',
 }
 
 export interface HoverCardOverlayProps {
@@ -30,6 +31,8 @@ export interface HoverCardOverlayProps {
   zIndexOverride?: number;
   activator: HTMLElement;
   snapToParent?: boolean;
+  onMouseEnter(): void;
+  onMouseLeave(): void;
 }
 
 export function HoverCardOverlay({
@@ -41,13 +44,15 @@ export function HoverCardOverlay({
   zIndexOverride,
   activator,
   snapToParent,
+  onMouseEnter,
+  onMouseLeave,
 }: HoverCardOverlayProps) {
   const {motion} = useTheme();
 
   const [transitionStatus, setTransitionStatus] = useState<TransitionStatus>(
     active ? TransitionStatus.Entering : TransitionStatus.Exited,
   );
-  const contentNode = useRef<HTMLDivElement>(null);
+  const contentNode = useRef<HTMLDivElement | null>(null);
   const enteringTimer = useRef<number | undefined>();
 
   const changeTransitionStatus = (
@@ -55,10 +60,9 @@ export function HoverCardOverlay({
     cb?: () => void,
   ) => {
     setTransitionStatus(transitionStatus);
-    // eslint-disable-next-line node/callback-return
+
     cb && cb();
     // Forcing a reflow to enable the animation
-    contentNode.current && contentNode.current.getBoundingClientRect();
   };
 
   useEffect(() => {
@@ -108,14 +112,14 @@ export function HoverCardOverlay({
     const contentStyles = measuring ? undefined : {height: desiredHeight};
 
     return (
-      <div className={className} {...overlay.props}>
-        <div className={styles.Content}>
-          <div
-            id={id}
-            className={styles.Content}
-            style={contentStyles}
-            ref={contentNode}
-          >
+      <div
+        {...overlay.props}
+        className={className}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        <div className={styles.Content} ref={contentNode}>
+          <div id={id} className={styles.Content} style={contentStyles}>
             {children}
           </div>
         </div>
@@ -127,8 +131,6 @@ export function HoverCardOverlay({
     return null;
   }
 
-  console.log(transitionStatus);
-
   const className = classNames(
     styles.HoverCardOverlay,
     transitionStatus === TransitionStatus.Entering &&
@@ -138,6 +140,8 @@ export function HoverCardOverlay({
     transitionStatus === TransitionStatus.Exiting &&
       styles['HoverCardOverlay-exiting'],
   );
+
+  console.log(transitionStatus, className);
 
   const overlayMarkup = active ? (
     <PositionedOverlay
