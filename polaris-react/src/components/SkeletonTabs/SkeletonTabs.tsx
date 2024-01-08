@@ -6,11 +6,13 @@ import styles from './SkeletonTabs.module.scss';
 
 export interface SkeletonTabsProps {
   count?: number;
+  /** Fit tabs to container */
+  fitted?: boolean;
 }
 
-export function SkeletonTabs({count = 2}: SkeletonTabsProps) {
+export function SkeletonTabs({count = 2, fitted = false}: SkeletonTabsProps) {
   return (
-    <div className={styles.Tabs}>
+    <div className={classNames(styles.Tabs, fitted && styles.fitted)}>
       {[...Array(count).keys()].map((key) => {
         return (
           <div key={key} className={classNames(styles.Tab)}>

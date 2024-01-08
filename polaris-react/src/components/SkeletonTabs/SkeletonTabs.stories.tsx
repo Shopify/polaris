@@ -12,6 +12,7 @@ export function All() {
       <Default />
       <WithACustomCount />
       <InsideOfACard />
+      <InsideOfACardFitted />
     </BlockStack>
   );
 }
@@ -27,10 +28,25 @@ export function WithACustomCount() {
 export function InsideOfACard() {
   return (
     <LegacyCard>
-      <SkeletonTabs count={6} />
-      <LegacyCard.Section title="Something">
-        <p>Tab X selected</p>
-      </LegacyCard.Section>
+      <div>
+        <SkeletonTabs count={6} />
+        <LegacyCard.Section title="TabName">
+          <p>Tab X selected</p>
+        </LegacyCard.Section>
+      </div>
+    </LegacyCard>
+  );
+}
+
+export function InsideOfACardFitted() {
+  return (
+    <LegacyCard>
+      <div>
+        <SkeletonTabs fitted />
+        <LegacyCard.Section title="TabName">
+          <p>Tab X selected</p>
+        </LegacyCard.Section>
+      </div>
     </LegacyCard>
   );
 }
