@@ -1,7 +1,7 @@
 ---
 title: Migrating from v12 to v13
 description: Polaris v13.0.0 prop replacement, removal of components, renamed components, and token changes.
-navTitle: v12
+navTitle: v13
 icon: ColorsMajor
 collapsibleTOC: true
 order: 1
@@ -38,8 +38,8 @@ Not on v12 yet? You'll need to follow the [migration guides](https://github.com/
 
 <br />
 
-- What's new in this version <!-- [](/whats-new/version-13) -->
-- v13.0.0 release notes <!-- [](https://github.com/Shopify/polaris/releases/tag/@shopify/polaris@13.0.0) -->
+- [What's new in this version]()
+- [v13.0.0 release notes]()
 
 ## Migration workflow
 
@@ -121,11 +121,13 @@ git commit -m "[Manual] Migrate X from Polaris v12 to v13"
 
 ## Manual updates and fixes
 
-### A new web font
+### Updated Web Font
 
-The new design language comes with a web font called [Inter](https://github.com/rsms/inter).
+The design language has been updated to [Inter v4](https://github.com/rsms/inter/releases/tag/v4.0).
 
-Polaris references this font but does not load it. Your app will need to load the font, otherwise it will fallback to the user's system font. You can load this font from Shopify by adding the following to your app's `<head>`:
+Polaris references this font but does not load it. Your app will need to load the font, otherwise it will fallback to the user's system font. We've also moved to a new versioned URL pattern: `<font-family>/<version>/styles.css`. This stylesheet has a 24-hour cache, allowing us to propagate Inter v4 releases without the need to update or redeploy your app.
+
+You can load this font from Shopify by adding the following to your app's `<head>`:
 
 {/* prettier-ignore */}
 ```html
@@ -135,6 +137,8 @@ Polaris references this font but does not load it. Your app will need to load th
 />
 <link
   rel="stylesheet"
-  href="https://cdn.shopify.com/static/fonts/inter/inter.css"
+  href="https://cdn.shopify.com/static/fonts/inter/v4/styles.css"
 />
 ```
+
+> Please remember to check any custom integrations of Inter v3 (such as usages of variable axes) against the [Inter v4 release notes](https://github.com/rsms/inter/releases/tag/v4.0).
