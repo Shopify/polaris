@@ -9,6 +9,7 @@ import {
   useBreakpoints,
   InlineStack,
   LegacyCard,
+  Card,
   EmptySearchResult,
   IndexFilters,
   useSetIndexFiltersMode,
@@ -1894,7 +1895,7 @@ export function WithStickyLastColumn() {
   );
 
   return (
-    <LegacyCard>
+    <Card padding="0">
       <IndexTable
         condensed={useBreakpoints().smDown}
         resourceName={resourceName}
@@ -1924,7 +1925,7 @@ export function WithStickyLastColumn() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
