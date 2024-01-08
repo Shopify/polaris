@@ -57,13 +57,14 @@ $nav-max-width: 360px;
   flex-direction: column;
   align-items: stretch;
   max-width: 100%;
-
-  &:focus {
-    outline: none;
-  }
+  padding-top: var(--p-space-100);
 
   @media #{$p-breakpoints-md-up} {
     padding-top: var(--p-space-400);
+  }
+
+  &:focus {
+    outline: none;
   }
 }
 
