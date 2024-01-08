@@ -231,7 +231,6 @@ export function InTable() {
   const handleMouseEnterCustomer = useCallback(
     (customer: CustomerDetailPreview) =>
       (event: React.MouseEvent<HTMLDivElement>) => {
-        console.log('mouse entered');
         setActiveHoverCard({customer});
         handleMouseEnterActivator?.(event);
       },
