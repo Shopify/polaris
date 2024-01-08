@@ -221,24 +221,22 @@ export function InTable() {
     customer: null,
   });
 
-  const {className, activatorElement, handleMouseOver, handleMouseLeave} =
-    useHoverCardActivatorWrapperProps({snapToParent: true, hoverDelay: 100});
+  const {
+    className,
+    activatorElement,
+    handleMouseEnterActivator,
+    handleMouseLeaveActivator,
+  } = useHoverCardActivatorWrapperProps({snapToParent: true, hoverDelay: 100});
 
-  const handleMouseOverCustomer = useCallback(
+  const handleMouseEnterCustomer = useCallback(
     (customer: CustomerDetailPreview) =>
       (event: React.MouseEvent<HTMLDivElement>) => {
         console.log('mouse entered');
         setActiveHoverCard({customer});
-        handleMouseOver?.(event);
+        handleMouseEnterActivator?.(event);
       },
-    [handleMouseOver],
+    [handleMouseEnterActivator],
   );
-
-  // const handleMouseLeaveCustomer = useCallback(() => {
-  //   console.log('mouse left');
-  //   setActiveHoverCard({customer: null});
-  //   handleMouseLeave?.();
-  // }, [handleMouseLeave]);
 
   let customerHoverCardContent: React.ReactNode = null;
 
@@ -292,8 +290,8 @@ export function InTable() {
       const linkMarkup = (
         <div
           className={className}
-          onMouseOver={handleMouseOverCustomer(customer)}
-          onMouseLeave={handleMouseLeave}
+          onMouseEnter={handleMouseEnterCustomer(customer)}
+          onMouseLeave={handleMouseLeaveActivator}
           style={{minHeight: '100%', padding: 'var(--p-space-150)'}}
         >
           <Link removeUnderline url="#">
@@ -334,7 +332,6 @@ export function InTable() {
         snapToParent
         hoverDelay={100}
         activator={activatorElement}
-        active={activatorElement !== null}
         activatorWrapper="div"
         preferredPosition="right"
         content={customerHoverCardContent}
