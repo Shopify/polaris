@@ -3,6 +3,10 @@
 .Tabs {
   display: flex;
   width: 100%;
+
+  @media #{$p-breakpoints-md-down} {
+    overflow: auto;
+  }
 }
 
 .Tab {
