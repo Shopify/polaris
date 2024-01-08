@@ -120,7 +120,6 @@ export function HoverCard({
   const ref = useRef<HTMLElement | null>(null);
 
   const {
-    freezeActive,
     className,
     isDesktop,
     activatorElement: childActivator,
@@ -134,19 +133,17 @@ export function HoverCard({
     ref,
   });
 
-  console.log('freeze active', freezeActive);
-
   const WrapperComponent: any = activatorWrapper;
-  const id = providedId ?? defaultId;
+  const id = `HoverCard-${providedId ?? defaultId}`;
   const activatorElement = children ? childActivator : dynamicActivator;
   const isActive = dynamicActivator ? activatorElement !== null : active;
-  const renderOverlay = freezeActive ? true : isActive;
+
   const portal =
     activatorElement && isDesktop ? (
       <Portal idPrefix="hovercard">
         <HoverCardOverlay
           id={id}
-          active={renderOverlay}
+          active={isActive}
           activator={activatorElement}
           snapToParent={snapToParent}
           zIndexOverride={zIndexOverride}

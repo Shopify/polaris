@@ -141,8 +141,6 @@ export function HoverCardOverlay({
       styles['HoverCardOverlay-exiting'],
   );
 
-  console.log(transitionStatus, className);
-
   const overlayMarkup = active ? (
     <PositionedOverlay
       active={active}
