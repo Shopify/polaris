@@ -1,15 +1,11 @@
 import React, {useId, useMemo} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
-import {Spinner} from '../../../Spinner';
 import {Icon} from '../../../Icon';
 import {TextField} from '../../../TextField';
 import {Text} from '../../../Text';
-import {InlineStack} from '../../../InlineStack';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {useI18n} from '../../../../utilities/i18n';
-
-import styles from './SearchField.module.scss';
 
 export interface SearchFieldProps {
   onChange: (value: string) => void;

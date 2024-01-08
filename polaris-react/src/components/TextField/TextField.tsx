@@ -5,7 +5,6 @@ import React, {
   useRef,
   useCallback,
   useId,
-  useMemo,
 } from 'react';
 import {XCircleIcon} from '@shopify/polaris-icons';
 
