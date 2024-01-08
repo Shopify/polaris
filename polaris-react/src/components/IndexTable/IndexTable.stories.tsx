@@ -2994,7 +2994,7 @@ export function WithSortableCustomHeadings() {
   );
 }
 
-export function WithHeadingWithPaddingEnd() {
+export function WithHeadingWithPaddingBlockEnd() {
   const [sortIndex, setSortIndex] = useState(0);
   const [sortDirection, setSortDirection] =
     useState<IndexTableProps['sortDirection']>('descending');
@@ -3169,7 +3169,7 @@ export function WithHeadingWithPaddingEnd() {
             tooltipContent:
               'I am a wide Amount spent tooltip that stays when clicked',
             tooltipWidth: 'wide',
-            paddingEnd: '600',
+            paddingBlockEnd: '600',
           },
           {title: 'Location'},
           {title: 'Fulfillment status'},

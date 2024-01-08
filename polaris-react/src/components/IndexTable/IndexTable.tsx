@@ -67,7 +67,7 @@ interface IndexTableHeadingBase {
    */
   defaultSortDirection?: IndexTableSortDirection;
   /** Horizontal end spacing around title. Accepts a spacing token. */
-  paddingEnd?: SpaceScale;
+  paddingBlockEnd?: SpaceScale;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
@@ -937,8 +937,8 @@ function IndexTableBase({
     }
 
     const style = {
-      '--pc-index-table-heading-extra-padding-right': heading.paddingEnd
-        ? `var(--p-space-${heading.paddingEnd})`
+      '--pc-index-table-heading-extra-padding-right': heading.paddingBlockEnd
+        ? `var(--p-space-${heading.paddingBlockEnd})`
         : '0',
     } as React.CSSProperties;
 
@@ -1037,7 +1037,8 @@ function IndexTableBase({
           <div
             style={style}
             className={classNames(
-              heading.paddingEnd && styles['TableHeading-extra-padding-right'],
+              heading.paddingBlockEnd &&
+                styles['TableHeading-extra-padding-right'],
             )}
           >
             <Tooltip
@@ -1057,7 +1058,8 @@ function IndexTableBase({
           <div
             className={classNames(
               styles.SortableTableHeadingWithCustomMarkup,
-              heading.paddingEnd && styles['TableHeading-extra-padding-right'],
+              heading.paddingBlockEnd &&
+                styles['TableHeading-extra-padding-right'],
             )}
             style={style}
           >
@@ -1087,7 +1089,8 @@ function IndexTableBase({
         <div
           style={style}
           className={classNames(
-            heading.paddingEnd && styles['TableHeading-extra-padding-right'],
+            heading.paddingBlockEnd &&
+              styles['TableHeading-extra-padding-right'],
           )}
         >
           <Tooltip {...defaultHeaderTooltipProps} activatorWrapper="span">
@@ -1108,7 +1111,7 @@ function IndexTableBase({
       <div
         style={style}
         className={classNames(
-          heading.paddingEnd && styles['TableHeading-extra-padding-right'],
+          heading.paddingBlockEnd && styles['TableHeading-extra-padding-right'],
         )}
       >
         {headingContent}
