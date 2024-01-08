@@ -2,5 +2,5 @@
 '@shopify/polaris': minor
 ---
 
-1. Added IndexTable heading props to support additional right padding
-2. Fixed an issue where headings with sort and tooltip don't align right properly.
+- Added the `paddingEnd` prop to the `IndexTableHeading` interface to support additional right padding
+- Fixed sortable `IndexTable` headings with a tooltip not being right aligned properly 
