@@ -44,10 +44,6 @@ $vertical-motion-offset: -5px;
     height var(--p-motion-duration-100) ease-in-out;
 }
 
-.HoverCardOverlay-exiting {
-  opacity: 0;
-}
-
 .measuring:not(.HoverCardOverlay-exiting) {
   opacity: 0;
 }
