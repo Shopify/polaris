@@ -5,7 +5,7 @@ import {classNames} from '../../../utilities/css';
 import {overlay} from '../../shared';
 import {PositionedOverlay} from '../../PositionedOverlay';
 import type {PositionedOverlayProps} from '../../PositionedOverlay';
-import styles from '../HoverCard.scss';
+import styles from '../HoverCard.module.scss';
 
 export enum HoverCardCloseSource {
   Click,
