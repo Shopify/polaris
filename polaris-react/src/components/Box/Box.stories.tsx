@@ -316,9 +316,12 @@ export function WithPseudoElements() {
         background: 'bg-surface',
         padding: '400',
         _before: {
-          content: '">"',
+          content: {sm: '">"', md: '"-"'},
+          _hover: {
+            content: {sm: '"<"', md: '"_"'},
+          },
           display: 'block',
-          background: 'bg-primary',
+          background: 'bg-surface-info',
           width: '200px',
           height: '20px',
         },
