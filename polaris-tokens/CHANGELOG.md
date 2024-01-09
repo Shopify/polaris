@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.5.0
+
+### Minor Changes
+
+- [#11345](https://github.com/Shopify/polaris/pull/11345) [`9f7e5b682`](https://github.com/Shopify/polaris/commit/9f7e5b682f93a3f241e7162eef35dd42b25f7afa) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Added missing color tokens for Shopify Mobile
+
 ## 8.4.0
 
 ### Minor Changes
