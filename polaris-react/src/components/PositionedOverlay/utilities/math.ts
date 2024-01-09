@@ -120,15 +120,21 @@ export function calculateHorizontalPosition(
 
   if (!preferredHorizontalPosition) {
     if (preferredAlignment === 'left') {
-      return Math.min(
-        maximum,
-        Math.max(0, activatorRect.left - overlayMargins.horizontal),
-      );
+      return {
+        position: Math.min(
+          maximum,
+          Math.max(0, activatorRect.left - overlayMargins.horizontal),
+        ),
+        width: 0,
+      };
     } else if (preferredAlignment === 'right') {
-      return Math.min(
-        maximum,
-        Math.max(0, activatorRight - overlayMargins.horizontal),
-      );
+      return {
+        position: Math.min(
+          maximum,
+          Math.max(0, activatorRight - overlayMargins.horizontal),
+        ),
+        width: 0,
+      };
     }
   }
 
@@ -143,6 +149,8 @@ export function calculateHorizontalPosition(
       distanceToLeftScroll >= minimumSpaceToScroll;
     const enoughSpaceFromRightScroll =
       distanceToRightScroll >= minimumSpaceToScroll;
+    const widthIfLeft = Math.min(spaceLeft, desiredWidth);
+    const widthIfRight = Math.min(spaceRight, desiredWidth);
 
     const mostSpaceOnLeft =
       (enoughSpaceFromLeftScroll ||
@@ -161,20 +169,81 @@ export function calculateHorizontalPosition(
     const positionIfLeft =
       activatorRect.left - overlayRect.width + containerRect.left;
 
+    console.table([
+      {variable: 'desiredWidth', value: desiredWidth},
+      {variable: 'activatorRect.width', value: activatorRect.width},
+      {variable: 'overlayRect.width', value: overlayRect.width},
+      {variable: 'containerRect.width', value: containerRect.width},
+      {
+        variable: 'scrollableContainerRect.width',
+        value: scrollableContainerRect.width,
+      },
+      {
+        variable: 'spaceLeft',
+        value: spaceLeft,
+      },
+      {
+        variable: 'spaceRight',
+        value: spaceRight,
+      },
+      {
+        variable: 'enoughSpaceFromLeftScroll',
+        value: enoughSpaceFromLeftScroll,
+      },
+      {
+        variable: 'enoughSpaceFromRightScroll',
+        value: enoughSpaceFromRightScroll,
+      },
+      {
+        variable: 'distanceToLeftScroll',
+        value: distanceToLeftScroll,
+      },
+      {
+        variable: 'distanceToRightScroll',
+        value: distanceToRightScroll,
+      },
+      {
+        variable: 'mostSpaceOnLeft',
+        value: mostSpaceOnLeft,
+      },
+      {
+        variable: 'mostSpaceOnRight',
+        value: mostSpaceOnRight,
+      },
+      {
+        variable: 'positionIfLeft',
+        value: positionIfLeft,
+      },
+      {
+        variable: 'positionIfRight',
+        value: positionIfRight,
+      },
+    ]);
+
     if (preferredHorizontalPosition === 'right') {
-      return mostSpaceOnRight ? positionIfRight : positionIfLeft;
+      return mostSpaceOnRight
+        ? {position: positionIfRight, width: widthIfRight}
+        : {position: positionIfLeft, width: widthIfLeft};
     } else {
-      return mostSpaceOnLeft ? positionIfLeft : positionIfRight;
+      return mostSpaceOnLeft
+        ? {position: positionIfLeft, width: widthIfLeft}
+        : {
+            position: positionIfRight,
+            width: widthIfRight,
+          };
     }
   }
 
-  return Math.min(
-    maximum,
-    Math.max(
-      0,
-      activatorRect.center.x - overlayRect.width / 2 + containerRect.left,
+  return {
+    width: 0,
+    position: Math.min(
+      maximum,
+      Math.max(
+        0,
+        activatorRect.center.x - overlayRect.width / 2 + containerRect.left,
+      ),
     ),
-  );
+  };
 }
 
 export function rectIsOutsideOfRect(inner: Rect, outer: Rect) {
