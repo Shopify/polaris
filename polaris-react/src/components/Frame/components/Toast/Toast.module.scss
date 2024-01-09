@@ -66,3 +66,35 @@ $Backdrop-opacity: 0.88;
     color: var(--p-color-text-inverse);
   }
 }
+
+.toneMagic {
+  background-color: var(--p-color-bg-fill-magic-secondary);
+  color: var(--p-color-text-magic);
+
+  .CloseButton {
+    color: var(--p-color-text-magic);
+  }
+
+  .Action {
+    color: var(--p-color-text-magic);
+  }
+}
+
+.WithActionOnComponent {
+  border: none;
+  cursor: pointer;
+  line-height: var(--p-font-line-height-500);
+  font-size: var(--p-font-size-325);
+  padding-right: var(--p-space-500);
+}
+
+.WithActionOnComponent.toneMagic {
+  &:focus,
+  &:hover {
+    background-color: var(--p-color-bg-fill-magic-secondary-hover);
+  }
+
+  &:active {
+    background-color: var(--p-color-bg-fill-magic-secondary-active);
+  }
+}

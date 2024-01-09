@@ -1,11 +1,13 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
+import {CheckIcon} from '@shopify/polaris-icons';
 
 import {Button} from '../../../../Button';
 import {Toast} from '../Toast';
 import type {ToastProps} from '../Toast';
 import {Key} from '../../../../../types';
+import {Icon} from '../../../../Icon';
 
 interface HandlerMap {
   [eventName: string]: any;
@@ -38,11 +40,23 @@ describe('<Toast />', () => {
     });
   });
 
+  it('renders a Toast with the magic tone when tone is "magic"', () => {
+    const message = mountWithApp(<Toast {...mockProps} tone="magic" />);
+    expect(message).toContainReactComponent('div', {
+      className: 'Toast toneMagic',
+    });
+  });
+
   describe('dismiss button', () => {
     it('renders by default', () => {
       const message = mountWithApp(<Toast {...mockProps} />);
       expect(message).toContainReactComponent('button');
     });
+  });
+
+  it('renders a leading icon if an icon is provided', () => {
+    const message = mountWithApp(<Toast icon={CheckIcon} {...mockProps} />);
+    expect(message).toContainReactComponent(Icon, {source: CheckIcon});
   });
 
   describe('action', () => {
@@ -191,6 +205,24 @@ describe('<Toast />', () => {
       timer.runAllTimers();
 
       expect(spy).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('onClick', () => {
+    it('wraps the toast in a button when provided', () => {
+      const spy = jest.fn();
+      const message = mountWithApp(<Toast {...mockProps} onClick={spy} />);
+
+      expect(message.find('button')).toContainReactText(mockProps.content);
+    });
+
+    it('fires the callback when the toast is clicked', () => {
+      const spy = jest.fn();
+      const message = mountWithApp(<Toast {...mockProps} onClick={spy} />);
+
+      message.find('button')?.trigger('onClick');
+
+      expect(spy).toHaveBeenCalledTimes(1);
     });
   });
 });
