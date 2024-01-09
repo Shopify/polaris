@@ -29,7 +29,7 @@ export function useHoverCardActivatorWrapperProps({
     useEphemeralPresenceManager();
 
   const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
-  const [overlayActive, setOverlayActive] = useState(false);
+  const [overlayEntered, setOverlayEntered] = useState(false);
 
   useEffect(() => {
     if (
@@ -84,13 +84,13 @@ export function useHoverCardActivatorWrapperProps({
       dynamicActivatorRef.current = null;
       mouseEntered.current = false;
 
-      if (!providedActivatorRef && mouseEnteredHoverCard) {
+      if (mouseEnteredHoverCard) {
         return;
       }
 
       handleClose();
     },
-    [handleClose, hoverDelayTimeout, mouseEntered, providedActivatorRef],
+    [handleClose, hoverDelayTimeout, mouseEntered],
   );
 
   const handleMouseEnter = useCallback(
@@ -132,12 +132,12 @@ export function useHoverCardActivatorWrapperProps({
   );
 
   const handleMouseEnterOverlay = () => {
-    setOverlayActive(true);
+    setOverlayEntered(true);
   };
 
   const handleMouseLeaveOverlay = () => {
     handleClose();
-    setOverlayActive(false);
+    setOverlayEntered(false);
   };
 
   const className = classNames(
@@ -147,7 +147,7 @@ export function useHoverCardActivatorWrapperProps({
 
   return {
     className,
-    overlayActive,
+    overlayEntered,
     isDesktop: mdUp,
     present: presenceList.hovercard,
     activatorElement: dynamicActivatorRef?.current ?? activatorNode,

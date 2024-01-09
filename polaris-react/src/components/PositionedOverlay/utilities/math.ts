@@ -59,7 +59,11 @@ export function calculateVerticalPosition(
         }
       : {
           height: heightIfAbove - verticalMargins,
-          top: activatorTop + containerRectTop - heightIfAbove,
+          top:
+            activatorTop +
+            containerRectTop -
+            overlayMargins.activator -
+            heightIfAbove,
           positioning: 'above',
         };
 
@@ -72,7 +76,7 @@ export function calculateVerticalPosition(
         }
       : {
           height: heightIfBelow - verticalMargins,
-          top: activatorBottom + containerRectTop,
+          top: activatorBottom - containerRectTop,
           positioning: 'below',
         };
 
@@ -131,7 +135,7 @@ export function calculateHorizontalPosition(
       return {
         position: Math.min(
           maximum,
-          Math.max(0, activatorRight - overlayMargins.horizontal),
+          Math.max(0, activatorRight - overlayMargins.activator),
         ),
         width: 0,
       };
@@ -167,9 +171,16 @@ export function calculateHorizontalPosition(
     const positionIfRight =
       activatorRect.left + activatorRect.width + containerRect.left;
     const positionIfLeft =
-      activatorRect.left - overlayRect.width + containerRect.left;
+      activatorRect.left -
+      overlayRect.width -
+      overlayMargins.container -
+      containerRect.left;
 
     console.table([
+      {
+        variable: 'overlayMargins',
+        value: Object.entries(overlayMargins).join(' '),
+      },
       {variable: 'desiredWidth', value: desiredWidth},
       {variable: 'activatorRect.width', value: activatorRect.width},
       {variable: 'overlayRect.width', value: overlayRect.width},
