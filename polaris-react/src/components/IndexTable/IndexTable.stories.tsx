@@ -6289,7 +6289,64 @@ export function WithNestedRowsWithThumbnailsOneCellNonSelectable() {
   );
 }
 
-export function WithLongDataSet() {
+export function WithLongDataSetNonSelectable() {
+  const orders = Array.from(Array(100).keys()).map((i) => ({
+    id: `${i}`,
+    order: i,
+    date: 'Jul 20 at 4:34pm',
+    customer: 'Jaydon Stanton',
+    total: `$969.44${i}`,
+    paymentStatus: <Badge progress="complete">Paid</Badge>,
+    fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+  }));
+
+  const resourceName = {
+    singular: 'order',
+    plural: 'orders',
+  };
+
+  const rowMarkup = orders.map(
+    (
+      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      index,
+    ) => (
+      <IndexTable.Row id={id} key={id} position={index}>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {order}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>{total}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={orders.length}
+        headings={[
+          {title: 'Order'},
+          {title: 'Date'},
+          {title: 'Customer'},
+          {title: 'Total', alignment: 'end'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
+        ]}
+        selectable={false}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithLongDataSetSelectable() {
   const orders = Array.from(Array(100).keys()).map((i) => ({
     id: `${i}`,
     order: i,
@@ -6333,6 +6390,21 @@ export function WithLongDataSet() {
     ),
   );
 
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
   return (
     <LegacyCard>
       <IndexTable
@@ -6343,14 +6415,15 @@ export function WithLongDataSet() {
         }
         onSelectionChange={handleSelectionChange}
         headings={[
-          {title: 'Order'},
+          {title: 'Order', hidden: true},
           {title: 'Date'},
           {title: 'Customer'},
           {title: 'Total', alignment: 'end'},
           {title: 'Payment status'},
           {title: 'Fulfillment status'},
         ]}
-        selectable={false}
+        bulkActions={bulkActions}
+        selectable
       >
         {rowMarkup}
       </IndexTable>
