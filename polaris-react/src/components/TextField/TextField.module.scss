@@ -209,6 +209,8 @@ $spinner-icon-size: 12px;
     content: attr(data-auto-size-value) ' ';
     visibility: hidden;
     white-space: pre-wrap;
+    // stylelint-disable-next-line -- needed to ensure the textfield doesn't grow in height when the text field content overgrows the available space
+    max-height: control-height();
   }
 
   &::after,

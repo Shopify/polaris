@@ -997,6 +997,7 @@ export function WithAutoSize() {
       label="Store name"
       value={value}
       onChange={handleChange}
+      autoComplete="off"
       autoSize
       suffix="in: Your stores"
     />
@@ -1015,6 +1016,7 @@ export function WithAutoSizeAndDynamicSuffix() {
       label="Search view"
       value={value}
       onChange={handleChange}
+      autoComplete="off"
       autoSize
       placeholder="Searching in Unfulfilled orders"
       suffix={suffix}
@@ -1036,6 +1038,7 @@ export function WithAutoSizeAndOtherElements() {
       label="Search view"
       value={value}
       onChange={handleChange}
+      autoComplete="off"
       clearButton
       onClearButtonClick={handleClearButtonClick}
       autoSize
