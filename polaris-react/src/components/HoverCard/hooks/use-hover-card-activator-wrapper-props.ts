@@ -96,7 +96,10 @@ export function useHoverCardActivatorWrapperProps({
   const handleMouseEnter = useCallback(
     (event: React.MouseEvent<HTMLDivElement>) => {
       if (!mdUp) return;
-      dynamicActivatorRef.current = event.currentTarget;
+      if (!providedActivatorRef) {
+        dynamicActivatorRef.current = event.currentTarget;
+      }
+
       mouseEntered.current = true;
 
       if (hoverDelay && !presenceList.hovercard) {
@@ -107,7 +110,14 @@ export function useHoverCardActivatorWrapperProps({
         handleOpen();
       }
     },
-    [handleOpen, hoverDelay, hoverDelayTimeout, presenceList, mdUp],
+    [
+      handleOpen,
+      hoverDelay,
+      hoverDelayTimeout,
+      presenceList,
+      mdUp,
+      providedActivatorRef,
+    ],
   );
 
   // https://github.com/facebook/react/issues/10109
