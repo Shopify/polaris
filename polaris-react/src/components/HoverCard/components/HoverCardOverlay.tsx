@@ -59,31 +59,30 @@ export function HoverCardOverlay({
     transitionStatus: TransitionStatus,
     cb?: () => void,
   ) => {
-    setTransitionStatus(transitionStatus);
-
-    cb && cb();
     // Forcing a reflow to enable the animation
+    requestAnimationFrame(() => setTransitionStatus(transitionStatus));
+    cb && cb();
   };
 
   useEffect(() => {
-    if (active) {
+    if (transitionStatus === TransitionStatus.Entering) {
       changeTransitionStatus(TransitionStatus.Entered);
     }
-  }, [active]);
+  }, [transitionStatus]);
 
   useEffect(() => {
-    if (active && enteringTimer.current) {
+    if (enteringTimer.current) {
       changeTransitionStatus(TransitionStatus.Entering, () => {
         clearTransitionTimeout();
         enteringTimer.current = window.setTimeout(() => {
           setTransitionStatus(TransitionStatus.Entered);
-        }, parseInt(motion['motion-duration-100'], 10));
+        }, Number(motion['motion-duration-100']));
       });
     }
 
     if (!active) {
       clearTransitionTimeout();
-      setTransitionStatus(TransitionStatus.Exited);
+      setTransitionStatus(TransitionStatus.Exiting);
     }
 
     return () => {
@@ -107,6 +106,7 @@ export function HoverCardOverlay({
       snapToParent && styles.snapToParent,
       positioning === 'above' && styles.positionedAbove,
       measuring && styles.measuring,
+      !measuring && styles.measured,
     );
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};
@@ -141,7 +141,7 @@ export function HoverCardOverlay({
       styles['HoverCardOverlay-exiting'],
   );
 
-  const overlayMarkup = active ? (
+  const overlayMarkup = (
     <PositionedOverlay
       active={active}
       activator={activator}
@@ -151,7 +151,7 @@ export function HoverCardOverlay({
       classNames={className}
       zIndexOverride={zIndexOverride}
     />
-  ) : null;
+  );
 
   return overlayMarkup;
 }
