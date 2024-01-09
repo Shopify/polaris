@@ -9,7 +9,7 @@ $vertical-motion-offset: -5px;
   max-width: max-content;
   min-width: max-content;
   background: var(--p-color-bg-surface);
-  will-change: opacity, left, top, max-width;
+  will-change: opacity, left, top, height;
   margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
   box-shadow: var(--p-shadow-500);
   border-radius: var(--p-border-radius-300);
@@ -37,8 +37,11 @@ $vertical-motion-offset: -5px;
 .HoverCardOverlay-open {
   opacity: 1;
   transform: none;
+
   transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
-    width var(--p-motion-duration-100) ease-in-out;
+    opacity var(--p-motion-duration-100) ease-in-out,
+    width var(--p-motion-duration-100) ease-in-out,
+    height var(--p-motion-duration-100) ease-in-out;
 }
 
 .HoverCardOverlay-exiting {
@@ -49,7 +52,7 @@ $vertical-motion-offset: -5px;
   opacity: 0;
 }
 
-.measured {
+.measured:not(.HoverCardOverlay-open) {
   opacity: 1;
   transition: opacity var(--p-motion-duration-100) var(--p-motion-ease)
     var(--p-motion-duration-300);
@@ -68,23 +71,11 @@ $vertical-motion-offset: -5px;
   }
 }
 
-.ContentContainer {
-  position: relative;
-  overflow: hidden;
-  background: var(--p-color-bg);
-  border-radius: var(--p-space-300);
-
-  /* Prevent Scrollable's box shadows overflowing the rounded corners of this
-   * element on Safari prior to tech preview version 156.
-   * See: https://bugs.webkit.org/show_bug.cgi?id=68196 */
-  isolation: isolate;
-}
-
 .Content {
   opacity: 1;
   position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  border-radius: var(--p-border-radius-100);
   transition: opacity var(--p-motion-duration-100) ease-in-out;
 }

@@ -2,6 +2,8 @@ import React, {useCallback, useState, useRef} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {PositionedOverlayProps} from '@shopify/polaris';
 import {
+  Tag,
+  Thumbnail,
   useIndexResourceState,
   ButtonGroup,
   Box,
@@ -17,7 +19,12 @@ import {
   InlineStack,
   Card,
 } from '@shopify/polaris';
-import {LocationsMinor, OrdersMinor} from '@shopify/polaris-icons';
+import {
+  ShipmentMajor,
+  LocationsMinor,
+  OrdersMinor,
+  ImageMajor,
+} from '@shopify/polaris-icons';
 
 export default {
   component: HoverCard,
@@ -144,10 +151,25 @@ export function InTable() {
     orders: number;
   }
 
+  interface LineItem {
+    quantity: number;
+    title: string;
+    imageSrc?: string;
+    variant?: string;
+    skuNumber?: string;
+  }
+
+  interface OrderDetailPreview {
+    location?: string;
+    deliveryMethod: string;
+    fulfillmentStatus: React.ReactNode;
+    items: LineItem[];
+  }
+
   const orders = [
     {
       id: '1020',
-      order: (
+      title: (
         <Text as="span" variant="bodyMd" fontWeight="semibold">
           #1020
         </Text>
@@ -158,16 +180,58 @@ export function InTable() {
         email: 'yo@superduperkid.co',
         phone: '+19171111111',
         name: 'Colm Dillane',
-        location: 'New York, NY, USA',
+        location: 'Brooklyn, NY, USA',
         orders: 27,
       },
+      channel: 'Online Store',
       total: '$969.44',
-      paymentStatus: <Badge progress="complete">Paid</Badge>,
-      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+      paymentStatus: (
+        <Badge progress="partiallyComplete" tone="warning">
+          Partially paid
+        </Badge>
+      ),
+      fulfillmentStatus: <Badge progress="complete">Fulfilled</Badge>,
+      items: [
+        {
+          quantity: 40,
+          title: 'Perforated Driving Glove - Lavender/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_of_classic_two-tone_per_2d730775-1987-49ec-8571-3756d83ef508.png?v=1704767232',
+          variant: 'Size - S (8.5)',
+          skuNumber: '178988',
+        },
+        {
+          quantity: 56,
+          title: 'Perforated Driving Glove - Lavender/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_of_classic_two-tone_per_2d730775-1987-49ec-8571-3756d83ef508.png?v=1704767232',
+          variant: 'Size - M (9)',
+          skuNumber: '178988',
+        },
+        {
+          quantity: 79,
+          title: 'Perforated Driving Glove - Lavender/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_of_classic_two-tone_per_2d730775-1987-49ec-8571-3756d83ef508.png?v=1704767232',
+          variant: 'Size - L (9.5)',
+          skuNumber: '178988',
+        },
+        {
+          quantity: 56,
+          title: 'Perforated Driving Glove - Lavender/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_of_classic_two-tone_per_2d730775-1987-49ec-8571-3756d83ef508.png?v=1704767232',
+          variant: 'Size - XL (10)',
+          skuNumber: '178988',
+        },
+      ],
+      deliveryMethod: 'Local Pickup',
+      location: 'Ridgewood Factory',
+      tags: ['VIP', 'wholesale', 'Net 30'],
     },
     {
       id: '1019',
-      order: (
+      title: (
         <Text as="span" variant="bodyMd" fontWeight="semibold">
           #1019
         </Text>
@@ -181,13 +245,31 @@ export function InTable() {
         location: 'Los Angeles, CA, USA',
         orders: 19,
       },
+      channel: 'Online Store',
       total: '$701.19',
-      paymentStatus: <Badge progress="partiallyComplete">Partially paid</Badge>,
-      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: (
+        <Badge progress="incomplete" tone="attention">
+          Unfulfilled
+        </Badge>
+      ),
+      items: [
+        {
+          quantity: 1,
+          title: 'Perforated Motocross Glove - Brown/Cognac/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_for_luxury_keyhole_5_fi_0b5f3b16-fb54-47b6-855d-c19097586c8b.png?v=1704767257',
+          variant: 'Size - L (9.5)',
+          skuNumber: '176400',
+        },
+      ],
+      deliveryMethod: 'UPS 2 Day Air',
+      location: 'BK Warehouse - Williamsburg',
+      tags: ['VIP'],
     },
     {
       id: '1018',
-      order: (
+      title: (
         <Text as="span" variant="bodyMd" fontWeight="semibold">
           #1018
         </Text>
@@ -201,9 +283,27 @@ export function InTable() {
         location: 'San Francisco, CA, USA',
         orders: 22,
       },
+      channel: 'Instagram',
       total: '$798.24',
       paymentStatus: <Badge progress="complete">Paid</Badge>,
-      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+      fulfillmentStatus: (
+        <Badge progress="incomplete" tone="attention">
+          Unfulfilled
+        </Badge>
+      ),
+      items: [
+        {
+          quantity: 1,
+          title: 'Perforated Motocross Glove - Brown/Cognac/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_for_luxury_keyhole_5_fi_0b5f3b16-fb54-47b6-855d-c19097586c8b.png?v=1704767257',
+          variant: 'Size - XL (10)',
+          skuNumber: '176400',
+        },
+      ],
+      deliveryMethod: 'UPS Ground',
+      location: 'BK Warehouse - Williamsburg',
+      tags: ['VIP'],
     },
   ];
 
@@ -216,9 +316,11 @@ export function InTable() {
     useIndexResourceState(orders);
 
   const [activeHoverCard, setActiveHoverCard] = useState<{
-    customer: CustomerDetailPreview | null;
+    customer?: CustomerDetailPreview | null;
+    order?: OrderDetailPreview | null;
   }>({
     customer: null,
+    order: null,
   });
 
   const {
@@ -231,19 +333,27 @@ export function InTable() {
   const handleMouseEnterCustomer = useCallback(
     (customer: CustomerDetailPreview) =>
       (event: React.MouseEvent<HTMLDivElement>) => {
-        setActiveHoverCard({customer});
+        setActiveHoverCard({customer, order: null});
         handleMouseEnterActivator?.(event);
       },
     [handleMouseEnterActivator],
   );
 
-  let customerHoverCardContent: React.ReactNode = null;
+  const handleMouseEnterItems = useCallback(
+    (order: OrderDetailPreview) => (event: React.MouseEvent<HTMLDivElement>) => {
+      setActiveHoverCard({order, customer: null});
+      handleMouseEnterActivator?.(event);
+    },
+    [handleMouseEnterActivator],
+  );
+
+  let hoverCardContent: React.ReactNode = null;
 
   if (activeHoverCard.customer) {
     const {name, phone, email, location, orders} = activeHoverCard?.customer;
 
-    customerHoverCardContent = (
-      <Box padding="400">
+    hoverCardContent = (
+      <Box padding="400" maxWidth="288px">
         <BlockStack gap="400">
           <BlockStack gap="0">
             <Text as="span" variant="headingSm">
@@ -279,22 +389,180 @@ export function InTable() {
         </BlockStack>
       </Box>
     );
+  } else if (activeHoverCard.order) {
+    const {location, deliveryMethod, fulfillmentStatus, items} =
+      activeHoverCard.order;
+    hoverCardContent = (
+      <Box padding="400" width="388px">
+        <BlockStack gap="200">
+          <InlineStack>{fulfillmentStatus}</InlineStack>
+          <Box
+            borderRadius="300"
+            borderWidth="025"
+            borderColor="border-secondary"
+          >
+            <Box
+              id="FulfillmentDetails"
+              background="bg-surface-secondary"
+              padding="300"
+              borderStartStartRadius="300"
+              borderStartEndRadius="300"
+            >
+              <BlockStack gap="300">
+                <BlockStack gap="100">
+                  <InlineStack gap="100" align="start" blockAlign="center">
+                    <div style={{marginLeft: '-4px'}}>
+                      <Icon source={LocationsMinor} tone="subdued" />
+                    </div>
+                    <Text as="p" tone="subdued" variant="bodySm">
+                      Location
+                    </Text>
+                  </InlineStack>
+                  <Text as="p" variant="bodySm">
+                    {location}
+                  </Text>
+                </BlockStack>
+                <BlockStack gap="100">
+                  <InlineStack gap="100" align="start" blockAlign="center">
+                    <div style={{marginLeft: '-4px'}}>
+                      <Icon source={ShipmentMajor} tone="subdued" />
+                    </div>
+                    <Text as="p" tone="subdued" variant="bodySm">
+                      Delivery method
+                    </Text>
+                  </InlineStack>
+                  <Text as="p" variant="bodySm">
+                    {deliveryMethod}
+                  </Text>
+                </BlockStack>
+              </BlockStack>
+            </Box>
+
+            {items.map(
+              ({quantity, title, imageSrc, variant, skuNumber}, index) => (
+                <Box
+                  key={`LineItem-${skuNumber}-${index}`}
+                  id={`LineItem-${skuNumber}-${index}`}
+                  borderBlockStartWidth="025"
+                  borderColor="border-secondary"
+                  paddingInline="300"
+                  paddingBlockStart="500"
+                  paddingBlockEnd="300"
+                >
+                  <InlineStack gap="500" wrap={false} blockAlign="start">
+                    <div
+                      style={{
+                        position: 'relative',
+                        display: 'block',
+                      }}
+                    >
+                      {imageSrc ? (
+                        <Thumbnail source={imageSrc} size="small" alt={title} />
+                      ) : (
+                        <div
+                          style={{
+                            padding: '10px',
+                            borderRadius: 'var(--p-border-radius-200)',
+                            boxShadow: 'var(--p-shadow-border-inset)',
+                            borderColor: 'var(--p-border-secondary)',
+                          }}
+                        >
+                          <Icon tone="subdued" source={ImageMajor} />
+                        </div>
+                      )}
+                      <div
+                        style={{
+                          position: 'absolute',
+                          zIndex: 100,
+                          top: '-30%',
+                          right: '-30%',
+                          display: 'flex',
+                        }}
+                      >
+                        <Box
+                          background="bg-surface"
+                          padding="025"
+                          borderRadius="500"
+                        >
+                          <Box
+                            borderColor="border-brand"
+                            borderRadius="500"
+                            background="bg-fill-secondary"
+                            paddingInline="150"
+                          >
+                            <Text
+                              as="span"
+                              variant="bodyXs"
+                            >{`${quantity}`}</Text>
+                          </Box>
+                        </Box>
+                      </div>
+                    </div>
+                    <BlockStack gap="100">
+                      <Link url="#" monochrome removeUnderline>
+                        <Text as="p" variant="bodySm">
+                          {title}
+                        </Text>
+                      </Link>
+                      <Text as="p" tone="subdued" variant="bodySm">
+                        {variant}
+                      </Text>
+                    </BlockStack>
+                  </InlineStack>
+                </Box>
+              ),
+            )}
+          </Box>
+        </BlockStack>
+      </Box>
+    );
   }
 
   const rowMarkup = orders.map(
     (
-      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      {
+        id,
+        title,
+        date,
+        customer,
+        channel,
+        total,
+        paymentStatus,
+        fulfillmentStatus,
+        items,
+        deliveryMethod,
+        location,
+        tags,
+      },
       index,
     ) => {
-      const linkMarkup = (
+      const customerLinkMarkup = (
         <div
           className={className}
           onMouseEnter={handleMouseEnterCustomer(customer)}
           onMouseLeave={handleMouseLeaveActivator}
           style={{minHeight: '100%', padding: 'var(--p-space-150)'}}
         >
-          <Link removeUnderline url="#">
+          <Link monochrome removeUnderline url="#">
             {customer.name}
+          </Link>
+        </div>
+      );
+
+      const itemLinkMarkup = (
+        <div
+          className={className}
+          onMouseEnter={handleMouseEnterItems({
+            location,
+            deliveryMethod,
+            fulfillmentStatus,
+            items,
+          })}
+          onMouseLeave={handleMouseLeaveActivator}
+          style={{minHeight: '100%', padding: 'var(--p-space-150)'}}
+        >
+          <Link monochrome removeUnderline url="#">
+            {`${items.length} items`}
           </Link>
         </div>
       );
@@ -306,13 +574,10 @@ export function InTable() {
           selected={selectedResources.includes(id)}
           position={index}
         >
-          <IndexTable.Cell>
-            <Text variant="bodyMd" fontWeight="bold" as="span">
-              {order}
-            </Text>
-          </IndexTable.Cell>
+          <IndexTable.Cell>{title}</IndexTable.Cell>
           <IndexTable.Cell>{date}</IndexTable.Cell>
-          <IndexTable.Cell flush>{linkMarkup}</IndexTable.Cell>
+          <IndexTable.Cell flush>{customerLinkMarkup}</IndexTable.Cell>
+          <IndexTable.Cell>{channel}</IndexTable.Cell>
           <IndexTable.Cell>
             <Text as="span" alignment="end" numeric>
               {total}
@@ -320,6 +585,15 @@ export function InTable() {
           </IndexTable.Cell>
           <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
           <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+          <IndexTable.Cell flush>{itemLinkMarkup}</IndexTable.Cell>
+          <IndexTable.Cell>{deliveryMethod}</IndexTable.Cell>
+          <IndexTable.Cell>
+            <InlineStack wrap={false} gap="100">
+              {tags.map((tag, index) => (
+                <Tag key={`Tag-${index}-${tag}`}>{tag}</Tag>
+              ))}
+            </InlineStack>
+          </IndexTable.Cell>
         </IndexTable.Row>
       );
     },
@@ -329,11 +603,12 @@ export function InTable() {
     <Card padding="0">
       <HoverCard
         snapToParent
+        active
         hoverDelay={100}
         activator={activatorElement}
         activatorWrapper="div"
-        preferredPosition="right"
-        content={customerHoverCardContent}
+        preferredPosition={activeHoverCard.order ? 'left' : 'right'}
+        content={hoverCardContent}
       />
       <IndexTable
         resourceName={resourceName}
@@ -346,9 +621,13 @@ export function InTable() {
           {title: 'Order'},
           {title: 'Date'},
           {title: 'Customer'},
+          {title: 'Channel'},
           {title: 'Total', alignment: 'end'},
           {title: 'Payment status'},
           {title: 'Fulfillment status'},
+          {title: 'Items'},
+          {title: 'Delivery method'},
+          {title: 'Tags'},
         ]}
       >
         {rowMarkup}

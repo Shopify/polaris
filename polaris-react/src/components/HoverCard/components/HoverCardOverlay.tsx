@@ -118,7 +118,7 @@ export function HoverCardOverlay({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div className={styles.Content} ref={contentNode}>
+        <div ref={contentNode}>
           <div id={id} className={styles.Content} style={contentStyles}>
             {children}
           </div>
