@@ -51,4 +51,10 @@
       justify-content: center;
     }
   }
+
+  .TabText {
+    @media #{$p-breakpoints-md-up} {
+      width: 100%;
+    }
+  }
 }
