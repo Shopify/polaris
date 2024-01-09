@@ -112,12 +112,16 @@ export type ResponsiveStyleProps = {
 
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
- * `@shopify/polaris-tokens`), helpful aliases for frequently used props, and
-* the modifiers _before, _after, _active, _focus, _hover, _visited and _link.
+ * `@shopify/polaris-tokens`), helpful aliases for frequently used props, the
+ * modifiers _active, _focus, _hover, _visited and _link,
+ * and the pseudoElements _before and _after.
  */
 export type ResponsiveStylePropsWithModifiers = Simplify<
-  ResponsiveStyleProps & {
-    [K in typeof modifiers[number]]?: ResponsiveStyleProps;
+  ResponsiveStyleProps
+  & { [K in ModifierProps]?: ResponsiveStyleProps; }
+  & { [K in PseudoElementProps]?:
+    ResponsiveStyleProps
+    & { [K in ModifierProps]?: ResponsiveStyleProps; }
   }
 >;
 
@@ -1582,7 +1586,11 @@ export const stylePropTokenGroupMap = {
 
 export const cssCustomPropertyNamespace = "_";
 
-export const modifiers = ["_before","_after","_active","_focus","_hover","_visited","_link"] as const;
+export const modifierProps = ["_active","_focus","_hover","_visited","_link"] as const;
+type ModifierProps = typeof modifierProps[number];
+
+export const pseudoElements = {"::before":"_before","::after":"_after"} as const;
+type PseudoElementProps = (typeof pseudoElements)[keyof (typeof pseudoElements)];
 
 export const baseStylePropsModifierKey = '' as const;
 type BaseStylePropsModifierKey = typeof baseStylePropsModifierKey;
@@ -1595,19 +1603,27 @@ export type BreakpointsAliasesWithBaseKey =
   | Exclude<BreakpointsAlias, (typeof breakpointsAliases)[0]>;
 
 // The "base" styles always come last after other modifiers
-export const allModifiers: ((typeof modifiers)[number] | BaseStylePropsModifierKey)[] =
-  [...modifiers, baseStylePropsModifierKey];
+export const allModifierProps: (ModifierProps | BaseStylePropsModifierKey)[] =
+  [...modifierProps, baseStylePropsModifierKey];
 
-export type ValueMapperFactory = (map: typeof stylePropTokenGroupMap) => (
+export type ValueMapper = (
   value: ResponsiveStyleProps[typeof prop],
-  prop: keyof typeof stylePropTokenGroupMap,
+  prop: keyof ResponsiveStyleProps,
   breakpoint: BreakpointsAlias,
-  modifier: (typeof allModifiers)[number],
+  modifier?: (typeof allModifierProps)[number],
+  pseudoElement?: PseudoElementProps,
 ) => unknown;
-export const valueMapperFactory: ValueMapperFactory= (stylePropTokenGroupMap) => (value, prop) => {
+
+export type ValueMapperFactory =
+  (map: typeof stylePropTokenGroupMap) => ValueMapper;
+
+export const valueMapperFactory: ValueMapperFactory = (stylePropTokenGroupMap) => (value, prop) => {
     // If this is a tokenized styleprop, we must convert it to a CSS var().
-    if (!Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop))
+    if (!Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop)) {
       return value;
+    }
+
+    // @ts-expect-error The above check ensures this key exists
     const tokenSubgroup = stylePropTokenGroupMap[prop];
 
     // `Grid`'s `gap` prop used to allow passing fully formed var() functions as

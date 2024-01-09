@@ -3,15 +3,26 @@ import hash from '@emotion/hash';
 import type * as Polymorphic from '@radix-ui/react-polymorphic';
 import {metaThemeDefault, flattenMetaTheme} from '@shopify/polaris-tokens';
 import type {MetaTokenGroupShape} from '@shopify/polaris-tokens';
-import decamelize from 'decamelize';
+import type {Entries} from 'type-fest';
 
 import {classNames, createPolarisCSSVar} from '../../utilities/css';
+import {isObject} from '../../utilities/is-object';
 
 import generatedStyle from './generated-style.module.scss';
 import classes from './Box.module.scss';
 import type {ResponsiveStylePropsWithModifiers} from './generated-data';
-import {stylePropTokenGroupMap, stylePropDefaults} from './generated-data';
-import {convertStylePropsToCSSProperties} from './get-style-props';
+import {
+  stylePropTokenGroupMap,
+  stylePropDefaults,
+  pseudoElements,
+} from './generated-data';
+import {
+  convertStylePropsToCSSProperties,
+  convertCSSPropertiesToStyleSheet,
+} from './get-style-props';
+
+const pseudoElementsEnabled =
+  isObject(pseudoElements) && Object.keys(pseudoElements).length > 0;
 
 let refCounter = 0;
 function incrementRefCounter() {
@@ -147,31 +158,9 @@ export const Box = forwardRef(function Box(
   forwardedRef,
 ) {
   const classNameRef = useRef<string>();
-  // TODO: Refactor this. This is likely not a very robust way to ensure these classNames are unique
-  // If a class already exists for this component instance, don't regenerate.
-  classNameRef.current =
-    classNameRef.current ??
-    `x-${hash(`Box-${incrementRefCounter().toString(36)}`)}`;
 
-  // TODO: Make this programmatic, but for now its two elements.
-  // This beats having to write another reduce.
-  function splitOutPseudoElements(styleProps: any) {
-    const stylePropsClone = {...styleProps};
-    const pseudoElementStyleProps: any = {};
-    pseudoElementStyleProps._before = styleProps._before;
-    pseudoElementStyleProps._after = styleProps._after;
-    delete stylePropsClone._before;
-    delete stylePropsClone._after;
-
-    return {
-      styleProps: stylePropsClone,
-      pseudoElementStyleProps,
-    };
-  }
-  const {styleProps, pseudoElementStyleProps} = splitOutPseudoElements(sx);
-  // Convert the style object without psuedo elements into styleProps
-  const styles = convertStylePropsToCSSProperties(
-    styleProps,
+  const {style, ...pseudoElementStyles} = convertStylePropsToCSSProperties(
+    sx,
     stylePropDefaults,
     (value, prop) => {
       // If this is a tokenized styleprop, we must convert it to a CSS var().
@@ -187,58 +176,28 @@ export const Box = forwardRef(function Box(
     },
   );
 
-  function generatePsuedoElementStyles(className: any, styleProps: any) {
-    if (!className) return;
-    const css = Object.entries(styleProps)
-      .reduce((acc, curr) => {
-        const pseudoElementStyles = Object.fromEntries([curr]);
+  let pseudoElementCSS = '';
 
-        // TODO this function is likely computationally expensive
-        // We only really need the following things to be run on the pseudo element styles
-        // 1. Flatten out breakpoint values
-        // 2. Apply defaults
-        // 3. Convert tokenized values to CSS vars
+  if (pseudoElementsEnabled && Object.keys(pseudoElementStyles).length > 0) {
+    classNameRef.current =
+      classNameRef.current ??
+      `x-${hash(`Box-${incrementRefCounter().toString(36)}`)}`;
 
-        // If we can pull these three utilities out, we may get away with not having to run convertStylePropstoCSSProperties
-        const styleProps = convertStylePropsToCSSProperties(
-          pseudoElementStyles,
-          stylePropDefaults,
-          (value, prop) => {
-            return isTokenVariable(
-              stylePropTokenGroupMap[
-                prop as keyof typeof stylePropTokenGroupMap
-              ],
-              value as string | number,
-            )
-              ? createPolarisCSSVar(
-                  stylePropTokenGroupMap[
-                    prop as keyof typeof stylePropTokenGroupMap
-                  ],
-                  value as string | number,
-                )
-              : value;
-          },
-        );
-        return [...acc, [curr[0].replace('_', ''), styleProps]];
-      }, [])
-      .map(([pseudoElement, styles]) => {
-        return `.${className}::${pseudoElement} {${Object.entries(
-          styles,
-        ).reduce((acc, [key, val]) => {
-          acc += `\n\t${
-            key.startsWith('--_') ? key : decamelize(key, {separator: '-'})
-          }: ${val};`;
-          return acc;
-        }, '')}
-}`;
-      })
+    pseudoElementCSS = (
+      Object.entries(pseudoElementStyles) as Entries<
+        Required<typeof pseudoElementStyles>
+      >
+    )
+      .map(([pseudoElementSelector, {style}]) =>
+        convertCSSPropertiesToStyleSheet(
+          style,
+          classNameRef.current!,
+          pseudoElementSelector,
+        ),
+      )
       .join('\n');
-    return css;
   }
-  const pseudoElementCSS = generatePsuedoElementStyles(
-    classNameRef.current,
-    pseudoElementStyleProps,
-  );
+
   const constructedClassname = classNames(
     generatedStyle.Box,
     classNameRef.current,
@@ -247,24 +206,25 @@ export const Box = forwardRef(function Box(
     Tag === 'ul' && classes.listReset,
     className,
   );
-  // TODO: When on the client, Move the style element to the head.
-  return (
-    <>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: pseudoElementCSS || '',
-        }}
-      />
-      {React.createElement(
-        Tag,
-        {
-          ref: forwardedRef,
-          style: styles,
-          className: constructedClassname,
-          ...props,
-        },
-        children,
-      )}
-    </>
+
+  return React.createElement(
+    Tag,
+    {
+      ref: forwardedRef,
+      style,
+      className: constructedClassname,
+      ...props,
+    },
+    [
+      // TODO: When on the client, Move the style element to the head.
+      pseudoElementCSS
+        ? React.createElement('style', {
+            dangerouslySetInnerHTML: {
+              __html: pseudoElementCSS || '',
+            },
+          })
+        : null,
+      children,
+    ],
   );
 }) as Polymorphic.ForwardRefComponent<Element, BoxProps>;

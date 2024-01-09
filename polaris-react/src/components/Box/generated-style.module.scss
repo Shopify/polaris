@@ -10,18 +10,6 @@
   --_lg: initial;
   --_xl: initial;
   
-  --__before: initial;
-  --_sm_before: initial;
-  --_md_before: initial;
-  --_lg_before: initial;
-  --_xl_before: initial;
-  
-  --__after: initial;
-  --_sm_after: initial;
-  --_md_after: initial;
-  --_lg_after: initial;
-  --_xl_after: initial;
-  
   --__active: initial;
   --_sm_active: initial;
   --_md_active: initial;
@@ -57,22 +45,6 @@
 @media screen and (min-width: 768px) { .Box { --_md: ; } }
 @media screen and (min-width: 1040px) { .Box { --_lg: ; } }
 @media screen and (min-width: 1440px) { .Box { --_xl: ; } }
-
-.Box::before {
-  --__before: ;
-  --_sm_before: var(--_sm);
-  --_md_before: var(--_md);
-  --_lg_before: var(--_lg);
-  --_xl_before: var(--_xl);
-}
-
-.Box::after {
-  --__after: ;
-  --_sm_after: var(--_sm);
-  --_md_after: var(--_md);
-  --_lg_after: var(--_lg);
-  --_xl_after: var(--_xl);
-}
 
 .Box:active {
   --__active: ;
