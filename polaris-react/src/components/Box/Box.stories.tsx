@@ -315,11 +315,13 @@ export function WithPseudoElements() {
       sx={{
         background: 'bg-surface',
         padding: '400',
-        _before: {
-          content: {sm: '">"', md: '"-"'},
-          _hover: {
+        _hover: {
+          _before: {
             content: {sm: '"<"', md: '"_"'},
           },
+        },
+        _before: {
+          content: {sm: '">"', md: '"-"'},
           display: 'block',
           background: 'bg-surface-info',
           width: '200px',

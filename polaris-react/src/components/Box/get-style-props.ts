@@ -45,10 +45,13 @@ type CSSProperties = Simplify<
 
 type PseudoElementProps = (typeof pseudoElements)[keyof typeof pseudoElements];
 
-type ReponsiveStylePseudoElementProps = Pick<
-  ResponsiveStylePropsWithModifiers,
-  PseudoElementProps
->;
+type ModifierProps = (typeof modifierProps)[number];
+
+type ReponsiveStylePseudoElementProps = {
+  [K in PseudoElementProps]?: ResponsiveStyleProps & {
+    [K in ModifierProps]?: ResponsiveStyleProps;
+  };
+};
 
 export type ConversionResult = {
   style: CSSProperties;
@@ -339,15 +342,8 @@ export function convertStylePropsToCSSProperties(
   defaults: PropDefaults = {},
   valueMapper: ValueMapper = identity,
 ): ConversionResult {
-  const baseStyleProps = {...styleProps};
-  const pseudoElementStyleProps: ReponsiveStylePseudoElementProps = {};
-
-  pseudoElementProps.forEach((pseudoElement) => {
-    if (Object.prototype.hasOwnProperty.call(baseStyleProps, pseudoElement)) {
-      pseudoElementStyleProps[pseudoElement] = baseStyleProps[pseudoElement];
-      delete baseStyleProps[pseudoElement];
-    }
-  });
+  const [baseStyleProps, pseudoElementStyleProps] =
+    extractPseudoStyles(styleProps);
 
   return {
     style: convert(baseStyleProps, defaults, valueMapper),
@@ -391,6 +387,78 @@ export function convertCSSPropertiesToStyleSheet(
         }, [] as string[])
         .join('\n')}
     }`;
+}
+
+/**
+ * Convert this
+ * ```
+ * {
+ *   color: 'blue',
+ *   _before: {
+ *     content: '">"',
+ *     display: 'block',
+ *   }
+ *   _hover: {
+ *     _before: {
+ *       content: '"<"',
+ *     }
+ *   },
+ * }
+ * ```
+ * to
+ * ```
+ * [
+ *   {
+ *     color: 'blue',
+ *   },
+ *   {
+ *     _before: {
+ *       content: '">"',
+ *       display: 'block',
+ *       _hover: {
+ *         content: '"<"',
+ *       },
+ *     }
+ *   }
+ * ]
+ * ```
+ */
+function extractPseudoStyles(
+  styleProps: ResponsiveStylePropsWithModifiers,
+): [ResponsiveStylePropsWithModifiers, ReponsiveStylePseudoElementProps] {
+  // Don't mutate the original object
+  const baseStyleProps = {...styleProps};
+  const pseudoElementStyleProps: ReponsiveStylePseudoElementProps = {};
+
+  pseudoElementProps.forEach((pseudoElement) => {
+    if (baseStyleProps[pseudoElement]) {
+      pseudoElementStyleProps[pseudoElement] = baseStyleProps[pseudoElement];
+      delete baseStyleProps[pseudoElement];
+    }
+  });
+
+  modifierProps.forEach((modifier) => {
+    if (baseStyleProps[modifier]) {
+      pseudoElementProps.forEach((pseudoElement) => {
+        if (baseStyleProps[modifier]![pseudoElement]) {
+          // Don't mutate the original object
+          baseStyleProps[modifier] = {...styleProps[modifier]};
+
+          // Ensure this pseudo element exists on the object
+          pseudoElementStyleProps[pseudoElement] ??= {};
+
+          // Set the modifier values for this pseudo element
+          pseudoElementStyleProps[pseudoElement]![modifier] =
+            baseStyleProps[modifier]![pseudoElement];
+
+          // Delete the pseudo element styles now that we don't need them
+          delete baseStyleProps[modifier]![pseudoElement];
+        }
+      });
+    }
+  });
+
+  return [baseStyleProps, pseudoElementStyleProps];
 }
 
 function convert(

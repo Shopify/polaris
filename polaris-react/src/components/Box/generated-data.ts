@@ -110,6 +110,9 @@ export type ResponsiveStyleProps = {
   >;
 };
 
+type ResponsiveStylePropsWithPseudoElements = ResponsiveStyleProps
+  & { [K in PseudoElementProps]?: ResponsiveStyleProps };
+
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
  * `@shopify/polaris-tokens`), helpful aliases for frequently used props, the
@@ -117,12 +120,8 @@ export type ResponsiveStyleProps = {
  * and the pseudoElements _before and _after.
  */
 export type ResponsiveStylePropsWithModifiers = Simplify<
-  ResponsiveStyleProps
-  & { [K in ModifierProps]?: ResponsiveStyleProps; }
-  & { [K in PseudoElementProps]?:
-    ResponsiveStyleProps
-    & { [K in ModifierProps]?: ResponsiveStyleProps; }
-  }
+  ResponsiveStylePropsWithPseudoElements
+  & { [K in ModifierProps]?: ResponsiveStylePropsWithPseudoElements; }
 >;
 
 export type ResponsiveStylePropObjects = {

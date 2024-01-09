@@ -419,26 +419,18 @@ export type ResponsiveStyleProps = {
   >;
 };
 
+type ResponsiveStylePropsWithPseudoElements = ResponsiveStyleProps
+  & { [K in PseudoElementProps]?: ResponsiveStyleProps };
+
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
  * \`@shopify/polaris-tokens\`), helpful aliases for frequently used props, the
  * modifiers ${joinEnglish(Object.values(modifiersData))},
  * and the pseudoElements ${joinEnglish(Object.values(pseudoElementsData))}.
- */${
-   '' /* TODO: Invert this from
-        `_before: { _hover: { ... } }`
-        to
-        `_hover: { _before: { ... } }`
-        so it more closely matches how CSS works.
-      */
- }
+ */
 export type ResponsiveStylePropsWithModifiers = Simplify<
-  ResponsiveStyleProps
-  & { [K in ModifierProps]?: ResponsiveStyleProps; }
-  & { [K in PseudoElementProps]?:
-    ResponsiveStyleProps
-    & { [K in ModifierProps]?: ResponsiveStyleProps; }
-  }
+  ResponsiveStylePropsWithPseudoElements
+  & { [K in ModifierProps]?: ResponsiveStylePropsWithPseudoElements; }
 >;
 
 export type ResponsiveStylePropObjects = {
