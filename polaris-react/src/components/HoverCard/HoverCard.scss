@@ -3,15 +3,17 @@
 $vertical-motion-offset: -5px;
 
 .HoverCard {
+  opacity: 0;
   position: relative;
   display: flex;
   max-width: max-content;
   min-width: max-content;
   background: var(--p-color-bg-surface);
-  will-change: left, top, max-width;
+  will-change: opacity, left, top, max-width;
   margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
   box-shadow: var(--p-shadow-500);
   border-radius: var(--p-border-radius-300);
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease);
 
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-md),
@@ -30,9 +32,6 @@ $vertical-motion-offset: -5px;
 
 .HoverCardOverlay-entering {
   opacity: 1;
-  // transform: translateY(0);
-  /* stylelint-disable-next-line -- polaris/motion/declaration-property-unit-disallowed-list */
-  transition: opacity var(--p-motion-duration-100) ease-in-out 5s;
 }
 
 .HoverCardOverlay-open {
@@ -42,9 +41,18 @@ $vertical-motion-offset: -5px;
     width var(--p-motion-duration-100) ease-in-out;
 }
 
+.HoverCardOverlay-exiting {
+  opacity: 0;
+}
+
 .measuring:not(.HoverCardOverlay-exiting) {
   opacity: 0;
-  transform: translateY($vertical-motion-offset);
+}
+
+.measured {
+  opacity: 1;
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease)
+    var(--p-motion-duration-300);
 }
 
 .positionedAbove {
