@@ -583,7 +583,7 @@ export function TextField({
     inputMode,
     type: inputType,
     rows: getRows(multiline),
-    size: autoSize ? '1' : undefined,
+    size: autoSize ? 1 : undefined,
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
     'aria-labelledby': labelledBy.join(' '),
     'aria-invalid': Boolean(error),
@@ -702,6 +702,7 @@ export function TextField({
       isVerticalContent(target) ||
       isInput(target) ||
       isSpinner(target) ||
+      isLoadingSpinner(target) ||
       focus
     ) {
       return;
@@ -719,6 +720,7 @@ export function TextField({
       isPrefixOrSuffix(event.target) ||
       isVerticalContent(event.target) ||
       isInput(event.target) ||
+      isLoadingSpinner(event.target) ||
       focus
     ) {
       return;
@@ -831,6 +833,14 @@ export function TextField({
       target instanceof Element &&
       spinnerRef.current &&
       spinnerRef.current.contains(target)
+    );
+  }
+
+  function isLoadingSpinner(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      loadingRef.current &&
+      loadingRef.current.contains(target)
     );
   }
 
