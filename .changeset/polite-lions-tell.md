@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added the `HoverCard` component for use on commerce object links
+Added the `HoverCard` component. Use to provide a detail page preview on hover of a commerce object link.
