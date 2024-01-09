@@ -67,6 +67,8 @@ export interface ToastProps {
   onDismiss(): void;
   /** Adds an action next to the message */
   action?: Action;
+  /** Indicates the tone of the toast */
+  tone?: 'magic';
 }
 
 export interface ToastID {

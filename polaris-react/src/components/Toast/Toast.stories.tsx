@@ -217,3 +217,59 @@ export function InsideModal() {
     </div>
   );
 }
+
+export function Magic() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast
+      content="Magic message"
+      onDismiss={toggleActive}
+      tone="magic"
+      duration={3000000}
+    />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Default">
+          <Button onClick={toggleActive}>Show Magic Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
+export function MagicWithAction() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast
+      content="Magic message"
+      onDismiss={toggleActive}
+      tone="magic"
+      action={{
+        content: 'View',
+        onAction: () => {},
+      }}
+      duration={3000000}
+    />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Default">
+          <Button onClick={toggleActive}>Show Magic Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}

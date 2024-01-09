@@ -38,6 +38,13 @@ describe('<Toast />', () => {
     });
   });
 
+  it('renders a Toast with the magic tone when tone is "magic"', () => {
+    const message = mountWithApp(<Toast {...mockProps} tone="magic" />);
+    expect(message).toContainReactComponent('div', {
+      className: 'Toast toneMagic',
+    });
+  });
+
   describe('dismiss button', () => {
     it('renders by default', () => {
       const message = mountWithApp(<Toast {...mockProps} />);

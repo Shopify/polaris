@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {AlertMinor, CancelSmallMinor} from '@shopify/polaris-icons';
 
-import {classNames} from '../../../../utilities/css';
+import {classNames, variationName} from '../../../../utilities/css';
 import {Key} from '../../../../types';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
@@ -24,6 +24,7 @@ export function Toast({
   duration,
   error,
   action,
+  tone,
 }: ToastProps) {
   useEffect(() => {
     let timeoutDuration = duration || DEFAULT_TOAST_DURATION;
@@ -73,14 +74,22 @@ export function Toast({
     </div>
   ) : null;
 
-  const className = classNames(styles.Toast, error && styles.error);
+  const className = classNames(
+    styles.Toast,
+    error && styles.error,
+    tone && styles[variationName('tone', tone)],
+  );
 
   return (
     <div className={className} aria-live="assertive">
       <KeypressListener keyCode={Key.Escape} handler={onDismiss} />
       {leadingIconMarkup}
       <InlineStack gap="400" blockAlign="center">
-        <Text as="span" fontWeight="medium">
+        <Text
+          as="span"
+          fontWeight="medium"
+          tone={tone && tone === 'magic' ? 'magic-subdued' : undefined}
+        >
           {content}
         </Text>
       </InlineStack>

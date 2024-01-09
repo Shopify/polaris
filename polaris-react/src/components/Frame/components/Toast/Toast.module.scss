@@ -66,3 +66,16 @@ $Backdrop-opacity: 0.88;
     color: var(--p-color-text-inverse);
   }
 }
+
+.toneMagic {
+  background-color: var(--p-color-bg-fill-magic-secondary);
+  color: var(--p-color-text-magic);
+
+  .CloseButton {
+    color: var(--p-color-text-magic);
+  }
+
+  .Action {
+    color: var(--p-color-text-magic);
+  }
+}
