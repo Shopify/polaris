@@ -144,7 +144,7 @@ export class PositionedOverlay extends PureComponent<
       top: top == null || isNaN(top) ? undefined : top,
       left: left == null || isNaN(left) ? undefined : left,
       right: right == null || isNaN(right) ? undefined : right,
-      width: width == null || isNaN(width) ? '200' : width,
+      width: width == null || isNaN(width) ? undefined : width,
       zIndex: zIndexOverride || zIndex || undefined,
     };
 
@@ -275,7 +275,7 @@ export class PositionedOverlay extends PureComponent<
 
         const overlayRect = fullWidth
           ? new Rect({...currentOverlayRect, width: activatorRect.width})
-          : currentOverlayRect;
+          : getRectForNode(this.overlay.firstElementChild);
 
         // If `body` is 100% height, it still acts as though it were not constrained to that size. This adjusts for that.
         if (scrollableElement === document.body) {
@@ -326,7 +326,7 @@ export class PositionedOverlay extends PureComponent<
 
         const chevronOffset =
           activatorRect.center.x -
-          horizontalPosition +
+          horizontalPosition.position +
           overlayMargins.horizontal * 2;
 
         this.setState(
@@ -335,16 +335,16 @@ export class PositionedOverlay extends PureComponent<
             activatorRect: getRectForNode(activator),
             left:
               preferredAlignment !== 'right' || preferredPosition === 'left'
-                ? horizontalPosition
+                ? horizontalPosition.position
                 : undefined,
             right:
               preferredAlignment === 'right' || preferredPosition === 'right'
-                ? horizontalPosition
+                ? horizontalPosition.position
                 : undefined,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
             height: verticalPosition.height || 0,
-            width: fullWidth ? overlayRect.width : null,
+            width: fullWidth ? overlayRect.width : horizontalPosition.width,
             positioning: verticalPosition.positioning as Positioning,
             outsideScrollableContainer:
               onScrollOut != null &&

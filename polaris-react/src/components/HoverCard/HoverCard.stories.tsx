@@ -603,11 +603,12 @@ export function InTable() {
     <Card padding="0">
       <HoverCard
         snapToParent
-        active
         hoverDelay={100}
         activator={activatorElement}
         activatorWrapper="div"
-        preferredPosition={activeHoverCard.order ? 'left' : 'right'}
+        preferredPosition={
+          /* activeHoverCard.order ? 'left' : 'right' */ 'right'
+        }
         content={hoverCardContent}
       />
       <IndexTable
