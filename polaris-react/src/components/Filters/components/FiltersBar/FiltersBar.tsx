@@ -185,7 +185,9 @@ export function FiltersBar({
     setLocalPinnedFilters([]);
     onClearAll?.();
   };
-  const shouldShowAddButton = filters.some((filter) => !filter.pinned);
+  const shouldShowAddButton =
+    filters.some((filter) => !filter.pinned) ||
+    filters.length !== localPinnedFilters.length;
 
   const pinnedFiltersMarkup = pinnedFilters.map(
     ({key: filterKey, ...pinnedFilter}) => {

@@ -6,6 +6,7 @@ import {ActionList} from '../../../../ActionList';
 import {FiltersBar} from '../FiltersBar';
 import type {FiltersBarProps} from '../FiltersBar';
 import {FilterPill} from '../../FilterPill';
+import {Button} from '../../../../Button';
 
 describe('<FiltersBar />', () => {
   let originalScroll: any;
@@ -386,6 +387,31 @@ describe('<FiltersBar />', () => {
           ],
         }),
       ],
+    });
+  });
+
+  it('will show the add filter button when clearing all pinned filters', () => {
+    const scrollSpy = jest.fn();
+    HTMLElement.prototype.scroll = scrollSpy;
+    const filters = defaultProps.filters.map((filter) => ({
+      ...filter,
+      pinned: true,
+    }));
+
+    const wrapper = mountWithApp(
+      <FiltersBar {...defaultProps} filters={filters} />,
+    );
+
+    const clearAll = wrapper.find(Button, {
+      children: 'Clear all',
+    });
+
+    wrapper.act(() => {
+      clearAll?.trigger('onClick');
+    });
+
+    expect(wrapper).toContainReactComponent('div', {
+      className: 'AddFilterActivator',
     });
   });
 });
