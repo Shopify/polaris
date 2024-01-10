@@ -11,6 +11,7 @@ module.exports = {
       'styles-insert-stylelint-disable',
     ),
     'styles-replace-custom-property': resolve('styles-replace-custom-property'),
+    'styles-replace-inline-comments': resolve('styles-replace-inline-comments'),
     'v11-react-update-page-breadcrumbs': resolve(
       'v11-react-update-page-breadcrumbs',
     ),

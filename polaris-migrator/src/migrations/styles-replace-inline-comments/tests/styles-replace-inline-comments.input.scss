@@ -1,0 +1,12 @@
+// single-inline-comment
+$single-inline-comment: 1rem;
+
+// multiline
+// comment
+$multiline-comment: 1rem;
+
+.comment {
+  $top-nested-comment: 1rem;
+  // nested-sandwidched-comment
+  $bottom-nested-comment: 1rem;
+}
