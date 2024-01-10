@@ -41,7 +41,7 @@ export function SearchField({
   const {mdUp} = useBreakpoints();
 
   const suffix =
-    value && selectedViewName ? (
+    value && selectedViewName && mdUp ? (
       <Text as="span" variant="bodyMd" tone="subdued">
         {i18n.translate('Polaris.Filters.searchInView', {
           viewName: selectedViewName,
@@ -80,7 +80,7 @@ export function SearchField({
       label={placeholder}
       labelHidden
       clearButton
-      autoSize
+      autoSize={mdUp}
       loading={loading}
     />
   );
