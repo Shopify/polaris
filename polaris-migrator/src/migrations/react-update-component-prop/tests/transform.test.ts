@@ -76,6 +76,35 @@ const fixtures = [
       toValue: 'new-value',
     },
   },
+  {
+    name: 'with-replacement-maps',
+    options: {
+      replacementMaps: {
+        MyComponentA: [
+          {
+            fromProp: 'prop1',
+            toProp: 'newProp1',
+            fromValue: 'value-1',
+            toValue: 'new-value-1',
+          },
+          {
+            fromPropType: 'boolean',
+            fromProp: 'prop2',
+            toProp: 'newProp2',
+            toValue: 'new-value-2',
+          },
+        ],
+        MyComponentB: [
+          {
+            fromProp: 'prop3',
+            toProp: 'newProp3',
+            fromValue: 'value-3',
+            toValue: 'new-value-3',
+          },
+        ],
+      },
+    },
+  },
 ];
 
 for (const fixture of fixtures) {
