@@ -30,10 +30,10 @@ export default {
   component: HoverCard,
 } as ComponentMeta<typeof HoverCard>;
 
-export function Default() {
+export function WithChildActivator() {
   const [active, setActive] = useState(false);
   const [position, setPosition] =
-    useState<PositionedOverlayProps['preferredPosition']>('right');
+    useState<PositionedOverlayProps['preferredPosition']>('below');
 
   const handleChangePosition =
     (position: PositionedOverlayProps['preferredPosition']) => () => {
@@ -84,50 +84,56 @@ export function Default() {
     </Box>
   );
 
+  const positionControlBar = (
+    <BlockStack gap="100" inlineAlign="center">
+      <Box id="Filler" minHeight="200px" />
+      <Text as="p" tone="subdued">
+        Use the buttons below to change the hover card position
+      </Text>
+      <ButtonGroup variant="segmented">
+        <Button
+          pressed={position === 'left'}
+          onClick={handleChangePosition('left')}
+        >
+          Left
+        </Button>
+        <Button
+          pressed={position === 'right'}
+          onClick={handleChangePosition('right')}
+        >
+          Right
+        </Button>
+        <Button
+          pressed={position === 'above'}
+          onClick={handleChangePosition('above')}
+        >
+          Above
+        </Button>
+        <Button
+          pressed={position === 'below'}
+          onClick={handleChangePosition('below')}
+        >
+          Below
+        </Button>
+      </ButtonGroup>
+    </BlockStack>
+  );
+
   return (
     <div style={{margin: '0 auto', height: '600px', width: '960px'}}>
       <InlineStack align="center" blockAlign="center">
         <BlockStack gap="500">
-          <Box minHeight="200px" />
-          <BlockStack gap="100" inlineAlign="center">
-            <Text as="p" tone="subdued">
-              Use the buttons below to change the hover card position
-            </Text>
-            <ButtonGroup variant="segmented">
-              <Button
-                pressed={position === 'left'}
-                onClick={handleChangePosition('left')}
-              >
-                Left
-              </Button>
-              <Button
-                pressed={position === 'right'}
-                onClick={handleChangePosition('right')}
-              >
-                Right
-              </Button>
-              <Button
-                pressed={position === 'above'}
-                onClick={handleChangePosition('above')}
-              >
-                Above
-              </Button>
-              <Button
-                pressed={position === 'below'}
-                onClick={handleChangePosition('below')}
-              >
-                Below
-              </Button>
-            </ButtonGroup>
-          </BlockStack>
+          {positionControlBar}
+
           <Card>
-            <BlockStack gap="300" inlineAlign="center">
+            <BlockStack gap="300">
               <Text as="h2" variant="headingSm">
                 Customer
               </Text>
               <HoverCard
                 active={active}
                 preferredPosition={position}
+                preferredAlignment="left"
                 content={customerHoverCardContent}
                 toggleActive={setActive}
               >
@@ -141,7 +147,7 @@ export function Default() {
   );
 }
 
-export function InTable() {
+export function WithDynamicActivator() {
   interface CustomerDetailPreview {
     id: string;
     name: string;
@@ -225,9 +231,10 @@ export function InTable() {
           skuNumber: '178988',
         },
       ],
+      deliveryStatus: 'Complete',
       deliveryMethod: 'Local Pickup',
       location: 'Ridgewood Factory',
-      tags: ['VIP', 'wholesale', 'Net 30'],
+      tags: ['VIP', 'wholesale', 'Net 30', 'pickup', 'priority'],
     },
     {
       id: '1019',
@@ -263,6 +270,7 @@ export function InTable() {
           skuNumber: '176400',
         },
       ],
+      deliveryStatus: 'Tracking added',
       deliveryMethod: 'UPS 2 Day Air',
       location: 'BK Warehouse - Williamsburg',
       tags: ['VIP'],
@@ -301,6 +309,7 @@ export function InTable() {
           skuNumber: '176400',
         },
       ],
+      deliveryStatus: 'Tracking added',
       deliveryMethod: 'UPS Ground',
       location: 'BK Warehouse - Williamsburg',
       tags: ['VIP'],
@@ -392,6 +401,7 @@ export function InTable() {
   } else if (activeHoverCard.order) {
     const {location, deliveryMethod, fulfillmentStatus, items} =
       activeHoverCard.order;
+
     hoverCardContent = (
       <Box padding="400" width="388px">
         <BlockStack gap="200">
@@ -530,6 +540,7 @@ export function InTable() {
         paymentStatus,
         fulfillmentStatus,
         items,
+        deliveryStatus,
         deliveryMethod,
         location,
         tags,
@@ -586,6 +597,7 @@ export function InTable() {
           <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
           <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
           <IndexTable.Cell flush>{itemLinkMarkup}</IndexTable.Cell>
+          <IndexTable.Cell>{deliveryStatus}</IndexTable.Cell>
           <IndexTable.Cell>{deliveryMethod}</IndexTable.Cell>
           <IndexTable.Cell>
             <InlineStack wrap={false} gap="100">
@@ -626,6 +638,7 @@ export function InTable() {
           {title: 'Payment status'},
           {title: 'Fulfillment status'},
           {title: 'Items'},
+          {title: 'Delivery status'},
           {title: 'Delivery method'},
           {title: 'Tags'},
         ]}
