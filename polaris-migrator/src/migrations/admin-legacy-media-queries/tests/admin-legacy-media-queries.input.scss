@@ -1,0 +1,29 @@
+@use 'global-styles/media-queries';
+
+.Selector {
+  max-width: 100px;
+
+  @media #{media-queries.$p-breakpoints-md-down} {
+    max-width: 200px;
+  }
+
+  @media only screen and #{media-queries.$p-breakpoints-md-only} {
+    max-width: 300px;
+  }
+
+  @media #{media-queries.$p-breakpoints-md-up} and #{media-queries.$p-breakpoints-lg-down} {
+    max-width: 400px;
+  }
+
+  @container app-card #{media-queries.$p-breakpoints-sm-down} {
+    max-width: 500px;
+  }
+
+  @media #{media-queries.$p-breakpoints-md-up} and #{legacy-polaris-v8.breakpoints-down(variables.$home-scroll-greeting-sidebar-hidden)} {
+    max-width: 600px;
+  }
+
+  @media #{legacy-polaris-v8.breakpoints-down(variables.$home-scroll-greeting-sidebar-hidden)} and #{media-queries.$p-breakpoints-md-up} {
+    max-width: 700px;
+  }
+}
