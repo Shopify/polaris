@@ -113,7 +113,7 @@ export function HoverCardOverlay({
         onMouseLeave={onMouseLeave}
       >
         <div ref={contentNode}>
-          <div id={id} className={styles.Content}>
+          <div data-hovercard-content id={id} className={styles.Content}>
             {children}
           </div>
         </div>

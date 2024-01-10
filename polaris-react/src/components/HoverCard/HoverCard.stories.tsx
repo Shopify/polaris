@@ -89,11 +89,11 @@ export function Default() {
       <InlineStack align="center" blockAlign="center">
         <BlockStack gap="500">
           <Box minHeight="200px" />
-          <BlockStack>
+          <BlockStack gap="100" inlineAlign="center">
             <Text as="p" tone="subdued">
               Use the buttons below to change the hover card position
             </Text>
-            <ButtonGroup variant="segmented" fullWidth>
+            <ButtonGroup variant="segmented">
               <Button
                 pressed={position === 'left'}
                 onClick={handleChangePosition('left')}

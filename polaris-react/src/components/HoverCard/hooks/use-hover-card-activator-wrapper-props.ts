@@ -70,11 +70,12 @@ export function useHoverCardActivatorWrapperProps({
 
   const handleMouseLeaveActivator = useCallback(
     (event?: React.MouseEvent<HTMLDivElement>) => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore - EventTarget does in fact have a parentNode property
-      const parentClassName = event?.relatedTarget?.parentNode?.className;
       const mouseEnteredHoverCard =
-        parentClassName?.includes('HoverCard-Content');
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore - EventTarget does in fact have a parentNode property
+        event?.relatedTarget?.parentNode?.getAttribute(
+          'data-hovercard-content',
+        );
 
       if (hoverDelayTimeout.current) {
         clearTimeout(hoverDelayTimeout.current);
