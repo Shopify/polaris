@@ -169,57 +169,6 @@ export function calculateHorizontalPosition(
     const positionIfLeft =
       activatorRect.left - overlayRect.width + containerRect.left;
 
-    console.table([
-      {variable: 'desiredWidth', value: desiredWidth},
-      {variable: 'activatorRect.width', value: activatorRect.width},
-      {variable: 'overlayRect.width', value: overlayRect.width},
-      {variable: 'containerRect.width', value: containerRect.width},
-      {
-        variable: 'scrollableContainerRect.width',
-        value: scrollableContainerRect.width,
-      },
-      {
-        variable: 'spaceLeft',
-        value: spaceLeft,
-      },
-      {
-        variable: 'spaceRight',
-        value: spaceRight,
-      },
-      {
-        variable: 'enoughSpaceFromLeftScroll',
-        value: enoughSpaceFromLeftScroll,
-      },
-      {
-        variable: 'enoughSpaceFromRightScroll',
-        value: enoughSpaceFromRightScroll,
-      },
-      {
-        variable: 'distanceToLeftScroll',
-        value: distanceToLeftScroll,
-      },
-      {
-        variable: 'distanceToRightScroll',
-        value: distanceToRightScroll,
-      },
-      {
-        variable: 'mostSpaceOnLeft',
-        value: mostSpaceOnLeft,
-      },
-      {
-        variable: 'mostSpaceOnRight',
-        value: mostSpaceOnRight,
-      },
-      {
-        variable: 'positionIfLeft',
-        value: positionIfLeft,
-      },
-      {
-        variable: 'positionIfRight',
-        value: positionIfRight,
-      },
-    ]);
-
     if (preferredHorizontalPosition === 'right') {
       return mostSpaceOnRight
         ? {position: positionIfRight, width: widthIfRight}
