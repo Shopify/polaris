@@ -158,7 +158,8 @@
       "clearLabel": "Rimuovi {filterName}",
       "moreFiltersWithCount": "Altri filtri ({count})",
       "addFilter": "Aggiungi filtro",
-      "clearFilters": "Cancella tutto"
+      "clearFilters": "Cancella tutto",
+      "searchInView": "in: {viewName}"
     },
     "Modal": {
       "iFrameTitle": "markup del testo",

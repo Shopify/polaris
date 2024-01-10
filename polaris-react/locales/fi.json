@@ -158,7 +158,8 @@
       "clearLabel": "Tyhjennä {filterName}",
       "moreFiltersWithCount": "Lisää suodattimia ({count})",
       "addFilter": "Lisää suodatin",
-      "clearFilters": "Tyhjennä kaikki"
+      "clearFilters": "Tyhjennä kaikki",
+      "searchInView": "kohteessa: {viewName}"
     },
     "Modal": {
       "iFrameTitle": "tekstin merkintä",
