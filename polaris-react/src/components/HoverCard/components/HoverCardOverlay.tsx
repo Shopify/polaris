@@ -5,21 +5,13 @@ import {classNames} from '../../../utilities/css';
 import {overlay} from '../../shared';
 import {PositionedOverlay} from '../../PositionedOverlay';
 import type {PositionedOverlayProps} from '../../PositionedOverlay';
+import {Scrollable} from '../../Scrollable';
 import styles from '../HoverCard.module.scss';
-
-export enum HoverCardCloseSource {
-  Click,
-  EscapeKeypress,
-  FocusOut,
-  ScrollOut,
-}
 
 enum TransitionStatus {
   Entering = 'entering',
   Entered = 'entered',
-  Exiting = 'exiting',
   Exited = 'exited',
-  Moving = 'moving',
 }
 
 export interface HoverCardOverlayProps {
@@ -96,6 +88,8 @@ export function HoverCardOverlay({
   const renderHoverCard: PositionedOverlayProps['render'] = ({
     measuring,
     positioning,
+    desiredWidth,
+    desiredHeight,
   }) => {
     const className = classNames(
       styles.HoverCard,
@@ -105,6 +99,10 @@ export function HoverCardOverlay({
       !measuring && styles.measured,
     );
 
+    // const contentStyles = measuring
+    //   ? undefined
+    //   : {width: desiredWidth, height: desiredHeight};
+
     return (
       <div
         {...overlay.props}
@@ -113,9 +111,15 @@ export function HoverCardOverlay({
         onMouseLeave={onMouseLeave}
       >
         <div ref={contentNode}>
-          <div data-hovercard-content id={id} className={styles.Content}>
+          <Scrollable
+            shadow
+            data-hovercard-content
+            id={id}
+            className={styles.Content}
+            // style={contentStyles}
+          >
             {children}
-          </div>
+          </Scrollable>
         </div>
       </div>
     );
