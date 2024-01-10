@@ -34,6 +34,10 @@ export type SpaceTokenGroup = {
   [TokenName in SpaceTokenName]: string;
 };
 
+export type SpaceStyleProps = {
+  [T in (typeof spaceStyleProps)[number]]: SpaceScale;
+};
+
 export const space: {
   [TokenName in SpaceTokenName]: MetaTokenProperties;
 } = {
@@ -108,3 +112,45 @@ export const space: {
 function createVar(spaceTokenName: SpaceTokenName) {
   return `var(${createVarName(spaceTokenName)})`;
 }
+
+const spaceStyleProps = [
+  // Shorthands
+  'margin',
+  'padding',
+  'gap',
+  'inset',
+  'insetInline',
+  'insetBlock',
+  // Logical properties
+  'marginInline',
+  'marginInlineStart',
+  'marginInlineEnd',
+  'marginBlock',
+  'marginBlockStart',
+  'marginBlockEnd',
+  'paddingInline',
+  'paddingInlineStart',
+  'paddingInlineEnd',
+  'paddingBlock',
+  'paddingBlockStart',
+  'paddingBlockEnd',
+  'insetInlineStart',
+  'insetInlineEnd',
+  'insetBlockStart',
+  'insetBlockEnd',
+  'rowGap',
+  'columnGap',
+  // Positional properties
+  'paddingLeft',
+  'paddingRight',
+  'paddingTop',
+  'paddingBottom',
+  'marginLeft',
+  'marginRight',
+  'marginTop',
+  'marginBottom',
+] as const;
+
+export const spaceStylePropTokenGroups = {
+  space: spaceStyleProps,
+} as const;

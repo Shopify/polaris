@@ -342,7 +342,7 @@ export function WithADataTable(_, context) {
   return (
     <div style={{height: '568px'}}>
       <Card padding="0">
-        <Box padding="400">
+        <Box sx={{padding: '400'}}>
           <LegacyFilters
             queryValue={queryValue}
             filters={filters}

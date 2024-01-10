@@ -21,6 +21,10 @@ export type ZIndexTokenGroup = {
   [TokenName in ZIndexTokenName]: string;
 };
 
+export type ZIndexStyleProps = {
+  [T in (typeof zIndexStyleProps)[number]]: ZIndexZScale;
+};
+
 export const zIndex: {
   [TokenName in ZIndexTokenName]: MetaTokenProperties;
 } = {
@@ -64,3 +68,9 @@ export const zIndex: {
     value: '520',
   },
 };
+
+const zIndexStyleProps = ['zIndex'];
+
+export const zIndexStylePropTokenGroups = {
+  'z-index': zIndexStyleProps,
+} as const;

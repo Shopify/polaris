@@ -177,11 +177,13 @@ export function Pagination({
         {previousButtonEvents}
         {nextButtonEvents}
         <Box
-          background="bg-surface-secondary"
-          paddingBlockStart="150"
-          paddingBlockEnd="150"
-          paddingInlineStart="300"
-          paddingInlineEnd="200"
+          sx={{
+            background: 'bg-surface-secondary',
+            paddingBlockStart: '150',
+            paddingBlockEnd: '150',
+            paddingInlineStart: '300',
+            paddingInlineEnd: '200',
+          }}
         >
           <InlineStack
             align={labelMarkup ? 'space-between' : 'end'}
@@ -208,7 +210,7 @@ export function Pagination({
     );
 
   const labelMarkup = label ? (
-    <Box padding="300" paddingBlockStart="0" paddingBlockEnd="0">
+    <Box sx={{padding: '300', paddingBlockStart: '0', paddingBlockEnd: '0'}}>
       <div aria-live="polite">{labelTextMarkup}</div>
     </Box>
   ) : null;

@@ -277,9 +277,11 @@ export function FiltersBar({
       </div>
       {hideQueryField ? (
         <Box
-          paddingInlineEnd="300"
-          paddingBlockStart="200"
-          paddingBlockEnd="200"
+          sx={{
+            paddingInlineEnd: '300',
+            paddingBlockStart: '200',
+            paddingBlockEnd: '200',
+          }}
         >
           <InlineStack
             align="start"

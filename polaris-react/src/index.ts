@@ -72,7 +72,10 @@ export {Bleed} from './components/Bleed';
 export type {BleedProps} from './components/Bleed';
 
 export {Box} from './components/Box';
-export type {BoxProps} from './components/Box';
+export type {
+  BoxProps,
+  ResponsiveStylePropsWithModifiers,
+} from './components/Box';
 
 export {Breadcrumbs} from './components/Breadcrumbs';
 export type {BreadcrumbsProps} from './components/Breadcrumbs';

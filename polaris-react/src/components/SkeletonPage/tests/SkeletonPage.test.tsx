@@ -39,7 +39,7 @@ describe('<SkeletonPage />', () => {
 
       expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
       expect(skeletonPage).not.toContainReactComponent(Box, {
-        background: 'bg-fill-tertiary',
+        sx: {background: 'bg-fill-tertiary'},
       });
     });
 
@@ -50,7 +50,7 @@ describe('<SkeletonPage />', () => {
         className: 'Title',
       });
       expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'bg-fill-tertiary',
+        sx: {background: 'bg-fill-tertiary'},
       });
     });
 
@@ -61,7 +61,7 @@ describe('<SkeletonPage />', () => {
         className: 'Title',
       });
       expect(skeletonPage).toContainReactComponent(Box, {
-        background: 'bg-fill-tertiary',
+        sx: {background: 'bg-fill-tertiary'},
       });
     });
   });
@@ -69,10 +69,12 @@ describe('<SkeletonPage />', () => {
   it('renders backAction', () => {
     const skeletonPage = mountWithApp(<SkeletonPage backAction />);
     expect(skeletonPage).toContainReactComponent(Box, {
-      background: 'bg-fill-tertiary',
-      minWidth: '2.25rem',
-      minHeight: '2.25rem',
-      maxWidth: '2.25rem',
+      sx: {
+        background: 'bg-fill-tertiary',
+        minWidth: '2.25rem',
+        minHeight: '2.25rem',
+        maxWidth: '2.25rem',
+      },
     });
   });
 

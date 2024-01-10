@@ -8,7 +8,7 @@ export interface DividerProps {
    * Divider border color
    * @default 'border-secondary'
    */
-  borderColor?: ColorBorderAlias | 'transparent';
+  borderColor?: ColorBorderAlias;
   /**
    * Divider border width
    * @default '025'
@@ -19,18 +19,11 @@ export interface DividerProps {
 export const Divider = ({
   borderColor = 'border-secondary',
   borderWidth = '025',
-}: DividerProps) => {
-  const borderColorValue =
-    borderColor === 'transparent'
-      ? borderColor
-      : `var(--p-color-${borderColor})`;
-
-  return (
-    <hr
-      className={styles.Divider}
-      style={{
-        borderBlockStart: `var(--p-border-width-${borderWidth}) solid ${borderColorValue}`,
-      }}
-    />
-  );
-};
+}: DividerProps) => (
+  <hr
+    className={styles.Divider}
+    style={{
+      borderBlockStart: `var(--p-border-width-${borderWidth}) solid var(--p-color-${borderColor})`,
+    }}
+  />
+);

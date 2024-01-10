@@ -1,4 +1,4 @@
-import deepmerge from 'deepmerge';
+import {deepmerge} from 'deepmerge-ts';
 
 import type {Entry, Exact} from '../types';
 import {getTokenNames, tokenGroupToRems, tokenGroupNamesToRems} from '../utils';
@@ -49,7 +49,7 @@ export function createMetaThemePartial<
 export function createMetaTheme<T extends Exact<MetaThemePartialShape, T>>(
   metaThemePartial: T,
 ): MetaTheme {
-  return deepmerge(metaThemeBase, metaThemePartial);
+  return deepmerge(metaThemeBase, metaThemePartial) as MetaTheme;
 }
 
 export function createThemeClassName(themeName: ThemeName) {

@@ -1188,7 +1188,7 @@ export function WithShadowOverComplexChildren() {
           '--pc-scrollable-shadow-color': 'rgba(255, 0, 0, 0.85)',
         }}
       >
-        <Box padding="400">
+        <Box sx={{padding: '400'}}>
           <Banner title="Payment details">
             <p>Last updated on: September 6, 2022</p>
 

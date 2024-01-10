@@ -14,7 +14,7 @@ import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Text} from '../Text';
 import type {InlineStackProps} from '../InlineStack';
 import {InlineStack} from '../InlineStack';
-import type {BoxProps} from '../Box';
+import type {ResponsiveStylePropsWithModifiers} from '../Box';
 import {Box} from '../Box';
 import {Button} from '../Button';
 import {ButtonGroup} from '../ButtonGroup';
@@ -89,7 +89,7 @@ export const Banner = forwardRef<BannerHandles, BannerProps>(function Banner(
 });
 
 interface BannerLayoutProps {
-  backgroundColor: BoxProps['background'];
+  backgroundColor: ResponsiveStylePropsWithModifiers['backgroundColor'];
   textColor: ColorTextAlias;
   bannerTitle: React.ReactNode;
   bannerIcon: React.ReactNode;
@@ -194,16 +194,18 @@ export function DefaultBanner({
   const hasContent = children || actionButtons;
 
   return (
-    <Box width="100%">
+    <Box sx={{width: '100%'}}>
       <BlockStack align="space-between">
         <Box
-          background={backgroundColor}
-          color={textColor}
-          borderStartStartRadius={smUp ? '300' : undefined}
-          borderStartEndRadius={smUp ? '300' : undefined}
-          borderEndStartRadius={!hasContent && smUp ? '300' : undefined}
-          borderEndEndRadius={!hasContent && smUp ? '300' : undefined}
-          padding="300"
+          sx={{
+            background: backgroundColor,
+            color: textColor,
+            borderStartStartRadius: smUp ? '300' : undefined,
+            borderStartEndRadius: smUp ? '300' : undefined,
+            borderEndStartRadius: !hasContent && smUp ? '300' : undefined,
+            borderEndEndRadius: !hasContent && smUp ? '300' : undefined,
+            padding: '300',
+          }}
         >
           <InlineStack
             align="space-between"
@@ -219,7 +221,7 @@ export function DefaultBanner({
           </InlineStack>
         </Box>
         {hasContent && (
-          <Box padding={{xs: '300', md: '400'}} paddingBlockStart="300">
+          <Box sx={{padding: {xs: '300', md: '400'}, paddingBlockStart: '300'}}>
             <BlockStack gap="200">
               <div>{children}</div>
               {actionButtons}
@@ -260,22 +262,30 @@ export function InlineIconBanner({
   useEventListener('resize', handleResize);
 
   return (
-    <Box width="100%" padding="300" borderRadius="300">
+    <Box
+      sx={{
+        width: '100%',
+        padding: '300',
+        borderRadius: '300',
+      }}
+    >
       <InlineStack align="space-between" blockAlign={blockAlign} wrap={false}>
-        <Box width="100%">
+        <Box sx={{width: '100%'}}>
           <InlineStack gap="200" wrap={false} blockAlign={blockAlign}>
             {bannerIcon ? (
               <div ref={iconNode}>
                 <Box
-                  background={backgroundColor}
-                  borderRadius="200"
-                  padding="100"
+                  sx={{
+                    backgroundColor,
+                    borderRadius: '200',
+                    padding: '100',
+                  }}
                 >
                   {bannerIcon}
                 </Box>
               </div>
             ) : null}
-            <Box ref={contentNode} width="100%">
+            <Box ref={contentNode} sx={{width: '100%'}}>
               <BlockStack gap="200">
                 <div>{children}</div>
                 {actionButtons}
@@ -302,11 +312,13 @@ export function WithinContentContainerBanner({
 }: PropsWithChildren<BannerLayoutProps>) {
   return (
     <Box
-      width="100%"
-      background={backgroundColor}
-      padding="200"
-      borderRadius="200"
-      color={textColor}
+      sx={{
+        width: '100%',
+        background: backgroundColor,
+        padding: '200',
+        borderRadius: '200',
+        color: textColor,
+      }}
     >
       <InlineStack
         align="space-between"
@@ -316,7 +328,7 @@ export function WithinContentContainerBanner({
       >
         <InlineStack gap="150" wrap={false}>
           {bannerIcon}
-          <Box width="100%">
+          <Box sx={{width: '100%'}}>
             <BlockStack gap="200">
               <BlockStack gap="050">
                 {bannerTitle}

@@ -32,6 +32,10 @@ export type ShadowTokenGroup = {
   [TokenName in ShadowTokenName]: string;
 };
 
+export type ShadowStyleProps = {
+  [T in (typeof shadowStyleProps)[number]]: ShadowAliasOrScale;
+};
+
 export const shadow: {
   [TokenName in ShadowTokenName]: MetaTokenProperties;
 } = {
@@ -119,3 +123,6 @@ export const shadow: {
     value: '0px 0px 0px 1px rgba(0, 0, 0, 0.08) inset',
   },
 };
+
+const shadowStyleProps = ['boxShadow'] as const;
+export const shadowStylePropTokenGroups = {shadow: shadowStyleProps} as const;

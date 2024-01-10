@@ -1,9 +1,9 @@
 import type {BreakpointsAlias} from '@shopify/polaris-tokens';
 import {breakpointsAliases} from '@shopify/polaris-tokens';
+import type {Entries} from 'type-fest';
 
-export function isObject(value: any) {
-  const type = typeof value;
-  return value != null && (type === 'object' || type === 'function');
+export function isObject(value?: any): value is object {
+  return value != null && typeof value === 'object' && !Array.isArray(value);
 }
 
 export const slugify = (str: string): string => {
@@ -49,6 +49,87 @@ export const capitalize = (str: string) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
 };
 
+export const viewTransition = (callback: () => void | Promise<unknown>) => {
+  // @ts-ignore is experimental and not typed yet
+  if (document.startViewTransition) {
+    // @ts-ignore exists in Chrome 111+
+    return document.startViewTransition(callback);
+  } else {
+    callback();
+
+    const resolved = Promise.resolve();
+
+    return {
+      ready: resolved,
+      finished: resolved,
+    };
+  }
+};
+
+type Falsy = boolean | undefined | null | 0;
+
+export type ResponsivePropObject<T> = {
+  [Breakpoint in BreakpointsAlias]?: T;
+};
+
+export type ResponsiveProp<T> = T | ResponsivePropObject<T>;
+
+export type PolarisCSSCustomPropertyName = `${`--p-` | `--pc-`}${string}`;
+export type PolarisCSSVar = `var(${PolarisCSSCustomPropertyName})`;
+
+type ResponsiveCSSCustomProperties = {
+  [Breakpoint in `${string}-${BreakpointsAlias}`]?: PolarisCSSVar;
+};
+
+type ResponsiveValues<T> = {
+  [Breakpoint in `${string}-${BreakpointsAlias}`]?: T;
+};
+
+export function classNames(...classes: (string | Falsy)[]) {
+  return classes.filter(Boolean).join(' ');
+}
+
+export function variationName(name: string, value: string) {
+  return `${name}${value.charAt(0).toUpperCase()}${value.slice(1)}`;
+}
+
+export function sanitizeCustomProperties(
+  styles: React.CSSProperties,
+): React.CSSProperties | undefined {
+  const nonNullValues = Object.entries(styles).filter(
+    ([_, value]) => value != null,
+  );
+
+  return nonNullValues.length ? Object.fromEntries(nonNullValues) : undefined;
+}
+
+export function createPolarisCSSVar<
+  T extends string | number | undefined = string,
+>(tokenSubgroup: string | null, tokenValue: T): PolarisCSSVar {
+  // `Grid`'s `gap` prop used to allow passing fully formed var() functions as
+  // the value. This is no longer supported in v12+.
+  if (typeof tokenValue === 'string' && tokenValue.startsWith('var(')) {
+    throw new Error(
+      `"${tokenValue}" is not from the ${tokenSubgroup} token group.`,
+    );
+  }
+
+  // NOTE: All our token values today are either strings or numbers, so
+  // stringifying them here works. But if we ever have anything more complex
+  // (such as an object) this may generate invalid token names.
+  return `var(--p-${tokenSubgroup ? `${tokenSubgroup}-` : ''}${tokenValue})`;
+}
+
+export function createPolarisCSSCustomProperty(
+  componentName: string,
+  componentProp: string,
+  breakpointAlias?: BreakpointsAlias,
+): PolarisCSSCustomPropertyName {
+  return `--pc-${componentName}-${componentProp}${
+    breakpointAlias ? `-${breakpointAlias}` : ''
+  }`;
+}
+
 /**
  * Given params like so:
  * (
@@ -66,59 +147,105 @@ export const capitalize = (str: string) => {
  *   '--pc-button-padding-lg': 'var(--p-spacing-6)'
  * }
  *
+ * NOTE: Also supports legacy / deprecated values which are a complete CSS
+ * variable declaration (primarily for `Grid`):
+ * (
+ *   'grid',
+ *   'gap',
+ *   'spacing',
+ *   {
+ *     sm: "var(--p-spacing-4)",
+ *     lg: "var(--p-spacing-6)"
+ *   }
+ * )
+ *
  */
-type ResponsivePropConfig<T = string> = {
-  [Breakpoint in BreakpointsAlias]?: T;
-};
-export type ResponsiveProp<T> = T | ResponsivePropConfig<T>;
-type ResponsiveVariables<T> = {
-  [Breakpoint in `${string}-${BreakpointsAlias}`]?: T;
-};
-
-export function getResponsiveProps<T = string>(
+export function getResponsiveProps<
+  T extends string | number | undefined = string,
+>(
   componentName: string,
   componentProp: string,
-  tokenSubgroup: string,
+  tokenSubgroup: string | null,
   responsiveProp?: ResponsiveProp<T>,
-): ResponsiveVariables<T> {
-  if (!responsiveProp) return {};
+): ResponsiveCSSCustomProperties {
+  // "falsey" values are valid except `null` or `undefined`
+  if (responsiveProp == null) return {};
 
-  let result: ResponsivePropConfig;
-
-  if (!isObject(responsiveProp)) {
-    result = {
-      [breakpointsAliases[0]]: `var(--p-${tokenSubgroup}-${responsiveProp})`,
-    };
-  } else {
-    result = Object.fromEntries(
-      Object.entries(responsiveProp).map(([breakpointAlias, aliasOrScale]) => [
-        breakpointAlias,
-        `var(--p-${tokenSubgroup}-${aliasOrScale})`,
+  if (isObject(responsiveProp)) {
+    return Object.fromEntries(
+      (
+        Object.entries(responsiveProp).filter(
+          ([, aliasOrScale]) => aliasOrScale != null,
+        ) as Entries<ResponsivePropObject<T>>
+      ).map(([breakpointAlias, aliasOrScale]) => [
+        createPolarisCSSCustomProperty(
+          componentName,
+          componentProp,
+          breakpointAlias,
+        ),
+        // Use ! here because .filter() doesn't type narrow
+        createPolarisCSSVar<T>(tokenSubgroup, aliasOrScale!),
       ]),
     );
   }
 
-  // Prefix each responsive key with the correct token name
-  return Object.fromEntries(
-    Object.entries(result).map(([breakpointAlias, value]) => [
-      `--pc-${componentName}-${componentProp}-${breakpointAlias}`,
-      value,
-    ]),
-  ) as unknown as ResponsiveVariables<T>;
+  return {
+    [createPolarisCSSCustomProperty(
+      componentName,
+      componentProp,
+      breakpointsAliases[0],
+    )]: createPolarisCSSVar<T>(tokenSubgroup, responsiveProp),
+  };
 }
-export const viewTransition = (callback: () => void | Promise<unknown>) => {
-  // @ts-ignore is experimental and not typed yet
-  if (document.startViewTransition) {
-    // @ts-ignore exists in Chrome 111+
-    return document.startViewTransition(callback);
-  } else {
-    callback();
 
-    const resolved = Promise.resolve();
+export function getResponsiveValue<
+  T extends string | number | undefined = string,
+>(
+  componentName: string,
+  componentProp: string,
+  responsiveProp?: ResponsiveProp<T>,
+): ResponsiveValues<T> {
+  // "falsey" values are valid except `null` or `undefined`
+  if (responsiveProp == null) return {};
 
-    return {
-      ready: resolved,
-      finished: resolved,
-    };
+  if (isObject(responsiveProp)) {
+    return Object.fromEntries(
+      (
+        Object.entries(responsiveProp).filter(
+          ([, responsiveValue]) => responsiveValue != null,
+          // Use 'Required' here because .filter() doesn't type narrow
+        ) as Entries<Required<ResponsivePropObject<T>>>
+      ).map(([breakpointAlias, responsiveValue]) => [
+        createPolarisCSSCustomProperty(
+          componentName,
+          componentProp,
+          breakpointAlias,
+        ),
+        responsiveValue,
+      ]),
+    );
   }
-};
+
+  return {
+    [createPolarisCSSCustomProperty(
+      componentName,
+      componentProp,
+      breakpointsAliases[0],
+    )]: responsiveProp as T,
+  };
+}
+
+export function mapResponsivePropValues<Input, Output>(
+  responsiveProp: ResponsiveProp<Input> | undefined,
+  fn: (value?: Input) => Output | undefined,
+): ResponsiveProp<Output> | undefined {
+  if (isObject(responsiveProp)) {
+    return Object.fromEntries(
+      (Object.entries(responsiveProp) as Entries<typeof responsiveProp>).map(
+        ([breakpointAlias, value]) => [breakpointAlias, fn(value)],
+      ),
+    );
+  }
+
+  return fn(responsiveProp as Input);
+}

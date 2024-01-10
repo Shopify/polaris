@@ -147,8 +147,10 @@ export function ActionList({
     <>
       {(allowFiltering || filterActions) && hasManyActions && isFilterable && (
         <Box
-          padding="200"
-          paddingBlockEnd={totalFilteredActions > 0 ? '0' : '200'}
+          sx={{
+            padding: '200',
+            paddingBlockEnd: totalFilteredActions > 0 ? '0' : '200',
+          }}
         >
           <TextField
             clearButton

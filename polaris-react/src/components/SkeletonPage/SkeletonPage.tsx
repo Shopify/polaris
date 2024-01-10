@@ -37,10 +37,12 @@ export function SkeletonPage({
   ) : (
     <div className={styles.SkeletonTitle}>
       <Box
-        background="bg-fill-tertiary"
-        minWidth="120px"
-        minHeight="28px"
-        borderRadius="100"
+        sx={{
+          background: 'bg-fill-tertiary',
+          minWidth: '120px',
+          minHeight: '28px',
+          borderRadius: '100',
+        }}
       />
     </div>
   );
@@ -48,59 +50,77 @@ export function SkeletonPage({
   const primaryActionMarkup = primaryAction ? (
     <Box
       id="SkeletonPage-PrimaryAction"
-      borderRadius="100"
-      background="bg-fill-tertiary"
-      minHeight="2.25rem"
-      minWidth="6.25rem"
+      sx={{
+        borderRadius: '100',
+        background: 'bg-fill-tertiary',
+        minHeight: '2.25rem',
+        minWidth: '6.25rem',
+      }}
     />
   ) : null;
 
   const backActionMarkup = backAction ? (
     <Box
-      borderRadius="100"
-      background="bg-fill-tertiary"
-      minHeight="2.25rem"
-      minWidth="2.25rem"
-      maxWidth="2.25rem"
+      sx={{
+        borderRadius: '100',
+        background: 'bg-fill-tertiary',
+        minHeight: '2.25rem',
+        minWidth: '2.25rem',
+        maxWidth: '2.25rem',
+      }}
     />
   ) : null;
 
   return (
     <BlockStack gap="400" inlineAlign="center">
       <Box
-        width="100%"
-        padding="0"
-        paddingInlineStart={{sm: '600'}}
-        paddingInlineEnd={{sm: '600'}}
-        maxWidth="var(--pc-skeleton-page-max-width)"
+        sx={{
+          width: '100%',
+          padding: '0',
+          paddingInlineStart: {sm: '600'},
+          paddingInlineEnd: {sm: '600'},
+          maxWidth: 'var(--pc-skeleton-page-max-width)',
+          ...(narrowWidth && {
+            maxWidth: 'var(--pc-skeleton-page-max-width-narrow)',
+          }),
+          ...(fullWidth && {
+            maxWidth: 'none',
+          }),
+        }}
         aria-label={i18n.translate('Polaris.SkeletonPage.loadingLabel')}
         role="status"
-        {...(narrowWidth && {
-          maxWidth: 'var(--pc-skeleton-page-max-width-narrow)',
-        })}
-        {...(fullWidth && {
-          maxWidth: 'none',
-        })}
       >
         <BlockStack>
           <Box
-            paddingBlockStart={{xs: '400', md: '500'}}
-            paddingBlockEnd={{xs: '400', md: '500'}}
-            paddingInlineStart={{xs: '400', sm: '0'}}
-            paddingInlineEnd={{xs: '400', sm: '0'}}
-            width="100%"
+            sx={{
+              paddingBlockStart: {xs: '400', md: '500'},
+              paddingBlockEnd: {xs: '400', md: '500'},
+              paddingInlineStart: {xs: '400', sm: '0'},
+              paddingInlineEnd: {xs: '400', sm: '0'},
+              width: '100%',
+            }}
           >
             <InlineStack gap="400" align="space-between" blockAlign="center">
               <InlineStack gap="400">
                 {backActionMarkup}
-                <Box paddingBlockStart="100" paddingBlockEnd="100">
+                <Box
+                  sx={{
+                    paddingBlockStart: '100',
+                    paddingBlockEnd: '100',
+                  }}
+                >
                   {titleContent}
                 </Box>
               </InlineStack>
               {primaryActionMarkup}
             </InlineStack>
           </Box>
-          <Box paddingBlockEnd="200" width="100%">
+          <Box
+            sx={{
+              paddingBlockEnd: '200',
+              width: '100%',
+            }}
+          >
             {children}
           </Box>
         </BlockStack>

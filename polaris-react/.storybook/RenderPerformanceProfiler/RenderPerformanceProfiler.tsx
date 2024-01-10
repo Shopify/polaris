@@ -3,7 +3,7 @@ import React, {PropsWithChildren} from 'react';
 interface Data {
   id: string;
   kind: string;
-  phase: 'mount' | 'update';
+  phase: 'mount' | 'update' | 'nested-update';
   actualDuration: number;
   baseDuration: number;
 }

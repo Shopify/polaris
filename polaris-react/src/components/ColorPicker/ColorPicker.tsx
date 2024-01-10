@@ -7,8 +7,11 @@ import {hsbToRgb} from '../../utilities/color-transformers';
 import type {HSBColor, HSBAColor} from '../../utilities/color-types';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
+import type {ResponsiveStylePropsWithModifiers} from '../Box';
+import {Box} from '../Box';
 
 import {AlphaPicker, HuePicker, Slidable} from './components';
+import {sharedCheckerStyles, sharedColorLayerStyles} from './styles';
 import type {SlidableProps} from './components';
 import styles from './ColorPicker.module.scss';
 
@@ -120,23 +123,74 @@ export class ColorPicker extends PureComponent<ColorPickerProps, State> {
       fullWidth && styles.fullWidth,
     );
 
+    const mainColorPseudoElementStyles: ResponsiveStylePropsWithModifiers = {
+      content: '""',
+      position: 'absolute',
+      zIndex: 'var(--pc-color-picker-adjustments)',
+      top: 0,
+      left: 0,
+      display: 'block',
+      height: '100%',
+      width: '100%',
+      pointerEvents: 'none',
+      borderRadius: 'var(--p-border-radius-100)',
+    };
+
     return (
-      <div className={className} id={id} onMouseDown={this.handlePickerDrag}>
-        <div ref={this.setColorNode} className={styles.MainColor}>
-          <div
-            className={styles.ColorLayer}
+      <Box
+        className={className}
+        sx={{
+          userSelect: 'none',
+          display: 'flex',
+        }}
+        id={id}
+        onMouseDown={this.handlePickerDrag}
+      >
+        <Box
+          ref={this.setColorNode}
+          className={styles.MainColor}
+          sx={{
+            ...sharedCheckerStyles,
+            position: 'relative',
+            overflow: 'hidden',
+            height: 'var(--pc-color-picker-size)',
+            width: 'var(--pc-color-picker-size)',
+            cursor: 'pointer',
+            // Need an extra pixel to avoid a small color bleed from happening
+            borderRadius: '100',
+            ...(fullWidth && {
+              width: 'auto',
+              flexGrow: '1',
+            }),
+            _before: {
+              ...mainColorPseudoElementStyles,
+              background: 'linear-gradient(to right, white, transparent);',
+            },
+            _after: {
+              ...mainColorPseudoElementStyles,
+              backgroundImage: 'linear-gradient(to top, black, transparent)',
+              boxShadow: 'var(--pc-color-picker-inner-shadow)',
+            },
+          }}
+        >
+          <Box
+            sx={{
+              borderRadius: 'var(--p-border-radius-100)',
+              ...sharedColorLayerStyles,
+            }}
             style={{backgroundColor: colorString}}
           />
           <Slidable
             onChange={this.handleDraggerMove}
             draggerX={draggerX}
             draggerY={draggerY}
+            draggerAlignment="right"
           />
-        </div>
+        </Box>
         <HuePicker hue={hue} onChange={this.handleHueChange} />
         {alphaSliderMarkup}
         <EventListener event="resize" handler={this.handleResize} />
-      </div>
+      </Box>
     );
   }
 

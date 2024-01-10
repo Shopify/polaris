@@ -34,10 +34,12 @@ export function Footer({
   return (
     <InlineStack gap="400" blockAlign="center">
       <Box
-        borderColor="border"
-        borderBlockStartWidth="025"
-        padding="400"
-        width="100%"
+        sx={{
+          borderColor: 'border',
+          borderBlockStartWidth: '025',
+          padding: '400',
+          width: '100%',
+        }}
       >
         <InlineStack gap="400" blockAlign="center" align="space-between">
           <Box>{children}</Box>

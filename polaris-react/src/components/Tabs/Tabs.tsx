@@ -557,7 +557,7 @@ export const Tabs = ({
 
   return (
     <div className={styles.Outer}>
-      <Box padding={{md: '200'}}>
+      <Box sx={{padding: {md: '200'}}}>
         {tabMeasurer}
         <div className={wrapperClassNames} ref={scrollRef}>
           <div className={styles.ButtonWrapper} ref={wrapRef}>

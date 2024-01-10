@@ -28,7 +28,7 @@ const sizes: NonNullable<AvatarProps['size']>[] = [
   'xs',
 ];
 
-type Style = typeof STYLE_CLASSES[number];
+type Style = (typeof STYLE_CLASSES)[number];
 
 const styleInitialsDefault: {
   [S in Style]: string;
@@ -65,7 +65,7 @@ const styleInitialsLongEntries = Object.entries(styleInitialsLong) as Entries<
 export function All() {
   return (
     <BlockStack gap="400">
-      <Box paddingBlockEnd="200">
+      <Box sx={{paddingBlockEnd: '200'}}>
         <BlockStack gap="300">
           <BlockStack gap="200">
             <Text as="h2" variant="headingSm">

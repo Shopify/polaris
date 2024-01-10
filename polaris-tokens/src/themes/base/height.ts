@@ -29,6 +29,10 @@ export type HeightTokenGroup = {
   [TokenName in HeightTokenName]: string;
 };
 
+export type MappedHeightStyleProps = {
+  [T in (typeof heightStyleProps)[number]]: HeightScale;
+};
+
 export const height: {
   [TokenName in HeightTokenName]: MetaTokenProperties;
 } = {
@@ -93,3 +97,22 @@ export const height: {
     value: size[3200],
   },
 };
+
+const heightStyleProps = [
+  // Logical properties
+  // TODO: Reinstate these once our token scales are usable
+  // 'blockSize',
+  // 'minBlockSize',
+  // 'maxBlockSize',
+  'containIntrinsicBlockSize',
+  // Positional properties
+  // TODO: Reinstate these once our token scales are usable
+  // 'height',
+  // 'minHeight',
+  // 'maxHeight',
+  'containIntrinsicHeight',
+] as const;
+
+export const heightStylePropTokenGroups = {
+  height: heightStyleProps,
+} as const;

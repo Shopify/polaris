@@ -73,7 +73,12 @@ export function ChoiceList({
   const titleMarkup = title ? (
     <Box
       as="legend"
-      paddingBlockEnd={{xs: '500', md: '100'}}
+      // User agent default styles have a 2px padding around <legend> elements
+      // that we don't want.
+      sx={{
+        padding: '0',
+        paddingBlockEnd: {xs: '500', md: '100'},
+      }}
       visuallyHidden={titleHidden}
     >
       {title}
@@ -103,7 +108,9 @@ export function ChoiceList({
       : null;
     const children = renderedChildren ? (
       <div className={styles.ChoiceChildren}>
-        <Box paddingBlockStart={{xs: '400', md: '0'}}>{renderedChildren}</Box>
+        <Box sx={{paddingBlockStart: {xs: '400', md: '0'}}}>
+          {renderedChildren}
+        </Box>
       </div>
     ) : null;
     return (
@@ -131,7 +138,12 @@ export function ChoiceList({
   });
 
   const errorMarkup = error && (
-    <Box paddingBlockStart={{xs: '0', md: '100'}} paddingBlockEnd="200">
+    <Box
+      sx={{
+        paddingBlockStart: {xs: '0', md: '100'},
+        paddingBlockEnd: '200',
+      }}
+    >
       <InlineError message={error} fieldID={finalName} />
     </Box>
   );

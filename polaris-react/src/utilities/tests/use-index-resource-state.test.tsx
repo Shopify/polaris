@@ -187,7 +187,7 @@ describe('useIndexResourceState', () => {
     it('accepts a custom resource filter', () => {
       const selectedID = '1';
       const resources = [{id: selectedID}, {id: '2'}];
-      const customResoureFilter = (item: typeof resources[0]) => {
+      const customResoureFilter = (item: (typeof resources)[0]) => {
         return item.id === selectedID;
       };
       const mockComponent = mountWithApp(
@@ -293,7 +293,7 @@ describe('useIndexResourceState', () => {
           const idOne = '1';
           const idTwo = '2';
           const resources = [{id: idOne}, {id: idTwo}];
-          const customResoureFilter = (item: typeof resources[0]) => {
+          const customResoureFilter = (item: (typeof resources)[0]) => {
             return item.id === idOne;
           };
           const mockComponent = mountWithApp(
@@ -357,7 +357,7 @@ describe('useIndexResourceState', () => {
           const idOne = '1';
           const idTwo = '2';
           const resources = [{id: idOne}, {id: idTwo}];
-          const customResoureFilter = (item: typeof resources[0]) => {
+          const customResoureFilter = (item: (typeof resources)[0]) => {
             return item.id === idOne;
           };
           const mockComponent = mountWithApp(
@@ -422,7 +422,7 @@ describe('useIndexResourceState', () => {
           const idTwo = '2';
           const idThree = '3';
           const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
-          const customResoureFilter = (item: typeof resources[0]) => {
+          const customResoureFilter = (item: (typeof resources)[0]) => {
             return item.id === idOne;
           };
           const mockComponent = mountWithApp(
@@ -504,7 +504,7 @@ describe('useIndexResourceState', () => {
           const idTwo = '2';
           const idThree = '3';
           const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
-          const customResoureFilter = (item: typeof resources[0]) => {
+          const customResoureFilter = (item: (typeof resources)[0]) => {
             return item.id !== idOne;
           };
           const mockComponent = mountWithApp(

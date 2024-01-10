@@ -1,10 +1,12 @@
 import React, {PureComponent} from 'react';
 
+import {Box} from '../../../Box';
 import {Slidable} from '../Slidable';
 import type {SlidableProps} from '../Slidable';
 import type {HSBColor} from '../../../../utilities/color-types';
 import {hsbToRgb} from '../../../../utilities/color-transformers';
 import styles from '../../ColorPicker.module.scss';
+import {sharedCheckerStyles, sharedColorLayerStyles} from '../../styles';
 
 import {calculateDraggerY, alphaForDraggerY} from './utilities';
 
@@ -33,15 +35,24 @@ export class AlphaPicker extends PureComponent<AlphaPickerProps, State> {
     const background = alphaGradientForColor(color);
 
     return (
-      <div className={styles.AlphaPicker} ref={this.setSliderHeight}>
-        <div className={styles.ColorLayer} style={{background}} />
+      <Box
+        className={styles.AlphaPicker}
+        sx={sharedCheckerStyles}
+        ref={this.setSliderHeight}
+      >
+        <Box
+          sx={{
+            ...sharedColorLayerStyles,
+            background,
+          }}
+        />
         <Slidable
           draggerY={draggerY}
           draggerX={0}
           onChange={this.handleChange}
           onDraggerHeight={this.setDraggerHeight}
         />
-      </div>
+      </Box>
     );
   }
 

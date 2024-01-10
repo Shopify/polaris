@@ -10,10 +10,12 @@ import {Text} from '../../../Text';
 import styles from '../../ActionList.module.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {InlineStack} from '../../../InlineStack';
+import type {ResponsiveStylePropsWithModifiers} from '../../../Box';
 import {Box} from '../../../Box';
 import {Tooltip} from '../../../Tooltip';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 import {useTheme} from '../../../../utilities/use-theme';
+import {unstyledButton, focusRing} from '../../../../styles/common';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -42,29 +44,133 @@ export function Item({
   const className = classNames(
     styles.Item,
     disabled && styles.disabled,
+
     destructive && styles.destructive,
     active && styles.active,
     variant === 'default' && styles.default,
     variant === 'indented' && styles.indented,
     variant === 'menu' && styles.menu,
   );
+  const indentedItemMargin = 'calc(var(--p-space-500) + var(--p-space-050))';
+  const indentedItemWidth = `calc(100% - ${indentedItemMargin})`;
+
+  const itemStyleProps: ResponsiveStylePropsWithModifiers = {
+    ...unstyledButton,
+    ...focusRing({size: 'wide'}),
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    minHeight: 'var(--pc-action-list-item-min-height)',
+    textAlign: 'left',
+    textDecorationLine: 'none',
+    cursor: 'pointer',
+    padding: '150',
+    borderRadius: '200',
+    borderBlockStartWidth: '025',
+    borderBlockStartColor: 'transparent',
+    borderBlockStartStyle: 'solid',
+    _hover: {
+      backgroundColor: 'bg-surface-secondary-hover',
+      textDecorationLine: 'none',
+      outlineWidth: '050',
+      outlineStyle: 'solid',
+      outlineColor: 'transparent',
+      ...(destructive && {
+        backgroundColor: 'bg-surface-critical-hover',
+      }),
+      ...(disabled && {
+        backgroundColor: undefined,
+      }),
+    },
+    _active: {
+      backgroundColor: 'bg-surface-secondary-active',
+      ...(destructive && {
+        backgroundColor: 'bg-surface-critical-active',
+      }),
+      ...(disabled && {
+        backgroundColor: undefined,
+      }),
+    },
+    _before: {
+      ...(active && {
+        display: 'none',
+      }),
+      ...(variant === 'indented' && {
+        content: '""',
+        position: 'absolute',
+        top: 'calc(var(--p-space-300) * -1)',
+        bottom: 0,
+        left: 0,
+        borderInlineStartColor: 'var(--p-border-width-025)',
+        borderInlineStartStyle: 'solid',
+        borderInlineStartWidth: '025',
+        marginLeft: 'calc(var(--p-space-150) * -1)',
+      }),
+    },
+    _visited: {
+      color: undefined,
+    },
+    ...(disabled && {
+      backgroundImage: 'none',
+      color: 'var(--p-color-text-disabled)',
+      cursor: 'default',
+    }),
+    ...(destructive && {
+      color: 'var(--p-color-text-critical)',
+      ...(active && {
+        backgroundColor: 'bg-surface-critical-active',
+      }),
+    }),
+    ...(active && {
+      backgroundColor: 'bg-surface-secondary-selected',
+      fontWeight: 'semibold',
+    }),
+    ...(variant === 'indented' && {
+      position: 'relative',
+      marginLeft: indentedItemMargin,
+      maxWidth: indentedItemWidth,
+    }),
+  };
 
   let prefixMarkup: React.ReactNode | null = null;
+  const prefixStyleProps = {
+    display: 'flex',
+    flexGrow: '0',
+    flexShrink: '0',
+    flexBasis: 'auto',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBlock: 'calc(-0.5 * var(--pc-action-list-image-size))',
+    marginInline: '0',
+    backgroundSize: 'cover',
+    backgroundPositionX: 'center',
+    backgroundPositionY: 'center',
+    height: 'var(--pc-action-list-image-size)',
+    width: 'var(--pc-action-list-image-size)',
+  };
 
   if (prefix) {
-    prefixMarkup = <span className={styles.Prefix}>{prefix}</span>;
+    prefixMarkup = (
+      <Box as="span" className={styles.Prefix} sx={prefixStyleProps}>
+        {prefix}
+      </Box>
+    );
   } else if (icon) {
     prefixMarkup = (
-      <span className={styles.Prefix}>
+      <Box as="span" className={styles.Prefix} sx={prefixStyleProps}>
         <Icon source={icon} />
-      </span>
+      </Box>
     );
   } else if (image) {
     prefixMarkup = (
-      <span
+      <Box
+        as="span"
         role="presentation"
         className={styles.Prefix}
-        style={{backgroundImage: `url(${image}`}}
+        sx={{
+          backgroundImage: `url(${image}`,
+          ...prefixStyleProps,
+        }}
       />
     );
   }
@@ -92,18 +198,33 @@ export function Item({
   );
 
   const badgeMarkup = badge && (
-    <span className={styles.Suffix}>
+    <Box as="span" className={styles.Suffix}>
       <Badge tone={badge.tone}>{badge.content}</Badge>
-    </span>
+    </Box>
   );
 
   const suffixMarkup = suffix && (
     <Box>
-      <span className={styles.Suffix}>{suffix}</span>
+      <Box as="span" className={styles.Suffix}>
+        {suffix}
+      </Box>
     </Box>
   );
 
-  const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
+  const textMarkup = (
+    <Box
+      as="span"
+      sx={{
+        minWidth: '0',
+        maxWidth: '100%',
+        flexShrink: '1',
+        flexGrow: '1',
+        flexBasis: 'auto',
+      }}
+    >
+      {contentMarkup}
+    </Box>
+  );
 
   const contentElement = (
     <InlineStack blockAlign="center" gap="150" wrap={!truncate}>
@@ -114,7 +235,7 @@ export function Item({
     </InlineStack>
   );
 
-  const contentWrapper = <Box width="100%">{contentElement}</Box>;
+  const contentWrapper = <Box sx={{width: '100%'}}>{contentElement}</Box>;
 
   const scrollMarkup = active ? <Scrollable.ScrollTo /> : null;
 
@@ -123,6 +244,7 @@ export function Item({
       id={id}
       url={disabled ? null : url}
       className={className}
+      sx={itemStyleProps}
       external={external}
       aria-label={accessibilityLabel}
       onClick={disabled ? null : onAction}
@@ -131,10 +253,12 @@ export function Item({
       {contentWrapper}
     </UnstyledLink>
   ) : (
-    <button
+    <Box
+      as="button"
       id={id}
       type="button"
       className={className}
+      sx={itemStyleProps}
       disabled={disabled}
       aria-label={accessibilityLabel}
       onClick={onAction}
@@ -143,7 +267,7 @@ export function Item({
       onMouseEnter={onMouseEnter}
     >
       {contentWrapper}
-    </button>
+    </Box>
   );
 
   return (
@@ -167,7 +291,7 @@ export const TruncateText = ({children}: {children: string}) => {
   }, [children]);
   const text = (
     <Text as="span" truncate>
-      <Box width="100%" ref={textRef}>
+      <Box sx={{width: '100%'}} ref={textRef}>
         {children}
       </Box>
     </Text>

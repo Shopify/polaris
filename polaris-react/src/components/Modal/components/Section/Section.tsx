@@ -27,11 +27,13 @@ export function Section({
     <div className={className}>
       <Box
         as="section"
-        padding={flush ? '0' : '400'}
-        {...(titleHidden && {paddingInlineEnd: '0'})}
-        {...(subdued && {
-          background: 'bg-surface-tertiary',
-        })}
+        sx={{
+          padding: flush ? '0' : '400',
+          ...(titleHidden && {paddingInlineEnd: '0'}),
+          ...(subdued && {
+            background: 'bg-surface-tertiary',
+          }),
+        }}
       >
         {children}
       </Box>

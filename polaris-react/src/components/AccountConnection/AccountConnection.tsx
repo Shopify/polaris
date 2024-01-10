@@ -72,7 +72,11 @@ export function AccountConnection({
   ) : null;
 
   const termsOfServiceMarkup = termsOfService ? (
-    <Box paddingBlockStart={breakpoints.mdUp ? '400' : '500'}>
+    <Box
+      sx={{
+        paddingBlockStart: breakpoints.mdUp ? '400' : '500',
+      }}
+    >
       {termsOfService}
     </Box>
   ) : null;

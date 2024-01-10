@@ -129,8 +129,8 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
     const isChecked = !isIndeterminate && Boolean(checked);
 
     const indeterminateAttributes = isIndeterminate
-      ? {indeterminate: 'true', 'aria-checked': 'mixed' as const}
-      : {'aria-checked': isChecked};
+      ? {indeterminate: 'true'}
+      : {};
 
     const iconSource = (
       <svg

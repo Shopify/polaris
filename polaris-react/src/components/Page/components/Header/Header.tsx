@@ -101,7 +101,13 @@ export function Header({
 
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
-      <Box maxWidth="100%" paddingInlineEnd="100" printHidden>
+      <Box
+        sx={{
+          maxWidth: '100%',
+          paddingInlineEnd: '100',
+        }}
+        printHidden
+      >
         <Breadcrumbs backAction={backAction} />
       </Box>
     </div>
@@ -175,10 +181,11 @@ export function Header({
     breadcrumbMarkup || paginationMarkup ? (
       <Box
         printHidden
-        paddingBlockEnd="100"
-        paddingInlineEnd={
-          actionMenuMarkup && isNavigationCollapsed ? '1000' : undefined
-        }
+        sx={{
+          paddingBlockEnd: '100',
+          paddingInlineEnd:
+            actionMenuMarkup && isNavigationCollapsed ? '1000' : undefined,
+        }}
       >
         <InlineStack gap="400" align="space-between" blockAlign="center">
           {breadcrumbMarkup}
@@ -218,11 +225,13 @@ export function Header({
 
   return (
     <Box
-      position="relative"
-      paddingBlockStart={{xs: '400', md: '600'}}
-      paddingBlockEnd={{xs: '400', md: '600'}}
-      paddingInlineStart={{xs: '400', sm: '0'}}
-      paddingInlineEnd={{xs: '400', sm: '0'}}
+      sx={{
+        position: 'relative',
+        paddingBlockStart: {xs: '400', md: '600'},
+        paddingBlockEnd: {xs: '400', md: '600'},
+        paddingInlineStart: {xs: '400', sm: '0'},
+        paddingInlineEnd: {xs: '400', sm: '0'},
+      }}
       visuallyHidden={titleHidden}
     >
       {pageReadyAccessibilityLabelMarkup}

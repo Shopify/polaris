@@ -118,10 +118,16 @@ export function genAssets() {
   });
 }
 
-export function startLocalServer(command = 'dev') {
-  return prettyExeca('yarn', ['next', command], {
+export function startLocalServer(command = 'start') {
+  const prc = prettyExeca('yarn', ['next', command], {
     stdout: 'ignore',
     stderr: 'pipe',
     shell: true,
   });
+  // Ensure this long-running process is correctly killed when the parent
+  // process exits
+  process.on('exit', () => {
+    prc.kill();
+  });
+  return prc;
 }

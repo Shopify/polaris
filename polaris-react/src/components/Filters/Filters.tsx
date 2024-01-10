@@ -125,7 +125,7 @@ export function Filters({
   const hideFilterBar = hideFilters || filters.length === 0;
   const queryFieldMarkup = hideQueryField ? null : (
     <div className={styles.Container}>
-      <Box padding={hideFilterBar ? '300' : '200'}>
+      <Box sx={{padding: hideFilterBar ? '300' : '200'}}>
         <InlineStack
           align="start"
           blockAlign="center"

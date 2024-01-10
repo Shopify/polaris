@@ -1,6 +1,8 @@
 import type {MetaTokenProperties} from '../types';
 import * as colors from '../../colors';
 
+export type ColorGlobalAlias = 'transparent';
+
 export type ColorBackgroundAlias =
   | 'bg-fill-active'
   | 'bg-fill-brand-active'
@@ -118,7 +120,8 @@ export type ColorBackgroundAlias =
   | 'nav-bg'
   | 'radio-button-bg-surface-disabled'
   | 'video-thumbnail-play-button-bg-fill-hover'
-  | 'video-thumbnail-play-button-bg-fill';
+  | 'video-thumbnail-play-button-bg-fill'
+  | ColorGlobalAlias;
 
 export type ColorBorderAlias =
   | 'border-brand'
@@ -146,7 +149,8 @@ export type ColorBorderAlias =
   /** Specialty and component border colors. */
   | 'input-border-active'
   | 'input-border-hover'
-  | 'input-border';
+  | 'input-border'
+  | ColorGlobalAlias;
 
 export type ColorIconAlias =
   | 'icon-active'
@@ -169,7 +173,8 @@ export type ColorIconAlias =
   | 'icon'
   /** Specialty and component icon colors. */
   | 'checkbox-icon-disabled'
-  | 'radio-button-icon-disabled';
+  | 'radio-button-icon-disabled'
+  | ColorGlobalAlias;
 
 export type ColorTextAlias =
   | 'text-brand-hover'
@@ -230,7 +235,8 @@ export type ColorTextAlias =
   | 'avatar-text-on-bg-fill'
   | 'avatar-three-text-on-bg-fill'
   | 'avatar-two-text-on-bg-fill'
-  | 'video-thumbnail-play-button-text-on-bg-fill';
+  | 'video-thumbnail-play-button-text-on-bg-fill'
+  | ColorGlobalAlias;
 
 export type ColorTokenName =
   | `color-${ColorBackgroundAlias}`
@@ -240,6 +246,16 @@ export type ColorTokenName =
 
 export type ColorTokenGroup = {
   [TokenName in ColorTokenName]: string;
+};
+
+export type ColorStyleProps = {
+  [T in (typeof colorBackgroundStyleProps)[number]]?: ColorBackgroundAlias;
+} & {
+  [T in (typeof colorBorderStyleProps)[number]]?: ColorBorderAlias;
+} & {
+  [T in (typeof colorTextStyleProps)[number]]?: ColorTextAlias;
+} & {
+  [T in (typeof colorIconStyleProps)[number]]?: ColorIconAlias;
 };
 
 export const color: {
@@ -1184,4 +1200,40 @@ export const color: {
   'color-video-thumbnail-play-button-text-on-bg-fill': {
     value: colors.gray[1],
   },
+  'color-transparent': {
+    value: 'transparent',
+  },
 };
+
+const colorBackgroundStyleProps = ['backgroundColor'] as const;
+
+const colorBorderStyleProps = [
+  // Shorthand
+  'borderColor',
+  'outlineColor',
+  // Logical properties
+  'borderInlineColor',
+  'borderBlockColor',
+  'borderInlineStartColor',
+  'borderInlineEndColor',
+  'borderBlockStartColor',
+  'borderBlockEndColor',
+  // Positional properties
+  'borderLeftColor',
+  'borderRightColor',
+  'borderTopColor',
+  'borderBottomColor',
+] as const;
+
+const colorTextStyleProps = ['color'] as const;
+
+const colorIconStyleProps = ['fill'] as const;
+
+export const colorStylePropTokenGroups = {
+  color: [
+    ...colorBackgroundStyleProps,
+    ...colorBorderStyleProps,
+    ...colorTextStyleProps,
+    ...colorIconStyleProps,
+  ],
+} as const;

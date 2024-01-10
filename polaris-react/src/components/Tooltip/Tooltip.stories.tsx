@@ -41,7 +41,7 @@ export function All() {
 
 export function Default() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <Tooltip active content="This order has shipping labels.">
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
@@ -53,7 +53,7 @@ export function Default() {
 
 export function PreferredPosition() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <InlineStack gap="800">
         <Tooltip
           active
@@ -98,7 +98,7 @@ export function PreferredPosition() {
 
 export function Width() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <InlineStack gap="800">
         <Tooltip
           active
@@ -142,7 +142,7 @@ export function Width() {
 
 export function Padding() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <InlineStack gap="800">
         <Tooltip active content="This content has default padding">
           <InlineStack gap="100">
@@ -183,7 +183,7 @@ export function Padding() {
 
 export function BorderRadius() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <InlineStack gap="800">
         <Tooltip
           active
@@ -227,7 +227,7 @@ export function BorderRadius() {
 
 export function VisibleOnlyWithChildInteraction() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <div style={{width: '200px'}}>
         <ButtonGroup variant="segmented" fullWidth>
           <Tooltip content="Bold" dismissOnMouseOut>
@@ -304,7 +304,7 @@ export function WithHoverDelay() {
 
 export function ActivatorAsDiv() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <Tooltip
         active
         content="This tooltip is rendered as a div"
@@ -320,7 +320,7 @@ export function ActivatorAsDiv() {
 
 export function WithSuffix() {
   return (
-    <Box padding="1600" background="bg-surface">
+    <Box sx={{padding: '1600', background: 'bg-surface'}}>
       <InlineStack>
         <ButtonGroup variant="segmented" fullWidth>
           <Tooltip
@@ -432,7 +432,7 @@ export function WithSuffix() {
 
 export function Alignment() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <InlineStack>
         <ButtonGroup variant="segmented" fullWidth>
           <Tooltip content="Content is longer than the activator">
@@ -461,7 +461,7 @@ export function Alignment() {
 
 export function HasUnderline() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <Tooltip active content="This tooltip has an underline" hasUnderline>
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
@@ -473,7 +473,7 @@ export function HasUnderline() {
 
 export function PersistOnClick() {
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <Tooltip
         content="This tooltip can be clicked to stay open"
         persistOnClick
@@ -492,7 +492,7 @@ export function ActiveStates() {
     useState<TooltipProps['active']>(true);
 
   return (
-    <Box paddingBlockStart="2400">
+    <Box sx={{paddingBlockStart: '2400'}}>
       <InlineStack gap="2400">
         <Tooltip content="This tooltip should never render" active={false}>
           <Text variant="bodyLg" fontWeight="bold" as="span">

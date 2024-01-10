@@ -14,14 +14,14 @@ export function All() {
           Default
         </Text>
         <Default />
-        <Box paddingBlockEnd="300" />
+        <Box sx={{paddingBlockEnd: '300'}} />
       </BlockStack>
       <BlockStack gap="400">
         <Text as="h2" variant="headingXl">
           With account connected
         </Text>
         <WithAccountConnected />
-        <Box paddingBlockEnd="300" />
+        <Box sx={{paddingBlockEnd: '300'}} />
       </BlockStack>
     </>
   );

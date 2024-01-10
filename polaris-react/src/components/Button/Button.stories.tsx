@@ -81,7 +81,7 @@ export function All() {
 export function Default() {
   return (
     <>
-      <Box padding="400">
+      <Box sx={{padding: '400'}}>
         <InlineStack gap="400" blockAlign="end">
           <Button>Label</Button>
           <Button disabled>Label</Button>
@@ -132,7 +132,7 @@ export function Default() {
 export function Critical() {
   return (
     <>
-      <Box padding="400">
+      <Box sx={{padding: '400'}}>
         <InlineStack gap="400" blockAlign="end">
           <Button tone="critical">Label</Button>
           <Button tone="critical" disabled>
@@ -198,7 +198,7 @@ export function Critical() {
 
 export function Plain() {
   return (
-    <Box padding="400">
+    <Box sx={{padding: '400'}}>
       <InlineStack gap="400" blockAlign="end">
         <Button variant="plain">Label</Button>
         <Button variant="plain" disabled>
@@ -236,7 +236,7 @@ export function Plain() {
 
 export function MonochromePlain() {
   return (
-    <Box padding="400">
+    <Box sx={{padding: '400'}}>
       <InlineStack gap="400" blockAlign="center">
         <Button variant="monochromePlain">Default</Button>
         <Button variant="monochromePlain" icon={PlusMinor}>
@@ -261,7 +261,7 @@ export function MonochromePlain() {
 export function Tertiary() {
   return (
     <BlockStack gap="400">
-      <Box padding="400">
+      <Box sx={{padding: '400'}}>
         <InlineStack gap="400" blockAlign="end">
           <Button variant="tertiary">Label</Button>
           <Button variant="tertiary" disabled>
@@ -328,7 +328,7 @@ export function Tertiary() {
 export function TertiaryCritical() {
   return (
     <BlockStack gap="400">
-      <Box padding="400">
+      <Box sx={{padding: '400'}}>
         <InlineStack gap="400" blockAlign="end">
           <Button variant="tertiary" tone="critical">
             Label
@@ -443,7 +443,7 @@ export function PlainCritical() {
 export function Primary() {
   return (
     <BlockStack gap="400">
-      <Box padding="400">
+      <Box sx={{padding: '400'}}>
         <InlineStack gap="400" blockAlign="end">
           <Button variant="primary">Label</Button>
           <Button variant="primary" disabled>
@@ -509,7 +509,7 @@ export function Primary() {
 
 export function PrimarySuccess() {
   return (
-    <Box padding="400">
+    <Box sx={{padding: '400'}}>
       <InlineStack gap="400" blockAlign="end">
         <Button variant="primary" tone="success">
           Label
@@ -548,7 +548,7 @@ export function PrimarySuccess() {
 
 export function PrimaryCritical() {
   return (
-    <Box padding="400">
+    <Box sx={{padding: '400'}}>
       <InlineStack gap="400" blockAlign="end">
         <Button variant="primary" tone="critical">
           Label
@@ -645,7 +645,7 @@ export function FullWidth() {
 
 export function TextAligned() {
   return (
-    <Box maxWidth="200px">
+    <Box sx={{maxWidth: '200px'}}>
       <Button variant="plain" textAlign="right">
         This is a really long string of text that overflows onto the next line.
       </Button>

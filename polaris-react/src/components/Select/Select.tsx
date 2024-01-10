@@ -158,7 +158,7 @@ export function Select({
   }
 
   const inlineLabelMarkup = labelInline && (
-    <Box paddingInlineEnd="100">
+    <Box sx={{paddingInlineEnd: '100'}}>
       <Text
         as="span"
         tone={

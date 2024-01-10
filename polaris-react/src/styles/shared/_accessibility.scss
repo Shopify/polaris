@@ -10,7 +10,7 @@
   // Top position is required to prevent unexpected
   // scrolling with Sheet component
   // https://github.com/Shopify/polaris-react/pull/5208
-  top: 0;
+  top: 0 !important;
   width: 1px !important;
   height: 1px !important;
   margin: 0 !important;

@@ -159,7 +159,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       : children;
 
     const body = loading ? (
-      <Box padding="400">
+      <Box sx={{padding: '400'}}>
         <InlineStack gap="400" align="center" blockAlign="center">
           <Spinner />
         </InlineStack>
@@ -169,7 +169,13 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     );
 
     const scrollContainerMarkup = noScroll ? (
-      <Box width="100%" overflowX="hidden" overflowY="hidden">
+      <Box
+        sx={{
+          width: '100%',
+          overflowX: 'hidden',
+          overflowY: 'hidden',
+        }}
+      >
         {body}
       </Box>
     ) : (

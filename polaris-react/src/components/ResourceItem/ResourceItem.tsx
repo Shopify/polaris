@@ -272,7 +272,13 @@ class BaseResourceItem extends Component<CombinedProps, State> {
       } else if (breakpoints?.lgUp) {
         actionsMarkup = (
           <div className={styles.Actions} onClick={stopPropagation}>
-            <Box position="absolute" insetBlockStart="400" insetInlineEnd="500">
+            <Box
+              sx={{
+                position: 'absolute',
+                insetBlockStart: '400',
+                insetInlineEnd: '500',
+              }}
+            >
               <ButtonGroup variant="segmented">
                 {buttonsFrom(shortcutActions, {size: 'slim'})}
               </ButtonGroup>
@@ -285,12 +291,14 @@ class BaseResourceItem extends Component<CombinedProps, State> {
     const containerMarkup = (
       <Box
         id={this.props.id}
-        position="relative"
-        paddingInlineStart="300"
-        paddingInlineEnd="300"
-        paddingBlockStart="300"
-        paddingBlockEnd="300"
-        zIndex="var(--pc-resource-item-content-stacking-order)"
+        sx={{
+          position: 'relative',
+          paddingInlineStart: '300',
+          paddingInlineEnd: '300',
+          paddingBlockStart: '300',
+          paddingBlockEnd: '300',
+          zIndex: 'var(--pc-resource-item-content-stacking-order)',
+        }}
       >
         <InlineGrid columns={{xs: '1fr auto'}}>
           <InlineGrid
@@ -299,7 +307,12 @@ class BaseResourceItem extends Component<CombinedProps, State> {
           >
             {ownedMarkup}
             <InlineStack blockAlign={getAlignment(verticalAlignment)}>
-              <Box width="100%" padding="0">
+              <Box
+                sx={{
+                  width: '100%',
+                  padding: '0',
+                }}
+              >
                 {children}
               </Box>
             </InlineStack>

@@ -1,5 +1,6 @@
 import React, {memo, forwardRef} from 'react';
 
+import {Box} from '../Box';
 import {unstyled} from '../shared';
 import {useLink} from '../../utilities/link';
 import type {LinkLikeComponentProps} from '../../utilities/link';
@@ -34,13 +35,14 @@ export const UnstyledLink = memo(
     const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
 
     return (
-      <a
-        target={target}
+      <Box
         {...rest}
-        href={url}
         rel={rel}
         {...unstyled.props}
         ref={_ref}
+        as="a"
+        href={url}
+        target={target}
       />
     );
   }),

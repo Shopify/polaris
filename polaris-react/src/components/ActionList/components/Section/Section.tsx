@@ -70,17 +70,24 @@ export function Section({
     titleMarkup =
       typeof section.title === 'string' ? (
         <Box
-          paddingBlockStart="300"
-          paddingBlockEnd="100"
-          paddingInlineStart="300"
-          paddingInlineEnd="300"
+          sx={{
+            paddingBlockStart: '300',
+            paddingBlockEnd: '100',
+            paddingInlineStart: '300',
+            paddingInlineEnd: '300',
+          }}
         >
           <Text as="p" variant="headingSm">
             {section.title}
           </Text>
         </Box>
       ) : (
-        <Box padding="200" paddingInlineEnd="150">
+        <Box
+          sx={{
+            padding: '200',
+            paddingInlineEnd: '150',
+          }}
+        >
           {section.title}
         </Box>
       );
@@ -104,8 +111,10 @@ export function Section({
       {titleMarkup}
       <Box
         as="div"
-        padding="150"
-        {...(hasMultipleSections && {paddingBlockStart: '0'})}
+        sx={{
+          padding: '150',
+          ...(hasMultipleSections && {paddingBlockStart: '0'}),
+        }}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
         <BlockStack gap="100" as="ul" {...(sectionRole && {role: sectionRole})}>
@@ -119,11 +128,13 @@ export function Section({
     <Box
       as="li"
       role="presentation"
-      borderColor="border-secondary"
-      {...(!isFirst && {borderBlockStartWidth: '025'})}
-      {...(!section.title && {
-        paddingBlockStart: '150',
-      })}
+      sx={{
+        borderColor: 'border-secondary',
+        ...(!isFirst && {borderBlockStartWidth: '025'}),
+        ...(!section.title && {
+          paddingBlockStart: '150',
+        }),
+      }}
     >
       {sectionMarkup}
     </Box>
