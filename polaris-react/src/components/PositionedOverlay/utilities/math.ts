@@ -170,11 +170,11 @@ export function calculateHorizontalPosition(
       activatorRect.left - overlayRect.width + containerRect.left;
 
     if (preferredHorizontalPosition === 'right') {
-      return mostSpaceOnRight
+      return enoughSpaceFromRightScroll
         ? {position: positionIfRight, width: widthIfRight}
         : {position: positionIfLeft, width: widthIfLeft};
     } else {
-      return mostSpaceOnLeft
+      return enoughSpaceFromLeftScroll
         ? {position: positionIfLeft, width: widthIfLeft}
         : {
             position: positionIfRight,
