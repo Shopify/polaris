@@ -96,25 +96,18 @@
 
 .styledScrollbar {
   @supports #{'selector(::-webkit-scrollbar)'} {
-    scrollbar-color: lightgray transparent;
+    scrollbar-color: var(--p-color-bg-fill-transparent-secondary-hover)
+      transparent;
 
     &::-webkit-scrollbar {
+      /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- apply custom scrollbar width */
       width: var(--pc-navigation-scrollbar-width, 8px);
-      height: var(--pc-navigation-scrollbar-width, 8px);
-    }
-
-    &::-webkit-scrollbar-thumb,
-    &::-webkit-scrollbar-track,
-    &::-webkit-scrollbar-corner {
-      background: none;
     }
 
     &:hover {
-      scrollbar-color: lightgray transparent;
-
       &::-webkit-scrollbar-thumb {
-        background: lightgray;
-        border: 2px solid transparent;
+        background: var(--p-color-bg-fill-transparent-secondary-hover);
+        // border: 1px solid transparent;
         border-radius: var(--p-border-radius-300);
         background-clip: content-box;
       }
