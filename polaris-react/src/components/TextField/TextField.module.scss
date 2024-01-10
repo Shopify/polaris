@@ -231,6 +231,15 @@ $spinner-icon-size: 12px;
   }
 }
 
+.Prefix + .InputAndSuffixWrapper {
+  // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity -- necessary to remove padding when autosizing and with prefix
+  .AutoSizeWrapper::after,
+  input,
+  textarea {
+    padding-left: 0;
+  }
+}
+
 .AutoSizeWrapperWithSuffix {
   &::after,
   input,
