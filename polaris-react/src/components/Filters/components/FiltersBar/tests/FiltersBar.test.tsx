@@ -397,9 +397,20 @@ describe('<FiltersBar />', () => {
       ...filter,
       pinned: true,
     }));
-
+    const appliedFilters = [
+      {
+        ...defaultProps.filters[2],
+        label: 'Bux',
+        value: ['Bux'],
+        onRemove: jest.fn(),
+      },
+    ];
     const wrapper = mountWithApp(
-      <FiltersBar {...defaultProps} filters={filters} />,
+      <FiltersBar
+        {...defaultProps}
+        filters={filters}
+        appliedFilters={appliedFilters}
+      />,
     );
 
     const clearAll = wrapper.find(Button, {

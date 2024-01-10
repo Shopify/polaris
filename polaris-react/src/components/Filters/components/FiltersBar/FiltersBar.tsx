@@ -238,26 +238,25 @@ export function FiltersBar({
     </div>
   ) : null;
 
-  const clearAllMarkup =
-    appliedFilters?.length || localPinnedFilters.length ? (
-      <div
-        className={classNames(
-          styles.ClearAll,
-          hasOneOrMorePinnedFilters &&
-            shouldShowAddButton &&
-            styles.MultiplePinnedFilterClearAll,
-        )}
+  const clearAllMarkup = appliedFilters?.length ? (
+    <div
+      className={classNames(
+        styles.ClearAll,
+        hasOneOrMorePinnedFilters &&
+          shouldShowAddButton &&
+          styles.MultiplePinnedFilterClearAll,
+      )}
+    >
+      <Button
+        size="micro"
+        onClick={handleClearAllFilters}
+        removeUnderline
+        variant="monochromePlain"
       >
-        <Button
-          size="micro"
-          onClick={handleClearAllFilters}
-          removeUnderline
-          variant="monochromePlain"
-        >
-          {i18n.translate('Polaris.Filters.clearFilters')}
-        </Button>
-      </div>
-    ) : null;
+        {i18n.translate('Polaris.Filters.clearFilters')}
+      </Button>
+    </div>
+  ) : null;
 
   return (
     <div
