@@ -35,8 +35,17 @@
     }
 
     &::before {
-      // stylelint-disable-next-line -- alignment for left tab style https://github.com/Shopify/polaris/pull/3619
-      @include list-selected-indicator;
+      // alignment for left tab style https://github.com/Shopify/polaris/pull/3619
+      content: '';
+      background-color: var(--p-color-bg-fill-brand);
+      position: absolute;
+      top: 0;
+      left: calc(-1 * var(--p-space-200));
+      height: 100%;
+      display: block;
+      width: var(--p-border-width-050);
+      border-top-right-radius: var(--p-border-radius-100);
+      border-bottom-right-radius: var(--p-border-radius-100);
     }
   }
 

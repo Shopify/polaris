@@ -15,6 +15,7 @@ import {Box} from '../../../Box';
 import {Tooltip} from '../../../Tooltip';
 import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 import {useTheme} from '../../../../utilities/use-theme';
+import {unstyledButton, focusRing} from '../../../../styles/common';
 
 export type ItemProps = ActionListItemDescriptor;
 
@@ -54,6 +55,8 @@ export function Item({
   const indentedItemWidth = `calc(100% - ${indentedItemMargin})`;
 
   const itemStyleProps: ResponsiveStylePropsWithModifiers = {
+    ...unstyledButton,
+    ...focusRing({size: 'wide'}),
     display: 'flex',
     alignItems: 'center',
     width: '100%',
