@@ -403,7 +403,7 @@ export function WithDynamicActivator() {
       activeHoverCard.order;
 
     hoverCardContent = (
-      <Box padding="400" width="388px">
+      <Box padding="400" maxWidth="416px">
         <BlockStack gap="200">
           <InlineStack>{fulfillmentStatus}</InlineStack>
           <Box
@@ -615,11 +615,10 @@ export function WithDynamicActivator() {
     <Card padding="0">
       <HoverCard
         snapToParent
-        active
         hoverDelay={100}
         activator={activatorElement}
         activatorWrapper="div"
-        preferredPosition={activeHoverCard.order ? 'left' : 'right'}
+        preferredPosition="right"
         content={hoverCardContent}
       />
       <IndexTable

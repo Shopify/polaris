@@ -22,6 +22,7 @@ interface OverlayDetails {
   left?: number;
   right?: number;
   desiredHeight: number;
+  desiredWidth?: number;
   positioning: Positioning;
   measuring: boolean;
   activatorRect: Rect;
@@ -181,6 +182,7 @@ export class PositionedOverlay extends PureComponent<
       right,
       positioning,
       height,
+      width,
       activatorRect,
       chevronOffset,
     } = this.state;
@@ -190,6 +192,7 @@ export class PositionedOverlay extends PureComponent<
       left,
       right,
       desiredHeight: height,
+      desiredWidth: width ?? undefined,
       positioning,
       activatorRect,
       chevronOffset,
