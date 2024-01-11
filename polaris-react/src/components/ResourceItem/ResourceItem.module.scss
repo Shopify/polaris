@@ -121,7 +121,7 @@
 
 .ListItem {
   // stylelint-disable-next-line -- include focus-ring mixin to prevent jump in content for first focused element
-  @include focus-ring($border-width: -1px);
+  @include focus-ring('base', -1px);
 
   .ListItem + & {
     border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
