@@ -1,5 +1,17 @@
 # Changelog
 
+## 12.8.0
+
+### Minor Changes
+
+- [#11430](https://github.com/Shopify/polaris/pull/11430) [`567048b59`](https://github.com/Shopify/polaris/commit/567048b596ae2bdae62978b0a6ab894c7ebd4a55) Thanks [@matallo](https://github.com/matallo)! - - Fixed prefix, prefix icon, and suffix icon for `TextField` component with `magic` tone
+
+* [#11354](https://github.com/Shopify/polaris/pull/11354) [`eab40d54c`](https://github.com/Shopify/polaris/commit/eab40d54cf273aa62e8a5bead64390d7e5d58a01) Thanks [@yurm04](https://github.com/yurm04)! - Fixed `Modal` footer position
+
+### Patch Changes
+
+- [#11429](https://github.com/Shopify/polaris/pull/11429) [`b1ecec131`](https://github.com/Shopify/polaris/commit/b1ecec131f7fc4a82f80b569cd228c8120815ab0) Thanks [@sophschneider](https://github.com/sophschneider)! - Bumped `Button` icon fill specificity to always be greater than `Icon` fill
+
 ## 12.7.0
 
 ### Minor Changes

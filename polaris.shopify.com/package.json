@@ -1,6 +1,6 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.61.5",
+  "version": "0.61.6",
   "private": true,
   "engines": {
     "node": "^16.17.0 || >=18.12.0"
@@ -28,7 +28,7 @@
     "@headlessui/react": "^1.6.5",
     "@juggle/resize-observer": "^3.4.0",
     "@radix-ui/react-polymorphic": "^0.0.14",
-    "@shopify/polaris": "^12.7.0",
+    "@shopify/polaris": "^12.8.0",
     "@shopify/polaris-icons": "^7.13.0",
     "@shopify/polaris-tokens": "^8.5.0",
     "@types/react-syntax-highlighter": "^15.5.6",
