@@ -43,14 +43,15 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 
-  svg {
-    fill: var(--pc-button-icon-fill);
-  }
-
   @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-300);
     line-height: var(--p-font-line-height-400);
   }
+}
+
+// Bump specificity to override Icon svg fill
+.Button.Button svg {
+  fill: var(--pc-button-icon-fill);
 }
 
 .Button:hover {
