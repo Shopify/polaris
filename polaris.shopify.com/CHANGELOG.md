@@ -1,5 +1,27 @@
 # polaris.shopify.com
 
+## 0.61.5
+
+### Patch Changes
+
+- [#11402](https://github.com/Shopify/polaris/pull/11402) [`8fc829d39`](https://github.com/Shopify/polaris/commit/8fc829d39e28638a153619b744fa71960343cb49) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed html output for examples that have portals
+
+* [#11385](https://github.com/Shopify/polaris/pull/11385) [`7bfb9bd48`](https://github.com/Shopify/polaris/commit/7bfb9bd481db9fab41b03e8b1a42ed14ccad4f68) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed props table feedback link, added footer link to create component issues
+
+* Updated dependencies [[`9c57cc1c2`](https://github.com/Shopify/polaris/commit/9c57cc1c2b48ad7cc362b45dfedc23feca865a0a), [`7202e1605`](https://github.com/Shopify/polaris/commit/7202e1605d353e38b2849ffbd73aa5669e3c0557), [`2bcc7bda5`](https://github.com/Shopify/polaris/commit/2bcc7bda594c4339f140d829b0e46a1daf3d33e5), [`c356dd5e5`](https://github.com/Shopify/polaris/commit/c356dd5e57e4e59f34ca1a151b85dabdb4ce6165), [`bf9539536`](https://github.com/Shopify/polaris/commit/bf953953673a7b079e2695f25fb2c4864894c2c8), [`ea8e5510e`](https://github.com/Shopify/polaris/commit/ea8e5510e10af167c2bca38b75caacb6f448361c), [`3a0228815`](https://github.com/Shopify/polaris/commit/3a02288151800ab5a3d82b439a0bf579fb3db1dc), [`b62cf7356`](https://github.com/Shopify/polaris/commit/b62cf7356caa74c162b500dd16d0871081adfef7), [`a1c141669`](https://github.com/Shopify/polaris/commit/a1c14166974d63e8aa89889172ca45228b75b906), [`97c3979ba`](https://github.com/Shopify/polaris/commit/97c3979ba4648b621774c29eb2463d9050dab599), [`ba1c813c2`](https://github.com/Shopify/polaris/commit/ba1c813c2166ae23ae5d67cae57389aac9464868), [`befded29d`](https://github.com/Shopify/polaris/commit/befded29dcdf7509a60d33e2bbbf2ec8b05db515), [`9484d55ca`](https://github.com/Shopify/polaris/commit/9484d55ca7a5b99f0cbb02676fd0f28fe92fc3f5), [`f631b229f`](https://github.com/Shopify/polaris/commit/f631b229fbb455a1586ea59584085be0f131ea71), [`5604728ee`](https://github.com/Shopify/polaris/commit/5604728ee1a117f29e0450b354ea46f44506c74f), [`7d056dea2`](https://github.com/Shopify/polaris/commit/7d056dea2fa2f5806fe0839aa4abb8f5ec53a01e), [`9f7e5b682`](https://github.com/Shopify/polaris/commit/9f7e5b682f93a3f241e7162eef35dd42b25f7afa)]:
+  - @shopify/polaris@12.7.0
+  - @shopify/polaris-tokens@8.5.0
+
+## 0.61.4
+
+### Patch Changes
+
+- [#11269](https://github.com/Shopify/polaris/pull/11269) [`bc4272a2e`](https://github.com/Shopify/polaris/commit/bc4272a2e3b6d54065d8cad1364ad8612ced0a5d) Thanks [@m4thieulavoie](https://github.com/m4thieulavoie)! - Added an optional `hidden` property to the `Filters` `FilterInterface` type to support `filters` that are only set programmatically
+
+- Updated dependencies [[`3213735a0`](https://github.com/Shopify/polaris/commit/3213735a06d67e93e9933fe44011e52297a5cee4), [`0a2f1659d`](https://github.com/Shopify/polaris/commit/0a2f1659d1141dba5cb93f6d64aeceab89155cfb), [`e197ca5f6`](https://github.com/Shopify/polaris/commit/e197ca5f6d518f5f099ca55161951f4ae4591232), [`bc4272a2e`](https://github.com/Shopify/polaris/commit/bc4272a2e3b6d54065d8cad1364ad8612ced0a5d)]:
+  - @shopify/polaris@12.6.0
+  - @shopify/polaris-icons@7.13.0
+
 ## 0.61.3
 
 ### Patch Changes

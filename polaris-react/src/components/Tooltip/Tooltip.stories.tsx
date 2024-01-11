@@ -554,3 +554,15 @@ export function ActiveStates() {
     </Box>
   );
 }
+
+export function OneCharacter() {
+  return (
+    <Box paddingBlockStart="2400">
+      <Tooltip active content="j">
+        <Text variant="bodyLg" fontWeight="bold" as="span">
+          Order #1001
+        </Text>
+      </Tooltip>
+    </Box>
+  );
+}

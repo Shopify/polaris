@@ -67,11 +67,16 @@ const ComponentExamples = ({examples, componentTitle}: Props) => {
       const exampleIframeDOM = exampleIframe?.contentDocument;
       const exampleWrapper =
         exampleIframeDOM?.getElementById('polaris-example');
+      const portalsContainer = exampleIframeDOM?.getElementById(
+        'PolarisPortalsContainer',
+      );
 
       if (exampleWrapper) {
         const newHeight = iframePadding + exampleWrapper.offsetHeight;
         setIframeHeight(newHeight);
-        setHTMLCode(formatHTML(exampleWrapper.innerHTML));
+        setHTMLCode(
+          formatHTML(exampleWrapper.innerHTML + portalsContainer?.innerHTML),
+        );
         clearInterval(waitForExampleContentToRender);
       }
 

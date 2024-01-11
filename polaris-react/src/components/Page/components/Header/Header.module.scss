@@ -18,7 +18,7 @@ $action-menu-rollup-computed-width: 40px;
 
   a,
   button {
-    background-color: transparent;
+    background: transparent;
     border-radius: var(--p-border-radius-200);
     box-shadow: none;
 
@@ -28,11 +28,11 @@ $action-menu-rollup-computed-width: 40px;
     }
 
     &:is(:hover, :focus-visible) {
-      background-color: var(--p-color-bg-fill-tertiary-hover);
+      background: var(--p-color-bg-fill-tertiary-hover);
     }
 
     &:focus {
-      background-color: var(--p-color-bg-fill-tertiary-active);
+      background: var(--p-color-bg-fill-tertiary-active);
       /* stylelint-disable-next-line declaration-no-important -- override box shadow */
       box-shadow: var(--p-shadow-inset-200) !important;
     }

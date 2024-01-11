@@ -313,9 +313,14 @@ export function TextField({
 
   const inputType = type === 'currency' ? 'text' : type;
   const isNumericType = type === 'number' || type === 'integer';
+  const iconPrefix = React.isValidElement(prefix) && prefix.type === Icon;
 
   const prefixMarkup = prefix ? (
-    <div className={styles.Prefix} id={`${id}-Prefix`} ref={prefixRef}>
+    <div
+      className={classNames(styles.Prefix, iconPrefix && styles.PrefixIcon)}
+      id={`${id}-Prefix`}
+      ref={prefixRef}
+    >
       {prefix}
     </div>
   ) : null;

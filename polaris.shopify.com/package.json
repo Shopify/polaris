@@ -1,17 +1,17 @@
 {
   "name": "polaris.shopify.com",
-  "version": "0.61.3",
+  "version": "0.61.5",
   "private": true,
   "engines": {
     "node": "^16.17.0 || >=18.12.0"
   },
   "scripts": {
-    "build": "yarn gen-colors && yarn gen-assets && playroom build && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
+    "build": "yarn concurrently \"yarn gen-colors\" \"yarn gen-assets\" \"playroom build\" && next build && cp -r public ./.next/standalone/polaris.shopify.com/ && mkdirp ./.next/standalone/polaris.shopify.com/.next && cp -r .next/static ./.next/standalone/polaris.shopify.com/.next/",
     "start": "cd ./.next/standalone/polaris.shopify.com && node ./server.js",
     "dev": "yarn gen-colors && yarn get-props && run-p dev:*",
-    "dev:server": "open http://localhost:3000 && next dev",
+    "dev:server": "open http://localhost:${POLARIS_WEBSITE_PORT:=3000} && next dev -p 3000",
     "dev:playroom": "rm -rf ./public/playroom && playroom start",
-    "dev:watch-md": "node scripts/watch-md.mjs",
+    "dev:watch-md": "ts-node scripts/watch-md.ts",
     "lint": "run-p lint:*",
     "lint:js": "TIMING=1 eslint --cache .",
     "lint:styles": "stylelint '**/*.{css,scss}'",
@@ -20,7 +20,7 @@
     "create-component": "generact --root src/components src/components/Template/Template.tsx",
     "gen-sitemap": "yarn next-sitemap",
     "get-props": "./scripts/get-props/src/get-props.ts",
-    "gen-assets": "yarn get-props && node scripts/gen-cache-json.mjs && ts-node scripts/gen-site-map.ts && ts-node scripts/gen-og-images.tsx",
+    "gen-assets": "yarn get-props && ts-node ./scripts/gen-assets.ts",
     "gen-colors": "ts-node ./scripts/gen-colors.ts"
   },
   "dependencies": {
@@ -28,9 +28,9 @@
     "@headlessui/react": "^1.6.5",
     "@juggle/resize-observer": "^3.4.0",
     "@radix-ui/react-polymorphic": "^0.0.14",
-    "@shopify/polaris": "^12.5.0",
-    "@shopify/polaris-icons": "^7.12.0",
-    "@shopify/polaris-tokens": "^8.4.0",
+    "@shopify/polaris": "^12.7.0",
+    "@shopify/polaris-icons": "^7.13.0",
+    "@shopify/polaris-tokens": "^8.5.0",
     "@types/react-syntax-highlighter": "^15.5.6",
     "base-64": "^1.0.0",
     "codesandbox": "^2.2.3",
@@ -78,6 +78,7 @@
     "babel-plugin-preval": "^5.1.0",
     "chalk": "^5.2.0",
     "chokidar": "^3.5.3",
+    "concurrently": "^8.2.2",
     "eslint": "8.10.0",
     "eslint-config-next": "^13.0.0",
     "execa": "^6.1.0",

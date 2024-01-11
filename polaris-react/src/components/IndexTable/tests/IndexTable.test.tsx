@@ -363,10 +363,11 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('table', {
         className: 'Table Table-sticky Table-sticky-last',
       });
-      expect(index).toContainReactComponent('th', {
-        children: title,
+      const lastHeading = index.find('th', {
         className: 'TableHeading TableHeading-last',
       });
+      expect(lastHeading).not.toBeNull();
+      expect(lastHeading).toContainReactText(title);
     });
 
     it('does not render a sticky last heading if `lastColumnSticky` prop is true and last heading is hidden', () => {
