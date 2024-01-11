@@ -77,10 +77,6 @@
 .pressed.pressed:focus-visible svg {
   fill: var(--pc-button-icon-fill_pressed);
 }
-
-.Spinner.Spinner svg {
-  fill: var(--pc-button-icon-fill_disabled);
-}
 // stylelint-enable selector-max-specificity
 
 .Button:hover {
@@ -379,9 +375,14 @@
 // SPINNER
 .Spinner {
   position: absolute;
-  top: calc(var(--pc-button-padding-block) / 2 + 50%);
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  svg {
+    fill: var(--pc-button-icon-fill_disabled);
+    vertical-align: middle;
+  }
 }
 
 // BUTTON GROUP
