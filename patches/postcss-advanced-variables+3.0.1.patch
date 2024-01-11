@@ -1,0 +1,1616 @@
+diff --git a/node_modules/postcss-advanced-variables/index.js b/node_modules/postcss-advanced-variables/index.js
+index d92a59a..49baba7 100644
+--- a/node_modules/postcss-advanced-variables/index.js
++++ b/node_modules/postcss-advanced-variables/index.js
+@@ -11,27 +11,25 @@ var resolve = _interopDefault(require('@csstools/sass-import-resolve'));
+ function getClosestVariable(name, node, opts) {
+   const variables = getVariables(node);
+   let variable = variables[name];
+-
+   if (requiresAncestorVariable(variable, node)) {
+     variable = getClosestVariable(name, node.parent, opts);
+   }
+-
+   if (requiresFnVariable(variable, opts)) {
+     variable = getFnVariable(name, node, opts.variables);
+   }
+-
+   return variable;
+-} // return the variables object of a node
+-
+-const getVariables = node => Object(Object(node).variables); // return whether the variable should be replaced using an ancestor variable
+-
+-
+-const requiresAncestorVariable = (variable, node) => undefined === variable && node && node.parent; // return whether variable should be replaced using a variables function
++}
+ 
++// return the variables object of a node
++const getVariables = node => Object(Object(node).variables);
+ 
+-const requiresFnVariable = (value, opts) => value === undefined && Object(opts).variables === Object(Object(opts).variables); // return whether variable should be replaced using a variables function
++// return whether the variable should be replaced using an ancestor variable
++const requiresAncestorVariable = (variable, node) => undefined === variable && node && node.parent;
+ 
++// return whether variable should be replaced using a variables function
++const requiresFnVariable = (value, opts) => value === undefined && Object(opts).variables === Object(Object(opts).variables);
+ 
++// return whether variable should be replaced using a variables function
+ const getFnVariable = (name, node, variables) => 'function' === typeof variables ? variables(name, node) : variables[name];
+ 
+ function manageUnresolved(node, opts, word, message) {
+@@ -48,132 +46,154 @@ function manageUnresolved(node, opts, word, message) {
+ 
+ // tooling
+ 
++// return content with its variables replaced by the corresponding values of a node
+ function getReplacedString(string, node, opts) {
+   const replacedString = string.replace(matchVariables, (match, before, name1, name2, name3) => {
+     // conditionally return an (unescaped) match
+     if (before === '\\') {
+       return match.slice(1);
+-    } // the first matching variable name
+-
++    }
+ 
+-    const name = name1 || name2 || name3; // the closest variable value
++    // the first matching variable name
++    const name = name1 || name2 || name3;
+ 
+-    const value = getClosestVariable(name, node.parent, opts); // if a variable has not been resolved
++    // the closest variable value
++    const value = getClosestVariable(name, node.parent, opts);
+ 
++    // if a variable has not been resolved
+     if (undefined === value) {
+       manageUnresolved(node, opts, name, `Could not resolve the variable "$${name}" within "${string}"`);
+       return match;
+-    } // the stringified value
+-
++    }
+ 
++    // the stringified value
+     const stringifiedValue = `${before}${stringify(value)}`;
+     return stringifiedValue;
+   });
+   return replacedString;
+-} // match all $name, $(name), and #{$name} variables (and catch the character before it)
++}
+ 
+-const matchVariables = /(.?)(?:\$([A-z][\w-]*)|\$\(([A-z][\w-]*)\)|#\{\$([A-z][\w-]*)\})/g; // return a sass stringified variable
++// match all $name, $(name), and #{$name} variables (and catch the character before it)
++const matchVariables = /(.?)(?:\$([A-z][\w-]*)|\$\(([A-z][\w-]*)\)|#\{\$([A-z][\w-]*)\})/g;
+ 
++// return a sass stringified variable
+ const stringify = object => Array.isArray(object) ? `(${object.map(stringify).join(',')})` : Object(object) === object ? `(${Object.keys(object).map(key => `${key}:${stringify(object[key])}`).join(',')})` : String(object);
+ 
+ // tooling
+ 
++// set a variable on a node
+ function setVariable(node, name, value, opts) {
+   // if the value is not a default with a value already defined
+   if (!matchDefault.test(value) || getClosestVariable(name, node, opts) === undefined) {
+     // the value without a default suffix
+-    const undefaultedValue = matchDefault.test(value) ? value.replace(matchDefault, '') : value; // ensure the node has a variables object
++    const undefaultedValue = matchDefault.test(value) ? value.replace(matchDefault, '') : value;
+ 
+-    node.variables = node.variables || {}; // set the variable
++    // ensure the node has a variables object
++    node.variables = node.variables || {};
+ 
++    // set the variable
+     node.variables[name] = undefaultedValue;
+   }
+-} // match anything ending with a valid !default
++}
+ 
++// match anything ending with a valid !default
+ const matchDefault = /\s+!default$/;
+ 
+ // tooling
+ 
++// transform declarations
+ function transformDecl(decl, opts) {
+   // update the declaration value with its variables replaced by their corresponding values
+-  decl.value = getReplacedString(decl.value, decl, opts); // if the declaration is a variable declaration
++  decl.value = getReplacedString(decl.value, decl, opts);
+ 
++  // if the declaration is a variable declaration
+   if (isVariableDeclaration(decl)) {
+     // set the variable on the parent of the declaration
+-    setVariable(decl.parent, decl.prop.slice(1), decl.value, opts); // remove the declaration
++    setVariable(decl.parent, decl.prop.slice(1), decl.value, opts);
+ 
++    // remove the declaration
+     decl.remove();
++  } else {
++    decl.prop = getReplacedString(decl.prop, decl, opts);
+   }
+-} // return whether the declaration property is a variable declaration
+-
+-const isVariableDeclaration = decl => matchVariable.test(decl.prop); // match a variable ($any-name)
++}
+ 
++// return whether the declaration property is a variable declaration
++const isVariableDeclaration = decl => matchVariable.test(decl.prop);
+ 
++// match a variable ($any-name)
+ const matchVariable = /^\$[\w-]+$/;
+ 
+ // tooling
+ 
++// transform generic at-rules
+ function transformAtrule(rule, opts) {
+   // update the at-rule params with its variables replaced by their corresponding values
+   rule.params = getReplacedString(rule.params, rule, opts);
+ }
+ 
++function _iterableToArrayLimit(r, l) {
++  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
++  if (null != t) {
++    var e,
++      n,
++      i,
++      u,
++      a = [],
++      f = !0,
++      o = !1;
++    try {
++      if (i = (t = t.call(r)).next, 0 === l) {
++        if (Object(t) !== t) return;
++        f = !1;
++      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
++    } catch (r) {
++      o = !0, n = r;
++    } finally {
++      try {
++        if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
++      } finally {
++        if (o) throw n;
++      }
++    }
++    return a;
++  }
++}
+ function _slicedToArray(arr, i) {
+-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
++  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+ }
+-
+ function _toArray(arr) {
+-  return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
++  return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest();
+ }
+-
+ function _arrayWithHoles(arr) {
+   if (Array.isArray(arr)) return arr;
+ }
+-
+ function _iterableToArray(iter) {
+-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
++  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+ }
+-
+-function _iterableToArrayLimit(arr, i) {
+-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+-    return;
+-  }
+-
+-  var _arr = [];
+-  var _n = true;
+-  var _d = false;
+-  var _e = undefined;
+-
+-  try {
+-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+-      _arr.push(_s.value);
+-
+-      if (i && _arr.length === i) break;
+-    }
+-  } catch (err) {
+-    _d = true;
+-    _e = err;
+-  } finally {
+-    try {
+-      if (!_n && _i["return"] != null) _i["return"]();
+-    } finally {
+-      if (_d) throw _e;
+-    }
+-  }
+-
+-  return _arr;
++function _unsupportedIterableToArray(o, minLen) {
++  if (!o) return;
++  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
++  var n = Object.prototype.toString.call(o).slice(8, -1);
++  if (n === "Object" && o.constructor) n = o.constructor.name;
++  if (n === "Map" || n === "Set") return Array.from(o);
++  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
++}
++function _arrayLikeToArray(arr, len) {
++  if (len == null || len > arr.length) len = arr.length;
++  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
++  return arr2;
+ }
+-
+ function _nonIterableRest() {
+-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
++  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+ }
+ 
++// return sass-like arrays as literal arrays ('(hello), (goodbye)' to [[hello], [goodbye]])
+ function getValueAsObject(value) {
+   const hasWrappingParens = matchWrappingParens.test(value);
+   const unwrappedValue = String(hasWrappingParens ? value.replace(matchWrappingParens, '$1') : value).replace(matchTrailingComma, '');
+   const separatedValue = postcss.list.comma(unwrappedValue);
+   const firstValue = separatedValue[0];
+-
+   if (firstValue === value) {
+     return value;
+   } else {
+@@ -181,11 +201,10 @@ function getValueAsObject(value) {
+     const arrayValue = [];
+     separatedValue.forEach((subvalue, index) => {
+       const _ref = subvalue.match(matchDeclaration) || [],
+-            _ref2 = _slicedToArray(_ref, 3),
+-            match = _ref2[0],
+-            key = _ref2[1],
+-            keyvalue = _ref2[2];
+-
++        _ref2 = _slicedToArray(_ref, 3),
++        match = _ref2[0],
++        key = _ref2[1],
++        keyvalue = _ref2[2];
+       if (match) {
+         objectValue[key] = getValueAsObject(keyvalue);
+       } else {
+@@ -195,38 +214,42 @@ function getValueAsObject(value) {
+     const transformedValue = Object.keys(objectValue).length > 0 ? Object.assign(objectValue, arrayValue) : arrayValue;
+     return transformedValue;
+   }
+-} // match wrapping parentheses ((), (anything), (anything (anything)))
++}
+ 
+-const matchWrappingParens = /^\(([\W\w]*)\)$/g; // match a property name (any-possible_name)
++// match wrapping parentheses ((), (anything), (anything (anything)))
++const matchWrappingParens = /^\(([\W\w]*)\)$/g;
+ 
+-const matchDeclaration = /^([\w-]+)\s*:\s*([\W\w]+)\s*$/; // match a trailing comma
++// match a property name (any-possible_name)
++const matchDeclaration = /^([\w-]+)\s*:\s*([\W\w]+)\s*$/;
+ 
++// match a trailing comma
+ const matchTrailingComma = /\s*,\s*$/;
+ 
+ var waterfall = ((items, asyncFunction) => items.reduce((lastPromise, item) => lastPromise.then(() => asyncFunction(item)), Promise.resolve()));
+ 
+ // tooling
+ 
++// transform @each at-rules
+ function transformEachAtrule(rule, opts) {
+   // if @each is supported
+   if (opts.transform.indexOf('@each') !== -1) {
+     // @each options
+     const _getEachOpts = getEachOpts(rule, opts),
+-          varname = _getEachOpts.varname,
+-          incname = _getEachOpts.incname,
+-          list = _getEachOpts.list;
+-
++      varname = _getEachOpts.varname,
++      incname = _getEachOpts.incname,
++      list = _getEachOpts.list;
+     const replacements = [];
+     const ruleClones = [];
+     Object.keys(list).forEach(key => {
+       // set the current variable
+-      setVariable(rule, varname, list[key], opts); // conditionally set the incremenator variable
++      setVariable(rule, varname, list[key], opts);
+ 
++      // conditionally set the incremenator variable
+       if (incname) {
+         setVariable(rule, incname, key, opts);
+-      } // clone the @each at-rule
+-
++      }
+ 
++      // clone the @each at-rule
+       const clone = rule.clone({
+         parent: rule.parent,
+         variables: Object.assign({}, rule.variables)
+@@ -241,8 +264,9 @@ function transformEachAtrule(rule, opts) {
+       rule.remove();
+     });
+   }
+-} // return the @each statement options (@each NAME in LIST, @each NAME ITERATOR in LIST)
++}
+ 
++// return the @each statement options (@each NAME in LIST, @each NAME ITERATOR in LIST)
+ const getEachOpts = (node, opts) => {
+   const params = node.params.split(matchInOperator);
+   const args = (params[0] || '').trim().split(' ');
+@@ -255,66 +279,67 @@ const getEachOpts = (node, opts) => {
+     incname,
+     list
+   };
+-}; // match the opertor separating the name and iterator from the list
+-
++};
+ 
++// match the opertor separating the name and iterator from the list
+ const matchInOperator = ' in ';
+ 
+ // tooling
+ 
++// transform @if at-rules
+ function transformIfAtrule(rule, opts) {
+   // @if options
+   const isTruthy = isIfTruthy(rule, opts);
+   const next = rule.next();
+-
+   const transformAndInsertBeforeParent = node => transformNode(node, opts).then(() => node.parent.insertBefore(node, node.nodes));
+-
+   return ifPromise(opts.transform.indexOf('@if') !== -1, () => ifPromise(isTruthy, () => transformAndInsertBeforeParent(rule)).then(() => {
+     rule.remove();
+   })).then(() => ifPromise(opts.transform.indexOf('@else') !== -1 && isElseRule(next), () => ifPromise(!isTruthy, () => transformAndInsertBeforeParent(next)).then(() => {
+     next.remove();
+   })));
+ }
++const ifPromise = (condition, trueFunction) => Promise.resolve(condition && trueFunction());
+ 
+-const ifPromise = (condition, trueFunction) => Promise.resolve(condition && trueFunction()); // return whether the @if at-rule is truthy
+-
+-
++// return whether the @if at-rule is truthy
+ const isIfTruthy = (node, opts) => {
+   // @if statement options (@if EXPRESSION, @if LEFT OPERATOR RIGHT)
+   const params = postcss.list.space(node.params);
+   const left = getInterprettedString(getReplacedString(params[0] || '', node, opts));
+   const operator = params[1];
+-  const right = getInterprettedString(getReplacedString(params[2] || '', node, opts)); // evaluate the expression
++  const right = getInterprettedString(getReplacedString(params[2] || '', node, opts));
+ 
++  // evaluate the expression
+   const isTruthy = !operator && left || operator === '==' && left === right || operator === '!=' && left !== right || operator === '<' && left < right || operator === '<=' && left <= right || operator === '>' && left > right || operator === '>=' && left >= right;
+   return isTruthy;
+-}; // return the value as a boolean, number, or string
+-
+-
+-const getInterprettedString = value => 'true' === value ? true : 'false' === value ? false : isNaN(value) ? value : Number(value); // return whether the node is an else at-rule
++};
+ 
++// return the value as a boolean, number, or string
++const getInterprettedString = value => 'true' === value ? true : 'false' === value ? false : isNaN(value) ? value : Number(value);
+ 
++// return whether the node is an else at-rule
+ const isElseRule = node => Object(node) === node && 'atrule' === node.type && 'else' === node.name;
+ 
++// transform @import at-rules
+ function transformImportAtrule(rule, opts) {
+   // if @import is supported
+   if (opts.transform.indexOf('@import') !== -1) {
+     // @import options
+     const _getImportOpts = getImportOpts(rule, opts),
+-          id = _getImportOpts.id,
+-          media = _getImportOpts.media,
+-          cwf = _getImportOpts.cwf,
+-          cwd = _getImportOpts.cwd; // PostCSS options
+-
++      id = _getImportOpts.id,
++      media = _getImportOpts.media,
++      cwf = _getImportOpts.cwf,
++      cwd = _getImportOpts.cwd;
+ 
++    // PostCSS options
+     const options = opts.result.opts;
+     const parser = options.parser || options.syntax && options.syntax.parse || null;
+-
+     if (opts.importFilter instanceof Function && opts.importFilter(id, media) || opts.importFilter instanceof RegExp && opts.importFilter.test(id)) {
+-      const cwds = [cwd].concat(opts.importPaths); // promise the resolved file and its contents using the file resolver
++      const cwds = [cwd].concat(opts.importPaths);
+ 
++      // promise the resolved file and its contents using the file resolver
+       const importPromise = cwds.reduce((promise, thiscwd) => promise.catch(() => opts.importResolve(id, thiscwd, opts)), Promise.reject());
+-      return importPromise.then( // promise the processed file
++      return importPromise.then(
++      // promise the processed file
+       ({
+         file,
+         contents
+@@ -329,27 +354,31 @@ function transformImportAtrule(rule, opts) {
+           type: 'dependency',
+           file: file,
+           parent: cwf
+-        }); // imported nodes
++        });
+ 
+-        const nodes = root.nodes.slice(0); // if media params were detected
++        // imported nodes
++        const nodes = root.nodes.slice(0);
+ 
++        // if media params were detected
+         if (media) {
+           // create a new media rule
+           const mediaRule = postcss__default.atRule({
+             name: 'media',
+             params: media,
+             source: rule.source
+-          }); // append with the imported nodes
++          });
+ 
+-          mediaRule.append(nodes); // replace the @import at-rule with the @media at-rule
++          // append with the imported nodes
++          mediaRule.append(nodes);
+ 
++          // replace the @import at-rule with the @media at-rule
+           rule.replaceWith(mediaRule);
+         } else {
+           // replace the @import at-rule with the imported nodes
+           rule.replaceWith(nodes);
+-        } // transform all nodes from the import
+-
++        }
+ 
++        // transform all nodes from the import
+         return transformNode({
+           nodes
+         }, opts);
+@@ -360,17 +389,18 @@ function transformImportAtrule(rule, opts) {
+     }
+   }
+ }
+-const processor = postcss__default(); // return the @import statement options (@import ID, @import ID MEDIA)
++const processor = postcss__default();
+ 
++// return the @import statement options (@import ID, @import ID MEDIA)
+ const getImportOpts = (node, opts) => {
+   const _list$space = postcss.list.space(node.params),
+-        _list$space2 = _toArray(_list$space),
+-        rawid = _list$space2[0],
+-        medias = _list$space2.slice(1);
+-
++    _list$space2 = _toArray(_list$space),
++    rawid = _list$space2[0],
++    medias = _list$space2.slice(1);
+   const id = getReplacedString(trimWrappingURL(rawid), node, opts);
+-  const media = medias.join(' '); // current working file and directory
++  const media = medias.join(' ');
+ 
++  // current working file and directory
+   const cwf = node.source && node.source.input && node.source.input.file || opts.result.from;
+   const cwd = cwf ? path.dirname(cwf) : opts.importRoot;
+   return {
+@@ -379,38 +409,42 @@ const getImportOpts = (node, opts) => {
+     cwf,
+     cwd
+   };
+-}; // return a string with the wrapping url() and quotes trimmed
+-
+-
+-const trimWrappingURL = string => trimWrappingQuotes(string.replace(/^url\(([\W\w]*)\)$/, '$1')); // return a string with the wrapping quotes trimmed
++};
+ 
++// return a string with the wrapping url() and quotes trimmed
++const trimWrappingURL = string => trimWrappingQuotes(string.replace(/^url\(([\W\w]*)\)$/, '$1'));
+ 
++// return a string with the wrapping quotes trimmed
+ const trimWrappingQuotes = string => string.replace(/^("|')([\W\w]*)\1$/, '$2');
+ 
++// transform @include at-rules
+ function transformIncludeAtrule(rule, opts) {
+   // if @include is supported
+   if (opts.transform.indexOf('@include') !== -1) {
+     // @include options
+     const _getIncludeOpts = getIncludeOpts(rule),
+-          name = _getIncludeOpts.name,
+-          args = _getIncludeOpts.args; // the closest @mixin variable
++      name = _getIncludeOpts.name,
++      args = _getIncludeOpts.args;
+ 
++    // the closest @mixin variable
++    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts);
+ 
+-    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts); // if the @mixin variable exists
+-
++    // if the @mixin variable exists
+     if (mixin) {
+       // set @mixin variables on the @include at-rule
+       mixin.params.forEach((param, index) => {
+         const arg = index in args ? getReplacedString(args[index], rule, opts) : param.value;
+         setVariable(rule, param.name, arg, opts);
+-      }); // clone the @mixin at-rule
++      });
+ 
++      // clone the @mixin at-rule
+       const clone = mixin.rule.clone({
+         original: rule,
+         parent: rule.parent,
+         variables: rule.variables
+-      }); // transform the clone children
++      });
+ 
++      // transform the clone children
+       return transformNode(clone, opts).then(() => {
+         // replace the @include at-rule with the clone children
+         rule.parent.insertBefore(rule, clone.nodes);
+@@ -421,52 +455,53 @@ function transformIncludeAtrule(rule, opts) {
+       manageUnresolved(rule, opts, name, `Could not resolve the mixin for "${name}"`);
+     }
+   }
+-} // return the @include statement options (@include NAME, @include NAME(ARGS))
++}
+ 
++// return the @include statement options (@include NAME, @include NAME(ARGS))
+ const getIncludeOpts = node => {
+   // @include name and args
+   const _node$params$split = node.params.split(matchOpeningParen, 2),
+-        _node$params$split2 = _slicedToArray(_node$params$split, 2),
+-        name = _node$params$split2[0],
+-        sourceArgs = _node$params$split2[1];
+-
++    _node$params$split2 = _slicedToArray(_node$params$split, 2),
++    name = _node$params$split2[0],
++    sourceArgs = _node$params$split2[1];
+   const args = sourceArgs ? postcss.list.comma(sourceArgs.slice(0, -1)) : [];
+   return {
+     name,
+     args
+   };
+-}; // match an opening parenthesis
+-
++};
+ 
++// match an opening parenthesis
+ const matchOpeningParen = '(';
+ 
+ // tooling
+ 
++// transform @for at-rules
+ function transformForAtrule(rule, opts) {
+   // if @for is supported
+   if (opts.transform.indexOf('@for') !== -1) {
+     // @for options
+     const _getForOpts = getForOpts(rule, opts),
+-          varname = _getForOpts.varname,
+-          start = _getForOpts.start,
+-          end = _getForOpts.end,
+-          increment = _getForOpts.increment;
+-
++      varname = _getForOpts.varname,
++      start = _getForOpts.start,
++      end = _getForOpts.end,
++      increment = _getForOpts.increment;
+     const direction = start <= end ? 1 : -1;
+     const replacements = [];
+-    const ruleClones = []; // for each iteration
++    const ruleClones = [];
+ 
++    // for each iteration
+     for (let incrementor = start; incrementor * direction <= end * direction; incrementor += increment * direction) {
+       // set the current variable
+-      setVariable(rule, varname, incrementor, opts); // clone the @for at-rule
++      setVariable(rule, varname, incrementor, opts);
+ 
++      // clone the @for at-rule
+       const clone = rule.clone({
+         parent: rule.parent,
+         variables: Object.assign({}, rule.variables)
+       });
+       ruleClones.push(clone);
+     }
+-
+     return waterfall(ruleClones, clone => transformNode(clone, opts).then(() => {
+       replacements.push(...clone.nodes);
+     })).then(() => {
+@@ -475,8 +510,9 @@ function transformForAtrule(rule, opts) {
+       rule.remove();
+     });
+   }
+-} // return the @for statement options (@for NAME from START through END, @for NAME from START through END by INCREMENT)
++}
+ 
++// return the @for statement options (@for NAME from START through END, @for NAME from START through END by INCREMENT)
+ const getForOpts = (node, opts) => {
+   const params = postcss.list.space(node.params);
+   const varname = params[0].trim().slice(1);
+@@ -491,31 +527,33 @@ const getForOpts = (node, opts) => {
+   };
+ };
+ 
++// transform @mixin at-rules
+ function transformMixinAtrule(rule, opts) {
+   // if @mixin is supported
+   if (opts.transform.indexOf('@mixin') !== -1) {
+     // @mixin options
+     const _getMixinOpts = getMixinOpts(rule, opts),
+-          name = _getMixinOpts.name,
+-          params = _getMixinOpts.params; // set the mixin as a variable on the parent of the @mixin at-rule
+-
++      name = _getMixinOpts.name,
++      params = _getMixinOpts.params;
+ 
++    // set the mixin as a variable on the parent of the @mixin at-rule
+     setVariable(rule.parent, `@mixin ${name}`, {
+       params,
+       rule
+-    }, opts); // remove the @mixin at-rule
++    }, opts);
+ 
++    // remove the @mixin at-rule
+     rule.remove();
+   }
+-} // return the @mixin statement options (@mixin NAME, @mixin NAME(PARAMS))
++}
+ 
++// return the @mixin statement options (@mixin NAME, @mixin NAME(PARAMS))
+ const getMixinOpts = (node, opts) => {
+   // @mixin name and default params ([{ name, value }, ...])
+   const _node$params$split = node.params.split(matchOpeningParen$1, 2),
+-        _node$params$split2 = _slicedToArray(_node$params$split, 2),
+-        name = _node$params$split2[0],
+-        sourceParams = _node$params$split2[1];
+-
++    _node$params$split2 = _slicedToArray(_node$params$split, 2),
++    name = _node$params$split2[0],
++    sourceParams = _node$params$split2[1];
+   const params = sourceParams && sourceParams.slice(0, -1).trim() ? postcss.list.comma(sourceParams.slice(0, -1).trim()).map(param => {
+     const parts = postcss.list.split(param, ':');
+     const paramName = parts[0].slice(1);
+@@ -529,13 +567,14 @@ const getMixinOpts = (node, opts) => {
+     name,
+     params
+   };
+-}; // match an opening parenthesis
+-
++};
+ 
++// match an opening parenthesis
+ const matchOpeningParen$1 = '(';
+ 
+ // tooling
+ 
++// transform rule nodes
+ function transformRule(rule, opts) {
+   // update the rule selector with its variables replaced by their corresponding values
+   rule.selector = getReplacedString(rule.selector, rule, opts);
+@@ -543,19 +582,22 @@ function transformRule(rule, opts) {
+ 
+ // tooling
+ 
++// transform @content at-rules
+ function transformContentAtrule(rule, opts) {
+   // if @content is supported
+   if (opts.transform.indexOf('@content') !== -1) {
+     // the closest @mixin at-rule
+-    const mixin = getClosestMixin(rule); // if the @mixin at-rule exists
++    const mixin = getClosestMixin(rule);
+ 
++    // if the @mixin at-rule exists
+     if (mixin) {
+       // clone the @mixin at-rule
+       const clone = mixin.original.clone({
+         parent: rule.parent,
+         variables: rule.variables
+-      }); // transform the clone children
++      });
+ 
++      // transform the clone children
+       return transformNode(clone, opts).then(() => {
+         // replace the @content at-rule with the clone children
+         rule.parent.insertBefore(rule, clone.nodes);
+@@ -566,8 +608,9 @@ function transformContentAtrule(rule, opts) {
+       manageUnresolved(rule, opts, '@content', 'Could not resolve the mixin for @content');
+     }
+   }
+-} // return the closest @mixin at-rule
++}
+ 
++// return the closest @mixin at-rule
+ const getClosestMixin = node => 'atrule' === node.type && 'mixin' === node.name ? node : node.parent && getClosestMixin(node.parent);
+ 
+ // tooling
+@@ -579,14 +622,11 @@ function transformNode(node, opts) {
+     }
+   }));
+ }
+-
+ function transformRuleOrDecl(child, opts) {
+   return Promise.resolve().then(() => {
+     const type = child.type;
+-
+     if ('atrule' === type) {
+       const name = child.name.toLowerCase();
+-
+       if ('content' === name) {
+         // transform @content at-rules
+         return transformContentAtrule(child, opts);
+@@ -619,45 +659,48 @@ function transformRuleOrDecl(child, opts) {
+       return transformRule(child, opts);
+     }
+   });
+-} // return the children of a node as an array
+-
++}
+ 
++// return the children of a node as an array
+ const getNodesArray = node => Array.from(Object(node).nodes || []);
+ 
+ // tooling
++const matchProtocol = /^(?:[A-z]+:)?\/\//;
+ 
+-var index = postcss__default.plugin('postcss-advanced-variables', opts => (root, result) => {
+-  // process options
+-  const transformOpt = ['@content', '@each', '@else', '@if', '@include', '@import', '@for', '@mixin'].filter(feature => !(String(Object(opts).disable || '').split(/\s*,\s*|\s+,?\s*|\s,?\s+/).indexOf(feature) !== -1));
+-  const unresolvedOpt = String(Object(opts).unresolved || 'throw').toLowerCase();
+-  const variablesOpt = Object(opts).variables;
+-  const importCache = Object(Object(opts).importCache);
+-
+-  const importFilter = Object(opts).importFilter || (id => {
+-    return !matchProtocol.test(id);
+-  });
+-
+-  const importPaths = [].concat(Object(opts).importPaths || []);
+-
+-  const importResolve = Object(opts).importResolve || ((id, cwd) => resolve(id, {
+-    cwd,
+-    readFile: true,
+-    cache: importCache
+-  }));
+-
+-  const importRoot = Object(opts).importRoot || process.cwd();
+-  return transformNode(root, {
+-    result,
+-    importCache,
+-    importFilter,
+-    importPaths,
+-    importResolve,
+-    importRoot,
+-    transform: transformOpt,
+-    unresolved: unresolvedOpt,
+-    variables: variablesOpt
+-  });
++// plugin
++const plugin = opts => ({
++  postcssPlugin: "postcss-advanced-variables",
++  Root(root, {
++    result
++  }) {
++    // process options
++    const transformOpt = ['@content', '@each', '@else', '@if', '@include', '@import', '@for', '@mixin'].filter(feature => !(String(Object(opts).disable || '').split(/\s*,\s*|\s+,?\s*|\s,?\s+/).indexOf(feature) !== -1));
++    const unresolvedOpt = String(Object(opts).unresolved || 'throw').toLowerCase();
++    const variablesOpt = Object(opts).variables;
++    const importCache = Object(Object(opts).importCache);
++    const importFilter = Object(opts).importFilter || (id => {
++      return !matchProtocol.test(id);
++    });
++    const importPaths = [].concat(Object(opts).importPaths || []);
++    const importResolve = Object(opts).importResolve || ((id, cwd) => resolve(id, {
++      cwd,
++      readFile: true,
++      cache: importCache
++    }));
++    const importRoot = Object(opts).importRoot || process.cwd();
++    return transformNode(root, {
++      result,
++      importCache,
++      importFilter,
++      importPaths,
++      importResolve,
++      importRoot,
++      transform: transformOpt,
++      unresolved: unresolvedOpt,
++      variables: variablesOpt
++    });
++  }
+ });
+-const matchProtocol = /^(?:[A-z]+:)?\/\//;
++plugin.postcss = true;
+ 
+-module.exports = index;
++module.exports = plugin;
+diff --git a/node_modules/postcss-advanced-variables/index.mjs b/node_modules/postcss-advanced-variables/index.mjs
+index 4b2c1d4..75fce96 100644
+--- a/node_modules/postcss-advanced-variables/index.mjs
++++ b/node_modules/postcss-advanced-variables/index.mjs
+@@ -6,27 +6,25 @@ import resolve from '@csstools/sass-import-resolve';
+ function getClosestVariable(name, node, opts) {
+   const variables = getVariables(node);
+   let variable = variables[name];
+-
+   if (requiresAncestorVariable(variable, node)) {
+     variable = getClosestVariable(name, node.parent, opts);
+   }
+-
+   if (requiresFnVariable(variable, opts)) {
+     variable = getFnVariable(name, node, opts.variables);
+   }
+-
+   return variable;
+-} // return the variables object of a node
+-
+-const getVariables = node => Object(Object(node).variables); // return whether the variable should be replaced using an ancestor variable
+-
+-
+-const requiresAncestorVariable = (variable, node) => undefined === variable && node && node.parent; // return whether variable should be replaced using a variables function
++}
+ 
++// return the variables object of a node
++const getVariables = node => Object(Object(node).variables);
+ 
+-const requiresFnVariable = (value, opts) => value === undefined && Object(opts).variables === Object(Object(opts).variables); // return whether variable should be replaced using a variables function
++// return whether the variable should be replaced using an ancestor variable
++const requiresAncestorVariable = (variable, node) => undefined === variable && node && node.parent;
+ 
++// return whether variable should be replaced using a variables function
++const requiresFnVariable = (value, opts) => value === undefined && Object(opts).variables === Object(Object(opts).variables);
+ 
++// return whether variable should be replaced using a variables function
+ const getFnVariable = (name, node, variables) => 'function' === typeof variables ? variables(name, node) : variables[name];
+ 
+ function manageUnresolved(node, opts, word, message) {
+@@ -43,132 +41,154 @@ function manageUnresolved(node, opts, word, message) {
+ 
+ // tooling
+ 
++// return content with its variables replaced by the corresponding values of a node
+ function getReplacedString(string, node, opts) {
+   const replacedString = string.replace(matchVariables, (match, before, name1, name2, name3) => {
+     // conditionally return an (unescaped) match
+     if (before === '\\') {
+       return match.slice(1);
+-    } // the first matching variable name
+-
++    }
+ 
+-    const name = name1 || name2 || name3; // the closest variable value
++    // the first matching variable name
++    const name = name1 || name2 || name3;
+ 
+-    const value = getClosestVariable(name, node.parent, opts); // if a variable has not been resolved
++    // the closest variable value
++    const value = getClosestVariable(name, node.parent, opts);
+ 
++    // if a variable has not been resolved
+     if (undefined === value) {
+       manageUnresolved(node, opts, name, `Could not resolve the variable "$${name}" within "${string}"`);
+       return match;
+-    } // the stringified value
+-
++    }
+ 
++    // the stringified value
+     const stringifiedValue = `${before}${stringify(value)}`;
+     return stringifiedValue;
+   });
+   return replacedString;
+-} // match all $name, $(name), and #{$name} variables (and catch the character before it)
++}
+ 
+-const matchVariables = /(.?)(?:\$([A-z][\w-]*)|\$\(([A-z][\w-]*)\)|#\{\$([A-z][\w-]*)\})/g; // return a sass stringified variable
++// match all $name, $(name), and #{$name} variables (and catch the character before it)
++const matchVariables = /(.?)(?:\$([A-z][\w-]*)|\$\(([A-z][\w-]*)\)|#\{\$([A-z][\w-]*)\})/g;
+ 
++// return a sass stringified variable
+ const stringify = object => Array.isArray(object) ? `(${object.map(stringify).join(',')})` : Object(object) === object ? `(${Object.keys(object).map(key => `${key}:${stringify(object[key])}`).join(',')})` : String(object);
+ 
+ // tooling
+ 
++// set a variable on a node
+ function setVariable(node, name, value, opts) {
+   // if the value is not a default with a value already defined
+   if (!matchDefault.test(value) || getClosestVariable(name, node, opts) === undefined) {
+     // the value without a default suffix
+-    const undefaultedValue = matchDefault.test(value) ? value.replace(matchDefault, '') : value; // ensure the node has a variables object
++    const undefaultedValue = matchDefault.test(value) ? value.replace(matchDefault, '') : value;
+ 
+-    node.variables = node.variables || {}; // set the variable
++    // ensure the node has a variables object
++    node.variables = node.variables || {};
+ 
++    // set the variable
+     node.variables[name] = undefaultedValue;
+   }
+-} // match anything ending with a valid !default
++}
+ 
++// match anything ending with a valid !default
+ const matchDefault = /\s+!default$/;
+ 
+ // tooling
+ 
++// transform declarations
+ function transformDecl(decl, opts) {
+   // update the declaration value with its variables replaced by their corresponding values
+-  decl.value = getReplacedString(decl.value, decl, opts); // if the declaration is a variable declaration
++  decl.value = getReplacedString(decl.value, decl, opts);
+ 
++  // if the declaration is a variable declaration
+   if (isVariableDeclaration(decl)) {
+     // set the variable on the parent of the declaration
+-    setVariable(decl.parent, decl.prop.slice(1), decl.value, opts); // remove the declaration
++    setVariable(decl.parent, decl.prop.slice(1), decl.value, opts);
+ 
++    // remove the declaration
+     decl.remove();
++  } else {
++    decl.prop = getReplacedString(decl.prop, decl, opts);
+   }
+-} // return whether the declaration property is a variable declaration
+-
+-const isVariableDeclaration = decl => matchVariable.test(decl.prop); // match a variable ($any-name)
++}
+ 
++// return whether the declaration property is a variable declaration
++const isVariableDeclaration = decl => matchVariable.test(decl.prop);
+ 
++// match a variable ($any-name)
+ const matchVariable = /^\$[\w-]+$/;
+ 
+ // tooling
+ 
++// transform generic at-rules
+ function transformAtrule(rule, opts) {
+   // update the at-rule params with its variables replaced by their corresponding values
+   rule.params = getReplacedString(rule.params, rule, opts);
+ }
+ 
++function _iterableToArrayLimit(r, l) {
++  var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"];
++  if (null != t) {
++    var e,
++      n,
++      i,
++      u,
++      a = [],
++      f = !0,
++      o = !1;
++    try {
++      if (i = (t = t.call(r)).next, 0 === l) {
++        if (Object(t) !== t) return;
++        f = !1;
++      } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0);
++    } catch (r) {
++      o = !0, n = r;
++    } finally {
++      try {
++        if (!f && null != t.return && (u = t.return(), Object(u) !== u)) return;
++      } finally {
++        if (o) throw n;
++      }
++    }
++    return a;
++  }
++}
+ function _slicedToArray(arr, i) {
+-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
++  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+ }
+-
+ function _toArray(arr) {
+-  return _arrayWithHoles(arr) || _iterableToArray(arr) || _nonIterableRest();
++  return _arrayWithHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableRest();
+ }
+-
+ function _arrayWithHoles(arr) {
+   if (Array.isArray(arr)) return arr;
+ }
+-
+ function _iterableToArray(iter) {
+-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
++  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
+ }
+-
+-function _iterableToArrayLimit(arr, i) {
+-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
+-    return;
+-  }
+-
+-  var _arr = [];
+-  var _n = true;
+-  var _d = false;
+-  var _e = undefined;
+-
+-  try {
+-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+-      _arr.push(_s.value);
+-
+-      if (i && _arr.length === i) break;
+-    }
+-  } catch (err) {
+-    _d = true;
+-    _e = err;
+-  } finally {
+-    try {
+-      if (!_n && _i["return"] != null) _i["return"]();
+-    } finally {
+-      if (_d) throw _e;
+-    }
+-  }
+-
+-  return _arr;
++function _unsupportedIterableToArray(o, minLen) {
++  if (!o) return;
++  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
++  var n = Object.prototype.toString.call(o).slice(8, -1);
++  if (n === "Object" && o.constructor) n = o.constructor.name;
++  if (n === "Map" || n === "Set") return Array.from(o);
++  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
++}
++function _arrayLikeToArray(arr, len) {
++  if (len == null || len > arr.length) len = arr.length;
++  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
++  return arr2;
+ }
+-
+ function _nonIterableRest() {
+-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
++  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+ }
+ 
++// return sass-like arrays as literal arrays ('(hello), (goodbye)' to [[hello], [goodbye]])
+ function getValueAsObject(value) {
+   const hasWrappingParens = matchWrappingParens.test(value);
+   const unwrappedValue = String(hasWrappingParens ? value.replace(matchWrappingParens, '$1') : value).replace(matchTrailingComma, '');
+   const separatedValue = list.comma(unwrappedValue);
+   const firstValue = separatedValue[0];
+-
+   if (firstValue === value) {
+     return value;
+   } else {
+@@ -176,11 +196,10 @@ function getValueAsObject(value) {
+     const arrayValue = [];
+     separatedValue.forEach((subvalue, index) => {
+       const _ref = subvalue.match(matchDeclaration) || [],
+-            _ref2 = _slicedToArray(_ref, 3),
+-            match = _ref2[0],
+-            key = _ref2[1],
+-            keyvalue = _ref2[2];
+-
++        _ref2 = _slicedToArray(_ref, 3),
++        match = _ref2[0],
++        key = _ref2[1],
++        keyvalue = _ref2[2];
+       if (match) {
+         objectValue[key] = getValueAsObject(keyvalue);
+       } else {
+@@ -190,38 +209,42 @@ function getValueAsObject(value) {
+     const transformedValue = Object.keys(objectValue).length > 0 ? Object.assign(objectValue, arrayValue) : arrayValue;
+     return transformedValue;
+   }
+-} // match wrapping parentheses ((), (anything), (anything (anything)))
++}
+ 
+-const matchWrappingParens = /^\(([\W\w]*)\)$/g; // match a property name (any-possible_name)
++// match wrapping parentheses ((), (anything), (anything (anything)))
++const matchWrappingParens = /^\(([\W\w]*)\)$/g;
+ 
+-const matchDeclaration = /^([\w-]+)\s*:\s*([\W\w]+)\s*$/; // match a trailing comma
++// match a property name (any-possible_name)
++const matchDeclaration = /^([\w-]+)\s*:\s*([\W\w]+)\s*$/;
+ 
++// match a trailing comma
+ const matchTrailingComma = /\s*,\s*$/;
+ 
+ var waterfall = ((items, asyncFunction) => items.reduce((lastPromise, item) => lastPromise.then(() => asyncFunction(item)), Promise.resolve()));
+ 
+ // tooling
+ 
++// transform @each at-rules
+ function transformEachAtrule(rule, opts) {
+   // if @each is supported
+   if (opts.transform.indexOf('@each') !== -1) {
+     // @each options
+     const _getEachOpts = getEachOpts(rule, opts),
+-          varname = _getEachOpts.varname,
+-          incname = _getEachOpts.incname,
+-          list$$1 = _getEachOpts.list;
+-
++      varname = _getEachOpts.varname,
++      incname = _getEachOpts.incname,
++      list$$1 = _getEachOpts.list;
+     const replacements = [];
+     const ruleClones = [];
+     Object.keys(list$$1).forEach(key => {
+       // set the current variable
+-      setVariable(rule, varname, list$$1[key], opts); // conditionally set the incremenator variable
++      setVariable(rule, varname, list$$1[key], opts);
+ 
++      // conditionally set the incremenator variable
+       if (incname) {
+         setVariable(rule, incname, key, opts);
+-      } // clone the @each at-rule
+-
++      }
+ 
++      // clone the @each at-rule
+       const clone = rule.clone({
+         parent: rule.parent,
+         variables: Object.assign({}, rule.variables)
+@@ -236,8 +259,9 @@ function transformEachAtrule(rule, opts) {
+       rule.remove();
+     });
+   }
+-} // return the @each statement options (@each NAME in LIST, @each NAME ITERATOR in LIST)
++}
+ 
++// return the @each statement options (@each NAME in LIST, @each NAME ITERATOR in LIST)
+ const getEachOpts = (node, opts) => {
+   const params = node.params.split(matchInOperator);
+   const args = (params[0] || '').trim().split(' ');
+@@ -250,66 +274,67 @@ const getEachOpts = (node, opts) => {
+     incname,
+     list: list$$1
+   };
+-}; // match the opertor separating the name and iterator from the list
+-
++};
+ 
++// match the opertor separating the name and iterator from the list
+ const matchInOperator = ' in ';
+ 
+ // tooling
+ 
++// transform @if at-rules
+ function transformIfAtrule(rule, opts) {
+   // @if options
+   const isTruthy = isIfTruthy(rule, opts);
+   const next = rule.next();
+-
+   const transformAndInsertBeforeParent = node => transformNode(node, opts).then(() => node.parent.insertBefore(node, node.nodes));
+-
+   return ifPromise(opts.transform.indexOf('@if') !== -1, () => ifPromise(isTruthy, () => transformAndInsertBeforeParent(rule)).then(() => {
+     rule.remove();
+   })).then(() => ifPromise(opts.transform.indexOf('@else') !== -1 && isElseRule(next), () => ifPromise(!isTruthy, () => transformAndInsertBeforeParent(next)).then(() => {
+     next.remove();
+   })));
+ }
++const ifPromise = (condition, trueFunction) => Promise.resolve(condition && trueFunction());
+ 
+-const ifPromise = (condition, trueFunction) => Promise.resolve(condition && trueFunction()); // return whether the @if at-rule is truthy
+-
+-
++// return whether the @if at-rule is truthy
+ const isIfTruthy = (node, opts) => {
+   // @if statement options (@if EXPRESSION, @if LEFT OPERATOR RIGHT)
+   const params = list.space(node.params);
+   const left = getInterprettedString(getReplacedString(params[0] || '', node, opts));
+   const operator = params[1];
+-  const right = getInterprettedString(getReplacedString(params[2] || '', node, opts)); // evaluate the expression
++  const right = getInterprettedString(getReplacedString(params[2] || '', node, opts));
+ 
++  // evaluate the expression
+   const isTruthy = !operator && left || operator === '==' && left === right || operator === '!=' && left !== right || operator === '<' && left < right || operator === '<=' && left <= right || operator === '>' && left > right || operator === '>=' && left >= right;
+   return isTruthy;
+-}; // return the value as a boolean, number, or string
+-
+-
+-const getInterprettedString = value => 'true' === value ? true : 'false' === value ? false : isNaN(value) ? value : Number(value); // return whether the node is an else at-rule
++};
+ 
++// return the value as a boolean, number, or string
++const getInterprettedString = value => 'true' === value ? true : 'false' === value ? false : isNaN(value) ? value : Number(value);
+ 
++// return whether the node is an else at-rule
+ const isElseRule = node => Object(node) === node && 'atrule' === node.type && 'else' === node.name;
+ 
++// transform @import at-rules
+ function transformImportAtrule(rule, opts) {
+   // if @import is supported
+   if (opts.transform.indexOf('@import') !== -1) {
+     // @import options
+     const _getImportOpts = getImportOpts(rule, opts),
+-          id = _getImportOpts.id,
+-          media = _getImportOpts.media,
+-          cwf = _getImportOpts.cwf,
+-          cwd = _getImportOpts.cwd; // PostCSS options
+-
++      id = _getImportOpts.id,
++      media = _getImportOpts.media,
++      cwf = _getImportOpts.cwf,
++      cwd = _getImportOpts.cwd;
+ 
++    // PostCSS options
+     const options = opts.result.opts;
+     const parser = options.parser || options.syntax && options.syntax.parse || null;
+-
+     if (opts.importFilter instanceof Function && opts.importFilter(id, media) || opts.importFilter instanceof RegExp && opts.importFilter.test(id)) {
+-      const cwds = [cwd].concat(opts.importPaths); // promise the resolved file and its contents using the file resolver
++      const cwds = [cwd].concat(opts.importPaths);
+ 
++      // promise the resolved file and its contents using the file resolver
+       const importPromise = cwds.reduce((promise, thiscwd) => promise.catch(() => opts.importResolve(id, thiscwd, opts)), Promise.reject());
+-      return importPromise.then( // promise the processed file
++      return importPromise.then(
++      // promise the processed file
+       ({
+         file,
+         contents
+@@ -324,27 +349,31 @@ function transformImportAtrule(rule, opts) {
+           type: 'dependency',
+           file: file,
+           parent: cwf
+-        }); // imported nodes
++        });
+ 
+-        const nodes = root.nodes.slice(0); // if media params were detected
++        // imported nodes
++        const nodes = root.nodes.slice(0);
+ 
++        // if media params were detected
+         if (media) {
+           // create a new media rule
+           const mediaRule = postcss.atRule({
+             name: 'media',
+             params: media,
+             source: rule.source
+-          }); // append with the imported nodes
++          });
+ 
+-          mediaRule.append(nodes); // replace the @import at-rule with the @media at-rule
++          // append with the imported nodes
++          mediaRule.append(nodes);
+ 
++          // replace the @import at-rule with the @media at-rule
+           rule.replaceWith(mediaRule);
+         } else {
+           // replace the @import at-rule with the imported nodes
+           rule.replaceWith(nodes);
+-        } // transform all nodes from the import
+-
++        }
+ 
++        // transform all nodes from the import
+         return transformNode({
+           nodes
+         }, opts);
+@@ -355,17 +384,18 @@ function transformImportAtrule(rule, opts) {
+     }
+   }
+ }
+-const processor = postcss(); // return the @import statement options (@import ID, @import ID MEDIA)
++const processor = postcss();
+ 
++// return the @import statement options (@import ID, @import ID MEDIA)
+ const getImportOpts = (node, opts) => {
+   const _list$space = list.space(node.params),
+-        _list$space2 = _toArray(_list$space),
+-        rawid = _list$space2[0],
+-        medias = _list$space2.slice(1);
+-
++    _list$space2 = _toArray(_list$space),
++    rawid = _list$space2[0],
++    medias = _list$space2.slice(1);
+   const id = getReplacedString(trimWrappingURL(rawid), node, opts);
+-  const media = medias.join(' '); // current working file and directory
++  const media = medias.join(' ');
+ 
++  // current working file and directory
+   const cwf = node.source && node.source.input && node.source.input.file || opts.result.from;
+   const cwd = cwf ? path.dirname(cwf) : opts.importRoot;
+   return {
+@@ -374,38 +404,42 @@ const getImportOpts = (node, opts) => {
+     cwf,
+     cwd
+   };
+-}; // return a string with the wrapping url() and quotes trimmed
+-
+-
+-const trimWrappingURL = string => trimWrappingQuotes(string.replace(/^url\(([\W\w]*)\)$/, '$1')); // return a string with the wrapping quotes trimmed
++};
+ 
++// return a string with the wrapping url() and quotes trimmed
++const trimWrappingURL = string => trimWrappingQuotes(string.replace(/^url\(([\W\w]*)\)$/, '$1'));
+ 
++// return a string with the wrapping quotes trimmed
+ const trimWrappingQuotes = string => string.replace(/^("|')([\W\w]*)\1$/, '$2');
+ 
++// transform @include at-rules
+ function transformIncludeAtrule(rule, opts) {
+   // if @include is supported
+   if (opts.transform.indexOf('@include') !== -1) {
+     // @include options
+     const _getIncludeOpts = getIncludeOpts(rule),
+-          name = _getIncludeOpts.name,
+-          args = _getIncludeOpts.args; // the closest @mixin variable
++      name = _getIncludeOpts.name,
++      args = _getIncludeOpts.args;
+ 
++    // the closest @mixin variable
++    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts);
+ 
+-    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts); // if the @mixin variable exists
+-
++    // if the @mixin variable exists
+     if (mixin) {
+       // set @mixin variables on the @include at-rule
+       mixin.params.forEach((param, index) => {
+         const arg = index in args ? getReplacedString(args[index], rule, opts) : param.value;
+         setVariable(rule, param.name, arg, opts);
+-      }); // clone the @mixin at-rule
++      });
+ 
++      // clone the @mixin at-rule
+       const clone = mixin.rule.clone({
+         original: rule,
+         parent: rule.parent,
+         variables: rule.variables
+-      }); // transform the clone children
++      });
+ 
++      // transform the clone children
+       return transformNode(clone, opts).then(() => {
+         // replace the @include at-rule with the clone children
+         rule.parent.insertBefore(rule, clone.nodes);
+@@ -416,52 +450,53 @@ function transformIncludeAtrule(rule, opts) {
+       manageUnresolved(rule, opts, name, `Could not resolve the mixin for "${name}"`);
+     }
+   }
+-} // return the @include statement options (@include NAME, @include NAME(ARGS))
++}
+ 
++// return the @include statement options (@include NAME, @include NAME(ARGS))
+ const getIncludeOpts = node => {
+   // @include name and args
+   const _node$params$split = node.params.split(matchOpeningParen, 2),
+-        _node$params$split2 = _slicedToArray(_node$params$split, 2),
+-        name = _node$params$split2[0],
+-        sourceArgs = _node$params$split2[1];
+-
++    _node$params$split2 = _slicedToArray(_node$params$split, 2),
++    name = _node$params$split2[0],
++    sourceArgs = _node$params$split2[1];
+   const args = sourceArgs ? list.comma(sourceArgs.slice(0, -1)) : [];
+   return {
+     name,
+     args
+   };
+-}; // match an opening parenthesis
+-
++};
+ 
++// match an opening parenthesis
+ const matchOpeningParen = '(';
+ 
+ // tooling
+ 
++// transform @for at-rules
+ function transformForAtrule(rule, opts) {
+   // if @for is supported
+   if (opts.transform.indexOf('@for') !== -1) {
+     // @for options
+     const _getForOpts = getForOpts(rule, opts),
+-          varname = _getForOpts.varname,
+-          start = _getForOpts.start,
+-          end = _getForOpts.end,
+-          increment = _getForOpts.increment;
+-
++      varname = _getForOpts.varname,
++      start = _getForOpts.start,
++      end = _getForOpts.end,
++      increment = _getForOpts.increment;
+     const direction = start <= end ? 1 : -1;
+     const replacements = [];
+-    const ruleClones = []; // for each iteration
++    const ruleClones = [];
+ 
++    // for each iteration
+     for (let incrementor = start; incrementor * direction <= end * direction; incrementor += increment * direction) {
+       // set the current variable
+-      setVariable(rule, varname, incrementor, opts); // clone the @for at-rule
++      setVariable(rule, varname, incrementor, opts);
+ 
++      // clone the @for at-rule
+       const clone = rule.clone({
+         parent: rule.parent,
+         variables: Object.assign({}, rule.variables)
+       });
+       ruleClones.push(clone);
+     }
+-
+     return waterfall(ruleClones, clone => transformNode(clone, opts).then(() => {
+       replacements.push(...clone.nodes);
+     })).then(() => {
+@@ -470,8 +505,9 @@ function transformForAtrule(rule, opts) {
+       rule.remove();
+     });
+   }
+-} // return the @for statement options (@for NAME from START through END, @for NAME from START through END by INCREMENT)
++}
+ 
++// return the @for statement options (@for NAME from START through END, @for NAME from START through END by INCREMENT)
+ const getForOpts = (node, opts) => {
+   const params = list.space(node.params);
+   const varname = params[0].trim().slice(1);
+@@ -486,31 +522,33 @@ const getForOpts = (node, opts) => {
+   };
+ };
+ 
++// transform @mixin at-rules
+ function transformMixinAtrule(rule, opts) {
+   // if @mixin is supported
+   if (opts.transform.indexOf('@mixin') !== -1) {
+     // @mixin options
+     const _getMixinOpts = getMixinOpts(rule, opts),
+-          name = _getMixinOpts.name,
+-          params = _getMixinOpts.params; // set the mixin as a variable on the parent of the @mixin at-rule
+-
++      name = _getMixinOpts.name,
++      params = _getMixinOpts.params;
+ 
++    // set the mixin as a variable on the parent of the @mixin at-rule
+     setVariable(rule.parent, `@mixin ${name}`, {
+       params,
+       rule
+-    }, opts); // remove the @mixin at-rule
++    }, opts);
+ 
++    // remove the @mixin at-rule
+     rule.remove();
+   }
+-} // return the @mixin statement options (@mixin NAME, @mixin NAME(PARAMS))
++}
+ 
++// return the @mixin statement options (@mixin NAME, @mixin NAME(PARAMS))
+ const getMixinOpts = (node, opts) => {
+   // @mixin name and default params ([{ name, value }, ...])
+   const _node$params$split = node.params.split(matchOpeningParen$1, 2),
+-        _node$params$split2 = _slicedToArray(_node$params$split, 2),
+-        name = _node$params$split2[0],
+-        sourceParams = _node$params$split2[1];
+-
++    _node$params$split2 = _slicedToArray(_node$params$split, 2),
++    name = _node$params$split2[0],
++    sourceParams = _node$params$split2[1];
+   const params = sourceParams && sourceParams.slice(0, -1).trim() ? list.comma(sourceParams.slice(0, -1).trim()).map(param => {
+     const parts = list.split(param, ':');
+     const paramName = parts[0].slice(1);
+@@ -524,13 +562,14 @@ const getMixinOpts = (node, opts) => {
+     name,
+     params
+   };
+-}; // match an opening parenthesis
+-
++};
+ 
++// match an opening parenthesis
+ const matchOpeningParen$1 = '(';
+ 
+ // tooling
+ 
++// transform rule nodes
+ function transformRule(rule, opts) {
+   // update the rule selector with its variables replaced by their corresponding values
+   rule.selector = getReplacedString(rule.selector, rule, opts);
+@@ -538,19 +577,22 @@ function transformRule(rule, opts) {
+ 
+ // tooling
+ 
++// transform @content at-rules
+ function transformContentAtrule(rule, opts) {
+   // if @content is supported
+   if (opts.transform.indexOf('@content') !== -1) {
+     // the closest @mixin at-rule
+-    const mixin = getClosestMixin(rule); // if the @mixin at-rule exists
++    const mixin = getClosestMixin(rule);
+ 
++    // if the @mixin at-rule exists
+     if (mixin) {
+       // clone the @mixin at-rule
+       const clone = mixin.original.clone({
+         parent: rule.parent,
+         variables: rule.variables
+-      }); // transform the clone children
++      });
+ 
++      // transform the clone children
+       return transformNode(clone, opts).then(() => {
+         // replace the @content at-rule with the clone children
+         rule.parent.insertBefore(rule, clone.nodes);
+@@ -561,8 +603,9 @@ function transformContentAtrule(rule, opts) {
+       manageUnresolved(rule, opts, '@content', 'Could not resolve the mixin for @content');
+     }
+   }
+-} // return the closest @mixin at-rule
++}
+ 
++// return the closest @mixin at-rule
+ const getClosestMixin = node => 'atrule' === node.type && 'mixin' === node.name ? node : node.parent && getClosestMixin(node.parent);
+ 
+ // tooling
+@@ -574,14 +617,11 @@ function transformNode(node, opts) {
+     }
+   }));
+ }
+-
+ function transformRuleOrDecl(child, opts) {
+   return Promise.resolve().then(() => {
+     const type = child.type;
+-
+     if ('atrule' === type) {
+       const name = child.name.toLowerCase();
+-
+       if ('content' === name) {
+         // transform @content at-rules
+         return transformContentAtrule(child, opts);
+@@ -614,45 +654,48 @@ function transformRuleOrDecl(child, opts) {
+       return transformRule(child, opts);
+     }
+   });
+-} // return the children of a node as an array
+-
++}
+ 
++// return the children of a node as an array
+ const getNodesArray = node => Array.from(Object(node).nodes || []);
+ 
+ // tooling
++const matchProtocol = /^(?:[A-z]+:)?\/\//;
+ 
+-var index = postcss.plugin('postcss-advanced-variables', opts => (root, result) => {
+-  // process options
+-  const transformOpt = ['@content', '@each', '@else', '@if', '@include', '@import', '@for', '@mixin'].filter(feature => !(String(Object(opts).disable || '').split(/\s*,\s*|\s+,?\s*|\s,?\s+/).indexOf(feature) !== -1));
+-  const unresolvedOpt = String(Object(opts).unresolved || 'throw').toLowerCase();
+-  const variablesOpt = Object(opts).variables;
+-  const importCache = Object(Object(opts).importCache);
+-
+-  const importFilter = Object(opts).importFilter || (id => {
+-    return !matchProtocol.test(id);
+-  });
+-
+-  const importPaths = [].concat(Object(opts).importPaths || []);
+-
+-  const importResolve = Object(opts).importResolve || ((id, cwd) => resolve(id, {
+-    cwd,
+-    readFile: true,
+-    cache: importCache
+-  }));
+-
+-  const importRoot = Object(opts).importRoot || process.cwd();
+-  return transformNode(root, {
+-    result,
+-    importCache,
+-    importFilter,
+-    importPaths,
+-    importResolve,
+-    importRoot,
+-    transform: transformOpt,
+-    unresolved: unresolvedOpt,
+-    variables: variablesOpt
+-  });
++// plugin
++const plugin = opts => ({
++  postcssPlugin: "postcss-advanced-variables",
++  Root(root, {
++    result
++  }) {
++    // process options
++    const transformOpt = ['@content', '@each', '@else', '@if', '@include', '@import', '@for', '@mixin'].filter(feature => !(String(Object(opts).disable || '').split(/\s*,\s*|\s+,?\s*|\s,?\s+/).indexOf(feature) !== -1));
++    const unresolvedOpt = String(Object(opts).unresolved || 'throw').toLowerCase();
++    const variablesOpt = Object(opts).variables;
++    const importCache = Object(Object(opts).importCache);
++    const importFilter = Object(opts).importFilter || (id => {
++      return !matchProtocol.test(id);
++    });
++    const importPaths = [].concat(Object(opts).importPaths || []);
++    const importResolve = Object(opts).importResolve || ((id, cwd) => resolve(id, {
++      cwd,
++      readFile: true,
++      cache: importCache
++    }));
++    const importRoot = Object(opts).importRoot || process.cwd();
++    return transformNode(root, {
++      result,
++      importCache,
++      importFilter,
++      importPaths,
++      importResolve,
++      importRoot,
++      transform: transformOpt,
++      unresolved: unresolvedOpt,
++      variables: variablesOpt
++    });
++  }
+ });
+-const matchProtocol = /^(?:[A-z]+:)?\/\//;
++plugin.postcss = true;
+ 
+-export default index;
++export default plugin;
