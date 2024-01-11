@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useRef, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 
 import type {
   ActionListItemDescriptor,
@@ -7,14 +7,13 @@ import type {
   MenuGroupDescriptor,
 } from '../../../../types';
 import {MenuGroup} from '../MenuGroup';
-import {ButtonGroup} from '../../../ButtonGroup';
-import {debounce} from '../../../../utilities/debounce';
 import {useI18n} from '../../../../utilities/i18n';
 import {SecondaryAction} from '../SecondaryAction';
-import {useEventListener} from '../../../../utilities/use-event-listener';
-import {useIsomorphicLayoutEffect} from '../../../../utilities/use-isomorphic-layout-effect';
 
 import styles from './Actions.module.scss';
+import type {ActionsMeasurements} from './components';
+import {ActionsMeasurer} from './components';
+import {getVisibleAndHiddenActionsIndices} from './utilities';
 
 interface Props {
   /** Collection of page-level secondary actions */
@@ -24,40 +23,33 @@ interface Props {
   /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
   onActionRollup?(hasRolledUp: boolean): void;
 }
-
-interface MeasuredActions {
-  showable: MenuActionDescriptor[];
-  rolledUp: (MenuActionDescriptor | MenuGroupDescriptor)[];
+interface MeasuredActionsIndices {
+  visibleActions: number[];
+  hiddenActions: number[];
+  visibleGroups: number[];
+  hiddenGroups: number[];
 }
-
-const ACTION_SPACING = 8;
 
 export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   const i18n = useI18n();
-  const actionsLayoutRef = useRef<HTMLDivElement>(null);
-  const menuGroupWidthRef = useRef<number>(0);
-  const availableWidthRef = useRef<number>(0);
-  const actionsAndGroupsLengthRef = useRef<number>(0);
-  const timesMeasured = useRef(0);
-  const actionWidthsRef = useRef<number[]>([]);
   const rollupActiveRef = useRef<boolean | null>(null);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
-  const [measuredActions, setMeasuredActions] = useState<MeasuredActions>({
-    showable: [],
-    rolledUp: [],
+  const [
+    {visibleActions, hiddenActions, visibleGroups, hiddenGroups},
+    setMeasuredActionsIndices,
+  ] = useState<MeasuredActionsIndices>({
+    visibleActions: [],
+    hiddenActions: [],
+    visibleGroups: [],
+    hiddenGroups: [],
   });
+
   const defaultRollupGroup: MenuGroupDescriptor = {
     title: i18n.translate('Polaris.ActionMenu.Actions.moreActions'),
     actions: [],
   };
-  const lastMenuGroup = [...groups].pop();
-  const lastMenuGroupWidth = [...actionWidthsRef.current].pop() || 0;
-
-  const handleActionsOffsetWidth = useCallback((width: number) => {
-    actionWidthsRef.current = [...actionWidthsRef.current, width];
-  }, []);
 
   const handleMenuGroupToggle = useCallback(
     (group: string) => setActiveMenuGroup(activeMenuGroup ? undefined : group),
@@ -69,179 +61,50 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     [],
   );
 
-  const updateActions = useCallback(() => {
-    let actionsAndGroups = [...actions, ...groups];
-
-    if (groups.length > 0) {
-      // We don't want to include actions from the last group
-      // since it is always rendered with its own actions
-      actionsAndGroups = [...actionsAndGroups].slice(
-        0,
-        actionsAndGroups.length - 1,
-      );
-    }
-
-    setMeasuredActions((currentMeasuredActions) => {
-      const showable = actionsAndGroups.slice(
-        0,
-        currentMeasuredActions.showable.length,
-      );
-      const rolledUp = actionsAndGroups.slice(
-        currentMeasuredActions.showable.length,
-        actionsAndGroups.length,
-      );
-
-      return {showable, rolledUp};
-    });
-  }, [actions, groups]);
-
-  const measureActions = useCallback(() => {
-    if (
-      actionWidthsRef.current.length === 0 ||
-      availableWidthRef.current === 0
-    ) {
-      return;
-    }
-
-    const actionsAndGroups = [...actions, ...groups];
-
-    if (actionsAndGroups.length === 1) {
-      setMeasuredActions({showable: actionsAndGroups, rolledUp: []});
-      return;
-    }
-
-    let currentAvailableWidth = availableWidthRef.current;
-    let newShowableActions: MenuActionDescriptor[] = [];
-    let newRolledUpActions: (MenuActionDescriptor | MenuGroupDescriptor)[] = [];
-
-    actionsAndGroups.forEach((action, index) => {
-      const canFitAction =
-        actionWidthsRef.current[index] +
-          menuGroupWidthRef.current +
-          ACTION_SPACING +
-          lastMenuGroupWidth <=
-        currentAvailableWidth;
-
-      if (canFitAction) {
-        currentAvailableWidth -=
-          actionWidthsRef.current[index] + ACTION_SPACING * 2;
-        newShowableActions = [...newShowableActions, action];
-      } else {
-        currentAvailableWidth = 0;
-        // Find last group if it exists and always render it as a rolled up action below
-        if (action === lastMenuGroup) return;
-        newRolledUpActions = [...newRolledUpActions, action];
-      }
-    });
-
-    if (onActionRollup) {
-      // Note: Do not include last group actions since we are skipping `lastMenuGroup` above
-      // as it is always rendered with its own actions
-      const isRollupActive =
-        newShowableActions.length < actionsAndGroups.length - 1;
-      if (rollupActiveRef.current !== isRollupActive) {
-        onActionRollup(isRollupActive);
-        rollupActiveRef.current = isRollupActive;
-      }
-    }
-
-    setMeasuredActions({
-      showable: newShowableActions,
-      rolledUp: newRolledUpActions,
-    });
-
-    timesMeasured.current += 1;
-    actionsAndGroupsLengthRef.current = actionsAndGroups.length;
-  }, [actions, groups, lastMenuGroup, lastMenuGroupWidth, onActionRollup]);
-
-  const handleResize = useMemo(
-    () =>
-      debounce(
-        () => {
-          if (!actionsLayoutRef.current) return;
-          availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
-          // Set timesMeasured to 0 to allow re-measuring
-          timesMeasured.current = 0;
-          measureActions();
-        },
-        50,
-        {leading: false, trailing: true},
-      ),
-    [measureActions],
-  );
-
-  useEventListener('resize', handleResize);
-
-  useIsomorphicLayoutEffect(() => {
-    if (!actionsLayoutRef.current) return;
-
-    availableWidthRef.current = actionsLayoutRef.current.offsetWidth;
-
-    if (
-      // Allow measuring twice
-      // This accounts for the initial paint and re-flow
-      timesMeasured.current >= 2 &&
-      [...actions, ...groups].length === actionsAndGroupsLengthRef.current
-    ) {
-      updateActions();
-      return;
-    }
-    measureActions();
-  }, [actions, groups, measureActions, updateActions]);
-
-  const actionsMarkup = actions.map((action) => {
-    if (
-      measuredActions.showable.length > 0 ||
-      measuredActions.rolledUp.includes(action)
-    )
+  const actionsMarkup = actions.map((action, index) => {
+    if (!visibleActions.includes(index)) {
       return null;
+    }
 
     const {content, onAction, ...rest} = action;
 
     return (
-      <SecondaryAction
-        key={content}
-        onClick={onAction}
-        {...rest}
-        getOffsetWidth={handleActionsOffsetWidth}
-      >
+      <SecondaryAction key={content} onClick={onAction} {...rest}>
         {content}
       </SecondaryAction>
     );
   });
 
-  const rollUppableActionsMarkup =
-    measuredActions.showable.length > 0
-      ? measuredActions.showable.map(
-          (action) =>
-            action.content && (
-              <SecondaryAction
-                key={action.content}
-                {...action}
-                getOffsetWidth={handleActionsOffsetWidth}
-              >
-                {action.content}
-              </SecondaryAction>
-            ),
-        )
-      : null;
+  const groupsToFilters =
+    hiddenGroups.length > 0 || hiddenActions.length > 0
+      ? [...groups, defaultRollupGroup]
+      : [...groups];
 
-  const filteredGroups = [...groups, defaultRollupGroup].filter((group) => {
-    return groups.length === 0
-      ? group
-      : group === lastMenuGroup ||
-          !measuredActions.rolledUp.some(
-            (rolledUpGroup) =>
-              isMenuGroup(rolledUpGroup) && rolledUpGroup.title === group.title,
-          );
+  const filteredGroups = groupsToFilters.filter((group, index) => {
+    const hasNoGroupsProp = groups.length === 0;
+    const isVisibleGroup = visibleGroups.includes(index);
+    const isDefaultGroup = group === defaultRollupGroup;
+
+    if (hasNoGroupsProp) {
+      return hiddenActions.length > 0;
+    }
+
+    if (isDefaultGroup) {
+      return true;
+    }
+
+    return isVisibleGroup;
   });
+
+  const hiddenActionObjects = hiddenActions.map((index) => actions[index]);
+  const hiddenGroupObjects = hiddenGroups.map((index) => groups[index]);
 
   const groupsMarkup = filteredGroups.map((group) => {
     const {title, actions: groupActions, ...rest} = group;
     const isDefaultGroup = group === defaultRollupGroup;
-    const isLastMenuGroup = group === lastMenuGroup;
+    const allHiddenItems = [...hiddenActionObjects, ...hiddenGroupObjects];
     const [finalRolledUpActions, finalRolledUpSectionGroups] =
-      measuredActions.rolledUp.reduce(
+      allHiddenItems.reduce(
         ([actions, sections], action) => {
           if (isMenuGroup(action)) {
             sections.push({
@@ -259,7 +122,7 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
         },
         [[] as ActionListItemDescriptor[], [] as ActionListSection[]],
       );
-    if (!isDefaultGroup && !isLastMenuGroup) {
+    if (!isDefaultGroup) {
       // Render a normal MenuGroup with just its actions
       return (
         <MenuGroup
@@ -270,57 +133,73 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
           {...rest}
           onOpen={handleMenuGroupToggle}
           onClose={handleMenuGroupClose}
-          getOffsetWidth={handleActionsOffsetWidth}
-        />
-      );
-    } else if (!isDefaultGroup && isLastMenuGroup) {
-      // render the last, rollup group with its actions and finalRolledUpActions
-      return (
-        <MenuGroup
-          key={title}
-          title={title}
-          active={title === activeMenuGroup}
-          actions={[...finalRolledUpActions, ...groupActions]}
-          sections={finalRolledUpSectionGroups}
-          {...rest}
-          onOpen={handleMenuGroupToggle}
-          onClose={handleMenuGroupClose}
-          getOffsetWidth={handleActionsOffsetWidth}
-        />
-      );
-    } else if (
-      isDefaultGroup &&
-      groups.length === 0 &&
-      finalRolledUpActions.length
-    ) {
-      // Render the default group to rollup into if one does not exist
-      return (
-        <MenuGroup
-          key={title}
-          title={title}
-          active={title === activeMenuGroup}
-          actions={finalRolledUpActions}
-          sections={finalRolledUpSectionGroups}
-          {...rest}
-          onOpen={handleMenuGroupToggle}
-          onClose={handleMenuGroupClose}
-          getOffsetWidth={handleActionsOffsetWidth}
         />
       );
     }
+    return (
+      <MenuGroup
+        key={title}
+        title={title}
+        active={title === activeMenuGroup}
+        actions={[...finalRolledUpActions, ...groupActions]}
+        sections={finalRolledUpSectionGroups}
+        {...rest}
+        onOpen={handleMenuGroupToggle}
+        onClose={handleMenuGroupClose}
+      />
+    );
   });
 
-  const groupedActionsMarkup = (
-    <ButtonGroup gap="tight">
-      {rollUppableActionsMarkup}
-      {actionsMarkup}
-      {groupsMarkup}
-    </ButtonGroup>
+  const handleMeasurement = useCallback(
+    (measurements: ActionsMeasurements) => {
+      const {
+        hiddenActionsWidths: actionsWidths,
+        containerWidth,
+        disclosureWidth,
+      } = measurements;
+
+      const {visibleActions, hiddenActions, visibleGroups, hiddenGroups} =
+        getVisibleAndHiddenActionsIndices(
+          actions,
+          groups,
+          disclosureWidth,
+          actionsWidths,
+          containerWidth,
+        );
+
+      if (onActionRollup) {
+        const isRollupActive =
+          hiddenActions.length > 0 || hiddenGroups.length > 0;
+        if (rollupActiveRef.current !== isRollupActive) {
+          onActionRollup(isRollupActive);
+          rollupActiveRef.current = isRollupActive;
+        }
+      }
+      setMeasuredActionsIndices({
+        visibleActions,
+        hiddenActions,
+        visibleGroups,
+        hiddenGroups,
+      });
+    },
+    [actions, groups, onActionRollup],
+  );
+
+  const actionsMeasurer = (
+    <ActionsMeasurer
+      actions={actions}
+      groups={groups}
+      handleMeasurement={handleMeasurement}
+    />
   );
 
   return (
-    <div className={styles.ActionsLayout} ref={actionsLayoutRef}>
-      {groupedActionsMarkup}
+    <div className={styles.ActionsLayoutOuter}>
+      {actionsMeasurer}
+      <div className={styles.ActionsLayout}>
+        {actionsMarkup}
+        {groupsMarkup}
+      </div>
     </div>
   );
 }

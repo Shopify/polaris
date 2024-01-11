@@ -6,6 +6,23 @@
   align-items: center;
   justify-content: flex-end;
   flex: 1 1 auto;
+  gap: var(--p-space-200);
+
+  > * {
+    flex: 0 0 auto;
+  }
+}
+
+.ActionsLayoutMeasurer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  gap: 0;
+  padding: 0;
+  visibility: hidden;
+  height: 0;
 
   > * {
     flex: 0 0 auto;
