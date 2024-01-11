@@ -10,11 +10,11 @@ npx @shopify/polaris-migrator icons-v8-update-names <path>
 
 Removed Major and Minor icon sizing. All icons are the same size.
 
-Added `BillIcon`, `BillFilledIcon`, `LogoCriteoIcon`, `LogoMetaIcon`, `LogoGoogleIcon`, `MetaobjectFilledIcon`, `PriceListIcon` and `PriceListFilledIcon`
+Added `BillIcon`, `BillFilledIcon`, `LogoCriteoIcon`, `LogoMetaIcon`, `LogoGoogleIcon`, `MetaobjectFilledIcon`, `PriceListIcon`, `BlankFilledIcon`, `BlankIcon`, `CursorBannerIcon`, `CursorOptionIcon`, `DomainIcon`, `EmailIcon`, `PersonExitIcon` and `PriceListFilledIcon`
 
-Updated icon design for `JobsIcon`, `JobsFilledIcon`, `AutomationIcon`, `AutomationFilledIcon`, `GiftCardIcon`, `InventoryFilledIcon`, `ReportsIcon`, `ShipmentFilledIcon`, `AppsFilledIcon`, `MarketsIcon`, `MarketsFilledIcon`, `BillingStatementDollarFilledIcon`, `BillingStatementEuroFilledIcon`, `BillingStatementPoundFilledIcon`, `BillingStatementRupeeFilledIcon`, `BillingStatementYenFilledIcon`, `LegalFilledIcon`, `IdentityCardIcon`, `IdentityCardFilledIcon`, `DomainsIcon`, `DomainNewIcon`, `DomainsFilledIcon`, `StoreIcon`, `StoreOnlineIcon`, `ManagedStoreIcon`, `ImportStoreIcon`, `TaxIcon`, `TaxFilledIcon`, `PackageFilledIcon`, `LocationIcon`, `LocationFilledIcon`, `InactiveLocationIcon`, `PinIcon`, `GlobeIcon`, `TransportIcon`, `NatureIcon`, `FoodIcon`, `ColorsIcon`
+Updated icon design for `JobsIcon`, `JobsFilledIcon`, `AutomationIcon`, `AutomationFilledIcon`, `GiftCardIcon`, `InventoryFilledIcon`, `ReportsIcon`, `ShipmentFilledIcon`, `AppsFilledIcon`, `MarketsIcon`, `MarketsFilledIcon`, `BillingStatementDollarFilledIcon`, `BillingStatementEuroFilledIcon`, `BillingStatementPoundFilledIcon`, `BillingStatementRupeeFilledIcon`, `BillingStatementYenFilledIcon`, `LegalFilledIcon`, `IdentityCardIcon`, `IdentityCardFilledIcon`, `DomainsIcon`, `DomainNewIcon`, `DomainsFilledIcon`, `StoreIcon`, `StoreOnlineIcon`, `ManagedStoreIcon`, `ImportStoreIcon`, `TaxIcon`, `TaxFilledIcon`, `PackageFilledIcon`, `LocationIcon`, `LocationFilledIcon`, `InactiveLocationIcon`, `PinIcon`, `GlobeIcon`, `TransportIcon`, `NatureIcon`, `FoodIcon`, `ColorsIcon`, `DomainIcon`, `DragHandleIcon`, `EmailIcon`
 
-Removed `version` and `set` from icon `.yml` files
+Removed `version` `exclusive_use` and `set` from icon `.yml` files
 
 Renamed many icons and replaced `Major` and `Minor` suffixes with `Icon`. See table:
 
