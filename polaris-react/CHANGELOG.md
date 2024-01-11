@@ -1,5 +1,18 @@
 # Changelog
 
+## 12.9.0
+
+### Minor Changes
+
+- [#11410](https://github.com/Shopify/polaris/pull/11410) [`d8ccd26ad`](https://github.com/Shopify/polaris/commit/d8ccd26ad7007914ab48c718a380a8f9cc802629) Thanks [@lgriffee](https://github.com/lgriffee)! - - Updated `SkeletonTabs` to reflect `Tabs` design
+  - Added `fitted` prop
+
+### Patch Changes
+
+- [#11433](https://github.com/Shopify/polaris/pull/11433) [`2ddc47fe2`](https://github.com/Shopify/polaris/commit/2ddc47fe2d35778192925b2819d228cb13ee856b) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed `Button` spinner icon alignment
+
+* [#11436](https://github.com/Shopify/polaris/pull/11436) [`72471750d`](https://github.com/Shopify/polaris/commit/72471750d2fb12397a3f1fd7f5f5814efc435b85) Thanks [@alex-page](https://github.com/alex-page)! - Revert "[Modal] Add `flex-grow` to `Modal` body to fix footer position
+
 ## 12.8.0
 
 ### Minor Changes
