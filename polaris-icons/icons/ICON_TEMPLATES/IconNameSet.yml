@@ -25,4 +25,3 @@ date_added: YYYY-MM-DD
 date_modified: YYYY-MM-DD
 # Optional: fill exclusive_use if the icon should *only* be used
 # in specific areas of the admin (such as “Orders”):
-exclusive_use:
