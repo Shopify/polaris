@@ -131,6 +131,11 @@ $spinner-icon-size: 12px;
 
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators -- specificity bump for magic styles to override
 .toneMagic {
+  .Prefix,
+  .Suffix {
+    color: var(--p-color-text-magic-secondary);
+  }
+
   > .Input {
     color: var(--p-color-text-magic);
   }
@@ -138,6 +143,10 @@ $spinner-icon-size: 12px;
   > .Backdrop {
     background-color: var(--p-color-bg-surface-magic);
     border-color: var(--p-color-border-magic-secondary);
+  }
+
+  svg {
+    fill: var(--p-color-icon-magic);
   }
 
   &:not(.disabled):not(.error):not(.readOnly)
@@ -153,6 +162,17 @@ $spinner-icon-size: 12px;
   &.TextField:focus-within > .Input,
   &.Input:focus-visible {
     color: var(--p-color-text);
+  }
+
+  &.focus {
+    .Prefix,
+    .Suffix {
+      color: var(--p-color-text-secondary);
+    }
+
+    svg {
+      fill: var(--p-color-icon-secondary);
+    }
   }
 }
 // stylelint-enable
