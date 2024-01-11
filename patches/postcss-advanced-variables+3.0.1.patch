@@ -1,5 +1,11 @@
+# v3.0.1 isn't compatible with PostCSS v8, however there are unreleased commits
+# which make it compatible. This patch represents those changes:
+# https://github.com/csstools/postcss-advanced-variables/compare/d41d84b9136afb1cad8a9106fac945658031a5f8...085a5597b35c72375d3871c60005cb278f90b45c
+# Also includes a fix for including mixins that use `@content` with an empty
+# block:
+# https://github.com/csstools/postcss-advanced-variables/pull/106
 diff --git a/node_modules/postcss-advanced-variables/index.js b/node_modules/postcss-advanced-variables/index.js
-index d92a59a..49baba7 100644
+index d92a59a..13d2087 100644
 --- a/node_modules/postcss-advanced-variables/index.js
 +++ b/node_modules/postcss-advanced-variables/index.js
 @@ -11,27 +11,25 @@ var resolve = _interopDefault(require('@csstools/sass-import-resolve'));
@@ -502,14 +508,14 @@ index d92a59a..49baba7 100644
      const _getIncludeOpts = getIncludeOpts(rule),
 -          name = _getIncludeOpts.name,
 -          args = _getIncludeOpts.args; // the closest @mixin variable
+-
 +      name = _getIncludeOpts.name,
 +      args = _getIncludeOpts.args;
  
+-    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts); // if the @mixin variable exists
 +    // the closest @mixin variable
 +    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts);
  
--    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts); // if the @mixin variable exists
--
 +    // if the @mixin variable exists
      if (mixin) {
        // set @mixin variables on the @include at-rule
@@ -671,7 +677,7 @@ index d92a59a..49baba7 100644
  function transformRule(rule, opts) {
    // update the rule selector with its variables replaced by their corresponding values
    rule.selector = getReplacedString(rule.selector, rule, opts);
-@@ -543,19 +582,22 @@ function transformRule(rule, opts) {
+@@ -543,22 +582,27 @@ function transformRule(rule, opts) {
  
  // tooling
  
@@ -695,8 +701,14 @@ index d92a59a..49baba7 100644
 +      // transform the clone children
        return transformNode(clone, opts).then(() => {
          // replace the @content at-rule with the clone children
-         rule.parent.insertBefore(rule, clone.nodes);
-@@ -566,8 +608,9 @@ function transformContentAtrule(rule, opts) {
+-        rule.parent.insertBefore(rule, clone.nodes);
++        if (clone.nodes) {
++          rule.parent.insertBefore(rule, clone.nodes);
++        }
+         rule.remove();
+       });
+     } else {
+@@ -566,8 +610,9 @@ function transformContentAtrule(rule, opts) {
        manageUnresolved(rule, opts, '@content', 'Could not resolve the mixin for @content');
      }
    }
@@ -707,7 +719,7 @@ index d92a59a..49baba7 100644
  const getClosestMixin = node => 'atrule' === node.type && 'mixin' === node.name ? node : node.parent && getClosestMixin(node.parent);
  
  // tooling
-@@ -579,14 +622,11 @@ function transformNode(node, opts) {
+@@ -579,14 +624,11 @@ function transformNode(node, opts) {
      }
    }));
  }
@@ -722,7 +734,7 @@ index d92a59a..49baba7 100644
        if ('content' === name) {
          // transform @content at-rules
          return transformContentAtrule(child, opts);
-@@ -619,45 +659,48 @@ function transformRuleOrDecl(child, opts) {
+@@ -619,45 +661,48 @@ function transformRuleOrDecl(child, opts) {
        return transformRule(child, opts);
      }
    });
@@ -807,7 +819,7 @@ index d92a59a..49baba7 100644
 -module.exports = index;
 +module.exports = plugin;
 diff --git a/node_modules/postcss-advanced-variables/index.mjs b/node_modules/postcss-advanced-variables/index.mjs
-index 4b2c1d4..75fce96 100644
+index 4b2c1d4..7bb8f4b 100644
 --- a/node_modules/postcss-advanced-variables/index.mjs
 +++ b/node_modules/postcss-advanced-variables/index.mjs
 @@ -6,27 +6,25 @@ import resolve from '@csstools/sass-import-resolve';
@@ -1310,14 +1322,14 @@ index 4b2c1d4..75fce96 100644
      const _getIncludeOpts = getIncludeOpts(rule),
 -          name = _getIncludeOpts.name,
 -          args = _getIncludeOpts.args; // the closest @mixin variable
+-
 +      name = _getIncludeOpts.name,
 +      args = _getIncludeOpts.args;
  
+-    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts); // if the @mixin variable exists
 +    // the closest @mixin variable
 +    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts);
  
--    const mixin = getClosestVariable(`@mixin ${name}`, rule.parent, opts); // if the @mixin variable exists
--
 +    // if the @mixin variable exists
      if (mixin) {
        // set @mixin variables on the @include at-rule
@@ -1479,7 +1491,7 @@ index 4b2c1d4..75fce96 100644
  function transformRule(rule, opts) {
    // update the rule selector with its variables replaced by their corresponding values
    rule.selector = getReplacedString(rule.selector, rule, opts);
-@@ -538,19 +577,22 @@ function transformRule(rule, opts) {
+@@ -538,22 +577,27 @@ function transformRule(rule, opts) {
  
  // tooling
  
@@ -1503,8 +1515,14 @@ index 4b2c1d4..75fce96 100644
 +      // transform the clone children
        return transformNode(clone, opts).then(() => {
          // replace the @content at-rule with the clone children
-         rule.parent.insertBefore(rule, clone.nodes);
-@@ -561,8 +603,9 @@ function transformContentAtrule(rule, opts) {
+-        rule.parent.insertBefore(rule, clone.nodes);
++        if (clone.nodes) {
++          rule.parent.insertBefore(rule, clone.nodes);
++        }
+         rule.remove();
+       });
+     } else {
+@@ -561,8 +605,9 @@ function transformContentAtrule(rule, opts) {
        manageUnresolved(rule, opts, '@content', 'Could not resolve the mixin for @content');
      }
    }
@@ -1515,7 +1533,7 @@ index 4b2c1d4..75fce96 100644
  const getClosestMixin = node => 'atrule' === node.type && 'mixin' === node.name ? node : node.parent && getClosestMixin(node.parent);
  
  // tooling
-@@ -574,14 +617,11 @@ function transformNode(node, opts) {
+@@ -574,14 +619,11 @@ function transformNode(node, opts) {
      }
    }));
  }
@@ -1530,7 +1548,7 @@ index 4b2c1d4..75fce96 100644
        if ('content' === name) {
          // transform @content at-rules
          return transformContentAtrule(child, opts);
-@@ -614,45 +654,48 @@ function transformRuleOrDecl(child, opts) {
+@@ -614,45 +656,48 @@ function transformRuleOrDecl(child, opts) {
        return transformRule(child, opts);
      }
    });
