@@ -604,8 +604,8 @@ Renamed many icons and replaced `Major` and `Minor` suffixes with `Icon`. See ta
 | `MarketsMinor`                      | `MarketsIcon`                   |
 | `MarketsFilledMajor`                | `MarketsFilledIcon`             |
 | `MarketsFilledMinor`                | `MarketsFilledIcon`             |
-| `MarkFulfilledMajor`                | `OrderFullfilledIcon`           |
-| `MarkFulfilledMinor`                | `OrderFullfilledIcon`           |
+| `MarkFulfilledMajor`                | `OrderFulfilledIcon`            |
+| `MarkFulfilledMinor`                | `OrderFulfilledIcon`            |
 | `MarkPaidMajor`                     | `ReceiptPaidIcon`               |
 | `MarkPaidMinor`                     | `ReceiptPaidIcon`               |
 | `MaximizeMajor`                     | `MaximizeIcon`                  |
@@ -734,8 +734,8 @@ Renamed many icons and replaced `Major` and `Minor` suffixes with `Icon`. See ta
 | `PhoneOutMinor`                     | `PhoneOutIcon`                  |
 | `PinMajor`                          | `PinFilledIcon`                 |
 | `PinMinor`                          | `PinFilledIcon`                 |
-| `PintrestMajor`                     | `LogoPintrestIcon`              |
-| `PintrestMinor`                     | `LogoPintrestIcon`              |
+| `PintrestMajor`                     | `LogoPinterestIcon`             |
+| `PintrestMinor`                     | `LogoPinterestIcon`             |
 | `PinUnfilledMajor`                  | `PinIcon`                       |
 | `PinUnfilledMinor`                  | `PinIcon`                       |
 | `PlanMajor`                         | `PlanIcon`                      |
@@ -913,8 +913,8 @@ Renamed many icons and replaced `Major` and `Minor` suffixes with `Icon`. See ta
 | `StoreStatusMinor`                  | `StatusIcon`                    |
 | `TabletMajor`                       | `TabletIcon`                    |
 | `TabletMinor`                       | `TabletIcon`                    |
-| `TapChipMajor`                      | `CreditCartTapChipIcon`         |
-| `TapChipMinor`                      | `CreditCartTapChipIcon`         |
+| `TapChipMajor`                      | `CreditCardTapChipIcon`         |
+| `TapChipMinor`                      | `CreditCardTapChipIcon`         |
 | `TaxMajor`                          | `TaxIcon`                       |
 | `TaxMinor`                          | `TaxIcon`                       |
 | `TaxFilledMajor`                    | `TaxFilledIcon`                 |
@@ -995,8 +995,8 @@ Renamed many icons and replaced `Major` and `Minor` suffixes with `Icon`. See ta
 | `TumblrMinor`                       | `LogoTumblrIcon`                |
 | `TwitchMajor`                       | `LogoTwitchIcon`                |
 | `TwitchMinor`                       | `LogoTwitchIcon`                |
-| `TwitterMajor`                      | `LogoTwitterIcon`               |
-| `TwitterMinor`                      | `LogoTwitterIcon`               |
+| `TwitterMajor`                      | `LogoXIcon`                     |
+| `TwitterMinor`                      | `LogoXIcon`                     |
 | `TypeMajor`                         | `TextFontIcon`                  |
 | `TypeMinor`                         | `TextFontIcon`                  |
 | `UnderlineMajor`                    | `TextUnderlineIcon`             |

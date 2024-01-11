@@ -270,7 +270,7 @@ import {
   LayoutLogoBlockIcon,
   MagicIcon,
   StoreManagedIcon,
-  OrderFullfilledIcon,
+  OrderFulfilledIcon,
   ReceiptPaidIcon,
   TargetFilledIcon,
   TargetIcon,
@@ -329,7 +329,7 @@ import {
   PhoneOutIcon,
   PinFilledIcon,
   PinIcon,
-  LogoPintrestIcon,
+  LogoPinterestIcon,
   PlanFilledIcon,
   PlanIcon,
   PlayCircleIcon,
@@ -410,7 +410,7 @@ import {
   StoreIcon,
   StatusIcon,
   TabletIcon,
-  CreditCartTapChipIcon,
+  CreditCardTapChipIcon,
   TaxFilledIcon,
   TaxIcon,
   TeamIcon,
@@ -449,7 +449,7 @@ import {
   AirplaneIcon,
   LogoTumblrIcon,
   LogoTwitchIcon,
-  LogoTwitterIcon,
+  LogoXIcon,
   TextFontIcon,
   TextUnderlineIcon,
   UndoIcon,
@@ -1061,8 +1061,8 @@ export function App() {
       <Icon source={MarketsIcon} />
       <Icon source={MarketsFilledIcon} />
       <Icon source={MarketsFilledIcon} />
-      <Icon source={OrderFullfilledIcon} />
-      <Icon source={OrderFullfilledIcon} />
+      <Icon source={OrderFulfilledIcon} />
+      <Icon source={OrderFulfilledIcon} />
       <Icon source={ReceiptPaidIcon} />
       <Icon source={ReceiptPaidIcon} />
       <Icon source={MaximizeIcon} />
@@ -1187,8 +1187,8 @@ export function App() {
       <Icon source={PhoneOutIcon} />
       <Icon source={PinFilledIcon} />
       <Icon source={PinFilledIcon} />
-      <Icon source={LogoPintrestIcon} />
-      <Icon source={LogoPintrestIcon} />
+      <Icon source={LogoPinterestIcon} />
+      <Icon source={LogoPinterestIcon} />
       <Icon source={PinIcon} />
       <Icon source={PinIcon} />
       <Icon source={PlanIcon} />
@@ -1362,8 +1362,8 @@ export function App() {
       <Icon source={StatusIcon} />
       <Icon source={TabletIcon} />
       <Icon source={TabletIcon} />
-      <Icon source={CreditCartTapChipIcon} />
-      <Icon source={CreditCartTapChipIcon} />
+      <Icon source={CreditCardTapChipIcon} />
+      <Icon source={CreditCardTapChipIcon} />
       <Icon source={TaxIcon} />
       <Icon source={TaxIcon} />
       <Icon source={TaxFilledIcon} />
@@ -1444,8 +1444,8 @@ export function App() {
       <Icon source={LogoTumblrIcon} />
       <Icon source={LogoTwitchIcon} />
       <Icon source={LogoTwitchIcon} />
-      <Icon source={LogoTwitterIcon} />
-      <Icon source={LogoTwitterIcon} />
+      <Icon source={LogoXIcon} />
+      <Icon source={LogoXIcon} />
       <Icon source={TextFontIcon} />
       <Icon source={TextFontIcon} />
       <Icon source={TextUnderlineIcon} />
