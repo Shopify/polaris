@@ -3,9 +3,10 @@
 .Tabs {
   display: flex;
   width: 100%;
+  overflow: auto;
 
-  @media #{$p-breakpoints-md-down} {
-    overflow: auto;
+  @media #{$p-breakpoints-md-up} {
+    overflow: visible;
   }
 }
 
@@ -43,7 +44,6 @@
   flex-wrap: nowrap;
 
   .Tab {
-    flex: none;
     justify-content: flex-start;
 
     @media #{$p-breakpoints-md-up} {
