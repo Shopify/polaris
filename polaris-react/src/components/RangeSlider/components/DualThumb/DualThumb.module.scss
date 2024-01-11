@@ -161,7 +161,7 @@ $range-output-size: 32px;
     $range-thumb-size-difference: 24px - 16px;
     opacity: 1;
     visibility: visible;
-    bottom: calc(24px + #{$range-thumb-size-difference});
+    bottom: calc(24px + $(range-thumb-size-difference));
   }
 }
 

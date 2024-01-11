@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 $indented-item-margin: calc(var(--p-space-500) + var(--p-space-050));
-$indented-item-width: calc(100% - #{$indented-item-margin});
+$indented-item-width: calc(100% - $(indented-item-margin));
 
 .Item {
   // stylelint-disable -- Polaris component custom properties

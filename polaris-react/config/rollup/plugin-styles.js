@@ -146,22 +146,8 @@ module.exports.styles = function styles({
         return null;
       }
 
-      let sassOutput;
-      try {
-        sassOutput = nodeSass
-          .renderSync({
-            data: source,
-            file: id,
-            outputStyle: 'compact',
-            includePaths: [path.dirname(id)],
-          })
-          .css.toString();
-      } catch (err) {
-        throw new Error(err.formatted);
-      }
-
       const postCssOutput = await styleProcessor
-        .process(sassOutput, {from: id})
+        .process(source, {from: id})
         .then((result) => ({
           css: result.css,
           tokens: result.messages.find(({plugin, type}) => {

@@ -38,7 +38,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - #{$top-bar-height});
+  max-height: calc(100vh - $(top-bar-height));
   margin: 0;
 
   @media (--p-breakpoints-sm-up) {

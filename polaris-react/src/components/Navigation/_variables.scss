@@ -178,7 +178,7 @@ $nav-animation-variables: (
     opacity: 1;
   }
   @for $i from 1 through nav-animation(items-to-stagger) {
-    &:nth-child(#{$i}) {
+    &:nth-child($(i)) {
       animation-delay: #{($i - 1) * nav-animation(stagger-interval)}ms;
     }
   }

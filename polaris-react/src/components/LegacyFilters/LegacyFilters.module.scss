@@ -30,14 +30,14 @@ $list-filters-footer-height: 70px;
 .LegacyFiltersDesktopContainerContent {
   width: 100%;
   height: calc(
-    100% - #{$list-filters-footer-height} - #{$list-filters-header-height}
+    100% - $(list-filters-footer-height) - $(list-filters-header-height)
   );
   padding: var(--p-space-200);
 }
 
 .LegacyFiltersMobileContainerContent {
   width: 100%;
-  height: calc(100% - #{$list-filters-header-height});
+  height: calc(100% - $(list-filters-header-height));
   padding: var(--p-space-200);
 }
 

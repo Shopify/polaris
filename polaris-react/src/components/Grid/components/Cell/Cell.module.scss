@@ -50,39 +50,39 @@
 }
 
 @for $i from 1 through 6 {
-  .Cell-#{$i}-column-xs {
-    grid-column-end: span #{$i};
+  .Cell-$(i)-column-xs {
+    grid-column-end: span $(i);
   }
 }
 
 @media (--p-breakpoints-sm-up) {
   @for $i from 1 through 6 {
-    .Cell-#{$i}-column-sm {
-      grid-column-end: span #{$i};
+    .Cell-$(i)-column-sm {
+      grid-column-end: span $(i);
     }
   }
 }
 
 @media (--p-breakpoints-md-up) {
   @for $i from 1 through 6 {
-    .Cell-#{$i}-column-md {
-      grid-column-end: span #{$i};
+    .Cell-$(i)-column-md {
+      grid-column-end: span $(i);
     }
   }
 }
 
 @media (--p-breakpoints-lg-up) {
   @for $i from 1 through 12 {
-    .Cell-#{$i}-column-lg {
-      grid-column-end: span #{$i};
+    .Cell-$(i)-column-lg {
+      grid-column-end: span $(i);
     }
   }
 }
 
 @media (--p-breakpoints-xl-up) {
   @for $i from 1 through 12 {
-    .Cell-#{$i}-column-xl {
-      grid-column-end: span #{$i};
+    .Cell-$(i)-column-xl {
+      grid-column-end: span $(i);
     }
   }
 }

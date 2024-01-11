@@ -3,7 +3,7 @@
 
 $icon-size: 18px;
 $new-input-height: 32px;
-$search-icon-width: calc(#{$icon-size} + var(--p-space-300));
+$search-icon-width: calc($(icon-size) + var(--p-space-300));
 
 .SearchField {
   // stylelint-disable -- Polaris component custom properties

@@ -39,7 +39,7 @@ $large-width: 980px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-height: calc(100vh - #{$vertical-spacing});
+  max-height: calc(100vh - $(vertical-spacing));
   background: var(--p-color-bg-surface);
   box-shadow: var(--p-shadow-600);
   overflow: hidden;
