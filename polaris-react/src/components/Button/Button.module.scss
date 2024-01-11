@@ -43,50 +43,24 @@
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 
+  svg {
+    color: var(--pc-button-icon-fill);
+  }
+
   @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-300);
     line-height: var(--p-font-line-height-400);
   }
 }
 
-// stylelint-disable selector-max-specificity -- Duplicate selectors to bump specificity to be greater than Icon's svg fill (0, 1, 1)
-// https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
-// Remove the duplicate selectors once `Icon` supports no fill so there won't be competing specificity
-.Button.Button svg {
-  fill: var(--pc-button-icon-fill);
-}
-
-.Button.Button:hover svg {
-  fill: var(--pc-button-icon-fill_hover);
-}
-
-.Button.Button:active,
-.Button.Button[data-state='open'] svg {
-  fill: var(--pc-button-icon-fill_active);
-}
-
-.Button.Button:disabled,
-.Button.Button[disabled],
-.disabled.disabled svg {
-  fill: var(--pc-button-icon-fill_disabled);
-}
-
-.pressed.pressed,
-.pressed.pressed:hover,
-.pressed.pressed:active,
-.pressed.pressed:focus-visible svg {
-  fill: var(--pc-button-icon-fill_pressed);
-}
-
-.Spinner.Spinner svg {
-  fill: var(--pc-button-icon-fill_disabled);
-}
-// stylelint-enable selector-max-specificity
-
 .Button:hover {
   background: var(--pc-button-bg_hover);
   color: var(--pc-button-color_hover);
   box-shadow: var(--pc-button-box-shadow_hover);
+
+  svg {
+    color: var(--pc-button-icon-fill_hover);
+  }
 }
 
 .Button:active,
@@ -94,6 +68,10 @@
   background: var(--pc-button-bg_active);
   color: var(--pc-button-color_active);
   box-shadow: var(--pc-button-box-shadow_active);
+
+  svg {
+    color: var(--pc-button-icon-fill_active);
+  }
 }
 
 .Button:focus-visible {
@@ -111,6 +89,10 @@
   box-shadow: none;
   user-select: none;
   pointer-events: none;
+
+  svg {
+    color: var(--pc-button-icon-fill_disabled);
+  }
 }
 
 .pressed,
@@ -120,6 +102,10 @@
   background: var(--pc-button-bg_pressed);
   color: var(--pc-button-color_pressed);
   box-shadow: var(--pc-button-box-shadow_pressed);
+
+  svg {
+    color: var(--pc-button-icon-fill_pressed);
+  }
 }
 
 // VARIANTS
@@ -382,6 +368,10 @@
   top: calc(var(--pc-button-padding-block) / 2 + 50%);
   left: 50%;
   transform: translate(-50%, -50%);
+
+  svg {
+    fill: var(--pc-button-icon-fill_disabled);
+  }
 }
 
 // BUTTON GROUP
