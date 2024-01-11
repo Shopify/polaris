@@ -3,6 +3,7 @@ const path = require('path');
 const {createFilter} = require('@rollup/pluginutils');
 const nodeSass = require('node-sass');
 const postcss = require('postcss');
+const postcssScss = require('postcss-scss');
 const cssModules = require('postcss-modules');
 
 module.exports.styles = function styles({
@@ -147,7 +148,7 @@ module.exports.styles = function styles({
       }
 
       const postCssOutput = await styleProcessor
-        .process(source, {from: id})
+        .process(source, {parser: postcssScss, from: id})
         .then((result) => ({
           css: result.css,
           tokens: result.messages.find(({plugin, type}) => {
