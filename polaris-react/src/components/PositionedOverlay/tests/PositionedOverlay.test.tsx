@@ -108,7 +108,7 @@ describe('<PositionedOverlay />', () => {
       );
 
       expect(spy).toHaveBeenCalledWith({
-        activatorRect: {height: 0, left: 0, top: 0, width: 0},
+        activatorRect: {height: 0, left: 0, top: 0, right: 0, width: 0},
         desiredHeight: 0,
         left: 0,
         measuring: false,
@@ -122,7 +122,7 @@ describe('<PositionedOverlay />', () => {
       mountWithApp(<PositionedOverlay {...mockProps} render={spy} />);
 
       expect(spy).toHaveBeenCalledWith({
-        activatorRect: {height: 0, left: 0, top: 0, width: 0},
+        activatorRect: {height: 0, left: 0, top: 0, right: 0, width: 0},
         desiredHeight: 0,
         left: undefined,
         measuring: true,
@@ -141,7 +141,12 @@ describe('<PositionedOverlay />', () => {
         mathModule,
         'calculateHorizontalPosition',
       );
-      calculateHorizontalPositionMock.mockReturnValue(250);
+
+      calculateHorizontalPositionMock.mockReturnValue({
+        left: 250,
+        width: null,
+      });
+
       getRectForNodeMock = jest.spyOn(geometry, 'getRectForNode');
       getRectForNodeMock.mockReturnValue({
         x: 100,
