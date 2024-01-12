@@ -129,7 +129,7 @@
     z-index: var(--pc-resource-item-clickable-stacking-order);
     border-radius: var(--p-border-radius-0);
 
-    @media #{$p-breakpoints-sm-up} {
+    @media (--p-breakpoints-sm-up) {
       border-radius: var(--p-border-radius-300);
 
       &:first-of-type {
@@ -146,7 +146,7 @@
     &:only-child {
       border-radius: var(--p-border-radius-0);
 
-      @media #{$p-breakpoints-sm-up} {
+      @media (--p-breakpoints-sm-up) {
         border-radius: var(--p-border-radius-300);
       }
     }
@@ -155,7 +155,7 @@
     &.selectable {
       border-radius: var(--p-border-radius-0);
 
-      @media #{$p-breakpoints-sm-up} {
+      @media (--p-breakpoints-sm-up) {
         // stylelint-disable-next-line -- set border radius for last selectable item to match ResourceList border radius
         &:last-child {
           border-bottom-left-radius: var(--p-border-radius-300);

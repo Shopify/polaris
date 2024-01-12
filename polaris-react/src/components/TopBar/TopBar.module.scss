@@ -16,7 +16,7 @@ $right-column: 1fr;
   background-color: var(--p-color-bg-inverse);
   gap: var(--p-space-100);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     gap: var(--p-space-600);
     grid-template-columns: $left-column-md-up $search-column $right-column;
   }
@@ -41,7 +41,7 @@ $right-column: 1fr;
 
 .LogoDisplayControl {
   display: none;
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     display: flex;
   }
 }
@@ -78,12 +78,12 @@ $right-column: 1fr;
 
 .ContextControl {
   display: none;
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     width: $layout-width-nav-base;
     display: block;
   }
 
-  @media #{$p-breakpoints-xl-up} {
+  @media (--p-breakpoints-xl-up) {
     width: $layout-width-nav-base;
   }
 }
@@ -118,7 +118,7 @@ $right-column: 1fr;
     width: calc(100% + var(--p-space-500));
     height: calc(100% + var(--p-space-500));
   }
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     display: none;
   }
 
@@ -149,7 +149,7 @@ $right-column: 1fr;
   justify-content: center;
   height: 100%;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     position: relative;
   }
 }

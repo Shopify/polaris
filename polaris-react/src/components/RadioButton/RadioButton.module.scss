@@ -103,7 +103,7 @@
 
   // ::before is the selected dot, ::after the focus-ring
 
-  @media #{$p-breakpoints-md-down} {
+  @media (--p-breakpoints-md-down) {
     // stylelint-disable-next-line -- Polaris component custom properties
     --pc-icon-size-small: 10px;
   }

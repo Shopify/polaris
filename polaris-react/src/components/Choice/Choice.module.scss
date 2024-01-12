@@ -128,7 +128,7 @@
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-choice-size: 18px;
 
-  @media #{$p-breakpoints-md-down} {
+  @media (--p-breakpoints-md-down) {
     // stylelint-disable-next-line -- Polaris component custom properties
     --pc-choice-size: 20px;
   }
@@ -158,7 +158,7 @@
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-choice-size: 18px;
 
-  @media #{$p-breakpoints-md-down} {
+  @media (--p-breakpoints-md-down) {
     // stylelint-disable-next-line -- Polaris component custom properties
     --pc-choice-size: 20px;
   }

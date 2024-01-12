@@ -6,7 +6,7 @@
   border-top: 0;
   padding: var(--p-space-400);
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     padding: var(--p-space-400) 0;
   }
 }

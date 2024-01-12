@@ -40,7 +40,7 @@ html {
   font-sizes on descendant elements:
 */
 @supports (font: -apple-system-body) {
-  @media #{$p-breakpoints-sm-down} {
+  @media (--p-breakpoints-sm-down) {
     html {
       font: -apple-system-body;
     }

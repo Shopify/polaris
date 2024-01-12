@@ -58,7 +58,7 @@ $button-size: 20px;
       color: var(--p-color-text-disabled);
     }
 
-    @media #{$p-breakpoints-sm-up} {
+    @media (--p-breakpoints-sm-up) {
       font-size: var(--p-font-size-300);
     }
   }
@@ -81,7 +81,7 @@ $button-size: 20px;
     padding-inline-end: 0;
   }
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     min-height: $height;
   }
 }
@@ -96,7 +96,7 @@ $button-size: 20px;
   white-space: nowrap;
   vertical-align: middle;
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     font-size: var(--p-font-size-300);
   }
 }
@@ -166,7 +166,7 @@ $button-size: 20px;
     font-size: var(--p-font-size-325);
     line-height: var(--p-font-line-height-500);
 
-    @media #{$p-breakpoints-sm-up} {
+    @media (--p-breakpoints-sm-up) {
       font-size: var(--p-font-size-300);
     }
   }

@@ -126,7 +126,7 @@
   flex-grow: 0;
   margin-left: var(--p-space-200);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     margin-left: 0;
   }
 }
