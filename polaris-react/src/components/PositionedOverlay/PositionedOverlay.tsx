@@ -40,7 +40,6 @@ export interface PositionedOverlayProps {
   preventInteraction?: boolean;
   classNames?: string;
   zIndexOverride?: number;
-  transform?: string;
   render(overlayDetails: OverlayDetails): React.ReactNode;
   onScrollOut?(): void;
 }
@@ -136,11 +135,9 @@ export class PositionedOverlay extends PureComponent<
       preventInteraction,
       classNames: propClassNames,
       zIndexOverride,
-      transform,
     } = this.props;
 
     const style = {
-      transform,
       top: top == null || isNaN(top) ? undefined : top,
       left: left == null || isNaN(left) ? undefined : left,
       right: right == null || isNaN(right) ? undefined : right,
