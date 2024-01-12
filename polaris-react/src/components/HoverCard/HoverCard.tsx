@@ -11,27 +11,25 @@ interface BaseHoverCardProps {
   id?: string;
   /** The activator markup to render that triggers the overlay. Only wrap individual commerce objects rendered by themselves. */
   children?: React.ReactNode;
-  /** The preferred direction to open the overlay */
+  /** The preferred placement of the overlay relative to its activator */
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
-  /** The preferred alignment of the popover relative to its activator */
+  /** The preferred alignment of the overlay relative to its activator */
   preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   /** Show or hide the overlay */
   active?: boolean;
-  /** The activator element currently triggering the overlay. Use to dynamically trigger a single, standalone overlay with several of the same commerce object in close context, like a column of customer names in an index table of orders. */
+  /** The activator element currently triggering the overlay. Use to dynamically trigger a single, standalone overlay with several of the same commerce object type in close context, like a column of customer names in an index table of orders. */
   activator?: HTMLElement | null;
   /**
    * The element type to wrap the activator in
    * @default 'span'
    */
   activatorWrapper?: string;
-  /** Style activatorWrapper to fill parent dimensions and remove overlay margin
+  /** Whether the activatorWrapper should fill its parent's dimensions and remove overlay margin. Set to true if the activator is within a table cell.
    * @default false
    */
   snapToParent?: boolean;
   /** Minimum pixel width for the overlay */
   minWidth?: number;
-  /** Delay in milliseconds while hovering over an element before the overlay is visible */
-  hoverDelay?: number;
   /** Content to render inside of the overlay. */
   content: React.ReactNode;
   /** Override on the default z-index of 400 */
@@ -84,7 +82,6 @@ export function HoverCard({
   activatorWrapper = 'span',
   snapToParent = false,
   minWidth,
-  hoverDelay,
   content,
   zIndexOverride,
   id: providedId,
@@ -106,7 +103,6 @@ export function HoverCard({
     handleMouseLeaveOverlay,
   } = useHoverCardActivatorWrapperProps({
     toggleActive,
-    hoverDelay,
     ref,
   });
 
