@@ -19,7 +19,7 @@
         "success": "Operazione riuscita",
         "warning": "Avvertimento",
         "attention": "Attenzione",
-        "new": "Nuovo",
+        "new": "Nuova",
         "critical": "Critico",
         "readOnly": "Sola lettura",
         "enabled": "Abilitato"
@@ -337,7 +337,7 @@
     "IndexTable": {
       "emptySearchTitle": "Impossibile trovare {resourceNamePlural}",
       "emptySearchDescription": "Prova a cambiare i filtri o il termine di ricerca",
-      "onboardingBadgeText": "Novità",
+      "onboardingBadgeText": "Nuova",
       "resourceLoadingAccessibilityLabel": "Caricamento {resourceNamePlural} in corso",
       "selectAllLabel": "Seleziona tutto: {resourceNamePlural}",
       "selected": "{selectedItemsCount} selezionati",

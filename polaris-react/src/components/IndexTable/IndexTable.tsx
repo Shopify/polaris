@@ -2,6 +2,7 @@ import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 import {themeDefault, toPx} from '@shopify/polaris-tokens';
+import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
@@ -65,6 +66,8 @@ interface IndexTableHeadingBase {
    * When not specified, the value from IndexTable.defaultSortDirection will be used.
    */
   defaultSortDirection?: IndexTableSortDirection;
+  /** Horizontal end spacing around title. Accepts a spacing token. */
+  paddingBlockEnd?: SpaceScale;
 }
 
 interface IndexTableHeadingTitleString extends IndexTableHeadingBase {
@@ -933,6 +936,12 @@ function IndexTableBase({
       headingContent = heading.title;
     }
 
+    const style = {
+      '--pc-index-table-heading-extra-padding-right': heading.paddingBlockEnd
+        ? `var(--p-space-${heading.paddingBlockEnd})`
+        : '0',
+    } as React.CSSProperties;
+
     if (sortable?.[index]) {
       const isCurrentlySorted = index === sortColumnIndex;
       const isPreviouslySorted =
@@ -1025,20 +1034,35 @@ function IndexTableBase({
       if (!heading.tooltipContent) {
         return (
           // Regular header with sort icon and sort direction tooltip
-          <Tooltip
-            {...defaultTooltipProps}
-            content={sortTooltipContent}
-            preferredPosition="above"
+          <div
+            style={style}
+            className={classNames(
+              heading.paddingBlockEnd &&
+                styles['TableHeading-extra-padding-right'],
+            )}
           >
-            {sortMarkup}
-          </Tooltip>
+            <Tooltip
+              {...defaultTooltipProps}
+              content={sortTooltipContent}
+              preferredPosition="above"
+            >
+              {sortMarkup}
+            </Tooltip>
+          </div>
         );
       }
 
       if (heading.tooltipContent) {
         return (
           // Header text and sort icon have separate tooltips
-          <div className={styles.SortableTableHeadingWithCustomMarkup}>
+          <div
+            className={classNames(
+              styles.SortableTableHeadingWithCustomMarkup,
+              heading.paddingBlockEnd &&
+                styles['TableHeading-extra-padding-right'],
+            )}
+            style={style}
+          >
             <UnstyledButton {...defaultSortButtonProps}>
               <Tooltip {...defaultHeaderTooltipProps}>
                 <span className={styles.TableHeadingUnderline}>
@@ -1062,20 +1086,37 @@ function IndexTableBase({
     if (heading.tooltipContent) {
       return (
         // Non-sortable header with tooltip
-        <Tooltip {...defaultHeaderTooltipProps} activatorWrapper="span">
-          <span
-            className={classNames(
-              styles.TableHeadingUnderline,
-              styles.SortableTableHeaderWrapper,
-            )}
-          >
-            {headingContent}
-          </span>
-        </Tooltip>
+        <div
+          style={style}
+          className={classNames(
+            heading.paddingBlockEnd &&
+              styles['TableHeading-extra-padding-right'],
+          )}
+        >
+          <Tooltip {...defaultHeaderTooltipProps} activatorWrapper="span">
+            <span
+              className={classNames(
+                styles.TableHeadingUnderline,
+                styles.SortableTableHeaderWrapper,
+              )}
+            >
+              {headingContent}
+            </span>
+          </Tooltip>
+        </div>
       );
     }
 
-    return headingContent;
+    return (
+      <div
+        style={style}
+        className={classNames(
+          heading.paddingBlockEnd && styles['TableHeading-extra-padding-right'],
+        )}
+      >
+        {headingContent}
+      </div>
+    );
   }
 
   function handleSelectPage(checked: boolean) {
@@ -1083,9 +1124,10 @@ function IndexTableBase({
   }
 
   function renderStickyHeading(heading: IndexTableHeading, index: number) {
+    const position = selectable ? index + 1 : index;
     const headingStyle =
-      tableHeadingRects.current && tableHeadingRects.current.length > index
-        ? {minWidth: tableHeadingRects.current[index].offsetWidth}
+      tableHeadingRects.current && tableHeadingRects.current.length > position
+        ? {minWidth: tableHeadingRects.current[position].offsetWidth}
         : undefined;
     const headingAlignment = heading.alignment || 'start';
 

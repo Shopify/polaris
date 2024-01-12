@@ -1,5 +1,73 @@
 # Changelog
 
+## 12.9.0
+
+### Minor Changes
+
+- [#11410](https://github.com/Shopify/polaris/pull/11410) [`d8ccd26ad`](https://github.com/Shopify/polaris/commit/d8ccd26ad7007914ab48c718a380a8f9cc802629) Thanks [@lgriffee](https://github.com/lgriffee)! - - Updated `SkeletonTabs` to reflect `Tabs` design
+  - Added `fitted` prop
+
+### Patch Changes
+
+- [#11433](https://github.com/Shopify/polaris/pull/11433) [`2ddc47fe2`](https://github.com/Shopify/polaris/commit/2ddc47fe2d35778192925b2819d228cb13ee856b) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed `Button` spinner icon alignment
+
+* [#11436](https://github.com/Shopify/polaris/pull/11436) [`72471750d`](https://github.com/Shopify/polaris/commit/72471750d2fb12397a3f1fd7f5f5814efc435b85) Thanks [@alex-page](https://github.com/alex-page)! - Revert "[Modal] Add `flex-grow` to `Modal` body to fix footer position
+
+## 12.8.0
+
+### Minor Changes
+
+- [#11430](https://github.com/Shopify/polaris/pull/11430) [`567048b59`](https://github.com/Shopify/polaris/commit/567048b596ae2bdae62978b0a6ab894c7ebd4a55) Thanks [@matallo](https://github.com/matallo)! - - Fixed prefix, prefix icon, and suffix icon for `TextField` component with `magic` tone
+
+* [#11354](https://github.com/Shopify/polaris/pull/11354) [`eab40d54c`](https://github.com/Shopify/polaris/commit/eab40d54cf273aa62e8a5bead64390d7e5d58a01) Thanks [@yurm04](https://github.com/yurm04)! - Fixed `Modal` footer position
+
+### Patch Changes
+
+- [#11429](https://github.com/Shopify/polaris/pull/11429) [`b1ecec131`](https://github.com/Shopify/polaris/commit/b1ecec131f7fc4a82f80b569cd228c8120815ab0) Thanks [@sophschneider](https://github.com/sophschneider)! - Bumped `Button` icon fill specificity to always be greater than `Icon` fill
+
+## 12.7.0
+
+### Minor Changes
+
+- [#11304](https://github.com/Shopify/polaris/pull/11304) [`9c57cc1c2`](https://github.com/Shopify/polaris/commit/9c57cc1c2b48ad7cc362b45dfedc23feca865a0a) Thanks [@yurm04](https://github.com/yurm04)! - [Tooltip] Added `min-width` to `TooltipOverlay`
+
+* [#11403](https://github.com/Shopify/polaris/pull/11403) [`2bcc7bda5`](https://github.com/Shopify/polaris/commit/2bcc7bda594c4339f140d829b0e46a1daf3d33e5) Thanks [@yurm04](https://github.com/yurm04)! - [Navigation] Updated `padding-top` to `space-100` for small viewports
+
+- [#11231](https://github.com/Shopify/polaris/pull/11231) [`3a0228815`](https://github.com/Shopify/polaris/commit/3a02288151800ab5a3d82b439a0bf579fb3db1dc) Thanks [@thyleung](https://github.com/thyleung)! - - Added the `paddingBlockEnd` prop to the `IndexTableHeading` interface to support additional right padding
+  - Fixed sortable `IndexTable` headings with a tooltip not being right aligned properly
+
+* [#9019](https://github.com/Shopify/polaris/pull/9019) [`ba1c813c2`](https://github.com/Shopify/polaris/commit/ba1c813c2166ae23ae5d67cae57389aac9464868) Thanks [@jesstelford](https://github.com/jesstelford)! - Upgrade to Storybook v7 with Vite
+
+- [#11400](https://github.com/Shopify/polaris/pull/11400) [`befded29d`](https://github.com/Shopify/polaris/commit/befded29dcdf7509a60d33e2bbbf2ec8b05db515) Thanks [@yurm04](https://github.com/yurm04)! - [Dialog] Removed `sizeSmall` max-width for small viewports
+
+* [#11374](https://github.com/Shopify/polaris/pull/11374) [`f631b229f`](https://github.com/Shopify/polaris/commit/f631b229fbb455a1586ea59584085be0f131ea71) Thanks [@kyledurand](https://github.com/kyledurand)! - Added as prop to InlineStack
+  Added span and list item element types to BlockStack
+
+- [#11212](https://github.com/Shopify/polaris/pull/11212) [`7d056dea2`](https://github.com/Shopify/polaris/commit/7d056dea2fa2f5806fe0839aa4abb8f5ec53a01e) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Refactored `Button` styles and bevel
+
+### Patch Changes
+
+- [#11411](https://github.com/Shopify/polaris/pull/11411) [`7202e1605`](https://github.com/Shopify/polaris/commit/7202e1605d353e38b2849ffbd73aa5669e3c0557) Thanks [@sophschneider](https://github.com/sophschneider)! - Changed `IndexTable` scroll bar container z-index so that it is under the `Card` shadow bevel
+
+* [#11363](https://github.com/Shopify/polaris/pull/11363) [`c356dd5e5`](https://github.com/Shopify/polaris/commit/c356dd5e57e4e59f34ca1a151b85dabdb4ce6165) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fixed Button padding regression in Safari 14
+
+- [#11364](https://github.com/Shopify/polaris/pull/11364) [`bf9539536`](https://github.com/Shopify/polaris/commit/bf953953673a7b079e2695f25fb2c4864894c2c8) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Fixes shadow and bevel of basic button
+
+* [#11224](https://github.com/Shopify/polaris/pull/11224) [`ea8e5510e`](https://github.com/Shopify/polaris/commit/ea8e5510e10af167c2bca38b75caacb6f448361c) Thanks [@sophschneider](https://github.com/sophschneider)! - Updated margins for TextField prefixes
+
+- [#11366](https://github.com/Shopify/polaris/pull/11366) [`b62cf7356`](https://github.com/Shopify/polaris/commit/b62cf7356caa74c162b500dd16d0871081adfef7) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fixed segmented button divider regression
+
+* [#11383](https://github.com/Shopify/polaris/pull/11383) [`a1c141669`](https://github.com/Shopify/polaris/commit/a1c14166974d63e8aa89889172ca45228b75b906) Thanks [@jhalvorson](https://github.com/jhalvorson)! - [IndexTable] use the correct index for the sticky header when rows are selectable
+
+- [#11373](https://github.com/Shopify/polaris/pull/11373) [`97c3979ba`](https://github.com/Shopify/polaris/commit/97c3979ba4648b621774c29eb2463d9050dab599) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fixed Button active state regression when used with activators such as Popover
+
+* [#11342](https://github.com/Shopify/polaris/pull/11342) [`9484d55ca`](https://github.com/Shopify/polaris/commit/9484d55ca7a5b99f0cbb02676fd0f28fe92fc3f5) Thanks [@jhalvorson](https://github.com/jhalvorson)! - [IndexTable] Fixed aligment issues with the sticky header
+
+- [#11401](https://github.com/Shopify/polaris/pull/11401) [`5604728ee`](https://github.com/Shopify/polaris/commit/5604728ee1a117f29e0450b354ea46f44506c74f) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - Changed the icon color from icon-magic to text-magic for the Magic tone of the Badge component.
+
+- Updated dependencies [[`9f7e5b682`](https://github.com/Shopify/polaris/commit/9f7e5b682f93a3f241e7162eef35dd42b25f7afa)]:
+  - @shopify/polaris-tokens@8.5.0
+
 ## 12.6.0
 
 ### Minor Changes

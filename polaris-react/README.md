@@ -62,7 +62,7 @@ ReactDOM.render(
 <link rel="preconnect" href="https://cdn.shopify.com/" />
 <link
   rel="stylesheet"
-  href="https://cdn.shopify.com/static/fonts/inter/inter.css"
+  href="https://cdn.shopify.com/static/fonts/inter/v4/styles.css"
 />
 ```
 

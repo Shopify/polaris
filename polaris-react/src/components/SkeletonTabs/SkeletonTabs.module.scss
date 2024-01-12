@@ -1,33 +1,60 @@
+@import '../../styles/common';
+
 .Tabs {
   display: flex;
   width: 100%;
-  border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
+  overflow: auto;
+
+  @media #{$p-breakpoints-md-up} {
+    overflow: visible;
+  }
 }
 
 .Tab {
   position: relative;
-  padding: calc(var(--p-space-500) + var(--p-space-050)) var(--p-space-400);
+  display: flex;
+  align-items: center;
+  // Tab height + padding
+  height: calc(var(--p-height-800) + var(--p-height-400));
+  padding: var(--p-space-200) var(--p-space-300);
+  margin-right: var(--p-space-100);
 
-  &:first-child::before {
-    background-color: var(--p-color-border-hover);
+  &:last-child {
+    margin-right: 0;
   }
 
-  &::before {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: var(--p-space-300);
-    right: var(--p-space-300);
-    height: var(--p-border-width-050);
-    border-top-left-radius: var(--p-border-radius-100);
-    border-top-right-radius: var(--p-border-radius-100);
+  @media #{$p-breakpoints-md-up} {
+    // Tab height + padding
+    height: calc(var(--p-height-700) + var(--p-height-400));
   }
 }
 
-.Tab-short {
-  width: 80px;
+.TabText {
+  width: var(--p-width-1600);
+  height: var(--p-space-300);
+  background-color: var(--p-color-bg-fill-tertiary);
+  border-radius: var(--p-border-radius-100);
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: grayText;
+  }
 }
 
-.Tab-long {
-  width: 100px;
+.fitted {
+  flex-wrap: nowrap;
+
+  .Tab {
+    justify-content: flex-start;
+
+    @media #{$p-breakpoints-md-up} {
+      flex: 1 1 100%;
+      justify-content: center;
+    }
+  }
+
+  .TabText {
+    @media #{$p-breakpoints-md-up} {
+      width: 100%;
+    }
+  }
 }
