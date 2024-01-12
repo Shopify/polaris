@@ -36,6 +36,7 @@ export interface ItemProps extends ItemURLDetails {
   expanded?: boolean;
   shouldResizeIcon?: boolean;
   truncateText?: boolean;
+  ariaDescribedBy?: string;
 }
 
 export interface SubNavigationItem extends ItemURLDetails {
