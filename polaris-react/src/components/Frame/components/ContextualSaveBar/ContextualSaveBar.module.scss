@@ -30,7 +30,7 @@
 .LogoContainer {
   display: none;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     display: flex;
     flex: 0 0 $layout-width-nav-base;
     align-items: center;
@@ -52,11 +52,11 @@
   margin: 0 auto;
   padding: 0 var(--p-space-400);
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     padding: 0 var(--p-space-500);
   }
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     padding: 0 var(--p-space-800);
   }
 }
@@ -118,7 +118,7 @@
 .ContextControl {
   display: none;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     display: block;
     width: $layout-width-nav-base;
   }

@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .imageContained {
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     position: initial;
     width: 100%;
   }

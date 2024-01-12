@@ -24,7 +24,7 @@ $feature-width: 350px;
 }
 
 .Action {
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     margin-top: var(--p-space-600);
   }
 }

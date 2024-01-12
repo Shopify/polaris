@@ -28,7 +28,7 @@
     $borderRadius: var(--p-border-radius-0)
   );
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     @include shadow-bevel(
       $boxShadow: var(--p-shadow-200),
       $borderRadius: var(--p-border-radius-300)

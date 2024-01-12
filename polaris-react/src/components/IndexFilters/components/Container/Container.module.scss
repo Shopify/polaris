@@ -7,7 +7,7 @@
   background: var(--p-color-bg-surface);
 }
 
-@media #{$p-breakpoints-sm-down} {
+@media (--p-breakpoints-sm-down) {
   .Container {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
