@@ -6,32 +6,6 @@ import {Portal} from '../Portal';
 import {useHoverCardActivatorWrapperProps} from './hooks';
 import {HoverCardOverlay} from './components';
 
-/*
-
-NOTES
-
-Mon 12/4
-- Right now, HoverCard is just a lightweight, hover only Tooltip
-- What we want is to also support hovercard "groups" taking from the approach prototyped by QC that renders a single overlay and updates its children and position based on the currently hovered over activator's position
-- Thinking there's two ways to use this component:
-  - The current API of wrapping the children with the HoverCard and rendering it in place (good for single overlay use cases, like OrderDetails CustomerCard)
-  - Rendering the HoverCard like a Modal (anywhere in the markup) and moving it to the nearest activator
-- The things I want to abstract away to minimize configuration:
-  - Position tracking: we don't want every instance having to track mouse events and update the DOM, that should be the job of the component
-  - Updating child contents: we don't want folks to have to manage state of what's currently hovered etc, it should "just work" and we can do that in a few ways but having a renderChildren callback is the most familiar among other APIs in the system
-
-Tues 12/5
-- Made API adjustments in attempt to render single hovercard with activator updated on hover change
-- This needs more work because the activators all need to be wrapped with the WrapperComponent that has the listeners etc right now
-- Potential to set those on the activator directly _or_ wrap the component in composition if there was a hook to consume (will explore tomorrow)
-
-Wed 12/13
-- Got component working again!
-- Context was not the solution, simplified things
--  Next steps: extract out transition and mouse handlers into hook used internally and by consumers to wire up handlers to activator(s)
-
-*/
-
 interface BaseHoverCardProps {
   /** Unique identifier for the overlay */
   id?: string;
@@ -54,6 +28,8 @@ interface BaseHoverCardProps {
    * @default false
    */
   snapToParent?: boolean;
+  /** Minimum pixel width for the overlay */
+  minWidth?: number;
   /** Delay in milliseconds while hovering over an element before the overlay is visible */
   hoverDelay?: number;
   /** Content to render inside of the overlay. */
@@ -107,6 +83,7 @@ export function HoverCard({
   active = false,
   activatorWrapper = 'span',
   snapToParent = false,
+  minWidth,
   hoverDelay,
   content,
   zIndexOverride,
@@ -146,6 +123,7 @@ export function HoverCard({
           active={isActive}
           activator={activatorElement}
           snapToParent={snapToParent}
+          minWidth={minWidth}
           zIndexOverride={zIndexOverride}
           preferredAlignment={preferredAlignment}
           preferredPosition={preferredPosition}
