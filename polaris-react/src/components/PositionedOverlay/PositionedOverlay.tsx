@@ -279,7 +279,6 @@ export class PositionedOverlay extends PureComponent<
         const overlayRect = fullWidth
           ? new Rect({...currentOverlayRect, width: activatorRect.width})
           : currentOverlayRect;
-        // : getRectForNode(this.overlay.firstElementChild);
 
         // If `body` is 100% height, it still acts as though it were not constrained to that size. This adjusts for that.
         if (scrollableElement === document.body) {
@@ -299,6 +298,12 @@ export class PositionedOverlay extends PureComponent<
           this.overlay.firstChild instanceof HTMLElement
             ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
             : {activator: 0, container: 0, horizontal: 0};
+
+        const overlayMinWidth =
+          this.overlay.firstElementChild &&
+          this.overlay.firstChild instanceof HTMLElement
+            ? getMinWidthForNode(this.overlay.firstElementChild as HTMLElement)
+            : 0;
 
         const containerRect = windowRect();
         const zIndexForLayer = getZIndexForLayerFromNode(activator);
@@ -326,11 +331,12 @@ export class PositionedOverlay extends PureComponent<
           preferredAlignment,
           scrollableContainerRect,
           positionHorizontal ? preferredPosition : undefined,
+          overlayMinWidth,
         );
 
         const chevronOffset =
           activatorRect.center.x -
-          horizontalPosition.position +
+          horizontalPosition.left +
           overlayMargins.horizontal * 2;
 
         let width = null;
@@ -343,12 +349,12 @@ export class PositionedOverlay extends PureComponent<
             measuring: false,
             activatorRect: getRectForNode(activator),
             left:
-              preferredAlignment !== 'right' || preferredPosition === 'left'
-                ? horizontalPosition.position
+              preferredAlignment !== 'right' || positionHorizontal
+                ? horizontalPosition.left
                 : undefined,
             right:
-              preferredAlignment === 'right' || preferredPosition === 'right'
-                ? horizontalPosition.position
+              preferredAlignment === 'right'
+                ? horizontalPosition.left
                 : undefined,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
@@ -382,6 +388,11 @@ function getMarginsForNode(node: HTMLElement) {
     container: parseFloat(nodeStyles.marginBottom || '0'),
     horizontal: parseFloat(nodeStyles.marginLeft || '0'),
   };
+}
+
+function getMinWidthForNode(node: HTMLElement) {
+  const nodeStyles = window.getComputedStyle(node);
+  return parseFloat(nodeStyles.minWidth || '0');
 }
 
 function getZIndexForLayerFromNode(node: HTMLElement) {
