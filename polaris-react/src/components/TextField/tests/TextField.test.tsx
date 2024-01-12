@@ -2416,21 +2416,6 @@ describe('<TextField />', () => {
   });
 
   describe('borderless', () => {
-    it('adds a borderless className when borderless prop is passed', () => {
-      const textField = mountWithApp(
-        <TextField
-          label="TextField"
-          onChange={noop}
-          autoComplete="off"
-          variant="borderless"
-        />,
-      );
-
-      expect(textField).toContainReactComponent('div', {
-        className: expect.stringContaining(styles.borderless),
-      });
-    });
-
     it('adds a borderless className when variant=`borderless` prop is passed', () => {
       const textField = mountWithApp(
         <TextField
