@@ -6,6 +6,7 @@ const postcssCustomMedia = require('postcss-custom-media');
 const postcssGlobalData = require('@csstools/postcss-global-data');
 const postcssAdvancedVariables = require('postcss-advanced-variables');
 const postcssNesting = require('postcss-nesting');
+const postcssDiscardComments = require('postcss-discard-comments');
 
 const mediaQueriesCssPath = path.resolve(
   __dirname,
@@ -15,7 +16,6 @@ const mediaQueriesCssPath = path.resolve(
 module.exports = [
   // SASS-ish-support
   postcssAdvancedVariables(),
-
   postcssNesting({
     // The way native CSS nesting & SASS nesting behave with complex selectors
     // differ; SASS expands out every selector into a comma separated list, but
@@ -35,4 +35,5 @@ module.exports = [
     replace: true,
     propList: ['*'],
   }),
+  postcssDiscardComments(),
 ];
