@@ -143,8 +143,8 @@ describe('<PositionedOverlay />', () => {
       );
 
       calculateHorizontalPositionMock.mockReturnValue({
-        position: 250,
-        width: 0,
+        left: 250,
+        width: null,
       });
 
       getRectForNodeMock = jest.spyOn(geometry, 'getRectForNode');

@@ -3,13 +3,16 @@
 $vertical-motion-offset: -5px;
 
 .HoverCard {
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
+  --pc-hovercard-min-width: max-content;
   opacity: 0;
   position: relative;
   display: flex;
   max-width: max-content;
-  min-width: max-content;
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
+  min-width: var(--pc-hovercard-min-width);
   background: var(--p-color-bg-surface);
-  will-change: opacity, left, top, height;
+  will-change: opacity, left, top, width, height;
   margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
   box-shadow: var(--p-shadow-500);
   border-radius: var(--p-border-radius-300);
@@ -67,11 +70,24 @@ $vertical-motion-offset: -5px;
   }
 }
 
+.ContentContainer {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  background: var(--p-color-bg-surface);
+  border-radius: var(--p-space-300);
+
+  /* Prevent Scrollable's box shadows overflowing the rounded corners of this
+   * element on Safari prior to tech preview version 156.
+   * See: https://bugs.webkit.org/show_bug.cgi?id=68196 */
+  isolation: isolate;
+}
+
 .Content {
   opacity: 1;
-  position: relative;
-  overflow: hidden;
   display: flex;
+  width: 100%;
   flex-direction: column;
   transition: opacity var(--p-motion-duration-100) ease-in-out;
+  word-wrap: break-word;
 }
