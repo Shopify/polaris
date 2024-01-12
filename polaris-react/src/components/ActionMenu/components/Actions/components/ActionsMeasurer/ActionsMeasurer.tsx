@@ -72,7 +72,6 @@ export function ActionsMeasurer({
   }, [handleMeasurementProp]);
 
   useEffect(() => {
-    console.log('should fire handle measurement');
     handleMeasurement();
   }, [handleMeasurement, actions, groups]);
 

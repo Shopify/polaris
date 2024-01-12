@@ -1,4 +1,5 @@
 import React, {useCallback, useState} from 'react';
+import type {CustomRoot} from 'tests/utilities';
 import {mountWithApp} from 'tests/utilities';
 
 import {ActionMenu} from '../../..';
@@ -50,13 +51,16 @@ describe('<Actions />', () => {
   });
 
   describe('Actions', () => {
-    it('renders SecondaryActions', () => {
+    beforeEach(() => {
       mockGetVisibleAndHiddenActionsIndices({
         visibleActions: [0, 1, 2],
-        visibleGroups: [],
+        visibleGroups: [0, 1, 2],
         hiddenActions: [],
         hiddenGroups: [],
       });
+    });
+
+    it('renders SecondaryActions', () => {
       const actionsBeforeOverriddenOrder: ActionMenuProps['actions'] = [
         {content: 'mock content 0'},
         {content: 'mock content 1'},
@@ -67,24 +71,12 @@ describe('<Actions />', () => {
         <ActionMenu actions={actionsBeforeOverriddenOrder} />,
       );
 
-      wrapper.act(() => {
-        wrapper.find(ActionsMeasurer)!.trigger('handleMeasurement', {
-          containerWidth: 100,
-          disclosureWidth: 100,
-          hiddenActionsWidths: [100],
-        });
-      });
+      forceMeasurement(wrapper);
 
       expect(wrapper.findAll(SecondaryAction)).toHaveLength(3);
     });
 
     it('renders a <Tooltip /> when helpText is set on an action', () => {
-      mockGetVisibleAndHiddenActionsIndices({
-        visibleActions: [0],
-        visibleGroups: [],
-        hiddenActions: [],
-        hiddenGroups: [],
-      });
       const toolTipAction = {
         content: 'Refund',
         helpText:
@@ -93,13 +85,7 @@ describe('<Actions />', () => {
 
       const wrapper = mountWithApp(<ActionMenu actions={[toolTipAction]} />);
 
-      wrapper.act(() => {
-        wrapper.find(ActionsMeasurer)!.trigger('handleMeasurement', {
-          containerWidth: 100,
-          disclosureWidth: 100,
-          hiddenActionsWidths: [100],
-        });
-      });
+      forceMeasurement(wrapper);
 
       const action = wrapper.find(SecondaryAction);
 
@@ -109,34 +95,16 @@ describe('<Actions />', () => {
     });
 
     it('renders a MenuGroup', () => {
-      mockGetVisibleAndHiddenActionsIndices({
-        visibleActions: [],
-        visibleGroups: [0],
-        hiddenActions: [],
-        hiddenGroups: [],
-      });
       const wrapper = mountWithApp(
         <ActionMenu groups={[{title: 'group', actions: []}]} />,
       );
 
-      wrapper.act(() => {
-        wrapper.find(ActionsMeasurer)!.trigger('handleMeasurement', {
-          containerWidth: 100,
-          disclosureWidth: 100,
-          hiddenActionsWidths: [100],
-        });
-      });
+      forceMeasurement(wrapper);
 
       expect(wrapper.findAll(MenuGroup)).toHaveLength(1);
     });
 
     it('updates actions when they change', () => {
-      mockGetVisibleAndHiddenActionsIndices({
-        visibleActions: [0, 1],
-        visibleGroups: [],
-        hiddenActions: [],
-        hiddenGroups: [],
-      });
       function ActionsWithToggle() {
         const initialActions: ActionMenuProps['actions'] = [
           {content: 'initial'},
@@ -158,13 +126,7 @@ describe('<Actions />', () => {
 
       const wrapper = mountWithApp(<ActionsWithToggle />);
 
-      wrapper.act(() => {
-        wrapper.find(ActionsMeasurer)!.trigger('handleMeasurement', {
-          containerWidth: 100,
-          disclosureWidth: 100,
-          hiddenActionsWidths: [100],
-        });
-      });
+      forceMeasurement(wrapper);
 
       wrapper.find('button')!.trigger('onClick');
       expect(wrapper).toContainReactComponent(SecondaryAction, {
@@ -173,12 +135,6 @@ describe('<Actions />', () => {
     });
 
     it('updates groups when they change', () => {
-      mockGetVisibleAndHiddenActionsIndices({
-        visibleActions: [],
-        visibleGroups: [0, 1],
-        hiddenActions: [],
-        hiddenGroups: [],
-      });
       function ActionsWithToggle() {
         const initialGroups: ActionMenuProps['groups'] = [
           {title: 'initial', actions: [{content: 'initial'}]},
@@ -201,13 +157,7 @@ describe('<Actions />', () => {
 
       const wrapper = mountWithApp(<ActionsWithToggle />);
 
-      wrapper.act(() => {
-        wrapper.find(ActionsMeasurer)!.trigger('handleMeasurement', {
-          containerWidth: 100,
-          disclosureWidth: 100,
-          hiddenActionsWidths: [100],
-        });
-      });
+      forceMeasurement(wrapper);
 
       wrapper.find('button')!.trigger('onClick');
       expect(wrapper).toContainReactComponent(MenuGroup, {
@@ -217,12 +167,6 @@ describe('<Actions />', () => {
     });
 
     it('updates actions when their lengths change', () => {
-      mockGetVisibleAndHiddenActionsIndices({
-        visibleActions: [0, 1],
-        visibleGroups: [],
-        hiddenActions: [],
-        hiddenGroups: [],
-      });
       function ActionsWithToggle() {
         const initialActions: ActionMenuProps['actions'] = [
           {content: 'initial'},
@@ -244,13 +188,7 @@ describe('<Actions />', () => {
 
       const wrapper = mountWithApp(<ActionsWithToggle />);
 
-      wrapper.act(() => {
-        wrapper.find(ActionsMeasurer)!.trigger('handleMeasurement', {
-          containerWidth: 100,
-          disclosureWidth: 100,
-          hiddenActionsWidths: [100],
-        });
-      });
+      forceMeasurement(wrapper);
 
       expect(wrapper).toContainReactComponentTimes(SecondaryAction, 1);
 
@@ -259,4 +197,48 @@ describe('<Actions />', () => {
       expect(wrapper).toContainReactComponentTimes(SecondaryAction, 2);
     });
   });
+
+  it('hides actions when they match the hiddenActions value', () => {
+    mockGetVisibleAndHiddenActionsIndices({
+      visibleActions: [0, 1],
+      visibleGroups: [],
+      hiddenActions: [2],
+      hiddenGroups: [],
+    });
+
+    const wrapper = mountWithApp(
+      <ActionMenu
+        actions={[
+          {content: 'mock content 0'},
+          {content: 'mock content 1'},
+          {content: 'mock content 2'},
+        ]}
+      />,
+    );
+
+    forceMeasurement(wrapper);
+
+    expect(wrapper).toContainReactComponent(SecondaryAction, {
+      children: 'mock content 0',
+    });
+    expect(wrapper).toContainReactComponent(SecondaryAction, {
+      children: 'mock content 1',
+    });
+    expect(wrapper).toContainReactComponent(SecondaryAction, {
+      children: 'More actions',
+    });
+    expect(wrapper).not.toContainReactComponent(SecondaryAction, {
+      children: 'mock content 2',
+    });
+  });
 });
+
+function forceMeasurement(wrapper: CustomRoot<any, any>) {
+  wrapper.act(() => {
+    wrapper.find(ActionsMeasurer)!.trigger('handleMeasurement', {
+      containerWidth: 100,
+      disclosureWidth: 100,
+      hiddenActionsWidths: [100],
+    });
+  });
+}
