@@ -26,11 +26,6 @@
   border-radius: var(--p-border-radius-200);
   background-color: var(--p-color-bg-fill-inverse);
 
-  // stylelint-disable-next-line scss/selector-no-union-class-name -- set user menu padding
-  &-userMenu {
-    padding: var(--p-space-050);
-  }
-
   &:focus {
     background-color: var(--p-color-bg-fill-inverse-hover);
     outline: none;
@@ -73,6 +68,10 @@
       opacity: 0.85;
     }
   }
+}
+
+.Activator-userMenu {
+  padding: var(--p-space-050);
 }
 
 .Section {

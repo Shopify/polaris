@@ -99,6 +99,7 @@
     "postcss-custom-media": "^10.0.1",
     "postcss-loader": "^4.2.0",
     "postcss-modules": "^4.2.2",
+    "postcss-nesting": "^12.0.2",
     "postcss-pxtorem": "^5.1.1",
     "postcss-scss": "^4.0.9",
     "react": "^18.2.0",
