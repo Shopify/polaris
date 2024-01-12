@@ -8,12 +8,10 @@ import styles from '../HoverCard.module.scss';
 const HOVER_OUT_TIMEOUT = 150;
 
 export function useHoverCardActivatorWrapperProps({
-  hoverDelay,
   snapToParent,
   ref: providedActivatorRef,
   toggleActive,
 }: {
-  hoverDelay?: number;
   snapToParent?: boolean;
   ref?: React.RefObject<HTMLElement | null>;
   toggleActive?(active: boolean): void;
@@ -103,22 +101,15 @@ export function useHoverCardActivatorWrapperProps({
 
       mouseEntered.current = true;
 
-      if (hoverDelay && !presenceList.hovercard) {
+      if (!presenceList.hovercard) {
         hoverDelayTimeout.current = setTimeout(() => {
           handleOpen();
-        }, hoverDelay);
+        }, 100);
       } else {
         handleOpen();
       }
     },
-    [
-      handleOpen,
-      hoverDelay,
-      hoverDelayTimeout,
-      presenceList,
-      mdUp,
-      providedActivatorRef,
-    ],
+    [handleOpen, hoverDelayTimeout, presenceList, mdUp, providedActivatorRef],
   );
 
   // https://github.com/facebook/react/issues/10109
