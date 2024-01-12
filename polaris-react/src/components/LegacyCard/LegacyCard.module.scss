@@ -26,7 +26,7 @@
     }
   }
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     border-radius: var(--p-border-radius-200);
 
     @include shadow-bevel(
@@ -73,11 +73,11 @@
 .Header {
   padding: var(--p-space-400) var(--p-space-400) 0;
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     padding: var(--p-space-200) var(--p-space-400) 0;
   }
 
-  @media print and #{$p-breakpoints-sm-up} {
+  @media print and (--p-breakpoints-sm-up) {
     padding: var(--p-space-200) var(--p-space-400) 0;
   }
 }
@@ -85,7 +85,7 @@
 .Section {
   padding: var(--p-space-200) var(--p-space-400);
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     padding: var(--p-space-200) var(--p-space-400);
   }
 
@@ -106,7 +106,7 @@
 .Section-fullWidth {
   padding: var(--p-space-400) 0;
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     padding: var(--p-space-400) 0;
   }
 }
@@ -114,7 +114,7 @@
 .Section-flush {
   padding: 0;
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     padding: 0;
   }
 }
@@ -149,7 +149,7 @@
     padding-left: var(--p-space-400);
     padding-right: var(--p-space-400);
 
-    @media #{$p-breakpoints-sm-up} {
+    @media (--p-breakpoints-sm-up) {
       padding-left: var(--p-space-400);
       padding-right: var(--p-space-400);
     }
@@ -179,7 +179,7 @@
 
   padding: 0 var(--p-space-400) var(--p-space-400);
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     padding: 0 var(--p-space-400) var(--p-space-400);
   }
 

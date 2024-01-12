@@ -17,7 +17,7 @@ $Backdrop-opacity: 0.88;
     $borderRadius: var(--p-border-radius-200)
   );
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     padding: var(--p-space-300);
   }
 

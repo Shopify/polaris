@@ -10,7 +10,7 @@
   flex: 0 0 auto;
   width: 100px;
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     display: block;
     margin-left: var(--p-space-500);
   }

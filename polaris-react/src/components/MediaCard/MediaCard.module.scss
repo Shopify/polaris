@@ -10,7 +10,7 @@
     flex-flow: column nowrap;
   }
 
-  @media #{$p-breakpoints-md-down} {
+  @media (--p-breakpoints-md-down) {
     flex-flow: column nowrap;
   }
 }
@@ -21,7 +21,7 @@
   &:not(.portrait) {
     flex-basis: 40%;
 
-    @media #{$p-breakpoints-md-up} {
+    @media (--p-breakpoints-md-up) {
       border-top-right-radius: 0;
       border-top-left-radius: var(--p-border-radius-200);
       border-bottom-left-radius: var(--p-border-radius-200);
@@ -32,7 +32,7 @@
     }
   }
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     border-top-left-radius: var(--p-border-radius-200);
     border-top-right-radius: var(--p-border-radius-200);
   }
@@ -57,7 +57,7 @@
     padding-top: var(--p-space-200);
   }
 
-  @media #{$p-breakpoints-md-down} {
+  @media (--p-breakpoints-md-down) {
     padding-top: var(--p-space-200);
   }
 }

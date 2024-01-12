@@ -82,7 +82,7 @@ $relative-size: $primary-basis / $secondary-basis;
   flex: 1 1 $secondary-basis;
   padding: var(--p-space-400) var(--p-space-400) 0 0;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     padding-bottom: var(--p-space-400);
   }
 }
