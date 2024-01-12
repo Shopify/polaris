@@ -1,11 +1,11 @@
 @import '../../styles/common';
 
 .InlineGrid {
-  @include responsive-props('inline-grid', 'gap', 'gap');
+  @include responsive-props(inline-grid, gap, gap);
   @include responsive-props(
-    'inline-grid',
-    'grid-template-columns',
-    'grid-template-columns'
+    inline-grid,
+    grid-template-columns,
+    grid-template-columns
   );
 
   // stylelint-disable -- Polaris component custom properties

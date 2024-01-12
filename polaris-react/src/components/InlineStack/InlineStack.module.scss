@@ -1,8 +1,8 @@
 @import '../../styles/common';
 
 .InlineStack {
-  @include responsive-props('inline-stack', 'gap', 'gap');
-  @include responsive-props('inline-stack', 'flex-direction', 'flex-direction');
+  @include responsive-props(inline-stack, gap, gap);
+  @include responsive-props(inline-stack, flex-direction, flex-direction);
   display: flex;
   // stylelint-disable-next-line -- Necessary for layout components
   flex-wrap: var(--pc-inline-stack-wrap);

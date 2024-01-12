@@ -25,8 +25,8 @@ $range-wrapper: 28px;
 }
 
 .Track {
-  @include scope-custom-property('range-slider', 'progress-upper');
-  @include scope-custom-property('range-slider', 'progress-lower');
+  @include scope-custom-property(range-slider, progress-upper);
+  @include scope-custom-property(range-slider, progress-lower);
   // stylelint-disable -- Polaris component custom properties
   --pc-dual-thumb-unselected-range: transparent;
   --pc-dual-thumb-selected-range: var(--p-color-bg-fill-brand);

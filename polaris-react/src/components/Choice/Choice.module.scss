@@ -13,26 +13,26 @@
   --pc-choice-space-0: 0rem;
   // Set responsive variables for bleed, used in padding and negative margin
   @include responsive-props(
-    'choice',
-    'bleed-block-start',
-    '--pc-choice-bleed-block-start'
+    choice,
+    bleed-block-start,
+    --pc-choice-bleed-block-start
   );
   @include responsive-props(
-    'choice',
-    'bleed-block-end',
-    '--pc-choice-bleed-block-end'
+    choice,
+    bleed-block-end,
+    --pc-choice-bleed-block-end
   );
   @include responsive-props(
-    'choice',
-    'bleed-inline-start',
-    '--pc-choice-bleed-inline-start'
+    choice,
+    bleed-inline-start,
+    --pc-choice-bleed-inline-start
   );
   @include responsive-props(
-    'choice',
-    'bleed-inline-end',
-    '--pc-choice-bleed-inline-end'
+    choice,
+    bleed-inline-end,
+    --pc-choice-bleed-inline-end
   );
-  @include responsive-props('choice', 'fill', '--pc-choice-fill');
+  @include responsive-props(choice, fill, --pc-choice-fill);
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;

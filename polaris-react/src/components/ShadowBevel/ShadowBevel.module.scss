@@ -5,23 +5,19 @@
   // stylelint-disable-next-line -- Explicitly set `0` to create a local stacking context. While the initial `z-index: auto` has a stack level of `0` within the current stacking context, it does not create a new local stacking context.
   z-index: 0;
 
-  @include scope-custom-property('shadow-bevel', 'z-index');
+  @include scope-custom-property(shadow-bevel, z-index);
 
   @include responsive-props(
-    'shadow-bevel',
-    'box-shadow',
-    '--pc-shadow-bevel-box-shadow'
+    shadow-bevel,
+    box-shadow,
+    --pc-shadow-bevel-box-shadow
   );
   @include responsive-props(
-    'shadow-bevel',
-    'border-radius',
-    '--pc-shadow-bevel-border-radius'
+    shadow-bevel,
+    border-radius,
+    --pc-shadow-bevel-border-radius
   );
-  @include responsive-props(
-    'shadow-bevel',
-    'content',
-    '--pc-shadow-bevel-content'
-  );
+  @include responsive-props(shadow-bevel, content, --pc-shadow-bevel-content);
 
   @include shadow-bevel(
     var(--pc-shadow-bevel-box-shadow),

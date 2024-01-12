@@ -79,11 +79,11 @@
 }
 
 .Input {
-  @include scope-custom-property('range-slider', 'min');
-  @include scope-custom-property('range-slider', 'max');
-  @include scope-custom-property('range-slider', 'current');
-  @include scope-custom-property('range-slider', 'progess');
-  @include scope-custom-property('range-slider', 'output-factor');
+  @include scope-custom-property(range-slider, min);
+  @include scope-custom-property(range-slider, max);
+  @include scope-custom-property(range-slider, current);
+  @include scope-custom-property(range-slider, progess);
+  @include scope-custom-property(range-slider, output-factor);
   // stylelint-disable -- Polaris component custom properties
   --pc-single-thumb-progress-lower: var(--p-color-bg-fill-brand);
   --pc-single-thumb-progress-upper: transparent;
