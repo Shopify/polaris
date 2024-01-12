@@ -73,6 +73,10 @@ $breakpointNav: $breakpointTablet;
     flex-direction: column;
 
     > li {
+      > ul > li + li {
+        padding-top: 1rem;
+      }
+
       .NavItem {
         font-size: var(--font-size-400);
         letter-spacing: var(--letter-spacing-100);
@@ -80,10 +84,6 @@ $breakpointNav: $breakpointTablet;
 
         + ul > li:first-child {
           padding-top: 0.125rem;
-        }
-
-        + ul > li:last-child {
-          padding-bottom: 1rem;
         }
 
         > a {
