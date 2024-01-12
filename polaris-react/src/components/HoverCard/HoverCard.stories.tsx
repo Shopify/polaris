@@ -615,6 +615,7 @@ export function WithDynamicActivator() {
     <Card padding="0">
       <HoverCard
         snapToParent
+        minWidth={activeHoverCard.order ? 300 : undefined}
         hoverDelay={100}
         activator={activatorElement}
         activatorWrapper="div"

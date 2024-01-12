@@ -23,6 +23,7 @@ export interface HoverCardOverlayProps {
   zIndexOverride?: number;
   activator: HTMLElement;
   snapToParent?: boolean;
+  minWidth?: number;
   onMouseEnter(): void;
   onMouseLeave(): void;
 }
@@ -36,6 +37,7 @@ export function HoverCardOverlay({
   zIndexOverride,
   activator,
   snapToParent,
+  minWidth,
   onMouseEnter,
   onMouseLeave,
 }: HoverCardOverlayProps) {
@@ -99,24 +101,29 @@ export function HoverCardOverlay({
       !measuring && styles.measured,
     );
 
-    // const contentStyles = measuring
-    //   ? undefined
-    //   : {width: desiredWidth, height: desiredHeight};
+    const hoverCardStyles = {
+      '--pc-hovercard-min-width': `${minWidth}px`,
+    } as React.CSSProperties;
+
+    const contentStyles = measuring
+      ? undefined
+      : {width: desiredWidth, height: desiredHeight};
 
     return (
       <div
         {...overlay.props}
+        style={hoverCardStyles}
         className={className}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <div ref={contentNode}>
+        <div ref={contentNode} className={styles.ContentContainer}>
           <Scrollable
+            id={id}
             shadow
             data-hovercard-content
-            id={id}
             className={styles.Content}
-            // style={contentStyles}
+            style={contentStyles}
           >
             {children}
           </Scrollable>
