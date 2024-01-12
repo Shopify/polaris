@@ -390,39 +390,57 @@ describe('<FiltersBar />', () => {
     });
   });
 
-  it('will show the add filter button when clearing all pinned filters', () => {
-    const scrollSpy = jest.fn();
-    HTMLElement.prototype.scroll = scrollSpy;
-    const filters = defaultProps.filters.map((filter) => ({
-      ...filter,
-      pinned: true,
-    }));
+  it('will keep a pinned filter from props pinned when clearing', () => {
     const appliedFilters = [
       {
-        ...defaultProps.filters[2],
-        label: 'Bux',
-        value: ['Bux'],
+        ...defaultProps.filters[1],
+        label: 'Bar 2',
+        value: ['Bar 2'],
         onRemove: jest.fn(),
       },
     ];
+    const scrollSpy = jest.fn();
+    HTMLElement.prototype.scroll = scrollSpy;
     const wrapper = mountWithApp(
-      <FiltersBar
-        {...defaultProps}
-        filters={filters}
-        appliedFilters={appliedFilters}
-      />,
+      <FiltersBar {...defaultProps} appliedFilters={appliedFilters} />,
     );
 
-    const clearAll = wrapper.find(Button, {
-      children: 'Clear all',
-    });
+    wrapper
+      .find(FilterPill, {
+        label: 'Bar 2',
+      })!
+      .trigger('onRemove');
 
-    wrapper.act(() => {
-      clearAll?.trigger('onClick');
-    });
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 1);
+  });
 
-    expect(wrapper).toContainReactComponent('div', {
-      className: 'AddFilterActivator',
-    });
+  it('will keep a pinned filter from props pinned when clearing all', () => {
+    const appliedFilters = [
+      {
+        ...defaultProps.filters[0],
+        label: 'Bar 2',
+        value: ['Bar 2'],
+        onRemove: jest.fn(),
+      },
+      {
+        ...defaultProps.filters[2],
+        label: 'Bar 2',
+        value: ['Bar 2'],
+        onRemove: jest.fn(),
+      },
+    ];
+    const scrollSpy = jest.fn();
+    HTMLElement.prototype.scroll = scrollSpy;
+    const wrapper = mountWithApp(
+      <FiltersBar {...defaultProps} appliedFilters={appliedFilters} />,
+    );
+
+    wrapper
+      .find(Button, {
+        children: 'Clear all',
+      })!
+      .trigger('onClick');
+
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 1);
   });
 });
