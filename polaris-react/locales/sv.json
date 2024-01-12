@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "Fler filter ({count})",
       "addFilter": "Lägg till filter",
       "clearFilters": "Rensa alla",
-      "searchInView": "i: {viewName}"
+      "searchInView": "i:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "markering av brödtext",

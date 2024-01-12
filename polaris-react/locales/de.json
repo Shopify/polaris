@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "Weitere Filter ({count})",
       "addFilter": "Filter hinzufügen",
       "clearFilters": "Alles löschen",
-      "searchInView": "in: {viewName}"
+      "searchInView": "in:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "Text-Markup",

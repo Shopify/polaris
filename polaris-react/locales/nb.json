@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "Flere filtre ({count})",
       "addFilter": "Legg til filter",
       "clearFilters": "Fjern alle",
-      "searchInView": "i: {viewName}"
+      "searchInView": "i:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "brødtekstpåslag",

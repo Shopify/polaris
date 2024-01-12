@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})",
       "addFilter": "เพิ่มตัวกรอง",
       "clearFilters": "ล้างทั้งหมด",
-      "searchInView": "ใน: {viewName}"
+      "searchInView": "ใน:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "มาร์กอัปเนื้อหา",

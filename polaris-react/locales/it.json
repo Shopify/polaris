@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "Altri filtri ({count})",
       "addFilter": "Aggiungi filtro",
       "clearFilters": "Cancella tutto",
-      "searchInView": "in: {viewName}"
+      "searchInView": "in:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "markup del testo",
