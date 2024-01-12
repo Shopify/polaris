@@ -24,9 +24,11 @@
   min-width: 4ch;
 
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-300),
-    $borderRadius: var(--pc-tooltip-border-radius),
-    $zIndex: var(--pc-tooltip-shadow-bevel-z-index)
+    var(--p-shadow-300),
+    var(--pc-tooltip-border-radius),
+    null,
+    '',
+    var(--pc-tooltip-shadow-bevel-z-index)
   );
 
   @media screen and (-ms-high-contrast: active) {

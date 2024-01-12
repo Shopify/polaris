@@ -3,7 +3,7 @@
 .IndexTable {
   // stylelint-disable -- Polaris component custom properties
   --pc-index-table-translate-offset: 35px;
-  --pc-index-table-table-header-offset: #{control-height()};
+  --pc-index-table-table-header-offset: $control-height;
   --pc-index-table-cell: 1;
   --pc-index-table-sticky-cell: 29;
   --pc-index-table-bulk-actions: 31;

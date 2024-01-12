@@ -1,17 +1,12 @@
 @import '../../styles/common';
 
-@function progress-bar-height($height: base) {
-  $base: 16px;
-  $data: (
-    small: $base * 0.5,
-    base: $base,
-    large: $base * 2,
-  );
-
-  @return map-get($data, $height);
-}
-
 .ProgressBar {
+  --pc-progress-bar-height-base: 16px;
+  --pc-progress-bar-height-small: calc(
+    var(--pc-progress-bar-height-base) * 0.5
+  );
+  --pc-progress-bar-height-large: calc(var(--pc-progress-bar-height-base) * 2);
+
   @include scope-custom-property('progress-bar', 'duration');
   @include scope-custom-property('progress-bar', 'percent');
   overflow: hidden;
@@ -26,15 +21,15 @@
 }
 
 .sizeSmall {
-  height: progress-bar-height(small);
+  height: var(--pc-progress-bar-height-small);
 }
 
 .sizeMedium {
-  height: progress-bar-height();
+  height: var(--pc-progress-bar-height-base);
 }
 
 .sizeLarge {
-  height: progress-bar-height(large);
+  height: var(--pc-progress-bar-height-large);
 }
 
 .toneHighlight {
@@ -75,7 +70,7 @@
   transform-origin: 0 50%;
 
   @media screen and (-ms-high-contrast: active) {
-    border: progress-bar-height() solid highlight;
+    border: var(--pc-progress-bar-height-base) solid highlight;
   }
 }
 

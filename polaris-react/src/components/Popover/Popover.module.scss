@@ -11,9 +11,11 @@ $vertical-motion-offset: -5px;
   margin: $visible-portion-of-arrow var(--p-space-200) var(--p-space-400);
   will-change: left, top;
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-300),
-    $borderRadius: var(--p-border-radius-300),
-    $zIndex: 2
+    var(--p-shadow-300),
+    var(--p-border-radius-300),
+    null,
+    '',
+    2
   );
 }
 

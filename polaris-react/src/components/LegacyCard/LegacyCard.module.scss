@@ -7,9 +7,11 @@
   overflow: clip;
 
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-100),
-    $borderRadius: var(--p-border-radius-0),
-    $zIndex: 101
+    var(--p-shadow-100),
+    var(--p-border-radius-0),
+    null,
+    '',
+    101
   );
 
   // Override custom heading font sizes
@@ -30,9 +32,11 @@
     border-radius: var(--p-border-radius-200);
 
     @include shadow-bevel(
-      $boxShadow: var(--p-shadow-100),
-      $borderRadius: var(--p-border-radius-300),
-      $zIndex: 101
+      var(--p-shadow-100),
+      var(--p-border-radius-300),
+      null,
+      '',
+      101
     );
 
     .Section:first-child {
@@ -49,12 +53,7 @@
   @media print {
     box-shadow: none;
 
-    @include shadow-bevel(
-      $boxShadow: none,
-      $borderRadius: var(--p-border-radius-0),
-      $border: none,
-      $content: none
-    );
+    @include shadow-bevel(none, var(--p-border-radius-0), none, none);
   }
 }
 

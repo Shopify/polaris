@@ -8,25 +8,26 @@
   @include scope-custom-property('shadow-bevel', 'z-index');
 
   @include responsive-props(
-    $componentName: 'shadow-bevel',
-    $componentProp: 'box-shadow',
-    $declarationProp: '--pc-shadow-bevel-box-shadow'
+    'shadow-bevel',
+    'box-shadow',
+    '--pc-shadow-bevel-box-shadow'
   );
   @include responsive-props(
-    $componentName: 'shadow-bevel',
-    $componentProp: 'border-radius',
-    $declarationProp: '--pc-shadow-bevel-border-radius'
+    'shadow-bevel',
+    'border-radius',
+    '--pc-shadow-bevel-border-radius'
   );
   @include responsive-props(
-    $componentName: 'shadow-bevel',
-    $componentProp: 'content',
-    $declarationProp: '--pc-shadow-bevel-content'
+    'shadow-bevel',
+    'content',
+    '--pc-shadow-bevel-content'
   );
 
   @include shadow-bevel(
-    $boxShadow: var(--pc-shadow-bevel-box-shadow),
-    $borderRadius: var(--pc-shadow-bevel-border-radius),
-    $content: var(--pc-shadow-bevel-content),
-    $zIndex: var(--pc-shadow-bevel-z-index)
+    var(--pc-shadow-bevel-box-shadow),
+    var(--pc-shadow-bevel-border-radius),
+    null,
+    var(--pc-shadow-bevel-content),
+    var(--pc-shadow-bevel-z-index)
   );
 }

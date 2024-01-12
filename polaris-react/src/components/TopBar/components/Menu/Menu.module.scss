@@ -1,15 +1,5 @@
 @import '../../../../styles/common';
 
-$activator-variables: (
-  min-width: 36px,
-  min-height: 32px,
-  focus-opacity: 0.85,
-);
-
-@function menu($variable) {
-  @return map-get($activator-variables, $variable);
-}
-
 .ActivatorWrapper {
   height: $top-bar-height;
   display: flex;
@@ -27,7 +17,7 @@ $activator-variables: (
   justify-content: center;
   align-items: center;
   min-width: auto;
-  min-height: menu(min-height);
+  min-height: 32px;
   padding: var(--p-space-150);
   border: 0;
   cursor: pointer;
@@ -80,7 +70,7 @@ $activator-variables: (
     &:hover,
     &:active,
     &[aria-expanded='true'] {
-      opacity: menu(focus-opacity);
+      opacity: 0.85;
     }
   }
 }

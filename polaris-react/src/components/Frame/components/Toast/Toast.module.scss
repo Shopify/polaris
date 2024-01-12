@@ -12,10 +12,7 @@ $Backdrop-opacity: 0.88;
   margin-bottom: var(--p-space-500);
   box-shadow: var(--p-shadow-500);
 
-  @include shadow-bevel(
-    $boxShadow: var(--p-shadow-400),
-    $borderRadius: var(--p-border-radius-200)
-  );
+  @include shadow-bevel(var(--p-shadow-400), var(--p-border-radius-200));
 
   @media (--p-breakpoints-sm-up) {
     padding: var(--p-space-300);
