@@ -73,8 +73,16 @@ $breakpointNav: $breakpointTablet;
     flex-direction: column;
 
     > li {
-      > ul > li + li {
-        padding-top: 1rem;
+      > ul > li > ul > li:last-child {
+        margin-bottom: 1rem;
+      }
+
+      > ul > li + li:has(ul) {
+        margin-top: 1rem;
+      }
+
+      > ul:not(:has(ul)) {
+        margin-bottom: 1rem;
       }
 
       .NavItem {

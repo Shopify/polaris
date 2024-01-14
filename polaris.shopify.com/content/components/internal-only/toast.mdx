@@ -43,18 +43,13 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 </Lede>
 
-<StatusBanner status={frontmatter.status}>
-  This component is no longer supported. Please use the [App Bridge Toast
-  API](https://shopify.dev/docs/api/app-bridge-library/reference/toast) instead.
-</StatusBanner>
-
 <Examples />
 
 <Props componentName={frontmatter.title} />
 
 ## Required components
 
-The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/frame) component.
+The toast component must be wrapped in the [frame](https://polaris.shopify.com/components/internal-only/frame) component.
 
 ---
 
@@ -160,7 +155,7 @@ Avoid using toast for critical information that merchants need to act on immedia
 - Can’t be easily accessed with the keyboard
 - Might appear outside the proximity of the merchant’s current focus
 
-To ensure that Toasts are read out by a screen reader when a Modal is open, apps should be wrapped in a [Frame](https://polaris.shopify.com/components/deprecated/frame) component.
+To ensure that Toasts are read out by a screen reader when a Modal is open, apps should be wrapped in a [Frame](https://polaris.shopify.com/components/internal-only/frame) component.
 
 ### Toast with action
 

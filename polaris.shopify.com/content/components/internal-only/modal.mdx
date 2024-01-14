@@ -69,11 +69,6 @@ Modals are overlays that require merchants to take an action before they can con
 
 </Lede>
 
-<StatusBanner status={frontmatter.status}>
-  This component is no longer supported. Please use the [App Bridge Modal
-  API](https://shopify.dev/docs/api/app-bridge-library/reference/modal) instead.
-</StatusBanner>
-
 <Examples />
 
 <Props componentName={frontmatter.title} />
@@ -211,13 +206,13 @@ Tertiary actions should:
 
 #### Do
 
-![Screenshot of modal with a plain button as a tertiary action](/images/components/deprecated/modal/do-use-plain-button-for-tertiary-action@2x.png)
+![Screenshot of modal with a plain button as a tertiary action](/images/components/internal-only/modal/do-use-plain-button-for-tertiary-action@2x.png)
 
 Use a plain button for a tertiary action if needed
 
 #### Don’t
 
-![Screenshot of modal with a destructive button as a tertiary action](/images/components/deprecated/modal/dont-use-destructive-tertiary-action@2x.png)
+![Screenshot of modal with a destructive button as a tertiary action](/images/components/internal-only/modal/dont-use-destructive-tertiary-action@2x.png)
 
 Use a tertiary action for a destructive action
 
@@ -271,7 +266,7 @@ Body content should be:
 - Modals use ARIA `role=”dialog”` to convey to screen reader users that they work like native dialog windows.
 - If you set the `title` prop to give the modal component a heading, then the `title` is used to label the dialog element with `aria-labelledby`. This helps to convey the purpose of the modal to screen reader users when it displays.
 - After a modal is closed, in order to return focus to the button that launched it, pass the button to the modal as an `activator`.
-- To ensure that [Toast](https://polaris.shopify.com/components/deprecated/toast)s are read out by a screen reader when a Modal is open, apps should be wrapped in a [Frame](https://polaris.shopify.com/components/deprecated/frame) component.
+- To ensure that [Toast](https://polaris.shopify.com/components/internal-only/toast)s are read out by a screen reader when a Modal is open, apps should be wrapped in a [Frame](https://polaris.shopify.com/components/internal-only/frame) component.
 
 ### Keyboard support
 
