@@ -1,11 +1,12 @@
 .StatusBadge {
   font-size: var(--font-size-100);
-  letter-spacing: 0;
   font-weight: var(--font-weight-400);
   border-radius: var(--border-radius-round);
   padding: 0.05rem 0.25rem;
   color: var(--text);
   white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   &[data-value='alpha'] {
     background: var(--surface-attention);

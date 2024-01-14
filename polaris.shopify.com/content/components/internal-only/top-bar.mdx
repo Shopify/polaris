@@ -1,7 +1,7 @@
 ---
 title: Top bar
 shortDescription: Appears at the top of the page and is used to brand and navigate major applications areas.
-category: Navigation
+category: Internal only
 keywords:
   - global chrome
   - global features
@@ -20,7 +20,9 @@ examples:
   - fileName: top-bar-default.tsx
     title: Default
     description: Use to provide structure for the top of an application. Style the top bar component using the app provider component with a theme. Providing just the `background` key for the top bar component theme will result in intelligent defaults being set for complementary colors with contrasting text.
-previewImg: /images/components/navigation/top-bar.png
+previewImg: /images/components/deprecated/top-bar.png
+hideFromNav: true
+internalOnly: true
 ---
 
 # {frontmatter.title}
@@ -37,7 +39,7 @@ The top bar is a header component that allows merchants to search, access menus,
 
 ## Required components
 
-The top bar component must be passed to the [frame](https://polaris.shopify.com/components/frame) component.
+The top bar component must be passed to the [frame](https://polaris.shopify.com/components/internal-only/frame) component.
 
 ---
 
@@ -46,7 +48,7 @@ The top bar component must be passed to the [frame](https://polaris.shopify.com/
 The top bar component should:
 
 - Not provide global navigation for an application
-  - Use the [navigation component](https://polaris.shopify.com/components/navigation/navigation) instead
+  - Use the [navigation component](https://polaris.shopify.com/components/internal-only/navigation) instead
 - Include search to help merchants find resources and navigate an application
 - Include a user menu component to indicate the logged-in merchant and provide them with global actions
 - Provide a color through the [app provider](https://polaris.shopify.com/components/app-provider) component to style the background
@@ -146,8 +148,8 @@ A text field component that is tailor-made for a search use-case.
 
 ## Related components
 
-- To provide the structure for the top bar component, as well as the primary navigation use the [frame](https://polaris.shopify.com/components/frame) component.
-- To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/navigation/navigation) component.
-- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/contextual-save-bar) component.
-- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/feedback-indicators/toast) component.
-- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/loading) component.
+- To provide the structure for the top bar component, as well as the primary navigation use the [frame](https://polaris.shopify.com/components/internal-only/frame) component.
+- To display the primary navigation within the frame of an application, use the [navigation](https://polaris.shopify.com/components/internal-only/navigation) component.
+- To tell merchants their options once they have made changes to a form on the page use the [contextual save bar](https://polaris.shopify.com/components/internal-only/contextual-save-bar) component.
+- To provide quick, at-a-glance feedback on the outcome of an action, use the [toast](https://polaris.shopify.com/components/internal-only/toast) component.
+- To indicate to merchants that a page is loading or an upload is processing use the [loading](https://polaris.shopify.com/components/internal-only/loading) component.

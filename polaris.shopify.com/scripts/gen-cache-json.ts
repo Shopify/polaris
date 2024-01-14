@@ -36,6 +36,7 @@ const genNavJson = async (markdownFiles) => {
       componentDescriptions,
       relatedResources,
       hideFromNav,
+      internalOnly,
     } = md.frontMatter;
 
     const {slug} = md;
@@ -57,6 +58,7 @@ const genNavJson = async (markdownFiles) => {
       componentDescriptions,
       relatedResources,
       hideFromNav: hideFromNav || false,
+      internalOnly: internalOnly || false,
     });
   });
 
@@ -119,7 +121,9 @@ const genCacheJson = async () => {
 
   const markdownFiles = (
     await Promise.all(mdFiles.map((filePath) => getMdContent(filePath)))
-  ).sort((a, b) => a.slug.localeCompare(b.slug));
+  )
+    .filter((slug) => !slug.frontMatter.hideFromNav)
+    .sort((a, b) => a.slug.localeCompare(b.slug));
 
   await genSiteJson(markdownFiles);
   await genNavJson(markdownFiles);

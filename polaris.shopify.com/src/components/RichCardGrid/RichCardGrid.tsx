@@ -14,19 +14,25 @@ export interface RichCardGridProps {
   status?: Status;
   icon?: string;
   featured?: boolean;
+  hideFromNav?: boolean;
 }
 
 function RichCardGrid({
   cards,
   category,
+  includeHiddenItems = false,
 }: {
   cards: RichCardGridProps[];
   category?: FoundationsCategory;
+  includeHiddenItems?: boolean;
 }) {
   return (
     <Grid>
       {cards
         .filter(({draft}) => !draft)
+        .filter((card) =>
+          includeHiddenItems === true ? true : !card.hideFromNav,
+        )
         .map(
           (
             {
