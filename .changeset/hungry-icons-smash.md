@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': major
 ---
 
-New icon `DragHandleMinor` ([#111447](https://github.com/Shopify/polaris/pull/11447))
+New icon `DragHandleMinor` ([#11372](https://github.com/Shopify/polaris/issues/11372))
