@@ -1,4 +1,4 @@
-import React, {useId, useMemo} from 'react';
+import React, {useId} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
