@@ -1,0 +1,10 @@
+name: Package fulfilled
+description: The fulfillment icon is associated with the 'fulfilled' status.
+keywords:
+  - fulfillment
+  - fulfilled
+authors:
+  - Flavia Scudeler
+  - Joe Thomas
+date_added: 2022-08-10
+date_modified: 2023-06-23

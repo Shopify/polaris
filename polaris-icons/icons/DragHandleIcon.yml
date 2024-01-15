@@ -1,0 +1,12 @@
+name: Drag handle
+description: Used to represent drag handles.
+keywords:
+  - drag
+  - draggable
+  - grab
+  - reposition
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+date_added: 2019-03-15
+date_modified: 2023-06-23

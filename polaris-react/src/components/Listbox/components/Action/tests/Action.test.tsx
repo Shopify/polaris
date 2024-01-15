@@ -1,5 +1,5 @@
 import React from 'react';
-import {CirclePlusMinor, AddMajor} from '@shopify/polaris-icons';
+import {PlusCircleIcon, PlusIcon} from '@shopify/polaris-icons';
 import {mountWithListboxProvider} from 'tests/utilities/listbox';
 
 import {Action} from '../Action';
@@ -36,17 +36,17 @@ describe('Action', () => {
     const action = mountWithListboxProvider(<Action {...defaultProps} />);
 
     expect(action).not.toContainReactComponent(Icon, {
-      source: CirclePlusMinor,
+      source: PlusCircleIcon,
     });
   });
 
   it('renders the Icon from the prop', () => {
     const action = mountWithListboxProvider(
-      <Action {...defaultProps} icon={AddMajor} />,
+      <Action {...defaultProps} icon={PlusIcon} />,
     );
 
     expect(action).toContainReactComponent(Icon, {
-      source: AddMajor,
+      source: PlusIcon,
     });
   });
 

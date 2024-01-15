@@ -5,7 +5,7 @@ import Longform from '../Longform';
 import {motion, AnimatePresence} from 'framer-motion';
 import StatusBadge from '../StatusBadge';
 import {className, toPascalCase} from '../../utils/various';
-import {ClipboardMinor} from '@shopify/polaris-icons';
+import {ClipboardIcon} from '@shopify/polaris-icons';
 import {useCopyToClipboard} from '../../utils/hooks';
 import Icon from '../Icon';
 import Tooltip from '../Tooltip';
@@ -64,7 +64,7 @@ function PropsTable({types, componentName}: Props) {
                   copy();
                 }}
               >
-                <Icon source={ClipboardMinor} width={16} height={16} />
+                <Icon source={ClipboardIcon} width={16} height={16} />
               </button>
             </Tooltip>
           </h2>

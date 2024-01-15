@@ -1,7 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Button, ButtonGroup, Icon, BlockStack} from '@shopify/polaris';
-import {DeleteMinor} from '@shopify/polaris-icons';
+import {DeleteIcon} from '@shopify/polaris-icons';
 
 export default {
   component: ButtonGroup,
@@ -36,7 +36,7 @@ export function WithSegmentedButtons() {
         <Button size="slim">Underline</Button>
         <Button
           size="slim"
-          icon={<Icon source={DeleteMinor} />}
+          icon={<Icon source={DeleteIcon} />}
           accessibilityLabel="Delete"
         />
       </ButtonGroup>

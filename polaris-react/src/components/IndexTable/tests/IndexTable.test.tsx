@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
+import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
@@ -662,9 +662,7 @@ describe('<IndexTable>', () => {
             </IndexTable>,
           );
           const source =
-            direction === 'ascending'
-              ? SortAscendingMajor
-              : SortDescendingMajor;
+            direction === 'ascending' ? SortAscendingIcon : SortDescendingIcon;
 
           expect(index.findAll('th')[1]).toContainReactComponent(source);
         },
@@ -684,9 +682,7 @@ describe('<IndexTable>', () => {
             </IndexTable>,
           );
           const source =
-            direction === 'ascending'
-              ? SortAscendingMajor
-              : SortDescendingMajor;
+            direction === 'ascending' ? SortAscendingIcon : SortDescendingIcon;
 
           expect(index.findAll('th')[3]).toContainReactComponent(source);
         },
@@ -708,7 +704,7 @@ describe('<IndexTable>', () => {
         );
 
         expect(index.findAll('th')[3]).toContainReactComponent(
-          SortDescendingMajor,
+          SortDescendingIcon,
         );
       });
     });

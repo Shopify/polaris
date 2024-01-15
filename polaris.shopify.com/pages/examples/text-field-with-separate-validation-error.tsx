@@ -7,7 +7,7 @@ import {
   Button,
   LegacyCard,
 } from '@shopify/polaris';
-import {DeleteMinor} from '@shopify/polaris-icons';
+import {DeleteIcon} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -72,7 +72,7 @@ function SeparateValidationErrorExample() {
           <InlineError message={errorMessage} fieldID={textFieldID} />
         </div>
       </LegacyStack.Item>
-      <Button icon={DeleteMinor} accessibilityLabel="Remove item" />
+      <Button icon={DeleteIcon} accessibilityLabel="Remove item" />
     </LegacyStack>
   );
 

@@ -18,10 +18,9 @@ import {
   Link,
 } from '@shopify/polaris';
 import {
-  DeleteMinor,
-  ExternalMinor,
-  QuestionMarkMinor,
-  SearchMinor,
+  DeleteIcon,
+  QuestionCircleIcon,
+  SearchIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -66,7 +65,7 @@ export function Magic() {
         type="search"
         value={value1}
         onChange={handleChange1}
-        prefix={<Icon source={SearchMinor} />}
+        prefix={<Icon source={SearchIcon} />}
         autoComplete="off"
         tone="magic"
       />
@@ -76,7 +75,7 @@ export function Magic() {
         onChange={handleChange2}
         suffix={
           <Tooltip content="Hello world">
-            <Icon source={QuestionMarkMinor} />
+            <Icon source={QuestionCircleIcon} />
           </Tooltip>
         }
         tone="magic"
@@ -459,7 +458,7 @@ export function WithSeparateValidationError() {
           <InlineError message={errorMessage} fieldID={textFieldID} />
         </div>
       </LegacyStack.Item>
-      <Button icon={DeleteMinor} accessibilityLabel="Remove item" />
+      <Button icon={DeleteIcon} accessibilityLabel="Remove item" />
     </LegacyStack>
   );
 
@@ -589,7 +588,7 @@ export function WithInlineSuggestion() {
       'Massachusetts',
       'Michigan',
       'Minnesota',
-      'Minor Outlying Islands',
+      'Icon Outlying Islands',
       'Mississippi',
       'Missouri',
       'Montana',
@@ -755,7 +754,7 @@ export function All() {
           type="search"
           value="Value"
           onChange={() => {}}
-          prefix={<Icon source={SearchMinor} />}
+          prefix={<Icon source={SearchIcon} />}
           autoComplete="off"
         />
         <TextField
@@ -763,7 +762,7 @@ export function All() {
           type="search"
           value="Value"
           onChange={() => {}}
-          prefix={<Icon source={SearchMinor} />}
+          prefix={<Icon source={SearchIcon} />}
           autoComplete="off"
           tone="magic"
         />
@@ -773,7 +772,7 @@ export function All() {
           onChange={() => {}}
           suffix={
             <Tooltip content="Hello world">
-              <Icon source={QuestionMarkMinor} />
+              <Icon source={QuestionCircleIcon} />
             </Tooltip>
           }
           autoComplete="off"
@@ -784,7 +783,7 @@ export function All() {
           onChange={() => {}}
           suffix={
             <Tooltip content="Hello world">
-              <Icon source={QuestionMarkMinor} />
+              <Icon source={QuestionCircleIcon} />
             </Tooltip>
           }
           tone="magic"
@@ -920,7 +919,7 @@ export function All() {
           value="Value"
           onChange={() => {}}
           autoComplete="off"
-          variant="slim"
+          size="slim"
         />
         <TextField
           label="Borderless slim variant"

@@ -16,9 +16,9 @@ import {
   ButtonGroup,
 } from '@shopify/polaris';
 import {
-  ViewMinor,
-  DeleteMinor,
-  MobileVerticalDotsMajor,
+  ViewIcon,
+  DeleteIcon,
+  MobileVerticalDotsIcon,
 } from '@shopify/polaris-icons';
 
 import type {IndexFiltersProps} from './IndexFilters';

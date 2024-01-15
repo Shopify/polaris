@@ -1,5 +1,5 @@
 import React, {useCallback, useId} from 'react';
-import {SelectMinor} from '@shopify/polaris-icons';
+import {SelectIcon} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {Labelled, helpTextID} from '../Labelled';
@@ -183,7 +183,7 @@ export function Select({
       {prefixMarkup}
       <span className={styles.SelectedOption}>{selectedOption.label}</span>
       <span className={styles.Icon}>
-        <Icon source={SelectMinor} />
+        <Icon source={SelectIcon} />
       </span>
     </div>
   );

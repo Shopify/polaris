@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {CancelSmallMinor, ChevronDownMinor} from '@shopify/polaris-icons';
+import {XSmallIcon, ChevronDownIcon} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
@@ -140,7 +140,7 @@ export function FilterPill({
               <>
                 {wrappedLabel}
                 <div className={styles.IconWrapper}>
-                  <Icon source={ChevronDownMinor} tone="base" />
+                  <Icon source={ChevronDownIcon} tone="base" />
                 </div>
               </>
             )}
@@ -155,7 +155,7 @@ export function FilterPill({
             aria-label={i18n.translate('Polaris.FilterPill.clear')}
           >
             <div className={styles.IconWrapper}>
-              <Icon source={CancelSmallMinor} tone="base" />
+              <Icon source={XSmallIcon} tone="base" />
             </div>
           </UnstyledButton>
         ) : null}

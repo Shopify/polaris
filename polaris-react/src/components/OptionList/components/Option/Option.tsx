@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {TickMinor} from '@shopify/polaris-icons';
+import {CheckIcon} from '@shopify/polaris-icons';
 
 import {useToggle} from '../../../../utilities/use-toggle';
 import type {IconProps} from '../../../Icon';
@@ -135,7 +135,7 @@ export function Option({
         </InlineStack>
         {(select || active) && (
           <span className={styles.Icon}>
-            <Icon source={TickMinor} />
+            <Icon source={CheckIcon} />
           </span>
         )}
       </>

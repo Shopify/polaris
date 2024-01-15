@@ -1,4 +1,4 @@
-import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
+import {ChevronLeftIcon, ChevronRightIcon} from '@shopify/polaris-icons';
 import React, {createRef} from 'react';
 
 import type {Key} from '../../types';
@@ -83,7 +83,7 @@ export function Pagination({
 
   const prev = (
     <Button
-      icon={ChevronLeftMinor}
+      icon={ChevronLeftIcon}
       accessibilityLabel={previousLabel}
       url={previousURL}
       onClick={onPrevious}
@@ -106,7 +106,7 @@ export function Pagination({
 
   const next = (
     <Button
-      icon={ChevronRightMinor}
+      icon={ChevronRightIcon}
       accessibilityLabel={nextLabel}
       url={nextURL}
       onClick={onNext}

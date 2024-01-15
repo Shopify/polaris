@@ -20,16 +20,6 @@ body:
       label: Icon name
     validations:
       required: true
-  - type: dropdown
-    id: icon-set
-    attributes:
-      label: What type of icon set?
-      options:
-        - Major (20x20)
-        - Minor (16x16)
-        - Unsure
-    validations:
-      required: true
   - type: textarea
     id: icon-description
     attributes:

@@ -1,5 +1,5 @@
 import {Page, LegacyCard} from '@shopify/polaris';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {PlusIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -8,7 +8,7 @@ function PageExample() {
     <Page
       fullWidth
       title="Orders"
-      primaryAction={{content: 'Create order', icon: PlusMinor}}
+      primaryAction={{content: 'Create order', icon: PlusIcon}}
       secondaryActions={[{content: 'Export'}]}
       pagination={{
         hasNext: true,

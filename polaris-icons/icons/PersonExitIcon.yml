@@ -1,0 +1,14 @@
+name: Person exit
+description: Represents the concept of opting out, or exiting.
+keywords:
+  - Opt-out
+  - User
+  - Logout
+  - Exit
+  - Sign out
+  - Leave
+  - Disconnect
+authors:
+  - José Torre
+date_added: 2024-01-11
+date_modified: 2024-01-11

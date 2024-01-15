@@ -1,0 +1,10 @@
+name: Cart filled
+description: Used to represent a shopping cart.
+keywords:
+  - cart
+  - checkout
+  - shopping
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

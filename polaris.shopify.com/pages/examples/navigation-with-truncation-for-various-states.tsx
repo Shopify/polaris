@@ -1,9 +1,9 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
-  OrdersMinor,
-  CirclePlusOutlineMinor,
-  ProductsMinor,
-  MarketingMinor,
+  OrderIcon,
+  PlusCircleIcon,
+  ProductIcon,
+  TargetIcon,
 } from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -19,24 +19,24 @@ function NavigationExample() {
               excludePaths: ['#'],
               label: 'One Stop Ramen Order Application Premium',
               truncateText: true,
-              icon: MarketingMinor,
+              icon: TargetIcon,
               selected: false,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
-              icon: ProductsMinor,
+              icon: ProductIcon,
             },
             {
               url: '#',
               label: 'Lengthy non-truncated label with secondary action',
-              icon: OrdersMinor,
+              icon: OrderIcon,
               selected: false,
               secondaryAction: {
                 url: '#',
                 accessibilityLabel: 'Add an order',
-                icon: CirclePlusOutlineMinor,
+                icon: PlusCircleIcon,
                 tooltip: {
                   content: 'Add a garlic ramen to your order',
                 },
@@ -45,7 +45,7 @@ function NavigationExample() {
             {
               url: '#',
               label: 'Truncated secondary navigation item on truncated label',
-              icon: ProductsMinor,
+              icon: ProductIcon,
               selected: true,
               truncateText: true,
               subNavigationItems: [

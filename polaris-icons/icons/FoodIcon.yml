@@ -1,0 +1,13 @@
+name: Food
+description: Used as a navigation item in our emoji picker for the food category.
+keywords:
+  - emoji
+  - navigation
+  - coffee
+  - food
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+  - José Torre
+date_added: 2019-03-15
+date_modified: 2023-11-07

@@ -1,14 +1,14 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {NoteMajor} from '@shopify/polaris-icons';
+import {NoteIcon} from '@shopify/polaris-icons';
 
 import {Thumbnail} from '../Thumbnail';
 
 describe('<Thumbnail />', () => {
   describe('source', () => {
     it('allows icon for source', () => {
-      const thumbnail = mountWithApp(<Thumbnail alt="" source={NoteMajor} />);
-      expect(thumbnail).toContainReactComponent(NoteMajor);
+      const thumbnail = mountWithApp(<Thumbnail alt="" source={NoteIcon} />);
+      expect(thumbnail).toContainReactComponent(NoteIcon);
     });
 
     it('creates an image tag when a string is provided', () => {

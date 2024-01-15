@@ -1,9 +1,9 @@
 import {Frame, Navigation} from '@shopify/polaris';
 import {
-  HomeMinor,
-  OrdersMinor,
-  ProductsMinor,
-  OnlineStoreMinor,
+  HomeIcon,
+  OrderIcon,
+  ProductIcon,
+  StoreOnlineIcon,
 } from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
@@ -18,19 +18,19 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Home',
-              icon: HomeMinor,
+              icon: HomeIcon,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Orders',
-              icon: OrdersMinor,
+              icon: OrderIcon,
             },
             {
               url: '#',
               excludePaths: ['#'],
               label: 'Products',
-              icon: ProductsMinor,
+              icon: ProductIcon,
             },
           ]}
         />
@@ -40,7 +40,7 @@ function NavigationExample() {
               url: '#',
               excludePaths: ['#'],
               label: 'Online Store',
-              icon: OnlineStoreMinor,
+              icon: StoreOnlineIcon,
             },
           ]}
           separator
