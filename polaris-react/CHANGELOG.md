@@ -1,5 +1,14 @@
 # Changelog
 
+## 12.9.1
+
+### Patch Changes
+
+- [#11438](https://github.com/Shopify/polaris/pull/11438) [`43535660e`](https://github.com/Shopify/polaris/commit/43535660e72fa9b19476162db5e3e8c92f5aec74) Thanks [@jesstelford](https://github.com/jesstelford)! - Use `@custom-media` across all of `@shopify/polaris` (follow on from https://github.com/Shopify/polaris/pull/10804)
+
+- Updated dependencies [[`f91c4b661`](https://github.com/Shopify/polaris/commit/f91c4b661b1d9540dd515c6f073aeeb62e914023)]:
+  - @shopify/polaris-icons@8.0.0
+
 ## 12.9.0
 
 ### Minor Changes
