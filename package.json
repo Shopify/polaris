@@ -35,10 +35,8 @@
     "type-check": "tsc --build",
     "changeset": "changeset",
     "gen-assets": "turbo run gen-assets --filter=polaris.shopify.com",
-    "preversion-packages": "node scripts/preversion.js",
-    "version-packages": "yarn preversion-packages && changeset version",
+    "version-packages": "changeset version",
     "release": "turbo run build --filter='!polaris.shopify.com' && changeset publish",
-    "preversion": "echo \"Error: use @changsets/cli to version packages\" && exit 1",
     "new-migration": "yarn workspace @shopify/polaris-migrator generate",
     "postinstall": "patch-package"
   },
