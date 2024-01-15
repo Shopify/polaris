@@ -40,6 +40,16 @@ export function All() {
   );
 }
 
+export function PerfBenchmark() {
+  return (
+    <>
+      {Array.from({length: 1000}).map((_, index) => (
+        <InAPopover key={index} />
+      ))}
+    </>
+  );
+}
+
 export function InAPopover() {
   const [active, setActive] = useState(true);
 

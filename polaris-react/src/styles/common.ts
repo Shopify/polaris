@@ -1,19 +1,22 @@
+// eslint-disable-next-line @shopify/strict-component-boundaries
 import type {ResponsiveStylePropsWithModifiers} from '../components/Box/generated-data';
 
-export const unstyledButton: ResponsiveStylePropsWithModifiers = {
-  appearance: 'none',
-  margin: '0',
-  padding: '0',
-  background: 'none',
-  border: 'none',
-  fontSize: 'inherit',
-  lineHeight: 'inherit',
-  color: 'inherit',
-  cursor: 'pointer',
-  _focus: {
-    outline: 'none',
-  },
-};
+// TODO: Until we refactor our space hacks implementation to use the same algorithm as
+// CSS-hooks, we won't be able to have `inherit` declarations in our shared css-in-js styles like this.
+// export const unstyledButton: ResponsiveStylePropsWithModifiers = {
+//   appearance: 'none',
+//   margin: '0',
+//   padding: '0',
+//   background: 'none',
+//   borderStyle: 'none',
+//   fontSize: 'inherit',
+//   lineHeight: 'inherit',
+//   color: 'inherit',
+//   cursor: 'pointer',
+//   _focus: {
+//     outlineStyle: 'none',
+//   },
+// };
 
 /*
 *
@@ -28,9 +31,9 @@ export const focusRing = ({
   borderWidth = 0,
   style = 'base',
 }: {
-  size: 'base' | 'wide';
-  borderWidth: string | number;
-  style: 'base' | 'focused';
+  size?: 'base' | 'wide';
+  borderWidth?: string | number;
+  style?: 'base' | 'focused';
 }): ResponsiveStylePropsWithModifiers => {
   const stroke = '2px';
   // calc does not like performing addition with a unitless number (`0`, NOT `0px`) This makes sure that we can handle unitless zeros by not trying to do math with them.
@@ -55,17 +58,21 @@ export const focusRing = ({
         display: 'block',
         pointerEvents: 'none',
         boxShadow: `0 0 0 ${negativeOffset} var(--p-color-border-focus)`,
-        borderRadius: borderRadius,
+        borderRadius,
       },
     };
   } else if (style === 'focused') {
     return {
       _after: {
         boxShadow: `0 0 0 ${stroke} var(--p-color-border-focus)`,
-        outline: `var(--p-border-width-025) solid transparent`,
+        outlineStyle: 'solid',
+        outlineColor: 'transparent',
+        outlineWidth: 'var(--p-border-width-025)',
       },
     };
   }
+
+  return {};
 };
 
 /* TODO:
