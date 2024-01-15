@@ -6,7 +6,7 @@ import {
   ArrowDownIcon,
   ExternalIcon,
   ViewIcon,
-  MobileVerticalDotsIcon,
+  MenuVerticalIcon,
 } from '@shopify/polaris-icons';
 import {
   Badge,
@@ -47,7 +47,7 @@ export function Default() {
       actionGroups={[
         {
           title: 'Promote',
-          icon: MobileVerticalDotsIcon,
+          icon: MenuVerticalIcon,
           actions: [
             {
               content: 'Share on Facebook',
