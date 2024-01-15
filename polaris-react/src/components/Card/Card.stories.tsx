@@ -17,7 +17,7 @@ import {
   ResourceList,
   Text,
 } from '@shopify/polaris';
-import {ProductsMinor} from '@shopify/polaris-icons';
+import {ProductIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Card,
@@ -609,7 +609,7 @@ export function WithCustomReactNodeTitle() {
         </Text>
         <BlockStack inlineAlign="start">
           <InlineStack gap="400">
-            <Icon source={ProductsMinor} />
+            <Icon source={ProductIcon} />
             <Text as="h3" variant="headingSm">
               New Products
             </Text>

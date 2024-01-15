@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Box, Badge, Icon, InlineStack, Thumbnail} from '@shopify/polaris';
-import {CapitalIcon, ImageIcon} from '@shopify/polaris-icons';
+import {FlowerIcon, ImageIcon} from '@shopify/polaris-icons';
 
 export default {
   component: InlineStack,
@@ -14,7 +14,7 @@ export function Default() {
       <Badge>Two</Badge>
       <Badge>Three</Badge>
       <Box>
-        <Icon source={CapitalIcon} tone="primary" />
+        <Icon source={FlowerIcon} tone="primary" />
       </Box>
     </InlineStack>
   );
