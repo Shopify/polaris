@@ -6,7 +6,7 @@ import {
   PlusCircleIcon,
   PersonIcon,
   HomeIcon,
-  LogOutIcon,
+  ExitIcon,
   TargetIcon,
   StoreOnlineIcon,
   OrderIcon,
@@ -15,10 +15,10 @@ import {
   ViewIcon,
   StarFilledIcon,
   StarIcon,
-  OrdersFilledIcon,
+  OrderFilledIcon,
   HomeFilledIcon,
-  ProductsFilledIcon,
-  MarketingFilledIcon,
+  ProductFilledIcon,
+  TargetFilledIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -102,7 +102,7 @@ export function WithMultipleSecondaryNavigations() {
             {
               url: '#',
               label: 'Orders',
-              icon: OrdersFilledIcon,
+              icon: OrderFilledIcon,
               matchedItemIcon: OrderIcon,
               badge: '15',
               onClick: () => setSelected('orders'),
@@ -127,7 +127,7 @@ export function WithMultipleSecondaryNavigations() {
             {
               url: '#',
               label: 'Products',
-              icon: ProductsFilledIcon,
+              icon: ProductFilledIcon,
               matchedItemIcon: ProductIcon,
               onClick: () => setSelected('products'),
               matches: selected === 'products',
@@ -177,7 +177,7 @@ export function WithMultipleSecondaryNavigations() {
             {
               url: '#',
               label: 'Marketing',
-              icon: MarketingFilledIcon,
+              icon: TargetFilledIcon,
               matchedItemIcon: TargetIcon,
               onClick: () => setSelected('marketing'),
               matches: selected === 'marketing',
@@ -644,7 +644,7 @@ export function WithMultipleSecondaryActionsForAnItem() {
               url: '#',
               excludePaths: ['#'],
               label: 'Logout',
-              icon: LogOutIcon,
+              icon: ExitIcon,
               onClick: () => setSelected('logout'),
               matches: selected === 'logout',
             },
