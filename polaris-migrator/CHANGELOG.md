@@ -1,5 +1,11 @@
 # @shopify/polaris-migrator
 
+## 0.27.0
+
+### Minor Changes
+
+- [#11138](https://github.com/Shopify/polaris/pull/11138) [`f91c4b661`](https://github.com/Shopify/polaris/commit/f91c4b661b1d9540dd515c6f073aeeb62e914023) Thanks [@alex-page](https://github.com/alex-page)! - Added `icons-v8-update-names` migration. This migration will update all icons from `@shopfiy/polaris-icons` from the deprecated Major and Minor suffixes to the new Icon suffix (ex: `AppsMajor` -> `AppsIcon`).
+
 ## 0.26.7
 
 ### Patch Changes
