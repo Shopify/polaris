@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "更多篩選條件 ({count})",
       "addFilter": "新增篩選條件",
       "clearFilters": "全部清除",
-      "searchInView": "在此檢視畫面中搜尋：{viewName}"
+      "searchInView": "in: {viewName}"
     },
     "Modal": {
       "iFrameTitle": "本文標記",

@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "추가 필터({count}개)",
       "addFilter": "필터 추가",
       "clearFilters": "모두 지우기",
-      "searchInView": "{viewName} 보기에서 검색"
+      "searchInView": "{viewName} 보기에서 검색 중"
     },
     "Modal": {
       "iFrameTitle": "본문 표시",

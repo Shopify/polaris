@@ -159,7 +159,7 @@
       "clearLabel": "Xóa {filterName}",
       "addFilter": "Thêm bộ lọc",
       "clearFilters": "Xóa tất cả",
-      "searchInView": "trong:{viewName}"
+      "searchInView": "in:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "điểm đánh dấu nội dung",

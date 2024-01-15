@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "Lisää suodattimia ({count})",
       "addFilter": "Lisää suodatin",
       "clearFilters": "Tyhjennä kaikki",
-      "searchInView": "kohteessa:{viewName}"
+      "searchInView": "kohde:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "tekstin merkintä",
