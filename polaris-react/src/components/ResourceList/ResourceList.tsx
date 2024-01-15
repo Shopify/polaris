@@ -6,7 +6,7 @@ import React, {
   useState,
   Children,
 } from 'react';
-import {EnableSelectionMinor} from '@shopify/polaris-icons';
+import {CheckboxIcon} from '@shopify/polaris-icons';
 import {themeDefault, toPx} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
@@ -618,7 +618,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     <div className={styles.SelectButtonWrapper}>
       <Button
         disabled={selectMode}
-        icon={EnableSelectionMinor}
+        icon={CheckboxIcon}
         onClick={() => handleSelectMode(true)}
       >
         {i18n.translate('Polaris.ResourceList.selectButtonText')}

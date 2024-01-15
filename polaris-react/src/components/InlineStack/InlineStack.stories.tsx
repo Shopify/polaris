@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Box, Badge, Icon, InlineStack, Thumbnail} from '@shopify/polaris';
-import {CapitalMajor, ImageMajor} from '@shopify/polaris-icons';
+import {CapitalIcon, ImageIcon} from '@shopify/polaris-icons';
 
 export default {
   component: InlineStack,
@@ -14,7 +14,7 @@ export function Default() {
       <Badge>Two</Badge>
       <Badge>Three</Badge>
       <Box>
-        <Icon source={CapitalMajor} tone="primary" />
+        <Icon source={CapitalIcon} tone="primary" />
       </Box>
     </InlineStack>
   );
@@ -23,7 +23,7 @@ export function Default() {
 export function WithAlignStart() {
   return (
     <InlineStack align="start" blockAlign="center" gap="100">
-      <Thumbnail source={ImageMajor} alt="example" />
+      <Thumbnail source={ImageIcon} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -34,7 +34,7 @@ export function WithAlignStart() {
 export function WithAlignCenter() {
   return (
     <InlineStack align="center" blockAlign="center" gap="100">
-      <Thumbnail source={ImageMajor} alt="example" />
+      <Thumbnail source={ImageIcon} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -45,7 +45,7 @@ export function WithAlignCenter() {
 export function WithAlignEnd() {
   return (
     <InlineStack align="end" blockAlign="center" gap="100">
-      <Thumbnail source={ImageMajor} alt="example" />
+      <Thumbnail source={ImageIcon} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -86,7 +86,7 @@ export function WithAlignSpaceEvenly() {
 export function WithBlockAlignStart() {
   return (
     <InlineStack blockAlign="start" gap="100">
-      <Thumbnail source={ImageMajor} alt="example" />
+      <Thumbnail source={ImageIcon} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -97,7 +97,7 @@ export function WithBlockAlignStart() {
 export function WithBlockAlignCenter() {
   return (
     <InlineStack blockAlign="center" gap="100">
-      <Thumbnail source={ImageMajor} alt="example" />
+      <Thumbnail source={ImageIcon} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -108,7 +108,7 @@ export function WithBlockAlignCenter() {
 export function WithBlockAlignEnd() {
   return (
     <InlineStack blockAlign="end" gap="100">
-      <Thumbnail source={ImageMajor} alt="example" />
+      <Thumbnail source={ImageIcon} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -119,7 +119,7 @@ export function WithBlockAlignEnd() {
 export function WithBlockAlignBaseline() {
   return (
     <InlineStack blockAlign="baseline" gap="100">
-      <Thumbnail source={ImageMajor} alt="example" />
+      <Thumbnail source={ImageIcon} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -130,7 +130,7 @@ export function WithBlockAlignBaseline() {
 export function WithBlockAlignStretch() {
   return (
     <InlineStack blockAlign="stretch" gap="100">
-      <Thumbnail source={ImageMajor} alt="example" />
+      <Thumbnail source={ImageIcon} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>
@@ -141,7 +141,7 @@ export function WithBlockAlignStretch() {
 export function WithAlignCenterBlockAlignCenter() {
   return (
     <InlineStack align="center" blockAlign="center" gap="100">
-      <Thumbnail source={ImageMajor} alt="example" />
+      <Thumbnail source={ImageIcon} alt="example" />
       <Badge>One</Badge>
       <Badge>Two</Badge>
       <Badge>Three</Badge>

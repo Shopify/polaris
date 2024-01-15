@@ -1,0 +1,10 @@
+name: Order draft filled
+description: Used to represent an order that is in a Draft state.
+keywords:
+  - draft
+  - order
+  - pending
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

@@ -1,0 +1,12 @@
+name: Envelope
+description: >-
+  Used to represent an envelope that merchants can use to ship orders to their
+  customers.
+keywords:
+  - shipping
+  - packaging
+  - envelope
+authors:
+  - Joe Thomas
+date_added: 2019-03-15
+date_modified: 2023-06-23

@@ -1,5 +1,5 @@
 import React, {useId} from 'react';
-import {SearchMinor} from '@shopify/polaris-icons';
+import {XCircleIcon} from '@shopify/polaris-icons';
 
 import {Spinner} from '../../../Spinner';
 import {Icon} from '../../../Icon';
@@ -62,7 +62,7 @@ export function SearchField({
       disabled={disabled}
       variant={borderlessQueryField ? 'borderless' : 'inherit'}
       size="slim"
-      prefix={mdUp ? <Icon source={SearchMinor} /> : undefined}
+      prefix={mdUp ? <Icon source={XCircleIcon} /> : undefined}
       suffix={
         loading ? (
           <div className={styles.Spinner}>

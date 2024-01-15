@@ -67,7 +67,7 @@
   height: 24px;
   border-radius: 100%;
   background-color: transparent;
-  background-image: url(/images/PlusMinor.svg);
+  background-image: url(/images/PlusIcon.svg);
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 12px 12px;
@@ -79,6 +79,6 @@
   }
 
   &[aria-expanded='true'] {
-    background-image: url(/images/MinusMinor.svg);
+    background-image: url(/images/MinusIcon.svg);
   }
 }

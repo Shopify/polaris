@@ -1,5 +1,5 @@
 import {DropZone, LegacyStack, Thumbnail, Text} from '@shopify/polaris';
-import {NoteMinor} from '@shopify/polaris-icons';
+import {NoteIcon} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -23,7 +23,7 @@ function DropZoneExample() {
         source={
           validImageTypes.includes(file.type)
             ? window.URL.createObjectURL(file)
-            : NoteMinor
+            : NoteIcon
         }
       />
       <div>

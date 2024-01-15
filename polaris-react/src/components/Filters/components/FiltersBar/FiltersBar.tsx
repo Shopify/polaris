@@ -1,6 +1,6 @@
 import type {PropsWithChildren} from 'react';
 import React, {useState, useRef, useEffect} from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {PlusIcon} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
 
 import {useI18n} from '../../../../utilities/i18n';
@@ -176,7 +176,7 @@ export function FiltersBar({
         <Text variant={labelVariant} as="span">
           {i18n.translate('Polaris.Filters.addFilter')}{' '}
         </Text>
-        <PlusMinor />
+        <PlusIcon />
       </UnstyledButton>
     </div>
   );

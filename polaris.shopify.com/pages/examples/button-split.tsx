@@ -7,7 +7,7 @@ import {
 } from '@shopify/polaris';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
-import {ChevronDownMinor} from '@shopify/polaris-icons';
+import {ChevronDownIcon} from '@shopify/polaris-icons';
 
 function ButtonExample() {
   const [active, setActive] = React.useState<string | null>(null);
@@ -28,7 +28,7 @@ function ButtonExample() {
               <Button
                 variant="primary"
                 onClick={toggleActive('popover1')}
-                icon={ChevronDownMinor}
+                icon={ChevronDownIcon}
                 accessibilityLabel="Other save actions"
               />
             }
@@ -51,7 +51,7 @@ function ButtonExample() {
             activator={
               <Button
                 onClick={toggleActive('popover2')}
-                icon={ChevronDownMinor}
+                icon={ChevronDownIcon}
                 accessibilityLabel="Other save actions"
               />
             }

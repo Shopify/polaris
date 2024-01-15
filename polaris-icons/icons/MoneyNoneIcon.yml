@@ -1,0 +1,11 @@
+name: Money none
+description: Used to represent blocked payouts or lack of funds.
+keywords:
+  - blocked payouts
+  - payouts blocked
+  - payouts
+  - money
+  - none
+authors:
+  - Leen Tan
+date_added: 2023-10-31

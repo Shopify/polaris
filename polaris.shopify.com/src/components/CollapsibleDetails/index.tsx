@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {motion, AnimatePresence} from 'framer-motion';
 import Icon from '../Icon';
-import {CaretDownMinor} from '@shopify/polaris-icons';
+import {CaretDownIcon} from '@shopify/polaris-icons';
 
 export interface CollasibleDetailsProps {
   summary?: string | React.ReactNode;
@@ -30,7 +30,7 @@ export function CollapsibleDetails({
           exit={{rotate: -90}}
           transition={{ease: 'easeInOut', duration: 0.15}}
         >
-          <Icon source={CaretDownMinor} />
+          <Icon source={CaretDownIcon} />
         </motion.span>
         {summary}
       </motion.summary>

@@ -1,0 +1,10 @@
+name: Notification filled
+description: Used to represent a notification or alert.
+keywords:
+  - notifications
+  - alerts
+  - bell
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

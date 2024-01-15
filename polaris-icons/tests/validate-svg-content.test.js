@@ -14,21 +14,9 @@ const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
 const allIconFiles = globby
   .sync(path.resolve(__dirname, '../icons/*.svg'))
   .map((absoluteIconPath) => {
-    // We don't care about the first item, only the groups matches
-    const [, set] = nameRegex.exec(absoluteIconPath) || [];
-
     const iconSource = fs.readFileSync(absoluteIconPath, 'utf-8');
     const optimizedSource = svgo.optimize(iconSource, svgoConfig).data;
 
-    const svg = new Map([
-      ['Major', {viewbox: '0 0 20 20'}],
-      ['Minor', {viewbox: '0 0 20 20'}],
-    ]).get([set].filter(Boolean).join('_'));
-    if (svg == null) {
-      throw new Error(
-        `SVG metadata not found for ${absoluteIconPath}. Make sure your icon contains "Major" or "Minor" in its name.`,
-      );
-    }
     return {
       iconPath: path.relative(path.join(__dirname, '..'), absoluteIconPath),
       iconSource,
@@ -36,8 +24,7 @@ const allIconFiles = globby
       iconAst: unified()
         .use(parse, {fragment: true, space: 'svg'})
         .parse(iconSource),
-      expectedViewbox: svg.viewbox,
-      expectedFillColors: svg.colors,
+      expectedViewbox: '0 0 20 20',
     };
   });
 

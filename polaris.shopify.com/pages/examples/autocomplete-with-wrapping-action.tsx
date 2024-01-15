@@ -1,5 +1,5 @@
 import {Autocomplete, Icon} from '@shopify/polaris';
-import {SearchMinor, CirclePlusMinor} from '@shopify/polaris-icons';
+import {SearchIcon, PlusCircleIcon} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -63,7 +63,7 @@ function AutocompleteActionBeforeExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} />}
+      prefix={<Icon source={SearchIcon} />}
       placeholder="Search"
       autoComplete="off"
     />
@@ -82,7 +82,7 @@ function AutocompleteActionBeforeExample() {
             'Action with long name that will need to wrap on small display in order to have a nice display',
           ellipsis: true,
           helpText: 'Help text',
-          icon: CirclePlusMinor,
+          icon: PlusCircleIcon,
           wrapOverflow: true,
           onAction: () => {
             console.log('actionBefore clicked!');

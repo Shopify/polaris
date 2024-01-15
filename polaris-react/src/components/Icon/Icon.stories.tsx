@@ -14,7 +14,7 @@ interface Icons {
 const icons: Icons = polarisIcons;
 
 export function Default() {
-  return <Icon source={icons.CirclePlusMinor} />;
+  return <Icon source={icons.PlusCircleIcon} />;
 }
 
 export function Colored() {
@@ -23,71 +23,71 @@ export function Colored() {
       <Text as="p" variant="bodyMd" alignment="center">
         Base tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="base" />
+      <Icon source={icons.PlusCircleIcon} tone="base" />
       <Text as="p" variant="bodyMd" alignment="center">
         Subdued tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="subdued" />
+      <Icon source={icons.PlusCircleIcon} tone="subdued" />
       <Text as="p" variant="bodyMd" alignment="center">
         Primary tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="primary" />
+      <Icon source={icons.PlusCircleIcon} tone="primary" />
       <Text as="p" variant="bodyMd" alignment="center">
         Info tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="info" />
+      <Icon source={icons.PlusCircleIcon} tone="info" />
       <Text as="p" variant="bodyMd" alignment="center">
         Success tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="success" />
+      <Icon source={icons.PlusCircleIcon} tone="success" />
       <Text as="p" variant="bodyMd" alignment="center">
         Caution tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="caution" />
+      <Icon source={icons.PlusCircleIcon} tone="caution" />
       <Text as="p" variant="bodyMd" alignment="center">
         Warning tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="warning" />
+      <Icon source={icons.PlusCircleIcon} tone="warning" />
       <Text as="p" variant="bodyMd" alignment="center">
         Critical tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="critical" />
+      <Icon source={icons.PlusCircleIcon} tone="critical" />
       <Text as="p" variant="bodyMd" alignment="center">
         Emphasis tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="emphasis" />
+      <Icon source={icons.PlusCircleIcon} tone="emphasis" />
       <Text as="p" variant="bodyMd" alignment="center">
         Magic tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="magic" />
+      <Icon source={icons.PlusCircleIcon} tone="magic" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Primary tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textPrimary" />
+      <Icon source={icons.PlusCircleIcon} tone="textPrimary" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Caution tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textCaution" />
+      <Icon source={icons.PlusCircleIcon} tone="textCaution" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Warning tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textWarning" />
+      <Icon source={icons.PlusCircleIcon} tone="textWarning" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Critical tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textCritical" />
+      <Icon source={icons.PlusCircleIcon} tone="textCritical" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Info tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textInfo" />
+      <Icon source={icons.PlusCircleIcon} tone="textInfo" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Success tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textSuccess" />
+      <Icon source={icons.PlusCircleIcon} tone="textSuccess" />
       <Text as="p" variant="bodyMd" alignment="center">
         Text Magic tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="textMagic" />
+      <Icon source={icons.PlusCircleIcon} tone="textMagic" />
     </BlockStack>
   );
 }
