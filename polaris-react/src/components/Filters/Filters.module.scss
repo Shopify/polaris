@@ -9,7 +9,7 @@
   background: var(--p-color-bg-surface);
 }
 
-@media #{$p-breakpoints-sm-down} {
+@media (--p-breakpoints-sm-down) {
   .Container {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -25,11 +25,11 @@
   height: 53px;
   overflow: hidden;
 
-  @media #{$p-breakpoints-sm-down} {
+  @media (--p-breakpoints-sm-down) {
     background: var(--p-color-bg-surface);
   }
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     height: auto;
     overflow: visible;
   }
@@ -51,7 +51,7 @@
   padding: var(--p-space-300);
 }
 
-@media #{$p-breakpoints-md-up} {
+@media (--p-breakpoints-md-up) {
   .FiltersInner {
     overflow: visible;
     flex-wrap: wrap;
@@ -86,7 +86,7 @@
     fill: var(--p-color-icon);
   }
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-300);
     line-height: var(--p-font-line-height-400);
     height: 24px;
@@ -140,7 +140,7 @@
   span {
     margin-right: var(--p-space-050);
 
-    @media #{$p-breakpoints-md-up} {
+    @media (--p-breakpoints-md-up) {
       margin-right: var(--p-space-025);
     }
   }
@@ -148,13 +148,13 @@
   svg {
     width: var(--p-space-500);
 
-    @media #{$p-breakpoints-md-up} {
+    @media (--p-breakpoints-md-up) {
       width: var(--p-space-400);
     }
   }
 }
 
-@media #{$p-breakpoints-md-down} {
+@media (--p-breakpoints-md-down) {
   .FiltersWrapperWithAddButton {
     position: relative;
 
@@ -211,7 +211,7 @@
   align-items: center;
   justify-content: flex-start;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     flex-wrap: wrap;
   }
 }
@@ -225,7 +225,7 @@
   }
 }
 
-@media #{$p-breakpoints-md-down} {
+@media (--p-breakpoints-md-down) {
   .ClearAll {
     margin-left: 0;
     padding-right: var(--p-space-400);

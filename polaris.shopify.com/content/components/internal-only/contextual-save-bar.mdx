@@ -1,7 +1,7 @@
 ---
 title: Contextual save bar
 shortDescription: Informs merchants of their options once they have made changes to a form on the page or while creating a new object.
-category: Selection and input
+category: Internal only
 keywords:
   - form
   - forms
@@ -20,7 +20,9 @@ examples:
   - fileName: contextual-save-bar-with-full-width.tsx
     title: With full width
     description: Use the fullWidth flag when you want to remove the default max-width set on the contextual save bar.
-previewImg: /images/components/selection-and-input/contextual-save-bar.png
+previewImg: /images/components/deprecated/contextual-save-bar.png
+hideFromNav: true
+internalOnly: true
 ---
 
 # {frontmatter.title}
@@ -37,7 +39,7 @@ The contextual save bar tells merchants their options once they have made change
 
 ## Required components
 
-The contextual save bar component must be wrapped in the [frame](https://polaris.shopify.com/components/frame) component.
+The contextual save bar component must be wrapped in the [frame](https://polaris.shopify.com/components/internal-only/frame) component.
 
 ---
 
@@ -48,7 +50,7 @@ The contextual save bar component should:
 - Become visible when a form on the page has unsaved changes
 - Be used to save or discard in-progress changes
 - Provide brief and helpful context on the nature of in-progress changes
-- Save all changes on the page. Avoid scenarios where multiple forms on a single page can be edited at the same time. If specific sections of a page need to be independently editable, use an Edit button to launch a [modal dialog](https://polaris.shopify.com/components/overlays/modal) for each section where changes can be made and saved.
+- Save all changes on the page. Avoid scenarios where multiple forms on a single page can be edited at the same time. If specific sections of a page need to be independently editable, use an Edit button to launch a [modal dialog](https://polaris.shopify.com/components/internal-only/modal) for each section where changes can be made and saved.
 
 ---
 
@@ -95,6 +97,6 @@ Actions in the contextual save bar component should consist of a strong verb tha
 
 ## Related components
 
-- To wrap your entire application, [use the frame component](https://polaris.shopify.com/components/frame)
+- To wrap your entire application, [use the frame component](https://polaris.shopify.com/components/internal-only/frame)
 - To build the outer wrapper of a page, including page title and associated actions, [use the page component](https://polaris.shopify.com/components/layout-and-structure/page)
 - To wrap form elements and handle the submission of a form, [use the form component](https://polaris.shopify.com/components/form)

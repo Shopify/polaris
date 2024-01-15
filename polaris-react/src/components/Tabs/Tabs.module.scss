@@ -7,7 +7,7 @@
 }
 
 .Outer {
-  @media #{$p-breakpoints-md-down} {
+  @media (--p-breakpoints-md-down) {
     max-width: 100%;
     overflow: hidden;
     height: unset;
@@ -16,7 +16,7 @@
 }
 
 .Wrapper {
-  @media #{$p-breakpoints-md-down} {
+  @media (--p-breakpoints-md-down) {
     overflow: auto;
     -webkit-overflow-scrolling: touch;
     padding: var(--p-space-200);
@@ -24,7 +24,7 @@
 }
 
 .WrapperWithNewButton {
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     position: relative;
     display: inline-flex;
     padding-right: var(--p-space-800);
@@ -32,7 +32,7 @@
 }
 
 .ButtonWrapper {
-  @media #{$p-breakpoints-md-down} {
+  @media (--p-breakpoints-md-down) {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -48,7 +48,7 @@
   list-style: none;
   gap: var(--p-space-100);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     padding: 0 var(--p-space-100);
     flex-wrap: wrap;
     align-items: stretch;
@@ -123,7 +123,7 @@
     fill: currentColor;
   }
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-300);
     line-height: var(--p-font-line-height-400);
     height: 1.75rem;
@@ -309,7 +309,7 @@
 .NewTab {
   padding: 0 var(--p-space-200) 0 var(--p-space-100);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     position: absolute;
     right: 0;
     top: 0;

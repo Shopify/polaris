@@ -131,6 +131,11 @@ $spinner-icon-size: 12px;
 
 // stylelint-disable selector-max-specificity, selector-max-class, selector-max-combinators -- specificity bump for magic styles to override
 .toneMagic {
+  .Prefix,
+  .Suffix {
+    color: var(--p-color-text-magic-secondary);
+  }
+
   > .Input {
     color: var(--p-color-text-magic);
   }
@@ -138,6 +143,10 @@ $spinner-icon-size: 12px;
   > .Backdrop {
     background-color: var(--p-color-bg-surface-magic);
     border-color: var(--p-color-border-magic-secondary);
+  }
+
+  svg {
+    fill: var(--p-color-icon-magic);
   }
 
   &:not(.disabled):not(.error):not(.readOnly)
@@ -153,6 +162,17 @@ $spinner-icon-size: 12px;
   &.TextField:focus-within > .Input,
   &.Input:focus-visible {
     color: var(--p-color-text);
+  }
+
+  &.focus {
+    .Prefix,
+    .Suffix {
+      color: var(--p-color-text-secondary);
+    }
+
+    svg {
+      fill: var(--p-color-icon-secondary);
+    }
   }
 }
 // stylelint-enable
@@ -194,7 +214,7 @@ $spinner-icon-size: 12px;
   color: var(--p-color-text);
   align-items: center;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-325);
     line-height: var(--p-font-line-height-500);
   }
@@ -320,7 +340,7 @@ $spinner-icon-size: 12px;
   color: var(--p-color-text-secondary);
   user-select: none;
   line-height: var(--p-font-line-height-600);
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-325);
     line-height: var(--p-font-line-height-500);
   }
@@ -357,7 +377,7 @@ $spinner-icon-size: 12px;
     padding-right: 0;
   }
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     max-height: 328px;
   }
 }
@@ -371,7 +391,7 @@ $spinner-icon-size: 12px;
   text-align: right;
   line-height: var(--p-font-line-height-600);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-325);
     line-height: var(--p-font-line-height-500);
   }

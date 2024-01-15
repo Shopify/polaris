@@ -36,7 +36,7 @@ body {
 .Content {
   padding: var(--p-space-200) 0;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     padding-top: var(--p-space-500);
   }
 }

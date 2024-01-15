@@ -2,15 +2,6 @@
 
 $small-width: 620px;
 
-.Body,
-.NoScrollBody {
-  flex-grow: 1;
-
-  @media #{$p-breakpoints-md-up} {
-    flex-grow: unset;
-  }
-}
-
 .Body {
   width: 100%;
 }
@@ -21,7 +12,7 @@ $small-width: 620px;
   max-width: 100vw;
   border: none;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     max-width: $small-width;
   }
 }

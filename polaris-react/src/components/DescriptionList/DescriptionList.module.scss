@@ -5,7 +5,7 @@
   padding: 0;
   word-break: break-word;
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
@@ -20,7 +20,7 @@
     padding: var(--p-space-200) 0 var(--p-space-100);
   }
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     flex: 0 1 25%;
     padding: var(--p-space-400) var(--p-space-400) var(--p-space-400) 0;
 
@@ -48,7 +48,7 @@
     border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
   }
 
-  @media #{$p-breakpoints-sm-up} {
+  @media (--p-breakpoints-sm-up) {
     flex: 1 1 51%;
     padding: var(--p-space-400) 0;
 

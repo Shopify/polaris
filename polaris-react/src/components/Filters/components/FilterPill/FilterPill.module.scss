@@ -78,7 +78,7 @@
   padding: 0 var(--p-space-200) 0 var(--p-space-300);
   height: 26px;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     padding: 0 var(--p-space-100) 0 var(--p-space-200);
     height: 22px;
   }
@@ -91,7 +91,7 @@
 
 .ActiveFilterButton .ToggleButton {
   padding-right: var(--p-space-050);
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     padding-right: 0;
   }
 }
@@ -101,7 +101,7 @@
   @include focus-ring;
   margin-right: var(--p-space-200);
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     margin-right: var(--p-space-100);
   }
 
@@ -112,7 +112,7 @@
 }
 
 .IconWrapper {
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     scale: 0.8;
   }
 }

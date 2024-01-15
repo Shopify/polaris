@@ -15,6 +15,7 @@ import {
   Icon,
   Tooltip,
   BlockStack,
+  Link,
 } from '@shopify/polaris';
 import {
   DeleteIcon,
@@ -43,17 +44,44 @@ export function Default() {
 
 export function Magic() {
   const [value, setValue] = useState('Jaded Pixel');
+  const [value1, setValue1] = useState('Jaded Pixel');
+  const [value2, setValue2] = useState('Jaded Pixel');
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange1 = useCallback((newValue) => setValue1(newValue), []);
+  const handleChange2 = useCallback((newValue) => setValue2(newValue), []);
 
   return (
-    <TextField
-      label="Store name"
-      value={value}
-      onChange={handleChange}
-      autoComplete="off"
-      tone="magic"
-    />
+    <LegacyStack vertical>
+      <TextField
+        label="Store name"
+        value={value}
+        onChange={handleChange}
+        autoComplete="off"
+        tone="magic"
+      />
+      <TextField
+        label="Prefix icon"
+        type="search"
+        value={value1}
+        onChange={handleChange1}
+        prefix={<Icon source={SearchIcon} />}
+        autoComplete="off"
+        tone="magic"
+      />
+      <TextField
+        label="Suffix icon"
+        value={value2}
+        onChange={handleChange2}
+        suffix={
+          <Tooltip content="Hello world">
+            <Icon source={QuestionCircleIcon} />
+          </Tooltip>
+        }
+        tone="magic"
+        autoComplete="off"
+      />
+    </LegacyStack>
   );
 }
 
@@ -266,14 +294,25 @@ export function WithPrefixOrSuffix() {
   );
 
   return (
-    <TextField
-      label="Price"
-      type="number"
-      value={textFieldValue}
-      onChange={handleTextFieldChange}
-      prefix="$"
-      autoComplete="off"
-    />
+    <LegacyStack vertical>
+      <TextField
+        label="Price"
+        type="number"
+        value={textFieldValue}
+        onChange={handleTextFieldChange}
+        prefix="$"
+        autoComplete="off"
+      />
+      <TextField
+        label="Price"
+        type="number"
+        value={textFieldValue}
+        onChange={handleTextFieldChange}
+        prefix="$"
+        autoComplete="off"
+        tone="magic"
+      />
+    </LegacyStack>
   );
 }
 
@@ -702,12 +741,30 @@ export function All() {
           autoComplete="off"
         />
         <TextField
+          label="Prefix with magic"
+          type="number"
+          value="4"
+          onChange={() => {}}
+          prefix="$"
+          autoComplete="off"
+          tone="magic"
+        />
+        <TextField
           label="Prefix icon"
           type="search"
           value="Value"
           onChange={() => {}}
           prefix={<Icon source={SearchIcon} />}
           autoComplete="off"
+        />
+        <TextField
+          label="Prefix icon with magic"
+          type="search"
+          value="Value"
+          onChange={() => {}}
+          prefix={<Icon source={SearchIcon} />}
+          autoComplete="off"
+          tone="magic"
         />
         <TextField
           label="Suffix tooltip"
@@ -718,6 +775,18 @@ export function All() {
               <Icon source={QuestionCircleIcon} />
             </Tooltip>
           }
+          autoComplete="off"
+        />
+        <TextField
+          label="Suffix tooltip with magic"
+          value="Value"
+          onChange={() => {}}
+          suffix={
+            <Tooltip content="Hello world">
+              <Icon source={QuestionCircleIcon} />
+            </Tooltip>
+          }
+          tone="magic"
           autoComplete="off"
         />
         <TextField
@@ -850,7 +919,7 @@ export function All() {
           value="Value"
           onChange={() => {}}
           autoComplete="off"
-          variant="slim"
+          size="slim"
         />
         <TextField
           label="Borderless slim variant"

@@ -91,7 +91,7 @@ describe('<ContextualSaveBar />', () => {
       expect(() => {
         mount(<ContextualSaveBar {...props} />);
       }).toThrow(
-        'No Frame context was provided. Your component must be wrapped in a <Frame> component. See https://polaris.shopify.com/components/frame for implementation instructions.',
+        'No Frame context was provided. Your component must be wrapped in a <Frame> component. See https://polaris.shopify.com/components/internal-only/frame for implementation instructions.',
       );
     });
   });

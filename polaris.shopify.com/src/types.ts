@@ -72,6 +72,7 @@ export type FrontMatter = {
   keywords?: (string | number)[];
   status?: Status;
   hideFromNav?: boolean;
+  internalOnly?: boolean;
   hideChildren?: true;
   featured?: boolean;
   previewImg?: string;
@@ -112,7 +113,7 @@ export const foundationsCategories = [
   'tools',
 ] as const;
 
-export type FoundationsCategory = (typeof foundationsCategories)[number];
+export type FoundationsCategory = typeof foundationsCategories[number];
 
 export const searchResultCategories = [
   'foundations',
@@ -122,7 +123,7 @@ export const searchResultCategories = [
   'icons',
 ] as const;
 
-export type SearchResultCategory = (typeof searchResultCategories)[number];
+export type SearchResultCategory = typeof searchResultCategories[number];
 
 export interface SearchResult {
   id: string;
@@ -188,7 +189,8 @@ export type StatusName =
   | 'Beta'
   | 'Information'
   | 'Legacy'
-  | 'Warning';
+  | 'Warning'
+  | 'Internal';
 
 export type Status = StatusName;
 
@@ -246,6 +248,7 @@ export interface NavItem {
   };
   expanded?: boolean;
   hideFromNav?: boolean;
+  internalOnly?: boolean;
   featured?: boolean;
 }
 

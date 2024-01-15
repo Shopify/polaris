@@ -11,7 +11,7 @@
     line-height: var(--p-font-line-height-400);
   }
 
-  @media #{$p-breakpoints-md-down} {
+  @media (--p-breakpoints-md-down) {
     display: none;
   }
 }

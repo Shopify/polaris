@@ -14,7 +14,7 @@ $sheet-desktop-width: 380px;
     border-left: var(--p-border-width-025) solid var(--p-color-border-secondary);
   }
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     right: 0;
     width: $sheet-desktop-width;
   }
@@ -32,7 +32,7 @@ $sheet-desktop-width: 380px;
   bottom: 0;
   left: 0;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     left: auto;
     width: $sheet-desktop-width;
   }

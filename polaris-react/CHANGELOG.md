@@ -1,5 +1,30 @@
 # Changelog
 
+## 12.9.0
+
+### Minor Changes
+
+- [#11410](https://github.com/Shopify/polaris/pull/11410) [`d8ccd26ad`](https://github.com/Shopify/polaris/commit/d8ccd26ad7007914ab48c718a380a8f9cc802629) Thanks [@lgriffee](https://github.com/lgriffee)! - - Updated `SkeletonTabs` to reflect `Tabs` design
+  - Added `fitted` prop
+
+### Patch Changes
+
+- [#11433](https://github.com/Shopify/polaris/pull/11433) [`2ddc47fe2`](https://github.com/Shopify/polaris/commit/2ddc47fe2d35778192925b2819d228cb13ee856b) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed `Button` spinner icon alignment
+
+* [#11436](https://github.com/Shopify/polaris/pull/11436) [`72471750d`](https://github.com/Shopify/polaris/commit/72471750d2fb12397a3f1fd7f5f5814efc435b85) Thanks [@alex-page](https://github.com/alex-page)! - Revert "[Modal] Add `flex-grow` to `Modal` body to fix footer position
+
+## 12.8.0
+
+### Minor Changes
+
+- [#11430](https://github.com/Shopify/polaris/pull/11430) [`567048b59`](https://github.com/Shopify/polaris/commit/567048b596ae2bdae62978b0a6ab894c7ebd4a55) Thanks [@matallo](https://github.com/matallo)! - - Fixed prefix, prefix icon, and suffix icon for `TextField` component with `magic` tone
+
+* [#11354](https://github.com/Shopify/polaris/pull/11354) [`eab40d54c`](https://github.com/Shopify/polaris/commit/eab40d54cf273aa62e8a5bead64390d7e5d58a01) Thanks [@yurm04](https://github.com/yurm04)! - Fixed `Modal` footer position
+
+### Patch Changes
+
+- [#11429](https://github.com/Shopify/polaris/pull/11429) [`b1ecec131`](https://github.com/Shopify/polaris/commit/b1ecec131f7fc4a82f80b569cd228c8120815ab0) Thanks [@sophschneider](https://github.com/sophschneider)! - Bumped `Button` icon fill specificity to always be greater than `Icon` fill
+
 ## 12.7.0
 
 ### Minor Changes
