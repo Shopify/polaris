@@ -1,5 +1,14 @@
 # polaris.shopify.com
 
+## 0.61.9
+
+### Patch Changes
+
+- [#11446](https://github.com/Shopify/polaris/pull/11446) [`6e40eca5e`](https://github.com/Shopify/polaris/commit/6e40eca5ed82de159966552064271a238d3369cf) Thanks [@mrcthms](https://github.com/mrcthms)! - [Icons] Fixed references to incorrect icon imports that were causing Storybook to break
+
+- Updated dependencies [[`6e40eca5e`](https://github.com/Shopify/polaris/commit/6e40eca5ed82de159966552064271a238d3369cf), [`cea2dd22b`](https://github.com/Shopify/polaris/commit/cea2dd22b9f3fc401f2de765b0d68545f2ee97fe)]:
+  - @shopify/polaris@12.10.0
+
 ## 0.61.8
 
 ### Patch Changes

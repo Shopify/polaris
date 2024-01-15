@@ -1,5 +1,15 @@
 # Changelog
 
+## 12.10.0
+
+### Minor Changes
+
+- [#11417](https://github.com/Shopify/polaris/pull/11417) [`cea2dd22b`](https://github.com/Shopify/polaris/commit/cea2dd22b9f3fc401f2de765b0d68545f2ee97fe) Thanks [@mrcthms](https://github.com/mrcthms)! - [FiltersBar] Fixed bug where filters would disappear from the FiltersBar when clicking the Clear all button
+
+### Patch Changes
+
+- [#11446](https://github.com/Shopify/polaris/pull/11446) [`6e40eca5e`](https://github.com/Shopify/polaris/commit/6e40eca5ed82de159966552064271a238d3369cf) Thanks [@mrcthms](https://github.com/mrcthms)! - [Icons] Fixed references to incorrect icon imports that were causing Storybook to break
+
 ## 12.9.1
 
 ### Patch Changes
