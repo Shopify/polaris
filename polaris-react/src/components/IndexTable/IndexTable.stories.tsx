@@ -4787,7 +4787,7 @@ export function WithPaginationAndBulkActions() {
 
   return (
     <Box paddingBlockEnd="400">
-      <LegacyCard>
+      <Card padding="0">
         <IndexTable
           condensed={useBreakpoints().smDown}
           resourceName={resourceName}
@@ -4823,7 +4823,7 @@ export function WithPaginationAndBulkActions() {
         >
           {rowMarkup}
         </IndexTable>
-      </LegacyCard>
+      </Card>
     </Box>
   );
 }
