@@ -68,6 +68,21 @@ const inversePseudoElements = Object.fromEntries(
   Object.entries(pseudoElements).map(([key, value]) => [value, key]),
 );
 
+const joinEnglish =
+  process.env.NODE_ENV === 'development'
+    ? (arr: string[]) => {
+        if (arr.length === 1) {
+          return arr[0];
+        }
+        const joined = arr.slice(0, -1).join(', ');
+        if (arr.length < 2) {
+          return joined;
+        }
+
+        return `${joined} and ${arr[arr.length - 1]}`;
+      }
+    : null;
+
 // Performs 3 main functions:
 // 1. Converts all values to object syntax
 // 2. Removes `undefined` and `null` values
@@ -156,7 +171,6 @@ function resolveAliasFallbacks(
       if (typeof stylePropsWithResolvedAliases[styleProp] !== 'undefined') {
         break;
       }
-
       // Skip fallbacks that have no value set
       if (typeof styleProps[aliasStyleProp] === 'undefined') {
         continue;
@@ -563,23 +577,30 @@ function convert(
       }
     }
 
-    // Since Typescript doesn't have negation types (`string & not 'inherit'`),
-    // we need to do a runtime check for invalid values because some of the
-    // csstype types have a `| string` union which then allows some values to
-    // sneak through at runtime.
+    if (process.env.NODE_ENV === 'development') {
+      // Since Typescript doesn't have negation types (`string & not 'inherit'`),
+      // we need to do a runtime check for invalid values because some of the
+      // csstype types have a `| string` union which then allows some values to
+      // sneak through at runtime.
+      const badValues = valuesByPriority
+        .map(({value}) => value)
+        .filter((value) =>
+          disallowedCSSPropertyValues.includes(
+            value as (typeof disallowedCSSPropertyValues)[number],
+          ),
+        );
 
-    invariant(
-      !valuesByPriority.some(({value}) =>
-        disallowedCSSPropertyValues.includes(
-          value as (typeof disallowedCSSPropertyValues)[number],
-        ),
-      ),
-      `${disallowedCSSPropertyValues.join(
-        ',',
-      )} are reserved values, but were passed into the ${String(
-        stylePropName,
-      )} prop. Please use a different value.`,
-    );
+      invariant(
+        !badValues.length,
+        `${joinEnglish!(
+          disallowedCSSPropertyValues.map((val) => `'${val}'`),
+        )} are reserved values, but ${joinEnglish!(
+          badValues.map((val) => `'${val}'`),
+        )} were passed into the ${String(
+          stylePropName,
+        )} prop. Please use a different value.`,
+      );
+    }
 
     let leastSpecificValue: unknown;
 
