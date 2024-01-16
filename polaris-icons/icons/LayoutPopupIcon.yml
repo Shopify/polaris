@@ -1,0 +1,11 @@
+name: Layout popup
+description: Used to represent the option to popup the content.
+keywords:
+  - popup
+  - window
+  - overlay
+authors:
+  - Alex Page
+  - Joe Thomas
+date_added: 2020-09-21
+date_modified: 2023-06-23

@@ -1,12 +1,11 @@
 import React, {useId} from 'react';
-import {SearchMinor} from '@shopify/polaris-icons';
+import {SearchIcon} from '@shopify/polaris-icons';
 
-import {Spinner} from '../../../Spinner';
 import {Icon} from '../../../Icon';
 import {TextField} from '../../../TextField';
+import {Text} from '../../../Text';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
-
-import styles from './SearchField.scss';
+import {useI18n} from '../../../../utilities/i18n';
 
 export interface SearchFieldProps {
   onChange: (value: string) => void;
@@ -20,6 +19,8 @@ export interface SearchFieldProps {
   borderlessQueryField?: boolean;
   /** Show a loading spinner to the right of the input */
   loading?: boolean;
+  /** If present, will show as a suffix in the text field when entering a search term */
+  selectedViewName?: string;
 }
 
 export function SearchField({
@@ -33,9 +34,20 @@ export function SearchField({
   disabled,
   borderlessQueryField,
   loading,
+  selectedViewName,
 }: SearchFieldProps) {
+  const i18n = useI18n();
   const id = useId();
   const {mdUp} = useBreakpoints();
+
+  const suffix =
+    value && selectedViewName && mdUp ? (
+      <Text as="span" variant="bodyMd" tone="subdued">
+        {i18n.translate('Polaris.Filters.searchInView', {
+          viewName: selectedViewName,
+        })}
+      </Text>
+    ) : null;
 
   function handleChange(value: string) {
     onChange(value);
@@ -62,18 +74,14 @@ export function SearchField({
       disabled={disabled}
       variant={borderlessQueryField ? 'borderless' : 'inherit'}
       size="slim"
-      prefix={mdUp ? <Icon source={SearchMinor} /> : undefined}
-      suffix={
-        loading ? (
-          <div className={styles.Spinner}>
-            <Spinner size="small" />
-          </div>
-        ) : null
-      }
+      prefix={mdUp ? <Icon source={SearchIcon} /> : undefined}
+      suffix={suffix}
       focused={focused}
       label={placeholder}
       labelHidden
       clearButton
+      autoSize={mdUp}
+      loading={loading}
     />
   );
 }

@@ -1,0 +1,14 @@
+name: Wallet filled
+description: >-
+  The account’s current balance. This amount is comprised of any transaction not
+  yet included in a payout.
+keywords:
+  - balance
+  - wallet
+  - money
+  - transaction
+  - payout
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

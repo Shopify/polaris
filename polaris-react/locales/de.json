@@ -158,7 +158,8 @@
       "clearLabel": "{filterName} löschen",
       "moreFiltersWithCount": "Weitere Filter ({count})",
       "addFilter": "Filter hinzufügen",
-      "clearFilters": "Alles löschen"
+      "clearFilters": "Alles löschen",
+      "searchInView": "in: {viewName}"
     },
     "Modal": {
       "iFrameTitle": "Text-Markup",

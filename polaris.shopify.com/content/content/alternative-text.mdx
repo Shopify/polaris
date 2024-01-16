@@ -1,7 +1,7 @@
 ---
 title: Alternative text
 description: Alternative text (alt text) helps provide an inclusive experience for merchants who use screen readers.
-icon: ImageAltMajor
+icon: ImageAltIcon
 keywords:
   - speech synthesis
   - alt HTML element attribute
@@ -125,7 +125,7 @@ But if you’re using this image in a product listing, ensure shoppers know the 
 
 ```jsx
 <Button accessibilityLabel="search" onClick={() => search()}>
-  <Icon source={SearchMajor} accessibilityLabel="" />
+  <Icon source={SearchIcon} accessibilityLabel="" />
 </Button>
 ```
 
@@ -149,11 +149,11 @@ Images with more complexity need some consideration. For example, groups of imag
 ```jsx
 <div role="img" aria-labelledby="star_id">
   <LegacyStack>
-    <Icon source={StarFilledMinor} alt="">
-    <Icon source={StarFilledMinor} alt="">
-    <Icon source={StarFilledMinor} alt="">
-    <Icon source={StarOutlineMinor} alt="">
-    <Icon source={StarOutlineMinor} alt="">
+    <Icon source={StarFilledIcon} alt="">
+    <Icon source={StarFilledIcon} alt="">
+    <Icon source={StarFilledIcon} alt="">
+    <Icon source={StarIcon} alt="">
+    <Icon source={StarIcon} alt="">
   </LegacyStack>
 </div>
 <div id="star_id">3 of 5 stars</div>

@@ -16,7 +16,7 @@ import {ResourceItem} from '../../ResourceItem';
 import {Pagination} from '../../Pagination';
 import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
 import {ResourceList} from '../ResourceList';
-import styles from '../ResourceList.scss';
+import styles from '../ResourceList.module.scss';
 
 jest.mock('../../BulkActions', () => ({
   ...jest.requireActual('../../BulkActions'),

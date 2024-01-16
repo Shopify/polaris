@@ -1,5 +1,5 @@
 import React from 'react';
-import {CancelSmallMinor} from '@shopify/polaris-icons';
+import {XSmallIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
@@ -12,7 +12,7 @@ import {Button, buttonFrom} from '../Button';
 import {Text} from '../Text';
 import {Image} from '../Image';
 
-import styles from './CalloutCard.scss';
+import styles from './CalloutCard.module.scss';
 
 export interface CalloutCardProps {
   /** The content to display inside the callout card. */
@@ -57,7 +57,7 @@ export function CalloutCard({
     <div className={styles.Dismiss}>
       <Button
         variant="plain"
-        icon={CancelSmallMinor}
+        icon={XSmallIcon}
         onClick={onDismiss}
         accessibilityLabel="Dismiss card"
       />

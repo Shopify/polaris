@@ -158,7 +158,8 @@
       "clearLabel": "{filterName} filtresini temizle",
       "moreFiltersWithCount": "Daha fazla filtre ({count})",
       "addFilter": "Filtre ekle",
-      "clearFilters": "Tümünü temizle"
+      "clearFilters": "Tümünü temizle",
+      "searchInView": "Şu görünümde: {viewName}"
     },
     "Modal": {
       "iFrameTitle": "gövde işaretlemesi",

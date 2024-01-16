@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {GlobeMinor} from '@shopify/polaris-icons';
+import {GlobeIcon} from '@shopify/polaris-icons';
 
 import {Text} from '../../Text';
 import {Icon} from '../../Icon';
@@ -51,10 +51,10 @@ describe('<Badge />', () => {
   });
 
   it('renders an icon when icon is provided', () => {
-    const badge = mountWithApp(<Badge icon={GlobeMinor} />);
+    const badge = mountWithApp(<Badge icon={GlobeIcon} />);
 
     expect(badge).toContainReactComponent(Icon, {
-      source: GlobeMinor,
+      source: GlobeIcon,
     });
   });
 
@@ -62,11 +62,11 @@ describe('<Badge />', () => {
     const badge = mountWithApp(
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      <Badge progress="incomplete" icon={GlobeMinor} />,
+      <Badge progress="incomplete" icon={GlobeIcon} />,
     );
 
     expect(badge).toContainReactComponent(Icon, {
-      source: GlobeMinor,
+      source: GlobeIcon,
     });
     expect(badge).not.toContainReactComponent('span', {
       className: 'Pip',

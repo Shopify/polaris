@@ -1,11 +1,11 @@
 import React from 'react';
-import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
+import {ChevronLeftIcon, ChevronRightIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {Button} from '../../../Button';
 import type {ColumnVisibilityData} from '../../types';
-import styles from '../../DataTable.scss';
+import styles from '../../DataTable.module.scss';
 
 export interface NavigationProps {
   columnVisibilityData: ColumnVisibilityData[];
@@ -52,7 +52,7 @@ export function Navigation({
     <div className={styles.Navigation} ref={setRef}>
       <Button
         variant="tertiary"
-        icon={ChevronLeftMinor}
+        icon={ChevronLeftIcon}
         disabled={isScrolledFarthestLeft}
         accessibilityLabel={leftA11yLabel}
         onClick={navigateTableLeft}
@@ -60,7 +60,7 @@ export function Navigation({
       {pipMarkup}
       <Button
         variant="tertiary"
-        icon={ChevronRightMinor}
+        icon={ChevronRightIcon}
         disabled={isScrolledFarthestRight}
         accessibilityLabel={rightA11yLabel}
         onClick={navigateTableRight}

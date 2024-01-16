@@ -28,7 +28,7 @@ import type {
   SortButtonChoice,
 } from './types';
 import {IndexFiltersMode} from './types';
-import styles from './IndexFilters.scss';
+import styles from './IndexFilters.module.scss';
 
 const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
 
@@ -186,6 +186,8 @@ export function IndexFilters({
     useIsSticky(mode, Boolean(disableStickyMode), isFlushWhenSticky);
 
   const viewNames = tabs.map(({content}) => content);
+
+  const selectedViewName = viewNames[selected];
 
   const handleChangeSortButton = useCallback(
     (value: string[]) => {
@@ -459,6 +461,7 @@ export function IndexFilters({
                   mountedState={mdDown ? undefined : state}
                   borderlessQueryField
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
+                  selectedViewName={selectedViewName}
                 >
                   <div className={styles.ButtonWrap}>
                     <InlineStack gap="200" align="start" blockAlign="center">

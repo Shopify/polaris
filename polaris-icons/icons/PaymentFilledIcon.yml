@@ -1,0 +1,12 @@
+name: Payment filled
+description: Used to represent a payment made by credit or debit card.
+keywords:
+  - credit
+  - credit card
+  - debit
+  - debit card
+  - payment
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

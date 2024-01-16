@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {MenuHorizontalIcon} from '@shopify/polaris-icons';
 
 import type {DisableableAction} from '../../../../types';
 import {Button} from '../../../Button';
@@ -7,7 +7,7 @@ import {Icon} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
 import {Tooltip} from '../../../Tooltip';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
-import styles from '../../BulkActions.scss';
+import styles from '../../BulkActions.module.scss';
 
 export type BulkActionButtonProps = {
   disclosure?: boolean;
@@ -54,7 +54,7 @@ export function BulkActionButton({
       size="slim"
       icon={
         isActivatorForMoreActionsPopover ? (
-          <Icon source={HorizontalDotsMinor} tone="base" />
+          <Icon source={MenuHorizontalIcon} tone="base" />
         ) : undefined
       }
     >

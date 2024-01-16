@@ -1,0 +1,11 @@
+name: Print
+description: Used to denote the action of printing.
+keywords:
+  - print
+  - printing
+  - printer
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+date_added: 2018-11-14
+date_modified: 2023-06-23

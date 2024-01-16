@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {RiskMajor} from '@shopify/polaris-icons';
+import {AlertTriangleIcon} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
 import {Image} from '../../../Image';
@@ -15,7 +15,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 
 import {DiscardConfirmationModal} from './components';
-import styles from './ContextualSaveBar.scss';
+import styles from './ContextualSaveBar.module.scss';
 
 export function ContextualSaveBar({
   alignContentFlush,
@@ -126,7 +126,7 @@ export function ContextualSaveBar({
         {logoMarkup}
         <div className={contentsClassName}>
           <div className={styles.MessageContainer}>
-            <Icon source={RiskMajor} />
+            <Icon source={AlertTriangleIcon} />
             {message && (
               <Text as="h2" variant="headingMd" tone="text-inverse" truncate>
                 {message}

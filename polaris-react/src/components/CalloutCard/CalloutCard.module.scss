@@ -1,0 +1,52 @@
+@import '../../styles/common';
+
+.CalloutCard {
+  display: flex;
+  align-items: center;
+}
+
+.Image {
+  display: none;
+  flex: 0 0 auto;
+  width: 100px;
+
+  @media (--p-breakpoints-sm-up) {
+    display: block;
+    margin-left: var(--p-space-500);
+  }
+}
+
+.DismissImage {
+  margin-right: var(--p-space-500);
+}
+
+.Content {
+  flex: 1 1 auto;
+}
+
+.Title {
+  margin-bottom: var(--p-space-200);
+}
+
+.Buttons {
+  margin-top: var(--p-space-200);
+}
+
+.Container {
+  position: relative;
+}
+
+.Dismiss {
+  right: var(--p-space-400);
+  top: var(--p-space-400);
+  position: absolute;
+
+  // stylelint-disable-next-line -- Dismiss icon color override
+  & svg {
+    fill: var(--p-color-icon-secondary);
+  }
+}
+
+.hasDismiss {
+  padding-right: calc(var(--p-space-800) + var(--p-space-200));
+}

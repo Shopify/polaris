@@ -1,0 +1,9 @@
+name: Person filled
+description: Used to represent a customer, or user.
+keywords:
+  - customer
+  - user
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

@@ -5,6 +5,10 @@ import Longform from '../Longform';
 import {motion, AnimatePresence} from 'framer-motion';
 import StatusBadge from '../StatusBadge';
 import {className, toPascalCase} from '../../utils/various';
+import {ClipboardIcon} from '@shopify/polaris-icons';
+import {useCopyToClipboard} from '../../utils/hooks';
+import Icon from '../Icon';
+import Tooltip from '../Tooltip';
 
 interface Props {
   componentName: string;
@@ -30,13 +34,15 @@ const TypeContext = createContext<{
 }>({types: {}});
 
 function PropsTable({types, componentName}: Props) {
-  const feedbackTitle = '[polaris.shopify.com] Props table feedback';
-  const feedbackUrl = `https://github.com/shopify/polaris/issues/new?title=${encodeURIComponent(
-    feedbackTitle,
-  )}&amp;labels=polaris.shopify.com`;
-
   const propsName = `${toPascalCase(componentName).replace(/\s/g, '')}Props`;
   const propsForComponent = types[propsName];
+  const origin =
+    typeof window !== 'undefined'
+      ? window.location.origin
+      : 'https://polaris.shopify.com';
+  const path = typeof window !== 'undefined' ? window.location.pathname : '';
+  const url = `${origin}${path}#props`;
+  const [copy, didJustCopy] = useCopyToClipboard(url);
 
   if (!propsForComponent) throw new Error('Could not find props for component');
 
@@ -46,11 +52,22 @@ function PropsTable({types, componentName}: Props) {
     <TypeContext.Provider value={{types}}>
       <div className={styles.PropsTable}>
         <Longform firstParagraphIsLede={false}>
-          <h2 id="props">Props</h2>
-          <p>
-            Want to help make this feature better? Please{' '}
-            <a href={feedbackUrl}>share your feedback</a>.
-          </p>
+          <h2 id="props">
+            Props
+            <Tooltip
+              ariaLabel="Copy to clipboard"
+              renderContent={() => <p>{didJustCopy ? 'Copied' : 'Copy'}</p>}
+            >
+              <button
+                className={styles.CopyButton}
+                onClick={() => {
+                  copy();
+                }}
+              >
+                <Icon source={ClipboardIcon} width={16} height={16} />
+              </button>
+            </Tooltip>
+          </h2>
         </Longform>
 
         {!propsAreDefinedUsingInterface && (

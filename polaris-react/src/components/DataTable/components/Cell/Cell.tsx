@@ -1,13 +1,13 @@
 import React, {useRef} from 'react';
 import type {FocusEventHandler} from 'react';
-import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
+import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
 import {useI18n} from '../../../../utilities/i18n';
 import {headerCell} from '../../../shared';
 import {Icon} from '../../../Icon';
 import type {SortDirection, VerticalAlign} from '../../types';
-import styles from '../../DataTable.scss';
+import styles from '../../DataTable.module.scss';
 import {Tooltip} from '../../../Tooltip';
 
 export interface CellProps {
@@ -102,7 +102,7 @@ export function Cell({
   const direction =
     sorted && sortDirection ? sortDirection : defaultSortDirection;
   const source =
-    direction === 'descending' ? SortDescendingMajor : SortAscendingMajor;
+    direction === 'descending' ? SortDescendingIcon : SortAscendingIcon;
   const oppositeDirection =
     sortDirection === 'ascending' ? 'descending' : 'ascending';
 

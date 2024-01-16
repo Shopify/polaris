@@ -13,10 +13,10 @@ import {
   ActionList,
 } from '@shopify/polaris';
 import {
-  PlusMinor,
-  CancelSmallMinor,
-  ChevronDownMinor,
-  EditMinor,
+  PlusIcon,
+  XSmallIcon,
+  ChevronDownIcon,
+  EditIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -85,19 +85,19 @@ export function Default() {
         <InlineStack gap="400" blockAlign="end">
           <Button>Label</Button>
           <Button disabled>Label</Button>
-          <Button icon={PlusMinor}>Label</Button>
-          <Button disabled icon={PlusMinor}>
+          <Button icon={PlusIcon}>Label</Button>
+          <Button disabled icon={PlusIcon}>
             Label
           </Button>
           <Button disclosure>Label</Button>
           <Button
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -107,19 +107,19 @@ export function Default() {
         <InlineStack gap="400" blockAlign="end">
           <Button>Label</Button>
           <Button disabled>Label</Button>
-          <Button icon={PlusMinor}>Label</Button>
-          <Button disabled icon={PlusMinor}>
+          <Button icon={PlusIcon}>Label</Button>
+          <Button disabled icon={PlusIcon}>
             Label
           </Button>
           <Button disclosure>Label</Button>
           <Button
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -138,10 +138,10 @@ export function Critical() {
           <Button tone="critical" disabled>
             Label
           </Button>
-          <Button tone="critical" icon={PlusMinor}>
+          <Button tone="critical" icon={PlusIcon}>
             Label
           </Button>
-          <Button tone="critical" disabled icon={PlusMinor}>
+          <Button tone="critical" disabled icon={PlusIcon}>
             Label
           </Button>
           <Button tone="critical" disclosure>
@@ -149,14 +149,14 @@ export function Critical() {
           </Button>
           <Button
             tone="critical"
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
             tone="critical"
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -168,10 +168,10 @@ export function Critical() {
           <Button tone="critical" disabled>
             Label
           </Button>
-          <Button tone="critical" icon={PlusMinor}>
+          <Button tone="critical" icon={PlusIcon}>
             Label
           </Button>
-          <Button tone="critical" disabled icon={PlusMinor}>
+          <Button tone="critical" disabled icon={PlusIcon}>
             Label
           </Button>
           <Button tone="critical" disclosure>
@@ -179,14 +179,14 @@ export function Critical() {
           </Button>
           <Button
             tone="critical"
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             tone="critical"
             disabled
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -204,10 +204,10 @@ export function Plain() {
         <Button variant="plain" disabled>
           Label
         </Button>
-        <Button variant="plain" icon={PlusMinor}>
+        <Button variant="plain" icon={PlusIcon}>
           Label
         </Button>
-        <Button variant="plain" disabled icon={PlusMinor}>
+        <Button variant="plain" disabled icon={PlusIcon}>
           Label
         </Button>
         <Button variant="plain" disclosure>
@@ -218,14 +218,14 @@ export function Plain() {
         </Button>
         <Button
           variant="plain"
-          icon={CancelSmallMinor}
+          icon={XSmallIcon}
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
         <Button
           variant="plain"
           disabled
-          icon={CancelSmallMinor}
+          icon={XSmallIcon}
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
@@ -239,10 +239,10 @@ export function MonochromePlain() {
     <Box padding="400">
       <InlineStack gap="400" blockAlign="center">
         <Button variant="monochromePlain">Default</Button>
-        <Button variant="monochromePlain" icon={PlusMinor}>
+        <Button variant="monochromePlain" icon={PlusIcon}>
           With icon
         </Button>
-        <Button variant="monochromePlain" disabled icon={PlusMinor}>
+        <Button variant="monochromePlain" disabled icon={PlusIcon}>
           Disabled with icon
         </Button>
         <Button variant="monochromePlain" disclosure>
@@ -267,10 +267,10 @@ export function Tertiary() {
           <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button variant="tertiary" icon={PlusMinor}>
+          <Button variant="tertiary" icon={PlusIcon}>
             Label
           </Button>
-          <Button variant="tertiary" disabled icon={PlusMinor}>
+          <Button variant="tertiary" disabled icon={PlusIcon}>
             Label
           </Button>
           <Button variant="tertiary" disclosure>
@@ -278,14 +278,14 @@ export function Tertiary() {
           </Button>
           <Button
             variant="tertiary"
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
             variant="tertiary"
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -297,10 +297,10 @@ export function Tertiary() {
           <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button variant="tertiary" icon={PlusMinor}>
+          <Button variant="tertiary" icon={PlusIcon}>
             Label
           </Button>
-          <Button variant="tertiary" disabled icon={PlusMinor}>
+          <Button variant="tertiary" disabled icon={PlusIcon}>
             Label
           </Button>
           <Button variant="tertiary" disclosure>
@@ -308,14 +308,14 @@ export function Tertiary() {
           </Button>
           <Button
             variant="tertiary"
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
             variant="tertiary"
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -336,10 +336,10 @@ export function TertiaryCritical() {
           <Button variant="tertiary" tone="critical" disabled>
             Label
           </Button>
-          <Button variant="tertiary" tone="critical" icon={PlusMinor}>
+          <Button variant="tertiary" tone="critical" icon={PlusIcon}>
             Label
           </Button>
-          <Button variant="tertiary" tone="critical" disabled icon={PlusMinor}>
+          <Button variant="tertiary" tone="critical" disabled icon={PlusIcon}>
             Label
           </Button>
           <Button variant="tertiary" tone="critical" disclosure>
@@ -348,7 +348,7 @@ export function TertiaryCritical() {
           <Button
             variant="tertiary"
             tone="critical"
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -356,7 +356,7 @@ export function TertiaryCritical() {
             disabled
             variant="tertiary"
             tone="critical"
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -370,10 +370,10 @@ export function TertiaryCritical() {
           <Button variant="tertiary" tone="critical" disabled>
             Label
           </Button>
-          <Button variant="tertiary" tone="critical" icon={PlusMinor}>
+          <Button variant="tertiary" tone="critical" icon={PlusIcon}>
             Label
           </Button>
-          <Button variant="tertiary" tone="critical" disabled icon={PlusMinor}>
+          <Button variant="tertiary" tone="critical" disabled icon={PlusIcon}>
             Label
           </Button>
           <Button variant="tertiary" tone="critical" disclosure>
@@ -382,7 +382,7 @@ export function TertiaryCritical() {
           <Button
             variant="tertiary"
             tone="critical"
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -390,7 +390,7 @@ export function TertiaryCritical() {
             disabled
             variant="tertiary"
             tone="critical"
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -409,10 +409,10 @@ export function PlainCritical() {
       <Button variant="plain" tone="critical" disabled>
         Label
       </Button>
-      <Button variant="plain" tone="critical" icon={PlusMinor}>
+      <Button variant="plain" tone="critical" icon={PlusIcon}>
         Label
       </Button>
-      <Button variant="plain" tone="critical" disabled icon={PlusMinor}>
+      <Button variant="plain" tone="critical" disabled icon={PlusIcon}>
         Label
       </Button>
       <Button variant="plain" tone="critical" disclosure>
@@ -424,7 +424,7 @@ export function PlainCritical() {
       <Button
         variant="plain"
         tone="critical"
-        icon={CancelSmallMinor}
+        icon={XSmallIcon}
         onClick={() => {}}
         accessibilityLabel="Dismiss"
       />
@@ -432,7 +432,7 @@ export function PlainCritical() {
         variant="plain"
         tone="critical"
         disabled
-        icon={CancelSmallMinor}
+        icon={XSmallIcon}
         onClick={() => {}}
         accessibilityLabel="Dismiss"
       />
@@ -449,10 +449,10 @@ export function Primary() {
           <Button variant="primary" disabled>
             Label
           </Button>
-          <Button variant="primary" icon={PlusMinor}>
+          <Button variant="primary" icon={PlusIcon}>
             Label
           </Button>
-          <Button variant="primary" disabled icon={PlusMinor}>
+          <Button variant="primary" disabled icon={PlusIcon}>
             Label
           </Button>
           <Button variant="primary" disclosure>
@@ -460,14 +460,14 @@ export function Primary() {
           </Button>
           <Button
             variant="primary"
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
             variant="primary"
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -479,10 +479,10 @@ export function Primary() {
           <Button variant="primary" disabled>
             Label
           </Button>
-          <Button variant="primary" icon={PlusMinor}>
+          <Button variant="primary" icon={PlusIcon}>
             Label
           </Button>
-          <Button variant="primary" disabled icon={PlusMinor}>
+          <Button variant="primary" disabled icon={PlusIcon}>
             Label
           </Button>
           <Button variant="primary" disclosure>
@@ -490,14 +490,14 @@ export function Primary() {
           </Button>
           <Button
             variant="primary"
-            icon={CancelSmallMinor}
+            icon={XSmallIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
           <Button
             disabled
             variant="primary"
-            icon={EditMinor}
+            icon={EditIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -517,10 +517,10 @@ export function PrimarySuccess() {
         <Button variant="primary" tone="success" disabled>
           Label
         </Button>
-        <Button variant="primary" tone="success" icon={PlusMinor}>
+        <Button variant="primary" tone="success" icon={PlusIcon}>
           Label
         </Button>
-        <Button variant="primary" tone="success" disabled icon={PlusMinor}>
+        <Button variant="primary" tone="success" disabled icon={PlusIcon}>
           Label
         </Button>
         <Button variant="primary" tone="success" disclosure>
@@ -529,7 +529,7 @@ export function PrimarySuccess() {
         <Button
           variant="primary"
           tone="success"
-          icon={CancelSmallMinor}
+          icon={XSmallIcon}
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
@@ -537,7 +537,7 @@ export function PrimarySuccess() {
           disabled
           variant="primary"
           tone="success"
-          icon={EditMinor}
+          icon={EditIcon}
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
@@ -556,10 +556,10 @@ export function PrimaryCritical() {
         <Button variant="primary" tone="critical" disabled>
           Label
         </Button>
-        <Button variant="primary" tone="critical" icon={PlusMinor}>
+        <Button variant="primary" tone="critical" icon={PlusIcon}>
           Label
         </Button>
-        <Button variant="primary" tone="critical" disabled icon={PlusMinor}>
+        <Button variant="primary" tone="critical" disabled icon={PlusIcon}>
           Label
         </Button>
         <Button variant="primary" tone="critical" disclosure>
@@ -568,7 +568,7 @@ export function PrimaryCritical() {
         <Button
           variant="primary"
           tone="critical"
-          icon={CancelSmallMinor}
+          icon={XSmallIcon}
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
@@ -576,7 +576,7 @@ export function PrimaryCritical() {
           disabled
           variant="primary"
           tone="critical"
-          icon={EditMinor}
+          icon={EditIcon}
           onClick={() => {}}
           accessibilityLabel="Dismiss"
         />
@@ -598,7 +598,7 @@ export function Micro() {
       <Button variant="plain" size="micro">
         Label
       </Button>
-      <Button size="micro" accessibilityLabel="Edit" icon={EditMinor} />
+      <Button size="micro" accessibilityLabel="Edit" icon={EditIcon} />
     </InlineStack>
   );
 }
@@ -616,7 +616,7 @@ export function Slim() {
       <Button variant="plain" size="slim">
         Label
       </Button>
-      <Button size="slim" accessibilityLabel="Edit" icon={EditMinor} />
+      <Button size="slim" accessibilityLabel="Edit" icon={EditIcon} />
     </InlineStack>
   );
 }
@@ -634,7 +634,7 @@ export function Large() {
       <Button size="large" variant="plain">
         Label
       </Button>
-      <Button size="large" accessibilityLabel="Edit" icon={EditMinor} />
+      <Button size="large" accessibilityLabel="Edit" icon={EditIcon} />
     </InlineStack>
   );
 }
@@ -740,7 +740,7 @@ export function Split() {
               <Button
                 variant="primary"
                 onClick={toggleActive('popover1')}
-                icon={ChevronDownMinor}
+                icon={ChevronDownIcon}
                 accessibilityLabel="Other save actions"
               />
             }
@@ -763,7 +763,7 @@ export function Split() {
             activator={
               <Button
                 onClick={toggleActive('popover2')}
-                icon={ChevronDownMinor}
+                icon={ChevronDownIcon}
                 accessibilityLabel="Other save actions"
               />
             }
@@ -802,7 +802,7 @@ export function DisabledState() {
       </Button>
       {/* Visual check to ensure the button color is not inherited from the parent */}
       <Box color="text-critical">
-        <Button variant="monochromePlain" disabled icon={CancelSmallMinor}>
+        <Button variant="monochromePlain" disabled icon={XSmallIcon}>
           Buy shipping label
         </Button>
       </Box>

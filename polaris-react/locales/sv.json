@@ -158,7 +158,8 @@
       "clearLabel": "Rensa {filterName}",
       "moreFiltersWithCount": "Fler filter ({count})",
       "addFilter": "Lägg till filter",
-      "clearFilters": "Rensa alla"
+      "clearFilters": "Rensa alla",
+      "searchInView": "i:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "markering av brödtext",
@@ -336,7 +337,7 @@
     "IndexTable": {
       "emptySearchTitle": "Inga {resourceNamePlural} hittades",
       "emptySearchDescription": "Prova att byta filter eller sökord",
-      "onboardingBadgeText": "Nytt",
+      "onboardingBadgeText": "Ny",
       "resourceLoadingAccessibilityLabel": "Laddar {resourceNamePlural}",
       "selectAllLabel": "Välj alla {resourceNamePlural}",
       "selected": "{selectedItemsCount} har valts",

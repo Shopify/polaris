@@ -1,0 +1,9 @@
+name: Cart down filled
+description: Used to represent saving the contents of a shopping cart.
+keywords:
+  - cart
+  - checkout
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

@@ -8,7 +8,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './BlockStack.scss';
+import styles from './BlockStack.module.scss';
 
 type Align =
   | 'start'
@@ -20,7 +20,7 @@ type Align =
 
 type InlineAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
-type Element = 'div' | 'ul' | 'ol' | 'fieldset';
+type Element = 'div' | 'span' | 'ul' | 'ol' | 'li' | 'fieldset';
 
 type Gap = ResponsiveProp<SpaceScale>;
 

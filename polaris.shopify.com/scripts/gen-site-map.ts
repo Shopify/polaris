@@ -26,4 +26,4 @@ ${siteMapURLS}
   fs.writeFileSync(outputFile, siteMapData);
 };
 
-genSiteMap();
+export default genSiteMap;

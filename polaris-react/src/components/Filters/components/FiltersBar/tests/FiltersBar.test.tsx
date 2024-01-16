@@ -6,6 +6,7 @@ import {ActionList} from '../../../../ActionList';
 import {FiltersBar} from '../FiltersBar';
 import type {FiltersBarProps} from '../FiltersBar';
 import {FilterPill} from '../../FilterPill';
+import {Button} from '../../../../Button';
 
 describe('<FiltersBar />', () => {
   let originalScroll: any;
@@ -387,5 +388,59 @@ describe('<FiltersBar />', () => {
         }),
       ],
     });
+  });
+
+  it('will keep a pinned filter from props pinned when clearing', () => {
+    const appliedFilters = [
+      {
+        ...defaultProps.filters[1],
+        label: 'Bar 2',
+        value: ['Bar 2'],
+        onRemove: jest.fn(),
+      },
+    ];
+    const scrollSpy = jest.fn();
+    HTMLElement.prototype.scroll = scrollSpy;
+    const wrapper = mountWithApp(
+      <FiltersBar {...defaultProps} appliedFilters={appliedFilters} />,
+    );
+
+    wrapper
+      .find(FilterPill, {
+        label: 'Bar 2',
+      })!
+      .trigger('onRemove');
+
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 1);
+  });
+
+  it('will keep a pinned filter from props pinned when clearing all', () => {
+    const appliedFilters = [
+      {
+        ...defaultProps.filters[0],
+        label: 'Bar 2',
+        value: ['Bar 2'],
+        onRemove: jest.fn(),
+      },
+      {
+        ...defaultProps.filters[2],
+        label: 'Bar 2',
+        value: ['Bar 2'],
+        onRemove: jest.fn(),
+      },
+    ];
+    const scrollSpy = jest.fn();
+    HTMLElement.prototype.scroll = scrollSpy;
+    const wrapper = mountWithApp(
+      <FiltersBar {...defaultProps} appliedFilters={appliedFilters} />,
+    );
+
+    wrapper
+      .find(Button, {
+        children: 'Clear all',
+      })!
+      .trigger('onClick');
+
+    expect(wrapper).toContainReactComponentTimes(FilterPill, 1);
   });
 });

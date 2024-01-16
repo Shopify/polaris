@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <link rel="preconnect" href="https://cdn.shopify.com/" />
         <link
-          href="https://cdn.shopify.com/static/fonts/inter/inter.css"
+          href="https://cdn.shopify.com/static/fonts/inter/v4/styles.css"
           rel="stylesheet"
         ></link>
       </Head>

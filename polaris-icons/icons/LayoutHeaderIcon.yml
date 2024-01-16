@@ -1,0 +1,13 @@
+name: Layout header
+description: Used to represent the header section of a component, page or layout.
+keywords:
+  - layout
+  - header
+  - content
+  - dashed
+  - section
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+date_added: 2019-02-25
+date_modified: 2023-06-23

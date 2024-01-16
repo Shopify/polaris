@@ -1,19 +1,18 @@
 import React, {useCallback, useRef, useState} from 'react';
 import {
-  AnalyticsMajor,
-  AppsMajor,
-  CirclePlusMinor,
-  CustomersMajor,
-  DiscountsMajor,
-  ExternalMinor,
-  GlobeMinor,
-  HomeMajor,
-  MarketingMajor,
-  OrdersMajor,
-  ProductsMajor,
-  ProductsMinor,
-  SettingsMajor,
-  WifiMajor,
+  ChartVerticalIcon,
+  AppsIcon,
+  PlusCircleIcon,
+  PersonIcon,
+  DiscountIcon,
+  ExternalIcon,
+  GlobeIcon,
+  HomeIcon,
+  TargetIcon,
+  OrderIcon,
+  ProductIcon,
+  SettingsIcon,
+  WifiIcon,
 } from '@shopify/polaris-icons';
 
 import {
@@ -48,7 +47,7 @@ import {
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
-import styles from './DetailsPage.scss';
+import styles from './DetailsPage.module.scss';
 
 export function DetailsPage() {
   const defaultState = useRef({
@@ -220,7 +219,7 @@ export function DetailsPage() {
         items={[
           {
             label: 'Home',
-            icon: HomeMajor,
+            icon: HomeIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('home');
@@ -230,7 +229,7 @@ export function DetailsPage() {
           },
           {
             label: 'Orders',
-            icon: OrdersMajor,
+            icon: OrderIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('orders');
@@ -269,7 +268,7 @@ export function DetailsPage() {
           },
           {
             label: 'Products',
-            icon: ProductsMajor,
+            icon: ProductIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('products');
@@ -308,7 +307,7 @@ export function DetailsPage() {
           },
           {
             label: 'Customers',
-            icon: CustomersMajor,
+            icon: PersonIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('customers');
@@ -318,7 +317,7 @@ export function DetailsPage() {
           },
           {
             label: 'Analytics',
-            icon: AnalyticsMajor,
+            icon: ChartVerticalIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('analytics');
@@ -328,7 +327,7 @@ export function DetailsPage() {
           },
           {
             label: 'Marketing',
-            icon: MarketingMajor,
+            icon: TargetIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('marketing');
@@ -338,7 +337,7 @@ export function DetailsPage() {
           },
           {
             label: 'Discounts',
-            icon: DiscountsMajor,
+            icon: DiscountIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('discounts');
@@ -348,7 +347,7 @@ export function DetailsPage() {
           },
           {
             label: 'Apps',
-            icon: AppsMajor,
+            icon: AppsIcon,
             onClick: () => {
               toggleIsLoading();
               setNavItemActive('apps');
@@ -362,7 +361,7 @@ export function DetailsPage() {
         fill
         title="Sales channels"
         action={{
-          icon: CirclePlusMinor,
+          icon: PlusCircleIcon,
           accessibilityLabel: 'Add sales channel',
           onClick: toggleModalActive,
           tooltip: {
@@ -412,14 +411,14 @@ export function DetailsPage() {
           },
           {
             label: 'Updog Marketplace',
-            icon: ProductsMinor,
+            icon: ProductIcon,
             onClick: () => {},
             matches: navItemActive === 'pos',
             url: '#',
             secondaryAction: {
               url: '#',
               accessibilityLabel: 'OLp',
-              icon: ExternalMinor,
+              icon: ExternalIcon,
               tooltip: {
                 content: 'Open Updog Marketplace',
               },
@@ -427,14 +426,14 @@ export function DetailsPage() {
           },
           {
             label: 'Radio',
-            icon: WifiMajor,
+            icon: WifiIcon,
             onClick: () => {},
             matches: navItemActive === 'pos',
             url: '#',
             secondaryAction: {
               url: '#',
               accessibilityLabel: 'radio',
-              icon: GlobeMinor,
+              icon: GlobeIcon,
             },
           },
         ]}
@@ -442,7 +441,7 @@ export function DetailsPage() {
       <Navigation.Section
         items={[
           {
-            icon: SettingsMajor,
+            icon: SettingsIcon,
             label: 'Settings',
             onClick: toggleModalActive,
           },

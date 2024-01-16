@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
+import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
@@ -363,10 +363,11 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('table', {
         className: 'Table Table-sticky Table-sticky-last',
       });
-      expect(index).toContainReactComponent('th', {
-        children: title,
+      const lastHeading = index.find('th', {
         className: 'TableHeading TableHeading-last',
       });
+      expect(lastHeading).not.toBeNull();
+      expect(lastHeading).toContainReactText(title);
     });
 
     it('does not render a sticky last heading if `lastColumnSticky` prop is true and last heading is hidden', () => {
@@ -661,9 +662,7 @@ describe('<IndexTable>', () => {
             </IndexTable>,
           );
           const source =
-            direction === 'ascending'
-              ? SortAscendingMajor
-              : SortDescendingMajor;
+            direction === 'ascending' ? SortAscendingIcon : SortDescendingIcon;
 
           expect(index.findAll('th')[1]).toContainReactComponent(source);
         },
@@ -683,9 +682,7 @@ describe('<IndexTable>', () => {
             </IndexTable>,
           );
           const source =
-            direction === 'ascending'
-              ? SortAscendingMajor
-              : SortDescendingMajor;
+            direction === 'ascending' ? SortAscendingIcon : SortDescendingIcon;
 
           expect(index.findAll('th')[3]).toContainReactComponent(source);
         },
@@ -707,7 +704,7 @@ describe('<IndexTable>', () => {
         );
 
         expect(index.findAll('th')[3]).toContainReactComponent(
-          SortDescendingMajor,
+          SortDescendingIcon,
         );
       });
     });

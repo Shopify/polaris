@@ -1,0 +1,12 @@
+name: Layout columns3
+description: Used to represent a 3 column layout or an action to hide or show columns
+keywords:
+  - three columns
+  - column
+  - options
+  - layout
+authors:
+  - Andrea Crouch
+  - Joe Thomas
+date_added: 2022-01-05
+date_modified: 2023-06-23

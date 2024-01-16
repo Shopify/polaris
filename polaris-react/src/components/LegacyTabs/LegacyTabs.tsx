@@ -1,5 +1,5 @@
 import React, {PureComponent} from 'react';
-import {HorizontalDotsMinor, ChevronDownMinor} from '@shopify/polaris-icons';
+import {MenuHorizontalIcon, ChevronDownIcon} from '@shopify/polaris-icons';
 
 import {Box} from '../Box';
 import {Icon} from '../Icon';
@@ -11,7 +11,7 @@ import type {TabDescriptor} from './types';
 import {getVisibleAndHiddenTabIndices} from './utilities';
 import {List, Panel, Tab, TabMeasurer} from './components';
 import type {TabMeasurerProps} from './components';
-import styles from './LegacyTabs.scss';
+import styles from './LegacyTabs.module.scss';
 
 export interface LegacyTabsProps {
   /** Content to display in tabs */
@@ -130,10 +130,10 @@ class TabsInner extends PureComponent<CombinedProps, State> {
     const disclosureButtonContent = hasCustomDisclosure ? (
       <>
         {disclosureText}
-        <Icon source={ChevronDownMinor} tone="subdued" />
+        <Icon source={ChevronDownIcon} tone="subdued" />
       </>
     ) : (
-      <Icon source={HorizontalDotsMinor} tone="subdued" />
+      <Icon source={MenuHorizontalIcon} tone="subdued" />
     );
 
     const disclosureButton = (

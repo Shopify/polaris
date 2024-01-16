@@ -1,5 +1,5 @@
 import {useTOC} from '../../utils/hooks';
-import {className} from '../../utils/various';
+import {className, toPascalCase} from '../../utils/various';
 import Longform from '../Longform';
 import Container from '../Container';
 import {Box} from '../Box';
@@ -39,6 +39,8 @@ function Layout({
   const editOnGithubUrl = editPageLinkPath
     ? `https://github.com/Shopify/polaris/tree/main${editPageLinkPath}`
     : '';
+  const isComponentPage = asPath.includes('/components/');
+  const componentTitle = toPascalCase(asPath.split('/').pop() ?? '');
 
   return (
     <Container className={className(styles.Page, showTOC && styles.showTOC)}>
@@ -60,6 +62,13 @@ function Layout({
               <Link href={editOnGithubUrl}>Edit this page</Link>
             )}
             <Link href={feedbackUrl}>Leave feedback</Link>
+            {isComponentPage && (
+              <Link
+                href={`https://github.com/Shopify/polaris/issues/new/choose?title=[${componentTitle}]`}
+              >
+                Create an issue
+              </Link>
+            )}
           </p>
         </footer>
       </Box>
