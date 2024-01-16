@@ -55,9 +55,6 @@ export const metaThemeLightMobilePartial = createMetaThemePartial({
     'text-body-xs-font-line-height': {
       value: createVar('font-line-height-400'),
     },
-    'text-body-xs-font-weight': {
-      value: createVar('font-weight-medium'),
-    },
   },
 });
 
