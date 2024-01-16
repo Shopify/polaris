@@ -1,7 +1,15 @@
 /* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
-import type {StandardLonghandProperties, Globals} from 'csstype';
-import type {breakpointsAliases,BreakpointsAlias,TokenizedStyleProps} from '@shopify/polaris-tokens';
-import type {PickIndexSignature, OmitIndexSignature, Simplify}  from 'type-fest';
+import type {
+  StandardLonghandProperties,
+  Globals,
+  Properties as PropertiesWithoutVars
+} from 'csstype';
+import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
+import type {
+  PickIndexSignature,
+  OmitIndexSignature,
+  Simplify
+}  from 'type-fest';
 
 import type {ResponsiveProp, ResponsivePropObject} from '../../utilities/css';
 
@@ -124,7 +132,7 @@ export type ResponsiveStylePropsWithModifiers = Simplify<
   & { [K in ModifierProps]?: ResponsiveStylePropsWithPseudoElements; }
 >;
 
-export type ResponsiveStylePropObjects = {
+type ResponsiveStylePropObjects = {
   [T in keyof ResponsiveStyleProps]?: ResponsiveStyleProps[T] extends ResponsiveProp<
     infer V
   >
@@ -1480,10 +1488,6 @@ export const stylePropDefaults = {
  * literal in our types holistically for every style property.
  */
 export const disallowedCSSPropertyValues = [
-  "unset",
-  "inherit",
-  "initial",
-  "revert",
   "-moz-initial"
 ] satisfies Globals[];
 
@@ -1585,33 +1589,46 @@ export const stylePropTokenGroupMap = {
 
 export const cssCustomPropertyNamespace = "_";
 
-export const modifierProps = ["_active","_focus","_hover","_visited","_link"] as const;
-type ModifierProps = typeof modifierProps[number];
+export const modifiers = {
+  "_active": ":active",
+  "_focus": ":focus",
+  "_hover": ":hover",
+  "_visited": ":visited",
+  "_link": ":link"
+} as const;
+type ModifierProps = keyof (typeof modifiers);
 
-export const pseudoElements = {"::before":"_before","::after":"_after"} as const;
-type PseudoElementProps = (typeof pseudoElements)[keyof (typeof pseudoElements)];
+export const breakpoints = {
+  "xs": "&",
+  "sm": "@media screen and (min-width: 30.625rem)",
+  "md": "@media screen and (min-width: 48rem)",
+  "lg": "@media screen and (min-width: 65rem)",
+  "xl": "@media screen and (min-width: 90rem)"
+} as const;
+type BreakpointProps = keyof (typeof breakpoints);
 
-export const baseStylePropsModifierKey = '' as const;
-type BaseStylePropsModifierKey = typeof baseStylePropsModifierKey;
+export const pseudoElements = {
+  "_before": "::before",
+  "_after": "::after"
+} as const;
+type PseudoElementProps = keyof (typeof pseudoElements);
 
-export const baseStylePropsBreakpointKey = '' as const;
-type BaseStylePropsBreakpointKey = typeof baseStylePropsBreakpointKey;
+export type Properties = Simplify<
+  OmitIndexSignature<PropertiesWithoutVars> & {
+    [key: `--${typeof cssCustomPropertyNamespace}${string}`]: any;
+  }
+>;
 
-export type BreakpointsAliasesWithBaseKey =
-  | BaseStylePropsBreakpointKey
-  | Exclude<BreakpointsAlias, (typeof breakpointsAliases)[0]>;
-
-// The "base" styles always come last after other modifiers
-export const allModifierProps: (ModifierProps | BaseStylePropsModifierKey)[] =
-  [...modifierProps, baseStylePropsModifierKey];
+export type PropPath = SimplifyUnion<
+  keyof StyleProps | BreakpointProps | ModifierProps | PseudoElementProps
+>[];
 
 export type ValueMapper = (
   value: ResponsiveStyleProps[typeof prop],
   prop: keyof ResponsiveStyleProps,
-  breakpoint: BreakpointsAlias,
-  modifier?: (typeof allModifierProps)[number],
-  pseudoElement?: PseudoElementProps,
+  path: PropPath
 ) => unknown;
+
 
 export type ValueMapperFactory =
   (map: typeof stylePropTokenGroupMap) => ValueMapper;

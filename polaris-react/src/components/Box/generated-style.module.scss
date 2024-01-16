@@ -4,84 +4,75 @@
   border-inline-end-width: var(--p-border-width-0);
   border-block-start-width: var(--p-border-width-0);
   border-block-end-width: var(--p-border-width-0);
-  
-  --_sm: initial;
-  --_md: initial;
-  --_lg: initial;
-  --_xl: initial;
-  
-  --__active: initial;
-  --_sm_active: initial;
-  --_md_active: initial;
-  --_lg_active: initial;
-  --_xl_active: initial;
-  
-  --__focus: initial;
-  --_sm_focus: initial;
-  --_md_focus: initial;
-  --_lg_focus: initial;
-  --_xl_focus: initial;
-  
-  --__hover: initial;
-  --_sm_hover: initial;
-  --_md_hover: initial;
-  --_lg_hover: initial;
-  --_xl_hover: initial;
-  
-  --__visited: initial;
-  --_sm_visited: initial;
-  --_md_visited: initial;
-  --_lg_visited: initial;
-  --_xl_visited: initial;
-  
-  --__link: initial;
-  --_sm_link: initial;
-  --_md_link: initial;
-  --_lg_link: initial;
-  --_xl_link: initial;
+  --__active-on: ;
+  --__active-off: initial;
+  --__focus-on: ;
+  --__focus-off: initial;
+  --__hover-on: ;
+  --__hover-off: initial;
+  --__visited-on: ;
+  --__visited-off: initial;
+  --__link-on: ;
+  --__link-off: initial;
+  --_sm-on: ;
+  --_sm-off: initial;
+  --_md-on: ;
+  --_md-off: initial;
+  --_lg-on: ;
+  --_lg-off: initial;
+  --_xl-on: ;
+  --_xl-off: initial;
 }
 
-@media screen and (min-width: 490px) { .Box { --_sm: ; } }
-@media screen and (min-width: 768px) { .Box { --_md: ; } }
-@media screen and (min-width: 1040px) { .Box { --_lg: ; } }
-@media screen and (min-width: 1440px) { .Box { --_xl: ; } }
-
 .Box:active {
-  --__active: ;
-  --_sm_active: var(--_sm);
-  --_md_active: var(--_md);
-  --_lg_active: var(--_lg);
-  --_xl_active: var(--_xl);
+  --__active-on: initial;
+  --__active-off: ;
 }
 
 .Box:focus {
-  --__focus: ;
-  --_sm_focus: var(--_sm);
-  --_md_focus: var(--_md);
-  --_lg_focus: var(--_lg);
-  --_xl_focus: var(--_xl);
+  --__focus-on: initial;
+  --__focus-off: ;
 }
 
 .Box:hover {
-  --__hover: ;
-  --_sm_hover: var(--_sm);
-  --_md_hover: var(--_md);
-  --_lg_hover: var(--_lg);
-  --_xl_hover: var(--_xl);
+  --__hover-on: initial;
+  --__hover-off: ;
 }
 
 .Box:visited {
-  --__visited: ;
-  --_sm_visited: var(--_sm);
-  --_md_visited: var(--_md);
-  --_lg_visited: var(--_lg);
-  --_xl_visited: var(--_xl);
+  --__visited-on: initial;
+  --__visited-off: ;
 }
 
 .Box:link {
-  --__link: ;
-  --_sm_link: var(--_sm);
-  --_md_link: var(--_md);
-  --_lg_link: var(--_lg);
-  --_xl_link: var(--_xl);
+  --__link-on: initial;
+  --__link-off: ;
+}
+
+@media screen and (min-width: 30.625rem) {
+  .Box {
+    --_sm-on: initial;
+    --_sm-off: ;
+  }
+}
+
+@media screen and (min-width: 48rem) {
+  .Box {
+    --_md-on: initial;
+    --_md-off: ;
+  }
+}
+
+@media screen and (min-width: 65rem) {
+  .Box {
+    --_lg-on: initial;
+    --_lg-off: ;
+  }
+}
+
+@media screen and (min-width: 90rem) {
+  .Box {
+    --_xl-on: initial;
+    --_xl-off: ;
+  }
 }

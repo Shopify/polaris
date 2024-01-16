@@ -5,19 +5,16 @@ import {createRequire} from 'node:module';
 import decamelize from 'decamelize';
 import _endent from 'endent';
 import ts from 'typescript';
-import {
-  metaTokenGroups as tokenizedCSSStyleProps,
-  metaThemeDefault,
-  toPx,
-} from '@shopify/polaris-tokens';
+import {metaTokenGroups as tokenizedCSSStyleProps} from '@shopify/polaris-tokens';
 
 import {
   disallowedCSSProperties,
   disallowedCSSPropertyValues,
   stylePropConfig,
+  breakpoints as breakpointsDataRaw,
   modifiers as modifiersDataRaw,
   pseudoElements as pseudoElementsDataRaw,
-  cssCustomPropertyNamespace,
+  cssCustomPropertyNamespace as namespace,
   styleFile,
   typesFile,
   BoxValueMapperFactory,
@@ -25,16 +22,18 @@ import {
 
 const endent = _endent.default;
 
+const breakpointsData = isObject(breakpointsDataRaw) ? breakpointsDataRaw : {};
+
 /* eslint-disable-next-line no-nested-ternary */
 const modifiersData = isObject(modifiersDataRaw)
   ? modifiersDataRaw
   : modifiersDataRaw === true
   ? {
-      ':active': '_active',
-      ':focus': '_focus',
-      ':hover': '_hover',
-      ':visited': '_visited',
-      ':link': '_link',
+      _active: ':active',
+      _focus: ':focus',
+      _hover: ':hover',
+      _visited: ':visited',
+      _link: ':link',
     }
   : {};
 
@@ -43,32 +42,22 @@ const pseudoElementsData = isObject(pseudoElementsDataRaw)
   ? pseudoElementsDataRaw
   : pseudoElementsDataRaw === true
   ? {
-      '::after': '_after',
-      '::backdrop': '_backdrop',
-      '::before': '_before',
-      '::cue': '_cue',
-      '::first-letter': '_firstLetter',
-      '::first-line': '_firstLine',
-      '::file-selector-button': '_fileSelectorButton',
-      '::marker': '_marker',
-      '::placeholder': '_placeholder',
-      '::selection': '_selection',
+      _after: '::after',
+      _backdrop: '::backdrop',
+      _before: '::before',
+      _cue: '::cue',
+      _firstLetter: '::first-letter',
+      _firstLine: '::first-line',
+      _fileSelectorButton: '::file-selector-button',
+      _marker: '::marker',
+      _placeholder: '::placeholder',
+      _selection: '::selection',
     }
   : {};
 
 function isObject(value) {
   return value != null && typeof value === 'object' && !Array.isArray(value);
 }
-
-// Get all breakpoints massaged into a more useful set of data
-const breakpoints = Object.entries(metaThemeDefault.breakpoints).map(
-  ([key, breakpoint]) => ({
-    // We just want the actual size, no prefix
-    key: key.replace('breakpoints-', ''),
-    // convert rems to px
-    value: toPx(breakpoint.value),
-  }),
-);
 
 const cssLonghandProperties = getCSSTypeLonghandProperties();
 
@@ -106,7 +95,7 @@ verifyAliases();
 
 const sassFile = await fs.open(styleFile, 'w+');
 
-await writeCSSMediaVars(sassFile, modifiersData);
+await writeCSSMediaVars(sassFile, {...modifiersData, ...breakpointsData});
 
 await sassFile.close();
 
@@ -305,9 +294,17 @@ async function writeTSProperties(targetFile) {
   };
 
   await targetFile.write(`/* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
-import type {StandardLonghandProperties, Globals} from 'csstype';
-import type {breakpointsAliases,BreakpointsAlias,TokenizedStyleProps} from '@shopify/polaris-tokens';
-import type {PickIndexSignature, OmitIndexSignature, Simplify}  from 'type-fest';
+import type {
+  StandardLonghandProperties,
+  Globals,
+  Properties as PropertiesWithoutVars
+} from 'csstype';
+import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
+import type {
+  PickIndexSignature,
+  OmitIndexSignature,
+  Simplify
+}  from 'type-fest';
 
 import type {ResponsiveProp, ResponsivePropObject} from '../../utilities/css';
 
@@ -425,15 +422,15 @@ type ResponsiveStylePropsWithPseudoElements = ResponsiveStyleProps
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
  * \`@shopify/polaris-tokens\`), helpful aliases for frequently used props, the
- * modifiers ${joinEnglish(Object.values(modifiersData))},
- * and the pseudoElements ${joinEnglish(Object.values(pseudoElementsData))}.
+ * modifiers ${joinEnglish(Object.keys(modifiersData))},
+ * and the pseudoElements ${joinEnglish(Object.keys(pseudoElementsData))}.
  */
 export type ResponsiveStylePropsWithModifiers = Simplify<
   ResponsiveStylePropsWithPseudoElements
   & { [K in ModifierProps]?: ResponsiveStylePropsWithPseudoElements; }
 >;
 
-export type ResponsiveStylePropObjects = {
+type ResponsiveStylePropObjects = {
   [T in keyof ResponsiveStyleProps]?: ResponsiveStyleProps[T] extends ResponsiveProp<
     infer V
   >
@@ -633,43 +630,48 @@ export const stylePropTokenGroupMap = {
     .join(',\n  ')},
 } as const;
 
-export const cssCustomPropertyNamespace = ${JSON.stringify(
-    cssCustomPropertyNamespace,
-  )};
+export const cssCustomPropertyNamespace = ${JSON.stringify(namespace)};
 
-export const modifierProps = ${JSON.stringify(
+export const modifiers = ${JSON.stringify(
     // TODO: Verify values are unique
-    Object.values(modifiersData),
+    modifiersData,
+    null,
+    2,
   )} as const;
-type ModifierProps = typeof modifierProps[number];
+type ModifierProps = keyof (typeof modifiers);
+
+export const breakpoints = ${JSON.stringify(
+    // TODO: Verify values are unique
+    breakpointsData,
+    null,
+    2,
+  )} as const;
+type BreakpointProps = keyof (typeof breakpoints);
 
 export const pseudoElements = ${JSON.stringify(
     // TODO: Verify values are unique
     pseudoElementsData,
+    null,
+    2,
   )} as const;
-type PseudoElementProps = (typeof pseudoElements)[keyof (typeof pseudoElements)];
+type PseudoElementProps = keyof (typeof pseudoElements);
 
-export const baseStylePropsModifierKey = '' as const;
-type BaseStylePropsModifierKey = typeof baseStylePropsModifierKey;
+export type Properties = Simplify<
+  OmitIndexSignature<PropertiesWithoutVars> & {
+    [key: \`--\${typeof cssCustomPropertyNamespace}\${string}\`]: any;
+  }
+>;
 
-export const baseStylePropsBreakpointKey = '' as const;
-type BaseStylePropsBreakpointKey = typeof baseStylePropsBreakpointKey;
-
-export type BreakpointsAliasesWithBaseKey =
-  | BaseStylePropsBreakpointKey
-  | Exclude<BreakpointsAlias, (typeof breakpointsAliases)[0]>;
-
-// The "base" styles always come last after other modifiers
-export const allModifierProps: (ModifierProps | BaseStylePropsModifierKey)[] =
-  [...modifierProps, baseStylePropsModifierKey];
+export type PropPath = SimplifyUnion<
+  keyof StyleProps | BreakpointProps | ModifierProps | PseudoElementProps
+>[];
 
 export type ValueMapper = (
   value: ResponsiveStyleProps[typeof prop],
   prop: keyof ResponsiveStyleProps,
-  breakpoint: BreakpointsAlias,
-  modifier?: (typeof allModifierProps)[number],
-  pseudoElement?: PseudoElementProps,
+  path: PropPath
 ) => unknown;
+
 
 export type ValueMapperFactory =
   (map: typeof stylePropTokenGroupMap) => ValueMapper;
@@ -688,49 +690,90 @@ export const valueMapperFactory: ValueMapperFactory = ${BoxValueMapperFactory.to
 // NOTE: We don't need to set any pseudo elements here as they'll be given their
 // own unique classname & selector within an inline <style> tag at runtime.
 async function writeCSSMediaVars(file, modifiers = {}) {
-  // Skip the 'xs' size as we've done it above outside of the media queries
-  // (mobile first ftw!)
-  const breakpointsWithoutXs = breakpoints.slice(1);
+  // Setting up the default state of the CSS space hack:
+  // 'initial' = enabled
+  // ' ' (space) = disabled
+  // A space is a valid value in CSS (so wont trigger the `var()` fallback), but
+  // is ignored when the browser is consuming tokens to figure out the final
+  // value of the declaration.
+  //
+  // For example:
+  // ```
+  // {
+  //   color: { xs: 'green', sm: 'red', lg: 'blue' }
+  // }
+  // ```
+  // becomes:
+  // ```
+  // {
+  //   // NOTE: order is important here. We're using mobile-first breakpoints,
+  //   // so we check the largest (ie; most specific) ones first.
+  //   color: 'var(--_lg-on, blue) var(--_lg-off, var(--_sm-on, red) var(--_sm-off, green))'
+  // }
+  // ```
+  //
+  // A more complex example:
+  // ```
+  // {
+  //   color: { xs: 'green', sm: 'red' },
+  //   _hover: {
+  //     color: { sm: 'blue', lg: 'orange' }
+  //   },
+  //   _active: {
+  //     color: 'rebeccapurple'
+  //   }
+  // }
+  // ```
+  // becomes:
+  // ```
+  // {
+  //   color: 'var(--_active-on, rebeccapurple) var(--_active_off, var(--_hover-on, var(--_sm-on, blue) var(--_sm-off, var(--_lg-on, orange))) var(--_hover-off, var(--_sm-on, red) var(--_sm-off, green)))'
+  // }
+  // ```
+  const modifierEntries = Object.entries(modifiers).filter(
+    // A bare '&' has a special meaning; it's an alias for the 'base' styles
+    // when no media query applies.
+    ([, selector]) => selector.trim() !== '&',
+  );
 
-  const baseBreakpointKey = '';
-  const breakpointsWithBaseXs = [
-    {...breakpoints[0], key: baseBreakpointKey},
-    ...breakpointsWithoutXs,
-  ];
-
-  // Set css-media-vars values to `initial`. If any of these are attempted to be
-  // read in a custom CSS Property, it will have the value 'initial' which then
-  // triggers the fallback of `var()` to be substituted.
   const defaults = endent`
-    ${breakpointsWithoutXs
-      .map(({key}) => `--${cssCustomPropertyNamespace}${key}: initial;`)
-      .join('\n')}
-
-    ${Object.entries(modifiers)
-      .map(([, modifierName]) =>
-        breakpointsWithBaseXs
-          .map(
-            ({key}) =>
-              `--${cssCustomPropertyNamespace}${key}${modifierName}: initial;`,
-          )
-          .join('\n'),
+    ${modifierEntries
+      .map(
+        ([name]) =>
+          endent`
+            --${namespace}${name}-on: ;
+            --${namespace}${name}-off: initial;
+          `,
       )
-      .join('\n\n')}
+      .join('\n')}
   `;
 
-  // At each breakpoint, set the css-media-vars value to ` ` (a space; a valid
-  // value in CSS!). Now when this is attempted to be read, it will simply
-  // insert a space which is ignored and the rest of the value is used.
-  // Later, these will be used in a rule similar to:
-  // --pc-box-color-sm: var(--_p-media-sm) red;
-  // --pc-box-color-lg: var(--_p-media-lg) blue;
-  // color: var(--pc-box-color-lg, var(--pc-box-color-sm, unset));
-  const mediaQueries = breakpointsWithoutXs
-    .map(
-      ({key, value}) =>
-        `@media screen and (min-width: ${value}) { .Box { --${cssCustomPropertyNamespace}${key}: ; } }`,
-    )
-    .join('\n');
+  const selectorsEnabled = modifierEntries
+    .map(([name, selector]) => {
+      const declarations = endent`
+        --${namespace}${name}-on: initial;
+        --${namespace}${name}-off: ;
+      `;
+
+      if (selector.trim().startsWith('@')) {
+        return endent`
+          ${selector} {
+            .Box {
+              ${declarations}
+            }
+          }`;
+      } else if (selector.includes('&')) {
+        return endent`
+          ${selector.replace('&', '.Box')} {
+            ${declarations}
+          }`;
+      } else {
+        return endent`.Box${selector} {
+          ${declarations}
+        }`;
+      }
+    })
+    .join('\n\n');
 
   // TODO: Support an object syntax for setting defaults on pseudo elements
   const defaultCSSProperties = endent`${Object.entries(stylePropConfig)
@@ -748,27 +791,9 @@ async function writeCSSMediaVars(file, modifiers = {}) {
                 !allAliases.includes(prop),
             ),
           ),
-        )(getDefault, styleProp)};\n`,
+        )(getDefault, styleProp)};`,
     )
-    .join('')}`;
-
-  const selectorsEnabled = Object.entries(modifiers)
-    .map(
-      ([selector, modifierName]) => endent`
-        .Box${selector} {
-          ${breakpointsWithBaseXs
-            .map(
-              ({key}) =>
-                `--${cssCustomPropertyNamespace}${key}${modifierName}: ${
-                  key === baseBreakpointKey
-                    ? ''
-                    : `var(--${cssCustomPropertyNamespace}${key})`
-                };`,
-            )
-            .join('\n')}
-        }`,
-    )
-    .join('\n\n');
+    .join('\n')}`;
 
   await file.write(endent`
     /* THIS FILE IS AUTO GENERATED, DO NOT TOUCH */
@@ -776,8 +801,6 @@ async function writeCSSMediaVars(file, modifiers = {}) {
       ${defaultCSSProperties}
       ${defaults}
     }
-
-    ${mediaQueries}
 
     ${selectorsEnabled}
   `);

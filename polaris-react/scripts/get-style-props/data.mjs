@@ -1,6 +1,8 @@
 import path from 'path';
 import * as url from 'url';
 
+import {metaThemeDefault} from '@shopify/polaris-tokens';
+
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
 export const styleFile = path.resolve(
@@ -113,13 +115,10 @@ export const disallowedCSSProperties = [
   'overflowBlock',
 ];
 
-export const disallowedCSSPropertyValues = [
-  'unset',
-  'inherit',
-  'initial',
-  'revert',
-  '-moz-initial',
-];
+// Can disable some global property values if desired.
+// For possibe values, see csstype:
+// https://github.com/frenic/csstype/blob/46694defae2cf3386218d0000490b0d0ac385aa6/index.d.ts#L18457
+export const disallowedCSSPropertyValues = ['-moz-initial'];
 
 /**
  * An incomplete list of supported style props.
@@ -279,16 +278,32 @@ export const stylePropConfig = {
   boxShadow: {aliases: ['shadow']},
 };
 
+// Get all breakpoints massaged into a more useful set of data
+export const breakpoints = Object.fromEntries([
+  // Alias base size to 'xs': A bare '&' has a special meaning; it's an alias
+  // for the 'base' styles when no media query applies.
+  ['xs', '&'],
+  ...Object.entries(metaThemeDefault.breakpoints)
+    .map(([key, breakpoint]) => [
+      // We just want the actual size, no prefix
+      key.replace('breakpoints-', ''),
+      `@media screen and (min-width: ${breakpoint.value})`,
+    ])
+    // Skip the 'xs' size as we've done it above outside of the media queries
+    // (mobile first ftw!)
+    .slice(1),
+]);
+
 // keys are CSS selectors, values are used as CSS custom property names (see
 // https://drafts.csswg.org/css-syntax-3/#non-ascii-ident-code-point) AND
 // Typescript types.
 // Can be set to `true` to use a default set of common modifiers.
 export const modifiers = {
-  ':active': '_active',
-  ':focus': '_focus',
-  ':hover': '_hover',
-  ':visited': '_visited',
-  ':link': '_link',
+  _active: ':active',
+  _focus: ':focus',
+  _hover: ':hover',
+  _visited: ':visited',
+  _link: ':link',
 };
 
 // keys are CSS selectors, values are used as CSS custom property names (see
@@ -303,8 +318,8 @@ export const modifiers = {
 // NOTE: CSS does not make it possible to style a modified pseudo element. ie;
 // There's no ::before:hover
 export const pseudoElements = {
-  '::before': '_before',
-  '::after': '_after',
+  _before: '::before',
+  _after: '::after',
 };
 
 // Used to ensure custom properties don't collide with other user created ones
