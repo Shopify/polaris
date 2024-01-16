@@ -44,9 +44,15 @@ import {
   TopBar,
   FooterHelp,
   Link,
+  Card,
+  BlockStack,
+  InlineGrid,
+  Icon,
+  Tooltip,
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
+import {Select as NewSelect} from './components';
 import styles from './DetailsPage.module.scss';
 
 export function DetailsPage() {
@@ -549,7 +555,6 @@ export function DetailsPage() {
   // ---- Page markup ----
   const actualPageMarkup = (
     <Page
-      fullWidth
       backAction={{content: 'Products', url: '/products/31'}}
       title={title}
       titleMetadata={<Badge tone="success">Success badge</Badge>}
@@ -626,25 +631,40 @@ export function DetailsPage() {
           </LegacyCard>
         </Layout.Section>
         <Layout.Section variant="oneThird">
-          <LegacyCard title="Organization">
-            <LegacyCard.Section>
+          <Card>
+            <BlockStack gap="200">
+              <InlineGrid columns="1fr auto" alignItems="center">
+                <Text as="h2" variant="headingSm">
+                  Organization
+                </Text>
+                <Tooltip content="Learn more">
+                  <Icon source={InfoMinor} tone="subdued" />
+                </Tooltip>
+              </InlineGrid>
+              <NewSelect
+                title="Category"
+                defaultSelected={['2345678']}
+                options={[
+                  {value: '0123456', label: 'Ambiance'},
+                  {value: '1234567', label: 'Atomic'},
+                  {value: '2345678', label: 'Bedroom'},
+                  {value: '3456789', label: 'Danish'},
+                  {value: '4567890', label: 'Essence'},
+                  {value: '5678901', label: 'Featured'},
+                  {value: '6789012', label: 'Mid-century'},
+                ]}
+              />
+              <NewSelect title="Type" />
+              <NewSelect title="Vendor" />
+              {/* Used for reference */}
               <Select
                 label="Product type"
                 options={options}
                 onChange={setSelected}
                 value={selected}
               />
-              <br />
-              <Select
-                label="Vendor"
-                options={options}
-                onChange={setSelected}
-                value={selected}
-              />
-            </LegacyCard.Section>
-            <LegacyCard.Section title="Collections" />
-            <LegacyCard.Section title="Tags" />
-          </LegacyCard>
+            </BlockStack>
+          </Card>
         </Layout.Section>
       </Layout>
     </Page>
