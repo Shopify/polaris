@@ -357,7 +357,7 @@ const stylelintPolarisCoverageOptions = {
   typography: [
     {
       'polaris/declaration-property-value-disallowed-list': {
-        'font-weight': [/(\$.*|[0-9]+)/],
+        'font-weight': [/\$.*|^[0-9]+/],
       },
       'declaration-property-unit-disallowed-list': [
         {
