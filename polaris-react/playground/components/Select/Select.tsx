@@ -1,8 +1,9 @@
-import React from 'react';
-import {SelectMinor} from '@shopify/polaris-icons';
+import React, {useCallback, useState} from 'react';
+import {SelectIcon} from '@shopify/polaris-icons';
 
-import type {OptionListProps} from '../../../src';
 import {
+  Combobox,
+  Listbox,
   BlockStack,
   Icon,
   Text,
@@ -10,7 +11,6 @@ import {
   UnstyledButton,
   Popover,
 } from '../../../src';
-import {Options} from '../Options/Options';
 
 import styles from './Select.module.scss';
 
@@ -21,13 +21,79 @@ interface Props {
 
 export function Select({
   title,
-  defaultSelected,
-  options,
-}: Props & Pick<OptionListProps, 'options'>) {
+  defaultSelected = [],
+  options: defaultOptions = [],
+}: Props & {options?: {value?: string; label: string}[]}) {
   const [active, setActive] = React.useState(false);
-  // const [selected, setSelected] = React.useState(defaultSelected ?? []);
+  const [inputValue, setInputValue] = useState('');
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [options, setOptions] = useState(defaultOptions);
 
-  const firstSelected = options?.find(
+  const updateText = useCallback(
+    (value: string) => {
+      setInputValue(value);
+
+      if (value === '') {
+        setOptions(defaultOptions);
+        return;
+      }
+
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = defaultOptions.filter((option) =>
+        option.label.match(filterRegex),
+      );
+      setOptions(resultOptions);
+    },
+    [defaultOptions],
+  );
+
+  const updateSelection = useCallback(
+    (selected: string) => {
+      if (selectedOptions.includes(selected)) {
+        setSelectedOptions(
+          selectedOptions.filter((option) => option !== selected),
+        );
+      } else {
+        setSelectedOptions([...selectedOptions, selected]);
+      }
+
+      // updateText('');
+    },
+    [selectedOptions],
+  );
+
+  // const removeTag = useCallback(
+  //   (tag: string) => () => {
+  //     const options = [...selectedOptions];
+  //     options.splice(options.indexOf(tag), 1);
+  //     setSelectedOptions(options);
+  //   },
+  //   [selectedOptions],
+  // );
+
+  // const tagsMarkup = selectedOptions.map((option) => (
+  //   <Tag key={`option-${option}`} onRemove={removeTag(option)}>
+  //     {option}
+  //   </Tag>
+  // ));
+
+  const optionsMarkup =
+    options.length > 0
+      ? options.map(({label, value}) => (
+          <Listbox.Option
+            key={`${value}`}
+            value={value ?? ''}
+            selected={[...selectedOptions, ...defaultSelected].includes(
+              value ?? '',
+            )}
+            accessibilityLabel={label}
+          >
+            {label}
+          </Listbox.Option>
+        ))
+      : null;
+
+  const firstSelected = defaultOptions?.find(
     (option) => option.value === defaultSelected?.[0],
   )?.label;
 
@@ -41,13 +107,14 @@ export function Select({
           <Text as="h3" variant="bodySm" tone="subdued">
             {title}
           </Text>
-          {defaultSelected?.length && (
+
+          {firstSelected && (
             <Text as="span" variant="bodyMd">
               {firstSelected}
             </Text>
           )}
         </BlockStack>
-        <Icon source={SelectMinor} tone="subdued" />
+        <Icon source={SelectIcon} tone="subdued" />
       </InlineGrid>
     </UnstyledButton>
   );
@@ -61,7 +128,24 @@ export function Select({
       // preferredAlignment="cover"
       activator={activator}
     >
-      <Options />
+      <Combobox
+        allowMultiple
+        persistent
+        activator={
+          <Combobox.TextField
+            onChange={updateText}
+            label="Search tags"
+            labelHidden
+            value={inputValue}
+            placeholder="Search tags"
+            autoComplete="off"
+          />
+        }
+      >
+        {optionsMarkup ? (
+          <Listbox onSelect={updateSelection}>{optionsMarkup}</Listbox>
+        ) : null}
+      </Combobox>
     </Popover>
   );
 }

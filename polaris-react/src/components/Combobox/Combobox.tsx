@@ -14,7 +14,6 @@ import type {
   ComboboxListboxType,
   ComboboxListboxOptionType,
 } from '../../utilities/combobox';
-import {BlockStack} from '../BlockStack';
 import {Box} from '../Box';
 
 import styles from './Combobox.module.scss';
