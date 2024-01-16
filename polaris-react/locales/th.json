@@ -158,7 +158,8 @@
       "clearLabel": "ล้าง {filterName}",
       "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})",
       "addFilter": "เพิ่มตัวกรอง",
-      "clearFilters": "ล้างทั้งหมด"
+      "clearFilters": "ล้างทั้งหมด",
+      "searchInView": "ใน:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "มาร์กอัปเนื้อหา",

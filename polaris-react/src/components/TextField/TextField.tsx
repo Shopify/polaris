@@ -18,6 +18,7 @@ import {Key} from '../../types';
 import type {Error} from '../../types';
 import {Icon} from '../Icon';
 import {Text} from '../Text';
+import {Spinner as LoadingSpinner} from '../Spinner';
 import {useEventListener} from '../../utilities/use-event-listener';
 
 import {Resizer, Spinner} from './components';
@@ -182,6 +183,10 @@ interface NonMutuallyExclusiveProps {
   onBlur?(event?: React.FocusEvent): void;
   /** Indicates the tone of the text field */
   tone?: 'magic';
+  /** Whether the TextField will grow as the text within the input changes */
+  autoSize?: boolean;
+  /** Indicates the loading state */
+  loading?: boolean;
 }
 
 export type MutuallyExclusiveSelectionProps =
@@ -250,6 +255,8 @@ export function TextField({
   onFocus,
   onBlur,
   tone,
+  autoSize,
+  loading,
 }: TextFieldProps) {
   const i18n = useI18n();
   const [height, setHeight] = useState<number | null>(null);
@@ -263,6 +270,7 @@ export function TextField({
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const prefixRef = useRef<HTMLDivElement>(null);
   const suffixRef = useRef<HTMLDivElement>(null);
+  const loadingRef = useRef<HTMLDivElement>(null);
   const verticalContentRef = useRef<HTMLDivElement>(null);
   const buttonPressTimer = useRef<number>();
   const spinnerRef = useRef<HTMLDivElement>(null);
@@ -328,6 +336,12 @@ export function TextField({
   const suffixMarkup = suffix ? (
     <div className={styles.Suffix} id={`${id}-Suffix`} ref={suffixRef}>
       {suffix}
+    </div>
+  ) : null;
+
+  const loadingMarkup = loading ? (
+    <div className={styles.Loading} id={`${id}-Loading`} ref={loadingRef}>
+      <LoadingSpinner size="small" />
     </div>
   ) : null;
 
@@ -464,7 +478,13 @@ export function TextField({
       />
     ) : null;
 
-  const style = multiline && height ? {height, maxHeight} : null;
+  const style =
+    multiline && height
+      ? {
+          height,
+          maxHeight,
+        }
+      : null;
 
   const handleExpandingResize = useCallback((height: number) => {
     setHeight(height);
@@ -514,6 +534,7 @@ export function TextField({
     clearButton && styles['Input-hasClearButton'],
     monospaced && styles.monospaced,
     suggestion && styles.suggestion,
+    autoSize && styles['Input-autoSize'],
   );
 
   const handleOnFocus = (
@@ -562,6 +583,7 @@ export function TextField({
     inputMode,
     type: inputType,
     rows: getRows(multiline),
+    size: autoSize ? 1 : undefined,
     'aria-describedby': describedBy.length ? describedBy.join(' ') : undefined,
     'aria-labelledby': labelledBy.join(' '),
     'aria-invalid': Boolean(error),
@@ -611,6 +633,26 @@ export function TextField({
     />
   );
 
+  const inputAndSuffixMarkup = autoSize ? (
+    <div className={styles.InputAndSuffixWrapper}>
+      <div
+        className={classNames(
+          styles.AutoSizeWrapper,
+          suffix && styles.AutoSizeWrapperWithSuffix,
+        )}
+        data-auto-size-value={value || placeholder}
+      >
+        {inputMarkup}
+      </div>
+      {suffixMarkup}
+    </div>
+  ) : (
+    <>
+      {inputMarkup}
+      {suffixMarkup}
+    </>
+  );
+
   return (
     <Labelled
       label={label}
@@ -626,9 +668,9 @@ export function TextField({
       <Connected left={connectedLeft} right={connectedRight}>
         <div className={className} onClick={handleClick} ref={textFieldRef}>
           {prefixMarkup}
-          {inputMarkup}
-          {suffixMarkup}
+          {inputAndSuffixMarkup}
           {characterCountMarkup}
+          {loadingMarkup}
           {clearButtonMarkup}
           {spinnerMarkup}
           {backdropMarkup}
@@ -660,6 +702,7 @@ export function TextField({
       isVerticalContent(target) ||
       isInput(target) ||
       isSpinner(target) ||
+      isLoadingSpinner(target) ||
       focus
     ) {
       return;
@@ -677,6 +720,7 @@ export function TextField({
       isPrefixOrSuffix(event.target) ||
       isVerticalContent(event.target) ||
       isInput(event.target) ||
+      isLoadingSpinner(event.target) ||
       focus
     ) {
       return;
@@ -789,6 +833,14 @@ export function TextField({
       target instanceof Element &&
       spinnerRef.current &&
       spinnerRef.current.contains(target)
+    );
+  }
+
+  function isLoadingSpinner(target: Element | EventTarget) {
+    return (
+      target instanceof Element &&
+      loadingRef.current &&
+      loadingRef.current.contains(target)
     );
   }
 

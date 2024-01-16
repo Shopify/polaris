@@ -158,7 +158,8 @@
       "clearLabel": "Wyczyść {filterName}",
       "moreFiltersWithCount": "Więcej filtrów ({count})",
       "addFilter": "Dodaj filtr",
-      "clearFilters": "Wyczyść wszystko"
+      "clearFilters": "Wyczyść wszystko",
+      "searchInView": "w:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "znacznik treści",
