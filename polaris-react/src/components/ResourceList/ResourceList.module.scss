@@ -18,7 +18,8 @@ $item-wrapper-loading-height: 64px;
 .FiltersWrapper {
   padding: var(--p-space-300);
 
-  + .ResourceList {
+  // stylelint-disable-next-line selector-max-combinators, selector-max-specificity -- needed to add the dividing line only when the first child is the list
+  + .ResourceListWrapper > :first-child:is(.ResourceList) {
     @include item-separator;
   }
 }

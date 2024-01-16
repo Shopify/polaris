@@ -629,7 +629,7 @@ function IndexTableBase({
   const actions = shouldShowActions ? bulkActions : [];
 
   const selectAllActionsMarkup =
-    shouldShowBulkActions && !condensed ? (
+    shouldShowActions && !condensed ? (
       <div
         className={selectAllActionsClassNames}
         style={{
