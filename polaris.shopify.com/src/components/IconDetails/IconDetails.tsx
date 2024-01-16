@@ -38,7 +38,7 @@ function IconDetails({fileName, iconData}: Props) {
     componentUsage: `<Icon\n  source={${fileName}}\n  tone="base"\n/>`,
   };
   const figmaUIKitURl =
-    'https://www.figma.com/community/file/1110993965108325096';
+    'https://www.figma.com/community/file/1293614863849914283';
   const polarisIconsUrl =
     'https://www.npmjs.com/package/@shopify/polaris-icons#usage';
   const iconComponentUrl = '/components/icon';
