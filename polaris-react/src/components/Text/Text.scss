@@ -64,14 +64,17 @@
   color: var(--p-color-text-inverse);
 }
 
-@mixin _headingSm {
-  font-size: var(--p-text-heading-sm-font-size);
-  line-height: var(--p-text-heading-sm-font-line-height);
+.headingXs {
+  font-size: var(--p-text-heading-xs-font-size);
+  font-weight: var(--p-text-heading-xs-font-weight);
+  letter-spacing: var(--p-text-heading-xs-font-letter-spacing);
+  line-height: var(--p-text-heading-xs-font-line-height);
 }
 
 .headingSm {
+  font-size: var(--p-text-heading-sm-font-size);
   font-weight: var(--p-text-heading-sm-font-weight);
-  @include _headingSm;
+  line-height: var(--p-text-heading-sm-font-line-height);
 }
 
 .headingMd {
