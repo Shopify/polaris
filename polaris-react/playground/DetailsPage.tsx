@@ -13,6 +13,7 @@ import {
   ProductIcon,
   SettingsIcon,
   WifiIcon,
+  InfoIcon,
 } from '@shopify/polaris-icons';
 
 import {
@@ -635,10 +636,10 @@ export function DetailsPage() {
             <BlockStack gap="200">
               <InlineGrid columns="1fr auto" alignItems="center">
                 <Text as="h2" variant="headingSm">
-                  Organization
+                  Product organization
                 </Text>
                 <Tooltip content="Learn more">
-                  <Icon source={InfoMinor} tone="subdued" />
+                  <Icon source={InfoIcon} tone="subdued" />
                 </Tooltip>
               </InlineGrid>
               <NewSelect
@@ -654,8 +655,31 @@ export function DetailsPage() {
                   {value: '6789012', label: 'Mid-century'},
                 ]}
               />
-              <NewSelect title="Type" />
-              <NewSelect title="Vendor" />
+              <NewSelect
+                title="Type"
+                options={[
+                  {value: '01234567', label: 'Table'},
+                  {value: '12345678', label: 'Chair'},
+                  {value: '23456789', label: 'Lamp'},
+                  {value: '34567890', label: 'Couch'},
+                  {value: '45678901', label: 'Bed'},
+                  {value: '56789012', label: 'Desk'},
+                  {value: '67890123', label: 'Stool'},
+                ]}
+              />
+              <NewSelect
+                title="Vendor"
+                options={[
+                  {value: '012345678', label: 'Bryght'},
+                  {value: '123456789', label: 'Grovemade'},
+                  {value: '234567890', label: 'Haworth'},
+                  {value: '345678901', label: 'Knoll'},
+                  {value: '456789012', label: 'Kvell'},
+                  {value: '567890123', label: 'Montauk'},
+                  {value: '678901234', label: 'Poppin'},
+                  {value: '789012345', label: 'West Elm'},
+                ]}
+              />
               {/* Used for reference */}
               <Select
                 label="Product type"
