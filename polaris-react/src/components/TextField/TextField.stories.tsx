@@ -986,3 +986,65 @@ export function With1PasswordDisabled() {
     />
   );
 }
+
+export function WithAutoSize() {
+  const [value, setValue] = useState('Jaded Pixel');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  return (
+    <TextField
+      label="Store name"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      autoSize
+      suffix="in: Your stores"
+    />
+  );
+}
+
+export function WithAutoSizeAndDynamicSuffix() {
+  const [value, setValue] = useState('');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  const suffix = value ? 'in: Unfulfilled orders' : null;
+
+  return (
+    <TextField
+      label="Search view"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      autoSize
+      placeholder="Searching in Unfulfilled orders"
+      suffix={suffix}
+    />
+  );
+}
+
+export function WithAutoSizeAndOtherElements() {
+  const [value, setValue] = useState('Jaded Pixel');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  const handleTextFieldChange = useCallback((value) => setValue(value), []);
+
+  const handleClearButtonClick = useCallback(() => setValue(''), []);
+
+  return (
+    <TextField
+      label="Search view"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      clearButton
+      onClearButtonClick={handleClearButtonClick}
+      autoSize
+      suffix="in: Unfulfilled orders"
+      showCharacterCount
+      maxLength={128}
+    />
+  );
+}

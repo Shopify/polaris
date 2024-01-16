@@ -158,7 +158,8 @@
       "clearLabel": "Ryd {filterName}",
       "moreFiltersWithCount": "Flere filtre: ({count})",
       "addFilter": "Tilføj filter",
-      "clearFilters": "Ryd alt"
+      "clearFilters": "Ryd alt",
+      "searchInView": "i: {viewName}"
     },
     "Modal": {
       "iFrameTitle": "body markup",

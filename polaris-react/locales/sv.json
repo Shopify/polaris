@@ -158,7 +158,8 @@
       "clearLabel": "Rensa {filterName}",
       "moreFiltersWithCount": "Fler filter ({count})",
       "addFilter": "Lägg till filter",
-      "clearFilters": "Rensa alla"
+      "clearFilters": "Rensa alla",
+      "searchInView": "i:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "markering av brödtext",

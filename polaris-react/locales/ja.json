@@ -158,7 +158,8 @@
       "clearLabel": "{filterName}をクリアする",
       "moreFiltersWithCount": "詳細な絞り込み ({count})",
       "addFilter": "絞り込みを追加",
-      "clearFilters": "すべてクリア"
+      "clearFilters": "すべてクリア",
+      "searchInView": "{viewName}内"
     },
     "Modal": {
       "iFrameTitle": "body markup",
