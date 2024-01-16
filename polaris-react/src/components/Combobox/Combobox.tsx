@@ -14,6 +14,8 @@ import type {
   ComboboxListboxType,
   ComboboxListboxOptionType,
 } from '../../utilities/combobox';
+import {BlockStack} from '../BlockStack';
+import {Box} from '../Box';
 
 import styles from './Combobox.module.scss';
 import {TextField} from './components';
@@ -31,6 +33,7 @@ export interface ComboboxProps {
   willLoadMoreOptions?: boolean;
   /** Height to set on the Popover Pane. */
   height?: string;
+  persistent?: boolean;
   /** Callback fired when the bottom of the lisbox is reached. Use to lazy load when listbox option data is paginated. */
   onScrolledToBottom?(): void;
   /** Callback fired when the popover closes */
@@ -44,6 +47,7 @@ export function Combobox({
   preferredPosition = 'below',
   willLoadMoreOptions,
   height,
+  persistent,
   onScrolledToBottom,
   onClose,
 }: ComboboxProps) {
@@ -150,7 +154,23 @@ export function Combobox({
     ],
   );
 
-  return (
+  return persistent ? (
+    <>
+      <Box paddingBlockStart="200" paddingInline="200">
+        <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
+          {activator}
+        </ComboboxTextFieldContext.Provider>
+      </Box>
+
+      <ComboboxListboxContext.Provider value={listboxContextValue}>
+        <ComboboxListboxOptionContext.Provider
+          value={listboxOptionContextValue}
+        >
+          <div className={styles.Listbox}>{children}</div>
+        </ComboboxListboxOptionContext.Provider>
+      </ComboboxListboxContext.Provider>
+    </>
+  ) : (
     <Popover
       ref={ref}
       active={popoverActiveWithChildren}
