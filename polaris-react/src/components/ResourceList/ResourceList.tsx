@@ -670,6 +670,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         onToggleAll={handleToggleAll}
         disabled={loading}
         ref={checkableButtonRef}
+        selected={selectAllSelectState()}
       />
     </div>
   ) : null;
@@ -705,6 +706,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
               loading && styles['HeaderWrapper-disabled'],
               isSelectable &&
                 selectMode &&
+                bulkActionsMarkup &&
                 styles['HeaderWrapper-inSelectMode'],
               isSticky && styles['HeaderWrapper-isSticky'],
             );
@@ -816,17 +818,17 @@ export function ResourceList<TItemType extends ResourceListItemData>({
 
   const resourceListWrapperClasses = classNames(
     styles.ResourceListWrapper,
-    Boolean(bulkActionsMarkup) &&
+    Boolean(selectAllActionsMarkup) &&
       selectMode &&
-      bulkActions &&
+      // bulkActions &&
       !pagination &&
       styles.ResourceListWrapperWithBulkActions,
   );
 
   return (
     <ResourceListContext.Provider value={context}>
+      {filterControlMarkup}
       <div className={resourceListWrapperClasses} ref={tableMeasurerRef}>
-        {filterControlMarkup}
         {headerMarkup}
         {listMarkup}
         {emptySearchStateMarkup}

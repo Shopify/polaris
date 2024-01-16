@@ -54,7 +54,8 @@ $item-wrapper-loading-height: 64px;
   background-color: rgba(255, 255, 255, 0.5);
 }
 
-.FiltersWrapper + .HeaderOuterWrapper {
+// stylelint-disable-next-line selector-max-class, selector-max-combinators -- Needed to correctly position the header
+.FiltersWrapper + .ResourceListWrapper > .HeaderOuterWrapper {
   margin-top: calc(-1 * var(--p-space-400));
 }
 
