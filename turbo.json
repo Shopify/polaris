@@ -3,23 +3,29 @@
   "baseBranch": "origin/main",
   "pipeline": {
     "build": {
-      "outputs": ["dist/**", ".next/**", "build/**", ".cache/**"],
-      "dependsOn": ["^build"]
+      "outputs": [
+        "dist/**",
+        ".next/**",
+        "build/**",
+        ".cache/**"
+      ],
+      "dependsOn": [
+        "^build"
+      ]
     },
     "test": {
       "outputs": [],
       "dependsOn": []
     },
     "lint": {
-      "outputs": [".eslintcache"]
+      "outputs": [
+        ".eslintcache"
+      ]
     },
     "dev": {
       "cache": false
     },
     "clean": {
-      "cache": false
-    },
-    "preversion": {
       "cache": false
     },
     "gen-assets": {
