@@ -14,6 +14,8 @@ import IconDetails from '../IconDetails';
 import PageMeta from '../PageMeta';
 import {className} from '../../utils/various';
 import Page from '../Page';
+import StatusBanner from '../StatusBanner';
+import {iconRenames} from './icon-renames';
 
 const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,
@@ -70,8 +72,12 @@ function IconsPage() {
   const iconQueryParam = Array.isArray(router.query.icon)
     ? router.query.icon[0]
     : router.query.icon ?? '';
-  const activeIcon = Object.keys(iconMetadata).includes(iconQueryParam)
-    ? iconQueryParam
+  const isRenamedIcon = Object.keys(iconRenames).includes(iconQueryParam);
+  const iconName = isRenamedIcon
+    ? iconRenames[iconQueryParam as keyof typeof iconRenames]
+    : iconQueryParam;
+  const activeIcon = Object.keys(iconMetadata).includes(iconName)
+    ? iconName
     : '';
   const currentSearchText = router.query.q ? `${router.query.q}` : '';
 
@@ -120,8 +126,15 @@ function IconsPage() {
             placeholder="Search icons"
           />
 
+          {isRenamedIcon ? (
+            <StatusBanner status="Deprecated">
+              The <code>{iconQueryParam}</code> icon is no longer supported.
+              Please use the <code>{iconName}</code> icon instead.
+            </StatusBanner>
+          ) : null}
+
           {icons.length > 0 && (
-            <IconGrid title=" ">
+            <IconGrid>
               {icons.map((icon) => (
                 <IconGrid.Item
                   key={icon.id}
