@@ -1,4 +1,4 @@
-import React, {forwardRef} from 'react';
+import React, {forwardRef, useRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';
@@ -73,15 +73,16 @@ export const SelectAllActions = forwardRef(function SelectAllActions(
     ariaLive,
     ref,
   };
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const markup = (
-    <Transition timeout={0} in={selectMode} key="markup">
+    <Transition timeout={0} in={selectMode} key="markup" nodeRef={wrapperRef}>
       {(status: TransitionStatus) => {
         const wrapperClasses = classNames(
           styles.SelectAllActions,
           styles[`SelectAllActions-${status}`],
         );
         return (
-          <div className={wrapperClasses}>
+          <div className={wrapperClasses} ref={wrapperRef}>
             <CheckableButton {...checkableButtonProps} />
             {paginatedSelectAllMarkup}
           </div>
