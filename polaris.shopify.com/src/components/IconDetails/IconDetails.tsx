@@ -8,7 +8,7 @@ import * as polarisIcons from '@shopify/polaris-icons';
 interface Props {
   fileName: string;
   iconData: {
-    name: string;
+    id: string;
     description: string;
     keywords: string[];
   };
@@ -31,7 +31,7 @@ function IconDetails({fileName, iconData}: Props) {
 
   if (!fileName) return <EmptyState />;
 
-  const {description, name, keywords} = iconData;
+  const {id, description, keywords} = iconData;
 
   const reactExamples = {
     imports: `import {\n  ${fileName}\n} from '@shopify/polaris-icons';`,
@@ -54,7 +54,7 @@ function IconDetails({fileName, iconData}: Props) {
           <Icon source={(polarisIcons as any)[fileName]} />
         </div>
 
-        <h2 className={styles.Title}>{name}</h2>
+        <h2 className={styles.Title}>{id}</h2>
 
         {description !== 'N/A' && (
           <p className={styles.IconDescription}>

@@ -8,14 +8,12 @@ import * as polarisIcons from '@shopify/polaris-icons';
 import SearchResultHighlight from '../SearchResultHighlight';
 
 interface IconGridProps {
-  title?: string;
   children: React.ReactNode;
 }
 
-function IconGrid({title, children}: IconGridProps) {
+function IconGrid({children}: IconGridProps) {
   return (
     <>
-      {title ? <h2 className={styles.SectionHeading}>{title}</h2> : null}
       <div className={styles.IconGrid}>
         <ul className={styles.IconGridInner}>{children}</ul>
       </div>
@@ -42,7 +40,7 @@ function IconGridItem({
   searchTerm,
   uuid,
 }: IconGridItemProps) {
-  const {id, name} = icon;
+  const {id} = icon;
   const searchAttributes = useGlobalSearchResult();
 
   return (
@@ -74,7 +72,7 @@ function IconGridItem({
         >
           <SearchResultHighlight />
           <Icon source={(polarisIcons as any)[id]} />
-          <p>{name}</p>
+          <p>{id}</p>
         </a>
       </Link>
     </li>
