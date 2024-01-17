@@ -682,7 +682,7 @@ export function DetailsPage() {
               />
               {/* Used for reference */}
               <Select
-                label="Product type"
+                label="Product type (Old select for reference)"
                 options={options}
                 onChange={setSelected}
                 value={selected}
