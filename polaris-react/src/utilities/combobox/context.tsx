@@ -26,6 +26,7 @@ export interface ComboboxListboxType {
   textFieldFocused?: boolean;
   // Unique ID to set on the listbox. Used to set the Combobox aria-owns and TextField aria-controls attributes.
   listboxId?: string;
+  focused?: boolean;
   // Whethor or not more options are available to lazy load. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
   willLoadMoreOptions?: boolean;
   // Sets the value for the TextField aria-activedescendant attribute.
