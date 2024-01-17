@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {SelectIcon} from '@shopify/polaris-icons';
 
 import {
@@ -26,7 +26,8 @@ export function Select({
 }: Props & {options?: {value?: string; label: string}[]}) {
   const [active, setActive] = React.useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  const [selectedOptions, setSelectedOptions] =
+    useState<string[]>(defaultSelected);
   const [options, setOptions] = useState(defaultOptions);
 
   const updateText = useCallback(
@@ -83,9 +84,7 @@ export function Select({
           <Listbox.Option
             key={`${value}`}
             value={value ?? ''}
-            selected={[...selectedOptions, ...defaultSelected].includes(
-              value ?? '',
-            )}
+            selected={selectedOptions.includes(value ?? '')}
             accessibilityLabel={label}
           >
             {label}
@@ -93,9 +92,15 @@ export function Select({
         ))
       : null;
 
-  const firstSelected = defaultOptions?.find(
-    (option) => option.value === defaultSelected?.[0],
-  )?.label;
+  const firstSelected = useMemo(
+    () =>
+      defaultOptions?.find((option) =>
+        selectedOptions.length
+          ? option.value === selectedOptions?.[0]
+          : option.value === defaultSelected?.[0],
+      )?.label,
+    [defaultOptions, defaultSelected, selectedOptions],
+  );
 
   const activator = (
     <UnstyledButton
@@ -131,6 +136,7 @@ export function Select({
       <Combobox
         allowMultiple
         persistent
+        onClose={() => setActive(false)}
         activator={
           <Combobox.TextField
             onChange={updateText}
