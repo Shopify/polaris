@@ -75,22 +75,18 @@ export type ConversionResult = {
   };
 };
 
-type ReponsiveStylePseudoElementProps = {
-  [K in PseudoElementProp]?: ResponsiveStyleProps & {
-    [K in ModifierProp]?: ResponsiveStyleProps;
-  };
-};
-
 type AccumulatorCondition = Exclude<
   ModifierProp | BreakpointProp,
   typeof defaultBreakpointKey
 >;
 
+interface DeclarationCondition {
+  condition?: AccumulatorCondition;
+  value: unknown;
+}
+
 type DeclarationAccumulator = {
-  [K in keyof Properties]?: {
-    condition?: AccumulatorCondition;
-    value: unknown;
-  }[];
+  [K in keyof Properties]?: DeclarationCondition[];
 };
 
 const joinEnglish =
@@ -319,7 +315,9 @@ function convert<
   parentPropPath: PropPath,
   cascadeOrder: CascadeOrderArg,
   whichElement: WhichElement,
-): Properties {
+): {
+  [K in keyof Properties]?: string;
+} {
   // The parent is an object that's a declaration
   // eg; { color: { sm: 'red', lg: 'blue' } }
   const parentIsResponsiveDeclaration = parent === declarationParent;
@@ -476,6 +474,26 @@ function convert<
         return;
       }
 
+      const insertIntoProperties = (
+        declaration: keyof Properties,
+        condition: CascadeOrder,
+        valueToInsert: unknown,
+      ) => {
+        // @ts-expect-error -- This should be fixed once cascadeCondition above
+        // has the correctly narrowed type
+        properties[declaration]![cascadeOrder[condition]] = {
+          // Given {color: {xs: 'green', sm: 'red', lg: 'blue'}}
+          // and defaultBreakpointKey = 'xs'
+          // When `prop` is 'sm' or 'lg', we set it as the 'condition'.
+          // When `prop` is 'xs', there's no 'condition'.
+          //
+          // Given {color: 'red'}
+          // Then there is no condition.
+          condition: condition !== defaultBreakpointKey ? condition : undefined,
+          value: valueToInsert,
+        };
+      };
+
       // Process a non-object concrete value.
       // Eg; {color: 'red'}
       // or
@@ -507,60 +525,50 @@ function convert<
         // Initialize as an array (not an object) to retain numerical key
         // ordering, and NOT insertion order
         properties[declaration as keyof Properties] ??= [];
-
-        const cascadeCondition: CascadeOrder = parentIsResponsiveDeclaration
-          ? (prop as CascadeOrder)
-          : defaultBreakpointKey;
-
-        // Given {color: {xs: 'green', sm: 'red', lg: 'blue'}}
-        // and defaultBreakpointKey = 'xs'
-        // When `prop` is 'sm' or 'lg', we set it as the 'condition'.
-        // When `prop` is 'xs', there's no 'condition'.
-        //
-        // Given {color: 'red'}
-        // Then there is no condition.
-        const condition: AccumulatorCondition | undefined =
-          cascadeCondition !== defaultBreakpointKey
-            ? cascadeCondition
-            : undefined;
-
-        properties[declaration as keyof Properties]![
-          cascadeOrder[cascadeCondition as keyof typeof cascadeOrder]
-        ] = {
-          condition,
-          value: mappedValue,
-        };
-
+        insertIntoProperties(
+          declaration as keyof Properties,
+          // TODO Not sure why TS isn't narrowing prop down correctly here. it could
+          // only possibly be one of the responsive object keys at this point.
+          parentIsResponsiveDeclaration
+            ? (prop as CascadeOrder)
+            : defaultBreakpointKey,
+          mappedValue,
+        );
         return;
       }
 
       if (valueIsObject) {
-        // recursion. The result gets merged deeply into the
-        Object.assign(
-          declarationAcc,
-          convert(
-            // TODO: How do I fix this?
-            value as typeof styleProps,
-            defaults,
-            valueMapper,
-            /* eslint-disable no-nested-ternary -- It's terse & readable */
-            propIsModifier
-              ? modifierParent
-              : propIsBreakpoint
-              ? declarationParent
-              : propIsPseudoElement
-              ? pseudoElementParent
-              : declarationParent,
-            /* eslint-enable no-nested-ternary */
-            propPath,
-            // Ignore declarations and pseudoelements in the cascade path
-            propIsBreakpoint || propIsModifier
-              ? cascadeOrder[prop as keyof CascadeOrderArg]
-              : cascadeOrder,
-            // Switch to the relevant pseudo element if encountered
-            propIsPseudoElement ? prop : whichElement,
-          ),
+        const nestedProperties = convert(
+          // TODO: How do I fix this?
+          value as typeof styleProps,
+          defaults,
+          valueMapper,
+          /* eslint-disable no-nested-ternary -- It's terse & readable */
+          propIsModifier
+            ? modifierParent
+            : propIsBreakpoint
+            ? declarationParent
+            : propIsPseudoElement
+            ? pseudoElementParent
+            : declarationParent,
+          /* eslint-enable no-nested-ternary */
+          propPath,
+          // Ignore declarations and pseudoelements in the cascade path
+          propIsBreakpoint || propIsModifier
+            ? cascadeOrder[prop as keyof CascadeOrderArg]
+            : cascadeOrder,
+          // Switch to the relevant pseudo element if encountered
+          propIsPseudoElement ? prop : whichElement,
         );
+
+        Object.entries(nestedProperties).forEach(([declaration, value]) => {
+          insertIntoProperties(
+            declaration as keyof Properties,
+            // TODO: handle pseudo elements
+            prop,
+            value,
+          );
+        });
       }
     },
   );
@@ -577,17 +585,15 @@ function convert<
   }
 
   // Convert array of { value, condition } to the Space Hack CSS
-  mapObjectValues(properties, (values) => {
-    values!.reduce(
+  return mapObjectValues(properties, (values) =>
+    (values ?? []).reduce(
       (output, {value, condition}) =>
         condition
           ? `var(--${condition}-on, ${value})${
               output ? ` var(--${condition}-off, ${output})` : ''
             }`
-          : value,
+          : `${value}`,
       '',
-    );
-  });
-
-  return declarationAcc;
+    ),
+  );
 }

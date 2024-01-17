@@ -7,7 +7,6 @@
     "outDir": "build/ts",
     "rootDir": "./",
     "strictFunctionTypes": false,
-    "noErrorTruncation": true,
     "paths": {
       "tests/*": ["./tests/*"]
     }
