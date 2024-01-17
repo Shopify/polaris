@@ -67,9 +67,12 @@ function IconsPage() {
   const useModal = useMedia('screen and (max-width: 1400px)');
   const [searchText, setSearchText] = useState('');
   const [icons, setIcons] = useState<IconType[]>([]);
-  const activeIcon = Array.isArray(router.query.icon)
+  const iconQueryParam = Array.isArray(router.query.icon)
     ? router.query.icon[0]
     : router.query.icon ?? '';
+  const activeIcon = Object.keys(iconMetadata).includes(iconQueryParam)
+    ? iconQueryParam
+    : '';
   const currentSearchText = router.query.q ? `${router.query.q}` : '';
 
   useEffect(() => {
