@@ -1,4 +1,4 @@
-export const iconRenames = {
+export const iconRenamesV7toV8 = {
   AbandonedCartMajor: 'CartAbandonedIcon',
   AbandonedCartMinor: 'CartAbandonedIcon',
   AbandonedCartFilledMajor: 'CartAbandonedFilledIcon',

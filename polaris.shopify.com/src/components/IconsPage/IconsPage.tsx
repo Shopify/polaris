@@ -15,7 +15,7 @@ import PageMeta from '../PageMeta';
 import {className} from '../../utils/various';
 import Page from '../Page';
 import StatusBanner from '../StatusBanner';
-import {iconRenames} from './icon-renames';
+import {iconRenamesV7toV8} from './icon-renames-v7-to-v8';
 
 const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,
@@ -72,9 +72,9 @@ function IconsPage() {
   const iconQueryParam = Array.isArray(router.query.icon)
     ? router.query.icon[0]
     : router.query.icon ?? '';
-  const isRenamedIcon = Object.keys(iconRenames).includes(iconQueryParam);
+  const isRenamedIcon = Object.keys(iconRenamesV7toV8).includes(iconQueryParam);
   const iconName = isRenamedIcon
-    ? iconRenames[iconQueryParam as keyof typeof iconRenames]
+    ? iconRenamesV7toV8[iconQueryParam as keyof typeof iconRenamesV7toV8]
     : iconQueryParam;
   const activeIcon = Object.keys(iconMetadata).includes(iconName)
     ? iconName
