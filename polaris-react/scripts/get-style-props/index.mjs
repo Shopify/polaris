@@ -22,7 +22,19 @@ import {
 
 const endent = _endent.default;
 
-const breakpointsData = isObject(breakpointsDataRaw) ? breakpointsDataRaw : {};
+let breakpointsData = isObject(breakpointsDataRaw) ? breakpointsDataRaw : {};
+
+// Ensure there is a "base" selector for breakpoints
+if (
+  !Object.values(breakpointsData).some((selector) => selector.trim() === '&')
+) {
+  breakpointsData = {
+    // Object key order is important, and this one must come first
+    // TODO: This assumes mobile-first. Support desktop-first?
+    _: '&',
+    ...breakpointsData,
+  };
+}
 
 /* eslint-disable-next-line no-nested-ternary */
 const modifiersData = isObject(modifiersDataRaw)
@@ -303,7 +315,8 @@ import type {TokenizedStyleProps} from '@shopify/polaris-tokens';
 import type {
   PickIndexSignature,
   OmitIndexSignature,
-  Simplify
+  Simplify,
+  Entries
 }  from 'type-fest';
 
 import type {ResponsiveProp, ResponsivePropObject} from '../../utilities/css';
@@ -647,6 +660,18 @@ export const breakpoints = ${JSON.stringify(
     2,
   )} as const;
 type BreakpointProps = keyof (typeof breakpoints);
+
+type DefaultBreakpoint = keyof {
+  [Prop in keyof (typeof breakpoints) as (typeof breakpoints)[Prop] extends '&'
+    ? '&' extends (typeof breakpoints)[Prop]
+      ? Prop
+      : never
+    : never]: (typeof breakpoints)[Prop];
+};
+
+export const defaultBreakpointKey = (
+  Object.entries(breakpoints) as Entries<typeof breakpoints>
+).find(([, value]) => value === '&')![0] as DefaultBreakpoint;
 
 export const pseudoElements = ${JSON.stringify(
     // TODO: Verify values are unique

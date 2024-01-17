@@ -6,22 +6,8 @@
   border-block-end-width: var(--p-border-width-0);
   --__active-on: ;
   --__active-off: initial;
-  --__focus-on: ;
-  --__focus-off: initial;
-  --__hover-on: ;
-  --__hover-off: initial;
-  --__visited-on: ;
-  --__visited-off: initial;
-  --__link-on: ;
-  --__link-off: initial;
   --_sm-on: ;
   --_sm-off: initial;
-  --_md-on: ;
-  --_md-off: initial;
-  --_lg-on: ;
-  --_lg-off: initial;
-  --_xl-on: ;
-  --_xl-off: initial;
 }
 
 .Box:active {
@@ -29,50 +15,9 @@
   --__active-off: ;
 }
 
-.Box:focus {
-  --__focus-on: initial;
-  --__focus-off: ;
-}
-
-.Box:hover {
-  --__hover-on: initial;
-  --__hover-off: ;
-}
-
-.Box:visited {
-  --__visited-on: initial;
-  --__visited-off: ;
-}
-
-.Box:link {
-  --__link-on: initial;
-  --__link-off: ;
-}
-
 @media screen and (min-width: 30.625rem) {
   .Box {
     --_sm-on: initial;
     --_sm-off: ;
-  }
-}
-
-@media screen and (min-width: 48rem) {
-  .Box {
-    --_md-on: initial;
-    --_md-off: ;
-  }
-}
-
-@media screen and (min-width: 65rem) {
-  .Box {
-    --_lg-on: initial;
-    --_lg-off: ;
-  }
-}
-
-@media screen and (min-width: 90rem) {
-  .Box {
-    --_xl-on: initial;
-    --_xl-off: ;
   }
 }

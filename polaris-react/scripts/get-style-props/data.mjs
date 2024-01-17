@@ -118,7 +118,15 @@ export const disallowedCSSProperties = [
 // Can disable some global property values if desired.
 // For possibe values, see csstype:
 // https://github.com/frenic/csstype/blob/46694defae2cf3386218d0000490b0d0ac385aa6/index.d.ts#L18457
-export const disallowedCSSPropertyValues = ['-moz-initial'];
+export const disallowedCSSPropertyValues = [
+  '-moz-initial',
+  // TODO: remove these after debug
+  'inherit',
+  'initial',
+  'revert',
+  'revert-layer',
+  'unset',
+];
 
 /**
  * An incomplete list of supported style props.
@@ -291,7 +299,9 @@ export const breakpoints = Object.fromEntries([
     ])
     // Skip the 'xs' size as we've done it above outside of the media queries
     // (mobile first ftw!)
-    .slice(1),
+    .slice(1)
+    // TODO: remove after debug
+    .slice(0, 1),
 ]);
 
 // keys are CSS selectors, values are used as CSS custom property names (see
@@ -300,10 +310,11 @@ export const breakpoints = Object.fromEntries([
 // Can be set to `true` to use a default set of common modifiers.
 export const modifiers = {
   _active: ':active',
-  _focus: ':focus',
-  _hover: ':hover',
-  _visited: ':visited',
-  _link: ':link',
+  // TODO: reactivate after debug
+  // _focus: ':focus',
+  // _hover: ':hover',
+  // _visited: ':visited',
+  // _link: ':link',
 };
 
 // keys are CSS selectors, values are used as CSS custom property names (see
@@ -319,7 +330,8 @@ export const modifiers = {
 // There's no ::before:hover
 export const pseudoElements = {
   _before: '::before',
-  _after: '::after',
+  // TODO: reactivate after debug
+  // _after: '::after',
 };
 
 // Used to ensure custom properties don't collide with other user created ones
