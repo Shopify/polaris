@@ -10,6 +10,7 @@ import {
   InlineGrid,
   UnstyledButton,
   Popover,
+  InlineStack,
 } from '../../../src';
 
 import styles from './Select.module.scss';
@@ -114,9 +115,17 @@ export function Select({
           </Text>
 
           {firstSelected && (
-            <Text as="span" variant="bodyMd">
-              {firstSelected}
-            </Text>
+            <InlineStack gap="100" blockAlign="center">
+              <Text as="span" variant="bodyMd">
+                {firstSelected}
+              </Text>
+              {selectedOptions.length > 1 && (
+                // eslint-disable-next-line @shopify/jsx-no-hardcoded-content
+                <Text as="span" variant="bodySm" tone="subdued">
+                  and {selectedOptions.length - 1} more
+                </Text>
+              )}
+            </InlineStack>
           )}
         </BlockStack>
         <Icon source={SelectIcon} tone="subdued" />
