@@ -2,6 +2,7 @@ import React, {useRef} from 'react';
 import {MenuHorizontalIcon} from '@shopify/polaris-icons';
 
 import type {DisableableAction} from '../../../../types';
+import type {ButtonProps} from '../../../Button';
 import {Button} from '../../../Button';
 import {Icon} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
@@ -14,6 +15,7 @@ export type BulkActionButtonProps = {
   indicator?: boolean;
   handleMeasurement?(width: number): void;
   showContentInButton?: boolean;
+  size?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
 } & DisableableAction;
 
 export function BulkActionButton({
@@ -27,6 +29,7 @@ export function BulkActionButton({
   disabled,
   indicator,
   showContentInButton,
+  size,
 }: BulkActionButtonProps) {
   const bulkActionButton = useRef<HTMLDivElement>(null);
 
@@ -51,7 +54,7 @@ export function BulkActionButton({
       disclosure={disclosure && showContentInButton}
       onClick={onAction}
       disabled={disabled}
-      size="slim"
+      size={size}
       icon={
         isActivatorForMoreActionsPopover ? (
           <Icon source={MenuHorizontalIcon} tone="base" />

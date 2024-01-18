@@ -13,15 +13,12 @@ $bulk-actions-button-stacking-order: (
   flex-wrap: wrap;
   opacity: 0;
   width: 100%;
-  justify-content: center;
+  justify-content: flex-start;
   transition: var(--p-motion-duration-100) var(--p-motion-ease);
-  transition-property: transform, opacity;
-  transform: translateY(120px);
-  padding: 0 var(--p-space-400);
-  will-change: transform, opacity;
+  transition-property: opacity;
+  will-change: opacity;
 
   &.Group-not-sticky {
-    transform: none;
     opacity: 1;
   }
 
@@ -34,7 +31,6 @@ $bulk-actions-button-stacking-order: (
   &.Group-entered {
     opacity: 1;
     display: flex;
-    transform: translateY(0);
   }
 
   &.Group-exited {
@@ -52,17 +48,8 @@ $bulk-actions-button-stacking-order: (
 .ButtonGroupWrapper {
   width: auto;
   justify-content: flex-start;
-  padding: var(--p-space-300);
-  background: var(--p-color-bg-surface);
-  border-radius: var(--p-border-radius-200);
-  box-shadow: var(--p-shadow-300), var(--p-shadow-500);
   max-width: 100%;
   pointer-events: auto;
-
-  @include shadow-bevel(
-    $boxShadow: var(--p-shadow-300),
-    $borderRadius: var(--p-border-radius-300)
-  );
 
   @media (--p-breakpoints-sm-down) {
     // stylelint-disable-next-line selector-max-combinators, selector-max-type -- the first item of button group on small screen needs to fill the space
@@ -74,8 +61,6 @@ $bulk-actions-button-stacking-order: (
   @media (--p-breakpoints-sm-up) {
     width: auto;
     justify-content: flex-start;
-    margin-right: var(--p-space-200);
-    margin-left: calc(-1 * var(--p-space-050));
   }
 
   .Group-measuring & {
@@ -89,41 +74,6 @@ $bulk-actions-button-stacking-order: (
 
   button {
     display: flex;
-    background-color: var(--p-color-bg-fill-tertiary);
-    box-shadow: none;
-
-    &:hover {
-      background-color: var(--p-color-bg-fill-tertiary-hover);
-      box-shadow: none;
-    }
-
-    &:focus-visible,
-    &:active {
-      background-color: var(--p-color-bg-fill-tertiary-active);
-    }
-
-    // stylelint-disable-next-line selector-max-specificity -- Bulk actions button override
-    &:focus-visible:not(:active) {
-      /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- override focus ring */
-      @include no-focus-ring;
-      outline: var(--p-border-width-050) solid var(--p-color-border-focus);
-      outline-offset: var(--p-space-050);
-    }
-
-    // stylelint-disable-next-line selector-no-qualifying-type -- Bulk actions button override
-    &[aria-disabled='true'] {
-      background-color: var(--p-color-bg-fill-disabled);
-    }
-  }
-
-  // Extra specificity
-  // stylelint-disable-next-line selector-max-class, selector-max-specificity -- Bump specificity to override button styles
-  &.BulkActionButton.BulkActionButton button {
-    // stylelint-disable-next-line -- Bulk actions button override
-    &:focus-visible,
-    &:active {
-      box-shadow: var(--p-shadow-inset-200);
-    }
   }
 }
 

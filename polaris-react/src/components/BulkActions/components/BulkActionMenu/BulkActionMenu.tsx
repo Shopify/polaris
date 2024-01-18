@@ -5,15 +5,18 @@ import {ActionList} from '../../../ActionList';
 import {BulkActionButton} from '../BulkActionButton';
 import {useToggle} from '../../../../utilities/use-toggle';
 import type {MenuGroupDescriptor} from '../../../../types';
+import type {ButtonProps} from '../../../Button';
 
 export interface BulkActionsMenuProps extends MenuGroupDescriptor {
   isNewBadgeInBadgeActions: boolean;
+  size?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
 }
 
 export function BulkActionMenu({
   title,
   actions,
   isNewBadgeInBadgeActions,
+  size,
 }: BulkActionsMenuProps) {
   const {value: isVisible, toggle: toggleMenuVisibility} = useToggle(false);
 
@@ -28,6 +31,7 @@ export function BulkActionMenu({
             onAction={toggleMenuVisibility}
             content={title}
             indicator={isNewBadgeInBadgeActions}
+            size={size}
           />
         }
         onClose={toggleMenuVisibility}

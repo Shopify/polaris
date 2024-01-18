@@ -5,33 +5,51 @@
   gap: var(--p-space-200);
   align-items: center;
   justify-content: flex-start;
-  will-change: opacity;
+  width: 100%;
+  transition: var(--p-motion-duration-100) var(--p-motion-ease);
+  transition-property: transform, opacity;
+
+  &.SelectAllActions-not-sticky {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 .SelectAllActions-entering,
 .SelectAllActions-exiting {
-  opacity: 0;
   display: flex;
+  opacity: 0;
+
+  &:not(:is(.SelectAllActions-not-sticky, .SelectAllActions-hasPagination)) {
+    transform: translateY(100%);
+  }
+}
+
+.SelectAllActions-exited {
+  display: none;
+  opacity: 0;
+
+  &:not(:is(.SelectAllActions-not-sticky, .SelectAllActions-hasPagination)) {
+    transform: translateY(100%);
+  }
 }
 
 .SelectAllActions-entered {
   opacity: 1;
   display: flex;
-}
-
-.SelectAllActions-exited {
-  opacity: 0;
-  display: none;
+  transform: translateY(0);
 }
 
 .PaginatedSelectAll {
-  font-size: var(--p-font-size-300);
-  font-weight: var(--p-font-weight-semibold);
+  font-size: var(--p-text-body-sm-font-size);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-text-body-sm-font-line-height);
 }
 
 .AllAction {
-  font-size: var(--p-font-size-300);
-  font-weight: var(--p-font-weight-semibold);
+  font-size: var(--p-text-body-sm-font-size);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-text-body-sm-font-line-height);
   border: 0;
   background: none;
   padding: 0;
