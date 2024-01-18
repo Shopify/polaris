@@ -20,6 +20,7 @@ type Element =
   | 'legend';
 
 type Variant =
+  | 'headingXs'
   | 'headingSm'
   | 'headingMd'
   | 'headingLg'
