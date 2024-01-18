@@ -3,6 +3,5 @@
 }
 
 .HasUnderline {
-  border-bottom: var(--p-border-width-050) dotted
-    var(--p-color-border-secondary);
+  border-bottom: var(--p-border-width-050) dotted var(--p-color-border);
 }

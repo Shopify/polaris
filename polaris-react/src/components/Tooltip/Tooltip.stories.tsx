@@ -12,6 +12,7 @@ import {
   InlineStack,
   BlockStack,
   Popover,
+  Card,
 } from '@shopify/polaris';
 import type {TooltipProps} from '@shopify/polaris';
 
@@ -461,13 +462,13 @@ export function Alignment() {
 
 export function HasUnderline() {
   return (
-    <Box paddingBlockStart="2400">
+    <Card padding="400">
       <Tooltip active content="This tooltip has an underline" hasUnderline>
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
         </Text>
       </Tooltip>
-    </Box>
+    </Card>
   );
 }
 
