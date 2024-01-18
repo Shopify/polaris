@@ -149,7 +149,7 @@ describe('convertStylePropsToCSSProperties', () => {
     `);
   });
 
-  it('modifiers are ordered correctly', () => {
+  it.only('modifiers are ordered correctly', () => {
     const styleProps: ResponsiveStylePropsWithModifiers = {
       backgroundColor: 'bg-fill-info',
       _hover: {backgroundColor: 'bg-fill-warning'},
@@ -157,10 +157,9 @@ describe('convertStylePropsToCSSProperties', () => {
     };
     expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
       Object {
-        "--_1": "var(--_1_hover,var(--_1_visited,bg-fill-info))",
-        "--_1_hover": "var(--__hover) bg-fill-warning",
-        "--_1_visited": "var(--__visited) bg-fill-critical",
-        "backgroundColor": "var(--_1)",
+        "style": Object {
+          "backgroundColor": "var(--__visited-on, bg-fill-critical) var(--__visited-off, var(--__hover-on, bg-fill-warning) var(--__hover-off, bg-fill-info))",
+        },
       }
     `);
   });

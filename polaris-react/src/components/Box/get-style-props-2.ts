@@ -1,6 +1,6 @@
 import invariant from 'tiny-invariant';
 import decamelize from 'decamelize';
-import type {Entries, Simplify} from 'type-fest';
+import type {Entries} from 'type-fest';
 
 import {isObject} from '../../utilities/is-object';
 
@@ -49,20 +49,22 @@ type RecursiveValues<T> = Exclude<
   undefined
 >;
 
-type RecursiveKeys<T> = T extends object
-  ?
-      | keyof T
-      | {
-          // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
-          [Prop in keyof T]: T[Prop] extends Record<any, any>
-            ? RecursiveKeys<T[Prop]>
-            : never;
-        }[keyof T]
-  : never;
+// type RecursiveKeys<T> = T extends object
+//   ?
+//       | keyof T
+//       | {
+//           // eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
+//           [Prop in keyof T]: T[Prop] extends Record<any, any>
+//             ? RecursiveKeys<T[Prop]>
+//             : never;
+//         }[keyof T]
+//   : never;
 
 type PseudoElementProp = keyof typeof pseudoElements;
 type ModifierProp = keyof typeof modifiers;
 type BreakpointProp = keyof typeof breakpoints;
+
+type PropPathValues = PropPath extends (infer T)[] ? T : never;
 
 export type ConversionResult = {
   style: Properties;
@@ -86,32 +88,32 @@ type ConditionalDeclarations = {
   [K in keyof Properties]?: DeclarationCondition[];
 };
 
-// Use Simplify here so the intersection's key's match that of Elements above
-type DeclarationAccumulator = Simplify<
-  {
-    // Doing an intersection here allows us to strictly type this key for this
-    // symbol only (not just any `symbol`)
-    [Key in typeof rootElement]?: ConditionalDeclarations;
-  } & {
-    [Key in PseudoElementProp]?: ConditionalDeclarations;
-  }
->;
+type DeclarationAccumulator = {
+  [Key in
+    | PseudoElementProp
+    // eslint-disable-next-line prettier/prettier
+    | (typeof Constant)['RootElement']]?: ConditionalDeclarations;
+};
 
 type Elements = keyof DeclarationAccumulator;
 
 type ConvertResult = {
   [Key in keyof DeclarationAccumulator]: {
+    // eslint-disable-next-line @typescript-eslint/ban-types
     [K in keyof Properties]?: Properties[K] | (string & {});
   };
 };
 
-/* eslint-disable symbol-description -- Unnecessary */
-const rootElement = Symbol();
-const rootParent = Symbol();
-const modifierParent = Symbol();
-const declarationParent = Symbol();
-const pseudoElementParent = Symbol();
-/* eslint-enable symbol-description */
+// Defining these at the top level scope should allow them to be inlined by
+// esbuild (https://github.com/evanw/esbuild/releases/tag/v0.14.9) and tsc
+// (https://www.typescriptlang.org/docs/handbook/enums.html#const-enums).
+const enum Constant {
+  // NOTE: Constant.RootElement is used as an object key
+  RootElement,
+  ModifierParent,
+  DeclarationParent,
+  PseudoElementParent,
+}
 
 const joinEnglish =
   process.env.NODE_ENV === 'development'
@@ -162,7 +164,7 @@ function insertIntoProperties(
   properties: DeclarationAccumulator,
   whichElement: Elements,
   declaration: keyof Properties,
-  condition: CascadeOrder,
+  condition: CascadeOrderKeys,
   valueToInsert: unknown,
 ) {
   // Have to do this chained assignment to workaround TS: "Type narrowing
@@ -175,11 +177,8 @@ function insertIntoProperties(
   // Initialize as an array (not an object) to retain numerical key
   // ordering, and NOT insertion order
   // eslint-disable-next-line no-multi-assign
-  const conditionalDeclarations = (element[declaration as keyof Properties] ??=
-    []);
+  const conditionalDeclarations = (element[declaration] ??= []);
 
-  // @ts-expect-error -- This should be fixed once cascadeCondition above
-  // has the correctly narrowed type
   conditionalDeclarations[cascadeOrder[condition]] = {
     // Given {color: {xs: 'green', sm: 'red', lg: 'blue'}}
     // and defaultBreakpointKey = 'xs'
@@ -198,15 +197,16 @@ export function convertStylePropsToCSSProperties(
   defaults: PropDefaults = {},
   valueMapper: ValueMapper = identity,
 ): ConversionResult {
+  debugger;
   const converted = convert(
     styleProps,
     defaults,
     valueMapper,
-    rootParent,
+    undefined,
     [],
-    cascadeOrderRoot,
-    rootElement,
+    Constant.RootElement,
   );
+  debugger;
 
   // Inject defaults for properties that don't have them
   // if (parentIsRoot) {
@@ -218,7 +218,7 @@ export function convertStylePropsToCSSProperties(
   //       defaultValue;
   //   }
   // }
-  const {[rootElement]: baseStyleProps, ...pseudoElementsStyleProps} =
+  const {[Constant.RootElement]: baseStyleProps, ...pseudoElementsStyleProps} =
     converted;
 
   return {
@@ -264,14 +264,12 @@ export function convertCSSPropertiesToStyleSheet(
 let cascadeOrderNumber = 0;
 
 // Least specific first
-const cascadeOrderRoot = {
+const cascadeOrder = {
   ...mapObjectValues(breakpoints, () => cascadeOrderNumber++),
-  ...mapObjectValues(modifiers, () =>
-    mapObjectValues(breakpoints, () => cascadeOrderNumber++),
-  ),
+  ...mapObjectValues(modifiers, () => cascadeOrderNumber++),
 } as const;
 
-type CascadeOrder = RecursiveKeys<typeof cascadeOrderRoot>;
+type CascadeOrderKeys = keyof typeof cascadeOrder;
 
 /**
 *
@@ -377,25 +375,21 @@ type CascadeOrder = RecursiveKeys<typeof cascadeOrderRoot>;
  *   sm: any,       // INVALID, breakpoints can only be children of properties
  * }
  */
-function convert<CascadeOrderArg = RecursiveValues<typeof cascadeOrderRoot>>(
+function convert(
   // TODO: Does this recursive type cause TS to be slow?
   styleProps: RecursiveValues<ResponsiveStylePropsWithModifiers>,
   defaults: PropDefaults,
   valueMapper: ValueMapper,
   parent:
-    | typeof rootParent
-    | typeof modifierParent
-    | typeof declarationParent
-    | typeof pseudoElementParent,
+    | Constant.ModifierParent
+    | Constant.DeclarationParent
+    | Constant.PseudoElementParent
+    | undefined,
   parentPropPath: PropPath,
-  cascadeOrder: CascadeOrderArg,
   whichElement: Elements,
 ): ConvertResult {
-  // The parent is an object that's a declaration
-  // eg; { color: { sm: 'red', lg: 'blue' } }
-  const parentIsResponsiveDeclaration = parent === declarationParent;
-  const parentIsPseudoElement = parent === pseudoElementParent;
-  const parentIsRoot = parent === rootParent;
+  const parentIsResponsiveDeclaration = parent === Constant.DeclarationParent;
+  const parentIsPseudoElement = parent === Constant.PseudoElementParent;
 
   const properties: DeclarationAccumulator = {};
   // TODO
@@ -462,7 +456,8 @@ function convert<CascadeOrderArg = RecursiveValues<typeof cascadeOrderRoot>>(
       const propIsPseudoElement =
         !propIsBreakpoint && !propIsModifier && hasOwn(pseudoElements, prop);
       const valueIsObject = isObject(value);
-      const propPath: PropPath = [...parentPropPath, prop];
+      // TODO: How to narrow 'prop' here?
+      const propPath: PropPath = [...parentPropPath, prop as PropPathValues];
 
       // NOTE; We do the property checks early like this because it minifies
       // really well in production mode:
@@ -567,7 +562,7 @@ function convert<CascadeOrderArg = RecursiveValues<typeof cascadeOrderRoot>>(
         // csstype types have a `| string` union which then allows some values to
         // sneak through at runtime.
         invariant(
-          disallowedCSSPropertyValues.includes(
+          !disallowedCSSPropertyValues.includes(
             // eslint-disable-next-line prettier/prettier
             mappedValue as (typeof disallowedCSSPropertyValues)[number],
           ),
@@ -583,7 +578,7 @@ function convert<CascadeOrderArg = RecursiveValues<typeof cascadeOrderRoot>>(
           // TODO Not sure why TS isn't narrowing prop down correctly here. it could
           // only possibly be one of the responsive object keys at this point.
           parentIsResponsiveDeclaration
-            ? (prop as CascadeOrder)
+            ? (prop as CascadeOrderKeys)
             : defaultBreakpointKey,
           mappedValue,
         );
@@ -598,19 +593,14 @@ function convert<CascadeOrderArg = RecursiveValues<typeof cascadeOrderRoot>>(
           valueMapper,
           /* eslint-disable no-nested-ternary -- It's terse & readable */
           propIsModifier
-            ? modifierParent
+            ? Constant.ModifierParent
             : propIsBreakpoint
-            ? declarationParent
+            ? Constant.DeclarationParent
             : propIsPseudoElement
-            ? pseudoElementParent
-            : declarationParent,
+            ? Constant.PseudoElementParent
+            : Constant.DeclarationParent,
           /* eslint-enable no-nested-ternary */
           propPath,
-          // Ignore declarations and pseudoelements in the cascade path
-          // TODO: How to narrow the type of `prop` here?
-          propIsBreakpoint || propIsModifier
-            ? cascadeOrder[prop as keyof CascadeOrderArg]
-            : cascadeOrder,
           // Switch to the relevant pseudo element if encountered
           // TODO: How to narrow the type of `prop` here?
           propIsPseudoElement ? (prop as Elements) : whichElement,
@@ -633,7 +623,7 @@ function convert<CascadeOrderArg = RecursiveValues<typeof cascadeOrderRoot>>(
                     nestedElement,
                     declaration as keyof Properties,
                     // TODO: How do we narrow `prop`'s type here?
-                    prop as CascadeOrder,
+                    prop as CascadeOrderKeys,
                     value,
                   );
               },

@@ -119,14 +119,14 @@ export type ResponsiveStyleProps = {
   >;
 };
 
-export type ResponsiveStylePropsWithPseudoElements = Simplify<ResponsiveStyleProps
-  & { [K in PseudoElementProps]?: ResponsiveStyleProps }>;
+type ResponsiveStylePropsWithPseudoElements = ResponsiveStyleProps
+  & { [K in PseudoElementProps]?: ResponsiveStyleProps };
 
 /**
  * A combination of raw CSS style props, tokenized style props (derived from
  * `@shopify/polaris-tokens`), helpful aliases for frequently used props, the
- * modifiers _active,
- * and the pseudoElements _before.
+ * modifiers _active, _focus, _hover, _visited and _link,
+ * and the pseudoElements _before and _after.
  */
 export type ResponsiveStylePropsWithModifiers = Simplify<
   ResponsiveStylePropsWithPseudoElements
@@ -1489,12 +1489,7 @@ export const stylePropDefaults = {
  * literal in our types holistically for every style property.
  */
 export const disallowedCSSPropertyValues = [
-  "-moz-initial",
-  "inherit",
-  "initial",
-  "revert",
-  "revert-layer",
-  "unset"
+  "-moz-initial"
 ] satisfies Globals[];
 
 /**
@@ -1596,13 +1591,20 @@ export const stylePropTokenGroupMap = {
 export const cssCustomPropertyNamespace = "_";
 
 export const modifiers = {
-  "_active": ":active"
+  "_active": ":active",
+  "_focus": ":focus",
+  "_hover": ":hover",
+  "_visited": ":visited",
+  "_link": ":link"
 } as const;
 type ModifierProps = keyof (typeof modifiers);
 
 export const breakpoints = {
   "xs": "&",
-  "sm": "@media screen and (min-width: 30.625rem)"
+  "sm": "@media screen and (min-width: 30.625rem)",
+  "md": "@media screen and (min-width: 48rem)",
+  "lg": "@media screen and (min-width: 65rem)",
+  "xl": "@media screen and (min-width: 90rem)"
 } as const;
 type BreakpointProps = keyof (typeof breakpoints);
 
@@ -1619,7 +1621,8 @@ export const defaultBreakpointKey = (
 ).find(([, value]) => value === '&')![0] as DefaultBreakpoint;
 
 export const pseudoElements = {
-  "_before": "::before"
+  "_before": "::before",
+  "_after": "::after"
 } as const;
 type PseudoElementProps = keyof (typeof pseudoElements);
 
