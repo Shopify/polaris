@@ -2,7 +2,8 @@
 
 .Container {
   position: relative;
-  z-index: var(--p-z-index-1);
+  // stylelint-disable-next-line -- z-index below Card shadow bevel (32)
+  z-index: 30;
   border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
   border-top-left-radius: var(--p-border-radius-200);
   border-top-right-radius: var(--p-border-radius-200);
