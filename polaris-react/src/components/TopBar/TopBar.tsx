@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {MenuIcon} from '@shopify/polaris-icons';
+import {CSSTransition, TransitionGroup} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
@@ -9,6 +10,7 @@ import {useFrame} from '../../utilities/frame';
 import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
+import {ContextualSaveBar} from '../Frame';
 
 import {SearchField, UserMenu, Search, Menu} from './components';
 import type {SearchFieldProps, UserMenuProps, SearchProps} from './components';
@@ -64,7 +66,9 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   logoSuffix,
 }: TopBarProps) {
   const i18n = useI18n();
-  const {logo} = useFrame();
+  const {logo, contextualSaveBarVisible, contextualSaveBarProps} = useFrame();
+  const searchElement = useRef<HTMLDivElement>(null);
+  const contextualSaveBarElement = useRef<HTMLDivElement>(null);
 
   const {
     value: focused,
@@ -127,18 +131,65 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
     );
   }
 
+  const searchTransitionClassNames = {
+    enter: styles['SearchBar-enter'],
+    enterActive: styles['SearchBar-enter-active'],
+    exit: styles['SearchBar-exit'],
+    exitActive: styles['SearchBar-exit-active'],
+  };
+
   const searchMarkup = searchField ? (
-    <>
-      {searchField}
-      <Search
-        visible={searchResultsVisible}
-        onDismiss={onSearchResultsDismiss}
-        overlayVisible={searchResultsOverlayVisible}
-      >
-        {searchResults}
-      </Search>
-    </>
+    <CSSTransition
+      key="search"
+      classNames={searchTransitionClassNames}
+      nodeRef={searchElement}
+      addEndListener={(done) => {
+        searchElement.current?.addEventListener('transitionend', done, false);
+      }}
+      appear
+      in={!contextualSaveBarVisible}
+      mountOnEnter
+    >
+      <div className={styles.Search} ref={searchElement}>
+        {searchField}
+        <Search
+          visible={searchResultsVisible}
+          onDismiss={onSearchResultsDismiss}
+          overlayVisible={searchResultsOverlayVisible}
+        >
+          {searchResults}
+        </Search>
+      </div>
+    </CSSTransition>
   ) : null;
+
+  const contextualSaveBarTransitionClassNames = {
+    enter: styles['ContextualSaveBar-enter'],
+    enterActive: styles['ContextualSaveBar-enter-active'],
+    exit: styles['ContextualSaveBar-exit'],
+    exitActive: styles['ContextualSaveBar-exit-active'],
+  };
+
+  const contextualSaveBarMarkup = (
+    <CSSTransition
+      key="csb"
+      classNames={contextualSaveBarTransitionClassNames}
+      nodeRef={contextualSaveBarElement}
+      addEndListener={(done) => {
+        contextualSaveBarElement.current?.addEventListener(
+          'transitionend',
+          done,
+          false,
+        );
+      }}
+      in={contextualSaveBarVisible}
+      mountOnEnter
+    >
+      <div ref={contextualSaveBarElement}>
+        <ContextualSaveBar {...contextualSaveBarProps} />
+      </div>
+    </CSSTransition>
+  );
 
   return (
     <div className={styles.TopBar}>
@@ -147,7 +198,17 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
           {navigationButtonMarkup}
           {contextMarkup}
         </div>
-        <div className={styles.Search}>{searchMarkup}</div>
+        <div
+          style={{
+            height: '56px',
+            overflow: searchResultsVisible ? 'visible' : 'hidden',
+            padding: '10px 4px',
+          }}
+        >
+          <TransitionGroup>
+            {contextualSaveBarVisible ? contextualSaveBarMarkup : searchMarkup}
+          </TransitionGroup>
+        </div>
         <div className={styles.RightContent}>
           <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
           {userMenu}

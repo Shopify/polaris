@@ -1,33 +1,26 @@
 import React, {useCallback} from 'react';
-import {AlertTriangleIcon} from '@shopify/polaris-icons';
+import {AlertBubbleIcon} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
-import {Image} from '../../../Image';
-// eslint-disable-next-line import/no-deprecated
-import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
 import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
-import {useFrame} from '../../../../utilities/frame';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
-import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
+import {InlineStack} from '../../../InlineStack';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.module.scss';
 
 export function ContextualSaveBar({
-  alignContentFlush,
   message,
   saveAction,
   discardAction,
   fullWidth,
-  contextControl,
   secondaryMenu,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
-  const {logo} = useFrame();
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,
@@ -66,7 +59,7 @@ export function ContextualSaveBar({
   const discardActionMarkup = discardAction && (
     <Button
       variant="tertiary"
-      size="large"
+      size="slim"
       url={discardAction.url}
       onClick={discardActionHandler}
       loading={discardAction.loading}
@@ -84,9 +77,8 @@ export function ContextualSaveBar({
 
   const saveActionMarkup = saveAction && (
     <Button
+      size="slim"
       variant="primary"
-      tone="success"
-      size="large"
       url={saveAction.url}
       onClick={saveAction.onAction}
       loading={saveAction.loading}
@@ -97,23 +89,6 @@ export function ContextualSaveBar({
     </Button>
   );
 
-  const width = getWidth(logo, 104);
-
-  const imageMarkup = logo && (
-    <Image style={{width}} source={logo.contextualSaveBarSource || ''} alt="" />
-  );
-
-  const logoMarkup =
-    alignContentFlush || contextControl ? null : (
-      <div className={styles.LogoContainer} style={{width}}>
-        {imageMarkup}
-      </div>
-    );
-
-  const contextControlMarkup = contextControl ? (
-    <div className={styles.ContextControl}>{contextControl}</div>
-  ) : null;
-
   const contentsClassName = classNames(
     styles.Contents,
     fullWidth && styles.fullWidth,
@@ -122,23 +97,21 @@ export function ContextualSaveBar({
   return (
     <>
       <div className={styles.ContextualSaveBar}>
-        {contextControlMarkup}
-        {logoMarkup}
         <div className={contentsClassName}>
           <div className={styles.MessageContainer}>
-            <Icon source={AlertTriangleIcon} />
+            <Icon source={AlertBubbleIcon} />
             {message && (
-              <Text as="h2" variant="headingMd" tone="text-inverse" truncate>
+              <Text as="h2" variant="bodySm" tone="text-inverse" truncate>
                 {message}
               </Text>
             )}
           </div>
           <div className={styles.ActionContainer}>
-            <LegacyStack spacing="tight" wrap={false}>
+            <InlineStack gap="100" wrap={false}>
               {secondaryMenu}
               {discardActionMarkup}
               {saveActionMarkup}
-            </LegacyStack>
+            </InlineStack>
           </div>
         </div>
       </div>

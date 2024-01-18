@@ -22,12 +22,7 @@ import type {
 } from '../../utilities/frame';
 import {UseTheme} from '../../utilities/use-theme';
 
-import {
-  ToastManager,
-  Loading,
-  ContextualSaveBar,
-  CSSAnimation,
-} from './components';
+import {ToastManager, Loading} from './components';
 import styles from './Frame.module.scss';
 
 export interface FrameProps {
@@ -105,8 +100,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   }
 
   render() {
-    const {skipFocused, loadingStack, toastMessages, showContextualSaveBar} =
-      this.state;
+    const {skipFocused, loadingStack, toastMessages} = this.state;
     const {
       logo,
       children,
@@ -242,16 +236,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       sidebar && styles.hasSidebar,
     );
 
-    const contextualSaveBarMarkup = (
-      <CSSAnimation
-        in={showContextualSaveBar}
-        className={styles.ContextualSaveBar}
-        type="fade"
-      >
-        <ContextualSaveBar {...this.contextualSaveBar} />
-      </CSSAnimation>
-    );
-
     const navigationOverlayMarkup =
       showMobileNavigation && isNavigationCollapsed ? (
         <Backdrop
@@ -272,6 +256,8 @@ class FrameInner extends PureComponent<CombinedProps, State> {
       stopLoading: this.stopLoading,
       setContextualSaveBar: this.setContextualSaveBar,
       removeContextualSaveBar: this.removeContextualSaveBar,
+      contextualSaveBarVisible: this.state.showContextualSaveBar,
+      contextualSaveBarProps: this.contextualSaveBar,
     };
 
     return (
@@ -284,7 +270,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {skipMarkup}
           {topBarMarkup}
           {navigationMarkup}
-          {contextualSaveBarMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}
           <main

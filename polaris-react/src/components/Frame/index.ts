@@ -1,4 +1,5 @@
 export * from './Frame';
+export {ContextualSaveBar} from './components';
 
 export {
   DEFAULT_TOAST_DURATION,
