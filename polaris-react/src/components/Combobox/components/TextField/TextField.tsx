@@ -1,4 +1,4 @@
-import React, {useMemo, useId, useCallback, useEffect} from 'react';
+import React, {useMemo, useId, useCallback, useEffect, useState} from 'react';
 
 import {labelID} from '../../../Label';
 import {TextField as PolarisTextField} from '../../../TextField';
@@ -15,6 +15,7 @@ export function TextField({
   onChange,
   ...rest
 }: TextFieldProps) {
+  const [focused, setFocused] = useState(false);
   const comboboxTextFieldContext = useComboboxTextField();
 
   const {
@@ -37,8 +38,9 @@ export function TextField({
   );
 
   useEffect(() => {
+    if (!focused) setFocused(true);
     if (setTextFieldLabelId) setTextFieldLabelId(labelId);
-  }, [labelId, setTextFieldLabelId]);
+  }, [labelId, focused, setTextFieldLabelId]);
 
   const handleFocus = useCallback(
     (event: React.FocusEvent) => {
@@ -72,6 +74,7 @@ export function TextField({
       value={value}
       id={textFieldId}
       type={type}
+      focused={focused}
       ariaAutocomplete={ariaAutocomplete}
       aria-haspopup="listbox"
       ariaActiveDescendant={activeOptionId}
