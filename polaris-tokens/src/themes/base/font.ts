@@ -34,6 +34,13 @@ export type FontLetterSpacingAlias = 'densest' | 'denser' | 'dense' | 'normal';
 export type FontWeightPrefix = 'font-weight';
 export type FontWeightAlias = 'regular' | 'medium' | 'semibold' | 'bold';
 
+export const fontWeightAliasMap: {[F in FontWeightAlias]: `${number}`} = {
+  regular: '450',
+  medium: '550',
+  semibold: '650',
+  bold: '700',
+};
+
 export type FontPrefix =
   | FontFamilyPrefix
   | FontLetterSpacingPrefix
@@ -94,16 +101,16 @@ export const font: {
     value: size[1000],
   },
   'font-weight-regular': {
-    value: '450',
+    value: fontWeightAliasMap.regular,
   },
   'font-weight-medium': {
-    value: '550',
+    value: fontWeightAliasMap.medium,
   },
   'font-weight-semibold': {
-    value: '650',
+    value: fontWeightAliasMap.semibold,
   },
   'font-weight-bold': {
-    value: '700',
+    value: fontWeightAliasMap.bold,
   },
   'font-letter-spacing-densest': {
     value: '-0.54px',
