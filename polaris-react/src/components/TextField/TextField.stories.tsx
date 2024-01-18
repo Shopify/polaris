@@ -1029,8 +1029,6 @@ export function WithAutoSizeAndOtherElements() {
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
 
-  const handleTextFieldChange = useCallback((value) => setValue(value), []);
-
   const handleClearButtonClick = useCallback(() => setValue(''), []);
 
   return (
@@ -1045,6 +1043,26 @@ export function WithAutoSizeAndOtherElements() {
       suffix="in: Unfulfilled orders"
       showCharacterCount
       maxLength={128}
+    />
+  );
+}
+
+export function WithLoading() {
+  const [value, setValue] = useState('Jaded Pixel');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  const handleClearButtonClick = useCallback(() => setValue(''), []);
+
+  return (
+    <TextField
+      label="Store name"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      clearButton
+      onClearButtonClick={handleClearButtonClick}
+      loading
     />
   );
 }

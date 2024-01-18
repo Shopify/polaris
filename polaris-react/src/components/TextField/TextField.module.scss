@@ -27,6 +27,11 @@ $spinner-icon-size: 12px;
       visibility: visible;
       opacity: 1;
     }
+
+    // stylelint-disable-next-line -- needed to remove extra margin between loading indicator and clear button when visible
+    .Loading:has(+ .ClearButton) {
+      margin-right: 0;
+    }
   }
 
   &:not(:focus-within) {
@@ -447,6 +452,7 @@ $spinner-icon-size: 12px;
 .Loading {
   // stylelint-disable-next-line -- Needed to render the spinner above the Backdrop
   z-index: var(--pc-text-field-contents);
+  margin-right: var(--p-space-300);
 
   svg {
     display: block;
