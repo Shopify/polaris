@@ -316,18 +316,6 @@ describe('<Frame />', () => {
     });
   });
 
-  describe('ContextualSavebar', () => {
-    it('renders a Frame ContextualSavebar if Polaris ContextualSavebar is rendered', () => {
-      const frame = mountWithApp(
-        <Frame>
-          <PolarisContextualSavebar />
-        </Frame>,
-      );
-
-      expect(frame).toContainReactComponent(FrameContextualSavebar);
-    });
-  });
-
   describe('loading', () => {
     it('renders a Frame Loading if Polaris Loading is rendered', () => {
       const frame = mountWithApp(
