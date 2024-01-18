@@ -623,7 +623,9 @@ function convert(
                     nestedElement,
                     declaration as keyof Properties,
                     // TODO: How do we narrow `prop`'s type here?
-                    prop as CascadeOrderKeys,
+                    propIsModifier
+                      ? (prop as CascadeOrderKeys)
+                      : defaultBreakpointKey,
                     value,
                   );
               },
@@ -640,9 +642,9 @@ function convert(
           (values ?? []).reduce(
             (output, {value, condition}) =>
               condition
-                ? `var(--${cssCustomPropertyNamespace}${condition}-on, ${value})${
+                ? `var(--${cssCustomPropertyNamespace}${condition}-on,${value})${
                     output
-                      ? ` var(--${cssCustomPropertyNamespace}${condition}-off, ${output})`
+                      ? ` var(--${cssCustomPropertyNamespace}${condition}-off,${output})`
                       : ''
                   }`
                 : `${value}`,

@@ -9,16 +9,20 @@ import {disallowedCSSPropertyValues} from '../generated-data';
 describe('convertStylePropsToCSSProperties', () => {
   it('if no style props are passed in, return an empty object', () => {
     const styleProps: ResponsiveStylePropsWithModifiers = {};
-    expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(
-      `Object {}`,
-    );
+    expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
+      Object {
+        "style": Object {},
+      }
+    `);
   });
 
   it('a simple style prop is applied directly to the css declaration.', () => {
     const styleProps: ResponsiveStylePropsWithModifiers = {display: 'flex'};
     expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
       Object {
-        "display": "flex",
+        "style": Object {
+          "display": "flex",
+        },
       }
     `);
   });
@@ -29,65 +33,91 @@ describe('convertStylePropsToCSSProperties', () => {
     };
     expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
       Object {
-        "backgroundColor": "bg-fill-info",
+        "style": Object {
+          "backgroundColor": "bg-fill-info",
+        },
       }
     `);
   });
 
   it('multiple style props are applied at the same time.', () => {
     const styleProps: ResponsiveStylePropsWithModifiers = {
-      borderColor: 'border',
+      borderInlineStartColor: 'border',
       color: 'text-emphasis',
     };
     expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
       Object {
-        "borderBlockEndColor": "border",
-        "borderBlockStartColor": "border",
-        "borderInlineEndColor": "border",
-        "borderInlineStartColor": "border",
-        "color": "text-emphasis",
+        "style": Object {
+          "borderInlineStartColor": "border",
+          "color": "text-emphasis",
+        },
       }
     `);
   });
 
-  it('shorthand style props are expanded to their longhand CSS declarations.', () => {
-    const styleProps: ResponsiveStylePropsWithModifiers = {padding: '400'};
-    expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
+  describe('aliases/shorthands', () => {
+    it('shorthand style props are expanded to their longhand CSS declarations.', () => {
+      const styleProps: ResponsiveStylePropsWithModifiers = {padding: '400'};
+      expect(convertStylePropsToCSSProperties(styleProps))
+        .toMatchInlineSnapshot(`
+        Object {
+          "style": Object {
+            "paddingBlockEnd": "400",
+            "paddingBlockStart": "400",
+            "paddingInlineEnd": "400",
+            "paddingInlineStart": "400",
+          },
+        }
+      `);
+    });
+
+    it('shorthand style props are overridden by more specific longhand props regardless of prop order.', () => {
+      const styleProps: ResponsiveStylePropsWithModifiers = {
+        paddingInlineStart: '200',
+        padding: '400',
+        paddingBlockStart: '600',
+        backgroundColor: 'bg-fill-info',
+      };
+      expect(convertStylePropsToCSSProperties(styleProps))
+        .toMatchInlineSnapshot(`
+        Object {
+          "style": Object {
+            "backgroundColor": "bg-fill-info",
+            "paddingBlockEnd": "400",
+            "paddingBlockStart": "600",
+            "paddingInlineEnd": "400",
+            "paddingInlineStart": "200",
+          },
+        }
+      `);
+    });
+
+    it('shorthand props are also responsive.', () => {
+      const styleProps: ResponsiveStylePropsWithModifiers = {
+        paddingInline: {md: '400', lg: '800'},
+      };
+      expect(convertStylePropsToCSSProperties(styleProps))
+        .toMatchInlineSnapshot(`
       Object {
-        "paddingBlockEnd": "400",
-        "paddingBlockStart": "400",
-        "paddingInlineEnd": "400",
-        "paddingInlineStart": "400",
+        "style": Object {
+          "--_1": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
+          "paddingInlineEnd": "var(--_1)",
+          "paddingInlineStart": "var(--_1)",
+        },
       }
     `);
+    });
   });
 
-  it('shorthand style props are overridden by more specific longhand props regardless of prop order.', () => {
-    const styleProps: ResponsiveStylePropsWithModifiers = {
-      paddingInlineStart: '200',
-      padding: '400',
-      paddingBlockStart: '600',
-      backgroundColor: 'bg-fill-info',
-    };
-    expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
-      Object {
-        "backgroundColor": "bg-fill-info",
-        "paddingBlockEnd": "400",
-        "paddingBlockStart": "600",
-        "paddingInlineEnd": "400",
-        "paddingInlineStart": "200",
-      }
-    `);
-  });
-
-  it("responsive props are mobile first (ie; least specific style is 'xs' breakpoint).", () => {
+  it.only("responsive props are mobile first (ie; least specific style is 'xs' breakpoint).", () => {
     const styleProps: ResponsiveStylePropsWithModifiers = {
       backgroundColor: {xs: 'bg-fill-warning', md: 'bg-fill-success'},
     };
     expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
       Object {
-        "--_1md": "var(--_md) bg-fill-success",
-        "backgroundColor": "var(--_1md,bg-fill-warning)",
+        "style": Object {
+          "backgroundColor": "var(--_md-on,bg-fill-success) var(--_md-off,bg-fill-warning)",
+        },
       }
     `);
   });
@@ -98,36 +128,55 @@ describe('convertStylePropsToCSSProperties', () => {
     };
     expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
       Object {
-        "--_1md": "var(--_md) bg-fill-info",
-        "backgroundColor": "var(--_1md)",
+        "style": Object {
+          "backgroundColor": "var(--_md-on, bg-fill-info)",
+        },
       }
     `);
   });
 
-  it('shorthand props are also responsive.', () => {
-    const styleProps: ResponsiveStylePropsWithModifiers = {
-      paddingInline: {md: '400', lg: '800'},
-    };
-    expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
+  describe('de-duplication optimization', () => {
+    it('duplicates are pushed into a custom property', () => {
+      const styleProps: ResponsiveStylePropsWithModifiers = {
+        paddingInlineStart: {md: '400', lg: '800'},
+        paddingInlineEnd: {md: '400', lg: '800'},
+      };
+      expect(convertStylePropsToCSSProperties(styleProps))
+        .toMatchInlineSnapshot(`
       Object {
-        "--_1": "var(--_1lg,var(--_1md))",
-        "--_1lg": "var(--_lg) 800",
-        "--_1md": "var(--_md) 400",
-        "paddingInlineEnd": "var(--_1)",
-        "paddingInlineStart": "var(--_1)",
+        "style": Object {
+          "--_1": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
+          "paddingInlineStart": "var(--_1)",
+          "paddingInlineEnd": "var(--_1)",
+        },
       }
     `);
+    });
+
+    it.todo(
+      'deopt: custom property is not created for duplicated with initial/inherit/unset',
+    );
+
+    it.todo(
+      'duplicates across root and pseudo element are deduped into custom property on root element',
+    );
   });
 
-  it('modifiers are more specific than base style props.', () => {
+  it('modifiers are more specific than base style props regardless of object key order.', () => {
     const styleProps: ResponsiveStylePropsWithModifiers = {
       backgroundColor: 'bg-fill-info',
-      _hover: {backgroundColor: 'bg-fill-warning'},
+      _hover: {
+        backgroundColor: 'bg-fill-warning',
+        color: 'blue',
+      },
+      color: 'red',
     };
     expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
       Object {
-        "--_1_hover": "var(--__hover) bg-fill-warning",
-        "backgroundColor": "var(--_1_hover,bg-fill-info)",
+        "style": Object {
+          "backgroundColor": "var(--_hover-on,bg-fill-warning) var(--_hover-off,bg-fill-info)",
+          "color": "var(--_hover-on,blue) var(--_hover-off,red)",
+        },
       }
     `);
   });
@@ -141,15 +190,14 @@ describe('convertStylePropsToCSSProperties', () => {
     };
     expect(convertStylePropsToCSSProperties(styleProps)).toMatchInlineSnapshot(`
       Object {
-        "--_1": "var(--_1_hovermd,var(--_1_hoversm,bg-fill-success))",
-        "--_1_hovermd": "var(--_md_hover) bg-fill-critical",
-        "--_1_hoversm": "var(--_sm_hover) bg-fill-warning",
-        "backgroundColor": "var(--_1)",
+        "style": Object {
+          "backgroundColor": "var(--_hover-on,var(--_md-on,bg-fill-critical) var(--_md-off,var(--_sm-on,bg-fill-warning))) var(--_hover-off,bg-fill-success)",
+        },
       }
     `);
   });
 
-  it.only('modifiers are ordered correctly', () => {
+  it('modifiers are ordered correctly', () => {
     const styleProps: ResponsiveStylePropsWithModifiers = {
       backgroundColor: 'bg-fill-info',
       _hover: {backgroundColor: 'bg-fill-warning'},
@@ -186,8 +234,9 @@ describe('convertStylePropsToCSSProperties', () => {
         expect(convertStylePropsToCSSProperties(styleProps, defaults))
           .toMatchInlineSnapshot(`
             Object {
-              "--_1md": "var(--_md) dashed",
-              "borderInlineStartStyle": "var(--_1md,solid)",
+              "style": Object {
+                "borderInlineStartStyle": "var(--_md-on,dashed) var(--_md-off,solid)",
+              },
             }
           `);
       });
@@ -202,7 +251,26 @@ describe('convertStylePropsToCSSProperties', () => {
         expect(convertStylePropsToCSSProperties(styleProps, defaults))
           .toMatchInlineSnapshot(`
             Object {
-              "borderInlineStartStyle": "dashed",
+              "style": Object {
+                "borderInlineStartStyle": "dashed",
+              },
+            }
+          `);
+      });
+
+      it('is overridden by non-responsive value', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          borderInlineStartStyle: 'dashed',
+        };
+        const defaults: PropDefaults = {
+          borderInlineStartStyle: 'solid',
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "style": Object {
+                "borderInlineStartStyle": "dashed",
+              },
             }
           `);
       });
@@ -215,7 +283,9 @@ describe('convertStylePropsToCSSProperties', () => {
         expect(convertStylePropsToCSSProperties(styleProps, defaults))
           .toMatchInlineSnapshot(`
             Object {
-              "display": "flex",
+              "style": Object {
+                "display": "flex",
+              },
             }
           `);
       });
@@ -232,13 +302,15 @@ describe('convertStylePropsToCSSProperties', () => {
         expect(convertStylePropsToCSSProperties(styleProps, defaults))
           .toMatchInlineSnapshot(`
             Object {
-              "borderInlineStartStyle": "solid",
-              "display": "flex",
+              "style": Object {
+                "borderInlineStartStyle": "solid",
+                "display": "flex",
+              },
             }
           `);
       });
 
-      it('is overridden by a static style prop value', () => {
+      it('is overridden by non-responsive value', () => {
         const styleProps: ResponsiveStylePropsWithModifiers = {
           borderInlineStartStyle: 'dashed',
         };
@@ -250,7 +322,9 @@ describe('convertStylePropsToCSSProperties', () => {
         expect(convertStylePropsToCSSProperties(styleProps, defaults))
           .toMatchInlineSnapshot(`
             Object {
-              "borderInlineStartStyle": "dashed",
+              "style": Object {
+                "borderInlineStartStyle": "dashed",
+              },
             }
           `);
       });
@@ -267,7 +341,9 @@ describe('convertStylePropsToCSSProperties', () => {
         expect(convertStylePropsToCSSProperties(styleProps, defaults))
           .toMatchInlineSnapshot(`
             Object {
-              "borderInlineStartStyle": "dashed",
+              "style": Object {
+                "borderInlineStartStyle": "dashed",
+              },
             }
           `);
       });
@@ -284,8 +360,9 @@ describe('convertStylePropsToCSSProperties', () => {
         expect(convertStylePropsToCSSProperties(styleProps, defaults))
           .toMatchInlineSnapshot(`
             Object {
-              "--_1md": "var(--_md) dashed",
-              "borderInlineStartStyle": "var(--_1md,solid)",
+              "style": Object {
+                "borderInlineStartStyle": "var(--_md-on,dashed) var(--_md-off,solid)",
+              },
             }
           `);
       });
@@ -330,6 +407,10 @@ describe('convertStylePropsToCSSProperties', () => {
         });
       });
     });
+  });
+
+  describe('pseudo elements', () => {
+    it.todo('write the tests for pseudo elements');
   });
 
   describe('errors', () => {
