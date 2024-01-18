@@ -7,16 +7,13 @@ import {isObject} from '../../utilities/is-object';
 import type {
   ResponsiveStyleProps,
   ResponsiveStylePropsWithModifiers,
-  ResponsiveStylePropsWithPseudoElements,
   PropDefaults,
   ValueMapper,
   Properties,
   PropPath,
 } from './generated-data';
 import {
-  stylePropAliasFallbacks,
   disallowedCSSPropertyValues,
-  stylePropAliasNames as allAliases,
   cssCustomPropertyNamespace,
   modifiers,
   pseudoElements,
@@ -85,9 +82,36 @@ interface DeclarationCondition {
   value: unknown;
 }
 
-type DeclarationAccumulator = {
+type ConditionalDeclarations = {
   [K in keyof Properties]?: DeclarationCondition[];
 };
+
+// Use Simplify here so the intersection's key's match that of Elements above
+type DeclarationAccumulator = Simplify<
+  {
+    // Doing an intersection here allows us to strictly type this key for this
+    // symbol only (not just any `symbol`)
+    [Key in typeof rootElement]?: ConditionalDeclarations;
+  } & {
+    [Key in PseudoElementProp]?: ConditionalDeclarations;
+  }
+>;
+
+type Elements = keyof DeclarationAccumulator;
+
+type ConvertResult = {
+  [Key in keyof DeclarationAccumulator]: {
+    [K in keyof Properties]?: Properties[K] | (string & {});
+  };
+};
+
+/* eslint-disable symbol-description -- Unnecessary */
+const rootElement = Symbol();
+const rootParent = Symbol();
+const modifierParent = Symbol();
+const declarationParent = Symbol();
+const pseudoElementParent = Symbol();
+/* eslint-enable symbol-description */
 
 const joinEnglish =
   process.env.NODE_ENV === 'development'
@@ -134,13 +158,47 @@ function warnOnInvalidProperty(path: PropPath = [], message?: string) {
   );
 }
 
+function insertIntoProperties(
+  properties: DeclarationAccumulator,
+  whichElement: Elements,
+  declaration: keyof Properties,
+  condition: CascadeOrder,
+  valueToInsert: unknown,
+) {
+  // Have to do this chained assignment to workaround TS: "Type narrowing
+  // does not occur for indexed access forms e[k] where k is not a
+  // literal."
+  // See: https://github.com/microsoft/TypeScript/issues/49613#issuecomment-1160324092
+  // eslint-disable-next-line no-multi-assign
+  const element = (properties[whichElement] ??= {});
+
+  // Initialize as an array (not an object) to retain numerical key
+  // ordering, and NOT insertion order
+  // eslint-disable-next-line no-multi-assign
+  const conditionalDeclarations = (element[declaration as keyof Properties] ??=
+    []);
+
+  // @ts-expect-error -- This should be fixed once cascadeCondition above
+  // has the correctly narrowed type
+  conditionalDeclarations[cascadeOrder[condition]] = {
+    // Given {color: {xs: 'green', sm: 'red', lg: 'blue'}}
+    // and defaultBreakpointKey = 'xs'
+    // When `prop` is 'sm' or 'lg', we set it as the 'condition'.
+    // When `prop` is 'xs', there's no 'condition'.
+    //
+    // Given {color: 'red'}
+    // Then there is no condition.
+    condition: condition !== defaultBreakpointKey ? condition : undefined,
+    value: valueToInsert,
+  };
+}
+
 export function convertStylePropsToCSSProperties(
   styleProps: ResponsiveStylePropsWithModifiers,
   defaults: PropDefaults = {},
   valueMapper: ValueMapper = identity,
 ): ConversionResult {
-  // TODO Process out into pseudo elements
-  return convert(
+  const converted = convert(
     styleProps,
     defaults,
     valueMapper,
@@ -149,6 +207,35 @@ export function convertStylePropsToCSSProperties(
     cascadeOrderRoot,
     rootElement,
   );
+
+  // Inject defaults for properties that don't have them
+  // if (parentIsRoot) {
+  //   // TODO iterate over properties
+  //   const defaultValue = getDefault(declaration);
+
+  //   if (defaultValue != null) {
+  //     declarationAcc[whichElement]![declaration]![defaultValueCascadeOrder] =
+  //       defaultValue;
+  //   }
+  // }
+  const {[rootElement]: baseStyleProps, ...pseudoElementsStyleProps} =
+    converted;
+
+  return {
+    // Our generated styles can be random strings (`var(...)` etc), but the
+    // `Properties` from `csstype` doesn't always union strings. We want to play
+    // nicely with the `csstype` ecosystem (React et al), so we down-cast the
+    // type to pretend it's compatible with Properties (which in practicality it
+    // _is_, it's just TS which doesn't know that).
+    style: (baseStyleProps ?? {}) as Properties,
+    ...mapObjectValues(pseudoElementsStyleProps, (pseudoElementStyleProps) =>
+      pseudoElementStyleProps
+        ? {
+            style: pseudoElementStyleProps as Properties,
+          }
+        : undefined,
+    ),
+  };
 }
 
 export function convertCSSPropertiesToStyleSheet(
@@ -173,15 +260,6 @@ export function convertCSSPropertiesToStyleSheet(
     }, [] as string[])
     .join('')}}`;
 }
-
-// Create unique values that's good readable code, but which minifies well
-const [
-  rootParent,
-  modifierParent,
-  declarationParent,
-  pseudoElementParent,
-  rootElement,
-] = Array.from(Array(5), Symbol);
 
 let cascadeOrderNumber = 0;
 
@@ -299,10 +377,7 @@ type CascadeOrder = RecursiveKeys<typeof cascadeOrderRoot>;
  *   sm: any,       // INVALID, breakpoints can only be children of properties
  * }
  */
-function convert<
-  CascadeOrderArg = RecursiveValues<typeof cascadeOrderRoot>,
-  WhichElement = typeof rootElement | PseudoElementProp,
->(
+function convert<CascadeOrderArg = RecursiveValues<typeof cascadeOrderRoot>>(
   // TODO: Does this recursive type cause TS to be slow?
   styleProps: RecursiveValues<ResponsiveStylePropsWithModifiers>,
   defaults: PropDefaults,
@@ -314,10 +389,8 @@ function convert<
     | typeof pseudoElementParent,
   parentPropPath: PropPath,
   cascadeOrder: CascadeOrderArg,
-  whichElement: WhichElement,
-): {
-  [K in keyof Properties]?: string;
-} {
+  whichElement: Elements,
+): ConvertResult {
   // The parent is an object that's a declaration
   // eg; { color: { sm: 'red', lg: 'blue' } }
   const parentIsResponsiveDeclaration = parent === declarationParent;
@@ -474,26 +547,6 @@ function convert<
         return;
       }
 
-      const insertIntoProperties = (
-        declaration: keyof Properties,
-        condition: CascadeOrder,
-        valueToInsert: unknown,
-      ) => {
-        // @ts-expect-error -- This should be fixed once cascadeCondition above
-        // has the correctly narrowed type
-        properties[declaration]![cascadeOrder[condition]] = {
-          // Given {color: {xs: 'green', sm: 'red', lg: 'blue'}}
-          // and defaultBreakpointKey = 'xs'
-          // When `prop` is 'sm' or 'lg', we set it as the 'condition'.
-          // When `prop` is 'xs', there's no 'condition'.
-          //
-          // Given {color: 'red'}
-          // Then there is no condition.
-          condition: condition !== defaultBreakpointKey ? condition : undefined,
-          value: valueToInsert,
-        };
-      };
-
       // Process a non-object concrete value.
       // Eg; {color: 'red'}
       // or
@@ -515,6 +568,7 @@ function convert<
         // sneak through at runtime.
         invariant(
           disallowedCSSPropertyValues.includes(
+            // eslint-disable-next-line prettier/prettier
             mappedValue as (typeof disallowedCSSPropertyValues)[number],
           ),
           `${
@@ -522,10 +576,9 @@ function convert<
           }${mappedValue} is a reserved value. Please use a different value.`,
         );
 
-        // Initialize as an array (not an object) to retain numerical key
-        // ordering, and NOT insertion order
-        properties[declaration as keyof Properties] ??= [];
         insertIntoProperties(
+          properties,
+          whichElement,
           declaration as keyof Properties,
           // TODO Not sure why TS isn't narrowing prop down correctly here. it could
           // only possibly be one of the responsive object keys at this point.
@@ -554,46 +607,58 @@ function convert<
           /* eslint-enable no-nested-ternary */
           propPath,
           // Ignore declarations and pseudoelements in the cascade path
+          // TODO: How to narrow the type of `prop` here?
           propIsBreakpoint || propIsModifier
             ? cascadeOrder[prop as keyof CascadeOrderArg]
             : cascadeOrder,
           // Switch to the relevant pseudo element if encountered
-          propIsPseudoElement ? prop : whichElement,
+          // TODO: How to narrow the type of `prop` here?
+          propIsPseudoElement ? (prop as Elements) : whichElement,
         );
 
-        Object.entries(nestedProperties).forEach(([declaration, value]) => {
-          insertIntoProperties(
-            declaration as keyof Properties,
-            // TODO: handle pseudo elements
-            prop,
-            value,
-          );
+        // Now that we've got the result of recursing, we need to inject these
+        // values into the individual properties we know about so far.
+        // For the root element, and the pseudo elements
+        (
+          Object.entries(nestedProperties) as Entries<typeof nestedProperties>
+        ).forEach(([nestedElement, values]) => {
+          // Merge each delcaration into the property object for this iteration
+          // Later, these values will get turned into strings
+          values &&
+            (Object.entries(values) as Entries<typeof values>).forEach(
+              ([declaration, value]) => {
+                value != null &&
+                  insertIntoProperties(
+                    properties,
+                    nestedElement,
+                    declaration as keyof Properties,
+                    // TODO: How do we narrow `prop`'s type here?
+                    prop as CascadeOrder,
+                    value,
+                  );
+              },
+            );
         });
       }
     },
   );
 
-  // Inject defaults for properties that don't have them
-  if (parentIsRoot) {
-    // TODO iterate over properties
-    const defaultValue = getDefault(declaration);
-
-    if (defaultValue != null) {
-      declarationAcc[whichElement]![declaration]![defaultValueCascadeOrder] =
-        defaultValue;
-    }
-  }
-
   // Convert array of { value, condition } to the Space Hack CSS
-  return mapObjectValues(properties, (values) =>
-    (values ?? []).reduce(
-      (output, {value, condition}) =>
-        condition
-          ? `var(--${condition}-on, ${value})${
-              output ? ` var(--${condition}-off, ${output})` : ''
-            }`
-          : `${value}`,
-      '',
-    ),
+  return mapObjectValues(properties, (elements) =>
+    elements
+      ? mapObjectValues(elements, (values) =>
+          (values ?? []).reduce(
+            (output, {value, condition}) =>
+              condition
+                ? `var(--${cssCustomPropertyNamespace}${condition}-on, ${value})${
+                    output
+                      ? ` var(--${cssCustomPropertyNamespace}${condition}-off, ${output})`
+                      : ''
+                  }`
+                : `${value}`,
+            '',
+          ),
+        )
+      : undefined,
   );
 }

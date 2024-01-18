@@ -1,5 +1,5 @@
 /* eslint @shopify/jest/no-snapshots : 0 */
-import {convertStylePropsToCSSProperties} from '../get-style-props';
+import {convertStylePropsToCSSProperties} from '../get-style-props-2';
 import type {
   ResponsiveStylePropsWithModifiers,
   PropDefaults,

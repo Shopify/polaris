@@ -19,7 +19,7 @@ import {
 import {
   convertStylePropsToCSSProperties,
   convertCSSPropertiesToStyleSheet,
-} from './get-style-props';
+} from './get-style-props-2';
 
 const pseudoElementsEnabled =
   isObject(pseudoElements) && Object.keys(pseudoElements).length > 0;
