@@ -29,12 +29,21 @@ $activator-variables: (
   min-width: auto;
   min-height: menu(min-height);
   padding: var(--p-space-150);
-  border: 0;
   cursor: pointer;
   transition: background-color var(--p-motion-duration-100);
   margin-right: var(--p-space-200);
   border-radius: var(--p-border-radius-200);
   background-color: var(--p-color-bg-fill-inverse);
+
+  border: solid var(--p-border-width-025) transparent;
+  // stylelint-disable-next-line polaris/color/function-disallowed-list -- custom top border color for shading effect
+  background-image: linear-gradient(
+      var(--p-color-bg-surface-inverse),
+      var(--p-color-bg-surface-inverse)
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.12), transparent);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
 
   // stylelint-disable-next-line scss/selector-no-union-class-name -- set user menu padding
   &-userMenu {
@@ -42,7 +51,7 @@ $activator-variables: (
   }
 
   &:focus {
-    background-color: var(--p-color-bg-fill-inverse-hover);
+    // background-color: var(--p-color-bg-fill-inverse-hover);
     outline: none;
   }
 
@@ -54,12 +63,24 @@ $activator-variables: (
   }
 
   &:hover {
-    background-color: var(--p-color-bg-fill-inverse-hover);
+    // stylelint-disable-next-line polaris/color/function-disallowed-list -- custom top border color for shading effect
+    background-image: linear-gradient(rgba(62, 61, 61, 1), rgba(62, 61, 61, 1)),
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.22),
+        rgba(255, 255, 255, 0.05)
+      );
   }
 
   &:active,
   &[aria-expanded='true'] {
-    background-color: var(--p-color-bg-fill-inverse-active);
+    // stylelint-disable-next-line polaris/color/function-disallowed-list -- custom top border color for shading effect
+    background-image: linear-gradient(rgba(97, 97, 97, 1), rgba(97, 97, 97, 1)),
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.45),
+        rgba(255, 255, 255, 0.22)
+      );
     outline: none;
     transition: none;
 
@@ -74,7 +95,7 @@ $activator-variables: (
 
   @media (--p-breakpoints-md-down) {
     margin-right: var(--p-space-200);
-    background-color: var(--p-color-bg-inverse);
+    // background-color: var(--p-color-bg-inverse);
 
     &:focus,
     &:hover,
@@ -82,6 +103,16 @@ $activator-variables: (
     &[aria-expanded='true'] {
       opacity: menu(focus-opacity);
     }
+  }
+
+  &:active {
+    // stylelint-disable-next-line polaris/color/function-disallowed-list -- custom top border color for shading effect
+    background-image: linear-gradient(rgba(97, 97, 97, 1), rgba(97, 97, 97, 1)),
+      linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.13),
+        rgba(255, 255, 255, 0.35)
+      );
   }
 }
 
