@@ -12,7 +12,7 @@ import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {Text} from '../../Text';
 import {BulkActions} from '../../BulkActions';
-import type {useIsBulkActionsSticky} from '../../BulkActions';
+import type {useIsSelectAllActionsSticky} from '../../SelectAllActions';
 import {SelectAllActions} from '../../SelectAllActions';
 import {IndexTable} from '../IndexTable';
 import type {IndexTableProps, IndexTableSortDirection} from '../IndexTable';
@@ -36,18 +36,19 @@ jest.mock('../../../utilities/debounce', () => ({
   },
 }));
 
-jest.mock('../../BulkActions', () => ({
-  ...jest.requireActual('../../BulkActions'),
-  useIsBulkActionsSticky: jest.fn(),
+jest.mock('../../SelectAllActions', () => ({
+  ...jest.requireActual('../../SelectAllActions'),
+  useIsSelectAllActionsSticky: jest.fn(),
 }));
 
-function mockUseIsBulkActionsSticky(
-  args: ReturnType<typeof useIsBulkActionsSticky>,
+function mockUseIsSelectAllActionsSticky(
+  args: ReturnType<typeof useIsSelectAllActionsSticky>,
 ) {
-  const useIsBulkActionsSticky: jest.Mock =
-    jest.requireMock('../../BulkActions').useIsBulkActionsSticky;
+  const useIsSelectAllActionsSticky: jest.Mock = jest.requireMock(
+    '../../SelectAllActions',
+  ).useIsSelectAllActionsSticky;
 
-  useIsBulkActionsSticky.mockReturnValue(args);
+  useIsSelectAllActionsSticky.mockReturnValue(args);
 }
 
 const mockTableItems = [
@@ -101,14 +102,17 @@ describe('<IndexTable>', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     (getTableHeadingsBySelector as jest.Mock).mockReturnValue([]);
-    mockUseIsBulkActionsSticky({
-      bulkActionsIntersectionRef: {current: null},
+    mockUseIsSelectAllActionsSticky({
+      selectAllActionsIntersectionRef: {current: null},
       tableMeasurerRef: {current: null},
-      isBulkActionsSticky: false,
-      bulkActionsAbsoluteOffset: 0,
-      bulkActionsMaxWidth: 0,
-      bulkActionsOffsetLeft: 0,
+      isSelectAllActionsSticky: false,
+      selectAllActionsAbsoluteOffset: 0,
+      selectAllActionsMaxWidth: 0,
+      selectAllActionsOffsetLeft: 0,
       computeTableDimensions: jest.fn(),
+      isScrolledPastTop: false,
+      scrollbarPastTopOffset: 0,
+      selectAllActionsPastTopOffset: 0,
     });
   });
 
@@ -467,7 +471,7 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      index.find(SelectAllActions)!.trigger('onToggleAll');
+      index.find(BulkActions)!.trigger('onToggleAll');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
         SelectionType.Page,
@@ -779,14 +783,17 @@ describe('<IndexTable>', () => {
   describe('computeTableDimensions', () => {
     it('invokes the computeTableDimensions callback when the number of items changes', () => {
       const computeTableDimensions = jest.fn();
-      mockUseIsBulkActionsSticky({
-        bulkActionsIntersectionRef: {current: null},
+      mockUseIsSelectAllActionsSticky({
+        selectAllActionsIntersectionRef: {current: null},
         tableMeasurerRef: {current: null},
-        isBulkActionsSticky: false,
-        bulkActionsAbsoluteOffset: 0,
-        bulkActionsMaxWidth: 0,
-        bulkActionsOffsetLeft: 0,
+        isSelectAllActionsSticky: false,
+        selectAllActionsAbsoluteOffset: 0,
+        selectAllActionsMaxWidth: 0,
+        selectAllActionsOffsetLeft: 0,
         computeTableDimensions,
+        isScrolledPastTop: false,
+        scrollbarPastTopOffset: 0,
+        selectAllActionsPastTopOffset: 0,
       });
       const index = mountWithApp(
         <IndexTable {...defaultProps} itemCount={mockTableItems.length}>

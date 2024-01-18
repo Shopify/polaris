@@ -1,23 +1,20 @@
-import React, {forwardRef} from 'react';
+import React, {useRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';
 import type {Action} from '../../types';
 import {UnstyledButton} from '../UnstyledButton';
-import {CheckableButton} from '../CheckableButton';
+import {Box} from '../Box';
+import {Text} from '../Text';
+import {InlineStack} from '../InlineStack';
 
 import styles from './SelectAllActions.module.scss';
 
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
-type AriaLive = 'off' | 'polite' | undefined;
 
 export interface SelectAllActionsProps {
-  /** Visually hidden text for screen readers */
-  accessibilityLabel?: string;
   /** Label for the bulk actions */
   label?: string;
-  /** State of the bulk actions checkbox */
-  selected?: boolean | 'indeterminate';
   /** List is in a selectable state */
   selectMode?: boolean;
   /** Text to select all across pages */
@@ -26,23 +23,22 @@ export interface SelectAllActionsProps {
   paginatedSelectAllAction?: Action;
   /** Disables bulk actions */
   disabled?: boolean;
-  /** Callback when the select all checkbox is clicked */
-  onToggleAll?(): void;
+  /** If the BulkActions is currently sticky in view */
+  isSticky?: boolean;
+  /** Whether there is a Pagination element on the associated table. Disables the vertical appear animation if so */
+  hasPagination?: boolean;
 }
 
-export const SelectAllActions = forwardRef(function SelectAllActions(
-  {
-    accessibilityLabel,
-    label,
-    selected,
-    selectMode,
-    paginatedSelectAllText,
-    paginatedSelectAllAction,
-    disabled,
-    onToggleAll,
-  }: SelectAllActionsProps,
-  ref,
-) {
+export const SelectAllActions = ({
+  label,
+  selectMode,
+  paginatedSelectAllText,
+  paginatedSelectAllAction,
+  disabled,
+  isSticky,
+  hasPagination,
+}: SelectAllActionsProps) => {
+  const nodeRef = useRef<HTMLDivElement>(null);
   const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
     <UnstyledButton
       className={styles.AllAction}
@@ -62,32 +58,39 @@ export const SelectAllActions = forwardRef(function SelectAllActions(
     </div>
   ) : null;
 
-  const ariaLive: AriaLive = hasTextAndAction ? 'polite' : undefined;
-
-  const checkableButtonProps = {
-    accessibilityLabel,
-    label: hasTextAndAction ? paginatedSelectAllText : label,
-    selected,
-    onToggleAll,
-    disabled,
-    ariaLive,
-    ref,
-  };
   const markup = (
-    <Transition timeout={0} in={selectMode} key="markup">
+    <Transition timeout={0} in={selectMode} key="markup" nodeRef={nodeRef}>
       {(status: TransitionStatus) => {
         const wrapperClasses = classNames(
           styles.SelectAllActions,
-          styles[`SelectAllActions-${status}`],
+          hasPagination && styles['SelectAllActions-hasPagination'],
+          !isSticky && styles['SelectAllActions-not-sticky'],
+          status && styles[`SelectAllActions-${status}`],
         );
+
         return (
-          <div className={wrapperClasses}>
-            <CheckableButton {...checkableButtonProps} />
-            {paginatedSelectAllMarkup}
+          <div className={wrapperClasses} ref={nodeRef}>
+            <Box
+              background="bg-surface-secondary"
+              borderBlockStartWidth="025"
+              borderColor="border"
+              width="100%"
+              paddingBlockStart="300"
+              paddingBlockEnd="300"
+              paddingInlineStart="300"
+              paddingInlineEnd="400"
+            >
+              <InlineStack gap="200" align="start" blockAlign="center">
+                <Text as="span" variant="bodySm" fontWeight="medium">
+                  {hasTextAndAction ? paginatedSelectAllText : label}
+                </Text>
+                {paginatedSelectAllMarkup}
+              </InlineStack>
+            </Box>
           </div>
         );
       }}
     </Transition>
   );
   return markup;
-});
+};

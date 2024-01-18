@@ -2,7 +2,6 @@ import React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
 
-import {CheckableButton} from '../../CheckableButton';
 import {UnstyledButton} from '../../UnstyledButton';
 import {SelectAllActions} from '../SelectAllActions';
 import styles from '../SelectAllActions.module.scss';
@@ -41,96 +40,6 @@ describe('<SelectAllActions />', () => {
   });
 
   describe('props', () => {
-    describe('accessibilityLabel', () => {
-      it('is passed down to CheckableButton', () => {
-        const {accessibilityLabel} = selectAllActionProps;
-        const selectAllActions = mountWithApp(
-          <SelectAllActions {...selectAllActionProps} />,
-        );
-        const checkableButtonLength =
-          selectAllActions.findAll(CheckableButton).length;
-
-        expect(selectAllActions).toContainReactComponentTimes(
-          CheckableButton,
-          checkableButtonLength,
-          {
-            accessibilityLabel,
-          },
-        );
-      });
-
-      it('does not pass down to CheckableButton when the property is not provided', () => {
-        const {accessibilityLabel, ...props} = selectAllActionProps;
-        const selectAllActions = mountWithApp(<SelectAllActions {...props} />);
-
-        expect(selectAllActions).toContainReactComponentTimes(
-          CheckableButton,
-          0,
-          {
-            accessibilityLabel,
-          },
-        );
-      });
-    });
-
-    describe('label', () => {
-      it('is passed down to CheckableButton', () => {
-        const {label} = selectAllActionProps;
-        const selectAllActions = mountWithApp(
-          <SelectAllActions {...selectAllActionProps} />,
-        );
-        const checkableButtonLength =
-          selectAllActions.findAll(CheckableButton).length;
-        expect(selectAllActions).toContainReactComponentTimes(
-          CheckableButton,
-          checkableButtonLength,
-          {label},
-        );
-      });
-
-      it('does not pass down to CheckableButton when the property is not provided', () => {
-        const {label, ...props} = selectAllActionProps;
-        const selectAllActions = mountWithApp(<SelectAllActions {...props} />);
-        expect(selectAllActions).toContainReactComponentTimes(
-          CheckableButton,
-          0,
-          {
-            label,
-          },
-        );
-      });
-    });
-
-    describe('selected', () => {
-      it('is passed down to CheckableButton', () => {
-        const {selected} = selectAllActionProps;
-        const selectAllActions = mountWithApp(
-          <SelectAllActions {...selectAllActionProps} />,
-        );
-        const checkableButtonLength =
-          selectAllActions.findAll(CheckableButton).length;
-
-        expect(selectAllActions).toContainReactComponentTimes(
-          CheckableButton,
-          checkableButtonLength,
-          {selected},
-        );
-      });
-
-      it('does not pass down to CheckableButton when the property is not provided', () => {
-        const {selected, ...props} = selectAllActionProps;
-        const selectAllActions = mountWithApp(<SelectAllActions {...props} />);
-
-        expect(selectAllActions).toContainReactComponentTimes(
-          CheckableButton,
-          0,
-          {
-            selected,
-          },
-        );
-      });
-    });
-
     describe('selectMode', () => {
       it('is passed down to Transition', () => {
         const selectAllActions = mountWithApp(
@@ -153,31 +62,6 @@ describe('<SelectAllActions />', () => {
         cssTransition.forEach((cssTransitionComponent) => {
           expect(cssTransitionComponent).toHaveReactProps({in: true});
         });
-      });
-    });
-
-    describe('disabled', () => {
-      const selectAllActionProps: Props = {
-        paginatedSelectAllText: 'paginated select all text string',
-        selected: false,
-        accessibilityLabel: 'test-aria-label',
-        label: 'Test-Label',
-        disabled: true,
-      };
-
-      it('is passed down to CheckableButton', () => {
-        const {disabled} = selectAllActionProps;
-        const selectAllActions = mountWithApp(
-          <SelectAllActions {...selectAllActionProps} />,
-        );
-        const checkableButtonLength =
-          selectAllActions.findAll(CheckableButton).length;
-
-        expect(selectAllActions).toContainReactComponentTimes(
-          CheckableButton,
-          checkableButtonLength,
-          {disabled},
-        );
       });
     });
 
@@ -204,7 +88,7 @@ describe('<SelectAllActions />', () => {
     });
 
     describe('paginatedSelectAllAction', () => {
-      it('onAction is called when CheckableButton is clicked', () => {
+      it('onAction is called when UnstyledButton is clicked', () => {
         const spy = jest.fn();
 
         const selectAllActions = mountWithApp(
