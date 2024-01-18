@@ -31,6 +31,27 @@ export function Default() {
   );
 }
 
+export function Magic() {
+  const [rangeValue, setRangeValue] = useState(32);
+
+  const handleRangeSliderChange = useCallback(
+    (value) => setRangeValue(value),
+    [],
+  );
+
+  return (
+    <LegacyCard sectioned title="Background color">
+      <RangeSlider
+        label="Opacity percentage"
+        value={rangeValue}
+        onChange={handleRangeSliderChange}
+        output
+        tone="magic"
+      />
+    </LegacyCard>
+  );
+}
+
 export function WithMinAndMax() {
   const [rangeValue, setRangeValue] = useState(0);
 
