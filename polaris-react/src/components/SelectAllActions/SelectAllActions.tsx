@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, forwardRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {classNames} from '../../utilities/css';
@@ -7,11 +7,13 @@ import {UnstyledButton} from '../UnstyledButton';
 import {Box} from '../Box';
 import {Text} from '../Text';
 import {InlineStack} from '../InlineStack';
+import {CheckableButton} from '../CheckableButton';
 
 import styles from './SelectAllActions.module.scss';
 
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
+type AriaLive = 'off' | 'polite' | undefined;
 export interface SelectAllActionsProps {
   /** Label for the bulk actions */
   label?: string;
@@ -27,17 +29,29 @@ export interface SelectAllActionsProps {
   isSticky?: boolean;
   /** Whether there is a Pagination element on the associated table. Disables the vertical appear animation if so */
   hasPagination?: boolean;
+  /** @deprecated Visually hidden text for screen readers */
+  accessibilityLabel?: string;
+  /** @deprecated State of the bulk actions checkbox */
+  selected?: boolean | 'indeterminate';
+  /** @deprecated Callback when the select all checkbox is clicked */
+  onToggleAll?(): void;
 }
 
-export const SelectAllActions = ({
-  label,
-  selectMode,
-  paginatedSelectAllText,
-  paginatedSelectAllAction,
-  disabled,
-  isSticky,
-  hasPagination,
-}: SelectAllActionsProps) => {
+export const SelectAllActions = forwardRef(function SelectAllActions(
+  {
+    label,
+    selectMode,
+    paginatedSelectAllText,
+    paginatedSelectAllAction,
+    disabled,
+    isSticky,
+    hasPagination,
+    accessibilityLabel,
+    selected,
+    onToggleAll,
+  }: SelectAllActionsProps,
+  ref,
+) {
   const nodeRef = useRef<HTMLDivElement>(null);
   const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
     <UnstyledButton
@@ -57,6 +71,23 @@ export const SelectAllActions = ({
       {paginatedSelectAllActionMarkup}
     </div>
   ) : null;
+
+  const ariaLive: AriaLive = hasTextAndAction ? 'polite' : undefined;
+
+  const checkableButtonProps = {
+    accessibilityLabel,
+    label: hasTextAndAction ? paginatedSelectAllText : label,
+    selected,
+    onToggleAll,
+    disabled,
+    ariaLive,
+    ref,
+  };
+
+  const checkableButtonMarkup =
+    accessibilityLabel && onToggleAll ? (
+      <CheckableButton {...checkableButtonProps} />
+    ) : null;
 
   const markup = (
     <Transition timeout={0} in={selectMode} key="markup" nodeRef={nodeRef}>
@@ -81,6 +112,7 @@ export const SelectAllActions = ({
               paddingInlineEnd="400"
             >
               <InlineStack gap="200" align="start" blockAlign="center">
+                {checkableButtonMarkup}
                 <Text as="span" variant="bodySm" fontWeight="medium">
                   {hasTextAndAction ? paginatedSelectAllText : label}
                 </Text>
@@ -93,4 +125,4 @@ export const SelectAllActions = ({
     </Transition>
   );
   return markup;
-};
+});
