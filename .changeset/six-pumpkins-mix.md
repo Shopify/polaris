@@ -1,5 +1,5 @@
 ---
-'@shopify/polaris-icons': major
+'@shopify/polaris-icons': minor
 ---
 
 Adds support for connect dynamic source iconn
