@@ -15,6 +15,11 @@ $action-menu-rollup-computed-width: 40px;
 
 .BreadcrumbWrapper {
   grid-area: breadcrumbs;
+  margin-left: calc(-1 * var(--p-space-200));
+
+  @media (--p-breakpoints-md-up) {
+    margin-left: 0;
+  }
 
   a,
   button {
