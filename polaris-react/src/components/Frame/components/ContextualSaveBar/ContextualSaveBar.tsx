@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useRef} from 'react';
 import {AlertBubbleIcon} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
@@ -9,6 +9,8 @@ import type {ContextualSaveBarProps} from '../../../../utilities/frame';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 import {InlineStack} from '../../../InlineStack';
+import {useEventListener} from '../../../../utilities/use-event-listener';
+import {debounce} from '../../../../utilities/debounce';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.module.scss';
@@ -21,6 +23,25 @@ export function ContextualSaveBar({
   secondaryMenu,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
+  const barRef = useRef<HTMLDivElement>(null);
+
+  const handleLeaveConfirmation = debounce(
+    () => {
+      barRef.current?.classList.add(styles.GreenBar);
+
+      setTimeout(() => {
+        barRef.current?.classList.remove(styles.GreenBar);
+      }, 1200);
+    },
+    500,
+    {leading: true, trailing: false},
+  );
+
+  useEventListener(
+    'onLeaveDirtyState' as keyof WindowEventMap,
+    handleLeaveConfirmation,
+  );
+
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,
@@ -39,13 +60,6 @@ export function ContextualSaveBar({
       ? discardAction.content
       : i18n.translate('Polaris.ContextualSaveBar.discard');
 
-  let discardActionHandler;
-  if (discardAction && discardAction.discardConfirmationModal) {
-    discardActionHandler = toggleDiscardConfirmationModal;
-  } else if (discardAction) {
-    discardActionHandler = discardAction.onAction;
-  }
-
   const discardConfirmationModalMarkup = discardAction &&
     discardAction.onAction &&
     discardAction.discardConfirmationModal && (
@@ -61,7 +75,7 @@ export function ContextualSaveBar({
       variant="tertiary"
       size="slim"
       url={discardAction.url}
-      onClick={discardActionHandler}
+      onClick={discardAction?.onAction}
       loading={discardAction.loading}
       disabled={discardAction.disabled}
       accessibilityLabel={discardAction.content}
@@ -95,7 +109,7 @@ export function ContextualSaveBar({
   );
 
   return (
-    <>
+    <div ref={barRef}>
       <div className={styles.ContextualSaveBar}>
         <div className={contentsClassName}>
           <div className={styles.MessageContainer}>
@@ -116,6 +130,6 @@ export function ContextualSaveBar({
         </div>
       </div>
       {discardConfirmationModalMarkup}
-    </>
+    </div>
   );
 }

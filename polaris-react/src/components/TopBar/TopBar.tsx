@@ -202,7 +202,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
           style={{
             height: '56px',
             overflow: searchResultsVisible ? 'visible' : 'hidden',
-            padding: '10px 4px',
+            padding: '10px 6px',
           }}
         >
           <TransitionGroup>

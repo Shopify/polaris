@@ -2,7 +2,6 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../../../Button';
-import {Image} from '../../../../Image';
 import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 

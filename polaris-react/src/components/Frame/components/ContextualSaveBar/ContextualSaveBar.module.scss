@@ -3,9 +3,9 @@
 .ContextualSaveBar {
   /* stylelint-disable -- polaris: Used to apply dark theme to action buttons */
   --p-color-bg-surface: var(--p-color-bg-surface-inverse);
-  --p-color-bg-surface-hover: var(--p-color-bg-fill-inverse-hover);
   --p-color-bg-surface-secondary-active: var(--p-color-bg-fill-inverse-active);
   /* stylelint-enable */
+  position: relative;
   display: flex;
   height: 36px;
   background-color: var(--p-color-bg-surface-inverse);
@@ -20,6 +20,32 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.12), transparent);
   background-origin: border-box;
   background-clip: padding-box, border-box;
+
+  // stylelint-disable -- prototype
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s var(--p-motion-ease-out);
+
+    border-radius: var(--p-border-radius-300);
+    border: solid var(--p-border-width-025) transparent;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-color: var(--p-color-bg-fill-success-active);
+
+    background-image: linear-gradient(
+        var(--p-color-bg-fill-success-active),
+        var(--p-color-bg-fill-success-active)
+      ),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.12), transparent);
+  }
+  // stylelint-enable
 
   .LogoContainer {
     border-right: none;
@@ -60,6 +86,7 @@
   margin: 0 auto;
   padding: var(--p-space-100);
   padding-left: var(--p-space-200);
+  z-index: 1;
 }
 
 .fullWidth {
@@ -108,11 +135,11 @@
   & [class*='Polaris-Button--variantTertiary'],
   & [class*='Button-variantTertiary'] {
     --pc-button-bg: rgba(255, 255, 255, 0.1);
-    --pc-button-bg_hover: var(--p-color-bg-fill-inverse-hover);
-    --pc-button-bg_active: var(--p-color-bg-fill-inverse-active);
+    --pc-button-bg_hover: rgba(255, 255, 255, 0.15);
+    --pc-button-bg_active: rgba(255, 255, 255, 0.25);
     --pc-button-bg_disabled: var(--pc-button-bg);
     --pc-button-color: var(--p-color-text-inverse);
-    --pc-button-color_disabled: var(--p-color-text-secondary);
+    --pc-button-color_disabled: rgba(255, 255, 255, 0.15);
   }
   /* stylelint-enable */
 }
@@ -129,3 +156,43 @@
     width: $layout-width-nav-base;
   }
 }
+
+// stylelint-disable -- prototype
+.GreenBar {
+  animation: shake 0.7s var(--p-motion-ease-in-out);
+
+  .ContextualSaveBar {
+    &::before {
+      opacity: 1;
+      transition: opacity 0.4s var(--p-motion-ease-in-out);
+    }
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  16% {
+    transform: translateX(6px);
+  }
+  32% {
+    transform: translateX(-6px);
+  }
+  48% {
+    transform: translateX(6px);
+  }
+  64% {
+    transform: translateX(-6px);
+  }
+  80% {
+    transform: translateX(6px);
+  }
+  96% {
+    transform: translateX(0px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+// stylelint-enable
