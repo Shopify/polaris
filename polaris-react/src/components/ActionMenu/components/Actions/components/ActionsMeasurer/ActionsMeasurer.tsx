@@ -54,7 +54,7 @@ export function ActionsMeasurer({
         return;
       }
 
-      const containerWidth = containerNode.current.offsetWidth - 20 - 28;
+      const containerWidth = containerNode.current.offsetWidth;
       const hiddenActionNodes = containerNode.current.children;
       const hiddenActionNodesArray = Array.from(hiddenActionNodes);
       const hiddenActionsWidths = hiddenActionNodesArray.map((node) => {
