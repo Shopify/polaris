@@ -568,7 +568,7 @@ function convert(
           ),
           `${
             propPath?.length ? `[${propPath.join('.')}] ` : ''
-          }${mappedValue} is a reserved value. Please use a different value.`,
+          }${mappedValue} is a disallowed value. Please use a different value.`,
         );
 
         insertIntoProperties(

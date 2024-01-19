@@ -1449,6 +1449,7 @@ type StaticDefaultValue<K extends keyof SupportedCSSStyleProps> =
 
 type DynamicDefaultValue<K extends keyof SupportedCSSStyleProps> = (
   props: ResponsiveStylePropObjects
+  // TODO: Allow returning a responsive object
 ) => SupportedCSSStyleProps[K] | undefined;
 
 export type PropDefaults = {
