@@ -3,4 +3,4 @@
 '@shopify/polaris-tokens': patch
 ---
 
-Updated button shadow tokens and replaced hardcoded box-shadow values
+Updated `Button` shadow tokens and replaced hardcoded box-shadow values
