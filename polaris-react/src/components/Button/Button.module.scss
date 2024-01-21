@@ -174,8 +174,7 @@
   --pc-button-color_active: var(--p-color-text-link-active);
 }
 
-.variantPlain:hover,
-.variantPlain:active {
+.variantPlain:is(:hover, :active, :focus-visible) {
   text-decoration: underline;
 }
 
@@ -192,6 +191,12 @@
   font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-regular);
   line-height: var(--p-font-line-height-400);
+}
+
+.variantPlain:focus-visible,
+.variantMonochromePlain:focus-visible {
+  border-radius: var(--p-border-radius-300);
+  outline-offset: calc(-1 * var(--pc-button-padding-block));
 }
 
 // TONES
