@@ -1,15 +1,47 @@
 import React from 'react';
+import type {CustomRoot} from 'tests/utilities';
 import {mountWithApp} from 'tests/utilities';
 
 import type {
   MenuGroupDescriptor,
   ActionListItemDescriptor,
 } from '../../../types';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import type {getVisibleAndHiddenActionsIndices} from '../components/Actions/utilities';
 import {MenuGroup, RollupActions, Actions} from '../components';
 import {ActionMenu} from '../ActionMenu';
 import type {ActionMenuProps} from '../ActionMenu';
 import {Button} from '../../Button';
-import {ButtonGroup} from '../../ButtonGroup';
+// eslint-disable-next-line @shopify/strict-component-boundaries
+import {ActionsMeasurer} from '../components/Actions/components';
+
+jest.mock('../components/Actions/components/ActionsMeasurer', () => ({
+  ActionsMeasurer: function ActionsMeasurer() {
+    return null;
+  },
+}));
+
+jest.mock('../components/Actions/utilities', () => ({
+  ...jest.requireActual('../components/Actions/utilities'),
+  getVisibleAndHiddenActionsIndices: jest.fn(),
+}));
+
+function mockGetVisibleAndHiddenActionsIndices(
+  args: ReturnType<typeof getVisibleAndHiddenActionsIndices>,
+) {
+  const getVisibleAndHiddenActionsIndices: jest.Mock = jest.requireMock(
+    '../components/Actions/utilities',
+  ).getVisibleAndHiddenActionsIndices;
+
+  getVisibleAndHiddenActionsIndices.mockReturnValue(args);
+}
+
+const mockAllVisible = {
+  visibleActions: [0, 1],
+  visibleGroups: [0, 1],
+  hiddenActions: [],
+  hiddenGroups: [],
+};
 
 describe('<ActionMenu />', () => {
   const mockProps: ActionMenuProps = {
@@ -22,6 +54,10 @@ describe('<ActionMenu />', () => {
     {content: 'mock content 1'},
     {content: 'mock content 2'},
   ];
+
+  beforeEach(() => {
+    mockGetVisibleAndHiddenActionsIndices(mockAllVisible);
+  });
 
   it('does not render when there are no `actions` or `groups`', () => {
     const wrapper = mountWithApp(<ActionMenu {...mockProps} />);
@@ -57,14 +93,24 @@ describe('<ActionMenu />', () => {
       const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} />,
       );
+      forceMeasurement(wrapper);
 
       expect(wrapper.findAll(MenuGroup)).toHaveLength(mockGroups.length);
     });
 
     it('renders disabled groups when `rollup` is `false`', () => {
+      mockGetVisibleAndHiddenActionsIndices({
+        visibleActions: [0, 1],
+        visibleGroups: [0, 1, 2],
+        hiddenActions: [],
+        hiddenGroups: [],
+      });
+
       const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroupsWithDisabledGroup} />,
       );
+
+      forceMeasurement(wrapper);
 
       expect(wrapper.findAll(MenuGroup)).toHaveLength(
         mockGroupsWithDisabledGroup.length,
@@ -113,6 +159,8 @@ describe('<ActionMenu />', () => {
     it('renders groups in their initial order when no indexes are set', () => {
       const wrapper = mountWithApp(<ActionMenu groups={mockGroups} />);
 
+      forceMeasurement(wrapper);
+
       wrapper.findAll(MenuGroup).forEach((group, index) => {
         expect(group.props).toMatchObject(mockGroups[index]);
       });
@@ -127,6 +175,8 @@ describe('<ActionMenu />', () => {
       ];
 
       const wrapper = mountWithApp(<ActionMenu groups={groups} />);
+
+      forceMeasurement(wrapper);
 
       expect(wrapper.findAll(MenuGroup)).toHaveLength(1);
     });
@@ -145,6 +195,8 @@ describe('<ActionMenu />', () => {
         <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
+      forceMeasurement(wrapper);
+
       expect(wrapper).toContainReactComponent(MenuGroup, {
         active: false,
       });
@@ -156,6 +208,8 @@ describe('<ActionMenu />', () => {
       const wrapper = mountWithApp(
         <ActionMenu {...mockProps} groups={mockGroups} />,
       );
+
+      forceMeasurement(wrapper);
 
       wrapper.find(MenuGroup)!.trigger('onOpen', mockTitle);
 
@@ -171,6 +225,8 @@ describe('<ActionMenu />', () => {
         <ActionMenu {...mockProps} groups={mockGroups} />,
       );
 
+      forceMeasurement(wrapper);
+
       wrapper.find(MenuGroup)!.trigger('onOpen', mockTitle);
       wrapper.find(MenuGroup)!.trigger('onClose', mockTitle);
 
@@ -181,13 +237,13 @@ describe('<ActionMenu />', () => {
   });
 
   describe('<Actions />', () => {
-    it('uses Button and ButtonGroup as subcomponents', () => {
+    it('uses Button as subcomponents', () => {
       const wrapper = mountWithApp(
         <ActionMenu {...mockProps} actions={mockActions} />,
       );
+      forceMeasurement(wrapper);
 
       expect(wrapper.findAll(Button)).toHaveLength(2);
-      expect(wrapper.findAll(ButtonGroup)).toHaveLength(1);
     });
 
     it('passes action callbacks through to Button', () => {
@@ -198,6 +254,8 @@ describe('<ActionMenu />', () => {
           actions={[{content: 'mock', onAction: spy}]}
         />,
       );
+
+      forceMeasurement(wrapper);
 
       wrapper.find(Button)!.trigger('onClick');
 
@@ -232,4 +290,14 @@ function fillMenuGroup(partialMenuGroup?: Partial<MenuGroupDescriptor>) {
     actions: [mockAction],
     ...partialMenuGroup,
   };
+}
+
+function forceMeasurement(wrapper: CustomRoot<any, any>) {
+  wrapper.act(() => {
+    wrapper.find(ActionsMeasurer)!.trigger('handleMeasurement', {
+      containerWidth: 100,
+      disclosureWidth: 100,
+      hiddenActionsWidths: [100],
+    });
+  });
 }
