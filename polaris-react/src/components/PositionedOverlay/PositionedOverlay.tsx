@@ -340,41 +340,48 @@ export class PositionedOverlay extends PureComponent<
           topBarOffset,
         );
 
-        const positionHorizontal =
+        const positionedHorizontal =
           preferredPosition === 'left' || preferredPosition === 'right';
 
-        const horizontalPosition = calculateHorizontalPosition(
+        const calculatedHorizontalPosition = calculateHorizontalPosition(
           activatorRect,
           overlayRect,
           containerRect,
           overlayMargins,
           preferredAlignment,
           scrollableContainerRect,
-          positionHorizontal ? preferredPosition : undefined,
+          positionedHorizontal ? preferredPosition : undefined,
           overlayMinWidth,
         );
 
+        const horizontalPosition =
+          calculatedHorizontalPosition.left ??
+          calculatedHorizontalPosition.right;
+
         const chevronOffset =
           activatorRect.center.x -
-          horizontalPosition.left +
+          horizontalPosition +
           overlayMargins.horizontal * 2;
 
         let width = null;
 
         if (fullWidth) width = overlayRect.width;
-        else if (positionHorizontal) width = horizontalPosition.width;
+        else if (positionedHorizontal)
+          width = calculatedHorizontalPosition.width;
 
         this.setState(
           {
             measuring: false,
-            activatorRect: getRectForNode(activator),
+            activatorRect,
             left:
-              preferredAlignment !== 'right' || positionHorizontal
-                ? horizontalPosition.left
+              (preferredAlignment !== 'right' && !positionedHorizontal) ||
+              calculatedHorizontalPosition.left
+                ? horizontalPosition
                 : undefined,
             right:
-              preferredAlignment === 'right'
-                ? horizontalPosition.left
+              (preferredAlignment === 'right' && !positionedHorizontal) ||
+              calculatedHorizontalPosition.right !== undefined
+                ? horizontalPosition
                 : undefined,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
