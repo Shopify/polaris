@@ -1,9 +1,10 @@
 import React, {useCallback, useState} from 'react';
 import {
+  ArrowDownIcon,
+  ArrowUpIcon,
   PlusIcon,
   // CollectionIcon,
   // ArrowDownIcon,
-  XIcon,
 } from '@shopify/polaris-icons';
 
 import {
@@ -14,6 +15,9 @@ import {
   Popover,
   InlineStack,
   Button,
+  BlockStack,
+  Collapsible,
+  Box,
 } from '../../../src';
 
 import styles from './Select.module.scss';
@@ -32,8 +36,10 @@ export function Select({
   defaultSelected = [],
   options: defaultOptions = [],
 }: Props & {options?: {value?: string; label: string}[]}) {
+  const collapsibleId = React.useId();
   const [active, setActive] = React.useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [collapsibleOpen, setCollapsibleOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] =
     useState<string[]>(defaultSelected);
   const [options, setOptions] = useState(defaultOptions);
@@ -69,29 +75,37 @@ export function Select({
     [selectedOptions],
   );
 
-  const removeTag = useCallback(
-    (tag: string) => () => {
-      const options = [...selectedOptions];
-      options.splice(options.indexOf(tag), 1);
-      setSelectedOptions(options);
-    },
-    [selectedOptions],
+  const firstFourSelectedOptions = selectedOptions.slice(0, 4);
+  const remainingSelectedOptions = selectedOptions.slice(
+    4,
+    selectedOptions.length,
   );
 
-  const tagsMarkup = selectedOptions.map((option) => (
-    <InlineStack key={`option-${option}`} gap="100">
-      <TagIcon /> {option}
-      <Button variant="plain" icon={XIcon} onClick={removeTag(option)} />
-    </InlineStack>
+  const visibleTagsMarkup = firstFourSelectedOptions.map((selectedOption) => (
+    <div className={styles.Tag} key={`option-${selectedOption}`}>
+      <InlineStack gap="025">
+        <TagIcon />
+        {options.find((option) => option.value === selectedOption)?.label}
+      </InlineStack>
+    </div>
+  ));
+
+  const hiddenTagsMarkup = remainingSelectedOptions.map((selectedOption) => (
+    <div className={styles.Tag} key={`option-${selectedOption}`}>
+      <InlineStack gap="025">
+        <TagIcon />
+        {options.find((option) => option.value === selectedOption)?.label}
+      </InlineStack>
+    </div>
   ));
 
   const optionsMarkup =
     options.length > 0
-      ? options.map(({label, value}) => (
+      ? options.map(({label, value = ''}) => (
           <Listbox.Option
             key={`${value}`}
             value={value ?? ''}
-            selected={selectedOptions.includes(value ?? '')}
+            selected={selectedOptions.includes(value)}
             accessibilityLabel={label}
           >
             {label}
@@ -100,7 +114,10 @@ export function Select({
       : null;
 
   const activator = (
-    <div className={styles.Select}>
+    <Box
+      paddingBlock={selectedOptions.length ? '100' : '0'}
+      paddingBlockEnd={selectedOptions.length > 0 ? '100' : '0'}
+    >
       <InlineGrid columns="1fr auto" alignItems="center">
         <Text as="h3" variant="bodySm" alignment="start" tone="subdued">
           {selectedOptions.length ? resourceTitle : emptyStateTitle}
@@ -112,11 +129,11 @@ export function Select({
           onClick={() => setActive((active) => !active)}
         />
       </InlineGrid>
-    </div>
+    </Box>
   );
 
   return (
-    <>
+    <div className={styles.Select}>
       <Popover
         fullWidth
         active={active}
@@ -125,6 +142,9 @@ export function Select({
         // preferredAlignment="cover"
         activator={activator}
       >
+        <Box paddingInline="200" paddingBlock="100">
+          {resourceTitle}
+        </Box>
         <Combobox
           allowMultiple
           persistent
@@ -145,9 +165,28 @@ export function Select({
           ) : null}
         </Combobox>
       </Popover>
-      ---
-      {tagsMarkup}
-    </>
+      {visibleTagsMarkup.length > 0 && (
+        <BlockStack>{visibleTagsMarkup}</BlockStack>
+      )}
+      {remainingSelectedOptions.length > 0 && (
+        <>
+          <Collapsible id={collapsibleId} open={collapsibleOpen}>
+            <BlockStack>{hiddenTagsMarkup}</BlockStack>
+          </Collapsible>
+
+          <Button
+            variant="tertiary"
+            size="micro"
+            onClick={() => setCollapsibleOpen((open) => !open)}
+            icon={collapsibleOpen ? ArrowUpIcon : ArrowDownIcon}
+          >
+            {collapsibleOpen
+              ? 'show less'
+              : `${remainingSelectedOptions.length} more`}
+          </Button>
+        </>
+      )}
+    </div>
   );
 }
 
