@@ -636,27 +636,16 @@ export function DetailsPage() {
             <BlockStack gap="200">
               <InlineGrid columns="1fr auto" alignItems="center">
                 <Text as="h2" variant="headingSm">
-                  Product organization
+                  Collections and tags
                 </Text>
                 <Tooltip content="Learn more">
                   <Icon source={InfoIcon} tone="subdued" />
                 </Tooltip>
               </InlineGrid>
+
               <NewSelect
-                title="Category"
-                defaultSelected={['2345678']}
-                options={[
-                  {value: '0123456', label: 'Ambiance'},
-                  {value: '1234567', label: 'Atomic'},
-                  {value: '2345678', label: 'Bedroom'},
-                  {value: '3456789', label: 'Danish'},
-                  {value: '4567890', label: 'Essence'},
-                  {value: '5678901', label: 'Featured'},
-                  {value: '6789012', label: 'Mid-century'},
-                ]}
-              />
-              <NewSelect
-                title="Type"
+                resourceTitle="Types"
+                emptyStateTitle="No types"
                 options={[
                   {value: '01234567', label: 'Table'},
                   {value: '12345678', label: 'Chair'},
@@ -668,7 +657,8 @@ export function DetailsPage() {
                 ]}
               />
               <NewSelect
-                title="Vendor"
+                resourceTitle="Vendor"
+                emptyStateTitle="No vendors"
                 options={[
                   {value: '012345678', label: 'Bryght'},
                   {value: '123456789', label: 'Grovemade'},
