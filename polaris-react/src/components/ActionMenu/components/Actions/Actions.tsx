@@ -75,12 +75,12 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     );
   });
 
-  const groupsToFilters =
+  const groupsToFilter =
     hiddenGroups.length > 0 || hiddenActions.length > 0
       ? [...groups, defaultRollupGroup]
       : [...groups];
 
-  const filteredGroups = groupsToFilters.filter((group, index) => {
+  const filteredGroups = groupsToFilter.filter((group, index) => {
     const hasNoGroupsProp = groups.length === 0;
     const isVisibleGroup = visibleGroups.includes(index);
     const isDefaultGroup = group === defaultRollupGroup;
