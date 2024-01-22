@@ -269,16 +269,18 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         >
           {skipMarkup}
           {topBarMarkup}
-          {navigationMarkup}
           {loadingMarkup}
           {navigationOverlayMarkup}
-          <main
-            className={styles.Main}
-            id={APP_FRAME_MAIN}
-            data-has-global-ribbon={Boolean(globalRibbon)}
-          >
-            <div className={styles.Content}>{children}</div>
-          </main>
+          <div className={styles.ShadowBevel}>
+            {navigationMarkup}
+            <main
+              className={styles.Main}
+              id={APP_FRAME_MAIN}
+              data-has-global-ribbon={Boolean(globalRibbon)}
+            >
+              <div className={styles.Content}>{children}</div>
+            </main>
+          </div>
           <ToastManager toastMessages={toastMessages} />
           {globalRibbonMarkup}
           <EventListener event="resize" handler={this.handleResize} />
