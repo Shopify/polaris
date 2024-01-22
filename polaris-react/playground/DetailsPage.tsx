@@ -644,8 +644,9 @@ export function DetailsPage() {
               </InlineGrid>
 
               <NewSelect
-                resourceTitle="Types"
-                emptyStateTitle="No types"
+                resourceTitle="Collections"
+                emptyStateTitle="No collections"
+                defaultSelected={['01234567', '12345678', '23456789']}
                 options={[
                   {value: '01234567', label: 'Table'},
                   {value: '12345678', label: 'Chair'},
@@ -657,8 +658,8 @@ export function DetailsPage() {
                 ]}
               />
               <NewSelect
-                resourceTitle="Vendor"
-                emptyStateTitle="No vendors"
+                resourceTitle="Tags"
+                emptyStateTitle="No tags"
                 options={[
                   {value: '012345678', label: 'Bryght'},
                   {value: '123456789', label: 'Grovemade'},
