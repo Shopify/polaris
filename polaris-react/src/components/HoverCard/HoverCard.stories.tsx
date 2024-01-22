@@ -337,7 +337,7 @@ export function WithDynamicActivator() {
     activatorElement,
     handleMouseEnterActivator,
     handleMouseLeaveActivator,
-  } = useHoverCardActivatorWrapperProps({snapToParent: true, hoverDelay: 100});
+  } = useHoverCardActivatorWrapperProps({snapToParent: true});
 
   const handleMouseEnterCustomer = useCallback(
     (customer: CustomerDetailPreview) =>
