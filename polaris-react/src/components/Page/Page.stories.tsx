@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useCallback} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   DeleteIcon,
@@ -308,6 +308,65 @@ export function WithActionGroups() {
         },
         {
           title: 'More actions',
+          actions: [
+            {content: 'Duplicate'},
+            {content: 'Print'},
+            {content: 'Unarchive'},
+            {content: 'Cancel order'},
+          ],
+        },
+      ]}
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
+    </Page>
+  );
+}
+
+export function WithActionGroupsAndActions() {
+  return (
+    <Page
+      title="List of products"
+      secondaryActions={[
+        {
+          content: 'Send test',
+          onAction: () => {},
+        },
+        {
+          content: 'Confirm',
+          onAction: () => {},
+        },
+        {
+          content: 'Localize',
+          url: '/store/marcs-staffed-store/apps/translate-and-adapt/localize/email_template?id=10774151224&locale=fr',
+        },
+        {
+          content: 'Manage payment reminders',
+          url: '/store/marcs-staffed-store/settings/notifications/payment_reminders',
+        },
+      ]}
+      actionGroups={[
+        {
+          title: 'Copy',
+          onClick: (openActions) => {
+            console.log('Copy action');
+            openActions();
+          },
+          actions: [{content: 'Copy to clipboard'}],
+        },
+        {
+          title: 'Promote',
+          disabled: true,
+          actions: [{content: 'Share on Facebook'}],
+        },
+        {
+          title: 'Delete',
+          disabled: false,
+          actions: [{content: 'Delete or remove'}],
+        },
+        {
+          title: 'Other actions',
           actions: [
             {content: 'Duplicate'},
             {content: 'Print'},
