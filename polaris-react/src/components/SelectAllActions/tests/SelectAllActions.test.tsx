@@ -2,6 +2,7 @@ import React from 'react';
 import {Transition, CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
 
+import {CheckableButton} from '../../CheckableButton';
 import {UnstyledButton} from '../../UnstyledButton';
 import {SelectAllActions} from '../SelectAllActions';
 import styles from '../SelectAllActions.module.scss';
@@ -101,6 +102,85 @@ describe('<SelectAllActions />', () => {
           .find(UnstyledButton, {onClick: spy})!
           .trigger('onClick');
         expect(spy).toHaveBeenCalled();
+      });
+    });
+  });
+
+  describe('deprecated props', () => {
+    describe('accessibilityLabel', () => {
+      it('gets passed down to the CheckableButton if present and onToggleAll is present', () => {
+        const {accessibilityLabel} = selectAllActionProps;
+        const selectAllActions = mountWithApp(
+          <SelectAllActions
+            {...selectAllActionProps}
+            onToggleAll={() => {}}
+            accessibilityLabel={accessibilityLabel}
+          />,
+        );
+
+        expect(selectAllActions).toContainReactComponent(CheckableButton, {
+          accessibilityLabel,
+        });
+      });
+
+      it('will not render a CheckableButton if the prop is not present', () => {
+        const {accessibilityLabel, ...props} = selectAllActionProps;
+        const selectAllActions = mountWithApp(
+          <SelectAllActions {...props} onToggleAll={() => {}} />,
+        );
+
+        expect(selectAllActions).not.toContainReactComponent(CheckableButton, {
+          accessibilityLabel,
+        });
+      });
+    });
+
+    describe('onToggleAll', () => {
+      it('gets passed down to the CheckableButton if present and accessibilityLabel is present', () => {
+        const {accessibilityLabel} = selectAllActionProps;
+        const selectAllActions = mountWithApp(
+          <SelectAllActions
+            {...selectAllActionProps}
+            onToggleAll={() => {}}
+            accessibilityLabel={accessibilityLabel}
+          />,
+        );
+
+        expect(selectAllActions).toContainReactComponent(CheckableButton, {
+          onToggleAll: expect.any(Function),
+        });
+      });
+
+      it('will not render a CheckableButton if the prop is not present', () => {
+        const {accessibilityLabel, ...props} = selectAllActionProps;
+        const selectAllActions = mountWithApp(
+          <SelectAllActions
+            {...props}
+            accessibilityLabel={accessibilityLabel}
+          />,
+        );
+
+        expect(selectAllActions).not.toContainReactComponent(CheckableButton, {
+          onToggleAll: expect.any(Function),
+        });
+      });
+    });
+
+    describe('selected', () => {
+      it('gets passed down to the CheckableButton if present and accessibilityLabel and onToggleAll is present', () => {
+        const {accessibilityLabel} = selectAllActionProps;
+        const selectAllActions = mountWithApp(
+          <SelectAllActions
+            {...selectAllActionProps}
+            onToggleAll={() => {}}
+            accessibilityLabel={accessibilityLabel}
+            selected
+          />,
+        );
+
+        expect(selectAllActions).toContainReactComponent(CheckableButton, {
+          selected: true,
+        });
       });
     });
   });

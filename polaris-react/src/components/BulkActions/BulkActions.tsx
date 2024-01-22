@@ -59,6 +59,10 @@ export interface BulkActionsProps {
   innerRef?: React.Ref<any>;
   /** The size of the buttons to render */
   buttonSize?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
+  /** @deprecated If the BulkActions is currently sticky in view */
+  isSticky?: boolean;
+  /** @deprecated The width of the BulkActions */
+  width?: number;
 }
 
 type CombinedProps = BulkActionsProps & {
@@ -226,6 +230,8 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
       selected,
       innerRef,
       buttonSize = 'micro',
+      width,
+      isSticky,
     } = this.props;
     const actionSections = this.actionSections();
 
@@ -348,10 +354,15 @@ class BulkActionsInner extends PureComponent<CombinedProps, State> {
         {(status: TransitionStatus) => {
           const groupClassName = classNames(
             styles.Group,
+            !isSticky && styles['Group-not-sticky'],
             status && styles[`Group-${status}`],
           );
           return (
-            <div className={groupClassName} ref={this.groupNode}>
+            <div
+              className={groupClassName}
+              ref={this.groupNode}
+              style={width ? {width} : undefined}
+            >
               <EventListener event="resize" handler={this.handleResize} />
               <div
                 className={styles.ButtonGroupWrapper}
