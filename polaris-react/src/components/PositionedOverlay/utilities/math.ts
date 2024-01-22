@@ -115,7 +115,7 @@ export function calculateHorizontalPosition(
   preferredHorizontalPosition?: 'left' | 'right',
   overlayMinWidth = 0,
 ) {
-  const maximum = containerRect.width - overlayRect.width;
+  const maximumWidth = containerRect.width - overlayRect.width;
   const activatorRight =
     containerRect.width - (activatorRect.left + activatorRect.width);
 
@@ -132,7 +132,7 @@ export function calculateHorizontalPosition(
     if (preferredAlignment === 'left') {
       return {
         left: Math.min(
-          maximum,
+          maximumWidth,
           Math.max(0, activatorRect.left - minimumSurroundingSpace),
         ),
         width: null,
@@ -140,7 +140,7 @@ export function calculateHorizontalPosition(
     } else if (preferredAlignment === 'right') {
       return {
         left: Math.min(
-          maximum,
+          maximumWidth,
           Math.max(0, activatorRight - minimumSurroundingSpace),
         ),
         width: null,
@@ -149,10 +149,8 @@ export function calculateHorizontalPosition(
   }
 
   if (preferredHorizontalPosition) {
-    const positionIfRight =
-      activatorRect.left + activatorRect.width + containerRect.left;
-    const positionIfLeft =
-      activatorRect.left - overlayRect.width + containerRect.left;
+    const positionIfRight = activatorRect.left + activatorRect.width;
+    const positionIfLeft = containerRect.width - activatorRect.left;
 
     const widthIfLeft = Math.min(
       distanceToLeftEdge - minimumSurroundingSpace,
@@ -173,11 +171,11 @@ export function calculateHorizontalPosition(
                 ? overlayMinWidth
                 : null,
           }
-        : {left: positionIfLeft, width: null};
+        : {right: positionIfLeft, width: null};
     } else {
       return enoughSpaceFromLeftEdge
         ? {
-            left: positionIfLeft,
+            right: positionIfLeft,
             width:
               overlayMinWidth && widthIfLeft < overlayMinWidth
                 ? overlayMinWidth
@@ -193,7 +191,7 @@ export function calculateHorizontalPosition(
   return {
     width: null,
     left: Math.min(
-      maximum,
+      maximumWidth,
       Math.max(
         0,
         activatorRect.center.x - overlayRect.width / 2 + containerRect.left,
