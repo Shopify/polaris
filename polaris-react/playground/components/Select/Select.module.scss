@@ -1,30 +1,11 @@
 .Select {
-  padding: calc(var(--p-space-200) + var(--p-space-050)) var(--p-space-200)
-    var(--p-space-200) var(--p-space-300);
+  padding: var(--p-space-200);
   border-radius: var(--p-border-radius-200);
   background-color: var(--p-color-bg-surface-secondary);
-  width: 100%;
+}
 
-  // &:focus:not(:active) {
-  //   outline: var(--p-border-width-050) solid var(--p-color-border-focus);
-  //   outline-offset: var(--p-border-width-025);
-  // }
-
-  // &:hover {
-  //   border-color: var(--p-color-input-border-hover);
-  //   background-color: var(--p-color-input-bg-surface-hover);
-
-  //   svg {
-  //     fill: var(--p-color-icon-hover);
-  //   }
-  // }
-
-  // &:active {
-  //   border-color: var(--p-color-input-border-active);
-  //   background-color: var(--p-color-input-bg-surface-active);
-
-  //   svg {
-  //     fill: var(--p-color-icon-active);
-  //   }
-  // }
+.Tag {
+  background-color: var(--p-color-bg-surface-secondary);
+  border-top: var(--p-border-width-050) solid var(--p-color-border);
+  padding: var(--p-space-050) 0;
 }
