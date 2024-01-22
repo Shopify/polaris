@@ -44,17 +44,37 @@ describe('convertStylePropsToCSSProperties', () => {
       `);
     });
 
-    it.skip('a tokenized style prop is converted to the requisite Polaris custom property.', () => {
+    it('a tokenized style prop is converted to the requisite Polaris custom property.', () => {
       const styleProps: ResponsiveStylePropsWithModifiers = {
         backgroundColor: 'bg-fill-info',
+        color: {sm: 'red', xl: 'blue'},
       };
-      // TODO: Assert the value mapper function is called correctly
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
-            Object {
-              "backgroundColor": "bg-fill-info",
-            }
-          `);
+      const mockMapper = jest.fn(() => 'initial');
+      expect(
+        convertStylePropsToCSSProperties(styleProps, undefined, mockMapper),
+      ).toMatchInlineSnapshot(`
+        Object {
+          "style": Object {
+            "backgroundColor": "initial",
+            "color": "var(--_xl-on,initial) var(--_xl-off,var(--_sm-on,initial))",
+          },
+        }
+      `);
+      expect(mockMapper.mock.calls).toHaveLength(3);
+      expect(mockMapper).toHaveBeenNthCalledWith(
+        1,
+        'bg-fill-info',
+        'backgroundColor',
+        ['backgroundColor'],
+      );
+      expect(mockMapper).toHaveBeenNthCalledWith(2, 'red', 'color', [
+        'color',
+        'sm',
+      ]);
+      expect(mockMapper).toHaveBeenNthCalledWith(3, 'blue', 'color', [
+        'color',
+        'xl',
+      ]);
     });
 
     it('multiple style props are applied at the same time.', () => {
@@ -269,8 +289,6 @@ describe('convertStylePropsToCSSProperties', () => {
             paddingInlineEnd: '200',
           });
         });
-
-        it.todo('is called for root and any pseudo elements');
 
         it.skip("applies function values even when styleprop isn't passed", () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
@@ -507,5 +525,7 @@ describe('convertStylePropsToCSSProperties', () => {
     it.todo('pseudos within modifiers apply the modifier to the pseudo');
 
     it.todo('pseudo styles dont overwrite root styles and vice versa');
+
+    it.todo('dynamic default is called for root and any pseudo elements');
   });
 });

@@ -19,6 +19,7 @@ import {
   pseudoElements,
   breakpoints,
   defaultBreakpointKey,
+  stylePropDefaults as globalDefaults,
 } from './generated-data';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -115,6 +116,16 @@ const enum Constant {
   PseudoElementParent,
 }
 
+type CascadeOrderKeys = keyof typeof cascadeOrder;
+
+let cascadeOrderNumber = 0;
+
+// Least specific first
+const cascadeOrder = {
+  ...mapObjectValues(breakpoints, () => cascadeOrderNumber++),
+  ...mapObjectValues(modifiers, () => cascadeOrderNumber++),
+} as const;
+
 const joinEnglish =
   process.env.NODE_ENV === 'development'
     ? (arr: string[], joiner = 'and') => {
@@ -146,6 +157,22 @@ function mapObjectValues<T extends object, R = T[keyof T]>(
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       result[key] = map(obj[key], key);
+    }
+  }
+  return result;
+}
+
+function filterObjectValues<T extends object>(
+  obj: T,
+  filter: (val: T[keyof T], key: keyof T) => boolean,
+): Partial<T> {
+  const result: Partial<T> = {};
+  for (const key in obj) {
+    if (
+      Object.prototype.hasOwnProperty.call(obj, key) &&
+      filter(obj[key], key)
+    ) {
+      result[key] = obj[key];
     }
   }
   return result;
@@ -194,19 +221,52 @@ function insertIntoProperties(
 
 export function convertStylePropsToCSSProperties(
   styleProps: ResponsiveStylePropsWithModifiers,
-  defaults: PropDefaults = {},
+  runtimeDefaults: PropDefaults = {},
   valueMapper: ValueMapper = identity,
 ): ConversionResult {
   debugger;
+
   const converted = convert(
     styleProps,
-    defaults,
+    // Global defaults have been set in the .css file, but the specificity of
+    // the style="" attribute is higher, so if a prop with that value is passed
+    // in for, say, `_hover`, we need to ensure we set the default again here,
+    // otherwise the browser will never see the value in the .css file.
+    // TODO: Globals are treated differently to runtime:
+    // - Globals only need to be applied if that property exists, ie; because
+    // we'd inadvertently overridden the values in the .css file.
+    // - Runtime defaults need to be injected into the style object every time.
+    {
+      ...globalDefaults,
+      ...filterObjectValues(runtimeDefaults, (value) => value != null),
+    },
     valueMapper,
     undefined,
     [],
     Constant.RootElement,
   );
   debugger;
+
+  // TODO: Make defaults static only:
+  // 1. Some passed in to the .css file creation which get set as global
+  //    fallbacks for unset properties. Also used as fallbacks when a property
+  //    (or an alias) _is_ passed in.
+  // 2. Allow partial overriding of defaults passed into the `convert()` method
+  //    which gets merged with the global defaults before being applied. This
+  //    allows dynamically setting some defaults before calling `convert()`
+  //    based on other prop values, and avoids the callsite having to know to
+  //    check all aliases.
+  //
+  //    Wait, no that doesn't work because what if the
+  //    callsite only wants to set a default / fallback if another specific
+  //    property is set to a specific value?
+  //
+  // Maybe we stick with the current approach of dynamic + static?
+
+  const staticDefaults;
+  (Object.entries(runtimeDefaults) as Entries<typeof runtimeDefaults>).forEach(
+    ([key, value]) => {},
+  );
 
   // Inject defaults for properties that don't have them
   // if (parentIsRoot) {
@@ -240,12 +300,10 @@ export function convertStylePropsToCSSProperties(
 
 export function convertCSSPropertiesToStyleSheet(
   styles: Properties,
-  className: string,
-  pseudoElement?: PseudoElementProp,
+  selector: string,
+  prettyIndent?: number,
 ) {
-  return `.${className}${
-    pseudoElement ? pseudoElements[pseudoElement] : ''
-  }{${Object.entries(styles)
+  return `${selector}{${Object.entries(styles)
     .reduce((acc, [cssProperty, val]) => {
       acc.push(
         `${
@@ -258,81 +316,12 @@ export function convertCSSPropertiesToStyleSheet(
       );
       return acc;
     }, [] as string[])
-    .join('')}}`;
+    .join(
+      typeof prettyIndent !== 'undefined'
+        ? `\n${' '.repeat(prettyIndent)}`
+        : '',
+    )}}`;
 }
-
-let cascadeOrderNumber = 0;
-
-// Least specific first
-const cascadeOrder = {
-  ...mapObjectValues(breakpoints, () => cascadeOrderNumber++),
-  ...mapObjectValues(modifiers, () => cascadeOrderNumber++),
-} as const;
-
-type CascadeOrderKeys = keyof typeof cascadeOrder;
-
-/**
-*
-* {
-*   color: 'red',
-*   _active: {
-*     color: { lg: 'blue', sm: 'green' }
-*   }
-*   _hover: {
-*     color: 'yellow'
-*   },
-* }
-* goal: var(--_active-on, var(--_lg-on, blue) var(--_lg-off, var(--_sm-on, green))) var(--_active-off, var(--_hover-on, yellow))
-* 1. (path: ''): properties['color'] = [{value: 'red'}];
-* 2. (path: '_active'): properties_active['color'] = [{value: 'green', condition: 'sm'}, {value: 'blue', condition: 'lg'}]
-* 3. (path: '_hover'): properties_hover['color'] = [{value: 'yellow'}]
-*
-*
-* 2. (path: '_hover'): properties['color'] = `var(--_hover-on, blue)${properties['color'] ? ` var(--_hover-off, red)` : ''}`
-*
-* {
-*   color: 'red',
-*   _hover: {
-*     color: { lg: 'blue', sm: 'green' }
-*   }
-* }
-* 1. (path: ''): properties['color'] = [{value: 'red'}]
-* 2. (path: '_hover.lg'): properties['color'] = [{values: [{value: 'red'}]}, {condition: '_hover', values: [{condition: 'lg', values: [{value: 'blue'}]}]}]
-* 3. (path: '_hover.lg'): properties['color'] = [{values: [{value: 'red'}]}, {condition: '_hover', values: [{condition: 'sm', values: [{value: 'green'}]}, {condition: 'lg', values: [{value: 'blue'}]}]}]
-* 3. (path: '_hover.sm'): properties['color'] = [{value: 'red'}, {value: 'green', condition: '_sm'}, {value: 'blue', condition: '_lg'}]
-*
-* {
-*   _hover: {
-*     color: { lg: 'blue', sm: 'green' }
-*   }
-*   color: { md: 'yellow' }
-* }
-* 2. (path: '_hover.lg'): properties['color'] = [{value: 'blue', condition: '_lg'}]
-* 3. (path: '_hover.sm'): properties['color'] = [{value: 'red'}, {value: 'green', condition: '_sm'}, {value: 'blue', condition: '_lg'}]
-* 1. (path: ''): properties['color'] = [{ value: 'red' }]
-*
-*
-* mapObjectValues(properties, (values) => {
-*   values.reduce(
-*     (output, {value, condition}, index) =>
-*       condition
-*         ? `var(--${condition}-on, ${value})${output ? ` var(--${condition}-off, ${output})` : ''}`
-*         : value,
-*     ''
-*   )
-* });
-*
-*
-* 1. (path: ''): properties1['color'] = { value: 'red' }
-* 2. (path: '_hover.lg'): properties3['color'] = { value: `var(--_lg-on, blue)`, condition: '_lg' }
-* 3. (path: '_hover.sm'): properties3['color'] = `var(--_sm-on, blue)`
-* 4. (path: '_hover'): properties2['color'] = `var(--_hover-on, var(--_sm-on, blue) var(--_sm-off, var(--_lg-on, green)))`
-*
-*
-* 1. ('color'): properties['color'] = 'red';
-* 2. ('_hover'): properties['color'] = 'var(--_hover-on, ) var(--_hover-off, 'red')'
-* 3. ('_hover.color): properties['color'] = 'var(--_hover-on, blue)'
-* *
 
 /**
  * @param styleProps
@@ -378,7 +367,81 @@ type CascadeOrderKeys = keyof typeof cascadeOrder;
 function convert(
   // TODO: Does this recursive type cause TS to be slow?
   styleProps: RecursiveValues<ResponsiveStylePropsWithModifiers>,
-  defaults: PropDefaults,
+  /**
+   * Global defaults have been set in the .css file, but the specificity of the
+   * style="" attribute is higher, so if a matching prop is passed in we need to
+   * ensure the default value is set again on the style="" attribute.
+   *
+   * TODO: Globals are treated differently to runtime:
+   * - Globals only need to be applied if that property exists, ie; because
+   * we'd inadvertently overridden the values in the .css file.
+   */
+  globalDefaults: PropDefaults,
+  /**
+   * Runtime defaults act as fallbacks for when a prop isn't passed in. NOTE:
+   * defaults are ignored if a value is passed for any pseudo element or
+   * modifier or responsive value.
+  */
+  // TODO: Follow a deep-merge strategy with one exception: Responsive values are
+  // NOT deep merged; they will be replaced with the passed-in prop's value.
+  //
+  // @example
+  // const props = {
+  //   borderInlineStartColor: 'red',
+  // }
+  // 
+  // // runtime default of 1px border when a border color is set
+  // if (props.borderInlineStartColor) {
+  //   defaults.borderInlineStartWidth = 1
+  // }
+  // 
+  // convertStylePropsToCSSProperties(props, defaults)
+  // // {
+  // //   borderInlineStartColor: 'red',
+  // //   borderInlineStartWidth: '1',
+  // // }
+  // 
+  // @example
+  // const props = {
+  //   borderInlineStartColor: 'red',
+  //   borderInlineStartWidth: {sm: 3}
+  // }
+  // 
+  // // runtime default of 1px border when a border color is set
+  // if (props.borderInlineStartColor) {
+  //   defaults.borderInlineStartWidth = {xs: 1, md: 2};
+  // }
+  // 
+  // convertStylePropsToCSSProperties(props, defaults)
+  // // {
+  // //   borderInlineStartColor: 'red',
+  // //   // Default value is NOT merged in
+  // //   borderInlineStartWidth: 'var(--_md-on, 2) (--_md-off, 1)',
+  // // }
+  // 
+  // @example
+  // const props = {
+  //   borderInlineStartColor: 'red',
+  //   _hover: {
+  //     borderInlineStartWidth: {sm: 3}
+  //   }
+  // }
+  // 
+  // // runtime default of 1px border when a border color is set
+  // if (props.borderInlineStartColor) {
+  //   defaults.borderInlineStartWidth = {xs: 1, md: 2};
+  // }
+  // 
+  // convertStylePropsToCSSProperties(props, defaults)
+  // // {
+  // //   borderInlineStartColor: 'red',
+  // //   // Hover value is merged in, but concrete value is not
+  // //   borderInlineStartWidth: 'var(--__hover-on, var(--_sm-on, 3)) var(--__hover-off, var(--_md-on, 2) (--_md-off, 1))',
+  // // }
+  //
+  // TODO: Use `null` values to mean "Don't use the default value if it's set"
+  // the user can stop the `_hover` default from applying / doesn't have to.
+  runtimeDefaults: PropDefaults,
   valueMapper: ValueMapper,
   parent:
     | Constant.ModifierParent
@@ -555,7 +618,7 @@ function convert(
           propIsBreakpoint ? parentPropPath.at(-1) : prop
         ) as keyof ResponsiveStyleProps;
 
-        const mappedValue = valueMapper(value, declaration, parentPropPath);
+        const mappedValue = valueMapper(value, declaration, propPath);
 
         // Since Typescript doesn't have negation types (`string & not 'inherit'`),
         // we need to do a runtime check for invalid values because some of the
@@ -578,6 +641,7 @@ function convert(
           // TODO Not sure why TS isn't narrowing prop down correctly here. it could
           // only possibly be one of the responsive object keys at this point.
           parentIsResponsiveDeclaration
+            // Ie; it's xs, sm, md, etc
             ? (prop as CascadeOrderKeys)
             : defaultBreakpointKey,
           mappedValue,
@@ -589,7 +653,11 @@ function convert(
         const nestedProperties = convert(
           // TODO: How do I fix this?
           value as typeof styleProps,
-          defaults,
+          // Also recurse into the default values object (if it's set)
+          globalDefaults &&
+            (propIsModifier || propIsBreakpoint || propIsPseudoElement)
+            ? globalDefaults[prop]
+            : globalDefaults,
           valueMapper,
           /* eslint-disable no-nested-ternary -- It's terse & readable */
           propIsModifier
@@ -612,7 +680,7 @@ function convert(
         (
           Object.entries(nestedProperties) as Entries<typeof nestedProperties>
         ).forEach(([nestedElement, values]) => {
-          // Merge each delcaration into the property object for this iteration
+          // Merge each delcaration into the property object for this iteration.
           // Later, these values will get turned into strings
           values &&
             (Object.entries(values) as Entries<typeof values>).forEach(
@@ -624,12 +692,15 @@ function convert(
                     declaration as keyof Properties,
                     // TODO: How do we narrow `prop`'s type here?
                     propIsModifier
+                      // Ie; it's _hover, _active, etc
                       ? (prop as CascadeOrderKeys)
                       : defaultBreakpointKey,
                     value,
                   );
               },
             );
+
+          if (globalDefaults && Object.prototype.hasOwnProperty(globalDefaults, 
         });
       }
     },

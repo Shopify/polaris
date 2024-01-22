@@ -139,11 +139,8 @@ export const disallowedCSSPropertyValues = ['-moz-initial'];
  * {
  *   [x: string]: {
  *     aliases?: (keyof StandardLonghandProperties | keyof Aliases)[],
- *     // Function style is only called once aliases have been applied.
- *     // Returning undefined (hardcoded or from the function) will use the
- *     // global default of 'unset' (ie; let the browser figure it out while
- *     // respecting our DOM-level scoping).
- *     default?: string | (props: ResponsiveStyleProps) => (string | undefined)
+ *     // Defaults can be responsive, but are NOT merged with passed in values.
+ *     defaultValue?: any
  *   }
  * }
  */
@@ -199,51 +196,31 @@ export const stylePropConfig = {
   },
   borderInlineStartStyle: {
     aliases: ['borderLeftStyle', 'borderInlineStyle', 'borderStyle'],
-    getDefault: (props) =>
-      props.borderInlineStartColor || props.borderInlineStartWidth
-        ? 'solid'
-        : undefined,
   },
   borderInlineEndStyle: {
     aliases: ['borderRightStyle', 'borderInlineStyle', 'borderStyle'],
-    getDefault: (props) =>
-      props.borderInlineEndColor || props.borderInlineEndWidth
-        ? 'solid'
-        : undefined,
   },
   borderBlockStartStyle: {
     aliases: ['borderTopStyle', 'borderBlockStyle', 'borderStyle'],
-    getDefault: (props) =>
-      props.borderBlockStartColor || props.borderBlockStartWidth
-        ? 'solid'
-        : undefined,
   },
   borderBlockEndStyle: {
     aliases: ['borderBottomStyle', 'borderBlockStyle', 'borderStyle'],
-    getDefault: (props) =>
-      props.borderBlockEndColor || props.borderBlockEndWidth
-        ? 'solid'
-        : undefined,
   },
   borderInlineStartWidth: {
     aliases: ['borderLeftWidth', 'borderInlineWidth', 'borderWidth'],
-    getDefault: '0',
+    defaultValue: '0',
   },
   borderInlineEndWidth: {
     aliases: ['borderRightWidth', 'borderInlineWidth', 'borderWidth'],
-    getDefault: '0',
+    defaultValue: '0',
   },
   borderBlockStartWidth: {
     aliases: ['borderTopWidth', 'borderBlockWidth', 'borderWidth'],
-    getDefault: '0',
+    defaultValue: '0',
   },
   borderBlockEndWidth: {
     aliases: ['borderBottomWidth', 'borderBlockWidth', 'borderWidth'],
-    getDefault: '0',
-  },
-  outlineStyle: {
-    getDefault: (props) =>
-      props.outlineWidth || props.outlineColor ? 'solid' : undefined,
+    defaultValue: '0',
   },
   insetInlineStart: {aliases: ['left', 'insetInline', 'inset']},
   insetInlineEnd: {aliases: ['right', 'insetInline', 'inset']},
@@ -326,7 +303,10 @@ export const pseudoElements = {
 // Alternatives: ⅀ ℈ ￪ 〓 ￮ _
 export const cssCustomPropertyNamespace = '_';
 
-export const BoxValueMapperFactory =
+// TODO: Replace this with a version passed into whatever function gets called
+// inside `<AppProvider>` to setup the whole lot (currently it's passed into
+// `<Box>`'s callsite of the convert function).
+export const boxValueMapperFactory =
   (stylePropTokenGroupMap) => (value, prop) => {
     // If this is a tokenized styleprop, we must convert it to a CSS var().
     if (!Object.prototype.hasOwnProperty.call(stylePropTokenGroupMap, prop)) {

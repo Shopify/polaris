@@ -10,12 +10,11 @@ import {isObject} from '../../utilities/is-object';
 
 import generatedStyle from './generated-style.module.scss';
 import classes from './Box.module.scss';
-import type {ResponsiveStylePropsWithModifiers} from './generated-data';
-import {
-  stylePropTokenGroupMap,
-  stylePropDefaults,
-  pseudoElements,
+import type {
+  ResponsiveStylePropsWithModifiers,
+  ValueMapper,
 } from './generated-data';
+import {stylePropTokenGroupMap, pseudoElements} from './generated-data';
 import {
   convertStylePropsToCSSProperties,
   convertCSSPropertiesToStyleSheet,
@@ -57,6 +56,22 @@ function isTokenVariable(
   const possibleToken = `${tokenSubGroup}-${token}`;
   return typeof tokenValueMap[possibleToken] !== 'undefined';
 }
+
+// TODO: NOTE: Temporarily exporting this function so it can be used by the
+// build script. Eventually this function will move to the <AppProvider> where
+// this whole system is initialized
+export const valueMapper: ValueMapper = (value, prop) => {
+  // If this is a tokenized styleprop, we must convert it to a CSS var().
+  return isTokenVariable(
+    stylePropTokenGroupMap[prop as keyof typeof stylePropTokenGroupMap],
+    value as string | number,
+  )
+    ? createPolarisCSSVar(
+        stylePropTokenGroupMap[prop as keyof typeof stylePropTokenGroupMap],
+        value as string | number,
+      )
+    : value;
+};
 /**
 The lowest level Polaris primitive from which everything in the system is built.
 
@@ -159,21 +174,26 @@ export const Box = forwardRef(function Box(
 ) {
   const classNameRef = useRef<string>();
 
+  const fallbacks = {
+    borderInlineStartStyle:
+      sx.borderInlineStartColor || sx.borderInlineStartWidth
+        ? 'solid'
+        : undefined,
+    borderInlineEndStyle:
+      sx.borderInlineEndColor || sx.borderInlineEndWidth ? 'solid' : undefined,
+    borderBlockStartStyle:
+      sx.borderBlockStartColor || sx.borderBlockStartWidth
+        ? 'solid'
+        : undefined,
+    borderBlockEndStyle:
+      sx.borderBlockEndColor || sx.borderBlockEndWidth ? 'solid' : undefined,
+    outlineStyle: sx.outlineWidth || sx.outlineColor ? 'solid' : undefined,
+  };
+
   const {style, ...pseudoElementStyles} = convertStylePropsToCSSProperties(
     sx,
-    stylePropDefaults,
-    (value, prop) => {
-      // If this is a tokenized styleprop, we must convert it to a CSS var().
-      return isTokenVariable(
-        stylePropTokenGroupMap[prop as keyof typeof stylePropTokenGroupMap],
-        value as string | number,
-      )
-        ? createPolarisCSSVar(
-            stylePropTokenGroupMap[prop as keyof typeof stylePropTokenGroupMap],
-            value as string | number,
-          )
-        : value;
-    },
+    fallbacks,
+    valueMapper,
   );
 
   let pseudoElementCSS = '';
@@ -191,8 +211,7 @@ export const Box = forwardRef(function Box(
       .map(([pseudoElementSelector, {style}]) =>
         convertCSSPropertiesToStyleSheet(
           style,
-          classNameRef.current!,
-          pseudoElementSelector,
+          `.${classNameRef.current!}${pseudoElements[pseudoElementSelector]}`,
         ),
       )
       .join('\n');

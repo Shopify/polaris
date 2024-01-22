@@ -17,7 +17,7 @@ import {
   cssCustomPropertyNamespace as namespace,
   styleFile,
   typesFile,
-  BoxValueMapperFactory,
+  boxValueMapperFactory,
 } from './data.mjs';
 
 const endent = _endent.default;
@@ -414,20 +414,22 @@ type LonghandStyleProps = MergeByUnion<
 
 type StyleProps = LonghandStyleProps & StylePropAliases;
 
-/**
- * A combination of raw CSS style props, tokenized style props (derived from
- * \`@shopify/polaris-tokens\`), and helpful aliases for frequently used props.
- */
-export type ResponsiveStyleProps = {
-  [K in keyof StyleProps]?: ResponsiveProp<
+type MakeResponsive<T> = {
+  [K in keyof T]?: ResponsiveProp<
     // Give better IDE autocomplete/intellisense suggestions
     SimplifyUnion<
       // Excluding globally disallowed values as the last thing we do ensures
       // none slip through the cracks in the above type definitions.
-      Exclude<StyleProps[K], (typeof disallowedCSSPropertyValues)[number]>
+      Exclude<T[K], (typeof disallowedCSSPropertyValues)[number]>
     >
   >;
 };
+
+/**
+ * A combination of raw CSS style props, tokenized style props (derived from
+ * \`@shopify/polaris-tokens\`), and helpful aliases for frequently used props.
+ */
+export type ResponsiveStyleProps = MakeResponsive<StyleProps>;
 
 type ResponsiveStylePropsWithPseudoElements = ResponsiveStyleProps
   & { [K in PseudoElementProps]?: ResponsiveStyleProps };
@@ -572,30 +574,16 @@ export const stylePropAliasNames: (keyof StyleProps)[] = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat())
 );
 
-type StaticDefaultValue<K extends keyof SupportedCSSStyleProps> =
-  | SupportedCSSStyleProps[K]
-  | undefined;
-
-type DynamicDefaultValue<K extends keyof SupportedCSSStyleProps> = (
-  props: ResponsiveStylePropObjects
-) => SupportedCSSStyleProps[K] | undefined;
-
-export type PropDefaults = {
-  [K in keyof SupportedCSSStyleProps]?:
-    | StaticDefaultValue<K>
-    | DynamicDefaultValue<K>;
-};
+${'' /* TODO: Allow modifiers */}
+${'' /* TODO: Allow pseudo elements */}
+export type PropDefaults = MakeResponsive<LonghandStyleProps>;
 
 export const stylePropDefaults = {
   ${Object.entries(stylePropConfig)
-    .filter(([, {getDefault}]) => typeof getDefault !== 'undefined')
+    .filter(([, {defaultValue}]) => defaultValue != null)
     .map(
-      ([styleProp, {getDefault}]) =>
-        `${styleProp}: ${
-          typeof getDefault === 'function'
-            ? getDefault.toString()
-            : JSON.stringify(getDefault)
-        },`,
+      ([styleProp, {defaultValue}]) =>
+        `${styleProp}: ${JSON.stringify(defaultValue)},`,
     )
     .join('\n  ')}
 } satisfies PropDefaults;
@@ -701,7 +689,7 @@ export type ValueMapper = (
 export type ValueMapperFactory =
   (map: typeof stylePropTokenGroupMap) => ValueMapper;
 
-export const valueMapperFactory: ValueMapperFactory = ${BoxValueMapperFactory.toString()};
+export const valueMapperFactory: ValueMapperFactory = ${boxValueMapperFactory.toString()};
 `);
 }
 
@@ -800,15 +788,12 @@ async function writeCSSMediaVars(file, modifiers = {}) {
     })
     .join('\n\n');
 
-  // TODO: Support an object syntax for setting defaults on pseudo elements
+  // TODO: Support an object syntax for setting defaults on modifiers & pseudo elements
   const defaultCSSProperties = endent`${Object.entries(stylePropConfig)
-    .filter(
-      ([, {getDefault}]) =>
-        typeof getDefault !== 'undefined' && typeof getDefault !== 'function',
-    )
+    .filter(([, {defaultValue}]) => defaultValue != null)
     .map(
-      ([styleProp, {getDefault}]) =>
-        `${decamelize(styleProp, {separator: '-'})}: ${BoxValueMapperFactory(
+      ([styleProp, {defaultValue}]) =>
+        `${decamelize(styleProp, {separator: '-'})}: ${boxValueMapperFactory(
           Object.fromEntries(
             Object.entries(cssPropsToTokenGroup).filter(
               ([prop]) =>
@@ -816,7 +801,7 @@ async function writeCSSMediaVars(file, modifiers = {}) {
                 !allAliases.includes(prop),
             ),
           ),
-        )(getDefault, styleProp)};`,
+        )(defaultValue, styleProp)};`,
     )
     .join('\n')}`;
 

@@ -104,20 +104,22 @@ type LonghandStyleProps = MergeByUnion<
 
 type StyleProps = LonghandStyleProps & StylePropAliases;
 
-/**
- * A combination of raw CSS style props, tokenized style props (derived from
- * `@shopify/polaris-tokens`), and helpful aliases for frequently used props.
- */
-export type ResponsiveStyleProps = {
-  [K in keyof StyleProps]?: ResponsiveProp<
+type MakeResponsive<T> = {
+  [K in keyof T]?: ResponsiveProp<
     // Give better IDE autocomplete/intellisense suggestions
     SimplifyUnion<
       // Excluding globally disallowed values as the last thing we do ensures
       // none slip through the cracks in the above type definitions.
-      Exclude<StyleProps[K], (typeof disallowedCSSPropertyValues)[number]>
+      Exclude<T[K], (typeof disallowedCSSPropertyValues)[number]>
     >
   >;
 };
+
+/**
+ * A combination of raw CSS style props, tokenized style props (derived from
+ * `@shopify/polaris-tokens`), and helpful aliases for frequently used props.
+ */
+export type ResponsiveStyleProps = MakeResponsive<StyleProps>;
 
 type ResponsiveStylePropsWithPseudoElements = ResponsiveStyleProps
   & { [K in PseudoElementProps]?: ResponsiveStyleProps };
@@ -1443,44 +1445,13 @@ export const stylePropAliasNames: (keyof StyleProps)[] = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat())
 );
 
-type StaticDefaultValue<K extends keyof SupportedCSSStyleProps> =
-  | SupportedCSSStyleProps[K]
-  | undefined;
-
-type DynamicDefaultValue<K extends keyof SupportedCSSStyleProps> = (
-  props: ResponsiveStylePropObjects
-  // TODO: Allow returning a responsive object
-) => SupportedCSSStyleProps[K] | undefined;
-
-export type PropDefaults = {
-  [K in keyof SupportedCSSStyleProps]?:
-    | StaticDefaultValue<K>
-    | DynamicDefaultValue<K>;
-};
+export type PropDefaults = MakeResponsive<LonghandStyleProps>;
 
 export const stylePropDefaults = {
-  borderInlineStartStyle: (props) =>
-      props.borderInlineStartColor || props.borderInlineStartWidth
-        ? 'solid'
-        : undefined,
-  borderInlineEndStyle: (props) =>
-      props.borderInlineEndColor || props.borderInlineEndWidth
-        ? 'solid'
-        : undefined,
-  borderBlockStartStyle: (props) =>
-      props.borderBlockStartColor || props.borderBlockStartWidth
-        ? 'solid'
-        : undefined,
-  borderBlockEndStyle: (props) =>
-      props.borderBlockEndColor || props.borderBlockEndWidth
-        ? 'solid'
-        : undefined,
   borderInlineStartWidth: "0",
   borderInlineEndWidth: "0",
   borderBlockStartWidth: "0",
   borderBlockEndWidth: "0",
-  outlineStyle: (props) =>
-      props.outlineWidth || props.outlineColor ? 'solid' : undefined,
 } satisfies PropDefaults;
 
 /**
