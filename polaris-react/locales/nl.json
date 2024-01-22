@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "Meer filters ({count})",
       "addFilter": "Filter toevoegen",
       "clearFilters": "Alles wissen",
-      "searchInView": "in: {viewName}"
+      "searchInView": "in:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "opmaak hoofdtekst",
