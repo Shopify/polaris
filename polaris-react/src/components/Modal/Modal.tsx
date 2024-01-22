@@ -169,9 +169,11 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     );
 
     const scrollContainerMarkup = noScroll ? (
-      <Box width="100%" overflowX="hidden" overflowY="hidden">
-        {body}
-      </Box>
+      <div className={styles.NoScrollBody}>
+        <Box width="100%" overflowX="hidden" overflowY="hidden">
+          {body}
+        </Box>
+      </div>
     ) : (
       <Scrollable
         shadow
