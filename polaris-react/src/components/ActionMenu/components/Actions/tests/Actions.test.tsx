@@ -8,6 +8,7 @@ import {Actions, MenuGroup, RollupActions, SecondaryAction} from '../..';
 import {Tooltip} from '../../../../Tooltip';
 import type {getVisibleAndHiddenActionsIndices} from '../utilities';
 import {ActionsMeasurer} from '../components';
+import styles from '../Actions.module.scss';
 
 jest.mock('../components/ActionsMeasurer', () => ({
   ActionsMeasurer() {
@@ -71,9 +72,11 @@ describe('<Actions />', () => {
         <ActionMenu actions={actionsBeforeOverriddenOrder} />,
       );
 
+      const wrappingDiv = findWrapper(wrapper);
+
       forceMeasurement(wrapper);
 
-      expect(wrapper.findAll(SecondaryAction)).toHaveLength(3);
+      expect(wrappingDiv!.findAll(SecondaryAction)).toHaveLength(3);
     });
 
     it('renders a <Tooltip /> when helpText is set on an action', () => {
@@ -232,6 +235,18 @@ describe('<Actions />', () => {
     });
   });
 });
+
+function findWrapper(wrapper: CustomRoot<any, any>) {
+  const wrappingDiv = wrapper.findWhere<'div'>((node) => {
+    return (
+      node.is('div') &&
+      Boolean(node.prop('className')) &&
+      node.prop('className')!.includes(styles.ActionsLayout)
+    );
+  });
+
+  return wrappingDiv;
+}
 
 function forceMeasurement(wrapper: CustomRoot<any, any>) {
   wrapper.act(() => {

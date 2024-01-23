@@ -1,6 +1,6 @@
 export function getVisibleAndHiddenActionsIndices(
-  actions: any[],
-  groups: any[],
+  actions: any[] = [],
+  groups: any[] = [],
   disclosureWidth: number,
   actionsWidths: number[],
   containerWidth: number,

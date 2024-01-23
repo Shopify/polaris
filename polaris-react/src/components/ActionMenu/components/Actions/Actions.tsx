@@ -1,4 +1,11 @@
-import React, {useCallback, useRef, useState} from 'react';
+import React, {
+  useCallback,
+  useRef,
+  useState,
+  useReducer,
+  useEffect,
+  useMemo,
+} from 'react';
 
 import type {
   ActionListItemDescriptor,
@@ -9,6 +16,7 @@ import type {
 import {MenuGroup} from '../MenuGroup';
 import {useI18n} from '../../../../utilities/i18n';
 import {SecondaryAction} from '../SecondaryAction';
+import {classNames} from '../../../../utilities/css';
 
 import styles from './Actions.module.scss';
 import type {ActionsMeasurements} from './components';
@@ -23,28 +31,50 @@ interface Props {
   /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
   onActionRollup?(hasRolledUp: boolean): void;
 }
-interface MeasuredActionsIndices {
+interface ActionsState {
   visibleActions: number[];
   hiddenActions: number[];
   visibleGroups: number[];
   hiddenGroups: number[];
+  actionsWidths: number[];
+  containerWidth: number;
+  disclosureWidth: number;
+  hasMeasured: boolean;
 }
 
-export function Actions({actions = [], groups = [], onActionRollup}: Props) {
+export function Actions({actions, groups, onActionRollup}: Props) {
   const i18n = useI18n();
   const rollupActiveRef = useRef<boolean | null>(null);
   const [activeMenuGroup, setActiveMenuGroup] = useState<string | undefined>(
     undefined,
   );
-  const [
-    {visibleActions, hiddenActions, visibleGroups, hiddenGroups},
-    setMeasuredActionsIndices,
-  ] = useState<MeasuredActionsIndices>({
-    visibleActions: [],
-    hiddenActions: [],
-    visibleGroups: [],
-    hiddenGroups: [],
-  });
+
+  const [state, setState] = useReducer(
+    (data: ActionsState, partialData: Partial<ActionsState>): ActionsState => {
+      return {...data, ...partialData};
+    },
+    {
+      disclosureWidth: 0,
+      containerWidth: Infinity,
+      actionsWidths: [],
+      visibleActions: [],
+      hiddenActions: [],
+      visibleGroups: [],
+      hiddenGroups: [],
+      hasMeasured: false,
+    },
+  );
+
+  const {
+    visibleActions,
+    hiddenActions,
+    visibleGroups,
+    hiddenGroups,
+    containerWidth,
+    disclosureWidth,
+    actionsWidths,
+    hasMeasured,
+  } = state;
 
   const defaultRollupGroup: MenuGroupDescriptor = {
     title: i18n.translate('Polaris.ActionMenu.Actions.moreActions'),
@@ -61,27 +91,62 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     [],
   );
 
-  const actionsMarkup = actions.map((action, index) => {
-    if (!visibleActions.includes(index)) {
-      return null;
+  useEffect(() => {
+    if (containerWidth === 0) {
+      return;
     }
+    const {visibleActions, visibleGroups, hiddenActions, hiddenGroups} =
+      getVisibleAndHiddenActionsIndices(
+        actions,
+        groups,
+        disclosureWidth,
+        actionsWidths,
+        containerWidth,
+      );
+    setState({
+      visibleActions,
+      visibleGroups,
+      hiddenActions,
+      hiddenGroups,
+      hasMeasured: containerWidth !== Infinity,
+    });
+  }, [
+    containerWidth,
+    disclosureWidth,
+    actions,
+    groups,
+    actionsWidths,
+    setState,
+  ]);
 
-    const {content, onAction, ...rest} = action;
+  const actionsOrDefault = useMemo(() => actions ?? [], [actions]);
+  const groupsOrDefault = useMemo(() => groups ?? [], [groups]);
 
-    return (
-      <SecondaryAction key={content} onClick={onAction} {...rest}>
-        {content}
-      </SecondaryAction>
-    );
-  });
+  const actionsMarkup = actionsOrDefault
+    .filter((_, index) => {
+      if (!visibleActions.includes(index)) {
+        return false;
+      }
+
+      return true;
+    })
+    .map((action) => {
+      const {content, onAction, ...rest} = action;
+
+      return (
+        <SecondaryAction key={content} onClick={onAction} {...rest}>
+          {content}
+        </SecondaryAction>
+      );
+    });
 
   const groupsToFilter =
     hiddenGroups.length > 0 || hiddenActions.length > 0
-      ? [...groups, defaultRollupGroup]
-      : [...groups];
+      ? [...groupsOrDefault, defaultRollupGroup]
+      : [...groupsOrDefault];
 
   const filteredGroups = groupsToFilter.filter((group, index) => {
-    const hasNoGroupsProp = groups.length === 0;
+    const hasNoGroupsProp = groupsOrDefault.length === 0;
     const isVisibleGroup = visibleGroups.includes(index);
     const isDefaultGroup = group === defaultRollupGroup;
 
@@ -96,8 +161,12 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
     return isVisibleGroup;
   });
 
-  const hiddenActionObjects = hiddenActions.map((index) => actions[index]);
-  const hiddenGroupObjects = hiddenGroups.map((index) => groups[index]);
+  const hiddenActionObjects = hiddenActions.map(
+    (index) => actionsOrDefault[index],
+  );
+  const hiddenGroupObjects = hiddenGroups.map(
+    (index) => groupsOrDefault[index],
+  );
 
   const groupsMarkup = filteredGroups.map((group) => {
     const {title, actions: groupActions, ...rest} = group;
@@ -160,8 +229,8 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
 
       const {visibleActions, hiddenActions, visibleGroups, hiddenGroups} =
         getVisibleAndHiddenActionsIndices(
-          actions,
-          groups,
+          actionsOrDefault,
+          groupsOrDefault,
           disclosureWidth,
           actionsWidths,
           containerWidth,
@@ -175,14 +244,18 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
           rollupActiveRef.current = isRollupActive;
         }
       }
-      setMeasuredActionsIndices({
+      setState({
         visibleActions,
         hiddenActions,
         visibleGroups,
         hiddenGroups,
+        actionsWidths,
+        containerWidth,
+        disclosureWidth,
+        hasMeasured: true,
       });
     },
-    [actions, groups, onActionRollup],
+    [actionsOrDefault, groupsOrDefault, onActionRollup],
   );
 
   const actionsMeasurer = (
@@ -196,7 +269,12 @@ export function Actions({actions = [], groups = [], onActionRollup}: Props) {
   return (
     <div className={styles.ActionsLayoutOuter}>
       {actionsMeasurer}
-      <div className={styles.ActionsLayout}>
+      <div
+        className={classNames(
+          styles.ActionsLayout,
+          !hasMeasured && styles['ActionsLayout--measuring'],
+        )}
+      >
         {actionsMarkup}
         {groupsMarkup}
       </div>
