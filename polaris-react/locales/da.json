@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "Flere filtre: ({count})",
       "addFilter": "Tilføj filter",
       "clearFilters": "Ryd alt",
-      "searchInView": "i: {viewName}"
+      "searchInView": "i:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "body markup",
