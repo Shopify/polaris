@@ -45,7 +45,8 @@ export function Select({
   const collapsibleId = React.useId();
   const [active, setActive] = React.useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [options, setOptions] = useState(defaultOptions);
+  const [options] = useState(defaultOptions);
+  const [filteredOptions, setFilteredOptions] = useState(defaultOptions);
   const [collapsibleOpen, setCollapsibleOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] =
     useState<string[]>(defaultSelected);
@@ -55,7 +56,7 @@ export function Select({
       setInputValue(value);
 
       if (value === '') {
-        setOptions(defaultOptions);
+        setFilteredOptions(defaultOptions);
         return;
       }
 
@@ -63,7 +64,7 @@ export function Select({
       const resultOptions = defaultOptions.filter((option) =>
         option.label.match(filterRegex),
       );
-      setOptions(resultOptions);
+      setFilteredOptions(resultOptions);
     },
     [defaultOptions],
   );
@@ -104,8 +105,8 @@ export function Select({
   ));
 
   const optionsMarkup =
-    options.length > 0
-      ? options.map(({label, value = ''}) => (
+    filteredOptions.length > 0
+      ? filteredOptions.map(({label, value = ''}) => (
           <Listbox.Option
             key={`${value}`}
             value={value}
@@ -141,7 +142,7 @@ export function Select({
         onClose={() => {
           setActive(false);
           setInputValue('');
-          setOptions(defaultOptions);
+          setFilteredOptions(defaultOptions);
         }}
         preferredPosition="cover"
         activator={activator}
@@ -150,13 +151,8 @@ export function Select({
           {resourceTitle}
         </Box>
         <Combobox
-          allowMultiple
           persistent
-          onClose={() => {
-            setActive(false);
-            setInputValue('');
-            setOptions(defaultOptions);
-          }}
+          allowMultiple
           activator={
             <Bleed marginInline="200">
               <Box
@@ -184,7 +180,12 @@ export function Select({
         >
           {optionsMarkup ? (
             <Listbox onSelect={updateSelection}>{[...optionsMarkup]}</Listbox>
-          ) : null}
+          ) : (
+            <Listbox>
+              {/* eslint-disable-next-line react/no-children-prop */}
+              <Listbox.Header children="no results" />
+            </Listbox>
+          )}
         </Combobox>
       </Popover>
       {visibleTagsMarkup.length > 0 && (
