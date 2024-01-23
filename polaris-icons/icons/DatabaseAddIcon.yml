@@ -1,7 +1,6 @@
 name: Database add
 description: >-
-  Used to represent inserting a dynamic source into an input field that supports
-  multiple dynamic sources
+  Used to represent adding, inserting, or connecting a dynamic source.
 keywords:
   - dynamic source
   - data source
