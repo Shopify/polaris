@@ -1,6 +1,6 @@
 import {Rect} from '../../../utilities/geometry';
 
-export type PreferredPosition = 'above' | 'below' | 'mostSpace';
+export type PreferredPosition = 'above' | 'below' | 'mostSpace' | 'cover';
 
 export type PreferredAlignment = 'left' | 'center' | 'right';
 
@@ -57,6 +57,16 @@ export function calculateVerticalPosition(
     positioning: 'below',
   };
 
+  const positionIfCoverBelow = {
+    height: heightIfBelow - verticalMargins,
+    top:
+      activatorBottom +
+      containerRectTop -
+      activatorRect.height -
+      verticalMargins * 2,
+    positioning: 'cover',
+  };
+
   if (preferredPosition === 'above') {
     return (enoughSpaceFromTopScroll ||
       (distanceToTopScroll >= distanceToBottomScroll &&
@@ -72,6 +82,15 @@ export function calculateVerticalPosition(
         !enoughSpaceFromTopScroll)) &&
       (spaceBelow > desiredHeight || spaceBelow > spaceAbove)
       ? positionIfBelow
+      : positionIfAbove;
+  }
+
+  if (preferredPosition === 'cover') {
+    return (enoughSpaceFromBottomScroll ||
+      (distanceToBottomScroll >= distanceToTopScroll &&
+        !enoughSpaceFromTopScroll)) &&
+      (spaceBelow > desiredHeight || spaceBelow > spaceAbove)
+      ? positionIfCoverBelow
       : positionIfAbove;
   }
 

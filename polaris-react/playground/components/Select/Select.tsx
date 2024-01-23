@@ -3,6 +3,7 @@ import {
   ArrowDownIcon,
   ArrowUpIcon,
   PlusIcon,
+  SearchIcon,
   // CollectionIcon,
   // ArrowDownIcon,
 } from '@shopify/polaris-icons';
@@ -18,15 +19,20 @@ import {
   BlockStack,
   Collapsible,
   Box,
+  Bleed,
+  Icon,
 } from '../../../src';
 
-import styles from './Select.module.scss';
-
+interface Option {
+  value: string;
+  label: string;
+}
 interface Props {
   resourceTitle: string;
   emptyStateTitle: string;
   searchPlaceholder?: string;
   defaultSelected?: string[];
+  options?: Option[];
 }
 
 export function Select({
@@ -35,14 +41,14 @@ export function Select({
   searchPlaceholder,
   defaultSelected = [],
   options: defaultOptions = [],
-}: Props & {options?: {value?: string; label: string}[]}) {
+}: Props) {
   const collapsibleId = React.useId();
   const [active, setActive] = React.useState(false);
   const [inputValue, setInputValue] = useState('');
+  const [options, setOptions] = useState(defaultOptions);
   const [collapsibleOpen, setCollapsibleOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] =
     useState<string[]>(defaultSelected);
-  const [options, setOptions] = useState(defaultOptions);
 
   const updateText = useCallback(
     (value: string) => {
@@ -82,21 +88,19 @@ export function Select({
   );
 
   const visibleTagsMarkup = firstFourSelectedOptions.map((selectedOption) => (
-    <div className={styles.Tag} key={`option-${selectedOption}`}>
-      <InlineStack gap="025">
-        <TagIcon />
-        {options.find((option) => option.value === selectedOption)?.label}
-      </InlineStack>
-    </div>
+    <Tag
+      key={`option-${selectedOption}`}
+      selectedOption={selectedOption}
+      options={options}
+    />
   ));
 
   const hiddenTagsMarkup = remainingSelectedOptions.map((selectedOption) => (
-    <div className={styles.Tag} key={`option-${selectedOption}`}>
-      <InlineStack gap="025">
-        <TagIcon />
-        {options.find((option) => option.value === selectedOption)?.label}
-      </InlineStack>
-    </div>
+    <Tag
+      key={`option-${selectedOption}`}
+      selectedOption={selectedOption}
+      options={options}
+    />
   ));
 
   const optionsMarkup =
@@ -104,7 +108,7 @@ export function Select({
       ? options.map(({label, value = ''}) => (
           <Listbox.Option
             key={`${value}`}
-            value={value ?? ''}
+            value={value}
             selected={selectedOptions.includes(value)}
             accessibilityLabel={label}
           >
@@ -114,10 +118,7 @@ export function Select({
       : null;
 
   const activator = (
-    <Box
-      paddingBlock={selectedOptions.length ? '100' : '0'}
-      paddingBlockEnd={selectedOptions.length > 0 ? '100' : '0'}
-    >
+    <Box paddingBlockEnd={selectedOptions.length ? '150' : '0'}>
       <InlineGrid columns="1fr auto" alignItems="center">
         <Text as="h3" variant="bodySm" alignment="start" tone="subdued">
           {selectedOptions.length ? resourceTitle : emptyStateTitle}
@@ -133,35 +134,56 @@ export function Select({
   );
 
   return (
-    <div className={styles.Select}>
+    <Box padding="200" borderRadius="200" background="bg-surface-secondary">
       <Popover
         fullWidth
         active={active}
-        onClose={() => setActive(false)}
-        // TODO: Allow coverage of activator
-        // preferredAlignment="cover"
+        onClose={() => {
+          setActive(false);
+          setInputValue('');
+          setOptions(defaultOptions);
+        }}
+        preferredPosition="cover"
         activator={activator}
       >
-        <Box paddingInline="200" paddingBlock="100">
+        <Box paddingInline="200" paddingBlock="050" paddingBlockStart="200">
           {resourceTitle}
         </Box>
         <Combobox
           allowMultiple
           persistent
-          onClose={() => setActive(false)}
+          onClose={() => {
+            setActive(false);
+            setInputValue('');
+            setOptions(defaultOptions);
+          }}
           activator={
-            <Combobox.TextField
-              onChange={updateText}
-              label="Search tags"
-              labelHidden
-              value={inputValue}
-              placeholder={searchPlaceholder ?? 'Search tags'}
-              autoComplete="off"
-            />
+            <Bleed marginInline="200">
+              <Box
+                borderBlockEndWidth="025"
+                borderColor="border"
+                paddingBlockEnd="100"
+                paddingInline="200"
+              >
+                <InlineGrid gap="100" columns="auto 1fr">
+                  <Icon source={SearchIcon} tone="subdued" />
+
+                  <Combobox.TextField
+                    onChange={updateText}
+                    label="Search or add tags"
+                    labelHidden
+                    value={inputValue}
+                    placeholder={searchPlaceholder ?? 'Search tags'}
+                    autoComplete="off"
+                    inline
+                  />
+                </InlineGrid>
+              </Box>
+            </Bleed>
           }
         >
           {optionsMarkup ? (
-            <Listbox onSelect={updateSelection}>{optionsMarkup}</Listbox>
+            <Listbox onSelect={updateSelection}>{[...optionsMarkup]}</Listbox>
           ) : null}
         </Combobox>
       </Popover>
@@ -174,19 +196,21 @@ export function Select({
             <BlockStack>{hiddenTagsMarkup}</BlockStack>
           </Collapsible>
 
-          <Button
-            variant="tertiary"
-            size="micro"
-            onClick={() => setCollapsibleOpen((open) => !open)}
-            icon={collapsibleOpen ? ArrowUpIcon : ArrowDownIcon}
-          >
-            {collapsibleOpen
-              ? 'show less'
-              : `${remainingSelectedOptions.length} more`}
-          </Button>
+          <Bleed marginInline="100" marginBlockEnd="200">
+            <Button
+              variant="tertiary"
+              size="micro"
+              onClick={() => setCollapsibleOpen((open) => !open)}
+              icon={collapsibleOpen ? ArrowUpIcon : ArrowDownIcon}
+            >
+              {collapsibleOpen
+                ? 'show less'
+                : `${remainingSelectedOptions.length} more`}
+            </Button>
+          </Bleed>
         </>
       )}
-    </div>
+    </Box>
   );
 }
 
@@ -200,17 +224,41 @@ function TagIcon() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M5.75 7.5C5.05964 7.5 4.5 8.05964 4.5 8.75V11.75C4.5 12.4404 5.05964 13 5.75 13H12.1716C12.5031 13 12.821 12.8683 13.0555 12.6339L15.2626 10.4268C15.3602 10.3291 15.3602 10.1709 15.2626 10.0732L13.0555 7.86612C12.821 7.6317 12.5031 7.5 12.1716 7.5H5.75ZM3 8.75C3 7.23122 4.23122 6 5.75 6H12.1716C12.9009 6 13.6004 6.28973 14.1161 6.80546L16.3232 9.01256C17.0066 9.69598 17.0066 10.804 16.3232 11.4874L14.1161 13.6945C13.6004 14.2103 12.9009 14.5 12.1716 14.5H5.75C4.23122 14.5 3 13.2688 3 11.75V8.75Z"
         fill="black"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M6 10.25C6 9.83579 6.33579 9.5 6.75 9.5H11.25C11.6642 9.5 12 9.83579 12 10.25C12 10.6642 11.6642 11 11.25 11H6.75C6.33579 11 6 10.6642 6 10.25Z"
         fill="black"
       />
     </svg>
+  );
+}
+
+function Tag({
+  options,
+  selectedOption,
+}: {
+  options: Option[];
+  selectedOption: string;
+}) {
+  return (
+    <Box
+      background="bg-surface-secondary"
+      borderBlockStartWidth="025"
+      borderColor="border"
+      paddingBlock="100"
+    >
+      <InlineStack gap="025">
+        <TagIcon />
+        <Text as="span" variant="bodyMd">
+          {options?.find((option) => option.value === selectedOption)?.label}
+        </Text>
+      </InlineStack>
+    </Box>
   );
 }
