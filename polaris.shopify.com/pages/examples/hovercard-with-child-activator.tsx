@@ -12,7 +12,7 @@ import {
   Card,
 } from '@shopify/polaris';
 import type {PositionedOverlayProps} from '@shopify/polaris';
-import {LocationsMinor, OrdersMinor} from '@shopify/polaris-icons';
+import {LocationIcon, OrderIcon} from '@shopify/polaris-icons';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function HoverCardWithChildActivator() {
@@ -50,14 +50,14 @@ function HoverCardWithChildActivator() {
         <Box width="100%">
           <BlockStack gap="100">
             <InlineStack wrap={false} gap="100" align="start">
-              <Icon tone="subdued" source={LocationsMinor} />
+              <Icon tone="subdued" source={LocationIcon} />
               <Text tone="subdued" as="p">
                 Albequerque, NM, USA
               </Text>
             </InlineStack>
             <InlineStack wrap={false} gap="100" align="start">
               <Box>
-                <Icon tone="subdued" source={OrdersMinor} />
+                <Icon tone="subdued" source={OrderIcon} />
               </Box>
               <Text tone="subdued" as="p">
                 8 Orders
