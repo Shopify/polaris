@@ -21,7 +21,8 @@
     "clean": "rm -rf .turbo node_modules dist",
     "dev": "rollup -c -w",
     "test": "jest",
-    "optimize": "svgo -f icons"
+    "optimize": "svgo -f icons",
+    "lint": "TIMING=1 eslint --cache ."
   },
   "exports": {
     ".": {
