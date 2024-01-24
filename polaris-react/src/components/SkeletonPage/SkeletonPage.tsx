@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
@@ -31,6 +31,13 @@ export function SkeletonPage({
   backAction,
 }: SkeletonPageProps) {
   const i18n = useI18n();
+
+  useEffect(() => {
+    // performance mark on skeleton unmount to help with page load tracking
+    return () => {
+      performance.mark('polaris:page_skeleton:unmount');
+    }
+  }, [])
 
   const titleContent = title ? (
     <h1 className={styles.Title}>{title}</h1>
