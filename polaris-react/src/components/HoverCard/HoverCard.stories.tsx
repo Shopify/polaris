@@ -20,10 +20,10 @@ import {
   Card,
 } from '@shopify/polaris';
 import {
-  ShipmentMajor,
-  LocationsMinor,
-  OrdersMinor,
-  ImageMajor,
+  DeliveryIcon,
+  LocationIcon,
+  OrderIcon,
+  ImageIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -65,14 +65,14 @@ export function WithChildActivator() {
         <Box width="100%">
           <BlockStack gap="100">
             <InlineStack wrap={false} gap="100" align="start">
-              <Icon tone="subdued" source={LocationsMinor} />
+              <Icon tone="subdued" source={LocationIcon} />
               <Text tone="subdued" as="p">
                 Albequerque, NM, USA
               </Text>
             </InlineStack>
             <InlineStack wrap={false} gap="100" align="start">
               <Box>
-                <Icon tone="subdued" source={OrdersMinor} />
+                <Icon tone="subdued" source={OrderIcon} />
               </Box>
               <Text tone="subdued" as="p">
                 8 Orders
@@ -379,7 +379,7 @@ export function WithDynamicActivator() {
             <BlockStack gap="100">
               <InlineStack wrap={false} gap="100" align="start">
                 <Box>
-                  <Icon tone="subdued" source={LocationsMinor} />
+                  <Icon tone="subdued" source={LocationIcon} />
                 </Box>
                 <Text tone="subdued" as="p">
                   {location}
@@ -387,7 +387,7 @@ export function WithDynamicActivator() {
               </InlineStack>
               <InlineStack wrap={false} gap="100" align="start">
                 <Box>
-                  <Icon tone="subdued" source={OrdersMinor} />
+                  <Icon tone="subdued" source={OrderIcon} />
                 </Box>
                 <Text tone="subdued" as="p">
                   {`${orders} Orders`}
@@ -422,7 +422,7 @@ export function WithDynamicActivator() {
                 <BlockStack gap="100">
                   <InlineStack gap="100" align="start" blockAlign="center">
                     <div style={{marginLeft: '-4px'}}>
-                      <Icon source={LocationsMinor} tone="subdued" />
+                      <Icon source={LocationIcon} tone="subdued" />
                     </div>
                     <Text as="p" tone="subdued" variant="bodySm">
                       Location
@@ -435,7 +435,7 @@ export function WithDynamicActivator() {
                 <BlockStack gap="100">
                   <InlineStack gap="100" align="start" blockAlign="center">
                     <div style={{marginLeft: '-4px'}}>
-                      <Icon source={ShipmentMajor} tone="subdued" />
+                      <Icon source={DeliveryIcon} tone="subdued" />
                     </div>
                     <Text as="p" tone="subdued" variant="bodySm">
                       Delivery method
@@ -477,7 +477,7 @@ export function WithDynamicActivator() {
                             borderColor: 'var(--p-border-secondary)',
                           }}
                         >
-                          <Icon tone="subdued" source={ImageMajor} />
+                          <Icon tone="subdued" source={ImageIcon} />
                         </div>
                       )}
                       <div
