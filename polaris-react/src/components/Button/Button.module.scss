@@ -386,4 +386,8 @@
   border-top-right-radius: var(--p-border-radius-0);
   border-bottom-right-radius: var(--p-border-radius-0);
 }
+
+[data-buttongroup-full-width='true'] .Button {
+  width: 100%;
+}
 /* stylelint-enable -- selector-max-combinators */
