@@ -10,8 +10,6 @@ const {select, selectAll} = require('hast-util-select');
 
 const svgoConfig = require('../svgo.config');
 
-// const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
-
 const allIconFiles = globby
   .sync(path.resolve(__dirname, '../icons/*.svg'))
   .map((absoluteIconPath) => {
@@ -30,14 +28,7 @@ const allIconFiles = globby
   });
 
 allIconFiles.forEach(
-  ({
-    iconPath,
-    iconSource,
-    optimizedSource,
-    iconAst,
-    expectedViewbox,
-    // expectedFillColors,
-  }) => {
+  ({iconPath, iconSource, optimizedSource, iconAst, expectedViewbox}) => {
     describe(`SVG Contents: packages/${iconPath}`, () => {
       it(`is optimized`, () => {
         expect(iconSource).toStrictEqual(optimizedSource);
