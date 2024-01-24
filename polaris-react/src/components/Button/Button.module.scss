@@ -46,7 +46,6 @@
   @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-300);
     line-height: var(--p-font-line-height-400);
-    white-space: nowrap;
   }
 }
 
@@ -395,5 +394,9 @@
 
 [data-buttongroup-full-width='true'] .Button {
   width: 100%;
+
+  @media (--p-breakpoints-md-up) {
+    white-space: nowrap;
+  }
 }
 /* stylelint-enable -- selector-max-combinators */
