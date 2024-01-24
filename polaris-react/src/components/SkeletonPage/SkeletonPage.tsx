@@ -35,9 +35,14 @@ export function SkeletonPage({
   useEffect(() => {
     // performance mark on skeleton unmount to help with page load tracking
     return () => {
-      performance.mark('polaris:page_skeleton:unmount');
-    }
-  }, [])
+      const mark = performance?.mark?.('polaris:page_skeleton:unmount');
+      console.log(
+        'unmounting skeleton...',
+        mark,
+        performance.getEntries().length,
+      );
+    };
+  }, []);
 
   const titleContent = title ? (
     <h1 className={styles.Title}>{title}</h1>
