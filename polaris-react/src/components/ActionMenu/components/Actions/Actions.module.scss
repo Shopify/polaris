@@ -13,6 +13,11 @@
   }
 }
 
+.ActionsLayout--measuring {
+  visibility: hidden;
+  height: 0;
+}
+
 .ActionsLayoutMeasurer {
   display: flex;
   flex-wrap: wrap;

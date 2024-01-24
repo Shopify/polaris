@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
   DeleteIcon,
