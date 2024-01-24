@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Fixed styling for `Button` inside `ButtonGroup` with `fullWidth`
+Fixed layout and focus styling for `Button` inside `ButtonGroup` with `fullWidth`
