@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-[ActionMenu] Improved test reliability for non-rolled up actions
+Improved test reliability for non-rolled up actions in `ActionMenu`
