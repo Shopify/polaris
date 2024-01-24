@@ -1,8 +1,7 @@
 .Icon {
   display: block;
-  height: 20px;
-  width: 20px;
-
+  height: var(--p-height-500);
+  width: var(--p-width-500);
   max-height: 100%;
   max-width: 100%;
   margin: auto;
