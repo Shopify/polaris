@@ -4,6 +4,7 @@ import type {FiltersProps} from '@shopify/polaris';
 import {
   Avatar,
   Button,
+  Card,
   LegacyCard,
   ChoiceList,
   DataTable,
@@ -153,7 +154,7 @@ export function WithAResourceList() {
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -201,7 +202,7 @@ export function WithAResourceList() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 
