@@ -16,10 +16,10 @@ import {
   Card,
 } from '@shopify/polaris';
 import {
-  ShipmentMajor,
-  LocationsMinor,
-  OrdersMinor,
-  ImageMajor,
+  DeliveryIcon,
+  LocationIcon,
+  OrderIcon,
+  ImageIcon,
 } from '@shopify/polaris-icons';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -255,7 +255,7 @@ export function HoverCardWithDynamicActivator() {
             <BlockStack gap="100">
               <InlineStack wrap={false} gap="100" align="start">
                 <Box>
-                  <Icon tone="subdued" source={LocationsMinor} />
+                  <Icon tone="subdued" source={LocationIcon} />
                 </Box>
                 <Text tone="subdued" as="p">
                   {location}
@@ -263,7 +263,7 @@ export function HoverCardWithDynamicActivator() {
               </InlineStack>
               <InlineStack wrap={false} gap="100" align="start">
                 <Box>
-                  <Icon tone="subdued" source={OrdersMinor} />
+                  <Icon tone="subdued" source={OrderIcon} />
                 </Box>
                 <Text tone="subdued" as="p">
                   {`${orders} Orders`}
@@ -298,7 +298,7 @@ export function HoverCardWithDynamicActivator() {
                 <BlockStack gap="100">
                   <InlineStack gap="100" align="start" blockAlign="center">
                     <div style={{marginLeft: '-4px'}}>
-                      <Icon source={LocationsMinor} tone="subdued" />
+                      <Icon source={LocationIcon} tone="subdued" />
                     </div>
                     <Text as="p" tone="subdued" variant="bodySm">
                       Location
@@ -311,7 +311,7 @@ export function HoverCardWithDynamicActivator() {
                 <BlockStack gap="100">
                   <InlineStack gap="100" align="start" blockAlign="center">
                     <div style={{marginLeft: '-4px'}}>
-                      <Icon source={ShipmentMajor} tone="subdued" />
+                      <Icon source={DeliveryIcon} tone="subdued" />
                     </div>
                     <Text as="p" tone="subdued" variant="bodySm">
                       Delivery method
@@ -353,7 +353,7 @@ export function HoverCardWithDynamicActivator() {
                             borderColor: 'var(--p-border-secondary)',
                           }}
                         >
-                          <Icon tone="subdued" source={ImageMajor} />
+                          <Icon tone="subdued" source={ImageIcon} />
                         </div>
                       )}
                       <div
