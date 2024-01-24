@@ -38,7 +38,6 @@
   font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-500);
-  white-space: nowrap;
 
   cursor: pointer;
   user-select: none;
@@ -47,6 +46,7 @@
   @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-300);
     line-height: var(--p-font-line-height-400);
+    white-space: nowrap;
   }
 }
 
