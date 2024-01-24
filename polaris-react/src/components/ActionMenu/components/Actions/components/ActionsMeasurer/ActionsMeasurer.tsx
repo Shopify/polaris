@@ -4,7 +4,6 @@ import type {
   MenuActionDescriptor,
   MenuGroupDescriptor,
 } from '../../../../../../types';
-import {useComponentDidMount} from '../../../../../../utilities/use-component-did-mount';
 import {useI18n} from '../../../../../../utilities/i18n';
 import {SecondaryAction} from '../../../SecondaryAction';
 import {useEventListener} from '../../../../../../utilities/use-event-listener';
@@ -33,7 +32,6 @@ export function ActionsMeasurer({
 }: ActionsMeasurerProps) {
   const i18n = useI18n();
   const containerNode = useRef<HTMLDivElement>(null);
-  const animationFrame = useRef<number | null>(null);
 
   const defaultRollupGroup: MenuGroupDescriptor = {
     title: i18n.translate('Polaris.ActionMenu.Actions.moreActions'),
@@ -45,41 +43,29 @@ export function ActionsMeasurer({
   );
 
   const handleMeasurement = useCallback(() => {
-    if (animationFrame.current) {
-      cancelAnimationFrame(animationFrame.current);
+    if (!containerNode.current) {
+      return;
     }
 
-    animationFrame.current = requestAnimationFrame(() => {
-      if (!containerNode.current) {
-        return;
-      }
+    const containerWidth = containerNode.current.offsetWidth;
+    const hiddenActionNodes = containerNode.current.children;
+    const hiddenActionNodesArray = Array.from(hiddenActionNodes);
+    const hiddenActionsWidths = hiddenActionNodesArray.map((node) => {
+      const buttonWidth = Math.ceil(node.getBoundingClientRect().width);
+      return buttonWidth + ACTION_SPACING;
+    });
+    const disclosureWidth = hiddenActionsWidths.pop() || 0;
 
-      const containerWidth = containerNode.current.offsetWidth;
-      const hiddenActionNodes = containerNode.current.children;
-      const hiddenActionNodesArray = Array.from(hiddenActionNodes);
-      const hiddenActionsWidths = hiddenActionNodesArray.map((node) => {
-        const buttonWidth = Math.ceil(node.getBoundingClientRect().width);
-        return buttonWidth + ACTION_SPACING;
-      });
-      const disclosureWidth = hiddenActionsWidths.pop() || 0;
-
-      handleMeasurementProp({
-        containerWidth,
-        disclosureWidth,
-        hiddenActionsWidths,
-      });
+    handleMeasurementProp({
+      containerWidth,
+      disclosureWidth,
+      hiddenActionsWidths,
     });
   }, [handleMeasurementProp]);
 
   useEffect(() => {
     handleMeasurement();
   }, [handleMeasurement, actions, groups]);
-
-  useComponentDidMount(() => {
-    if (process.env.NODE_ENV === 'development') {
-      setTimeout(handleMeasurement, 0);
-    }
-  });
 
   const actionsMarkup = actions.map((action) => {
     const {content, onAction, ...rest} = action;
