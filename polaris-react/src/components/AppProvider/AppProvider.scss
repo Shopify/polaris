@@ -92,3 +92,8 @@ button::-moz-focus-inner,
 [type='submit']::-moz-focus-inner {
   border-style: none;
 }
+
+// stylelint-disable-next-line selector-no-qualifying-type -- Workaround for `font-optical-sizing` issue in Safari 16 (https://clagnut.com/blog/2423)
+html[class~='Polaris-Safari-16-Remove-Font-Optical-Sizing'] {
+  font-variation-settings: 'opsz' 0;
+}
