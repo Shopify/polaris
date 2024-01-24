@@ -91,6 +91,12 @@ export function WithSegmentedButtons() {
           Neptune
         </Button>
       </ButtonGroup>
+      <br />
+      <ButtonGroup variant="segmented" fullWidth>
+        <Button>Bold</Button>
+        <Button>Italic</Button>
+        <Button>Underline</Button>
+      </ButtonGroup>
     </div>
   );
 }
