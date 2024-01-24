@@ -11,6 +11,7 @@ import {
   BlockStack,
   TextContainer,
 } from '@shopify/polaris';
+import {MagicIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Toast,
@@ -212,6 +213,80 @@ export function InsideModal() {
               </BlockStack>
             </Modal.Section>
           </Modal>
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
+export function Magic() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast
+      content="Magic message"
+      onDismiss={toggleActive}
+      tone="magic"
+      duration={3000000}
+    />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Default">
+          <Button onClick={toggleActive}>Show Magic Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
+export function WithOnClick() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast content="Message Toast" onClick={toggleActive} duration={3000000} />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Default">
+          <Button onClick={toggleActive}>Show Magic Toast</Button>
+          {toastMarkup}
+        </Page>
+      </Frame>
+    </div>
+  );
+}
+
+export function MagicWithOnClick() {
+  const [active, setActive] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const toastMarkup = active ? (
+    <Toast
+      content="Magic message"
+      tone="magic"
+      duration={3000000}
+      icon={MagicIcon}
+      onClick={toggleActive}
+    />
+  ) : null;
+
+  return (
+    <div style={{height: '250px'}}>
+      <Frame>
+        <Page title="Default">
+          <Button onClick={toggleActive}>Show Magic Toast</Button>
+          {toastMarkup}
         </Page>
       </Frame>
     </div>
