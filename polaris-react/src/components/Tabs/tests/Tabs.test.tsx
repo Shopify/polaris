@@ -82,7 +82,7 @@ describe('Tabs', () => {
   };
 
   describe('focus management', () => {
-    it.only('passes focus index to tab measurer', () => {
+    it('passes focus index to tab measurer', () => {
       const tabToFocus = 1;
       const relatedTarget = document.createElement('div');
       const wrapper = mountWithApp(<Tabs {...mockProps} tabs={tabs} />);
