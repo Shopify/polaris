@@ -36,11 +36,6 @@ export function SkeletonPage({
     // performance mark on skeleton unmount to help with page load tracking
     return () => {
       const mark = performance?.mark?.('polaris:page_skeleton:unmount');
-      console.log(
-        'unmounting skeleton...',
-        mark,
-        performance.getEntries().length,
-      );
     };
   }, []);
 
