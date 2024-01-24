@@ -93,9 +93,24 @@ export function WithSegmentedButtons() {
       </ButtonGroup>
       <br />
       <ButtonGroup variant="segmented" fullWidth>
-        <Button>Bold</Button>
-        <Button>Italic</Button>
-        <Button>Underline</Button>
+        <Button
+          pressed={activeButtonIndex === 8}
+          onClick={() => handleButtonClick(8)}
+        >
+          Bold
+        </Button>
+        <Button
+          pressed={activeButtonIndex === 9}
+          onClick={() => handleButtonClick(9)}
+        >
+          Italic
+        </Button>
+        <Button
+          pressed={activeButtonIndex === 10}
+          onClick={() => handleButtonClick(10)}
+        >
+          Underline
+        </Button>
       </ButtonGroup>
     </div>
   );
