@@ -17,7 +17,7 @@ import {
 import type {PreferredPosition, PreferredAlignment} from './utilities/math';
 import styles from './PositionedOverlay.module.scss';
 
-type Positioning = 'above' | 'below';
+type Positioning = 'above' | 'below' | 'cover';
 
 interface OverlayDetails {
   left?: number;

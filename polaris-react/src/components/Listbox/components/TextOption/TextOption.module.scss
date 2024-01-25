@@ -11,8 +11,9 @@
   @include focus-ring;
 
   &.allowMultiple {
-    margin: var(--p-space-100) var(--p-space-200) 0;
-    padding: var(--p-space-100) var(--p-space-200);
+    margin: 0;
+    padding: 0;
+    border-radius: var(--p-border-radius-0);
   }
 
   &.isAction {
@@ -85,6 +86,14 @@ li:first-of-type > .TextOption {
   display: flex;
 }
 
+.allowMultiple .Content {
+  padding: 0 var(--p-space-200);
+}
+
 .Checkbox {
   pointer-events: none;
+}
+
+.selectedMultiple {
+  background-color: var(--p-color-bg-surface-selected);
 }

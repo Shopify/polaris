@@ -30,6 +30,7 @@ export const TextOption = memo(function TextOption({
   const textOptionClassName = classNames(
     styles.TextOption,
     selected && !allowMultiple && styles.selected,
+    selected && allowMultiple && styles.selectedMultiple,
     disabled && styles.disabled,
     allowMultiple && styles.allowMultiple,
     isAction && styles.isAction,
