@@ -1,6 +1,6 @@
 # Deprecation guidelines
 
-Follow these guidelines for deprecating components, props, prop values, and tokens in future major versions of Polaris. A month before the next major version release ensure that deprecations have been announced and any migrations needed are documented/available.
+Follow these guidelines for deprecating [components](#components), [props](#props), [prop values](#prop-values), and [tokens](#tokens) in future major versions of Polaris. A month before the next major version release ensure that deprecations have been announced and any migrations needed are documented/available.
 
 ## Components
 
@@ -24,8 +24,8 @@ Follow these guidelines for deprecating components, props, prop values, and toke
 - Mark the prop as deprecated
   - Add `@deprecated` warning to component
     ````tsx
-      /** Decsription of the prop
-       * @deprecated Use [SOMETHING] instead
+      /** Description of the prop
+       * @deprecated Use [REPLACEMENT_ADVICE] instead
       */
       exampleProp?: boolean;
       ```
@@ -41,8 +41,8 @@ Follow these guidelines for deprecating components, props, prop values, and toke
 
 ## Prop values
 
-- Mark the prop value as deprecated
-  - Add component and deprecated prop value to `componentUnionTypeDeprecations` ([example](https://github.com/Shopify/polaris/blob/text-2xl-3xl-deprecation/polaris.shopify.com/pages/components/%5Bgroup%5D/%5Bcomponent%5D/index.tsx#L80))
+- Mark the prop value(s) as deprecated
+  - Add component, prop, and deprecated prop value(s) to `componentUnionTypeDeprecations` ([example](https://github.com/Shopify/polaris/blob/text-2xl-3xl-deprecation/polaris.shopify.com/pages/components/%5Bgroup%5D/%5Bcomponent%5D/index.tsx#L80))
     ```tsx
     const componentUnionTypeDeprecations: {
       [componentName: string]: {
