@@ -93,3 +93,19 @@
 .vertical {
   overflow-y: auto;
 }
+
+.scrollbarWidthThin {
+  scrollbar-width: thin;
+}
+
+.scrollbarWidthNone {
+  scrollbar-width: none;
+}
+
+.scrollbarGutterStable {
+  scrollbar-gutter: stable;
+}
+
+.scrollbarGutterStableBothEdges {
+  scrollbar-gutter: stable both-edges;
+}
