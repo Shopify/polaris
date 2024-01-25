@@ -6,10 +6,9 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from 'react';
-import {camelCase} from 'change-case';
 
 import {debounce} from '../../utilities/debounce';
-import {classNames, variationName} from '../../utilities/css';
+import {toCamelCase, classNames, variationName} from '../../utilities/css';
 import {
   StickyManager,
   StickyManagerContext,
@@ -157,7 +156,7 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       shadow && bottomShadow && styles.hasBottomShadow,
       scrollbarWidth && styles[variationName('scrollbarWidth', scrollbarWidth)],
       scrollbarGutter &&
-        styles[camelCase(variationName('scrollbarGutter', scrollbarGutter))],
+        styles[toCamelCase(variationName('scrollbarGutter', scrollbarGutter))],
     );
 
     return (
