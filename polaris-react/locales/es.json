@@ -159,7 +159,7 @@
       "moreFiltersWithCount": "Más filtros ({count})",
       "addFilter": "Agregar filtro",
       "clearFilters": "Borrar todo",
-      "searchInView": "in:{viewName}"
+      "searchInView": "en:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "marcado body",
