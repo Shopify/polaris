@@ -35,7 +35,7 @@ export function SkeletonPage({
   useEffect(() => {
     // performance mark on skeleton unmount to help with page load tracking
     return () => {
-      const mark = performance?.mark?.('polaris:page_skeleton:unmount');
+      performance?.mark?.('polaris:page_skeleton:unmount');
     };
   }, []);
 
