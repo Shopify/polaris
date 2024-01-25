@@ -16,6 +16,11 @@ $primary-action-button-width: 6.25rem;
   line-height: var(--p-font-line-height-700);
 }
 
+.SubTitle {
+  margin-top: var(--p-space-050);
+  color: var(--p-color-text-secondary);
+}
+
 .SkeletonTitle {
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;

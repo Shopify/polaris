@@ -4,12 +4,15 @@ import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
 import {BlockStack} from '../BlockStack';
 import {InlineStack} from '../InlineStack';
+import {Text} from '../Text';
 
 import styles from './SkeletonPage.module.scss';
 
 export interface SkeletonPageProps {
   /** Page title, in large type */
   title?: string;
+  /** Page title, in large type */
+  subtitle?: string;
   /** Remove the normal max-width on the page */
   fullWidth?: boolean;
   /** Decreases the maximum layout width. Intended for single-column layouts */
@@ -28,6 +31,7 @@ export function SkeletonPage({
   narrowWidth,
   primaryAction,
   title = '',
+  subtitle = '',
   backAction,
 }: SkeletonPageProps) {
   const i18n = useI18n();
@@ -42,6 +46,14 @@ export function SkeletonPage({
         minHeight="28px"
         borderRadius="100"
       />
+    </div>
+  );
+
+  const subtitleContent = subtitle && (
+    <div className={styles.SubTitle}>
+      <Text as="p" variant="bodySm">
+        {subtitle}
+      </Text>
     </div>
   );
 
@@ -95,6 +107,7 @@ export function SkeletonPage({
                 {backActionMarkup}
                 <Box paddingBlockStart="100" paddingBlockEnd="100">
                   {titleContent}
+                  {subtitleContent}
                 </Box>
               </InlineStack>
               {primaryActionMarkup}

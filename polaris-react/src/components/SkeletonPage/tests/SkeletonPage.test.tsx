@@ -66,6 +66,40 @@ describe('<SkeletonPage />', () => {
     });
   });
 
+  describe('subtitle', () => {
+    it('renders a div with the SubTitle class and a child p element when subtitle is defined', () => {
+      const subtitleText = 'Manage your product catalog';
+      const skeletonPage = mountWithApp(
+        <SkeletonPage subtitle={subtitleText} />,
+      );
+
+      expect(skeletonPage).toContainReactComponent('div', {
+        className: 'SubTitle',
+      });
+
+      const subTitleDiv = skeletonPage.find('div', {className: 'SubTitle'});
+      expect(subTitleDiv).toContainReactComponent('p', {
+        children: subtitleText,
+      });
+    });
+
+    it('renders nothing when subtitle is not defined', () => {
+      const skeletonPage = mountWithApp(<SkeletonPage />);
+
+      expect(skeletonPage).not.toContainReactComponent('div', {
+        className: 'SubTitle',
+      });
+    });
+
+    it('renders nothing when subtitle is empty', () => {
+      const skeletonPage = mountWithApp(<SkeletonPage subtitle="" />);
+
+      expect(skeletonPage).not.toContainReactComponent('div', {
+        className: 'SubTitle',
+      });
+    });
+  });
+
   it('renders backAction', () => {
     const skeletonPage = mountWithApp(<SkeletonPage backAction />);
     expect(skeletonPage).toContainReactComponent(Box, {
