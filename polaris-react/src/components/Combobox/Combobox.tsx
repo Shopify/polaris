@@ -15,6 +15,7 @@ import type {
   ComboboxListboxOptionType,
 } from '../../utilities/combobox';
 import {Box} from '../Box';
+import {classNames} from '../../utilities/css';
 
 import styles from './Combobox.module.scss';
 import {TextField} from './components';
@@ -167,7 +168,14 @@ export function Combobox({
         <ComboboxListboxOptionContext.Provider
           value={listboxOptionContextValue}
         >
-          <div className={styles.Listbox}>{children}</div>
+          <div
+            className={classNames(
+              styles.Listbox,
+              allowMultiple && styles.allowMultiple,
+            )}
+          >
+            {children}
+          </div>
         </ComboboxListboxOptionContext.Provider>
       </ComboboxListboxContext.Provider>
     </>

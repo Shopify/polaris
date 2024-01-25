@@ -62,8 +62,7 @@ export function calculateVerticalPosition(
     top:
       activatorBottom +
       containerRectTop -
-      activatorRect.height -
-      verticalMargins * 2,
+      (activatorRect.height + verticalMargins),
     positioning: 'cover',
   };
 
