@@ -146,7 +146,7 @@ export const getStaticProps: GetStaticProps<
         componentUnionTypeDeprecations[componentDirName],
       )) {
         if (!type[typeName]) continue;
-        console.log(type[typeName]);
+
         const typeValue = type[typeName].value;
 
         if (typeof typeValue !== 'string') continue;
