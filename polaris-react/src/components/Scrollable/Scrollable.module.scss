@@ -16,6 +16,7 @@
   max-height: var(--pc-scrollable-max-height);
   overflow-x: hidden;
   overflow-y: hidden;
+  scrollbar-width: thin;
 
   /* Prevent Scrollable's box shadows overflowing the rounded corners of this
    * element on Safari prior to tech preview version 156.

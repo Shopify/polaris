@@ -4,11 +4,11 @@ import {
   ArrowUpIcon,
   PlusIcon,
   SearchIcon,
-  // CollectionIcon,
-  // ArrowDownIcon,
 } from '@shopify/polaris-icons';
 
+import type {IconProps} from '../../../src';
 import {
+  UnstyledButton,
   Combobox,
   Listbox,
   Text,
@@ -33,6 +33,7 @@ interface Props {
   searchPlaceholder?: string;
   defaultSelected?: string[];
   options?: Option[];
+  optionIcon?: IconProps['source'];
 }
 
 export function Select({
@@ -40,12 +41,12 @@ export function Select({
   emptyStateTitle,
   searchPlaceholder,
   defaultSelected = [],
+  optionIcon,
   options: defaultOptions = [],
 }: Props) {
   const collapsibleId = React.useId();
   const [active, setActive] = React.useState(false);
   const [inputValue, setInputValue] = useState('');
-  const [options] = useState(defaultOptions);
   const [filteredOptions, setFilteredOptions] = useState(defaultOptions);
   const [collapsibleOpen, setCollapsibleOpen] = useState(false);
   const [selectedOptions, setSelectedOptions] =
@@ -92,7 +93,9 @@ export function Select({
     <Tag
       key={`option-${selectedOption}`}
       selectedOption={selectedOption}
-      options={options}
+      options={defaultOptions}
+      icon={optionIcon}
+      resourceTitle={resourceTitle}
     />
   ));
 
@@ -100,7 +103,9 @@ export function Select({
     <Tag
       key={`option-${selectedOption}`}
       selectedOption={selectedOption}
-      options={options}
+      options={defaultOptions}
+      icon={optionIcon}
+      resourceTitle={resourceTitle}
     />
   ));
 
@@ -119,23 +124,25 @@ export function Select({
       : null;
 
   const activator = (
-    <Box paddingBlockEnd={selectedOptions.length ? '150' : '0'}>
-      <InlineGrid columns="1fr auto" alignItems="center">
-        <Text as="h3" variant="bodySm" alignment="start" tone="subdued">
-          {selectedOptions.length ? resourceTitle : emptyStateTitle}
-        </Text>
+    <Box padding="200">
+      <Box paddingInlineStart="050">
+        <InlineGrid columns="1fr auto" alignItems="center">
+          <Text as="h3" variant="bodySm" alignment="start" tone="subdued">
+            {selectedOptions.length ? resourceTitle : emptyStateTitle}
+          </Text>
 
-        <Button
-          variant="tertiary"
-          icon={PlusIcon}
-          onClick={() => setActive((active) => !active)}
-        />
-      </InlineGrid>
+          <Button
+            variant="tertiary"
+            icon={PlusIcon}
+            onClick={() => setActive((active) => !active)}
+          />
+        </InlineGrid>
+      </Box>
     </Box>
   );
 
   return (
-    <Box padding="200" borderRadius="200" background="bg-surface-secondary">
+    <Box borderRadius="200" background="bg-surface-secondary">
       <Popover
         fullWidth
         active={active}
@@ -148,7 +155,11 @@ export function Select({
         activator={activator}
       >
         <Box paddingInline="200" paddingBlock="050" paddingBlockStart="200">
-          {resourceTitle}
+          <Box paddingInlineStart="050">
+            <Text as="span" tone="subdued" variant="bodySm">
+              {resourceTitle}
+            </Text>
+          </Box>
         </Box>
         <Combobox
           persistent
@@ -179,73 +190,102 @@ export function Select({
           }
         >
           {optionsMarkup ? (
-            <Listbox onSelect={updateSelection}>{[...optionsMarkup]}</Listbox>
-          ) : (
-            <Listbox>
-              {/* eslint-disable-next-line react/no-children-prop */}
-              <Listbox.Header children="no results" />
+            <Listbox onSelect={updateSelection}>
+              {inputValue !== '' && (
+                <Box paddingInline="300" paddingBlockEnd="100">
+                  {/* eslint-disable-next-line @shopify/jsx-no-hardcoded-content */}
+                  <Text as="span" variant="bodySm" tone="subdued">
+                    {`${filteredOptions.length} results`}
+                  </Text>
+                </Box>
+              )}
+              {optionsMarkup}
+              {inputValue !== '' && (
+                <>
+                  <Listbox.Action
+                    value={inputValue}
+                    icon={PlusIcon}
+                    accessibilityLabel="Add new tag"
+                  >
+                    {inputValue}
+                  </Listbox.Action>
+                  <Box paddingBlockEnd="100" />
+                </>
+              )}
             </Listbox>
+          ) : (
+            <>
+              <Box paddingInline="200">
+                {/* eslint-disable-next-line @shopify/jsx-no-hardcoded-content */}
+                <Text as="span" variant="bodySm" tone="subdued">
+                  No results
+                </Text>
+              </Box>
+              <Listbox onSelect={updateSelection}>
+                <Listbox.Action
+                  value={inputValue}
+                  icon={PlusIcon}
+                  accessibilityLabel="Add new tag"
+                >
+                  {inputValue}
+                </Listbox.Action>
+              </Listbox>
+              <Box paddingBlockEnd="100" />
+            </>
           )}
         </Combobox>
       </Popover>
       {visibleTagsMarkup.length > 0 && (
-        <BlockStack>{visibleTagsMarkup}</BlockStack>
+        <Box paddingInline="200">{visibleTagsMarkup}</Box>
       )}
       {remainingSelectedOptions.length > 0 && (
-        <>
+        <Box paddingInline="200" paddingBlockEnd="150">
           <Collapsible id={collapsibleId} open={collapsibleOpen}>
             <BlockStack>{hiddenTagsMarkup}</BlockStack>
           </Collapsible>
 
-          <Bleed marginInline="100" marginBlockEnd="200">
-            <Button
-              variant="tertiary"
-              size="micro"
+          <Box borderWidth="025" borderColor="border" borderRadius="100">
+            <UnstyledButton
+              style={{
+                padding: 'var(--p-space-075)',
+                background: 'none',
+                border: 'var(--p-border-width-1) solid var(--p-color-border)',
+                width: '100%',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                gap: 'var(--p-space-100)',
+                cursor: 'pointer',
+              }}
               onClick={() => setCollapsibleOpen((open) => !open)}
-              icon={collapsibleOpen ? ArrowUpIcon : ArrowDownIcon}
             >
+              <div>
+                <Icon
+                  source={collapsibleOpen ? ArrowUpIcon : ArrowDownIcon}
+                  tone="subdued"
+                />
+              </div>
               {collapsibleOpen
                 ? 'show less'
                 : `${remainingSelectedOptions.length} more`}
-            </Button>
-          </Bleed>
-        </>
+            </UnstyledButton>
+          </Box>
+        </Box>
       )}
     </Box>
-  );
-}
-
-function TagIcon() {
-  return (
-    <svg
-      width="20"
-      height="20"
-      viewBox="0 0 20 20"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M5.75 7.5C5.05964 7.5 4.5 8.05964 4.5 8.75V11.75C4.5 12.4404 5.05964 13 5.75 13H12.1716C12.5031 13 12.821 12.8683 13.0555 12.6339L15.2626 10.4268C15.3602 10.3291 15.3602 10.1709 15.2626 10.0732L13.0555 7.86612C12.821 7.6317 12.5031 7.5 12.1716 7.5H5.75ZM3 8.75C3 7.23122 4.23122 6 5.75 6H12.1716C12.9009 6 13.6004 6.28973 14.1161 6.80546L16.3232 9.01256C17.0066 9.69598 17.0066 10.804 16.3232 11.4874L14.1161 13.6945C13.6004 14.2103 12.9009 14.5 12.1716 14.5H5.75C4.23122 14.5 3 13.2688 3 11.75V8.75Z"
-        fill="black"
-      />
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M6 10.25C6 9.83579 6.33579 9.5 6.75 9.5H11.25C11.6642 9.5 12 9.83579 12 10.25C12 10.6642 11.6642 11 11.25 11H6.75C6.33579 11 6 10.6642 6 10.25Z"
-        fill="black"
-      />
-    </svg>
   );
 }
 
 function Tag({
   options,
   selectedOption,
+  icon,
+  resourceTitle,
 }: {
   options: Option[];
   selectedOption: string;
+  icon?: IconProps['source'];
+  resourceTitle?: string;
 }) {
   return (
     <Box
@@ -255,9 +295,14 @@ function Tag({
       paddingBlock="100"
     >
       <InlineStack gap="025">
-        <TagIcon />
+        {icon && (
+          <span>
+            <Icon source={icon} />
+          </span>
+        )}
         <Text as="span" variant="bodyMd">
-          {options?.find((option) => option.value === selectedOption)?.label}
+          {options?.find((option) => option.value === selectedOption)?.label ??
+            `new fake ${resourceTitle?.toLocaleLowerCase()}`}
         </Text>
       </InlineStack>
     </Box>

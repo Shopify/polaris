@@ -12,7 +12,7 @@ $vertical-motion-offset: -5px;
   will-change: left, top;
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-300),
-    $borderRadius: var(--p-border-radius-300),
+    $borderRadius: var(--p-border-radius-200),
     $zIndex: 2
   );
 }
@@ -59,7 +59,7 @@ $vertical-motion-offset: -5px;
   position: relative;
   overflow: hidden;
   background: var(--p-color-bg-surface);
-  border-radius: var(--p-space-300);
+  border-radius: var(--p-space-200);
 
   /* Prevent Scrollable's box shadows overflowing the rounded corners of this
    * element on Safari prior to tech preview version 156.
