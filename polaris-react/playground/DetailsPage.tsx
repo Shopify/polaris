@@ -31,7 +31,6 @@ import {
   Modal,
   Navigation,
   Page,
-  Select,
   SkeletonBodyText,
   SkeletonDisplayText,
   SkeletonPage,
@@ -54,7 +53,7 @@ import {
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
-import {ComplexMultiSelect} from './components';
+import {ComplexSingleSelect, ComplexMultiSelect} from './components';
 import styles from './DetailsPage.module.scss';
 
 export function DetailsPage() {
@@ -477,13 +476,6 @@ export function DetailsPage() {
     "The North Face Ventrix Active Trail Hybrid Hoodie - Men's",
   );
   const [descriptionValue, setDescriptionValue] = useState(initialDescription);
-  const [selected, setSelected] = useState('today');
-
-  const options = [
-    {label: 'Keyboard', value: 'keyboard'},
-    {label: 'Accessories', value: 'accessories'},
-    {label: 'Last 7 days', value: 'lastWeek'},
-  ];
 
   const handleChange = useCallback((newValue: string) => {
     setDescriptionValue(newValue);
@@ -634,7 +626,7 @@ export function DetailsPage() {
         </Layout.Section>
         <Layout.Section variant="oneThird">
           <Card>
-            <BlockStack gap="200">
+            <BlockStack gap="100">
               <InlineGrid columns="1fr auto" alignItems="center">
                 <Text as="h2" variant="headingSm">
                   Collections and tags
@@ -644,6 +636,35 @@ export function DetailsPage() {
                 </Tooltip>
               </InlineGrid>
 
+              <ComplexSingleSelect
+                resourceTitle="Category"
+                emptyStateTitle="None selected"
+                searchPlaceholder="Search or add new category"
+                defaultSelected="678901234"
+                options={[
+                  {value: '012345678', label: 'Furniture'},
+                  {value: '123456789', label: 'Lighting'},
+                  {value: '234567890', label: 'Decor'},
+                  {value: '345678901', label: 'Textiles'},
+                  {value: '456789012', label: 'Kitchen'},
+                  {value: '567890123', label: 'Rugs'},
+                  {value: '678901234', label: 'Outdoor'},
+                  {value: '789012345', label: 'Office'},
+                ]}
+              />
+              <ComplexSingleSelect
+                resourceTitle="Vendor"
+                emptyStateTitle="None selected"
+                searchPlaceholder="Search or add new vendor"
+                options={[
+                  {value: '012345678', label: 'Bryght'},
+                  {value: '123456789', label: 'Grovemade'},
+                  {value: '234567890', label: 'Haworth'},
+                  {value: '345678901', label: 'Knoll'},
+                  {value: '456789012', label: 'Kvell'},
+                  {value: '567890123', label: 'Montauk'},
+                ]}
+              />
               <ComplexMultiSelect
                 resourceTitle="Collections"
                 emptyStateTitle="No collections"
@@ -664,22 +685,13 @@ export function DetailsPage() {
                 emptyStateTitle="No tags"
                 optionIcon={TagIcon}
                 options={[
-                  {value: '012345678', label: 'Bryght'},
-                  {value: '123456789', label: 'Grovemade'},
-                  {value: '234567890', label: 'Haworth'},
-                  {value: '345678901', label: 'Knoll'},
-                  {value: '456789012', label: 'Kvell'},
-                  {value: '567890123', label: 'Montauk'},
-                  {value: '678901234', label: 'Poppin'},
-                  {value: '789012345', label: 'West Elm'},
+                  {value: '012345678', label: 'High seller'},
+                  {value: '123456789', label: 'Popular'},
+                  {value: '234567890', label: 'New'},
+                  {value: '345678901', label: 'On sale'},
+                  {value: '456789012', label: 'Low stock'},
+                  {value: '567890123', label: 'Back in stock'},
                 ]}
-              />
-              {/* Used for reference */}
-              <Select
-                label="Product type (Old select for reference)"
-                options={options}
-                onChange={setSelected}
-                value={selected}
               />
             </BlockStack>
           </Card>
