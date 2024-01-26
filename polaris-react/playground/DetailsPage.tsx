@@ -54,7 +54,7 @@ import {
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
-import {Select as NewSelect} from './components';
+import {ComplexMultiSelect} from './components';
 import styles from './DetailsPage.module.scss';
 
 export function DetailsPage() {
@@ -644,7 +644,7 @@ export function DetailsPage() {
                 </Tooltip>
               </InlineGrid>
 
-              <NewSelect
+              <ComplexMultiSelect
                 resourceTitle="Collections"
                 emptyStateTitle="No collections"
                 defaultSelected={['01234567', '12345678', '23456789']}
@@ -659,7 +659,7 @@ export function DetailsPage() {
                   {value: '67890123', label: 'Stool'},
                 ]}
               />
-              <NewSelect
+              <ComplexMultiSelect
                 resourceTitle="Tags"
                 emptyStateTitle="No tags"
                 optionIcon={TagIcon}
