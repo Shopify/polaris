@@ -92,3 +92,9 @@ button::-moz-focus-inner,
 [type='submit']::-moz-focus-inner {
   border-style: none;
 }
+
+// stylelint-disable-next-line selector-no-qualifying-type -- Workaround for `font-optical-sizing` issue in Safari 16 (Adapted from https://clagnut.com/blog/2423)
+html[class~='Polaris-Safari-16-Font-Optical-Sizing-Patch'] {
+  // Inter's "opsz" axis ranges from 14 to 32. This patch optimizes for smaller and less legible text by setting "opsz" 14 for all font sizes.
+  font-variation-settings: 'opsz' 14;
+}
