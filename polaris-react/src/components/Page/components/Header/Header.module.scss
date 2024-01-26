@@ -7,10 +7,13 @@ $action-menu-rollup-computed-width: 40px;
   margin-top: var(--p-space-100);
   align-self: center;
   flex: 1 1 auto;
-  min-width: fit-content;
 
   @media (--p-breakpoints-sm-up) {
     margin-top: 0;
+  }
+
+  .mediumTitle & {
+    min-width: fit-content;
   }
 }
 
