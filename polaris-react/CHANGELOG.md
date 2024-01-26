@@ -1,5 +1,49 @@
 # Changelog
 
+## 12.11.0
+
+### Minor Changes
+
+- [#11474](https://github.com/Shopify/polaris/pull/11474) [`26b3afb3d`](https://github.com/Shopify/polaris/commit/26b3afb3d711d04498d973ce26bcb74af8b99ff5) Thanks [@mrcthms](https://github.com/mrcthms)! - [BulkActions and SelectAllActions] Ensure backwards compatibilility after prop reorganisation between components
+
+* [#11497](https://github.com/Shopify/polaris/pull/11497) [`d50cc6d91`](https://github.com/Shopify/polaris/commit/d50cc6d91bb1aae6a49d03e255c1e0aae180fbbb) Thanks [@mrcthms](https://github.com/mrcthms)! - Improved test reliability for non-rolled up actions in `ActionMenu`
+
+- [#10981](https://github.com/Shopify/polaris/pull/10981) [`2dcc73f1a`](https://github.com/Shopify/polaris/commit/2dcc73f1a02767c582b15fed3058561befeea7f9) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the sticky behaviour of BulkActions, SelectAllActions, and Pagination for our tables and lists
+
+* [#11441](https://github.com/Shopify/polaris/pull/11441) [`74174b6c1`](https://github.com/Shopify/polaris/commit/74174b6c170c9d575d9ae41bf4287b1844008bcd) Thanks [@mrcthms](https://github.com/mrcthms)! - Improved the logic of action rollup and calculation of available space in `ActionMenu` and `Tabs`
+
+- [#11491](https://github.com/Shopify/polaris/pull/11491) [`ac004fc97`](https://github.com/Shopify/polaris/commit/ac004fc97f2a9d942c16d2b984f4d9c3450eb8fe) Thanks [@lgriffee](https://github.com/lgriffee)! - [`Button`] Remove underline from `monochromePlain` default state
+
+* [#11486](https://github.com/Shopify/polaris/pull/11486) [`02a6d9b18`](https://github.com/Shopify/polaris/commit/02a6d9b186c618fadacf36b548db0816afb49ae0) Thanks [@translation-platform](https://github.com/apps/translation-platform)! - Updated translations for SearchField suffix within IndexFilters
+
+- [#11344](https://github.com/Shopify/polaris/pull/11344) [`c9abd3c0c`](https://github.com/Shopify/polaris/commit/c9abd3c0cb532f2fcb49a716507d5dd478ce10d9) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added Polaris Tokens for Mobile typography
+
+* [#11412](https://github.com/Shopify/polaris/pull/11412) [`f1b44ab57`](https://github.com/Shopify/polaris/commit/f1b44ab57d8de2f72b39434d57985f72d204e330) Thanks [@mrcthms](https://github.com/mrcthms)! - [TextField] Updated the TextField with new `autoSize` and `loading` props
+
+- [#11431](https://github.com/Shopify/polaris/pull/11431) [`f9b9fa4e8`](https://github.com/Shopify/polaris/commit/f9b9fa4e8b8002c5d2125248c8dc5c14afce24e6) Thanks [@lone-star](https://github.com/lone-star)! - Added `tone`, `icon`, and `onClick` props to `Toast`
+
+### Patch Changes
+
+- [#11464](https://github.com/Shopify/polaris/pull/11464) [`2ee7dbd30`](https://github.com/Shopify/polaris/commit/2ee7dbd30f54f9f795ea3c52ab8fb750e9daade3) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated `Button` shadow tokens and replaced hardcoded box-shadow values
+
+* [#11504](https://github.com/Shopify/polaris/pull/11504) [`1910c6975`](https://github.com/Shopify/polaris/commit/1910c69755d1dac764b1c6ee7cafa04a7e218d47) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated Page Header to only ensure no wrapping of the title when the title is relatively short
+
+- [#11473](https://github.com/Shopify/polaris/pull/11473) [`6579537e4`](https://github.com/Shopify/polaris/commit/6579537e480e6b288955b3df15f93e9e6eb4b580) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fixed focus ring size for plain and plain monochrome Button variants
+
+* [#11487](https://github.com/Shopify/polaris/pull/11487) [`4aabf7c1a`](https://github.com/Shopify/polaris/commit/4aabf7c1a852b9c10174e1699cb32eed2c5de94f) Thanks [@yurm04](https://github.com/yurm04)! - [Modal] Fixed Footer position to bottom of container
+
+- [#11466](https://github.com/Shopify/polaris/pull/11466) [`1953b6935`](https://github.com/Shopify/polaris/commit/1953b6935516db5d9ca77888ee41ffda1c2e80df) Thanks [@mrcthms](https://github.com/mrcthms)! - [TextField] Fixed positional issue of loading indicator when no clear button is present
+
+* [#11462](https://github.com/Shopify/polaris/pull/11462) [`2febd60f1`](https://github.com/Shopify/polaris/commit/2febd60f155ece49ce0e48c074ae20c3de8961bb) Thanks [@sophschneider](https://github.com/sophschneider)! - Lowered the z-index of `Filter`s container to be below `Card` shadow bevel
+
+- [#11467](https://github.com/Shopify/polaris/pull/11467) [`75cbcd70b`](https://github.com/Shopify/polaris/commit/75cbcd70bb3011c4eb68b7be322104b2b8ed2b7a) Thanks [@kyledurand](https://github.com/kyledurand)! - Increased contrast on Tooltip underline
+
+* [#11482](https://github.com/Shopify/polaris/pull/11482) [`59371946c`](https://github.com/Shopify/polaris/commit/59371946ce2399f6e441235dedb5f74ce5fee7be) Thanks [@translation-platform](https://github.com/apps/translation-platform)! - [SearchField] Updated translation
+
+* Updated dependencies [[`2ee7dbd30`](https://github.com/Shopify/polaris/commit/2ee7dbd30f54f9f795ea3c52ab8fb750e9daade3), [`c9abd3c0c`](https://github.com/Shopify/polaris/commit/c9abd3c0cb532f2fcb49a716507d5dd478ce10d9), [`b786bb93c`](https://github.com/Shopify/polaris/commit/b786bb93c153f853323ac2c2170ec4fb5bdfbecb)]:
+  - @shopify/polaris-tokens@8.6.0
+  - @shopify/polaris-icons@8.1.0
+
 ## 12.10.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.1.0
+
+### Minor Changes
+
+- [#11478](https://github.com/Shopify/polaris/pull/11478) [`b786bb93c`](https://github.com/Shopify/polaris/commit/b786bb93c153f853323ac2c2170ec4fb5bdfbecb) Thanks [@Rusty-UX](https://github.com/Rusty-UX)! - Added DatabaseConnectIcon
+
 ## 8.0.0
 
 ### Major Changes

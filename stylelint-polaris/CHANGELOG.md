@@ -1,5 +1,16 @@
 # Changelog
 
+## 15.1.0
+
+### Minor Changes
+
+- [#11344](https://github.com/Shopify/polaris/pull/11344) [`c9abd3c0c`](https://github.com/Shopify/polaris/commit/c9abd3c0cb532f2fcb49a716507d5dd478ce10d9) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Updated `typography` `declaration-property-value-disallowed-list` to support Polaris Tokens `text` variants
+
+### Patch Changes
+
+- Updated dependencies [[`2ee7dbd30`](https://github.com/Shopify/polaris/commit/2ee7dbd30f54f9f795ea3c52ab8fb750e9daade3), [`c9abd3c0c`](https://github.com/Shopify/polaris/commit/c9abd3c0cb532f2fcb49a716507d5dd478ce10d9)]:
+  - @shopify/polaris-tokens@8.6.0
+
 ## 15.0.7
 
 ### Patch Changes
