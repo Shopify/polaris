@@ -1,5 +1,15 @@
 # Changelog
 
+## 8.6.0
+
+### Minor Changes
+
+- [#11344](https://github.com/Shopify/polaris/pull/11344) [`c9abd3c0c`](https://github.com/Shopify/polaris/commit/c9abd3c0cb532f2fcb49a716507d5dd478ce10d9) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added Polaris Tokens for Mobile typography
+
+### Patch Changes
+
+- [#11464](https://github.com/Shopify/polaris/pull/11464) [`2ee7dbd30`](https://github.com/Shopify/polaris/commit/2ee7dbd30f54f9f795ea3c52ab8fb750e9daade3) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated `Button` shadow tokens and replaced hardcoded box-shadow values
+
 ## 8.5.0
 
 ### Minor Changes

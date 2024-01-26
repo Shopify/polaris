@@ -1,5 +1,26 @@
 # polaris.shopify.com
 
+## 0.62.0
+
+### Minor Changes
+
+- [#11506](https://github.com/Shopify/polaris/pull/11506) [`c19b0f638`](https://github.com/Shopify/polaris/commit/c19b0f638919a195dc351e0bbf6630a349ae1749) Thanks [@lgriffee](https://github.com/lgriffee)! - Added ability to mark prop values as deprecated
+
+### Patch Changes
+
+- [#11457](https://github.com/Shopify/polaris/pull/11457) [`966d1901e`](https://github.com/Shopify/polaris/commit/966d1901ece0a199de53d024c329885e86f77b3b) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Added fallback to no active icon on Icons page when not a valid icon name is used in the search param
+
+* [#11466](https://github.com/Shopify/polaris/pull/11466) [`1953b6935`](https://github.com/Shopify/polaris/commit/1953b6935516db5d9ca77888ee41ffda1c2e80df) Thanks [@mrcthms](https://github.com/mrcthms)! - [TextField] Fixed positional issue of loading indicator when no clear button is present
+
+- [#11461](https://github.com/Shopify/polaris/pull/11461) [`d26df7eb0`](https://github.com/Shopify/polaris/commit/d26df7eb08fe18ef6c4bfb5ff8c09e6cfa10e067) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Added deprecation warning to old icon names informing users to use the new icon name
+
+* [#11467](https://github.com/Shopify/polaris/pull/11467) [`75cbcd70b`](https://github.com/Shopify/polaris/commit/75cbcd70bb3011c4eb68b7be322104b2b8ed2b7a) Thanks [@kyledurand](https://github.com/kyledurand)! - Increased contrast on Tooltip underline
+
+* Updated dependencies [[`26b3afb3d`](https://github.com/Shopify/polaris/commit/26b3afb3d711d04498d973ce26bcb74af8b99ff5), [`2ee7dbd30`](https://github.com/Shopify/polaris/commit/2ee7dbd30f54f9f795ea3c52ab8fb750e9daade3), [`1910c6975`](https://github.com/Shopify/polaris/commit/1910c69755d1dac764b1c6ee7cafa04a7e218d47), [`d50cc6d91`](https://github.com/Shopify/polaris/commit/d50cc6d91bb1aae6a49d03e255c1e0aae180fbbb), [`6579537e4`](https://github.com/Shopify/polaris/commit/6579537e480e6b288955b3df15f93e9e6eb4b580), [`2dcc73f1a`](https://github.com/Shopify/polaris/commit/2dcc73f1a02767c582b15fed3058561befeea7f9), [`74174b6c1`](https://github.com/Shopify/polaris/commit/74174b6c170c9d575d9ae41bf4287b1844008bcd), [`4aabf7c1a`](https://github.com/Shopify/polaris/commit/4aabf7c1a852b9c10174e1699cb32eed2c5de94f), [`ac004fc97`](https://github.com/Shopify/polaris/commit/ac004fc97f2a9d942c16d2b984f4d9c3450eb8fe), [`1953b6935`](https://github.com/Shopify/polaris/commit/1953b6935516db5d9ca77888ee41ffda1c2e80df), [`02a6d9b18`](https://github.com/Shopify/polaris/commit/02a6d9b186c618fadacf36b548db0816afb49ae0), [`c9abd3c0c`](https://github.com/Shopify/polaris/commit/c9abd3c0cb532f2fcb49a716507d5dd478ce10d9), [`2febd60f1`](https://github.com/Shopify/polaris/commit/2febd60f155ece49ce0e48c074ae20c3de8961bb), [`b786bb93c`](https://github.com/Shopify/polaris/commit/b786bb93c153f853323ac2c2170ec4fb5bdfbecb), [`75cbcd70b`](https://github.com/Shopify/polaris/commit/75cbcd70bb3011c4eb68b7be322104b2b8ed2b7a), [`f1b44ab57`](https://github.com/Shopify/polaris/commit/f1b44ab57d8de2f72b39434d57985f72d204e330), [`f9b9fa4e8`](https://github.com/Shopify/polaris/commit/f9b9fa4e8b8002c5d2125248c8dc5c14afce24e6), [`59371946c`](https://github.com/Shopify/polaris/commit/59371946ce2399f6e441235dedb5f74ce5fee7be)]:
+  - @shopify/polaris@12.11.0
+  - @shopify/polaris-tokens@8.6.0
+  - @shopify/polaris-icons@8.1.0
+
 ## 0.61.9
 
 ### Patch Changes
