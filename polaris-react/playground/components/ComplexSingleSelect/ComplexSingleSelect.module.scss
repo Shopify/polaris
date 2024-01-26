@@ -1,0 +1,25 @@
+.Activator {
+  background: none;
+  outline: none;
+  padding: var(--p-space-200) var(--p-space-300);
+  border-radius: var(--p-border-radius-200);
+  border: var(--p-border-width-025) solid var(--p-color-border);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--p-color-bg-surface-hover);
+  }
+
+  &:active {
+    background-color: var(--p-color-bg-surface-active);
+  }
+
+  &:focus:not(:active) {
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+    outline-offset: var(--p-space-025);
+  }
+}

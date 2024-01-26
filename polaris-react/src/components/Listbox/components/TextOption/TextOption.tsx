@@ -36,17 +36,19 @@ export const TextOption = memo(function TextOption({
     isAction && styles.isAction,
   );
 
-  const optionMarkup = selected ? (
+  const optionMarkup = (
     <Box width="100%">
-      <InlineStack wrap={false} align="space-between" gap="200">
-        {children}
-        <InlineStack align="end">
-          <Icon source={CheckIcon} />
+      <InlineStack wrap={false} gap="100">
+        <InlineStack align="start">
+          {selected ? (
+            <Icon source={CheckIcon} />
+          ) : (
+            <Box width="20px" minHeight="20px" />
+          )}
         </InlineStack>
+        {children}
       </InlineStack>
     </Box>
-  ) : (
-    <>{children}</>
   );
 
   return (
