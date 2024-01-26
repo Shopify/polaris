@@ -97,6 +97,11 @@
   color: var(--pc-button-color_hover);
   outline: var(--p-border-width-050) solid var(--p-color-border-focus);
   outline-offset: var(--p-space-025);
+
+  // Disable focus-ring mixin to prevent overlap of focus-ring and outline
+  &::after {
+    content: none;
+  }
 }
 
 .Button:disabled,
@@ -384,5 +389,13 @@
 [data-buttongroup-variant='segmented'] > *:not(:last-child) .Button {
   border-top-right-radius: var(--p-border-radius-0);
   border-bottom-right-radius: var(--p-border-radius-0);
+}
+
+[data-buttongroup-full-width='true'] .Button {
+  width: 100%;
+
+  @media (--p-breakpoints-md-up) {
+    white-space: nowrap;
+  }
 }
 /* stylelint-enable -- selector-max-combinators */
