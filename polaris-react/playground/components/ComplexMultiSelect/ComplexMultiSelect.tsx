@@ -27,7 +27,7 @@ interface Option {
   value: string;
   label: string;
 }
-interface Props {
+interface ComplexMultiSelectProps {
   resourceTitle: string;
   emptyStateTitle: string;
   searchPlaceholder?: string;
@@ -36,14 +36,14 @@ interface Props {
   optionIcon?: IconProps['source'];
 }
 
-export function Select({
+export function ComplexMultiSelect({
   resourceTitle,
   emptyStateTitle,
   searchPlaceholder,
   defaultSelected = [],
   optionIcon,
   options: defaultOptions = [],
-}: Props) {
+}: ComplexMultiSelectProps) {
   const collapsibleId = React.useId();
   const [active, setActive] = React.useState(false);
   const [inputValue, setInputValue] = useState('');
