@@ -118,7 +118,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
 
       if (isSafari16) {
         document.documentElement.classList.add(
-          'Polaris-Safari-16-Remove-Font-Optical-Sizing',
+          'Polaris-Safari-16-Font-Optical-Sizing-Patch',
         );
       }
     }
