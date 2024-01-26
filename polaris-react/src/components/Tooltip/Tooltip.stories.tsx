@@ -333,7 +333,6 @@ export function WithSuffix() {
                 </Text>
               </InlineStack>
             }
-            activatorWrapper="div"
           >
             <Button>B</Button>
           </Tooltip>

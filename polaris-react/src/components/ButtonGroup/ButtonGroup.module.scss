@@ -40,7 +40,7 @@
     line-height: 1;
 
     &:not(:first-child) {
-      margin-left: calc(-0.5 * var(--p-space-025));
+      margin-left: calc(-1 * var(--p-space-025));
     }
   }
 
