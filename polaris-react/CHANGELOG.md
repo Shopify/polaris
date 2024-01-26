@@ -1,5 +1,13 @@
 # Changelog
 
+## 12.11.1
+
+### Patch Changes
+
+- [#11499](https://github.com/Shopify/polaris/pull/11499) [`a6ac9928a`](https://github.com/Shopify/polaris/commit/a6ac9928adc63c00c87780d10a6293705ad0b524) Thanks [@laurkim](https://github.com/laurkim)! - Fixed layout and focus styling for `Button` inside `ButtonGroup` with `fullWidth`
+
+* [#11503](https://github.com/Shopify/polaris/pull/11503) [`fb7d96821`](https://github.com/Shopify/polaris/commit/fb7d96821d4922ba9ac5be034b5ea8eac5a02bdc) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added workaround for `font-optical-sizing` issue in Safari 16
+
 ## 12.11.0
 
 ### Minor Changes
