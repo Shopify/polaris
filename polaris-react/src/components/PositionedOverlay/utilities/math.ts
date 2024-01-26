@@ -66,6 +66,12 @@ export function calculateVerticalPosition(
     positioning: 'cover',
   };
 
+  const positionIfCoverAbove = {
+    height: heightIfAbove - verticalMargins,
+    top: activatorTop + containerRectTop - heightIfAbove + activatorRect.height,
+    positioning: 'cover',
+  };
+
   if (preferredPosition === 'above') {
     return (enoughSpaceFromTopScroll ||
       (distanceToTopScroll >= distanceToBottomScroll &&
@@ -90,7 +96,7 @@ export function calculateVerticalPosition(
         !enoughSpaceFromTopScroll)) &&
       (spaceBelow > desiredHeight || spaceBelow > spaceAbove)
       ? positionIfCoverBelow
-      : positionIfAbove;
+      : positionIfCoverAbove;
   }
 
   if (enoughSpaceFromTopScroll && enoughSpaceFromBottomScroll) {
