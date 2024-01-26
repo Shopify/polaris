@@ -1,1 +1,1 @@
-export * from './Select/Select';
+export * from './ComplexMultiSelect/ComplexMultiSelect';
