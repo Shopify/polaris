@@ -1,7 +1,6 @@
 {
   // Root config used to specify which TS files to lint
   // https://typescript-eslint.io/docs/linting/monorepo/#one-root-tsconfigjson
-
   "compilerOptions": {
     // Ensures this config is not used for a build
     "noEmit": true
@@ -14,6 +13,7 @@
     "polaris-react",
     "polaris-tokens",
     "polaris.shopify.com",
-    "stylelint-polaris"
+    "stylelint-polaris",
+    "polaris-icons"
   ]
 }
