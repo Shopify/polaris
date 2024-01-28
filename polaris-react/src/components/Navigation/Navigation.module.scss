@@ -384,6 +384,14 @@ $nav-max-width: 360px;
   @include nav-item-icon-attributes;
 }
 
+.Icon svg,
+.Icon img {
+  @media (--p-breakpoints-md-up) {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 .ListItem {
   @include nav-list-item-attributes;
 

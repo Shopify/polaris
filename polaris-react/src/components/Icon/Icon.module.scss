@@ -1,7 +1,9 @@
 @import '../../styles/common';
 
 .Icon {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 20px;
   width: 20px;
   max-height: 100%;
@@ -11,6 +13,13 @@
 
 .Icon svg {
   fill: currentColor;
+  height: 20px;
+  width: 20px;
+
+  @media (--p-breakpoints-md-up) {
+    height: 16px;
+    width: 16px;
+  }
 }
 
 .toneInherit svg {
