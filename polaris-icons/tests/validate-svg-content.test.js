@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 const svgo = require('svgo');
 const globby = require('globby');
 const unified = require('unified');
@@ -8,8 +9,6 @@ const parse = require('rehype-parse');
 const {select, selectAll} = require('hast-util-select');
 
 const svgoConfig = require('../svgo.config');
-
-const nameRegex = /(?<=)(Major|Minor)(?=\.svg)/;
 
 const allIconFiles = globby
   .sync(path.resolve(__dirname, '../icons/*.svg'))
@@ -29,14 +28,7 @@ const allIconFiles = globby
   });
 
 allIconFiles.forEach(
-  ({
-    iconPath,
-    iconSource,
-    optimizedSource,
-    iconAst,
-    expectedViewbox,
-    expectedFillColors,
-  }) => {
+  ({iconPath, iconSource, optimizedSource, iconAst, expectedViewbox}) => {
     describe(`SVG Contents: packages/${iconPath}`, () => {
       it(`is optimized`, () => {
         expect(iconSource).toStrictEqual(optimizedSource);
