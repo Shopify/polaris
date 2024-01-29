@@ -398,4 +398,12 @@
     white-space: nowrap;
   }
 }
+
+[data-buttongroup-connected-top='true'] > *:first-child .Button {
+  border-top-left-radius: var(--p-border-radius-0);
+}
+
+[data-buttongroup-connected-top='true'] > *:last-child .Button {
+  border-top-right-radius: var(--p-border-radius-0);
+}
 /* stylelint-enable -- selector-max-combinators */
