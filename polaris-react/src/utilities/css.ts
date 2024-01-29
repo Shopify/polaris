@@ -106,7 +106,3 @@ export function getResponsiveValue<T = string>(
     ]),
   );
 }
-
-export function toCamelCase(string: string) {
-  return string.replace(/(-| )([a-z])/g, (_, __, match) => match.toUpperCase());
-}
