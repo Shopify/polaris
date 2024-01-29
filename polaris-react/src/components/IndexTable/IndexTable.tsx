@@ -186,6 +186,7 @@ function IndexTableBase({
 
   const scrollableContainerElement = useRef<HTMLDivElement>(null);
   const tableElement = useRef<HTMLTableElement>(null);
+  const tableBodyElement = useRef<Element | null>(null);
   const condensedListElement = useRef<HTMLUListElement>(null);
   const loadingElement = useRef<HTMLDivElement>(null);
 
@@ -236,15 +237,35 @@ function IndexTableBase({
 
   useEffect(() => {
     computeTableDimensions();
-    // eslint-disable-next-line no-console
-    console.log('children', children, itemCount);
-  }, [computeTableDimensions, itemCount, children]);
+  }, [computeTableDimensions, itemCount]);
+
+  useEffect(() => {
+    const callback = (mutationList: MutationRecord[]) => {
+      for (const mutation of mutationList) {
+        if (mutation.type === 'childList') {
+          computeTableDimensions();
+        }
+      }
+    };
+    const mutationObserver = new MutationObserver(callback);
+
+    if (tableBodyElement.current) {
+      mutationObserver.observe(tableBodyElement.current, {
+        childList: true,
+      });
+
+      return () => {
+        mutationObserver.disconnect();
+      };
+    }
+  }, [computeTableDimensions]);
 
   const tableBodyRef = useCallback(
     (node: Element | null) => {
       if (node !== null && !tableInitialized) {
         setTableInitialized(true);
       }
+      tableBodyElement.current = node;
     },
     [tableInitialized],
   );

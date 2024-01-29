@@ -806,31 +806,48 @@ describe('<IndexTable>', () => {
 
       expect(computeTableDimensions).toHaveBeenCalledTimes(2);
     });
+  });
 
-    it('invokes the computeTableDimensions callback when the children changes', () => {
-      const computeTableDimensions = jest.fn();
-      mockUseIsSelectAllActionsSticky({
-        selectAllActionsIntersectionRef: {current: null},
-        tableMeasurerRef: {current: null},
-        isSelectAllActionsSticky: false,
-        selectAllActionsAbsoluteOffset: 0,
-        selectAllActionsMaxWidth: 0,
-        selectAllActionsOffsetLeft: 0,
-        computeTableDimensions,
-        isScrolledPastTop: false,
-        scrollbarPastTopOffset: 0,
-        selectAllActionsPastTopOffset: 0,
-      });
-      const index = mountWithApp(
+  describe('mutation observer', () => {
+    let mutationObserverObserveSpy: jest.SpyInstance;
+    let mutationObserverDisconnectSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      mutationObserverObserveSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'observe',
+      );
+      mutationObserverDisconnectSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'disconnect',
+      );
+    });
+
+    afterEach(() => {
+      mutationObserverObserveSpy.mockRestore();
+      mutationObserverDisconnectSpy.mockRestore();
+    });
+
+    it('observes the activator', () => {
+      mountWithApp(
         <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>,
       );
-      expect(computeTableDimensions).toHaveBeenCalledTimes(1);
 
-      index.setProps({children: <div>Changed</div>});
+      expect(mutationObserverObserveSpy).toHaveBeenCalledTimes(1);
+    });
 
-      expect(computeTableDimensions).toHaveBeenCalledTimes(2);
+    it('disconnects the observer when componentWillUnMount', () => {
+      const overlay = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      overlay.unmount();
+
+      expect(mutationObserverDisconnectSpy).toHaveBeenCalled();
     });
   });
 
