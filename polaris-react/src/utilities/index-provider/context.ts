@@ -1,3 +1,4 @@
+import type React from 'react';
 import {createContext} from 'react';
 
 import type {SelectionType, SELECT_ALL_ITEMS, Range} from './types';
@@ -42,3 +43,24 @@ export interface IndexRowContextType {
 export const IndexRowContext = createContext<IndexRowContextType | undefined>(
   undefined,
 );
+
+export interface IndexCellContextType {
+  previewActivatorWrapperClassName: string;
+  onMouseEnterCell(
+    preview: React.ReactNode,
+  ): (event: React.MouseEvent<HTMLDivElement>) => void;
+  onMouseLeaveCell(event: React.MouseEvent<HTMLDivElement>): void;
+}
+
+export const IndexCellContext = createContext<IndexCellContextType | undefined>(
+  undefined,
+);
+
+export interface IndexCellPreviewContextType {
+  activeCellPreview: React.ReactNode;
+  currentCellPreviewActivator: HTMLElement | null;
+}
+
+export const IndexCellPreviewContext = createContext<
+  IndexCellPreviewContextType | undefined
+>(undefined);
