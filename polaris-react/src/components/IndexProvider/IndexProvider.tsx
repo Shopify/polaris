@@ -1,4 +1,4 @@
-import React, {useMemo, useState} from 'react';
+import React, {useMemo, useState, useRef} from 'react';
 
 import {
   IndexContext,
@@ -40,8 +40,9 @@ export function IndexProvider({
 
   const handleSelectionChange = useHandleBulkSelection({onSelectionChange});
 
-  const [activeCellPreview, setActiveCellPreview] =
-    useState<React.ReactNode | null>();
+  const previewRef: React.RefObject<{preview: React.ReactNode}> = useRef({
+    preview: null,
+  });
 
   const {
     className: previewActivatorWrapperClassName,
@@ -56,12 +57,18 @@ export function IndexProvider({
     const handleMouseEnterCell =
       (preview: React.ReactNode) =>
       (event: React.MouseEvent<HTMLDivElement>) => {
-        setActiveCellPreview(preview);
+        console.log('Mouse entered cell');
+        if (previewRef?.current) {
+          previewRef.current.preview = preview;
+        }
         handleMouseEnterActivator(event);
       };
 
     const handleMouseLeaveCell = (event: React.MouseEvent<HTMLDivElement>) => {
-      setActiveCellPreview(null);
+      console.log('Mouse left cell');
+      if (previewRef?.current) {
+        previewRef.current.preview = null;
+      }
       handleMouseLeaveActivator(event);
     };
 
@@ -73,6 +80,7 @@ export function IndexProvider({
         }
       : undefined;
   }, [
+    previewRef,
     hasCellPreviews,
     previewActivatorWrapperClassName,
     handleMouseEnterActivator,
@@ -80,8 +88,11 @@ export function IndexProvider({
   ]);
 
   const cellPreviewContextValue = useMemo(
-    () => ({activeCellPreview, currentCellPreviewActivator}),
-    [activeCellPreview, currentCellPreviewActivator],
+    () => ({
+      activeCellPreview: previewRef.current?.preview,
+      currentCellPreviewActivator,
+    }),
+    [previewRef, currentCellPreviewActivator],
   );
 
   const contextValue = useMemo(
