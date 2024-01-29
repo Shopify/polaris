@@ -58,6 +58,8 @@ $nav-max-width: 360px;
   align-items: stretch;
   max-width: 100%;
   padding-top: var(--p-space-100);
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
 
   @media (--p-breakpoints-md-up) {
     padding-top: var(--p-space-400);
