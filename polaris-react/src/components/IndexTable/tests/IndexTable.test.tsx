@@ -806,6 +806,32 @@ describe('<IndexTable>', () => {
 
       expect(computeTableDimensions).toHaveBeenCalledTimes(2);
     });
+
+    it('invokes the computeTableDimensions callback when the children changes', () => {
+      const computeTableDimensions = jest.fn();
+      mockUseIsSelectAllActionsSticky({
+        selectAllActionsIntersectionRef: {current: null},
+        tableMeasurerRef: {current: null},
+        isSelectAllActionsSticky: false,
+        selectAllActionsAbsoluteOffset: 0,
+        selectAllActionsMaxWidth: 0,
+        selectAllActionsOffsetLeft: 0,
+        computeTableDimensions,
+        isScrolledPastTop: false,
+        scrollbarPastTopOffset: 0,
+        selectAllActionsPastTopOffset: 0,
+      });
+      const index = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+      expect(computeTableDimensions).toHaveBeenCalledTimes(1);
+
+      index.setProps({children: <div>Changed</div>});
+
+      expect(computeTableDimensions).toHaveBeenCalledTimes(2);
+    });
   });
 
   describe('pagination', () => {

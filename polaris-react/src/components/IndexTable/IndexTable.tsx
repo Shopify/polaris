@@ -236,7 +236,7 @@ function IndexTableBase({
 
   useEffect(() => {
     computeTableDimensions();
-  }, [computeTableDimensions, itemCount]);
+  }, [computeTableDimensions, itemCount, children]);
 
   const tableBodyRef = useCallback(
     (node: Element | null) => {
