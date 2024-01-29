@@ -41,30 +41,26 @@ export const Cell = memo(function Cell({
   id,
   preview,
 }: CellProps) {
+  const indexCellContext = useIndexCell();
+  const hasPreview = preview && indexCellContext;
   const className = classNames(
     customClassName,
     styles.TableCell,
     flush && styles['TableCell-flush'],
+    hasPreview && indexCellContext.previewActivatorWrapperClassName,
   );
-
-  const indexCellContext = useIndexCell();
-
-  const childMarkup =
-    preview && indexCellContext ? (
-      <div
-        className={indexCellContext.previewActivatorWrapperClassName}
-        onMouseEnter={indexCellContext?.onMouseEnterCell(preview)}
-        onMouseLeave={indexCellContext.onMouseLeaveCell}
-      >
-        {children}
-      </div>
-    ) : (
-      children
-    );
 
   return React.createElement(
     as,
-    {id, colSpan, headers, scope, className},
-    childMarkup,
+    {
+      id,
+      colSpan,
+      headers,
+      scope,
+      className,
+      onMouseEnter: indexCellContext?.onMouseEnterCell(preview),
+      onMouseLeave: indexCellContext.onMouseLeaveCell,
+    },
+    children,
   );
 });

@@ -332,30 +332,6 @@ export function WithDynamicActivator() {
     order: null,
   });
 
-  const {
-    className,
-    activatorElement,
-    handleMouseEnterActivator,
-    handleMouseLeaveActivator,
-  } = useHoverCardActivatorWrapperProps({snapToParent: true});
-
-  const handleMouseEnterCustomer = useCallback(
-    (customer: CustomerDetailPreview) =>
-      (event: React.MouseEvent<HTMLDivElement>) => {
-        setActiveHoverCard({customer, order: null});
-        handleMouseEnterActivator?.(event);
-      },
-    [handleMouseEnterActivator],
-  );
-
-  const handleMouseEnterItems = useCallback(
-    (order: OrderDetailPreview) => (event: React.MouseEvent<HTMLDivElement>) => {
-      setActiveHoverCard({order, customer: null});
-      handleMouseEnterActivator?.(event);
-    },
-    [handleMouseEnterActivator],
-  );
-
   const renderCustomerCellPreview = (customer: CustomerDetailPreview) => {
     const {name, phone, email, location, orders} = customer;
 
