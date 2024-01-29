@@ -356,12 +356,10 @@ export function WithDynamicActivator() {
     [handleMouseEnterActivator],
   );
 
-  let hoverCardContent: React.ReactNode = null;
+  const renderCustomerCellPreview = (customer: CustomerDetailPreview) => {
+    const {name, phone, email, location, orders} = customer;
 
-  if (activeHoverCard.customer) {
-    const {name, phone, email, location, orders} = activeHoverCard?.customer;
-
-    hoverCardContent = (
+    return (
       <Box padding="400" maxWidth="288px">
         <BlockStack gap="400">
           <BlockStack gap="0">
@@ -398,11 +396,12 @@ export function WithDynamicActivator() {
         </BlockStack>
       </Box>
     );
-  } else if (activeHoverCard.order) {
-    const {location, deliveryMethod, fulfillmentStatus, items} =
-      activeHoverCard.order;
+  };
 
-    hoverCardContent = (
+  const renderItemsCellPreview = (order: OrderDetailPreview) => {
+    const {location, deliveryMethod, fulfillmentStatus, items} = order;
+
+    return (
       <Box padding="400" maxWidth="416px">
         <BlockStack gap="200">
           <InlineStack>{fulfillmentStatus}</InlineStack>
@@ -447,7 +446,6 @@ export function WithDynamicActivator() {
                 </BlockStack>
               </BlockStack>
             </Box>
-
             {items.map(
               ({quantity, title, imageSrc, variant, skuNumber}, index) => (
                 <Box
@@ -526,7 +524,7 @@ export function WithDynamicActivator() {
         </BlockStack>
       </Box>
     );
-  }
+  };
 
   const rowMarkup = orders.map(
     (
@@ -547,37 +545,6 @@ export function WithDynamicActivator() {
       },
       index,
     ) => {
-      const customerLinkMarkup = (
-        <div
-          className={className}
-          onMouseEnter={handleMouseEnterCustomer(customer)}
-          onMouseLeave={handleMouseLeaveActivator}
-          style={{minHeight: '100%', padding: 'var(--p-space-150)'}}
-        >
-          <Link monochrome removeUnderline url="#">
-            {customer.name}
-          </Link>
-        </div>
-      );
-
-      const itemLinkMarkup = (
-        <div
-          className={className}
-          onMouseEnter={handleMouseEnterItems({
-            location,
-            deliveryMethod,
-            fulfillmentStatus,
-            items,
-          })}
-          onMouseLeave={handleMouseLeaveActivator}
-          style={{minHeight: '100%', padding: 'var(--p-space-150)'}}
-        >
-          <Link monochrome removeUnderline url="#">
-            {`${items.length} items`}
-          </Link>
-        </div>
-      );
-
       return (
         <IndexTable.Row
           id={id}
@@ -587,7 +554,13 @@ export function WithDynamicActivator() {
         >
           <IndexTable.Cell>{title}</IndexTable.Cell>
           <IndexTable.Cell>{date}</IndexTable.Cell>
-          <IndexTable.Cell flush>{customerLinkMarkup}</IndexTable.Cell>
+          <IndexTable.Cell flush preview={renderCustomerCellPreview(customer)}>
+            <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
+              <Link monochrome removeUnderline url="#">
+                {customer.name}
+              </Link>
+            </div>
+          </IndexTable.Cell>
           <IndexTable.Cell>{channel}</IndexTable.Cell>
           <IndexTable.Cell>
             <Text as="span" alignment="end" numeric>
@@ -596,7 +569,21 @@ export function WithDynamicActivator() {
           </IndexTable.Cell>
           <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
           <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
-          <IndexTable.Cell flush>{itemLinkMarkup}</IndexTable.Cell>
+          <IndexTable.Cell
+            flush
+            preview={renderItemsCellPreview({
+              location,
+              deliveryMethod,
+              fulfillmentStatus,
+              items,
+            })}
+          >
+            <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
+              <Link monochrome removeUnderline url="#">
+                {`${items.length} items`}
+              </Link>
+            </div>
+          </IndexTable.Cell>
           <IndexTable.Cell>{deliveryStatus}</IndexTable.Cell>
           <IndexTable.Cell>{deliveryMethod}</IndexTable.Cell>
           <IndexTable.Cell>
@@ -613,15 +600,8 @@ export function WithDynamicActivator() {
 
   return (
     <Card padding="0">
-      <HoverCard
-        snapToParent
-        minWidth={activeHoverCard.order ? 300 : undefined}
-        activator={activatorElement}
-        activatorWrapper="div"
-        preferredPosition="right"
-        content={hoverCardContent}
-      />
       <IndexTable
+        hasCellPreviews
         resourceName={resourceName}
         itemCount={orders.length}
         selectedItemsCount={
