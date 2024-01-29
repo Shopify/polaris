@@ -241,10 +241,11 @@ function IndexTableBase({
 
   useEffect(() => {
     const callback = (mutationList: MutationRecord[]) => {
-      for (const mutation of mutationList) {
-        if (mutation.type === 'childList') {
-          computeTableDimensions();
-        }
+      const hasChildList = mutationList.some(
+        (mutation) => mutation.type === 'childList',
+      );
+      if (hasChildList) {
+        computeTableDimensions();
       }
     };
     const mutationObserver = new MutationObserver(callback);
