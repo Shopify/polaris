@@ -282,7 +282,7 @@ $loading-panel-height: 53px;
       var(--pc-index-table-checkbox-width-sm) +
         var(--pc-index-table-checkbox-padding-left)
     );
-    --pc-table-shifted-checkbox-z-index: 32;
+    --pc-table-shifted-checkbox-z-index: 30;
 
     .TableCell-first {
       left: var(--pc-index-table-checkbox-child-offset);

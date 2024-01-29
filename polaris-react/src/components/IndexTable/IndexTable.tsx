@@ -236,6 +236,8 @@ function IndexTableBase({
 
   useEffect(() => {
     computeTableDimensions();
+    // eslint-disable-next-line no-console
+    console.log('children', children, itemCount);
   }, [computeTableDimensions, itemCount, children]);
 
   const tableBodyRef = useCallback(
