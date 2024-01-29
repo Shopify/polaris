@@ -808,6 +808,49 @@ describe('<IndexTable>', () => {
     });
   });
 
+  describe('mutation observer', () => {
+    let mutationObserverObserveSpy: jest.SpyInstance;
+    let mutationObserverDisconnectSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      mutationObserverObserveSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'observe',
+      );
+      mutationObserverDisconnectSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'disconnect',
+      );
+    });
+
+    afterEach(() => {
+      mutationObserverObserveSpy.mockRestore();
+      mutationObserverDisconnectSpy.mockRestore();
+    });
+
+    it('observes the activator', () => {
+      mountWithApp(
+        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(mutationObserverObserveSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('disconnects the observer when componentWillUnMount', () => {
+      const overlay = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      overlay.unmount();
+
+      expect(mutationObserverDisconnectSpy).toHaveBeenCalled();
+    });
+  });
+
   describe('pagination', () => {
     it('does not render Pagination when pagination props are not provided', () => {
       const index = mountWithApp(
