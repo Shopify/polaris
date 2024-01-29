@@ -1,4 +1,4 @@
-import React, {useState, u} from 'react';
+import React, {useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {PositionedOverlayProps} from '@shopify/polaris';
 import {
