@@ -57,7 +57,6 @@ export function IndexProvider({
     const handleMouseEnterCell =
       (preview: React.ReactNode) =>
       (event: React.MouseEvent<HTMLDivElement>) => {
-        console.log('Mouse entered cell');
         if (previewRef?.current) {
           previewRef.current.preview = preview;
         }
@@ -65,7 +64,6 @@ export function IndexProvider({
       };
 
     const handleMouseLeaveCell = (event: React.MouseEvent<HTMLDivElement>) => {
-      console.log('Mouse left cell');
       if (previewRef?.current) {
         previewRef.current.preview = null;
       }
