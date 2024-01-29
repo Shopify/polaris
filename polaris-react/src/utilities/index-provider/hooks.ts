@@ -10,6 +10,8 @@ import type {
   HandleBulkSelectionOptions,
 } from './types';
 import {
+  IndexCellContext,
+  IndexCellPreviewContext,
   IndexContext,
   IndexRowContext,
   IndexSelectionChangeContext,
@@ -21,6 +23,22 @@ export function useIndexSelectionChange() {
     throw new Error(`Missing IndexProvider context`);
   }
   return onSelectionChange;
+}
+
+export function useIndexCell() {
+  const indexCell = useContext(IndexCellContext);
+  if (!indexCell) {
+    throw new Error(`Missing IndexProvider context`);
+  }
+  return indexCell;
+}
+
+export function useIndexCellPreview() {
+  const indexCellPreview = useContext(IndexCellPreviewContext);
+  if (!indexCellPreview) {
+    throw new Error(`Missing IndexProvider context`);
+  }
+  return indexCellPreview;
 }
 
 export function useIndexRow() {

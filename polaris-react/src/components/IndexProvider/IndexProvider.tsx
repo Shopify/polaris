@@ -1,13 +1,16 @@
-import React, {useMemo} from 'react';
+import React, {useMemo, useState} from 'react';
 
 import {
   IndexContext,
   IndexRowContext,
+  IndexCellContext,
+  IndexCellPreviewContext,
   IndexSelectionChangeContext,
   useBulkSelectionData,
   useHandleBulkSelection,
 } from '../../utilities/index-provider';
 import type {IndexProviderProps} from '../../utilities/index-provider';
+import {useHoverCardActivatorWrapperProps} from '../HoverCard';
 
 export function IndexProvider({
   children,
@@ -17,6 +20,7 @@ export function IndexProvider({
   selectedItemsCount = 0,
   itemCount,
   hasMoreItems,
+  hasCellPreviews,
   condensed,
   selectable: isSelectableIndex = true,
 }: IndexProviderProps) {
@@ -33,7 +37,52 @@ export function IndexProvider({
     hasMoreItems,
     resourceName: passedResourceName,
   });
+
   const handleSelectionChange = useHandleBulkSelection({onSelectionChange});
+
+  const [activeCellPreview, setActiveCellPreview] =
+    useState<React.ReactNode | null>();
+
+  const {
+    className: previewActivatorWrapperClassName,
+    activatorElement: currentCellPreviewActivator,
+    handleMouseEnterActivator,
+    handleMouseLeaveActivator,
+  } = useHoverCardActivatorWrapperProps({
+    snapToParent: true,
+  });
+
+  const cellContextValue = useMemo(() => {
+    const handleMouseEnterCell =
+      (preview: React.ReactNode) =>
+      (event: React.MouseEvent<HTMLDivElement>) => {
+        setActiveCellPreview(preview);
+        handleMouseEnterActivator(event);
+      };
+
+    const handleMouseLeaveCell = (event: React.MouseEvent<HTMLDivElement>) => {
+      setActiveCellPreview(null);
+      handleMouseLeaveActivator(event);
+    };
+
+    return hasCellPreviews
+      ? {
+          previewActivatorWrapperClassName,
+          onMouseEnterCell: handleMouseEnterCell,
+          onMouseLeaveCell: handleMouseLeaveCell,
+        }
+      : undefined;
+  }, [
+    hasCellPreviews,
+    previewActivatorWrapperClassName,
+    handleMouseEnterActivator,
+    handleMouseLeaveActivator,
+  ]);
+
+  const cellPreviewContextValue = useMemo(
+    () => ({activeCellPreview, currentCellPreviewActivator}),
+    [activeCellPreview, currentCellPreviewActivator],
+  );
 
   const contextValue = useMemo(
     () => ({
@@ -78,9 +127,13 @@ export function IndexProvider({
   return (
     <IndexContext.Provider value={contextValue}>
       <IndexRowContext.Provider value={rowContextValue}>
-        <IndexSelectionChangeContext.Provider value={handleSelectionChange}>
-          {children}
-        </IndexSelectionChangeContext.Provider>
+        <IndexCellContext.Provider value={cellContextValue}>
+          <IndexCellPreviewContext.Provider value={cellPreviewContextValue}>
+            <IndexSelectionChangeContext.Provider value={handleSelectionChange}>
+              {children}
+            </IndexSelectionChangeContext.Provider>
+          </IndexCellPreviewContext.Provider>
+        </IndexCellContext.Provider>
       </IndexRowContext.Provider>
     </IndexContext.Provider>
   );

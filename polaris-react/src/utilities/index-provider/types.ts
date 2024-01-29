@@ -1,3 +1,5 @@
+import type React from 'react';
+
 export type IndexSelectedItems = string[] | 'All';
 
 export const SELECT_ALL_ITEMS = 'All';
@@ -22,8 +24,12 @@ export interface IndexProviderProps {
     plural: string;
   };
   loading?: boolean;
-  hasMoreItems?: boolean;
   condensed?: boolean;
+  hasMoreItems?: boolean;
+  hasCellPreviews?: boolean;
+  currentCellPreviewActivator?: HTMLElement;
+  onMouseEnterCell?(event: React.MouseEvent): void;
+  onMouseLeaveCell?(event: React.MouseEvent): void;
   onSelectionChange?(
     selectionType: SelectionType,
     toggleType: boolean,

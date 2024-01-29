@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
+import {useIndexCell} from '../../../../utilities/index-provider';
 import styles from '../../IndexTable.module.scss';
 
 export interface CellProps {
@@ -25,6 +26,8 @@ export interface CellProps {
   scope?: HTMLTableCellElement['scope'];
   /** A space-separated list of the `th` cell IDs that describe or apply to it. Use for cells within a row that relate to a subheader cell in addition to their column header. */
   headers?: HTMLTableCellElement['headers'];
+  /** Markup to render on cell hover */
+  preview?: React.ReactNode;
 }
 
 export const Cell = memo(function Cell({
@@ -36,6 +39,7 @@ export const Cell = memo(function Cell({
   scope,
   as = 'td',
   id,
+  preview,
 }: CellProps) {
   const className = classNames(
     customClassName,
@@ -43,9 +47,24 @@ export const Cell = memo(function Cell({
     flush && styles['TableCell-flush'],
   );
 
+  const indexCellContext = useIndexCell();
+
+  const childMarkup =
+    preview && indexCellContext ? (
+      <div
+        className={indexCellContext.previewActivatorWrapperClassName}
+        onMouseEnter={indexCellContext?.onMouseEnterCell(preview)}
+        onMouseLeave={indexCellContext.onMouseLeaveCell}
+      >
+        {children}
+      </div>
+    ) : (
+      children
+    );
+
   return React.createElement(
     as,
     {id, colSpan, headers, scope, className},
-    children,
+    childMarkup,
   );
 });
