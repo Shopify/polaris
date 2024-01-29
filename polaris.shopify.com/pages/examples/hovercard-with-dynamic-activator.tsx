@@ -1,10 +1,9 @@
-import React, {useCallback, useState} from 'react';
+import React, {useState} from 'react';
 import {
   Tag,
   Thumbnail,
   useIndexResourceState,
   Box,
-  useHoverCardActivatorWrapperProps,
   Badge,
   IndexTable,
   Icon,
@@ -198,14 +197,6 @@ export function HoverCardWithDynamicActivator() {
 
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(orders);
-
-  const [activeHoverCard, setActiveHoverCard] = useState<{
-    customer?: CustomerDetailPreview | null;
-    order?: OrderDetailPreview | null;
-  }>({
-    customer: null,
-    order: null,
-  });
 
   const renderCustomerCellPreview = (customer: CustomerDetailPreview) => {
     const {name, phone, email, location, orders} = customer;

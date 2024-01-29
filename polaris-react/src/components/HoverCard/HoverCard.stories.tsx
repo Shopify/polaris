@@ -1,4 +1,4 @@
-import React, {useCallback, useState, useRef} from 'react';
+import React, {useState, u} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {PositionedOverlayProps} from '@shopify/polaris';
 import {
@@ -9,7 +9,6 @@ import {
   Box,
   Button,
   HoverCard,
-  useHoverCardActivatorWrapperProps,
   Badge,
   IndexTable,
   Icon,
@@ -323,14 +322,6 @@ export function WithDynamicActivator() {
 
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(orders);
-
-  const [activeHoverCard, setActiveHoverCard] = useState<{
-    customer?: CustomerDetailPreview | null;
-    order?: OrderDetailPreview | null;
-  }>({
-    customer: null,
-    order: null,
-  });
 
   const renderCustomerCellPreview = (customer: CustomerDetailPreview) => {
     const {name, phone, email, location, orders} = customer;
