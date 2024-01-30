@@ -443,7 +443,6 @@ export function HoverCardWithDynamicActivator() {
   return (
     <Card padding="0">
       <IndexTable
-        hasCellPreviews
         resourceName={resourceName}
         itemCount={orders.length}
         selectedItemsCount={
