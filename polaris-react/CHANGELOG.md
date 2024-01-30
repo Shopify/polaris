@@ -1,5 +1,18 @@
 # Changelog
 
+## 12.11.2
+
+### Patch Changes
+
+- [#11523](https://github.com/Shopify/polaris/pull/11523) [`9486e487e`](https://github.com/Shopify/polaris/commit/9486e487e99f19ffdfe19a3246898db165456ce3) Thanks [@oksanashopify](https://github.com/oksanashopify)! - fix z-index for IndexTable rows of type `child`
+
+* [#11525](https://github.com/Shopify/polaris/pull/11525) [`09b4f00b3`](https://github.com/Shopify/polaris/commit/09b4f00b3af5a65f77511bc49d0e61d474ca9fd7) Thanks [@laurkim](https://github.com/laurkim)! - Fixed border radius styles for `Button` within `ButtonGroup` when `connectedTop` prop applied
+
+- [#11524](https://github.com/Shopify/polaris/pull/11524) [`a0283410a`](https://github.com/Shopify/polaris/commit/a0283410af2cf4c8857a232f074ea1649e1030e6) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated logic in IndexTable to recalculate sticky position when children changes
+
+- Updated dependencies [[`7bb7054e8`](https://github.com/Shopify/polaris/commit/7bb7054e86aec66ce0824884e350c9ebf5f50430)]:
+  - @shopify/polaris-icons@8.2.0
+
 ## 12.11.1
 
 ### Patch Changes
