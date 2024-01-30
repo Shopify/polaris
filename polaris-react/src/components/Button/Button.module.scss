@@ -377,7 +377,9 @@
 
 // BUTTON GROUP
 /* stylelint-disable -- selector-max-combinators */
-[data-buttongroup-variant='segmented'] > *:not(:first-child) .Button {
+[data-buttongroup-variant='segmented']
+  > *:not(:first-child)
+  .Button:is(.variantPrimary) {
   margin-left: calc(-1 * var(--p-space-025));
 }
 
@@ -398,4 +400,13 @@
     white-space: nowrap;
   }
 }
+
+[data-buttongroup-connected-top='true'] > *:first-child .Button {
+  border-top-left-radius: var(--p-border-radius-0);
+}
+
+[data-buttongroup-connected-top='true'] > *:last-child .Button {
+  border-top-right-radius: var(--p-border-radius-0);
+}
+
 /* stylelint-enable -- selector-max-combinators */
