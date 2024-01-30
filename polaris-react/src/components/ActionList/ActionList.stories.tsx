@@ -137,24 +137,37 @@ export function WithAnIconAndASuffix() {
         autofocusTarget="first-node"
         onClose={toggleActive}
       >
-        <ActionList
-          actionRole="menuitem"
-          items={[
-            {
-              active: true,
-              content: 'Import file',
-              icon: ImportIcon,
-              suffix: <Icon source={CheckSmallIcon} />,
-            },
-            {content: 'Export file', icon: ExportIcon},
-            {
-              disabled: true,
-              content: 'Disable file',
-              icon: ImportIcon,
-              suffix: <Icon source={CheckSmallIcon} />,
-            },
-          ]}
-        />
+        <div style={{width: '200px'}}>
+          <ActionList
+            actionRole="menuitem"
+            items={[
+              {
+                active: true,
+                content: 'Import file',
+                icon: ImportIcon,
+                suffix: <Icon source={CheckSmallIcon} />,
+              },
+              {content: 'Export file', icon: ExportIcon},
+              {
+                content: 'Manage your blog articles',
+                icon: ImportIcon,
+                suffix: <Icon source={CheckSmallIcon} />,
+              },
+              {
+                content: `Manage uploaded images`,
+                icon: ImportIcon,
+                suffix: <Icon source={CheckSmallIcon} />,
+                truncate: true,
+              },
+              {
+                disabled: true,
+                content: 'Disable file',
+                icon: ImportIcon,
+                suffix: <Icon source={CheckSmallIcon} />,
+              },
+            ]}
+          />
+        </div>
       </Popover>
     </div>
   );
