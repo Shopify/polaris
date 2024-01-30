@@ -26,7 +26,6 @@ export interface IndexProviderProps {
   loading?: boolean;
   condensed?: boolean;
   hasMoreItems?: boolean;
-  hasCellPreviews?: boolean;
   currentCellPreviewActivator?: HTMLElement;
   onMouseEnterCell?(event: React.MouseEvent): void;
   onMouseLeaveCell?(event: React.MouseEvent): void;
