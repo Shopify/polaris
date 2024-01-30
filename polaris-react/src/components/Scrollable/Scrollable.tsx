@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 
 import {debounce} from '../../utilities/debounce';
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import {
   StickyManager,
   StickyManagerContext,
@@ -41,6 +41,10 @@ export interface ScrollableProps extends React.HTMLProps<HTMLDivElement> {
   hint?: boolean;
   /** Adds a tabIndex to scrollable when children are not focusable */
   focusable?: boolean;
+  /** Browser determined scrollbar width */
+  scrollbarWidth?: 'thin' | 'none';
+  /** Adds space to one or both sides to prevent content shift when scrolling is necessary */
+  scrollbarGutter?: 'stable' | 'stable both-edges';
   /** Called when scrolled to the bottom of the scroll area */
   onScrolledToBottom?(): void;
 }
@@ -63,6 +67,8 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       shadow,
       hint,
       focusable,
+      scrollbarWidth,
+      scrollbarGutter,
       onScrolledToBottom,
       ...rest
     }: ScrollableProps,
@@ -144,6 +150,11 @@ const ScrollableComponent = forwardRef<ScrollableRef, ScrollableProps>(
       horizontal && styles.horizontal,
       shadow && topShadow && styles.hasTopShadow,
       shadow && bottomShadow && styles.hasBottomShadow,
+      scrollbarWidth && styles[variationName('scrollbarWidth', scrollbarWidth)],
+      scrollbarGutter &&
+        styles[
+          variationName('scrollbarGutter', scrollbarGutter.replace(' ', ''))
+        ],
     );
 
     return (
