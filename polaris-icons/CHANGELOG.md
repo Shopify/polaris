@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.2.0
+
+### Minor Changes
+
+- [#11420](https://github.com/Shopify/polaris/pull/11420) [`7bb7054e8`](https://github.com/Shopify/polaris/commit/7bb7054e86aec66ce0824884e350c9ebf5f50430) Thanks [@jonarnaldo](https://github.com/jonarnaldo)! - Added `IncentiveIcon`
+
 ## 8.1.0
 
 ### Minor Changes
