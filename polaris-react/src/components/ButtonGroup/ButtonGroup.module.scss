@@ -49,7 +49,7 @@
     z-index: var(--pc-button-group-item);
   }
 
-  .Item-focused:not(:active) {
+  .Item-focused {
     // stylelint-disable-next-line  -- custom property
     z-index: var(--pc-button-group-focused);
   }
