@@ -66,6 +66,31 @@ $nav-max-width: 360px;
   &:focus {
     outline: none;
   }
+  scrollbar-color: transparent var(--p-color-nav-bg);
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+
+  @supports #{'selector(::-webkit-scrollbar)'} {
+    // scrollbar-color: var(--p-color-bg-fill-transparent-secondary-hover)
+    //   transparent;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+
+    &:hover {
+      scrollbar-color: var(--p-color-bg-fill-tertiary-active)
+        var(--p-color-nav-bg);
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--p-color-bg-fill-tertiary-active);
+        border: var(--p-border-width-050) solid transparent;
+        border-radius: var(--p-border-radius-300);
+        background-clip: content-box;
+      }
+    }
+  }
 }
 
 .LogoContainer {

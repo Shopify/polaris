@@ -13,6 +13,27 @@ body {
   font-feature-settings: 'calt' 0;
   letter-spacing: initial;
   color: var(--p-color-text);
+  scrollbar-color: var(--p-color-bg-fill-tertiary-active) var(--p-color-bg);
+  scrollbar-width: thin;
+  // scrollbar-gutter: stable;
+
+  @supports #{'selector(::-webkit-scrollbar)'} {
+    &::-webkit-scrollbar {
+      /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- apply custom scrollbar width */
+      width: var(--pc-navigation-scrollbar-width, 8px);
+    }
+
+    &:hover {
+      scrollbar-color: var(--p-color-bg-fill-tertiary-active) var(--p-color-bg);
+
+      &::-webkit-scrollbar-thumb {
+        background: var(--p-color-bg-fill-tertiary-active);
+        border: var(--p-border-width-050) solid transparent;
+        border-radius: var(--p-border-radius-300);
+        background-clip: content-box;
+      }
+    }
+  }
 }
 
 html,
