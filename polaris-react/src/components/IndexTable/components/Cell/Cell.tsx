@@ -42,7 +42,7 @@ export const Cell = memo(function Cell({
   preview,
 }: CellProps) {
   const indexCellContext = useIndexCell();
-  const hasPreview = preview && indexCellContext;
+  const hasPreview = preview && indexCellContext !== undefined;
   const className = classNames(
     customClassName,
     styles.TableCell,

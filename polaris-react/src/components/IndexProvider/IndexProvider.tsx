@@ -20,7 +20,6 @@ export function IndexProvider({
   selectedItemsCount = 0,
   itemCount,
   hasMoreItems,
-  hasCellPreviews,
   condensed,
   selectable: isSelectableIndex = true,
 }: IndexProviderProps) {
@@ -70,16 +69,13 @@ export function IndexProvider({
       handleMouseLeaveActivator(event);
     };
 
-    return hasCellPreviews
-      ? {
-          previewActivatorWrapperClassName,
-          onMouseEnterCell: handleMouseEnterCell,
-          onMouseLeaveCell: handleMouseLeaveCell,
-        }
-      : undefined;
+    return {
+      previewActivatorWrapperClassName,
+      onMouseEnterCell: handleMouseEnterCell,
+      onMouseLeaveCell: handleMouseLeaveCell,
+    };
   }, [
     previewRef,
-    hasCellPreviews,
     previewActivatorWrapperClassName,
     handleMouseEnterActivator,
     handleMouseLeaveActivator,
