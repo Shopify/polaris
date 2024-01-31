@@ -3,7 +3,7 @@ import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function FullDataTableExample() {
-  const [sortedRows, setSortedRows] = useState<TableData[][]>([]);
+  const [sortedRows, setSortedRows] = useState<TableData[][] | null>(null);
 
   const initiallySortedRows: TableData[][] = [
     [
