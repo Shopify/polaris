@@ -1,5 +1,17 @@
 # Changelog
 
+## 12.12.0
+
+### Minor Changes
+
+- [#11508](https://github.com/Shopify/polaris/pull/11508) [`91ba165c9`](https://github.com/Shopify/polaris/commit/91ba165c9cbaa4cd656e348ad5e18c568ac0454b) Thanks [@kyledurand](https://github.com/kyledurand)! - Added scrollbarWidth and scrollbarGutter properties to Scrollable
+
+### Patch Changes
+
+- [#11529](https://github.com/Shopify/polaris/pull/11529) [`e1fb65b72`](https://github.com/Shopify/polaris/commit/e1fb65b724108895d5ee3c16978da8b3381102af) Thanks [@PhilippeCollin](https://github.com/PhilippeCollin)! - [ActionList] Fixed wrapping issue while using prefix and/or suffix icons
+
+* [#11532](https://github.com/Shopify/polaris/pull/11532) [`18bdf67fa`](https://github.com/Shopify/polaris/commit/18bdf67faee1f3c7df06cb92effdc35c6150b75c) Thanks [@alex-page](https://github.com/alex-page)! - Fix visual regressions in `Select` across browsers and operating systems
+
 ## 12.11.2
 
 ### Patch Changes
