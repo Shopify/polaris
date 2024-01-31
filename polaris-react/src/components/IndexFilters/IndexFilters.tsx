@@ -402,7 +402,11 @@ export function IndexFilters({
                       )}
                     </div>
                     <div className={styles.ActionWrap}>
-                      {isLoading && !mdDown && <Spinner size="small" />}
+                      {!mdDown && (
+                        <div className={styles.DesktopLoading}>
+                          {isLoading ? <Spinner size="small" /> : null}
+                        </div>
+                      )}
                       {mode === IndexFiltersMode.Default ? (
                         <>
                           {hideFilters && hideQueryField ? null : (
