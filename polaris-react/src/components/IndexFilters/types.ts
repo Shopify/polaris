@@ -4,7 +4,7 @@ export interface SortButtonChoice {
   label: string;
   disabled?: boolean;
   value: SortValue;
-  directionLabel: string;
+  directionLabel?: string;
 }
 
 export interface IndexFiltersPrimaryAction {
