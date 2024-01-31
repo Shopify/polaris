@@ -51,6 +51,7 @@ body {
   min-height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 
   // hardcoding background color because app provider does not have access to
   // the --p-color-bg custom property. Will revisit best way to address in

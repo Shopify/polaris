@@ -1,33 +1,47 @@
-import React, {useCallback} from 'react';
-import {AlertTriangleIcon} from '@shopify/polaris-icons';
+import React, {useCallback, useRef} from 'react';
+import {AlertBubbleIcon} from '@shopify/polaris-icons';
 
 import {Button} from '../../../Button';
-import {Image} from '../../../Image';
-// eslint-disable-next-line import/no-deprecated
-import {LegacyStack} from '../../../LegacyStack';
 import {Text} from '../../../Text';
 import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
-import {useFrame} from '../../../../utilities/frame';
 import type {ContextualSaveBarProps} from '../../../../utilities/frame';
-import {getWidth} from '../../../../utilities/get-width';
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
+import {InlineStack} from '../../../InlineStack';
+import {useEventListener} from '../../../../utilities/use-event-listener';
+import {debounce} from '../../../../utilities/debounce';
 
 import {DiscardConfirmationModal} from './components';
 import styles from './ContextualSaveBar.module.scss';
 
 export function ContextualSaveBar({
-  alignContentFlush,
   message,
   saveAction,
   discardAction,
   fullWidth,
-  contextControl,
   secondaryMenu,
 }: ContextualSaveBarProps) {
   const i18n = useI18n();
-  const {logo} = useFrame();
+  const barRef = useRef<HTMLDivElement>(null);
+
+  const handleLeaveConfirmation = debounce(
+    () => {
+      barRef.current?.classList.add(styles.GreenBar);
+
+      setTimeout(() => {
+        barRef.current?.classList.remove(styles.GreenBar);
+      }, 1200);
+    },
+    500,
+    {leading: true, trailing: false},
+  );
+
+  useEventListener(
+    'onLeaveDirtyState' as keyof WindowEventMap,
+    handleLeaveConfirmation,
+  );
+
   const {
     value: discardConfirmationModalVisible,
     toggle: toggleDiscardConfirmationModal,
@@ -46,13 +60,6 @@ export function ContextualSaveBar({
       ? discardAction.content
       : i18n.translate('Polaris.ContextualSaveBar.discard');
 
-  let discardActionHandler;
-  if (discardAction && discardAction.discardConfirmationModal) {
-    discardActionHandler = toggleDiscardConfirmationModal;
-  } else if (discardAction) {
-    discardActionHandler = discardAction.onAction;
-  }
-
   const discardConfirmationModalMarkup = discardAction &&
     discardAction.onAction &&
     discardAction.discardConfirmationModal && (
@@ -66,9 +73,9 @@ export function ContextualSaveBar({
   const discardActionMarkup = discardAction && (
     <Button
       variant="tertiary"
-      size="large"
+      size="slim"
       url={discardAction.url}
-      onClick={discardActionHandler}
+      onClick={discardAction?.onAction}
       loading={discardAction.loading}
       disabled={discardAction.disabled}
       accessibilityLabel={discardAction.content}
@@ -84,9 +91,8 @@ export function ContextualSaveBar({
 
   const saveActionMarkup = saveAction && (
     <Button
+      size="slim"
       variant="primary"
-      tone="success"
-      size="large"
       url={saveAction.url}
       onClick={saveAction.onAction}
       loading={saveAction.loading}
@@ -97,52 +103,33 @@ export function ContextualSaveBar({
     </Button>
   );
 
-  const width = getWidth(logo, 104);
-
-  const imageMarkup = logo && (
-    <Image style={{width}} source={logo.contextualSaveBarSource || ''} alt="" />
-  );
-
-  const logoMarkup =
-    alignContentFlush || contextControl ? null : (
-      <div className={styles.LogoContainer} style={{width}}>
-        {imageMarkup}
-      </div>
-    );
-
-  const contextControlMarkup = contextControl ? (
-    <div className={styles.ContextControl}>{contextControl}</div>
-  ) : null;
-
   const contentsClassName = classNames(
     styles.Contents,
     fullWidth && styles.fullWidth,
   );
 
   return (
-    <>
+    <div ref={barRef}>
       <div className={styles.ContextualSaveBar}>
-        {contextControlMarkup}
-        {logoMarkup}
         <div className={contentsClassName}>
           <div className={styles.MessageContainer}>
-            <Icon source={AlertTriangleIcon} />
+            <Icon source={AlertBubbleIcon} />
             {message && (
-              <Text as="h2" variant="headingMd" tone="text-inverse" truncate>
+              <Text as="h2" variant="bodySm" tone="text-inverse" truncate>
                 {message}
               </Text>
             )}
           </div>
           <div className={styles.ActionContainer}>
-            <LegacyStack spacing="tight" wrap={false}>
+            <InlineStack gap="100" wrap={false}>
               {secondaryMenu}
               {discardActionMarkup}
               {saveActionMarkup}
-            </LegacyStack>
+            </InlineStack>
           </div>
         </div>
       </div>
       {discardConfirmationModalMarkup}
-    </>
+    </div>
   );
 }

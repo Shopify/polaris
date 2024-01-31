@@ -166,3 +166,39 @@ $right-column: 1fr;
 .SecondaryMenu svg {
   fill: var(--p-color-icon-inverse);
 }
+
+.SearchBar-enter {
+  transform: translateY(calc(-100% - 36px));
+}
+
+.SearchBar-enter-active {
+  transition: transform var(--p-motion-duration-300) var(--p-motion-ease-in-out);
+  transform: translateY(0);
+}
+
+.SearchBar-exit {
+  transform: translateY(calc(-100% - 2px));
+}
+
+.SearchBar-exit-active {
+  transform: translateY(calc(-100% - 2px - 100% - 36px));
+  transition: transform var(--p-motion-duration-300) var(--p-motion-ease-in-out);
+}
+
+.ContextualSaveBar-enter {
+  transform: translateY(calc(100% + 36px));
+}
+
+.ContextualSaveBar-enter-active {
+  transition: transform var(--p-motion-duration-300) var(--p-motion-ease-in-out);
+  transform: translateY(0);
+}
+
+.ContextualSaveBar-exit {
+  transform: translateY(calc(-100% + 2px));
+}
+
+.ContextualSaveBar-exit-active {
+  transform: translateY(100%);
+  transition: transform var(--p-motion-duration-300) var(--p-motion-ease-in-out);
+}

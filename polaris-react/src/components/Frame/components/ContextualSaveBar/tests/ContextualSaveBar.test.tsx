@@ -2,7 +2,6 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../../../Button';
-import {Image} from '../../../../Image';
 import {ContextualSaveBar} from '../ContextualSaveBar';
 import {DiscardConfirmationModal} from '../components';
 
@@ -219,68 +218,6 @@ describe('<ContextualSaveBar />', () => {
       expect(contextualSaveBar).toContainReactComponent(Button, {
         children: 'Save',
       });
-    });
-  });
-
-  describe('logo', () => {
-    it('will render an image with the contextual save bar source', () => {
-      const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        frame: {
-          logo: {
-            width: 200,
-            contextualSaveBarSource: './assets/monochrome_shopify.svg',
-          },
-        },
-      });
-
-      expect(contextualSaveBar).toContainReactComponent(Image, {
-        source: './assets/monochrome_shopify.svg',
-      });
-    });
-
-    it('will render an image with the width provided', () => {
-      const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        frame: {
-          logo: {
-            width: 200,
-            contextualSaveBarSource: './assets/monochrome_shopify.svg',
-          },
-        },
-      });
-      expect(contextualSaveBar).toContainReactComponent(Image, {
-        style: {width: '200px'},
-      });
-    });
-
-    it('will render the image with a default width if 0 is provided', () => {
-      const contextualSaveBar = mountWithApp(<ContextualSaveBar />, {
-        frame: {
-          logo: {
-            contextualSaveBarSource: './assets/monochrome_shopify.svg',
-            width: 0,
-          },
-        },
-      });
-
-      expect(contextualSaveBar).toContainReactComponent(Image, {
-        style: {width: '104px'},
-      });
-    });
-
-    it('will not render the logo when content is aligned flush left', () => {
-      const contextualSaveBar = mountWithApp(
-        <ContextualSaveBar alignContentFlush />,
-        {
-          frame: {
-            logo: {
-              contextualSaveBarSource: './assets/monochrome_shopify.svg',
-              width: 200,
-            },
-          },
-        },
-      );
-
-      expect(contextualSaveBar).not.toContainReactComponent(Image);
     });
   });
 

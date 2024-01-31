@@ -3,14 +3,10 @@ import {CSSTransition} from 'react-transition-group';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
-import {ContextualSaveBar as PolarisContextualSavebar} from '../../ContextualSaveBar';
 import {Loading as PolarisLoading} from '../../Loading';
 import {TrapFocus} from '../../TrapFocus';
 import {Frame} from '../Frame';
-import {
-  ContextualSaveBar as FrameContextualSavebar,
-  Loading as FrameLoading,
-} from '../components';
+import {Loading as FrameLoading} from '../components';
 
 window.matchMedia =
   window.matchMedia ||
@@ -313,18 +309,6 @@ describe('<Frame />', () => {
           '--pc-frame-global-ribbon-height',
         ),
       ).toBe('0px');
-    });
-  });
-
-  describe('ContextualSavebar', () => {
-    it('renders a Frame ContextualSavebar if Polaris ContextualSavebar is rendered', () => {
-      const frame = mountWithApp(
-        <Frame>
-          <PolarisContextualSavebar />
-        </Frame>,
-      );
-
-      expect(frame).toContainReactComponent(FrameContextualSavebar);
     });
   });
 
