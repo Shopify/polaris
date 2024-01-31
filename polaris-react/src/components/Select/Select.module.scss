@@ -107,6 +107,8 @@
   // Even though the input is invisible, text styles apply to the options menu
   font-size: var(--p-font-size-400);
   font-weight: var(--p-font-weight-regular);
+  // Safari requires the font-family to be added to the <select> element
+  font-family: var(--p-font-family-sans);
   line-height: var(--p-font-line-height-500);
   letter-spacing: initial;
   position: absolute;
