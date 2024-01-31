@@ -4,7 +4,7 @@ $vertical-motion-offset: -5px;
 
 .HoverCard {
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
-  --pc-hovercard-min-width: max-content;
+  --pc-hovercard-min-width: min-content;
   opacity: 0;
   position: relative;
   display: flex;
@@ -31,19 +31,18 @@ $vertical-motion-offset: -5px;
 
 .HoverCardOverlay {
   opacity: 0;
+  transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
+    opacity var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
+    width var(--p-motion-duration--50) cubic-bezier(0.25, 0, 0.75, 1.35),
+    height var(--p-motion-duration-50) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
 
 .HoverCardOverlay-entering {
   opacity: 1;
 }
 
-.HoverCardOverlay-open {
+.HoverCardOverlay-active {
   opacity: 1;
-
-  transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
-    opacity var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
-    width var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
-    height var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
 
 .measuring:not(.HoverCardOverlay-exited) {
