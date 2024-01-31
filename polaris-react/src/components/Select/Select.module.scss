@@ -124,6 +124,9 @@
   opacity: 0;
   appearance: none;
   border: none;
+  // Google chrome on Windows requires padding to be added otherwise <option> has no space
+  padding: var(--p-space-150) var(--p-space-200) var(--p-space-150)
+    var(--p-space-300);
 
   @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-350);
