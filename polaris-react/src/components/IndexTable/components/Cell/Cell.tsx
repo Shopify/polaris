@@ -58,6 +58,7 @@ export const Cell = memo(function Cell({
       headers,
       scope,
       className,
+      'data-hovercard-activator': preview ? true : undefined,
       onMouseEnter: indexCellContext?.onMouseEnterCell(preview),
       onMouseLeave: indexCellContext.onMouseLeaveCell,
     },

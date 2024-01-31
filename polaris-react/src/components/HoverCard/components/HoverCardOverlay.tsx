@@ -44,10 +44,10 @@ export function HoverCardOverlay({
   const {motion} = useTheme();
 
   const [transitionStatus, setTransitionStatus] = useState<TransitionStatus>(
-    active ? TransitionStatus.Entered : TransitionStatus.Exited,
+    TransitionStatus.Entering,
   );
   const contentNode = useRef<HTMLDivElement | null>(null);
-  const enteringTimer = useRef<number | undefined>();
+  const enteringTimer = useRef<NodeJS.Timeout | undefined>();
 
   const changeTransitionStatus = (
     transitionStatus: TransitionStatus,
@@ -55,13 +55,13 @@ export function HoverCardOverlay({
   ) => {
     // Forcing a reflow to enable the animation
     requestAnimationFrame(() => setTransitionStatus(transitionStatus));
-    cb && cb();
+    return cb?.();
   };
 
   useEffect(() => {
     if (transitionStatus === TransitionStatus.Entering) {
-      setTimeout(() => {
-        setTransitionStatus(TransitionStatus.Entered);
+      enteringTimer.current = setTimeout(() => {
+        changeTransitionStatus(TransitionStatus.Entered);
       }, 100);
     }
   }, [transitionStatus]);
@@ -141,7 +141,7 @@ export function HoverCardOverlay({
     transitionStatus === TransitionStatus.Entering &&
       styles['HoverCardOverlay-entering'],
     transitionStatus === TransitionStatus.Entered &&
-      styles['HoverCardOverlay-open'],
+      styles['HoverCardOverlay-active'],
     transitionStatus === TransitionStatus.Exited &&
       styles['HoverCardOverlay-exited'],
   );
