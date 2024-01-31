@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.12.1
+
+### Patch Changes
+
+- [#11533](https://github.com/Shopify/polaris/pull/11533) [`697def448`](https://github.com/Shopify/polaris/commit/697def448432c8cfb0700cd7f10fa0950e0d731c) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated IndexFilters to always fill the space where the loading spinner appears to ensure Tabs do not switch between collapsed and expanded
+
 ## 12.12.0
 
 ### Minor Changes
