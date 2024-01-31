@@ -5,7 +5,7 @@ import {useBreakpoints} from '../../../utilities/breakpoints';
 import {classNames} from '../../../utilities/css';
 import styles from '../HoverCard.module.scss';
 
-const HOVER_OUT_TIMEOUT = 150;
+const HOVER_OUT_TIMEOUT = 200;
 
 export function useHoverCardActivatorWrapperProps({
   snapToParent,
@@ -67,29 +67,45 @@ export function useHoverCardActivatorWrapperProps({
   }, [toggleActive, removePresence]);
 
   const handleMouseLeaveActivator = useCallback(
-    (event?: React.MouseEvent<HTMLDivElement>) => {
-      const mouseEnteredHoverCard =
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore - EventTarget does in fact have a parentNode property
-        event?.relatedTarget?.parentNode?.getAttribute(
-          'data-hovercard-content',
-        );
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      const isTarget = event.currentTarget?.getAttribute(
+        'data-hovercard-activator',
+      );
 
-      if (hoverDelayTimeout.current) {
-        clearTimeout(hoverDelayTimeout.current);
-        hoverDelayTimeout.current = null;
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore - EventTarget does in fact have a parentNode property. Since this event is also fired when the row is entered, we continue only if the cell itself was entered.
+      const isTargetChild = event.target?.parentNode?.getAttribute(
+        'data-hovercard-activator',
+      );
+
+      if (isTarget || isTargetChild) {
+        const mouseEnteredHoverCard =
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore - EventTarget does in fact have a parentNode property. Since this event is also fired when the row is entered, we continue only if the cell itself was entered.
+          event?.relatedTarget?.parentNode?.getAttribute(
+            'data-hovercard-content',
+          );
+
+        if (mouseEnteredHoverCard) console.log('mouse entered hover card');
+
+        dynamicActivatorRef.current = null;
+        mouseEntered.current = false;
+
+        if (mouseEnteredHoverCard || overlayActive) {
+          return;
+        }
+
+        console.log('mouse left activator');
+
+        if (hoverDelayTimeout.current) {
+          clearTimeout(hoverDelayTimeout.current);
+          hoverDelayTimeout.current = null;
+        }
+
+        handleClose();
       }
-
-      dynamicActivatorRef.current = null;
-      mouseEntered.current = false;
-
-      if (mouseEnteredHoverCard) {
-        return;
-      }
-
-      handleClose();
     },
-    [handleClose, hoverDelayTimeout, mouseEntered],
+    [handleClose, overlayActive, hoverDelayTimeout, mouseEntered],
   );
 
   const handleMouseEnter = useCallback(
@@ -116,8 +132,29 @@ export function useHoverCardActivatorWrapperProps({
   // Mouseenter event not triggered when cursor moves from disabled button
   const handleMouseEnterFix = useCallback(
     (event: React.MouseEvent<HTMLDivElement>) => {
-      if (!mouseEntered.current) {
-        handleMouseEnter(event);
+      console.log(
+        event,
+        event.target,
+        event.currentTarget,
+        event.relatedTarget,
+      );
+
+      const isTarget = event.currentTarget?.getAttribute(
+        'data-hovercard-activator',
+      );
+
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore - EventTarget does in fact have a parentNode property. Since this event is also fired when the row is entered, we continue only if the cell itself was entered.
+      const isTargetChild = event.target?.parentNode?.getAttribute(
+        'data-hovercard-activator',
+      );
+
+      if (isTarget || isTargetChild) {
+        console.log('mouse entered activator');
+
+        if (!mouseEntered.current) {
+          handleMouseEnter(event);
+        }
       }
     },
     [handleMouseEnter],
@@ -128,6 +165,7 @@ export function useHoverCardActivatorWrapperProps({
   };
 
   const handleMouseLeaveOverlay = () => {
+    console.log('mouse left hover card');
     handleClose();
     setOverlayActive(false);
   };
