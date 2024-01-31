@@ -141,21 +141,22 @@ const SCROLL_BAR_DEBOUNCE_PERIOD = 300;
 
 function IndexTableBase({
   headings,
-  bulkActions = [],
+
   promotedBulkActions = [],
+  bulkActions = [],
   children,
   emptyState,
   sort,
   paginatedSelectAllActionText,
   lastColumnSticky = false,
+  hasZebraStriping,
+  pagination,
   sortable,
   sortDirection,
   defaultSortDirection = 'descending',
   sortColumnIndex,
-  onSort,
   sortToggleLabels,
-  hasZebraStriping,
-  pagination,
+  onSort,
   ...restProps
 }: IndexTableBaseProps) {
   const theme = useTheme();

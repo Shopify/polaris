@@ -369,7 +369,7 @@ export function WithDynamicActivator() {
     const {location, deliveryMethod, fulfillmentStatus, items} = order;
 
     return (
-      <Box padding="400" maxWidth="416px">
+      <Box padding="400" minWidth="300px" maxWidth="416px">
         <BlockStack gap="200">
           <InlineStack>{fulfillmentStatus}</InlineStack>
           <Box
