@@ -402,7 +402,7 @@ export function IndexFilters({
                       )}
                     </div>
                     <div className={styles.ActionWrap}>
-                      {!mdDown && (
+                      {isLoading && !mdDown && (
                         <div className={styles.DesktopLoading}>
                           {isLoading ? <Spinner size="small" /> : null}
                         </div>

@@ -49,8 +49,12 @@ $spinner-size: 20px;
 }
 
 .DesktopLoading {
+  position: absolute;
+  right: 100%;
+  top: 50%;
   height: 20px;
   width: 20px;
+  transform: translateY(-50%);
 }
 
 .TabsLoading svg {
@@ -87,6 +91,7 @@ $spinner-size: 20px;
 }
 
 .ActionWrap {
+  position: relative;
   display: flex;
   gap: var(--p-space-200);
   align-items: center;
@@ -94,7 +99,6 @@ $spinner-size: 20px;
   padding: var(--p-space-150) var(--p-space-200);
 
   @media (--p-breakpoints-md-down) {
-    position: relative;
     padding: var(--p-space-200);
     height: 3rem;
     border-left: var(--p-border-width-025) solid var(--p-color-border-secondary);
