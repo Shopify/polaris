@@ -66,29 +66,29 @@ $nav-max-width: 360px;
   &:focus {
     outline: none;
   }
-  scrollbar-color: transparent var(--p-color-nav-bg);
   scrollbar-width: thin;
   scrollbar-gutter: stable;
+  /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
+  scrollbar-color: #d7d7d7 transparent;
+  transition: scrollbar-color var(--p-motion-duration-100)
+    var(--p-motion-ease-in);
+
+  &:hover {
+    /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
+    scrollbar-color: #8f8f8f transparent;
+  }
 
   @supports #{'selector(::-webkit-scrollbar)'} {
-    // scrollbar-color: var(--p-color-bg-fill-transparent-secondary-hover)
-    //   transparent;
-
     &::-webkit-scrollbar {
-      height: 6px;
-      width: 6px;
+      width: 11px;
     }
 
-    &:hover {
-      scrollbar-color: var(--p-color-bg-fill-tertiary-active)
-        var(--p-color-nav-bg);
-
-      &::-webkit-scrollbar-thumb {
-        background: var(--p-color-bg-fill-tertiary-active);
-        border: var(--p-border-width-050) solid transparent;
-        border-radius: var(--p-border-radius-300);
-        background-clip: content-box;
-      }
+    &::-webkit-scrollbar-thumb {
+      /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
+      background-color: #8f8f8f;
+      border: var(--p-border-width-050) solid transparent;
+      border-radius: var(--p-border-radius-300);
+      background-clip: content-box;
     }
   }
 }
@@ -158,6 +158,11 @@ $nav-max-width: 360px;
   );
   width: 100%;
   padding: 0 var(--p-space-300);
+
+  @supports (scrollbar-gutter: stable) {
+    /* stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- testing */
+    padding: 0 1px 0 var(--p-space-300);
+  }
 }
 
 .ItemInnerWrapper {
@@ -818,6 +823,11 @@ $nav-max-width: 360px;
   padding-left: var(--p-space-500);
   padding-right: var(--p-space-100);
 
+  @supports (scrollbar-gutter: stable) {
+    /* stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- testing */
+    padding-right: 1px;
+  }
+
   > :first-child {
     flex: 1 1 auto;
     margin-top: calc(var(--p-space-200) + var(--p-space-050));
@@ -843,6 +853,10 @@ $nav-max-width: 360px;
     margin-right: calc(var(--p-space-200) + var(--p-space-050));
     padding: calc(var(--p-space-100) - var(--p-space-050));
     border-radius: var(--p-border-radius-200);
+
+    @supports (scrollbar-gutter: stable) {
+      margin-right: var(--p-space-050);
+    }
 
     // stylelint-disable-next-line selector-max-specificity -- set focus styles
     &:focus-visible:not(:active) {

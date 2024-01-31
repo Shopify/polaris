@@ -13,27 +13,6 @@ body {
   font-feature-settings: 'calt' 0;
   letter-spacing: initial;
   color: var(--p-color-text);
-  scrollbar-color: var(--p-color-bg-fill-tertiary-active) var(--p-color-bg);
-  scrollbar-width: thin;
-  // scrollbar-gutter: stable;
-
-  @supports #{'selector(::-webkit-scrollbar)'} {
-    &::-webkit-scrollbar {
-      /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- apply custom scrollbar width */
-      width: var(--pc-navigation-scrollbar-width, 8px);
-    }
-
-    &:hover {
-      scrollbar-color: var(--p-color-bg-fill-tertiary-active) var(--p-color-bg);
-
-      &::-webkit-scrollbar-thumb {
-        background: var(--p-color-bg-fill-tertiary-active);
-        border: var(--p-border-width-050) solid transparent;
-        border-radius: var(--p-border-radius-300);
-        background-clip: content-box;
-      }
-    }
-  }
 }
 
 html,
@@ -53,6 +32,32 @@ html {
 
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+
+  scrollbar-width: thin;
+  /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
+  scrollbar-color: #d7d7d7 var(--p-color-bg);
+  transition: scrollbar-color var(--p-motion-duration-100)
+    var(--p-motion-ease-in);
+
+  &:hover {
+    /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
+    scrollbar-color: #8f8f8f var(--p-color-bg);
+  }
+
+  @supports #{'selector(::-webkit-scrollbar)'} {
+    &::-webkit-scrollbar {
+      width: 11px;
+      background-color: var(--p-color-bg);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
+      background-color: #8f8f8f;
+      border: var(--p-border-width-050) solid transparent;
+      border-radius: var(--p-border-radius-300);
+      background-clip: content-box;
+    }
+  }
 }
 
 /*
