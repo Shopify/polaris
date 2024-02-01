@@ -161,9 +161,9 @@ function hasOwn(obj: object, key: any): boolean {
  * See: https://jsbench.me/g4ls1dfmka/1
  * See: https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items/28631880
  */
-function mergeUnique<A, B>(a: A[], b: B[]): (A | B)[] {
-  return (a as (A | B)[]).concat(
-    b.filter((i) => a.indexOf(i as unknown as A) == -1),
+function mergeUnique<A, B>(array1: A[], array2: B[]): (A | B)[] {
+  return (array1 as (A | B)[]).concat(
+    array2.filter((i) => !array1.includes(i as unknown as A)),
   );
 }
 
@@ -173,24 +173,8 @@ function mapObjectValues<T extends object, R = T[keyof T]>(
 ): {[K in keyof T]: R} {
   const result: {[K in keyof T]: R} = {} as {[K in keyof T]: R};
   for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+    if (hasOwn(obj, key)) {
       result[key] = map(obj[key], key);
-    }
-  }
-  return result;
-}
-
-function filterObjectValues<T extends object>(
-  obj: T,
-  filter: (val: T[keyof T], key: keyof T) => boolean,
-): Partial<T> {
-  const result: Partial<T> = {};
-  for (const key in obj) {
-    if (
-      Object.prototype.hasOwnProperty.call(obj, key) &&
-      filter(obj[key], key)
-    ) {
-      result[key] = obj[key];
     }
   }
   return result;
@@ -246,8 +230,6 @@ export function convertStylePropsToCSSProperties(
   runtimeDefaults?: PropDefaults,
   valueMapper: ValueMapper = identity,
 ): ConversionResult {
-  debugger;
-
   // NOTE: purposely ignore any un-merged global defaults as they've already
   // been added to the generated .css file during setup.
   const [converted] = convert(
@@ -259,17 +241,15 @@ export function convertStylePropsToCSSProperties(
     [],
     Constant.RootElement,
   );
-  debugger;
 
-  // TODO:
-  // Global defaults have been set in the .css file, but the specificity of
-  // the style="" attribute is higher, so if a prop with that value is passed
-  // in for, say, `_hover`, we need to ensure we set the default again here,
-  // otherwise the browser will never see the value in the .css file.
-  // TODO: Globals are treated differently to runtime:
-  // - Globals only need to be applied if that property exists, ie; because
-  // we'd inadvertently overridden the values in the .css file.
-  // - Runtime defaults need to be injected into the style object every time.
+  // TODO: De-dupe keys
+  //
+  // 1. store the value in a cache as long as no values are
+  //    `unset`/`initial`/`inherit`/etc
+  // 2. For every cache value with more than one hit
+  //    a) create a new CSS Custom Property for it
+  //    b) replace each property's final value with a var() of the cached custom
+  //    property
 
   // TODO: Make defaults static only:
   // 1. Some passed in to the .css file creation which get set as global
@@ -287,16 +267,6 @@ export function convertStylePropsToCSSProperties(
   //
   // Maybe we stick with the current approach of dynamic + static?
 
-  // Inject defaults for properties that don't have them
-  // if (parentIsRoot) {
-  //   // TODO iterate over properties
-  //   const defaultValue = getDefault(declaration);
-
-  //   if (defaultValue != null) {
-  //     declarationAcc[whichElement]![declaration]![defaultValueCascadeOrder] =
-  //       defaultValue;
-  //   }
-  // }
   const {[Constant.RootElement]: baseStyleProps, ...pseudoElementsStyleProps} =
     converted;
 
@@ -409,76 +379,69 @@ function convert(
    * Global defaults have been set in the .css file, but the specificity of the
    * style="" attribute is higher, so if a matching prop is passed in we need to
    * ensure the default value is set again on the style="" attribute.
-   *
-   * TODO: Globals are treated differently to runtime:
-   * - Globals only need to be applied if that property exists, ie; because
-   * we'd inadvertently overridden the values in the .css file.
    */
   globalDefaults: PropDefaults = identityObject,
   /**
-   * Runtime defaults act as fallbacks for when a prop isn't passed in. NOTE:
-   * defaults are ignored if a value is passed for any pseudo element or
-   * modifier or responsive value.
+   * Runtime defaults act as fallbacks for when a prop isn't passed in.
+   *
+   * @example
+   * ```
+   * const props = {
+   *   borderInlineStartColor: 'red',
+   * }
+   *
+   * // runtime default of 1px border when a border color is set
+   * if (props.borderInlineStartColor) {
+   *   defaults.borderInlineStartWidth = 1
+   * }
+   *
+   * convertStylePropsToCSSProperties(props, defaults)
+   * // {
+   * //   borderInlineStartColor: 'red',
+   * //   borderInlineStartWidth: '1',
+   * // }
+   * ```
+   *
+   * @example
+   * ```
+   * const props = {
+   *   borderInlineStartColor: 'red',
+   *   borderInlineStartWidth: {sm: 3}
+   * }
+   *
+   * // runtime default of 1px border when a border color is set
+   * if (props.borderInlineStartColor) {
+   *   defaults.borderInlineStartWidth = {xs: 1, md: 2};
+   * }
+   *
+   * convertStylePropsToCSSProperties(props, defaults)
+   * // {
+   * //   borderInlineStartColor: 'red',
+   * //   borderInlineStartWidth: 'var(--_md-on, 2) var(--_md-off, var(--_sm-on, 3) var(--_sm-off, 1))',
+   * // }
+   * ```
+   *
+   * @example
+   * ```
+   * const props = {
+   *   borderInlineStartColor: 'red',
+   *   _hover: {
+   *     borderInlineStartWidth: {sm: 3}
+   *   }
+   * }
+   *
+   * // runtime default of 1px border when a border color is set
+   * if (props.borderInlineStartColor) {
+   *   defaults.borderInlineStartWidth = {xs: 1, md: 2};
+   * }
+   *
+   * convertStylePropsToCSSProperties(props, defaults)
+   * // {
+   * //   borderInlineStartColor: 'red',
+   * //   borderInlineStartWidth: 'var(--__hover-on, var(--_sm-on, 3)) var(--__hover-off, var(--_md-on, 2) (--_md-off, var(--_sm-on, 3) var(--_sm-off, 1)))',
+   * // }
+   * ```
    */
-  // TODO: Follow a deep-merge strategy with one exception: Responsive values are
-  // NOT deep merged; they will be replaced with the passed-in prop's value.
-  //
-  // @example
-  // const props = {
-  //   borderInlineStartColor: 'red',
-  // }
-  //
-  // // runtime default of 1px border when a border color is set
-  // if (props.borderInlineStartColor) {
-  //   defaults.borderInlineStartWidth = 1
-  // }
-  //
-  // convertStylePropsToCSSProperties(props, defaults)
-  // // {
-  // //   borderInlineStartColor: 'red',
-  // //   borderInlineStartWidth: '1',
-  // // }
-  //
-  // @example
-  // const props = {
-  //   borderInlineStartColor: 'red',
-  //   borderInlineStartWidth: {sm: 3}
-  // }
-  //
-  // // runtime default of 1px border when a border color is set
-  // if (props.borderInlineStartColor) {
-  //   defaults.borderInlineStartWidth = {xs: 1, md: 2};
-  // }
-  //
-  // convertStylePropsToCSSProperties(props, defaults)
-  // // {
-  // //   borderInlineStartColor: 'red',
-  // //   // Default value is NOT merged in
-  // //   borderInlineStartWidth: 'var(--_md-on, 2) (--_md-off, 1)',
-  // // }
-  //
-  // @example
-  // const props = {
-  //   borderInlineStartColor: 'red',
-  //   _hover: {
-  //     borderInlineStartWidth: {sm: 3}
-  //   }
-  // }
-  //
-  // // runtime default of 1px border when a border color is set
-  // if (props.borderInlineStartColor) {
-  //   defaults.borderInlineStartWidth = {xs: 1, md: 2};
-  // }
-  //
-  // convertStylePropsToCSSProperties(props, defaults)
-  // // {
-  // //   borderInlineStartColor: 'red',
-  // //   // Hover value is merged in, but concrete value is not
-  // //   borderInlineStartWidth: 'var(--__hover-on, var(--_sm-on, 3)) var(--__hover-off, var(--_md-on, 2) (--_md-off, 1))',
-  // // }
-  //
-  // TODO: Use `null` values to mean "Don't use the default value if it's set"
-  // the user can stop the `_hover` default from applying / doesn't have to.
   runtimeDefaults: PropDefaults = identityObject,
   valueMapper: ValueMapper,
   parent:
@@ -494,68 +457,27 @@ function convert(
 
   const runtimeProperties: DeclarationAccumulator = {};
   const globalDefaultProperties: DeclarationAccumulator = {};
-  // TODO
-  // 0. Create a sort index in the script / at init time with least-specific first:
-  // const cascadeOrder = {
-  //   [Symbol("default")]: 0,
-  //   xs: 1, // Base, setup in data as {xs: '&'}
-  //   sm: 2,
-  //   md: 3,
-  //   lg: 4,
-  //   xl: 5,
-  //   '_hover.xs': 6,
-  //   '_hover.sm': 7,
-  //   '_hover.md': 8,
-  //   '_hover.lg': 9,
-  //   '_hover.xl': 10,
-  //   '_active.xs': 11,
-  //   '_active.sm': 12,
-  //   '_active.md': 13,
-  //   '_active.lg': 14,
-  //   '_active.xl': 15,
-  // }
-  // 1. Do a single walkthrough of the object (this forEach loop)
-  //    a) Insert into a sparse array for each concrete property value:
-  //        ```
-  //        const whichElement = isBefore ? '_before' : isAfter ? '_after' : 'base';
-  //        // TODO: Construct this as we go & pass it to the recursive call
-  //        // if (willRecurse && !propIsPseudo && !propIsDeclaration) {
-  //        //   cascadePath = cascadePath + '.' + prop;
-  //        // }
-  //        // Initialize as an array (not an object) to retain numerical key
-  //        // ordering, and NOT insertion order
-  //        properties[whichElement][declartion] ??= [];
-  //        properties[whichElement][declartion][cascadeOrder[cascadePath]] = {condition: parentPath.at(-1), value: mappedValue };
-  //        const default = getDefault(declaration);
-  //        if (default != null) {
-  //          properties[whichElement][declartion].default = default
-  //        }
-  //        ```
-  // 2. Do a single walkthrough of the collected data
-  //    a) turn it into the space hack value
-  //        ```
-  //        Object.entries(properties.base).reduce((acc, values, declaration) => {
-  //          acc[declaration] = values.default != null ? values.default : '';
-  //          // TODO: confirm iterating over a sparse array retains numeric
-  //          // order, not insertion order in older browsers
-  //          values.forEach(({ condition, value }) => {
-  //            acc[declaration] = `var(${condition}-on, ${value})${acc[declaration] ? ` var(${condition}-off, ${acc[declaration]})` : ''}`;
-  //          })
-  //          return acc;
-  //        }, {})
-  //        ```
-  //    b) store the value in a cache as long as no values are
-  //    `unset`/`initial`/`inherit`/etc
-  // 3. For every cache value with more than one hit
-  //    a) create a new CSS Custom Property for it
-  //    b) replace each property's final value with a var() of the cached custom
-  //    property
-  // 4. Return the results
+
   mergeUnique(
     Object.keys(styleProps) as (keyof typeof styleProps)[],
     Object.keys(runtimeDefaults) as (keyof typeof runtimeDefaults)[],
     Object.keys(globalDefaults) as (keyof typeof globalDefaults)[],
   ).forEach((prop) => {
+    let runtimeDefaultValue = runtimeDefaults[prop];
+    let globalDefaultValue = globalDefaults[prop];
+    const runtimeDefaultHasValue = runtimeDefaultValue != null;
+    const globalDefaultHasValue = globalDefaultValue != null;
+
+    if (
+      !(
+        styleProps[prop] != null ||
+        runtimeDefaultHasValue ||
+        globalDefaultHasValue
+      )
+    ) {
+      return;
+    }
+
     // Doing an explicit undefined check allows using the value `null` to mean "no deafult"
     const isStyleProp =
       hasOwn(styleProps, prop) && typeof styleProps[prop] !== 'undefined';
@@ -571,17 +493,20 @@ function convert(
     const isGlobalDefaultProp = !isStyleProp && !isRuntimeDefaultProp;
 
     /* eslint-disable no-nested-ternary -- It's terse & readable */
-    const value = isStyleProp
+    let value = isStyleProp
       ? styleProps[prop]
       : isRuntimeDefaultProp
-      ? runtimeDefaults[prop]
-      : globalDefaults[prop];
+      ? runtimeDefaultValue
+      : globalDefaultValue;
+    /* eslint-enable no-nested-ternary */
 
     const propIsBreakpoint = hasOwn(breakpoints, prop);
     const propIsModifier = !propIsBreakpoint && hasOwn(modifiers, prop);
     const propIsPseudoElement =
       !propIsBreakpoint && !propIsModifier && hasOwn(pseudoElements, prop);
-    const valueIsObject = isObject(value);
+    const propIsDeclaration =
+      !propIsBreakpoint && !propIsModifier && !propIsPseudoElement;
+    let valueIsObject = isObject(value);
     // TODO: How to narrow 'prop' here?
     const propPath: PropPath = [...parentPropPath, prop as PropPathValues];
 
@@ -675,18 +600,31 @@ function convert(
       ? globalDefaultProperties
       : runtimeProperties;
 
+    // Normalize declarations to responsive object format
+    // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
+    if (propIsDeclaration && !parentIsResponsiveDeclaration) {
+      if (!valueIsObject) {
+        value = {[defaultBreakpointKey]: value};
+        valueIsObject = true;
+      }
+      // Also normalize the defaults so we can do a correct recursive merge
+      if (runtimeDefaultHasValue && !isObject(runtimeDefaultValue)) {
+        runtimeDefaultValue = {[defaultBreakpointKey]: runtimeDefaultValue};
+      }
+      if (globalDefaultHasValue && !isObject(globalDefaultValue)) {
+        globalDefaultValue = {[defaultBreakpointKey]: globalDefaultValue};
+      }
+    }
+
     // Process a non-object concrete value.
     // Eg; {color: 'red'}
     // or
     // {sm: 'blue'}
-    if (!valueIsObject) {
-      // If it's a breakpoint value, the declaration is actually the parent
-      // object, so we grab that from the path (eg; { color: { sm: 'red' } }).
-      // Otherwise, it's the current prop (eg; { color: 'blue' })
+    if (parentIsResponsiveDeclaration) {
+      // The declaration is actually the parent object, so we grab that from the
+      // path (eg; { color: { sm: 'red' } }).
       // TODO: What about aliases?
-      const declaration = (
-        propIsBreakpoint ? parentPropPath.at(-1) : prop
-      ) as keyof ResponsiveStyleProps;
+      const declaration = parentPropPath.at(-1) as keyof ResponsiveStyleProps;
 
       const mappedValue = valueMapper(value, declaration, propPath);
 
@@ -710,24 +648,15 @@ function convert(
         declaration as keyof Properties,
         // TODO Not sure why TS isn't narrowing prop down correctly here. it could
         // only possibly be one of the responsive object keys at this point.
-        parentIsResponsiveDeclaration
-          ? // Ie; it's xs, sm, md, etc
-            (prop as CascadeOrderKeys)
-          : defaultBreakpointKey,
+        prop as CascadeOrderKeys,
         mappedValue,
       );
     } else {
       const [nestedRuntimeProperties, nestedGlobalDefaultProperties] = convert(
         // TODO: How do I fix this?
         value as typeof styleProps,
-        // Also recurse into the default values object (if it's set)
-        propIsModifier || propIsBreakpoint || propIsPseudoElement
-          ? globalDefaults[prop]
-          : globalDefaults,
-        // Also recurse into the default values object (if it's set)
-        propIsModifier || propIsBreakpoint || propIsPseudoElement
-          ? runtimeDefaults[prop]
-          : runtimeDefaults,
+        globalDefaultValue,
+        runtimeDefaultValue,
         valueMapper,
         /* eslint-disable no-nested-ternary -- It's terse & readable */
         propIsModifier
@@ -792,7 +721,8 @@ function convert(
   // must be merged together before they're stringified to ensure the cascade
   // order is preserved.
   // TODO: Is there a more efficient way of doing this without having to loop
-  // over the entire globalDefaultProperties object every time?
+  // over the entire globalDefaultProperties object every time? Maybe move it
+  // into the above loop which is already going over the objects?
   (
     Object.entries(globalDefaultProperties) as Entries<
       typeof globalDefaultProperties

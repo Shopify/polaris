@@ -65,7 +65,7 @@ describe('convertStylePropsToCSSProperties', () => {
         1,
         'bg-fill-info',
         'backgroundColor',
-        ['backgroundColor'],
+        ['backgroundColor', 'xs'],
       );
       expect(mockMapper).toHaveBeenNthCalledWith(2, 'red', 'color', [
         'color',
@@ -393,7 +393,7 @@ describe('convertStylePropsToCSSProperties', () => {
             display: disallowedCSSValue,
           };
           expect(() => convertStylePropsToCSSProperties(styleProps)).toThrow(
-            `Invariant failed: [display] ${disallowedCSSValue} is a disallowed value. Please use a different value.`,
+            `Invariant failed: [display.xs] ${disallowedCSSValue} is a disallowed value. Please use a different value.`,
           );
         },
       );
@@ -520,7 +520,7 @@ describe('convertStylePropsToCSSProperties', () => {
     });
 
     describe('runtime defaults', () => {
-      it('modifiers are deep merged, responsive values are not', () => {
+      it('are deep merged', () => {
         const styleProps: ResponsiveStylePropsWithModifiers = {
           _focus: {outlineWidth: {md: '3px'}},
         };
@@ -535,7 +535,7 @@ describe('convertStylePropsToCSSProperties', () => {
           .toMatchInlineSnapshot(`
             Object {
               "style": Object {
-                "outlineWidth": "var(--__focus-on,var(--_md-on,3px)) var(--__focus-off,0)",
+                "outlineWidth": "var(--__focus-on,var(--_md-on,3px) var(--_md-off,1px)) var(--__focus-off,0)",
               },
             }
           `);
