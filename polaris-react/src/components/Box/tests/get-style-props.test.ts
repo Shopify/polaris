@@ -160,9 +160,9 @@ describe('convertStylePropsToCSSProperties', () => {
       `);
     });
 
-    describe('default', () => {
+    describe('runtime defaults', () => {
       describe('static value', () => {
-        it.skip('is set when responsive style props are passed that are not xs', () => {
+        it('is set when responsive style props are passed that are not xs', () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
             borderInlineStartStyle: {md: 'dashed'},
           };
@@ -213,26 +213,27 @@ describe('convertStylePropsToCSSProperties', () => {
           `);
         });
 
-        it('does not interfere with non-default style props', () => {
+        it('merges runtime defaults even when missing from style props', () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
             display: 'flex',
           };
-          const defaults: PropDefaults = {
+          const runtimeDefaults: PropDefaults = {
             borderInlineStartStyle: 'solid',
           };
-          expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          expect(convertStylePropsToCSSProperties(styleProps, runtimeDefaults))
             .toMatchInlineSnapshot(`
-            Object {
-              "style": Object {
-                "display": "flex",
-              },
-            }
-          `);
+              Object {
+                "style": Object {
+                  "borderInlineStartStyle": "solid",
+                  "display": "flex",
+                },
+              }
+            `);
         });
       });
 
-      describe('dynamic/function value', () => {
-        it.skip('is not called when matching non-responsive style prop is passed', () => {
+      describe.skip('dynamic/function value', () => {
+        it('is not called when matching non-responsive style prop is passed', () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
             display: 'flex',
           };
@@ -245,7 +246,7 @@ describe('convertStylePropsToCSSProperties', () => {
           expect(mockGetDefault.mock.calls).toHaveLength(0);
         });
 
-        it.skip('is not called when matching responsive `xs` style prop is passed', () => {
+        it('is not called when matching responsive `xs` style prop is passed', () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
             display: {xs: 'flex'},
           };
@@ -258,7 +259,7 @@ describe('convertStylePropsToCSSProperties', () => {
           expect(mockGetDefault.mock.calls).toHaveLength(0);
         });
 
-        it.skip('is called when no matching style prop is passed', () => {
+        it('is called when no matching style prop is passed', () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
             color: 'red',
           };
@@ -272,7 +273,7 @@ describe('convertStylePropsToCSSProperties', () => {
           expect(mockGetDefault).toHaveBeenCalledWith({color: 'red'});
         });
 
-        it.skip('is called with resolved aliases', () => {
+        it('is called with resolved aliases', () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
             paddingInline: '200',
           };
@@ -290,7 +291,7 @@ describe('convertStylePropsToCSSProperties', () => {
           });
         });
 
-        it.skip("applies function values even when styleprop isn't passed", () => {
+        it("applies function values even when styleprop isn't passed", () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
             display: 'flex',
           };
@@ -348,7 +349,7 @@ describe('convertStylePropsToCSSProperties', () => {
           `);
         });
 
-        it.skip('is set when responsive style props are passed that are not xs', () => {
+        it('is set when responsive style props are passed that are not xs', () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
             borderInlineStartStyle: {md: 'dashed'},
           };
@@ -423,7 +424,7 @@ describe('convertStylePropsToCSSProperties', () => {
         `);
     });
 
-    it('static default is inherited from generated .css file when styleProp not set', () => {
+    it.skip('global default is inherited from generated .css file when styleProp not set', () => {
       const styleProps: ResponsiveStylePropsWithModifiers = {};
       const defaults: PropDefaults = {
         borderInlineStartStyle: 'solid',
@@ -517,6 +518,64 @@ describe('convertStylePropsToCSSProperties', () => {
           }
         `);
     });
+
+    describe('runtime defaults', () => {
+      it('modifiers are deep merged, responsive values are not', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          _focus: {outlineWidth: {md: '3px'}},
+        };
+
+        const defaults: PropDefaults = {
+          outlineWidth: 0,
+          _focus: {
+            outlineWidth: {xs: '1px', md: '2px'},
+          },
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "style": Object {
+                "outlineWidth": "var(--__focus-on,var(--_md-on,3px)) var(--__focus-off,0)",
+              },
+            }
+          `);
+      });
+
+      it.todo(
+        'A value of `null` will remove a runtime default, but not apply another value',
+      );
+      it.todo(
+        'A value of `null` will remove a global default, but not apply another value',
+      );
+
+      // default: {color: {md: 'red'}}
+      // styleProp: {color: 'blue'}
+      // result: {color: {xs: 'blue', md: 'red'}}
+      it.todo(
+        'A responsive runtime default is merged into a non-responsive style prop',
+      );
+
+      // default: {color: 'red'}
+      // styleProp: {color: {md: 'blue'}}
+      // result: {color: {xs: 'red', md: 'blue'}}
+      it.todo(
+        'A non-responsive runtime default is merged into a responsive style prop',
+      );
+
+      // default: {color: {md: 'red'}}
+      // styleProp: {color: 'blue'}
+      // result: {color: {xs: 'blue', md: 'red'}}
+      it.todo(
+        'A responsive global default is merged into a non-responsive style prop',
+      );
+
+      // default: {color: 'red'}
+      // styleProp: {color: {md: 'blue'}}
+      // result: {color: {xs: 'red', md: 'blue'}}
+      it.todo(
+        'A non-responsive global default is merged into a responsive style prop',
+      );
+    });
   });
 
   describe('root & pseudo elements interaction', () => {
@@ -527,5 +586,7 @@ describe('convertStylePropsToCSSProperties', () => {
     it.todo('pseudo styles dont overwrite root styles and vice versa');
 
     it.todo('dynamic default is called for root and any pseudo elements');
+
+    it.todo('global defaults cannot be applied to pseudo elements');
   });
 });
