@@ -68,14 +68,12 @@ $nav-max-width: 360px;
   }
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
-  scrollbar-color: #d7d7d7 transparent;
+  scrollbar-color: var(--p-color-scrollbar-thumb-bg) transparent;
   transition: scrollbar-color var(--p-motion-duration-100)
     var(--p-motion-ease-in);
 
   &:hover {
-    /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
-    scrollbar-color: #8f8f8f transparent;
+    scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
   }
 
   @supports #{'selector(::-webkit-scrollbar)'} {
@@ -84,8 +82,7 @@ $nav-max-width: 360px;
     }
 
     &::-webkit-scrollbar-thumb {
-      /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
-      background-color: #8f8f8f;
+      background-color: var(--p-color-scrollbar-thumb-bg-hover);
       border: var(--p-border-width-050) solid transparent;
       border-radius: var(--p-border-radius-300);
       background-clip: content-box;

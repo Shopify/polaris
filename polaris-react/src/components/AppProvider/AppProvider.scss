@@ -34,14 +34,12 @@ html {
   text-rendering: optimizeLegibility;
 
   scrollbar-width: thin;
-  /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
-  scrollbar-color: #d7d7d7 var(--p-color-bg);
+  scrollbar-color: var(--p-color-scrollbar-thumb-bg) var(--p-color-bg);
   transition: scrollbar-color var(--p-motion-duration-100)
     var(--p-motion-ease-in);
 
   &:hover {
-    /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
-    scrollbar-color: #8f8f8f var(--p-color-bg);
+    scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) var(--p-color-bg);
   }
 
   @supports #{'selector(::-webkit-scrollbar)'} {
@@ -51,8 +49,7 @@ html {
     }
 
     &::-webkit-scrollbar-thumb {
-      /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
-      background-color: #8f8f8f;
+      background-color: var(--p-color-scrollbar-thumb-bg-hover);
       border: var(--p-border-width-050) solid transparent;
       border-radius: var(--p-border-radius-300);
       background-clip: content-box;
@@ -60,12 +57,10 @@ html {
   }
 
   * {
-    /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
-    scrollbar-color: #8f8f8f transparent;
+    scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
 
     &:hover {
-      /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
-      scrollbar-color: #8f8f8f transparent;
+      scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
     }
   }
 }
