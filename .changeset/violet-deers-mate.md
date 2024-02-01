@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Updated nav and main scrollbars
+Updated scrollbar colors and width

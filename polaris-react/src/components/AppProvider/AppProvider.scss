@@ -32,7 +32,19 @@ html {
 
   text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
+  // Safari scrollbar styles until it adopts scrollbar-color, scrollbar-width
+  &::-webkit-scrollbar {
+    // Matches scrollbar-width: thin
+    width: 11px;
+    background-color: var(--p-color-bg);
+  }
 
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--p-color-scrollbar-thumb-bg-hover);
+    border: var(--p-border-width-050) solid transparent;
+    border-radius: var(--p-border-radius-300);
+    background-clip: content-box;
+  }
   scrollbar-width: thin;
   scrollbar-color: var(--p-color-scrollbar-thumb-bg) var(--p-color-bg);
   transition: scrollbar-color var(--p-motion-duration-100)
@@ -41,21 +53,7 @@ html {
   &:hover {
     scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) var(--p-color-bg);
   }
-
-  @supports #{'selector(::-webkit-scrollbar)'} {
-    &::-webkit-scrollbar {
-      width: 11px;
-      background-color: var(--p-color-bg);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--p-color-scrollbar-thumb-bg-hover);
-      border: var(--p-border-width-050) solid transparent;
-      border-radius: var(--p-border-radius-300);
-      background-clip: content-box;
-    }
-  }
-
+  // Set all nested scroll container scrolltrack backgrounds to transparent
   * {
     scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
 

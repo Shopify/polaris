@@ -66,6 +66,18 @@ $nav-max-width: 360px;
   &:focus {
     outline: none;
   }
+  // Safari scrollbar styles until it adopts scrollbar-color, scrollbar-width
+  &::-webkit-scrollbar {
+    // Matches scrollbar-width: thin
+    width: 11px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--p-color-scrollbar-thumb-bg-hover);
+    border: var(--p-border-width-050) solid transparent;
+    border-radius: var(--p-border-radius-300);
+    background-clip: content-box;
+  }
   scrollbar-width: thin;
   scrollbar-gutter: stable;
   scrollbar-color: var(--p-color-scrollbar-thumb-bg) transparent;
@@ -74,19 +86,6 @@ $nav-max-width: 360px;
 
   &:hover {
     scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
-  }
-
-  @supports #{'selector(::-webkit-scrollbar)'} {
-    &::-webkit-scrollbar {
-      width: 11px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--p-color-scrollbar-thumb-bg-hover);
-      border: var(--p-border-width-050) solid transparent;
-      border-radius: var(--p-border-radius-300);
-      background-clip: content-box;
-    }
   }
 }
 
