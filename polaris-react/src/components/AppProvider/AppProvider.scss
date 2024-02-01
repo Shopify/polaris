@@ -58,6 +58,16 @@ html {
       background-clip: content-box;
     }
   }
+
+  * {
+    /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
+    scrollbar-color: #8f8f8f transparent;
+
+    &:hover {
+      /* stylelint-disable-next-line polaris/color/color-no-hex, color-no-hex -- testing */
+      scrollbar-color: #8f8f8f transparent;
+    }
+  }
 }
 
 /*
