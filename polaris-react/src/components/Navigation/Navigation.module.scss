@@ -156,8 +156,7 @@ $nav-max-width: 360px;
   padding: 0 var(--p-space-300);
 
   @supports (scrollbar-gutter: stable) {
-    /* stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- testing */
-    padding: 0 1px 0 var(--p-space-300);
+    padding: 0 var(--p-space-025) 0 var(--p-space-300);
   }
 }
 
