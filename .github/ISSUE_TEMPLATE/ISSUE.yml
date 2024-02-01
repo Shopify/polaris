@@ -1,0 +1,69 @@
+name: Issue
+description: Ask a question or report a problem with Polaris or the documentation
+labels: ['Bug', 'untriaged']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please use [this template](https://github.com/Shopify/polaris/issues/new?labels=Feature+request&template=FEATURE_REQUEST.md) for feature requests.
+  - type: textarea
+    id: issue-summary
+    attributes:
+      label: Issue summary
+      description: Provide a short description of the question/problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What is the expected behavior?
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: What is the actual behavior?
+      placeholder: |
+        Tip: include an error message (in a `<details></details>` tag) if your issue is related to an error while running Polaris.
+
+        If you include an animated gif showing your issue, wrapping it in a details tag is also recommended. Gifs usually autoplay, which can cause accessibility issues for people reviewing your PR:
+
+        <details>
+          <summary>Summary of your gif(s)</summary>
+          <img src="..." alt="Description of what the gif shows">
+        </details>
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce the problem
+      description: Please provide a reduced test case when possible with this [CodeSandbox template](https://codesandbox.io/s/q82mlq0m26).
+      placeholder: |
+        [Link to CodeSandbox]()
+        1. First step
+        2. Second step
+  - type: markdown
+    attributes:
+      value: |
+
+        > [!Note]
+        > Use the folowing command to provide specifications on your environment including version numbers, browser, device, and operating system.
+        > `npx envinfo --system --binaries --browsers --npmPackages react,react-dom,@shopify/polaris`
+  - type: dropdown
+    id: specifications-react-components
+    attributes:
+      label: Are you using React components?
+      options:
+        - 'Yes'
+        - 'No'
+  - type: input
+    id: specifications-polaris-version-number
+    attributes:
+      label: Polaris version number
+  - type: input
+    id: specifications-browser
+    attributes:
+      label: Browser
+  - type: input
+    id: specifications-device
+    attributes:
+      label: Device
