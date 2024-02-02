@@ -162,6 +162,57 @@ export function calculateHorizontalPosition(
       desiredWidth,
     );
 
+    console.table([
+      {variable: 'maximumWidth', value: maximumWidth},
+      {variable: 'desiredWidth', value: desiredWidth},
+      {variable: 'overlayMinWidth', value: overlayMinWidth},
+      {variable: 'activatorRect.width', value: activatorRect.width},
+      {variable: 'overlayRect.width', value: overlayRect.width},
+      {variable: 'containerRect.width', value: containerRect.width},
+      {
+        variable: 'widthIfLeft',
+        value: widthIfLeft,
+      },
+      {
+        variable: 'widthIfRight',
+        value: widthIfRight,
+      },
+
+      {
+        variable: 'activatorRect.left',
+        value: activatorRect.left,
+      },
+      {
+        variable: 'activatorRect.right',
+        value: activatorRect.right,
+      },
+      {
+        variable: 'enoughSpaceFromLeftEdge',
+        value: enoughSpaceFromLeftEdge,
+      },
+      {
+        variable: 'enoughSpaceFromRightEdge',
+        value: enoughSpaceFromRightEdge,
+      },
+      {
+        variable: 'distanceToLeftEdge',
+        value: distanceToLeftEdge,
+      },
+      {
+        variable: 'distanceToRightEdge',
+        value: distanceToRightEdge,
+      },
+
+      {
+        variable: 'positionIfLeft',
+        value: positionIfLeft,
+      },
+      {
+        variable: 'positionIfRight',
+        value: positionIfRight,
+      },
+    ]);
+
     if (preferredHorizontalPosition === 'right') {
       return enoughSpaceFromRightEdge
         ? {

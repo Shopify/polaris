@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, Children} from 'react';
 
-import {useTheme} from '../../../utilities/use-theme';
+// import {useTheme} from '../../../utilities/use-theme';
 import {classNames} from '../../../utilities/css';
 import {overlay} from '../../shared';
 import {PositionedOverlay} from '../../PositionedOverlay';
@@ -11,7 +11,8 @@ import styles from '../HoverCard.module.scss';
 enum TransitionStatus {
   Entering = 'entering',
   Entered = 'entered',
-  Exited = 'exited',
+  Moving = 'moving',
+  Exiting = 'exiting',
 }
 
 export interface HoverCardOverlayProps {
@@ -23,7 +24,6 @@ export interface HoverCardOverlayProps {
   zIndexOverride?: number;
   activator: HTMLElement;
   snapToParent?: boolean;
-  minWidth?: number;
   onMouseEnter(): void;
   onMouseLeave(): void;
 }
@@ -37,16 +37,17 @@ export function HoverCardOverlay({
   zIndexOverride,
   activator,
   snapToParent,
-  minWidth,
   onMouseEnter,
   onMouseLeave,
 }: HoverCardOverlayProps) {
-  const {motion} = useTheme();
+  const contentNode = useRef<HTMLDivElement | null>(null);
+  const topCoordinate = useRef<number | undefined>();
 
   const [transitionStatus, setTransitionStatus] = useState<TransitionStatus>(
-    TransitionStatus.Entering,
+    active ? TransitionStatus.Entering : TransitionStatus.Exiting,
   );
-  const contentNode = useRef<HTMLDivElement | null>(null);
+  const [overlayMoved, setOverlayMoved] = useState(false);
+
   const enteringTimer = useRef<NodeJS.Timeout | undefined>();
 
   const changeTransitionStatus = (
@@ -73,13 +74,13 @@ export function HoverCardOverlay({
 
     if (!active) {
       clearTransitionTimeout();
-      setTransitionStatus(TransitionStatus.Exited);
+      setTransitionStatus(TransitionStatus.Exiting);
     }
 
     return () => {
       clearTransitionTimeout();
     };
-  }, [active, motion]);
+  }, [active]);
 
   const clearTransitionTimeout = () => {
     if (enteringTimer.current) {
@@ -88,11 +89,17 @@ export function HoverCardOverlay({
   };
 
   const renderHoverCard: PositionedOverlayProps['render'] = ({
+    top,
     measuring,
     positioning,
     desiredWidth,
     desiredHeight,
   }) => {
+    if (topCoordinate.current !== undefined && top !== topCoordinate.current) {
+      setOverlayMoved(true);
+      topCoordinate.current = top;
+    }
+
     const className = classNames(
       styles.HoverCard,
       snapToParent && styles.snapToParent,
@@ -101,18 +108,15 @@ export function HoverCardOverlay({
       !measuring && styles.measured,
     );
 
-    const hoverCardStyles = {
-      '--pc-hovercard-min-width': `${minWidth}px`,
-    } as React.CSSProperties;
-
     const contentStyles = measuring
       ? undefined
       : {width: desiredWidth, height: desiredHeight};
 
+    console.log(contentStyles);
+
     return (
       <div
         {...overlay.props}
-        style={hoverCardStyles}
         className={className}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
@@ -132,9 +136,7 @@ export function HoverCardOverlay({
     );
   };
 
-  if (transitionStatus === TransitionStatus.Exited && !active) {
-    return null;
-  }
+  console.log(active, transitionStatus);
 
   const className = classNames(
     styles.HoverCardOverlay,
@@ -142,8 +144,10 @@ export function HoverCardOverlay({
       styles['HoverCardOverlay-entering'],
     transitionStatus === TransitionStatus.Entered &&
       styles['HoverCardOverlay-active'],
-    transitionStatus === TransitionStatus.Exited &&
+    transitionStatus === TransitionStatus.Exiting &&
       styles['HoverCardOverlay-exited'],
+    active && styles['HoverCardOverlay-active'],
+    overlayMoved && styles['HoverCardOverlay-moved'],
   );
 
   const overlayMarkup = active ? (

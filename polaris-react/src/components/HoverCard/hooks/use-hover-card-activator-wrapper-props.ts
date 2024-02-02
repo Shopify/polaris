@@ -53,6 +53,37 @@ export function useHoverCardActivatorWrapperProps({
     };
   }, []);
 
+  const mouseEnteredOrLeftActivator = (event: React.MouseEvent) => {
+    const activator =
+      event.target instanceof HTMLElement &&
+      event.target.closest('[data-hovercard-activator]');
+
+    const isTarget =
+      activator instanceof HTMLElement &&
+      activator.getAttribute('data-hovercard-activator') !== null;
+
+    const isTargetChild =
+      activator instanceof HTMLElement &&
+      event.currentTarget instanceof HTMLElement &&
+      activator.contains(event.currentTarget);
+
+    return isTarget || isTargetChild;
+  };
+
+  const mouseMovedToHoverCard = (event: React.MouseEvent) => {
+    const hoverCard =
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore - EventTarget does in fact have a parentNode property.
+      event?.relatedTarget instanceof HTMLElement &&
+      event?.relatedTarget?.closest('[data-hovercard-content]');
+    const mouseEnteredHoverCard =
+      hoverCard instanceof HTMLElement &&
+      event?.relatedTarget instanceof HTMLElement &&
+      hoverCard.contains(event?.relatedTarget);
+
+    return mouseEnteredHoverCard;
+  };
+
   const handleOpen = useCallback(() => {
     toggleActive?.(true);
     addPresence('hovercard');
@@ -67,35 +98,22 @@ export function useHoverCardActivatorWrapperProps({
   }, [toggleActive, removePresence]);
 
   const handleMouseLeaveActivator = useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
-      const isTarget = event.currentTarget?.getAttribute(
-        'data-hovercard-activator',
-      );
+    (event: React.MouseEvent) => {
+      if (mouseEnteredOrLeftActivator(event)) {
+        console.log('mouse left activator');
 
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore - EventTarget does in fact have a parentNode property. Since this event is also fired when the row is entered, we continue only if the cell itself was entered.
-      const isTargetChild = event.target?.parentNode?.getAttribute(
-        'data-hovercard-activator',
-      );
-
-      if (isTarget || isTargetChild) {
-        const mouseEnteredHoverCard =
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore - EventTarget does in fact have a parentNode property. Since this event is also fired when the row is entered, we continue only if the cell itself was entered.
-          event?.relatedTarget?.parentNode?.getAttribute(
-            'data-hovercard-content',
-          );
-
-        if (mouseEnteredHoverCard) console.log('mouse entered hover card');
-
-        dynamicActivatorRef.current = null;
-        mouseEntered.current = false;
-
-        if (mouseEnteredHoverCard || overlayActive) {
+        if (
+          dynamicActivatorRef.current &&
+          (mouseMovedToHoverCard(event) || overlayActive)
+        ) {
+          console.log('mouse entered hover card');
+          dynamicActivatorRef.current = null;
+          mouseEntered.current = false;
           return;
         }
 
-        console.log('mouse left activator');
+        dynamicActivatorRef.current = null;
+        mouseEntered.current = false;
 
         if (hoverDelayTimeout.current) {
           clearTimeout(hoverDelayTimeout.current);
@@ -109,7 +127,7 @@ export function useHoverCardActivatorWrapperProps({
   );
 
   const handleMouseEnter = useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
+    (event: React.MouseEvent<HTMLDivElement | HTMLTableCellElement>) => {
       if (!mdUp) return;
       if (!providedActivatorRef) {
         dynamicActivatorRef.current = event.currentTarget;
@@ -131,7 +149,7 @@ export function useHoverCardActivatorWrapperProps({
   // https://github.com/facebook/react/issues/10109
   // Mouseenter event not triggered when cursor moves from disabled button
   const handleMouseEnterFix = useCallback(
-    (event: React.MouseEvent<HTMLDivElement>) => {
+    (event: React.MouseEvent<HTMLDivElement | HTMLTableCellElement>) => {
       console.log(
         event,
         event.target,
@@ -139,22 +157,10 @@ export function useHoverCardActivatorWrapperProps({
         event.relatedTarget,
       );
 
-      const isTarget = event.currentTarget?.getAttribute(
-        'data-hovercard-activator',
-      );
-
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore - EventTarget does in fact have a parentNode property. Since this event is also fired when the row is entered, we continue only if the cell itself was entered.
-      const isTargetChild = event.target?.parentNode?.getAttribute(
-        'data-hovercard-activator',
-      );
-
-      if (isTarget || isTargetChild) {
+      if (mouseEnteredOrLeftActivator(event) && !mouseEntered.current) {
         console.log('mouse entered activator');
 
-        if (!mouseEntered.current) {
-          handleMouseEnter(event);
-        }
+        handleMouseEnter(event);
       }
     },
     [handleMouseEnter],
