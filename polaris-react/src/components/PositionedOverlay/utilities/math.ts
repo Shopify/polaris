@@ -125,8 +125,10 @@ export function calculateHorizontalPosition(
   const desiredWidth = overlayRect.width;
   const distanceToLeftEdge = activatorRect.left;
   const distanceToRightEdge = containerRect.width - activatorRect.right;
-  const enoughSpaceFromLeftEdge = distanceToLeftEdge >= overlayMinWidth;
-  const enoughSpaceFromRightEdge = distanceToRightEdge >= overlayMinWidth;
+  const enoughSpaceFromLeftEdge =
+    distanceToLeftEdge >= (overlayMinWidth || desiredWidth);
+  const enoughSpaceFromRightEdge =
+    distanceToRightEdge >= (overlayMinWidth || desiredWidth);
 
   if (!preferredHorizontalPosition) {
     if (preferredAlignment === 'left') {
