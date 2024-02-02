@@ -19,6 +19,7 @@ import styles from './PositionedOverlay.module.scss';
 type Positioning = 'above' | 'below' | 'left' | 'right';
 
 interface OverlayDetails {
+  top?: number;
   left?: number;
   right?: number;
   desiredHeight: number;
@@ -175,6 +176,7 @@ export class PositionedOverlay extends PureComponent<
   private overlayDetails = (): OverlayDetails => {
     const {
       measuring,
+      top,
       left,
       right,
       positioning,
@@ -186,6 +188,7 @@ export class PositionedOverlay extends PureComponent<
 
     return {
       measuring,
+      top,
       left,
       right,
       desiredHeight: height,
@@ -324,6 +327,8 @@ export class PositionedOverlay extends PureComponent<
           this.overlay.firstChild instanceof HTMLElement
             ? getMinWidthForNode(this.overlay.firstElementChild as HTMLElement)
             : 0;
+
+        console.log(overlayMinWidth);
 
         const containerRect = windowRect();
         const zIndexForLayer = getZIndexForLayerFromNode(activator);
