@@ -54,13 +54,13 @@ export function useHoverCardActivatorWrapperProps({
   }, []);
 
   const mouseEnteredOrLeftActivator = (event: React.MouseEvent) => {
+    const isTarget =
+      event.target instanceof HTMLElement &&
+      event.target.getAttribute('data-hovercard-activator') !== null;
+
     const activator =
       event.target instanceof HTMLElement &&
       event.target.closest('[data-hovercard-activator]');
-
-    const isTarget =
-      activator instanceof HTMLElement &&
-      activator.getAttribute('data-hovercard-activator') !== null;
 
     const isTargetChild =
       activator instanceof HTMLElement &&
@@ -74,11 +74,11 @@ export function useHoverCardActivatorWrapperProps({
     const hoverCard =
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore - EventTarget does in fact have a parentNode property.
-      event?.relatedTarget instanceof HTMLElement &&
-      event?.relatedTarget?.closest('[data-hovercard-content]');
+      event.relatedTarget instanceof HTMLElement &&
+      event.relatedTarget?.closest('[data-hovercard-content]');
     const mouseEnteredHoverCard =
       hoverCard instanceof HTMLElement &&
-      event?.relatedTarget instanceof HTMLElement &&
+      event.relatedTarget instanceof HTMLElement &&
       hoverCard.contains(event?.relatedTarget);
 
     return mouseEnteredHoverCard;
