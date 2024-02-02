@@ -470,7 +470,7 @@ function convert(
     Object.keys(runtimeDefaults) as (keyof typeof runtimeDefaults)[],
     Object.keys(globalDefaults) as (keyof typeof globalDefaults)[],
   ).forEach((prop) => {
-    const stylePropValue = styleProps[prop];
+    let stylePropValue = styleProps[prop];
     let runtimeDefaultValue = runtimeDefaults[prop];
     let globalDefaultValue = globalDefaults[prop];
     const stylePropHasValue = stylePropValue != null;
@@ -594,8 +594,8 @@ function convert(
     // Normalize declarations to responsive object format
     // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
     if (propIsDeclaration && !parentIsResponsiveDeclaration) {
-      if (!valueIsObject) {
-        value = {[defaultBreakpointKey]: value};
+      if (!valueIsObject && !isObject(stylePropValue) {
+        stylePropValue = {[defaultBreakpointKey]: stylePropValue};
         valueIsObject = true;
       }
       // Also normalize the defaults so we can do a correct recursive merge
@@ -645,7 +645,7 @@ function convert(
     } else {
       const [nestedRuntimeProperties, nestedGlobalDefaultProperties] = convert(
         // TODO: How do I fix this?
-        value as typeof styleProps,
+        stylePropValue as typeof styleProps,
         globalDefaultValue,
         runtimeDefaultValue,
         valueMapper,
