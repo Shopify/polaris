@@ -85,52 +85,6 @@ export function calculateVerticalPosition(
         positioning: 'below',
       };
 
-  console.table([
-    {variable: 'desiredHeight', value: desiredHeight},
-    {variable: 'heightIfAbove', value: heightIfAbove},
-    {variable: 'heightIfBelow', value: heightIfBelow},
-    {variable: 'activatorRect.height', value: activatorRect.height},
-    {variable: 'overlayRect.height', value: overlayRect.height},
-    {variable: 'containerRect.height', value: containerRect.height},
-    {variable: 'verticalMargins', value: verticalMargins},
-    {
-      variable: 'scrollableContainerRect.height',
-      value: _scrollableContainerRect.height,
-    },
-    {
-      variable: 'spaceAbove',
-      value: spaceAbove,
-    },
-    {
-      variable: 'spaceBelow',
-      value: spaceBelow,
-    },
-    {
-      variable: 'enoughSpaceFromTopEdge',
-      value: enoughSpaceFromTopEdge,
-    },
-    {
-      variable: 'enoughSpaceFromBottomEdge',
-      value: enoughSpaceFromBottomEdge,
-    },
-    {
-      variable: 'mostSpaceOnTop',
-      value: mostSpaceOnTop,
-    },
-    {
-      variable: 'mostSpaceOnBottom',
-      value: mostSpaceOnBottom,
-    },
-    {
-      variable: 'positionIfAbove',
-      value: positionIfAbove,
-    },
-    {
-      variable: 'positionIfBelow',
-      value: positionIfBelow,
-    },
-  ]);
-
   if (preferredPosition === 'above') {
     return mostSpaceOnTop ? positionIfAbove : positionIfBelow;
   }
@@ -206,61 +160,6 @@ export function calculateHorizontalPosition(
       distanceToRightEdge - minimumSurroundingSpace,
       desiredWidth,
     );
-
-    console.table([
-      {variable: 'maximumWidth', value: maximumWidth},
-      {variable: 'desiredWidth', value: desiredWidth},
-      {variable: 'overlayMinWidth', value: overlayMinWidth},
-      {variable: 'activatorRect.width', value: activatorRect.width},
-      {variable: 'overlayRect.width', value: overlayRect.width},
-      {variable: 'containerRect.width', value: containerRect.width},
-      {
-        variable: 'scrollableContainerRect.width',
-        value: _scrollableContainerRect.width,
-      },
-      {
-        variable: 'widthIfLeft',
-        value: widthIfLeft,
-      },
-      {
-        variable: 'widthIfRight',
-        value: widthIfRight,
-      },
-
-      {
-        variable: 'activatorRect.left',
-        value: activatorRect.left,
-      },
-      {
-        variable: 'activatorRect.right',
-        value: activatorRect.right,
-      },
-      {
-        variable: 'enoughSpaceFromLeftEdge',
-        value: enoughSpaceFromLeftEdge,
-      },
-      {
-        variable: 'enoughSpaceFromRightEdge',
-        value: enoughSpaceFromRightEdge,
-      },
-      {
-        variable: 'distanceToLeftEdge',
-        value: distanceToLeftEdge,
-      },
-      {
-        variable: 'distanceToRightEdge',
-        value: distanceToRightEdge,
-      },
-
-      {
-        variable: 'positionIfLeft',
-        value: positionIfLeft,
-      },
-      {
-        variable: 'positionIfRight',
-        value: positionIfRight,
-      },
-    ]);
 
     if (preferredHorizontalPosition === 'right') {
       return enoughSpaceFromRightEdge

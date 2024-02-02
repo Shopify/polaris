@@ -333,188 +333,170 @@ export function WithDynamicActivator() {
   const renderCustomerCellPreview = (customer: CustomerDetailPreview) => {
     const {name, phone, email, location, orders} = customer;
 
-    const customerHoverCardStyles = {
-      '--pc-hover-card-min-width': '100px',
-      '--pc-hover-card-min-height': '100px',
-    } as React.CSSProperties;
-
     return (
-      <div style={customerHoverCardStyles}>
-        <Box padding="400" maxWidth="288px">
-          <BlockStack gap="400">
-            <BlockStack gap="0">
-              <Text as="span" variant="headingSm">
-                <Link removeUnderline>{name}</Link>
-              </Text>
-              <Text as="span" variant="bodyMd">
-                <Link url={`mailto:${email}`}>{email}</Link>
-              </Text>
-              <Text as="p" variant="bodyMd">
-                <Link url={`tel:${phone}`}>{phone}</Link>
-              </Text>
-            </BlockStack>
-            <Box width="100%">
-              <BlockStack gap="100">
-                <InlineStack wrap={false} gap="100" align="start">
-                  <Box>
-                    <Icon tone="subdued" source={LocationIcon} />
-                  </Box>
-                  <Text tone="subdued" as="p">
-                    {location}
-                  </Text>
-                </InlineStack>
-                <InlineStack wrap={false} gap="100" align="start">
-                  <Box>
-                    <Icon tone="subdued" source={OrderIcon} />
-                  </Box>
-                  <Text tone="subdued" as="p">
-                    {`${orders} Orders`}
-                  </Text>
-                </InlineStack>
-              </BlockStack>
-            </Box>
+      <Box padding="400" maxWidth="288px">
+        <BlockStack gap="400">
+          <BlockStack gap="0">
+            <Text as="span" variant="headingSm">
+              <Link removeUnderline>{name}</Link>
+            </Text>
+            <Text as="span" variant="bodyMd">
+              <Link url={`mailto:${email}`}>{email}</Link>
+            </Text>
+            <Text as="p" variant="bodyMd">
+              <Link url={`tel:${phone}`}>{phone}</Link>
+            </Text>
           </BlockStack>
-        </Box>
-      </div>
+          <Box width="100%">
+            <BlockStack gap="100">
+              <InlineStack wrap={false} gap="100" align="start">
+                <Box>
+                  <Icon tone="subdued" source={LocationIcon} />
+                </Box>
+                <Text tone="subdued" as="p">
+                  {location}
+                </Text>
+              </InlineStack>
+              <InlineStack wrap={false} gap="100" align="start">
+                <Box>
+                  <Icon tone="subdued" source={OrderIcon} />
+                </Box>
+                <Text tone="subdued" as="p">
+                  {`${orders} Orders`}
+                </Text>
+              </InlineStack>
+            </BlockStack>
+          </Box>
+        </BlockStack>
+      </Box>
     );
   };
 
   const renderItemsCellPreview = (order: OrderDetailPreview) => {
     const {location, deliveryMethod, fulfillmentStatus, items} = order;
 
-    const lineItemHoverCardStyles = {
-      '--pc-hover-card-min-width': '300px',
-      '--pc-hover-card-min-height': '200px',
-    } as React.CSSProperties;
-
     return (
-      <div style={lineItemHoverCardStyles}>
-        <Box padding="400" minWidth="300px" maxWidth="416px">
-          <BlockStack gap="200">
-            <InlineStack>{fulfillmentStatus}</InlineStack>
+      <Box padding="400" minWidth="300px" maxWidth="416px">
+        <BlockStack gap="200">
+          <InlineStack>{fulfillmentStatus}</InlineStack>
+          <Box
+            borderRadius="300"
+            borderWidth="025"
+            borderColor="border-secondary"
+          >
             <Box
-              borderRadius="300"
-              borderWidth="025"
-              borderColor="border-secondary"
+              id="FulfillmentDetails"
+              background="bg-surface-secondary"
+              padding="300"
+              borderStartStartRadius="300"
+              borderStartEndRadius="300"
             >
-              <Box
-                id="FulfillmentDetails"
-                background="bg-surface-secondary"
-                padding="300"
-                borderStartStartRadius="300"
-                borderStartEndRadius="300"
-              >
-                <BlockStack gap="300">
-                  <BlockStack gap="100">
-                    <InlineStack gap="100" align="start" blockAlign="center">
-                      <div style={{marginLeft: '-4px'}}>
-                        <Icon source={LocationIcon} tone="subdued" />
-                      </div>
-                      <Text as="p" tone="subdued" variant="bodySm">
-                        Location
-                      </Text>
-                    </InlineStack>
-                    <Text as="p" variant="bodySm">
-                      {location}
+              <BlockStack gap="300">
+                <BlockStack gap="100">
+                  <InlineStack gap="100" align="start" blockAlign="center">
+                    <div style={{marginLeft: '-4px'}}>
+                      <Icon source={LocationIcon} tone="subdued" />
+                    </div>
+                    <Text as="p" tone="subdued" variant="bodySm">
+                      Location
                     </Text>
-                  </BlockStack>
-                  <BlockStack gap="100">
-                    <InlineStack gap="100" align="start" blockAlign="center">
-                      <div style={{marginLeft: '-4px'}}>
-                        <Icon source={DeliveryIcon} tone="subdued" />
-                      </div>
-                      <Text as="p" tone="subdued" variant="bodySm">
-                        Delivery method
-                      </Text>
-                    </InlineStack>
-                    <Text as="p" variant="bodySm">
-                      {deliveryMethod}
-                    </Text>
-                  </BlockStack>
+                  </InlineStack>
+                  <Text as="p" variant="bodySm">
+                    {location}
+                  </Text>
                 </BlockStack>
-              </Box>
-              {items.map(
-                ({quantity, title, imageSrc, variant, skuNumber}, index) => (
-                  <Box
-                    key={`LineItem-${skuNumber}-${index}`}
-                    id={`LineItem-${skuNumber}-${index}`}
-                    borderBlockStartWidth="025"
-                    borderColor="border-secondary"
-                    paddingInline="300"
-                    paddingBlockStart="500"
-                    paddingBlockEnd="300"
-                  >
-                    <InlineStack gap="500" wrap={false} blockAlign="start">
-                      <div
-                        style={{
-                          position: 'relative',
-                          display: 'block',
-                        }}
-                      >
-                        {imageSrc ? (
-                          <Thumbnail
-                            source={imageSrc}
-                            size="small"
-                            alt={title}
-                          />
-                        ) : (
-                          <div
-                            style={{
-                              padding: '10px',
-                              borderRadius: 'var(--p-border-radius-200)',
-                              boxShadow: 'var(--p-shadow-border-inset)',
-                              borderColor: 'var(--p-border-secondary)',
-                            }}
-                          >
-                            <Icon tone="subdued" source={ImageIcon} />
-                          </div>
-                        )}
+                <BlockStack gap="100">
+                  <InlineStack gap="100" align="start" blockAlign="center">
+                    <div style={{marginLeft: '-4px'}}>
+                      <Icon source={DeliveryIcon} tone="subdued" />
+                    </div>
+                    <Text as="p" tone="subdued" variant="bodySm">
+                      Delivery method
+                    </Text>
+                  </InlineStack>
+                  <Text as="p" variant="bodySm">
+                    {deliveryMethod}
+                  </Text>
+                </BlockStack>
+              </BlockStack>
+            </Box>
+            {items.map(
+              ({quantity, title, imageSrc, variant, skuNumber}, index) => (
+                <Box
+                  key={`LineItem-${skuNumber}-${index}`}
+                  id={`LineItem-${skuNumber}-${index}`}
+                  borderBlockStartWidth="025"
+                  borderColor="border-secondary"
+                  paddingInline="300"
+                  paddingBlockStart="500"
+                  paddingBlockEnd="300"
+                >
+                  <InlineStack gap="500" wrap={false} blockAlign="start">
+                    <div
+                      style={{
+                        position: 'relative',
+                        display: 'block',
+                      }}
+                    >
+                      {imageSrc ? (
+                        <Thumbnail source={imageSrc} size="small" alt={title} />
+                      ) : (
                         <div
                           style={{
-                            position: 'absolute',
-                            zIndex: 100,
-                            top: '-30%',
-                            right: '-30%',
-                            display: 'flex',
+                            padding: '10px',
+                            borderRadius: 'var(--p-border-radius-200)',
+                            boxShadow: 'var(--p-shadow-border-inset)',
+                            borderColor: 'var(--p-border-secondary)',
                           }}
                         >
-                          <Box
-                            background="bg-surface"
-                            padding="025"
-                            borderRadius="500"
-                          >
-                            <Box
-                              borderColor="border-brand"
-                              borderRadius="500"
-                              background="bg-fill-secondary"
-                              paddingInline="150"
-                            >
-                              <Text
-                                as="span"
-                                variant="bodyXs"
-                              >{`${quantity}`}</Text>
-                            </Box>
-                          </Box>
+                          <Icon tone="subdued" source={ImageIcon} />
                         </div>
+                      )}
+                      <div
+                        style={{
+                          position: 'absolute',
+                          zIndex: 100,
+                          top: '-30%',
+                          right: '-30%',
+                          display: 'flex',
+                        }}
+                      >
+                        <Box
+                          background="bg-surface"
+                          padding="025"
+                          borderRadius="500"
+                        >
+                          <Box
+                            borderColor="border-brand"
+                            borderRadius="500"
+                            background="bg-fill-secondary"
+                            paddingInline="150"
+                          >
+                            <Text
+                              as="span"
+                              variant="bodyXs"
+                            >{`${quantity}`}</Text>
+                          </Box>
+                        </Box>
                       </div>
-                      <BlockStack gap="100">
-                        <Link url="#" monochrome removeUnderline>
-                          <Text as="p" variant="bodySm">
-                            {title}
-                          </Text>
-                        </Link>
-                        <Text as="p" tone="subdued" variant="bodySm">
-                          {variant}
+                    </div>
+                    <BlockStack gap="100">
+                      <Link url="#" monochrome removeUnderline>
+                        <Text as="p" variant="bodySm">
+                          {title}
                         </Text>
-                      </BlockStack>
-                    </InlineStack>
-                  </Box>
-                ),
-              )}
-            </Box>
-          </BlockStack>
-        </Box>
-      </div>
+                      </Link>
+                      <Text as="p" tone="subdued" variant="bodySm">
+                        {variant}
+                      </Text>
+                    </BlockStack>
+                  </InlineStack>
+                </Box>
+              ),
+            )}
+          </Box>
+        </BlockStack>
+      </Box>
     );
   };
 
