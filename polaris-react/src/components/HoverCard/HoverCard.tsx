@@ -28,8 +28,6 @@ interface BaseHoverCardProps {
    * @default false
    */
   snapToParent?: boolean;
-  /** Minimum pixel width for the overlay */
-  minWidth?: number;
   /** Content to render inside of the overlay. */
   content: React.ReactNode;
   /** Override on the default z-index of 400 */
@@ -81,7 +79,6 @@ export function HoverCard({
   active = false,
   activatorWrapper = 'span',
   snapToParent = false,
-  minWidth,
   content,
   zIndexOverride,
   id: providedId,
@@ -119,7 +116,6 @@ export function HoverCard({
           active={isActive}
           activator={activatorElement}
           snapToParent={snapToParent}
-          minWidth={minWidth}
           zIndexOverride={zIndexOverride}
           preferredAlignment={preferredAlignment}
           preferredPosition={preferredPosition}
@@ -135,6 +131,7 @@ export function HoverCard({
     <WrapperComponent
       ref={ref}
       className={className}
+      data-hovercard-activator
       onMouseLeave={handleMouseLeaveActivator}
       onMouseEnter={handleMouseEnterActivator}
     >
