@@ -305,8 +305,6 @@ export class PositionedOverlay extends PureComponent<
             ? getMinWidthForNode(this.overlay.firstElementChild as HTMLElement)
             : 0;
 
-        console.log(overlayMinWidth);
-
         const containerRect = windowRect();
         const zIndexForLayer = getZIndexForLayerFromNode(activator);
         const zIndex =
