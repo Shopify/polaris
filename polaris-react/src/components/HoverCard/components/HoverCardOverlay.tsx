@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, Children} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 // import {useTheme} from '../../../utilities/use-theme';
 import {classNames} from '../../../utilities/css';

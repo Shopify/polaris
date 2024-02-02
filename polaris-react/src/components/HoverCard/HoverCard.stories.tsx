@@ -17,6 +17,7 @@ import {
   BlockStack,
   InlineStack,
   Card,
+  Scrollable,
 } from '@shopify/polaris';
 import {
   DeliveryIcon,
@@ -334,6 +335,7 @@ export function WithDynamicActivator() {
 
     const customerHoverCardStyles = {
       '--pc-hover-card-min-width': '100px',
+      '--pc-hover-card-min-height': '100px',
     } as React.CSSProperties;
 
     return (
@@ -382,6 +384,7 @@ export function WithDynamicActivator() {
 
     const lineItemHoverCardStyles = {
       '--pc-hover-card-min-width': '300px',
+      '--pc-hover-card-min-height': '200px',
     } as React.CSSProperties;
 
     return (
@@ -588,30 +591,33 @@ export function WithDynamicActivator() {
   );
 
   return (
-    <Card padding="0">
-      <IndexTable
-        resourceName={resourceName}
-        itemCount={orders.length}
-        selectedItemsCount={
-          allResourcesSelected ? 'All' : selectedResources.length
-        }
-        onSelectionChange={handleSelectionChange}
-        headings={[
-          {title: 'Order'},
-          {title: 'Date'},
-          {title: 'Customer'},
-          {title: 'Channel'},
-          {title: 'Total', alignment: 'end'},
-          {title: 'Payment status'},
-          {title: 'Fulfillment status'},
-          {title: 'Items'},
-          {title: 'Delivery status'},
-          {title: 'Delivery method'},
-          {title: 'Tags'},
-        ]}
-      >
-        {rowMarkup}
-      </IndexTable>
-    </Card>
+    <Scrollable style={{minHeight: '500px'}}>
+      <Box id="spacer-to-force-top-scroll" minHeight="200px" />
+      <Card padding="0">
+        <IndexTable
+          resourceName={resourceName}
+          itemCount={orders.length}
+          selectedItemsCount={
+            allResourcesSelected ? 'All' : selectedResources.length
+          }
+          onSelectionChange={handleSelectionChange}
+          headings={[
+            {title: 'Order'},
+            {title: 'Date'},
+            {title: 'Customer'},
+            {title: 'Channel'},
+            {title: 'Total', alignment: 'end'},
+            {title: 'Payment status'},
+            {title: 'Fulfillment status'},
+            {title: 'Items'},
+            {title: 'Delivery status'},
+            {title: 'Delivery method'},
+            {title: 'Tags'},
+          ]}
+        >
+          {rowMarkup}
+        </IndexTable>
+      </Card>
+    </Scrollable>
   );
 }
