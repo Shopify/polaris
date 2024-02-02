@@ -41,54 +41,6 @@ export function HoverCardOverlay({
   onMouseLeave,
 }: HoverCardOverlayProps) {
   const contentNode = useRef<HTMLDivElement | null>(null);
-  const topCoordinate = useRef<number | undefined>();
-
-  const [transitionStatus, setTransitionStatus] = useState<TransitionStatus>(
-    active ? TransitionStatus.Entering : TransitionStatus.Exiting,
-  );
-  const [overlayMoved, setOverlayMoved] = useState(false);
-
-  const enteringTimer = useRef<NodeJS.Timeout | undefined>();
-
-  const changeTransitionStatus = (
-    transitionStatus: TransitionStatus,
-    cb?: () => void,
-  ) => {
-    setTransitionStatus(transitionStatus);
-    // Forcing a reflow to enable the animation
-    contentNode.current?.getBoundingClientRect();
-
-    return cb?.();
-  };
-
-  useEffect(() => {
-    if (transitionStatus === TransitionStatus.Entering) {
-      enteringTimer.current = setTimeout(() => {
-        changeTransitionStatus(TransitionStatus.Entered);
-      }, 100);
-    }
-  }, [transitionStatus]);
-
-  useEffect(() => {
-    if (active && !enteringTimer.current) {
-      changeTransitionStatus(TransitionStatus.Entering);
-    }
-
-    if (!active) {
-      clearTransitionTimeout();
-      setTransitionStatus(TransitionStatus.Exiting);
-    }
-
-    return () => {
-      clearTransitionTimeout();
-    };
-  }, [active]);
-
-  const clearTransitionTimeout = () => {
-    if (enteringTimer.current) {
-      window.clearTimeout(enteringTimer.current);
-    }
-  };
 
   const getMinDimensionsOfChildren = () => {
     const childrenNode =
@@ -102,17 +54,11 @@ export function HoverCardOverlay({
   };
 
   const renderHoverCard: PositionedOverlayProps['render'] = ({
-    top,
     measuring,
     positioning,
     desiredWidth,
     desiredHeight,
   }) => {
-    if (topCoordinate.current !== undefined && top !== topCoordinate.current) {
-      setOverlayMoved(true);
-      topCoordinate.current = top;
-    }
-
     const className = classNames(
       styles.HoverCard,
       snapToParent && styles.snapToParent,
@@ -129,7 +75,6 @@ export function HoverCardOverlay({
 
     const hoverCardStyles = {
       '--pc-hover-card-min-width': minChildrenDimensions?.minWidth,
-      '--pc-hover-card-min-height': minChildrenDimensions?.minHeight,
     } as React.CSSProperties;
 
     return (
@@ -157,14 +102,7 @@ export function HoverCardOverlay({
 
   const className = classNames(
     styles.HoverCardOverlay,
-    transitionStatus === TransitionStatus.Entering &&
-      styles['HoverCardOverlay-entering'],
-    transitionStatus === TransitionStatus.Entered &&
-      styles['HoverCardOverlay-active'],
-    transitionStatus === TransitionStatus.Exiting &&
-      styles['HoverCardOverlay-exited'],
     active && styles['HoverCardOverlay-active'],
-    overlayMoved && styles['HoverCardOverlay-moved'],
   );
 
   const overlayMarkup = active ? (
