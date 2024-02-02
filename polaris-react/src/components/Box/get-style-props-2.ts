@@ -465,13 +465,112 @@ function convert(
   globalDefaults ??= identityObject;
   /* eslint-enable no-param-reassign */
 
-  mergeUnique(
+  const stylePropKeys = Object.keys(styleProps);
+  const runtimeDefaultKeys = Object.keys(runtimeDefaults);
+  const globalDefaultKeys = Object.keys(globalDefaults);
+
+  /*
+* TODO Change the iteration to something like this:
+
+// Array order is unimportant
+const inverseAliases = {
+  padding: ["paddingInline", "paddingBlock"],
+  paddingInline: ["paddingLeft", "paddingRight"],
+  paddingBlock: ["paddingTop", "paddingBottom"],
+  paddingLeft: ["paddingInlineStart"],
+  paddingRight: ["paddingInlineEnd"],
+  paddingTop: ["paddingBlockStart"],
+  paddingBottom: ["paddingBlockEnd"],
+};
+
+const styleProps = {
+  paddingInlineEnd: "12px",
+  paddingInline: "10px",
+  paddingBlockStart: "15px",
+};
+const runtimeDefaults = {
+  paddingTop: "23px",
+};
+const globalDefaults = {
+  padding: "100px",
+};
+
+// Expected:
+// {
+//   paddingInlineStart: "10px",
+//   paddingInlineEnd: "12px",
+//   paddingBlockStart: "15px",
+//   paddingBlockEnd: "100px",
+// }
+const result = {};
+
+const objs = [
+  [styleProps, Object.keys(styleProps)],
+  [runtimeDefaults, Object.keys(runtimeDefaults)],
+  [globalDefaults, Object.keys(globalDefaults)],
+];
+
+for (let whichObj = 0; whichObj < objs.length; whichObj++) {
+  const [obj, objKeys] = objs[whichObj];
+  for (let i = 0; i < objKeys.length; i++) {
+    const prop = objKeys[i];
+    const value = obj[prop];
+
+    // Ignore null/undefined values
+    if (value == null) {
+      continue;
+    }
+
+    // This is an alias
+    if (inverseAliases[prop]) {
+      // It expands into one or more properties, so iterate over each of them
+      inverseAliases[prop].forEach((target) => {
+        // If the target property doesn't have a value set, set it now.
+        // Otherwise if it has a value already, skip it since existing more
+        // specific values take precedence over aliases.
+        if (obj[target] != null) {
+          // TODO: This mutates the input object, should we clone it?
+          obj[target] = value;
+          // Inject the key into the object keys array ready to be iterated next
+          objKeys.splice(i + 1, 0, target);
+        }
+      });
+
+      // Ignore this property, but continue to process the now-resolve
+      // properties
+      // TODO: Do we need to delete this key from the object?
+      continue;
+    }
+
+    // Values from here are guaranteed to be a non-alias
+
+    // Ensure the property doesn't exist in an earlier object (ie; don't try to
+    // overwrite).
+    // TODO: This unnecessarily iterates over all objects. Is there a way to
+    // iterate over only those that satisfy `index < whichObj`?
+    if (objs.some((obj, index) => index < whichObj && obj[prop] != null)) {
+      continue;
+    }
+
+    // Now we can process this value
+    result[prop] = value;
+  }
+}
+
+console.log(result);
+*/
+
+  const propKeys = mergeUnique(
     mergeUnique(
       Object.keys(styleProps) as (keyof typeof styleProps)[],
       Object.keys(runtimeDefaults) as (keyof typeof runtimeDefaults)[],
     ),
     Object.keys(globalDefaults) as (keyof typeof globalDefaults)[],
-  ).forEach((prop) => {
+  );
+
+  for (let i = 0; i < propKeys.length; i++) {
+    console.log(i);
+    const prop = propKeys[i];
     debugger;
     let stylePropValue = styleProps[prop];
     let runtimeDefaultValue = runtimeDefaults[prop];
@@ -500,7 +599,7 @@ function convert(
     // https://esbuild.github.io/try/#dAAwLjE5LjExAHsgbWluaWZ5OiB0cnVlIH0AZnVuY3Rpb24gZnVuYygpIHsKICBjb25zdCB3aG9hID0gZm9vLmJhcjsKCiAgaWYgKGZvbyAmJiB6aXApIHsKICAgIC8vIElnbm9yZQogICAgcmV0dXJuOwogIH0KCiAgaWYgKGJhciAmJiB6aXAgfHwgd2hvYSkgewogICAgLy8gSWdub3JlCiAgICByZXR1cm47CiAgfQoKICBjb25zb2xlLmxvZygnZG9uZScpOwp9CgpleHBvcnQgeyBmdW5jIH07
     // Ignore null & undefined values
     if (value == null) {
-      return;
+      continue;
     }
 
     // Optimisation: When an explicit 'unset' is passed in, we might be able
@@ -509,7 +608,7 @@ function convert(
     // generate .css file, so we have to ensure we override that explicitly
     // with 'unset'.
     if (stylePropHasValue && !globalDefaultHasValue && value === 'unset') {
-      return;
+      continue;
     }
 
     if (!parentIsResponsiveDeclaration && propIsBreakpoint) {
@@ -520,7 +619,7 @@ function convert(
         );
 
       // ignore this invalid property
-      return;
+      continue;
     }
 
     if (parentIsResponsiveDeclaration && !propIsBreakpoint) {
@@ -536,7 +635,7 @@ function convert(
         );
 
       // ignore this invalid property
-      return;
+      continue;
     }
 
     if (parentIsResponsiveDeclaration && propIsBreakpoint && valueIsObject) {
@@ -547,7 +646,7 @@ function convert(
         );
 
       // ignore this invalid property
-      return;
+      continue;
     }
 
     if (parentIsPseudoElement && propIsModifier) {
@@ -560,7 +659,7 @@ function convert(
         );
 
       // ignore this invalid property
-      return;
+      continue;
     }
 
     // Modifiers must be objects
@@ -572,7 +671,7 @@ function convert(
         );
 
       // ignore this invalid property
-      return;
+      continue;
     }
 
     // Pseudo elements must be objects
@@ -584,7 +683,7 @@ function convert(
         );
 
       // ignore this invalid property
-      return;
+      continue;
     }
 
     // global defaults are only merged in if there's an equivalent runtime
@@ -604,7 +703,7 @@ function convert(
       // TODO: What about aliases?
       const declaration = parentPropPath.at(-1) as keyof ResponsiveStyleProps;
 
-        // Global defaults get mapped earlier in the process
+      // Global defaults get mapped earlier in the process
       const mappedValue = isGlobalDefaultProp
         ? value
         : valueMapper(value, declaration, propPath);
@@ -711,7 +810,7 @@ function convert(
         propertyIterator(globalDefaultProperties, nestedElement, values);
       });
     }
-  });
+  }
 
   // When a global default is set, and a corresponding style prop is set, they
   // must be merged together before they're stringified to ensure the cascade
