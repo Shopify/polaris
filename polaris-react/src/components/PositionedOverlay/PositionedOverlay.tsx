@@ -140,6 +140,8 @@ export class PositionedOverlay extends PureComponent<
     } = this.props;
 
     const style = {
+      '--pc-positioned-overlay-top':
+        top == null || isNaN(top) ? undefined : top,
       top: top == null || isNaN(top) ? undefined : top,
       left: left == null || isNaN(left) ? undefined : left,
       right: right == null || isNaN(right) ? undefined : right,

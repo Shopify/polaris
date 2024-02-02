@@ -54,8 +54,10 @@ export function HoverCardOverlay({
     transitionStatus: TransitionStatus,
     cb?: () => void,
   ) => {
+    setTransitionStatus(transitionStatus);
     // Forcing a reflow to enable the animation
-    requestAnimationFrame(() => setTransitionStatus(transitionStatus));
+    contentNode.current?.getBoundingClientRect();
+
     return cb?.();
   };
 
