@@ -50,7 +50,7 @@ We track all of our issues in GitHub and [bugs](https://github.com/Shopify/polar
 
 ### Reporting new issues
 
-To reduce duplicates, look through open issues before filing one. When [opening an issue](https://github.com/Shopify/polaris/issues/new?template=ISSUE.md), complete as much of the template as possible. The best way to get your bug fixed is to provide a reduced test case. [This CodeSandbox template](https://codesandbox.io/s/q82mlq0m26) is a great starting point.
+To reduce duplicates, look through open issues before filing one. When [opening an issue](https://github.com/Shopify/polaris/issues/new?template=ISSUE.yml), complete as much of the template as possible. The best way to get your bug fixed is to provide a reduced test case. [This CodeSandbox template](https://codesandbox.io/s/q82mlq0m26) is a great starting point.
 
 ## Feature requests
 
