@@ -1,19 +1,11 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 
-// import {useTheme} from '../../../utilities/use-theme';
 import {classNames} from '../../../utilities/css';
 import {overlay} from '../../shared';
 import {PositionedOverlay} from '../../PositionedOverlay';
 import type {PositionedOverlayProps} from '../../PositionedOverlay';
 import {Scrollable} from '../../Scrollable';
 import styles from '../HoverCard.module.scss';
-
-enum TransitionStatus {
-  Entering = 'entering',
-  Entered = 'entered',
-  Moving = 'moving',
-  Exiting = 'exiting',
-}
 
 export interface HoverCardOverlayProps {
   id: string;
@@ -42,14 +34,13 @@ export function HoverCardOverlay({
 }: HoverCardOverlayProps) {
   const contentNode = useRef<HTMLDivElement | null>(null);
 
-  const getMinDimensionsOfChildren = () => {
+  const getMinWidthOfChildren = () => {
     const childrenNode =
       contentNode.current?.children &&
       contentNode.current?.children[0].children[0];
 
     if (childrenNode) {
-      const {minWidth, minHeight} = window.getComputedStyle(childrenNode);
-      return {minWidth, minHeight};
+      return window.getComputedStyle(childrenNode).minWidth;
     }
   };
 
@@ -71,10 +62,10 @@ export function HoverCardOverlay({
       ? undefined
       : {width: desiredWidth, height: desiredHeight};
 
-    const minChildrenDimensions = getMinDimensionsOfChildren();
+    const minWidth = getMinWidthOfChildren();
 
     const hoverCardStyles = {
-      '--pc-hover-card-min-width': minChildrenDimensions?.minWidth,
+      '--pc-hover-card-min-width': minWidth,
     } as React.CSSProperties;
 
     return (
