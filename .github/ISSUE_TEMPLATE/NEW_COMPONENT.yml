@@ -12,7 +12,8 @@ body:
     attributes:
       label: Component description
       description: Provide a short, two sentence intro description.
-      value: {Component name} is used to {x}. Merchants can use it to {x}.
+      value: |
+        {Component name} is used to {x}. Merchants can use it to {x}.
   - type: textarea
     id: required-components
     attributes:
@@ -31,7 +32,7 @@ body:
       value: |
         ### {Component name} with {example}
         Use {component name} to let merchants {x}.
-        
+
         ![image-name](image-url)
   - type: textarea
     id: props
