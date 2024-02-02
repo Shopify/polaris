@@ -64,6 +64,10 @@ function measureScrollbars() {
     '--pc-app-provider-scrollbar-width',
     `${scrollbarWidthWithSafetyHatch}px`,
   );
+  // In Windows Firefox the scrollbar is overlaid and doesn't affect the layout.
+  // The browser, however, still takes the scrollbar-gutter spacing into account which we have to reset.
+  if (scrollbarWidth === 0)
+    document.documentElement.classList.add('scrollbar-is-overlaid');
 
   document.body.removeChild(parentEl);
 }

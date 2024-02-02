@@ -158,6 +158,10 @@ $nav-max-width: 360px;
   @supports (scrollbar-gutter: stable) {
     padding: 0 var(--p-space-025) 0 var(--p-space-300);
   }
+
+  [class~='scrollbar-is-overlaid'] & {
+    padding: 0 var(--p-space-300);
+  }
 }
 
 .ItemInnerWrapper {
@@ -819,8 +823,11 @@ $nav-max-width: 360px;
   padding-right: var(--p-space-100);
 
   @supports (scrollbar-gutter: stable) {
-    /* stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- testing */
-    padding-right: 1px;
+    padding-right: var(--p-space-025);
+  }
+
+  [class~='scrollbar-is-overlaid'] & {
+    padding-right: var(--p-space-100);
   }
 
   > :first-child {
@@ -851,6 +858,11 @@ $nav-max-width: 360px;
 
     @supports (scrollbar-gutter: stable) {
       margin-right: var(--p-space-050);
+    }
+
+    /* stylelint-disable-next-line selector-max-combinators -- necessary override for stable gutters when scrollbar is over laid */
+    [class~='scrollbar-is-overlaid'] & {
+      margin-right: calc(var(--p-space-200) + var(--p-space-050));
     }
 
     // stylelint-disable-next-line selector-max-specificity -- set focus styles
