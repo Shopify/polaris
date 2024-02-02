@@ -112,8 +112,6 @@ export function HoverCardOverlay({
       ? undefined
       : {width: desiredWidth, height: desiredHeight};
 
-    console.log(contentStyles);
-
     return (
       <div
         {...overlay.props}
@@ -135,8 +133,6 @@ export function HoverCardOverlay({
       </div>
     );
   };
-
-  console.log(active, transitionStatus);
 
   const className = classNames(
     styles.HoverCardOverlay,
