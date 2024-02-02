@@ -88,6 +88,17 @@ export function HoverCardOverlay({
     }
   };
 
+  const getMinDimensionsOfChildren = () => {
+    const childrenNode =
+      contentNode.current?.children &&
+      contentNode.current?.children[0].children[0];
+
+    if (childrenNode) {
+      const {minWidth, minHeight} = window.getComputedStyle(childrenNode);
+      return {minWidth, minHeight};
+    }
+  };
+
   const renderHoverCard: PositionedOverlayProps['render'] = ({
     top,
     measuring,
@@ -112,9 +123,17 @@ export function HoverCardOverlay({
       ? undefined
       : {width: desiredWidth, height: desiredHeight};
 
+    const minChildrenDimensions = getMinDimensionsOfChildren();
+
+    const hoverCardStyles = {
+      '--pc-hover-card-min-width': minChildrenDimensions?.minWidth,
+      '--pc-hover-card-min-height': minChildrenDimensions?.minHeight,
+    } as React.CSSProperties;
+
     return (
       <div
         {...overlay.props}
+        style={hoverCardStyles}
         className={className}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
