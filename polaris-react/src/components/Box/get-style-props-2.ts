@@ -466,10 +466,13 @@ function convert(
   /* eslint-enable no-param-reassign */
 
   mergeUnique(
-    Object.keys(styleProps) as (keyof typeof styleProps)[],
-    Object.keys(runtimeDefaults) as (keyof typeof runtimeDefaults)[],
+    mergeUnique(
+      Object.keys(styleProps) as (keyof typeof styleProps)[],
+      Object.keys(runtimeDefaults) as (keyof typeof runtimeDefaults)[],
+    ),
     Object.keys(globalDefaults) as (keyof typeof globalDefaults)[],
   ).forEach((prop) => {
+    debugger;
     let stylePropValue = styleProps[prop];
     let runtimeDefaultValue = runtimeDefaults[prop];
     let globalDefaultValue = globalDefaults[prop];
@@ -480,7 +483,7 @@ function convert(
     const isRuntimeDefaultProp = !stylePropHasValue && runtimeDefaultHasValue;
     const isGlobalDefaultProp = !stylePropHasValue && !isRuntimeDefaultProp;
 
-    let value = stylePropValue ?? runtimeDefaultValue ?? globalDefaultValue;
+    const value = stylePropValue ?? runtimeDefaultValue ?? globalDefaultValue;
 
     const propIsBreakpoint = hasOwn(breakpoints, prop);
     const propIsModifier = !propIsBreakpoint && hasOwn(modifiers, prop);
@@ -488,7 +491,7 @@ function convert(
       !propIsBreakpoint && !propIsModifier && hasOwn(pseudoElements, prop);
     const propIsDeclaration =
       !propIsBreakpoint && !propIsModifier && !propIsPseudoElement;
-    let valueIsObject = isObject(value);
+    const valueIsObject = isObject(value);
     // TODO: How to narrow 'prop' here?
     const propPath: PropPath = [...parentPropPath, prop as PropPathValues];
 
@@ -591,22 +594,6 @@ function convert(
       ? globalDefaultProperties
       : runtimeProperties;
 
-    // Normalize declarations to responsive object format
-    // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
-    if (propIsDeclaration && !parentIsResponsiveDeclaration) {
-      if (!valueIsObject && !isObject(stylePropValue) {
-        stylePropValue = {[defaultBreakpointKey]: stylePropValue};
-        valueIsObject = true;
-      }
-      // Also normalize the defaults so we can do a correct recursive merge
-      if (runtimeDefaultHasValue && !isObject(runtimeDefaultValue)) {
-        runtimeDefaultValue = {[defaultBreakpointKey]: runtimeDefaultValue};
-      }
-      if (globalDefaultHasValue && !isObject(globalDefaultValue)) {
-        globalDefaultValue = {[defaultBreakpointKey]: globalDefaultValue};
-      }
-    }
-
     // Process a non-object concrete value.
     // Eg; {color: 'red'}
     // or
@@ -617,7 +604,10 @@ function convert(
       // TODO: What about aliases?
       const declaration = parentPropPath.at(-1) as keyof ResponsiveStyleProps;
 
-      const mappedValue = valueMapper(value, declaration, propPath);
+        // Global defaults get mapped earlier in the process
+      const mappedValue = isGlobalDefaultProp
+        ? value
+        : valueMapper(value, declaration, propPath);
 
       // Since Typescript doesn't have negation types (`string & not 'inherit'`),
       // we need to do a runtime check for invalid values because some of the
@@ -643,6 +633,21 @@ function convert(
         mappedValue,
       );
     } else {
+      // Normalize declarations to responsive object format
+      // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
+      if (propIsDeclaration) {
+        if (stylePropHasValue && !isObject(stylePropValue)) {
+          stylePropValue = {[defaultBreakpointKey]: stylePropValue};
+        }
+        // Also normalize the defaults so we can do a correct recursive merge
+        if (runtimeDefaultHasValue && !isObject(runtimeDefaultValue)) {
+          runtimeDefaultValue = {[defaultBreakpointKey]: runtimeDefaultValue};
+        }
+        if (globalDefaultHasValue && !isObject(globalDefaultValue)) {
+          globalDefaultValue = {[defaultBreakpointKey]: globalDefaultValue};
+        }
+      }
+      debugger;
       const [nestedRuntimeProperties, nestedGlobalDefaultProperties] = convert(
         // TODO: How do I fix this?
         stylePropValue as typeof styleProps,

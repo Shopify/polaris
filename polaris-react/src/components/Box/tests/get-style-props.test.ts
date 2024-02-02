@@ -571,40 +571,87 @@ describe('convertStylePropsToCSSProperties', () => {
           // @ts-expect-error -- This isn't allowed in the types, but it's
           // important to catch as an edge case for runtime JS
           color: null,
+          _hover: {
+            display: undefined,
+            // @ts-expect-error -- This isn't allowed in the types, but it's
+            // important to catch as an edge case for runtime JS
+            position: null,
+          },
         };
 
         const defaults: PropDefaults = {
           color: 'red',
           outlineWidth: '1px',
+          _hover: {
+            display: 'block',
+            position: 'fixed',
+          },
         };
         expect(convertStylePropsToCSSProperties(styleProps, defaults))
           .toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "color": "red",
+                "display": "var(--__hover-on,block)",
                 "outlineWidth": "1px",
+                "position": "var(--__hover-on,fixed)",
               },
             }
           `);
       });
 
-      // default: {color: {md: 'red'}}
-      // styleProp: {color: 'blue'}
-      // result: {color: {xs: 'blue', md: 'red'}}
-      it.todo(
-        'a responsive runtime default is merged into a non-responsive style prop',
-      );
+      it('a responsive runtime default is merged into a non-responsive style prop', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          color: 'blue',
+        };
+        const defaults: PropDefaults = {
+          color: {md: 'red'},
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "style": Object {
+                "color": "var(--_md-on,red) var(--_md-off,blue)",
+              },
+            }
+          `);
+      });
 
       // default: {color: 'red'}
       // styleProp: {color: {md: 'blue'}}
       // result: {color: {xs: 'red', md: 'blue'}}
-      it.todo(
-        'a non-responsive runtime default is merged into a responsive style prop',
-      );
+      it('a non-responsive runtime default is merged into a responsive style prop', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          color: {md: 'blue'},
+        };
+        const defaults: PropDefaults = {
+          color: 'red',
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "style": Object {
+                "color": "var(--_md-on,blue) var(--_md-off,red)",
+              },
+            }
+          `);
+      });
     });
 
     describe('global defaults', () => {
-      it.skip('are deep merged', () => {});
+      it('are deep merged', () => {
+        const defaultKeys = Object.keys(stylePropDefaults);
+        expect(defaultKeys).not.toHaveLength(0);
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          [defaultKeys[0]]: {md: 'foo'},
+        };
+
+        expect(convertStylePropsToCSSProperties(styleProps))
+          .toMatchInlineSnapshot(`
+            Object {
+              "style": Object {
+                "borderInlineStartWidth": "var(--_md-on,foo) var(--_md-off,`);
+      });
 
       it('a value of `unset` will remove a global default, but not apply another value', () => {
         const defaultKeys = Object.keys(stylePropDefaults);
@@ -623,6 +670,7 @@ describe('convertStylePropsToCSSProperties', () => {
           `);
       });
 
+      // TODO: Add a test case including modifiers and pseudo elements
       it('a value of `undefined` or `null` will NOT remove a global default', () => {
         const defaultKeys = Object.keys(stylePropDefaults);
         expect(defaultKeys).not.toHaveLength(0);
@@ -657,14 +705,82 @@ describe('convertStylePropsToCSSProperties', () => {
   });
 
   describe('root & pseudo elements interaction', () => {
-    it.todo('modifiers within pseudos are ignored');
+    it('modifiers within pseudos are ignored', () => {
+      const styleProps: ResponsiveStylePropsWithModifiers = {
+        _before: {
+          // @ts-expect-error The type is correct, but we're explicitly testing
+          // when this value is passed in
+          _hover: {
+            backgroundColor: 'red',
+          },
+        },
+      };
 
-    it.todo('pseudos within modifiers apply the modifier to the pseudo');
+      expect(convertStylePropsToCSSProperties(styleProps))
+        .toMatchInlineSnapshot(`
+          Object {
+            "style": Object {},
+          }
+        `);
+    });
 
-    it.todo('pseudo styles dont overwrite root styles and vice versa');
+    it('pseudos within modifiers apply the modifier to the pseudo', () => {
+      const styleProps: ResponsiveStylePropsWithModifiers = {
+        _hover: {
+          _before: {
+            backgroundColor: 'red',
+          },
+        },
+      };
+
+      expect(convertStylePropsToCSSProperties(styleProps))
+        .toMatchInlineSnapshot(`
+          Object {
+            "_before": Object {
+              "style": Object {
+                "backgroundColor": "var(--__hover-on,red)",
+              },
+            },
+            "style": Object {},
+          }
+        `);
+    });
+
+    it('pseudo styles dont overwrite root styles and vice versa', () => {
+      const styleProps: ResponsiveStylePropsWithModifiers = {
+        _before: {
+          backgroundColor: 'red',
+        },
+        backgroundColor: 'blue',
+        _hover: {
+          _before: {
+            backgroundColor: 'green',
+          },
+          backgroundColor: 'black',
+        },
+      };
+
+      expect(convertStylePropsToCSSProperties(styleProps))
+        .toMatchInlineSnapshot(`
+          Object {
+            "_before": Object {
+              "style": Object {
+                "backgroundColor": "var(--__hover-on,green) var(--__hover-off,red)",
+              },
+            },
+            "style": Object {
+              "backgroundColor": "var(--__hover-on,black) var(--__hover-off,blue)",
+            },
+          }
+        `);
+    });
 
     it.todo('dynamic default is called for root and any pseudo elements');
 
     it.todo('global defaults cannot be applied to pseudo elements');
   });
+
+  it.todo(
+    'global defaults have their values mapped during setup, and not during runtime',
+  );
 });
