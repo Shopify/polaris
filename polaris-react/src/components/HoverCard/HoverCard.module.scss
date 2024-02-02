@@ -1,11 +1,13 @@
 @import '../../styles/common';
 
-$vertical-motion-offset: -5px;
-
 .HoverCard {
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Properties; PositionedOverlay takes child min-width into account when determining available space, horizontal positioning, and width
+  --pc-hover-card-min-width: initial;
   opacity: 0;
   position: relative;
   display: flex;
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Properties
+  min-width: var(--pc-hover-card-min-width);
   background: var(--p-color-bg-surface);
   margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
   box-shadow: var(--p-shadow-500);
