@@ -650,7 +650,12 @@ describe('convertStylePropsToCSSProperties', () => {
           .toMatchInlineSnapshot(`
             Object {
               "style": Object {
-                "borderInlineStartWidth": "var(--_md-on,foo) var(--_md-off,`);
+                "borderInlineStartWidth": "var(--_md-on,foo) var(--_md-off,${
+                  stylePropDefaults[defaultKeys[0]]
+                })",
+              },
+            }
+          `);
       });
 
       it('a value of `unset` will remove a global default, but not apply another value', () => {
