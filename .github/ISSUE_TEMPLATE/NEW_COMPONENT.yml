@@ -12,8 +12,7 @@ body:
     attributes:
       label: Component description
       description: Provide a short, two sentence intro description.
-      value: |
-        > {Component name} is used to {x}. Merchants can use it to {x}.
+      value: {Component name} is used to {x}. Merchants can use it to {x}.
   - type: textarea
     id: required-components
     attributes:
@@ -21,8 +20,7 @@ body:
       description: |
         This section is only used if the component is a dependency of or depends on another component. 
         Include a link to the required component and a short explanation of how they interact.
-      value: |
-        > The {x} component must be {wrapped in/passed to} the {y} component.
+      value: The {x} component must be {wrapped in/passed to} the {y} component.
   - type: textarea
     id: component-example
     attributes:
@@ -31,19 +29,19 @@ body:
         Provide an example of the way the component would be used.
         Use an image if applicable and clearly differentiate examples from each other.
       value: |
-        > ### {Component name} with {example}
-        > Use {component name} to let merchants {x}.
-        >
-        > ![image-name](image-url)
+        ### {Component name} with {example}
+        Use {component name} to let merchants {x}.
+        
+        ![image-name](image-url)
   - type: textarea
     id: props
     attributes:
       label: Props
       description: Provide props and their type declarations.
       value: |
-        > - **propName** (required/optional): `type` defaults to `value` – description of the prop
-        > - **propName** (required/optional): `type` defaults to `value` – description of the prop
-        > - **propName** (required/optional): `type` defaults to `value` – description of the prop
+        - **propName** (required/optional): `type` defaults to `value` – description of the prop
+        - **propName** (required/optional): `type` defaults to `value` – description of the prop
+        - **propName** (required/optional): `type` defaults to `value` – description of the prop
   - type: textarea
     id: best-practices
     attributes:
