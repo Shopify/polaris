@@ -6,7 +6,10 @@ import type {
   ResponsiveStylePropsWithModifiers,
   PropDefaults,
 } from '../generated-data';
-import {disallowedCSSPropertyValues} from '../generated-data';
+import {
+  disallowedCSSPropertyValues,
+  stylePropDefaults,
+} from '../generated-data';
 
 type ConvertParams = Parameters<typeof convertStylePropsToCSSProperties>;
 
@@ -424,12 +427,11 @@ describe('convertStylePropsToCSSProperties', () => {
         `);
     });
 
-    it.skip('global default is inherited from generated .css file when styleProp not set', () => {
+    it('global default is inherited from generated .css file when styleProp not set', () => {
+      // NOTE: TODO: This test assumes there's a default being set in the config
+      expect(Object.keys(stylePropDefaults)).not.toHaveLength(0);
       const styleProps: ResponsiveStylePropsWithModifiers = {};
-      const defaults: PropDefaults = {
-        borderInlineStartStyle: 'solid',
-      };
-      expect(convertStylePropsToCSSProperties(styleProps, defaults))
+      expect(convertStylePropsToCSSProperties(styleProps))
         .toMatchInlineSnapshot(`
           Object {
             "style": Object {},
@@ -446,14 +448,14 @@ describe('convertStylePropsToCSSProperties', () => {
       };
       expect(convertStylePropsToCSSProperties(styleProps))
         .toMatchInlineSnapshot(`
-      Object {
-        "style": Object {
-          "--_1": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
-          "paddingInlineStart": "var(--_1)",
-          "paddingInlineEnd": "var(--_1)",
-        },
-      }
-    `);
+              Object {
+                "style": Object {
+                  "--_1": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
+                  "paddingInlineStart": "var(--_1)",
+                  "paddingInlineEnd": "var(--_1)",
+                },
+              }
+          `);
     });
 
     it.todo(
@@ -541,39 +543,115 @@ describe('convertStylePropsToCSSProperties', () => {
           `);
       });
 
-      it.todo(
-        'A value of `null` will remove a runtime default, but not apply another value',
-      );
-      it.todo(
-        'A value of `null` will remove a global default, but not apply another value',
-      );
+      it('a value of `unset` will remove a runtime default, but not apply another value', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          outlineWidth: 'unset',
+          _hover: {
+            color: 'unset',
+          },
+        };
+
+        const defaults: PropDefaults = {
+          outlineWidth: '1px',
+          _hover: {
+            color: 'red',
+          },
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "style": Object {},
+            }
+          `);
+      });
+
+      it('a value of `undefined` or `null` will NOT remove a runtime default', () => {
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          outlineWidth: undefined,
+          // @ts-expect-error -- This isn't allowed in the types, but it's
+          // important to catch as an edge case for runtime JS
+          color: null,
+        };
+
+        const defaults: PropDefaults = {
+          color: 'red',
+          outlineWidth: '1px',
+        };
+        expect(convertStylePropsToCSSProperties(styleProps, defaults))
+          .toMatchInlineSnapshot(`
+            Object {
+              "style": Object {
+                "color": "red",
+                "outlineWidth": "1px",
+              },
+            }
+          `);
+      });
 
       // default: {color: {md: 'red'}}
       // styleProp: {color: 'blue'}
       // result: {color: {xs: 'blue', md: 'red'}}
       it.todo(
-        'A responsive runtime default is merged into a non-responsive style prop',
+        'a responsive runtime default is merged into a non-responsive style prop',
       );
 
       // default: {color: 'red'}
       // styleProp: {color: {md: 'blue'}}
       // result: {color: {xs: 'red', md: 'blue'}}
       it.todo(
-        'A non-responsive runtime default is merged into a responsive style prop',
+        'a non-responsive runtime default is merged into a responsive style prop',
       );
+    });
+
+    describe('global defaults', () => {
+      it.skip('are deep merged', () => {});
+
+      it('a value of `unset` will remove a global default, but not apply another value', () => {
+        const defaultKeys = Object.keys(stylePropDefaults);
+        expect(defaultKeys).not.toHaveLength(0);
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          [defaultKeys[0]]: 'unset',
+        };
+
+        expect(convertStylePropsToCSSProperties(styleProps))
+          .toMatchInlineSnapshot(`
+            Object {
+              "style": Object {
+                "borderInlineStartWidth": "unset",
+              },
+            }
+          `);
+      });
+
+      it('a value of `undefined` or `null` will NOT remove a global default', () => {
+        const defaultKeys = Object.keys(stylePropDefaults);
+        expect(defaultKeys).not.toHaveLength(0);
+        expect(defaultKeys).not.toHaveLength(1);
+        const styleProps: ResponsiveStylePropsWithModifiers = {
+          [defaultKeys[0]]: undefined,
+          [defaultKeys[1]]: null,
+        };
+
+        expect(convertStylePropsToCSSProperties(styleProps))
+          .toMatchInlineSnapshot(`
+            Object {
+              "style": Object {},
+            }
+          `);
+      });
 
       // default: {color: {md: 'red'}}
       // styleProp: {color: 'blue'}
       // result: {color: {xs: 'blue', md: 'red'}}
       it.todo(
-        'A responsive global default is merged into a non-responsive style prop',
+        'a responsive global default is merged into a non-responsive style prop',
       );
 
       // default: {color: 'red'}
       // styleProp: {color: {md: 'blue'}}
       // result: {color: {xs: 'red', md: 'blue'}}
       it.todo(
-        'A non-responsive global default is merged into a responsive style prop',
+        'a non-responsive global default is merged into a responsive style prop',
       );
     });
   });

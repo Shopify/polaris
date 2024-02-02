@@ -380,7 +380,7 @@ function convert(
    * style="" attribute is higher, so if a matching prop is passed in we need to
    * ensure the default value is set again on the style="" attribute.
    */
-  globalDefaults: PropDefaults = identityObject,
+  globalDefaults: PropDefaults,
   /**
    * Runtime defaults act as fallbacks for when a prop isn't passed in.
    *
@@ -442,7 +442,7 @@ function convert(
    * // }
    * ```
    */
-  runtimeDefaults: PropDefaults = identityObject,
+  runtimeDefaults: PropDefaults,
   valueMapper: ValueMapper,
   parent:
     | Constant.ModifierParent
@@ -458,47 +458,29 @@ function convert(
   const runtimeProperties: DeclarationAccumulator = {};
   const globalDefaultProperties: DeclarationAccumulator = {};
 
+  // Will set `undefined` or `null` to the identity object
+  /* eslint-disable no-param-reassign */
+  styleProps ??= identityObject;
+  runtimeDefaults ??= identityObject;
+  globalDefaults ??= identityObject;
+  /* eslint-enable no-param-reassign */
+
   mergeUnique(
     Object.keys(styleProps) as (keyof typeof styleProps)[],
     Object.keys(runtimeDefaults) as (keyof typeof runtimeDefaults)[],
     Object.keys(globalDefaults) as (keyof typeof globalDefaults)[],
   ).forEach((prop) => {
+    const stylePropValue = styleProps[prop];
     let runtimeDefaultValue = runtimeDefaults[prop];
     let globalDefaultValue = globalDefaults[prop];
+    const stylePropHasValue = stylePropValue != null;
     const runtimeDefaultHasValue = runtimeDefaultValue != null;
     const globalDefaultHasValue = globalDefaultValue != null;
 
-    if (
-      !(
-        styleProps[prop] != null ||
-        runtimeDefaultHasValue ||
-        globalDefaultHasValue
-      )
-    ) {
-      return;
-    }
+    const isRuntimeDefaultProp = !stylePropHasValue && runtimeDefaultHasValue;
+    const isGlobalDefaultProp = !stylePropHasValue && !isRuntimeDefaultProp;
 
-    // Doing an explicit undefined check allows using the value `null` to mean "no deafult"
-    const isStyleProp =
-      hasOwn(styleProps, prop) && typeof styleProps[prop] !== 'undefined';
-
-    // Doing an explicit undefined check allows using the value `null` to mean "no deafult"
-    const isRuntimeDefaultProp =
-      !isStyleProp &&
-      hasOwn(runtimeDefaults, prop) &&
-      // TODO: This type mismatch is probably because the runtime defaults
-      // haven't excluded shorthand CSS properties.
-      typeof runtimeDefaults[prop] !== 'undefined';
-
-    const isGlobalDefaultProp = !isStyleProp && !isRuntimeDefaultProp;
-
-    /* eslint-disable no-nested-ternary -- It's terse & readable */
-    let value = isStyleProp
-      ? styleProps[prop]
-      : isRuntimeDefaultProp
-      ? runtimeDefaultValue
-      : globalDefaultValue;
-    /* eslint-enable no-nested-ternary */
+    let value = stylePropValue ?? runtimeDefaultValue ?? globalDefaultValue;
 
     const propIsBreakpoint = hasOwn(breakpoints, prop);
     const propIsModifier = !propIsBreakpoint && hasOwn(modifiers, prop);
@@ -515,6 +497,15 @@ function convert(
     // https://esbuild.github.io/try/#dAAwLjE5LjExAHsgbWluaWZ5OiB0cnVlIH0AZnVuY3Rpb24gZnVuYygpIHsKICBjb25zdCB3aG9hID0gZm9vLmJhcjsKCiAgaWYgKGZvbyAmJiB6aXApIHsKICAgIC8vIElnbm9yZQogICAgcmV0dXJuOwogIH0KCiAgaWYgKGJhciAmJiB6aXAgfHwgd2hvYSkgewogICAgLy8gSWdub3JlCiAgICByZXR1cm47CiAgfQoKICBjb25zb2xlLmxvZygnZG9uZScpOwp9CgpleHBvcnQgeyBmdW5jIH07
     // Ignore null & undefined values
     if (value == null) {
+      return;
+    }
+
+    // Optimisation: When an explicit 'unset' is passed in, we might be able
+    // to simply not return anything ('unset' is the browser's default). Except
+    // when there's a matching global default set; that'll still exist in the
+    // generate .css file, so we have to ensure we override that explicitly
+    // with 'unset'.
+    if (stylePropHasValue && !globalDefaultHasValue && value === 'unset') {
       return;
     }
 
