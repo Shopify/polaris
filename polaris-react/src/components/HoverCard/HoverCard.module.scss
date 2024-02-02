@@ -3,21 +3,10 @@
 $vertical-motion-offset: -5px;
 
 .HoverCard {
-  // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
-  --pc-hover-card-min-width: 0;
-  --pc-hover-card-min-height: 0;
-  // stylelint-enable
   opacity: 0;
   position: relative;
   display: flex;
-  max-width: max-content;
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
-  min-width: var(--pc-hover-card-min-width);
-  max-height: max-content;
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
-  min-height: var(--pc-hover-card-min-height);
   background: var(--p-color-bg-surface);
-  will-change: opacity, left, top;
   margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
   box-shadow: var(--p-shadow-500);
   border-radius: var(--p-border-radius-300);
@@ -35,11 +24,11 @@ $vertical-motion-offset: -5px;
 }
 
 .HoverCardOverlay {
+  will-change: opacity, left, right, top;
+  opacity: 0;
   // stylelint-disable-next-line polaris/layout/declaration-property-value-disallowed-list -- Need to initialize top here in order to animate when it changes in the PositionedOverlay style declaration
   top: 0;
-  opacity: 0;
-  transition: opacity var(--p-motion-duration-100) ease-in-out,
-    top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
+  transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
 
 .HoverCardOverlay-entering {
@@ -47,24 +36,18 @@ $vertical-motion-offset: -5px;
 }
 
 .HoverCardOverlay-active {
+  opacity: 1;
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list, polaris/layout/declaration-property-value-disallowed-list -- Need to set top here in order to animate when it changes in the PositionedOverlay style declaration
   top: var(--pc-positioned-overlay-top);
-  opacity: 1;
 }
 
-.HoverCardOverlay-moved {
-  transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
-    width var(--p-motion-duration--50) cubic-bezier(0.25, 0, 0.75, 1.35),
-    height var(--p-motion-duration-50) cubic-bezier(0.25, 0, 0.75, 1.35);
-}
-
-.measuring:not(.HoverCardOverlay-exited) {
+.measuring {
   opacity: 0;
 }
 
 .measured {
   opacity: 1;
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease)
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in-out)
     var(--p-motion-duration-300);
 }
 
@@ -95,9 +78,9 @@ $vertical-motion-offset: -5px;
 }
 
 .Content {
+  opacity: 1;
   display: flex;
   width: 100%;
   flex-direction: column;
-  transition: opacity var(--p-motion-duration-100) ease-in-out;
   word-wrap: break-word;
 }

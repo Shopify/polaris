@@ -138,13 +138,17 @@ export class PositionedOverlay extends PureComponent<
       zIndexOverride,
     } = this.props;
 
+    const nextTop = top == null || isNaN(top) ? undefined : top;
+    const nextLeft = left == null || isNaN(left) ? undefined : left;
+    const nextRight = right == null || isNaN(right) ? undefined : right;
+    const nextWidth = width == null || isNaN(width) ? undefined : width;
+
     const style = {
-      '--pc-positioned-overlay-top':
-        top == null || isNaN(top) ? undefined : top,
-      top: top == null || isNaN(top) ? undefined : top,
-      left: left == null || isNaN(left) ? undefined : left,
-      right: right == null || isNaN(right) ? undefined : right,
-      width: width == null || isNaN(width) ? undefined : width,
+      '--pc-positioned-overlay-top': nextTop,
+      top: nextTop,
+      left: nextLeft,
+      right: nextRight,
+      width: nextWidth,
       zIndex: zIndexOverride || zIndex || undefined,
     };
 
