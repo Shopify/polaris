@@ -100,13 +100,10 @@ export function useHoverCardActivatorWrapperProps({
   const handleMouseLeaveActivator = useCallback(
     (event: React.MouseEvent) => {
       if (mouseEnteredOrLeftActivator(event)) {
-        console.log('mouse left activator');
-
         if (
           dynamicActivatorRef.current &&
           (mouseMovedToHoverCard(event) || overlayActive)
         ) {
-          console.log('mouse entered hover card');
           dynamicActivatorRef.current = null;
           mouseEntered.current = false;
           return;
@@ -150,16 +147,7 @@ export function useHoverCardActivatorWrapperProps({
   // Mouseenter event not triggered when cursor moves from disabled button
   const handleMouseEnterFix = useCallback(
     (event: React.MouseEvent<HTMLDivElement | HTMLTableCellElement>) => {
-      console.log(
-        event,
-        event.target,
-        event.currentTarget,
-        event.relatedTarget,
-      );
-
       if (mouseEnteredOrLeftActivator(event) && !mouseEntered.current) {
-        console.log('mouse entered activator');
-
         handleMouseEnter(event);
       }
     },
@@ -171,7 +159,6 @@ export function useHoverCardActivatorWrapperProps({
   };
 
   const handleMouseLeaveOverlay = () => {
-    console.log('mouse left hover card');
     handleClose();
     setOverlayActive(false);
   };
