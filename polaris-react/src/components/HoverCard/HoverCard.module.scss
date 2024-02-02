@@ -3,14 +3,19 @@
 $vertical-motion-offset: -5px;
 
 .HoverCard {
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
+  // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
   --pc-hover-card-min-width: 0;
+  --pc-hover-card-min-height: 0;
+  // stylelint-enable
   opacity: 0;
   position: relative;
   display: flex;
   max-width: max-content;
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
   min-width: var(--pc-hover-card-min-width);
+  max-height: max-content;
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- HoverCard CSS Custom Variables
+  min-height: var(--pc-hover-card-min-height);
   background: var(--p-color-bg-surface);
   will-change: opacity, left, top;
   margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
