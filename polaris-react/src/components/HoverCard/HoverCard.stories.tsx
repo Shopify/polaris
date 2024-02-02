@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import type {ComponentMeta} from '@storybook/react';
+import type {Meta} from '@storybook/react';
 import type {PositionedOverlayProps} from '@shopify/polaris';
 import {
   Tag,
@@ -28,7 +28,7 @@ import {
 
 export default {
   component: HoverCard,
-} as ComponentMeta<typeof HoverCard>;
+} as Meta<typeof HoverCard>;
 
 export function WithChildActivator() {
   const [active, setActive] = useState(false);
