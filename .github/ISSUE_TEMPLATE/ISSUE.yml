@@ -7,27 +7,24 @@ body:
       value: |
         Please use [this template](https://github.com/Shopify/polaris/issues/new?labels=Feature+request&template=FEATURE_REQUEST.md) for feature requests.
   - type: textarea
-    id: issue-summary
+    id: summary
     attributes:
-      label: Issue summary
-      description: Provide a short description of the question/problem.
+      label: Summary
+      description: Provide a short description of the problem.
     validations:
       required: true
   - type: textarea
     id: expected-behavior
     attributes:
       label: Expected behavior
-      description: What is the expected behavior?
+      description: What should happen?
   - type: textarea
     id: actual-behavior
     attributes:
       label: Actual behavior
-      description: What is the actual behavior?
-      placeholder: |
-        Tip: include an error message (in a `<details></details>` tag) if your issue is related to an error while running Polaris.
-
-        If you include an animated gif showing your issue, wrapping it in a details tag is also recommended. Gifs usually autoplay, which can cause accessibility issues for people reviewing your PR:
-
+      description: What happens instead of the expected behavior?
+      value: |
+        Wrap animated gifs/videos in a details tag:
         <details>
           <summary>Summary of your gif(s)</summary>
           <img src="..." alt="Description of what the gif shows">
@@ -35,12 +32,13 @@ body:
   - type: textarea
     id: steps-to-reproduce
     attributes:
-      label: Steps to reproduce the problem
-      description: Please provide a reduced test case when possible with this [CodeSandbox template](https://codesandbox.io/s/q82mlq0m26).
-      placeholder: |
-        [Link to CodeSandbox]()
-        1. First step
-        2. Second step
+      label: Steps to reproduce
+      description: Provide a reduced test case with the [Polaris Sandbox](https://polaris.shopify.com/sandbox?code=N4IgLgFgpgtlDOIBcBtEAbA9gYwIbqiSgDsQBdAGhAHcBLAE0kVQHYA2ADjIF8g) or a CodeSandbox.
+      value: |
+        [Link to sandbox]()
+        1. 
+        2.
+        3.
   - type: markdown
     attributes:
       value: |
@@ -49,21 +47,21 @@ body:
         > Use the folowing command to provide specifications on your environment including version numbers, browser, device, and operating system.
         > `npx envinfo --system --binaries --browsers --npmPackages react,react-dom,@shopify/polaris`
   - type: dropdown
-    id: specifications-react-components
+    id: react-components
     attributes:
       label: Are you using React components?
       options:
         - 'Yes'
         - 'No'
   - type: input
-    id: specifications-polaris-version-number
+    id: polaris-version-number
     attributes:
       label: Polaris version number
   - type: input
-    id: specifications-browser
+    id: browser
     attributes:
       label: Browser
   - type: input
-    id: specifications-device
+    id: device
     attributes:
       label: Device
