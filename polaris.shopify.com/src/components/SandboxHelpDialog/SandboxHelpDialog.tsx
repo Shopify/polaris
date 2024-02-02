@@ -39,7 +39,7 @@ function SandboxHelpDialog({
 
             <p>
               Tell us what functionality you’d like the sandbox to have.{' '}
-              <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request%2C+untriaged&template=FEATURE_REQUEST.md&title=%5BSandbox%5D%20">
+              <a href="https://github.com/Shopify/polaris/issues/new?assignees=&labels=Feature+request%2C+untriaged&template=FEATURE_REQUEST.y,;&title=%5BSandbox%5D%20">
                 Submit a GitHub issue with your idea
               </a>
               .
