@@ -96,7 +96,7 @@ describe('convertStylePropsToCSSProperties', () => {
         `);
     });
 
-    describe.skip('aliases/shorthands', () => {
+    describe('aliases/shorthands', () => {
       it('shorthand style props are expanded to their longhand CSS declarations.', () => {
         const styleProps: ResponsiveStylePropsWithModifiers = {padding: '400'};
         expect(convert(styleProps)).toMatchInlineSnapshot(`
@@ -133,9 +133,8 @@ describe('convertStylePropsToCSSProperties', () => {
         };
         expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
-            "--_1": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
-            "paddingInlineEnd": "var(--_1)",
-            "paddingInlineStart": "var(--_1)",
+            "paddingInlineEnd": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
+            "paddingInlineStart": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
           }
         `);
       });

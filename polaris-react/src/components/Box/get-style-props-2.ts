@@ -21,6 +21,7 @@ import {
   breakpoints,
   defaultBreakpointKey,
   stylePropDefaults as globalDefaults,
+  stylePropAliasFallbacks,
 } from './generated-data';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -126,6 +127,70 @@ const cascadeOrder = {
   ...mapObjectValues(breakpoints, () => cascadeOrderNumber++),
   ...mapObjectValues(modifiers, () => cascadeOrderNumber++),
 } as const;
+
+// TODO: Move this into the generation script
+stylePropAliasFallbacks;
+
+type ExtractArrayValues<T extends object> = T[keyof T] extends (infer A)[]
+  ? A
+  : never;
+
+type Aliases = ExtractArrayValues<typeof stylePropAliasFallbacks>;
+
+type InvertedAliases = {
+  [key in Aliases]: (keyof typeof stylePropAliasFallbacks | Aliases)[];
+};
+
+/**
+ * Leverage the ordered array of stylePropAliasFallbacks to generate a
+ * linked-list style data structure suitable for generating a tree-like data
+ * structure.
+ *
+ * Concretely, we're converting this:
+ * {
+ *   paddingInlineStart: ["paddingLeft","paddingInline","padding"],
+ *   paddingInlineEnd: ["paddingRight","paddingInline","padding"],
+ *   paddingBlockStart: ["paddingTop","paddingBlock","padding"],
+ *   paddingBlockEnd: ["paddingBottom","paddingBlock","padding"],
+ * }
+ *
+ * into this:
+ *
+ * {
+ *  padding: ["paddingInline", "paddingBlock"],
+ *  paddingInline: ["paddingLeft", "paddingRight"],
+ *  paddingBlock: ["paddingTop", "paddingBottom"],
+ *  paddingLeft: ["paddingInlineStart"],
+ *  paddingRight: ["paddingInlineEnd"],
+ *  paddingTop: ["paddingBlockStart"],
+ *  paddingBottom: ["paddingBlockEnd"],
+ * }
+ */
+// TODO: move this into the generation script
+const inverseAliases = (
+  Object.entries(stylePropAliasFallbacks) as Entries<
+    typeof stylePropAliasFallbacks
+  >
+).reduce((memo, [property, aliases]) => {
+  aliases.forEach((alias, index) => {
+    // Checking if a value exists // for `memo[alias]`, and if not it'll
+    // assign it a new value of `[]`. // Either way, it'll set the variable
+    // `targets` equal to the either // existing array, or newly created
+    // array.
+    // eslint-disable-next-line no-multi-assign
+    const targets = (memo[alias] ??= []);
+
+    // The aliases array is ordered, so this alias points to the alias
+    // immediately before it. If this is the first alias, it points at the
+    // property itself.
+    const target = index === 0 ? property : aliases[index - 1];
+    if (!targets.includes(target)) {
+      targets.push(target);
+    }
+  });
+
+  return memo;
+}, {} as InvertedAliases);
 
 const joinEnglish =
   process.env.NODE_ENV === 'development'
@@ -465,350 +530,321 @@ function convert(
   globalDefaults ??= identityObject;
   /* eslint-enable no-param-reassign */
 
-  const stylePropKeys = Object.keys(styleProps);
-  const runtimeDefaultKeys = Object.keys(runtimeDefaults);
-  const globalDefaultKeys = Object.keys(globalDefaults);
-
-  /*
-* TODO Change the iteration to something like this:
-
-// Array order is unimportant
-const inverseAliases = {
-  padding: ["paddingInline", "paddingBlock"],
-  paddingInline: ["paddingLeft", "paddingRight"],
-  paddingBlock: ["paddingTop", "paddingBottom"],
-  paddingLeft: ["paddingInlineStart"],
-  paddingRight: ["paddingInlineEnd"],
-  paddingTop: ["paddingBlockStart"],
-  paddingBottom: ["paddingBlockEnd"],
-};
-
-const styleProps = {
-  paddingInlineEnd: "12px",
-  paddingInline: "10px",
-  paddingBlockStart: "15px",
-};
-const runtimeDefaults = {
-  paddingTop: "23px",
-};
-const globalDefaults = {
-  padding: "100px",
-};
-
-// Expected:
-// {
-//   paddingInlineStart: "10px",
-//   paddingInlineEnd: "12px",
-//   paddingBlockStart: "15px",
-//   paddingBlockEnd: "100px",
-// }
-const result = {};
-
-const objs = [
-  [styleProps, Object.keys(styleProps)],
-  [runtimeDefaults, Object.keys(runtimeDefaults)],
-  [globalDefaults, Object.keys(globalDefaults)],
-];
-
-for (let whichObj = 0; whichObj < objs.length; whichObj++) {
-  const [obj, objKeys] = objs[whichObj];
-  for (let i = 0; i < objKeys.length; i++) {
-    const prop = objKeys[i];
-    const value = obj[prop];
-
-    // Ignore null/undefined values
-    if (value == null) {
-      continue;
-    }
-
-    // This is an alias
-    if (inverseAliases[prop]) {
-      // It expands into one or more properties, so iterate over each of them
-      inverseAliases[prop].forEach((target) => {
-        // If the target property doesn't have a value set, set it now.
-        // Otherwise if it has a value already, skip it since existing more
-        // specific values take precedence over aliases.
-        if (obj[target] != null) {
-          // TODO: This mutates the input object, should we clone it?
-          obj[target] = value;
-          // Inject the key into the object keys array ready to be iterated next
-          objKeys.splice(i + 1, 0, target);
-        }
-      });
-
-      // Ignore this property, but continue to process the now-resolve
-      // properties
-      // TODO: Do we need to delete this key from the object?
-      continue;
-    }
-
-    // Values from here are guaranteed to be a non-alias
-
-    // Ensure the property doesn't exist in an earlier object (ie; don't try to
-    // overwrite).
-    // TODO: This unnecessarily iterates over all objects. Is there a way to
-    // iterate over only those that satisfy `index < whichObj`?
-    if (objs.some((obj, index) => index < whichObj && obj[prop] != null)) {
-      continue;
-    }
-
-    // Now we can process this value
-    result[prop] = value;
-  }
-}
-
-console.log(result);
-*/
-
-  const propKeys = mergeUnique(
-    mergeUnique(
-      Object.keys(styleProps) as (keyof typeof styleProps)[],
+  const allStyleProps: [
+    [typeof styleProps, (keyof typeof styleProps)[]],
+    [typeof runtimeDefaults, (keyof typeof runtimeDefaults)[]],
+    [typeof globalDefaults, (keyof typeof globalDefaults)[]],
+  ] = [
+    [styleProps, Object.keys(styleProps) as (keyof typeof styleProps)[]],
+    [
+      runtimeDefaults,
       Object.keys(runtimeDefaults) as (keyof typeof runtimeDefaults)[],
-    ),
-    Object.keys(globalDefaults) as (keyof typeof globalDefaults)[],
-  );
+    ],
+    [
+      globalDefaults,
+      Object.keys(globalDefaults) as (keyof typeof globalDefaults)[],
+    ],
+  ];
 
-  for (let i = 0; i < propKeys.length; i++) {
-    console.log(i);
-    const prop = propKeys[i];
-    debugger;
-    let stylePropValue = styleProps[prop];
-    let runtimeDefaultValue = runtimeDefaults[prop];
-    let globalDefaultValue = globalDefaults[prop];
-    const stylePropHasValue = stylePropValue != null;
-    const runtimeDefaultHasValue = runtimeDefaultValue != null;
-    const globalDefaultHasValue = globalDefaultValue != null;
+  // An O(n) recursive algorithm converting the given set of style prop objects
+  // into a valid CSS style object. It:
+  // 1. Merges the objects.
+  //    - Earlier objects overwrite values of later ones.
+  // 2. Expands aliases to their concrete properties.
+  //    - Earlier aliases overwrite values of later ones (as per config order)
+  //    -
+  // objects merging then converting them into a
+  for (
+    let whichStyleObj = 0;
+    whichStyleObj < allStyleProps.length;
+    whichStyleObj++
+  ) {
+    const [obj, objKeys] = allStyleProps[whichStyleObj];
+    // Can't use a for..of here because we're modifying the array mid-loop, but
+    // the iterator returned by for..of will not include items pushed onto the
+    // array.
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < objKeys.length; i++) {
+      const prop = objKeys[i];
+      const value = obj[prop];
 
-    const isRuntimeDefaultProp = !stylePropHasValue && runtimeDefaultHasValue;
-    const isGlobalDefaultProp = !stylePropHasValue && !isRuntimeDefaultProp;
-
-    const value = stylePropValue ?? runtimeDefaultValue ?? globalDefaultValue;
-
-    const propIsBreakpoint = hasOwn(breakpoints, prop);
-    const propIsModifier = !propIsBreakpoint && hasOwn(modifiers, prop);
-    const propIsPseudoElement =
-      !propIsBreakpoint && !propIsModifier && hasOwn(pseudoElements, prop);
-    const propIsDeclaration =
-      !propIsBreakpoint && !propIsModifier && !propIsPseudoElement;
-    const valueIsObject = isObject(value);
-    // TODO: How to narrow 'prop' here?
-    const propPath: PropPath = [...parentPropPath, prop as PropPathValues];
-
-    // NOTE; We do the property checks early like this because it minifies
-    // really well in production mode:
-    // https://esbuild.github.io/try/#dAAwLjE5LjExAHsgbWluaWZ5OiB0cnVlIH0AZnVuY3Rpb24gZnVuYygpIHsKICBjb25zdCB3aG9hID0gZm9vLmJhcjsKCiAgaWYgKGZvbyAmJiB6aXApIHsKICAgIC8vIElnbm9yZQogICAgcmV0dXJuOwogIH0KCiAgaWYgKGJhciAmJiB6aXAgfHwgd2hvYSkgewogICAgLy8gSWdub3JlCiAgICByZXR1cm47CiAgfQoKICBjb25zb2xlLmxvZygnZG9uZScpOwp9CgpleHBvcnQgeyBmdW5jIH07
-    // Ignore null & undefined values
-    if (value == null) {
-      continue;
-    }
-
-    // Optimisation: When an explicit 'unset' is passed in, we might be able
-    // to simply not return anything ('unset' is the browser's default). Except
-    // when there's a matching global default set; that'll still exist in the
-    // generate .css file, so we have to ensure we override that explicitly
-    // with 'unset'.
-    if (stylePropHasValue && !globalDefaultHasValue && value === 'unset') {
-      continue;
-    }
-
-    if (!parentIsResponsiveDeclaration && propIsBreakpoint) {
-      process.env.NODE_ENV === 'development' &&
-        warnOnInvalidProperty(
-          propPath,
-          `Breakpoint props can only be specified directly on a declaration property. For example: { color: { sm: 'red', lg: 'blue' } }.`,
-        );
-
-      // ignore this invalid property
-      continue;
-    }
-
-    if (parentIsResponsiveDeclaration && !propIsBreakpoint) {
-      process.env.NODE_ENV === 'development' &&
-        warnOnInvalidProperty(
-          propPath,
-          `When specified as an object, \`${parentPropPath.at(
-            -1,
-          )}\` can only contain the keys ${joinEnglish!(
-            Object.keys(breakpoints),
-            'or',
-          )}.`,
-        );
-
-      // ignore this invalid property
-      continue;
-    }
-
-    if (parentIsResponsiveDeclaration && propIsBreakpoint && valueIsObject) {
-      process.env.NODE_ENV === 'development' &&
-        warnOnInvalidProperty(
-          propPath,
-          `Breakpoint values cannot be an object.`,
-        );
-
-      // ignore this invalid property
-      continue;
-    }
-
-    if (parentIsPseudoElement && propIsModifier) {
-      process.env.NODE_ENV === 'development' &&
-        warnOnInvalidProperty(
-          propPath,
-          `Pseudo elements cannot contain modifiers. Try {${parentPropPath.at(
-            -1,
-          )}: {..}, ${prop}: { ${parentPropPath.at(-1)}: {..}}}`,
-        );
-
-      // ignore this invalid property
-      continue;
-    }
-
-    // Modifiers must be objects
-    if (!valueIsObject && propIsModifier) {
-      process.env.NODE_ENV === 'development' &&
-        warnOnInvalidProperty(
-          propPath,
-          `Modifier \`${prop}\` must be an object.`,
-        );
-
-      // ignore this invalid property
-      continue;
-    }
-
-    // Pseudo elements must be objects
-    if (!valueIsObject && propIsPseudoElement) {
-      process.env.NODE_ENV === 'development' &&
-        warnOnInvalidProperty(
-          propPath,
-          `Pseudo element \`${prop}\` must be an object.`,
-        );
-
-      // ignore this invalid property
-      continue;
-    }
-
-    // global defaults are only merged in if there's an equivalent runtime
-    // property somewhere in the style props, so we need to keep them seperate
-    // while we're recursing and only merge them as the style prop is detected
-    const properties = isGlobalDefaultProp
-      ? globalDefaultProperties
-      : runtimeProperties;
-
-    // Process a non-object concrete value.
-    // Eg; {color: 'red'}
-    // or
-    // {sm: 'blue'}
-    if (parentIsResponsiveDeclaration) {
-      // The declaration is actually the parent object, so we grab that from the
-      // path (eg; { color: { sm: 'red' } }).
-      // TODO: What about aliases?
-      const declaration = parentPropPath.at(-1) as keyof ResponsiveStyleProps;
-
-      // Global defaults get mapped earlier in the process
-      const mappedValue = isGlobalDefaultProp
-        ? value
-        : valueMapper(value, declaration, propPath);
-
-      // Since Typescript doesn't have negation types (`string & not 'inherit'`),
-      // we need to do a runtime check for invalid values because some of the
-      // csstype types have a `| string` union which then allows some values to
-      // sneak through at runtime.
-      invariant(
-        !disallowedCSSPropertyValues.includes(
-          // eslint-disable-next-line prettier/prettier
-          mappedValue as typeof disallowedCSSPropertyValues[number],
-        ),
-        `${
-          propPath?.length ? `[${propPath.join('.')}] ` : ''
-        }${mappedValue} is a disallowed value. Please use a different value.`,
-      );
-
-      insertIntoProperties(
-        properties,
-        whichElement,
-        declaration as keyof Properties,
-        // TODO Not sure why TS isn't narrowing prop down correctly here. it could
-        // only possibly be one of the responsive object keys at this point.
-        prop as CascadeOrderKeys,
-        mappedValue,
-      );
-    } else {
-      // Normalize declarations to responsive object format
-      // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
-      if (propIsDeclaration) {
-        if (stylePropHasValue && !isObject(stylePropValue)) {
-          stylePropValue = {[defaultBreakpointKey]: stylePropValue};
-        }
-        // Also normalize the defaults so we can do a correct recursive merge
-        if (runtimeDefaultHasValue && !isObject(runtimeDefaultValue)) {
-          runtimeDefaultValue = {[defaultBreakpointKey]: runtimeDefaultValue};
-        }
-        if (globalDefaultHasValue && !isObject(globalDefaultValue)) {
-          globalDefaultValue = {[defaultBreakpointKey]: globalDefaultValue};
-        }
+      // Ignore null/undefined values
+      if (value == null) {
+        continue;
       }
-      debugger;
-      const [nestedRuntimeProperties, nestedGlobalDefaultProperties] = convert(
-        // TODO: How do I fix this?
-        stylePropValue as typeof styleProps,
-        globalDefaultValue,
-        runtimeDefaultValue,
-        valueMapper,
-        /* eslint-disable no-nested-ternary -- It's terse & readable */
-        propIsModifier
-          ? Constant.ModifierParent
-          : propIsBreakpoint
-          ? Constant.DeclarationParent
-          : propIsPseudoElement
-          ? Constant.PseudoElementParent
-          : Constant.DeclarationParent,
-        /* eslint-enable no-nested-ternary */
-        propPath,
-        // Switch to the relevant pseudo element if encountered
-        // TODO: How to narrow the type of `prop` here?
-        propIsPseudoElement ? (prop as Elements) : whichElement,
-      );
 
-      // TODO: Move this out of the loop
-      const propertyIterator = (whichProperties, nestedElement, values) => {
-        // Merge each delcaration into the property object for this iteration.
-        // Later, these values will get turned into strings
-        values &&
-          (Object.entries(values) as Entries<typeof values>).forEach(
-            ([declaration, value]) => {
-              value != null &&
-                insertIntoProperties(
-                  whichProperties,
-                  nestedElement,
-                  declaration as keyof Properties,
-                  // TODO: How do we narrow `prop`'s type here?
-                  propIsModifier
-                    ? // Ie; it's _hover, _active, etc
-                      (prop as CascadeOrderKeys)
-                    : defaultBreakpointKey,
-                  value,
-                );
-            },
+      // This is an alias
+      if (inverseAliases[prop as Aliases]) {
+        // It expands into one or more properties, so iterate over each of them
+        inverseAliases[prop as Aliases].forEach((target) => {
+          // If the target property doesn't have a value set, set it now.
+          // Otherwise if it has a value already, skip it since existing values
+          // are more specific and take precedence over aliases.
+          if (obj[target] == null) {
+            // TODO: This mutates the input object, should we clone it?
+            obj[target] = value;
+            // Inject the key into the object keys array ready to be iterated next
+            objKeys.push(target);
+          }
+        });
+
+        // Ignore this property, but continue to process the now-resolve
+        // properties
+        // NOTE: The alias is now unused, but we don't bother deleting it - the
+        // garbage collector will handle it later, and since we're doing a
+        // single O(n) iteration of the object, we won't accidentally revisit
+        // that value in the future.
+        continue;
+      }
+
+      // Values from here are guaranteed to be a non-alias
+
+      // Ensure the property doesn't exist in an earlier object (ie; don't try to
+      // overwrite).
+      // TODO: This unnecessarily iterates over all objects. Is there a way to
+      // iterate over only those that satisfy `index < whichObj`?
+      if (
+        allStyleProps.some(
+          (obj, index) => index < whichStyleObj && obj[0][prop] != null,
+        )
+      ) {
+        continue;
+      }
+
+      // Now we can process this value
+      let stylePropValue = styleProps[prop];
+      let runtimeDefaultValue = runtimeDefaults[prop];
+      let globalDefaultValue = globalDefaults[prop];
+      const stylePropHasValue = stylePropValue != null;
+      const runtimeDefaultHasValue = runtimeDefaultValue != null;
+      const globalDefaultHasValue = globalDefaultValue != null;
+
+      const isRuntimeDefaultProp = !stylePropHasValue && runtimeDefaultHasValue;
+      const isGlobalDefaultProp = !stylePropHasValue && !isRuntimeDefaultProp;
+
+      const propIsBreakpoint = hasOwn(breakpoints, prop);
+      const propIsModifier = !propIsBreakpoint && hasOwn(modifiers, prop);
+      const propIsPseudoElement =
+        !propIsBreakpoint && !propIsModifier && hasOwn(pseudoElements, prop);
+      const propIsDeclaration =
+        !propIsBreakpoint && !propIsModifier && !propIsPseudoElement;
+      const valueIsObject = isObject(value);
+      // TODO: How to narrow 'prop' here?
+      const propPath: PropPath = [...parentPropPath, prop as PropPathValues];
+
+      // NOTE; We do the property checks early like this because it minifies
+      // really well in production mode:
+      // https://esbuild.github.io/try/#dAAwLjE5LjExAHsgbWluaWZ5OiB0cnVlIH0AZnVuY3Rpb24gZnVuYygpIHsKICBjb25zdCB3aG9hID0gZm9vLmJhcjsKCiAgaWYgKGZvbyAmJiB6aXApIHsKICAgIC8vIElnbm9yZQogICAgcmV0dXJuOwogIH0KCiAgaWYgKGJhciAmJiB6aXAgfHwgd2hvYSkgewogICAgLy8gSWdub3JlCiAgICByZXR1cm47CiAgfQoKICBjb25zb2xlLmxvZygnZG9uZScpOwp9CgpleHBvcnQgeyBmdW5jIH07
+      // Ignore null & undefined values
+      // Optimisation: When an explicit 'unset' is passed in, we might be able
+      // to simply not return anything ('unset' is the browser's default). Except
+      // when there's a matching global default set; that'll still exist in the
+      // generate .css file, so we have to ensure we override that explicitly
+      // with 'unset'.
+      if (stylePropHasValue && !globalDefaultHasValue && value === 'unset') {
+        continue;
+      }
+
+      if (!parentIsResponsiveDeclaration && propIsBreakpoint) {
+        process.env.NODE_ENV === 'development' &&
+          warnOnInvalidProperty(
+            propPath,
+            `Breakpoint props can only be specified directly on a declaration property. For example: { color: { sm: 'red', lg: 'blue' } }.`,
           );
-      };
 
-      // Now that we've got the result of recursing, we need to inject these
-      // values into the individual properties we know about so far.
-      // For the root element, and the pseudo elements
-      (
-        Object.entries(nestedRuntimeProperties) as Entries<
-          typeof nestedRuntimeProperties
-        >
-      ).forEach(([nestedElement, values]) => {
-        propertyIterator(runtimeProperties, nestedElement, values);
-      });
+        // ignore this invalid property
+        continue;
+      }
 
-      (
-        Object.entries(nestedGlobalDefaultProperties) as Entries<
-          typeof nestedGlobalDefaultProperties
-        >
-      ).forEach(([nestedElement, values]) => {
-        propertyIterator(globalDefaultProperties, nestedElement, values);
-      });
+      if (parentIsResponsiveDeclaration && !propIsBreakpoint) {
+        process.env.NODE_ENV === 'development' &&
+          warnOnInvalidProperty(
+            propPath,
+            `When specified as an object, \`${parentPropPath.at(
+              -1,
+            )}\` can only contain the keys ${joinEnglish!(
+              Object.keys(breakpoints),
+              'or',
+            )}.`,
+          );
+
+        // ignore this invalid property
+        continue;
+      }
+
+      if (parentIsResponsiveDeclaration && propIsBreakpoint && valueIsObject) {
+        process.env.NODE_ENV === 'development' &&
+          warnOnInvalidProperty(
+            propPath,
+            `Breakpoint values cannot be an object.`,
+          );
+
+        // ignore this invalid property
+        continue;
+      }
+
+      if (parentIsPseudoElement && propIsModifier) {
+        process.env.NODE_ENV === 'development' &&
+          warnOnInvalidProperty(
+            propPath,
+            `Pseudo elements cannot contain modifiers. Try {${parentPropPath.at(
+              -1,
+            )}: {..}, ${prop}: { ${parentPropPath.at(-1)}: {..}}}`,
+          );
+
+        // ignore this invalid property
+        continue;
+      }
+
+      // Modifiers must be objects
+      if (!valueIsObject && propIsModifier) {
+        process.env.NODE_ENV === 'development' &&
+          warnOnInvalidProperty(
+            propPath,
+            `Modifier \`${prop}\` must be an object.`,
+          );
+
+        // ignore this invalid property
+        continue;
+      }
+
+      // Pseudo elements must be objects
+      if (!valueIsObject && propIsPseudoElement) {
+        process.env.NODE_ENV === 'development' &&
+          warnOnInvalidProperty(
+            propPath,
+            `Pseudo element \`${prop}\` must be an object.`,
+          );
+
+        // ignore this invalid property
+        continue;
+      }
+
+      // global defaults are only merged in if there's an equivalent runtime
+      // property somewhere in the style props, so we need to keep them seperate
+      // while we're recursing and only merge them as the style prop is detected
+      const properties = isGlobalDefaultProp
+        ? globalDefaultProperties
+        : runtimeProperties;
+
+      // Process a non-object concrete value.
+      // Eg; {color: 'red'}
+      // or
+      // {sm: 'blue'}
+      if (parentIsResponsiveDeclaration) {
+        // The declaration is actually the parent object, so we grab that from the
+        // path (eg; { color: { sm: 'red' } }).
+        // TODO: What about aliases?
+        const declaration = parentPropPath.at(-1) as keyof ResponsiveStyleProps;
+
+        // Global defaults get mapped earlier in the process
+        const mappedValue = isGlobalDefaultProp
+          ? value
+          : valueMapper(value, declaration, propPath);
+
+        // Since Typescript doesn't have negation types (`string & not 'inherit'`),
+        // we need to do a runtime check for invalid values because some of the
+        // csstype types have a `| string` union which then allows some values to
+        // sneak through at runtime.
+        invariant(
+          !disallowedCSSPropertyValues.includes(
+            // eslint-disable-next-line prettier/prettier
+            mappedValue as typeof disallowedCSSPropertyValues[number],
+          ),
+          `${
+            propPath?.length ? `[${propPath.join('.')}] ` : ''
+          }${mappedValue} is a disallowed value. Please use a different value.`,
+        );
+
+        insertIntoProperties(
+          properties,
+          whichElement,
+          declaration as keyof Properties,
+          // TODO Not sure why TS isn't narrowing prop down correctly here. it could
+          // only possibly be one of the responsive object keys at this point.
+          prop as CascadeOrderKeys,
+          mappedValue,
+        );
+      } else {
+        // Normalize declarations to responsive object format
+        // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
+        if (propIsDeclaration) {
+          if (stylePropHasValue && !isObject(stylePropValue)) {
+            stylePropValue = {[defaultBreakpointKey]: stylePropValue};
+          }
+          // Also normalize the defaults so we can do a correct recursive merge
+          if (runtimeDefaultHasValue && !isObject(runtimeDefaultValue)) {
+            runtimeDefaultValue = {[defaultBreakpointKey]: runtimeDefaultValue};
+          }
+          if (globalDefaultHasValue && !isObject(globalDefaultValue)) {
+            globalDefaultValue = {[defaultBreakpointKey]: globalDefaultValue};
+          }
+        }
+        debugger;
+        const [nestedRuntimeProperties, nestedGlobalDefaultProperties] =
+          convert(
+            // TODO: How do I fix this?
+            stylePropValue as typeof styleProps,
+            globalDefaultValue,
+            runtimeDefaultValue,
+            valueMapper,
+            /* eslint-disable no-nested-ternary -- It's terse & readable */
+            propIsModifier
+              ? Constant.ModifierParent
+              : propIsBreakpoint
+              ? Constant.DeclarationParent
+              : propIsPseudoElement
+              ? Constant.PseudoElementParent
+              : Constant.DeclarationParent,
+            /* eslint-enable no-nested-ternary */
+            propPath,
+            // Switch to the relevant pseudo element if encountered
+            // TODO: How to narrow the type of `prop` here?
+            propIsPseudoElement ? (prop as Elements) : whichElement,
+          );
+
+        // TODO: Move this out of the loop
+        const propertyIterator = (whichProperties, nestedElement, values) => {
+          // Merge each delcaration into the property object for this iteration.
+          // Later, these values will get turned into strings
+          values &&
+            (Object.entries(values) as Entries<typeof values>).forEach(
+              ([declaration, value]) => {
+                value != null &&
+                  insertIntoProperties(
+                    whichProperties,
+                    nestedElement,
+                    declaration as keyof Properties,
+                    // TODO: How do we narrow `prop`'s type here?
+                    propIsModifier
+                      ? // Ie; it's _hover, _active, etc
+                        (prop as CascadeOrderKeys)
+                      : defaultBreakpointKey,
+                    value,
+                  );
+              },
+            );
+        };
+
+        // Now that we've got the result of recursing, we need to inject these
+        // values into the individual properties we know about so far.
+        // For the root element, and the pseudo elements
+        (
+          Object.entries(nestedRuntimeProperties) as Entries<
+            typeof nestedRuntimeProperties
+          >
+        ).forEach(([nestedElement, values]) => {
+          propertyIterator(runtimeProperties, nestedElement, values);
+        });
+
+        (
+          Object.entries(nestedGlobalDefaultProperties) as Entries<
+            typeof nestedGlobalDefaultProperties
+          >
+        ).forEach(([nestedElement, values]) => {
+          propertyIterator(globalDefaultProperties, nestedElement, values);
+        });
+      }
     }
   }
 
