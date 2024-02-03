@@ -24,6 +24,8 @@ export function WithColors() {
       <ProgressBar progress={30} tone="critical" />
       <br />
       <ProgressBar progress={30} tone="info" />
+      <br />
+      <ProgressBar progress={30} tone="warning" />
     </div>
   );
 }
