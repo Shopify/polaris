@@ -1,4 +1,5 @@
 'use strict';
+
 import invariant from 'tiny-invariant';
 import decamelize from 'decamelize';
 import type {Entries} from 'type-fest';
@@ -217,19 +218,6 @@ function identity<T>(arg: T): T {
 
 function hasOwn(obj: object, key: any): boolean {
   return Object.prototype.hasOwnProperty.call(obj, key);
-}
-
-/**
- * Merge two arrays together, excluding elements in `b` that are already in `a`.
- *
- * This is the most performant way to do the merge.
- * See: https://jsbench.me/g4ls1dfmka/1
- * See: https://stackoverflow.com/questions/1584370/how-to-merge-two-arrays-in-javascript-and-de-duplicate-items/28631880
- */
-function mergeUnique<A, B>(array1: A[], array2: B[]): (A | B)[] {
-  return (array1 as (A | B)[]).concat(
-    array2.filter((i) => !array1.includes(i as unknown as A)),
-  );
 }
 
 function mapObjectValues<T extends object, R = T[keyof T]>(
@@ -780,7 +768,7 @@ function convert(
             globalDefaultValue = {[defaultBreakpointKey]: globalDefaultValue};
           }
         }
-        debugger;
+
         const [nestedRuntimeProperties, nestedGlobalDefaultProperties] =
           convert(
             // TODO: How do I fix this?
@@ -804,7 +792,7 @@ function convert(
           );
 
         // TODO: Move this out of the loop
-        const propertyIterator = (whichProperties, nestedElement, values) => {
+        function propertyIterator(whichProperties, nestedElement, values) {
           // Merge each delcaration into the property object for this iteration.
           // Later, these values will get turned into strings
           values &&
@@ -824,7 +812,7 @@ function convert(
                   );
               },
             );
-        };
+        }
 
         // Now that we've got the result of recursing, we need to inject these
         // values into the individual properties we know about so far.
