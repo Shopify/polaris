@@ -40,7 +40,7 @@ html {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--p-color-scrollbar-thumb-bg-hover);
+    background-color: transparent;
     border: var(--p-border-width-050) solid transparent;
     border-radius: var(--p-border-radius-300);
     background-clip: content-box;
@@ -52,6 +52,10 @@ html {
 
   &:hover {
     scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) var(--p-color-bg);
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--p-color-scrollbar-thumb-bg-hover);
+    }
   }
 }
 

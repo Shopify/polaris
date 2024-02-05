@@ -73,7 +73,7 @@ $nav-max-width: 360px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--p-color-scrollbar-thumb-bg-hover);
+    background-color: transparent;
     border: var(--p-border-width-050) solid transparent;
     border-radius: var(--p-border-radius-300);
     background-clip: content-box;
@@ -86,6 +86,10 @@ $nav-max-width: 360px;
 
   &:hover {
     scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--p-color-scrollbar-thumb-bg-hover);
+    }
   }
 }
 
