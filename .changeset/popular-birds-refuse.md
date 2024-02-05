@@ -2,4 +2,5 @@
 '@shopify/polaris': minor
 ---
 
-[CalloutCard] Adds IconableActions & 2ndary actions can have variants
+[CalloutCard] Added IconableAction to primaryAction and secondaryAction
+[CalloutCard] Added variant prop to secondaryAction
