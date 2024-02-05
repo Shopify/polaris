@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.2.0
+
+### Minor Changes
+
+- [#11551](https://github.com/Shopify/polaris/pull/11551) [`ffd231e28`](https://github.com/Shopify/polaris/commit/ffd231e28543bdb2912aa95f323c4afc69c763eb) Thanks [@mateus](https://github.com/mateus)! - Allow polaris/media-query-allowed-list lint rule to be disabled
+
 ## 15.1.0
 
 ### Minor Changes

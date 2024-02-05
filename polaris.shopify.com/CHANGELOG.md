@@ -1,5 +1,11 @@
 # polaris.shopify.com
 
+## 0.62.5
+
+### Patch Changes
+
+- [#11405](https://github.com/Shopify/polaris/pull/11405) [`a8fd0dec9`](https://github.com/Shopify/polaris/commit/a8fd0dec9393fa296506ca3028adfb2804aa2c98) Thanks [@willnguyen1312](https://github.com/willnguyen1312)! - Fixed sticky header example in docs
+
 ## 0.62.4
 
 ### Patch Changes
