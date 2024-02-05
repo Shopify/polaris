@@ -128,7 +128,6 @@ type ConditionalDeclarations = {
 type DeclarationAccumulator = {
   [Key in
     | PseudoElementProp
-    // eslint-disable-next-line prettier/prettier
     | typeof Constant['RootElement']]?: ConditionalDeclarations;
 };
 
@@ -248,10 +247,6 @@ const joinEnglish =
         return `${joined} ${joiner} ${arr[arr.length - 1]}`;
       }
     : null;
-
-// Used in places where an object may be undefined so we can do things like
-// `Object.keys` without extra checks.
-const identityObject = Object.freeze({});
 
 function identity<T>(arg: T): T {
   return arg;
@@ -587,6 +582,8 @@ function convert(
           // are more specific and take precedence over aliases.
           if (styleObj[target] == null) {
             // TODO: This mutates the input object, should we clone it?
+            // @ts-expect-error Fair enough; this is an incredibly complex
+            // union!
             styleObj[target] = value;
             // Inject the key into the object keys array ready to be iterated next
             styleProps.push(target);
@@ -745,7 +742,6 @@ function convert(
         // sneak through at runtime.
         invariant(
           !disallowedCSSPropertyValues.includes(
-            // eslint-disable-next-line prettier/prettier
             mappedValue as typeof disallowedCSSPropertyValues[number],
           ),
           `${
@@ -778,6 +774,7 @@ function convert(
             stylePropObjsForRecursion.push(
               // Normalize declarations to responsive object format
               // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
+              // TODO: How do I tell TS this is correct?
               propIsDeclaration && typeof otherObjsValue !== 'object'
                 ? {[defaultBreakpointKey]: otherObjsValue}
                 : otherObjsValue,
@@ -824,57 +821,63 @@ function convert(
           );
         });
 
-        (
-          Object.keys(
-            nestedWeakProperties,
-          ) as (keyof typeof nestedWeakProperties)[]
-        ).forEach((nestedElement) => {
-          propertyIterator(
-            weakProperties,
-            nestedElement,
-            nestedWeakProperties[nestedElement],
-            // TODO: How do we narrow `prop`'s type here?
-            // Ie; it's _hover, _active, etc
-            propIsModifier ? (prop as CascadeOrderKeys) : defaultBreakpointKey,
-          );
-        });
+        if (lastIsWeakMergedForRecursion) {
+          (
+            Object.keys(
+              nestedWeakProperties,
+            ) as (keyof typeof nestedWeakProperties)[]
+          ).forEach((nestedElement) => {
+            propertyIterator(
+              weakProperties,
+              nestedElement,
+              nestedWeakProperties[nestedElement],
+              // TODO: How do we narrow `prop`'s type here?
+              // Ie; it's _hover, _active, etc
+              propIsModifier
+                ? (prop as CascadeOrderKeys)
+                : defaultBreakpointKey,
+            );
+          });
+        }
       }
     }
   }
 
-  // When a global default is set, and a corresponding style prop is set, they
-  // must be merged together before they're stringified to ensure the cascade
-  // order is preserved.
-  // TODO: Is there a more efficient way of doing this without having to loop
-  // over the entire globalDefaultProperties object every time? Maybe move it
-  // into the above loop which is already going over the objects?
-  (Object.keys(weakProperties) as (keyof typeof weakProperties)[]).forEach(
-    (whichGlobalDefaultElement) => {
-      const declarations = weakProperties[whichGlobalDefaultElement];
-      declarations &&
-        (Object.keys(declarations) as (keyof typeof declarations)[]).forEach(
-          (key) => {
-            const declarationConditions = declarations[key];
-            const runtimeDeclaration =
-              mergedProperties[whichGlobalDefaultElement]?.[key];
-            if (runtimeDeclaration) {
-              // merge the cascade-ordered declarations of the global default back
-              // into the runtime declaration
-              declarationConditions &&
-                declarationConditions.forEach((condition, cascadeIndex) => {
-                  // Only set the runtime value if it's not already set (ie;
-                  // runtime values override global defaults)
-                  runtimeDeclaration[cascadeIndex] ??= condition;
-                });
+  if (lastIsWeakMerged) {
+    // When a global default is set, and a corresponding style prop is set, they
+    // must be merged together before they're stringified to ensure the cascade
+    // order is preserved.
+    // TODO: Is there a more efficient way of doing this without having to loop
+    // over the entire globalDefaultProperties object every time? Maybe move it
+    // into the above loop which is already going over the objects?
+    (Object.keys(weakProperties) as (keyof typeof weakProperties)[]).forEach(
+      (whichGlobalDefaultElement) => {
+        const declarations = weakProperties[whichGlobalDefaultElement];
+        declarations &&
+          (Object.keys(declarations) as (keyof typeof declarations)[]).forEach(
+            (key) => {
+              const declarationConditions = declarations[key];
+              const runtimeDeclaration =
+                mergedProperties[whichGlobalDefaultElement]?.[key];
+              if (runtimeDeclaration) {
+                // merge the cascade-ordered declarations of the global default back
+                // into the runtime declaration
+                declarationConditions &&
+                  declarationConditions.forEach((condition, cascadeIndex) => {
+                    // Only set the runtime value if it's not already set (ie;
+                    // runtime values override global defaults)
+                    runtimeDeclaration[cascadeIndex] ??= condition;
+                  });
 
-              // Now that it's merged, delete it so it doesn't get merged again
-              // later
-              delete declarations[key];
-            }
-          },
-        );
-    },
-  );
+                // Now that it's merged, delete it so it doesn't get merged again
+                // later
+                delete declarations[key];
+              }
+            },
+          );
+      },
+    );
+  }
 
   return [
     mutateObjectValues(mergedProperties, spaceHackStringifier),
