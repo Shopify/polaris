@@ -50,19 +50,19 @@ We track all of our issues in GitHub and [bugs](https://github.com/Shopify/polar
 
 ### Reporting new issues
 
-To reduce duplicates, look through open issues before filing one. When [opening an issue](https://github.com/Shopify/polaris/issues/new?template=ISSUE.md), complete as much of the template as possible. The best way to get your bug fixed is to provide a reduced test case. [This CodeSandbox template](https://codesandbox.io/s/q82mlq0m26) is a great starting point.
+To reduce duplicates, look through open issues before filing one. When [opening an issue](https://github.com/Shopify/polaris/issues/new?template=ISSUE.yml), complete as much of the template as possible. The best way to get your bug fixed is to provide a reduced test case. [This CodeSandbox template](https://codesandbox.io/s/q82mlq0m26) is a great starting point.
 
 ## Feature requests
 
 Before requesting a feature, search the [existing feature requests](https://github.com/Shopify/polaris/issues?utf8=%E2%9C%93&q=is%3Aissue+label%3A%22feature+request%22+sort%3Areactions-%2B1-desc). You can [👍 upvote](https://help.github.com/articles/about-conversations-on-github/) feature requests to help the Polaris team set priorities. If a feature request is closed, you can still upvote! A closed feature request means it’s not something we’re currently working on, but we take all your input into account when planning what to work on next.
 
-Otherwise, [request a feature](https://github.com/Shopify/polaris/issues/new?template=FEATURE_REQUEST.md).
+Otherwise, [request a feature](https://github.com/Shopify/polaris/issues/new?labels=Feature+request&template=FEATURE_REQUEST.yml).
 
 ## Proposing a change
 
-If you intend to build a new component, change a public API, make design improvements, or any other non-trivial changes, [we recommend filing an issue](https://github.com/Shopify/polaris/issues/new?template=FEATURE_REQUEST.md). This lets us all discuss and reach an agreement on the proposal before you put in significant time and effort.
+If you intend to build a new component, change a public API, make design improvements, or any other non-trivial changes, [we recommend filing an issue](https://github.com/Shopify/polaris/issues/new?labels=Feature+request&template=FEATURE_REQUEST.yml). This lets us all discuss and reach an agreement on the proposal before you put in significant time and effort.
 
-Please use this [template for proposing new components or changes to existing components](https://github.com/Shopify/polaris/issues/new?template=NEW_COMPONENT.md).
+Please use this [template for proposing new components or changes to existing components](https://github.com/Shopify/polaris/issues/new?labels=Component&template=NEW_COMPONENT.yml).
 
 If you’re only fixing a bug, it’s okay to submit a pull request right away but we still recommend you file an issue detailing what you’re fixing. This is helpful in case we don’t accept that specific fix but want to keep track of the issue.
 
