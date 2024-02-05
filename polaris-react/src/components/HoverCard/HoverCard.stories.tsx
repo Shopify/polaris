@@ -137,7 +137,6 @@ export function WithChildActivator() {
               </Text>
               <HoverCard
                 active={active}
-                minWidth={200}
                 preferredPosition={position}
                 preferredAlignment="left"
                 content={customerHoverCardContent}
