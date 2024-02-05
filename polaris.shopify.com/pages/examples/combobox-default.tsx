@@ -28,7 +28,7 @@ function ComboboxExample() {
         return;
       }
 
-      const filterRegex = new RegExp(value, 'i');
+      const filterRegex = new RegExp(value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
       const resultOptions = deselectedOptions.filter((option) =>
         option.label.match(filterRegex),
       );
