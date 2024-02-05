@@ -5,10 +5,10 @@ import {classNames} from '../../utilities/css';
 import type {IconableAction} from '../../types';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../LegacyCard';
-// eslint-disable-next-line import/no-deprecated
 import {BlockStack} from '../BlockStack';
 import {ButtonGroup} from '../ButtonGroup';
-import {Button, ButtonProps, buttonFrom} from '../Button';
+import {Button, buttonFrom} from '../Button';
+import type {ButtonProps} from '../Button';
 import {Text} from '../Text';
 import {Image} from '../Image';
 
