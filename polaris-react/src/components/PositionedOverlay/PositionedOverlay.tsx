@@ -358,7 +358,7 @@ export class PositionedOverlay extends PureComponent<
             activatorRect,
             left:
               (preferredAlignment !== 'right' && !positionedHorizontal) ||
-              calculatedHorizontalPosition.left !== undefined
+              calculatedHorizontalPosition.left
                 ? horizontalPosition
                 : undefined,
             right:
