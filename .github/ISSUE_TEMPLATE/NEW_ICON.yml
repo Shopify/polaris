@@ -1,7 +1,7 @@
 name: Propose new icon
 description: For new icon contributions and suggestions for polaris-icons
 title: '[Icon]: New icon <icon-name>'
-labels: ['Icon', 'untriaged', 'Uplift polish']
+labels: ['Icon', 'untriaged']
 body:
   - type: markdown
     attributes:
