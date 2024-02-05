@@ -1,10 +1,43 @@
 'use strict';
 
+/*
+ * PERFORMANCE
+ *
+ *
+ * Use `Object.keys()` over `Object.entries()`
+ * -------------------------------------------
+ *
+ * Object.keys() appears to be slightly faster
+ * (possibly because Object.keys returns an iterable that the JS engine has to
+ * construct on every call wheras Object.keys returns a pre-calculated array
+ * of the keys due to the way the data is represented within the JS engine.
+ *
+ * Test: https://www.measurethat.net/Benchmarks/Show/3685/0/objectentries-vs-objectkeys-vs-objectkeys-with-extra-ar#latest_results_block
+ *
+ * Mutate over copy
+ * ----------------
+ *
+ * Mutating existing objects/arrays is much faster (2x) than creating new ones
+ * wherever possible.
+ *
+ * Test: https://jsbench.me/i1ls861rj9/1
+ *
+ * Iterate with `for` loops not `for..of` or `.forEach()`
+ * ------------------------------------------------------
+ *
+ * `for..of` uses iterators which internally perform a function call, do
+ * internal "done" checks, return the value + done, then do another "done" check
+ * before continuing.
+ *
+ * `.forEach()` Requires creating a function + closure + everything that goes
+ * with that, then function execution overhead.
+ *
+ * `for` requires no iterators, does simple property access, and has no function
+ * creation/execution requirements.
+ */
+
 import invariant from 'tiny-invariant';
 import decamelize from 'decamelize';
-import type {Entries} from 'type-fest';
-
-import {isObject} from '../../utilities/is-object';
 
 import type {
   ResponsiveStyleProps,
@@ -119,18 +152,25 @@ const enum Constant {
   PseudoElementParent,
 }
 
-type CascadeOrderKeys = keyof typeof cascadeOrder;
+type CascadeOrderKeys = keyof typeof breakpoints | keyof typeof modifiers;
 
 let cascadeOrderNumber = 0;
 
-// Least specific first
-const cascadeOrder = {
-  ...mapObjectValues(breakpoints, () => cascadeOrderNumber++),
-  ...mapObjectValues(modifiers, () => cascadeOrderNumber++),
-} as const;
+const cascadeOrder = {} as {
+  [Key in CascadeOrderKeys]: number;
+};
 
-// TODO: Move this into the generation script
-stylePropAliasFallbacks;
+// Least specific first
+for (
+  let cascadeKeys = Object.keys(breakpoints).concat(
+      Object.keys(modifiers),
+    ) as CascadeOrderKeys[],
+    i = 0;
+  i < cascadeKeys.length;
+  i++
+) {
+  cascadeOrder[cascadeKeys[i]] = cascadeOrderNumber++;
+}
 
 type ExtractArrayValues<T extends object> = T[keyof T] extends (infer A)[]
   ? A
@@ -169,10 +209,11 @@ type InvertedAliases = {
  */
 // TODO: move this into the generation script
 const inverseAliases = (
-  Object.entries(stylePropAliasFallbacks) as Entries<
-    typeof stylePropAliasFallbacks
-  >
-).reduce((memo, [property, aliases]) => {
+  Object.keys(
+    stylePropAliasFallbacks,
+  ) as (keyof typeof stylePropAliasFallbacks)[]
+).reduce((memo, property) => {
+  const aliases = stylePropAliasFallbacks[property];
   aliases.forEach((alias, index) => {
     // Checking if a value exists // for `memo[alias]`, and if not it'll
     // assign it a new value of `[]`. // Either way, it'll set the variable
@@ -220,17 +261,21 @@ function hasOwn(obj: object, key: any): boolean {
   return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
-function mapObjectValues<T extends object, R = T[keyof T]>(
+function mutateObjectValues<T extends object, R = T[keyof T]>(
   obj: T,
   map: (val: T[keyof T], key: keyof T) => R,
 ): {[K in keyof T]: R} {
-  const result: {[K in keyof T]: R} = {} as {[K in keyof T]: R};
-  for (const key in obj) {
-    if (hasOwn(obj, key)) {
-      result[key] = map(obj[key], key);
-    }
+  // Doing this as a mutating for loop is the most performant:
+  // https://jsbench.me/i1ls861rj9/1
+  for (
+    let keys = Object.keys(obj) as (keyof T)[], i = 0;
+    i < keys.length;
+    i++
+  ) {
+    const key = keys[i];
+    (obj as {[K in keyof T]: R})[key] = map(obj[key], key);
   }
-  return result;
+  return obj as {[K in keyof T]: R};
 }
 
 function warnOnInvalidProperty(path: PropPath = [], message?: string) {
@@ -283,12 +328,20 @@ export function convertStylePropsToCSSProperties(
   runtimeDefaults?: PropDefaults,
   valueMapper: ValueMapper = identity,
 ): ConversionResult {
+  const styles = [styleProps];
+  let lastIsWeakMerged = false;
+  if (runtimeDefaults) {
+    styles.push(runtimeDefaults);
+  }
+  if (globalDefaults) {
+    styles.push(globalDefaults);
+    lastIsWeakMerged = true;
+  }
   // NOTE: purposely ignore any un-merged global defaults as they've already
   // been added to the generated .css file during setup.
   const [converted] = convert(
-    styleProps,
-    globalDefaults ?? {},
-    runtimeDefaults ?? {},
+    styles,
+    lastIsWeakMerged,
     valueMapper,
     undefined,
     [],
@@ -320,24 +373,27 @@ export function convertStylePropsToCSSProperties(
   //
   // Maybe we stick with the current approach of dynamic + static?
 
-  const {[Constant.RootElement]: baseStyleProps, ...pseudoElementsStyleProps} =
-    converted;
+  // Our generated styles can be random strings (`var(...)` etc), but the
+  // `Properties` from `csstype` doesn't always union strings. We want to play
+  // nicely with the `csstype` ecosystem (React et al), so we down-cast the
+  // type to pretend it's compatible with Properties (which in practicality it
+  // _is_, it's just TS which doesn't know that).
+  const rootStyles = (converted[Constant.RootElement] ?? {}) as Properties;
+  delete converted[Constant.RootElement];
 
-  return {
-    // Our generated styles can be random strings (`var(...)` etc), but the
-    // `Properties` from `csstype` doesn't always union strings. We want to play
-    // nicely with the `csstype` ecosystem (React et al), so we down-cast the
-    // type to pretend it's compatible with Properties (which in practicality it
-    // _is_, it's just TS which doesn't know that).
-    style: (baseStyleProps ?? {}) as Properties,
-    ...mapObjectValues(pseudoElementsStyleProps, (pseudoElementStyleProps) =>
-      pseudoElementStyleProps
-        ? {
-            style: pseudoElementStyleProps as Properties,
-          }
-        : undefined,
-    ),
-  };
+  // Avoid creating another new object by re-using the result of the function
+  // call above
+  const result = mutateObjectValues(converted, (pseudoElementStyleProps) =>
+    pseudoElementStyleProps
+      ? {
+          style: pseudoElementStyleProps as Properties,
+        }
+      : undefined,
+  ) as ConversionResult;
+
+  result.style = rootStyles;
+
+  return result;
 }
 
 export function convertCSSPropertiesToStyleSheet(
@@ -345,8 +401,8 @@ export function convertCSSPropertiesToStyleSheet(
   selector: string,
   prettyIndent?: number,
 ) {
-  return `${selector}{${Object.entries(styles)
-    .reduce((acc, [cssProperty, val]) => {
+  return `${selector}{${(Object.keys(styles) as (keyof Properties)[])
+    .reduce((acc, cssProperty) => {
       acc.push(
         `${
           // Leave Custom Properties alone but all other CSS Properties need
@@ -354,7 +410,7 @@ export function convertCSSPropertiesToStyleSheet(
           cssProperty.startsWith('--')
             ? cssProperty
             : decamelize(cssProperty, {separator: '-'})
-        }: ${val};`,
+        }: ${styles[cssProperty]};`,
       );
       return acc;
     }, [] as string[])
@@ -365,23 +421,57 @@ export function convertCSSPropertiesToStyleSheet(
     )}}`;
 }
 
+function propertyIterator(
+  whichProperties: DeclarationAccumulator,
+  nestedElement: keyof ConvertResult,
+  values: ConvertResult[keyof ConvertResult],
+  condition: CascadeOrderKeys,
+) {
+  // Merge each delcaration into the property object for this iteration.
+  // Later, these values will get turned into strings
+  values &&
+    (Object.keys(values) as (keyof typeof values)[]).forEach((declaration) => {
+      values[declaration] != null &&
+        insertIntoProperties(
+          whichProperties,
+          nestedElement,
+          declaration as keyof Properties,
+          condition,
+          values[declaration],
+        );
+    });
+}
+
+// TODO: Can I represent this as nested tuples?
+// [
+//   border,
+//   [
+//     hover,
+//     [
+//       xs,
+//       green
+//     ]
+//   ]
+
 // Convert array of { value, condition } to the Space Hack CSS
 function spaceHackStringifier(
   elements: DeclarationAccumulator[keyof DeclarationAccumulator],
 ) {
   return elements
-    ? mapObjectValues(elements, (values) =>
-        (values ?? []).reduce(
-          (output, {value, condition}) =>
-            condition
-              ? `var(--${cssCustomPropertyNamespace}${condition}-on,${value})${
-                  output
-                    ? ` var(--${cssCustomPropertyNamespace}${condition}-off,${output})`
-                    : ''
-                }`
-              : `${value}`,
-          '',
-        ),
+    ? mutateObjectValues(elements, (values) =>
+        values == null
+          ? ''
+          : values.reduce(
+              (output, {value, condition}) =>
+                condition
+                  ? `var(--${cssCustomPropertyNamespace}${condition}-on,${value})${
+                      output
+                        ? ` var(--${cssCustomPropertyNamespace}${condition}-off,${output})`
+                        : ''
+                    }`
+                  : `${value}`,
+              '',
+            ),
       )
     : undefined;
 }
@@ -427,75 +517,19 @@ function convert(
    * }
    */
   // TODO: Does this recursive type cause TS to be slow?
-  styleProps: RecursiveValues<ResponsiveStylePropsWithModifiers>,
+  stylePropsObjs: RecursiveValues<ResponsiveStylePropsWithModifiers>[],
+
   /**
-   * Global defaults have been set in the .css file, but the specificity of the
-   * style="" attribute is higher, so if a matching prop is passed in we need to
-   * ensure the default value is set again on the style="" attribute.
+   * Only merge the last style prop object if and preceding objects contain a
+   * matching key. In this way, the last prop object is "weak merged".
+   *
+   * Used because global defaults have been set in the .css file, but the
+   * specificity of the style="" attribute is higher, so if a matching prop is
+   * passed in we need to ensure the default value is set again on the style=""
+   * attribute, otherwise we don't merge it and instead let the .css style catch
+   * it.
    */
-  globalDefaults: PropDefaults,
-  /**
-   * Runtime defaults act as fallbacks for when a prop isn't passed in.
-   *
-   * @example
-   * ```
-   * const props = {
-   *   borderInlineStartColor: 'red',
-   * }
-   *
-   * // runtime default of 1px border when a border color is set
-   * if (props.borderInlineStartColor) {
-   *   defaults.borderInlineStartWidth = 1
-   * }
-   *
-   * convertStylePropsToCSSProperties(props, defaults)
-   * // {
-   * //   borderInlineStartColor: 'red',
-   * //   borderInlineStartWidth: '1',
-   * // }
-   * ```
-   *
-   * @example
-   * ```
-   * const props = {
-   *   borderInlineStartColor: 'red',
-   *   borderInlineStartWidth: {sm: 3}
-   * }
-   *
-   * // runtime default of 1px border when a border color is set
-   * if (props.borderInlineStartColor) {
-   *   defaults.borderInlineStartWidth = {xs: 1, md: 2};
-   * }
-   *
-   * convertStylePropsToCSSProperties(props, defaults)
-   * // {
-   * //   borderInlineStartColor: 'red',
-   * //   borderInlineStartWidth: 'var(--_md-on, 2) var(--_md-off, var(--_sm-on, 3) var(--_sm-off, 1))',
-   * // }
-   * ```
-   *
-   * @example
-   * ```
-   * const props = {
-   *   borderInlineStartColor: 'red',
-   *   _hover: {
-   *     borderInlineStartWidth: {sm: 3}
-   *   }
-   * }
-   *
-   * // runtime default of 1px border when a border color is set
-   * if (props.borderInlineStartColor) {
-   *   defaults.borderInlineStartWidth = {xs: 1, md: 2};
-   * }
-   *
-   * convertStylePropsToCSSProperties(props, defaults)
-   * // {
-   * //   borderInlineStartColor: 'red',
-   * //   borderInlineStartWidth: 'var(--__hover-on, var(--_sm-on, 3)) var(--__hover-off, var(--_md-on, 2) (--_md-off, var(--_sm-on, 3) var(--_sm-off, 1)))',
-   * // }
-   * ```
-   */
-  runtimeDefaults: PropDefaults,
+  lastIsWeakMerged: boolean,
   valueMapper: ValueMapper,
   parent:
     | Constant.ModifierParent
@@ -508,53 +542,33 @@ function convert(
   const parentIsResponsiveDeclaration = parent === Constant.DeclarationParent;
   const parentIsPseudoElement = parent === Constant.PseudoElementParent;
 
-  const runtimeProperties: DeclarationAccumulator = {};
-  const globalDefaultProperties: DeclarationAccumulator = {};
-
-  // Will set `undefined` or `null` to the identity object
-  /* eslint-disable no-param-reassign */
-  styleProps ??= identityObject;
-  runtimeDefaults ??= identityObject;
-  globalDefaults ??= identityObject;
-  /* eslint-enable no-param-reassign */
-
-  const allStyleProps: [
-    [typeof styleProps, (keyof typeof styleProps)[]],
-    [typeof runtimeDefaults, (keyof typeof runtimeDefaults)[]],
-    [typeof globalDefaults, (keyof typeof globalDefaults)[]],
-  ] = [
-    [styleProps, Object.keys(styleProps) as (keyof typeof styleProps)[]],
-    [
-      runtimeDefaults,
-      Object.keys(runtimeDefaults) as (keyof typeof runtimeDefaults)[],
-    ],
-    [
-      globalDefaults,
-      Object.keys(globalDefaults) as (keyof typeof globalDefaults)[],
-    ],
-  ];
+  const mergedProperties: DeclarationAccumulator = {};
+  const weakProperties: DeclarationAccumulator = {};
+  const lastStyleObjIndex = stylePropsObjs.length - 1;
 
   // An O(n) recursive algorithm converting the given set of style prop objects
-  // into a valid CSS style object. It:
+  // into a valid CSS style object.
+  // It:
   // 1. Merges the objects.
   //    - Earlier objects overwrite values of later ones.
+  //    - Primitive values are expanded to {xs: <value>} to ensure deep merge
+  //      works as expected
   // 2. Expands aliases to their concrete properties.
   //    - Earlier aliases overwrite values of later ones (as per config order)
-  //    -
-  // objects merging then converting them into a
   for (
     let whichStyleObj = 0;
-    whichStyleObj < allStyleProps.length;
+    whichStyleObj < stylePropsObjs.length;
     whichStyleObj++
   ) {
-    const [obj, objKeys] = allStyleProps[whichStyleObj];
+    const styleObj = stylePropsObjs[whichStyleObj];
+    const styleProps = Object.keys(styleObj) as (keyof typeof styleObj)[];
     // Can't use a for..of here because we're modifying the array mid-loop, but
     // the iterator returned by for..of will not include items pushed onto the
     // array.
-    // eslint-disable-next-line @typescript-eslint/prefer-for-of
-    for (let i = 0; i < objKeys.length; i++) {
-      const prop = objKeys[i];
-      const value = obj[prop];
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of, no-labels
+    stylePropLoop: for (let i = 0; i < styleProps.length; i++) {
+      const prop = styleProps[i];
+      const value = styleObj[prop];
 
       // Ignore null/undefined values
       if (value == null) {
@@ -562,21 +576,24 @@ function convert(
       }
 
       // This is an alias
-      if (inverseAliases[prop as Aliases]) {
+      const aliases = inverseAliases[prop as Aliases];
+      if (aliases) {
         // It expands into one or more properties, so iterate over each of them
-        inverseAliases[prop as Aliases].forEach((target) => {
+        // eslint-disable-next-line @typescript-eslint/prefer-for-of
+        for (let alias = 0; alias < aliases.length; alias++) {
+          const target = aliases[alias];
           // If the target property doesn't have a value set, set it now.
           // Otherwise if it has a value already, skip it since existing values
           // are more specific and take precedence over aliases.
-          if (obj[target] == null) {
+          if (styleObj[target] == null) {
             // TODO: This mutates the input object, should we clone it?
-            obj[target] = value;
+            styleObj[target] = value;
             // Inject the key into the object keys array ready to be iterated next
-            objKeys.push(target);
+            styleProps.push(target);
           }
-        });
+        }
 
-        // Ignore this property, but continue to process the now-resolve
+        // Ignore this property, but continue to process the now-resolved
         // properties
         // NOTE: The alias is now unused, but we don't bother deleting it - the
         // garbage collector will handle it later, and since we're doing a
@@ -589,34 +606,22 @@ function convert(
 
       // Ensure the property doesn't exist in an earlier object (ie; don't try to
       // overwrite).
-      // TODO: This unnecessarily iterates over all objects. Is there a way to
-      // iterate over only those that satisfy `index < whichObj`?
-      if (
-        allStyleProps.some(
-          (obj, index) => index < whichStyleObj && obj[0][prop] != null,
-        )
-      ) {
-        continue;
+      for (let prevStyleObj = 0; prevStyleObj < whichStyleObj; prevStyleObj++) {
+        if (stylePropsObjs[prevStyleObj][prop] != null) {
+          // Continue the outer loop by jumping to the label
+          // eslint-disable-next-line no-labels
+          continue stylePropLoop;
+        }
       }
 
       // Now we can process this value
-      let stylePropValue = styleProps[prop];
-      let runtimeDefaultValue = runtimeDefaults[prop];
-      let globalDefaultValue = globalDefaults[prop];
-      const stylePropHasValue = stylePropValue != null;
-      const runtimeDefaultHasValue = runtimeDefaultValue != null;
-      const globalDefaultHasValue = globalDefaultValue != null;
-
-      const isRuntimeDefaultProp = !stylePropHasValue && runtimeDefaultHasValue;
-      const isGlobalDefaultProp = !stylePropHasValue && !isRuntimeDefaultProp;
-
       const propIsBreakpoint = hasOwn(breakpoints, prop);
       const propIsModifier = !propIsBreakpoint && hasOwn(modifiers, prop);
       const propIsPseudoElement =
         !propIsBreakpoint && !propIsModifier && hasOwn(pseudoElements, prop);
       const propIsDeclaration =
         !propIsBreakpoint && !propIsModifier && !propIsPseudoElement;
-      const valueIsObject = isObject(value);
+      const valueIsObject = typeof value === 'object';
       // TODO: How to narrow 'prop' here?
       const propPath: PropPath = [...parentPropPath, prop as PropPathValues];
 
@@ -626,10 +631,12 @@ function convert(
       // Ignore null & undefined values
       // Optimisation: When an explicit 'unset' is passed in, we might be able
       // to simply not return anything ('unset' is the browser's default). Except
-      // when there's a matching global default set; that'll still exist in the
-      // generate .css file, so we have to ensure we override that explicitly
-      // with 'unset'.
-      if (stylePropHasValue && !globalDefaultHasValue && value === 'unset') {
+      // when there's a matching weak value set; we don't yet know if the value
+      // can merged further up the tree.
+      if (
+        value === 'unset' &&
+        (!lastIsWeakMerged || stylePropsObjs[lastStyleObjIndex][prop] == null)
+      ) {
         continue;
       }
 
@@ -708,12 +715,13 @@ function convert(
         continue;
       }
 
-      // global defaults are only merged in if there's an equivalent runtime
+      // Weak style props are only merged in if there's an equivalent strong
       // property somewhere in the style props, so we need to keep them seperate
       // while we're recursing and only merge them as the style prop is detected
-      const properties = isGlobalDefaultProp
-        ? globalDefaultProperties
-        : runtimeProperties;
+      const properties =
+        lastIsWeakMerged && whichStyleObj === lastStyleObjIndex
+          ? weakProperties
+          : mergedProperties;
 
       // Process a non-object concrete value.
       // Eg; {color: 'red'}
@@ -726,9 +734,10 @@ function convert(
         const declaration = parentPropPath.at(-1) as keyof ResponsiveStyleProps;
 
         // Global defaults get mapped earlier in the process
-        const mappedValue = isGlobalDefaultProp
-          ? value
-          : valueMapper(value, declaration, propPath);
+        const mappedValue =
+          lastIsWeakMerged && whichStyleObj === lastStyleObjIndex
+            ? value
+            : valueMapper(value, declaration, propPath);
 
         // Since Typescript doesn't have negation types (`string & not 'inherit'`),
         // we need to do a runtime check for invalid values because some of the
@@ -754,83 +763,80 @@ function convert(
           mappedValue,
         );
       } else {
-        // Normalize declarations to responsive object format
-        // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
-        if (propIsDeclaration) {
-          if (stylePropHasValue && !isObject(stylePropValue)) {
-            stylePropValue = {[defaultBreakpointKey]: stylePropValue};
-          }
-          // Also normalize the defaults so we can do a correct recursive merge
-          if (runtimeDefaultHasValue && !isObject(runtimeDefaultValue)) {
-            runtimeDefaultValue = {[defaultBreakpointKey]: runtimeDefaultValue};
-          }
-          if (globalDefaultHasValue && !isObject(globalDefaultValue)) {
-            globalDefaultValue = {[defaultBreakpointKey]: globalDefaultValue};
-          }
-        }
-
-        const [nestedRuntimeProperties, nestedGlobalDefaultProperties] =
-          convert(
-            // TODO: How do I fix this?
-            stylePropValue as typeof styleProps,
-            globalDefaultValue,
-            runtimeDefaultValue,
-            valueMapper,
-            /* eslint-disable no-nested-ternary -- It's terse & readable */
-            propIsModifier
-              ? Constant.ModifierParent
-              : propIsBreakpoint
-              ? Constant.DeclarationParent
-              : propIsPseudoElement
-              ? Constant.PseudoElementParent
-              : Constant.DeclarationParent,
-            /* eslint-enable no-nested-ternary */
-            propPath,
-            // Switch to the relevant pseudo element if encountered
-            // TODO: How to narrow the type of `prop` here?
-            propIsPseudoElement ? (prop as Elements) : whichElement,
-          );
-
-        // TODO: Move this out of the loop
-        function propertyIterator(whichProperties, nestedElement, values) {
-          // Merge each delcaration into the property object for this iteration.
-          // Later, these values will get turned into strings
-          values &&
-            (Object.entries(values) as Entries<typeof values>).forEach(
-              ([declaration, value]) => {
-                value != null &&
-                  insertIntoProperties(
-                    whichProperties,
-                    nestedElement,
-                    declaration as keyof Properties,
-                    // TODO: How do we narrow `prop`'s type here?
-                    propIsModifier
-                      ? // Ie; it's _hover, _active, etc
-                        (prop as CascadeOrderKeys)
-                      : defaultBreakpointKey,
-                    value,
-                  );
-              },
+        // For this and following style objects, gather up the ones that have
+        // values so we can recurse with them.
+        // key
+        let lastIsWeakMergedForRecursion = lastIsWeakMerged;
+        const stylePropObjsForRecursion: typeof stylePropsObjs = [];
+        for (
+          let otherStyleObj = whichStyleObj;
+          otherStyleObj < stylePropsObjs.length;
+          otherStyleObj++
+        ) {
+          const otherObjsValue = stylePropsObjs[otherStyleObj][prop];
+          if (otherObjsValue != null) {
+            stylePropObjsForRecursion.push(
+              // Normalize declarations to responsive object format
+              // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
+              propIsDeclaration && typeof otherObjsValue !== 'object'
+                ? {[defaultBreakpointKey]: otherObjsValue}
+                : otherObjsValue,
             );
+          } else if (otherStyleObj === lastStyleObjIndex) {
+            lastIsWeakMergedForRecursion = false;
+          }
         }
+
+        const [nestedMergedProperties, nestedWeakProperties] = convert(
+          stylePropObjsForRecursion,
+          lastIsWeakMergedForRecursion,
+          valueMapper,
+          /* eslint-disable no-nested-ternary -- It's terse & readable */
+          propIsModifier
+            ? Constant.ModifierParent
+            : propIsBreakpoint
+            ? Constant.DeclarationParent
+            : propIsPseudoElement
+            ? Constant.PseudoElementParent
+            : Constant.DeclarationParent,
+          /* eslint-enable no-nested-ternary */
+          propPath,
+          // Switch to the relevant pseudo element if encountered
+          // TODO: How to narrow the type of `prop` here?
+          propIsPseudoElement ? (prop as Elements) : whichElement,
+        );
 
         // Now that we've got the result of recursing, we need to inject these
         // values into the individual properties we know about so far.
         // For the root element, and the pseudo elements
         (
-          Object.entries(nestedRuntimeProperties) as Entries<
-            typeof nestedRuntimeProperties
-          >
-        ).forEach(([nestedElement, values]) => {
-          propertyIterator(runtimeProperties, nestedElement, values);
+          Object.keys(
+            nestedMergedProperties,
+          ) as (keyof typeof nestedMergedProperties)[]
+        ).forEach((nestedElement) => {
+          propertyIterator(
+            mergedProperties,
+            nestedElement,
+            nestedMergedProperties[nestedElement],
+            // TODO: How do we narrow `prop`'s type here?
+            // Ie; it's _hover, _active, etc
+            propIsModifier ? (prop as CascadeOrderKeys) : defaultBreakpointKey,
+          );
         });
 
         (
-          Object.entries(nestedGlobalDefaultProperties) as Entries<
-            typeof nestedGlobalDefaultProperties
-          >
-        ).forEach(([nestedElement, values]) => {
-          propertyIterator(globalDefaultProperties, nestedElement, values);
+          Object.keys(
+            nestedWeakProperties,
+          ) as (keyof typeof nestedWeakProperties)[]
+        ).forEach((nestedElement) => {
+          propertyIterator(
+            weakProperties,
+            nestedElement,
+            nestedWeakProperties[nestedElement],
+            // TODO: How do we narrow `prop`'s type here?
+            // Ie; it's _hover, _active, etc
+            propIsModifier ? (prop as CascadeOrderKeys) : defaultBreakpointKey,
+          );
         });
       }
     }
@@ -842,36 +848,36 @@ function convert(
   // TODO: Is there a more efficient way of doing this without having to loop
   // over the entire globalDefaultProperties object every time? Maybe move it
   // into the above loop which is already going over the objects?
-  (
-    Object.entries(globalDefaultProperties) as Entries<
-      typeof globalDefaultProperties
-    >
-  ).forEach(([whichGlobalDefaultElement, declarations]) => {
-    declarations &&
-      (Object.entries(declarations) as Entries<typeof declarations>).forEach(
-        ([key, declarationConditions]) => {
-          const runtimeDeclaration =
-            runtimeProperties[whichGlobalDefaultElement]?.[key];
-          if (runtimeDeclaration) {
-            // merge the cascade-ordered declarations of the global default back
-            // into the runtime declaration
-            declarationConditions &&
-              declarationConditions.forEach((condition, cascadeIndex) => {
-                // Only set the runtime value if it's not already set (ie;
-                // runtime values override global defaults)
-                runtimeDeclaration[cascadeIndex] ??= condition;
-              });
+  (Object.keys(weakProperties) as (keyof typeof weakProperties)[]).forEach(
+    (whichGlobalDefaultElement) => {
+      const declarations = weakProperties[whichGlobalDefaultElement];
+      declarations &&
+        (Object.keys(declarations) as (keyof typeof declarations)[]).forEach(
+          (key) => {
+            const declarationConditions = declarations[key];
+            const runtimeDeclaration =
+              mergedProperties[whichGlobalDefaultElement]?.[key];
+            if (runtimeDeclaration) {
+              // merge the cascade-ordered declarations of the global default back
+              // into the runtime declaration
+              declarationConditions &&
+                declarationConditions.forEach((condition, cascadeIndex) => {
+                  // Only set the runtime value if it's not already set (ie;
+                  // runtime values override global defaults)
+                  runtimeDeclaration[cascadeIndex] ??= condition;
+                });
 
-            // Now that it's merged, delete it so it doesn't get merged again
-            // later
-            delete declarations[key];
-          }
-        },
-      );
-  });
+              // Now that it's merged, delete it so it doesn't get merged again
+              // later
+              delete declarations[key];
+            }
+          },
+        );
+    },
+  );
 
   return [
-    mapObjectValues(runtimeProperties, spaceHackStringifier),
-    mapObjectValues(globalDefaultProperties, spaceHackStringifier),
+    mutateObjectValues(mergedProperties, spaceHackStringifier),
+    mutateObjectValues(weakProperties, spaceHackStringifier),
   ];
 }
