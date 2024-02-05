@@ -34,6 +34,9 @@
  *
  * `for` requires no iterators, does simple property access, and has no function
  * creation/execution requirements.
+ *
+ * One exception: Iterating sparse arrays is faster with `.forEach()`:
+ *https://jsbench.me/culs8itbov/1
  */
 
 import invariant from 'tiny-invariant';
@@ -150,6 +153,9 @@ const enum Constant {
   DeclarationParent,
   PseudoElementParent,
 }
+
+const elements = Object.keys(pseudoElements) as Elements[];
+elements.push(Constant.RootElement);
 
 type CascadeOrderKeys = keyof typeof breakpoints | keyof typeof modifiers;
 
@@ -419,13 +425,16 @@ export function convertCSSPropertiesToStyleSheet(
 function propertyIterator(
   whichProperties: DeclarationAccumulator,
   nestedElement: keyof ConvertResult,
-  values: ConvertResult[keyof ConvertResult],
   condition: CascadeOrderKeys,
+  values?: ConvertResult[keyof ConvertResult],
 ) {
-  // Merge each delcaration into the property object for this iteration.
-  // Later, these values will get turned into strings
-  values &&
-    (Object.keys(values) as (keyof typeof values)[]).forEach((declaration) => {
+  if (values) {
+    const declarations = Object.keys(values) as (keyof typeof values)[];
+    // Merge each delcaration into the property object for this iteration.
+    // Later, these values will get turned into strings
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < declarations.length; i++) {
+      const declaration = declarations[i];
       values[declaration] != null &&
         insertIntoProperties(
           whichProperties,
@@ -434,7 +443,8 @@ function propertyIterator(
           condition,
           values[declaration],
         );
-    });
+    }
+  }
 }
 
 // TODO: Can I represent this as nested tuples?
@@ -454,6 +464,7 @@ function spaceHackStringifier(
 ) {
   return elements
     ? mutateObjectValues(elements, (values) =>
+        // Iterating a sparse array with .reduce is faster than a for() loop
         values == null
           ? ''
           : values.reduce(
@@ -803,44 +814,39 @@ function convert(
           propIsPseudoElement ? (prop as Elements) : whichElement,
         );
 
+        // TODO: How do we narrow `prop`'s type here?
+        // Ie; it's _hover, _active, etc
+        const condition = propIsModifier
+          ? (prop as CascadeOrderKeys)
+          : defaultBreakpointKey;
+
         // Now that we've got the result of recursing, we need to inject these
         // values into the individual properties we know about so far.
-        // For the root element, and the pseudo elements
-        (
-          Object.keys(
-            nestedMergedProperties,
-          ) as (keyof typeof nestedMergedProperties)[]
-        ).forEach((nestedElement) => {
+        // For the root element, and the pseudo elements.
+        // eslint-disable-next-line @typescript-eslint/prefer-for-of
+        for (let i = 0; i < elements.length; i++) {
+          const element = elements[i];
           propertyIterator(
             mergedProperties,
-            nestedElement,
-            nestedMergedProperties[nestedElement],
-            // TODO: How do we narrow `prop`'s type here?
-            // Ie; it's _hover, _active, etc
-            propIsModifier ? (prop as CascadeOrderKeys) : defaultBreakpointKey,
+            element,
+            condition,
+            nestedMergedProperties[element],
           );
-        });
 
-        if (lastIsWeakMergedForRecursion) {
-          (
-            Object.keys(
-              nestedWeakProperties,
-            ) as (keyof typeof nestedWeakProperties)[]
-          ).forEach((nestedElement) => {
+          if (lastIsWeakMergedForRecursion) {
             propertyIterator(
               weakProperties,
-              nestedElement,
-              nestedWeakProperties[nestedElement],
-              // TODO: How do we narrow `prop`'s type here?
-              // Ie; it's _hover, _active, etc
-              propIsModifier
-                ? (prop as CascadeOrderKeys)
-                : defaultBreakpointKey,
+              element,
+              condition,
+              nestedWeakProperties[element],
             );
-          });
+          }
         }
       }
     }
+
+    // if (lastIsWeakMerged && whichStyleObj === lastStyleObjIndex) {
+    // }
   }
 
   if (lastIsWeakMerged) {
@@ -850,33 +856,38 @@ function convert(
     // TODO: Is there a more efficient way of doing this without having to loop
     // over the entire globalDefaultProperties object every time? Maybe move it
     // into the above loop which is already going over the objects?
-    (Object.keys(weakProperties) as (keyof typeof weakProperties)[]).forEach(
-      (whichGlobalDefaultElement) => {
-        const declarations = weakProperties[whichGlobalDefaultElement];
-        declarations &&
-          (Object.keys(declarations) as (keyof typeof declarations)[]).forEach(
-            (key) => {
-              const declarationConditions = declarations[key];
-              const runtimeDeclaration =
-                mergedProperties[whichGlobalDefaultElement]?.[key];
-              if (runtimeDeclaration) {
-                // merge the cascade-ordered declarations of the global default back
-                // into the runtime declaration
-                declarationConditions &&
-                  declarationConditions.forEach((condition, cascadeIndex) => {
-                    // Only set the runtime value if it's not already set (ie;
-                    // runtime values override global defaults)
-                    runtimeDeclaration[cascadeIndex] ??= condition;
-                  });
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      const declarations = weakProperties[element];
+      if (declarations) {
+        const declarationKeys = Object.keys(
+          declarations,
+        ) as (keyof typeof declarations)[];
+        // eslint-disable-next-line @typescript-eslint/prefer-for-of
+        for (let x = 0; x < declarationKeys.length; x++) {
+          const key = declarationKeys[x];
+          const declarationConditions = declarations[key];
+          const runtimeDeclaration = mergedProperties[element]?.[key];
+          if (runtimeDeclaration) {
+            // merge the cascade-ordered declarations of the weak properties back
+            // into the strong property's declaration
+            if (declarationConditions) {
+              // Iterating a sparse array with .forEach is faster than a for() loop
+              declarationConditions.forEach((condition, cascadeIndex) => {
+                // Only set the runtime value if it's not already set (ie;
+                // runtime values override global defaults)
+                runtimeDeclaration[cascadeIndex] ??= condition;
+              });
+            }
 
-                // Now that it's merged, delete it so it doesn't get merged again
-                // later
-                delete declarations[key];
-              }
-            },
-          );
-      },
-    );
+            // Now that it's merged, delete it so it doesn't get merged again
+            // later
+            delete declarations[key];
+          }
+        }
+      }
+    }
   }
 
   return [
