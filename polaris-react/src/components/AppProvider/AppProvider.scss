@@ -46,7 +46,7 @@ html {
     background-clip: content-box;
   }
   scrollbar-width: thin;
-  scrollbar-color: var(--p-color-scrollbar-thumb-bg) var(--p-color-bg);
+  scrollbar-color: transparent var(--p-color-bg);
   transition: scrollbar-color var(--p-motion-duration-100)
     var(--p-motion-ease-in);
 
