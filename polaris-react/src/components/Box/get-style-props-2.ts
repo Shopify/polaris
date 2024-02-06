@@ -573,8 +573,8 @@ function convert(
     // array.
     // eslint-disable-next-line @typescript-eslint/prefer-for-of, no-labels
     stylePropLoop: for (let i = 0; i < styleProps.length; i++) {
-      const prop = styleProps[i];
-      const value = styleObj[prop];
+      const maybeAliasedProp = styleProps[i];
+      const value = styleObj[maybeAliasedProp];
 
       // Ignore null/undefined values
       if (value == null) {
@@ -582,7 +582,7 @@ function convert(
       }
 
       // This is an alias
-      const aliases = inverseAliases[prop as Aliases];
+      const aliases = inverseAliases[maybeAliasedProp as Aliases];
       if (aliases) {
         // It expands into one or more properties, so iterate over each of them
         // eslint-disable-next-line @typescript-eslint/prefer-for-of
@@ -615,12 +615,15 @@ function convert(
       // Ensure the property doesn't exist in an earlier object (ie; don't try to
       // overwrite).
       for (let prevStyleObj = 0; prevStyleObj < whichStyleObj; prevStyleObj++) {
-        if (stylePropsObjs[prevStyleObj][prop] != null) {
+        if (stylePropsObjs[prevStyleObj][maybeAliasedProp] != null) {
           // Continue the outer loop by jumping to the label
           // eslint-disable-next-line no-labels
           continue stylePropLoop;
         }
       }
+
+      // Now the property is guaranteed to be non-aliased
+      const prop = maybeAliasedProp as keyof Properties;
 
       // Now we can process this value
       const propIsBreakpoint = hasOwn(breakpoints, prop);
@@ -725,7 +728,11 @@ function convert(
 
       // Weak style props are only merged in if there's an equivalent strong
       // property somewhere in the style props, so we need to keep them seperate
-      // while we're recursing and only merge them as the style prop is detected
+      // while we're recursing and only merge them as the style prop is
+      // detected.
+      // Since the weak object can only be last, we know the merged properties
+      // wont have any more added, and so can choose to merge directly into that
+      // object if the property exists.
       const properties =
         lastIsWeakMerged && whichStyleObj === lastStyleObjIndex
           ? weakProperties
@@ -814,6 +821,9 @@ function convert(
           propIsPseudoElement ? (prop as Elements) : whichElement,
         );
 
+        // styleProps = { color: 'red' }
+        // weakProps = { _hover: { color: 'red' } }
+
         // TODO: How do we narrow `prop`'s type here?
         // Ie; it's _hover, _active, etc
         const condition = propIsModifier
@@ -826,27 +836,26 @@ function convert(
         // eslint-disable-next-line @typescript-eslint/prefer-for-of
         for (let i = 0; i < elements.length; i++) {
           const element = elements[i];
+
+          if (lastIsWeakMergedForRecursion) {
+            propertyIterator(
+              // May be merged properties or weak properties
+              properties,
+              element,
+              condition,
+              nestedWeakProperties[element],
+            );
+          }
+
           propertyIterator(
             mergedProperties,
             element,
             condition,
             nestedMergedProperties[element],
           );
-
-          if (lastIsWeakMergedForRecursion) {
-            propertyIterator(
-              weakProperties,
-              element,
-              condition,
-              nestedWeakProperties[element],
-            );
-          }
         }
       }
     }
-
-    // if (lastIsWeakMerged && whichStyleObj === lastStyleObjIndex) {
-    // }
   }
 
   if (lastIsWeakMerged) {
