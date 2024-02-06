@@ -6,12 +6,30 @@ import type {
   ResponsiveStylePropsWithModifiers,
   PropDefaults,
 } from '../generated-data';
-import {
-  disallowedCSSPropertyValues,
-  stylePropDefaults,
-} from '../generated-data';
+import {disallowedCSSPropertyValues} from '../generated-data';
 
-const {convert} = create();
+const createOpts: Parameters<typeof create>[0] = {
+  breakpoints: {
+    xs: '&',
+    sm: '@media screen and (min-width: 30.625rem)',
+    md: '@media screen and (min-width: 48rem)',
+    lg: '@media screen and (min-width: 65rem)',
+    xl: '@media screen and (min-width: 90rem)',
+  },
+  modifiers: {
+    _active: ':active',
+    _focus: ':focus',
+    _hover: ':hover',
+    _visited: ':visited',
+    _link: ':link',
+  },
+  pseudoElements: {
+    _before: '::before',
+    _after: '::after',
+  },
+};
+
+const {convert} = create(createOpts);
 
 type ConvertParams = Parameters<typeof convert>;
 
@@ -415,8 +433,8 @@ describe('convertStylePropsToCSSProperties', () => {
     });
 
     it('global default is inherited from generated .css file when styleProp not set', () => {
-      // NOTE: TODO: This test assumes there's a default being set in the config
-      expect(Object.keys(stylePropDefaults)).not.toHaveLength(0);
+      // Explicitly set some defaults
+      const {convert} = create({...createOpts, defaults: {color: 'red'}});
       const styleProps: ResponsiveStylePropsWithModifiers = {};
       expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
@@ -616,17 +634,19 @@ describe('convertStylePropsToCSSProperties', () => {
     });
 
     describe('global defaults', () => {
+      const globalDefaults = {
+        borderInlineStartWidth: '0',
+        borderInlineEndWidth: '0',
+        borderBlockStartWidth: '0',
+        borderBlockEndWidth: '0',
+      };
       const {convert} = create({
-        defaults: {
-          borderInlineStartWidth: '0',
-          borderInlineEndWidth: '0',
-          borderBlockStartWidth: '0',
-          borderBlockEndWidth: '0',
-        },
+        ...createOpts,
+        defaults: globalDefaults,
       });
 
       it('are deep merged', () => {
-        const defaultKeys = Object.keys(stylePropDefaults);
+        const defaultKeys = Object.keys(globalDefaults);
         expect(defaultKeys).not.toHaveLength(0);
         const styleProps: ResponsiveStylePropsWithModifiers = {
           [defaultKeys[0]]: {md: 'foo'},
@@ -636,7 +656,7 @@ describe('convertStylePropsToCSSProperties', () => {
           Object {
             "style": Object {
               "borderInlineStartWidth": "var(--_md-on,foo) var(--_md-off,${
-                stylePropDefaults[defaultKeys[0]]
+                globalDefaults[defaultKeys[0]]
               })",
             },
           }
@@ -644,7 +664,7 @@ describe('convertStylePropsToCSSProperties', () => {
       });
 
       it('a value of `unset` will remove a global default, but not apply another value', () => {
-        const defaultKeys = Object.keys(stylePropDefaults);
+        const defaultKeys = Object.keys(globalDefaults);
         expect(defaultKeys).not.toHaveLength(0);
         const styleProps: ResponsiveStylePropsWithModifiers = {
           [defaultKeys[0]]: 'unset',
@@ -661,7 +681,7 @@ describe('convertStylePropsToCSSProperties', () => {
 
       // TODO: Add a test case including modifiers and pseudo elements
       it('a value of `undefined` or `null` will NOT remove a global default', () => {
-        const defaultKeys = Object.keys(stylePropDefaults);
+        const defaultKeys = Object.keys(globalDefaults);
         expect(defaultKeys).not.toHaveLength(0);
         expect(defaultKeys).not.toHaveLength(1);
         const styleProps: ResponsiveStylePropsWithModifiers = {
@@ -768,4 +788,12 @@ describe('convertStylePropsToCSSProperties', () => {
   it.todo(
     'global defaults have their values mapped during setup, and not during runtime',
   );
+});
+
+describe('convertCSSPropertiesToStyleSheet', () => {
+  it.todo('works');
+});
+
+describe('process.env.NODE_ENV === "production"', () => {
+  it.todo('works the same as dev, but compressed');
 });

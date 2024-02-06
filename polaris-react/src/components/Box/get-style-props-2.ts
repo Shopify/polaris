@@ -45,19 +45,17 @@ import decamelize from 'decamelize';
 import type {
   ResponsiveStyleProps,
   ResponsiveStylePropsWithModifiers,
-  PropDefaults,
   ValueMapper,
   Properties,
   PropPath,
 } from './generated-data';
 import {
   disallowedCSSPropertyValues,
-  cssCustomPropertyNamespace,
+  cssCustomPropertyNamespace as namespace,
   modifiers,
   pseudoElements,
   breakpoints,
   defaultBreakpointKey,
-  stylePropDefaults as globalDefaults,
   stylePropAliasFallbacks,
 } from './generated-data';
 
@@ -88,6 +86,21 @@ type RecursiveValues<T> = Exclude<
     : never,
   undefined
 >;
+
+type Selector = string;
+
+type PseudoElementSelector =
+  | '::after'
+  | '::backdrop'
+  | '::before'
+  | '::cue'
+  | '::cue-region'
+  | '::first-letter'
+  | '::first-line'
+  | '::file-selector-button'
+  | '::marker'
+  | '::placeholder'
+  | '::selection';
 
 // type RecursiveKeys<T> = T extends object
 //   ?
@@ -166,10 +179,49 @@ const enum Constant {
   PseudoElementParent,
 }
 
+type CascadeOrderKeys = keyof typeof breakpoints | keyof typeof modifiers;
+
+type ExtractArrayValues<T extends object> = T[keyof T] extends (infer A)[]
+  ? A
+  : never;
+
+type Aliases = ExtractArrayValues<typeof stylePropAliasFallbacks>;
+
+type InvertedAliases = {
+  [key in Aliases]: (keyof typeof stylePropAliasFallbacks | Aliases)[];
+};
+
+type ModifierConfig = {[Prop: string]: Selector};
+type BreakpointConfig = {[Prop: string]: '&' | `@media ${Selector}`};
+type PseudoElementConfig = {[Prop: string]: PseudoElementSelector};
+
+const OPT_IN_MODIFIER_SET = {
+  _active: ':active',
+  _focus: ':focus',
+  _hover: ':hover',
+  _visited: ':visited',
+  _link: ':link',
+} as ModifierConfig;
+
+const OPT_IN_PSEUDO_ELEMENT_SET = {
+  _after: '::after',
+  _backdrop: '::backdrop',
+  _before: '::before',
+  _cue: '::cue',
+  _firstLetter: '::first-letter',
+  _firstLine: '::first-line',
+  _fileSelectorButton: '::file-selector-button',
+  _marker: '::marker',
+  _placeholder: '::placeholder',
+  _selection: '::selection',
+} as PseudoElementConfig;
+
+const DEFAULT_BASE_BREAKPOINT = {
+  base: '&',
+} as BreakpointConfig;
+
 const elements = Object.keys(pseudoElements) as Elements[];
 elements.push(Constant.RootElement);
-
-type CascadeOrderKeys = keyof typeof breakpoints | keyof typeof modifiers;
 
 let cascadeOrderNumber = 0;
 
@@ -188,16 +240,6 @@ for (
 ) {
   cascadeOrder[cascadeKeys[i]] = cascadeOrderNumber++;
 }
-
-type ExtractArrayValues<T extends object> = T[keyof T] extends (infer A)[]
-  ? A
-  : never;
-
-type Aliases = ExtractArrayValues<typeof stylePropAliasFallbacks>;
-
-type InvertedAliases = {
-  [key in Aliases]: (keyof typeof stylePropAliasFallbacks | Aliases)[];
-};
 
 /**
  * Leverage the ordered array of stylePropAliasFallbacks to generate a
@@ -332,29 +374,63 @@ function insertIntoProperties(
   };
 }
 
+type NestedCSSProperties = {
+  [Selector: string]: Properties & NestedCSSProperties;
+};
+
 export function convertCSSPropertiesToStyleSheet(
-  styles: Properties,
-  selector: string,
-  prettyIndent?: number,
+  /**
+   * An object where keys are selectors, and values are individual CSS
+   * properties (including CSS Custom Properties).
+   */
+  styles: NestedCSSProperties,
+  /**
+   * Any value will pretty print the output, otherwise it will be compressed.
+   *
+   * @default process.env.NODE_ENV === 'production' ? undefined : 2
+   */
+  prettyIndent: number | undefined = process.env.NODE_ENV === 'production'
+    ? undefined
+    : 2,
+  indentLevel = 1,
 ) {
-  return `${selector}{${(Object.keys(styles) as (keyof Properties)[])
-    .reduce((acc, cssProperty) => {
-      acc.push(
-        `${
-          // Leave Custom Properties alone but all other CSS Properties need
-          // to be converted to valid CSS
-          cssProperty.startsWith('--')
-            ? cssProperty
-            : decamelize(cssProperty, {separator: '-'})
-        }: ${styles[cssProperty]};`,
-      );
-      return acc;
-    }, [] as string[])
+  return Object.keys(styles)
+    .map((selector) => {
+      return `${selector}{${(Object.keys(styles) as (keyof Properties)[])
+        .reduce((acc, cssProperty) => {
+          if (typeof cssProperty === 'object') {
+            acc.push(
+              convertCSSPropertiesToStyleSheet(
+                cssProperty,
+                prettyIndent,
+                indentLevel + 1,
+              ),
+            );
+          } else {
+            acc.push(
+              `${
+                // Leave Custom Properties alone but all other CSS Properties need
+                // to be converted to valid CSS
+                cssProperty.startsWith('--')
+                  ? cssProperty
+                  : decamelize(cssProperty, {separator: '-'})
+              }: ${styles[cssProperty]};`,
+            );
+          }
+          return acc;
+        }, [] as string[])
+        .join(
+          // Double indent since it's inside the selector
+          typeof prettyIndent !== 'undefined'
+            ? `\n${' '.repeat((indentLevel + 1) * prettyIndent)}`
+            : '',
+        )}}`;
+    })
     .join(
       typeof prettyIndent !== 'undefined'
-        ? `\n${' '.repeat(prettyIndent)}`
+        ? `\n${' '.repeat(indentLevel * prettyIndent)}`
         : '',
-    )}}`;
+    );
 }
 
 function propertyIterator(
@@ -405,9 +481,9 @@ function spaceHackStringifier(
           : values.reduce(
               (output, {value, condition}) =>
                 condition
-                  ? `var(--${cssCustomPropertyNamespace}${condition}-on,${value})${
+                  ? `var(--${namespace}${condition}-on,${value})${
                       output
-                        ? ` var(--${cssCustomPropertyNamespace}${condition}-off,${output})`
+                        ? ` var(--${namespace}${condition}-off,${output})`
                         : ''
                     }`
                   : `${value}`,
@@ -417,20 +493,347 @@ function spaceHackStringifier(
     : undefined;
 }
 
-export function create({
-  defaults: globalDefaults,
-  valueMapper: globalValueMapper = identity,
-}: {
+function processOptions({
+  valueMapper,
+  pseudoElements,
+  modifiers,
+  breakpoints,
+  ...rest
+}: CreateOptions) {
+  if (!valueMapper) {
+    // eslint-disable-next-line no-param-reassign
+    valueMapper = identity;
+  }
+
+  if (pseudoElements === true) {
+    // eslint-disable-next-line no-param-reassign
+    pseudoElements = OPT_IN_PSEUDO_ELEMENT_SET;
+  } else if (!pseudoElements) {
+    // eslint-disable-next-line no-param-reassign
+    pseudoElements = {};
+  }
+
+  if (modifiers === true) {
+    // eslint-disable-next-line no-param-reassign
+    modifiers = OPT_IN_MODIFIER_SET;
+  } else if (!modifiers) {
+    // eslint-disable-next-line no-param-reassign
+    modifiers = {};
+  }
+
+  if (breakpoints) {
+    const breakpointKeys = Object.keys(
+      breakpoints,
+    ) as (keyof typeof breakpoints)[];
+    const baseKeyIndex = breakpointKeys.findIndex(
+      (key) => breakpoints[key].trim() === '&',
+    );
+    // Ensure there is a "base" selector for breakpoints
+    if (baseKeyIndex === -1) {
+      // eslint-disable-next-line no-param-reassign
+      breakpoints = {
+        // Object key order is important, and this one must come first
+        // TODO: This assumes mobile-first. Support desktop-first?
+        ...DEFAULT_BASE_BREAKPOINT,
+        ...breakpoints,
+      };
+    } else if (baseKeyIndex !== 0) {
+      // Reorder the keys so the "base" is first
+      // eslint-disable-next-line no-param-reassign
+      breakpoints = {
+        // TODO: Why do I need this type assertion?
+        [breakpointKeys[baseKeyIndex]]:
+          '&' as BreakpointConfig[keyof BreakpointConfig],
+        ...breakpoints,
+      };
+
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(
+          `Breakpoints must be ordered mobile-first. The "base" breakpoint (${breakpointKeys[baseKeyIndex]}) has been moved to the first position. You should fix this.`,
+        );
+      }
+    }
+  } else {
+    // eslint-disable-next-line no-param-reassign
+    breakpoints = DEFAULT_BASE_BREAKPOINT;
+  }
+
+  return {pseudoElements, modifiers, breakpoints, valueMapper, ...rest};
+}
+
+type CreateOptions = {
+  /**
+   * Global defaults injected into the returned stylesheet.
+   *
+   * Will only appear in converted style output when a matching property is
+   * passed in, otherwise the defaults will cascade in from the stylesheet.
+   *
+   * @example
+   * const {stylesheet, convert} = create({
+   *   defaults: {
+   *     color: 'red',
+   *   }
+   * });
+   *
+   * convert({
+   *   display: 'flex',
+   * });
+   * // =>
+   * // `color` isn't returned since it's already in `stylesheet`
+   * // {
+   * //   display: 'flex',
+   * // }
+   *
+   * @example
+   * const {stylesheet, convert} = create({
+   *   defaults: {
+   *     color: 'red',
+   *   }
+   * });
+   *
+   * convert({
+   *   _hover: {
+   *     color: 'blue'
+   *   }
+   * });
+   * // =>
+   * // Includes 'red' because the `color` property in the style attribute will
+   * // overwrite the same property in the stylesheet.
+   * // {
+   * //   color: 'var(--_hover-on,blue) var(--_hover-off,red)'
+   * // }
+   *
+   * @example
+   * const {stylesheet, convert} = create({
+   *   modifiers: {
+   *     _focus: ':focus',
+   *   },
+   *   defaults: {
+   *    // Hotpink outline when focused
+   *     _focus: {
+   *       outlineColor: 'hotpink',
+   *       outlineStyle: 'solid',
+   *       outlineWidth: '2px'
+   *     }
+   *   }
+   * });
+   *
+   * convert({
+   *   _focus: {
+   *     // tone down the outline color in this one case
+   *     outlineColor: 'rebeccapurple'
+   *   }
+   * });
+   * // =>
+   * // `outline-color` is explicitly set to `rebeccapurple`, and will not
+   * // fallback to the default of `hotpink`.
+   * // `outline-style` and `outline-width` will still apply
+   * // {
+   * //   outlineColor: 'var(--_focus-on,rebeccapurple)'
+   * // }
+   */
   defaults?: ResponsiveStylePropsWithModifiers;
+  /**
+   * A mobile-first list of breakpoint aliases mapped to their media queries.
+   *
+   * The order breakpoints are defined in is the order of their specificity
+   * (most specific first), regardless of the CSS specificity of the media
+   * query.
+   *
+   * The special selector `&` means "no media query" and must come first in the
+   * object. If not set, it will be injected for you with the alias `base`.
+   */
+  breakpoints?: BreakpointConfig;
+  /**
+   * Modifiers are combined with a generated class name to form a selector used
+   * for applying style rules.
+   *
+   * The order modifiers are defined in is the order of their specificity (most
+   * specific first), regardless of the CSS specificity of the selector.
+   *
+   * Any `&` will be replaced with the generated class name.
+   *
+   * Modifiers without a `&` will be automatically prefixed with `&`.
+   *
+   * `true` to opt into a default set of modifiers.
+   *
+   * TODO: This comment belongs on the React component.
+   * Note: When used with pseudo elements, some selectors may not behave as
+   * expected such as `::first-child`. This is because pseudo element use will
+   * inject a <style> tag as the element's first child
+   *
+   * @example
+   * {
+   *   _hover: '::hover',
+   *   _groupHover: '[role="group"]::hover &',
+   *   _sibling: '& + &',
+   * }
+   */
+  modifiers?: true | ModifierConfig;
+  /**
+   * `true` to opt into a default set of pseudo elements.
+   */
+  pseudoElements?: true | PseudoElementConfig;
   valueMapper?: ValueMapper;
-} = {}): {
-  globalStyles: string;
+};
+
+export function create(options: CreateOptions = {}): {
+  stylesheet: string;
   convert: ConvertStylePropsToCSSProperties;
 } {
-  const convert: ConvertStylePropsToCSSProperties = function (
-    styleProps,
-    {defaults: runtimeDefaults, valueMapper = globalValueMapper} = {},
-  ) {
+  const className = '.Box';
+  // No global defautls to start
+  let globalDefaults: ResponsiveStylePropsWithModifiers | undefined;
+
+  const stylesWithSelectors: NestedCSSProperties = {};
+
+  const {
+    defaults,
+    breakpoints,
+    modifiers,
+    pseudoElements,
+    valueMapper: globalValueMapper,
+  } = processOptions(options);
+
+  // Process the defaults once to inject into the global styles string
+  if (defaults) {
+    const {style, ...pseudoStyles}: Partial<ConversionResult> =
+      convert(defaults);
+
+    if (style) {
+      stylesWithSelectors[className] = style;
+    }
+    //
+    const pseudoDefaultKeys = Object.keys(
+      pseudoStyles,
+    ) as (keyof typeof pseudoStyles)[];
+
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < pseudoDefaultKeys.length; i++) {
+      const pseudoKey = pseudoDefaultKeys[i];
+      const pseudoValue = pseudoStyles[pseudoKey]?.style;
+      if (pseudoValue) {
+        // TODO: Fix this. It's not undefined by design, but TS doesn't know
+        // that yet.
+        const pseudoSelector = pseudoElements[pseudoKey].replace(
+          '&',
+          className,
+        );
+        stylesWithSelectors[pseudoSelector] = pseudoValue;
+      }
+    }
+  }
+
+  stylesWithSelectors[className] ??= {};
+
+  // See: https://github.com/propjockey/css-media-vars/blob/master/css-media-vars.css
+  // Setting up the default state of the CSS space hack:
+  // 'initial' = enabled
+  // ' ' (space) = disabled
+  // A space is a valid value in CSS (so wont trigger the `var()` fallback), but
+  // is ignored when the browser is consuming tokens to figure out the final
+  // value of the declaration.
+  //
+  // For example:
+  // ```
+  // {
+  //   color: { xs: 'green', sm: 'red', lg: 'blue' }
+  // }
+  // ```
+  // becomes:
+  // ```
+  // {
+  //   // NOTE: order is important here. We're using mobile-first breakpoints,
+  //   // so we check the largest (ie; most specific) ones first.
+  //   color: 'var(--_lg-on, blue) var(--_lg-off, var(--_sm-on, red) var(--_sm-off, green))'
+  // }
+  // ```
+  //
+  // A more complex example:
+  // ```
+  // {
+  //   color: { xs: 'green', sm: 'red' },
+  //   _hover: {
+  //     color: { sm: 'blue', lg: 'orange' }
+  //   },
+  //   _active: {
+  //     color: 'rebeccapurple'
+  //   }
+  // }
+  // ```
+  // becomes:
+  // ```
+  // {
+  //   color: 'var(--_active-on, rebeccapurple) var(--_active_off, var(--_hover-on, var(--_sm-on, blue) var(--_sm-off, var(--_lg-on, orange))) var(--_hover-off, var(--_sm-on, red) var(--_sm-off, green)))'
+  // }
+  // ```
+  // NOTE: We don't need to set any pseudo elements here as they'll be given their
+  // own unique classname & selector within an inline <style> tag at runtime.
+  Object.entries({...modifiers, ...breakpoints})
+    .filter(
+      // A bare '&' has a special meaning; it's an alias for the 'base' styles
+      // when no media query applies.
+      ([, selector]) => selector.trim() !== '&',
+    )
+    .forEach(([name, selector]) => {
+      const nonMatchingState = {
+        [`--${namespace}${name}-on`]: ' ',
+        [`--${namespace}${name}-off`]: 'initial',
+      };
+
+      const matchingState = {
+        [`--${namespace}${name}-on`]: 'initial',
+        [`--${namespace}${name}-off`]: ' ',
+      };
+
+      let expandedSelector = selector.trim();
+
+      // All toggles start in the "non matching" state
+      stylesWithSelectors[className] = {
+        ...stylesWithSelectors[className],
+        ...nonMatchingState,
+      };
+
+      // When a selector matches, they go into the "matching" state
+      if (expandedSelector.startsWith('@')) {
+        stylesWithSelectors[expandedSelector] = {
+          ...stylesWithSelectors[expandedSelector],
+          [className]: {
+            ...stylesWithSelectors[expandedSelector]?.[className],
+            ...matchingState,
+          },
+        };
+      } else {
+        expandedSelector = selector.includes('&')
+          ? selector.replace('&', '.Box')
+          : `${className}${selector}`;
+        stylesWithSelectors[expandedSelector] = {
+          ...stylesWithSelectors[expandedSelector],
+          ...matchingState,
+        };
+      }
+    });
+
+  const stylesheet = convertCSSPropertiesToStyleSheet(stylesWithSelectors);
+
+  // Assign the passed-in defaults ready for subsequent calls to convert().
+  // No, we can't set this as const otherwise the call to convert() above
+  // would be trying to access `globalDefaults` before initialization.
+  // eslint-disable-next-line prefer-const
+  globalDefaults = defaults;
+
+  return {
+    stylesheet,
+    convert,
+  };
+
+  function convert(
+    styleProps: Parameters<ConvertStylePropsToCSSProperties>[0],
+    {
+      defaults: runtimeDefaults,
+      valueMapper = globalValueMapper,
+    }: Parameters<ConvertStylePropsToCSSProperties>[1] = {},
+  ): ReturnType<ConvertStylePropsToCSSProperties> {
     const styles = [styleProps];
     let lastIsWeakMerged = false;
     if (runtimeDefaults) {
@@ -497,7 +900,7 @@ export function create({
     result.style = rootStyles;
 
     return result;
-  };
+  }
 
   function convertRecursive(
     /**
@@ -932,9 +1335,4 @@ export function create({
       mutateObjectValues(weakProperties, spaceHackStringifier),
     ];
   }
-
-  return {
-    globalStyles: '',
-    convert,
-  };
 }
