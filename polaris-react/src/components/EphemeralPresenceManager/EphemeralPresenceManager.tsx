@@ -20,6 +20,7 @@ type PresenceCounter = {
 
 const defaultState = {
   tooltip: 0,
+  hovercard: 0,
 };
 
 export function EphemeralPresenceManager({
