@@ -1,5 +1,16 @@
 # Changelog
 
+## 12.13.0
+
+### Minor Changes
+
+- [#11530](https://github.com/Shopify/polaris/pull/11530) [`c7396d5e9`](https://github.com/Shopify/polaris/commit/c7396d5e92296fc0e88a7ce87e340f065dc480aa) Thanks [@arthurgouveia](https://github.com/arthurgouveia)! - [CalloutCard] Added IconableAction to primaryAction and secondaryAction
+  [CalloutCard] Added variant prop to secondaryAction
+
+### Patch Changes
+
+- [#11554](https://github.com/Shopify/polaris/pull/11554) [`942270bb3`](https://github.com/Shopify/polaris/commit/942270bb303c1b7c9ee8ed54085292dc3194950a) Thanks [@chloerice](https://github.com/chloerice)! - Added support for hovercard tracking to `EphemeralPresenceManager`
+
 ## 12.12.1
 
 ### Patch Changes
