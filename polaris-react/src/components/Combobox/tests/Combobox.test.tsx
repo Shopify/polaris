@@ -111,7 +111,7 @@ describe('<Combobox />', () => {
       return (
         <Combobox
           activator={
-            <TextField
+            <Combobox.TextField
               onChange={handleChange}
               label=""
               value=""
@@ -119,11 +119,14 @@ describe('<Combobox />', () => {
             />
           }
         >
-          {inputValue.length > 0 ? (
-            <Listbox>
-              <Listbox.Option accessibilityLabel="Option 1" value="option1" />
-            </Listbox>
-          ) : null}
+          {
+            // eslint-disable-next-line jest/no-if
+            inputValue.length > 0 ? (
+              <Listbox>
+                <Listbox.Option accessibilityLabel="Option 1" value="option1" />
+              </Listbox>
+            ) : null
+          }
         </Combobox>
       );
     }
