@@ -3,6 +3,7 @@ import {XSmallIcon, ChevronDownIcon} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
+import {Box} from '../../../Box';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
 import {BlockStack} from '../../../BlockStack';
@@ -16,6 +17,8 @@ import type {FilterInterface} from '../../../../types';
 import styles from './FilterPill.module.css';
 
 export interface FilterPillProps extends FilterInterface {
+  /** Whether the filter is newly applied or updated and hasn't been saved */
+  unsavedChanges?: boolean;
   /** A unique identifier for the filter */
   filterKey: string;
   /** Whether the filter is selected or not */
@@ -33,6 +36,7 @@ export interface FilterPillProps extends FilterInterface {
 }
 
 export function FilterPill({
+  unsavedChanges = false,
   filterKey,
   label,
   filter,
@@ -111,13 +115,45 @@ export function FilterPill({
     styles.ToggleButton,
   );
 
-  const wrappedLabel = (
-    <div className={styles.Label}>
-      <Text variant="bodySm" as="span">
-        {label}
-      </Text>
+  const disclosureMarkup = !selected ? (
+    <div className={styles.IconWrapper}>
+      <Icon source={ChevronDownIcon} tone="base" />
     </div>
+  ) : null;
+
+  const labelMarkup = (
+    <Box paddingInlineStart={unsavedChanges ? '0' : '050'}>
+      <InlineStack>
+        <Text variant="bodySm" as="span">
+          {label}
+        </Text>
+      </InlineStack>
+    </Box>
   );
+
+  const unsavedPip = unsavedChanges ? (
+    <Box paddingInlineEnd="150">
+      <Box
+        background="bg-fill-emphasis"
+        borderRadius="050"
+        width="6px"
+        minHeight="6px"
+      />
+    </Box>
+  ) : null;
+
+  const removeFilterButtonMarkup = selected ? (
+    <UnstyledButton
+      onClick={handleClear}
+      className={clearButtonClassNames}
+      type="button"
+      aria-label={i18n.translate('Polaris.FilterPill.clear')}
+    >
+      <div className={styles.IconWrapper}>
+        <Icon source={XSmallIcon} tone="base" />
+      </div>
+    </UnstyledButton>
+  ) : null;
 
   const activator = (
     <div className={buttonClasses}>
@@ -128,33 +164,20 @@ export function FilterPill({
           onClick={togglePopoverActive}
           className={toggleButtonClassNames}
           type="button"
+          accessibilityLabel={
+            unsavedChanges
+              ? i18n.translate('Polaris.FilterPill.unsavedChanges', {label})
+              : label
+          }
         >
           <InlineStack wrap={false} align="center" blockAlign="center" gap="0">
-            {selected ? (
-              <>{wrappedLabel}</>
-            ) : (
-              <>
-                {wrappedLabel}
-                <div className={styles.IconWrapper}>
-                  <Icon source={ChevronDownIcon} tone="base" />
-                </div>
-              </>
-            )}
+            {unsavedPip}
+            {labelMarkup}
+            {disclosureMarkup}
           </InlineStack>
         </UnstyledButton>
 
-        {selected ? (
-          <UnstyledButton
-            onClick={handleClear}
-            className={clearButtonClassNames}
-            type="button"
-            aria-label={i18n.translate('Polaris.FilterPill.clear')}
-          >
-            <div className={styles.IconWrapper}>
-              <Icon source={XSmallIcon} tone="base" />
-            </div>
-          </UnstyledButton>
-        ) : null}
+        {removeFilterButtonMarkup}
       </InlineStack>
     </div>
   );
