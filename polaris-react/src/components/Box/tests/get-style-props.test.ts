@@ -1,7 +1,7 @@
 /* eslint @shopify/jest/no-snapshots : 0 */
 import get from 'lodash.get';
 
-import {convertStylePropsToCSSProperties} from '../get-style-props-2';
+import {create} from '../get-style-props-2';
 import type {
   ResponsiveStylePropsWithModifiers,
   PropDefaults,
@@ -11,7 +11,9 @@ import {
   stylePropDefaults,
 } from '../generated-data';
 
-type ConvertParams = Parameters<typeof convertStylePropsToCSSProperties>;
+const {convert} = create();
+
+type ConvertParams = Parameters<typeof convert>;
 
 describe('convertStylePropsToCSSProperties', () => {
   describe.each([
@@ -27,20 +29,20 @@ describe('convertStylePropsToCSSProperties', () => {
       name: '_after pseudo element',
     },
   ])('non-modifier styles for $name', ({element, outputPath}) => {
-    const convert = (
+    const convertForElement = (
       styleProps: ConvertParams[0],
       ...args: ConvertParams extends [any, ...infer Rest] ? Rest : never
-    ): ReturnType<typeof convertStylePropsToCSSProperties>['style'] =>
+    ): ReturnType<typeof convert>['style'] =>
       get(
         element
-          ? convertStylePropsToCSSProperties({[element]: styleProps}, ...args)
-          : convertStylePropsToCSSProperties(styleProps, ...args),
+          ? convert({[element]: styleProps}, ...args)
+          : convert(styleProps, ...args),
         outputPath,
       );
 
     it('a simple style prop is applied directly to the css declaration.', () => {
       const styleProps: ResponsiveStylePropsWithModifiers = {display: 'flex'};
-      expect(convert(styleProps)).toMatchInlineSnapshot(`
+      expect(convertForElement(styleProps)).toMatchInlineSnapshot(`
         Object {
           "display": "flex",
         }
@@ -53,9 +55,7 @@ describe('convertStylePropsToCSSProperties', () => {
         color: {sm: 'red', xl: 'blue'},
       };
       const mockMapper = jest.fn(() => 'initial');
-      expect(
-        convertStylePropsToCSSProperties(styleProps, undefined, mockMapper),
-      ).toMatchInlineSnapshot(`
+      expect(convert(styleProps, undefined, mockMapper)).toMatchInlineSnapshot(`
         Object {
           "style": Object {
             "backgroundColor": "initial",
@@ -85,8 +85,7 @@ describe('convertStylePropsToCSSProperties', () => {
         borderInlineStartColor: 'border',
         color: 'text-emphasis',
       };
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "style": Object {
               "borderInlineStartColor": "border",
@@ -99,7 +98,7 @@ describe('convertStylePropsToCSSProperties', () => {
     describe('aliases/shorthands', () => {
       it('shorthand style props are expanded to their longhand CSS declarations.', () => {
         const styleProps: ResponsiveStylePropsWithModifiers = {padding: '400'};
-        expect(convert(styleProps)).toMatchInlineSnapshot(`
+        expect(convertForElement(styleProps)).toMatchInlineSnapshot(`
             Object {
               "paddingBlockEnd": "400",
               "paddingBlockStart": "400",
@@ -116,7 +115,7 @@ describe('convertStylePropsToCSSProperties', () => {
           paddingBlockStart: '600',
           backgroundColor: 'bg-fill-info',
         };
-        expect(convert(styleProps)).toMatchInlineSnapshot(`
+        expect(convertForElement(styleProps)).toMatchInlineSnapshot(`
             Object {
               "backgroundColor": "bg-fill-info",
               "paddingBlockEnd": "400",
@@ -131,7 +130,7 @@ describe('convertStylePropsToCSSProperties', () => {
         const styleProps: ResponsiveStylePropsWithModifiers = {
           paddingInline: {md: '400', lg: '800'},
         };
-        expect(convert(styleProps)).toMatchInlineSnapshot(`
+        expect(convertForElement(styleProps)).toMatchInlineSnapshot(`
           Object {
             "paddingInlineEnd": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
             "paddingInlineStart": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
@@ -144,7 +143,7 @@ describe('convertStylePropsToCSSProperties', () => {
       const styleProps: ResponsiveStylePropsWithModifiers = {
         backgroundColor: {xs: 'bg-fill-warning', md: 'bg-fill-success'},
       };
-      expect(convert(styleProps)).toMatchInlineSnapshot(`
+      expect(convertForElement(styleProps)).toMatchInlineSnapshot(`
         Object {
           "backgroundColor": "var(--_md-on,bg-fill-success) var(--_md-off,bg-fill-warning)",
         }
@@ -155,7 +154,7 @@ describe('convertStylePropsToCSSProperties', () => {
       const styleProps: ResponsiveStylePropsWithModifiers = {
         backgroundColor: {md: 'bg-fill-info'},
       };
-      expect(convert(styleProps)).toMatchInlineSnapshot(`
+      expect(convertForElement(styleProps)).toMatchInlineSnapshot(`
         Object {
           "backgroundColor": "var(--_md-on,bg-fill-info)",
         }
@@ -171,8 +170,7 @@ describe('convertStylePropsToCSSProperties', () => {
           const defaults: PropDefaults = {
             borderInlineStartStyle: 'solid',
           };
-          expect(convertStylePropsToCSSProperties(styleProps, defaults))
-            .toMatchInlineSnapshot(`
+          expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "borderInlineStartStyle": "var(--_md-on,dashed) var(--_md-off,solid)",
@@ -188,8 +186,7 @@ describe('convertStylePropsToCSSProperties', () => {
           const defaults: PropDefaults = {
             borderInlineStartStyle: 'solid',
           };
-          expect(convertStylePropsToCSSProperties(styleProps, defaults))
-            .toMatchInlineSnapshot(`
+          expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "borderInlineStartStyle": "dashed",
@@ -205,8 +202,7 @@ describe('convertStylePropsToCSSProperties', () => {
           const defaults: PropDefaults = {
             borderInlineStartStyle: 'solid',
           };
-          expect(convertStylePropsToCSSProperties(styleProps, defaults))
-            .toMatchInlineSnapshot(`
+          expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "borderInlineStartStyle": "dashed",
@@ -222,8 +218,7 @@ describe('convertStylePropsToCSSProperties', () => {
           const runtimeDefaults: PropDefaults = {
             borderInlineStartStyle: 'solid',
           };
-          expect(convertStylePropsToCSSProperties(styleProps, runtimeDefaults))
-            .toMatchInlineSnapshot(`
+          expect(convert(styleProps, runtimeDefaults)).toMatchInlineSnapshot(`
               Object {
                 "style": Object {
                   "borderInlineStartStyle": "solid",
@@ -243,7 +238,7 @@ describe('convertStylePropsToCSSProperties', () => {
           const defaults: PropDefaults = {
             display: mockGetDefault as PropDefaults['display'],
           };
-          convertStylePropsToCSSProperties(styleProps, defaults);
+          convert(styleProps, defaults);
 
           expect(mockGetDefault.mock.calls).toHaveLength(0);
         });
@@ -256,7 +251,7 @@ describe('convertStylePropsToCSSProperties', () => {
           const defaults: PropDefaults = {
             display: mockGetDefault as PropDefaults['display'],
           };
-          convertStylePropsToCSSProperties(styleProps, defaults);
+          convert(styleProps, defaults);
 
           expect(mockGetDefault.mock.calls).toHaveLength(0);
         });
@@ -269,7 +264,7 @@ describe('convertStylePropsToCSSProperties', () => {
           const defaults: PropDefaults = {
             display: mockGetDefault as PropDefaults['display'],
           };
-          convertStylePropsToCSSProperties(styleProps, defaults);
+          convert(styleProps, defaults);
 
           expect(mockGetDefault.mock.calls).toHaveLength(1);
           expect(mockGetDefault).toHaveBeenCalledWith({color: 'red'});
@@ -284,7 +279,7 @@ describe('convertStylePropsToCSSProperties', () => {
             borderInlineStartStyle:
               mockGetDefault as PropDefaults['borderInlineStartStyle'],
           };
-          convertStylePropsToCSSProperties(styleProps, defaults);
+          convert(styleProps, defaults);
 
           expect(mockGetDefault.mock.calls).toHaveLength(1);
           expect(mockGetDefault).toHaveBeenCalledWith({
@@ -302,8 +297,7 @@ describe('convertStylePropsToCSSProperties', () => {
             borderInlineStartStyle:
               mockGetDefault as PropDefaults['borderInlineStartStyle'],
           };
-          expect(convertStylePropsToCSSProperties(styleProps, defaults))
-            .toMatchInlineSnapshot(`
+          expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "borderInlineStartStyle": "solid",
@@ -322,8 +316,7 @@ describe('convertStylePropsToCSSProperties', () => {
             borderInlineStartStyle:
               mockGetDefault as PropDefaults['borderInlineStartStyle'],
           };
-          expect(convertStylePropsToCSSProperties(styleProps, defaults))
-            .toMatchInlineSnapshot(`
+          expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "borderInlineStartStyle": "dashed",
@@ -341,8 +334,7 @@ describe('convertStylePropsToCSSProperties', () => {
             borderInlineStartStyle:
               mockGetDefault as PropDefaults['borderInlineStartStyle'],
           };
-          expect(convertStylePropsToCSSProperties(styleProps, defaults))
-            .toMatchInlineSnapshot(`
+          expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "borderInlineStartStyle": "dashed",
@@ -360,8 +352,7 @@ describe('convertStylePropsToCSSProperties', () => {
             borderInlineStartStyle:
               mockGetDefault as PropDefaults['borderInlineStartStyle'],
           };
-          expect(convertStylePropsToCSSProperties(styleProps, defaults))
-            .toMatchInlineSnapshot(`
+          expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "borderInlineStartStyle": "var(--_md-on,dashed) var(--_md-off,solid)",
@@ -377,8 +368,7 @@ describe('convertStylePropsToCSSProperties', () => {
             borderInlineStartStyle:
               mockGetDefault as PropDefaults['borderInlineStartStyle'],
           };
-          expect(convertStylePropsToCSSProperties(styleProps, defaults))
-            .toMatchInlineSnapshot(`
+          expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {},
             }
@@ -394,7 +384,7 @@ describe('convertStylePropsToCSSProperties', () => {
           const styleProps: ResponsiveStylePropsWithModifiers = {
             display: disallowedCSSValue,
           };
-          expect(() => convertStylePropsToCSSProperties(styleProps)).toThrow(
+          expect(() => convert(styleProps)).toThrow(
             `Invariant failed: [display.xs] ${disallowedCSSValue} is a disallowed value. Please use a different value.`,
           );
         },
@@ -405,8 +395,7 @@ describe('convertStylePropsToCSSProperties', () => {
   describe('empty styles', () => {
     it('if no style props are passed in, return an empty object', () => {
       const styleProps: ResponsiveStylePropsWithModifiers = {};
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "style": Object {},
           }
@@ -418,8 +407,7 @@ describe('convertStylePropsToCSSProperties', () => {
         _before: {},
         _after: {},
       };
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "style": Object {},
           }
@@ -430,8 +418,7 @@ describe('convertStylePropsToCSSProperties', () => {
       // NOTE: TODO: This test assumes there's a default being set in the config
       expect(Object.keys(stylePropDefaults)).not.toHaveLength(0);
       const styleProps: ResponsiveStylePropsWithModifiers = {};
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "style": Object {},
           }
@@ -445,8 +432,7 @@ describe('convertStylePropsToCSSProperties', () => {
         paddingInlineStart: {md: '400', lg: '800'},
         paddingInlineEnd: {md: '400', lg: '800'},
       };
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
               Object {
                 "style": Object {
                   "--_1": "var(--_lg-on,800) var(--_lg-off,var(--_md-on,400))",
@@ -476,8 +462,7 @@ describe('convertStylePropsToCSSProperties', () => {
         },
         color: 'red',
       };
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "style": Object {
               "backgroundColor": "var(--__hover-on,bg-fill-warning) var(--__hover-off,bg-fill-info)",
@@ -494,8 +479,7 @@ describe('convertStylePropsToCSSProperties', () => {
           backgroundColor: {sm: 'bg-fill-warning', md: 'bg-fill-critical'},
         },
       };
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "style": Object {
               "backgroundColor": "var(--__hover-on,var(--_md-on,bg-fill-critical) var(--_md-off,var(--_sm-on,bg-fill-warning))) var(--__hover-off,bg-fill-success)",
@@ -510,8 +494,7 @@ describe('convertStylePropsToCSSProperties', () => {
         _hover: {backgroundColor: 'bg-fill-warning'},
         _visited: {backgroundColor: 'bg-fill-critical'},
       };
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "style": Object {
               "backgroundColor": "var(--__visited-on,bg-fill-critical) var(--__visited-off,var(--__hover-on,bg-fill-warning) var(--__hover-off,bg-fill-info))",
@@ -532,8 +515,7 @@ describe('convertStylePropsToCSSProperties', () => {
             outlineWidth: {xs: '1px', md: '2px'},
           },
         };
-        expect(convertStylePropsToCSSProperties(styleProps, defaults))
-          .toMatchInlineSnapshot(`
+        expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "outlineWidth": "var(--__focus-on,var(--_md-on,3px) var(--_md-off,1px)) var(--__focus-off,0)",
@@ -556,8 +538,7 @@ describe('convertStylePropsToCSSProperties', () => {
             color: 'red',
           },
         };
-        expect(convertStylePropsToCSSProperties(styleProps, defaults))
-          .toMatchInlineSnapshot(`
+        expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {},
             }
@@ -586,8 +567,7 @@ describe('convertStylePropsToCSSProperties', () => {
             position: 'fixed',
           },
         };
-        expect(convertStylePropsToCSSProperties(styleProps, defaults))
-          .toMatchInlineSnapshot(`
+        expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "color": "red",
@@ -606,8 +586,7 @@ describe('convertStylePropsToCSSProperties', () => {
         const defaults: PropDefaults = {
           color: {md: 'red'},
         };
-        expect(convertStylePropsToCSSProperties(styleProps, defaults))
-          .toMatchInlineSnapshot(`
+        expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "color": "var(--_md-on,red) var(--_md-off,blue)",
@@ -626,8 +605,7 @@ describe('convertStylePropsToCSSProperties', () => {
         const defaults: PropDefaults = {
           color: 'red',
         };
-        expect(convertStylePropsToCSSProperties(styleProps, defaults))
-          .toMatchInlineSnapshot(`
+        expect(convert(styleProps, defaults)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "color": "var(--_md-on,blue) var(--_md-off,red)",
@@ -645,8 +623,7 @@ describe('convertStylePropsToCSSProperties', () => {
           [defaultKeys[0]]: {md: 'foo'},
         };
 
-        expect(convertStylePropsToCSSProperties(styleProps))
-          .toMatchInlineSnapshot(`
+        expect(convert(styleProps)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "borderInlineStartWidth": "var(--_md-on,foo) var(--_md-off,${
@@ -664,8 +641,7 @@ describe('convertStylePropsToCSSProperties', () => {
           [defaultKeys[0]]: 'unset',
         };
 
-        expect(convertStylePropsToCSSProperties(styleProps))
-          .toMatchInlineSnapshot(`
+        expect(convert(styleProps)).toMatchInlineSnapshot(`
             Object {
               "style": Object {
                 "borderInlineStartWidth": "unset",
@@ -684,8 +660,7 @@ describe('convertStylePropsToCSSProperties', () => {
           [defaultKeys[1]]: null,
         };
 
-        expect(convertStylePropsToCSSProperties(styleProps))
-          .toMatchInlineSnapshot(`
+        expect(convert(styleProps)).toMatchInlineSnapshot(`
             Object {
               "style": Object {},
             }
@@ -720,8 +695,7 @@ describe('convertStylePropsToCSSProperties', () => {
         },
       };
 
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "style": Object {},
           }
@@ -737,8 +711,7 @@ describe('convertStylePropsToCSSProperties', () => {
         },
       };
 
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "_before": Object {
               "style": Object {
@@ -764,8 +737,7 @@ describe('convertStylePropsToCSSProperties', () => {
         },
       };
 
-      expect(convertStylePropsToCSSProperties(styleProps))
-        .toMatchInlineSnapshot(`
+      expect(convert(styleProps)).toMatchInlineSnapshot(`
           Object {
             "_before": Object {
               "style": Object {
