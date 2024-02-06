@@ -1,4 +1,4 @@
-import React, {useMemo, useCallback, useRef} from 'react';
+import React, {useMemo, useCallback, useRef, useState} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
@@ -152,6 +152,7 @@ export function IndexFilters({
   const {mdDown} = useBreakpoints();
   const defaultRef = useRef(null);
   const filteringRef = useRef(null);
+
   const {
     value: filtersFocused,
     setFalse: setFiltersUnFocused,
@@ -290,13 +291,13 @@ export function IndexFilters({
     disabled,
   ]);
 
-  function handleClickEditColumnsButon() {
+  function handleClickEditColumnsButton() {
     beginEdit(IndexFiltersMode.EditingColumns);
   }
 
   const editColumnsMarkup = showEditColumnsButton ? (
     <EditColumnsButton
-      onClick={handleClickEditColumnsButon}
+      onClick={handleClickEditColumnsButton}
       disabled={disabled}
     />
   ) : null;

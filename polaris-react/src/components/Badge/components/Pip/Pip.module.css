@@ -20,6 +20,11 @@
   border-width: var(--pc-border-width);
 }
 
+.toneEmphasis {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-pip-color: var(--p-color-icon-emphasis);
+}
+
 .toneInfo {
   /* stylelint-disable-next-line -- Polaris component custom properties */
   --pc-pip-color: var(--p-color-icon-info);

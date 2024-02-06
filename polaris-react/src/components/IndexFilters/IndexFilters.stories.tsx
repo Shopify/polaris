@@ -194,12 +194,6 @@ function BasicExample(
   const {mode, setMode} = useSetIndexFiltersMode(
     props?.withFilteringByDefault ? IndexFiltersMode.Filtering : undefined,
   );
-  const onHandleCancel = () => {};
-
-  const onHandleSave = async () => {
-    await sleep(1);
-    return true;
-  };
 
   const primaryAction: IndexFiltersProps['primaryAction'] =
     selected === 0
@@ -220,6 +214,10 @@ function BasicExample(
   const [taggedWith, setTaggedWith] = useState('');
   const [queryValue, setQueryValue] = useState('');
   const [uncontrolledLoading, setLoading] = useState<boolean>(false);
+  const [unsavedFilterChanges, setUnsavedFilterChanges] = useState<
+    {key: string; value: string | string[]}[]
+  >([]);
+
   const loadingIsControlled = typeof props.loading !== 'undefined';
   const loading = loadingIsControlled ? props.loading : uncontrolledLoading;
 
@@ -237,18 +235,27 @@ function BasicExample(
     return () => clearTimeout(timeoutId);
   }, [loadingIsControlled, queryValue]);
 
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
+  const handleFilterChange = () => {};
+
+  const onHandleCancel = () => {
+    setUnsavedFilterChanges([]);
+  };
+
+  const onHandleSave = async () => {
+    await sleep(1);
+    setUnsavedFilterChanges([]);
+    return true;
+  };
+
+  const handleAccountStatusChange = useCallback((value) => {
+    setAccountStatus(value);
+  }, []);
+  const handleMoneySpentChange = useCallback((value) => {
+    setMoneySpent(value);
+  }, []);
+  const handleTaggedWithChange = useCallback((value) => {
+    setTaggedWith(value);
+  }, []);
   const handleFiltersQueryChange = useCallback(
     (value) => setQueryValue(value),
     [],

@@ -10,6 +10,7 @@ import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
 import {InlineStack} from '../../../InlineStack';
 import {UnstyledButton} from '../../../UnstyledButton';
+import {Badge} from '../../../Badge';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {classNames} from '../../../../utilities/css';
 import type {FilterInterface} from '../../../../types';
@@ -17,6 +18,8 @@ import type {FilterInterface} from '../../../../types';
 import styles from './FilterPill.module.css';
 
 export interface FilterPillProps extends FilterInterface {
+  /** Whether the filter is newly applied and unsaved */
+  unsavedChanges?: boolean;
   /** A unique identifier for the filter */
   filterKey: string;
   /** Whether the filter is selected or not */
@@ -34,6 +37,7 @@ export interface FilterPillProps extends FilterInterface {
 }
 
 export function FilterPill({
+  unsavedChanges = false,
   filterKey,
   label,
   filter,
@@ -123,9 +127,12 @@ export function FilterPill({
     </div>
   );
 
+  const unsavedPip = unsavedChanges ? <Badge.Pip tone="emphasis" /> : null;
+
   const activator = (
     <div className={buttonClasses}>
       <InlineStack gap="0" wrap={false}>
+        {unsavedPip}
         <UnstyledButton
           onFocus={setFocusedTrue}
           onBlur={setFocusedFalse}

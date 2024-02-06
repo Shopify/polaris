@@ -373,6 +373,8 @@ export interface AppliedFilterInterface {
   key: string;
   /** A label for the applied filter */
   label: string;
+  /** Whether the filter is newly applied and unsaved */
+  unsavedChanges?: boolean;
   /** Callback when the remove button is pressed */
   onRemove(key: string): void;
 }
