@@ -17,6 +17,7 @@ import {
   XSmallIcon,
   ChevronDownIcon,
   EditIcon,
+  MagicIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -252,6 +253,13 @@ export function MonochromePlain() {
           <Button variant="monochromePlain" disclosure>
             Inherited color
           </Button>
+        </Box>
+        <Box color="text-magic">
+          <Button
+            variant="monochromePlain"
+            icon={MagicIcon}
+            accessibilityLabel="Apply suggestion"
+          />
         </Box>
       </InlineStack>
     </Box>

@@ -177,7 +177,7 @@
 }
 
 .variantMonochromePlain {
-  --pc-button-icon-fill: var(--p-color-icon);
+  --pc-button-icon-fill: currentColor;
 }
 
 .variantPlain,
@@ -313,8 +313,15 @@
     calc(-1 * var(--pc-button-padding-inline));
 }
 
-.iconOnly:is(.variantTertiary, .variantPlain, .variantMonochromePlain):not(.toneCritical) {
+.iconOnly:is(.variantTertiary, .variantPlain):not(.toneCritical) {
   --pc-button-icon-fill: var(--p-color-icon-secondary);
+  --pc-button-icon-fill_hover: var(--p-color-icon-secondary-hover);
+  --pc-button-icon-fill_active: var(--p-color-icon-secondary-active);
+  --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
+}
+
+.iconOnly:is(.variantMonochromePlain) {
+  --pc-button-icon-fill: currentColor;
   --pc-button-icon-fill_hover: var(--p-color-icon-secondary-hover);
   --pc-button-icon-fill_active: var(--p-color-icon-secondary-active);
   --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
