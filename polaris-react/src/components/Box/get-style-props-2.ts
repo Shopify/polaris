@@ -143,6 +143,18 @@ type ConvertResult = {
   };
 };
 
+type ConvertStylePropsToCSSProperties = (
+  /**
+   * A value of `null` will remove any default for that property without having to
+   * apply your own value. Roughly equivalent to CSS `unset`.
+   */
+  styleProps: ResponsiveStylePropsWithModifiers,
+  options?: {
+    defaults?: ResponsiveStylePropsWithModifiers;
+    valueMapper?: ValueMapper;
+  },
+) => ConversionResult;
+
 // Defining these at the top level scope should allow them to be inlined by
 // esbuild (https://github.com/evanw/esbuild/releases/tag/v0.14.9) and tsc
 // (https://www.typescriptlang.org/docs/handbook/enums.html#const-enums).
@@ -405,19 +417,11 @@ function spaceHackStringifier(
     : undefined;
 }
 
-type ConvertStylePropsToCSSProperties = (
-  /**
-   * A value of `null` will remove any default for that property without having to
-   * apply your own value. Roughly equivalent to CSS `unset`.
-   */
-  styleProps: ResponsiveStylePropsWithModifiers,
-  runtimeDefaults?: PropDefaults,
-  valueMapper?: ValueMapper,
-) => ConversionResult;
-
 export function create({
+  defaults: globalDefaults,
   valueMapper: globalValueMapper = identity,
 }: {
+  defaults?: ResponsiveStylePropsWithModifiers;
   valueMapper?: ValueMapper;
 } = {}): {
   globalStyles: string;
@@ -425,8 +429,7 @@ export function create({
 } {
   const convert: ConvertStylePropsToCSSProperties = function (
     styleProps,
-    runtimeDefaults,
-    valueMapper = globalValueMapper,
+    {defaults: runtimeDefaults, valueMapper = globalValueMapper} = {},
   ) {
     const styles = [styleProps];
     let lastIsWeakMerged = false;
