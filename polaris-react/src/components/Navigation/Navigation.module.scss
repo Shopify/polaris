@@ -73,14 +73,14 @@ $nav-max-width: 360px;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: transparent;
+    background-color: var(--p-color-nav-bg);
     border: var(--p-border-width-050) solid transparent;
     border-radius: var(--p-border-radius-300);
     background-clip: content-box;
   }
   scrollbar-width: thin;
   scrollbar-gutter: stable;
-  scrollbar-color: transparent transparent;
+  scrollbar-color: var(--p-color-nav-bg) transparent;
   transition: scrollbar-color var(--p-motion-duration-100)
     var(--p-motion-ease-in);
 

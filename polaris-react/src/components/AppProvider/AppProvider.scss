@@ -40,13 +40,13 @@ html {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: transparent;
+    background-color: var(--p-color-bg);
     border: var(--p-border-width-050) solid transparent;
     border-radius: var(--p-border-radius-300);
     background-clip: content-box;
   }
   scrollbar-width: thin;
-  scrollbar-color: transparent var(--p-color-bg);
+  scrollbar-color: var(--p-color-bg) var(--p-color-bg);
   transition: scrollbar-color var(--p-motion-duration-100)
     var(--p-motion-ease-in);
 

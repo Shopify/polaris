@@ -224,6 +224,7 @@ $sidebar-breakpoint: 1200px;
   flex: 1;
   min-width: 0;
   max-width: 100%;
+  border-inline-end: var(--p-border-width-025) solid var(--p-color-border);
 
   .hasSidebar & {
     /* stylelint-disable-next-line polaris/media-queries/polaris/media-query-allowed-list -- custom breakpoint */
