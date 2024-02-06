@@ -27,6 +27,14 @@ const createOpts: Parameters<typeof create>[0] = {
     _before: '::before',
     _after: '::after',
   },
+  namespace: '_',
+  bannedGlobalValues: ['-moz-initial'],
+  aliases: {
+    paddingInlineStart: ['paddingLeft', 'paddingInline', 'padding'],
+    paddingInlineEnd: ['paddingRight', 'paddingInline', 'padding'],
+    paddingBlockStart: ['paddingTop', 'paddingBlock', 'padding'],
+    paddingBlockEnd: ['paddingBottom', 'paddingBlock', 'padding'],
+  },
 };
 
 const {convert} = create(createOpts);
@@ -34,6 +42,10 @@ const {convert} = create(createOpts);
 type ConvertParams = Parameters<typeof convert>;
 
 describe('convertStylePropsToCSSProperties', () => {
+  describe('options', () => {
+    it.todo('works');
+  });
+
   describe.each([
     {outputPath: 'style', name: 'root'},
     {

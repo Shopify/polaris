@@ -41,6 +41,8 @@
 
 import invariant from 'tiny-invariant';
 import decamelize from 'decamelize';
+import type {OmitIndexSignature} from 'type-fest';
+import type {Globals} from 'csstype';
 
 import type {
   ResponsiveStyleProps,
@@ -48,15 +50,6 @@ import type {
   ValueMapper,
   Properties,
   PropPath,
-} from './generated-data';
-import {
-  disallowedCSSPropertyValues,
-  cssCustomPropertyNamespace as namespace,
-  modifiers,
-  pseudoElements,
-  breakpoints,
-  defaultBreakpointKey,
-  stylePropAliasFallbacks,
 } from './generated-data';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -129,7 +122,7 @@ export type ConversionResult = {
 
 type AccumulatorCondition = Exclude<
   ModifierProp | BreakpointProp,
-  typeof defaultBreakpointKey
+  typeof baseBreakpoint
 >;
 
 interface DeclarationCondition {
@@ -181,16 +174,6 @@ const enum Constant {
 
 type CascadeOrderKeys = keyof typeof breakpoints | keyof typeof modifiers;
 
-type ExtractArrayValues<T extends object> = T[keyof T] extends (infer A)[]
-  ? A
-  : never;
-
-type Aliases = ExtractArrayValues<typeof stylePropAliasFallbacks>;
-
-type InvertedAliases = {
-  [key in Aliases]: (keyof typeof stylePropAliasFallbacks | Aliases)[];
-};
-
 type ModifierConfig = {[Prop: string]: Selector};
 type BreakpointConfig = {[Prop: string]: '&' | `@media ${Selector}`};
 type PseudoElementConfig = {[Prop: string]: PseudoElementSelector};
@@ -219,79 +202,6 @@ const OPT_IN_PSEUDO_ELEMENT_SET = {
 const DEFAULT_BASE_BREAKPOINT = {
   base: '&',
 } as BreakpointConfig;
-
-const elements = Object.keys(pseudoElements) as Elements[];
-elements.push(Constant.RootElement);
-
-let cascadeOrderNumber = 0;
-
-const cascadeOrder = {} as {
-  [Key in CascadeOrderKeys]: number;
-};
-
-// Least specific first
-for (
-  let cascadeKeys = Object.keys(breakpoints).concat(
-      Object.keys(modifiers),
-    ) as CascadeOrderKeys[],
-    i = 0;
-  i < cascadeKeys.length;
-  i++
-) {
-  cascadeOrder[cascadeKeys[i]] = cascadeOrderNumber++;
-}
-
-/**
- * Leverage the ordered array of stylePropAliasFallbacks to generate a
- * linked-list style data structure suitable for generating a tree-like data
- * structure.
- *
- * Concretely, we're converting this:
- * {
- *   paddingInlineStart: ["paddingLeft","paddingInline","padding"],
- *   paddingInlineEnd: ["paddingRight","paddingInline","padding"],
- *   paddingBlockStart: ["paddingTop","paddingBlock","padding"],
- *   paddingBlockEnd: ["paddingBottom","paddingBlock","padding"],
- * }
- *
- * into this:
- *
- * {
- *  padding: ["paddingInline", "paddingBlock"],
- *  paddingInline: ["paddingLeft", "paddingRight"],
- *  paddingBlock: ["paddingTop", "paddingBottom"],
- *  paddingLeft: ["paddingInlineStart"],
- *  paddingRight: ["paddingInlineEnd"],
- *  paddingTop: ["paddingBlockStart"],
- *  paddingBottom: ["paddingBlockEnd"],
- * }
- */
-// TODO: move this into the generation script
-const inverseAliases = (
-  Object.keys(
-    stylePropAliasFallbacks,
-  ) as (keyof typeof stylePropAliasFallbacks)[]
-).reduce((memo, property) => {
-  const aliases = stylePropAliasFallbacks[property];
-  aliases.forEach((alias, index) => {
-    // Checking if a value exists // for `memo[alias]`, and if not it'll
-    // assign it a new value of `[]`. // Either way, it'll set the variable
-    // `targets` equal to the either // existing array, or newly created
-    // array.
-    // eslint-disable-next-line no-multi-assign
-    const targets = (memo[alias] ??= []);
-
-    // The aliases array is ordered, so this alias points to the alias
-    // immediately before it. If this is the first alias, it points at the
-    // property itself.
-    const target = index === 0 ? property : aliases[index - 1];
-    if (!targets.includes(target)) {
-      targets.push(target);
-    }
-  });
-
-  return memo;
-}, {} as InvertedAliases);
 
 const joinEnglish =
   process.env.NODE_ENV === 'development'
@@ -340,38 +250,6 @@ function warnOnInvalidProperty(path: PropPath = [], message?: string) {
       path?.length ? `[${path.join('.')}] ` : ''
     }Ignoring invalid property declaration.${message ? ` ${message}` : ''}`,
   );
-}
-
-function insertIntoProperties(
-  properties: DeclarationAccumulator,
-  whichElement: Elements,
-  declaration: keyof Properties,
-  condition: CascadeOrderKeys,
-  valueToInsert: unknown,
-) {
-  // Have to do this chained assignment to workaround TS: "Type narrowing
-  // does not occur for indexed access forms e[k] where k is not a
-  // literal."
-  // See: https://github.com/microsoft/TypeScript/issues/49613#issuecomment-1160324092
-  // eslint-disable-next-line no-multi-assign
-  const element = (properties[whichElement] ??= {});
-
-  // Initialize as an array (not an object) to retain numerical key
-  // ordering, and NOT insertion order
-  // eslint-disable-next-line no-multi-assign
-  const conditionalDeclarations = (element[declaration] ??= []);
-
-  conditionalDeclarations[cascadeOrder[condition]] = {
-    // Given {color: {xs: 'green', sm: 'red', lg: 'blue'}}
-    // and defaultBreakpointKey = 'xs'
-    // When `prop` is 'sm' or 'lg', we set it as the 'condition'.
-    // When `prop` is 'xs', there's no 'condition'.
-    //
-    // Given {color: 'red'}
-    // Then there is no condition.
-    condition: condition === defaultBreakpointKey ? undefined : condition,
-    value: valueToInsert,
-  };
 }
 
 type NestedCSSProperties = {
@@ -433,31 +311,6 @@ export function convertCSSPropertiesToStyleSheet(
     );
 }
 
-function propertyIterator(
-  whichProperties: DeclarationAccumulator,
-  nestedElement: keyof ConvertResult,
-  condition: CascadeOrderKeys,
-  values?: ConvertResult[keyof ConvertResult],
-) {
-  if (values) {
-    const declarations = Object.keys(values) as (keyof typeof values)[];
-    // Merge each delcaration into the property object for this iteration.
-    // Later, these values will get turned into strings
-    // eslint-disable-next-line @typescript-eslint/prefer-for-of
-    for (let i = 0; i < declarations.length; i++) {
-      const declaration = declarations[i];
-      values[declaration] != null &&
-        insertIntoProperties(
-          whichProperties,
-          nestedElement,
-          declaration as keyof Properties,
-          condition,
-          values[declaration],
-        );
-    }
-  }
-}
-
 // TODO: Can I represent this as nested tuples?
 // [
 //   border,
@@ -469,40 +322,34 @@ function propertyIterator(
 //     ]
 //   ]
 
-// Convert array of { value, condition } to the Space Hack CSS
-function spaceHackStringifier(
-  elements: DeclarationAccumulator[keyof DeclarationAccumulator],
-) {
-  return elements
-    ? mutateObjectValues(elements, (values) =>
-        // Iterating a sparse array with .reduce is faster than a for() loop
-        values == null
-          ? ''
-          : values.reduce(
-              (output, {value, condition}) =>
-                condition
-                  ? `var(--${namespace}${condition}-on,${value})${
-                      output
-                        ? ` var(--${namespace}${condition}-off,${output})`
-                        : ''
-                    }`
-                  : `${value}`,
-              '',
-            ),
-      )
-    : undefined;
-}
-
 function processOptions({
   valueMapper,
   pseudoElements,
   modifiers,
   breakpoints,
+  bannedGlobalValues,
+  namespace,
+  aliases,
   ...rest
 }: CreateOptions) {
   if (!valueMapper) {
     // eslint-disable-next-line no-param-reassign
     valueMapper = identity;
+  }
+
+  if (!bannedGlobalValues) {
+    // eslint-disable-next-line no-param-reassign
+    bannedGlobalValues = [];
+  }
+
+  if (!namespace) {
+    // eslint-disable-next-line no-param-reassign
+    namespace = '';
+  }
+
+  if (!aliases) {
+    // eslint-disable-next-line no-param-reassign
+    aliases = {};
   }
 
   if (pseudoElements === true) {
@@ -558,7 +405,16 @@ function processOptions({
     breakpoints = DEFAULT_BASE_BREAKPOINT;
   }
 
-  return {pseudoElements, modifiers, breakpoints, valueMapper, ...rest};
+  return {
+    pseudoElements,
+    modifiers,
+    breakpoints,
+    valueMapper,
+    bannedGlobalValues,
+    namespace,
+    aliases,
+    ...rest,
+  };
 }
 
 type CreateOptions = {
@@ -675,6 +531,127 @@ type CreateOptions = {
    */
   pseudoElements?: true | PseudoElementConfig;
   valueMapper?: ValueMapper;
+
+  /**
+   * Aliases for properties as an ordered array where earlier items in the array
+   * take priority over later.
+   *
+   * Aliases may themselves fallback to other aliases.
+   *
+   * Can be thought of as optional chaining:
+   *
+   * const paddingInlineStart = props.paddingInlineStart ?? props.paddingInline ?? props.padding;
+   * const paddingInlineEnd = props.paddingInlineEnd ?? props.paddingInline ?? props.padding;
+   * const paddingBlockStart = props.paddingBlockStart ?? props.paddingBlock ?? props.padding;
+   * const paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBlock ?? props.padding;
+   * ...etc
+   *
+   * @example
+   * `justify` is an alias for `justifyItems`:
+   *
+   * ```
+   * const {stylesheet, convert} = create({
+   *   aliases: {
+   *     justifyItems: ['justify'],
+   *   }
+   * });
+   *
+   * convert({
+   *   justify: 'center',
+   * });
+   * // =>
+   * // {
+   * //   justifyItems: 'center',
+   * // }
+   *
+   * convert({
+   *   justifyItems: 'stretch',
+   *   justify: 'center',
+   * });
+   * // =>
+   * // {
+   * //   justifyItems: 'stretch',
+   * // }
+   * ```
+   *
+   * @example
+   * `paddingInline` is an alias for `paddingInlineStart` and
+   * `paddingInlineEnd`:
+   *
+   * ```
+   * const {stylesheet, convert} = create({
+   *   aliases: {
+   *     paddingInlineStart: ['paddingInline'],
+   *     paddingInlineEnd: ['paddingInline'],
+   *   }
+   * });
+   *
+   * convert({
+   *   paddingInline: '20px',
+   * });
+   * // =>
+   * // {
+   * //   paddingInlineStart: '20px',
+   * //   paddingInlineEnd: '20px',
+   * // }
+   * ```
+   *
+   * @example
+   * `padding` is an alias to `paddingInline` and `paddingBlock` which themselves
+   * are aliases to `paddingInlineStart`, `paddingInlineEnd` and
+   * `paddingBlockStart`, `paddingBlockEnd` respectively.
+   *
+   * ```
+   * const {stylesheet, convert} = create({
+   *   aliases: {
+   *     paddingInlineStart: ['paddingInline', 'padding'],
+   *     paddingInlineEnd: ['paddingInline', 'padding'],
+   *     paddingBlockStart: ['paddingBlock', 'padding'],
+   *     paddingBlockEnd: ['paddingBlock', 'padding'],
+   *   }
+   * });
+   *
+   * convert({
+   *   padding: '20px',
+   * });
+   * // =>
+   * // {
+   * //   paddingInlineStart: '20px',
+   * //   paddingInlineEnd: '20px',
+   * //   paddingBlockStart: '20px',
+   * //   paddingBlockEnd: '20px',
+   * // }
+   *
+   * convert({
+   *   padding: '20px',
+   *   paddingInline: '10px',
+   *   paddingBlockStart: '0px',
+   * });
+   * // =>
+   * // {
+   * //   paddingInlineStart: '10px',
+   * //   paddingInlineEnd: '10px',
+   * //   paddingBlockStart: '0px',
+   * //   paddingBlockEnd: '20px',
+   * // }
+   * ```
+   */
+  aliases?: {
+    [Key in keyof OmitIndexSignature<Properties>]: string[];
+  };
+  /**
+   * A list of values that if passed to any styleProp on our Box component should
+   * warn the user, and bail early from the css property injection procedure. We
+   * do this as there is no good way for us to explicitly disallow this string
+   * literal in our types holistically for every style property.
+   */
+  bannedGlobalValues?: Globals[];
+
+  /**
+   * Prefix generated classnames & custom properties with this namespace to avoid
+   * collisions with existing styles.
+   */
+  namespace?: string;
 };
 
 export function create(options: CreateOptions = {}): {
@@ -693,7 +670,48 @@ export function create(options: CreateOptions = {}): {
     modifiers,
     pseudoElements,
     valueMapper: globalValueMapper,
+    aliases,
+    bannedGlobalValues,
+    namespace,
   } = processOptions(options);
+
+  type ExtractArrayValues<T extends object> = Extract<
+    T[keyof T],
+    any[]
+  > extends (infer A)[]
+    ? A
+    : unknown;
+
+  type Aliases = ExtractArrayValues<typeof aliases>;
+
+  type InvertedAliases = {
+    [key in Aliases]: (keyof typeof aliases | Aliases)[];
+  };
+
+  const inverseAliases = invertAliases();
+
+  const baseBreakpoint = Object.keys(breakpoints)[0];
+
+  const elements = Object.keys(pseudoElements) as Elements[];
+  elements.push(Constant.RootElement);
+
+  let cascadeOrderNumber = 0;
+
+  const cascadeOrder = {} as {
+    [Key in CascadeOrderKeys]: number;
+  };
+
+  // Least specific first
+  for (
+    let cascadeKeys = Object.keys(breakpoints).concat(
+        Object.keys(modifiers),
+      ) as CascadeOrderKeys[],
+      i = 0;
+    i < cascadeKeys.length;
+    i++
+  ) {
+    cascadeOrder[cascadeKeys[i]] = cascadeOrderNumber++;
+  }
 
   // Process the defaults once to inject into the global styles string
   if (defaults) {
@@ -1002,12 +1020,12 @@ export function create(options: CreateOptions = {}): {
         }
 
         // This is an alias
-        const aliases = inverseAliases[maybeAliasedProp as Aliases];
-        if (aliases) {
+        const aliasTargets = inverseAliases[maybeAliasedProp as Aliases];
+        if (aliasTargets) {
           // It expands into one or more properties, so iterate over each of them
           // eslint-disable-next-line @typescript-eslint/prefer-for-of
-          for (let alias = 0; alias < aliases.length; alias++) {
-            const target = aliases[alias];
+          for (let alias = 0; alias < aliasTargets.length; alias++) {
+            const target = aliasTargets[alias];
             // If the target property doesn't have a value set, set it now.
             // Otherwise if it has a value already, skip it since existing values
             // are more specific and take precedence over aliases.
@@ -1189,8 +1207,8 @@ export function create(options: CreateOptions = {}): {
           // csstype types have a `| string` union which then allows some values to
           // sneak through at runtime.
           invariant(
-            !disallowedCSSPropertyValues.includes(
-              mappedValue as typeof disallowedCSSPropertyValues[number],
+            !bannedGlobalValues.includes(
+              mappedValue as typeof bannedGlobalValues[number],
             ),
             `${
               propPath?.length ? `[${propPath.join('.')}] ` : ''
@@ -1224,7 +1242,7 @@ export function create(options: CreateOptions = {}): {
                 // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
                 // TODO: How do I tell TS this is correct?
                 propIsDeclaration && typeof otherObjsValue !== 'object'
-                  ? {[defaultBreakpointKey]: otherObjsValue}
+                  ? {[baseBreakpoint]: otherObjsValue}
                   : otherObjsValue,
               );
             } else if (otherStyleObj === lastStyleObjIndex) {
@@ -1259,7 +1277,7 @@ export function create(options: CreateOptions = {}): {
           // Ie; it's _hover, _active, etc
           const condition = propIsModifier
             ? (prop as CascadeOrderKeys)
-            : defaultBreakpointKey;
+            : baseBreakpoint;
 
           // Now that we've got the result of recursing, we need to inject these
           // values into the individual properties we know about so far.
@@ -1334,5 +1352,139 @@ export function create(options: CreateOptions = {}): {
       mutateObjectValues(mergedProperties, spaceHackStringifier),
       mutateObjectValues(weakProperties, spaceHackStringifier),
     ];
+  }
+
+  // Convert array of { value, condition } to the Space Hack CSS
+  function spaceHackStringifier(
+    elements: DeclarationAccumulator[keyof DeclarationAccumulator],
+  ) {
+    return elements
+      ? mutateObjectValues(elements, (values) =>
+          // Iterating a sparse array with .reduce is faster than a for() loop
+          values == null
+            ? ''
+            : values.reduce(
+                (output, {value, condition}) =>
+                  condition
+                    ? `var(--${namespace}${condition}-on,${value})${
+                        output
+                          ? ` var(--${namespace}${condition}-off,${output})`
+                          : ''
+                      }`
+                    : `${value}`,
+                '',
+              ),
+        )
+      : undefined;
+  }
+
+  function propertyIterator(
+    whichProperties: DeclarationAccumulator,
+    nestedElement: keyof ConvertResult,
+    condition: CascadeOrderKeys,
+    values?: ConvertResult[keyof ConvertResult],
+  ) {
+    if (values) {
+      const declarations = Object.keys(values) as (keyof typeof values)[];
+      // Merge each delcaration into the property object for this iteration.
+      // Later, these values will get turned into strings
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of
+      for (let i = 0; i < declarations.length; i++) {
+        const declaration = declarations[i];
+        values[declaration] != null &&
+          insertIntoProperties(
+            whichProperties,
+            nestedElement,
+            declaration as keyof Properties,
+            condition,
+            values[declaration],
+          );
+      }
+    }
+  }
+
+  function insertIntoProperties(
+    properties: DeclarationAccumulator,
+    whichElement: Elements,
+    declaration: keyof Properties,
+    condition: CascadeOrderKeys,
+    valueToInsert: unknown,
+  ) {
+    // Have to do this chained assignment to workaround TS: "Type narrowing
+    // does not occur for indexed access forms e[k] where k is not a
+    // literal."
+    // See: https://github.com/microsoft/TypeScript/issues/49613#issuecomment-1160324092
+    // eslint-disable-next-line no-multi-assign
+    const element = (properties[whichElement] ??= {});
+
+    // Initialize as an array (not an object) to retain numerical key
+    // ordering, and NOT insertion order
+    // eslint-disable-next-line no-multi-assign
+    const conditionalDeclarations = (element[declaration] ??= []);
+
+    conditionalDeclarations[cascadeOrder[condition]] = {
+      // Given {color: {xs: 'green', sm: 'red', lg: 'blue'}}
+      // and baseBreakpoint = 'xs'
+      // When `prop` is 'sm' or 'lg', we set it as the 'condition'.
+      // When `prop` is 'xs', there's no 'condition'.
+      //
+      // Given {color: 'red'}
+      // Then there is no condition.
+      condition: condition === baseBreakpoint ? undefined : condition,
+      value: valueToInsert,
+    };
+  }
+
+  /**
+   * Leverage the ordered array of stylePropAliasFallbacks to generate a
+   * linked-list style data structure suitable for generating a tree-like data
+   * structure.
+   *
+   * Concretely, we're converting this:
+   * {
+   *   paddingInlineStart: ["paddingLeft","paddingInline","padding"],
+   *   paddingInlineEnd: ["paddingRight","paddingInline","padding"],
+   *   paddingBlockStart: ["paddingTop","paddingBlock","padding"],
+   *   paddingBlockEnd: ["paddingBottom","paddingBlock","padding"],
+   * }
+   *
+   * into this:
+   *
+   * {
+   *  padding: ["paddingInline", "paddingBlock"],
+   *  paddingInline: ["paddingLeft", "paddingRight"],
+   *  paddingBlock: ["paddingTop", "paddingBottom"],
+   *  paddingLeft: ["paddingInlineStart"],
+   *  paddingRight: ["paddingInlineEnd"],
+   *  paddingTop: ["paddingBlockStart"],
+   *  paddingBottom: ["paddingBlockEnd"],
+   * }
+   */
+  function invertAliases(): InvertedAliases {
+    return (Object.keys(aliases) as (keyof typeof aliases)[]).reduce(
+      (memo, property) => {
+        const aliasProperties = aliases[property];
+        aliasProperties &&
+          aliasProperties.forEach((alias, index) => {
+            // Checking if a value exists for `memo[alias]`, and if not it'll
+            // assign it a new value of `[]`. Either way, it'll set the variable
+            // `targets` equal to the either existing array, or newly created
+            // array.
+            // eslint-disable-next-line no-multi-assign
+            const targets = (memo[alias] ??= []);
+
+            // The aliases array is ordered, so this alias points to the alias
+            // immediately before it. If this is the 0th alias, it points at the
+            // property itself.
+            const target = index === 0 ? property : aliasProperties[index - 1];
+            if (!targets.includes(target)) {
+              targets.push(target);
+            }
+          });
+
+        return memo;
+      },
+      {} as InvertedAliases,
+    );
   }
 }
