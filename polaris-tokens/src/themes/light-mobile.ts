@@ -2,12 +2,57 @@ import {createVar} from '../utils';
 
 import {createMetaTheme, createMetaThemePartial} from './utils';
 
+const buttonShadow = `0 0 0 ${createVar('border-width-025')} ${createVar(
+  'color-border',
+)} inset`;
+
 export const metaThemeLightMobilePartial = createMetaThemePartial({
+  color: {
+    'color-button-bg-gradient-primary': {
+      value: 'none',
+    },
+  },
   shadow: {
     'shadow-100': {
       value: 'none',
     },
     'shadow-bevel-100': {
+      value: 'none',
+    },
+    'shadow-button': {
+      value: buttonShadow,
+    },
+    'shadow-button-hover': {
+      value: buttonShadow,
+    },
+    'shadow-button-inset': {
+      value: buttonShadow,
+    },
+    'shadow-button-primary': {
+      value: 'none',
+    },
+    'shadow-button-primary-hover': {
+      value: 'none',
+    },
+    'shadow-button-primary-inset': {
+      value: 'none',
+    },
+    'shadow-button-primary-critical': {
+      value: 'none',
+    },
+    'shadow-button-primary-critical-hover': {
+      value: 'none',
+    },
+    'shadow-button-primary-critical-inset': {
+      value: 'none',
+    },
+    'shadow-button-primary-success': {
+      value: 'none',
+    },
+    'shadow-button-primary-success-hover': {
+      value: 'none',
+    },
+    'shadow-button-primary-success-inset': {
       value: 'none',
     },
   },
