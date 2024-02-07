@@ -66,7 +66,7 @@ export const ToastManager = memo(function ToastManager({
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-scale-out',
-        `${reversedOrder === 0 ? 1 : 1 - scale}`,
+        `${reversedOrder === 0 ? 1 : scale ** 2}`,
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-blur-in',
