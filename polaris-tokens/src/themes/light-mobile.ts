@@ -3,6 +3,19 @@ import {createVar} from '../utils';
 import {createMetaTheme, createMetaThemePartial} from './utils';
 
 export const metaThemeLightMobilePartial = createMetaThemePartial({
+  shadow: {
+    'shadow-100': {
+      value: 'none',
+    },
+    'shadow-bevel-100': {
+      value: 'none',
+    },
+  },
+  space: {
+    'space-card-gap': {
+      value: createVar('space-200'),
+    },
+  },
   text: {
     // heading-2xl
     'text-heading-2xl-font-size': {
