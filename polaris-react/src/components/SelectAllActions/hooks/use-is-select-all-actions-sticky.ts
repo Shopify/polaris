@@ -6,7 +6,8 @@ const DEBOUNCE_PERIOD = 250;
 
 const SELECT_ALL_ACTIONS_HEIGHT = 41;
 const PAGINATION_WIDTH_OFFSET = 64;
-const SCROLL_BAR_HEIGHT = 13;
+const SCROLL_BAR_CONTAINER_HEIGHT = 13;
+const SCROLL_BAR_HEIGHT = 8;
 const INDEX_TABLE_INITIAL_OFFSET = 32;
 const RESOURCE_LIST_INITIAL_OFFSET = 48;
 
@@ -18,11 +19,32 @@ export interface UseIsSelectAllActionsStickyProps {
   tableType: TableType;
 }
 
+export interface SelectAllActionsStickyCalculations {
+  selectAllActionsIntersectionRef: React.RefObject<HTMLDivElement>;
+  tableMeasurerRef: React.RefObject<HTMLDivElement>;
+  isSelectAllActionsSticky: boolean;
+  selectAllActionsAbsoluteOffset: number;
+  selectAllActionsMaxWidth: number;
+  selectAllActionsOffsetLeft: number;
+  selectAllActionsOffsetBottom: number;
+  computeTableDimensions():
+    | {
+        maxWidth: number;
+        offsetHeight: number;
+        offsetLeft: number;
+        offsetBottom: number;
+      }
+    | undefined;
+  isScrolledPastTop: boolean;
+  selectAllActionsPastTopOffset: number;
+  scrollbarPastTopOffset: number;
+}
+
 export function useIsSelectAllActionsSticky({
   selectMode,
   hasPagination,
   tableType,
-}: UseIsSelectAllActionsStickyProps) {
+}: UseIsSelectAllActionsStickyProps): SelectAllActionsStickyCalculations {
   const hasIOSupport =
     typeof window !== 'undefined' && Boolean(window.IntersectionObserver);
   const [isSelectAllActionsSticky, setIsSticky] = useState(false);
@@ -32,6 +54,9 @@ export function useIsSelectAllActionsSticky({
   const [selectAllActionsMaxWidth, setSelectAllActionsMaxWidth] = useState(0);
   const [selectAllActionsOffsetLeft, setSelectAllActionsOffsetLeft] =
     useState(0);
+  const [selectAllActionsOffsetBottom, setSelectAllActionsOffsetBottom] =
+    useState(0);
+
   const selectAllActionsIntersectionRef = useRef<HTMLDivElement>(null);
   const tableMeasurerRef = useRef<HTMLDivElement>(null);
 
@@ -39,7 +64,7 @@ export function useIsSelectAllActionsSticky({
 
   const initialPostOffset =
     tableType === 'index-table'
-      ? INDEX_TABLE_INITIAL_OFFSET + SCROLL_BAR_HEIGHT
+      ? INDEX_TABLE_INITIAL_OFFSET + SCROLL_BAR_CONTAINER_HEIGHT
       : RESOURCE_LIST_INITIAL_OFFSET;
 
   const postScrollOffset = initialPostOffset + SELECT_ALL_ACTIONS_HEIGHT;
@@ -86,6 +111,20 @@ export function useIsSelectAllActionsSticky({
       : null,
   );
 
+  const getClosestScrollContainer = (node: HTMLElement) => {
+    let container: HTMLElement | null = node;
+
+    while (container && container !== document.body) {
+      const style = window.getComputedStyle(container);
+      if (style.overflow === 'scroll' || style.overflow === 'auto') {
+        return container;
+      }
+      container = container.parentElement;
+    }
+
+    return null;
+  };
+
   const computeTableDimensions = useCallback(() => {
     const node = tableMeasurerRef.current;
     if (!node) {
@@ -93,17 +132,26 @@ export function useIsSelectAllActionsSticky({
         maxWidth: 0,
         offsetHeight: 0,
         offsetLeft: 0,
+        offsetBottom: 0,
       };
     }
+
+    const scrollContainer = getClosestScrollContainer(node);
     const box = node.getBoundingClientRect();
     const paddingHeight = selectMode ? SELECT_ALL_ACTIONS_HEIGHT : 0;
     const offsetHeight = box.height - paddingHeight;
     const maxWidth = box.width - widthOffset;
     const offsetLeft = box.left;
+    const offsetBottomScrollable = scrollContainer
+      ? Math.round(
+          scrollContainer?.getBoundingClientRect().y + SCROLL_BAR_HEIGHT,
+        )
+      : 0;
 
     setSelectAllActionsAbsoluteOffset(offsetHeight);
     setSelectAllActionsMaxWidth(maxWidth);
     setSelectAllActionsOffsetLeft(offsetLeft);
+    setSelectAllActionsOffsetBottom(offsetBottomScrollable);
   }, [selectMode, widthOffset]);
 
   const computeDimensionsPastScroll = useCallback(() => {
@@ -162,9 +210,10 @@ export function useIsSelectAllActionsSticky({
     selectAllActionsAbsoluteOffset,
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
+    selectAllActionsOffsetBottom,
     computeTableDimensions,
     isScrolledPastTop,
     selectAllActionsPastTopOffset: initialPostOffset,
-    scrollbarPastTopOffset: initialPostOffset - SCROLL_BAR_HEIGHT,
+    scrollbarPastTopOffset: initialPostOffset - SCROLL_BAR_CONTAINER_HEIGHT,
   };
 }

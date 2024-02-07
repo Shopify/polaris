@@ -179,6 +179,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     selectAllActionsAbsoluteOffset,
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
+    selectAllActionsOffsetBottom,
     computeTableDimensions,
     isScrolledPastTop,
     selectAllActionsPastTopOffset,
@@ -582,6 +583,9 @@ export function ResourceList<TItemType extends ResourceListItemData>({
           ? undefined
           : selectAllActionsAbsoluteOffset,
         width: selectAllActionsMaxWidth,
+        bottom: isSelectAllActionsSticky
+          ? selectAllActionsOffsetBottom
+          : undefined,
         left: isSelectAllActionsSticky ? selectAllActionsOffsetLeft : undefined,
       }}
     >
