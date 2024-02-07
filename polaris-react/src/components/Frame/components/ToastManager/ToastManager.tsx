@@ -51,7 +51,6 @@ export const ToastManager = memo(function ToastManager({
 
       const toastHeight: number = currentToast.current.clientHeight;
       const scale = 0.9 ** reversedOrder;
-      const opacity = 0.9 ** reversedOrder;
 
       const additionalVerticalMovement: number =
         generateAdditionalVerticalMovement(reversedOrder);
@@ -72,10 +71,6 @@ export const ToastManager = memo(function ToastManager({
       currentToast.current.style.setProperty(
         '--pc-toast-manager-blur-in',
         `${reversedOrder * 0.5}px`,
-      );
-      currentToast.current.style.setProperty(
-        '--pc-toast-manager-opacity-in',
-        `${opacity}`,
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-translate-y-out',
