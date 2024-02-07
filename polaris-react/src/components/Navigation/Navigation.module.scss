@@ -70,10 +70,11 @@ $nav-max-width: 360px;
   &::-webkit-scrollbar {
     // Matches scrollbar-width: thin
     width: 11px;
+    opacity: 0;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--p-color-nav-bg);
+    background-color: var(--p-color-scrollbar-thumb-bg-hover);
     border: var(--p-border-width-050) solid transparent;
     border-radius: var(--p-border-radius-300);
     background-clip: content-box;
@@ -86,9 +87,10 @@ $nav-max-width: 360px;
 
   &:hover {
     scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
+    background-color: var(--p-color-nav-bg);
 
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--p-color-scrollbar-thumb-bg-hover);
+    &::-webkit-scrollbar {
+      opacity: 1;
     }
   }
 }
