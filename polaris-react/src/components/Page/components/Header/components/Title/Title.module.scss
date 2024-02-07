@@ -33,6 +33,7 @@
 .SubTitle {
   margin-top: var(--p-space-050);
   color: var(--p-color-text-secondary);
+  max-width: 45ch;
 
   &.SubtitleCompact {
     margin-top: var(--p-space-050);

@@ -328,6 +328,7 @@ export function WithActionGroupsAndActions() {
   return (
     <Page
       title="List of products"
+      subtitle="Brow Code Professional USA & Canada, Brow Code Professional New Zealand, and 8 other stores have charges on this bill"
       secondaryActions={[
         {
           content: 'Send test',
