@@ -824,6 +824,10 @@ $nav-max-width: 360px;
   padding-left: var(--p-space-500);
   padding-right: var(--p-space-100);
 
+  @supports not (scrollbar-gutter: stable) {
+    padding-right: var(--p-space-200);
+  }
+
   @supports (scrollbar-gutter: stable) {
     /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- counter the scrollbar gutter */
     padding-right: calc(
@@ -855,6 +859,10 @@ $nav-max-width: 360px;
     height: calc(100% - var(--p-space-100));
     padding: var(--p-space-050) var(--p-space-200);
     border-radius: var(--p-border-radius-200);
+
+    @supports (scrollbar-gutter: stable) {
+      padding-inline: var(--p-space-150);
+    }
 
     // stylelint-disable-next-line selector-max-specificity -- set focus styles
     &:focus-visible:not(:active) {
