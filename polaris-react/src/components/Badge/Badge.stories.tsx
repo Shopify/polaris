@@ -198,7 +198,7 @@ export function All() {
                 </InlineStack>
               </BlockStack>
             )}
-            {/* TODO: Re-enable the following examples when designs are available (post se23) */}
+            {/* TODO: Re-enable the following examples when designs are available (see https://github.com/Shopify/polaris-internal/issues/1411) */}
             {/* <BlockStack gap="200">
               <Text as="h2" variant="headingSm">
                 Tone with icon only
