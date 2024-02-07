@@ -61,31 +61,55 @@ export function MultipleMessages() {
 
   const toggleActiveSix = useCallback(() => toggleActive(6), []);
 
+  const toastDuration = 5000;
+
   const toastMarkup1 = activeToasts.includes(1) ? (
-    <Toast content="Message sent" onDismiss={toggleActiveOne} />
+    <Toast
+      content="Message sent 1"
+      onDismiss={toggleActiveOne}
+      duration={toastDuration}
+    />
   ) : null;
 
   const toastMarkup2 = activeToasts.includes(2) ? (
-    <Toast content="Image uploaded" onDismiss={toggleActiveTwo} />
+    <Toast
+      content="Image uploaded 2"
+      onDismiss={toggleActiveTwo}
+      duration={toastDuration}
+    />
   ) : null;
 
   const toastMarkup3 = activeToasts.includes(3) ? (
-    <Toast content="Notification sent" onDismiss={toggleActiveThree} />
+    <Toast
+      content="Notification sent 3"
+      onDismiss={toggleActiveThree}
+      duration={toastDuration}
+    />
   ) : null;
 
   const toastMarkup4 = activeToasts.includes(4) ? (
-    <Toast content="Content updated" onDismiss={toggleActiveFour} />
+    <Toast
+      content="Content updated 4"
+      onDismiss={toggleActiveFour}
+      duration={toastDuration}
+    />
   ) : null;
 
   const toastMarkup5 = activeToasts.includes(5) ? (
-    <Toast content="Server error" error onDismiss={toggleActiveFive} />
+    <Toast
+      content="Server error 5"
+      error
+      onDismiss={toggleActiveFive}
+      duration={toastDuration}
+    />
   ) : null;
 
   const toastMarkup6 = activeToasts.includes(6) ? (
     <Toast
-      content="Sidekick enabled"
+      content="Sidekick enabled 6"
       tone="magic"
       onDismiss={toggleActiveSix}
+      duration={toastDuration}
     />
   ) : null;
 

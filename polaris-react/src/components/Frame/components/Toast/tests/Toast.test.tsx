@@ -206,6 +206,37 @@ describe('<Toast />', () => {
 
       expect(spy).not.toHaveBeenCalled();
     });
+
+    it('is not called if the isHovered prop is true', () => {
+      const spy = jest.fn();
+      const duration = 1000;
+      const toast = mountWithApp(
+        <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
+      );
+
+      toast.setProps({isHovered: true});
+      timer.runTimersToTime(duration);
+
+      expect(spy).not.toHaveBeenCalled();
+    });
+
+    it('is called if the isHovered prop is true and then false', () => {
+      const spy = jest.fn();
+      const duration = 1000;
+      const toast = mountWithApp(
+        <Toast content="Image uploaded" onDismiss={spy} duration={duration} />,
+      );
+
+      toast.setProps({isHovered: true});
+      timer.runTimersToTime(duration);
+
+      expect(spy).not.toHaveBeenCalled();
+
+      toast.setProps({isHovered: false});
+      timer.runTimersToTime(duration);
+
+      expect(spy).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('onClick', () => {

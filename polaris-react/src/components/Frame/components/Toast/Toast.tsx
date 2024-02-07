@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import {AlertCircleIcon, XSmallIcon} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../../../utilities/css';
@@ -27,29 +27,55 @@ export function Toast({
   tone,
   onClick,
   icon,
+  isHovered,
 }: ToastProps) {
-  useEffect(() => {
-    let timeoutDuration = duration || DEFAULT_TOAST_DURATION;
+  const defaultDurationWithoutAction = duration || DEFAULT_TOAST_DURATION;
+  const defaultDuration =
+    action && !duration
+      ? DEFAULT_TOAST_DURATION_WITH_ACTION
+      : defaultDurationWithoutAction;
+  const durationRemaining = useRef<number>(defaultDuration);
+  const timeoutStart = useRef<number | null>(null);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    if (action && !duration) {
-      timeoutDuration = DEFAULT_TOAST_DURATION_WITH_ACTION;
-    } else if (
-      action &&
-      duration &&
-      duration < DEFAULT_TOAST_DURATION_WITH_ACTION
-    ) {
+  useEffect(() => {
+    function resume() {
+      timeoutStart.current = Date.now();
+      timer.current = setTimeout(() => {
+        onDismiss();
+      }, durationRemaining.current);
+    }
+
+    function pause() {
+      if (timeoutStart.current) {
+        durationRemaining.current -= Date.now() - timeoutStart.current;
+      }
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+      timer.current = null;
+    }
+    if (isHovered) {
+      pause();
+    } else {
+      resume();
+    }
+
+    return () => {
+      if (timer.current) {
+        clearTimeout(timer.current);
+      }
+    };
+  }, [isHovered, onDismiss]);
+
+  useEffect(() => {
+    if (action && duration && duration < DEFAULT_TOAST_DURATION_WITH_ACTION) {
       // eslint-disable-next-line no-console
       console.log(
         'Toast with action should persist for at least 10,000 milliseconds to give the merchant enough time to act on it.',
       );
     }
-
-    const timer = setTimeout(onDismiss, timeoutDuration);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [action, duration, onDismiss]);
+  }, [action, duration]);
 
   const dismissMarkup = (
     <button type="button" className={styles.CloseButton} onClick={onDismiss}>

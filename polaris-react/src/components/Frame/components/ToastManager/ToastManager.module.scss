@@ -7,6 +7,10 @@
   // stylelint-disable -- Polaris component custom properties
   --pc-toast-manager-translate-y-out: 150px;
   --pc-toast-manager-translate-y-in: 0;
+  --pc-toast-manager-scale-in: 1;
+  --pc-toast-manager-scale-out: 0.9;
+  --pc-toast-manager-blur-in: 0;
+  --pc-toast-manager-transition-delay-in: 0s;
   // stylelint-enable
 }
 
@@ -42,6 +46,10 @@
   opacity: 0;
 }
 
+.ToastWrapper-exit {
+  transition-duration: var(--p-motion-duration-200);
+}
+
 .ToastWrapper-enter-done {
   // stylelint-disable-next-line -- required for stacking animation
   transform: translateY(var(--pc-toast-manager-translate-y-in))
@@ -49,4 +57,10 @@
   // stylelint-disable-next-line -- required for stacking animation
   filter: blur(var(--pc-toast-manager-blur-in));
   opacity: 1;
+  // stylelint-disable-next-line -- required for stacking animation
+  transition-delay: var(--pc-toast-manager-transition-delay-in);
+}
+
+.ToastWrapper--hoverable {
+  cursor: pointer;
 }
