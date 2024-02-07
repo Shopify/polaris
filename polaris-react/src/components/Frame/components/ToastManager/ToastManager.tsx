@@ -16,24 +16,70 @@ export interface ToastManagerProps {
   toastMessages: ToastPropsWithID[];
 }
 
+const ADDITIONAL_TOAST_BASE_MOVEMENT = 10;
+
+/**
+ * Will calculate the vertical movement of the toast based on the index of the sequence. As toasts get further back
+ * in the view, we want them to not move as much, to give the perception of perspective. This sequence will match this:
+ * v(0) = 0
+ * v(1) = 0
+ * v(2) = 1 (increase of 1)
+ * v(3) = 3 (increase of 2)
+ * v(4) = 6 (increase of 3)
+ * v(5) = 10 (increase of 4)
+ * and so on...
+ *
+ * @param index The index of the sequence
+ * @returns How many pixels we want to move the toast
+ */
+function generateAdditionalVerticalMovement(index: number) {
+  const getAmountToRemove = (idx: number): number => ((idx - 1) * idx) / 2;
+  return index * ADDITIONAL_TOAST_BASE_MOVEMENT - getAmountToRemove(index);
+}
+
 export const ToastManager = memo(function ToastManager({
   toastMessages,
 }: ToastManagerProps) {
   const toastNodes: React.RefObject<HTMLDivElement>[] = [];
 
   const updateToasts = useDeepCallback(() => {
-    let targetInPos = 0;
+    const zeroIndexTotalMessages = toastMessages.length - 1;
     toastMessages.forEach((_, index) => {
+      const reversedOrder = zeroIndexTotalMessages - index;
       const currentToast = toastNodes[index];
       if (!currentToast.current) return;
-      targetInPos += currentToast.current.clientHeight;
+
+      const toastHeight: number = currentToast.current.clientHeight;
+      const scale = 0.9 ** reversedOrder;
+      const opacity = 0.9 ** reversedOrder;
+
+      const additionalVerticalMovement: number =
+        generateAdditionalVerticalMovement(reversedOrder);
+      const targetInPos = toastHeight + additionalVerticalMovement;
+
       currentToast.current.style.setProperty(
         '--pc-toast-manager-translate-y-in',
         `-${targetInPos}px`,
       );
       currentToast.current.style.setProperty(
+        '--pc-toast-manager-scale-in',
+        `${scale}`,
+      );
+      currentToast.current.style.setProperty(
+        '--pc-toast-manager-scale-out',
+        `${reversedOrder === 0 ? 1 : 1 - scale}`,
+      );
+      currentToast.current.style.setProperty(
+        '--pc-toast-manager-blur-in',
+        `${reversedOrder * 0.5}px`,
+      );
+      currentToast.current.style.setProperty(
+        '--pc-toast-manager-opacity-in',
+        `${opacity}`,
+      );
+      currentToast.current.style.setProperty(
         '--pc-toast-manager-translate-y-out',
-        `${-targetInPos + 150}px`,
+        `${reversedOrder === 0 ? -targetInPos + 150 : -targetInPos}px`,
       );
     });
   }, [toastMessages, toastNodes]);
