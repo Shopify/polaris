@@ -181,3 +181,23 @@ export function WithResponsiveGap() {
     </InlineStack>
   );
 }
+
+export function WithDirectionReversed() {
+  return (
+    <InlineStack direction="row-reverse" gap="200">
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </InlineStack>
+  );
+}
+
+export function WithResponsiveDirectionReversed() {
+  return (
+    <InlineStack direction={{xs: 'row', md: 'row-reverse'}} gap="200">
+      <Badge>One</Badge>
+      <Badge>Two</Badge>
+      <Badge>Three</Badge>
+    </InlineStack>
+  );
+}
