@@ -2,6 +2,7 @@ import React from 'react';
 import {intersectionObserver} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
+import {Scrollable} from '../../../Scrollable';
 import {useIsSelectAllActionsSticky} from '../use-is-select-all-actions-sticky';
 import type {UseIsSelectAllActionsStickyProps} from '../use-is-select-all-actions-sticky';
 
@@ -17,6 +18,7 @@ function Component({
     selectAllActionsAbsoluteOffset,
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
+    selectAllActionsOffsetBottom,
   } = useIsSelectAllActionsSticky({selectMode, hasPagination, tableType});
 
   return (
@@ -25,6 +27,7 @@ function Component({
       <span className="offset">{selectAllActionsAbsoluteOffset}</span>
       <span className="width">{selectAllActionsMaxWidth}</span>
       <span className="left">{selectAllActionsOffsetLeft}</span>
+      <span className="bottom">{selectAllActionsOffsetBottom}</span>
       <em style={{height: 400}} />
       <i className="intersection" ref={selectAllActionsIntersectionRef} />
     </div>
@@ -33,22 +36,28 @@ function Component({
 
 describe('useIsSelectAllActionsSticky', () => {
   let getBoundingClientRectSpy: jest.SpyInstance;
+  let getComputedStyleSpy: jest.SpyInstance;
 
   beforeEach(() => {
+    getComputedStyleSpy = jest.spyOn(window, 'getComputedStyle');
+
     getBoundingClientRectSpy = jest.spyOn(
       Element.prototype,
       'getBoundingClientRect',
     );
+
     setGetBoundingClientRect({
       width: 600,
       height: 400,
       left: 20,
+      y: 18,
     });
 
     intersectionObserver.mock();
   });
 
   afterEach(() => {
+    getComputedStyleSpy.mockRestore();
     getBoundingClientRectSpy.mockRestore();
     intersectionObserver.restore();
   });
@@ -83,10 +92,38 @@ describe('useIsSelectAllActionsSticky', () => {
       const result = component.findAll('span')[2]?.text();
       expect(result).toBe('20');
     });
+
+    it('returns the bottom value correctly when not in a scroll container', () => {
+      setGetComputedStyle({
+        overflow: 'visible',
+        overflowX: 'visible',
+        overflowY: 'visible',
+      });
+
+      const component = mountWithApp(<Component selectMode />);
+      const result = component.findAll('span')[3]?.text();
+      expect(result).toBe('0');
+    });
+
+    it('returns the bottom value correctly when in a scroll container', () => {
+      setGetComputedStyle({
+        overflow: 'auto',
+        overflowX: 'auto',
+        overflowY: 'auto',
+      });
+
+      const component = mountWithApp(
+        <Scrollable style={{height: '200px'}}>
+          <Component selectMode />
+        </Scrollable>,
+      );
+      const result = component.findAll('span')[3]?.text();
+      expect(result).toBe('26');
+    });
   });
 
   describe('when isIntersecting', () => {
-    it('sets the useIsSelectAllActionsSticky value to false', () => {
+    it('sets the isSelectAllActionsSticky value to false', () => {
       const component = mountWithApp(<Component selectMode />);
 
       const intersector = component.find('i');
@@ -104,7 +141,7 @@ describe('useIsSelectAllActionsSticky', () => {
   });
 
   describe('when not isIntersecting', () => {
-    it('sets the useIsSelectAllActionsSticky value to true', () => {
+    it('sets the isSelectAllActionsSticky value to true', () => {
       const component = mountWithApp(<Component selectMode />);
 
       const intersector = component.find('i');
@@ -121,14 +158,35 @@ describe('useIsSelectAllActionsSticky', () => {
     });
   });
 
+  function setGetComputedStyle({
+    overflow,
+    overflowX,
+    overflowY,
+  }: {
+    overflow: string;
+    overflowX: string;
+    overflowY: string;
+  }) {
+    getComputedStyleSpy.mockImplementation(() => {
+      return {
+        overflow,
+        overflowX,
+        overflowY,
+        toJSON() {},
+      };
+    });
+  }
+
   function setGetBoundingClientRect({
     width,
     height,
     left,
+    y,
   }: {
     width: number;
     height: number;
     left: number;
+    y: number;
   }) {
     getBoundingClientRectSpy.mockImplementation(() => {
       return {
@@ -139,7 +197,7 @@ describe('useIsSelectAllActionsSticky', () => {
         bottom: 0,
         right: 0,
         x: 0,
-        y: 0,
+        y,
         toJSON() {},
       };
     });

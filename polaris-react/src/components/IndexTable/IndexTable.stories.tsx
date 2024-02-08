@@ -6,6 +6,10 @@ import type {
   IndexTableRowProps,
 } from '@shopify/polaris';
 import {
+  Frame,
+  Button,
+  Modal,
+  Scrollable,
   useBreakpoints,
   InlineStack,
   LegacyCard,
@@ -6774,5 +6778,125 @@ export function WithLongDataSetSelectable() {
         {rowMarkup}
       </IndexTable>
     </LegacyCard>
+  );
+}
+
+export function WithinAModal() {
+  const [active, setActive] = useState(true);
+  const [checked, setChecked] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const handleCheckbox = useCallback((value) => setChecked(value), []);
+
+  const activator = <Button onClick={toggleActive}>Open</Button>;
+
+  const orders = Array.from(Array(100).keys()).map((i) => ({
+    id: `${i}`,
+    order: i,
+    date: 'Jul 20 at 4:34pm',
+    customer: 'Jaydon Stanton',
+    total: `$969.44${i}`,
+    paymentStatus: <Badge progress="complete">Paid</Badge>,
+    fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+  }));
+
+  const resourceName = {
+    singular: 'order',
+    plural: 'orders',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(orders);
+
+  const rowMarkup = orders.map(
+    (
+      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {order}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>{total}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  const table = (
+    <IndexTable
+      resourceName={resourceName}
+      itemCount={orders.length}
+      selectedItemsCount={
+        allResourcesSelected ? 'All' : selectedResources.length
+      }
+      onSelectionChange={handleSelectionChange}
+      headings={[
+        {title: 'Order', hidden: true},
+        {title: 'Date'},
+        {title: 'Customer'},
+        {title: 'Total', alignment: 'end'},
+        {title: 'Payment status'},
+        {title: 'Fulfillment status'},
+      ]}
+      bulkActions={bulkActions}
+      selectable
+    >
+      {rowMarkup}
+    </IndexTable>
+  );
+
+  return (
+    <Frame>
+      <div style={{height: '500px'}}>
+        <Modal
+          noScroll
+          activator={activator}
+          open={active}
+          onClose={toggleActive}
+          title="Import customers by CSV"
+          primaryAction={{
+            content: 'Import customers',
+            onAction: toggleActive,
+          }}
+          secondaryActions={[
+            {
+              content: 'Cancel',
+              onAction: toggleActive,
+            },
+          ]}
+        >
+          <Box>
+            <Scrollable style={{height: '65dvh'}}>{table}</Scrollable>
+          </Box>
+        </Modal>
+      </div>
+    </Frame>
   );
 }

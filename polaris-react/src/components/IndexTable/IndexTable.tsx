@@ -225,6 +225,7 @@ function IndexTableBase({
     selectAllActionsAbsoluteOffset,
     selectAllActionsMaxWidth,
     selectAllActionsOffsetLeft,
+    selectAllActionsOffsetBottom,
     computeTableDimensions,
     isScrolledPastTop,
     selectAllActionsPastTopOffset,
@@ -657,6 +658,9 @@ function IndexTableBase({
       <div
         className={selectAllActionsClassNames}
         style={{
+          insetBlockEnd: isSelectAllActionsSticky
+            ? selectAllActionsOffsetBottom
+            : undefined,
           insetBlockStart: isSelectAllActionsSticky
             ? undefined
             : selectAllActionsAbsoluteOffset,
