@@ -1,5 +1,13 @@
 # Changelog
 
+## 8.7.0
+
+### Minor Changes
+
+- [#11537](https://github.com/Shopify/polaris/pull/11537) [`27cf15c98`](https://github.com/Shopify/polaris/commit/27cf15c982cffebe8cca7c3587f8b8f81467e26e) Thanks [@kyledurand](https://github.com/kyledurand)! - Added scrollbar thumb background tokens
+
+* [#11566](https://github.com/Shopify/polaris/pull/11566) [`5a1ada35a`](https://github.com/Shopify/polaris/commit/5a1ada35a73fd2ca1f6a0ce388abc1b788c114ff) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Removed the Card shadow bevel and decreased Card gap spacing for the mobile theme
+
 ## 8.6.0
 
 ### Minor Changes
