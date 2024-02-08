@@ -187,8 +187,6 @@ export function IndexFilters({
 
   const viewNames = tabs.map(({content}) => content);
 
-  const selectedViewName = viewNames[selected];
-
   const handleChangeSortButton = useCallback(
     (value: string[]) => {
       onSort?.(value);
@@ -465,7 +463,6 @@ export function IndexFilters({
                   mountedState={mdDown ? undefined : state}
                   borderlessQueryField
                   closeOnChildOverlayClick={closeOnChildOverlayClick}
-                  selectedViewName={selectedViewName}
                 >
                   <div className={styles.ButtonWrap}>
                     <InlineStack gap="200" align="start" blockAlign="center">

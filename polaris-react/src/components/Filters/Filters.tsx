@@ -97,8 +97,6 @@ export interface FiltersProps {
   onAddFilterClick?: () => void;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
-  /** The name of the currently selected view */
-  selectedViewName?: string;
 }
 
 export function Filters({
@@ -123,7 +121,6 @@ export function Filters({
   mountedState,
   onAddFilterClick,
   closeOnChildOverlayClick,
-  selectedViewName,
 }: FiltersProps) {
   const hideFilterBar = hideFilters || filters.length === 0;
   const queryFieldMarkup = hideQueryField ? null : (
@@ -159,7 +156,6 @@ export function Filters({
               disabled={disabled || disableQueryField}
               borderlessQueryField={borderlessQueryField}
               loading={loading}
-              selectedViewName={selectedViewName}
             />
           </div>
           {children}

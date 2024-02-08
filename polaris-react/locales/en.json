@@ -169,8 +169,7 @@
       "clear": "Clear",
       "clearLabel": "Clear {filterName}",
       "addFilter": "Add filter",
-      "clearFilters": "Clear all",
-      "searchInView": "in:{viewName}"
+      "clearFilters": "Clear all"
     },
     "FilterPill": {
       "clear": "Clear"
