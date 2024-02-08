@@ -1,5 +1,32 @@
 # Changelog
 
+## 12.14.0
+
+### Minor Changes
+
+- [#11541](https://github.com/Shopify/polaris/pull/11541) [`1a6b65103`](https://github.com/Shopify/polaris/commit/1a6b65103b258ae1cc5dc24267dc8079db1f2934) Thanks [@itwasmattgregg](https://github.com/itwasmattgregg)! - Added `direction` prop to `InlineStack` to allow for reversing the direction of items.
+
+* [#11566](https://github.com/Shopify/polaris/pull/11566) [`5a1ada35a`](https://github.com/Shopify/polaris/commit/5a1ada35a73fd2ca1f6a0ce388abc1b788c114ff) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Removed the Card shadow bevel and decreased Card gap spacing for the mobile theme
+
+- [#11575](https://github.com/Shopify/polaris/pull/11575) [`074c96ece`](https://github.com/Shopify/polaris/commit/074c96ece68ddd56591dd512dce1469fe5a27c1c) Thanks [@mrcthms](https://github.com/mrcthms)! - Deprecated the suffix from the IndexFilters SearchField component
+
+### Patch Changes
+
+- [#11488](https://github.com/Shopify/polaris/pull/11488) [`e755a5790`](https://github.com/Shopify/polaris/commit/e755a5790bf66957e8cf87532a8f7cf0a94734ad) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `monochromePlain` `Button` `variant` SVG fill
+
+* [#11571](https://github.com/Shopify/polaris/pull/11571) [`fa00230fe`](https://github.com/Shopify/polaris/commit/fa00230fe50f99a28880200e4450640ae4790a28) Thanks [@tjonx](https://github.com/tjonx)! - Fixed scrollbar hover jank in safari by forcing re-paint
+
+- [#11567](https://github.com/Shopify/polaris/pull/11567) [`7dd064f6a`](https://github.com/Shopify/polaris/commit/7dd064f6a0b882ef4c7ced80e60b447f31990e7a) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the subtitle of the Page Header to have a sensible max-width
+
+* [#11565](https://github.com/Shopify/polaris/pull/11565) [`7d7451eea`](https://github.com/Shopify/polaris/commit/7d7451eeaa3171fe4fbd9a8bebf8ae60384e1be8) Thanks [@jesstelford](https://github.com/jesstelford)! - Remove references to se23/summer editions 2023/etc.
+
+- [#11572](https://github.com/Shopify/polaris/pull/11572) [`9fa4b7a20`](https://github.com/Shopify/polaris/commit/9fa4b7a204cc3198bb3707097acf466a157aa5b7) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed section heading action spacing
+
+* [#11537](https://github.com/Shopify/polaris/pull/11537) [`27cf15c98`](https://github.com/Shopify/polaris/commit/27cf15c982cffebe8cca7c3587f8b8f81467e26e) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated scrollbar colors and width
+
+* Updated dependencies [[`27cf15c98`](https://github.com/Shopify/polaris/commit/27cf15c982cffebe8cca7c3587f8b8f81467e26e), [`5a1ada35a`](https://github.com/Shopify/polaris/commit/5a1ada35a73fd2ca1f6a0ce388abc1b788c114ff)]:
+  - @shopify/polaris-tokens@8.7.0
+
 ## 12.13.0
 
 ### Minor Changes
