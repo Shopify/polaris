@@ -18,6 +18,8 @@ export interface ToastManagerProps {
 
 const ADDITIONAL_TOAST_BASE_MOVEMENT = 10;
 
+const TOAST_TRANSITION_DELAY = 30;
+
 /**
  * Will calculate the vertical movement of the toast based on the index of the sequence. As toasts get further back
  * in the view, we want them to not move as much, to give the perception of perspective. This sequence will match this:
@@ -42,6 +44,10 @@ export const ToastManager = memo(function ToastManager({
 }: ToastManagerProps) {
   const toastNodes: React.RefObject<HTMLDivElement>[] = [];
   const [shouldExpand, setShouldExpand] = useState(false);
+  const isFullyExpanded = useRef(false);
+  const fullyExpandedTimeout = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
   const firstToast = useRef<HTMLDivElement | null>(null);
 
   const updateToasts = useDeepCallback(() => {
@@ -74,15 +80,15 @@ export const ToastManager = memo(function ToastManager({
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-transition-delay-in',
-        `${shouldExpand ? reversedOrder * 0.03 : 0}s`,
+        `${shouldExpand ? reversedOrder * TOAST_TRANSITION_DELAY : 0}ms`,
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-scale-out',
-        `${reversedOrder === 0 ? 1 : scale ** 2}`,
+        `${reversedOrder === 0 ? 0.85 : scale ** 2}`,
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-translate-y-out',
-        `${reversedOrder === 0 ? -targetInPos + 150 : -targetInPos}px`,
+        `${-targetInPos}px`,
       );
     });
   }, [toastMessages, toastNodes, shouldExpand]);
@@ -91,6 +97,14 @@ export const ToastManager = memo(function ToastManager({
     updateToasts();
     if (toastMessages.length === 0) {
       setShouldExpand(false);
+    }
+    if (shouldExpand) {
+      fullyExpandedTimeout.current = setTimeout(() => {
+        isFullyExpanded.current = true;
+      }, toastMessages.length * TOAST_TRANSITION_DELAY + 400);
+    } else if (fullyExpandedTimeout.current) {
+      clearTimeout(fullyExpandedTimeout.current);
+      isFullyExpanded.current = false;
     }
   }, [toastMessages, shouldExpand]);
 
@@ -102,6 +116,11 @@ export const ToastManager = memo(function ToastManager({
     function handleMouseEnter() {
       setShouldExpand(true);
     }
+    function handleMouseEnterFirstToast() {
+      if (isFullyExpanded.current) {
+        setShouldExpand(false);
+      }
+    }
 
     return (
       <CSSTransition
@@ -112,7 +131,11 @@ export const ToastManager = memo(function ToastManager({
       >
         <div
           ref={toastNode}
-          onMouseEnter={reverseOrderIndex > 0 ? handleMouseEnter : undefined}
+          onMouseEnter={
+            reverseOrderIndex > 0
+              ? handleMouseEnter
+              : handleMouseEnterFirstToast
+          }
         >
           <div
             ref={(node) =>
