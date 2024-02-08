@@ -97,7 +97,7 @@ export interface FiltersProps {
   onAddFilterClick?: () => void;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
-  /** The name of the currently selected view */
+  /** @deprecated The name of the currently selected view */
   selectedViewName?: string;
 }
 

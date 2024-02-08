@@ -19,7 +19,7 @@ export interface SearchFieldProps {
   borderlessQueryField?: boolean;
   /** Show a loading spinner to the right of the input */
   loading?: boolean;
-  /** If present, will show as a suffix in the text field when entering a search term */
+  /** @deprecated If present, will show as a suffix in the text field when entering a search term */
   selectedViewName?: string;
 }
 
@@ -80,7 +80,7 @@ export function SearchField({
       label={placeholder}
       labelHidden
       clearButton
-      autoSize={mdUp}
+      autoSize={Boolean(suffix)}
       loading={loading}
     />
   );
