@@ -28,6 +28,10 @@ export interface CellProps {
   headers?: HTMLTableCellElement['headers'];
   /** Markup to render on cell hover */
   preview?: React.ReactNode;
+  /** Callback fired when mouse enters cell */
+  onMouseEnter?(): void;
+  /** Callback fired when mouse leaves cell */
+  onMouseLeave?(): void;
 }
 
 export const Cell = memo(function Cell({
@@ -40,6 +44,8 @@ export const Cell = memo(function Cell({
   as = 'td',
   id,
   preview,
+  onMouseEnter,
+  onMouseLeave,
 }: CellProps) {
   const indexCellContext = useIndexCell();
   const hasPreview = preview && indexCellContext !== undefined;
@@ -50,6 +56,18 @@ export const Cell = memo(function Cell({
     hasPreview && indexCellContext.previewActivatorWrapperClassName,
   );
 
+  const handlePreviewOpen = indexCellContext?.onMouseEnterCell(preview);
+
+  const handleMouseEnter = (event: React.MouseEvent<HTMLTableCellElement>) => {
+    if (hasPreview) handlePreviewOpen(event);
+    onMouseEnter?.();
+  };
+
+  const handleMouseLeave = (event: React.MouseEvent<HTMLTableCellElement>) => {
+    if (hasPreview) indexCellContext.onMouseLeaveCell(event);
+    onMouseLeave?.();
+  };
+
   return React.createElement(
     as,
     {
@@ -59,8 +77,8 @@ export const Cell = memo(function Cell({
       scope,
       className,
       'data-hovercard-activator': preview ? true : undefined,
-      onMouseEnter: indexCellContext?.onMouseEnterCell(preview),
-      onMouseLeave: indexCellContext.onMouseLeaveCell,
+      onMouseEnter: handleMouseEnter,
+      onMouseLeave: handleMouseLeave,
     },
     children,
   );
