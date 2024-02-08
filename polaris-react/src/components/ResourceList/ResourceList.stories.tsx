@@ -15,6 +15,9 @@ import {
   BlockStack,
   Box,
   InlineStack,
+  Frame,
+  Modal,
+  Scrollable,
 } from '@shopify/polaris';
 
 export default {
@@ -1310,7 +1313,7 @@ export function WithPagination() {
 }
 
 export function WithBulkActionsAndPagination() {
-  const [selectedItems, setSelectedItems] = useState([]);
+  const [selectedItems, setSelectedItems] = useState<string[] | 'All'>([]);
 
   const resourceName = {
     singular: 'customer',
@@ -1384,5 +1387,110 @@ export function WithBulkActionsAndPagination() {
         }}
       />
     </Card>
+  );
+}
+
+export function WithinAModal() {
+  const [active, setActive] = useState(true);
+  const [checked, setChecked] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<string[] | 'All'>([]);
+
+  const toggleActive = () => setActive((active) => !active);
+
+  const activator = <Button onClick={toggleActive}>Open</Button>;
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const items = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '#',
+      name: `Mae Jemison ${num}`,
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$24,00',
+    };
+  });
+
+  const promotedBulkActions = [
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  const listMarkup = (
+    <ResourceList
+      resourceName={resourceName}
+      items={items}
+      bulkActions={bulkActions}
+      promotedBulkActions={promotedBulkActions}
+      selectedItems={selectedItems}
+      onSelectionChange={setSelectedItems}
+      renderItem={(item) => {
+        const {id, url, name, location} = item;
+        const media = <Avatar customer size="md" name={name} />;
+
+        return (
+          <ResourceItem
+            id={id}
+            url={url}
+            media={media}
+            accessibilityLabel={`View details for ${name}`}
+          >
+            <h3>
+              <Text fontWeight="bold" as="span">
+                {name}
+              </Text>
+            </h3>
+            <div>{location}</div>
+          </ResourceItem>
+        );
+      }}
+    />
+  );
+
+  return (
+    <Frame>
+      <Modal
+        noScroll
+        activator={activator}
+        open={active}
+        onClose={toggleActive}
+        title="Import customers by CSV"
+        primaryAction={{
+          content: 'Import customers',
+          onAction: toggleActive,
+        }}
+        secondaryActions={[
+          {
+            content: 'Cancel',
+            onAction: toggleActive,
+          },
+        ]}
+      >
+        <Box>
+          <Scrollable style={{height: '65dvh'}}>{listMarkup}</Scrollable>
+        </Box>
+      </Modal>
+    </Frame>
   );
 }
