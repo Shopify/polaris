@@ -151,7 +151,7 @@ export class PositionedOverlay extends PureComponent<
       width: nextWidth,
       zIndex: zIndexOverride || zIndex || undefined,
     };
-
+    console.log(style);
     const className = classNames(
       styles.PositionedOverlay,
       fixed && styles.fixed,
@@ -384,12 +384,12 @@ export class PositionedOverlay extends PureComponent<
             activatorRect,
             left:
               (preferredAlignment !== 'right' && !positionedHorizontal) ||
-              calculatedHorizontalPosition.left
+              (positionedHorizontal && calculatedHorizontalPosition.left)
                 ? horizontalPosition
                 : undefined,
             right:
               (preferredAlignment === 'right' && !positionedHorizontal) ||
-              calculatedHorizontalPosition.right !== undefined
+              (positionedHorizontal && calculatedHorizontalPosition.right)
                 ? horizontalPosition
                 : undefined,
             top: lockPosition ? top : verticalPosition.top,
