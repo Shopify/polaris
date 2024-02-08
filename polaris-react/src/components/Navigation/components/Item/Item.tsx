@@ -47,6 +47,7 @@ export function Item({
   truncateText,
   showVerticalLine,
   showVerticalHoverPointer,
+  viewTransition,
   onMouseEnter,
   onMouseLeave,
 }: ItemProps) {
@@ -278,6 +279,7 @@ export function Item({
         aria-disabled={disabled}
         aria-label={accessibilityLabel}
         onClick={getClickHandler(onClick)}
+        viewTransition={viewTransition}
         {...normalizeAriaAttributes(
           secondaryNavigationId,
           subNavigationItems.length > 0,
