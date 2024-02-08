@@ -4,13 +4,9 @@ import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import {ContextualSaveBar as PolarisContextualSavebar} from '../../ContextualSaveBar';
-import {Loading as PolarisLoading} from '../../Loading';
 import {TrapFocus} from '../../TrapFocus';
 import {Frame} from '../Frame';
-import {
-  ContextualSaveBar as FrameContextualSavebar,
-  Loading as FrameLoading,
-} from '../components';
+import {ContextualSaveBar as FrameContextualSavebar} from '../components';
 
 window.matchMedia =
   window.matchMedia ||
@@ -325,18 +321,6 @@ describe('<Frame />', () => {
       );
 
       expect(frame).toContainReactComponent(FrameContextualSavebar);
-    });
-  });
-
-  describe('loading', () => {
-    it('renders a Frame Loading if Polaris Loading is rendered', () => {
-      const frame = mountWithApp(
-        <Frame>
-          <PolarisLoading />
-        </Frame>,
-      );
-
-      expect(frame).toContainReactComponent(FrameLoading);
     });
   });
 });
