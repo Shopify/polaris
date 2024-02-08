@@ -41,7 +41,7 @@ export const ToastManager = memo(function ToastManager({
   toastMessages,
 }: ToastManagerProps) {
   const toastNodes: React.RefObject<HTMLDivElement>[] = [];
-  const [isHovered, setIsHovered] = useState(false);
+  const [shouldExpand, setShouldExpand] = useState(false);
   const firstToast = useRef<HTMLDivElement | null>(null);
 
   const updateToasts = useDeepCallback(() => {
@@ -52,11 +52,11 @@ export const ToastManager = memo(function ToastManager({
       if (!currentToast.current) return;
 
       const toastHeight: number = currentToast.current.clientHeight;
-      const scale = isHovered ? 1 : 0.9 ** reversedOrder;
+      const scale = shouldExpand ? 1 : 0.9 ** reversedOrder;
 
       const additionalVerticalMovement: number =
         generateAdditionalVerticalMovement(reversedOrder);
-      const targetInPos = isHovered
+      const targetInPos = shouldExpand
         ? toastHeight + (toastHeight - 8) * reversedOrder
         : toastHeight + additionalVerticalMovement;
 
@@ -70,11 +70,11 @@ export const ToastManager = memo(function ToastManager({
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-blur-in',
-        isHovered ? '0' : `${reversedOrder * 0.5}px`,
+        shouldExpand ? '0' : `${reversedOrder * 0.5}px`,
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-transition-delay-in',
-        `${isHovered ? reversedOrder * 0.03 : 0}s`,
+        `${shouldExpand ? reversedOrder * 0.03 : 0}s`,
       );
       currentToast.current.style.setProperty(
         '--pc-toast-manager-scale-out',
@@ -85,11 +85,14 @@ export const ToastManager = memo(function ToastManager({
         `${reversedOrder === 0 ? -targetInPos + 150 : -targetInPos}px`,
       );
     });
-  }, [toastMessages, toastNodes, isHovered]);
+  }, [toastMessages, toastNodes, shouldExpand]);
 
   useDeepEffect(() => {
     updateToasts();
-  }, [toastMessages, isHovered]);
+    if (toastMessages.length === 0) {
+      setShouldExpand(false);
+    }
+  }, [toastMessages, shouldExpand]);
 
   const toastsMarkup = toastMessages.map((toast, index) => {
     const reverseOrderIndex = toastMessages.length - index - 1;
@@ -97,7 +100,7 @@ export const ToastManager = memo(function ToastManager({
     toastNodes[index] = toastNode;
 
     function handleMouseEnter() {
-      setIsHovered(true);
+      setShouldExpand(true);
     }
 
     return (
@@ -116,7 +119,7 @@ export const ToastManager = memo(function ToastManager({
               reverseOrderIndex === 0 ? (firstToast.current = node) : null
             }
           >
-            <Toast {...toast} isHovered={isHovered} />
+            <Toast {...toast} isHovered={shouldExpand} />
           </div>
         </div>
       </CSSTransition>
@@ -132,10 +135,10 @@ export const ToastManager = memo(function ToastManager({
         onMouseEnter={function (event: React.MouseEvent<HTMLDivElement>) {
           const target = event.target as HTMLElement;
           const isInFirstToast = firstToast.current?.contains(target);
-          setIsHovered(!isInFirstToast);
+          setShouldExpand(!isInFirstToast);
         }}
         onMouseLeave={function () {
-          setIsHovered(false);
+          setShouldExpand(false);
         }}
       >
         <TransitionGroup component={null}>{toastsMarkup}</TransitionGroup>
