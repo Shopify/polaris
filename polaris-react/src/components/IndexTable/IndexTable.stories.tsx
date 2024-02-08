@@ -6874,27 +6874,29 @@ export function WithinAModal() {
 
   return (
     <Frame>
-      <Modal
-        noScroll
-        activator={activator}
-        open={active}
-        onClose={toggleActive}
-        title="Import customers by CSV"
-        primaryAction={{
-          content: 'Import customers',
-          onAction: toggleActive,
-        }}
-        secondaryActions={[
-          {
-            content: 'Cancel',
+      <div style={{height: '500px'}}>
+        <Modal
+          noScroll
+          activator={activator}
+          open={active}
+          onClose={toggleActive}
+          title="Import customers by CSV"
+          primaryAction={{
+            content: 'Import customers',
             onAction: toggleActive,
-          },
-        ]}
-      >
-        <Box>
-          <Scrollable style={{height: '65dvh'}}>{table}</Scrollable>
-        </Box>
-      </Modal>
+          }}
+          secondaryActions={[
+            {
+              content: 'Cancel',
+              onAction: toggleActive,
+            },
+          ]}
+        >
+          <Box>
+            <Scrollable style={{height: '65dvh'}}>{table}</Scrollable>
+          </Box>
+        </Modal>
+      </div>
     </Frame>
   );
 }
