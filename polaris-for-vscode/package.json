@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/Shopify/polaris/issues"
   },
-  "version": "0.9.4",
+  "version": "0.9.5",
   "private": true,
   "keywords": [
     "polaris",
@@ -38,7 +38,7 @@
     "clean": "rm -rf .turbo node_modules dist *.tsbuildinfo"
   },
   "dependencies": {
-    "@shopify/polaris-tokens": "^8.6.0",
+    "@shopify/polaris-tokens": "^8.7.0",
     "vscode-languageclient": "^9.0.1",
     "vscode-languageserver": "^9.0.1",
     "vscode-languageserver-textdocument": "^1.0.11"
