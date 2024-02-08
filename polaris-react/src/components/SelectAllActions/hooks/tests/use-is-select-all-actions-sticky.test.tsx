@@ -36,12 +36,16 @@ function Component({
 
 describe('useIsSelectAllActionsSticky', () => {
   let getBoundingClientRectSpy: jest.SpyInstance;
+  let getComputedStyleSpy: jest.SpyInstance;
 
   beforeEach(() => {
+    getComputedStyleSpy = jest.spyOn(window, 'getComputedStyle');
+
     getBoundingClientRectSpy = jest.spyOn(
       Element.prototype,
       'getBoundingClientRect',
     );
+
     setGetBoundingClientRect({
       width: 600,
       height: 400,
@@ -53,6 +57,7 @@ describe('useIsSelectAllActionsSticky', () => {
   });
 
   afterEach(() => {
+    getComputedStyleSpy.mockRestore();
     getBoundingClientRectSpy.mockRestore();
     intersectionObserver.restore();
   });
@@ -88,15 +93,27 @@ describe('useIsSelectAllActionsSticky', () => {
       expect(result).toBe('20');
     });
 
-    it('returns the bottom value correctly', () => {
+    it('returns the bottom value correctly when not in a scroll container', () => {
+      setGetComputedStyle({
+        overflow: 'visible',
+        overflowX: 'visible',
+        overflowY: 'visible',
+      });
+
       const component = mountWithApp(<Component selectMode />);
       const result = component.findAll('span')[3]?.text();
       expect(result).toBe('0');
     });
 
     it('returns the bottom value correctly when in a scroll container', () => {
+      setGetComputedStyle({
+        overflow: 'auto',
+        overflowX: 'auto',
+        overflowY: 'auto',
+      });
+
       const component = mountWithApp(
-        <Scrollable style={{height: '400px'}}>
+        <Scrollable style={{height: '200px'}}>
           <Component selectMode />
         </Scrollable>,
       );
@@ -140,6 +157,25 @@ describe('useIsSelectAllActionsSticky', () => {
       expect(result).toBe('true');
     });
   });
+
+  function setGetComputedStyle({
+    overflow,
+    overflowX,
+    overflowY,
+  }: {
+    overflow: string;
+    overflowX: string;
+    overflowY: string;
+  }) {
+    getComputedStyleSpy.mockImplementation(() => {
+      return {
+        overflow,
+        overflowX,
+        overflowY,
+        toJSON() {},
+      };
+    });
+  }
 
   function setGetBoundingClientRect({
     width,

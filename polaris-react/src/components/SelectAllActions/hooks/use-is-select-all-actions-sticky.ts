@@ -116,9 +116,15 @@ export function useIsSelectAllActionsSticky({
 
     while (container && container !== document.body) {
       const style = window.getComputedStyle(container);
-      if (style.overflow === 'scroll' || style.overflow === 'auto') {
-        return container;
-      }
+      const isScrollContainer =
+        style.overflow === 'auto' ||
+        style.overflowX === 'auto' ||
+        style.overflowY === 'auto' ||
+        style.overflow === 'scroll' ||
+        style.overflowX === 'scroll' ||
+        style.overflowY === 'scroll';
+
+      if (isScrollContainer) return container;
       container = container.parentElement;
     }
 
@@ -136,16 +142,15 @@ export function useIsSelectAllActionsSticky({
       };
     }
 
-    const scrollContainer = getClosestScrollContainer(node);
+    const scrollContainer =
+      getClosestScrollContainer(node)?.getBoundingClientRect();
     const box = node.getBoundingClientRect();
     const paddingHeight = selectMode ? SELECT_ALL_ACTIONS_HEIGHT : 0;
     const offsetHeight = box.height - paddingHeight;
     const maxWidth = box.width - widthOffset;
     const offsetLeft = box.left;
     const offsetBottomScrollable = scrollContainer
-      ? Math.round(
-          scrollContainer?.getBoundingClientRect().y + SCROLL_BAR_HEIGHT,
-        )
+      ? Math.round(scrollContainer.y + SCROLL_BAR_HEIGHT)
       : 0;
 
     setSelectAllActionsAbsoluteOffset(offsetHeight);
