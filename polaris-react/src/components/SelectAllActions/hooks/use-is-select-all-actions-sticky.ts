@@ -71,6 +71,10 @@ export function useIsSelectAllActionsSticky({
 
   const handleIntersect = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
+      console.log(
+        'setting is sticky from handleIntersect function',
+        !entry.isIntersecting,
+      );
       setIsSticky(!entry.isIntersecting);
     });
   };
@@ -85,6 +89,10 @@ export function useIsSelectAllActionsSticky({
         entry.boundingClientRect.top + entry.boundingClientRect.height >
         rootBoundsHeight;
       if (hasTableOffscreen) {
+        console.log(
+          'settings from handleTableIntersect with table being offscreen',
+          entry,
+        );
         setIsSticky(entry.isIntersecting);
       }
       setIsScrolledPastTop(isScrolledPastTop);
