@@ -41,7 +41,7 @@ interface BaseHoverCardProps {
  * @prop activator: HTMLElement | null;
  */
 interface DynamicallyActivatedHoverCardProps {
-  activator: HTMLElement | null;
+  activator?: HTMLElement | null;
 }
 
 /**

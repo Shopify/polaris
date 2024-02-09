@@ -48,6 +48,7 @@ export const Cell = memo(function Cell({
   onMouseLeave,
 }: CellProps) {
   const indexCellContext = useIndexCell();
+  console.log('indexCellContext', indexCellContext);
   const hasPreview = preview && indexCellContext !== undefined;
   const className = classNames(
     customClassName,
@@ -56,9 +57,10 @@ export const Cell = memo(function Cell({
     hasPreview && indexCellContext.previewActivatorWrapperClassName,
   );
 
-  const handlePreviewOpen = hasPreview
-    ? indexCellContext.onMouseEnterCell(preview)
-    : undefined;
+  const handlePreviewOpen =
+    hasPreview && indexCellContext?.onMouseEnterCell
+      ? indexCellContext?.onMouseEnterCell(preview)
+      : undefined;
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLTableCellElement>) => {
     if (handlePreviewOpen) handlePreviewOpen(event);
@@ -66,7 +68,10 @@ export const Cell = memo(function Cell({
   };
 
   const handleMouseLeave = (event: React.MouseEvent<HTMLTableCellElement>) => {
-    if (hasPreview) indexCellContext.onMouseLeaveCell(event);
+    if (hasPreview && indexCellContext?.onMouseLeaveCell) {
+      indexCellContext?.onMouseLeaveCell(event);
+    }
+
     onMouseLeave?.();
   };
 
