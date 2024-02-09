@@ -8,7 +8,7 @@ const buttonShadow = `0 0 0 ${createVar('border-width-025')} ${createVar(
 
 export const metaThemeLightMobilePartial = createMetaThemePartial({
   color: {
-    'color-button-bg-gradient-primary': {
+    'color-button-gradient-bg-fill': {
       value: 'none',
     },
   },
