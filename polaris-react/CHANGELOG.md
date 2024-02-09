@@ -1,5 +1,18 @@
 # Changelog
 
+## 12.15.0
+
+### Minor Changes
+
+- [#11552](https://github.com/Shopify/polaris/pull/11552) [`04e462816`](https://github.com/Shopify/polaris/commit/04e462816b2082cb0bac341f3827f1c767213499) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Applied native mobile styles to Button component for the light-mobile theme
+
+### Patch Changes
+
+- [#11570](https://github.com/Shopify/polaris/pull/11570) [`e7f1961e1`](https://github.com/Shopify/polaris/commit/e7f1961e169298d829afd0620a4d003fb85b748d) Thanks [@chloerice](https://github.com/chloerice)! - Fixed the position of `SelectAllActions` when inside of an offset scrollable container
+
+- Updated dependencies [[`04e462816`](https://github.com/Shopify/polaris/commit/04e462816b2082cb0bac341f3827f1c767213499)]:
+  - @shopify/polaris-tokens@8.8.0
+
 ## 12.14.0
 
 ### Minor Changes
