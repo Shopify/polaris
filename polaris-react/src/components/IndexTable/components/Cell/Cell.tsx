@@ -48,7 +48,6 @@ export const Cell = memo(function Cell({
   onMouseLeave,
 }: CellProps) {
   const indexCellContext = useIndexCell();
-  console.log('indexCellContext', indexCellContext);
   const hasPreview = preview && indexCellContext !== undefined;
   const className = classNames(
     customClassName,
