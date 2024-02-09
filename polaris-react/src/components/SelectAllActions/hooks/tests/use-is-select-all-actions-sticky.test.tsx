@@ -158,6 +158,84 @@ describe('useIsSelectAllActionsSticky', () => {
     });
   });
 
+  describe('when the table is off screen', () => {
+    it('will set isSelectAllActionsSticky to true if we are intersecting', () => {
+      const component = mountWithApp(<Component selectMode />);
+
+      const table = component.find('div');
+
+      component.act(() => {
+        intersectionObserver.simulate({
+          isIntersecting: true,
+          target: table!.domNode!,
+          boundingClientRect: {
+            top: 100,
+            height: 100,
+            width: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            x: 0,
+            y: 0,
+            toJSON: jest.fn(),
+          },
+          rootBounds: {
+            height: 150,
+            top: 0,
+            width: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            x: 0,
+            y: 0,
+            toJSON: jest.fn(),
+          },
+        });
+      });
+
+      const result = component.find('p')?.text();
+      expect(result).toBe('true');
+    });
+
+    it('will not set isSelectAllActionsSticky to true if we are intersecting but the rootBounds is large enough', () => {
+      const component = mountWithApp(<Component selectMode />);
+
+      const table = component.find('div');
+
+      component.act(() => {
+        intersectionObserver.simulate({
+          isIntersecting: true,
+          target: table!.domNode!,
+          boundingClientRect: {
+            top: 100,
+            height: 100,
+            width: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            x: 0,
+            y: 0,
+            toJSON: jest.fn(),
+          },
+          rootBounds: {
+            height: 250,
+            top: 0,
+            width: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            x: 0,
+            y: 0,
+            toJSON: jest.fn(),
+          },
+        });
+      });
+
+      const result = component.find('p')?.text();
+      expect(result).toBe('false');
+    });
+  });
+
   function setGetComputedStyle({
     overflow,
     overflowX,

@@ -653,16 +653,6 @@ function IndexTableBase({
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
 
-  // eslint-disable-next-line no-console
-  console.log({
-    selectAllActionsOffsetBottom,
-    isSelectAllActionsSticky,
-    tableMeasurerRef,
-    selectAllActionsIntersectionRef,
-    selectAllActionsAbsoluteOffset,
-    isScrolledPastTop,
-  });
-
   const selectAllActionsMarkup =
     shouldShowActions && !condensed ? (
       <div
