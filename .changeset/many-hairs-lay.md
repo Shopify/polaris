@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Combobox handles properly children that depends on external factors
+Fixed `Combobox` not rendering `Popover` until the second firing of the `onChange` event
