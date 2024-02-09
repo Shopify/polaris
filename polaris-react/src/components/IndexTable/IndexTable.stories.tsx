@@ -31,6 +31,9 @@ import {IndexTable} from './IndexTable';
 
 export default {
   component: IndexTable,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as ComponentMeta<typeof IndexTable>;
 
 export function Default() {
@@ -6971,7 +6974,6 @@ export function WithUnmountingTable() {
 
   return (
     <>
-      <button onClick={() => setIsShowing(!isShowing)}>Toggle</button>
       {isShowing && (
         <LegacyCard>
           <IndexTable
@@ -6994,6 +6996,7 @@ export function WithUnmountingTable() {
           </IndexTable>
         </LegacyCard>
       )}
+      <button onClick={() => setIsShowing(!isShowing)}>Toggle</button>
     </>
   );
 }

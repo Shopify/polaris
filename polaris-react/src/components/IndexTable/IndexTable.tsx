@@ -659,6 +659,8 @@ function IndexTableBase({
     isSelectAllActionsSticky,
     tableMeasurerRef,
     selectAllActionsIntersectionRef,
+    selectAllActionsAbsoluteOffset,
+    isScrolledPastTop,
   });
 
   const selectAllActionsMarkup =
