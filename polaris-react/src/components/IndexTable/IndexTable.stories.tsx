@@ -31,9 +31,6 @@ import {IndexTable} from './IndexTable';
 
 export default {
   component: IndexTable,
-  parameters: {
-    layout: 'fullscreen',
-  },
 } as ComponentMeta<typeof IndexTable>;
 
 export function Default() {
