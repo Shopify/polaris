@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {TextField} from '../../TextField';
@@ -94,6 +94,46 @@ describe('<Combobox />', () => {
     );
 
     triggerFocus(combobox);
+
+    expect(combobox).toContainReactComponent(Popover, {
+      active: true,
+    });
+  });
+
+  it('renders an active Popover when the text input has content and children depends on that text input', () => {
+    function ComboboxWithHandledChange() {
+      const handleChange = (value: string) => {
+        setInputValue(value);
+      };
+
+      const [inputValue, setInputValue] = useState('');
+
+      return (
+        <Combobox
+          activator={
+            <Combobox.TextField
+              onChange={handleChange}
+              label=""
+              value=""
+              autoComplete="off"
+            />
+          }
+        >
+          {
+            // eslint-disable-next-line jest/no-if
+            inputValue.length > 0 ? (
+              <Listbox>
+                <Listbox.Option accessibilityLabel="Option 1" value="option1" />
+              </Listbox>
+            ) : null
+          }
+        </Combobox>
+      );
+    }
+
+    const combobox = mountWithApp(<ComboboxWithHandledChange />);
+
+    combobox.find(TextField)?.trigger('onChange', 'value');
 
     expect(combobox).toContainReactComponent(Popover, {
       active: true,
