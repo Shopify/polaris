@@ -11,6 +11,7 @@
   // stylelint-enable
   position: relative;
   border-radius: 0;
+  scrollbar-color: auto;
 
   @media (--p-breakpoints-sm-up) {
     border-radius: inherit;
