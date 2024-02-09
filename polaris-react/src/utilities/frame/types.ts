@@ -67,6 +67,7 @@ interface BaseToastProps {
   tone?: 'magic';
   /** Icon prefix for the toast content */
   icon?: IconSource;
+  isHovered?: boolean;
 }
 
 interface ClickableToast {
