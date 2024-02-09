@@ -81,6 +81,10 @@ export function useIsSelectAllActionsSticky({
 
   const handleTableIntersect = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry: IntersectionObserverEntry) => {
+      console.log('handling table intersect', entry);
+      if (!entry.rootBounds) {
+        return;
+      }
       const isScrolledPastTop =
         entry.boundingClientRect.top > 0 && !entry.isIntersecting;
       const rootBoundsHeight = entry.rootBounds?.height || 0;
