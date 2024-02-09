@@ -45,22 +45,19 @@ export const IndexRowContext = createContext<IndexRowContextType | undefined>(
 );
 
 export interface IndexCellContextType {
-  previewActivatorWrapperClassName: string;
-  onMouseEnterCell(
+  previewActivatorWrapperClassName?: string;
+  onMouseEnterCell?(
     preview: React.ReactNode,
   ): (event: React.MouseEvent<HTMLDivElement>) => void;
-  onMouseLeaveCell(event: React.MouseEvent<HTMLDivElement>): void;
+  onMouseLeaveCell?(event: React.MouseEvent<HTMLDivElement>): void;
 }
 
-export const IndexCellContext = createContext<IndexCellContextType | undefined>(
-  undefined,
-);
+export const IndexCellContext = createContext<IndexCellContextType>({});
 
 export interface IndexCellPreviewContextType {
-  activeCellPreview: React.ReactNode;
-  currentCellPreviewActivator: HTMLElement | null;
+  activeCellPreview?: React.ReactNode;
+  currentCellPreviewActivator?: HTMLElement | null;
 }
 
-export const IndexCellPreviewContext = createContext<
-  IndexCellPreviewContextType | undefined
->(undefined);
+export const IndexCellPreviewContext =
+  createContext<IndexCellPreviewContextType>({});
