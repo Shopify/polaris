@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.8.0
+
+### Minor Changes
+
+- [#11552](https://github.com/Shopify/polaris/pull/11552) [`04e462816`](https://github.com/Shopify/polaris/commit/04e462816b2082cb0bac341f3827f1c767213499) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Applied native mobile styles to Button component for the light-mobile theme
+
 ## 8.7.0
 
 ### Minor Changes
