@@ -69,6 +69,8 @@ export function All() {
       <RightAlignedDisclosure />
       <Text {...textProps}>Select disclosure</Text>
       <SelectDisclosure />
+      <Text {...textProps}>Disclosure and icon</Text>
+      <DisclosureAndIcon />
       <Text {...textProps}>Split</Text>
       <Split />
       <Text {...textProps}>Disabled state</Text>
@@ -726,6 +728,28 @@ export function SelectDisclosure() {
         Select options
       </Button>
     </div>
+  );
+}
+
+export function DisclosureAndIcon() {
+  return (
+    <InlineStack gap="200">
+      <div style={{width: 200}}>
+        <Button icon={EditIcon} disclosure fullWidth textAlign="start">
+          Select options
+        </Button>
+      </div>
+      <div style={{width: 200}}>
+        <Button icon={EditIcon} disclosure fullWidth textAlign="center">
+          Select options
+        </Button>
+      </div>
+      <div style={{width: 200}}>
+        <Button icon={EditIcon} disclosure fullWidth textAlign="right">
+          Select options
+        </Button>
+      </div>
+    </InlineStack>
   );
 }
 

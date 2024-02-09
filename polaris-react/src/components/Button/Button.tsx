@@ -132,6 +132,7 @@ export function Button({
     disclosure && styles.disclosure,
     icon && children && styles.iconWithText,
     icon && children == null && styles.iconOnly,
+    icon && children && disclosure && styles.iconWithTextAndDisclosure,
     isDisabled && styles.disabled,
     loading && styles.loading,
     pressed && !disabled && !url && styles.pressed,
@@ -166,7 +167,10 @@ export function Button({
 
   const childMarkup = children ? (
     <span
-      className={removeUnderline ? styles.removeUnderline : ''}
+      className={classNames(
+        styles.Children,
+        removeUnderline && styles.removeUnderline,
+      )}
       // Fixes Safari bug that doesn't re-render button text to correct color
       key={disabled ? 'text-disabled' : 'text'}
     >

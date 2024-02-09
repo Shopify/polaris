@@ -347,6 +347,10 @@
   justify-content: space-between;
 }
 
+.iconWithTextAndDisclosure .Children {
+  flex-grow: 1;
+}
+
 // LOADING
 .loading {
   color: transparent;
