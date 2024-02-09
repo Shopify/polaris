@@ -107,7 +107,7 @@ export type ColorBackgroundAlias =
   | 'avatar-three-bg-fill'
   | 'avatar-two-bg-fill'
   | 'backdrop-bg'
-  | 'button-bg-gradient-primary'
+  | 'button-gradient-bg-fill'
   | 'checkbox-bg-surface-disabled'
   | 'input-bg-surface-active'
   | 'input-bg-surface-hover'
@@ -1132,7 +1132,7 @@ export const color: {
   'color-backdrop-bg': {
     value: colors.blackAlpha[14],
   },
-  'color-button-bg-gradient-primary': {
+  'color-button-gradient-bg-fill': {
     value:
       'linear-gradient(180deg, rgba(48, 48, 48, 0) 63.53%, rgba(255, 255, 255, 0.15) 100%)',
   },
