@@ -28,7 +28,7 @@
 .HoverCardOverlay {
   will-change: opacity, left, right, top;
   opacity: 0;
-  // stylelint-disable-next-line polaris/layout/declaration-property-value-disallowed-list -- Need to initialize top here in order to animate when it changes in the PositionedOverlay style declaration
+  // Need to initialize top here in order to animate when it changes in the PositionedOverlay style declaration
   top: 0;
   transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
@@ -39,7 +39,7 @@
 
 .HoverCardOverlay-active {
   opacity: 1;
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list, polaris/layout/declaration-property-value-disallowed-list -- Need to set top here in order to animate when it changes in the PositionedOverlay style declaration
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Need to set top here in order to animate when it changes in the PositionedOverlay style declaration
   top: var(--pc-positioned-overlay-top);
 }
 
