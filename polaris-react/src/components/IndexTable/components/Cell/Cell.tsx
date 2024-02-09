@@ -56,10 +56,12 @@ export const Cell = memo(function Cell({
     hasPreview && indexCellContext.previewActivatorWrapperClassName,
   );
 
-  const handlePreviewOpen = indexCellContext?.onMouseEnterCell(preview);
+  const handlePreviewOpen = hasPreview
+    ? indexCellContext.onMouseEnterCell(preview)
+    : undefined;
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLTableCellElement>) => {
-    if (hasPreview) handlePreviewOpen(event);
+    if (handlePreviewOpen) handlePreviewOpen(event);
     onMouseEnter?.();
   };
 
