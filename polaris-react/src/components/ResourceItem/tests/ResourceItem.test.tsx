@@ -227,6 +227,22 @@ describe('<ResourceItem />', () => {
 
       expect(element).toContainReactComponent('div', {'data-href': url} as any);
     });
+
+    it('does not render an <UnstyledLink /> when active prop is true', () => {
+      const element = mountWithApp(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            id="itemId"
+            url={url}
+            onClick={noop}
+            accessibilityLabel={ariaLabel}
+            active
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(element).not.toContainReactComponent(UnstyledLink);
+    });
   });
 
   describe('external', () => {
@@ -386,6 +402,38 @@ describe('<ResourceItem />', () => {
 
       findResourceItem(wrapper)!.trigger('onKeyUp', {key: 'Enter'});
       expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it('does not call onClick when hitting keyUp on the item when onClick exists, url exists and is not active', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectModeContext}>
+          <ResourceItem id={itemId} url="#" onClick={onClick} active />
+        </ResourceListContext.Provider>,
+      );
+
+      findResourceItem(wrapper)!.trigger('onKeyUp', {key: 'Enter'});
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it('does not call onClick when clicking on the item when onClick exists and is active', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithApp(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            id={itemId}
+            onClick={onClick}
+            accessibilityLabel={ariaLabel}
+            active
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      findResourceItem(wrapper)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
+      expect(onClick).not.toHaveBeenCalledWith(itemId);
     });
 
     it('calls window.open on ctrlKey + click', () => {

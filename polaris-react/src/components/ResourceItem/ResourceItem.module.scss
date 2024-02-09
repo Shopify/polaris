@@ -84,6 +84,14 @@
   margin-right: 0;
 }
 
+.active {
+  cursor: default;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 // Item actions
 .Actions {
   > * {
