@@ -52,7 +52,9 @@ export function Combobox({
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
-  const shouldOpen = Boolean(!popoverActive && Children.count(children) > 0);
+  const shouldOpen = !popoverActive;
+  const popoverActiveWithChildren =
+    popoverActive && Children.count(children) > 0;
   const ref = useRef<PopoverPublicAPI | null>(null);
 
   const handleClose = useCallback(() => {
@@ -151,7 +153,7 @@ export function Combobox({
   return (
     <Popover
       ref={ref}
-      active={popoverActive}
+      active={popoverActiveWithChildren}
       activator={
         <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
           {activator}
