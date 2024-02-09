@@ -152,7 +152,7 @@ export class PositionedOverlay extends PureComponent<
       width: nextWidth,
       zIndex: zIndexOverride || zIndex || undefined,
     };
-    console.log(style);
+
     const className = classNames(
       styles.PositionedOverlay,
       fixed && styles.fixed,
