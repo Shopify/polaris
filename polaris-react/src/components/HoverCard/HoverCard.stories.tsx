@@ -171,6 +171,7 @@ export function WithDynamicActivator() {
   }
 
   interface OrderDetailPreview {
+    id: string;
     location?: string;
     deliveryMethod: string;
     fulfillmentStatus: React.ReactNode;
@@ -179,10 +180,10 @@ export function WithDynamicActivator() {
 
   const orders = [
     {
-      id: '1020',
+      id: '1021',
       title: (
         <Text as="span" variant="bodyMd" fontWeight="semibold">
-          #1020
+          #1021
         </Text>
       ),
       date: 'Jul 20 at 4:34pm',
@@ -201,6 +202,65 @@ export function WithDynamicActivator() {
           Partially paid
         </Badge>
       ),
+      fulfillmentStatus: <Badge progress="complete">Fulfilled</Badge>,
+      items: [
+        {
+          quantity: 40,
+          title: 'Perforated Driving Glove - Lavender/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_of_classic_two-tone_per_2d730775-1987-49ec-8571-3756d83ef508.png?v=1704767232',
+          variant: 'Size - S (8.5)',
+          skuNumber: '178988',
+        },
+        {
+          quantity: 56,
+          title: 'Perforated Driving Glove - Lavender/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_of_classic_two-tone_per_2d730775-1987-49ec-8571-3756d83ef508.png?v=1704767232',
+          variant: 'Size - M (9)',
+          skuNumber: '178988',
+        },
+        {
+          quantity: 79,
+          title: 'Perforated Driving Glove - Lavender/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_of_classic_two-tone_per_2d730775-1987-49ec-8571-3756d83ef508.png?v=1704767232',
+          variant: 'Size - L (9.5)',
+          skuNumber: '178988',
+        },
+        {
+          quantity: 56,
+          title: 'Perforated Driving Glove - Lavender/White',
+          imageSrc:
+            'https://cdn.shopify.com/s/files/1/2376/3301/files/3D_render_product_image_of_classic_two-tone_per_2d730775-1987-49ec-8571-3756d83ef508.png?v=1704767232',
+          variant: 'Size - XL (10)',
+          skuNumber: '178988',
+        },
+      ],
+      deliveryStatus: 'Complete',
+      deliveryMethod: 'Local Pickup',
+      location: 'Ridgewood Factory',
+      tags: ['VIP', 'wholesale', 'Net 30', 'pickup', 'priority'],
+    },
+    {
+      id: '1022',
+      title: (
+        <Text as="span" variant="bodyMd" fontWeight="semibold">
+          #1020
+        </Text>
+      ),
+      date: 'Jun 2 at 12:57pm',
+      customer: {
+        id: '4102',
+        email: 'yo@superduperkid.co',
+        phone: '+19171111111',
+        name: 'Colm Dillane',
+        location: 'Brooklyn, NY, USA',
+        orders: 27,
+      },
+      channel: 'Online Store',
+      total: '$649.40',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
       fulfillmentStatus: <Badge progress="complete">Fulfilled</Badge>,
       items: [
         {
@@ -329,11 +389,18 @@ export function WithDynamicActivator() {
   const {selectedResources, allResourcesSelected, handleSelectionChange} =
     useIndexResourceState(orders);
 
-  const renderCustomerCellPreview = (customer: CustomerDetailPreview) => {
+  const renderCustomerCellPreview = (
+    customer: CustomerDetailPreview,
+    orderId: string,
+  ) => {
     const {name, phone, email, location, orders} = customer;
 
     return (
-      <Box padding="400" maxWidth="288px">
+      <Box
+        key={`CustomerCellPreview--${orderId}`}
+        padding="400"
+        maxWidth="288px"
+      >
         <BlockStack gap="400">
           <BlockStack gap="0">
             <Text as="span" variant="headingSm">
@@ -375,7 +442,12 @@ export function WithDynamicActivator() {
     const {location, deliveryMethod, fulfillmentStatus, items} = order;
 
     return (
-      <Box padding="400" minWidth="300px" maxWidth="416px">
+      <Box
+        key={`LineItemPreview--${order.id}`}
+        padding="400"
+        minWidth="300px"
+        maxWidth="416px"
+      >
         <BlockStack gap="200">
           <InlineStack>{fulfillmentStatus}</InlineStack>
           <Box
@@ -527,7 +599,10 @@ export function WithDynamicActivator() {
         >
           <IndexTable.Cell>{title}</IndexTable.Cell>
           <IndexTable.Cell>{date}</IndexTable.Cell>
-          <IndexTable.Cell flush preview={renderCustomerCellPreview(customer)}>
+          <IndexTable.Cell
+            flush
+            preview={renderCustomerCellPreview(customer, id)}
+          >
             <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
               <Link monochrome removeUnderline url="#">
                 {customer.name}
@@ -545,6 +620,7 @@ export function WithDynamicActivator() {
           <IndexTable.Cell
             flush
             preview={renderItemsCellPreview({
+              id,
               location,
               deliveryMethod,
               fulfillmentStatus,
