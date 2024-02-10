@@ -59,6 +59,10 @@ $dropzone-stacking-order: (
   &:hover {
     outline: var(--p-border-width-025) solid transparent;
   }
+
+  &.noOutline {
+    background-color: transparent;
+  }
 }
 
 .hasOutline {
