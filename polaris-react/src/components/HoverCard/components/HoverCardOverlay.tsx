@@ -10,6 +10,7 @@ import styles from '../HoverCard.module.scss';
 export interface HoverCardOverlayProps {
   id: string;
   children: React.ReactNode;
+  contentKey?: string;
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   active: boolean;
