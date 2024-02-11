@@ -80,7 +80,6 @@ export function HoverCardOverlay({
         <div ref={contentNode} className={styles.ContentContainer}>
           <Scrollable
             id={id}
-            shadow
             data-hovercard-content
             className={styles.Content}
             style={contentStyles}
