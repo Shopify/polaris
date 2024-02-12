@@ -76,6 +76,7 @@ export const BlockStack = ({
     as,
     {
       className,
+      id,
       style: sanitizeCustomProperties(style),
       ...restProps,
     },
