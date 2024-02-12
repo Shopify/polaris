@@ -34,6 +34,26 @@ jest.mock('../../../utilities/debounce', () => ({
   },
 }));
 
+function mockUseBreakpoints(mdUp: boolean) {
+  const useBreakpoints: jest.Mock = jest.requireMock(
+    '../../../utilities/breakpoints',
+  ).useBreakpoints;
+
+  useBreakpoints.mockReturnValue({
+    mdUp,
+  });
+}
+
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 const mockTableItems = [
   {
     id: 'item-1',
@@ -84,6 +104,8 @@ describe('<IndexTable>', () => {
 
   beforeEach(() => {
     jest.resetAllMocks();
+    mockUseBreakpoints(false);
+
     (getTableHeadingsBySelector as jest.Mock).mockReturnValue([]);
   });
 

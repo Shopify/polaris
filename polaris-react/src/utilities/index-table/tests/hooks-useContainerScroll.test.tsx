@@ -7,6 +7,16 @@ import {IndexTable, ScrollContainer} from '../../../components/IndexTable';
 import type {IndexTableProps} from '../../../components/IndexTable';
 import {useContainerScroll} from '../hooks';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 function Component({condensed}: {condensed?: boolean}) {
   const {scrollableContainer, canScrollLeft, canScrollRight} =
     useContainerScroll();

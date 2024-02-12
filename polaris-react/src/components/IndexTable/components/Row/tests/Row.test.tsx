@@ -15,6 +15,16 @@ import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
 import styles from '../../../IndexTable.module.scss';
 import type {Range} from '../../../../../utilities/index-provider';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 const defaultEvent = {
   preventDefault: noop,
   stopPropagation: noop,
