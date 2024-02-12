@@ -7,6 +7,16 @@ import {IndexTable} from '../../../components/IndexTable';
 import type {IndexTableProps} from '../../../components/IndexTable';
 import {useRowSelected} from '../hooks';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 function Component() {
   const selected = useRowSelected();
   const content = selected ? 'Selected' : 'Unselected';

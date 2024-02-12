@@ -4,6 +4,16 @@ import {mountWithApp} from 'tests/utilities';
 import {ScrollContext} from '../../../../../utilities/index-table';
 import {ScrollContainer} from '../ScrollContainer';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 function TestComponent() {
   const containerRef = React.useRef(null);
 

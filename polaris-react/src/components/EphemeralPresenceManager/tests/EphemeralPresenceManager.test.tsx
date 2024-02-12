@@ -3,6 +3,16 @@ import {mountWithApp} from 'tests/utilities';
 
 import {useEphemeralPresenceManager} from '../../../utilities/ephemeral-presence-manager';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 const Component = () => {
   const {presenceList, presenceCounter, addPresence, removePresence} =
     useEphemeralPresenceManager();
