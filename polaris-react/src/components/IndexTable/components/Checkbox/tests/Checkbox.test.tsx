@@ -19,6 +19,16 @@ jest.mock('../../../../../utilities/debounce', () => ({
   debounce: (callback: () => void) => () => callback(),
 }));
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 describe('<Checkbox />', () => {
   let getBoundingClientRectSpy: jest.SpyInstance;
   let setRootPropertySpy: jest.SpyInstance;
