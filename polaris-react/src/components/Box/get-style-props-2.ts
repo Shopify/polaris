@@ -8,8 +8,8 @@
  * -------------------------------------------
  *
  * Object.keys() appears to be slightly faster
- * (possibly because Object.keys returns an iterable that the JS engine has to
- * construct on every call wheras Object.keys returns a pre-calculated array
+ * (possibly because Object.entries returns an iterable that the JS engine has
+ * to construct on every call wheras Object.keys returns a pre-calculated array
  * of the keys due to the way the data is represented within the JS engine.
  *
  * Test: https://www.measurethat.net/Benchmarks/Show/3685/0/objectentries-vs-objectkeys-vs-objectkeys-with-extra-ar#latest_results_block
