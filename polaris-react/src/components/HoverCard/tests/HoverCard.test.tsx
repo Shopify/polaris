@@ -15,7 +15,7 @@ const defaultProps: HoverCardProps = {
 };
 
 jest.mock('../../../utilities/breakpoints', () => ({
-  ...(jest.requireActual('../../../utilities/breakpoints') as any),
+  ...jest.requireActual('../../../utilities/breakpoints'),
   useBreakpoints: jest.fn(),
 }));
 

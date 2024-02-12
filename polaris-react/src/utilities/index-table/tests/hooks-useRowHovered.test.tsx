@@ -7,6 +7,16 @@ import {IndexTable} from '../../../components/IndexTable';
 import type {IndexTableProps} from '../../../components/IndexTable';
 import {useRowHovered} from '../hooks';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 function Component() {
   const hovered = useRowHovered();
   const content = hovered ? 'In' : 'Out';

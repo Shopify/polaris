@@ -4,6 +4,16 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Cell} from '../Cell';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 describe('<Cell />', () => {
   it('renders a table data tag', () => {
     const cell = mountWithTable(<Cell />);
