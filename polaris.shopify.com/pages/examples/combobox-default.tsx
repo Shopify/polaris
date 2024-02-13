@@ -1,5 +1,5 @@
 import {Listbox, Combobox, Icon} from '@shopify/polaris';
-import {SearchMinor} from '@shopify/polaris-icons';
+import {SearchIcon} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -19,6 +19,11 @@ function ComboboxExample() {
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
+  const escapeSpecialRegExCharacters = useCallback(
+    (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+    [],
+  );
+
   const updateText = useCallback(
     (value: string) => {
       setInputValue(value);
@@ -28,13 +33,13 @@ function ComboboxExample() {
         return;
       }
 
-      const filterRegex = new RegExp(value, 'i');
+      const filterRegex = new RegExp(escapeSpecialRegExCharacters(value), 'i');
       const resultOptions = deselectedOptions.filter((option) =>
         option.label.match(filterRegex),
       );
       setOptions(resultOptions);
     },
-    [deselectedOptions],
+    [deselectedOptions, escapeSpecialRegExCharacters],
   );
 
   const updateSelection = useCallback(
@@ -72,7 +77,7 @@ function ComboboxExample() {
       <Combobox
         activator={
           <Combobox.TextField
-            prefix={<Icon source={SearchMinor} />}
+            prefix={<Icon source={SearchIcon} />}
             onChange={updateText}
             label="Search tags"
             labelHidden

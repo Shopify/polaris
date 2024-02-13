@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import type {PropsWithChildren} from 'react';
 import type {ColorTextAlias} from '@shopify/polaris-tokens';
-import {CancelMinor} from '@shopify/polaris-icons';
+import {XIcon} from '@shopify/polaris-icons';
 
 import type {Action, DisableableAction, LoadableAction} from '../../types';
 import {Text} from '../Text';
@@ -28,7 +28,7 @@ import {useI18n} from '../../utilities/i18n';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {BlockStack} from '../BlockStack';
 
-import styles from './Banner.scss';
+import styles from './Banner.module.scss';
 import type {BannerHandles} from './utilities';
 import {bannerAttributes, useBannerFocus} from './utilities';
 
@@ -155,7 +155,7 @@ export function BannerLayout({
               styles[isInlineIconBanner ? 'icon-secondary' : bannerColors.icon]
             }
           >
-            <Icon source={CancelMinor} />
+            <Icon source={XIcon} />
           </span>
         }
         onClick={onDismiss}

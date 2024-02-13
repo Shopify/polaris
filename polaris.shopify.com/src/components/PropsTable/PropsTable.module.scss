@@ -2,7 +2,7 @@
 @import '../../styles/variables.scss';
 
 .UnparsablePropsWarning {
-  background: url(/images/CircleAlertMajor.svg) no-repeat left 0.275rem;
+  background: url(/images/AlertCircleIcon.svg) no-repeat left 0.275rem;
   background-size: 16px auto;
   padding-left: 24px;
   p {
@@ -131,4 +131,14 @@
 
 .SyntaxNumber {
   color: var(--code-number);
+}
+
+.CopyButton {
+  opacity: 0.5;
+  background: none;
+  margin-inline-start: 0.25rem;
+
+  &:hover {
+    opacity: 1;
+  }
 }

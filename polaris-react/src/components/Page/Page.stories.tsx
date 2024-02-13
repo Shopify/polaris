@@ -1,12 +1,12 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  ArrowDownMinor,
-  DeleteMinor,
-  ExternalMinor,
-  MobileVerticalDotsMajor,
-  PlusMinor,
-  ViewMinor,
+  DeleteIcon,
+  PlusIcon,
+  ArrowDownIcon,
+  ExternalIcon,
+  ViewIcon,
+  MenuVerticalIcon,
 } from '@shopify/polaris-icons';
 import {
   Badge,
@@ -34,20 +34,20 @@ export function Default() {
         {
           content: 'Delete',
           tone: 'critical',
-          icon: DeleteMinor,
+          icon: DeleteIcon,
           accessibilityLabel: 'Delete action label',
           onAction: () => console.log('Delete action'),
         },
         {
           content: 'View on your store',
-          icon: ViewMinor,
+          icon: ViewIcon,
           onAction: () => console.log('View on your store action'),
         },
       ]}
       actionGroups={[
         {
           title: 'Promote',
-          icon: MobileVerticalDotsMajor,
+          icon: MenuVerticalIcon,
           actions: [
             {
               content: 'Share on Facebook',
@@ -176,7 +176,7 @@ export function WithSubtitle() {
       backAction={{content: 'Products', url: '#'}}
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
-      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
+      secondaryActions={[{content: 'Download', icon: ArrowDownIcon}]}
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
@@ -192,7 +192,7 @@ export function WithSubtitleAndAdditionalMetadata() {
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       additionalMetadata="Net payment due: Within 60 days of receipt"
-      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
+      secondaryActions={[{content: 'Download', icon: ArrowDownIcon}]}
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
@@ -207,7 +207,7 @@ export function WithSubtitleAndAdditionalMetadataAndNoBackAction() {
       title="Invoice"
       subtitle="Statement period: May 3, 2019 to June 2, 2019"
       additionalMetadata="Net payment due: Within 60 days of receipt"
-      secondaryActions={[{content: 'Download', icon: ArrowDownMinor}]}
+      secondaryActions={[{content: 'Download', icon: ArrowDownIcon}]}
     >
       <LegacyCard title="Credit card" sectioned>
         <p>Credit card information</p>
@@ -225,7 +225,7 @@ export function WithExternalLink() {
         {
           content: 'Promote',
           external: true,
-          icon: ExternalMinor,
+          icon: ExternalIcon,
           url: 'https://www.facebook.com/business/learn/facebook-page-build-audience',
         },
       ]}
@@ -256,7 +256,7 @@ export function FullWidth() {
     <Page
       fullWidth
       title="Orders"
-      primaryAction={{content: 'Create order', icon: PlusMinor}}
+      primaryAction={{content: 'Create order', icon: PlusIcon}}
       secondaryActions={[{content: 'Export'}]}
       pagination={{
         hasNext: true,
@@ -308,6 +308,125 @@ export function WithActionGroups() {
         },
         {
           title: 'More actions',
+          actions: [
+            {content: 'Duplicate'},
+            {content: 'Print'},
+            {content: 'Unarchive'},
+            {content: 'Cancel order'},
+          ],
+        },
+      ]}
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
+    </Page>
+  );
+}
+
+export function WithActionGroupsAndActions() {
+  return (
+    <Page
+      title="List of products"
+      subtitle="Brow Code Professional USA & Canada, Brow Code Professional New Zealand, and 8 other stores have charges on this bill"
+      secondaryActions={[
+        {
+          content: 'Send test',
+          onAction: () => {},
+        },
+        {
+          content: 'Confirm',
+          onAction: () => {},
+        },
+        {
+          content: 'Localize',
+          url: '/store/marcs-staffed-store/apps/translate-and-adapt/localize/email_template?id=10774151224&locale=fr',
+        },
+        {
+          content: 'Manage payment reminders',
+          url: '/store/marcs-staffed-store/settings/notifications/payment_reminders',
+        },
+      ]}
+      actionGroups={[
+        {
+          title: 'Copy',
+          onClick: (openActions) => {
+            console.log('Copy action');
+            openActions();
+          },
+          actions: [{content: 'Copy to clipboard'}],
+        },
+        {
+          title: 'Promote',
+          disabled: true,
+          actions: [{content: 'Share on Facebook'}],
+        },
+        {
+          title: 'Delete',
+          disabled: false,
+          actions: [{content: 'Delete or remove'}],
+        },
+        {
+          title: 'Other actions',
+          actions: [
+            {content: 'Duplicate'},
+            {content: 'Print'},
+            {content: 'Unarchive'},
+            {content: 'Cancel order'},
+          ],
+        },
+      ]}
+    >
+      <LegacyCard title="Credit card" sectioned>
+        <p>Credit card information</p>
+      </LegacyCard>
+    </Page>
+  );
+}
+
+export function WithActionGroupsAndActionsAndLongTitle() {
+  return (
+    <Page
+      title="List of products available on your online store"
+      secondaryActions={[
+        {
+          content: 'Send test',
+          onAction: () => {},
+        },
+        {
+          content: 'Confirm',
+          onAction: () => {},
+        },
+        {
+          content: 'Localize',
+          url: '/store/marcs-staffed-store/apps/translate-and-adapt/localize/email_template?id=10774151224&locale=fr',
+        },
+        {
+          content: 'Manage payment reminders',
+          url: '/store/marcs-staffed-store/settings/notifications/payment_reminders',
+        },
+      ]}
+      actionGroups={[
+        {
+          title: 'Copy',
+          onClick: (openActions) => {
+            console.log('Copy action');
+            openActions();
+          },
+          actions: [{content: 'Copy to clipboard'}],
+        },
+        {
+          title: 'Promote',
+          disabled: true,
+          actions: [{content: 'Share on Facebook'}],
+        },
+        {
+          title: 'Delete',
+          disabled: false,
+          actions: [{content: 'Delete or remove'}],
+        },
+        {
+          title: 'Other actions',
           actions: [
             {content: 'Duplicate'},
             {content: 'Print'},

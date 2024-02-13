@@ -6,7 +6,7 @@ import {Text} from '../../Text';
 import {TextContainer} from '../../TextContainer';
 import {Section} from '../components';
 import {Layout} from '../Layout';
-import styles from '../Layout.scss';
+import styles from '../Layout.module.scss';
 
 describe('<Layout />', () => {
   it('renders children', () => {

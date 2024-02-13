@@ -1,5 +1,5 @@
 import {ActionList, Thumbnail, Icon, Avatar} from '@shopify/polaris';
-import {ChevronRightMinor} from '@shopify/polaris-icons';
+import {ChevronRightIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -18,12 +18,12 @@ function ActionListWithPrefixSuffixExample() {
                 alt="Black leather pet collar"
               />
             ),
-            suffix: <Icon source={ChevronRightMinor} />,
+            suffix: <Icon source={ChevronRightIcon} />,
           },
           {
             content: 'Or there',
             prefix: <Avatar customer name="Farrah" size="sm" />,
-            suffix: <Icon source={ChevronRightMinor} />,
+            suffix: <Icon source={ChevronRightIcon} />,
           },
         ]}
       />

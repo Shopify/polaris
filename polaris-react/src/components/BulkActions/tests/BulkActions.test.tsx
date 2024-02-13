@@ -4,20 +4,26 @@ import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../../ActionList';
 import {Tooltip} from '../../Tooltip';
+import {CheckableButton} from '../../CheckableButton';
 import {BulkActionButton, BulkActionMenu} from '../components';
 import type {BulkActionButtonProps} from '../components';
 import {BulkActions} from '../BulkActions';
 import type {BulkAction, BulkActionsProps} from '../BulkActions';
+import styles from '../BulkActions.module.scss';
 
 interface Props {
   bulkActions: BulkActionButtonProps['content'][];
   promotedActions: NonNullable<BulkActionsProps['promotedActions']>;
   disabled: boolean;
-  width: number;
-  isSticky: boolean;
+  accessibilityLabel: string;
+  label: string;
+  selected: boolean;
 }
 
 const bulkActionProps: Props = {
+  accessibilityLabel: 'Accessibility label',
+  label: 'Label',
+  selected: false,
   bulkActions: ['button 3', 'button 4', 'button 5'],
   promotedActions: [
     {
@@ -28,8 +34,6 @@ const bulkActionProps: Props = {
     },
   ],
   disabled: false,
-  width: 500,
-  isSticky: false,
 };
 
 describe('<BulkActions />', () => {
@@ -120,6 +124,56 @@ describe('<BulkActions />', () => {
   });
 
   describe('props', () => {
+    describe('accessibilityLabel', () => {
+      it('is passed down to CheckableButton', () => {
+        const {accessibilityLabel} = bulkActionProps;
+        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
+
+        expect(bulkActions).toContainReactComponentTimes(
+          CheckableButton,
+          checkableButtonLength,
+          {
+            accessibilityLabel,
+          },
+        );
+      });
+
+      it('does not pass down to CheckableButton when the property is not provided', () => {
+        const {accessibilityLabel, ...props} = bulkActionProps;
+        const bulkActions = mountWithApp(<BulkActions {...props} />);
+
+        expect(bulkActions).toContainReactComponentTimes(CheckableButton, 0, {
+          accessibilityLabel,
+        });
+      });
+    });
+
+    describe('selected', () => {
+      it('is passed down to CheckableButton', () => {
+        const {selected} = bulkActionProps;
+        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
+
+        expect(bulkActions).toContainReactComponentTimes(
+          CheckableButton,
+          checkableButtonLength,
+          {selected},
+        );
+      });
+
+      it('does not pass down to CheckableButton when the property is not provided', () => {
+        const {selected, ...props} = bulkActionProps;
+        const bulkActions = mountWithApp(<BulkActions {...props} />);
+
+        expect(bulkActions).toContainReactComponentTimes(CheckableButton, 0, {
+          selected,
+        });
+      });
+    });
+
     describe('selectMode', () => {
       it('is passed down to Transition', () => {
         const bulkActions = mountWithApp(
@@ -158,6 +212,9 @@ describe('<BulkActions />', () => {
 
       it('renders a BulkActionButton for each item in promotedActions', () => {
         const bulkActionProps: Props = {
+          accessibilityLabel: 'A11y label',
+          label: 'Label',
+          selected: false,
           bulkActions: [],
           promotedActions: [
             {
@@ -179,8 +236,6 @@ describe('<BulkActions />', () => {
             },
           ],
           disabled: false,
-          width: 500,
-          isSticky: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
 
@@ -189,6 +244,9 @@ describe('<BulkActions />', () => {
 
       it('renders a BulkActionMenu when promotedActions are menus', () => {
         const bulkActionProps: Props = {
+          accessibilityLabel: 'A11y label',
+          label: 'Label',
+          selected: false,
           bulkActions: [],
           promotedActions: [
             {
@@ -221,8 +279,6 @@ describe('<BulkActions />', () => {
             },
           ],
           disabled: false,
-          width: 500,
-          isSticky: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
         const bulkActionButtons = bulkActions.findAll(BulkActionButton);
@@ -246,6 +302,9 @@ describe('<BulkActions />', () => {
           ],
         };
         const bulkActionProps: Props = {
+          accessibilityLabel: 'A11y label',
+          label: 'Label',
+          selected: false,
           bulkActions: [],
           promotedActions: [
             {...promotedActionToBeClicked},
@@ -254,8 +313,6 @@ describe('<BulkActions />', () => {
             },
           ],
           disabled: false,
-          width: 500,
-          isSticky: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
 
@@ -269,8 +326,26 @@ describe('<BulkActions />', () => {
     });
 
     describe('disabled', () => {
+      it('is passed down to CheckableButton', () => {
+        const disabled = true;
+        const bulkActions = mountWithApp(
+          <BulkActions {...bulkActionProps} disabled={disabled} />,
+        );
+        const checkableButtonLength =
+          bulkActions.findAll(CheckableButton).length;
+
+        expect(bulkActions).toContainReactComponentTimes(
+          CheckableButton,
+          checkableButtonLength,
+          {disabled},
+        );
+      });
+
       it('will not overwrite the disabled value coming from a promotedAction', () => {
         const bulkActionProps: Props = {
+          accessibilityLabel: 'A11y label',
+          label: 'Label',
+          selected: false,
           bulkActions: [],
           promotedActions: [
             {
@@ -279,8 +354,6 @@ describe('<BulkActions />', () => {
             },
           ],
           disabled: false,
-          width: 500,
-          isSticky: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
 
@@ -325,6 +398,50 @@ describe('<BulkActions />', () => {
 
       expect(bulkActions).toContainReactComponent(Tooltip, {
         content: 'More actions',
+      });
+    });
+  });
+
+  describe('deprecated props', () => {
+    describe('isSticky', () => {
+      it('adds the not-sticky class name if isSticky is falsy', () => {
+        const bulkActions = mountWithApp(
+          <BulkActions {...bulkActionProps} isSticky={false} />,
+        );
+
+        expect(bulkActions).toContainReactComponent('div', {
+          className: expect.stringContaining(styles['Group-not-sticky']),
+        });
+      });
+
+      it('does not add the not-sticky class name if isSticky is truthy', () => {
+        const bulkActions = mountWithApp(
+          <BulkActions {...bulkActionProps} isSticky />,
+        );
+
+        expect(bulkActions).not.toContainReactComponent('div', {
+          className: expect.stringContaining(styles['Group-not-sticky']),
+        });
+      });
+    });
+
+    describe('width', () => {
+      it('adds an inline style width if present', () => {
+        const bulkActions = mountWithApp(
+          <BulkActions {...bulkActionProps} width={200} />,
+        );
+
+        expect(bulkActions).toContainReactComponent('div', {
+          style: {width: 200},
+        });
+      });
+
+      it('does not add an inline style width if not present', () => {
+        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
+
+        expect(bulkActions).not.toContainReactComponent('div', {
+          style: {width: 200},
+        });
       });
     });
   });

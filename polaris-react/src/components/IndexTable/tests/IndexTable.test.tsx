@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {SortAscendingMajor, SortDescendingMajor} from '@shopify/polaris-icons';
+import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
@@ -12,7 +12,7 @@ import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {Text} from '../../Text';
 import {BulkActions} from '../../BulkActions';
-import type {useIsBulkActionsSticky} from '../../BulkActions';
+import type {useIsSelectAllActionsSticky} from '../../SelectAllActions';
 import {SelectAllActions} from '../../SelectAllActions';
 import {IndexTable} from '../IndexTable';
 import type {IndexTableProps, IndexTableSortDirection} from '../IndexTable';
@@ -36,18 +36,19 @@ jest.mock('../../../utilities/debounce', () => ({
   },
 }));
 
-jest.mock('../../BulkActions', () => ({
-  ...jest.requireActual('../../BulkActions'),
-  useIsBulkActionsSticky: jest.fn(),
+jest.mock('../../SelectAllActions', () => ({
+  ...jest.requireActual('../../SelectAllActions'),
+  useIsSelectAllActionsSticky: jest.fn(),
 }));
 
-function mockUseIsBulkActionsSticky(
-  args: ReturnType<typeof useIsBulkActionsSticky>,
+function mockUseIsSelectAllActionsSticky(
+  args: ReturnType<typeof useIsSelectAllActionsSticky>,
 ) {
-  const useIsBulkActionsSticky: jest.Mock =
-    jest.requireMock('../../BulkActions').useIsBulkActionsSticky;
+  const useIsSelectAllActionsSticky: jest.Mock = jest.requireMock(
+    '../../SelectAllActions',
+  ).useIsSelectAllActionsSticky;
 
-  useIsBulkActionsSticky.mockReturnValue(args);
+  useIsSelectAllActionsSticky.mockReturnValue(args);
 }
 
 const mockTableItems = [
@@ -101,14 +102,18 @@ describe('<IndexTable>', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     (getTableHeadingsBySelector as jest.Mock).mockReturnValue([]);
-    mockUseIsBulkActionsSticky({
-      bulkActionsIntersectionRef: {current: null},
+    mockUseIsSelectAllActionsSticky({
+      selectAllActionsIntersectionRef: {current: null},
       tableMeasurerRef: {current: null},
-      isBulkActionsSticky: false,
-      bulkActionsAbsoluteOffset: 0,
-      bulkActionsMaxWidth: 0,
-      bulkActionsOffsetLeft: 0,
+      isSelectAllActionsSticky: false,
+      selectAllActionsAbsoluteOffset: 0,
+      selectAllActionsMaxWidth: 0,
+      selectAllActionsOffsetLeft: 0,
+      selectAllActionsOffsetBottom: 0,
       computeTableDimensions: jest.fn(),
+      isScrolledPastTop: false,
+      scrollbarPastTopOffset: 0,
+      selectAllActionsPastTopOffset: 0,
     });
   });
 
@@ -363,10 +368,11 @@ describe('<IndexTable>', () => {
       expect(index).toContainReactComponent('table', {
         className: 'Table Table-sticky Table-sticky-last',
       });
-      expect(index).toContainReactComponent('th', {
-        children: title,
+      const lastHeading = index.find('th', {
         className: 'TableHeading TableHeading-last',
       });
+      expect(lastHeading).not.toBeNull();
+      expect(lastHeading).toContainReactText(title);
     });
 
     it('does not render a sticky last heading if `lastColumnSticky` prop is true and last heading is hidden', () => {
@@ -466,7 +472,7 @@ describe('<IndexTable>', () => {
         </IndexTable>,
       );
 
-      index.find(SelectAllActions)!.trigger('onToggleAll');
+      index.find(BulkActions)!.trigger('onToggleAll');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
         SelectionType.Page,
@@ -661,9 +667,7 @@ describe('<IndexTable>', () => {
             </IndexTable>,
           );
           const source =
-            direction === 'ascending'
-              ? SortAscendingMajor
-              : SortDescendingMajor;
+            direction === 'ascending' ? SortAscendingIcon : SortDescendingIcon;
 
           expect(index.findAll('th')[1]).toContainReactComponent(source);
         },
@@ -683,9 +687,7 @@ describe('<IndexTable>', () => {
             </IndexTable>,
           );
           const source =
-            direction === 'ascending'
-              ? SortAscendingMajor
-              : SortDescendingMajor;
+            direction === 'ascending' ? SortAscendingIcon : SortDescendingIcon;
 
           expect(index.findAll('th')[3]).toContainReactComponent(source);
         },
@@ -707,7 +709,7 @@ describe('<IndexTable>', () => {
         );
 
         expect(index.findAll('th')[3]).toContainReactComponent(
-          SortDescendingMajor,
+          SortDescendingIcon,
         );
       });
     });
@@ -782,14 +784,18 @@ describe('<IndexTable>', () => {
   describe('computeTableDimensions', () => {
     it('invokes the computeTableDimensions callback when the number of items changes', () => {
       const computeTableDimensions = jest.fn();
-      mockUseIsBulkActionsSticky({
-        bulkActionsIntersectionRef: {current: null},
+      mockUseIsSelectAllActionsSticky({
+        selectAllActionsIntersectionRef: {current: null},
         tableMeasurerRef: {current: null},
-        isBulkActionsSticky: false,
-        bulkActionsAbsoluteOffset: 0,
-        bulkActionsMaxWidth: 0,
-        bulkActionsOffsetLeft: 0,
+        isSelectAllActionsSticky: false,
+        selectAllActionsAbsoluteOffset: 0,
+        selectAllActionsMaxWidth: 0,
+        selectAllActionsOffsetLeft: 0,
+        selectAllActionsOffsetBottom: 0,
         computeTableDimensions,
+        isScrolledPastTop: false,
+        scrollbarPastTopOffset: 0,
+        selectAllActionsPastTopOffset: 0,
       });
       const index = mountWithApp(
         <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
@@ -801,6 +807,49 @@ describe('<IndexTable>', () => {
       index.setProps({itemCount: 60});
 
       expect(computeTableDimensions).toHaveBeenCalledTimes(2);
+    });
+  });
+
+  describe('mutation observer', () => {
+    let mutationObserverObserveSpy: jest.SpyInstance;
+    let mutationObserverDisconnectSpy: jest.SpyInstance;
+
+    beforeEach(() => {
+      mutationObserverObserveSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'observe',
+      );
+      mutationObserverDisconnectSpy = jest.spyOn(
+        MutationObserver.prototype,
+        'disconnect',
+      );
+    });
+
+    afterEach(() => {
+      mutationObserverObserveSpy.mockRestore();
+      mutationObserverDisconnectSpy.mockRestore();
+    });
+
+    it('observes the activator', () => {
+      mountWithApp(
+        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      expect(mutationObserverObserveSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('disconnects the observer when componentWillUnMount', () => {
+      const overlay = mountWithApp(
+        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+
+      overlay.unmount();
+
+      expect(mutationObserverDisconnectSpy).toHaveBeenCalled();
     });
   });
 

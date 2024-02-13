@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState, useId} from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {MenuHorizontalIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../../../utilities/css';
 import {useMediaQuery} from '../../../../utilities/media-query';
@@ -10,7 +10,7 @@ import type {IconProps} from '../../../Icon';
 import {Text} from '../../../Text';
 import {Item} from '../Item';
 import type {ItemProps} from '../../types';
-import styles from '../../Navigation.scss';
+import styles from '../../Navigation.module.scss';
 import {Tooltip} from '../../../Tooltip';
 import type {TooltipProps} from '../../../Tooltip';
 
@@ -150,7 +150,7 @@ export function Section({
             aria-label={ariaLabel}
           >
             <span className={styles.Icon}>
-              <Icon source={HorizontalDotsMinor} />
+              <Icon source={MenuHorizontalIcon} />
             </span>
           </button>
         </div>

@@ -1,0 +1,14 @@
+name: Location none
+description: Used to represent an inactive location.
+keywords:
+  - inactive location
+  - deactivated location
+  - location
+authors:
+  - Shanique Shields
+  - James Findlater
+  - Joe Thomas
+  - José Torre
+  - Holly Schofield
+date_added: 2022-11-02
+date_modified: 2023-11-07

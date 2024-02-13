@@ -1,25 +1,74 @@
 # Deprecation guidelines
 
-- Ship backwards compatible changes which include supporting both the old and new API (make sure the full upgrade path is available)
-- Support backwards compatibility for at least half of a major release cycle, but never more that 2 major release cycles
-  - For example, before or part of 3.5, okay to remove in 4.0. After 3.5, remove in 5.0
-  - Large changes consider a full major release cycle. For example, a large change in 3.1 would be removed in 5.0. But a large change in 2.9 would never wait until 5.0 to remove
-- Use the `@deprecated` doc tag for props and components ([for example, add above where the component is defined](https://github.com/Shopify/polaris/blob/8e49e4c65fbbf25d40617ba2d0ff0b3747320f17/src/components/Navigation/components/UserMenu/UserMenu.tsx#L27)), state the reason, and upgrade path
-- For significant deprecations, add a section to the component documentation with rationale. State the upgrade path and include a link to a new component if applicable
-- Call out deprecations in our [changelog](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#changelog)
+Follow these guidelines for deprecating [components](#components), [props](#props), [prop values](#prop-values), and [tokens](#tokens) in future major versions of Polaris. A month before the next major version release ensure that deprecations have been announced and any migrations needed are documented/available.
 
-## Deprecation console message guidelines
+## Components
 
-Use `warn` for `Deprecation` messages.
+- Mark the component as deprecated
+  - Add `@deprecated` warning to component
+    ```tsx
+    /** @deprecated Use the [COMPONENT_NAME] component instead */
+    export function ExampleComponent(props: ExampleComponentProps) {
+    ```
+  - Update documentation on polaris.shopify.com ([examples](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/content/components/deprecated))
+- Create automated migration(s) ([examples](https://github.com/Shopify/polaris/tree/main/polaris-migrator/src/migrations))
+- Add supporting documentation for deprecation in next major version guide ([examples](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/content/version-guides/migrating-from-v11-to-v12.mdx#L122))
+  - Document deprecation reason
+  - Document any alternatives
+  - Document automated migration(s)
+  - Document manual migration(s)
+- Remove component in next major Polaris version branch
 
-```js
-console.warn(
-  'Deprecation: The `title` property on Tabs has been deprecated. Use `content` instead.',
-);
-```
+## Props
 
-Deprecation messages warn developers when component APIs are in the process of being replaced. It’s important to notify developers of [breaking changes](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md#breaking-changes) ahead of their release.
+- Mark the prop as deprecated
+  - Add `@deprecated` warning to component
+    ````tsx
+      /** Description of the prop
+       * @deprecated Use [REPLACEMENT_ADVICE] instead
+      */
+      exampleProp?: boolean;
+      ```
+    ````
+  - Check documentation is updated on polaris.shopify.com
+- Create automated migration(s) ([examples](https://github.com/Shopify/polaris/tree/main/polaris-migrator/src/migrations))
+- Add supporting documentation for deprecation in next major version guide ([examples](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/content/version-guides/migrating-from-v11-to-v12.mdx#L122))
+  - Document deprecation reason
+  - Document any alternatives
+  - Document automated migration(s)
+  - Document manual migration(s)
+- Remove prop in next major Polaris version branch
 
-## Examples
+## Prop values
 
-- [Deprecation of `Navigation.UserMenu`](https://github.com/Shopify/polaris/pull/849).
+- Mark the prop value(s) as deprecated
+  - Add component, prop, and deprecated prop value(s) to `componentUnionTypeDeprecations` ([example](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/pages/components/%5Bgroup%5D/%5Bcomponent%5D/index.tsx#L80))
+    ```tsx
+    const componentUnionTypeDeprecations: {
+      [componentName: string]: {
+        [typeName: string]: string[];
+      };
+    } = {
+      Text: {
+        Variant: ['heading2xl', 'heading3xl'],
+      },
+    };
+    ```
+  - Check documentation is updated on polaris.shopify.com
+- Create automated migration(s) ([examples](https://github.com/Shopify/polaris/tree/main/polaris-migrator/src/migrations))
+- Add supporting documentation for deprecation in next major version guide ([examples](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/content/version-guides/migrating-from-v11-to-v12.mdx#L122))
+  - Document deprecation reason
+  - Document any alternatives
+  - Document automated migration(s)
+  - Document manual migration(s)
+- Remove prop value in next major Polaris version branch
+
+## Tokens
+
+- Mark the token as deprecated in `stylelint-polaris` ([example](https://github.com/Shopify/polaris/tree/main/stylelint-polaris/plugins/custom-property-disallowed-list))
+- Create automated migration(s) ([examples](https://github.com/Shopify/polaris/tree/main/polaris-migrator/src/migrations))
+- Add supporting documentation for deprecation in next major version guide ([examples](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/content/version-guides/migrating-from-v11-to-v12.mdx#L1451))
+  - Document any alternatives
+  - Document automated migration(s)
+  - Document manual migration(s)
+- Remove token in next major Polaris version branch

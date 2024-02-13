@@ -8,8 +8,7 @@ import * as polarisIcons from '@shopify/polaris-icons';
 interface Props {
   fileName: string;
   iconData: {
-    name: string;
-    set: string;
+    id: string;
     description: string;
     keywords: string[];
   };
@@ -32,14 +31,14 @@ function IconDetails({fileName, iconData}: Props) {
 
   if (!fileName) return <EmptyState />;
 
-  const {set, description, name, keywords} = iconData;
+  const {id, description, keywords} = iconData;
 
   const reactExamples = {
     imports: `import {\n  ${fileName}\n} from '@shopify/polaris-icons';`,
     componentUsage: `<Icon\n  source={${fileName}}\n  tone="base"\n/>`,
   };
   const figmaUIKitURl =
-    'https://www.figma.com/community/file/1110993965108325096';
+    'https://www.figma.com/community/file/1293614863849914283';
   const polarisIconsUrl =
     'https://www.npmjs.com/package/@shopify/polaris-icons#usage';
   const iconComponentUrl = '/components/icon';
@@ -53,10 +52,9 @@ function IconDetails({fileName, iconData}: Props) {
       <div className={styles.Section}>
         <div className={styles.Preview}>
           <Icon source={(polarisIcons as any)[fileName]} />
-          <div className={styles.SetBadge}>{set}</div>
         </div>
 
-        <h2 className={styles.Title}>{name}</h2>
+        <h2 className={styles.Title}>{id}</h2>
 
         {description !== 'N/A' && (
           <p className={styles.IconDescription}>
@@ -132,7 +130,7 @@ function EmptyState() {
   return (
     <div className={styles.IconDetails}>
       <div className={styles.EmptyState}>
-        <Icon source={polarisIcons.BehaviorMajor} width={46} height={46} />
+        <Icon source={polarisIcons.CursorIcon} width={46} height={46} />
         <p>Select an icon</p>
       </div>
     </div>

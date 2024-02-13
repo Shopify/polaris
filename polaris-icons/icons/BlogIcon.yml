@@ -1,0 +1,12 @@
+name: Blog
+description: Used to represent a blog post, or something being written.
+keywords:
+  - author
+  - blog
+  - pen
+  - pencil
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+date_added: 2019-03-15
+date_modified: 2023-06-23

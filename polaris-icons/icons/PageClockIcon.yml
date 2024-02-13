@@ -1,0 +1,13 @@
+name: Page clock
+description: Used to represent a story activity log, or any other report/series of events that happened in the past.
+keywords:
+  - History
+  - Timeline
+  - Events
+  - Past
+  - Monitoring
+authors:
+  - José Torre
+  - Holly Schofield
+date_added: 2023-11-07
+date_modified: 2023-11-07

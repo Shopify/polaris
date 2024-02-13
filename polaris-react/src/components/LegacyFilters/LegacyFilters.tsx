@@ -1,9 +1,9 @@
 import React, {Component, createRef} from 'react';
 import {
-  SearchMinor,
-  ChevronUpMinor,
-  ChevronDownMinor,
-  CancelSmallMinor,
+  SearchIcon,
+  ChevronUpIcon,
+  ChevronDownIcon,
+  XSmallIcon,
 } from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
@@ -31,7 +31,7 @@ import {KeypressListener} from '../KeypressListener';
 
 import {ConnectedFilterControl, TagsWrapper} from './components';
 import type {ConnectedFilterControlProps} from './components';
-import styles from './LegacyFilters.scss';
+import styles from './LegacyFilters.module.scss';
 
 export interface AppliedFilterInterface {
   /** A unique key used to identify the applied filter */
@@ -157,7 +157,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
 
     const filtersContentMarkup = filters.map((filter, index) => {
       const filterIsOpen = this.state[`${filter.key}${Suffix.Filter}`] === true;
-      const icon = filterIsOpen ? ChevronUpMinor : ChevronDownMinor;
+      const icon = filterIsOpen ? ChevronUpIcon : ChevronDownIcon;
       const className = classNames(
         styles.FilterTriggerContainer,
         filterIsOpen && styles.open,
@@ -277,7 +277,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
             labelHidden
             prefix={
               <span className={styles.SearchIcon}>
-                <Icon source={SearchMinor} />
+                <Icon source={SearchIcon} />
               </span>
             }
             clearButton
@@ -299,7 +299,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
           {moreFiltersLabel}
         </Text>
         <Button
-          icon={CancelSmallMinor}
+          icon={XSmallIcon}
           variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}
@@ -310,7 +310,7 @@ class LegacyFiltersInner extends Component<CombinedProps, State> {
     const filtersMobileHeaderMarkup = (
       <div className={filtersContainerHeaderClassname}>
         <Button
-          icon={CancelSmallMinor}
+          icon={XSmallIcon}
           variant="plain"
           accessibilityLabel={i18n.translate('Polaris.Filters.cancel')}
           onClick={this.closeFilters}

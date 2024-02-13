@@ -1,6 +1,6 @@
 import React, {PureComponent, createRef} from 'react';
 import type {MouseEvent} from 'react';
-import {MobileCancelMajor} from '@shopify/polaris-icons';
+import {XIcon} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';
@@ -28,7 +28,7 @@ import {
   ContextualSaveBar,
   CSSAnimation,
 } from './components';
-import styles from './Frame.scss';
+import styles from './Frame.module.scss';
 
 export interface FrameProps {
   /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components */
@@ -171,7 +171,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
                   )}
                   tabIndex={tabIndex}
                 >
-                  <Icon source={MobileCancelMajor} />
+                  <Icon source={XIcon} />
                 </button>
               </div>
             </CSSTransition>

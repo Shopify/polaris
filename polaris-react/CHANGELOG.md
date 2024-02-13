@@ -1,5 +1,273 @@
 # Changelog
 
+## 12.15.0
+
+### Minor Changes
+
+- [#11552](https://github.com/Shopify/polaris/pull/11552) [`04e462816`](https://github.com/Shopify/polaris/commit/04e462816b2082cb0bac341f3827f1c767213499) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Applied native mobile styles to Button component for the light-mobile theme
+
+### Patch Changes
+
+- [#11570](https://github.com/Shopify/polaris/pull/11570) [`e7f1961e1`](https://github.com/Shopify/polaris/commit/e7f1961e169298d829afd0620a4d003fb85b748d) Thanks [@chloerice](https://github.com/chloerice)! - Fixed the position of `SelectAllActions` when inside of an offset scrollable container
+
+- Updated dependencies [[`04e462816`](https://github.com/Shopify/polaris/commit/04e462816b2082cb0bac341f3827f1c767213499)]:
+  - @shopify/polaris-tokens@8.8.0
+
+## 12.14.0
+
+### Minor Changes
+
+- [#11541](https://github.com/Shopify/polaris/pull/11541) [`1a6b65103`](https://github.com/Shopify/polaris/commit/1a6b65103b258ae1cc5dc24267dc8079db1f2934) Thanks [@itwasmattgregg](https://github.com/itwasmattgregg)! - Added `direction` prop to `InlineStack` to allow for reversing the direction of items.
+
+* [#11566](https://github.com/Shopify/polaris/pull/11566) [`5a1ada35a`](https://github.com/Shopify/polaris/commit/5a1ada35a73fd2ca1f6a0ce388abc1b788c114ff) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Removed the Card shadow bevel and decreased Card gap spacing for the mobile theme
+
+- [#11575](https://github.com/Shopify/polaris/pull/11575) [`074c96ece`](https://github.com/Shopify/polaris/commit/074c96ece68ddd56591dd512dce1469fe5a27c1c) Thanks [@mrcthms](https://github.com/mrcthms)! - Deprecated the suffix from the IndexFilters SearchField component
+
+### Patch Changes
+
+- [#11488](https://github.com/Shopify/polaris/pull/11488) [`e755a5790`](https://github.com/Shopify/polaris/commit/e755a5790bf66957e8cf87532a8f7cf0a94734ad) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `monochromePlain` `Button` `variant` SVG fill
+
+* [#11571](https://github.com/Shopify/polaris/pull/11571) [`fa00230fe`](https://github.com/Shopify/polaris/commit/fa00230fe50f99a28880200e4450640ae4790a28) Thanks [@tjonx](https://github.com/tjonx)! - Fixed scrollbar hover jank in safari by forcing re-paint
+
+- [#11567](https://github.com/Shopify/polaris/pull/11567) [`7dd064f6a`](https://github.com/Shopify/polaris/commit/7dd064f6a0b882ef4c7ced80e60b447f31990e7a) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the subtitle of the Page Header to have a sensible max-width
+
+* [#11565](https://github.com/Shopify/polaris/pull/11565) [`7d7451eea`](https://github.com/Shopify/polaris/commit/7d7451eeaa3171fe4fbd9a8bebf8ae60384e1be8) Thanks [@jesstelford](https://github.com/jesstelford)! - Remove references to se23/summer editions 2023/etc.
+
+- [#11572](https://github.com/Shopify/polaris/pull/11572) [`9fa4b7a20`](https://github.com/Shopify/polaris/commit/9fa4b7a204cc3198bb3707097acf466a157aa5b7) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed section heading action spacing
+
+* [#11537](https://github.com/Shopify/polaris/pull/11537) [`27cf15c98`](https://github.com/Shopify/polaris/commit/27cf15c982cffebe8cca7c3587f8b8f81467e26e) Thanks [@kyledurand](https://github.com/kyledurand)! - Updated scrollbar colors and width
+
+* Updated dependencies [[`27cf15c98`](https://github.com/Shopify/polaris/commit/27cf15c982cffebe8cca7c3587f8b8f81467e26e), [`5a1ada35a`](https://github.com/Shopify/polaris/commit/5a1ada35a73fd2ca1f6a0ce388abc1b788c114ff)]:
+  - @shopify/polaris-tokens@8.7.0
+
+## 12.13.0
+
+### Minor Changes
+
+- [#11530](https://github.com/Shopify/polaris/pull/11530) [`c7396d5e9`](https://github.com/Shopify/polaris/commit/c7396d5e92296fc0e88a7ce87e340f065dc480aa) Thanks [@arthurgouveia](https://github.com/arthurgouveia)! - [CalloutCard] Added IconableAction to primaryAction and secondaryAction
+  [CalloutCard] Added variant prop to secondaryAction
+
+### Patch Changes
+
+- [#11554](https://github.com/Shopify/polaris/pull/11554) [`942270bb3`](https://github.com/Shopify/polaris/commit/942270bb303c1b7c9ee8ed54085292dc3194950a) Thanks [@chloerice](https://github.com/chloerice)! - Added support for hovercard tracking to `EphemeralPresenceManager`
+
+## 12.12.1
+
+### Patch Changes
+
+- [#11533](https://github.com/Shopify/polaris/pull/11533) [`697def448`](https://github.com/Shopify/polaris/commit/697def448432c8cfb0700cd7f10fa0950e0d731c) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated IndexFilters to always fill the space where the loading spinner appears to ensure Tabs do not switch between collapsed and expanded
+
+## 12.12.0
+
+### Minor Changes
+
+- [#11508](https://github.com/Shopify/polaris/pull/11508) [`91ba165c9`](https://github.com/Shopify/polaris/commit/91ba165c9cbaa4cd656e348ad5e18c568ac0454b) Thanks [@kyledurand](https://github.com/kyledurand)! - Added scrollbarWidth and scrollbarGutter properties to Scrollable
+
+### Patch Changes
+
+- [#11529](https://github.com/Shopify/polaris/pull/11529) [`e1fb65b72`](https://github.com/Shopify/polaris/commit/e1fb65b724108895d5ee3c16978da8b3381102af) Thanks [@PhilippeCollin](https://github.com/PhilippeCollin)! - [ActionList] Fixed wrapping issue while using prefix and/or suffix icons
+
+* [#11532](https://github.com/Shopify/polaris/pull/11532) [`18bdf67fa`](https://github.com/Shopify/polaris/commit/18bdf67faee1f3c7df06cb92effdc35c6150b75c) Thanks [@alex-page](https://github.com/alex-page)! - Fix visual regressions in `Select` across browsers and operating systems
+
+## 12.11.2
+
+### Patch Changes
+
+- [#11523](https://github.com/Shopify/polaris/pull/11523) [`9486e487e`](https://github.com/Shopify/polaris/commit/9486e487e99f19ffdfe19a3246898db165456ce3) Thanks [@oksanashopify](https://github.com/oksanashopify)! - fix z-index for IndexTable rows of type `child`
+
+* [#11525](https://github.com/Shopify/polaris/pull/11525) [`09b4f00b3`](https://github.com/Shopify/polaris/commit/09b4f00b3af5a65f77511bc49d0e61d474ca9fd7) Thanks [@laurkim](https://github.com/laurkim)! - Fixed border radius styles for `Button` within `ButtonGroup` when `connectedTop` prop applied
+
+- [#11524](https://github.com/Shopify/polaris/pull/11524) [`a0283410a`](https://github.com/Shopify/polaris/commit/a0283410af2cf4c8857a232f074ea1649e1030e6) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated logic in IndexTable to recalculate sticky position when children changes
+
+- Updated dependencies [[`7bb7054e8`](https://github.com/Shopify/polaris/commit/7bb7054e86aec66ce0824884e350c9ebf5f50430)]:
+  - @shopify/polaris-icons@8.2.0
+
+## 12.11.1
+
+### Patch Changes
+
+- [#11499](https://github.com/Shopify/polaris/pull/11499) [`a6ac9928a`](https://github.com/Shopify/polaris/commit/a6ac9928adc63c00c87780d10a6293705ad0b524) Thanks [@laurkim](https://github.com/laurkim)! - Fixed layout and focus styling for `Button` inside `ButtonGroup` with `fullWidth`
+
+* [#11503](https://github.com/Shopify/polaris/pull/11503) [`fb7d96821`](https://github.com/Shopify/polaris/commit/fb7d96821d4922ba9ac5be034b5ea8eac5a02bdc) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added workaround for `font-optical-sizing` issue in Safari 16
+
+## 12.11.0
+
+### Minor Changes
+
+- [#11474](https://github.com/Shopify/polaris/pull/11474) [`26b3afb3d`](https://github.com/Shopify/polaris/commit/26b3afb3d711d04498d973ce26bcb74af8b99ff5) Thanks [@mrcthms](https://github.com/mrcthms)! - [BulkActions and SelectAllActions] Ensure backwards compatibilility after prop reorganisation between components
+
+* [#11497](https://github.com/Shopify/polaris/pull/11497) [`d50cc6d91`](https://github.com/Shopify/polaris/commit/d50cc6d91bb1aae6a49d03e255c1e0aae180fbbb) Thanks [@mrcthms](https://github.com/mrcthms)! - Improved test reliability for non-rolled up actions in `ActionMenu`
+
+- [#10981](https://github.com/Shopify/polaris/pull/10981) [`2dcc73f1a`](https://github.com/Shopify/polaris/commit/2dcc73f1a02767c582b15fed3058561befeea7f9) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the sticky behaviour of BulkActions, SelectAllActions, and Pagination for our tables and lists
+
+* [#11441](https://github.com/Shopify/polaris/pull/11441) [`74174b6c1`](https://github.com/Shopify/polaris/commit/74174b6c170c9d575d9ae41bf4287b1844008bcd) Thanks [@mrcthms](https://github.com/mrcthms)! - Improved the logic of action rollup and calculation of available space in `ActionMenu` and `Tabs`
+
+- [#11491](https://github.com/Shopify/polaris/pull/11491) [`ac004fc97`](https://github.com/Shopify/polaris/commit/ac004fc97f2a9d942c16d2b984f4d9c3450eb8fe) Thanks [@lgriffee](https://github.com/lgriffee)! - [`Button`] Remove underline from `monochromePlain` default state
+
+* [#11486](https://github.com/Shopify/polaris/pull/11486) [`02a6d9b18`](https://github.com/Shopify/polaris/commit/02a6d9b186c618fadacf36b548db0816afb49ae0) Thanks [@translation-platform](https://github.com/apps/translation-platform)! - Updated translations for SearchField suffix within IndexFilters
+
+- [#11344](https://github.com/Shopify/polaris/pull/11344) [`c9abd3c0c`](https://github.com/Shopify/polaris/commit/c9abd3c0cb532f2fcb49a716507d5dd478ce10d9) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added Polaris Tokens for Mobile typography
+
+* [#11412](https://github.com/Shopify/polaris/pull/11412) [`f1b44ab57`](https://github.com/Shopify/polaris/commit/f1b44ab57d8de2f72b39434d57985f72d204e330) Thanks [@mrcthms](https://github.com/mrcthms)! - [TextField] Updated the TextField with new `autoSize` and `loading` props
+
+- [#11431](https://github.com/Shopify/polaris/pull/11431) [`f9b9fa4e8`](https://github.com/Shopify/polaris/commit/f9b9fa4e8b8002c5d2125248c8dc5c14afce24e6) Thanks [@lone-star](https://github.com/lone-star)! - Added `tone`, `icon`, and `onClick` props to `Toast`
+
+### Patch Changes
+
+- [#11464](https://github.com/Shopify/polaris/pull/11464) [`2ee7dbd30`](https://github.com/Shopify/polaris/commit/2ee7dbd30f54f9f795ea3c52ab8fb750e9daade3) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated `Button` shadow tokens and replaced hardcoded box-shadow values
+
+* [#11504](https://github.com/Shopify/polaris/pull/11504) [`1910c6975`](https://github.com/Shopify/polaris/commit/1910c69755d1dac764b1c6ee7cafa04a7e218d47) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated Page Header to only ensure no wrapping of the title when the title is relatively short
+
+- [#11473](https://github.com/Shopify/polaris/pull/11473) [`6579537e4`](https://github.com/Shopify/polaris/commit/6579537e480e6b288955b3df15f93e9e6eb4b580) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fixed focus ring size for plain and plain monochrome Button variants
+
+* [#11487](https://github.com/Shopify/polaris/pull/11487) [`4aabf7c1a`](https://github.com/Shopify/polaris/commit/4aabf7c1a852b9c10174e1699cb32eed2c5de94f) Thanks [@yurm04](https://github.com/yurm04)! - [Modal] Fixed Footer position to bottom of container
+
+- [#11466](https://github.com/Shopify/polaris/pull/11466) [`1953b6935`](https://github.com/Shopify/polaris/commit/1953b6935516db5d9ca77888ee41ffda1c2e80df) Thanks [@mrcthms](https://github.com/mrcthms)! - [TextField] Fixed positional issue of loading indicator when no clear button is present
+
+* [#11462](https://github.com/Shopify/polaris/pull/11462) [`2febd60f1`](https://github.com/Shopify/polaris/commit/2febd60f155ece49ce0e48c074ae20c3de8961bb) Thanks [@sophschneider](https://github.com/sophschneider)! - Lowered the z-index of `Filter`s container to be below `Card` shadow bevel
+
+- [#11467](https://github.com/Shopify/polaris/pull/11467) [`75cbcd70b`](https://github.com/Shopify/polaris/commit/75cbcd70bb3011c4eb68b7be322104b2b8ed2b7a) Thanks [@kyledurand](https://github.com/kyledurand)! - Increased contrast on Tooltip underline
+
+* [#11482](https://github.com/Shopify/polaris/pull/11482) [`59371946c`](https://github.com/Shopify/polaris/commit/59371946ce2399f6e441235dedb5f74ce5fee7be) Thanks [@translation-platform](https://github.com/apps/translation-platform)! - [SearchField] Updated translation
+
+* Updated dependencies [[`2ee7dbd30`](https://github.com/Shopify/polaris/commit/2ee7dbd30f54f9f795ea3c52ab8fb750e9daade3), [`c9abd3c0c`](https://github.com/Shopify/polaris/commit/c9abd3c0cb532f2fcb49a716507d5dd478ce10d9), [`b786bb93c`](https://github.com/Shopify/polaris/commit/b786bb93c153f853323ac2c2170ec4fb5bdfbecb)]:
+  - @shopify/polaris-tokens@8.6.0
+  - @shopify/polaris-icons@8.1.0
+
+## 12.10.0
+
+### Minor Changes
+
+- [#11417](https://github.com/Shopify/polaris/pull/11417) [`cea2dd22b`](https://github.com/Shopify/polaris/commit/cea2dd22b9f3fc401f2de765b0d68545f2ee97fe) Thanks [@mrcthms](https://github.com/mrcthms)! - [FiltersBar] Fixed bug where filters would disappear from the FiltersBar when clicking the Clear all button
+
+### Patch Changes
+
+- [#11446](https://github.com/Shopify/polaris/pull/11446) [`6e40eca5e`](https://github.com/Shopify/polaris/commit/6e40eca5ed82de159966552064271a238d3369cf) Thanks [@mrcthms](https://github.com/mrcthms)! - [Icons] Fixed references to incorrect icon imports that were causing Storybook to break
+
+## 12.9.1
+
+### Patch Changes
+
+- [#11438](https://github.com/Shopify/polaris/pull/11438) [`43535660e`](https://github.com/Shopify/polaris/commit/43535660e72fa9b19476162db5e3e8c92f5aec74) Thanks [@jesstelford](https://github.com/jesstelford)! - Use `@custom-media` across all of `@shopify/polaris` (follow on from https://github.com/Shopify/polaris/pull/10804)
+
+- Updated dependencies [[`f91c4b661`](https://github.com/Shopify/polaris/commit/f91c4b661b1d9540dd515c6f073aeeb62e914023)]:
+  - @shopify/polaris-icons@8.0.0
+
+## 12.9.0
+
+### Minor Changes
+
+- [#11410](https://github.com/Shopify/polaris/pull/11410) [`d8ccd26ad`](https://github.com/Shopify/polaris/commit/d8ccd26ad7007914ab48c718a380a8f9cc802629) Thanks [@lgriffee](https://github.com/lgriffee)! - - Updated `SkeletonTabs` to reflect `Tabs` design
+  - Added `fitted` prop
+
+### Patch Changes
+
+- [#11433](https://github.com/Shopify/polaris/pull/11433) [`2ddc47fe2`](https://github.com/Shopify/polaris/commit/2ddc47fe2d35778192925b2819d228cb13ee856b) Thanks [@sophschneider](https://github.com/sophschneider)! - Fixed `Button` spinner icon alignment
+
+* [#11436](https://github.com/Shopify/polaris/pull/11436) [`72471750d`](https://github.com/Shopify/polaris/commit/72471750d2fb12397a3f1fd7f5f5814efc435b85) Thanks [@alex-page](https://github.com/alex-page)! - Revert "[Modal] Add `flex-grow` to `Modal` body to fix footer position
+
+## 12.8.0
+
+### Minor Changes
+
+- [#11430](https://github.com/Shopify/polaris/pull/11430) [`567048b59`](https://github.com/Shopify/polaris/commit/567048b596ae2bdae62978b0a6ab894c7ebd4a55) Thanks [@matallo](https://github.com/matallo)! - - Fixed prefix, prefix icon, and suffix icon for `TextField` component with `magic` tone
+
+* [#11354](https://github.com/Shopify/polaris/pull/11354) [`eab40d54c`](https://github.com/Shopify/polaris/commit/eab40d54cf273aa62e8a5bead64390d7e5d58a01) Thanks [@yurm04](https://github.com/yurm04)! - Fixed `Modal` footer position
+
+### Patch Changes
+
+- [#11429](https://github.com/Shopify/polaris/pull/11429) [`b1ecec131`](https://github.com/Shopify/polaris/commit/b1ecec131f7fc4a82f80b569cd228c8120815ab0) Thanks [@sophschneider](https://github.com/sophschneider)! - Bumped `Button` icon fill specificity to always be greater than `Icon` fill
+
+## 12.7.0
+
+### Minor Changes
+
+- [#11304](https://github.com/Shopify/polaris/pull/11304) [`9c57cc1c2`](https://github.com/Shopify/polaris/commit/9c57cc1c2b48ad7cc362b45dfedc23feca865a0a) Thanks [@yurm04](https://github.com/yurm04)! - [Tooltip] Added `min-width` to `TooltipOverlay`
+
+* [#11403](https://github.com/Shopify/polaris/pull/11403) [`2bcc7bda5`](https://github.com/Shopify/polaris/commit/2bcc7bda594c4339f140d829b0e46a1daf3d33e5) Thanks [@yurm04](https://github.com/yurm04)! - [Navigation] Updated `padding-top` to `space-100` for small viewports
+
+- [#11231](https://github.com/Shopify/polaris/pull/11231) [`3a0228815`](https://github.com/Shopify/polaris/commit/3a02288151800ab5a3d82b439a0bf579fb3db1dc) Thanks [@thyleung](https://github.com/thyleung)! - - Added the `paddingBlockEnd` prop to the `IndexTableHeading` interface to support additional right padding
+  - Fixed sortable `IndexTable` headings with a tooltip not being right aligned properly
+
+* [#9019](https://github.com/Shopify/polaris/pull/9019) [`ba1c813c2`](https://github.com/Shopify/polaris/commit/ba1c813c2166ae23ae5d67cae57389aac9464868) Thanks [@jesstelford](https://github.com/jesstelford)! - Upgrade to Storybook v7 with Vite
+
+- [#11400](https://github.com/Shopify/polaris/pull/11400) [`befded29d`](https://github.com/Shopify/polaris/commit/befded29dcdf7509a60d33e2bbbf2ec8b05db515) Thanks [@yurm04](https://github.com/yurm04)! - [Dialog] Removed `sizeSmall` max-width for small viewports
+
+* [#11374](https://github.com/Shopify/polaris/pull/11374) [`f631b229f`](https://github.com/Shopify/polaris/commit/f631b229fbb455a1586ea59584085be0f131ea71) Thanks [@kyledurand](https://github.com/kyledurand)! - Added as prop to InlineStack
+  Added span and list item element types to BlockStack
+
+- [#11212](https://github.com/Shopify/polaris/pull/11212) [`7d056dea2`](https://github.com/Shopify/polaris/commit/7d056dea2fa2f5806fe0839aa4abb8f5ec53a01e) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Refactored `Button` styles and bevel
+
+### Patch Changes
+
+- [#11411](https://github.com/Shopify/polaris/pull/11411) [`7202e1605`](https://github.com/Shopify/polaris/commit/7202e1605d353e38b2849ffbd73aa5669e3c0557) Thanks [@sophschneider](https://github.com/sophschneider)! - Changed `IndexTable` scroll bar container z-index so that it is under the `Card` shadow bevel
+
+* [#11363](https://github.com/Shopify/polaris/pull/11363) [`c356dd5e5`](https://github.com/Shopify/polaris/commit/c356dd5e57e4e59f34ca1a151b85dabdb4ce6165) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fixed Button padding regression in Safari 14
+
+- [#11364](https://github.com/Shopify/polaris/pull/11364) [`bf9539536`](https://github.com/Shopify/polaris/commit/bf953953673a7b079e2695f25fb2c4864894c2c8) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Fixes shadow and bevel of basic button
+
+* [#11224](https://github.com/Shopify/polaris/pull/11224) [`ea8e5510e`](https://github.com/Shopify/polaris/commit/ea8e5510e10af167c2bca38b75caacb6f448361c) Thanks [@sophschneider](https://github.com/sophschneider)! - Updated margins for TextField prefixes
+
+- [#11366](https://github.com/Shopify/polaris/pull/11366) [`b62cf7356`](https://github.com/Shopify/polaris/commit/b62cf7356caa74c162b500dd16d0871081adfef7) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fixed segmented button divider regression
+
+* [#11383](https://github.com/Shopify/polaris/pull/11383) [`a1c141669`](https://github.com/Shopify/polaris/commit/a1c14166974d63e8aa89889172ca45228b75b906) Thanks [@jhalvorson](https://github.com/jhalvorson)! - [IndexTable] use the correct index for the sticky header when rows are selectable
+
+- [#11373](https://github.com/Shopify/polaris/pull/11373) [`97c3979ba`](https://github.com/Shopify/polaris/commit/97c3979ba4648b621774c29eb2463d9050dab599) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Fixed Button active state regression when used with activators such as Popover
+
+* [#11342](https://github.com/Shopify/polaris/pull/11342) [`9484d55ca`](https://github.com/Shopify/polaris/commit/9484d55ca7a5b99f0cbb02676fd0f28fe92fc3f5) Thanks [@jhalvorson](https://github.com/jhalvorson)! - [IndexTable] Fixed aligment issues with the sticky header
+
+- [#11401](https://github.com/Shopify/polaris/pull/11401) [`5604728ee`](https://github.com/Shopify/polaris/commit/5604728ee1a117f29e0450b354ea46f44506c74f) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - Changed the icon color from icon-magic to text-magic for the Magic tone of the Badge component.
+
+- Updated dependencies [[`9f7e5b682`](https://github.com/Shopify/polaris/commit/9f7e5b682f93a3f241e7162eef35dd42b25f7afa)]:
+  - @shopify/polaris-tokens@8.5.0
+
+## 12.6.0
+
+### Minor Changes
+
+- [#11317](https://github.com/Shopify/polaris/pull/11317) [`e197ca5f6`](https://github.com/Shopify/polaris/commit/e197ca5f6d518f5f099ca55161951f4ae4591232) Thanks [@yurm04](https://github.com/yurm04)! - [LegacyFilters] Fixed button spacing on `ConnectedFilterControl`
+
+### Patch Changes
+
+- [#11340](https://github.com/Shopify/polaris/pull/11340) [`3213735a0`](https://github.com/Shopify/polaris/commit/3213735a06d67e93e9933fe44011e52297a5cee4) Thanks [@jesstelford](https://github.com/jesstelford)! - Internal refactor: CSS Module files are renamed from _.scss to _.module.scss
+
+* [#11269](https://github.com/Shopify/polaris/pull/11269) [`bc4272a2e`](https://github.com/Shopify/polaris/commit/bc4272a2e3b6d54065d8cad1364ad8612ced0a5d) Thanks [@m4thieulavoie](https://github.com/m4thieulavoie)! - Added an optional `hidden` property to the `Filters` `FilterInterface` type to support `filters` that are only set programmatically
+
+* Updated dependencies [[`0a2f1659d`](https://github.com/Shopify/polaris/commit/0a2f1659d1141dba5cb93f6d64aeceab89155cfb)]:
+  - @shopify/polaris-icons@7.13.0
+
+## 12.5.0
+
+### Minor Changes
+
+- [#11275](https://github.com/Shopify/polaris/pull/11275) [`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82) Thanks [@yurm04](https://github.com/yurm04)! - Updated semantic tokens `fill-info-secondary`, `text-info`, `fill-success-secondary`, `fill-caution-secondary`, `fill-critical-secondary`.
+
+* [#10958](https://github.com/Shopify/polaris/pull/10958) [`5c183e0e1`](https://github.com/Shopify/polaris/commit/5c183e0e155ef47a43f7e3290a0f043965c0ecad) Thanks [@mrcthms](https://github.com/mrcthms)! - Added a live region to the `Page` `Header` to announce the `title` after navigation changes
+
+### Patch Changes
+
+- [#11338](https://github.com/Shopify/polaris/pull/11338) [`4ddba49c4`](https://github.com/Shopify/polaris/commit/4ddba49c41b218a002b7de0ec53bcde35974cdec) Thanks [@alex-page](https://github.com/alex-page)! - `<Toast>` Fix icon color to properly inherit the parent color
+
+- Updated dependencies [[`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82)]:
+  - @shopify/polaris-tokens@8.4.0
+
+## 12.4.0
+
+### Minor Changes
+
+- [#11303](https://github.com/Shopify/polaris/pull/11303) [`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - - Remapped the `bg-fill-magic-secondary` token colors
+  - Added a Magic `tone` to `Badge`
+
+### Patch Changes
+
+- [#11299](https://github.com/Shopify/polaris/pull/11299) [`e530a44f9`](https://github.com/Shopify/polaris/commit/e530a44f93e7c865b7d32272ba2347584d60522c) Thanks [@fortmarek](https://github.com/fortmarek)! - Added padding for FooterHelp on small viewports
+
+* [#11329](https://github.com/Shopify/polaris/pull/11329) [`a45dafb35`](https://github.com/Shopify/polaris/commit/a45dafb35cfac975d17bcc55f9c1dee5cf97eecb) Thanks [@lbenie](https://github.com/lbenie)! - `TopBar` Fixed .NavigationIcon styles to ensure Icon color is properly inherited.
+
+* Updated dependencies [[`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756), [`235bc7d0c`](https://github.com/Shopify/polaris/commit/235bc7d0c327c450f94650ffe6f64d68eee2a28e)]:
+  - @shopify/polaris-tokens@8.3.0
+  - @shopify/polaris-icons@7.12.0
+
 ## 12.3.0
 
 ### Minor Changes

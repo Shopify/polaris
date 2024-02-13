@@ -1,18 +1,18 @@
 import React from 'react';
-import {CancelSmallMinor} from '@shopify/polaris-icons';
+import {XSmallIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
-import type {Action} from '../../types';
+import type {IconableAction} from '../../types';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyCard} from '../LegacyCard';
-// eslint-disable-next-line import/no-deprecated
-import {TextContainer} from '../TextContainer';
+import {BlockStack} from '../BlockStack';
 import {ButtonGroup} from '../ButtonGroup';
 import {Button, buttonFrom} from '../Button';
+import type {ButtonProps} from '../Button';
 import {Text} from '../Text';
 import {Image} from '../Image';
 
-import styles from './CalloutCard.scss';
+import styles from './CalloutCard.module.scss';
 
 export interface CalloutCardProps {
   /** The content to display inside the callout card. */
@@ -22,9 +22,9 @@ export interface CalloutCardProps {
   /** URL to the card illustration */
   illustration: string;
   /** Primary action for the card */
-  primaryAction: Action;
+  primaryAction: IconableAction;
   /** Secondary action for the card */
-  secondaryAction?: Action;
+  secondaryAction?: IconableAction & Pick<ButtonProps, 'variant'>;
   /** Callback when banner is dismissed */
   onDismiss?(): void;
 }
@@ -40,7 +40,7 @@ export function CalloutCard({
   const primaryActionMarkup = buttonFrom(primaryAction);
   const secondaryActionMarkup = secondaryAction
     ? buttonFrom(secondaryAction, {
-        variant: 'tertiary',
+        variant: secondaryAction.variant ?? 'tertiary',
       })
     : null;
 
@@ -57,7 +57,7 @@ export function CalloutCard({
     <div className={styles.Dismiss}>
       <Button
         variant="plain"
-        icon={CancelSmallMinor}
+        icon={XSmallIcon}
         onClick={onDismiss}
         accessibilityLabel="Dismiss card"
       />
@@ -86,7 +86,7 @@ export function CalloutCard({
                   {title}
                 </Text>
               </div>
-              <TextContainer>{children}</TextContainer>
+              <BlockStack>{children}</BlockStack>
               <div className={styles.Buttons}>{buttonMarkup}</div>
             </div>
 

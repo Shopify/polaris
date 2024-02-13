@@ -37,7 +37,8 @@
     "transpileOnly": true,
     "files": true,
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "CommonJS",
+      "jsx": "react"
     }
   }
 }

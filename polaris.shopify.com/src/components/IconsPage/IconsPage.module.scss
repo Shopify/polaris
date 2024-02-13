@@ -9,6 +9,12 @@
   align-items: flex-start;
 }
 
+.IconGrids {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
 .Modal {
   position: fixed;
   top: 2rem;

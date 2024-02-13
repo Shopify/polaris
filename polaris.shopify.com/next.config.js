@@ -297,7 +297,12 @@ const feedbackIndicators = [
   },
   {
     source: '/components/loading',
-    destination: '/components/feedback-indicators/loading',
+    destination: '/components/deprecated/loading',
+    permanent: true,
+  },
+  {
+    source: '/components/feedback-indicators/loading',
+    destination: '/components/deprecated/loading',
     permanent: true,
   },
   {
@@ -337,7 +342,12 @@ const feedbackIndicators = [
   },
   {
     source: '/components/toast',
-    destination: '/components/feedback-indicators/toast',
+    destination: '/components/deprecated/toast',
+    permanent: true,
+  },
+  {
+    source: '/components/feedback-indicators/toast',
+    destination: '/components/deprecated/toast',
     permanent: true,
   },
 ];
@@ -544,7 +554,12 @@ const navigation = [
   },
   {
     source: '/components/navigation',
-    destination: '/components/navigation/navigation',
+    destination: '/components/deprecated/navigation',
+    permanent: true,
+  },
+  {
+    source: '/components/navigation/navigation',
+    destination: '/components/deprecated/navigation',
     permanent: true,
   },
   {
@@ -559,7 +574,12 @@ const navigation = [
   },
   {
     source: '/components/top-bar',
-    destination: '/components/navigation/top-bar',
+    destination: '/components/deprecated/top-bar',
+    permanent: true,
+  },
+  {
+    source: '/components/navigation/top-bar',
+    destination: '/components/deprecated/top-bar',
     permanent: true,
   },
 ];
@@ -567,7 +587,12 @@ const navigation = [
 const overlays = [
   {
     source: '/components/modal',
-    destination: '/components/overlays/modal',
+    destination: '/components/deprecated/modal',
+    permanent: true,
+  },
+  {
+    source: '/components/overlays/modal',
+    destination: '/components/deprecated/modal',
     permanent: true,
   },
   {
@@ -615,7 +640,12 @@ const selectionAndInput = [
   },
   {
     source: '/components/contextual-save-bar',
-    destination: '/components/selection-and-input/contextual-save-bar',
+    destination: '/components/deprecated/contextual-save-bar',
+    permanent: true,
+  },
+  {
+    source: '/components/selection-and-input/contextual-save-bar',
+    destination: '/components/deprecated/contextual-save-bar',
     permanent: true,
   },
   {
@@ -877,7 +907,12 @@ const utilities = [
   },
   {
     source: '/components/frame',
-    destination: '/components/utilities/frame',
+    destination: '/components/deprecated/frame',
+    permanent: true,
+  },
+  {
+    source: '/components/utilities/frame',
+    destination: '/components/deprecated/frame',
     permanent: true,
   },
   {

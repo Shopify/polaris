@@ -81,7 +81,7 @@ function getNavItems(path: string): {[key: string]: NavItem} | undefined {
   const paths = path.split('/').filter((segment) => segment);
 
   const navItemPath = paths.join('.children.');
-  const currentNavItem = getObjectValue<NavItem>(nav, navItemPath);
+  const currentNavItem = getObjectValue<NavItem>(nav.children, navItemPath);
 
   const isOverviewPage = currentNavItem?.children !== undefined;
 
@@ -89,7 +89,7 @@ function getNavItems(path: string): {[key: string]: NavItem} | undefined {
   const parentItemPath = paths.slice(0, -1).join('.children.');
   const parentNavItem = isOverviewPage
     ? currentNavItem
-    : getObjectValue<NavItem>(nav, parentItemPath);
+    : getObjectValue<NavItem>(nav.children, parentItemPath);
 
   // Return if we're on a page that doesn't have a subnav
   if (!parentNavItem) return;

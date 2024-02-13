@@ -158,7 +158,8 @@
       "clear": "Xóa",
       "clearLabel": "Xóa {filterName}",
       "addFilter": "Thêm bộ lọc",
-      "clearFilters": "Xóa tất cả"
+      "clearFilters": "Xóa tất cả",
+      "searchInView": "trong:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "điểm đánh dấu nội dung",
@@ -348,7 +349,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Xem thao tác đối với {title}"
+        "rollupActionsLabel": "Xem thao tác đối với {title}",
+        "pageReadyAccessibilityLabel": "{title}. Trang này đã sẵn sàng"
       }
     },
     "FullscreenBar": {

@@ -158,7 +158,8 @@
       "clearLabel": "清除 {filterName}",
       "moreFiltersWithCount": "更多篩選條件 ({count})",
       "addFilter": "新增篩選條件",
-      "clearFilters": "全部清除"
+      "clearFilters": "全部清除",
+      "searchInView": "在：{viewName}"
     },
     "Modal": {
       "iFrameTitle": "本文標記",
@@ -348,7 +349,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "檢視 {title} 的動作"
+        "rollupActionsLabel": "檢視 {title} 的動作",
+        "pageReadyAccessibilityLabel": "{title}。此頁面已準備就緒"
       }
     },
     "FullscreenBar": {

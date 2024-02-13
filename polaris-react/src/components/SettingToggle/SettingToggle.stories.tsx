@@ -11,7 +11,7 @@ import {
   BlockStack,
   useBreakpoints,
 } from '@shopify/polaris';
-import {CircleInformationMajor} from '@shopify/polaris-icons';
+import {InfoIcon} from '@shopify/polaris-icons';
 
 export default {
   component: SettingToggle,
@@ -70,11 +70,7 @@ export function WithPrimitiveComponents() {
   );
 
   const helpLink = (
-    <Button
-      variant="plain"
-      icon={CircleInformationMajor}
-      accessibilityLabel="Learn more"
-    />
+    <Button variant="plain" icon={InfoIcon} accessibilityLabel="Learn more" />
   );
 
   const settingTitle = title ? (
@@ -184,11 +180,7 @@ export function WithPrimitiveComponentsAndLongTitle() {
   );
 
   const helpLink = (
-    <Button
-      variant="plain"
-      icon={CircleInformationMajor}
-      accessibilityLabel="Learn more"
-    />
+    <Button variant="plain" icon={InfoIcon} accessibilityLabel="Learn more" />
   );
 
   const settingTitle = title ? (

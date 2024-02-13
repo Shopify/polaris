@@ -8,7 +8,7 @@ import {InlineStack} from '../InlineStack';
 import {Box} from '../Box';
 
 import {FiltersBar, SearchField} from './components';
-import styles from './Filters.scss';
+import styles from './Filters.module.scss';
 
 const TRANSITION_DURATION = 'var(--p-motion-duration-150)';
 const TRANSITION_MARGIN = '-36px';
@@ -97,6 +97,8 @@ export interface FiltersProps {
   onAddFilterClick?: () => void;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
+  /** @deprecated The name of the currently selected view */
+  selectedViewName?: string;
 }
 
 export function Filters({
@@ -121,11 +123,12 @@ export function Filters({
   mountedState,
   onAddFilterClick,
   closeOnChildOverlayClick,
+  selectedViewName,
 }: FiltersProps) {
   const hideFilterBar = hideFilters || filters.length === 0;
   const queryFieldMarkup = hideQueryField ? null : (
     <div className={styles.Container}>
-      <Box padding={hideFilterBar ? '300' : '200'}>
+      <Box padding="200">
         <InlineStack
           align="start"
           blockAlign="center"
@@ -156,6 +159,7 @@ export function Filters({
               disabled={disabled || disableQueryField}
               borderlessQueryField={borderlessQueryField}
               loading={loading}
+              selectedViewName={selectedViewName}
             />
           </div>
           {children}

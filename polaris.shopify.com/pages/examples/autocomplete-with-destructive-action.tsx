@@ -1,5 +1,5 @@
 import {Autocomplete, Icon} from '@shopify/polaris';
-import {SearchMinor, DeleteMinor} from '@shopify/polaris-icons';
+import {SearchIcon, DeleteIcon} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -63,7 +63,7 @@ function AutocompleteActionBeforeExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} />}
+      prefix={<Icon source={SearchIcon} />}
       placeholder="Search"
       autoComplete="off"
     />
@@ -76,7 +76,7 @@ function AutocompleteActionBeforeExample() {
           accessibilityLabel: 'Destructive action label',
           content: 'Destructive action',
           destructive: true,
-          icon: DeleteMinor,
+          icon: DeleteIcon,
           onAction: () => {
             console.log('actionBefore clicked!');
           },

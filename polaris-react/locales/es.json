@@ -158,7 +158,8 @@
       "clearLabel": "Borrar {filterName}",
       "moreFiltersWithCount": "Más filtros ({count})",
       "addFilter": "Agregar filtro",
-      "clearFilters": "Borrar todo"
+      "clearFilters": "Borrar todo",
+      "searchInView": "en:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "marcado body",
@@ -349,7 +350,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Ver acciones para {title}"
+        "rollupActionsLabel": "Ver acciones para {title}",
+        "pageReadyAccessibilityLabel": "{title}. Esta página está lista"
       }
     },
     "FullscreenBar": {

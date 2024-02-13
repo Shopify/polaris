@@ -158,7 +158,8 @@
       "clearLabel": "Vymazat {filterName}",
       "moreFiltersWithCount": "Další filtry ({count})",
       "addFilter": "Přidat filtr",
-      "clearFilters": "Vymazat vše"
+      "clearFilters": "Vymazat vše",
+      "searchInView": "v zobrazení: {viewName}"
     },
     "Modal": {
       "iFrameTitle": "kód hlavní části",
@@ -350,7 +351,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Zobrazte akce pro: {title}"
+        "rollupActionsLabel": "Zobrazte akce pro: {title}",
+        "pageReadyAccessibilityLabel": "{title}. Tato stránka je připravena."
       }
     },
     "FullscreenBar": {

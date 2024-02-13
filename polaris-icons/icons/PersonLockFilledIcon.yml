@@ -1,0 +1,19 @@
+name: Person lock filled
+description: Used to represent access permissions for users.
+keywords:
+  - Lock
+  - Person
+  - Access
+  - Control
+  - Rights
+  - Roles
+  - Security
+  - Authentication
+  - Authorization
+  - Login
+  - Password
+authors:
+  - José Torre
+  - Holly Schofield
+date_added: 2023-11-07
+date_modified: 2023-11-07

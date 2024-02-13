@@ -1,5 +1,5 @@
 import React from 'react';
-import {CancelMinor, HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {XIcon, MenuHorizontalIcon} from '@shopify/polaris-icons';
 
 import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
@@ -16,7 +16,7 @@ import {Box} from '../Box';
 import {InlineStack} from '../InlineStack';
 import {BlockStack} from '../BlockStack';
 
-import styles from './MediaCard.scss';
+import styles from './MediaCard.module.scss';
 
 type Size = 'small' | 'medium';
 
@@ -74,7 +74,7 @@ export function MediaCard({
 
   const dismissButtonMarkup = onDismiss ? (
     <Button
-      icon={CancelMinor}
+      icon={XIcon}
       onClick={onDismiss}
       size="slim"
       accessibilityLabel={i18n.translate('Polaris.MediaCard.dismissButton')}
@@ -85,7 +85,7 @@ export function MediaCard({
   const popoverActivator = (
     <InlineStack blockAlign="center">
       <Button
-        icon={HorizontalDotsMinor}
+        icon={MenuHorizontalIcon}
         onClick={togglePopoverActive}
         size="slim"
         accessibilityLabel={i18n.translate('Polaris.MediaCard.popoverButton')}

@@ -46,7 +46,7 @@ function measureScrollbars() {
   const child = document.createElement('div');
   child.setAttribute(
     'style',
-    `width:100%; height: ${SCROLLBAR_TEST_ELEMENT_CHILD_SIZE}; overflow:scroll`,
+    `width:100%; height: ${SCROLLBAR_TEST_ELEMENT_CHILD_SIZE}; overflow:scroll; scrollbar-width: thin;`,
   );
   parentEl.appendChild(child);
   document.body.appendChild(parentEl);
@@ -108,6 +108,19 @@ export class AppProvider extends Component<AppProviderProps, State> {
       this.stickyManager.setContainer(document);
       this.setBodyStyles();
       this.setRootAttributes();
+
+      const isSafari16 =
+        navigator.userAgent.includes('Safari') &&
+        !navigator.userAgent.includes('Chrome') &&
+        (navigator.userAgent.includes('Version/16.1') ||
+          navigator.userAgent.includes('Version/16.2') ||
+          navigator.userAgent.includes('Version/16.3'));
+
+      if (isSafari16) {
+        document.documentElement.classList.add(
+          'Polaris-Safari-16-Font-Optical-Sizing-Patch',
+        );
+      }
     }
     measureScrollbars();
   }

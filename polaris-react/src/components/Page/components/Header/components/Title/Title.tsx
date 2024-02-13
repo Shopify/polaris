@@ -4,7 +4,7 @@ import {classNames} from '../../../../../../utilities/css';
 import {Bleed} from '../../../../../Bleed';
 import {Text} from '../../../../../Text';
 
-import styles from './Title.scss';
+import styles from './Title.module.scss';
 
 export interface TitleProps {
   /** Page title, in large type */

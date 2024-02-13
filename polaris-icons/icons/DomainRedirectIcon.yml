@@ -1,0 +1,12 @@
+name: Domain redirect
+description: Used to represent a redirect domain.
+keywords:
+  - Domain
+  - Redirect
+authors:
+  - Kyryll Odobetskiy
+  - Joe Thomas
+  - José Torre
+  - Holly Schofield
+date_added: 2022-02-23
+date_modified: 2023-11-07

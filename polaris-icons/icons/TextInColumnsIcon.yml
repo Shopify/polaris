@@ -1,0 +1,22 @@
+name: Text in columns
+description: >-
+  Used to represent a layout option of two columns, each featuring an image and
+  text.
+keywords:
+  - paper
+  - page
+  - content
+  - featured
+  - section
+  - columns
+  - text
+  - image
+  - photo
+  - picture
+  - writing
+  - copy
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+date_added: 2019-02-25
+date_modified: 2023-06-23

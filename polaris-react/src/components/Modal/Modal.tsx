@@ -15,7 +15,7 @@ import {Portal} from '../Portal';
 
 import {Dialog, Footer, Header, Section} from './components';
 import type {FooterProps} from './components';
-import styles from './Modal.scss';
+import styles from './Modal.module.scss';
 
 const IFRAME_LOADING_HEIGHT = 200;
 const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;
@@ -169,9 +169,11 @@ export const Modal: React.FunctionComponent<ModalProps> & {
     );
 
     const scrollContainerMarkup = noScroll ? (
-      <Box width="100%" overflowX="hidden" overflowY="hidden">
-        {body}
-      </Box>
+      <div className={styles.NoScrollBody}>
+        <Box width="100%" overflowX="hidden" overflowY="hidden">
+          {body}
+        </Box>
+      </div>
     ) : (
       <Scrollable
         shadow

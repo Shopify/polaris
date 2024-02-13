@@ -10,15 +10,15 @@ import {
   BlockStack,
 } from '@shopify/polaris';
 import {
-  TickSmallMinor,
-  ChevronRightMinor,
-  DeleteMinor,
-  ExportMinor,
-  ImportMinor,
-  EditMinor,
-  CustomersMajor,
-  DuplicateMinor,
-  ArchiveMinor,
+  CheckSmallIcon,
+  ChevronRightIcon,
+  DeleteIcon,
+  ExportIcon,
+  ImportIcon,
+  EditIcon,
+  PersonIcon,
+  DuplicateIcon,
+  ArchiveIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -109,8 +109,8 @@ export function WithIconsOrImage() {
         <ActionList
           actionRole="menuitem"
           items={[
-            {content: 'Duplicate', icon: DuplicateMinor},
-            {content: 'Archive', icon: ArchiveMinor},
+            {content: 'Duplicate', icon: DuplicateIcon},
+            {content: 'Archive', icon: ArchiveIcon},
           ]}
         />
       </Popover>
@@ -137,24 +137,37 @@ export function WithAnIconAndASuffix() {
         autofocusTarget="first-node"
         onClose={toggleActive}
       >
-        <ActionList
-          actionRole="menuitem"
-          items={[
-            {
-              active: true,
-              content: 'Import file',
-              icon: ImportMinor,
-              suffix: <Icon source={TickSmallMinor} />,
-            },
-            {content: 'Export file', icon: ExportMinor},
-            {
-              disabled: true,
-              content: 'Disable file',
-              icon: ImportMinor,
-              suffix: <Icon source={TickSmallMinor} />,
-            },
-          ]}
-        />
+        <div style={{width: '200px'}}>
+          <ActionList
+            actionRole="menuitem"
+            items={[
+              {
+                active: true,
+                content: 'Import file',
+                icon: ImportIcon,
+                suffix: <Icon source={CheckSmallIcon} />,
+              },
+              {content: 'Export file', icon: ExportIcon},
+              {
+                content: 'Manage your blog articles',
+                icon: ImportIcon,
+                suffix: <Icon source={CheckSmallIcon} />,
+              },
+              {
+                content: `Manage uploaded images`,
+                icon: ImportIcon,
+                suffix: <Icon source={CheckSmallIcon} />,
+                truncate: true,
+              },
+              {
+                disabled: true,
+                content: 'Disable file',
+                icon: ImportIcon,
+                suffix: <Icon source={CheckSmallIcon} />,
+              },
+            ]}
+          />
+        </div>
       </Popover>
     </div>
   );
@@ -185,15 +198,15 @@ export function WithSections() {
             {
               title: 'File options',
               items: [
-                {content: 'Import file', icon: ImportMinor},
-                {content: 'Export file', icon: ExportMinor},
+                {content: 'Import file', icon: ImportIcon},
+                {content: 'Export file', icon: ExportIcon},
               ],
             },
             {
               title: 'Bulk actions',
               items: [
-                {content: 'Edit', icon: EditMinor},
-                {content: 'Delete', icon: DeleteMinor},
+                {content: 'Edit', icon: EditIcon},
+                {content: 'Delete', icon: DeleteIcon},
               ],
             },
             {
@@ -202,7 +215,7 @@ export function WithSections() {
                 {
                   content:
                     'Manage several customers at once with a CSV file import',
-                  icon: CustomersMajor,
+                  icon: PersonIcon,
                   truncate: true,
                 },
               ],
@@ -238,14 +251,14 @@ export function WithSectionsNoTitles() {
           sections={[
             {
               items: [
-                {content: 'Import file', icon: ImportMinor},
-                {content: 'Export file', icon: ExportMinor},
+                {content: 'Import file', icon: ImportIcon},
+                {content: 'Export file', icon: ExportIcon},
               ],
             },
             {
               items: [
-                {content: 'Edit', icon: EditMinor},
-                {content: 'Delete', icon: DeleteMinor},
+                {content: 'Edit', icon: EditIcon},
+                {content: 'Delete', icon: DeleteIcon},
               ],
             },
           ]}
@@ -283,13 +296,13 @@ export function WithDestructiveItem() {
                 {
                   active: true,
                   content: 'Import file',
-                  icon: ImportMinor,
+                  icon: ImportIcon,
                 },
-                {content: 'Export file', icon: ExportMinor},
+                {content: 'Export file', icon: ExportIcon},
                 {
                   destructive: true,
                   content: 'Delete file',
-                  icon: DeleteMinor,
+                  icon: DeleteIcon,
                 },
               ],
             },
@@ -336,15 +349,15 @@ export function WithHelpText() {
                   active: true,
                   content: 'Active blogs',
                   helpText: 'This is helpful text',
-                  icon: ImportMinor,
-                  suffix: <Icon source={TickSmallMinor} />,
+                  icon: ImportIcon,
+                  suffix: <Icon source={CheckSmallIcon} />,
                 },
                 {
                   disabled: true,
                   content: 'Disabled blogs',
                   helpText: 'This is also helpful text',
-                  icon: ImportMinor,
-                  suffix: <Icon source={TickSmallMinor} />,
+                  icon: ImportIcon,
+                  suffix: <Icon source={CheckSmallIcon} />,
                 },
               ],
             },
@@ -370,12 +383,12 @@ export function WithAPrefixAndASuffix() {
                 alt="Black leather pet collar"
               />
             ),
-            suffix: <Icon source={ChevronRightMinor} />,
+            suffix: <Icon source={ChevronRightIcon} />,
           },
           {
             content: 'Or there',
             prefix: <Avatar customer name="Farrah" size="sm" />,
-            suffix: <Icon source={ChevronRightMinor} />,
+            suffix: <Icon source={ChevronRightIcon} />,
           },
         ]}
       />

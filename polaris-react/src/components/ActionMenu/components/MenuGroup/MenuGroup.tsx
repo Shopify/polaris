@@ -5,7 +5,7 @@ import {ActionList} from '../../../ActionList';
 import {Popover} from '../../../Popover';
 import {SecondaryAction} from '../SecondaryAction';
 
-import styles from './MenuGroup.scss';
+import styles from './MenuGroup.module.scss';
 
 export interface MenuGroupProps extends MenuGroupDescriptor {
   /** Visually hidden menu description for screen readers */
@@ -18,8 +18,6 @@ export interface MenuGroupProps extends MenuGroupDescriptor {
   onOpen(title: string): void;
   /** Callback for closing the MenuGroup by title */
   onClose(title: string): void;
-  /** Callback for getting the offsetWidth of the MenuGroup */
-  getOffsetWidth?(width: number): void;
   /** Collection of sectioned action items */
   sections?: readonly ActionListSection[];
 }
@@ -35,7 +33,6 @@ export function MenuGroup({
   onClick,
   onClose,
   onOpen,
-  getOffsetWidth,
   sections,
 }: MenuGroupProps) {
   const handleClose = useCallback(() => {
@@ -54,14 +51,6 @@ export function MenuGroup({
     }
   }, [onClick, handleOpen]);
 
-  const handleOffsetWidth = useCallback(
-    (width: number) => {
-      if (!getOffsetWidth) return;
-      getOffsetWidth(width);
-    },
-    [getOffsetWidth],
-  );
-
   const popoverActivator = (
     <SecondaryAction
       disclosure
@@ -69,7 +58,6 @@ export function MenuGroup({
       icon={icon}
       accessibilityLabel={accessibilityLabel}
       onClick={handleClick}
-      getOffsetWidth={handleOffsetWidth}
     >
       {title}
     </SecondaryAction>

@@ -1,0 +1,12 @@
+name: Disabled
+description: >-
+  Used to represent an item or resource that is disabled, or an action that is
+  not allowed.
+keywords:
+  - blocked
+  - disabled
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+date_added: 2019-03-15
+date_modified: 2023-06-23

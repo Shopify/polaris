@@ -1,5 +1,5 @@
 import React, {Component, createRef, useContext, useId} from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {MenuHorizontalIcon} from '@shopify/polaris-icons';
 import isEqual from 'react-fast-compare';
 
 import {ActionList} from '../ActionList';
@@ -25,7 +25,7 @@ import {
 } from '../../utilities/resource-list';
 import type {ResourceListSelectedItems} from '../../utilities/resource-list';
 
-import styles from './ResourceItem.scss';
+import styles from './ResourceItem.module.scss';
 
 type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 
@@ -259,7 +259,7 @@ class BaseResourceItem extends Component<CombinedProps, State> {
                     accessibilityLabel={disclosureAccessibilityLabel}
                     onClick={this.handleActionsClick}
                     variant="tertiary"
-                    icon={HorizontalDotsMinor}
+                    icon={MenuHorizontalIcon}
                   />
                 }
                 onClose={this.handleCloseRequest}
