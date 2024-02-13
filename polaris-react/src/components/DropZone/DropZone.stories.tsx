@@ -378,7 +378,17 @@ export function SmallSized() {
       <BlockStack gap="200">
         <div>
           <Text as="h2" variant="headingMd">
-            Small sized Drop zone
+            Small sized Drop zone (50px)
+          </Text>
+        </div>
+        <div style={{width: 50, height: 50}}>
+          <DropZone>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+        <div>
+          <Text as="h2" variant="headingMd">
+            Small sized Drop zone (40px)
           </Text>
         </div>
         <div style={{width: 40, height: 40}}>

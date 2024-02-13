@@ -111,6 +111,13 @@ $dropzone-stacking-order: (
   padding: 0;
   align-items: center;
   min-height: $dropzone-min-height-small;
+
+  /* This creates a square with a 1:1 aspect ratio */
+  &::before {
+    content: '';
+    /* stylelint-disable-next-line -- set padding top to full width of the element to maintain 1:1 aspect ratio */
+    padding-top: 100%;
+  }
 }
 
 .measuring {
