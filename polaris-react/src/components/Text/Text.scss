@@ -113,21 +113,6 @@
   }
 }
 
-@mixin _heading3xl {
-  font-size: var(--p-font-size-750);
-  line-height: var(--p-font-line-height-1000);
-  font-weight: var(--p-font-weight-bold);
-
-  @media (--p-breakpoints-md-up) {
-    font-size: var(--p-text-heading-3xl-font-size);
-    line-height: var(--p-text-heading-3xl-font-line-height);
-  }
-}
-
-.heading3xl {
-  @include _heading3xl;
-}
-
 .bodyXs {
   font-size: var(--p-text-body-xs-font-size);
   font-weight: var(--p-text-body-xs-font-weight);
