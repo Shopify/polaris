@@ -381,8 +381,20 @@ export function SmallSized() {
             Small sized Drop zone
           </Text>
         </div>
-        <div style={{width: 50, height: 50}}>
+        <div style={{width: 40, height: 40}}>
           <DropZone>
+            <DropZone.FileUpload />
+          </DropZone>
+        </div>
+      </BlockStack>
+      <BlockStack gap="200">
+        <div>
+          <Text as="h2" variant="headingMd">
+            Small sized Drop zone without outline
+          </Text>
+        </div>
+        <div style={{width: 40, height: 40}}>
+          <DropZone outline={false}>
             <DropZone.FileUpload />
           </DropZone>
         </div>
@@ -394,7 +406,7 @@ export function SmallSized() {
           </Text>
           <Text as="p">Drag file in to see error state</Text>
         </div>
-        <div style={{width: 50, height: 50}}>
+        <div style={{width: 40, height: 40}}>
           <DropZone error>
             <DropZone.FileUpload />
           </DropZone>
@@ -406,7 +418,7 @@ export function SmallSized() {
             Small sized Drop zone with disabled state
           </Text>
         </div>
-        <div style={{width: 50, height: 50}}>
+        <div style={{width: 40, height: 40}}>
           <DropZone disabled>
             <DropZone.FileUpload />
           </DropZone>
