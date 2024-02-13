@@ -65,10 +65,6 @@ export function calculateVerticalPosition(
     activatorTop + containerRectTop - heightIfAbove - verticalMargins;
   let positionIfBelow = activatorBottom + containerRectTop;
 
-  // if (hasScrollBar) {
-  //   positionIfAbove = activatorTop + containerRectTop - heightIfAbove;
-  // }
-
   if (!positionedHorizontal) {
     if (preferredPosition === 'above') {
       return mostSpaceOnTop
@@ -133,7 +129,7 @@ export function calculateHorizontalPosition(
   containerRect: Rect,
   overlayMargins: Margins,
   preferredAlignment: PreferredAlignment,
-  _scrollableContainerRect: Rect,
+  scrollableContainerRect: Rect,
   preferredHorizontalPosition?: 'left' | 'right',
   overlayMinWidth = 0,
 ) {
@@ -155,6 +151,37 @@ export function calculateHorizontalPosition(
     (overlayMinWidth || desiredWidth) + minimumSurroundingSpace;
 
   if (!preferredHorizontalPosition) {
+    console.table([
+      {variable: 'maximumWidth', value: maximumWidth},
+      {variable: 'overlayMinWidth', value: overlayMinWidth},
+      {variable: 'activatorRect.width', value: activatorRect.width},
+      {variable: 'overlayRect.width', value: overlayRect.width},
+      {variable: 'containerRect.width', value: containerRect.width},
+      {
+        variable: 'activatorRect.left',
+        value: activatorRect.left,
+      },
+      {
+        variable: 'activatorRect.right',
+        value: activatorRect.right,
+      },
+      {
+        variable: 'enoughSpaceFromLeftEdge',
+        value: enoughSpaceFromLeftEdge,
+      },
+      {
+        variable: 'enoughSpaceFromRightEdge',
+        value: enoughSpaceFromRightEdge,
+      },
+      {
+        variable: 'distanceToLeftEdge',
+        value: distanceToLeftEdge,
+      },
+      {
+        variable: 'distanceToRightEdge',
+        value: distanceToRightEdge,
+      },
+    ]);
     if (preferredAlignment === 'left') {
       return {
         left: Math.min(
@@ -185,6 +212,76 @@ export function calculateHorizontalPosition(
     const widthIfRight = enoughSpaceFromRightEdge
       ? desiredWidth
       : Math.min(distanceToRightEdge - minimumSurroundingSpace, desiredWidth);
+
+    console.table([
+      {variable: 'maximumWidth', value: maximumWidth},
+      {variable: 'overlayMinWidth', value: overlayMinWidth},
+      {variable: 'activatorRect.width', value: activatorRect.width},
+      {variable: 'overlayRect.width', value: overlayRect.width},
+      {variable: 'containerRect.width', value: containerRect.width},
+      {
+        variable: 'scrollableContainerRect.width',
+        value: scrollableContainerRect.width,
+      },
+      {
+        variable: 'widthIfLeft',
+        value: widthIfLeft,
+      },
+      {
+        variable: 'widthIfRight',
+        value: widthIfRight,
+      },
+
+      {
+        variable: 'activatorRect.left',
+        value: activatorRect.left,
+      },
+      {
+        variable: 'containerRect.left',
+        value: containerRect.left,
+      },
+      {
+        variable: 'scrollableContainerRect.left',
+        value: scrollableContainerRect.left,
+      },
+      {
+        variable: 'activatorRect.right',
+        value: activatorRect.right,
+      },
+      {
+        variable: 'containerRect.right',
+        value: containerRect.right,
+      },
+      {
+        variable: 'scrollableContainerRect.right',
+        value: scrollableContainerRect.right,
+      },
+      {
+        variable: 'enoughSpaceFromLeftEdge',
+        value: enoughSpaceFromLeftEdge,
+      },
+      {
+        variable: 'enoughSpaceFromRightEdge',
+        value: enoughSpaceFromRightEdge,
+      },
+      {
+        variable: 'distanceToLeftEdge',
+        value: distanceToLeftEdge,
+      },
+      {
+        variable: 'distanceToRightEdge',
+        value: distanceToRightEdge,
+      },
+
+      {
+        variable: 'positionIfLeft',
+        value: positionIfLeft,
+      },
+      {
+        variable: 'positionIfRight',
+        value: positionIfRight,
+      },
+    ]);
 
     if (preferredHorizontalPosition === 'right') {
       return enoughSpaceFromRightEdge
@@ -253,10 +350,15 @@ export function intersectionWithViewport(
 }
 
 export function windowRect() {
+  const top = window.scrollY;
+  const left = window.scrollX;
+  const height = window.innerHeight;
+  const width = document.body.clientWidth;
+
   return new Rect({
-    top: window.scrollY,
-    left: window.scrollX,
-    height: window.innerHeight,
-    width: document.body.clientWidth,
+    top,
+    left,
+    height,
+    width,
   });
 }
