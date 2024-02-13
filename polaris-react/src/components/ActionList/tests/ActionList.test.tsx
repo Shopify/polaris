@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImportMinor, ExportMinor} from '@shopify/polaris-icons';
+import {ImportIcon, ExportIcon} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../ActionList';
@@ -95,8 +95,8 @@ describe('<ActionList />', () => {
           {
             title: 'File options',
             items: [
-              {content: 'Import file', icon: ImportMinor},
-              {content: 'Export file', icon: ExportMinor},
+              {content: 'Import file', icon: ImportIcon},
+              {content: 'Export file', icon: ExportIcon},
             ],
           },
         ]}
@@ -119,8 +119,8 @@ describe('<ActionList />', () => {
           {
             title: 'File options',
             items: [
-              {content: 'Import file', icon: ImportMinor},
-              {content: 'Export file', icon: ExportMinor},
+              {content: 'Import file', icon: ImportIcon},
+              {content: 'Export file', icon: ExportIcon},
             ],
           },
         ]}

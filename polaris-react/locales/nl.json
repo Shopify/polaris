@@ -158,7 +158,8 @@
       "clearLabel": "{filterName} wissen",
       "moreFiltersWithCount": "Meer filters ({count})",
       "addFilter": "Filter toevoegen",
-      "clearFilters": "Alles wissen"
+      "clearFilters": "Alles wissen",
+      "searchInView": "in:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "opmaak hoofdtekst",
@@ -348,7 +349,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Acties voor {title} bekijken"
+        "rollupActionsLabel": "Acties voor {title} bekijken",
+        "pageReadyAccessibilityLabel": "{title}. Deze pagina is klaar"
       }
     },
     "FullscreenBar": {

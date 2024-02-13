@@ -13,7 +13,7 @@ import type {Error} from '../../types';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 
-import styles from './Choice.scss';
+import styles from './Choice.module.scss';
 
 type Spacing = ResponsiveProp<SpaceScale>;
 

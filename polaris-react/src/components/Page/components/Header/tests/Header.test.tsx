@@ -1,5 +1,5 @@
 import React from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {PlusIcon} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {ActionMenu} from '../../../../ActionMenu';
@@ -9,6 +9,7 @@ import {Button} from '../../../../Button';
 import {ButtonGroup} from '../../../../ButtonGroup';
 import {Pagination} from '../../../../Pagination';
 import {Tooltip} from '../../../../Tooltip';
+import {Text} from '../../../../Text';
 import type {LinkAction, MenuActionDescriptor} from '../../../../../types';
 import {Header} from '../Header';
 import type {HeaderProps} from '../Header';
@@ -43,6 +44,30 @@ describe('<Header />', () => {
       const header = mountWithApp(<Header {...mockProps} />);
       expect(header).toHaveReactProps({
         titleMetadata: mockProps.titleMetadata,
+      });
+    });
+
+    it('renders an aria-live region with the title', () => {
+      const header = mountWithApp(<Header {...mockProps} />);
+      const liveRegion = header.find('div', {role: 'status'});
+      expect(liveRegion).toContainReactComponent(Text, {
+        visuallyHidden: true,
+        children: `${mockProps.title}. This page is ready`,
+      });
+    });
+
+    it('renders an aria-live region with the pageReadyAccessibilityLabel which overrides the title', () => {
+      const pageReadyAccessibilityLabel = 'page ready';
+      const header = mountWithApp(
+        <Header
+          {...mockProps}
+          pageReadyAccessibilityLabel={pageReadyAccessibilityLabel}
+        />,
+      );
+      const liveRegion = header.find('div', {role: 'status'});
+      expect(liveRegion).toContainReactComponent(Text, {
+        visuallyHidden: true,
+        children: `${pageReadyAccessibilityLabel}. This page is ready`,
       });
     });
   });
@@ -287,7 +312,7 @@ describe('<Header />', () => {
 
   const primaryAction: HeaderProps['primaryAction'] = {
     content: 'Click me!',
-    icon: PlusMinor,
+    icon: PlusIcon,
   };
 
   const secondaryActions: HeaderProps['secondaryActions'] = [
@@ -322,7 +347,7 @@ describe('<Header />', () => {
     );
     expect(header.findAll('div', {className: 'Row'})).toHaveLength(1);
     expect(header).toContainReactComponent(Button, {
-      icon: PlusMinor,
+      icon: PlusIcon,
       children: undefined,
     });
   });

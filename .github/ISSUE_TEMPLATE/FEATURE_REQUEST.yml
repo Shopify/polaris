@@ -1,0 +1,19 @@
+name: Feature request
+description: Suggest an addition or improvement to Polaris or the documentation
+labels: ['Feature request', 'untriaged']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        🌟 Feature requests that are not yet planned will be closed. We then use the issue’s :+1: upvotes to track and set priorities. 
+        See the [contribution guidelines](https://github.com/Shopify/polaris/blob/main/.github/CONTRIBUTING.md) for more information.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Provide a short summary of the feature.
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: Explain the benefit of this feature.

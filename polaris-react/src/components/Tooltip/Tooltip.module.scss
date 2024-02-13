@@ -1,0 +1,7 @@
+.TooltipContainer {
+  display: flex;
+}
+
+.HasUnderline {
+  border-bottom: var(--p-border-width-050) dotted var(--p-color-border);
+}

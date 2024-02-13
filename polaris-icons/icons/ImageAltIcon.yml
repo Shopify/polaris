@@ -1,0 +1,12 @@
+name: Image alt
+description: >-
+  Used to represent the alt text attribute used to describe the appearance and
+  function of an image on a page.
+keywords:
+  - accessibility
+  - alt text
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+date_added: 2019-03-15
+date_modified: 2023-06-23

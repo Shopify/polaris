@@ -1,0 +1,12 @@
+name: Color
+description: Used to represent a color swatch, or palette of colors.
+keywords:
+  - color
+  - palette
+  - swatch
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+  - José Torre
+date_added: 2019-03-15
+date_modified: 2023-11-07

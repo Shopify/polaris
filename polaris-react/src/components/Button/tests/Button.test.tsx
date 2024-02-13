@@ -1,9 +1,9 @@
 import React from 'react';
 import {
-  ChevronDownMinor,
-  ChevronUpMinor,
-  PlusMinor,
-  SelectMinor,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  PlusIcon,
+  SelectIcon,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
@@ -11,7 +11,6 @@ import {Icon} from '../../Icon';
 import {Spinner} from '../../Spinner';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Button} from '../Button';
-import styles from '../Button.scss';
 
 describe('<Button />', () => {
   let warnSpy: jest.SpyInstance | null = null;
@@ -141,8 +140,8 @@ describe('<Button />', () => {
 
   describe('icon', () => {
     it('renders an icon if it’s a component', () => {
-      const button = mountWithApp(<Button icon={PlusMinor} />);
-      expect(button).toContainReactComponent(Icon, {source: PlusMinor});
+      const button = mountWithApp(<Button icon={PlusIcon} />);
+      expect(button).toContainReactComponent(Icon, {source: PlusIcon});
     });
 
     it('renders a react node if it is one', () => {
@@ -295,7 +294,8 @@ describe('<Button />', () => {
   });
 
   describe('pressed', () => {
-    const buttonPressedClasses = 'Button pressed';
+    const buttonPressedClasses =
+      'Button pressable variantSecondary sizeMedium textAlignCenter pressed';
 
     it('outputs a pressed button', () => {
       const button = mountWithApp(<Button pressed />);
@@ -322,34 +322,26 @@ describe('<Button />', () => {
   describe('disclosure', () => {
     it('assumes "down" if set to true', () => {
       const button = mountWithApp(<Button disclosure />);
-      const disclosureIcon = button
-        .find('div', {className: styles.DisclosureIcon})!
-        .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: ChevronDownMinor});
+      const disclosureIcon = button.find(Icon);
+      expect(disclosureIcon).toHaveReactProps({source: ChevronDownIcon});
     });
 
     it('is facing down if set to "down"', () => {
       const button = mountWithApp(<Button disclosure="down" />);
-      const disclosureIcon = button
-        .find('div', {className: styles.DisclosureIcon})!
-        .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: ChevronDownMinor});
+      const disclosureIcon = button.find(Icon);
+      expect(disclosureIcon).toHaveReactProps({source: ChevronDownIcon});
     });
 
     it('is facing up if set to "up"', () => {
       const button = mountWithApp(<Button disclosure="up" />);
-      const disclosureIcon = button
-        .find('div', {className: styles.DisclosureIcon})!
-        .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: ChevronUpMinor});
+      const disclosureIcon = button.find(Icon);
+      expect(disclosureIcon).toHaveReactProps({source: ChevronUpIcon});
     });
 
     it('is double-arrow if set to "select"', () => {
       const button = mountWithApp(<Button disclosure="select" />);
-      const disclosureIcon = button
-        .find('div', {className: styles.DisclosureIcon})!
-        .find(Icon);
-      expect(disclosureIcon).toHaveReactProps({source: SelectMinor});
+      const disclosureIcon = button.find(Icon);
+      expect(disclosureIcon).toHaveReactProps({source: SelectIcon});
     });
   });
 

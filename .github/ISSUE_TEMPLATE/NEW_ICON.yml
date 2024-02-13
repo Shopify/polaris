@@ -1,7 +1,7 @@
 name: Propose new icon
 description: For new icon contributions and suggestions for polaris-icons
 title: '[Icon]: New icon <icon-name>'
-labels: ['Icon', 'untriaged', 'Fast follow']
+labels: ['Icon', 'untriaged']
 body:
   - type: markdown
     attributes:
@@ -18,16 +18,6 @@ body:
     id: icon-name
     attributes:
       label: Icon name
-    validations:
-      required: true
-  - type: dropdown
-    id: icon-set
-    attributes:
-      label: What type of icon set?
-      options:
-        - Major (20x20)
-        - Minor (16x16)
-        - Unsure
     validations:
       required: true
   - type: textarea

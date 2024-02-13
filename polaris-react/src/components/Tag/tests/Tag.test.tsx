@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {SearchMinor} from '@shopify/polaris-icons';
+import {SearchIcon} from '@shopify/polaris-icons';
 
 import {Icon} from '../../Icon';
 import {Tag} from '../Tag';
@@ -75,10 +75,10 @@ describe('<Tag />', () => {
     it('accepts React components as children', () => {
       const tag = mountWithApp(
         <Tag>
-          <Icon source={SearchMinor} />
+          <Icon source={SearchIcon} />
         </Tag>,
       );
-      expect(tag).toContainReactComponent(Icon, {source: SearchMinor});
+      expect(tag).toContainReactComponent(Icon, {source: SearchIcon});
     });
   });
 
@@ -104,7 +104,7 @@ describe('<Tag />', () => {
     it('uses the accessibilityLabel prop to render title when a component is received as children and url prop is passed', () => {
       const tag = mountWithApp(
         <Tag accessibilityLabel="customTitle" url="#">
-          <Icon source={SearchMinor} />
+          <Icon source={SearchIcon} />
         </Tag>,
       );
       expect(tag).toContainReactComponent('span', {
@@ -115,7 +115,7 @@ describe('<Tag />', () => {
     it('does not render the title attribute if accessibilityLabel is `undefined` when a component is received as children and url prop is passed', () => {
       const tag = mountWithApp(
         <Tag url="#">
-          <Icon source={SearchMinor} />
+          <Icon source={SearchIcon} />
         </Tag>,
       );
       expect(tag).not.toContainReactComponent('span', {

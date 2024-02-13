@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {UploadMajor} from '@shopify/polaris-icons';
+import {UploadIcon} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
 import {classNames} from '../../../../utilities/css';
@@ -10,7 +10,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {createAllowMultipleKey} from '../../utils';
 import {BlockStack} from '../../../BlockStack';
 
-import styles from './FileUpload.scss';
+import styles from './FileUpload.module.scss';
 
 export interface FileUploadProps {
   actionTitle?: string;
@@ -75,7 +75,7 @@ export function FileUpload(props: FileUploadProps) {
         <div
           className={classNames(styles.UploadIcon, disabled && styles.disabled)}
         >
-          <Icon source={UploadMajor} />
+          <Icon source={UploadIcon} />
         </div>
       );
 

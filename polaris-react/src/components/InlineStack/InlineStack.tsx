@@ -1,10 +1,10 @@
 import React from 'react';
 import type {SpaceScale} from '@shopify/polaris-tokens';
 
-import {getResponsiveProps} from '../../utilities/css';
+import {getResponsiveProps, getResponsiveValue} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
 
-import styles from './InlineStack.scss';
+import styles from './InlineStack.module.scss';
 
 type Align =
   | 'start'
@@ -16,11 +16,18 @@ type Align =
 type BlockAlign = 'start' | 'center' | 'end' | 'baseline' | 'stretch';
 
 type Gap = ResponsiveProp<SpaceScale>;
-
+type Direction = ResponsiveProp<'row' | 'row-reverse'>;
+type Element = 'div' | 'span' | 'li' | 'ol' | 'ul';
 export interface InlineStackProps extends React.AriaAttributes {
   children?: React.ReactNode;
+  /** HTML Element type
+   * @default 'div'
+   */
+  as?: Element;
   /** Horizontal alignment of children */
   align?: Align;
+  /** Horizontal direction in which children are laid out */
+  direction?: Direction;
   /** Vertical alignment of children */
   blockAlign?: BlockAlign;
   /** The spacing between elements. Accepts a spacing token or an object of spacing tokens for different screen sizes.
@@ -36,7 +43,9 @@ export interface InlineStackProps extends React.AriaAttributes {
 }
 
 export const InlineStack = function InlineStack({
+  as: Element = 'div',
   align,
+  direction = 'row',
   blockAlign,
   gap,
   wrap = true,
@@ -47,11 +56,12 @@ export const InlineStack = function InlineStack({
     '--pc-inline-stack-block-align': blockAlign,
     '--pc-inline-stack-wrap': wrap ? 'wrap' : 'nowrap',
     ...getResponsiveProps('inline-stack', 'gap', 'space', gap),
+    ...getResponsiveValue('inline-stack', 'flex-direction', direction),
   } as React.CSSProperties;
 
   return (
-    <div className={styles.InlineStack} style={style}>
+    <Element className={styles.InlineStack} style={style}>
       {children}
-    </div>
+    </Element>
   );
 };

@@ -1,7 +1,0 @@
-/* Increase specificity for icon override in Filters */
-.Spinner.Spinner {
-  svg {
-    display: block;
-    fill: var(--p-color-bg-fill-brand);
-  }
-}

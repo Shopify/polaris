@@ -8,6 +8,7 @@ const {
   isString,
   isRegExp,
   matchesStringOrRegExp,
+  isBoolean,
 } = require('../../utils');
 
 const ruleName = 'polaris/media-query-allowed-list';
@@ -26,6 +27,7 @@ const messages = stylelint.utils.ruleMessages(ruleName, {
  * @property {AllowedPatterns} allowedMediaTypes
  * @property {AllowedPatterns} allowedMediaFeatureNames
  * @property {AllowedPatterns} allowedScssInterpolations
+ * @property {boolean} disabled
  */
 
 const {rule} = stylelint.createPlugin(
@@ -51,6 +53,11 @@ const {rule} = stylelint.createPlugin(
           possible: [isString, isRegExp],
           optional: true,
         },
+        {
+          actual: primary.disabled,
+          possible: [isBoolean],
+          optional: true,
+        },
       );
 
       if (!validOptions) {
@@ -63,7 +70,12 @@ const {rule} = stylelint.createPlugin(
         allowedMediaTypes = [],
         allowedMediaFeatureNames = [],
         allowedScssInterpolations = [],
+        disabled,
       } = primary;
+
+      if (disabled) {
+        return;
+      }
 
       // Pass `primary.allowedMediaFeatureNames` to the
       // built-in `media-feature-name-allowed-list` rule

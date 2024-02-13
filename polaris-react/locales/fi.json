@@ -158,7 +158,8 @@
       "clearLabel": "Tyhjennä {filterName}",
       "moreFiltersWithCount": "Lisää suodattimia ({count})",
       "addFilter": "Lisää suodatin",
-      "clearFilters": "Tyhjennä kaikki"
+      "clearFilters": "Tyhjennä kaikki",
+      "searchInView": "kohde:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "tekstin merkintä",
@@ -348,7 +349,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Tarkastele nimikettä {title} koskevia toimintoja"
+        "rollupActionsLabel": "Tarkastele nimikettä {title} koskevia toimintoja",
+        "pageReadyAccessibilityLabel": "{title}. Tämä sivu on valmis"
       }
     },
     "FullscreenBar": {

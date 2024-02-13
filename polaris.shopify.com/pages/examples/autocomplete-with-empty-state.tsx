@@ -1,5 +1,5 @@
 import {Autocomplete, Icon, TextContainer} from '@shopify/polaris';
-import {SearchMinor} from '@shopify/polaris-icons';
+import {SearchIcon} from '@shopify/polaris-icons';
 import React, {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -63,7 +63,7 @@ function AutocompleteExample() {
       onChange={updateText}
       label="Tags"
       value={inputValue}
-      prefix={<Icon source={SearchMinor} tone="base" />}
+      prefix={<Icon source={SearchIcon} tone="base" />}
       placeholder="Search"
       autoComplete="off"
     />
@@ -71,7 +71,7 @@ function AutocompleteExample() {
 
   const emptyState = (
     <React.Fragment>
-      <Icon source={SearchMinor} />
+      <Icon source={SearchIcon} />
       <div style={{textAlign: 'center'}}>
         <TextContainer>Could not find any results</TextContainer>
       </div>

@@ -1,6 +1,6 @@
 {
   "name": "@shopify/polaris-icons",
-  "version": "7.11.0",
+  "version": "8.2.0",
   "license": "SEE LICENSE IN LICENSE.md",
   "author": "Shopify Inc.",
   "main": "dist/index.js",
@@ -21,7 +21,8 @@
     "clean": "rm -rf .turbo node_modules dist",
     "dev": "rollup -c -w",
     "test": "jest",
-    "optimize": "svgo -f icons"
+    "optimize": "svgo -f icons",
+    "lint": "TIMING=1 eslint --cache ."
   },
   "exports": {
     ".": {
@@ -61,7 +62,6 @@
     "hast-util-select": "^3.0.0",
     "js-yaml": "^4.0.0",
     "rehype-parse": "^7.0.1",
-    "svgo": "^2.8.0",
     "unified": "^9.2.1"
   }
 }

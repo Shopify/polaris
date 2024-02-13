@@ -11,4 +11,4 @@ export default {
   },
 };
 
-export {Playground, KitchenSink, DetailsPage};
+export {DetailsPage, KitchenSink, Playground};

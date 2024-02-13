@@ -28,7 +28,7 @@ import type {
   SortButtonChoice,
 } from './types';
 import {IndexFiltersMode} from './types';
-import styles from './IndexFilters.scss';
+import styles from './IndexFilters.module.scss';
 
 const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
 
@@ -400,7 +400,11 @@ export function IndexFilters({
                       )}
                     </div>
                     <div className={styles.ActionWrap}>
-                      {isLoading && !mdDown && <Spinner size="small" />}
+                      {isLoading && !mdDown && (
+                        <div className={styles.DesktopLoading}>
+                          {isLoading ? <Spinner size="small" /> : null}
+                        </div>
+                      )}
                       {mode === IndexFiltersMode.Default ? (
                         <>
                           {hideFilters && hideQueryField ? null : (

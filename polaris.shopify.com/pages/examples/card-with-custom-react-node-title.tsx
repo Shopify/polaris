@@ -7,7 +7,7 @@ import {
   List,
   Text,
 } from '@shopify/polaris';
-import {ProductsMinor} from '@shopify/polaris-icons';
+import {ProductIcon} from '@shopify/polaris-icons';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
 function CardWithCustomReactNodeTitle() {
@@ -19,7 +19,7 @@ function CardWithCustomReactNodeTitle() {
         </Text>
         <BlockStack inlineAlign="start">
           <InlineStack gap="400">
-            <Icon source={ProductsMinor} />
+            <Icon source={ProductIcon} />
             <Text as="h3" variant="headingSm">
               New Products
             </Text>

@@ -1,0 +1,67 @@
+name: Issue
+description: Ask a question or report a problem with Polaris or the documentation
+labels: ['Bug', 'untriaged']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please use [this template](https://github.com/Shopify/polaris/issues/new?labels=Feature+request&template=FEATURE_REQUEST.yml) for feature requests.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Provide a short description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected behavior
+      description: What should happen?
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: Actual behavior
+      description: What happens instead of the expected behavior?
+      value: |
+        Wrap animated gifs/videos in a details tag:
+        <details>
+          <summary>Summary of your gif(s)</summary>
+          <img src="..." alt="Description of what the gif shows">
+        </details>
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Provide a reduced test case with the [Polaris Sandbox](https://polaris.shopify.com/sandbox?code=N4IgLgFgpgtlDOIBcBtEAbA9gYwIbqiSgDsQBdAGhAHcBLAE0kVQHYA2ADjIF8g) or a CodeSandbox.
+      value: |
+        [Link to sandbox]()
+        1. 
+        2.
+        3.
+  - type: markdown
+    attributes:
+      value: |
+
+        > [!Note]
+        > Use the folowing command to provide specifications on your environment including version numbers, browser, device, and operating system.
+        > `npx envinfo --system --binaries --browsers --npmPackages react,react-dom,@shopify/polaris`
+  - type: dropdown
+    id: react-components
+    attributes:
+      label: Are you using React components?
+      options:
+        - 'Yes'
+        - 'No'
+  - type: input
+    id: polaris-version-number
+    attributes:
+      label: Polaris version number
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+  - type: input
+    id: device
+    attributes:
+      label: Device

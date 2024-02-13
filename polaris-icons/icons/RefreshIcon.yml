@@ -1,0 +1,13 @@
+name: Refresh
+description: >-
+  Used to denote the action of resetting a customer’s account password on their
+  customer page.
+keywords:
+  - refresh
+  - reload
+  - sync
+authors:
+  - Adam Whitcroft
+  - Joe Thomas
+date_added: 2018-11-14
+date_modified: 2023-06-23

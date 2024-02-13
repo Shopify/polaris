@@ -6,9 +6,10 @@ import {InlineError} from '../../InlineError';
 import {Labelled} from '../../Labelled';
 import {Select} from '../../Select';
 import {Tag} from '../../Tag';
+import {Spinner as LoadingSpinner} from '../../Spinner';
 import {Resizer, Spinner} from '../components';
 import {TextField} from '../TextField';
-import styles from '../TextField.scss';
+import styles from '../TextField.module.scss';
 import {Key} from '../../../types';
 
 describe('<TextField />', () => {
@@ -2239,6 +2240,38 @@ describe('<TextField />', () => {
     });
   });
 
+  describe('loading', () => {
+    it('renders a loading spinner when true', () => {
+      const textField = mountWithApp(
+        <TextField
+          id="MyTextField"
+          label="TextField"
+          onChange={noop}
+          type="text"
+          value="test value"
+          autoComplete="off"
+          loading
+        />,
+      );
+      expect(textField).toContainReactComponent(LoadingSpinner);
+    });
+
+    it('does not render a loading spinner by default', () => {
+      const textField = mountWithApp(
+        <TextField
+          id="MyTextField"
+          label="TextField"
+          onChange={noop}
+          type="text"
+          value="test value"
+          autoComplete="off"
+        />,
+      );
+
+      expect(textField).not.toContainReactComponent(LoadingSpinner);
+    });
+  });
+
   describe('requiredIndicator', () => {
     it('passes requiredIndicator prop to Labelled', () => {
       const element = mountWithApp(
@@ -2382,34 +2415,129 @@ describe('<TextField />', () => {
     });
   });
 
-  it('adds a borderless className when borderless prop is passed', () => {
-    const textField = mountWithApp(
-      <TextField
-        label="TextField"
-        onChange={noop}
-        autoComplete="off"
-        variant="borderless"
-      />,
-    );
+  describe('borderless', () => {
+    it('adds a borderless className when variant=`borderless` prop is passed', () => {
+      const textField = mountWithApp(
+        <TextField
+          label="TextField"
+          onChange={noop}
+          autoComplete="off"
+          variant="borderless"
+        />,
+      );
 
-    expect(textField).toContainReactComponent('div', {
-      className: expect.stringContaining(styles.borderless),
+      expect(textField).toContainReactComponent('div', {
+        className: expect.stringContaining(styles.borderless),
+      });
     });
   });
 
-  it('adds a borderless className when variant=`borderless` prop is passed', () => {
+  describe('autoSize', () => {
+    it('adds an autoSize class name', () => {
+      const textField = mountWithApp(
+        <TextField
+          label="TextField"
+          onChange={noop}
+          autoComplete="off"
+          autoSize
+        />,
+      );
+
+      expect(textField).toContainReactComponent('input', {
+        className: expect.stringContaining(styles['Input-autoSize']),
+      });
+    });
+  });
+
+  it('adds a size attribute to the input when autoSize is true', () => {
     const textField = mountWithApp(
       <TextField
         label="TextField"
         onChange={noop}
         autoComplete="off"
-        variant="borderless"
+        autoSize
+      />,
+    );
+
+    expect(textField).toContainReactComponent('input', {
+      size: 1,
+    });
+  });
+
+  it('wraps the input and suffix when autoSize is true', () => {
+    const textField = mountWithApp(
+      <TextField
+        label="TextField"
+        onChange={noop}
+        autoComplete="off"
+        autoSize
+        suffix={<div />}
       />,
     );
 
     expect(textField).toContainReactComponent('div', {
-      className: expect.stringContaining(styles.borderless),
+      className: expect.stringContaining(styles.InputAndSuffixWrapper),
     });
+    expect(textField).toContainReactComponent('div', {
+      className: expect.stringContaining(styles.AutoSizeWrapper),
+    });
+    expect(textField).toContainReactComponent('div', {
+      className: expect.stringContaining(styles.AutoSizeWrapperWithSuffix),
+    });
+  });
+
+  it('sets the data attribute to the value of the text field when autoSize is true', () => {
+    const value = 'foo';
+    const textField = mountWithApp(
+      <TextField
+        label="TextField"
+        onChange={noop}
+        autoComplete="off"
+        autoSize
+        value={value}
+      />,
+    );
+
+    expect(textField).toContainReactComponent('div', {
+      'data-auto-size-value': value,
+    } as any);
+  });
+
+  it('sets the data attribute to the placeholder of the text field when autoSize is true and the value is empty', () => {
+    const placeholder = 'placeholder';
+    const textField = mountWithApp(
+      <TextField
+        label="TextField"
+        onChange={noop}
+        autoComplete="off"
+        autoSize
+        value=""
+        placeholder={placeholder}
+      />,
+    );
+
+    expect(textField).toContainReactComponent('div', {
+      'data-auto-size-value': placeholder,
+    } as any);
+  });
+
+  it('sets the data attribute to the value of the text field when autoSize is true and the value is truthy and there is a placeholder', () => {
+    const placeholder = 'placeholder';
+    const value = 'foo';
+    const textField = mountWithApp(
+      <TextField
+        label="TextField"
+        onChange={noop}
+        autoComplete="off"
+        autoSize
+        value={value}
+        placeholder={placeholder}
+      />,
+    );
+
+    expect(textField).toContainReactComponent('div', {
+      'data-auto-size-value': value,
+    } as any);
   });
 });
 

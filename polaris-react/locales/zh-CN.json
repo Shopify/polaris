@@ -158,7 +158,8 @@
       "clearLabel": "清除 {filterName}",
       "moreFiltersWithCount": "更多筛选条件（{count} 个）",
       "addFilter": "添加筛选条件",
-      "clearFilters": "全部清除"
+      "clearFilters": "全部清除",
+      "searchInView": "在:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "正文标记",
@@ -348,7 +349,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "查看用于 {title} 的操作"
+        "rollupActionsLabel": "查看用于 {title} 的操作",
+        "pageReadyAccessibilityLabel": "{title}。此页面已就绪"
       }
     },
     "FullscreenBar": {

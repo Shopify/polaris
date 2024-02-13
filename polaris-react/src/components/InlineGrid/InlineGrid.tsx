@@ -8,7 +8,7 @@ import {
 } from '../../utilities/css';
 import type {ResponsiveValue, ResponsiveProp} from '../../utilities/css';
 
-import styles from './InlineGrid.scss';
+import styles from './InlineGrid.module.scss';
 
 type ColumnsAlias = 'oneThird' | 'oneHalf' | 'twoThirds';
 type ColumnsType = number | string | ColumnsAlias[];

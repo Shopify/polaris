@@ -72,6 +72,16 @@ function load(filePath: string): string {
   return fs.readFileSync(filePath, 'utf-8');
 }
 
+const componentUnionTypeDeprecations: {
+  [componentName: string]: {
+    [typeName: string]: string[];
+  };
+} = {
+  Text: {
+    Variant: ['heading2xl', 'heading3xl'],
+  },
+};
+
 export const getStaticProps: GetStaticProps<
   Props,
   {component: string; group: string}
@@ -130,6 +140,27 @@ export const getStaticProps: GetStaticProps<
       `polaris-react/src/components/${componentDirName}/${componentDirName}.tsx`,
       mdx.frontmatter.status || '',
     );
+
+    if (componentUnionTypeDeprecations[componentDirName]) {
+      for (const [typeName, deprecatedValues] of Object.entries(
+        componentUnionTypeDeprecations[componentDirName],
+      )) {
+        if (!type[typeName]) continue;
+
+        const typeValue = type[typeName].value;
+
+        if (typeof typeValue !== 'string') continue;
+
+        const values = typeValue
+          .split(' | ')
+          .map((value) => value.replace(/'([^']+)'/, '$1'))
+          .map((value) =>
+            deprecatedValues.includes(value) ? `${value} (deprecated)` : value,
+          );
+
+        type[typeName].value = values.map((value) => `'${value}'`).join(' | ');
+      }
+    }
 
     const props: Props = {
       mdx,

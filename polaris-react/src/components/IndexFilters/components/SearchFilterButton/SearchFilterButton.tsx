@@ -1,6 +1,6 @@
 import React from 'react';
 import type {CSSProperties} from 'react';
-import {SearchMinor, FilterMinor} from '@shopify/polaris-icons';
+import {SearchIcon, FilterIcon} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
 import {Tooltip} from '../../../Tooltip';
@@ -29,8 +29,8 @@ export function SearchFilterButton({
 }: SearchFilterButtonProps) {
   const iconMarkup = (
     <InlineStack gap="0">
-      {hideQueryField ? null : <Icon source={SearchMinor} tone="base" />}
-      {hideFilters ? null : <Icon source={FilterMinor} tone="base" />}
+      {hideQueryField ? null : <Icon source={SearchIcon} tone="base" />}
+      {hideFilters ? null : <Icon source={FilterIcon} tone="base" />}
     </InlineStack>
   );
 

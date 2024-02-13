@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {QuestionMarkMinor} from '@shopify/polaris-icons';
+import {QuestionCircleIcon} from '@shopify/polaris-icons';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
@@ -12,6 +12,7 @@ import {
   InlineStack,
   BlockStack,
   Popover,
+  Card,
 } from '@shopify/polaris';
 import type {TooltipProps} from '@shopify/polaris';
 
@@ -70,7 +71,7 @@ export function PreferredPosition() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               the activator
             </Text>
-            <Icon source={QuestionMarkMinor} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
         <Tooltip
@@ -88,7 +89,7 @@ export function PreferredPosition() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               the activator
             </Text>
-            <Icon source={QuestionMarkMinor} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
       </InlineStack>
@@ -114,7 +115,7 @@ export function Width() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               content width
             </Text>
-            <Icon source={QuestionMarkMinor} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
         <Tooltip
@@ -132,7 +133,7 @@ export function Width() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               content width
             </Text>
-            <Icon source={QuestionMarkMinor} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
       </InlineStack>
@@ -155,7 +156,7 @@ export function Padding() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               content padding
             </Text>
-            <Icon source={QuestionMarkMinor} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
         <Tooltip
@@ -173,7 +174,7 @@ export function Padding() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               content padding
             </Text>
-            <Icon source={QuestionMarkMinor} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
       </InlineStack>
@@ -199,7 +200,7 @@ export function BorderRadius() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               border radius
             </Text>
-            <Icon source={QuestionMarkMinor} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
         <Tooltip
@@ -217,7 +218,7 @@ export function BorderRadius() {
             <Text variant="bodyLg" fontWeight="medium" as="span">
               border radius
             </Text>
-            <Icon source={QuestionMarkMinor} tone="base" />
+            <Icon source={QuestionCircleIcon} tone="base" />
           </InlineStack>
         </Tooltip>
       </InlineStack>
@@ -332,7 +333,6 @@ export function WithSuffix() {
                 </Text>
               </InlineStack>
             }
-            activatorWrapper="div"
           >
             <Button>B</Button>
           </Tooltip>
@@ -461,13 +461,13 @@ export function Alignment() {
 
 export function HasUnderline() {
   return (
-    <Box paddingBlockStart="2400">
+    <Card padding="400">
       <Tooltip active content="This tooltip has an underline" hasUnderline>
         <Text variant="bodyLg" fontWeight="bold" as="span">
           Order #1001
         </Text>
       </Tooltip>
-    </Box>
+    </Card>
   );
 }
 
@@ -551,6 +551,18 @@ export function ActiveStates() {
           </Text>
         </Tooltip>
       </InlineStack>
+    </Box>
+  );
+}
+
+export function OneCharacter() {
+  return (
+    <Box paddingBlockStart="2400">
+      <Tooltip active content="j">
+        <Text variant="bodyLg" fontWeight="bold" as="span">
+          Order #1001
+        </Text>
+      </Tooltip>
     </Box>
   );
 }

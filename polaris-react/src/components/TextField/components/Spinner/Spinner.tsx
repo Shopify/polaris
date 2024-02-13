@@ -1,8 +1,8 @@
 import React from 'react';
-import {ChevronDownMinor, ChevronUpMinor} from '@shopify/polaris-icons';
+import {ChevronDownIcon, ChevronUpIcon} from '@shopify/polaris-icons';
 
 import {Icon} from '../../../Icon';
-import styles from '../../TextField.scss';
+import styles from '../../TextField.module.scss';
 
 type HandleStepFn = (step: number) => void;
 
@@ -39,7 +39,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={ChevronUpMinor} />
+            <Icon source={ChevronUpIcon} />
           </div>
         </div>
         <div
@@ -52,7 +52,7 @@ export const Spinner = React.forwardRef<HTMLDivElement, SpinnerProps>(
           onBlur={onBlur}
         >
           <div className={styles.SpinnerIcon}>
-            <Icon source={ChevronDownMinor} />
+            <Icon source={ChevronDownIcon} />
           </div>
         </div>
       </div>

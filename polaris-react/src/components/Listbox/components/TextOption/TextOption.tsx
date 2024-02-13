@@ -1,5 +1,5 @@
 import React, {memo, useContext} from 'react';
-import {TickMinor} from '@shopify/polaris-icons';
+import {CheckIcon} from '@shopify/polaris-icons';
 
 import {Box} from '../../../Box';
 import {Checkbox} from '../../../Checkbox';
@@ -9,7 +9,7 @@ import {classNames} from '../../../../utilities/css';
 import {ComboboxListboxOptionContext} from '../../../../utilities/combobox/context';
 import {ActionContext} from '../../../../utilities/listbox/context';
 
-import styles from './TextOption.scss';
+import styles from './TextOption.module.scss';
 
 export interface TextOptionProps {
   children: React.ReactNode;
@@ -40,7 +40,7 @@ export const TextOption = memo(function TextOption({
       <InlineStack wrap={false} align="space-between" gap="200">
         {children}
         <InlineStack align="end">
-          <Icon source={TickMinor} />
+          <Icon source={CheckIcon} />
         </InlineStack>
       </InlineStack>
     </Box>

@@ -12,6 +12,12 @@ import {
   ResourceList,
   TextField,
   Text,
+  BlockStack,
+  Box,
+  InlineStack,
+  Frame,
+  Modal,
+  Scrollable,
 } from '@shopify/polaris';
 
 export default {
@@ -290,17 +296,26 @@ export function WithBulkActionsAndManyItems() {
   ];
 
   return (
-    <Card padding="0" roundedAbove="sm">
-      <ResourceList
-        resourceName={resourceName}
-        items={items}
-        renderItem={renderItem}
-        selectedItems={selectedItems}
-        onSelectionChange={setSelectedItems}
-        promotedBulkActions={promotedBulkActions}
-        bulkActions={bulkActions}
-      />
-    </Card>
+    <BlockStack gap="400">
+      <Card padding="0">
+        <ResourceList
+          resourceName={resourceName}
+          items={items}
+          renderItem={renderItem}
+          selectedItems={selectedItems}
+          onSelectionChange={setSelectedItems}
+          promotedBulkActions={promotedBulkActions}
+          bulkActions={bulkActions}
+        />
+        <Box padding="300" borderBlockStartWidth="025" borderColor="border">
+          <InlineStack align="space-between">
+            <div>Total inventory at all locations</div>
+            <div>32069 available</div>
+          </InlineStack>
+        </Box>
+      </Card>
+      <Card padding="300">Content of another card</Card>
+    </BlockStack>
   );
 
   function renderItem(item) {
@@ -1274,7 +1289,7 @@ export function WithPagination() {
         }}
         renderItem={(item) => {
           const {id, url, name, location} = item;
-          const media = <Avatar customer size="medium" name={name} />;
+          const media = <Avatar customer size="md" name={name} />;
 
           return (
             <ResourceItem
@@ -1294,5 +1309,190 @@ export function WithPagination() {
         }}
       />
     </Card>
+  );
+}
+
+export function WithBulkActionsAndPagination() {
+  const [selectedItems, setSelectedItems] = useState<string[] | 'All'>([]);
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const items = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '#',
+      name: `Mae Jemison ${num}`,
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$24,00',
+    };
+  });
+
+  const promotedBulkActions = [
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+  return (
+    <Card padding="0">
+      <ResourceList
+        resourceName={resourceName}
+        items={items}
+        bulkActions={bulkActions}
+        promotedBulkActions={promotedBulkActions}
+        selectedItems={selectedItems}
+        onSelectionChange={setSelectedItems}
+        pagination={{
+          hasNext: true,
+          onNext: () => {},
+        }}
+        renderItem={(item) => {
+          const {id, url, name, location} = item;
+          const media = <Avatar customer size="md" name={name} />;
+
+          return (
+            <ResourceItem
+              id={id}
+              url={url}
+              media={media}
+              accessibilityLabel={`View details for ${name}`}
+            >
+              <h3>
+                <Text fontWeight="bold" as="span">
+                  {name}
+                </Text>
+              </h3>
+              <div>{location}</div>
+            </ResourceItem>
+          );
+        }}
+      />
+    </Card>
+  );
+}
+
+export function WithinAModal() {
+  const [active, setActive] = useState(true);
+  const [checked, setChecked] = useState(false);
+  const [selectedItems, setSelectedItems] = useState<string[] | 'All'>([]);
+
+  const toggleActive = () => setActive((active) => !active);
+
+  const activator = <Button onClick={toggleActive}>Open</Button>;
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const items = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '#',
+      name: `Mae Jemison ${num}`,
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$24,00',
+    };
+  });
+
+  const promotedBulkActions = [
+    {
+      content: 'Edit customers',
+      onAction: () => console.log('Todo: implement bulk edit'),
+    },
+  ];
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  const listMarkup = (
+    <ResourceList
+      resourceName={resourceName}
+      items={items}
+      bulkActions={bulkActions}
+      promotedBulkActions={promotedBulkActions}
+      selectedItems={selectedItems}
+      onSelectionChange={setSelectedItems}
+      renderItem={(item) => {
+        const {id, url, name, location} = item;
+        const media = <Avatar customer size="md" name={name} />;
+
+        return (
+          <ResourceItem
+            id={id}
+            url={url}
+            media={media}
+            accessibilityLabel={`View details for ${name}`}
+          >
+            <h3>
+              <Text fontWeight="bold" as="span">
+                {name}
+              </Text>
+            </h3>
+            <div>{location}</div>
+          </ResourceItem>
+        );
+      }}
+    />
+  );
+
+  return (
+    <Frame>
+      <div style={{height: '500px'}}>
+        <Modal
+          noScroll
+          activator={activator}
+          open={active}
+          onClose={toggleActive}
+          title="Import customers by CSV"
+          primaryAction={{
+            content: 'Import customers',
+            onAction: toggleActive,
+          }}
+          secondaryActions={[
+            {
+              content: 'Cancel',
+              onAction: toggleActive,
+            },
+          ]}
+        >
+          <Box>
+            <Scrollable style={{height: '65dvh'}}>{listMarkup}</Scrollable>
+          </Box>
+        </Modal>
+      </div>
+    </Frame>
   );
 }

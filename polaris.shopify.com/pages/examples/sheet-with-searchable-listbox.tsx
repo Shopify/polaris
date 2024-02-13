@@ -11,7 +11,7 @@ import {
   TextContainer,
   Text,
 } from '@shopify/polaris';
-import {MobileCancelMajor, SearchMinor} from '@shopify/polaris-icons';
+import {XIcon, SearchIcon} from '@shopify/polaris-icons';
 
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -208,7 +208,7 @@ function SheetWithSearchableListboxExample() {
           placeholder="Search segments"
           autoComplete="off"
           value={query}
-          prefix={<Icon source={SearchMinor} />}
+          prefix={<Icon source={SearchIcon} />}
           ariaActiveDescendant={activeOptionId}
           ariaControls={listboxId}
           onChange={handleQueryChange}
@@ -324,7 +324,7 @@ function SheetWithSearchableListboxExample() {
               </Text>
               <Button
                 accessibilityLabel="Cancel"
-                icon={MobileCancelMajor}
+                icon={XIcon}
                 onClick={handleCloseSheet}
                 variant="plain"
               />

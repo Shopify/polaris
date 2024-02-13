@@ -1,0 +1,10 @@
+name: Inventory filled
+description: Used to represent inventory or a warehouse.
+keywords:
+  - inventory
+  - warehouse
+authors:
+  - Joe Thomas
+  - José Torre
+date_added: 2023-07-06
+date_modified: 2023-11-07

@@ -1,5 +1,5 @@
 import {TopBar, ActionList, Icon, Frame, Text} from '@shopify/polaris';
-import {ArrowLeftMinor, QuestionMarkMajor} from '@shopify/polaris-icons';
+import {ArrowLeftIcon, QuestionCircleIcon} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -44,7 +44,7 @@ function TopBarExample() {
     <TopBar.UserMenu
       actions={[
         {
-          items: [{content: 'Back to Shopify', icon: ArrowLeftMinor}],
+          items: [{content: 'Back to Shopify', icon: ArrowLeftIcon}],
         },
         {
           items: [{content: 'Community forums'}],
@@ -77,7 +77,7 @@ function TopBarExample() {
     <TopBar.Menu
       activatorContent={
         <span>
-          <Icon source={QuestionMarkMajor} />
+          <Icon source={QuestionCircleIcon} />
           <Text as="span" visuallyHidden>
             Secondary menu
           </Text>

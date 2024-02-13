@@ -2,7 +2,7 @@ import {useState, useEffect, Fragment} from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import {ClipboardMinor, EditMinor} from '@shopify/polaris-icons';
+import {ClipboardIcon, EditIcon} from '@shopify/polaris-icons';
 import {useCopyToClipboard} from '../../utils/hooks';
 import Icon from '../Icon';
 import SandboxHelpDialog from '../SandboxHelpDialog';
@@ -50,12 +50,12 @@ function SandboxHeader({copyUrl, editUrl}: Props) {
         <div className={styles.Buttons}>
           <button onClick={() => setHelpIsOpen(true)}>Learn more</button>
           <button className={styles.CopyURLButton} onClick={copy}>
-            <Icon source={ClipboardMinor} width="1em" height="1em" />
+            <Icon source={ClipboardIcon} width="1em" height="1em" />
             {didJustCopy ? 'Copied!' : 'Copy URL'}
           </button>
           {editUrl ? (
             <Link href={editUrl}>
-              <Icon source={EditMinor} width="1em" height="1em" />
+              <Icon source={EditIcon} width="1em" height="1em" />
               Edit
             </Link>
           ) : null}

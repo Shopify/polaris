@@ -4,7 +4,7 @@ import {Text} from '../Text';
 import {classNames, variationName} from '../../utilities/css';
 import type {IconSource} from '../../types';
 
-import styles from './Icon.scss';
+import styles from './Icon.module.scss';
 
 type Tone =
   | 'base'

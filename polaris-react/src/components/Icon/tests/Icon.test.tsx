@@ -1,5 +1,5 @@
 import React from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {PlusIcon} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../Icon';
@@ -30,8 +30,8 @@ describe('<Icon />', () => {
 
   describe('source', () => {
     it('renders a React Element when source is given a React Stateless Functional Component', () => {
-      const element = mountWithApp(<Icon source={PlusMinor} />);
-      expect(element).toContainReactComponentTimes(PlusMinor, 1);
+      const element = mountWithApp(<Icon source={PlusIcon} />);
+      expect(element).toContainReactComponentTimes(PlusIcon, 1);
     });
   });
 

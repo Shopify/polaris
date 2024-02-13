@@ -11,7 +11,7 @@ import ExampleWrapper, {LinkButton} from '../ExampleWrapper';
 import {PatternExample} from '../../types';
 import {className as classNames} from '../../utils/various';
 import {viewTransition} from '../../utils/various';
-import {MaximizeMinor, MinimizeMinor} from '@shopify/polaris-icons';
+import {MaximizeIcon, MinimizeIcon} from '@shopify/polaris-icons';
 import Icon from '../Icon';
 
 const getISOStringYear = () => new Date().toISOString().split('T')[0];
@@ -235,7 +235,7 @@ const PatternsExample = ({
                   aria-label="View enlarged example"
                   onClick={handleMaximize}
                 >
-                  <Icon source={MaximizeMinor} />
+                  <Icon source={MaximizeIcon} />
                 </LinkButton>
                 <PlayroomButton code={sandboxCode} title={title} />
                 <LinkButton onClick={handleCodeToggle}>
@@ -272,7 +272,7 @@ const PatternsExample = ({
               aria-label="Close enlarged example"
               onClick={handleMinimize}
             >
-              <Icon source={MinimizeMinor} />
+              <Icon source={MinimizeIcon} />
             </LinkButton>
             <PlayroomButton code={sandboxCode} title={title} />
           </Fragment>
