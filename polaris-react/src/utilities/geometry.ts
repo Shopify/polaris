@@ -1,5 +1,6 @@
 interface RectConfig {
   top?: number;
+  bottom?: number;
   left?: number;
   right?: number;
   width?: number;
@@ -17,6 +18,7 @@ export class Rect {
   }
 
   top: number;
+  bottom: number;
   left: number;
   right: number;
   width: number;
@@ -24,12 +26,14 @@ export class Rect {
 
   constructor({
     top = 0,
+    bottom = 0,
     left = 0,
     right = 0,
     width = 0,
     height = 0,
   }: RectConfig = {}) {
     this.top = top;
+    this.bottom = bottom;
     this.left = left;
     this.right = right;
     this.width = width;
@@ -58,6 +62,7 @@ export function getRectForNode(
 
   return new Rect({
     top: rect.top,
+    bottom: rect.bottom,
     left: rect.left,
     right: rect.right,
     width: rect.width,

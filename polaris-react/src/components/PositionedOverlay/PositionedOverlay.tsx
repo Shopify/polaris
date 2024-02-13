@@ -50,7 +50,8 @@ interface State {
   activatorRect: Rect;
   left?: number;
   right?: number;
-  top: number;
+  top?: number;
+  bottom?: number;
   height: number;
   width: number | null;
   positioning: Positioning;
@@ -129,7 +130,7 @@ export class PositionedOverlay extends PureComponent<
   }
 
   render() {
-    const {left, right, top, zIndex, width} = this.state;
+    const {left, right, top, bottom, zIndex, width} = this.state;
     const {
       render,
       fixed,
@@ -142,10 +143,13 @@ export class PositionedOverlay extends PureComponent<
     const nextLeft = left == null || isNaN(left) ? undefined : left;
     const nextRight = right == null || isNaN(right) ? undefined : right;
     const nextWidth = width == null || isNaN(width) ? undefined : width;
+    const nextBottom = bottom == null || isNaN(bottom) ? undefined : bottom;
 
     const style = {
-      '--pc-positioned-overlay-top': nextTop,
+      '--pc-positioned-overlay-top': nextTop ?? 'initial',
+      '--pc-positioned-overlay-bottom': nextBottom ?? 'initial',
       top: nextTop,
+      bottom: nextBottom,
       left: nextLeft,
       right: nextRight,
       width: nextWidth,
@@ -338,7 +342,7 @@ export class PositionedOverlay extends PureComponent<
         const zIndexForLayer = getZIndexForLayerFromNode(activator);
         const zIndex =
           zIndexForLayer == null ? zIndexForLayer : zIndexForLayer + 1;
-        const verticalPosition = calculateVerticalPosition(
+        const calculatedVerticalPosition = calculateVerticalPosition(
           activatorRect,
           overlayRect,
           overlayMargins,
@@ -348,6 +352,9 @@ export class PositionedOverlay extends PureComponent<
           fixed,
           topBarOffset,
         );
+
+        const verticalPosition =
+          calculatedVerticalPosition?.top ?? calculatedVerticalPosition?.bottom;
 
         const positionedHorizontal =
           preferredPosition === 'left' || preferredPosition === 'right';
@@ -392,11 +399,15 @@ export class PositionedOverlay extends PureComponent<
               (positionedHorizontal && calculatedHorizontalPosition.right)
                 ? horizontalPosition
                 : undefined,
-            top: lockPosition ? top : verticalPosition.top,
+            top: lockPosition ? top : calculatedVerticalPosition.top,
+            bottom:
+              positionedHorizontal && calculatedVerticalPosition.bottom
+                ? verticalPosition
+                : undefined,
             lockPosition: Boolean(fixed),
-            height: verticalPosition.height || 0,
+            height: calculatedVerticalPosition.height || 0,
             width,
-            positioning: verticalPosition.positioning as Positioning,
+            positioning: calculatedVerticalPosition.positioning as Positioning,
             outsideScrollableContainer:
               onScrollOut != null &&
               rectIsOutsideOfRect(

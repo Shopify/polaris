@@ -82,6 +82,7 @@ export function HoverCardOverlay({
             id={id}
             data-hovercard-content
             className={styles.Content}
+            horizontal={false}
             style={contentStyles}
           >
             {children}
