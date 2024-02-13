@@ -86,10 +86,11 @@ describe('<PositionedOverlay />', () => {
         mathModule,
         'calculateVerticalPosition',
       );
+
       calculateVerticalPositionMock.mockReturnValue({
         height: 0,
         top: 0,
-        positioning: 'above',
+        positioning: 'below',
       });
     });
 
@@ -97,7 +98,7 @@ describe('<PositionedOverlay />', () => {
       calculateVerticalPositionMock.mockRestore();
     });
 
-    it('positions above if preferredPosition is given', () => {
+    it('positions above if it is the preferredPosition', () => {
       const spy = jest.fn();
       mountWithApp(
         <PositionedOverlay
@@ -108,7 +109,15 @@ describe('<PositionedOverlay />', () => {
       );
 
       expect(spy).toHaveBeenCalledWith({
-        activatorRect: {height: 0, left: 0, top: 0, right: 0, width: 0},
+        activatorRect: {
+          height: 0,
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: 0,
+        },
+        desiredWidth: undefined,
         desiredHeight: 0,
         left: 0,
         measuring: false,

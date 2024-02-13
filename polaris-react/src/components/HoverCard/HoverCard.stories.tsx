@@ -445,8 +445,9 @@ export function WithDynamicActivator() {
       <Box
         key={`LineItemPreview--${order.id}`}
         padding="400"
-        minWidth="300px"
-        maxWidth="416px"
+        minWidth="360px"
+        maxWidth="360px"
+        minHeight="250px"
       >
         <BlockStack gap="200">
           <InlineStack>{fulfillmentStatus}</InlineStack>
@@ -571,7 +572,7 @@ export function WithDynamicActivator() {
     );
   };
 
-  const rowMarkup = orders.map(
+  const rowMarkup = [...orders, ...orders, ...orders, ...orders].map(
     (
       {
         id,
@@ -648,33 +649,30 @@ export function WithDynamicActivator() {
   );
 
   return (
-    <Scrollable style={{minHeight: '500px'}}>
-      <Box id="spacer-to-force-top-scroll" minHeight="200px" />
-      <Card padding="0">
-        <IndexTable
-          resourceName={resourceName}
-          itemCount={orders.length}
-          selectedItemsCount={
-            allResourcesSelected ? 'All' : selectedResources.length
-          }
-          onSelectionChange={handleSelectionChange}
-          headings={[
-            {title: 'Order'},
-            {title: 'Date'},
-            {title: 'Customer'},
-            {title: 'Channel'},
-            {title: 'Total', alignment: 'end'},
-            {title: 'Payment status'},
-            {title: 'Fulfillment status'},
-            {title: 'Items'},
-            {title: 'Delivery status'},
-            {title: 'Delivery method'},
-            {title: 'Tags'},
-          ]}
-        >
-          {rowMarkup}
-        </IndexTable>
-      </Card>
-    </Scrollable>
+    <Card padding="0">
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={orders.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Order'},
+          {title: 'Date'},
+          {title: 'Customer'},
+          {title: 'Channel'},
+          {title: 'Total', alignment: 'end'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
+          {title: 'Items'},
+          {title: 'Delivery status'},
+          {title: 'Delivery method'},
+          {title: 'Tags'},
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </Card>
   );
 }
