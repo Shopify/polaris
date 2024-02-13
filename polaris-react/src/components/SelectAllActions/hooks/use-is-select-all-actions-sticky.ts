@@ -84,7 +84,7 @@ export function useIsSelectAllActionsSticky({
       const hasTableOffscreen =
         entry.boundingClientRect.top + entry.boundingClientRect.height >
         rootBoundsHeight;
-      if (hasTableOffscreen) {
+      if (hasTableOffscreen && entry.rootBounds) {
         setIsSticky(entry.isIntersecting);
       }
       setIsScrolledPastTop(isScrolledPastTop);
