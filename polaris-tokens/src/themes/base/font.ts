@@ -12,24 +12,13 @@ export type FontSizeScale =
   | '350'
   | '400'
   | '500'
-  | '600'
-  | '750'
-  | '900'
-  | '1000';
+  | '600';
 
 export type FontLineHeightPrefix = 'font-line-height';
-export type FontLineHeightScale =
-  | '300'
-  | '400'
-  | '500'
-  | '600'
-  | '700'
-  | '800'
-  | '1000'
-  | '1200';
+export type FontLineHeightScale = '300' | '400' | '500' | '600' | '700' | '800';
 
 export type FontLetterSpacingPrefix = 'font-letter-spacing';
-export type FontLetterSpacingAlias = 'densest' | 'denser' | 'dense' | 'normal';
+export type FontLetterSpacingAlias = 'dense' | 'normal';
 
 export type FontWeightPrefix = 'font-weight';
 export type FontWeightAlias = 'regular' | 'medium' | 'semibold' | 'bold';
@@ -84,15 +73,6 @@ export const font: {
   'font-size-600': {
     value: size[600],
   },
-  'font-size-750': {
-    value: size[750],
-  },
-  'font-size-900': {
-    value: size[900],
-  },
-  'font-size-1000': {
-    value: size[1000],
-  },
   'font-weight-regular': {
     value: '450',
   },
@@ -104,12 +84,6 @@ export const font: {
   },
   'font-weight-bold': {
     value: '700',
-  },
-  'font-letter-spacing-densest': {
-    value: '-0.54px',
-  },
-  'font-letter-spacing-denser': {
-    value: '-0.3px',
   },
   'font-letter-spacing-dense': {
     value: '-0.2px',
@@ -134,11 +108,5 @@ export const font: {
   },
   'font-line-height-800': {
     value: size[800],
-  },
-  'font-line-height-1000': {
-    value: size[1000],
-  },
-  'font-line-height-1200': {
-    value: size[1200],
   },
 };
