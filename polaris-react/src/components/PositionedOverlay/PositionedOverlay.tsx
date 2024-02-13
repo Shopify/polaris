@@ -18,8 +18,9 @@ import styles from './PositionedOverlay.module.scss';
 
 type Positioning = 'above' | 'below' | 'left' | 'right';
 
-interface OverlayDetails {
+export interface OverlayDetails {
   top?: number;
+  bottom?: number;
   left?: number;
   right?: number;
   desiredHeight: number;
@@ -187,6 +188,7 @@ export class PositionedOverlay extends PureComponent<
     const {
       measuring,
       top,
+      bottom,
       left,
       right,
       positioning,
@@ -199,6 +201,7 @@ export class PositionedOverlay extends PureComponent<
     return {
       measuring,
       top,
+      bottom,
       left,
       right,
       desiredHeight: height,
