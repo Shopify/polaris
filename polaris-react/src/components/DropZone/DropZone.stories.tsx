@@ -376,21 +376,10 @@ export function SmallSized() {
   return (
     <BlockStack gap="400">
       <BlockStack gap="200">
-        <div>
-          <Text as="h2" variant="headingMd">
-            Small sized Drop zone (50px)
-          </Text>
-        </div>
-        <div style={{width: 50, height: 50}}>
-          <DropZone>
-            <DropZone.FileUpload />
-          </DropZone>
-        </div>
-        <div>
-          <Text as="h2" variant="headingMd">
-            Small sized Drop zone (40px)
-          </Text>
-        </div>
+        <Text as="h2" variant="headingMd">
+          Small sized Drop zone (40px)
+        </Text>
+
         <div style={{width: 40, height: 40}}>
           <DropZone>
             <DropZone.FileUpload />
@@ -398,11 +387,10 @@ export function SmallSized() {
         </div>
       </BlockStack>
       <BlockStack gap="200">
-        <div>
-          <Text as="h2" variant="headingMd">
-            Small sized Drop zone without outline
-          </Text>
-        </div>
+        <Text as="h2" variant="headingMd">
+          Small sized Drop zone without outline
+        </Text>
+
         <div style={{width: 40, height: 40}}>
           <DropZone outline={false}>
             <DropZone.FileUpload />
@@ -410,12 +398,11 @@ export function SmallSized() {
         </div>
       </BlockStack>
       <BlockStack gap="200">
-        <div>
-          <Text as="h2" variant="headingMd">
-            Small sized Drop zone with error
-          </Text>
-          <Text as="p">Drag file in to see error state</Text>
-        </div>
+        <Text as="h2" variant="headingMd">
+          Small sized Drop zone with error
+        </Text>
+        <Text as="p">Drag file in to see error state</Text>
+
         <div style={{width: 40, height: 40}}>
           <DropZone error>
             <DropZone.FileUpload />
@@ -423,11 +410,10 @@ export function SmallSized() {
         </div>
       </BlockStack>
       <BlockStack gap="200">
-        <div>
-          <Text as="h2" variant="headingMd">
-            Small sized Drop zone with disabled state
-          </Text>
-        </div>
+        <Text as="h2" variant="headingMd">
+          Small sized Drop zone with disabled state
+        </Text>
+
         <div style={{width: 40, height: 40}}>
           <DropZone disabled>
             <DropZone.FileUpload />
