@@ -326,6 +326,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const classes = classNames(
     styles.DropZone,
     outline && styles.hasOutline,
+    !outline && styles.noOutline,
     focused && styles.focused,
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
