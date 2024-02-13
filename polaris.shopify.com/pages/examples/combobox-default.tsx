@@ -19,6 +19,11 @@ function ComboboxExample() {
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
+  const escapeSpecialRegExCharacters = useCallback(
+    (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+    [],
+  );
+
   const updateText = useCallback(
     (value: string) => {
       setInputValue(value);
@@ -28,13 +33,13 @@ function ComboboxExample() {
         return;
       }
 
-      const filterRegex = new RegExp(value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
+      const filterRegex = new RegExp(escapeSpecialRegExCharacters(value), 'i');
       const resultOptions = deselectedOptions.filter((option) =>
         option.label.match(filterRegex),
       );
       setOptions(resultOptions);
     },
-    [deselectedOptions],
+    [deselectedOptions, escapeSpecialRegExCharacters],
   );
 
   const updateSelection = useCallback(
