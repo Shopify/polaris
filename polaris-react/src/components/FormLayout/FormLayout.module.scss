@@ -8,6 +8,10 @@ $item-horizontal-spacing: var(--p-space-300);
 
   &.grouped {
     min-width: $item-min-size;
+
+    @media (--p-breakpoints-xs-only) {
+      min-width: 100%;
+    }
   }
 
   &.condensed {
