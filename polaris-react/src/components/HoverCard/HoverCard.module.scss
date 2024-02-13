@@ -30,7 +30,9 @@
   opacity: 0;
   // Need to initialize top here in order to animate when it changes in the PositionedOverlay style declaration
   top: 0;
-  transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
+  bottom: 0;
+  transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
+    bottom var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
 
 .HoverCardOverlay-entering {
@@ -41,6 +43,8 @@
   opacity: 1;
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Need to set top here in order to animate when it changes in the PositionedOverlay style declaration
   top: var(--pc-positioned-overlay-top);
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Need to set bottom here in order to animate when it changes in the PositionedOverlay style declaration
+  bottom: var(--pc-positioned-overlay-bottom);
 }
 
 .measuring {
@@ -67,7 +71,7 @@
 
 .ContentContainer {
   position: relative;
-  display: flex;
+
   overflow: hidden;
   background: var(--p-color-bg-surface);
   border-radius: var(--p-space-300);
@@ -80,8 +84,5 @@
 
 .Content {
   opacity: 1;
-  display: flex;
   width: 100%;
-  flex-direction: column;
-  word-wrap: break-word;
 }
