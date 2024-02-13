@@ -228,7 +228,7 @@ describe('<ResourceItem />', () => {
       expect(element).toContainReactComponent('div', {'data-href': url} as any);
     });
 
-    it('does not render an <UnstyledLink /> when active prop is true', () => {
+    it('does not render an <UnstyledLink /> when disabled prop is true', () => {
       const element = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
           <ResourceItem
@@ -236,7 +236,7 @@ describe('<ResourceItem />', () => {
             url={url}
             onClick={noop}
             accessibilityLabel={ariaLabel}
-            active
+            disabled
           />
         </ResourceListContext.Provider>,
       );
@@ -404,11 +404,11 @@ describe('<ResourceItem />', () => {
       expect(onClick).not.toHaveBeenCalled();
     });
 
-    it('does not call onClick when hitting keyUp on the item when onClick exists, url exists and is not active', () => {
+    it('does not call onClick when hitting keyUp on the item when onClick exists, url exists and is disabled', () => {
       const onClick = jest.fn();
       const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockSelectModeContext}>
-          <ResourceItem id={itemId} url="#" onClick={onClick} active />
+          <ResourceItem id={itemId} url="#" onClick={onClick} disabled />
         </ResourceListContext.Provider>,
       );
 
@@ -416,7 +416,7 @@ describe('<ResourceItem />', () => {
       expect(onClick).not.toHaveBeenCalled();
     });
 
-    it('does not call onClick when clicking on the item when onClick exists and is active', () => {
+    it('does not call onClick when clicking on the item when onClick exists and is disabled', () => {
       const onClick = jest.fn();
       const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
@@ -424,7 +424,7 @@ describe('<ResourceItem />', () => {
             id={itemId}
             onClick={onClick}
             accessibilityLabel={ariaLabel}
-            active
+            disabled
           />
         </ResourceListContext.Provider>,
       );
@@ -495,6 +495,15 @@ describe('<ResourceItem />', () => {
         sortOrder,
         false,
       );
+    });
+
+    it('renders a disabled Checkbox if the item is disabled', () => {
+      const wrapper = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectableContext}>
+          <ResourceItem id={selectedItemId} url={url} disabled />
+        </ResourceListContext.Provider>,
+      );
+      expect(wrapper).toContainReactComponent(Checkbox, {disabled: true});
     });
   });
 

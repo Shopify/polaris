@@ -84,8 +84,9 @@
   margin-right: 0;
 }
 
-.active {
+.disabled {
   cursor: default;
+  color: var(--p-color-text-secondary);
 
   &:hover {
     background-color: transparent;
