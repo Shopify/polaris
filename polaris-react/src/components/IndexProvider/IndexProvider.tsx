@@ -55,14 +55,16 @@ export function IndexProvider({
   const cellContextValue = useMemo(() => {
     const handleMouseEnterCell =
       (preview: React.ReactNode) =>
-      (event: React.MouseEvent<HTMLDivElement>) => {
+      (event: React.MouseEvent<HTMLTableCellElement>) => {
         if (previewRef?.current) {
           previewRef.current.preview = preview;
         }
         handleMouseEnterActivator(event);
       };
 
-    const handleMouseLeaveCell = (event: React.MouseEvent<HTMLDivElement>) => {
+    const handleMouseLeaveCell = (
+      event: React.MouseEvent<HTMLTableCellElement>,
+    ) => {
       if (previewRef?.current) {
         previewRef.current.preview = null;
       }
