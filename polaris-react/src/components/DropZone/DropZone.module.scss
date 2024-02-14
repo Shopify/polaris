@@ -3,7 +3,7 @@
 $dropzone-border-style: dashed;
 $dropzone-min-height-large: 120px;
 $dropzone-min-height-medium: 100px;
-$dropzone-min-height-small: 50px;
+$dropzone-min-height-small: 40px;
 
 $dropzone-stacking-order: (
   outline: 29,
@@ -115,6 +115,13 @@ $dropzone-stacking-order: (
   padding: 0;
   align-items: center;
   min-height: $dropzone-min-height-small;
+
+  /* This creates a square with a 1:1 aspect ratio */
+  &::before {
+    content: '';
+    /* stylelint-disable-next-line -- set padding top to full width of the element to maintain 1:1 aspect ratio */
+    padding-top: 100%;
+  }
 }
 
 .measuring {
