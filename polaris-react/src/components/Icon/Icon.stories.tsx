@@ -59,7 +59,7 @@ export function Colored() {
       <Text as="p" variant="bodyMd" alignment="center">
         Magic tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="magic" />
+      <Icon source={icons.PlusCircleIcon} tone="magic" />
     </BlockStack>
   );
 }

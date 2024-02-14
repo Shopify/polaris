@@ -1,7 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {ReactTestingElement, CustomRoot} from 'tests/utilities';
-import {AddMajor} from '@shopify/polaris-icons';
+import {PlusIcon} from '@shopify/polaris-icons';
 
 import {TextField} from '../../TextField';
 import {Key} from '../../../types';
@@ -220,7 +220,7 @@ describe('<Autocomplete/>', () => {
             ellipsis: false,
             active: false,
             role: 'option',
-            icon: AddMajor,
+            icon: PlusIcon,
             disabled: false,
             destructive: true,
             badge: {
@@ -247,7 +247,7 @@ describe('<Autocomplete/>', () => {
             ellipsis: false,
             active: false,
             role: 'option',
-            icon: AddMajor,
+            icon: PlusIcon,
             disabled: false,
             destructive: true,
             badge: {

@@ -1,6 +1,6 @@
 import React from 'react';
 import {mountWithListboxProvider} from 'tests/utilities/listbox';
-import {AddMajor} from '@shopify/polaris-icons';
+import {PlusIcon} from '@shopify/polaris-icons';
 
 import {Listbox} from '../../../../Listbox';
 import {MappedAction} from '../MappedAction';
@@ -126,7 +126,7 @@ describe('MappedAction', () => {
     });
 
     it('renders icon', () => {
-      const source = AddMajor;
+      const source = PlusIcon;
       const mappedAction = mountWithListboxProvider(
         <MappedAction icon={source} />,
       );
@@ -143,7 +143,7 @@ describe('MappedAction', () => {
     });
 
     it('renders icon instead of image', () => {
-      const source = AddMajor;
+      const source = PlusIcon;
       const image = 'image';
       const mappedAction = mountWithListboxProvider(
         <MappedAction icon={source} image={image} />,
@@ -168,7 +168,7 @@ describe('MappedAction', () => {
     });
 
     it('renders prefix instead of icon', () => {
-      const source = AddMajor;
+      const source = PlusIcon;
       const mappedAction = mountWithListboxProvider(
         <MappedAction prefix={<MockComponent />} icon={source} />,
       );

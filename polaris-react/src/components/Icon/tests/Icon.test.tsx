@@ -10,7 +10,7 @@ describe('<Icon />', () => {
     it('uses the label as the aria-label for the icon', () => {
       const label = 'This is an icon';
       const element = mountWithApp(
-        <Icon source={PlusMinor} accessibilityLabel={label} />,
+        <Icon source={PlusIcon} accessibilityLabel={label} />,
       ).find('span');
 
       expect(element).toContainReactComponent(Text, {
@@ -20,7 +20,7 @@ describe('<Icon />', () => {
     });
 
     it('does not render the label when not provided', () => {
-      const element = mountWithApp(<Icon source={PlusMinor} />).find('span');
+      const element = mountWithApp(<Icon source={PlusIcon} />).find('span');
 
       expect(element).not.toContainReactComponent(Text, {
         visuallyHidden: true,
@@ -37,7 +37,7 @@ describe('<Icon />', () => {
 
   describe('color', () => {
     it('renders a color class when color prop is provided', () => {
-      const element = mountWithApp(<Icon source={PlusMinor} tone="base" />);
+      const element = mountWithApp(<Icon source={PlusIcon} tone="base" />);
 
       expect(element).toContainReactComponent('span', {
         className: 'Icon toneBase',
