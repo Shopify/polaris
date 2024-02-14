@@ -15,6 +15,10 @@ export interface TitleProps {
   titleMetadata?: React.ReactNode;
   /** Removes spacing between title and subtitle */
   compactTitle?: boolean;
+  /** Whether or not to add a max-width to the subtitle. Gets calculated by
+   * the presence of either the secondaryActions or actionGroups props on the
+   * Header that consumes this component */
+  hasSubtitleMaxWidth?: boolean;
 }
 
 export function Title({
@@ -22,6 +26,7 @@ export function Title({
   subtitle,
   titleMetadata,
   compactTitle,
+  hasSubtitleMaxWidth,
 }: TitleProps) {
   const className = classNames(
     styles.Title,
@@ -46,6 +51,7 @@ export function Title({
       className={classNames(
         styles.SubTitle,
         compactTitle && styles.SubtitleCompact,
+        hasSubtitleMaxWidth && styles.SubtitleMaxWidth,
       )}
     >
       <Text as="p" variant="bodySm">

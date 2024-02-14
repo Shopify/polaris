@@ -99,6 +99,11 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
+  const hasSubtitleMaxWidth =
+    actionGroups.length > 0 ||
+    (isInterface(secondaryActions) && secondaryActions.length > 0) ||
+    isReactElement(secondaryActions);
+
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
       <Box maxWidth="100%" paddingInlineEnd="100" printHidden>
@@ -127,6 +132,7 @@ export function Header({
         subtitle={subtitle}
         titleMetadata={titleMetadata}
         compactTitle={compactTitle}
+        hasSubtitleMaxWidth={hasSubtitleMaxWidth}
       />
     </div>
   );
