@@ -20,7 +20,7 @@ export const Variants = () => (
     <Text as="h4" variant="headingSm">
       Text with HeadingSm variant
     </Text>
-    <Text as="h6" variant="headingXs">
+    <Text as="h5" variant="headingXs">
       Text with HeadingXs variant
     </Text>
     <Text as="p" variant="bodyLg">
