@@ -1,5 +1,10 @@
 @import '../../../../styles/common';
 
+.ActionsLayoutOuter {
+  position: relative;
+  width: 100%;
+}
+
 .ActionsLayout {
   display: flex;
   flex-wrap: wrap;
@@ -19,6 +24,7 @@
 }
 
 .ActionsLayoutMeasurer {
+  position: absolute;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
