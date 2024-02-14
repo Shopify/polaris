@@ -158,14 +158,8 @@ describe('<TrapFocus />', () => {
   });
 
   describe('handleBlur', () => {
-    const externalDomNode = mountWithApp(<Button />).find('button')!.domNode;
-
-    const event: FocusEvent = new FocusEvent('focusout', {
-      relatedTarget: externalDomNode,
-    });
-    Object.assign(event, {preventDefault: jest.fn()});
-
     it('allows default when trapping is false', () => {
+      const externalDomNode = mountWithApp(<Button />).find('button')!.domNode;
       const trapFocus = mountWithApp(
         <TrapFocus trapping={false}>
           <TextField
@@ -212,6 +206,7 @@ describe('<TrapFocus />', () => {
     });
 
     it('focuses focusTrapWrapper when focusTrapWrapper does not contain a focusable element and the event target is not the firstFocusableNode', () => {
+      const externalDomNode = mountWithApp(<Button />).find('button')!.domNode;
       const trapFocus = mountWithApp(
         <TrapFocus>
           <div id="other" />
