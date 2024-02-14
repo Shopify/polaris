@@ -5,7 +5,7 @@ import {overlay} from '../../shared';
 import {PositionedOverlay} from '../../PositionedOverlay';
 import type {PositionedOverlayProps} from '../../PositionedOverlay';
 import {Scrollable} from '../../Scrollable';
-import styles from '../HoverCard.module.scss';
+import styles from '../AlphaHoverCard.module.scss';
 
 export interface HoverCardOverlayProps {
   id: string;
@@ -52,7 +52,7 @@ export function HoverCardOverlay({
     desiredHeight,
   }) => {
     const className = classNames(
-      styles.HoverCard,
+      styles.AlphaHoverCard,
       snapToParent && styles.snapToParent,
       positioning === 'above' && styles.positionedAbove,
       measuring && styles.measuring,

@@ -10,7 +10,7 @@ import {
   useHandleBulkSelection,
 } from '../../utilities/index-provider';
 import type {IndexProviderProps} from '../../utilities/index-provider';
-import {useHoverCardActivatorWrapperProps} from '../HoverCard';
+import {useHoverCardActivatorWrapperProps} from '../AlphaHoverCard';
 
 export function IndexProvider({
   children,
