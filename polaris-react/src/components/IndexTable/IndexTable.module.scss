@@ -113,6 +113,7 @@ $loading-panel-height: 53px;
     background-color: var(--p-color-bg-surface-secondary);
   }
 
+  /* TODO: Delete this since mobile no longer has an action column (checkbox) */
   .TableCell-first,
   .TableHeading-first {
     filter: drop-shadow(1px 0 0 var(--p-color-border-secondary));

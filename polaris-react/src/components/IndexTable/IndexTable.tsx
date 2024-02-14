@@ -233,17 +233,6 @@ function IndexTableBase({
     );
   }, [handleSelectionChange, selectedItemsCount]);
 
-  const calculateFirstHeaderOffset = useCallback(() => {
-    if (!selectable) {
-      return tableHeadingRects.current[0].offsetWidth;
-    }
-
-    return condensed
-      ? tableHeadingRects.current[0].offsetWidth
-      : tableHeadingRects.current[0].offsetWidth +
-          tableHeadingRects.current[1].offsetWidth;
-  }, [condensed, selectable]);
-
   const resizeTableHeadings = useMemo(
     () =>
       debounce(() => {
@@ -268,24 +257,19 @@ function IndexTableBase({
         }
 
         // update left offset for first column
-        if (selectable && tableHeadings.current.length > 1)
+        if (selectable && tableHeadings.current.length > 1) {
           tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
+          stickyTableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
+        }
 
-        // update sticky header min-widths
+        // update sticky header min-widths to match table widths
         stickyTableHeadings.current.forEach((heading, index) => {
-          let minWidth = 0;
-          if (index === 0 && (!isBreakpointsXS() || !selectable)) {
-            minWidth = calculateFirstHeaderOffset();
-          } else if (selectable && tableHeadingRects.current.length > index) {
-            minWidth = tableHeadingRects.current[index]?.offsetWidth || 0;
-          } else if (!selectable && tableHeadingRects.current.length >= index) {
-            minWidth = tableHeadingRects.current[index - 1]?.offsetWidth || 0;
-          }
-
-          heading.style.minWidth = `${minWidth}px`;
+          heading.style.minWidth = `${
+            tableHeadingRects.current[index]?.offsetWidth || 0
+          }px`;
         });
       }),
-    [calculateFirstHeaderOffset, selectable],
+    [selectable],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -467,55 +451,12 @@ function IndexTableBase({
   );
 
   const headingsMarkup = headings
-    .map(renderHeading)
+    .map(renderHeading('th', {'data-index-table-heading': true}))
     .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
 
-  const stickyColumnHeaderStyle =
-    tableHeadingRects.current && tableHeadingRects.current.length > 0
-      ? {
-          minWidth: calculateFirstHeaderOffset(),
-        }
-      : undefined;
-
-  const stickyColumnHeader = (
-    <div
-      className={classNames(
-        styles.TableHeading,
-        selectable && styles['TableHeading-first'],
-        headings[0].flush && styles['TableHeading-flush'],
-      )}
-      key={getHeadingKey(headings[0])}
-      style={stickyColumnHeaderStyle}
-      data-index-table-sticky-heading
-    >
-      <LegacyStack spacing="none" wrap={false} alignment="center">
-        {selectable && (
-          <div
-            className={styles.FirstStickyHeaderElement}
-            ref={firstStickyHeaderElement}
-          >
-            {renderCheckboxContent()}
-          </div>
-        )}
-
-        {selectable && (
-          <div className={styles['StickyTableHeading-second-scrolling']}>
-            {renderHeadingContent(headings[0], 0)}
-          </div>
-        )}
-
-        {!selectable && (
-          <div
-            className={classNames(styles.FirstStickyHeaderElement)}
-            ref={firstStickyHeaderElement}
-          >
-            {renderHeadingContent(headings[0], 0)}
-          </div>
-        )}
-      </LegacyStack>
-    </div>
-  );
-  const stickyHeadingsMarkup = headings.map(renderStickyHeading);
+  const stickyHeadingsMarkup = headings
+    .map(renderHeading('div', {'data-index-table-sticky-heading': true}))
+    .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
 
   const [selectedItemsCountValue, setSelectedItemsCountValue] = useState(
     selectedItemsCount === SELECT_ALL_ITEMS
@@ -598,6 +539,17 @@ function IndexTableBase({
             canFitStickyColumn && styles['StickyTableHeader-sticky'],
             // ie; is scrolled to the right
             hasMoreLeftColumns && styles['StickyTableHeader-scrolling'],
+            /*
+*           // Has a sticky right column enabled
+            canFitStickyColumn &&
+              lastColumnSticky &&
+              styles['StickyTableHeader-sticky-last'],
+            // ie; is scrolled to the left
+            canFitStickyColumn &&
+              lastColumnSticky &&
+              canScrollRight &&
+              styles['StickyTableHeader-sticky-scrolling'],
+            */
           );
 
           const bulkActionsClassName = classNames(
@@ -644,9 +596,6 @@ function IndexTableBase({
               ref={stickyHeaderWrapperElement}
             >
               {loadingMarkup}
-              <div className={styles.StickyTableColumnHeader}>
-                {stickyColumnHeader}
-              </div>
               <div
                 className={styles.StickyTableHeadings}
                 ref={stickyHeaderElement}
@@ -790,63 +739,68 @@ function IndexTableBase({
     </>
   );
 
-  function renderHeading(heading: IndexTableHeading, index: number) {
-    const isSecond = index === 0;
-    const isLast = index === headings.length - 1;
-    const hasSortable = sortable?.some((value) => value === true);
-    const headingAlignment = heading.alignment || 'start';
-    const headingContentClassName = classNames(
-      styles.TableHeading,
-      headingAlignment === 'center' && styles['TableHeading-align-center'],
-      headingAlignment === 'end' && styles['TableHeading-align-end'],
-      hasSortable && styles['TableHeading-sortable'],
-      isSecond && styles['TableHeading-second'],
-      isLast && !heading.hidden && styles['TableHeading-last'],
-      !selectable && styles['TableHeading-unselectable'],
-      heading.flush && styles['TableHeading-flush'],
-    );
+  function renderHeading(
+    Tag: JSX.ElementType,
+    tagProps: {[x: string]: unknown},
+  ) {
+    return (heading: IndexTableHeading, index: number) => {
+      const isSecond = index === 0;
+      const isLast = index === headings.length - 1;
+      const hasSortable = sortable?.some((value) => value === true);
+      const headingAlignment = heading.alignment || 'start';
+      const headingContentClassName = classNames(
+        styles.TableHeading,
+        headingAlignment === 'center' && styles['TableHeading-align-center'],
+        headingAlignment === 'end' && styles['TableHeading-align-end'],
+        hasSortable && styles['TableHeading-sortable'],
+        isSecond && styles['TableHeading-second'],
+        isLast && !heading.hidden && styles['TableHeading-last'],
+        !selectable && styles['TableHeading-unselectable'],
+        heading.flush && styles['TableHeading-flush'],
+      );
 
-    const stickyPositioningStyle =
-      selectable !== false &&
-      isSecond &&
-      tableHeadingRects.current &&
-      tableHeadingRects.current.length > 0
-        ? {left: tableHeadingRects.current[0].offsetWidth}
-        : undefined;
+      const stickyPositioningStyle =
+        selectable !== false &&
+        isSecond &&
+        tableHeadingRects.current &&
+        tableHeadingRects.current.length > 0
+          ? {left: tableHeadingRects.current[0].offsetWidth}
+          : undefined;
 
-    const headingContent = (
-      <th
-        id={heading.id}
-        className={headingContentClassName}
-        key={getHeadingKey(heading)}
-        data-index-table-heading
-        style={stickyPositioningStyle}
-      >
-        {renderHeadingContent(heading, index)}
-      </th>
-    );
+      const headingContent = (
+        <Tag
+          id={heading.id}
+          className={headingContentClassName}
+          key={getHeadingKey(heading)}
+          style={stickyPositioningStyle}
+          {...tagProps}
+        >
+          {renderHeadingContent(heading, index)}
+        </Tag>
+      );
 
-    if (index !== 0 || !selectable) {
-      return headingContent;
-    }
+      if (index !== 0 || !selectable) {
+        return headingContent;
+      }
 
-    const checkboxClassName = classNames(
-      styles.TableHeading,
-      hasSortable && styles['TableHeading-sortable'],
-      index === 0 && styles['TableHeading-first'],
-    );
+      const checkboxClassName = classNames(
+        styles.TableHeading,
+        hasSortable && styles['TableHeading-sortable'],
+        index === 0 && styles['TableHeading-first'],
+      );
 
-    const checkboxContent = (
-      <th
-        className={checkboxClassName}
-        key={`${heading}-${index}`}
-        data-index-table-heading
-      >
-        {renderCheckboxContent()}
-      </th>
-    );
+      const checkboxContent = (
+        <Tag
+          className={checkboxClassName}
+          key={`${heading}-${index}`}
+          {...tagProps}
+        >
+          {renderCheckboxContent()}
+        </Tag>
+      );
 
-    return [checkboxContent, headingContent];
+      return [checkboxContent, headingContent];
+    };
   }
 
   function renderCheckboxContent() {
@@ -1096,36 +1050,6 @@ function IndexTableBase({
 
   function handleSelectPage(checked: boolean) {
     handleSelectionChange(SelectionType.Page, checked);
-  }
-
-  function renderStickyHeading(heading: IndexTableHeading, index: number) {
-    const position = selectable ? index + 1 : index;
-    const headingStyle =
-      tableHeadingRects.current && tableHeadingRects.current.length > position
-        ? {minWidth: tableHeadingRects.current[position].offsetWidth}
-        : undefined;
-    const headingAlignment = heading.alignment || 'start';
-
-    const headingContent = renderHeadingContent(heading, index);
-    const stickyHeadingClassName = classNames(
-      styles.TableHeading,
-      heading.flush && styles['TableHeading-flush'],
-      headingAlignment === 'center' && styles['TableHeading-align-center'],
-      headingAlignment === 'end' && styles['TableHeading-align-end'],
-      index === 0 && styles['StickyTableHeading-second'],
-      index === 0 && !selectable && styles.unselectable,
-    );
-
-    return (
-      <div
-        className={stickyHeadingClassName}
-        key={getHeadingKey(heading)}
-        style={headingStyle}
-        data-index-table-sticky-heading
-      >
-        {headingContent}
-      </div>
-    );
   }
 
   function getPaginatedSelectAllAction() {
