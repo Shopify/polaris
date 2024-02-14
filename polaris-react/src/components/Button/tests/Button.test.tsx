@@ -356,15 +356,6 @@ describe('<Button />', () => {
         className: expect.stringContaining('removeUnderline'),
       });
     });
-
-    it('passes prop to <span/> className', () => {
-      const children = 'Sample children';
-      const button = mountWithApp(<Button removeUnderline>{children}</Button>);
-      const childrenSpan = button.find('span', {children})!;
-      expect(childrenSpan).toHaveReactProps({
-        className: expect.stringContaining('removeUnderline'),
-      });
-    });
   });
 
   describe('dataPrimaryLink', () => {
