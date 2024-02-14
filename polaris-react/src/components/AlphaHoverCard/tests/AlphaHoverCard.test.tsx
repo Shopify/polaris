@@ -3,11 +3,11 @@ import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Portal} from '../../Portal';
-import type {HoverCardProps} from '../HoverCard';
-import {HoverCard} from '../HoverCard';
+import type {AlphaHoverCardProps} from '../AlphaHoverCard';
+import {AlphaHoverCard} from '../AlphaHoverCard';
 import {HoverCardOverlay} from '../components';
 
-const defaultProps: HoverCardProps = {
+const defaultProps: AlphaHoverCardProps = {
   children: null,
   active: false,
   content: <div />,
@@ -19,7 +19,7 @@ jest.mock('../../../utilities/breakpoints', () => ({
   useBreakpoints: jest.fn(),
 }));
 
-describe('<HoverCard />', () => {
+describe('<AlphaHoverCard />', () => {
   beforeEach(() => {
     matchMedia.mock();
     mockUseBreakpoints(true);
@@ -31,46 +31,46 @@ describe('<HoverCard />', () => {
   });
 
   it('renders a portal when active', () => {
-    const hoverCard = mountWithApp<HoverCardProps>(
-      <HoverCard {...defaultProps} active>
+    const hoverCard = mountWithApp<AlphaHoverCardProps>(
+      <AlphaHoverCard {...defaultProps} active>
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
     expect(hoverCard).toContainReactComponent(Portal);
   });
 
   it('renders an activator when children are provided', () => {
-    const hoverCard = mountWithApp<HoverCardProps>(
-      <HoverCard {...defaultProps}>
+    const hoverCard = mountWithApp<AlphaHoverCardProps>(
+      <AlphaHoverCard {...defaultProps}>
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
     expect(hoverCard).toContainReactComponent('div', {children: 'Activator'});
   });
 
   it('renders the overlay when active is true', () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active>
+      <AlphaHoverCard {...defaultProps} active>
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
     expect(hoverCard).toContainReactComponent(HoverCardOverlay);
   });
 
   it('doesn’t render the overlay when active is false', () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps}>
+      <AlphaHoverCard {...defaultProps}>
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
     expect(hoverCard).not.toContainReactComponent(HoverCardOverlay);
   });
 
   it("passes 'preferredPosition' to HoverCardOverlay", () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active preferredPosition="above">
+      <AlphaHoverCard {...defaultProps} active preferredPosition="above">
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
 
     expect(hoverCard).toContainReactComponent(HoverCardOverlay, {
@@ -80,9 +80,9 @@ describe('<HoverCard />', () => {
 
   it("passes 'preferredAlignment' to HoverCardOverlay", () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active preferredAlignment="left">
+      <AlphaHoverCard {...defaultProps} active preferredAlignment="left">
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
 
     expect(hoverCard).toContainReactComponent(HoverCardOverlay, {
@@ -92,27 +92,27 @@ describe('<HoverCard />', () => {
 
   it('has a span as activatorWrapper by default', () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps}>
+      <AlphaHoverCard {...defaultProps}>
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
     expect(hoverCard.children[0].type).toBe('span');
   });
 
   it('has a div as activatorWrapper when activatorWrapper prop is set to div', () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} activatorWrapper="div">
+      <AlphaHoverCard {...defaultProps} activatorWrapper="div">
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
     expect(hoverCard.children[0].type).toBe('div');
   });
 
   it("passes 'zIndexOverride' to HoverCardOverlay", () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active zIndexOverride={100}>
+      <AlphaHoverCard {...defaultProps} active zIndexOverride={100}>
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
 
     expect(hoverCard).toContainReactComponent(HoverCardOverlay, {
@@ -122,9 +122,9 @@ describe('<HoverCard />', () => {
 
   it('passes snapToParent to HoverCardOverlay', () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active snapToParent>
+      <AlphaHoverCard {...defaultProps} active snapToParent>
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
 
     expect(hoverCard).toContainReactComponent(HoverCardOverlay, {
@@ -134,9 +134,9 @@ describe('<HoverCard />', () => {
 
   it('passes content to HoverCardOverlay', () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} active>
+      <AlphaHoverCard {...defaultProps} active>
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
 
     expect(hoverCard).toContainReactComponent(HoverCardOverlay, {
@@ -146,9 +146,9 @@ describe('<HoverCard />', () => {
 
   it('renders an activator wrapper when children are provided', () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps}>
+      <AlphaHoverCard {...defaultProps}>
         <div>Activator</div>
-      </HoverCard>,
+      </AlphaHoverCard>,
     );
 
     const wrapper = hoverCard.find('span');
@@ -160,7 +160,10 @@ describe('<HoverCard />', () => {
 
   it('only renders the overlay when activator is provided', () => {
     const hoverCard = mountWithApp(
-      <HoverCard {...defaultProps} activator={document.createElement('div')} />,
+      <AlphaHoverCard
+        {...defaultProps}
+        activator={document.createElement('div')}
+      />,
     );
 
     expect(hoverCard).toContainReactComponent(HoverCardOverlay);

@@ -8,7 +8,6 @@ import {
   ButtonGroup,
   Box,
   Button,
-  HoverCard,
   Badge,
   IndexTable,
   Icon,
@@ -26,9 +25,11 @@ import {
   ImageIcon,
 } from '@shopify/polaris-icons';
 
+import {AlphaHoverCard} from './AlphaHoverCard';
+
 export default {
-  component: HoverCard,
-} as Meta<typeof HoverCard>;
+  component: AlphaHoverCard,
+} as Meta<typeof AlphaHoverCard>;
 
 export function WithChildActivator() {
   const [active, setActive] = useState(false);
@@ -135,7 +136,7 @@ export function WithChildActivator() {
               <Text as="h2" variant="headingSm">
                 Customer
               </Text>
-              <HoverCard
+              <AlphaHoverCard
                 active={active}
                 preferredPosition={position}
                 preferredAlignment="left"
@@ -143,7 +144,7 @@ export function WithChildActivator() {
                 toggleActive={toggleActive}
               >
                 {activator}
-              </HoverCard>
+              </AlphaHoverCard>
             </BlockStack>
           </Card>
         </BlockStack>

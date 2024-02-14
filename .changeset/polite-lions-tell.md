@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Added the `HoverCard` component for use on commerce object links
+Added the `AlphaHoverCard` component for use on commerce object links
