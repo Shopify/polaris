@@ -572,7 +572,7 @@ export function WithDynamicActivator() {
     );
   };
 
-  const rowMarkup = [...orders, ...orders, ...orders, ...orders].map(
+  const rowMarkup = [...orders].map(
     (
       {
         id,
