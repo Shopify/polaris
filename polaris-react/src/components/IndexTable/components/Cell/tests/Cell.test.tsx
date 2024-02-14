@@ -14,6 +14,10 @@ window.matchMedia =
     };
   };
 
+jest.mock('../../../../../utilities/index-provider', () => ({
+  useIndexCell: jest.fn(),
+}));
+
 describe('<Cell />', () => {
   it('renders a table data tag', () => {
     const cell = mountWithTable(<Cell />);
@@ -68,6 +72,54 @@ describe('<Cell />', () => {
       className: `${className} TableCell`,
     });
   });
+
+  describe('preview', () => {
+    it('sets the data-hovercard-activator attribute if a preview is provided', () => {
+      const cell = mountWithTable(<Cell preview={<div>Preview</div>} />);
+      const td = cell.find('td');
+      expect(td?.domNode?.getAttribute('data-hovercard-activator')).toBe(
+        'true',
+      );
+    });
+
+    it('does not set the data-hovercard-activator attribute if a preview is not provided', () => {
+      const cell = mountWithTable(<Cell />);
+      const td = cell.find('td');
+      expect(td?.domNode?.getAttribute('data-hovercard-activator')).toBeNull();
+    });
+
+    it('sets the activatorWrapperClassName if a preview is provided', () => {
+      mockUseIndexCell();
+      const cell = mountWithTable(<Cell preview={<div>Preview</div>} />);
+      const td = cell.find('td');
+      expect(td?.domNode?.classList).toContain('ActivatorWrapper');
+      expect(td?.domNode?.classList).toContain('snapToParent');
+    });
+
+    it('does not set the activatorWrapperClassName if a preview is not provided', () => {
+      mockUseIndexCell();
+      const cell = mountWithTable(<Cell />);
+      const td = cell.find('td');
+      expect(td?.domNode?.classList).not.toContain('ActivatorWrapper');
+      expect(td?.domNode?.classList).not.toContain('snapToParent');
+    });
+
+    it('fires onMouseEnterCell on mouse enter if a preview is provided', () => {
+      const onMouseEnterCell = mockUseIndexCell();
+      const cell = mountWithTable(<Cell preview={<div>Preview</div>} />);
+      const td = cell.find('td');
+      td!.trigger('onMouseEnter');
+      expect(onMouseEnterCell).toHaveBeenCalled();
+    });
+
+    it('fires onMouseLeaveCell on mouse enter if a preview is provided', () => {
+      const onMouseLeaveCell = mockUseIndexCell();
+      const cell = mountWithTable(<Cell preview={<div>Preview</div>} />);
+      const td = cell.find('td');
+      td!.trigger('onMouseLeave');
+      expect(onMouseLeaveCell).toHaveBeenCalled();
+    });
+  });
 });
 
 function mountWithTable(children: ReactElement) {
@@ -80,4 +132,16 @@ function mountWithTable(children: ReactElement) {
   );
 
   return table;
+}
+
+function mockUseIndexCell() {
+  const useIndexCell: jest.Mock = jest.requireMock(
+    '../../../../../utilities/index-provider',
+  ).useIndexCell;
+
+  return useIndexCell.mockReturnValue({
+    previewActivatorWrapperClassName: 'ActivatorWrapper snapToParent',
+    onMouseEnterCell: jest.fn(),
+    onMouseLeaveCell: jest.fn(),
+  });
 }
