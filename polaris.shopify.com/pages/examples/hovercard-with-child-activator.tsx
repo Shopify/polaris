@@ -3,7 +3,7 @@ import {
   ButtonGroup,
   Box,
   Button,
-  HoverCard,
+  AlphaHoverCard,
   Icon,
   Link,
   Text,
@@ -125,7 +125,7 @@ function HoverCardWithChildActivator() {
                 Customer
               </Text>
 
-              <HoverCard
+              <AlphaHoverCard
                 active={active}
                 preferredPosition={position}
                 preferredAlignment="center"
@@ -133,7 +133,7 @@ function HoverCardWithChildActivator() {
                 toggleActive={setActive}
               >
                 {activator}
-              </HoverCard>
+              </AlphaHoverCard>
             </BlockStack>
           </Card>
           <Box minHeight="100px" />

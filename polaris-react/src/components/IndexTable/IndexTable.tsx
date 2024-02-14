@@ -24,7 +24,7 @@ import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
 import {BulkActions} from '../BulkActions';
 import type {BulkActionsProps} from '../BulkActions';
-import {HoverCard} from '../HoverCard';
+import {AlphaHoverCard} from '../AlphaHoverCard';
 import {classNames} from '../../utilities/css';
 import {
   useIndexValue,
@@ -165,7 +165,7 @@ function IndexTableBase({
     useIndexCellPreview();
 
   const cellPreviewMarkup = (
-    <HoverCard
+    <AlphaHoverCard
       snapToParent
       activator={currentCellPreviewActivator}
       content={activeCellPreview}
