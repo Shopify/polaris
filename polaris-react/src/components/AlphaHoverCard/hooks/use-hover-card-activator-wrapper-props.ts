@@ -3,7 +3,7 @@ import {useRef, useEffect, useState, useCallback} from 'react';
 import {useEphemeralPresenceManager} from '../../../utilities/ephemeral-presence-manager';
 import {useBreakpoints} from '../../../utilities/breakpoints';
 import {classNames} from '../../../utilities/css';
-import styles from '../HoverCard.module.scss';
+import styles from '../AlphaHoverCard.module.scss';
 
 const HOVER_OUT_TIMEOUT = 200;
 
