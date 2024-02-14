@@ -594,6 +594,10 @@ function IndexTableBase({
           const stickyHeaderClassNames = classNames(
             styles.StickyTableHeader,
             isSticky && styles['StickyTableHeader-isSticky'],
+            // Has a sticky left column enabled
+            canFitStickyColumn && styles['StickyTableHeader-sticky'],
+            // ie; is scrolled to the right
+            hasMoreLeftColumns && styles['StickyTableHeader-scrolling'],
           );
 
           const bulkActionsClassName = classNames(
