@@ -109,7 +109,7 @@ export function HoverCard({
   const isActive = dynamicActivator ? activatorElement !== null : active;
 
   const portal =
-    activatorElement && isDesktop ? (
+    isActive && activatorElement && isDesktop ? (
       <Portal idPrefix="hovercard">
         <HoverCardOverlay
           id={id}
