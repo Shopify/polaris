@@ -84,6 +84,15 @@
   margin-right: 0;
 }
 
+.disabled {
+  cursor: default;
+  color: var(--p-color-text-secondary);
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
 // Item actions
 .Actions {
   > * {
