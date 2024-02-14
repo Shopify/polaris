@@ -15,7 +15,7 @@ order: 1
 
 Upgrading to Polaris v13 from v12 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExp searches. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
 
-Not on v12 yet? You'll need to follow the [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) for previous major versions before upgrading to v13.
+Not on v12 yet? You'll need to follow the [Migrating from v11 to v12 guide](/version-guides/migrating-from-v11-to-v12) and/or older [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) for previous major versions before upgrading to v13.
 
 <Code
   code={{
@@ -116,6 +116,142 @@ git commit -m "[Manual] Migrate X from Polaris v12 to v13"
 - **➡️ Token replacement mappings (or other mapping tables)**: These tables show you at a glance what our migrators are finding and replacing. They are useful to cross reference when dealing with edge cases and manual migrations
 - **🔔 Stepped migration**: These are migrations that must be run in a specific order due to overlapping replacement values. These migrations have been broken out into steps that can be targeted using the `--step` flag when running the migration
 - **💡 Migration example**: A simple diff showing how the migration should be modifying your code
+
+</CollapsibleDetails>
+
+## Component migrations
+
+### Text
+
+#### Replace `variant="heading2xl"` prop with `variant="headingXl"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp variant --fromValue heading2xl --toValue headingXl "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Text variant="heading2xl" /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="heading2xl"`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text variant="heading2xl">
++ <Text variant="headingXl">
+```
+
+</CollapsibleDetails>
+
+#### Replace `variant="heading3xl"` prop with `variant="headingXl"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp variant --fromValue heading3xl --toValue headingXl "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Text variant="heading3xl" /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="heading3xl"`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text variant="heading3xl">
++ <Text variant="headingXl">
+```
+
+</CollapsibleDetails>
+
+## Token migrations
+
+### Font
+
+To replace deprecated `font` custom properties, you can run the [v13-styles-replace-custom-property-font](/tools/polaris-migrator#v13-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- font-size: var(--p-font-size-750);
++ font-size: var(--p-font-size-600);
+```
+
+```diff
+- letter-spacing: var(--p-font-letter-spacing-denser);
++ letter-spacing: var(--p-font-letter-spacing-dense);
+```
+
+```diff
+- line-height: var(--p-font-line-height-1000);
++ line-height: var(--p-font-line-height-800);
+```
+
+</CollapsibleDetails>
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v13-styles-replace-custom-property-font "**/*.{css,scss}"`,
+
+}}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: String.raw`(?:--p-font-size-750|--p-font-size-900|--p-font-size-1000|--p-font-letter-spacing-denser|--p-font-letter-spacing-densest|--p-font-line-height-1000|--p-font-line-height-1200)|--p-text-heading-3xl-font-family|--p-text-heading-3xl-font-size|--p-text-heading-3xl-font-weight|--p-text-heading-3xl-font-letter-spacing|--p-text-heading-3xl-font-line-height|--p-text-heading-2xl-font-family|--p-text-heading-2xl-font-size|--p-text-heading-2xl-font-weight|--p-text-heading-2xl-font-letter-spacing|--p-text-heading-2xl-font-line-height(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="➡️ Token replacement mappings">
+
+| Deprecated Token                           | Replacement Value                         |
+| ------------------------------------------ | ----------------------------------------- |
+| `--p-font-size-750`                        | `--p-font-size-600`                       |
+| `--p-font-size-900`                        | `--p-font-size-600`                       |
+| `--p-font-size-1000`                       | `--p-font-size-600`                       |
+| `--p-font-letter-spacing-denser`           | `--p-font-letter-spacing-dense`           |
+| `--p-font-letter-spacing-densest`          | `--p-font-letter-spacing-dense`           |
+| `--p-font-line-height-1000`                | `--p-font-line-height-800`                |
+| `--p-font-line-height-1200`                | `--p-font-line-height-800`                |
+| `--p-text-heading-2xl-font-family`         | `--p-text-heading-xl-font-family`         |
+| `--p-text-heading-2xl-font-size`           | `--p-text-heading-xl-font-size`           |
+| `--p-text-heading-2xl-font-weight`         | `--p-text-heading-xl-font-weight`         |
+| `--p-text-heading-2xl-font-letter-spacing` | `--p-text-heading-xl-font-letter-spacing` |
+| `--p-text-heading-2xl-font-line-height`    | `--p-text-heading-xl-font-line-height`    |
+| `--p-text-heading-3xl-font-family`         | `--p-text-heading-xl-font-family`         |
+| `--p-text-heading-3xl-font-size`           | `--p-text-heading-xl-font-size`           |
+| `--p-text-heading-3xl-font-weight`         | `--p-text-heading-xl-font-weight`         |
+| `--p-text-heading-3xl-font-letter-spacing` | `--p-text-heading-xl-font-letter-spacing` |
+| `--p-text-heading-3xl-font-line-height`    | `--p-text-heading-xl-font-line-height`    |
 
 </CollapsibleDetails>
 
