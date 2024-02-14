@@ -3,7 +3,7 @@ import type {ReactNode} from 'react';
 
 import {classNames} from '../../utilities/css';
 
-import styles from './Text.scss';
+import styles from './Text.module.scss';
 
 type Element =
   | 'dt'
@@ -20,6 +20,7 @@ type Element =
   | 'legend';
 
 type Variant =
+  | 'headingXs'
   | 'headingSm'
   | 'headingMd'
   | 'headingLg'

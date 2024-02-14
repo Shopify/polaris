@@ -1,5 +1,5 @@
 import React from 'react';
-import {HorizontalDotsMinor} from '@shopify/polaris-icons';
+import {MenuHorizontalIcon} from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../../../Button';
@@ -51,7 +51,7 @@ describe('<RollupActions />', () => {
         <RollupActions {...mockProps} items={mockItems} />,
       );
 
-      wrapper.find(Button, {icon: HorizontalDotsMinor})!.trigger('onClick');
+      wrapper.find(Button, {icon: MenuHorizontalIcon})!.trigger('onClick');
 
       expect(wrapper.findAll(ActionListItem)).toHaveLength(mockItems.length);
     });
@@ -61,7 +61,7 @@ describe('<RollupActions />', () => {
         <RollupActions {...mockProps} items={mockItems} />,
       );
 
-      wrapper.find(Button, {icon: HorizontalDotsMinor})!.trigger('onClick');
+      wrapper.find(Button, {icon: MenuHorizontalIcon})!.trigger('onClick');
 
       let popoverComponent = wrapper.find(Popover);
       expect(popoverComponent!).toHaveReactProps({
@@ -120,7 +120,7 @@ describe('<RollupActions />', () => {
         <RollupActions {...mockProps} sections={mockSections} />,
       );
 
-      wrapper.find(Button, {icon: HorizontalDotsMinor})!.trigger('onClick');
+      wrapper.find(Button, {icon: MenuHorizontalIcon})!.trigger('onClick');
 
       expect(wrapper.findAll(ActionListSection)).toHaveLength(
         mockSections.length,

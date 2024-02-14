@@ -7,7 +7,7 @@ import React, {
   useId,
 } from 'react';
 import type {FunctionComponent} from 'react';
-import {UploadMajor, CircleAlertMajor} from '@shopify/polaris-icons';
+import {UploadIcon, AlertCircleIcon} from '@shopify/polaris-icons';
 
 import {debounce} from '../../utilities/debounce';
 import {classNames, variationName} from '../../utilities/css';
@@ -32,7 +32,7 @@ import {
   createAllowMultipleKey,
 } from './utils';
 import type {DropZoneEvent} from './utils';
-import styles from './DropZone.scss';
+import styles from './DropZone.module.scss';
 
 export type DropZoneFileType = 'file' | 'image' | 'video';
 
@@ -326,6 +326,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   const classes = classNames(
     styles.DropZone,
     outline && styles.hasOutline,
+    !outline && styles.noOutline,
     focused && styles.focused,
     (active || dragging) && styles.isDragging,
     disabled && styles.isDisabled,
@@ -339,12 +340,12 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
     !internalError &&
     !error &&
     overlay &&
-    overlayMarkup(UploadMajor, overlayTextWithDefault);
+    overlayMarkup(UploadIcon, overlayTextWithDefault);
 
   const dragErrorOverlay =
     dragging &&
     (internalError || error) &&
-    overlayMarkup(CircleAlertMajor, errorOverlayTextWithDefault, 'critical');
+    overlayMarkup(AlertCircleIcon, errorOverlayTextWithDefault, 'critical');
 
   const context = useMemo(
     () => ({

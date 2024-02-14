@@ -5,7 +5,7 @@ import React, {
   useContext,
   useId,
 } from 'react';
-import {MinusMinor} from '@shopify/polaris-icons';
+import {MinusIcon} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import type {ResponsiveProp} from '../../utilities/css';
@@ -16,7 +16,7 @@ import {Icon} from '../Icon';
 import type {Error, CheckboxHandles} from '../../types';
 import {WithinListboxContext} from '../../utilities/listbox/context';
 
-import styles from './Checkbox.scss';
+import styles from './Checkbox.module.scss';
 
 export interface CheckboxProps extends ChoiceBleedProps {
   /** Indicates the ID of the element that is controlled by the checkbox */
@@ -211,7 +211,7 @@ export const Checkbox = forwardRef<CheckboxHandles, CheckboxProps>(
               !isIndeterminate && styles.animated,
             )}
           >
-            {isIndeterminate ? <Icon source={MinusMinor} /> : iconSource}
+            {isIndeterminate ? <Icon source={MinusIcon} /> : iconSource}
           </span>
         </span>
       </Choice>

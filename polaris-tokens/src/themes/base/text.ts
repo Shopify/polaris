@@ -8,6 +8,7 @@ export type TextVariant =
   | 'heading-lg'
   | 'heading-md'
   | 'heading-sm'
+  | 'heading-xs'
   | 'body-lg'
   | 'body-md'
   | 'body-sm'
@@ -85,6 +86,22 @@ export const text: {
   },
   'text-heading-sm-font-line-height': {
     value: createVar('font-line-height-500'),
+  },
+  // heading-xs
+  'text-heading-xs-font-family': {
+    value: createVar('font-family-sans'),
+  },
+  'text-heading-xs-font-size': {
+    value: createVar('font-size-300'),
+  },
+  'text-heading-xs-font-weight': {
+    value: createVar('font-weight-semibold'),
+  },
+  'text-heading-xs-font-letter-spacing': {
+    value: createVar('font-letter-spacing-normal'),
+  },
+  'text-heading-xs-font-line-height': {
+    value: createVar('font-line-height-400'),
   },
   // body-lg
   'text-body-lg-font-family': {

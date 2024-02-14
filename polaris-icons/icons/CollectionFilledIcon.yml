@@ -1,0 +1,11 @@
+name: Collection filled
+description: Used to represent a collection of products.
+keywords:
+  - collection
+  - tag
+  - tags
+  - swing
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

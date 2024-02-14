@@ -1,5 +1,48 @@
 # Changelog
 
+## 8.8.0
+
+### Minor Changes
+
+- [#11552](https://github.com/Shopify/polaris/pull/11552) [`04e462816`](https://github.com/Shopify/polaris/commit/04e462816b2082cb0bac341f3827f1c767213499) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Applied native mobile styles to Button component for the light-mobile theme
+
+## 8.7.0
+
+### Minor Changes
+
+- [#11537](https://github.com/Shopify/polaris/pull/11537) [`27cf15c98`](https://github.com/Shopify/polaris/commit/27cf15c982cffebe8cca7c3587f8b8f81467e26e) Thanks [@kyledurand](https://github.com/kyledurand)! - Added scrollbar thumb background tokens
+
+* [#11566](https://github.com/Shopify/polaris/pull/11566) [`5a1ada35a`](https://github.com/Shopify/polaris/commit/5a1ada35a73fd2ca1f6a0ce388abc1b788c114ff) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Removed the Card shadow bevel and decreased Card gap spacing for the mobile theme
+
+## 8.6.0
+
+### Minor Changes
+
+- [#11344](https://github.com/Shopify/polaris/pull/11344) [`c9abd3c0c`](https://github.com/Shopify/polaris/commit/c9abd3c0cb532f2fcb49a716507d5dd478ce10d9) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added Polaris Tokens for Mobile typography
+
+### Patch Changes
+
+- [#11464](https://github.com/Shopify/polaris/pull/11464) [`2ee7dbd30`](https://github.com/Shopify/polaris/commit/2ee7dbd30f54f9f795ea3c52ab8fb750e9daade3) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated `Button` shadow tokens and replaced hardcoded box-shadow values
+
+## 8.5.0
+
+### Minor Changes
+
+- [#11345](https://github.com/Shopify/polaris/pull/11345) [`9f7e5b682`](https://github.com/Shopify/polaris/commit/9f7e5b682f93a3f241e7162eef35dd42b25f7afa) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Added missing color tokens for Shopify Mobile
+
+## 8.4.0
+
+### Minor Changes
+
+- [#11275](https://github.com/Shopify/polaris/pull/11275) [`4a7e090bc`](https://github.com/Shopify/polaris/commit/4a7e090bca1c9f5c647f53a93832424ff1cfcf82) Thanks [@yurm04](https://github.com/yurm04)! - Updated semantic tokens `fill-info-secondary`, `text-info`, `fill-success-secondary`, `fill-caution-secondary`, `fill-critical-secondary`.
+
+## 8.3.0
+
+### Minor Changes
+
+- [#11303](https://github.com/Shopify/polaris/pull/11303) [`d0babcc9b`](https://github.com/Shopify/polaris/commit/d0babcc9b15b8ef8251425795bec26e876f03756) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - - Remapped the `bg-fill-magic-secondary` token colors
+  - Added a Magic `tone` to `Badge`
+
 ## 8.2.0
 
 ### Minor Changes

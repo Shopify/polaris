@@ -1,0 +1,11 @@
+name: Instagram
+set: Minor
+description: Used to represent Instagram.
+keywords:
+  - Instagram
+  - social media
+authors:
+  - Joe Thomas
+  - José Torre
+date_added: 2023-07-20
+date_modified: 2023-11-07

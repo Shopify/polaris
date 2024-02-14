@@ -14,7 +14,7 @@ interface Icons {
 const icons: Icons = polarisIcons;
 
 export function Default() {
-  return <Icon source={icons.CirclePlusMinor} />;
+  return <Icon source={icons.PlusCircleIcon} />;
 }
 
 export function Colored() {
@@ -23,39 +23,39 @@ export function Colored() {
       <Text as="p" variant="bodyMd" alignment="center">
         Base tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="base" />
+      <Icon source={icons.PlusCircleIcon} tone="base" />
       <Text as="p" variant="bodyMd" alignment="center">
         Subdued tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="subdued" />
+      <Icon source={icons.PlusCircleIcon} tone="subdued" />
       <Text as="p" variant="bodyMd" alignment="center">
         Primary tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="primary" />
+      <Icon source={icons.PlusCircleIcon} tone="primary" />
       <Text as="p" variant="bodyMd" alignment="center">
         Info tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="info" />
+      <Icon source={icons.PlusCircleIcon} tone="info" />
       <Text as="p" variant="bodyMd" alignment="center">
         Success tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="success" />
+      <Icon source={icons.PlusCircleIcon} tone="success" />
       <Text as="p" variant="bodyMd" alignment="center">
         Caution tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="caution" />
+      <Icon source={icons.PlusCircleIcon} tone="caution" />
       <Text as="p" variant="bodyMd" alignment="center">
         Warning tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="warning" />
+      <Icon source={icons.PlusCircleIcon} tone="warning" />
       <Text as="p" variant="bodyMd" alignment="center">
         Critical tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="critical" />
+      <Icon source={icons.PlusCircleIcon} tone="critical" />
       <Text as="p" variant="bodyMd" alignment="center">
         Emphasis tone
       </Text>
-      <Icon source={icons.CirclePlusMinor} tone="emphasis" />
+      <Icon source={icons.PlusCircleIcon} tone="emphasis" />
       <Text as="p" variant="bodyMd" alignment="center">
         Magic tone
       </Text>
@@ -69,31 +69,31 @@ export function WithToneInherit() {
     <BlockStack gap="200">
       <Text as="p" tone="caution" variant="bodyMd" alignment="center">
         Caution tone
-        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+        <Icon source={icons.PlusCircleIcon} tone="inherit" />
       </Text>
       <Text as="p" tone="critical" variant="bodyMd" alignment="center">
         Critical tone
-        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+        <Icon source={icons.PlusCircleIcon} tone="inherit" />
       </Text>
       <Text as="p" tone="magic" variant="bodyMd" alignment="center">
         Magic tone
-        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+        <Icon source={icons.PlusCircleIcon} tone="inherit" />
       </Text>
       <Text as="p" tone="magic-subdued" variant="bodyMd" alignment="center">
         Magic subdued tone
-        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+        <Icon source={icons.PlusCircleIcon} tone="inherit" />
       </Text>
       <Text as="p" tone="subdued" variant="bodyMd" alignment="center">
         Subdued tone
-        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+        <Icon source={icons.PlusCircleIcon} tone="inherit" />
       </Text>
       <Text as="p" tone="success" variant="bodyMd" alignment="center">
         Success tone
-        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+        <Icon source={icons.PlusCircleIcon} tone="inherit" />
       </Text>
       <Text as="p" tone="text-inverse" variant="bodyMd" alignment="center">
         Text inverse tone
-        <Icon source={icons.CirclePlusMinor} tone="inherit" />
+        <Icon source={icons.PlusCircleIcon} tone="inherit" />
       </Text>
     </BlockStack>
   );

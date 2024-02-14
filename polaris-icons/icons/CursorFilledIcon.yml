@@ -1,0 +1,9 @@
+name: Cursor filled
+description: Used to represent a user clicking, or interacting with something.
+keywords:
+  - click
+  - cursor
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

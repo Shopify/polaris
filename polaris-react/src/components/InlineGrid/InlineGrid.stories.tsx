@@ -1,7 +1,7 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {Button, InlineGrid, Page} from '@shopify/polaris';
-import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
+import {ChevronLeftIcon, ChevronRightIcon} from '@shopify/polaris-icons';
 
 export default {
   component: InlineGrid,
@@ -95,10 +95,10 @@ export function WithFreeAndFixedWidths() {
       <InlineGrid columns={{xs: '1fr auto auto'}} gap={{xs: '050'}}>
         <div style={{background: 'aquamarine'}}>Column one</div>
         <div style={{background: 'aquamarine'}}>
-          <Button icon={ChevronLeftMinor} accessibilityLabel="Previous" />
+          <Button icon={ChevronLeftIcon} accessibilityLabel="Previous" />
         </div>
         <div style={{background: 'aquamarine'}}>
-          <Button icon={ChevronRightMinor} accessibilityLabel="Next" />
+          <Button icon={ChevronRightIcon} accessibilityLabel="Next" />
         </div>
       </InlineGrid>
     </Page>

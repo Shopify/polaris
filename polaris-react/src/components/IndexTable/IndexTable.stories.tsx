@@ -6,9 +6,14 @@ import type {
   IndexTableRowProps,
 } from '@shopify/polaris';
 import {
+  Frame,
+  Button,
+  Modal,
+  Scrollable,
   useBreakpoints,
   InlineStack,
   LegacyCard,
+  Card,
   EmptySearchResult,
   IndexFilters,
   useSetIndexFiltersMode,
@@ -16,8 +21,10 @@ import {
   TextField,
   Text,
   useIndexResourceState,
-  Thumbnail,
+  BlockStack,
   Box,
+  Thumbnail,
+  Badge,
 } from '@shopify/polaris';
 
 import {IndexTable} from './IndexTable';
@@ -108,7 +115,6 @@ export function Default() {
   return (
     <LegacyCard>
       <IndexTable
-        condensed={useBreakpoints().smDown}
         resourceName={resourceName}
         itemCount={customers.length}
         selectedItemsCount={
@@ -974,6 +980,116 @@ export function WithBulkActions() {
   );
 }
 
+export function WithSelectionAndNoBulkActions() {
+  const customers = [
+    {
+      id: '3410',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+    },
+    {
+      id: '3411',
+      url: '#',
+      name: 'Joe Jemison',
+      location: 'Sydney, AU',
+      orders: 20,
+      amountSpent: '$1,400',
+    },
+    {
+      id: '3412',
+      url: '#',
+      name: 'Sam Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$400',
+    },
+    {
+      id: '3413',
+      url: '#',
+      name: 'Mae Jemison',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$4,300',
+    },
+    {
+      id: '2563',
+      url: '#',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+    },
+  ];
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    ({id, name, location, orders, amountSpent}, index) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        condensed={useBreakpoints().smDown}
+        resourceName={resourceName}
+        itemCount={customers.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Name'},
+          {title: 'Location'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            id: 'amount-spent',
+            title: 'Amount spent',
+          },
+        ]}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
 export function WithMultiplePromotedBulkActions() {
   const customers = [
     {
@@ -1138,8 +1254,8 @@ export function WithBulkActionsAndSelectionAcrossPages() {
     return {
       id: `${num}`,
       url: '#',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
+      name: `Mae Jemison ${num}`,
+      location: 'Truth or Consequences, New Mexico, United States of America',
       orders: 20,
       amountSpent: '$24,00',
     };
@@ -1894,7 +2010,7 @@ export function WithStickyLastColumn() {
   );
 
   return (
-    <LegacyCard>
+    <Card padding="0">
       <IndexTable
         condensed={useBreakpoints().smDown}
         resourceName={resourceName}
@@ -1924,7 +2040,7 @@ export function WithStickyLastColumn() {
       >
         {rowMarkup}
       </IndexTable>
-    </LegacyCard>
+    </Card>
   );
 }
 
@@ -2974,6 +3090,201 @@ export function WithSortableCustomHeadings() {
             tooltipContent:
               'I am a wide Amount spent tooltip that stays when clicked',
             tooltipWidth: 'wide',
+          },
+          {title: 'Location'},
+          {title: 'Fulfillment status'},
+          {title: 'Payment status'},
+          {title: 'Notes'},
+        ]}
+        sortable={[true, true, false, true, true, false, false]}
+        sortDirection={sortDirection}
+        sortColumnIndex={sortIndex}
+        onSort={handleClickSortHeading}
+        sortToggleLabels={sortToggleLabels}
+        lastColumnSticky
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithHeadingWithPaddingBlockEnd() {
+  const [sortIndex, setSortIndex] = useState(0);
+  const [sortDirection, setSortDirection] =
+    useState<IndexTableProps['sortDirection']>('descending');
+
+  const sortToggleLabels = {
+    0: {ascending: 'A-Z', descending: 'Z-A'},
+    1: {ascending: 'Ascending', descending: 'Descending'},
+    2: {ascending: 'Newest', descending: 'Oldest'},
+    3: {ascending: 'Ascending', descending: 'Ascending'},
+    4: {ascending: 'A-Z', descending: 'Z-A'},
+    5: {ascending: 'A-Z', descending: 'Z-A'},
+    6: {ascending: 'A-Z', descending: 'Z-A'},
+    7: {ascending: 'A-Z', descending: 'Z-A'},
+  };
+
+  const initialRows = [
+    {
+      id: '3411',
+      url: '#',
+      name: 'Mae Jemison',
+      date: '2022-02-04',
+      location: 'Decatur, USA',
+      orders: 20,
+      amountSpent: '$2,400',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Paid',
+      notes: '',
+    },
+    {
+      id: '2561',
+      url: '#',
+      date: '2022-01-19',
+      name: 'Ellen Ochoa',
+      location: 'Los Angeles, USA',
+      orders: 30,
+      amountSpent: '$140',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer lives on the 3rd floor',
+    },
+    {
+      id: '1245',
+      url: '#',
+      date: '2021-12-12',
+      name: 'Anne-Marie Johnson',
+      location: 'Portland, USA',
+      orders: 10,
+      amountSpent: '$250',
+      fulfillmentStatus: 'Fulfilled',
+      paymentStatus: 'Not paid',
+      notes: '',
+    },
+    {
+      id: '8741',
+      url: '#',
+      date: '2022-05-11',
+      name: 'Bradley Stevens',
+      location: 'Hialeah, USA',
+      orders: 5,
+      amountSpent: '$26',
+      fulfillmentStatus: 'Unfulfilled',
+      paymentStatus: 'Not paid',
+      notes: 'This customer has requested fragile delivery',
+    },
+  ];
+  const [sortedRows, setSortedRows] = useState(
+    sortRows(initialRows, sortIndex, sortDirection),
+  );
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const rows = sortedRows ?? initialRows;
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(rows);
+
+  function handleClickSortHeading(index, direction) {
+    setSortIndex(index);
+    setSortDirection(direction);
+    const newSortedRows = sortRows(rows, index, direction);
+    setSortedRows(newSortedRows);
+  }
+
+  function sortRows(localRows, index, direction) {
+    return [...localRows].sort((rowA, rowB) => {
+      const key = index === 0 ? 'name' : 'location';
+      if (rowA[key] < rowB[key]) {
+        return direction === 'descending' ? -1 : 1;
+      }
+      if (rowA[key] > rowB[key]) {
+        return direction === 'descending' ? 1 : -1;
+      }
+      return 0;
+    });
+  }
+
+  const rowMarkup = rows.map(
+    (
+      {
+        id,
+        name,
+        date,
+        location,
+        orders,
+        amountSpent,
+        fulfillmentStatus,
+        paymentStatus,
+        notes,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Box paddingInlineEnd="600">
+            <Text as="span" alignment="end" numeric>
+              {amountSpent}
+            </Text>
+          </Box>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{notes}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        condensed={useBreakpoints().smDown}
+        resourceName={resourceName}
+        itemCount={rows.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {
+            title: 'Name',
+            tooltipContent: 'I am a wide tooltip describing the Name column',
+            tooltipWidth: 'wide',
+          },
+          {title: 'Date', tooltipContent: 'I am the Date tooltip'},
+          {
+            alignment: 'end',
+            id: 'order-count',
+            title: 'Order count',
+          },
+          {
+            alignment: 'end',
+            title: 'Amount spent',
+            tooltipContent:
+              'I am a wide Amount spent tooltip that stays when clicked',
+            tooltipWidth: 'wide',
+            paddingBlockEnd: '600',
           },
           {title: 'Location'},
           {title: 'Fulfillment status'},
@@ -4284,48 +4595,17 @@ export function WithSubHeaders() {
 }
 
 export function WithPagination() {
-  const customers = [
-    {
-      id: '3410',
+  const customers = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
       url: '#',
-      name: 'Mae Jemison',
+      name: `Mae Jemison ${num}`,
       location: 'Decatur, USA',
       orders: 20,
-      amountSpent: '$2,400',
-    },
-    {
-      id: '3411',
-      url: '#',
-      name: 'Joe Jemison',
-      location: 'Sydney, AU',
-      orders: 20,
-      amountSpent: '$1,400',
-    },
-    {
-      id: '3412',
-      url: '#',
-      name: 'Sam Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$400',
-    },
-    {
-      id: '3413',
-      url: '#',
-      name: 'Mae Jemison',
-      location: 'Decatur, USA',
-      orders: 20,
-      amountSpent: '$4,300',
-    },
-    {
-      id: '2563',
-      url: '#',
-      name: 'Ellen Ochoa',
-      location: 'Los Angeles, USA',
-      orders: 30,
-      amountSpent: '$140',
-    },
-  ];
+      amountSpent: '$24,00',
+    };
+  });
+
   const resourceName = {
     singular: 'customer',
     plural: 'customers',
@@ -4394,6 +4674,272 @@ export function WithPagination() {
         {rowMarkup}
       </IndexTable>
     </LegacyCard>
+  );
+}
+
+export function WithStickyScrollBar() {
+  const customers = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '#',
+      name: `Mae Jemison ${num}`,
+      location: 'Truth or Consequences, United States of America',
+      orders: 20,
+      amountSpent: '$24,00',
+      channel: 'Point of sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
+      tags: 'No tags applied',
+    };
+  });
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const rowMarkup = customers.map(
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        channel,
+        paymentStatus,
+        fulfillmentStatus,
+        tags,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{tags}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Box paddingBlockEnd="400">
+      <BlockStack gap="200">
+        <LegacyCard>
+          <IndexTable
+            resourceName={resourceName}
+            itemCount={customers.length}
+            selectedItemsCount={
+              allResourcesSelected ? 'All' : selectedResources.length
+            }
+            onSelectionChange={handleSelectionChange}
+            headings={[
+              {title: 'Name'},
+              {title: 'Location'},
+              {
+                alignment: 'end',
+                id: 'order-count',
+                title: 'Order count',
+              },
+              {
+                alignment: 'end',
+                id: 'amount-spent',
+                title: 'Amount spent',
+              },
+              {title: 'Channel'},
+              {title: 'Payment status'},
+              {title: 'Fulfillment status'},
+              {title: 'Tags'},
+            ]}
+          >
+            {rowMarkup}
+          </IndexTable>
+        </LegacyCard>
+      </BlockStack>
+    </Box>
+  );
+}
+
+export function WithPaginationAndBulkActions() {
+  const customers = Array.from({length: 50}, (_, num) => {
+    return {
+      id: `${num}`,
+      url: '#',
+      name: `Mae Jemison ${num}`,
+      location: 'Truth or Consequences, United States of America',
+      orders: 20,
+      amountSpent: '$24,00',
+      channel: 'Point of sale',
+      paymentStatus: 'Refunded',
+      fulfillmentStatus: 'Fulfilled',
+      tags: 'No tags applied',
+    };
+  });
+
+  const resourceName = {
+    singular: 'customer',
+    plural: 'customers',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(customers);
+
+  const promotedBulkActions = [
+    {
+      content: 'Capture payments',
+      onAction: () => console.log('Todo: implement payment capture'),
+    },
+    {
+      title: 'Edit customers',
+      actions: [
+        {
+          content: 'Add customers',
+          onAction: () => console.log('Todo: implement adding customers'),
+        },
+        {
+          content: 'Delete customers',
+          onAction: () => console.log('Todo: implement deleting customers'),
+        },
+      ],
+    },
+    {
+      title: 'Export',
+      actions: [
+        {
+          content: 'Export as PDF',
+          onAction: () => console.log('Todo: implement PDF exporting'),
+        },
+        {
+          content: 'Export as CSV',
+          onAction: () => console.log('Todo: implement CSV exporting'),
+        },
+      ],
+    },
+  ];
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  const rowMarkup = customers.map(
+    (
+      {
+        id,
+        name,
+        location,
+        orders,
+        amountSpent,
+        channel,
+        paymentStatus,
+        fulfillmentStatus,
+        tags,
+      },
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text fontWeight="bold" as="span">
+            {name}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{location}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{channel}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{tags}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <Box paddingBlockEnd="400">
+      <Card padding="0">
+        <IndexTable
+          condensed={useBreakpoints().smDown}
+          resourceName={resourceName}
+          itemCount={customers.length}
+          selectedItemsCount={
+            allResourcesSelected ? 'All' : selectedResources.length
+          }
+          bulkActions={bulkActions}
+          promotedBulkActions={promotedBulkActions}
+          onSelectionChange={handleSelectionChange}
+          headings={[
+            {title: 'Name'},
+            {title: 'Location'},
+            {
+              alignment: 'end',
+              id: 'order-count',
+              title: 'Order count',
+            },
+            {
+              alignment: 'end',
+              id: 'amount-spent',
+              title: 'Amount spent',
+            },
+            {title: 'Channel'},
+            {title: 'Payment status'},
+            {title: 'Fulfillment status'},
+            {title: 'Tags'},
+          ]}
+          pagination={{
+            hasNext: true,
+            onNext: () => {},
+          }}
+        >
+          {rowMarkup}
+        </IndexTable>
+      </Card>
+    </Box>
   );
 }
 
@@ -6090,5 +6636,364 @@ export function WithNestedRowsWithThumbnailsOneCellNonSelectable() {
         {rowMarkup}
       </IndexTable>
     </LegacyCard>
+  );
+}
+
+export function WithLongDataSetNonSelectable() {
+  const orders = Array.from(Array(100).keys()).map((i) => ({
+    id: `${i}`,
+    order: i,
+    date: 'Jul 20 at 4:34pm',
+    customer: 'Jaydon Stanton',
+    total: `$969.44${i}`,
+    paymentStatus: <Badge progress="complete">Paid</Badge>,
+    fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+  }));
+
+  const resourceName = {
+    singular: 'order',
+    plural: 'orders',
+  };
+
+  const rowMarkup = orders.map(
+    (
+      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      index,
+    ) => (
+      <IndexTable.Row id={id} key={id} position={index}>
+        <IndexTable.Cell>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {order}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>{total}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={orders.length}
+        headings={[
+          {title: 'Order'},
+          {title: 'Date'},
+          {title: 'Customer'},
+          {title: 'Total', alignment: 'end'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
+        ]}
+        selectable={false}
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithLongDataSetSelectable() {
+  const orders = Array.from(Array(100).keys()).map((i) => ({
+    id: `${i}`,
+    order: i,
+    date: 'Jul 20 at 4:34pm',
+    customer: 'Jaydon Stanton',
+    total: `$969.44${i}`,
+    paymentStatus: <Badge progress="complete">Paid</Badge>,
+    fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+  }));
+
+  const resourceName = {
+    singular: 'order',
+    plural: 'orders',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(orders);
+
+  const rowMarkup = orders.map(
+    (
+      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {order}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>{total}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  return (
+    <LegacyCard>
+      <IndexTable
+        resourceName={resourceName}
+        itemCount={orders.length}
+        selectedItemsCount={
+          allResourcesSelected ? 'All' : selectedResources.length
+        }
+        onSelectionChange={handleSelectionChange}
+        headings={[
+          {title: 'Order', hidden: true},
+          {title: 'Date'},
+          {title: 'Customer'},
+          {title: 'Total', alignment: 'end'},
+          {title: 'Payment status'},
+          {title: 'Fulfillment status'},
+        ]}
+        bulkActions={bulkActions}
+        selectable
+      >
+        {rowMarkup}
+      </IndexTable>
+    </LegacyCard>
+  );
+}
+
+export function WithinAModal() {
+  const [active, setActive] = useState(true);
+  const [checked, setChecked] = useState(false);
+
+  const toggleActive = useCallback(() => setActive((active) => !active), []);
+
+  const handleCheckbox = useCallback((value) => setChecked(value), []);
+
+  const activator = <Button onClick={toggleActive}>Open</Button>;
+
+  const orders = Array.from(Array(100).keys()).map((i) => ({
+    id: `${i}`,
+    order: i,
+    date: 'Jul 20 at 4:34pm',
+    customer: 'Jaydon Stanton',
+    total: `$969.44${i}`,
+    paymentStatus: <Badge progress="complete">Paid</Badge>,
+    fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+  }));
+
+  const resourceName = {
+    singular: 'order',
+    plural: 'orders',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(orders);
+
+  const rowMarkup = orders.map(
+    (
+      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {order}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>{total}</IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  const bulkActions = [
+    {
+      content: 'Add tags',
+      onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+  ];
+
+  const table = (
+    <IndexTable
+      resourceName={resourceName}
+      itemCount={orders.length}
+      selectedItemsCount={
+        allResourcesSelected ? 'All' : selectedResources.length
+      }
+      onSelectionChange={handleSelectionChange}
+      headings={[
+        {title: 'Order', hidden: true},
+        {title: 'Date'},
+        {title: 'Customer'},
+        {title: 'Total', alignment: 'end'},
+        {title: 'Payment status'},
+        {title: 'Fulfillment status'},
+      ]}
+      bulkActions={bulkActions}
+      selectable
+    >
+      {rowMarkup}
+    </IndexTable>
+  );
+
+  return (
+    <Frame>
+      <div style={{height: '500px'}}>
+        <Modal
+          noScroll
+          activator={activator}
+          open={active}
+          onClose={toggleActive}
+          title="Import customers by CSV"
+          primaryAction={{
+            content: 'Import customers',
+            onAction: toggleActive,
+          }}
+          secondaryActions={[
+            {
+              content: 'Cancel',
+              onAction: toggleActive,
+            },
+          ]}
+        >
+          <Box>
+            <Scrollable style={{height: '65dvh'}}>{table}</Scrollable>
+          </Box>
+        </Modal>
+      </div>
+    </Frame>
+  );
+}
+
+export function WithUnmountingTable() {
+  const [isShowing, setIsShowing] = useState(true);
+  const orders = [
+    {
+      id: '1020',
+      order: '#1020',
+      date: 'Jul 20 at 4:34pm',
+      customer: 'Jaydon Stanton',
+      total: '$969.44',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1019',
+      order: '#1019',
+      date: 'Jul 20 at 3:46pm',
+      customer: 'Ruben Westerfelt',
+      total: '$701.19',
+      paymentStatus: <Badge progress="partiallyComplete">Partially paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+    {
+      id: '1018',
+      order: '#1018',
+      date: 'Jul 20 at 3.44pm',
+      customer: 'Leo Carder',
+      total: '$798.24',
+      paymentStatus: <Badge progress="complete">Paid</Badge>,
+      fulfillmentStatus: <Badge progress="incomplete">Unfulfilled</Badge>,
+    },
+  ];
+  const resourceName = {
+    singular: 'order',
+    plural: 'orders',
+  };
+
+  const {selectedResources, allResourcesSelected, handleSelectionChange} =
+    useIndexResourceState(orders);
+
+  const rowMarkup = orders.map(
+    (
+      {id, order, date, customer, total, paymentStatus, fulfillmentStatus},
+      index,
+    ) => (
+      <IndexTable.Row
+        id={id}
+        key={id}
+        selected={selectedResources.includes(id)}
+        position={index}
+      >
+        <IndexTable.Cell>
+          <Text variant="bodyMd" fontWeight="bold" as="span">
+            {order}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{date}</IndexTable.Cell>
+        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" alignment="end" numeric>
+            {total}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+      </IndexTable.Row>
+    ),
+  );
+
+  return (
+    <>
+      {isShowing && (
+        <LegacyCard>
+          <IndexTable
+            resourceName={resourceName}
+            itemCount={orders.length}
+            selectedItemsCount={
+              allResourcesSelected ? 'All' : selectedResources.length
+            }
+            onSelectionChange={handleSelectionChange}
+            headings={[
+              {title: 'Order'},
+              {title: 'Date'},
+              {title: 'Customer'},
+              {title: 'Total', alignment: 'end'},
+              {title: 'Payment status'},
+              {title: 'Fulfillment status'},
+            ]}
+          >
+            {rowMarkup}
+          </IndexTable>
+        </LegacyCard>
+      )}
+      <button onClick={() => setIsShowing(!isShowing)}>Toggle</button>
+    </>
   );
 }

@@ -15,11 +15,12 @@ import {
   Icon,
   Tooltip,
   BlockStack,
+  Link,
 } from '@shopify/polaris';
 import {
-  DeleteMinor,
-  QuestionMarkMinor,
-  SearchMinor,
+  DeleteIcon,
+  QuestionCircleIcon,
+  SearchIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -43,17 +44,44 @@ export function Default() {
 
 export function Magic() {
   const [value, setValue] = useState('Jaded Pixel');
+  const [value1, setValue1] = useState('Jaded Pixel');
+  const [value2, setValue2] = useState('Jaded Pixel');
 
   const handleChange = useCallback((newValue) => setValue(newValue), []);
+  const handleChange1 = useCallback((newValue) => setValue1(newValue), []);
+  const handleChange2 = useCallback((newValue) => setValue2(newValue), []);
 
   return (
-    <TextField
-      label="Store name"
-      value={value}
-      onChange={handleChange}
-      autoComplete="off"
-      tone="magic"
-    />
+    <LegacyStack vertical>
+      <TextField
+        label="Store name"
+        value={value}
+        onChange={handleChange}
+        autoComplete="off"
+        tone="magic"
+      />
+      <TextField
+        label="Prefix icon"
+        type="search"
+        value={value1}
+        onChange={handleChange1}
+        prefix={<Icon source={SearchIcon} />}
+        autoComplete="off"
+        tone="magic"
+      />
+      <TextField
+        label="Suffix icon"
+        value={value2}
+        onChange={handleChange2}
+        suffix={
+          <Tooltip content="Hello world">
+            <Icon source={QuestionCircleIcon} />
+          </Tooltip>
+        }
+        tone="magic"
+        autoComplete="off"
+      />
+    </LegacyStack>
   );
 }
 
@@ -266,14 +294,25 @@ export function WithPrefixOrSuffix() {
   );
 
   return (
-    <TextField
-      label="Price"
-      type="number"
-      value={textFieldValue}
-      onChange={handleTextFieldChange}
-      prefix="$"
-      autoComplete="off"
-    />
+    <LegacyStack vertical>
+      <TextField
+        label="Price"
+        type="number"
+        value={textFieldValue}
+        onChange={handleTextFieldChange}
+        prefix="$"
+        autoComplete="off"
+      />
+      <TextField
+        label="Price"
+        type="number"
+        value={textFieldValue}
+        onChange={handleTextFieldChange}
+        prefix="$"
+        autoComplete="off"
+        tone="magic"
+      />
+    </LegacyStack>
   );
 }
 
@@ -419,7 +458,7 @@ export function WithSeparateValidationError() {
           <InlineError message={errorMessage} fieldID={textFieldID} />
         </div>
       </LegacyStack.Item>
-      <Button icon={DeleteMinor} accessibilityLabel="Remove item" />
+      <Button icon={DeleteIcon} accessibilityLabel="Remove item" />
     </LegacyStack>
   );
 
@@ -549,7 +588,7 @@ export function WithInlineSuggestion() {
       'Massachusetts',
       'Michigan',
       'Minnesota',
-      'Minor Outlying Islands',
+      'Icon Outlying Islands',
       'Mississippi',
       'Missouri',
       'Montana',
@@ -702,12 +741,30 @@ export function All() {
           autoComplete="off"
         />
         <TextField
+          label="Prefix with magic"
+          type="number"
+          value="4"
+          onChange={() => {}}
+          prefix="$"
+          autoComplete="off"
+          tone="magic"
+        />
+        <TextField
           label="Prefix icon"
           type="search"
           value="Value"
           onChange={() => {}}
-          prefix={<Icon source={SearchMinor} />}
+          prefix={<Icon source={SearchIcon} />}
           autoComplete="off"
+        />
+        <TextField
+          label="Prefix icon with magic"
+          type="search"
+          value="Value"
+          onChange={() => {}}
+          prefix={<Icon source={SearchIcon} />}
+          autoComplete="off"
+          tone="magic"
         />
         <TextField
           label="Suffix tooltip"
@@ -715,9 +772,21 @@ export function All() {
           onChange={() => {}}
           suffix={
             <Tooltip content="Hello world">
-              <Icon source={QuestionMarkMinor} />
+              <Icon source={QuestionCircleIcon} />
             </Tooltip>
           }
+          autoComplete="off"
+        />
+        <TextField
+          label="Suffix tooltip with magic"
+          value="Value"
+          onChange={() => {}}
+          suffix={
+            <Tooltip content="Hello world">
+              <Icon source={QuestionCircleIcon} />
+            </Tooltip>
+          }
+          tone="magic"
           autoComplete="off"
         />
         <TextField
@@ -850,7 +919,7 @@ export function All() {
           value="Value"
           onChange={() => {}}
           autoComplete="off"
-          variant="slim"
+          size="slim"
         />
         <TextField
           label="Borderless slim variant"
@@ -914,6 +983,86 @@ export function With1PasswordDisabled() {
       value={value}
       onChange={handleChange}
       autoComplete="off"
+    />
+  );
+}
+
+export function WithAutoSize() {
+  const [value, setValue] = useState('Jaded Pixel');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  return (
+    <TextField
+      label="Store name"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      autoSize
+      suffix="in: Your stores"
+    />
+  );
+}
+
+export function WithAutoSizeAndDynamicSuffix() {
+  const [value, setValue] = useState('');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  const suffix = value ? 'in: Unfulfilled orders' : null;
+
+  return (
+    <TextField
+      label="Search view"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      autoSize
+      placeholder="Searching in Unfulfilled orders"
+      suffix={suffix}
+    />
+  );
+}
+
+export function WithAutoSizeAndOtherElements() {
+  const [value, setValue] = useState('Jaded Pixel');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  const handleClearButtonClick = useCallback(() => setValue(''), []);
+
+  return (
+    <TextField
+      label="Search view"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      clearButton
+      onClearButtonClick={handleClearButtonClick}
+      autoSize
+      suffix="in: Unfulfilled orders"
+      showCharacterCount
+      maxLength={128}
+    />
+  );
+}
+
+export function WithLoading() {
+  const [value, setValue] = useState('Jaded Pixel');
+
+  const handleChange = useCallback((newValue) => setValue(newValue), []);
+
+  const handleClearButtonClick = useCallback(() => setValue(''), []);
+
+  return (
+    <TextField
+      label="Store name"
+      value={value}
+      onChange={handleChange}
+      autoComplete="off"
+      clearButton
+      onClearButtonClick={handleClearButtonClick}
+      loading
     />
   );
 }

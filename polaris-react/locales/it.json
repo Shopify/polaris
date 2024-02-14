@@ -19,7 +19,7 @@
         "success": "Operazione riuscita",
         "warning": "Avvertimento",
         "attention": "Attenzione",
-        "new": "Nuovo",
+        "new": "Nuova",
         "critical": "Critico",
         "readOnly": "Sola lettura",
         "enabled": "Abilitato"
@@ -158,7 +158,8 @@
       "clearLabel": "Rimuovi {filterName}",
       "moreFiltersWithCount": "Altri filtri ({count})",
       "addFilter": "Aggiungi filtro",
-      "clearFilters": "Cancella tutto"
+      "clearFilters": "Cancella tutto",
+      "searchInView": "in:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "markup del testo",
@@ -337,7 +338,7 @@
     "IndexTable": {
       "emptySearchTitle": "Impossibile trovare {resourceNamePlural}",
       "emptySearchDescription": "Prova a cambiare i filtri o il termine di ricerca",
-      "onboardingBadgeText": "Novità",
+      "onboardingBadgeText": "Nuova",
       "resourceLoadingAccessibilityLabel": "Caricamento {resourceNamePlural} in corso",
       "selectAllLabel": "Seleziona tutto: {resourceNamePlural}",
       "selected": "{selectedItemsCount} selezionati",
@@ -349,7 +350,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Visualizza azioni per {title}"
+        "rollupActionsLabel": "Visualizza azioni per {title}",
+        "pageReadyAccessibilityLabel": "{title}. Questa pagina è pronta"
       }
     },
     "FullscreenBar": {

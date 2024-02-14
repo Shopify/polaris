@@ -79,10 +79,15 @@ function MultiselectTagComboboxExample() {
     [value],
   );
 
+  const escapeSpecialRegExCharacters = useCallback(
+    (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+    [],
+  );
+
   const options = useMemo(() => {
     let list;
     const allTags = getAllTags();
-    const filterRegex = new RegExp(value, 'i');
+    const filterRegex = new RegExp(escapeSpecialRegExCharacters(value), 'i');
 
     if (value) {
       list = allTags.filter((tag) => tag.match(filterRegex));
@@ -91,7 +96,7 @@ function MultiselectTagComboboxExample() {
     }
 
     return [...list];
-  }, [value, getAllTags]);
+  }, [value, getAllTags, escapeSpecialRegExCharacters]);
 
   const verticalContentMarkup =
     selectedTags.length > 0 ? (

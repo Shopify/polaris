@@ -1,9 +1,9 @@
 import React, {isValidElement} from 'react';
 import {
-  SelectMinor,
-  ChevronDownMinor,
-  ChevronUpMinor,
-  SkeletonMajor,
+  SelectIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  SkeletonIcon,
 } from '@shopify/polaris-icons';
 
 import type {BaseButton, IconSource} from '../../types';
@@ -16,7 +16,7 @@ import {Spinner} from '../Spinner';
 import {UnstyledButton} from '../UnstyledButton';
 import type {UnstyledButtonProps} from '../UnstyledButton';
 
-import styles from './Button.scss';
+import styles from './Button.module.scss';
 
 export interface ButtonProps extends BaseButton {
   /** The content to display inside the button */
@@ -43,7 +43,7 @@ export interface ButtonProps extends BaseButton {
   /** Sets the color treatment of the Button. */
   tone?: 'critical' | 'success';
   /** Changes the visual appearance of the Button. */
-  variant?: 'plain' | 'primary' | 'tertiary' | 'monochromePlain';
+  variant?: 'plain' | 'primary' | 'secondary' | 'tertiary' | 'monochromePlain';
 }
 
 interface CommonButtonProps
@@ -84,8 +84,6 @@ type ActionButtonProps = Pick<
   | 'onPointerDown'
 >;
 
-const DEFAULT_SIZE = 'medium';
-
 export function Button({
   id,
   children,
@@ -115,29 +113,31 @@ export function Button({
   icon,
   disclosure,
   removeUnderline,
-  size = DEFAULT_SIZE,
-  textAlign,
+  size = 'medium',
+  textAlign = 'center',
   fullWidth,
   dataPrimaryLink,
   tone,
-  variant,
+  variant = 'secondary',
 }: ButtonProps) {
   const i18n = useI18n();
-
   const isDisabled = disabled || loading;
 
   const className = classNames(
     styles.Button,
+    styles.pressable,
+    styles[variationName('variant', variant)],
+    styles[variationName('size', size)],
+    styles[variationName('textAlign', textAlign)],
     fullWidth && styles.fullWidth,
+    disclosure && styles.disclosure,
+    icon && children && styles.iconWithText,
     icon && children == null && styles.iconOnly,
     isDisabled && styles.disabled,
     loading && styles.loading,
     pressed && !disabled && !url && styles.pressed,
     removeUnderline && styles.removeUnderline,
-    size && size !== DEFAULT_SIZE && styles[variationName('size', size)],
-    textAlign && styles[variationName('textAlign', textAlign)],
     tone && styles[variationName('tone', tone)],
-    variant && styles[variationName('variant', variant)],
   );
 
   const disclosureMarkup = disclosure ? (
@@ -148,11 +148,11 @@ export function Button({
         <Icon
           source={
             loading
-              ? SkeletonMajor
+              ? SkeletonIcon
               : getDisclosureIconSource(
                   disclosure,
-                  ChevronUpMinor,
-                  ChevronDownMinor,
+                  ChevronUpIcon,
+                  ChevronDownIcon,
                 )
           }
         />
@@ -164,7 +164,7 @@ export function Button({
     <span className={classNames(styles.Icon, loading && styles.hidden)}>
       {/* eslint-disable-next-line no-nested-ternary */}
       {loading ? (
-        <Icon source={SkeletonMajor} />
+        <Icon source={SkeletonIcon} />
       ) : isValidElement(icon) ? (
         icon
       ) : (
@@ -175,10 +175,7 @@ export function Button({
 
   const childMarkup = children ? (
     <span
-      className={classNames(
-        styles.Text,
-        removeUnderline && styles.removeUnderline,
-      )}
+      className={removeUnderline ? styles.removeUnderline : ''}
       // Fixes Safari bug that doesn't re-render button text to correct color
       key={disabled ? 'text-disabled' : 'text'}
     >
@@ -233,12 +230,10 @@ export function Button({
 
   const buttonMarkup = (
     <UnstyledButton {...commonProps} {...linkProps} {...actionProps}>
-      <span className={styles.Content}>
-        {spinnerSVGMarkup}
-        {iconMarkup}
-        {childMarkup}
-        {disclosureMarkup}
-      </span>
+      {spinnerSVGMarkup}
+      {iconMarkup}
+      {childMarkup}
+      {disclosureMarkup}
     </UnstyledButton>
   );
 
@@ -251,7 +246,7 @@ function getDisclosureIconSource(
   downIcon: IconSource,
 ) {
   if (disclosure === 'select') {
-    return SelectMinor;
+    return SelectIcon;
   }
 
   return disclosure === 'up' ? upIcon : downIcon;

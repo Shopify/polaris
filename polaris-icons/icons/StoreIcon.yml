@@ -1,0 +1,12 @@
+name: Store
+description: Used to represent a store or shop.
+keywords:
+  - store
+  - shop
+authors:
+  - Dan Ross
+  - Adam Whitcroft
+  - Joe Thomas
+  - José Torre
+date_added: 2021-02-22
+date_modified: 2023-11-07

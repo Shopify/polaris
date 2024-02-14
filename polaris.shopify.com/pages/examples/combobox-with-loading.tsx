@@ -1,5 +1,5 @@
 import {Listbox, Combobox, Icon} from '@shopify/polaris';
-import {SearchMinor} from '@shopify/polaris-icons';
+import {SearchIcon} from '@shopify/polaris-icons';
 import {useState, useCallback, useMemo} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -20,6 +20,11 @@ function LoadingAutocompleteExample() {
   const [options, setOptions] = useState(deselectedOptions);
   const [loading, setLoading] = useState(false);
 
+  const escapeSpecialRegExCharacters = useCallback(
+    (value: string) => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'),
+    [],
+  );
+
   const updateText = useCallback(
     (value: string) => {
       setInputValue(value);
@@ -34,7 +39,10 @@ function LoadingAutocompleteExample() {
           setLoading(false);
           return;
         }
-        const filterRegex = new RegExp(value, 'i');
+        const filterRegex = new RegExp(
+          escapeSpecialRegExCharacters(value),
+          'i',
+        );
         const resultOptions = options.filter((option) =>
           option.label.match(filterRegex),
         );
@@ -42,7 +50,7 @@ function LoadingAutocompleteExample() {
         setLoading(false);
       }, 300);
     },
-    [deselectedOptions, loading, options],
+    [deselectedOptions, loading, options, escapeSpecialRegExCharacters],
   );
 
   const updateSelection = useCallback(
@@ -92,7 +100,7 @@ function LoadingAutocompleteExample() {
       <Combobox
         activator={
           <Combobox.TextField
-            prefix={<Icon source={SearchMinor} />}
+            prefix={<Icon source={SearchIcon} />}
             onChange={updateText}
             label="Search tags"
             labelHidden

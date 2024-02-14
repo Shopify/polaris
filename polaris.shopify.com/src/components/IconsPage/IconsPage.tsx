@@ -8,12 +8,14 @@ import {useMedia} from '../../utils/hooks';
 import styles from './IconsPage.module.scss';
 import IconGrid from '../IconGrid';
 import SearchField from '../SearchField';
-import {SearchMajor} from '@shopify/polaris-icons';
+import {SearchIcon} from '@shopify/polaris-icons';
 import Icon from '../Icon';
 import IconDetails from '../IconDetails';
 import PageMeta from '../PageMeta';
 import {className} from '../../utils/various';
 import Page from '../Page';
+import StatusBanner from '../StatusBanner';
+import {iconRenamesV7toV8} from './icon-renames-v7-to-v8';
 
 const fuse = new Fuse(Object.values(iconMetadata), {
   threshold: 0.25,
@@ -21,18 +23,17 @@ const fuse = new Fuse(Object.values(iconMetadata), {
     {name: 'name', weight: 3},
     {name: 'id', weight: 2},
     {name: 'keywords', weight: 2},
-    {name: 'set', weight: 1},
     {name: 'fileName', weight: 1},
     {name: 'description', weight: 1},
   ],
 });
 
-const getIcons = (currentSearchText: string, set: string) => {
+const getIcons = (currentSearchText: string) => {
   const icons = currentSearchText
     ? fuse.search(currentSearchText).map((result) => result.item)
     : Object.values(iconMetadata);
 
-  return icons.filter((x) => x.set === set);
+  return icons;
 };
 
 function scrollToActiveIcon(activeIcon: string): void {
@@ -67,11 +68,17 @@ function IconsPage() {
   const router = useRouter();
   const useModal = useMedia('screen and (max-width: 1400px)');
   const [searchText, setSearchText] = useState('');
-  const [minorIcons, setMinorIcons] = useState<IconType[]>([]);
-  const [majorIcons, setMajorIcons] = useState<IconType[]>([]);
-  const activeIcon = Array.isArray(router.query.icon)
+  const [icons, setIcons] = useState<IconType[]>([]);
+  const iconQueryParam = Array.isArray(router.query.icon)
     ? router.query.icon[0]
     : router.query.icon ?? '';
+  const isRenamedIcon = Object.keys(iconRenamesV7toV8).includes(iconQueryParam);
+  const iconName = isRenamedIcon
+    ? iconRenamesV7toV8[iconQueryParam as keyof typeof iconRenamesV7toV8]
+    : iconQueryParam;
+  const activeIcon = Object.keys(iconMetadata).includes(iconName)
+    ? iconName
+    : '';
   const currentSearchText = router.query.q ? `${router.query.q}` : '';
 
   useEffect(() => {
@@ -81,8 +88,7 @@ function IconsPage() {
   }, [router.isReady, activeIcon]);
 
   useEffect(() => {
-    setMajorIcons(getIcons(currentSearchText, 'major'));
-    setMinorIcons(getIcons(currentSearchText, 'minor'));
+    setIcons(getIcons(currentSearchText));
     setSearchText(currentSearchText);
   }, [currentSearchText]);
 
@@ -100,7 +106,7 @@ function IconsPage() {
   };
 
   const pageTitle = iconMetadata[activeIcon]
-    ? `${iconMetadata[activeIcon].name} (${iconMetadata[activeIcon].set})`
+    ? `${iconMetadata[activeIcon].name}`
     : 'Icons';
 
   const githubIssueTitle = `[Icon] New icon ${searchText}`;
@@ -120,9 +126,16 @@ function IconsPage() {
             placeholder="Search icons"
           />
 
-          {majorIcons.length > 0 && (
-            <IconGrid title="Major icons">
-              {majorIcons.map((icon) => (
+          {isRenamedIcon ? (
+            <StatusBanner status="Deprecated">
+              The <code>{iconQueryParam}</code> icon is no longer supported.
+              Please use the <code>{iconName}</code> icon instead.
+            </StatusBanner>
+          ) : null}
+
+          {icons.length > 0 && (
+            <IconGrid>
+              {icons.map((icon) => (
                 <IconGrid.Item
                   key={icon.id}
                   icon={icon}
@@ -133,22 +146,9 @@ function IconsPage() {
             </IconGrid>
           )}
 
-          {minorIcons.length > 0 && (
-            <IconGrid title="Minor icons">
-              {minorIcons.map((icon) => (
-                <IconGrid.Item
-                  key={icon.id}
-                  icon={icon}
-                  query={searchText}
-                  activeIcon={activeIcon}
-                />
-              ))}
-            </IconGrid>
-          )}
-
-          {minorIcons.length === 0 && majorIcons.length === 0 ? (
+          {icons.length === 0 ? (
             <div className={styles.NoSearchResults}>
-              <Icon source={SearchMajor} width={40} height={40} />
+              <Icon source={SearchIcon} width={40} height={40} />
               <div>
                 <h2>No matches for {`"${searchText}"`}</h2>
                 <p>

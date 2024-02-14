@@ -11,7 +11,9 @@ export type FontSizeScale =
   | '325'
   | '350'
   | '400'
+  | '450'
   | '500'
+  | '550'
   | '600';
 
 export type FontLineHeightPrefix = 'font-line-height';
@@ -67,8 +69,14 @@ export const font: {
   'font-size-400': {
     value: size[400],
   },
+  'font-size-450': {
+    value: size[450],
+  },
   'font-size-500': {
     value: size[500],
+  },
+  'font-size-550': {
+    value: size[550],
   },
   'font-size-600': {
     value: size[600],

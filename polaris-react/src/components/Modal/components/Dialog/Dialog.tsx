@@ -12,7 +12,7 @@ import {Text} from '../../../Text';
 import {FrameContext} from '../../../../utilities/frame';
 import {useTheme} from '../../../../utilities/use-theme';
 
-import styles from './Dialog.scss';
+import styles from './Dialog.module.scss';
 
 type CSSTransitionProps = React.ComponentProps<typeof CSSTransition>;
 

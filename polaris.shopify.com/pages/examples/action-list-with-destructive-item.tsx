@@ -1,5 +1,5 @@
 import {Button, Popover, ActionList} from '@shopify/polaris';
-import {ImportMinor, ExportMinor, DeleteMinor} from '@shopify/polaris-icons';
+import {ImportIcon, ExportIcon, DeleteIcon} from '@shopify/polaris-icons';
 import {useState, useCallback} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -31,13 +31,13 @@ function ActionListWithDestructiveItemExample() {
                 {
                   active: true,
                   content: 'Import file',
-                  icon: ImportMinor,
+                  icon: ImportIcon,
                 },
-                {content: 'Export file', icon: ExportMinor},
+                {content: 'Export file', icon: ExportIcon},
                 {
                   destructive: true,
                   content: 'Delete file',
-                  icon: DeleteMinor,
+                  icon: DeleteIcon,
                 },
               ],
             },

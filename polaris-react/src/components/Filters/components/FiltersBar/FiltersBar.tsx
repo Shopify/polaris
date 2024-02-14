@@ -1,6 +1,6 @@
 import type {PropsWithChildren} from 'react';
 import React, {useState, useRef, useEffect} from 'react';
-import {PlusMinor} from '@shopify/polaris-icons';
+import {PlusIcon} from '@shopify/polaris-icons';
 import type {TransitionStatus} from 'react-transition-group';
 
 import {useI18n} from '../../../../utilities/i18n';
@@ -20,7 +20,7 @@ import {InlineStack} from '../../../InlineStack';
 import {Box} from '../../../Box';
 import {Button} from '../../../Button';
 import {FilterPill} from '../FilterPill';
-import styles from '../../Filters.scss';
+import styles from '../../Filters.module.scss';
 
 export interface FiltersBarProps {
   /** Currently entered text in the query field */
@@ -78,6 +78,10 @@ export function FiltersBar({
   };
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
 
+  const pinnedFromPropsKeys = filters
+    .filter(({pinned}) => pinned)
+    .map(({key}) => key);
+
   const pinnedFiltersFromPropsAndAppliedFilters = filters.filter(
     ({pinned, key}) => {
       const isPinnedOrApplied =
@@ -127,7 +131,7 @@ export function FiltersBar({
   );
 
   const unsectionedFilters = unpinnedFilters
-    .filter((filter) => !filter.section)
+    .filter((filter) => !filter.section && !filter.hidden)
     .map(filterToActionItem);
 
   const sectionedFilters = unpinnedFilters
@@ -176,23 +180,29 @@ export function FiltersBar({
         <Text variant={labelVariant} as="span">
           {i18n.translate('Polaris.Filters.addFilter')}{' '}
         </Text>
-        <PlusMinor />
+        <PlusIcon />
       </UnstyledButton>
     </div>
   );
 
   const handleClearAllFilters = () => {
-    setLocalPinnedFilters([]);
+    setLocalPinnedFilters(pinnedFromPropsKeys);
     onClearAll?.();
   };
-  const shouldShowAddButton = filters.some((filter) => !filter.pinned);
+  const shouldShowAddButton =
+    filters.some((filter) => !filter.pinned) ||
+    filters.length !== localPinnedFilters.length;
 
   const pinnedFiltersMarkup = pinnedFilters.map(
     ({key: filterKey, ...pinnedFilter}) => {
       const appliedFilter = appliedFilters?.find(({key}) => key === filterKey);
       const handleFilterPillRemove = () => {
         setLocalPinnedFilters((currentLocalPinnedFilters) =>
-          currentLocalPinnedFilters.filter((key) => key !== filterKey),
+          currentLocalPinnedFilters.filter((key) => {
+            const isMatchedFilters = key === filterKey;
+            const isPinnedFilterFromProps = pinnedFromPropsKeys.includes(key);
+            return !isMatchedFilters || isPinnedFilterFromProps;
+          }),
         );
         appliedFilter?.onRemove(filterKey);
       };
@@ -236,26 +246,25 @@ export function FiltersBar({
     </div>
   ) : null;
 
-  const clearAllMarkup =
-    appliedFilters?.length || localPinnedFilters.length ? (
-      <div
-        className={classNames(
-          styles.ClearAll,
-          hasOneOrMorePinnedFilters &&
-            shouldShowAddButton &&
-            styles.MultiplePinnedFilterClearAll,
-        )}
+  const clearAllMarkup = appliedFilters?.length ? (
+    <div
+      className={classNames(
+        styles.ClearAll,
+        hasOneOrMorePinnedFilters &&
+          shouldShowAddButton &&
+          styles.MultiplePinnedFilterClearAll,
+      )}
+    >
+      <Button
+        size="micro"
+        onClick={handleClearAllFilters}
+        removeUnderline
+        variant="monochromePlain"
       >
-        <Button
-          size="micro"
-          onClick={handleClearAllFilters}
-          removeUnderline
-          variant="monochromePlain"
-        >
-          {i18n.translate('Polaris.Filters.clearFilters')}
-        </Button>
-      </div>
-    ) : null;
+        {i18n.translate('Polaris.Filters.clearFilters')}
+      </Button>
+    </div>
+  ) : null;
 
   return (
     <div

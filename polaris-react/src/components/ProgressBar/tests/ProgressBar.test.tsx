@@ -3,7 +3,7 @@ import {CSSTransition} from 'react-transition-group';
 import {mountWithApp} from 'tests/utilities';
 
 import {ProgressBar} from '../ProgressBar';
-import styles from '../ProgressBar.scss';
+import styles from '../ProgressBar.module.scss';
 
 describe('<ProgressBar />', () => {
   it('sets the progress element to 80 when the progress is 80', () => {

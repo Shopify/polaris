@@ -158,7 +158,8 @@
       "clearLabel": "ล้าง {filterName}",
       "moreFiltersWithCount": "ตัวกรองเพิ่มเติม ({count})",
       "addFilter": "เพิ่มตัวกรอง",
-      "clearFilters": "ล้างทั้งหมด"
+      "clearFilters": "ล้างทั้งหมด",
+      "searchInView": "ใน:{viewName}"
     },
     "Modal": {
       "iFrameTitle": "มาร์กอัปเนื้อหา",
@@ -348,7 +349,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "ดูการดำเนินการสำหรับ {title}"
+        "rollupActionsLabel": "ดูการดำเนินการสำหรับ {title}",
+        "pageReadyAccessibilityLabel": "{title} หน้านี้พร้อมแล้ว"
       }
     },
     "FullscreenBar": {

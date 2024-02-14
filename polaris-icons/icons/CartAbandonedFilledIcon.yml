@@ -1,0 +1,10 @@
+name: Cart abandoned filled
+description: Used to represent a prospective purchase that a buyer didn’t complete.
+keywords:
+  - orders
+  - sales
+  - funnel
+authors:
+  - Joe Thomas
+date_added: 2023-07-06
+date_modified: 2023-07-06

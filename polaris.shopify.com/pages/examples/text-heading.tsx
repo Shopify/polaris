@@ -17,6 +17,9 @@ function TextExample() {
       <Text variant="headingSm" as="h6">
         Online store dashboard
       </Text>
+      <Text variant="headingXs" as="h6">
+        Online store dashboard
+      </Text>
     </LegacyStack>
   );
 }

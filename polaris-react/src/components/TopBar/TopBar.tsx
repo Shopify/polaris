@@ -1,5 +1,5 @@
 import React from 'react';
-import {MobileHamburgerMajor} from '@shopify/polaris-icons';
+import {MenuIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {getWidth} from '../../utilities/get-width';
@@ -12,7 +12,7 @@ import {UnstyledLink} from '../UnstyledLink';
 
 import {SearchField, UserMenu, Search, Menu} from './components';
 import type {SearchFieldProps, UserMenuProps, SearchProps} from './components';
-import styles from './TopBar.scss';
+import styles from './TopBar.module.scss';
 
 export type {UserMenuProps, SearchFieldProps};
 
@@ -87,7 +87,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
       aria-label={i18n.translate('Polaris.TopBar.toggleMenuLabel')}
     >
       <div className={styles.IconWrapper}>
-        <Icon source={MobileHamburgerMajor} />
+        <Icon source={MenuIcon} />
       </div>
     </button>
   ) : null;

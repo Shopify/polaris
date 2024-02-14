@@ -122,3 +122,19 @@ testRule({
     },
   ],
 });
+
+testRule({
+  ruleName,
+  plugins: [__dirname],
+  config: {
+    disabled: true,
+  },
+  customSyntax: 'postcss-scss',
+  accept: [
+    {
+      code: '@media (width: 0px) {}',
+      description: 'Defining media queries with width when rule is disabled',
+    },
+  ],
+  reject: [],
+});

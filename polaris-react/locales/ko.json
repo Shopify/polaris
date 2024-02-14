@@ -158,7 +158,8 @@
       "clearLabel": "{filterName} 지우기",
       "moreFiltersWithCount": "추가 필터({count}개)",
       "addFilter": "필터 추가",
-      "clearFilters": "모두 지우기"
+      "clearFilters": "모두 지우기",
+      "searchInView": "{viewName} 보기에서 검색 중"
     },
     "Modal": {
       "iFrameTitle": "본문 표시",
@@ -348,7 +349,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "{title} 작업 보기"
+        "rollupActionsLabel": "{title} 작업 보기",
+        "pageReadyAccessibilityLabel": "{title}. 이 페이지가 준비되었습니다"
       }
     },
     "FullscreenBar": {

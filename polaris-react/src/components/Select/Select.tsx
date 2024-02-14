@@ -1,5 +1,5 @@
 import React, {useCallback, useId} from 'react';
-import {SelectMinor} from '@shopify/polaris-icons';
+import {SelectIcon} from '@shopify/polaris-icons';
 
 import {classNames, variationName} from '../../utilities/css';
 import {Labelled, helpTextID} from '../Labelled';
@@ -10,7 +10,7 @@ import {Text} from '../Text';
 import type {Error} from '../../types';
 import {useToggle} from '../../utilities/use-toggle';
 
-import styles from './Select.scss';
+import styles from './Select.module.scss';
 
 interface StrictOption {
   /** Machine value of the option; this is the value passed to `onChange` */
@@ -183,7 +183,7 @@ export function Select({
       {prefixMarkup}
       <span className={styles.SelectedOption}>{selectedOption.label}</span>
       <span className={styles.Icon}>
-        <Icon source={SelectMinor} />
+        <Icon source={SelectIcon} />
       </span>
     </div>
   );

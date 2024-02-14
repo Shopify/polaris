@@ -7,7 +7,7 @@ import {Icon} from '../../../Icon';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {Badge} from '../../../Badge';
 import {Text} from '../../../Text';
-import styles from '../../ActionList.scss';
+import styles from '../../ActionList.module.scss';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {InlineStack} from '../../../InlineStack';
 import {Box} from '../../../Box';
@@ -106,7 +106,7 @@ export function Item({
   const textMarkup = <span className={styles.Text}>{contentMarkup}</span>;
 
   const contentElement = (
-    <InlineStack blockAlign="center" gap="150" wrap={!truncate}>
+    <InlineStack blockAlign="center" gap="150" wrap={false}>
       {prefixMarkup}
       {textMarkup}
       {badgeMarkup}

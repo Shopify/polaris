@@ -1,4 +1,4 @@
-import type {Action} from '../../types';
+import type {Action, IconSource} from '../../types';
 
 export interface Logo {
   /** Provides a path for a logo used on a dark background */
@@ -53,7 +53,7 @@ export interface ContextualSaveBarProps {
 
 // Toast
 
-export interface ToastProps {
+interface BaseToastProps {
   /** The content that should appear in the toast message */
   content: string;
   /**
@@ -63,11 +63,26 @@ export interface ToastProps {
   duration?: number;
   /** Display an error toast. */
   error?: boolean;
-  /** Callback when the dismiss icon is clicked */
-  onDismiss(): void;
+  /** Indicates the tone of the toast */
+  tone?: 'magic';
+  /** Icon prefix for the toast content */
+  icon?: IconSource;
+  isHovered?: boolean;
+}
+
+interface ClickableToast {
+  /** Callback fired when the toast is clicked or keypressed */
+  onClick?(): void;
+}
+
+interface DismissableToast {
   /** Adds an action next to the message */
   action?: Action;
+  /** Callback when the dismiss icon is clicked */
+  onDismiss(): void;
 }
+
+export type ToastProps = BaseToastProps & ClickableToast & DismissableToast;
 
 export interface ToastID {
   id: string;

@@ -158,7 +158,8 @@
       "clearLabel": "{filterName} löschen",
       "moreFiltersWithCount": "Weitere Filter ({count})",
       "addFilter": "Filter hinzufügen",
-      "clearFilters": "Alles löschen"
+      "clearFilters": "Alles löschen",
+      "searchInView": "in: {viewName}"
     },
     "Modal": {
       "iFrameTitle": "Text-Markup",
@@ -348,7 +349,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "Aktionen für {title} anzeigen"
+        "rollupActionsLabel": "Aktionen für {title} anzeigen",
+        "pageReadyAccessibilityLabel": "{title}. Diese Seite ist bereit"
       }
     },
     "FullscreenBar": {

@@ -169,7 +169,8 @@
       "clear": "Clear",
       "clearLabel": "Clear {filterName}",
       "addFilter": "Add filter",
-      "clearFilters": "Clear all"
+      "clearFilters": "Clear all",
+      "searchInView": "in:{viewName}"
     },
     "FilterPill": {
       "clear": "Clear"
@@ -242,7 +243,8 @@
     },
     "Page": {
       "Header": {
-        "rollupActionsLabel": "View actions for {title}"
+        "rollupActionsLabel": "View actions for {title}",
+        "pageReadyAccessibilityLabel": "{title}. This page is ready"
       }
     },
     "Pagination": {

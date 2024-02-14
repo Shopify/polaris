@@ -6,6 +6,21 @@ import {matchMedia} from '@shopify/jest-dom-mocks';
 import {SearchField} from '..';
 import {TextField} from '../../../../TextField';
 
+jest.mock('../../../../../utilities/breakpoints', () => ({
+  ...(jest.requireActual('../../../../../utilities/breakpoints') as any),
+  useBreakpoints: jest.fn(),
+}));
+
+function mockUseBreakpoints(mdUp: boolean) {
+  const useBreakpoints: jest.Mock = jest.requireMock(
+    '../../../../../utilities/breakpoints',
+  ).useBreakpoints;
+
+  useBreakpoints.mockReturnValue({
+    mdUp,
+  });
+}
+
 describe('SearchField', () => {
   const defaultProps: ComponentProps<typeof SearchField> = {
     onChange: jest.fn(),
@@ -16,6 +31,7 @@ describe('SearchField', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     matchMedia.mock();
+    mockUseBreakpoints(false);
   });
 
   afterEach(() => {
@@ -73,5 +89,32 @@ describe('SearchField', () => {
     expect(wrapper).toContainReactComponent('input', {
       placeholder: defaultProps.placeholder,
     });
+  });
+
+  it('will add a suffix when there is a selectedViewName and value', () => {
+    mockUseBreakpoints(true);
+    const wrapper = mountWithApp(
+      <SearchField {...defaultProps} selectedViewName="All" />,
+    );
+
+    expect(wrapper).toContainReactText('in:All');
+  });
+
+  it('will not add a suffix when there is no selectedViewName', () => {
+    const wrapper = mountWithApp(<SearchField {...defaultProps} />);
+
+    expect(wrapper).not.toContainReactText('in:All');
+  });
+
+  it('will not add a suffix when there is no value', () => {
+    const wrapper = mountWithApp(
+      <SearchField
+        {...defaultProps}
+        value={undefined}
+        selectedViewName="All"
+      />,
+    );
+
+    expect(wrapper).not.toContainReactText('in:All');
   });
 });

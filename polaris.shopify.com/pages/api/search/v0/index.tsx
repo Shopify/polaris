@@ -19,11 +19,11 @@ import {slugify, stripMarkdownLinks} from '../../../../src/utils/various';
 import pages from '../../../../.cache/site';
 
 type IndexablePages = {
-  [K in keyof typeof pages as (typeof pages)[K]['frontMatter'] extends {
+  [K in keyof typeof pages as typeof pages[K]['frontMatter'] extends {
     noIndex: true;
   }
     ? never
-    : K]: (typeof pages)[K];
+    : K]: typeof pages[K];
 };
 
 const searchablePages = Object.fromEntries(
@@ -70,11 +70,16 @@ const getSearchResults = (query?: string) => {
       title,
       description = '',
       category = '',
+      internalOnly,
     } = searchablePages[slug].frontMatter as FrontMatter;
 
     const url = category
       ? `/components/${slugify(category)}/${slugify(title)}`
       : `/components/${slugify(title)}`;
+
+    if (internalOnly) {
+      return;
+    }
 
     results.push({
       id: slugify(`components ${title}`),
@@ -129,7 +134,7 @@ const getSearchResults = (query?: string) => {
   // Add icons
   Object.keys(iconMetadata).forEach((fileName) => {
     results.push({
-      id: slugify(`icons ${fileName} ${iconMetadata[fileName].set}`),
+      id: slugify(`icons ${fileName}`),
       category: 'icons',
       url: `/icons?icon=${fileName}`,
       score: 0,
@@ -210,7 +215,6 @@ const getSearchResults = (query?: string) => {
       {name: 'meta.icons.icon.fileName', weight: 50},
       {name: 'meta.icons.icon.name', weight: 50},
       {name: 'meta.icons.icon.keywords', weight: 20},
-      {name: 'meta.icons.icon.set', weight: 20},
       {name: 'meta.icons.icon.description', weight: 50},
     ],
     includeScore: true,

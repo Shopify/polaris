@@ -1,8 +1,7 @@
 ---
 title: Components
 order: 7
-icon: AppsMajor
-previewImg: /images/components.png
+icon: AppsIcon
 ---
 
 # {frontmatter.title}
@@ -14,11 +13,14 @@ Components are the reusable building blocks for creating Shopify admin experienc
 </Lede>
 
 <Stack gap="1200">
-{posts.map(group => <Box>
+{posts.map(group =>
 
-<h2>{group.title}</h2>
+group.children.filter(a => !a.hideFromNav).length !== 0 ? (<Box>
 
-<RichCardGrid cards={group.children} />
+  <h2>{group.title}</h2>
+  <RichCardGrid cards={group.children} />
+</Box>) : null
 
-</Box>)}
+)}
+
 </Stack>

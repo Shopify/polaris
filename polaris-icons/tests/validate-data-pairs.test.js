@@ -24,6 +24,12 @@ describe(`Each SVG file`, () => {
         .filter((file) => !allSVGs.includes(file)),
     ).toStrictEqual([]);
   });
+
+  it(`must end with 'Icon'`, () => {
+    allSVGs.forEach((svg) => {
+      expect(svg).toMatch(/Icon\.svg$/);
+    });
+  });
 });
 
 describe(`Each YML file`, () => {
@@ -33,5 +39,11 @@ describe(`Each YML file`, () => {
         .map((svg) => svg.replace(/svg$/, 'yml'))
         .filter((file) => !allYMLs.includes(file)),
     ).toStrictEqual([]);
+  });
+
+  it(`must end with 'Icon'`, () => {
+    allYMLs.forEach((yml) => {
+      expect(yml).toMatch(/Icon\.yml$/);
+    });
   });
 });
