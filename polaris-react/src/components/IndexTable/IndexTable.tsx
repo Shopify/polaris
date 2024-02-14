@@ -1,12 +1,18 @@
-import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  // eslint-disable-next-line no-restricted-imports -- useIsomorphicLayoutEffect is not required for this specific usecase, because we're using useLayoutEffect only for dom manipulation. It has no purpose in server side rendered code.
+  useLayoutEffect,
+} from 'react';
 import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
-import {themeDefault, toPx} from '@shopify/polaris-tokens';
 import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
-import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
@@ -233,17 +239,6 @@ function IndexTableBase({
     );
   }, [handleSelectionChange, selectedItemsCount]);
 
-  const calculateFirstHeaderOffset = useCallback(() => {
-    if (!selectable) {
-      return tableHeadingRects.current[0].offsetWidth;
-    }
-
-    return condensed
-      ? tableHeadingRects.current[0].offsetWidth
-      : tableHeadingRects.current[0].offsetWidth +
-          tableHeadingRects.current[1].offsetWidth;
-  }, [condensed, selectable]);
-
   const resizeTableHeadings = useMemo(
     () =>
       debounce(() => {
@@ -268,24 +263,23 @@ function IndexTableBase({
         }
 
         // update left offset for first column
-        if (selectable && tableHeadings.current.length > 1)
+        if (selectable && tableHeadings.current.length > 1) {
           tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
-
-        // update sticky header min-widths
-        stickyTableHeadings.current.forEach((heading, index) => {
-          let minWidth = 0;
-          if (index === 0 && (!isBreakpointsXS() || !selectable)) {
-            minWidth = calculateFirstHeaderOffset();
-          } else if (selectable && tableHeadingRects.current.length > index) {
-            minWidth = tableHeadingRects.current[index]?.offsetWidth || 0;
-          } else if (!selectable && tableHeadingRects.current.length >= index) {
-            minWidth = tableHeadingRects.current[index - 1]?.offsetWidth || 0;
+          if (stickyTableHeadings.current?.length) {
+            stickyTableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
           }
+        }
 
-          heading.style.minWidth = `${minWidth}px`;
-        });
+        // update sticky header min-widths to match table widths
+        if (stickyTableHeadings.current?.length) {
+          stickyTableHeadings.current.forEach((heading, index) => {
+            heading.style.minWidth = `${
+              tableHeadingRects.current[index]?.offsetWidth || 0
+            }px`;
+          });
+        }
       }),
-    [calculateFirstHeaderOffset, selectable],
+    [selectable],
   );
 
   const resizeTableScrollBar = useCallback(() => {
@@ -437,7 +431,7 @@ function IndexTableBase({
     scrollingContainer.current = false;
   }, []);
 
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     tableHeadings.current = getTableHeadingsBySelector(
       tableElement.current,
       '[data-index-table-heading]',
@@ -453,7 +447,6 @@ function IndexTableBase({
     firstStickyHeaderElement,
     tableInitialized,
   ]);
-
   useEffect(() => {
     resizeTableScrollBar();
     setStickyWrapper(
@@ -461,56 +454,22 @@ function IndexTableBase({
     );
   }, [tableInitialized, resizeTableScrollBar, condensed]);
 
-  const headingsMarkup = headings
-    .map(renderHeading)
-    .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
-
-  const stickyColumnHeaderStyle =
-    tableHeadingRects.current && tableHeadingRects.current.length > 0
-      ? {
-          minWidth: calculateFirstHeaderOffset(),
-        }
-      : undefined;
-
-  const stickyColumnHeader = (
-    <div
-      className={classNames(
-        styles.TableHeading,
-        selectable && styles['TableHeading-first'],
-        headings[0].flush && styles['TableHeading-flush'],
-      )}
-      key={getHeadingKey(headings[0])}
-      style={stickyColumnHeaderStyle}
-      data-index-table-sticky-heading
-    >
-      <LegacyStack spacing="none" wrap={false} alignment="center">
-        {selectable && (
-          <div
-            className={styles.FirstStickyHeaderElement}
-            ref={firstStickyHeaderElement}
-          >
-            {renderCheckboxContent()}
-          </div>
-        )}
-
-        {selectable && (
-          <div className={styles['StickyTableHeading-second-scrolling']}>
-            {renderHeadingContent(headings[0], 0)}
-          </div>
-        )}
-
-        {!selectable && (
-          <div
-            className={classNames(styles.FirstStickyHeaderElement)}
-            ref={firstStickyHeaderElement}
-          >
-            {renderHeadingContent(headings[0], 0)}
-          </div>
-        )}
-      </LegacyStack>
-    </div>
+  const headingsMarkup = headings.map((heading, index) =>
+    renderHeading(
+      heading,
+      index,
+      'th',
+      {'data-index-table-heading': true},
+      heading.id,
+    ),
   );
-  const stickyHeadingsMarkup = headings.map(renderStickyHeading);
+
+  const stickyHeadingsMarkup = headings.map((heading, index) =>
+    // NOTE: No id since it would be a duplicate of the non-sticky header's id
+    renderHeading(heading, index, 'div', {
+      'data-index-table-sticky-heading': true,
+    }),
+  );
 
   const [selectedItemsCountValue, setSelectedItemsCountValue] = useState(
     selectedItemsCount === SELECT_ALL_ITEMS
@@ -575,6 +534,7 @@ function IndexTableBase({
 
   const stickyTableClassNames = classNames(
     styles.StickyTable,
+    hasMoreLeftColumns && styles['StickyTable-scrolling'],
     condensed && styles['StickyTable-condensed'],
   );
 
@@ -589,6 +549,19 @@ function IndexTableBase({
           const stickyHeaderClassNames = classNames(
             styles.StickyTableHeader,
             isSticky && styles['StickyTableHeader-isSticky'],
+            // Has a sticky left column enabled
+            canFitStickyColumn && styles['StickyTableHeader-sticky'],
+            // ie; is scrolled to the right
+            hasMoreLeftColumns && styles['StickyTableHeader-scrolling'],
+            // Has a sticky right column enabled
+            canFitStickyColumn &&
+              lastColumnSticky &&
+              styles['StickyTableHeader-sticky-last'],
+            // ie; is scrolled to the left
+            canFitStickyColumn &&
+              lastColumnSticky &&
+              canScrollRight &&
+              styles['StickyTableHeader-sticky-scrolling'],
           );
 
           const bulkActionsClassName = classNames(
@@ -635,9 +608,6 @@ function IndexTableBase({
               ref={stickyHeaderWrapperElement}
             >
               {loadingMarkup}
-              <div className={styles.StickyTableColumnHeader}>
-                {stickyColumnHeader}
-              </div>
               <div
                 className={styles.StickyTableHeadings}
                 ref={stickyHeaderElement}
@@ -719,7 +689,7 @@ function IndexTableBase({
   const sharedMarkup = (
     <>
       <EventListener event="resize" handler={handleResize} />
-      <AfterInitialMount>{stickyHeaderMarkup}</AfterInitialMount>
+      {stickyHeaderMarkup}
     </>
   );
 
@@ -781,7 +751,13 @@ function IndexTableBase({
     </>
   );
 
-  function renderHeading(heading: IndexTableHeading, index: number) {
+  function renderHeading(
+    heading: IndexTableHeading,
+    index: number,
+    Tag: React.ElementType,
+    tagProps: {[x: string]: unknown},
+    id?: string,
+  ) {
     const isSecond = index === 0;
     const isLast = index === headings.length - 1;
     const hasSortable = sortable?.some((value) => value === true);
@@ -806,15 +782,15 @@ function IndexTableBase({
         : undefined;
 
     const headingContent = (
-      <th
-        id={heading.id}
+      <Tag
+        id={id}
         className={headingContentClassName}
         key={getHeadingKey(heading)}
-        data-index-table-heading
         style={stickyPositioningStyle}
+        {...tagProps}
       >
         {renderHeadingContent(heading, index)}
-      </th>
+      </Tag>
     );
 
     if (index !== 0 || !selectable) {
@@ -828,13 +804,13 @@ function IndexTableBase({
     );
 
     const checkboxContent = (
-      <th
+      <Tag
         className={checkboxClassName}
         key={`${heading}-${index}`}
-        data-index-table-heading
+        {...tagProps}
       >
         {renderCheckboxContent()}
-      </th>
+      </Tag>
     );
 
     return [checkboxContent, headingContent];
@@ -1094,36 +1070,6 @@ function IndexTableBase({
     handleSelectionChange(SelectionType.Page, checked);
   }
 
-  function renderStickyHeading(heading: IndexTableHeading, index: number) {
-    const position = selectable ? index + 1 : index;
-    const headingStyle =
-      tableHeadingRects.current && tableHeadingRects.current.length > position
-        ? {minWidth: tableHeadingRects.current[position].offsetWidth}
-        : undefined;
-    const headingAlignment = heading.alignment || 'start';
-
-    const headingContent = renderHeadingContent(heading, index);
-    const stickyHeadingClassName = classNames(
-      styles.TableHeading,
-      heading.flush && styles['TableHeading-flush'],
-      headingAlignment === 'center' && styles['TableHeading-align-center'],
-      headingAlignment === 'end' && styles['TableHeading-align-end'],
-      index === 0 && styles['StickyTableHeading-second'],
-      index === 0 && !selectable && styles.unselectable,
-    );
-
-    return (
-      <div
-        className={stickyHeadingClassName}
-        key={getHeadingKey(heading)}
-        style={headingStyle}
-        data-index-table-sticky-heading
-      >
-        {headingContent}
-      </div>
-    );
-  }
-
   function getPaginatedSelectAllAction() {
     if (!selectable || !hasMoreItems) {
       return;
@@ -1151,13 +1097,6 @@ function IndexTableBase({
     handleSelectionChange(SelectionType.All, false);
   }
 }
-
-const isBreakpointsXS = () => {
-  return typeof window === 'undefined'
-    ? false
-    : window.innerWidth <
-        parseFloat(toPx(themeDefault.breakpoints['breakpoints-sm']) ?? '');
-};
 
 function getHeadingKey(heading: IndexTableHeading): string {
   if (heading.id) {

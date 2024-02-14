@@ -750,7 +750,7 @@ describe('<IndexTable>', () => {
           </IndexTable>,
         );
 
-        expect(index.findAll(Tooltip)[2].prop('content')).toBe(
+        expect(index.findAll(Tooltip)[1].prop('content')).toBe(
           defaultSortingProps!.sortToggleLabels![2].descending,
         );
       });
