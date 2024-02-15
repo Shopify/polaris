@@ -168,37 +168,39 @@ $right-column: 1fr;
 }
 
 .SearchBar-enter {
-  transform: translateY(calc(-100% - 36px));
+  transform: translateY(calc(-100% - 36px)) scale(95%);
 }
 
 .SearchBar-enter-active {
   transition: transform var(--p-motion-duration-300) var(--p-motion-ease-in-out);
-  transform: translateY(0);
+  transform: translateY(0) scale(100%);
 }
 
 .SearchBar-exit {
-  transform: translateY(calc(-100% - 2px));
+  transform: translateY(calc(-100% - 2px)) scale(100%);
 }
 
 .SearchBar-exit-active {
-  transform: translateY(calc(-100% - 2px - 100% - 36px));
+  transform: translateY(calc(-100% - 2px - 100% - 36px)) scale(95%);
   transition: transform var(--p-motion-duration-300) var(--p-motion-ease-in-out);
 }
 
 .ContextualSaveBar-enter {
-  transform: translateY(calc(100% + 36px));
+  transform: translateY(calc(100% + 36px)) scale(95%);
+  opacity: 0;
 }
 
 .ContextualSaveBar-enter-active {
   transition: transform var(--p-motion-duration-300) var(--p-motion-ease-in-out);
-  transform: translateY(0);
+  transform: translateY(0) scale(100%);
+  opacity: 1;
 }
 
 .ContextualSaveBar-exit {
-  transform: translateY(calc(-100% + 2px));
+  transform: translateY(calc(-100% + 2px)) scale(100%);
 }
 
 .ContextualSaveBar-exit-active {
-  transform: translateY(100%);
+  transform: translateY(100%) scale(95%);
   transition: transform var(--p-motion-duration-300) var(--p-motion-ease-in-out);
 }

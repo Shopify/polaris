@@ -31,7 +31,7 @@ export function ContextualSaveBar({
 
       setTimeout(() => {
         barRef.current?.classList.remove(styles.GreenBar);
-      }, 1200);
+      }, 800);
     },
     500,
     {leading: true, trailing: false},

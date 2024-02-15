@@ -12,6 +12,7 @@ $sidebar-breakpoint: 1200px;
   min-height: 100svh; // For mobile browsers, fill the screen taking into account dynamic browser chrome
   display: flex;
   background-color: var(--p-color-bg-inverse);
+  transition: width var(--p-motion-duration-250) var(--p-motion-ease);
 
   @media print {
     background-color: transparent;
@@ -40,6 +41,7 @@ $sidebar-breakpoint: 1200px;
 }
 
 .hasSidebar {
+  transition: width var(--p-motion-duration-250) var(--p-motion-ease);
   /* stylelint-disable-next-line polaris/media-queries/polaris/media-query-allowed-list -- custom breakpoint */
   @media screen and (min-width: #{$sidebar-breakpoint}) {
     /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- private token from component */
