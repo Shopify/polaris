@@ -1,0 +1,48 @@
+/* stylelint-disable polaris/layout/declaration-property-value-disallowed-list -- prototype */
+/* stylelint-disable polaris/layout/property-disallowed-list -- prototype */
+/* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- prototype */
+@import '../../styles/common';
+@import '../Text/Text.module';
+
+.root {
+  --pc-text-field-floating-border-radius: var(--p-border-radius-200);
+  border-radius: var(--pc-text-field-floating-border-radius);
+  background: var(--p-color-bg-surface-secondary);
+  padding: var(--p-space-150);
+  display: flex;
+  gap: var(--p-space-100);
+}
+
+.rootHovered {
+  cursor: pointer;
+  background: var(--p-color-bg-surface-secondary-hover);
+}
+
+.rootActive {
+  background: var(--p-color-bg-surface);
+
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-300),
+    $borderRadius: var(--pc-text-field-floating-border-radius)
+  );
+}
+
+.input {
+  font-family: var(--p-font-family-sans);
+  @include text-body-md;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  color: var(--p-color-text);
+  width: 100%;
+}
+
+.inputEmpty {
+  font-weight: var(--p-font-weight-semibold);
+}
+
+.inputLoading {
+  color: var(--p-color-text-disabled);
+}
