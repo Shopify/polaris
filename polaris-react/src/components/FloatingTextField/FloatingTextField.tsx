@@ -67,6 +67,7 @@ export function FloatingTextField(props: FloatingTextFieldProps) {
         className={classNames(
           styles.root,
           isHovered && styles.rootHovered,
+          isFocused && styles.rootFocused,
           isActive && styles.rootActive,
         )}
         onMouseEnter={() => setIsHovered(true)}
@@ -78,6 +79,7 @@ export function FloatingTextField(props: FloatingTextFieldProps) {
         onFocus={() => setIsFocused(true)}
         onBlur={(event) => {
           // Don't blur if focus is moving to input
+          // Note: This can optionally be broken into two focus states (IsFocusedRoot and IsFocusedInput)
           if (event.currentTarget.contains(event.relatedTarget)) return;
 
           setIsFocused(false);
