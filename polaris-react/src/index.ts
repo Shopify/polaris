@@ -368,6 +368,9 @@ export type {TextContainerProps} from './components/TextContainer';
 export {TextField} from './components/TextField';
 export type {TextFieldProps} from './components/TextField';
 
+export {FloatingTextField} from './components/FloatingTextField';
+export type {FloatingTextFieldProps} from './components/FloatingTextField';
+
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
 
