@@ -520,6 +520,7 @@ function IndexTableBase({
 
   const stickyTableClassNames = classNames(
     styles.StickyTable,
+    hasMoreLeftColumns && styles['StickyTable-scrolling'],
     condensed && styles['StickyTable-condensed'],
   );
 
@@ -538,11 +539,12 @@ function IndexTableBase({
             canFitStickyColumn && styles['StickyTableHeader-sticky'],
             // ie; is scrolled to the right
             hasMoreLeftColumns && styles['StickyTableHeader-scrolling'],
-            /*
-*           // Has a sticky right column enabled
+            // Has a sticky right column enabled
             canFitStickyColumn &&
               lastColumnSticky &&
               styles['StickyTableHeader-sticky-last'],
+            /*
+
             // ie; is scrolled to the left
             canFitStickyColumn &&
               lastColumnSticky &&
