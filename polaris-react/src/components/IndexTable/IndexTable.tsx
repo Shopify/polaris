@@ -739,7 +739,7 @@ function IndexTableBase({
   );
 
   function renderHeading(
-    Tag: JSX.ElementType,
+    Tag: React.ElementType,
     tagProps: {[x: string]: unknown},
   ) {
     return (heading: IndexTableHeading, index: number) => {
