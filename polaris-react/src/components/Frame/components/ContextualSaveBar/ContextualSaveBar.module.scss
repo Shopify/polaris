@@ -159,12 +159,12 @@
 
 // stylelint-disable -- prototype
 .GreenBar {
-  animation: shake 0.7s var(--p-motion-ease-in-out);
+  animation: shake 0.75s var(--p-motion-ease-in-out);
 
   .ContextualSaveBar {
     &::before {
       opacity: 1;
-      transition: opacity 0.4s var(--p-motion-ease-in-out);
+      transition: opacity 0.3s var(--p-motion-ease);
     }
   }
 }
@@ -173,22 +173,22 @@
   0% {
     transform: translateX(0);
   }
-  16% {
-    transform: translateX(6px);
+  9% {
+    transform: translateX(5px);
+  }
+  20% {
+    transform: translateX(-5px);
   }
   32% {
-    transform: translateX(-6px);
+    transform: translateX(5px);
   }
-  48% {
-    transform: translateX(6px);
+  45% {
+    transform: translateX(-5px);
   }
-  64% {
-    transform: translateX(-6px);
+  59% {
+    transform: translateX(5px);
   }
-  80% {
-    transform: translateX(6px);
-  }
-  96% {
+  82% {
     transform: translateX(0px);
   }
   100% {
