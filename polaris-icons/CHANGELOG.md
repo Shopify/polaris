@@ -1,5 +1,13 @@
 # Changelog
 
+## 8.3.0
+
+### Minor Changes
+
+- [#11526](https://github.com/Shopify/polaris/pull/11526) [`b65f1e679`](https://github.com/Shopify/polaris/commit/b65f1e679bd96db4ff9097b36d719b371cf33f8a) Thanks [@j-wanita](https://github.com/j-wanita)! - Add list icons for product, collection, metaobject and text
+
+* [#11531](https://github.com/Shopify/polaris/pull/11531) [`78ed5fe0d`](https://github.com/Shopify/polaris/commit/78ed5fe0d616db8c2cf76f59f9528211f81c23b3) Thanks [@j-wanita](https://github.com/j-wanita)! - Updated metaobject, metaobject reference, and metaobject filled icons
+
 ## 8.2.0
 
 ### Minor Changes

@@ -1,5 +1,32 @@
 # Changelog
 
+## 12.16.0
+
+### Minor Changes
+
+- [#11585](https://github.com/Shopify/polaris/pull/11585) [`1ba3181b6`](https://github.com/Shopify/polaris/commit/1ba3181b6f8442871bf25cf2e46ab44fdbb657e1) Thanks [@tauthomas01](https://github.com/tauthomas01)! - Added a `disabled` prop to `ResourceItem`
+
+* [#11568](https://github.com/Shopify/polaris/pull/11568) [`525194767`](https://github.com/Shopify/polaris/commit/5251947674301c9aac9121bde2d88c7e328707ff) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the stacking logic of multiple Toasts to take up less screen real estate
+
+- [#11587](https://github.com/Shopify/polaris/pull/11587) [`5ab254b3b`](https://github.com/Shopify/polaris/commit/5ab254b3bb49f04f97757ed5b5c9be16dee02f40) Thanks [@sainihas](https://github.com/sainihas)! - Update dropzone container background color when no Outline
+
+### Patch Changes
+
+- [#11581](https://github.com/Shopify/polaris/pull/11581) [`47dac1b2e`](https://github.com/Shopify/polaris/commit/47dac1b2e7fe566965804cd0ee11029d2fb5fafb) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed an issue where scrollbars weren't showing up in IndexTable on mac os when show when scrolling preference is selected
+
+* [#11560](https://github.com/Shopify/polaris/pull/11560) [`0b38b6115`](https://github.com/Shopify/polaris/commit/0b38b61156092ab60263bfd330e4ac4a9fd793d2) Thanks [@apliano](https://github.com/apliano)! - Fixed `Combobox` not rendering `Popover` until the second firing of the `onChange` event
+
+- [#11584](https://github.com/Shopify/polaris/pull/11584) [`23d8297ff`](https://github.com/Shopify/polaris/commit/23d8297ff6138dae5044d015e143d4a4a7bb99eb) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated `useIsSelectAllActionsSticky` logic to not set any sticky behaviour if we do not have access to the root element
+
+* [#11543](https://github.com/Shopify/polaris/pull/11543) [`165bc6eae`](https://github.com/Shopify/polaris/commit/165bc6eae0401b91dc8623259abcfdc7d0999351) Thanks [@mrcthms](https://github.com/mrcthms)! - Fixed `IndexFilters` height changing when toggling between default and filtering modes
+
+- [#11563](https://github.com/Shopify/polaris/pull/11563) [`3937739d2`](https://github.com/Shopify/polaris/commit/3937739d2554c2e86ae61c5fbd04cc360b44c457) Thanks [@chloerice](https://github.com/chloerice)! - Fixed `FormLayout.Item` overflowing viewport at xs breakpoint when user settings enlarge text size
+
+* [#11595](https://github.com/Shopify/polaris/pull/11595) [`f829ed487`](https://github.com/Shopify/polaris/commit/f829ed48702315e88f89383874eca110eaecf0f9) Thanks [@oksanashopify](https://github.com/oksanashopify)! - Updated DropZone minimum size from 50px to 40px to fit within a small Thumbnail
+
+* Updated dependencies [[`b65f1e679`](https://github.com/Shopify/polaris/commit/b65f1e679bd96db4ff9097b36d719b371cf33f8a), [`78ed5fe0d`](https://github.com/Shopify/polaris/commit/78ed5fe0d616db8c2cf76f59f9528211f81c23b3)]:
+  - @shopify/polaris-icons@8.3.0
+
 ## 12.15.0
 
 ### Minor Changes
