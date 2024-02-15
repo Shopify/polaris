@@ -104,8 +104,11 @@ export function FloatingTextField(props: FloatingTextFieldProps) {
           </span>
         ) : (
           <Icon
-            source={valueDerived || isActive ? filledIcon : emptyIcon}
-            tone={isHovered || isActive ? undefined : 'subdued'}
+            source={
+              // eslint-disable-next-line no-nested-ternary
+              isActive ? emptyIcon : state === 'filled' ? filledIcon : emptyIcon
+            }
+            tone={isHovered || isActive || isFocused ? undefined : 'subdued'}
           />
         )}
         <input
