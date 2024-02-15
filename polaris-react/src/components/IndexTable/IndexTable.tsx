@@ -1,7 +1,6 @@
 import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
 import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
-import {themeDefault, toPx} from '@shopify/polaris-tokens';
 import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
@@ -1079,13 +1078,6 @@ function IndexTableBase({
     handleSelectionChange(SelectionType.All, false);
   }
 }
-
-const isBreakpointsXS = () => {
-  return typeof window === 'undefined'
-    ? false
-    : window.innerWidth <
-        parseFloat(toPx(themeDefault.breakpoints['breakpoints-sm']) ?? '');
-};
 
 function getHeadingKey(heading: IndexTableHeading): string {
   if (heading.id) {
