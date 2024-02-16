@@ -256,7 +256,11 @@ function IndexTableBase({
         }
 
         // update left offset for first column
-        if (selectable && tableHeadings.current.length > 1) {
+        if (
+          selectable &&
+          tableHeadings.current.length > 1 &&
+          stickyTableHeadings.current.length > 1
+        ) {
           tableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
           stickyTableHeadings.current[1].style.left = `${tableHeadingRects.current[0].offsetWidth}px`;
         }
