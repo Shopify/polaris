@@ -85,6 +85,8 @@ export interface DropZoneProps {
   openFileDialog?: boolean;
   /** Allows child content to adjust height */
   variableHeight?: boolean;
+  /** Whether or not it should be keyboard accessible */
+  restrictKeyboardAccess?: boolean;
   /** Adds custom validations */
   customValidator?(file: File): boolean;
   /** Callback triggered on click */
@@ -129,6 +131,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   id: idProp,
   type = 'file',
   onClick,
+  restrictKeyboardAccess,
   error,
   openFileDialog,
   variableHeight,
@@ -427,6 +430,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
               type="file"
               ref={inputRef}
               autoComplete="off"
+              tabIndex={restrictKeyboardAccess ? -1 : 1}
             />
           </Text>
           <div className={styles.Container}>{children}</div>
