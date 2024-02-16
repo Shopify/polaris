@@ -88,6 +88,19 @@ export const Text = ({
   visuallyHidden = false,
   textDecorationLine,
 }: TextProps) => {
+  const deprecatedVariants = ['heading2xl', 'heading3xl'];
+
+  if (
+    process.env.NODE_ENV === 'development' &&
+    variant &&
+    deprecatedVariants.includes(variant)
+  ) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Deprecation: <Text variant="${variant}" />. The value "${variant}" will be removed in a future major version of Polaris. Use "displayXl" instead.`,
+    );
+  }
+
   const Component = as || (visuallyHidden ? 'span' : 'p');
 
   const className = classNames(
