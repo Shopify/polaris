@@ -22,10 +22,7 @@ import {
 } from '../../utilities/sticky-manager';
 import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
-import {
-  classNamePolarisSummerEditions2023,
-  FeaturesContext,
-} from '../../utilities/features';
+import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
 import './AppProvider.scss';
@@ -157,8 +154,6 @@ export class AppProvider extends Component<AppProviderProps, State> {
         themeName === activeThemeName,
       );
     });
-
-    document.documentElement.classList.add(classNamePolarisSummerEditions2023);
   };
 
   getThemeName = (): ThemeName => this.props.theme ?? themeNameDefault;
