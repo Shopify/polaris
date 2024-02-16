@@ -574,20 +574,6 @@ export const stylePropAliasNames: (keyof StyleProps)[] = Array.from(
   new Set(Object.values(stylePropAliasFallbacks).flat())
 );
 
-${'' /* TODO: Allow modifiers */}
-${'' /* TODO: Allow pseudo elements */}
-export type PropDefaults = MakeResponsive<LonghandStyleProps>;
-
-export const stylePropDefaults = {
-  ${Object.entries(stylePropConfig)
-    .filter(([, {defaultValue}]) => defaultValue != null)
-    .map(
-      ([styleProp, {defaultValue}]) =>
-        `${styleProp}: ${JSON.stringify(defaultValue)},`,
-    )
-    .join('\n  ')}
-} satisfies PropDefaults;
-
 /**
  * A list of values that if passed to any styleProp on our Box component should
  * warn the user, and bail early from the css property injection procedure. We
