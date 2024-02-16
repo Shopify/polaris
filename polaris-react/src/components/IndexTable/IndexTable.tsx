@@ -433,10 +433,10 @@ function IndexTableBase({
   }, [
     headings,
     resizeTableHeadings,
+    stickyTableHeadings.current,
     firstStickyHeaderElement,
     tableInitialized,
   ]);
-
   useEffect(() => {
     resizeTableScrollBar();
     setStickyWrapper(
