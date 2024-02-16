@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 
 import {classNames} from '../../../utilities/css';
 import {overlay} from '../../shared';
@@ -16,6 +16,7 @@ export interface HoverCardOverlayProps {
   active: boolean;
   zIndexOverride?: number;
   activator: HTMLElement;
+  dynamic: boolean;
   snapToParent?: boolean;
   onMouseEnter(): void;
   onMouseLeave(): void;
@@ -29,19 +30,29 @@ export function HoverCardOverlay({
   active,
   zIndexOverride,
   activator,
+  dynamic,
   snapToParent,
   onMouseEnter,
   onMouseLeave,
 }: HoverCardOverlayProps) {
   const contentNode = useRef<HTMLDivElement | null>(null);
+  const [shouldAnimate, setShouldAnimate] = React.useState(false);
 
-  const getMinWidthOfChildren = () => {
+  useEffect(() => {
+    if (dynamic && active && !shouldAnimate) {
+      setShouldAnimate(true);
+    }
+  }, [dynamic, active, shouldAnimate]);
+
+  const getMinMaxDimensionsOfChildren = () => {
     const childrenNode =
       contentNode.current?.children &&
       contentNode.current?.children[0].children[0];
 
     if (childrenNode) {
-      return window.getComputedStyle(childrenNode).minWidth;
+      const {minWidth, maxHeight} = window.getComputedStyle(childrenNode);
+
+      return {minWidth, maxHeight};
     }
   };
 
@@ -59,15 +70,24 @@ export function HoverCardOverlay({
       !measuring && styles.measured,
     );
 
-    const contentStyles = measuring
-      ? undefined
-      : {width: desiredWidth, height: desiredHeight};
-
-    const minWidth = getMinWidthOfChildren();
+    const dimensions = getMinMaxDimensionsOfChildren();
+    const numericalMaxHeight = dimensions?.maxHeight
+      ? Number(dimensions?.maxHeight.replace(/\D/g, ''))
+      : 0;
 
     const hoverCardStyles = {
-      '--pc-hover-card-min-width': minWidth,
+      '--pc-hover-card-min-width': dimensions?.minWidth,
     } as React.CSSProperties;
+
+    const contentStyles = measuring
+      ? undefined
+      : {
+          width: desiredWidth,
+          height:
+            numericalMaxHeight > 0 && desiredHeight > numericalMaxHeight
+              ? dimensions?.maxHeight
+              : desiredHeight,
+        };
 
     return (
       <div
@@ -94,8 +114,11 @@ export function HoverCardOverlay({
 
   const className = classNames(
     styles.HoverCardOverlay,
-    active && styles['HoverCardOverlay-active'],
+    active && styles['HoverCardOverlay-enter'],
+    shouldAnimate && styles['HoverCardOverlay-glide'],
   );
+
+  console.log(className);
 
   const overlayMarkup = active ? (
     <PositionedOverlay

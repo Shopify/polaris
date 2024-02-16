@@ -113,6 +113,7 @@ export function AlphaHoverCard({
       <Portal idPrefix="hovercard">
         <HoverCardOverlay
           id={id}
+          dynamic={dynamicActivator !== undefined}
           active={isActive}
           activator={activatorElement}
           snapToParent={snapToParent}

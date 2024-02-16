@@ -126,6 +126,7 @@ export function WithChildActivator() {
   );
 
   return (
+    // These dimensions allow the hover card to be positioned in the center of the screen in a way that you can scroll and test the hover card's positioning based on available space
     <div style={{margin: '0 auto', height: '600px', width: '960px'}}>
       <InlineStack align="center" blockAlign="center">
         <BlockStack gap="500">
@@ -573,7 +574,7 @@ export function WithDynamicActivator() {
     );
   };
 
-  const rowMarkup = [...orders].map(
+  const rowMarkup = [...orders, ...orders, ...orders, ...orders, ...orders].map(
     (
       {
         id,
