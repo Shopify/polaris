@@ -140,7 +140,6 @@ export const disallowedCSSPropertyValues = ['-moz-initial'];
  *   [x: string]: {
  *     aliases?: (keyof StandardLonghandProperties | keyof Aliases)[],
  *     // Defaults can be responsive, but are NOT merged with passed in values.
- *     defaultValue?: any
  *   }
  * }
  */
@@ -208,19 +207,15 @@ export const stylePropConfig = {
   },
   borderInlineStartWidth: {
     aliases: ['borderLeftWidth', 'borderInlineWidth', 'borderWidth'],
-    defaultValue: '0',
   },
   borderInlineEndWidth: {
     aliases: ['borderRightWidth', 'borderInlineWidth', 'borderWidth'],
-    defaultValue: '0',
   },
   borderBlockStartWidth: {
     aliases: ['borderTopWidth', 'borderBlockWidth', 'borderWidth'],
-    defaultValue: '0',
   },
   borderBlockEndWidth: {
     aliases: ['borderBottomWidth', 'borderBlockWidth', 'borderWidth'],
-    defaultValue: '0',
   },
   insetInlineStart: {aliases: ['left', 'insetInline', 'inset']},
   insetInlineEnd: {aliases: ['right', 'insetInline', 'inset']},

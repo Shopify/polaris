@@ -42,7 +42,7 @@
 import invariant from 'tiny-invariant';
 import decamelize from 'decamelize';
 import type {OmitIndexSignature, Simplify, Includes} from 'type-fest';
-import type {Globals} from 'csstype';
+import type {Globals, StandardLonghandProperties} from 'csstype';
 
 import type {
   ResponsiveStyleProps,
@@ -149,18 +149,6 @@ type ConvertResult = {
     [K in keyof Properties]?: Properties[K] | (string & {});
   };
 };
-
-type ConvertStylePropsToCSSProperties = (
-  /**
-   * A value of `null` will remove any default for that property without having to
-   * apply your own value. Roughly equivalent to CSS `unset`.
-   */
-  styleProps: ResponsiveStylePropsWithModifiers,
-  options?: {
-    defaults?: ResponsiveStylePropsWithModifiers;
-    valueMapper?: ValueMapper;
-  },
-) => ConversionResult;
 
 // Defining these at the top level scope should allow them to be inlined by
 // esbuild (https://github.com/evanw/esbuild/releases/tag/v0.14.9) and tsc
@@ -323,16 +311,16 @@ export function convertCSSPropertiesToStyleSheet(
 //     ]
 //   ]
 
-function processOptions({
+function processOptions<A extends DeepReadonly<AliasConfig>>({
   valueMapper,
   pseudoElements,
   modifiers,
   breakpoints,
   bannedGlobalValues,
   namespace,
-  aliases,
+  aliases: aliasesOpt,
   ...rest
-}: CreateOptions) {
+}: CreateOptions<A>) {
   if (!valueMapper) {
     // eslint-disable-next-line no-param-reassign
     valueMapper = identity;
@@ -348,10 +336,7 @@ function processOptions({
     namespace = '';
   }
 
-  if (!aliases) {
-    // eslint-disable-next-line no-param-reassign
-    aliases = {};
-  }
+  const aliases = aliasesOpt ?? {};
 
   if (pseudoElements === true) {
     // eslint-disable-next-line no-param-reassign
@@ -421,10 +406,35 @@ function processOptions({
 type AliasName = string;
 
 type AliasConfig = {
-  [Key in keyof OmitIndexSignature<Properties>]: AliasName[];
+  [Key in keyof OmitIndexSignature<StandardLonghandProperties>]: AliasName[];
 };
 
-type CreateOptions = {
+type CreateOptions<
+  // TODO: Change to `StyleProps<PropertyToAliases, Properties>` once responsive
+  StyleProps extends object,
+  ResponsiveStylePropsWithModifiers extends object,
+  PropertyToAliases extends DeepReadonly<AliasConfig>,
+  /** Inferred, don't assign */
+  _InferredBreakpoints extends DeepReadonly<BreakpointConfig>,
+  /** Inferred, don't assign */
+  _InferredModifiers extends DeepReadonly<ModifierConfig>,
+  /** Inferred, don't assign */
+  _InferredPseudoElements extends DeepReadonly<PseudoElementConfig>,
+  /** Internal usage, don't assign */
+  _PropPathValues extends keyof StyleProps | keyof _InferredBreakpoints | keyof _InferredModifiers | keyof _InferredPseudoElements,
+  /** Internal usage, don't assign */
+  _PropPath extends SimplifyUnion<_PropPathValues>[],
+  /** Internal usage, don't assign */
+  _ValueMapper extends (
+    value: StyleProps[keyof StyleProps],
+    prop: keyof StyleProps,
+    path: _PropPath
+  ) => unknown = <_InferredProp extends keyof StyleProps>(
+    value: StyleProps[_InferredProp],
+    prop: _InferredProp,
+    path: _PropPath
+  ) => unknown
+> = {
   /**
    * Global defaults injected into the returned stylesheet.
    *
@@ -495,6 +505,7 @@ type CreateOptions = {
    * //   outlineColor: 'var(--_focus-on,rebeccapurple)'
    * // }
    */
+  // TODO: Change to `StyleProps<PropertyToAliases, Properties>` once responsive
   defaults?: ResponsiveStylePropsWithModifiers;
   /**
    * A mobile-first list of breakpoint aliases mapped to their media queries.
@@ -506,7 +517,7 @@ type CreateOptions = {
    * The special selector `&` means "no media query" and must come first in the
    * object. If not set, it will be injected for you with the alias `base`.
    */
-  breakpoints?: BreakpointConfig;
+  breakpoints?: _InferredBreakpoints;
   /**
    * Modifiers are combined with a generated class name to form a selector used
    * for applying style rules.
@@ -532,12 +543,12 @@ type CreateOptions = {
    *   _sibling: '& + &',
    * }
    */
-  modifiers?: true | ModifierConfig;
+  modifiers?: true | _InferredModifiers;
   /**
    * `true` to opt into a default set of pseudo elements.
    */
-  pseudoElements?: true | PseudoElementConfig;
-  valueMapper?: ValueMapper;
+  pseudoElements?: true | _InferredPseudoElements;
+  valueMapper?: _ValueMapper;
 
   /**
    * Aliases for properties as an ordered array where earlier items in the array
@@ -643,9 +654,7 @@ type CreateOptions = {
    * // }
    * ```
    */
-  aliases?: {
-    [Key in keyof OmitIndexSignature<Properties>]: string[];
-  };
+  aliases?: PropertyToAliases;
   /**
    * A list of values that if passed to any styleProp on our Box component should
    * warn the user, and bail early from the css property injection procedure. We
@@ -663,7 +672,7 @@ type CreateOptions = {
 
 
 
-// https://www.typescriptlang.org/play?noErrorTruncation=true&ts=4.9.5#code/JYWwDg9gTgLgBAbwMqjAG2AMwJ4Bo4CSAdgMZoCuAJgKYDOAvnJlBCHAOQzZjUC0mdGOwDcAKFTR4CAAosesYHXyyI8ro2asOJWrS48Ro0fupwU4DDgCqRYBCIAeACoA+OAF44NgO5QAhmAOAOr+YMQA8gBGAFbUJDDOLi5iJnAhARExcQmuHnBOcNQAHjDURJS0cOREANZEEN5EcAD8iHA11NgAXPlwjD1E1ABu1FAp3KY+oYl5BcWl5ZUI7Z091XUNTYytTgDaAEQd2PsAunADw6NixhNwAIIYfrQAcn4gpp56UMBEAObXqQewCeAGF7JhgL88ghRHA4LsANKdOA-FbYCCYOAqNSKWgnHpAp6vd67E5iegA24AEWo1DAACVqH5KPY0NgZp5zOgsOyYXC4QBqKBMllENnwhEoppHDH5fGw-lwvxEbCkwolMoVfKIk4KxVw1o0umM5ms9l7BEnFx6-k9C1neaayoQLLxG0GuBGhkis3OHXW-W27WW8nWm48ODhMXYAAywFK-jQtA5CrmGsWcC+PyhAB84ERyCBIqM4HnaNgixA0DbWghGI6M4ySNBKM58Ot6o0A-rWoMRlA4O7zr0bXbB+HTM8IHGE34kym4WmFlqs39S-nC8WB2WK5EqzXEPX01qmy221Vap2iN3FTtB4GLv370G+yWjAB6d9wAAGq9zHAAC2AdhvzgZVKB-AAKP84AAMkPABKdd2CAkC4G8YA0DQOA9xgAD0OAGgmhgCAfz-UDvAAsoqloagIKeURPzApo-CgX5CzKeASJ-GVMG-Cc4AAMWgEhqCnIggkIspsxsOwiAAWWoItRmTXJ3FTdVl0qGC8wLZTt0zXd91vQ9NKdOBTygVsnHbS9NhvflWl6eDLNbV8oFwdy3CHMdR3yIxUhBYU-FKcIwBgOTaAAJgcO4zIzL0TVFNlYseWgwSICFfiSaEFTnYFaNoZoCXJa53wAKnK2FyqElg2AAmAYDAWguk-PQ-BIGoIH7TA0AaAA6ZsQHfPx3wANjGgAWSaAFYZoABgAdmquB9gyyh4zkuc4FSH4BGFUhTAwvCpX2+F+v6s4MKwsDyBIkAQuAEg53FX4ylGELTGVKUE1o+I5LgWVvtYyJ438KBsA3fTAcxExKkg46AIgO64GFWhJGzHbSOFEhyCgWg5IQ-r9mqlaAAFijedBqBW786ZW1JZPsPImaIcJMGIX7smzAA1OdyDoBw+RquFguSyHIg6mpfhYapKGkCACYi+wAA0emgmBvjXeC6yQvNvwAEgQP96AAUlAvN9jQahMBgfZ132b5fga+3LdEogE32MQ4BF1GfWjHCpZl5HygVpW5IATXVmCdfoPWfyNk3zYdkiwFd1bcPu9P9ndz3vZq+gAxqpiAD1Wk8DWtahFy4jPdzPMuKAXHjw3jc17MzYt1bc9GEmfZ-emfffATWfZzmVO5v4+YoQWNIbLUXVieJ8AVaeBcEzCE3irV2AwWck3YZCfhoIpeAJ34iBCvHqEP3TG7ydzRDcTw+X5JjeB2bGlO60w8NMb88xyxtj8OioFNBsD-heAG6MUTwBZHQIgnAfqjH2kdeMAEbRMT2qMMool8zzH6jaREyJUS8TlB-dWQ4ig9F3vGD6B9t6VDXtQDeaAExDg9FGNkM56GqWIdgK0HDhzsGPsUM+kJL4wGvofeeTD+YsM3qMIRHopw8MTHwpEAiHIPmDJ0XUgYkLuDcEMCAhEFT0F2GQpwDpjzw2oadEsBBDHGNMRBVoBBhyPxHrYewY8PYT3+lPeRtBJJ4SnJJIi2YHBz1sYDV0MBcBPw8AqJiBBMSiKKJmCRV80ZgWFHAa2tspQ7SolA+w+AnBIAIjdDCRECl0PUVjEppgMkpK-OfSR18dq3EotRb8vFQLAEqOQWiEFEaolHhzfx+NJ6-GYbQQhcImJOFIkNSWXEAIhXwN4UwEI2ElkwNAQGAc968KYMAfGCTmlNGqADSBaNyBsIIidM0bSpQnyyRfHJdASkhTybskSdEmnFnzMzWp0k-iLPXJM8eMzAlzOCeeWh+9aDsG7HmYSUBRLiQiRC34rNFL6WTDaGF0y-oRSCTPVS+ARHlDER075aKFTJA-JVFajIYB+B+JUSBpzEzdJ4JUS4TQsD5AmLQEg3xwpwGbI8sZUliJUQgaRPwcAwDfBAJtEYArqCLJqgAURKP4eIdwoD+GwPMoWhyIDFUzO3P4apdKbhLHmSCKFgLIT6uwBCpJ8CSygOrAAjOuKKPqzh5mxKMCKdBfVwHRDQkih9C4rSMatIC2c+rp2DXmKK65I0KB+a6mOFla5WQcPXfB-Zm7VWHqkQ1msOowFNeay1MStJxKXgkhUza-AWvkawrengOybESUsr8ABxfwkRjnikgaxc1OrKg-G4qq25zMebdrNb2yonh63GpyJYzosprH4DFmae4W6+0zwHaMUk1pn7PiYlSIZ7dIh3V-qU5s5RNr2G2j-AcjdIbzt7bApSxTIFrqaDzfA2CzWYz-m81IsohjBPA6U4D2BN3mqFbEs9AdIKwYvS24JYaDyYuxfYXFtg-gEqUluZMPar0C1oA5JiSAkZysQfAB6HRYFwCovk4sz0RmmEY5UbwTxNL7qBYjZpP5h2NFJGAxRUA-JeIqlVfuFMihU2trTQeNVUj5ujTuxAK04TNj6lAW17BhRCeemAPG1Nb4cGFJQFzldMaxwQvnfkktOrBzlmHH9RA1YcEKUIZCTsGoufYD3KALnW5Jy7p57WiFfNwn89LWWodFYhajhwVOsXM6sFi-FxLid7W-E7uuVL1d0srQpKTfuX69BgTSj8l+5mZVVmgD0XY7BMC-HYDS0oJQwRWfYCcUdvssuBdy+HVW-X2BzZy-LPLytEHTe66tkO63FtEAKwN3bQWNtySm41sClRWswF8wzW4hJaBRE7aZx7dAVnPeyE4cVDgTBAw67QZQcgo24iLnAUu5czP9zhENmhdm4gOac9bWLbmPPFt1uuIBEJBiUAyzteYE2+uueoPZgISOb5RbomjqrcFEKY7pdjuieOTsLZCzQ8r64ktVZq0Wmn3nfP0H0-xIeAk3u0A+-E77grolwmM9gFZYvGGelpN6U00ZUoFQyllFwo6sTA4LTh9ti9si66Yvqjq+F8qSeuthITrAvpNGN-ENE+AYF-0hiAEZ8B57vOKJ8zpaNu1pSV494kHw4B7sbYxy1cuFcA-wKHt41B715C5JYXkbygpMlKMxDt2Q0RAsiJDOdwfL7vBam8umwvwdflfkxTLQc1vBc2z0ZYF1+p9FN1+QXY6B7V92I9zRxTHv4ih2-L8WfPq56d-AH4ZAqCY3PZA4zuJfnwGFKgw6cmrcV8VExKvmDa+H7843vbze5Kt+P4qFn+2Qtha51XHnq0IvZ2i3bB28WvZX5PwFpvZ37AFYP4dzJxuycS9wpyqDZwlYgBf575fhwg97j59DH4H6Ki7BDhMQxgQAQA1DkBgAzrF6lLqqqBRqQxHA8qbLwCbLarAzB60QwBDhy5D6kJHqYix4QBi5CJMRBA3z5Lno0D5RriyYYaA44QoyVL8aSZ9RtZ4R-J7TQAPSbY4SEFDJcFfiQDLqu6kQ7KSHarcTBS6BRqwJQqBiSbsFi67BMF6JK54bigKZECkhqFmDUDWzO7nrEE4g-KURPT4TUEfqmC4xmqcTtYFRwA0CM4QSoiQKcGBgejEDz40DJjmEA6WH65cCaLTb3BpSaJuCyI7RQACzKItB64kGwDYCaJFFMThB-wDjkG6FfRoBiwSy0hNCbLlDWyUD4BHI244SmBtGUAdFXboQtKzg57-qVFfj3JKRcrUZQhWFAblDvhHKD6dBaGZg1DAD4HxhMBHKdgmGxGPhKKxE15mAcZoCUBcZwA8YjH8Y4JCKHGqaKjyiBjLJATXb2AbSbbbRDL4KiS6CsTNHCa0T3AEFwAAD6siYJWRmu4IkIax2xsq5xGBkxVE0A1AEUz0WEkMfhaI4mQEJAluB0SCqIK+PywqJSyMzshQrEGAJYJgyJMqVEnU4myM5x9RqMjyQKeEispgyMMA+xsuaR5RyIeRZCpJtADJk6fg06kCHhpB7APKEwQ4rQ4pqRpR6ReiPklaRxfQSuhG4QSuM+x+U43gcAb0GyLSZKShsokCKGVKMM1JBJDpy+aRq+sh6+NsOCW+eEqhcBIRTwXQKBg8SBr8veDev+Z+-+RAPQQBfwT+OcYBUAsBSBiBveqBjkZgqA6erMDgpKXM8K8yoSAE4SCqUS4QSQamjcogyaogmA1Q-0zMkq2e1Ak0YJAAnGCTNA4MkQVGSbEolP7ClI9lrpCEkJBAqKoJti1HAJPqFOFJFDFD2U8HQA+nWKIEhK-MKFIlAE0OOYqB4dOWnjyDLvqGLhLp2lLoLEuYVEDuqaDkOPBOKTaDrgqM4heOESArjtWUYDdv6YVLlBZr1gGvCINsNqNgTkBVNrrjfufktiBTBVGVBQqAhQdkditqfqdgdhdowJJjdtcL+ZgEQLmp4E2Z9K2R2TNJBMsDvnQD0DRZUHHGIPXnCGXEAA
+// https://www.typescriptlang.org/play?noErrorTruncation=false&ts=5.3.3#code/JYWwDg9gTgLgBDAnmApnA3gZVGANsAM0QBo4BJAOwGNcBXAExQGcBfOAqCEOAciVQC0BZjB4BuAFA5o8fmnRxMMAIYV6yqPQAyECgHMAFqvoAFTqljBmcZUzhmIFmFbtsOXXlSZM54iRLlFHHwiAFUKYF0AHgAVAD44AF44cIB3KGUwKIB1DLBKAHkAIwArFCoYWLi4yUDczMLS8sr4pLgYuBQADxgUNTtaCgBrCghUijgAfgw4IZREAC52uDYlihQANxQoWuQ0NLyqto7u3v6ZucW4QZGxibZpmIBtACJLl4BdODXN7ckAvZwACC+FsADllCA0MkfFBgPp-oEQcBbABhXQEYB6NroCRwOBPADS8zg8Nm8wgBHs5m2zmYHyWyPBkJQTw+khYu1QcAAIigUGAAEooZT0XS4RBHZLYcAhSW4-H4gDUUBFYooEoJhNJE0ulPaDLxivxqkQbM6PT69Dsz0JHyNxvx0z5AuFovFkttHziDsVSy9FrO1rgECaFV9Tt5-KFao9sSJ3ojfvaCY5PoB3IKGsQWmAvQyuCYUqNJ0t51h8OxAB84BRaCAits4DWmIgGxBcL7pug2KcrXZhVRoPRYqQbqNxj7HVNa78oHAk-6F8al-5AmCILn88pC8X8aWg3YK-pm7X6435y220UO12ML2y8HB8PR9dhhOKFPHY9l46flt519f8m38AB6UC4AAA2PateAMYAeEgmw1CggAKGC4AAMnvABKU8eHgxC4FSYBcFwOAbxgAxiOARgJhgCAoJgpDUgMPpriYFB6BsJgJHA5CbCgPR6z6WRGMgvUCEgjM0AAMWgKgUA3ChslovpK3CSIKAAWRQBttiLVpEhLQN+zgDCazrfTL3M69b2NbsH0POBn00V9xzuL8HP3LCXPKF91gA4hAu2BJF2WID2jXQFUVVZRegKMBnF0JgACYoiBUzzhdGN3WzDLQSYdEKExPRqhxI0dxRTimEmRkOX+UCAComrxJq4FkzhuAMGAYDAJgFnAnxlCoIYIAAghcDGAA6IcQFA5RQIANiWgAWVaAFYNoABgAdjauAXmK+g8y0ncEEBeFhFVag0BIqidWuglpumr4SLImxaAYkB4uAKgd01PQ+m2eK0FUHV804iotJDKlwY0Io8wyKBEDPazYYu1A7FQ+6DAgL64FVJgZErBBGNVKhaCgJgtJw6aXjag6AAFukhPAUAOyCuYOwJNN0No+YoAoCEoSHmkrAA1HdaGYKIFXa-E4vVTUihGoY9E4QZTAgGnkooAANJZ0JgOET2wns8JrSCABJ0BglgAFIkJrF5cBQAgYBeU8XjhQxPe9xSKHzF5JDgBXCdjbMKLVjX8bUEwddO3QAE0jYw82WEtqDbftp3vYYsAvZdyjvqLw7A+D0P2pYKd2v4gA9aZkmN03sWw1yRxCqBgrnOIs5tu2TcrR3nfL0TtgZsOoO5sPQJklIIl0YXRYM8X9CluhZZMvtzlDMoKlII0N5l2TSPzLLgx4fBt0LHh8PhRgugEGm9AoeKqZQO-LLnNou4kBJkgKkVPxAQjxyZ6XGmgKiaBII1i1u7eEXEkLuG4NAt8MNiakngGKZgFA+AQ22NdO6eYDC+n4ldbYfRFKzh6NNX0RISRkkkgaUBRskxdCWFfPMINb4XzsMfFAp9cD5iTJGLMEotw8MMgwxAiZpz4k4Q-boz8sRvxgB-O+O9gwCKESI+RippgbkkQWaRxJZFeXkf6GR9ppx4USAkDYEBaJGhYE8ZhMQvhaOxhwx6TYyB2IcU47i0wyDfFnABaK3JBbLyDqvaG69pbMFUlRDcqk6KViiNvR8dg97NGIP-JIRp+JkCpEoro5lVHvyJoJNAbsPY6gQGxdBuhSAxEwDRD6JE6JwGvlIsmjS0BlKKRBF+aiP6YzumxCYEkKRSVJAMTi3FcZkmiSLWJ1M156AEUwOh+J+IxEYnNVWsgjAwFIKkNAmJhFNgINAEMUdekmPYMAamZyBkTEGDDNBRNaDCJog9D0wydSPwqa-Kp1gqLxRqewBSXF+mNlrPzLp6l9C7NPKsleGz4lbMSYZUgXCb5MB4F+Gs8koCKWUmklFehBa6WskWX0GL1lQ2cAkzeeLeBlJUWC9RqpiW+hqGBFqB1hQqHhHYNBjzzpyDsL8CYhB2h7CYFQOESU4BDl+UstS9E2KoMYsoOAYA4QgFOlsCZuz2oAFEegZAqECKAGREDbLlrciAdVzJD30OaSy54mw1lQgRBC+Epo8BwmyUgqsoBGwAIynlSmGr4NYHBOBcOGuAiAICcIYnfGuB17GHXgmXV2EAy6xprKlU8ybaQuFPC3Um7d-JuS7qQLufc2pz0CNak2I0YD2sdc6rJzlckHyNH25QTrEm6KbMkDy4x8l7IggAcQyEUe5mo0EaEdRMuw8IGI2GaRMCWo6HXjrsMkLttqWhuNmQaUgSsPTAhPROzeU6oBsh9AA38-EeTAArEUL6UCmlDjUEnN+5FIHzjnKjTd46sF6QaWgz5-MJakAoQ60m0CgWBH1BsXFCGmkwcQMex1srskRzypqVCaHH39txQmu8ZKKW6CpREfQtK9IXiLGO59MsmAWP4pgPGmq8HwB+nMLBcA2KqgouUZQtBOI0dPcRWwgZL1wtxgMqCs6KBsmQWfbYkU-58WFVPFmXQ2Zu05jPdqgQq2WGsIAg6+IhxTSgO6ngqpGxUH+mAKm7Mv68FVPQALdaza4SroqVWo1Y5awTrrLShteB1NEPhX2PUAs8ArtsALA9c6j1C23cLTno7Rc1vHROetU68ALhlkuXAMtZagDlnOnq9Aj1renIrU9OSMynsBnwNhCoOYwMVlz0AlhPB4AQPQPB8W9B6OiVzPAPjzvDlF9WZXtbxd0Ilyb62Yvle23glbxX9ubbi6Bqre2Y7nYq1pZbB02Aqf6zACLPNARMiYMUfeMAz3AiG0wA533mgxCVVEOQ+oqq2GYKQOzdI+MHQbk3EbU98TTc4Z58oPm-Nuwy0FkLnWLanngZidY9AIv4nmzARb43AsoC89jqA-nUtcQJ613yRO4FqAQWTinJWNtxy26BzhjXmuD1bu1-1hPM4RZYFZ6Ss956feYEDsMMBQdY0yfiOHiADnK9I85HKbplaSk+8VUqcR53UkcNW6wXiQxq6t-xS1I1qJQ7sO9ciXmuBgwmMO+AlxSCYOgajEA8n4BaOBd0UFYyiajsKnw-71UIRQjaBent3HnU671wD0gn2U8oA-W0GUeBCDyiBbFEUvQBL+-JIgOFRRUYboT2-KEA0gVcwV3AfiQD+L4jO4Li7eslgKBetNFYTuIJy4XdPLvTxPtmIaZ9hkKPgEQUr6DGvaudQ0AYKTB9aC4c1shfAVURDbqafdwsMhEFO839XzP-vN3B93d0CP+-xoB+xdfwbJYuXWuS6HTJZFppb+wuyNYhwf6RbP7f5HZVb-4S55zgHjxQBFoFxFp1YgCQHGh94rD37T5r6z70JJj8Q6AQBDC0BgBrpN5NJGo26wCoyXASqnKSbKBmrwwJ6cQwBJg66L5MI3rZ4QD66iLd4QTZCfzSYPqMBVQngaaEZMARoExtKsF2BTQDYn6PTQA-R6wUQ0G-oiH8SQC7pB6MQXKsFmp7pxTeC0hYJorTgqaCH65PC8HzCeJkb3pRzaZsgGEQSYAoBuwVDUGGo0j2Ye7wRUDURGAWFAZUw3TwDu5wCMCk5wpkhoLCH6IhLUB0CMBFiOEA7OEhFIBmIrZJ62BmIJD24mwywiGRguFEb6Iz4FDQLzhMHmFgy4BKyoyNjsRGBqBuz0CkB3Ke4yasF9FwoqZmHcIZDV4QY1GiGaaqg-Twikx1HIT0CgR3IL7zAmHmRDDABUF5gwrzgTh2GWLhIGb6ICZCa4D0AiZwBiaDLwBSYcz6LARQC+iGjTj7LwR2DAYnR6znS-qziKTeAaBdGybyZoCZQPoAD6XiMJpRRUGIWIOxhxGqNxJBEE0C0AKAzg-0ZEqMURaArRrEf0buN0+CZIR+duWwOq+MhgnQGg+ATYcgmJ6qbEo0Hu+MNxbRhMvycKVEOsaA+MMApx2uhRiAi+9uzC1JvEXxS6K6mmdBTgiAPAEqewQewQhAVg3EmCZh-0EwJ0f6AGIYAEAybJSGEwQ4DqzQEoSY0wspBR9BRRrh4Uf8+ITkZk1GBQie-u9+G4qQcAQMJygyzKOh+oaCuG7KGMIoERGMh+hRx+LBZ+lCF+VE+hOBEEV+9+d+mZD+8xT+pWL+R2f+LWiBo8LwEBochBBBM+uZBiC8WkMSYs2K2yySBgqS2qGSBQFibxEgua88JeIQOp+uquP2GuW84pzpuuQhAOieRukcEoBU1U5uWIluRospvpjuRowoTAvy8AyQo5EAwOFQE5uREpOe1UMO1uKazARejmM+Q5ZeGGTSlpRxIJMmvUfiPIlqn0e6c07MvQaKMiDSzCu5+5K+T5YQi8FAUQ4Fwi1iPocuEgBAgw0M-MKqVeKAq0MJAAnDCRtFEHkVeQbmZAuRRqboVKuWVHEKhEaI4HrANHABvglElFpGlERRebOSRZ+j2BIHhEAqqLyhMHRcaMqUxVBZKDwRoM4DuFEFBSOQDmOSDmDsRdDgoTebbnxhYviNhLKQKlbgEm+EkYguTv2f4C9oNiRRVM5h2LTpNtNrNtVqcDTk1idoWQLrAaBrtjwF-odqBstlbn5ULpVhNr5TAf5XrA9k9r8SlK9mBBBDEAUDyAUEsKxKjECZBMFUPlpEhHNPvgTCppBKaJBAAISTB8S+HXFLLQBDANLKEbCrTTS7TTSrRKgSCWUEAUAVrJCYWgw4X4UbSoQKDu7MBLCjWuA4T-BdWpTDX84HYhVaQi4oFOXo507BYrA4QSBAA
 
 type DeepReadonly<T> = Simplify<{
     +readonly [K in keyof T]:
@@ -696,10 +705,6 @@ type ForceNonWideningUnionMembers<T> =
       ?  T & Record<never,never> 
       : T 
     : T
-
-type CreateOptions2<A extends DeepReadonly<AliasConfig>> = {
-  aliases?: A;
-};
 
 /**
  * From https://stackoverflow.com/a/66445507
@@ -739,7 +744,7 @@ type UnionOfIntersectingValuesWithNoWidening<
   | UnionOfIntersectingValues<T, 'literals'>
   | ForceNonWideningUnionMembers<
     UnionOfIntersectingValues<T, 'index-signature'>
-  >;
+    >;
 
 /**
  * Retains the literal types even if Typescript could widen them to a primitive type.
@@ -749,10 +754,10 @@ type UnionOfIntersectingValuesWithNoWidening<
 type ExtractArrayValues<
   T extends object,
   ArrayValueFilter = unknown,
-  // Grab only the array types into a union V
+  // Grab only the array types into a union `Arrays`
   Arrays = Extract<T[keyof T], readonly ArrayValueFilter[]>
 > = 
-  // Distribute the conditional over every array item in the union V, inferring the
+  // Distribute the conditional over every array item in the union, inferring the
   // type of values in the array
   Arrays extends readonly (infer ArrayValues)[]
     ? ForceNonWideningUnionMembers<ArrayValues>
@@ -823,7 +828,8 @@ type AliasesToObjectTypes<
       // theoretically have keys which aren't in Properties even though earlier type
       // checks would have ruled those out.
       PropertyKey extends keyof Properties
-      // Grab the property's type
+      // Grab the property's type, simplified so we can distribute over the
+      // union correctly
       ? Properties[PropertyKey]
       : never
   } extends infer O extends object
@@ -834,20 +840,37 @@ type AliasesToObjectTypes<
     //   backgroundPosition: `${string}%` | "center";
     // }
     // ```
-    ? SimplifyUnion<UnionOfIntersectingValuesWithNoWidening<O>>
+    ? UnionOfIntersectingValuesWithNoWidening<O>
     : never
 }>
 
-function create4_9_5<PropertyToAliases extends DeepReadonly<AliasConfig>>(
-  options: CreateOptions2<PropertyToAliases> = {}
-) {
-  return (
-    props: Simplify<
-      AliasesToObjectTypes<PropertyToAliases, Properties>
-      & Properties
-    >,
-  ) => undefined;
+type SimplifiedAliasesToObjectTypes<
+  PropertyToAliases extends DeepReadonly<AliasConfig>,
+  Properties extends object,
+  Result = AliasesToObjectTypes<PropertyToAliases, Properties>
+> = {
+  // Simplifying the union forces better IDE auto complete.
+  [Key in keyof Result]: SimplifyUnion<Result[Key]>
 }
+
+// TODO: inject tokenized style prop types
+// Non-responsive style props
+type StyleProps<
+  PropertyToAliases extends DeepReadonly<AliasConfig>,
+  Properties extends object
+> = Simplify<
+  Partial<SimplifiedAliasesToObjectTypes<PropertyToAliases, Properties>>
+  & Properties
+>
+
+
+const modifiers = {
+  _active: ':active',
+  _focus: ':focus',
+  _hover: ':hover',
+  _visited: ':visited',
+  _link: ':link',
+};
 
 const aliases = {
   color: ['fg', 'textColor'],
@@ -855,19 +878,76 @@ const aliases = {
   backgroundPositionY: ['backgroundPosition']
 } as const;
 
-// TODO: why is `backgroundPosition` coming out as `any`!?
-// Should work in TS v4.7.4+
-const fn2 = create4_9_5({ aliases: aliases });
+const { stylesheet, convert } = create({ aliases, modifiers });
+type GetPropType<ConvertFn extends ReturnType<typeof create>['convert'], PropName extends keyof Parameters<ConvertFn>[0]> = SimplifyUnion<Parameters<ConvertFn>[0][PropName]>
+
+type F = GetPropType<typeof convert, 'backgroundPosition'>
+
+convert({ backgroundPosition, backgroundPositionX, fg })
+
+
+/**
+* Create custom type error. Not 100% secure as it could be abused with:
+* type Abuse<T> = T extends `TypeErr: ${infer U}` ? U : T;
+* ErrorBrad<Abuse<'TypeErr: Hacked!'>> = 'TypeErr: Hacked!'
+* ... so we should be just fine!
+*/
+/*
+type ErrorBrand<T extends string> = `TypeErr: ${T}`;
+// Now we can use it pretty safely, e.g.:
+type AssertIsAnimal<T> = T extends 'dog' | 'pony' ? T : ErrorBrand<'Not a pony'>;
+const barn = <T>(animal: AssertIsAnimal<T>) => { }
+ // Works! -> Type '"Not a pony"' is not assignable to type '"TypeErr: Not a pony"'.
+barn('Not a pony')
+*/
 
 
 
 
 
-
-export function create(options: CreateOptions = {}): {
-  stylesheet: string;
-  convert: ConvertStylePropsToCSSProperties;
-} {
+export function create<
+  // TODO: Merge (not overwrite) property types
+  Generics extends {
+    PropertyAugmentations: { [Key in keyof StandardLonghandProperties]+?: unknown }
+  },
+  /** Inferred, don't assign */
+  _InferredPropertyToAliases extends DeepReadonly<AliasConfig>,
+  /** Inferred, don't assign */
+  _InferredBreakpoints extends DeepReadonly<BreakpointConfig>,
+  /** Inferred, don't assign */
+  _InferredModifiers extends DeepReadonly<ModifierConfig>,
+  /** Inferred, don't assign */
+  _InferredPseudoElements extends DeepReadonly<PseudoElementConfig>,
+  /** Internal usage, don't assign */
+  _Props extends object = StyleProps<_InferredPropertyToAliases, StandardLonghandProperties>,
+  /** Internal usage, don't assign */
+  // TODO: Any way to simplify this?
+  _PropPathValues extends keyof _Props | keyof _InferredBreakpoints | keyof _InferredModifiers | keyof _InferredPseudoElements = keyof _Props | keyof _InferredBreakpoints | keyof _InferredModifiers | keyof _InferredPseudoElements,
+  /** Internal usage, don't assign */
+  _PropPath extends SimplifyUnion<_PropPathValues>[] = SimplifyUnion<_PropPathValues>[],
+  /** Internal usage, don't assign */
+  _ValueMapper extends (
+    value: _Props[keyof _Props],
+    prop: keyof _Props,
+    path: _PropPath
+  ) => unknown = <_InferredProp extends keyof _Props>(
+    value: _Props[_InferredProp],
+    prop: _InferredProp,
+    path: _PropPath
+  ) => unknown,
+>(
+  options: CreateOptions<
+    _Props,
+    // Should be ResponsiveStylePropsWithModifiers
+    _Props,
+    _InferredPropertyToAliases,
+    _InferredBreakpoints,
+    _InferredModifiers,
+    _InferredPseudoElements,
+    _PropPathValues,
+    _PropPath,
+    _ValueMapper> = {},
+) {
   const className = '.Box';
   // No global defautls to start
   let globalDefaults: ResponsiveStylePropsWithModifiers | undefined;
@@ -1056,12 +1136,19 @@ export function create(options: CreateOptions = {}): {
   };
 
   function convert(
-    styleProps: Parameters<ConvertStylePropsToCSSProperties>[0],
+    /**
+     * A value of `null` will remove any default for that property without having to
+     * apply your own value. Roughly equivalent to CSS `unset`.
+     */
+    styleProps: _Props,
     {
       defaults: runtimeDefaults,
       valueMapper = globalValueMapper,
-    }: Parameters<ConvertStylePropsToCSSProperties>[1] = {},
-  ): ReturnType<ConvertStylePropsToCSSProperties> {
+    }: {
+      defaults?: _Props;
+      valueMapper?: _ValueMapper;
+    } = {},
+  ): ConversionResult {
     const styles = [styleProps];
     let lastIsWeakMerged = false;
     if (runtimeDefaults) {

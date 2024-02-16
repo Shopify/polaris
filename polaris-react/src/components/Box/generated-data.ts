@@ -25,7 +25,7 @@ type PickIntersection<PickFrom, IntersectWith> = Pick<
 /**
  * Force Typescript to flatten out a union type to its concrete values
  */
-type SimplifyUnion<T> = Unwrap<WrapInObject<T>>;
+export type SimplifyUnion<T> = Unwrap<WrapInObject<T>>;
 type WrapInObject<T> = T extends unknown ? { key: T } : never;
 type Unwrap<T> = T extends { key: unknown } ? T["key"] : never;
 
