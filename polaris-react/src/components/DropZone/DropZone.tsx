@@ -430,7 +430,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
               type="file"
               ref={inputRef}
               autoComplete="off"
-              tabIndex={restrictKeyboardAccess ? -1 : 1}
+              tabIndex={restrictKeyboardAccess ? -1 : 0}
             />
           </Text>
           <div className={styles.Container}>{children}</div>
