@@ -5,14 +5,13 @@
   --pc-hover-card-min-width: initial;
   opacity: 0;
   position: relative;
-  display: flex;
   // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- AlphaHoverCard CSS Properties
   min-width: var(--pc-hover-card-min-width);
+  display: flex;
   background: var(--p-color-bg-surface);
   margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
   box-shadow: var(--p-shadow-500);
   border-radius: var(--p-border-radius-300);
-  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease);
 
   @include shadow-bevel(
     $boxShadow: var(--p-shadow-md),
@@ -26,29 +25,26 @@
 }
 
 .HoverCardOverlay {
-  will-change: opacity, left, right, top;
+  will-change: opacity, width, height, left, right, top, bottom;
   opacity: 0;
-  // Need to initialize top here in order to animate when it changes in the PositionedOverlay style declaration
-  top: 0;
-  bottom: 0;
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in-out)
+    var(--p-motion-duration-300);
+}
+
+.HoverCardOverlay-enter {
+  opacity: 1;
+}
+
+.HoverCardOverlay-glide {
+  opacity: 1;
   transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
     bottom var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
 }
 
-.HoverCardOverlay-entering {
-  opacity: 1;
-}
-
-.HoverCardOverlay-active {
-  opacity: 1;
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Need to set top here in order to animate when it changes in the PositionedOverlay style declaration
-  top: var(--pc-positioned-overlay-top);
-  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- Need to set bottom here in order to animate when it changes in the PositionedOverlay style declaration
-  bottom: var(--pc-positioned-overlay-bottom);
-}
-
 .measuring {
   opacity: 0;
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in-out)
+    var(--p-motion-duration-300);
 }
 
 .measured {
@@ -71,7 +67,6 @@
 
 .ContentContainer {
   position: relative;
-
   overflow: hidden;
   background: var(--p-color-bg-surface);
   border-radius: var(--p-space-300);
@@ -84,4 +79,5 @@
 
 .Content {
   width: 100%;
+  height: 100%;
 }
