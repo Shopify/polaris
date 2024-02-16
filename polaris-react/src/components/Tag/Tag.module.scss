@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 $height: 20px;
-$button-size: 20px;
 
 .Tag {
+  position: relative;
   display: inline-flex;
   max-width: 100%;
   align-items: center;
@@ -207,4 +207,49 @@ $button-size: 20px;
   .Button {
     background: var(--p-color-bg-fill-tertiary-active);
   }
+}
+
+.sizeLarge,
+.sizeLarge:is(.linkable),
+.sizeLarge:is(.removable),
+.sizeLarge:is(.removable, .linkable) {
+  min-height: 24px;
+  padding: 0 var(--p-space-200);
+}
+
+.sizeLarge.removable {
+  padding-right: var(--p-space-200);
+}
+
+.sizeLarge .Button {
+  opacity: 0;
+  position: absolute;
+  right: 0;
+  left: auto;
+  width: calc(20px + var(--p-space-100));
+  height: 20px;
+  padding-left: var(--p-space-100);
+  margin: 0;
+}
+/* stylelint-disable-next-line selector-max-specificity -- specificity override */
+.sizeLarge:is(.linkable):hover .Button,
+.sizeLarge:is(.removable):hover .Button,
+.sizeLarge:is(.removable, .linkable):hover .Button,
+.sizeLarge .Button:focus-visible {
+  opacity: 1;
+  background: linear-gradient(
+    to left,
+    var(--p-color-bg-fill-tertiary-hover) 0%,
+    var(--p-color-bg-fill-tertiary-hover) 65%,
+    transparent 100%
+  );
+}
+/* stylelint-disable-next-line selector-max-specificity -- specificity override */
+.sizeLarge:is(.removable):not(.linkable):hover .Button {
+  background: linear-gradient(
+    to left,
+    var(--p-color-bg-fill-tertiary) 0%,
+    var(--p-color-bg-fill-tertiary) 65%,
+    transparent 100%
+  );
 }
