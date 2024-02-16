@@ -79,6 +79,7 @@ export function WIP() {
             Notes
           </Text>
           <FloatingTextField placeholder="Add notes" />
+          <FloatingTextField placeholder="Add notes (multiline)" multiline />
         </div>
       </Card>
     </div>

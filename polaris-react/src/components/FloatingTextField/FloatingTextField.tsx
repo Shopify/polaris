@@ -6,6 +6,7 @@ import type {IconProps} from '../Icon';
 import {Icon} from '../Icon';
 import {Spinner} from '../Spinner';
 
+import {TextareaAutosize} from './TextareasAutosize';
 import styles from './FloatingTextField.module.scss';
 
 export interface FloatingTextFieldProps {
@@ -13,6 +14,7 @@ export interface FloatingTextFieldProps {
   defaultValue?: string;
   placeholder?: string;
   loading?: boolean;
+  multiline?: boolean;
   emptyIcon?: IconProps['source'];
   filledIcon?: IconProps['source'];
   onChange?: (value: string) => void;
@@ -22,8 +24,9 @@ export function FloatingTextField(props: FloatingTextFieldProps) {
   const {
     value,
     defaultValue = '',
-    loading = false,
     placeholder = '',
+    loading = false,
+    multiline = false,
     emptyIcon = PlusCircleIcon,
     filledIcon = NoteIcon,
     onChange,
@@ -38,12 +41,16 @@ export function FloatingTextField(props: FloatingTextFieldProps) {
 
   const state = valueDerived ? 'filled' : 'empty';
 
-  const inputRef = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     onChange?.(event.target.value);
     setValueState(event.target.value);
   };
+
+  const InputComponent = multiline ? TextareaAutosize : 'input';
 
   return (
     <>
@@ -62,8 +69,8 @@ export function FloatingTextField(props: FloatingTextFieldProps) {
         </code>
       </pre>
       <span
-        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-        tabIndex={0}
+        tabIndex={isActive ? -1 : 0}
+        role={isActive ? undefined : 'button'}
         className={classNames(
           styles.root,
           isHovered && styles.rootHovered,
@@ -85,37 +92,49 @@ export function FloatingTextField(props: FloatingTextFieldProps) {
           setIsFocused(false);
           setIsActive(false);
         }}
-        onKeyUp={(event) => {
+        onKeyDown={(event) => {
+          if (event.repeat) return;
+
           if (event.key === 'Enter') {
             if (isActive) {
+              if (multiline && event.shiftKey) return;
+
               // TODO: Track if active was trigger by click or enter key
               // - If click, blur input
               // - Else if enter key, return focus to parent
               inputRef.current?.blur();
               setIsActive(false);
             } else {
+              event.preventDefault();
               inputRef.current?.focus();
               setIsActive(true);
             }
           }
         }}
       >
-        {loading ? (
-          <span style={{transform: 'scale(0.75)'}}>
-            <Spinner size="small" />
-          </span>
-        ) : (
-          <Icon
-            source={
-              // eslint-disable-next-line no-nested-ternary
-              isActive ? emptyIcon : state === 'filled' ? filledIcon : emptyIcon
-            }
-            tone={isHovered || isActive || isFocused ? undefined : 'subdued'}
-          />
-        )}
-        <input
+        <span>
+          {loading ? (
+            <span style={{transform: 'scale(0.75)'}}>
+              <Spinner size="small" />
+            </span>
+          ) : (
+            <Icon
+              source={
+                // eslint-disable-next-line no-nested-ternary
+                isActive
+                  ? emptyIcon
+                  : state === 'filled'
+                  ? filledIcon
+                  : emptyIcon
+              }
+              tone={isHovered || isActive || isFocused ? undefined : 'subdued'}
+            />
+          )}
+        </span>
+        <InputComponent
           type="text"
           autoComplete="off"
+          // @ts-expect-error -- prototype
           ref={inputRef}
           tabIndex={isActive ? 0 : -1}
           className={classNames(
