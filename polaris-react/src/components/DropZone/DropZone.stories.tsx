@@ -10,6 +10,7 @@ import {
   BlockStack,
   Thumbnail,
   InlineStack,
+  UnstyledButton,
 } from '@shopify/polaris';
 import {NoteIcon} from '@shopify/polaris-icons';
 
@@ -336,6 +337,54 @@ export function Nested() {
           {uploadedFiles}
           {fileUpload}
         </DropZone>
+      </LegacyCard>
+    </DropZone>
+  );
+}
+
+export function Nested2() {
+  const [files, setFiles] = useState([]);
+
+  const handleDrop = useCallback((dropFiles) => {
+    setFiles((files) => [...files, dropFiles]);
+  }, []);
+
+  const handleDropZoneClick = useCallback(() => {}, []);
+
+  const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+
+  const fileUpload = !files.length && <DropZone.FileUpload />;
+  const uploadedFiles = files.length > 0 && (
+    <BlockStack gap="400">
+      {files.map((file, index) => (
+        <InlineStack gap="400" align="center" key={index}>
+          <Thumbnail
+            size="small"
+            alt={file.name}
+            source={
+              validImageTypes.includes(file.type)
+                ? window.URL.createObjectURL(file)
+                : NoteIcon
+            }
+          />
+          <div>
+            {file.name}{' '}
+            <Text variant="bodySm" as="p">
+              {file.size} bytes
+            </Text>
+          </div>
+        </InlineStack>
+      ))}
+    </BlockStack>
+  );
+
+  return (
+    <DropZone outline={false} onDrop={handleDrop} restrictKeyboardAccess>
+      <LegacyCard sectioned>
+        <UnstyledButton onClick={handleDropZoneClick}>
+          {uploadedFiles}
+          {fileUpload}
+        </UnstyledButton>
       </LegacyCard>
     </DropZone>
   );
