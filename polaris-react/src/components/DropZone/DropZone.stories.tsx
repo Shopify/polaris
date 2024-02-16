@@ -342,7 +342,7 @@ export function Nested() {
   );
 }
 
-export function Nested2() {
+export function WithRestrictedKeyboardAccess() {
   const [files, setFiles] = useState([]);
 
   const handleDrop = useCallback((dropFiles) => {
