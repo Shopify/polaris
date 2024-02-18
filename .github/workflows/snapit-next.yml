@@ -1,0 +1,19 @@
+name: Snapshot
+
+on:
+  issue_comment:
+    types:
+      - created
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  snapshot:
+    name: Snapshot Release Next
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create snapshot
+        uses: Shopify/snapit@v0.0.0-alpha.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
