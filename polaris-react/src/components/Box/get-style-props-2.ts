@@ -43,15 +43,11 @@
 import invariant from 'tiny-invariant';
 import decamelize from 'decamelize';
 import type {OmitIndexSignature, Simplify, Includes} from 'type-fest';
-import type {Globals, StandardLonghandProperties, Properties as CSSProperties} from 'csstype';
-
 import type {
-  ResponsiveStyleProps,
-  ResponsiveStylePropsWithModifiers,
-  ValueMapper,
-  Properties,
-  PropPath,
-} from './generated-data';
+  Globals,
+  StandardLonghandProperties,
+  Properties as CSSProperties,
+} from 'csstype';
 
 type PropertyValue<TValue> = TValue extends infer TUnpacked & {}
   ? TUnpacked
@@ -93,8 +89,6 @@ type PseudoElementSelector =
   | '::placeholder'
   | '::selection';
 
-
-
 const OPT_IN_MODIFIER_SET = {
   _active: ':active',
   _focus: ':focus',
@@ -122,7 +116,7 @@ const DEFAULT_BASE_BREAKPOINT = {
 
 const joinEnglish =
   process.env.NODE_ENV === 'development'
-    ? (arr: string[], joiner = 'and') => {
+    ? (arr: string[], joiner = 'and'): string => {
         if (arr.length === 1) {
           return arr[0];
         }
@@ -243,7 +237,8 @@ function processOptions<Options extends object>({
       // Reorder the keys so the "base" is first
       // eslint-disable-next-line no-param-reassign
       breakpoints = {
-        [breakpointKeys[baseKeyIndex]]: breakpoints[breakpointKeys[baseKeyIndex]],
+        [breakpointKeys[baseKeyIndex]]:
+          breakpoints[breakpointKeys[baseKeyIndex]],
         ...breakpoints,
       };
 
@@ -270,41 +265,35 @@ function processOptions<Options extends object>({
   };
 }
 
-
-
 // https://www.typescriptlang.org/play?noErrorTruncation=false&ts=5.3.3#code/JYWwDg9gTgLgBDAnmApnA3gZVGANsAM0QBo4BJAOwGNcBXAExQGcBfOAqCEOAciVQC0BZjB4BuAFA5o8fmnRxMMAIYV6yqPQAyECgHMAFqvoAFTqljBmcZUzhmIFmFbtsOXXlSZM54iRLlFHHwiAFUKYF0AHgAVAD44AF44cIB3KGUwKIB1DLBKAHkAIwArFCoYWLi4yUDczMLS8sr4pLgYuBQADxgUNTtaCgBrCghUijgAfgw4IZREAC52uDYlihQANxQoWuQ0NLyqto7u3v6ZucW4QZGxibZpmIBtACJLl4BdODXN7ckAvZwACC+FsADllCA0MkfFBgPp-oEQcBbABhXQEYB6NroCRwOBPADS8zg8Nm8wgBHs5m2zmYHyWyPBkJQTw+khYu1QcAAIigUGAAEooZT0XS4RBHZLYcAhSW4-H4gDUUBFYooEoJhNJE0ulPaDLxivxqkQbM6PT69Dsz0JHyNxvx0z5AuFovFkttHziDsVSy9FrO1rgECaFV9Tt5-KFao9sSJ3ojfvaCY5PoB3IKGsQWmAvQyuCYUqNJ0t51h8OxAB84BRaCAits4DWmIgGxBcL7pug2KcrXZhVRoPRYqQbqNxj7HVNa78oHAk-6F8al-5AmCILn88pC8X8aWg3YK-pm7X6435y220UO12ML2y8HB8PR9dhhOKFPHY9l46flt519f8m38AB6UC4AAA2PateAMYAeEgmw1CggAKGC4AAMnvABKU8eHgxC4FSYBcFwOAbxgAxiOARgJhgCAoJgpDUgMPpriYFB6BsJgJHA5CbCgPR6z6WRGMgvUCEgjM0AAMWgKgUA3ChslovpK3CSIKAAWRQBttiLVpEhLQN+zgDCazrfTL3M69b2NbsH0POBn00V9xzuL8HP3LCXPKF91gA4hAu2BJF2WID2jXQFUVVZRegKMBnF0JgACYoiBUzzhdGN3WzDLQSYdEKExPRqhxI0dxRTimEmRkOX+UCAComrxJq4FkzhuAMGAYDAJgFnAnxlCoIYIAAghcDGAA6IcQFA5RQIANiWgAWVaAFYNoABgAdjauAXmK+g8y0ncEEBeFhFVag0BIqidWuglpumr4SLImxaAYkB4uAKgd01PQ+m2eK0FUHV804iotJDKlwY0Io8wyKBEDPazYYu1A7FQ+6DAgL64FVJgZErBBGNVKhaCgJgtJw6aXjag6AAFukhPAUAOyCuYOwJNN0No+YoAoCEoSHmkrAA1HdaGYKIFXa-E4vVTUihGoY9E4QZTAgGnkooAANJZ0JgOET2wns8JrSCABJ0BglgAFIkJrF5cBQAgYBeU8XjhQxPe9xSKHzF5JDgBXCdjbMKLVjX8bUEwddO3QAE0jYw82WEtqDbftp3vYYsAvZdyjvqLw7A+D0P2pYKd2v4gA9aZkmN03sWw1yRxCqBgrnOIs5tu2TcrR3nfL0TtgZsOoO5sPQJklIIl0YXRYM8X9CluhZZMvtzlDMoKlII0N5l2TSPzLLgx4fBt0LHh8PhRgugEGm9AoeKqZQO-LLnNou4kBJkgKkVPxAQjxyZ6XGmgKiaBII1i1u7eEXEkLuG4NAt8MNiakngGKZgFA+AQ22NdO6eYDC+n4ldbYfRFKzh6NNX0RISRkkkgaUBRskxdCWFfPMINb4XzsMfFAp9cD5iTJGLMEotw8MMgwxAiZpz4k4Q-boz8sRvxgB-O+O9gwCKESI+RippgbkkQWaRxJZFeXkf6GR9ppx4USAkDYEBaJGhYE8ZhMQvhaOxhwx6TYyB2IcU47i0wyDfFnABaK3JBbLyDqvaG69pbMFUlRDcqk6KViiNvR8dg97NGIP-JIRp+JkCpEoro5lVHvyJoJNAbsPY6gQGxdBuhSAxEwDRD6JE6JwGvlIsmjS0BlKKRBF+aiP6YzumxCYEkKRSVJAMTi3FcZkmiSLWJ1M156AEUwOh+J+IxEYnNVWsgjAwFIKkNAmJhFNgINAEMUdekmPYMAamZyBkTEGDDNBRNaDCJog9D0wydSPwqa-Kp1gqLxRqewBSXF+mNlrPzLp6l9C7NPKsleGz4lbMSYZUgXCb5MB4F+Gs8koCKWUmklFehBa6WskWX0GL1lQ2cAkzeeLeBlJUWC9RqpiW+hqGBFqB1hQqHhHYNBjzzpyDsL8CYhB2h7CYFQOESU4BDl+UstS9E2KoMYsoOAYA4QgFOlsCZuz2oAFEegZAqECKAGREDbLlrciAdVzJD30OaSy54mw1lQgRBC+Epo8BwmyUgqsoBGwAIynlSmGr4NYHBOBcOGuAiAICcIYnfGuB17GHXgmXV2EAy6xprKlU8ybaQuFPC3Um7d-JuS7qQLufc2pz0CNak2I0YD2sdc6rJzlckHyNH25QTrEm6KbMkDy4x8l7IggAcQyEUe5mo0EaEdRMuw8IGI2GaRMCWo6HXjrsMkLttqWhuNmQaUgSsPTAhPROzeU6oBsh9AA38-EeTAArEUL6UCmlDjUEnN+5FIHzjnKjTd46sF6QaWgz5-MJakAoQ60m0CgWBH1BsXFCGmkwcQMex1srskRzypqVCaHH39txQmu8ZKKW6CpREfQtK9IXiLGO59MsmAWP4pgPGmq8HwB+nMLBcA2KqgouUZQtBOI0dPcRWwgZL1wtxgMqCs6KBsmQWfbYkU-58WFVPFmXQ2Zu05jPdqgQq2WGsIAg6+IhxTSgO6ngqpGxUH+mAKm7Mv68FVPQALdaza4SroqVWo1Y5awTrrLShteB1NEPhX2PUAs8ArtsALA9c6j1C23cLTno7Rc1vHROetU68ALhlkuXAMtZagDlnOnq9Aj1renIrU9OSMynsBnwNhCoOYwMVlz0AlhPB4AQPQPB8W9B6OiVzPAPjzvDlF9WZXtbxd0Ilyb62Yvle23glbxX9ubbi6Bqre2Y7nYq1pZbB02Aqf6zACLPNARMiYMUfeMAz3AiG0wA533mgxCVVEOQ+oqq2GYKQOzdI+MHQbk3EbU98TTc4Z58oPm-Nuwy0FkLnWLanngZidY9AIv4nmzARb43AsoC89jqA-nUtcQJ613yRO4FqAQWTinJWNtxy26BzhjXmuD1bu1-1hPM4RZYFZ6Ss956feYEDsMMBQdY0yfiOHiADnK9I85HKbplaSk+8VUqcR53UkcNW6wXiQxq6t-xS1I1qJQ7sO9ciXmuBgwmMO+AlxSCYOgajEA8n4BaOBd0UFYyiajsKnw-71UIRQjaBent3HnU671wD0gn2U8oA-W0GUeBCDyiBbFEUvQBL+-JIgOFRRUYboT2-KEA0gVcwV3AfiQD+L4jO4Li7eslgKBetNFYTuIJy4XdPLvTxPtmIaZ9hkKPgEQUr6DGvaudQ0AYKTB9aC4c1shfAVURDbqafdwsMhEFO839XzP-vN3B93d0CP+-xoB+xdfwbJYuXWuS6HTJZFppb+wuyNYhwf6RbP7f5HZVb-4S55zgHjxQBFoFxFp1YgCQHGh94rD37T5r6z70JJj8Q6AQBDC0BgBrpN5NJGo26wCoyXASqnKSbKBmrwwJ6cQwBJg66L5MI3rZ4QD66iLd4QTZCfzSYPqMBVQngaaEZMARoExtKsF2BTQDYn6PTQA-R6wUQ0G-oiH8SQC7pB6MQXKsFmp7pxTeC0hYJorTgqaCH65PC8HzCeJkb3pRzaZsgGEQSYAoBuwVDUGGo0j2Ye7wRUDURGAWFAZUw3TwDu5wCMCk5wpkhoLCH6IhLUB0CMBFiOEA7OEhFIBmIrZJ62BmIJD24mwywiGRguFEb6Iz4FDQLzhMHmFgy4BKyoyNjsRGBqBuz0CkB3Ke4yasF9FwoqZmHcIZDV4QY1GiGaaqg-Twikx1HIT0CgR3IL7zAmHmRDDABUF5gwrzgTh2GWLhIGb6ICZCa4D0AiZwBiaDLwBSYcz6LARQC+iGjTj7LwR2DAYnR6znS-qziKTeAaBdGybyZoCZQPoAD6XiMJpRRUGIWIOxhxGqNxJBEE0C0AKAzg-0ZEqMURaArRrEf0buN0+CZIR+duWwOq+MhgnQGg+ATYcgmJ6qbEo0Hu+MNxbRhMvycKVEOsaA+MMApx2uhRiAi+9uzC1JvEXxS6K6mmdBTgiAPAEqewQewQhAVg3EmCZh-0EwJ0f6AGIYAEAybJSGEwQ4DqzQEoSY0wspBR9BRRrh4Uf8+ITkZk1GBQie-u9+G4qQcAQMJygyzKOh+oaCuG7KGMIoERGMh+hRx+LBZ+lCF+VE+hOBEEV+9+d+mZD+8xT+pWL+R2f+LWiBo8LwEBochBBBM+uZBiC8WkMSYs2K2yySBgqS2qGSBQFibxEgua88JeIQOp+uquP2GuW84pzpuuQhAOieRukcEoBU1U5uWIluRospvpjuRowoTAvy8AyQo5EAwOFQE5uREpOe1UMO1uKazARejmM+Q5ZeGGTSlpRxIJMmvUfiPIlqn0e6c07MvQaKMiDSzCu5+5K+T5YQi8FAUQ4Fwi1iPocuEgBAgw0M-MKqVeKAq0MJAAnDCRtFEHkVeQbmZAuRRqboVKuWVHEKhEaI4HrANHABvglElFpGlERRebOSRZ+j2BIHhEAqqLyhMHRcaMqUxVBZKDwRoM4DuFEFBSOQDmOSDmDsRdDgoTebbnxhYviNhLKQKlbgEm+EkYguTv2f4C9oNiRRVM5h2LTpNtNrNtVqcDTk1idoWQLrAaBrtjwF-odqBstlbn5ULpVhNr5TAf5XrA9k9r8SlK9mBBBDEAUDyAUEsKxKjECZBMFUPlpEhHNPvgTCppBKaJBAAISTB8S+HXFLLQBDANLKEbCrTTS7TTSrRKgSCWUEAUAVrJCYWgw4X4UbSoQKDu7MBLCjWuA4T-BdWpTDX84HYhVaQi4oFOXo507BYrA4QSBAA
 
 type DeepReadonly<T> = Simplify<{
-    +readonly [K in keyof T]:
-      any[] extends T[K]
-        ? DeepReadonly<T[K]>
-      : T[K] extends object
-      ? DeepReadonly<T[K]>
-        : T[K];
-}>
+  +readonly [K in keyof T]: any[] extends T[K]
+    ? DeepReadonly<T[K]>
+    : T[K] extends object
+    ? DeepReadonly<T[K]>
+    : T[K];
+}>;
 
-type OnlyLiterals<T> =
-  T extends string | number | symbol
-    ? {} extends Record<T, unknown>
-      ? never 
-      : T 
-    : T 
+type OnlyLiterals<T> = T extends string | number | symbol
+  ? {} extends Record<T, unknown>
+    ? never
+    : T
+  : T;
 
-type NoLiterals<T> =
-  T extends string | number | symbol
-    ? {} extends Record<T, unknown>
-      ? T 
-      : never 
-    : never 
+type NoLiterals<T> = T extends string | number | symbol
+  ? {} extends Record<T, unknown>
+    ? T
+    : never
+  : never;
 
 // `string | 'hi'` and `(string & {}) | 'hi'` will both widen to `string` when used as
 // an argument to `keyof`
-type ForceNonWideningUnionMembers<T> =
-  T extends string | number | symbol
-    ? {} extends Record<T, unknown>
-      ?  T & Record<never,never> 
-      : T 
+type ForceNonWideningUnionMembers<T> = T extends string | number | symbol
+  ? {} extends Record<T, unknown>
+    ? T & Record<never, never>
     : T
+  : T;
 
 /**
  * From https://stackoverflow.com/a/66445507
@@ -320,30 +309,30 @@ type ForceNonWideningUnionMembers<T> =
  * ```
  */
 type UnionOfIntersectingValues<
-  T extends object, 
-  ValueFilter extends 'literals' | 'index-signature' | never = never
-> = {
-    // -? To remove the `| undefined` from the union so it doesn't interfere with
-    // inference next.
-    [Key in keyof T]-?: (
-      x: 'literals' extends ValueFilter
-        ? OnlyLiterals<T[Key]>
-        : 'index-signature' extends ValueFilter
-          ? NoLiterals<T[Key]>
-          : T[Key]
-      ) => void
-  }[keyof T] extends (x: infer I) => void ? I : never
-
-type UnionOfIntersectingValuesWithNoWidening<
   T extends object,
-> =
+  ValueFilter extends 'literals' | 'index-signature' | never = never,
+> = {
+  // -? To remove the `| undefined` from the union so it doesn't interfere with
+  // inference next.
+  [Key in keyof T]-?: (
+    x: 'literals' extends ValueFilter
+      ? OnlyLiterals<T[Key]>
+      : 'index-signature' extends ValueFilter
+      ? NoLiterals<T[Key]>
+      : T[Key],
+  ) => void;
+}[keyof T] extends (x: infer I) => void
+  ? I
+  : never;
+
+type UnionOfIntersectingValuesWithNoWidening<T extends object> =
   // If index signatures are left in the union, TS will widen literals to the index
   // signature type when `keyof` is used within UnionOfIntersectingValues.
   // To combat that, we filter for only literals first, then union the result with only
   // index signatures that are forced to be non widening.
   | UnionOfIntersectingValues<T, 'literals'>
   | ForceNonWideningUnionMembers<
-    UnionOfIntersectingValues<T, 'index-signature'>
+      UnionOfIntersectingValues<T, 'index-signature'>
     >;
 
 /**
@@ -355,14 +344,14 @@ type ExtractArrayValues<
   T extends object,
   ArrayValueFilter = unknown,
   // Grab only the array types into a union `Arrays`
-  Arrays = Extract<T[keyof T], readonly ArrayValueFilter[]>
+  Arrays = Extract<T[keyof T], readonly ArrayValueFilter[]>,
 > =
   // Distribute the conditional over every array item in the union, inferring the
   // type of values in the array
   Arrays extends readonly (infer ArrayValues)[]
     ? ForceNonWideningUnionMembers<ArrayValues>
-    // Shouldn't make it here because Arrays was extracted with the `unknown[]` filter
-    : never
+    : // Shouldn't make it here because Arrays was extracted with the `unknown[]` filter
+      never;
 
 /**
  * @example
@@ -378,7 +367,7 @@ type ExtractArrayValues<
  *   backgroundPositionX: ['backgroundPosition'],
  *   backgroundPositionY: ['backgroundPosition']
  * } as const;
- * 
+ *
  * type AliasObjects = AliasesToObjectTypes<Properties, typeof aliases>
  * // ^? = {
  *   fg: 'rebeccapurple' | 'red' | (string & {}) | undefined;
@@ -391,7 +380,10 @@ type AliasesToObjectTypes<
   Properties extends object,
   PropertyToAliases extends DeepReadonly<PropertyToAliasesShape<Properties>>,
   // Each alias will become an object key, so they must extend index signatures
-  Alias extends AliasName<Properties> = ExtractArrayValues<PropertyToAliases, AliasName<Properties>>
+  Alias extends AliasName<Properties> = ExtractArrayValues<
+    PropertyToAliases,
+    AliasName<Properties>
+  >,
 > = Simplify<{
   // Create an object keyed by the alias names:
   // ```
@@ -409,59 +401,47 @@ type AliasesToObjectTypes<
     //   }
     // }
     // ```
-    [
-      // Lookup only the property keys that have an alias set
-      PropertyKey in keyof PropertyToAliases
-        // We're only dealing with arrays, but TS has lost that information by this
-        // point, so we have to reassert it.
-        as PropertyToAliases[PropertyKey] extends readonly unknown[]
-        // Select only properties which have the current alias defined in the Aliases
-        ? Includes<PropertyToAliases[PropertyKey], AliasKey> extends true
-          ? PropertyKey
-          // Other keys have already been handled, or will be handled as we iterate over
+    // Lookup only the property keys that have an alias set
+    [PropertyKey in keyof PropertyToAliases as PropertyToAliases[PropertyKey] extends readonly unknown[]
+      ? // Select only properties which have the current alias defined in the Aliases
+        Includes<PropertyToAliases[PropertyKey], AliasKey> extends true
+        ? PropertyKey
+        : // Other keys have already been handled, or will be handled as we iterate over
           // the remaining PropertyKey and/or AliasKey, so skip it for now.
-          : never
-        // Shouldn't make it here
-        : never
-    ]:
-      // This conditional is necessary because A only _extends_
-      // PropertyToAliasesShape, so it could theoretically have keys which
-      // aren't in Properties even though earlier type checks would have ruled
-      // those out.
-      PropertyKey extends keyof Properties
-      // Grab the property's type, simplified so we can distribute over the
-      // union correctly
-      ? Properties[PropertyKey]
-      : never
+          never
+      : // Shouldn't make it here
+        never]: PropertyKey extends keyof Properties // those out. // aren't in Properties even though earlier type checks would have ruled // PropertyToAliasesShape, so it could theoretically have keys which // This conditional is necessary because A only _extends_ // We're only dealing with arrays, but TS has lost that information by this // point, so we have to reassert it.
+      ? // Grab the property's type, simplified so we can distribute over the
+        // union correctly
+        Properties[PropertyKey]
+      : never;
   } extends infer O
-    // Now get the interstion of the values of each of the Properties that reference this
-    // alias:
-    // ```
-    // {
-    //   backgroundPosition: `${string}%` | "center";
-    // }
-    // ```
-    ? UnionOfIntersectingValuesWithNoWidening<O>
-    : never
-}>
+    ? // Now get the interstion of the values of each of the Properties that reference this
+      // alias:
+      // ```
+      // {
+      //   backgroundPosition: `${string}%` | "center";
+      // }
+      // ```
+      UnionOfIntersectingValuesWithNoWidening<O>
+    : never;
+}>;
 
 type SimplifiedAliasesToObjectTypes<
   Properties extends object,
   PropertyToAliases extends DeepReadonly<PropertyToAliasesShape<Properties>>,
-  Result = AliasesToObjectTypes<Properties, PropertyToAliases>
+  Result = AliasesToObjectTypes<Properties, PropertyToAliases>,
 > = {
   // Simplifying the union forces better IDE auto complete.
-  [Key in keyof Result]: SimplifyUnion<Result[Key]>
-}
-
-
+  [Key in keyof Result]: SimplifyUnion<Result[Key]>;
+};
 
 /**
-* Create custom type error. Not 100% secure as it could be abused with:
-* type Abuse<T> = T extends `TypeErr: ${infer U}` ? U : T;
-* ErrorBrad<Abuse<'TypeErr: Hacked!'>> = 'TypeErr: Hacked!'
-* ... so we should be just fine!
-*/
+ * Create custom type error. Not 100% secure as it could be abused with:
+ * type Abuse<T> = T extends `TypeErr: ${infer U}` ? U : T;
+ * ErrorBrad<Abuse<'TypeErr: Hacked!'>> = 'TypeErr: Hacked!'
+ * ... so we should be just fine!
+ */
 /*
 type ErrorBrand<T extends string> = `TypeErr: ${T}`;
 // Now we can use it pretty safely, e.g.:
@@ -470,27 +450,6 @@ const barn = <T>(animal: AssertIsAnimal<T>) => { }
  // Works! -> Type '"Not a pony"' is not assignable to type '"TypeErr: Not a pony"'.
 barn('Not a pony')
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * Force Typescript to flatten out a union type to its concrete values
@@ -525,8 +484,9 @@ type IsObject<T> = [T] extends [object]
         : true
   : false;
 
-type AliasName<Properties extends object> = keyof OmitIndexSignature<Properties> | ForceNonWideningUnionMembers<string>;
-
+type AliasName<Properties extends object> =
+  | keyof OmitIndexSignature<Properties>
+  | ForceNonWideningUnionMembers<string>;
 
 // Defining these at the top level scope should allow them to be inlined by
 // esbuild (https://github.com/evanw/esbuild/releases/tag/v0.14.9) and tsc
@@ -554,8 +514,8 @@ type PropsWithAliases<
   PropertyToAliases extends PropertyToAliasesShape<Properties>,
 > = IsObject<PropertyToAliases> extends true
   ? Simplify<
-      Partial<Properties>
-      & Partial<SimplifiedAliasesToObjectTypes<Properties, PropertyToAliases>>
+      Partial<Properties> &
+        Partial<SimplifiedAliasesToObjectTypes<Properties, PropertyToAliases>>
     >
   : Partial<Properties>;
 
@@ -633,20 +593,13 @@ type MakePropPaths<
   | MapTupleToKeys<[Modifiers, PseudoElements, Props]>
   | MapTupleToKeys<[Modifiers, PseudoElements, Props, Breakpoints]>;
 
-type CreateOptions<
+type MakeValueMapper<
   Properties extends object,
   PropertyToAliases extends PropertyToAliasesShape<Properties>,
   Breakpoints extends BreakpointsShape | unknown,
   Modifiers extends ModifiersShape | unknown,
   PseudoElements extends PseudoElementsShape | unknown,
   Props = PropsWithAliases<Properties, PropertyToAliases>,
-  ResponsiveModifiablePropsWithPseudoElements = MakeResponsiveModifiablePropsWithPseudoElements<
-    Properties,
-    PropertyToAliases,
-    Breakpoints,
-    Modifiers,
-    PseudoElements
-  >,
   PropPaths = SimplifyUnion<
     MakePropPaths<
       Properties,
@@ -655,6 +608,40 @@ type CreateOptions<
       Modifiers,
       PseudoElements
     >
+  >,
+> = <Path extends PropPaths>(
+  value: Props[keyof Props],
+  /**
+   * The style prop this value relates to.
+   */
+  prop: keyof Props,
+  /**
+   * Path to get to this value. NOTE: `prop` may not be the last element in
+   * the path. For example: `['_hover', 'color', 'sm']` has the breakpoint as
+   * the last element
+   */
+  path: Path,
+) => unknown;
+
+type CreateOptions<
+  Properties extends object,
+  PropertyToAliases extends PropertyToAliasesShape<Properties>,
+  Breakpoints extends BreakpointsShape | unknown,
+  Modifiers extends ModifiersShape | unknown,
+  PseudoElements extends PseudoElementsShape | unknown,
+  ResponsiveModifiablePropsWithPseudoElements = MakeResponsiveModifiablePropsWithPseudoElements<
+    Properties,
+    PropertyToAliases,
+    Breakpoints,
+    Modifiers,
+    PseudoElements
+  >,
+  ValueMapper = MakeValueMapper<
+    Properties,
+    PropertyToAliases,
+    Breakpoints,
+    Modifiers,
+    PseudoElements
   >,
 > = {
   /**
@@ -874,19 +861,7 @@ type CreateOptions<
    * `true` to opt into a default set of pseudo elements.
    */
   pseudoElements?: true | PseudoElements;
-  valueMapper?: <Path extends PropPaths>(
-    value: Props[keyof Props],
-    /**
-     * The style prop this value relates to.
-     */
-    prop: keyof Props,
-    /**
-     * Path to get to this value. NOTE: `prop` may not be the last element in
-     * the path. For example: `['_hover', 'color', 'sm']` has the breakpoint as
-     * the last element
-     */
-    path: Path,
-  ) => unknown;
+  valueMapper?: ValueMapper;
   /**
    * A list of values that if passed to any styleProp on our Box component should
    * warn the user, and bail early from the css property injection procedure. We
@@ -936,6 +911,12 @@ function create<Properties extends object = CSSProperties>() {
       >
     >;
 
+    type ResponsivePropNames = keyof MakeResponsiveProps<
+      Properties,
+      PropertyToAliases,
+      Breakpoints
+    >;
+
     type ResponsiveModifiablePropsWithPseudoElements =
       MakeResponsiveModifiablePropsWithPseudoElements<
         Properties,
@@ -944,6 +925,14 @@ function create<Properties extends object = CSSProperties>() {
         Modifiers,
         PseudoElements
       >;
+
+    type ValueMapper = MakeValueMapper<
+      Properties,
+      PropertyToAliases,
+      Breakpoints,
+      Modifiers,
+      PseudoElements
+    >;
 
     type NestedCSSProperties = {
       [Selector: string]: Properties & NestedCSSProperties;
@@ -1009,10 +998,6 @@ function create<Properties extends object = CSSProperties>() {
     } = processOptions(options);
 
     type Aliases = ExtractArrayValues<typeof aliases>;
-
-    type InvertedAliases = {
-      [key in Aliases]: (keyof typeof aliases | Aliases)[];
-    };
 
     const inverseAliases = invertAliases(aliases);
 
@@ -1176,13 +1161,13 @@ function create<Properties extends object = CSSProperties>() {
        * A value of `null` will remove any default for that property without having to
        * apply your own value. Roughly equivalent to CSS `unset`.
        */
-      styleProps: _Props,
+      styleProps: ResponsiveModifiablePropsWithPseudoElements,
       {
         defaults: runtimeDefaults,
         valueMapper = globalValueMapper,
       }: {
-        defaults?: _Props;
-        valueMapper?: _ValueMapper;
+        defaults?: ResponsiveModifiablePropsWithPseudoElements;
+        valueMapper?: ValueMapper;
       } = {},
     ): ConversionResult {
       const styles = [styleProps];
@@ -1316,7 +1301,8 @@ function create<Properties extends object = CSSProperties>() {
       parentPropPath: PropPaths,
       whichElement: Elements,
     ): [ConvertResult, ConvertResult] {
-      const parentIsResponsiveDeclaration = parent === Constant.DeclarationParent;
+      const parentIsResponsiveDeclaration =
+        parent === Constant.DeclarationParent;
       const parentIsPseudoElement = parent === Constant.PseudoElementParent;
 
       const mergedProperties: DeclarationAccumulator = {};
@@ -1404,7 +1390,9 @@ function create<Properties extends object = CSSProperties>() {
           const propIsBreakpoint = hasOwn(breakpoints, prop);
           const propIsModifier = !propIsBreakpoint && hasOwn(modifiers, prop);
           const propIsPseudoElement =
-            !propIsBreakpoint && !propIsModifier && hasOwn(pseudoElements, prop);
+            !propIsBreakpoint &&
+            !propIsModifier &&
+            hasOwn(pseudoElements, prop);
           const propIsDeclaration =
             !propIsBreakpoint && !propIsModifier && !propIsPseudoElement;
           const valueIsObject = typeof value === 'object';
@@ -1421,7 +1409,8 @@ function create<Properties extends object = CSSProperties>() {
           // can merged further up the tree.
           if (
             value === 'unset' &&
-            (!lastIsWeakMerged || stylePropsObjs[lastStyleObjIndex][prop] == null)
+            (!lastIsWeakMerged ||
+              stylePropsObjs[lastStyleObjIndex][prop] == null)
           ) {
             continue;
           }
@@ -1524,10 +1513,7 @@ function create<Properties extends object = CSSProperties>() {
           if (parentIsResponsiveDeclaration) {
             // The declaration is actually the parent object, so we grab that from the
             // path (eg; { color: { sm: 'red' } }).
-            // TODO: What about aliases?
-            const declaration = parentPropPath.at(
-              -1,
-            ) as keyof ResponsiveStyleProps;
+            const declaration = parentPropPath.at(-1) as ResponsivePropNames;
 
             // Global defaults get mapped earlier in the process
             const mappedValue =
@@ -1790,11 +1776,7 @@ function create<Properties extends object = CSSProperties>() {
             .reduce((acc, cssProperty) => {
               if (typeof cssProperty === 'object') {
                 acc.push(
-                  toStyleSheet(
-                    cssProperty,
-                    prettyIndent,
-                    indentLevel + 1,
-                  ),
+                  toStyleSheet(cssProperty, prettyIndent, indentLevel + 1),
                 );
               } else {
                 acc.push(
@@ -1853,7 +1835,7 @@ function create<Properties extends object = CSSProperties>() {
       Aliases = ExtractArrayValues<AliasesIn>,
       InvertedAliases = {
         [key in Aliases]: (keyof typeof aliases | Aliases)[];
-      }
+      },
     >(aliases: AliasesIn): InvertedAliases {
       return (Object.keys(aliases) as (keyof typeof aliases)[]).reduce(
         (memo, property) => {
@@ -1870,7 +1852,8 @@ function create<Properties extends object = CSSProperties>() {
               // The aliases array is ordered, so this alias points to the alias
               // immediately before it. If this is the 0th alias, it points at the
               // property itself.
-              const target = index === 0 ? property : aliasProperties[index - 1];
+              const target =
+                index === 0 ? property : aliasProperties[index - 1];
               if (!targets.includes(target)) {
                 targets.push(target);
               }
@@ -1881,9 +1864,9 @@ function create<Properties extends object = CSSProperties>() {
         {} as InvertedAliases,
       );
     }
-  }
+  };
 }
-  /*
+
 const modifiers = {
   _active: ':active',
   _focus: ':focus',
@@ -1895,17 +1878,18 @@ const modifiers = {
 const aliases = {
   color: ['fg', 'textColor'],
   backgroundPositionX: ['backgroundPosition'],
-  backgroundPositionY: ['backgroundPosition']
+  backgroundPositionY: ['backgroundPosition'],
 } as const;
 
-const { stylesheet, convert } = create()({ aliases, modifiers });
-type GetPropType<
-  PropName extends keyof Parameters<typeof convert>[0]
-> = Parameters<typeof convert>[0][PropName];
+const {stylesheet, convert} = create<{
+  display: 'flex' | 'block';
+  color: 'red' | 'blue';
+}>()({aliases, modifiers});
+type GetPropType<PropName extends keyof Parameters<typeof convert>[0]> =
+  Parameters<typeof convert>[0][PropName];
 
-type F = GetPropType<'backgroundPosition'>
+type F = GetPropType<'backgroundPosition'>;
 
-// convert({ backgroundPosition, backgroundPositionX, fg })
-*/
+convert({backgroundPosition, backgroundPositionX, fg});
 
 /* eslint-enable @typescript-eslint/consistent-type-definitions, @typescript-eslint/consistent-indexed-object-style, @typescript-eslint/ban-types */
