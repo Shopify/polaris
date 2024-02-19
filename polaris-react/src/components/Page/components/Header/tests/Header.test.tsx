@@ -13,6 +13,7 @@ import {Text} from '../../../../Text';
 import type {LinkAction, MenuActionDescriptor} from '../../../../../types';
 import {Header} from '../Header';
 import type {HeaderProps} from '../Header';
+import {Title} from '../components';
 
 describe('<Header />', () => {
   const mockProps: HeaderProps = {
@@ -398,5 +399,74 @@ describe('<Header />', () => {
       },
     );
     expect(header.findAll(ButtonGroup)).toHaveLength(0);
+  });
+
+  describe('Title', () => {
+    it('will add the hasSubtitleMaxWidth prop if actionGroups has a length', () => {
+      const header = mountWithApp(
+        <Header
+          title="Hello, world!"
+          primaryAction={primaryAction}
+          actionGroups={[{title: 'First group', actions: []}]}
+        />,
+      );
+
+      expect(header).toContainReactComponent(Title, {
+        hasSubtitleMaxWidth: true,
+      });
+    });
+
+    it('will add the hasSubtitleMaxWidth prop if secondaryActions has a length', () => {
+      const header = mountWithApp(
+        <Header
+          title="Hello, world!"
+          primaryAction={primaryAction}
+          secondaryActions={secondaryActions}
+        />,
+      );
+
+      expect(header).toContainReactComponent(Title, {
+        hasSubtitleMaxWidth: true,
+      });
+    });
+
+    it('will add the hasSubtitleMaxWidth prop if secondaryActions is a valid react element', () => {
+      const header = mountWithApp(
+        <Header
+          title="Hello, world!"
+          primaryAction={primaryAction}
+          secondaryActions={<div>I am an action</div>}
+        />,
+      );
+
+      expect(header).toContainReactComponent(Title, {
+        hasSubtitleMaxWidth: true,
+      });
+    });
+
+    it('will not add the hasSubtitleMaxWidth prop if no secondaryActions or actionGroups detected', () => {
+      const header = mountWithApp(
+        <Header title="Hello, world!" primaryAction={primaryAction} />,
+      );
+
+      expect(header).toContainReactComponent(Title, {
+        hasSubtitleMaxWidth: false,
+      });
+    });
+
+    it('will not add the hasSubtitleMaxWidth prop if empty secondaryActions and actionGroups detected', () => {
+      const header = mountWithApp(
+        <Header
+          title="Hello, world!"
+          primaryAction={primaryAction}
+          secondaryActions={[]}
+          actionGroups={[]}
+        />,
+      );
+
+      expect(header).toContainReactComponent(Title, {
+        hasSubtitleMaxWidth: false,
+      });
+    });
   });
 });
