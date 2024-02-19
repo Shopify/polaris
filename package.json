@@ -26,7 +26,6 @@
   },
   "scripts": {
     "build": "turbo run build",
-    "build:release": "turbo run build --filter='!polaris.shopify.com'",
     "dev": "turbo run dev --filter=@shopify/polaris --parallel",
     "lint": "turbo run lint",
     "test": "turbo run test",
@@ -37,7 +36,7 @@
     "changeset": "changeset",
     "gen-assets": "turbo run gen-assets --filter=polaris.shopify.com",
     "version-packages": "changeset version",
-    "release": "npm run build:release && changeset publish",
+    "release": "turbo run build --filter='!polaris.shopify.com' && changeset publish",
     "new-migration": "yarn workspace @shopify/polaris-migrator generate",
     "postinstall": "patch-package"
   },
