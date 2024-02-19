@@ -1,6 +1,7 @@
 /* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- allow custom component properties */
 
 .Button {
+  background: red !important;
   --pc-button-gap: var(--p-space-050);
   --pc-button-bg: transparent;
   --pc-button-bg_hover: var(--pc-button-bg);
