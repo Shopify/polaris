@@ -22,8 +22,8 @@
   --pc-button-icon-fill_active: var(--pc-button-icon-fill);
   --pc-button-icon-fill_pressed: var(--pc-button-icon-fill_active);
   --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
-  // DELETE THIS DO NOT SHIP
-  outline: var(--p-color-bg-fill-critical) var(--p-border-width-100) solid;
+  // stylelint-disable-next-line -- DO NOT SHIP
+  outline: var(--p-color-bg-fill-critical) var(--p-border-width-100) solid !important;
   all: unset;
   position: relative;
   box-sizing: border-box;
