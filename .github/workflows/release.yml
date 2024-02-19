@@ -35,12 +35,15 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
+      - name: Build
+        run: yarn build:release
+
       - name: Create release Pull Request or publish to NPM
         id: changesets
         uses: changesets/action@v1
         with:
           version: yarn version-packages
-          publish: yarn release
+          publish: yarn release-packages
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
