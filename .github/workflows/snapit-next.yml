@@ -12,6 +12,9 @@ jobs:
     name: Snapshot Release Next
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout default branch
+        uses: actions/checkout@v4
+
       - name: Create snapshot
         uses: Shopify/snapit@main
         with:
