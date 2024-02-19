@@ -712,6 +712,8 @@ function IndexTableBase({
                   onSelectModeToggle={
                     condensed ? handleSelectModeToggle : undefined
                   }
+                  label={selectAllActionsLabel}
+                  buttonSize="micro"
                 />
               </div>
             ) : null;

@@ -1271,22 +1271,54 @@ export function WithBulkActionsAndSelectionAcrossPages() {
 
   const promotedBulkActions = [
     {
-      content: 'Edit customers',
-      onAction: () => console.log('Todo: implement bulk edit'),
-    },
-    {
-      content: 'Delete customers',
-      onAction: () => console.log('Todo: implement bulk delete'),
-    },
-    {
       content: 'Rename customers',
       onAction: () => console.log('Todo: implement bulk rename'),
+    },
+    {
+      title: 'Edit customers',
+      actions: [
+        {
+          content: 'Add customers',
+          onAction: () => console.log('Todo: implement adding customers'),
+        },
+        {
+          content: 'Delete customers',
+          onAction: () => console.log('Todo: implement deleting customers'),
+        },
+      ],
+    },
+    {
+      title: 'Export',
+      actions: [
+        {
+          content: 'Export as PDF',
+          onAction: () => console.log('Todo: implement PDF exporting'),
+        },
+        {
+          content: 'Export as CSV',
+          onAction: () => console.log('Todo: implement CSV exporting'),
+        },
+      ],
     },
   ];
   const bulkActions = [
     {
       content: 'Add tags',
       onAction: () => console.log('Todo: implement bulk add tags'),
+    },
+    {
+      title: 'Bulk action section',
+      items: [
+        {
+          content: 'Do foo',
+        },
+        {
+          content: 'Do bar',
+        },
+        {
+          content: 'Do baz',
+        },
+      ],
     },
     {
       content: 'Remove tags',

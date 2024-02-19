@@ -60,6 +60,7 @@ export function BulkActionButton({
           <Icon source={MenuHorizontalIcon} tone="base" />
         ) : undefined
       }
+      variant="monochromePlain"
     >
       {buttonContent}
     </Button>
