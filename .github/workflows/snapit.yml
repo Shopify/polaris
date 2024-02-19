@@ -1,4 +1,4 @@
-name: Snapshot
+name: /snapit
 
 on:
   issue_comment:
@@ -8,8 +8,8 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  snapshot:
-    name: Snapshot Release Next
+  snapit:
+    name: /snapit
     runs-on: ubuntu-latest
     steps:
       - name: Checkout default branch
