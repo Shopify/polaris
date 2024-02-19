@@ -99,6 +99,11 @@ export function Header({
       isReactElement(secondaryActions)) &&
     !actionGroups.length;
 
+  const hasActionGroupsOrSecondaryActions =
+    actionGroups.length > 0 ||
+    (isInterface(secondaryActions) && secondaryActions.length > 0) ||
+    isReactElement(secondaryActions);
+
   const breadcrumbMarkup = backAction ? (
     <div className={styles.BreadcrumbWrapper}>
       <Box maxWidth="100%" paddingInlineEnd="100" printHidden>
@@ -121,12 +126,18 @@ export function Header({
     ) : null;
 
   const pageTitleMarkup = (
-    <div className={styles.TitleWrapper}>
+    <div
+      className={classNames(
+        styles.TitleWrapper,
+        !hasActionGroupsOrSecondaryActions && styles.TitleWrapperExpand,
+      )}
+    >
       <Title
         title={title}
         subtitle={subtitle}
         titleMetadata={titleMetadata}
         compactTitle={compactTitle}
+        hasSubtitleMaxWidth={hasActionGroupsOrSecondaryActions}
       />
     </div>
   );
