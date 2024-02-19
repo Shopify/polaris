@@ -17,6 +17,6 @@ jobs:
 
       - name: Create snapshot
         uses: Shopify/snapit@main
-        with:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
