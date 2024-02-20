@@ -108,7 +108,7 @@ export function Section({
         {...(hasMultipleSections && {paddingBlockStart: '0'})}
         tabIndex={!hasMultipleSections ? -1 : undefined}
       >
-        <BlockStack gap="100" as="ul" {...(sectionRole && {role: sectionRole})}>
+        <BlockStack gap="050" as="ul" {...(sectionRole && {role: sectionRole})}>
           {actionMarkup}
         </BlockStack>
       </Box>
