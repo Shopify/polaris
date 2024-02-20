@@ -26,6 +26,7 @@ import {
   Thumbnail,
   Badge,
 } from '@shopify/polaris';
+import {AffiliateIcon, EditIcon, ExportIcon} from '@shopify/polaris-icons';
 
 import {IndexTable} from './IndexTable';
 
@@ -1272,10 +1273,12 @@ export function WithBulkActionsAndSelectionAcrossPages() {
   const promotedBulkActions = [
     {
       content: 'Rename customers',
+      icon: AffiliateIcon,
       onAction: () => console.log('Todo: implement bulk rename'),
     },
     {
       title: 'Edit customers',
+      icon: EditIcon,
       actions: [
         {
           content: 'Add customers',
@@ -1289,6 +1292,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
     },
     {
       title: 'Export',
+      icon: ExportIcon,
       actions: [
         {
           content: 'Export as PDF',
@@ -1323,6 +1327,20 @@ export function WithBulkActionsAndSelectionAcrossPages() {
     {
       content: 'Remove tags',
       onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      title: 'Bulk action section',
+      items: [
+        {
+          content: 'Delete data',
+        },
+        {
+          content: 'Edit data',
+        },
+        {
+          content: 'Manage data',
+        },
+      ],
     },
     {
       content: 'Delete customers',

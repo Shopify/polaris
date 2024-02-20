@@ -17,6 +17,7 @@ export function BulkActionMenu({
   actions,
   isNewBadgeInBadgeActions,
   size,
+  icon,
 }: BulkActionsMenuProps) {
   const {value: isVisible, toggle: toggleMenuVisibility} = useToggle(false);
 
@@ -32,6 +33,7 @@ export function BulkActionMenu({
             content={title}
             indicator={isNewBadgeInBadgeActions}
             size={size}
+            icon={icon}
           />
         }
         onClose={toggleMenuVisibility}

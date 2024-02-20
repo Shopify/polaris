@@ -10,28 +10,28 @@ import type {BulkActionsProps} from './BulkActions';
 type BulkActionListSection = ActionListSection;
 
 export function getVisibleAndHiddenActionsIndices(
-  actions: any[] = [],
   promotedActions: any[] = [],
+  actions: any[] = [],
   disclosureWidth: number,
   actionsWidths: number[],
   containerWidth: number,
 ) {
   const sumTabWidths = actionsWidths.reduce((sum, width) => sum + width, 0);
-  const arrayOfActionsIndices = actions.map((_, index) => {
-    return index;
-  });
   const arrayOfPromotedActionsIndices = promotedActions.map((_, index) => {
     return index;
   });
+  const arrayOfActionsIndices = actions.map((_, index) => {
+    return index;
+  });
 
-  const visibleActions: number[] = [];
-  const hiddenActions: number[] = [];
   const visiblePromotedActions: number[] = [];
   const hiddenPromotedActions: number[] = [];
+  const visibleActions: number[] = [];
+  const hiddenActions: number[] = [];
 
   if (containerWidth > sumTabWidths) {
-    visibleActions.push(...arrayOfActionsIndices);
     visiblePromotedActions.push(...arrayOfPromotedActionsIndices);
+    visibleActions.push(...arrayOfActionsIndices);
   } else {
     let accumulatedWidth = 0;
 
@@ -54,10 +54,13 @@ export function getVisibleAndHiddenActionsIndices(
       const currentActionsWidth =
         actionsWidths[currentActionsIndex + promotedActions.length];
 
-      if (
+      const action = actions[currentActionsIndex];
+      const isActionSection = instanceOfBulkActionListSection(action);
+      const actionWillNotFit =
         accumulatedWidth + currentActionsWidth >=
-        containerWidth - disclosureWidth
-      ) {
+        containerWidth - disclosureWidth;
+
+      if (actionWillNotFit || isActionSection) {
         hiddenActions.push(currentActionsIndex);
         return;
       }
@@ -68,10 +71,10 @@ export function getVisibleAndHiddenActionsIndices(
   }
 
   return {
-    visibleActions,
-    hiddenActions,
     visiblePromotedActions,
     hiddenPromotedActions,
+    visibleActions,
+    hiddenActions,
   };
 }
 
@@ -106,7 +109,7 @@ export function instanceOfMenuGroupDescriptor(
 export function instanceOfBulkActionListSection(
   action: BulkAction | BulkActionListSection,
 ): action is BulkActionListSection {
-  return 'items' in action && 'title' in action;
+  return 'items' in action;
 }
 
 export function getActionSections(
@@ -141,4 +144,45 @@ export function isNewBadgeInBadgeActions(
   }
 
   return false;
+}
+
+export function flattenActions(
+  actions: BulkActionsProps['actions'],
+): BulkAction[] {
+  if (!actions) return [];
+
+  return actions.reduce((memo, section) => {
+    if (instanceOfBulkActionListSection(section)) {
+      return [...memo, ...section.items];
+    }
+    return [...memo, section];
+  }, []);
+}
+
+export function getUnflattenedHiddenActions(
+  actions: BulkActionsProps['actions'],
+  hiddenActions: number[],
+): BulkActionsProps['actions'] {
+  let currentIndex = 0;
+
+  const unflattenedHiddenActions = actions?.reduce((memo, action) => {
+    const isSection = instanceOfBulkActionListSection(action);
+
+    if (!isSection) {
+      const isAHiddenAction = hiddenActions.includes(currentIndex);
+      currentIndex++;
+      return isAHiddenAction ? [...memo, action] : memo;
+    }
+    const filteredActionItems = action.items.filter((_) => {
+      const isAHiddenAction = hiddenActions.includes(currentIndex);
+      currentIndex++;
+      return isAHiddenAction;
+    });
+    if (filteredActionItems.length) {
+      return [...memo, {...action, items: filteredActionItems}];
+    }
+    return memo;
+  }, []);
+
+  return unflattenedHiddenActions;
 }

@@ -637,49 +637,9 @@ function IndexTableBase({
 
   const shouldShowBulkActions = bulkActionsSelectable;
 
-  const selectAllActionsClassNames = classNames(
-    styles.SelectAllActionsWrapper,
-    isSelectAllActionsSticky && styles.SelectAllActionsWrapperSticky,
-    !isSelectAllActionsSticky &&
-      !pagination &&
-      styles.SelectAllActionsWrapperAtEnd,
-    selectMode &&
-      !isSelectAllActionsSticky &&
-      !pagination &&
-      styles.SelectAllActionsWrapperAtEndAppear,
-  );
-
   const shouldShowActions = !condensed || selectedItemsCount;
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
-
-  const selectAllActionsMarkup =
-    shouldShowActions && !condensed ? (
-      <div
-        className={selectAllActionsClassNames}
-        style={{
-          insetBlockEnd: isSelectAllActionsSticky
-            ? selectAllActionsOffsetBottom
-            : undefined,
-          insetBlockStart: isSelectAllActionsSticky
-            ? undefined
-            : selectAllActionsAbsoluteOffset,
-          width: selectAllActionsMaxWidth,
-          insetInlineStart: isSelectAllActionsSticky
-            ? selectAllActionsOffsetLeft
-            : undefined,
-        }}
-      >
-        <SelectAllActions
-          label={selectAllActionsLabel}
-          selectMode={selectMode}
-          paginatedSelectAllText={paginatedSelectAllText}
-          paginatedSelectAllAction={paginatedSelectAllAction}
-          isSticky={isSelectAllActionsSticky}
-          hasPagination={Boolean(pagination)}
-        />
-      </div>
-    ) : null;
 
   const stickyHeaderMarkup = (
     <div className={stickyTableClassNames} role="presentation">
@@ -754,7 +714,6 @@ function IndexTableBase({
           );
         }}
       </Sticky>
-      {selectAllActionsMarkup}
     </div>
   );
 
@@ -874,13 +833,7 @@ function IndexTableBase({
       <div className={styles.EmptySearchResultWrapper}>{emptyStateMarkup}</div>
     );
 
-  const tableWrapperClassNames = classNames(
-    styles.IndexTableWrapper,
-    Boolean(selectAllActionsMarkup) &&
-      selectMode &&
-      !pagination &&
-      styles.IndexTableWrapperWithSelectAllActions,
-  );
+  const tableWrapperClassNames = classNames(styles.IndexTableWrapper);
 
   const paginationWrapperClassNames = classNames(
     styles.PaginationWrapper,

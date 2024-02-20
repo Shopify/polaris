@@ -4,6 +4,7 @@ import React, {
   useState,
   useEffect,
   useCallback,
+  useMemo,
 } from 'react';
 
 import {classNames} from '../../utilities/css';
@@ -35,6 +36,8 @@ import {
   instanceOfMenuGroupDescriptor,
   instanceOfBulkActionListSection,
   getActionSections,
+  flattenActions,
+  getUnflattenedHiddenActions,
 } from './utilities';
 import styles from './BulkActions.module.scss';
 
@@ -42,7 +45,7 @@ export type BulkAction = DisableableAction & BadgeAction;
 
 type BulkActionListSection = ActionListSection;
 
-type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
+// type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 type AriaLive = 'off' | 'polite' | undefined;
 
 export interface BulkActionsProps {
@@ -109,6 +112,8 @@ export const BulkActions = forwardRef(function BulkActions(
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
 
+  const flattenedActions = useMemo(() => flattenActions(actions), [actions]);
+
   const [state, setState] = useReducer(
     (
       data: BulkActionsState,
@@ -149,8 +154,8 @@ export const BulkActions = forwardRef(function BulkActions(
       hiddenActions,
       hiddenPromotedActions,
     } = getVisibleAndHiddenActionsIndices(
-      actions,
       promotedActions,
+      flattenedActions,
       disclosureWidth,
       actionsWidths,
       containerWidth,
@@ -165,7 +170,7 @@ export const BulkActions = forwardRef(function BulkActions(
   }, [
     containerWidth,
     disclosureWidth,
-    actions,
+    flattenedActions,
     promotedActions,
     actionsWidths,
     setState,
@@ -227,8 +232,8 @@ export const BulkActions = forwardRef(function BulkActions(
         visiblePromotedActions,
         hiddenPromotedActions,
       } = getVisibleAndHiddenActionsIndices(
-        actions,
         promotedActions,
+        flattenedActions,
         disclosureWidth,
         actionsWidths,
         containerWidth,
@@ -245,7 +250,7 @@ export const BulkActions = forwardRef(function BulkActions(
         hasMeasured: true,
       });
     },
-    [actions, promotedActions],
+    [flattenedActions, promotedActions],
   );
 
   const actionSections = getActionSections(actions);
@@ -283,8 +288,8 @@ export const BulkActions = forwardRef(function BulkActions(
         })
     : null;
 
-  const actionsMarkup = actions
-    ? actions
+  const actionsMarkup = flattenedActions
+    ? flattenedActions
         .filter((_, index) => {
           if (!visibleActions.includes(index)) {
             return false;
@@ -293,20 +298,6 @@ export const BulkActions = forwardRef(function BulkActions(
           return true;
         })
         .map((action, index) => {
-          if (instanceOfBulkActionListSection(action)) {
-            return (
-              <BulkActionMenu
-                key={index}
-                // {...action}
-                actions={action.items}
-                title={action.title}
-                isNewBadgeInBadgeActions={isNewBadgeInBadgeActions(
-                  actionSections,
-                )}
-                size={buttonSize}
-              />
-            );
-          }
           return (
             <BulkActionButton
               key={index}
@@ -318,7 +309,9 @@ export const BulkActions = forwardRef(function BulkActions(
         })
     : null;
 
-  const hiddenActionObjects = hiddenActions.map((index) => actions?.[index]);
+  const hiddenActionObjects =
+    getUnflattenedHiddenActions(actions, hiddenActions) || [];
+
   const hiddenPromotedActionObjects = hiddenPromotedActions.map(
     (index) => promotedActions?.[index],
   );
@@ -337,39 +330,40 @@ export const BulkActions = forwardRef(function BulkActions(
       return {items: [action]};
     });
 
-  const hiddenActionsMarkup = (
-    <Box
-      paddingInlineStart="200"
-      borderInlineStartWidth="025"
-      borderColor="border"
-    >
-      <Popover
-        active={popoverActive}
-        activator={
-          <BulkActionButton
-            disclosure
-            showContentInButton={!promotedActionsMarkup}
-            onAction={togglePopover}
-            content={activatorLabel}
-            disabled={disabled}
-            indicator={isNewBadgeInBadgeActions(actionSections)}
-            size={buttonSize}
-          />
-        }
-        preferredAlignment="right"
-        onClose={togglePopover}
+  const hiddenActionsMarkup =
+    hiddenActions.length > 0 || hiddenPromotedActions.length > 0 ? (
+      <Box
+        paddingInlineStart="200"
+        borderInlineStartWidth="025"
+        borderColor="border"
       >
-        <ActionList
-          sections={allHiddenActions}
-          onActionAnyItem={togglePopover}
-        />
-      </Popover>
-    </Box>
-  );
+        <Popover
+          active={popoverActive}
+          activator={
+            <BulkActionButton
+              disclosure
+              showContentInButton={!promotedActionsMarkup}
+              onAction={togglePopover}
+              content={activatorLabel}
+              disabled={disabled}
+              indicator={isNewBadgeInBadgeActions(actionSections)}
+              size={buttonSize}
+            />
+          }
+          preferredAlignment="right"
+          onClose={togglePopover}
+        >
+          <ActionList
+            sections={allHiddenActions}
+            onActionAnyItem={togglePopover}
+          />
+        </Popover>
+      </Box>
+    ) : null;
 
   const measurerMarkup = (
     <BulkActionsMeasurer
-      actions={actions}
+      actions={flattenedActions}
       promotedActions={promotedActions}
       disabled={disabled}
       buttonSize={buttonSize}

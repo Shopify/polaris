@@ -45,17 +45,7 @@ export function BulkActionsMeasurer({
     'Polaris.ResourceList.BulkActions.moreActionsActivatorLabel',
   );
 
-  const activator = (
-    <BulkActionButton
-      disclosure
-      // showContentInButton={!promotedActionsMarkup}
-      // onAction={this.togglePopover}
-      content={activatorLabel}
-      // disabled={disabled}
-      // indicator={this.isNewBadgeInBadgeActions()}
-      // size={buttonSize}
-    />
-  );
+  const activator = <BulkActionButton disclosure content={activatorLabel} />;
 
   const handleMeasurement = useCallback(() => {
     if (!containerNode.current) {
@@ -90,6 +80,7 @@ export function BulkActionsMeasurer({
           disclosure
           showContentInButton
           content={action.title}
+          icon={action.icon}
           indicator={isNewBadgeInBadgeActions(actionSections)}
           size={buttonSize}
         />
@@ -106,20 +97,17 @@ export function BulkActionsMeasurer({
   });
 
   const actionsMarkup = actions.map((action, index) => {
-    if (
-      instanceOfBulkActionListSection(action) &&
-      typeof action.title === 'string'
-    ) {
-      return (
+    if (instanceOfBulkActionListSection(action)) {
+      return action.items.map((item) => (
         <BulkActionButton
           key={index}
-          disclosure
           showContentInButton
-          content={action.title}
+          content={item.content}
+          icon={item.icon}
           indicator={isNewBadgeInBadgeActions(actionSections)}
           size={buttonSize}
         />
-      );
+      ));
     }
     return (
       <BulkActionButton
