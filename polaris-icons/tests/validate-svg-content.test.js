@@ -50,8 +50,8 @@ allIconFiles.forEach(
         expect(nodeSources(groupNodes, iconSource)).toStrictEqual([]);
       });
 
-      it('only has <path>s that only use the [clip-rule, d, fill-rule, fill-opacity] attributes', () => {
-        const allowedAttributes = ['clipRule', 'd', 'fillRule', 'fillOpacity'];
+      it('only has <path>s that only use the [d, fill-rule, fill-opacity] attributes', () => {
+        const allowedAttributes = ['d', 'fillRule', 'fillOpacity'];
 
         const nodesWithDisallowedAttributes = selectAll('path', iconAst).filter(
           (node) => {
