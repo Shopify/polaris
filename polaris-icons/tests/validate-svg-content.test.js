@@ -55,8 +55,10 @@ allIconFiles.forEach(
 
         const nodesWithDisallowedAttributes = selectAll('path', iconAst).filter(
           (node) => {
-            const propIsAllowed = (prop) => !allowedAttributes.includes(prop);
-            return Object.keys(node.properties).some(propIsAllowed);
+            const isDisallowedProp = (prop) =>
+              !allowedAttributes.includes(prop);
+
+            return Object.keys(node.properties).some(isDisallowedProp);
           },
         );
 
