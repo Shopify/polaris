@@ -1,5 +1,17 @@
 # Changelog
 
+## 12.17.0
+
+### Minor Changes
+
+- [#11602](https://github.com/Shopify/polaris/pull/11602) [`ae04f0d37`](https://github.com/Shopify/polaris/commit/ae04f0d37d142c7454d23533793a00ef4db65816) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated `Page` sub-components to only restrict the width of the subtitle if secondary actions or action groups are present
+
+### Patch Changes
+
+- [#11564](https://github.com/Shopify/polaris/pull/11564) [`9839180d9`](https://github.com/Shopify/polaris/commit/9839180d9a113d92d9205a899546d493ca561f97) Thanks [@jesstelford](https://github.com/jesstelford)! - Remove .Polaris-Summer-Editions-2023 class from html element.
+
+* [#11605](https://github.com/Shopify/polaris/pull/11605) [`ef91b21e2`](https://github.com/Shopify/polaris/commit/ef91b21e2bdfe6bbf410460aeef8057905f1c82a) Thanks [@yurm04](https://github.com/yurm04)! - Reduced `ActionList.Item` padding and gap
+
 ## 12.16.0
 
 ### Minor Changes
