@@ -70,11 +70,15 @@
   display: flex;
   flex-direction: row;
   gap: var(--p-space-200);
+  overflow: hidden;
+  margin-right: var(--p-space-200);
 
   // stylelint-disable -- Icon overrides specific to Contextual Save Bar
-  & [class*='Polaris-Icon__Svg'],
-  & [class*='Icon-Svg'] {
+  & [class*='Polaris-Icon__Svg'] {
     fill: var(--p-color-text-inverse);
+  }
+  & [class*='Polaris-Icon'] {
+    flex-shrink: 0;
   }
 }
 

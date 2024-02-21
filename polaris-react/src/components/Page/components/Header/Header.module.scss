@@ -6,14 +6,13 @@ $action-menu-rollup-computed-width: 40px;
   grid-area: title;
   margin-top: var(--p-space-100);
   align-self: center;
-  flex: 1 1 auto;
 
   @media (--p-breakpoints-sm-up) {
     margin-top: 0;
   }
 
-  .mediumTitle & {
-    min-width: fit-content;
+  &.TitleWrapperExpand {
+    flex: 1 1 auto;
   }
 }
 

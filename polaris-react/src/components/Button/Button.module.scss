@@ -35,8 +35,8 @@
   box-shadow: var(--pc-button-box-shadow);
   color: var(--pc-button-color);
 
-  font-size: var(--p-font-size-350);
-  font-weight: var(--p-font-weight-semibold);
+  font-size: var(--p-font-size-325);
+  font-weight: var(--p-font-weight-medium);
   line-height: var(--p-font-line-height-500);
 
   cursor: pointer;
@@ -45,7 +45,6 @@
 
   @media (--p-breakpoints-md-up) {
     font-size: var(--p-font-size-300);
-    font-weight: var(--p-font-weight-medium);
     line-height: var(--p-font-line-height-400);
   }
 }
@@ -180,13 +179,9 @@
   --pc-button-bg_disabled: transparent;
   margin: calc(-1 * var(--pc-button-padding-block))
     calc(-1 * var(--pc-button-padding-inline));
-  font-size: var(--p-font-size-350);
+  font-size: var(--p-font-size-325);
   font-weight: var(--p-font-weight-regular);
-  line-height: var(--p-font-line-height-500);
-
-  @media (--p-breakpoints-md-up) {
-    font-size: var(--p-font-size-325);
-  }
+  line-height: var(--p-font-line-height-400);
 }
 
 .variantPlain:focus-visible,
@@ -355,9 +350,7 @@
 // INTERACTION
 .pressable:active:not(.variantTertiary, .variantPlain, .variantMonochromePlain)
   > * {
-  @media (--p-breakpoints-md-up) {
-    transform: translate3d(0, 1px, 0);
-  }
+  transform: translate3d(0, 1px, 0);
 }
 
 // UTILITIES
