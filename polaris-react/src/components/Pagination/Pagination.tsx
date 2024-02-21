@@ -183,7 +183,10 @@ export function Pagination({
           paddingInlineStart="300"
           paddingInlineEnd="200"
         >
-          <InlineStack align="start" blockAlign="center">
+          <InlineStack
+            align={labelMarkup ? 'space-between' : 'end'}
+            blockAlign="center"
+          >
             {labelMarkup}
             <ButtonGroup variant="segmented">
               {constructedPrevious}

@@ -11,13 +11,17 @@ $bulk-actions-button-stacking-order: (
   width: 100%;
 }
 
+.BulkActionsPromotedActionsWrapper {
+  flex: 1;
+}
+
 .BulkActionsLayout {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: flex-end;
   flex: 1 1 auto;
-  gap: var(--p-space-200);
+  gap: var(--p-space-100);
 
   > * {
     flex: 0 0 auto;

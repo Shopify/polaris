@@ -323,23 +323,27 @@ export const BulkActions = forwardRef(function BulkActions(
 
   return (
     <div className={styles.BulkActions} style={width ? {width} : undefined}>
-      <InlineStack gap="200" blockAlign="center">
+      <InlineStack gap="400" blockAlign="center">
         <InlineStack gap="200" blockAlign="center">
           <CheckableButton {...checkableButtonProps} />
           {paginatedSelectAllMarkup}
         </InlineStack>
-        <div className={styles.BulkActionsOuterLayout}>
-          {measurerMarkup}
-          <div
-            className={classNames(
-              styles.BulkActionsLayout,
-              !hasMeasured && styles['BulkActionsLayout--measuring'],
-            )}
-          >
-            {promotedActionsMarkup}
-          </div>
+        <div className={styles.BulkActionsPromotedActionsWrapper}>
+          <InlineStack gap="100" blockAlign="center">
+            <div className={styles.BulkActionsOuterLayout}>
+              {measurerMarkup}
+              <div
+                className={classNames(
+                  styles.BulkActionsLayout,
+                  !hasMeasured && styles['BulkActionsLayout--measuring'],
+                )}
+              >
+                {promotedActionsMarkup}
+              </div>
+            </div>
+            {actionsMarkup}
+          </InlineStack>
         </div>
-        {actionsMarkup}
       </InlineStack>
     </div>
   );

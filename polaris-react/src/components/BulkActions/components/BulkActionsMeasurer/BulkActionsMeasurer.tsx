@@ -21,7 +21,7 @@ export interface ActionsMeasurerProps {
   handleMeasurement(measurements: ActionsMeasurements): void;
 }
 
-const ACTION_SPACING = 8;
+const ACTION_SPACING = 4;
 
 export function BulkActionsMeasurer({
   promotedActions = [],

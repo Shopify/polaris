@@ -316,19 +316,19 @@ describe('<Pagination />', () => {
   });
 
   describe('type: table', () => {
-    it('places the content at the start of the container', () => {
+    it('places the content at the end of the container', () => {
       const pagination = mountWithApp(
         <Pagination hasNext nextURL="/next" previousURL="/prev" type="table" />,
       );
 
       expect(pagination).toContainReactComponent(InlineStack, {
-        align: 'start',
+        align: 'end',
         blockAlign: 'center',
       });
     });
 
     describe('label', () => {
-      it('spaces the content at the start within the container', () => {
+      it('spaces the content apart within the container', () => {
         const pagination = mountWithApp(
           <Pagination
             hasNext
@@ -340,7 +340,7 @@ describe('<Pagination />', () => {
         );
 
         expect(pagination).toContainReactComponent(InlineStack, {
-          align: 'start',
+          align: 'space-between',
           blockAlign: 'center',
         });
       });
