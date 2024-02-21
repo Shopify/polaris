@@ -108,6 +108,7 @@ export function Tag({
   return (
     <span className={className} aria-disabled={disabled}>
       {tagContent}
+      {size === 'large' && <span className={styles.overlay} />}
       {removeButton}
     </span>
   );

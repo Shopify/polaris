@@ -237,29 +237,28 @@ $height: 20px;
   &:active {
     background: var(--p-color-bg-fill-tertiary-active);
   }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 100%;
-    bottom: 0;
-    left: calc(-1 * var(--p-width-200));
-    pointer-events: none;
-    background: linear-gradient(
-      to left,
-      var(--p-color-bg-fill-tertiary) 0%,
-      transparent 100%
-    );
-  }
 }
 
 .sizeLarge:hover .Button,
 .sizeLarge .Button:focus-visible {
   opacity: 1;
 }
+
+.sizeLarge:hover .overlay {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  bottom: 0;
+  width: 12px;
+  pointer-events: none;
+  background: linear-gradient(
+    to left,
+    var(--p-color-bg-fill-tertiary) 0%,
+    transparent 100%
+  );
+}
 /* stylelint-disable-next-line selector-max-class, selector-max-specificity -- match tag hover color */
-.sizeLarge.removable.linkable:hover .Button::before {
+.sizeLarge.removable.linkable:hover .overlay {
   background: linear-gradient(
     to left,
     var(--p-color-bg-fill-tertiary-hover) 0%,
