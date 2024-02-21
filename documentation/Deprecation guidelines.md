@@ -17,6 +17,7 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
   - Document any alternatives
   - Document automated migration(s)
   - Document manual migration(s)
+- Add supporting documentation for deprecation in DEPRECATED.md
 - Remove component in next major Polaris version branch
 
 ## Props
@@ -37,11 +38,30 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
   - Document any alternatives
   - Document automated migration(s)
   - Document manual migration(s)
+- Add supporting documentation for deprecation in DEPRECATED.md
 - Remove prop in next major Polaris version branch
 
 ## Prop values
 
 - Mark the prop value(s) as deprecated
+
+  - Add a console.warn() for deprecated prop value(s) to component
+
+  ```tsx
+  const deprecatedVariants = ['value1', 'value2'];
+
+  if (
+    process.env.NODE_ENV === 'development' &&
+    variant &&
+    deprecatedVariants.includes(variant)
+  ) {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `Deprecation: <Component variant="${variant}" />. The value "${variant}" will be removed in a future major version of Polaris. Use "value3" instead.`,
+    );
+  }
+  ```
+
   - Add component, prop, and deprecated prop value(s) to `componentUnionTypeDeprecations` ([example](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/pages/components/%5Bgroup%5D/%5Bcomponent%5D/index.tsx#L80))
     ```tsx
     const componentUnionTypeDeprecations: {
@@ -55,12 +75,14 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
     };
     ```
   - Check documentation is updated on polaris.shopify.com
+
 - Create automated migration(s) ([examples](https://github.com/Shopify/polaris/tree/main/polaris-migrator/src/migrations))
 - Add supporting documentation for deprecation in next major version guide ([examples](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/content/version-guides/migrating-from-v11-to-v12.mdx#L122))
   - Document deprecation reason
   - Document any alternatives
   - Document automated migration(s)
   - Document manual migration(s)
+- Add supporting documentation for deprecation in DEPRECATED.md
 - Remove prop value in next major Polaris version branch
 
 ## Tokens
@@ -71,4 +93,5 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
   - Document any alternatives
   - Document automated migration(s)
   - Document manual migration(s)
+- Add supporting documentation for deprecation in DEPRECATED.md
 - Remove token in next major Polaris version branch
