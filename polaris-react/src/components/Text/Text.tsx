@@ -47,6 +47,10 @@ type Tone =
 
 type TextDecorationLine = 'line-through';
 
+const deprecatedVariants: {[V in Variant]?: Variant} = {
+  heading2xl: 'headingXl',
+  heading3xl: 'headingXl',
+};
 export interface TextProps {
   /** Adjust horizontal alignment of text */
   alignment?: Alignment;
@@ -88,16 +92,14 @@ export const Text = ({
   visuallyHidden = false,
   textDecorationLine,
 }: TextProps) => {
-  const deprecatedVariants = ['heading2xl', 'heading3xl'];
-
   if (
     process.env.NODE_ENV === 'development' &&
     variant &&
-    deprecatedVariants.includes(variant)
+    variant in deprecatedVariants
   ) {
     // eslint-disable-next-line no-console
     console.warn(
-      `Deprecation: <Text variant="${variant}" />. The value "${variant}" will be removed in a future major version of Polaris. Use "displayXl" instead.`,
+      `Deprecation: <Text variant="${variant}" />. The value "${variant}" will be removed in a future major version of Polaris. Use "${deprecatedVariants[variant]}" instead.`,
     );
   }
 
