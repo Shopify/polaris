@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
   Children,
+  useMemo,
 } from 'react';
 import {CheckboxIcon} from '@shopify/polaris-icons';
 import {themeDefault, toPx} from '@shopify/polaris-tokens';
@@ -29,10 +30,6 @@ import {useLazyRef} from '../../utilities/use-lazy-ref';
 import {useEventListener} from '../../utilities/use-event-listener';
 import {BulkActions} from '../BulkActions';
 import type {BulkActionsProps} from '../BulkActions';
-import {
-  SelectAllActions,
-  useIsSelectAllActionsSticky,
-} from '../SelectAllActions';
 import {CheckableButton} from '../CheckableButton';
 import {Pagination} from '../Pagination';
 import type {PaginationProps} from '../Pagination';
@@ -172,27 +169,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   )[1];
   const checkableButtonRef = useRef<HTMLInputElement>(null);
 
-  const {
-    selectAllActionsIntersectionRef,
-    tableMeasurerRef,
-    isSelectAllActionsSticky,
-    selectAllActionsAbsoluteOffset,
-    selectAllActionsMaxWidth,
-    selectAllActionsOffsetLeft,
-    selectAllActionsOffsetBottom,
-    computeTableDimensions,
-    isScrolledPastTop,
-    selectAllActionsPastTopOffset,
-  } = useIsSelectAllActionsSticky({
-    selectMode,
-    hasPagination: Boolean(pagination),
-    tableType: 'resource-list',
-  });
-
-  useEffect(() => {
-    computeTableDimensions();
-  }, [computeTableDimensions, items.length]);
-
   const defaultResourceName = useLazyRef(() => ({
     singular: i18n.translate('Polaris.ResourceList.defaultItemSingular'),
     plural: i18n.translate('Polaris.ResourceList.defaultItemPlural'),
@@ -235,7 +211,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         selectable,
     ) && !smallScreen;
 
-  const selectAllSelectState = (): boolean | 'indeterminate' => {
+  const selectAllSelectState = useMemo((): boolean | 'indeterminate' => {
     let selectState: boolean | 'indeterminate' = 'indeterminate';
     if (
       !selectedItems ||
@@ -249,7 +225,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       selectState = true;
     }
     return selectState;
-  };
+  }, [items.length, selectedItems]);
 
   const resourceName = resourceNameProp
     ? resourceNameProp
@@ -304,7 +280,7 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     },
   );
 
-  const bulkActionsAccessibilityLabel = () => {
+  const bulkActionsAccessibilityLabel = useMemo(() => {
     const selectedItemsCount = selectedItems.length;
     const totalItemsCount = items.length;
     const allSelected = selectedItemsCount === totalItemsCount;
@@ -340,9 +316,15 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         },
       );
     }
-  };
+  }, [
+    i18n,
+    items.length,
+    resourceName.singular,
+    resourceName.plural,
+    selectedItems.length,
+  ]);
 
-  const paginatedSelectAllText = () => {
+  const paginatedSelectAllText = useMemo(() => {
     if (!isSelectable || !hasMoreItems) {
       return;
     }
@@ -358,9 +340,28 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         },
       );
     }
-  };
+  }, [
+    hasMoreItems,
+    i18n,
+    isFiltered,
+    isSelectable,
+    items,
+    resourceName.plural,
+    selectedItems,
+  ]);
 
-  const paginatedSelectAllAction = () => {
+  const handleSelectAllItemsInStore = useCallback(() => {
+    const newlySelectedItems =
+      selectedItems === SELECT_ALL_ITEMS
+        ? getAllItemsOnPage(items, idForItem)
+        : SELECT_ALL_ITEMS;
+
+    if (onSelectionChange) {
+      onSelectionChange(newlySelectedItems);
+    }
+  }, [idForItem, items, onSelectionChange, selectedItems]);
+
+  const paginatedSelectAllAction = useMemo(() => {
     if (!isSelectable || !hasMoreItems) {
       return;
     }
@@ -382,7 +383,16 @@ export function ResourceList<TItemType extends ResourceListItemData>({
       content: actionText,
       onAction: handleSelectAllItemsInStore,
     };
-  };
+  }, [
+    handleSelectAllItemsInStore,
+    hasMoreItems,
+    i18n,
+    isFiltered,
+    isSelectable,
+    items.length,
+    resourceName.plural,
+    selectedItems,
+  ]);
 
   const emptySearchResultText = {
     title: i18n.translate('Polaris.ResourceList.emptySearchResultTitle', {
@@ -391,17 +401,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     description: i18n.translate(
       'Polaris.ResourceList.emptySearchResultDescription',
     ),
-  };
-
-  const handleSelectAllItemsInStore = () => {
-    const newlySelectedItems =
-      selectedItems === SELECT_ALL_ITEMS
-        ? getAllItemsOnPage(items, idForItem)
-        : SELECT_ALL_ITEMS;
-
-    if (onSelectionChange) {
-      onSelectionChange(newlySelectedItems);
-    }
   };
 
   const setLoadingPosition = useCallback(() => {
@@ -563,66 +562,30 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     }, 0);
   };
 
-  const selectAllActionsClassNames = classNames(
-    styles.SelectAllActionsWrapper,
-    isSelectAllActionsSticky && styles.SelectAllActionsWrapperSticky,
-    !isSelectAllActionsSticky &&
-      !pagination &&
-      styles.SelectAllActionsWrapperAtEnd,
-    selectMode &&
-      !isSelectAllActionsSticky &&
-      !pagination &&
-      styles.SelectAllActionsWrapperAtEndAppear,
-  );
-
-  const selectAllActionsMarkup = isSelectable ? (
-    <div
-      className={selectAllActionsClassNames}
-      style={{
-        top: isSelectAllActionsSticky
-          ? undefined
-          : selectAllActionsAbsoluteOffset,
-        width: selectAllActionsMaxWidth,
-        bottom: isSelectAllActionsSticky
-          ? selectAllActionsOffsetBottom
-          : undefined,
-        left: isSelectAllActionsSticky ? selectAllActionsOffsetLeft : undefined,
-      }}
-    >
-      <SelectAllActions
-        label={selectAllActionsLabel}
-        selectMode={selectMode}
-        paginatedSelectAllAction={paginatedSelectAllAction()}
-        paginatedSelectAllText={paginatedSelectAllText()}
-        disabled={loading}
-        isSticky={isSelectAllActionsSticky}
-        hasPagination={Boolean(pagination)}
-      />
-    </div>
-  ) : null;
-
   const bulkActionClassNames = classNames(
     styles.BulkActionsWrapper,
     selectMode && styles.BulkActionsWrapperVisible,
   );
 
-  const bulkActionsMarkup =
-    isSelectable && (bulkActions || promotedBulkActions) ? (
-      <div className={bulkActionClassNames}>
-        <BulkActions
-          selectMode={selectMode}
-          onSelectModeToggle={handleSelectMode}
-          promotedActions={promotedBulkActions}
-          actions={bulkActions}
-          disabled={loading}
-          accessibilityLabel={bulkActionsAccessibilityLabel()}
-          selected={selectAllSelectState()}
-          onToggleAll={handleToggleAll}
-          ref={checkableButtonRef}
-          buttonSize="medium"
-        />
-      </div>
-    ) : null;
+  const bulkActionsMarkup = isSelectable ? (
+    <div className={bulkActionClassNames}>
+      <BulkActions
+        selectMode={selectMode}
+        onSelectModeToggle={handleSelectMode}
+        label={selectAllActionsLabel}
+        paginatedSelectAllAction={paginatedSelectAllAction}
+        paginatedSelectAllText={paginatedSelectAllText}
+        promotedActions={promotedBulkActions}
+        actions={bulkActions}
+        disabled={loading}
+        accessibilityLabel={bulkActionsAccessibilityLabel}
+        selected={selectAllSelectState}
+        onToggleAll={handleToggleAll}
+        ref={checkableButtonRef}
+        buttonSize="medium"
+      />
+    </div>
+  ) : null;
 
   const filterControlMarkup = filterControl ? (
     <div className={classNames(!flushFilters && styles.FiltersWrapper)}>
@@ -669,12 +632,12 @@ export function ResourceList<TItemType extends ResourceListItemData>({
   const checkableButtonMarkup = isSelectable ? (
     <div className={styles.CheckableButtonWrapper}>
       <CheckableButton
-        accessibilityLabel={bulkActionsAccessibilityLabel()}
+        accessibilityLabel={bulkActionsAccessibilityLabel}
         label={headerTitle()}
         onToggleAll={handleToggleAll}
         disabled={loading}
         ref={checkableButtonRef}
-        selected={selectAllSelectState()}
+        selected={selectAllSelectState}
       />
     </div>
   ) : null;
@@ -729,7 +692,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
             );
           }}
         </Sticky>
-        {selectAllActionsMarkup}
       </div>
     );
 
@@ -787,23 +749,10 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     </ul>
   ) : null;
 
-  const paginationWrapperClassNames = classNames(
-    styles.PaginationWrapper,
-    selectedItems &&
-      selectedItems.length &&
-      styles.PaginationWrapperWithSelectAllActions,
-    isScrolledPastTop && styles.PaginationWrapperScrolledPastTop,
-  );
+  const paginationWrapperClassNames = classNames(styles.PaginationWrapper);
 
   const paginationMarkup = pagination ? (
-    <div
-      className={paginationWrapperClassNames}
-      style={
-        {
-          '--pc-index-table-pagination-top-offset': `${selectAllActionsPastTopOffset}px`,
-        } as React.CSSProperties
-      }
-    >
+    <div className={paginationWrapperClassNames}>
       <Pagination type="table" {...pagination} />
     </div>
   ) : null;
@@ -820,19 +769,12 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     onSelectionChange: handleSelectionChange,
   };
 
-  const resourceListWrapperClasses = classNames(
-    styles.ResourceListWrapper,
-    Boolean(selectAllActionsMarkup) &&
-      selectMode &&
-      // bulkActions &&
-      !pagination &&
-      styles.ResourceListWrapperWithBulkActions,
-  );
+  const resourceListWrapperClasses = classNames(styles.ResourceListWrapper);
 
   return (
     <ResourceListContext.Provider value={context}>
       {filterControlMarkup}
-      <div className={resourceListWrapperClasses} ref={tableMeasurerRef}>
+      <div className={resourceListWrapperClasses}>
         {headerMarkup}
         {listMarkup}
         {emptySearchStateMarkup}
@@ -840,7 +782,6 @@ export function ResourceList<TItemType extends ResourceListItemData>({
         {loadingWithoutItemsMarkup}
         {paginationMarkup}
       </div>
-      <div ref={selectAllActionsIntersectionRef} />
     </ResourceListContext.Provider>
   );
 }

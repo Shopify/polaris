@@ -15,7 +15,6 @@ export type BulkActionButtonProps = {
   indicator?: boolean;
   handleMeasurement?(width: number): void;
   showContentInButton?: boolean;
-  icon?: ButtonProps['icon'];
   size?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
 } & DisableableAction;
 
@@ -31,7 +30,6 @@ export function BulkActionButton({
   indicator,
   showContentInButton,
   size,
-  icon,
 }: BulkActionButtonProps) {
   const bulkActionButton = useRef<HTMLDivElement>(null);
 
@@ -60,11 +58,8 @@ export function BulkActionButton({
       icon={
         isActivatorForMoreActionsPopover ? (
           <Icon source={MenuHorizontalIcon} tone="base" />
-        ) : (
-          icon
-        )
+        ) : undefined
       }
-      variant="monochromePlain"
     >
       {buttonContent}
     </Button>

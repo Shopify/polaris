@@ -13,10 +13,6 @@ import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
-import {
-  SelectAllActions,
-  useIsSelectAllActionsSticky,
-} from '../SelectAllActions';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 import {Pagination} from '../Pagination';
@@ -217,50 +213,6 @@ function IndexTableBase({
   if (!hasSelected.current && selectedItemsCount !== 0) {
     hasSelected.current = true;
   }
-
-  const {
-    selectAllActionsIntersectionRef,
-    tableMeasurerRef,
-    isSelectAllActionsSticky,
-    selectAllActionsAbsoluteOffset,
-    selectAllActionsMaxWidth,
-    selectAllActionsOffsetLeft,
-    selectAllActionsOffsetBottom,
-    computeTableDimensions,
-    isScrolledPastTop,
-    selectAllActionsPastTopOffset,
-    scrollbarPastTopOffset,
-  } = useIsSelectAllActionsSticky({
-    selectMode,
-    hasPagination: Boolean(pagination),
-    tableType: 'index-table',
-  });
-
-  useEffect(() => {
-    computeTableDimensions();
-  }, [computeTableDimensions, itemCount]);
-
-  useEffect(() => {
-    const callback = (mutationList: MutationRecord[]) => {
-      const hasChildList = mutationList.some(
-        (mutation) => mutation.type === 'childList',
-      );
-      if (hasChildList) {
-        computeTableDimensions();
-      }
-    };
-    const mutationObserver = new MutationObserver(callback);
-
-    if (tableBodyElement.current) {
-      mutationObserver.observe(tableBodyElement.current, {
-        childList: true,
-      });
-
-      return () => {
-        mutationObserver.disconnect();
-      };
-    }
-  }, [computeTableDimensions]);
 
   const tableBodyRef = useCallback(
     (node: Element | null) => {
@@ -720,15 +672,8 @@ function IndexTableBase({
   const scrollBarWrapperClassNames = classNames(
     styles.ScrollBarContainer,
     pagination && styles.ScrollBarContainerWithPagination,
-    shouldShowBulkActions && styles.ScrollBarContainerWithSelectAllActions,
-    selectMode &&
-      isSelectAllActionsSticky &&
-      styles.ScrollBarContainerSelectAllActionsSticky,
     condensed && styles.scrollBarContainerCondensed,
     hideScrollContainer && styles.scrollBarContainerHidden,
-    isScrolledPastTop &&
-      (pagination || shouldShowBulkActions) &&
-      styles.ScrollBarContainerScrolledPastTop,
   );
 
   const scrollBarClassNames = classNames(
@@ -741,11 +686,6 @@ function IndexTableBase({
         <div
           className={scrollBarWrapperClassNames}
           ref={scrollContainerElement}
-          style={
-            {
-              '--pc-index-table-scroll-bar-top-offset': `${scrollbarPastTopOffset}px`,
-            } as React.CSSProperties
-          }
         >
           <div
             onScroll={handleScrollBarScroll}
@@ -835,21 +775,10 @@ function IndexTableBase({
 
   const tableWrapperClassNames = classNames(styles.IndexTableWrapper);
 
-  const paginationWrapperClassNames = classNames(
-    styles.PaginationWrapper,
-    shouldShowBulkActions && styles.PaginationWrapperWithSelectAllActions,
-    isScrolledPastTop && styles.PaginationWrapperScrolledPastTop,
-  );
+  const paginationWrapperClassNames = classNames(styles.PaginationWrapper);
 
   const paginationMarkup = pagination ? (
-    <div
-      className={paginationWrapperClassNames}
-      style={
-        {
-          '--pc-index-table-pagination-top-offset': `${selectAllActionsPastTopOffset}px`,
-        } as React.CSSProperties
-      }
-    >
+    <div className={paginationWrapperClassNames}>
       <Pagination type="table" {...pagination} />
     </div>
   ) : null;
@@ -857,13 +786,12 @@ function IndexTableBase({
   return (
     <>
       <div className={styles.IndexTable}>
-        <div className={tableWrapperClassNames} ref={tableMeasurerRef}>
+        <div className={tableWrapperClassNames}>
           {!shouldShowBulkActions && !condensed && loadingMarkup}
           {tableContentMarkup}
           {scrollBarMarkup}
           {paginationMarkup}
         </div>
-        <div ref={selectAllActionsIntersectionRef} />
       </div>
     </>
   );

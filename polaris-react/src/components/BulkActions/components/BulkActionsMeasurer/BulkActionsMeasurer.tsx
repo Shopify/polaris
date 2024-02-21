@@ -5,12 +5,7 @@ import {BulkActionButton} from '../BulkActionButton';
 import {useEventListener} from '../../../../utilities/use-event-listener';
 import styles from '../../BulkActions.module.scss';
 import type {BulkActionsProps} from '../../BulkActions';
-import {
-  instanceOfMenuGroupDescriptor,
-  instanceOfBulkActionListSection,
-  isNewBadgeInBadgeActions,
-  getActionSections,
-} from '../../utilities';
+import {instanceOfMenuGroupDescriptor} from '../../utilities';
 
 export interface ActionsMeasurements {
   containerWidth: number;
@@ -19,8 +14,6 @@ export interface ActionsMeasurements {
 }
 
 export interface ActionsMeasurerProps {
-  /** Collection of page-level secondary actions */
-  actions?: BulkActionsProps['actions'];
   /** Collection of page-level action groups */
   promotedActions?: BulkActionsProps['promotedActions'];
   disabled?: BulkActionsProps['disabled'];
@@ -31,7 +24,6 @@ export interface ActionsMeasurerProps {
 const ACTION_SPACING = 8;
 
 export function BulkActionsMeasurer({
-  actions = [],
   promotedActions = [],
   disabled,
   buttonSize,
@@ -39,7 +31,6 @@ export function BulkActionsMeasurer({
 }: ActionsMeasurerProps) {
   const i18n = useI18n();
   const containerNode = useRef<HTMLDivElement>(null);
-  const actionSections = getActionSections(actions);
 
   const activatorLabel = i18n.translate(
     'Polaris.ResourceList.BulkActions.moreActionsActivatorLabel',
@@ -70,7 +61,7 @@ export function BulkActionsMeasurer({
 
   useEffect(() => {
     handleMeasurement();
-  }, [handleMeasurement, actions, promotedActions]);
+  }, [handleMeasurement, promotedActions]);
 
   const promotedActionsMarkup = promotedActions.map((action, index) => {
     if (instanceOfMenuGroupDescriptor(action)) {
@@ -80,8 +71,6 @@ export function BulkActionsMeasurer({
           disclosure
           showContentInButton
           content={action.title}
-          icon={action.icon}
-          indicator={isNewBadgeInBadgeActions(actionSections)}
           size={buttonSize}
         />
       );
@@ -96,35 +85,11 @@ export function BulkActionsMeasurer({
     );
   });
 
-  const actionsMarkup = actions.map((action, index) => {
-    if (instanceOfBulkActionListSection(action)) {
-      return action.items.map((item) => (
-        <BulkActionButton
-          key={index}
-          showContentInButton
-          content={item.content}
-          icon={item.icon}
-          indicator={isNewBadgeInBadgeActions(actionSections)}
-          size={buttonSize}
-        />
-      ));
-    }
-    return (
-      <BulkActionButton
-        key={index}
-        disabled={disabled}
-        {...action}
-        size={buttonSize}
-      />
-    );
-  });
-
   useEventListener('resize', handleMeasurement);
 
   return (
-    <div className={styles.BulkActionsLayoutMeasurer} ref={containerNode}>
+    <div className={styles.BulkActionsMeasurerLayout} ref={containerNode}>
       {promotedActionsMarkup}
-      {actionsMarkup}
       {activator}
     </div>
   );

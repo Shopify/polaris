@@ -26,7 +26,12 @@ import {
   Thumbnail,
   Badge,
 } from '@shopify/polaris';
-import {AffiliateIcon, EditIcon, ExportIcon} from '@shopify/polaris-icons';
+import {
+  AffiliateIcon,
+  EditIcon,
+  ExportIcon,
+  ProductIcon,
+} from '@shopify/polaris-icons';
 
 import {IndexTable} from './IndexTable';
 
@@ -1306,24 +1311,6 @@ export function WithBulkActionsAndSelectionAcrossPages() {
     },
   ];
   const bulkActions = [
-    {
-      content: 'Add tags',
-      onAction: () => console.log('Todo: implement bulk add tags'),
-    },
-    {
-      title: 'Bulk action section',
-      items: [
-        {
-          content: 'Do foo',
-        },
-        {
-          content: 'Do bar',
-        },
-        {
-          content: 'Do baz',
-        },
-      ],
-    },
     {
       content: 'Remove tags',
       onAction: () => console.log('Todo: implement bulk remove tags'),

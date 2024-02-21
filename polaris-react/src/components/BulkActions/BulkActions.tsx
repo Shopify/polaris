@@ -4,7 +4,6 @@ import React, {
   useState,
   useEffect,
   useCallback,
-  useMemo,
 } from 'react';
 
 import {classNames} from '../../utilities/css';
@@ -21,7 +20,6 @@ import {Popover} from '../Popover';
 import {InlineStack} from '../InlineStack';
 import {CheckableButton} from '../CheckableButton';
 import {UnstyledButton} from '../UnstyledButton';
-import {Box} from '../Box';
 import type {ButtonProps} from '../Button';
 
 import {
@@ -36,8 +34,6 @@ import {
   instanceOfMenuGroupDescriptor,
   instanceOfBulkActionListSection,
   getActionSections,
-  flattenActions,
-  getUnflattenedHiddenActions,
 } from './utilities';
 import styles from './BulkActions.module.scss';
 
@@ -45,12 +41,9 @@ export type BulkAction = DisableableAction & BadgeAction;
 
 type BulkActionListSection = ActionListSection;
 
-// type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 type AriaLive = 'off' | 'polite' | undefined;
 
 export interface BulkActionsProps {
-  /** List is in a selectable state */
-  selectMode?: boolean;
   /** Visually hidden text for screen readers */
   accessibilityLabel?: string;
   /** State of the bulk actions checkbox */
@@ -67,27 +60,27 @@ export interface BulkActionsProps {
   actions?: (BulkAction | BulkActionListSection)[];
   /** Disables bulk actions */
   disabled?: boolean;
-  /** Callback when selectable state of list is changed */
-  onSelectModeToggle?(selectMode: boolean): void;
   /** Callback when more actions button is toggled */
   onMoreActionPopoverToggle?(isOpen: boolean): void;
-  /** Used for forwarding the ref */
-  innerRef?: React.Ref<any>;
   /** The size of the buttons to render */
   buttonSize?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
+  /** Label for the bulk actions */
+  label?: string;
+  /** @deprecated List is in a selectable state. No longer needed due to removal of Transition */
+  selectMode?: boolean;
+  /** @deprecated Used for forwarding the ref. Use `ref` prop instead */
+  innerRef?: React.Ref<any>;
+  /** @deprecated Callback when selectable state of list is changed. Unused callback */
+  onSelectModeToggle?(selectMode: boolean): void;
   /** @deprecated If the BulkActions is currently sticky in view */
   isSticky?: boolean;
   /** @deprecated The width of the BulkActions */
   width?: number;
-  /** Label for the bulk actions */
-  label?: string;
 }
 
 interface BulkActionsState {
   visiblePromotedActions: number[];
   hiddenPromotedActions: number[];
-  visibleActions: number[];
-  hiddenActions: number[];
   actionsWidths: number[];
   containerWidth: number;
   disclosureWidth: number;
@@ -106,13 +99,13 @@ export const BulkActions = forwardRef(function BulkActions(
     accessibilityLabel,
     selected,
     onToggleAll,
+    onMoreActionPopoverToggle,
+    width,
   }: BulkActionsProps,
   ref,
 ) {
   const i18n = useI18n();
   const [popoverActive, setPopoverActive] = useState(false);
-
-  const flattenedActions = useMemo(() => flattenActions(actions), [actions]);
 
   const [state, setState] = useReducer(
     (
@@ -125,8 +118,6 @@ export const BulkActions = forwardRef(function BulkActions(
       disclosureWidth: 0,
       containerWidth: Infinity,
       actionsWidths: [],
-      visibleActions: [],
-      hiddenActions: [],
       visiblePromotedActions: [],
       hiddenPromotedActions: [],
       hasMeasured: false,
@@ -134,8 +125,6 @@ export const BulkActions = forwardRef(function BulkActions(
   );
 
   const {
-    visibleActions,
-    hiddenActions,
     visiblePromotedActions,
     hiddenPromotedActions,
     containerWidth,
@@ -145,35 +134,31 @@ export const BulkActions = forwardRef(function BulkActions(
   } = state;
 
   useEffect(() => {
-    if (containerWidth === 0) {
+    if (
+      containerWidth === 0 ||
+      !promotedActions ||
+      promotedActions.length === 0
+    ) {
       return;
     }
-    const {
-      visibleActions,
-      visiblePromotedActions,
-      hiddenActions,
-      hiddenPromotedActions,
-    } = getVisibleAndHiddenActionsIndices(
-      promotedActions,
-      flattenedActions,
-      disclosureWidth,
-      actionsWidths,
-      containerWidth,
-    );
+    const {visiblePromotedActions, hiddenPromotedActions} =
+      getVisibleAndHiddenActionsIndices(
+        promotedActions,
+        disclosureWidth,
+        actionsWidths,
+        containerWidth,
+      );
     setState({
-      visibleActions,
       visiblePromotedActions,
-      hiddenActions,
       hiddenPromotedActions,
       hasMeasured: containerWidth !== Infinity,
     });
   }, [
     containerWidth,
     disclosureWidth,
-    flattenedActions,
     promotedActions,
     actionsWidths,
-    setState,
+    // setState,
   ]);
 
   const activatorLabel =
@@ -215,8 +200,9 @@ export const BulkActions = forwardRef(function BulkActions(
   };
 
   const togglePopover = useCallback(() => {
+    onMoreActionPopoverToggle?.(popoverActive);
     setPopoverActive((popoverActive) => !popoverActive);
-  }, []);
+  }, [onMoreActionPopoverToggle, popoverActive]);
 
   const handleMeasurement = useCallback(
     (measurements: ActionsMeasurements) => {
@@ -225,23 +211,19 @@ export const BulkActions = forwardRef(function BulkActions(
         containerWidth,
         disclosureWidth,
       } = measurements;
+      if (!promotedActions || promotedActions.length === 0) {
+        return;
+      }
 
-      const {
-        visibleActions,
-        hiddenActions,
-        visiblePromotedActions,
-        hiddenPromotedActions,
-      } = getVisibleAndHiddenActionsIndices(
-        promotedActions,
-        flattenedActions,
-        disclosureWidth,
-        actionsWidths,
-        containerWidth,
-      );
+      const {visiblePromotedActions, hiddenPromotedActions} =
+        getVisibleAndHiddenActionsIndices(
+          promotedActions,
+          disclosureWidth,
+          actionsWidths,
+          containerWidth,
+        );
 
       setState({
-        visibleActions,
-        hiddenActions,
         visiblePromotedActions,
         hiddenPromotedActions,
         actionsWidths,
@@ -250,7 +232,7 @@ export const BulkActions = forwardRef(function BulkActions(
         hasMeasured: true,
       });
     },
-    [flattenedActions, promotedActions],
+    [promotedActions],
   );
 
   const actionSections = getActionSections(actions);
@@ -288,38 +270,11 @@ export const BulkActions = forwardRef(function BulkActions(
         })
     : null;
 
-  const actionsMarkup = flattenedActions
-    ? flattenedActions
-        .filter((_, index) => {
-          if (!visibleActions.includes(index)) {
-            return false;
-          }
-
-          return true;
-        })
-        .map((action, index) => {
-          return (
-            <BulkActionButton
-              key={index}
-              disabled={disabled}
-              {...action}
-              size={buttonSize}
-            />
-          );
-        })
-    : null;
-
-  const hiddenActionObjects =
-    getUnflattenedHiddenActions(actions, hiddenActions) || [];
-
   const hiddenPromotedActionObjects = hiddenPromotedActions.map(
     (index) => promotedActions?.[index],
   );
 
-  const allHiddenActions = [
-    ...hiddenPromotedActionObjects,
-    ...hiddenActionObjects,
-  ]
+  const allHiddenActions = [...hiddenPromotedActionObjects, ...(actions || [])]
     .filter((action) => action)
     .map((action: BulkAction | MenuGroupDescriptor | BulkActionListSection) => {
       if (instanceOfBulkActionListSection(action)) {
@@ -330,40 +285,35 @@ export const BulkActions = forwardRef(function BulkActions(
       return {items: [action]};
     });
 
-  const hiddenActionsMarkup =
-    hiddenActions.length > 0 || hiddenPromotedActions.length > 0 ? (
-      <Box
-        paddingInlineStart="200"
-        borderInlineStartWidth="025"
-        borderColor="border"
+  const activator = (
+    <BulkActionButton
+      disclosure
+      showContentInButton={!promotedActionsMarkup}
+      onAction={togglePopover}
+      content={activatorLabel}
+      disabled={disabled}
+      indicator={isNewBadgeInBadgeActions(actionSections)}
+      size={buttonSize}
+    />
+  );
+
+  const actionsMarkup =
+    allHiddenActions.length > 0 ? (
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        preferredAlignment="right"
+        onClose={togglePopover}
       >
-        <Popover
-          active={popoverActive}
-          activator={
-            <BulkActionButton
-              disclosure
-              showContentInButton={!promotedActionsMarkup}
-              onAction={togglePopover}
-              content={activatorLabel}
-              disabled={disabled}
-              indicator={isNewBadgeInBadgeActions(actionSections)}
-              size={buttonSize}
-            />
-          }
-          preferredAlignment="right"
-          onClose={togglePopover}
-        >
-          <ActionList
-            sections={allHiddenActions}
-            onActionAnyItem={togglePopover}
-          />
-        </Popover>
-      </Box>
+        <ActionList
+          sections={allHiddenActions}
+          onActionAnyItem={togglePopover}
+        />
+      </Popover>
     ) : null;
 
   const measurerMarkup = (
     <BulkActionsMeasurer
-      actions={flattenedActions}
       promotedActions={promotedActions}
       disabled={disabled}
       buttonSize={buttonSize}
@@ -372,13 +322,13 @@ export const BulkActions = forwardRef(function BulkActions(
   );
 
   return (
-    <div className={styles.BulkActions}>
+    <div className={styles.BulkActions} style={width ? {width} : undefined}>
       <InlineStack gap="200" blockAlign="center">
         <InlineStack gap="200" blockAlign="center">
           <CheckableButton {...checkableButtonProps} />
           {paginatedSelectAllMarkup}
         </InlineStack>
-        <div className={styles.BulkActionsLayoutOuter}>
+        <div className={styles.BulkActionsOuterLayout}>
           {measurerMarkup}
           <div
             className={classNames(
@@ -387,10 +337,9 @@ export const BulkActions = forwardRef(function BulkActions(
             )}
           >
             {promotedActionsMarkup}
-            {actionsMarkup}
-            {hiddenActionsMarkup}
           </div>
         </div>
+        {actionsMarkup}
       </InlineStack>
     </div>
   );
