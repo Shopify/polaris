@@ -7,7 +7,7 @@
   </a>
 </div>
 
-# Polaris
+# Polaris!
 
 > Build. Contribute. Evolve. Shape the merchant experience for Shopify’s core product, the admin.
 
