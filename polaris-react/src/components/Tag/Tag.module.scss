@@ -231,11 +231,12 @@ $height: 20px;
   background-color: var(--p-color-bg-fill-tertiary);
 
   &:hover {
-    background: var(--p-color-bg-fill-tertiary-hover);
+    color: var(--p-color-icon-secondary-hover);
   }
 
-  &:active {
-    background: var(--p-color-bg-fill-tertiary-active);
+  &:active,
+  &:focus {
+    color: var(--p-color-icon-secondary-active);
   }
 }
 
@@ -257,11 +258,18 @@ $height: 20px;
     transparent 100%
   );
 }
-/* stylelint-disable-next-line selector-max-class, selector-max-specificity -- match tag hover color */
-.sizeLarge.removable.linkable:hover .overlay {
-  background: linear-gradient(
-    to left,
-    var(--p-color-bg-fill-tertiary-hover) 0%,
-    transparent 100%
-  );
+/* stylelint-disable-next-line selector-max-class -- match tag hover color */
+.sizeLarge.removable.linkable {
+  /* stylelint-disable-next-line selector-max-class, selector-max-specificity  -- match tag hover color */
+  .Button {
+    background-color: var(--p-color-bg-fill-tertiary-hover);
+  }
+  /* stylelint-disable-next-line selector-max-class, selector-max-specificity  -- match tag hover color */
+  &:hover .overlay {
+    background: linear-gradient(
+      to left,
+      var(--p-color-bg-fill-tertiary-hover) 0%,
+      transparent 100%
+    );
+  }
 }
