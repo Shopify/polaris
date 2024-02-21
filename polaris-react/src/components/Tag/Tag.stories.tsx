@@ -154,12 +154,13 @@ export function RemovableLarge() {
     [],
   );
 
-  const tagMarkup = selectedTags.map((option, index) => (
+  const tagMarkup = selectedTags.map((option) => (
     <Tag size="large" key={option} onRemove={removeTag(option)}>
       {option}
     </Tag>
   ));
-  const tagWithLinkMarkup = selectedTags.map((option, index) => (
+
+  const tagWithLinkMarkup = selectedTags.map((option) => (
     <Tag size="large" key={option} onRemove={removeTag(option)} url="#">
       {option}
     </Tag>

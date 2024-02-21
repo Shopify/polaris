@@ -210,46 +210,59 @@ $height: 20px;
 }
 
 .sizeLarge,
-.sizeLarge:is(.linkable),
-.sizeLarge:is(.removable),
 .sizeLarge:is(.removable, .linkable) {
   min-height: 24px;
   padding: 0 var(--p-space-200);
 }
 
-.sizeLarge.removable {
-  padding-right: var(--p-space-200);
+/* stylelint-disable-next-line selector-max-class, selector-max-specificity -- override code above */
+.sizeLarge .Link.segmented::after {
+  margin-right: 0;
 }
 
 .sizeLarge .Button {
   opacity: 0;
   position: absolute;
-  right: 0;
+  right: var(--p-space-050);
   left: auto;
-  width: calc(20px + var(--p-space-100));
+  width: 20px;
   height: 20px;
-  padding-left: var(--p-space-100);
   margin: 0;
+  background-color: var(--p-color-bg-fill-tertiary);
+
+  &:hover {
+    background: var(--p-color-bg-fill-tertiary-hover);
+  }
+
+  &:active {
+    background: var(--p-color-bg-fill-tertiary-active);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%;
+    bottom: 0;
+    left: calc(-1 * var(--p-width-200));
+    pointer-events: none;
+    background: linear-gradient(
+      to left,
+      var(--p-color-bg-fill-tertiary) 0%,
+      transparent 100%
+    );
+  }
 }
-/* stylelint-disable-next-line selector-max-specificity -- specificity override */
-.sizeLarge:is(.linkable):hover .Button,
-.sizeLarge:is(.removable):hover .Button,
-.sizeLarge:is(.removable, .linkable):hover .Button,
+
+.sizeLarge:hover .Button,
 .sizeLarge .Button:focus-visible {
   opacity: 1;
+}
+/* stylelint-disable-next-line selector-max-class, selector-max-specificity -- match tag hover color */
+.sizeLarge.removable.linkable:hover .Button::before {
   background: linear-gradient(
     to left,
     var(--p-color-bg-fill-tertiary-hover) 0%,
-    var(--p-color-bg-fill-tertiary-hover) 65%,
-    transparent 100%
-  );
-}
-/* stylelint-disable-next-line selector-max-specificity -- specificity override */
-.sizeLarge:is(.removable):not(.linkable):hover .Button {
-  background: linear-gradient(
-    to left,
-    var(--p-color-bg-fill-tertiary) 0%,
-    var(--p-color-bg-fill-tertiary) 65%,
     transparent 100%
   );
 }
