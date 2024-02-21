@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useCallback, useEffect} from 'react';
 import {getMediaConditions, themeDefault} from '@shopify/polaris-tokens';
 import type {
   BreakpointsAlias,
@@ -124,43 +124,24 @@ export interface UseBreakpointsOptions {
  * breakpoints //=> All values will be `true` during SSR
  */
 export function useBreakpoints(options?: UseBreakpointsOptions) {
-  // On SSR, and initial CSR, we force usage of the defaults to avoid a
-  // hydration mismatch error.
-  // Later, in the effect, we will call this again on the client side without
-  // any defaults to trigger a more accurate client side evaluation.
   const [breakpoints, setBreakpoints] = useState(
     getMatches(options?.defaults, true),
   );
 
-  useIsomorphicLayoutEffect(() => {
-    const mediaQueryLists = breakpointsQueryEntries.map(([_, query]) =>
-      window.matchMedia(query),
-    );
+  const checkBreakpoints = useCallback(() => {
+    const matches = getMatches();
+    setBreakpoints(matches);
+  }, []);
 
-    const handler = () => setBreakpoints(getMatches());
+  useEffect(() => {
+    const intervalId = setInterval(checkBreakpoints, 1000);
 
-    mediaQueryLists.forEach((mql) => {
-      if (mql.addListener) {
-        mql.addListener(handler);
-      } else {
-        mql.addEventListener('change', handler);
-      }
-    });
-
-    // Trigger the breakpoint recalculation at least once client-side to ensure
-    // we don't have stale default values from SSR.
-    handler();
+    checkBreakpoints();
 
     return () => {
-      mediaQueryLists.forEach((mql) => {
-        if (mql.removeListener) {
-          mql.removeListener(handler);
-        } else {
-          mql.removeEventListener('change', handler);
-        }
-      });
+      clearInterval(intervalId);
     };
-  }, []);
+  }, [checkBreakpoints]);
 
   return breakpoints;
 }
@@ -183,15 +164,19 @@ export function getBreakpointsQueryEntries(breakpoints: BreakpointsTokenGroup) {
   const mediaConditionEntries = Object.entries(getMediaConditions(breakpoints));
 
   return mediaConditionEntries
-    .map(([breakpointsToken, mediaConditions]) =>
-      Object.entries(mediaConditions).map(([direction, mediaCondition]) => {
-        const breakpointsAlias = breakpointsToken.split('-')[1];
+    .map(
+      ([breakpointsToken, mediaConditions]: [
+        string,
+        {[key: string]: string},
+      ]) =>
+        Object.entries(mediaConditions).map(([direction, mediaCondition]) => {
+          const breakpointsAlias = breakpointsToken.split('-')[1];
 
-        // e.g. smUp, smDown, smOnly, etc.
-        const directionAlias = `${breakpointsAlias}${capitalize(direction)}`;
+          // e.g. smUp, smDown, smOnly, etc.
+          const directionAlias = `${breakpointsAlias}${capitalize(direction)}`;
 
-        return [directionAlias, mediaCondition];
-      }),
+          return [directionAlias, mediaCondition];
+        }),
     )
     .flat() as [BreakpointsDirectionAlias, string][];
 }
