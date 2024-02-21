@@ -17,7 +17,6 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
   - Document any alternatives
   - Document automated migration(s)
   - Document manual migration(s)
-- Add supporting documentation for deprecation in DEPRECATED.md
 - Remove component in next major Polaris version branch
 
 ## Props
@@ -38,7 +37,6 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
   - Document any alternatives
   - Document automated migration(s)
   - Document manual migration(s)
-- Add supporting documentation for deprecation in DEPRECATED.md
 - Remove prop in next major Polaris version branch
 
 ## Prop values
@@ -82,7 +80,6 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
   - Document any alternatives
   - Document automated migration(s)
   - Document manual migration(s)
-- Add supporting documentation for deprecation in DEPRECATED.md
 - Remove prop value in next major Polaris version branch
 
 ## Tokens
@@ -93,5 +90,4 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
   - Document any alternatives
   - Document automated migration(s)
   - Document manual migration(s)
-- Add supporting documentation for deprecation in DEPRECATED.md
 - Remove token in next major Polaris version branch
