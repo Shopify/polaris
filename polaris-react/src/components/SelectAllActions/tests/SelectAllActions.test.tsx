@@ -4,6 +4,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {CheckableButton} from '../../CheckableButton';
 import {UnstyledButton} from '../../UnstyledButton';
+// eslint-disable-next-line import/no-deprecated
 import {SelectAllActions} from '../SelectAllActions';
 import styles from '../SelectAllActions.module.scss';
 
