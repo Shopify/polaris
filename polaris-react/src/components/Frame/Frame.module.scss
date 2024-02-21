@@ -230,7 +230,7 @@ $sidebar-breakpoint: 1200px;
     /* stylelint-disable-next-line polaris/media-queries/polaris/media-query-allowed-list -- custom breakpoint */
     @media screen and (min-width: #{$sidebar-breakpoint}) {
       /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- private token from component */
-      margin-right: var(--pc-sidebar-width);
+      padding-right: var(--pc-sidebar-width);
     }
   }
 }
