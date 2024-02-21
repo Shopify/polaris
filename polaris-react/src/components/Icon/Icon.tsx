@@ -2,6 +2,7 @@ import React from 'react';
 
 import {Text} from '../Text';
 import {classNames, variationName} from '../../utilities/css';
+import {useBreakpoints} from '../../utilities/breakpoints';
 import type {IconSource} from '../../types';
 
 import styles from './Icon.module.scss';
@@ -62,6 +63,8 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
     tone && styles[variationName('tone', tone)],
   );
 
+  const {mdDown} = useBreakpoints();
+
   const SourceComponent = source;
   const contentMarkup = {
     function: (
@@ -69,6 +72,7 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
         className={styles.Svg}
         focusable="false"
         aria-hidden="true"
+        viewBox={mdDown ? '3 3 14 14' : undefined}
       />
     ),
     placeholder: <div className={styles.Placeholder} />,
