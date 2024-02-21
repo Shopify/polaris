@@ -11,16 +11,20 @@ npx @shopify/polaris-migrator react-update-component-prop --componentName Text -
 ```
 
 <details><summary>✅ Post-migration RegExp validation</summary>
+
 ```
 <Text[^>\w](?:[^>]|\n)*?variant="heading2xl"
 ```
+
 </details>
 
 <details><summary>💡 Migration example</summary>
+
 ```diff
 - <Text variant="heading2xl">
 + <Text variant="headingXl">
 ```
+
 </details>
 
 #### Replace `variant="heading3xl"` prop with `variant="headingXl"`
@@ -30,16 +34,20 @@ npx @shopify/polaris-migrator react-update-component-prop --componentName Text -
 ```
 
 <details><summary>✅ Post-migration RegExp validation</summary>
+
 ```
 <Text[^>\w](?:[^>]|\n)*?variant="heading3xl"
 ```
+
 </details>
 
 <details><summary>💡 Migration example</summary>
+
 ```diff
 - <Text variant="heading3xl">
 + <Text variant="headingXl">
 ```
+
 </details>
 
 ## Token migrations
@@ -49,6 +57,7 @@ npx @shopify/polaris-migrator react-update-component-prop --componentName Text -
 To replace deprecated `font` custom properties, you can run the [v13-styles-replace-custom-property-font](/tools/polaris-migrator#v13-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
 
 <details><summary>💡 Migration example</summary>
+
 ```diff
 - font-size: var(--p-font-size-750);
 + font-size: var(--p-font-size-600);
