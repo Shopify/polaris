@@ -46,16 +46,18 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
   - Add a console.warn() for deprecated prop value(s) to component
 
   ```tsx
-  const deprecatedVariants = ['value1', 'value2'];
+  const deprecatedVariants: {[V in Variant]?: Variant} = {
+    heading2xl: 'headingXl',
+    heading3xl: 'headingXl',
+  };
 
   if (
     process.env.NODE_ENV === 'development' &&
     variant &&
-    deprecatedVariants.includes(variant)
+    Object.prototype.hasOwnProperty.call(deprecatedVariants, variant)
   ) {
-    // eslint-disable-next-line no-console
     console.warn(
-      `Deprecation: <Component variant="${variant}" />. The value "${variant}" will be removed in a future major version of Polaris. Use "value3" instead.`,
+      `Deprecation: <Text variant="${variant}" />. The value "${variant}" will be removed in a future major version of Polaris. Use "${deprecatedVariants[variant]}" instead.`,
     );
   }
   ```

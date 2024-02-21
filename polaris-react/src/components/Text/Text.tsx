@@ -95,7 +95,7 @@ export const Text = ({
   if (
     process.env.NODE_ENV === 'development' &&
     variant &&
-    variant in deprecatedVariants
+    Object.prototype.hasOwnProperty.call(deprecatedVariants, variant)
   ) {
     // eslint-disable-next-line no-console
     console.warn(
