@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.4.0
+
+### Minor Changes
+
+- [#11609](https://github.com/Shopify/polaris/pull/11609) [`c9e217d9d`](https://github.com/Shopify/polaris/commit/c9e217d9d7e1291ce7b83e51c1e1876718895e93) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated icon set with consistency improvements
+
 ## 8.3.0
 
 ### Minor Changes
