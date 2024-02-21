@@ -83,7 +83,9 @@ npx @shopify/polaris-migrator v13-styles-replace-custom-property-font "**/*.{css
 
 After migrating, use the following RegExp to check for any additional instances of `font` custom properties across all file types:
 
-```(?:--p-font-size-750|--p-font-size-800|--p-font-size-900|--p-font-size-1000|--p-font-letter-spacing-denser|--p-font-letter-spacing-densest|--p-font-line-height-1000|--p-font-line-height-1200)|--p-text-heading-3xl-font-family|--p-text-heading-3xl-font-size|--p-text-heading-3xl-font-weight|--p-text-heading-3xl-font-letter-spacing|--p-text-heading-3xl-font-line-height|--p-text-heading-2xl-font-family|--p-text-heading-2xl-font-size|--p-text-heading-2xl-font-weight|--p-text-heading-2xl-font-letter-spacing|--p-text-heading-2xl-font-line-height(?![\w-])```
+```
+(?:--p-font-size-750|--p-font-size-800|--p-font-size-900|--p-font-size-1000|--p-font-letter-spacing-denser|--p-font-letter-spacing-densest|--p-font-line-height-1000|--p-font-line-height-1200)|--p-text-heading-3xl-font-family|--p-text-heading-3xl-font-size|--p-text-heading-3xl-font-weight|--p-text-heading-3xl-font-letter-spacing|--p-text-heading-3xl-font-line-height|--p-text-heading-2xl-font-family|--p-text-heading-2xl-font-size|--p-text-heading-2xl-font-weight|--p-text-heading-2xl-font-letter-spacing|--p-text-heading-2xl-font-line-height(?![\w-])
+```
 
 </details>
 
