@@ -294,10 +294,10 @@ type MakeValueMapper<AllProperties, PropPaths> =
   | ((...args: []) => unknown);
 
 function create4_9_5<
-  PropertyToAliases extends AliasConfig,
-  Breakpoints extends BreakpointsShape,
-  Modifiers extends ModifiersShape,
-  PseudoElements extends PseudoElementsShape,
+  PropertyToAliases extends AliasConfig = Record<never, never>,
+  Breakpoints extends BreakpointsShape = Record<never, never>,
+  Modifiers extends ModifiersShape = Record<never, never>,
+  PseudoElements extends PseudoElementsShape = Record<never, never>,
   AllProperties = Simplify<
     Partial<SimplifiedAliasesToObjectTypes<PropertyToAliases, Properties>>
     & Properties
@@ -323,33 +323,23 @@ function create4_9_5<
         keyof Breakpoints,
       ]
   >,
-  ResponsiveProperties = [IsObject<Breakpoints>] extends [true]
-    ? {
-        [Key in keyof AllProperties]+?:
-          | AllProperties[Key]
-          | {
-              [Breakpoint in keyof Breakpoints]+?: AllProperties[Key];
-            };
-      }
-    : AllProperties,
-  ResponsivePropertiesWithPseudoElements = [
-    IsObject<PseudoElements>,
-  ] extends [true]
-    ? Simplify<
-        ResponsiveProperties & {
-          [PseudoElement in keyof PseudoElements]+?: ResponsiveProperties;
-        }
-      >
-    : ResponsiveProperties,
-  ResponsiveModifiablePropsWithPseudoElements = [
-    IsObject<Modifiers>,
-  ] extends [true]
-    ? Simplify<
-        ResponsivePropertiesWithPseudoElements & {
-          [Modifier in keyof Modifiers]+?: ResponsivePropertiesWithPseudoElements;
-        }
-      >
-    : ResponsivePropertiesWithPseudoElements,
+  ResponsiveProperties = {
+    [Key in keyof AllProperties]+?:
+      | AllProperties[Key]
+      | {
+          [Breakpoint in keyof Breakpoints]+?: AllProperties[Key];
+        };
+  },
+  ResponsivePropertiesWithPseudoElements = Simplify<
+    ResponsiveProperties & {
+      [PseudoElement in keyof PseudoElements]+?: ResponsiveProperties;
+    }
+  >,
+  ResponsiveModifiablePropsWithPseudoElements = Simplify<
+    ResponsivePropertiesWithPseudoElements & {
+      [Modifier in keyof Modifiers]+?: ResponsivePropertiesWithPseudoElements;
+    }
+  >,
 >(
   options: {
   /**
@@ -604,10 +594,16 @@ const modifiers = {
   _link: ':link',
 } as const;
 
+const breakpoints = {
+  xs: '&',
+  sm: '@media ()'
+} as const;
+
 // Should work in TS v4.7.4+
 const fn2 = create4_9_5({
   aliases,
   modifiers,
+  breakpoints,
   valueMapper: (value, key, path) => {
     console.log(path);
     console.log(key);
@@ -628,7 +624,9 @@ const fn2 = create4_9_5({
 });
 
 fn2({
-  backgroundPosition: 'center', fg: 'red', backgroundPositionX: 'left',
+  backgroundPosition: 'center',
+  fg: 'red',
+  backgroundPositionX: 'left',
   _hover: {
     color: 'blue'
   }
