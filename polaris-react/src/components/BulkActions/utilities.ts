@@ -27,15 +27,17 @@ export function getVisibleAndHiddenActionsIndices(
     visiblePromotedActions.push(...arrayOfPromotedActionsIndices);
   } else {
     let accumulatedWidth = 0;
+    let hasReturned = false;
 
     arrayOfPromotedActionsIndices.forEach((currentPromotedActionsIndex) => {
       const currentActionsWidth = actionsWidths[currentPromotedActionsIndex];
-
-      if (
+      const notEnoughSpace =
         accumulatedWidth + currentActionsWidth >=
-        containerWidth - disclosureWidth
-      ) {
+        containerWidth - disclosureWidth;
+
+      if (notEnoughSpace || hasReturned) {
         hiddenPromotedActions.push(currentPromotedActionsIndex);
+        hasReturned = true;
         return;
       }
 

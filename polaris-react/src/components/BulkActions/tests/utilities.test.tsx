@@ -51,7 +51,7 @@ describe('bulk actions utilities', () => {
       expect(result.hiddenPromotedActions).toStrictEqual([0, 1, 2, 3, 4]);
     });
 
-    it('will show not-in-order promotedActions if the other action widths do not fit', () => {
+    it('will not show not-in-order promotedActions if the other action widths do not fit', () => {
       const customActionWidths = [50, 400, 400, 60, 350];
       const result = getVisibleAndHiddenActionsIndices(
         promotedActions,
@@ -60,8 +60,8 @@ describe('bulk actions utilities', () => {
         containerWidth,
       );
 
-      expect(result.visiblePromotedActions).toStrictEqual([0, 3]);
-      expect(result.hiddenPromotedActions).toStrictEqual([1, 2, 4]);
+      expect(result.visiblePromotedActions).toStrictEqual([0]);
+      expect(result.hiddenPromotedActions).toStrictEqual([1, 2, 3, 4]);
     });
 
     it('hides all promotedActions and actions when actionsWidths is larger than container width', () => {

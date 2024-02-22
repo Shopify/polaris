@@ -1278,12 +1278,10 @@ export function WithBulkActionsAndSelectionAcrossPages() {
   const promotedBulkActions = [
     {
       content: 'Rename customers',
-      icon: AffiliateIcon,
       onAction: () => console.log('Todo: implement bulk rename'),
     },
     {
       title: 'Edit customers',
-      icon: EditIcon,
       actions: [
         {
           content: 'Add customers',
@@ -1297,7 +1295,6 @@ export function WithBulkActionsAndSelectionAcrossPages() {
     },
     {
       title: 'Export',
-      icon: ExportIcon,
       actions: [
         {
           content: 'Export as PDF',

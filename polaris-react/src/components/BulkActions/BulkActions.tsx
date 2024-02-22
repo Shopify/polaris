@@ -274,16 +274,37 @@ export const BulkActions = forwardRef(function BulkActions(
     (index) => promotedActions?.[index],
   );
 
-  const allHiddenActions = [...hiddenPromotedActionObjects, ...(actions || [])]
-    .filter((action) => action)
-    .map((action: BulkAction | MenuGroupDescriptor | BulkActionListSection) => {
-      if (instanceOfBulkActionListSection(action)) {
-        return {items: [...action.items]};
-      } else if (instanceOfMenuGroupDescriptor(action)) {
-        return {items: [...action.actions]};
+  const mergedHiddenPromotedActions = hiddenPromotedActionObjects.reduce(
+    (memo, action) => {
+      if (!action) return memo;
+      if (instanceOfMenuGroupDescriptor(action)) {
+        return memo.concat(action.actions);
       }
-      return {items: [action]};
-    });
+      return memo.concat(action);
+    },
+    [] as (BulkAction | MenuGroupDescriptor)[],
+  );
+
+  const hiddenPromotedSection = {
+    items: mergedHiddenPromotedActions,
+  };
+
+  const allHiddenActions = actions
+    ? actions
+        .filter((action) => action)
+        .map(
+          (
+            action: BulkAction | MenuGroupDescriptor | BulkActionListSection,
+          ) => {
+            if (instanceOfBulkActionListSection(action)) {
+              return {items: [...action.items]};
+            } else if (instanceOfMenuGroupDescriptor(action)) {
+              return {items: [...action.actions]};
+            }
+            return {items: [action]};
+          },
+        )
+    : [];
 
   const activator = (
     <BulkActionButton
@@ -306,7 +327,7 @@ export const BulkActions = forwardRef(function BulkActions(
         onClose={togglePopover}
       >
         <ActionList
-          sections={allHiddenActions}
+          sections={[hiddenPromotedSection, ...allHiddenActions]}
           onActionAnyItem={togglePopover}
         />
       </Popover>
