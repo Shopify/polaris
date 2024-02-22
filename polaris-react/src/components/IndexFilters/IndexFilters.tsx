@@ -472,14 +472,16 @@ export function IndexFilters({
                 >
                   <div className={styles.ButtonWrap}>
                     <InlineStack gap="200" align="start" blockAlign="center">
-                      <div
-                        style={{
-                          ...defaultStyle,
-                          ...transitionStyles[state],
-                        }}
-                      >
-                        {updateButtonsMarkup}
-                      </div>
+                      {updateButtonsMarkup ? (
+                        <div
+                          style={{
+                            ...defaultStyle,
+                            ...transitionStyles[state],
+                          }}
+                        >
+                          {updateButtonsMarkup}
+                        </div>
+                      ) : null}
                       {sortMarkup}
                     </InlineStack>
                   </div>

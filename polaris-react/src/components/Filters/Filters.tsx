@@ -134,7 +134,7 @@ export function Filters({
           blockAlign="center"
           gap={{
             xs: '400',
-            md: '300',
+            md: '200',
           }}
         >
           <div
