@@ -1,5 +1,5 @@
 'use strict';
-/* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/consistent-indexed-object-style, @typescript-eslint/ban-types -- types are stricter and better. Shhhh */
+/* eslint-disable @typescript-eslint/consistent-type-definitions, @typescript-eslint/consistent-indexed-object-style, @typescript-eslint/ban-types, line-comment-position -- types are stricter and better. Shhhh */
 
 /*
  * PERFORMANCE
@@ -48,140 +48,52 @@ import type {
   Includes,
   EmptyObject,
 } from 'type-fest';
-import type {Globals /*, Properties*/} from 'csstype';
+import type {Globals, Properties} from 'csstype';
 
-type Properties = {
-  display?: 'flex' | 'block';
-  color?: 'red' | 'green' | (string & {});
-};
+// type Properties = {
+//   display?: 'flex' | 'block';
+//   color?: 'red' | 'green' | (string & {});
+// };
 
-type PropertyValue<TValue> = TValue extends infer TUnpacked & {}
-  ? TUnpacked
-  : TValue;
+// type PropertyValue<TValue> = TValue extends infer TUnpacked & {}
+//   ? TUnpacked
+//   : TValue;
 
-type RecursiveValues<T> = Exclude<
-  // csstype uses the (string & {}) trick to stop TS from simplifying a type
-  // like `'red' | string` down to just `string`.
-  // However, `(string & {}) extends Record<any, any>` now returns 'true'
-  // whereas `string extends Record<any, any>` returns false. So we "unpack"
-  // those values here to ensure we're dealing with the actual type.
-  PropertyValue<T> extends Record<any, any>
-    ?
-        | T
-        | {
-            [Prop in keyof T]: Extract<
-              // `extends any` distributes the types over every item in a possible union
-              T[Prop] extends any ? RecursiveValues<T[Prop]> : never,
-              // Only interested in Records in the union
-              Record<any, any>
-            >;
-          }[keyof T]
-    : never,
-  undefined
->;
+// type RecursiveValues<T> = Exclude<
+//   // csstype uses the (string & {}) trick to stop TS from simplifying a type
+//   // like `'red' | string` down to just `string`.
+//   // However, `(string & {}) extends Record<any, any>` now returns 'true'
+//   // whereas `string extends Record<any, any>` returns false. So we "unpack"
+//   // those values here to ensure we're dealing with the actual type.
+//   PropertyValue<T> extends Record<any, any>
+//     ?
+//         | T
+//         | {
+//             [Prop in keyof T]: Extract<
+//               // `extends any` distributes the types over every item in a possible union
+//               T[Prop] extends any ? RecursiveValues<T[Prop]> : never,
+//               // Only interested in Records in the union
+//               Record<any, any>
+//             >;
+//           }[keyof T]
+//     : never,
+//   undefined
+// >;
 
-// prettier-ignore
-type NestedObjects<T> = IsObject<T> extends true
-  ? T | (
-    {
-      [
-        K in keyof T as IsObject<Exclude<T[K], undefined>> extends true
-          ? K
-          : never
-      ]: NestedObjects<Exclude<T[K], undefined>>;
-    } extends infer O
-      ? O[keyof O]
-      : never
-  )
-  : never;
-
-type DeepReadonly<T> = Simplify<{
-  +readonly [K in keyof T]: any[] extends T[K]
-    ? DeepReadonly<T[K]>
-    : T[K] extends object
-    ? DeepReadonly<T[K]>
-    : T[K];
-}>;
-
-type OnlyLiterals<T> = T extends string | number | symbol
-  ? {} extends Record<T, unknown>
-    ? never
-    : T
-  : T;
-
-type NoLiterals<T> = T extends string | number | symbol
-  ? {} extends Record<T, unknown>
-    ? T
-    : never
-  : never;
-
-type ExactOptional<T> = Exclude<T, undefined>;
-
-// `string | 'hi'` and `(string & {}) | 'hi'` will both widen to `string` when used as
-// an argument to `keyof`
-type ForceNonWideningUnionMembers<T> = T extends string | number | symbol
-  ? {} extends Record<T, unknown>
-    ? T & Record<never, never>
-    : T
-  : T;
-
-/**
- * From https://stackoverflow.com/a/66445507
- * "Conditional type inference with infer [..] will automatically generate an intersection of an arbitrary number of types (without resorting to recursion)."
- *
- * @example
- * ```
- * type Union = UnionOfIntersectingValues<{
- *   readonly backgroundPositionX: (string & {}) | `${string}%` | "left" | "right" | "center";
- *   readonly backgroundPositionY: (string & {}) | `${string}%` | "top" | "bottom" | "center";
- * }>
- * // ^? = (string & Record<never,never>) | `${string}%` | "center"
- * ```
- */
-type UnionOfIntersectingValues<
-  T extends object,
-  ValueFilter extends 'literals' | 'index-signature' | never = never,
-> = {
-  // -? To remove the `| undefined` from the union so it doesn't interfere with
-  // inference next.
-  [Key in keyof T]-?: (
-    x: 'literals' extends ValueFilter
-      ? OnlyLiterals<T[Key]>
-      : 'index-signature' extends ValueFilter
-      ? NoLiterals<T[Key]>
-      : T[Key],
-  ) => void;
-}[keyof T] extends (x: infer I) => void
-  ? I
-  : never;
-
-type UnionOfIntersectingValuesWithNoWidening<T extends object> =
-  // If index signatures are left in the union, TS will widen literals to the index
-  // signature type when `keyof` is used within UnionOfIntersectingValues.
-  // To combat that, we filter for only literals first, then union the result with only
-  // index signatures that are forced to be non widening.
-  | UnionOfIntersectingValues<T, 'literals'>
-  | ForceNonWideningUnionMembers<
-      UnionOfIntersectingValues<T, 'index-signature'>
-    >;
-
-/**
- * Retains the literal types even if Typescript could widen them to a primitive type.
- * ExtractArrayValues<{foo?: string[] | number | ('hi' | 'lo')[], bar: (1 | 2)[] | Properties[], yo: 'to' }>
- * => "hi" | "lo" | 1 | 2 | Properties | (string & Record<never, never>)
- */
-type ExtractArrayValues<
-  T extends object,
-  ArrayValueFilter = unknown,
-  // Grab only the array types into a union `Arrays`
-  Arrays = Extract<T[keyof T], readonly ArrayValueFilter[]>,
-> =
-  // Distribute the conditional over every array item in the union, inferring the
-  // type of values in the array
-  Arrays extends readonly (infer ArrayValues)[]
-    ? ForceNonWideningUnionMembers<ArrayValues>
-    : // Shouldn't make it here because Arrays was extracted with the `unknown[]` filter
-      never;
+// // prettier-ignore
+// type NestedObjects<T> = IsObject<T> extends true
+//   ? T | (
+//     {
+//       [
+//         K in keyof T as IsObject<Exclude<T[K], undefined>> extends true
+//           ? K
+//           : never
+//       ]: NestedObjects<Exclude<T[K], undefined>>;
+//     } extends infer O
+//       ? O[keyof O]
+//       : never
+//   )
+//   : never;
 
 /**
  * Create custom type error. Not 100% secure as it could be abused with:
@@ -205,16 +117,16 @@ export type SimplifyUnion<T> = Unwrap<WrapInObject<T>>;
 type WrapInObject<T> = T extends unknown ? {key: T} : never;
 type Unwrap<T> = T extends {key: unknown} ? T['key'] : never;
 
-// Adapted from https://stackoverflow.com/a/64034671
-// & https://stackoverflow.com/a/58986589
-// Wrapping the argument in [] prevents distributing unions since we're only
-// interested in the actual value of the tuple (and a union is fine).
-// Note: Will remove non-object values from the Tuple.
-type MapTupleToKeys<T extends unknown[]> = [T] extends [[infer H, ...infer R]]
-  ? [IsObject<H>] extends [true]
-    ? [keyof H, ...MapTupleToKeys<R>]
-    : MapTupleToKeys<R>
-  : [];
+// // Adapted from https://stackoverflow.com/a/64034671
+// // & https://stackoverflow.com/a/58986589
+// // Wrapping the argument in [] prevents distributing unions since we're only
+// // interested in the actual value of the tuple (and a union is fine).
+// // Note: Will remove non-object values from the Tuple.
+// type MapTupleToKeys<T extends unknown[]> = [T] extends [[infer H, ...infer R]]
+//   ? [IsObject<H>] extends [true]
+//     ? [keyof H, ...MapTupleToKeys<R>]
+//     : MapTupleToKeys<R>
+//   : [];
 
 // Wrapping the argument in [] prevents distributing unions since we're only
 // interested in the actual value of the generic (and a union is not an object).
@@ -231,63 +143,8 @@ type IsObject<T> = [T] extends [object]
         : true
   : false;
 
-// Defining these at the top level scope should allow them to be inlined by
-// esbuild (https://github.com/evanw/esbuild/releases/tag/v0.14.9) and tsc
-// (https://www.typescriptlang.org/docs/handbook/enums.html#const-enums).
-const enum Constant {
-  // NOTE: Constant.RootElement is used as an object key
-  RootElement,
-  NoParent,
-  ModifierParent,
-  DeclarationParent,
-  PseudoElementParent,
-}
-
-type BreakpointsShape = DeepReadonly<{
-  [Prop: string]: '&' | `@media ${Selector}`;
-}>;
-type ModifiersShape = DeepReadonly<{[Prop: string]: Selector}>;
-type PseudoElementsShape = DeepReadonly<Record<string, PseudoElementSelector>>;
-
-// TODO: pass in the aliased properties too
-type MakeValueMapper<PropPaths> =
-  | ((
-      // Map over the object, turning each value into a tuple (the function args),
-      // then generate a union of all the possible tuples. Eg:
-      // [Properties['display'], 'display'] | [Properties['color'], 'color']
-      ...args: {
-        // Remove the optional flag, otherwise the final union of tuples would include
-        // a `undefined` (for the case where no keys are provided) which is invalide
-        // for variadic args.
-        [Key in keyof Properties]-?: [Properties[Key], Key, PropPaths];
-      }[keyof Properties]
-    ) => unknown)
-  | ((
-      // Map over the object, turning each value into a tuple (the function args),
-      // then generate a union of all the possible tuples. Eg:
-      // [Properties['display'], 'display'] | [Properties['color'], 'color']
-      ...args: {
-        // Remove the optional flag, otherwise the final union of tuples would include
-        // a `undefined` (for the case where no keys are provided) which is invalide
-        // for variadic args.
-        [Key in keyof Properties]-?: [Properties[Key], Key];
-      }[keyof Properties]
-    ) => unknown)
-  | ((
-      // Map over the object, turning each value into a tuple (the function args),
-      // then generate a union of all the possible tuples. Eg:
-      // [Properties['display'], 'display'] | [Properties['color'], 'color']
-      ...args: {
-        // Remove the optional flag, otherwise the final union of tuples would include
-        // a `undefined` (for the case where no keys are provided) which is invalide
-        // for variadic args.
-        [Key in keyof Properties]-?: [Properties[Key]];
-      }[keyof Properties]
-    ) => unknown)
-  | ((...args: []) => unknown);
-
+type PossibleAliasNames = string;
 type Selector = string;
-
 type PseudoElementSelector =
   | '::after'
   | '::backdrop'
@@ -300,6 +157,284 @@ type PseudoElementSelector =
   | '::marker'
   | '::placeholder'
   | '::selection';
+
+type PropertyToAliasesShape = DeepReadonly<{
+  [Key in keyof OmitIndexSignature<Properties>]: PossibleAliasNames[];
+}>;
+
+type BreakpointsShape = DeepReadonly<{
+  [Prop: string]: '&' | `@media ${Selector}`;
+}>;
+type ModifiersShape = DeepReadonly<{[Prop: string]: Selector}>;
+type PseudoElementsShape = DeepReadonly<Record<string, PseudoElementSelector>>;
+
+// https://www.typescriptlang.org/play?noErrorTruncation=true&ts=4.9.5#code/JYWwDg9gTgLgBAbwMqjAG2AMwJ4Bo4CSAdgMZoCuAJgKYDOAvnJlBCHAOQzZjUC0mdGOwDcAKFTR4CAAosesYHXyyI8ro2asOJWrS48Ro0fupwU4DDgCqRYBCIAeACoA+OAF44NgO5QAhmAOAOr+YMQA8gBGAFbUJDDOLi5iJnAhARExcQmuHnBOcNQAHjDURJS0cOREANZEEN5EcAD8iHA11NgAXPlwjD1E1ABu1FAp3KY+oYl5BcWl5ZUI7Z091XUNTYytTgDaAEQd2PsAunADw6NixhNwAIIYfrQAcn4gpp56UMBEAObXqQewCeAGF7JhgL88ghRHA4LsANKdOA-FbYCCYOAqNSKWgnHpAp6vd67E5iegA24AEWo1DAACVqH5KPY0NgZp5zOgsOyYXC4QBqKBMllENnwhEoppHDH5fGw-lwvxEbCkwolMoVfKIk4KxVw1o0umM5ms9l7BEnFx6-k9C1neaayoQLLxG0GuBGhkis3OHXW-W27WW8nWm48ODhMXYAAywFK-jQtA5CrmGsWcC+PyhAB84ERyCBIqM4HnaNgixA0DbWghGI6M4ySNBKM58Ot6o0A-rWoMRlA4O7zr0bXbB+HTM8IHGE34kym4WmFlqs39S-nC8WB2WK5EqzXEPX01qmy221Vap2iN3FTtB4GLv370G+yWjAB6d9wAAGq9zHAAC2AdhvzgZVKB-AAKP84AAMkPABKdd2CAkC4G8YA0DQOA9xgAD0OAGgmhgCAfz-UDvAAsoqloagIKeURPzApo-CgX5CzKeASJ-GVMG-Cc4AAMWgEhqCnIggkIspsxsOwiAAWWoItRmTXJ3FTdVl0qGC8wLZTt0zXd91vQ9NKdOBTygVsnHbS9NhvflWl6eDLNbV8oFwdy3CHMdR3yIxUhBYU-FKcIwBgOTaAAJgcO4zIzL0TVFNlYseWgwSICFfiSaEFTnYFaNoZoCXJa53wAKnK2FyqElg2AAmAYDAWguk-PQ-BIGoIH7TA0AaAA6ZsQHfPx3wANjGgAWSaAFYZoABgAdmquB9gyyh4zkuc4FSH4BGFUhTAwvCpX2+F+v6s4MKwsDyBIkAQuAEg53FX4ylGELTGVKUE1o+I5LgWVvtYyJ438KBsA3fTAcxExKkg46AIgO64GFWhJGzHbSOFEhyCgWg5IQ-r9mqlaAAFijedBqBW786ZW1JZPsPImaIcJMGIX7smzAA1OdyDoBw+RquFguSyHIg6mpfhYapKGkCACYi+wAA0emgmBvjXeC6yQvNvwAEgQP96AAUlAvN9jQahMBgfZ132b5fga+3LdEogE32MQ4BF1GfWjHCpZl5HygVpW5IATXVmCdfoPWfyNk3zYdkiwFd1bcPu9P9ndz3vZq+gAxqpiAD1Wk8DWtahFy4jPdzPMuKAXHjw3jc17MzYt1bc9GEmfZ-emfffATWfZzmVO5v4+YoQWNIbLUXVieJ8AVaeBcEzCE3irV2AwWck3YZCfhoIpeAJ34iBCvHqEP3TG7ydzRDcTw+X5JjeB2bGlO60w8NMb88xyxtj8OioFNBsD-heAG6MUTwBZHQIgnAfqjH2kdeMAEbRMT2qMMool8zzH6jaREyJUS8TlB-dWQ4ig9F3vGD6B9t6VDXtQDeaAExDg9FGNkM56GqWIdgK0HDhzsGPsUM+kJL4wGvofeeTD+YsM3qMIRHopw8MTHwpEAiHIPmDJ0XUgYkLuDcEMCAhEFT0F2GQpwDpjzw2oadEsBBDHGNMRBVoBBhyPxHrYewY8PYT3+lPeRtBJJ4SnJJIi2YHBz1sYDV0MBcBPw8AqJiBBMSiKKJmCRV80ZgWFHAa2tspQ7SolA+w+AnBIAIjdDCRECl0PUVjEppgMkpK-OfSR18dq3EotRb8vFQLAEqOQWiEFEaolHhzfx+NJ6-GYbQQhcImJOFIkNSWXEAIhXwN4UwEI2ElkwNAQGAc968KYMAfGCTmlNGqADSBaNyBsIIidM0bSpQnyyRfHJdASkhTybskSdEmnFnzMzWp0k-iLPXJM8eMzAlzOCeeWh+9aDsG7HmYSUBRLiQiRC34rNFL6WTDaGF0y-oRSCTPVS+ARHlDER075aKFTJA-JVFajIYB+B+JUSBpzEzdJ4JUS4TQsD5AmLQEg3xwpwGbI8sZUliJUQgaRPwcAwDfBAJtEYArqCLJqgAURKP4eIdwoD+GwPMoWhyIDFUzO3P4apdKbhLHmSCKFgLIT6uwBCpJ8CSygOrAAjOuKKPqzh5mxKMCKdBfVwHRDQkih9C4rSMatIC2c+rp2DXmKK65I0KB+a6mOFla5WQcPXfB-Zm7VWHqkQ1msOowFNeay1MStJxKXgkhUza-AWvkawrengOybESUsr8ABxfwkRjnikgaxc1OrKg-G4qq25zMebdrNb2yonh63GpyJYzosprH4DFmae4W6+0zwHaMUk1pn7PiYlSIZ7dIh3V-qU5s5RNr2G2j-AcjdIbzt7bApSxTIFrqaDzfA2CzWYz-m81IsohjBPA6U4D2BN3mqFbEs9AdIKwYvS24JYaDyYuxfYXFtg-gEqUluZMPar0C1oA5JiSAkZysQfAB6HRYFwCovk4sz0RmmEY5UbwTxNL7qBYjZpP5h2NFJGAxRUA-JeIqlVfuFMihU2trTQeNVUj5ujTuxAK04TNj6lAW17BhRCeemAPG1Nb4cGFJQFzldMaxwQvnfkktOrBzlmHH9RA1YcEKUIZCTsGoufYD3KALnW5Jy7p57WiFfNwn89LWWodFYhajhwVOsXM6sFi-FxLid7W-E7uuVL1d0srQpKTfuX69BgTSj8l+5mZVVmgD0XY7BMC-HYDS0oJQwRWfYCcUdvssuBdy+HVW-X2BzZy-LPLytEHTe66tkO63FtEAKwN3bQWNtySm41sClRWswF8wzW4hJaBRE7aZx7dAVnPeyE4cVDgTBAw67QZQcgo24iLnAUu5czP9zhENmhdm4gOac9bWLbmPPFt1uuIBEJBiUAyzteYE2+uueoPZgISOb5RbomjqrcFEKY7pdjuieOTsLZCzQ8r64ktVZq0Wmn3nfP0H0-xIeAk3u0A+-E77grolwmM9gFZYvGGelpN6U00ZUoFQyllFwo6sTA4LTh9ti9si66Yvqjq+F8qSeuthITrAvpNGN-ENE+AYF-0hiAEZ8B57vOKJ8zpaNu1pSV494kHw4B7sbYxy1cuFcA-wKHt41B715C5JYXkbygpMlKMxDt2Q0RAsiJDOdwfL7vBam8umwvwdflfkxTLQc1vBc2z0ZYF1+p9FN1+QXY6B7V92I9zRxTHv4ih2-L8WfPq56d-AH4ZAqCY3PZA4zuJfnwGFKgw6cmrcV8VExKvmDa+H7843vbze5Kt+P4qFn+2Qtha51XHnq0IvZ2i3bB28WvZX5PwFpvZ37AFYP4dzJxuycS9wpyqDZwlYgBf575fhwg97j59DH4H6Ki7BDhMQxgQAQA1DkBgAzrF6lLqqqBRqQxHA8qbLwCbLarAzB60QwBDhy5D6kJHqYix4QBi5CJMRBA3z5Lno0D5RriyYYaA44QoyVL8aSZ9RtZ4R-J7TQAPSbY4SEFDJcFfiQDLqu6kQ7KSHarcTBS6BRqwJQqBiSbsFi67BMF6JK54bigKZECkhqFmDUDWzO7nrEE4g-KURPT4TUEfqmC4xmqcTtYFRwA0CM4QSoiQKcGBgejEDz40DJjmEA6WH65cCaLTb3BpSaJuCyI7RQACzKItB64kGwDYCaJFFMThB-wDjkG6FfRoBiwSy0hNCbLlDWyUD4BHI244SmBtGUAdFXboQtKzg57-qVFfj3JKRcrUZQhWFAblDvhHKD6dBaGZg1DAD4HxhMBHKdgmGxGPhKKxE15mAcZoCUBcZwA8YjH8Y4JCKHGqaKjyiBjLJATXb2AbSbbbRDL4KiS6CsTNHCa0T3AEFwAAD6siYJWRmu4IkIax2xsq5xGBkxVE0A1AEUz0WEkMfhaI4mQEJAluB0SCqIK+PywqJSyMzshQrEGAJYJgyJMqVEnU4myM5x9RqMjyQKeEispgyMMA+xsuaR5RyIeRZCpJtADJk6fg06kCHhpB7APKEwQ4rQ4pqRpR6ReiPklaRxfQSuhG4QSuM+x+U43gcAb0GyLSZKShsokCKGVKMM1JBJDpy+aRq+sh6+NsOCW+eEqhcBIRTwXQKBg8SBr8veDev+Z+-+RAPQQBfwT+OcYBUAsBSBiBveqBjkZgqA6erMDgpKXM8K8yoSAE4SCqUS4QSQamjcogyaogmA1Q-0zMkq2e1Ak0YJAAnGCTNA4MkQVGSbEolP7ClI9lrpCEkJBAqKoJti1HAJPqFOFJFDFD2U8HQA+nWKIEhK-MKFIlAE0OOYqB4dOWnjyDLvqGLhLp2lLoLEuYVEDuqaDkOPBOKTaDrgqM4heOESArjtWUYDdv6YVLlBZr1gGvCINsNqNgTkBVNrrjfufktiBTBVGVBQqAhQdkditqfqdgdhdowJJjdtcL+ZgEQLmp4E2Z9K2R2TNJBMsDvnQD0DRZUHHGIPXnCGXEAA
+
+type DeepReadonly<T> = Simplify<{
+  +readonly [K in keyof T]: any[] extends T[K]
+    ? DeepReadonly<T[K]>
+    : T[K] extends object
+    ? DeepReadonly<T[K]>
+    : T[K];
+}>;
+
+type OnlyLiterals<T> = T extends string | number | symbol
+  ? {} extends Record<T, unknown>
+    ? never
+    : T
+  : T;
+
+type NoLiterals<T> = T extends string | number | symbol
+  ? {} extends Record<T, unknown>
+    ? T
+    : never
+  : never;
+
+// `string | 'hi'` and `(string & {}) | 'hi'` will both widen to `string` when used as
+// an argument to `keyof`
+type ForceNonWideningUnionMembers<T> = T extends string | number | symbol
+  ? {} extends Record<T, unknown>
+    ? T & Record<never, never>
+    : T
+  : T;
+
+/**
+ * From https://stackoverflow.com/a/66445507
+ * "Conditional type inference with infer [..] will automatically generate an intersection of an arbitrary number of types (without resorting to recursion)."
+ *
+ * @example
+ * ```
+ * type Union = UnionOfIntersectingValues<{
+ *   readonly backgroundPositionX: (string & {}) | `${string}%` | "left" | "right" | "center";
+ *   readonly backgroundPositionY: (string & {}) | `${string}%` | "top" | "bottom" | "center";
+ * }>
+ *
+ * {
+ *   readonly backgroundPositionX: (x: (string & {}) | `${string}%` | "left" | "right" | "center") => void;
+ *   readonly backgroundPositionY: (x: (string & {}) | `${string}%` | "top" | "bottom" | "center") => void;
+ * }
+ *
+ *
+ *
+ * // ^? = (string & Record<never,never>) | `${string}%` | "center"
+ * ```
+ */
+type UnionOfIntersectingValues<
+  T extends object,
+  ValueFilter extends 'literals' | 'index-signature' | never = never,
+> = {
+  // -? To remove the `| undefined` from the union so it doesn't interfere with
+  // inference next.
+  [Key in keyof T]-?: (
+    x: 'literals' extends ValueFilter
+      ? OnlyLiterals<T[Key]>
+      : 'index-signature' extends ValueFilter
+      ? NoLiterals<T[Key]>
+      : T[Key],
+  ) => void;
+}[keyof T] extends (x: infer I) => void
+  ? I
+  : never;
+
+/**
+ * Given an object like:
+ * {
+ *   backgroundPositionX: `${string}%` | "left" | "right" | "center" | (string & {});
+ *   backgroundPositionY: `${string}%` | "center" | "top" | "bottom" | (string & {});
+ * }
+ *
+ * return the union:
+ *
+ * `${string}%` | "center" | (string & Record<never, never>)
+ *
+ * Without accidentally widening the type to a primitive like `string`
+ *
+ */
+type UnionOfIntersectingValuesWithNoWidening<T extends object> =
+  // If index signatures are left in the union, TS will widen literals to the index
+  // signature type when `keyof` is used within UnionOfIntersectingValues.
+  // To combat that, we filter for only literals first, then union the result with only
+  // index signatures that are forced to be non widening.
+  | UnionOfIntersectingValues<T, 'literals'>
+  | ForceNonWideningUnionMembers<
+      UnionOfIntersectingValues<T, 'index-signature'>
+    >;
+
+/**
+ * Retains the literal types even if Typescript could widen them to a primitive type.
+ * ExtractArrayValues<{foo?: string[] | number | ('hi' | 'lo')[], bar: (1 | 2)[] | Properties[], yo: 'to' }>
+ * => "hi" | "lo" | 1 | 2 | Properties | (string & Record<never, never>)
+ */
+type ExtractArrayValues<
+  T extends object,
+  ArrayValueFilter = unknown,
+  // Grab only the array types into a union V
+  Arrays = Extract<T[keyof T], readonly ArrayValueFilter[]>,
+> =
+  // Distribute the conditional over every array item in the union V, inferring the
+  // type of values in the array
+  Arrays extends readonly (infer ArrayValues)[]
+    ? ForceNonWideningUnionMembers<ArrayValues>
+    : // Shouldn't make it here because Arrays was extracted with the `unknown[]` filter
+      never;
+
+/**
+ * @example
+ * ```
+ * type Properties = {
+ *   color?: 'rebeccapurple' | 'red' | (string & {});
+ *   backgroundPositionX: 'left' | 'right' | 'center' | `${string}%` | (string & {});
+ *   backgroundPositionY: 'top' | 'bottom' | 'center' | `${string}%` | (string & {});
+ * };
+ *
+ * const aliases = {
+ *   color: ['fg', 'textColor'],
+ *   backgroundPositionX: ['backgroundPosition'],
+ *   backgroundPositionY: ['backgroundPosition']
+ * } as const;
+ *
+ * type AliasObjects = AliasesToPropertyTypes<typeof aliases, Properties>
+ * // ^? = {
+ *   fg: 'rebeccapurple' | 'red' | (string & {}) | undefined;
+ *   textColor: 'rebeccapurple' | 'red' | (string & {}) | undefined;
+ *   backgroundPosition: 'center' | `${string}%` | (string & {});
+ * }
+ * ```
+ */
+// prettier-ignore
+type AliasesToPropertyTypes<
+  PropertyToAliases extends PropertyToAliasesShape,
+  Properties extends object,
+  // Each alias will become an object key, so they must extend index signatures
+  Alias extends PossibleAliasNames = ExtractArrayValues<PropertyToAliases, PossibleAliasNames>
+> = Simplify<{
+  // Create an object keyed by the alias names:
+  // ```
+  // {
+  //   backgroundPosition: { ... },
+  // }
+  // ```
+  [AliasKey in Alias]: {
+    // Create an object including only the Properties that reference the alias:
+    // ```
+    // {
+    //   backgroundPosition: {
+    //     backgroundPositionX: `${string}%` | "left" | "right" | "center";
+    //     backgroundPositionY: `${string}%` | "center" | "top" | "bottom";
+    //   }
+    // }
+    // ```
+    [
+      // Lookup only the property keys that have an alias set
+      PropertyKey in keyof PropertyToAliases
+        // We're only dealing with arrays, but TS has lost that information by this
+        // point, so we have to reassert it.
+        as PropertyToAliases[PropertyKey] extends readonly unknown[]
+        // Select only properties which have the current alias defined in the Aliases
+        ? Includes<PropertyToAliases[PropertyKey], AliasKey> extends true
+          ? PropertyKey
+          // Other keys have already been handled, or will be handled as we iterate over
+          // the remaining PropertyKey and/or AliasKey, so skip it for now.
+          : never
+        // Shouldn't make it here
+        : never
+    ]:
+      // This conditional is necessary because A only _extends_ AliasConfig, so it could
+      // theoretically have keys which aren't in Properties even though earlier type
+      // checks would have ruled those out.
+      PropertyKey extends keyof Properties
+      // Grab the property's type, simplified so we can distribute over the
+      // union correctly
+      ? Properties[PropertyKey]
+      : never
+    // Assign this new object to the variable '0' so we can do things with it
+    // below
+  } extends infer O
+    ? O extends object
+      ? // Now get the interstion of the values of each of the Properties that reference this
+        // alias:
+        // ```
+        // {
+        //   backgroundPosition: `${string}%` | "center";
+        // }
+        // ```
+        UnionOfIntersectingValuesWithNoWidening<O>
+      : never
+    : never;
+}>
+
+type SimplifiedAliasesToPropertyTypes<
+  PropertyToAliases extends PropertyToAliasesShape,
+  Properties extends object,
+  Result = AliasesToPropertyTypes<PropertyToAliases, Properties>,
+> = {
+  // Simplifying the union forces better IDE auto complete.
+  [Key in keyof Result]: SimplifyUnion<Result[Key]>;
+};
+
+type ExactOptional<T> = Exclude<T, undefined>;
+
+// Stop TS from inferring the given generic when used in a context where it
+// might otherwise try to infer it.
+// Useful when assigning a default value to a generic, then that generic is
+// passed to a function parameter.
+// See: https://stackoverflow.com/a/67110530
+// Note: May no longer be necessary in Typescript v5.4+
+type NoInfer<T> = [T][T extends any ? 0 : never];
+
+type MakeValueMapper<AllProperties, PropPaths> =
+  | ((
+      // Map over the object, turning each value into a tuple (the function args),
+      // then generate a union of all the possible tuples. Eg:
+      // [Properties['display'], 'display'] | [Properties['color'], 'color']
+      ...args: SimplifyUnion<
+        {
+          // Remove the optional flag, otherwise the final union of tuples would include
+          // a `undefined` (for the case where no keys are provided) which is invalide
+          // for variadic args.
+          [Key in keyof AllProperties]-?: [AllProperties[Key], Key, PropPaths];
+        }[keyof AllProperties]
+      >
+    ) => unknown)
+  | ((
+      // Map over the object, turning each value into a tuple (the function args),
+      // then generate a union of all the possible tuples. Eg:
+      // [Properties['display'], 'display'] | [Properties['color'], 'color']
+      ...args: SimplifyUnion<
+        {
+          // Remove the optional flag, otherwise the final union of tuples would include
+          // a `undefined` (for the case where no keys are provided) which is invalide
+          // for variadic args.
+          [Key in keyof AllProperties]-?: [AllProperties[Key], Key];
+        }[keyof AllProperties]
+      >
+    ) => unknown)
+  | ((
+      // Map over the object, turning each value into a tuple (the function args),
+      // then generate a union of all the possible tuples. Eg:
+      // [Properties['display'], 'display'] | [Properties['color'], 'color']
+      ...args: SimplifyUnion<
+        {
+          // Remove the optional flag, otherwise the final union of tuples would include
+          // a `undefined` (for the case where no keys are provided) which is invalide
+          // for variadic args.
+          [Key in keyof AllProperties]-?: [AllProperties[Key]];
+        }[keyof AllProperties]
+      >
+    ) => unknown)
+  | ((...args: []) => unknown);
+
+// Defining these at the top level scope should allow them to be inlined by
+// esbuild (https://github.com/evanw/esbuild/releases/tag/v0.14.9) and tsc
+// (https://www.typescriptlang.org/docs/handbook/enums.html#const-enums).
+const enum Constant {
+  // NOTE: Constant.RootElement is used as an object key
+  RootElement,
+  NoParent,
+  ModifierParent,
+  DeclarationParent,
+  PseudoElementParent,
+}
 
 /*
 const OPT_IN_MODIFIER_SET = {
@@ -386,95 +521,6 @@ function warnOnInvalidProperty(path: unknown[] = [], message?: string) {
 
 // https://www.typescriptlang.org/play?noErrorTruncation=false&ts=5.3.3#code/JYWwDg9gTgLgBDAnmApnA3gZVGANsAM0QBo4BJAOwGNcBXAExQGcBfOAqCEOAciVQC0BZjB4BuAFA5o8fmnRxMMAIYV6yqPQAyECgHMAFqvoAFTqljBmcZUzhmIFmFbtsOXXlSZM54iRLlFHHwiAFUKYF0AHgAVAD44AF44cIB3KGUwKIB1DLBKAHkAIwArFCoYWLi4yUDczMLS8sr4pLgYuBQADxgUNTtaCgBrCghUijgAfgw4IZREAC52uDYlihQANxQoWuQ0NLyqto7u3v6ZucW4QZGxibZpmIBtACJLl4BdODXN7ckAvZwACC+FsADllCA0MkfFBgPp-oEQcBbABhXQEYB6NroCRwOBPADS8zg8Nm8wgBHs5m2zmYHyWyPBkJQTw+khYu1QcAAIigUGAAEooZT0XS4RBHZLYcAhSW4-H4gDUUBFYooEoJhNJE0ulPaDLxivxqkQbM6PT69Dsz0JHyNxvx0z5AuFovFkttHziDsVSy9FrO1rgECaFV9Tt5-KFao9sSJ3ojfvaCY5PoB3IKGsQWmAvQyuCYUqNJ0t51h8OxAB84BRaCAits4DWmIgGxBcL7pug2KcrXZhVRoPRYqQbqNxj7HVNa78oHAk-6F8al-5AmCILn88pC8X8aWg3YK-pm7X6435y220UO12ML2y8HB8PR9dhhOKFPHY9l46flt519f8m38AB6UC4AAA2PateAMYAeEgmw1CggAKGC4AAMnvABKU8eHgxC4FSYBcFwOAbxgAxiOARgJhgCAoJgpDUgMPpriYFB6BsJgJHA5CbCgPR6z6WRGMgvUCEgjM0AAMWgKgUA3ChslovpK3CSIKAAWRQBttiLVpEhLQN+zgDCazrfTL3M69b2NbsH0POBn00V9xzuL8HP3LCXPKF91gA4hAu2BJF2WID2jXQFUVVZRegKMBnF0JgACYoiBUzzhdGN3WzDLQSYdEKExPRqhxI0dxRTimEmRkOX+UCAComrxJq4FkzhuAMGAYDAJgFnAnxlCoIYIAAghcDGAA6IcQFA5RQIANiWgAWVaAFYNoABgAdjauAXmK+g8y0ncEEBeFhFVag0BIqidWuglpumr4SLImxaAYkB4uAKgd01PQ+m2eK0FUHV804iotJDKlwY0Io8wyKBEDPazYYu1A7FQ+6DAgL64FVJgZErBBGNVKhaCgJgtJw6aXjag6AAFukhPAUAOyCuYOwJNN0No+YoAoCEoSHmkrAA1HdaGYKIFXa-E4vVTUihGoY9E4QZTAgGnkooAANJZ0JgOET2wns8JrSCABJ0BglgAFIkJrF5cBQAgYBeU8XjhQxPe9xSKHzF5JDgBXCdjbMKLVjX8bUEwddO3QAE0jYw82WEtqDbftp3vYYsAvZdyjvqLw7A+D0P2pYKd2v4gA9aZkmN03sWw1yRxCqBgrnOIs5tu2TcrR3nfL0TtgZsOoO5sPQJklIIl0YXRYM8X9CluhZZMvtzlDMoKlII0N5l2TSPzLLgx4fBt0LHh8PhRgugEGm9AoeKqZQO-LLnNou4kBJkgKkVPxAQjxyZ6XGmgKiaBII1i1u7eEXEkLuG4NAt8MNiakngGKZgFA+AQ22NdO6eYDC+n4ldbYfRFKzh6NNX0RISRkkkgaUBRskxdCWFfPMINb4XzsMfFAp9cD5iTJGLMEotw8MMgwxAiZpz4k4Q-boz8sRvxgB-O+O9gwCKESI+RippgbkkQWaRxJZFeXkf6GR9ppx4USAkDYEBaJGhYE8ZhMQvhaOxhwx6TYyB2IcU47i0wyDfFnABaK3JBbLyDqvaG69pbMFUlRDcqk6KViiNvR8dg97NGIP-JIRp+JkCpEoro5lVHvyJoJNAbsPY6gQGxdBuhSAxEwDRD6JE6JwGvlIsmjS0BlKKRBF+aiP6YzumxCYEkKRSVJAMTi3FcZkmiSLWJ1M156AEUwOh+J+IxEYnNVWsgjAwFIKkNAmJhFNgINAEMUdekmPYMAamZyBkTEGDDNBRNaDCJog9D0wydSPwqa-Kp1gqLxRqewBSXF+mNlrPzLp6l9C7NPKsleGz4lbMSYZUgXCb5MB4F+Gs8koCKWUmklFehBa6WskWX0GL1lQ2cAkzeeLeBlJUWC9RqpiW+hqGBFqB1hQqHhHYNBjzzpyDsL8CYhB2h7CYFQOESU4BDl+UstS9E2KoMYsoOAYA4QgFOlsCZuz2oAFEegZAqECKAGREDbLlrciAdVzJD30OaSy54mw1lQgRBC+Epo8BwmyUgqsoBGwAIynlSmGr4NYHBOBcOGuAiAICcIYnfGuB17GHXgmXV2EAy6xprKlU8ybaQuFPC3Um7d-JuS7qQLufc2pz0CNak2I0YD2sdc6rJzlckHyNH25QTrEm6KbMkDy4x8l7IggAcQyEUe5mo0EaEdRMuw8IGI2GaRMCWo6HXjrsMkLttqWhuNmQaUgSsPTAhPROzeU6oBsh9AA38-EeTAArEUL6UCmlDjUEnN+5FIHzjnKjTd46sF6QaWgz5-MJakAoQ60m0CgWBH1BsXFCGmkwcQMex1srskRzypqVCaHH39txQmu8ZKKW6CpREfQtK9IXiLGO59MsmAWP4pgPGmq8HwB+nMLBcA2KqgouUZQtBOI0dPcRWwgZL1wtxgMqCs6KBsmQWfbYkU-58WFVPFmXQ2Zu05jPdqgQq2WGsIAg6+IhxTSgO6ngqpGxUH+mAKm7Mv68FVPQALdaza4SroqVWo1Y5awTrrLShteB1NEPhX2PUAs8ArtsALA9c6j1C23cLTno7Rc1vHROetU68ALhlkuXAMtZagDlnOnq9Aj1renIrU9OSMynsBnwNhCoOYwMVlz0AlhPB4AQPQPB8W9B6OiVzPAPjzvDlF9WZXtbxd0Ilyb62Yvle23glbxX9ubbi6Bqre2Y7nYq1pZbB02Aqf6zACLPNARMiYMUfeMAz3AiG0wA533mgxCVVEOQ+oqq2GYKQOzdI+MHQbk3EbU98TTc4Z58oPm-Nuwy0FkLnWLanngZidY9AIv4nmzARb43AsoC89jqA-nUtcQJ613yRO4FqAQWTinJWNtxy26BzhjXmuD1bu1-1hPM4RZYFZ6Ss956feYEDsMMBQdY0yfiOHiADnK9I85HKbplaSk+8VUqcR53UkcNW6wXiQxq6t-xS1I1qJQ7sO9ciXmuBgwmMO+AlxSCYOgajEA8n4BaOBd0UFYyiajsKnw-71UIRQjaBent3HnU671wD0gn2U8oA-W0GUeBCDyiBbFEUvQBL+-JIgOFRRUYboT2-KEA0gVcwV3AfiQD+L4jO4Li7eslgKBetNFYTuIJy4XdPLvTxPtmIaZ9hkKPgEQUr6DGvaudQ0AYKTB9aC4c1shfAVURDbqafdwsMhEFO839XzP-vN3B93d0CP+-xoB+xdfwbJYuXWuS6HTJZFppb+wuyNYhwf6RbP7f5HZVb-4S55zgHjxQBFoFxFp1YgCQHGh94rD37T5r6z70JJj8Q6AQBDC0BgBrpN5NJGo26wCoyXASqnKSbKBmrwwJ6cQwBJg66L5MI3rZ4QD66iLd4QTZCfzSYPqMBVQngaaEZMARoExtKsF2BTQDYn6PTQA-R6wUQ0G-oiH8SQC7pB6MQXKsFmp7pxTeC0hYJorTgqaCH65PC8HzCeJkb3pRzaZsgGEQSYAoBuwVDUGGo0j2Ye7wRUDURGAWFAZUw3TwDu5wCMCk5wpkhoLCH6IhLUB0CMBFiOEA7OEhFIBmIrZJ62BmIJD24mwywiGRguFEb6Iz4FDQLzhMHmFgy4BKyoyNjsRGBqBuz0CkB3Ke4yasF9FwoqZmHcIZDV4QY1GiGaaqg-Twikx1HIT0CgR3IL7zAmHmRDDABUF5gwrzgTh2GWLhIGb6ICZCa4D0AiZwBiaDLwBSYcz6LARQC+iGjTj7LwR2DAYnR6znS-qziKTeAaBdGybyZoCZQPoAD6XiMJpRRUGIWIOxhxGqNxJBEE0C0AKAzg-0ZEqMURaArRrEf0buN0+CZIR+duWwOq+MhgnQGg+ATYcgmJ6qbEo0Hu+MNxbRhMvycKVEOsaA+MMApx2uhRiAi+9uzC1JvEXxS6K6mmdBTgiAPAEqewQewQhAVg3EmCZh-0EwJ0f6AGIYAEAybJSGEwQ4DqzQEoSY0wspBR9BRRrh4Uf8+ITkZk1GBQie-u9+G4qQcAQMJygyzKOh+oaCuG7KGMIoERGMh+hRx+LBZ+lCF+VE+hOBEEV+9+d+mZD+8xT+pWL+R2f+LWiBo8LwEBochBBBM+uZBiC8WkMSYs2K2yySBgqS2qGSBQFibxEgua88JeIQOp+uquP2GuW84pzpuuQhAOieRukcEoBU1U5uWIluRospvpjuRowoTAvy8AyQo5EAwOFQE5uREpOe1UMO1uKazARejmM+Q5ZeGGTSlpRxIJMmvUfiPIlqn0e6c07MvQaKMiDSzCu5+5K+T5YQi8FAUQ4Fwi1iPocuEgBAgw0M-MKqVeKAq0MJAAnDCRtFEHkVeQbmZAuRRqboVKuWVHEKhEaI4HrANHABvglElFpGlERRebOSRZ+j2BIHhEAqqLyhMHRcaMqUxVBZKDwRoM4DuFEFBSOQDmOSDmDsRdDgoTebbnxhYviNhLKQKlbgEm+EkYguTv2f4C9oNiRRVM5h2LTpNtNrNtVqcDTk1idoWQLrAaBrtjwF-odqBstlbn5ULpVhNr5TAf5XrA9k9r8SlK9mBBBDEAUDyAUEsKxKjECZBMFUPlpEhHNPvgTCppBKaJBAAISTB8S+HXFLLQBDANLKEbCrTTS7TTSrRKgSCWUEAUAVrJCYWgw4X4UbSoQKDu7MBLCjWuA4T-BdWpTDX84HYhVaQi4oFOXo507BYrA4QSBAA
 
-type NonIndexSignaturePropertyKeys = keyof OmitIndexSignature<Properties>;
-
-type PossibleAliasNames = string;
-
-// TODO: Error if an alias matches a property name
-type PropertyToAliasesShape = DeepReadonly<{
-  [Key in NonIndexSignaturePropertyKeys]+?: PossibleAliasNames[];
-}>;
-
-/**
- * @example
- * ```
- * type Properties = {
- *   color?: 'rebeccapurple' | 'red' | (string & {});
- *   backgroundPositionX: 'left' | 'right' | 'center' | `${string}%` | (string & {});
- *   backgroundPositionY: 'top' | 'bottom' | 'center' | `${string}%` | (string & {});
- * };
- *
- * const aliases = {
- *   color: ['fg', 'textColor'],
- *   backgroundPositionX: ['backgroundPosition'],
- *   backgroundPositionY: ['backgroundPosition']
- * } as const;
- *
- * type AliasObjects = AliasesToPropertyTypes<Properties, typeof aliases>
- * // ^? = {
- *   fg: 'rebeccapurple' | 'red' | (string & {}) | undefined;
- *   textColor: 'rebeccapurple' | 'red' | (string & {}) | undefined;
- *   backgroundPosition: 'center' | `${string}%` | (string & {});
- * }
- * ```
- */
-type AliasesToPropertyTypes<
-  PropertyToAliases extends PropertyToAliasesShape | EmptyObject,
-  // Each alias will become an object key, so they must extend index signatures
-  Alias extends PossibleAliasNames,
-> = Simplify<{
-  // Create an object keyed by the alias names:
-  // ```
-  // {
-  //   backgroundPosition: { ... },
-  // }
-  // ```
-  [AliasKey in Alias]: {
-    // Create an object including only the Properties that reference the alias:
-    // ```
-    // {
-    //   backgroundPosition: {
-    //     backgroundPositionX: `${string}%` | "left" | "right" | "center";
-    //     backgroundPositionY: `${string}%` | "center" | "top" | "bottom";
-    //   }
-    // }
-    // ```
-    // Lookup only the property keys that have an alias set
-    [PropertyKey in keyof PropertyToAliases as PropertyToAliases[PropertyKey] extends readonly unknown[]
-      ? // Select only properties which have the current alias defined in the Aliases
-        Includes<PropertyToAliases[PropertyKey], AliasKey> extends true
-        ? PropertyKey
-        : // Other keys have already been handled, or will be handled as we iterate over
-          // the remaining PropertyKey and/or AliasKey, so skip it for now.
-          never
-      : // Shouldn't make it here
-        never]: PropertyKey extends keyof Properties // those out. // aren't in Properties even though earlier type checks would have ruled // PropertyToAliasesShape, so it could theoretically have keys which // This conditional is necessary because A only _extends_ // We're only dealing with arrays, but TS has lost that information by this // point, so we have to reassert it.
-      ? // Grab the property's type, simplified so we can distribute over the
-        // union correctly
-        Properties[PropertyKey]
-      : never;
-  } extends infer O
-    ? O extends object // Now get the interstion of the values of each of the Properties that reference this
-      ? // alias:
-        // ```
-        // {
-        //   backgroundPosition: `${string}%` | "center";
-        // }
-        // ```
-        UnionOfIntersectingValuesWithNoWidening<O>
-      : never
-    : never;
-}>;
-
-type SimplifiedAliasesToPropertyTypes<
-  PropertyToAliases extends PropertyToAliasesShape | EmptyObject,
-  AliasNames extends PossibleAliasNames,
-  Result = AliasesToPropertyTypes<PropertyToAliases, AliasNames>,
-> = Partial<{
-  // Simplifying the union forces better IDE auto complete.
-  [Key in keyof Result]: SimplifyUnion<Result[Key]>;
-}>;
-
 // Note:, Typescript doesn't support partial/private type parameter inference.
 // If we ever want to change `Properties` into a generic, we are
 // forced to give a default value to all following generics. As soon as we do
@@ -485,32 +531,50 @@ type SimplifiedAliasesToPropertyTypes<
 // See https://stackoverflow.com/a/60378737
 // See https://github.com/microsoft/TypeScript/issues/26242
 function create<
-  // These generics are all inferred, no need to set them
-  PropertyToAliases extends PropertyToAliasesShape,
-  BreakpointsArg extends BreakpointsShape,
-  Modifiers extends ModifiersShape,
-  PseudoElements extends PseudoElementsShape,
-  AllPropertyNames =
-    | keyof Properties
-    | ExtractArrayValues<PropertyToAliases, PossibleAliasNames>,
+  PropertyToAliases extends PropertyToAliasesShape = Record<never, never>,
+  Breakpoints extends BreakpointsShape = Record<never, never>,
+  Modifiers extends ModifiersShape = Record<never, never>,
+  PseudoElements extends PseudoElementsShape = Record<never, never>,
+  AllProperties = Simplify<
+    Partial<SimplifiedAliasesToPropertyTypes<PropertyToAliases, Properties>> &
+      Properties
+  >,
+  AllPropertyNames = keyof AllProperties,
   // We're opinionated on the possible structure of incoming prop objects, so
   // we're able to list out all the possible combinations of paths.
   // Some objects may be `never` (ie; not configured), but they'll get filtered
   // out during the MapTupleToKeys<> call.
-  PropPaths = SimplifyUnion<
+  // TODO: Why is this coming out as `undefined`?
+  PropPaths =
     | [AllPropertyNames]
-    | [AllPropertyNames, keyof BreakpointsArg]
+    | [AllPropertyNames, keyof Breakpoints]
     | [keyof Modifiers, AllPropertyNames]
-    | [keyof Modifiers, AllPropertyNames, keyof BreakpointsArg]
+    | [keyof Modifiers, AllPropertyNames, keyof Breakpoints]
     | [keyof PseudoElements, AllPropertyNames]
-    | [keyof PseudoElements, AllPropertyNames, keyof BreakpointsArg]
+    | [keyof PseudoElements, AllPropertyNames, keyof Breakpoints]
     | [keyof Modifiers, keyof PseudoElements, AllPropertyNames]
     | [
         keyof Modifiers,
         keyof PseudoElements,
         AllPropertyNames,
-        keyof BreakpointsArg,
-      ]
+        keyof Breakpoints,
+      ],
+  ResponsiveProperties = {
+    [Key in keyof AllProperties]+?:
+      | AllProperties[Key]
+      | {
+          [Breakpoint in keyof Breakpoints]+?: AllProperties[Key];
+        };
+  },
+  ResponsivePropertiesWithPseudoElements = Simplify<
+    ResponsiveProperties & {
+      [PseudoElement in keyof PseudoElements]+?: ResponsiveProperties;
+    }
+  >,
+  ResponsiveModifiablePropsWithPseudoElements = Simplify<
+    ResponsivePropertiesWithPseudoElements & {
+      [Modifier in keyof Modifiers]+?: ResponsivePropertiesWithPseudoElements;
+    }
   >,
 >(options: {
   /**
@@ -628,7 +692,7 @@ function create<
    * The special selector `&` means "no media query" and must come first in the
    * object. If not set, it will be injected for you with the alias `base`.
    */
-  breakpoints?: ExactOptional<BreakpointsArg>;
+  breakpoints?: ExactOptional<Breakpoints>;
   /**
    * Modifiers are combined with a generated class name to form a selector used
    * for applying style rules.
@@ -659,65 +723,95 @@ function create<
    * `true` to opt into a default set of pseudo elements.
    */
   pseudoElements?: ExactOptional<PseudoElements>;
-  valueMapper?: ExactOptional<MakeValueMapper<PropPaths>>;
+  valueMapper?: ExactOptional<
+    MakeValueMapper<AllProperties, NoInfer<PropPaths>>
+  >;
   /**
    * A list of values that if passed to any styleProp on our Box component should
    * warn the user, and bail early from the css property injection procedure. We
    * do this as there is no good way for us to explicitly disallow this string
    * literal in our types holistically for every style property.
    */
-  bannedGlobalValues?: ExactOptional<Globals[]>;
+  // bannedGlobalValues?: ExactOptional<Globals[]>;
 
   /**
    * Prefix generated classnames & custom properties with this namespace to avoid
    * collisions with existing styles.
    */
   namespace?: ExactOptional<string>;
+  /**
+   * Global defaults injected into the returned stylesheet.
+   *
+   * Will only appear in converted style output when a matching property is
+   * passed in, otherwise the defaults will cascade in from the stylesheet.
+   *
+   * @example
+   * const {stylesheet, convert} = create({
+   *   defaults: {
+   *     color: 'red',
+   *   }
+   * });
+   *
+   * convert({
+   *   display: 'flex',
+   * });
+   * // =>
+   * // `color` isn't returned since it's already in `stylesheet`
+   * // {
+   * //   display: 'flex',
+   * // }
+   *
+   * @example
+   * const {stylesheet, convert} = create({
+   *   defaults: {
+   *     color: 'red',
+   *   }
+   * });
+   *
+   * convert({
+   *   _hover: {
+   *     color: 'blue'
+   *   }
+   * });
+   * // =>
+   * // Includes 'red' because the `color` property in the style attribute will
+   * // overwrite the same property in the stylesheet.
+   * // {
+   * //   color: 'var(--_hover-on,blue) var(--_hover-off,red)'
+   * // }
+   *
+   * @example
+   * const {stylesheet, convert} = create({
+   *   modifiers: {
+   *     _focus: ':focus',
+   *   },
+   *   defaults: {
+   *    // Hotpink outline when focused
+   *     _focus: {
+   *       outlineColor: 'hotpink',
+   *       outlineStyle: 'solid',
+   *       outlineWidth: '2px'
+   *     }
+   *   }
+   * });
+   *
+   * convert({
+   *   _focus: {
+   *     // tone down the outline color in this one case
+   *     outlineColor: 'rebeccapurple'
+   *   }
+   * });
+   * // =>
+   * // `outline-color` is explicitly set to `rebeccapurple`, and will not
+   * // fallback to the default of `hotpink`.
+   * // `outline-style` and `outline-width` will still apply
+   * // {
+   * //   outlineColor: 'var(--_focus-on,rebeccapurple)'
+   * // }
+   */
+  defaults?: NoInfer<ResponsiveModifiablePropsWithPseudoElements>;
+  bannedGlobalValues?: ExactOptional<Globals[]>;
 }) {
-  // These generics are based on the above inferred generics
-  type Breakpoints = IsObject<BreakpointsArg> extends true
-    ? BreakpointsArg
-    : typeof DEFAULT_BASE_BREAKPOINT;
-
-  type AliasNames = IsObject<PropertyToAliases> extends true
-    ? ExtractArrayValues<PropertyToAliases, PossibleAliasNames>
-    : never;
-
-  type AliasedProperties = IsObject<PropertyToAliases> extends true
-    ? SimplifiedAliasesToPropertyTypes<PropertyToAliases, AliasNames>
-    : EmptyObject;
-
-  // TODO: inject tokenized style prop types
-  type AllProperties = Simplify<Partial<Properties> & AliasedProperties>;
-
-  type ResponsiveProperties = IsObject<Breakpoints> extends true
-    ? {
-        [Key in keyof AllProperties]+?:
-          | AllProperties[Key]
-          | {
-              [Breakpoint in keyof Breakpoints]+?: AllProperties[Key];
-            };
-      }
-    : AllProperties;
-
-  type ResponsivePropertiesWithPseudoElements =
-    IsObject<PseudoElements> extends true
-      ? Simplify<
-          ResponsiveProperties & {
-            [PseudoElement in keyof PseudoElements]+?: ResponsiveProperties;
-          }
-        >
-      : ResponsiveProperties;
-
-  type ResponsiveModifiablePropsWithPseudoElements =
-    IsObject<Modifiers> extends true
-      ? Simplify<
-          ResponsivePropertiesWithPseudoElements & {
-            [Modifier in keyof Modifiers]+?: ResponsivePropertiesWithPseudoElements;
-          }
-        >
-      : ResponsivePropertiesWithPseudoElements;
-
   type AllShapesOfProperties = {
     [Constant.NoParent]: ResponsiveModifiablePropsWithPseudoElements;
     [Constant.ModifierParent]: ResponsivePropertiesWithPseudoElements;
@@ -725,1122 +819,1036 @@ function create<
     [Constant.DeclarationParent]: AllProperties;
   };
 
-  return ({
-    defaults,
-  }: {
-    /**
-     * Global defaults injected into the returned stylesheet.
-     *
-     * Will only appear in converted style output when a matching property is
-     * passed in, otherwise the defaults will cascade in from the stylesheet.
-     *
-     * @example
-     * const {stylesheet, convert} = create({
-     *   defaults: {
-     *     color: 'red',
-     *   }
-     * });
-     *
-     * convert({
-     *   display: 'flex',
-     * });
-     * // =>
-     * // `color` isn't returned since it's already in `stylesheet`
-     * // {
-     * //   display: 'flex',
-     * // }
-     *
-     * @example
-     * const {stylesheet, convert} = create({
-     *   defaults: {
-     *     color: 'red',
-     *   }
-     * });
-     *
-     * convert({
-     *   _hover: {
-     *     color: 'blue'
-     *   }
-     * });
-     * // =>
-     * // Includes 'red' because the `color` property in the style attribute will
-     * // overwrite the same property in the stylesheet.
-     * // {
-     * //   color: 'var(--_hover-on,blue) var(--_hover-off,red)'
-     * // }
-     *
-     * @example
-     * const {stylesheet, convert} = create({
-     *   modifiers: {
-     *     _focus: ':focus',
-     *   },
-     *   defaults: {
-     *    // Hotpink outline when focused
-     *     _focus: {
-     *       outlineColor: 'hotpink',
-     *       outlineStyle: 'solid',
-     *       outlineWidth: '2px'
-     *     }
-     *   }
-     * });
-     *
-     * convert({
-     *   _focus: {
-     *     // tone down the outline color in this one case
-     *     outlineColor: 'rebeccapurple'
-     *   }
-     * });
-     * // =>
-     * // `outline-color` is explicitly set to `rebeccapurple`, and will not
-     * // fallback to the default of `hotpink`.
-     * // `outline-style` and `outline-width` will still apply
-     * // {
-     * //   outlineColor: 'var(--_focus-on,rebeccapurple)'
-     * // }
-     */
-    defaults?: ResponsiveModifiablePropsWithPseudoElements;
-  }) => {
-    // ------------------------------------------
-    type ResponsivePropNames = keyof ResponsiveProperties;
+  // ------------------------------------------
+  type ResponsivePropNames = keyof ResponsiveProperties;
 
-    type NestedCSSProperties = {
-      [Selector: string]: Properties & {
-        [NestedSelector: string]: string | Properties;
-      };
+  type NestedCSSProperties = {
+    [Selector: string]: Properties & {
+      [NestedSelector: string]: string | Properties;
     };
+  };
 
-    type ConversionResult = {
+  type ConversionResult = {
+    style: Properties;
+  } & {
+    [K in keyof PseudoElements]?: {
       style: Properties;
-    } & {
-      [K in keyof PseudoElements]?: {
-        style: Properties;
-      };
     };
+  };
 
-    type AccumulatorCondition = Exclude<
-      keyof Modifiers | keyof Breakpoints,
-      typeof baseBreakpoint
-    >;
+  type AccumulatorCondition = Exclude<
+    keyof Modifiers | keyof Breakpoints,
+    typeof baseBreakpoint
+  >;
 
-    interface DeclarationCondition {
-      condition?: AccumulatorCondition;
-      value: unknown;
+  interface DeclarationCondition {
+    condition?: AccumulatorCondition;
+    value: unknown;
+  }
+
+  type ConditionalDeclarations = {
+    [K in keyof Properties]?: DeclarationCondition[];
+  };
+
+  type DeclarationAccumulator = {
+    [Key in
+      | keyof PseudoElements
+      | typeof Constant['RootElement']]?: ConditionalDeclarations;
+  };
+
+  type Elements = keyof DeclarationAccumulator;
+
+  type ConvertResult = {
+    [Key in keyof DeclarationAccumulator]: {
+      [K in keyof Properties]?: Properties[K] | (string & {});
+    };
+  };
+
+  type CascadeOrderKeys = keyof Breakpoints | keyof Modifiers;
+
+  // Why not just do `keyof PropertyToAliases` directly? Because
+  // `PropertyToAliases` can be `undefined`, and `keyof undefined` === `string |
+  // number | symbol` which is not what we want.
+  type PropertiesWithAliases = IsObject<PropertyToAliases> extends true
+    ? keyof PropertyToAliases
+    : never;
+
+  type AliasNames = ExtractArrayValues<PropertyToAliases, PossibleAliasNames>;
+
+  type InvertedAliases = {
+    [key in AliasNames]: (PropertiesWithAliases | AliasNames)[];
+  };
+
+  const className = '.Box' as const;
+  // No global defautls to start
+  let globalDefaults: ResponsiveModifiablePropsWithPseudoElements | undefined;
+
+  const stylesWithSelectors: NestedCSSProperties = {};
+
+  const {
+    breakpoints,
+    modifiers,
+    pseudoElements,
+    valueMapper: globalValueMapper,
+    aliases,
+    bannedGlobalValues,
+    namespace,
+    defaults,
+  } = processOptions(options);
+
+  type ValueMapper = MakeValueMapper<AllProperties, PropPaths>;
+
+  let inverseAliases: InvertedAliases | undefined;
+
+  if (aliases) {
+    inverseAliases = invertAliases(aliases);
+  }
+
+  const baseBreakpoint = Object.keys(breakpoints)[0];
+
+  const elements = Object.keys(pseudoElements) as Elements[];
+  elements.push(Constant.RootElement);
+
+  let cascadeOrderNumber = 0;
+
+  const cascadeOrder = {} as {
+    [Key in CascadeOrderKeys]: number;
+  };
+
+  // Least specific first
+  for (
+    let cascadeKeys = Object.keys(breakpoints).concat(
+        Object.keys(modifiers),
+      ) as CascadeOrderKeys[],
+      i = 0;
+    i < cascadeKeys.length;
+    i++
+  ) {
+    cascadeOrder[cascadeKeys[i]] = cascadeOrderNumber++;
+  }
+
+  // Process the defaults once to inject into the global styles string
+  if (defaults) {
+    const {style, ...pseudoStyles}: Partial<ConversionResult> =
+      convert(defaults);
+
+    if (style) {
+      stylesWithSelectors[className] = style;
     }
 
-    type ConditionalDeclarations = {
-      [K in keyof Properties]?: DeclarationCondition[];
-    };
+    const pseudoDefaultKeys = Object.keys(
+      pseudoStyles,
+    ) as (keyof typeof pseudoStyles)[];
 
-    type DeclarationAccumulator = {
-      [Key in
-        | keyof PseudoElements
-        | typeof Constant['RootElement']]?: ConditionalDeclarations;
-    };
-
-    type Elements = keyof DeclarationAccumulator;
-
-    type ConvertResult = {
-      [Key in keyof DeclarationAccumulator]: {
-        [K in keyof Properties]?: Properties[K] | (string & {});
-      };
-    };
-
-    type CascadeOrderKeys = keyof Breakpoints | keyof Modifiers;
-
-    // Why not just do `keyof PropertyToAliases` directly? Because
-    // `PropertyToAliases` can be `undefined`, and `keyof undefined` === `string |
-    // number | symbol` which is not what we want.
-    type PropertiesWithAliases = IsObject<PropertyToAliases> extends true
-      ? keyof PropertyToAliases
-      : never;
-
-    type InvertedAliases = {
-      [key in AliasNames]: (PropertiesWithAliases | AliasNames)[];
-    };
-
-    const className = '.Box' as const;
-    // No global defautls to start
-    let globalDefaults: ResponsiveModifiablePropsWithPseudoElements | undefined;
-
-    const stylesWithSelectors: NestedCSSProperties = {};
-
-    const {
-      breakpoints,
-      modifiers,
-      pseudoElements,
-      valueMapper: globalValueMapper,
-      aliases,
-      bannedGlobalValues,
-      namespace,
-    } = processOptions(options);
-
-    type ValueMapper = MakeValueMapper<PropPaths>;
-
-    let inverseAliases: InvertedAliases | undefined;
-
-    if (aliases) {
-      inverseAliases = invertAliases(aliases);
+    // eslint-disable-next-line @typescript-eslint/prefer-for-of
+    for (let i = 0; i < pseudoDefaultKeys.length; i++) {
+      const pseudoKey = pseudoDefaultKeys[i];
+      const pseudoValue = pseudoStyles[pseudoKey]?.style;
+      if (pseudoValue) {
+        // TODO: Fix this. It's not undefined by design, but TS doesn't know
+        // that yet.
+        const pseudoSelector = pseudoElements[pseudoKey];
+        pseudoSelector.includes('&')
+          ? pseudoSelector.replace('&', className)
+          : `${className}${pseudoSelector}`;
+        stylesWithSelectors[pseudoSelector] = pseudoValue;
+      }
     }
+  }
 
-    const baseBreakpoint = Object.keys(breakpoints)[0];
+  stylesWithSelectors[className] ??= {};
 
-    const elements = Object.keys(pseudoElements) as Elements[];
-    elements.push(Constant.RootElement);
+  // See: https://github.com/propjockey/css-media-vars/blob/master/css-media-vars.css
+  // Setting up the default state of the CSS space hack:
+  // 'initial' = enabled
+  // ' ' (space) = disabled
+  // A space is a valid value in CSS (so wont trigger the `var()` fallback), but
+  // is ignored when the browser is consuming tokens to figure out the final
+  // value of the declaration.
+  //
+  // For example:
+  // ```
+  // {
+  //   color: { xs: 'green', sm: 'red', lg: 'blue' }
+  // }
+  // ```
+  // becomes:
+  // ```
+  // {
+  //   // NOTE: order is important here. We're using mobile-first breakpoints,
+  //   // so we check the largest (ie; most specific) ones first.
+  //   color: 'var(--_lg-on, blue) var(--_lg-off, var(--_sm-on, red) var(--_sm-off, green))'
+  // }
+  // ```
+  //
+  // A more complex example:
+  // ```
+  // {
+  //   color: { xs: 'green', sm: 'red' },
+  //   _hover: {
+  //     color: { sm: 'blue', lg: 'orange' }
+  //   },
+  //   _active: {
+  //     color: 'rebeccapurple'
+  //   }
+  // }
+  // ```
+  // becomes:
+  // ```
+  // {
+  //   color: 'var(--_active-on, rebeccapurple) var(--_active_off, var(--_hover-on, var(--_sm-on, blue) var(--_sm-off, var(--_lg-on, orange))) var(--_hover-off, var(--_sm-on, red) var(--_sm-off, green)))'
+  // }
+  // ```
+  // NOTE: We don't need to set any pseudo elements here as they'll be given their
+  // own unique classname & selector within an inline <style> tag at runtime.
+  Object.entries({...modifiers, ...breakpoints})
+    .filter(
+      // A bare '&' has a special meaning; it's an alias for the 'base' styles
+      // when no media query applies.
+      ([, selector]) => selector.trim() !== '&',
+    )
+    .forEach(([name, selector]) => {
+      const nonMatchingState = {
+        [`--${namespace}${name}-on`]: ' ',
+        [`--${namespace}${name}-off`]: 'initial',
+      };
 
-    let cascadeOrderNumber = 0;
+      const matchingState = {
+        [`--${namespace}${name}-on`]: 'initial',
+        [`--${namespace}${name}-off`]: ' ',
+      };
 
-    const cascadeOrder = {} as {
-      [Key in CascadeOrderKeys]: number;
-    };
+      let expandedSelector = selector.trim();
 
-    // Least specific first
+      // All toggles start in the "non matching" state
+      if (typeof stylesWithSelectors[className] !== 'object') {
+        stylesWithSelectors[className] = {};
+      }
+
+      Object.assign(stylesWithSelectors[className], nonMatchingState);
+
+      // When a selector matches, they go into the "matching" state
+      if (expandedSelector.startsWith('@')) {
+        if (typeof stylesWithSelectors[expandedSelector] !== 'object') {
+          stylesWithSelectors[expandedSelector] = {};
+        }
+
+        if (
+          typeof stylesWithSelectors[expandedSelector][className] !== 'object'
+        ) {
+          stylesWithSelectors[expandedSelector][className] = {};
+        }
+
+        Object.assign(
+          stylesWithSelectors[expandedSelector][className],
+          matchingState,
+        );
+      } else {
+        expandedSelector = selector.includes('&')
+          ? selector.replace('&', className)
+          : `${className}${selector}`;
+
+        if (typeof stylesWithSelectors[expandedSelector] !== 'object') {
+          stylesWithSelectors[expandedSelector] = {};
+        }
+
+        Object.assign(stylesWithSelectors[expandedSelector], matchingState);
+      }
+    });
+
+  const stylesheet = toStyleSheet(stylesWithSelectors);
+
+  // Assign the passed-in defaults ready for subsequent calls to convert().
+  // No, we can't set this as const otherwise the call to convert() above
+  // would be trying to access `globalDefaults` before initialization.
+  // eslint-disable-next-line prefer-const
+  globalDefaults = defaults;
+
+  return {
+    stylesheet,
+    convert,
+  };
+
+  function convert(
+    /**
+     * A value of `null` will remove any default for that property without having to
+     * apply your own value. Roughly equivalent to CSS `unset`.
+     */
+    styleProps: ResponsiveModifiablePropsWithPseudoElements,
+    {
+      defaults: runtimeDefaults,
+      valueMapper = globalValueMapper,
+    }: {
+      defaults?: ResponsiveModifiablePropsWithPseudoElements;
+      valueMapper?: ValueMapper;
+    } = {},
+  ): ConversionResult {
+    const styles = [styleProps];
+    let lastIsWeakMerged = false;
+    if (runtimeDefaults) {
+      styles.push(runtimeDefaults);
+    }
+    if (globalDefaults) {
+      styles.push(globalDefaults);
+      lastIsWeakMerged = true;
+    }
+    // NOTE: purposely ignore any un-merged global defaults as they've already
+    // been added to the generated .css file during setup.
+    const [converted] = convertRecursive(
+      styles,
+      lastIsWeakMerged,
+      valueMapper,
+      Constant.NoParent,
+      [],
+      Constant.RootElement,
+    );
+
+    // TODO: De-dupe keys
+    //
+    // 1. store the value in a cache as long as no values are
+    //    `unset`/`initial`/`inherit`/etc
+    // 2. For every cache value with more than one hit
+    //    a) create a new CSS Custom Property for it
+    //    b) replace each property's final value with a var() of the cached custom
+    //    property
+
+    // TODO: Make defaults static only:
+    // 1. Some passed in to the .css file creation which get set as global
+    //    fallbacks for unset properties. Also used as fallbacks when a property
+    //    (or an alias) _is_ passed in.
+    // 2. Allow partial overriding of defaults passed into the `convert()` method
+    //    which gets merged with the global defaults before being applied. This
+    //    allows dynamically setting some defaults before calling `convert()`
+    //    based on other prop values, and avoids the callsite having to know to
+    //    check all aliases.
+    //
+    //    Wait, no that doesn't work because what if the
+    //    callsite only wants to set a default / fallback if another specific
+    //    property is set to a specific value?
+    //
+    // Maybe we stick with the current approach of dynamic + static?
+
+    // Our generated styles can be random strings (`var(...)` etc), but the
+    // `Properties` from `csstype` doesn't always union strings. We want to play
+    // nicely with the `csstype` ecosystem (React et al), so we down-cast the
+    // type to pretend it's compatible with Properties (which in practicality it
+    // _is_, it's just TS which doesn't know that).
+    const rootStyles = (converted[Constant.RootElement] ?? {}) as Properties;
+    delete converted[Constant.RootElement];
+
+    // Avoid creating another new object by re-using the result of the function
+    // call above
+    const result = mutateObjectValues(converted, (pseudoElementStyleProps) =>
+      pseudoElementStyleProps
+        ? {
+            style: pseudoElementStyleProps as Properties,
+          }
+        : undefined,
+    ) as ConversionResult;
+
+    result.style = rootStyles;
+
+    return result;
+  }
+
+  function convertRecursive(
+    /**
+     * Valid:
+     * ```
+     * {
+     *   color: 'blue',
+     *   padding: {xs: '100', md: '400'},
+     *   _before: {
+     *     content: '">"',
+     *     display: 'block',
+     *   }
+     *   _hover: {
+     *     color: {xs: 'red', lg: 'green'},
+     *     _before: {
+     *       content: '"<"',
+     *     }
+     *   },
+     * }
+     * ```
+     *
+     * Invalid:
+     * ```
+     * {
+     *   color: {
+     *     _hover: any, // INVALID, only breakpoint aliases allowed
+     *     _after: any, // INVALID, only breakpoint aliases allowed
+     *     sm: !object, // INVALID, breakpoint values must be concrete
+     *   },
+     *   _after: {
+     *     _hover: any, // INVALID, modifiers cannot be nested in pseudo elements
+     *     sm: any,     // INVALID, breakpoints can only be children of properties
+     *   },
+     *   _hover: {
+     *     sm: any,     // INVALID, breakpoints can only be children of properties
+     *   },
+     *   _hover: '400', // INVALID, modifiers must be objects
+     *   _after: '400', // INVALID, pseudo elements must be objects
+     *   sm: any,       // INVALID, breakpoints can only be children of properties
+     * }
+     */
+    // TODO: Does this recursive type cause TS to be slow?
+    stylePropsObjs: AllShapesOfProperties[typeof parent][],
+
+    /**
+     * Only merge the last style prop object if and preceding objects contain a
+     * matching key. In this way, the last prop object is "weak merged".
+     *
+     * Used because global defaults have been set in the .css file, but the
+     * specificity of the style="" attribute is higher, so if a matching prop is
+     * passed in we need to ensure the default value is set again on the style=""
+     * attribute, otherwise we don't merge it and instead let the .css style catch
+     * it.
+     */
+    lastIsWeakMerged: boolean,
+    valueMapper: ValueMapper | undefined,
+    parent:
+      | Constant.NoParent
+      | Constant.ModifierParent
+      | Constant.DeclarationParent
+      | Constant.PseudoElementParent,
+    parentPropPath: PropPaths | never[],
+    whichElement: Elements,
+  ): [ConvertResult, ConvertResult] {
+    const parentIsResponsiveDeclaration = parent === Constant.DeclarationParent;
+
+    const mergedProperties: DeclarationAccumulator = {};
+    const weakProperties: DeclarationAccumulator = {};
+    const lastStyleObjIndex = stylePropsObjs.length - 1;
+
+    // An O(n) recursive algorithm converting the given set of style prop objects
+    // into a valid CSS style object.
+    // It:
+    // 1. Merges the objects.
+    //    - Earlier objects overwrite values of later ones.
+    //    - Primitive values are expanded to {xs: <value>} to ensure deep merge
+    //      works as expected
+    // 2. Expands aliases to their concrete properties.
+    //    - Earlier aliases overwrite values of later ones (as per config order)
     for (
-      let cascadeKeys = Object.keys(breakpoints).concat(
-          Object.keys(modifiers),
-        ) as CascadeOrderKeys[],
-        i = 0;
-      i < cascadeKeys.length;
-      i++
+      let whichStyleObj = 0;
+      whichStyleObj < stylePropsObjs.length;
+      whichStyleObj++
     ) {
-      cascadeOrder[cascadeKeys[i]] = cascadeOrderNumber++;
-    }
+      const styleObj = stylePropsObjs[whichStyleObj];
+      const styleProps = Object.keys(styleObj) as (keyof typeof styleObj)[];
+      // Can't use a for..of here because we're modifying the array mid-loop, but
+      // the iterator returned by for..of will not include items pushed onto the
+      // array.
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of, no-labels
+      stylePropLoop: for (let i = 0; i < styleProps.length; i++) {
+        const maybeAliasedProp = styleProps[i];
+        const value = styleObj[maybeAliasedProp];
 
-    // Process the defaults once to inject into the global styles string
-    if (defaults) {
-      const {style, ...pseudoStyles}: Partial<ConversionResult> =
-        convert(defaults);
-
-      if (style) {
-        stylesWithSelectors[className] = style;
-      }
-
-      const pseudoDefaultKeys = Object.keys(
-        pseudoStyles,
-      ) as (keyof typeof pseudoStyles)[];
-
-      // eslint-disable-next-line @typescript-eslint/prefer-for-of
-      for (let i = 0; i < pseudoDefaultKeys.length; i++) {
-        const pseudoKey = pseudoDefaultKeys[i];
-        const pseudoValue = pseudoStyles[pseudoKey]?.style;
-        if (pseudoValue) {
-          // TODO: Fix this. It's not undefined by design, but TS doesn't know
-          // that yet.
-          const pseudoSelector = pseudoElements[pseudoKey];
-          pseudoSelector.includes('&')
-            ? pseudoSelector.replace('&', className)
-            : `${className}${pseudoSelector}`;
-          stylesWithSelectors[pseudoSelector] = pseudoValue;
-        }
-      }
-    }
-
-    stylesWithSelectors[className] ??= {};
-
-    // See: https://github.com/propjockey/css-media-vars/blob/master/css-media-vars.css
-    // Setting up the default state of the CSS space hack:
-    // 'initial' = enabled
-    // ' ' (space) = disabled
-    // A space is a valid value in CSS (so wont trigger the `var()` fallback), but
-    // is ignored when the browser is consuming tokens to figure out the final
-    // value of the declaration.
-    //
-    // For example:
-    // ```
-    // {
-    //   color: { xs: 'green', sm: 'red', lg: 'blue' }
-    // }
-    // ```
-    // becomes:
-    // ```
-    // {
-    //   // NOTE: order is important here. We're using mobile-first breakpoints,
-    //   // so we check the largest (ie; most specific) ones first.
-    //   color: 'var(--_lg-on, blue) var(--_lg-off, var(--_sm-on, red) var(--_sm-off, green))'
-    // }
-    // ```
-    //
-    // A more complex example:
-    // ```
-    // {
-    //   color: { xs: 'green', sm: 'red' },
-    //   _hover: {
-    //     color: { sm: 'blue', lg: 'orange' }
-    //   },
-    //   _active: {
-    //     color: 'rebeccapurple'
-    //   }
-    // }
-    // ```
-    // becomes:
-    // ```
-    // {
-    //   color: 'var(--_active-on, rebeccapurple) var(--_active_off, var(--_hover-on, var(--_sm-on, blue) var(--_sm-off, var(--_lg-on, orange))) var(--_hover-off, var(--_sm-on, red) var(--_sm-off, green)))'
-    // }
-    // ```
-    // NOTE: We don't need to set any pseudo elements here as they'll be given their
-    // own unique classname & selector within an inline <style> tag at runtime.
-    Object.entries({...modifiers, ...breakpoints})
-      .filter(
-        // A bare '&' has a special meaning; it's an alias for the 'base' styles
-        // when no media query applies.
-        ([, selector]) => selector.trim() !== '&',
-      )
-      .forEach(([name, selector]) => {
-        const nonMatchingState = {
-          [`--${namespace}${name}-on`]: ' ',
-          [`--${namespace}${name}-off`]: 'initial',
-        };
-
-        const matchingState = {
-          [`--${namespace}${name}-on`]: 'initial',
-          [`--${namespace}${name}-off`]: ' ',
-        };
-
-        let expandedSelector = selector.trim();
-
-        // All toggles start in the "non matching" state
-        if (typeof stylesWithSelectors[className] !== 'object') {
-          stylesWithSelectors[className] = {};
+        // Ignore null/undefined values
+        if (value == null) {
+          continue;
         }
 
-        Object.assign(stylesWithSelectors[className], nonMatchingState);
+        // This is an alias
+        if (inverseAliases) {
+          const aliasTargets = inverseAliases[maybeAliasedProp as AliasNames];
+          if (aliasTargets) {
+            // It expands into one or more properties, so iterate over each of them
+            // eslint-disable-next-line @typescript-eslint/prefer-for-of
+            for (let alias = 0; alias < aliasTargets.length; alias++) {
+              const target = aliasTargets[alias];
+              // If the target property doesn't have a value set, set it now.
+              // Otherwise if it has a value already, skip it since existing values
+              // are more specific and take precedence over aliases.
+              if (styleObj[target] == null) {
+                // TODO: This mutates the input object, should we clone it?
+                // @ts-expect-error Fair enough; this is an incredibly complex
+                // union!
+                styleObj[target] = value;
+                // Inject the key into the object keys array ready to be iterated next
+                styleProps.push(target);
+              }
+            }
 
-        // When a selector matches, they go into the "matching" state
-        if (expandedSelector.startsWith('@')) {
-          if (typeof stylesWithSelectors[expandedSelector] !== 'object') {
-            stylesWithSelectors[expandedSelector] = {};
+            // Ignore this property, but continue to process the now-resolved
+            // properties
+            // NOTE: The alias is now unused, but we don't bother deleting it - the
+            // garbage collector will handle it later, and since we're doing a
+            // single O(n) iteration of the object, we won't accidentally revisit
+            // that value in the future.
+            continue;
           }
+        }
 
-          if (
-            typeof stylesWithSelectors[expandedSelector][className] !== 'object'
-          ) {
-            stylesWithSelectors[expandedSelector][className] = {};
+        // Values from here are guaranteed to be a non-alias
+
+        // Ensure the property doesn't exist in an earlier object (ie; don't try to
+        // overwrite).
+        for (
+          let prevStyleObj = 0;
+          prevStyleObj < whichStyleObj;
+          prevStyleObj++
+        ) {
+          if (stylePropsObjs[prevStyleObj][maybeAliasedProp] != null) {
+            // Continue the outer loop by jumping to the label
+            // eslint-disable-next-line no-labels
+            continue stylePropLoop;
           }
+        }
 
-          Object.assign(
-            stylesWithSelectors[expandedSelector][className],
-            matchingState,
+        // Now the property is guaranteed to be non-aliased
+        const prop = maybeAliasedProp as keyof Properties;
+
+        // Now we can process this value
+        const propIsBreakpoint = hasOwn(breakpoints, prop);
+        const propIsModifier = !propIsBreakpoint && hasOwn(modifiers, prop);
+        const propIsPseudoElement =
+          !propIsBreakpoint && !propIsModifier && hasOwn(pseudoElements, prop);
+        const propIsDeclaration =
+          !propIsBreakpoint && !propIsModifier && !propIsPseudoElement;
+        const valueIsObject = typeof value === 'object';
+        // TODO: How to narrow 'prop' here?
+        const propPath: PropPaths = [...parentPropPath, prop];
+
+        // NOTE; We do the property checks early like this because it minifies
+        // really well in production mode:
+        // https://esbuild.github.io/try/#dAAwLjE5LjExAHsgbWluaWZ5OiB0cnVlIH0AZnVuY3Rpb24gZnVuYygpIHsKICBjb25zdCB3aG9hID0gZm9vLmJhcjsKCiAgaWYgKGZvbyAmJiB6aXApIHsKICAgIC8vIElnbm9yZQogICAgcmV0dXJuOwogIH0KCiAgaWYgKGJhciAmJiB6aXAgfHwgd2hvYSkgewogICAgLy8gSWdub3JlCiAgICByZXR1cm47CiAgfQoKICBjb25zb2xlLmxvZygnZG9uZScpOwp9CgpleHBvcnQgeyBmdW5jIH07
+        // Ignore null & undefined values
+        // Optimisation: When an explicit 'unset' is passed in, we might be able
+        // to simply not return anything ('unset' is the browser's default). Except
+        // when there's a matching weak value set; we don't yet know if the value
+        // can merged further up the tree.
+        if (
+          value === 'unset' &&
+          (!lastIsWeakMerged || stylePropsObjs[lastStyleObjIndex][prop] == null)
+        ) {
+          continue;
+        }
+
+        if (!parentIsResponsiveDeclaration && propIsBreakpoint) {
+          process.env.NODE_ENV === 'development' &&
+            warnOnInvalidProperty(
+              propPath,
+              `Breakpoint props can only be specified directly on a declaration property. For example: { color: { sm: 'red', lg: 'blue' } }.`,
+            );
+
+          // ignore this invalid property
+          continue;
+        }
+
+        if (parentIsResponsiveDeclaration && !propIsBreakpoint) {
+          process.env.NODE_ENV === 'development' &&
+            warnOnInvalidProperty(
+              propPath,
+              `When specified as an object, \`${parentPropPath.at(
+                -1,
+              )}\` can only contain the keys ${joinEnglish!(
+                Object.keys(breakpoints),
+                'or',
+              )}.`,
+            );
+
+          // ignore this invalid property
+          continue;
+        }
+
+        if (
+          parentIsResponsiveDeclaration &&
+          propIsBreakpoint &&
+          valueIsObject
+        ) {
+          process.env.NODE_ENV === 'development' &&
+            warnOnInvalidProperty(
+              propPath,
+              `Breakpoint values cannot be an object.`,
+            );
+
+          // ignore this invalid property
+          continue;
+        }
+
+        if (parent === Constant.PseudoElementParent && propIsModifier) {
+          process.env.NODE_ENV === 'development' &&
+            warnOnInvalidProperty(
+              propPath,
+              `Pseudo elements cannot contain modifiers. Try {${parentPropPath.at(
+                -1,
+              )}: {..}, ${prop}: { ${parentPropPath.at(-1)}: {..}}}`,
+            );
+
+          // ignore this invalid property
+          continue;
+        }
+
+        // Modifiers must be objects
+        if (!valueIsObject && propIsModifier) {
+          process.env.NODE_ENV === 'development' &&
+            warnOnInvalidProperty(
+              propPath,
+              `Modifier \`${prop}\` must be an object.`,
+            );
+
+          // ignore this invalid property
+          continue;
+        }
+
+        // Pseudo elements must be objects
+        if (!valueIsObject && propIsPseudoElement) {
+          process.env.NODE_ENV === 'development' &&
+            warnOnInvalidProperty(
+              propPath,
+              `Pseudo element \`${prop}\` must be an object.`,
+            );
+
+          // ignore this invalid property
+          continue;
+        }
+
+        // Weak style props are only merged in if there's an equivalent strong
+        // property somewhere in the style props, so we need to keep them seperate
+        // while we're recursing and only merge them as the style prop is
+        // detected.
+        // Since the weak object can only be last, we know the merged properties
+        // wont have any more added, and so can choose to merge directly into that
+        // object if the property exists.
+        const properties =
+          lastIsWeakMerged && whichStyleObj === lastStyleObjIndex
+            ? weakProperties
+            : mergedProperties;
+
+        // Process a non-object concrete value.
+        // Eg; {color: 'red'}
+        // or
+        // {sm: 'blue'}
+        if (parentIsResponsiveDeclaration) {
+          // The declaration is actually the parent object, so we grab that from the
+          // path (eg; { color: { sm: 'red' } }).
+          const declaration = parentPropPath.at(-1) as ResponsivePropNames;
+
+          // Global defaults get mapped earlier in the process
+          const mappedValue =
+            !valueMapper ||
+            (lastIsWeakMerged && whichStyleObj === lastStyleObjIndex)
+              ? value
+              : valueMapper(value, declaration, propPath);
+
+          // Since Typescript doesn't have negation types (`string & not 'inherit'`),
+          // we need to do a runtime check for invalid values because some of the
+          // csstype types have a `| string` union which then allows some values to
+          // sneak through at runtime.
+          bannedGlobalValues?.length &&
+            invariant(
+              !bannedGlobalValues.includes(
+                mappedValue as typeof bannedGlobalValues[number],
+              ),
+              `${
+                propPath?.length ? `[${propPath.join('.')}] ` : ''
+              }${mappedValue} is a disallowed value. Please use a different value.`,
+            );
+
+          insertIntoProperties(
+            properties,
+            whichElement,
+            declaration as keyof Properties,
+            // TODO Not sure why TS isn't narrowing prop down correctly here. it could
+            // only possibly be one of the responsive object keys at this point.
+            prop as CascadeOrderKeys,
+            mappedValue,
           );
         } else {
-          expandedSelector = selector.includes('&')
-            ? selector.replace('&', className)
-            : `${className}${selector}`;
-
-          if (typeof stylesWithSelectors[expandedSelector] !== 'object') {
-            stylesWithSelectors[expandedSelector] = {};
-          }
-
-          Object.assign(stylesWithSelectors[expandedSelector], matchingState);
-        }
-      });
-
-    const stylesheet = toStyleSheet(stylesWithSelectors);
-
-    // Assign the passed-in defaults ready for subsequent calls to convert().
-    // No, we can't set this as const otherwise the call to convert() above
-    // would be trying to access `globalDefaults` before initialization.
-    // eslint-disable-next-line prefer-const
-    globalDefaults = defaults;
-
-    return {
-      stylesheet,
-      convert,
-    };
-
-    function convert(
-      /**
-       * A value of `null` will remove any default for that property without having to
-       * apply your own value. Roughly equivalent to CSS `unset`.
-       */
-      styleProps: ResponsiveModifiablePropsWithPseudoElements,
-      {
-        defaults: runtimeDefaults,
-        valueMapper = globalValueMapper,
-      }: {
-        defaults?: ResponsiveModifiablePropsWithPseudoElements;
-        valueMapper?: ValueMapper;
-      } = {},
-    ): ConversionResult {
-      const styles = [styleProps];
-      let lastIsWeakMerged = false;
-      if (runtimeDefaults) {
-        styles.push(runtimeDefaults);
-      }
-      if (globalDefaults) {
-        styles.push(globalDefaults);
-        lastIsWeakMerged = true;
-      }
-      // NOTE: purposely ignore any un-merged global defaults as they've already
-      // been added to the generated .css file during setup.
-      const [converted] = convertRecursive(
-        styles,
-        lastIsWeakMerged,
-        valueMapper,
-        Constant.NoParent,
-        [],
-        Constant.RootElement,
-      );
-
-      // TODO: De-dupe keys
-      //
-      // 1. store the value in a cache as long as no values are
-      //    `unset`/`initial`/`inherit`/etc
-      // 2. For every cache value with more than one hit
-      //    a) create a new CSS Custom Property for it
-      //    b) replace each property's final value with a var() of the cached custom
-      //    property
-
-      // TODO: Make defaults static only:
-      // 1. Some passed in to the .css file creation which get set as global
-      //    fallbacks for unset properties. Also used as fallbacks when a property
-      //    (or an alias) _is_ passed in.
-      // 2. Allow partial overriding of defaults passed into the `convert()` method
-      //    which gets merged with the global defaults before being applied. This
-      //    allows dynamically setting some defaults before calling `convert()`
-      //    based on other prop values, and avoids the callsite having to know to
-      //    check all aliases.
-      //
-      //    Wait, no that doesn't work because what if the
-      //    callsite only wants to set a default / fallback if another specific
-      //    property is set to a specific value?
-      //
-      // Maybe we stick with the current approach of dynamic + static?
-
-      // Our generated styles can be random strings (`var(...)` etc), but the
-      // `Properties` from `csstype` doesn't always union strings. We want to play
-      // nicely with the `csstype` ecosystem (React et al), so we down-cast the
-      // type to pretend it's compatible with Properties (which in practicality it
-      // _is_, it's just TS which doesn't know that).
-      const rootStyles = (converted[Constant.RootElement] ?? {}) as Properties;
-      delete converted[Constant.RootElement];
-
-      // Avoid creating another new object by re-using the result of the function
-      // call above
-      const result = mutateObjectValues(converted, (pseudoElementStyleProps) =>
-        pseudoElementStyleProps
-          ? {
-              style: pseudoElementStyleProps as Properties,
-            }
-          : undefined,
-      ) as ConversionResult;
-
-      result.style = rootStyles;
-
-      return result;
-    }
-
-    function convertRecursive(
-      /**
-       * Valid:
-       * ```
-       * {
-       *   color: 'blue',
-       *   padding: {xs: '100', md: '400'},
-       *   _before: {
-       *     content: '">"',
-       *     display: 'block',
-       *   }
-       *   _hover: {
-       *     color: {xs: 'red', lg: 'green'},
-       *     _before: {
-       *       content: '"<"',
-       *     }
-       *   },
-       * }
-       * ```
-       *
-       * Invalid:
-       * ```
-       * {
-       *   color: {
-       *     _hover: any, // INVALID, only breakpoint aliases allowed
-       *     _after: any, // INVALID, only breakpoint aliases allowed
-       *     sm: !object, // INVALID, breakpoint values must be concrete
-       *   },
-       *   _after: {
-       *     _hover: any, // INVALID, modifiers cannot be nested in pseudo elements
-       *     sm: any,     // INVALID, breakpoints can only be children of properties
-       *   },
-       *   _hover: {
-       *     sm: any,     // INVALID, breakpoints can only be children of properties
-       *   },
-       *   _hover: '400', // INVALID, modifiers must be objects
-       *   _after: '400', // INVALID, pseudo elements must be objects
-       *   sm: any,       // INVALID, breakpoints can only be children of properties
-       * }
-       */
-      // TODO: Does this recursive type cause TS to be slow?
-      stylePropsObjs: AllShapesOfProperties[typeof parent][],
-
-      /**
-       * Only merge the last style prop object if and preceding objects contain a
-       * matching key. In this way, the last prop object is "weak merged".
-       *
-       * Used because global defaults have been set in the .css file, but the
-       * specificity of the style="" attribute is higher, so if a matching prop is
-       * passed in we need to ensure the default value is set again on the style=""
-       * attribute, otherwise we don't merge it and instead let the .css style catch
-       * it.
-       */
-      lastIsWeakMerged: boolean,
-      valueMapper: ValueMapper | undefined,
-      parent:
-        | Constant.NoParent
-        | Constant.ModifierParent
-        | Constant.DeclarationParent
-        | Constant.PseudoElementParent,
-      parentPropPath: PropPaths | never[],
-      whichElement: Elements,
-    ): [ConvertResult, ConvertResult] {
-      const parentIsResponsiveDeclaration =
-        parent === Constant.DeclarationParent;
-
-      const mergedProperties: DeclarationAccumulator = {};
-      const weakProperties: DeclarationAccumulator = {};
-      const lastStyleObjIndex = stylePropsObjs.length - 1;
-
-      // An O(n) recursive algorithm converting the given set of style prop objects
-      // into a valid CSS style object.
-      // It:
-      // 1. Merges the objects.
-      //    - Earlier objects overwrite values of later ones.
-      //    - Primitive values are expanded to {xs: <value>} to ensure deep merge
-      //      works as expected
-      // 2. Expands aliases to their concrete properties.
-      //    - Earlier aliases overwrite values of later ones (as per config order)
-      for (
-        let whichStyleObj = 0;
-        whichStyleObj < stylePropsObjs.length;
-        whichStyleObj++
-      ) {
-        const styleObj = stylePropsObjs[whichStyleObj];
-        const styleProps = Object.keys(styleObj) as (keyof typeof styleObj)[];
-        // Can't use a for..of here because we're modifying the array mid-loop, but
-        // the iterator returned by for..of will not include items pushed onto the
-        // array.
-        // eslint-disable-next-line @typescript-eslint/prefer-for-of, no-labels
-        stylePropLoop: for (let i = 0; i < styleProps.length; i++) {
-          const maybeAliasedProp = styleProps[i];
-          const value = styleObj[maybeAliasedProp];
-
-          // Ignore null/undefined values
-          if (value == null) {
-            continue;
-          }
-
-          // This is an alias
-          if (inverseAliases) {
-            const aliasTargets = inverseAliases[maybeAliasedProp as AliasNames];
-            if (aliasTargets) {
-              // It expands into one or more properties, so iterate over each of them
-              // eslint-disable-next-line @typescript-eslint/prefer-for-of
-              for (let alias = 0; alias < aliasTargets.length; alias++) {
-                const target = aliasTargets[alias];
-                // If the target property doesn't have a value set, set it now.
-                // Otherwise if it has a value already, skip it since existing values
-                // are more specific and take precedence over aliases.
-                if (styleObj[target] == null) {
-                  // TODO: This mutates the input object, should we clone it?
-                  // @ts-expect-error Fair enough; this is an incredibly complex
-                  // union!
-                  styleObj[target] = value;
-                  // Inject the key into the object keys array ready to be iterated next
-                  styleProps.push(target);
-                }
-              }
-
-              // Ignore this property, but continue to process the now-resolved
-              // properties
-              // NOTE: The alias is now unused, but we don't bother deleting it - the
-              // garbage collector will handle it later, and since we're doing a
-              // single O(n) iteration of the object, we won't accidentally revisit
-              // that value in the future.
-              continue;
-            }
-          }
-
-          // Values from here are guaranteed to be a non-alias
-
-          // Ensure the property doesn't exist in an earlier object (ie; don't try to
-          // overwrite).
+          // For this and following style objects, gather up the ones that have
+          // values so we can recurse with them.
+          // key
+          let lastIsWeakMergedForRecursion = lastIsWeakMerged;
+          const stylePropObjsForRecursion: typeof stylePropsObjs = [];
           for (
-            let prevStyleObj = 0;
-            prevStyleObj < whichStyleObj;
-            prevStyleObj++
+            let otherStyleObj = whichStyleObj;
+            otherStyleObj < stylePropsObjs.length;
+            otherStyleObj++
           ) {
-            if (stylePropsObjs[prevStyleObj][maybeAliasedProp] != null) {
-              // Continue the outer loop by jumping to the label
-              // eslint-disable-next-line no-labels
-              continue stylePropLoop;
+            const otherObjsValue = stylePropsObjs[otherStyleObj][prop];
+            if (otherObjsValue != null) {
+              stylePropObjsForRecursion.push(
+                // Normalize declarations to responsive object format
+                // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
+                // TODO: How do I tell TS this is correct?
+                propIsDeclaration && typeof otherObjsValue !== 'object'
+                  ? {[baseBreakpoint]: otherObjsValue}
+                  : otherObjsValue,
+              );
+            } else if (otherStyleObj === lastStyleObjIndex) {
+              lastIsWeakMergedForRecursion = false;
             }
           }
 
-          // Now the property is guaranteed to be non-aliased
-          const prop = maybeAliasedProp as keyof Properties;
-
-          // Now we can process this value
-          const propIsBreakpoint = hasOwn(breakpoints, prop);
-          const propIsModifier = !propIsBreakpoint && hasOwn(modifiers, prop);
-          const propIsPseudoElement =
-            !propIsBreakpoint &&
-            !propIsModifier &&
-            hasOwn(pseudoElements, prop);
-          const propIsDeclaration =
-            !propIsBreakpoint && !propIsModifier && !propIsPseudoElement;
-          const valueIsObject = typeof value === 'object';
-          // TODO: How to narrow 'prop' here?
-          const propPath: PropPaths = [...parentPropPath, prop];
-
-          // NOTE; We do the property checks early like this because it minifies
-          // really well in production mode:
-          // https://esbuild.github.io/try/#dAAwLjE5LjExAHsgbWluaWZ5OiB0cnVlIH0AZnVuY3Rpb24gZnVuYygpIHsKICBjb25zdCB3aG9hID0gZm9vLmJhcjsKCiAgaWYgKGZvbyAmJiB6aXApIHsKICAgIC8vIElnbm9yZQogICAgcmV0dXJuOwogIH0KCiAgaWYgKGJhciAmJiB6aXAgfHwgd2hvYSkgewogICAgLy8gSWdub3JlCiAgICByZXR1cm47CiAgfQoKICBjb25zb2xlLmxvZygnZG9uZScpOwp9CgpleHBvcnQgeyBmdW5jIH07
-          // Ignore null & undefined values
-          // Optimisation: When an explicit 'unset' is passed in, we might be able
-          // to simply not return anything ('unset' is the browser's default). Except
-          // when there's a matching weak value set; we don't yet know if the value
-          // can merged further up the tree.
-          if (
-            value === 'unset' &&
-            (!lastIsWeakMerged ||
-              stylePropsObjs[lastStyleObjIndex][prop] == null)
-          ) {
-            continue;
-          }
-
-          if (!parentIsResponsiveDeclaration && propIsBreakpoint) {
-            process.env.NODE_ENV === 'development' &&
-              warnOnInvalidProperty(
-                propPath,
-                `Breakpoint props can only be specified directly on a declaration property. For example: { color: { sm: 'red', lg: 'blue' } }.`,
-              );
-
-            // ignore this invalid property
-            continue;
-          }
-
-          if (parentIsResponsiveDeclaration && !propIsBreakpoint) {
-            process.env.NODE_ENV === 'development' &&
-              warnOnInvalidProperty(
-                propPath,
-                `When specified as an object, \`${parentPropPath.at(
-                  -1,
-                )}\` can only contain the keys ${joinEnglish!(
-                  Object.keys(breakpoints),
-                  'or',
-                )}.`,
-              );
-
-            // ignore this invalid property
-            continue;
-          }
-
-          if (
-            parentIsResponsiveDeclaration &&
-            propIsBreakpoint &&
-            valueIsObject
-          ) {
-            process.env.NODE_ENV === 'development' &&
-              warnOnInvalidProperty(
-                propPath,
-                `Breakpoint values cannot be an object.`,
-              );
-
-            // ignore this invalid property
-            continue;
-          }
-
-          if (parent === Constant.PseudoElementParent && propIsModifier) {
-            process.env.NODE_ENV === 'development' &&
-              warnOnInvalidProperty(
-                propPath,
-                `Pseudo elements cannot contain modifiers. Try {${parentPropPath.at(
-                  -1,
-                )}: {..}, ${prop}: { ${parentPropPath.at(-1)}: {..}}}`,
-              );
-
-            // ignore this invalid property
-            continue;
-          }
-
-          // Modifiers must be objects
-          if (!valueIsObject && propIsModifier) {
-            process.env.NODE_ENV === 'development' &&
-              warnOnInvalidProperty(
-                propPath,
-                `Modifier \`${prop}\` must be an object.`,
-              );
-
-            // ignore this invalid property
-            continue;
-          }
-
-          // Pseudo elements must be objects
-          if (!valueIsObject && propIsPseudoElement) {
-            process.env.NODE_ENV === 'development' &&
-              warnOnInvalidProperty(
-                propPath,
-                `Pseudo element \`${prop}\` must be an object.`,
-              );
-
-            // ignore this invalid property
-            continue;
-          }
-
-          // Weak style props are only merged in if there's an equivalent strong
-          // property somewhere in the style props, so we need to keep them seperate
-          // while we're recursing and only merge them as the style prop is
-          // detected.
-          // Since the weak object can only be last, we know the merged properties
-          // wont have any more added, and so can choose to merge directly into that
-          // object if the property exists.
-          const properties =
-            lastIsWeakMerged && whichStyleObj === lastStyleObjIndex
-              ? weakProperties
-              : mergedProperties;
-
-          // Process a non-object concrete value.
-          // Eg; {color: 'red'}
-          // or
-          // {sm: 'blue'}
-          if (parentIsResponsiveDeclaration) {
-            // The declaration is actually the parent object, so we grab that from the
-            // path (eg; { color: { sm: 'red' } }).
-            const declaration = parentPropPath.at(-1) as ResponsivePropNames;
-
-            // Global defaults get mapped earlier in the process
-            const mappedValue =
-              !valueMapper ||
-              (lastIsWeakMerged && whichStyleObj === lastStyleObjIndex)
-                ? value
-                : valueMapper(value, declaration, propPath);
-
-            // Since Typescript doesn't have negation types (`string & not 'inherit'`),
-            // we need to do a runtime check for invalid values because some of the
-            // csstype types have a `| string` union which then allows some values to
-            // sneak through at runtime.
-            bannedGlobalValues?.length &&
-              invariant(
-                !bannedGlobalValues.includes(
-                  mappedValue as typeof bannedGlobalValues[number],
-                ),
-                `${
-                  propPath?.length ? `[${propPath.join('.')}] ` : ''
-                }${mappedValue} is a disallowed value. Please use a different value.`,
-              );
-
-            insertIntoProperties(
-              properties,
-              whichElement,
-              declaration as keyof Properties,
-              // TODO Not sure why TS isn't narrowing prop down correctly here. it could
-              // only possibly be one of the responsive object keys at this point.
-              prop as CascadeOrderKeys,
-              mappedValue,
+          const [nestedMergedProperties, nestedWeakProperties] =
+            convertRecursive(
+              stylePropObjsForRecursion,
+              lastIsWeakMergedForRecursion,
+              valueMapper,
+              /* eslint-disable no-nested-ternary -- It's terse & readable */
+              propIsModifier
+                ? Constant.ModifierParent
+                : propIsBreakpoint
+                ? Constant.DeclarationParent
+                : propIsPseudoElement
+                ? Constant.PseudoElementParent
+                : Constant.DeclarationParent,
+              /* eslint-enable no-nested-ternary */
+              propPath,
+              // Switch to the relevant pseudo element if encountered
+              // TODO: How to narrow the type of `prop` here?
+              propIsPseudoElement ? (prop as Elements) : whichElement,
             );
-          } else {
-            // For this and following style objects, gather up the ones that have
-            // values so we can recurse with them.
-            // key
-            let lastIsWeakMergedForRecursion = lastIsWeakMerged;
-            const stylePropObjsForRecursion: typeof stylePropsObjs = [];
-            for (
-              let otherStyleObj = whichStyleObj;
-              otherStyleObj < stylePropsObjs.length;
-              otherStyleObj++
-            ) {
-              const otherObjsValue = stylePropsObjs[otherStyleObj][prop];
-              if (otherObjsValue != null) {
-                stylePropObjsForRecursion.push(
-                  // Normalize declarations to responsive object format
-                  // eg; `{color: 'red'}` becomes `{color: {xs: 'red'}}`
-                  // TODO: How do I tell TS this is correct?
-                  propIsDeclaration && typeof otherObjsValue !== 'object'
-                    ? {[baseBreakpoint]: otherObjsValue}
-                    : otherObjsValue,
-                );
-              } else if (otherStyleObj === lastStyleObjIndex) {
-                lastIsWeakMergedForRecursion = false;
-              }
-            }
 
-            const [nestedMergedProperties, nestedWeakProperties] =
-              convertRecursive(
-                stylePropObjsForRecursion,
-                lastIsWeakMergedForRecursion,
-                valueMapper,
-                /* eslint-disable no-nested-ternary -- It's terse & readable */
-                propIsModifier
-                  ? Constant.ModifierParent
-                  : propIsBreakpoint
-                  ? Constant.DeclarationParent
-                  : propIsPseudoElement
-                  ? Constant.PseudoElementParent
-                  : Constant.DeclarationParent,
-                /* eslint-enable no-nested-ternary */
-                propPath,
-                // Switch to the relevant pseudo element if encountered
-                // TODO: How to narrow the type of `prop` here?
-                propIsPseudoElement ? (prop as Elements) : whichElement,
-              );
+          // styleProps = { color: 'red' }
+          // weakProps = { _hover: { color: 'red' } }
 
-            // styleProps = { color: 'red' }
-            // weakProps = { _hover: { color: 'red' } }
+          // TODO: How do we narrow `prop`'s type here?
+          // Ie; it's _hover, _active, etc
+          const condition = propIsModifier
+            ? (prop as CascadeOrderKeys)
+            : baseBreakpoint;
 
-            // TODO: How do we narrow `prop`'s type here?
-            // Ie; it's _hover, _active, etc
-            const condition = propIsModifier
-              ? (prop as CascadeOrderKeys)
-              : baseBreakpoint;
+          // Now that we've got the result of recursing, we need to inject these
+          // values into the individual properties we know about so far.
+          // For the root element, and the pseudo elements.
+          // eslint-disable-next-line @typescript-eslint/prefer-for-of
+          for (let i = 0; i < elements.length; i++) {
+            const element = elements[i];
 
-            // Now that we've got the result of recursing, we need to inject these
-            // values into the individual properties we know about so far.
-            // For the root element, and the pseudo elements.
-            // eslint-disable-next-line @typescript-eslint/prefer-for-of
-            for (let i = 0; i < elements.length; i++) {
-              const element = elements[i];
-
-              if (lastIsWeakMergedForRecursion) {
-                propertyIterator(
-                  // May be merged properties or weak properties
-                  properties,
-                  element,
-                  condition,
-                  nestedWeakProperties[element],
-                );
-              }
-
+            if (lastIsWeakMergedForRecursion) {
               propertyIterator(
-                mergedProperties,
+                // May be merged properties or weak properties
+                properties,
                 element,
                 condition,
-                nestedMergedProperties[element],
+                nestedWeakProperties[element],
               );
             }
+
+            propertyIterator(
+              mergedProperties,
+              element,
+              condition,
+              nestedMergedProperties[element],
+            );
           }
         }
       }
+    }
 
-      if (lastIsWeakMerged) {
-        // When a global default is set, and a corresponding style prop is set, they
-        // must be merged together before they're stringified to ensure the cascade
-        // order is preserved.
-        // TODO: Is there a more efficient way of doing this without having to loop
-        // over the entire globalDefaultProperties object every time? Maybe move it
-        // into the above loop which is already going over the objects?
-        // eslint-disable-next-line @typescript-eslint/prefer-for-of
-        for (let i = 0; i < elements.length; i++) {
-          const element = elements[i];
-          const declarations = weakProperties[element];
-          if (declarations) {
-            const declarationKeys = Object.keys(
-              declarations,
-            ) as (keyof typeof declarations)[];
-            // eslint-disable-next-line @typescript-eslint/prefer-for-of
-            for (let x = 0; x < declarationKeys.length; x++) {
-              const key = declarationKeys[x];
-              const declarationConditions = declarations[key];
-              const runtimeDeclaration = mergedProperties[element]?.[key];
-              if (runtimeDeclaration) {
-                // merge the cascade-ordered declarations of the weak properties back
-                // into the strong property's declaration
-                if (declarationConditions) {
-                  // Iterating a sparse array with .forEach is faster than a for() loop
-                  declarationConditions.forEach((condition, cascadeIndex) => {
-                    // Only set the runtime value if it's not already set (ie;
-                    // runtime values override global defaults)
-                    runtimeDeclaration[cascadeIndex] ??= condition;
-                  });
-                }
-
-                // Now that it's merged, delete it so it doesn't get merged again
-                // later
-                delete declarations[key];
+    if (lastIsWeakMerged) {
+      // When a global default is set, and a corresponding style prop is set, they
+      // must be merged together before they're stringified to ensure the cascade
+      // order is preserved.
+      // TODO: Is there a more efficient way of doing this without having to loop
+      // over the entire globalDefaultProperties object every time? Maybe move it
+      // into the above loop which is already going over the objects?
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of
+      for (let i = 0; i < elements.length; i++) {
+        const element = elements[i];
+        const declarations = weakProperties[element];
+        if (declarations) {
+          const declarationKeys = Object.keys(
+            declarations,
+          ) as (keyof typeof declarations)[];
+          // eslint-disable-next-line @typescript-eslint/prefer-for-of
+          for (let x = 0; x < declarationKeys.length; x++) {
+            const key = declarationKeys[x];
+            const declarationConditions = declarations[key];
+            const runtimeDeclaration = mergedProperties[element]?.[key];
+            if (runtimeDeclaration) {
+              // merge the cascade-ordered declarations of the weak properties back
+              // into the strong property's declaration
+              if (declarationConditions) {
+                // Iterating a sparse array with .forEach is faster than a for() loop
+                declarationConditions.forEach((condition, cascadeIndex) => {
+                  // Only set the runtime value if it's not already set (ie;
+                  // runtime values override global defaults)
+                  runtimeDeclaration[cascadeIndex] ??= condition;
+                });
               }
+
+              // Now that it's merged, delete it so it doesn't get merged again
+              // later
+              delete declarations[key];
             }
           }
         }
       }
-
-      return [
-        mutateObjectValues(mergedProperties, spaceHackStringifier),
-        mutateObjectValues(weakProperties, spaceHackStringifier),
-      ];
     }
 
-    // Convert array of { value, condition } to the Space Hack CSS
-    function spaceHackStringifier(
-      elements: DeclarationAccumulator[keyof DeclarationAccumulator],
-    ) {
-      return elements
-        ? mutateObjectValues(elements, (values) =>
-            // Iterating a sparse array with .reduce is faster than a for() loop
-            values == null
-              ? ''
-              : values.reduce(
-                  (output, {value, condition}) =>
-                    condition
-                      ? `var(--${namespace}${condition}-on,${value})${
-                          output
-                            ? ` var(--${namespace}${condition}-off,${output})`
-                            : ''
-                        }`
-                      : `${value}`,
-                  '',
-                ),
-          )
-        : undefined;
-    }
+    return [
+      mutateObjectValues(mergedProperties, spaceHackStringifier),
+      mutateObjectValues(weakProperties, spaceHackStringifier),
+    ];
+  }
 
-    function propertyIterator(
-      whichProperties: DeclarationAccumulator,
-      nestedElement: keyof ConvertResult,
-      condition: CascadeOrderKeys,
-      values?: ConvertResult[keyof ConvertResult],
-    ) {
-      if (values) {
-        const declarations = Object.keys(values) as (keyof typeof values)[];
-        // Merge each delcaration into the property object for this iteration.
-        // Later, these values will get turned into strings
-        // eslint-disable-next-line @typescript-eslint/prefer-for-of
-        for (let i = 0; i < declarations.length; i++) {
-          const declaration = declarations[i];
-          values[declaration] != null &&
-            insertIntoProperties(
-              whichProperties,
-              nestedElement,
-              declaration as keyof Properties,
-              condition,
-              values[declaration],
-            );
-        }
+  // Convert array of { value, condition } to the Space Hack CSS
+  function spaceHackStringifier(
+    elements: DeclarationAccumulator[keyof DeclarationAccumulator],
+  ) {
+    return elements
+      ? mutateObjectValues(elements, (values) =>
+          // Iterating a sparse array with .reduce is faster than a for() loop
+          values == null
+            ? ''
+            : values.reduce(
+                (output, {value, condition}) =>
+                  condition
+                    ? `var(--${namespace}${condition}-on,${value})${
+                        output
+                          ? ` var(--${namespace}${condition}-off,${output})`
+                          : ''
+                      }`
+                    : `${value}`,
+                '',
+              ),
+        )
+      : undefined;
+  }
+
+  function propertyIterator(
+    whichProperties: DeclarationAccumulator,
+    nestedElement: keyof ConvertResult,
+    condition: CascadeOrderKeys,
+    values?: ConvertResult[keyof ConvertResult],
+  ) {
+    if (values) {
+      const declarations = Object.keys(values) as (keyof typeof values)[];
+      // Merge each delcaration into the property object for this iteration.
+      // Later, these values will get turned into strings
+      // eslint-disable-next-line @typescript-eslint/prefer-for-of
+      for (let i = 0; i < declarations.length; i++) {
+        const declaration = declarations[i];
+        values[declaration] != null &&
+          insertIntoProperties(
+            whichProperties,
+            nestedElement,
+            declaration as keyof Properties,
+            condition,
+            values[declaration],
+          );
       }
     }
+  }
 
-    function insertIntoProperties(
-      properties: DeclarationAccumulator,
-      whichElement: Elements,
-      declaration: keyof Properties,
-      condition: CascadeOrderKeys,
-      valueToInsert: unknown,
-    ) {
-      // Have to do this chained assignment to workaround TS: "Type narrowing
-      // does not occur for indexed access forms e[k] where k is not a
-      // literal."
-      // See: https://github.com/microsoft/TypeScript/issues/49613#issuecomment-1160324092
-      // eslint-disable-next-line no-multi-assign
-      const element = (properties[whichElement] ??= {});
+  function insertIntoProperties(
+    properties: DeclarationAccumulator,
+    whichElement: Elements,
+    declaration: keyof Properties,
+    condition: CascadeOrderKeys,
+    valueToInsert: unknown,
+  ) {
+    // Have to do this chained assignment to workaround TS: "Type narrowing
+    // does not occur for indexed access forms e[k] where k is not a
+    // literal."
+    // See: https://github.com/microsoft/TypeScript/issues/49613#issuecomment-1160324092
+    // eslint-disable-next-line no-multi-assign
+    const element = (properties[whichElement] ??= {});
 
-      // Initialize as an array (not an object) to retain numerical key
-      // ordering, and NOT insertion order
-      // eslint-disable-next-line no-multi-assign
-      const conditionalDeclarations = (element[declaration] ??= []);
+    // Initialize as an array (not an object) to retain numerical key
+    // ordering, and NOT insertion order
+    // eslint-disable-next-line no-multi-assign
+    const conditionalDeclarations = (element[declaration] ??= []);
 
-      conditionalDeclarations[cascadeOrder[condition]] = {
-        // Given {color: {xs: 'green', sm: 'red', lg: 'blue'}}
-        // and baseBreakpoint = 'xs'
-        // When `prop` is 'sm' or 'lg', we set it as the 'condition'.
-        // When `prop` is 'xs', there's no 'condition'.
-        //
-        // Given {color: 'red'}
-        // Then there is no condition.
-        condition: condition === baseBreakpoint ? undefined : condition,
-        value: valueToInsert,
-      };
-    }
+    conditionalDeclarations[cascadeOrder[condition]] = {
+      // Given {color: {xs: 'green', sm: 'red', lg: 'blue'}}
+      // and baseBreakpoint = 'xs'
+      // When `prop` is 'sm' or 'lg', we set it as the 'condition'.
+      // When `prop` is 'xs', there's no 'condition'.
+      //
+      // Given {color: 'red'}
+      // Then there is no condition.
+      condition: condition === baseBreakpoint ? undefined : condition,
+      value: valueToInsert,
+    };
+  }
 
-    function toStyleSheet(
-      /**
-       * An object where keys are selectors, and values are individual CSS
-       * properties (including CSS Custom Properties).
-       */
-      styles: NestedCSSProperties,
-      /**
-       * Any value will pretty print the output, otherwise it will be compressed.
-       *
-       * @default process.env.NODE_ENV === 'production' ? undefined : 2
-       */
-      prettyIndent: number | undefined = process.env.NODE_ENV === 'production'
-        ? undefined
-        : 2,
-      indentLevel = 1,
-    ) {
-      return Object.keys(styles)
-        .map((selector) => {
-          return `${selector}{${(Object.keys(styles) as (keyof Properties)[])
-            .reduce((acc, cssProperty) => {
-              if (typeof cssProperty === 'object') {
-                acc.push(
-                  toStyleSheet(cssProperty, prettyIndent, indentLevel + 1),
-                );
-              } else {
-                acc.push(
-                  `${
-                    // Leave Custom Properties alone but all other CSS Properties need
-                    // to be converted to valid CSS
-                    cssProperty.startsWith('--')
-                      ? cssProperty
-                      : decamelize(cssProperty, {separator: '-'})
-                  }: ${styles[cssProperty]};`,
-                );
-              }
-              return acc;
-            }, [] as string[])
-            .join(
-              // Double indent since it's inside the selector
-              typeof prettyIndent !== 'undefined'
-                ? `\n${' '.repeat((indentLevel + 1) * prettyIndent)}`
-                : '',
-            )}}`;
-        })
-        .join(
-          typeof prettyIndent !== 'undefined'
-            ? `\n${' '.repeat(indentLevel * prettyIndent)}`
-            : '',
-        );
-    }
-
+  function toStyleSheet(
     /**
-     * Leverage the ordered array of stylePropAliasFallbacks to generate a
-     * linked-list style data structure suitable for generating a tree-like data
-     * structure.
-     *
-     * Concretely, we're converting this:
-     * {
-     *   paddingInlineStart: ["paddingLeft","paddingInline","padding"],
-     *   paddingInlineEnd: ["paddingRight","paddingInline","padding"],
-     *   paddingBlockStart: ["paddingTop","paddingBlock","padding"],
-     *   paddingBlockEnd: ["paddingBottom","paddingBlock","padding"],
-     * }
-     *
-     * into this:
-     *
-     * {
-     *  padding: ["paddingInline", "paddingBlock"],
-     *  paddingInline: ["paddingLeft", "paddingRight"],
-     *  paddingBlock: ["paddingTop", "paddingBottom"],
-     *  paddingLeft: ["paddingInlineStart"],
-     *  paddingRight: ["paddingInlineEnd"],
-     *  paddingTop: ["paddingBlockStart"],
-     *  paddingBottom: ["paddingBlockEnd"],
-     * }
+     * An object where keys are selectors, and values are individual CSS
+     * properties (including CSS Custom Properties).
      */
-    function invertAliases(
-      aliases: PropertyToAliases | EmptyObject,
-    ): InvertedAliases {
-      return (Object.keys(aliases) as (keyof typeof aliases)[]).reduce(
-        (memo, property) => {
-          const aliasProperties = aliases[property];
-          aliasProperties &&
-            aliasProperties.forEach((alias, index) => {
-              // Checking if a value exists for `memo[alias]`, and if not it'll
-              // assign it a new value of `[]`. Either way, it'll set the variable
-              // `targets` equal to the either existing array, or newly created
-              // array.
-              // eslint-disable-next-line no-multi-assign
-              const targets = (memo[alias] ??= []);
-
-              // The aliases array is ordered, so this alias points to the alias
-              // immediately before it. If this is the 0th alias, it points at the
-              // property itself.
-              const target =
-                index === 0 ? property : aliasProperties[index - 1];
-              if (!targets.includes(target)) {
-                targets.push(target);
-              }
-            });
-
-          return memo;
-        },
-        {} as InvertedAliases,
+    styles: NestedCSSProperties,
+    /**
+     * Any value will pretty print the output, otherwise it will be compressed.
+     *
+     * @default process.env.NODE_ENV === 'production' ? undefined : 2
+     */
+    prettyIndent: number | undefined = process.env.NODE_ENV === 'production'
+      ? undefined
+      : 2,
+    indentLevel = 1,
+  ) {
+    return Object.keys(styles)
+      .map((selector) => {
+        return `${selector}{${(Object.keys(styles) as (keyof Properties)[])
+          .reduce((acc, cssProperty) => {
+            if (typeof cssProperty === 'object') {
+              acc.push(
+                toStyleSheet(cssProperty, prettyIndent, indentLevel + 1),
+              );
+            } else {
+              acc.push(
+                `${
+                  // Leave Custom Properties alone but all other CSS Properties need
+                  // to be converted to valid CSS
+                  cssProperty.startsWith('--')
+                    ? cssProperty
+                    : decamelize(cssProperty, {separator: '-'})
+                }: ${styles[cssProperty]};`,
+              );
+            }
+            return acc;
+          }, [] as string[])
+          .join(
+            // Double indent since it's inside the selector
+            typeof prettyIndent !== 'undefined'
+              ? `\n${' '.repeat((indentLevel + 1) * prettyIndent)}`
+              : '',
+          )}}`;
+      })
+      .join(
+        typeof prettyIndent !== 'undefined'
+          ? `\n${' '.repeat(indentLevel * prettyIndent)}`
+          : '',
       );
+  }
+
+  /**
+   * Leverage the ordered array of stylePropAliasFallbacks to generate a
+   * linked-list style data structure suitable for generating a tree-like data
+   * structure.
+   *
+   * Concretely, we're converting this:
+   * {
+   *   paddingInlineStart: ["paddingLeft","paddingInline","padding"],
+   *   paddingInlineEnd: ["paddingRight","paddingInline","padding"],
+   *   paddingBlockStart: ["paddingTop","paddingBlock","padding"],
+   *   paddingBlockEnd: ["paddingBottom","paddingBlock","padding"],
+   * }
+   *
+   * into this:
+   *
+   * {
+   *  padding: ["paddingInline", "paddingBlock"],
+   *  paddingInline: ["paddingLeft", "paddingRight"],
+   *  paddingBlock: ["paddingTop", "paddingBottom"],
+   *  paddingLeft: ["paddingInlineStart"],
+   *  paddingRight: ["paddingInlineEnd"],
+   *  paddingTop: ["paddingBlockStart"],
+   *  paddingBottom: ["paddingBlockEnd"],
+   * }
+   */
+  function invertAliases(
+    aliases: PropertyToAliases | EmptyObject,
+  ): InvertedAliases {
+    return (Object.keys(aliases) as (keyof typeof aliases)[]).reduce(
+      (memo, property) => {
+        const aliasProperties = aliases[property];
+        aliasProperties &&
+          aliasProperties.forEach((alias, index) => {
+            // Checking if a value exists for `memo[alias]`, and if not it'll
+            // assign it a new value of `[]`. Either way, it'll set the variable
+            // `targets` equal to the either existing array, or newly created
+            // array.
+            // eslint-disable-next-line no-multi-assign
+            const targets = (memo[alias] ??= []);
+
+            // The aliases array is ordered, so this alias points to the alias
+            // immediately before it. If this is the 0th alias, it points at the
+            // property itself.
+            const target = index === 0 ? property : aliasProperties[index - 1];
+            if (!targets.includes(target)) {
+              targets.push(target);
+            }
+          });
+
+        return memo;
+      },
+      {} as InvertedAliases,
+    );
+  }
+
+  type R = ReturnType<typeof processOptions>;
+
+  function processOptions({...rest}: typeof options) {
+    let namespace: string;
+    if (rest.namespace) {
+      namespace = rest.namespace;
+    } else {
+      namespace = '';
     }
 
-    type R = ReturnType<typeof processOptions>;
+    let aliases: PropertyToAliases | EmptyObject;
+    if (rest.aliases) {
+      aliases = rest.aliases;
+    } else {
+      aliases = {};
+    }
 
-    function processOptions({...rest}: typeof options) {
-      let namespace: string;
-      if (rest.namespace) {
-        namespace = rest.namespace;
-      } else {
-        namespace = '';
-      }
+    let pseudoElements: PseudoElements | EmptyObject;
+    if (rest.pseudoElements) {
+      pseudoElements = rest.pseudoElements;
+    } else {
+      pseudoElements = {};
+    }
 
-      let aliases: PropertyToAliases | EmptyObject;
-      if (rest.aliases) {
-        aliases = rest.aliases;
-      } else {
-        aliases = {};
-      }
+    let modifiers: Modifiers | EmptyObject;
+    if (rest.modifiers) {
+      modifiers = rest.modifiers;
+    } else {
+      modifiers = {};
+    }
 
-      let pseudoElements: PseudoElements | EmptyObject;
-      if (rest.pseudoElements) {
-        pseudoElements = rest.pseudoElements;
-      } else {
-        pseudoElements = {};
-      }
+    let breakpoints: Breakpoints | Partial<typeof DEFAULT_BASE_BREAKPOINT>;
+    if (rest.breakpoints) {
+      const breakpointKeys = Object.keys(
+        rest.breakpoints,
+      ) as (keyof Breakpoints)[];
+      const baseKeyIndex = breakpointKeys.findIndex(
+        (key) => rest.breakpoints[key].trim() === '&',
+      );
+      // Ensure there is a "base" selector for breakpoints
+      if (baseKeyIndex === -1) {
+        breakpoints = {
+          // Object key order is important, and this one must come first
+          // TODO: This assumes mobile-first. Support desktop-first?
+          ...DEFAULT_BASE_BREAKPOINT,
+          ...rest.breakpoints,
+        };
+      } else if (baseKeyIndex !== 0) {
+        // Reorder the keys so the "base" is first
+        breakpoints = {
+          [breakpointKeys[baseKeyIndex]]:
+            rest.breakpoints[breakpointKeys[baseKeyIndex]],
+          ...rest.breakpoints,
+        };
 
-      let modifiers: Modifiers | EmptyObject;
-      if (rest.modifiers) {
-        modifiers = rest.modifiers;
-      } else {
-        modifiers = {};
-      }
-
-      let breakpoints: Breakpoints | Partial<typeof DEFAULT_BASE_BREAKPOINT>;
-      if (rest.breakpoints) {
-        const breakpointKeys = Object.keys(
-          rest.breakpoints,
-        ) as (keyof Breakpoints)[];
-        const baseKeyIndex = breakpointKeys.findIndex(
-          (key) => rest.breakpoints[key].trim() === '&',
-        );
-        // Ensure there is a "base" selector for breakpoints
-        if (baseKeyIndex === -1) {
-          breakpoints = {
-            // Object key order is important, and this one must come first
-            // TODO: This assumes mobile-first. Support desktop-first?
-            ...DEFAULT_BASE_BREAKPOINT,
-            ...rest.breakpoints,
-          };
-        } else if (baseKeyIndex !== 0) {
-          // Reorder the keys so the "base" is first
-          breakpoints = {
-            [breakpointKeys[baseKeyIndex]]:
-              rest.breakpoints[breakpointKeys[baseKeyIndex]],
-            ...rest.breakpoints,
-          };
-
-          if (process.env.NODE_ENV !== 'production') {
-            console.warn(
-              `Breakpoints must be ordered mobile-first. The "base" breakpoint (${breakpointKeys[baseKeyIndex]}) has been moved to the first position. You should fix this.`,
-            );
-          }
-        } else {
-          breakpoints = rest.breakpoints;
+        if (process.env.NODE_ENV !== 'production') {
+          console.warn(
+            `Breakpoints must be ordered mobile-first. The "base" breakpoint (${breakpointKeys[baseKeyIndex]}) has been moved to the first position. You should fix this.`,
+          );
         }
       } else {
-        breakpoints = DEFAULT_BASE_BREAKPOINT;
+        breakpoints = rest.breakpoints;
       }
-
-      return {
-        ...rest,
-        namespace,
-        aliases,
-        pseudoElements,
-        modifiers,
-        breakpoints,
-      };
+    } else {
+      breakpoints = DEFAULT_BASE_BREAKPOINT;
     }
-  };
-}
 
-const modifiers = {
-  _active: ':active',
-  _focus: ':focus',
-  _hover: ':hover',
-  _visited: ':visited',
-  _link: ':link',
-};
+    return {
+      ...rest,
+      namespace,
+      aliases,
+      pseudoElements,
+      modifiers,
+      breakpoints,
+    };
+  }
+}
 
 const aliases = {
   color: ['fg', 'textColor'],
@@ -1848,26 +1856,55 @@ const aliases = {
   backgroundPositionY: ['backgroundPosition'],
 } as const;
 
+const modifiers = {
+  _active: ':active',
+  _focus: ':focus',
+  _hover: ':hover',
+  _visited: ':visited',
+  _link: ':link',
+} as const;
+
+const breakpoints = {
+  xs: '&',
+  sm: '@media ()',
+} as const;
+
+// Should work in TS v4.7.4+
 const {stylesheet, convert} = create({
   aliases,
   modifiers,
+  breakpoints,
   valueMapper: (value, key, path) => {
+    console.log(path);
+    console.log(key);
     if (key === 'display') {
-      console.log(value);
-      console.log(path);
+      const v = value;
+      //    ^?
+    } else if (key === 'color' || key === 'fg' || key === 'textColor') {
+      const v = value;
+      //    ^?
+    } else if (key === 'backgroundPosition') {
+      const v = value;
+      //    ^?
+    } else {
+      const v = value;
+      //    ^?
     }
-    if (Array.isArray(path)) {
-      console.log(path);
-    }
-    return 'blah';
   },
-})({});
+});
 
-convert({backgroundPosition, backgroundPositionX, fg});
+convert({
+  backgroundPosition: 'center',
+  fg: 'red',
+  backgroundPositionX: 'left',
+  _hover: {
+    color: 'blue',
+  },
+});
 
 type GetPropType<PropName extends keyof Parameters<typeof convert>[0]> =
   Parameters<typeof convert>[0][PropName];
 
 type F = GetPropType<'backgroundPosition'>;
 
-/* eslint-enable @typescript-eslint/consistent-type-definitions, @typescript-eslint/consistent-indexed-object-style, @typescript-eslint/ban-types */
+/* eslint-enable @typescript-eslint/consistent-type-definitions, @typescript-eslint/consistent-indexed-object-style, @typescript-eslint/ban-types, line-comment-position */
