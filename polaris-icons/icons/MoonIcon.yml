@@ -1,10 +1,9 @@
 name: Moon
-description:
-Used to indicate night and dark mode
+description: Used to indicate night and dark mode
 keywords:
-  - night
   - moon
   - dark
+  - night
 authors:
   - Joe Thomas
 date_added: 2024-02-22
