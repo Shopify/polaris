@@ -33,6 +33,7 @@
       min-width: var(--button-min-height);
       height: var(--button-min-height);
       width: var(--button-min-height);
+      display: flex;
       padding: unset;
 
       /* stylelint-disable -- override pagination buttons in tables  */
