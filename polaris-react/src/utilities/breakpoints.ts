@@ -7,7 +7,6 @@ import type {
 } from '@shopify/polaris-tokens';
 
 import {isServer} from './target';
-import {useIsomorphicLayoutEffect} from './use-isomorphic-layout-effect';
 
 const Breakpoints = {
   // TODO: Update to smDown
