@@ -321,13 +321,15 @@ export const BulkActions = forwardRef(function BulkActions(
     />
   );
 
+  const bulkActionsClassNames = classNames(styles.BulkActions);
+
   return (
-    <div className={styles.BulkActions} style={width ? {width} : undefined}>
+    <div className={bulkActionsClassNames} style={width ? {width} : undefined}>
       <InlineStack gap="400" blockAlign="center">
-        <InlineStack gap="200" blockAlign="center">
+        <div className={styles.BulkActionsSelectAllWrapper}>
           <CheckableButton {...checkableButtonProps} />
           {paginatedSelectAllMarkup}
-        </InlineStack>
+        </div>
         <div className={styles.BulkActionsPromotedActionsWrapper}>
           <InlineStack gap="100" blockAlign="center">
             <div className={styles.BulkActionsOuterLayout}>

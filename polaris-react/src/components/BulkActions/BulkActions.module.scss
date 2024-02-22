@@ -11,6 +11,13 @@ $bulk-actions-button-stacking-order: (
   width: 100%;
 }
 
+.BulkActionsSelectAllWrapper {
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-200);
+}
+
 .BulkActionsPromotedActionsWrapper {
   flex: 1;
 }

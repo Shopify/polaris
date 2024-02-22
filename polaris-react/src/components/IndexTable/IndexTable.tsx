@@ -470,10 +470,6 @@ function IndexTableBase({
     .map(renderHeading)
     .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
 
-  const bulkActionsSelectable = Boolean(
-    promotedBulkActions.length > 0 || bulkActions.length > 0,
-  );
-
   const stickyColumnHeaderStyle =
     tableHeadingRects.current && tableHeadingRects.current.length > 0
       ? {
@@ -587,8 +583,6 @@ function IndexTableBase({
     condensed && styles['StickyTable-condensed'],
   );
 
-  const shouldShowBulkActions = bulkActionsSelectable;
-
   const shouldShowActions = !condensed || selectedItemsCount;
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
@@ -610,7 +604,7 @@ function IndexTableBase({
           );
 
           const bulkActionsMarkup =
-            shouldShowBulkActions && !condensed ? (
+            shouldShowActions && !condensed ? (
               <div className={bulkActionsClassName}>
                 <BulkActions
                   selectMode={selectMode}
@@ -787,7 +781,7 @@ function IndexTableBase({
     <>
       <div className={styles.IndexTable}>
         <div className={tableWrapperClassNames}>
-          {!shouldShowBulkActions && !condensed && loadingMarkup}
+          {!condensed && loadingMarkup}
           {tableContentMarkup}
           {scrollBarMarkup}
           {paginationMarkup}
