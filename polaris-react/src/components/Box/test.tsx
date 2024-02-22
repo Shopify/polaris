@@ -233,21 +233,6 @@ type AliasesToObjectTypes<
 
 type ExactOptional<T> = Exclude<T, undefined>;
 
-// Wrapping the argument in [] prevents distributing unions since we're only
-// interested in the actual value of the generic (and a union is not an object).
-// 'never' extends 'object', but we don't want 'never', so have to explicitly
-// filter it out here.
-// prettier-ignore
-type IsObject<T> = [T] extends [object]
-  ? [T] extends [never]
-    ? false
-    : [unknown] extends [T]
-      ? false
-      : [T] extends [(...arg: any[]) => any]
-        ? false
-        : true
-  : false;
-
 type SimplifiedAliasesToObjectTypes<
   PropertyToAliases extends AliasConfig,
   Properties extends object,
@@ -293,7 +278,7 @@ type MakeValueMapper<AllProperties, PropPaths> =
     ) => unknown)
   | ((...args: []) => unknown);
 
-function create4_9_5<
+declare function create4_9_5<
   PropertyToAliases extends AliasConfig = Record<never, never>,
   Breakpoints extends BreakpointsShape = Record<never, never>,
   Modifiers extends ModifiersShape = Record<never, never>,
@@ -342,243 +327,239 @@ function create4_9_5<
   >,
 >(
   options: {
-  /**
-   * Aliases for properties as an ordered array where earlier items in the array
-   * take priority over later.
-   *
-   * Aliases may themselves fallback to other aliases.
-   *
-   * Can be thought of as optional chaining:
-   *
-   * const paddingInlineStart = props.paddingInlineStart ?? props.paddingInline ?? props.padding;
-   * const paddingInlineEnd = props.paddingInlineEnd ?? props.paddingInline ?? props.padding;
-   * const paddingBlockStart = props.paddingBlockStart ?? props.paddingBlock ?? props.padding;
-   * const paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBlock ?? props.padding;
-   * ...etc
-   *
-   * @example
-   * `justify` is an alias for `justifyItems`:
-   *
-   * ```
-   * const {stylesheet, convert} = create({
-   *   aliases: {
-   *     justifyItems: ['justify'],
-   *   }
-   * });
-   *
-   * convert({
-   *   justify: 'center',
-   * });
-   * // =>
-   * // {
-   * //   justifyItems: 'center',
-   * // }
-   *
-   * convert({
-   *   justifyItems: 'stretch',
-   *   justify: 'center',
-   * });
-   * // =>
-   * // {
-   * //   justifyItems: 'stretch',
-   * // }
-   * ```
-   *
-   * @example
-   * `paddingInline` is an alias for `paddingInlineStart` and
-   * `paddingInlineEnd`:
-   *
-   * ```
-   * const {stylesheet, convert} = create({
-   *   aliases: {
-   *     paddingInlineStart: ['paddingInline'],
-   *     paddingInlineEnd: ['paddingInline'],
-   *   }
-   * });
-   *
-   * convert({
-   *   paddingInline: '20px',
-   * });
-   * // =>
-   * // {
-   * //   paddingInlineStart: '20px',
-   * //   paddingInlineEnd: '20px',
-   * // }
-   * ```
-   *
-   * @example
-   * `padding` is an alias to `paddingInline` and `paddingBlock` which themselves
-   * are aliases to `paddingInlineStart`, `paddingInlineEnd` and
-   * `paddingBlockStart`, `paddingBlockEnd` respectively.
-   *
-   * ```
-   * const {stylesheet, convert} = create({
-   *   aliases: {
-   *     paddingInlineStart: ['paddingInline', 'padding'],
-   *     paddingInlineEnd: ['paddingInline', 'padding'],
-   *     paddingBlockStart: ['paddingBlock', 'padding'],
-   *     paddingBlockEnd: ['paddingBlock', 'padding'],
-   *   }
-   * });
-   *
-   * convert({
-   *   padding: '20px',
-   * });
-   * // =>
-   * // {
-   * //   paddingInlineStart: '20px',
-   * //   paddingInlineEnd: '20px',
-   * //   paddingBlockStart: '20px',
-   * //   paddingBlockEnd: '20px',
-   * // }
-   *
-   * convert({
-   *   padding: '20px',
-   *   paddingInline: '10px',
-   *   paddingBlockStart: '0px',
-   * });
-   * // =>
-   * // {
-   * //   paddingInlineStart: '10px',
-   * //   paddingInlineEnd: '10px',
-   * //   paddingBlockStart: '0px',
-   * //   paddingBlockEnd: '20px',
-   * // }
-   * ```
-   */
-  aliases?: ExactOptional<PropertyToAliases>;
-  /**
-   * A mobile-first list of breakpoint aliases mapped to their media queries.
-   *
-   * The order breakpoints are defined in is the order of their specificity
-   * (most specific first), regardless of the CSS specificity of the media
-   * query.
-   *
-   * The special selector `&` means "no media query" and must come first in the
-   * object. If not set, it will be injected for you with the alias `base`.
-   */
-  breakpoints?: ExactOptional<Breakpoints>;
-  /**
-   * Modifiers are combined with a generated class name to form a selector used
-   * for applying style rules.
-   *
-   * The order modifiers are defined in is the order of their specificity (most
-   * specific first), regardless of the CSS specificity of the selector.
-   *
-   * Any `&` will be replaced with the generated class name.
-   *
-   * Modifiers without a `&` will be automatically prefixed with `&`.
-   *
-   * `true` to opt into a default set of modifiers.
-   *
-   * TODO: This comment belongs on the React component.
-   * Note: When used with pseudo elements, some selectors may not behave as
-   * expected such as `::first-child`. This is because pseudo element use will
-   * inject a <style> tag as the element's first child
-   *
-   * @example
-   * {
-   *   _hover: '::hover',
-   *   _groupHover: '[role="group"]::hover &',
-   *   _sibling: '& + &',
-   * }
-   */
-  modifiers?: ExactOptional<Modifiers>;
-  /**
-   * `true` to opt into a default set of pseudo elements.
-   */
-  pseudoElements?: ExactOptional<PseudoElements>;
-  valueMapper?: ExactOptional<MakeValueMapper<AllProperties, PropPaths>>;
-  /**
-   * A list of values that if passed to any styleProp on our Box component should
-   * warn the user, and bail early from the css property injection procedure. We
-   * do this as there is no good way for us to explicitly disallow this string
-   * literal in our types holistically for every style property.
-   */
-  // bannedGlobalValues?: ExactOptional<Globals[]>;
+    /**
+     * Aliases for properties as an ordered array where earlier items in the array
+     * take priority over later.
+     *
+     * Aliases may themselves fallback to other aliases.
+     *
+     * Can be thought of as optional chaining:
+     *
+     * const paddingInlineStart = props.paddingInlineStart ?? props.paddingInline ?? props.padding;
+     * const paddingInlineEnd = props.paddingInlineEnd ?? props.paddingInline ?? props.padding;
+     * const paddingBlockStart = props.paddingBlockStart ?? props.paddingBlock ?? props.padding;
+     * const paddingBlockEnd = props.paddingBlockEnd ?? props.paddingBlock ?? props.padding;
+     * ...etc
+     *
+     * @example
+     * `justify` is an alias for `justifyItems`:
+     *
+     * ```
+     * const {stylesheet, convert} = create({
+     *   aliases: {
+     *     justifyItems: ['justify'],
+     *   }
+     * });
+     *
+     * convert({
+     *   justify: 'center',
+     * });
+     * // =>
+     * // {
+     * //   justifyItems: 'center',
+     * // }
+     *
+     * convert({
+     *   justifyItems: 'stretch',
+     *   justify: 'center',
+     * });
+     * // =>
+     * // {
+     * //   justifyItems: 'stretch',
+     * // }
+     * ```
+     *
+     * @example
+     * `paddingInline` is an alias for `paddingInlineStart` and
+     * `paddingInlineEnd`:
+     *
+     * ```
+     * const {stylesheet, convert} = create({
+     *   aliases: {
+     *     paddingInlineStart: ['paddingInline'],
+     *     paddingInlineEnd: ['paddingInline'],
+     *   }
+     * });
+     *
+     * convert({
+     *   paddingInline: '20px',
+     * });
+     * // =>
+     * // {
+     * //   paddingInlineStart: '20px',
+     * //   paddingInlineEnd: '20px',
+     * // }
+     * ```
+     *
+     * @example
+     * `padding` is an alias to `paddingInline` and `paddingBlock` which themselves
+     * are aliases to `paddingInlineStart`, `paddingInlineEnd` and
+     * `paddingBlockStart`, `paddingBlockEnd` respectively.
+     *
+     * ```
+     * const {stylesheet, convert} = create({
+     *   aliases: {
+     *     paddingInlineStart: ['paddingInline', 'padding'],
+     *     paddingInlineEnd: ['paddingInline', 'padding'],
+     *     paddingBlockStart: ['paddingBlock', 'padding'],
+     *     paddingBlockEnd: ['paddingBlock', 'padding'],
+     *   }
+     * });
+     *
+     * convert({
+     *   padding: '20px',
+     * });
+     * // =>
+     * // {
+     * //   paddingInlineStart: '20px',
+     * //   paddingInlineEnd: '20px',
+     * //   paddingBlockStart: '20px',
+     * //   paddingBlockEnd: '20px',
+     * // }
+     *
+     * convert({
+     *   padding: '20px',
+     *   paddingInline: '10px',
+     *   paddingBlockStart: '0px',
+     * });
+     * // =>
+     * // {
+     * //   paddingInlineStart: '10px',
+     * //   paddingInlineEnd: '10px',
+     * //   paddingBlockStart: '0px',
+     * //   paddingBlockEnd: '20px',
+     * // }
+     * ```
+     */
+    aliases?: ExactOptional<PropertyToAliases>;
+    /**
+     * A mobile-first list of breakpoint aliases mapped to their media queries.
+     *
+     * The order breakpoints are defined in is the order of their specificity
+     * (most specific first), regardless of the CSS specificity of the media
+     * query.
+     *
+     * The special selector `&` means "no media query" and must come first in the
+     * object. If not set, it will be injected for you with the alias `base`.
+     */
+    breakpoints?: ExactOptional<Breakpoints>;
+    /**
+     * Modifiers are combined with a generated class name to form a selector used
+     * for applying style rules.
+     *
+     * The order modifiers are defined in is the order of their specificity (most
+     * specific first), regardless of the CSS specificity of the selector.
+     *
+     * Any `&` will be replaced with the generated class name.
+     *
+     * Modifiers without a `&` will be automatically prefixed with `&`.
+     *
+     * `true` to opt into a default set of modifiers.
+     *
+     * TODO: This comment belongs on the React component.
+     * Note: When used with pseudo elements, some selectors may not behave as
+     * expected such as `::first-child`. This is because pseudo element use will
+     * inject a <style> tag as the element's first child
+     *
+     * @example
+     * {
+     *   _hover: '::hover',
+     *   _groupHover: '[role="group"]::hover &',
+     *   _sibling: '& + &',
+     * }
+     */
+    modifiers?: ExactOptional<Modifiers>;
+    /**
+     * `true` to opt into a default set of pseudo elements.
+     */
+    pseudoElements?: ExactOptional<PseudoElements>;
+    valueMapper?: ExactOptional<MakeValueMapper<AllProperties, PropPaths>>;
+    /**
+     * A list of values that if passed to any styleProp on our Box component should
+     * warn the user, and bail early from the css property injection procedure. We
+     * do this as there is no good way for us to explicitly disallow this string
+     * literal in our types holistically for every style property.
+     */
+    // bannedGlobalValues?: ExactOptional<Globals[]>;
 
-  /**
-   * Prefix generated classnames & custom properties with this namespace to avoid
-   * collisions with existing styles.
-   */
-  namespace?: ExactOptional<string>;
-  /**
-   * Global defaults injected into the returned stylesheet.
-   *
-   * Will only appear in converted style output when a matching property is
-   * passed in, otherwise the defaults will cascade in from the stylesheet.
-   *
-   * @example
-   * const {stylesheet, convert} = create({
-   *   defaults: {
-   *     color: 'red',
-   *   }
-   * });
-   *
-   * convert({
-   *   display: 'flex',
-   * });
-   * // =>
-   * // `color` isn't returned since it's already in `stylesheet`
-   * // {
-   * //   display: 'flex',
-   * // }
-   *
-   * @example
-   * const {stylesheet, convert} = create({
-   *   defaults: {
-   *     color: 'red',
-   *   }
-   * });
-   *
-   * convert({
-   *   _hover: {
-   *     color: 'blue'
-   *   }
-   * });
-   * // =>
-   * // Includes 'red' because the `color` property in the style attribute will
-   * // overwrite the same property in the stylesheet.
-   * // {
-   * //   color: 'var(--_hover-on,blue) var(--_hover-off,red)'
-   * // }
-   *
-   * @example
-   * const {stylesheet, convert} = create({
-   *   modifiers: {
-   *     _focus: ':focus',
-   *   },
-   *   defaults: {
-   *    // Hotpink outline when focused
-   *     _focus: {
-   *       outlineColor: 'hotpink',
-   *       outlineStyle: 'solid',
-   *       outlineWidth: '2px'
-   *     }
-   *   }
-   * });
-   *
-   * convert({
-   *   _focus: {
-   *     // tone down the outline color in this one case
-   *     outlineColor: 'rebeccapurple'
-   *   }
-   * });
-   * // =>
-   * // `outline-color` is explicitly set to `rebeccapurple`, and will not
-   * // fallback to the default of `hotpink`.
-   * // `outline-style` and `outline-width` will still apply
-   * // {
-   * //   outlineColor: 'var(--_focus-on,rebeccapurple)'
-   * // }
-   */
-  defaults?: ResponsiveModifiablePropsWithPseudoElements
-}
-) {
-  return (
-    props: ResponsiveModifiablePropsWithPseudoElements,
-  ) => undefined;
-}
+    /**
+     * Prefix generated classnames & custom properties with this namespace to avoid
+     * collisions with existing styles.
+     */
+    namespace?: ExactOptional<string>;
+    /**
+     * Global defaults injected into the returned stylesheet.
+     *
+     * Will only appear in converted style output when a matching property is
+     * passed in, otherwise the defaults will cascade in from the stylesheet.
+     *
+     * @example
+     * const {stylesheet, convert} = create({
+     *   defaults: {
+     *     color: 'red',
+     *   }
+     * });
+     *
+     * convert({
+     *   display: 'flex',
+     * });
+     * // =>
+     * // `color` isn't returned since it's already in `stylesheet`
+     * // {
+     * //   display: 'flex',
+     * // }
+     *
+     * @example
+     * const {stylesheet, convert} = create({
+     *   defaults: {
+     *     color: 'red',
+     *   }
+     * });
+     *
+     * convert({
+     *   _hover: {
+     *     color: 'blue'
+     *   }
+     * });
+     * // =>
+     * // Includes 'red' because the `color` property in the style attribute will
+     * // overwrite the same property in the stylesheet.
+     * // {
+     * //   color: 'var(--_hover-on,blue) var(--_hover-off,red)'
+     * // }
+     *
+     * @example
+     * const {stylesheet, convert} = create({
+     *   modifiers: {
+     *     _focus: ':focus',
+     *   },
+     *   defaults: {
+     *    // Hotpink outline when focused
+     *     _focus: {
+     *       outlineColor: 'hotpink',
+     *       outlineStyle: 'solid',
+     *       outlineWidth: '2px'
+     *     }
+     *   }
+     * });
+     *
+     * convert({
+     *   _focus: {
+     *     // tone down the outline color in this one case
+     *     outlineColor: 'rebeccapurple'
+     *   }
+     * });
+     * // =>
+     * // `outline-color` is explicitly set to `rebeccapurple`, and will not
+     * // fallback to the default of `hotpink`.
+     * // `outline-style` and `outline-width` will still apply
+     * // {
+     * //   outlineColor: 'var(--_focus-on,rebeccapurple)'
+     * // }
+     */
+    defaults?: ResponsiveModifiablePropsWithPseudoElements
+  }
+): (props: ResponsiveModifiablePropsWithPseudoElements) => undefined;
 
 const aliases = {
   color: ['fg', 'textColor'],
@@ -631,6 +612,3 @@ fn2({
     color: 'blue'
   }
 })
-
-type X = Properties['backgroundPositionX'];
-type Y = Properties['backgroundPositionY'];
