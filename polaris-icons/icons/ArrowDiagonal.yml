@@ -1,0 +1,38 @@
+name: Name of the icon
+description:
+  # Icon type   | Example description
+  # ----------- | --------------------------
+  # Action      | Used to denote <x action>.
+  # Wayfinding  | Used to help direct merchants to <x>.
+  # Concept     | Used to represent <x>.
+  # Education   | Used to give merchants more information about <context x>.
+  #
+  # Full guidelines: https://bit.ly/2GdMpmg
+  # (delete this comment block)
+  N/A
+keywords:
+  # - synonym
+  # - another synonym
+  # - related shape or symbol
+  # (delete this comment block)
+  - N/A
+authors:
+  # - Sasha Oliveira
+  # - Co-author’s name (optional)
+  # (delete this comment block)
+  - N/A
+date_added: YYYY-MM-DD
+date_modified: YYYY-MM-DD
+# Optional: fill exclusive_use if the icon should *only* be used
+# in specific areas of the admin (such as “Orders”):
+
+
+name: Arrow diagonal
+description: Used to denote that associated text will be inserted
+keywords:
+  - arrow
+  - diagonal
+authors:
+  - Arda Karacizmeli
+date_added: 2024-02-22
+date_modified: 2024-02-22
