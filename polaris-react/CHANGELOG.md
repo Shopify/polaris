@@ -1,5 +1,26 @@
 # Changelog
 
+## 12.18.0
+
+### Minor Changes
+
+- [#11625](https://github.com/Shopify/polaris/pull/11625) [`9aed8c18f`](https://github.com/Shopify/polaris/commit/9aed8c18f328165f4be8a4fcca9efe23944bd63b) Thanks [@sainihas](https://github.com/sainihas)! - Fix truncate issue for text in ContextualSaveBar
+
+* [#11604](https://github.com/Shopify/polaris/pull/11604) [`376e6ded7`](https://github.com/Shopify/polaris/commit/376e6ded7bc64cd7b4947fc56a1ea563cae26549) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated IndexFilters to better support a configuration of only search and sort
+
+- [#11613](https://github.com/Shopify/polaris/pull/11613) [`92d02613b`](https://github.com/Shopify/polaris/commit/92d02613b7aa063f0939e610baaf28e256d8b3e6) Thanks [@lgriffee](https://github.com/lgriffee)! - Deprecated `heading2xl` and `heading3xl` variants in `Text` component
+
+* [#11611](https://github.com/Shopify/polaris/pull/11611) [`b79741cf8`](https://github.com/Shopify/polaris/commit/b79741cf8a632f741d9c4c4100e9b51f6865f183) Thanks [@kyledurand](https://github.com/kyledurand)! - Added `size` prop to `Tag`
+
+### Patch Changes
+
+- [#11624](https://github.com/Shopify/polaris/pull/11624) [`b60ba0710`](https://github.com/Shopify/polaris/commit/b60ba07103831f169423a94b63610b211eefa555) Thanks [@lgriffee](https://github.com/lgriffee)! - Reverted application of native mobile styles to Button component
+
+* [#11628](https://github.com/Shopify/polaris/pull/11628) [`bef27c076`](https://github.com/Shopify/polaris/commit/bef27c076f8b1ca2efda61bf6a178c4a18972698) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - Fixed an issue where a border displayed between the main content of the frame and the sidebar
+
+* Updated dependencies [[`4db32af27`](https://github.com/Shopify/polaris/commit/4db32af27edb547d5c3f6fe1fbd81b1737cc5152), [`8a9225306`](https://github.com/Shopify/polaris/commit/8a92253064a2a2e572f58eae71312dc895b5fbf1)]:
+  - @shopify/polaris-icons@8.5.0
+
 ## 12.17.0
 
 ### Minor Changes

@@ -1,5 +1,15 @@
 # Changelog
 
+## 8.5.0
+
+### Minor Changes
+
+- [#11639](https://github.com/Shopify/polaris/pull/11639) [`4db32af27`](https://github.com/Shopify/polaris/commit/4db32af27edb547d5c3f6fe1fbd81b1737cc5152) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - Added a new icon: ArrowDiagonal
+
+### Patch Changes
+
+- [#11633](https://github.com/Shopify/polaris/pull/11633) [`8a9225306`](https://github.com/Shopify/polaris/commit/8a92253064a2a2e572f58eae71312dc895b5fbf1) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Update mobile icon design
+
 ## 8.4.0
 
 ### Minor Changes
