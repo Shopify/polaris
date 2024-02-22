@@ -118,8 +118,6 @@ export function HoverCardOverlay({
     shouldAnimate && styles['HoverCardOverlay-glide'],
   );
 
-  console.log(className);
-
   const overlayMarkup = active ? (
     <PositionedOverlay
       active={active}
