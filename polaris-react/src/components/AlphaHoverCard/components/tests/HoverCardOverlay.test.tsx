@@ -10,6 +10,7 @@ const defaultProps = {
   onMouseEnter: jest.fn(),
   onMouseLeave: jest.fn(),
   activator: document.createElement('div'),
+  dynamic: false,
 };
 
 describe('<HoverCardOverlay />', () => {
