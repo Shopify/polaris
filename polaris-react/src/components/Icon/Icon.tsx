@@ -72,7 +72,9 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
         className={styles.Svg}
         focusable="false"
         aria-hidden="true"
-        viewBox={mdDown ? '3 3 14 14' : undefined}
+        // On Mobile we're scaling the viewBox to 16x16 to make the icons bigger
+        // Also, we're setting the viewport origin to 2x2 to center the icon
+        viewBox={mdDown ? '2 2 16 16' : undefined}
       />
     ),
     placeholder: <div className={styles.Placeholder} />,

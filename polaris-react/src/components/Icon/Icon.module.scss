@@ -12,9 +12,6 @@
 
 .Icon svg {
   fill: currentColor;
-  @media (--p-breakpoints-md-down) {
-    padding: var(--p-space-050); // 2px;
-  }
 }
 
 .toneInherit svg {
