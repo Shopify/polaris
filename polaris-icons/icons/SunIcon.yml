@@ -1,0 +1,10 @@
+name: Sun
+description: Indicates day or light mode.
+keywords:
+  - day
+  - light
+  - sun
+authors:
+  - Joe Thomas
+date_added: 2024-02-22
+date_modified: 2024-02-22
