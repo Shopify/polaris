@@ -283,7 +283,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).not.toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).not.toHaveBeenCalled();
     });
 
     it('does call the cancelAction.onAction method when in Filtering mode', () => {
@@ -297,7 +297,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).toHaveBeenCalled();
     });
 
     it('does call the cancelAction.onAction method when in EditingColumns mode', () => {
@@ -314,7 +314,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).toHaveBeenCalled();
     });
   });
 
@@ -365,7 +365,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).not.toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).not.toHaveBeenCalled();
     });
 
     it('does not call the cancelAction.onAction method when pressing escape in EditingColumns mode', () => {
@@ -383,7 +383,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).not.toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).not.toHaveBeenCalled();
     });
   });
 
