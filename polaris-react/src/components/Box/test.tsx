@@ -232,6 +232,13 @@ type AliasesToObjectTypes<
 }>
 
 type ExactOptional<T> = Exclude<T, undefined>;
+// Stop TS from inferring the given generic when used in a context where it
+// might otherwise try to infer it.
+// Useful when assigning a default value to a generic, then that generic is
+// passed to a function parameter.
+// See: https://stackoverflow.com/a/67110530
+// Note: May no longer be necessary in Typescript v5.4+
+type NoInfer<T> = [T][T extends any ? 0 : never];
 
 type SimplifiedAliasesToObjectTypes<
   PropertyToAliases extends AliasConfig,
@@ -293,7 +300,7 @@ declare function create4_9_5<
   // Some objects may be `never` (ie; not configured), but they'll get filtered
   // out during the MapTupleToKeys<> call.
   // TODO: Why is this coming out as `undefined`?
-  PropPaths = SimplifyUnion<
+  PropPaths =
     | [AllPropertyNames]
     | [AllPropertyNames, keyof Breakpoints]
     | [keyof Modifiers, AllPropertyNames]
@@ -306,8 +313,7 @@ declare function create4_9_5<
         keyof PseudoElements,
         AllPropertyNames,
         keyof Breakpoints,
-      ]
-  >,
+      ],
   ResponsiveProperties = {
     [Key in keyof AllProperties]+?:
       | AllProperties[Key]
@@ -473,7 +479,7 @@ declare function create4_9_5<
      * `true` to opt into a default set of pseudo elements.
      */
     pseudoElements?: ExactOptional<PseudoElements>;
-    valueMapper?: ExactOptional<MakeValueMapper<AllProperties, PropPaths>>;
+    valueMapper?: ExactOptional<MakeValueMapper<AllProperties, NoInfer<PropPaths>>>;
     /**
      * A list of values that if passed to any styleProp on our Box component should
      * warn the user, and bail early from the css property injection procedure. We
