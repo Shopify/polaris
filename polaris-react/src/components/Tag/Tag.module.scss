@@ -1,9 +1,9 @@
 @import '../../styles/common';
 
 $height: 20px;
-$button-size: 20px;
 
 .Tag {
+  position: relative;
   display: inline-flex;
   max-width: 100%;
   align-items: center;
@@ -206,5 +206,70 @@ $button-size: 20px;
   // stylelint-disable-next-line selector-max-class, selector-max-specificity -- override Button background color
   .Button {
     background: var(--p-color-bg-fill-tertiary-active);
+  }
+}
+
+.sizeLarge,
+.sizeLarge:is(.removable, .linkable) {
+  min-height: 24px;
+  padding: 0 var(--p-space-200);
+}
+
+/* stylelint-disable-next-line selector-max-class, selector-max-specificity -- override code above */
+.sizeLarge .Link.segmented::after {
+  margin-right: 0;
+}
+
+.sizeLarge .Button {
+  opacity: 0;
+  position: absolute;
+  right: var(--p-space-050);
+  left: auto;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  background-color: var(--p-color-bg-fill-tertiary);
+
+  &:hover {
+    color: var(--p-color-icon-secondary-hover);
+  }
+
+  &:active,
+  &:focus {
+    color: var(--p-color-icon-secondary-active);
+  }
+}
+
+.sizeLarge:hover .Button,
+.sizeLarge .Button:focus-visible {
+  opacity: 1;
+}
+
+.sizeLarge:hover .overlay {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  bottom: 0;
+  width: 12px;
+  pointer-events: none;
+  background: linear-gradient(
+    to left,
+    var(--p-color-bg-fill-tertiary) 0%,
+    transparent 100%
+  );
+}
+/* stylelint-disable-next-line selector-max-class -- match tag hover color */
+.sizeLarge.removable.linkable {
+  /* stylelint-disable-next-line selector-max-class, selector-max-specificity  -- match tag hover color */
+  .Button {
+    background-color: var(--p-color-bg-fill-tertiary-hover);
+  }
+  /* stylelint-disable-next-line selector-max-class, selector-max-specificity  -- match tag hover color */
+  &:hover .overlay {
+    background: linear-gradient(
+      to left,
+      var(--p-color-bg-fill-tertiary-hover) 0%,
+      transparent 100%
+    );
   }
 }

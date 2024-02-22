@@ -1,7 +1,7 @@
 import React from 'react';
 import {XSmallIcon} from '@shopify/polaris-icons';
 
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -21,6 +21,8 @@ export interface NonMutuallyExclusiveProps {
   accessibilityLabel?: string;
   /** Url to navigate to when tag is clicked or keypressed. */
   url?: string;
+  /** The size of the tag */
+  size?: 'large';
 }
 
 export type TagProps = NonMutuallyExclusiveProps &
@@ -36,6 +38,7 @@ export function Tag({
   onRemove,
   accessibilityLabel,
   url,
+  size,
 }: TagProps) {
   const i18n = useI18n();
 
@@ -47,6 +50,7 @@ export function Tag({
     onRemove && styles.removable,
     url && !disabled && styles.linkable,
     segmented && styles.segmented,
+    size && styles[variationName('size', size)],
   );
 
   if (onClick) {
@@ -104,6 +108,7 @@ export function Tag({
   return (
     <span className={className} aria-disabled={disabled}>
       {tagContent}
+      {size === 'large' && <span className={styles.overlay} />}
       {removeButton}
     </span>
   );
