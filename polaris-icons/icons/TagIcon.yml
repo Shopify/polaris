@@ -1,0 +1,10 @@
+name: Tag
+description: Used to represent a product tag.
+keywords:
+  - tag
+  - products
+  - price
+authors:
+  - Thomas Jonkajtys
+date_added: 2024-02-22
+date_modified: 2024-02-22
