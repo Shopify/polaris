@@ -72,9 +72,10 @@
   fill: var(--pc-button-icon-fill_disabled);
 }
 
-.pressed.pressed,
-.pressed.pressed:hover,
-.pressed.pressed:active,
+// TODO: PR these changes independently to main
+.pressed.pressed svg,
+.pressed.pressed:hover svg,
+.pressed.pressed:active svg,
 .pressed.pressed:focus-visible svg {
   fill: var(--pc-button-icon-fill_pressed);
 }
