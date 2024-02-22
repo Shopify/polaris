@@ -163,9 +163,11 @@ export function Pagination({
 
   if (type === 'table') {
     const labelMarkup = label ? (
-      <Text as="span" variant="bodySm" fontWeight="medium">
-        {label}
-      </Text>
+      <Box padding="300" paddingBlockStart="0" paddingBlockEnd="0">
+        <Text as="span" variant="bodySm" fontWeight="medium">
+          {label}
+        </Text>
+      </Box>
     ) : null;
 
     return (
@@ -183,15 +185,15 @@ export function Pagination({
           paddingInlineStart="300"
           paddingInlineEnd="200"
         >
-          <InlineStack
-            align={labelMarkup ? 'space-between' : 'end'}
-            blockAlign="center"
-          >
-            {labelMarkup}
-            <ButtonGroup variant="segmented">
-              {constructedPrevious}
-              {constructedNext}
-            </ButtonGroup>
+          <InlineStack align="center" blockAlign="center">
+            <div
+              className={styles.TablePaginationActions}
+              data-buttongroup-variant="segmented"
+            >
+              <div>{constructedPrevious}</div>
+              {labelMarkup}
+              <div>{constructedNext}</div>
+            </div>
           </InlineStack>
         </Box>
       </nav>

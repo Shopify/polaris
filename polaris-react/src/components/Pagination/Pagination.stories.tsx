@@ -80,3 +80,26 @@ export function WithTableType() {
     </div>
   );
 }
+
+export function WithTableTypeAndNoLabel() {
+  return (
+    <div
+      style={{
+        maxWidth: 'calc(700px + (2 * var(--p-space-400)))',
+        margin: '0 auto',
+      }}
+    >
+      <Pagination
+        onPrevious={() => {
+          console.log('Previous');
+        }}
+        onNext={() => {
+          console.log('Next');
+        }}
+        type="table"
+        hasNext
+        hasPrevious
+      />
+    </div>
+  );
+}
