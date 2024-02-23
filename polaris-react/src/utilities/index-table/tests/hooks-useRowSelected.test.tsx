@@ -2,6 +2,7 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {setMatchMedia} from 'tests/setup/tests';
 
+// eslint-disable-next-line @shopify/strict-component-boundaries
 import {IndexTable} from '../../../components/IndexTable';
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import type {IndexTableProps} from '../../../components/IndexTable';
