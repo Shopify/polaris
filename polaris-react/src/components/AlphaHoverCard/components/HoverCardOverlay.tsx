@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 
 import {classNames} from '../../../utilities/css';
 import {overlay} from '../../shared';
@@ -36,7 +36,7 @@ export function HoverCardOverlay({
   onMouseLeave,
 }: HoverCardOverlayProps) {
   const contentNode = useRef<HTMLDivElement | null>(null);
-  const [shouldAnimate, setShouldAnimate] = React.useState(false);
+  const [shouldAnimate, setShouldAnimate] = useState(false);
 
   useEffect(() => {
     if (dynamic && active && !shouldAnimate) {
@@ -66,8 +66,7 @@ export function HoverCardOverlay({
       styles.AlphaHoverCard,
       snapToParent && styles.snapToParent,
       positioning === 'above' && styles.positionedAbove,
-      measuring && styles.measuring,
-      !measuring && styles.measured,
+      measuring ? styles.measuring : styles.measured,
     );
 
     const dimensions = getMinMaxDimensionsOfChildren();

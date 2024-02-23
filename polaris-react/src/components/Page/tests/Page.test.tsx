@@ -1,6 +1,7 @@
 import React, {useCallback, useState} from 'react';
 import {animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import type {ActionMenuProps} from '../../ActionMenu';
 import {Badge} from '../../Badge';
@@ -11,15 +12,7 @@ import type {PageProps} from '../Page';
 import {Header} from '../components';
 import {Button} from '../../Button';
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: window.innerWidth < 768,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 describe('<Page />', () => {
   const mockProps: PageProps = {

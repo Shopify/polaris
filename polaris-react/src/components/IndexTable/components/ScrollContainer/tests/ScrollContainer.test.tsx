@@ -1,18 +1,11 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {ScrollContext} from '../../../../../utilities/index-table';
 import {ScrollContainer} from '../ScrollContainer';
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 function TestComponent() {
   const containerRef = React.useRef(null);

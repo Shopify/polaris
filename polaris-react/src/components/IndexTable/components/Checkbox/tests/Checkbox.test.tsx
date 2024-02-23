@@ -3,6 +3,7 @@ import type {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {Element as ElementType} from '@shopify/react-testing';
 import {act} from 'react-dom/test-utils';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
 import {IndexTable} from '../../../IndexTable';
@@ -19,15 +20,7 @@ jest.mock('../../../../../utilities/debounce', () => ({
   debounce: (callback: () => void) => () => callback(),
 }));
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 describe('<Checkbox />', () => {
   let getBoundingClientRectSpy: jest.SpyInstance;

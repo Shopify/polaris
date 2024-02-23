@@ -6,3 +6,15 @@ import './matchers';
 afterEach(() => {
   destroyAll();
 });
+
+export const setMatchMedia = () => {
+  window.matchMedia =
+    window.matchMedia ||
+    function () {
+      return {
+        matches: false,
+        addListener() {},
+        removeListener() {},
+      };
+    };
+};

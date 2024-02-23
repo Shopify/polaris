@@ -1,18 +1,11 @@
 import React from 'react';
 import type {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {Cell} from '../Cell';
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 jest.mock('../../../../../utilities/index-provider', () => ({
   useIndexCell: jest.fn(),
