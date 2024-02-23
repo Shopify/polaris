@@ -4,7 +4,6 @@ import {classNames} from '../../utilities/css';
 import {getRectForNode, Rect} from '../../utilities/geometry';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
-import {Scrollable} from '../Scrollable';
 import {layer, dataPolarisTopBar} from '../shared';
 
 import {
@@ -198,20 +197,44 @@ export class PositionedOverlay extends PureComponent<
     this.overlay = node;
   };
 
+  private isScrollContainer = (node: HTMLElement) => {
+    const yOverflow = node.scrollHeight > node.clientHeight;
+    const xOverflow = node.scrollWidth > node.clientWidth;
+
+    if (!yOverflow && !xOverflow) {
+      return false;
+    }
+
+    const styles = window.getComputedStyle(node);
+    const yScroll =
+      styles.overflowY === 'auto' || styles.overflowY === 'scroll';
+    const xScroll =
+      styles.overflowX === 'auto' || styles.overflowX === 'scroll';
+
+    if ((yOverflow && yScroll) || (xOverflow && xScroll)) {
+      return true;
+    }
+
+    return false;
+  };
+
   private setScrollableContainers = () => {
     const containers: (HTMLElement | Document)[] = [];
-    let scrollableContainer = Scrollable.forNode(this.props.activator);
+    let currentNode: HTMLElement | ParentNode | null = this.props.activator;
 
-    if (scrollableContainer) {
-      containers.push(scrollableContainer);
-
-      while (scrollableContainer?.parentElement) {
-        scrollableContainer = Scrollable.forNode(
-          scrollableContainer.parentElement,
-        );
-
-        containers.push(scrollableContainer);
+    while (currentNode !== null) {
+      if (
+        currentNode instanceof HTMLElement &&
+        this.isScrollContainer(currentNode)
+      ) {
+        containers.push(currentNode);
       }
+
+      currentNode = currentNode.parentNode;
+    }
+
+    if (!containers.length) {
+      containers.push(document);
     }
 
     this.scrollableContainers = containers;
