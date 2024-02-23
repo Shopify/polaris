@@ -1,21 +1,13 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {setMatchMedia} from 'tests/setup/tests';
 
-// eslint-disable-next-line @shopify/strict-component-boundaries
 import {IndexTable, ScrollContainer} from '../../../components/IndexTable';
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import type {IndexTableProps} from '../../../components/IndexTable';
 import {useContainerScroll} from '../hooks';
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 function Component({condensed}: {condensed?: boolean}) {
   const {scrollableContainer, canScrollLeft, canScrollRight} =

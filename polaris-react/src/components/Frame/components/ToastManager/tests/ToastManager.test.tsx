@@ -1,20 +1,13 @@
 import React from 'react';
 import {timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {Toast} from '../../Toast';
 import {Frame} from '../../../Frame';
 import {ToastManager} from '../ToastManager';
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 describe('<ToastManager />', () => {
   it('updates toast safely', () => {

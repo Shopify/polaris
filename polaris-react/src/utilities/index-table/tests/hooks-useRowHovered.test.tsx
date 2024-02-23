@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {setMatchMedia} from 'tests/setup/tests';
 
 // eslint-disable-next-line @shopify/strict-component-boundaries
 import {IndexTable} from '../../../components/IndexTable';
@@ -7,15 +8,7 @@ import {IndexTable} from '../../../components/IndexTable';
 import type {IndexTableProps} from '../../../components/IndexTable';
 import {useRowHovered} from '../hooks';
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 function Component() {
   const hovered = useRowHovered();
