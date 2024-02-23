@@ -148,11 +148,15 @@
   line-height: var(--p-text-body-sm-font-line-height);
 }
 
-.bodyMd {
+@mixin text-body-md {
   font-size: var(--p-text-body-md-font-size);
   font-weight: var(--p-text-body-sm-font-weight);
   letter-spacing: var(--p-text-body-md-font-letter-spacing);
   line-height: var(--p-text-body-md-font-line-height);
+}
+
+.bodyMd {
+  @include text-body-md;
 }
 
 .bodyLg {
