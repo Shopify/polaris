@@ -1,17 +1,10 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {useEphemeralPresenceManager} from '../../../utilities/ephemeral-presence-manager';
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 const Component = () => {
   const {presenceList, presenceCounter, addPresence, removePresence} =

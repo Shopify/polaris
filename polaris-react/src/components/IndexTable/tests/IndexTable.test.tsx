@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
@@ -43,16 +44,7 @@ function mockUseBreakpoints(mdUp: boolean) {
     mdUp,
   });
 }
-
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 const mockTableItems = [
   {
