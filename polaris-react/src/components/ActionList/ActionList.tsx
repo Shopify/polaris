@@ -45,7 +45,7 @@ export function ActionList({
   const filterActions = useContext(FilterActionsContext);
   let finalSections: readonly ActionListSection[] = [];
   const actionListRef = useRef<HTMLDivElement & HTMLUListElement>(null);
-  const [searchText, setSeachText] = useState('');
+  const [searchText, setSearchText] = useState('');
 
   if (items) {
     finalSections = [{items}, ...sections];
@@ -159,9 +159,9 @@ export function ActionList({
             )}
             autoComplete="off"
             value={searchText}
-            onChange={(value) => setSeachText(value)}
+            onChange={(value) => setSearchText(value)}
             prefix={<Icon source={SearchIcon} />}
-            onClearButtonClick={() => setSeachText('')}
+            onClearButtonClick={() => setSearchText('')}
           />
         </Box>
       )}
