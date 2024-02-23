@@ -1,7 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {Root, Node, Element} from '@shopify/react-testing';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {BulkActions} from '../../BulkActions';
 import type {useIsSelectAllActionsSticky} from '../../SelectAllActions';
@@ -84,14 +83,6 @@ describe('<ResourceList />', () => {
     scrollbarPastTopOffset: 0,
     selectAllActionsPastTopOffset: 0,
     isScrolledPastTop: false,
-  });
-
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
-  afterEach(() => {
-    matchMedia.restore();
   });
 
   describe('renderItem', () => {

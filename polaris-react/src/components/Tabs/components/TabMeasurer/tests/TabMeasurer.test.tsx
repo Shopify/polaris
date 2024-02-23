@@ -1,6 +1,5 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {TabMeasurer} from '../TabMeasurer';
 import {Tab} from '../../Tab';
@@ -19,14 +18,12 @@ describe('<TabMeasurer />', () => {
       return 1;
     });
     setTimeoutSpy = jest.spyOn(window, 'setTimeout');
-    matchMedia.mock();
   });
 
   afterEach(() => {
     requestAnimationFrameSpy.mockRestore();
     setTimeoutSpy.mockRestore();
     process.env.NODE_ENV = originalNodeEnv;
-    matchMedia.restore();
   });
 
   const mockProps = {
