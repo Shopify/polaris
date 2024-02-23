@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {IndexProvider} from '../IndexProvider';
 import {
@@ -24,15 +25,7 @@ function mockUseBreakpoints(mdUp: boolean) {
   });
 }
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 describe('<IndexProvider />', () => {
   const defaultProps = {

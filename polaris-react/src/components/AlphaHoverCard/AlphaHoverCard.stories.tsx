@@ -48,7 +48,6 @@ export function WithChildActivator() {
   );
 
   const toggleActive = (active: boolean) => {
-    console.log(`hover card ${active ? 'active' : 'not active'}`);
     setActive(active);
   };
 
