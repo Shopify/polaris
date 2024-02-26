@@ -126,7 +126,7 @@ export const Row = memo(function Row({
 
   let handleRowClick;
 
-  if ((!disabled && selectable) || primaryLinkElement.current) {
+  if ((!disabled) || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
       if (rowType === 'subheader') return;
 
@@ -141,29 +141,31 @@ export const Row = memo(function Row({
         return;
       }
 
-      if (primaryLinkElement.current && !selectMode) {
-        isNavigating.current = true;
-        const {ctrlKey, metaKey} = event.nativeEvent;
+      if (selectable) {
+        if (primaryLinkElement.current && !selectMode) {
+          isNavigating.current = true;
+          const {ctrlKey, metaKey} = event.nativeEvent;
 
-        if (onNavigation) {
-          onNavigation(id);
-        }
+          if (onNavigation) {
+            onNavigation(id);
+          }
 
-        if (
-          (ctrlKey || metaKey) &&
-          primaryLinkElement.current instanceof HTMLAnchorElement
-        ) {
+          if (
+              (ctrlKey || metaKey) &&
+              primaryLinkElement.current instanceof HTMLAnchorElement
+             ) {
+            isNavigating.current = false;
+            window.open(primaryLinkElement.current.href, '_blank');
+            return;
+          }
+
+          primaryLinkElement.current.dispatchEvent(
+              new MouseEvent(event.type, event.nativeEvent),
+              );
+        } else {
           isNavigating.current = false;
-          window.open(primaryLinkElement.current.href, '_blank');
-          return;
+          handleInteraction(event);
         }
-
-        primaryLinkElement.current.dispatchEvent(
-          new MouseEvent(event.type, event.nativeEvent),
-        );
-      } else {
-        isNavigating.current = false;
-        handleInteraction(event);
       }
     };
   }
