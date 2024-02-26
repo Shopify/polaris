@@ -37,6 +37,9 @@ export interface SelectAllActionsProps {
   onToggleAll?(): void;
 }
 
+/**
+ * @deprecated Use `BulkActions` instead.
+ */
 export const SelectAllActions = forwardRef(function SelectAllActions(
   {
     label,

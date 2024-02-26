@@ -200,16 +200,6 @@ $item-wrapper-loading-height: 64px;
   z-index: resource-list(bulk-actions-wrapper-stacking-order);
   width: 100%;
 
-  /*
-    We do not want to worry about setting the height and width explicitly.
-    We want to inherits the height and width of its child (in this case the SelectAllActions component).
-
-    We do this using flexbox because "the cross size of each flex container is the minimum size necessary to contain the flex items" as per the spec.
-    https://www.w3.org/TR/css-flexbox-1/#flex-lines
-  */
-  display: flex;
-  align-self: auto;
-
   visibility: hidden;
   opacity: 0;
   transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
@@ -221,13 +211,6 @@ $item-wrapper-loading-height: 64px;
   }
 }
 
-.ResourceListWrapperWithBulkActions {
-  // stylelint-disable-next-line -- Polaris component custom properties
-  --pc-resource-list-bulk-actions-offset: 41px;
-  // stylelint-disable-next-line -- Polaris component custom properties
-  padding-bottom: var(--pc-resource-list-bulk-actions-offset);
-}
-
 .PaginationWrapper {
   /* stylelint-disable-next-line -- custom z index to work with the z-indexes in the IndexTable */
   --pc-pagination-index: 30;
@@ -236,29 +219,6 @@ $item-wrapper-loading-height: 64px;
   @media (--p-breakpoints-md-up) {
     position: sticky;
     bottom: 0;
-  }
-}
-
-.PaginationWrapperWithSelectAllActions {
-  position: sticky;
-  bottom: 0;
-}
-
-.PaginationWrapperScrolledPastTop {
-  @media (--p-breakpoints-md-up) {
-    position: absolute;
-    bottom: auto;
-    /* stylelint-disable-next-line -- set from the use-is-select-all-actions-sticky hook */
-    top: var(--pc-index-table-pagination-top-offset);
-    width: 100%;
-  }
-
-  &.PaginationWrapperWithSelectAllActions {
-    position: absolute;
-    bottom: auto;
-    /* stylelint-disable-next-line -- set from the use-is-select-all-actions-sticky hook */
-    top: var(--pc-index-table-pagination-top-offset);
-    width: 100%;
   }
 }
 

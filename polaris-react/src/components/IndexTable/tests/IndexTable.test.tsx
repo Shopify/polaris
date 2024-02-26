@@ -12,8 +12,6 @@ import {Checkbox} from '../../Checkbox';
 import {Badge} from '../../Badge';
 import {Text} from '../../Text';
 import {BulkActions} from '../../BulkActions';
-import type {useIsSelectAllActionsSticky} from '../../SelectAllActions';
-import {SelectAllActions} from '../../SelectAllActions';
 import {IndexTable} from '../IndexTable';
 import type {IndexTableProps, IndexTableSortDirection} from '../IndexTable';
 import {ScrollContainer} from '../components';
@@ -35,21 +33,6 @@ jest.mock('../../../utilities/debounce', () => ({
     callback();
   },
 }));
-
-jest.mock('../../SelectAllActions', () => ({
-  ...jest.requireActual('../../SelectAllActions'),
-  useIsSelectAllActionsSticky: jest.fn(),
-}));
-
-function mockUseIsSelectAllActionsSticky(
-  args: ReturnType<typeof useIsSelectAllActionsSticky>,
-) {
-  const useIsSelectAllActionsSticky: jest.Mock = jest.requireMock(
-    '../../SelectAllActions',
-  ).useIsSelectAllActionsSticky;
-
-  useIsSelectAllActionsSticky.mockReturnValue(args);
-}
 
 const mockTableItems = [
   {
@@ -102,19 +85,6 @@ describe('<IndexTable>', () => {
   beforeEach(() => {
     jest.resetAllMocks();
     (getTableHeadingsBySelector as jest.Mock).mockReturnValue([]);
-    mockUseIsSelectAllActionsSticky({
-      selectAllActionsIntersectionRef: {current: null},
-      tableMeasurerRef: {current: null},
-      isSelectAllActionsSticky: false,
-      selectAllActionsAbsoluteOffset: 0,
-      selectAllActionsMaxWidth: 0,
-      selectAllActionsOffsetLeft: 0,
-      selectAllActionsOffsetBottom: 0,
-      computeTableDimensions: jest.fn(),
-      isScrolledPastTop: false,
-      scrollbarPastTopOffset: 0,
-      selectAllActionsPastTopOffset: 0,
-    });
   });
 
   it('renders an <EmptySearchResult /> if no items are passed', () => {
@@ -401,7 +371,7 @@ describe('<IndexTable>', () => {
     });
   });
 
-  describe('SelectAllActions', () => {
+  describe('BulkActions', () => {
     const originalInnerWidth = window.innerWidth;
 
     afterEach(() => {
@@ -427,7 +397,7 @@ describe('<IndexTable>', () => {
       );
 
       index
-        .find(SelectAllActions)!
+        .find(BulkActions)!
         .triggerKeypath('paginatedSelectAllAction.onAction');
 
       expect(onSelectionChangeSpy).toHaveBeenCalledWith(
@@ -453,7 +423,7 @@ describe('<IndexTable>', () => {
           {mockTableItems.map(mockRenderRow)}
         </IndexTable>,
       );
-      expect(index.find(SelectAllActions)).toContainReactText(customString);
+      expect(index.find(BulkActions)).toContainReactText(customString);
     });
 
     it('toggles all page resources when onToggleAll is triggered', () => {
@@ -507,14 +477,14 @@ describe('<IndexTable>', () => {
       expect(index).not.toContainReactComponent(BulkActions);
     });
 
-    it('does not render SelectAllActions', () => {
+    it('does not render BulkActions', () => {
       const index = mountWithApp(
         <IndexTable {...defaultIndexTableProps} condensed selectable={false}>
           {mockTableItems.map(mockRenderCondensedRow)}
         </IndexTable>,
       );
 
-      expect(index).not.toContainReactComponent(SelectAllActions);
+      expect(index).not.toContainReactComponent(BulkActions);
     });
 
     it('does not render bulk actions with onSelectModeToggle when condensed is false', () => {
@@ -778,78 +748,6 @@ describe('<IndexTable>', () => {
         expect(index.findAll('th')[2]).not.toContainReactComponent(Tooltip);
         expect(index.findAll('th')[3]).toContainReactComponent(Tooltip);
       });
-    });
-  });
-
-  describe('computeTableDimensions', () => {
-    it('invokes the computeTableDimensions callback when the number of items changes', () => {
-      const computeTableDimensions = jest.fn();
-      mockUseIsSelectAllActionsSticky({
-        selectAllActionsIntersectionRef: {current: null},
-        tableMeasurerRef: {current: null},
-        isSelectAllActionsSticky: false,
-        selectAllActionsAbsoluteOffset: 0,
-        selectAllActionsMaxWidth: 0,
-        selectAllActionsOffsetLeft: 0,
-        selectAllActionsOffsetBottom: 0,
-        computeTableDimensions,
-        isScrolledPastTop: false,
-        scrollbarPastTopOffset: 0,
-        selectAllActionsPastTopOffset: 0,
-      });
-      const index = mountWithApp(
-        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
-          {mockTableItems.map(mockRenderRow)}
-        </IndexTable>,
-      );
-      expect(computeTableDimensions).toHaveBeenCalledTimes(1);
-
-      index.setProps({itemCount: 60});
-
-      expect(computeTableDimensions).toHaveBeenCalledTimes(2);
-    });
-  });
-
-  describe('mutation observer', () => {
-    let mutationObserverObserveSpy: jest.SpyInstance;
-    let mutationObserverDisconnectSpy: jest.SpyInstance;
-
-    beforeEach(() => {
-      mutationObserverObserveSpy = jest.spyOn(
-        MutationObserver.prototype,
-        'observe',
-      );
-      mutationObserverDisconnectSpy = jest.spyOn(
-        MutationObserver.prototype,
-        'disconnect',
-      );
-    });
-
-    afterEach(() => {
-      mutationObserverObserveSpy.mockRestore();
-      mutationObserverDisconnectSpy.mockRestore();
-    });
-
-    it('observes the activator', () => {
-      mountWithApp(
-        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
-          {mockTableItems.map(mockRenderRow)}
-        </IndexTable>,
-      );
-
-      expect(mutationObserverObserveSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('disconnects the observer when componentWillUnMount', () => {
-      const overlay = mountWithApp(
-        <IndexTable {...defaultProps} itemCount={mockTableItems.length}>
-          {mockTableItems.map(mockRenderRow)}
-        </IndexTable>,
-      );
-
-      overlay.unmount();
-
-      expect(mutationObserverDisconnectSpy).toHaveBeenCalled();
     });
   });
 

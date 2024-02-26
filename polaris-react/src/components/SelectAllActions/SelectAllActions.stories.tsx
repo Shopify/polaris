@@ -1,10 +1,13 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
 
+// eslint-disable-next-line import/no-deprecated
 import {SelectAllActions} from './SelectAllActions';
 
 export default {
+  // eslint-disable-next-line import/no-deprecated
   component: SelectAllActions,
+  // eslint-disable-next-line import/no-deprecated
 } as ComponentMeta<typeof SelectAllActions>;
 
 export function Default() {
