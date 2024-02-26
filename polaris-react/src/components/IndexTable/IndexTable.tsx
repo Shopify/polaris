@@ -555,14 +555,11 @@ function IndexTableBase({
             canFitStickyColumn &&
               lastColumnSticky &&
               styles['StickyTableHeader-sticky-last'],
-            /*
-
             // ie; is scrolled to the left
             canFitStickyColumn &&
               lastColumnSticky &&
               canScrollRight &&
               styles['StickyTableHeader-sticky-scrolling'],
-            */
           );
 
           const bulkActionsClassName = classNames(
