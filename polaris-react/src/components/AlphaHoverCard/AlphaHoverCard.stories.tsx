@@ -630,9 +630,7 @@ export function WithDynamicActivator() {
             })}
           >
             <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
-              <Link monochrome removeUnderline url="#">
                 {`${items.length} items`}
-              </Link>
             </div>
           </IndexTable.Cell>
           <IndexTable.Cell>{deliveryStatus}</IndexTable.Cell>
