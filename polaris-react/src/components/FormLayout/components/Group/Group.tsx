@@ -6,7 +6,7 @@ import {InlineStack} from '../../../InlineStack';
 import {BlockStack} from '../../../BlockStack';
 import {Text} from '../../../Text';
 import {Item} from '../Item';
-import styles from '../../FormLayout.scss';
+import styles from '../../FormLayout.module.scss';
 
 interface PresentationalGroupProps {
   presentational?: boolean;

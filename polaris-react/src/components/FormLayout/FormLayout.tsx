@@ -3,7 +3,7 @@ import type {NamedExoticComponent} from 'react';
 
 import {wrapWithComponent, isElementOfType} from '../../utilities/components';
 
-import styles from './FormLayout.scss';
+import styles from './FormLayout.module.scss';
 import {Group, Item} from './components';
 
 export interface FormLayoutProps {
