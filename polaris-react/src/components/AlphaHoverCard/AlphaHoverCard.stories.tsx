@@ -630,7 +630,7 @@ export function WithDynamicActivator() {
             })}
           >
             <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
-                {`${items.length} items`}
+              {`${items.length} items`}
             </div>
           </IndexTable.Cell>
           <IndexTable.Cell>{deliveryStatus}</IndexTable.Cell>
