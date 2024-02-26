@@ -453,10 +453,17 @@ function IndexTableBase({
   );
 
   const headingsMarkup = headings.map((heading, index) =>
-    renderHeading(heading, index, 'th', {'data-index-table-heading': true}),
+    renderHeading(
+      heading,
+      index,
+      'th',
+      {'data-index-table-heading': true},
+      heading.id,
+    ),
   );
 
   const stickyHeadingsMarkup = headings.map((heading, index) =>
+    // NOTE: No id since it would be a duplicate of the non-sticky header's id
     renderHeading(heading, index, 'div', {
       'data-index-table-sticky-heading': true,
     }),
@@ -750,6 +757,7 @@ function IndexTableBase({
     index: number,
     Tag: React.ElementType,
     tagProps: {[x: string]: unknown},
+    id?: string,
   ) {
     const isSecond = index === 0;
     const isLast = index === headings.length - 1;
@@ -776,7 +784,7 @@ function IndexTableBase({
 
     const headingContent = (
       <Tag
-        id={heading.id}
+        id={id}
         className={headingContentClassName}
         key={getHeadingKey(heading)}
         style={stickyPositioningStyle}
