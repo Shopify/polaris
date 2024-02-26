@@ -39,7 +39,7 @@ export interface TooltipOverlayProps {
   id: string;
   active: boolean;
   preventInteraction?: PositionedOverlayProps['preventInteraction'];
-  preferredPosition?: PositionedOverlayProps['preferredPosition'];
+  preferredPosition?: 'above' | 'below';
   children?: React.ReactNode;
   activator: HTMLElement;
   accessibilityLabel?: string;

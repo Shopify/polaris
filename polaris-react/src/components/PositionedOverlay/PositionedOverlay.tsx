@@ -16,12 +16,13 @@ import {
 import type {PreferredPosition, PreferredAlignment} from './utilities/math';
 import styles from './PositionedOverlay.module.scss';
 
-type Positioning = 'above' | 'below';
+type Positioning = 'above' | 'below' | 'left' | 'right';
 
 interface OverlayDetails {
   left?: number;
   right?: number;
   desiredHeight: number;
+  desiredWidth?: number;
   positioning: Positioning;
   measuring: boolean;
   activatorRect: Rect;
@@ -136,11 +137,17 @@ export class PositionedOverlay extends PureComponent<
       zIndexOverride,
     } = this.props;
 
+    const nextTop = top == null || isNaN(top) ? undefined : top;
+    const nextLeft = left == null || isNaN(left) ? undefined : left;
+    const nextRight = right == null || isNaN(right) ? undefined : right;
+    const nextWidth = width == null || isNaN(width) ? undefined : width;
+
     const style = {
-      top: top == null || isNaN(top) ? undefined : top,
-      left: left == null || isNaN(left) ? undefined : left,
-      right: right == null || isNaN(right) ? undefined : right,
-      width: width == null || isNaN(width) ? undefined : width,
+      '--pc-positioned-overlay-top': nextTop,
+      top: nextTop,
+      left: nextLeft,
+      right: nextRight,
+      width: nextWidth,
       zIndex: zIndexOverride || zIndex || undefined,
     };
 
@@ -178,6 +185,7 @@ export class PositionedOverlay extends PureComponent<
       right,
       positioning,
       height,
+      width,
       activatorRect,
       chevronOffset,
     } = this.state;
@@ -187,6 +195,7 @@ export class PositionedOverlay extends PureComponent<
       left,
       right,
       desiredHeight: height,
+      desiredWidth: width ?? undefined,
       positioning,
       activatorRect,
       chevronOffset,
@@ -316,6 +325,12 @@ export class PositionedOverlay extends PureComponent<
             ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
             : {activator: 0, container: 0, horizontal: 0};
 
+        const overlayMinWidth =
+          this.overlay.firstElementChild &&
+          this.overlay.firstChild instanceof HTMLElement
+            ? getMinWidthForNode(this.overlay.firstElementChild as HTMLElement)
+            : 0;
+
         const containerRect = windowRect();
         const zIndexForLayer = getZIndexForLayerFromNode(activator);
         const zIndex =
@@ -330,31 +345,54 @@ export class PositionedOverlay extends PureComponent<
           fixed,
           topBarOffset,
         );
-        const horizontalPosition = calculateHorizontalPosition(
+
+        const positionedHorizontal =
+          preferredPosition === 'left' || preferredPosition === 'right';
+
+        const calculatedHorizontalPosition = calculateHorizontalPosition(
           activatorRect,
           overlayRect,
           containerRect,
           overlayMargins,
           preferredAlignment,
+          scrollableContainerRect,
+          positionedHorizontal ? preferredPosition : undefined,
+          overlayMinWidth,
         );
+
+        const horizontalPosition =
+          calculatedHorizontalPosition.left ??
+          calculatedHorizontalPosition.right;
 
         const chevronOffset =
           activatorRect.center.x -
           horizontalPosition +
           overlayMargins.horizontal * 2;
 
+        let width = null;
+
+        if (fullWidth) width = overlayRect.width;
+        else if (positionedHorizontal)
+          width = calculatedHorizontalPosition.width;
+
         this.setState(
           {
             measuring: false,
-            activatorRect: getRectForNode(activator),
+            activatorRect,
             left:
-              preferredAlignment !== 'right' ? horizontalPosition : undefined,
+              (preferredAlignment !== 'right' && !positionedHorizontal) ||
+              (positionedHorizontal && calculatedHorizontalPosition.left)
+                ? horizontalPosition
+                : undefined,
             right:
-              preferredAlignment === 'right' ? horizontalPosition : undefined,
+              (preferredAlignment === 'right' && !positionedHorizontal) ||
+              (positionedHorizontal && calculatedHorizontalPosition.right)
+                ? horizontalPosition
+                : undefined,
             top: lockPosition ? top : verticalPosition.top,
             lockPosition: Boolean(fixed),
             height: verticalPosition.height || 0,
-            width: fullWidth ? overlayRect.width : null,
+            width,
             positioning: verticalPosition.positioning as Positioning,
             outsideScrollableContainer:
               onScrollOut != null &&
@@ -383,6 +421,11 @@ function getMarginsForNode(node: HTMLElement) {
     container: parseFloat(nodeStyles.marginBottom || '0'),
     horizontal: parseFloat(nodeStyles.marginLeft || '0'),
   };
+}
+
+function getMinWidthForNode(node: HTMLElement) {
+  const nodeStyles = window.getComputedStyle(node);
+  return parseFloat(nodeStyles.minWidth || '0');
 }
 
 function getZIndexForLayerFromNode(node: HTMLElement) {
