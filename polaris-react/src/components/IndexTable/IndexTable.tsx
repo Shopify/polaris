@@ -452,13 +452,15 @@ function IndexTableBase({
       (bulkActions && bulkActions.length > 0),
   );
 
-  const headingsMarkup = headings
-    .map(renderHeading('th', {'data-index-table-heading': true}))
-    .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
+  const headingsMarkup = headings.map((heading, index) =>
+    renderHeading(heading, index, 'th', {'data-index-table-heading': true}),
+  );
 
-  const stickyHeadingsMarkup = headings
-    .map(renderHeading('div', {'data-index-table-sticky-heading': true}))
-    .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
+  const stickyHeadingsMarkup = headings.map((heading, index) =>
+    renderHeading(heading, index, 'div', {
+      'data-index-table-sticky-heading': true,
+    }),
+  );
 
   const [selectedItemsCountValue, setSelectedItemsCountValue] = useState(
     selectedItemsCount === SELECT_ALL_ITEMS
@@ -744,67 +746,67 @@ function IndexTableBase({
   );
 
   function renderHeading(
+    heading: IndexTableHeading,
+    index: number,
     Tag: React.ElementType,
     tagProps: {[x: string]: unknown},
   ) {
-    return (heading: IndexTableHeading, index: number) => {
-      const isSecond = index === 0;
-      const isLast = index === headings.length - 1;
-      const hasSortable = sortable?.some((value) => value === true);
-      const headingAlignment = heading.alignment || 'start';
-      const headingContentClassName = classNames(
-        styles.TableHeading,
-        headingAlignment === 'center' && styles['TableHeading-align-center'],
-        headingAlignment === 'end' && styles['TableHeading-align-end'],
-        hasSortable && styles['TableHeading-sortable'],
-        isSecond && styles['TableHeading-second'],
-        isLast && !heading.hidden && styles['TableHeading-last'],
-        !selectable && styles['TableHeading-unselectable'],
-        heading.flush && styles['TableHeading-flush'],
-      );
+    const isSecond = index === 0;
+    const isLast = index === headings.length - 1;
+    const hasSortable = sortable?.some((value) => value === true);
+    const headingAlignment = heading.alignment || 'start';
+    const headingContentClassName = classNames(
+      styles.TableHeading,
+      headingAlignment === 'center' && styles['TableHeading-align-center'],
+      headingAlignment === 'end' && styles['TableHeading-align-end'],
+      hasSortable && styles['TableHeading-sortable'],
+      isSecond && styles['TableHeading-second'],
+      isLast && !heading.hidden && styles['TableHeading-last'],
+      !selectable && styles['TableHeading-unselectable'],
+      heading.flush && styles['TableHeading-flush'],
+    );
 
-      const stickyPositioningStyle =
-        selectable !== false &&
-        isSecond &&
-        tableHeadingRects.current &&
-        tableHeadingRects.current.length > 0
-          ? {left: tableHeadingRects.current[0].offsetWidth}
-          : undefined;
+    const stickyPositioningStyle =
+      selectable !== false &&
+      isSecond &&
+      tableHeadingRects.current &&
+      tableHeadingRects.current.length > 0
+        ? {left: tableHeadingRects.current[0].offsetWidth}
+        : undefined;
 
-      const headingContent = (
-        <Tag
-          id={heading.id}
-          className={headingContentClassName}
-          key={getHeadingKey(heading)}
-          style={stickyPositioningStyle}
-          {...tagProps}
-        >
-          {renderHeadingContent(heading, index)}
-        </Tag>
-      );
+    const headingContent = (
+      <Tag
+        id={heading.id}
+        className={headingContentClassName}
+        key={getHeadingKey(heading)}
+        style={stickyPositioningStyle}
+        {...tagProps}
+      >
+        {renderHeadingContent(heading, index)}
+      </Tag>
+    );
 
-      if (index !== 0 || !selectable) {
-        return headingContent;
-      }
+    if (index !== 0 || !selectable) {
+      return headingContent;
+    }
 
-      const checkboxClassName = classNames(
-        styles.TableHeading,
-        hasSortable && styles['TableHeading-sortable'],
-        index === 0 && styles['TableHeading-first'],
-      );
+    const checkboxClassName = classNames(
+      styles.TableHeading,
+      hasSortable && styles['TableHeading-sortable'],
+      index === 0 && styles['TableHeading-first'],
+    );
 
-      const checkboxContent = (
-        <Tag
-          className={checkboxClassName}
-          key={`${heading}-${index}`}
-          {...tagProps}
-        >
-          {renderCheckboxContent()}
-        </Tag>
-      );
+    const checkboxContent = (
+      <Tag
+        className={checkboxClassName}
+        key={`${heading}-${index}`}
+        {...tagProps}
+      >
+        {renderCheckboxContent()}
+      </Tag>
+    );
 
-      return [checkboxContent, headingContent];
-    };
+    return [checkboxContent, headingContent];
   }
 
   function renderCheckboxContent() {
