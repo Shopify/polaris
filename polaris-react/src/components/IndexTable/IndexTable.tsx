@@ -437,7 +437,6 @@ function IndexTableBase({
   }, [
     headings,
     resizeTableHeadings,
-    stickyTableHeadings.current,
     firstStickyHeaderElement,
     tableInitialized,
   ]);
