@@ -767,12 +767,8 @@ function IndexTableBase({
       <div className={styles.EmptySearchResultWrapper}>{emptyStateMarkup}</div>
     );
 
-  const tableWrapperClassNames = classNames(styles.IndexTableWrapper);
-
-  const paginationWrapperClassNames = classNames(styles.PaginationWrapper);
-
   const paginationMarkup = pagination ? (
-    <div className={paginationWrapperClassNames}>
+    <div className={styles.PaginationWrapper}>
       <Pagination type="table" {...pagination} />
     </div>
   ) : null;
@@ -780,7 +776,7 @@ function IndexTableBase({
   return (
     <>
       <div className={styles.IndexTable}>
-        <div className={tableWrapperClassNames}>
+        <div className={styles.IndexTableWrapper}>
           {!condensed && loadingMarkup}
           {tableContentMarkup}
           {scrollBarMarkup}

@@ -749,10 +749,8 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     </ul>
   ) : null;
 
-  const paginationWrapperClassNames = classNames(styles.PaginationWrapper);
-
   const paginationMarkup = pagination ? (
-    <div className={paginationWrapperClassNames}>
+    <div className={styles.PaginationWrapper}>
       <Pagination type="table" {...pagination} />
     </div>
   ) : null;
@@ -769,12 +767,10 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     onSelectionChange: handleSelectionChange,
   };
 
-  const resourceListWrapperClasses = classNames(styles.ResourceListWrapper);
-
   return (
     <ResourceListContext.Provider value={context}>
       {filterControlMarkup}
-      <div className={resourceListWrapperClasses}>
+      <div className={styles.ResourceListWrapper}>
         {headerMarkup}
         {listMarkup}
         {emptySearchStateMarkup}

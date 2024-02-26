@@ -153,13 +153,7 @@ export const BulkActions = forwardRef(function BulkActions(
       hiddenPromotedActions,
       hasMeasured: containerWidth !== Infinity,
     });
-  }, [
-    containerWidth,
-    disclosureWidth,
-    promotedActions,
-    actionsWidths,
-    // setState,
-  ]);
+  }, [containerWidth, disclosureWidth, promotedActions, actionsWidths]);
 
   const activatorLabel =
     !promotedActions || (promotedActions && visiblePromotedActions.length === 0)
@@ -342,10 +336,8 @@ export const BulkActions = forwardRef(function BulkActions(
     />
   );
 
-  const bulkActionsClassNames = classNames(styles.BulkActions);
-
   return (
-    <div className={bulkActionsClassNames} style={width ? {width} : undefined}>
+    <div className={styles.BulkActions} style={width ? {width} : undefined}>
       <InlineStack gap="400" blockAlign="center">
         <div className={styles.BulkActionsSelectAllWrapper}>
           <CheckableButton {...checkableButtonProps} />
