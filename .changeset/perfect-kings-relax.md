@@ -2,4 +2,4 @@
 '@shopify/stylelint-polaris': minor
 ---
 
-Add postcss-scss and stylelint-scss as dependencies
+Added postcss-scss and stylelint-scss as dependencies
