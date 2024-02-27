@@ -13,7 +13,6 @@ import type {SpaceScale} from '@shopify/polaris-tokens';
 
 import {debounce} from '../../utilities/debounce';
 import {useToggle} from '../../utilities/use-toggle';
-import {useIsomorphicLayoutEffect} from '../../utilities/use-isomorphic-layout-effect';
 import {useI18n} from '../../utilities/i18n';
 import {Badge} from '../Badge';
 import {Checkbox as PolarisCheckbox} from '../Checkbox';
