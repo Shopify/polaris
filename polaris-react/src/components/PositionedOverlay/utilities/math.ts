@@ -117,12 +117,7 @@ export function calculateHorizontalPosition(
 export function rectIsOutsideOfRect(inner: Rect, outer: Rect) {
   const {center} = inner;
 
-  return (
-    center.y < outer.top ||
-    center.y > outer.top + outer.height ||
-    inner.left < outer.left ||
-    inner.left + inner.width > outer.left + outer.width
-  );
+  return center.y < outer.top || center.y > outer.top + outer.height;
 }
 
 export function intersectionWithViewport(
