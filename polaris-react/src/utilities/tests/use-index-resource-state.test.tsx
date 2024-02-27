@@ -7,6 +7,7 @@ import {
 } from '../use-index-resource-state';
 
 interface TypedChildProps extends ReturnType<typeof useIndexResourceState> {}
+interface TypedChildProps extends ReturnType<typeof useIndexResourceState> {}
 
 describe('useIndexResourceState', () => {
   function TypedChild(_: TypedChildProps) {
@@ -18,6 +19,7 @@ describe('useIndexResourceState', () => {
     options,
   }: {
     resources?: readonly T[];
+    resources?: readonly T[];
     options?: Parameters<typeof useIndexResourceState>[1];
   }) {
     const {
@@ -27,15 +29,21 @@ describe('useIndexResourceState', () => {
       removeSelectedResources,
       dirty,
       unselectedResources,
+      dirty,
+      unselectedResources,
       clearSelection,
     } = useIndexResourceState(resources, options);
 
     return (
       <TypedChild
         handleSelectionChange={handleSelectionChange}
+        handleSelectionChange={handleSelectionChange}
         selectedResources={selectedResources}
         allResourcesSelected={allResourcesSelected}
         removeSelectedResources={removeSelectedResources}
+        dirty={dirty}
+        unselectedResources={unselectedResources}
+        clearSelection={clearSelection}
         dirty={dirty}
         unselectedResources={unselectedResources}
         clearSelection={clearSelection}
