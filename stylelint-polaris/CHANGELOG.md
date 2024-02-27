@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.3.0
+
+### Minor Changes
+
+- [#11658](https://github.com/Shopify/polaris/pull/11658) [`dfcdaa109`](https://github.com/Shopify/polaris/commit/dfcdaa109a699db0d08d046fefda9eb336ddb60f) Thanks [@mateus](https://github.com/mateus)! - Added postcss-scss and stylelint-scss as dependencies
+
 ## 15.2.2
 
 ### Patch Changes
