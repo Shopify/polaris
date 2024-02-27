@@ -1,4 +1,5 @@
-import {useState, useCallback} from 'react';
+import {useState, useCallback, useEffect, useRef} from 'react';
+import isEqual from 'react-fast-compare';
 
 export enum SelectionType {
   All = 'all',
@@ -23,14 +24,14 @@ function defaultResourceIDResolver(resource: {[key: string]: any}): string {
 }
 
 export function useIndexResourceState<T extends {[key: string]: unknown}>(
-  resources: T[],
+  resources: readonly T[],
   {
-    selectedResources: initSelectedResources = [],
+    selectedResources: preCheckedResources = [],
     allResourcesSelected: initAllResourcesSelected = false,
     resourceIDResolver = defaultResourceIDResolver,
     resourceFilter = undefined,
   }: {
-    selectedResources?: string[];
+    selectedResources?: readonly string[];
     allResourcesSelected?: boolean;
     resourceIDResolver?: ResourceIDResolver<T>;
     resourceFilter?: (value: T, index: number) => boolean;
@@ -41,12 +42,37 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
     resourceFilter: undefined,
   },
 ) {
-  const [selectedResources, setSelectedResources] = useState(
-    initSelectedResources,
-  );
+  const [selectedResources, setSelectedResources] = useState<
+    ReadonlySet<string>
+  >(new Set(preCheckedResources));
   const [allResourcesSelected, setAllResourcesSelected] = useState(
     initAllResourcesSelected,
   );
+  const [unselectedResources, setUnselectedResources] = useState<
+    ReadonlySet<string>
+  >(new Set());
+  const [dirty, setDirty] = useState(false);
+
+  const prevPreCheckedResourcesRef = useRef(preCheckedResources);
+
+  useEffect(() => {
+    if (!isEqual(prevPreCheckedResourcesRef.current, preCheckedResources)) {
+      const filteredResources = dirty
+        ? preCheckedResources.filter(
+            (resource) => !unselectedResources.has(resource),
+          )
+        : preCheckedResources;
+
+      setSelectedResources(new Set(filteredResources));
+      prevPreCheckedResourcesRef.current = preCheckedResources;
+    }
+  }, [dirty, preCheckedResources, unselectedResources]);
+
+  useEffect(() => {
+    return () => {
+      setDirty(false);
+    };
+  }, []);
 
   const handleSelectionChange = useCallback(
     (
@@ -56,6 +82,10 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
       // This is not used in the function, but needed to keep the type compatible with IndexProviderProps onSelectionChange
       _position?: number,
     ) => {
+      if (!dirty) {
+        setDirty(true);
+      }
+
       if (selectionType === SelectionType.All) {
         setAllResourcesSelected(isSelecting);
       } else if (allResourcesSelected) {
@@ -64,55 +94,80 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
 
       switch (selectionType) {
         case SelectionType.Single:
-          setSelectedResources((newSelectedResources) =>
-            isSelecting
-              ? [...newSelectedResources, selection as string]
-              : newSelectedResources.filter((id) => id !== selection),
-          );
+          if (typeof selection !== 'string') break;
+
+          setSelectedResources((currentSelectedResources) => {
+            const newSelectedResources = new Set(currentSelectedResources);
+            const newUnselectedResources = new Set(unselectedResources);
+            const [resourcesToAddTo, resourcesToRemoveFrom] = isSelecting
+              ? [newSelectedResources, newUnselectedResources]
+              : [newUnselectedResources, newSelectedResources];
+
+            resourcesToAddTo.add(selection);
+            resourcesToRemoveFrom.delete(selection);
+
+            setUnselectedResources(newUnselectedResources);
+            return newSelectedResources;
+          });
           break;
         case SelectionType.All:
-        case SelectionType.Page:
-          if (resourceFilter) {
-            const filteredResources = resources.filter(resourceFilter);
-            setSelectedResources(
-              isSelecting && selectedResources.length < filteredResources.length
-                ? filteredResources.map(resourceIDResolver)
-                : [],
-            );
-          } else {
-            setSelectedResources(
-              isSelecting ? resources.map(resourceIDResolver) : [],
-            );
-          }
+        case SelectionType.Page: {
+          const resourceList = resourceFilter
+            ? resources.filter(resourceFilter)
+            : resources;
+          const hasRoomForMoreSelection =
+            isSelecting && selectedResources.size < resourceList.length;
+          const resourceIDs = new Set(resourceList.map(resourceIDResolver));
 
+          setSelectedResources(
+            hasRoomForMoreSelection ? resourceIDs : new Set(),
+          );
+          setUnselectedResources(
+            hasRoomForMoreSelection ? new Set() : resourceIDs,
+          );
           break;
+        }
         case SelectionType.Multi:
           if (!selection) break;
+
           setSelectedResources((currentSelectedResources) => {
-            const ids: string[] = [];
-            const filteredResources = resourceFilter
-              ? resources.filter(resourceFilter)
-              : resources;
+            const ids: Set<string> = new Set();
+            const filteredResourcesSet = new Set(
+              resourceFilter ? resources.filter(resourceFilter) : resources,
+            );
+
             for (
               let i = selection[0] as number;
               i <= (selection[1] as number);
               i++
             ) {
-              if (filteredResources.includes(resources[i])) {
+              if (filteredResourcesSet.has(resources[i])) {
                 const id = resourceIDResolver(resources[i]);
 
                 if (
-                  (isSelecting && !currentSelectedResources.includes(id)) ||
-                  (!isSelecting && currentSelectedResources.includes(id))
+                  (isSelecting && !currentSelectedResources.has(id)) ||
+                  (!isSelecting && currentSelectedResources.has(id))
                 ) {
-                  ids.push(id);
+                  ids.add(id);
                 }
               }
             }
 
-            return isSelecting
-              ? [...currentSelectedResources, ...ids]
-              : currentSelectedResources.filter((id) => !ids.includes(id));
+            const newSelectedResources = new Set(currentSelectedResources);
+            const newUnselectedResources = new Set(unselectedResources);
+
+            ids.forEach((id) => {
+              if (isSelecting) {
+                newSelectedResources.add(id);
+                newUnselectedResources.delete(id);
+              } else {
+                newSelectedResources.delete(id);
+                newUnselectedResources.add(id);
+              }
+            });
+
+            setUnselectedResources(newUnselectedResources);
+            return newSelectedResources;
           });
 
           break;
@@ -131,56 +186,62 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
               Number(selection[1]) + 1,
             );
 
-            const isIndeterminate = selectedIds.some((id) => {
-              return selectedResources.includes(id);
-            });
+            const isIndeterminate = selectedIds.some((id) =>
+              selectedResources.has(id),
+            );
 
-            const isChecked = selectedIds.every((id) => {
-              return selectedResources.includes(id);
-            });
+            const isChecked = selectedIds.every((id) =>
+              selectedResources.has(id),
+            );
 
             const isSelectingAllInRange =
               !isChecked && (isSelecting || isIndeterminate);
 
-            const nextSelectedResources = isSelectingAllInRange
-              ? [
-                  ...new Set([
-                    ...currentSelectedResources,
-                    ...selectedIds,
-                  ]).values(),
-                ]
-              : currentSelectedResources.filter(
-                  (id) => !selectedIds.includes(id),
-                );
+            const newSelectedResources = new Set(currentSelectedResources);
+            const newUnselectedResources = new Set(unselectedResources);
 
-            return nextSelectedResources;
+            selectedIds.forEach((id) => {
+              if (isSelectingAllInRange) {
+                newSelectedResources.add(id);
+                newUnselectedResources.delete(id);
+              } else {
+                newSelectedResources.delete(id);
+                newUnselectedResources.add(id);
+              }
+            });
+
+            setUnselectedResources(newUnselectedResources);
+            return newSelectedResources;
           });
           break;
       }
     },
     [
+      dirty,
       allResourcesSelected,
       resourceFilter,
-      selectedResources,
+      unselectedResources,
       resources,
+      selectedResources,
       resourceIDResolver,
     ],
   );
 
   const clearSelection = useCallback(() => {
-    setSelectedResources([]);
+    setSelectedResources(new Set());
+    setUnselectedResources(new Set());
     setAllResourcesSelected(false);
   }, []);
 
   const removeSelectedResources = useCallback(
-    (removeResources: string[]) => {
-      const selectedResourcesCopy = [...selectedResources];
+    (removeResources: readonly string[]) => {
+      const removeResourcesSet = new Set(removeResources);
 
-      const newSelectedResources = selectedResourcesCopy.filter(
-        (resource) => !removeResources.includes(resource),
+      const newSelectedResources = [...selectedResources].filter(
+        (resource) => !removeResourcesSet.has(resource),
       );
 
-      setSelectedResources(newSelectedResources);
+      setSelectedResources(new Set(newSelectedResources));
 
       if (newSelectedResources.length === 0) {
         setAllResourcesSelected(false);
@@ -190,10 +251,12 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
   );
 
   return {
-    selectedResources,
+    unselectedResources: [...unselectedResources],
+    selectedResources: [...selectedResources],
     allResourcesSelected,
+    dirty,
     handleSelectionChange,
     clearSelection,
     removeSelectedResources,
-  };
+  } as const;
 }

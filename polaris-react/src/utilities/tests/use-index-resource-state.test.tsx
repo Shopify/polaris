@@ -6,18 +6,7 @@ import {
   SelectionType,
 } from '../use-index-resource-state';
 
-interface TypedChildProps {
-  onClick: ReturnType<typeof useIndexResourceState>['handleSelectionChange'];
-  allResourcesSelected: ReturnType<
-    typeof useIndexResourceState
-  >['allResourcesSelected'];
-  selectedResources: ReturnType<
-    typeof useIndexResourceState
-  >['selectedResources'];
-  removeSelectedResources: ReturnType<
-    typeof useIndexResourceState
-  >['removeSelectedResources'];
-}
+interface TypedChildProps extends ReturnType<typeof useIndexResourceState> {}
 
 describe('useIndexResourceState', () => {
   function TypedChild(_: TypedChildProps) {
@@ -28,7 +17,7 @@ describe('useIndexResourceState', () => {
     resources = [],
     options,
   }: {
-    resources?: T[];
+    resources?: readonly T[];
     options?: Parameters<typeof useIndexResourceState>[1];
   }) {
     const {
@@ -36,38 +25,20 @@ describe('useIndexResourceState', () => {
       allResourcesSelected,
       handleSelectionChange,
       removeSelectedResources,
-    } = useIndexResourceState(resources, options);
-
-    return (
-      <TypedChild
-        onClick={handleSelectionChange}
-        selectedResources={selectedResources}
-        allResourcesSelected={allResourcesSelected}
-        removeSelectedResources={removeSelectedResources}
-      />
-    );
-  }
-
-  function MockClearComponent<T extends {[key: string]: unknown}>({
-    resources = [],
-    options,
-  }: {
-    resources?: T[];
-    options?: Parameters<typeof useIndexResourceState>[1];
-  }) {
-    const {
-      selectedResources,
-      allResourcesSelected,
+      dirty,
+      unselectedResources,
       clearSelection,
-      removeSelectedResources,
     } = useIndexResourceState(resources, options);
 
     return (
       <TypedChild
-        onClick={clearSelection}
+        handleSelectionChange={handleSelectionChange}
         selectedResources={selectedResources}
         allResourcesSelected={allResourcesSelected}
         removeSelectedResources={removeSelectedResources}
+        dirty={dirty}
+        unselectedResources={unselectedResources}
+        clearSelection={clearSelection}
       />
     );
   }
@@ -122,7 +93,7 @@ describe('useIndexResourceState', () => {
 
       mockComponent
         .find(TypedChild)!
-        .trigger('onClick', SelectionType.Page, true);
+        .trigger('handleSelectionChange', SelectionType.Page, true);
 
       expect(mockComponent).toContainReactComponent(TypedChild, {
         selectedResources: [selectedID],
@@ -139,7 +110,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Page, true);
+          .trigger('handleSelectionChange', SelectionType.Page, true);
       }
 
       expect(throwResourceSelectionError).toThrow(
@@ -161,7 +132,7 @@ describe('useIndexResourceState', () => {
 
       mockComponent
         .find(TypedChild)!
-        .trigger('onClick', SelectionType.Page, true);
+        .trigger('handleSelectionChange', SelectionType.Page, true);
 
       expect(mockComponent).toContainReactComponent(TypedChild, {
         selectedResources: [selectedID],
@@ -177,7 +148,7 @@ describe('useIndexResourceState', () => {
 
       mockComponent
         .find(TypedChild)!
-        .trigger('onClick', SelectionType.Page, true);
+        .trigger('handleSelectionChange', SelectionType.Page, true);
 
       expect(mockComponent).toContainReactComponent(TypedChild, {
         selectedResources: [selectedID],
@@ -199,7 +170,7 @@ describe('useIndexResourceState', () => {
 
       mockComponent
         .find(TypedChild)!
-        .trigger('onClick', SelectionType.Page, true);
+        .trigger('handleSelectionChange', SelectionType.Page, true);
 
       expect(mockComponent).toContainReactComponent(TypedChild, {
         selectedResources: [selectedID],
@@ -214,7 +185,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.All, true);
+          .trigger('handleSelectionChange', SelectionType.All, true);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           allResourcesSelected: true,
@@ -228,7 +199,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.All, false);
+          .trigger('handleSelectionChange', SelectionType.All, false);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           allResourcesSelected: false,
@@ -242,7 +213,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Single, false, '1');
+          .trigger('handleSelectionChange', SelectionType.Single, false, '1');
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           allResourcesSelected: false,
@@ -260,7 +231,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Single, true, id);
+          .trigger('handleSelectionChange', SelectionType.Single, true, id);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [id],
@@ -279,7 +250,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Single, false, id);
+          .trigger('handleSelectionChange', SelectionType.Single, false, id);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [],
@@ -305,7 +276,7 @@ describe('useIndexResourceState', () => {
 
           mockComponent
             .find(TypedChild)!
-            .trigger('onClick', SelectionType.All, true);
+            .trigger('handleSelectionChange', SelectionType.All, true);
 
           expect(mockComponent).toContainReactComponent(TypedChild, {
             selectedResources: [idOne],
@@ -323,7 +294,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.All, true);
+          .trigger('handleSelectionChange', SelectionType.All, true);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [idOne, idTwo],
@@ -343,7 +314,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.All, false);
+          .trigger('handleSelectionChange', SelectionType.All, false);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [],
@@ -369,7 +340,7 @@ describe('useIndexResourceState', () => {
 
           mockComponent
             .find(TypedChild)!
-            .trigger('onClick', SelectionType.All, true);
+            .trigger('handleSelectionChange', SelectionType.All, true);
 
           expect(mockComponent).toContainReactComponent(TypedChild, {
             selectedResources: [idOne],
@@ -387,7 +358,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Page, true);
+          .trigger('handleSelectionChange', SelectionType.Page, true);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [idOne, idTwo],
@@ -407,7 +378,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Page, false);
+          .trigger('handleSelectionChange', SelectionType.Page, false);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [],
@@ -434,7 +405,12 @@ describe('useIndexResourceState', () => {
 
           mockComponent
             .find(TypedChild)!
-            .trigger('onClick', SelectionType.Multi, true, [0, 1]);
+            .trigger(
+              'handleSelectionChange',
+              SelectionType.Multi,
+              true,
+              [0, 1],
+            );
 
           expect(mockComponent).toContainReactComponent(TypedChild, {
             selectedResources: [idOne],
@@ -450,7 +426,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Multi, true);
+          .trigger('handleSelectionChange', SelectionType.Multi, true);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources,
@@ -468,7 +444,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Multi, true, [0, 1]);
+          .trigger('handleSelectionChange', SelectionType.Multi, true, [0, 1]);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [idOne, idTwo],
@@ -489,7 +465,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Multi, false, [0, 1]);
+          .trigger('handleSelectionChange', SelectionType.Multi, false, [0, 1]);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [idThree],
@@ -516,7 +492,12 @@ describe('useIndexResourceState', () => {
 
           mockComponent
             .find(TypedChild)!
-            .trigger('onClick', SelectionType.Range, true, [0, 2]);
+            .trigger(
+              'handleSelectionChange',
+              SelectionType.Range,
+              true,
+              [0, 2],
+            );
 
           expect(mockComponent).toContainReactComponent(TypedChild, {
             selectedResources: [idTwo, idThree],
@@ -535,7 +516,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Range, true, [0, 2]);
+          .trigger('handleSelectionChange', SelectionType.Range, true, [0, 2]);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [idOne, idTwo, idThree],
@@ -554,7 +535,7 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Range, true, [0, 2]);
+          .trigger('handleSelectionChange', SelectionType.Range, true, [0, 2]);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [idOne, idTwo, idThree],
@@ -575,10 +556,24 @@ describe('useIndexResourceState', () => {
 
         mockComponent
           .find(TypedChild)!
-          .trigger('onClick', SelectionType.Range, false, [0, 2]);
+          .trigger('handleSelectionChange', SelectionType.Range, false, [0, 2]);
 
         expect(mockComponent).toContainReactComponent(TypedChild, {
           selectedResources: [],
+        });
+      });
+    });
+
+    describe('dirty', () => {
+      it('sets dirty to true when a selection is made', () => {
+        const mockComponent = mountWithApp(<MockComponent />);
+
+        mockComponent
+          .find(TypedChild)!
+          .trigger('handleSelectionChange', SelectionType.Single, true, '1');
+
+        expect(mockComponent).toContainReactComponent(TypedChild, {
+          dirty: true,
         });
       });
     });
@@ -591,16 +586,41 @@ describe('useIndexResourceState', () => {
       const idThree = '3';
       const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
       const mockComponent = mountWithApp(
-        <MockClearComponent
+        <MockComponent
           resources={resources}
           options={{selectedResources: [idOne, idTwo, idThree]}}
         />,
       );
 
-      mockComponent.find(TypedChild)!.trigger('onClick');
+      mockComponent
+        .find(TypedChild)!
+        .trigger('handleSelectionChange', SelectionType.Single, true, '1');
+
+      expect(mockComponent).toContainReactComponent(TypedChild, {
+        selectedResources: [idOne, idTwo, idThree],
+        allResourcesSelected: false,
+        dirty: true,
+        unselectedResources: [],
+      });
+
+      mockComponent
+        .find(TypedChild)!
+        .trigger('handleSelectionChange', SelectionType.All, true);
 
       expect(mockComponent).toContainReactComponent(TypedChild, {
         selectedResources: [],
+        allResourcesSelected: true,
+        dirty: true,
+        unselectedResources: [idOne, idTwo, idThree],
+      });
+
+      mockComponent.find(TypedChild)!.trigger('clearSelection');
+
+      expect(mockComponent).toContainReactComponent(TypedChild, {
+        selectedResources: [],
+        allResourcesSelected: false,
+        dirty: true,
+        unselectedResources: [],
       });
     });
   });
@@ -612,7 +632,7 @@ describe('useIndexResourceState', () => {
       const idThree = '3';
       const resources = [{id: idOne}, {id: idTwo}, {id: idThree}];
       const mockComponent = mountWithApp(
-        <MockClearComponent
+        <MockComponent
           resources={resources}
           options={{selectedResources: [idOne, idTwo, idThree]}}
         />,
