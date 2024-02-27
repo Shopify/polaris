@@ -83,7 +83,7 @@ export function Group({
   // Children.toArray removes empty nodes, preventing wrapping of null etc
   const childMarkup = Children.toArray(children).map(
     (child: React.ReactElement) => {
-      if (isGroup(child.props)) {
+      if (child.type === Group) {
         return child;
       }
 
@@ -100,15 +100,10 @@ export function Group({
       className={styles.Group}
       aria-labelledby={titleId}
       aria-describedby={helpTextId}
-      data-form-layout-group
     >
       {titleElement}
       <InputWrapper gap="300">{childMarkup}</InputWrapper>
       {helpTextElement}
     </div>
   );
-}
-
-function isGroup(props: any): props is GroupProps {
-  return props['data-form-layout-group'] !== undefined;
 }
