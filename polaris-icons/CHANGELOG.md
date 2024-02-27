@@ -1,5 +1,13 @@
 # Changelog
 
+## 8.6.0
+
+### Minor Changes
+
+- [#11642](https://github.com/Shopify/polaris/pull/11642) [`abb3bf0e4`](https://github.com/Shopify/polaris/commit/abb3bf0e4fcecfab87d0888b9c0846fe9ea45f1e) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Adds sun icon to library
+
+* [#11641](https://github.com/Shopify/polaris/pull/11641) [`adf8600ad`](https://github.com/Shopify/polaris/commit/adf8600ad61b33adb903fe995bd79f71e99bb8bb) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added `MoonIcon`
+
 ## 8.5.0
 
 ### Minor Changes

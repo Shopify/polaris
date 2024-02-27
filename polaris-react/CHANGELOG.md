@@ -1,5 +1,14 @@
 # Changelog
 
+## 12.19.1
+
+### Patch Changes
+
+- [#11409](https://github.com/Shopify/polaris/pull/11409) [`f1c5110ae`](https://github.com/Shopify/polaris/commit/f1c5110aebddfbd1b2ee4bc356ef8b3db9285d8e) Thanks [@chloerice](https://github.com/chloerice)! - Fixed the icon spacing in `InlineError`
+
+- Updated dependencies [[`abb3bf0e4`](https://github.com/Shopify/polaris/commit/abb3bf0e4fcecfab87d0888b9c0846fe9ea45f1e), [`adf8600ad`](https://github.com/Shopify/polaris/commit/adf8600ad61b33adb903fe995bd79f71e99bb8bb)]:
+  - @shopify/polaris-icons@8.6.0
+
 ## 12.19.0
 
 ### Minor Changes
