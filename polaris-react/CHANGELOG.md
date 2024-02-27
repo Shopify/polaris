@@ -1,5 +1,11 @@
 # Changelog
 
+## 12.19.2
+
+### Patch Changes
+
+- [#11659](https://github.com/Shopify/polaris/pull/11659) [`0371de812`](https://github.com/Shopify/polaris/commit/0371de812c0b28c4a1dc8b506ec5e8bab7aa7fe0) Thanks [@sophschneider](https://github.com/sophschneider)! - Revert `PositionedOverlay` scroll container fix
+
 ## 12.19.1
 
 ### Patch Changes
