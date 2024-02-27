@@ -1,4 +1,12 @@
-import React, {useRef, useState, useEffect, useCallback, useMemo} from 'react';
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useCallback,
+  useMemo,
+  // eslint-disable-next-line no-restricted-imports -- useIsomorphicLayoutEffect is not required for this specific usecase, because we're using useLayoutEffect only for dom manipulation. It has no purpose in server side rendered code.
+  useLayoutEffect,
+} from 'react';
 import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
 import {CSSTransition} from 'react-transition-group';
 import type {SpaceScale} from '@shopify/polaris-tokens';
@@ -424,7 +432,7 @@ function IndexTableBase({
     scrollingContainer.current = false;
   }, []);
 
-  useIsomorphicLayoutEffect(() => {
+  useLayoutEffect(() => {
     tableHeadings.current = getTableHeadingsBySelector(
       tableElement.current,
       '[data-index-table-heading]',
@@ -687,7 +695,7 @@ function IndexTableBase({
   const sharedMarkup = (
     <>
       <EventListener event="resize" handler={handleResize} />
-      <AfterInitialMount>{stickyHeaderMarkup}</AfterInitialMount>
+      {stickyHeaderMarkup}
     </>
   );
 
