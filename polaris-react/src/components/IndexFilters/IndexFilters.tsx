@@ -168,7 +168,8 @@ export function IndexFilters({
   useOnValueChange(mode, handleModeChange);
 
   useEventListener('keydown', (event) => {
-    if (disableKeyboardShortcuts) return;
+    const hasNoFiltersOrSearch = hideQueryField && hideFilters;
+    if (disableKeyboardShortcuts || hasNoFiltersOrSearch) return;
 
     const {key} = event;
     const tag = document?.activeElement?.tagName;
