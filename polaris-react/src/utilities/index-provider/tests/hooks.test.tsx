@@ -1,11 +1,7 @@
 import React from 'react';
 import {mountWithApp, mount} from 'tests/utilities';
 
-import {
-  IndexRowContext,
-  IndexSelectionChangeContext,
-  IndexContext,
-} from '../context';
+import {IndexRowContext, IndexSelectionContext, IndexContext} from '../context';
 import type {IndexContextType} from '../context';
 import {SelectionType} from '../types';
 import type {
@@ -108,9 +104,9 @@ describe('useIndexSelectionChange', () => {
   it('returns onSelectionChange', () => {
     const contextSpy = jest.fn();
     const mockComponent = mount(
-      <IndexSelectionChangeContext.Provider value={contextSpy}>
+      <IndexSelectionContext.Provider value={contextSpy}>
         <MockComponent />
-      </IndexSelectionChangeContext.Provider>,
+      </IndexSelectionContext.Provider>,
     );
 
     expect(mockComponent).toContainReactComponent(TypedChild, {

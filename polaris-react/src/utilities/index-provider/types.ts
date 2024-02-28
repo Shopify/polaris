@@ -30,6 +30,7 @@ export interface IndexProviderProps {
     selection?: string | Range,
     position?: number,
   ): void;
+  clearSelection?(): void;
 }
 
 export type HandleSelectionChange = (
