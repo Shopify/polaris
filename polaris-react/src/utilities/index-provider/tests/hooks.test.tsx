@@ -104,7 +104,12 @@ describe('useIndexSelectionChange', () => {
   it('returns onSelectionChange', () => {
     const contextSpy = jest.fn();
     const mockComponent = mount(
-      <IndexSelectionContext.Provider value={contextSpy}>
+      <IndexSelectionContext.Provider
+        value={{
+          handleSelectionChange: contextSpy,
+          handleClearSelection: jest.fn(),
+        }}
+      >
         <MockComponent />
       </IndexSelectionContext.Provider>,
     );

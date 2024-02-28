@@ -175,6 +175,9 @@ function IndexTableBase({
   const handleSelectionChange = useIndexSelectionChange();
   const handleClearSelection = useIndexClearSelection();
 
+  // eslint-disable-next-line no-console
+  console.log(handleClearSelection);
+
   const i18n = useI18n();
 
   const {value: hasMoreLeftColumns, toggle: toggleHasMoreLeftColumns} =
