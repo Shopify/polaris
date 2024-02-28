@@ -6,6 +6,8 @@ import {PositionedOverlay} from '../../PositionedOverlay';
 import type {PositionedOverlayProps} from '../../PositionedOverlay';
 import {Scrollable} from '../../Scrollable';
 import styles from '../AlphaHoverCard.module.scss';
+import {KeypressListener} from '../../KeypressListener';
+import {Key} from '../../../types';
 
 export interface HoverCardOverlayProps {
   id: string;
@@ -96,6 +98,7 @@ export function HoverCardOverlay({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
+        <KeypressListener keyCode={Key.Escape} handler={onMouseLeave} />
         <div ref={contentNode} className={styles.ContentContainer}>
           <Scrollable
             id={id}
