@@ -21,10 +21,10 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Node with v18.12.0
+      - name: Setup Node with version from package.json#engines.node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.0
+          node-version-file: package.json
 
       - name: Check for Changeset
         run: npx @changesets/cli status --since="origin/main"
