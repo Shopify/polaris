@@ -1330,6 +1330,22 @@ export function WithBulkActionsAndSelectionAcrossPages() {
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
+    {
+      content: 'Edit prices',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit quantities',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit SKUs',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit barcodes',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
   ];
 
   const rowMarkup = customers.map(
