@@ -141,7 +141,6 @@ const SCROLL_BAR_DEBOUNCE_PERIOD = 300;
 
 function IndexTableBase({
   headings,
-
   promotedBulkActions = [],
   bulkActions = [],
   children,

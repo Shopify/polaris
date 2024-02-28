@@ -339,16 +339,17 @@ export class PositionedOverlay extends PureComponent<
         const positionedHorizontal =
           preferredPosition === 'left' || preferredPosition === 'right';
 
-        const calculatedHorizontalPosition = calculateHorizontalPosition(
+        const calculatedHorizontalPosition = calculateHorizontalPosition({
           activatorRect,
           overlayRect,
           containerRect,
           overlayMargins,
           preferredAlignment,
-          scrollableContainerRect,
-          positionedHorizontal ? preferredPosition : undefined,
+          preferredHorizontalPosition: positionedHorizontal
+            ? preferredPosition
+            : undefined,
           overlayMinWidth,
-        );
+        });
 
         const horizontalPosition =
           calculatedHorizontalPosition.left ??

@@ -8,6 +8,7 @@ import {Scrollable} from '../../Scrollable';
 import styles from '../AlphaHoverCard.module.scss';
 import {KeypressListener} from '../../KeypressListener';
 import {Key} from '../../../types';
+import {getMinMaxDimensionsOfChildren} from '../../../utilities/geometry';
 
 export interface HoverCardOverlayProps {
   id: string;
@@ -46,18 +47,6 @@ export function HoverCardOverlay({
     }
   }, [dynamic, active, shouldAnimate]);
 
-  const getMinMaxDimensionsOfChildren = () => {
-    const childrenNode =
-      contentNode.current?.children &&
-      contentNode.current?.children[0].children[0];
-
-    if (childrenNode) {
-      const {minWidth, maxHeight} = window.getComputedStyle(childrenNode);
-
-      return {minWidth, maxHeight};
-    }
-  };
-
   const renderHoverCard: PositionedOverlayProps['render'] = ({
     measuring,
     positioning,
@@ -71,9 +60,9 @@ export function HoverCardOverlay({
       measuring ? styles.measuring : styles.measured,
     );
 
-    const dimensions = getMinMaxDimensionsOfChildren();
+    const dimensions = getMinMaxDimensionsOfChildren(contentNode);
     const numericalMaxHeight = dimensions?.maxHeight
-      ? Number(dimensions?.maxHeight.replace(/\D/g, ''))
+      ? parseInt(dimensions?.maxHeight.replace(/\D/g, ''), 10)
       : 0;
 
     const hoverCardStyles = {
@@ -133,24 +122,4 @@ export function HoverCardOverlay({
   ) : null;
 
   return overlayMarkup;
-}
-
-export function nodeContainsDescendant(
-  rootNode: HTMLElement,
-  descendant: HTMLElement,
-): boolean {
-  if (rootNode === descendant) {
-    return true;
-  }
-
-  let parent = descendant.parentNode;
-
-  while (parent != null) {
-    if (parent === rootNode) {
-      return true;
-    }
-    parent = parent.parentNode;
-  }
-
-  return false;
 }

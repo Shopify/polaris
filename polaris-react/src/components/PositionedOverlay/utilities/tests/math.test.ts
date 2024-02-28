@@ -379,14 +379,13 @@ function getHorizontalPosition(
     containerRect.right += scrollOffset;
   }
 
-  return calculateHorizontalPosition(
+  return calculateHorizontalPosition({
     activatorRect,
     overlayRect,
     containerRect,
     overlayMargins,
-    preferredAlignment ?? 'center',
-    scrollableContainerRect,
-    preferredPosition,
+    preferredAlignment: preferredAlignment ?? 'center',
+    preferredHorizontalPosition: preferredPosition,
     overlayMinWidth,
-  );
+  });
 }
