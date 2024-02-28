@@ -1,5 +1,7 @@
 import {Rect} from '../../../utilities/geometry';
 
+const MINIMUM_SURROUNDING_SPACE = 16;
+
 export type PreferredPosition =
   | 'above'
   | 'below'
@@ -31,7 +33,9 @@ export function calculateVerticalPosition(
   const activatorTop = activatorRect.top;
   const activatorBottom = activatorTop + activatorRect.height;
   const verticalMargins = overlayMargins.activator + overlayMargins.container;
-  const minimumSurroundingSpace = verticalMargins ? verticalMargins : 16;
+  const minimumSurroundingSpace = verticalMargins
+    ? verticalMargins
+    : MINIMUM_SURROUNDING_SPACE;
   const spaceAbove = positionedHorizontal
     ? activatorRect.top + activatorRect.height - topBarOffset
     : activatorRect.top - topBarOffset;
@@ -123,23 +127,32 @@ export function calculateVerticalPosition(
     : {height: heightIfAbove, top: positionIfAbove, positioning: 'above'};
 }
 
-export function calculateHorizontalPosition(
-  activatorRect: Rect,
-  overlayRect: Rect,
-  containerRect: Rect,
-  overlayMargins: Margins,
-  preferredAlignment: PreferredAlignment,
-  _scrollableContainerRect: Rect,
-  preferredHorizontalPosition?: 'left' | 'right',
+interface HorizontalPosition {
+  activatorRect: Rect;
+  overlayRect: Rect;
+  containerRect: Rect;
+  overlayMargins: Margins;
+  preferredAlignment: PreferredAlignment;
+  preferredHorizontalPosition?: 'left' | 'right';
+  overlayMinWidth: number;
+}
+
+export function calculateHorizontalPosition({
+  activatorRect,
+  overlayRect,
+  containerRect,
+  overlayMargins,
+  preferredAlignment,
+  preferredHorizontalPosition,
   overlayMinWidth = 0,
-) {
+}: HorizontalPosition) {
   const maximumWidth = containerRect.width - overlayRect.width;
   const activatorRight =
     containerRect.width - (activatorRect.left + activatorRect.width);
 
   const minimumSurroundingSpace = overlayMargins.horizontal
     ? overlayMargins.horizontal
-    : 16;
+    : MINIMUM_SURROUNDING_SPACE;
   const desiredWidth = overlayRect.width;
   const distanceToLeftEdge = activatorRect.left;
   const distanceToRightEdge = containerRect.width - activatorRect.right;
@@ -244,15 +257,10 @@ export function intersectionWithViewport(
 }
 
 export function windowRect() {
-  const top = window.scrollY;
-  const left = window.scrollX;
-  const height = window.innerHeight;
-  const width = document.body.clientWidth;
-
   return new Rect({
-    top,
-    left,
-    height,
-    width,
+    top: window.scrollY,
+    left: window.scrollX,
+    height: window.innerHeight,
+    width: document.body.clientWidth,
   });
 }

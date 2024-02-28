@@ -69,3 +69,17 @@ export function getRectForNode(
     height: rect.height,
   });
 }
+
+export const getMinMaxDimensionsOfChildren = (
+  contentNode: React.MutableRefObject<HTMLDivElement | null>,
+) => {
+  const childrenNode =
+    contentNode.current?.children &&
+    contentNode.current?.children[0].children[0];
+
+  if (childrenNode) {
+    const {minWidth, maxHeight} = window.getComputedStyle(childrenNode);
+
+    return {minWidth, maxHeight};
+  }
+};
