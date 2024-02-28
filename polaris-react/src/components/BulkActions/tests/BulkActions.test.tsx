@@ -130,6 +130,34 @@ describe('<BulkActions />', () => {
 
       expect(bulkActionsCount).toBe(0);
     });
+
+    it('renders a flat map of actions in a section', () => {
+      const bulkActions = mountWithApp(
+        <BulkActions
+          {...bulkActionProps}
+          promotedActions={[]}
+          actions={[
+            {content: 'Action 1'},
+            {content: 'Action 2'},
+            {content: 'Action 3'},
+          ]}
+        />,
+      );
+
+      bulkActions.find(BulkActionButton)?.trigger('onAction');
+
+      expect(bulkActions).toContainReactComponent(ActionList, {
+        sections: [
+          {
+            items: [
+              {content: 'Action 1'},
+              {content: 'Action 2'},
+              {content: 'Action 3'},
+            ],
+          },
+        ],
+      });
+    });
   });
 
   describe('loading', () => {

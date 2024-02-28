@@ -4,6 +4,7 @@ import React, {
   useState,
   useEffect,
   useCallback,
+  useMemo,
 } from 'react';
 
 import {classNames} from '../../utilities/css';
@@ -283,22 +284,26 @@ export const BulkActions = forwardRef(function BulkActions(
     items: mergedHiddenPromotedActions,
   };
 
-  const allHiddenActions = actions
-    ? actions
-        .filter((action) => action)
-        .map(
-          (
-            action: BulkAction | MenuGroupDescriptor | BulkActionListSection,
-          ) => {
-            if (instanceOfBulkActionListSection(action)) {
-              return {items: [...action.items]};
-            } else if (instanceOfMenuGroupDescriptor(action)) {
-              return {items: [...action.actions]};
-            }
-            return {items: [action]};
-          },
-        )
-    : [];
+  const allHiddenActions = useMemo(() => {
+    if (actionSections) {
+      return actionSections;
+    }
+    if (!actions) {
+      return [];
+    }
+    return actions
+      .filter((action) => action)
+      .map(
+        (action: BulkAction | MenuGroupDescriptor | BulkActionListSection) => {
+          if (instanceOfBulkActionListSection(action)) {
+            return {items: [...action.items]};
+          } else if (instanceOfMenuGroupDescriptor(action)) {
+            return {items: [...action.actions]};
+          }
+          return {items: [action]};
+        },
+      );
+  }, [actions, actionSections]);
 
   const activator = (
     <BulkActionButton
@@ -321,7 +326,11 @@ export const BulkActions = forwardRef(function BulkActions(
         onClose={togglePopover}
       >
         <ActionList
-          sections={[hiddenPromotedSection, ...allHiddenActions]}
+          sections={
+            hiddenPromotedSection.items.length > 0
+              ? [hiddenPromotedSection, ...allHiddenActions]
+              : allHiddenActions
+          }
           onActionAnyItem={togglePopover}
         />
       </Popover>
