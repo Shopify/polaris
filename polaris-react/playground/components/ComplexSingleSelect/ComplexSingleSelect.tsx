@@ -122,7 +122,7 @@ export function ComplexSingleSelect({
           </Box>
         </Box>
         <Combobox
-          persistent
+          variant="experimental-inline"
           activator={
             <Box
               borderBlockEndWidth="025"
@@ -134,6 +134,7 @@ export function ComplexSingleSelect({
                 <Icon source={SearchIcon} tone="subdued" />
 
                 <Combobox.TextField
+                  focused
                   onChange={updateText}
                   label="Search or add tags"
                   labelHidden
@@ -147,29 +148,33 @@ export function ComplexSingleSelect({
           }
         >
           {optionsMarkup ? (
-            <Listbox onSelect={updateSelection}>
-              {inputValue !== '' && (
-                <Box paddingInline="300" paddingBlockEnd="100">
-                  {/* eslint-disable-next-line @shopify/jsx-no-hardcoded-content */}
-                  <Text as="span" variant="bodySm" tone="subdued">
-                    {`${filteredOptions.length} results`}
-                  </Text>
-                </Box>
-              )}
-              {optionsMarkup}
+            <>
+              <Listbox onSelect={updateSelection}>
+                {inputValue !== '' && (
+                  <Box paddingInline="300" paddingBlockEnd="100">
+                    {/* eslint-disable-next-line @shopify/jsx-no-hardcoded-content */}
+                    <Text as="span" variant="bodySm" tone="subdued">
+                      {`${filteredOptions.length} results`}
+                    </Text>
+                  </Box>
+                )}
+                {optionsMarkup}
+              </Listbox>
               {inputValue !== '' && (
                 <>
-                  <Listbox.Action
-                    value={inputValue}
-                    icon={PlusIcon}
-                    accessibilityLabel="Add new tag"
-                  >
-                    {inputValue}
-                  </Listbox.Action>
+                  <Listbox onSelect={updateSelection}>
+                    <Listbox.Action
+                      value={inputValue}
+                      icon={PlusIcon}
+                      accessibilityLabel="Add new tag"
+                    >
+                      {inputValue}
+                    </Listbox.Action>
+                  </Listbox>
                   <Box paddingBlockEnd="100" />
                 </>
               )}
-            </Listbox>
+            </>
           ) : (
             <>
               <Box paddingInline="200">
@@ -178,6 +183,7 @@ export function ComplexSingleSelect({
                   No results
                 </Text>
               </Box>
+
               <Listbox onSelect={updateSelection}>
                 <Listbox.Action
                   value={inputValue}

@@ -67,7 +67,9 @@ export function TextField({
     [onChange, onTextFieldChange],
   );
 
-  inputRef.current?.focus();
+  if (inline && rest.focused && document.activeElement !== inputRef.current) {
+    inputRef.current?.focus();
+  }
 
   return inline ? (
     <>

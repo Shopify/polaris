@@ -162,7 +162,7 @@ export function ComplexMultiSelect({
           </Box>
         </Box>
         <Combobox
-          persistent
+          variant="experimental-inline"
           allowMultiple
           activator={
             <Bleed marginInline="200">
@@ -176,6 +176,7 @@ export function ComplexMultiSelect({
                   <Icon source={SearchIcon} tone="subdued" />
 
                   <Combobox.TextField
+                    focused
                     onChange={updateText}
                     label="Search or add tags"
                     labelHidden
