@@ -1,7 +1,9 @@
-$control-height: 32px;
-$control-vertical-padding: calc(
-  (36px - var(--p-font-line-height-600) - var(--p-space-050)) / 2
-);
+::root {
+  --pg-control-height: 32px;
+  --pg-control-vertical-padding: calc(
+    (36px - var(--p-font-line-height-600) - var(--p-space-050)) / 2
+  );
+}
 
 @mixin control-backdrop($style: base) {
   @if $style == base {

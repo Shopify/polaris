@@ -4,4 +4,19 @@
 // polaris-react. Add any global styles that are not specific to a component here.
 // ex: polaris-tokens
 
+@import './styles/foundation/layout';
+@import './styles/foundation/focus-ring';
+@import './styles/foundation/shadow-bevel';
+
+@import './styles/shared/accessibility';
+@import './styles/shared/buttons';
+@import './styles/shared/controls';
+@import './styles/shared/layout';
+@import './styles/shared/page';
+@import './styles/shared/responsive-props';
+@import './styles/shared/typography';
+@import './styles/shared/interaction-state';
+
+// Looking for media queries? They're imported in the postcss config in
+// polaris-react/config/postcss-plugins.js
 @import '../../../../node_modules/@shopify/polaris-tokens/dist/scss/styles.scss';
