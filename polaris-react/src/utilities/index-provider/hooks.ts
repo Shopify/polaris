@@ -9,18 +9,22 @@ import type {
   BulkSelectionDataOptions,
   HandleBulkSelectionOptions,
 } from './types';
-import {
-  IndexContext,
-  IndexRowContext,
-  IndexSelectionChangeContext,
-} from './context';
+import {IndexContext, IndexRowContext, IndexSelectionContext} from './context';
 
 export function useIndexSelectionChange() {
-  const onSelectionChange = useContext(IndexSelectionChangeContext);
-  if (!onSelectionChange) {
+  const context = useContext(IndexSelectionContext);
+  if (context === undefined || context.handleSelectionChange === undefined) {
     throw new Error(`Missing IndexProvider context`);
   }
-  return onSelectionChange;
+  return context.handleSelectionChange;
+}
+
+export function useIndexClearSelection() {
+  const context = useContext(IndexSelectionContext);
+  if (context === undefined || context.handleClearSelection === undefined) {
+    throw new Error(`Missing IndexProvider context`);
+  }
+  return context.handleClearSelection;
 }
 
 export function useIndexRow() {

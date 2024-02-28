@@ -3,7 +3,7 @@ import React, {useMemo} from 'react';
 import {
   IndexContext,
   IndexRowContext,
-  IndexSelectionChangeContext,
+  IndexSelectionContext,
   useBulkSelectionData,
   useHandleBulkSelection,
 } from '../../utilities/index-provider';
@@ -14,6 +14,7 @@ export function IndexProvider({
   resourceName: passedResourceName,
   loading,
   onSelectionChange,
+  clearSelection,
   selectedItemsCount = 0,
   itemCount,
   hasMoreItems,
@@ -34,6 +35,10 @@ export function IndexProvider({
     resourceName: passedResourceName,
   });
   const handleSelectionChange = useHandleBulkSelection({onSelectionChange});
+  const selectionContext = useMemo(
+    () => ({handleSelectionChange, handleClearSelection: clearSelection}),
+    [handleSelectionChange, clearSelection],
+  );
 
   const contextValue = useMemo(
     () => ({
@@ -78,9 +83,9 @@ export function IndexProvider({
   return (
     <IndexContext.Provider value={contextValue}>
       <IndexRowContext.Provider value={rowContextValue}>
-        <IndexSelectionChangeContext.Provider value={handleSelectionChange}>
+        <IndexSelectionContext.Provider value={selectionContext}>
           {children}
-        </IndexSelectionChangeContext.Provider>
+        </IndexSelectionContext.Provider>
       </IndexRowContext.Provider>
     </IndexContext.Provider>
   );
