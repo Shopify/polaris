@@ -9,7 +9,7 @@ describe('<Text />', () => {
 
   it('renders its children', () => {
     const headingText = mountWithApp(
-      <Text as="h1" variant="heading3xl">
+      <Text as="h1" variant="headingXl">
         {text}
       </Text>,
     );
@@ -30,12 +30,12 @@ describe('<Text />', () => {
 
   it('renders its children with variant text style', () => {
     const headingText = mountWithApp(
-      <Text as="h2" variant="heading3xl">
+      <Text as="h2" variant="headingXl">
         {text}
       </Text>,
     );
     expect(headingText).toContainReactComponent('h2', {
-      className: expect.stringContaining('heading3xl'),
+      className: expect.stringContaining('headingXl'),
     });
   });
 
@@ -55,7 +55,7 @@ describe('<Text />', () => {
   describe('tone', () => {
     it('renders children with tone', () => {
       const headingText = mountWithApp(
-        <Text as="h2" variant="heading3xl" tone="success">
+        <Text as="h2" variant="headingXl" tone="success">
           {text}
         </Text>,
       );

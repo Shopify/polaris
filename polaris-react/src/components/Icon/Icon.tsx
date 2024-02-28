@@ -18,14 +18,7 @@ type Tone =
   | 'success'
   | 'primary'
   | 'emphasis'
-  | 'magic'
-  | 'textCaution'
-  | 'textWarning'
-  | 'textCritical'
-  | 'textInfo'
-  | 'textSuccess'
-  | 'textPrimary'
-  | 'textMagic';
+  | 'magic';
 
 export interface IconProps {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
@@ -36,51 +29,13 @@ export interface IconProps {
   accessibilityLabel?: string;
 }
 
-export function Icon({source, tone, accessibilityLabel}: IconProps) {
-  let sourceType: 'function' | 'placeholder' | 'external';
-  if (typeof source === 'function') {
-    sourceType = 'function';
-  } else if (source === 'placeholder') {
-    sourceType = 'placeholder';
-  } else {
-    sourceType = 'external';
-  }
-
-  if (
-    tone &&
-    sourceType === 'external' &&
-    process.env.NODE_ENV === 'development'
-  ) {
-    // eslint-disable-next-line no-console
-    console.warn(
-      'Recoloring external SVGs is not supported. Set the intended color on your SVG instead.',
-    );
-  }
+export function Icon(props: IconProps) {
+  const {source: Source, tone, accessibilityLabel} = props;
 
   const className = classNames(
     styles.Icon,
     tone && styles[variationName('tone', tone)],
   );
-
-  const SourceComponent = source;
-  const contentMarkup = {
-    function: (
-      <SourceComponent
-        className={styles.Svg}
-        focusable="false"
-        aria-hidden="true"
-      />
-    ),
-    placeholder: <div className={styles.Placeholder} />,
-    external: (
-      <img
-        className={styles.Img}
-        src={`data:image/svg+xml;utf8,${source}`}
-        alt=""
-        aria-hidden="true"
-      />
-    ),
-  };
 
   return (
     <span className={className}>
@@ -89,7 +44,7 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
           {accessibilityLabel}
         </Text>
       )}
-      {contentMarkup[sourceType]}
+      <Source className={styles.Svg} focusable="false" aria-hidden="true" />
     </span>
   );
 }
