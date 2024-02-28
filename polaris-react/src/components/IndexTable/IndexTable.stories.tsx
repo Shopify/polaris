@@ -1312,22 +1312,38 @@ export function WithBulkActionsAndSelectionAcrossPages() {
       content: 'Remove tags',
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
-    {
-      title: 'Bulk action section',
-      items: [
-        {
-          content: 'Delete data',
-        },
-        {
-          content: 'Edit data',
-        },
-        {
-          content: 'Manage data',
-        },
-      ],
-    },
+    // {
+    //   title: 'Bulk action section',
+    //   items: [
+    //     {
+    //       content: 'Delete data',
+    //     },
+    //     {
+    //       content: 'Edit data',
+    //     },
+    //     {
+    //       content: 'Manage data',
+    //     },
+    //   ],
+    // },
     {
       content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit prices',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit quantities',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit SKUs',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit barcodes',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
   ];
