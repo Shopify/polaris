@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 
 import {Icon} from '../../../Icon';
 import type {IconProps} from '../../../Icon';
@@ -25,8 +25,10 @@ export function Action(props: ActionProps) {
 
   const className = classNames(styles.Action, divider && styles.ActionDivider);
 
+  const actionContext = useMemo(() => ({hasIcon: Boolean(icon)}), [icon]);
+
   return (
-    <ActionContext.Provider value>
+    <ActionContext.Provider value={actionContext}>
       <Option {...props}>
         <div className={className}>
           <TextOption selected={selected} disabled={disabled}>

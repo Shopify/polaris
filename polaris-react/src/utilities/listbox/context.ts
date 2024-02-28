@@ -13,4 +13,6 @@ export const ListboxContext = createContext<ListboxContextType | undefined>(
 
 export const WithinListboxContext = createContext(false);
 
-export const ActionContext = createContext<boolean>(false);
+export const ActionContext = createContext<boolean | {hasIcon?: boolean}>(
+  false,
+);

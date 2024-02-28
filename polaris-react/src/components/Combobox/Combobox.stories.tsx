@@ -9,6 +9,7 @@ import {
   Tag,
   TextContainer,
   Text,
+  AutoSelection,
 } from '@shopify/polaris';
 import {SearchIcon} from '@shopify/polaris-icons';
 
@@ -91,6 +92,7 @@ export function Default() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >
@@ -177,6 +179,7 @@ export function WithChildrenBasedOnInput() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >
@@ -263,11 +266,15 @@ export function WithManualSelection() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >
         {options.length > 0 ? (
-          <Listbox autoSelection="NONE" onSelect={updateSelection}>
+          <Listbox
+            autoSelection={AutoSelection.None}
+            onSelect={updateSelection}
+          >
             {optionsMarkup}
           </Listbox>
         ) : null}
@@ -288,7 +295,7 @@ export function WithMultiSelect() {
     [],
   );
 
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(['']);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
@@ -374,6 +381,7 @@ export function WithMultiSelect() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >
@@ -400,7 +408,7 @@ export function WithMultiSelectAndManualSelection() {
     [],
   );
 
-  const [selectedOptions, setSelectedOptions] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState(['']);
   const [inputValue, setInputValue] = useState('');
   const [options, setOptions] = useState(deselectedOptions);
 
@@ -486,11 +494,15 @@ export function WithMultiSelectAndManualSelection() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >
         {optionsMarkup ? (
-          <Listbox autoSelection="NONE" onSelect={updateSelection}>
+          <Listbox
+            autoSelection={AutoSelection.None}
+            onSelect={updateSelection}
+          >
             {optionsMarkup}
           </Listbox>
         ) : null}
@@ -636,7 +648,7 @@ export function WithMultiSelectAndVerticalContent() {
   const listboxMarkup =
     optionMarkup || actionMarkup || emptyStateMarkup ? (
       <Listbox
-        autoSelection="FIRST"
+        autoSelection={AutoSelection.First}
         onSelect={updateSelection}
         onActiveOptionChange={handleActiveOptionChange}
       >
@@ -749,7 +761,7 @@ export function WithLoading() {
         justifyContent: 'center',
       }}
     >
-      <Listbox.Loading />
+      <Listbox.Loading accessibilityLabel="Loading" />
     </div>
   ) : null;
 
@@ -773,6 +785,7 @@ export function WithLoading() {
             labelHidden
             value={inputValue}
             placeholder="Search tags"
+            autoComplete="off"
           />
         }
       >

@@ -33,7 +33,6 @@ export interface ComboboxProps {
   willLoadMoreOptions?: boolean;
   /** Height to set on the Popover Pane. */
   height?: string;
-  persistent?: boolean;
   /** Callback fired when the bottom of the lisbox is reached. Use to lazy load when listbox option data is paginated. */
   onScrolledToBottom?(): void;
   /** Callback fired when the popover closes */
@@ -47,10 +46,10 @@ export function Combobox({
   preferredPosition = 'below',
   willLoadMoreOptions,
   height,
-  persistent,
+  variant,
   onScrolledToBottom,
   onClose,
-}: ComboboxProps) {
+}: ComboboxProps & {variant?: 'experimental-inline'}) {
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
@@ -106,7 +105,7 @@ export function Combobox({
       activeOptionId,
       expanded: popoverActive,
       listboxId,
-      focused: persistent,
+      focused: variant === 'experimental-inline' ? true : textFieldFocused,
       setTextFieldFocused,
       setTextFieldLabelId,
       onTextFieldFocus: handleFocus,
@@ -117,7 +116,8 @@ export function Combobox({
       activeOptionId,
       popoverActive,
       listboxId,
-      persistent,
+      variant,
+      textFieldFocused,
       setTextFieldFocused,
       setTextFieldLabelId,
       handleFocus,
@@ -156,7 +156,7 @@ export function Combobox({
     ],
   );
 
-  return persistent ? (
+  return variant === 'experimental-inline' ? (
     <>
       <Box paddingBlockStart="200" paddingInline="200">
         <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
