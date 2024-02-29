@@ -15,7 +15,7 @@ const mediaQueriesCssPath = path.resolve(
 
 module.exports = [
   postcssMixins({
-    mixinsDir: path.join(__dirname, '../src/postcss-mixins'),
+    mixinsDir: path.join(__dirname, '../postcss-mixins'),
   }),
   postcssNesting({
     // The way native CSS nesting & SASS nesting behave with complex selectors
