@@ -1182,16 +1182,34 @@ export function WithMultiplePromotedBulkActions() {
   ];
   const bulkActions = [
     {
-      content: 'Add tags',
-      onAction: () => console.log('Todo: implement bulk add tags'),
+      title: 'Import',
+      items: [
+        {
+          content: 'Import from PDF',
+          onAction: () => console.log('Todo: implement PDF importing'),
+        },
+        {
+          content: 'Import from CSV',
+          onAction: () => console.log('Todo: implement CSV importing'),
+        },
+      ],
     },
     {
-      content: 'Remove tags',
-      onAction: () => console.log('Todo: implement bulk remove tags'),
-    },
-    {
-      content: 'Delete customers',
-      onAction: () => console.log('Todo: implement bulk delete'),
+      title: 'Customers',
+      items: [
+        {
+          content: 'Add customers',
+          onAction: () => console.log('Todo: implement Adding customers'),
+        },
+        {
+          content: 'Edit customers',
+          onAction: () => console.log('Todo: implement Editing customers'),
+        },
+        {
+          content: 'Delete customers',
+          onAction: () => console.log('Todo: implement Deleting customers'),
+        },
+      ],
     },
   ];
 

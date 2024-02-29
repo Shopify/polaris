@@ -100,6 +100,19 @@ function IndexTableWithMultiplePromotedBulkActionsExample() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      title: 'Import',
+      items: [
+        {
+          content: 'Import from PDF',
+          onAction: () => console.log('Todo: implement PDF importing'),
+        },
+        {
+          content: 'Import from CSV',
+          onAction: () => console.log('Todo: implement CSV importing'),
+        },
+      ],
+    },
+    {
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
