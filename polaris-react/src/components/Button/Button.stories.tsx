@@ -851,7 +851,8 @@ export function CopyToClipboard() {
   // Copy To Clipboard hooks
   const ref = useRef(null);
 
-  const isMouseHovered = useMouseHover(ref, true);
+  // const isMouseHovered = useMouseHover(ref, true);
+  const isMouseHovered = true;
 
   const [copy, status] = useCopyToClipboard({
     defaultValue: 'hello@example.com',
@@ -910,7 +911,7 @@ export function CopyToClipboard() {
             >
               <Button
                 icon={status === 'copied' ? CheckIcon : ClipboardIcon}
-                pressed={status === 'copied' ? true : undefined}
+                // pressed={status === 'copied' ? true : undefined}
                 variant="tertiary"
                 onClick={copy}
               />
