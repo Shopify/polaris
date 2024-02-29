@@ -18,7 +18,7 @@
     // stylelint-disable-next-line selector-max-specificity -- apply focus styles
     &:focus:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- button overrides */
-      @include no-focus-ring;
+      @mixin no-focus-ring;
       outline: var(--p-border-width-050) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-050);
       background: var(--p-color-bg-fill-tertiary-active);

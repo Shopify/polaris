@@ -125,7 +125,7 @@
 
   &.focused {
     // stylelint-disable-next-line -- remove focus-ring mixin to use outline styles
-    @include no-focus-ring;
+    @mixin no-focus-ring;
     outline: var(--p-border-width-050) solid var(--p-color-border-focus);
     outline-offset: calc(-1 * var(--p-space-050));
     // stylelint-disable-next-line -- custom property
