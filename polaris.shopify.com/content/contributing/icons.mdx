@@ -87,9 +87,10 @@ If you are not familiar or comfortable submitting a pull request directly you ca
 5. If you are editing an existing icon:
    <br /> - Replace the existing icon SVG in the `.svg` file.
    <br /> - Update the relevant metadata in the `.yml` file.
-6. Open a terminal inside VS Code and run `yarn changeset` to add an entry to the change log and release notes.
+6. Open a terminal inside VS Code and run `yarn install && yarn optimize` in `polaris-icons` to optimize icons. Your build will fail if you skip this step.
+7. Run `yarn changeset` to add an entry to the change log and release notes.
    <br /> - Use the "Return" key to skip to the next prompt and the "Spacebar"
    to make a selection.
    <br /> - Icons contributions should always be a `Icon` release.
-7. Commit your changes and open a pull request in the Shopify/polaris GitHub repo.
-8. Request review from a Polaris team member.
+8. Commit your changes and open a pull request in the Shopify/polaris GitHub repo.
+9. Request review from a Polaris team member.
