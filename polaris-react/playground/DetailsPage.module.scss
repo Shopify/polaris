@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   padding: 0 var(--p-space-300);
-  height: $top-bar-height;
+  height: var(--pg-top-bar-height);
 }
 
 .ShopName {

@@ -6,7 +6,7 @@
   visibility: hidden;
   z-index: var(--p-z-index-8);
   pointer-events: none;
-  top: $top-bar-height;
+  top: var(--pg-top-bar-height);
   left: 0;
   right: 0;
   box-shadow: var(--p-shadow-600);
@@ -38,7 +38,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - $(top-bar-height));
+  max-height: calc(100vh - var(--pg-top-bar-height));
   margin: 0;
 
   @media (--p-breakpoints-sm-up) {

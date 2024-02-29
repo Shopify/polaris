@@ -23,7 +23,7 @@ body {
 }
 
 .narrowWidth {
-  max-width: $layout-width-primary-max;
+  max-width: var(--pg-layout-width-primary-max);
 }
 
 .Content {

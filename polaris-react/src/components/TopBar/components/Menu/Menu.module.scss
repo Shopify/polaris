@@ -1,7 +1,7 @@
 @import '../../../../styles/common';
 
 .ActivatorWrapper {
-  height: $top-bar-height;
+  height: var(--pg-top-bar-height);
   display: flex;
   align-items: center;
 }
