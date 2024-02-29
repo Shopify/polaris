@@ -599,14 +599,22 @@ export function WithDynamicActivator() {
           selected={selectedResources.includes(id)}
           position={index}
         >
-          <IndexTable.Cell>{title}</IndexTable.Cell>
+          <IndexTable.Cell>
+            {
+              <Link monochrome removeUnderline dataPrimaryLink url="#">
+                {title}
+              </Link>
+            }
+          </IndexTable.Cell>
           <IndexTable.Cell>{date}</IndexTable.Cell>
           <IndexTable.Cell
             flush
             showPreviewOnHover
             previewContent={renderCustomerCellPreview(customer, id)}
           >
-            {customer.name}
+            <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
+              {customer.name}
+            </div>
           </IndexTable.Cell>
           <IndexTable.Cell>{channel}</IndexTable.Cell>
           <IndexTable.Cell>
@@ -618,6 +626,7 @@ export function WithDynamicActivator() {
           <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
           <IndexTable.Cell
             flush
+            previewAccessibilityLabel={`View fulfillment details for ${items.length} items in order ${id}`}
             previewContent={renderItemsCellPreview({
               id,
               location,

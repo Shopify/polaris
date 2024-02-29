@@ -1209,6 +1209,11 @@ $loading-panel-height: 53px;
         background-color: var(--p-color-bg-surface-secondary);
       }
     }
+
+    // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity, selector-max-compound-selectors  -- cell preview hover state
+    .PreviewActivator svg {
+      opacity: 1;
+    }
   }
 
   .toneSuccess {
@@ -1276,6 +1281,66 @@ $loading-panel-height: 53px;
   .TableHeading {
     background-color: var(--p-color-bg-surface-secondary);
   }
+}
+
+.hasPreview {
+  height: var(--p-height-025);
+  // Popover doesn't provide the ability to set a className on the activatorWrapper, so we need to target it directly
+  :first-child {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+}
+
+.PreviewActivator {
+  padding: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+
+  svg {
+    transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
+    opacity: 0;
+  }
+
+  &:focus-visible {
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+    outline-offset: calc(-1 * var(--p-space-050));
+  }
+
+  &:hover:not([data-hovercard-activator='true']) {
+    background: var(--p-color-bg-surface-secondary-hover);
+  }
+
+  &.popoverActive {
+    background: var(--p-color-bg-surface-secondary-active);
+  }
+
+  &:hover,
+  &:focus-visible,
+  &.popoverActive {
+    svg {
+      opacity: 1;
+    }
+  }
+}
+
+.TableRow-hovered:not(.TableRow-disabled) {
+  // stylelint-disable-next-line selector-max-combinators,selector-max-specificity -- cell preview hover state
+  .PreviewActivator svg {
+    opacity: 1;
+  }
+}
+
+.PreviewActivatorContent {
+  width: 100%;
+  gap: var(--p-space-100);
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
 .StickyTable {
