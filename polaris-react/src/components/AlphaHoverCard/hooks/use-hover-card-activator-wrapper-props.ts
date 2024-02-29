@@ -124,7 +124,7 @@ export function useHoverCardActivatorWrapperProps({
   );
 
   const handleMouseEnter = useCallback(
-    (event: React.MouseEvent<HTMLDivElement | HTMLTableCellElement>) => {
+    (event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
       if (!mdUp) return;
       if (!providedActivatorRef) {
         dynamicActivatorRef.current = event.currentTarget;
@@ -146,7 +146,7 @@ export function useHoverCardActivatorWrapperProps({
   // https://github.com/facebook/react/issues/10109
   // Mouseenter event not triggered when cursor moves from disabled button
   const handleMouseEnterFix = useCallback(
-    (event: React.MouseEvent<HTMLDivElement | HTMLTableCellElement>) => {
+    (event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
       if (mouseEnteredOrLeftActivator(event) && !mouseEntered.current) {
         handleMouseEnter(event);
       }

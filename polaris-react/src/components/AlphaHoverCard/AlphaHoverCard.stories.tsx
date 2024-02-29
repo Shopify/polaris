@@ -603,13 +603,10 @@ export function WithDynamicActivator() {
           <IndexTable.Cell>{date}</IndexTable.Cell>
           <IndexTable.Cell
             flush
+            showPreviewOnHover
             previewContent={renderCustomerCellPreview(customer, id)}
           >
-            <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
-              <Link monochrome removeUnderline url="#">
-                {customer.name}
-              </Link>
-            </div>
+            {customer.name}
           </IndexTable.Cell>
           <IndexTable.Cell>{channel}</IndexTable.Cell>
           <IndexTable.Cell>

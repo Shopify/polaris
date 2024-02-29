@@ -53,18 +53,18 @@ export const Cell = memo(function Cell({
 }: CellProps) {
   const [popoverActive, setPopoverActive] = React.useState(false);
   const indexCellContext = useIndexCell();
-  const hasPreview =
+  const hasHoverPreview =
     showPreviewOnHover && previewContent && indexCellContext !== undefined;
 
   const className = classNames(
     customClassName,
     styles.TableCell,
     flush && styles['TableCell-flush'],
-    hasPreview && indexCellContext.previewActivatorWrapperClassName,
+    hasHoverPreview && indexCellContext.previewActivatorWrapperClassName,
   );
 
   const handleHoverCardOpen =
-    hasPreview && indexCellContext?.onMouseEnterCell
+    hasHoverPreview && indexCellContext?.onMouseEnterCell
       ? indexCellContext?.onMouseEnterCell(previewContent)
       : undefined;
 
@@ -74,7 +74,7 @@ export const Cell = memo(function Cell({
   };
 
   const handleMouseLeave = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (hasPreview && indexCellContext?.onMouseLeaveCell) {
+    if (hasHoverPreview && indexCellContext?.onMouseLeaveCell) {
       indexCellContext?.onMouseLeaveCell(event);
     }
 
@@ -86,7 +86,7 @@ export const Cell = memo(function Cell({
   };
 
   const hoverCardProps =
-    hasPreview && showPreviewOnHover
+    hasHoverPreview && showPreviewOnHover
       ? {
           onMouseEnter: handleMouseEnter,
           onMouseLeave: handleMouseLeave,
@@ -94,7 +94,7 @@ export const Cell = memo(function Cell({
         }
       : {};
 
-  const previewActivator = hasPreview ? (
+  const previewActivator = previewContent ? (
     <button
       onKeyUp={handlePopoverToggle}
       onClick={!showPreviewOnHover ? handlePopoverToggle : undefined}
@@ -124,9 +124,6 @@ export const Cell = memo(function Cell({
       headers,
       scope,
       className,
-
-      onMouseEnter: handleMouseEnter,
-      onMouseLeave: handleMouseLeave,
     },
     childContent,
   );
