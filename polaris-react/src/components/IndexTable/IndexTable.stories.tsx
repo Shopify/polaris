@@ -1075,6 +1075,7 @@ export function WithSelectionAndNoBulkActions() {
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
+        hasMoreItems
         headings={[
           {title: 'Name'},
           {title: 'Location'},
