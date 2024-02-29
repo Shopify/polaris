@@ -1,6 +1,7 @@
 import React, {memo} from 'react';
 import type {ReactNode} from 'react';
 
+import {Popover} from '../../../Popover';
 import {classNames} from '../../../../utilities/css';
 import {useIndexCell} from '../../../../utilities/index-provider';
 import styles from '../../IndexTable.module.scss';
@@ -27,7 +28,9 @@ export interface CellProps {
   /** A space-separated list of the `th` cell IDs that describe or apply to it. Use for cells within a row that relate to a subheader cell in addition to their column header. */
   headers?: HTMLTableCellElement['headers'];
   /** Markup to render on cell hover */
-  preview?: React.ReactNode;
+  previewContent?: React.ReactNode;
+  /** Whether the cell previewContent should render on hover */
+  showPreviewOnHover?: boolean;
   /** Callback fired when mouse enters cell */
   onMouseEnter?(): void;
   /** Callback fired when mouse leaves cell */
@@ -43,12 +46,16 @@ export const Cell = memo(function Cell({
   scope,
   as = 'td',
   id,
-  preview,
+  showPreviewOnHover,
+  previewContent,
   onMouseEnter,
   onMouseLeave,
 }: CellProps) {
+  const [popoverActive, setPopoverActive] = React.useState(false);
   const indexCellContext = useIndexCell();
-  const hasPreview = preview && indexCellContext !== undefined;
+  const hasPreview =
+    showPreviewOnHover && previewContent && indexCellContext !== undefined;
+
   const className = classNames(
     customClassName,
     styles.TableCell,
@@ -56,23 +63,58 @@ export const Cell = memo(function Cell({
     hasPreview && indexCellContext.previewActivatorWrapperClassName,
   );
 
-  const handlePreviewOpen =
+  const handleHoverCardOpen =
     hasPreview && indexCellContext?.onMouseEnterCell
-      ? indexCellContext?.onMouseEnterCell(preview)
+      ? indexCellContext?.onMouseEnterCell(previewContent)
       : undefined;
 
-  const handleMouseEnter = (event: React.MouseEvent<HTMLTableCellElement>) => {
-    if (handlePreviewOpen) handlePreviewOpen(event);
+  const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (handleHoverCardOpen) handleHoverCardOpen(event);
     onMouseEnter?.();
   };
 
-  const handleMouseLeave = (event: React.MouseEvent<HTMLTableCellElement>) => {
+  const handleMouseLeave = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (hasPreview && indexCellContext?.onMouseLeaveCell) {
       indexCellContext?.onMouseLeaveCell(event);
     }
 
     onMouseLeave?.();
   };
+
+  const handlePopoverToggle = () => {
+    setPopoverActive((popoverActive) => !popoverActive);
+  };
+
+  const hoverCardProps =
+    hasPreview && showPreviewOnHover
+      ? {
+          onMouseEnter: handleMouseEnter,
+          onMouseLeave: handleMouseLeave,
+          'data-hovercard-activator': true,
+        }
+      : {};
+
+  const previewActivator = hasPreview ? (
+    <button
+      onKeyUp={handlePopoverToggle}
+      onClick={!showPreviewOnHover ? handlePopoverToggle : undefined}
+      {...hoverCardProps}
+    >
+      {children}
+    </button>
+  ) : null;
+
+  const childContent = previewActivator ? (
+    <Popover
+      activator={previewActivator}
+      active={popoverActive}
+      onClose={handlePopoverToggle}
+    >
+      {previewContent}
+    </Popover>
+  ) : (
+    children
+  );
 
   return React.createElement(
     as,
@@ -82,10 +124,10 @@ export const Cell = memo(function Cell({
       headers,
       scope,
       className,
-      'data-hovercard-activator': preview ? true : undefined,
+
       onMouseEnter: handleMouseEnter,
       onMouseLeave: handleMouseLeave,
     },
-    children,
+    childContent,
   );
 });

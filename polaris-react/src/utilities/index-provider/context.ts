@@ -48,8 +48,8 @@ export interface IndexCellContextType {
   previewActivatorWrapperClassName?: string;
   onMouseEnterCell?(
     preview: React.ReactNode,
-  ): (event: React.MouseEvent<HTMLDivElement>) => void;
-  onMouseLeaveCell?(event: React.MouseEvent<HTMLDivElement>): void;
+  ): (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onMouseLeaveCell?(event: React.MouseEvent<HTMLButtonElement>): void;
 }
 
 export const IndexCellContext = createContext<IndexCellContextType>({});
