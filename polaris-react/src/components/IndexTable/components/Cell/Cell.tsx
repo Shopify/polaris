@@ -98,6 +98,12 @@ export const Cell = memo(function Cell({
     setPopoverActive((popoverActive) => !popoverActive);
   };
 
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    if (showPreviewOnHover) return;
+    handlePopoverToggle();
+  };
+
   const handleKeyPress = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     if (event.key === 'Enter' || event.key === 'Space') {
       handlePopoverToggle();
@@ -139,7 +145,7 @@ export const Cell = memo(function Cell({
       aria-label={activatorLabel}
       className={activatorClassNames}
       onKeyUp={handleKeyPress}
-      onClick={!showPreviewOnHover ? handlePopoverToggle : undefined}
+      onClick={!showPreviewOnHover ? handleClick : undefined}
       {...hoverCardProps}
     >
       <div className={styles.PreviewActivatorContent}>
