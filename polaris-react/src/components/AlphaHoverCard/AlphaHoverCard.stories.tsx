@@ -603,7 +603,7 @@ export function WithDynamicActivator() {
           <IndexTable.Cell>{date}</IndexTable.Cell>
           <IndexTable.Cell
             flush
-            preview={renderCustomerCellPreview(customer, id)}
+            previewContent={renderCustomerCellPreview(customer, id)}
           >
             <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
               <Link monochrome removeUnderline url="#">
@@ -621,7 +621,7 @@ export function WithDynamicActivator() {
           <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
           <IndexTable.Cell
             flush
-            preview={renderItemsCellPreview({
+            previewContent={renderItemsCellPreview({
               id,
               location,
               deliveryMethod,

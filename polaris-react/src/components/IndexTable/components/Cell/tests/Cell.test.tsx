@@ -68,7 +68,7 @@ describe('<Cell />', () => {
 
   describe('preview', () => {
     it('sets the data-hovercard-activator attribute if a preview is provided', () => {
-      const cell = mountWithTable(<Cell preview={<div>Preview</div>} />);
+      const cell = mountWithTable(<Cell previewContent={<div>Preview</div>} />);
       const td = cell.find('td');
       expect(td?.domNode?.getAttribute('data-hovercard-activator')).toBe(
         'true',
@@ -83,7 +83,7 @@ describe('<Cell />', () => {
 
     it('sets the activatorWrapperClassName if a preview is provided', () => {
       mockUseIndexCell();
-      const cell = mountWithTable(<Cell preview={<div>Preview</div>} />);
+      const cell = mountWithTable(<Cell previewContent={<div>Preview</div>} />);
       const td = cell.find('td');
       expect(td?.domNode?.classList).toContain('ActivatorWrapper');
       expect(td?.domNode?.classList).toContain('snapToParent');
@@ -99,7 +99,7 @@ describe('<Cell />', () => {
 
     it('fires onMouseEnterCell on mouse enter if a preview is provided', () => {
       const onMouseEnterCell = mockUseIndexCell();
-      const cell = mountWithTable(<Cell preview={<div>Preview</div>} />);
+      const cell = mountWithTable(<Cell previewContent={<div>Preview</div>} />);
       const td = cell.find('td');
       td!.trigger('onMouseEnter');
       expect(onMouseEnterCell).toHaveBeenCalled();
@@ -107,7 +107,7 @@ describe('<Cell />', () => {
 
     it('fires onMouseLeaveCell on mouse enter if a preview is provided', () => {
       const onMouseLeaveCell = mockUseIndexCell();
-      const cell = mountWithTable(<Cell preview={<div>Preview</div>} />);
+      const cell = mountWithTable(<Cell previewContent={<div>Preview</div>} />);
       const td = cell.find('td');
       td!.trigger('onMouseLeave');
       expect(onMouseLeaveCell).toHaveBeenCalled();
