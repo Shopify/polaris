@@ -95,7 +95,6 @@
     "globby": "^11.1.0",
     "js-yaml": "^4.1.0",
     "postcss": "^8.3.1",
-    "postcss-advanced-variables": "^3.0.1",
     "postcss-custom-media": "^10.0.1",
     "postcss-discard-comments": "^6.0.1",
     "postcss-loader": "^4.2.0",
