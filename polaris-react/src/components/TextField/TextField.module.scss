@@ -1,8 +1,5 @@
 @import '../../styles/common';
 
-$textfield-backdrop-offset: calc(-1 * var(--p-space-050));
-$spinner-icon-size: 12px;
-
 .TextField {
   // stylelint-disable -- Polaris component custom properties
   --pc-text-field-contents: 20;

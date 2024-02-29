@@ -1,7 +1,5 @@
 @import '../../styles/common';
 
-$body-text-last-line-width: 80%;
-
 .SkeletonBodyTextContainer {
   width: 100%;
 }
@@ -17,7 +15,7 @@ $body-text-last-line-width: 80%;
   }
 
   &:last-child:not(:first-child) {
-    width: $body-text-last-line-width;
+    width: 80%;
   }
 
   + .SkeletonBodyText {

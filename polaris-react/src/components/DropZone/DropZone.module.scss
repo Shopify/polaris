@@ -1,15 +1,5 @@
 @import '../../styles/common';
 
-$dropzone-border-style: dashed;
-$dropzone-min-height-large: 120px;
-$dropzone-min-height-medium: 100px;
-$dropzone-min-height-small: 40px;
-
-$dropzone-stacking-order: (
-  outline: 29,
-  overlay: 30,
-);
-
 @mixin reset-after {
   top: 0;
   left: 0;
@@ -17,7 +7,7 @@ $dropzone-stacking-order: (
   bottom: 0;
   opacity: 1;
   transform: scale(1);
-  border: var(--p-border-width-025) $dropzone-border-style transparent;
+  border: var(--p-border-width-025) var(--pc-drop-zone-border-style) transparent;
 }
 
 @mixin set-border-radius {
@@ -28,6 +18,7 @@ $dropzone-stacking-order: (
   // stylelint-disable -- Polaris component custom properties
   --pc-drop-zone-outline: 29;
   --pc-drop-zone-overlay: 30;
+  --pc-drop-zone-border-style: dashed;
   // stylelint-enable
   position: relative;
   display: flex;
@@ -45,7 +36,8 @@ $dropzone-stacking-order: (
     bottom: 0;
     left: 0;
 
-    border: var(--p-border-width-0165) $dropzone-border-style transparent;
+    border: var(--p-border-width-0165) var(--pc-drop-zone-border-style)
+      transparent;
     border-radius: var(--p-border-radius-200);
     pointer-events: none;
   }
@@ -103,18 +95,18 @@ $dropzone-stacking-order: (
 }
 
 .sizeLarge {
-  min-height: $dropzone-min-height-large;
+  min-height: 120px;
 }
 
 .sizeMedium {
-  min-height: $dropzone-min-height-medium;
+  min-height: 100px;
   align-items: center;
 }
 
 .sizeSmall {
   padding: 0;
   align-items: center;
-  min-height: $dropzone-min-height-small;
+  min-height: 40px;
 
   /* This creates a square with a 1:1 aspect ratio */
   &::before {
@@ -162,7 +154,7 @@ $dropzone-stacking-order: (
 .hasError > .Overlay {
   border-color: var(--p-color-border-critical-secondary);
   color: var(--p-color-text-critical);
-  border-style: $dropzone-border-style;
+  border-style: var(--pc-drop-zone-border-style);
   border-width: var(--p-border-width-0165);
   background-color: var(--p-color-bg-surface-critical);
 }

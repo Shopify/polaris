@@ -1,14 +1,14 @@
 @import '../../styles/common';
 
-$arrow-size: 14px;
-$visible-portion-of-arrow: 5px;
-$content-max-height: 500px;
-$content-max-width: 400px;
-$vertical-motion-offset: -5px;
-
 .Popover {
+  // stylelint-disable -- Polaris component custom properties
+  --pc-popover-visible-portion-of-arrow: 5px;
+  // stylelint-disable -- Polaris component custom properties
+  --pc-popover-vertical-motion-offset: -5px;
   max-width: calc(100vw - var(--p-space-800));
-  margin: $visible-portion-of-arrow var(--p-space-200) var(--p-space-400);
+  // stylelint-disable -- Polaris component custom properties
+  margin: var(--pc-popover-visible-portion-of-arrow) var(--p-space-200)
+    var(--p-space-400);
   will-change: left, top;
   @include shadow-bevel(
     var(--p-shadow-300),
@@ -23,7 +23,8 @@ $vertical-motion-offset: -5px;
   opacity: 0;
   transition: opacity var(--p-motion-duration-100) var(--p-motion-ease),
     transform var(--p-motion-duration-100) var(--p-motion-ease);
-  transform: translateY($vertical-motion-offset);
+  // stylelint-disable -- Polaris component custom properties
+  transform: translateY(var(--pc-popover-vertical-motion-offset));
 }
 
 .PopoverOverlay-entering {
@@ -38,11 +39,13 @@ $vertical-motion-offset: -5px;
 
 .measuring:not(.PopoverOverlay-exiting) {
   opacity: 0;
-  transform: translateY($vertical-motion-offset);
+  // stylelint-disable -- Polaris component custom properties
+  transform: translateY(var(--pc-popover-vertical-motion-offset));
 }
 
 .fullWidth {
-  margin: $visible-portion-of-arrow auto 0 auto;
+  // stylelint-disable -- Polaris component custom properties
+  margin: var(--pc-popover-visible-portion-of-arrow) auto 0 auto;
 
   .Content {
     max-width: none;
@@ -50,10 +53,13 @@ $vertical-motion-offset: -5px;
 }
 
 .positionedAbove {
-  margin: var(--p-space-400) var(--p-space-200) $visible-portion-of-arrow;
+  // stylelint-disable -- Polaris component custom properties
+  margin: var(--p-space-400) var(--p-space-200)
+    var(--pc-popover-visible-portion-of-arrow);
 
   &.fullWidth {
-    margin: 0 auto $visible-portion-of-arrow auto;
+    // stylelint-disable -- Polaris component custom properties
+    margin: 0 auto var(--pc-popover-visible-portion-of-arrow) auto;
   }
 }
 
@@ -78,8 +84,8 @@ $vertical-motion-offset: -5px;
   display: flex;
   flex-direction: column;
   border-radius: var(--p-border-radius-100);
-  max-width: $content-max-width;
-  max-height: $content-max-height;
+  max-width: 400px;
+  max-height: 500px;
 
   &:focus {
     outline: none;

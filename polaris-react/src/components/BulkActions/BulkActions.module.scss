@@ -1,10 +1,6 @@
 @import '../../styles/common';
 @import '../ResourceList/variables';
 
-$bulk-actions-button-stacking-order: (
-  focused: 20,
-);
-
 .BulkActionsOuterLayout {
   position: relative;
   flex: 1;

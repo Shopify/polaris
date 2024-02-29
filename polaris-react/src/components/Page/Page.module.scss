@@ -1,12 +1,5 @@
 @import '../../styles/common';
 
-$navigation-elements-height: 36px;
-$title-height: var(--p-font-line-height-800);
-$stacking-order: (
-  title: 10,
-  breadcrumbs: 20,
-);
-
 html,
 body {
   min-height: 100%;

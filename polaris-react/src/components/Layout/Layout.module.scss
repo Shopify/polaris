@@ -1,11 +1,5 @@
 @import '../../styles/common';
 
-$secondary-basis: $layout-width-secondary-min;
-$primary-basis: $layout-width-primary-min;
-$one-half-basis: $layout-width-one-half-width-base;
-$one-third-basis: $layout-width-one-third-width-base;
-$relative-size: $primary-basis / $secondary-basis;
-
 .Layout {
   display: flex;
   flex-wrap: wrap;
@@ -28,7 +22,13 @@ $relative-size: $primary-basis / $secondary-basis;
 }
 
 .Section {
-  flex: $relative-size $relative-size $primary-basis;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-layout-relative-size: calc(
+    var(--pg-layout-width-primary-min) / var(--pg-layout-width-secondary-min)
+  );
+  // stylelint-disable-next-line -- Polaris component custom properties
+  flex: var(--pc-layout-relative-size) var(--pc-layout-relative-size)
+    var(--pg-layout-width-primary-min);
   min-width: 51%;
 
   @media print {
@@ -41,12 +41,12 @@ $relative-size: $primary-basis / $secondary-basis;
 }
 
 .Section-oneHalf {
-  flex: 1 1 $one-half-basis;
+  flex: 1 1 var(--pg-layout-width-one-half-width-base);
   min-width: 0;
 }
 
 .Section-oneThird {
-  flex: 1 1 $one-third-basis;
+  flex: 1 1 var(--pg-layout-width-one-third-width-base);
   min-width: 0;
 }
 
@@ -75,11 +75,17 @@ $relative-size: $primary-basis / $secondary-basis;
 }
 
 .AnnotationContent {
-  flex: $relative-size $relative-size $primary-basis;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-layout-relative-size: calc(
+    var(--pg-layout-width-primary-min) / var(--pg-layout-width-secondary-min)
+  );
+  // stylelint-disable-next-line -- Polaris component custom properties
+  flex: var(--pc-layout-relative-size) var(--pc-layout-relative-size)
+    var(--pg-layout-width-primary-min);
 }
 
 .Annotation {
-  flex: 1 1 $secondary-basis;
+  flex: 1 1 var(--pg-layout-width-secondary-min);
   padding: var(--p-space-400) var(--p-space-400) 0 0;
 
   @media (--p-breakpoints-md-up) {

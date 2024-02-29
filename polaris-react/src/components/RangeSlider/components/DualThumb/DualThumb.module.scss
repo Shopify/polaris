@@ -1,8 +1,6 @@
 @import '../../../../styles/common';
 @import '../../variables';
 
-$range-wrapper: 28px;
-
 .DualThumb {
   position: relative;
   width: 100%;
@@ -15,7 +13,7 @@ $range-wrapper: 28px;
   display: flex;
   align-items: center;
   width: 100%;
-  min-height: $range-wrapper;
+  min-height: 28px;
   cursor: pointer;
 
   &.disabled {
@@ -129,8 +127,6 @@ $range-wrapper: 28px;
   }
 }
 
-$range-output-size: 32px;
-
 .Prefix {
   flex: 0 0 auto;
   margin-right: var(--p-space-200);
@@ -158,10 +154,9 @@ $range-output-size: 32px;
   transform: translateX(calc(-50% + (var(--pc-range-slider-thumb-size) / 2)));
 
   .Thumbs:active + & {
-    $range-thumb-size-difference: 24px - 16px;
     opacity: 1;
     visibility: visible;
-    bottom: calc(24px + $(range-thumb-size-difference));
+    bottom: calc(24px + 24px - 16px);
   }
 }
 
@@ -169,8 +164,8 @@ $range-output-size: 32px;
   position: relative;
   display: flex;
   padding: 0 var(--p-space-200);
-  min-width: $range-output-size;
-  height: $range-output-size;
+  min-width: 32px;
+  height: 32px;
   background-color: var(--p-color-bg-surface);
   box-shadow: var(--p-shadow-500);
   border-radius: var(--p-border-radius-100);

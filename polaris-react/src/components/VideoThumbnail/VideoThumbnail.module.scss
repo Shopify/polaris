@@ -1,6 +1,4 @@
 @import '../../styles/common';
-$start-button-size: 60px;
-$progress-bar-height: 6px;
 
 .Thumbnail {
   position: relative;
@@ -80,7 +78,7 @@ $progress-bar-height: 6px;
   bottom: 0;
   width: 100%;
   background-color: var(--p-color-bg-surface);
-  height: $progress-bar-height;
+  height: 6px;
   overflow: hidden;
 }
 

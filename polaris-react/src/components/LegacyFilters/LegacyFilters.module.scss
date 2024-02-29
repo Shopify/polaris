@@ -1,9 +1,10 @@
 @import '../../styles/common';
 
-$list-filters-header-height: $top-bar-height;
-$list-filters-footer-height: 70px;
-
 .LegacyFilters {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-legacy-filters-header-height: var(--pg-top-bar-height);
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-legacy-filters-footer-height: 70px;
   position: relative;
 }
 
@@ -20,7 +21,8 @@ $list-filters-footer-height: 70px;
   width: 100%;
   padding: var(--p-space-400) var(--p-space-500);
   border-bottom: var(--p-border-width-025) solid var(--p-color-border-secondary);
-  height: $list-filters-header-height;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  height: var(--pc-legacy-filters-header-height);
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -29,15 +31,18 @@ $list-filters-footer-height: 70px;
 
 .LegacyFiltersDesktopContainerContent {
   width: 100%;
+  // stylelint-disable-next-line -- Polaris component custom properties
   height: calc(
-    100% - $(list-filters-footer-height) - $(list-filters-header-height)
+    100% - var(--pc-legacy-filters-footer-height) -
+      var(--pc-legacy-filters-header-height)
   );
   padding: var(--p-space-200);
 }
 
 .LegacyFiltersMobileContainerContent {
   width: 100%;
-  height: calc(100% - $(list-filters-header-height));
+  // stylelint-disable-next-line -- Polaris component custom properties
+  height: calc(100% - var(--pc-legacy-filters-header-height));
   padding: var(--p-space-200);
 }
 
@@ -47,7 +52,8 @@ $list-filters-footer-height: 70px;
   width: 100%;
   padding: var(--p-space-400) var(--p-space-500);
   border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
-  height: $list-filters-footer-height;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  height: var(--pc-legacy-filters-footer-height);
   box-sizing: border-box;
   display: flex;
   align-items: center;
@@ -57,7 +63,8 @@ $list-filters-footer-height: 70px;
 .LegacyFiltersMobileContainerFooter {
   width: 100%;
   padding: var(--p-space-400) var(--p-space-400);
-  height: $list-filters-footer-height;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  height: var(--pc-legacy-filters-footer-height);
   box-sizing: border-box;
   display: flex;
   align-items: center;

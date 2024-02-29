@@ -1,13 +1,5 @@
 @import '../../styles/common';
 
-$small-size: 20px;
-$large-size: 44px;
-
-@mixin spinnerSize($size) {
-  height: $size;
-  width: $size;
-}
-
 .Spinner svg {
   animation: var(--p-motion-keyframes-spin) var(--p-motion-duration-500) linear
     infinite;
@@ -15,9 +7,11 @@ $large-size: 44px;
 }
 
 .sizeSmall svg {
-  @include spinnerSize($small-size);
+  height: 20px;
+  width: 20px;
 }
 
 .sizeLarge svg {
-  @include spinnerSize($large-size);
+  height: 44px;
+  width: 44px;
 }

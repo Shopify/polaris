@@ -1,9 +1,10 @@
 @import '../../styles/common';
 
-$key-base-dimension: 28px;
-
 .KeyboardKey {
-  height: $key-base-dimension;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-keyboard-key-base-dimension: 28px;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  height: var(--pc-keyboard-key-base-dimension);
   display: inline-flex;
   justify-content: center;
   margin: 0 var(--p-space-050) var(--p-space-050);
@@ -15,9 +16,11 @@ $key-base-dimension: 28px;
   font-size: var(--p-font-size-350);
   font-weight: var(--p-font-weight-medium);
   font-family: var(--p-font-family-sans);
-  line-height: $key-base-dimension;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  line-height: var(--pc-keyboard-key-base-dimension);
   text-align: center;
-  min-width: $key-base-dimension;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  min-width: var(--pc-keyboard-key-base-dimension);
   user-select: none;
 }
 

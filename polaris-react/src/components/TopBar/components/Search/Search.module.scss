@@ -15,7 +15,7 @@
   @media (--p-breakpoints-sm-up) {
     position: absolute;
     top: 100%;
-    max-width: $search-max-width;
+    max-width: 580px;
     margin: var(--p-space-100) var(--p-space-500) 0;
     border-radius: var(--p-border-radius-200);
   }

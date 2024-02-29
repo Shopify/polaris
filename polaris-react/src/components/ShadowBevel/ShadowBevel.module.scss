@@ -20,7 +20,7 @@
   @include responsive-props(shadow-bevel, content, --pc-shadow-bevel-content);
 
   @include shadow-bevel(
-    var(--pc-shadow-bevel-box-shadow),
+    calc(20 * 2),
     var(--pc-shadow-bevel-border-radius),
     null,
     var(--pc-shadow-bevel-content),

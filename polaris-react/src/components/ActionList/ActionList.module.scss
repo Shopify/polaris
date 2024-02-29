@@ -1,11 +1,14 @@
 @import '../../styles/common';
 
-$indented-item-margin: calc(var(--p-space-500) + var(--p-space-050));
-$indented-item-width: calc(100% - $(indented-item-margin));
-
 .Item {
   // stylelint-disable -- Polaris component custom properties
   --pc-action-list-item-min-height: var(--p-space-800);
+  --pc-action-list-indented-item-margin: calc(
+    var(--p-space-500) + var(--p-space-050)
+  );
+  --pc-action-list-indented-item-width: calc(
+    100% - var(--pc-action-list-indented-item-margin)
+  );
   &.default {
     --pc-action-list-image-size: 20px;
   }
@@ -113,8 +116,8 @@ $indented-item-width: calc(100% - $(indented-item-margin));
     --pc-action-list-image-size: 24px;
     // stylelint-enable
     position: relative;
-    margin-left: $indented-item-margin;
-    max-width: $indented-item-width;
+    margin-left: var(--pc-action-list-indented-item-margin);
+    max-width: var(--pc-action-list-indented-item-width);
 
     &::before {
       content: '';

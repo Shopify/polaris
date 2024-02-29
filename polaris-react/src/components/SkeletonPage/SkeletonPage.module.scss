@@ -1,8 +1,5 @@
 @import '../../styles/common';
 
-$primary-action-button-height: 2.25rem;
-$primary-action-button-width: 6.25rem;
-
 :root {
   // stylelint-disable -- use custom properties to set max width based on props
   --pc-skeleton-page-max-width: 998px;

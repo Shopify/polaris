@@ -60,8 +60,6 @@
     transform var(--p-motion-duration-100) var(--p-motion-ease-in);
 }
 
-$loading-panel-height: 53px;
-
 .LoadingPanel {
   position: absolute;
   z-index: var(--p-z-index-2);
@@ -1430,8 +1428,6 @@ $loading-panel-height: 53px;
   }
 }
 
-$scroll-bar-size: var(--p-space-200);
-
 .ScrollBarContainer {
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-index-table-scroll-bar: 30;
@@ -1521,8 +1517,8 @@ $scroll-bar-size: var(--p-space-200);
 
 .ScrollBar::-webkit-scrollbar {
   appearance: none;
-  height: $scroll-bar-size;
-  width: $scroll-bar-size;
+  height: var(--p-space-200);
+  width: var(--p-space-200);
   background-color: transparent;
 }
 

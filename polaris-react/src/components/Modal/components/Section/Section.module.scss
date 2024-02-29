@@ -1,7 +1,5 @@
 @import '../../../../styles/common';
 
-$close-button-width: calc(var(--p-space-1200) + var(--p-space-100));
-
 .Section {
   flex: 0 0 auto;
 
@@ -12,5 +10,7 @@ $close-button-width: calc(var(--p-space-1200) + var(--p-space-100));
 }
 
 .titleHidden {
-  padding-right: calc($(close-button-width) + var(--p-space-100));
+  padding-right: calc(
+    var(--p-space-1200) + var(--p-space-100) + var(--p-space-100)
+  );
 }

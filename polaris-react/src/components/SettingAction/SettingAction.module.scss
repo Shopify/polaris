@@ -1,7 +1,5 @@
 @import '../../styles/common';
 
-$feature-width: 350px;
-
 .SettingAction {
   display: flex;
   flex-wrap: wrap;
@@ -20,7 +18,7 @@ $feature-width: 350px;
 }
 
 .Setting {
-  flex: 1 0 $feature-width;
+  flex: 1 0 350px;
 }
 
 .Action {

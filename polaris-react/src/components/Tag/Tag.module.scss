@@ -1,13 +1,14 @@
 @import '../../styles/common';
 
-$height: 20px;
-
 .Tag {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-tag-height: 20px;
   position: relative;
   display: inline-flex;
   max-width: 100%;
   align-items: center;
-  min-height: $height;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  min-height: var(--pc-tag-height);
   padding: 0;
   padding-inline: calc(var(--p-space-100) + var(--p-space-050));
   background-color: var(--p-color-bg-fill-tertiary);
@@ -82,14 +83,16 @@ $height: 20px;
   }
 
   @media (--p-breakpoints-sm-up) {
-    min-height: $height;
+    // stylelint-disable-next-line -- Polaris component custom properties
+    min-height: var(--pc-tag-height);
   }
 }
 
 .TagText {
   font-size: var(--p-font-size-325);
   line-height: var(--p-font-line-height-500);
-  min-height: $height;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  min-height: var(--pc-tag-height);
   padding: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -157,7 +160,8 @@ $height: 20px;
   outline: none;
   border-radius: var(--p-border-radius-200);
   text-decoration: none;
-  min-height: $height;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  min-height: var(--pc-tag-height);
   padding: 0;
 
   .LinkText {
