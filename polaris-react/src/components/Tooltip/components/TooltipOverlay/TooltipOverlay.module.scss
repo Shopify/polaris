@@ -1,5 +1,3 @@
-@import '../../../../styles/common';
-
 .TooltipOverlay {
   @mixin scope-custom-property tooltip, chevron-x-pos;
   @mixin scope-custom-property tooltip, border-radius;

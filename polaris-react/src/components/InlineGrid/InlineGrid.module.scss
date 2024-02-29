@@ -1,5 +1,3 @@
-@import '../../styles/common';
-
 .InlineGrid {
   @mixin responsive-props inline-grid, gap, gap;
   @mixin responsive-props inline-grid, grid-template-columns,

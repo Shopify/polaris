@@ -1,5 +1,3 @@
-@import '../../styles/common';
-
 .BlockStack {
   @mixin responsive-props block-stack, gap, gap;
   // stylelint-disable -- Polaris component custom properties

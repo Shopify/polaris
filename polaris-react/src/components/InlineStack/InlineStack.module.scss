@@ -1,5 +1,3 @@
-@import '../../styles/common';
-
 .InlineStack {
   @mixin responsive-props inline-stack, gap, gap;
   @mixin responsive-props inline-stack, flex-direction, flex-direction;

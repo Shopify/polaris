@@ -1,5 +1,3 @@
-@import '../../styles/common';
-
 .ShadowBevel {
   overflow: clip;
   // stylelint-disable-next-line -- Explicitly set `0` to create a local stacking context. While the initial `z-index: auto` has a stack level of `0` within the current stacking context, it does not create a new local stacking context.
