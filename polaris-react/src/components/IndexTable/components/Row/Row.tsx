@@ -39,6 +39,8 @@ export interface RowProps {
    * @default "Select {resourceName}"
    */
   accessibilityLabel?: string;
+  /** Whether the row should have border-top */
+  borderless?: boolean;
   /** Callback fired when the row is clicked and contains a data-primary-link */
   onNavigation?(id: string): void;
   /** Callback fired when the row is clicked. Overrides the default click behaviour. */
@@ -55,6 +57,7 @@ export const Row = memo(function Row({
   selectionRange,
   rowType = 'data',
   accessibilityLabel,
+  borderless = false,
   onNavigation,
   onClick,
 }: RowProps) {
@@ -122,6 +125,7 @@ export const Row = memo(function Row({
     !selectable &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],
+    borderless && styles['TableRow-borderless'],
   );
 
   let handleRowClick;
