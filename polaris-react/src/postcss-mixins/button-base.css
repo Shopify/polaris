@@ -1,0 +1,71 @@
+@define-mixin button-base {
+  @mixin focus-ring 'base', var(--p-border-width-025);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  @mixin safe-area-for padding, 1200px, left;
+  min-height: 28px;
+  min-width: 28px;
+  margin: 0;
+  padding: var(--p-space-150) var(--p-space-300);
+  background: var(--p-color-bg-fill);
+  box-shadow: var(--p-shadow-200);
+  border-radius: var(--p-border-radius-200);
+  color: var(--p-color-text);
+  border: none;
+  line-height: 1;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+
+  svg {
+    fill: var(--p-color-icon);
+  }
+
+  &:hover {
+    background: var(--p-color-bg-fill-hover);
+    outline: var(--p-border-width-025) solid transparent;
+  }
+
+  &:focus-visible {
+    box-shadow: var(--p-shadow-200);
+    @mixin no-focus-ring;
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+    outline-offset: var(--p-space-025);
+  }
+
+  &:active {
+    &::after {
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  &.pressed {
+    background: var(--p-color-bg-fill-selected);
+    box-shadow: var(--p-shadow-inset-200);
+    color: var(--p-color-text);
+    border-color: var(--p-color-border-inverse);
+
+    svg {
+      fill: currentColor;
+    }
+
+    &:hover {
+      background: var(--p-color-bg-fill-tertiary-hover);
+      box-shadow: var(--p-shadow-inset-200);
+    }
+
+    &:active {
+      background: var(--p-color-bg-fill-tertiary-active);
+      box-shadow: var(--p-shadow-inset-200);
+    }
+  }
+
+  @media (-ms-high-contrast: active) {
+    border: var(--p-border-width-025) solid windowText;
+  }
+}

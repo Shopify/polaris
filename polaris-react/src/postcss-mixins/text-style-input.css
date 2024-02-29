@@ -1,0 +1,11 @@
+@define-mixin text-style-input {
+  font-size: var(--p-font-size-400);
+  font-weight: var(--p-font-weight-regular);
+  line-height: var(--p-font-line-height-600);
+  border: none;
+  letter-spacing: initial;
+
+  @media (--p-breakpoints-md-up) {
+    font-size: var(--p-font-size-350);
+  }
+}

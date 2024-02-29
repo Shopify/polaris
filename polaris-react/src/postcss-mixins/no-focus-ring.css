@@ -1,0 +1,5 @@
+@define-mixin no-focus-ring {
+  &::after {
+    content: none;
+  }
+} ;
