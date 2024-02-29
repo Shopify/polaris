@@ -2,11 +2,8 @@
 
 .InlineGrid {
   @mixin responsive-props inline-grid, gap, gap;
-  @include responsive-props(
-    inline-grid,
-    grid-template-columns,
-    grid-template-columns
-  );
+  @mixin responsive-props inline-grid, grid-template-columns,
+    grid-template-columns;
 
   // stylelint-disable -- Polaris component custom properties
   --pc-inline-grid-align-items: initial;
