@@ -44,14 +44,13 @@ export function SecondaryNavigation({
     <div
       className={classNames(
         styles.SecondaryNavigation,
-        showExpanded && styles.SecondaryNavigationOpen,
         !icon && styles['SecondaryNavigation-noIcon'],
       )}
     >
       <Collapsible
         id={secondaryNavigationId || uid}
         open={showExpanded}
-        transition={false}
+        transition
       >
         <ul className={styles.List}>
           {subNavigationItems.map((item, index) => {

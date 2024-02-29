@@ -48,10 +48,10 @@ describe('<SecondaryNavigation />', () => {
       });
     });
 
-    it('disables Collapsible transition', () => {
+    it('renders Collapsible with transition', () => {
       const component = mountWithApp(<SecondaryNavigation {...mockProps} />);
       expect(component).toContainReactComponent(Collapsible, {
-        transition: false,
+        transition: true,
       });
     });
 
