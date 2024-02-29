@@ -1,4 +1,4 @@
-@define-mixin unstyled-button() {
+@define-mixin unstyled-button {
   appearance: none;
   margin: 0;
   padding: 0;
