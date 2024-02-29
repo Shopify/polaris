@@ -41,46 +41,66 @@
 // stylelint-disable -- Duplicate selectors to bump specificity for button svg color override
 // https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
 
-@mixin recolor-icon($fill-color: null) {
+.text-success-on-bg-fill.text-success-on-bg-fill.text-success-on-bg-fill {
   svg,
   path {
-    fill: $fill-color;
+    fill: var(--p-color-text-success-on-bg-fill);
   }
 }
 
-.text-success-on-bg-fill.text-success-on-bg-fill.text-success-on-bg-fill {
-  @include recolor-icon(var(--p-color-text-success-on-bg-fill));
-}
-
 .text-success.text-success.text-success {
-  @include recolor-icon(var(--p-color-text-success));
+  svg,
+  path {
+    fill: var(--p-color-text-success);
+  }
 }
 
 .text-warning-on-bg-fill.text-warning-on-bg-fill.text-warning-on-bg-fill {
-  @include recolor-icon(var(--p-color-text-warning-on-bg-fill));
+  svg,
+  path {
+    fill: var(--p-color-text-warning-on-bg-fill);
+  }
 }
 
 .text-warning.text-warning.text-warning {
-  @include recolor-icon(var(--p-color-text-warning));
+  svg,
+  path {
+    fill: var(--p-color-text-warning);
+  }
 }
 
 .text-critical-on-bg-fill.text-critical-on-bg-fill.text-critical-on-bg-fill {
-  @include recolor-icon(var(--p-color-text-critical-on-bg-fill));
+  svg,
+  path {
+    fill: var(--p-color-text-critical-on-bg-fill);
+  }
 }
 
 .text-critical.text-critical.text-critical {
-  @include recolor-icon(var(--p-color-text-critical));
+  svg,
+  path {
+    fill: var(--p-color-text-critical);
+  }
 }
 
 .text-info-on-bg-fill.text-info-on-bg-fill.text-info-on-bg-fill {
-  @include recolor-icon(var(--p-color-text-info-on-bg-fill));
+  svg,
+  path {
+    fill: var(--p-color-text-info-on-bg-fill);
+  }
 }
 
 .text-info.text-info.text-info {
-  @include recolor-icon(var(--p-color-text-info));
+  svg,
+  path {
+    fill: var(--p-color-text-info);
+  }
 }
 
 .icon-secondary.icon-secondary.icon-secondary {
-  @include recolor-icon(var(--p-color-icon-secondary));
+  svg,
+  path {
+    fill: var(--p-color-icon-secondary);
+  }
 }
 // stylelint-enable

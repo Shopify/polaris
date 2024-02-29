@@ -1,15 +1,4 @@
 @import '../../styles/common';
-@import '../ResourceList/variables';
-
-@mixin action-hide {
-  clip: rect(0, 0, 0, 0);
-  overflow: hidden;
-}
-
-@mixin action-unhide {
-  clip: auto;
-  overflow: visible;
-}
 
 .ResourceItem {
   // stylelint-disable -- Polaris component custom properties
@@ -18,6 +7,10 @@
   --pc-resource-item-offset: 38px;
   --pc-resource-item-clickable-stacking-order: 1;
   --pc-resource-item-content-stacking-order: 2;
+  --pc-resource-item-action-unhide-clip: auto;
+  --pc-resource-item-action-hide-clip: rect(0, 0, 0, 0);
+  --pc-resource-item-action-unhide-overflow: visible;
+  --pc-resource-item-action-hide-overflow: hidden;
   // stylelint-enable
   outline: none;
   cursor: pointer;
@@ -28,7 +21,8 @@
     .Actions {
       // stylelint-disable-next-line selector-max-combinators -- show actions on hover
       > * {
-        @include action-unhide;
+        clip: var(--pc-resource-item-action-unhide-clip);
+        overflow: var(--pc-resource-item-action-unhide-overflow);
       }
     }
   }
@@ -96,13 +90,15 @@
 // Item actions
 .Actions {
   > * {
-    @include action-hide;
+    clip: var(--pc-resource-item-action-hide-clip);
+    overflow: var(--pc-resource-item-action-hide-overflow);
   }
 
   .focused & {
     // stylelint-disable-next-line selector-max-combinators  -- show actions on focus
     > * {
-      @include action-unhide;
+      clip: var(--pc-resource-item-action-unhide-clip);
+      overflow: var(--pc-resource-item-action-unhide-overflow);
     }
   }
 }
@@ -124,9 +120,7 @@
   @include focus-ring('base', -1px);
 
   .ListItem + & {
-    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
-
-    @include item-separator;
+    border-top: var(--pc-resource-list-separator-border);
   }
 
   &.focused {

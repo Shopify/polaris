@@ -1,5 +1,4 @@
 @import '../../../../styles/common';
-@import '../../variables';
 
 .DualThumb {
   position: relative;
@@ -73,10 +72,6 @@
   .disabled & {
     background: var(--p-color-border-disabled) none;
   }
-}
-
-.Track--dashed {
-  @include track-dashed;
 }
 
 .Thumbs {

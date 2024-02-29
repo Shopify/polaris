@@ -248,7 +248,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
               ref={this.trackWrapper}
             >
               <div className={styles.Track} style={cssVars} ref={this.track} />
-              <div className={styles['Track--dashed']} />
+              <div className={sharedStyles['Track--dashed']} />
               <div
                 id={idLower}
                 className={thumbLowerClassName}

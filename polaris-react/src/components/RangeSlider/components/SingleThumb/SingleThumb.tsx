@@ -96,7 +96,12 @@ export function SingleThumb(props: SingleThumbProps) {
     >
       <div className={className} style={cssVars}>
         {prefixMarkup}
-        <div className={styles.InputWrapper}>
+        <div
+          className={classNames(
+            styles.InputWrapper,
+            sharedStyles['Track--dashed-after'],
+          )}
+        >
           <input
             type="range"
             className={styles.Input}

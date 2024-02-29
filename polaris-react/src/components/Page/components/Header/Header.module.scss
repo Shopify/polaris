@@ -117,7 +117,8 @@
   text-align: right;
 }
 
-@mixin condensed-layout {
+.mediumTitle:not(.noBreadcrumbs).mdDown,
+.longTitle.lgDown {
   .AdditionalMetaData {
     margin-left: 0;
   }
@@ -131,18 +132,6 @@
     + .Row {
       gap: 0;
     }
-  }
-}
-
-.longTitle {
-  @media (--p-breakpoints-lg-down) {
-    @include condensed-layout;
-  }
-}
-
-.mediumTitle:not(.noBreadcrumbs) {
-  @media (--p-breakpoints-md-down) {
-    @include condensed-layout;
   }
 }
 
