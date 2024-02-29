@@ -1111,19 +1111,3 @@
   height: 10px;
   width: 10px;
 }
-
-.SecondaryNavigationOpen {
-  animation: var(--p-motion-ease-out) var(--p-motion-duration-150) snappy-grow;
-}
-/* stylelint-disable -- set margin and opacity */
-@keyframes snappy-grow {
-  from {
-    margin-bottom: -10%;
-    opacity: 0;
-  }
-
-  to {
-    margin-bottom: 0%;
-    opacity: 1;
-  }
-}
