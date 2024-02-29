@@ -4,7 +4,7 @@
 .NoScrollBody {
   flex-grow: 1;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     flex-grow: unset;
   }
 }

@@ -226,7 +226,7 @@
     font-weight: var(--p-font-weight-regular);
     line-height: var(--p-font-line-height-600);
 
-    @media #{$p-breakpoints-md-up} {
+    @media (--p-breakpoints-md-up) {
       font-size: var(--p-font-size-325);
       line-height: var(--p-font-line-height-500);
     }

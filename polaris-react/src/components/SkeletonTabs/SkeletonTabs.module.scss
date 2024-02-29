@@ -5,7 +5,7 @@
   width: 100%;
   overflow: auto;
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     overflow: visible;
   }
 }
@@ -23,7 +23,7 @@
     margin-right: 0;
   }
 
-  @media #{$p-breakpoints-md-up} {
+  @media (--p-breakpoints-md-up) {
     // Tab height + padding
     height: calc(var(--p-height-700) + var(--p-height-400));
   }
@@ -46,14 +46,14 @@
   .Tab {
     justify-content: flex-start;
 
-    @media #{$p-breakpoints-md-up} {
+    @media (--p-breakpoints-md-up) {
       flex: 1 1 100%;
       justify-content: center;
     }
   }
 
   .TabText {
-    @media #{$p-breakpoints-md-up} {
+    @media (--p-breakpoints-md-up) {
       width: 100%;
     }
   }
