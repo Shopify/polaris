@@ -4,14 +4,30 @@ import {mountWithApp} from 'tests/utilities';
 import {setMatchMedia} from 'tests/setup/tests';
 
 import {Cell} from '../Cell';
+import {Popover} from '../../../../Popover';
 
 setMatchMedia();
 
 jest.mock('../../../../../utilities/index-provider', () => ({
+  ...jest.requireActual('../../../../../utilities/index-provider'),
   useIndexCell: jest.fn(),
 }));
 
+jest.mock('../../../../../utilities/breakpoints', () => ({
+  ...jest.requireActual('../../../../../utilities/breakpoints'),
+  useBreakpoints: jest.fn(),
+}));
+
 describe('<Cell />', () => {
+  beforeEach(() => {
+    mockUseIndexCell();
+    mockUseBreakpoints(true);
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('renders a table data tag', () => {
     const cell = mountWithTable(<Cell />);
 
@@ -67,50 +83,96 @@ describe('<Cell />', () => {
   });
 
   describe('preview', () => {
-    it('sets the data-hovercard-activator attribute if a preview is provided', () => {
+    it('renders a disclosure button if previewContent is provided', () => {
       const cell = mountWithTable(<Cell previewContent={<div>Preview</div>} />);
-      const td = cell.find('td');
-      expect(td?.domNode?.getAttribute('data-hovercard-activator')).toBe(
-        'true',
-      );
+      const popover = cell.find(Popover);
+      expect(popover).not.toBeNull();
     });
 
-    it('does not set the data-hovercard-activator attribute if a preview is not provided', () => {
-      const cell = mountWithTable(<Cell />);
-      const td = cell.find('td');
-      expect(td?.domNode?.getAttribute('data-hovercard-activator')).toBeNull();
-    });
+    describe('showPreviewOnHover', () => {
+      it('sets the data-hovercard-activator attribute if previewContent is provided and showPreviewOnHover is true', () => {
+        const cell = mountWithTable(
+          <Cell showPreviewOnHover previewContent={<div>Preview</div>} />,
+        );
+        const previewActivator = cell.find('button');
+        expect(
+          previewActivator?.domNode?.getAttribute('data-hovercard-activator'),
+        ).toBe('true');
+      });
 
-    it('sets the activatorWrapperClassName if a preview is provided', () => {
-      mockUseIndexCell();
-      const cell = mountWithTable(<Cell previewContent={<div>Preview</div>} />);
-      const td = cell.find('td');
-      expect(td?.domNode?.classList).toContain('ActivatorWrapper');
-      expect(td?.domNode?.classList).toContain('snapToParent');
-    });
+      it('does not set the data-hovercard-activator attribute if a preview is not provided', () => {
+        const cell = mountWithTable(
+          <Cell previewContent={<div>Preview</div>} />,
+        );
+        const previewActivator = cell.find('button');
+        expect(
+          previewActivator?.domNode?.getAttribute('data-hovercard-activator'),
+        ).not.toBe('true');
+      });
 
-    it('does not set the activatorWrapperClassName if a preview is not provided', () => {
-      mockUseIndexCell();
-      const cell = mountWithTable(<Cell />);
-      const td = cell.find('td');
-      expect(td?.domNode?.classList).not.toContain('ActivatorWrapper');
-      expect(td?.domNode?.classList).not.toContain('snapToParent');
-    });
+      it('sets the activatorWrapperClassName if a previewContent is provided and showPreviewOnHover is true', () => {
+        mockUseIndexCell();
+        const cell = mountWithTable(
+          <Cell showPreviewOnHover previewContent={<div>Preview</div>} />,
+        );
+        const previewActivator = cell.find('button');
+        expect(previewActivator?.domNode?.classList).toContain(
+          'ActivatorWrapper',
+        );
 
-    it('fires onMouseEnterCell on mouse enter if a preview is provided', () => {
-      const onMouseEnterCell = mockUseIndexCell();
-      const cell = mountWithTable(<Cell previewContent={<div>Preview</div>} />);
-      const td = cell.find('td');
-      td!.trigger('onMouseEnter');
-      expect(onMouseEnterCell).toHaveBeenCalled();
-    });
+        expect(previewActivator?.domNode?.classList).toContain('snapToParent');
+      });
 
-    it('fires onMouseLeaveCell on mouse enter if a preview is provided', () => {
-      const onMouseLeaveCell = mockUseIndexCell();
-      const cell = mountWithTable(<Cell previewContent={<div>Preview</div>} />);
-      const td = cell.find('td');
-      td!.trigger('onMouseLeave');
-      expect(onMouseLeaveCell).toHaveBeenCalled();
+      it('does not set the activatorWrapperClassName if showPreviewOnHover is not true', () => {
+        mockUseIndexCell();
+        const cell = mountWithTable(
+          <Cell previewContent={<div>Preview</div>} />,
+        );
+        const previewActivator = cell.find('button');
+        expect(previewActivator?.domNode?.classList).not.toContain(
+          'ActivatorWrapper',
+        );
+
+        expect(previewActivator?.domNode?.classList).not.toContain(
+          'snapToParent',
+        );
+      });
+
+      it('fires onMouseEnterCell on mouse enter if showPreviewOnHover true', () => {
+        const onMouseEnterCell = mockUseIndexCell();
+        const cell = mountWithTable(
+          <Cell showPreviewOnHover previewContent={<div>Preview</div>} />,
+        );
+        const previewActivator = cell.find('button');
+        previewActivator!.trigger('onMouseEnter');
+        expect(onMouseEnterCell).toHaveBeenCalled();
+      });
+
+      it('does not set onMouseEnter if showPreviewOnHover is not true', () => {
+        const cell = mountWithTable(
+          <Cell previewContent={<div>Preview</div>} />,
+        );
+        const previewActivator = cell.find('button');
+        expect(previewActivator?.props.onMouseEnter).toBeUndefined();
+      });
+
+      it('fires onMouseLeaveCell on mouse enter if showPreviewOnHover is true', () => {
+        const onMouseLeaveCell = mockUseIndexCell();
+        const cell = mountWithTable(
+          <Cell showPreviewOnHover previewContent={<div>Preview</div>} />,
+        );
+        const previewActivator = cell.find('button');
+        previewActivator!.trigger('onMouseLeave');
+        expect(onMouseLeaveCell).toHaveBeenCalled();
+      });
+
+      it('does not set onMouseLeave if showPreviewOnHover is not true', () => {
+        const cell = mountWithTable(
+          <Cell previewContent={<div>Preview</div>} />,
+        );
+        const previewActivator = cell.find('button');
+        expect(previewActivator?.props.onMouseLeave).toBeUndefined();
+      });
     });
   });
 });
@@ -136,5 +198,15 @@ function mockUseIndexCell() {
     previewActivatorWrapperClassName: 'ActivatorWrapper snapToParent',
     onMouseEnterCell: jest.fn(),
     onMouseLeaveCell: jest.fn(),
+  });
+}
+
+function mockUseBreakpoints(mdUp: boolean) {
+  const useBreakpoints: jest.Mock = jest.requireMock(
+    '../../../../../utilities/breakpoints',
+  ).useBreakpoints;
+
+  useBreakpoints.mockReturnValue({
+    mdUp,
   });
 }
