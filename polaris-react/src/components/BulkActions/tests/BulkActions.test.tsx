@@ -158,6 +158,75 @@ describe('<BulkActions />', () => {
         ],
       });
     });
+
+    it('renders a combination of flat and deep actions in sections', () => {
+      const bulkActions = mountWithApp(
+        <BulkActions
+          {...bulkActionProps}
+          promotedActions={[]}
+          actions={[
+            {content: 'Action 1'},
+            {content: 'Action 2'},
+            {content: 'Action 3'},
+            {
+              title: 'Action group',
+              items: [
+                {content: 'Action 4'},
+                {content: 'Action 5'},
+                {content: 'Action 6'},
+              ],
+            },
+            {content: 'Action 7'},
+            {content: 'Action 8'},
+            {
+              title: 'Action group 2',
+              items: [
+                {content: 'Action 9'},
+                {content: 'Action 10'},
+                {content: 'Action 11'},
+              ],
+            },
+            {content: 'Action 12'},
+          ]}
+        />,
+      );
+
+      bulkActions.find(BulkActionButton)?.trigger('onAction');
+
+      expect(bulkActions).toContainReactComponent(ActionList, {
+        sections: [
+          {
+            items: [
+              {content: 'Action 1'},
+              {content: 'Action 2'},
+              {content: 'Action 3'},
+            ],
+          },
+          {
+            title: 'Action group',
+            items: [
+              {content: 'Action 4'},
+              {content: 'Action 5'},
+              {content: 'Action 6'},
+            ],
+          },
+          {
+            items: [{content: 'Action 7'}, {content: 'Action 8'}],
+          },
+          {
+            title: 'Action group 2',
+            items: [
+              {content: 'Action 9'},
+              {content: 'Action 10'},
+              {content: 'Action 11'},
+            ],
+          },
+          {
+            items: [{content: 'Action 12'}],
+          },
+        ],
+      });
+    });
   });
 
   describe('loading', () => {

@@ -291,17 +291,34 @@ export const BulkActions = forwardRef(function BulkActions(
     if (!actions) {
       return [];
     }
+    let isAFlatArray = true;
     return actions
       .filter((action) => action)
-      .map(
-        (action: BulkAction | MenuGroupDescriptor | BulkActionListSection) => {
+      .reduce(
+        (
+          memo: BulkActionListSection[],
+          action: BulkAction | BulkActionListSection,
+        ): BulkActionListSection[] => {
           if (instanceOfBulkActionListSection(action)) {
-            return {items: [...action.items]};
-          } else if (instanceOfMenuGroupDescriptor(action)) {
-            return {items: [...action.actions]};
+            isAFlatArray = false;
+            return memo.concat(action);
           }
-          return {items: [action]};
+          if (isAFlatArray) {
+            if (memo.length === 0) {
+              return [{items: [action]}];
+            }
+            const lastItem = memo[memo.length - 1];
+            memo.splice(memo.length - 1, 1, {
+              items: [...lastItem.items, action],
+            });
+            return memo;
+          }
+
+          isAFlatArray = true;
+
+          return memo.concat({items: [action]});
         },
+        [],
       );
   }, [actions, actionSections]);
 
