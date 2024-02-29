@@ -426,6 +426,27 @@ describe('<IndexTable>', () => {
       expect(index.find(BulkActions)).toContainReactText(customString);
     });
 
+    it('does not need the bulkActions or promotedBulkActions props present to render the custom select all string', () => {
+      const onSelectionChangeSpy = jest.fn();
+      const customString = 'Foo bar baz';
+      const index = mountWithApp(
+        <IndexTable
+          {...defaultProps}
+          selectable
+          hasMoreItems
+          selectedItemsCount={1}
+          itemCount={2}
+          bulkActions={undefined}
+          promotedBulkActions={undefined}
+          onSelectionChange={onSelectionChangeSpy}
+          paginatedSelectAllActionText={customString}
+        >
+          {mockTableItems.map(mockRenderRow)}
+        </IndexTable>,
+      );
+      expect(index.find(BulkActions)).toContainReactText(customString);
+    });
+
     it('toggles all page resources when onToggleAll is triggered', () => {
       const onSelectionChangeSpy = jest.fn();
       const index = mountWithApp(
