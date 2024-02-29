@@ -4,8 +4,8 @@ const postcssShopify = require('@shopify/postcss-plugin');
 const pxtorem = require('postcss-pxtorem');
 const postcssCustomMedia = require('postcss-custom-media');
 const postcssGlobalData = require('@csstools/postcss-global-data');
-const postcssAdvancedVariables = require('postcss-advanced-variables');
 const postcssNesting = require('postcss-nesting');
+const postcssMixins = require('postcss-mixins');
 const postcssDiscardComments = require('postcss-discard-comments');
 
 const mediaQueriesCssPath = path.resolve(
@@ -14,8 +14,9 @@ const mediaQueriesCssPath = path.resolve(
 );
 
 module.exports = [
-  // SASS-ish-support
-  postcssAdvancedVariables(),
+  postcssMixins({
+    mixinsDir: path.join(__dirname, '../src/postcss-mixins'),
+  }),
   postcssNesting({
     // The way native CSS nesting & SASS nesting behave with complex selectors
     // differ; SASS expands out every selector into a comma separated list, but
