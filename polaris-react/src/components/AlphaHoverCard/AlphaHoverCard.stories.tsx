@@ -600,11 +600,9 @@ export function WithDynamicActivator() {
           position={index}
         >
           <IndexTable.Cell>
-            {
-              <Link monochrome removeUnderline dataPrimaryLink url="#">
-                {title}
-              </Link>
-            }
+            <Link monochrome removeUnderline dataPrimaryLink url="#">
+              {title}
+            </Link>
           </IndexTable.Cell>
           <IndexTable.Cell>{date}</IndexTable.Cell>
           <IndexTable.Cell
