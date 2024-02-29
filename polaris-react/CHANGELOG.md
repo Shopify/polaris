@@ -1,5 +1,34 @@
 # Changelog
 
+## 12.19.2
+
+### Patch Changes
+
+- [#11659](https://github.com/Shopify/polaris/pull/11659) [`0371de812`](https://github.com/Shopify/polaris/commit/0371de812c0b28c4a1dc8b506ec5e8bab7aa7fe0) Thanks [@sophschneider](https://github.com/sophschneider)! - Revert `PositionedOverlay` scroll container fix
+
+## 12.19.1
+
+### Patch Changes
+
+- [#11409](https://github.com/Shopify/polaris/pull/11409) [`f1c5110ae`](https://github.com/Shopify/polaris/commit/f1c5110aebddfbd1b2ee4bc356ef8b3db9285d8e) Thanks [@chloerice](https://github.com/chloerice)! - Fixed the icon spacing in `InlineError`
+
+- Updated dependencies [[`abb3bf0e4`](https://github.com/Shopify/polaris/commit/abb3bf0e4fcecfab87d0888b9c0846fe9ea45f1e), [`adf8600ad`](https://github.com/Shopify/polaris/commit/adf8600ad61b33adb903fe995bd79f71e99bb8bb)]:
+  - @shopify/polaris-icons@8.6.0
+
+## 12.19.0
+
+### Minor Changes
+
+- [#11399](https://github.com/Shopify/polaris/pull/11399) [`0134d2378`](https://github.com/Shopify/polaris/commit/0134d23784a48475d7c260337b777f448179a9b1) Thanks [@sophschneider](https://github.com/sophschneider)! - Added `PositionedOverlay` scroll support for all scroll containers
+
+* [#11622](https://github.com/Shopify/polaris/pull/11622) [`1f81501c8`](https://github.com/Shopify/polaris/commit/1f81501c8c3862fad4ffd9a4058d3fc70e5ae39a) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated the BulkActions component to include logic to handling selecting and deselecting rows
+
+- [#11637](https://github.com/Shopify/polaris/pull/11637) [`1ac638246`](https://github.com/Shopify/polaris/commit/1ac63824611d3b0167b4ed9e133746e95e62faa0) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated Pagination table variant to have more prominent and centrally-aligned actions
+
+### Patch Changes
+
+- [#11644](https://github.com/Shopify/polaris/pull/11644) [`b95fc9807`](https://github.com/Shopify/polaris/commit/b95fc980782d0cadc63825c9803aed9e0cf0699c) Thanks [@kyledurand](https://github.com/kyledurand)! - Removed nav wrapper from breadcrumbs since it now only renders a single link
+
 ## 12.18.0
 
 ### Minor Changes

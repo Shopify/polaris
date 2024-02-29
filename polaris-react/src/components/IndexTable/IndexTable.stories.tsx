@@ -26,6 +26,12 @@ import {
   Thumbnail,
   Badge,
 } from '@shopify/polaris';
+import {
+  AffiliateIcon,
+  EditIcon,
+  ExportIcon,
+  ProductIcon,
+} from '@shopify/polaris-icons';
 
 import {IndexTable} from './IndexTable';
 
@@ -1271,29 +1277,73 @@ export function WithBulkActionsAndSelectionAcrossPages() {
 
   const promotedBulkActions = [
     {
-      content: 'Edit customers',
-      onAction: () => console.log('Todo: implement bulk edit'),
+      content: 'Rename customers',
+      onAction: () => console.log('Todo: implement bulk rename'),
+    },
+    {
+      title: 'Edit customers',
+      actions: [
+        {
+          content: 'Add customers',
+          onAction: () => console.log('Todo: implement adding customers'),
+        },
+        {
+          content: 'Delete customers',
+          onAction: () => console.log('Todo: implement deleting customers'),
+        },
+      ],
+    },
+    {
+      title: 'Export',
+      actions: [
+        {
+          content: 'Export as PDF',
+          onAction: () => console.log('Todo: implement PDF exporting'),
+        },
+        {
+          content: 'Export as CSV',
+          onAction: () => console.log('Todo: implement CSV exporting'),
+        },
+      ],
+    },
+  ];
+  const bulkActions = [
+    {
+      content: 'Remove tags',
+      onAction: () => console.log('Todo: implement bulk remove tags'),
+    },
+    {
+      title: 'Bulk action section',
+      items: [
+        {
+          content: 'Delete data',
+        },
+        {
+          content: 'Edit data',
+        },
+        {
+          content: 'Manage data',
+        },
+      ],
     },
     {
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
     {
-      content: 'Rename customers',
-      onAction: () => console.log('Todo: implement bulk rename'),
-    },
-  ];
-  const bulkActions = [
-    {
-      content: 'Add tags',
-      onAction: () => console.log('Todo: implement bulk add tags'),
+      content: 'Edit prices',
+      onAction: () => console.log('Todo: implement bulk delete'),
     },
     {
-      content: 'Remove tags',
-      onAction: () => console.log('Todo: implement bulk remove tags'),
+      content: 'Edit quantities',
+      onAction: () => console.log('Todo: implement bulk delete'),
     },
     {
-      content: 'Delete customers',
+      content: 'Edit SKUs',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit barcodes',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
   ];

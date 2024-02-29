@@ -1,7 +1,7 @@
 {
   "name": "@shopify/stylelint-polaris",
   "description": "Polaris Design System Stylelint tooling",
-  "version": "15.2.2",
+  "version": "15.3.0",
   "private": false,
   "license": "MIT",
   "author": "Shopify <dev@shopify.com>",
@@ -35,6 +35,8 @@
     "clean": "rm -rf .turbo node_modules dist"
   },
   "dependencies": {
+    "stylelint-scss": "^4.4.0",
+    "postcss-scss": "^4.0.9",
     "postcss-value-parser": "^4.2.0",
     "postcss-media-query-parser": "^0.2.3",
     "@shopify/polaris-tokens": "^8.8.0"
