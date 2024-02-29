@@ -10,7 +10,7 @@
   margin-bottom: var(--p-space-500);
   box-shadow: var(--p-shadow-500);
 
-  @include shadow-bevel(var(--p-shadow-400), var(--p-border-radius-200));
+  @mixin shadow-bevel var(--p-shadow-400), var(--p-border-radius-200);
 
   @media (--p-breakpoints-sm-up) {
     padding: var(--p-space-300);

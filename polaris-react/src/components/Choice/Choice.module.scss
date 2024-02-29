@@ -32,7 +32,7 @@
     bleed-inline-end,
     --pc-choice-bleed-inline-end
   );
-  @include responsive-props(choice, fill, --pc-choice-fill);
+  @mixin responsive-props choice, fill, --pc-choice-fill;
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;

@@ -53,7 +53,7 @@
   @media print {
     box-shadow: none;
 
-    @include shadow-bevel(none, var(--p-border-radius-0), none, none);
+    @mixin shadow-bevel none, var(--p-border-radius-0), none, none;
   }
 }
 

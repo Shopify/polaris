@@ -16,13 +16,13 @@
 }
 
 @mixin non-responsive-prop($componentName, $componentProp, $declarationProp) {
-  @include scope-custom-property($componentName, $componentProp);
+  @mixin scope-custom-property $componentName, $componentProp;
 
   $(declarationProp): var(--pc-$(componentName)-$(componentProp));
 }
 
 @mixin responsive-props($componentName, $componentProp, $declarationProp) {
-  @include scope-custom-property($componentName, $componentProp, true);
+  @mixin scope-custom-property $componentName, $componentProp, true;
 
   $(declarationProp): var(--pc-$(componentName)-$(componentProp)-xs);
 

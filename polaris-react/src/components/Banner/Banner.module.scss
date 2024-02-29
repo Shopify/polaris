@@ -23,10 +23,10 @@
 }
 
 .withinPage {
-  @include shadow-bevel(var(--p-shadow-200), var(--p-border-radius-0));
+  @mixin shadow-bevel var(--p-shadow-200), var(--p-border-radius-0);
 
   @media (--p-breakpoints-sm-up) {
-    @include shadow-bevel(var(--p-shadow-200), var(--p-border-radius-300));
+    @mixin shadow-bevel var(--p-shadow-200), var(--p-border-radius-300);
   }
 
   + .Banner {

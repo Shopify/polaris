@@ -9,10 +9,10 @@
 }
 
 .Box {
-  @include responsive-props(box, padding-block-end, padding-block-end);
-  @include responsive-props(box, padding-block-start, padding-block-start);
-  @include responsive-props(box, padding-inline-start, padding-inline-start);
-  @include responsive-props(box, padding-inline-end, padding-inline-end);
+  @mixin responsive-props box, padding-block-end, padding-block-end;
+  @mixin responsive-props box, padding-block-start, padding-block-start;
+  @mixin responsive-props box, padding-inline-start, padding-inline-start;
+  @mixin responsive-props box, padding-inline-end, padding-inline-end;
 
   // stylelint-disable -- Polaris component custom properties
   --pc-box-shadow: initial;

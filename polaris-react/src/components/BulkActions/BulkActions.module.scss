@@ -99,6 +99,6 @@
 
   &:focus-visible:not(:active) {
     // stylelint-disable-next-line -- needed for focus ring
-    @include focus-ring(base, 0, focused);
+    @mixin focus-ring base, 0, focused;
   }
 }

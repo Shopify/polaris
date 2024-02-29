@@ -1,7 +1,7 @@
 @import '../../styles/common';
 
 .BlockStack {
-  @include responsive-props(block-stack, gap, gap);
+  @mixin responsive-props block-stack, gap, gap;
   // stylelint-disable -- Polaris component custom properties
   --pc-block-stack-align: initial;
   --pc-block-stack-inline-align: initial;
