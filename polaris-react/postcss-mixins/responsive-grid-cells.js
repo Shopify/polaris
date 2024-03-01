@@ -9,7 +9,7 @@ module.exports = (mixin) => {
       selector: `.Cell-${i}-column-xs`,
     });
     rule.append({
-      prop: 'gridColumnEnd',
+      prop: 'grid-column-end',
       value: `span ${i}`,
     });
     rules.push(rule);
@@ -24,7 +24,7 @@ module.exports = (mixin) => {
         selector: `.Cell-${j}-column-${i}`,
       });
       rule.append({
-        prop: 'gridColumnEnd',
+        prop: 'grid-column-end',
         value: `span ${j}`,
       });
       atRule.append(rule);
