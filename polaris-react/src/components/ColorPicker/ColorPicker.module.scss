@@ -146,10 +146,10 @@
     to bottom,
     red var(--pc-color-picker-dragger-size),
     yellow,
-    /* green */ rgb(0, 255, 0),
+    lime,
     cyan,
     blue,
-    /* purple */ rgb(255, 0, 255),
+    magenta,
     red calc(var(--pc-color-picker-size) - var(--pc-color-picker-dragger-size))
   );
   // stylelint-enable
