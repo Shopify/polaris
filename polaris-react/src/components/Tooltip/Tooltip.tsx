@@ -23,7 +23,9 @@ export interface TooltipProps {
   children?: React.ReactNode;
   /** The content to display within the tooltip */
   content: React.ReactNode;
-  /** Toggle whether the tooltip is visible */
+  /** Toggle whether the tooltip is visible. Takes precedence over `active` */
+  open?: boolean;
+  /** Toggle whether the tooltip is visible initially */
   active?: boolean;
   /** Delay in milliseconds while hovering over an element before the tooltip is visible */
   hoverDelay?: number;
@@ -85,6 +87,7 @@ export function Tooltip({
   zIndexOverride,
   hasUnderline,
   persistOnClick,
+  open,
   onOpen,
   onClose,
 }: TooltipProps) {
@@ -179,7 +182,7 @@ export function Tooltip({
         id={id}
         preferredPosition={preferredPosition}
         activator={activatorNode}
-        active={active}
+        active={open ?? active}
         accessibilityLabel={accessibilityLabel}
         onClose={noop}
         preventInteraction={dismissOnMouseOut}
@@ -187,7 +190,7 @@ export function Tooltip({
         padding={padding}
         borderRadius={borderRadius}
         zIndexOverride={zIndexOverride}
-        instant={!shouldAnimate}
+        instant={open || !shouldAnimate}
       >
         {content}
       </TooltipOverlay>
