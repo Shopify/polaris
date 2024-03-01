@@ -8,7 +8,7 @@
   margin: var(--pc-popover-visible-portion-of-arrow) var(--p-space-200)
     var(--p-space-400);
   will-change: left, top;
-  @mixin shadow-bevel var(--p-shadow-300), var(--p-border-radius-300), null,
+  @mixin shadow-bevel var(--p-shadow-300), var(--p-border-radius-300), none,
     '""', 2;
 }
 

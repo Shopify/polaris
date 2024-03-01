@@ -10,6 +10,6 @@
     --pc-shadow-bevel-border-radius;
   @mixin responsive-props shadow-bevel, content, --pc-shadow-bevel-content;
 
-  @mixin shadow-bevel calc(20 * 2), var(--pc-shadow-bevel-border-radius), null,
+  @mixin shadow-bevel calc(20 * 2), var(--pc-shadow-bevel-border-radius), none,
     var(--pc-shadow-bevel-content), var(--pc-shadow-bevel-z-index);
 }
