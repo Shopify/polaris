@@ -1,6 +1,7 @@
 const path = require('path');
 
 const postcssShopify = require('@shopify/postcss-plugin');
+const postcssImport = require('postcss-import');
 const pxtorem = require('postcss-pxtorem');
 const postcssCustomMedia = require('postcss-custom-media');
 const postcssGlobalData = require('@csstools/postcss-global-data');
@@ -14,6 +15,7 @@ const mediaQueriesCssPath = path.resolve(
 );
 
 module.exports = [
+  postcssImport(),
   postcssMixins({
     mixinsDir: path.join(__dirname, '../postcss-mixins'),
   }),
