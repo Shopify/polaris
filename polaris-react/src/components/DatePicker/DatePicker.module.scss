@@ -32,7 +32,7 @@
 }
 
 .DayCell {
-  width: (100% / 7);
+  width: calc(100% / 7);
   background: transparent;
   margin: 0;
   padding: 0;

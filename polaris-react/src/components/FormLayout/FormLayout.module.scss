@@ -14,8 +14,8 @@
 
   &.condensed {
     // stylelint-disable-next-line -- Polaris component custom properties
-    flex-basis: (0.5 * var(--pc-form-layout-item-min-size));
+    flex-basis: calc(0.5 * var(--pc-form-layout-item-min-size));
     // stylelint-disable-next-line -- Polaris component custom properties
-    min-width: (0.5 * var(--pc-form-layout-item-min-size));
+    min-width: calc(0.5 * var(--pc-form-layout-item-min-size));
   }
 }

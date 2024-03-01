@@ -44,9 +44,10 @@
   align-items: center;
   justify-content: space-between;
   min-width: 1px;
-  max-width: var(--pg-layout-width-primary-max) +
-    var(--pg-layout-width-secondary-max) +
-    var(--pg-layout-width-inner-spacing-base);
+  max-width: calc(
+    var(--pg-layout-width-primary-max) + var(--pg-layout-width-secondary-max) +
+      var(--pg-layout-width-inner-spacing-base)
+  );
   height: 100%;
   margin: 0 auto;
   padding: 0 var(--p-space-400);
