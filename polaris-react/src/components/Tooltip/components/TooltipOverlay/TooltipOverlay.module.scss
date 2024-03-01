@@ -21,7 +21,7 @@
   transition: none;
   min-width: 4ch;
 
-  @mixin shadow-bevel var(--p-shadow-300), var(--pc-tooltip-border-radius), none,
+  @mixin shadow-bevel var(--p-shadow-300), var(--pc-tooltip-border-radius), null,
     '""', var(--pc-tooltip-shadow-bevel-z-index);
 
   @media screen and (-ms-high-contrast: active) {
