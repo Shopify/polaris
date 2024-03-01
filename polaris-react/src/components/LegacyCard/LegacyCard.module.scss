@@ -4,7 +4,7 @@
   outline: var(--p-border-width-025) solid transparent;
   overflow: clip;
 
-  @mixin shadow-bevel var(--p-shadow-100), var(--p-border-radius-0), null, '""',
+  @mixin shadow-bevel var(--p-shadow-100), var(--p-border-radius-0), null, '',
     101;
 
   // Override custom heading font sizes
@@ -25,7 +25,7 @@
     border-radius: var(--p-border-radius-200);
 
     @mixin shadow-bevel var(--p-shadow-100), var(--p-border-radius-300), null,
-      '""', 101;
+      '', 101;
 
     .Section:first-child {
       border-top-left-radius: var(--p-border-radius-300);
