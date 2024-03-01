@@ -1,4 +1,9 @@
-module.exports = (mixin, style = 'base') => {
+const {nullish} = require('./utils');
+
+const DEFAULT_STYLE = 'base';
+
+module.exports = (_, _style) => {
+  const style = nullish(_style) ? DEFAULT_STYLE : _style;
   switch (style) {
     case 'base': {
       return {

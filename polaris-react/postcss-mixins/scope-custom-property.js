@@ -1,10 +1,7 @@
-module.exports = (
-  mixin,
-  componentName,
-  componentProp,
-  responsively = false,
-) => {
-  if (responsively) {
+const {nullish} = require('./utils');
+
+module.exports = (_, componentName, componentProp, responsively = false) => {
+  if (responsively && !nullish(responsively)) {
     return {
       [`--pc-${componentName}-${componentProp}-xs`]: 'initial',
       [`--pc-${componentName}-${componentProp}-sm`]: 'initial',
