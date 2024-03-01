@@ -904,7 +904,7 @@ export function CopyToClipboard() {
             <Tooltip
               // Important: Closes tooltip when mouse leaves the button
               dismissOnMouseOut
-              active={status === 'copied' ? true : undefined}
+              open={status === 'copied' ? true : undefined}
               hoverDelay={tooltipHoverDelay}
               preferredPosition="above"
               content={status === 'copied' ? 'Copied' : 'Copy'}
