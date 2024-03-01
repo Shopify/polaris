@@ -561,12 +561,8 @@
   .SecondaryNavigation & {
     opacity: 1;
   }
-  $items-to-stagger: 12;
-  @for $i from 1 through $items-to-stagger {
-    &:nth-child($(i)) {
-      animation-delay: calc(($i - 1) * 50ms);
-    }
-  }
+
+  @mixin items-to-stagger;
 
   &:not(:first-child) {
     .ItemInnerWrapper {
