@@ -17,7 +17,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: [
       './tsconfig.eslint.json',
-      '**/tsconfig.json',
+      '*/tsconfig.json',
       '!polaris-icons/tsconfig.json',
     ],
   },
