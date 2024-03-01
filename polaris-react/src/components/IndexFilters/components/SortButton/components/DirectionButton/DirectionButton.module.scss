@@ -1,6 +1,6 @@
 .DirectionButton {
   // stylelint-disable-next-line -- This mixin cannot be replaced with a single token
-  @mixin focus-ring 'wide';
+  @mixin focus-ring wide;
   border-radius: var(--p-border-radius-200);
   padding: var(--p-space-100) var(--p-space-300) var(--p-space-100)
     var(--p-space-200);
@@ -25,8 +25,7 @@
   &:focus-visible {
     outline: 0;
 
-    // stylelint-disable-next-line -- This mixin cannot be replaced with a single token
-    @mixin focus-ring 'wide', 0, 'focused';
+    @mixin focus-ring wide, 0, focused;
   }
 }
 

@@ -115,7 +115,7 @@
 
 .ListItem {
   // stylelint-disable-next-line -- include focus-ring mixin to prevent jump in content for first focused element
-  @mixin focus-ring 'base', -1px;
+  @mixin focus-ring base, -1px;
 
   .ListItem + & {
     border-top: var(--pc-resource-list-separator-border);
