@@ -1,5 +1,5 @@
 @define-mixin button-base {
-  @mixin focus-ring 'base', var(--p-border-width-025);
+  @mixin focus-ring base, var(--p-border-width-025);
   position: relative;
   display: inline-flex;
   align-items: center;
