@@ -54,6 +54,7 @@ $control-vertical-adjustment: 2px;
   &.select:hover:not(.disabled),
   &.active {
     font-weight: var(--p-font-weight-semibold);
+    background: var(--p-color-bg-surface-secondary-active);
   }
 
   .Media {
@@ -81,21 +82,6 @@ $control-vertical-adjustment: 2px;
     background: var(--p-color-bg-surface-secondary-active);
   }
 
-  // stylelint-disable-next-line selector-max-specificity -- specificity buster
-  &.select,
-  &.select:hover:not(.disabled) {
-    background-color: var(--p-color-bg-surface-secondary-selected);
-    // stylelint-disable-next-line -- no way to select parent Checkbox class without :has()
-    &.CheckboxLabel {
-      background-color: transparent;
-    }
-
-    // stylelint-disable-next-line selector-max-specificity -- recolor icon on select
-    svg {
-      fill: var(--p-color-icon-active);
-    }
-  }
-
   // stylelint-disable-next-line selector-max-specificity -- style consolidation
   &:hover:not(.disabled),
   &:active:not(.disabled),
@@ -116,12 +102,20 @@ $control-vertical-adjustment: 2px;
 }
 
 .MultiSelectOption {
+  &.select {
+    // stylelint-disable-next-line -- no way to select parent Checkbox class without :has()
+    &.CheckboxLabel {
+      background-color: transparent;
+    }
+
+    svg {
+      fill: var(--p-color-icon-active);
+    }
+  }
+
   // stylelint-disable-next-line selector-max-specificity -- specificity buster
-  &:active:not(.disabled),
-  &.select,
-  &.select:hover:not(.disabled),
-  &:hover:not(.disabled) {
-    background-color: transparent;
+  &.select:hover:not(.disabled) {
+    background-color: var(--p-color-bg-surface-secondary-hover);
   }
 }
 
