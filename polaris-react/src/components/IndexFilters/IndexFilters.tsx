@@ -100,7 +100,8 @@ export interface IndexFiltersProps
   filteringAccessibilityTooltip?: string;
   /** Whether the filter should close when clicking inside another Popover. */
   closeOnChildOverlayClick?: boolean;
-  /** Optional override to the default keyboard shortcuts available */
+  /** Optional override to the default keyboard shortcuts available. Should be set to true for all instances
+   * of this component not controlling a root-level index */
   disableKeyboardShortcuts?: boolean;
   /** Whether to display the edit columns button with the other default mode filter actions */
   showEditColumnsButton?: boolean;
