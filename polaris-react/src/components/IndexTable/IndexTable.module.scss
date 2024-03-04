@@ -1286,9 +1286,7 @@ $loading-panel-height: 53px;
 .hasPreview {
   height: var(--p-height-025);
   // Popover doesn't provide the ability to set a className on the activatorWrapper, so we need to target it directly
-  :first-child {
-    display: flex;
-    align-items: center;
+  div:first-of-type {
     height: 100%;
   }
 }
@@ -1301,6 +1299,8 @@ $loading-panel-height: 53px;
   width: 100%;
   height: 100%;
   cursor: pointer;
+  color: inherit;
+  text-align: inherit;
 
   svg {
     transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
@@ -1338,9 +1338,11 @@ $loading-panel-height: 53px;
 
 .PreviewActivatorContent {
   width: 100%;
+  display: flex;
   gap: var(--p-space-100);
   flex-wrap: nowrap;
   justify-content: space-between;
+  align-items: center;
 }
 
 .StickyTable {
