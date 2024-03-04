@@ -16,7 +16,6 @@ import {
   BlockStack,
   InlineStack,
   Card,
-  Scrollable,
 } from '@shopify/polaris';
 import {
   DeliveryIcon,
@@ -193,6 +192,7 @@ export function WithDynamicActivator() {
         email: 'yo@superduperkid.co',
         phone: '+19171111111',
         name: 'Colm Dillane',
+        companyName: 'KidSuper Studios Inc.',
         location: 'Brooklyn, NY, USA',
         orders: 27,
       },
@@ -255,7 +255,7 @@ export function WithDynamicActivator() {
         id: '4102',
         email: 'yo@superduperkid.co',
         phone: '+19171111111',
-        name: 'Colm Dillane',
+        name: 'Colm DillaneColm DillaneColm DillaneColm DillaneColm Dillane',
         location: 'Brooklyn, NY, USA',
         orders: 27,
       },
@@ -592,6 +592,21 @@ export function WithDynamicActivator() {
       },
       index,
     ) => {
+      const customerNameMarkup = customer.companyName ? (
+        <BlockStack gap="150" align="center" inlineAlign="start">
+          <Text truncate as="p">
+            {customer.name}
+          </Text>
+          <Text truncate as="p" tone="subdued">
+            {customer.companyName}
+          </Text>
+        </BlockStack>
+      ) : (
+        <Text truncate as="p">
+          {customer.name}
+        </Text>
+      );
+
       return (
         <IndexTable.Row
           id={id}
@@ -610,9 +625,14 @@ export function WithDynamicActivator() {
             showPreviewOnHover
             previewContent={renderCustomerCellPreview(customer, id)}
           >
-            <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
-              {customer.name}
-            </div>
+            <Box
+              minWidth="100%"
+              maxWidth="300px"
+              padding="150"
+              minHeight="fit-content"
+            >
+              {customerNameMarkup}
+            </Box>
           </IndexTable.Cell>
           <IndexTable.Cell>{channel}</IndexTable.Cell>
           <IndexTable.Cell>
@@ -633,9 +653,11 @@ export function WithDynamicActivator() {
               items,
             })}
           >
-            <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
-              {`${items.length} items`}
-            </div>
+            <Box minHeight="100%" padding="150">
+              <InlineStack wrap={false} blockAlign="center">
+                {`${items.length} items`}
+              </InlineStack>
+            </Box>
           </IndexTable.Cell>
           <IndexTable.Cell>{deliveryStatus}</IndexTable.Cell>
           <IndexTable.Cell>{deliveryMethod}</IndexTable.Cell>
