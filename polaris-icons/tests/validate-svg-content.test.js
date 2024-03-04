@@ -23,7 +23,7 @@ const allIconFiles = globby
       iconAst: unified()
         .use(parse, {fragment: true, space: 'svg'})
         .parse(iconSource),
-      expectedViewbox: '0 0 20 20',
+      expectedViewbox: '0 0 16 16',
     };
   });
 
