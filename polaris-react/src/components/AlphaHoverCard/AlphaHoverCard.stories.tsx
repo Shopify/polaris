@@ -593,11 +593,11 @@ export function WithDynamicActivator() {
       index,
     ) => {
       const customerNameMarkup = customer.companyName ? (
-        <BlockStack gap="150" align="center" inlineAlign="start">
+        <BlockStack gap="100" align="center" inlineAlign="start">
           <Text truncate as="p">
             {customer.name}
           </Text>
-          <Text truncate as="p" tone="subdued">
+          <Text truncate as="p" tone="subdued" variant="bodySm">
             {customer.companyName}
           </Text>
         </BlockStack>
