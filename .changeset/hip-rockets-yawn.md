@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Added restrictKeyboardAccess property for DropZone
+Added dragAndDropOnly property for DropZone to determine if keyboard accessibility is enabled when using the component along with custom onClick for files uploading
