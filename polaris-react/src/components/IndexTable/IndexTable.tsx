@@ -461,11 +461,6 @@ function IndexTableBase({
     );
   }, [tableInitialized, resizeTableScrollBar, condensed]);
 
-  const hasBulkActions = Boolean(
-    (promotedBulkActions && promotedBulkActions.length > 0) ||
-      (bulkActions && bulkActions.length > 0),
-  );
-
   const headingsMarkup = headings
     .map(renderHeading)
     .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
@@ -1125,7 +1120,7 @@ function IndexTableBase({
   }
 
   function getPaginatedSelectAllAction() {
-    if (!selectable || !hasBulkActions || !hasMoreItems) {
+    if (!selectable || !hasMoreItems) {
       return;
     }
 
