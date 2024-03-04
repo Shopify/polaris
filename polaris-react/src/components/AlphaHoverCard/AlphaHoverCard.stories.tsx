@@ -404,10 +404,10 @@ export function WithDynamicActivator() {
       >
         <BlockStack gap="400">
           <BlockStack gap="0">
-            <Text as="span" variant="headingSm">
+            <Text as="span" variant="headingSm" breakWord>
               <Link removeUnderline>{name}</Link>
             </Text>
-            <Text as="span" variant="bodyMd">
+            <Text as="span" variant="bodyMd" breakWord>
               <Link url={`mailto:${email}`}>{email}</Link>
             </Text>
             <Text as="p" variant="bodyMd">
@@ -602,9 +602,11 @@ export function WithDynamicActivator() {
           </Text>
         </BlockStack>
       ) : (
-        <Text truncate as="p">
-          {customer.name}
-        </Text>
+        <InlineStack wrap={false} blockAlign="center">
+          <Text truncate as="p">
+            {customer.name}
+          </Text>
+        </InlineStack>
       );
 
       return (
