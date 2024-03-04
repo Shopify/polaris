@@ -161,12 +161,12 @@ export function Actions({actions, groups, onActionRollup}: Props) {
     return isVisibleGroup;
   });
 
-  const hiddenActionObjects = hiddenActions.map(
-    (index) => actionsOrDefault[index],
-  );
-  const hiddenGroupObjects = hiddenGroups.map(
-    (index) => groupsOrDefault[index],
-  );
+  const hiddenActionObjects = hiddenActions
+    .map((index) => actionsOrDefault[index])
+    .filter((action) => action != null);
+  const hiddenGroupObjects = hiddenGroups
+    .map((index) => groupsOrDefault[index])
+    .filter((group) => group != null);
 
   const groupsMarkup = filteredGroups.map((group) => {
     const {title, actions: groupActions, ...rest} = group;

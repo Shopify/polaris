@@ -263,6 +263,28 @@ describe('IndexFilters', () => {
 
       expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
     });
+
+    it('does nothing if hideQueryField and hideFilters are true', () => {
+      const onEditStart = jest.fn();
+
+      mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          mode={IndexFiltersMode.Default}
+          onEditStart={onEditStart}
+          hideQueryField
+          hideFilters
+        />,
+      );
+
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'f',
+        }),
+      );
+
+      expect(onEditStart).not.toHaveBeenCalledWith(IndexFiltersMode.Filtering);
+    });
   });
 
   describe('pressing escape', () => {
@@ -309,6 +331,25 @@ describe('IndexFilters', () => {
       );
 
       expect(defaultProps.cancelAction!.onAction).toHaveBeenCalled();
+    });
+
+    it('does nothing if hideQueryField and hideFilters are true', () => {
+      mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          mode={IndexFiltersMode.Filtering}
+          hideQueryField
+          hideFilters
+        />,
+      );
+
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Escape',
+        }),
+      );
+
+      expect(defaultProps.cancelAction!.onAction).not.toHaveBeenCalled();
     });
   });
 
