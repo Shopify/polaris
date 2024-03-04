@@ -8,18 +8,13 @@
   position: relative;
   display: flex;
   height: 36px;
-  background-color: var(--p-color-bg-surface-inverse);
 
-  border-radius: var(--p-border-radius-300);
-  border: solid var(--p-border-width-025) transparent;
-  // stylelint-disable-next-line polaris/color/function-disallowed-list -- custom top border color for shading effect
-  background-image: linear-gradient(
-      var(--p-color-bg-surface-inverse),
-      var(--p-color-bg-surface-inverse)
-    ),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.12), transparent);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
+  @include border-gradient(
+    var(--p-color-bg-surface-inverse),
+    rgba(255, 255, 255, 0.12),
+    transparent,
+    var(--p-border-radius-300)
+  );
 
   // stylelint-disable -- prototype
   &::before {
@@ -33,17 +28,12 @@
     opacity: 0;
     transition: opacity 0.6s var(--p-motion-ease-out);
 
-    border-radius: var(--p-border-radius-300);
-    border: solid var(--p-border-width-025) transparent;
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
-    background-color: var(--p-color-bg-fill-success-active);
-
-    background-image: linear-gradient(
-        var(--p-color-bg-fill-success-active),
-        var(--p-color-bg-fill-success-active)
-      ),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.12), transparent);
+    @include border-gradient(
+      var(--p-color-bg-fill-success-active),
+      rgba(255, 255, 255, 0.12),
+      transparent,
+      var(--p-border-radius-300)
+    );
   }
   // stylelint-enable
 
