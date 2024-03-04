@@ -147,4 +147,4 @@ To upload a file with the keyboard, merchants can interact with the drag-and-dro
 - To give the input keyboard focus, use the <kbd>tab</kbd> key (or <kbd>shift</kbd> + <kbd>tab</kbd> when tabbing backwards)
 - To activate the input, use the <kbd>enter</kbd>/<kbd>return</kbd> or <kbd>space</kbd> keys
 
-To prevent the drag-and-drop region to be keyboard focusable in case DropZone `children` is modal activator itself, use the `restrictKeyboardAccess` prop along with custom callback `onClick`.
+By opting for a personalized Modal over the default File Dialog using `onClick`, we can choose to maintain consistent user experience when navigating via keyboard. Integrate the `dragAndDropOnly` attribute along with a customized `onClick` callback. This feature can be useful when the `children` property of DropZone acts as the custom Modal trigger, and both components are utilized within a confined space.
