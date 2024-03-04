@@ -42,7 +42,7 @@ export interface RowProps {
   /** Callback fired when the row is clicked and contains a data-primary-link */
   onNavigation?(id: string): void;
   /** Callback fired when the row is clicked. Overrides the default click behaviour. */
-  onClick?(): void;
+  onClick?(event: React.MouseEvent): void;
 }
 
 export const Row = memo(function Row({
@@ -133,13 +133,14 @@ export const Row = memo(function Row({
       if (!tableRowRef.current || isNavigating.current) {
         return;
       }
-      event.stopPropagation();
-      event.preventDefault();
 
       if (onClick) {
-        onClick();
+        onClick(event);
         return;
       }
+
+      event.stopPropagation();
+      event.preventDefault();
 
       if (primaryLinkElement.current && !selectMode) {
         isNavigating.current = true;
