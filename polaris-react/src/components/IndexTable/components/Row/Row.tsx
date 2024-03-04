@@ -162,9 +162,10 @@ export const Row = memo(function Row({
           new MouseEvent(event.type, event.nativeEvent),
         );
       } else {
-        isNavigating.current = false;
         handleInteraction(event);
       }
+
+      isNavigating.current = false;
     };
   }
 

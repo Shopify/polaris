@@ -344,7 +344,7 @@ describe('<Row />', () => {
     ['<Link>', () => <Link url="/" dataPrimaryLink />],
     ['<Button>', () => <Button url="/" dataPrimaryLink />],
   ])(
-    'calls onNavigation when clicked %s',
+    'calls onNavigation when %s is clicked',
     (_: string, renderElement: () => JSX.Element) => {
       const onNavigationSpy = jest.fn();
       const row = mountWithTable(
@@ -356,6 +356,25 @@ describe('<Row />', () => {
       triggerOnClick(row, 1, defaultEvent);
 
       expect(onNavigationSpy).toHaveBeenCalledTimes(1);
+    },
+  );
+
+  it.each([
+    ['<Link>', () => <Link url="/" dataPrimaryLink />],
+    ['<Button>', () => <Button url="/" dataPrimaryLink />],
+  ])(
+    'calls onNavigation each time %s is clicked',
+    (_: string, renderElement: () => JSX.Element) => {
+      const onNavigationSpy = jest.fn();
+      const row = mountWithTable(
+        <Row {...defaultProps} onNavigation={onNavigationSpy}>
+          <th>{renderElement()}</th>
+        </Row>,
+      );
+
+      triggerOnClick(row, 3, defaultEvent);
+
+      expect(onNavigationSpy).toHaveBeenCalledTimes(3);
     },
   );
 
