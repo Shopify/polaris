@@ -615,6 +615,18 @@ export function WithDynamicActivator() {
           key={id}
           selected={selectedResources.includes(id)}
           position={index}
+          onClick={(event: React.MouseEvent) => {
+            // Custom onClick to ensure row click only navigates to order details when not clicking on an activator
+            if (
+              event.target instanceof HTMLElement &&
+              (event.target.closest('[data-hovercard-activator]') ||
+                event.target.closest('[data-popover-activator]'))
+            ) {
+              return;
+            }
+
+            console.log(`Navigated to order ${id}`);
+          }}
         >
           <IndexTable.Cell>
             <Link monochrome removeUnderline dataPrimaryLink url="#">
