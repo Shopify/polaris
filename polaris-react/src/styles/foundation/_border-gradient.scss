@@ -1,0 +1,33 @@
+/// Applies a shadow-gradient effect to an element.
+/// @param $backgroundColor - Color of element inside the border
+/// @param $startColor - Border color at the top of the element
+/// @param $endColor - Border color at the bottom of the element.
+/// @param $borderRadius - Polaris BorderRadiusScale custom property.
+@mixin border-gradient(
+  $backgroundColor: null,
+  $startColor: null,
+  $endColor: null,
+  $borderRadius: null
+) {
+  border-radius: $borderRadius;
+  border: solid var(--p-border-width-025) transparent;
+  background-color: $backgroundColor;
+  background-image: linear-gradient($backgroundColor, $backgroundColor),
+    linear-gradient(to bottom, $startColor, $endColor);
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+}
+
+/// Override border gradient colors after setting base border-gradient.
+/// This can be used on element state changes like on hover.
+/// @param $backgroundColor - Color of element inside the border
+/// @param $startColor - Border color at the top of the element
+/// @param $endColor - Border color at the bottom of the element.
+@mixin update-border-gradient-colors(
+  $backgroundColor: null,
+  $startColor: null,
+  $endColor: null
+) {
+  background-image: linear-gradient($backgroundColor, $backgroundColor),
+    linear-gradient(to bottom, $startColor, $endColor);
+}
