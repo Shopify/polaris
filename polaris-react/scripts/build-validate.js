@@ -41,9 +41,9 @@ function validateStandardBuild() {
 
   // Standard build css contains namespaced classes
   const cssContent = fs.readFileSync('./build/esm/styles.css', 'utf-8');
-  assert.ok(cssContent.includes('.Polaris-Avatar {'));
-  assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton {'));
-  assert.ok(cssContent.includes('@keyframes p-motion-keyframes-bounce {'));
+  assert.ok(cssContent.includes('.Polaris-Avatar{'));
+  assert.ok(cssContent.includes('.Polaris-BulkActions__BulkActionButton{'));
+  assert.ok(cssContent.includes('@keyframes p-motion-keyframes-bounce{'));
   assert.ok(
     cssContent.includes(
       '--p-motion-keyframes-bounce:p-motion-keyframes-bounce;',
@@ -56,9 +56,7 @@ function validateEsNextBuild() {
   assert.ok(fs.existsSync('./build/esnext/index.esnext'));
   assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.esnext'));
   assert.ok(fs.existsSync('./build/esnext/components/Avatar/Avatar.css'));
-  assert.ok(
-    fs.existsSync('./build/esnext/components/AppProvider/AppProvider.css'),
-  );
+  assert.ok(fs.existsSync('./build/esnext/components/AppProvider/global.css'));
 
   // ESnext build css contains namespaced classes, and
   const cssContent = fs.readFileSync(
@@ -69,9 +67,9 @@ function validateEsNextBuild() {
     './build/esnext/components/AppProvider/global.css',
     'utf-8',
   );
-  assert.ok(cssContent.includes('.Polaris-Avatar_z763p {'));
+  assert.ok(cssContent.includes('.Polaris-Avatar_z763p{'));
   assert.ok(
-    cssKeyframesContent.includes('@keyframes p-motion-keyframes-spin {'),
+    cssKeyframesContent.includes('@keyframes p-motion-keyframes-spin{'),
   );
   assert.ok(
     cssKeyframesContent.includes(
@@ -119,6 +117,6 @@ function validateVersionReplacement() {
 
   assert.deepStrictEqual(fileBuckets.includesVersion, [
     './build/esm/styles.css',
-    './build/esnext/components/AppProvider/AppProvider.css',
+    './build/esnext/components/AppProvider/global.css',
   ]);
 }
