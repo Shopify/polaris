@@ -234,6 +234,74 @@ describe('<Actions />', () => {
       children: 'mock content 2',
     });
   });
+
+  it('filters out values from the hiddenActions array if they do not match the actions array', () => {
+    mockGetVisibleAndHiddenActionsIndices({
+      visibleActions: [0, 1],
+      visibleGroups: [],
+      hiddenActions: [2, 3, 4, 5],
+      hiddenGroups: [],
+    });
+
+    const wrapper = mountWithApp(
+      <ActionMenu
+        actions={[
+          {content: 'mock content 0'},
+          {content: 'mock content 1'},
+          {content: 'mock content 2'},
+        ]}
+      />,
+    );
+
+    forceMeasurement(wrapper);
+
+    expect(wrapper).toContainReactComponent(SecondaryAction, {
+      children: 'mock content 0',
+    });
+    expect(wrapper).toContainReactComponent(SecondaryAction, {
+      children: 'mock content 1',
+    });
+    expect(wrapper).toContainReactComponent(SecondaryAction, {
+      children: 'More actions',
+    });
+    expect(wrapper).not.toContainReactComponent(SecondaryAction, {
+      children: 'mock content 2',
+    });
+  });
+
+  it('filters out values from the hiddenGroups array if they do not match the groups array', () => {
+    mockGetVisibleAndHiddenActionsIndices({
+      visibleActions: [],
+      visibleGroups: [0, 1],
+      hiddenActions: [],
+      hiddenGroups: [2, 3, 4, 5],
+    });
+
+    const wrapper = mountWithApp(
+      <ActionMenu
+        groups={[
+          {title: 'Menu group 0', actions: [{content: 'mock content 0'}]},
+          {title: 'Menu group 1', actions: [{content: 'mock content 1'}]},
+          {title: 'Menu group 2', actions: [{content: 'mock content 2'}]},
+        ]}
+      />,
+    );
+
+    forceMeasurement(wrapper);
+
+    expect(wrapper).toContainReactComponent(SecondaryAction, {
+      children: 'Menu group 0',
+    });
+    expect(wrapper).toContainReactComponent(SecondaryAction, {
+      children: 'Menu group 1',
+    });
+    expect(wrapper).toContainReactComponent(SecondaryAction, {
+      children: 'More actions',
+    });
+    expect(wrapper).not.toContainReactComponent(SecondaryAction, {
+      children: 'Menu group 2',
+    });
+  });
 });
 
 function findWrapper(wrapper: CustomRoot<any, any>) {
