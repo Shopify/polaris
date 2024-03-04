@@ -59,20 +59,12 @@ const mockTableItems = [
 
 const mockTableHeadings: IndexTableProps['headings'] = [{title: 'Title'}];
 
-function Component({
-  id,
-  title,
-  condensed,
-}: {
-  id: string;
-  title: string;
-  condensed?: boolean;
-}) {
+function Component({title, condensed}: {title: string; condensed?: boolean}) {
   const Wrapper = condensed ? 'li' : 'tr';
   const Child = condensed ? 'div' : 'td';
 
   return (
-    <Wrapper key={id}>
+    <Wrapper>
       <Child>{title}</Child>
     </Wrapper>
   );
@@ -586,9 +578,9 @@ describe('<IndexTable>', () => {
       {title: 'Baz'},
     ];
     const tableItems = [
-      {foo: 'Foo1', bar: 'Bar1', baz: 'Baz1'},
-      {foo: 'Foo2', bar: 'Bar2', baz: 'Baz2'},
-      {foo: 'Foo3', bar: 'Bar3', baz: 'Baz3'},
+      {id: 'item-1', foo: 'Foo1', bar: 'Bar1', baz: 'Baz1'},
+      {id: 'item-2', foo: 'Foo2', bar: 'Bar2', baz: 'Baz2'},
+      {id: 'item-3', foo: 'Foo3', bar: 'Bar3', baz: 'Baz3'},
     ];
 
     const defaultSortingProps: IndexTableProps = {
