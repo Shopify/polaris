@@ -95,6 +95,12 @@
   width: 100%;
   max-width: 100%;
   max-height: 100%;
+
+  @media (--p-breakpoints-md-up) {
+    margin: var(--p-space-050);
+    width: 16px;
+    height: 16px;
+  }
 }
 
 .Placeholder {
