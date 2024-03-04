@@ -1,4 +1,4 @@
-import React, {memo, useRef} from 'react';
+import React, {memo, useRef, useId} from 'react';
 import type {ReactNode} from 'react';
 import {ChevronDownIcon} from '@shopify/polaris-icons';
 
@@ -63,6 +63,7 @@ export const Cell = memo(function Cell({
 }: CellProps) {
   const activatorRef = useRef<HTMLButtonElement>(null);
   const i18n = useI18n();
+  const previewActivatorId = `'IndexTable-CellPreview-Activator'-${useId()}`;
   const [popoverActive, setPopoverActive] = React.useState(false);
   const indexCellContext = useIndexCell();
   const {mdUp} = useBreakpoints();
@@ -98,8 +99,7 @@ export const Cell = memo(function Cell({
     setPopoverActive((popoverActive) => !popoverActive);
   };
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
+  const handleClick = () => {
     if (showPreviewOnHover) return;
     handlePopoverToggle();
   };
@@ -112,13 +112,22 @@ export const Cell = memo(function Cell({
     }
   };
 
-  const hoverCardProps = hasHoverPreview
+  const hoverCardActivatorProps = hasHoverPreview
     ? {
         onMouseEnter: handleMouseEnter,
         onMouseLeave: handleMouseLeave,
+        onKeyUp: handleKeyPress,
         'data-hovercard-activator': true,
       }
     : {};
+
+  const popoverActivatorProps =
+    previewContent && !showPreviewOnHover
+      ? {
+          onClick: handleClick,
+          'data-popover-activator': true,
+        }
+      : {};
 
   const disclosureIcon = !showPreviewOnHover ? (
     <Box>
@@ -141,12 +150,12 @@ export const Cell = memo(function Cell({
 
   const previewActivator = previewContent ? (
     <button
+      id={previewActivatorId}
       ref={activatorRef}
       aria-label={activatorLabel}
       className={activatorClassNames}
-      onKeyUp={handleKeyPress}
-      onClick={!showPreviewOnHover ? handleClick : undefined}
-      {...hoverCardProps}
+      {...popoverActivatorProps}
+      {...hoverCardActivatorProps}
     >
       <div className={styles.PreviewActivatorContent}>
         {children}
