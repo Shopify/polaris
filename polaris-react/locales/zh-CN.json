@@ -345,7 +345,10 @@
       "selectAllItems": "选择所有 {itemsLength}+ 个 {resourceNamePlural}",
       "selectItem": "选择 {resourceName}",
       "selectButtonText": "选择",
-      "sortAccessibilityLabel": "向 {direction} 排序"
+      "sortAccessibilityLabel": "向 {direction} 排序",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "查看详细信息"
+      }
     },
     "Page": {
       "Header": {

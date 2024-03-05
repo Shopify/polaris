@@ -345,7 +345,10 @@
       "selectAllItems": "เลือก {resourceNamePlural} ทั้ง {itemsLength}+ รายการ",
       "selectItem": "เลือก {resourceName}",
       "selectButtonText": "เลือก",
-      "sortAccessibilityLabel": "จัดเรียง {direction} ตาม"
+      "sortAccessibilityLabel": "จัดเรียง {direction} ตาม",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "ดูรายละเอียด"
+      }
     },
     "Page": {
       "Header": {
