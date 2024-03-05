@@ -1,4 +1,6 @@
 .Item {
+  @mixin unstyled-button;
+  @mixin focus-ring wide;
   // stylelint-disable -- Polaris component custom properties
   --pc-action-list-item-min-height: var(--p-space-800);
   --pc-action-list-indented-item-margin: calc(
@@ -14,8 +16,6 @@
     (var(--pc-action-list-item-min-height) - var(--p-font-line-height-500)) / 2
   );
   // stylelint-enable
-  @mixin unstyled-button;
-  @mixin focus-ring wide;
   display: flex;
   align-items: center;
   width: 100%;
