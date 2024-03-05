@@ -345,7 +345,10 @@
       "selectAllItems": "Alle {itemsLength}+ {resourceNamePlural} auswählen",
       "selectItem": "{resourceName} auswählen",
       "selectButtonText": "Auswählen",
-      "sortAccessibilityLabel": "von {direction} sortieren nach"
+      "sortAccessibilityLabel": "von {direction} sortieren nach",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "Details anzeigen"
+      }
     },
     "Page": {
       "Header": {

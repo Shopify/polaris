@@ -345,7 +345,10 @@
       "selectAllItems": "選取全部 {itemsLength} + {resourceNamePlural}",
       "selectItem": "選取 {resourceName}",
       "selectButtonText": "選取",
-      "sortAccessibilityLabel": "向 {direction} 排序，依據"
+      "sortAccessibilityLabel": "向 {direction} 排序，依據",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "檢視詳細資訊"
+      }
     },
     "Page": {
       "Header": {

@@ -345,7 +345,10 @@
       "selectAllItems": "Chọn tất cả {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Chọn {resourceName}",
       "selectButtonText": "Chọn",
-      "sortAccessibilityLabel": "sắp xếp {direction} theo"
+      "sortAccessibilityLabel": "sắp xếp {direction} theo",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "Xem chi tiết"
+      }
     },
     "Page": {
       "Header": {

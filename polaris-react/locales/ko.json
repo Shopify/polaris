@@ -345,7 +345,10 @@
       "selectAllItems": "길이가 {itemsLength} 이상인 모든 {resourceNamePlural} 선택",
       "selectItem": "{resourceName} 선택",
       "selectButtonText": "선택",
-      "sortAccessibilityLabel": "{direction} 정렬 기준"
+      "sortAccessibilityLabel": "{direction} 정렬 기준",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "세부 정보 보기"
+      }
     },
     "Page": {
       "Header": {
