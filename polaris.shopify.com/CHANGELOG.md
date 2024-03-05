@@ -1,5 +1,21 @@
 # polaris.shopify.com
 
+## 0.64.0
+
+### Minor Changes
+
+- [#11674](https://github.com/Shopify/polaris/pull/11674) [`042b428be`](https://github.com/Shopify/polaris/commit/042b428beb4cdbbe607a6d4bd2ab91c03616bb8a) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated BulkActions to show titles of sections if provided
+
+* [#11683](https://github.com/Shopify/polaris/pull/11683) [`8a0e1b32f`](https://github.com/Shopify/polaris/commit/8a0e1b32f5067784d7b8c0b889aad99a2498488e) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Update design guidance for icons
+
+- [#11634](https://github.com/Shopify/polaris/pull/11634) [`27ca061a6`](https://github.com/Shopify/polaris/commit/27ca061a6f9d3f1cf8ead018b42fe3745d875e6d) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Adds guidance on optimzing icons to contribution page
+
+### Patch Changes
+
+- Updated dependencies [[`c2e443ec9`](https://github.com/Shopify/polaris/commit/c2e443ec9b4e2e0eeb839516cc710b9d62296732), [`ab2877249`](https://github.com/Shopify/polaris/commit/ab28772495610ffffa208a0e8fc6903a2fc92e25), [`ac563025e`](https://github.com/Shopify/polaris/commit/ac563025ef83ff3ce049e0db10e2356341dd4e9e), [`75dcb5443`](https://github.com/Shopify/polaris/commit/75dcb5443f166f4073e81431d4a0b9891ec9e051), [`042b428be`](https://github.com/Shopify/polaris/commit/042b428beb4cdbbe607a6d4bd2ab91c03616bb8a), [`9eebf1a45`](https://github.com/Shopify/polaris/commit/9eebf1a458d20cc59f902b93feda620126e6189d), [`8c7302e11`](https://github.com/Shopify/polaris/commit/8c7302e11ce4daa71e8b4143f8608cde367b1731), [`4263d9ada`](https://github.com/Shopify/polaris/commit/4263d9ada703343063fbb9cb944ef433ac02b37c), [`9b1b74447`](https://github.com/Shopify/polaris/commit/9b1b7444783560ccb2281451c6deec63923ce58b), [`eeea3b96c`](https://github.com/Shopify/polaris/commit/eeea3b96c2e19dcf0076d16f0182ffb1420694ac)]:
+  - @shopify/polaris@12.20.0
+  - @shopify/polaris-icons@8.7.0
+
 ## 0.63.4
 
 ### Patch Changes

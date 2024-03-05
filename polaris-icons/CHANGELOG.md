@@ -1,5 +1,19 @@
 # Changelog
 
+## 8.7.0
+
+### Minor Changes
+
+- [#11682](https://github.com/Shopify/polaris/pull/11682) [`9eebf1a45`](https://github.com/Shopify/polaris/commit/9eebf1a458d20cc59f902b93feda620126e6189d) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Fixes clipping on mobile
+
+* [#11686](https://github.com/Shopify/polaris/pull/11686) [`9b1b74447`](https://github.com/Shopify/polaris/commit/9b1b7444783560ccb2281451c6deec63923ce58b) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Update icons for mobile clipping
+
+- [#11687](https://github.com/Shopify/polaris/pull/11687) [`eeea3b96c`](https://github.com/Shopify/polaris/commit/eeea3b96c2e19dcf0076d16f0182ffb1420694ac) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Minus and Plus icons to big and unbalanced
+
+### Patch Changes
+
+- [#11685](https://github.com/Shopify/polaris/pull/11685) [`ac563025e`](https://github.com/Shopify/polaris/commit/ac563025ef83ff3ce049e0db10e2356341dd4e9e) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Removed REM units from SkeletonIcon
+
 ## 8.6.0
 
 ### Minor Changes
