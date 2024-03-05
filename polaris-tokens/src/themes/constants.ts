@@ -5,4 +5,5 @@ export const themeNames = [
   themeNameLight,
   'light-mobile',
   'light-high-contrast-experimental',
+  'dark',
 ] as const;
