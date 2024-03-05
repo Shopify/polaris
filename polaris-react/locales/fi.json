@@ -345,7 +345,10 @@
       "selectAllItems": "Valitse kaikki {itemsLength} ja {resourceNamePlural}",
       "selectItem": "Valitse {resourceName}",
       "selectButtonText": "Valitse",
-      "sortAccessibilityLabel": "lajittele {direction}:"
+      "sortAccessibilityLabel": "lajittele {direction}:",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "Näytä tiedot"
+      }
     },
     "Page": {
       "Header": {

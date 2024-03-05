@@ -5,6 +5,7 @@ import {useBreakpoints} from '../../../utilities/breakpoints';
 import {classNames} from '../../../utilities/css';
 import styles from '../AlphaHoverCard.module.scss';
 
+const HOVER_DELAY_TIMEOUT = 100;
 const HOVER_OUT_TIMEOUT = 200;
 
 export function useHoverCardActivatorWrapperProps({
@@ -98,7 +99,17 @@ export function useHoverCardActivatorWrapperProps({
   }, [toggleActive, removePresence]);
 
   const handleMouseLeaveActivator = useCallback(
-    (event: React.MouseEvent) => {
+    (event?: React.MouseEvent) => {
+      if (!event) {
+        if (hoverDelayTimeout.current) {
+          clearTimeout(hoverDelayTimeout.current);
+          hoverDelayTimeout.current = null;
+        }
+
+        handleClose();
+        return;
+      }
+
       if (mouseEnteredOrLeftActivator(event)) {
         if (
           dynamicActivatorRef.current &&
@@ -116,7 +127,6 @@ export function useHoverCardActivatorWrapperProps({
           clearTimeout(hoverDelayTimeout.current);
           hoverDelayTimeout.current = null;
         }
-
         handleClose();
       }
     },
@@ -124,18 +134,18 @@ export function useHoverCardActivatorWrapperProps({
   );
 
   const handleMouseEnter = useCallback(
-    (event: React.MouseEvent<HTMLDivElement | HTMLTableCellElement>) => {
+    (event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
       if (!mdUp) return;
+
+      mouseEntered.current = true;
       if (!providedActivatorRef) {
         dynamicActivatorRef.current = event.currentTarget;
       }
 
-      mouseEntered.current = true;
-
       if (!presenceList.hovercard) {
         hoverDelayTimeout.current = setTimeout(() => {
           handleOpen();
-        }, 100);
+        }, HOVER_DELAY_TIMEOUT);
       } else {
         handleOpen();
       }
@@ -146,7 +156,7 @@ export function useHoverCardActivatorWrapperProps({
   // https://github.com/facebook/react/issues/10109
   // Mouseenter event not triggered when cursor moves from disabled button
   const handleMouseEnterFix = useCallback(
-    (event: React.MouseEvent<HTMLDivElement | HTMLTableCellElement>) => {
+    (event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => {
       if (mouseEnteredOrLeftActivator(event) && !mouseEntered.current) {
         handleMouseEnter(event);
       }

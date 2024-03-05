@@ -1,8 +1,14 @@
-import React, {memo} from 'react';
+import React, {memo, useRef, useId} from 'react';
 import type {ReactNode} from 'react';
+import {ChevronDownIcon} from '@shopify/polaris-icons';
 
+import {Box} from '../../../Box';
+import {Icon} from '../../../Icon';
+import {Popover} from '../../../Popover';
 import {classNames} from '../../../../utilities/css';
 import {useIndexCell} from '../../../../utilities/index-provider';
+import {useI18n} from '../../../../utilities/i18n';
+import {useBreakpoints} from '../../../../utilities/breakpoints';
 import styles from '../../IndexTable.module.scss';
 
 export interface CellProps {
@@ -27,7 +33,13 @@ export interface CellProps {
   /** A space-separated list of the `th` cell IDs that describe or apply to it. Use for cells within a row that relate to a subheader cell in addition to their column header. */
   headers?: HTMLTableCellElement['headers'];
   /** Markup to render on cell hover */
-  preview?: React.ReactNode;
+  previewContent?: React.ReactNode;
+  /** Label set on the previewContent activator the button when showPreviewOnHover is false
+   * @default 'View details'
+   */
+  previewAccessibilityLabel?: string;
+  /** Whether the cell previewContent should render on hover */
+  showPreviewOnHover?: boolean;
   /** Callback fired when mouse enters cell */
   onMouseEnter?(): void;
   /** Callback fired when mouse leaves cell */
@@ -43,36 +55,130 @@ export const Cell = memo(function Cell({
   scope,
   as = 'td',
   id,
-  preview,
+  showPreviewOnHover,
+  previewContent,
+  previewAccessibilityLabel,
   onMouseEnter,
   onMouseLeave,
 }: CellProps) {
+  const activatorRef = useRef<HTMLButtonElement>(null);
+  const i18n = useI18n();
+  const previewActivatorId = `'IndexTable-CellPreview-Activator'-${useId()}`;
+  const [popoverActive, setPopoverActive] = React.useState(false);
   const indexCellContext = useIndexCell();
-  const hasPreview = preview && indexCellContext !== undefined;
+  const {mdUp} = useBreakpoints();
+  const hasHoverPreview =
+    showPreviewOnHover && previewContent && indexCellContext !== undefined;
+
   const className = classNames(
     customClassName,
     styles.TableCell,
     flush && styles['TableCell-flush'],
-    hasPreview && indexCellContext.previewActivatorWrapperClassName,
+    previewContent && styles.hasPreview,
   );
 
-  const handlePreviewOpen =
-    hasPreview && indexCellContext?.onMouseEnterCell
-      ? indexCellContext?.onMouseEnterCell(preview)
+  const handleHoverCardOpen =
+    hasHoverPreview && indexCellContext?.onMouseEnterCell
+      ? indexCellContext?.onMouseEnterCell(previewContent)
       : undefined;
 
-  const handleMouseEnter = (event: React.MouseEvent<HTMLTableCellElement>) => {
-    if (handlePreviewOpen) handlePreviewOpen(event);
+  const handleMouseEnter = (event: React.MouseEvent<HTMLButtonElement>) => {
+    if (handleHoverCardOpen) handleHoverCardOpen(event);
     onMouseEnter?.();
   };
 
-  const handleMouseLeave = (event: React.MouseEvent<HTMLTableCellElement>) => {
-    if (hasPreview && indexCellContext?.onMouseLeaveCell) {
+  const handleMouseLeave = (event?: React.MouseEvent<HTMLButtonElement>) => {
+    if (event && hasHoverPreview && indexCellContext?.onMouseLeaveCell) {
       indexCellContext?.onMouseLeaveCell(event);
     }
 
     onMouseLeave?.();
   };
+
+  const handlePopoverToggle = () => {
+    setPopoverActive((popoverActive) => !popoverActive);
+  };
+
+  const handleClick = () => {
+    if (showPreviewOnHover) return;
+    handlePopoverToggle();
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    if (event.key === 'Enter' || event.key === 'Space') {
+      handlePopoverToggle();
+    } else if (event.key === 'Escape') {
+      handleMouseLeave();
+    }
+  };
+
+  const hoverCardActivatorProps = hasHoverPreview
+    ? {
+        onMouseEnter: handleMouseEnter,
+        onMouseLeave: handleMouseLeave,
+        onKeyUp: handleKeyPress,
+        'data-hovercard-activator': true,
+      }
+    : {};
+
+  const popoverActivatorProps =
+    previewContent && !showPreviewOnHover
+      ? {
+          onClick: handleClick,
+          'data-popover-activator': true,
+        }
+      : {};
+
+  const disclosureIcon = !showPreviewOnHover ? (
+    <Box>
+      <Icon tone="inherit" source={ChevronDownIcon} />
+    </Box>
+  ) : null;
+
+  const activatorClassNames = classNames(
+    styles.PreviewActivator,
+    popoverActive && styles.popoverActive,
+    hasHoverPreview && styles.showPreviewOnHover,
+    hasHoverPreview && indexCellContext.previewActivatorWrapperClassName,
+  );
+
+  const activatorLabel = previewAccessibilityLabel
+    ? previewAccessibilityLabel
+    : i18n.translate(
+        'Polaris.IndexTable.Cell.previewActivatorAccessibilityLabel',
+      );
+
+  const previewActivator = previewContent ? (
+    <button
+      id={previewActivatorId}
+      ref={activatorRef}
+      aria-label={activatorLabel}
+      className={activatorClassNames}
+      {...popoverActivatorProps}
+      {...hoverCardActivatorProps}
+    >
+      <div className={styles.PreviewActivatorContent}>
+        {children}
+        {disclosureIcon}
+      </div>
+    </button>
+  ) : null;
+
+  let childContent = children;
+
+  if (mdUp && previewActivator) {
+    childContent = (
+      <Popover
+        flush
+        preferredPosition="right"
+        activator={previewActivator}
+        active={popoverActive}
+        onClose={handlePopoverToggle}
+      >
+        {previewContent}
+      </Popover>
+    );
+  }
 
   return React.createElement(
     as,
@@ -82,10 +188,7 @@ export const Cell = memo(function Cell({
       headers,
       scope,
       className,
-      'data-hovercard-activator': preview ? true : undefined,
-      onMouseEnter: handleMouseEnter,
-      onMouseLeave: handleMouseLeave,
     },
-    children,
+    childContent,
   );
 });

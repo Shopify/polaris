@@ -16,7 +16,6 @@ import {
   BlockStack,
   InlineStack,
   Card,
-  Scrollable,
 } from '@shopify/polaris';
 import {
   DeliveryIcon,
@@ -193,6 +192,7 @@ export function WithDynamicActivator() {
         email: 'yo@superduperkid.co',
         phone: '+19171111111',
         name: 'Colm Dillane',
+        companyName: 'KidSuper Studios Inc.',
         location: 'Brooklyn, NY, USA',
         orders: 27,
       },
@@ -244,7 +244,7 @@ export function WithDynamicActivator() {
       tags: ['VIP', 'wholesale', 'Net 30', 'pickup', 'priority'],
     },
     {
-      id: '1022',
+      id: '1020',
       title: (
         <Text as="span" variant="bodyMd" fontWeight="semibold">
           #1020
@@ -255,7 +255,7 @@ export function WithDynamicActivator() {
         id: '4102',
         email: 'yo@superduperkid.co',
         phone: '+19171111111',
-        name: 'Colm Dillane',
+        name: 'Colm DillaneColm DillaneColm DillaneColm DillaneColm Dillane',
         location: 'Brooklyn, NY, USA',
         orders: 27,
       },
@@ -404,10 +404,10 @@ export function WithDynamicActivator() {
       >
         <BlockStack gap="400">
           <BlockStack gap="0">
-            <Text as="span" variant="headingSm">
+            <Text as="span" variant="headingSm" breakWord>
               <Link removeUnderline>{name}</Link>
             </Text>
-            <Text as="span" variant="bodyMd">
+            <Text as="span" variant="bodyMd" breakWord>
               <Link url={`mailto:${email}`}>{email}</Link>
             </Text>
             <Text as="p" variant="bodyMd">
@@ -592,24 +592,61 @@ export function WithDynamicActivator() {
       },
       index,
     ) => {
+      const customerNameMarkup = customer.companyName ? (
+        <BlockStack gap="100" align="center" inlineAlign="start">
+          <Text truncate as="p">
+            {customer.name}
+          </Text>
+          <Text truncate as="p" tone="subdued" variant="bodySm">
+            {customer.companyName}
+          </Text>
+        </BlockStack>
+      ) : (
+        <InlineStack wrap={false} blockAlign="center">
+          <Text truncate as="p">
+            {customer.name}
+          </Text>
+        </InlineStack>
+      );
+
       return (
         <IndexTable.Row
           id={id}
           key={id}
           selected={selectedResources.includes(id)}
           position={index}
+          onClick={(event: React.MouseEvent) => {
+            // Custom onClick to ensure row click only navigates to order details when not clicking on an activator
+            if (
+              event.target instanceof HTMLElement &&
+              (event.target.closest('[data-hovercard-activator]') ||
+                event.target.closest('[data-popover-activator]'))
+            ) {
+              return;
+            }
+
+            console.log(`Navigated to order ${id}`);
+          }}
         >
-          <IndexTable.Cell>{title}</IndexTable.Cell>
+          <IndexTable.Cell>
+            <Link monochrome removeUnderline dataPrimaryLink url="#">
+              {title}
+            </Link>
+          </IndexTable.Cell>
           <IndexTable.Cell>{date}</IndexTable.Cell>
           <IndexTable.Cell
             flush
-            preview={renderCustomerCellPreview(customer, id)}
+            showPreviewOnHover
+            previewContent={renderCustomerCellPreview(customer, id)}
           >
-            <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
-              <Link monochrome removeUnderline url="#">
-                {customer.name}
-              </Link>
-            </div>
+            <Box
+              minWidth="100%"
+              maxWidth="300px"
+              padding="150"
+              minHeight="fit-content"
+            >
+              {customerNameMarkup}
+            </Box>
           </IndexTable.Cell>
           <IndexTable.Cell>{channel}</IndexTable.Cell>
           <IndexTable.Cell>
@@ -621,7 +658,8 @@ export function WithDynamicActivator() {
           <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
           <IndexTable.Cell
             flush
-            preview={renderItemsCellPreview({
+            previewAccessibilityLabel={`View fulfillment details for ${items.length} items in order ${id}`}
+            previewContent={renderItemsCellPreview({
               id,
               location,
               deliveryMethod,
@@ -629,9 +667,11 @@ export function WithDynamicActivator() {
               items,
             })}
           >
-            <div style={{minHeight: '100%', padding: 'var(--p-space-150)'}}>
-              {`${items.length} items`}
-            </div>
+            <Box minHeight="100%" padding="150">
+              <InlineStack wrap={false} blockAlign="center">
+                {`${items.length} items`}
+              </InlineStack>
+            </Box>
           </IndexTable.Cell>
           <IndexTable.Cell>{deliveryStatus}</IndexTable.Cell>
           <IndexTable.Cell>{deliveryMethod}</IndexTable.Cell>

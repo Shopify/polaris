@@ -41,6 +41,7 @@ export interface PopoverOverlayProps {
   fullWidth?: boolean;
   fullHeight?: boolean;
   fluidContent?: boolean;
+  flush?: boolean;
   preferredPosition?: PositionedOverlayProps['preferredPosition'];
   preferredAlignment?: PositionedOverlayProps['preferredAlignment'];
   active: boolean;
@@ -210,6 +211,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       sectioned,
       fullWidth,
       fullHeight,
+      flush,
       fluidContent,
       hideOnPrint,
       autofocusTarget,
@@ -218,6 +220,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
 
     const className = classNames(
       styles.Popover,
+      flush && styles.flush,
       positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,

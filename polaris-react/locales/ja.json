@@ -345,7 +345,10 @@
       "selectAllItems": "すべての{itemsLength}+{resourceNamePlural}を選択する",
       "selectItem": "{resourceName}を選択する",
       "selectButtonText": "選択",
-      "sortAccessibilityLabel": "で{direction}を並び替える"
+      "sortAccessibilityLabel": "で{direction}を並び替える",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "詳細を表示"
+      }
     },
     "Page": {
       "Header": {

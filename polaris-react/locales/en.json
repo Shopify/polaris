@@ -232,7 +232,10 @@
       "selectAllItems": "Select all {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Select {resourceName}",
       "selectButtonText": "Select",
-      "sortAccessibilityLabel": "sort {direction} by"
+      "sortAccessibilityLabel": "sort {direction} by",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "View details"
+      }
     },
     "Loading": {
       "label": "Page loading bar"

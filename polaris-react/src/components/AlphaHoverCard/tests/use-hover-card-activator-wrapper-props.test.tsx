@@ -128,10 +128,10 @@ function DynamicActivatorChildComponent({
   children: React.ReactNode;
   className: string;
   onMouseEnter: (
-    event: React.MouseEvent<HTMLDivElement | HTMLTableCellElement>,
+    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
   ) => void;
   onMouseLeave: (
-    event: React.MouseEvent<HTMLDivElement | HTMLTableCellElement>,
+    event: React.MouseEvent<HTMLDivElement | HTMLButtonElement>,
   ) => void;
 }) {
   return (

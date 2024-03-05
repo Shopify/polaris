@@ -10,11 +10,10 @@
   display: flex;
   background: var(--p-color-bg-surface);
   margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
-  box-shadow: var(--p-shadow-500);
   border-radius: var(--p-border-radius-300);
 
   @include shadow-bevel(
-    $boxShadow: var(--p-shadow-md),
+    $boxShadow: var(--p-shadow-300),
     $borderRadius: var(--p-border-radius-300),
     $zIndex: 2
   );
@@ -50,7 +49,7 @@
 .measured {
   opacity: 1;
   transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in-out)
-    var(--p-motion-duration-300);
+    var(--p-motion-duration-500);
 }
 
 .positionedAbove {
@@ -61,6 +60,7 @@
   width: fit-content;
 
   &.snapToParent {
+    height: 100%;
     width: 100%;
   }
 }
