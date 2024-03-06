@@ -130,10 +130,14 @@ module.exports.styles = function styles({
       inputRoot = path.resolve(process.cwd(), path.dirname(input[0]));
     },
 
-    // Treat CSS files as external - don't try and resolve them within Rollup
-    // This only gets triggered in esnext mode when we emit imports of css files
+    // // Treat CSS files as external - don't try and resolve them within Rollup
+    // // This only gets triggered in esnext mode when we emit imports of css files
     resolveId(source, importer) {
-      if (source.endsWith(processedExt)) {
+      if (
+        source.endsWith(processedExt) &&
+        !source.endsWith(`.module${processedExt}`) &&
+        !source.includes('global')
+      ) {
         return {
           id: path.resolve(path.dirname(importer), source),
           external: true,
