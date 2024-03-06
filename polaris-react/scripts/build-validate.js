@@ -78,7 +78,7 @@ function validateEsNextBuild() {
   );
 
   const jsContent = fs.readFileSync(
-    './build/esnext/components/Avatar/Avatar.scss.esnext',
+    './build/esnext/components/Avatar/Avatar.css.esnext',
     'utf-8',
   );
 
