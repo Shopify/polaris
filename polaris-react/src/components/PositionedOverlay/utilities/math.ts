@@ -73,7 +73,12 @@ export function calculateVerticalPosition(
 
   const positionIfCoverAbove = {
     height: heightIfAbove - verticalMargins,
-    top: activatorTop + containerRectTop - heightIfAbove + activatorRect.height,
+    top:
+      activatorTop +
+      containerRectTop -
+      heightIfAbove +
+      activatorRect.height +
+      verticalMargins,
     positioning: 'cover',
   };
 

@@ -215,11 +215,11 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
       autofocusTarget,
       captureOverscroll,
     } = this.props;
-
+    const isCovering = positioning === 'cover';
     const className = classNames(
       styles.Popover,
-      fullWidth && styles.fullWidth,
       measuring && styles.measuring,
+      (fullWidth || isCovering) && styles.fullWidth,
       hideOnPrint && styles['PopoverOverlay-hideOnPrint'],
       positioning && styles[variationName('positioned', positioning)],
     );

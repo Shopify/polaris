@@ -112,12 +112,17 @@ export function ComplexSingleSelect({
         preferredPosition="cover"
         activator={activator}
       >
-        <Box paddingInline="200" paddingBlock="050" paddingBlockStart="200">
-          <Box paddingInlineStart="050">
-            <Text as="span" tone="subdued" variant="bodySm">
-              {resourceTitle}
-            </Text>
-          </Box>
+        <Box
+          paddingInline="200"
+          paddingBlock="050"
+          paddingBlockStart="200"
+          paddingInlineStart="300"
+          borderColor="transparent"
+          borderInlineStartWidth="025"
+        >
+          <Text as="span" tone="subdued" variant="bodySm">
+            {resourceTitle}
+          </Text>
         </Box>
         <Combobox
           variant="experimental-inline"
