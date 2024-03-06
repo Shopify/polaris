@@ -31,8 +31,7 @@ module.exports.styles = function styles({
   ]);
 
   let inputRoot;
-
-  const processedExt = '.css';
+  const processedExt = '.out.css';
 
   const cssByFile = {};
 
@@ -54,7 +53,6 @@ module.exports.styles = function styles({
       path.dirname(id),
       id.replace(/(\.module)?\.css$/, processedExt),
     )}`;
-
     rollup.emitFile({
       type: 'asset',
       fileName: id
@@ -133,16 +131,12 @@ module.exports.styles = function styles({
     // // Treat CSS files as external - don't try and resolve them within Rollup
     // // This only gets triggered in esnext mode when we emit imports of css files
     resolveId(source, importer) {
-      if (
-        source.endsWith(processedExt) &&
-        !source.endsWith(`.module${processedExt}`) &&
-        !source.includes('global')
-      ) {
-        return {
-          id: path.resolve(path.dirname(importer), source),
-          external: true,
-        };
-      }
+      if (!source.endsWith([processedExt])) return;
+      const id = path.resolve(path.dirname(importer), source);
+      return {
+        id,
+        external: true,
+      };
     },
 
     async transform(source, id) {
