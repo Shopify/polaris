@@ -65,7 +65,7 @@ module.exports.styles = function styles({
     // No need to specify no-treeshake here as .css files get treated as
     // external and thus their imports will not be tree shaken away anyway
     return {
-      code: `import './${relativePath}';\nexport default ${properties};`,
+      code: `import '${relativePath}';\nexport default ${properties};`,
     };
   }
 
