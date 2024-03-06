@@ -213,6 +213,10 @@ $height: 20px;
 .sizeLarge:is(.removable, .linkable) {
   min-height: 24px;
   padding: 0 var(--p-space-200);
+  /* stylelint-disable-next-line -- reveal on touch devices */
+  @media (hover: none) {
+    padding-right: 0;
+  }
 }
 
 /* stylelint-disable-next-line selector-max-class, selector-max-specificity -- override code above */
@@ -229,6 +233,11 @@ $height: 20px;
   height: 20px;
   margin: 0;
   background-color: var(--p-color-bg-fill-tertiary);
+  /* stylelint-disable-next-line -- reveal on touch devices */
+  @media (hover: none) {
+    opacity: 1;
+    position: unset;
+  }
 
   &:hover {
     color: var(--p-color-icon-secondary-hover);
@@ -263,6 +272,10 @@ $height: 20px;
   /* stylelint-disable-next-line selector-max-class, selector-max-specificity  -- match tag hover color */
   .Button {
     background-color: var(--p-color-bg-fill-tertiary-hover);
+    /* stylelint-disable-next-line -- reveal on touch devices */
+    @media (hover: none) {
+      background-color: var(--p-color-bg-fill-tertiary);
+    }
   }
   /* stylelint-disable-next-line selector-max-class, selector-max-specificity  -- match tag hover color */
   &:hover .overlay {
