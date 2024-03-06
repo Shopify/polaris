@@ -68,7 +68,7 @@ export function BulkActionButton({
   return (
     <div className={styles.BulkActionButton} ref={bulkActionButton}>
       {isActivatorForMoreActionsPopover ? (
-        <Tooltip content={content} preferredPosition="above">
+        <Tooltip content={content} preferredPosition="below">
           {buttonMarkup}
         </Tooltip>
       ) : (
