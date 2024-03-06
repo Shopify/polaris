@@ -66,10 +66,6 @@ export function FiltersBar({
   const [popoverActive, setPopoverActive] = useState(false);
   const hasMounted = useRef(false);
 
-  const [unsavedFilterChanges, setUnsavedFilterChanges] = useState<string[]>(
-    [],
-  );
-
   useEffect(() => {
     hasMounted.current = true;
   });

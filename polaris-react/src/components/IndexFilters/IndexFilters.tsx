@@ -1,4 +1,4 @@
-import React, {useMemo, useCallback, useRef, useState} from 'react';
+import React, {useMemo, useCallback, useRef} from 'react';
 import {Transition} from 'react-transition-group';
 
 import {useI18n} from '../../utilities/i18n';

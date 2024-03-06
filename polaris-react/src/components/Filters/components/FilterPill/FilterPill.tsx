@@ -18,7 +18,7 @@ import type {FilterInterface} from '../../../../types';
 import styles from './FilterPill.module.css';
 
 export interface FilterPillProps extends FilterInterface {
-  /** Whether the filter is newly applied and unsaved */
+  /** Whether the filter is newly applied or updated and hasn't been saved */
   unsavedChanges?: boolean;
   /** A unique identifier for the filter */
   filterKey: string;

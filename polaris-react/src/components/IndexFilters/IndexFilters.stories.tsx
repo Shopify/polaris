@@ -195,20 +195,6 @@ function BasicExample(
     props?.withFilteringByDefault ? IndexFiltersMode.Filtering : undefined,
   );
 
-  const primaryAction: IndexFiltersProps['primaryAction'] =
-    selected === 0
-      ? {
-          type: 'save-as',
-          onAction: onCreateNewView,
-          disabled: false,
-          loading: false,
-        }
-      : {
-          type: 'save',
-          onAction: onHandleSave,
-          disabled: false,
-          loading: false,
-        };
   const [accountStatus, setAccountStatus] = useState(null);
   const [moneySpent, setMoneySpent] = useState(null);
   const [taggedWith, setTaggedWith] = useState('');
@@ -218,8 +204,8 @@ function BasicExample(
     {key: string; value: string | string[]}[]
   >([]);
 
-  const loadingIsControlled = typeof props.loading !== 'undefined';
-  const loading = loadingIsControlled ? props.loading : uncontrolledLoading;
+  const loadingIsControlled = typeof props?.loading !== 'undefined';
+  const loading = loadingIsControlled ? props?.loading : uncontrolledLoading;
 
   // Psuedo-loading state transitions
   useEffect(() => {
@@ -278,6 +264,21 @@ function BasicExample(
     handleQueryValueRemove,
     handleTaggedWithRemove,
   ]);
+
+  const primaryAction: IndexFiltersProps['primaryAction'] =
+    selected === 0
+      ? {
+          type: 'save-as',
+          onAction: onCreateNewView,
+          disabled: false,
+          loading: false,
+        }
+      : {
+          type: 'save',
+          onAction: onHandleSave,
+          disabled: false,
+          loading: false,
+        };
 
   const filters = [
     {
