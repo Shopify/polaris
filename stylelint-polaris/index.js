@@ -33,6 +33,9 @@ const disallowedUnits = [
   'pt',
 ];
 
+const objectOf = (keys, value) =>
+  keys.reduce((memo, key) => ({...memo, [key]: value}), {});
+
 /**
  * @type {import('./plugins/coverage').PrimaryOptions} The stylelint-polaris/coverage rule expects a 3-dimensional rule config that groups Stylelint rules by coverage categories. It reports problems with dynamic rule names by appending the category to the coverage plugin's rule name
 
@@ -50,15 +53,16 @@ const stylelintPolarisCoverageOptions = {
           outline: disallowedUnits,
         },
       ],
-      'polaris/at-rule-disallowed-list': {
-        include: [
+      'polaris/at-rule-disallowed-list': objectOf(
+        ['mixin', 'include'],
+        [
           'high-contrast-border',
           'high-contrast-button-outline',
           'high-contrast-outline',
           'focus-ring',
           'no-focus-ring',
         ].map(matchNameRegExp),
-      },
+      ),
     },
     {
       message: 'Please use a Polaris border token',
@@ -83,13 +87,14 @@ const stylelintPolarisCoverageOptions = {
         'sepia',
         ...['color-multiply', 'color', 'filter'].map(matchNameRegExp),
       ],
-      'polaris/at-rule-disallowed-list': {
-        include: [
+      'polaris/at-rule-disallowed-list': objectOf(
+        ['mixin', 'include'],
+        [
           // Legacy mixins
           'recolor-icon',
           'ms-high-contrast-color',
         ].map(matchNameRegExp),
-      },
+      ),
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$polaris-colors/,
@@ -170,9 +175,10 @@ const stylelintPolarisCoverageOptions = {
         'thumbnail-size',
         'top-bar-height',
       ].map(matchNameRegExp),
-      'polaris/at-rule-disallowed-list': {
-        include: ['layout-flex-fix', 'safe-area-for'].map(matchNameRegExp),
-      },
+      'polaris/at-rule-disallowed-list': objectOf(
+        ['mixin', 'include'],
+        ['layout-flex-fix', 'safe-area-for'].map(matchNameRegExp),
+      ),
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$layout-width-data/,
@@ -190,9 +196,10 @@ const stylelintPolarisCoverageOptions = {
   ],
   legacy: [
     {
-      // Legacy mixins
-      'polaris/at-rule-disallowed-list': {
-        include: [
+      'polaris/at-rule-disallowed-list': objectOf(
+        ['mixin', 'include'],
+        [
+          // Legacy mixins
           'base-button-disabled',
           'button-base',
           'button-filled',
@@ -212,7 +219,7 @@ const stylelintPolarisCoverageOptions = {
           'state',
           'visually-hidden',
         ].map(matchNameRegExp),
-      },
+      ),
       // Legacy functions
       'function-disallowed-list': [
         'available-names',
@@ -251,9 +258,10 @@ const stylelintPolarisCoverageOptions = {
       'function-disallowed-list': ['breakpoint', 'layout-width'].map(
         matchNameRegExp,
       ),
-      // Legacy mixins
-      'polaris/at-rule-disallowed-list': {
-        include: [
+      'polaris/at-rule-disallowed-list': objectOf(
+        ['mixin', 'include'],
+        [
+          // Legacy mixins
           'after-topbar-sheet',
           'breakpoint-after',
           'breakpoint-before',
@@ -285,7 +293,7 @@ const stylelintPolarisCoverageOptions = {
           'hidden-when-printing',
           'print-hidden',
         ].map(matchNameRegExp),
-      },
+      ),
     },
     {
       message: 'Please use a Polaris breakpoint token',
@@ -369,8 +377,9 @@ const stylelintPolarisCoverageOptions = {
       'function-disallowed-list': ['font-size', 'line-height'].map(
         matchNameRegExp,
       ),
-      'polaris/at-rule-disallowed-list': {
-        include: [
+      'polaris/at-rule-disallowed-list': objectOf(
+        ['mixin', 'include'],
+        [
           'truncate',
           'text-breakword',
           'text-emphasis-normal',
@@ -388,7 +397,7 @@ const stylelintPolarisCoverageOptions = {
           'text-style-input',
           'text-style-subheading',
         ].map(matchNameRegExp),
-      },
+      ),
       'polaris/global-disallowed-list': [
         // Legacy mixin map-get data
         /\$base-font-size/,
