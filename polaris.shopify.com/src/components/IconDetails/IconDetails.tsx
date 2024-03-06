@@ -32,6 +32,8 @@ function IconDetails({fileName, iconData}: Props) {
   if (!fileName) return <EmptyState />;
 
   const {id, description, keywords} = iconData;
+  const isMicroIcon = fileName.includes('MicroIcon');
+  const size = isMicroIcon ? 12 : 20;
 
   const reactExamples = {
     imports: `import {\n  ${fileName}\n} from '@shopify/polaris-icons';`,
@@ -51,7 +53,11 @@ function IconDetails({fileName, iconData}: Props) {
     <div className={styles.IconDetails}>
       <div className={styles.Section}>
         <div className={styles.Preview}>
-          <Icon source={(polarisIcons as any)[fileName]} />
+          <Icon
+            source={(polarisIcons as any)[fileName]}
+            height={size}
+            width={size}
+          />
         </div>
 
         <h2 className={styles.Title}>{id}</h2>
