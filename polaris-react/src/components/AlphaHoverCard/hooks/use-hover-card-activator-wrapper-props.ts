@@ -134,8 +134,9 @@ export function useHoverCardActivatorWrapperProps({
 
       if (!presenceList.hovercard) {
         hoverDelayTimeout.current = setTimeout(() => {
+          console.log('hello!');
           handleOpen();
-        }, 100);
+        }, 5000);
       } else {
         handleOpen();
       }
