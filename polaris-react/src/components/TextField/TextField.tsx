@@ -23,7 +23,7 @@ import {useEventListener} from '../../utilities/use-event-listener';
 
 import {Resizer, Spinner} from './components';
 import type {SpinnerProps} from './components';
-import styles from './TextField.module.scss';
+import styles from './TextField.module.css';
 
 type Type =
   | 'text'

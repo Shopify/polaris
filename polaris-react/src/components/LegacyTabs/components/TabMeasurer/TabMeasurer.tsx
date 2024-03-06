@@ -6,7 +6,7 @@ import {classNames} from '../../../../utilities/css';
 import {useComponentDidMount} from '../../../../utilities/use-component-did-mount';
 import type {TabDescriptor} from '../../types';
 import {Tab} from '../Tab';
-import styles from '../../LegacyTabs.module.scss';
+import styles from '../../LegacyTabs.module.css';
 
 interface TabMeasurements {
   containerWidth: number;

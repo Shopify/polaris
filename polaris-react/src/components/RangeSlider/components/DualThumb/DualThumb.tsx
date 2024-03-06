@@ -9,9 +9,9 @@ import {Text} from '../../../Text';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
 import {Key} from '../../../../types';
-import sharedStyles from '../../RangeSlider.module.scss';
+import sharedStyles from '../../RangeSlider.module.css';
 
-import styles from './DualThumb.module.scss';
+import styles from './DualThumb.module.css';
 
 interface State {
   value: DualValue;

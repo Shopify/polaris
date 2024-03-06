@@ -6,9 +6,9 @@ import {Labelled, helpTextID} from '../../../Labelled';
 import {Text} from '../../../Text';
 import {invertNumber} from '../../utilities';
 import type {RangeSliderProps} from '../../types';
-import sharedStyles from '../../RangeSlider.module.scss';
+import sharedStyles from '../../RangeSlider.module.css';
 
-import styles from './SingleThumb.module.scss';
+import styles from './SingleThumb.module.css';
 
 export interface SingleThumbProps extends RangeSliderProps {
   value: number;

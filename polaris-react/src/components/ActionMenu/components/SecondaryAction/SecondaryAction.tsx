@@ -5,7 +5,7 @@ import {Tooltip} from '../../../Tooltip';
 import {Button} from '../../../Button';
 import type {ButtonProps} from '../../../Button';
 
-import styles from './SecondaryAction.module.scss';
+import styles from './SecondaryAction.module.css';
 
 interface SecondaryAction extends ButtonProps {
   helpText?: React.ReactNode;

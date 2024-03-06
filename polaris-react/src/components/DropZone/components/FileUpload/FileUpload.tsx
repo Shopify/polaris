@@ -10,7 +10,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {createAllowMultipleKey} from '../../utils';
 import {BlockStack} from '../../../BlockStack';
 
-import styles from './FileUpload.module.scss';
+import styles from './FileUpload.module.css';
 
 export interface FileUploadProps {
   actionTitle?: string;

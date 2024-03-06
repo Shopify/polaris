@@ -33,7 +33,7 @@ import {useBreakpoints} from '../../../../utilities/breakpoints';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
-import styles from './Header.module.scss';
+import styles from './Header.module.css';
 
 type MaybeJSX = JSX.Element | null;
 

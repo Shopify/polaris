@@ -8,7 +8,7 @@ import type {
 } from '../../types';
 
 import {Actions, RollupActions} from './components';
-import styles from './ActionMenu.module.scss';
+import styles from './ActionMenu.module.css';
 
 export interface ActionMenuProps {
   /** Collection of page-level secondary actions */

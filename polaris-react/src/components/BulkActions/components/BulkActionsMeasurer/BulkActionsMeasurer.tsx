@@ -3,7 +3,7 @@ import React, {useCallback, useRef, useEffect} from 'react';
 import {useI18n} from '../../../../utilities/i18n';
 import {BulkActionButton} from '../BulkActionButton';
 import {useEventListener} from '../../../../utilities/use-event-listener';
-import styles from '../../BulkActions.module.scss';
+import styles from '../../BulkActions.module.css';
 import type {BulkActionsProps} from '../../BulkActions';
 import {instanceOfMenuGroupDescriptor} from '../../utilities';
 

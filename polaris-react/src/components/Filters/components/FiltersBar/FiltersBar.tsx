@@ -20,7 +20,7 @@ import {InlineStack} from '../../../InlineStack';
 import {Box} from '../../../Box';
 import {Button} from '../../../Button';
 import {FilterPill} from '../FilterPill';
-import styles from '../../Filters.module.scss';
+import styles from '../../Filters.module.css';
 
 export interface FiltersBarProps {
   /** Currently entered text in the query field */

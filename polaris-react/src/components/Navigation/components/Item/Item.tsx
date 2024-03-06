@@ -11,7 +11,7 @@ import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
 import {useMediaQuery} from '../../../../utilities/media-query';
-import styles from '../../Navigation.module.scss';
+import styles from '../../Navigation.module.css';
 import {Tooltip} from '../../../Tooltip';
 import {MatchState} from '../../types';
 import type {ItemProps, SecondaryAction, ItemURLDetails} from '../../types';

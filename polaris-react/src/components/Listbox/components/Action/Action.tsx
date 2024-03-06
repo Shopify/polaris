@@ -8,7 +8,7 @@ import {TextOption} from '../TextOption';
 import {classNames} from '../../../../utilities/css';
 import {ActionContext} from '../../../../utilities/listbox/context';
 
-import styles from './Action.module.scss';
+import styles from './Action.module.css';
 
 interface ActionProps extends OptionProps {
   icon?: IconProps['source'];

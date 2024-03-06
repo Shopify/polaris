@@ -3,7 +3,7 @@ import React from 'react';
 import {classNames} from '../../utilities/css';
 import {Text} from '../Text';
 
-import styles from './DescriptionList.module.scss';
+import styles from './DescriptionList.module.css';
 
 interface Item {
   /** Title of the item */

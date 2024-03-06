@@ -12,7 +12,7 @@ import {Checkbox} from '../../Checkbox';
 import {Button} from '../../../../Button';
 import {Link} from '../../../../Link';
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
-import styles from '../../../IndexTable.module.scss';
+import styles from '../../../IndexTable.module.css';
 import type {Range} from '../../../../../utilities/index-provider';
 
 const defaultEvent = {

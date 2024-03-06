@@ -8,7 +8,7 @@ import {Actions, MenuGroup, RollupActions, SecondaryAction} from '../..';
 import {Tooltip} from '../../../../Tooltip';
 import type {getVisibleAndHiddenActionsIndices} from '../utilities';
 import {ActionsMeasurer} from '../components';
-import styles from '../Actions.module.scss';
+import styles from '../Actions.module.css';
 
 jest.mock('../components/ActionsMeasurer', () => ({
   ActionsMeasurer() {

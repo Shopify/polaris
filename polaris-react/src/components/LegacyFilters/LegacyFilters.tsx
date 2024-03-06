@@ -31,7 +31,7 @@ import {KeypressListener} from '../KeypressListener';
 
 import {ConnectedFilterControl, TagsWrapper} from './components';
 import type {ConnectedFilterControlProps} from './components';
-import styles from './LegacyFilters.module.scss';
+import styles from './LegacyFilters.module.css';
 
 export interface AppliedFilterInterface {
   /** A unique key used to identify the applied filter */
