@@ -75,7 +75,7 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
         // On Mobile we're scaling the viewBox to 16x16 to make the icons bigger
         // Also, we're setting the viewport origin to 2x2 to center the icon
         // We use this syntax so we don't override the existing viewBox value if we don't need to.
-        {...(mdDown ? {viewBox: '2 2 16 16'} : {})}
+        {...(mdDown ? {viewBox: '1 1 18 18'} : {})}
       />
     ),
     placeholder: <div className={styles.Placeholder} />,
