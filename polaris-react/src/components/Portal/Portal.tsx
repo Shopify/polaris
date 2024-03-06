@@ -2,6 +2,8 @@ import React, {useEffect, useId} from 'react';
 import {createPortal} from 'react-dom';
 
 import {usePortalsManager} from '../../utilities/portals';
+import {useTheme} from '../../utilities/use-theme';
+import {ThemeProvider} from '../ThemeProvider';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -14,6 +16,7 @@ export function Portal({
   idPrefix = '',
   onPortalCreated = noop,
 }: PortalProps) {
+  const theme = useTheme();
   const {container} = usePortalsManager();
 
   const uniqueId = useId();
@@ -24,7 +27,12 @@ export function Portal({
   }, [onPortalCreated]);
 
   return container
-    ? createPortal(<div data-portal-id={portalId}>{children}</div>, container)
+    ? createPortal(
+        <ThemeProvider theme={theme.themeName} data-portal-id={portalId}>
+          {children}
+        </ThemeProvider>,
+        container,
+      )
     : null;
 }
 
