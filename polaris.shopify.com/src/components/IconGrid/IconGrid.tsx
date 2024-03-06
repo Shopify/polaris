@@ -42,6 +42,8 @@ function IconGridItem({
 }: IconGridItemProps) {
   const {id} = icon;
   const searchAttributes = useGlobalSearchResult();
+  const isMicroIcon = id.includes('MicroIcon');
+  const size = isMicroIcon ? 12 : 20;
 
   return (
     <li key={id}>
@@ -71,7 +73,7 @@ function IconGridItem({
           }
         >
           <SearchResultHighlight />
-          <Icon source={(polarisIcons as any)[id]} />
+          <Icon source={(polarisIcons as any)[id]} height={size} width={size} />
           <p>{id}</p>
         </a>
       </Link>
