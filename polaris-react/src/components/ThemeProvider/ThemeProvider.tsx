@@ -10,6 +10,7 @@ export interface ThemeProviderProps {
   children: React.ReactNode;
   className?: string;
   theme?: ThemeName;
+  'data-portal-id'?: string;
 }
 
 export function ThemeProvider(props: ThemeProviderProps) {
@@ -24,6 +25,10 @@ export function ThemeProvider(props: ThemeProviderProps) {
     <ThemeContext.Provider value={getTheme(themeName)}>
       <ThemeContainer
         className={classNames(createThemeClassName(themeName), className)}
+        // TODO: Remove this inline style when we update individual components
+        // to set their own color and background-color properties.
+        style={{color: 'var(--p-color-text)'}}
+        data-portal-id={props['data-portal-id']}
       >
         {children}
       </ThemeContainer>
