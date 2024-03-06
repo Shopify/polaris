@@ -2,7 +2,7 @@ import React, {PureComponent, Children, createRef} from 'react';
 import {themeDefault} from '@shopify/polaris-tokens';
 
 import {findFirstKeyboardFocusableNode} from '../../../../utilities/focus';
-import {classNames} from '../../../../utilities/css';
+import {classNames, variationName} from '../../../../utilities/css';
 import {
   isElementOfType,
   wrapWithComponent,
@@ -218,10 +218,10 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
 
     const className = classNames(
       styles.Popover,
-      positioning === 'above' && styles.positionedAbove,
       fullWidth && styles.fullWidth,
       measuring && styles.measuring,
       hideOnPrint && styles['PopoverOverlay-hideOnPrint'],
+      positioning && styles[variationName('positioned', positioning)],
     );
 
     const contentStyles = measuring ? undefined : {height: desiredHeight};

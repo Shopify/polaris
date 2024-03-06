@@ -79,26 +79,24 @@ export function ComplexSingleSelect({
       : null;
 
   const activator = (
-    <div>
-      <button
-        type="button"
-        className={styles.Activator}
-        onClick={() => setActive((active) => !active)}
-      >
-        <BlockStack as="span" gap="100">
-          <Text as="span" variant="bodySm" alignment="start" tone="subdued">
-            {resourceTitle}
-          </Text>
-          <Text as="span" variant="bodyMd" alignment="start">
-            {defaultOptions.find((option) => option.value === selectedOptions)
-              ?.label ?? emptyStateTitle}
-          </Text>
-        </BlockStack>
-        <span>
-          <Icon tone="subdued" source={SelectIcon} />
-        </span>
-      </button>
-    </div>
+    <button
+      type="button"
+      className={styles.Activator}
+      onClick={() => setActive((active) => !active)}
+    >
+      <BlockStack as="span" gap="100">
+        <Text as="span" variant="bodySm" alignment="start" tone="subdued">
+          {resourceTitle}
+        </Text>
+        <Text as="span" variant="bodyMd" alignment="start">
+          {defaultOptions.find((option) => option.value === selectedOptions)
+            ?.label ?? emptyStateTitle}
+        </Text>
+      </BlockStack>
+      <span>
+        <Icon tone="subdued" source={SelectIcon} />
+      </span>
+    </button>
   );
 
   return (
