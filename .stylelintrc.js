@@ -7,6 +7,8 @@ module.exports = {
   rules: {
     'no-unknown-animations': null,
     'value-keyword-case': ['lower', {camelCaseSvgKeywords: true}],
+    'at-rule-no-unknown': null,
+    'scss/at-rule-no-unknown': [true, {ignoreAtRules: ['define-mixin']}],
   },
   overrides: [
     {
