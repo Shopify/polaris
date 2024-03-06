@@ -61,8 +61,6 @@ export function Pane({
       className={className}
       style={style}
       onScrolledToBottom={onScrolledToBottom}
-      horizontal={false}
-      vertical={false}
     >
       {content}
     </Scrollable>
