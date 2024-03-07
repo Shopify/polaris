@@ -1,5 +1,5 @@
 import React from 'react';
-import type {ThemeName} from '@shopify/polaris-tokens';
+import type {ThemeNameLocal} from '@shopify/polaris-tokens';
 import {themeNameDefault, createThemeClassName} from '@shopify/polaris-tokens';
 
 import {ThemeContext, getTheme} from '../../utilities/use-theme';
@@ -9,7 +9,7 @@ export interface ThemeProviderProps {
   as?: keyof React.ReactHTML;
   children: React.ReactNode;
   className?: string;
-  theme?: Extract<ThemeName, 'light' | 'dark'>;
+  theme?: ThemeNameLocal;
   'data-portal-id'?: string;
 }
 
