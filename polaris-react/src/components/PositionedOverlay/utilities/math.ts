@@ -41,8 +41,16 @@ export function calculateVerticalPosition(
   const enoughSpaceFromTopScroll = distanceToTopScroll >= minimumSpaceToScroll;
   const enoughSpaceFromBottomScroll =
     distanceToBottomScroll >= minimumSpaceToScroll;
-  const heightIfBelow = Math.min(spaceBelow, desiredHeight);
   const heightIfAbove = Math.min(spaceAbove, desiredHeight);
+  const heightIfBelow = Math.min(spaceBelow, desiredHeight);
+  const heightIfAboveCover = Math.min(
+    spaceAbove + activatorRect.height,
+    desiredHeight,
+  );
+  const heightIfBelowCover = Math.min(
+    spaceBelow + activatorRect.height,
+    desiredHeight,
+  );
   const containerRectTop = fixed ? 0 : containerRect.top;
 
   const positionIfAbove = {
@@ -58,17 +66,19 @@ export function calculateVerticalPosition(
   };
 
   const positionIfCoverBelow = {
-    height: heightIfBelow - verticalMargins,
-    top:
-      activatorBottom +
-      containerRectTop -
-      (activatorRect.height + verticalMargins),
+    height: heightIfBelowCover - verticalMargins,
+    top: activatorTop - containerRectTop,
     positioning: 'cover',
   };
 
   const positionIfCoverAbove = {
-    height: heightIfAbove - verticalMargins,
-    top: activatorTop + containerRectTop - heightIfAbove + activatorRect.height,
+    height: heightIfAboveCover - verticalMargins,
+    top:
+      activatorTop +
+      containerRectTop -
+      heightIfAbove +
+      activatorRect.height +
+      verticalMargins,
     positioning: 'cover',
   };
 
@@ -94,7 +104,8 @@ export function calculateVerticalPosition(
     return (enoughSpaceFromBottomScroll ||
       (distanceToBottomScroll >= distanceToTopScroll &&
         !enoughSpaceFromTopScroll)) &&
-      (spaceBelow > desiredHeight || spaceBelow > spaceAbove)
+      (spaceBelow + activatorRect.height > desiredHeight ||
+        spaceBelow > spaceAbove)
       ? positionIfCoverBelow
       : positionIfCoverAbove;
   }
