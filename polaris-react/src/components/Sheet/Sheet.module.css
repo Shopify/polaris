@@ -12,6 +12,7 @@
 
   @media (--p-breakpoints-md-up) {
     right: 0;
+    // stylelint-disable-next-line -- polaris component custom properties
     width: var(--pc-sheet-desktop-width);
   }
 
@@ -21,6 +22,7 @@
 }
 
 .Container {
+  // stylelint-disable-next-line -- polaris component custom properties
   --pc-sheet-desktop-width: 380px;
   position: fixed;
   z-index: var(--p-z-index-11);
@@ -31,6 +33,7 @@
 
   @media (--p-breakpoints-md-up) {
     left: auto;
+    // stylelint-disable-next-line -- polaris component custom properties
     width: var(--pc-sheet-desktop-width);
   }
 }

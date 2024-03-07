@@ -19,6 +19,7 @@
 }
 
 .MainColor {
+  // stylelint-disable-next-line -- Polaris component custom properties
   background: var(--pc-color-picker-checkers);
   position: relative;
   overflow: hidden;
@@ -156,6 +157,7 @@
 }
 
 .AlphaPicker {
+  // stylelint-disable-next-line -- Polaris component custom properties
   background: var(--pc-color-picker-checkers);
 }
 

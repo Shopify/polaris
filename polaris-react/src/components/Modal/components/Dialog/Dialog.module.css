@@ -56,8 +56,7 @@
 
   &.limitHeight {
     @media (--p-breakpoints-md-up) {
-      // Can't do a calc in a media query, but this is equivalent to:
-      // ((600px + var(--pc-modal-dialog-vertical-spacing)) / 16px) * 1em
+      // stylelint-disable-next-line -- Can't do a calc in a media query, but this is equivalent to: ((600px + var(--pc-modal-dialog-vertical-spacing)) / 16px) * 1em
       @media (min-height: 41.25em) {
         max-height: 600px;
       }

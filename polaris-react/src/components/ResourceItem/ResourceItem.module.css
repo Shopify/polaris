@@ -19,7 +19,9 @@
     .Actions {
       // stylelint-disable-next-line selector-max-combinators -- show actions on hover
       > * {
+        // stylelint-disable-next-line -- Polaris component custom properties
         clip: var(--pc-resource-item-action-unhide-clip);
+        // stylelint-disable-next-line -- Polaris component custom properties
         overflow: var(--pc-resource-item-action-unhide-overflow);
       }
     }
@@ -88,14 +90,18 @@
 // Item actions
 .Actions {
   > * {
+    // stylelint-disable-next-line -- Polaris component custom properties
     clip: var(--pc-resource-item-action-hide-clip);
+    // stylelint-disable-next-line -- Polaris component custom properties
     overflow: var(--pc-resource-item-action-hide-overflow);
   }
 
   .focused & {
     // stylelint-disable-next-line selector-max-combinators  -- show actions on focus
     > * {
+      // stylelint-disable-next-line -- Polaris component custom properties
       clip: var(--pc-resource-item-action-unhide-clip);
+      // stylelint-disable-next-line -- Polaris component custom properties
       overflow: var(--pc-resource-item-action-unhide-overflow);
     }
   }
@@ -118,6 +124,7 @@
   @mixin focus-ring base, -1px;
 
   .ListItem + & {
+    // stylelint-disable-next-line -- Polaris component custom properties
     border-top: var(--pc-resource-list-separator-border);
   }
 

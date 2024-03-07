@@ -60,6 +60,7 @@
 }
 
 .disabled {
+  // stylelint-disable-next-line -- DO NOT COPY polaris-migrator
   @mixin base-button-disabled;
   cursor: default;
   pointer-events: none;

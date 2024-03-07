@@ -4,7 +4,7 @@
   // stylelint-disable-next-line -- Polaris component custom properties
   --pc-popover-vertical-motion-offset: -5px;
   max-width: calc(100vw - var(--p-space-800));
-  // stylelint-disable-next-line-- Polaris component custom properties
+  // stylelint-disable-next-line -- Polaris component custom properties
   margin: var(--pc-popover-visible-portion-of-arrow) var(--p-space-200)
     var(--p-space-400);
   will-change: left, top;

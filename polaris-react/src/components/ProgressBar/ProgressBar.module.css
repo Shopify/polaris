@@ -1,8 +1,11 @@
 .ProgressBar {
+  // stylelint-disable-next-line -- Polaris component custom properties
   --pc-progress-bar-height-base: 16px;
+  // stylelint-disable-next-line -- Polaris component custom properties
   --pc-progress-bar-height-small: calc(
     var(--pc-progress-bar-height-base) * 0.5
   );
+  // stylelint-disable-next-line -- Polaris component custom properties
   --pc-progress-bar-height-large: calc(var(--pc-progress-bar-height-base) * 2);
 
   @mixin scope-custom-property progress-bar, duration;
@@ -19,14 +22,17 @@
 }
 
 .sizeSmall {
+  // stylelint-disable-next-line -- Polaris component custom properties
   height: var(--pc-progress-bar-height-small);
 }
 
 .sizeMedium {
+  // stylelint-disable-next-line -- Polaris component custom properties
   height: var(--pc-progress-bar-height-base);
 }
 
 .sizeLarge {
+  // stylelint-disable-next-line -- Polaris component custom properties
   height: var(--pc-progress-bar-height-large);
 }
 
@@ -68,6 +74,7 @@
   transform-origin: 0 50%;
 
   @media screen and (-ms-high-contrast: active) {
+    // stylelint-disable-next-line -- Polaris component custom properties
     border: var(--pc-progress-bar-height-base) solid highlight;
   }
 }

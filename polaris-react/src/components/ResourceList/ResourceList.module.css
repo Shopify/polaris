@@ -3,6 +3,7 @@
 
   // stylelint-disable-next-line selector-max-combinators, selector-max-specificity -- needed to add the dividing line only when the first child is the list
   + .ResourceListWrapper > :first-child:is(.ResourceList) {
+    // stylelint-disable-next-line -- polaris component custom properties
     border-top: var(--pc-resource-list-separator-border);
   }
 }
@@ -21,6 +22,7 @@
   // list dynamically when an item is checked, so we have to handle that case
   // here.
   + .BulkActionsWrapper + .ResourceList {
+    // stylelint-disable-next-line -- polaris component custom properties
     border-top: var(--pc-resource-list-separator-border);
   }
 }
@@ -271,6 +273,7 @@
   max-width: 100%;
 
   + .ItemWrapper {
+    // stylelint-disable-next-line -- polaris component custom properties
     border-top: var(--pc-resource-list-separator-border);
   }
 }

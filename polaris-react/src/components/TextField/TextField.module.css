@@ -3,6 +3,7 @@
   --pc-text-field-contents: 20;
   --pc-text-field-backdrop: 10;
   // stylelint-enable
+  /* stylelint-disable-next-line -- polaris-migrator DO NOT COPY */
   @mixin text-style-input;
   position: relative;
   display: flex;
@@ -536,11 +537,13 @@
 }
 
 .DummyInput {
+  /* stylelint-disable-next-line -- polaris-migrator DO NOT COPY */
   @mixin text-style-input;
   padding: var(--pg-control-vertical-padding) var(--p-space-300);
 
   // We need the following properties in order to have long, unbroken
   // strings wrap in the same way they do in textareas.
+  /* stylelint-disable-next-line -- polaris-migrator DO NOT COPY */
   @mixin text-breakword;
   white-space: pre-wrap;
 }
