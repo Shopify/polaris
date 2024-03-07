@@ -19,7 +19,7 @@
       background-color: var(--p-color-bg-fill-tertiary-hover) !important;
     }
 
-    /* stylelint-disable-next-line selector-no-qualifying-type -- add expanded styling */
+    // stylelint-disable-next-line selector-no-qualifying-type -- add expanded styling
     &:active,
     &[aria-expanded='true'] {
       background-color: var(--p-color-bg-fill-tertiary-active) !important;
@@ -27,7 +27,7 @@
     }
 
     &:focus-visible {
-      /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- focus styles */
+      // stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- focus styles
       @mixin no-focus-ring;
       outline: var(--p-border-width-050) solid var(--p-color-border-focus);
       outline-offset: var(--p-space-050);

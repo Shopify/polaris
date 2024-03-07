@@ -112,10 +112,10 @@
   &.indented {
     // stylelint-disable -- reset custom properties
     --pc-action-list-image-size: 24px;
-    // stylelint-enable
     position: relative;
     margin-left: var(--pc-action-list-indented-item-margin);
     max-width: var(--pc-action-list-indented-item-width);
+    // stylelint-enable
 
     &::before {
       content: '';

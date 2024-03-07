@@ -9,7 +9,6 @@
   */
   // stylelint-disable-next-line length-zero-no-unit -- see above
   --pc-choice-space-0: 0rem;
-  // Set responsive variables for bleed, used in padding and negative margin
   @mixin responsive-props choice, bleed-block-start,
     --pc-choice-bleed-block-start;
   @mixin responsive-props choice, bleed-block-end, --pc-choice-bleed-block-end;
