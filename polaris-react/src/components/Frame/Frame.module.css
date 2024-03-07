@@ -46,7 +46,9 @@
     display: flex;
 
     .hasTopBar & {
+      // stylelint-disable-next-line -- polaris custom global property
       top: var(--pg-top-bar-height);
+      // stylelint-disable-next-line -- polaris custom global property
       height: calc(100% - var(--pg-top-bar-height));
     }
   }
@@ -145,6 +147,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  // stylelint-disable-next-line -- polaris custom global property
   height: var(--pg-top-bar-height);
 
   @media print {
@@ -197,6 +200,7 @@
 
   @media (--p-breakpoints-md-up) {
     .hasNav & {
+      // stylelint-disable-next-line -- polaris custom global property
       padding-left: var(--pg-layout-width-nav-base);
       @media print {
         padding-left: 0;
@@ -207,6 +211,7 @@
   }
 
   .hasTopBar & {
+    // stylelint-disable-next-line -- polaris custom global property
     padding-top: var(--pg-top-bar-height);
     @media print {
       padding-top: 0;

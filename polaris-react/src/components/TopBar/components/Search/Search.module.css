@@ -3,6 +3,7 @@
   visibility: hidden;
   z-index: var(--p-z-index-8);
   pointer-events: none;
+  // stylelint-disable-next-line -- polaris custom global property
   top: var(--pg-top-bar-height);
   left: 0;
   right: 0;
@@ -35,6 +36,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  // stylelint-disable-next-line -- polaris custom global property
   max-height: calc(100vh - var(--pg-top-bar-height));
   margin: 0;
 

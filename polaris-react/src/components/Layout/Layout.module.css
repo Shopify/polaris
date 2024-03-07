@@ -39,11 +39,13 @@
 }
 
 .Section-oneHalf {
+  // stylelint-disable-next-line -- polaris custom global property
   flex: 1 1 var(--pg-layout-width-one-half-width-base);
   min-width: 0;
 }
 
 .Section-oneThird {
+  // stylelint-disable-next-line -- polaris custom global property
   flex: 1 1 var(--pg-layout-width-one-third-width-base);
   min-width: 0;
 }
@@ -83,6 +85,7 @@
 }
 
 .Annotation {
+  // stylelint-disable-next-line -- polaris custom global property
   flex: 1 1 var(--pg-layout-width-secondary-min);
   padding: var(--p-space-400) var(--p-space-400) 0 0;
 

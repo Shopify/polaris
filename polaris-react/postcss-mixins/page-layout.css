@@ -1,6 +1,7 @@
 @define-mixin page-layout {
   margin: 0 auto;
   padding: 0;
+  // stylelint-disable-next-line -- polaris custom global property
   max-width: calc(
     var(--pg-layout-width-primary-max) + var(--pg-layout-width-secondary-max) +
       var(--pg-layout-width-inner-spacing-base)

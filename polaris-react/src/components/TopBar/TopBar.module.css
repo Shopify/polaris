@@ -1,5 +1,6 @@
 .TopBar {
   position: relative;
+  // stylelint-disable-next-line -- polaris custom global property
   height: var(--pg-top-bar-height);
   box-shadow: var(--p-shadow-100);
   background-color: var(--p-color-bg-inverse);
@@ -45,6 +46,7 @@
 }
 
 .LogoContainer {
+  // stylelint-disable-next-line -- polaris custom global property
   flex: 0 0 var(--pg-layout-width-nav-base);
   align-items: center;
   height: 100%;
@@ -73,11 +75,13 @@
 .ContextControl {
   display: none;
   @media (--p-breakpoints-md-up) {
+    // stylelint-disable-next-line -- polaris custom global property
     width: var(--pg-layout-width-nav-base);
     display: block;
   }
 
   @media (--p-breakpoints-xl-up) {
+    // stylelint-disable-next-line -- polaris custom global property
     width: var(--pg-layout-width-nav-base);
   }
 }

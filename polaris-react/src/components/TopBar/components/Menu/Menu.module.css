@@ -1,4 +1,5 @@
 .ActivatorWrapper {
+  // stylelint-disable-next-line -- polaris custom global property
   height: var(--pg-top-bar-height);
   display: flex;
   align-items: center;

@@ -21,6 +21,7 @@ body {
 }
 
 .narrowWidth {
+  // stylelint-disable-next-line -- polaris custom global property
   max-width: var(--pg-layout-width-primary-max);
 }
 

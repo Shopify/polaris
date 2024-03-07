@@ -82,6 +82,7 @@
   top: 0;
   bottom: 0;
   display: flex;
+  // stylelint-disable-next-line -- polaris custom global property
   min-height: var(--pg-control-height);
   opacity: 1;
   transition: opacity var(--p-motion-ease) var(--p-motion-duration-200);

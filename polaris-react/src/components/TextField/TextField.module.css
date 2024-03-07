@@ -210,6 +210,7 @@
     visibility: hidden;
     white-space: pre-wrap;
     // needed to ensure the textfield doesn't grow in height when the text field content overgrows the available space
+    // stylelint-disable-next-line -- polaris custom global property
     max-height: var(--pg-control-height);
   }
 
@@ -260,6 +261,7 @@
   flex: 1 1 0%;
   width: 100%;
   min-width: 0;
+  // stylelint-disable-next-line -- polaris custom global property
   min-height: var(--pg-control-height);
   padding: var(--p-space-150) var(--p-space-300);
   background: none;
@@ -539,6 +541,7 @@
 .DummyInput {
   /* stylelint-disable-next-line -- polaris-migrator DO NOT COPY */
   @mixin text-style-input;
+  // stylelint-disable-next-line -- polaris custom global property
   padding: var(--pg-control-vertical-padding) var(--p-space-300);
 
   // We need the following properties in order to have long, unbroken
