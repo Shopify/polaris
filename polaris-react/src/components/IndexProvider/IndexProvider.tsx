@@ -39,8 +39,12 @@ export function IndexProvider({
 
   const handleSelectionChange = useHandleBulkSelection({onSelectionChange});
 
-  const previewRef: React.RefObject<{preview: React.ReactNode}> = useRef({
+  const previewRef: React.RefObject<{
+    preview: React.ReactNode;
+    closePopover: (() => void) | null;
+  }> = useRef({
     preview: null,
+    closePopover: null,
   });
 
   const {
@@ -71,10 +75,28 @@ export function IndexProvider({
       handleMouseLeaveActivator(event);
     };
 
+    const closeOpenPopover = (closePopover: () => void | null) => {
+      if (previewRef.current) {
+        if (previewRef.current.closePopover) {
+          previewRef.current.closePopover();
+        }
+
+        previewRef.current.closePopover = closePopover;
+      }
+    };
+
+    const resetCloseOpenPopover = () => {
+      if (previewRef.current) {
+        previewRef.current.closePopover = null;
+      }
+    };
+
     return {
       previewActivatorWrapperClassName,
       onMouseEnterCell: handleMouseEnterCell,
       onMouseLeaveCell: handleMouseLeaveCell,
+      closeOpenPopover,
+      resetCloseOpenPopover,
     };
   }, [
     previewRef,

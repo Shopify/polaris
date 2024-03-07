@@ -50,6 +50,8 @@ export interface IndexCellContextType {
     preview: React.ReactNode,
   ): (event: React.MouseEvent<HTMLButtonElement>) => void;
   onMouseLeaveCell?(event: React.MouseEvent<HTMLButtonElement>): void;
+  closeOpenPopover?(closePopover: (() => void) | null): void;
+  resetCloseOpenPopover?(): void;
 }
 
 export const IndexCellContext = createContext<IndexCellContextType>({});

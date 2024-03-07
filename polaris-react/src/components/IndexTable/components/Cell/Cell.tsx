@@ -96,11 +96,26 @@ export const Cell = memo(function Cell({
   };
 
   const handlePopoverToggle = () => {
+    /**
+     * Because handleClick stops propogation the click event does not bubble
+     * up to PopoverOverlay to automatically close an open popover. We need to
+     * keep track of when a popover is open in context so that we can close it
+     * manually when another popover is opened
+     */
+    if (popoverActive) {
+      indexCellContext?.resetCloseOpenPopover?.();
+    } else {
+      indexCellContext?.closeOpenPopover?.(() => setPopoverActive(false));
+    }
+
     setPopoverActive((popoverActive) => !popoverActive);
   };
 
-  const handleClick = () => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    // Cell is wrapped in an anchor tag, prevent navigating away on click
+    event.stopPropagation();
     if (showPreviewOnHover) return;
+
     handlePopoverToggle();
   };
 
