@@ -9,7 +9,7 @@ export interface ThemeProviderProps {
   as?: keyof React.ReactHTML;
   children: React.ReactNode;
   className?: string;
-  theme?: ThemeName;
+  theme?: Extract<ThemeName, 'light' | 'dark'>;
   'data-portal-id'?: string;
 }
 

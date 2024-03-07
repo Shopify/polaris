@@ -70,7 +70,7 @@ interface State {
 }
 
 export interface AppProviderProps {
-  theme?: ThemeName;
+  theme?: Extract<ThemeName, 'light'>;
   /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
