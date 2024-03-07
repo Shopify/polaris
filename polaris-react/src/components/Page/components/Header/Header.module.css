@@ -117,16 +117,17 @@
 
 .mediumTitle:not(.noBreadcrumbs).mdDown,
 .longTitle.lgDown {
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity -- polaris-migrator DO NOT COPY
   .AdditionalMetaData {
     margin-left: 0;
   }
-
+  // stylelint-disable-next-line selector-max-class, selector-max-specificity -- polaris-migrator DO NOT COPY
   .Row {
     display: grid;
     gap: var(--p-space-200) var(--p-space-400);
     grid-template-columns: auto 1fr;
     grid-template-areas: 'breadcrumbs actions' 'title title';
-
+    // stylelint-disable-next-line selector-max-class, selector-max-combinators, selector-max-specificity -- polaris-migrator DO NOT COPY
     + .Row {
       gap: 0;
     }
