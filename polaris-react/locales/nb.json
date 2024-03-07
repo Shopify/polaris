@@ -345,7 +345,10 @@
       "selectAllItems": "Velg alle {itemsLength} {resourceNamePlural}",
       "selectItem": "Velg {resourceName}",
       "selectButtonText": "Velg",
-      "sortAccessibilityLabel": "sorter {direction} etter"
+      "sortAccessibilityLabel": "sorter {direction} etter",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "Vis detaljer"
+      }
     },
     "Page": {
       "Header": {

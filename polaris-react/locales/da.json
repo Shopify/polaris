@@ -345,7 +345,10 @@
       "selectAllItems": "Vælg alle {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Vælg {resourceName}",
       "selectButtonText": "Vælg",
-      "sortAccessibilityLabel": "sortér {direction} efter"
+      "sortAccessibilityLabel": "sortér {direction} efter",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "Se detaljer"
+      }
     },
     "Page": {
       "Header": {

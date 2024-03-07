@@ -346,7 +346,10 @@
       "selectAllItems": "Seleccionar los más de {itemsLength} recursos de {resourceNamePlural}",
       "selectItem": "Seleccionar {resourceName}",
       "selectButtonText": "Seleccionar",
-      "sortAccessibilityLabel": "ordenar {direction} por"
+      "sortAccessibilityLabel": "ordenar {direction} por",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "Ver detalles"
+      }
     },
     "Page": {
       "Header": {
