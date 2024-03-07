@@ -62,6 +62,7 @@
 
 .positionedCover {
   margin: 0;
+  transition: none;
 }
 
 .ContentContainer {

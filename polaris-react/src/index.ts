@@ -279,6 +279,9 @@ export type {PageActionsProps} from './components/PageActions';
 export {Pagination} from './components/Pagination';
 export type {PaginationProps} from './components/Pagination';
 
+export {Picker} from './components/Picker';
+export type {PickerProps} from './components/Picker';
+
 export {PolarisTestProvider} from './components/PolarisTestProvider';
 export type {WithPolarisTestProviderOptions} from './components/PolarisTestProvider';
 
