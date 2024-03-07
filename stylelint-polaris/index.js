@@ -115,16 +115,16 @@ const stylelintPolarisCoverageOptions = {
       },
     ],
     'polaris/custom-property-allowed-list': {
-      // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, or `--polaris-version-`
-      allowedProperties: [/--(?!(p|pc|polaris-version)-).+/],
+      // Allows definition of custom properties not prefixed with `--p-`, `--pc-`, `--pg-`, or `--polaris-version-`
+      allowedProperties: [/--(?!(p|pc|pg|polaris-version)-).+/],
       // Allows use of custom properties prefixed with `--p-` that are valid Polaris tokens
       allowedValues: {
         '/.+/': [
           // Note: Order is important
           // This pattern allows use of `--p-*` custom properties that are valid Polaris tokens
           ...getThemeVarNames(themeDefault),
-          // This pattern flags unknown `--p-*` custom properties or usage of deprecated `--pc-*` custom properties private to polaris-react
-          /--(?!(p|pc)-).+/,
+          // This pattern flags unknown `--p-*` custom properties or usage of deprecated `--pc-*`/`--pg-*` custom properties private to polaris-react
+          /--(?!(p|pc|pg)-).+/,
         ],
       },
     },
