@@ -1,10 +1,10 @@
 import {createContext, useContext} from 'react';
-import type {ThemeName, Theme} from '@shopify/polaris-tokens';
+import type {ThemeNameLocal, Theme} from '@shopify/polaris-tokens';
 import {themes} from '@shopify/polaris-tokens';
 
-type ThemeContextValue = Theme & {themeName: ThemeName};
+type ThemeContextValue = Theme & {themeName: ThemeNameLocal};
 
-export function getTheme(themeName: ThemeName): ThemeContextValue {
+export function getTheme(themeName: ThemeNameLocal): ThemeContextValue {
   return {...themes[themeName], themeName};
 }
 
