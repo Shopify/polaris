@@ -347,7 +347,10 @@
       "selectAllItems": "Vybrat vše typu {resourceNamePlural} ({itemsLength} a více)",
       "selectItem": "Vybrat: {resourceName}",
       "selectButtonText": "Vybrat",
-      "sortAccessibilityLabel": "seřadit {direction} podle"
+      "sortAccessibilityLabel": "seřadit {direction} podle",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "Zobrazit podrobnosti"
+      }
     },
     "Page": {
       "Header": {

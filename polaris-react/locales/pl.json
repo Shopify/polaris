@@ -347,7 +347,10 @@
       "selectAllItems": "Wybierz wszystkie {itemsLength}+ {resourceNamePlural}",
       "selectItem": "Wybierz {resourceName}",
       "selectButtonText": "Wybierz",
-      "sortAccessibilityLabel": "sortuj {direction} według"
+      "sortAccessibilityLabel": "sortuj {direction} według",
+      "Cell": {
+        "previewActivatorAccessibilityLabel": "Wyświetl szczegóły"
+      }
     },
     "Page": {
       "Header": {
