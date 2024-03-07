@@ -2,4 +2,4 @@
 'polaris.shopify.com': minor
 ---
 
-Added depth token design guidance documentation
+Added shadow token design guidance
