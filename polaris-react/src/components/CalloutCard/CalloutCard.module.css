@@ -39,7 +39,6 @@
   top: var(--p-space-400);
   position: absolute;
 
-  // stylelint-disable-next-line -- Dismiss icon color override
   & svg {
     fill: var(--p-color-icon-secondary);
   }
