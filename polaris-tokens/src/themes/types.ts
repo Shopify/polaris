@@ -1,13 +1,10 @@
 import type {metaThemeBase} from './base';
-import type {themeNames, themeNamesGlobal, themeNamesLocal} from './constants';
+import type {themeNames} from './constants';
 
 export type MetaThemeBase = typeof metaThemeBase;
 export type MetaTheme = MetaThemeBase;
 
 export type ThemeName = typeof themeNames[number];
-export type ThemeNameGlobal = typeof themeNamesGlobal[number];
-export type ThemeNameLocal = typeof themeNamesLocal[number];
-
 export type ThemeBase = ExtractMetaThemeValues<MetaThemeBase>;
 export type Theme = ExtractMetaThemeValues<MetaTheme>;
 

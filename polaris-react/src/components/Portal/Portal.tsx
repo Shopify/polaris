@@ -1,9 +1,10 @@
+import {themeNameDefault} from '@shopify/polaris-tokens';
 import React, {useEffect, useId} from 'react';
 import {createPortal} from 'react-dom';
 
 import {usePortalsManager} from '../../utilities/portals';
-import {useTheme} from '../../utilities/use-theme';
-import {ThemeProvider} from '../ThemeProvider';
+import {useThemeName} from '../../utilities/use-theme';
+import {ThemeProvider, isThemeNameLocal} from '../ThemeProvider';
 
 export interface PortalProps {
   children?: React.ReactNode;
@@ -16,7 +17,7 @@ export function Portal({
   idPrefix = '',
   onPortalCreated = noop,
 }: PortalProps) {
-  const theme = useTheme();
+  const themeName = useThemeName();
   const {container} = usePortalsManager();
 
   const uniqueId = useId();
@@ -28,7 +29,10 @@ export function Portal({
 
   return container
     ? createPortal(
-        <ThemeProvider theme={theme.themeName} data-portal-id={portalId}>
+        <ThemeProvider
+          theme={isThemeNameLocal(themeName) ? themeName : themeNameDefault}
+          data-portal-id={portalId}
+        >
           {children}
         </ThemeProvider>,
         container,

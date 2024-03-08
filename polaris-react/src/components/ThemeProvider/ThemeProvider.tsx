@@ -1,9 +1,25 @@
 import React from 'react';
-import type {ThemeNameLocal} from '@shopify/polaris-tokens';
 import {themeNameDefault, createThemeClassName} from '@shopify/polaris-tokens';
 
-import {ThemeContext, getTheme} from '../../utilities/use-theme';
+import {
+  ThemeContext,
+  getTheme,
+  ThemeNameContext,
+} from '../../utilities/use-theme';
 import {classNames} from '../../utilities/css';
+
+import styles from './ThemeProvider.module.css';
+
+/**
+ * Allowlist of local themes
+ * TODO: Replace `as const` with `satisfies ThemeName[]`
+ */
+export const themeNamesLocal = ['light', 'dark'] as const;
+
+type ThemeNameLocal = typeof themeNamesLocal[number];
+
+export const isThemeNameLocal = (name: string): name is ThemeNameLocal =>
+  themeNamesLocal.includes(name as any);
 
 export interface ThemeProviderProps {
   as?: keyof React.ReactHTML;
@@ -22,16 +38,19 @@ export function ThemeProvider(props: ThemeProviderProps) {
   } = props;
 
   return (
-    <ThemeContext.Provider value={getTheme(themeName)}>
-      <ThemeContainer
-        className={classNames(createThemeClassName(themeName), className)}
-        // TODO: Remove this inline style when we update individual components
-        // to set their own color and background-color properties.
-        style={{color: 'var(--p-color-text)'}}
-        data-portal-id={props['data-portal-id']}
-      >
-        {children}
-      </ThemeContainer>
-    </ThemeContext.Provider>
+    <ThemeNameContext.Provider value={themeName}>
+      <ThemeContext.Provider value={getTheme(themeName)}>
+        <ThemeContainer
+          data-portal-id={props['data-portal-id']}
+          className={classNames(
+            createThemeClassName(themeName),
+            styles.themeContainer,
+            className,
+          )}
+        >
+          {children}
+        </ThemeContainer>
+      </ThemeContext.Provider>
+    </ThemeNameContext.Provider>
   );
 }
