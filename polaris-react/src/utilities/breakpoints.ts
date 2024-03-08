@@ -143,7 +143,7 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
       if (mql.addListener) {
         mql.addListener(handler);
       } else {
-        mql.addEventListener('change', handler);
+        mql?.addEventListener('change', handler);
       }
     });
 
