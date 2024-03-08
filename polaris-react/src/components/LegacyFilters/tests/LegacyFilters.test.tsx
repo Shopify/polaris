@@ -1,6 +1,6 @@
 import React from 'react';
-import {mountWithApp} from 'tests/utilities';
 import {matchMedia} from '@shopify/jest-dom-mocks';
+import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../Button';
 import type {ButtonProps} from '../../Button';
@@ -49,6 +49,14 @@ const mockProps: LegacyFiltersProps = {
 describe('<LegacyFilters />', () => {
   beforeAll(() => {
     jest.useFakeTimers();
+  });
+
+  beforeEach(() => {
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
   });
 
   it('renders WithinFilterContext with a value of true', () => {

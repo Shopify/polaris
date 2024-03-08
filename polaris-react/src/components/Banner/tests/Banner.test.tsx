@@ -27,6 +27,16 @@ import {
 import type {BannerTone} from '../Banner';
 import type {BannerHandles} from '../utilities';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 describe('<Banner />', () => {
   it('renders a title', () => {
     const banner = mountWithApp(<Banner title="Banner title" />);

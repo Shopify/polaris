@@ -6,6 +6,16 @@ import {Toast} from '../../Toast';
 import {Frame} from '../../../Frame';
 import {ToastManager} from '../ToastManager';
 
+window.matchMedia =
+  window.matchMedia ||
+  function () {
+    return {
+      matches: false,
+      addListener() {},
+      removeListener() {},
+    };
+  };
+
 describe('<ToastManager />', () => {
   it('updates toast safely', () => {
     const toastManager = mountWithApp(
