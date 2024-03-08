@@ -8,7 +8,7 @@ module.exports = {
     'no-unknown-animations': null,
     'value-keyword-case': ['lower', {camelCaseSvgKeywords: true}],
     'at-rule-no-unknown': null,
-    'scss/at-rule-no-unknown': [true, {ignoreAtRules: ['define-mixin']}],
+    'scss/at-rule-no-unknown': true,
   },
   overrides: [
     {
@@ -17,6 +17,37 @@ module.exports = {
         'comment-empty-line-before': null,
         'declaration-property-value-disallowed-list': null,
         'function-disallowed-list': null,
+      },
+    },
+    {
+      files: ['polaris-react/postcss-mixins/*.css'],
+      rules: {
+        'comment-word-disallowed-list': [
+          /.*/,
+          {
+            message:
+              'Comments in polaris-react/postcss-mixins/*.css cause postcss-mixins to error. To disable lint rules, add them to styleslintrc.js overrides.',
+          },
+        ],
+        'scss/at-rule-no-unknown': null,
+        'polaris/coverage': [
+          true,
+          {
+            border: [
+              {
+                'polaris/at-rule-disallowed-list': null,
+              },
+            ],
+            layout: [
+              {
+                'polaris/at-rule-disallowed-list': null,
+              },
+            ],
+            conventions: {
+              'polaris/custom-property-allowed-list': null,
+            },
+          },
+        ],
       },
     },
   ],
