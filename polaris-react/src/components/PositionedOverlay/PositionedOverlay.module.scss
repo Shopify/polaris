@@ -1,6 +1,17 @@
+:root {
+  // stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- PositionedOverlay CSS Properties; Supports consuming component styles tying into changes in order to animate without hacky JavaScript timers and forcing reflow
+  --pc-positioned-overlay-top: initial;
+  --pc-positioned-overlay-bottom: initial;
+  // stylelint-enable
+}
+
 .PositionedOverlay {
   position: absolute;
   z-index: var(--p-z-index-2);
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- PositionedOverlay CSS Properties
+  top: var(--pc-positioned-overlay-top);
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- PositionedOverlay CSS Properties
+  bottom: var(--pc-positioned-overlay-bottom);
 }
 
 .fixed {

@@ -1,0 +1,83 @@
+@import '../../styles/common';
+
+.AlphaHoverCard {
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- AlphaHoverCard CSS Properties; PositionedOverlay takes child min-width into account when determining available space, horizontal positioning, and width
+  --pc-hover-card-min-width: initial;
+  opacity: 0;
+  position: relative;
+  // stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- AlphaHoverCard CSS Properties
+  min-width: var(--pc-hover-card-min-width);
+  display: flex;
+  background: var(--p-color-bg-surface);
+  margin: var(--p-space-100) var(--p-space-200) var(--p-space-400);
+  box-shadow: var(--p-shadow-500);
+  border-radius: var(--p-border-radius-300);
+
+  @include shadow-bevel(
+    $boxShadow: var(--p-shadow-md),
+    $borderRadius: var(--p-border-radius-300),
+    $zIndex: 2
+  );
+
+  &.snapToParent {
+    margin: 0;
+  }
+}
+
+.HoverCardOverlay {
+  will-change: opacity, width, height, left, right, top, bottom;
+  opacity: 0;
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in-out)
+    var(--p-motion-duration-300);
+}
+
+.HoverCardOverlay-enter {
+  opacity: 1;
+}
+
+.HoverCardOverlay-glide {
+  opacity: 1;
+  transition: top var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35),
+    bottom var(--p-motion-duration-100) cubic-bezier(0.25, 0, 0.75, 1.35);
+}
+
+.measuring {
+  opacity: 0;
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in-out)
+    var(--p-motion-duration-300);
+}
+
+.measured {
+  opacity: 1;
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease-in-out)
+    var(--p-motion-duration-300);
+}
+
+.positionedAbove {
+  margin: var(--p-space-400) var(--p-space-200) var(--p-space-100);
+}
+
+.ActivatorWrapper {
+  width: fit-content;
+
+  &.snapToParent {
+    width: 100%;
+  }
+}
+
+.ContentContainer {
+  position: relative;
+  overflow: hidden;
+  background: var(--p-color-bg-surface);
+  border-radius: var(--p-space-300);
+
+  /* Prevent Scrollable's box shadows overflowing the rounded corners of this
+   * element on Safari prior to tech preview version 156.
+   * See: https://bugs.webkit.org/show_bug.cgi?id=68196 */
+  isolation: isolate;
+}
+
+.Content {
+  width: 100%;
+  height: 100%;
+}

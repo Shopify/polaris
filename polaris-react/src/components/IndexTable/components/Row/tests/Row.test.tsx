@@ -2,6 +2,7 @@ import React from 'react';
 import type {ReactElement} from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {DeepPartial} from '@shopify/useful-types';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {IndexTable} from '../../../IndexTable';
 import type {IndexTableProps} from '../../../IndexTable';
@@ -14,6 +15,8 @@ import {Link} from '../../../../Link';
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
 import styles from '../../../IndexTable.module.scss';
 import type {Range} from '../../../../../utilities/index-provider';
+
+setMatchMedia();
 
 const defaultEvent = {
   preventDefault: noop,

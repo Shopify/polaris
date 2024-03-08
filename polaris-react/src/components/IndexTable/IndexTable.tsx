@@ -24,9 +24,11 @@ import {Tooltip} from '../Tooltip';
 import {UnstyledButton} from '../UnstyledButton';
 import {BulkActions} from '../BulkActions';
 import type {BulkActionsProps} from '../BulkActions';
+import {AlphaHoverCard} from '../AlphaHoverCard';
 import {classNames} from '../../utilities/css';
 import {
   useIndexValue,
+  useIndexCellPreview,
   useIndexSelectionChange,
   SELECT_ALL_ITEMS,
   SelectionType,
@@ -105,6 +107,10 @@ export interface IndexTableBaseProps {
   paginatedSelectAllActionText?: string;
   lastColumnSticky?: boolean;
   selectable?: boolean;
+  /** Add zebra striping to table rows */
+  hasZebraStriping?: boolean;
+  /** Properties to enable pagination at the bottom of the table. */
+  pagination?: IndexTablePaginationProps;
   /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
   sortable?: boolean[];
   /**
@@ -118,15 +124,11 @@ export interface IndexTableBaseProps {
    * The index of the heading that the table rows are sorted by.
    */
   sortColumnIndex?: number;
-  /** Callback fired on click or keypress of a sortable column heading. */
-  onSort?(headingIndex: number, direction: IndexTableSortDirection): void;
   /** Optional dictionary of sort toggle labels for each sortable column, with ascending and descending label,
    * with the key as the index of the column */
   sortToggleLabels?: IndexTableSortToggleLabels;
-  /** Add zebra striping to table rows */
-  hasZebraStriping?: boolean;
-  /** Properties to enable pagination at the bottom of the table. */
-  pagination?: IndexTablePaginationProps;
+  /** Callback fired on click or keypress of a sortable column heading. */
+  onSort?(headingIndex: number, direction: IndexTableSortDirection): void;
 }
 
 export interface TableHeadingRect {
@@ -139,24 +141,37 @@ const SCROLL_BAR_DEBOUNCE_PERIOD = 300;
 
 function IndexTableBase({
   headings,
-  bulkActions = [],
   promotedBulkActions = [],
+  bulkActions = [],
   children,
   emptyState,
   sort,
   paginatedSelectAllActionText,
   lastColumnSticky = false,
+  hasZebraStriping,
+  pagination,
   sortable,
   sortDirection,
   defaultSortDirection = 'descending',
   sortColumnIndex,
-  onSort,
   sortToggleLabels,
-  hasZebraStriping,
-  pagination,
+  onSort,
   ...restProps
 }: IndexTableBaseProps) {
   const theme = useTheme();
+
+  const {activeCellPreview, currentCellPreviewActivator} =
+    useIndexCellPreview();
+
+  const cellPreviewMarkup = (
+    <AlphaHoverCard
+      snapToParent
+      activator={currentCellPreviewActivator}
+      content={activeCellPreview}
+      activatorWrapper="div"
+      preferredPosition="right"
+    />
+  );
 
   const {
     loading,
@@ -770,6 +785,7 @@ function IndexTableBase({
 
   return (
     <>
+      {cellPreviewMarkup}
       <div className={styles.IndexTable}>
         <div className={styles.IndexTableWrapper}>
           {!condensed && loadingMarkup}

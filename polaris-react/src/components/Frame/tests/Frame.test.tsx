@@ -2,6 +2,7 @@ import React, {createRef} from 'react';
 import {CSSTransition} from 'react-transition-group';
 import {animationFrame, dimension} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {ContextualSaveBar as PolarisContextualSavebar} from '../../ContextualSaveBar';
 import {Loading as PolarisLoading} from '../../Loading';
@@ -12,15 +13,7 @@ import {
   Loading as FrameLoading,
 } from '../components';
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: window.innerWidth < 768,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 const defaultWindowWidth = window.innerWidth;
 

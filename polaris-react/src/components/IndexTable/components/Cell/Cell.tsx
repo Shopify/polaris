@@ -2,6 +2,7 @@ import React, {memo} from 'react';
 import type {ReactNode} from 'react';
 
 import {classNames} from '../../../../utilities/css';
+import {useIndexCell} from '../../../../utilities/index-provider';
 import styles from '../../IndexTable.module.scss';
 
 export interface CellProps {
@@ -25,6 +26,12 @@ export interface CellProps {
   scope?: HTMLTableCellElement['scope'];
   /** A space-separated list of the `th` cell IDs that describe or apply to it. Use for cells within a row that relate to a subheader cell in addition to their column header. */
   headers?: HTMLTableCellElement['headers'];
+  /** Markup to render on cell hover */
+  preview?: React.ReactNode;
+  /** Callback fired when mouse enters cell */
+  onMouseEnter?(): void;
+  /** Callback fired when mouse leaves cell */
+  onMouseLeave?(): void;
 }
 
 export const Cell = memo(function Cell({
@@ -36,16 +43,49 @@ export const Cell = memo(function Cell({
   scope,
   as = 'td',
   id,
+  preview,
+  onMouseEnter,
+  onMouseLeave,
 }: CellProps) {
+  const indexCellContext = useIndexCell();
+  const hasPreview = preview && indexCellContext !== undefined;
   const className = classNames(
     customClassName,
     styles.TableCell,
     flush && styles['TableCell-flush'],
+    hasPreview && indexCellContext.previewActivatorWrapperClassName,
   );
+
+  const handlePreviewOpen =
+    hasPreview && indexCellContext?.onMouseEnterCell
+      ? indexCellContext?.onMouseEnterCell(preview)
+      : undefined;
+
+  const handleMouseEnter = (event: React.MouseEvent<HTMLTableCellElement>) => {
+    if (handlePreviewOpen) handlePreviewOpen(event);
+    onMouseEnter?.();
+  };
+
+  const handleMouseLeave = (event: React.MouseEvent<HTMLTableCellElement>) => {
+    if (hasPreview && indexCellContext?.onMouseLeaveCell) {
+      indexCellContext?.onMouseLeaveCell(event);
+    }
+
+    onMouseLeave?.();
+  };
 
   return React.createElement(
     as,
-    {id, colSpan, headers, scope, className},
+    {
+      id,
+      colSpan,
+      headers,
+      scope,
+      className,
+      'data-hovercard-activator': preview ? true : undefined,
+      onMouseEnter: handleMouseEnter,
+      onMouseLeave: handleMouseLeave,
+    },
     children,
   );
 });

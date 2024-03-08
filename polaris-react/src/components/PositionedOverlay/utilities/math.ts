@@ -1,6 +1,13 @@
 import {Rect} from '../../../utilities/geometry';
 
-export type PreferredPosition = 'above' | 'below' | 'mostSpace';
+const MINIMUM_SURROUNDING_SPACE = 16;
+
+export type PreferredPosition =
+  | 'above'
+  | 'below'
+  | 'mostSpace'
+  | 'right'
+  | 'left';
 
 export type PreferredAlignment = 'left' | 'center' | 'right';
 
@@ -20,98 +27,210 @@ export function calculateVerticalPosition(
   fixed: boolean | undefined,
   topBarOffset = 0,
 ) {
+  const positionedHorizontal =
+    preferredPosition === 'right' || preferredPosition === 'left';
+  const hasScrollBar = scrollableContainerRect.height > containerRect.height;
   const activatorTop = activatorRect.top;
   const activatorBottom = activatorTop + activatorRect.height;
-  const spaceAbove = activatorRect.top - topBarOffset;
-  const spaceBelow =
-    containerRect.height - activatorRect.top - activatorRect.height;
-
-  const desiredHeight = overlayRect.height;
   const verticalMargins = overlayMargins.activator + overlayMargins.container;
-  const minimumSpaceToScroll = overlayMargins.container;
-  const distanceToTopScroll =
-    activatorRect.top - Math.max(scrollableContainerRect.top, 0);
-  const distanceToBottomScroll =
-    containerRect.top +
-    Math.min(
-      containerRect.height,
-      scrollableContainerRect.top + scrollableContainerRect.height,
-    ) -
-    (activatorRect.top + activatorRect.height);
-  const enoughSpaceFromTopScroll = distanceToTopScroll >= minimumSpaceToScroll;
-  const enoughSpaceFromBottomScroll =
-    distanceToBottomScroll >= minimumSpaceToScroll;
-  const heightIfBelow = Math.min(spaceBelow, desiredHeight);
-  const heightIfAbove = Math.min(spaceAbove, desiredHeight);
+  const minimumSurroundingSpace = verticalMargins
+    ? verticalMargins
+    : MINIMUM_SURROUNDING_SPACE;
+  const spaceAbove = positionedHorizontal
+    ? activatorRect.top + activatorRect.height - topBarOffset
+    : activatorRect.top - topBarOffset;
+  const spaceBelow = positionedHorizontal
+    ? containerRect.height - activatorRect.top
+    : containerRect.height - activatorRect.top - activatorRect.height;
+  const desiredHeight = overlayRect.height;
+  const enoughSpaceFromTopEdge =
+    spaceAbove >= desiredHeight + minimumSurroundingSpace;
+  const enoughSpaceFromBottomEdge =
+    spaceBelow >= desiredHeight + minimumSurroundingSpace;
   const containerRectTop = fixed ? 0 : containerRect.top;
+  const mostSpaceOnTop =
+    (enoughSpaceFromTopEdge ||
+      (spaceAbove >= spaceBelow && !enoughSpaceFromBottomEdge)) &&
+    (spaceAbove >= desiredHeight || spaceAbove >= spaceBelow);
 
-  const positionIfAbove = {
-    height: heightIfAbove - verticalMargins,
-    top: activatorTop + containerRectTop - heightIfAbove,
-    positioning: 'above',
-  };
+  const mostSpaceOnBottom =
+    (enoughSpaceFromBottomEdge ||
+      (spaceBelow >= spaceAbove && !enoughSpaceFromTopEdge)) &&
+    (spaceBelow >= desiredHeight || spaceBelow >= spaceAbove);
 
-  const positionIfBelow = {
-    height: heightIfBelow - verticalMargins,
-    top: activatorBottom + containerRectTop,
-    positioning: 'below',
-  };
+  const heightIfAbove = enoughSpaceFromTopEdge
+    ? desiredHeight - verticalMargins
+    : spaceAbove - minimumSurroundingSpace;
+  const heightIfBelow = enoughSpaceFromBottomEdge
+    ? desiredHeight - verticalMargins
+    : spaceBelow - minimumSurroundingSpace;
 
-  if (preferredPosition === 'above') {
-    return (enoughSpaceFromTopScroll ||
-      (distanceToTopScroll >= distanceToBottomScroll &&
-        !enoughSpaceFromBottomScroll)) &&
-      (spaceAbove > desiredHeight || spaceAbove > spaceBelow)
-      ? positionIfAbove
-      : positionIfBelow;
+  let positionIfAbove =
+    activatorTop + containerRectTop - heightIfAbove - verticalMargins;
+  let positionIfBelow = activatorBottom + containerRectTop;
+
+  if (!positionedHorizontal) {
+    if (preferredPosition === 'above') {
+      return mostSpaceOnTop
+        ? {
+            height: heightIfAbove,
+            top: positionIfAbove,
+            positioning: 'above',
+          }
+        : {
+            height: heightIfBelow,
+            top: positionIfBelow,
+            positioning: 'below',
+          };
+    }
+
+    if (preferredPosition === 'below') {
+      return mostSpaceOnBottom
+        ? {
+            height: heightIfBelow,
+            top: positionIfBelow,
+            positioning: 'below',
+          }
+        : {
+            height: heightIfAbove,
+            top: positionIfAbove,
+            positioning: 'above',
+          };
+    }
   }
 
-  if (preferredPosition === 'below') {
-    return (enoughSpaceFromBottomScroll ||
-      (distanceToBottomScroll >= distanceToTopScroll &&
-        !enoughSpaceFromTopScroll)) &&
-      (spaceBelow > desiredHeight || spaceBelow > spaceAbove)
-      ? positionIfBelow
-      : positionIfAbove;
+  if (positionedHorizontal) {
+    positionIfAbove = !hasScrollBar
+      ? containerRect.height - activatorBottom
+      : scrollableContainerRect.bottom - activatorBottom;
+    positionIfBelow = activatorTop + containerRect.top;
+
+    return mostSpaceOnBottom
+      ? {
+          height: heightIfBelow,
+          top: positionIfBelow,
+          positioning: 'below',
+        }
+      : {
+          height: heightIfAbove,
+          bottom: positionIfAbove,
+          positioning: 'above',
+        };
   }
 
-  if (enoughSpaceFromTopScroll && enoughSpaceFromBottomScroll) {
-    return spaceAbove > spaceBelow ? positionIfAbove : positionIfBelow;
+  if (enoughSpaceFromTopEdge && enoughSpaceFromBottomEdge) {
+    return {height: heightIfBelow, top: positionIfBelow, positioning: 'below'};
   }
 
-  return distanceToTopScroll > minimumSpaceToScroll
-    ? positionIfAbove
-    : positionIfBelow;
+  return mostSpaceOnBottom
+    ? {height: heightIfBelow, top: positionIfBelow, positioning: 'below'}
+    : {height: heightIfAbove, top: positionIfAbove, positioning: 'above'};
 }
 
-export function calculateHorizontalPosition(
-  activatorRect: Rect,
-  overlayRect: Rect,
-  containerRect: Rect,
-  overlayMargins: Margins,
-  preferredAlignment: PreferredAlignment,
-) {
-  const maximum = containerRect.width - overlayRect.width;
+interface HorizontalPosition {
+  activatorRect: Rect;
+  overlayRect: Rect;
+  containerRect: Rect;
+  overlayMargins: Margins;
+  preferredAlignment: PreferredAlignment;
+  preferredHorizontalPosition?: 'left' | 'right';
+  overlayMinWidth: number;
+}
 
-  if (preferredAlignment === 'left') {
-    return Math.min(
-      maximum,
-      Math.max(0, activatorRect.left - overlayMargins.horizontal),
-    );
-  } else if (preferredAlignment === 'right') {
-    const activatorRight =
-      containerRect.width - (activatorRect.left + activatorRect.width);
+export function calculateHorizontalPosition({
+  activatorRect,
+  overlayRect,
+  containerRect,
+  overlayMargins,
+  preferredAlignment,
+  preferredHorizontalPosition,
+  overlayMinWidth = 0,
+}: HorizontalPosition) {
+  const maximumWidth = containerRect.width - overlayRect.width;
+  const activatorRight =
+    containerRect.width - (activatorRect.left + activatorRect.width);
 
-    return Math.min(
-      maximum,
-      Math.max(0, activatorRight - overlayMargins.horizontal),
-    );
+  const minimumSurroundingSpace = overlayMargins.horizontal
+    ? overlayMargins.horizontal
+    : MINIMUM_SURROUNDING_SPACE;
+  const desiredWidth = overlayRect.width;
+  const distanceToLeftEdge = activatorRect.left;
+  const distanceToRightEdge = containerRect.width - activatorRect.right;
+  const enoughSpaceFromLeftEdge =
+    distanceToLeftEdge >=
+    (overlayMinWidth || desiredWidth) + minimumSurroundingSpace;
+  const enoughSpaceFromRightEdge =
+    distanceToRightEdge >=
+    (overlayMinWidth || desiredWidth) + minimumSurroundingSpace;
+
+  if (!preferredHorizontalPosition) {
+    if (preferredAlignment === 'left') {
+      return {
+        left: Math.min(
+          maximumWidth,
+          Math.max(0, activatorRect.left - minimumSurroundingSpace),
+        ),
+        width: null,
+      };
+    } else if (preferredAlignment === 'right') {
+      return {
+        left: Math.min(
+          maximumWidth,
+          Math.max(0, activatorRight - minimumSurroundingSpace),
+        ),
+        width: null,
+      };
+    }
   }
 
-  return Math.min(
-    maximum,
-    Math.max(0, activatorRect.center.x - overlayRect.width / 2),
-  );
+  if (preferredHorizontalPosition) {
+    const positionIfRight = activatorRect.left + activatorRect.width;
+    const positionIfLeft = containerRect.width - activatorRect.left;
+
+    const widthIfLeft = enoughSpaceFromLeftEdge
+      ? desiredWidth
+      : Math.min(distanceToLeftEdge - minimumSurroundingSpace, desiredWidth);
+
+    const widthIfRight = enoughSpaceFromRightEdge
+      ? desiredWidth
+      : Math.min(distanceToRightEdge - minimumSurroundingSpace, desiredWidth);
+
+    if (preferredHorizontalPosition === 'right') {
+      return enoughSpaceFromRightEdge
+        ? {
+            left: positionIfRight,
+            width:
+              overlayMinWidth && widthIfRight < overlayMinWidth
+                ? overlayMinWidth
+                : null,
+          }
+        : {right: positionIfLeft, width: null};
+    } else {
+      return enoughSpaceFromLeftEdge
+        ? {
+            right: positionIfLeft,
+            width:
+              overlayMinWidth && widthIfLeft < overlayMinWidth
+                ? overlayMinWidth
+                : null,
+          }
+        : {
+            left: positionIfRight,
+            width: null,
+          };
+    }
+  }
+
+  return {
+    width: null,
+    left: Math.min(
+      maximumWidth,
+      Math.max(
+        0,
+        activatorRect.center.x - overlayRect.width / 2 + containerRect.left,
+      ),
+    ),
+  };
 }
 
 export function rectIsOutsideOfRect(inner: Rect, outer: Rect) {

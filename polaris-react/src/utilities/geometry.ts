@@ -1,6 +1,8 @@
 interface RectConfig {
   top?: number;
+  bottom?: number;
   left?: number;
+  right?: number;
   width?: number;
   height?: number;
 }
@@ -16,13 +18,24 @@ export class Rect {
   }
 
   top: number;
+  bottom: number;
   left: number;
+  right: number;
   width: number;
   height: number;
 
-  constructor({top = 0, left = 0, width = 0, height = 0}: RectConfig = {}) {
+  constructor({
+    top = 0,
+    bottom = 0,
+    left = 0,
+    right = 0,
+    width = 0,
+    height = 0,
+  }: RectConfig = {}) {
     this.top = top;
+    this.bottom = bottom;
     this.left = left;
+    this.right = right;
     this.width = width;
     this.height = height;
   }
@@ -49,8 +62,24 @@ export function getRectForNode(
 
   return new Rect({
     top: rect.top,
+    bottom: rect.bottom,
     left: rect.left,
+    right: rect.right,
     width: rect.width,
     height: rect.height,
   });
 }
+
+export const getMinMaxDimensionsOfChildren = (
+  contentNode: React.MutableRefObject<HTMLDivElement | null>,
+) => {
+  const childrenNode =
+    contentNode.current?.children &&
+    contentNode.current?.children[0].children[0];
+
+  if (childrenNode) {
+    const {minWidth, maxHeight} = window.getComputedStyle(childrenNode);
+
+    return {minWidth, maxHeight};
+  }
+};

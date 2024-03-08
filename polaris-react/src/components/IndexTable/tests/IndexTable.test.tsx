@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import {SortAscendingIcon, SortDescendingIcon} from '@shopify/polaris-icons';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {getTableHeadingsBySelector} from '../utilities';
 import {EmptySearchResult} from '../../EmptySearchResult';
@@ -33,6 +34,17 @@ jest.mock('../../../utilities/debounce', () => ({
     callback();
   },
 }));
+
+function mockUseBreakpoints(mdUp: boolean) {
+  const useBreakpoints: jest.Mock = jest.requireMock(
+    '../../../utilities/breakpoints',
+  ).useBreakpoints;
+
+  useBreakpoints.mockReturnValue({
+    mdUp,
+  });
+}
+setMatchMedia();
 
 const mockTableItems = [
   {
@@ -84,6 +96,8 @@ describe('<IndexTable>', () => {
 
   beforeEach(() => {
     jest.resetAllMocks();
+    mockUseBreakpoints(false);
+
     (getTableHeadingsBySelector as jest.Mock).mockReturnValue([]);
   });
 

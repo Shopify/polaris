@@ -7,6 +7,7 @@ import {
   AlertDiamondIcon,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
+import {setMatchMedia} from 'tests/setup/tests';
 
 import {Button} from '../../Button';
 import {Card} from '../../Card';
@@ -27,15 +28,7 @@ import {
 import type {BannerTone} from '../Banner';
 import type {BannerHandles} from '../utilities';
 
-window.matchMedia =
-  window.matchMedia ||
-  function () {
-    return {
-      matches: false,
-      addListener() {},
-      removeListener() {},
-    };
-  };
+setMatchMedia();
 
 describe('<Banner />', () => {
   it('renders a title', () => {
