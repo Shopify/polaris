@@ -8,7 +8,7 @@ import {useTheme} from '../../utilities/use-theme';
 import styles from './ProgressBar.module.scss';
 
 type Size = 'small' | 'medium' | 'large';
-type Tone = 'highlight' | 'primary' | 'success' | 'critical';
+type Tone = 'highlight' | 'primary' | 'success' | 'critical' | 'warning';
 
 export interface ProgressBarProps {
   /**
