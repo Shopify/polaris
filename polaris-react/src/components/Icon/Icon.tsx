@@ -72,8 +72,8 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
         className={styles.Svg}
         focusable="false"
         aria-hidden="true"
-        // On Mobile we're scaling the viewBox to 16x16 to make the icons bigger
-        // Also, we're setting the viewport origin to 2x2 to center the icon
+        // On Mobile we're scaling the viewBox to 18x18 to make the icons bigger
+        // Also, we're setting the viewport origin to 1x1 to center the icon
         // We use this syntax so we don't override the existing viewBox value if we don't need to.
         {...(mdDown ? {viewBox: '1 1 18 18'} : {})}
       />
