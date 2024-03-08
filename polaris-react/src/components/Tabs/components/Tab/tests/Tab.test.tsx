@@ -1,6 +1,5 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {UnstyledButton} from '../../../../UnstyledButton';
 import {Popover} from '../../../../Popover';
@@ -48,13 +47,8 @@ describe('Tab', () => {
     onTogglePopover: jest.fn(),
   };
 
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
   afterEach(() => {
     jest.clearAllMocks();
-    matchMedia.restore();
   });
 
   it('renders <Tab />', () => {

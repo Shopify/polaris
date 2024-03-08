@@ -10,14 +10,6 @@ import type {BreakpointsDirectionAlias} from '../breakpoints';
 const mediaConditions = getMediaConditions(themeDefault.breakpoints);
 
 describe('useBreakpoints', () => {
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
-  afterEach(() => {
-    matchMedia.restore();
-  });
-
   it('initial render uses defaults', () => {
     setMediaWidth('breakpoints-xs');
     let breakpoints;
@@ -157,8 +149,7 @@ function setMediaWidth(breakpointsTokenName: BreakpointsTokenName) {
   const aliasDirectionConditions = Object.values(
     mediaConditions[breakpointsTokenName],
   );
-
-  jest.spyOn(window, 'matchMedia').mockImplementation((query) => ({
+  matchMedia.setMedia((query: string) => ({
     matches: aliasDirectionConditions.includes(query),
     media: '',
     onchange: null,
