@@ -142,7 +142,7 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
     mediaQueryLists.forEach((mql) => {
       if (mql.addListener) {
         mql.addListener(handler);
-      } else if (mql.addEventListener) {
+      } else {
         mql.addEventListener('change', handler);
       }
     });
@@ -155,7 +155,7 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
       mediaQueryLists.forEach((mql) => {
         if (mql.removeListener) {
           mql.removeListener(handler);
-        } else if (mql.removeEventListener) {
+        } else {
           mql.removeEventListener('change', handler);
         }
       });
