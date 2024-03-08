@@ -1,7 +1,6 @@
 import React from 'react';
 import type {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 import {setMediaWidth} from 'tests/utilities/breakpoints';
 
 import {Avatar} from '../../Avatar';
@@ -21,12 +20,10 @@ describe('<ResourceItem />', () => {
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
     spy.mockImplementation(() => {});
-    matchMedia.mock();
   });
 
   afterEach(() => {
     spy.mockRestore();
-    matchMedia.restore();
   });
 
   const mockDefaultContext = {
