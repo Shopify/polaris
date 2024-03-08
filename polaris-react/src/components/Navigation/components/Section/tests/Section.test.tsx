@@ -17,6 +17,7 @@ describe('<Navigation.Section />', () => {
   let cancelAnimationFrameSpy: jest.SpyInstance;
 
   beforeEach(() => {
+    matchMedia.mock();
     animationFrame.mock();
     context = {
       location: '/admin/products',
@@ -26,6 +27,7 @@ describe('<Navigation.Section />', () => {
   });
 
   afterEach(() => {
+    matchMedia.restore();
     animationFrame.restore();
     cancelAnimationFrameSpy.mockRestore();
   });
