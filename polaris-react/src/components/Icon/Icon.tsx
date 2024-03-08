@@ -2,7 +2,6 @@ import React from 'react';
 
 import {Text} from '../Text';
 import {classNames, variationName} from '../../utilities/css';
-import {useBreakpoints} from '../../utilities/breakpoints';
 import type {IconSource} from '../../types';
 
 import styles from './Icon.module.scss';
@@ -63,8 +62,6 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
     tone && styles[variationName('tone', tone)],
   );
 
-  const {mdDown} = useBreakpoints();
-
   const SourceComponent = source;
   const contentMarkup = {
     function: (
@@ -72,10 +69,6 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
         className={styles.Svg}
         focusable="false"
         aria-hidden="true"
-        // On Mobile we're scaling the viewBox to 16x16 to make the icons bigger
-        // Also, we're setting the viewport origin to 2x2 to center the icon
-        // We use this syntax so we don't override the existing viewBox value if we don't need to.
-        {...(mdDown ? {viewBox: '1 1 18 18'} : {})}
       />
     ),
     placeholder: <div className={styles.Placeholder} />,
