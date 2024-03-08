@@ -183,6 +183,7 @@ $sidebar-breakpoint: 1200px;
   flex: 1;
   display: flex;
   align-items: stretch;
+  border-inline-end: var(--p-border-width-025) solid var(--p-color-border);
 
   min-width: 0;
   @media (--p-breakpoints-sm-up) {
@@ -224,13 +225,12 @@ $sidebar-breakpoint: 1200px;
   flex: 1;
   min-width: 0;
   max-width: 100%;
-  border-inline-end: var(--p-border-width-025) solid var(--p-color-border);
 
   .hasSidebar & {
     /* stylelint-disable-next-line polaris/media-queries/polaris/media-query-allowed-list -- custom breakpoint */
     @media screen and (min-width: #{$sidebar-breakpoint}) {
       /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list -- private token from component */
-      padding-right: var(--pc-sidebar-width);
+      margin-right: var(--pc-sidebar-width);
     }
   }
 }
