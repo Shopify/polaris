@@ -73,6 +73,7 @@ export function Default() {
               <Button
                 variant="tertiary"
                 icon={MenuHorizontalIcon}
+                accessibilityLabel="More actions"
                 onClick={() =>
                   setLightThemeLightPopoverActive((active) => !active)
                 }
@@ -94,6 +95,7 @@ export function Default() {
                 <Button
                   variant="tertiary"
                   icon={MenuHorizontalIcon}
+                  accessibilityLabel="More actions"
                   onClick={() =>
                     setDarkThemeDarkPopoverActive((active) => !active)
                   }
@@ -119,6 +121,7 @@ export function Default() {
                   <Button
                     variant="tertiary"
                     icon={MenuHorizontalIcon}
+                    accessibilityLabel="More actions"
                     onClick={() =>
                       setLightThemeDarkPopoverActive((active) => !active)
                     }
@@ -146,6 +149,7 @@ export function Default() {
                     <Button
                       variant="tertiary"
                       icon={MenuHorizontalIcon}
+                      accessibilityLabel="More actions"
                       onClick={() =>
                         setDarkThemeLightPopoverActive((active) => !active)
                       }
@@ -179,7 +183,7 @@ function CustomerCard(props: {moreActions: React.ReactNode}) {
           </Text>
           {props.moreActions}
           <Text as="p" variant="bodyMd">
-            John Smith!
+            John Smith
           </Text>
         </div>
         <div
@@ -191,7 +195,11 @@ function CustomerCard(props: {moreActions: React.ReactNode}) {
           <Text as="h3" variant="headingSm" fontWeight="medium">
             Contact Information!
           </Text>
-          <Button icon={ClipboardIcon} variant="tertiary" />
+          <Button
+            icon={ClipboardIcon}
+            variant="tertiary"
+            accessibilityLabel="Copy email address"
+          />
           <Text as="p" variant="bodyMd">
             john.smith@example.com
           </Text>
