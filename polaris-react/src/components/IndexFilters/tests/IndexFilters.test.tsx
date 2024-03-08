@@ -1,7 +1,6 @@
 import React from 'react';
 import type {ComponentProps} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Tabs} from '../../Tabs';
 import {Filters} from '../../Filters';
@@ -93,13 +92,8 @@ describe('IndexFilters', () => {
     showEditColumnsButton: false,
   };
 
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
   afterEach(() => {
     jest.resetAllMocks();
-    matchMedia.restore();
   });
 
   it('reacts correctly to pressing the search button and invokes setMode with the filtering argument', () => {

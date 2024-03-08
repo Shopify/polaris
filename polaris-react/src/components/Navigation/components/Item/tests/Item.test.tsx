@@ -18,14 +18,6 @@ import {SecondaryNavigation} from '../components';
 import {Tooltip} from '../../../../Tooltip';
 
 describe('<Nav.Item />', () => {
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
-  afterEach(() => {
-    matchMedia.restore();
-  });
-
   // eslint-disable-next-line jest/no-disabled-tests
   it.skip('sets expanded to false on resize when !navigationBarCollapsed and location does not match', () => {
     const spy = jest.fn();
