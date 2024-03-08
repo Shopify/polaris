@@ -155,7 +155,7 @@ export function useBreakpoints(options?: UseBreakpointsOptions) {
       mediaQueryLists.forEach((mql) => {
         if (mql.removeListener) {
           mql.removeListener(handler);
-        } else {
+        } else if (mql.removeEventListener) {
           mql.removeEventListener('change', handler);
         }
       });
