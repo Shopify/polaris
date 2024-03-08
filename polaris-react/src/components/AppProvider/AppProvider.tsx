@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import type {ThemeNameGlobal} from '@shopify/polaris-tokens';
+import type {ThemeName} from '@shopify/polaris-tokens';
 import {
   createThemeClassName,
   themeNameDefault,
@@ -11,7 +11,11 @@ import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
-import {ThemeContext, getTheme} from '../../utilities/use-theme';
+import {
+  ThemeNameContext,
+  ThemeContext,
+  getTheme,
+} from '../../utilities/use-theme';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -70,7 +74,7 @@ interface State {
 }
 
 export interface AppProviderProps {
-  theme?: ThemeNameGlobal;
+  theme?: ThemeName;
   /** A locale object or array of locale objects that overrides default translations. If specifying an array then your primary language dictionary should come first, followed by your fallback language dictionaries */
   i18n: ConstructorParameters<typeof I18n>[0];
   /** A custom component to use for all links used by Polaris components */
@@ -161,7 +165,7 @@ export class AppProvider extends Component<AppProviderProps, State> {
     });
   };
 
-  getThemeName = (): ThemeNameGlobal => this.props.theme ?? themeNameDefault;
+  getThemeName = (): ThemeName => this.props.theme ?? themeNameDefault;
 
   render() {
     const {children, features} = this.props;
@@ -170,27 +174,29 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {intl, link} = this.state;
 
     return (
-      <ThemeContext.Provider value={getTheme(themeName)}>
-        <FeaturesContext.Provider value={features}>
-          <I18nContext.Provider value={intl}>
-            <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-              <StickyManagerContext.Provider value={this.stickyManager}>
-                <LinkContext.Provider value={link}>
-                  <MediaQueryProvider>
-                    <PortalsManager>
-                      <FocusManager>
-                        <EphemeralPresenceManager>
-                          {children}
-                        </EphemeralPresenceManager>
-                      </FocusManager>
-                    </PortalsManager>
-                  </MediaQueryProvider>
-                </LinkContext.Provider>
-              </StickyManagerContext.Provider>
-            </ScrollLockManagerContext.Provider>
-          </I18nContext.Provider>
-        </FeaturesContext.Provider>
-      </ThemeContext.Provider>
+      <ThemeNameContext.Provider value={themeName}>
+        <ThemeContext.Provider value={getTheme(themeName)}>
+          <FeaturesContext.Provider value={features}>
+            <I18nContext.Provider value={intl}>
+              <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+                <StickyManagerContext.Provider value={this.stickyManager}>
+                  <LinkContext.Provider value={link}>
+                    <MediaQueryProvider>
+                      <PortalsManager>
+                        <FocusManager>
+                          <EphemeralPresenceManager>
+                            {children}
+                          </EphemeralPresenceManager>
+                        </FocusManager>
+                      </PortalsManager>
+                    </MediaQueryProvider>
+                  </LinkContext.Provider>
+                </StickyManagerContext.Provider>
+              </ScrollLockManagerContext.Provider>
+            </I18nContext.Provider>
+          </FeaturesContext.Provider>
+        </ThemeContext.Provider>
+      </ThemeNameContext.Provider>
     );
   }
 }

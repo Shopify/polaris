@@ -22,8 +22,6 @@ export type {
   MetaTokenProperties,
   Theme,
   ThemeName,
-  ThemeNameGlobal,
-  ThemeNameLocal,
 } from './themes/types';
 
 export {themeNameDefault, themeNames} from './themes/constants';
