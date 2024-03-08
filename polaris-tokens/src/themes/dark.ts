@@ -1,10 +1,20 @@
+import * as colors from '../colors';
+
 import {createMetaTheme, createMetaThemePartial} from './utils';
 
 export const metaThemeDarkPartial = createMetaThemePartial({
   color: {
-    'color-bg': {value: 'rgba(0, 0, 0, 1)'},
+    'color-bg': {value: colors.gray[16]},
+    'color-bg-surface': {value: colors.gray[15]},
+    'color-bg-fill-disabled': {value: colors.gray[15]},
+    'color-bg-fill-secondary': {value: colors.gray[13]},
+    'color-text': {value: colors.gray[3]},
+    'color-text-secondary': {value: colors.gray[6]},
+    'color-text-disabled': {value: colors.gray[13]},
+    'color-text-brand': {value: colors.blue[14]},
+    'color-icon': {value: colors.gray[11]},
+    'color-icon-disabled': {value: colors.gray[13]},
     'color-bg-inverse': {value: 'rgba(255, 255, 255, 1)'},
-    'color-bg-surface': {value: 'rgba(26, 26, 26, 1)'},
     'color-bg-surface-hover': {value: 'rgba(48, 48, 48, 1)'},
     'color-bg-surface-active': {value: 'rgba(74, 74, 74, 1)'},
     'color-bg-surface-selected': {value: 'rgba(74, 74, 74, 1)'},
@@ -47,8 +57,6 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-bg-fill-hover': {value: 'rgba(74, 74, 74, 1)'},
     'color-bg-fill-active': {value: 'rgba(97, 97, 97, 1)'},
     'color-bg-fill-selected': {value: 'rgba(97, 97, 97, 1)'},
-    'color-bg-fill-disabled': {value: 'rgba(48, 48, 48, 1)'},
-    'color-bg-fill-secondary': {value: 'rgba(48, 48, 48, 1)'},
     'color-bg-fill-secondary-hover': {value: 'rgba(74, 74, 74, 1)'},
     'color-bg-fill-secondary-active': {value: 'rgba(97, 97, 97, 1)'},
     'color-bg-fill-tertiary': {value: 'rgba(74, 74, 74, 1)'},
@@ -99,13 +107,9 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-bg-fill-transparent-secondary-active': {
       value: 'rgba(0, 0, 0, 0.11)',
     },
-    'color-text': {value: 'rgba(250, 250, 250, 1)'},
-    'color-text-secondary': {value: 'rgba(181, 181, 181, 1)'},
-    'color-text-disabled': {value: 'rgba(97, 97, 97, 1)'},
     'color-text-link': {value: 'rgba(234, 237, 255, 1)'},
     'color-text-link-hover': {value: 'rgba(240, 242, 255, 1)'},
     'color-text-link-active': {value: 'rgba(246, 248, 255, 1)'},
-    'color-text-brand': {value: 'rgba(253, 253, 253, 1)'},
     'color-text-brand-hover': {value: 'rgba(255, 255, 255, 1)'},
     'color-text-brand-on-bg-fill': {value: 'rgba(247, 247, 247, 1)'},
     'color-text-brand-on-bg-fill-hover': {value: 'rgba(250, 250, 250, 1)'},
@@ -170,10 +174,8 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-border-inverse': {value: 'rgba(247, 247, 247, 1)'},
     'color-border-inverse-hover': {value: 'rgba(250, 250, 250, 1)'},
     'color-border-inverse-active': {value: 'rgba(253, 253, 253, 1)'},
-    'color-icon': {value: 'rgba(250, 250, 250, 1)'},
     'color-icon-hover': {value: 'rgba(253, 253, 253, 1)'},
     'color-icon-active': {value: 'rgba(255, 255, 255, 1)'},
-    'color-icon-disabled': {value: 'rgba(138, 138, 138, 1)'},
     'color-icon-secondary': {value: 'rgba(181, 181, 181, 1)'},
     'color-icon-secondary-hover': {value: 'rgba(235, 235, 235, 1)'},
     'color-icon-secondary-active': {value: 'rgba(241, 241, 241, 1)'},
