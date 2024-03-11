@@ -1,6 +1,7 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 import type {Root, Node, Element} from '@shopify/react-testing';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {BulkActions} from '../../BulkActions';
 import {CheckableButton} from '../../CheckableButton';
@@ -54,6 +55,14 @@ const alternateTool = <div id="AlternateTool">Alternate Tool</div>;
 const defaultWindowWidth = window.innerWidth;
 
 describe('<ResourceList />', () => {
+  beforeEach(() => {
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
+  });
+
   describe('renderItem', () => {
     it('renders list items', () => {
       const resourceList = mountWithApp(

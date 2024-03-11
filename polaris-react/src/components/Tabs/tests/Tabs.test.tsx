@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Icon} from '../../Icon';
 import {Text} from '../../Text';
@@ -26,10 +27,12 @@ jest.mock('../../../utilities/breakpoints', () => ({
 
 describe('Tabs', () => {
   beforeEach(() => {
+    matchMedia.mock();
     mockUseBreakpoints(false);
   });
 
   afterEach(() => {
+    matchMedia.restore();
     jest.clearAllMocks();
   });
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 import {setMediaWidth} from 'tests/utilities/breakpoints';
 
 import {WithinContentContext} from '../../../utilities/within-content-context';
@@ -10,6 +11,14 @@ const heading = <p>Online store dashboard</p>;
 const subheading = <p>View a summary of your online store performance</p>;
 
 describe('Card', () => {
+  beforeEach(() => {
+    matchMedia.mock();
+  });
+
+  afterEach(() => {
+    matchMedia.restore();
+  });
+
   it('has a child with prop withinContentContainer set to true', () => {
     function TestComponent(_: {withinContentContainer: any}) {
       return null;
