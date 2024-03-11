@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {classNames} from '../../../../utilities/css';
+import {classNames, variationName} from '../../../../utilities/css';
 import {clamp} from '../../../../utilities/clamp';
 import {Labelled, helpTextID} from '../../../Labelled';
 import {Text} from '../../../Text';
@@ -36,6 +36,7 @@ export function SingleThumb(props: SingleThumbProps) {
     step,
     onBlur,
     onFocus,
+    tone,
   } = props;
   const clampedValue = clamp(value, min, max);
   const describedBy: string[] = [];
@@ -82,6 +83,7 @@ export function SingleThumb(props: SingleThumbProps) {
     sharedStyles.RangeSlider,
     error && styles.error,
     disabled && styles.disabled,
+    tone && styles[variationName('tone', tone)],
   );
 
   /* eslint-disable @shopify/react-require-autocomplete */

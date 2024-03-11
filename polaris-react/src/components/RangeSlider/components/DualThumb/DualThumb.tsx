@@ -1,7 +1,7 @@
 import React, {Component, createRef} from 'react';
 
 import {debounce} from '../../../../utilities/debounce';
-import {classNames} from '../../../../utilities/css';
+import {classNames, variationName} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
 import type {RangeSliderProps, DualValue} from '../../types';
 import {Labelled, labelID} from '../../../Labelled';
@@ -137,6 +137,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
       labelAction,
       labelHidden,
       helpText,
+      tone,
     } = this.props;
     const {value} = this.state;
 
@@ -157,6 +158,7 @@ export class DualThumb extends Component<DualThumbProps, State> {
       styles.TrackWrapper,
       error && styles.error,
       disabled && styles.disabled,
+      tone && styles[variationName('tone', tone)],
     );
 
     const thumbLowerClassName = classNames(

@@ -40,4 +40,6 @@ export interface RangeSliderProps {
   onFocus?(): void;
   /** Callback when focus is removed */
   onBlur?(): void;
+  /** Indicates the tone of the range input */
+  tone?: 'magic';
 }

@@ -72,6 +72,24 @@ $range-wrapper: 28px;
     // stylelint-enable
   }
 
+  .toneMagic & {
+    // stylelint-disable -- Polaris component custom properties
+    --pc-dual-thumb-selected-range: var(--p-color-bg-fill-magic);
+    --pc-dual-thumb-gradient-colors: var(--pc-dual-thumb-unselected-range) 0%,
+      var(--pc-dual-thumb-unselected-range)
+        var(--pc-range-slider-progress-lower),
+      var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-lower),
+      var(--pc-dual-thumb-selected-range) var(--pc-range-slider-progress-upper),
+      var(--pc-dual-thumb-unselected-range)
+        var(--pc-range-slider-progress-upper),
+      var(--pc-dual-thumb-unselected-range) 100%;
+    background-image: linear-gradient(
+      to right,
+      var(--pc-dual-thumb-gradient-colors)
+    );
+    // stylelint-enable
+  }
+
   .disabled & {
     background: var(--p-color-border-disabled) none;
   }
@@ -125,6 +143,14 @@ $range-wrapper: 28px;
     background: linear-gradient(
       var(--p-color-bg-fill-critical),
       var(--p-color-bg-fill-critical)
+    );
+  }
+
+  .toneMagic & {
+    border-color: var(--p-color-bg-fill-magic);
+    background: linear-gradient(
+      var(--p-color-bg-fill-magic),
+      var(--p-color-bg-fill-magic)
     );
   }
 }
