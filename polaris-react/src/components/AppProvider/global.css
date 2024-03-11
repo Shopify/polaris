@@ -23,6 +23,17 @@
   --pg-layout-width-inner-spacing-base: var(--pg-dangerous-magic-space-4);
   --pg-layout-width-outer-spacing-min: var(--pg-dangerous-magic-space-5);
   --pg-layout-width-outer-spacing-max: var(--pg-dangerous-magic-space-8);
+  /*
+    We need the result of this calcluation without rem;
+    calc(
+      var(--pg-layout-width-primary-min) / var(--pg-layout-width-secondary-min)
+    );
+
+    Previously scss would drop the rem suffix and resolve this to (480 / 240) = 2
+    In CSS however this resolves to (480rem / 240rem) = 2rem
+  */
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pg-layout-relative-size: 2;
 
   --pg-dismiss-icon-size: 32px;
 

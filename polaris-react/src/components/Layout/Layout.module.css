@@ -21,11 +21,7 @@
 
 .Section {
   // stylelint-disable-next-line -- Polaris component custom properties
-  --pc-layout-relative-size: calc(
-    var(--pg-layout-width-primary-min) / var(--pg-layout-width-secondary-min)
-  );
-  // stylelint-disable-next-line -- Polaris component custom properties
-  flex: var(--pc-layout-relative-size) var(--pc-layout-relative-size)
+  flex: var(--pg-layout-relative-size) var(--pg-layout-relative-size)
     var(--pg-layout-width-primary-min);
   min-width: 51%;
 
@@ -76,11 +72,7 @@
 
 .AnnotationContent {
   // stylelint-disable-next-line -- Polaris component custom properties
-  --pc-layout-relative-size: calc(
-    var(--pg-layout-width-primary-min) / var(--pg-layout-width-secondary-min)
-  );
-  // stylelint-disable-next-line -- Polaris component custom properties
-  flex: var(--pc-layout-relative-size) var(--pc-layout-relative-size)
+  flex: var(--pg-layout-relative-size) var(--pg-layout-relative-size)
     var(--pg-layout-width-primary-min);
 }
 
