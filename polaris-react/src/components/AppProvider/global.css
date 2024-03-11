@@ -32,7 +32,6 @@
     Previously scss would drop the rem suffix and resolve this to (480 / 240) = 2
     In CSS however this resolves to (480rem / 240rem) = 2rem
   */
-  // stylelint-disable-next-line -- Polaris component custom properties
   --pg-layout-relative-size: 2;
 
   --pg-dismiss-icon-size: 32px;
