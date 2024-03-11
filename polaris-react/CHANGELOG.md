@@ -1,5 +1,24 @@
 # Changelog
 
+## 12.21.0
+
+### Minor Changes
+
+- [#11650](https://github.com/Shopify/polaris/pull/11650) [`00e276407`](https://github.com/Shopify/polaris/commit/00e276407b5c74c3749a30bf4005678b332de6bb) Thanks [@kyledurand](https://github.com/kyledurand)! - Added `cover` as an `preferredPosition` to `Popover`
+
+* [#11696](https://github.com/Shopify/polaris/pull/11696) [`6a1a5a6c4`](https://github.com/Shopify/polaris/commit/6a1a5a6c4d1e4755003adf12a5026b44096505a6) Thanks [@mmapplebeck](https://github.com/mmapplebeck)! - [Frame] Fixed regression that caused sidebar to render over Admin app content
+
+- [#11708](https://github.com/Shopify/polaris/pull/11708) [`90a3cb1fb`](https://github.com/Shopify/polaris/commit/90a3cb1fb3fb8ca26807e7b17b11bd2fe4c0c7a1) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Increase icon size using viewBox for mobile screen sizes. This will enlarge icons on mobile without affecting the icon wrapper.
+
+### Patch Changes
+
+- [#11689](https://github.com/Shopify/polaris/pull/11689) [`da680f36a`](https://github.com/Shopify/polaris/commit/da680f36a7f81c3ecb1dcdcc9ebdcae6f6c6e756) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed touch device styling for removable large Tags
+
+* [#11693](https://github.com/Shopify/polaris/pull/11693) [`3554a1004`](https://github.com/Shopify/polaris/commit/3554a1004d4ec92d74817a43fde7fa798236365a) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated BulkActionButton to render the Tooltip below the button, not above it
+
+* Updated dependencies [[`423ffb755`](https://github.com/Shopify/polaris/commit/423ffb7554fae7dda5fce95004156d1801425a6f)]:
+  - @shopify/polaris-icons@8.8.0
+
 ## 12.20.0
 
 ### Minor Changes
