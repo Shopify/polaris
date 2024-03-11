@@ -26,31 +26,38 @@ export const TextOption = memo(function TextOption({
 }: TextOptionProps) {
   const {allowMultiple} = useContext(ComboboxListboxOptionContext);
   const isAction = useContext(ActionContext);
+  const isActionWithIcon =
+    typeof isAction === 'object' && isAction.hasIcon === true;
 
   const textOptionClassName = classNames(
     styles.TextOption,
     selected && !allowMultiple && styles.selected,
+    selected && allowMultiple && styles.selectedMultiple,
     disabled && styles.disabled,
     allowMultiple && styles.allowMultiple,
     isAction && styles.isAction,
   );
 
-  const optionMarkup = selected ? (
+  const iconMarkup = selected ? (
+    <span>
+      <Icon source={CheckIcon} />
+    </span>
+  ) : (
+    <Box width="20px" />
+  );
+
+  const optionMarkup = (
     <Box width="100%">
-      <InlineStack wrap={false} align="space-between" gap="200">
+      <InlineStack wrap={false} gap="100">
+        {isActionWithIcon ? null : iconMarkup}
         {children}
-        <InlineStack align="end">
-          <Icon source={CheckIcon} />
-        </InlineStack>
       </InlineStack>
     </Box>
-  ) : (
-    <>{children}</>
   );
 
   return (
     <div className={textOptionClassName}>
-      <div className={styles.Content}>
+      <div className={styles.Content} data-allow-multiple={allowMultiple}>
         {allowMultiple && !isAction ? (
           <div className={styles.Checkbox}>
             <Checkbox disabled={disabled} checked={selected} label={children} />

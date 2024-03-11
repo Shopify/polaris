@@ -14,6 +14,8 @@ import type {
   ComboboxListboxType,
   ComboboxListboxOptionType,
 } from '../../utilities/combobox';
+import {Box} from '../Box';
+import {classNames} from '../../utilities/css';
 
 import styles from './Combobox.module.scss';
 import {TextField} from './components';
@@ -44,9 +46,10 @@ export function Combobox({
   preferredPosition = 'below',
   willLoadMoreOptions,
   height,
+  variant,
   onScrolledToBottom,
   onClose,
-}: ComboboxProps) {
+}: ComboboxProps & {variant?: 'experimental-inline'}) {
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
@@ -102,6 +105,7 @@ export function Combobox({
       activeOptionId,
       expanded: popoverActive,
       listboxId,
+      focused: variant === 'experimental-inline' ? true : textFieldFocused,
       setTextFieldFocused,
       setTextFieldLabelId,
       onTextFieldFocus: handleFocus,
@@ -112,6 +116,8 @@ export function Combobox({
       activeOptionId,
       popoverActive,
       listboxId,
+      variant,
+      textFieldFocused,
       setTextFieldFocused,
       setTextFieldLabelId,
       handleFocus,
@@ -150,7 +156,30 @@ export function Combobox({
     ],
   );
 
-  return (
+  return variant === 'experimental-inline' ? (
+    <>
+      <Box paddingBlockStart="200" paddingInline="200">
+        <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
+          {activator}
+        </ComboboxTextFieldContext.Provider>
+      </Box>
+
+      <ComboboxListboxContext.Provider value={listboxContextValue}>
+        <ComboboxListboxOptionContext.Provider
+          value={listboxOptionContextValue}
+        >
+          <div
+            className={classNames(
+              styles.Listbox,
+              allowMultiple && styles.allowMultiple,
+            )}
+          >
+            {children}
+          </div>
+        </ComboboxListboxOptionContext.Provider>
+      </ComboboxListboxContext.Provider>
+    </>
+  ) : (
     <Popover
       ref={ref}
       active={popoverActiveWithChildren}

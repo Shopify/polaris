@@ -1,6 +1,6 @@
-import React, {useMemo, useId, useCallback, useEffect} from 'react';
+import React, {useMemo, useId, useCallback, useEffect, useRef} from 'react';
 
-import {labelID} from '../../../Label';
+import {Label, labelID} from '../../../Label';
 import {TextField as PolarisTextField} from '../../../TextField';
 import type {TextFieldProps} from '../../../TextField';
 import {useComboboxTextField} from '../../../../utilities/combobox';
@@ -10,11 +10,12 @@ export function TextField({
   id: idProp,
   type = 'text',
   ariaAutocomplete = 'list',
+  inline,
   onFocus,
   onBlur,
   onChange,
   ...rest
-}: TextFieldProps) {
+}: TextFieldProps & {inline?: boolean}) {
   const comboboxTextFieldContext = useComboboxTextField();
 
   const {
@@ -27,8 +28,8 @@ export function TextField({
     onTextFieldChange,
     onTextFieldBlur,
   } = comboboxTextFieldContext;
-
   const uniqueId = useId();
+  const inputRef = useRef<HTMLInputElement>(null);
   const textFieldId = useMemo(() => idProp || uniqueId, [uniqueId, idProp]);
 
   const labelId = useMemo(
@@ -66,7 +67,37 @@ export function TextField({
     [onChange, onTextFieldChange],
   );
 
-  return (
+  if (inline && rest.focused && document.activeElement !== inputRef.current) {
+    inputRef.current?.focus();
+  }
+
+  return inline ? (
+    <>
+      <Label id={textFieldId} hidden>
+        {rest.label}
+      </Label>
+      <input
+        value={value}
+        ref={inputRef}
+        autoComplete={rest.autoComplete}
+        placeholder={rest.placeholder}
+        id={textFieldId}
+        type={type}
+        aria-haspopup="listbox"
+        aria-activedescendant={activeOptionId}
+        aria-controls={listboxId}
+        role="combobox"
+        aria-expanded={expanded}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onChange={(event) => handleChange(event.target.value, textFieldId)}
+        style={{
+          border: 'none',
+          outline: 'none',
+        }}
+      />
+    </>
+  ) : (
     <PolarisTextField
       {...rest}
       value={value}
