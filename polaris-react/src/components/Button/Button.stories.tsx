@@ -593,6 +593,151 @@ export function PrimaryCritical() {
   );
 }
 
+export function Magic() {
+  return (
+    <BlockStack gap="400">
+      <Box padding="400">
+        <InlineStack gap="400" blockAlign="end">
+          <Button variant="magic">Label</Button>
+          <Button variant="magic" disabled>
+            Label
+          </Button>
+          <Button variant="magic" icon={PlusIcon}>
+            Label
+          </Button>
+          <Button variant="magic" disabled icon={PlusIcon}>
+            Label
+          </Button>
+          <Button variant="magic" disclosure>
+            Label
+          </Button>
+          <Button
+            variant="magic"
+            icon={XSmallIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            variant="magic"
+            icon={EditIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </InlineStack>
+      </Box>
+      <Card>
+        <InlineStack gap="400" blockAlign="end">
+          <Button variant="magic">Label</Button>
+          <Button variant="magic" disabled>
+            Label
+          </Button>
+          <Button variant="magic" icon={PlusIcon}>
+            Label
+          </Button>
+          <Button variant="magic" disabled icon={PlusIcon}>
+            Label
+          </Button>
+          <Button variant="magic" disclosure>
+            Label
+          </Button>
+          <Button
+            variant="magic"
+            icon={XSmallIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+          <Button
+            disabled
+            variant="magic"
+            icon={EditIcon}
+            onClick={() => {}}
+            accessibilityLabel="Dismiss"
+          />
+        </InlineStack>
+      </Card>
+    </BlockStack>
+  );
+}
+
+export function MagicSuccess() {
+  return (
+    <Box padding="400">
+      <InlineStack gap="400" blockAlign="end">
+        <Button variant="magic" tone="success">
+          Label
+        </Button>
+        <Button variant="magic" tone="success" disabled>
+          Label
+        </Button>
+        <Button variant="magic" tone="success" icon={PlusIcon}>
+          Label
+        </Button>
+        <Button variant="magic" tone="success" disabled icon={PlusIcon}>
+          Label
+        </Button>
+        <Button variant="magic" tone="success" disclosure>
+          Label
+        </Button>
+        <Button
+          variant="magic"
+          tone="success"
+          icon={XSmallIcon}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+        <Button
+          disabled
+          variant="magic"
+          tone="success"
+          icon={EditIcon}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+      </InlineStack>
+    </Box>
+  );
+}
+
+export function MagicCritical() {
+  return (
+    <Box padding="400">
+      <InlineStack gap="400" blockAlign="end">
+        <Button variant="magic" tone="critical">
+          Label
+        </Button>
+        <Button variant="magic" tone="critical" disabled>
+          Label
+        </Button>
+        <Button variant="magic" tone="critical" icon={PlusIcon}>
+          Label
+        </Button>
+        <Button variant="magic" tone="critical" disabled icon={PlusIcon}>
+          Label
+        </Button>
+        <Button variant="magic" tone="critical" disclosure>
+          Label
+        </Button>
+        <Button
+          variant="primary"
+          tone="critical"
+          icon={XSmallIcon}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+        <Button
+          disabled
+          variant="primary"
+          tone="critical"
+          icon={EditIcon}
+          onClick={() => {}}
+          accessibilityLabel="Dismiss"
+        />
+      </InlineStack>
+    </Box>
+  );
+}
+
 export function Micro() {
   return (
     <InlineStack gap="400">
