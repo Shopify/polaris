@@ -47,6 +47,50 @@ describe('<Tooltip />', () => {
     );
   });
 
+  it('renders when open is true', () => {
+    const tooltipActive = mountWithApp(
+      <Tooltip content="Inner content" open>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltipActive.find(TooltipOverlay)).toContainReactComponent('div');
+  });
+
+  it('does not render when open is false', () => {
+    const tooltipActive = mountWithApp(
+      <Tooltip content="Inner content" open={false}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltipActive.find(TooltipOverlay)).not.toContainReactComponent(
+      'div',
+    );
+  });
+
+  it('renders when open is true and active is false', () => {
+    const tooltipActive = mountWithApp(
+      <Tooltip content="Inner content" open active={false}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltipActive.find(TooltipOverlay)).toContainReactComponent('div');
+  });
+
+  it('does not render when open is false and active is true', () => {
+    const tooltipActive = mountWithApp(
+      <Tooltip content="Inner content" open={false} active>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltipActive.find(TooltipOverlay)).not.toContainReactComponent(
+      'div',
+    );
+  });
+
   it('does not render when active prop is updated to false', () => {
     const tooltip = mountWithApp(
       <Tooltip content="Inner content" active={undefined}>

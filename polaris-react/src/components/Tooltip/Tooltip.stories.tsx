@@ -486,6 +486,25 @@ export function PersistOnClick() {
   );
 }
 
+export function OpenStates() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Box paddingBlockStart="2400">
+      <BlockStack gap="300" inlineAlign="start">
+        <Tooltip open={open} content="Tooltip content">
+          <Text as="span" variant="bodyLg">
+            The tooltip is {String(open)}
+          </Text>
+        </Tooltip>
+        <Button onClick={() => setOpen((prevOpen) => !prevOpen)}>
+          Toggle tooltip
+        </Button>
+      </BlockStack>
+    </Box>
+  );
+}
+
 export function ActiveStates() {
   const [popoverActive, setPopoverActive] = useState(false);
   const [tooltipActive, setTooltipActive] =
