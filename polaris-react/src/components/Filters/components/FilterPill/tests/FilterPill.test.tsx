@@ -1,4 +1,5 @@
 import React from 'react';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 import {ChevronDownIcon} from '@shopify/polaris-icons';
 
@@ -20,11 +21,13 @@ describe('<Filters />', () => {
 
   beforeEach(() => {
     originalScroll = HTMLElement.prototype.scroll;
+    matchMedia.mock();
     mockUseBreakpoints(false);
   });
 
   afterEach(() => {
     HTMLElement.prototype.scroll = originalScroll;
+    matchMedia.restore();
     jest.clearAllMocks();
   });
 

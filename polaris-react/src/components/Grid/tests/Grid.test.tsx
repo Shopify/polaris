@@ -1,15 +1,17 @@
 import React from 'react';
-import {timer} from '@shopify/jest-dom-mocks';
+import {matchMedia, timer} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
 
 import {formatAreas, Grid} from '../Grid';
 
 describe('<Grid />', () => {
   beforeEach(() => {
+    matchMedia.mock();
     timer.mock();
   });
 
   afterEach(() => {
+    matchMedia.restore();
     timer.restore();
   });
 
