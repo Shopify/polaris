@@ -47,6 +47,28 @@ describe('<Tooltip />', () => {
     );
   });
 
+  it('renders initially when defaultOpen is true', () => {
+    const tooltipActive = mountWithApp(
+      <Tooltip content="Inner content" defaultOpen>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltipActive.find(TooltipOverlay)).toContainReactComponent('div');
+  });
+
+  it('does not render when defaultOpen is false', () => {
+    const tooltipActive = mountWithApp(
+      <Tooltip content="Inner content" defaultOpen={false}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltipActive.find(TooltipOverlay)).not.toContainReactComponent(
+      'div',
+    );
+  });
+
   it('renders when open is true', () => {
     const tooltipActive = mountWithApp(
       <Tooltip content="Inner content" open>
@@ -82,6 +104,28 @@ describe('<Tooltip />', () => {
   it('does not render when open is false and active is true', () => {
     const tooltipActive = mountWithApp(
       <Tooltip content="Inner content" open={false} active>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltipActive.find(TooltipOverlay)).not.toContainReactComponent(
+      'div',
+    );
+  });
+
+  it('renders when open is true and defaultOpen is false', () => {
+    const tooltipActive = mountWithApp(
+      <Tooltip content="Inner content" open defaultOpen={false}>
+        <Link>link content</Link>
+      </Tooltip>,
+    );
+
+    expect(tooltipActive.find(TooltipOverlay)).toContainReactComponent('div');
+  });
+
+  it('does not render when open is false and defaultOpen is true', () => {
+    const tooltipActive = mountWithApp(
+      <Tooltip content="Inner content" open={false} defaultOpen>
         <Link>link content</Link>
       </Tooltip>,
     );
@@ -299,7 +343,7 @@ describe('<Tooltip />', () => {
       <Tooltip
         accessibilityLabel={accessibilityLabel}
         content="Inner content"
-        active
+        defaultOpen
       >
         <Link>link content</Link>
       </Tooltip>,
@@ -311,7 +355,7 @@ describe('<Tooltip />', () => {
 
   it("passes 'zIndexOverride' to TooltipOverlay", () => {
     const tooltip = mountWithApp(
-      <Tooltip active content="Inner content" zIndexOverride={100}>
+      <Tooltip defaultOpen content="Inner content" zIndexOverride={100}>
         <Link>link content</Link>
       </Tooltip>,
     );
