@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.8.0
+
+### Minor Changes
+
+- [#11680](https://github.com/Shopify/polaris/pull/11680) [`423ffb755`](https://github.com/Shopify/polaris/commit/423ffb7554fae7dda5fce95004156d1801425a6f) Thanks [@Rusty-UX](https://github.com/Rusty-UX)! - Update metafield icon design
+
 ## 8.7.0
 
 ### Minor Changes

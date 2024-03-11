@@ -1,5 +1,17 @@
 # polaris.shopify.com
 
+## 0.65.0
+
+### Minor Changes
+
+- [#11703](https://github.com/Shopify/polaris/pull/11703) [`add5ffbea`](https://github.com/Shopify/polaris/commit/add5ffbea0616e11de3a2d3540f80af576812c40) Thanks [@lgriffee](https://github.com/lgriffee)! - Added shadow token design guidance
+
+### Patch Changes
+
+- Updated dependencies [[`423ffb755`](https://github.com/Shopify/polaris/commit/423ffb7554fae7dda5fce95004156d1801425a6f), [`da680f36a`](https://github.com/Shopify/polaris/commit/da680f36a7f81c3ecb1dcdcc9ebdcae6f6c6e756), [`00e276407`](https://github.com/Shopify/polaris/commit/00e276407b5c74c3749a30bf4005678b332de6bb), [`3554a1004`](https://github.com/Shopify/polaris/commit/3554a1004d4ec92d74817a43fde7fa798236365a), [`6a1a5a6c4`](https://github.com/Shopify/polaris/commit/6a1a5a6c4d1e4755003adf12a5026b44096505a6), [`90a3cb1fb`](https://github.com/Shopify/polaris/commit/90a3cb1fb3fb8ca26807e7b17b11bd2fe4c0c7a1)]:
+  - @shopify/polaris-icons@8.8.0
+  - @shopify/polaris@12.21.0
+
 ## 0.64.0
 
 ### Minor Changes
