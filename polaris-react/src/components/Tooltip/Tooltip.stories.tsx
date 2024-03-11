@@ -486,7 +486,7 @@ export function PersistOnClick() {
   );
 }
 
-export function OpenStates() {
+export function WithControlledState() {
   const [open, setOpen] = useState(false);
 
   return (
