@@ -36,7 +36,7 @@ import styles from './DropZone.module.scss';
 
 export type DropZoneFileType = 'file' | 'image' | 'video';
 
-export interface DropZoneProps {
+interface BaseDropZoneProps {
   /** Label for the file input */
   label?: React.ReactNode;
   /** Adds an action to the label */
@@ -81,12 +81,12 @@ export interface DropZoneProps {
   children?: string | React.ReactNode;
   /** Allows a file to be dropped anywhere on the page */
   dropOnPage?: boolean;
+  /** Whether or not keypress should trigger the native file picker. Use when `onClick` triggers a custom file picker, like the image picker on the product details page. */
+  dragAndDropOnly?: boolean;
   /** Sets the default file dialog state */
   openFileDialog?: boolean;
-  /** Allows child content to adjust height */
+  /** Allows child content to adjust x */
   variableHeight?: boolean;
-  /** Determines if keyboard accessibility is enabled when using the component along with custom onClick */
-  dragAndDropOnly?: boolean;
   /** Adds custom validations */
   customValidator?(file: File): boolean;
   /** Callback triggered on click */
@@ -107,6 +107,18 @@ export interface DropZoneProps {
   onFileDialogClose?(): void;
 }
 
+interface DragAndDropOnlyProps {
+  dragAndDropOnly: true;
+  onClick(event: React.MouseEvent<HTMLElement>): void;
+}
+interface NoDragAndDropOnlyProps {
+  dragAndDropOnly?: false;
+  onClick?(event: React.MouseEvent<HTMLElement>): void;
+}
+
+export type DropZoneProps = BaseDropZoneProps &
+  (DragAndDropOnlyProps | NoDragAndDropOnlyProps);
+
 // TypeScript can't generate types that correctly infer the typing of
 // subcomponents so explicitly state the subcomponents in the type definition.
 // Letting this be implicit works in this project but fails in projects that use
@@ -116,6 +128,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   FileUpload: typeof FileUpload;
 } = function DropZone({
   dropOnPage,
+  dragAndDropOnly,
   label,
   labelAction,
   labelHidden,
@@ -131,7 +144,6 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
   id: idProp,
   type = 'file',
   onClick,
-  dragAndDropOnly,
   error,
   openFileDialog,
   variableHeight,
@@ -369,7 +381,7 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
 
   const triggerFileDialog = useCallback(() => {
     open();
-    onFileDialogClose?.();
+    if (onFileDialogClose) onFileDialogClose();
   }, [open, onFileDialogClose]);
 
   function overlayMarkup(
@@ -430,7 +442,8 @@ export const DropZone: React.FunctionComponent<DropZoneProps> & {
               type="file"
               ref={inputRef}
               autoComplete="off"
-              tabIndex={onClick && dragAndDropOnly ? -1 : 0}
+              aria-hidden={dragAndDropOnly ? true : undefined}
+              tabIndex={dragAndDropOnly ? -1 : 0}
             />
           </Text>
           <div className={styles.Container}>{children}</div>
