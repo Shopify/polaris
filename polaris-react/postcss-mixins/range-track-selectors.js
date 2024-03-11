@@ -7,10 +7,10 @@ module.exports = () => ({
   '&::-ms-track': {
     '@mixin-content': {},
   },
-  '&::-webkit-slider-runnable-track': {
+  '&::-moz-range-track': {
     '@mixin-content': {},
   },
-  '&::-moz-range-track': {
+  '&::-webkit-slider-runnable-track': {
     '@mixin-content': {},
   },
 });
