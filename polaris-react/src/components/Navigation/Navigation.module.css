@@ -1,11 +1,13 @@
 .Navigation {
   // stylelint-disable -- Polaris component custom properties
-  --pc-navigation-mobile-spacing: calc(var(--p-space-200) + var(--p-space-050)),
-  --pc-navigation-desktop-spacing: calc(var(--p-space-100) + var(--p-space-050)),
-  --pc-navigation-mobile-height: 40px,
-  --pc-navigation-desktop-height: 28px,
-  --pc-navigation-icon-size: 20px,
-  --pc-navigation-item-line-height: 40px,
+  --pc-navigation-mobile-spacing: calc(var(--p-space-200) + var(--p-space-050));
+  --pc-navigation-desktop-spacing: calc(
+    var(--p-space-100) + var(--p-space-050)
+  );
+  --pc-navigation-mobile-height: 40px;
+  --pc-navigation-desktop-height: 28px;
+  --pc-navigation-icon-size: 20px;
+  --pc-navigation-item-line-height: 40px;
   --pc-navigation-navigation-icon-size: 20px;
   --pc-navigation-navigation-letter-spacing-medium: -0.005rem;
   // stylelint-enable
