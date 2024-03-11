@@ -4,7 +4,6 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  @mixin safe-area-for padding, 1200px, left;
   min-height: 28px;
   min-width: 28px;
   margin: 0;
