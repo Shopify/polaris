@@ -123,10 +123,10 @@ export function Tooltip({
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const handleFocus = useCallback(() => {
-    if (defaultOpen !== false) {
-      setActiveTrue();
-    }
-  }, [defaultOpen, setActiveTrue]);
+    if (originalActive === false) return;
+
+    setActiveTrue();
+  }, [originalActive, setActiveTrue]);
 
   useEffect(() => {
     const firstFocusable = activatorContainer.current
@@ -177,11 +177,11 @@ export function Tooltip({
   );
 
   useEffect(() => {
-    if (defaultOpen === false && active) {
+    if (originalActive === false && active) {
       handleClose();
       handleBlur();
     }
-  }, [defaultOpen, active, handleClose, handleBlur]);
+  }, [originalActive, active, handleClose, handleBlur]);
 
   const portal = activatorNode ? (
     <Portal idPrefix="tooltip">
