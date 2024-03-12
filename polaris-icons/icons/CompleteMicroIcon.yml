@@ -1,0 +1,12 @@
+name: Complete micro
+description: Used to represent a completed or fulfilled state.
+keywords:
+  - active
+  - complete
+  - fulfilled
+  - status
+  - state
+authors:
+  - Bernardo Garcia
+date_added: 2024-03-12
+date_modified: 2024-03-12

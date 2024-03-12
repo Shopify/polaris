@@ -1,0 +1,12 @@
+name: Incomplete micro
+description: Used to represent an incomplete or unfulfilled state.
+keywords:
+  - inactive
+  - incomplete
+  - unfulfilled
+  - status
+  - state
+authors:
+  - Bernardo Garcia
+date_added: 2024-03-12
+date_modified: 2024-03-12
