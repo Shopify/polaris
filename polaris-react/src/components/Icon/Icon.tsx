@@ -72,8 +72,6 @@ export function Icon({
     size && styles[variationName('size', size)],
   );
 
-  console.log('size:', size);
-
   const shouldMagnifyIcon = mdDown && size === 'base';
   const SourceComponent = source;
   const contentMarkup = {
