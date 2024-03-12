@@ -36,6 +36,7 @@ export function WithSegmentedButtons() {
         <Button size="slim">Underline</Button>
         <Button
           size="slim"
+          tone="critical"
           icon={<Icon source={DeleteIcon} />}
           accessibilityLabel="Delete"
         />

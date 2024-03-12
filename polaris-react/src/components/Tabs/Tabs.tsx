@@ -1,6 +1,6 @@
 import React, {useEffect, useCallback, useRef, useReducer} from 'react';
 import type {KeyboardEvent, FocusEvent} from 'react';
-import {ChevronDownIcon, PlusIcon} from '@shopify/polaris-icons';
+import {ChevronDownIcon, PlusCircleIcon} from '@shopify/polaris-icons';
 
 import {classNames} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
@@ -524,7 +524,12 @@ export const Tabs = ({
           });
         }
       }}
-      icon={<Icon source={PlusIcon} accessibilityLabel={createViewA11yLabel} />}
+      icon={
+        <Icon
+          source={PlusCircleIcon}
+          accessibilityLabel={createViewA11yLabel}
+        />
+      }
       disabled={disabled}
       onTogglePopover={handleTogglePopover}
       onToggleModal={handleToggleModal}

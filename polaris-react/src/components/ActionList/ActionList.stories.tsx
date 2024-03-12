@@ -206,7 +206,7 @@ export function WithSections() {
               title: 'Bulk actions',
               items: [
                 {content: 'Edit', icon: EditIcon},
-                {content: 'Delete', icon: DeleteIcon},
+                {content: 'Delete', icon: DeleteIcon, destructive: true},
               ],
             },
             {
@@ -258,7 +258,7 @@ export function WithSectionsNoTitles() {
             {
               items: [
                 {content: 'Edit', icon: EditIcon},
-                {content: 'Delete', icon: DeleteIcon},
+                {content: 'Delete', icon: DeleteIcon, destructive: true},
               ],
             },
           ]}

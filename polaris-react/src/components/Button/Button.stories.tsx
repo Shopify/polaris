@@ -18,6 +18,7 @@ import {
   ChevronDownIcon,
   EditIcon,
   MagicIcon,
+  DeleteIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -139,10 +140,10 @@ export function Critical() {
           <Button tone="critical" disabled>
             Label
           </Button>
-          <Button tone="critical" icon={PlusIcon}>
+          <Button tone="critical" icon={DeleteIcon}>
             Label
           </Button>
-          <Button tone="critical" disabled icon={PlusIcon}>
+          <Button tone="critical" disabled icon={DeleteIcon}>
             Label
           </Button>
           <Button tone="critical" disclosure>
@@ -150,7 +151,7 @@ export function Critical() {
           </Button>
           <Button
             tone="critical"
-            icon={XSmallIcon}
+            icon={DeleteIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
@@ -169,10 +170,10 @@ export function Critical() {
           <Button tone="critical" disabled>
             Label
           </Button>
-          <Button tone="critical" icon={PlusIcon}>
+          <Button tone="critical" icon={DeleteIcon}>
             Label
           </Button>
-          <Button tone="critical" disabled icon={PlusIcon}>
+          <Button tone="critical" disabled icon={DeleteIcon}>
             Label
           </Button>
           <Button tone="critical" disclosure>
@@ -180,7 +181,7 @@ export function Critical() {
           </Button>
           <Button
             tone="critical"
-            icon={XSmallIcon}
+            icon={DeleteIcon}
             onClick={() => {}}
             accessibilityLabel="Dismiss"
           />
