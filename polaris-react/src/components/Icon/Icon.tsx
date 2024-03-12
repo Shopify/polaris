@@ -31,13 +31,21 @@ type Tone =
 export interface IconProps {
   /** The SVG contents to display in the icon (icons should fit in a 20 × 20 pixel viewBox) */
   source: IconSource;
+  /** Set the size of the icon */
+  size?: 'base' | 'micro';
   /** Set the color for the SVG fill */
   tone?: Tone;
   /** Descriptive text to be read to screenreaders */
   accessibilityLabel?: string;
 }
 
-export function Icon({source, tone, accessibilityLabel}: IconProps) {
+export function Icon({
+  source,
+  size = 'base',
+  tone,
+  accessibilityLabel,
+}: IconProps) {
+  const {mdDown} = useBreakpoints();
   let sourceType: 'function' | 'placeholder' | 'external';
   if (typeof source === 'function') {
     sourceType = 'function';
@@ -61,10 +69,12 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
   const className = classNames(
     styles.Icon,
     tone && styles[variationName('tone', tone)],
+    size && styles[variationName('size', size)],
   );
 
-  const {mdDown} = useBreakpoints();
+  console.log('size:', size);
 
+  const shouldMagnifyIcon = mdDown && size === 'base';
   const SourceComponent = source;
   const contentMarkup = {
     function: (
@@ -75,7 +85,7 @@ export function Icon({source, tone, accessibilityLabel}: IconProps) {
         // On Mobile we're scaling the viewBox to 18x18 to make the icons bigger
         // Also, we're setting the viewport origin to 1x1 to center the icon
         // We use this syntax so we don't override the existing viewBox value if we don't need to.
-        {...(mdDown ? {viewBox: '1 1 18 18'} : {})}
+        {...(shouldMagnifyIcon ? {viewBox: '1 1 18 18'} : {})}
       />
     ),
     placeholder: <div className={styles.Placeholder} />,

@@ -1,0 +1,13 @@
+name: Select micro
+description: Used to denote the action opening a select.
+keywords:
+  - caret
+  - arrow
+  - up
+  - down
+  - select
+  - open
+authors:
+  - Bernardo Garcia
+date_added: 2024-03-12
+date_modified: 2024-03-12

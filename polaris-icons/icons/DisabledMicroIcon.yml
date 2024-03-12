@@ -1,0 +1,11 @@
+name: Disabled micro
+description: >-
+  Used to represent an item or resource that is disabled, or an action that is
+  not allowed.
+keywords:
+  - blocked
+  - disabled
+authors:
+  - Bernardo Garcia
+date_added: 2024-03-12
+date_modified: 2024-03-12

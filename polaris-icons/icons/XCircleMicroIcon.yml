@@ -1,0 +1,12 @@
+name: X circle micro
+description: Used to represent an action to cancel or remove an item or resource.
+keywords:
+  - cancel
+  - delete
+  - stop
+  - remove
+  - x
+authors:
+  - Bernardo Garcia
+date_added: 2024-03-12
+date_modified: 2024-03-12

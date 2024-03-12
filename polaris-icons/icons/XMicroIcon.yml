@@ -1,0 +1,16 @@
+name: X micro
+description: >-
+  Used to denote the action of cancelling a task or action and to close an
+  overlay modal or bottom sheet.
+keywords:
+  - cancel
+  - delete
+  - stop
+  - remove
+  - undo
+  - x
+  - close
+authors:
+  - Bernardo Garcia
+date_added: 2024-03-12
+date_modified: 2024-03-12

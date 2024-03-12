@@ -1,0 +1,11 @@
+name: Alert triangle micro
+description: Used to represent risk associated with orders.
+keywords:
+  - risk
+  - warning
+  - triangle
+  - alert
+authors:
+  - Bernardo Garcia
+date_added: 2024-03-12
+date_modified: 2024-03-12

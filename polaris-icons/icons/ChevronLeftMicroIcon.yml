@@ -1,0 +1,10 @@
+name: Chevron left micro
+description: Used to represent the back action commonly found in iOS.
+keywords:
+  - back
+  - ios
+  - navigation
+authors:
+  - Bernardo Garcia
+date_added: 2024-03-12
+date_modified: 2024-03-12

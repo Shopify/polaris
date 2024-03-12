@@ -24,11 +24,19 @@ const allIconFiles = globby
         .use(parse, {fragment: true, space: 'svg'})
         .parse(iconSource),
       expectedViewbox: '0 0 20 20',
+      expectedMicroViewbox: '0 0 12 12',
     };
   });
 
 allIconFiles.forEach(
-  ({iconPath, iconSource, optimizedSource, iconAst, expectedViewbox}) => {
+  ({
+    iconPath,
+    iconSource,
+    optimizedSource,
+    iconAst,
+    expectedViewbox,
+    expectedMicroViewbox,
+  }) => {
     describe(`SVG Contents: packages/${iconPath}`, () => {
       it(`is optimized`, () => {
         expect(iconSource).toStrictEqual(optimizedSource);
@@ -41,7 +49,11 @@ allIconFiles.forEach(
 
       it(`has a viewbox of "${expectedViewbox}"`, () => {
         const viewBox = select(':root', iconAst).properties.viewBox;
-        expect(viewBox).toStrictEqual(expectedViewbox);
+
+        const isMicro = iconPath.includes('MicroIcon');
+        expect(viewBox).toStrictEqual(
+          isMicro ? expectedMicroViewbox : expectedViewbox,
+        );
       });
 
       it('has no groups (<g>) or masks (<mask>)', () => {
