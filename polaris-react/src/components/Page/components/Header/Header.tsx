@@ -29,7 +29,6 @@ import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
 import {InlineStack} from '../../../InlineStack';
 import {FilterActionsProvider} from '../../../FilterActionsProvider';
-import {useBreakpoints} from '../../../../utilities/breakpoints';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
@@ -92,7 +91,6 @@ export function Header({
 }: HeaderProps) {
   const i18n = useI18n();
   const {isNavigationCollapsed} = useMediaQuery();
-  const {lgDown, mdDown} = useBreakpoints();
 
   const isSingleRow =
     !primaryAction &&
@@ -216,8 +214,6 @@ export function Header({
     !backAction && styles.noBreadcrumbs,
     title && title.length < LONG_TITLE && styles.mediumTitle,
     title && title.length > LONG_TITLE && styles.longTitle,
-    mdDown && styles.mdDown,
-    lgDown && styles.lgDown,
   );
 
   const {slot1, slot2, slot3, slot4, slot5} = determineLayout({
