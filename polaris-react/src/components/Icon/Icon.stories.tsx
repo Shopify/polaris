@@ -157,15 +157,29 @@ export function WithCustomSVGAndColor() {
   return <Icon source={iconContent} tone="warning" />;
 }
 
+const iconMetadataKeys = Object.keys(iconMetadata);
+const baseIcons = iconMetadataKeys.filter(
+  (icon) => !icon.includes('MicroIcon'),
+);
+const microIcons = iconMetadataKeys.filter((icon) =>
+  icon.includes('MicroIcon'),
+);
+
 export function PolarisIconsLibrary() {
   return (
     <BlockStack gap="100" inlineAlign="start">
-      {Object.keys(iconMetadata).map((icon) => (
-        <InlineStack key={icon} gap="200">
-          <Icon source={polarisIcons[icon]} />
-          <Text as="span">{icon}</Text>
-        </InlineStack>
-      ))}
+      {[...baseIcons, ...microIcons].map((icon) => {
+        const isMicro = icon.includes('MicroIcon');
+        return (
+          <InlineStack key={icon} gap="200">
+            <Icon
+              source={polarisIcons[icon]}
+              size={isMicro ? 'micro' : 'base'}
+            />
+            <Text as="span">{icon}</Text>
+          </InlineStack>
+        );
+      })}
     </BlockStack>
   );
 }

@@ -1,0 +1,13 @@
+name: Calendar micro
+description: Used to denote the action of opening a date picker.
+keywords:
+  - calendar
+  - date
+  - time
+  - month
+  - year
+  - day
+authors:
+  - Bernardo Garcia
+date_added: 2024-03-12
+date_modified: 2024-03-12
