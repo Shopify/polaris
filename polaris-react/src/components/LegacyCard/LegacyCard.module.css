@@ -63,8 +63,10 @@
   @media (--p-breakpoints-sm-up) {
     padding: var(--p-space-200) var(--p-space-400) 0;
   }
+}
 
-  @media print and (--p-breakpoints-sm-up) {
+@media print and (--p-breakpoints-sm-up) {
+  .Header {
     padding: var(--p-space-200) var(--p-space-400) 0;
   }
 }
