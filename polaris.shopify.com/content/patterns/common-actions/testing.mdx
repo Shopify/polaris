@@ -1,0 +1,194 @@
+---
+title: Tokens
+description: Color is a powerful tool that helps merchants quickly navigate and manage their businesses in the Shopify Admin.
+keywords:
+  - action patterns
+  - add
+  - remove
+  - delete
+  - copy
+icon: Hexagon
+---
+
+<Lede>{frontmatter.description}</Lede>
+
+<Subnav />
+
+<LayoutSection card>
+  <Text>
+    ## Color tokens
+
+    Tokens are a method of applying color in a consistent and meaningful way across the admin. They provide a layer of abstraction from the hex values themselves, making it easy to implement large scale changes across the admin.
+
+    See the [token](https://polaris.shopify.com/tokens/color) section for the full list of color tokens and their descriptions.
+
+  </Text>
+
+<Large>
+  ![Screenshot of a “last order placed card” in the Shopify admin with different
+  color token examples applied to a card. The “text” token is applied to the
+  card title, “icon” token is applied to an icon within a badge,
+  “text-secondary” token is applied to metadata in the card, “broder-secondary”
+  token is applied to the inner content of the card, “surface” token is applied
+  to the background of the card, “bg” token is applied to the background of the
+  page.](/images/design/colors/color-tokens@2x.png)
+</Large>
+
+</LayoutSection>
+
+<LayoutSection card>
+
+  <Text>
+    ### Semantic tokens
+
+    Semantic tokens help communicate the intent of a given color and create predictable behavior across our tokens. They start with declaring the token group color, followed by the element it's applied to, such as a bg, border, text, or icon.
+
+    Following the element, semantic tokens may have one or more modifiers to further represent color application: color role, prominence, and state.
+
+  </Text>
+
+<Large>
+  ![Semantic token structure broken down into parts and applied to a list of
+  items in a popover. The element is `bg`, the role is `secondary`, and the
+  state is `hover`.](/images/design/colors/color-tokens-base@2x.png)
+</Large>
+
+<Text>
+    **Element:** The UI element being styled: `bg`, `bg-surface`, `bg-fill`, `text`, `border`, and `icon`.
+
+    **Role:** Assigns roles to specific colors for consistent application.
+
+    **Prominence:** Communicates what the token is used for.
+
+    **State:** Communicates the state of a UI element.
+
+</Text>
+
+<Large>
+  ![A screenshot showing the token
+  structure](/images/design/colors/color-tokens-formula@2x.png)
+</Large>
+
+</LayoutSection>
+
+<LayoutSection card>
+
+    <Text>
+        ### Specialty tokens
+
+        Some concepts have their own specific color tokens, known as specialty tokens. Specialty tokens start with declaring the concept and any associated variants, followed by the semantic token structure. These tokens should never be used for anything other than the concept they’re referencing.
+
+    </Text>
+
+<Large>
+  ![Specialized token structure broken down into parts and applied to the main
+  navigation. The concept is “nav”, the semantic token is
+  “bg-surface-selected”](/images/design/colors/color-tokens-specialty@2x.png)
+</Large>
+
+</LayoutSection>
+
+<LayoutSection card>
+  <Text>
+      ## Interaction states
+
+      Interaction states are communicated by adding `-hover`, `-active`, `-selected`, or `-disabled` to the end of the semantic token. For example, the state token for `-color-bg-surface` is `-color-bg-surface-hover`.
+
+      ### Hover
+
+      Hover state tokens provide visual feedback to merchants when they hover their cursor over an interactive element, like a button or link.
+
+  </Text>
+  <Large>
+    ![A card showing the most popular products listed in a table with “hover” state color tokens applied to a row in a hovered state.](/images/design/colors/color-tokens-state-hover@2x.png)
+  </Large>
+
+  <Text>
+
+      ### Active
+
+      Active state tokens communicate when an interactive element is pressed (by a cursor or finger).
+
+  </Text>
+
+<Large>
+  ![Page actions with one in an active state with an “active” state color token
+  applied.](/images/design/colors/color-tokens-state-active@2x.png)
+</Large>
+
+  <Text>
+
+      ### Focus
+
+      Focus states are triggered by the merchant and highlight elements when using a keyboard to navigate the UI.
+
+      Focus states usually take on the element’s hover state and add a blue outline using the `border-focus` token.
+
+  </Text>
+
+  <Large>
+
+    ![A button and icon button in a focused state with “focus” state color tokens applied.](/images/design/colors/color-tokens-state-focus@2x.png)
+
+  </Large>
+
+  <Text>
+      ### Selected
+
+      Selected state tokens communicate an item or option has been chosen. They can be applied to elements like buttons, tabs, checkboxes, radio buttons, or navigation items.
+
+  </Text>
+
+  <Large>
+
+    ![A selected button and checkbox with “selected” state color tokens applied.](/images/design/colors/color-tokens-state-selected@2x.png)
+
+  </Large>
+
+  <Text>
+      ### Disabled
+
+      Disabled state tokens indicate when the user isn’t allowed to interact with an element. They remove all interactivity from a component.
+
+      Disabled elements don’t need to meet WC3 contrast standards and are intentionally de-emphasized to clearly communicate their state.
+
+  </Text>
+
+  <Large>
+
+    ![A select component with “disabled” state color tokens applied.](/images/design/colors/color-tokens-state-disabled@2x.png)
+
+  </Large>
+</LayoutSection>
+
+<LayoutSection card>
+  <Text>
+      ## How to apply them
+
+      ### Figma
+
+      Accessing Polaris color tokens is simple using Figma variables, found in the fill, stroke and text color library menus on the right panel.
+
+  </Text>
+
+  <Large>
+
+    ![Screenshot of Figma color styles panel with the list of Polaris variables.](/images/design/colors/color-tokens-figma@2x.png)
+
+  </Large>
+
+  <Text>
+
+      ### Polaris react
+
+      Color tokens are applied to components and are available via css variables to style custom UI elements within the Shopify admin.
+
+  </Text>
+
+  <Large>
+
+    ![Screenshot of an autocomplete list of polaris react css color variables.](/images/design/colors/color-tokens-polaris-react@2x.png)
+
+  </Large>
+
+</LayoutSection>
