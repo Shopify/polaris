@@ -159,7 +159,7 @@ export function Picker({
       preventFocusOnClose
       fullWidth
       preferInputActivator={false}
-      // preferredPosition="cover"
+      preferredPosition="cover"
       onClose={handleClose}
     >
       <Popover.Pane onScrolledToBottom={onScrolledToBottom} height={height}>

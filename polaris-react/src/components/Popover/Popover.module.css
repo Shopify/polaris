@@ -24,6 +24,10 @@
   transition: opacity var(--p-motion-duration-100) var(--p-motion-ease);
 }
 
+.PopoverOverlay-noAnimation {
+  transition: none;
+}
+
 .PopoverOverlay-entering {
   opacity: 1;
   transform: translateY(0);
@@ -62,7 +66,6 @@
 
 .positionedCover {
   margin: 0;
-  transition: none;
 }
 
 .ContentContainer {
