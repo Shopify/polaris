@@ -144,6 +144,7 @@ export class PopoverOverlay extends PureComponent<PopoverOverlayProps, State> {
         styles['PopoverOverlay-open'],
       transitionStatus === TransitionStatus.Exiting &&
         styles['PopoverOverlay-exiting'],
+      preferredPosition === 'cover' && styles['PopoverOverlay-noAnimation'],
     );
 
     return (

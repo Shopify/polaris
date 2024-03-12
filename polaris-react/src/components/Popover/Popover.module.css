@@ -20,6 +20,10 @@
   transform: translateY(var(--pc-popover-vertical-motion-offset));
 }
 
+.PopoverOverlay-noAnimation {
+  transition: none;
+}
+
 .PopoverOverlay-entering {
   opacity: 1;
   transform: translateY(0);
