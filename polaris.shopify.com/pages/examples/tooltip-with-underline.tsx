@@ -6,7 +6,11 @@ function TooltipExample() {
   return (
     <div style={{padding: '75px 0'}}>
       <Card padding="400">
-        <Tooltip active content="This tooltip has an underline" hasUnderline>
+        <Tooltip
+          defaultOpen
+          hasUnderline
+          content="This tooltip has an underline"
+        >
           <Text variant="bodyLg" fontWeight="bold" as="span">
             Order #1001
           </Text>
