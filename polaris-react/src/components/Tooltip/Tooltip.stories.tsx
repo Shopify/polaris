@@ -505,6 +505,39 @@ export function WithControlledState() {
   );
 }
 
+export function WithUncontrolledState() {
+  return (
+    <Box paddingBlockStart="2400">
+      <InlineStack gap="2400">
+        <Tooltip
+          content="This tooltip should render on load and hover"
+          defaultOpen
+        >
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            Default open true
+          </Text>
+        </Tooltip>
+        <Tooltip
+          content="This tooltip should render on hover"
+          defaultOpen={false}
+        >
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            Default open false
+          </Text>
+        </Tooltip>
+        <Tooltip
+          content="This tooltip should render on hover"
+          defaultOpen={undefined}
+        >
+          <Text variant="bodyLg" fontWeight="bold" as="span">
+            Default open undefined
+          </Text>
+        </Tooltip>
+      </InlineStack>
+    </Box>
+  );
+}
+
 export function ActiveStates() {
   const [popoverActive, setPopoverActive] = useState(false);
   const [tooltipActive, setTooltipActive] =
