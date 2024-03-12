@@ -776,7 +776,7 @@
     font-size: 15px;
     font-weight: var(--p-font-weight-regular);
     // stylelint-disable-next-line -- Polaris component custom properties
-    line-height: var(--pc-nevigation-item-line-height);
+    line-height: var(--pc-navigation-item-line-height);
     color: var(--p-color-text-secondary);
     position: relative;
     padding-left: calc(var(--p-space-800) + var(--p-space-100));
