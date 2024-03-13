@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create snapshot
-        uses: Shopify/snapit@reorder-build-script
+        uses: Shopify/snapit@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
