@@ -9,6 +9,7 @@ import {
   Text,
 } from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
+import {PlusIcon} from '@shopify/polaris-icons';
 
 function CardWithFooterActions() {
   return (
@@ -28,15 +29,16 @@ function CardWithFooterActions() {
         </BlockStack>
         <InlineStack align="end">
           <ButtonGroup>
-            <Button onClick={() => {}} accessibilityLabel="Edit shipment">
-              Edit shipment
+            <Button onClick={() => {}} accessibilityLabel="Fulfill items">
+              Fulfill items
             </Button>
             <Button
+              icon={PlusIcon}
               variant="primary"
               onClick={() => {}}
-              accessibilityLabel="Add tracking number"
+              accessibilityLabel="Create shipping label"
             >
-              Add tracking number
+              Create shipping label
             </Button>
           </ButtonGroup>
         </InlineStack>
