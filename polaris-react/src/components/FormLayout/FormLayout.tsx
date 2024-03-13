@@ -2,8 +2,8 @@ import React, {memo, Children} from 'react';
 import type {NamedExoticComponent} from 'react';
 
 import {wrapWithComponent, isElementOfType} from '../../utilities/components';
-import {BlockStack} from '../BlockStack';
 
+import styles from './FormLayout.module.scss';
 import {Group, Item} from './components';
 
 export interface FormLayoutProps {
@@ -15,7 +15,9 @@ export const FormLayout = memo(function FormLayout({
   children,
 }: FormLayoutProps) {
   return (
-    <BlockStack gap="400">{Children.map(children, wrapChildren)}</BlockStack>
+    <div className={styles.FormLayout}>
+      {Children.map(children, wrapChildren)}
+    </div>
   );
 }) as NamedExoticComponent<FormLayoutProps> & {
   Group: typeof Group;
@@ -23,10 +25,14 @@ export const FormLayout = memo(function FormLayout({
 
 FormLayout.Group = Group;
 
-function wrapChildren(child: React.ReactElement, index: number) {
+export function wrapChildren(
+  child: React.ReactElement,
+  index: number,
+  props?: any,
+) {
   if (isElementOfType(child, Group)) {
     return child;
   }
-  const props = {key: index};
-  return wrapWithComponent(child, Item, props);
+  const childProps = {key: index, ...props};
+  return wrapWithComponent(child, Item, childProps);
 }
