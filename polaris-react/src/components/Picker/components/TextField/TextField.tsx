@@ -3,6 +3,9 @@ import React, {useMemo, useId, useCallback, useEffect, useRef} from 'react';
 import {Label, labelID} from '../../../Label';
 import type {TextFieldProps} from '../../../TextField';
 import {useComboboxTextField} from '../../../../utilities/combobox';
+import {InlineStack} from '../../../InlineStack';
+
+import styles from './TextField.module.scss';
 
 export function TextField({
   value,
@@ -13,6 +16,8 @@ export function TextField({
   onChange,
   label,
   labelHidden,
+  prefix,
+  placeholder,
 }: TextFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const comboboxTextFieldContext = useComboboxTextField();
@@ -72,21 +77,26 @@ export function TextField({
       <Label id={textFieldId} hidden={labelHidden}>
         {label}
       </Label>
-      <input
-        ref={inputRef}
-        value={value}
-        id={textFieldId}
-        type={type}
-        aria-activedescendant={activeOptionId}
-        role="combobox"
-        aria-haspopup="listbox"
-        aria-autocomplete="list"
-        aria-expanded="true"
-        aria-controls={listboxId}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
-        onChange={({target}) => handleChange(target.value, textFieldId)}
-      />
+      <InlineStack gap="100" blockAlign="center">
+        <span>{prefix}</span>
+        <input
+          className={styles.TextField}
+          ref={inputRef}
+          value={value}
+          id={textFieldId}
+          type={type}
+          aria-activedescendant={activeOptionId}
+          role="combobox"
+          aria-haspopup="listbox"
+          aria-autocomplete="list"
+          aria-expanded="true"
+          placeholder={placeholder}
+          aria-controls={listboxId}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+          onChange={({target}) => handleChange(target.value, textFieldId)}
+        />
+      </InlineStack>
     </>
   );
 }
