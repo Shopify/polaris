@@ -1,5 +1,6 @@
 import React from 'react';
 import type {ComponentMeta} from '@storybook/react';
+import {DeleteIcon} from '@shopify/polaris-icons';
 
 import {BulkActions} from './BulkActions';
 
@@ -21,6 +22,8 @@ export function Default() {
           onAction: () => console.log('Todo: implement adding customers'),
         },
         {
+          icon: DeleteIcon,
+          destructive: true,
           content: 'Delete customers',
           onAction: () => console.log('Todo: implement deleting customers'),
         },
@@ -50,6 +53,8 @@ export function Default() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -80,6 +85,8 @@ export function WithDeprecatedProps() {
           onAction: () => console.log('Todo: implement adding customers'),
         },
         {
+          icon: DeleteIcon,
+          destructive: true,
           content: 'Delete customers',
           onAction: () => console.log('Todo: implement deleting customers'),
         },
@@ -109,6 +116,8 @@ export function WithDeprecatedProps() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
