@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {QuestionCircleIcon} from '@shopify/polaris-icons';
 import type {ComponentMeta} from '@storybook/react';
 import {
@@ -489,18 +489,26 @@ export function PersistOnClick() {
 export function WithControlledState() {
   const [open, setOpen] = useState(false);
 
+  const handleOpen = useCallback(() => {
+    setOpen(true);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setOpen(false);
+  }, []);
+
   return (
     <Box paddingBlockStart="2400">
-      <BlockStack gap="300" inlineAlign="start">
-        <Tooltip open={open} content="Tooltip content">
-          <Text as="span" variant="bodyLg">
-            The tooltip is {String(open)}
-          </Text>
-        </Tooltip>
-        <Button onClick={() => setOpen((prevOpen) => !prevOpen)}>
-          Toggle tooltip
-        </Button>
-      </BlockStack>
+      <Tooltip
+        open={open}
+        onOpen={handleOpen}
+        onClose={handleClose}
+        content="Tooltip content"
+      >
+        <Text as="span" variant="bodyLg">
+          The tooltip is {String(open)}
+        </Text>
+      </Tooltip>
     </Box>
   );
 }
