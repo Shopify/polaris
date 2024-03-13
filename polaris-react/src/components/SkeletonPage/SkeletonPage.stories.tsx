@@ -65,7 +65,11 @@ export function WithDynamicContent() {
 
 export function WithStaticContent() {
   return (
-    <SkeletonPage title="Products" primaryAction>
+    <SkeletonPage
+      title="Products"
+      subtitle="Manage your product catalog"
+      primaryAction
+    >
       <Layout>
         <Layout.Section>
           <LegacyCard sectioned>
