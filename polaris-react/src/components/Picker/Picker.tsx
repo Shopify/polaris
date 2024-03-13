@@ -1,4 +1,11 @@
-import React, {useState, useCallback, useMemo, Children, useRef} from 'react';
+import React, {
+  useState,
+  useCallback,
+  useMemo,
+  useRef,
+  isValidElement,
+} from 'react';
+import {SearchIcon} from '@shopify/polaris-icons';
 
 import {Popover} from '../Popover';
 import type {PopoverPublicAPI} from '../Popover';
@@ -16,6 +23,7 @@ import {Box} from '../Box';
 import type {TextFieldProps} from '../TextField';
 import type {OptionProps} from '../Listbox';
 import {Listbox} from '../Listbox';
+import {Icon} from '../Icon';
 
 import {TextField, Activator} from './components';
 import type {ActivatorProps} from './components';
@@ -24,7 +32,7 @@ export interface PickerProps {
   /** Configure the button that activates the Picker */
   activator: ActivatorProps;
   /** Textfield that allows filtering of options */
-  textField?: React.ReactElement<TextFieldProps> | TextFieldProps;
+  searchField?: TextFieldProps;
   /** Allows more than one option to be selected */
   allowMultiple?: boolean;
   /** The options to be listed within the picker */
@@ -33,7 +41,7 @@ export interface PickerProps {
   willLoadMoreOptions?: boolean;
   /** Height to set on the Popover Pane. */
   height?: string;
-  /** Callback fired when the bottom of the lisbox is reached. Use to lazy load when listbox option data is paginated. */
+  /** Callback fired when the bottom of the listbox is reached. Use to lazy load when listbox option data is paginated. */
   onScrolledToBottom?(): void;
   /** Callback fired when the popover closes */
   onClose?(): void;
@@ -42,13 +50,17 @@ export interface PickerProps {
 export function Picker({
   activator,
   allowMultiple,
-  textField,
-  options,
+  searchField,
+  options = [],
   willLoadMoreOptions,
   height,
   onScrolledToBottom,
   onClose,
 }: PickerProps) {
+  const [query, setQuery] = useState<string>('');
+  const [filteredOptions, setFilteredOptions] = useState<OptionProps[] | null>(
+    options,
+  );
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
@@ -60,8 +72,6 @@ export function Picker({
   const handleClose = useCallback(() => {
     setPopoverActive(false);
     onClose?.();
-
-    setActiveOptionId(undefined);
   }, [onClose]);
 
   const handleOpen = useCallback(() => {
@@ -72,7 +82,6 @@ export function Picker({
   const onOptionSelected = useCallback(() => {
     if (!allowMultiple) {
       handleClose();
-      setActiveOptionId(undefined);
       return;
     }
 
@@ -150,6 +159,24 @@ export function Picker({
     ],
   );
 
+  const updateText = useCallback(
+    (value: string) => {
+      setQuery(value);
+
+      if (value === '') {
+        setFilteredOptions(options);
+        return;
+      }
+
+      const filterRegex = new RegExp(value, 'i');
+      const resultOptions = options?.filter((option) =>
+        reactChildrenText(option.children)?.match(filterRegex),
+      );
+      setFilteredOptions(resultOptions ?? []);
+    },
+    [options],
+  );
+
   return (
     <Popover
       ref={popoverRef}
@@ -163,19 +190,17 @@ export function Picker({
       onClose={handleClose}
     >
       <Popover.Pane onScrolledToBottom={onScrolledToBottom} height={height}>
-        {textField ? (
+        {searchField ? (
           <Box paddingBlockStart="200" paddingInline="200">
             <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
-              {typeof textField === 'object' ? (
-                <TextField
-                  {...textField}
-                  label="Search"
-                  autoComplete="off"
-                  type="search"
-                />
-              ) : (
-                textField
-              )}
+              <TextField
+                autoComplete="off"
+                label={searchField.label}
+                value={query}
+                placeholder={searchField.placeholder}
+                onChange={updateText}
+                prefix={<Icon source={SearchIcon} />}
+              />
             </ComboboxTextFieldContext.Provider>
           </Box>
         ) : null}
@@ -184,11 +209,17 @@ export function Picker({
           <ComboboxListboxOptionContext.Provider
             value={listboxOptionContextValue}
           >
-            <Listbox onSelect={onOptionSelected}>
-              {options?.map((option) => (
-                <Listbox.Option key={option.value} {...option} />
-              ))}
-            </Listbox>
+            <Box paddingBlock="200">
+              <Listbox onSelect={onOptionSelected}>
+                {filteredOptions?.map((option) => (
+                  <Listbox.Option
+                    key={option.value}
+                    selected={option.value === activeOptionId}
+                    {...option}
+                  />
+                ))}
+              </Listbox>
+            </Box>
           </ComboboxListboxOptionContext.Provider>
         </ComboboxListboxContext.Provider>
       </Popover.Pane>
@@ -197,3 +228,11 @@ export function Picker({
 }
 
 Picker.TextField = TextField;
+
+const reactChildrenText = (children: React.ReactNode): string => {
+  if (typeof children === 'string') return children;
+
+  return isValidElement(children)
+    ? reactChildrenText(children?.props?.children)
+    : '';
+};

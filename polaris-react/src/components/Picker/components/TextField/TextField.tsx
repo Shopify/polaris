@@ -1,4 +1,4 @@
-import React, {useMemo, useId, useCallback, useEffect} from 'react';
+import React, {useMemo, useId, useCallback, useEffect, useRef} from 'react';
 
 import {Label, labelID} from '../../../Label';
 import type {TextFieldProps} from '../../../TextField';
@@ -14,6 +14,7 @@ export function TextField({
   label,
   labelHidden,
 }: TextFieldProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
   const comboboxTextFieldContext = useComboboxTextField();
 
   const {
@@ -64,12 +65,15 @@ export function TextField({
     [onChange, onTextFieldChange],
   );
 
+  if (inputRef.current) inputRef.current.focus();
+
   return (
     <>
       <Label id={textFieldId} hidden={labelHidden}>
         {label}
       </Label>
       <input
+        ref={inputRef}
         value={value}
         id={textFieldId}
         type={type}

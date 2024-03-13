@@ -3,6 +3,41 @@ import React from 'react';
 import {BlockStack, Card, Layout, Page, Picker, Text} from '../src';
 
 export function Playground() {
+  const options = [
+    {
+      value: '012345678',
+      children: 'Burberry',
+    },
+    {
+      value: '123456789',
+      children: 'Chanel',
+    },
+    {
+      value: '234567890',
+      children: 'Dior',
+    },
+    {
+      value: '345678901',
+      children: 'Gucci',
+    },
+    {
+      value: '456789012',
+      children: 'Hermès',
+    },
+    {
+      value: '567890123',
+      children: 'Louis Vuitton',
+    },
+    {
+      value: '678901234',
+      children: <span>Prada</span>,
+    },
+    {
+      value: '789012345',
+      children: <div>Versace</div>,
+    },
+  ];
+
   return (
     <Page title="Playground">
       {/* Add the code you want to test in here */}
@@ -15,29 +50,13 @@ export function Playground() {
             <BlockStack gap="200">
               <Text as="h3">Organization</Text>
               <Picker
+                searchField={{
+                  label: 'Search for a product',
+                  placeholder: 'Search for a product',
+                  autoComplete: 'off',
+                }}
                 activator={{label: 'Product', placeholder: 'Select a product'}}
-                options={[
-                  {
-                    value: 'option1',
-                    accessibilityLabel: 'option1',
-                    children: 'option1',
-                  },
-                  {
-                    value: 'option2',
-                    accessibilityLabel: 'option2',
-                    children: 'option2',
-                  },
-                  {
-                    value: 'option3',
-                    accessibilityLabel: 'option3',
-                    children: 'option3',
-                  },
-                  {
-                    value: 'option4',
-                    accessibilityLabel: 'option4',
-                    children: 'option4',
-                  },
-                ]}
+                options={options}
               />
             </BlockStack>
           </Card>
