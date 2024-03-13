@@ -67,7 +67,7 @@ export interface BulkActionsProps {
   buttonSize?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
   /** Label for the bulk actions */
   label?: string;
-  /** @deprecated List is in a selectable state. No longer needed due to removal of Transition */
+  /** List is in a selectable state. Will only render the bulk actions when `true` */
   selectMode?: boolean;
   /** @deprecated Used for forwarding the ref. Use `ref` prop instead */
   innerRef?: React.Ref<any>;
@@ -102,6 +102,7 @@ export const BulkActions = forwardRef(function BulkActions(
     onToggleAll,
     onMoreActionPopoverToggle,
     width,
+    selectMode,
   }: BulkActionsProps,
   ref,
 ) {
@@ -369,22 +370,24 @@ export const BulkActions = forwardRef(function BulkActions(
           <CheckableButton {...checkableButtonProps} />
           {paginatedSelectAllMarkup}
         </div>
-        <div className={styles.BulkActionsPromotedActionsWrapper}>
-          <InlineStack gap="100" blockAlign="center">
-            <div className={styles.BulkActionsOuterLayout}>
-              {measurerMarkup}
-              <div
-                className={classNames(
-                  styles.BulkActionsLayout,
-                  !hasMeasured && styles['BulkActionsLayout--measuring'],
-                )}
-              >
-                {promotedActionsMarkup}
+        {selectMode ? (
+          <div className={styles.BulkActionsPromotedActionsWrapper}>
+            <InlineStack gap="100" blockAlign="center">
+              <div className={styles.BulkActionsOuterLayout}>
+                {measurerMarkup}
+                <div
+                  className={classNames(
+                    styles.BulkActionsLayout,
+                    !hasMeasured && styles['BulkActionsLayout--measuring'],
+                  )}
+                >
+                  {promotedActionsMarkup}
+                </div>
               </div>
-            </div>
-            {actionsMarkup}
-          </InlineStack>
-        </div>
+              {actionsMarkup}
+            </InlineStack>
+          </div>
+        ) : null}
       </InlineStack>
     </div>
   );

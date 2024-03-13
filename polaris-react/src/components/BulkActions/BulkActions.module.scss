@@ -58,30 +58,6 @@ $bulk-actions-button-stacking-order: (
   }
 }
 
-.ButtonGroupWrapper {
-  width: auto;
-  justify-content: flex-start;
-  max-width: 100%;
-  pointer-events: auto;
-
-  @media (--p-breakpoints-sm-down) {
-    // stylelint-disable-next-line selector-max-combinators, selector-max-type -- the first item of button group on small screen needs to fill the space
-    > div > div:first-child {
-      flex: 1 1 auto;
-    }
-  }
-
-  @media (--p-breakpoints-sm-up) {
-    width: auto;
-    justify-content: flex-start;
-  }
-
-  .Group-measuring & {
-    position: absolute;
-    width: auto;
-  }
-}
-
 .BulkActionButton {
   white-space: nowrap;
 
