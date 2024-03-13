@@ -40,6 +40,7 @@ interface Props {
   accessibilityLabel: string;
   label: string;
   selected: boolean;
+  selectMode: boolean;
 }
 
 const bulkActionProps: Props = {
@@ -56,6 +57,7 @@ const bulkActionProps: Props = {
     },
   ],
   disabled: false,
+  selectMode: true,
 };
 
 describe('<BulkActions />', () => {
@@ -317,6 +319,7 @@ describe('<BulkActions />', () => {
           label: 'Label',
           selected: false,
           bulkActions: [],
+          selectMode: true,
           promotedActions: [
             {
               title: 'button1',
@@ -353,6 +356,7 @@ describe('<BulkActions />', () => {
           label: 'Label',
           selected: false,
           bulkActions: [],
+          selectMode: true,
           promotedActions: [
             {
               title: 'button1',
@@ -385,6 +389,7 @@ describe('<BulkActions />', () => {
           label: 'Label',
           selected: false,
           bulkActions: [],
+          selectMode: true,
           promotedActions: [
             {
               title: 'button1',
@@ -444,6 +449,7 @@ describe('<BulkActions />', () => {
           label: 'Label',
           selected: false,
           bulkActions: [],
+          selectMode: true,
           promotedActions: [
             {...promotedActionToBeClicked},
             {
@@ -490,6 +496,7 @@ describe('<BulkActions />', () => {
           label: 'Label',
           selected: false,
           bulkActions: [],
+          selectMode: true,
           promotedActions: [
             {
               disabled: true,
@@ -551,6 +558,18 @@ describe('<BulkActions />', () => {
 
       expect(bulkActions).toContainReactComponent(Tooltip, {
         content: 'More actions',
+      });
+    });
+  });
+
+  describe('selectMode', () => {
+    describe('when false', () => {
+      it('will not render any bulk action buttons', () => {
+        const bulkActions = mountWithApp(
+          <BulkActions {...bulkActionProps} selectMode={false} />,
+        );
+
+        expect(bulkActions).not.toContainReactComponent(BulkActionButton);
       });
     });
   });
