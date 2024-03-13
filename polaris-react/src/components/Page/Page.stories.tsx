@@ -33,7 +33,7 @@ export function Default() {
       secondaryActions={[
         {
           content: 'Delete',
-          tone: 'critical',
+          destructive: true,
           icon: DeleteIcon,
           accessibilityLabel: 'Delete action label',
           onAction: () => console.log('Delete action'),
