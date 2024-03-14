@@ -7,9 +7,8 @@ import {
   Link,
 } from '@storybook/components';
 import {PureArgsTable} from '@storybook/blocks';
-import {addons, types} from '@storybook/manager-api';
+import {useGlobals, addons, types} from '@storybook/manager-api';
 import {styled} from '@storybook/theming';
-import {useGlobals} from '@storybook/api';
 
 addons.register('global-controls', () => {
   addons.add('grid-options/panel', {
