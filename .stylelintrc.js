@@ -30,24 +30,10 @@ module.exports = {
           },
         ],
         'scss/at-rule-no-unknown': null,
-        'polaris/coverage': [
-          true,
-          {
-            border: [
-              {
-                'polaris/at-rule-disallowed-list': null,
-              },
-            ],
-            layout: [
-              {
-                'polaris/at-rule-disallowed-list': null,
-              },
-            ],
-            conventions: {
-              'polaris/custom-property-allowed-list': null,
-            },
-          },
-        ],
+        // Yells at us about at rules. Since it's not configurable (see
+        // https://github.com/Shopify/polaris/pull/11709), we have to disable
+        // the entire rule.
+        'polaris/coverage': null,
       },
     },
   ],
