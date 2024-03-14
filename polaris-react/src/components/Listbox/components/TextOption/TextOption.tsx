@@ -39,7 +39,7 @@ export const TextOption = memo(function TextOption({
 
   const optionMarkup = (
     <Box width="100%">
-      <InlineStack wrap={false} gap="150">
+      <InlineStack wrap={false} gap="100">
         {selected ? (
           <span>
             <Icon source={CheckIcon} />

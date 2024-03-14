@@ -26,7 +26,7 @@
 
   display: flex;
   flex-wrap: nowrap;
-  gap: var(--p-space-200);
+  gap: var(--p-space-100);
 
   // stylelint-disable-next-line selector-max-specificity -- required for focus-visible support
   &.focused:focus-visible:not(:active) {
