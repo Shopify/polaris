@@ -40,6 +40,11 @@ export function SecondaryNavigation({
     isEqual(item, hoveredItem),
   );
 
+  const transition = {
+    duration: 'var(--p-motion-duration-200)',
+    timingFunction: 'var(--p-motion-ease-in-out)',
+  };
+
   return (
     <div
       className={classNames(
@@ -50,7 +55,7 @@ export function SecondaryNavigation({
       <Collapsible
         id={secondaryNavigationId || uid}
         open={showExpanded}
-        transition
+        transition={transition}
       >
         <ul className={styles.List}>
           {subNavigationItems.map((item, index) => {
