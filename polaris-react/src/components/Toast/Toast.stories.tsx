@@ -256,6 +256,7 @@ export const InsideModal = {
             {toastMarkup}
             {toast2Markup}
             <Modal
+              instant
               activator={activator}
               open={modalActive}
               onClose={handleChange}

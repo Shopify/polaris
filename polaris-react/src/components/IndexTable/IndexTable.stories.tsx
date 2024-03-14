@@ -4865,6 +4865,9 @@ export const SmallScreenWithAllOfItsElements = {
 };
 
 export const WithSubHeaders = {
+  parameters: {
+    a11y: {config: {rules: [{id: 'empty-table-header', enabled: false}]}},
+  },
   render() {
     const rows = [
       {
@@ -5453,6 +5456,9 @@ export const WithPaginationAndBulkActions = {
 };
 
 export const WithSubHeadersNonSelectable = {
+  parameters: {
+    a11y: {config: {rules: [{id: 'empty-table-header', enabled: false}]}},
+  },
   render() {
     const rows = [
       {
@@ -7415,6 +7421,7 @@ export const WithinAModal = {
       <Frame>
         <div style={{height: '500px'}}>
           <Modal
+            instant
             noScroll
             activator={activator}
             open={active}

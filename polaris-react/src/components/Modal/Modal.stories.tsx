@@ -1,5 +1,6 @@
 import React, {useCallback, useRef, useState} from 'react';
 import type {Meta} from '@storybook/react';
+import {within} from '@storybook/test';
 import {
   Banner,
   Button,
@@ -15,12 +16,16 @@ import {
   Frame,
   FrameContext,
 } from '@shopify/polaris';
+import {transitionsAllSettled} from 'transitions-all-settled';
 
 export default {
   component: Modal,
 } as Meta<typeof Modal>;
 
 export const Default = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     const [active, setActive] = useState(true);
 
@@ -62,6 +67,9 @@ export const Default = {
 };
 
 export const WithPrimaryAction = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     const discountLink = 'https://polaris.shopify.com/';
 
@@ -131,6 +139,9 @@ export const WithPrimaryAction = {
 };
 
 export const WithDestructivePrimaryAction = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     const [active, setActive] = useState(true);
 
@@ -170,6 +181,9 @@ export const WithDestructivePrimaryAction = {
 };
 
 export const WithPrimaryAndSecondaryActions = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     const currentPage = 'current_page';
     const allCustomers = 'all_customers';
@@ -259,6 +273,9 @@ export const WithPrimaryAndSecondaryActions = {
 };
 
 export const Large = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     const [active, setActive] = useState(true);
     const [checked, setChecked] = useState(false);
@@ -314,6 +331,9 @@ export const Large = {
 };
 
 export const Small = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     const [active, setActive] = useState(true);
     const [checked, setChecked] = useState(false);
@@ -369,6 +389,9 @@ export const Small = {
 };
 
 export const WithoutATitle = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     const [active, setActive] = useState(true);
 
@@ -411,6 +434,9 @@ export const WithoutATitle = {
 };
 
 export const WithScrollListener = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     const [active, setActive] = useState(true);
 
@@ -448,6 +474,9 @@ export const WithScrollListener = {
 };
 
 export const WithActivatorRef = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     const [active, setActive] = useState(true);
 
@@ -551,6 +580,9 @@ export const WithoutAnActivatorProp = {
 };
 
 export const WithLongContent = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     return (
       <Frame>
@@ -603,6 +635,9 @@ export const WithLongContent = {
 };
 
 export const WithLongContentNoScroll = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     return (
       <Frame>
@@ -666,6 +701,9 @@ const context = {
   removeContextualSaveBar: () => {},
 };
 export const EmbeddedIframe = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     return (
       <FrameContext.Provider value={context}>
@@ -697,6 +735,9 @@ export const EmbeddedIframe = {
 };
 
 export const SectionedProp = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     return (
       <Frame>
@@ -722,6 +763,9 @@ export const SectionedProp = {
 };
 
 export const Loading = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     return (
       <Frame>
@@ -744,6 +788,9 @@ export const Loading = {
 };
 
 export const Fullscreen = {
+  play: async ({canvasElement}) => {
+    await transitionsAllSettled(canvasElement);
+  },
   render() {
     return (
       <Frame>

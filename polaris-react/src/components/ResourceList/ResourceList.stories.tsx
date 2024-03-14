@@ -1520,6 +1520,7 @@ export const WithinAModal = {
       <Frame>
         <div style={{height: '500px'}}>
           <Modal
+            instant
             noScroll
             activator={activator}
             open={active}

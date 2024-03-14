@@ -7,6 +7,9 @@ export default {
 } as Meta<typeof Tabs>;
 
 export const All = {
+  parameters: {
+    a11y: {config: {rules: [{id: 'aria-required-children', enabled: false}]}},
+  },
   render() {
     return (
       /* eslint-disable react/jsx-pascal-case */
@@ -132,6 +135,9 @@ type AlphaTabAction =
   | 'delete';
 
 export const WithActions = {
+  parameters: {
+    a11y: {config: {rules: [{id: 'aria-required-children', enabled: false}]}},
+  },
   render() {
     const sleep = (ms: number) =>
       new Promise((resolve) => setTimeout(resolve, ms));

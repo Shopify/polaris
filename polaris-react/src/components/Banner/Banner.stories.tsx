@@ -142,6 +142,7 @@ export const InAModal = {
       <div style={{height: '500px'}}>
         <Button onClick={handleChange}>Open</Button>
         <Modal
+          instant
           open={active}
           onClose={handleChange}
           title="Reach more shoppers with Instagram product tags"

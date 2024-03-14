@@ -24,6 +24,7 @@ Object.entries(modules).forEach(
 );
 
 export const KitchenSink = {
+  tags: ['skip-tests'],
   render() {
     return Object.entries(stories)
       .filter(

@@ -4,7 +4,9 @@ import {ContextualSaveBar, Frame} from '@shopify/polaris';
 
 export default {
   component: ContextualSaveBar,
-  parameters: {layout: 'fullscreen'},
+  parameters: {
+    layout: 'fullscreen',
+  },
 } as Meta<typeof ContextualSaveBar>;
 
 export const Default = {
