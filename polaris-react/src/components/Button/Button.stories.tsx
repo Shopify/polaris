@@ -840,167 +840,30 @@ export function LoadingState() {
 }
 
 export function CopyToClipboard() {
-  // Demo hooks
-  const [copyButtonHoverDuration, setCopyButtonHoverDuration] = useState(100);
-
-  const [copyButtonHoverDelay, setCopyButtonHoverDelay] = useState(0);
-
-  const [tooltipHoverDelay, setTooltipHoverDelay] = useState(550);
-
-  const [copyToClipboardTimeout, setCopyToClipboardTimeout] = useState(2500);
-
-  // Copy To Clipboard hooks
-  const ref = useRef(null);
-
-  // const isMouseHovered = useMouseHover(ref, true);
-  const isMouseHovered = true;
-
   const [copy, status] = useCopyToClipboard({
     defaultValue: 'hello@example.com',
-    timeout: copyToClipboardTimeout,
   });
 
   return (
-    <div style={{maxWidth: 300}}>
-      <pre>
-        {JSON.stringify(
-          {
-            status,
-            tooltipContent: status === 'copied' ? 'Copied' : 'Copy',
-            isMouseHovered,
-          },
-          null,
-          2,
-        )}
-      </pre>
+    <div style={{maxWidth: 300, paddingTop: 100}}>
       <Card>
-        <Text as="h3" variant="headingSm">
-          Customer
-        </Text>
-        <div
-          ref={ref}
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            marginBlockStart: 'var(--p-space-200)',
-          }}
-        >
+        <InlineStack align="space-between" gap="200">
           <Link removeUnderline>hello@example.com</Link>
-          <div
-            // TODO: Make the copy button focusable e.g.
-            // &:focus-within {
-            //   opacity: 1;
-            // }
-            style={{
-              opacity: isMouseHovered || status === 'copied' ? 1 : 0,
-              ...(isMouseHovered && {
-                transitionProperty: 'opacity',
-                transitionDuration: `var(--p-motion-duration-${copyButtonHoverDuration})`,
-                transitionDelay: `var(--p-motion-duration-${copyButtonHoverDelay})`,
-              }),
-            }}
+          <Tooltip
+            dismissOnMouseOut
+            hoverDelay={500}
+            preferredPosition="above"
+            open={status === 'copied' ? true : undefined}
+            content={status === 'copied' ? 'Copied' : 'Copy'}
           >
-            {/* Issue: Tooltip closes when button is clicked */}
-            {/* Issue: Tooltip closes and opens when the `content` prop changes */}
-            <Tooltip
-              // Important: Closes tooltip when mouse leaves the button
-              dismissOnMouseOut
-              open={status === 'copied' ? true : undefined}
-              hoverDelay={tooltipHoverDelay}
-              preferredPosition="above"
-              content={status === 'copied' ? 'Copied' : 'Copy'}
-            >
-              <Button
-                icon={status === 'copied' ? CheckIcon : ClipboardIcon}
-                // pressed={status === 'copied' ? true : undefined}
-                variant="tertiary"
-                onClick={copy}
-              />
-            </Tooltip>
-          </div>
-        </div>
-        <Text as="h4" variant="bodyMd">
-          +1 555-555-5555
-        </Text>
+            <Button
+              variant="tertiary"
+              onClick={copy}
+              icon={status === 'copied' ? CheckIcon : ClipboardIcon}
+            />
+          </Tooltip>
+        </InlineStack>
       </Card>
-      <br />
-      <div>
-        <strong style={{display: 'block'}}>
-          Copy Button hover <code>transition-duration</code>:
-        </strong>
-        <p>{copyButtonHoverDuration}ms</p>
-        <input
-          type="range"
-          min="0"
-          max="500"
-          step="50"
-          value={copyButtonHoverDuration}
-          onChange={(event) =>
-            setCopyButtonHoverDuration(parseInt(event.target.value, 10))
-          }
-          autoComplete="off"
-        />
-      </div>
-      <div>
-        <strong style={{display: 'block'}}>
-          Copy Button hover <code>transition-delay</code>:
-        </strong>
-        <p>{copyButtonHoverDelay}ms</p>
-        <input
-          type="range"
-          min="0"
-          max="500"
-          step="50"
-          value={copyButtonHoverDelay}
-          onChange={(event) =>
-            setCopyButtonHoverDelay(parseInt(event.target.value, 10))
-          }
-          autoComplete="off"
-        />
-      </div>
-      <div>
-        <strong style={{display: 'block'}}>
-          Tooltip <code>hoverDelay</code>:
-        </strong>
-        <p>{tooltipHoverDelay}ms</p>
-        <input
-          type="range"
-          min="0"
-          max="1000"
-          value={tooltipHoverDelay}
-          onChange={(event) =>
-            setTooltipHoverDelay(parseInt(event.target.value, 10))
-          }
-          autoComplete="off"
-        />
-      </div>
-      <div>
-        <strong style={{display: 'block'}}>
-          Copy To Clipboard <code>timeout</code>:
-        </strong>
-        <p>{copyToClipboardTimeout}ms</p>
-        <input
-          type="range"
-          min="0"
-          max="5000"
-          value={copyToClipboardTimeout}
-          onChange={(event) =>
-            setCopyToClipboardTimeout(parseInt(event.target.value, 10))
-          }
-          autoComplete="off"
-        />
-        <div>
-          <strong style={{display: 'block'}}>Paste copied text</strong>
-          <p>Note: Text is deleted onBlur for convenience</p>
-          <textarea
-            onBlur={(event) => {
-              event.target.value = '';
-            }}
-          />
-        </div>
-      </div>
-      <br />
-      <br />
     </div>
   );
 }
