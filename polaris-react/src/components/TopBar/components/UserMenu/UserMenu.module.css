@@ -1,7 +1,7 @@
 .Details {
   max-width: 160px;
   margin-right: 0;
-  // stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- set padding
+  /* stylelint-disable-next-line polaris/space/declaration-property-unit-disallowed-list -- set padding */
   padding: 0 var(--p-space-200) 0 10px;
 
   > p {
