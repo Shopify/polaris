@@ -138,7 +138,21 @@ export function Option({
         blockAlign={verticalAlignToBlockAlign(verticalAlign)}
       >
         {mediaMarkup}
-        {label}
+        <span
+          style={{
+            fontWeight: 'var(--p-font-weight-semibold)',
+            minWidth: `${String(label).length ?? undefined}ch`,
+          }}
+        >
+          <span
+            style={{
+              fontWeight:
+                select || active ? 'var(--p-font-weight-semibold)' : 'initial',
+            }}
+          >
+            {label}
+          </span>
+        </span>
       </InlineStack>
     </button>
   );
