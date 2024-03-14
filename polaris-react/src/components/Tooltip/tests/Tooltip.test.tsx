@@ -243,7 +243,7 @@ describe('<Tooltip />', () => {
     expect(openSpy).not.toHaveBeenCalled();
   });
 
-  it('calls onClose when initially when defaultOpen is true and then closed', () => {
+  it('calls onClose initially when defaultOpen is true and then closed', () => {
     const closeSpy = jest.fn();
     const tooltip = mountWithApp(
       <Tooltip
