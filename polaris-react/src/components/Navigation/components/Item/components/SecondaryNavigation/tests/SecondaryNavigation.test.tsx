@@ -52,8 +52,8 @@ describe('<SecondaryNavigation />', () => {
       const component = mountWithApp(<SecondaryNavigation {...mockProps} />);
       expect(component).toContainReactComponent(Collapsible, {
         transition: {
-          duration: 'var(--p-motion-duration-200)',
-          timingFunction: 'var(--p-motion-ease-in-out)',
+          duration: 'var(--p-motion-duration-100)',
+          timingFunction: 'var(--p-motion-ease-out)',
         },
       });
     });
