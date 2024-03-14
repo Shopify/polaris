@@ -1,7 +1,6 @@
 import postcssPlugins from './config/postcss-plugins.js';
 
 const config = {
-  parser: 'postcss-scss',
   plugins: postcssPlugins,
 };
 

@@ -1,6 +1,6 @@
 .RollupActivator {
   text-align: right;
-  // stylelint-disable-next-line selector-no-qualifying-type -- override `.iconOnly` negative margins
+  /* stylelint-disable-next-line selector-no-qualifying-type -- override `.iconOnly` negative margins */
   button[type='button'] {
     background: var(--p-color-bg-fill-tertiary);
     border-radius: var(--p-border-radius-200);
@@ -8,12 +8,12 @@
     box-shadow: none;
     margin: 0;
 
-    // stylelint-disable-next-line selector-max-specificity -- apply active styles
+    /* stylelint-disable-next-line selector-max-specificity -- apply active styles */
     &:active {
       background: var(--p-color-bg-fill-tertiary-active);
     }
 
-    // stylelint-disable-next-line selector-max-specificity -- apply focus styles
+    /* stylelint-disable-next-line selector-max-specificity -- apply focus styles */
     &:focus:not(:active) {
       /* stylelint-disable-next-line polaris/border/polaris/at-rule-disallowed-list -- button overrides */
       @mixin no-focus-ring;
@@ -22,7 +22,7 @@
       background: var(--p-color-bg-fill-tertiary-active);
     }
 
-    // stylelint-disable-next-line selector-max-specificity -- apply hover styles
+    /* stylelint-disable-next-line selector-max-specificity -- apply hover styles */
     &:hover {
       background: var(--p-color-bg-fill-tertiary-hover);
     }

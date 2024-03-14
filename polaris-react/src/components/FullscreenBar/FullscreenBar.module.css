@@ -1,7 +1,7 @@
 .FullscreenBar {
   position: relative;
   display: flex;
-  // stylelint-disable-next-line -- polaris custom global property
+  /* stylelint-disable-next-line -- polaris custom global property */
   height: var(--pg-top-bar-height);
   box-shadow: var(--p-shadow-100);
   background-color: var(--p-color-bg-surface);

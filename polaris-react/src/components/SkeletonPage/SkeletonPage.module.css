@@ -1,8 +1,8 @@
 :root {
-  // stylelint-disable -- use custom properties to set max width based on props
+  /* stylelint-disable -- use custom properties to set max width based on props */
   --pc-skeleton-page-max-width: 998px;
   --pc-skeleton-page-max-width-narrow: 662px;
-  // stylelint-enable
+  /* stylelint-enable */
 }
 
 .Title {

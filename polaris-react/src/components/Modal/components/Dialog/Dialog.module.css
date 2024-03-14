@@ -8,8 +8,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  // Allow passthrough of click events to dismiss modal on backdrop click
-  // Resume pointer-events on .Modal below
+
+  /* Allow passthrough of click events to dismiss modal on backdrop click
+     Resume pointer-events on .Modal below */
   pointer-events: none;
 
   @media (--p-breakpoints-md-up) {
@@ -22,7 +23,7 @@
 }
 
 .Modal {
-  // stylelint-disable-next-line -- Polaris component custom properties
+  /* stylelint-disable-next-line -- Polaris component custom properties */
   --pc-modal-dialog-vertical-spacing: 60px;
   pointer-events: initial;
   position: fixed;
@@ -32,7 +33,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  // stylelint-disable-next-line -- Polaris component custom properties
+  /* stylelint-disable-next-line -- Polaris component custom properties */
   max-height: calc(100vh - var(--pc-modal-dialog-vertical-spacing));
   background: var(--p-color-bg-surface);
   box-shadow: var(--p-shadow-600);
@@ -56,7 +57,7 @@
 
   &.limitHeight {
     @media (--p-breakpoints-md-up) {
-      // stylelint-disable-next-line -- Can't do a calc in a media query, but this is equivalent to: ((600px + var(--pc-modal-dialog-vertical-spacing)) / 16px) * 1em
+      /* stylelint-disable-next-line -- Can't do a calc in a media query, but this is equivalent to: ((600px + var(--pc-modal-dialog-vertical-spacing)) / 16px) * 1em */
       @media (min-height: 41.25em) {
         max-height: 600px;
       }

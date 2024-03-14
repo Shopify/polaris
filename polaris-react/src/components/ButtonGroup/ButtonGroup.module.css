@@ -1,8 +1,8 @@
 .ButtonGroup {
-  // stylelint-disable -- ButtonGroup custom properties
+  /* stylelint-disable -- ButtonGroup custom properties */
   --pc-button-group-item: 10;
   --pc-button-group-focused: 20;
-  // stylelint-enable
+  /* stylelint-enable */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -43,12 +43,12 @@
   }
 
   [aria-pressed='true'] {
-    // stylelint-disable-next-line  -- bring pressed button to top
+    /* stylelint-disable-next-line  -- bring pressed button to top */
     z-index: var(--pc-button-group-item);
   }
 
   .Item-focused {
-    // stylelint-disable-next-line  -- custom property
+    /* stylelint-disable-next-line  -- custom property */
     z-index: var(--pc-button-group-focused);
   }
 }
