@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {FeaturesContext} from '../../../../utilities/features';
-import styles from '../../LegacyTabs.module.scss';
+import styles from '../../LegacyTabs.module.css';
 import {UnstyledLink} from '../../../UnstyledLink';
 
 export interface ItemProps {

@@ -14,7 +14,7 @@ import {
 } from '../../../../utilities/dates';
 import type {Range} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
-import styles from '../../DatePicker.module.scss';
+import styles from '../../DatePicker.module.css';
 import {Day} from '../Day';
 import {Weekday} from '../Weekday';
 import {monthName, weekdayName} from '../../utilities';

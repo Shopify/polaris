@@ -7,7 +7,7 @@ import {Button} from '../../Button';
 import {ActionList} from '../../ActionList';
 import {Badge} from '../../Badge';
 import {MediaCard} from '../MediaCard';
-import styles from '../MediaCard.module.scss';
+import styles from '../MediaCard.module.css';
 
 const mockProps = {
   children: <img alt="" />,

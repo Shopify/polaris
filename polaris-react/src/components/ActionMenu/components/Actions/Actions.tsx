@@ -18,7 +18,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {SecondaryAction} from '../SecondaryAction';
 import {classNames} from '../../../../utilities/css';
 
-import styles from './Actions.module.scss';
+import styles from './Actions.module.css';
 import type {ActionsMeasurements} from './components';
 import {ActionsMeasurer} from './components';
 import {getVisibleAndHiddenActionsIndices} from './utilities';

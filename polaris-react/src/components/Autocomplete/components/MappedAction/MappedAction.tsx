@@ -9,7 +9,7 @@ import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
 import {useI18n} from '../../../../utilities/i18n';
 
-import styles from './MappedAction.module.scss';
+import styles from './MappedAction.module.css';
 
 interface MappedAction extends ActionListItemDescriptor {
   wrapOverflow?: boolean;

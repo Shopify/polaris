@@ -3,7 +3,7 @@ import React, {PureComponent} from 'react';
 import {isServer} from '../../../../utilities/target';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../../EventListener';
-import styles from '../../ColorPicker.module.scss';
+import styles from '../../ColorPicker.module.css';
 
 interface Position {
   x: number;

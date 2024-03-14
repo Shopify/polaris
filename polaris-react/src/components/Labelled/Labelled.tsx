@@ -8,7 +8,7 @@ import type {LabelProps} from '../Label';
 import {InlineError} from '../InlineError';
 import {Text} from '../Text';
 
-import styles from './Labelled.module.scss';
+import styles from './Labelled.module.css';
 
 export {labelID};
 

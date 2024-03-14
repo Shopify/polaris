@@ -25,8 +25,7 @@ import type {LinkLikeComponent} from '../../utilities/link';
 import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
-import './AppProvider.scss';
-import './global.scss';
+import './global.css';
 
 const MAX_SCROLLBAR_WIDTH = 20;
 const SCROLLBAR_TEST_ELEMENT_PARENT_SIZE = 30;

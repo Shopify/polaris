@@ -1,0 +1,22 @@
+.SkeletonBodyTextContainer {
+  width: 100%;
+}
+
+.SkeletonBodyText {
+  height: var(--p-space-200);
+  display: flex;
+  background-color: var(--p-color-bg-fill-tertiary);
+  border-radius: var(--p-border-radius-100);
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: grayText;
+  }
+
+  &:last-child:not(:first-child) {
+    width: 80%;
+  }
+
+  + .SkeletonBodyText {
+    margin-top: var(--p-space-300);
+  }
+}

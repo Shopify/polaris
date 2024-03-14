@@ -55,10 +55,10 @@ function generateConfig({output, targets, stylesConfig}) {
 function entryFileNames(ext) {
   return (chunkInfo) => {
     // To preserve backwards compatibility with previous Polaris versions,
-    // CSS Modules should be `<Name>.scss.esnext`, never
-    // `<Name>.module.scss.esnext`
-    if (chunkInfo.name.endsWith('.module.scss')) {
-      return `${chunkInfo.name.replace(/\.module\.scss$/, '.scss')}.${ext}`;
+    // CSS Modules should be `<Name>.css.esnext`, never
+    // `<Name>.module.css.esnext`
+    if (chunkInfo.name.endsWith('.module.css')) {
+      return `${chunkInfo.name.replace(/\.module\.css$/, '.css')}.${ext}`;
     }
 
     // Use regular pattern matching for everything else
@@ -75,7 +75,7 @@ export default [
       output: 'styles.css',
       modules: {
         generateScopedName: generateScopedName({includeHash: false}),
-        globalModulePaths: [/global\.scss$/],
+        globalModulePaths: [/global\.css$/],
       },
       plugins: postcssPlugins,
     },
@@ -101,7 +101,7 @@ export default [
       mode: 'esnext',
       modules: {
         generateScopedName: generateScopedName({includeHash: true}),
-        globalModulePaths: [/global\.scss$/],
+        globalModulePaths: [/global\.css$/],
       },
       plugins: postcssPlugins,
     },

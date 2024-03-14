@@ -36,7 +36,7 @@ import {
   instanceOfBulkActionListSection,
   getActionSections,
 } from './utilities';
-import styles from './BulkActions.module.scss';
+import styles from './BulkActions.module.css';
 
 export type BulkAction = DisableableAction & BadgeAction;
 

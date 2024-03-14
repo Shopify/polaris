@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Truncate.module.scss';
+import styles from './Truncate.module.css';
 
 export interface TruncateProps {
   children: React.ReactNode;

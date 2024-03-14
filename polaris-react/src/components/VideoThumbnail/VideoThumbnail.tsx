@@ -13,7 +13,7 @@ import {Icon} from '../Icon';
 import {LegacyStack} from '../LegacyStack';
 import {Text} from '../Text';
 
-import styles from './VideoThumbnail.module.scss';
+import styles from './VideoThumbnail.module.css';
 
 export interface VideoThumbnailProps {
   /** URL source for thumbnail image. */

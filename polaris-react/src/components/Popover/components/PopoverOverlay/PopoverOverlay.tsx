@@ -16,7 +16,7 @@ import {PositionedOverlay} from '../../../PositionedOverlay';
 import type {PositionedOverlayProps} from '../../../PositionedOverlay';
 import {Pane} from '../Pane';
 import type {PaneProps} from '../Pane';
-import styles from '../../Popover.module.scss';
+import styles from '../../Popover.module.css';
 import {PortalsManagerContext} from '../../../../utilities/portals';
 import type {PortalsContainerElement} from '../../../../utilities/portals';
 

@@ -10,7 +10,7 @@ import {Toast} from '../Toast';
 import {useDeepEffect} from '../../../../utilities/use-deep-effect';
 import {useDeepCallback} from '../../../../utilities/use-deep-callback';
 
-import styles from './ToastManager.module.scss';
+import styles from './ToastManager.module.css';
 
 export interface ToastManagerProps {
   toastMessages: ToastPropsWithID[];

@@ -4,7 +4,7 @@ import type {CheckboxHandles} from '../../types';
 import {classNames} from '../../utilities/css';
 import {Checkbox} from '../Checkbox';
 
-import styles from './CheckableButton.module.scss';
+import styles from './CheckableButton.module.css';
 
 export interface CheckableButtonProps {
   accessibilityLabel?: string;

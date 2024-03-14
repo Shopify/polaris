@@ -28,7 +28,7 @@ import {
   ContextualSaveBar,
   CSSAnimation,
 } from './components';
-import styles from './Frame.module.scss';
+import styles from './Frame.module.css';
 
 export interface FrameProps {
   /** Sets the logo for the TopBar, Navigation, and ContextualSaveBar components */

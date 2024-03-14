@@ -1,0 +1,332 @@
+:root {
+  --item-min-height: var(--p-space-400);
+  --item-min-width: 50px;
+  --item-vertical-padding: var(--p-space-200);
+}
+
+.Outer {
+  @media (--p-breakpoints-md-down) {
+    max-width: 100%;
+    overflow: hidden;
+    height: unset;
+    padding: 0;
+  }
+}
+
+.Wrapper {
+  @media (--p-breakpoints-md-down) {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: var(--p-space-200);
+  }
+}
+
+.WrapperWithNewButton {
+  @media (--p-breakpoints-md-up) {
+    position: relative;
+    display: inline-flex;
+    padding-right: var(--p-space-800);
+  }
+}
+
+.ButtonWrapper {
+  @media (--p-breakpoints-md-down) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+}
+
+.Tabs {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: var(--p-space-100);
+
+  @media (--p-breakpoints-md-up) {
+    padding: 0 var(--p-space-100);
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+}
+
+.Tab {
+  // stylelint-disable-next-line -- no way to set focus ring without mixin currently
+  @mixin focus-ring wide;
+  // stylelint-disable-next-line -- required to reset button styles on touch screens
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  padding: var(--p-space-150) var(--p-space-300);
+  border: 0;
+  border-radius: var(--p-border-radius-200);
+  background-color: transparent;
+  color: var(--p-color-text-brand);
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  min-width: 100%; // IE11 fix for overflowing flex items from parent container
+  margin-top: var(--p-space-025);
+  margin-bottom: calc(-1 * var(--p-space-025));
+  outline: none;
+  text-align: center;
+  white-space: nowrap;
+
+  &[aria-disabled='true'] {
+    cursor: default;
+    color: var(--p-color-text-disabled);
+
+    path {
+      fill: var(--p-color-icon-disabled);
+    }
+  }
+
+  &:not([aria-disabled='true']):hover {
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
+  }
+
+  &:not([aria-disabled='true']):focus {
+    background-color: var(--p-color-bg-surface-hover);
+    color: var(--p-color-text);
+  }
+
+  &:not([aria-disabled='true']):focus-visible {
+    background-color: transparent;
+    color: var(--p-color-text-brand);
+    // stylelint-disable-next-line -- set focus ring using mixin
+    @mixin focus-ring wide, 0, focused;
+  }
+
+  // stylelint-disable-next-line selector-max-specificity -- specificity required to override focus ring
+  &:not([aria-disabled='true']):focus-visible:not(:active) {
+    // stylelint-disable-next-line -- no way to set focus ring without mixin currently
+    @mixin focus-ring base, 0, focused;
+    outline: 0;
+  }
+
+  &:not([aria-disabled='true']):active {
+    background-color: var(--p-color-bg-surface-tertiary);
+    color: var(--p-color-text-brand);
+    z-index: var(--p-z-index-1);
+  }
+
+  path {
+    fill: currentColor;
+  }
+
+  @media (--p-breakpoints-md-up) {
+    font-size: var(--p-font-size-300);
+    line-height: var(--p-font-line-height-400);
+    height: 1.75rem;
+  }
+}
+
+.Tab-active {
+  background: var(--p-color-bg-fill-transparent-selected);
+  border-radius: var(--p-border-radius-200);
+  color: var(--p-color-text);
+
+  &[aria-disabled='true'] {
+    background: var(--p-color-bg-surface-disabled);
+    color: var(--p-color-text-disabled);
+  }
+
+  &:not([aria-disabled='true']):hover,
+  &:not([aria-disabled='true']):focus {
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
+  }
+
+  &:not([aria-disabled='true']):active {
+    background-color: var(--p-color-bg-fill-transparent-selected);
+    color: var(--p-color-text-brand);
+  }
+}
+
+.Tab-hasActions {
+  padding-right: var(--p-space-200);
+}
+
+.Tab-iconOnly {
+  padding-left: var(--p-space-100);
+  padding-right: var(--p-space-100);
+  width: var(--p-space-800);
+}
+
+.fillSpace {
+  .TabContainer {
+    flex: 1 1 auto;
+  }
+}
+
+.fitted {
+  flex-wrap: nowrap;
+
+  .TabContainer {
+    flex: 1 1 100%;
+  }
+}
+
+.TabContainer {
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.titleWithIcon {
+  display: flex;
+}
+
+.List {
+  list-style: none;
+  margin: 0;
+  padding: var(--p-space-200);
+}
+
+.Item {
+  // stylelint-disable-next-line -- no way to set unstyled-button without mixin currently
+  @mixin unstyled-button;
+  // stylelint-disable-next-line -- no way to set focus ring without mixin currently
+  @mixin focus-ring base, 0, base;
+  display: block;
+  width: 100%;
+  min-height: var(--item-min-height);
+  padding: var(--item-vertical-padding) var(--p-space-400);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--p-border-radius-100);
+  color: inherit;
+
+  &::-moz-focus-inner {
+    border: none;
+  }
+
+  &:hover {
+    background-color: var(--p-color-bg-surface-hover);
+    color: var(--p-color-text);
+  }
+
+  &:active {
+    background-color: var(--p-color-bg-surface-active);
+    color: var(--p-color-text);
+  }
+
+  &:focus-visible:not(:active) {
+    // stylelint-disable-next-line -- no way to set focus ring without mixin currently
+    @mixin focus-ring base, 0, focused;
+  }
+
+  &:visited {
+    color: inherit;
+  }
+}
+
+.DisclosureTab {
+  display: none;
+}
+
+.DisclosureTab-visible {
+  display: flex;
+}
+
+.DisclosureActivator {
+  // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
+  @mixin focus-ring base, 0, base;
+  // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
+  @mixin unstyled-button;
+  height: 100%;
+  background-color: transparent;
+  color: var(--p-color-text-brand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: var(--p-border-radius-200);
+  padding: 0 var(--p-space-200) 0 var(--p-space-300);
+  margin-top: var(--p-space-025);
+  border: none;
+  outline: none;
+
+  svg {
+    fill: var(--p-color-icon);
+  }
+
+  &:hover svg,
+  &:focus svg {
+    fill: var(--p-color-icon);
+  }
+
+  &:not([aria-disabled='true']):hover {
+    background-color: var(--p-color-bg-fill-transparent-hover);
+    color: var(--p-color-text-brand);
+  }
+
+  &:not([aria-disabled='true']):focus {
+    background-color: transparent;
+    color: var(--p-color-text-brand);
+  }
+
+  &:not([aria-disabled='true']):focus-visible {
+    // stylelint-disable-next-line -- generated by polaris-migrator DO NOT COPY
+    @mixin focus-ring base, 0, focused;
+    outline: 0;
+  }
+
+  &:not([aria-disabled='true']):active {
+    background-color: var(--p-color-bg-surface-tertiary);
+    z-index: var(--p-z-index-1);
+  }
+
+  &[aria-disabled='true'] {
+    cursor: default;
+    color: var(--p-color-text-disabled);
+    background: var(--p-color-bg-surface-disabled);
+
+    path {
+      fill: var(--p-color-icon-disabled);
+    }
+  }
+}
+
+.TabsMeasurer {
+  display: flex;
+  gap: 0;
+  padding: 0;
+  visibility: hidden;
+  height: 0;
+}
+
+.NewTab {
+  padding: 0 var(--p-space-200) 0 var(--p-space-100);
+
+  @media (--p-breakpoints-md-up) {
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0;
+  }
+}
+
+.ActionListWrap {
+  display: block;
+}
+
+.Panel {
+  display: block;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.Panel-hidden {
+  display: none;
+}
