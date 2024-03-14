@@ -19,7 +19,7 @@ import {useComponentDidMount} from '../../utilities/use-component-did-mount';
 
 import {ScrollTo} from './components';
 import {ScrollableContext} from './context';
-import styles from './Scrollable.module.scss';
+import styles from './Scrollable.module.css';
 
 const MAX_SCROLL_HINT_DISTANCE = 100;
 const LOW_RES_BUFFER = 2;

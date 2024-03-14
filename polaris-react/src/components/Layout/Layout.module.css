@@ -1,0 +1,95 @@
+.Layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: calc(-1 * var(--p-space-400));
+  margin-left: calc(-1 * var(--p-space-400));
+
+  @media print {
+    body & {
+      font-size: var(--p-font-size-300);
+      line-height: var(--p-font-line-height-400);
+    }
+
+    a,
+    button {
+      color: var(--p-color-text);
+    }
+  }
+}
+
+.Section {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  flex: var(--pg-layout-relative-size) var(--pg-layout-relative-size)
+    var(--pg-layout-width-primary-min);
+  min-width: 51%;
+
+  @media print {
+    flex: 2 2 360px;
+  }
+}
+
+.Section-fullWidth {
+  flex: 1 1 100%;
+}
+
+.Section-oneHalf {
+  // stylelint-disable-next-line -- polaris custom global property
+  flex: 1 1 var(--pg-layout-width-one-half-width-base);
+  min-width: 0;
+}
+
+.Section-oneThird {
+  // stylelint-disable-next-line -- polaris custom global property
+  flex: 1 1 var(--pg-layout-width-one-third-width-base);
+  min-width: 0;
+}
+
+.AnnotatedSection {
+  min-width: 0;
+  flex: 1 1 100%;
+}
+
+.Section,
+.AnnotatedSection {
+  max-width: calc(100% - var(--p-space-400));
+  margin-top: var(--p-space-400);
+  margin-left: var(--p-space-400);
+
+  + .AnnotatedSection {
+    border-top: var(--p-border-width-025) solid var(--p-color-border-secondary);
+    padding-top: var(--p-space-400);
+  }
+}
+
+.AnnotationWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--p-space-400));
+  margin-left: calc(-1 * var(--p-space-400));
+}
+
+.AnnotationContent {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  flex: var(--pg-layout-relative-size) var(--pg-layout-relative-size)
+    var(--pg-layout-width-primary-min);
+}
+
+.Annotation {
+  // stylelint-disable-next-line -- polaris custom global property
+  flex: 1 1 var(--pg-layout-width-secondary-min);
+  padding: var(--p-space-400) var(--p-space-400) 0 0;
+
+  @media (--p-breakpoints-md-up) {
+    padding-bottom: var(--p-space-400);
+  }
+}
+
+.Annotation,
+.AnnotationContent {
+  min-width: 0;
+  max-width: calc(100% - var(--p-space-400));
+  margin-top: var(--p-space-400);
+  margin-left: var(--p-space-400);
+}

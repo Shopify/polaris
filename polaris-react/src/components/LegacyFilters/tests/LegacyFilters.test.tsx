@@ -1,6 +1,6 @@
 import React from 'react';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
+import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Button} from '../../Button';
 import type {ButtonProps} from '../../Button';
@@ -17,7 +17,7 @@ import {LegacyFilters} from '../LegacyFilters';
 import type {LegacyFiltersProps} from '../LegacyFilters';
 import {ConnectedFilterControl, TagsWrapper} from '../components';
 import * as focusUtils from '../../../utilities/focus';
-import styles from '../LegacyFilters.module.scss';
+import styles from '../LegacyFilters.module.css';
 import {Focus} from '../../Focus';
 
 const MockFilter = (props: {id: string}) => <div id={props.id} />;
@@ -49,14 +49,6 @@ const mockProps: LegacyFiltersProps = {
 describe('<LegacyFilters />', () => {
   beforeAll(() => {
     jest.useFakeTimers();
-  });
-
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
-  afterEach(() => {
-    matchMedia.restore();
   });
 
   it('renders WithinFilterContext with a value of true', () => {

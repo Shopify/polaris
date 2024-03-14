@@ -3,7 +3,7 @@ import React from 'react';
 import {classNames} from '../../../../utilities/css';
 import {SearchDismissOverlay} from '../SearchDismissOverlay';
 
-import styles from './Search.module.scss';
+import styles from './Search.module.css';
 
 export interface SearchProps {
   /** Toggles whether or not the search is visible */

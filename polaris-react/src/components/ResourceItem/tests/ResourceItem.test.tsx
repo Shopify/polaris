@@ -1,7 +1,6 @@
 import React from 'react';
 import type {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 import {setMediaWidth} from 'tests/utilities/breakpoints';
 
 import {Avatar} from '../../Avatar';
@@ -13,7 +12,7 @@ import {Thumbnail} from '../../Thumbnail';
 import {UnstyledLink} from '../../UnstyledLink';
 import {ResourceItem} from '../ResourceItem';
 import {ResourceListContext} from '../../../utilities/resource-list';
-import styles from '../ResourceItem.module.scss';
+import styles from '../ResourceItem.module.css';
 
 describe('<ResourceItem />', () => {
   let spy: jest.SpyInstance;
@@ -21,12 +20,10 @@ describe('<ResourceItem />', () => {
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
     spy.mockImplementation(() => {});
-    matchMedia.mock();
   });
 
   afterEach(() => {
     spy.mockRestore();
-    matchMedia.restore();
   });
 
   const mockDefaultContext = {

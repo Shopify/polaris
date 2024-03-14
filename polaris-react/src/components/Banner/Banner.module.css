@@ -1,0 +1,104 @@
+.Banner {
+  background-color: var(--p-color-bg-surface);
+  position: relative;
+  display: flex;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.keyFocused {
+    outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+  }
+}
+
+.withinContentContainer {
+  border-radius: var(--p-border-radius-200);
+
+  + .Banner {
+    margin-top: var(--p-space-200);
+  }
+}
+
+.withinPage {
+  @mixin shadow-bevel var(--p-shadow-200), var(--p-border-radius-0);
+
+  @media (--p-breakpoints-sm-up) {
+    @mixin shadow-bevel var(--p-shadow-200), var(--p-border-radius-300);
+  }
+
+  + .Banner {
+    margin-top: var(--p-space-400);
+  }
+}
+
+.DismissIcon {
+  display: flex;
+}
+
+// stylelint-disable -- Duplicate selectors to bump specificity for button svg color override
+// https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
+
+.text-success-on-bg-fill.text-success-on-bg-fill.text-success-on-bg-fill {
+  svg,
+  path {
+    fill: var(--p-color-text-success-on-bg-fill);
+  }
+}
+
+.text-success.text-success.text-success {
+  svg,
+  path {
+    fill: var(--p-color-text-success);
+  }
+}
+
+.text-warning-on-bg-fill.text-warning-on-bg-fill.text-warning-on-bg-fill {
+  svg,
+  path {
+    fill: var(--p-color-text-warning-on-bg-fill);
+  }
+}
+
+.text-warning.text-warning.text-warning {
+  svg,
+  path {
+    fill: var(--p-color-text-warning);
+  }
+}
+
+.text-critical-on-bg-fill.text-critical-on-bg-fill.text-critical-on-bg-fill {
+  svg,
+  path {
+    fill: var(--p-color-text-critical-on-bg-fill);
+  }
+}
+
+.text-critical.text-critical.text-critical {
+  svg,
+  path {
+    fill: var(--p-color-text-critical);
+  }
+}
+
+.text-info-on-bg-fill.text-info-on-bg-fill.text-info-on-bg-fill {
+  svg,
+  path {
+    fill: var(--p-color-text-info-on-bg-fill);
+  }
+}
+
+.text-info.text-info.text-info {
+  svg,
+  path {
+    fill: var(--p-color-text-info);
+  }
+}
+
+.icon-secondary.icon-secondary.icon-secondary {
+  svg,
+  path {
+    fill: var(--p-color-icon-secondary);
+  }
+}
+// stylelint-enable

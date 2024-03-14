@@ -9,7 +9,7 @@ import {Tag} from '../../Tag';
 import {Spinner as LoadingSpinner} from '../../Spinner';
 import {Resizer, Spinner} from '../components';
 import {TextField} from '../TextField';
-import styles from '../TextField.module.scss';
+import styles from '../TextField.module.css';
 import {Key} from '../../../types';
 
 describe('<TextField />', () => {

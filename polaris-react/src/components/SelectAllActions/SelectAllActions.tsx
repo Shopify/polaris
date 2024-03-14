@@ -9,7 +9,7 @@ import {Text} from '../Text';
 import {InlineStack} from '../InlineStack';
 import {CheckableButton} from '../CheckableButton';
 
-import styles from './SelectAllActions.module.scss';
+import styles from './SelectAllActions.module.css';
 
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 
@@ -37,6 +37,9 @@ export interface SelectAllActionsProps {
   onToggleAll?(): void;
 }
 
+/**
+ * @deprecated Use `BulkActions` instead.
+ */
 export const SelectAllActions = forwardRef(function SelectAllActions(
   {
     label,

@@ -1,5 +1,49 @@
 # Changelog
 
+## 8.8.0
+
+### Minor Changes
+
+- [#11680](https://github.com/Shopify/polaris/pull/11680) [`423ffb755`](https://github.com/Shopify/polaris/commit/423ffb7554fae7dda5fce95004156d1801425a6f) Thanks [@Rusty-UX](https://github.com/Rusty-UX)! - Update metafield icon design
+
+## 8.7.0
+
+### Minor Changes
+
+- [#11682](https://github.com/Shopify/polaris/pull/11682) [`9eebf1a45`](https://github.com/Shopify/polaris/commit/9eebf1a458d20cc59f902b93feda620126e6189d) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Fixes clipping on mobile
+
+* [#11686](https://github.com/Shopify/polaris/pull/11686) [`9b1b74447`](https://github.com/Shopify/polaris/commit/9b1b7444783560ccb2281451c6deec63923ce58b) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Update icons for mobile clipping
+
+- [#11687](https://github.com/Shopify/polaris/pull/11687) [`eeea3b96c`](https://github.com/Shopify/polaris/commit/eeea3b96c2e19dcf0076d16f0182ffb1420694ac) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Minus and Plus icons to big and unbalanced
+
+### Patch Changes
+
+- [#11685](https://github.com/Shopify/polaris/pull/11685) [`ac563025e`](https://github.com/Shopify/polaris/commit/ac563025ef83ff3ce049e0db10e2356341dd4e9e) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Removed REM units from SkeletonIcon
+
+## 8.6.0
+
+### Minor Changes
+
+- [#11642](https://github.com/Shopify/polaris/pull/11642) [`abb3bf0e4`](https://github.com/Shopify/polaris/commit/abb3bf0e4fcecfab87d0888b9c0846fe9ea45f1e) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Adds sun icon to library
+
+* [#11641](https://github.com/Shopify/polaris/pull/11641) [`adf8600ad`](https://github.com/Shopify/polaris/commit/adf8600ad61b33adb903fe995bd79f71e99bb8bb) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added `MoonIcon`
+
+## 8.5.0
+
+### Minor Changes
+
+- [#11639](https://github.com/Shopify/polaris/pull/11639) [`4db32af27`](https://github.com/Shopify/polaris/commit/4db32af27edb547d5c3f6fe1fbd81b1737cc5152) Thanks [@ardakaracizmeli](https://github.com/ardakaracizmeli)! - Added a new icon: ArrowDiagonal
+
+### Patch Changes
+
+- [#11633](https://github.com/Shopify/polaris/pull/11633) [`8a9225306`](https://github.com/Shopify/polaris/commit/8a92253064a2a2e572f58eae71312dc895b5fbf1) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Update mobile icon design
+
+## 8.4.0
+
+### Minor Changes
+
+- [#11609](https://github.com/Shopify/polaris/pull/11609) [`c9e217d9d`](https://github.com/Shopify/polaris/commit/c9e217d9d7e1291ce7b83e51c1e1876718895e93) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated icon set with consistency improvements
+
 ## 8.3.0
 
 ### Minor Changes

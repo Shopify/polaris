@@ -47,7 +47,7 @@ import {
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
-import styles from './DetailsPage.module.scss';
+import styles from './DetailsPage.module.css';
 
 export function DetailsPage() {
   const defaultState = useRef({

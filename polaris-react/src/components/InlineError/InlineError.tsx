@@ -4,7 +4,7 @@ import {AlertCircleIcon} from '@shopify/polaris-icons';
 import {Icon} from '../Icon';
 import type {Error} from '../../types';
 
-import styles from './InlineError.module.scss';
+import styles from './InlineError.module.css';
 
 export interface InlineErrorProps {
   /** Content briefly explaining how to resolve the invalid form field input. */

@@ -4,7 +4,7 @@ import {classNames} from '../../../../utilities/css';
 import {isSameDay} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
 import {monthName} from '../../utilities';
-import styles from '../../DatePicker.module.scss';
+import styles from '../../DatePicker.module.css';
 
 export interface DayProps {
   focused?: boolean;

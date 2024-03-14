@@ -25,8 +25,7 @@ import type {LinkLikeComponent} from '../../utilities/link';
 import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
-import './AppProvider.scss';
-import './global.scss';
+import './global.css';
 
 const MAX_SCROLLBAR_WIDTH = 20;
 const SCROLLBAR_TEST_ELEMENT_PARENT_SIZE = 30;
@@ -113,7 +112,13 @@ export class AppProvider extends Component<AppProviderProps, State> {
           navigator.userAgent.includes('Version/16.2') ||
           navigator.userAgent.includes('Version/16.3'));
 
-      if (isSafari16) {
+      const isMobileApp16 =
+        navigator.userAgent.includes('Shopify Mobile/iOS') &&
+        (navigator.userAgent.includes('OS 16_1') ||
+          navigator.userAgent.includes('OS 16_2') ||
+          navigator.userAgent.includes('OS 16_3'));
+
+      if (isSafari16 || isMobileApp16) {
         document.documentElement.classList.add(
           'Polaris-Safari-16-Font-Optical-Sizing-Patch',
         );

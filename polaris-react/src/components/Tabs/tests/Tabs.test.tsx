@@ -1,6 +1,5 @@
 import React from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Icon} from '../../Icon';
 import {Text} from '../../Text';
@@ -11,7 +10,7 @@ import {Tab, Panel, CreateViewModal, TabMeasurer} from '../components';
 import {Badge} from '../../Badge';
 import {getVisibleAndHiddenTabIndices} from '../utilities';
 import {UnstyledButton} from '../../UnstyledButton';
-import styles from '../Tabs.module.scss';
+import styles from '../Tabs.module.css';
 
 jest.mock('../../Portal', () => ({
   ...(jest.requireActual('../../Portal') as any),
@@ -27,12 +26,10 @@ jest.mock('../../../utilities/breakpoints', () => ({
 
 describe('Tabs', () => {
   beforeEach(() => {
-    matchMedia.mock();
     mockUseBreakpoints(false);
   });
 
   afterEach(() => {
-    matchMedia.restore();
     jest.clearAllMocks();
   });
 

@@ -6,7 +6,7 @@ import {
   variationName,
 } from '../../utilities/css';
 
-import styles from './SkeletonDisplayText.module.scss';
+import styles from './SkeletonDisplayText.module.css';
 
 type Size = 'small' | 'medium' | 'large' | 'extraLarge';
 

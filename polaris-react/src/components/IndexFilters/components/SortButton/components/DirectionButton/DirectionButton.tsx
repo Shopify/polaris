@@ -6,7 +6,7 @@ import {classNames} from '../../../../../../utilities/css';
 import {UnstyledButton} from '../../../../../UnstyledButton';
 import {Icon} from '../../../../../Icon';
 
-import styles from './DirectionButton.module.scss';
+import styles from './DirectionButton.module.css';
 
 type DirectionButtonDirection = 'asc' | 'desc';
 

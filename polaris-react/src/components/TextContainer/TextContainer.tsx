@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames, variationName} from '../../utilities/css';
 
-import styles from './TextContainer.module.scss';
+import styles from './TextContainer.module.css';
 
 type Spacing = 'tight' | 'loose';
 

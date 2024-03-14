@@ -1,0 +1,15 @@
+.Spinner svg {
+  animation: var(--p-motion-keyframes-spin) var(--p-motion-duration-500) linear
+    infinite;
+  fill: var(--p-color-bg-fill-brand);
+}
+
+.sizeSmall svg {
+  height: 20px;
+  width: 20px;
+}
+
+.sizeLarge svg {
+  height: 44px;
+  width: 44px;
+}

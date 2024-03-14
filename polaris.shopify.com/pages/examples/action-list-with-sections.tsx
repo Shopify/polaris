@@ -41,7 +41,7 @@ function SectionedActionListExample() {
               title: 'Bulk actions',
               items: [
                 {content: 'Edit', icon: EditIcon},
-                {content: 'Delete', icon: DeleteIcon},
+                {content: 'Delete', icon: DeleteIcon, destructive: true},
               ],
             },
           ]}

@@ -13,10 +13,6 @@ import {Checkbox as PolarisCheckbox} from '../Checkbox';
 import {EmptySearchResult} from '../EmptySearchResult';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
-import {
-  SelectAllActions,
-  useIsSelectAllActionsSticky,
-} from '../SelectAllActions';
 // eslint-disable-next-line import/no-deprecated
 import {LegacyStack} from '../LegacyStack';
 import {Pagination} from '../Pagination';
@@ -49,7 +45,7 @@ import {useTheme} from '../../utilities/use-theme';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
-import styles from './IndexTable.module.scss';
+import styles from './IndexTable.module.css';
 
 interface IndexTableHeadingBase {
   id?: string;
@@ -217,50 +213,6 @@ function IndexTableBase({
   if (!hasSelected.current && selectedItemsCount !== 0) {
     hasSelected.current = true;
   }
-
-  const {
-    selectAllActionsIntersectionRef,
-    tableMeasurerRef,
-    isSelectAllActionsSticky,
-    selectAllActionsAbsoluteOffset,
-    selectAllActionsMaxWidth,
-    selectAllActionsOffsetLeft,
-    selectAllActionsOffsetBottom,
-    computeTableDimensions,
-    isScrolledPastTop,
-    selectAllActionsPastTopOffset,
-    scrollbarPastTopOffset,
-  } = useIsSelectAllActionsSticky({
-    selectMode,
-    hasPagination: Boolean(pagination),
-    tableType: 'index-table',
-  });
-
-  useEffect(() => {
-    computeTableDimensions();
-  }, [computeTableDimensions, itemCount]);
-
-  useEffect(() => {
-    const callback = (mutationList: MutationRecord[]) => {
-      const hasChildList = mutationList.some(
-        (mutation) => mutation.type === 'childList',
-      );
-      if (hasChildList) {
-        computeTableDimensions();
-      }
-    };
-    const mutationObserver = new MutationObserver(callback);
-
-    if (tableBodyElement.current) {
-      mutationObserver.observe(tableBodyElement.current, {
-        childList: true,
-      });
-
-      return () => {
-        mutationObserver.disconnect();
-      };
-    }
-  }, [computeTableDimensions]);
 
   const tableBodyRef = useCallback(
     (node: Element | null) => {
@@ -509,18 +461,9 @@ function IndexTableBase({
     );
   }, [tableInitialized, resizeTableScrollBar, condensed]);
 
-  const hasBulkActions = Boolean(
-    (promotedBulkActions && promotedBulkActions.length > 0) ||
-      (bulkActions && bulkActions.length > 0),
-  );
-
   const headingsMarkup = headings
     .map(renderHeading)
     .reduce<JSX.Element[]>((acc, heading) => acc.concat(heading), []);
-
-  const bulkActionsSelectable = Boolean(
-    promotedBulkActions.length > 0 || bulkActions.length > 0,
-  );
 
   const stickyColumnHeaderStyle =
     tableHeadingRects.current && tableHeadingRects.current.length > 0
@@ -635,51 +578,9 @@ function IndexTableBase({
     condensed && styles['StickyTable-condensed'],
   );
 
-  const shouldShowBulkActions = bulkActionsSelectable;
-
-  const selectAllActionsClassNames = classNames(
-    styles.SelectAllActionsWrapper,
-    isSelectAllActionsSticky && styles.SelectAllActionsWrapperSticky,
-    !isSelectAllActionsSticky &&
-      !pagination &&
-      styles.SelectAllActionsWrapperAtEnd,
-    selectMode &&
-      !isSelectAllActionsSticky &&
-      !pagination &&
-      styles.SelectAllActionsWrapperAtEndAppear,
-  );
-
   const shouldShowActions = !condensed || selectedItemsCount;
   const promotedActions = shouldShowActions ? promotedBulkActions : [];
   const actions = shouldShowActions ? bulkActions : [];
-
-  const selectAllActionsMarkup =
-    shouldShowActions && !condensed ? (
-      <div
-        className={selectAllActionsClassNames}
-        style={{
-          insetBlockEnd: isSelectAllActionsSticky
-            ? selectAllActionsOffsetBottom
-            : undefined,
-          insetBlockStart: isSelectAllActionsSticky
-            ? undefined
-            : selectAllActionsAbsoluteOffset,
-          width: selectAllActionsMaxWidth,
-          insetInlineStart: isSelectAllActionsSticky
-            ? selectAllActionsOffsetLeft
-            : undefined,
-        }}
-      >
-        <SelectAllActions
-          label={selectAllActionsLabel}
-          selectMode={selectMode}
-          paginatedSelectAllText={paginatedSelectAllText}
-          paginatedSelectAllAction={paginatedSelectAllAction}
-          isSticky={isSelectAllActionsSticky}
-          hasPagination={Boolean(pagination)}
-        />
-      </div>
-    ) : null;
 
   const stickyHeaderMarkup = (
     <div className={stickyTableClassNames} role="presentation">
@@ -698,7 +599,7 @@ function IndexTableBase({
           );
 
           const bulkActionsMarkup =
-            shouldShowBulkActions && !condensed ? (
+            shouldShowActions && !condensed ? (
               <div className={bulkActionsClassName}>
                 <BulkActions
                   selectMode={selectMode}
@@ -712,6 +613,8 @@ function IndexTableBase({
                   onSelectModeToggle={
                     condensed ? handleSelectModeToggle : undefined
                   }
+                  label={selectAllActionsLabel}
+                  buttonSize="micro"
                 />
               </div>
             ) : null;
@@ -752,22 +655,14 @@ function IndexTableBase({
           );
         }}
       </Sticky>
-      {selectAllActionsMarkup}
     </div>
   );
 
   const scrollBarWrapperClassNames = classNames(
     styles.ScrollBarContainer,
     pagination && styles.ScrollBarContainerWithPagination,
-    shouldShowBulkActions && styles.ScrollBarContainerWithSelectAllActions,
-    selectMode &&
-      isSelectAllActionsSticky &&
-      styles.ScrollBarContainerSelectAllActionsSticky,
     condensed && styles.scrollBarContainerCondensed,
     hideScrollContainer && styles.scrollBarContainerHidden,
-    isScrolledPastTop &&
-      (pagination || shouldShowBulkActions) &&
-      styles.ScrollBarContainerScrolledPastTop,
   );
 
   const scrollBarClassNames = classNames(
@@ -780,11 +675,6 @@ function IndexTableBase({
         <div
           className={scrollBarWrapperClassNames}
           ref={scrollContainerElement}
-          style={
-            {
-              '--pc-index-table-scroll-bar-top-offset': `${scrollbarPastTopOffset}px`,
-            } as React.CSSProperties
-          }
         >
           <div
             onScroll={handleScrollBarScroll}
@@ -872,29 +762,8 @@ function IndexTableBase({
       <div className={styles.EmptySearchResultWrapper}>{emptyStateMarkup}</div>
     );
 
-  const tableWrapperClassNames = classNames(
-    styles.IndexTableWrapper,
-    Boolean(selectAllActionsMarkup) &&
-      selectMode &&
-      !pagination &&
-      styles.IndexTableWrapperWithSelectAllActions,
-  );
-
-  const paginationWrapperClassNames = classNames(
-    styles.PaginationWrapper,
-    shouldShowBulkActions && styles.PaginationWrapperWithSelectAllActions,
-    isScrolledPastTop && styles.PaginationWrapperScrolledPastTop,
-  );
-
   const paginationMarkup = pagination ? (
-    <div
-      className={paginationWrapperClassNames}
-      style={
-        {
-          '--pc-index-table-pagination-top-offset': `${selectAllActionsPastTopOffset}px`,
-        } as React.CSSProperties
-      }
-    >
+    <div className={styles.PaginationWrapper}>
       <Pagination type="table" {...pagination} />
     </div>
   ) : null;
@@ -902,13 +771,12 @@ function IndexTableBase({
   return (
     <>
       <div className={styles.IndexTable}>
-        <div className={tableWrapperClassNames} ref={tableMeasurerRef}>
-          {!shouldShowBulkActions && !condensed && loadingMarkup}
+        <div className={styles.IndexTableWrapper}>
+          {!condensed && loadingMarkup}
           {tableContentMarkup}
           {scrollBarMarkup}
           {paginationMarkup}
         </div>
-        <div ref={selectAllActionsIntersectionRef} />
       </div>
     </>
   );
@@ -1252,7 +1120,7 @@ function IndexTableBase({
   }
 
   function getPaginatedSelectAllAction() {
-    if (!selectable || !hasBulkActions || !hasMoreItems) {
+    if (!selectable || !hasMoreItems) {
       return;
     }
 

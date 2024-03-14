@@ -26,6 +26,13 @@ import {
   Thumbnail,
   Badge,
 } from '@shopify/polaris';
+import {
+  AffiliateIcon,
+  DeleteIcon,
+  EditIcon,
+  ExportIcon,
+  ProductIcon,
+} from '@shopify/polaris-icons';
 
 import {IndexTable} from './IndexTable';
 
@@ -914,6 +921,8 @@ export function WithBulkActions() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -1069,6 +1078,7 @@ export function WithSelectionAndNoBulkActions() {
           allResourcesSelected ? 'All' : selectedResources.length
         }
         onSelectionChange={handleSelectionChange}
+        hasMoreItems
         headings={[
           {title: 'Name'},
           {title: 'Location'},
@@ -1154,6 +1164,8 @@ export function WithMultiplePromotedBulkActions() {
           onAction: () => console.log('Todo: implement adding customers'),
         },
         {
+          icon: DeleteIcon,
+          destructive: true,
           content: 'Delete customers',
           onAction: () => console.log('Todo: implement deleting customers'),
         },
@@ -1175,16 +1187,36 @@ export function WithMultiplePromotedBulkActions() {
   ];
   const bulkActions = [
     {
-      content: 'Add tags',
-      onAction: () => console.log('Todo: implement bulk add tags'),
+      title: 'Import',
+      items: [
+        {
+          content: 'Import from PDF',
+          onAction: () => console.log('Todo: implement PDF importing'),
+        },
+        {
+          content: 'Import from CSV',
+          onAction: () => console.log('Todo: implement CSV importing'),
+        },
+      ],
     },
     {
-      content: 'Remove tags',
-      onAction: () => console.log('Todo: implement bulk remove tags'),
-    },
-    {
-      content: 'Delete customers',
-      onAction: () => console.log('Todo: implement bulk delete'),
+      title: 'Customers',
+      items: [
+        {
+          content: 'Add customers',
+          onAction: () => console.log('Todo: implement Adding customers'),
+        },
+        {
+          content: 'Edit customers',
+          onAction: () => console.log('Todo: implement Editing customers'),
+        },
+        {
+          icon: DeleteIcon,
+          destructive: true,
+          content: 'Delete customers',
+          onAction: () => console.log('Todo: implement Deleting customers'),
+        },
+      ],
     },
   ];
 
@@ -1271,28 +1303,78 @@ export function WithBulkActionsAndSelectionAcrossPages() {
 
   const promotedBulkActions = [
     {
-      content: 'Edit customers',
-      onAction: () => console.log('Todo: implement bulk edit'),
-    },
-    {
-      content: 'Delete customers',
-      onAction: () => console.log('Todo: implement bulk delete'),
-    },
-    {
       content: 'Rename customers',
       onAction: () => console.log('Todo: implement bulk rename'),
     },
+    {
+      title: 'Edit customers',
+      actions: [
+        {
+          content: 'Add customers',
+          onAction: () => console.log('Todo: implement adding customers'),
+        },
+        {
+          icon: DeleteIcon,
+          destructive: true,
+          content: 'Delete customers',
+          onAction: () => console.log('Todo: implement deleting customers'),
+        },
+      ],
+    },
+    {
+      title: 'Export',
+      actions: [
+        {
+          content: 'Export as PDF',
+          onAction: () => console.log('Todo: implement PDF exporting'),
+        },
+        {
+          content: 'Export as CSV',
+          onAction: () => console.log('Todo: implement CSV exporting'),
+        },
+      ],
+    },
   ];
   const bulkActions = [
-    {
-      content: 'Add tags',
-      onAction: () => console.log('Todo: implement bulk add tags'),
-    },
     {
       content: 'Remove tags',
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      title: 'Bulk action section',
+      items: [
+        {
+          content: 'Edit data',
+        },
+        {
+          content: 'Manage data',
+        },
+        {
+          icon: DeleteIcon,
+          destructive: true,
+          content: 'Delete data',
+        },
+      ],
+    },
+    {
+      content: 'Edit prices',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit quantities',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit SKUs',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      content: 'Edit barcodes',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
+    {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -2567,6 +2649,8 @@ export function WithAllOfItsElements() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -4225,6 +4309,8 @@ export function SmallScreenWithAllOfItsElements() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -4821,6 +4907,8 @@ export function WithPaginationAndBulkActions() {
           onAction: () => console.log('Todo: implement adding customers'),
         },
         {
+          icon: DeleteIcon,
+          destructive: true,
           content: 'Delete customers',
           onAction: () => console.log('Todo: implement deleting customers'),
         },
@@ -4850,6 +4938,8 @@ export function WithPaginationAndBulkActions() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -6750,6 +6840,8 @@ export function WithLongDataSetSelectable() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -6844,6 +6936,8 @@ export function WithinAModal() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },

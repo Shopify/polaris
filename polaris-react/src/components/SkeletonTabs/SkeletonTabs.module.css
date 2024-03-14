@@ -1,0 +1,58 @@
+.Tabs {
+  display: flex;
+  width: 100%;
+  overflow: auto;
+
+  @media (--p-breakpoints-md-up) {
+    overflow: visible;
+  }
+}
+
+.Tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  // Tab height + padding
+  height: calc(var(--p-height-800) + var(--p-height-400));
+  padding: var(--p-space-200) var(--p-space-300);
+  margin-right: var(--p-space-100);
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @media (--p-breakpoints-md-up) {
+    // Tab height + padding
+    height: calc(var(--p-height-700) + var(--p-height-400));
+  }
+}
+
+.TabText {
+  width: var(--p-width-1600);
+  height: var(--p-space-300);
+  background-color: var(--p-color-bg-fill-tertiary);
+  border-radius: var(--p-border-radius-100);
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: grayText;
+  }
+}
+
+.fitted {
+  flex-wrap: nowrap;
+
+  .Tab {
+    justify-content: flex-start;
+
+    @media (--p-breakpoints-md-up) {
+      flex: 1 1 100%;
+      justify-content: center;
+    }
+  }
+
+  .TabText {
+    @media (--p-breakpoints-md-up) {
+      width: 100%;
+    }
+  }
+}

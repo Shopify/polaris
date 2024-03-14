@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Item} from './components';
-import styles from './Connected.module.scss';
+import styles from './Connected.module.css';
 
 export interface ConnectedProps {
   /** Content to display on the left */

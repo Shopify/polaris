@@ -8,6 +8,7 @@ import {
 import type {ResourceListProps} from '@shopify/polaris';
 import {useState} from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
+import {DeleteIcon} from '@shopify/polaris-icons';
 
 function ResourceListWithBulkActionsExample() {
   const [selectedItems, setSelectedItems] = useState<
@@ -51,6 +52,8 @@ function ResourceListWithBulkActionsExample() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },

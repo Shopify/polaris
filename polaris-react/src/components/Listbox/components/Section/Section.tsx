@@ -5,7 +5,7 @@ import {classNames} from '../../../../utilities/css';
 
 import {listboxSectionDataSelector} from './selectors';
 import {SectionContext} from './context';
-import styles from './Section.module.scss';
+import styles from './Section.module.css';
 
 interface SectionProps {
   divider?: boolean;

@@ -1,0 +1,108 @@
+.Container {
+  position: fixed;
+  z-index: var(--p-z-index-11);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  // Allow passthrough of click events to dismiss modal on backdrop click
+  // Resume pointer-events on .Modal below
+  pointer-events: none;
+
+  @media (--p-breakpoints-md-up) {
+    justify-content: center;
+  }
+}
+
+.Dialog:focus {
+  outline: 0;
+}
+
+.Modal {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-modal-dialog-vertical-spacing: 60px;
+  pointer-events: initial;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  max-height: calc(100vh - var(--pc-modal-dialog-vertical-spacing));
+  background: var(--p-color-bg-surface);
+  box-shadow: var(--p-shadow-600);
+  overflow: hidden;
+
+  @media (forced-colors: active) {
+    border: var(--p-border-width-025) solid transparent;
+  }
+
+  @media (--p-breakpoints-md-down) {
+    bottom: 0;
+    max-height: 100%;
+  }
+
+  @media (--p-breakpoints-md-up) {
+    position: relative;
+    max-width: 620px;
+    margin: 0 auto;
+    border-radius: var(--p-border-radius-400);
+  }
+
+  &.limitHeight {
+    @media (--p-breakpoints-md-up) {
+      // stylelint-disable-next-line -- Can't do a calc in a media query, but this is equivalent to: ((600px + var(--pc-modal-dialog-vertical-spacing)) / 16px) * 1em
+      @media (min-height: 41.25em) {
+        max-height: 600px;
+      }
+    }
+  }
+
+  &.sizeSmall {
+    @media (--p-breakpoints-md-up) {
+      max-width: 380px;
+    }
+  }
+
+  &.sizeLarge {
+    @media (--p-breakpoints-md-up) {
+      max-width: calc(100% - var(--p-space-1600));
+    }
+
+    @media (--p-breakpoints-lg-up) {
+      max-width: 980px;
+    }
+  }
+
+  &.sizeFullScreen {
+    height: 100%;
+    @media (--p-breakpoints-md-up) {
+      height: unset;
+    }
+  }
+}
+
+.animateFadeUp {
+  will-change: transform, opacity;
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform var(--p-motion-ease) var(--p-motion-duration-200),
+    opacity var(--p-motion-ease) var(--p-motion-duration-200);
+
+  &.entering,
+  &.exiting,
+  &.exited {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+
+  &.entered {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

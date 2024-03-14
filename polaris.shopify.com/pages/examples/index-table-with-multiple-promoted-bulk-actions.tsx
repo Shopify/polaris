@@ -6,6 +6,7 @@ import {
   Badge,
   useBreakpoints,
 } from '@shopify/polaris';
+import {DeleteIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -100,6 +101,21 @@ function IndexTableWithMultiplePromotedBulkActionsExample() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      title: 'Import',
+      items: [
+        {
+          content: 'Import from PDF',
+          onAction: () => console.log('Todo: implement PDF importing'),
+        },
+        {
+          content: 'Import from CSV',
+          onAction: () => console.log('Todo: implement CSV importing'),
+        },
+      ],
+    },
+    {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },

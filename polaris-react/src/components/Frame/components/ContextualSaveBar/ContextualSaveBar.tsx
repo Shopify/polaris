@@ -15,7 +15,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
 
 import {DiscardConfirmationModal} from './components';
-import styles from './ContextualSaveBar.module.scss';
+import styles from './ContextualSaveBar.module.css';
 
 export function ContextualSaveBar({
   alignContentFlush,

@@ -1,6 +1,6 @@
 import {Rect} from '../../../utilities/geometry';
 
-export type PreferredPosition = 'above' | 'below' | 'mostSpace';
+export type PreferredPosition = 'above' | 'below' | 'mostSpace' | 'cover';
 
 export type PreferredAlignment = 'left' | 'center' | 'right';
 
@@ -41,8 +41,16 @@ export function calculateVerticalPosition(
   const enoughSpaceFromTopScroll = distanceToTopScroll >= minimumSpaceToScroll;
   const enoughSpaceFromBottomScroll =
     distanceToBottomScroll >= minimumSpaceToScroll;
-  const heightIfBelow = Math.min(spaceBelow, desiredHeight);
   const heightIfAbove = Math.min(spaceAbove, desiredHeight);
+  const heightIfBelow = Math.min(spaceBelow, desiredHeight);
+  const heightIfAboveCover = Math.min(
+    spaceAbove + activatorRect.height,
+    desiredHeight,
+  );
+  const heightIfBelowCover = Math.min(
+    spaceBelow + activatorRect.height,
+    desiredHeight,
+  );
   const containerRectTop = fixed ? 0 : containerRect.top;
 
   const positionIfAbove = {
@@ -55,6 +63,23 @@ export function calculateVerticalPosition(
     height: heightIfBelow - verticalMargins,
     top: activatorBottom + containerRectTop,
     positioning: 'below',
+  };
+
+  const positionIfCoverBelow = {
+    height: heightIfBelowCover - verticalMargins,
+    top: activatorTop - containerRectTop,
+    positioning: 'cover',
+  };
+
+  const positionIfCoverAbove = {
+    height: heightIfAboveCover - verticalMargins,
+    top:
+      activatorTop +
+      containerRectTop -
+      heightIfAbove +
+      activatorRect.height +
+      verticalMargins,
+    positioning: 'cover',
   };
 
   if (preferredPosition === 'above') {
@@ -73,6 +98,16 @@ export function calculateVerticalPosition(
       (spaceBelow > desiredHeight || spaceBelow > spaceAbove)
       ? positionIfBelow
       : positionIfAbove;
+  }
+
+  if (preferredPosition === 'cover') {
+    return (enoughSpaceFromBottomScroll ||
+      (distanceToBottomScroll >= distanceToTopScroll &&
+        !enoughSpaceFromTopScroll)) &&
+      (spaceBelow + activatorRect.height > desiredHeight ||
+        spaceBelow > spaceAbove)
+      ? positionIfCoverBelow
+      : positionIfCoverAbove;
   }
 
   if (enoughSpaceFromTopScroll && enoughSpaceFromBottomScroll) {

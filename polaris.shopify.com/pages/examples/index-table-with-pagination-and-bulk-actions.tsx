@@ -6,6 +6,7 @@ import {
   Box,
   Badge,
 } from '@shopify/polaris';
+import {DeleteIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -89,6 +90,8 @@ export function IndexTableWithPaginationAndBulkActionsExample() {
           onAction: () => console.log('Todo: implement adding customers'),
         },
         {
+          icon: DeleteIcon,
+          destructive: true,
           content: 'Delete customers',
           onAction: () => console.log('Todo: implement deleting customers'),
         },
@@ -118,6 +121,8 @@ export function IndexTableWithPaginationAndBulkActionsExample() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
