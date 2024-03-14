@@ -34,10 +34,10 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
-      - name: Setup Node with v18.12.0
+      - name: Setup Node with version from package.json#engines.node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.0
+          node-version-file: package.json
           cache: yarn
 
       - name: Restore cache
@@ -74,10 +74,10 @@ jobs:
         with:
           fetch-depth: 0 # Chromatic git history to track changes
 
-      - name: Setup Node with v18.12.0
+      - name: Setup Node with version from package.json#engines.node
         uses: actions/setup-node@v3
         with:
-          node-version: 18.12.0
+          node-version-file: package.json
           cache: yarn
 
       - name: Restore cache
