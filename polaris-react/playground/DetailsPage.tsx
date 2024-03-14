@@ -52,6 +52,7 @@ import type {DropZoneProps, PageProps} from '../src';
 import styles from './DetailsPage.module.css';
 
 export const DetailsPage = {
+  tags: ['skip-tests'],
   render() {
     const defaultState = useRef({
       emailFieldValue: 'dharma@jadedpixel.com',

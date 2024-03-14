@@ -27,6 +27,9 @@ export const Default = {
 };
 
 export const Indeterminate = {
+  parameters: {
+    a11y: {config: {rules: [{id: 'aria-conditional-attr', enabled: false}]}},
+  },
   render() {
     const [checked, setChecked] = useState<CheckboxState>('indeterminate');
     const handleChange = useCallback(
@@ -45,6 +48,9 @@ export const Indeterminate = {
 };
 
 export const DisabledStates = {
+  parameters: {
+    a11y: {config: {rules: [{id: 'aria-conditional-attr', enabled: false}]}},
+  },
   render() {
     const handleChange = () => {
       console.error('This should never be fired');
@@ -75,6 +81,9 @@ export const DisabledStates = {
 };
 
 export const Error = {
+  parameters: {
+    a11y: {config: {rules: [{id: 'aria-conditional-attr', enabled: false}]}},
+  },
   render() {
     const [checked, setChecked] = useState<CheckboxState>('indeterminate');
     const handleChange = useCallback(

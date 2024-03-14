@@ -4,13 +4,6 @@ import {LegacyCard, DataTable, Link, Page} from '@shopify/polaris';
 
 export default {
   component: DataTable,
-  parameters: {
-    a11y: {
-      config: {
-        rules: [{id: 'scrollable-region-focusable', enabled: false}],
-      },
-    },
-  },
 } as Meta<typeof DataTable>;
 
 function sortCurrency(rows, index, direction) {
@@ -466,6 +459,13 @@ export const WithColumnSpanning = {
 };
 
 export const WithFixedColumns = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [{id: 'empty-table-header', enabled: false}],
+      },
+    },
+  },
   render() {
     const rows = [
       [

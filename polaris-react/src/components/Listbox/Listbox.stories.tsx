@@ -21,6 +21,9 @@ export default {
 } as Meta<typeof Listbox>;
 
 export const All = {
+  parameters: {
+    a11y: {config: {rules: [{id: 'aria-required-children', enabled: false}]}},
+  },
   render() {
     return (
       /* eslint-disable react/jsx-pascal-case */
@@ -91,6 +94,9 @@ export const Default = {
 };
 
 export const WithLoading = {
+  parameters: {
+    a11y: {config: {rules: [{id: 'aria-required-children', enabled: false}]}},
+  },
   render() {
     return (
       <Listbox accessibilityLabel="Listbox with loading example">

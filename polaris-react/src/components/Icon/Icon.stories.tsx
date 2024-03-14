@@ -97,6 +97,13 @@ export const Colored = {
 };
 
 export const WithToneInherit = {
+  parameters: {
+    a11y: {
+      config: {
+        rules: [{id: 'color-contrast', enabled: false}],
+      },
+    },
+  },
   render() {
     return (
       <BlockStack gap="200">

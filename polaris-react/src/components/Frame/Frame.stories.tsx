@@ -291,6 +291,7 @@ function InAnApplicationComponent({
 
   const modalMarkup = (
     <Modal
+      instant
       open={modalActive}
       onClose={toggleModalActive}
       title="Contact support"
@@ -640,6 +641,7 @@ function WithAnOffsetComponent({
 
   const modalMarkup = (
     <Modal
+      instant
       open={modalActive}
       onClose={toggleModalActive}
       title="Contact support"
@@ -1004,6 +1006,7 @@ function WithSidebarEnabled({
 
   const modalMarkup = (
     <Modal
+      instant
       open={modalActive}
       onClose={toggleModalActive}
       title="Contact support"
