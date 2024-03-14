@@ -190,7 +190,7 @@ export function Tooltip({
         padding={padding}
         borderRadius={borderRadius}
         zIndexOverride={zIndexOverride}
-        instant={open || !shouldAnimate}
+        instant={!shouldAnimate}
       >
         {content}
       </TooltipOverlay>
