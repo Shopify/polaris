@@ -4,7 +4,7 @@ import type {Dispatch, SetStateAction} from 'react';
 import {classNames} from '../../utilities/css';
 import {ScrollLock} from '../ScrollLock';
 
-import styles from './Backdrop.module.scss';
+import styles from './Backdrop.module.css';
 
 export interface BackdropProps {
   belowNavigation?: boolean;

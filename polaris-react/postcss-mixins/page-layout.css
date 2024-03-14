@@ -1,0 +1,12 @@
+@define-mixin page-layout {
+  margin: 0 auto;
+  padding: 0;
+  max-width: calc(
+    var(--pg-layout-width-primary-max) + var(--pg-layout-width-secondary-max) +
+      var(--pg-layout-width-inner-spacing-base)
+  );
+
+  @media (--p-breakpoints-sm-up) {
+    padding: 0 var(--p-space-600);
+  }
+}

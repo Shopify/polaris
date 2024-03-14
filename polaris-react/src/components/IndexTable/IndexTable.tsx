@@ -45,7 +45,7 @@ import {useTheme} from '../../utilities/use-theme';
 
 import {getTableHeadingsBySelector} from './utilities';
 import {ScrollContainer, Cell, Row} from './components';
-import styles from './IndexTable.module.scss';
+import styles from './IndexTable.module.css';
 
 interface IndexTableHeadingBase {
   id?: string;

@@ -10,7 +10,7 @@ import type {BulkActionButtonProps} from '../components';
 import {BulkActions} from '../BulkActions';
 import type {BulkAction, BulkActionsProps} from '../BulkActions';
 import type {getVisibleAndHiddenActionsIndices} from '../utilities';
-import styles from '../BulkActions.module.scss';
+import styles from '../BulkActions.module.css';
 
 jest.mock('../components', () => ({
   ...jest.requireActual('../components'),

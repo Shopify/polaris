@@ -1,0 +1,21 @@
+.Item {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-form-layout-item-min-size: 220px;
+  flex: 1 1 auto;
+
+  &.grouped {
+    // stylelint-disable-next-line -- Polaris component custom properties
+    min-width: var(--pc-form-layout-item-min-size);
+
+    @media (--p-breakpoints-xs-only) {
+      min-width: 100%;
+    }
+  }
+
+  &.condensed {
+    // stylelint-disable-next-line -- Polaris component custom properties
+    flex-basis: calc(0.5 * var(--pc-form-layout-item-min-size));
+    // stylelint-disable-next-line -- Polaris component custom properties
+    min-width: calc(0.5 * var(--pc-form-layout-item-min-size));
+  }
+}

@@ -3,7 +3,7 @@ import React, {memo, useEffect} from 'react';
 import {Spinner} from '../../../Spinner';
 import {useListbox} from '../../../../utilities/listbox';
 
-import styles from './Loading.module.scss';
+import styles from './Loading.module.css';
 
 export interface LoadingProps {
   children?: React.ReactNode;

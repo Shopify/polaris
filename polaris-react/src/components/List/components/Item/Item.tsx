@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../../List.module.scss';
+import styles from '../../List.module.css';
 
 export interface ItemProps {
   /** Content to display inside the item */

@@ -3,7 +3,7 @@ import React from 'react';
 import {classNames, variationName} from '../../utilities/css';
 
 import {Item} from './components';
-import styles from './List.module.scss';
+import styles from './List.module.css';
 
 type Type = 'bullet' | 'number';
 

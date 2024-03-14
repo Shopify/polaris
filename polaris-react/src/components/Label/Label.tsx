@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../utilities/css';
 
-import styles from './Label.module.scss';
+import styles from './Label.module.css';
 
 export interface LabelProps {
   /** Label content */

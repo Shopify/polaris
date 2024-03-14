@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
-import styles from '../../Tabs.module.scss';
+import styles from '../../Tabs.module.css';
 
 export interface PanelProps {
   hidden?: boolean;

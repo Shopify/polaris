@@ -3,7 +3,7 @@ import React from 'react';
 import {Box} from '../../../Box';
 import {classNames} from '../../../../utilities/css';
 
-import styles from './Section.module.scss';
+import styles from './Section.module.css';
 
 export interface SectionProps {
   children?: React.ReactNode;

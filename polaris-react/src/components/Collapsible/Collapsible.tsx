@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect, useCallback} from 'react';
 
 import {classNames} from '../../utilities/css';
 
-import styles from './Collapsible.module.scss';
+import styles from './Collapsible.module.css';
 
 interface Transition {
   /** Assign a transition duration to the collapsible animation. */

@@ -1,0 +1,12 @@
+.InlineGrid {
+  @mixin responsive-props inline-grid, gap, gap;
+  @mixin responsive-props inline-grid, grid-template-columns,
+    grid-template-columns;
+
+  // stylelint-disable -- Polaris component custom properties
+  --pc-inline-grid-align-items: initial;
+  // stylelint-enable
+  display: grid;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  align-items: var(--pc-inline-grid-align-items);
+}

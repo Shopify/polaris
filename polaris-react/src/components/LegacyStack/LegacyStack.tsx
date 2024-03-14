@@ -5,7 +5,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {elementChildren, wrapWithComponent} from '../../utilities/components';
 
 import {Item} from './components';
-import styles from './LegacyStack.module.scss';
+import styles from './LegacyStack.module.css';
 
 type Spacing =
   | 'extraTight'

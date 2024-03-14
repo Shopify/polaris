@@ -7,6 +7,8 @@ module.exports = {
   rules: {
     'no-unknown-animations': null,
     'value-keyword-case': ['lower', {camelCaseSvgKeywords: true}],
+    'at-rule-no-unknown': null,
+    'scss/at-rule-no-unknown': true,
   },
   overrides: [
     {
@@ -15,6 +17,23 @@ module.exports = {
         'comment-empty-line-before': null,
         'declaration-property-value-disallowed-list': null,
         'function-disallowed-list': null,
+      },
+    },
+    {
+      files: ['polaris-react/postcss-mixins/*.css'],
+      rules: {
+        'comment-word-disallowed-list': [
+          /.*/,
+          {
+            message:
+              'Comments in polaris-react/postcss-mixins/*.css cause postcss-mixins to error. To disable lint rules, add them to styleslintrc.js overrides.',
+          },
+        ],
+        'scss/at-rule-no-unknown': null,
+        // Yells at us about at rules. Since it's not configurable (see
+        // https://github.com/Shopify/polaris/pull/11709), we have to disable
+        // the entire rule.
+        'polaris/coverage': null,
       },
     },
   ],

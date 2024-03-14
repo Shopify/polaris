@@ -14,7 +14,7 @@ import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {classNames} from '../../../../utilities/css';
 import type {FilterInterface} from '../../../../types';
 
-import styles from './FilterPill.module.scss';
+import styles from './FilterPill.module.css';
 
 export interface FilterPillProps extends FilterInterface {
   /** A unique identifier for the filter */

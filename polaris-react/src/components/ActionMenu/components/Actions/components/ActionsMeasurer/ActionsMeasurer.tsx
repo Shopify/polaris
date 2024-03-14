@@ -7,7 +7,7 @@ import type {
 import {useI18n} from '../../../../../../utilities/i18n';
 import {SecondaryAction} from '../../../SecondaryAction';
 import {useEventListener} from '../../../../../../utilities/use-event-listener';
-import styles from '../../Actions.module.scss';
+import styles from '../../Actions.module.css';
 
 export interface ActionsMeasurements {
   containerWidth: number;

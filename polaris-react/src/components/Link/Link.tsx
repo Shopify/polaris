@@ -5,7 +5,7 @@ import {classNames} from '../../utilities/css';
 import {UnstyledLink} from '../UnstyledLink';
 import type {Target} from '../../types';
 
-import styles from './Link.module.scss';
+import styles from './Link.module.css';
 
 export interface LinkProps {
   /** ID for the link */

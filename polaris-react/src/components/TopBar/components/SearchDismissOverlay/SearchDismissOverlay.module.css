@@ -1,0 +1,13 @@
+.SearchDismissOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--p-z-index-7);
+  height: 100%;
+}
+
+.visible {
+  background-color: transparent;
+  animation: none;
+}

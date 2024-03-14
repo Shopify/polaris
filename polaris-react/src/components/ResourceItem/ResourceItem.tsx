@@ -25,7 +25,7 @@ import {
 } from '../../utilities/resource-list';
 import type {ResourceListSelectedItems} from '../../utilities/resource-list';
 
-import styles from './ResourceItem.module.scss';
+import styles from './ResourceItem.module.css';
 
 type Alignment = 'leading' | 'trailing' | 'center' | 'fill' | 'baseline';
 

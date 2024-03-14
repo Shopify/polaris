@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../../../utilities/css';
 import {useToggle} from '../../../../utilities/use-toggle';
-import styles from '../../Connected.module.scss';
+import styles from '../../Connected.module.css';
 
 type ItemPosition = 'left' | 'right' | 'primary';
 

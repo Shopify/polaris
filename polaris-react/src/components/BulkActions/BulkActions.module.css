@@ -1,0 +1,101 @@
+.BulkActionsOuterLayout {
+  position: relative;
+  flex: 1;
+  width: 100%;
+}
+
+.BulkActionsSelectAllWrapper {
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+  gap: var(--p-space-200);
+}
+
+.BulkActionsPromotedActionsWrapper {
+  flex: 1;
+}
+
+.BulkActionsLayout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  gap: var(--p-space-100);
+
+  > * {
+    flex: 0 0 auto;
+  }
+}
+
+.BulkActionsLayout--measuring {
+  visibility: hidden;
+  height: 0;
+}
+
+.BulkActionsMeasurerLayout {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1 1 auto;
+  gap: 0;
+  padding: 0;
+  visibility: hidden;
+  height: 0;
+  width: 100%;
+
+  > * {
+    flex: 0 0 auto;
+  }
+}
+
+.BulkActionButton {
+  white-space: nowrap;
+
+  button {
+    display: flex;
+  }
+}
+
+.disabled {
+  // stylelint-disable-next-line -- DO NOT COPY polaris-migrator
+  @mixin base-button-disabled;
+  cursor: default;
+  pointer-events: none;
+}
+
+.PaginatedSelectAll {
+  font-size: var(--p-text-body-sm-font-size);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-text-body-sm-font-line-height);
+}
+
+.AllAction {
+  font-size: var(--p-text-body-sm-font-size);
+  font-weight: var(--p-font-weight-medium);
+  line-height: var(--p-text-body-sm-font-line-height);
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--p-color-text-emphasis);
+  outline: none;
+  // stylelint-disable-next-line -- needed for focus ring
+  @mixin focus-ring;
+
+  &:hover,
+  &:focus {
+    color: var(--p-color-text-emphasis-hover);
+  }
+
+  &:active {
+    color: var(--p-color-text-emphasis-active);
+  }
+
+  &:focus-visible:not(:active) {
+    // stylelint-disable-next-line -- needed for focus ring
+    @mixin focus-ring base, 0, focused;
+  }
+}

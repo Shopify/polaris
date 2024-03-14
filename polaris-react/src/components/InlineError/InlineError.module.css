@@ -1,0 +1,16 @@
+.InlineError {
+  display: flex;
+  color: var(--p-color-text-critical);
+  fill: var(--p-color-text-critical);
+}
+
+.Icon {
+  fill: var(--p-color-text-critical);
+  margin-left: calc(-1 * var(--p-space-100));
+  margin-right: var(--p-space-200);
+
+  svg {
+    margin-left: var(--p-space-050);
+    margin-right: var(--p-space-050);
+  }
+}

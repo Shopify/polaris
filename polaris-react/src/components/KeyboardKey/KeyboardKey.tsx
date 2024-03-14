@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../utilities/css';
 
-import styles from './KeyboardKey.module.scss';
+import styles from './KeyboardKey.module.css';
 
 type Size = 'small';
 

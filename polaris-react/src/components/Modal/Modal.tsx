@@ -15,7 +15,7 @@ import {Portal} from '../Portal';
 
 import {Dialog, Footer, Header, Section} from './components';
 import type {FooterProps} from './components';
-import styles from './Modal.module.scss';
+import styles from './Modal.module.css';
 
 const IFRAME_LOADING_HEIGHT = 200;
 const DEFAULT_IFRAME_CONTENT_HEIGHT = 400;

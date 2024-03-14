@@ -1,0 +1,14 @@
+.Section {
+  flex: 0 0 auto;
+
+  &:not(:last-of-type) {
+    border-bottom: var(--p-border-width-025) solid
+      var(--p-color-border-secondary);
+  }
+}
+
+.titleHidden {
+  padding-right: calc(
+    var(--p-space-1200) + var(--p-space-100) + var(--p-space-100)
+  );
+}

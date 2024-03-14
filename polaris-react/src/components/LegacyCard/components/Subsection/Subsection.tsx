@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../../LegacyCard.module.scss';
+import styles from '../../LegacyCard.module.css';
 
 export interface LegacyCardSubsectionProps {
   children?: React.ReactNode;

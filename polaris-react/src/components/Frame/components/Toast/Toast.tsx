@@ -10,7 +10,7 @@ import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
 
-import styles from './Toast.module.scss';
+import styles from './Toast.module.css';
 
 export type {ToastProps};
 
