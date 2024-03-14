@@ -21,7 +21,7 @@
 }
 
 .PopoverOverlay-noAnimation {
-  transition: none;
+  transition: opacity var(--p-motion-duration-100) var(--p-motion-ease);
 }
 
 .PopoverOverlay-entering {
