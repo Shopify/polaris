@@ -12,6 +12,7 @@
   position: relative;
   display: flex;
   align-items: center;
+
   /* Tab height + padding */
   height: calc(var(--p-height-800) + var(--p-height-400));
   padding: var(--p-space-200) var(--p-space-300);

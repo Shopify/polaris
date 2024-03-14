@@ -8,8 +8,9 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  /* Allow passthrough of click events to dismiss modal on backdrop click */
-  /* Resume pointer-events on .Modal below */
+
+  /* Allow passthrough of click events to dismiss modal on backdrop click
+     Resume pointer-events on .Modal below */
   pointer-events: none;
 
   @media (--p-breakpoints-md-up) {

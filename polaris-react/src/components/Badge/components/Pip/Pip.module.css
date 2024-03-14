@@ -88,9 +88,9 @@
     }
   }
 
-  /* Background colors may be stripped when printing, but box-shadow is not. */
-  /* We don't want to use box-shadow as the screen style as it gives a very */
-  /* slight halo effect */
+  /* Background colors may be stripped when printing, but box-shadow is not.
+     We don't want to use box-shadow as the screen style as it gives a very
+     slight halo effect */
   @media print {
     background: none;
     /* stylelint-disable -- 100px is an arbitrarily large number so that you
@@ -103,9 +103,10 @@
 
 .progressComplete {
   background: currentColor;
-  /* Background colors may be stripped when printing, but box-shadow is not. */
-  /* We don't want to use box-shadow as the screen style as it gives a very */
-  /* slight halo effect */
+
+  /* Background colors may be stripped when printing, but box-shadow is not.
+     We don't want to use box-shadow as the screen style as it gives a very
+     slight halo effect */
   @media print {
     background: none;
     /* stylelint-disable -- 100px is an arbitrarily large number so that you

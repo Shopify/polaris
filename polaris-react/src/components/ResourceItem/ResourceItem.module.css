@@ -41,11 +41,13 @@
   /* stylelint-disable -- Polaris component custom properties */
   z-index: var(--pc-resource-item-content-stacking-order);
   /* stylelint-enable -- Polaris component custom properties */
+
   /* Pass-through the item alignment to the underlaying .CheckboxLabel */
   display: flex;
   align-items: inherit;
-  /* Fill the entire space so the nested <Checkbox fill> can use it all for its */
-  /* hit target. */
+
+  /* Fill the entire space so the nested <Checkbox fill> can use it all for its
+     hit target. */
   height: 100%;
 }
 

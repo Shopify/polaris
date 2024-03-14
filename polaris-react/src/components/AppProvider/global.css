@@ -1,6 +1,7 @@
 @charset "UTF-8";
-/* Looking for media queries? They're imported in the postcss config in */
-/* polaris-react/config/postcss-plugins.js */
+
+/* Looking for media queries? They're imported in the postcss config in
+   polaris-react/config/postcss-plugins.js */
 @import '../../../../node_modules/@shopify/polaris-tokens/dist/css/styles.css';
 
 :root {

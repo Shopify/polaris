@@ -102,8 +102,8 @@
 }
 
 .disabled + .Descriptions {
-  /* the <Text/> component in the HelpText markup in Choice.tsx is set to `undefined` when the disabled prop is true */
-  /* Which tells it to inherit whatever color we specify here. */
+  /* the <Text/> component in the HelpText markup in Choice.tsx is set to `undefined` when the disabled prop is true
+     Which tells it to inherit whatever color we specify here. */
   color: var(--p-color-text-disabled);
 }
 

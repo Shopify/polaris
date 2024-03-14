@@ -209,6 +209,7 @@
     content: attr(data-auto-size-value);
     visibility: hidden;
     white-space: pre-wrap;
+
     /* needed to ensure the textfield doesn't grow in height when the text field content overgrows the available space */
     /* stylelint-disable-next-line -- polaris custom global property */
     max-height: var(--pg-control-height);
@@ -297,8 +298,8 @@
     color: var(--p-color-text-secondary);
   }
 
-  /* These properties are used to remove the default "spinner" controls */
-  /* for number fields, since we add our own, custom versions instead. */
+  /* These properties are used to remove the default "spinner" controls
+     for number fields, since we add our own, custom versions instead. */
   &[type='number'] {
     appearance: textfield;
 
@@ -520,6 +521,7 @@
 
 .SpinnerIcon {
   position: absolute;
+
   /* Safari: prevent highlighting icon */
   user-select: none;
 
@@ -544,8 +546,8 @@
   /* stylelint-disable-next-line -- polaris custom global property */
   padding: var(--pg-control-vertical-padding) var(--p-space-300);
 
-  /* We need the following properties in order to have long, unbroken */
-  /* strings wrap in the same way they do in textareas. */
+  /* We need the following properties in order to have long, unbroken
+     strings wrap in the same way they do in textareas. */
   /* stylelint-disable-next-line -- polaris-migrator DO NOT COPY */
   @mixin text-breakword;
   white-space: pre-wrap;

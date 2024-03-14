@@ -8,9 +8,10 @@
 
   @media (--p-breakpoints-md-up) {
     gap: var(--p-space-600);
-    /* TODO: Where does this 240px come from? Is it meant to be */
-    /* var(--pg-navigation-width)? */
-    /* TODO: Is the 480px meant to be var(--pg-layout-width-primary-min)? */
+
+    /* TODO: Where does this 240px come from? Is it meant to be
+       var(--pg-navigation-width)?
+       TODO: Is the 480px meant to be var(--pg-layout-width-primary-min)? */
     grid-template-columns: minmax(240px, 1fr) minmax(auto, 480px) 1fr;
   }
 
@@ -25,8 +26,9 @@
 
 .Container {
   display: grid;
-  /* TODO: Where does this 480px come from? Is it meant to be */
-  /* var(--pg-layout-width-primary-min)? */
+
+  /* TODO: Where does this 480px come from? Is it meant to be
+     var(--pg-layout-width-primary-min)? */
   grid-template-columns: 1fr minmax(auto, 480px) 1fr;
   align-items: center;
   /* stylelint-disable -- polaris/conventions/polaris/custom-property-allowed-list -- Polaris component custom properties */

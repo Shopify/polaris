@@ -1,7 +1,7 @@
 :root {
-  /* Sass does not allow arbitrary Sass function calls in custom properties. */
-  /* They must be interpolated */
-  /* See https://github.com/sass/libsass/issues/2585 */
+  /* Sass does not allow arbitrary Sass function calls in custom properties.
+     They must be interpolated
+     See https://github.com/sass/libsass/issues/2585 */
   /* stylelint-disable -- Polaris component custom properties */
   --pc-toast-manager-translate-y-out: 150px;
   --pc-toast-manager-translate-y-in: 0;

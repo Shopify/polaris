@@ -16,6 +16,7 @@
   width: auto;
 
   /* Checkable Button has no opinion on its own height, it simply fills its */
+
   /* container */
   min-height: auto;
   min-width: auto;
@@ -54,6 +55,7 @@
   overflow: hidden;
   max-width: 100%;
   text-overflow: ellipsis;
+
   /* padding to fix the bottom of letters being cutoff by overflow: hidden */
   padding: var(--p-space-025) 0;
   /* stylelint-disable-next-line polaris/typography/declaration-property-unit-disallowed-list -- custom label line height */

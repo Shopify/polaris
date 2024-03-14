@@ -15,11 +15,11 @@
   width: 100%;
 }
 
-/* We have both a focused class and a focus pseudo selector here */
-/* because we allow "faked" focus for when the search is still */
-/* active, but is not actually the focused element in the DOM */
-/* (for example, while selecting a value from a filter in the */
-/* search this input controls) */
+/* We have both a focused class and a focus pseudo selector here
+   because we allow "faked" focus for when the search is still
+   active, but is not actually the focused element in the DOM
+   (for example, while selecting a value from a filter in the
+   search this input controls) */
 .focused .Input,
 .Input:focus {
   /* border: none; */

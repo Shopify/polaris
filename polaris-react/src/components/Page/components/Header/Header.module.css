@@ -85,6 +85,7 @@
   align-self: flex-start;
   justify-content: flex-end;
   margin-left: var(--p-space-400);
+
   /* Necessary for flex to realize this container doesn't want to wrap */
   white-space: nowrap;
 

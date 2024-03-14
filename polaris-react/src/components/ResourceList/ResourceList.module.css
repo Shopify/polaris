@@ -54,12 +54,14 @@
   width: 100%;
   background-color: var(--p-color-bg-surface);
   border-radius: var(--p-border-radius-200);
-  /* This container conditionally includes a Select component for sorting */
-  /* It's 32px above md-up and 36px below */
-  /* This hardcoded min-height is to ensure the Select has uniform padding when it's 36px high */
+
+  /* This container conditionally includes a Select component for sorting
+     It's 32px above md-up and 36px below
+     This hardcoded min-height is to ensure the Select has uniform padding when it's 36px high */
   min-height: 52px;
   align-items: center;
   padding: var(--p-space-200) var(--p-space-300);
+
   /* We reduce the min-height here to account for the Select shrinking to 32px at this breakpoint. */
   @media (--p-breakpoints-md-up) {
     min-height: 48px;
@@ -77,8 +79,9 @@
   z-index: var(--pc-resource-list-content-wrapper-stacking-order);
   right: var(--p-space-300);
   left: var(--p-space-300);
-  /* Regardless of the variable height of the content */
-  /* we just want it to be center aligned. */
+
+  /* Regardless of the variable height of the content
+     we just want it to be center aligned. */
   top: 0;
   bottom: 0;
   display: flex;
@@ -212,8 +215,8 @@
 .CheckableButtonWrapper {
   display: none;
 
-  /* Checkable button has no opinion on its height, so we just fill the */
-  /* container */
+  /* Checkable button has no opinion on its height, so we just fill the
+     container */
   height: 100%;
 
   @media (--p-breakpoints-sm-up) {
