@@ -28,7 +28,7 @@ import type {
   SortButtonChoice,
 } from './types';
 import {IndexFiltersMode} from './types';
-import styles from './IndexFilters.module.scss';
+import styles from './IndexFilters.module.css';
 
 const DEFAULT_IGNORED_TAGS = ['INPUT', 'SELECT', 'TEXTAREA'];
 

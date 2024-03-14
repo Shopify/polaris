@@ -34,7 +34,7 @@ import {CheckableButton} from '../CheckableButton';
 import {Pagination} from '../Pagination';
 import type {PaginationProps} from '../Pagination';
 
-import styles from './ResourceList.module.scss';
+import styles from './ResourceList.module.css';
 
 const SMALL_SPINNER_HEIGHT = 28;
 const LARGE_SPINNER_HEIGHT = 45;

@@ -3,7 +3,7 @@ import type {KeyboardEvent} from 'react';
 
 import {Item} from '../Item';
 import type {TabProps} from '../../types';
-import styles from '../../Tabs.module.scss';
+import styles from '../../Tabs.module.css';
 
 export interface ListProps {
   focusIndex: number;

@@ -15,7 +15,7 @@ import {
   windowRect,
 } from './utilities/math';
 import type {PreferredPosition, PreferredAlignment} from './utilities/math';
-import styles from './PositionedOverlay.module.scss';
+import styles from './PositionedOverlay.module.css';
 
 type Positioning = 'above' | 'below' | 'cover';
 

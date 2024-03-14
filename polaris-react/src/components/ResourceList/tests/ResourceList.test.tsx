@@ -13,7 +13,7 @@ import {Pagination} from '../../Pagination';
 import {SELECT_ALL_ITEMS} from '../../../utilities/resource-list';
 import {ResourceList} from '../ResourceList';
 import {UnstyledButton} from '../../UnstyledButton';
-import styles from '../ResourceList.module.scss';
+import styles from '../ResourceList.module.css';
 
 function getResourceItemCheckbox<T extends Root<unknown> | Element<unknown>>(
   wrapper: T,

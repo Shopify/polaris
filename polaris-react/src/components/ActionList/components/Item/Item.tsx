@@ -7,7 +7,7 @@ import {Icon} from '../../../Icon';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {Badge} from '../../../Badge';
 import {Text} from '../../../Text';
-import styles from '../../ActionList.module.scss';
+import styles from '../../ActionList.module.css';
 import {handleMouseUpByBlurring} from '../../../../utilities/focus';
 import {InlineStack} from '../../../InlineStack';
 import {Box} from '../../../Box';

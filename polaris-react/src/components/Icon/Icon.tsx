@@ -5,7 +5,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {useBreakpoints} from '../../utilities/breakpoints';
 import type {IconSource} from '../../types';
 
-import styles from './Icon.module.scss';
+import styles from './Icon.module.css';
 
 type Tone =
   | 'base'

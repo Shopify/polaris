@@ -1,0 +1,66 @@
+.MediaCard {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+
+  &.portrait {
+    flex-flow: column nowrap;
+  }
+
+  @media (--p-breakpoints-md-down) {
+    flex-flow: column nowrap;
+  }
+}
+
+.MediaContainer {
+  overflow: hidden;
+
+  &:not(.portrait) {
+    flex-basis: 40%;
+
+    @media (--p-breakpoints-md-up) {
+      border-top-right-radius: 0;
+      border-top-left-radius: var(--p-border-radius-200);
+      border-bottom-left-radius: var(--p-border-radius-200);
+    }
+
+    &.sizeSmall {
+      flex-basis: 33%;
+    }
+  }
+
+  @media (--p-breakpoints-sm-up) {
+    border-top-left-radius: var(--p-border-radius-200);
+    border-top-right-radius: var(--p-border-radius-200);
+  }
+}
+
+.InfoContainer {
+  position: relative;
+
+  &:not(.portrait) {
+    flex-basis: 60%;
+
+    &.sizeSmall {
+      flex-basis: 67%;
+    }
+  }
+}
+
+.ActionContainer {
+  padding-top: var(--p-space-200);
+
+  &.portrait {
+    padding-top: var(--p-space-200);
+  }
+
+  @media (--p-breakpoints-md-down) {
+    padding-top: var(--p-space-200);
+  }
+}
+
+.Description {
+  font-size: var(--p-font-size-300);
+  line-height: var(--p-font-line-height-400);
+}

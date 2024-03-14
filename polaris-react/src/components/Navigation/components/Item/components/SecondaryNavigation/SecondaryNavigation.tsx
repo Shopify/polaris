@@ -6,7 +6,7 @@ import type {IconProps} from '../../../../../Icon';
 import {Collapsible} from '../../../../../Collapsible';
 import {NavigationContext} from '../../../../context';
 import type {ItemProps, SubNavigationItem} from '../../../../types';
-import styles from '../../../../Navigation.module.scss';
+import styles from '../../../../Navigation.module.css';
 
 export interface SecondaryNavigationProps {
   ItemComponent: React.ComponentType<ItemProps>;

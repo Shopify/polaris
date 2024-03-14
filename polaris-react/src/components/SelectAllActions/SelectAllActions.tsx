@@ -9,7 +9,7 @@ import {Text} from '../Text';
 import {InlineStack} from '../InlineStack';
 import {CheckableButton} from '../CheckableButton';
 
-import styles from './SelectAllActions.module.scss';
+import styles from './SelectAllActions.module.css';
 
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 

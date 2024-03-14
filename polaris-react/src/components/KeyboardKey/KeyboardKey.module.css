@@ -1,0 +1,32 @@
+.KeyboardKey {
+  // stylelint-disable-next-line -- Polaris component custom properties
+  --pc-keyboard-key-base-dimension: 28px;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  height: var(--pc-keyboard-key-base-dimension);
+  display: inline-flex;
+  justify-content: center;
+  margin: 0 var(--p-space-050) var(--p-space-050);
+  margin-bottom: 0;
+  padding: 0 var(--p-space-200);
+  background: var(--p-color-bg-surface-tertiary);
+  border-radius: var(--p-border-radius-100);
+  color: var(--p-color-text-secondary);
+  font-size: var(--p-font-size-350);
+  font-weight: var(--p-font-weight-medium);
+  font-family: var(--p-font-family-sans);
+  // stylelint-disable-next-line -- Polaris component custom properties
+  line-height: var(--pc-keyboard-key-base-dimension);
+  text-align: center;
+  // stylelint-disable-next-line -- Polaris component custom properties
+  min-width: var(--pc-keyboard-key-base-dimension);
+  user-select: none;
+}
+
+.small {
+  box-shadow: none;
+  line-height: var(--p-font-size-400);
+  padding: var(--p-space-050) var(--p-space-100);
+  font-size: var(--p-font-size-300);
+  height: var(--p-space-500);
+  min-width: var(--p-space-500);
+}

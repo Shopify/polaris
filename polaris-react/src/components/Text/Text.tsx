@@ -3,7 +3,7 @@ import type {ReactNode} from 'react';
 
 import {classNames} from '../../utilities/css';
 
-import styles from './Text.module.scss';
+import styles from './Text.module.css';
 
 type Element =
   | 'dt'

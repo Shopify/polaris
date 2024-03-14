@@ -10,7 +10,7 @@ import type {IconProps} from '../../../Icon';
 import {Text} from '../../../Text';
 import {Item} from '../Item';
 import type {ItemProps} from '../../types';
-import styles from '../../Navigation.module.scss';
+import styles from '../../Navigation.module.css';
 import {Tooltip} from '../../../Tooltip';
 import type {TooltipProps} from '../../../Tooltip';
 

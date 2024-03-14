@@ -8,9 +8,9 @@ import {RowContext} from '../../../../utilities/index-table';
 import {useIndexValue} from '../../../../utilities/index-provider';
 import {Checkbox as PolarisCheckbox} from '../../../Checkbox';
 import {setRootProperty} from '../../../../utilities/set-root-property';
-import sharedStyles from '../../IndexTable.module.scss';
+import sharedStyles from '../../IndexTable.module.css';
 
-import styles from './Checkbox.module.scss';
+import styles from './Checkbox.module.css';
 
 interface CheckboxProps {
   accessibilityLabel?: string;

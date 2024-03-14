@@ -1,0 +1,167 @@
+@charset "UTF-8";
+// Looking for media queries? They're imported in the postcss config in
+// polaris-react/config/postcss-plugins.js
+@import '../../../../node_modules/@shopify/polaris-tokens/dist/css/styles.css';
+
+:root {
+  // stylelint-disable -- Polaris component custom properties
+  --polaris-version-number: '{{POLARIS_VERSION}}';
+
+  --pg-navigation-width: 240px;
+  // @TODO simplify media queries so this isn't needed
+  --pg-dangerous-magic-space-4: 16px;
+  --pg-dangerous-magic-space-5: 20px;
+  --pg-dangerous-magic-space-8: 32px;
+
+  --pg-layout-width-primary-min: 480px;
+  --pg-layout-width-primary-max: 662px;
+  --pg-layout-width-secondary-min: 240px;
+  --pg-layout-width-secondary-max: 320px;
+  --pg-layout-width-one-half-width-base: 450px;
+  --pg-layout-width-one-third-width-base: 240px;
+  --pg-layout-width-nav-base: var(--pg-navigation-width);
+  --pg-layout-width-page-content-partially-condensed: 450px;
+  --pg-layout-width-inner-spacing-base: var(--pg-dangerous-magic-space-4);
+  --pg-layout-width-outer-spacing-min: var(--pg-dangerous-magic-space-5);
+  --pg-layout-width-outer-spacing-max: var(--pg-dangerous-magic-space-8);
+  /*
+    We need the result of this calcluation without rem;
+    calc(
+      var(--pg-layout-width-primary-min) / var(--pg-layout-width-secondary-min)
+    );
+
+    Previously scss would drop the rem suffix and resolve this to (480 / 240) = 2
+    In CSS however this resolves to (480rem / 240rem) = 2rem
+  */
+  --pg-layout-relative-size: 2;
+
+  --pg-dismiss-icon-size: 32px;
+
+  --pg-top-bar-height: 56px;
+
+  --pg-mobile-nav-width: calc(
+    100vw - (var(--pg-dismiss-icon-size) + var(--pg-dangerous-magic-space-8))
+  );
+
+  --pg-control-height: 32px;
+  --pg-control-vertical-padding: calc(
+    (36px - var(--p-font-line-height-600) - var(--p-space-050)) / 2
+  );
+  // eslint-enable
+}
+
+html,
+body {
+  font-size: var(--p-font-size-325);
+  line-height: var(--p-font-line-height-500);
+  font-weight: var(--p-font-weight-regular);
+  font-feature-settings: 'calt' 0;
+  letter-spacing: initial;
+  color: var(--p-color-text);
+}
+
+html,
+body,
+button {
+  font-family: var(--p-font-family-sans);
+}
+
+html {
+  position: relative;
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+
+  // This needs to come after -webkit-font-smoothing
+  -moz-osx-font-smoothing: grayscale;
+
+  text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  // Safari scrollbar styles until it adopts scrollbar-color, scrollbar-width
+  &::-webkit-scrollbar {
+    // Matches scrollbar-width: thin
+    width: 11px;
+    background-color: var(--p-color-bg);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--p-color-bg);
+    border: var(--p-border-width-050) solid transparent;
+    border-radius: var(--p-border-radius-300);
+    background-clip: content-box;
+  }
+  scrollbar-width: thin;
+  scrollbar-color: var(--p-color-bg) var(--p-color-bg);
+  transition: scrollbar-color var(--p-motion-duration-100)
+    var(--p-motion-ease-in);
+
+  &:hover {
+    scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) var(--p-color-bg);
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--p-color-scrollbar-thumb-bg-hover);
+    }
+  }
+}
+
+/*
+  To support dynamic type in iOS, we need to set Apple's
+  system font and then define font-families and rem-based
+  font-sizes on descendant elements:
+*/
+@supports (font: -apple-system-body) {
+  @media (--p-breakpoints-sm-down) {
+    html {
+      font: -apple-system-body;
+    }
+  }
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+
+  // hardcoding background color because app provider does not have access to
+  // the --p-color-bg custom property. Will revisit best way to address in
+  // follow-up. PR convo for reference
+  // https://github.com/Shopify/polaris-react/pull/4636/files#r748646268
+  background-color: rgba(241, 242, 244, 1);
+  // Set all nested scroll container scrolltrack backgrounds to transparent
+  scrollbar-color: var(--p-color-scrollbar-thumb-bg-hover) transparent;
+
+  @media print {
+    // AppProvider sets styles on the body. These needs to
+    // be overridden using !important.
+    background-color: transparent !important;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-size: 1em;
+  font-weight: var(--p-font-weight-regular);
+}
+
+button::-moz-focus-inner,
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
+  border-style: none;
+}
+
+html[class~='Polaris-Safari-16-Font-Optical-Sizing-Patch'] {
+  // Inter's "opsz" axis ranges from 14 to 32. This patch optimizes for smaller and less legible text by setting "opsz" 14 for all font sizes.
+  font-variation-settings: 'opsz' 14;
+}

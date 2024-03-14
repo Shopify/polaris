@@ -3,7 +3,7 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Button} from '../../../../Button';
 import {Popover} from '../../../../Popover';
-import styles from '../ConnectedFilterControl.module.scss';
+import styles from '../ConnectedFilterControl.module.css';
 import {ConnectedFilterControl} from '../ConnectedFilterControl';
 import type {ConnectedFilterControlProps} from '../ConnectedFilterControl';
 

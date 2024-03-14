@@ -10,7 +10,7 @@ import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
 import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import type {Range} from '../../../../utilities/index-provider/types';
-import styles from '../../IndexTable.module.scss';
+import styles from '../../IndexTable.module.css';
 
 type RowType = 'data' | 'subheader' | 'child';
 type RowStatus = 'subdued' | 'success' | 'warning' | 'critical';

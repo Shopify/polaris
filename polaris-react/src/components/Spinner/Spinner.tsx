@@ -4,7 +4,7 @@ import {classNames, variationName} from '../../utilities/css';
 import {Text} from '../Text';
 import {useIsAfterInitialMount} from '../../utilities/use-is-after-initial-mount';
 
-import styles from './Spinner.module.scss';
+import styles from './Spinner.module.css';
 
 type Size = 'small' | 'large';
 

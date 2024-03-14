@@ -9,7 +9,7 @@ import {Text} from '../Text';
 import {BlockStack} from '../BlockStack';
 import {InlineStack} from '../InlineStack';
 
-import styles from './EmptyState.module.scss';
+import styles from './EmptyState.module.css';
 
 export interface EmptyStateProps {
   /** The empty state heading */

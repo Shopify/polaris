@@ -3,7 +3,7 @@ import React, {useCallback, useRef} from 'react';
 import {ScrollLock} from '../../../ScrollLock';
 import {classNames} from '../../../../utilities/css';
 
-import styles from './SearchDismissOverlay.module.scss';
+import styles from './SearchDismissOverlay.module.css';
 
 interface Props {
   /** Callback when the search is dismissed */

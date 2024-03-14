@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 
 import {Slidable} from '../Slidable';
 import type {SlidableProps} from '../Slidable';
-import styles from '../../ColorPicker.module.scss';
+import styles from '../../ColorPicker.module.css';
 
 import {calculateDraggerY, hueForDraggerY} from './utilities';
 

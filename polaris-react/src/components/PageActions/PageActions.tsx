@@ -12,7 +12,7 @@ import {buttonsFrom} from '../Button';
 import {isInterface} from '../../utilities/is-interface';
 import {isReactElement} from '../../utilities/is-react-element';
 
-import styles from './PageActions.module.scss';
+import styles from './PageActions.module.css';
 
 export interface PageActionsProps {
   /** The primary action for the page */
