@@ -12,7 +12,7 @@ interface UseCopyToClipboardOptions {
  * Adapted from https://www.benmvp.com/blog/copy-to-clipboard-react-custom-hook
  */
 export function useCopyToClipboard(options: UseCopyToClipboardOptions = {}) {
-  const {defaultValue = '', timeout = 2500} = options;
+  const {defaultValue = '', timeout = 1500} = options;
 
   const [status, setStatus] = React.useState<Status>('inactive');
 
