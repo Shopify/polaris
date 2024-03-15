@@ -8,12 +8,12 @@ on:
   pull_request:
 
 jobs:
-  build:
-    name: 'Validate with Node v${{ matrix.node-version }}'
+  test:
+    name: 'Test with Node v${{ matrix.node-version }}'
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: ['16.17.0', '18.12.0']
+        node-version: ['16.17.0', '18.12.0', '20.11.1']
     steps:
       - name: Checkout branch
         uses: actions/checkout@v3
@@ -52,12 +52,6 @@ jobs:
 
       - name: Build packages
         run: yarn build
-
-      - name: Lint
-        run: yarn lint
-
-      - name: Type check
-        run: yarn type-check
 
       - name: Test
         run: yarn test
