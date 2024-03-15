@@ -18,6 +18,8 @@ import type {FilterInterface} from '../../../../types';
 import styles from './FilterPill.module.css';
 
 export interface FilterPillProps extends FilterInterface {
+  /** The applied value of the filter */
+  value?: string;
   /** Whether the filter is newly applied or updated and hasn't been saved */
   unsavedChanges?: boolean;
   /** A unique identifier for the filter */
@@ -40,6 +42,7 @@ export function FilterPill({
   unsavedChanges = false,
   filterKey,
   label,
+  value,
   filter,
   disabled,
   hideClearButton,
@@ -119,7 +122,15 @@ export function FilterPill({
 
   const labelVariant = mdDown ? 'bodyLg' : 'bodySm';
 
-  const wrappedLabel = (
+  const wrappedLabel = value ? (
+    // eslint-disable-next-line @shopify/jsx-no-hardcoded-content
+    <Text as="span">
+      {`${label}: `}
+      <Text as="span" tone="subdued">
+        {value}
+      </Text>
+    </Text>
+  ) : (
     <div className={styles.Label}>
       <Text variant={labelVariant} as="span">
         {label}

@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useRef} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {FiltersProps} from '@shopify/polaris';
 import {
@@ -29,38 +29,90 @@ export default {
 } as ComponentMeta<typeof Filters>;
 
 export function WithAResourceList() {
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
+  const initialFilterState: {
+    accountStatus: {
+      label: string;
+      value: string[];
+      unsavedChanges: boolean;
+    };
+    moneySpent: {
+      label: string;
+      value: number | [number, number];
+      unsavedChanges: boolean;
+    };
+    taggedWith: {
+      label: string;
+      value: '';
+      unsavedChanges: boolean;
+    };
+  } = {
+    accountStatus: {
+      label: 'Account status',
+      value: ['enabled'],
+      unsavedChanges: false,
+    },
+    moneySpent: {
+      label: 'Money spent',
+      value: [0, 500],
+      unsavedChanges: false,
+    },
+    taggedWith: {
+      label: 'Tagged with',
+      value: '',
+      unsavedChanges: false,
+    },
+  };
 
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
-    [],
-  );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const [queryValue, setQueryValue] = useState('');
+  const savedFilterState: React.RefObject<
+    Map<
+      string,
+      {
+        label: string;
+        value: string | string[] | number | [number, number];
+        unsavedChanges: boolean;
+      }
+    >
+  > = useRef(new Map(Object.entries(initialFilterState)));
+
+  const unsavedFilterState = new Map(savedFilterState.current);
+
+  const handleFilterChange =
+    (key: string) => (value: string | string[] | number | [number, number]) => {
+      unsavedFilterState.set(key, {
+        label: key,
+        value,
+        unsavedChanges: savedFilterState.current?.get(key)?.value !== value,
+      });
+    };
+
+  const handleFilterRemove =
+    (emptyValue: string | string[] | number | [number, number]) =>
+    (key: string) => {
+      unsavedFilterState.set(key, {
+        label: key,
+        value: emptyValue,
+        unsavedChanges:
+          savedFilterState.current?.get(key)?.value !== emptyValue,
+      });
+    };
+
+  const handleAccountStatusChange: (value: string[]) => void =
+    handleFilterChange('accountStatus');
+
+  const handleMoneySpentChange: (value: number | [number, number]) => void =
+    handleFilterChange('moneySpent');
+
+  const handleTaggedWithChange: (value: string) => void =
+    handleFilterChange('taggedWith');
+
+  const handleFiltersQueryChange = (value) => setQueryValue(value);
+
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
   const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove();
-    handleMoneySpentRemove();
-    handleTaggedWithRemove();
+    handleAccountStatusRemove([]);
+    handleMoneySpentRemove([0, 500]);
+    handleTaggedWithRemove('');
     handleQueryValueRemove();
   }, [
     handleAccountStatusRemove,
@@ -68,6 +120,15 @@ export function WithAResourceList() {
     handleQueryValueRemove,
     handleTaggedWithRemove,
   ]);
+
+  const accountStatus = unsavedFilterState.get('accountStatus')
+    ?.value as string[];
+
+  const taggedWith = unsavedFilterState.get('taggedWith')?.value as string;
+
+  const moneySpent = unsavedFilterState.get('moneySpent')?.value as
+    | number
+    | [number, number];
 
   const filters = [
     {
@@ -83,8 +144,8 @@ export function WithAResourceList() {
             {label: 'Invited', value: 'invited'},
             {label: 'Declined', value: 'declined'},
           ]}
-          selected={accountStatus || []}
-          onChange={handleAccountStatusChange}
+          selected={accountStatus}
+          onChange={handleFilterChange('accountStatus')}
           allowMultiple
         />
       ),
@@ -98,7 +159,7 @@ export function WithAResourceList() {
         <TextField
           label="Tagged with"
           value={taggedWith}
-          onChange={handleTaggedWithChange}
+          onChange={handleFilterChange('taggedWith')}
           autoComplete="off"
           labelHidden
         />
@@ -113,41 +174,25 @@ export function WithAResourceList() {
         <RangeSlider
           label="Money spent is between"
           labelHidden
-          value={moneySpent || [0, 500]}
+          value={moneySpent}
           prefix="$"
           output
           min={0}
           max={2000}
           step={1}
-          onChange={handleMoneySpentChange}
+          onChange={handleFilterChange('moneySpent')}
         />
       ),
     },
   ];
 
   const appliedFilters: FiltersProps['appliedFilters'] = [];
-  if (!isEmpty(accountStatus)) {
-    const key = 'accountStatus';
+
+  if (accountStatus.length > 0) {
     appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
+      key: 'accountStatus',
+      label: disambiguateLabel('accountStatus', accountStatus),
       onRemove: handleAccountStatusRemove,
-    });
-  }
-  if (!isEmpty(moneySpent)) {
-    const key = 'moneySpent';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
-      onRemove: handleMoneySpentRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
     });
   }
 
@@ -161,7 +206,7 @@ export function WithAResourceList() {
               queryValue={queryValue}
               queryPlaceholder="Searching in all"
               filters={filters}
-              appliedFilters={appliedFilters}
+              appliedFilters={unsavedFilterState.entries}
               onQueryChange={handleFiltersQueryChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleFiltersClearAll}

@@ -216,6 +216,7 @@ export function FiltersBar({
           initialActive={
             hasMounted.current && !pinnedFilter.pinned && !appliedFilter
           }
+          unsavedChanges={appliedFilter?.unsavedChanges}
           label={appliedFilter?.label || pinnedFilter.label}
           filterKey={filterKey}
           selected={appliedFilterKeys?.includes(filterKey)}
