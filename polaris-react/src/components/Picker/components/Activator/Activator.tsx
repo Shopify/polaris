@@ -6,7 +6,7 @@ import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
 import {UnstyledButton} from '../../../UnstyledButton';
 
-import styles from './Activator.module.scss';
+import styles from './Activator.module.css';
 
 export interface ActivatorProps {
   label: string;

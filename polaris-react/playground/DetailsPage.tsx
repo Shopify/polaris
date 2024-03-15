@@ -44,6 +44,7 @@ import {
   TopBar,
   FooterHelp,
   Link,
+  Picker,
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
@@ -624,6 +625,58 @@ export function DetailsPage() {
               {fileUpload}
             </DropZone>
           </LegacyCard>
+          <LegacyCard sectioned>
+            <FormLayout>
+              <TextField
+                label="Title"
+                value={title}
+                onChange={(title) => {
+                  setTitle(title);
+                  setIsDirty(true);
+                }}
+                autoComplete="off"
+              />
+              <TextField
+                label="Description"
+                value={descriptionValue}
+                onChange={handleChange}
+                autoComplete="off"
+                multiline
+              />
+            </FormLayout>
+          </LegacyCard>
+          <LegacyCard title="Media" sectioned>
+            <DropZone onDrop={handleDropZoneDrop}>
+              {uploadedFiles}
+              {fileUpload}
+            </DropZone>
+          </LegacyCard>
+          <LegacyCard sectioned>
+            <FormLayout>
+              <TextField
+                label="Title"
+                value={title}
+                onChange={(title) => {
+                  setTitle(title);
+                  setIsDirty(true);
+                }}
+                autoComplete="off"
+              />
+              <TextField
+                label="Description"
+                value={descriptionValue}
+                onChange={handleChange}
+                autoComplete="off"
+                multiline
+              />
+            </FormLayout>
+          </LegacyCard>
+          <LegacyCard title="Media" sectioned>
+            <DropZone onDrop={handleDropZoneDrop}>
+              {uploadedFiles}
+              {fileUpload}
+            </DropZone>
+          </LegacyCard>
         </Layout.Section>
         <Layout.Section variant="oneThird">
           <LegacyCard title="Organization">
@@ -640,6 +693,24 @@ export function DetailsPage() {
                 options={options}
                 onChange={setSelected}
                 value={selected}
+              />
+              <br />
+              <Picker
+                activator={{label: 'Vendor'}}
+                options={[
+                  {
+                    value: 'Burberry',
+                    children: 'Burberry',
+                  },
+                  {
+                    value: 'Gucci',
+                    children: 'Gucci',
+                  },
+                  {
+                    value: 'Prada',
+                    children: 'Prada',
+                  },
+                ]}
               />
             </LegacyCard.Section>
             <LegacyCard.Section title="Collections" />

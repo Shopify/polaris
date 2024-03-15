@@ -5,7 +5,7 @@ import type {TextFieldProps} from '../../../TextField';
 import {useComboboxTextField} from '../../../../utilities/combobox';
 import {InlineStack} from '../../../InlineStack';
 
-import styles from './TextField.module.scss';
+import styles from './TextField.module.css';
 
 export function TextField({
   value,
