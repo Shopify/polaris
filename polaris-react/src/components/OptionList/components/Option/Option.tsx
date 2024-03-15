@@ -138,7 +138,14 @@ export function Option({
         blockAlign={verticalAlignToBlockAlign(verticalAlign)}
       >
         {mediaMarkup}
-        {label}
+        <span
+          style={{
+            minWidth:
+              typeof label === 'string' ? `${label.length}ch` : 'initial',
+          }}
+        >
+          {label}
+        </span>
       </InlineStack>
     </button>
   );
