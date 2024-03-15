@@ -36,8 +36,8 @@
   display: flex;
 }
 
-// stylelint-disable -- Duplicate selectors to bump specificity for button svg color override
-// https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
+/* stylelint-disable -- Duplicate selectors to bump specificity for button svg color override */
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector */
 
 .text-success-on-bg-fill.text-success-on-bg-fill.text-success-on-bg-fill {
   svg,
@@ -101,4 +101,4 @@
     fill: var(--p-color-icon-secondary);
   }
 }
-// stylelint-enable
+/* stylelint-enable */

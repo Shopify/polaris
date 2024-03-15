@@ -60,7 +60,7 @@
 }
 
 .disabled {
-  // stylelint-disable-next-line -- DO NOT COPY polaris-migrator
+  /* stylelint-disable-next-line -- DO NOT COPY polaris-migrator */
   @mixin base-button-disabled;
   cursor: default;
   pointer-events: none;
@@ -82,7 +82,7 @@
   cursor: pointer;
   color: var(--p-color-text-emphasis);
   outline: none;
-  // stylelint-disable-next-line -- needed for focus ring
+  /* stylelint-disable-next-line -- needed for focus ring */
   @mixin focus-ring;
 
   &:hover,
@@ -95,7 +95,7 @@
   }
 
   &:focus-visible:not(:active) {
-    // stylelint-disable-next-line -- needed for focus ring
+    /* stylelint-disable-next-line -- needed for focus ring */
     @mixin focus-ring base, 0, focused;
   }
 }
