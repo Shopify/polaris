@@ -21,14 +21,14 @@ import type {
 } from '../../utilities/combobox';
 import {Box} from '../Box';
 import type {TextFieldProps} from '../TextField';
-import type {OptionProps} from '../Listbox';
+import type {ListboxProps, OptionProps} from '../Listbox';
 import {Listbox} from '../Listbox';
 import {Icon} from '../Icon';
 
 import {TextField, Activator} from './components';
 import type {ActivatorProps} from './components';
 
-export interface PickerProps {
+export interface PickerProps extends Omit<ListboxProps, 'children'> {
   /** Configure the button that activates the Picker */
   activator: ActivatorProps;
   /** Textfield that allows filtering of options */
@@ -56,6 +56,7 @@ export function Picker({
   height,
   onScrolledToBottom,
   onClose,
+  ...listboxProps
 }: PickerProps) {
   const [query, setQuery] = useState<string>('');
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[] | null>(
@@ -84,10 +85,10 @@ export function Picker({
   }, []);
 
   const onOptionSelected = useCallback(() => {
-    // if (!allowMultiple) {
-    //   handleClose();
-    //   return;
-    // }
+    if (!allowMultiple) {
+      handleClose();
+      return;
+    }
 
     popoverRef.current?.forceUpdatePosition();
   }, [allowMultiple, handleClose]);
@@ -105,9 +106,9 @@ export function Picker({
   }, [shouldOpen, handleOpen]);
 
   const handleBlur = useCallback(() => {
-    // if (popoverActive) {
-    //   handleClose();
-    // }
+    if (popoverActive) {
+      handleClose();
+    }
   }, [popoverActive, handleClose]);
 
   const textFieldContextValue: ComboboxTextFieldType = useMemo(
@@ -235,9 +236,11 @@ export function Picker({
           >
             <Box paddingBlock="200">
               <Listbox
+                {...listboxProps}
                 onSelect={(selected: string) => {
                   onOptionSelected();
                   handleSelect(selected);
+                  listboxProps.onSelect?.(selected);
                 }}
               >
                 {filteredOptions?.map((option) => (

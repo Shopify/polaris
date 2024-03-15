@@ -57,6 +57,7 @@ export function Playground() {
                 }}
                 activator={{label: 'Product', placeholder: 'Select a product'}}
                 options={options}
+                onSelect={(selected) => console.log(selected)}
               />
             </BlockStack>
           </Card>
