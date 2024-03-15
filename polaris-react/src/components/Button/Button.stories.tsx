@@ -856,6 +856,7 @@ export function CopyToClipboard() {
             content={status === 'copied' ? 'Copied' : 'Copy'}
           >
             <Button
+              accessibilityLabel="Copy email address"
               variant="tertiary"
               onClick={copy}
               icon={status === 'copied' ? CheckIcon : ClipboardIcon}
