@@ -3,7 +3,6 @@ import type {ComponentMeta} from '@storybook/react';
 import type {TextProps} from '@shopify/polaris';
 import {
   useCopyToClipboard,
-  useMouseHover,
   Link,
   Tooltip,
   Button,
