@@ -152,6 +152,13 @@ export function Tooltip({
     };
   }, []);
 
+  useEffect(() => {
+    if (open && hoverDelayTimeout.current) {
+      clearTimeout(hoverDelayTimeout.current);
+      hoverDelayTimeout.current = null;
+    }
+  }, [open]);
+
   const handleOpen = useCallback(() => {
     setShouldAnimate(!presenceList.tooltip && !active);
     onOpen?.();
@@ -161,10 +168,11 @@ export function Tooltip({
   const handleClose = useCallback(() => {
     onClose?.();
     setShouldAnimate(false);
+    if (open) return;
     hoverOutTimeout.current = setTimeout(() => {
       removePresence('tooltip');
     }, HOVER_OUT_TIMEOUT);
-  }, [removePresence, onClose]);
+  }, [open, removePresence, onClose]);
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
