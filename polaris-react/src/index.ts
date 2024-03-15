@@ -187,6 +187,7 @@ export {
   IndexFilters,
   useSetIndexFiltersMode,
   IndexFiltersMode,
+  SortButton as IndexFiltersSortButton,
 } from './components/IndexFilters';
 export type {
   IndexFiltersProps,
