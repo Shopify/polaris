@@ -140,19 +140,11 @@ export function Option({
         {mediaMarkup}
         <span
           style={{
-            fontWeight: 'var(--p-font-weight-semibold)',
             minWidth:
               typeof label === 'string' ? `${label.length}ch` : 'initial',
           }}
         >
-          <span
-            style={{
-              fontWeight:
-                select || active ? 'var(--p-font-weight-semibold)' : 'initial',
-            }}
-          >
-            {label}
-          </span>
+          {label}
         </span>
       </InlineStack>
     </button>
