@@ -1,21 +1,21 @@
-name: Create version packages PR or release
+name: CI
 
 on:
   push:
     branches:
       - main
-
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+      - next
+  pull_request:
 
 jobs:
-  release:
-    name: Release
+  build:
+    name: 'Lint & type check'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repo
+      - name: Checkout branch
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+          fetch-depth: 2
 
       - name: Free up space on GitHub image
         run: |
@@ -30,20 +30,28 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: 'yarn'
+          cache: yarn
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/.eslintcache
+            **/.turbo
+            node_modules/.cache/turbo
+            polaris.shopify.com/.next/cache
+          key: ${{ runner.os }}-lint-v3-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-lint-v3-
 
       - name: Install dependencies
         run: yarn --frozen-lockfile
 
-      - name: Build
-        run: yarn build:release
+      - name: Build packages
+        run: yarn build
 
-      - name: Create release Pull Request or publish to NPM
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          version: yarn version-packages
-          publish: yarn release-packages
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+      - name: Lint
+        run: yarn lint
+
+      - name: Type check
+        run: yarn type-check
