@@ -265,10 +265,10 @@
       border-color: var(--p-color-border);
     }
 
-    // stylelint-disable-next-line selector-max-class -- makes subheader borders not visible
+    /* stylelint-disable-next-line selector-max-class -- makes subheader borders not visible */
     &.TableRow-borderless {
       border: 0;
-      // stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity --  makes subheader borders not visible
+      /* stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity --  makes subheader borders not visible */
       &,
       .TableCell:first-child,
       .TableCell-first,
