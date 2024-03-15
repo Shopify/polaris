@@ -34,19 +34,9 @@
   border-radius: var(--p-border-radius-200);
   box-shadow: var(--pc-button-box-shadow);
   color: var(--pc-button-color);
-
-  font-size: var(--p-font-size-325);
-  font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-500);
-
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-
-  @media (--p-breakpoints-md-up) {
-    font-size: var(--p-font-size-300);
-    line-height: var(--p-font-line-height-400);
-  }
 }
 
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
@@ -166,7 +156,7 @@
   --pc-button-color_active: var(--p-color-text-link-active);
 }
 
-.variantPlain:is(:hover, :active, :focus-visible) {
+.variantPlain:is(:hover, :active, :focus-visible):not(.removeUnderline) {
   text-decoration: underline;
 }
 
@@ -179,9 +169,6 @@
   --pc-button-bg_disabled: transparent;
   margin: calc(-1 * var(--pc-button-padding-block))
     calc(-1 * var(--pc-button-padding-inline));
-  font-size: var(--p-font-size-325);
-  font-weight: var(--p-font-weight-regular);
-  line-height: var(--p-font-line-height-400);
 }
 
 .variantPlain:focus-visible,
@@ -252,8 +239,6 @@
 .sizeLarge {
   --pc-button-padding-block: var(--p-space-150);
   --pc-button-padding-inline: var(--p-space-300);
-  font-size: var(--p-font-size-325);
-  line-height: var(--p-font-line-height-500);
   min-height: var(--p-height-900);
   min-width: var(--p-height-900);
 
