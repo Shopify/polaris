@@ -141,7 +141,8 @@ export function Option({
         <span
           style={{
             fontWeight: 'var(--p-font-weight-semibold)',
-            minWidth: `${String(label).length ?? undefined}ch`,
+            minWidth:
+              typeof label === 'string' ? `${label.length}ch` : 'initial',
           }}
         >
           <span
