@@ -37,6 +37,8 @@ export interface PickerProps extends Omit<ListboxProps, 'children'> {
   allowMultiple?: boolean;
   /** The options to be listed within the picker */
   options?: OptionProps[];
+  /** Used to add a new picker option that isn't listed */
+  addAction?: OptionProps;
   /** Whether or not more options are available to lazy load when the bottom of the listbox reached. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
   willLoadMoreOptions?: boolean;
   /** Height to set on the Popover Pane. */
@@ -47,6 +49,11 @@ export interface PickerProps extends Omit<ListboxProps, 'children'> {
   onClose?(): void;
 }
 
+const filterRegex = (value: string) => new RegExp(value, 'i');
+
+// regex match string exact upper or lower case
+const filterRegexExact = (value: string) => new RegExp(`^${value}$`, 'i');
+
 export function Picker({
   activator,
   allowMultiple,
@@ -54,6 +61,7 @@ export function Picker({
   options = [],
   willLoadMoreOptions,
   height,
+  addAction,
   onScrolledToBottom,
   onClose,
   ...listboxProps
@@ -173,9 +181,8 @@ export function Picker({
         return;
       }
 
-      const filterRegex = new RegExp(value, 'i');
       const resultOptions = options?.filter((option) =>
-        reactChildrenText(option.children)?.match(filterRegex),
+        filterRegex(value).exec(reactChildrenText(option.children)),
       );
       setFilteredOptions(resultOptions ?? []);
     },
@@ -188,6 +195,10 @@ export function Picker({
   const firstSelectedLabel = firstSelectedOption
     ? firstSelectedOption?.toString()
     : activator.placeholder;
+
+  const queryMatchesExistingOption = options.some((option) =>
+    filterRegexExact(query).exec(reactChildrenText(option.children)),
+  );
 
   return (
     <Popover
@@ -250,6 +261,9 @@ export function Picker({
                     {...option}
                   />
                 ))}
+                {addAction && query !== '' && !queryMatchesExistingOption ? (
+                  <Listbox.Action {...addAction} />
+                ) : null}
               </Listbox>
             </Box>
           </ComboboxListboxOptionContext.Provider>
