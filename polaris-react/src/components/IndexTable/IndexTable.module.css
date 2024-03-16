@@ -260,9 +260,6 @@
       font-weight: var(--p-font-weight-medium);
       font-size: var(--p-font-size-300);
       background-color: var(--p-color-bg-surface-secondary);
-      border-top: var(--p-border-width-025) solid var(--p-color-border);
-      border-bottom: var(--p-border-width-025) solid var(--p-color-border);
-      border-color: var(--p-color-border);
     }
 
     /* stylelint-disable-next-line selector-max-class -- makes subheader borders not visible */
