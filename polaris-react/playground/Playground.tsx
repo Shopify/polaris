@@ -1,8 +1,10 @@
 import React from 'react';
+import {PlusCircleIcon} from '@shopify/polaris-icons';
 
 import {BlockStack, Card, Layout, Page, Picker, Text} from '../src';
 
 export function Playground() {
+  const [selected, setSelected] = React.useState('');
   const options = [
     {
       value: '012345678',
@@ -54,12 +56,23 @@ export function Playground() {
                   label: 'Search for a product',
                   placeholder: 'Search for a product',
                   autoComplete: 'off',
+                  onChange: (value) => console.log(value),
                 }}
-                activator={{label: 'Product', placeholder: 'Select a product'}}
+                activator={{
+                  label: 'Product',
+                  placeholder: 'Select a product',
+                }}
                 options={options}
-                onSelect={(selected) => console.log(selected)}
-                addAction={{value: 'add', children: 'Add product'}}
+                onSelect={setSelected}
+                addAction={{
+                  value: 'addy',
+                  children: 'Add product',
+                  icon: PlusCircleIcon,
+                }}
               />
+              <ul>
+                <li>Selected: {selected}</li>
+              </ul>
             </BlockStack>
           </Card>
         </Layout.Section>

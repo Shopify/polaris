@@ -23,3 +23,9 @@
     outline-offset: var(--p-space-025);
   }
 }
+
+.disabled {
+  pointer-events: none;
+  background-color: var(--p-color-bg-surface-disabled);
+  border-color: var(--p-color-border-disabled);
+}

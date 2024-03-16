@@ -23,22 +23,23 @@ import {Box} from '../Box';
 import type {TextFieldProps} from '../TextField';
 import type {ListboxProps, OptionProps} from '../Listbox';
 import {Listbox} from '../Listbox';
+import type {IconProps} from '../Icon';
 import {Icon} from '../Icon';
 
-import {TextField, Activator} from './components';
+import {Activator, TextField} from './components';
 import type {ActivatorProps} from './components';
 
 export interface PickerProps extends Omit<ListboxProps, 'children'> {
   /** Configure the button that activates the Picker */
   activator: ActivatorProps;
-  /** Textfield that allows filtering of options */
-  searchField?: TextFieldProps;
   /** Allows more than one option to be selected */
   allowMultiple?: boolean;
   /** The options to be listed within the picker */
   options?: OptionProps[];
   /** Used to add a new picker option that isn't listed */
-  addAction?: OptionProps;
+  addAction?: OptionProps & {icon?: IconProps['source']};
+  /** Textfield that allows filtering of options */
+  searchField?: TextFieldProps;
   /** Whether or not more options are available to lazy load when the bottom of the listbox reached. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
   willLoadMoreOptions?: boolean;
   /** Height to set on the Popover Pane. */
@@ -49,10 +50,8 @@ export interface PickerProps extends Omit<ListboxProps, 'children'> {
   onClose?(): void;
 }
 
-const filterRegex = (value: string) => new RegExp(value, 'i');
-
-// regex match string exact upper or lower case
-const filterRegexExact = (value: string) => new RegExp(`^${value}$`, 'i');
+const FILTER_REGEX = (value: string) => new RegExp(value, 'i');
+const QUERY_REGEX = (value: string) => new RegExp(`^${value}$`, 'i');
 
 export function Picker({
   activator,
@@ -182,22 +181,22 @@ export function Picker({
       }
 
       const resultOptions = options?.filter((option) =>
-        filterRegex(value).exec(reactChildrenText(option.children)),
+        FILTER_REGEX(value).exec(reactChildrenText(option.children)),
       );
       setFilteredOptions(resultOptions ?? []);
     },
     [options],
   );
 
-  const firstSelectedOption = options.find(
-    (option) => option.value === active,
-  )?.children;
+  const firstSelectedOption = reactChildrenText(
+    options.find((option) => option.value === active)?.children,
+  );
   const firstSelectedLabel = firstSelectedOption
     ? firstSelectedOption?.toString()
     : activator.placeholder;
 
   const queryMatchesExistingOption = options.some((option) =>
-    filterRegexExact(query).exec(reactChildrenText(option.children)),
+    QUERY_REGEX(query).exec(reactChildrenText(option.children)),
   );
 
   return (
@@ -229,11 +228,12 @@ export function Picker({
           >
             <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
               <TextField
-                autoComplete="off"
-                label={searchField.label}
+                {...searchField}
                 value={query}
-                placeholder={searchField.placeholder}
-                onChange={updateText}
+                onChange={(value) => {
+                  updateText(value);
+                  searchField.onChange?.(value, searchField.id ?? '');
+                }}
                 prefix={<Icon source={SearchIcon} />}
                 labelHidden
               />
@@ -262,7 +262,7 @@ export function Picker({
                   />
                 ))}
                 {addAction && query !== '' && !queryMatchesExistingOption ? (
-                  <Listbox.Action {...addAction} />
+                  <Listbox.Action {...addAction} value={query} />
                 ) : null}
               </Listbox>
             </Box>

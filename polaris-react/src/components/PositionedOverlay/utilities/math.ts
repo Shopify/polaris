@@ -20,7 +20,6 @@ export function calculateVerticalPosition(
   fixed: boolean | undefined,
   topBarOffset = 0,
 ) {
-  const log = console.log;
   const activatorTop = activatorRect.top;
   const activatorBottom = activatorTop + activatorRect.height;
   const spaceAbove = activatorRect.top - topBarOffset;
@@ -102,7 +101,6 @@ export function calculateVerticalPosition(
   }
 
   if (preferredPosition === 'cover') {
-    log('is covered');
     return (enoughSpaceFromBottomScroll ||
       (distanceToBottomScroll >= distanceToTopScroll &&
         !enoughSpaceFromTopScroll)) &&
@@ -111,11 +109,11 @@ export function calculateVerticalPosition(
       ? positionIfCoverBelow
       : positionIfCoverAbove;
   }
-  log('is not covered');
+
   if (enoughSpaceFromTopScroll && enoughSpaceFromBottomScroll) {
     return spaceAbove > spaceBelow ? positionIfAbove : positionIfBelow;
   }
-  log('is super not covered');
+
   return distanceToTopScroll > minimumSpaceToScroll
     ? positionIfAbove
     : positionIfBelow;
