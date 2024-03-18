@@ -21,7 +21,7 @@
 }
 
 .toneEmphasis {
-  // stylelint-disable-next-line -- Polaris component custom properties
+  /* stylelint-disable-next-line -- Polaris component custom properties *
   --pc-pip-color: var(--p-color-icon-emphasis);
 }
 

@@ -5,6 +5,7 @@ import {
   Avatar,
   Button,
   LegacyCard,
+  Card,
   ChoiceList,
   DataTable,
   Filters,
@@ -12,7 +13,6 @@ import {
   ResourceList,
   TextField,
   Text,
-  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -29,7 +29,7 @@ export default {
 } as ComponentMeta<typeof Filters>;
 
 export function WithAResourceList() {
-  const initialFilterState: {
+  const emptyFilterState: {
     accountStatus: {
       label: string;
       value: string[];
@@ -73,62 +73,79 @@ export function WithAResourceList() {
         unsavedChanges: boolean;
       }
     >
-  > = useRef(new Map(Object.entries(initialFilterState)));
+  > = useRef(new Map(Object.entries(emptyFilterState)));
 
-  const unsavedFilterState = new Map(savedFilterState.current);
+  const unsavedFilterState: React.RefObject<
+    Map<
+      string,
+      {
+        label: string;
+        value: string | string[] | number | [number, number];
+        unsavedChanges: boolean;
+      }
+    >
+  > = useRef(new Map(savedFilterState.current));
 
   const handleFilterChange =
-    (key: string) => (value: string | string[] | number | [number, number]) => {
-      unsavedFilterState.set(key, {
-        label: key,
-        value,
-        unsavedChanges: savedFilterState.current?.get(key)?.value !== value,
-      });
+    (key: string) => (value: string | string[] | [number, number]) => {
+      const savedFilter = savedFilterState.current?.get(key);
+
+      if (savedFilter?.value !== value) {
+        unsavedFilterState.current?.set(key, {
+          label: savedFilter?.label || '',
+          value,
+          unsavedChanges: true,
+        });
+      }
     };
 
-  const handleFilterRemove =
-    (emptyValue: string | string[] | number | [number, number]) =>
-    (key: string) => {
-      unsavedFilterState.set(key, {
-        label: key,
-        value: emptyValue,
-        unsavedChanges:
-          savedFilterState.current?.get(key)?.value !== emptyValue,
-      });
-    };
+  const handleFilterRemove = (key: string) => {
+    unsavedFilterState.current?.delete(key);
+  };
 
-  const handleAccountStatusChange: (value: string[]) => void =
-    handleFilterChange('accountStatus');
-
-  const handleMoneySpentChange: (value: number | [number, number]) => void =
-    handleFilterChange('moneySpent');
-
-  const handleTaggedWithChange: (value: string) => void =
-    handleFilterChange('taggedWith');
-
-  const handleFiltersQueryChange = (value) => setQueryValue(value);
+  const handleFiltersQueryChange = (value: string) => setQueryValue(value);
 
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove([]);
-    handleMoneySpentRemove([0, 500]);
-    handleTaggedWithRemove('');
+
+  const handleFiltersClearAll = () => {
+    unsavedFilterState.current?.forEach((_value, key) =>
+      unsavedFilterState.current?.set(key, emptyFilterState[key]),
+    );
+
     handleQueryValueRemove();
-  }, [
-    handleAccountStatusRemove,
-    handleMoneySpentRemove,
-    handleQueryValueRemove,
-    handleTaggedWithRemove,
-  ]);
+  };
 
-  const accountStatus = unsavedFilterState.get('accountStatus')
-    ?.value as string[];
+  const paramsToValues = () => {
+    const appliedFilterValues: {
+      accountStatus: string[];
+      taggedWith: string;
+      moneySpent: [number, number];
+    } = {
+      accountStatus: [],
+      taggedWith: '',
+      moneySpent: [0, 500],
+    };
 
-  const taggedWith = unsavedFilterState.get('taggedWith')?.value as string;
+    unsavedFilterState.current?.entries().forEach((key, value) => {
+      if (key === 'accountStatus') {
+        appliedFilterValues[key] = urlSearchParams.getAll('accountStatus');
+      } else if (key === 'taggedWith') {
+        appliedFilterValues[key] = urlSearchParams
+          .getAll('taggedWith')
+          .join(',');
+      } else if (key === 'moneySpent_min') {
+        const min = urlSearchParams.get('moneySpent_min');
+        const max = urlSearchParams.get('moneySpent_max');
+        if (min && max) {
+          appliedFilterValues[key] = [Number(min), Number(max)];
+        }
+      }
+    });
 
-  const moneySpent = unsavedFilterState.get('moneySpent')?.value as
-    | number
-    | [number, number];
+    return appliedFilterValues;
+  };
+
+  const appliedFilterValues = paramsToValues();
 
   const filters = [
     {
@@ -144,7 +161,7 @@ export function WithAResourceList() {
             {label: 'Invited', value: 'invited'},
             {label: 'Declined', value: 'declined'},
           ]}
-          selected={accountStatus}
+          selected={appliedFilterValues.accountStatus}
           onChange={handleFilterChange('accountStatus')}
           allowMultiple
         />
@@ -158,7 +175,7 @@ export function WithAResourceList() {
       filter: (
         <TextField
           label="Tagged with"
-          value={taggedWith}
+          value={appliedFilterValues.taggedWith}
           onChange={handleFilterChange('taggedWith')}
           autoComplete="off"
           labelHidden
@@ -174,7 +191,7 @@ export function WithAResourceList() {
         <RangeSlider
           label="Money spent is between"
           labelHidden
-          value={moneySpent}
+          value={appliedFilterValues.moneySpent}
           prefix="$"
           output
           min={0}
@@ -188,17 +205,20 @@ export function WithAResourceList() {
 
   const appliedFilters: FiltersProps['appliedFilters'] = [];
 
-  if (accountStatus.length > 0) {
-    appliedFilters.push({
-      key: 'accountStatus',
-      label: disambiguateLabel('accountStatus', accountStatus),
-      onRemove: handleAccountStatusRemove,
-    });
+  for (const key in appliedFilterValues) {
+    if (appliedFilterValues[key]) {
+      const value = appliedFilterValues[key];
+      appliedFilters.push({
+        key,
+        label: disambiguateLabel(key, value),
+        onRemove: handleFilterRemove,
+      });
+    }
   }
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card roundedAbove="sm">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -206,7 +226,7 @@ export function WithAResourceList() {
               queryValue={queryValue}
               queryPlaceholder="Searching in all"
               filters={filters}
-              appliedFilters={unsavedFilterState.entries}
+              appliedFilters={appliedFilters}
               onQueryChange={handleFiltersQueryChange}
               onQueryClear={handleQueryValueRemove}
               onClearAll={handleFiltersClearAll}
@@ -246,20 +266,23 @@ export function WithAResourceList() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 
-  function disambiguateLabel(key, value) {
+  function disambiguateLabel(
+    key: string,
+    value: string | string[] | [number, number],
+  ) {
     switch (key) {
       case 'moneySpent':
         return `Money spent is between $${value[0]} and $${value[1]}`;
       case 'taggedWith':
         return `Tagged with ${value}`;
       case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
+        return `Customer ${(value as string[]).join(', ')}`;
       default:
-        return value;
+        return '';
     }
   }
 
