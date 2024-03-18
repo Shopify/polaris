@@ -8,7 +8,7 @@ import {PositionedOverlay} from '../PositionedOverlay';
 import {Box} from '../../Box';
 import * as mathModule from '../utilities/math';
 import * as geometry from '../../../utilities/geometry';
-import styles from '../PositionedOverlay.module.scss';
+import styles from '../PositionedOverlay.module.css';
 
 describe('<PositionedOverlay />', () => {
   const mockRender = jest.fn((overlayDetails: OverlayDetails) => (
