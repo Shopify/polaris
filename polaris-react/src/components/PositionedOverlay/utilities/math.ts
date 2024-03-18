@@ -7,7 +7,8 @@ export type PreferredPosition =
   | 'below'
   | 'mostSpace'
   | 'right'
-  | 'left';
+  | 'left'
+  | 'cover';
 
 export type PreferredAlignment = 'left' | 'center' | 'right';
 
