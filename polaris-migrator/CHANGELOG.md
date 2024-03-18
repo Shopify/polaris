@@ -11,11 +11,11 @@
 
 ### Minor Changes
 
-- [#11596](https://github.com/Shopify/polaris/pull/11596) [`c8fabc011`](https://github.com/Shopify/polaris/commit/c8fabc011f375787acbf13bfa62fc2f47b66bf3d) Thanks [@lgriffee](https://github.com/lgriffee)! - Created migration to replace deprecated `font` custom properties in polaris-react v13.0.0
+- [#11596](https://github.com/Shopify/polaris/pull/11596) [`c8fabc011`](https://github.com/Shopify/polaris/commit/c8fabc011f375787acbf13bfa62fc2f47b66bf3d) Thanks [@lgriffee](https://github.com/lgriffee)! - Created migration to replace deprecated `font` custom properties in polaris-react v14.0.0
 
 ### Patch Changes
 
-- [#11603](https://github.com/Shopify/polaris/pull/11603) [`2c53d6476`](https://github.com/Shopify/polaris/commit/2c53d64762ff545f56787e932e0b0935c45b5fdc) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated migration to replace deprecated `font` custom properties in polaris-react v13.0.0
+- [#11603](https://github.com/Shopify/polaris/pull/11603) [`2c53d6476`](https://github.com/Shopify/polaris/commit/2c53d64762ff545f56787e932e0b0935c45b5fdc) Thanks [@lgriffee](https://github.com/lgriffee)! - Updated migration to replace deprecated `font` custom properties in polaris-react v14.0.0
 
 ## 0.27.4
 
