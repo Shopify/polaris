@@ -17,12 +17,15 @@ import {
 import type {PreferredPosition, PreferredAlignment} from './utilities/math';
 import styles from './PositionedOverlay.module.css';
 
-type Positioning = 'above' | 'below' | 'cover';
+type Positioning = 'above' | 'below' | 'left' | 'right' | 'cover';
 
-interface OverlayDetails {
+export interface OverlayDetails {
+  top?: number;
+  bottom?: number;
   left?: number;
   right?: number;
   desiredHeight: number;
+  desiredWidth?: number;
   positioning: Positioning;
   measuring: boolean;
   activatorRect: Rect;
@@ -49,7 +52,8 @@ interface State {
   activatorRect: Rect;
   left?: number;
   right?: number;
-  top: number;
+  top?: number;
+  bottom?: number;
   height: number;
   width: number | null;
   positioning: Positioning;
@@ -128,7 +132,7 @@ export class PositionedOverlay extends PureComponent<
   }
 
   render() {
-    const {left, right, top, zIndex, width} = this.state;
+    const {left, right, top, bottom, zIndex, width} = this.state;
     const {
       render,
       fixed,
@@ -137,11 +141,20 @@ export class PositionedOverlay extends PureComponent<
       zIndexOverride,
     } = this.props;
 
+    const nextTop = top == null || isNaN(top) ? undefined : top;
+    const nextLeft = left == null || isNaN(left) ? undefined : left;
+    const nextRight = right == null || isNaN(right) ? undefined : right;
+    const nextWidth = width == null || isNaN(width) ? undefined : width;
+    const nextBottom = bottom == null || isNaN(bottom) ? undefined : bottom;
+
     const style = {
-      top: top == null || isNaN(top) ? undefined : top,
-      left: left == null || isNaN(left) ? undefined : left,
-      right: right == null || isNaN(right) ? undefined : right,
-      width: width == null || isNaN(width) ? undefined : width,
+      '--pc-positioned-overlay-top': nextTop ?? 'initial',
+      '--pc-positioned-overlay-bottom': nextBottom ?? 'initial',
+      top: nextTop,
+      bottom: nextBottom,
+      left: nextLeft,
+      right: nextRight,
+      width: nextWidth,
       zIndex: zIndexOverride || zIndex || undefined,
     };
 
@@ -175,19 +188,25 @@ export class PositionedOverlay extends PureComponent<
   private overlayDetails = (): OverlayDetails => {
     const {
       measuring,
+      top,
+      bottom,
       left,
       right,
       positioning,
       height,
+      width,
       activatorRect,
       chevronOffset,
     } = this.state;
 
     return {
       measuring,
+      top,
+      bottom,
       left,
       right,
       desiredHeight: height,
+      desiredWidth: width ?? undefined,
       positioning,
       activatorRect,
       chevronOffset,
@@ -270,10 +289,9 @@ export class PositionedOverlay extends PureComponent<
           : this.firstScrollableContainer;
         const scrollableContainerRect = getRectForNode(scrollableElement);
 
-        const overlayRect =
-          fullWidth || preferredPosition === 'cover'
-            ? new Rect({...currentOverlayRect, width: activatorRect.width})
-            : currentOverlayRect;
+        const overlayRect = fullWidth
+          ? new Rect({...currentOverlayRect, width: activatorRect.width})
+          : currentOverlayRect;
 
         // If `body` is 100% height, it still acts as though it were not constrained to that size. This adjusts for that.
         if (scrollableElement === document.body) {
@@ -294,11 +312,17 @@ export class PositionedOverlay extends PureComponent<
             ? getMarginsForNode(this.overlay.firstElementChild as HTMLElement)
             : {activator: 0, container: 0, horizontal: 0};
 
+        const overlayMinWidth =
+          this.overlay.firstElementChild &&
+          this.overlay.firstChild instanceof HTMLElement
+            ? getMinWidthForNode(this.overlay.firstElementChild as HTMLElement)
+            : 0;
+
         const containerRect = windowRect();
         const zIndexForLayer = getZIndexForLayerFromNode(activator);
         const zIndex =
           zIndexForLayer == null ? zIndexForLayer : zIndexForLayer + 1;
-        const verticalPosition = calculateVerticalPosition(
+        const calculatedVerticalPosition = calculateVerticalPosition(
           activatorRect,
           overlayRect,
           overlayMargins,
@@ -308,35 +332,63 @@ export class PositionedOverlay extends PureComponent<
           fixed,
           topBarOffset,
         );
-        const horizontalPosition = calculateHorizontalPosition(
+
+        const verticalPosition =
+          calculatedVerticalPosition?.top ?? calculatedVerticalPosition?.bottom;
+
+        const positionedHorizontal =
+          preferredPosition === 'left' || preferredPosition === 'right';
+
+        const calculatedHorizontalPosition = calculateHorizontalPosition({
           activatorRect,
           overlayRect,
           containerRect,
           overlayMargins,
           preferredAlignment,
-        );
+          preferredHorizontalPosition: positionedHorizontal
+            ? preferredPosition
+            : undefined,
+          overlayMinWidth,
+        });
+
+        const horizontalPosition =
+          calculatedHorizontalPosition.left ??
+          calculatedHorizontalPosition.right;
 
         const chevronOffset =
           activatorRect.center.x -
           horizontalPosition +
           overlayMargins.horizontal * 2;
 
+        let width = null;
+
+        if (fullWidth) width = overlayRect.width;
+        else if (positionedHorizontal)
+          width = calculatedHorizontalPosition.width;
+
         this.setState(
           {
             measuring: false,
-            activatorRect: getRectForNode(activator),
+            activatorRect,
             left:
-              preferredAlignment !== 'right' ? horizontalPosition : undefined,
+              (preferredAlignment !== 'right' && !positionedHorizontal) ||
+              (positionedHorizontal && calculatedHorizontalPosition.left)
+                ? horizontalPosition
+                : undefined,
             right:
-              preferredAlignment === 'right' ? horizontalPosition : undefined,
-            top: lockPosition ? top : verticalPosition.top,
+              (preferredAlignment === 'right' && !positionedHorizontal) ||
+              (positionedHorizontal && calculatedHorizontalPosition.right)
+                ? horizontalPosition
+                : undefined,
+            top: lockPosition ? top : calculatedVerticalPosition.top,
+            bottom:
+              positionedHorizontal && calculatedVerticalPosition.bottom
+                ? verticalPosition
+                : undefined,
             lockPosition: Boolean(fixed),
-            height: verticalPosition.height || 0,
-            width:
-              fullWidth || preferredPosition === 'cover'
-                ? overlayRect.width
-                : null,
-            positioning: verticalPosition.positioning as Positioning,
+            height: calculatedVerticalPosition.height || 0,
+            width,
+            positioning: calculatedVerticalPosition.positioning as Positioning,
             outsideScrollableContainer:
               onScrollOut != null &&
               rectIsOutsideOfRect(
@@ -364,6 +416,11 @@ function getMarginsForNode(node: HTMLElement) {
     container: parseFloat(nodeStyles.marginBottom || '0'),
     horizontal: parseFloat(nodeStyles.marginLeft || '0'),
   };
+}
+
+function getMinWidthForNode(node: HTMLElement) {
+  const nodeStyles = window.getComputedStyle(node);
+  return parseFloat(nodeStyles.minWidth || '0');
 }
 
 function getZIndexForLayerFromNode(node: HTMLElement) {

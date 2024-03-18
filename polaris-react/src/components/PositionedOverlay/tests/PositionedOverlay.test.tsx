@@ -3,15 +3,46 @@ import {mountWithApp} from 'tests/utilities';
 
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../../EventListener';
+import type {OverlayDetails} from '../PositionedOverlay';
 import {PositionedOverlay} from '../PositionedOverlay';
+import {Box} from '../../Box';
 import * as mathModule from '../utilities/math';
 import * as geometry from '../../../utilities/geometry';
-import styles from '../PositionedOverlay.module.css';
+import styles from '../PositionedOverlay.module.scss';
 
 describe('<PositionedOverlay />', () => {
+  const mockRender = jest.fn((overlayDetails: OverlayDetails) => (
+    <Box
+      width={
+        overlayDetails.desiredWidth
+          ? `${overlayDetails.desiredWidth}`
+          : undefined
+      }
+    >
+      <span>overlay content</span>
+    </Box>
+  ));
+
+  const mockRenderMinWidth = jest.fn((overlayDetails: OverlayDetails) => (
+    <Box
+      width={
+        overlayDetails.desiredWidth
+          ? `${overlayDetails.desiredWidth}`
+          : undefined
+      }
+      minWidth="100px"
+    >
+      <span>overlay content</span>
+    </Box>
+  ));
+
+  const activatorText = document.createTextNode('Activator');
+  const activator = document.createElement('div');
+  activator.appendChild(activatorText);
+
   const mockProps = {
     active: true,
-    activator: document.createElement('div'),
+    activator,
     render: mockRender,
   };
 
@@ -79,55 +110,121 @@ describe('<PositionedOverlay />', () => {
   });
 
   describe('preferredPosition', () => {
-    let calculateVerticalPositionMock: jest.SpyInstance;
+    describe('vertical position', () => {
+      it('positions above if it is the preferredPosition', () => {
+        mountWithApp(
+          <PositionedOverlay {...mockProps} preferredPosition="above" />,
+        );
 
-    beforeEach(() => {
-      calculateVerticalPositionMock = jest.spyOn(
-        mathModule,
-        'calculateVerticalPosition',
-      );
-      calculateVerticalPositionMock.mockReturnValue({
-        height: 0,
-        top: 0,
-        positioning: 'above',
+        expect(mockRender).toHaveBeenCalledWith({
+          measuring: true,
+          top: 0,
+          bottom: undefined,
+          left: undefined,
+          right: undefined,
+          desiredHeight: 0,
+          desiredWidth: undefined,
+          positioning: 'below',
+          activatorRect: {
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+          },
+          chevronOffset: 0,
+        });
+      });
+
+      it('positions below if no preferredPosition is given', () => {
+        mountWithApp(<PositionedOverlay {...mockProps} />);
+
+        expect(mockRender).toHaveBeenCalledWith({
+          measuring: true,
+          top: 0,
+          bottom: undefined,
+          left: undefined,
+          right: undefined,
+          desiredHeight: 0,
+          desiredWidth: undefined,
+          positioning: 'below',
+          activatorRect: {
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+          },
+          chevronOffset: 0,
+        });
       });
     });
 
-    afterEach(() => {
-      calculateVerticalPositionMock.mockRestore();
-    });
+    describe('horizontal position', () => {
+      it('positions left if it is the preferredPosition', () => {
+        const positionedOverlay = mountWithApp(
+          <PositionedOverlay
+            {...mockProps}
+            preferredPosition="left"
+            render={mockRenderMinWidth}
+          />,
+        );
 
-    it('positions above if preferredPosition is given', () => {
-      const spy = jest.fn();
-      mountWithApp(
-        <PositionedOverlay
-          {...mockProps}
-          preferredPosition="above"
-          render={spy}
-        />,
-      );
+        expect(positionedOverlay).toContainReactComponent('div', {
+          style: expect.objectContaining({left: undefined, right: undefined}),
+        });
 
-      expect(spy).toHaveBeenCalledWith({
-        activatorRect: {height: 0, left: 0, top: 0, width: 0},
-        desiredHeight: 0,
-        left: 0,
-        measuring: false,
-        positioning: 'above',
-        chevronOffset: 0,
+        expect(mockRenderMinWidth).toHaveBeenCalledWith({
+          measuring: true,
+          top: 0,
+          bottom: undefined,
+          left: undefined,
+          right: undefined,
+          desiredHeight: 0,
+          desiredWidth: undefined,
+          positioning: 'below',
+          activatorRect: {
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+          },
+          chevronOffset: 0,
+        });
       });
-    });
 
-    it('positions below if no preferredPosition is given', () => {
-      const spy = jest.fn();
-      mountWithApp(<PositionedOverlay {...mockProps} render={spy} />);
+      it('positions right if it is the preferredPosition', () => {
+        const positionedOverlay = mountWithApp(
+          <PositionedOverlay {...mockProps} render={mockRenderMinWidth} />,
+        );
 
-      expect(spy).toHaveBeenCalledWith({
-        activatorRect: {height: 0, left: 0, top: 0, width: 0},
-        desiredHeight: 0,
-        left: undefined,
-        measuring: true,
-        positioning: 'below',
-        chevronOffset: 0,
+        expect(positionedOverlay).toContainReactComponent('div', {
+          style: expect.objectContaining({left: 0, right: undefined}),
+        });
+
+        expect(mockRenderMinWidth).toHaveBeenCalledWith({
+          measuring: true,
+          top: 0,
+          bottom: undefined,
+          left: undefined,
+          right: undefined,
+          desiredHeight: 0,
+          desiredWidth: undefined,
+          positioning: 'below',
+          activatorRect: {
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+            width: 0,
+            height: 0,
+          },
+          chevronOffset: 0,
+        });
       });
     });
   });
@@ -141,7 +238,12 @@ describe('<PositionedOverlay />', () => {
         mathModule,
         'calculateHorizontalPosition',
       );
-      calculateHorizontalPositionMock.mockReturnValue(250);
+
+      calculateHorizontalPositionMock.mockReturnValue({
+        left: 250,
+        width: null,
+      });
+
       getRectForNodeMock = jest.spyOn(geometry, 'getRectForNode');
       getRectForNodeMock.mockReturnValue({
         x: 100,
@@ -351,7 +453,3 @@ describe('<PositionedOverlay />', () => {
     });
   });
 });
-
-function mockRender() {
-  return <span>overlay content</span>;
-}
