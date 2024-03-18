@@ -261,19 +261,6 @@
       font-size: var(--p-font-size-300);
       background-color: var(--p-color-bg-surface-secondary);
     }
-
-    /* stylelint-disable-next-line selector-max-class -- makes subheader borders not visible */
-    &.TableRow-borderless {
-      border: 0;
-      /* stylelint-disable-next-line selector-max-combinators, selector-max-class, selector-max-specificity --  makes subheader borders not visible */
-      &,
-      .TableCell:first-child,
-      .TableCell-first,
-      .TableCell-first + .TableCell,
-      .TableCell:last-child {
-        border: 0;
-      }
-    }
   }
 
   &.TableRow-child {
