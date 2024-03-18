@@ -182,7 +182,67 @@ describe('<Pane />', () => {
       );
 
       const popoverPane = mountWithApp(
+        <Pane height={height} maxHeight={height} minHeight={height}>
+          <Children />
+        </Pane>,
+      );
+
+      expect(popoverPane).toContainReactComponent(Scrollable, {
+        style,
+      });
+    });
+
+    it('sets a height on Scrollable', () => {
+      const height = '100px';
+      const style = {height};
+      const Children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = mountWithApp(
         <Pane height={height}>
+          <Children />
+        </Pane>,
+      );
+
+      expect(popoverPane).toContainReactComponent(Scrollable, {
+        style,
+      });
+    });
+
+    it('sets a maxHeight on Scrollable', () => {
+      const height = '100px';
+      const style = {maxHeight: height};
+      const Children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = mountWithApp(
+        <Pane maxHeight={height}>
+          <Children />
+        </Pane>,
+      );
+
+      expect(popoverPane).toContainReactComponent(Scrollable, {
+        style,
+      });
+    });
+
+    it('sets a minHeight on Scrollable', () => {
+      const height = '100px';
+      const style = {minHeight: height};
+      const Children = () => (
+        <TextContainer>
+          <p>Text</p>
+        </TextContainer>
+      );
+
+      const popoverPane = mountWithApp(
+        <Pane minHeight={height}>
           <Children />
         </Pane>,
       );
