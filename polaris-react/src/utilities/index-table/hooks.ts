@@ -12,6 +12,11 @@ export function useRowSelected() {
   return selected;
 }
 
+export function useRowDisabled() {
+  const {disabled} = useContext(RowContext);
+  return disabled;
+}
+
 export function useContainerScroll() {
   const scrolledContainerRef = useContext(ScrollContext);
   return scrolledContainerRef;

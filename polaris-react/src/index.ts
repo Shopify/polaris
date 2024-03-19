@@ -426,6 +426,7 @@ export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {
   useRowHovered as useIndexTableRowHovered,
   useRowSelected as useIndexTableRowSelected,
+  useRowDisabled as useIndexTableRowDisabled,
   useContainerScroll as useIndexTableContainerScroll,
 } from './utilities/index-table';
 export {
