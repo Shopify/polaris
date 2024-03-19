@@ -2,4 +2,4 @@
 '@shopify/polaris': minor
 ---
 
-Add useIndexTableRowDisabled hook
+Added the `useIndexTableRowDisabled` hook
