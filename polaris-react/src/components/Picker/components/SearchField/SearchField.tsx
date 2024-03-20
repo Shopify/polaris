@@ -21,6 +21,7 @@ export function SearchField({
   focused,
   autoFocus,
 }: TextFieldProps) {
+  const inputRef = React.useRef<HTMLInputElement>(null);
   const comboboxTextFieldContext = useComboboxTextField();
 
   const {
@@ -71,6 +72,13 @@ export function SearchField({
     [onChange, onTextFieldChange],
   );
 
+  if (
+    (focused ?? autoFocus) &&
+    inputRef.current &&
+    document.activeElement !== inputRef.current
+  )
+    inputRef.current.focus();
+
   return (
     <>
       <Label id={textFieldId} hidden={labelHidden}>
@@ -79,6 +87,7 @@ export function SearchField({
       <InlineStack gap="100" blockAlign="center">
         <span>{prefix}</span>
         <input
+          ref={inputRef}
           className={styles.SearchField}
           value={value}
           id={textFieldId}
@@ -92,7 +101,6 @@ export function SearchField({
           aria-controls={listboxId}
           onFocus={handleFocus}
           onBlur={handleBlur}
-          autoFocus={focused ?? autoFocus}
           onChange={({target}) => handleChange(target.value, textFieldId)}
         />
       </InlineStack>

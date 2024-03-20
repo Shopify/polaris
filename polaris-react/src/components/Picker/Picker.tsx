@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useCallback,
-  useMemo,
-  isValidElement,
-  useEffect,
-} from 'react';
+import React, {useState, useCallback, useMemo, isValidElement} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
 import {Popover} from '../Popover';
@@ -75,10 +69,6 @@ export function Picker({
   const [listboxId, setListboxId] = useState<string>();
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
   const shouldOpen = !popoverActive;
-
-  useEffect(() => {
-    setFilteredOptions(options);
-  }, [options]);
 
   const handleClose = useCallback(() => {
     setPopoverActive(false);
@@ -223,7 +213,7 @@ export function Picker({
                 }}
                 prefix={<Icon source={SearchIcon} />}
                 labelHidden
-                autoFocus
+                focused
               />
             </ComboboxTextFieldContext.Provider>
           </Box>
