@@ -44,7 +44,7 @@ import {
   TopBar,
   FooterHelp,
   Link,
-  Picker,
+  AlphaPicker,
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
@@ -695,20 +695,20 @@ export function DetailsPage() {
                 value={selected}
               />
               <br />
-              <Picker
-                activator={{label: 'Vendor'}}
+              <AlphaPicker
+                searchField={{
+                  label: 'Search vendors',
+                  placeholder: 'Search vendors',
+                  autoComplete: 'off',
+                }}
+                activator={{
+                  label: 'Tags',
+                  placeholder: 'Search tags',
+                }}
                 options={[
                   {
                     value: 'Burberry',
                     children: 'Burberry',
-                  },
-                  {
-                    value: 'Gucci',
-                    children: 'Gucci',
-                  },
-                  {
-                    value: 'Prada',
-                    children: 'Prada',
                   },
                 ]}
               />

@@ -26,7 +26,7 @@ import {Listbox} from '../Listbox';
 import type {IconProps} from '../Icon';
 import {Icon} from '../Icon';
 
-import {Activator, TextField} from './components';
+import {Activator, SearchField} from './components';
 import type {ActivatorProps} from './components';
 
 export interface PickerProps extends Omit<ListboxProps, 'children'> {
@@ -71,7 +71,7 @@ export function Picker({
   );
   const [popoverActive, setPopoverActive] = useState(false);
   const [activeOptionId, setActiveOptionId] = useState<string>();
-  const [active, setActive] = useState<string>();
+  const [activeItem, setActiveItem] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
@@ -88,7 +88,7 @@ export function Picker({
   }, []);
 
   const handleSelect = useCallback((selected: string) => {
-    setActive(selected);
+    setActiveItem(selected);
   }, []);
 
   const onOptionSelected = useCallback(() => {
@@ -189,7 +189,7 @@ export function Picker({
   );
 
   const firstSelectedOption = reactChildrenText(
-    options.find((option) => option.value === active)?.children,
+    options.find((option) => option.value === activeItem)?.children,
   );
   const firstSelectedLabel = firstSelectedOption
     ? firstSelectedOption?.toString()
@@ -227,7 +227,7 @@ export function Picker({
             borderColor="border"
           >
             <ComboboxTextFieldContext.Provider value={textFieldContextValue}>
-              <TextField
+              <SearchField
                 {...searchField}
                 value={query}
                 onChange={(value) => {
@@ -236,6 +236,8 @@ export function Picker({
                 }}
                 prefix={<Icon source={SearchIcon} />}
                 labelHidden
+                focused
+                autoFocus
               />
             </ComboboxTextFieldContext.Provider>
           </Box>
@@ -257,7 +259,7 @@ export function Picker({
                 {filteredOptions?.map((option) => (
                   <Listbox.Option
                     key={option.value}
-                    selected={option.value === active}
+                    selected={option.value === activeItem}
                     {...option}
                   />
                 ))}
@@ -280,5 +282,3 @@ const reactChildrenText = (children: React.ReactNode): string => {
     ? reactChildrenText(children?.props?.children)
     : '';
 };
-
-Picker.TextField = TextField;

@@ -25,6 +25,7 @@ export function Activator({
   return (
     <UnstyledButton
       className={classNames(styles.Activator, disabled && styles.disabled)}
+      disabled={disabled}
       onClick={onClick}
     >
       <BlockStack as="span" gap="100">

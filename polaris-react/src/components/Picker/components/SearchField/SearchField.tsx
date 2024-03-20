@@ -1,13 +1,13 @@
-import React, {useMemo, useId, useCallback, useEffect, useRef} from 'react';
+import React, {useMemo, useId, useCallback, useEffect} from 'react';
 
 import {Label, labelID} from '../../../Label';
 import type {TextFieldProps} from '../../../TextField';
 import {useComboboxTextField} from '../../../../utilities/combobox';
 import {InlineStack} from '../../../InlineStack';
 
-import styles from './TextField.module.css';
+import styles from './SearchField.module.css';
 
-export function TextField({
+export function SearchField({
   value,
   id: idProp,
   type = 'text',
@@ -18,8 +18,9 @@ export function TextField({
   labelHidden,
   prefix,
   placeholder,
+  focused,
+  autoFocus,
 }: TextFieldProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
   const comboboxTextFieldContext = useComboboxTextField();
 
   const {
@@ -70,8 +71,6 @@ export function TextField({
     [onChange, onTextFieldChange],
   );
 
-  if (inputRef.current) inputRef.current.focus();
-
   return (
     <>
       <Label id={textFieldId} hidden={labelHidden}>
@@ -80,8 +79,7 @@ export function TextField({
       <InlineStack gap="100" blockAlign="center">
         <span>{prefix}</span>
         <input
-          className={styles.TextField}
-          ref={inputRef}
+          className={styles.SearchField}
           value={value}
           id={textFieldId}
           type={type}
@@ -94,6 +92,7 @@ export function TextField({
           aria-controls={listboxId}
           onFocus={handleFocus}
           onBlur={handleBlur}
+          autoFocus={focused ?? autoFocus}
           onChange={({target}) => handleChange(target.value, textFieldId)}
         />
       </InlineStack>
