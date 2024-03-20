@@ -55,6 +55,10 @@ export function DetailsPage() {
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
   });
+  const [query, setQuery] = useState('');
+  const [vendors, setVendors] = useState([
+    {value: 'Burberry', children: 'Burberry'},
+  ]);
   const skipToContentRef = useRef<HTMLAnchorElement>(null);
   const [toastActive, setToastActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +70,7 @@ export function DetailsPage() {
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('products');
   const initialDescription =
-    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
+    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs. The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evasdfasdfident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
   const [previewValue, setPreviewValue] = useState(initialDescription);
   const [nameFieldValue, setNameFieldValue] = useState(
     defaultState.current.nameFieldValue,
@@ -79,6 +83,16 @@ export function DetailsPage() {
   );
   const [supportSubject, setSupportSubject] = useState('');
   const [supportMessage, setSupportMessage] = useState('');
+
+  const handleSelect = (selected: string) => {
+    setQuery('');
+    if (vendors.some((vendor) => vendor.children === selected)) return;
+
+    setVendors((vendors) => [
+      ...vendors,
+      {value: selected, children: selected},
+    ]);
+  };
 
   const handleDiscard = useCallback(() => {
     setEmailFieldValue(defaultState.current.emailFieldValue);
@@ -625,58 +639,6 @@ export function DetailsPage() {
               {fileUpload}
             </DropZone>
           </LegacyCard>
-          <LegacyCard sectioned>
-            <FormLayout>
-              <TextField
-                label="Title"
-                value={title}
-                onChange={(title) => {
-                  setTitle(title);
-                  setIsDirty(true);
-                }}
-                autoComplete="off"
-              />
-              <TextField
-                label="Description"
-                value={descriptionValue}
-                onChange={handleChange}
-                autoComplete="off"
-                multiline
-              />
-            </FormLayout>
-          </LegacyCard>
-          <LegacyCard title="Media" sectioned>
-            <DropZone onDrop={handleDropZoneDrop}>
-              {uploadedFiles}
-              {fileUpload}
-            </DropZone>
-          </LegacyCard>
-          <LegacyCard sectioned>
-            <FormLayout>
-              <TextField
-                label="Title"
-                value={title}
-                onChange={(title) => {
-                  setTitle(title);
-                  setIsDirty(true);
-                }}
-                autoComplete="off"
-              />
-              <TextField
-                label="Description"
-                value={descriptionValue}
-                onChange={handleChange}
-                autoComplete="off"
-                multiline
-              />
-            </FormLayout>
-          </LegacyCard>
-          <LegacyCard title="Media" sectioned>
-            <DropZone onDrop={handleDropZoneDrop}>
-              {uploadedFiles}
-              {fileUpload}
-            </DropZone>
-          </LegacyCard>
         </Layout.Section>
         <Layout.Section variant="oneThird">
           <LegacyCard title="Organization">
@@ -696,21 +658,23 @@ export function DetailsPage() {
               />
               <br />
               <AlphaPicker
-                searchField={{
-                  label: 'Search vendors',
-                  placeholder: 'Search vendors',
-                  autoComplete: 'off',
-                }}
+                onSelect={handleSelect}
                 activator={{
                   label: 'Tags',
                   placeholder: 'Search tags',
                 }}
-                options={[
-                  {
-                    value: 'Burberry',
-                    children: 'Burberry',
-                  },
-                ]}
+                searchField={{
+                  label: 'Search vendors',
+                  placeholder: 'Search vendors',
+                  autoComplete: 'off',
+                  value: query,
+                  onChange: (value) => setQuery(value),
+                }}
+                options={vendors}
+                addAction={{
+                  value: query,
+                  children: `Add ${query}`,
+                }}
               />
             </LegacyCard.Section>
             <LegacyCard.Section title="Collections" />

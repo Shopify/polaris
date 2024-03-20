@@ -119,13 +119,11 @@ export function WithActionList() {
     <div style={{height: '250px'}}>
       <BlockStack gap="400">
         <Popover
-          preferredPosition="cover"
           active={activePopover === 'popover1'}
           activator={activator}
           autofocusTarget="first-node"
           onClose={() => togglePopoverActive('popover1', true)}
         >
-          whee
           <ActionList
             actionRole="menuitem"
             items={[{content: 'Import file'}, {content: 'Export file'}]}

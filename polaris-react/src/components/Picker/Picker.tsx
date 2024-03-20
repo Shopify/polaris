@@ -2,13 +2,12 @@ import React, {
   useState,
   useCallback,
   useMemo,
-  useRef,
   isValidElement,
+  useEffect,
 } from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
 import {Popover} from '../Popover';
-import type {PopoverPublicAPI} from '../Popover';
 import {
   ComboboxTextFieldContext,
   ComboboxListboxContext,
@@ -75,8 +74,11 @@ export function Picker({
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
   const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
-  const popoverRef = useRef<PopoverPublicAPI | null>(null);
   const shouldOpen = !popoverActive;
+
+  useEffect(() => {
+    setFilteredOptions(options);
+  }, [options]);
 
   const handleClose = useCallback(() => {
     setPopoverActive(false);
@@ -86,19 +88,6 @@ export function Picker({
   const handleOpen = useCallback(() => {
     setPopoverActive(true);
   }, []);
-
-  const handleSelect = useCallback((selected: string) => {
-    setActiveItem(selected);
-  }, []);
-
-  const onOptionSelected = useCallback(() => {
-    if (!allowMultiple) {
-      handleClose();
-      return;
-    }
-
-    popoverRef.current?.forceUpdatePosition();
-  }, [allowMultiple, handleClose]);
 
   const handleFocus = useCallback(() => {
     if (shouldOpen) {
@@ -154,7 +143,6 @@ export function Picker({
       textFieldLabelId,
       textFieldFocused,
       willLoadMoreOptions,
-      onOptionSelected,
       setActiveOptionId,
       setListboxId,
       onKeyToBottom: onScrolledToBottom,
@@ -164,7 +152,6 @@ export function Picker({
       textFieldLabelId,
       textFieldFocused,
       willLoadMoreOptions,
-      onOptionSelected,
       setActiveOptionId,
       setListboxId,
       onScrolledToBottom,
@@ -191,6 +178,7 @@ export function Picker({
   const firstSelectedOption = reactChildrenText(
     options.find((option) => option.value === activeItem)?.children,
   );
+
   const firstSelectedLabel = firstSelectedOption
     ? firstSelectedOption?.toString()
     : activator.placeholder;
@@ -201,7 +189,6 @@ export function Picker({
 
   return (
     <Popover
-      ref={popoverRef}
       active={popoverActive}
       activator={
         <Activator
@@ -236,7 +223,6 @@ export function Picker({
                 }}
                 prefix={<Icon source={SearchIcon} />}
                 labelHidden
-                focused
                 autoFocus
               />
             </ComboboxTextFieldContext.Provider>
@@ -251,9 +237,14 @@ export function Picker({
               <Listbox
                 {...listboxProps}
                 onSelect={(selected: string) => {
-                  onOptionSelected();
-                  handleSelect(selected);
+                  setQuery('');
+                  updateText('');
+                  setActiveItem(selected);
                   listboxProps.onSelect?.(selected);
+
+                  if (!allowMultiple) {
+                    handleClose();
+                  }
                 }}
               >
                 {filteredOptions?.map((option) => (
