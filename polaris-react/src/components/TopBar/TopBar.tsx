@@ -10,9 +10,10 @@ import {Icon} from '../Icon';
 import {Image} from '../Image';
 import {UnstyledLink} from '../UnstyledLink';
 
-import {SearchField, UserMenu, Search, Menu} from './components';
+import {SearchField, UserMenu, Search, Menu, TopBarButton} from './components';
 import type {SearchFieldProps, UserMenuProps, SearchProps} from './components';
 import styles from './TopBar.module.css';
+import {ThemeProvider} from '../ThemeProvider';
 
 export type {UserMenuProps, SearchFieldProps};
 
@@ -50,6 +51,7 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   Menu: typeof Menu;
   SearchField: typeof SearchField;
   UserMenu: typeof UserMenu;
+  Button: typeof TopBarButton;
 } = function TopBar({
   showNavigationToggle,
   userMenu,
@@ -141,22 +143,25 @@ export const TopBar: React.FunctionComponent<TopBarProps> & {
   ) : null;
 
   return (
-    <div className={styles.TopBar}>
-      <div className={styles.Container}>
-        <div className={styles.LeftContent}>
-          {navigationButtonMarkup}
-          {contextMarkup}
-        </div>
-        <div className={styles.Search}>{searchMarkup}</div>
-        <div className={styles.RightContent}>
-          <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
-          {userMenu}
+    <ThemeProvider theme="dark">
+      <div className={styles.TopBar}>
+        <div className={styles.Container}>
+          <div className={styles.LeftContent}>
+            {navigationButtonMarkup}
+            {contextMarkup}
+          </div>
+          <div className={styles.Search}>{searchMarkup}</div>
+          <div className={styles.RightContent}>
+            <div className={styles.SecondaryMenu}>{secondaryMenu}</div>
+            {userMenu}
+          </div>
         </div>
       </div>
-    </div>
+    </ThemeProvider>
   );
 };
 
 TopBar.Menu = Menu;
 TopBar.SearchField = SearchField;
 TopBar.UserMenu = UserMenu;
+TopBar.Button = TopBarButton;
