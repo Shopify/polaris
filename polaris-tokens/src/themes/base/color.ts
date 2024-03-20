@@ -148,7 +148,11 @@ export type ColorBorderAlias =
   /** Specialty and component border colors. */
   | 'input-border-active'
   | 'input-border-hover'
-  | 'input-border';
+  | 'input-border'
+  | 'border-gradient'
+  | 'border-gradient-hover'
+  | 'border-gradient-selected'
+  | 'border-gradient-active';
 
 export type ColorIconAlias =
   | 'icon-active'
@@ -1005,6 +1009,19 @@ export const color: {
     value: colors.gray[8],
     description:
       'The active state (on press) color for borders on an inverse background.',
+  },
+  // to do: get light theme border gradient colors
+  'color-border-gradient': {
+    value: `linear-gradient(to bottom, ${colors.blackAlpha[7]}, ${colors.blackAlpha[11]})`,
+  },
+  'color-border-gradient-hover': {
+    value: `linear-gradient(to bottom, ${colors.blackAlpha[11]}, ${colors.blackAlpha[7]})`,
+  },
+  'color-border-gradient-selected': {
+    value: `linear-gradient(to bottom, ${colors.blackAlpha[11]}, ${colors.blackAlpha[11]})`,
+  },
+  'color-border-gradient-active': {
+    value: `linear-gradient(to bottom, ${colors.blackAlpha[12]}, ${colors.blackAlpha[8]})`,
   },
   'color-icon': {
     value: colors.gray[14],

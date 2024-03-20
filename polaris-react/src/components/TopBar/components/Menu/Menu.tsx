@@ -9,6 +9,7 @@ import {classNames} from '../../../../utilities/css';
 import {Message} from './components';
 import type {MessageProps} from './components';
 import styles from './Menu.module.css';
+import {TopBarButton} from '../TopBarButton';
 
 export interface MenuProps {
   /** Accepts an activator component that renders inside of a button that opens the menu */
@@ -43,7 +44,6 @@ export function Menu(props: MenuProps) {
     message,
     accessibilityLabel,
     customWidth,
-    userMenu,
   } = props;
 
   const badgeProps = message &&
@@ -69,17 +69,14 @@ export function Menu(props: MenuProps) {
     <Popover
       activator={
         <div className={styles.ActivatorWrapper}>
-          <button
+          <TopBarButton
             type="button"
-            className={classNames(
-              styles.Activator,
-              userMenu && styles['Activator-userMenu'],
-            )}
+            className={classNames(styles.Activator)}
             onClick={onOpen}
             aria-label={accessibilityLabel}
           >
             {activatorContent}
-          </button>
+          </TopBarButton>
         </div>
       }
       active={open}
