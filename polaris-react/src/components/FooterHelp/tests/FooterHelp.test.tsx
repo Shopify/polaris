@@ -20,7 +20,7 @@ describe('<FooterHelp />', () => {
 
     expect(footerHelp).toContainReactComponent('div', {
       style: expect.objectContaining({
-        '--p-footer-help-align': 'start',
+        '--pc-footer-help-align': 'start',
       }) as React.CSSProperties,
     });
   });
