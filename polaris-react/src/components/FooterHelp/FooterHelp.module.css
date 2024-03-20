@@ -1,6 +1,7 @@
 .FooterHelp {
   display: flex;
-  justify-content: center;
+  /* stylelint-disable-next-line -- Necessary for layout components */
+  justify-content: var(--pc-footer-help-align);
   margin: var(--p-space-500);
   width: auto;
 }
