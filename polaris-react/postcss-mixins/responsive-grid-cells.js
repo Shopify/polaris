@@ -1,35 +1,27 @@
-const postcss = require('postcss');
+function cellColumnEndRules(columns, breakpoint) {
+  const rules = {};
+  for (let column = 1; column <= columns; column++) {
+    rules[`.Cell-${column}-column-${breakpoint}`] = {
+      gridColumnEnd: `span ${column}`,
+    };
+  }
+  return rules;
+}
 
-const breakpoints = ['sm', 'md', 'lg', 'xl'];
-module.exports = (mixin) => {
-  const rules = [];
-  const atRules = [];
-  for (let i = 1; i <= 6; i++) {
-    const rule = postcss.rule({
-      selector: `.Cell-${i}-column-xs`,
-    });
-    rule.append({
-      prop: 'grid-column-end',
-      value: `span ${i}`,
-    });
-    rules.push(rule);
+function wrapInBreakpoint(breakpoints, getRules) {
+  const rules = {};
+  for (const breakpoint of breakpoints) {
+    rules[`@media (--p-breakpoints-${breakpoint}-up)`] = getRules(breakpoint);
   }
-  for (const i of breakpoints) {
-    const atRule = postcss.atRule({
-      name: 'media',
-      params: `(--p-breakpoints-${i}-up)`,
-    });
-    for (let j = 1; j <= (i === 'lg' || i === 'xl' ? 12 : 6); j++) {
-      const rule = postcss.rule({
-        selector: `.Cell-${j}-column-${i}`,
-      });
-      rule.append({
-        prop: 'grid-column-end',
-        value: `span ${j}`,
-      });
-      atRule.append(rule);
-    }
-    atRules.push(atRule);
-  }
-  mixin.replaceWith([].concat(rules, atRules));
-};
+  return rules;
+}
+
+module.exports = () => ({
+  ...cellColumnEndRules(6, 'xs'),
+  ...wrapInBreakpoint(['sm', 'md'], (breakpoint) =>
+    cellColumnEndRules(6, breakpoint),
+  ),
+  ...wrapInBreakpoint(['lg', 'xl'], (breakpoint) =>
+    cellColumnEndRules(12, breakpoint),
+  ),
+});
