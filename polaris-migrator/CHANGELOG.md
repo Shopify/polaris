@@ -1,5 +1,14 @@
 # @shopify/polaris-migrator
 
+## 0.28.2
+
+### Patch Changes
+
+- [#11754](https://github.com/Shopify/polaris/pull/11754) [`f57db81df`](https://github.com/Shopify/polaris/commit/f57db81df961e9147d4da00abecbe2fd89cc1702) Thanks [@jesstelford](https://github.com/jesstelford)! - Move migrations to v14 since the node v20 requirement will be the only change in v13
+
+- Updated dependencies [[`f6ba2b2a8`](https://github.com/Shopify/polaris/commit/f6ba2b2a8a8beae9ab235437caf5bfbacc50741f)]:
+  - @shopify/stylelint-polaris@15.4.0
+
 ## 0.28.1
 
 ### Patch Changes

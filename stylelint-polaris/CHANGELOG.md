@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.4.0
+
+### Minor Changes
+
+- [#11677](https://github.com/Shopify/polaris/pull/11677) [`f6ba2b2a8`](https://github.com/Shopify/polaris/commit/f6ba2b2a8a8beae9ab235437caf5bfbacc50741f) Thanks [@jesstelford](https://github.com/jesstelford)! - Add `--pg-` as a disallowed CSS Custom Property prefix (these are "global" Custom Properties used within @shopify/polaris-react).
+
 ## 15.3.0
 
 ### Minor Changes
