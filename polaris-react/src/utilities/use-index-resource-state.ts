@@ -54,6 +54,8 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
   const [dirty, setDirty] = useState(false);
 
   const prevPreCheckedResourcesRef = useRef(preCheckedResources);
+  const initialSelectedResources = useRef(selectedResources);
+  const initialUnselectedResources = useRef(unselectedResources);
 
   useEffect(() => {
     if (!isEqual(prevPreCheckedResourcesRef.current, preCheckedResources)) {
@@ -67,6 +69,16 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
       prevPreCheckedResourcesRef.current = preCheckedResources;
     }
   }, [dirty, preCheckedResources, unselectedResources]);
+
+  useEffect(() => {
+    if (
+      dirty &&
+      isEqual(initialSelectedResources.current, selectedResources) &&
+      isEqual(initialUnselectedResources.current, unselectedResources)
+    ) {
+      setDirty(false);
+    }
+  }, [dirty, selectedResources, unselectedResources]);
 
   useEffect(() => {
     return () => {
