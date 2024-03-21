@@ -110,20 +110,26 @@ export function useIndexResourceState<T extends {[key: string]: unknown}>(
             return newSelectedResources;
           });
           break;
+
         case SelectionType.All:
         case SelectionType.Page: {
           const resourceList = resourceFilter
             ? resources.filter(resourceFilter)
             : resources;
+          const mappedResources = new Set(resourceList.map(resourceIDResolver));
+
           const hasRoomForMoreSelection =
             isSelecting && selectedResources.size < resourceList.length;
-          const resourceIDs = new Set(resourceList.map(resourceIDResolver));
 
           setSelectedResources(
-            hasRoomForMoreSelection ? resourceIDs : new Set(),
+            hasRoomForMoreSelection || isSelecting
+              ? mappedResources
+              : new Set(),
           );
           setUnselectedResources(
-            hasRoomForMoreSelection ? new Set() : resourceIDs,
+            hasRoomForMoreSelection || isSelecting
+              ? new Set()
+              : mappedResources,
           );
           break;
         }
