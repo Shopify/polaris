@@ -1187,7 +1187,7 @@ export function IndexTable({
   hasMoreItems,
   condensed,
   onSelectionChange,
-  clearSelection,
+  onClearSelection,
   ...indexTableBaseProps
 }: IndexTableProps) {
   return (
@@ -1201,6 +1201,7 @@ export function IndexTable({
         hasMoreItems={hasMoreItems}
         condensed={condensed}
         onSelectionChange={onSelectionChange}
+        onClearSelection={onClearSelection}
       >
         <IndexTableBase {...indexTableBaseProps}>{children}</IndexTableBase>
       </IndexProvider>
