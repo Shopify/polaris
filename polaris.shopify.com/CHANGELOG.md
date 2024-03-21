@@ -1,5 +1,20 @@
 # polaris.shopify.com
 
+## 0.66.0
+
+### Minor Changes
+
+- [#11720](https://github.com/Shopify/polaris/pull/11720) [`97184dc80`](https://github.com/Shopify/polaris/commit/97184dc80237cedeef2a85cb0ff72540fbf57d1c) Thanks [@sarahill](https://github.com/sarahill)! - Added common action guidance.
+
+* [#11690](https://github.com/Shopify/polaris/pull/11690) [`c78f125c7`](https://github.com/Shopify/polaris/commit/c78f125c704d8cda94bd9dfa645b5085ae3160cb) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Updates images for icon design guidance
+
+### Patch Changes
+
+- [#11747](https://github.com/Shopify/polaris/pull/11747) [`5cff96245`](https://github.com/Shopify/polaris/commit/5cff96245e2a1516aa78f56374af0740d4e1fc19) Thanks [@sarahill](https://github.com/sarahill)! - Updated card layout patterns to match common action patterns.
+
+- Updated dependencies [[`e0ae9565c`](https://github.com/Shopify/polaris/commit/e0ae9565cc9384075abcd45d9a24bbd8c326a30b), [`9c24a465c`](https://github.com/Shopify/polaris/commit/9c24a465c5e001e148bde335bf6319e924f4b1d6), [`f6ba2b2a8`](https://github.com/Shopify/polaris/commit/f6ba2b2a8a8beae9ab235437caf5bfbacc50741f), [`4699bb229`](https://github.com/Shopify/polaris/commit/4699bb229ba9d1e76257f99da99c0b95f9d3e041), [`c3ba6ae1b`](https://github.com/Shopify/polaris/commit/c3ba6ae1bb827848cb3eb4dceaabd2725f19e3ea), [`1543246b7`](https://github.com/Shopify/polaris/commit/1543246b7ed5cf65163032f14a39ec18d65d2d9f), [`42c298ea7`](https://github.com/Shopify/polaris/commit/42c298ea790eb13d426e402b83feb23184483415), [`3e011e3b6`](https://github.com/Shopify/polaris/commit/3e011e3b6130519cd0bf3e7b81d701b5e9d52a90), [`e7ab4a8f5`](https://github.com/Shopify/polaris/commit/e7ab4a8f51141bb3ab82647e3083a186f13432d1), [`831a683a2`](https://github.com/Shopify/polaris/commit/831a683a25adcd7ecae2d799b451ddf8b84b689a), [`6d8ef8c99`](https://github.com/Shopify/polaris/commit/6d8ef8c99a0b9b1c91bf845ca1139291f7b63fc7), [`ad6315845`](https://github.com/Shopify/polaris/commit/ad6315845f4a511bbaeba2c256b01b8f497e8bda)]:
+  - @shopify/polaris@12.22.0
+
 ## 0.65.0
 
 ### Minor Changes
