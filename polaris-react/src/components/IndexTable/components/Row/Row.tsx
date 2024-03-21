@@ -120,14 +120,13 @@ export const Row = memo(function Row({
     disabled && styles['TableRow-disabled'],
     tone && styles[variationName('tone', tone)],
     !selectable &&
-      !onClick &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],
   );
 
   let handleRowClick;
 
-  if ((!disabled && selectable) || onClick || primaryLinkElement.current) {
+  if ((!disabled && selectable) || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
       if (rowType === 'subheader') return;
 
@@ -142,7 +141,7 @@ export const Row = memo(function Row({
         return;
       }
 
-      if (primaryLinkElement.current && !selectMode && selectable) {
+      if (primaryLinkElement.current && !selectMode) {
         isNavigating.current = true;
         const {ctrlKey, metaKey} = event.nativeEvent;
 

@@ -444,27 +444,6 @@ describe('<Row />', () => {
     );
   });
 
-  it('fires onClick handler when row has an onclick and is clicked despite no primary link child present and the table not being selectable', () => {
-    const mockOnClick = jest.fn();
-    const row = mountWithTable(
-      <Row {...defaultProps} onClick={mockOnClick}>
-        <th>
-          <a href="/">Child without data-primary-link</a>
-        </th>
-      </Row>,
-      {
-        indexTableProps: {
-          itemCount: 1,
-          selectable: false,
-        },
-      },
-    );
-
-    triggerOnClick(row, 1, defaultEvent);
-
-    expect(mockOnClick).toHaveBeenCalled();
-  });
-
   it('has an undefined tone by default', () => {
     const row = mountWithTable(
       <Row {...defaultProps}>
