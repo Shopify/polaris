@@ -8,7 +8,7 @@ import {
 } from '../../utilities/use-theme';
 import {classNames} from '../../utilities/css';
 
-import styles from './ThemeProvider.module.scss';
+import styles from './ThemeProvider.module.css';
 
 /**
  * Allowlist of local themes
