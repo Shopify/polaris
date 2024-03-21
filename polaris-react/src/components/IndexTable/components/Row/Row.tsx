@@ -142,7 +142,7 @@ export const Row = memo(function Row({
         return;
       }
 
-      if (primaryLinkElement.current && !selectMode && selectable) {
+      if (primaryLinkElement.current && !selectMode) {
         isNavigating.current = true;
         const {ctrlKey, metaKey} = event.nativeEvent;
 
