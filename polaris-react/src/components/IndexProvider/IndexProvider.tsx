@@ -14,7 +14,7 @@ export function IndexProvider({
   resourceName: passedResourceName,
   loading,
   onSelectionChange,
-  clearSelection,
+  onClearSelection,
   selectedItemsCount = 0,
   itemCount,
   hasMoreItems,
@@ -36,8 +36,8 @@ export function IndexProvider({
   });
   const handleSelectionChange = useHandleBulkSelection({onSelectionChange});
   const selectionContext = useMemo(
-    () => ({handleSelectionChange, handleClearSelection: clearSelection}),
-    [handleSelectionChange, clearSelection],
+    () => ({handleSelectionChange, handleClearSelection: onClearSelection}),
+    [handleSelectionChange, onClearSelection],
   );
 
   const contextValue = useMemo(
