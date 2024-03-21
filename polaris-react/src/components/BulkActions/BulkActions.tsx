@@ -164,6 +164,8 @@ export const BulkActions = forwardRef(function BulkActions(
           'Polaris.ResourceList.BulkActions.moreActionsActivatorLabel',
         );
 
+  console.log('paginatedSelectionAllAction', paginatedSelectAllAction);
+
   const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
     <UnstyledButton
       className={styles.AllAction}
