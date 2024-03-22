@@ -2,4 +2,4 @@
 '@shopify/polaris-icons': minor
 ---
 
-Add PersonSegment icon
+Added `PersonSegment` icon
