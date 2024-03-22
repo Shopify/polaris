@@ -76,7 +76,7 @@ export interface TooltipProps {
 
 /**
  * The [hysteresis](https://en.wikipedia.org/wiki/Hysteresis) flag is used to influence the `hoverDelay` and `animateOpen` behavior of the Tooltip.
- * Adapted from the [MUI Tooltip component](https://github.com/mui/material-ui/blob/822a7e69c062a5e4f99f02b4a3aadc7fb51c2ce9/packages/mui-material/src/Tooltip/Tooltip.js#L217C1-L218C38a).
+ * Adapted from the [MUI Tooltip component](https://github.com/mui/material-ui/blob/822a7e69c062a5e4f99f02b4a3aadc7fb51c2ce9/packages/mui-material/src/Tooltip/Tooltip.js#L217-L218)
  */
 let hysteresisOpen = false;
 const hysteresisTimer = new Timeout();
