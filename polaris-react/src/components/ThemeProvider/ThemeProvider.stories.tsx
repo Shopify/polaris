@@ -37,7 +37,12 @@ export function Default() {
       <TopBar.Menu
         activatorContent={
           <ThemeProvider theme="dark-experimental">
-            <Icon source={SidekickIcon} />
+            <span>
+              <Icon source={SidekickIcon} />
+              <Text as="span" visuallyHidden>
+                Light theme popover button
+              </Text>
+            </span>
           </ThemeProvider>
         }
         open={isSidekickMenuOpen}
@@ -55,7 +60,14 @@ export function Default() {
   const notificationsMenu = (
     <ThemeProvider theme="dark-experimental">
       <TopBar.Menu
-        activatorContent={<Icon source={NotificationIcon} />}
+        activatorContent={
+          <span>
+            <Icon source={NotificationIcon} />
+            <Text as="span" visuallyHidden>
+              Dark theme popover button
+            </Text>
+          </span>
+        }
         open={isNotificationsMenuOpen}
         onOpen={toggleIsNotificationsMenuOpen}
         onClose={toggleIsNotificationsMenuOpen}
