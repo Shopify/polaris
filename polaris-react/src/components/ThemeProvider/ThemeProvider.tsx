@@ -14,7 +14,7 @@ import styles from './ThemeProvider.module.css';
  * Allowlist of local themes
  * TODO: Replace `as const` with `satisfies ThemeName[]`
  */
-export const themeNamesLocal = ['light', 'dark'] as const;
+export const themeNamesLocal = ['light', 'dark-experimental'] as const;
 
 type ThemeNameLocal = typeof themeNamesLocal[number];
 
