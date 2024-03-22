@@ -1,5 +1,5 @@
-import {Page, LegacyCard} from '@shopify/polaris';
-import {PlusIcon} from '@shopify/polaris-icons';
+import {Page, Card, Text} from '@shopify/polaris';
+import {ExportIcon, PlusIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -8,15 +8,26 @@ function PageExample() {
     <Page
       fullWidth
       title="Orders"
-      primaryAction={{content: 'Create order', icon: PlusIcon}}
-      secondaryActions={[{content: 'Export'}]}
+      primaryAction={{
+        content: 'Create order',
+        icon: PlusIcon,
+        accessibilityLabel: 'Create order',
+      }}
+      secondaryActions={[
+        {accessibilityLabel: 'Export orders', icon: ExportIcon},
+      ]}
       pagination={{
         hasNext: true,
       }}
     >
-      <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
-      </LegacyCard>
+      <Card>
+        <Text as="h2" variant="headingSm">
+          Credit card
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
+      </Card>
     </Page>
   );
 }
