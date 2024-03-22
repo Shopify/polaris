@@ -12,4 +12,16 @@ describe('<FooterHelp />', () => {
       children,
     });
   });
+
+  it('overrides custom properties if they are passed in', () => {
+    const footerHelp = mountWithApp(
+      <FooterHelp align="start">{children}</FooterHelp>,
+    );
+
+    expect(footerHelp).toContainReactComponent('div', {
+      style: expect.objectContaining({
+        '--pc-footer-help-align': 'start',
+      }) as React.CSSProperties,
+    });
+  });
 });
