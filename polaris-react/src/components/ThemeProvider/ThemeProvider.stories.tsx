@@ -1,222 +1,85 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
-  Button,
+  Frame,
+  Icon,
+  TopBar,
   Text,
   ThemeProvider,
-  Card,
-  Popover,
-  ActionList,
-  useBreakpoints,
+  InlineStack,
 } from '@shopify/polaris';
-import {
-  ClipboardIcon,
-  DeleteIcon,
-  ExportIcon,
-  ImportIcon,
-  MenuHorizontalIcon,
-} from '@shopify/polaris-icons';
+import {SidekickIcon, NotificationIcon} from '@shopify/polaris-icons';
 
 export default {
   component: ThemeProvider,
 } as ComponentMeta<typeof ThemeProvider>;
 
-const sections = [
-  {
-    title: 'File options',
-    items: [
-      {
-        active: true,
-        content: 'Import file',
-        icon: ImportIcon,
-      },
-      {content: 'Export file', icon: ExportIcon},
-      {
-        destructive: true,
-        content: 'Delete file',
-        icon: DeleteIcon,
-      },
-    ],
-  },
-];
-
 export function Default() {
-  const breakpoints = useBreakpoints();
+  const [isSidekickMenuOpen, setIsSidekickMenuOpen] = useState(true);
 
-  const [lightThemeLightPopoverActive, setLightThemeLightPopoverActive] =
-    useState(false);
+  const toggleIsSidekickMenuOpen = useCallback(
+    () => setIsSidekickMenuOpen((isSidekickMenuOpen) => !isSidekickMenuOpen),
+    [],
+  );
 
-  const [darkThemeDarkPopoverActive, setDarkThemeDarkPopoverActive] =
-    useState(false);
+  const [isNotificationsMenuOpen, setIsNotificationsMenuOpen] = useState(false);
 
-  const [lightThemeDarkPopoverActive, setLightThemeDarkPopoverActive] =
-    useState(false);
+  const toggleIsNotificationsMenuOpen = useCallback(
+    () =>
+      setIsNotificationsMenuOpen(
+        (isNotificationsMenuOpen) => !isNotificationsMenuOpen,
+      ),
+    [],
+  );
 
-  const [darkThemeLightPopoverActive, setDarkThemeLightPopoverActive] =
-    useState(false);
-
-  return (
-    <div
-      style={{
-        display: 'grid',
-        gridTemplateColumns: breakpoints.mdUp ? '1fr 1fr' : '1fr',
-        gap: 20,
-      }}
-    >
-      <CustomerCard
-        moreActions={
-          <Popover
-            active={lightThemeLightPopoverActive}
-            autofocusTarget="first-node"
-            onClose={() => setLightThemeLightPopoverActive((active) => !active)}
-            activator={
-              <Button
-                variant="tertiary"
-                icon={MenuHorizontalIcon}
-                accessibilityLabel="More actions"
-                onClick={() =>
-                  setLightThemeLightPopoverActive((active) => !active)
-                }
-              />
-            }
-          >
-            <ActionList actionRole="menuitem" sections={sections} />
-          </Popover>
-        }
-      />
-      <ThemeProvider theme="dark">
-        <CustomerCard
-          moreActions={
-            <Popover
-              active={darkThemeDarkPopoverActive}
-              autofocusTarget="first-node"
-              onClose={() => setDarkThemeDarkPopoverActive((active) => !active)}
-              activator={
-                <Button
-                  variant="tertiary"
-                  icon={MenuHorizontalIcon}
-                  accessibilityLabel="More actions"
-                  onClick={() =>
-                    setDarkThemeDarkPopoverActive((active) => !active)
-                  }
-                />
-              }
-            >
-              <ActionList actionRole="menuitem" sections={sections} />
-            </Popover>
-          }
-        />
-      </ThemeProvider>
-      <CustomerCard
-        moreActions={
-          <ThemeProvider theme="dark">
-            <Popover
-              active={lightThemeDarkPopoverActive}
-              autofocusTarget="first-node"
-              onClose={() =>
-                setLightThemeDarkPopoverActive((active) => !active)
-              }
-              activator={
-                <ThemeProvider theme="light">
-                  <Button
-                    variant="tertiary"
-                    icon={MenuHorizontalIcon}
-                    accessibilityLabel="More actions"
-                    onClick={() =>
-                      setLightThemeDarkPopoverActive((active) => !active)
-                    }
-                  />
-                </ThemeProvider>
-              }
-            >
-              <ActionList actionRole="menuitem" sections={sections} />
-            </Popover>
+  const sidekickMenu = (
+    <ThemeProvider theme="light">
+      <TopBar.Menu
+        activatorContent={
+          <ThemeProvider theme="dark-experimental">
+            <Icon source={SidekickIcon} />
           </ThemeProvider>
         }
+        open={isSidekickMenuOpen}
+        onOpen={toggleIsSidekickMenuOpen}
+        onClose={toggleIsSidekickMenuOpen}
+        actions={[
+          {
+            items: [{content: 'Light theme popover'}],
+          },
+        ]}
       />
-      <ThemeProvider theme="dark">
-        <CustomerCard
-          moreActions={
-            <ThemeProvider theme="light">
-              <Popover
-                active={darkThemeLightPopoverActive}
-                autofocusTarget="first-node"
-                onClose={() =>
-                  setDarkThemeLightPopoverActive((active) => !active)
-                }
-                activator={
-                  <ThemeProvider theme="dark">
-                    <Button
-                      variant="tertiary"
-                      icon={MenuHorizontalIcon}
-                      accessibilityLabel="More actions"
-                      onClick={() =>
-                        setDarkThemeLightPopoverActive((active) => !active)
-                      }
-                    />
-                  </ThemeProvider>
-                }
-              >
-                <ActionList actionRole="menuitem" sections={sections} />
-              </Popover>
-            </ThemeProvider>
+    </ThemeProvider>
+  );
+
+  const notificationsMenu = (
+    <ThemeProvider theme="dark-experimental">
+      <TopBar.Menu
+        activatorContent={<Icon source={NotificationIcon} />}
+        open={isNotificationsMenuOpen}
+        onOpen={toggleIsNotificationsMenuOpen}
+        onClose={toggleIsNotificationsMenuOpen}
+        actions={[
+          {
+            items: [{content: 'Dark theme popover'}],
+          },
+        ]}
+      />
+    </ThemeProvider>
+  );
+
+  return (
+    <Frame
+      topBar={
+        <TopBar
+          secondaryMenu={
+            <InlineStack>
+              {sidekickMenu}
+              {notificationsMenu}
+            </InlineStack>
           }
         />
-      </ThemeProvider>
-    </div>
-  );
-}
-
-function CustomerCard(props: {moreActions: React.ReactNode}) {
-  return (
-    <Card>
-      <div style={{display: 'grid', gap: 'var(--p-space-300)'}}>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr auto',
-            gap: 'var(--p-space-200)',
-          }}
-        >
-          <Text as="h2" variant="headingSm">
-            Customer
-          </Text>
-          {props.moreActions}
-          <Text as="p" variant="bodyMd">
-            John Smith
-          </Text>
-        </div>
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr auto',
-          }}
-        >
-          <Text as="h3" variant="headingSm" fontWeight="medium">
-            Contact Information!
-          </Text>
-          <Button
-            icon={ClipboardIcon}
-            variant="tertiary"
-            accessibilityLabel="Copy email address"
-          />
-          <Text as="p" variant="bodyMd">
-            john.smith@example.com
-          </Text>
-          <span />
-        </div>
-        <div>
-          <Text as="h3" variant="headingSm" fontWeight="medium">
-            Address
-          </Text>
-          <div />
-          <Text as="p" variant="bodyMd">
-            1234 Street
-            <br />
-            Anytown, CA, 12345
-          </Text>
-        </div>
-      </div>
-    </Card>
+      }
+    />
   );
 }
