@@ -51,7 +51,7 @@ const uninitializedRef = {};
  * A React.useRef() that is initialized lazily with a function. Note that it accepts an optional
  * initialization argument, so the initialization function doesn't need to be an inline closure.
  *
- * Adapted from https://github.com/mui/material-ui/blob/next/packages/mui-utils/src/useLazyRef/useLazyRef.ts
+ * Adapted from https://github.com/mui/material-ui/blob/0102a9579628d48d784511a562b7b72f0f51847e/packages/mui-utils/src/useLazyRef/useLazyRef.ts#L13
  *
  * @usage
  *   const lazyRef = useLazyRef(sortColumns, columns)
