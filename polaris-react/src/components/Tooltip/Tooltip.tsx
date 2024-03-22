@@ -5,13 +5,13 @@ import type {
 } from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
-import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {findFirstFocusableNode} from '../../utilities/focus';
 import {classNames} from '../../utilities/css';
 
 import {TooltipOverlay} from './components';
 import type {TooltipOverlayProps} from './components';
 import styles from './Tooltip.module.css';
+import {Timeout, useTimeout} from './utils';
 
 export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpaceScale, '400'>;
@@ -74,7 +74,18 @@ export interface TooltipProps {
   onClose?(): void;
 }
 
-const HOVER_OUT_TIMEOUT = 150;
+/**
+ * The [hysteresis](https://en.wikipedia.org/wiki/Hysteresis) flag is used to influence the `hoverDelay` and `animateOpen` behavior of the Tooltip.
+ * Adapted from the [MUI Tooltip component](https://github.com/mui/material-ui/blob/822a7e69c062a5e4f99f02b4a3aadc7fb51c2ce9/packages/mui-material/src/Tooltip/Tooltip.js#L217C1-L218C38a).
+ */
+let hysteresisOpen = false;
+const hysteresisTimer = new Timeout();
+const HYSTERESIS_TIMEOUT = 150;
+
+export function testResetHysteresis() {
+  hysteresisOpen = false;
+  hysteresisTimer.clear();
+}
 
 export function Tooltip({
   children,
@@ -99,15 +110,14 @@ export function Tooltip({
   const borderRadius = borderRadiusProp || '200';
   const isControlled = typeof openProp === 'boolean';
   const defaultOpen = defaultOpenProp ?? originalActive ?? false;
+  const animateOpen = useRef(!defaultOpen && !hysteresisOpen);
   const [open, setOpen] = useState(defaultOpen);
   const [isPersisting, setIsPersisting] = useState(
     defaultOpen && persistOnClick,
   );
-  const [shouldAnimate, setShouldAnimate] = useState(!defaultOpen);
 
   const isMouseEntered = useRef(false);
-  const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
-  const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
+  const hoverDelayTimer = useTimeout();
 
   const id = useId();
   const WrapperComponent: any = activatorWrapper;
@@ -118,52 +128,36 @@ export function Tooltip({
     hasUnderline && styles.HasUnderline,
   );
 
-  const {presenceList, addPresence, removePresence} =
-    useEphemeralPresenceManager();
-
-  const clearHoverDelayTimeout = useCallback(() => {
-    if (hoverDelayTimeout.current) {
-      clearTimeout(hoverDelayTimeout.current);
-      hoverDelayTimeout.current = null;
-    }
-  }, []);
-
-  const clearHoverOutTimeout = useCallback(() => {
-    if (hoverOutTimeout.current) {
-      clearTimeout(hoverOutTimeout.current);
-      hoverOutTimeout.current = null;
-    }
-  }, []);
-
   const handleOpen = useCallback(() => {
     if (open) return;
 
     if (!isControlled && originalActive !== false) {
-      setShouldAnimate(!open && !presenceList.tooltip);
+      hysteresisTimer.clear();
+
+      animateOpen.current = !hysteresisOpen;
+      hysteresisOpen = true;
+
       setOpen(true);
-      addPresence('tooltip');
     }
 
     onOpen?.();
-  }, [
-    addPresence,
-    isControlled,
-    onOpen,
-    open,
-    originalActive,
-    presenceList.tooltip,
-  ]);
+  }, [isControlled, onOpen, open, originalActive]);
 
   const handleClose = useCallback(() => {
     if (!open) return;
 
     if (!isControlled) {
+      hysteresisTimer.start(HYSTERESIS_TIMEOUT, () => {
+        hysteresisOpen = false;
+      });
+
+      animateOpen.current = false;
+
       setOpen(false);
-      removePresence('tooltip');
     }
 
     onClose?.();
-  }, [isControlled, open, onClose, removePresence]);
+  }, [open, isControlled, onClose]);
 
   const handleMouseEnter = useCallback(() => {
     // https://github.com/facebook/react/issues/10109
@@ -171,44 +165,35 @@ export function Tooltip({
     if (isMouseEntered.current) return;
     isMouseEntered.current = true;
 
-    clearHoverOutTimeout();
-
     if (open) return;
 
-    if (hoverDelay && !presenceList.tooltip) {
-      hoverDelayTimeout.current = setTimeout(() => {
+    if (hoverDelay && !hysteresisOpen) {
+      hoverDelayTimer.start(hoverDelay, () => {
         handleOpen();
-      }, hoverDelay);
+      });
     } else {
+      hoverDelayTimer.clear();
       handleOpen();
     }
-  }, [
-    clearHoverOutTimeout,
-    handleOpen,
-    hoverDelay,
-    open,
-    presenceList.tooltip,
-  ]);
+  }, [open, hoverDelayTimer, hoverDelay, handleOpen]);
 
   const handleMouseLeave = useCallback(() => {
     isMouseEntered.current = false;
 
-    clearHoverDelayTimeout();
+    hoverDelayTimer.clear();
 
-    if (isPersisting) return;
+    if (isPersisting || !open) return;
 
-    hoverOutTimeout.current = setTimeout(() => {
-      handleClose();
-    }, HOVER_OUT_TIMEOUT);
-  }, [clearHoverDelayTimeout, handleClose, isPersisting]);
+    handleClose();
+  }, [hoverDelayTimer, isPersisting, open, handleClose]);
 
   const handleFocus = useCallback(() => {
     if (open) return;
 
-    clearHoverDelayTimeout();
+    hoverDelayTimer.clear();
 
     handleOpen();
-  }, [clearHoverDelayTimeout, handleOpen, open]);
+  }, [handleOpen, hoverDelayTimer, open]);
 
   const handleBlur = useCallback(() => {
     if (isPersisting) setIsPersisting(false);
@@ -228,10 +213,10 @@ export function Tooltip({
   );
 
   const handleMouseDown = useCallback(() => {
-    if (!open) return;
+    if (!persistOnClick) return;
 
     setIsPersisting((prevIsPersisting) => !prevIsPersisting);
-  }, [open, setIsPersisting]);
+  }, [persistOnClick]);
 
   const setActivator = useCallback((node: HTMLElement | null) => {
     const activatorContainerRef: any = activatorContainer;
@@ -251,37 +236,32 @@ export function Tooltip({
   useEffect(() => {
     if (!isControlled || openProp === open) return;
 
-    clearHoverDelayTimeout();
-    clearHoverOutTimeout();
+    hoverDelayTimer.clear();
 
-    if (openProp) {
-      setShouldAnimate(!open && !presenceList.tooltip);
+    if (openProp && !originalActive) {
+      hysteresisTimer.clear();
+
+      animateOpen.current = !hysteresisOpen;
+      hysteresisOpen = true;
+
       setOpen(true);
-      addPresence('tooltip');
     } else {
-      setShouldAnimate(false);
-      setOpen(false);
-      removePresence('tooltip');
-    }
-  }, [
-    addPresence,
-    clearHoverDelayTimeout,
-    clearHoverOutTimeout,
-    isControlled,
-    open,
-    openProp,
-    presenceList.tooltip,
-    removePresence,
-  ]);
+      hysteresisTimer.start(HYSTERESIS_TIMEOUT, () => {
+        hysteresisOpen = false;
+      });
 
-  // Clear timeouts on unmount
-  useEffect(
-    () => () => {
-      clearHoverDelayTimeout();
-      clearHoverOutTimeout();
-    },
-    [clearHoverDelayTimeout, clearHoverOutTimeout],
-  );
+      animateOpen.current = false;
+
+      setOpen(false);
+    }
+  }, [hoverDelayTimer, isControlled, open, openProp, originalActive]);
+
+  // Note: Remove this effect along with the `active` prop in Polaris v14
+  useEffect(() => {
+    if (originalActive === false && open) {
+      handleClose();
+    }
+  }, [originalActive, handleClose, handleBlur, open]);
 
   // Add `tabIndex` and other a11y attributes to the first focusable node
   useEffect(() => {
@@ -323,7 +303,7 @@ export function Tooltip({
             padding={padding}
             borderRadius={borderRadius}
             zIndexOverride={zIndexOverride}
-            instant={!shouldAnimate}
+            instant={!animateOpen.current}
           >
             {content}
           </TooltipOverlay>
