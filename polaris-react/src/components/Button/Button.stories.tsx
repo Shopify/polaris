@@ -11,6 +11,9 @@ import {
   Box,
   Popover,
   ActionList,
+  Link,
+  Tooltip,
+  useCopyToClipboard,
 } from '@shopify/polaris';
 import {
   PlusIcon,
@@ -19,6 +22,8 @@ import {
   EditIcon,
   MagicIcon,
   DeleteIcon,
+  CheckIcon,
+  ClipboardIcon,
 } from '@shopify/polaris-icons';
 
 export default {
@@ -830,5 +835,34 @@ export function LoadingState() {
         Save product
       </Button>
     </InlineStack>
+  );
+}
+
+export function CopyToClipboard() {
+  const [copy, status] = useCopyToClipboard({
+    defaultValue: 'hello@example.com',
+  });
+
+  return (
+    <div style={{maxWidth: 300, paddingTop: 100}}>
+      <Card>
+        <InlineStack align="space-between" gap="200">
+          <Link removeUnderline>hello@example.com</Link>
+          <Tooltip
+            dismissOnMouseOut
+            hoverDelay={500}
+            preferredPosition="above"
+            open={status === 'copied' ? true : undefined}
+            content={status === 'copied' ? 'Copied' : 'Copy'}
+          >
+            <Button
+              variant="tertiary"
+              onClick={copy}
+              icon={status === 'copied' ? CheckIcon : ClipboardIcon}
+            />
+          </Tooltip>
+        </InlineStack>
+      </Card>
+    </div>
   );
 }
