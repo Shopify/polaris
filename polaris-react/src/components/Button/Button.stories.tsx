@@ -859,6 +859,7 @@ export function CopyToClipboard() {
               variant="tertiary"
               onClick={copy}
               icon={status === 'copied' ? CheckIcon : ClipboardIcon}
+              accessibilityLabel="Copy email address"
             />
           </Tooltip>
         </InlineStack>
