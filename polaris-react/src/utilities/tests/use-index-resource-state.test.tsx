@@ -7,6 +7,7 @@ import {
 } from '../use-index-resource-state';
 
 interface TypedChildProps extends ReturnType<typeof useIndexResourceState> {}
+interface TypedChildProps extends ReturnType<typeof useIndexResourceState> {}
 
 describe('useIndexResourceState', () => {
   function TypedChild(_: TypedChildProps) {

@@ -19,18 +19,22 @@ export interface IndexContextType {
   condensed?: boolean;
 }
 
+interface SelectionContextType {
+  handleSelectionChange?(
+    selectionType: SelectionType,
+    toggleType: boolean,
+    selection?: string | Range,
+    position?: number,
+  ): void;
+  handleClearSelection?(): void;
+}
+
 export const IndexContext = createContext<IndexContextType | undefined>(
   undefined,
 );
 
-export const IndexSelectionChangeContext = createContext<
-  | ((
-      selectionType: SelectionType,
-      toggleType: boolean,
-      selection?: string | Range,
-      position?: number,
-    ) => void)
-  | undefined
+export const IndexSelectionContext = createContext<
+  SelectionContextType | undefined
 >(undefined);
 
 export interface IndexRowContextType {
