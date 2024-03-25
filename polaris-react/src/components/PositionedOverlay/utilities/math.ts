@@ -27,7 +27,12 @@ export function calculateVerticalPosition(
   preferredPosition: PreferredPosition,
   fixed: boolean | undefined,
   topBarOffset = 0,
-) {
+): {
+  top?: number;
+  bottom?: number;
+  height: number;
+  positioning: string;
+} {
   const positionedHorizontal =
     preferredPosition === 'right' || preferredPosition === 'left';
   const hasScrollBar = scrollableContainerRect.height > containerRect.height;
@@ -65,6 +70,41 @@ export function calculateVerticalPosition(
   const heightIfBelow = enoughSpaceFromBottomEdge
     ? desiredHeight - verticalMargins
     : spaceBelow - minimumSurroundingSpace;
+
+  const heightIfAboveCover = Math.min(
+    spaceAbove + activatorRect.height,
+    desiredHeight,
+  );
+
+  const heightIfBelowCover = Math.min(
+    spaceBelow + activatorRect.height,
+    desiredHeight,
+  );
+
+  const positionIfCoverBelow = {
+    height: heightIfBelowCover - verticalMargins,
+    top: activatorTop + containerRectTop,
+    positioning: 'cover',
+  };
+  const positionIfCoverAbove = {
+    height: heightIfAboveCover - verticalMargins,
+    top:
+      activatorTop +
+      containerRectTop -
+      heightIfAbove +
+      activatorRect.height +
+      verticalMargins,
+    positioning: 'cover',
+  };
+
+  if (preferredPosition === 'cover') {
+    return (enoughSpaceFromBottomEdge ||
+      (spaceBelow >= spaceAbove && !enoughSpaceFromTopEdge)) &&
+      (spaceBelow + activatorRect.height > desiredHeight ||
+        spaceBelow > spaceAbove)
+      ? positionIfCoverBelow
+      : positionIfCoverAbove;
+  }
 
   let positionIfAbove =
     activatorTop + containerRectTop - heightIfAbove - verticalMargins;

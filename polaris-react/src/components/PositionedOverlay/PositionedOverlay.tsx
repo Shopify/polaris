@@ -363,7 +363,8 @@ export class PositionedOverlay extends PureComponent<
 
         let width = null;
 
-        if (fullWidth) width = overlayRect.width;
+        if (fullWidth || preferredPosition === 'cover')
+          width = overlayRect.width;
         else if (positionedHorizontal)
           width = calculatedHorizontalPosition.width;
 
