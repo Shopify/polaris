@@ -11,6 +11,8 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-icon-secondary': {value: colors.gray[12]},
     'color-text': {value: colors.gray[8]},
     'color-text-secondary': {value: colors.gray[11]},
+    'color-bg-surface-secondary-active': {value: colors.gray[13]},
+    'color-bg-surface-secondary-hover': {value: colors.gray[14]},
   },
 });
 
