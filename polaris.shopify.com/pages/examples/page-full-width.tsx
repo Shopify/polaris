@@ -1,4 +1,4 @@
-import {Page, Card, Text} from '@shopify/polaris';
+import {Page, Card, Text, BlockStack} from '@shopify/polaris';
 import {ExportIcon, PlusIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
