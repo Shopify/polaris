@@ -9,8 +9,8 @@
   padding: var(--p-space-200);
   cursor: pointer;
 
-  @mixin border-gradient var(--p-color-bg-fill), var(--p-color-border-gradient),
-    var(--p-border-radius-300);
+  @mixin border-gradient var(--p-color-bg-fill),
+    var(--p-color-border-gradient-experimental), var(--p-border-radius-300);
 
   &:focus {
     outline: none;
@@ -25,17 +25,20 @@
 
   &:hover {
     @mixin border-gradient var(--p-color-bg-fill-hover),
-      var(--p-color-border-gradient-hover), var(--p-border-radius-300);
+      var(--p-color-border-gradient-hover-experimental),
+      var(--p-border-radius-300);
   }
 
   &:active,
   &[aria-expanded='true'] {
     @mixin border-gradient var(--p-color-bg-fill-active),
-      var(--p-color-border-gradient-active), var(--p-border-radius-300);
+      var(--p-color-border-gradient-active-experimental),
+      var(--p-border-radius-300);
   }
 
   &:active {
     @mixin border-gradient var(--p-color-bg-fill-selected),
-      var(--p-color-border-gradient-selected), var(--p-border-radius-300);
+      var(--p-color-border-gradient-selected-experimental),
+      var(--p-border-radius-300);
   }
 }

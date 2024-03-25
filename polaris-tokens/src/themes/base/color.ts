@@ -145,14 +145,16 @@ export type ColorBorderAlias =
   | 'border-tertiary'
   | 'border-warning'
   | 'border'
+  | 'border-gradient-experimental'
+  | 'border-gradient-hover-experimental'
+  | 'border-gradient-selected-experimental'
+  | 'border-gradient-active-experimental'
   /** Specialty and component border colors. */
   | 'input-border-active'
   | 'input-border-hover'
   | 'input-border'
-  | 'border-gradient'
-  | 'border-gradient-hover'
-  | 'border-gradient-selected'
-  | 'border-gradient-active';
+  | 'tooltip-border-tail-down'
+  | 'tooltip-border-tail-up';
 
 export type ColorIconAlias =
   | 'icon-active'
@@ -1010,18 +1012,26 @@ export const color: {
     description:
       'The active state (on press) color for borders on an inverse background.',
   },
-  // to do: get light theme border gradient colors
-  'color-border-gradient': {
-    value: `linear-gradient(to bottom, ${colors.blackAlpha[7]}, ${colors.blackAlpha[11]})`,
+  'color-tooltip-border-tail-down': {
+    value: colors.gray[9],
+    description: 'The border color for tool tip tails pointing down.',
   },
-  'color-border-gradient-hover': {
-    value: `linear-gradient(to bottom, ${colors.blackAlpha[11]}, ${colors.blackAlpha[7]})`,
+  'color-tooltip-border-tail-up': {
+    value: colors.gray[8],
+    description: 'The border color for tool tip tails pointing up.',
   },
-  'color-border-gradient-selected': {
-    value: `linear-gradient(to bottom, ${colors.blackAlpha[11]}, ${colors.blackAlpha[11]})`,
+  // Temporary light theme border gradient values
+  'color-border-gradient-experimental': {
+    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
   },
-  'color-border-gradient-active': {
-    value: `linear-gradient(to bottom, ${colors.blackAlpha[12]}, ${colors.blackAlpha[8]})`,
+  'color-border-gradient-hover-experimental': {
+    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
+  },
+  'color-border-gradient-selected-experimental': {
+    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
+  },
+  'color-border-gradient-active-experimental': {
+    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
   },
   'color-icon': {
     value: colors.gray[14],
