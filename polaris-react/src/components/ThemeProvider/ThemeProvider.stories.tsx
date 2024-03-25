@@ -8,17 +8,17 @@ import {
   ThemeProvider,
   InlineStack,
 } from '@shopify/polaris';
-import {SidekickIcon, NotificationIcon} from '@shopify/polaris-icons';
+import {HeartIcon, NotificationIcon} from '@shopify/polaris-icons';
 
 export default {
   component: ThemeProvider,
 } as ComponentMeta<typeof ThemeProvider>;
 
 export function Default() {
-  const [isSidekickMenuOpen, setIsSidekickMenuOpen] = useState(true);
+  const [isHeartMenuOpen, setIsHeartMenuOpen] = useState(true);
 
-  const toggleIsSidekickMenuOpen = useCallback(
-    () => setIsSidekickMenuOpen((isSidekickMenuOpen) => !isSidekickMenuOpen),
+  const toggleIsHeartMenuOpen = useCallback(
+    () => setIsHeartMenuOpen((isHeartMenuOpen) => !isHeartMenuOpen),
     [],
   );
 
@@ -32,22 +32,22 @@ export function Default() {
     [],
   );
 
-  const sidekickMenu = (
+  const heartMenu = (
     <ThemeProvider theme="light">
       <TopBar.Menu
         activatorContent={
           <ThemeProvider theme="dark-experimental">
             <span>
-              <Icon source={SidekickIcon} />
+              <Icon source={HeartIcon} />
               <Text as="span" visuallyHidden>
                 Light theme popover button
               </Text>
             </span>
           </ThemeProvider>
         }
-        open={isSidekickMenuOpen}
-        onOpen={toggleIsSidekickMenuOpen}
-        onClose={toggleIsSidekickMenuOpen}
+        open={isHeartMenuOpen}
+        onOpen={toggleIsHeartMenuOpen}
+        onClose={toggleIsHeartMenuOpen}
         actions={[
           {
             items: [{content: 'Light theme popover'}],
@@ -86,7 +86,7 @@ export function Default() {
         <TopBar
           secondaryMenu={
             <InlineStack>
-              {sidekickMenu}
+              {heartMenu}
               {notificationsMenu}
             </InlineStack>
           }
