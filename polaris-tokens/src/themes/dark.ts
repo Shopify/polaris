@@ -4,6 +4,7 @@ import {createMetaTheme, createMetaThemePartial} from './utils';
 
 export const metaThemeDarkPartial = createMetaThemePartial({
   color: {
+    'color-scheme': {value: 'dark'},
     'color-bg': {value: colors.gray[16]},
     'color-bg-surface': {value: colors.gray[15]},
     'color-bg-fill': {value: colors.gray[15]},

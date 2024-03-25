@@ -241,6 +241,7 @@ export type ColorTextAlias =
   | 'video-thumbnail-play-button-text-on-bg-fill';
 
 export type ColorTokenName =
+  | 'color-scheme'
   | `color-${ColorBackgroundAlias}`
   | `color-${ColorBorderAlias}`
   | `color-${ColorIconAlias}`
@@ -253,6 +254,9 @@ export type ColorTokenGroup = {
 export const color: {
   [TokenName in ColorTokenName]: MetaTokenProperties;
 } = {
+  'color-scheme': {
+    value: 'light',
+  },
   'color-bg': {
     value: colors.gray[6],
     description: 'The default background color of the admin.',

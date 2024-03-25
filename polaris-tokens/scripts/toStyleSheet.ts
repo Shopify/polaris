@@ -33,9 +33,15 @@ export function getMetaTokenGroupDecls(metaTokenGroup: MetaTokenGroupShape) {
         MetaTokenGroupShape[string],
       ];
 
-      return tokenName.startsWith('motion-keyframes')
-        ? `${createVarName(tokenName)}:p-${tokenName};`
-        : `${createVarName(tokenName)}:${value};`;
+      if (tokenName.startsWith('color-scheme')) {
+        return `color-scheme:${value};`;
+      }
+
+      if (tokenName.startsWith('motion-keyframes')) {
+        return `${createVarName(tokenName)}:p-${tokenName};`;
+      }
+
+      return `${createVarName(tokenName)}:${value};`;
     })
     .join('');
 }
@@ -68,7 +74,7 @@ export async function toStyleSheet() {
   const styles = [
     [
       `:root,${createThemeSelector(themeNameDefault)}`,
-      `{color-scheme:light;${getMetaThemeDecls(metaThemeDefault)}}`,
+      `{${getMetaThemeDecls(metaThemeDefault)}}`,
     ].join(''),
     metaThemePartialsEntries.map(
       ([themeName, metaThemePartial]) =>
