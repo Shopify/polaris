@@ -588,19 +588,19 @@ describe('useIndexResourceState', () => {
       const mockComponent = mountWithApp(
         <MockComponent
           resources={resources}
-          options={{selectedResources: [idOne, idTwo, idThree]}}
+          options={{selectedResources: [idOne, idThree]}}
         />,
       );
 
       mockComponent
         .find(TypedChild)!
-        .trigger('handleSelectionChange', SelectionType.Single, true, '1');
+        .trigger('handleSelectionChange', SelectionType.Single, false, '1');
 
       expect(mockComponent).toContainReactComponent(TypedChild, {
-        selectedResources: [idOne, idTwo, idThree],
+        selectedResources: [idThree],
         allResourcesSelected: false,
         dirty: true,
-        unselectedResources: [],
+        unselectedResources: [idOne],
       });
 
       mockComponent
@@ -608,10 +608,10 @@ describe('useIndexResourceState', () => {
         .trigger('handleSelectionChange', SelectionType.All, true);
 
       expect(mockComponent).toContainReactComponent(TypedChild, {
-        selectedResources: [],
+        selectedResources: [idOne, idTwo, idThree],
         allResourcesSelected: true,
         dirty: true,
-        unselectedResources: [idOne, idTwo, idThree],
+        unselectedResources: [],
       });
 
       mockComponent.find(TypedChild)!.trigger('clearSelection');
