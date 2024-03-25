@@ -80,22 +80,20 @@ export function Picker({
   }, []);
 
   const handleFocus = useCallback(() => {
-    if (shouldOpen) {
-      handleOpen();
-    }
+    if (shouldOpen) handleOpen();
   }, [shouldOpen, handleOpen]);
 
   const handleChange = useCallback(() => {
-    if (shouldOpen) {
-      handleOpen();
-    }
+    if (shouldOpen) handleOpen();
   }, [shouldOpen, handleOpen]);
 
   const handleBlur = useCallback(() => {
     if (popoverActive) {
       handleClose();
+      setQuery('');
+      setFilteredOptions(options);
     }
-  }, [popoverActive, handleClose]);
+  }, [popoverActive, handleClose, options]);
 
   const textFieldContextValue: ComboboxTextFieldType = useMemo(
     () => ({
