@@ -3,6 +3,7 @@ import {XSmallIcon, ChevronDownIcon} from '@shopify/polaris-icons';
 
 import {useI18n} from '../../../../utilities/i18n';
 import {useToggle} from '../../../../utilities/use-toggle';
+import {Box} from '../../../Box';
 import {Popover} from '../../../Popover';
 import {Button} from '../../../Button';
 import {BlockStack} from '../../../BlockStack';
@@ -10,7 +11,6 @@ import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
 import {InlineStack} from '../../../InlineStack';
 import {UnstyledButton} from '../../../UnstyledButton';
-import {Badge} from '../../../Badge';
 import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {classNames} from '../../../../utilities/css';
 import type {FilterInterface} from '../../../../types';
@@ -122,7 +122,7 @@ export function FilterPill({
 
   const labelVariant = mdDown ? 'bodyLg' : 'bodySm';
 
-  const wrappedLabel = value ? (
+  const labelMarkup = value ? (
     // eslint-disable-next-line @shopify/jsx-no-hardcoded-content
     <Text as="span">
       {`${label}: `}
@@ -131,19 +131,25 @@ export function FilterPill({
       </Text>
     </Text>
   ) : (
-    <div className={styles.Label}>
-      <Text variant={labelVariant} as="span">
-        {label}
-      </Text>
-    </div>
+    <Text variant={labelVariant} as="span">
+      {label}
+    </Text>
   );
 
-  const unsavedPip = unsavedChanges ? <Badge.Pip tone="emphasis" /> : null;
+  const unsavedPip = unsavedChanges ? (
+    <Box paddingInlineEnd="150">
+      <Box
+        background="bg-fill-emphasis"
+        borderRadius="050"
+        width="6px"
+        minHeight="6px"
+      />
+    </Box>
+  ) : null;
 
   const activator = (
     <div className={buttonClasses}>
-      <InlineStack gap="0" wrap={false}>
-        {unsavedPip}
+      <InlineStack gap="0" wrap={false} blockAlign="center">
         <UnstyledButton
           onFocus={setFocusedTrue}
           onBlur={setFocusedFalse}
@@ -152,11 +158,12 @@ export function FilterPill({
           type="button"
         >
           <InlineStack wrap={false} align="center" blockAlign="center" gap="0">
+            {unsavedPip}
             {selected ? (
-              <>{wrappedLabel}</>
+              <>{labelMarkup}</>
             ) : (
               <>
-                {wrappedLabel}
+                {labelMarkup}
                 <div className={styles.IconWrapper}>
                   <Icon source={ChevronDownIcon} tone="base" />
                 </div>

@@ -388,7 +388,6 @@ describe('<FiltersBar />', () => {
       {
         key: defaultProps.filters[1].key,
         label: 'Bar 2',
-        value: ['Bar 2'],
         onRemove: jest.fn(),
       },
     ];

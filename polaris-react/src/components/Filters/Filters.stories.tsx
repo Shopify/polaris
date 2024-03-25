@@ -53,7 +53,7 @@ export function WithAResourceList() {
     },
     moneySpent: {
       label: 'Money spent',
-      value: [0, 500],
+      value: 0,
       unsavedChanges: false,
     },
     taggedWith: {
@@ -75,32 +75,38 @@ export function WithAResourceList() {
     >
   > = useRef(new Map(Object.entries(emptyFilterState)));
 
-  const unsavedFilterState: React.RefObject<
-    Map<
-      string,
-      {
-        label: string;
-        value: string | string[] | number | [number, number];
-        unsavedChanges: boolean;
-      }
-    >
-  > = useRef(new Map(savedFilterState.current));
+  const [taggedWith, setTaggedWith] = useState('');
+  const [moneySpent, setMoneySpent] = useState<[number, number]>([0, 0]);
+  const [accountStatus, setAccountStatus] = useState(['enabled']);
+  const [unsavedChanges, setUnsavedFilterState] = useState<string[]>([]);
 
   const handleFilterChange =
-    (key: string) => (value: string | string[] | [number, number]) => {
+    (key: string) => (value: string | string[] | number | [number, number]) => {
       const savedFilter = savedFilterState.current?.get(key);
 
       if (savedFilter?.value !== value) {
-        unsavedFilterState.current?.set(key, {
-          label: savedFilter?.label || '',
-          value,
-          unsavedChanges: true,
+        if (key === 'taggedWith') setTaggedWith(value as string);
+        if (key === 'moneySpent') setMoneySpent(value as [number, number]);
+        if (key === 'accountStatus') setAccountStatus(value as string[]);
+        setUnsavedFilterState((keys) => {
+          if (keys.includes(key)) return keys;
+          return [...keys, key];
         });
       }
     };
 
   const handleFilterRemove = (key: string) => {
-    unsavedFilterState.current?.delete(key);
+    if (key === 'taggedWith') setTaggedWith('');
+    if (key === 'moneySpent') setMoneySpent([0, 500]);
+    if (key === 'accountStatus') setAccountStatus([]);
+
+    if (
+      emptyFilterState[key].value === savedFilterState.current?.get(key)?.value
+    ) {
+      setUnsavedFilterState((keys) => {
+        return keys.filter((unsavedKey) => unsavedKey !== key);
+      });
+    }
   };
 
   const handleFiltersQueryChange = (value: string) => setQueryValue(value);
@@ -108,49 +114,48 @@ export function WithAResourceList() {
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
 
   const handleFiltersClearAll = () => {
-    unsavedFilterState.current?.forEach((_value, key) =>
-      unsavedFilterState.current?.set(key, emptyFilterState[key]),
+    Object.entries(emptyFilterState).forEach(([key]) =>
+      handleFilterRemove(key),
     );
 
     handleQueryValueRemove();
   };
 
-  const paramsToValues = () => {
-    const appliedFilterValues: {
-      accountStatus: string[];
-      taggedWith: string;
-      moneySpent: [number, number];
-    } = {
-      accountStatus: [],
-      taggedWith: '',
-      moneySpent: [0, 500],
-    };
+  // const paramsToValues = () => {
+  //   const appliedFilterValues: {
+  //     accountStatus: string[];
+  //     taggedWith: string;
+  //     moneySpent: [number, number];
+  //   } = {
+  //     accountStatus: [],
+  //     taggedWith: '',
+  //     moneySpent: [0, 500],
+  //   };
 
-    unsavedFilterState.current?.entries().forEach((key, value) => {
-      if (key === 'accountStatus') {
-        appliedFilterValues[key] = urlSearchParams.getAll('accountStatus');
-      } else if (key === 'taggedWith') {
-        appliedFilterValues[key] = urlSearchParams
-          .getAll('taggedWith')
-          .join(',');
-      } else if (key === 'moneySpent_min') {
-        const min = urlSearchParams.get('moneySpent_min');
-        const max = urlSearchParams.get('moneySpent_max');
-        if (min && max) {
-          appliedFilterValues[key] = [Number(min), Number(max)];
-        }
-      }
-    });
+  //   unsavedFilterState.entries().forEach((key, value) => {
+  //     if (key === 'accountStatus') {
+  //       appliedFilterValues[key] = urlSearchParams.getAll('accountStatus');
+  //     } else if (key === 'taggedWith') {
+  //       appliedFilterValues[key] = urlSearchParams
+  //         .getAll('taggedWith')
+  //         .join(',');
+  //     } else if (key === 'moneySpent_min') {
+  //       const min = urlSearchParams.get('moneySpent_min');
+  //       const max = urlSearchParams.get('moneySpent_max');
+  //       if (min && max) {
+  //         appliedFilterValues[key] = [Number(min), Number(max)];
+  //       }
+  //     }
+  //   });
 
-    return appliedFilterValues;
-  };
-
-  const appliedFilterValues = paramsToValues();
+  //   return appliedFilterValues;
+  // };
 
   const filters = [
     {
       key: 'accountStatus',
       label: 'Account status',
+      value: accountStatus,
       filter: (
         <ChoiceList
           title="Account status"
@@ -161,7 +166,7 @@ export function WithAResourceList() {
             {label: 'Invited', value: 'invited'},
             {label: 'Declined', value: 'declined'},
           ]}
-          selected={appliedFilterValues.accountStatus}
+          selected={accountStatus}
           onChange={handleFilterChange('accountStatus')}
           allowMultiple
         />
@@ -172,10 +177,11 @@ export function WithAResourceList() {
     {
       key: 'taggedWith',
       label: 'Tagged with',
+      value: taggedWith,
       filter: (
         <TextField
           label="Tagged with"
-          value={appliedFilterValues.taggedWith}
+          value={taggedWith}
           onChange={handleFilterChange('taggedWith')}
           autoComplete="off"
           labelHidden
@@ -187,11 +193,12 @@ export function WithAResourceList() {
     {
       key: 'moneySpent',
       label: 'Money spent',
+      value: moneySpent,
       filter: (
         <RangeSlider
           label="Money spent is between"
           labelHidden
-          value={appliedFilterValues.moneySpent}
+          value={moneySpent}
           prefix="$"
           output
           min={0}
@@ -203,22 +210,28 @@ export function WithAResourceList() {
     },
   ];
 
-  const appliedFilters: FiltersProps['appliedFilters'] = [];
+  const labels = {};
 
-  for (const key in appliedFilterValues) {
-    if (appliedFilterValues[key]) {
-      const value = appliedFilterValues[key];
+  filters.forEach((filter) => {
+    labels[filter.key] = filter.label;
+  });
+
+  const appliedFilters: FiltersProps['appliedFilters'] = [];
+  filters.forEach(({key, label, value}) => {
+    if (!isEmpty(value)) {
       appliedFilters.push({
         key,
-        label: disambiguateLabel(key, value),
-        onRemove: handleFilterRemove,
+        unsavedChanges: !isUnchanged(key, value),
+        label,
+        value: humanReadableValue(key, value),
+        onRemove: () => handleFilterRemove(key),
       });
     }
-  }
+  });
 
   return (
     <div style={{height: '568px'}}>
-      <Card roundedAbove="sm">
+      <Card roundedAbove="sm" padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -270,27 +283,58 @@ export function WithAResourceList() {
     </div>
   );
 
-  function disambiguateLabel(
+  function humanReadableValue(
     key: string,
-    value: string | string[] | [number, number],
-  ) {
+    value: string | string[] | number | [number, number],
+  ): string | undefined {
+    if (isEmpty(value)) return undefined;
+
     switch (key) {
       case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
+        return `is between $${value[0]} and $${value[1]}`;
+      case 'taggedWith': {
+        const tags = (value as string).trim().split(',');
+        if (tags.length === 1) return ` ${tags[0]}`;
+        return `${tags
+          .map((tag, index) => {
+            console.log(tag);
+            return index !== tags.length - 1 ? tag : `and ${tag}`;
+          })
+          .join(', ')}`;
+      }
       case 'accountStatus':
-        return `Customer ${(value as string[]).join(', ')}`;
+        return (value as string[]).map((val) => `${val}`).join(', ');
       default:
-        return '';
+        return undefined;
     }
   }
 
   function isEmpty(value) {
     if (Array.isArray(value)) {
-      return value.length === 0;
+      return value.length === 0 || value[1] === 0;
     } else {
-      return value === '' || value == null;
+      return value === '' || value === 0 || value == null;
+    }
+  }
+
+  function isUnchanged(
+    key: string,
+    value: string | string[] | number | [number, number],
+  ) {
+    if (key === 'taggedWith') {
+      return value === savedFilterState.current?.get(key)?.value;
+    } else if (key === 'moneySpent') {
+      const savedMoneySpent = savedFilterState.current?.get(key)?.value;
+      return (
+        value[0] === savedMoneySpent?.[0] && value[1] === savedMoneySpent?.[1]
+      );
+    } else if (key === 'accountStatus') {
+      const savedAccountStatus =
+        (savedFilterState.current?.get(key)?.value as string[]) || [];
+      return (
+        Array.isArray(value) &&
+        value.every((val) => savedAccountStatus?.includes(val as string))
+      );
     }
   }
 }
@@ -1689,7 +1733,7 @@ export function WithAllFiltersPinned() {
     const key = 'accountStatus';
     appliedFilters.push({
       key,
-      label: disambiguateLabel(key, accountStatus),
+      label: humanReadableValue(key, accountStatus),
       onRemove: handleAccountStatusRemove,
     });
   }
@@ -1697,7 +1741,7 @@ export function WithAllFiltersPinned() {
     const key = 'moneySpent';
     appliedFilters.push({
       key,
-      label: disambiguateLabel(key, moneySpent),
+      label: humanReadableValue(key, moneySpent),
       onRemove: handleMoneySpentRemove,
     });
   }
@@ -1705,7 +1749,7 @@ export function WithAllFiltersPinned() {
     const key = 'taggedWith';
     appliedFilters.push({
       key,
-      label: disambiguateLabel(key, taggedWith),
+      label: humanReadableValue(key, taggedWith),
       onRemove: handleTaggedWithRemove,
     });
   }
@@ -1764,14 +1808,14 @@ export function WithAllFiltersPinned() {
     </div>
   );
 
-  function disambiguateLabel(key, value) {
+  function humanReadableValue(key, value) {
     switch (key) {
       case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
+        return `is between $${value[0]} and $${value[1]}`;
       case 'taggedWith':
-        return `Tagged with ${value}`;
+        return `${value.split(',').join(', ')}`;
       case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
+        return value.map((val) => `${val}`).join(', ');
       default:
         return value;
     }
