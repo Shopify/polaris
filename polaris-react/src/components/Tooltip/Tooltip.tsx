@@ -212,6 +212,11 @@ export function Tooltip({
         handleFocus();
       }}
       onBlur={() => {
+        if (hoverDelayTimeout.current) {
+          clearTimeout(hoverDelayTimeout.current);
+          hoverDelayTimeout.current = null;
+        }
+
         handleClose();
         handleBlur();
 
