@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
-import {QuestionCircleIcon} from '@shopify/polaris-icons';
+import {
+  CheckIcon,
+  ClipboardIcon,
+  QuestionCircleIcon,
+} from '@shopify/polaris-icons';
 import type {ComponentMeta} from '@storybook/react';
 import {
   Button,
@@ -13,6 +17,7 @@ import {
   BlockStack,
   Popover,
   Card,
+  Link,
 } from '@shopify/polaris';
 import type {TooltipProps} from '@shopify/polaris';
 
@@ -565,4 +570,75 @@ export function OneCharacter() {
       </Tooltip>
     </Box>
   );
+}
+
+export function CopyToClipboard() {
+  const [copy, status] = useCopyToClipboard({
+    defaultValue: 'hello@example.com',
+  });
+
+  return (
+    <div style={{maxWidth: 300, paddingTop: 100}}>
+      <Card>
+        <InlineStack align="space-between" gap="200">
+          <Link removeUnderline>hello@example.com</Link>
+          <Tooltip
+            dismissOnMouseOut
+            hoverDelay={500}
+            preferredPosition="above"
+            content="Copy"
+          >
+            <Button
+              variant="tertiary"
+              onClick={copy}
+              icon={status === 'copied' ? CheckIcon : ClipboardIcon}
+              accessibilityLabel={status === 'copied' ? 'Copied' : 'Copy'}
+            />
+          </Tooltip>
+        </InlineStack>
+      </Card>
+    </div>
+  );
+}
+
+type Status = 'inactive' | 'copied' | 'failed';
+
+interface UseCopyToClipboardOptions {
+  defaultValue?: string;
+  timeout?: number;
+}
+
+/**
+ * Copy text to the native clipboard using the `navigator.clipboard` API
+ * Adapted from https://www.benmvp.com/blog/copy-to-clipboard-react-custom-hook
+ */
+function useCopyToClipboard(options: UseCopyToClipboardOptions = {}) {
+  const {defaultValue = '', timeout = 1500} = options;
+
+  const [status, setStatus] = React.useState<Status>('inactive');
+
+  const copy = React.useCallback(
+    (value?: string) => {
+      navigator.clipboard
+        .writeText(typeof value === 'string' ? value : defaultValue)
+        .then(
+          () => setStatus('copied'),
+          () => setStatus('failed'),
+        )
+        .catch((error) => {
+          throw error;
+        });
+    },
+    [defaultValue],
+  );
+
+  React.useEffect(() => {
+    if (status === 'inactive') return;
+
+    const timeoutId = setTimeout(() => setStatus('inactive'), timeout);
+
+    return () => clearTimeout(timeoutId);
+  }, [status, timeout]);
+
+  return [copy, status] as const;
 }

@@ -158,7 +158,13 @@ export function Tooltip({
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
+      if (
+        event.key !== 'Escape' &&
+        event.key !== 'Enter' &&
+        event.key !== ' '
+      ) {
+        return;
+      }
       handleClose?.();
       handleBlur();
       persistOnClick && togglePersisting();
