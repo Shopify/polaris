@@ -1,5 +1,11 @@
 # Changelog
 
+## 8.9.0
+
+### Minor Changes
+
+- [#11778](https://github.com/Shopify/polaris/pull/11778) [`d689bd8f4`](https://github.com/Shopify/polaris/commit/d689bd8f485ba36247bddf9da705f014cb701f4c) Thanks [@heyjoethomas](https://github.com/heyjoethomas)! - Added `PersonSegment` icon
+
 ## 8.8.0
 
 ### Minor Changes
