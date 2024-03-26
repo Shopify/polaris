@@ -1,4 +1,4 @@
-import React, {useState, useCallback, useMemo, isValidElement} from 'react';
+import React, {useState, useMemo, useCallback, isValidElement} from 'react';
 import {SearchIcon} from '@shopify/polaris-icons';
 
 import {Popover} from '../Popover';
@@ -31,7 +31,7 @@ export interface PickerProps extends Omit<ListboxProps, 'children'> {
   options?: OptionProps[];
   /** Used to add a new picker option that isn't listed */
   addAction?: OptionProps & {icon?: IconProps['source']};
-  /** Textfield that allows filtering of options */
+  /** TextField that allows filtering of options */
   searchField?: TextFieldProps;
   /** Whether or not more options are available to lazy load when the bottom of the listbox reached. Use the hasMoreResults boolean provided by the GraphQL API of the paginated data. */
   willLoadMoreOptions?: boolean;
@@ -67,7 +67,6 @@ export function Picker({
   const [activeItem, setActiveItem] = useState<string>();
   const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
   const [listboxId, setListboxId] = useState<string>();
-  const [textFieldFocused, setTextFieldFocused] = useState<boolean>(false);
   const shouldOpen = !popoverActive;
 
   const handleClose = useCallback(() => {
@@ -100,7 +99,6 @@ export function Picker({
       activeOptionId,
       expanded: popoverActive,
       listboxId,
-      setTextFieldFocused,
       setTextFieldLabelId,
       onTextFieldFocus: handleFocus,
       onTextFieldChange: handleChange,
@@ -110,7 +108,6 @@ export function Picker({
       activeOptionId,
       popoverActive,
       listboxId,
-      setTextFieldFocused,
       setTextFieldLabelId,
       handleFocus,
       handleChange,
@@ -129,7 +126,7 @@ export function Picker({
     () => ({
       listboxId,
       textFieldLabelId,
-      textFieldFocused,
+      textFieldFocused: popoverActive,
       willLoadMoreOptions,
       setActiveOptionId,
       setListboxId,
@@ -138,7 +135,7 @@ export function Picker({
     [
       listboxId,
       textFieldLabelId,
-      textFieldFocused,
+      popoverActive,
       willLoadMoreOptions,
       setActiveOptionId,
       setListboxId,
@@ -186,9 +183,6 @@ export function Picker({
         />
       }
       autofocusTarget="none"
-      preventFocusOnClose
-      fullWidth
-      preferInputActivator={false}
       preferredPosition="cover"
       onClose={handleClose}
     >

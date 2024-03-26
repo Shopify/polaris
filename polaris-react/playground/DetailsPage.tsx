@@ -57,7 +57,8 @@ export function DetailsPage() {
   });
   const [query, setQuery] = useState('');
   const [vendors, setVendors] = useState([
-    {value: 'Burberry', children: 'Burberry'},
+    {value: 'The North Face', children: 'The North Face'},
+    {value: 'Patagonia', children: 'Patagonia'},
   ]);
   const skipToContentRef = useRef<HTMLAnchorElement>(null);
   const [toastActive, setToastActive] = useState(false);
@@ -70,7 +71,7 @@ export function DetailsPage() {
   const [modalActive, setModalActive] = useState(false);
   const [navItemActive, setNavItemActive] = useState('products');
   const initialDescription =
-    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs. The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evasdfasdfident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
+    'The M60-A represents the benchmark and equilibrium between function and design for us at Rama Works. The gently exaggerated design of the frame is not understated, but rather provocative. Inspiration and evolution from previous models are evident in the beautifully articulated design and the well defined aesthetic, the fingerprint of our ‘Industrial Modern’ designs.';
   const [previewValue, setPreviewValue] = useState(initialDescription);
   const [nameFieldValue, setNameFieldValue] = useState(
     defaultState.current.nameFieldValue,
@@ -660,8 +661,8 @@ export function DetailsPage() {
               <AlphaPicker
                 onSelect={handleSelect}
                 activator={{
-                  label: 'Tags',
-                  placeholder: 'Search tags',
+                  label: 'Vendor',
+                  placeholder: 'Search vendors',
                 }}
                 searchField={{
                   label: 'Search vendors',
