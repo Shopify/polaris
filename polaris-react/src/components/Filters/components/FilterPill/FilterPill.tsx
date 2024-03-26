@@ -122,15 +122,7 @@ export function FilterPill({
 
   const labelVariant = mdDown ? 'bodyLg' : 'bodySm';
 
-  const labelMarkup = value ? (
-    // eslint-disable-next-line @shopify/jsx-no-hardcoded-content
-    <Text as="span">
-      {`${label}: `}
-      <Text as="span" tone="subdued">
-        {value}
-      </Text>
-    </Text>
-  ) : (
+  const labelMarkup = (
     <Text variant={labelVariant} as="span">
       {label}
     </Text>
