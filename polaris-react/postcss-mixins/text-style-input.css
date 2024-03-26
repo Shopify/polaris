@@ -6,6 +6,7 @@
   letter-spacing: initial;
 
   @media (--p-breakpoints-md-up) {
-    font-size: var(--p-font-size-350);
+    font-size: var(--p-font-size-325);
+    line-height: var(--p-font-line-height-500);
   }
 }

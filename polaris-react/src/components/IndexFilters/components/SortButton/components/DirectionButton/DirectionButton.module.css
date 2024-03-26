@@ -4,10 +4,10 @@
   border-radius: var(--p-border-radius-200);
   padding: var(--p-space-100) var(--p-space-300) var(--p-space-100)
     var(--p-space-200);
-  font-size: var(--p-font-size-350);
-  display: flex;
+  display: grid;
   align-items: center;
-  justify-content: flex-start;
+  grid-template-columns: auto 1fr;
+  gap: var(--p-space-050);
   cursor: pointer;
   width: 100%;
   border: none;
@@ -32,13 +32,4 @@
 .DirectionButton-active {
   color: var(--p-color-text);
   background: var(--p-color-bg-fill-transparent-active);
-}
-
-.Label {
-  flex: 1;
-  color: var(--p-color-text);
-  margin-left: var(--p-space-050);
-  font-size: var(--p-font-size-300);
-  font-weight: var(--p-font-weight-medium);
-  line-height: var(--p-font-line-height-400);
 }

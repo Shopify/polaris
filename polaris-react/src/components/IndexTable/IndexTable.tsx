@@ -883,23 +883,28 @@ function IndexTableBase({
       preferredPosition: 'above' as TooltipOverlayProps['preferredPosition'],
     };
 
+    const headingTitle = (
+      <Text
+        as="span"
+        variant="bodySm"
+        fontWeight="medium"
+        visuallyHidden={heading.hidden}
+      >
+        {heading.title}
+      </Text>
+    );
+
     if (heading.new) {
       headingContent = (
         <LegacyStack wrap={false} alignment="center">
-          <span>{heading.title}</span>
+          {headingTitle}
           <Badge tone="new">
             {i18n.translate('Polaris.IndexTable.onboardingBadgeText')}
           </Badge>
         </LegacyStack>
       );
-    } else if (heading.hidden) {
-      headingContent = (
-        <Text as="span" visuallyHidden>
-          {heading.title}
-        </Text>
-      );
     } else {
-      headingContent = heading.title;
+      headingContent = headingTitle;
     }
 
     const style = {

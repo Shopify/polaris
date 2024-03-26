@@ -2,6 +2,7 @@ import React from 'react';
 import {AlertCircleIcon} from '@shopify/polaris-icons';
 
 import {Icon} from '../Icon';
+import {Text} from '../Text';
 import type {Error} from '../../types';
 
 import styles from './InlineError.module.css';
@@ -23,7 +24,9 @@ export function InlineError({message, fieldID}: InlineErrorProps) {
       <div className={styles.Icon}>
         <Icon source={AlertCircleIcon} />
       </div>
-      {message}
+      <Text as="span" variant="bodyMd">
+        {message}
+      </Text>
     </div>
   );
 }

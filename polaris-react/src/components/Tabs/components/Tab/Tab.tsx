@@ -26,7 +26,6 @@ import {
   focusFirstFocusableNode,
   handleMouseUpByBlurring,
 } from '../../../../utilities/focus';
-import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {Icon} from '../../../Icon';
@@ -72,8 +71,6 @@ export const Tab = forwardRef(
     const [activeModalType, setActiveModalType] = useState<TabAction | null>(
       null,
     );
-    const {mdDown} = useBreakpoints();
-
     const wasSelected = useRef(selected);
     const panelFocused = useRef(false);
     const node = useRef<HTMLLIElement | null>(null);
@@ -306,11 +303,7 @@ export const Tab = forwardRef(
         onKeyDown={handleKeyDown}
       >
         <InlineStack gap="200" align="center" blockAlign="center" wrap={false}>
-          <Text
-            as="span"
-            variant={mdDown ? 'bodyLg' : 'bodySm'}
-            fontWeight="medium"
-          >
+          <Text as="span" variant="bodySm" fontWeight="medium">
             {icon ?? content}
           </Text>
           {badgeMarkup}

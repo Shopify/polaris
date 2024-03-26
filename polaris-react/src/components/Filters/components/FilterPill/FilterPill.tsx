@@ -10,7 +10,6 @@ import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
 import {InlineStack} from '../../../InlineStack';
 import {UnstyledButton} from '../../../UnstyledButton';
-import {useBreakpoints} from '../../../../utilities/breakpoints';
 import {classNames} from '../../../../utilities/css';
 import type {FilterInterface} from '../../../../types';
 
@@ -46,7 +45,6 @@ export function FilterPill({
   onClick,
 }: FilterPillProps) {
   const i18n = useI18n();
-  const {mdDown} = useBreakpoints();
 
   const elementRef = useRef<HTMLDivElement>(null);
   const {
@@ -113,11 +111,9 @@ export function FilterPill({
     styles.ToggleButton,
   );
 
-  const labelVariant = mdDown ? 'bodyLg' : 'bodySm';
-
   const wrappedLabel = (
     <div className={styles.Label}>
-      <Text variant={labelVariant} as="span">
+      <Text variant="bodySm" as="span">
         {label}
       </Text>
     </div>

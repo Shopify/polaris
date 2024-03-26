@@ -786,11 +786,15 @@ export function WithLoadingSmallerContent() {
       >
         {loading ? (
           <div style={{height: '200px'}}>
-            <p>Loading...</p>
+            <Text as="p" variant="bodyMd">
+              Loading...
+            </Text>
           </div>
         ) : (
           <div>
-            <p>Small content from the server</p>
+            <Text as="p" variant="bodyMd">
+              Small content from the server
+            </Text>
           </div>
         )}
       </Popover>

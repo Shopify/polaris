@@ -7,6 +7,8 @@ import {NavigationContext} from '../../context';
 import {Badge} from '../../../Badge';
 import {Icon} from '../../../Icon';
 import {Indicator} from '../../../Indicator';
+import {Text} from '../../../Text';
+import type {TextProps} from '../../../Text';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {useI18n} from '../../../../utilities/i18n';
@@ -47,6 +49,7 @@ export function Item({
   truncateText,
   showVerticalLine,
   showVerticalHoverPointer,
+  level = 0,
   onMouseEnter,
   onMouseLeave,
 }: ItemProps) {
@@ -137,6 +140,17 @@ export function Item({
       <div className={styles.Badge}>{badgeMarkup}</div>
     );
 
+  const tone =
+    !showVerticalHoverPointer && !matches && level !== 0
+      ? 'subdued'
+      : undefined;
+  let fontWeight: TextProps['fontWeight'] = 'regular';
+  if ((matches || selected) && !childIsActive) {
+    fontWeight = 'semibold';
+  } else if (level === 0 || showVerticalHoverPointer) {
+    fontWeight = 'medium';
+  }
+
   const itemLabelMarkup = (
     <span
       className={classNames(
@@ -145,7 +159,9 @@ export function Item({
       )}
       ref={navTextRef}
     >
-      {label}
+      <Text as="span" variant="bodyMd" tone={tone} fontWeight={fontWeight}>
+        {label}
+      </Text>
       {indicatorMarkup}
     </span>
   );

@@ -7,6 +7,7 @@ import {Layout} from '../../Layout';
 import {SkeletonBodyText} from '../../SkeletonBodyText';
 import {SkeletonPage} from '../SkeletonPage';
 import {Box} from '../../Box';
+import {Text} from '../../Text';
 
 describe('<SkeletonPage />', () => {
   it('renders its children', () => {
@@ -34,10 +35,10 @@ describe('<SkeletonPage />', () => {
   });
 
   describe('title', () => {
-    it('renders an h1 with the Title class when title is defined', () => {
+    it('renders a h1 when title is defined', () => {
       const skeletonPage = mountWithApp(<SkeletonPage title="Products" />);
 
-      expect(skeletonPage).toContainReactComponent('h1', {className: 'Title'});
+      expect(skeletonPage).toContainReactComponent(Text, {as: 'h1'});
       expect(skeletonPage).not.toContainReactComponent(Box, {
         background: 'bg-fill-tertiary',
       });
@@ -57,8 +58,8 @@ describe('<SkeletonPage />', () => {
     it('renders SkeletonTitle when title is an empty string', () => {
       const skeletonPage = mountWithApp(<SkeletonPage title="" />);
 
-      expect(skeletonPage).not.toContainReactComponent('h1', {
-        className: 'Title',
+      expect(skeletonPage).not.toContainReactComponent(Text, {
+        as: 'h1',
       });
       expect(skeletonPage).toContainReactComponent(Box, {
         background: 'bg-fill-tertiary',

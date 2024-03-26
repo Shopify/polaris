@@ -66,7 +66,9 @@ export function WithHorizontalDirection() {
 export function WithSpecificDirection() {
   return (
     <LegacyStack vertical>
-      <p>Block Start</p>
+      <Text as="p" variant="bodyMd">
+        Block Start
+      </Text>
       <Box
         background="bg-surface"
         padding="400"
@@ -77,7 +79,9 @@ export function WithSpecificDirection() {
           <div style={styles} />
         </Bleed>
       </Box>
-      <p>Block End</p>
+      <Text as="p" variant="bodyMd">
+        Block End
+      </Text>
       <Box
         background="bg-surface"
         padding="400"
@@ -88,7 +92,9 @@ export function WithSpecificDirection() {
           <div style={styles} />
         </Bleed>
       </Box>
-      <p>Inline Start</p>
+      <Text as="p" variant="bodyMd">
+        Inline Start
+      </Text>
       <Box
         background="bg-surface"
         padding="400"
@@ -99,7 +105,9 @@ export function WithSpecificDirection() {
           <div style={styles} />
         </Bleed>
       </Box>
-      <p>Inline End</p>
+      <Text as="p" variant="bodyMd">
+        Inline End
+      </Text>
       <Box
         background="bg-surface"
         padding="400"

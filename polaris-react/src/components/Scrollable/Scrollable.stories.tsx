@@ -21,7 +21,7 @@ export function Default() {
   return (
     <LegacyCard title="Terms of service" sectioned>
       <Scrollable shadow style={{height: '200px'}} focusable>
-        <p>
+        <Text as="p" variant="bodyMd">
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
           the following terms and conditions (“Terms of Service”). The Services
@@ -35,8 +35,8 @@ export function Default() {
           update and change the Terms of Service by posting updates and changes
           to the Shopify website. You are advised to check the Terms of Service
           from time to time for any updates or changes that may impact you.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
           the following terms and conditions (“Terms of Service”). The Services
@@ -50,8 +50,8 @@ export function Default() {
           update and change the Terms of Service by posting updates and changes
           to the Shopify website. You are advised to check the Terms of Service
           from time to time for any updates or changes that may impact you.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
           the following terms and conditions (“Terms of Service”). The Services
@@ -65,7 +65,7 @@ export function Default() {
           update and change the Terms of Service by posting updates and changes
           to the Shopify website. You are advised to check the Terms of Service
           from time to time for any updates or changes that may impact you.
-        </p>
+        </Text>
       </Scrollable>
     </LegacyCard>
   );
@@ -79,16 +79,18 @@ export function WithHorizonalScrollPrevention() {
       horizontal={false}
     >
       <div>
-        <p>Last updated on: September 6, 2022</p>
+        <Text as="p" variant="bodyMd">
+          Last updated on: September 6, 2022
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Welcome to Shopify! By signing up for a Shopify Account (as defined in
           Section 1) or by using any Shopify Services (as defined below), you
           are agreeing to be bound by the following terms and conditions (the “
           <strong>Terms of Service</strong>”).
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           As used in these Terms of Service, “<strong>we</strong>”, “
           <strong>us</strong>”, “<strong>our</strong>” and “
           <strong>Shopify</strong>” means the applicable Shopify Contracting
@@ -97,9 +99,9 @@ export function WithHorizonalScrollPrevention() {
           as an individual), or the business employing the Shopify User (if
           registering for or using a Shopify Service as a business) and any of
           its affiliates.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Shopify provides a complete commerce platform that enables merchants
           to unify their commerce activities. Among other features, this
           platform includes a range of tools for merchants to build and
@@ -118,9 +120,9 @@ export function WithHorizonalScrollPrevention() {
             https://www.shopify.com/legal/terms
           </a>
           .
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           You must read, agree with and accept all of the terms and conditions
           contained or expressly referenced in these Terms of Service, including
           Shopify’s
@@ -147,9 +149,9 @@ export function WithHorizonalScrollPrevention() {
             Rules of Engagement for Sale of COVID-19 Related Products
           </a>
           .
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           <strong>
             Everyday language summaries are provided for convenience only and
             appear in bold near each section, but these summaries are not
@@ -159,7 +161,7 @@ export function WithHorizonalScrollPrevention() {
             services, you are agreeing to these terms. Be sure to occasionally
             check back for updates.
           </strong>
-        </p>
+        </Text>
       </div>
     </Scrollable>
   );
@@ -175,16 +177,18 @@ export function WithGutterAndThinDragHandle() {
       scrollbarWidth="thin"
     >
       <div>
-        <p>Last updated on: September 6, 2022</p>
+        <Text as="p" variant="bodyMd">
+          Last updated on: September 6, 2022
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Welcome to Shopify! By signing up for a Shopify Account (as defined in
           Section 1) or by using any Shopify Services (as defined below), you
           are agreeing to be bound by the following terms and conditions (the “
           <strong>Terms of Service</strong>”).
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           As used in these Terms of Service, “<strong>we</strong>”, “
           <strong>us</strong>”, “<strong>our</strong>” and “
           <strong>Shopify</strong>” means the applicable Shopify Contracting
@@ -193,9 +197,9 @@ export function WithGutterAndThinDragHandle() {
           as an individual), or the business employing the Shopify User (if
           registering for or using a Shopify Service as a business) and any of
           its affiliates.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Shopify provides a complete commerce platform that enables merchants
           to unify their commerce activities. Among other features, this
           platform includes a range of tools for merchants to build and
@@ -214,9 +218,9 @@ export function WithGutterAndThinDragHandle() {
             https://www.shopify.com/legal/terms
           </a>
           .
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           You must read, agree with and accept all of the terms and conditions
           contained or expressly referenced in these Terms of Service, including
           Shopify’s
@@ -243,9 +247,9 @@ export function WithGutterAndThinDragHandle() {
             Rules of Engagement for Sale of COVID-19 Related Products
           </a>
           .
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           <strong>
             Everyday language summaries are provided for convenience only and
             appear in bold near each section, but these summaries are not
@@ -255,7 +259,7 @@ export function WithGutterAndThinDragHandle() {
             services, you are agreeing to these terms. Be sure to occasionally
             check back for updates.
           </strong>
-        </p>
+        </Text>
       </div>
     </Scrollable>
   );
@@ -268,47 +272,51 @@ export function ScrollToChildComponent() {
         <ol>
           <li>Account Terms</li>
         </ol>
-        <p>
+        <Text as="p" variant="bodyMd">
           You must be 18 years or older or at least the age of majority in the
           jurisdiction where you reside or from which you use this Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           To access and use the Services, you must register for a Shopify
           account (“Account”) by providing your full legal name, current
           address, phone number, a valid email address, and any other
           information indicated as required. Shopify may reject your application
           for an Account, or cancel an existing Account, for any reason, in our
           sole discretion.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge that Shopify will use the email address you provide as
           the primary method for communication.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You are responsible for keeping your password secure. Shopify cannot
           and will not be liable for any loss or damage from your failure to
           maintain the security of your Account and password.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You are responsible for all activity and content such as photos,
           images, videos, graphics, written content, audio files, code,
           information, or data uploaded, collected, generated, stored,
           displayed, distributed, transmitted or exhibited on or in connection
           with your Account (“Materials”).
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           A breach or violation of any term in the Terms of Service, including
           the AUP, as determined in the sole discretion of Shopify will result
           in an immediate termination of your services.
-        </p>
-        <p>Which means</p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Which means
+        </Text>
+        <Text as="p" variant="bodyMd">
           You are responsible for your Account and any Materials you upload to
           the Shopify Service. Remember that with any violation of these terms
           we will cancel your service.
-        </p>
+        </Text>
 
-        <p>If we need to reach you, we will send you an email.</p>
+        <Text as="p" variant="bodyMd">
+          If we need to reach you, we will send you an email.
+        </Text>
 
         <ol>
           <li>Account Activation</li>
@@ -317,29 +325,31 @@ export function ScrollToChildComponent() {
         <Scrollable.ScrollTo />
         <strong>2.1 Shopify Account</strong>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Subject to section 2.1.2, the person signing up for the Service will
           be the contracting party (“Account Owner”) for the purposes of our
           Terms of Service and will be the person who is authorized to use any
           corresponding account we may provide to the Account Owner in
           connection with the Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           If you are signing up for the Service on behalf of your employer, your
           employer shall be the Account Owner. If you are signing up for the
           Service on behalf of your employer, then you represent and warrant
           that you have the authority to bind your employer to our Terms of
           Service.
-        </p>
-        <p>2.2 PayPal Express Checkout and Shopify Payments Accounts</p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          2.2 PayPal Express Checkout and Shopify Payments Accounts
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon completion of sign up for the Service, Shopify will create a
           PayPal Express Checkout account on your behalf, using your email
           address. Depending on your location, Shopify may also create a Shopify
           Payments account on your behalf.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge that PayPal Express Checkout and/or Shopify Payments
           will be your default payments gateway(s) and that it is your sole
           responsibility as the Account Owner to activate and maintain these
@@ -347,10 +357,12 @@ export function ScrollToChildComponent() {
           active, it is your responsibility to deactivate them. For the
           avoidance of doubt, PayPal Express Checkout is a Third Party Service,
           as defined in Section 15 of these Terms of Service.
-        </p>
-        <p>2.3 Apple Pay for Safari Account</p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          2.3 Apple Pay for Safari Account
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon completion of sign up for the Service, Shopify will create an
           Apple Pay for Safari (“Apple Pay”) account on your behalf, using the
           URL(s) and business name associated with your Account. Depending on
@@ -360,13 +372,13 @@ export function ScrollToChildComponent() {
           Apple Pay account active, it is your responsibility to deactivate it.
           For the avoidance of doubt, Apple Pay is a Third Party Service, as
           defined in Section 15 of these Terms of Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           If you use an Apple Pay supported payment gateway and your customers
           have enabled Apple Pay on their device, customers may purchase goods
           and services from your store using Apple Pay.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           By using Apple Pay on your store, you are agreeing to be bound by the
           Apple Pay Platform Web Merchant Terms and Conditions, as they may be
           amended by Apple from time to time. If Apple amends the Apple Pay
@@ -383,25 +395,27 @@ export function ScrollToChildComponent() {
           any changes to the Apple Pay Platform Web Merchant Terms, de-activate
           your Apple Pay account and do not continue to use Apple Pay on your
           store.
-        </p>
-        <p>2.4 Google Payment</p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          2.4 Google Payment
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon completion of sign up for the Service, if you have been enrolled
           in Shopify Payments, Shopify will also create a Google Payment account
           on your behalf. If you do not wish to keep your Google Payment account
           active, it is your responsibility to deactivate it. For the avoidance
           of doubt, Google Payment is a Third Party Service, as defined in
           Section 15 of these Terms of Service.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           If you use a Google Payment supported payment gateway and your
           customers have enabled Google Payment, customers may purchase goods
           and services from your store using Google Payment.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           By using Google Payment on your store, you are agreeing to be bound by
           the Google Payment API Terms of Service, as they may be amended by
           Google from time to time. If Google amends the Google Payment API
@@ -418,49 +432,53 @@ export function ScrollToChildComponent() {
           to any changes to the Google Payment API Terms of Service, de-activate
           your Google Payment account and do not continue to use Google Payment
           on your store.
-        </p>
+        </Text>
 
-        <p>2.5 Domain Names</p>
+        <Text as="p" variant="bodyMd">
+          2.5 Domain Names
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon purchasing a domain name through Shopify, domain registration
           will be preset to automatically renew each year so long as your
           Shopify Account remains active. You acknowledge that it is your sole
           responsibility to deactivate the auto-renewal function should you
           choose to do so.
-        </p>
-        <p>Which means</p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Which means
+        </Text>
+        <Text as="p" variant="bodyMd">
           The person signing up for the Shopify Service is responsible for the
           account and is bound by these Terms of Service. If you signup on
           behalf of your employer, your employer owns the account and is also
           bound by our Terms of Service.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           We automatically create accounts for you to accept payments. You are
           responsible for activating and deactivating these accounts.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Any domain you purchase through us will automatically renew unless you
           opt out.
-        </p>
+        </Text>
 
         <ol>
           <li>General Conditions</li>
         </ol>
-        <p>
+        <Text as="p" variant="bodyMd">
           You must read, agree with and accept all of the terms and conditions
           contained in these Terms of Service, including the AUP and the Privacy
           Policy before you may become a member of Shopify.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Technical support is only provided to paying Account holders and is
           only available via email.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           The Terms of Service shall be governed by and interpreted in
           accordance with the laws of the Province of Ontario and the laws of
           Canada applicable therein, without regard to principles of conflicts
@@ -470,8 +488,8 @@ export function ScrollToChildComponent() {
           the Terms of Service. The United Nations Convention on Contracts for
           the International Sale of Goods will not apply to these Terms of
           Service and is hereby expressly excluded.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge and agree that Shopify may amend these Terms of
           Service at any time by posting the relevant amended and restated Terms
           of Service on Shopify’s website, available at
@@ -484,46 +502,46 @@ export function ScrollToChildComponent() {
           agreement to, and acceptance of, the amended Terms of Service. If you
           do not agree to any changes to the Terms of Service, do not continue
           to use the Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You may not use the Shopify service for any illegal or unauthorized
           purpose nor may you, in the use of the Service, violate any laws in
           your jurisdiction (including but not limited to copyright laws), the
           laws applicable to you in your customer’s jurisdiction, or the laws of
           Canada and the Province of Ontario. You will comply with all
           applicable laws, rules and regulations in your use of the Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You agree not to reproduce, duplicate, copy, sell, resell or exploit
           any portion of the Service, use of the Service, or access to the
           Service without the express written permission by Shopify.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You shall not purchase search engine or other pay per click keywords
           (such as Google AdWords), or domain names that use Shopify or Shopify
           trademarks and/or variations and misspellings thereof.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           Questions about the Terms of Service should be sent to
           <a href="mailto:support@shopify.com">support@shopify.com</a>.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You understand that your Materials (not including credit card
           information), may be transferred unencrypted and involve (a)
           transmissions over various networks; and (b) changes to conform and
           adapt to technical requirements of connecting networks or devices.
           Credit Card information is always encrypted during transfer over
           networks.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge and agree that your use of the Service, including
           information transmitted to or stored by Shopify, is governed by its
           privacy policy at
           <a href="https://www.shopify.com/legal/privacy">
             https://www.shopify.com/legal/privacy
           </a>
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           The Terms of Service may be available in languages other than English.
           To the extent of any inconsistencies or conflicts between these
           English Terms of Service and Shopify’s Terms of Service available in
@@ -533,22 +551,24 @@ export function ScrollToChildComponent() {
             https://www.shopify.com/legal/terms
           </a>
           will prevail.
-        </p>
-        <p>Which means</p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Which means
+        </Text>
+        <Text as="p" variant="bodyMd">
           The Shopify service belongs to us. You are not allowed to rip it off
           or use it for any illegal or sketchy purpose.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           If a dispute arises the issue will be dealt with in the Province of
           Ontario.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Your Materials may be transferred unencrypted and may be altered, but
           credit card information is always encrypted.
-        </p>
+        </Text>
       </Scrollable>
     </LegacyCard>
   );
@@ -558,7 +578,7 @@ export function WithScrollHint() {
   return (
     <LegacyCard title="Terms of service" sectioned>
       <Scrollable hint shadow style={{height: '200px'}} focusable>
-        <p>
+        <Text as="p" variant="bodyMd">
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
           the following terms and conditions (“Terms of Service”). The Services
@@ -572,8 +592,8 @@ export function WithScrollHint() {
           update and change the Terms of Service by posting updates and changes
           to the Shopify website. You are advised to check the Terms of Service
           from time to time for any updates or changes that may impact you.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
           the following terms and conditions (“Terms of Service”). The Services
@@ -587,8 +607,8 @@ export function WithScrollHint() {
           update and change the Terms of Service by posting updates and changes
           to the Shopify website. You are advised to check the Terms of Service
           from time to time for any updates or changes that may impact you.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
           the following terms and conditions (“Terms of Service”). The Services
@@ -602,7 +622,7 @@ export function WithScrollHint() {
           update and change the Terms of Service by posting updates and changes
           to the Shopify website. You are advised to check the Terms of Service
           from time to time for any updates or changes that may impact you.
-        </p>
+        </Text>
       </Scrollable>
     </LegacyCard>
   );
@@ -616,7 +636,7 @@ export function OnScrolledToBottom() {
         style={{height: '200px'}}
         onScrolledToBottom={() => console.log('scrolled to bottom')}
       >
-        <p>
+        <Text as="p" variant="bodyMd">
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
           the following terms and conditions (“Terms of Service”). The Services
@@ -630,8 +650,8 @@ export function OnScrolledToBottom() {
           update and change the Terms of Service by posting updates and changes
           to the Shopify website. You are advised to check the Terms of Service
           from time to time for any updates or changes that may impact you.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
           the following terms and conditions (“Terms of Service”). The Services
@@ -645,8 +665,8 @@ export function OnScrolledToBottom() {
           update and change the Terms of Service by posting updates and changes
           to the Shopify website. You are advised to check the Terms of Service
           from time to time for any updates or changes that may impact you.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           By signing up for the Shopify service (“Service”) or any of the
           services of Shopify Inc. (“Shopify”) you are agreeing to be bound by
           the following terms and conditions (“Terms of Service”). The Services
@@ -660,7 +680,7 @@ export function OnScrolledToBottom() {
           update and change the Terms of Service by posting updates and changes
           to the Shopify website. You are advised to check the Terms of Service
           from time to time for any updates or changes that may impact you.
-        </p>
+        </Text>
       </Scrollable>
     </LegacyCard>
   );
@@ -679,47 +699,51 @@ export function UsingScrollToFromRef() {
         <ol>
           <li>Account Terms</li>
         </ol>
-        <p>
+        <Text as="p" variant="bodyMd">
           You must be 18 years or older or at least the age of majority in the
           jurisdiction where you reside or from which you use this Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           To access and use the Services, you must register for a Shopify
           account (“Account”) by providing your full legal name, current
           address, phone number, a valid email address, and any other
           information indicated as required. Shopify may reject your application
           for an Account, or cancel an existing Account, for any reason, in our
           sole discretion.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge that Shopify will use the email address you provide as
           the primary method for communication.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You are responsible for keeping your password secure. Shopify cannot
           and will not be liable for any loss or damage from your failure to
           maintain the security of your Account and password.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You are responsible for all activity and content such as photos,
           images, videos, graphics, written content, audio files, code,
           information, or data uploaded, collected, generated, stored,
           displayed, distributed, transmitted or exhibited on or in connection
           with your Account (“Materials”).
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           A breach or violation of any term in the Terms of Service, including
           the AUP, as determined in the sole discretion of Shopify will result
           in an immediate termination of your services.
-        </p>
-        <p>Which means</p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Which means
+        </Text>
+        <Text as="p" variant="bodyMd">
           You are responsible for your Account and any Materials you upload to
           the Shopify Service. Remember that with any violation of these terms
           we will cancel your service.
-        </p>
+        </Text>
 
-        <p>If we need to reach you, we will send you an email.</p>
+        <Text as="p" variant="bodyMd">
+          If we need to reach you, we will send you an email.
+        </Text>
 
         <ol>
           <li>Account Activation</li>
@@ -727,29 +751,31 @@ export function UsingScrollToFromRef() {
 
         <strong>2.1 Shopify Account</strong>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Subject to section 2.1.2, the person signing up for the Service will
           be the contracting party (“Account Owner”) for the purposes of our
           Terms of Service and will be the person who is authorized to use any
           corresponding account we may provide to the Account Owner in
           connection with the Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           If you are signing up for the Service on behalf of your employer, your
           employer shall be the Account Owner. If you are signing up for the
           Service on behalf of your employer, then you represent and warrant
           that you have the authority to bind your employer to our Terms of
           Service.
-        </p>
-        <p>2.2 PayPal Express Checkout and Shopify Payments Accounts</p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          2.2 PayPal Express Checkout and Shopify Payments Accounts
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon completion of sign up for the Service, Shopify will create a
           PayPal Express Checkout account on your behalf, using your email
           address. Depending on your location, Shopify may also create a Shopify
           Payments account on your behalf.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge that PayPal Express Checkout and/or Shopify Payments
           will be your default payments gateway(s) and that it is your sole
           responsibility as the Account Owner to activate and maintain these
@@ -757,10 +783,12 @@ export function UsingScrollToFromRef() {
           active, it is your responsibility to deactivate them. For the
           avoidance of doubt, PayPal Express Checkout is a Third Party Service,
           as defined in Section 15 of these Terms of Service.
-        </p>
-        <p>2.3 Apple Pay for Safari Account</p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          2.3 Apple Pay for Safari Account
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon completion of sign up for the Service, Shopify will create an
           Apple Pay for Safari (“Apple Pay”) account on your behalf, using the
           URL(s) and business name associated with your Account. Depending on
@@ -770,13 +798,13 @@ export function UsingScrollToFromRef() {
           Apple Pay account active, it is your responsibility to deactivate it.
           For the avoidance of doubt, Apple Pay is a Third Party Service, as
           defined in Section 15 of these Terms of Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           If you use an Apple Pay supported payment gateway and your customers
           have enabled Apple Pay on their device, customers may purchase goods
           and services from your store using Apple Pay.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           By using Apple Pay on your store, you are agreeing to be bound by the
           Apple Pay Platform Web Merchant Terms and Conditions, as they may be
           amended by Apple from time to time. If Apple amends the Apple Pay
@@ -793,25 +821,27 @@ export function UsingScrollToFromRef() {
           any changes to the Apple Pay Platform Web Merchant Terms, de-activate
           your Apple Pay account and do not continue to use Apple Pay on your
           store.
-        </p>
-        <p>2.4 Google Payment</p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          2.4 Google Payment
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon completion of sign up for the Service, if you have been enrolled
           in Shopify Payments, Shopify will also create a Google Payment account
           on your behalf. If you do not wish to keep your Google Payment account
           active, it is your responsibility to deactivate it. For the avoidance
           of doubt, Google Payment is a Third Party Service, as defined in
           Section 15 of these Terms of Service.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           If you use a Google Payment supported payment gateway and your
           customers have enabled Google Payment, customers may purchase goods
           and services from your store using Google Payment.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           By using Google Payment on your store, you are agreeing to be bound by
           the Google Payment API Terms of Service, as they may be amended by
           Google from time to time. If Google amends the Google Payment API
@@ -828,49 +858,53 @@ export function UsingScrollToFromRef() {
           to any changes to the Google Payment API Terms of Service, de-activate
           your Google Payment account and do not continue to use Google Payment
           on your store.
-        </p>
+        </Text>
 
-        <p>2.5 Domain Names</p>
+        <Text as="p" variant="bodyMd">
+          2.5 Domain Names
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon purchasing a domain name through Shopify, domain registration
           will be preset to automatically renew each year so long as your
           Shopify Account remains active. You acknowledge that it is your sole
           responsibility to deactivate the auto-renewal function should you
           choose to do so.
-        </p>
-        <p>Which means</p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Which means
+        </Text>
+        <Text as="p" variant="bodyMd">
           The person signing up for the Shopify Service is responsible for the
           account and is bound by these Terms of Service. If you signup on
           behalf of your employer, your employer owns the account and is also
           bound by our Terms of Service.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           We automatically create accounts for you to accept payments. You are
           responsible for activating and deactivating these accounts.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Any domain you purchase through us will automatically renew unless you
           opt out.
-        </p>
+        </Text>
 
         <ol>
           <li>General Conditions</li>
         </ol>
-        <p>
+        <Text as="p" variant="bodyMd">
           You must read, agree with and accept all of the terms and conditions
           contained in these Terms of Service, including the AUP and the Privacy
           Policy before you may become a member of Shopify.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Technical support is only provided to paying Account holders and is
           only available via email.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           The Terms of Service shall be governed by and interpreted in
           accordance with the laws of the Province of Ontario and the laws of
           Canada applicable therein, without regard to principles of conflicts
@@ -880,8 +914,8 @@ export function UsingScrollToFromRef() {
           the Terms of Service. The United Nations Convention on Contracts for
           the International Sale of Goods will not apply to these Terms of
           Service and is hereby expressly excluded.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge and agree that Shopify may amend these Terms of
           Service at any time by posting the relevant amended and restated Terms
           of Service on Shopify’s website, available at
@@ -894,46 +928,46 @@ export function UsingScrollToFromRef() {
           agreement to, and acceptance of, the amended Terms of Service. If you
           do not agree to any changes to the Terms of Service, do not continue
           to use the Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You may not use the Shopify service for any illegal or unauthorized
           purpose nor may you, in the use of the Service, violate any laws in
           your jurisdiction (including but not limited to copyright laws), the
           laws applicable to you in your customer’s jurisdiction, or the laws of
           Canada and the Province of Ontario. You will comply with all
           applicable laws, rules and regulations in your use of the Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You agree not to reproduce, duplicate, copy, sell, resell or exploit
           any portion of the Service, use of the Service, or access to the
           Service without the express written permission by Shopify.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You shall not purchase search engine or other pay per click keywords
           (such as Google AdWords), or domain names that use Shopify or Shopify
           trademarks and/or variations and misspellings thereof.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           Questions about the Terms of Service should be sent to
           <a href="mailto:support@shopify.com">support@shopify.com</a>.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You understand that your Materials (not including credit card
           information), may be transferred unencrypted and involve (a)
           transmissions over various networks; and (b) changes to conform and
           adapt to technical requirements of connecting networks or devices.
           Credit Card information is always encrypted during transfer over
           networks.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge and agree that your use of the Service, including
           information transmitted to or stored by Shopify, is governed by its
           privacy policy at
           <a href="https://www.shopify.com/legal/privacy">
             https://www.shopify.com/legal/privacy
           </a>
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           The Terms of Service may be available in languages other than English.
           To the extent of any inconsistencies or conflicts between these
           English Terms of Service and Shopify’s Terms of Service available in
@@ -943,22 +977,24 @@ export function UsingScrollToFromRef() {
             https://www.shopify.com/legal/terms
           </a>
           will prevail.
-        </p>
-        <p>Which means</p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Which means
+        </Text>
+        <Text as="p" variant="bodyMd">
           The Shopify service belongs to us. You are not allowed to rip it off
           or use it for any illegal or sketchy purpose.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           If a dispute arises the issue will be dealt with in the Province of
           Ontario.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Your Materials may be transferred unencrypted and may be altered, but
           credit card information is always encrypted.
-        </p>
+        </Text>
         <Button onClick={handleOnClick}>Scroll to top</Button>
       </Scrollable>
     </LegacyCard>
@@ -978,47 +1014,51 @@ export function UsingInstantScrollToFromRef() {
         <ol>
           <li>Account Terms</li>
         </ol>
-        <p>
+        <Text as="p" variant="bodyMd">
           You must be 18 years or older or at least the age of majority in the
           jurisdiction where you reside or from which you use this Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           To access and use the Services, you must register for a Shopify
           account (“Account”) by providing your full legal name, current
           address, phone number, a valid email address, and any other
           information indicated as required. Shopify may reject your application
           for an Account, or cancel an existing Account, for any reason, in our
           sole discretion.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge that Shopify will use the email address you provide as
           the primary method for communication.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You are responsible for keeping your password secure. Shopify cannot
           and will not be liable for any loss or damage from your failure to
           maintain the security of your Account and password.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You are responsible for all activity and content such as photos,
           images, videos, graphics, written content, audio files, code,
           information, or data uploaded, collected, generated, stored,
           displayed, distributed, transmitted or exhibited on or in connection
           with your Account (“Materials”).
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           A breach or violation of any term in the Terms of Service, including
           the AUP, as determined in the sole discretion of Shopify will result
           in an immediate termination of your services.
-        </p>
-        <p>Which means</p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Which means
+        </Text>
+        <Text as="p" variant="bodyMd">
           You are responsible for your Account and any Materials you upload to
           the Shopify Service. Remember that with any violation of these terms
           we will cancel your service.
-        </p>
+        </Text>
 
-        <p>If we need to reach you, we will send you an email.</p>
+        <Text as="p" variant="bodyMd">
+          If we need to reach you, we will send you an email.
+        </Text>
 
         <ol>
           <li>Account Activation</li>
@@ -1026,29 +1066,31 @@ export function UsingInstantScrollToFromRef() {
 
         <strong>2.1 Shopify Account</strong>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Subject to section 2.1.2, the person signing up for the Service will
           be the contracting party (“Account Owner”) for the purposes of our
           Terms of Service and will be the person who is authorized to use any
           corresponding account we may provide to the Account Owner in
           connection with the Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           If you are signing up for the Service on behalf of your employer, your
           employer shall be the Account Owner. If you are signing up for the
           Service on behalf of your employer, then you represent and warrant
           that you have the authority to bind your employer to our Terms of
           Service.
-        </p>
-        <p>2.2 PayPal Express Checkout and Shopify Payments Accounts</p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          2.2 PayPal Express Checkout and Shopify Payments Accounts
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon completion of sign up for the Service, Shopify will create a
           PayPal Express Checkout account on your behalf, using your email
           address. Depending on your location, Shopify may also create a Shopify
           Payments account on your behalf.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge that PayPal Express Checkout and/or Shopify Payments
           will be your default payments gateway(s) and that it is your sole
           responsibility as the Account Owner to activate and maintain these
@@ -1056,10 +1098,12 @@ export function UsingInstantScrollToFromRef() {
           active, it is your responsibility to deactivate them. For the
           avoidance of doubt, PayPal Express Checkout is a Third Party Service,
           as defined in Section 15 of these Terms of Service.
-        </p>
-        <p>2.3 Apple Pay for Safari Account</p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          2.3 Apple Pay for Safari Account
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon completion of sign up for the Service, Shopify will create an
           Apple Pay for Safari (“Apple Pay”) account on your behalf, using the
           URL(s) and business name associated with your Account. Depending on
@@ -1069,13 +1113,13 @@ export function UsingInstantScrollToFromRef() {
           Apple Pay account active, it is your responsibility to deactivate it.
           For the avoidance of doubt, Apple Pay is a Third Party Service, as
           defined in Section 15 of these Terms of Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           If you use an Apple Pay supported payment gateway and your customers
           have enabled Apple Pay on their device, customers may purchase goods
           and services from your store using Apple Pay.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           By using Apple Pay on your store, you are agreeing to be bound by the
           Apple Pay Platform Web Merchant Terms and Conditions, as they may be
           amended by Apple from time to time. If Apple amends the Apple Pay
@@ -1092,25 +1136,27 @@ export function UsingInstantScrollToFromRef() {
           any changes to the Apple Pay Platform Web Merchant Terms, de-activate
           your Apple Pay account and do not continue to use Apple Pay on your
           store.
-        </p>
-        <p>2.4 Google Payment</p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          2.4 Google Payment
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon completion of sign up for the Service, if you have been enrolled
           in Shopify Payments, Shopify will also create a Google Payment account
           on your behalf. If you do not wish to keep your Google Payment account
           active, it is your responsibility to deactivate it. For the avoidance
           of doubt, Google Payment is a Third Party Service, as defined in
           Section 15 of these Terms of Service.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           If you use a Google Payment supported payment gateway and your
           customers have enabled Google Payment, customers may purchase goods
           and services from your store using Google Payment.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           By using Google Payment on your store, you are agreeing to be bound by
           the Google Payment API Terms of Service, as they may be amended by
           Google from time to time. If Google amends the Google Payment API
@@ -1127,49 +1173,53 @@ export function UsingInstantScrollToFromRef() {
           to any changes to the Google Payment API Terms of Service, de-activate
           your Google Payment account and do not continue to use Google Payment
           on your store.
-        </p>
+        </Text>
 
-        <p>2.5 Domain Names</p>
+        <Text as="p" variant="bodyMd">
+          2.5 Domain Names
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Upon purchasing a domain name through Shopify, domain registration
           will be preset to automatically renew each year so long as your
           Shopify Account remains active. You acknowledge that it is your sole
           responsibility to deactivate the auto-renewal function should you
           choose to do so.
-        </p>
-        <p>Which means</p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Which means
+        </Text>
+        <Text as="p" variant="bodyMd">
           The person signing up for the Shopify Service is responsible for the
           account and is bound by these Terms of Service. If you signup on
           behalf of your employer, your employer owns the account and is also
           bound by our Terms of Service.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           We automatically create accounts for you to accept payments. You are
           responsible for activating and deactivating these accounts.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Any domain you purchase through us will automatically renew unless you
           opt out.
-        </p>
+        </Text>
 
         <ol>
           <li>General Conditions</li>
         </ol>
-        <p>
+        <Text as="p" variant="bodyMd">
           You must read, agree with and accept all of the terms and conditions
           contained in these Terms of Service, including the AUP and the Privacy
           Policy before you may become a member of Shopify.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Technical support is only provided to paying Account holders and is
           only available via email.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           The Terms of Service shall be governed by and interpreted in
           accordance with the laws of the Province of Ontario and the laws of
           Canada applicable therein, without regard to principles of conflicts
@@ -1179,8 +1229,8 @@ export function UsingInstantScrollToFromRef() {
           the Terms of Service. The United Nations Convention on Contracts for
           the International Sale of Goods will not apply to these Terms of
           Service and is hereby expressly excluded.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge and agree that Shopify may amend these Terms of
           Service at any time by posting the relevant amended and restated Terms
           of Service on Shopify’s website, available at
@@ -1193,46 +1243,46 @@ export function UsingInstantScrollToFromRef() {
           agreement to, and acceptance of, the amended Terms of Service. If you
           do not agree to any changes to the Terms of Service, do not continue
           to use the Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You may not use the Shopify service for any illegal or unauthorized
           purpose nor may you, in the use of the Service, violate any laws in
           your jurisdiction (including but not limited to copyright laws), the
           laws applicable to you in your customer’s jurisdiction, or the laws of
           Canada and the Province of Ontario. You will comply with all
           applicable laws, rules and regulations in your use of the Service.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You agree not to reproduce, duplicate, copy, sell, resell or exploit
           any portion of the Service, use of the Service, or access to the
           Service without the express written permission by Shopify.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You shall not purchase search engine or other pay per click keywords
           (such as Google AdWords), or domain names that use Shopify or Shopify
           trademarks and/or variations and misspellings thereof.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           Questions about the Terms of Service should be sent to
           <a href="mailto:support@shopify.com">support@shopify.com</a>.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You understand that your Materials (not including credit card
           information), may be transferred unencrypted and involve (a)
           transmissions over various networks; and (b) changes to conform and
           adapt to technical requirements of connecting networks or devices.
           Credit Card information is always encrypted during transfer over
           networks.
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           You acknowledge and agree that your use of the Service, including
           information transmitted to or stored by Shopify, is governed by its
           privacy policy at
           <a href="https://www.shopify.com/legal/privacy">
             https://www.shopify.com/legal/privacy
           </a>
-        </p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
           The Terms of Service may be available in languages other than English.
           To the extent of any inconsistencies or conflicts between these
           English Terms of Service and Shopify’s Terms of Service available in
@@ -1242,22 +1292,24 @@ export function UsingInstantScrollToFromRef() {
             https://www.shopify.com/legal/terms
           </a>
           will prevail.
-        </p>
-        <p>Which means</p>
-        <p>
+        </Text>
+        <Text as="p" variant="bodyMd">
+          Which means
+        </Text>
+        <Text as="p" variant="bodyMd">
           The Shopify service belongs to us. You are not allowed to rip it off
           or use it for any illegal or sketchy purpose.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           If a dispute arises the issue will be dealt with in the Province of
           Ontario.
-        </p>
+        </Text>
 
-        <p>
+        <Text as="p" variant="bodyMd">
           Your Materials may be transferred unencrypted and may be altered, but
           credit card information is always encrypted.
-        </p>
+        </Text>
         <Button onClick={handleOnClick}>Scroll to top</Button>
       </Scrollable>
     </LegacyCard>
@@ -1286,16 +1338,18 @@ export function WithShadowOverComplexChildren() {
       >
         <Box padding="400">
           <Banner title="Payment details">
-            <p>Last updated on: September 6, 2022</p>
+            <Text as="p" variant="bodyMd">
+              Last updated on: September 6, 2022
+            </Text>
 
-            <p>
+            <Text as="p" variant="bodyMd">
               Welcome to Shopify! By signing up for a Shopify Account (as
               defined in Section 1) or by using any Shopify Services (as defined
               below), you are agreeing to be bound by the following terms and
               conditions (the “<strong>Terms of Service</strong>”).
-            </p>
+            </Text>
 
-            <p>
+            <Text as="p" variant="bodyMd">
               As used in these Terms of Service, “<strong>we</strong>”, “
               <strong>us</strong>”, “<strong>our</strong>” and “
               <strong>Shopify</strong>” means the applicable Shopify Contracting
@@ -1304,7 +1358,7 @@ export function WithShadowOverComplexChildren() {
               Service as an individual), or the business employing the Shopify
               User (if registering for or using a Shopify Service as a business)
               and any of its affiliates.
-            </p>
+            </Text>
           </Banner>
 
           <FormLayout>
@@ -1325,7 +1379,7 @@ export function WithShadowOverComplexChildren() {
             </FormLayout.Group>
           </FormLayout>
 
-          <p>
+          <Text as="p" variant="bodyMd">
             Shopify provides a complete commerce platform that enables merchants
             to unify their commerce activities. Among other features, this
             platform includes a range of tools for merchants to build and
@@ -1344,8 +1398,8 @@ export function WithShadowOverComplexChildren() {
               https://www.shopify.com/legal/terms
             </a>
             .
-          </p>
-          <p>
+          </Text>
+          <Text as="p" variant="bodyMd">
             You must read, agree with and accept all of the terms and conditions
             contained or expressly referenced in these Terms of Service,
             including Shopify’s
@@ -1374,9 +1428,9 @@ export function WithShadowOverComplexChildren() {
               Rules of Engagement for Sale of COVID-19 Related Products
             </a>
             .
-          </p>
+          </Text>
 
-          <p>
+          <Text as="p" variant="bodyMd">
             <strong>
               Everyday language summaries are provided for convenience only and
               appear in bold near each section, but these summaries are not
@@ -1386,7 +1440,7 @@ export function WithShadowOverComplexChildren() {
               Shopify services, you are agreeing to these terms. Be sure to
               occasionally check back for updates.
             </strong>
-          </p>
+          </Text>
         </Box>
       </Scrollable>
     </BlockStack>

@@ -7,12 +7,6 @@
   @mixin shadow-bevel var(--p-shadow-100), var(--p-border-radius-0), null, '',
     101;
 
-  /* Override custom heading font sizes */
-  h2,
-  h3 {
-    font-size: var(--p-font-size-325);
-  }
-
   + .LegacyCard {
     margin-top: var(--p-space-400);
 
