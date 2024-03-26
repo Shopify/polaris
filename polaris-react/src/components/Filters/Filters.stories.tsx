@@ -37,7 +37,7 @@ export function WithAResourceList() {
     };
     moneySpent: {
       label: string;
-      value: number | [number, number];
+      value: [number, number];
       unsavedChanges: boolean;
     };
     taggedWith: {
@@ -48,12 +48,12 @@ export function WithAResourceList() {
   } = {
     accountStatus: {
       label: 'Account status',
-      value: ['enabled'],
+      value: [],
       unsavedChanges: false,
     },
     moneySpent: {
       label: 'Money spent',
-      value: 0,
+      value: [0, 500],
       unsavedChanges: false,
     },
     taggedWith: {
@@ -77,35 +77,22 @@ export function WithAResourceList() {
 
   const [taggedWith, setTaggedWith] = useState('');
   const [moneySpent, setMoneySpent] = useState<[number, number]>([0, 0]);
-  const [accountStatus, setAccountStatus] = useState(['enabled']);
-  const [unsavedChanges, setUnsavedFilterState] = useState<string[]>([]);
+  const [accountStatus, setAccountStatus] = useState<string[]>([]);
 
   const handleFilterChange =
     (key: string) => (value: string | string[] | number | [number, number]) => {
-      const savedFilter = savedFilterState.current?.get(key);
-
-      if (savedFilter?.value !== value) {
-        if (key === 'taggedWith') setTaggedWith(value as string);
-        if (key === 'moneySpent') setMoneySpent(value as [number, number]);
-        if (key === 'accountStatus') setAccountStatus(value as string[]);
-        setUnsavedFilterState((keys) => {
-          if (keys.includes(key)) return keys;
-          return [...keys, key];
-        });
-      }
+      if (key === 'taggedWith') setTaggedWith(value as string);
+      if (key === 'moneySpent') setMoneySpent(value as [number, number]);
+      if (key === 'accountStatus') setAccountStatus(value as string[]);
     };
 
   const handleFilterRemove = (key: string) => {
-    if (key === 'taggedWith') setTaggedWith('');
-    if (key === 'moneySpent') setMoneySpent([0, 500]);
-    if (key === 'accountStatus') setAccountStatus([]);
-
-    if (
-      emptyFilterState[key].value === savedFilterState.current?.get(key)?.value
-    ) {
-      setUnsavedFilterState((keys) => {
-        return keys.filter((unsavedKey) => unsavedKey !== key);
-      });
+    if (key === 'taggedWith') {
+      setTaggedWith(emptyFilterState.taggedWith.value);
+    } else if (key === 'moneySpent') {
+      setMoneySpent(emptyFilterState.moneySpent.value);
+    } else if (key === 'accountStatus') {
+      setAccountStatus(emptyFilterState.accountStatus.value);
     }
   };
 
@@ -210,20 +197,15 @@ export function WithAResourceList() {
     },
   ];
 
-  const labels = {};
-
-  filters.forEach((filter) => {
-    labels[filter.key] = filter.label;
-  });
-
   const appliedFilters: FiltersProps['appliedFilters'] = [];
+
   filters.forEach(({key, label, value}) => {
     if (!isEmpty(value)) {
       appliedFilters.push({
         key,
-        unsavedChanges: !isUnchanged(key, value),
         label,
         value: humanReadableValue(key, value),
+        unsavedChanges: !isUnchanged(key, value),
         onRemove: () => handleFilterRemove(key),
       });
     }
@@ -262,7 +244,16 @@ export function WithAResourceList() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
+            const media = (
+              <Avatar
+                initials={name
+                  .split(' ')
+                  .map((nm) => nm.substring(0, 1))
+                  .join('')}
+                size="md"
+                name={name}
+              />
+            );
 
             return (
               <ResourceList.Item
@@ -295,15 +286,27 @@ export function WithAResourceList() {
       case 'taggedWith': {
         const tags = (value as string).trim().split(',');
         if (tags.length === 1) return ` ${tags[0]}`;
-        return `${tags
+        else if (tags.length === 2) return `${tags[0]} and ${tags[1]}`;
+        return tags
           .map((tag, index) => {
-            console.log(tag);
             return index !== tags.length - 1 ? tag : `and ${tag}`;
           })
-          .join(', ')}`;
+          .join(', ');
       }
-      case 'accountStatus':
-        return (value as string[]).map((val) => `${val}`).join(', ');
+      case 'accountStatus': {
+        const statuses = value as string[];
+        if (statuses.length === 1) {
+          return statuses[0];
+        } else if (statuses.length === 2) {
+          return `${statuses[0]} or ${statuses[1]}`;
+        } else {
+          return statuses
+            .map((status, index) => {
+              return index !== statuses.length - 1 ? status : `or ${status}`;
+            })
+            .join(', ');
+        }
+      }
       default:
         return undefined;
     }
