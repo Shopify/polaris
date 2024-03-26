@@ -20,7 +20,7 @@ import {
   Text,
   BlockStack,
 } from '@shopify/polaris';
-import {SearchIcon} from '@shopify/polaris-icons';
+import {SearchIcon, SelectIcon} from '@shopify/polaris-icons';
 
 export default {
   component: Popover,
@@ -76,6 +76,13 @@ export function All() {
           With loading smaller content
         </Text>
         <WithLoadingSmallerContent />
+      </BlockStack>
+
+      <BlockStack gap="200">
+        <Text as="h2" variant="headingXl">
+          With preferredPosition cover
+        </Text>
+        <WithCoverPositioning />
       </BlockStack>
     </BlockStack>
   );
@@ -825,6 +832,56 @@ export function WithSubduedPane() {
         <Popover.Pane subdued>
           <Box padding="400">
             <Text as="p">Subdued popover pane</Text>
+          </Box>
+        </Popover.Pane>
+      </Popover>
+    </div>
+  );
+}
+
+export function WithCoverPositioning() {
+  const [popoverActive, setPopoverActive] = useState(true);
+
+  const togglePopoverActive = useCallback(
+    () => setPopoverActive((popoverActive) => !popoverActive),
+    [],
+  );
+
+  const activator = (
+    <button
+      onClick={() => {
+        togglePopoverActive();
+      }}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 'var(--p-space-200)',
+        padding: 'var(--p-space-200) var(--p-space-300)',
+        borderRadius: 'var(--p-border-radius-300)',
+        border: 'var(--p-border-width-025) solid var(--p-color-border)',
+        background: 'var(--p-color-bg-surface)',
+      }}
+    >
+      Show popover
+      <Icon source={SelectIcon} tone="base" />
+    </button>
+  );
+
+  return (
+    <div style={{height: '280px'}}>
+      <Popover
+        active={popoverActive}
+        activator={activator}
+        onClose={togglePopoverActive}
+        preferredPosition="cover"
+      >
+        <Popover.Pane>
+          <Box padding="200" paddingInline="300">
+            <Text as="p">Popover content</Text>
+          </Box>
+
+          <Box padding="200" paddingInline="300">
+            <Text as="p">Popover content</Text>
           </Box>
         </Popover.Pane>
       </Popover>

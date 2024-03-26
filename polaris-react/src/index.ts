@@ -368,6 +368,9 @@ export type {TextContainerProps} from './components/TextContainer';
 export {TextField} from './components/TextField';
 export type {TextFieldProps} from './components/TextField';
 
+export type {ThemeProviderProps} from './components/ThemeProvider/ThemeProvider';
+export {ThemeProvider} from './components/ThemeProvider/ThemeProvider';
+
 export {Thumbnail} from './components/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail';
 

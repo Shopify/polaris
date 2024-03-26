@@ -1,5 +1,63 @@
 # Changelog
 
+## 12.23.0
+
+### Minor Changes
+
+- [#11764](https://github.com/Shopify/polaris/pull/11764) [`880f31b44`](https://github.com/Shopify/polaris/commit/880f31b44baa1cfc4a58320f466ccc5c6438bf48) Thanks [@itwasmattgregg](https://github.com/itwasmattgregg)! - Added align property for FooterHelp
+
+* [#11691](https://github.com/Shopify/polaris/pull/11691) [`1e613de8b`](https://github.com/Shopify/polaris/commit/1e613de8b3938bc30c722382a8e78e75e50be9cd) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - - Added `ThemeProvider` component
+  - Removed `html` from theme classes to remove global theme constraint
+  - Updated `useTheme` to be context aware of parent themes
+  - Updated `Portal` component to be context aware of parent themes
+  - Initialized a `dark-experimental` theme
+
+- [#11787](https://github.com/Shopify/polaris/pull/11787) [`c3aefafe2`](https://github.com/Shopify/polaris/commit/c3aefafe2752d1514632dfb6563739df565273f5) Thanks [@chloerice](https://github.com/chloerice)! - Added support for destructive `promotodBulkActions` to `BulkActions`
+
+### Patch Changes
+
+- Updated dependencies [[`1e613de8b`](https://github.com/Shopify/polaris/commit/1e613de8b3938bc30c722382a8e78e75e50be9cd), [`d689bd8f4`](https://github.com/Shopify/polaris/commit/d689bd8f485ba36247bddf9da705f014cb701f4c)]:
+  - @shopify/polaris-tokens@8.9.0
+  - @shopify/polaris-icons@8.9.0
+
+## 12.22.1
+
+### Patch Changes
+
+- [#11771](https://github.com/Shopify/polaris/pull/11771) [`8d636390a`](https://github.com/Shopify/polaris/commit/8d636390a699c13b2148320e7147794e1f92e46a) Thanks [@kyledurand](https://github.com/kyledurand)! - Added cover positioning story to popover to prevent regressions
+
+* [#11773](https://github.com/Shopify/polaris/pull/11773) [`b1a0efc7d`](https://github.com/Shopify/polaris/commit/b1a0efc7d60b300fd7ff0923eb215ea8f29b63bd) Thanks [@chloerice](https://github.com/chloerice)! - Reverted a change that caused `IndexTable` `onNavigation` not to work when `selectable` is `false`
+
+## 12.22.0
+
+### Minor Changes
+
+- [#11677](https://github.com/Shopify/polaris/pull/11677) [`f6ba2b2a8`](https://github.com/Shopify/polaris/commit/f6ba2b2a8a8beae9ab235437caf5bfbacc50741f) Thanks [@jesstelford](https://github.com/jesstelford)! - Migrated @shopify/polaris from SASS to CSS using postcss plugins
+
+* [#11723](https://github.com/Shopify/polaris/pull/11723) [`4699bb229`](https://github.com/Shopify/polaris/commit/4699bb229ba9d1e76257f99da99c0b95f9d3e041) Thanks [@mrcthms](https://github.com/mrcthms)! - Updated `BulkActions` to only show actions when selectMode is `true`
+
+- [#11727](https://github.com/Shopify/polaris/pull/11727) [`c3ba6ae1b`](https://github.com/Shopify/polaris/commit/c3ba6ae1bb827848cb3eb4dceaabd2725f19e3ea) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Removed the responsive logic that disabled the Card bevel on mobile. Removing this until we are ready to rollout bevel changes across all components.
+
+### Patch Changes
+
+- [#11757](https://github.com/Shopify/polaris/pull/11757) [`e0ae9565c`](https://github.com/Shopify/polaris/commit/e0ae9565cc9384075abcd45d9a24bbd8c326a30b) Thanks [@sophschneider](https://github.com/sophschneider)! - Added dynamicTopBarAndReframe feature flag type
+
+* [#11733](https://github.com/Shopify/polaris/pull/11733) [`9c24a465c`](https://github.com/Shopify/polaris/commit/9c24a465c5e001e148bde335bf6319e924f4b1d6) Thanks [@jesstelford](https://github.com/jesstelford)! - Convert SASS-style inline comments to CSS-style multiline comments.
+
+- [#11724](https://github.com/Shopify/polaris/pull/11724) [`1543246b7`](https://github.com/Shopify/polaris/commit/1543246b7ed5cf65163032f14a39ec18d65d2d9f) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated responsive styles for `Text` component
+
+* [#11765](https://github.com/Shopify/polaris/pull/11765) [`42c298ea7`](https://github.com/Shopify/polaris/commit/42c298ea790eb13d426e402b83feb23184483415) Thanks [@jesstelford](https://github.com/jesstelford)! - Fix build performance regression from using postcss-mixins.
+
+- [#11725](https://github.com/Shopify/polaris/pull/11725) [`3e011e3b6`](https://github.com/Shopify/polaris/commit/3e011e3b6130519cd0bf3e7b81d701b5e9d52a90) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed a bug where iOS 16 font patch wasn't added for mobile app web views
+
+* [#11763](https://github.com/Shopify/polaris/pull/11763) [`e7ab4a8f5`](https://github.com/Shopify/polaris/commit/e7ab4a8f51141bb3ab82647e3083a186f13432d1) Thanks [@sydturn](https://github.com/sydturn)! - Fixed `IndexTable.Row` `onClick` not being called when `selectable` is `false`
+
+- [#11745](https://github.com/Shopify/polaris/pull/11745) [`831a683a2`](https://github.com/Shopify/polaris/commit/831a683a25adcd7ecae2d799b451ddf8b84b689a) Thanks [@kyledurand](https://github.com/kyledurand)! - Fixed bug in math.ts for popover with position cover
+
+* [#11735](https://github.com/Shopify/polaris/pull/11735) [`6d8ef8c99`](https://github.com/Shopify/polaris/commit/6d8ef8c99a0b9b1c91bf845ca1139291f7b63fc7) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Used `Text` component to apply text styles for `Button`
+
+- [#11592](https://github.com/Shopify/polaris/pull/11592) [`ad6315845`](https://github.com/Shopify/polaris/commit/ad6315845f4a511bbaeba2c256b01b8f497e8bda) Thanks [@SMAKSS](https://github.com/SMAKSS)! - Passed missing `id` prop to the root element of `BlockStack`
+
 ## 12.21.0
 
 ### Minor Changes

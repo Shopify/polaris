@@ -27,8 +27,22 @@ const mockMotionTokenGroup = {
     value: 'valueD',
   },
 };
+
+const mockColorTokenGroup = {
+  'color-scheme': {
+    value: 'light',
+  },
+  'color-token-1': {
+    value: 'valueA',
+  },
+  'color-token-2': {
+    value: 'valueB',
+  },
+};
+
 const mockTheme = {
   tokenGroupName: mockTokenGroup,
+  color: mockColorTokenGroup,
   motion: mockMotionTokenGroup,
 };
 
@@ -38,7 +52,10 @@ const expectedTokenGroupDecls =
 const expectedMotionTokenGroupDecls =
   '--p-motion-token-1:valueA;--p-motion-token-2:valueB;--p-motion-keyframes-token-1:p-motion-keyframes-token-1;--p-motion-keyframes-token-2:p-motion-keyframes-token-2;';
 
-const expectedThemeDecls = `${expectedTokenGroupDecls}${expectedMotionTokenGroupDecls}`;
+const expectedColorTokenGroupDecls =
+  'color-scheme:light;--p-color-token-1:valueA;--p-color-token-2:valueB;';
+
+const expectedThemeDecls = `${expectedTokenGroupDecls}${expectedColorTokenGroupDecls}${expectedMotionTokenGroupDecls}`;
 
 const expectedMotionKeyframes =
   '@keyframes p-motion-keyframes-token-1valueC@keyframes p-motion-keyframes-token-2valueD';
@@ -54,6 +71,12 @@ describe('getMetaTokenGroupDecls', () => {
     const tokenGroupDecls = getMetaTokenGroupDecls(mockMotionTokenGroup);
 
     expect(tokenGroupDecls).toBe(expectedMotionTokenGroupDecls);
+  });
+
+  it('creates a string of CSS declarations from color tokens', () => {
+    const tokenGroupDecls = getMetaTokenGroupDecls(mockColorTokenGroup);
+
+    expect(tokenGroupDecls).toBe(expectedColorTokenGroupDecls);
   });
 });
 

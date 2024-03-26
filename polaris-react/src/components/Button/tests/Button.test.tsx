@@ -9,17 +9,27 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Icon} from '../../Icon';
 import {Spinner} from '../../Spinner';
+import {Text} from '../../Text';
 import {UnstyledButton} from '../../UnstyledButton';
 import {Button} from '../Button';
+
+jest.mock('../../../utilities/breakpoints', () => ({
+  ...(jest.requireActual('../../../utilities/breakpoints') as any),
+  useBreakpoints: jest.fn(),
+}));
 
 describe('<Button />', () => {
   let warnSpy: jest.SpyInstance | null = null;
 
   beforeEach(() => {
     warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+    mockUseBreakpoints(false);
   });
 
-  afterEach(() => warnSpy?.mockRestore());
+  afterEach(() => {
+    warnSpy?.mockRestore();
+    jest.clearAllMocks();
+  });
 
   describe('children', () => {
     it('passes prop', () => {
@@ -356,15 +366,6 @@ describe('<Button />', () => {
         className: expect.stringContaining('removeUnderline'),
       });
     });
-
-    it('passes prop to <span/> className', () => {
-      const children = 'Sample children';
-      const button = mountWithApp(<Button removeUnderline>{children}</Button>);
-      const childrenSpan = button.find('span', {children})!;
-      expect(childrenSpan).toHaveReactProps({
-        className: expect.stringContaining('removeUnderline'),
-      });
-    });
   });
 
   describe('dataPrimaryLink', () => {
@@ -390,4 +391,24 @@ describe('<Button />', () => {
       expect(link).toContainReactComponent('button', selector);
     });
   });
+
+  it('renders with medium fontWeight when on a small screen', () => {
+    mockUseBreakpoints(true);
+    const wrapper = mountWithApp(<Button variant="primary">Test</Button>);
+    expect(wrapper).toContainReactComponent(Text, {
+      variant: 'bodySm',
+      fontWeight: 'medium',
+      children: 'Test',
+    });
+  });
 });
+
+function mockUseBreakpoints(mdUp: boolean) {
+  const useBreakpoints: jest.Mock = jest.requireMock(
+    '../../../utilities/breakpoints',
+  ).useBreakpoints;
+
+  useBreakpoints.mockReturnValue({
+    mdUp,
+  });
+}

@@ -1,5 +1,3 @@
-const postcss = require('postcss');
-
 const {nullish} = require('./utils');
 
 /* Returns a safe-area-inset for iPhone X screen obtrusions.
@@ -10,27 +8,14 @@ const {nullish} = require('./utils');
   If overriding an existing padding / margin that value should be used as
   $spacing
 */
-module.exports = (mixin, property, spacing, area) => {
+module.exports = (_, property, spacing, area) => {
   const spacingValue =
     nullish(spacing) || spacing === 0 || spacing === '0' ? '0px' : spacing;
-  const varDecl = postcss.decl({
-    prop: property,
-    value: spacingValue,
-  });
-  const constantDecl = postcss.decl({
-    prop: property,
-    value: `calc(
-      ${spacingValue} + constant(safe-area-inset-${area})
-    )`,
-  });
-  const envDecl = postcss.decl({
-    prop: property,
-    value: `calc(
-      ${spacingValue} + env(safe-area-inset-${area})
-    )`,
-  });
-
-  // We have to do a manual replace here
-  // Because if we returned an object, declarations with the same property would be deduped.
-  mixin.replaceWith([varDecl, constantDecl, envDecl]);
+  return {
+    [property]: [
+      spacingValue,
+      `calc(${spacingValue} + constant(safe-area-inset-${area}))`,
+      `calc(${spacingValue} + env(safe-area-inset-${area}))`,
+    ],
+  };
 };

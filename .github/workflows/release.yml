@@ -26,10 +26,10 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node from .nvmrc
+        uses: actions/setup-node@v4
         with:
-          node-version: 16.x
+          node-version-file: '.nvmrc'
           cache: 'yarn'
 
       - name: Install dependencies
