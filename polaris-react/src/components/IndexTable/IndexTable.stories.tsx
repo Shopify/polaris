@@ -910,6 +910,12 @@ export function WithBulkActions() {
       content: 'Edit customers',
       onAction: () => console.log('Todo: implement bulk edit'),
     },
+    {
+      icon: DeleteIcon,
+      destructive: true,
+      content: 'Delete customers',
+      onAction: () => console.log('Todo: implement bulk delete'),
+    },
   ];
   const bulkActions = [
     {
@@ -919,12 +925,6 @@ export function WithBulkActions() {
     {
       content: 'Remove tags',
       onAction: () => console.log('Todo: implement bulk remove tags'),
-    },
-    {
-      icon: DeleteIcon,
-      destructive: true,
-      content: 'Delete customers',
-      onAction: () => console.log('Todo: implement bulk delete'),
     },
   ];
 
