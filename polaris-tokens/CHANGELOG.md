@@ -1,5 +1,15 @@
 # Changelog
 
+## 8.9.0
+
+### Minor Changes
+
+- [#11691](https://github.com/Shopify/polaris/pull/11691) [`1e613de8b`](https://github.com/Shopify/polaris/commit/1e613de8b3938bc30c722382a8e78e75e50be9cd) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - - Added `ThemeProvider` component
+  - Removed `html` from theme classes to remove global theme constraint
+  - Updated `useTheme` to be context aware of parent themes
+  - Updated `Portal` component to be context aware of parent themes
+  - Initialized a `dark-experimental` theme
+
 ## 8.8.0
 
 ### Minor Changes
