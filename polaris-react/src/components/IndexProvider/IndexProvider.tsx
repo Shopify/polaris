@@ -19,6 +19,7 @@ export function IndexProvider({
   hasMoreItems,
   condensed,
   selectable: isSelectableIndex = true,
+  defaultPaginatedSelectAllText,
 }: IndexProviderProps) {
   const {
     paginatedSelectAllText,
@@ -32,6 +33,7 @@ export function IndexProvider({
     itemCount,
     hasMoreItems,
     resourceName: passedResourceName,
+    defaultPaginatedSelectAllText,
   });
   const handleSelectionChange = useHandleBulkSelection({onSelectionChange});
 

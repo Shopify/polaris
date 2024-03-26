@@ -109,6 +109,7 @@ export interface IndexTableBaseProps {
   emptyState?: React.ReactNode;
   sort?: React.ReactNode;
   paginatedSelectAllActionText?: string;
+  defaultPaginatedSelectAllText?: string;
   lastColumnSticky?: boolean;
   selectable?: boolean;
   /** List of booleans, which maps to whether sorting is enabled or not for each column. Defaults to false for all columns.  */
@@ -177,6 +178,7 @@ function IndexTableBase({
     selectedItemsCount,
     condensed,
   } = useIndexValue();
+
   const handleSelectionChange = useIndexSelectionChange();
   const i18n = useI18n();
 
@@ -1122,6 +1124,7 @@ export function IndexTable({
   hasMoreItems,
   condensed,
   onSelectionChange,
+  defaultPaginatedSelectAllText,
   ...indexTableBaseProps
 }: IndexTableProps) {
   return (
@@ -1135,6 +1138,7 @@ export function IndexTable({
         hasMoreItems={hasMoreItems}
         condensed={condensed}
         onSelectionChange={onSelectionChange}
+        defaultPaginatedSelectAllText={defaultPaginatedSelectAllText}
       >
         <IndexTableBase {...indexTableBaseProps}>{children}</IndexTableBase>
       </IndexProvider>
