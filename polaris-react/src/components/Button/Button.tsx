@@ -123,7 +123,7 @@ export function Button({
   dataPrimaryLink,
   tone,
   variant = 'secondary',
-  viewTransition = false,
+  viewTransition,
 }: ButtonProps) {
   const i18n = useI18n();
   const isDisabled = disabled || loading;
