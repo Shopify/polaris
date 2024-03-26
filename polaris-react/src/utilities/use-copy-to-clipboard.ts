@@ -1,4 +1,4 @@
-import React from 'react';
+import {useCallback, useEffect, useState} from 'react';
 
 type Status = 'inactive' | 'copied' | 'failed';
 
@@ -14,9 +14,9 @@ interface UseCopyToClipboardOptions {
 export function useCopyToClipboard(options: UseCopyToClipboardOptions = {}) {
   const {defaultValue = '', timeout = 1500} = options;
 
-  const [status, setStatus] = React.useState<Status>('inactive');
+  const [status, setStatus] = useState<Status>('inactive');
 
-  const copy = React.useCallback(
+  const copy = useCallback(
     (value?: string) => {
       navigator.clipboard
         .writeText(typeof value === 'string' ? value : defaultValue)
@@ -31,7 +31,7 @@ export function useCopyToClipboard(options: UseCopyToClipboardOptions = {}) {
     [defaultValue],
   );
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (status === 'inactive') return;
 
     const timeoutId = setTimeout(() => setStatus('inactive'), timeout);
