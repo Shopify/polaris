@@ -203,8 +203,7 @@ export function WithAResourceList() {
     if (!isEmpty(value)) {
       appliedFilters.push({
         key,
-        label,
-        value: humanReadableValue(key, value),
+        label: `${label}: ${humanReadableValue(key, value)}`,
         unsavedChanges: !isUnchanged(key, value),
         onRemove: () => handleFilterRemove(key),
       });

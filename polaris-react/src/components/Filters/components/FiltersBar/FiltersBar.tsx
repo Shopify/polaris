@@ -218,7 +218,6 @@ export function FiltersBar({
           }
           unsavedChanges={appliedFilter?.unsavedChanges}
           label={appliedFilter?.label || pinnedFilter.label}
-          value={appliedFilter?.value}
           filterKey={filterKey}
           selected={appliedFilterKeys?.includes(filterKey)}
           onRemove={handleFilterPillRemove}
