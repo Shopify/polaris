@@ -590,9 +590,9 @@ export function CopyToClipboard() {
           >
             <Button
               variant="tertiary"
-              onClick={copy}
+              accessibilityLabel="Copy"
               icon={status === 'copied' ? CheckIcon : ClipboardIcon}
-              accessibilityLabel={status === 'copied' ? 'Copied' : 'Copy'}
+              onClick={copy}
             />
           </Tooltip>
         </InlineStack>
