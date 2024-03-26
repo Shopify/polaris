@@ -852,14 +852,13 @@ export function CopyToClipboard() {
             dismissOnMouseOut
             hoverDelay={500}
             preferredPosition="above"
-            open={status === 'copied' ? true : undefined}
-            content={status === 'copied' ? 'Copied' : 'Copy'}
+            content="Copy"
           >
             <Button
-              accessibilityLabel="Copy email address"
               variant="tertiary"
-              onClick={copy}
+              accessibilityLabel="Copy email address"
               icon={status === 'copied' ? CheckIcon : ClipboardIcon}
+              onClick={copy}
             />
           </Tooltip>
         </InlineStack>
