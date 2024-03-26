@@ -35,7 +35,7 @@
     flex: 0 0 var(--pg-layout-width-nav-base);
     align-items: center;
     height: 100%;
-    padding: 0 var(--p-space-400);
+    padding: 0 var(--p-space-500);
     background-color: transparent;
   }
 }
