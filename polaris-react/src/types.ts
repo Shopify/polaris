@@ -369,10 +369,12 @@ export type NonEmptyArray<T> = [T, ...T[]];
 export type ArrayElement<T> = T extends (infer U)[] ? U : never;
 
 export interface AppliedFilterInterface {
-  /** A unique key used to identify the applied filter */
+  /** A unique key used to identify the filter */
   key: string;
-  /** A label for the applied filter */
+  /** The name of the filter */
   label: string;
+  /** Whether the filter is newly applied or updated and hasn't been saved */
+  unsavedChanges?: boolean;
   /** Callback when the remove button is pressed */
   onRemove(key: string): void;
 }
@@ -380,7 +382,7 @@ export interface AppliedFilterInterface {
 export interface FilterInterface {
   /** A unique key used to identify the filter */
   key: string;
-  /** The label for the filter */
+  /** The name of the filter */
   label: string;
   /** The markup for the given filter */
   filter: React.ReactNode;

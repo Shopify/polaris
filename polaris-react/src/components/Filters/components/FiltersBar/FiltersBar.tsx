@@ -65,6 +65,7 @@ export function FiltersBar({
   const {mdDown} = useBreakpoints();
   const [popoverActive, setPopoverActive] = useState(false);
   const hasMounted = useRef(false);
+
   useEffect(() => {
     hasMounted.current = true;
   });
@@ -76,6 +77,7 @@ export function FiltersBar({
     onAddFilterClick?.();
     togglePopoverActive();
   };
+
   const appliedFilterKeys = appliedFilters?.map(({key}) => key);
 
   const pinnedFromPropsKeys = filters
@@ -214,6 +216,7 @@ export function FiltersBar({
           initialActive={
             hasMounted.current && !pinnedFilter.pinned && !appliedFilter
           }
+          unsavedChanges={appliedFilter?.unsavedChanges}
           label={appliedFilter?.label || pinnedFilter.label}
           filterKey={filterKey}
           selected={appliedFilterKeys?.includes(filterKey)}

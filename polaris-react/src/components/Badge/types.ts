@@ -1,4 +1,5 @@
 export type Tone =
+  | 'emphasis'
   | 'info'
   | 'success'
   | 'warning'
@@ -15,6 +16,7 @@ export type Tone =
   | 'enabled';
 
 export enum ToneValue {
+  Emphasis = 'emphasis',
   Info = 'info',
   Success = 'success',
   Warning = 'warning',

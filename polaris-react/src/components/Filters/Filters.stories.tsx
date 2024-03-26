@@ -1,10 +1,11 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useRef} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {FiltersProps} from '@shopify/polaris';
 import {
   Avatar,
   Button,
   LegacyCard,
+  Card,
   ChoiceList,
   DataTable,
   Filters,
@@ -12,7 +13,6 @@ import {
   ResourceList,
   TextField,
   Text,
-  BlockStack,
 } from '@shopify/polaris';
 
 export default {
@@ -29,50 +29,120 @@ export default {
 } as ComponentMeta<typeof Filters>;
 
 export function WithAResourceList() {
-  const [accountStatus, setAccountStatus] = useState(null);
-  const [moneySpent, setMoneySpent] = useState(null);
-  const [taggedWith, setTaggedWith] = useState('');
-  const [queryValue, setQueryValue] = useState('');
+  const emptyFilterState: {
+    accountStatus: {
+      label: string;
+      value: string[];
+      unsavedChanges: boolean;
+    };
+    moneySpent: {
+      label: string;
+      value: [number, number];
+      unsavedChanges: boolean;
+    };
+    taggedWith: {
+      label: string;
+      value: '';
+      unsavedChanges: boolean;
+    };
+  } = {
+    accountStatus: {
+      label: 'Account status',
+      value: [],
+      unsavedChanges: false,
+    },
+    moneySpent: {
+      label: 'Money spent',
+      value: [0, 500],
+      unsavedChanges: false,
+    },
+    taggedWith: {
+      label: 'Tagged with',
+      value: '',
+      unsavedChanges: false,
+    },
+  };
 
-  const handleAccountStatusChange = useCallback(
-    (value) => setAccountStatus(value),
-    [],
-  );
-  const handleMoneySpentChange = useCallback(
-    (value) => setMoneySpent(value),
-    [],
-  );
-  const handleTaggedWithChange = useCallback(
-    (value) => setTaggedWith(value),
-    [],
-  );
-  const handleFiltersQueryChange = useCallback(
-    (value) => setQueryValue(value),
-    [],
-  );
-  const handleAccountStatusRemove = useCallback(
-    () => setAccountStatus(null),
-    [],
-  );
-  const handleMoneySpentRemove = useCallback(() => setMoneySpent(null), []);
-  const handleTaggedWithRemove = useCallback(() => setTaggedWith(''), []);
+  const [queryValue, setQueryValue] = useState('');
+  const savedFilterState: React.RefObject<
+    Map<
+      string,
+      {
+        label: string;
+        value: string | string[] | number | [number, number];
+        unsavedChanges: boolean;
+      }
+    >
+  > = useRef(new Map(Object.entries(emptyFilterState)));
+
+  const [taggedWith, setTaggedWith] = useState('');
+  const [moneySpent, setMoneySpent] = useState<[number, number]>([0, 0]);
+  const [accountStatus, setAccountStatus] = useState<string[]>([]);
+
+  const handleFilterChange =
+    (key: string) => (value: string | string[] | number | [number, number]) => {
+      if (key === 'taggedWith') setTaggedWith(value as string);
+      if (key === 'moneySpent') setMoneySpent(value as [number, number]);
+      if (key === 'accountStatus') setAccountStatus(value as string[]);
+    };
+
+  const handleFilterRemove = (key: string) => {
+    if (key === 'taggedWith') {
+      setTaggedWith(emptyFilterState.taggedWith.value);
+    } else if (key === 'moneySpent') {
+      setMoneySpent(emptyFilterState.moneySpent.value);
+    } else if (key === 'accountStatus') {
+      setAccountStatus(emptyFilterState.accountStatus.value);
+    }
+  };
+
+  const handleFiltersQueryChange = (value: string) => setQueryValue(value);
+
   const handleQueryValueRemove = useCallback(() => setQueryValue(''), []);
-  const handleFiltersClearAll = useCallback(() => {
-    handleAccountStatusRemove();
-    handleMoneySpentRemove();
-    handleTaggedWithRemove();
+
+  const handleFiltersClearAll = () => {
+    Object.entries(emptyFilterState).forEach(([key]) =>
+      handleFilterRemove(key),
+    );
+
     handleQueryValueRemove();
-  }, [
-    handleAccountStatusRemove,
-    handleMoneySpentRemove,
-    handleQueryValueRemove,
-    handleTaggedWithRemove,
-  ]);
+  };
+
+  // const paramsToValues = () => {
+  //   const appliedFilterValues: {
+  //     accountStatus: string[];
+  //     taggedWith: string;
+  //     moneySpent: [number, number];
+  //   } = {
+  //     accountStatus: [],
+  //     taggedWith: '',
+  //     moneySpent: [0, 500],
+  //   };
+
+  //   unsavedFilterState.entries().forEach((key, value) => {
+  //     if (key === 'accountStatus') {
+  //       appliedFilterValues[key] = urlSearchParams.getAll('accountStatus');
+  //     } else if (key === 'taggedWith') {
+  //       appliedFilterValues[key] = urlSearchParams
+  //         .getAll('taggedWith')
+  //         .join(',');
+  //     } else if (key === 'moneySpent_min') {
+  //       const min = urlSearchParams.get('moneySpent_min');
+  //       const max = urlSearchParams.get('moneySpent_max');
+  //       if (min && max) {
+  //         appliedFilterValues[key] = [Number(min), Number(max)];
+  //       }
+  //     }
+  //   });
+
+  //   return appliedFilterValues;
+  // };
 
   const filters = [
     {
       key: 'accountStatus',
       label: 'Account status',
+      value: accountStatus,
       filter: (
         <ChoiceList
           title="Account status"
@@ -83,8 +153,8 @@ export function WithAResourceList() {
             {label: 'Invited', value: 'invited'},
             {label: 'Declined', value: 'declined'},
           ]}
-          selected={accountStatus || []}
-          onChange={handleAccountStatusChange}
+          selected={accountStatus}
+          onChange={handleFilterChange('accountStatus')}
           allowMultiple
         />
       ),
@@ -94,11 +164,12 @@ export function WithAResourceList() {
     {
       key: 'taggedWith',
       label: 'Tagged with',
+      value: taggedWith,
       filter: (
         <TextField
           label="Tagged with"
           value={taggedWith}
-          onChange={handleTaggedWithChange}
+          onChange={handleFilterChange('taggedWith')}
           autoComplete="off"
           labelHidden
         />
@@ -109,51 +180,39 @@ export function WithAResourceList() {
     {
       key: 'moneySpent',
       label: 'Money spent',
+      value: moneySpent,
       filter: (
         <RangeSlider
           label="Money spent is between"
           labelHidden
-          value={moneySpent || [0, 500]}
+          value={moneySpent}
           prefix="$"
           output
           min={0}
           max={2000}
           step={1}
-          onChange={handleMoneySpentChange}
+          onChange={handleFilterChange('moneySpent')}
         />
       ),
     },
   ];
 
   const appliedFilters: FiltersProps['appliedFilters'] = [];
-  if (!isEmpty(accountStatus)) {
-    const key = 'accountStatus';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, accountStatus),
-      onRemove: handleAccountStatusRemove,
-    });
-  }
-  if (!isEmpty(moneySpent)) {
-    const key = 'moneySpent';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, moneySpent),
-      onRemove: handleMoneySpentRemove,
-    });
-  }
-  if (!isEmpty(taggedWith)) {
-    const key = 'taggedWith';
-    appliedFilters.push({
-      key,
-      label: disambiguateLabel(key, taggedWith),
-      onRemove: handleTaggedWithRemove,
-    });
-  }
+
+  filters.forEach(({key, label, value}) => {
+    if (!isEmpty(value)) {
+      appliedFilters.push({
+        key,
+        label: `${label}: ${humanReadableValue(key, value)}`,
+        unsavedChanges: !isUnchanged(key, value),
+        onRemove: () => handleFilterRemove(key),
+      });
+    }
+  });
 
   return (
     <div style={{height: '568px'}}>
-      <LegacyCard>
+      <Card roundedAbove="sm" padding="0">
         <ResourceList
           resourceName={{singular: 'customer', plural: 'customers'}}
           filterControl={
@@ -184,7 +243,16 @@ export function WithAResourceList() {
           ]}
           renderItem={(item) => {
             const {id, url, name, location} = item;
-            const media = <Avatar customer size="md" name={name} />;
+            const media = (
+              <Avatar
+                initials={name
+                  .split(' ')
+                  .map((nm) => nm.substring(0, 1))
+                  .join('')}
+                size="md"
+                name={name}
+              />
+            );
 
             return (
               <ResourceList.Item
@@ -201,28 +269,74 @@ export function WithAResourceList() {
             );
           }}
         />
-      </LegacyCard>
+      </Card>
     </div>
   );
 
-  function disambiguateLabel(key, value) {
+  function humanReadableValue(
+    key: string,
+    value: string | string[] | number | [number, number],
+  ): string | undefined {
+    if (isEmpty(value)) return undefined;
+
     switch (key) {
       case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
-      case 'taggedWith':
-        return `Tagged with ${value}`;
-      case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
+        return `is between $${value[0]} and $${value[1]}`;
+      case 'taggedWith': {
+        const tags = (value as string).trim().split(',');
+        if (tags.length === 1) return ` ${tags[0]}`;
+        else if (tags.length === 2) return `${tags[0]} and ${tags[1]}`;
+        return tags
+          .map((tag, index) => {
+            return index !== tags.length - 1 ? tag : `and ${tag}`;
+          })
+          .join(', ');
+      }
+      case 'accountStatus': {
+        const statuses = value as string[];
+        if (statuses.length === 1) {
+          return statuses[0];
+        } else if (statuses.length === 2) {
+          return `${statuses[0]} or ${statuses[1]}`;
+        } else {
+          return statuses
+            .map((status, index) => {
+              return index !== statuses.length - 1 ? status : `or ${status}`;
+            })
+            .join(', ');
+        }
+      }
       default:
-        return value;
+        return undefined;
     }
   }
 
   function isEmpty(value) {
     if (Array.isArray(value)) {
-      return value.length === 0;
+      return value.length === 0 || value[1] === 0;
     } else {
-      return value === '' || value == null;
+      return value === '' || value === 0 || value == null;
+    }
+  }
+
+  function isUnchanged(
+    key: string,
+    value: string | string[] | number | [number, number],
+  ) {
+    if (key === 'taggedWith') {
+      return value === savedFilterState.current?.get(key)?.value;
+    } else if (key === 'moneySpent') {
+      const savedMoneySpent = savedFilterState.current?.get(key)?.value;
+      return (
+        value[0] === savedMoneySpent?.[0] && value[1] === savedMoneySpent?.[1]
+      );
+    } else if (key === 'accountStatus') {
+      const savedAccountStatus =
+        (savedFilterState.current?.get(key)?.value as string[]) || [];
+      return (
+        Array.isArray(value) &&
+        value.every((val) => savedAccountStatus?.includes(val as string))
+      );
     }
   }
 }
@@ -1621,7 +1735,7 @@ export function WithAllFiltersPinned() {
     const key = 'accountStatus';
     appliedFilters.push({
       key,
-      label: disambiguateLabel(key, accountStatus),
+      label: humanReadableValue(key, accountStatus),
       onRemove: handleAccountStatusRemove,
     });
   }
@@ -1629,7 +1743,7 @@ export function WithAllFiltersPinned() {
     const key = 'moneySpent';
     appliedFilters.push({
       key,
-      label: disambiguateLabel(key, moneySpent),
+      label: humanReadableValue(key, moneySpent),
       onRemove: handleMoneySpentRemove,
     });
   }
@@ -1637,7 +1751,7 @@ export function WithAllFiltersPinned() {
     const key = 'taggedWith';
     appliedFilters.push({
       key,
-      label: disambiguateLabel(key, taggedWith),
+      label: humanReadableValue(key, taggedWith),
       onRemove: handleTaggedWithRemove,
     });
   }
@@ -1696,14 +1810,14 @@ export function WithAllFiltersPinned() {
     </div>
   );
 
-  function disambiguateLabel(key, value) {
+  function humanReadableValue(key, value) {
     switch (key) {
       case 'moneySpent':
-        return `Money spent is between $${value[0]} and $${value[1]}`;
+        return `is between $${value[0]} and $${value[1]}`;
       case 'taggedWith':
-        return `Tagged with ${value}`;
+        return `${value.split(',').join(', ')}`;
       case 'accountStatus':
-        return value.map((val) => `Customer ${val}`).join(', ');
+        return value.map((val) => `${val}`).join(', ');
       default:
         return value;
     }
