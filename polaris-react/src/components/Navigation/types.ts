@@ -30,6 +30,7 @@ export interface ItemProps extends ItemURLDetails {
   /** @deprecated Use secondaryActions instead. */
   secondaryAction?: SecondaryAction;
   secondaryActions?: SecondaryActions;
+  level?: number;
   displayActionsOnHover?: boolean;
   onClick?(): void;
   onToggleExpandedState?(): void;

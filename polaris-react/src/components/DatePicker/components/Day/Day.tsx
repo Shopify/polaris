@@ -1,5 +1,6 @@
 import React, {useRef, useEffect, memo} from 'react';
 
+import {Text} from '../../../Text';
 import {classNames} from '../../../../utilities/css';
 import {isSameDay} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
@@ -78,7 +79,6 @@ export const Day = memo(function Day({
     styles.Day,
     selected && styles['Day-selected'],
     disabled && styles['Day-disabled'],
-    today && styles['Day-today'],
     (inRange || inHoveringRange) && !disabled && styles['Day-inRange'],
     isLastSelectedDay && styles['Day-lastInRange'],
     isFirstSelectedDay && styles['Day-firstInRange'],
@@ -117,7 +117,14 @@ export const Day = memo(function Day({
         aria-disabled={disabled}
         aria-pressed={selected}
       >
-        {date}
+        <Text
+          as="span"
+          variant="bodySm"
+          alignment="center"
+          fontWeight={today ? 'bold' : 'regular'}
+        >
+          {date}
+        </Text>
       </button>
     </td>
   );

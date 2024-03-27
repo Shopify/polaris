@@ -78,8 +78,7 @@ function StylelintResourceLink({category}: {category: string}): JSX.Element {
       ),
       typography: (
         <>
-          Polaris <Link href="/components/typography/text">text component</Link>{' '}
-          or <Link href="/tokens/font">font tokens</Link>
+          Polaris <Link href="/components/typography/text">text component</Link>
         </>
       ),
     }[category] ?? <Link href="/tokens">Polaris tokens</Link>

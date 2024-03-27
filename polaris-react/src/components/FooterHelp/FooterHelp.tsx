@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Text} from '../Text';
+
 import styles from './FooterHelp.module.css';
 
 export interface FooterHelpProps {
@@ -16,7 +18,9 @@ export function FooterHelp({children, align = 'center'}: FooterHelpProps) {
 
   return (
     <div className={styles.FooterHelp} style={style}>
-      <div className={styles.Text}>{children}</div>
+      <Text as="p" variant="bodyLg">
+        {children}
+      </Text>
     </div>
   );
 }

@@ -52,7 +52,6 @@
     text-decoration: none;
 
     .Title {
-      font-weight: var(--p-font-weight-semibold);
       color: var(--p-color-text-brand);
       background-color: transparent;
 
@@ -76,7 +75,6 @@
 
   &:focus-visible {
     .Title {
-      font-weight: var(--p-font-weight-semibold);
       color: var(--p-color-text-brand);
     }
 
@@ -95,7 +93,6 @@
 }
 
 .Tab-selected {
-  font-weight: var(--p-font-weight-semibold);
   color: var(--p-color-text-brand);
 
   &:focus .Title {
@@ -124,7 +121,6 @@
   padding: var(--p-space-150) var(--p-space-300);
   min-width: 50px;
   color: var(--p-color-text-brand);
-  font-weight: var(--p-font-weight-semibold);
 
   &::before {
     content: '';

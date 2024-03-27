@@ -210,11 +210,9 @@ export function WithSeparateValidationError() {
     }
 
     return (
-      <Text tone="critical" as="span">
-        <p>
-          {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
-          <Link>Manage shipping</Link>
-        </p>
+      <Text as="p" tone="critical" variant="bodyMd">
+        {`${weightError}${unitError} is required when weight based shipping rates are enabled. `}
+        <Link>Manage shipping</Link>
       </Text>
     );
   }

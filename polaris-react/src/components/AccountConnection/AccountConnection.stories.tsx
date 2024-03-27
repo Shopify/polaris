@@ -39,11 +39,11 @@ export function Default() {
   const details = connected ? 'Account connected' : 'No account connected';
 
   const terms = connected ? null : (
-    <p>
+    <Text as="p" variant="bodyMd">
       By clicking Connect, you agree to accept Sample App’s{' '}
       <Link url="Example App">terms and conditions</Link>. You’ll pay a
       commission rate of 15% on sales made through Sample App.
-    </p>
+    </Text>
   );
 
   return (

@@ -35,7 +35,9 @@ export function Default() {
         <Text as="h2" variant="headingSm">
           Online store dashboard
         </Text>
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </BlockStack>
     </Card>
   );
@@ -48,7 +50,9 @@ export function WithResponsiveBorderRadius() {
         <Text as="h2" variant="headingSm">
           Online store dashboard
         </Text>
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </BlockStack>
     </Card>
   );
@@ -61,7 +65,9 @@ export function WithResponsivePadding() {
         <Text as="h2" variant="headingSm">
           Online store dashboard
         </Text>
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </BlockStack>
     </Card>
   );
@@ -74,7 +80,9 @@ export function WithSubdued() {
         <Text as="h2" variant="headingSm">
           Online store dashboard
         </Text>
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </BlockStack>
     </Card>
   );

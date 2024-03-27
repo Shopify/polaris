@@ -23,7 +23,9 @@ export default {
 export function Default() {
   return (
     <Banner title="Order archived" onDismiss={() => {}}>
-      <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+      <Text as="p" variant="bodyMd">
+        This order was archived on March 7, 2017 at 3:12pm EDT.
+      </Text>
     </Banner>
   );
 }
@@ -31,10 +33,10 @@ export function Default() {
 export function Dismissible() {
   return (
     <Banner onDismiss={() => {}}>
-      <p>
+      <Text as="p" variant="bodyMd">
         Use your finance report to get detailed information about your business.{' '}
         <Link url="">Let us know what you think</Link>
-      </p>
+      </Text>
     </Banner>
   );
 }
@@ -48,10 +50,10 @@ export function WithFooterCallToAction() {
       secondaryAction={{content: 'Learn more', url: ''}}
       onDismiss={() => {}}
     >
-      <p>
+      <Text as="p" variant="bodyMd">
         Add weights to show accurate rates at checkout and when buying shipping
         labels in Shopify.
-      </p>
+      </Text>
     </Banner>
   );
 }
@@ -65,7 +67,9 @@ export function Informational() {
       tone="info"
       onDismiss={() => {}}
     >
-      <p>Make sure you know how these changes affect your store.</p>
+      <Text as="p" variant="bodyMd">
+        Make sure you know how these changes affect your store.
+      </Text>
     </Banner>
   );
 }
@@ -105,11 +109,11 @@ export function Critical() {
       action={{content: 'Review risk analysis'}}
       tone="critical"
     >
-      <p>
+      <Text as="p" variant="bodyMd">
         Before fulfilling this order or capturing payment, please{' '}
         <Link url="">review the Risk Analysis</Link> and determine if this order
         is fraudulent.
-      </p>
+      </Text>
     </Banner>
   );
 }
@@ -140,15 +144,15 @@ export function InAModal() {
         <Modal.Section>
           <TextContainer>
             <Banner action={{content: 'Connect account'}} tone="warning">
-              <p>
+              <Text as="p" variant="bodyMd">
                 Connect your instagram account to your shop before proceeding.
-              </p>
+              </Text>
             </Banner>
-            <p>
+            <Text as="p" variant="bodyMd">
               Use Instagram posts to share your products with millions of
               people. Let shoppers buy from your store without leaving
               Instagram.
-            </p>
+            </Text>
           </TextContainer>
         </Modal.Section>
       </Modal>
@@ -168,10 +172,10 @@ export function WithFocus() {
       tone="critical"
       ref={banner}
     >
-      <p>
+      <Text as="p" variant="bodyMd">
         Before fulfilling this order or capturing payment, please review the
         fraud analysis and determine if this order is fraudulent
-      </p>
+      </Text>
     </Banner>
   );
 }
@@ -200,13 +204,15 @@ export function InALegacyCard() {
     <LegacyCard title="Online store dashboard" sectioned>
       <TextContainer>
         <Banner onDismiss={() => {}}>
-          <p>
+          <Text as="p" variant="bodyMd">
             Use your finance report to get detailed information about your
             business. <Link url="">Let us know what you think</Link>
-          </p>
+          </Text>
         </Banner>
 
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </TextContainer>
     </LegacyCard>
   );
@@ -224,7 +230,9 @@ export function WithEndJustifiedContent() {
             Logs
           </Link>
         </InlineStack>
-        <p>This order was archived on March 7, 2017 at 3:12pm EDT.</p>
+        <Text as="p" variant="bodyMd">
+          This order was archived on March 7, 2017 at 3:12pm EDT.
+        </Text>
       </BlockStack>
     </Banner>
   );

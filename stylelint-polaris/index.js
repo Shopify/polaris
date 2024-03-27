@@ -373,7 +373,16 @@ const stylelintPolarisCoverageOptions = {
           'line-height': disallowedUnits,
         },
       ],
-      'property-disallowed-list': ['text-transform'],
+      'property-disallowed-list': [
+        [
+          'font-size',
+          'font-weight',
+          'line-height',
+          'letter-spacing',
+          'text-transform',
+        ],
+        {severity: 'warning'},
+      ],
       'function-disallowed-list': ['font-size', 'line-height'].map(
         matchNameRegExp,
       ),
@@ -407,7 +416,7 @@ const stylelintPolarisCoverageOptions = {
       ],
     },
     {
-      message: 'Please use a Polaris font token or typography component',
+      message: 'Please use the Polaris Text component',
     },
   ],
   'z-index': [

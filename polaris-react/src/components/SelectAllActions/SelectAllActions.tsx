@@ -56,24 +56,20 @@ export const SelectAllActions = forwardRef(function SelectAllActions(
   ref,
 ) {
   const nodeRef = useRef<HTMLDivElement>(null);
-  const paginatedSelectAllActionMarkup = paginatedSelectAllAction ? (
+  const paginatedSelectAllMarkup = paginatedSelectAllAction ? (
     <UnstyledButton
       className={styles.AllAction}
       onClick={paginatedSelectAllAction.onAction}
       size="slim"
       disabled={disabled}
     >
-      {paginatedSelectAllAction.content}
+      <Text as="span" variant="bodySm" fontWeight="medium">
+        {paginatedSelectAllAction.content}
+      </Text>
     </UnstyledButton>
   ) : null;
 
   const hasTextAndAction = paginatedSelectAllText && paginatedSelectAllAction;
-
-  const paginatedSelectAllMarkup = paginatedSelectAllActionMarkup ? (
-    <div className={styles.PaginatedSelectAll}>
-      {paginatedSelectAllActionMarkup}
-    </div>
-  ) : null;
 
   const ariaLive: AriaLive = hasTextAndAction ? 'polite' : undefined;
 

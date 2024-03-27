@@ -5,11 +5,3 @@
   margin: var(--p-space-500);
   width: auto;
 }
-
-.Text {
-  font-size: var(--p-font-size-350);
-  font-weight: var(--p-font-weight-regular);
-  line-height: var(--p-font-line-height-500);
-  border: none;
-  letter-spacing: initial;
-}

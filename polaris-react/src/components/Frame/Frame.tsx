@@ -11,6 +11,7 @@ import {Icon} from '../Icon';
 // eslint-disable-next-line import/no-deprecated
 import {EventListener} from '../EventListener';
 import {Backdrop} from '../Backdrop';
+import {Text} from '../Text';
 import {TrapFocus} from '../TrapFocus';
 import {dataPolarisTopBar, layer} from '../shared';
 import {setRootProperty} from '../../utilities/set-root-property';
@@ -224,7 +225,9 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           onBlur={this.handleBlur}
           onClick={this.handleClick}
         >
-          {i18n.translate('Polaris.Frame.skipToContent')}
+          <Text as="span" variant="bodyLg" fontWeight="medium">
+            {i18n.translate('Polaris.Frame.skipToContent')}
+          </Text>
         </a>
       </div>
     );

@@ -59,12 +59,12 @@ export function Default(_, context) {
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
-                  <h3>
-                    <Text fontWeight="bold" as="span">
-                      {name}
-                    </Text>
-                  </h3>
-                  <div>{location}</div>
+                  <Text as="h3" variant="bodyMd" fontWeight="bold">
+                    {name}
+                  </Text>
+                  <Text as="p" variant="bodyMd">
+                    {location}
+                  </Text>
                 </ResourceList.Item>
               );
             }}
@@ -119,12 +119,12 @@ export function WithI18n() {
 
               return (
                 <ResourceList.Item id={id} url={url} media={media}>
-                  <h3>
-                    <Text fontWeight="bold" as="span">
-                      {name}
-                    </Text>
-                  </h3>
-                  <div>{location}</div>
+                  <Text as="h3" fontWeight="bold" variant="bodyMd">
+                    {name}
+                  </Text>
+                  <Text as="p" variant="bodyMd">
+                    {location}
+                  </Text>
                 </ResourceList.Item>
               );
             }}
@@ -156,7 +156,9 @@ export function WithLinkComponent(_, context) {
         title="Jar With Lock-Lid"
         primaryAction={{content: 'Save', disabled: true}}
       >
-        <p>Page content</p>
+        <Text as="p" variant="bodyMd">
+          Page content
+        </Text>
       </Page>
     </AppProvider>
   );

@@ -7,6 +7,7 @@ import {
   Link,
   LegacyStack,
   TextContainer,
+  Text,
 } from '@shopify/polaris';
 
 export default {
@@ -39,11 +40,11 @@ export function Default() {
             expandOnPrint
           >
             <TextContainer>
-              <p>
+              <Text as="p" variant="bodyMd">
                 Your mailing list lets you contact customers or visitors who
                 have shown an interest in your store. Reach out to them with
                 exclusive offers or updates about your products.
-              </p>
+              </Text>
               <Link url="#">Test link</Link>
             </TextContainer>
           </Collapsible>

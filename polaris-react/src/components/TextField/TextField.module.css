@@ -403,11 +403,6 @@
   flex: 0 0 auto;
   color: var(--p-color-text-secondary);
   user-select: none;
-  line-height: var(--p-font-line-height-600);
-  @media (--p-breakpoints-md-up) {
-    font-size: var(--p-font-size-325);
-    line-height: var(--p-font-line-height-500);
-  }
 }
 
 .Prefix {
@@ -463,12 +458,6 @@
   margin: 0 var(--p-space-300) 0 var(--p-space-100);
   pointer-events: none;
   text-align: right;
-  line-height: var(--p-font-line-height-600);
-
-  @media (--p-breakpoints-md-up) {
-    font-size: var(--p-font-size-325);
-    line-height: var(--p-font-line-height-500);
-  }
 }
 
 .AlignFieldBottom {

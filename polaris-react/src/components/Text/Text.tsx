@@ -37,11 +37,15 @@ type Alignment = 'start' | 'center' | 'end' | 'justify';
 type FontWeight = 'regular' | 'medium' | 'semibold' | 'bold';
 
 type Tone =
+  | 'base'
+  | 'disabled'
+  | 'inherit'
   | 'success'
   | 'critical'
   | 'caution'
   | 'subdued'
   | 'text-inverse'
+  | 'text-inverse-secondary'
   | 'magic'
   | 'magic-subdued';
 

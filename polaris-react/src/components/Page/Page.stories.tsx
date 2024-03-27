@@ -15,6 +15,7 @@ import {
   LegacyStack,
   Page,
   PageActions,
+  Text,
 } from '@shopify/polaris';
 
 export default {
@@ -63,7 +64,9 @@ export function Default() {
       }}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -77,7 +80,9 @@ export function WithCustomPrimaryAction() {
       primaryAction={<Button variant="primary">Save</Button>}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -101,7 +106,9 @@ export function WithoutPrimaryActionInHeader() {
       <LegacyCard sectioned title="Fulfill order">
         <LegacyStack alignment="center">
           <LegacyStack.Item fill>
-            <p>Buy postage and ship remaining 2 items</p>
+            <Text as="p" variant="bodyMd">
+              Buy postage and ship remaining 2 items
+            </Text>
           </LegacyStack.Item>
           <Button variant="primary">Continue</Button>
         </LegacyStack>
@@ -116,7 +123,9 @@ export function WithDestructiveSecondaryAction() {
       title="General"
       secondaryActions={[{content: 'Delete', tone: 'critical'}]}
     >
-      <p>Page content</p>
+      <Text as="p" variant="bodyMd">
+        Page content
+      </Text>
     </Page>
   );
 }
@@ -124,7 +133,9 @@ export function WithDestructiveSecondaryAction() {
 export function WithCustomSecondaryAction() {
   return (
     <Page title="General" secondaryActions={<Button>Save</Button>}>
-      <p>Page content</p>
+      <Text as="p" variant="bodyMd">
+        Page content
+      </Text>
     </Page>
   );
 }
@@ -145,7 +156,9 @@ export function WithToolTipAction() {
       ]}
     >
       <LegacyCard title="Product X" sectioned>
-        <p>Product X information</p>
+        <Text as="p" variant="bodyMd">
+          Product X information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -164,7 +177,9 @@ export function WithBackActionOnAction() {
       title="General"
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -179,7 +194,9 @@ export function WithSubtitle() {
       secondaryActions={[{content: 'Download', icon: ArrowDownIcon}]}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -195,7 +212,9 @@ export function WithSubtitleAndAdditionalMetadata() {
       secondaryActions={[{content: 'Download', icon: ArrowDownIcon}]}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -210,7 +229,9 @@ export function WithSubtitleAndAdditionalMetadataAndNoBackAction() {
       secondaryActions={[{content: 'Download', icon: ArrowDownIcon}]}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -231,7 +252,9 @@ export function WithExternalLink() {
       ]}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -245,7 +268,9 @@ export function WithoutPagination() {
       primaryAction={{content: 'Save'}}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -263,7 +288,9 @@ export function FullWidth() {
       }}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -278,7 +305,9 @@ export function NarrowWidth() {
       primaryAction={{content: 'Save', disabled: true}}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
       <PageActions
         primaryAction={{content: 'Save', disabled: true}}
@@ -318,7 +347,9 @@ export function WithActionGroups() {
       ]}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -378,7 +409,9 @@ export function WithActionGroupsAndActions() {
       ]}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -437,7 +470,9 @@ export function WithActionGroupsAndActionsAndLongTitle() {
       ]}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -460,7 +495,9 @@ export function WithContentAfterTitle() {
       }}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );
@@ -488,7 +525,9 @@ export function WithContentAfterTitleAndSubtitle() {
       }}
     >
       <LegacyCard title="Credit card" sectioned>
-        <p>Credit card information</p>
+        <Text as="p" variant="bodyMd">
+          Credit card information
+        </Text>
       </LegacyCard>
     </Page>
   );

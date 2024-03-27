@@ -34,6 +34,18 @@
   text-align: justify;
 }
 
+.base {
+  color: var(--p-color-text);
+}
+
+.inherit {
+  color: inherit;
+}
+
+.disabled {
+  color: var(--p-color-text-disabled);
+}
+
 .success {
   color: var(--p-color-text-success);
 }
@@ -60,6 +72,10 @@
 
 .text-inverse {
   color: var(--p-color-text-inverse);
+}
+
+.text-inverse-secondary {
+  color: var(--p-color-text-inverse-secondary);
 }
 
 .headingXs {
