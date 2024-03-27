@@ -29,6 +29,7 @@ import {isReactElement} from '../../../../utilities/is-react-element';
 import {Box} from '../../../Box';
 import {InlineStack} from '../../../InlineStack';
 import {FilterActionsProvider} from '../../../FilterActionsProvider';
+import type {ViewTransition} from '../../Page';
 
 import {Title} from './components';
 import type {TitleProps} from './components';
@@ -44,6 +45,8 @@ interface PrimaryAction
     TooltipAction {
   /** Provides extra visual weight and identifies the primary action in a set of buttons */
   primary?: boolean;
+  /** Start view transitions when navigating */
+  viewTransition?: boolean;
 }
 
 export interface HeaderProps extends TitleProps {
@@ -67,6 +70,8 @@ export interface HeaderProps extends TitleProps {
   additionalMetadata?: React.ReactNode | string;
   /** Callback that returns true when secondary actions are rolled up into action groups, and false when not */
   onActionRollup?(hasRolledUp: boolean): void;
+  /** Starts view transitions when navigating */
+  viewTransition?: ViewTransition;
 }
 
 const SHORT_TITLE = 20;
@@ -87,6 +92,11 @@ export function Header({
   secondaryActions = [],
   actionGroups = [],
   compactTitle = false,
+  viewTransition = {
+    enabled: false,
+    headerName: undefined,
+    contentName: undefined,
+  },
   onActionRollup,
 }: HeaderProps) {
   const i18n = useI18n();
@@ -216,6 +226,10 @@ export function Header({
     title && title.length > LONG_TITLE && styles.longTitle,
   );
 
+  const headerStyle = viewTransition.enabled
+    ? ({viewTransitionName: viewTransition.headerName} as React.CSSProperties)
+    : undefined;
+
   const {slot1, slot2, slot3, slot4, slot5} = determineLayout({
     actionMenuMarkup,
     additionalMetadataMarkup,
@@ -237,7 +251,7 @@ export function Header({
       visuallyHidden={titleHidden}
     >
       {pageReadyAccessibilityLabelMarkup}
-      <div className={headerClassNames}>
+      <div className={headerClassNames} style={headerStyle}>
         <FilterActionsProvider filterActions={Boolean(filterActions)}>
           <ConditionalRender
             condition={[slot1, slot2, slot3, slot4].some(notNull)}
@@ -280,12 +294,13 @@ function PrimaryActionMarkup({
 
   let actionMarkup: React.ReactNode;
   if (isInterface(primaryAction)) {
-    const {primary: isPrimary, helpText} = primaryAction;
+    const {primary: isPrimary, helpText, viewTransition} = primaryAction;
     const primary = isPrimary === undefined ? true : isPrimary;
     const content = buttonFrom(
       shouldShowIconOnly(isNavigationCollapsed, primaryAction),
       {
         variant: primary ? 'primary' : undefined,
+        viewTransition,
       },
     );
 

@@ -36,6 +36,8 @@ export interface ItemProps extends ItemURLDetails {
   expanded?: boolean;
   shouldResizeIcon?: boolean;
   truncateText?: boolean;
+  /** Starts a View Transition when link is clicked */
+  viewTransition?: boolean;
 }
 
 export interface SubNavigationItem extends ItemURLDetails {
@@ -44,6 +46,8 @@ export interface SubNavigationItem extends ItemURLDetails {
   disabled?: boolean;
   new?: boolean;
   onClick?(): void;
+  /** Starts a View Transition when link is clicked */
+  viewTransition?: boolean;
 }
 
 export interface SecondaryAction {

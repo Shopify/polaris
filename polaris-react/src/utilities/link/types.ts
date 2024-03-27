@@ -12,6 +12,8 @@ export interface LinkLikeComponentProps
   target?: Target;
   /** Makes the browser download the url instead of opening it. Provides a hint for the downloaded filename if it is a string value. */
   download?: string | boolean;
+  /** Starts a View Transition when link is clicked */
+  viewTransition?: boolean;
   [key: string]: any;
 }
 

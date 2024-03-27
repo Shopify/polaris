@@ -18,7 +18,8 @@
     "./tests",
     "./playground",
     ".storybook/**/*.ts",
-    ".storybook/**/*.tsx"
+    ".storybook/**/*.tsx",
+    "./globals.d.ts"
   ],
   "exclude": ["./src/components/**/*.stories.tsx"]
 }

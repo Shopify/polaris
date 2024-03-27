@@ -129,6 +129,8 @@ export interface LinkAction {
   accessibilityLabel?: string;
   /** A destination to link to */
   url: string;
+  /** Start view transitions when navigating */
+  viewTransition?: boolean;
 }
 
 export interface BadgeAction {
