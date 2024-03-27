@@ -353,7 +353,7 @@ describe('<Header />', () => {
     });
   });
 
-  it('renders a compact desktop layout and hides primary action icon', () => {
+  it('renders a compact desktop layout and shows primary action icon', () => {
     const header = mountWithApp(
       <Header title="mmmmmmmm" primaryAction={primaryAction} />,
       {
@@ -362,7 +362,7 @@ describe('<Header />', () => {
     );
     expect(header.findAll('div', {className: 'Row'})).toHaveLength(1);
     expect(header).toContainReactComponent(Button, {
-      icon: undefined,
+      icon: PlusIcon,
       children: 'Click me!',
     });
   });
