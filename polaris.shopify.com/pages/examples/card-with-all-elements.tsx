@@ -15,6 +15,7 @@ import {
   Text,
 } from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
+import {ExportIcon} from '@shopify/polaris-icons';
 
 function CardWithAllElements() {
   const [actionActive, toggleAction] = useState(false);
@@ -132,6 +133,7 @@ function CardWithAllElements() {
               <Button
                 variant="primary"
                 onClick={() => {}}
+                icon={ExportIcon}
                 accessibilityLabel="Export Report"
               >
                 Export Report

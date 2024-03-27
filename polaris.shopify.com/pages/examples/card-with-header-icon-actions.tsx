@@ -1,9 +1,9 @@
 import React from 'react';
 import {BlockStack, Button, Card, InlineGrid, Text} from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
-import {PlusIcon} from '@shopify/polaris-icons';
+import {ExportIcon} from '@shopify/polaris-icons';
 
-function CardWithHeaderActions() {
+function CardWithHeaderIconActions() {
   return (
     <Card roundedAbove="sm">
       <BlockStack gap="200">
@@ -13,19 +13,16 @@ function CardWithHeaderActions() {
           </Text>
           <Button
             onClick={() => {}}
-            accessibilityLabel="Add variant"
-            icon={PlusIcon}
-          >
-            Add variant
-          </Button>
+            accessibilityLabel="Export variants"
+            icon={ExportIcon}
+          />
         </InlineGrid>
         <Text as="p" variant="bodyMd">
-          Add variants if this product comes in multiple versions, like
-          different sizes or colors.
+          Export variants
         </Text>
       </BlockStack>
     </Card>
   );
 }
 
-export default withPolarisExample(CardWithHeaderActions);
+export default withPolarisExample(CardWithHeaderIconActions);
