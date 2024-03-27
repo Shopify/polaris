@@ -102,6 +102,10 @@
   scrollbar-width: none;
 }
 
+.scrollbarWidthAuto {
+  scrollbar-width: auto;
+}
+
 .scrollbarGutterStable {
   scrollbar-gutter: stable;
 }
