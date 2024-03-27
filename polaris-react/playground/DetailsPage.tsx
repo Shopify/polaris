@@ -45,6 +45,8 @@ import {
   FooterHelp,
   Link,
   AlphaPicker,
+  Box,
+  Popover,
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
@@ -642,6 +644,7 @@ export function DetailsPage() {
           </LegacyCard>
         </Layout.Section>
         <Layout.Section variant="oneThird">
+          <Box minHeight="75vmin" />
           <LegacyCard title="Organization">
             <LegacyCard.Section>
               <Select
@@ -677,6 +680,14 @@ export function DetailsPage() {
                   children: `Add ${query}`,
                 }}
               />
+              <button>yohooo</button>
+              <Popover
+                active
+                activator={<button>click me</button>}
+                onClose={() => {}}
+              >
+                <p>hello</p>
+              </Popover>
             </LegacyCard.Section>
             <LegacyCard.Section title="Collections" />
             <LegacyCard.Section title="Tags" />

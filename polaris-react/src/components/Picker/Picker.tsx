@@ -205,7 +205,7 @@ export function Picker({
                 }}
                 prefix={<Icon source={SearchIcon} />}
                 labelHidden
-                focused
+                focused={popoverActive}
               />
             </ComboboxTextFieldContext.Provider>
           </Box>

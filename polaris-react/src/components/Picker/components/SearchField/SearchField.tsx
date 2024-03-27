@@ -19,7 +19,6 @@ export function SearchField({
   prefix,
   placeholder,
   focused,
-  autoFocus,
 }: TextFieldProps) {
   const inputRef = React.useRef<HTMLInputElement>(null);
   const comboboxTextFieldContext = useComboboxTextField();
@@ -72,12 +71,9 @@ export function SearchField({
     [onChange, onTextFieldChange],
   );
 
-  if (
-    (focused ?? autoFocus) &&
-    inputRef.current &&
-    document.activeElement !== inputRef.current
-  )
-    inputRef.current.focus();
+  if (focused && document.activeElement !== inputRef.current) {
+    inputRef.current?.focus();
+  }
 
   return (
     <>
