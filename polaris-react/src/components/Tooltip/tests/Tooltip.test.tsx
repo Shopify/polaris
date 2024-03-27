@@ -132,6 +132,38 @@ describe('<Tooltip />', () => {
     });
   });
 
+  it('closes itself when enter is pressed on keyup', () => {
+    const tooltip = mountWithApp(
+      <Tooltip active content="This order has shipping labels.">
+        <div>Order #1001</div>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onKeyUp', {
+      key: 'Enter',
+    });
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: false,
+    });
+  });
+
+  it('closes itself when space is pressed on keyup', () => {
+    const tooltip = mountWithApp(
+      <Tooltip active content="This order has shipping labels.">
+        <div>Order #1001</div>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onKeyUp', {
+      key: ' ',
+    });
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: false,
+    });
+  });
+
   it('does not call onOpen when initially activated', () => {
     const openSpy = jest.fn();
     const tooltip = mountWithApp(
