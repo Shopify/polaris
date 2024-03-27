@@ -3,7 +3,7 @@
   "compilerOptions": {
     "composite": true,
     "emitDeclarationOnly": true,
-    "importsNotUsedAsValues": "error",
+    "verbatimModuleSyntax": false,
     "outDir": "build/ts",
     "rootDir": "./",
     "strictFunctionTypes": false,
