@@ -102,11 +102,8 @@ export function WithAction() {
       <Listbox.Option value="UniqueValue-2" divider>
         Item 2
       </Listbox.Option>
-      <Listbox.Action value="ActionValue">
-        <LegacyStack spacing="tight">
-          <Icon source={PlusCircleIcon} tone="base" />
-          <div>Add item</div>
-        </LegacyStack>
+      <Listbox.Action value="ActionValue" icon={PlusCircleIcon}>
+        Add item
       </Listbox.Action>
     </Listbox>
   );

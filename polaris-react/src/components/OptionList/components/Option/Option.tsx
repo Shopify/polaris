@@ -11,6 +11,7 @@ import {classNames, variationName} from '../../../../utilities/css';
 import type {InlineStackProps} from '../../../InlineStack';
 import {InlineStack} from '../../../InlineStack';
 import {Checkbox as PolarisCheckbox} from '../../../Checkbox';
+import {Box} from '../../../Box';
 
 import styles from './Option.module.css';
 
@@ -125,20 +126,27 @@ export function Option({
       onBlur={toggleFocused}
       aria-pressed={active || select}
     >
-      <>
-        <InlineStack
-          wrap={false}
-          blockAlign={verticalAlignToBlockAlign(verticalAlign)}
+      {select || active ? (
+        <span className={styles.Icon}>
+          <Icon source={CheckIcon} tone="base" />
+        </span>
+      ) : (
+        <Box width="20px" />
+      )}
+      <InlineStack
+        wrap={false}
+        blockAlign={verticalAlignToBlockAlign(verticalAlign)}
+      >
+        {mediaMarkup}
+        <span
+          style={{
+            minWidth:
+              typeof label === 'string' ? `${label.length}ch` : 'initial',
+          }}
         >
-          {mediaMarkup}
           {label}
-        </InlineStack>
-        {(select || active) && (
-          <span className={styles.Icon}>
-            <Icon source={CheckIcon} />
-          </span>
-        )}
-      </>
+        </span>
+      </InlineStack>
     </button>
   );
 
