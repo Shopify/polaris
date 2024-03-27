@@ -1,5 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 
+import {Text} from '../../../Text';
 import {UnstyledLink} from '../../../UnstyledLink';
 import {classNames} from '../../../../utilities/css';
 import {
@@ -99,7 +100,11 @@ export function Tab({
       aria-label={accessibilityLabel}
       onMouseUp={handleMouseUpByBlurring}
     >
-      <span className={styles.Title}>{children}</span>
+      <span className={styles.Title}>
+        <Text as="span" variant="bodyMd" fontWeight="semibold">
+          {children}
+        </Text>
+      </span>
     </UnstyledLink>
   ) : (
     <button
@@ -114,7 +119,11 @@ export function Tab({
       aria-label={accessibilityLabel}
       onMouseUp={handleMouseUpByBlurring}
     >
-      <span className={styles.Title}>{children}</span>
+      <span className={styles.Title}>
+        <Text as="span" variant="bodyMd" fontWeight="semibold">
+          {children}
+        </Text>
+      </span>
     </button>
   );
 

@@ -62,8 +62,7 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  height: 2rem;
-  padding: var(--p-space-150) var(--p-space-300);
+  padding: var(--p-space-100) var(--p-space-300);
   border: 0;
   border-radius: var(--p-border-radius-200);
   background-color: transparent;
@@ -71,6 +70,7 @@
   cursor: pointer;
   text-decoration: none;
   width: 100%;
+  height: var(--p-height-700);
   min-width: 100%; /* IE11 fix for overflowing flex items from parent container */
   margin-top: var(--p-space-025);
   margin-bottom: calc(-1 * var(--p-space-025));
@@ -119,12 +119,6 @@
 
   path {
     fill: currentColor;
-  }
-
-  @media (--p-breakpoints-md-up) {
-    font-size: var(--p-font-size-300);
-    line-height: var(--p-font-line-height-400);
-    height: 1.75rem;
   }
 }
 

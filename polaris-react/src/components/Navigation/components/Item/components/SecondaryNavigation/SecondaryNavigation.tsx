@@ -73,6 +73,7 @@ export function SecondaryNavigation({
                 label={label}
                 showVerticalLine={shouldShowVerticalLine}
                 showVerticalHoverPointer={index === hoveredItemPosition}
+                level={1}
                 onMouseEnter={
                   item.disabled ? undefined : () => setHoveredItem(item)
                 }

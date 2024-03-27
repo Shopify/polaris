@@ -55,15 +55,21 @@ export function UserMenu({
   ) : (
     <>
       <span className={styles.Details}>
-        <Text as="p" alignment="start" fontWeight="medium" truncate>
+        <Text
+          as="p"
+          variant="bodySm"
+          alignment="start"
+          fontWeight="medium"
+          truncate
+        >
           {name}
         </Text>
         <span className={styles.Message}>
           <Text
             as="p"
-            variant="bodySm"
+            variant="bodyXs"
             alignment="start"
-            tone="subdued"
+            tone="text-inverse-secondary"
             truncate
           >
             {detail}

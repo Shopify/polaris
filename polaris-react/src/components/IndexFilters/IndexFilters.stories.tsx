@@ -72,9 +72,21 @@ function Table() {
             {name}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{location}</IndexTable.Cell>
-        <IndexTable.Cell>{orders}</IndexTable.Cell>
-        <IndexTable.Cell>{amountSpent}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {location}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {orders}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {amountSpent}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -2261,15 +2273,31 @@ export function WithNoFilters() {
             {order}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{date}</IndexTable.Cell>
-        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {date}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {customer}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>
           <Text as="span" alignment="end" numeric>
             {total}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
-        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {paymentStatus}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {fulfillmentStatus}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );
@@ -2419,15 +2447,31 @@ export function WithOnlySearchAndSort() {
             {order}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{date}</IndexTable.Cell>
-        <IndexTable.Cell>{customer}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {date}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {customer}
+          </Text>
+        </IndexTable.Cell>
         <IndexTable.Cell>
           <Text as="span" alignment="end" numeric>
             {total}
           </Text>
         </IndexTable.Cell>
-        <IndexTable.Cell>{paymentStatus}</IndexTable.Cell>
-        <IndexTable.Cell>{fulfillmentStatus}</IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {paymentStatus}
+          </Text>
+        </IndexTable.Cell>
+        <IndexTable.Cell>
+          <Text as="span" variant="bodyMd">
+            {fulfillmentStatus}
+          </Text>
+        </IndexTable.Cell>
       </IndexTable.Row>
     ),
   );

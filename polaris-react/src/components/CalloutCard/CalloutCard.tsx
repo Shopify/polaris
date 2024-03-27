@@ -82,11 +82,13 @@ export function CalloutCard({
           <div className={styles.CalloutCard}>
             <div className={styles.Content}>
               <div className={styles.Title}>
-                <Text variant="headingMd" as="h2">
+                <Text variant="headingSm" as="h2">
                   {title}
                 </Text>
               </div>
-              <BlockStack>{children}</BlockStack>
+              <Text as="span" variant="bodyMd">
+                <BlockStack>{children}</BlockStack>
+              </Text>
               <div className={styles.Buttons}>{buttonMarkup}</div>
             </div>
 

@@ -150,7 +150,9 @@ export function Choice({
     >
       <span className={styles.Control}>{children}</span>
       <span className={styles.Label}>
-        <span>{label}</span>
+        <Text as="span" variant="bodyMd">
+          {label}
+        </Text>
       </span>
     </label>
   );

@@ -14,6 +14,7 @@ import {debounce} from '../../utilities/debounce';
 import {classNames} from '../../utilities/css';
 import {isElementOfType} from '../../utilities/components';
 import {Button} from '../Button';
+import {Text} from '../Text';
 import {Sticky} from '../Sticky';
 import {Spinner} from '../Spinner';
 import {
@@ -614,7 +615,11 @@ export function ResourceList<TItemType extends ResourceListItemData>({
     ) : null;
 
   const headerTitleMarkup = (
-    <div className={styles.HeaderTitleWrapper}>{headerTitle()}</div>
+    <div className={styles.HeaderTitleWrapper}>
+      <Text as="span" variant="bodyMd">
+        {headerTitle()}
+      </Text>
+    </div>
   );
 
   const selectButtonMarkup = isSelectable ? (

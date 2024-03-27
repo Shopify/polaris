@@ -1,9 +1,11 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import {
+  Box,
   LegacyCard,
   RangeSlider,
   LegacyStack,
+  Text,
   TextField,
 } from '@shopify/polaris';
 
@@ -84,11 +86,6 @@ export function WithPrefixAndSuffix() {
     [],
   );
 
-  const suffixStyles = {
-    minWidth: '24px',
-    textAlign: 'right',
-  };
-
   return (
     <LegacyCard sectioned title="Text color">
       <RangeSlider
@@ -98,8 +95,18 @@ export function WithPrefixAndSuffix() {
         max={360}
         value={rangeValue}
         onChange={handleRangeSliderChange}
-        prefix={<p>Hue</p>}
-        suffix={<p style={suffixStyles}>{rangeValue}</p>}
+        prefix={
+          <Text as="p" variant="bodyMd">
+            Hue
+          </Text>
+        }
+        suffix={
+          <Box minWidth="24px">
+            <Text as="span" variant="bodyMd">
+              {rangeValue}
+            </Text>
+          </Box>
+        }
       />
     </LegacyCard>
   );

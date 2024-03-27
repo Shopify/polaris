@@ -1,0 +1,29 @@
+---
+title: typography/property-disallowed-list
+description: Disallows declarations of text style properties.
+keywords:
+  - stylelint
+  - typography
+  - typography rules
+---
+
+import RulePreamble from '../_preamble.mdx';
+import RulePostamble from '../_postamble.mdx';
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+<RulePreamble category="typography" />
+
+```diff
+// Do
++ <Text variant="headingXs" as="p" />
+// Don't
+- font-size: var(--p-font-size-300);
+- font-weight: var(--p-font-weight-semibold);
+- line-height: var(--p-font-line-height-400);
+- letter-spacing: var(--p-font-letter-spacing-normal);
+```
+
+<RulePostamble />

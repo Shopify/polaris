@@ -171,7 +171,9 @@ export function MediaCard({
                 {headerMarkup}
                 {popoverOrDismissMarkup}
               </InlineStack>
-              <p className={styles.Description}>{description}</p>
+              <Text as="p" variant="bodySm">
+                {description}
+              </Text>
               {actionMarkup}
             </BlockStack>
           </Box>

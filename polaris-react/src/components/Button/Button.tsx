@@ -176,10 +176,15 @@ export function Button({
     textFontWeight = mdUp ? 'medium' : 'semibold';
   }
 
+  let textVariant: TextProps['variant'] = 'bodySm';
+  if (size === 'large' || (hasPlainText && size !== 'micro')) {
+    textVariant = 'bodyMd';
+  }
+
   const childMarkup = children ? (
     <Text
       as="span"
-      variant={size === 'large' || hasPlainText ? 'bodyMd' : 'bodySm'}
+      variant={textVariant}
       fontWeight={textFontWeight}
       // Fixes Safari bug that doesn't re-render button text to correct color
       key={disabled ? 'text-disabled' : 'text'}

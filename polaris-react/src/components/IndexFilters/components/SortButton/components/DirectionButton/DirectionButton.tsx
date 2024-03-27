@@ -5,6 +5,7 @@ import {ArrowDownIcon, ArrowUpIcon} from '@shopify/polaris-icons';
 import {classNames} from '../../../../../../utilities/css';
 import {UnstyledButton} from '../../../../../UnstyledButton';
 import {Icon} from '../../../../../Icon';
+import {Text} from '../../../../../Text';
 
 import styles from './DirectionButton.module.css';
 
@@ -38,7 +39,9 @@ export function DirectionButton({
         source={direction === 'asc' ? ArrowUpIcon : ArrowDownIcon}
         tone="base"
       />
-      <span className={styles.Label}>{children}</span>
+      <Text as="span" variant="bodySm" fontWeight="medium">
+        {children}
+      </Text>
     </UnstyledButton>
   );
 }

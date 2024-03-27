@@ -161,6 +161,7 @@ export function Select({
     <Box paddingInlineEnd="100">
       <Text
         as="span"
+        variant="bodyMd"
         tone={
           tone && tone === 'magic' && !focused ? 'magic-subdued' : 'subdued'
         }

@@ -10,7 +10,6 @@ import {ActionList} from '../../../ActionList';
 import {Text} from '../../../Text';
 import {UnstyledButton} from '../../../UnstyledButton';
 import {classNames} from '../../../../utilities/css';
-import {useBreakpoints} from '../../../../utilities/breakpoints';
 import type {
   ActionListItemDescriptor,
   AppliedFilterInterface,
@@ -62,7 +61,6 @@ export function FiltersBar({
   children,
 }: PropsWithChildren<FiltersBarProps>) {
   const i18n = useI18n();
-  const {mdDown} = useBreakpoints();
   const [popoverActive, setPopoverActive] = useState(false);
   const hasMounted = useRef(false);
   useEffect(() => {
@@ -162,8 +160,6 @@ export function FiltersBar({
 
   const hasOneOrMorePinnedFilters = pinnedFilters.length >= 1;
 
-  const labelVariant = mdDown ? 'bodyMd' : 'bodySm';
-
   const addFilterActivator = (
     <div>
       <UnstyledButton
@@ -177,7 +173,7 @@ export function FiltersBar({
           disableFilters
         }
       >
-        <Text variant={labelVariant} as="span">
+        <Text as="span" variant="bodySm" tone={disabled ? 'disabled' : 'base'}>
           {i18n.translate('Polaris.Filters.addFilter')}{' '}
         </Text>
         <PlusIcon />
@@ -258,7 +254,6 @@ export function FiltersBar({
       <Button
         size="micro"
         onClick={handleClearAllFilters}
-        removeUnderline
         variant="monochromePlain"
       >
         {i18n.translate('Polaris.Filters.clearFilters')}

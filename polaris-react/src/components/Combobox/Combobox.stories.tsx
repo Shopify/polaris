@@ -565,13 +565,13 @@ export function WithMultiSelectAndVerticalContent() {
       );
 
       return (
-        <p>
+        <Text as="p" variant="bodyMd">
           {start}
           <Text fontWeight="bold" as="span">
             {highlight}
           </Text>
           {end}
-        </p>
+        </Text>
       );
     },
     [value],
