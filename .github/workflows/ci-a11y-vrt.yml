@@ -34,11 +34,14 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Setup Node from .nvmrc
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: yarn
+          cache: pnpm
 
       - name: Restore cache
         uses: actions/cache@v3
@@ -52,13 +55,13 @@ jobs:
             ${{ runner.os }}-accessibility-test-v2-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build packages
-        run: yarn build --filter=@shopify/polaris
+        run: pnpm build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: pnpm --filter=@shopify/polaris run storybook:build --quiet
 
       - name: Run accessibility test
         run: node ./polaris-react/scripts/accessibility-check.js
@@ -74,11 +77,14 @@ jobs:
         with:
           fetch-depth: 0 # Chromatic git history to track changes
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Setup Node from .nvmrc
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: yarn
+          cache: pnpm
 
       - name: Restore cache
         uses: actions/cache@v3
@@ -92,13 +98,13 @@ jobs:
             ${{ runner.os }}-visual-regression-test-v2-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build packages
-        run: yarn build --filter=@shopify/polaris
+        run: pnpm build --filter=@shopify/polaris
 
       - name: Build Storybook
-        run: yarn workspace @shopify/polaris run storybook:build --quiet
+        run: pnpm --filter=@shopify/polaris run storybook:build --quiet
         env:
           STORYBOOK_GITHUB_SHA: ${{ github.sha }}
           STORYBOOK_GITHUB_REPO_URL: ${{ github.server_url }}/${{ github.repository }}

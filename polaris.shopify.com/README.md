@@ -5,8 +5,8 @@ The public facing style guide, available via [https://polaris.shopify.com](https
 ## Getting Started
 
 ```
-yarn
-yarn dev
+pnpm
+pnpm dev
 ```
 
 ## Development tips
@@ -14,7 +14,7 @@ yarn dev
 To quickly create new components, run:
 
 ```
-yarn create-component
+pnpm create-component
 ```
 
 ## Site Content

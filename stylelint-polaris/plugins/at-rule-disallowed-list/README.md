@@ -36,13 +36,13 @@ const stylelintConfig = {
 All files:
 
 ```
-yarn stylelint **/*.scss
+pnpm stylelint **/*.scss
 ```
 
 A specific file:
 
 ```
-yarn stylelint src/example.scss
+pnpm stylelint src/example.scss
 ```
 
 ```scss

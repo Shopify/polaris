@@ -2,7 +2,7 @@
 
 Hello and welcome! To manage our change log and releases, we use [Changesets](https://github.com/changesets/changesets) to [version](https://semver.org/) and publish code.
 
-To add an entry to the change log for your pull request, from your feature branch run `yarn changeset` in your terminal. Use the arrow, spacebar, and return keys to answer the following Changesets CLI questions:
+To add an entry to the change log for your pull request, from your feature branch run `pnpm changeset` in your terminal. Use the arrow, spacebar, and return keys to answer the following Changesets CLI questions:
 
 `🦋 Which packages would you like to include?`
 

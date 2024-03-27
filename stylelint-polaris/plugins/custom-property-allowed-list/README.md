@@ -48,13 +48,13 @@ const stylelintConfig = {
 ### Run all linters
 
 ```
-yarn lint
+pnpm lint
 ```
 
 OR
 
 ```
-yarn stylelint <file-glob>
+pnpm stylelint <file-glob>
 ```
 
 e.x.
@@ -62,13 +62,13 @@ e.x.
 ### Lint all files
 
 ```
-yarn stylelint **/*.scss
+pnpm stylelint **/*.scss
 ```
 
 ### Lint the TextContainer.scss file
 
 ```
-yarn stylelint src/components/typography/textContainer/TextContainer.scss
+pnpm stylelint src/components/typography/textContainer/TextContainer.scss
 ```
 
 e.x. output
