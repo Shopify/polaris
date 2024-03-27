@@ -37,7 +37,8 @@ describe('<TextField />', () => {
       },
     });
 
-    expect(picker).toContainReactComponent(Label, {children: 'Field'});
+    expect(picker).toContainReactComponent(Label);
+    expect(picker).toContainReactText('Field');
   });
 
   it('renders a prefix', () => {

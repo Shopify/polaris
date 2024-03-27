@@ -3,7 +3,6 @@ import {mountWithApp} from 'tests/utilities';
 
 import {Picker} from '../Picker';
 import {Activator, SearchField} from '../components';
-import {UnstyledButton} from '../../UnstyledButton';
 import {Listbox} from '../../Listbox';
 
 describe('<Picker />', () => {
@@ -26,7 +25,7 @@ describe('<Picker />', () => {
       />,
     );
 
-    picker.find(UnstyledButton)!.trigger('onClick');
+    picker.find('button')!.trigger('onClick');
 
     expect(picker).toContainReactComponent(SearchField);
   });
@@ -39,7 +38,7 @@ describe('<Picker />', () => {
 
     const picker = mountWithApp(<Picker activator={{}} options={options} />);
 
-    picker.find(UnstyledButton)!.trigger('onClick');
+    picker.find('button')!.trigger('onClick');
 
     expect(picker).toContainReactComponent(Listbox);
     expect(picker).toContainReactComponentTimes(Listbox.Option, options.length);
@@ -56,7 +55,7 @@ describe('<Picker />', () => {
       />,
     );
 
-    picker.find(UnstyledButton)!.trigger('onClick');
+    picker.find('button')!.trigger('onClick');
     picker.find(SearchField)!.trigger('onChange', 'Add');
 
     expect(picker).toContainReactComponent(Listbox.Action);
@@ -76,7 +75,7 @@ describe('<Picker />', () => {
       />,
     );
 
-    picker.find(UnstyledButton)!.trigger('onClick');
+    picker.find('button')!.trigger('onClick');
     expect(picker).toContainReactComponentTimes(Listbox.Option, options.length);
 
     picker.find(SearchField)!.trigger('onChange', 'One');

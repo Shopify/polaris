@@ -58,21 +58,23 @@ export function Picker({
   onClose,
   ...listboxProps
 }: PickerProps) {
+  const activatorRef = React.createRef<HTMLButtonElement>();
+  const [activeItem, setActiveItem] = useState<string>();
+  const [popoverActive, setPopoverActive] = useState(false);
+  const [activeOptionId, setActiveOptionId] = useState<string>();
+  const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
+  const [listboxId, setListboxId] = useState<string>();
   const [query, setQuery] = useState<string>('');
   const [filteredOptions, setFilteredOptions] = useState<OptionProps[] | null>(
     options,
   );
-  const [popoverActive, setPopoverActive] = useState(false);
-  const [activeOptionId, setActiveOptionId] = useState<string>();
-  const [activeItem, setActiveItem] = useState<string>();
-  const [textFieldLabelId, setTextFieldLabelId] = useState<string>();
-  const [listboxId, setListboxId] = useState<string>();
-  const shouldOpen = !popoverActive;
 
+  const shouldOpen = !popoverActive;
   const handleClose = useCallback(() => {
     setPopoverActive(false);
     onClose?.();
-  }, [onClose]);
+    activatorRef.current?.focus();
+  }, [activatorRef, onClose]);
 
   const handleOpen = useCallback(() => {
     setPopoverActive(true);
@@ -164,27 +166,26 @@ export function Picker({
     options.find((option) => option.value === activeItem)?.children,
   );
 
-  const firstSelectedLabel = firstSelectedOption
-    ? firstSelectedOption?.toString()
-    : activator.placeholder;
-
   const queryMatchesExistingOption = options.some((option) =>
     QUERY_REGEX(query).exec(reactChildrenText(option.children)),
   );
 
   return (
     <Popover
-      active={popoverActive}
       activator={
         <Activator
           {...activator}
           onClick={handleOpen}
-          placeholder={firstSelectedLabel}
+          selected={firstSelectedOption || ''}
+          placeholder={activator.placeholder}
+          ref={activatorRef}
         />
       }
+      active={popoverActive}
       autofocusTarget="none"
-      preferredPosition="cover"
       onClose={handleClose}
+      preferredPosition="cover"
+      preventFocusOnClose
     >
       <Popover.Pane onScrolledToBottom={onScrolledToBottom} height={height}>
         {searchField ? (

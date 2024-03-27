@@ -98,7 +98,6 @@ export function Default() {
           <Listbox onSelect={updateSelection}>{optionsMarkup}</Listbox>
         ) : null}
       </Combobox>
-      <button>test</button>
     </div>
   );
 }

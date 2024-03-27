@@ -2,7 +2,6 @@ import React from 'react';
 import {mountWithApp} from 'tests/utilities';
 
 import {Activator} from '../Activator';
-import {UnstyledButton} from '../../../../UnstyledButton';
 
 describe('<Activator />', () => {
   it('renders a label', () => {
@@ -20,6 +19,6 @@ describe('<Activator />', () => {
   it('renders a disabled activator', () => {
     const activator = mountWithApp(<Activator disabled />);
 
-    expect(activator).toContainReactComponent(UnstyledButton, {disabled: true});
+    expect(activator).toContainReactComponent('button', {disabled: true});
   });
 });
