@@ -24,7 +24,7 @@ export function normalizePath(path: string): string {
   if (normalizedPath.startsWith('.')) {
     normalizedPath = normalizedPath.replace(/^\.{1,2}\//, '');
   } else if (normalizedPath.includes('/polaris/')) {
-    normalizedPath = normalizedPath.split('/polaris/')[1];
+    normalizedPath = normalizedPath.split(/\/(polaris\/)+/).at(-1)!;
   } else if (normalizedPath.startsWith('/')) {
     normalizedPath = normalizedPath.replace('/', '');
   }

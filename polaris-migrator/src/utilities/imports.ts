@@ -17,7 +17,7 @@ export function getImportDeclaration(
   j: core.JSCodeshift,
   source: Collection<any>,
   sourcePath: string,
-) {
+): Collection<core.ImportDeclaration> {
   return source
     .find(j.ImportDeclaration)
     .filter((path) => path.node.importKind !== 'type')
@@ -28,7 +28,7 @@ export function getRelativeImportDeclaration(
   j: core.JSCodeshift,
   source: Collection<any>,
   fileName = '',
-) {
+): Collection<core.ImportDeclaration> {
   const relativeRegex = new RegExp(String.raw`^[\.\/]*${fileName}$`);
   return source
     .find(j.ImportDeclaration)
@@ -95,7 +95,7 @@ export function getDefaultImportSpecifier(
   j: core.JSCodeshift,
   source: Collection<any>,
   sourcePath: string,
-) {
+): Collection<core.ImportDefaultSpecifier> {
   return source
     .find(j.ImportDeclaration)
     .filter((path) => path.node.source.value === sourcePath)
@@ -106,7 +106,7 @@ export function removeDefaultImportSpecifier(
   j: core.JSCodeshift,
   source: Collection<any>,
   sourcePath: string,
-) {
+): Collection<core.ImportDefaultSpecifier> {
   return getDefaultImportSpecifier(j, source, sourcePath).remove();
 }
 
@@ -134,7 +134,7 @@ export function getImportAllSpecifiers(
   j: core.JSCodeshift,
   source: Collection<any>,
   sourcePath: string,
-) {
+): Collection<core.ImportSpecifier> {
   return source
     .find(j.ImportDeclaration)
     .filter((path) => path.node.source.value === sourcePath)
@@ -146,7 +146,7 @@ export function getImportSpecifier(
   source: Collection<any>,
   specifier: string,
   sourcePath: string,
-) {
+): Collection<core.ImportSpecifier> {
   return getImportAllSpecifiers(j, source, sourcePath).filter(
     (path) => path.value.imported.name === specifier,
   );

@@ -26,11 +26,14 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Setup Node from .nvmrc
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: yarn
+          cache: pnpm
 
       - name: Restore cache
         uses: actions/cache@v3
@@ -45,13 +48,13 @@ jobs:
             ${{ runner.os }}-lint-v3-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build packages
-        run: yarn build
+        run: pnpm build
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
       - name: Type check
-        run: yarn type-check
+        run: pnpm type-check
