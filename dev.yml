@@ -1,12 +1,13 @@
 name: polaris
 up:
   - node:
-      yarn: v1.22.18
+      package_manager: pnpm@8.15.5
+      pnpm: 8.15.5
       version: v20.11.1 # to be kept in sync with .nvmrc
   - custom:
       name: Build monorepo
-      met?: yarn build --output-logs=none
+      met?: pnpm build --output-logs=none
       meet: 'true'
 
 commands:
-  server: yarn dev
+  server: pnpm dev

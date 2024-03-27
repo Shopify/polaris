@@ -34,12 +34,15 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Setup Node with v${{ matrix.node-version }}
         uses: actions/setup-node@v4
         id: setup_node
         with:
           node-version: ${{ matrix.node-version }}
-          cache: yarn
+          cache: pnpm
 
       - name: Restore cache
         uses: actions/cache@v3
@@ -54,10 +57,10 @@ jobs:
             ${{ runner.os }}-node${{ steps.setup_node.outputs.node-version }}-test-v4-
 
       - name: Install dependencies
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile
 
       - name: Build packages
-        run: yarn build
+        run: pnpm build
 
       - name: Test
-        run: yarn test
+        run: pnpm test

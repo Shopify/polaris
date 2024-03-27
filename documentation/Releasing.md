@@ -36,7 +36,7 @@ When merging this PR into `next`, a new prerelease is created with the `beta` di
 Steps for creating a new prerelease branch if `next` doesn't currently exist.
 
 1. Create a new `next` branch for prerelease development
-2. Run `yarn changeset pre enter beta`
+2. Run `pnpm changeset pre enter beta`
 3. Adjust the release workflow file (`.github/workflows/release.yml`) to run on the `next` branch:
    ```yml
    on:

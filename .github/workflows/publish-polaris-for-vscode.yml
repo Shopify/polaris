@@ -25,19 +25,22 @@ jobs:
           sudo rm -rf "/usr/local/share/boost"
           sudo rm -rf "$AGENT_TOOLSDIRECTORY"
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+
       - name: Setup Node from .nvmrc
         uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-          cache: yarn
+          cache: pnpm
 
       - name: Install dependencies
-        run: yarn
+        run: pnpm
 
       - name: Build extension
-        run: yarn build --filter=polaris-for-vscode
+        run: pnpm build --filter=polaris-for-vscode
 
       - name: Publish extension in the marketplace
-        run: yarn workspace polaris-for-vscode vsce publish
+        run: pnpm --filter=polaris-for-vscode vsce publish
         env:
           VSCE_PAT: ${{ secrets.VSCE_PAT }}

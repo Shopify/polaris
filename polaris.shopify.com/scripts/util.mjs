@@ -10,7 +10,7 @@ const isTTY = process.stdout.isTTY && !isCI;
 function enhancedProcessKill(prc) {
   prc.kill = async (signal = 'SIGKILL') => {
     prc.killed = true;
-    // Kill the yarn command _and_ the child process running node
+    // Kill the pnpm command _and_ the child process running node
     await terminate(prc.pid, signal);
   };
   return prc;
@@ -95,7 +95,7 @@ function streamToStringGetter(stream) {
 }
 
 export function buildLocalServer() {
-  return prettyExeca('yarn', ['next', 'build'], {
+  return prettyExeca('pnpm', ['next', 'build'], {
     stdout: 'inherit',
     stderr: 'inherit',
     pretty: {
@@ -107,7 +107,7 @@ export function buildLocalServer() {
 }
 
 export function genAssets() {
-  return prettyExeca('yarn', ['gen-assets'], {
+  return prettyExeca('pnpm', ['gen-assets'], {
     stdout: 'inherit',
     stderr: 'inherit',
     pretty: {
@@ -119,7 +119,7 @@ export function genAssets() {
 }
 
 export function startLocalServer(command = 'dev') {
-  return prettyExeca('yarn', ['next', command], {
+  return prettyExeca('pnpm', ['next', command], {
     stdout: 'ignore',
     stderr: 'pipe',
     shell: true,

@@ -1,6 +1,9 @@
+const fs = require('fs');
 const path = require('path');
+const yaml = require('js-yaml');
 
-const packages = require('./package.json').workspaces.packages;
+const pnpmWorkspace = path.join(__dirname, './pnpm-workspace.yaml');
+const {packages} = yaml.load(fs.readFileSync(pnpmWorkspace, 'utf8'));
 
 module.exports = {
   root: true,
