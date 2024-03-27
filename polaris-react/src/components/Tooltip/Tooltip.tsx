@@ -160,8 +160,8 @@ export function Tooltip({
     (event: React.KeyboardEvent) => {
       if (
         event.key !== 'Escape' &&
-        event.key !== 'Enter' &&
-        event.key !== ' '
+        (event.target === activatorContainer.current ||
+          (event.key !== 'Enter' && event.key !== ' '))
       ) {
         return;
       }
