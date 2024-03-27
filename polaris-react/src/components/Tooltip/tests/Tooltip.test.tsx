@@ -132,7 +132,7 @@ describe('<Tooltip />', () => {
     });
   });
 
-  it('closes itself when enter is pressed on keyup', () => {
+  it('does not close when enter is pressed on keyup of the activatorContainer', () => {
     const tooltip = mountWithApp(
       <Tooltip active content="This order has shipping labels.">
         <div>Order #1001</div>
@@ -140,6 +140,41 @@ describe('<Tooltip />', () => {
     );
 
     findWrapperComponent(tooltip)!.trigger('onKeyUp', {
+      target: tooltip.domNode,
+      key: 'Enter',
+    });
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: true,
+    });
+  });
+
+  it('does not close when space is pressed on keyup of the activatorContainer', () => {
+    const tooltip = mountWithApp(
+      <Tooltip active content="This order has shipping labels.">
+        <div>Order #1001</div>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onKeyUp', {
+      target: tooltip.domNode,
+      key: ' ',
+    });
+
+    expect(tooltip).toContainReactComponent(TooltipOverlay, {
+      active: true,
+    });
+  });
+
+  it('closes itself when enter is pressed on keyup of child elements', () => {
+    const tooltip = mountWithApp(
+      <Tooltip active content="This order has shipping labels.">
+        <button>Order #1001</button>
+      </Tooltip>,
+    );
+
+    findWrapperComponent(tooltip)!.trigger('onKeyUp', {
+      target: tooltip.find('button')!.domNode,
       key: 'Enter',
     });
 
@@ -148,14 +183,15 @@ describe('<Tooltip />', () => {
     });
   });
 
-  it('closes itself when space is pressed on keyup', () => {
+  it('closes itself when space is pressed on keyup of child elements', () => {
     const tooltip = mountWithApp(
       <Tooltip active content="This order has shipping labels.">
-        <div>Order #1001</div>
+        <button>Order #1001</button>
       </Tooltip>,
     );
 
     findWrapperComponent(tooltip)!.trigger('onKeyUp', {
+      target: tooltip.find('button')!.domNode,
       key: ' ',
     });
 
