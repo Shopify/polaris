@@ -1435,6 +1435,7 @@ export function WithBulkActionsAndSelectionAcrossPages() {
             title: 'Amount spent',
           },
         ]}
+        // defaultPaginatedSelectAllText="Select everything up in here"
       >
         {rowMarkup}
       </IndexTable>

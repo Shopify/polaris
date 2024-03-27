@@ -44,6 +44,7 @@ export function useBulkSelectionData({
   itemCount,
   hasMoreItems,
   resourceName: passedResourceName,
+  defaultPaginatedSelectAllText,
 }: BulkSelectionDataOptions) {
   const i18n = useI18n();
 
@@ -90,6 +91,9 @@ export function useBulkSelectionData({
     }
 
     if (selectedItemsCount === SELECT_ALL_ITEMS) {
+      if (defaultPaginatedSelectAllText) {
+        return defaultPaginatedSelectAllText;
+      }
       return i18n.translate('Polaris.IndexProvider.allItemsSelected', {
         itemsLength: itemCount,
         resourceNamePlural: resourceName.plural.toLocaleLowerCase(),
