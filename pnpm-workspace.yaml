@@ -1,0 +1,9 @@
+packages:
+  - polaris-tokens
+  - polaris-for-vscode
+  - polaris-icons
+  - polaris-migrator
+  - polaris-react
+  - stylelint-polaris
+  - polaris.shopify.com
+  - polaris.shopify.com/scripts/get-props

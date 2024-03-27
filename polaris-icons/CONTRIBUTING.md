@@ -32,4 +32,4 @@ If you notice existing icons that are out-of-date or need improvements, you can 
 1. Export your icon in SVG format from your design software.
 1. Copy and paste or move the SVG source into a new file: `polaris-icons/icons/{YourIconName}.svg`. (Make sure to suffix your icon name with `Icon` i.e. `BookOpenIcon.svg`).
 1. Add an accompanying YAML file: `polaris-icons/icons/{YourIconName}.yml`. The YAML file requires the following fields: `name, description, keywords, authors, date_added, date_modified`. See sibling files for reference.
-1. Optimize your icon by running `yarn optimize` from within the `polaris-icons` directory.
+1. Optimize your icon by running `pnpm optimize` from within the `polaris-icons` directory.
