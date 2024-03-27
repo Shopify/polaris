@@ -62,6 +62,14 @@
 
 .positionedCover {
   margin: 0;
+
+  &::before {
+    border-radius: var(--p-border-radius-200);
+  }
+
+  .ContentContainer {
+    border-radius: var(--p-border-radius-200);
+  }
 }
 
 .ContentContainer {
