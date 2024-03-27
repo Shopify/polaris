@@ -1,5 +1,18 @@
 # polaris.shopify.com
 
+## 0.67.0
+
+### Minor Changes
+
+- [#11779](https://github.com/Shopify/polaris/pull/11779) [`86a6ba44a`](https://github.com/Shopify/polaris/commit/86a6ba44a42fc6e2565326603cfe02a5b8b790cb) Thanks [@itwasmattgregg](https://github.com/itwasmattgregg)! - Added examples for `Card` and `Page` with icon actions
+
+### Patch Changes
+
+- [#11547](https://github.com/Shopify/polaris/pull/11547) [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Added page for `typography/property-disallow-list` Stylelint rule
+
+- Updated dependencies [[`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264), [`4fffc2dcc`](https://github.com/Shopify/polaris/commit/4fffc2dcc31ec49b1c5a536af72880812a153d7a), [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264), [`36df1aa6c`](https://github.com/Shopify/polaris/commit/36df1aa6c3d483972591130918ebfb392db71922), [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264)]:
+  - @shopify/polaris@12.24.0
+
 ## 0.66.2
 
 ### Patch Changes
