@@ -17,6 +17,7 @@ import {
 } from '@shopify/polaris';
 import {
   PlusIcon,
+  PlusCircleIcon,
   XSmallIcon,
   ChevronDownIcon,
   EditIcon,
@@ -211,10 +212,10 @@ export function Plain() {
         <Button variant="plain" disabled>
           Label
         </Button>
-        <Button variant="plain" icon={PlusIcon}>
+        <Button variant="plain" icon={PlusCircleIcon}>
           Label
         </Button>
-        <Button variant="plain" disabled icon={PlusIcon}>
+        <Button variant="plain" disabled icon={PlusCircleIcon}>
           Label
         </Button>
         <Button variant="plain" disclosure>
@@ -246,10 +247,10 @@ export function MonochromePlain() {
     <Box padding="400">
       <InlineStack gap="400" blockAlign="center">
         <Button variant="monochromePlain">Default</Button>
-        <Button variant="monochromePlain" icon={PlusIcon}>
+        <Button variant="monochromePlain" icon={PlusCircleIcon}>
           With icon
         </Button>
-        <Button variant="monochromePlain" disabled icon={PlusIcon}>
+        <Button variant="monochromePlain" disabled icon={PlusCircleIcon}>
           Disabled with icon
         </Button>
         <Button variant="monochromePlain" disclosure>
@@ -281,10 +282,10 @@ export function Tertiary() {
           <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button variant="tertiary" icon={PlusIcon}>
+          <Button variant="tertiary" icon={PlusCircleIcon}>
             Label
           </Button>
-          <Button variant="tertiary" disabled icon={PlusIcon}>
+          <Button variant="tertiary" disabled icon={PlusCircleIcon}>
             Label
           </Button>
           <Button variant="tertiary" disclosure>
@@ -311,10 +312,10 @@ export function Tertiary() {
           <Button variant="tertiary" disabled>
             Label
           </Button>
-          <Button variant="tertiary" icon={PlusIcon}>
+          <Button variant="tertiary" icon={PlusCircleIcon}>
             Label
           </Button>
-          <Button variant="tertiary" disabled icon={PlusIcon}>
+          <Button variant="tertiary" disabled icon={PlusCircleIcon}>
             Label
           </Button>
           <Button variant="tertiary" disclosure>
