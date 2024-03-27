@@ -61,6 +61,7 @@ export function Pane({
       className={className}
       style={style}
       onScrolledToBottom={onScrolledToBottom}
+      scrollbarWidth="thin"
     >
       {content}
     </Scrollable>
