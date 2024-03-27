@@ -4,6 +4,7 @@ import {Label, labelID} from '../../../Label';
 import type {TextFieldProps} from '../../../TextField';
 import {useComboboxTextField} from '../../../../utilities/combobox';
 import {InlineStack} from '../../../InlineStack';
+import {Text} from '../../../Text';
 
 import styles from './SearchField.module.css';
 
@@ -15,7 +16,6 @@ export function SearchField({
   onBlur,
   onChange,
   label,
-  labelHidden,
   prefix,
   placeholder,
   focused,
@@ -76,30 +76,30 @@ export function SearchField({
   }
 
   return (
-    <>
-      <Label id={textFieldId} hidden={labelHidden}>
-        {label}
-      </Label>
-      <InlineStack gap="100" blockAlign="center">
+    <InlineStack gap="100" blockAlign="center">
+      <Label id={textFieldId}>
+        <Text as="span" visuallyHidden>
+          {label}
+        </Text>
         <span>{prefix}</span>
-        <input
-          ref={inputRef}
-          className={styles.SearchField}
-          value={value}
-          id={textFieldId}
-          type={type}
-          aria-activedescendant={activeOptionId}
-          role="combobox"
-          aria-haspopup="listbox"
-          aria-autocomplete="list"
-          aria-expanded="true"
-          placeholder={placeholder}
-          aria-controls={listboxId}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-          onChange={({target}) => handleChange(target.value, textFieldId)}
-        />
-      </InlineStack>
-    </>
+      </Label>
+      <input
+        ref={inputRef}
+        id={textFieldId}
+        className={styles.SearchField}
+        value={value}
+        type={type}
+        aria-activedescendant={activeOptionId}
+        role="combobox"
+        aria-haspopup="listbox"
+        aria-autocomplete="list"
+        aria-expanded="true"
+        placeholder={placeholder}
+        aria-controls={listboxId}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        onChange={({target}) => handleChange(target.value, textFieldId)}
+      />
+    </InlineStack>
   );
 }

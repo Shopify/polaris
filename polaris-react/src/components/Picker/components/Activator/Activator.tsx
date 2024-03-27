@@ -1,49 +1,54 @@
 import {SelectIcon} from '@shopify/polaris-icons';
-import React from 'react';
+import React, {forwardRef} from 'react';
 
 import {BlockStack} from '../../../BlockStack';
 import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
-import {UnstyledButton} from '../../../UnstyledButton';
 import {classNames} from '../../../../utilities/css';
 
 import styles from './Activator.module.css';
 
 export interface ActivatorProps {
+  disabled?: boolean;
   label?: string;
   placeholder?: string;
-  disabled?: boolean;
+  selected?: string;
   onClick?(): void;
 }
 
-export function Activator({
-  disabled,
-  label,
-  placeholder,
-  onClick,
-}: ActivatorProps) {
-  return (
-    <UnstyledButton
-      className={classNames(styles.Activator, disabled && styles.disabled)}
-      disabled={disabled}
-      onClick={onClick}
-    >
-      <BlockStack as="span" gap="100">
-        {label && (
-          <Text as="span" variant="bodySm" alignment="start" tone="subdued">
-            {label}
-          </Text>
-        )}
+export const Activator = forwardRef<HTMLButtonElement, ActivatorProps>(
+  ({disabled, label, placeholder, selected, onClick}, ref) => {
+    return (
+      <button
+        ref={ref}
+        disabled={disabled}
+        onClick={onClick}
+        className={classNames(styles.Activator, disabled && styles.disabled)}
+      >
+        <BlockStack as="span" gap="100">
+          {label && (
+            <Text as="span" variant="bodySm" alignment="start" tone="subdued">
+              {label}
+            </Text>
+          )}
 
-        {placeholder && (
-          <Text as="span" variant="bodyMd" alignment="start">
-            {placeholder}
-          </Text>
-        )}
-      </BlockStack>
-      <span>
-        <Icon tone="subdued" source={SelectIcon} />
-      </span>
-    </UnstyledButton>
-  );
-}
+          {(selected !== '' || placeholder) && (
+            <Text
+              as="span"
+              variant="bodyMd"
+              alignment="start"
+              tone={selected ? undefined : 'subdued'}
+            >
+              {selected || placeholder}
+            </Text>
+          )}
+        </BlockStack>
+        <span>
+          <Icon tone="subdued" source={SelectIcon} />
+        </span>
+      </button>
+    );
+  },
+);
+
+Activator.displayName = 'Activator';
