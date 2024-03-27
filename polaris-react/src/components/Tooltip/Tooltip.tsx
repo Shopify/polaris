@@ -5,14 +5,13 @@ import type {
 } from '@shopify/polaris-tokens';
 
 import {Portal} from '../Portal';
-import {useEphemeralPresenceManager} from '../../utilities/ephemeral-presence-manager';
 import {findFirstFocusableNode} from '../../utilities/focus';
-import {useToggle} from '../../utilities/use-toggle';
 import {classNames} from '../../utilities/css';
 
 import {TooltipOverlay} from './components';
 import type {TooltipOverlayProps} from './components';
 import styles from './Tooltip.module.css';
+import {Timeout, useTimeout} from './utils';
 
 export type Width = 'default' | 'wide';
 export type Padding = 'default' | Extract<SpaceScale, '400'>;
@@ -23,7 +22,14 @@ export interface TooltipProps {
   children?: React.ReactNode;
   /** The content to display within the tooltip */
   content: React.ReactNode;
-  /** Toggle whether the tooltip is visible */
+  /** Toggle whether the tooltip is visible. */
+  open?: boolean;
+  /** Toggle whether the tooltip is visible initially */
+  defaultOpen?: boolean;
+  /**
+   * Toggle whether the tooltip is visible initially
+   * @deprecated Use `defaultOpen` instead
+   */
   active?: boolean;
   /** Delay in milliseconds while hovering over an element before the tooltip is visible */
   hoverDelay?: number;
@@ -68,12 +74,25 @@ export interface TooltipProps {
   onClose?(): void;
 }
 
-const HOVER_OUT_TIMEOUT = 150;
+/**
+ * The [hysteresis](https://en.wikipedia.org/wiki/Hysteresis) flag is used to influence the `hoverDelay` and `animateOpen` behavior of the Tooltip.
+ * Adapted from the [MUI Tooltip component](https://github.com/mui/material-ui/blob/822a7e69c062a5e4f99f02b4a3aadc7fb51c2ce9/packages/mui-material/src/Tooltip/Tooltip.js#L217-L218)
+ */
+let hysteresisOpen = false;
+const hysteresisTimer = new Timeout();
+const HYSTERESIS_TIMEOUT = 150;
+
+export function testResetHysteresis() {
+  hysteresisOpen = false;
+  hysteresisTimer.clear();
+}
 
 export function Tooltip({
   children,
   content,
   dismissOnMouseOut,
+  open: openProp,
+  defaultOpen: defaultOpenProp,
   active: originalActive,
   hoverDelay,
   preferredPosition = 'above',
@@ -84,40 +103,167 @@ export function Tooltip({
   borderRadius: borderRadiusProp,
   zIndexOverride,
   hasUnderline,
-  persistOnClick,
+  persistOnClick = false,
   onOpen,
   onClose,
 }: TooltipProps) {
   const borderRadius = borderRadiusProp || '200';
-
-  const WrapperComponent: any = activatorWrapper;
-  const {
-    value: active,
-    setTrue: setActiveTrue,
-    setFalse: handleBlur,
-  } = useToggle(Boolean(originalActive));
-
-  const {value: persist, toggle: togglePersisting} = useToggle(
-    Boolean(originalActive) && Boolean(persistOnClick),
+  const isControlled = typeof openProp === 'boolean';
+  const defaultOpen = defaultOpenProp ?? originalActive ?? false;
+  const animateOpen = useRef(!defaultOpen && !hysteresisOpen);
+  const [open, setOpen] = useState(defaultOpen);
+  const [isPersisting, setIsPersisting] = useState(
+    defaultOpen && persistOnClick,
   );
 
-  const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
-  const {presenceList, addPresence, removePresence} =
-    useEphemeralPresenceManager();
+  const isMouseEntered = useRef(false);
+  const hoverDelayTimer = useTimeout();
 
   const id = useId();
+  const WrapperComponent: any = activatorWrapper;
   const activatorContainer = useRef<HTMLElement>(null);
-  const mouseEntered = useRef(false);
-  const [shouldAnimate, setShouldAnimate] = useState(Boolean(!originalActive));
-  const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
-  const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
+  const [activatorNode, setActivatorNode] = useState<HTMLElement | null>(null);
+  const wrapperClassNames = classNames(
+    WrapperComponent === 'div' && styles.TooltipContainer,
+    hasUnderline && styles.HasUnderline,
+  );
+
+  const handleOpen = useCallback(() => {
+    if (open) return;
+
+    if (!isControlled && originalActive !== false) {
+      hysteresisTimer.clear();
+
+      animateOpen.current = !hysteresisOpen;
+      hysteresisOpen = true;
+
+      setOpen(true);
+    }
+
+    onOpen?.();
+  }, [isControlled, onOpen, open, originalActive]);
+
+  const handleClose = useCallback(() => {
+    if (!open) return;
+
+    if (!isControlled) {
+      hysteresisTimer.start(HYSTERESIS_TIMEOUT, () => {
+        hysteresisOpen = false;
+      });
+
+      animateOpen.current = false;
+
+      setOpen(false);
+    }
+
+    onClose?.();
+  }, [open, isControlled, onClose]);
+
+  const handleMouseEnter = useCallback(() => {
+    // https://github.com/facebook/react/issues/10109
+    // Mouseenter event not triggered when cursor moves from disabled button
+    if (isMouseEntered.current) return;
+    isMouseEntered.current = true;
+
+    if (open) return;
+
+    if (hoverDelay && !hysteresisOpen) {
+      hoverDelayTimer.start(hoverDelay, () => {
+        handleOpen();
+      });
+    } else {
+      hoverDelayTimer.clear();
+      handleOpen();
+    }
+  }, [open, hoverDelayTimer, hoverDelay, handleOpen]);
+
+  const handleMouseLeave = useCallback(() => {
+    isMouseEntered.current = false;
+
+    hoverDelayTimer.clear();
+
+    if (isPersisting || !open) return;
+
+    handleClose();
+  }, [hoverDelayTimer, isPersisting, open, handleClose]);
 
   const handleFocus = useCallback(() => {
-    if (originalActive !== false) {
-      setActiveTrue();
-    }
-  }, [originalActive, setActiveTrue]);
+    if (open) return;
 
+    hoverDelayTimer.clear();
+
+    handleOpen();
+  }, [handleOpen, hoverDelayTimer, open]);
+
+  const handleBlur = useCallback(() => {
+    if (isPersisting) setIsPersisting(false);
+
+    handleClose();
+  }, [handleClose, isPersisting, setIsPersisting]);
+
+  const handleKeyUp = useCallback(
+    (event: React.KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+
+      if (isPersisting) setIsPersisting(false);
+
+      handleClose();
+    },
+    [handleClose, isPersisting, setIsPersisting],
+  );
+
+  const handleMouseDown = useCallback(() => {
+    if (!persistOnClick) return;
+
+    setIsPersisting((prevIsPersisting) => !prevIsPersisting);
+  }, [persistOnClick]);
+
+  const setActivator = useCallback((node: HTMLElement | null) => {
+    const activatorContainerRef: any = activatorContainer;
+    if (node == null) {
+      activatorContainerRef.current = null;
+      setActivatorNode(null);
+      return;
+    }
+
+    node.firstElementChild instanceof HTMLElement &&
+      setActivatorNode(node.firstElementChild);
+
+    activatorContainerRef.current = node;
+  }, []);
+
+  // Sync controlled state with uncontrolled state
+  useEffect(() => {
+    if (!isControlled || openProp === open) return;
+
+    hoverDelayTimer.clear();
+
+    if (openProp && !originalActive) {
+      hysteresisTimer.clear();
+
+      animateOpen.current = !hysteresisOpen;
+      hysteresisOpen = true;
+
+      setOpen(true);
+    } else {
+      hysteresisTimer.start(HYSTERESIS_TIMEOUT, () => {
+        hysteresisOpen = false;
+      });
+
+      animateOpen.current = false;
+
+      setOpen(false);
+    }
+  }, [hoverDelayTimer, isControlled, open, openProp, originalActive]);
+
+  // Note: Remove this effect along with the `active` prop in Polaris v14
+  useEffect(() => {
+    if (originalActive === false && open) {
+      handleClose();
+    }
+  }, [originalActive, handleClose, handleBlur, open]);
+
+  // Add `tabIndex` and other a11y attributes to the first focusable node
   useEffect(() => {
     const firstFocusable = activatorContainer.current
       ? findFirstFocusableNode(activatorContainer.current)
@@ -131,146 +277,40 @@ export function Tooltip({
     accessibilityNode.setAttribute('data-polaris-tooltip-activator', 'true');
   }, [id, children]);
 
-  useEffect(() => {
-    return () => {
-      if (hoverDelayTimeout.current) {
-        clearTimeout(hoverDelayTimeout.current);
-      }
-      if (hoverOutTimeout.current) {
-        clearTimeout(hoverOutTimeout.current);
-      }
-    };
-  }, []);
-
-  const handleOpen = useCallback(() => {
-    setShouldAnimate(!presenceList.tooltip && !active);
-    onOpen?.();
-    addPresence('tooltip');
-  }, [addPresence, presenceList.tooltip, onOpen, active]);
-
-  const handleClose = useCallback(() => {
-    onClose?.();
-    setShouldAnimate(false);
-    hoverOutTimeout.current = setTimeout(() => {
-      removePresence('tooltip');
-    }, HOVER_OUT_TIMEOUT);
-  }, [removePresence, onClose]);
-
-  const handleKeyUp = useCallback(
-    (event: React.KeyboardEvent) => {
-      if (event.key !== 'Escape') return;
-      handleClose?.();
-      handleBlur();
-      persistOnClick && togglePersisting();
-    },
-    [handleBlur, handleClose, persistOnClick, togglePersisting],
-  );
-
-  useEffect(() => {
-    if (originalActive === false && active) {
-      handleClose();
-      handleBlur();
-    }
-  }, [originalActive, active, handleClose, handleBlur]);
-
-  const portal = activatorNode ? (
-    <Portal idPrefix="tooltip">
-      <TooltipOverlay
-        id={id}
-        preferredPosition={preferredPosition}
-        activator={activatorNode}
-        active={active}
-        accessibilityLabel={accessibilityLabel}
-        onClose={noop}
-        preventInteraction={dismissOnMouseOut}
-        width={width}
-        padding={padding}
-        borderRadius={borderRadius}
-        zIndexOverride={zIndexOverride}
-        instant={!shouldAnimate}
-      >
-        {content}
-      </TooltipOverlay>
-    </Portal>
-  ) : null;
-
-  const wrapperClassNames = classNames(
-    activatorWrapper === 'div' && styles.TooltipContainer,
-    hasUnderline && styles.HasUnderline,
-  );
-
   return (
     <WrapperComponent
-      onFocus={() => {
-        handleOpen();
-        handleFocus();
-      }}
-      onBlur={() => {
-        handleClose();
-        handleBlur();
-
-        if (persistOnClick) {
-          togglePersisting();
-        }
-      }}
-      onMouseLeave={handleMouseLeave}
-      onMouseOver={handleMouseEnterFix}
-      onMouseDown={persistOnClick ? togglePersisting : undefined}
       ref={setActivator}
-      onKeyUp={handleKeyUp}
       className={wrapperClassNames}
+      onFocus={handleFocus}
+      onBlur={handleBlur}
+      onMouseOver={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onMouseDown={handleMouseDown}
+      onKeyUp={handleKeyUp}
     >
       {children}
-      {portal}
+      {activatorNode && (
+        <Portal idPrefix="tooltip">
+          <TooltipOverlay
+            id={id}
+            preferredPosition={preferredPosition}
+            activator={activatorNode}
+            active={open}
+            accessibilityLabel={accessibilityLabel}
+            onClose={noop}
+            preventInteraction={dismissOnMouseOut}
+            width={width}
+            padding={padding}
+            borderRadius={borderRadius}
+            zIndexOverride={zIndexOverride}
+            instant={!animateOpen.current}
+          >
+            {content}
+          </TooltipOverlay>
+        </Portal>
+      )}
     </WrapperComponent>
   );
-
-  function setActivator(node: HTMLElement | null) {
-    const activatorContainerRef: any = activatorContainer;
-    if (node == null) {
-      activatorContainerRef.current = null;
-      setActivatorNode(null);
-      return;
-    }
-
-    node.firstElementChild instanceof HTMLElement &&
-      setActivatorNode(node.firstElementChild);
-
-    activatorContainerRef.current = node;
-  }
-
-  function handleMouseEnter() {
-    mouseEntered.current = true;
-    if (hoverDelay && !presenceList.tooltip) {
-      hoverDelayTimeout.current = setTimeout(() => {
-        handleOpen();
-        handleFocus();
-      }, hoverDelay);
-    } else {
-      handleOpen();
-      handleFocus();
-    }
-  }
-
-  function handleMouseLeave() {
-    if (hoverDelayTimeout.current) {
-      clearTimeout(hoverDelayTimeout.current);
-      hoverDelayTimeout.current = null;
-    }
-
-    mouseEntered.current = false;
-    handleClose();
-
-    if (!persist) {
-      handleBlur();
-    }
-  }
-
-  // https://github.com/facebook/react/issues/10109
-  // Mouseenter event not triggered when cursor moves from disabled button
-  function handleMouseEnterFix() {
-    !mouseEntered.current && handleMouseEnter();
-  }
 }
 
 function noop() {}
