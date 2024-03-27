@@ -22,12 +22,7 @@ import type {
 } from '../../utilities/frame';
 import {UseTheme} from '../../utilities/use-theme';
 
-import {
-  ToastManager,
-  Loading,
-  ContextualSaveBar,
-  CSSAnimation,
-} from './components';
+import {ToastManager, ContextualSaveBar, CSSAnimation} from './components';
 import styles from './Frame.module.css';
 
 export interface FrameProps {
@@ -73,7 +68,6 @@ interface State {
 const APP_FRAME_MAIN = 'AppFrameMain';
 const APP_FRAME_NAV = 'AppFrameNav';
 const APP_FRAME_TOP_BAR = 'AppFrameTopBar';
-const APP_FRAME_LOADING_BAR = 'AppFrameLoadingBar';
 
 class FrameInner extends PureComponent<CombinedProps, State> {
   state: State = {
@@ -105,8 +99,7 @@ class FrameInner extends PureComponent<CombinedProps, State> {
   }
 
   render() {
-    const {skipFocused, loadingStack, toastMessages, showContextualSaveBar} =
-      this.state;
+    const {skipFocused, toastMessages, showContextualSaveBar} = this.state;
     const {
       logo,
       children,
@@ -179,13 +172,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
         )}
       </UseTheme>
     ) : null;
-
-    const loadingMarkup =
-      loadingStack > 0 ? (
-        <div className={styles.LoadingBar} id={APP_FRAME_LOADING_BAR}>
-          <Loading />
-        </div>
-      ) : null;
 
     const topBarMarkup = topBar ? (
       <div
@@ -285,7 +271,6 @@ class FrameInner extends PureComponent<CombinedProps, State> {
           {topBarMarkup}
           {navigationMarkup}
           {contextualSaveBarMarkup}
-          {loadingMarkup}
           {navigationOverlayMarkup}
           <main
             className={styles.Main}

@@ -48,10 +48,13 @@ describe('<SecondaryNavigation />', () => {
       });
     });
 
-    it('disables Collapsible transition', () => {
+    it('renders Collapsible with a custom transition', () => {
       const component = mountWithApp(<SecondaryNavigation {...mockProps} />);
       expect(component).toContainReactComponent(Collapsible, {
-        transition: false,
+        transition: {
+          duration: 'var(--p-motion-duration-100)',
+          timingFunction: 'var(--p-motion-ease-out)',
+        },
       });
     });
 

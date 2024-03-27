@@ -40,18 +40,22 @@ export function SecondaryNavigation({
     isEqual(item, hoveredItem),
   );
 
+  const transition = {
+    duration: 'var(--p-motion-duration-100)',
+    timingFunction: 'var(--p-motion-ease-out)',
+  };
+
   return (
     <div
       className={classNames(
         styles.SecondaryNavigation,
-        showExpanded && styles.SecondaryNavigationOpen,
         !icon && styles['SecondaryNavigation-noIcon'],
       )}
     >
       <Collapsible
         id={secondaryNavigationId || uid}
         open={showExpanded}
-        transition={false}
+        transition={transition}
       >
         <ul className={styles.List}>
           {subNavigationItems.map((item, index) => {
