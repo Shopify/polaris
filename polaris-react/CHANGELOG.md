@@ -1,5 +1,21 @@
 # Changelog
 
+## 12.24.0
+
+### Minor Changes
+
+- [#11547](https://github.com/Shopify/polaris/pull/11547) [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Applied semantic type styles using the `Text` component
+
+* [#11780](https://github.com/Shopify/polaris/pull/11780) [`4fffc2dcc`](https://github.com/Shopify/polaris/commit/4fffc2dcc31ec49b1c5a536af72880812a153d7a) Thanks [@itwasmattgregg](https://github.com/itwasmattgregg)! - allows icons to be displayed on primary actions on Page component
+
+- [#11547](https://github.com/Shopify/polaris/pull/11547) [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Added `base`,`inherit`, `disabled`, and `text-inverse` tone options for Text component
+
+* [#11547](https://github.com/Shopify/polaris/pull/11547) [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated plain/monochrome Button text size to bodySm for micro
+
+### Patch Changes
+
+- [#11789](https://github.com/Shopify/polaris/pull/11789) [`36df1aa6c`](https://github.com/Shopify/polaris/commit/36df1aa6c3d483972591130918ebfb392db71922) Thanks [@laurkim](https://github.com/laurkim)! - Fixed logo spacing on `ContextualSaveBar`
+
 ## 12.23.0
 
 ### Minor Changes
