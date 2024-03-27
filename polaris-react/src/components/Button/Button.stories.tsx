@@ -1,7 +1,10 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TextProps} from '@shopify/polaris';
 import {
+  useCopyToClipboard,
+  Link,
+  Tooltip,
   Button,
   ButtonGroup,
   Card,
@@ -18,6 +21,8 @@ import {
   ChevronDownIcon,
   EditIcon,
   MagicIcon,
+  CheckIcon,
+  ClipboardIcon,
   DeleteIcon,
 } from '@shopify/polaris-icons';
 
@@ -830,5 +835,34 @@ export function LoadingState() {
         Save product
       </Button>
     </InlineStack>
+  );
+}
+
+export function CopyToClipboard() {
+  const [copy, status] = useCopyToClipboard({
+    defaultValue: 'hello@example.com',
+  });
+
+  return (
+    <div style={{maxWidth: 300, paddingTop: 100}}>
+      <Card>
+        <InlineStack align="space-between" gap="200">
+          <Link removeUnderline>hello@example.com</Link>
+          <Tooltip
+            dismissOnMouseOut
+            hoverDelay={500}
+            preferredPosition="above"
+            content="Copy"
+          >
+            <Button
+              variant="tertiary"
+              accessibilityLabel="Copy email address"
+              icon={status === 'copied' ? CheckIcon : ClipboardIcon}
+              onClick={copy}
+            />
+          </Tooltip>
+        </InlineStack>
+      </Card>
+    </div>
   );
 }
