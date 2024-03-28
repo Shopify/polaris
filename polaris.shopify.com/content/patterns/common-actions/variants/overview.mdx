@@ -42,37 +42,77 @@ url: /patterns/common-actions/overview
 
   </Medium>
 
-  <Medium variant="do">
+  <Text>
 
-    ![A single select option list of customers with an add customer action at the bottom of the list of options.](/images/patterns/common-actions/types/common-action-types-add-do-bottom-list@2x.png)
+    <Stack gap="400">
 
-    Place add actions at the bottom of a list of items or options.
+    ### Lists
 
-  </Medium>
+    Add actions should always be visible. They are often placed in the list header to the right of the title when “add” is the main action of the list.
 
-  <Medium variant="dont">
+    </Stack>
 
-    ![A card with a header and an add action to the right of the card title. The card has a list of items in the body.](/images/patterns/common-actions/types/common-action-types-add-dont-top-list@2x.png)
+  </Text>
 
-    Place add actions at the top of a list of items or options.
+  <Large>
 
-  </Medium>
+    ![A few cards each with several list items in a viewable state with a main add action in the list header.](/images/patterns/common-actions/types/common-action-types-add-list-top@2x.png)
 
-  <Medium variant="do">
+  </Large>
 
-    ![A table with an Add location action in the card header to the right.](/images/patterns/common-actions/types/common-action-types-add-do-top-table@2x.png)
+  <Text>
 
-    Place add actions associated with a table in the card or page header. This keeps the action discoverable.
+    Place add actions at the bottom of a list when there are a limited number of items or when “add” is secondary to other surrounding actions. For example, editing an item within the list.
 
-  </Medium>
+  </Text>
 
-  <Medium variant="dont">
+  <Large>
 
-    ![A table with selectable items, pagination, and input fields. There is an add products action in the card footer to the right.](/images/patterns/common-actions/types/common-action-types-add-dont-bottom-table@2x.png)
+    ![An image of two cards with a few list items and the add action at the bottom.](/images/patterns/common-actions/types/common-action-types-add-list-bottom@2x.png)
+
+  </Large>
+
+  <Text>
+
+    Add actions are placed at the bottom of a list of selectable options. These actions are secondary to the main action of selecting.
+  
+  </Text>
+
+  <Large>
+
+    ![A select list of options with an add option at the botto of the list, outside of the scrollable area.](/images/patterns/common-actions/types/common-action-types-add-select-list-bottom@2x.png)
+
+  </Large>
+
+  <Text>
+
+    <Stack gap="400">
+
+    ### Tables
+
+    Place add actions associated with a table in the table, card or page header to keep them discoverable.
+
+    </Stack>
+
+  </Text>
+
+  <Large>
+
+    ![A table of products with the add action in the card header above the table.](/images/patterns/common-actions/types/common-action-types-add-table-top@2x.png)
+
+  </Large>
+
+  <Text>
+
+  </Text>
+
+  <Large variant="dont">
+
+    ![A table of products with an add action at the bottom of the table.](/images/patterns/common-actions/types/common-action-types-add-table-bottom@2x.png)
 
     Place add actions at the bottom of a table. This risks them getting lost and can cause confusion.
 
-  </Medium>
+  </Large>
 
 </LayoutSection>
 
@@ -94,7 +134,7 @@ url: /patterns/common-actions/overview
 
     ![The polaris copy icon in a neutral and hover state with a “Copy item” tooltip.](/images/patterns/common-actions/types/common-action-types-copy-copy-icon@2x.png)
 
-    Use the copy icon with a tertiary icon button for strings of text.
+    Use the clipboard icon with a tertiary icon button for copying a string of text.
 
   </Small>
 
@@ -102,21 +142,37 @@ url: /patterns/common-actions/overview
 
     ![The polaris link icon in a neutral and hover state with a “Copy link" tooltip.](/images/patterns/common-actions/types/common-action-types-copy-link-icon@2x.png)
 
-    Use the link icon with a tertiary icon button for deep links and URLs.
+    Use the link icon with a tertiary icon button for copying deep links and URLs.
 
   </Small>
 
-  <Text>
+  <Medium variant="do">
 
-  </Text>
+    <video width="100%" height="auto" controls playsInline muted loop>
+      <source
+        src="/images/patterns/common-actions/types/common-action-types-copy-copied-feedback-tooltip.mp4"
+        type="video/mp4"
+      />
+      Provide feedback inline using a confirmation check icon post-click or tap.
+    </video>
 
-  <Large variant="do">
+    Provide feedback inline using a confirmation check icon post-click or tap. See the [copy to clipboard](https://storybook.polaris.shopify.com/?path=/story/all-components-button--copy-to-clipboard) example.
 
-    ![A card with a customer email displaying a "checkmark" icon with a tooltip displaying a "Copied" label to indicate the email has been successfully copied to the clipboard.](/images/patterns/common-actions/types/common-action-types-copy-copied-feedback-tooltip@2x.png)
+  </Medium>
 
-    Use a confirmation “copied” tooltip appearing post-click or tap.
+    <Medium variant="do">
 
-  </Large>
+    <video width="100%" height="auto" controls playsInline muted loop>
+      <source
+        src="/images/patterns/common-actions/types/common-action-types-copy-copied-feedback-toast.mp4"
+        type="video/mp4"
+      />
+      Use a confirmation “copied to clipboard” toast message when “copy” is within a list of actions.
+    </video>
+
+    Use a confirmation “copied to clipboard” toast message when the action is within a list of actions.
+
+  </Medium>
 
 </LayoutSection>
 
@@ -178,7 +234,7 @@ url: /patterns/common-actions/overview
 
     ![An image of a modal with two primary buttons. Save uses the default primary button style and delete uses the primary critical button style.](/images/patterns/common-actions/types/common-action-types-delete-two-primary-buttons@2x.png)
 
-    Pair primary critical and primary buttons together.
+    Display more than one primary action with a single view.
 
   </Medium>
 
