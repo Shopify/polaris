@@ -20,16 +20,23 @@ export function useHover(
   return isHovered;
 }
 
+interface UseMouseHoverOptions {
+  /**
+   * The fallback value when the device is not a mouse.
+   * @default false
+   */
+  fallbackValue?: boolean;
+}
+
 export function useMouseHover(
   /**
    * The target element for the hover event.
    */
   ref: RefObject<HTMLElement>,
-  /**
-   * The fallback value when the device is not a mouse.
-   */
-  fallback = false,
+  options: UseMouseHoverOptions = {},
 ): boolean {
+  const {fallbackValue = false} = options;
+
   const isHovered = useHover(ref);
 
   const [isMouseDevice, setIsMouseDevice] = useState(false);
@@ -60,5 +67,5 @@ export function useMouseHover(
     };
   }, []);
 
-  return isMouseDevice ? isHovered : fallback;
+  return isMouseDevice ? isHovered : fallbackValue;
 }
