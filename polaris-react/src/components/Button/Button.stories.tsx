@@ -1,3 +1,5 @@
+import {on} from 'events';
+
 import React, {useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TextProps} from '@shopify/polaris';
@@ -839,25 +841,64 @@ export function LoadingState() {
 }
 
 export function CopyToClipboard() {
-  const [copy, status] = useCopyToClipboard({
+  const [open, setOpen] = useState(false);
+  const [content, setContent] = useState('Copy email');
+
+  const [copy, status, copied] = useCopyToClipboard({
     defaultValue: 'hello@example.com',
+    timeout: 1000,
+    onCopySuccess: () => {
+      console.log('onCopySuccess');
+      setOpen(true);
+      setContent('Copied');
+    },
+    onCopyError: (error: string) => {
+      console.log('onCopyError');
+      setOpen(true);
+      setContent(error);
+    },
+    onTimeout: () => {
+      console.log('onTimeout');
+      setOpen(false);
+    },
   });
+
+  console.log('status', status, 'open', open, 'copied', copied.current);
 
   return (
     <div style={{maxWidth: 300, paddingTop: 100}}>
       <Card>
         <InlineStack align="space-between" gap="200">
+          <Button disabled>Disabled button</Button>
           <Link removeUnderline>hello@example.com</Link>
           <Tooltip
-            dismissOnMouseOut
-            hoverDelay={500}
+            persistOnClick
+            open={open}
+            hoverDelay={1000}
+            hoverOutDelay={1000}
             preferredPosition="above"
-            open={status === 'copied' ? true : undefined}
-            content={status === 'copied' ? 'Copied' : 'Copy'}
+            content={content}
+            onOpen={() => {
+              if (status === 'inactive' && !copied?.current) {
+                console.log('onOpen');
+                setOpen(true);
+              }
+            }}
+            onClose={() => {
+              if (status === 'inactive' && !copied?.current) {
+                console.log('onClose');
+                setOpen(false);
+              }
+            }}
           >
             <Button
+              disabled={status === 'copying' || status === 'copied'}
               variant="tertiary"
-              onClick={copy}
+              accessibilityLabel="Copy email"
+              onClick={() => {
+                console.log('onClick');
+                copy();
+              }}
               icon={status === 'copied' ? CheckIcon : ClipboardIcon}
             />
           </Tooltip>

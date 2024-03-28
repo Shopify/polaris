@@ -110,6 +110,7 @@ export function Button({
   onKeyPress,
   onKeyUp,
   onMouseEnter,
+  onMouseLeave,
   onTouchStart,
   onPointerDown,
   icon,
@@ -210,6 +211,7 @@ export function Button({
     onBlur,
     onMouseUp: handleMouseUpByBlurring,
     onMouseEnter,
+    onMouseLeave,
     onTouchStart,
     'data-primary-link': dataPrimaryLink,
   };

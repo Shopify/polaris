@@ -25,7 +25,7 @@ export interface TooltipProps {
   content: React.ReactNode;
   /** Toggle whether the tooltip is visible. Takes precedence over `active` */
   open?: boolean;
-  /** Toggle whether the tooltip is visible initially */
+  /** Toggle whether the tooltip is visible */
   active?: boolean;
   /** Delay in milliseconds while hovering over an element before the tooltip is visible */
   hoverDelay?: number;
@@ -110,7 +110,6 @@ export function Tooltip({
 
   const id = useId();
   const activatorContainer = useRef<HTMLElement>(null);
-  const mouseEntered = useRef(false);
   const [shouldAnimate, setShouldAnimate] = useState(Boolean(!originalActive));
   const hoverDelayTimeout = useRef<NodeJS.Timeout | null>(null);
   const hoverOutTimeout = useRef<NodeJS.Timeout | null>(null);
@@ -209,6 +208,11 @@ export function Tooltip({
         handleFocus();
       }}
       onBlur={() => {
+        if (hoverDelayTimeout.current) {
+          clearTimeout(hoverDelayTimeout.current);
+          hoverDelayTimeout.current = null;
+        }
+
         handleClose();
         handleBlur();
 
@@ -217,7 +221,7 @@ export function Tooltip({
         }
       }}
       onMouseLeave={handleMouseLeave}
-      onMouseOver={handleMouseEnterFix}
+      onMouseEnter={handleMouseEnter}
       onMouseDown={persistOnClick ? togglePersisting : undefined}
       ref={setActivator}
       onKeyUp={handleKeyUp}
@@ -243,7 +247,6 @@ export function Tooltip({
   }
 
   function handleMouseEnter() {
-    mouseEntered.current = true;
     if (hoverDelay && !presenceList.tooltip) {
       hoverDelayTimeout.current = setTimeout(() => {
         handleOpen();
@@ -261,18 +264,11 @@ export function Tooltip({
       hoverDelayTimeout.current = null;
     }
 
-    mouseEntered.current = false;
     handleClose();
 
     if (!persist) {
       handleBlur();
     }
-  }
-
-  // https://github.com/facebook/react/issues/10109
-  // Mouseenter event not triggered when cursor moves from disabled button
-  function handleMouseEnterFix() {
-    !mouseEntered.current && handleMouseEnter();
   }
 }
 

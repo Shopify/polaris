@@ -93,6 +93,8 @@ export interface BaseButton {
   onKeyDown?(event: React.KeyboardEvent<HTMLButtonElement>): void;
   /** Callback when mouse enter */
   onMouseEnter?(): void;
+  /** Callback when mouse leaves */
+  onMouseLeave?(): void;
   /** Callback when element is touched */
   onTouchStart?(): void;
   /** Callback when pointerdown event is being triggered */
