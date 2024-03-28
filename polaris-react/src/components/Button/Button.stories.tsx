@@ -846,20 +846,17 @@ export function CopyToClipboard() {
     defaultValue: 'hello@example.com',
   });
 
-  const mouseHoverRef = useRef(null);
-  const isMouseHovered = useMouseHover(mouseHoverRef, true);
-
-  const focusInRef = useRef(null);
-  const isFocusedIn = useFocusIn(focusInRef);
+  const interactionRef = useRef(null);
+  const isFocusedIn = useFocusIn(interactionRef);
+  const isMouseHovered = useMouseHover(interactionRef, {fallbackValue: true});
 
   return (
     <div style={{maxWidth: 300, paddingTop: 100}}>
       <Card>
-        <div ref={mouseHoverRef}>
+        <div ref={interactionRef}>
           <InlineStack align="space-between" gap="200">
             <Link removeUnderline>hello@example.com</Link>
             <div
-              ref={focusInRef}
               style={{
                 opacity:
                   isMouseHovered || isFocusedIn || status === 'copied' ? 1 : 0,
@@ -879,8 +876,8 @@ export function CopyToClipboard() {
                 <Button
                   variant="tertiary"
                   accessibilityLabel="Copy email address"
-                  icon={status === 'copied' ? CheckIcon : ClipboardIcon}
                   onClick={copy}
+                  icon={status === 'copied' ? CheckIcon : ClipboardIcon}
                 />
               </Tooltip>
             </div>
