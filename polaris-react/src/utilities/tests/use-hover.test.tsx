@@ -8,8 +8,8 @@ describe('useHover', () => {
   it('returns false by default', () => {
     function App() {
       const ref = useRef(null);
-      const isMouseEntered = useHover(ref);
-      return <div ref={ref}>{String(isMouseEntered)}</div>;
+      const isHovered = useHover(ref);
+      return <div ref={ref}>{String(isHovered)}</div>;
     }
 
     const app = mount(<App />);
@@ -20,8 +20,8 @@ describe('useHover', () => {
   it('returns true on mouse enter', () => {
     function App() {
       const ref = useRef(null);
-      const isMouseEntered = useHover(ref);
-      return <div ref={ref}>{String(isMouseEntered)}</div>;
+      const isHovered = useHover(ref);
+      return <div ref={ref}>{String(isHovered)}</div>;
     }
 
     const app = mount(<App />);
@@ -37,8 +37,8 @@ describe('useHover', () => {
   it('returns false on mouse enter and leave', () => {
     function App() {
       const ref = useRef(null);
-      const isMouseEntered = useHover(ref);
-      return <div ref={ref}>{String(isMouseEntered)}</div>;
+      const isHovered = useHover(ref);
+      return <div ref={ref}>{String(isHovered)}</div>;
     }
 
     const app = mount(<App />);
@@ -59,8 +59,8 @@ describe('useMouseHover', () => {
 
     function App() {
       const ref = useRef(null);
-      const isMouseEntered = useMouseHover(ref);
-      return <div ref={ref}>{String(isMouseEntered)}</div>;
+      const isMouseHovered = useMouseHover(ref);
+      return <div ref={ref}>{String(isMouseHovered)}</div>;
     }
 
     const app = mount(<App />);
@@ -73,8 +73,8 @@ describe('useMouseHover', () => {
 
     function App() {
       const ref = useRef(null);
-      const isMouseEntered = useMouseHover(ref);
-      return <div ref={ref}>{String(isMouseEntered)}</div>;
+      const isMouseHovered = useMouseHover(ref);
+      return <div ref={ref}>{String(isMouseHovered)}</div>;
     }
 
     const app = mount(<App />);
@@ -92,8 +92,8 @@ describe('useMouseHover', () => {
 
     function App() {
       const ref = useRef(null);
-      const isMouseEntered = useMouseHover(ref);
-      return <div ref={ref}>{String(isMouseEntered)}</div>;
+      const isMouseHovered = useMouseHover(ref);
+      return <div ref={ref}>{String(isMouseHovered)}</div>;
     }
 
     const app = mount(<App />);
@@ -112,8 +112,8 @@ describe('useMouseHover', () => {
 
     function App() {
       const ref = useRef(null);
-      const isMouseEntered = useMouseHover(ref, {fallbackValue: true});
-      return <div ref={ref}>{String(isMouseEntered)}</div>;
+      const isMouseHovered = useMouseHover(ref, {fallbackValue: true});
+      return <div ref={ref}>{String(isMouseHovered)}</div>;
     }
 
     const app = mount(<App />);
