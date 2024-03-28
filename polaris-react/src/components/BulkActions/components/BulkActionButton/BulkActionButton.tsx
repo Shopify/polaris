@@ -16,6 +16,7 @@ export type BulkActionButtonProps = {
   handleMeasurement?(width: number): void;
   showContentInButton?: boolean;
   size?: Extract<ButtonProps['size'], 'micro' | 'medium'>;
+  animationDelayIndex?: number;
 } & DisableableAction &
   DestructableAction;
 
@@ -32,6 +33,7 @@ export function BulkActionButton({
   indicator,
   showContentInButton,
   size,
+  animationDelayIndex,
 }: BulkActionButtonProps) {
   const bulkActionButton = useRef<HTMLDivElement>(null);
 
@@ -69,7 +71,19 @@ export function BulkActionButton({
   );
 
   return (
-    <div className={styles.BulkActionButton} ref={bulkActionButton}>
+    <div
+      className={styles.BulkActionButton}
+      ref={bulkActionButton}
+      style={
+        animationDelayIndex
+          ? ({
+              '--pc-bulk-action-button-animation-delay': `calc(var(--p-motion-duration-50) * ${
+                animationDelayIndex * 0.75
+              })`,
+            } as React.CSSProperties)
+          : undefined
+      }
+    >
       {isActivatorForMoreActionsPopover ? (
         <Tooltip content={content} preferredPosition="below">
           {buttonMarkup}

@@ -51,8 +51,27 @@
   }
 }
 
+/* stylelint-disable-next-line polaris/motion/at-rule-disallowed-list -- Required for custom animation */
+@keyframes appear {
+  from {
+    transform: scale(0.85) translateX(0%);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1) translateX(0);
+    opacity: 1;
+  }
+}
+
 .BulkActionButton {
   white-space: nowrap;
+  animation: appear var(--p-motion-duration-250) 1 var(--p-motion-ease-in-out)
+    both;
+  /* stylelint-disable-next-line polaris/conventions/polaris/custom-property-allowed-list, polaris/motion/declaration-property-unit-disallowed-list -- Required for custom animation */
+  animation-delay: var(--pc-bulk-action-button-animation-delay, 0ms);
+
+  transform-origin: center center;
 
   button {
     display: flex;

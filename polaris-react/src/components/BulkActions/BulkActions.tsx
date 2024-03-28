@@ -239,7 +239,7 @@ export const BulkActions = forwardRef(function BulkActions(
 
           return true;
         })
-        .map((action, index) => {
+        .map((action, index, arr) => {
           if (instanceOfMenuGroupDescriptor(action)) {
             return (
               <BulkActionMenu
@@ -249,6 +249,7 @@ export const BulkActions = forwardRef(function BulkActions(
                   actionSections,
                 )}
                 size={buttonSize}
+                animationDelayIndex={arr.length - index}
               />
             );
           }
@@ -258,6 +259,7 @@ export const BulkActions = forwardRef(function BulkActions(
               disabled={disabled}
               {...action}
               size={buttonSize}
+              animationDelayIndex={arr.length - index}
             />
           );
         })
