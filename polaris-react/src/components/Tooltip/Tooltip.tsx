@@ -159,11 +159,7 @@ export function Tooltip({
 
   const handleKeyUp = useCallback(
     (event: React.KeyboardEvent) => {
-      const isChildInteraction =
-        event.target !== activatorContainer.current &&
-        (event.key === 'Enter' || event.key === ' ');
-
-      if (event.key === 'Escape' || isChildInteraction) {
+      if (event.key === 'Escape') {
         handleClose?.();
         handleBlur();
         persistOnClick && togglePersisting();
@@ -214,11 +210,6 @@ export function Tooltip({
         handleFocus();
       }}
       onBlur={() => {
-        if (hoverDelayTimeout.current) {
-          clearTimeout(hoverDelayTimeout.current);
-          hoverDelayTimeout.current = null;
-        }
-
         handleClose();
         handleBlur();
 

@@ -2,6 +2,7 @@ import React, {useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TextProps} from '@shopify/polaris';
 import {
+  useMouseHover,
   useCopyToClipboard,
   Link,
   Tooltip,
@@ -840,6 +841,9 @@ export function LoadingState() {
 }
 
 export function CopyToClipboard() {
+  const ref = useRef(null);
+  const isMouseHovered = useMouseHover(ref, true);
+  const [isFocused, setIsFocused] = useState(false);
   const [copy, status] = useCopyToClipboard({
     defaultValue: 'hello@example.com',
   });
@@ -847,22 +851,38 @@ export function CopyToClipboard() {
   return (
     <div style={{maxWidth: 300, paddingTop: 100}}>
       <Card>
-        <InlineStack align="space-between" gap="200">
-          <Link removeUnderline>hello@example.com</Link>
-          <Tooltip
-            dismissOnMouseOut
-            hoverDelay={500}
-            preferredPosition="above"
-            content="Copy"
-          >
-            <Button
-              variant="tertiary"
-              accessibilityLabel="Copy email address"
-              icon={status === 'copied' ? CheckIcon : ClipboardIcon}
-              onClick={copy}
-            />
-          </Tooltip>
-        </InlineStack>
+        <div ref={ref}>
+          <InlineStack align="space-between" gap="200">
+            <Link removeUnderline>hello@example.com</Link>
+            <div
+              onFocus={() => setIsFocused(true)}
+              onBlur={() => setIsFocused(false)}
+              style={{
+                opacity:
+                  isMouseHovered || isFocused || status === 'copied' ? 1 : 0,
+                transition:
+                  isMouseHovered || isFocused
+                    ? 'var(--p-motion-duration-100) var(--p-motion-ease) opacity'
+                    : 'none',
+              }}
+            >
+              <Tooltip
+                dismissOnMouseOut
+                hoverDelay={500}
+                preferredPosition="above"
+                content="Copy"
+                active={status === 'copied' ? false : undefined}
+              >
+                <Button
+                  variant="tertiary"
+                  accessibilityLabel="Copy email address"
+                  icon={status === 'copied' ? CheckIcon : ClipboardIcon}
+                  onClick={copy}
+                />
+              </Tooltip>
+            </div>
+          </InlineStack>
+        </div>
       </Card>
     </div>
   );
