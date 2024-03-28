@@ -854,6 +854,7 @@ export function CopyToClipboard() {
             hoverDelay={500}
             preferredPosition="above"
             content="Copy"
+            active={status === 'copied' ? false : undefined}
           >
             <Button
               variant="tertiary"
