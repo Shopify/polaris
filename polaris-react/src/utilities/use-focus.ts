@@ -1,5 +1,5 @@
 import type {RefObject} from 'react';
-import {useState, useCallback} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 import {useEventListener} from './use-event-listener';
 
@@ -27,12 +27,31 @@ export function useFocusIn(
   ref: RefObject<HTMLElement>,
 ): boolean {
   const [isFocusedIn, setIsFocusedIn] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleFocusIn = useCallback(() => setIsFocusedIn(true), []);
-  const handleFocusOut = useCallback(() => setIsFocusedIn(false), []);
+  const handleFocusIn = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
+    }
+    setIsFocusedIn(true);
+  }, []);
+
+  const handleFocusOut = useCallback(() => {
+    // Prevents flashing when moving focus between child elements
+    timeoutRef.current = setTimeout(() => {
+      setIsFocusedIn(false);
+    }, 0);
+  }, []);
 
   useEventListener('focusin', handleFocusIn, ref);
   useEventListener('focusout', handleFocusOut, ref);
+  useEffect(
+    () => () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    },
+    [],
+  );
 
   return isFocusedIn;
 }
