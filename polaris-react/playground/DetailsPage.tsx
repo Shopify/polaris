@@ -44,6 +44,7 @@ import {
   TopBar,
   FooterHelp,
   Link,
+  AlphaPicker,
 } from '../src';
 import type {DropZoneProps, PageProps} from '../src';
 
@@ -54,6 +55,11 @@ export function DetailsPage() {
     emailFieldValue: 'dharma@jadedpixel.com',
     nameFieldValue: 'Jaded Pixel',
   });
+  const [query, setQuery] = useState('');
+  const [vendors, setVendors] = useState([
+    {value: 'The North Face', children: 'The North Face'},
+    {value: 'Patagonia', children: 'Patagonia'},
+  ]);
   const skipToContentRef = useRef<HTMLAnchorElement>(null);
   const [toastActive, setToastActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -78,6 +84,16 @@ export function DetailsPage() {
   );
   const [supportSubject, setSupportSubject] = useState('');
   const [supportMessage, setSupportMessage] = useState('');
+
+  const handleSelect = (selected: string) => {
+    setQuery('');
+    if (vendors.some((vendor) => vendor.children === selected)) return;
+
+    setVendors((vendors) => [
+      ...vendors,
+      {value: selected, children: selected},
+    ]);
+  };
 
   const handleDiscard = useCallback(() => {
     setEmailFieldValue(defaultState.current.emailFieldValue);
@@ -635,11 +651,24 @@ export function DetailsPage() {
                 value={selected}
               />
               <br />
-              <Select
-                label="Vendor"
-                options={options}
-                onChange={setSelected}
-                value={selected}
+              <AlphaPicker
+                onSelect={handleSelect}
+                activator={{
+                  label: 'Vendor',
+                  placeholder: 'None selected',
+                }}
+                searchField={{
+                  label: 'Search vendors',
+                  placeholder: 'Search or add new vendor',
+                  autoComplete: 'off',
+                  value: query,
+                  onChange: (value) => setQuery(value),
+                }}
+                options={vendors}
+                addAction={{
+                  value: query,
+                  children: `Add ${query}`,
+                }}
               />
             </LegacyCard.Section>
             <LegacyCard.Section title="Collections" />
