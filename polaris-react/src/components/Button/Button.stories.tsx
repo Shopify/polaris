@@ -2,6 +2,7 @@ import React, {useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TextProps} from '@shopify/polaris';
 import {
+  useFocusIn,
   useMouseHover,
   useCopyToClipboard,
   Link,
@@ -841,27 +842,29 @@ export function LoadingState() {
 }
 
 export function CopyToClipboard() {
-  const ref = useRef(null);
-  const isMouseHovered = useMouseHover(ref, true);
-  const [isFocused, setIsFocused] = useState(false);
   const [copy, status] = useCopyToClipboard({
     defaultValue: 'hello@example.com',
   });
 
+  const mouseHoverRef = useRef(null);
+  const isMouseHovered = useMouseHover(mouseHoverRef, true);
+
+  const focusInRef = useRef(null);
+  const isFocusedIn = useFocusIn(focusInRef);
+
   return (
     <div style={{maxWidth: 300, paddingTop: 100}}>
       <Card>
-        <div ref={ref}>
+        <div ref={mouseHoverRef}>
           <InlineStack align="space-between" gap="200">
             <Link removeUnderline>hello@example.com</Link>
             <div
-              onFocus={() => setIsFocused(true)}
-              onBlur={() => setIsFocused(false)}
+              ref={focusInRef}
               style={{
                 opacity:
-                  isMouseHovered || isFocused || status === 'copied' ? 1 : 0,
+                  isMouseHovered || isFocusedIn || status === 'copied' ? 1 : 0,
                 transition:
-                  isMouseHovered || isFocused
+                  isMouseHovered || isFocusedIn
                     ? 'var(--p-motion-duration-100) var(--p-motion-ease) opacity'
                     : 'none',
               }}
