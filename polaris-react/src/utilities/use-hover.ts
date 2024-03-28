@@ -20,6 +20,9 @@ export function useHover(
   return isHovered;
 }
 
+// https://github.com/argyleink/open-props/blob/09e70c03c0a2533d06ec823f47490f018eb27f23/src/props.media.css#L24
+export const mouseMediaQuery = '(hover: hover) and (pointer: fine)';
+
 interface UseMouseHoverOptions {
   /**
    * The fallback value when the device is not a mouse.
@@ -42,10 +45,7 @@ export function useMouseHover(
   const [isMouseDevice, setIsMouseDevice] = useState(false);
 
   useEffect(() => {
-    const mediaQueryList = window.matchMedia(
-      // https://github.com/argyleink/open-props/blob/09e70c03c0a2533d06ec823f47490f018eb27f23/src/props.media.css#L24
-      '(hover: hover) and (pointer: fine)',
-    );
+    const mediaQueryList = window.matchMedia(mouseMediaQuery);
 
     const handler = (event: MediaQueryListEvent) =>
       setIsMouseDevice(event.matches);
