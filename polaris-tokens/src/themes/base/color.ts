@@ -145,10 +145,16 @@ export type ColorBorderAlias =
   | 'border-tertiary'
   | 'border-warning'
   | 'border'
+  | 'border-gradient-experimental'
+  | 'border-gradient-hover-experimental'
+  | 'border-gradient-selected-experimental'
+  | 'border-gradient-active-experimental'
   /** Specialty and component border colors. */
   | 'input-border-active'
   | 'input-border-hover'
-  | 'input-border';
+  | 'input-border'
+  | 'tooltip-border-tail-down-experimental'
+  | 'tooltip-border-tail-up-experimental';
 
 export type ColorIconAlias =
   | 'icon-active'
@@ -1009,6 +1015,26 @@ export const color: {
     value: colors.gray[8],
     description:
       'The active state (on press) color for borders on an inverse background.',
+  },
+  'color-tooltip-border-tail-down-experimental': {
+    value: colors.gray[9],
+    description: 'The border color for tool tip tails pointing down.',
+  },
+  'color-tooltip-border-tail-up-experimental': {
+    value: colors.gray[8],
+    description: 'The border color for tool tip tails pointing up.',
+  },
+  'color-border-gradient-experimental': {
+    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
+  },
+  'color-border-gradient-hover-experimental': {
+    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
+  },
+  'color-border-gradient-selected-experimental': {
+    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
+  },
+  'color-border-gradient-active-experimental': {
+    value: `linear-gradient(to bottom, ${colors.gray[7]}, ${colors.gray[10]} 78%, ${colors.gray[11]})`,
   },
   'color-icon': {
     value: colors.gray[14],
