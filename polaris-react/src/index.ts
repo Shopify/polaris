@@ -428,6 +428,7 @@ export {ScrollLockManagerContext as _SECRET_INTERNAL_SCROLL_LOCK_MANAGER_CONTEXT
 export {WithinContentContext as _SECRET_INTERNAL_WITHIN_CONTENT_CONTEXT} from './utilities/within-content-context';
 export {useCopyToClipboard} from './utilities/use-copy-to-clipboard';
 export {useEventListener} from './utilities/use-event-listener';
+export {useFocus, useFocusIn} from './utilities/use-focus';
 export {useHover, useMouseHover} from './utilities/use-hover';
 export {useTheme} from './utilities/use-theme';
 export {useIndexResourceState} from './utilities/use-index-resource-state';

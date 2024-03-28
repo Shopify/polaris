@@ -11,13 +11,8 @@ export function useHover(
 ): boolean {
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleMouseEnter = useCallback(() => {
-    setIsHovered(true);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    setIsHovered(false);
-  }, []);
+  const handleMouseEnter = useCallback(() => setIsHovered(true), []);
+  const handleMouseLeave = useCallback(() => setIsHovered(false), []);
 
   useEventListener('mouseenter', handleMouseEnter, ref);
   useEventListener('mouseleave', handleMouseLeave, ref);
