@@ -2,9 +2,10 @@ import React, {useCallback, useRef, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
 import type {TextProps} from '@shopify/polaris';
 import {
-  useFocusIn,
-  useMouseHover,
   useCopyToClipboard,
+  useFocusIn,
+  useHover,
+  useMediaQuery,
   Link,
   Tooltip,
   Button,
@@ -846,14 +847,16 @@ export function CopyToClipboard() {
     defaultValue: 'hello@example.com',
   });
 
-  const interactionRef = useRef(null);
-  const isFocusedIn = useFocusIn(interactionRef);
-  const isMouseHovered = useMouseHover(interactionRef, {fallbackValue: true});
+  const ref = useRef(null);
+  const isFocusedIn = useFocusIn(ref);
+  const isHovered = useHover(ref);
+  const isMouseDevice = useMediaQuery('mouse');
+  const isMouseHovered = isMouseDevice ? isHovered : true;
 
   return (
     <div style={{maxWidth: 300, paddingTop: 100}}>
       <Card>
-        <div ref={interactionRef}>
+        <div ref={ref}>
           <InlineStack align="space-between" gap="200">
             <Link removeUnderline>hello@example.com</Link>
             <div

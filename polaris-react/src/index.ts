@@ -430,6 +430,7 @@ export {useCopyToClipboard} from './utilities/use-copy-to-clipboard';
 export {useEventListener} from './utilities/use-event-listener';
 export {useFocus, useFocusIn} from './utilities/use-focus';
 export {useHover, useMouseHover} from './utilities/use-hover';
+export {useMediaQuery} from './utilities/use-media-query';
 export {useTheme} from './utilities/use-theme';
 export {useIndexResourceState} from './utilities/use-index-resource-state';
 export {
