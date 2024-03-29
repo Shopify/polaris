@@ -1,10 +1,11 @@
 .Image {
   opacity: 0;
-  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease);
+  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
 }
 
 .Image-loaded {
   opacity: 1;
+  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
 }
 
 .imageContained {
