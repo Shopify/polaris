@@ -46,7 +46,7 @@ export function EmptyState({
   secondaryAction,
   footerContent,
 }: EmptyStateProps) {
-  const [imageLoaded, setImageLoaded] = useState<boolean>(true);
+  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     const img: HTMLImageElement = new window.Image(0, 0);
