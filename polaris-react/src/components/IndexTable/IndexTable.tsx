@@ -548,7 +548,7 @@ function IndexTableBase({
     exitActive: styles['LoadingContainer-exit-active'],
   };
 
-  const loadingMarkup = (
+  const loadingMarkup = loading ? (
     <CSSTransition
       in={loading}
       classNames={loadingTransitionClassNames}
@@ -571,7 +571,7 @@ function IndexTableBase({
         </div>
       </div>
     </CSSTransition>
-  );
+  ) : null;
 
   const stickyTableClassNames = classNames(
     styles.StickyTable,
