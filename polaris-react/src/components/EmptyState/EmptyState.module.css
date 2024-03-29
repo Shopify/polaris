@@ -26,10 +26,10 @@
 
 .SkeletonImage {
   --pc-empty-state-skeleton-image-size: 145px;
+  background-color: var(--p-color-bg-fill-secondary);
+  border-radius: var(--p-border-radius-full);
   height: var(--pc-empty-state-skeleton-image-size);
   width: var(--pc-empty-state-skeleton-image-size);
-  background-color: var(--p-color-bg-fill-tertiary);
-  border-radius: var(--p-border-radius-full);
 
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;
