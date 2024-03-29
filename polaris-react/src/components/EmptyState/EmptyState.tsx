@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {ComplexAction} from '../../types';
@@ -48,18 +48,20 @@ export function EmptyState({
 }: EmptyStateProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
+  const onImageLoad = useCallback(() => {
+    setImageLoaded(true);
+  }, []);
+
   useEffect(() => {
     const img: HTMLImageElement = new window.Image(0, 0);
     img.src = largeImage || image;
-    img.onload = () => {
-      setImageLoaded(true);
-    };
-  }, [largeImage, image]);
+    img.onload = () => onImageLoad();
+  }, [onImageLoad, largeImage, image]);
 
-  const imageContainedClass = classNames(
+  const imageClassNames = classNames(
     styles.Image,
+    imageLoaded && styles.loaded,
     imageContained && styles.imageContained,
-    imageLoaded && styles['Image-loaded'],
   );
 
   const loadedImageMarkup = largeImage ? (
@@ -67,7 +69,7 @@ export function EmptyState({
       alt=""
       role="presentation"
       source={largeImage}
-      className={imageContainedClass}
+      className={imageClassNames}
       sourceSet={[
         {source: image, descriptor: '568w'},
         {source: largeImage, descriptor: '1136w'},
@@ -76,18 +78,27 @@ export function EmptyState({
     />
   ) : (
     <Image
-      className={imageContainedClass}
-      role="presentation"
       alt=""
+      role="presentation"
+      className={imageClassNames}
       source={image}
     />
   );
 
-  const imageMarkup = imageLoaded ? (
-    loadedImageMarkup
-  ) : (
-    <div className={styles.SkeletonImageContainer}>
-      <div className={styles.SkeletonImage} />
+  const skeletonImageClassNames = classNames(
+    styles.SkeletonImage,
+    imageLoaded && styles.loaded,
+  );
+
+  const imageContainerClassNames = classNames(
+    styles.ImageContainer,
+    !imageLoaded && styles.SkeletonImageContainer,
+  );
+
+  const imageMarkup = (
+    <div className={imageContainerClassNames}>
+      {loadedImageMarkup}
+      <div className={skeletonImageClassNames} />
     </div>
   );
 

@@ -1,9 +1,18 @@
-.Image {
-  opacity: 0;
+.ImageContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.Image-loaded {
-  opacity: 1;
+.Image {
+  opacity: 0;
+  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease);
+  z-index: var(--p-z-index-2);
+
+  &.loaded {
+    opacity: 1;
+  }
 }
 
 .imageContained {
@@ -14,28 +23,32 @@
 }
 
 .SkeletonImageContainer {
-  /* stylelint-disable -- container custom property for size */
+  /* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- container custom property for size to prevent layout shift */
   --pc-empty-state-skeleton-image-container-size: 226px;
+  height: var(--pc-empty-state-skeleton-image-container-size);
+  width: var(--pc-empty-state-skeleton-image-container-size);
+  /* stylelint-enable polaris/conventions/polaris/custom-property-allowed-list -- container custom property for size  to prevent layout shift */
   display: flex;
   align-items: center;
   justify-content: center;
-  height: var(--pc-empty-state-skeleton-image-container-size);
-  width: var(--pc-empty-state-skeleton-image-container-size);
-  /* stylelint-enable -- container custom property for size */
 }
 
 .SkeletonImage {
-  /* stylelint-disable -- container custom property for placeholder size */
+  position: absolute;
+  z-index: var(--p-z-index-2);
+  /* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- container custom property for placeholder size */
   --pc-empty-state-skeleton-image-size: 145px;
   height: var(--pc-empty-state-skeleton-image-size);
   width: var(--pc-empty-state-skeleton-image-size);
-  /* stylelint-enable -- container custom property for placeholder size */
+  /* stylelint-enable polaris/conventions/polaris/custom-property-allowed-list -- container custom property for placeholder size */
   background-color: var(--p-color-bg-fill-secondary);
   border-radius: var(--p-border-radius-full);
   opacity: 1;
-  visibility: visible;
-  transition: opacity var(--p-motion-duration-159) var(--p-motion-ease),
-    visibility var(--p-motion-duration-150) var(--p-motion-ease);
+  transition: opacity var(--p-motion-duration-500) var(--p-motion-ease);
+
+  &.loaded {
+    opacity: 0;
+  }
 
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;
