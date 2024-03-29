@@ -2,4 +2,4 @@
 '@shopify/polaris': patch
 ---
 
-Updated `EmptyState` to verify image has loaded before rendering
+Fixed layout shift on `EmptyState` when image is loading with skeleton image
