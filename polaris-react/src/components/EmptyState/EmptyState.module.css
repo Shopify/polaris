@@ -1,10 +1,37 @@
 .Image {
-  height: 226px;
+  opacity: 0;
+  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease);
+}
+
+.Image-loaded {
+  opacity: 1;
 }
 
 .imageContained {
   @media (--p-breakpoints-md-up) {
     position: initial;
     width: 100%;
+  }
+}
+
+.SkeletonImageContainer {
+  /* stylelint-disable-next-line -- Polaris component custom property */
+  --pc-empty-state-skeleton-image-container-size: 226px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--pc-empty-state-skeleton-image-container-size);
+  width: var(--pc-empty-state-skeleton-image-container-size);
+}
+
+.SkeletonImage {
+  --pc-empty-state-skeleton-image-size: 145px;
+  height: var(--pc-empty-state-skeleton-image-size);
+  width: var(--pc-empty-state-skeleton-image-size);
+  background-color: var(--p-color-bg-fill-tertiary);
+  border-radius: var(--p-border-radius-full);
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: grayText;
   }
 }

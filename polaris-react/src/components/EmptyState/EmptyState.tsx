@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {ComplexAction} from '../../types';
@@ -46,12 +46,23 @@ export function EmptyState({
   secondaryAction,
   footerContent,
 }: EmptyStateProps) {
+  const [imageLoaded, setImageLoaded] = useState<boolean>(true);
+
+  useEffect(() => {
+    const img: HTMLImageElement = new window.Image(0, 0);
+    img.src = largeImage || image;
+    img.onload = () => {
+      setImageLoaded(true);
+    };
+  }, [largeImage, image]);
+
   const imageContainedClass = classNames(
     styles.Image,
     imageContained && styles.imageContained,
+    imageLoaded && styles['Image-loaded'],
   );
 
-  const imageMarkup = largeImage ? (
+  const loadedImageMarkup = largeImage ? (
     <Image
       alt=""
       role="presentation"
@@ -70,6 +81,14 @@ export function EmptyState({
       alt=""
       source={image}
     />
+  );
+
+  const imageMarkup = imageLoaded ? (
+    loadedImageMarkup
+  ) : (
+    <div className={styles.SkeletonImageContainer}>
+      <div className={styles.SkeletonImage} />
+    </div>
   );
 
   const secondaryActionMarkup = secondaryAction
