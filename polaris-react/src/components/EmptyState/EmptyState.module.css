@@ -1,11 +1,9 @@
 .Image {
   opacity: 0;
-  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
 }
 
 .Image-loaded {
   opacity: 1;
-  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease-in-out);
 }
 
 .imageContained {
@@ -29,11 +27,15 @@
 .SkeletonImage {
   /* stylelint-disable -- container custom property for placeholder size */
   --pc-empty-state-skeleton-image-size: 145px;
-  background-color: var(--p-color-bg-fill-secondary);
-  border-radius: var(--p-border-radius-full);
   height: var(--pc-empty-state-skeleton-image-size);
   width: var(--pc-empty-state-skeleton-image-size);
   /* stylelint-enable -- container custom property for placeholder size */
+  background-color: var(--p-color-bg-fill-secondary);
+  border-radius: var(--p-border-radius-full);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity var(--p-motion-duration-159) var(--p-motion-ease),
+    visibility var(--p-motion-duration-150) var(--p-motion-ease);
 
   @media screen and (-ms-high-contrast: active) {
     background-color: grayText;
