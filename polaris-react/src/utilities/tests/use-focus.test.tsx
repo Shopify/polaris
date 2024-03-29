@@ -99,11 +99,12 @@ describe('useFocusIn', () => {
       div.dispatchEvent(new Event('focusout'));
     });
 
-    // Should remain true for one tick to prevent flashing (See next test)
+    // Remains true until the next turn of the event loop (See next test)
     expect(app).toContainReactText('true');
 
     app.act(() => jest.advanceTimersByTime(1));
 
+    // Updates to false on the next turn of the event loop
     expect(app).toContainReactText('false');
   });
 
@@ -124,16 +125,17 @@ describe('useFocusIn', () => {
       div.dispatchEvent(new Event('focusout'));
     });
 
-    // Should remain true for one tick to prevent flashing
-    // when moving focus between child elements
+    // Remains true until the next turn of the event loop
     expect(app).toContainReactText('true');
 
+    // Subsequent focusin events clear the deferred focusout
     app.act(() => {
       div.dispatchEvent(new Event('focusin'));
     });
 
     app.act(() => jest.advanceTimersByTime(1));
 
+    // Remains true on the next turn of the event loop
     expect(app).toContainReactText('true');
   });
 });

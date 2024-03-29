@@ -27,19 +27,20 @@ export function useFocusIn(
   ref: RefObject<HTMLElement>,
 ): boolean {
   const [isFocusedIn, setIsFocusedIn] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const deferredFocusOut = useRef<NodeJS.Timeout | null>(null);
 
   const handleFocusIn = useCallback(() => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = null;
+    if (deferredFocusOut.current) {
+      clearTimeout(deferredFocusOut.current);
+      deferredFocusOut.current = null;
     }
     setIsFocusedIn(true);
   }, []);
 
   const handleFocusOut = useCallback(() => {
-    // Prevents flashing when moving focus between child elements
-    timeoutRef.current = setTimeout(() => {
+    // Push focusout state update to the end of the event queue to
+    // allow subsequent focusin events to persist the isFocusedIn state
+    deferredFocusOut.current = setTimeout(() => {
       setIsFocusedIn(false);
     }, 0);
   }, []);
@@ -48,7 +49,7 @@ export function useFocusIn(
   useEventListener('focusout', handleFocusOut, ref);
   useEffect(
     () => () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      if (deferredFocusOut.current) clearTimeout(deferredFocusOut.current);
     },
     [],
   );
