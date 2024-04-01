@@ -736,6 +736,32 @@ export function SelectDisclosure() {
   );
 }
 
+export function ChevronRightDisclosure() {
+  return (
+    <div>
+      <Button
+        disclosure="right"
+        onClick={() => console.log('In-context Navigation')}
+      >
+        Next
+      </Button>
+    </div>
+  );
+}
+
+export function ArrowRightDisclosure() {
+  return (
+    <div>
+      <Button
+        disclosure="arrowRight"
+        onClick={() => console.log('Navigation to another context')}
+      >
+        Get started
+      </Button>
+    </div>
+  );
+}
+
 export function Split() {
   const [active, setActive] = React.useState<string | null>(null);
 

@@ -4,6 +4,8 @@ import {
   ChevronUpIcon,
   PlusIcon,
   SelectIcon,
+  ChevronRightIcon,
+  ArrowRightIcon,
 } from '@shopify/polaris-icons';
 import {mountWithApp} from 'tests/utilities';
 
@@ -346,6 +348,18 @@ describe('<Button />', () => {
       const button = mountWithApp(<Button disclosure="up" />);
       const disclosureIcon = button.find(Icon);
       expect(disclosureIcon).toHaveReactProps({source: ChevronUpIcon});
+    });
+
+    it('is facing right if set to "right"', () => {
+      const button = mountWithApp(<Button disclosure="right" />);
+      const disclosureIcon = button.find(Icon);
+      expect(disclosureIcon).toHaveReactProps({source: ChevronRightIcon});
+    });
+
+    it('is arrow right if set to "arrowRight"', () => {
+      const button = mountWithApp(<Button disclosure="arrowRight" />);
+      const disclosureIcon = button.find(Icon);
+      expect(disclosureIcon).toHaveReactProps({source: ArrowRightIcon});
     });
 
     it('is double-arrow if set to "select"', () => {

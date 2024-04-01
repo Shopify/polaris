@@ -3,6 +3,8 @@ import {
   SelectIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  ChevronRightIcon,
+  ArrowRightIcon,
 } from '@shopify/polaris-icons';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
@@ -33,7 +35,7 @@ export interface ButtonProps extends BaseButton {
   /** Allows the button to grow to the width of its container */
   fullWidth?: boolean;
   /** Displays the button with a disclosure icon. Defaults to `down` when set to true */
-  disclosure?: 'down' | 'up' | 'select' | boolean;
+  disclosure?: 'down' | 'up' | 'select' | 'right' | 'arrowRight' | boolean;
   /** Removes underline from button text (including on interaction)
    * @deprecated Use a variant instead
    */
@@ -146,15 +148,7 @@ export function Button({
   const disclosureMarkup = disclosure ? (
     <span className={loading ? styles.hidden : styles.Icon}>
       <Icon
-        source={
-          loading
-            ? 'placeholder'
-            : getDisclosureIconSource(
-                disclosure,
-                ChevronUpIcon,
-                ChevronDownIcon,
-              )
-        }
+        source={loading ? 'placeholder' : getDisclosureIconSource(disclosure)}
       />
     </span>
   ) : null;
@@ -260,12 +254,18 @@ function isIconSource(x: any): x is IconSource {
 
 function getDisclosureIconSource(
   disclosure: NonNullable<ButtonProps['disclosure']>,
-  upIcon: IconSource,
-  downIcon: IconSource,
 ) {
-  if (disclosure === 'select') {
-    return SelectIcon;
+  switch (disclosure) {
+    case 'select':
+      return SelectIcon;
+    case 'up':
+      return ChevronUpIcon;
+    case 'right':
+      return ChevronRightIcon;
+    case 'arrowRight':
+      return ArrowRightIcon;
+    case 'down':
+    default:
+      return ChevronDownIcon;
   }
-
-  return disclosure === 'up' ? upIcon : downIcon;
 }
