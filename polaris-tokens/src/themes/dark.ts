@@ -32,10 +32,10 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     'color-bg-surface-brand-selected': {value: colors.gray[14]},
     'color-border-secondary': {value: colors.gray[13]},
     'color-tooltip-border-tail-down-experimental': {
-      value: 'rgba(40, 40, 40, 1)',
+      value: 'rgba(60, 60, 60, 1)',
     },
     'color-tooltip-border-tail-up-experimental': {
-      value: 'rgba(126, 126, 126, 1)',
+      value: 'rgba(71, 71, 71, 1)',
     },
     'color-border-gradient-experimental': {
       value: `linear-gradient(to bottom, ${colors.whiteAlpha[9]}, ${colors.whiteAlpha[4]})`,
@@ -48,6 +48,12 @@ export const metaThemeDarkPartial = createMetaThemePartial({
     },
     'color-border-gradient-active-experimental': {
       value: `linear-gradient(to bottom, ${colors.whiteAlpha[10]}, ${colors.whiteAlpha[4]})`,
+    },
+  },
+  shadow: {
+    'shadow-bevel-100': {
+      value:
+        '1px 0px 0px 0px rgba(204, 204, 204, 0.08) inset, -1px 0px 0px 0px rgba(204, 204, 204, 0.08) inset, 0px -1px 0px 0px rgba(204, 204, 204, 0.08) inset, 0px 1px 0px 0px rgba(204, 204, 204, 0.16) inset',
     },
   },
 });
