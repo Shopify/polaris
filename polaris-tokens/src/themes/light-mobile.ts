@@ -62,10 +62,6 @@ export const metaThemeLightMobilePartial = createMetaThemePartial({
     },
   },
   text: {
-    // heading-2xl
-    'text-heading-2xl-font-size': {
-      value: createVar('font-size-800'),
-    },
     // heading-xl
     'text-heading-xl-font-size': {
       value: createVar('font-size-550'),

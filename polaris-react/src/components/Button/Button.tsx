@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {isValidElement} from 'react';
 import {
   SelectIcon,
   ChevronDownIcon,
   ChevronUpIcon,
+  SkeletonIcon,
 } from '@shopify/polaris-icons';
 
 import {useBreakpoints} from '../../utilities/breakpoints';
@@ -144,28 +145,36 @@ export function Button({
   );
 
   const disclosureMarkup = disclosure ? (
-    <span className={loading ? styles.hidden : styles.Icon}>
-      <Icon
-        source={
-          loading
-            ? 'placeholder'
-            : getDisclosureIconSource(
-                disclosure,
-                ChevronUpIcon,
-                ChevronDownIcon,
-              )
-        }
-      />
+    <span className={styles.Icon}>
+      <div
+        className={classNames(styles.DisclosureIcon, loading && styles.hidden)}
+      >
+        <Icon
+          source={
+            loading
+              ? SkeletonIcon
+              : getDisclosureIconSource(
+                  disclosure,
+                  ChevronUpIcon,
+                  ChevronDownIcon,
+                )
+          }
+        />
+      </div>
     </span>
   ) : null;
 
-  const iconSource = isIconSource(icon) ? (
-    <Icon source={loading ? 'placeholder' : icon} />
-  ) : (
-    icon
-  );
-  const iconMarkup = iconSource ? (
-    <span className={loading ? styles.hidden : styles.Icon}>{iconSource}</span>
+  const iconMarkup = icon ? (
+    <span className={classNames(styles.Icon, loading && styles.hidden)}>
+      {/* eslint-disable-next-line no-nested-ternary */}
+      {loading ? (
+        <Icon source={SkeletonIcon} />
+      ) : isValidElement(icon) ? (
+        icon
+      ) : (
+        <Icon source={icon} />
+      )}
+    </span>
   ) : null;
 
   const hasPlainText = ['plain', 'monochromePlain'].includes(variant);
@@ -248,14 +257,6 @@ export function Button({
   );
 
   return buttonMarkup;
-}
-
-function isIconSource(x: any): x is IconSource {
-  return (
-    typeof x === 'string' ||
-    (typeof x === 'object' && x.body) ||
-    typeof x === 'function'
-  );
 }
 
 function getDisclosureIconSource(

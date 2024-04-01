@@ -1,0 +1,281 @@
+---
+title: Migrating from v12 to v13
+description: Polaris v13.0.0 prop replacement, removal of components, renamed components, and token changes.
+navTitle: v13
+icon: ColorsMajor
+collapsibleTOC: true
+order: 1
+---
+
+# {frontmatter.title}
+
+<Lede>{frontmatter.description}</Lede>
+
+## Getting started
+
+Upgrading to Polaris v13 from v12 requires several automated and manual migrations of token, component, and component prop names that have been removed, replaced, or renamed. The bulk of migrations are automated using the [@shopify/polaris-migrator](/tools/polaris-migrator) CLI tool, with the edge cases handled by find and replace in your code editor using provided RegExp searches. You can reference the [recommended migration workflow](#migration-workflow) or [glossary](#glossary) sections for additional migration support.
+
+Not on v12 yet? You'll need to follow the [Migrating from v11 to v12 guide](/version-guides/migrating-from-v11-to-v12) and/or older [migration guides](https://github.com/Shopify/polaris/tree/main/documentation/guides) for previous major versions before upgrading to v13.
+
+<Code
+  code={{
+    title: 'Upgrade to v13',
+    className: 'language-bash',
+    code: `npm install @shopify/polaris@13\n# or\nyarn add @shopify/polaris@13`,
+  }}
+/>
+
+<CollapsibleDetails summary="Note: If you've installed other Polaris packages independently, you will also need to upgrade those to the major versions we released along with v13.">
+
+| Package                      | Version |
+| ---------------------------- | ------- |
+| `@shopify/polaris`           | `13`    |
+| `@shopify/polaris-tokens`    | TBD     |
+| `@shopify/stylelint-polaris` | TBD     |
+| `@shopify/polaris-icons`     | TBD     |
+
+</CollapsibleDetails>
+
+<br />
+
+- [What's new in this version]()
+- [v13.0.0 release notes]()
+
+## Migration workflow
+
+When running token and component migrations, we recommend the following workflow:
+
+### 1️⃣ Automate migrations using Polaris Migrator
+
+The [polaris-migrator](/tools/polaris-migrator) CLI commands are scaffolded for you to paste into your terminal:
+
+- Tailor the directories in the command glob paths to those relevant to your app's file structure. For example, this generic monorepo glob `**/*.{css,scss}` might need to be changed to explicitly target stylesheets in `{src}/**/*.{css,scss}` in your app.
+- Adjust the file extensions for the migrations you are running. For example, React component migrations in a TypeScript app should target `*.{ts,tsx}` files, while token migrations should target `*.{css,scss}` files.
+
+```bash
+# Example migration
+npx @shopify/polaris-migrator ...
+# Find modified files containing "polaris-migrator:" manual migration comments
+matching_files=$(grep -r -l "polaris-migrator:" $(git ls-files -m))
+# Stash the files needing manual migrations if there are any
+if [[ -n "$matching_files" ]]; then
+    git stash push $matching_files
+else
+    echo "No modified files contain 'polaris-migrator:'"
+fi
+# Stage all migrated files without "polaris-migrator:" comments
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+# Stage formatted files
+git add .
+#  Commit automatic migration
+git commit -m "[Automated] Migrate X from Polaris v12 to v13"
+```
+
+The `polaris-migrator` could insert comments or skip instances that are unsafe to automatically migrate. You will need to resolve those issues in the next manual migration step.
+
+### 2️⃣ Manually migrate using migrator comments and RegExp code search
+
+Now, you need to validate the automatic migration and manually update any outstanding issues. The migration guide sections may have additional resources to help you resolve the migrations manually, such as `💡 Migration example`, `➡️ Replacement mappings` tables, and descriptions of what the automated migrations are doing.
+
+#### Resolve `polaris-migrator:` comments
+
+Unstash the polaris migrator comments if you stashed any in step 1.
+
+```bash
+git stash pop
+```
+
+Go through each of the changed files and search for `polaris-migrator:` comments. Migrate the instance the comment refers to, then delete the comment.
+
+#### Validate with RegExp
+
+Next, search for each of the token RegExp searches which are found under the `✅ Post-migration RegExp validation` toggle in the guide. Update any outstanding migrations until there are no more results for the RegExp search. If you're unsure on how to search in a code editor using RegExp, check out the [glossary](#glossary).
+
+```bash
+# Stage all manually migrated files
+git add .
+# Format staged files only
+git diff --staged --name-only | xargs npx prettier --write
+# Optional: run stylelint if using stylelint-polaris and running migrations on stylesheets
+npx stylelint "**/*.{css,scss}"
+#  Commit manual migrations
+git commit -m "[Manual] Migrate X from Polaris v12 to v13"
+```
+
+### Glossary
+
+<CollapsibleDetails summary="Descriptions and resources for some terms in this guide">
+
+- **`<path>`**: [glob](<https://en.wikipedia.org/wiki/Glob_(programming)>) path for the `polaris-migrator` to run codemods on. e.g.: `{app,packages}/**/*.{css,scss}`
+- **[@shopify/polaris-migrator](/tools/polaris-migrator)**: CLI codemod tool to do the bulk of migrations for you
+- **Automatic migration or codemod**: A transformation that runs on your codebase programmatically. These are used to execute a bulk of the necessary migrations on your codebase to reduce the amount of manual migrations needed
+- **[RegExp](https://en.wikipedia.org/wiki/Regular_expression)**: Short for regular expression, a sequence of characters used to match text. If you use a code editor like VSCode, you can follow a tutorial like [this one](https://itnext.io/vscode-find-and-replace-regex-super-powers-c7f8be0fa80f) to learn how to search your code using RegExp
+- **✅ Post-migration RegExp validation**: After you run an automated migration using the `polaris-migrator`, the migrator may quick exit or miss edge cases. You can use the RegExp search snippets to find and manually migrate the stragglers
+- **➡️ Token replacement mappings (or other mapping tables)**: These tables show you at a glance what our migrators are finding and replacing. They are useful to cross reference when dealing with edge cases and manual migrations
+- **🔔 Stepped migration**: These are migrations that must be run in a specific order due to overlapping replacement values. These migrations have been broken out into steps that can be targeted using the `--step` flag when running the migration
+- **💡 Migration example**: A simple diff showing how the migration should be modifying your code
+
+</CollapsibleDetails>
+
+## Component migrations
+
+### Text
+
+#### Replace `variant="heading2xl"` prop with `variant="headingXl"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp variant --fromValue heading2xl --toValue headingXl "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Text variant="heading2xl" /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="heading2xl"`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text variant="heading2xl">
++ <Text variant="headingXl">
+```
+
+</CollapsibleDetails>
+
+#### Replace `variant="heading3xl"` prop with `variant="headingXl"`
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator react-update-component-prop --componentName Text --fromProp variant --fromValue heading3xl --toValue headingXl "**/*.{ts,tsx}"`,
+  }}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+
+<Code
+  code={{
+    className: 'language-regex',
+    title: `Check RegExp for outdated <Text variant="heading3xl" /> prop`,
+    code: String.raw`<Text[^>\w](?:[^>]|\n)*?variant="heading3xl"`,
+  }}
+/>
+
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- <Text variant="heading3xl">
++ <Text variant="headingXl">
+```
+
+</CollapsibleDetails>
+
+## Token migrations
+
+### Font
+
+To replace deprecated `font` custom properties, you can run the [v13-styles-replace-custom-property-font](/tools/polaris-migrator#v13-styles-replace-custom-property-font) migration then validate with RegExp. Please reference the [recommended migration workflow](#migration-workflow) section below for additional migration support.
+
+<CollapsibleDetails summary="💡 Migration example">
+
+```diff
+- font-size: var(--p-font-size-750);
++ font-size: var(--p-font-size-600);
+```
+
+```diff
+- letter-spacing: var(--p-font-letter-spacing-denser);
++ letter-spacing: var(--p-font-letter-spacing-dense);
+```
+
+```diff
+- line-height: var(--p-font-line-height-1000);
++ line-height: var(--p-font-line-height-800);
+```
+
+</CollapsibleDetails>
+
+<Code
+  code={{
+    title: 'polaris-migrator codemod',
+    className: 'language-bash',
+    code: String.raw`npx @shopify/polaris-migrator v13-styles-replace-custom-property-font "**/*.{css,scss}"`,
+
+}}
+/>
+
+<CollapsibleDetails summary="✅ Post-migration RegExp validation">
+  After migrating, use the following RegExp to check for any additional
+  instances of `font` custom properties across all file types:
+  <Code
+    code={{
+      title:
+        'Check RegExp for hardcoded font custom properties across all file types',
+      code: String.raw`(?:--p-font-size-750|--p-font-size-800|--p-font-size-900|--p-font-size-1000|--p-font-letter-spacing-denser|--p-font-letter-spacing-densest|--p-font-line-height-1000|--p-font-line-height-1200)|--p-text-heading-3xl-font-family|--p-text-heading-3xl-font-size|--p-text-heading-3xl-font-weight|--p-text-heading-3xl-font-letter-spacing|--p-text-heading-3xl-font-line-height|--p-text-heading-2xl-font-family|--p-text-heading-2xl-font-size|--p-text-heading-2xl-font-weight|--p-text-heading-2xl-font-letter-spacing|--p-text-heading-2xl-font-line-height(?![\w-])`,
+    }}
+  />
+</CollapsibleDetails>
+
+<CollapsibleDetails summary="➡️ Token replacement mappings">
+
+| Deprecated Token                           | Replacement Value                         |
+| ------------------------------------------ | ----------------------------------------- |
+| `--p-font-size-750`                        | `--p-font-size-600`                       |
+| `--p-font-size-800`                        | `--p-font-size-600`                       |
+| `--p-font-size-900`                        | `--p-font-size-600`                       |
+| `--p-font-size-1000`                       | `--p-font-size-600`                       |
+| `--p-font-letter-spacing-denser`           | `--p-font-letter-spacing-dense`           |
+| `--p-font-letter-spacing-densest`          | `--p-font-letter-spacing-dense`           |
+| `--p-font-line-height-1000`                | `--p-font-line-height-800`                |
+| `--p-font-line-height-1200`                | `--p-font-line-height-800`                |
+| `--p-text-heading-2xl-font-family`         | `--p-text-heading-xl-font-family`         |
+| `--p-text-heading-2xl-font-size`           | `--p-text-heading-xl-font-size`           |
+| `--p-text-heading-2xl-font-weight`         | `--p-text-heading-xl-font-weight`         |
+| `--p-text-heading-2xl-font-letter-spacing` | `--p-text-heading-xl-font-letter-spacing` |
+| `--p-text-heading-2xl-font-line-height`    | `--p-text-heading-xl-font-line-height`    |
+| `--p-text-heading-3xl-font-family`         | `--p-text-heading-xl-font-family`         |
+| `--p-text-heading-3xl-font-size`           | `--p-text-heading-xl-font-size`           |
+| `--p-text-heading-3xl-font-weight`         | `--p-text-heading-xl-font-weight`         |
+| `--p-text-heading-3xl-font-letter-spacing` | `--p-text-heading-xl-font-letter-spacing` |
+| `--p-text-heading-3xl-font-line-height`    | `--p-text-heading-xl-font-line-height`    |
+
+</CollapsibleDetails>
+
+## Manual updates and fixes
+
+### Updated Web Font
+
+The design language has been updated to [Inter v4](https://github.com/rsms/inter/releases/tag/v4.0).
+
+Polaris references this font but does not load it. Your app will need to load the font, otherwise it will fallback to the user's system font. We've also moved to a new versioned URL pattern: `<font-family>/<version>/styles.css`. This stylesheet has a 24-hour cache, allowing us to propagate Inter v4 releases without the need to update or redeploy your app.
+
+You can load this font from Shopify by adding the following to your app's `<head>`:
+
+{/* prettier-ignore */}
+```html
+<link
+  rel="preconnect"
+  href="https://cdn.shopify.com/"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdn.shopify.com/static/fonts/inter/v4/styles.css"
+/>
+```
+
+> Please remember to check any custom integrations of Inter v3 (such as usages of variable axes) against the [Inter v4 release notes](https://github.com/rsms/inter/releases/tag/v4.0).

@@ -1,6 +1,7 @@
 import React from 'react';
 import {matchMedia, animationFrame} from '@shopify/jest-dom-mocks';
 import {mountWithApp} from 'tests/utilities';
+import {PlusIcon} from '@shopify/polaris-icons';
 
 import {PolarisTestProvider} from '../../../../PolarisTestProvider';
 import type {MediaQueryContext} from '../../../../../utilities/media-query';
@@ -63,7 +64,7 @@ describe('<Navigation.Section />', () => {
           },
         ]}
         action={{
-          icon: 'placeholder',
+          icon: PlusIcon,
           accessibilityLabel: 'This is a test section',
           onClick: noop,
         }}
@@ -90,7 +91,7 @@ describe('<Navigation.Section />', () => {
           },
         ]}
         action={{
-          icon: 'placeholder',
+          icon: PlusIcon,
           accessibilityLabel: 'This is a test section',
           onClick: spy,
         }}
@@ -227,7 +228,7 @@ describe('<Navigation.Section />', () => {
           },
         ]}
         action={{
-          icon: 'placeholder',
+          icon: PlusIcon,
           accessibilityLabel: 'This is a test section',
           onClick: noop,
         }}
@@ -257,7 +258,7 @@ describe('<Navigation.Section />', () => {
           },
         ]}
         action={{
-          icon: 'placeholder',
+          icon: PlusIcon,
           accessibilityLabel: 'This is a test section',
           onClick: noop,
         }}
@@ -367,7 +368,7 @@ describe('<Navigation.Section />', () => {
           },
         ]}
         action={{
-          icon: 'placeholder',
+          icon: PlusIcon,
           accessibilityLabel: 'This is a test section',
           onClick: noop,
           tooltip: {

@@ -187,7 +187,7 @@
       width: var(--p-space-400);
     }
     /* stylelint-disable-next-line selector-max-combinators -- DO NOT COPY polaris-migrator */
-    img {
+    svg {
       border-radius: var(--p-border-radius-100);
     }
   }

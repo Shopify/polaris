@@ -4,8 +4,6 @@ import {createVar} from '../../utils';
 import type {FontPrefix} from './font';
 
 export type TextVariant =
-  | 'heading-3xl'
-  | 'heading-2xl'
   | 'heading-xl'
   | 'heading-lg'
   | 'heading-md'
@@ -25,38 +23,6 @@ export type TextTokenGroup = {
 export const text: {
   [TokenName in TextTokenName]: MetaTokenProperties;
 } = {
-  // heading-3xl
-  'text-heading-3xl-font-family': {
-    value: createVar('font-family-sans'),
-  },
-  'text-heading-3xl-font-size': {
-    value: createVar('font-size-900'),
-  },
-  'text-heading-3xl-font-weight': {
-    value: createVar('font-weight-bold'),
-  },
-  'text-heading-3xl-font-letter-spacing': {
-    value: createVar('font-letter-spacing-densest'),
-  },
-  'text-heading-3xl-font-line-height': {
-    value: createVar('font-line-height-1200'),
-  },
-  // heading-2xl
-  'text-heading-2xl-font-family': {
-    value: createVar('font-family-sans'),
-  },
-  'text-heading-2xl-font-size': {
-    value: createVar('font-size-750'),
-  },
-  'text-heading-2xl-font-weight': {
-    value: createVar('font-weight-bold'),
-  },
-  'text-heading-2xl-font-letter-spacing': {
-    value: createVar('font-letter-spacing-denser'),
-  },
-  'text-heading-2xl-font-line-height': {
-    value: createVar('font-line-height-1000'),
-  },
   // heading-xl
   'text-heading-xl-font-family': {
     value: createVar('font-family-sans'),
