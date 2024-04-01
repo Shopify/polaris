@@ -76,11 +76,7 @@ const componentUnionTypeDeprecations: {
   [componentName: string]: {
     [typeName: string]: string[];
   };
-} = {
-  Text: {
-    Variant: ['heading2xl', 'heading3xl'],
-  },
-};
+} = {};
 
 export const getStaticProps: GetStaticProps<
   Props,
