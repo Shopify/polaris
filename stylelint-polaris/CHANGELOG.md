@@ -1,5 +1,11 @@
 # Changelog
 
+## 15.5.0
+
+### Minor Changes
+
+- [#11547](https://github.com/Shopify/polaris/pull/11547) [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Added warning for `font-size`, `line-height`, and `font-weight` properties. Use the `Text` component as a preferred option.
+
 ## 15.4.1
 
 ### Patch Changes
