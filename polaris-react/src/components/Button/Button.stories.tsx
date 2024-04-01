@@ -857,7 +857,7 @@ export function CopyToClipboard() {
     <div style={{maxWidth: 300, paddingTop: 100}}>
       <Card>
         <div ref={ref}>
-          <InlineStack align="space-between" gap="200">
+          <InlineStack align="space-between" gap="200" blockAlign="center">
             <Link removeUnderline>hello@example.com</Link>
             <div
               style={{
@@ -875,6 +875,7 @@ export function CopyToClipboard() {
                 preferredPosition="above"
                 content="Copy"
                 active={status === 'copied' ? false : undefined}
+                activatorWrapper="div"
               >
                 <Button
                   variant="tertiary"
