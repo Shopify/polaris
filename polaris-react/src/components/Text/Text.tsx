@@ -52,7 +52,7 @@ type Tone =
 type TextDecorationLine = 'line-through';
 
 const deprecatedVariants: {[V in Variant]?: Variant} = {
-  heading3xl: 'headingXl',
+  heading3xl: 'heading2xl',
 };
 export interface TextProps {
   /** Adjust horizontal alignment of text */
