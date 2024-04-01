@@ -52,7 +52,6 @@ type Tone =
 type TextDecorationLine = 'line-through';
 
 const deprecatedVariants: {[V in Variant]?: Variant} = {
-  heading2xl: 'headingXl',
   heading3xl: 'headingXl',
 };
 export interface TextProps {
