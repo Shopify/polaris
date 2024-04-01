@@ -5,7 +5,7 @@ import {useEventListener} from './use-event-listener';
 
 export function useHover(
   /**
-   * The target element for the hover event.
+   * The target element for the mouseenter event.
    */
   ref: RefObject<HTMLElement>,
 ): boolean {
