@@ -1,5 +1,29 @@
 # Changelog
 
+## 12.24.0
+
+### Minor Changes
+
+- [#11547](https://github.com/Shopify/polaris/pull/11547) [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Applied semantic type styles using the `Text` component
+
+* [#11728](https://github.com/Shopify/polaris/pull/11728) [`281c8f8e9`](https://github.com/Shopify/polaris/commit/281c8f8e95d4ba7253d1cc74dc75eca60179dfa6) Thanks [@kyledurand](https://github.com/kyledurand)! - Added new AlphaPicker component
+
+- [#11645](https://github.com/Shopify/polaris/pull/11645) [`b726dadbb`](https://github.com/Shopify/polaris/commit/b726dadbb2b7e041a57ab9ebfce7e7de945b687b) Thanks [@aaronccasanova](https://github.com/aaronccasanova)! - Added `useCopyToClipboard` hook for building copy actions matching common actions guidelines
+
+* [#11780](https://github.com/Shopify/polaris/pull/11780) [`4fffc2dcc`](https://github.com/Shopify/polaris/commit/4fffc2dcc31ec49b1c5a536af72880812a153d7a) Thanks [@itwasmattgregg](https://github.com/itwasmattgregg)! - allows icons to be displayed on primary actions on Page component
+
+- [#11547](https://github.com/Shopify/polaris/pull/11547) [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Added `base`,`inherit`, `disabled`, and `text-inverse` tone options for Text component
+
+* [#11547](https://github.com/Shopify/polaris/pull/11547) [`df5276317`](https://github.com/Shopify/polaris/commit/df527631730eccbbb259c43b7b7d1c5fc8e47264) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Updated plain/monochrome Button text size to bodySm for micro
+
+### Patch Changes
+
+- [#11789](https://github.com/Shopify/polaris/pull/11789) [`36df1aa6c`](https://github.com/Shopify/polaris/commit/36df1aa6c3d483972591130918ebfb392db71922) Thanks [@laurkim](https://github.com/laurkim)! - Fixed logo spacing on `ContextualSaveBar`
+
+* [#11794](https://github.com/Shopify/polaris/pull/11794) [`ffdcf1df7`](https://github.com/Shopify/polaris/commit/ffdcf1df7c7c14a9cf3a577dd010c106312e9663) Thanks [@kyledurand](https://github.com/kyledurand)! - Set default scrollbar width to thin on scrollable
+
+- [#11804](https://github.com/Shopify/polaris/pull/11804) [`d1b46c25c`](https://github.com/Shopify/polaris/commit/d1b46c25ce125204451bb9c018ce2126a8f3d349) Thanks [@laurkim](https://github.com/laurkim)! - Fixed layout shift on `EmptyState` when image is loading with skeleton image
+
 ## 12.23.0
 
 ### Minor Changes
