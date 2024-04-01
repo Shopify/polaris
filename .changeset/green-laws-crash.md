@@ -3,4 +3,4 @@
 'polaris.shopify.com': patch
 ---
 
-Undeprecate `heading2xl` variant in `Text` component
+Undeprecated `heading2xl` variant in `Text` component
