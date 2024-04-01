@@ -16,7 +16,7 @@ describe('useMediaQuery', () => {
     const renderMatches: boolean[] = [];
 
     function App() {
-      const matches = useMediaQuery('my-query');
+      const matches = useMediaQuery('false-query');
       renderMatches.push(matches);
       return null;
     }
@@ -62,7 +62,7 @@ describe('useMediaQuery', () => {
     const renderMatches: boolean[] = [];
 
     function App() {
-      const matches = useMediaQuery('my-query', {defaultValue: true});
+      const matches = useMediaQuery('false-query', {defaultValue: true});
       renderMatches.push(matches);
       return null;
     }

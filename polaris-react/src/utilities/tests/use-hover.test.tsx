@@ -16,7 +16,7 @@ describe('useHover', () => {
     expect(app).toContainReactText('false');
   });
 
-  it('returns true on mouse enter', () => {
+  it('returns true on mouseenter', () => {
     function App() {
       const ref = useRef(null);
       const isHovered = useHover(ref);
@@ -33,7 +33,7 @@ describe('useHover', () => {
     expect(app).toContainReactText('true');
   });
 
-  it('returns false on mouse enter and leave', () => {
+  it('returns false on mouseenter and mouseleave', () => {
     function App() {
       const ref = useRef(null);
       const isHovered = useHover(ref);
