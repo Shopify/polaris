@@ -8,7 +8,7 @@
 .Image {
   opacity: 0;
   transition: opacity var(--p-motion-duration-150) var(--p-motion-ease);
-  z-index: var(--p-z-index-2);
+  z-index: var(--p-z-index-1);
 
   &.loaded {
     opacity: 1;
@@ -35,7 +35,7 @@
 
 .SkeletonImage {
   position: absolute;
-  z-index: var(--p-z-index-2);
+  z-index: var(--p-z-index-0);
   /* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- container custom property for placeholder size */
   --pc-empty-state-skeleton-image-size: 145px;
   height: var(--pc-empty-state-skeleton-image-size);
