@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, {useState, useCallback} from 'react';
 
 import {classNames} from '../../utilities/css';
 import type {ComplexAction} from '../../types';
@@ -48,15 +48,9 @@ export function EmptyState({
 }: EmptyStateProps) {
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  const onImageLoad = useCallback(() => {
+  const handleLoad = useCallback(() => {
     setImageLoaded(true);
   }, []);
-
-  useEffect(() => {
-    const img: HTMLImageElement = new window.Image(0, 0);
-    img.src = largeImage || image;
-    img.onload = () => onImageLoad();
-  }, [onImageLoad, largeImage, image]);
 
   const imageClassNames = classNames(
     styles.Image,
@@ -75,6 +69,7 @@ export function EmptyState({
         {source: largeImage, descriptor: '1136w'},
       ]}
       sizes="(max-width: 568px) 60vw"
+      onLoad={handleLoad}
     />
   ) : (
     <Image
@@ -82,6 +77,7 @@ export function EmptyState({
       role="presentation"
       className={imageClassNames}
       source={image}
+      onLoad={handleLoad}
     />
   );
 
