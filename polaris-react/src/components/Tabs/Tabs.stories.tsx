@@ -1,6 +1,6 @@
 import React, {useCallback, useState} from 'react';
 import type {ComponentMeta} from '@storybook/react';
-import {Tabs, BlockStack, LegacyCard} from '@shopify/polaris';
+import {Tabs, BlockStack, LegacyCard, Text} from '@shopify/polaris';
 
 export default {
   component: Tabs,
@@ -40,7 +40,9 @@ export function Default() {
   return (
     <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
       <LegacyCard.Section title={tabs[selected].content}>
-        <p>Tab {selected} selected</p>
+        <Text as="p" variant="bodyMd">
+          Tab {selected} selected
+        </Text>
       </LegacyCard.Section>
     </Tabs>
   );
@@ -68,7 +70,9 @@ export function InsideOfACard() {
     <LegacyCard>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange}>
         <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
         </LegacyCard.Section>
       </Tabs>
     </LegacyCard>
@@ -101,7 +105,9 @@ export function Fitted() {
     <LegacyCard>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
         <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
         </LegacyCard.Section>
       </Tabs>
     </LegacyCard>
@@ -215,7 +221,9 @@ export function WithBadgeContent() {
     <LegacyCard>
       <Tabs tabs={tabs} selected={selected} onSelect={handleTabChange} fitted>
         <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
         </LegacyCard.Section>
       </Tabs>
     </LegacyCard>
@@ -278,7 +286,9 @@ export function WithCustomDisclosure() {
         disclosureText="Extra views"
       >
         <LegacyCard.Section title={tabs[selected].content}>
-          <p>Tab {selected} selected</p>
+          <Text as="p" variant="bodyMd">
+            Tab {selected} selected
+          </Text>
         </LegacyCard.Section>
       </Tabs>
     </LegacyCard>

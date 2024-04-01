@@ -17,7 +17,12 @@ import {
   ResourceList,
   Text,
 } from '@shopify/polaris';
-import {ProductIcon} from '@shopify/polaris-icons';
+import {
+  DeleteIcon,
+  EditIcon,
+  PlusIcon,
+  ProductIcon,
+} from '@shopify/polaris-icons';
 
 export default {
   component: Card,
@@ -30,7 +35,9 @@ export function Default() {
         <Text as="h2" variant="headingSm">
           Online store dashboard
         </Text>
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </BlockStack>
     </Card>
   );
@@ -43,7 +50,9 @@ export function WithResponsiveBorderRadius() {
         <Text as="h2" variant="headingSm">
           Online store dashboard
         </Text>
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </BlockStack>
     </Card>
   );
@@ -56,7 +65,9 @@ export function WithResponsivePadding() {
         <Text as="h2" variant="headingSm">
           Online store dashboard
         </Text>
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </BlockStack>
     </Card>
   );
@@ -69,7 +80,9 @@ export function WithSubdued() {
         <Text as="h2" variant="headingSm">
           Online store dashboard
         </Text>
-        <p>View a summary of your online store’s performance.</p>
+        <Text as="p" variant="bodyMd">
+          View a summary of your online store’s performance.
+        </Text>
       </BlockStack>
     </Card>
   );
@@ -298,12 +311,11 @@ export function WithSectionsAndActions() {
               Contact Information
             </Text>
             <Button
-              variant="plain"
+              icon={EditIcon}
+              variant="tertiary"
               onClick={() => {}}
               accessibilityLabel="Edit"
-            >
-              Edit
-            </Button>
+            />
           </InlineGrid>
           <Text as="p" variant="bodyMd">
             john.smith@example.com
@@ -333,20 +345,18 @@ export function WithSectionsAndCriticalAction() {
             </Text>
             <ButtonGroup>
               <Button
-                variant="plain"
+                icon={DeleteIcon}
+                variant="tertiary"
                 tone="critical"
                 onClick={() => {}}
                 accessibilityLabel="Delete"
-              >
-                Delete
-              </Button>
+              />
               <Button
-                variant="plain"
+                icon={EditIcon}
+                variant="tertiary"
                 onClick={() => {}}
                 accessibilityLabel="Edit"
-              >
-                Edit
-              </Button>
+              />
             </ButtonGroup>
           </InlineGrid>
           <Text as="p" variant="bodyMd">
@@ -419,7 +429,7 @@ export function WithHeaderActions() {
             Variants
           </Text>
           <Button
-            variant="plain"
+            icon={PlusIcon}
             onClick={() => {}}
             accessibilityLabel="Add variant"
           >
@@ -453,15 +463,16 @@ export function WithFooterActions() {
         </BlockStack>
         <InlineStack align="end">
           <ButtonGroup>
-            <Button onClick={() => {}} accessibilityLabel="Edit shipment">
-              Edit shipment
+            <Button onClick={() => {}} accessibilityLabel="Fulfill items">
+              Fulfill items
             </Button>
             <Button
+              icon={PlusIcon}
               variant="primary"
               onClick={() => {}}
-              accessibilityLabel="Add tracking number"
+              accessibilityLabel="Create shipping label"
             >
-              Add tracking number
+              Create shipping label
             </Button>
           </ButtonGroup>
         </InlineStack>
@@ -579,7 +590,7 @@ export function WithCriticalFooterActions() {
         <InlineStack align="end">
           <ButtonGroup>
             <Button
-              variant="primary"
+              variant="secondary"
               tone="critical"
               onClick={() => {}}
               accessibilityLabel="Cancel shipment"

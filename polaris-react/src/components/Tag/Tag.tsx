@@ -1,12 +1,13 @@
 import React from 'react';
 import {XSmallIcon} from '@shopify/polaris-icons';
 
-import {classNames} from '../../utilities/css';
+import {classNames, variationName} from '../../utilities/css';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
+import {Text} from '../Text';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
 
-import styles from './Tag.module.scss';
+import styles from './Tag.module.css';
 
 export interface NonMutuallyExclusiveProps {
   /** Content to display in the tag */
@@ -21,6 +22,8 @@ export interface NonMutuallyExclusiveProps {
   accessibilityLabel?: string;
   /** Url to navigate to when tag is clicked or keypressed. */
   url?: string;
+  /** The size of the tag */
+  size?: 'large';
 }
 
 export type TagProps = NonMutuallyExclusiveProps &
@@ -36,6 +39,7 @@ export function Tag({
   onRemove,
   accessibilityLabel,
   url,
+  size,
 }: TagProps) {
   const i18n = useI18n();
 
@@ -47,6 +51,21 @@ export function Tag({
     onRemove && styles.removable,
     url && !disabled && styles.linkable,
     segmented && styles.segmented,
+    size && styles[variationName('size', size)],
+  );
+
+  let tagTitle = accessibilityLabel;
+
+  if (!tagTitle) {
+    tagTitle = typeof children === 'string' ? children : undefined;
+  }
+
+  const tagText = (
+    <Text as="span" variant="bodySm" truncate>
+      <span title={tagTitle} className={styles.Text}>
+        {children}
+      </span>
+    </Text>
   );
 
   if (onClick) {
@@ -57,15 +76,9 @@ export function Tag({
         className={className}
         onClick={onClick}
       >
-        {children}
+        {tagText}
       </button>
     );
-  }
-
-  let tagTitle = accessibilityLabel;
-
-  if (!tagTitle) {
-    tagTitle = typeof children === 'string' ? children : undefined;
   }
 
   const ariaLabel = i18n.translate('Polaris.Tag.ariaLabel', {
@@ -91,19 +104,16 @@ export function Tag({
         className={classNames(styles.Link, segmented && styles.segmented)}
         href={url}
       >
-        <span title={tagTitle} className={styles.LinkText}>
-          {children}
-        </span>
+        {tagText}
       </a>
     ) : (
-      <span title={tagTitle} className={styles.TagText}>
-        {children}
-      </span>
+      tagText
     );
 
   return (
     <span className={className} aria-disabled={disabled}>
       {tagContent}
+      {size === 'large' && <span className={styles.overlay} />}
       {removeButton}
     </span>
   );

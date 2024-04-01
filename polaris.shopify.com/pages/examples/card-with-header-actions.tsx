@@ -1,6 +1,7 @@
 import React from 'react';
 import {BlockStack, Button, Card, InlineGrid, Text} from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
+import {PlusIcon} from '@shopify/polaris-icons';
 
 function CardWithHeaderActions() {
   return (
@@ -11,9 +12,9 @@ function CardWithHeaderActions() {
             Variants
           </Text>
           <Button
-            variant="plain"
             onClick={() => {}}
             accessibilityLabel="Add variant"
+            icon={PlusIcon}
           >
             Add variant
           </Button>

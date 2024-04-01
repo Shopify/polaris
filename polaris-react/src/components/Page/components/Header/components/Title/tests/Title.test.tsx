@@ -13,9 +13,7 @@ describe('<Title />', () => {
   describe('title', () => {
     it('renders an h1 with the title', () => {
       const pageTitle = mountWithApp(<Title {...mockProps} />);
-      expect(pageTitle).toContainReactComponent('h1', {
-        children: mockProps.title,
-      });
+      expect(pageTitle.find('h1')).toContainReactText(mockProps.title);
     });
 
     it('does not render a title when not defined', () => {

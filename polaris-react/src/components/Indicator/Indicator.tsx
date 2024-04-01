@@ -2,7 +2,7 @@ import React from 'react';
 
 import {classNames} from '../../utilities/css';
 
-import styles from './Indicator.module.scss';
+import styles from './Indicator.module.css';
 
 export interface IndicatorProps {
   pulse?: boolean;

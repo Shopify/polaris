@@ -4,8 +4,9 @@ import {useI18n} from '../../utilities/i18n';
 import {Box} from '../Box';
 import {BlockStack} from '../BlockStack';
 import {InlineStack} from '../InlineStack';
+import {Text} from '../Text';
 
-import styles from './SkeletonPage.module.scss';
+import styles from './SkeletonPage.module.css';
 
 export interface SkeletonPageProps {
   /** Page title, in large type */
@@ -33,7 +34,9 @@ export function SkeletonPage({
   const i18n = useI18n();
 
   const titleContent = title ? (
-    <h1 className={styles.Title}>{title}</h1>
+    <Text as="h1" variant="headingLg" fontWeight="bold">
+      {title}
+    </Text>
   ) : (
     <div className={styles.SkeletonTitle}>
       <Box

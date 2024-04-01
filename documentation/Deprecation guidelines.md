@@ -42,6 +42,26 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
 ## Prop values
 
 - Mark the prop value(s) as deprecated
+
+  - Add a console.warn() for deprecated prop value(s) to component
+
+  ```tsx
+  const deprecatedVariants: {[V in Variant]?: Variant} = {
+    heading2xl: 'headingXl',
+    heading3xl: 'headingXl',
+  };
+
+  if (
+    process.env.NODE_ENV === 'development' &&
+    variant &&
+    Object.prototype.hasOwnProperty.call(deprecatedVariants, variant)
+  ) {
+    console.warn(
+      `Deprecation: <Text variant="${variant}" />. The value "${variant}" will be removed in a future major version of Polaris. Use "${deprecatedVariants[variant]}" instead.`,
+    );
+  }
+  ```
+
   - Add component, prop, and deprecated prop value(s) to `componentUnionTypeDeprecations` ([example](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/pages/components/%5Bgroup%5D/%5Bcomponent%5D/index.tsx#L80))
     ```tsx
     const componentUnionTypeDeprecations: {
@@ -55,6 +75,7 @@ Follow these guidelines for deprecating [components](#components), [props](#prop
     };
     ```
   - Check documentation is updated on polaris.shopify.com
+
 - Create automated migration(s) ([examples](https://github.com/Shopify/polaris/tree/main/polaris-migrator/src/migrations))
 - Add supporting documentation for deprecation in next major version guide ([examples](https://github.com/Shopify/polaris/tree/main/polaris.shopify.com/content/version-guides/migrating-from-v11-to-v12.mdx#L122))
   - Document deprecation reason

@@ -6,7 +6,7 @@ import {useI18n} from '../../../../utilities/i18n';
 import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
 
-import styles from './SearchField.module.scss';
+import styles from './SearchField.module.css';
 
 export interface SearchFieldProps {
   /** Initial value for the input */

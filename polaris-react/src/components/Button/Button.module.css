@@ -1,0 +1,398 @@
+/* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- allow custom component properties */
+
+.Button {
+  --pc-button-gap: var(--p-space-050);
+  --pc-button-bg: transparent;
+  --pc-button-bg_hover: var(--pc-button-bg);
+  --pc-button-bg_active: var(--pc-button-bg);
+  --pc-button-bg_pressed: var(--pc-button-bg_active);
+  --pc-button-bg_disabled: var(--p-color-bg-fill-disabled);
+  --pc-button-color: inherit;
+  --pc-button-color_hover: var(--pc-button-color);
+  --pc-button-color_active: var(--pc-button-color);
+  --pc-button-color_pressed: var(--pc-button-color_active);
+  --pc-button-color_disabled: var(--p-color-text-disabled);
+  --pc-button-box-shadow: transparent;
+  --pc-button-box-shadow_hover: var(--pc-button-box-shadow);
+  --pc-button-box-shadow_active: var(--pc-button-box-shadow);
+  --pc-button-box-shadow_pressed: var(--pc-button-box-shadow_active);
+  --pc-button-box-shadow_disabled: var(--pc-button-box-shadow);
+  --pc-button-icon-fill: currentColor;
+  --pc-button-icon-fill_hover: var(--pc-button-icon-fill);
+  --pc-button-icon-fill_active: var(--pc-button-icon-fill);
+  --pc-button-icon-fill_pressed: var(--pc-button-icon-fill_active);
+  --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
+  all: unset;
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pc-button-gap);
+  padding: var(--pc-button-padding-block) var(--pc-button-padding-inline);
+  background: var(--pc-button-bg);
+  border: none;
+  border-radius: var(--p-border-radius-200);
+  box-shadow: var(--pc-button-box-shadow);
+  color: var(--pc-button-color);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity#increasing_specificity_by_duplicating_selector
+   Remove the duplicate selectors once `Icon` supports no fill so there won't be competing specificity */
+/* stylelint-disable selector-max-specificity -- Duplicate selectors to bump specificity to be greater than Icon's svg fill (0, 1, 1) */
+.Button.Button svg {
+  fill: var(--pc-button-icon-fill);
+}
+
+.Button.Button:hover svg {
+  fill: var(--pc-button-icon-fill_hover);
+}
+
+.Button.Button:active,
+.Button.Button[data-state='open'] svg {
+  fill: var(--pc-button-icon-fill_active);
+}
+
+.Button.Button:disabled,
+.Button.Button[disabled],
+.disabled.disabled svg {
+  fill: var(--pc-button-icon-fill_disabled);
+}
+
+.pressed.pressed,
+.pressed.pressed:hover,
+.pressed.pressed:active,
+.pressed.pressed:focus-visible svg {
+  fill: var(--pc-button-icon-fill_pressed);
+}
+/* stylelint-enable selector-max-specificity */
+
+.Button:hover {
+  background: var(--pc-button-bg_hover);
+  color: var(--pc-button-color_hover);
+  box-shadow: var(--pc-button-box-shadow_hover);
+}
+
+.Button:active,
+.Button[data-state='open'] {
+  background: var(--pc-button-bg_active);
+  color: var(--pc-button-color_active);
+  box-shadow: var(--pc-button-box-shadow_active);
+}
+
+.Button:focus-visible {
+  background: var(--pc-button-bg_hover);
+  color: var(--pc-button-color_hover);
+  outline: var(--p-border-width-050) solid var(--p-color-border-focus);
+  outline-offset: var(--p-space-025);
+
+  /* Disable focus-ring mixin to prevent overlap of focus-ring and outline */
+  &::after {
+    content: none;
+  }
+}
+
+.Button:disabled,
+.Button[disabled],
+.disabled {
+  background: var(--pc-button-bg_disabled);
+  color: var(--pc-button-color_disabled);
+  box-shadow: none;
+  user-select: none;
+  pointer-events: none;
+}
+
+.pressed,
+.pressed:hover,
+.pressed:active,
+.pressed:focus-visible {
+  background: var(--pc-button-bg_pressed);
+  color: var(--pc-button-color_pressed);
+  box-shadow: var(--pc-button-box-shadow_pressed);
+}
+
+/* VARIANTS */
+.variantPrimary {
+  --pc-button-bg-gradient: var(--p-color-button-gradient-bg-fill);
+  --pc-button-box-shadow: var(--p-shadow-button-primary);
+  --pc-button-box-shadow_active: var(--p-shadow-button-primary-inset);
+  --pc-button-bg: var(--pc-button-bg-gradient), var(--p-color-bg-fill-brand);
+  --pc-button-bg_hover: var(--pc-button-bg-gradient),
+    var(--p-color-bg-fill-brand-hover);
+  --pc-button-bg_active: var(--pc-button-bg-gradient),
+    var(--p-color-bg-fill-brand-active);
+  --pc-button-bg_disabled: var(--p-color-bg-fill-brand-disabled);
+  --pc-button-color: var(--p-color-text-brand-on-bg-fill);
+  --pc-button-color_disabled: var(--p-color-text-brand-on-bg-fill-disabled);
+  --pc-button-icon-fill: var(--p-color-text-brand-on-bg-fill);
+  --pc-button-icon-fill_disabled: var(--p-color-text-brand-on-bg-fill-disabled);
+}
+
+.variantSecondary {
+  --pc-button-box-shadow: var(--p-shadow-button);
+  --pc-button-box-shadow_active: var(--p-shadow-button-inset);
+  --pc-button-bg: var(--p-color-bg-fill);
+  --pc-button-bg_hover: var(--p-color-bg-fill-hover);
+  --pc-button-bg_active: var(--p-color-bg-fill-active);
+  --pc-button-bg_pressed: var(--p-color-bg-fill-selected);
+  --pc-button-color: var(--p-color-text);
+  --pc-button-icon-fill: var(--p-color-icon);
+}
+
+.variantTertiary {
+  --pc-button-bg_hover: var(--p-color-bg-fill-transparent-hover);
+  --pc-button-bg_active: var(--p-color-bg-fill-transparent-active);
+  --pc-button-bg_pressed: var(--p-color-bg-fill-selected);
+  --pc-button-bg_disabled: transparent;
+  --pc-button-color: var(--p-color-text);
+  --pc-button-icon-fill: var(--p-color-icon);
+}
+
+.variantPlain {
+  --pc-button-color: var(--p-color-text-link);
+  --pc-button-color_hover: var(--p-color-text-link-hover);
+  --pc-button-color_active: var(--p-color-text-link-active);
+}
+
+.variantPlain:is(:hover, :active, :focus-visible):not(.removeUnderline) {
+  text-decoration: underline;
+}
+
+.variantMonochromePlain {
+  --pc-button-icon-fill: currentColor;
+}
+
+.variantPlain,
+.variantMonochromePlain {
+  --pc-button-bg_disabled: transparent;
+  margin: calc(-1 * var(--pc-button-padding-block))
+    calc(-1 * var(--pc-button-padding-inline));
+}
+
+.variantPlain:focus-visible,
+.variantMonochromePlain:focus-visible {
+  border-radius: var(--p-border-radius-300);
+  outline-offset: calc(-1 * var(--pc-button-padding-block));
+}
+
+/* TONES */
+.toneSuccess:is(.variantSecondary, .variantTertiary, .variantPlain) {
+  --pc-button-color: var(--p-color-text-success);
+  --pc-button-color_hover: var(--p-color-text-success-hover);
+  --pc-button-color_active: var(--p-color-text-success-active);
+  --pc-button-icon-fill: currentColor;
+}
+
+.toneCritical:is(.variantSecondary, .variantTertiary, .variantPlain) {
+  --pc-button-color: var(--p-color-text-critical);
+  --pc-button-color_hover: var(--p-color-text-critical-hover);
+  --pc-button-color_active: var(--p-color-text-critical-active);
+  --pc-button-icon-fill: currentColor;
+}
+
+.toneSuccess:is(.variantPrimary) {
+  --pc-button-box-shadow: var(--p-shadow-button-primary-success);
+  --pc-button-box-shadow_active: var(--p-shadow-button-primary-success-inset);
+  --pc-button-bg: var(--p-color-bg-fill-success);
+  --pc-button-bg_hover: var(--p-color-bg-fill-success-hover);
+  --pc-button-bg_active: var(--p-color-bg-fill-success-active);
+  --pc-button-bg_pressed: var(--p-color-bg-fill-success-selected);
+}
+
+.toneCritical:is(.variantPrimary) {
+  --pc-button-box-shadow: var(--p-shadow-button-primary-critical);
+  --pc-button-box-shadow_active: var(--p-shadow-button-primary-critical-inset);
+  --pc-button-bg: var(--p-color-bg-fill-critical);
+  --pc-button-bg_hover: var(--p-color-bg-fill-critical-hover);
+  --pc-button-bg_active: var(--p-color-bg-fill-critical-active);
+  --pc-button-bg_pressed: var(--p-color-bg-fill-critical-selected);
+}
+
+/* SIZES */
+.sizeMicro {
+  --pc-button-padding-block: var(--p-space-100);
+  --pc-button-padding-inline: var(--p-space-200);
+  min-height: var(--p-height-700);
+  min-width: var(--p-width-700);
+
+  @media (--p-breakpoints-md-up) {
+    min-height: var(--p-height-600);
+    min-width: var(--p-width-600);
+  }
+}
+
+.sizeSlim,
+.sizeMedium {
+  --pc-button-padding-block: var(--p-space-150);
+  --pc-button-padding-inline: var(--p-space-300);
+  min-height: var(--p-height-800);
+  min-width: var(--p-width-800);
+
+  @media (--p-breakpoints-md-up) {
+    min-height: var(--p-height-700);
+    min-width: var(--p-width-700);
+  }
+}
+
+.sizeLarge {
+  --pc-button-padding-block: var(--p-space-150);
+  --pc-button-padding-inline: var(--p-space-300);
+  min-height: var(--p-height-900);
+  min-width: var(--p-height-900);
+
+  @media (--p-breakpoints-md-up) {
+    min-height: var(--p-height-800);
+    min-width: var(--p-width-800);
+  }
+}
+
+/* TEXT ALIGNMENT */
+.textAlignCenter {
+  justify-content: center;
+  text-align: center;
+}
+
+.textAlignStart,
+.textAlignLeft {
+  justify-content: start;
+  text-align: start;
+}
+
+.textAlignEnd,
+.textAlignRight {
+  justify-content: end;
+  text-align: end;
+}
+
+/* WIDTH */
+.fullWidth {
+  width: 100%;
+}
+
+/* ICON */
+.iconOnly {
+  --pc-button-padding-block: var(--p-space-100);
+  --pc-button-padding-inline: var(--p-space-100);
+}
+
+.iconOnly:is(.sizeLarge) {
+  --pc-button-padding-block: var(--p-space-150);
+  --pc-button-padding-inline: var(--p-space-150);
+}
+
+.iconOnly:is(.sizeMicro) {
+  --pc-button-padding-block: var(--p-space-050);
+  --pc-button-padding-inline: var(--p-space-050);
+}
+
+.iconOnly:is(.variantTertiary) {
+  margin: calc(-1 * var(--pc-button-padding-block))
+    calc(-1 * var(--pc-button-padding-inline));
+}
+
+.iconOnly:is(.variantTertiary, .variantPlain):not(.toneCritical) {
+  --pc-button-icon-fill: var(--p-color-icon-secondary);
+  --pc-button-icon-fill_hover: var(--p-color-icon-secondary-hover);
+  --pc-button-icon-fill_active: var(--p-color-icon-secondary-active);
+  --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
+}
+
+.iconOnly:is(.variantMonochromePlain) {
+  --pc-button-icon-fill: currentColor;
+  --pc-button-icon-fill_hover: var(--p-color-icon-secondary-hover);
+  --pc-button-icon-fill_active: var(--p-color-icon-secondary-active);
+  --pc-button-icon-fill_disabled: var(--p-color-icon-disabled);
+}
+
+.iconOnly:is(.variantPlain, .variantMonochromePlain) {
+  --pc-button-padding-block: 0;
+  --pc-button-padding-inline: 0;
+  margin: 0;
+  min-height: var(--p-height-500);
+  min-width: var(--p-width-500);
+}
+
+.iconWithText:not(.variantPlain, .variantMonochromePlain) {
+  padding-left: calc(var(--pc-button-padding-inline) * 0.5);
+}
+
+/* DISCLOSURE */
+.disclosure:not(.variantPlain, .variantMonochromePlain) {
+  padding-right: calc(var(--pc-button-padding-inline) * 0.5);
+}
+
+.disclosure:is(.textAlignStart, .textAlignLeft) {
+  justify-content: space-between;
+}
+
+/* LOADING */
+.loading {
+  color: transparent;
+}
+
+/* INTERACTION */
+.pressable:active:not(.variantTertiary, .variantPlain, .variantMonochromePlain)
+  > * {
+  transform: translate3d(0, 1px, 0);
+}
+
+/* UTILITIES */
+.hidden {
+  visibility: hidden;
+}
+
+/* ICON */
+.Icon {
+  margin: calc(-1 * var(--p-space-050)) 0;
+}
+
+/* SPINNER */
+.Spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  svg {
+    fill: var(--pc-button-icon-fill_disabled);
+    vertical-align: middle;
+  }
+}
+
+/* BUTTON GROUP */
+/* stylelint-disable -- selector-max-combinators */
+[data-buttongroup-variant='segmented']
+  > *:not(:first-child)
+  .Button:is(.variantPrimary) {
+  margin-left: calc(-1 * var(--p-space-025));
+}
+
+[data-buttongroup-variant='segmented'] > *:not(:first-child) .Button {
+  border-top-left-radius: var(--p-border-radius-0);
+  border-bottom-left-radius: var(--p-border-radius-0);
+}
+
+[data-buttongroup-variant='segmented'] > *:not(:last-child) .Button {
+  border-top-right-radius: var(--p-border-radius-0);
+  border-bottom-right-radius: var(--p-border-radius-0);
+}
+
+[data-buttongroup-full-width='true'] .Button {
+  width: 100%;
+
+  @media (--p-breakpoints-md-up) {
+    white-space: nowrap;
+  }
+}
+
+[data-buttongroup-connected-top='true'] > *:first-child .Button {
+  border-top-left-radius: var(--p-border-radius-0);
+}
+
+[data-buttongroup-connected-top='true'] > *:last-child .Button {
+  border-top-right-radius: var(--p-border-radius-0);
+}
+
+/* stylelint-enable -- selector-max-combinators */

@@ -1,7 +1,6 @@
 import React from 'react';
 import type {ComponentProps} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 
 import {Tabs} from '../../Tabs';
 import {Filters} from '../../Filters';
@@ -93,13 +92,8 @@ describe('IndexFilters', () => {
     showEditColumnsButton: false,
   };
 
-  beforeEach(() => {
-    matchMedia.mock();
-  });
-
   afterEach(() => {
     jest.resetAllMocks();
-    matchMedia.restore();
   });
 
   it('reacts correctly to pressing the search button and invokes setMode with the filtering argument', () => {
@@ -269,6 +263,28 @@ describe('IndexFilters', () => {
 
       expect(onEditStart).toHaveBeenCalledWith(IndexFiltersMode.Filtering);
     });
+
+    it('does nothing if hideQueryField and hideFilters are true', () => {
+      const onEditStart = jest.fn();
+
+      mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          mode={IndexFiltersMode.Default}
+          onEditStart={onEditStart}
+          hideQueryField
+          hideFilters
+        />,
+      );
+
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'f',
+        }),
+      );
+
+      expect(onEditStart).not.toHaveBeenCalledWith(IndexFiltersMode.Filtering);
+    });
   });
 
   describe('pressing escape', () => {
@@ -283,7 +299,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).not.toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).not.toHaveBeenCalled();
     });
 
     it('does call the cancelAction.onAction method when in Filtering mode', () => {
@@ -297,7 +313,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).toHaveBeenCalled();
     });
 
     it('does call the cancelAction.onAction method when in EditingColumns mode', () => {
@@ -314,7 +330,26 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).toHaveBeenCalled();
+    });
+
+    it('does nothing if hideQueryField and hideFilters are true', () => {
+      mountWithApp(
+        <IndexFilters
+          {...defaultProps}
+          mode={IndexFiltersMode.Filtering}
+          hideQueryField
+          hideFilters
+        />,
+      );
+
+      window.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          key: 'Escape',
+        }),
+      );
+
+      expect(defaultProps.cancelAction!.onAction).not.toHaveBeenCalled();
     });
   });
 
@@ -365,7 +400,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).not.toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).not.toHaveBeenCalled();
     });
 
     it('does not call the cancelAction.onAction method when pressing escape in EditingColumns mode', () => {
@@ -383,7 +418,7 @@ describe('IndexFilters', () => {
         }),
       );
 
-      expect(defaultProps.cancelAction.onAction).not.toHaveBeenCalled();
+      expect(defaultProps.cancelAction!.onAction).not.toHaveBeenCalled();
     });
   });
 

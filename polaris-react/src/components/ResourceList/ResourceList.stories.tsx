@@ -19,6 +19,7 @@ import {
   Modal,
   Scrollable,
 } from '@shopify/polaris';
+import {DeleteIcon} from '@shopify/polaris-icons';
 
 export default {
   component: ResourceList,
@@ -89,10 +90,10 @@ export function WithEmptyState() {
         action={{content: 'Upload files'}}
         image="https://cdn.shopify.com/s/files/1/2376/3301/products/emptystate-files.png"
       >
-        <p>
+        <Text as="p" variant="bodyMd">
           You can use the Files section to upload images, videos, and other
           documents
-        </p>
+        </Text>
       </EmptyState>
     ) : undefined;
 
@@ -213,6 +214,8 @@ export function WithBulkActions() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -290,6 +293,8 @@ export function WithBulkActionsAndManyItems() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -1150,6 +1155,8 @@ export function WithAllOfItsElements() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -1348,6 +1355,8 @@ export function WithBulkActionsAndPagination() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },
@@ -1432,6 +1441,8 @@ export function WithinAModal() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete customers',
       onAction: () => console.log('Todo: implement bulk delete'),
     },

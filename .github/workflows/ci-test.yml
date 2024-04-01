@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - next
+  pull_request:
+
+jobs:
+  test:
+    name: 'Test with Node v${{ matrix.node-version }}'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['16.17.0', '18.12.0', '20.11.1']
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Free up space on GitHub image
+        run: |
+          # Based on the official advice:
+          # https://github.com/actions/virtual-environments/issues/2840#issuecomment-790492173
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /opt/ghc
+          sudo rm -rf "/usr/local/share/boost"
+          sudo rm -rf "$AGENT_TOOLSDIRECTORY"
+
+      - name: Setup Node with v${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      - name: Restore cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            **/.eslintcache
+            **/.turbo
+            node_modules/.cache/turbo
+            polaris.shopify.com/.next/cache
+          key: ${{ runner.os }}-node${{ matrix.node-version }}-test-v3-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-node${{ matrix.node-version }}-test-v3-
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Test
+        run: yarn test

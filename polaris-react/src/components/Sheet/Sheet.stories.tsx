@@ -71,7 +71,9 @@ export function Default() {
         width: '100%',
       }}
     >
-      <p>No sales channels selected</p>
+      <Text as="p" variant="bodyMd">
+        No sales channels selected
+      </Text>
       <Button onClick={toggleSheetActive}>Manage sales channels</Button>
     </div>
   );

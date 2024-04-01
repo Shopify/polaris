@@ -10,7 +10,7 @@ import {useFrame} from '../../utilities/frame';
 
 import {NavigationContext} from './context';
 import {Section, Item} from './components';
-import styles from './Navigation.module.scss';
+import styles from './Navigation.module.css';
 
 export interface NavigationProps {
   location: string;

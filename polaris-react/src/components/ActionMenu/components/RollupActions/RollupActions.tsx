@@ -11,7 +11,7 @@ import {ActionList} from '../../../ActionList';
 import {Button} from '../../../Button';
 import {Popover} from '../../../Popover';
 
-import styles from './RollupActions.module.scss';
+import styles from './RollupActions.module.css';
 
 export interface RollupActionsProps {
   /** Accessibilty label */

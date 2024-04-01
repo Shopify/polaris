@@ -12,7 +12,7 @@ import {Checkbox} from '../../Checkbox';
 import {Button} from '../../../../Button';
 import {Link} from '../../../../Link';
 import {Checkbox as PolarisCheckbox} from '../../../../Checkbox';
-import styles from '../../../IndexTable.module.scss';
+import styles from '../../../IndexTable.module.css';
 import type {Range} from '../../../../../utilities/index-provider';
 
 const defaultEvent = {
@@ -442,6 +442,27 @@ describe('<Row />', () => {
     expect(onClick).toThrow(
       'Attempted to call prop onClick but it was not defined.',
     );
+  });
+
+  it('fires onClick handler when row has an onclick and is clicked despite no primary link child present and the table not being selectable', () => {
+    const mockOnClick = jest.fn();
+    const row = mountWithTable(
+      <Row {...defaultProps} onClick={mockOnClick}>
+        <th>
+          <a href="/">Child without data-primary-link</a>
+        </th>
+      </Row>,
+      {
+        indexTableProps: {
+          itemCount: 1,
+          selectable: false,
+        },
+      },
+    );
+
+    triggerOnClick(row, 1, defaultEvent);
+
+    expect(mockOnClick).toHaveBeenCalled();
   });
 
   it('has an undefined tone by default', () => {

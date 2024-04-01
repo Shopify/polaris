@@ -1,5 +1,5 @@
 import React from 'react';
-import {Transition, CSSTransition} from 'react-transition-group';
+import type {CustomRoot} from 'tests/utilities';
 import {mountWithApp} from 'tests/utilities';
 
 import {ActionList} from '../../ActionList';
@@ -9,7 +9,29 @@ import {BulkActionButton, BulkActionMenu} from '../components';
 import type {BulkActionButtonProps} from '../components';
 import {BulkActions} from '../BulkActions';
 import type {BulkAction, BulkActionsProps} from '../BulkActions';
-import styles from '../BulkActions.module.scss';
+import type {getVisibleAndHiddenActionsIndices} from '../utilities';
+import styles from '../BulkActions.module.css';
+
+jest.mock('../components', () => ({
+  ...jest.requireActual('../components'),
+  BulkActionsMeasurer: () => {
+    return null;
+  },
+}));
+
+jest.mock('../utilities', () => ({
+  ...jest.requireActual('../utilities'),
+  getVisibleAndHiddenActionsIndices: jest.fn(),
+}));
+
+function mockGetVisibleAndHiddenActionsIndices(
+  args: ReturnType<typeof getVisibleAndHiddenActionsIndices>,
+) {
+  const getVisibleAndHiddenActionsIndices: jest.Mock =
+    jest.requireMock('../utilities').getVisibleAndHiddenActionsIndices;
+
+  getVisibleAndHiddenActionsIndices.mockReturnValue(args);
+}
 
 interface Props {
   bulkActions: BulkActionButtonProps['content'][];
@@ -18,6 +40,7 @@ interface Props {
   accessibilityLabel: string;
   label: string;
   selected: boolean;
+  selectMode: boolean;
 }
 
 const bulkActionProps: Props = {
@@ -34,9 +57,17 @@ const bulkActionProps: Props = {
     },
   ],
   disabled: false,
+  selectMode: true,
 };
 
 describe('<BulkActions />', () => {
+  beforeEach(() => {
+    mockGetVisibleAndHiddenActionsIndices({
+      visiblePromotedActions: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+      hiddenPromotedActions: [],
+    });
+  });
+
   describe('actions', () => {
     it('indicator is passed to BulkActionButton when actions contain a new tone for badge', () => {
       const bulkActions = mountWithApp(
@@ -100,6 +131,103 @@ describe('<BulkActions />', () => {
       ).length;
 
       expect(bulkActionsCount).toBe(0);
+    });
+
+    it('renders a flat map of actions in a section', () => {
+      const bulkActions = mountWithApp(
+        <BulkActions
+          {...bulkActionProps}
+          promotedActions={[]}
+          actions={[
+            {content: 'Action 1'},
+            {content: 'Action 2'},
+            {content: 'Action 3'},
+          ]}
+        />,
+      );
+
+      bulkActions.find(BulkActionButton)?.trigger('onAction');
+
+      expect(bulkActions).toContainReactComponent(ActionList, {
+        sections: [
+          {
+            items: [
+              {content: 'Action 1'},
+              {content: 'Action 2'},
+              {content: 'Action 3'},
+            ],
+          },
+        ],
+      });
+    });
+
+    it('renders a combination of flat and deep actions in sections', () => {
+      const bulkActions = mountWithApp(
+        <BulkActions
+          {...bulkActionProps}
+          promotedActions={[]}
+          actions={[
+            {content: 'Action 1'},
+            {content: 'Action 2'},
+            {content: 'Action 3'},
+            {
+              title: 'Action group',
+              items: [
+                {content: 'Action 4'},
+                {content: 'Action 5'},
+                {content: 'Action 6'},
+              ],
+            },
+            {content: 'Action 7'},
+            {content: 'Action 8'},
+            {
+              title: 'Action group 2',
+              items: [
+                {content: 'Action 9'},
+                {content: 'Action 10'},
+                {content: 'Action 11'},
+              ],
+            },
+            {content: 'Action 12'},
+          ]}
+        />,
+      );
+
+      bulkActions.find(BulkActionButton)?.trigger('onAction');
+
+      expect(bulkActions).toContainReactComponent(ActionList, {
+        sections: [
+          {
+            items: [
+              {content: 'Action 1'},
+              {content: 'Action 2'},
+              {content: 'Action 3'},
+            ],
+          },
+          {
+            title: 'Action group',
+            items: [
+              {content: 'Action 4'},
+              {content: 'Action 5'},
+              {content: 'Action 6'},
+            ],
+          },
+          {
+            items: [{content: 'Action 7'}, {content: 'Action 8'}],
+          },
+          {
+            title: 'Action group 2',
+            items: [
+              {content: 'Action 9'},
+              {content: 'Action 10'},
+              {content: 'Action 11'},
+            ],
+          },
+          {
+            items: [{content: 'Action 12'}],
+          },
+        ],
+      });
     });
   });
 
@@ -174,31 +302,6 @@ describe('<BulkActions />', () => {
       });
     });
 
-    describe('selectMode', () => {
-      it('is passed down to Transition', () => {
-        const bulkActions = mountWithApp(
-          <BulkActions {...bulkActionProps} selectMode />,
-        );
-
-        expect(bulkActions).toContainReactComponent(Transition, {
-          in: true,
-        });
-      });
-
-      it('is passed down to CSSTransition', () => {
-        const bulkActions = mountWithApp(
-          <BulkActions {...bulkActionProps} selectMode />,
-        );
-
-        const cssTransition = bulkActions.findAll(CSSTransition, {
-          appear: true,
-        });
-        cssTransition.forEach((cssTransitionComponent) => {
-          expect(cssTransitionComponent).toHaveReactProps({in: true});
-        });
-      });
-    });
-
     describe('promotedActions', () => {
       let warnSpy: jest.SpyInstance;
 
@@ -216,6 +319,7 @@ describe('<BulkActions />', () => {
           label: 'Label',
           selected: false,
           bulkActions: [],
+          selectMode: true,
           promotedActions: [
             {
               title: 'button1',
@@ -242,12 +346,50 @@ describe('<BulkActions />', () => {
         expect(bulkActions).toContainReactComponentTimes(BulkActionButton, 3);
       });
 
+      it('will not render promotedActions that are hidden', () => {
+        mockGetVisibleAndHiddenActionsIndices({
+          visiblePromotedActions: [0, 1],
+          hiddenPromotedActions: [2],
+        });
+        const bulkActionProps: Props = {
+          accessibilityLabel: 'A11y label',
+          label: 'Label',
+          selected: false,
+          bulkActions: [],
+          selectMode: true,
+          promotedActions: [
+            {
+              title: 'button1',
+              actions: [
+                {
+                  content: 'action1',
+                },
+                {
+                  content: 'action2',
+                },
+              ],
+            },
+            {
+              content: 'button 2',
+            },
+            {
+              content: 'button 3',
+            },
+          ],
+          disabled: false,
+        };
+        const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
+        const wrapper = findWrapper(bulkActions);
+        expect(wrapper).toContainReactComponentTimes(BulkActionButton, 2);
+      });
+
       it('renders a BulkActionMenu when promotedActions are menus', () => {
         const bulkActionProps: Props = {
           accessibilityLabel: 'A11y label',
           label: 'Label',
           selected: false,
           bulkActions: [],
+          selectMode: true,
           promotedActions: [
             {
               title: 'button1',
@@ -281,11 +423,12 @@ describe('<BulkActions />', () => {
           disabled: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
-        const bulkActionButtons = bulkActions.findAll(BulkActionButton);
+        const wrapper = findWrapper(bulkActions);
+        const bulkActionButtons = wrapper!.findAll(BulkActionButton);
         expect(bulkActionButtons).toHaveLength(4);
         expect(bulkActionButtons[0].text()).toBe('button1');
         expect(bulkActionButtons[1].text()).toBe('button2');
-        const bulkActionMenus = bulkActions.findAll(BulkActionMenu);
+        const bulkActionMenus = wrapper!.findAll(BulkActionMenu);
         expect(bulkActionMenus).toHaveLength(2);
       });
 
@@ -306,6 +449,7 @@ describe('<BulkActions />', () => {
           label: 'Label',
           selected: false,
           bulkActions: [],
+          selectMode: true,
           promotedActions: [
             {...promotedActionToBeClicked},
             {
@@ -315,10 +459,15 @@ describe('<BulkActions />', () => {
           disabled: false,
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
+        const wrapper = findWrapper(bulkActions);
 
-        bulkActions.find(BulkActionButton)?.trigger('onAction');
+        wrapper!
+          .find(BulkActionButton, {
+            content: promotedActionToBeClicked.title,
+          })
+          ?.trigger('onAction');
 
-        const actionList = bulkActions.find(ActionList);
+        const actionList = bulkActions!.find(ActionList);
         expect(actionList!.prop('items')).toBe(
           promotedActionToBeClicked.actions,
         );
@@ -347,6 +496,7 @@ describe('<BulkActions />', () => {
           label: 'Label',
           selected: false,
           bulkActions: [],
+          selectMode: true,
           promotedActions: [
             {
               disabled: true,
@@ -357,7 +507,9 @@ describe('<BulkActions />', () => {
         };
         const bulkActions = mountWithApp(<BulkActions {...bulkActionProps} />);
 
-        expect(bulkActions).toContainReactComponentTimes(BulkActionButton, 1, {
+        const wrapper = findWrapper(bulkActions);
+
+        expect(wrapper).toContainReactComponentTimes(BulkActionButton, 1, {
           disabled: true,
         });
       });
@@ -365,6 +517,10 @@ describe('<BulkActions />', () => {
 
     describe('onMoreActionPopoverToggle', () => {
       it('is invoked when the popover is toggled', () => {
+        mockGetVisibleAndHiddenActionsIndices({
+          visiblePromotedActions: [],
+          hiddenPromotedActions: [],
+        });
         const spy = jest.fn();
         const bulkActions = mountWithApp(
           <BulkActions
@@ -375,7 +531,11 @@ describe('<BulkActions />', () => {
           />,
         );
 
-        bulkActions.find(BulkActionButton)?.trigger('onAction');
+        bulkActions!
+          .find(BulkActionButton, {
+            content: 'Actions',
+          })
+          ?.trigger('onAction');
 
         expect(spy).toHaveBeenCalledTimes(1);
       });
@@ -402,29 +562,19 @@ describe('<BulkActions />', () => {
     });
   });
 
-  describe('deprecated props', () => {
-    describe('isSticky', () => {
-      it('adds the not-sticky class name if isSticky is falsy', () => {
+  describe('selectMode', () => {
+    describe('when false', () => {
+      it('will not render any bulk action buttons', () => {
         const bulkActions = mountWithApp(
-          <BulkActions {...bulkActionProps} isSticky={false} />,
+          <BulkActions {...bulkActionProps} selectMode={false} />,
         );
 
-        expect(bulkActions).toContainReactComponent('div', {
-          className: expect.stringContaining(styles['Group-not-sticky']),
-        });
-      });
-
-      it('does not add the not-sticky class name if isSticky is truthy', () => {
-        const bulkActions = mountWithApp(
-          <BulkActions {...bulkActionProps} isSticky />,
-        );
-
-        expect(bulkActions).not.toContainReactComponent('div', {
-          className: expect.stringContaining(styles['Group-not-sticky']),
-        });
+        expect(bulkActions).not.toContainReactComponent(BulkActionButton);
       });
     });
+  });
 
+  describe('deprecated props', () => {
     describe('width', () => {
       it('adds an inline style width if present', () => {
         const bulkActions = mountWithApp(
@@ -446,3 +596,15 @@ describe('<BulkActions />', () => {
     });
   });
 });
+
+function findWrapper(wrapper: CustomRoot<any, any>) {
+  const wrappingDiv = wrapper.findWhere<'div'>((node) => {
+    return (
+      node.is('div') &&
+      Boolean(node.prop('className')) &&
+      node.prop('className')!.includes(styles.BulkActionsLayout)
+    );
+  });
+
+  return wrappingDiv;
+}

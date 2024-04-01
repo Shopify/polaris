@@ -6,7 +6,7 @@ import {EventListener} from '../../EventListener';
 import {PositionedOverlay} from '../PositionedOverlay';
 import * as mathModule from '../utilities/math';
 import * as geometry from '../../../utilities/geometry';
-import styles from '../PositionedOverlay.module.scss';
+import styles from '../PositionedOverlay.module.css';
 
 describe('<PositionedOverlay />', () => {
   const mockProps = {

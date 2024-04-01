@@ -1,0 +1,51 @@
+.FileUpload {
+  padding: var(--p-space-300);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.large {
+  padding: var(--p-space-800);
+}
+
+.small {
+  padding: var(--p-space-200);
+}
+
+.FileUpload img {
+  vertical-align: bottom;
+}
+
+.ActionTitle {
+  color: var(--p-color-text-emphasis);
+  text-decoration: none;
+
+  &:not(.ActionTitle-disabled) {
+    cursor: pointer;
+
+    &:hover,
+    &:active {
+      color: var(--p-color-text-emphasis-active);
+      text-decoration: underline;
+    }
+  }
+}
+
+.ActionTitle-focused {
+  text-decoration: underline;
+}
+
+.ActionTitle-disabled {
+  color: var(--p-color-text-disabled);
+}
+
+.UploadIcon {
+  fill: var(--p-color-icon);
+
+  &.disabled {
+    fill: var(--p-color-icon-disabled);
+  }
+}

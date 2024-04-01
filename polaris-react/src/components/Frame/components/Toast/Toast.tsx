@@ -10,7 +10,7 @@ import {Text} from '../../../Text';
 import {KeypressListener} from '../../../KeypressListener';
 import type {ToastProps} from '../../../../utilities/frame';
 
-import styles from './Toast.module.scss';
+import styles from './Toast.module.css';
 
 export type {ToastProps};
 
@@ -131,6 +131,7 @@ export function Toast({
         <InlineStack gap="400" blockAlign="center">
           <Text
             as="span"
+            variant="bodyMd"
             fontWeight="medium"
             {...(tone === 'magic' && {tone: 'magic'})}
           >
@@ -148,6 +149,7 @@ export function Toast({
       <InlineStack gap="400" blockAlign="center">
         <Text
           as="span"
+          variant="bodyMd"
           fontWeight="medium"
           {...(tone === 'magic' && {tone: 'magic'})}
         >

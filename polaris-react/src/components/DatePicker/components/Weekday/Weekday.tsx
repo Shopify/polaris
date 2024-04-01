@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 
-import {classNames} from '../../../../utilities/css';
-import styles from '../../DatePicker.module.scss';
+import {Text} from '../../../Text';
+import styles from '../../DatePicker.module.css';
 
 export interface WeekdayProps {
   label: string;
@@ -14,14 +14,17 @@ export const Weekday = memo(function Weekday({
   title,
   current,
 }: WeekdayProps) {
-  const className = classNames(
-    styles.Weekday,
-    current && styles['Weekday-current'],
-  );
-
   return (
-    <th aria-label={label} scope="col" className={className}>
-      {title}
+    <th aria-label={label} scope="col" className={styles.Weekday}>
+      <Text
+        as="span"
+        variant="bodySm"
+        alignment="center"
+        fontWeight={current ? 'bold' : 'regular'}
+        tone={!current ? 'subdued' : undefined}
+      >
+        {title}
+      </Text>
     </th>
   );
 });

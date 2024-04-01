@@ -1,6 +1,7 @@
 import React from 'react';
 import {BlockStack, Button, Card, InlineGrid, Text} from '@shopify/polaris';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
+import {EditIcon} from '@shopify/polaris-icons';
 
 function CardWithSectionsAndActions() {
   return (
@@ -20,12 +21,11 @@ function CardWithSectionsAndActions() {
               Contact Information
             </Text>
             <Button
-              variant="plain"
+              icon={EditIcon}
+              variant="tertiary"
               onClick={() => {}}
               accessibilityLabel="Edit"
-            >
-              Edit
-            </Button>
+            />
           </InlineGrid>
           <Text as="p" variant="bodyMd">
             john.smith@example.com

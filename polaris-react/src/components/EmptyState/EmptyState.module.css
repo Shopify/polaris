@@ -1,0 +1,56 @@
+.ImageContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Image {
+  opacity: 0;
+  transition: opacity var(--p-motion-duration-150) var(--p-motion-ease);
+  z-index: var(--p-z-index-1);
+
+  &.loaded {
+    opacity: 1;
+  }
+}
+
+.imageContained {
+  @media (--p-breakpoints-md-up) {
+    position: initial;
+    width: 100%;
+  }
+}
+
+.SkeletonImageContainer {
+  /* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- container custom property for size to prevent layout shift */
+  --pc-empty-state-skeleton-image-container-size: 226px;
+  height: var(--pc-empty-state-skeleton-image-container-size);
+  width: var(--pc-empty-state-skeleton-image-container-size);
+  /* stylelint-enable polaris/conventions/polaris/custom-property-allowed-list -- container custom property for size  to prevent layout shift */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SkeletonImage {
+  position: absolute;
+  z-index: var(--p-z-index-0);
+  /* stylelint-disable polaris/conventions/polaris/custom-property-allowed-list -- container custom property for placeholder size */
+  --pc-empty-state-skeleton-image-size: 145px;
+  height: var(--pc-empty-state-skeleton-image-size);
+  width: var(--pc-empty-state-skeleton-image-size);
+  /* stylelint-enable polaris/conventions/polaris/custom-property-allowed-list -- container custom property for placeholder size */
+  background-color: var(--p-color-bg-fill-secondary);
+  border-radius: var(--p-border-radius-full);
+  opacity: 1;
+  transition: opacity var(--p-motion-duration-500) var(--p-motion-ease);
+
+  &.loaded {
+    opacity: 0;
+  }
+
+  @media screen and (-ms-high-contrast: active) {
+    background-color: grayText;
+  }
+}

@@ -6,6 +6,7 @@ import {
   SkeletonIcon,
 } from '@shopify/polaris-icons';
 
+import {useBreakpoints} from '../../utilities/breakpoints';
 import type {BaseButton, IconSource} from '../../types';
 import {classNames, variationName} from '../../utilities/css';
 import {handleMouseUpByBlurring} from '../../utilities/focus';
@@ -13,10 +14,12 @@ import type {MouseUpBlurHandler} from '../../utilities/focus';
 import {useI18n} from '../../utilities/i18n';
 import {Icon} from '../Icon';
 import {Spinner} from '../Spinner';
+import {Text} from '../Text';
+import type {TextProps} from '../Text';
 import {UnstyledButton} from '../UnstyledButton';
 import type {UnstyledButtonProps} from '../UnstyledButton';
 
-import styles from './Button.module.scss';
+import styles from './Button.module.css';
 
 export interface ButtonProps extends BaseButton {
   /** The content to display inside the button */
@@ -122,6 +125,7 @@ export function Button({
 }: ButtonProps) {
   const i18n = useI18n();
   const isDisabled = disabled || loading;
+  const {mdUp} = useBreakpoints();
 
   const className = classNames(
     styles.Button,
@@ -173,14 +177,29 @@ export function Button({
     </span>
   ) : null;
 
+  const hasPlainText = ['plain', 'monochromePlain'].includes(variant);
+  let textFontWeight: TextProps['fontWeight'] = 'medium';
+  if (hasPlainText) {
+    textFontWeight = 'regular';
+  } else if (variant === 'primary') {
+    textFontWeight = mdUp ? 'medium' : 'semibold';
+  }
+
+  let textVariant: TextProps['variant'] = 'bodySm';
+  if (size === 'large' || (hasPlainText && size !== 'micro')) {
+    textVariant = 'bodyMd';
+  }
+
   const childMarkup = children ? (
-    <span
-      className={removeUnderline ? styles.removeUnderline : ''}
+    <Text
+      as="span"
+      variant={textVariant}
+      fontWeight={textFontWeight}
       // Fixes Safari bug that doesn't re-render button text to correct color
       key={disabled ? 'text-disabled' : 'text'}
     >
       {children}
-    </span>
+    </Text>
   ) : null;
 
   const spinnerSVGMarkup = loading ? (

@@ -11,7 +11,7 @@ export function generateScopedName({includeHash = false} = {}) {
     // Vite's esbuild appends query params to files under certain circumstances,
     // so we clean those off in order to get the actual file name.
     const cleanedFilename = filename.replace(/\?.*$/, '');
-    const componentName = basename(cleanedFilename, '.module.scss');
+    const componentName = basename(cleanedFilename, '.module.css');
     const nestedComponentMatch =
       NESTED_COMPONENT_PATH_REGEX.exec(cleanedFilename);
 

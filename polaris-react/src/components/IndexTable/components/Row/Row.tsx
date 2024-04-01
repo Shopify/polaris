@@ -10,7 +10,7 @@ import {Checkbox} from '../Checkbox';
 import {classNames, variationName} from '../../../../utilities/css';
 import {RowContext, RowHoveredContext} from '../../../../utilities/index-table';
 import type {Range} from '../../../../utilities/index-provider/types';
-import styles from '../../IndexTable.module.scss';
+import styles from '../../IndexTable.module.css';
 
 type RowType = 'data' | 'subheader' | 'child';
 type RowStatus = 'subdued' | 'success' | 'warning' | 'critical';
@@ -120,13 +120,14 @@ export const Row = memo(function Row({
     disabled && styles['TableRow-disabled'],
     tone && styles[variationName('tone', tone)],
     !selectable &&
+      !onClick &&
       !primaryLinkElement.current &&
       styles['TableRow-unclickable'],
   );
 
   let handleRowClick;
 
-  if ((!disabled && selectable) || primaryLinkElement.current) {
+  if ((!disabled && selectable) || onClick || primaryLinkElement.current) {
     handleRowClick = (event: React.MouseEvent) => {
       if (rowType === 'subheader') return;
 

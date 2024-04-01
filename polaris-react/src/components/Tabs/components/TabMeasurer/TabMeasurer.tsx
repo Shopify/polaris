@@ -6,7 +6,7 @@ import {useComponentDidMount} from '../../../../utilities/use-component-did-moun
 import {useEventListener} from '../../../../utilities/use-event-listener';
 import type {TabProps, TabMeasurements} from '../../types';
 import {Tab} from '../Tab';
-import styles from '../../Tabs.module.scss';
+import styles from '../../Tabs.module.css';
 
 export interface TabMeasurerProps {
   tabToFocus: number;

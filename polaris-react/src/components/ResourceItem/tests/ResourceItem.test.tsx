@@ -1,7 +1,6 @@
 import React from 'react';
 import type {AllHTMLAttributes} from 'react';
 import {mountWithApp} from 'tests/utilities';
-import {matchMedia} from '@shopify/jest-dom-mocks';
 import {setMediaWidth} from 'tests/utilities/breakpoints';
 
 import {Avatar} from '../../Avatar';
@@ -13,7 +12,7 @@ import {Thumbnail} from '../../Thumbnail';
 import {UnstyledLink} from '../../UnstyledLink';
 import {ResourceItem} from '../ResourceItem';
 import {ResourceListContext} from '../../../utilities/resource-list';
-import styles from '../ResourceItem.module.scss';
+import styles from '../ResourceItem.module.css';
 
 describe('<ResourceItem />', () => {
   let spy: jest.SpyInstance;
@@ -21,12 +20,10 @@ describe('<ResourceItem />', () => {
   beforeEach(() => {
     spy = jest.spyOn(window, 'open');
     spy.mockImplementation(() => {});
-    matchMedia.mock();
   });
 
   afterEach(() => {
     spy.mockRestore();
-    matchMedia.restore();
   });
 
   const mockDefaultContext = {
@@ -227,6 +224,22 @@ describe('<ResourceItem />', () => {
 
       expect(element).toContainReactComponent('div', {'data-href': url} as any);
     });
+
+    it('does not render an <UnstyledLink /> when disabled prop is true', () => {
+      const element = mountWithApp(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            id="itemId"
+            url={url}
+            onClick={noop}
+            accessibilityLabel={ariaLabel}
+            disabled
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      expect(element).not.toContainReactComponent(UnstyledLink);
+    });
   });
 
   describe('external', () => {
@@ -388,6 +401,38 @@ describe('<ResourceItem />', () => {
       expect(onClick).not.toHaveBeenCalled();
     });
 
+    it('does not call onClick when hitting keyUp on the item when onClick exists, url exists and is disabled', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectModeContext}>
+          <ResourceItem id={itemId} url="#" onClick={onClick} disabled />
+        </ResourceListContext.Provider>,
+      );
+
+      findResourceItem(wrapper)!.trigger('onKeyUp', {key: 'Enter'});
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it('does not call onClick when clicking on the item when onClick exists and is disabled', () => {
+      const onClick = jest.fn();
+      const wrapper = mountWithApp(
+        <ResourceListContext.Provider value={mockDefaultContext}>
+          <ResourceItem
+            id={itemId}
+            onClick={onClick}
+            accessibilityLabel={ariaLabel}
+            disabled
+          />
+        </ResourceListContext.Provider>,
+      );
+
+      findResourceItem(wrapper)!.trigger('onClick', {
+        stopPropagation: () => {},
+        nativeEvent: {},
+      });
+      expect(onClick).not.toHaveBeenCalledWith(itemId);
+    });
+
     it('calls window.open on ctrlKey + click', () => {
       const wrapper = mountWithApp(
         <ResourceListContext.Provider value={mockDefaultContext}>
@@ -447,6 +492,15 @@ describe('<ResourceItem />', () => {
         sortOrder,
         false,
       );
+    });
+
+    it('renders a disabled Checkbox if the item is disabled', () => {
+      const wrapper = mountWithApp(
+        <ResourceListContext.Provider value={mockSelectableContext}>
+          <ResourceItem id={selectedItemId} url={url} disabled />
+        </ResourceListContext.Provider>,
+      );
+      expect(wrapper).toContainReactComponent(Checkbox, {disabled: true});
     });
   });
 

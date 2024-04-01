@@ -12,7 +12,7 @@ import type {InlineStackProps} from '../../../InlineStack';
 import {InlineStack} from '../../../InlineStack';
 import {Checkbox as PolarisCheckbox} from '../../../Checkbox';
 
-import styles from './Option.module.scss';
+import styles from './Option.module.css';
 
 type Alignment = 'top' | 'center' | 'bottom';
 

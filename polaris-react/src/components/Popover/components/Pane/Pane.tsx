@@ -4,7 +4,7 @@ import {classNames} from '../../../../utilities/css';
 import {wrapWithComponent} from '../../../../utilities/components';
 import {Scrollable} from '../../../Scrollable';
 import {Section} from '../Section';
-import styles from '../../Popover.module.scss';
+import styles from '../../Popover.module.css';
 
 export interface PaneProps {
   /** Fix the pane to the top of the popover */
@@ -61,6 +61,7 @@ export function Pane({
       className={className}
       style={style}
       onScrolledToBottom={onScrolledToBottom}
+      scrollbarWidth="thin"
     >
       {content}
     </Scrollable>

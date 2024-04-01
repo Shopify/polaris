@@ -11,7 +11,11 @@ import {MediaQueryProvider} from '../MediaQueryProvider';
 import {FocusManager} from '../FocusManager';
 import {PortalsManager} from '../PortalsManager';
 import {I18n, I18nContext} from '../../utilities/i18n';
-import {ThemeContext, getTheme} from '../../utilities/use-theme';
+import {
+  ThemeNameContext,
+  ThemeContext,
+  getTheme,
+} from '../../utilities/use-theme';
 import {
   ScrollLockManager,
   ScrollLockManagerContext,
@@ -22,14 +26,10 @@ import {
 } from '../../utilities/sticky-manager';
 import {LinkContext} from '../../utilities/link';
 import type {LinkLikeComponent} from '../../utilities/link';
-import {
-  classNamePolarisSummerEditions2023,
-  FeaturesContext,
-} from '../../utilities/features';
+import {FeaturesContext} from '../../utilities/features';
 import type {FeaturesConfig} from '../../utilities/features';
 
-import './AppProvider.scss';
-import './global.scss';
+import './global.css';
 
 const MAX_SCROLLBAR_WIDTH = 20;
 const SCROLLBAR_TEST_ELEMENT_PARENT_SIZE = 30;
@@ -116,7 +116,13 @@ export class AppProvider extends Component<AppProviderProps, State> {
           navigator.userAgent.includes('Version/16.2') ||
           navigator.userAgent.includes('Version/16.3'));
 
-      if (isSafari16) {
+      const isMobileApp16 =
+        navigator.userAgent.includes('Shopify Mobile/iOS') &&
+        (navigator.userAgent.includes('OS 16_1') ||
+          navigator.userAgent.includes('OS 16_2') ||
+          navigator.userAgent.includes('OS 16_3'));
+
+      if (isSafari16 || isMobileApp16) {
         document.documentElement.classList.add(
           'Polaris-Safari-16-Font-Optical-Sizing-Patch',
         );
@@ -157,8 +163,6 @@ export class AppProvider extends Component<AppProviderProps, State> {
         themeName === activeThemeName,
       );
     });
-
-    document.documentElement.classList.add(classNamePolarisSummerEditions2023);
   };
 
   getThemeName = (): ThemeName => this.props.theme ?? themeNameDefault;
@@ -170,27 +174,29 @@ export class AppProvider extends Component<AppProviderProps, State> {
     const {intl, link} = this.state;
 
     return (
-      <ThemeContext.Provider value={getTheme(themeName)}>
-        <FeaturesContext.Provider value={features}>
-          <I18nContext.Provider value={intl}>
-            <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
-              <StickyManagerContext.Provider value={this.stickyManager}>
-                <LinkContext.Provider value={link}>
-                  <MediaQueryProvider>
-                    <PortalsManager>
-                      <FocusManager>
-                        <EphemeralPresenceManager>
-                          {children}
-                        </EphemeralPresenceManager>
-                      </FocusManager>
-                    </PortalsManager>
-                  </MediaQueryProvider>
-                </LinkContext.Provider>
-              </StickyManagerContext.Provider>
-            </ScrollLockManagerContext.Provider>
-          </I18nContext.Provider>
-        </FeaturesContext.Provider>
-      </ThemeContext.Provider>
+      <ThemeNameContext.Provider value={themeName}>
+        <ThemeContext.Provider value={getTheme(themeName)}>
+          <FeaturesContext.Provider value={features}>
+            <I18nContext.Provider value={intl}>
+              <ScrollLockManagerContext.Provider value={this.scrollLockManager}>
+                <StickyManagerContext.Provider value={this.stickyManager}>
+                  <LinkContext.Provider value={link}>
+                    <MediaQueryProvider>
+                      <PortalsManager>
+                        <FocusManager>
+                          <EphemeralPresenceManager>
+                            {children}
+                          </EphemeralPresenceManager>
+                        </FocusManager>
+                      </PortalsManager>
+                    </MediaQueryProvider>
+                  </LinkContext.Provider>
+                </StickyManagerContext.Provider>
+              </ScrollLockManagerContext.Provider>
+            </I18nContext.Provider>
+          </FeaturesContext.Provider>
+        </ThemeContext.Provider>
+      </ThemeNameContext.Provider>
     );
   }
 }

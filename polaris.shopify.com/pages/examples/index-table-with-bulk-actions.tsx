@@ -6,6 +6,7 @@ import {
   Badge,
   useBreakpoints,
 } from '@shopify/polaris';
+import {DeleteIcon} from '@shopify/polaris-icons';
 import React from 'react';
 import {withPolarisExample} from '../../src/components/PolarisExampleWrapper';
 
@@ -92,6 +93,8 @@ function IndexTableWithBulkActionsExample() {
       onAction: () => console.log('Todo: implement bulk remove tags'),
     },
     {
+      icon: DeleteIcon,
+      destructive: true,
       content: 'Delete orders',
       onAction: () => console.log('Todo: implement bulk delete'),
     },

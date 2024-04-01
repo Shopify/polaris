@@ -58,14 +58,14 @@ describe('<Frame />', () => {
     it('renders a skip to content link with the proper text', () => {
       const skipToContentLinkText = mountWithApp(<Frame />);
 
-      expect(skipToContentLinkText).toContainReactComponent('a', {
-        children: 'Skip to content',
-      });
+      expect(skipToContentLinkText.find('a')).toContainReactText(
+        'Skip to content',
+      );
     });
 
     it('targets the main container element by default', () => {
       const frame = mountWithApp(<Frame />);
-      const skipLink = frame.find('a', {children: 'Skip to content'});
+      const skipLink = frame.find('a');
 
       expect(skipLink!.domNode!.getAttribute('href')).toBe(
         `#${frame!.find('main')!.domNode!.id}`,

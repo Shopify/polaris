@@ -7,7 +7,7 @@ import {Text} from '../Text';
 import {Icon} from '../Icon';
 import type {IconSource} from '../../types';
 
-import styles from './Badge.module.scss';
+import styles from './Badge.module.css';
 import type {Progress, Size, Tone} from './types';
 import {Pip} from './components';
 import {getDefaultAccessibilityLabel} from './utils';

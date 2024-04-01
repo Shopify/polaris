@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo} from 'react';
 
-import {classNames} from '../../../../utilities/css';
+import {Text} from '../../../Text';
 import {
   isDateBefore,
   isDateAfter,
@@ -14,7 +14,7 @@ import {
 } from '../../../../utilities/dates';
 import type {Range} from '../../../../utilities/dates';
 import {useI18n} from '../../../../utilities/i18n';
-import styles from '../../DatePicker.module.scss';
+import styles from '../../DatePicker.module.css';
 import {Day} from '../Day';
 import {Weekday} from '../Weekday';
 import {monthName, weekdayName} from '../../utilities';
@@ -57,10 +57,6 @@ export function Month({
   const isInHoveringRange = allowRange ? hoveringDateIsInRange : () => false;
   const now = new Date();
   const current = now.getMonth() === month && now.getFullYear() === year;
-  const className = classNames(
-    styles.Title,
-    current && styles['Month-current'],
-  );
   const weeks = useMemo(
     () => getWeeksForMonth(month, year, weekStartsOn),
     [month, weekStartsOn, year],
@@ -162,9 +158,16 @@ export function Month({
   return (
     <div className={styles.MonthContainer}>
       <table role="grid" className={styles.Month}>
-        <caption className={className}>
-          {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)}{' '}
-          {year}
+        <caption className={styles.Title}>
+          <Text
+            as="span"
+            variant="bodyMd"
+            alignment="center"
+            fontWeight={current ? 'bold' : 'medium'}
+          >
+            {i18n.translate(`Polaris.DatePicker.months.${monthName(month)}`)}{' '}
+            {year}
+          </Text>
         </caption>
         <thead>
           <tr className={styles.WeekHeadings}>{weekdays}</tr>

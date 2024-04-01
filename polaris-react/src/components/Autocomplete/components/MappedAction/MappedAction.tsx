@@ -9,7 +9,7 @@ import {Icon} from '../../../Icon';
 import {Text} from '../../../Text';
 import {useI18n} from '../../../../utilities/i18n';
 
-import styles from './MappedAction.module.scss';
+import styles from './MappedAction.module.css';
 
 interface MappedAction extends ActionListItemDescriptor {
   wrapOverflow?: boolean;
@@ -36,8 +36,6 @@ export function MappedAction({
   const i18n = useI18n();
 
   let prefixMarkup: React.ReactNode | null = null;
-
-  const contentOverflowStyle = wrapOverflow ? styles.ContentWrap : undefined;
 
   if (prefix) {
     prefixMarkup = <div className={styles.Prefix}>{prefix}</div>;
@@ -74,9 +72,11 @@ export function MappedAction({
 
   const contentMarkup = (
     <div className={styles.Text}>
-      <div className={contentOverflowStyle}>{contentText}</div>
+      <Text as="p" variant="bodyMd" breakWord={wrapOverflow}>
+        {contentText}
+      </Text>
       {helpText ? (
-        <Text tone="subdued" as="span">
+        <Text as="p" variant="bodyMd" tone="subdued">
           {helpText}
         </Text>
       ) : null}
