@@ -7,6 +7,6 @@ for (const fixture of fixtures) {
   check(__dirname, {
     fixture,
     transform,
-    extension: 'css',
+    extension: 'scss',
   });
 }
