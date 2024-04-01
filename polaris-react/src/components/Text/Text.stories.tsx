@@ -8,19 +8,22 @@ export default {
 
 export const Variants = () => (
   <LegacyStack vertical>
-    <Text as="h1" variant="headingXl">
+    <Text as="h1" variant="heading2xl">
+      Text with Heading2xl variant
+    </Text>
+    <Text as="h2" variant="headingXl">
       Text with HeadingXl variant
     </Text>
-    <Text as="h2" variant="headingLg">
+    <Text as="h3" variant="headingLg">
       Text with HeadingLg variant
     </Text>
-    <Text as="h3" variant="headingMd">
+    <Text as="h4" variant="headingMd">
       Text with HeadingMd variant
     </Text>
-    <Text as="h4" variant="headingSm">
+    <Text as="h5" variant="headingSm">
       Text with HeadingSm variant
     </Text>
-    <Text as="h5" variant="headingXs">
+    <Text as="h6" variant="headingXs">
       Text with HeadingXs variant
     </Text>
     <Text as="p" variant="bodyLg">
@@ -109,10 +112,10 @@ export const WithTone = () => (
 );
 
 export const WithInheritance = () => (
-  <Text as="p" variant="headingXl" tone="caution">
-    <Text as="span">This is a Xl heading</Text>
+  <Text as="p" variant="heading2xl" tone="caution">
+    <Text as="span">This is a 2xl heading</Text>
     <br />
-    <Text as="span">This is also a Xl heading</Text>
+    <Text as="span">This is also a 2xl heading</Text>
   </Text>
 );
 

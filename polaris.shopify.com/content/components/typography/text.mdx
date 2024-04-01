@@ -66,17 +66,16 @@ Typography helps establish hierarchy and communicate important content by creati
 
 Each variant uses a predetermined combination of the [font tokens](/tokens/font) to set the font size and line height. Heading variants have a set font weight but can be overridden by using the `fontWeight` prop. Nested Text components will inherit properties from its parent Text container.
 
-| Variant     | Font size token     | px value | rem value | Font line height token | Font weight token          | Responsive |
-| ----------- | ------------------- | -------- | --------- | ---------------------- | -------------------------- | ---------- |
-| `headingXl` | `--p-font-size-600` | 24       | 1.5       | `--p-line-height-800`  | `--p-font-weight-bold`     | Yes        |
-| `headingLg` | `--p-font-size-500` | 20       | 1.25      | `--p-line-height-600`  | `--p-font-weight-semibold` | Yes        |
-| `headingMd` | `--p-font-size-350` | 14       | 0.875     | `--p-line-height-500`  | `--p-font-weight-semibold` | No         |
-| `headingSm` | `--p-font-size-325` | 13       | 0.8125    | `--p-line-height-500`  | `--p-font-weight-semibold` | No         |
-| `headingXs` | `--p-font-size-300` | 12       | 0.75      | `--p-line-height-400`  | `--p-font-weight-semibold` | No         |
-| `bodyLg`    | `--p-font-size-350` | 14       | 0.875     | `--p-line-height-500`  | `--p-font-weight-regular`  | No         |
-| `bodyMd`    | `--p-font-size-325` | 13       | 0.8125    | `--p-line-height-500`  | `--p-font-weight-regular`  | No         |
-| `bodySm`    | `--p-font-size-300` | 12       | 0.75      | `--p-line-height-400`  | `--p-font-weight-regular`  | No         |
-| `bodyXs`    | `--p-font-size-275` | 11       | 0.6875    | `--p-line-height-300`  | `--p-font-weight-regular`  | No         |
+| Variant      | Font size token     | px value | rem value | Font line height token | Font weight token          | Responsive |
+| ------------ | ------------------- | -------- | --------- | ---------------------- | -------------------------- | ---------- |
+| `heading2xl` | `--p-font-size-750` | 30       | 1.875     | `--p-line-height-1000` | `--p-font-weight-bold`     | Yes        |
+| `headingMd`  | `--p-font-size-350` | 14       | 0.875     | `--p-line-height-500`  | `--p-font-weight-semibold` | No         |
+| `headingSm`  | `--p-font-size-325` | 13       | 0.8125    | `--p-line-height-500`  | `--p-font-weight-semibold` | No         |
+| `headingXs`  | `--p-font-size-300` | 12       | 0.75      | `--p-line-height-400`  | `--p-font-weight-semibold` | No         |
+| `bodyLg`     | `--p-font-size-350` | 14       | 0.875     | `--p-line-height-500`  | `--p-font-weight-regular`  | No         |
+| `bodyMd`     | `--p-font-size-325` | 13       | 0.8125    | `--p-line-height-500`  | `--p-font-weight-regular`  | No         |
+| `bodySm`     | `--p-font-size-300` | 12       | 0.75      | `--p-line-height-400`  | `--p-font-weight-regular`  | No         |
+| `bodyXs`     | `--p-font-size-275` | 11       | 0.6875    | `--p-line-height-300`  | `--p-font-weight-regular`  | No         |
 
 ---
 
@@ -104,14 +103,14 @@ These are suggested replacements for existing text style components, but ultimat
 
 ```diff
 - <DisplayText size="large">Sales this year</DisplayText>
-+ <Text variant="headingXl" as="p">Sales this year</Text>
++ <Text variant="heading2xl" as="p">Sales this year</Text>
 ```
 
 #### Extra large
 
 ```diff
 - <DisplayText size="extraLarge">Sales this year</DisplayText>
-+ <Text variant="headingXl" as="p">Sales this year</Text>
++ <Text variant="heading2xl" as="p">Sales this year</Text>
 ```
 
 ### Heading
